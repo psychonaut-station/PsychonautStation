@@ -151,7 +151,9 @@
 	build_path = /obj/item/mecha_parts/chassis/decouverte
 	materials = list(/datum/material/iron=20000)
 	construction_time = 100
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 /datum/design/decouverte_torso
 	name = "Exosuit Torso (\"Decouverte\")"
@@ -160,7 +162,9 @@
 	build_path = /obj/item/mecha_parts/part/decouverte_torso
 	materials = list(/datum/material/iron=20000,/datum/material/glass = 7500)
 	construction_time = 200
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 /datum/design/decouverte_left_arm
 	name = "Exosuit Left Arm (\"Decouverte\")"
@@ -169,7 +173,9 @@
 	build_path = /obj/item/mecha_parts/part/decouverte_left_arm
 	materials = list(/datum/material/iron=15000)
 	construction_time = 150
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 /datum/design/decouverte_right_arm
 	name = "Exosuit Right Arm (\"Decouverte\")"
@@ -178,7 +184,9 @@
 	build_path = /obj/item/mecha_parts/part/decouverte_right_arm
 	materials = list(/datum/material/iron=15000)
 	construction_time = 150
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 /datum/design/decouverte_left_leg
 	name = "Exosuit Left Leg (\"Decouverte\")"
@@ -187,7 +195,9 @@
 	build_path = /obj/item/mecha_parts/part/decouverte_left_leg
 	materials = list(/datum/material/iron=15000)
 	construction_time = 150
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 /datum/design/decouverte_right_leg
 	name = "Exosuit Right Leg (\"Decouverte\")"
@@ -196,7 +206,9 @@
 	build_path = /obj/item/mecha_parts/part/decouverte_right_leg
 	materials = list(/datum/material/iron=15000)
 	construction_time = 150
-	category = list("Decouverte")
+	category = list(
+		RND_CATEGORY_MECHFAB_DECOUVERTE + RND_SUBCATEGORY_MECHFAB_CHASSIS
+	)
 
 //Odysseus
 /datum/design/odysseus_chassis

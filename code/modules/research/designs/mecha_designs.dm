@@ -27,7 +27,9 @@
 	desc = "Allows for the construction of a \"Decouverte\" Central Control module."
 	id = "decouverte_main"
 	build_path = /obj/item/circuitboard/mecha/decouverte/main
-	category = list("Exosuit Modules")
+	category = list(
+		RND_CATEGORY_EXOSUIT_BOARDS + RND_SUBCATEGORY_EXOSUIT_BOARDS_DECOUVERTE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/decouverte_peri
@@ -35,7 +37,9 @@
 	desc = "Allows for the construction of a \"Decouverte\" Peripheral Control module"
 	id = "decouverte_peri"
 	build_path = /obj/item/circuitboard/mecha/decouverte/peripherals
-	category = list("Exosuit Modules")
+	category = list(
+		RND_CATEGORY_EXOSUIT_BOARDS + RND_SUBCATEGORY_EXOSUIT_BOARDS_DECOUVERTE
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
 /datum/design/board/odysseus_main

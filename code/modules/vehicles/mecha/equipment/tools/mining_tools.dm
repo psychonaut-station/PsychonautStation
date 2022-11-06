@@ -16,7 +16,7 @@
 	range = MECHA_MELEE
 	tool_behaviour = TOOL_DRILL
 	toolspeed = 0.9
-	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT
+	mech_flags = EXOSUIT_MODULE_WORKING | EXOSUIT_MODULE_COMBAT | EXOSUIT_MODULE_VOYAGER
 	var/drill_delay = 7
 	var/drill_level = DRILL_BASIC
 
@@ -111,6 +111,12 @@
 	if(locate(/obj/item/mecha_parts/mecha_equipment/hydraulic_clamp) in chassis.flat_equipment && istype(chassis, /obj/vehicle/sealed/mecha/working/ripley))
 		var/obj/vehicle/sealed/mecha/working/ripley/R = chassis //we could assume that it's a ripley because it has a clamp, but that's ~unsafe~ and ~bad practice~
 		R.collect_ore()
+
+/obj/item/mecha_parts/mecha_equipment/drill/can_attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
+	if(..())
+		if(istype(M, /obj/vehicle/sealed/mecha/working) || istype(M, /obj/vehicle/sealed/mecha/combat) || istype(M, /obj/vehicle/sealed/mecha/voyager))
+			return TRUE
+	return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/living/user)
 	target.visible_message(span_danger("[chassis] is drilling [target] with [src]!"), \

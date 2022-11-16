@@ -142,6 +142,11 @@
 	icon_state = "hoscap"
 	strip_delay = 80
 
+/obj/item/clothing/head/hats/hos/special
+	name = "head of security cap"
+	desc = "A black hat with a golden moon. En iyiler için."
+	icon_state = "hoscapspecial"
+
 /obj/item/clothing/head/hats/hos/syndicate
 	name = "syndicate cap"
 	desc = "A black cap fit for a high ranking syndicate officer."

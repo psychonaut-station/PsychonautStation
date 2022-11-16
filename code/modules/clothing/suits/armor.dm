@@ -99,6 +99,11 @@
 	flags_inv = 0
 	strip_delay = 80
 
+/obj/item/clothing/suit/armor/hos/special
+	name = "special armored jacket"
+	desc = "This variant of the HoS jacket was designed for one person. It brings fear to the eye and smells of justice. Zirvedekiler için."
+	icon_state = "hosjacketspecial"
+
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter trenchcoat"
 	desc = "A trenchcoat enhanced with a special lightweight kevlar, padded with wool on the collar and inside. You feel strangely lonely wearing this coat."

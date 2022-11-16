@@ -241,13 +241,6 @@
 	inhand_icon_state = null
 	body_parts_covered = CHEST|ARMS
 
-/obj/item/clothing/suit/jacket/hos/special
-	name = "head of security's 'special' jacket"
-	desc = "This variant of the HoS jacket was designed for one person. It brings fear to the eye and smells of justice. En iyiler için."
-	icon_state = "hosjacketspecial"
-	inhand_icon_state = null
-	body_parts_covered = CHEST|ARMS|LEGS 
-
 //Surgeon
 /obj/item/clothing/suit/apron/surgical
 	name = "surgical apron"

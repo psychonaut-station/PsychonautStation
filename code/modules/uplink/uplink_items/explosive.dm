@@ -66,6 +66,11 @@
 	purchasable_from = ~UPLINK_NANO
 	cost = 2
 
+/datum/uplink_item/explosives/emp/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 3
+
 /datum/uplink_item/explosives/pizza_bomb
 	name = "Pizza Bomb"
 	desc = "A pizza box with a bomb cunningly attached to the lid. The timer needs to be set by opening the box; afterwards, \
@@ -92,6 +97,11 @@
 	item = /obj/item/sbeacondrop/emp
 	purchasable_from = ~UPLINK_NANO
 	cost = 7
+
+/datum/uplink_item/explosives/syndicate_bomb/emp/New()
+	..()
+	if(HAS_TRAIT(SSstation, STATION_TRAIT_CYBERNETIC_REVOLUTION))
+		cost *= 2
 
 // High progression cost
 

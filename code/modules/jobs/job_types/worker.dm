@@ -45,7 +45,7 @@
 	suit = /obj/item/clothing/suit/hazardvest
 	backpack_contents = list(
 		/obj/item/stack/sheet/iron/fifty = 1,
-		/obj/item/stack/sheet/plasteel/fifty = 1,
+		/obj/item/stack/sheet/plasteel/twenty = 1,
 		/obj/item/stack/sheet/mineral/wood/fifty = 1,
 		/obj/item/stack/sheet/glass/fifty = 1,
 		/obj/item/reagent_containers/cup/soda_cans/cola = 1,

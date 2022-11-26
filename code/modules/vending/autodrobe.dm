@@ -53,7 +53,7 @@
 				/obj/item/clothing/under/costume/sailor = 1,
 				/obj/item/clothing/head/costume/delinquent = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Supernatural",
 			"icon" = "hand-sparkles",
@@ -72,7 +72,7 @@
 				/obj/item/clothing/suit/costume/shrine_maiden = 1,
 				/obj/item/gohei = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Entertainers",
 			"icon" = "masks-theater",
@@ -100,7 +100,7 @@
 				/obj/item/clothing/head/costume/cueball = 1,
 				/obj/item/clothing/under/suit/white_on_white = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Fancy",
 			"icon" = "user-tie",
@@ -125,7 +125,7 @@
 				/obj/item/clothing/suit/costume/cheongsam_red = 1,
 				/obj/item/clothing/suit/costume/cheongsam_blue = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Animals",
 			"icon" = "paw",
@@ -149,7 +149,7 @@
 				/obj/item/clothing/mask/animal/cowmask = 1,
 				/obj/item/clothing/mask/animal/horsehead = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Service",
 			"icon" = "kitchen-set",
@@ -167,7 +167,7 @@
 				/obj/item/clothing/under/rank/civilian/janitor/maid = 1,
 				/obj/item/clothing/accessory/maidapron = 1,
 			),
-		),		
+		),
 		list(
 			"name" = "Other",
 			"icon" = "star",
@@ -216,6 +216,7 @@
 		/obj/item/clothing/under/suit/tuxedo = 1,
 		/obj/item/clothing/head/costume/weddingveil = 1,
 		/obj/item/storage/belt/cummerbund = 1,
+		/obj/item/clothing/head/hats/booniehat = 1,
 	)
 	refill_canister = /obj/item/vending_refill/autodrobe
 	default_price = PAYCHECK_CREW * 0.8 //Default of 40.

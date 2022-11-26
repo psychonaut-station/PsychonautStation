@@ -413,3 +413,20 @@
 	flags_inv = HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = null
+
+/obj/item/clothing/mask/gas/ghost_mask
+	name = "ghost mask"
+	desc = "What has two legs and bleeds?"
+	icon_state = "ghost_mask"
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT|MASKINTERNALS
+	flags_inv = HIDEFACIALHAIR
+	flags_inv = HIDEEARS|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR|HIDESNOUT
+	visor_flags = BLOCK_GAS_SMOKE_EFFECT|MASKINTERNALS
+	visor_flags_inv = HIDEEARS
+	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT|HIDEEARS
+	w_class = WEIGHT_CLASS_SMALL
+	armor = list(MELEE = 0, BULLET = 0, LASER = 0, ENERGY = 0, BOMB = 0, BIO = 50, FIRE = 50, ACID = 0)
+	flags_cover = MASKCOVERSMOUTH
+	visor_flags_cover = MASKCOVERSMOUTH
+	inhand_icon_state = null
+	has_fov = FALSE

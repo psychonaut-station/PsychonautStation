@@ -418,6 +418,7 @@
 	name = "ghost mask"
 	desc = "What has two legs and bleeds?"
 	icon_state = "ghost_mask"
+	custom_price = PAYCHECK_CREW * 7
 	clothing_flags = BLOCK_GAS_SMOKE_EFFECT
 	flags_inv = HIDEEARS|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR|HIDESNOUT
 	visor_flags = BLOCK_GAS_SMOKE_EFFECT

@@ -43,7 +43,7 @@
 
 	id_trim = /datum/id_trim/job/brig_physician
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
-	suit = /obj/item/clothing/suit/armor/vest/alt
+	suit = /obj/item/clothing/suit/armor/vest/alt/brig_physician
 	backpack_contents = list(
 		/obj/item/roller = 1,
 		)
@@ -51,7 +51,7 @@
 	ears = /obj/item/radio/headset/headset_sec/alt/department/med
 	glasses = /obj/item/clothing/glasses/hud/health
 	gloves = /obj/item/clothing/gloves/color/latex/nitrile
-	head = /obj/item/clothing/head/beret/medical
+	head = /obj/item/clothing/head/helmet/brig_physician
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/modular_computer/tablet/pda/security

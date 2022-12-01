@@ -84,6 +84,8 @@
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/clothing/neck/cloak/hos(src)
 	new /obj/item/clothing/suit/armor/hos/trenchcoat/winter(src)
+	new /obj/item/clothing/suit/armor/hos/special(src)
+	new /obj/item/clothing/head/hats/hos/special(src)
 
 /obj/item/storage/bag/garment/research_director/PopulateContents()
 	new /obj/item/clothing/under/rank/rnd/research_director(src)

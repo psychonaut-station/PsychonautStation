@@ -424,7 +424,7 @@
 		return ..()
 
 /obj/machinery/scanner_gate/cami_shuttle
-	name = "Iman kontrol"
+	name = "İman kontrol kapısı"
 	desc = "Temizlik imandan gelir."
 	density = FALSE
 	locked = TRUE

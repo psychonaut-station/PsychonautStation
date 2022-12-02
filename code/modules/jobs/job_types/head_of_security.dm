@@ -53,7 +53,7 @@
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	backpack_contents = list(
-		/obj/item/evidencebag = 1, /obj/item/modular_computer/tablet/pda/heads/hos = 1,
+		/obj/item/evidencebag = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt

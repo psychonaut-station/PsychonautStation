@@ -109,6 +109,7 @@
 /area/shuttle/escape)
 "kL" = (
 /obj/structure/window/reinforced/fulltile,
+/obj/structure/grille,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "lz" = (

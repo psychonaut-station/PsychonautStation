@@ -58,7 +58,7 @@
 		RegisterSignal(parent, COMSIG_IMPLANT_IMPLANTING, .proc/implanting)
 		RegisterSignal(parent, COMSIG_IMPLANT_OTHER, .proc/old_implant)
 		RegisterSignal(parent, COMSIG_IMPLANT_EXISTING_UPLINK, .proc/new_implant)
-	else if(istype(parent, /obj/item/modular_computer/tablet))
+	else if(istype(parent, /obj/item/modular_computer/pda))
 		RegisterSignal(parent, COMSIG_TABLET_CHANGE_ID, .proc/new_ringtone)
 		RegisterSignal(parent, COMSIG_TABLET_CHECK_DETONATE, .proc/check_detonate)
 	else if(istype(parent, /obj/item/radio))
@@ -382,7 +382,7 @@
 /datum/component/nanouplink/proc/setup_unlock_code()
 	unlock_code = generate_code()
 	var/obj/item/P = parent
-	if(istype(parent,/obj/item/modular_computer/tablet))
+	if(istype(parent,/obj/item/modular_computer/pda))
 		unlock_note = "<B>Uplink Passcode:</B> [unlock_code] ([P.name])."
 	else if(istype(parent,/obj/item/radio))
 		unlock_note = "<B>Radio Frequency:</B> [format_frequency(unlock_code)] ([P.name])."
@@ -390,7 +390,7 @@
 		unlock_note = "<B>Uplink Degrees:</B> [english_list(unlock_code)] ([P.name])."
 
 /datum/component/nanouplink/proc/generate_code()
-	if(istype(parent,/obj/item/modular_computer/tablet))
+	if(istype(parent,/obj/item/modular_computer/pda))
 		return "[rand(100,999)] [pick(GLOB.phonetic_alphabet)]"
 	else if(istype(parent,/obj/item/radio))
 		return return_unused_frequency()

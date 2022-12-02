@@ -38,7 +38,7 @@
 		/obj/item/announcer = 1,
 		/obj/item/megaphone = 1,
 	)
-	belt = /obj/item/modular_computer/tablet/pda/curator
+	belt = /obj/item/modular_computer/pda/curator
 	ears = /obj/item/radio/headset/headset_srv
 	shoes = /obj/item/clothing/shoes/laceup
 	l_pocket = /obj/item/laser_pointer

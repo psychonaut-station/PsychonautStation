@@ -55,7 +55,7 @@
 	head = /obj/item/clothing/head/helmet/brig_physician
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/assembly/flash/handheld
-	l_pocket = /obj/item/modular_computer/tablet/pda/security
+	l_pocket = /obj/item/modular_computer/pda/security
 
 
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec/surgery

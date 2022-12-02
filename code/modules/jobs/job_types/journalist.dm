@@ -26,6 +26,7 @@
 
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
+	config_tag = "JOURNALIST"
 
 /datum/outfit/job/journalist
 	name = "Journalist"

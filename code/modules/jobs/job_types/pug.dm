@@ -14,6 +14,7 @@
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE
 	rpg_title = "Aç Alfa Gri Kurt"
+	config_tag = "PUG"
 
 /datum/job/pug/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

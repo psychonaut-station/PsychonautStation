@@ -236,6 +236,12 @@
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
 
+/datum/map_template/shuttle/emergency/cami
+	suffix = "cami"
+	name = "Cami"
+	credit_cost = CARGO_CRATE_VALUE * 50
+	description = "Uhrevi alemde sorulur sual, Dünyada yaşarken çalsam da kaval, Kurana uymaktir İslamda kural, İbadethanenin simgesi cami."
+
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
 	name = "Luxury Shuttle"

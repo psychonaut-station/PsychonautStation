@@ -83,6 +83,13 @@
 	item = /obj/item/clothing/gloves/rapid
 	cost = 8
 
+/datum/uplink_item/dangerous/poisonknife
+	name = "Poisoned Knife"
+	desc = "This knife has a special container that injects the target with it's contents. \
+			Comes with 10u of Chloralhydrate."
+	progression_minimum = 20 MINUTES
+	item = /obj/item/reagent_containers/knife
+	cost = 7
 
 // Medium progression cost
 

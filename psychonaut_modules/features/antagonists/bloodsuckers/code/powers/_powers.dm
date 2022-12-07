@@ -4,16 +4,10 @@
 	//This is the FILE for the background icon
 	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_bloodsucker.dmi'
 	//This is the ICON_STATE for the background icon
-	background_icon_state = "vamp_power_off"
 	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_bloodsucker.dmi'
 	button_icon_state = "power_feed"
 	buttontooltipstyle = "cult"
 	transparent_when_unavailable = TRUE
-
-	///Background icon when the Power is active.
-	var/background_icon_state_on = "vamp_power_on"
-	///Background icon when the Power is NOT active.
-	var/background_icon_state_off = "vamp_power_off"
 
 	/// The text that appears when using the help verb, meant to explain how the Power changes when ranking up.
 	var/power_explanation = ""
@@ -143,13 +137,6 @@
 
 /datum/action/bloodsucker/proc/CheckCanDeactivate()
 	return TRUE
-
-/datum/action/bloodsucker/build_all_button_icons(atom/movable/screen/movable/action_button/button, status_only = FALSE, force = FALSE)
-	if(active)
-		background_icon_state = background_icon_state_on
-	else
-		background_icon_state = background_icon_state_off
-	return ..()
 
 /datum/action/bloodsucker/proc/PayCost()
 	// Non-bloodsuckers will pay in other ways.

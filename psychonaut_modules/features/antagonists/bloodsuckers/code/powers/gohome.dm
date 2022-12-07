@@ -7,8 +7,6 @@
 	name = "Vanishing Act"
 	desc = "As dawn aproaches, disperse into mist and return directly to your Lair.<br><b>WARNING:</b> You will drop <b>ALL</b> of your possessions if observed by mortals."
 	button_icon_state = "power_gohome"
-	background_icon_state_on = "vamp_power_off_oneshot"
-	background_icon_state_off = "vamp_power_off_oneshot"
 	power_explanation = "Vanishing Act: \n\
 		Activating Vanishing Act will, after a short delay, teleport the user to their Claimed Coffin. \n\
 		The power will cancel out if the Claimed Coffin is somehow destroyed. \n\

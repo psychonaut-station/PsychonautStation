@@ -75,9 +75,6 @@
 		However, while adjacent to the target, if your target is in critical condition or dead, they will instead be turned into a temporary Vassal.\n\
 		If you use this on a currently dead normal Vassal, you will instead revive them normally.\n\
 		Despite being Mute and Deaf, they will still have complete loyalty to you, until their death in 5 minutes upon use."
-	background_icon_state = "tremere_power_gold_off"
-	background_icon_state_on = "tremere_power_gold_on"
-	background_icon_state_off = "tremere_power_gold_off"
 	bloodcost = 80
 	cooldown = 180 SECONDS // 3 minutes
 

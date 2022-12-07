@@ -62,9 +62,6 @@
 		You will also have the ability to fire a Blood beam, ending the Power.\n\
 		If the Blood beam hits a person, it will deal 40 Burn damage.\n\
 		If it hits a locker or door, it will break it open."
-	background_icon_state = "tremere_power_gold_off"
-	background_icon_state_on = "tremere_power_gold_on"
-	background_icon_state_off = "tremere_power_gold_off"
 	prefire_message = "Click where you wish to fire (using your power removes blood shield)."
 	bloodcost = 60
 	cooldown = 6 SECONDS

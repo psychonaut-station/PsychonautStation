@@ -3,7 +3,7 @@
 	name = "Track Monster"
 	desc = "Take a moment to look for clues of any nearby monsters.<br>These creatures are slippery, and often look like the crew."
 	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_bloodsucker.dmi'
-	icon_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_bloodsucker.dmi'
+	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_bloodsucker.dmi'
 	background_icon_state = "vamp_power_off"
 	button_icon_state = "power_hunter"
 	power_flags = NONE

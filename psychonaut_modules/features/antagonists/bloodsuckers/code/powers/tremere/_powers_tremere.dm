@@ -13,7 +13,7 @@
 	background_icon_state_on = "tremere_power_on"
 	background_icon_state_off = "tremere_power_off"
 	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_tremere_bloodsucker.dmi'
-	icon_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_tremere_bloodsucker.dmi'
+	button_icon = 'psychonaut_modules/features/antagonists/bloodsuckers/icons/actions_tremere_bloodsucker.dmi'
 
 	// Tremere powers don't level up, we have them hardcoded.
 	level_current = 0

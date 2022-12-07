@@ -4902,7 +4902,6 @@
 #include "psychonaut_modules\_defines\bloodsuckers.dm"
 #include "psychonaut_modules\_defines\psychonaut_defines.dm"
 #include "psychonaut_modules\_defines\psychonaut_helpers.dm"
-#include "psychonaut_modules\_defines\species_defines.dm"
 #include "psychonaut_modules\_defines\traits.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\antagonists\bloodsucker_datum.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\antagonists\bloodsucker_hud.dm"

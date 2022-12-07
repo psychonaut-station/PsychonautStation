@@ -98,6 +98,11 @@
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
 
+//bloodsucker roles
+#define ROLE_BLOODSUCKER "Bloodsucker"
+#define ROLE_VAMPIRICACCIDENT "Vampiric Accident"
+#define ROLE_BLOODSUCKERBREAKOUT "Bloodsucker Breakout"
+#define ROLE_MONSTERHUNTER "Monster Hunter"
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's
@@ -143,6 +148,13 @@ GLOBAL_LIST_INIT(special_roles, list(
 	// I'm not too sure why these are here, but they're not moving.
 	ROLE_PAI = 0,
 	ROLE_SENTIENCE = 0,
+
+	// Bloodsuckers
+	ROLE_BLOODSUCKER = 0,
+	ROLE_VAMPIRICACCIDENT = 0,
+	ROLE_BLOODSUCKERBREAKOUT = 0,
+	ROLE_MONSTERHUNTER = 0,
+	// END
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

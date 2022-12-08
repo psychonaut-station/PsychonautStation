@@ -2,8 +2,9 @@
 	//bıçak tarafı
 	name = "Poisoned Knife"
 	desc = "A special knife, injects the target with the contents of the internal container."
-	icon = 'icons/obj/kitchen.dmi'
+	icon = 'icons/obj/medical/chemical.dmi'
 	icon_state = "knife"
+	base_icon_state = "knife"
 	force = 8
 	throwforce = 15
 	throw_speed = 5
@@ -21,6 +22,8 @@
 	tool_behaviour = TOOL_KNIFE
 	//reagent tarafı
 	amount_per_transfer_from_this = 5
+	fill_icon_state = "knife"
+	fill_icon_thresholds = list(1, 10, 15, 20, 30, 40, 45, 50,)
 
 /obj/item/reagent_containers/knife/Initialize(mapload)
 	. = ..()

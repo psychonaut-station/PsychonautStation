@@ -4898,7 +4898,6 @@
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-
 #include "psychonaut_modules\_defines\bloodsuckers.dm"
 #include "psychonaut_modules\_defines\psychonaut_defines.dm"
 #include "psychonaut_modules\_defines\psychonaut_helpers.dm"
@@ -4950,4 +4949,3 @@
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\powers\tremere\thaumaturgy.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\rulesets\bloodsucker_rulesets.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\rulesets\monsterhunter_event.dm"
-// END_INCLUDE

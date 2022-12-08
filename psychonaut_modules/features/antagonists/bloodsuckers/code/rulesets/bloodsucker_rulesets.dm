@@ -10,7 +10,9 @@
 	antag_datum = /datum/antagonist/bloodsucker
 	protected_roles = list(
 		JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY,
+		// Security
 		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN,
+		// Curator
 		JOB_CURATOR,
 	)
 	restricted_roles = list("AI", "Cyborg")

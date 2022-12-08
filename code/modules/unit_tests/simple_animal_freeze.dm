@@ -187,6 +187,7 @@
 		/mob/living/simple_animal/hostile/guardian/healer,
 		/mob/living/simple_animal/hostile/guardian/protector,
 		/mob/living/simple_animal/hostile/guardian/punch,
+		/mob/living/simple_animal/hostile/guardian/punch/timestop,
 		/mob/living/simple_animal/hostile/guardian/ranged,
 		/mob/living/simple_animal/hostile/headcrab,
 		/mob/living/simple_animal/hostile/heretic_summon,

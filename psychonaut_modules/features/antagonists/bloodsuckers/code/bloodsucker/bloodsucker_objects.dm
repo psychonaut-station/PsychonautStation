@@ -31,17 +31,6 @@
 //      HEART       //
 //////////////////////
 
-/// Do I have any parts that need replacing?
-/* // Removed - Replaced with HealVampireOrgans()
-/datum/antagonist/bloodsucker/proc/CheckVampOrgans()
-	var/obj/item/organ/heart/vampiricheart = owner.current.getorganslot(ORGAN_SLOT_HEART)
-	if(!istype(vampiricheart, /obj/item/organ/internal/heart/vampheart) || !istype(vampiricheart, /obj/item/organ/heart/demon) || !istype(vampiricheart, /obj/item/organ/heart/cursed))
-		qdel(vampiricheart)
-		var/obj/item/organ/internal/heart/vampheart/vampiricheart = new
-		vampiricheart.Insert(owner.current)
-		/// Now... stop beating!
-		vampiricheart.Stop()
-*/
 /datum/antagonist/bloodsucker/proc/RemoveVampOrgans()
 	var/obj/item/organ/internal/heart/newheart = owner.current.getorganslot(ORGAN_SLOT_HEART)
 	if(newheart)
@@ -61,41 +50,6 @@
 /obj/item/organ/internal/heart/vampheart/proc/FakeStart()
 	// faking it
 	beating = TRUE
-
-//////////////////////
-//      EYES        //
-//////////////////////
-
-/* /// Removed due to Mothpeople & Flypeople spawning with Vampiric eyes, getting them instantly lynched.
-/// Taken from augmented_eyesight.dm
-/obj/item/organ/internal/eyes/bloodsucker
-	lighting_alpha = 180 // LIGHTING_PLANE_ALPHA_MOSTLY_INVISIBLE  <--- This is too low a value at 128. We need to SEE what the darkness is so we can hide in it.
-	see_in_dark = 12
-	sight_flags = SEE_MOBS // Bloodsuckers are predators, and detect life/heartbeats nearby. -2019 Breakdown of Bloodsuckers
-	flash_protect = -1 // These eyes are weaker to flashes, but let you see in the dark
-*/
-
-/*
-//////////////////////
-//      LIVER       //
-//////////////////////
-
-/// Livers run on_life(), which calls reagents.metabolize() in holder.dm, which calls on_mob_life.dm in the cheam (medicine_reagents.dm)
-/obj/item/organ/liver/vampliver
-/obj/item/organ/liver/vampliver/on_life()
-	var/mob/living/carbon/user = owner
-	if(!istype(user))
-		return
-*/
-
-//////////////////////
-//      STAKES      //
-//////////////////////
-
-/*
- *	NOTE: sheet_types.dm is where the WOOD stack lives. Maybe move this over there.
- *	Taken from /obj/item/stack/rods/attackby in [rods.dm]
- */
 
 /// Crafting
 /obj/item/stack/sheet/mineral/wood/attackby(obj/item/item, mob/user, params)

@@ -18,7 +18,7 @@ jobs:
       - name: CodeOwnersParser
         if: github.event.pull_request.draft == false
         id: CodeOwnersParser
-        uses: tgstation/CodeOwnersParser@v1
+        uses: robotduinom/CodeOwnersParser@master
 
       #Request reviews
       - name: Request reviews

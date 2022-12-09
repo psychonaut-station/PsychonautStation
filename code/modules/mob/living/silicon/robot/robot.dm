@@ -8,17 +8,19 @@
 		tip_time = 3 SECONDS, \
 		untip_time = 2 SECONDS, \
 		self_right_time = 60 SECONDS, \
-		post_tipped_callback = CALLBACK(src, PROC_REF(after_tip_over)), \
-		post_untipped_callback = CALLBACK(src, PROC_REF(after_righted)), \
+		post_tipped_callback = CALLBACK(src, .proc/after_tip_over), \
+		post_untipped_callback = CALLBACK(src, .proc/after_righted), \
 		roleplay_friendly = TRUE, \
 		roleplay_emotes = list(/datum/emote/silicon/buzz, /datum/emote/silicon/buzz2, /datum/emote/living/beep), \
-		roleplay_callback = CALLBACK(src, PROC_REF(untip_roleplay)))
+		roleplay_callback = CALLBACK(src, .proc/untip_roleplay))
 
 	wires = new /datum/wires/robot(src)
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
-	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
-	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
+	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, .proc/on_light_eater)
+	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
+	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, .proc/change_icon)
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -89,7 +91,7 @@
 /mob/living/silicon/robot/model/syndicate/Initialize(mapload)
 	. = ..()
 	laws = new /datum/ai_laws/syndicate_override()
-	addtimer(CALLBACK(src, PROC_REF(show_playstyle)), 5)
+	addtimer(CALLBACK(src, .proc/show_playstyle), 5)
 
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
@@ -469,6 +471,12 @@
 		smash_headlamp()
 	return COMPONENT_BLOCK_LIGHT_EATER
 
+/mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
+	SIGNAL_HANDLER
+	if (icon_state == "uWu_borg")
+		icon_state = "uWu_borg_rage"
+	else if (icon_state == "uWu_borg_rage")
+		icon_state = "uWu_borg"
 
 /**
  * Handles headlamp smashing
@@ -757,7 +765,7 @@
 
 	hat_offset = model.hat_offset
 
-	INVOKE_ASYNC(src, PROC_REF(updatename))
+	INVOKE_ASYNC(src, .proc/updatename)
 
 
 /mob/living/silicon/robot/proc/place_on_head(obj/item/new_hat)
@@ -796,8 +804,8 @@
 		return FALSE
 	upgrades += new_upgrade
 	new_upgrade.forceMove(src)
-	RegisterSignal(new_upgrade, COMSIG_MOVABLE_MOVED, PROC_REF(remove_from_upgrades))
-	RegisterSignal(new_upgrade, COMSIG_PARENT_QDELETING, PROC_REF(on_upgrade_deleted))
+	RegisterSignal(new_upgrade, COMSIG_MOVABLE_MOVED, .proc/remove_from_upgrades)
+	RegisterSignal(new_upgrade, COMSIG_PARENT_QDELETING, .proc/on_upgrade_deleted)
 	logevent("Hardware [new_upgrade] installed successfully.")
 
 ///Called when an upgrade is moved outside the robot. So don't call this directly, use forceMove etc.

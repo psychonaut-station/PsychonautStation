@@ -53,10 +53,12 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 		ROLE_POSITRONIC_BRAIN,
 	)
 	required_candidates = 1

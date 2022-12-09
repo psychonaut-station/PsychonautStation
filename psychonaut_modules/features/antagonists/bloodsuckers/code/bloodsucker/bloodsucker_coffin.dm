@@ -139,28 +139,6 @@
 					new /obj/effect/decal/cleanable/cobweb/cobweb2 (T_Dirty)
 			// STEP TWO: DIRT
 			new /obj/effect/decal/cleanable/dirt (T_Dirty)
-		// Find Animals in Area
-/*		if(rand(0,2) == 0)
-			var/mobCount = 0
-			var/mobMax = clamp(area_turfs.len / 25, 1, 4)
-			for(var/turf/lair_turfs in area_turfs)
-				if(!lair_turfs)
-					continue
-				var/mob/living/simple_animal/SA = locate() in lair_turfs
-				if(SA)
-					mobCount++
-					if(mobCount >= mobMax) // Already at max
-						break
-				Spawn One
-			if(mobCount < mobMax)
-//				Seek Out Location
-				while(area_turfs.len > 0)
-					var/turf/lair_turfs = pick(area_turfs) // We use while&pick instead of a for/loop so it's random, rather than from the top of the list.
-					if(lair_turfs && !lair_turfs.density)
-						var/mob/living/simple_animal/selected_simplemob = /mob/living/simple_animal/mouse // pick(/mob/living/simple_animal/mouse,/mob/living/simple_animal/mouse,/mob/living/simple_animal/mouse, /mob/living/simple_animal/hostile/retaliate/bat) //prob(300) /mob/living/simple_animal/mouse,
-						new selected_simplemob(lair_turfs)
-						break
-					area_turfs -= lair_turfs*/
 
 /obj/structure/closet/crate/proc/UnclaimCoffin(manual = FALSE)
 	// Unanchor it (If it hasn't been broken, anyway)

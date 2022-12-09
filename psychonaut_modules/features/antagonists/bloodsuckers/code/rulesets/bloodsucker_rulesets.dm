@@ -9,7 +9,6 @@
 	antag_flag = ROLE_BLOODSUCKER
 	antag_datum = /datum/antagonist/bloodsucker
 	protected_roles = list(
-		// Command
 		JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY,
 		// Security
 		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN,
@@ -60,7 +59,7 @@
 	antag_flag_override = ROLE_BLOODSUCKER
 	protected_roles = list(
 		JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY,
-		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE,
+		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN,
 		JOB_CURATOR,
 	)
 	restricted_roles = list("AI","Cyborg", "Positronic Brain")
@@ -108,7 +107,7 @@
 	antag_flag_override = ROLE_BLOODSUCKER
 	protected_roles = list(
 		JOB_CAPTAIN, JOB_HEAD_OF_PERSONNEL, JOB_HEAD_OF_SECURITY,
-		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE,
+		JOB_WARDEN, JOB_SECURITY_OFFICER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN,
 		JOB_CURATOR,
 	)
 	restricted_roles = list("AI","Cyborg")

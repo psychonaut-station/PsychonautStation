@@ -135,7 +135,7 @@
 		return
 	active = TRUE
 	if(user)
-		INVOKE_ASYNC(src, PROC_REF(ui_interact, user))
+		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 	// an unlocked uplink blocks also opening the PDA or headset menu
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

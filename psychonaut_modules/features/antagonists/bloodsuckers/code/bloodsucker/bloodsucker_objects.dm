@@ -304,7 +304,7 @@
 	if(!action)
 		return FALSE
 	SStgui.close_uis(src)
-	INVOKE_ASYNC(src, PROC_REF(search, usr, action))
+	INVOKE_ASYNC(src, PROC_REF(search), usr, action)
 
 /obj/item/book/kindred/proc/search(mob/reader, clan)
 	starting_content = "<head>This is all knowledge about the Clan:</head><br>"

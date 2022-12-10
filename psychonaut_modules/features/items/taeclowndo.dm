@@ -28,7 +28,7 @@
 	desc = "A clown's weapon of choice.  Use this to summon a fresh pie, just waiting to acquaintain itself with someone's face."
 	invocation_type = "none"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
-	cooldown_time = 15 SECONDS
+	cooldown_time = 20 SECONDS
 	button_icon = 'icons/obj/food/piecake.dmi'
 	button_icon_state = "pie"
 	spell_max_level = 1
@@ -43,7 +43,7 @@
 	button_icon = 'icons/obj/hydroponics/harvest.dmi'
 	button_icon_state = "banana_peel"
 	spell_max_level = 1
-	cooldown_time = 30 SECONDS
+	cooldown_time = 10 SECONDS
 	invocation_type = "none"
 	active_msg = "You focus, your mind reaching to the clown dimension, ready to make a peel matrialize wherever you want!"
 	deactive_msg = "You relax, the peel remaining right in the \"thin air\" it would appear out of."

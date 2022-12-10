@@ -31,7 +31,7 @@
 /obj/item/announcer/proc/use_charge(mob/user)
 	charge --
 	to_chat(user, span_notice("You use [src]. It now has [charge] charge[charge == 1 ? "" : "s"] remaining."))
-	charge_timers.Add(addtimer(CALLBACK(src, .proc/recharge), charge_time, TIMER_STOPPABLE))
+	charge_timers.Add(addtimer(CALLBACK(src, PROC_REF(recharge)), charge_time, TIMER_STOPPABLE))
 
 /obj/item/announcer/proc/recharge(mob/user)
 	charge = min(charge+1)

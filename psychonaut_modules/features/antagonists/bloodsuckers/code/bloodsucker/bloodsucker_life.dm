@@ -5,22 +5,22 @@
 	if(isbrain(owner.current))
 		return
 	if(!owner)
-		INVOKE_ASYNC(src, .proc/HandleDeath)
+		INVOKE_ASYNC(src, PROC_REF(HandleDeath))
 		return
 	// Deduct Blood
 	if(owner.current.stat == CONSCIOUS && !HAS_TRAIT(owner.current, TRAIT_IMMOBILIZED) && !HAS_TRAIT(owner.current, TRAIT_NODEATH))
-		INVOKE_ASYNC(src, .proc/AddBloodVolume, passive_blood_drain) // -.1 currently
+		INVOKE_ASYNC(src, PROC_REF(AddBloodVolume), passive_blood_drain) // -.1 currently
 	if(HandleHealing(1))
 		if((COOLDOWN_FINISHED(src, bloodsucker_spam_healing)) && bloodsucker_blood_volume > 0)
 			to_chat(owner.current, span_notice("The power of your blood begins knitting your wounds..."))
 			COOLDOWN_START(src, bloodsucker_spam_healing, BLOODSUCKER_SPAM_HEALING)
 	// Standard Updates
-	INVOKE_ASYNC(src, .proc/HandleDeath)
-	INVOKE_ASYNC(src, .proc/HandleStarving)
-	INVOKE_ASYNC(src, .proc/HandleTorpor)
-	INVOKE_ASYNC(src, .proc/UpdateBlood)
+	INVOKE_ASYNC(src, PROC_REF(HandleDeath))
+	INVOKE_ASYNC(src, PROC_REF(HandleStarving))
+	INVOKE_ASYNC(src, PROC_REF(HandleTorpor))
+	INVOKE_ASYNC(src, PROC_REF(UpdateBlood))
 
-	INVOKE_ASYNC(src, .proc/update_hud)
+	INVOKE_ASYNC(src, PROC_REF(update_hud))
 
 	if(my_clan)
 		SEND_SIGNAL(my_clan, BLOODSUCKER_HANDLE_LIFE, src)
@@ -381,13 +381,13 @@
 			span_warning("[owner.current]'s skin crackles and dries, their skin and bones withering to dust. A hollow cry whips from what is now a sandy pile of remains."),
 			span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
 			span_hear("You hear a dry, crackling sound."))
-		dust_timer = addtimer(CALLBACK(owner.current, /mob/living.proc/dust), 5 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+		dust_timer = addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living, dust)), 5 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 	owner.current.visible_message(
 		span_warning("[owner.current]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),
 		span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
 		span_hear("<span class='italics'>You hear a wet, bursting sound."))
-	dust_timer = addtimer(CALLBACK(owner.current, /mob/living.proc/gib, TRUE, FALSE, FALSE), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+	dust_timer = addtimer(CALLBACK(owner.current, TYPE_PROC_REF(/mob/living, gib), TRUE, FALSE, FALSE), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 
 // Bloodsuckers moodlets //

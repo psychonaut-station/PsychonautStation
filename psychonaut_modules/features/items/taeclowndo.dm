@@ -28,7 +28,7 @@
 	desc = "A clown's weapon of choice.  Use this to summon a fresh pie, just waiting to acquaintain itself with someone's face."
 	invocation_type = "none"
 	check_flags = AB_CHECK_CONSCIOUS|AB_CHECK_HANDS_BLOCKED
-	cooldown_time = 20 SECONDS
+	cooldown_time = 30 SECONDS
 	button_icon = 'icons/obj/food/piecake.dmi'
 	button_icon_state = "pie"
 	spell_max_level = 1

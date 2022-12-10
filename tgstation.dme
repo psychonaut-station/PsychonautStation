@@ -4957,4 +4957,5 @@
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\powers\tremere\thaumaturgy.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\rulesets\bloodsucker_rulesets.dm"
 #include "psychonaut_modules\features\antagonists\bloodsuckers\code\rulesets\monsterhunter_event.dm"
+#include "psychonaut_modules\features\items\taeclowndo.dm"
 // END_INCLUDE

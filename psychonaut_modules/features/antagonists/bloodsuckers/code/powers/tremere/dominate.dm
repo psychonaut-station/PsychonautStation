@@ -138,7 +138,7 @@
 		mesmerized.Immobilize(power_time)
 		mesmerized.next_move = world.time + power_time
 		mesmerized.notransform = TRUE
-		addtimer(CALLBACK(src, .proc/end_mesmerize, user, target), power_time)
+		addtimer(CALLBACK(src, PROC_REF(end_mesmerize), user, target), power_time)
 	if(issilicon(target))
 		var/mob/living/silicon/mesmerized = target
 		mesmerized.emp_act(EMP_HEAVY)
@@ -180,7 +180,7 @@
 		ADD_TRAIT(target, TRAIT_DEAF, BLOODSUCKER_TRAIT)
 	else if(level_current == 5)
 		living_time = 8 MINUTES
-	addtimer(CALLBACK(src, .proc/end_possession, target), living_time)
+	addtimer(CALLBACK(src, PROC_REF(end_possession), target), living_time)
 
 /datum/action/bloodsucker/targeted/tremere/proc/end_possession(mob/living/user)
 	REMOVE_TRAIT(user, TRAIT_MUTE, BLOODSUCKER_TRAIT)

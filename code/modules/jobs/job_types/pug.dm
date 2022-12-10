@@ -6,7 +6,7 @@
 	spawn_positions = 5
 	supervisors = "your canine desires." //vicirdek
 	selection_color = "#dddddd"
-	spawn_type = /mob/living/simple_animal/pet/dog/pug
+	spawn_type = /mob/living/basic/pet/dog/pug
 
 	departments_list = list(
 		/datum/job_department/service,

@@ -52,7 +52,7 @@
 		return COMPONENT_INCOMPATIBLE
 
 	RegisterSignal(parent, COMSIG_PARENT_ATTACKBY, PROC_REF(OnAttackBy))
-	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(nteract))
+	RegisterSignal(parent, COMSIG_ITEM_ATTACK_SELF, PROC_REF(interact))
 	if(istype(parent, /obj/item/implant))
 		RegisterSignal(parent, COMSIG_IMPLANT_ACTIVATED, PROC_REF(implant_activation))
 		RegisterSignal(parent, COMSIG_IMPLANT_IMPLANTING, PROC_REF(implanting))
@@ -135,7 +135,7 @@
 		return
 	active = TRUE
 	if(user)
-		INVOKE_ASYNC(src, PROC_REF(ui_interact, user))
+		INVOKE_ASYNC(src, PROC_REF(ui_interact), user)
 	// an unlocked uplink blocks also opening the PDA or headset menu
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 

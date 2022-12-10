@@ -34,7 +34,7 @@
 	spell_max_level = 1
 	item_type = /obj/item/food/pie/cream
 
-/datum/action/cooldown/spell/conjure_item/summon_pie/can_cast_spell()
+/datum/action/cooldown/spell/conjure_item/summon_pie/can_cast_spell(feedback = FALSE)
 	return TRUE
 
 /datum/action/cooldown/spell/pointed/banana_peel
@@ -57,7 +57,7 @@
 		return
 	new /obj/item/grown/bananapeel(target)
 
-/datum/action/cooldown/spell/pointed/banana_peel/can_cast_spell()
+/datum/action/cooldown/spell/pointed/banana_peel/can_cast_spell(feedback = FALSE)
 	return TRUE
 
 

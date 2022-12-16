@@ -15,6 +15,8 @@
 	var/vamp_desc
 	var/vassal_desc
 	var/hunter_desc
+	var/n_vassal = 0
+	var/max_vassal = 3
 
 /obj/structure/bloodsucker/examine(mob/user)
 	. = ..()
@@ -280,6 +282,9 @@
 					if(!vassaldatum.master.broke_masquerade)
 						to_chat(user, span_boldwarning("[target] is under the spell of another Bloodsucker!"))
 						return
+				if(n_vassal >= max_vassal)
+					to_chat(user, span_notice("You are not strong enough to control more vassals!"))
+					return
 				if(RequireDisloyalty(user, target))
 					to_chat(user, span_boldwarning("[target] has external loyalties! [target.p_they(TRUE)] will require more <i>persuasion</i> to break [target.p_them()] to your will!"))
 				else
@@ -312,6 +317,7 @@
 	if(bloodsuckerdatum && bloodsuckerdatum.attempt_turn_vassal(target))
 		if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
 			remove_loyalties(target)
+		n_vassal += 1
 		SEND_SIGNAL(bloodsuckerdatum.my_clan, BLOODSUCKER_MADE_VASSAL, bloodsuckerdatum)
 		user.playsound_local(null, 'sound/effects/explosion_distant.ogg', 40, TRUE)
 		target.playsound_local(null, 'sound/effects/explosion_distant.ogg', 40, TRUE)

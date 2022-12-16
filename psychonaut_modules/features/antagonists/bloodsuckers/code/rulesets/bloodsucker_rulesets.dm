@@ -17,7 +17,7 @@
 	)
 	restricted_roles = list("AI", "Cyborg")
 	required_candidates = 1
-	weight = 4
+	weight = 3
 	cost = 10
 	scaling_cost = 9
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
@@ -64,7 +64,7 @@
 	)
 	restricted_roles = list("AI","Cyborg", "Positronic Brain")
 	required_candidates = 1
-	weight = 4
+	weight = 3
 	cost = 10
 	requirements = list(40,30,20,10,10,10,10,10,10,10)
 	repeatable = FALSE
@@ -112,7 +112,7 @@
 	)
 	restricted_roles = list("AI","Cyborg")
 	required_candidates = 1
-	weight = 4
+	weight = 3
 	cost = 10
 	requirements = list(10,10,10,10,10,10,10,10,10,10)
 	repeatable = FALSE

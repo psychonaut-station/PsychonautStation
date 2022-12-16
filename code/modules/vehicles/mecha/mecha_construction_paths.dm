@@ -375,26 +375,11 @@
 	circuit_control = /obj/item/circuitboard/mecha/decouverte/main
 	circuit_periph = /obj/item/circuitboard/mecha/decouverte/peripherals
 
-	inner_plating=/obj/item/stack/sheet/plasteel
+	inner_plating = /obj/item/stack/sheet/iron
 	inner_plating_amount = 5
 
-	outer_plating=/obj/item/stack/sheet/bluespace_crystal
+	outer_plating = /obj/item/stack/sheet/plasteel
 	outer_plating_amount = 5
-
-/datum/component/construction/mecha/decouverte/get_outer_plating_steps()
-	return list(
-		list(
-			"key" = /obj/item/stack/sheet/bluespace_crystal,
-			"amount" = 5,
-			"back_key" = TOOL_WELDER,
-			"desc" = "Outer Plating is welded."
-		),
-		list(
-			"key" = TOOL_WELDER,
-			"back_key" = TOOL_WIRECUTTER,
-			"desc" = "Cockpit wire screen is installed."
-		),
-	)
 
 //GYGAX
 /datum/component/construction/unordered/mecha_chassis/gygax

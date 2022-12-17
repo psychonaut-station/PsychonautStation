@@ -5,7 +5,7 @@
 /datum/uplink_item/stealthy_tools/taeclowndo_shoes
 	name = "Tae-clown-do Shoes"
 	desc = "A pair of shoes for the most elite agents of the honkmotherland. They grant the mastery of taeclowndo with some honk-fu moves as long as they're worn."
-	cost = 8
+	cost = 6
 	progression_minimum = 15 MINUTES
 	item = /obj/item/clothing/shoes/clown_shoes/taeclowndo
 	purchasable_from = UPLINK_CLOWN_OPS
@@ -14,7 +14,7 @@
 /datum/uplink_item/role_restricted/taeclowndo_shoes
 	name = "Tae-clown-do Shoes"
 	desc = "A pair of shoes for the most elite agents of the honkmotherland. They grant the mastery of taeclowndo with some honk-fu moves as long as they're worn."
-	cost = 8
+	cost = 6
 	progression_minimum = 15 MINUTES
 	item = /obj/item/clothing/shoes/clown_shoes/taeclowndo
 	restricted_roles = list(JOB_CLOWN)

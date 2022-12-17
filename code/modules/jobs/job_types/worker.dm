@@ -3,8 +3,8 @@
 	description = "Amelelik yap, murettebatin istedigi yapi islerini yap, adiyaman tutun sarma ic, muhendislere racon kes."
 	department_head = list(JOB_CHIEF_ENGINEER)
 	faction = FACTION_STATION
-	total_positions = 3
-	spawn_positions = 3
+	total_positions = 2
+	spawn_positions = 2
 	supervisors = "the chief engineer"
 	selection_color = "#fff5cc"
 	exp_requirements = 10

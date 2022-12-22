@@ -57,7 +57,6 @@
 				/obj/item/clothing/suit/costume/gothcoat = 1,
 			),
 		),
-		),
 		list(
 			"name" = "Supernatural",
 			"icon" = "hand-sparkles",
@@ -76,7 +75,6 @@
 				/obj/item/clothing/suit/costume/shrine_maiden = 1,
 				/obj/item/gohei = 1,
 			),
-		),
 		),
 		list(
 			"name" = "Entertainers",
@@ -106,7 +104,6 @@
 				/obj/item/clothing/under/suit/white_on_white = 1,
 			),
 		),
-		),
 		list(
 			"name" = "Fancy",
 			"icon" = "user-tie",
@@ -132,7 +129,6 @@
 				/obj/item/clothing/suit/costume/cheongsam_blue = 1,
 			),
 		),
-		),
 		list(
 			"name" = "Animals",
 			"icon" = "paw",
@@ -157,7 +153,6 @@
 				/obj/item/clothing/mask/animal/horsehead = 1,
 			),
 		),
-		),
 		list(
 			"name" = "Service",
 			"icon" = "kitchen-set",
@@ -175,7 +170,6 @@
 				/obj/item/clothing/under/rank/civilian/janitor/maid = 1,
 				/obj/item/clothing/accessory/maidapron = 1,
 			),
-		),
 		),
 		list(
 			"name" = "Other",

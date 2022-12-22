@@ -7751,6 +7751,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"psychonaut-ui-patches@workspace:packages/psychonaut-ui-patches":
+  version: 0.0.0-use.local
+  resolution: "psychonaut-ui-patches@workspace:packages/psychonaut-ui-patches"
+  dependencies:
+    "@popperjs/core": ^2.9.3
+    common: "workspace:*"
+    dateformat: ^4.5.1
+    dompurify: ^2.3.1
+    inferno: ^7.4.8
+    inferno-vnode-flags: ^7.4.8
+    js-yaml: ^4.1.0
+    marked: ^4.0.10
+    tgui: "workspace:*"
+    tgui-dev-server: "workspace:*"
+    tgui-polyfill: "workspace:*"
+  languageName: unknown
+  linkType: soft
+
 "punycode@npm:^2.1.0, punycode@npm:^2.1.1":
   version: 2.1.1
   resolution: "punycode@npm:2.1.1"

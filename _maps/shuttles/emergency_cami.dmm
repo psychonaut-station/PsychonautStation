@@ -1,0 +1,1167 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aa" = (
+/turf/open/floor/plating/airless,
+/area/shuttle/escape)
+"ab" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"ac" = (
+/turf/closed/wall/mineral/silver,
+/area/shuttle/escape)
+"ad" = (
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"ae" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"af" = (
+/obj/structure/table/bronze,
+/obj/item/radio/intercom/chapel,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"am" = (
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"aT" = (
+/obj/effect/turf_decal/siding/dark_blue,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"aW" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/docking_port/mobile/emergency{
+	name = "Delta emergency shuttle";
+	port_direction = 4;
+	preferred_direction = 2
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"bt" = (
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"bu" = (
+/turf/template_noop,
+/area/template_noop)
+"bC" = (
+/obj/structure/rack,
+/obj/machinery/light/directional/north,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"bY" = (
+/turf/closed/wall/mineral/iron,
+/area/shuttle/escape)
+"cX" = (
+/obj/structure/rack,
+/obj/machinery/light/directional/north,
+/turf/closed/wall/mineral/silver,
+/area/shuttle/escape)
+"dv" = (
+/obj/structure/closet/crate/trashcart/filled,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"dO" = (
+/obj/structure/table,
+/obj/item/restraints/handcuffs/cable/white,
+/obj/item/restraints/handcuffs/cable/white,
+/obj/item/restraints/handcuffs/cable/white,
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"gd" = (
+/obj/machinery/light/directional/north,
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"gw" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"gY" = (
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"hk" = (
+/obj/structure/sink/kitchen/directional/east,
+/obj/structure/chair/stool/bamboo,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"hv" = (
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"hB" = (
+/obj/effect/turf_decal/siding/brown/end,
+/turf/open/floor/carpet/lone/star,
+/area/shuttle/escape)
+"jX" = (
+/obj/structure/chair/stool/bamboo,
+/obj/structure/sink/kitchen/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"kL" = (
+/obj/structure/window/reinforced/fulltile,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"lz" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"mX" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 8
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"of" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 10
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"on" = (
+/obj/structure/kitchenspike,
+/obj/item/knife/butcher,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"oT" = (
+/obj/effect/spawner/random/structure/crate,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"oX" = (
+/obj/vehicle/ridden/janicart/upgraded,
+/obj/item/key/janitor,
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"pg" = (
+/obj/machinery/door/airlock/shuttle{
+	name = "Emergency Shuttle Airlock"
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/iron/white,
+/area/shuttle/escape/brig)
+"pp" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"pw" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark_blue,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"sj" = (
+/obj/structure/rack,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"sr" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"sJ" = (
+/obj/machinery/door/airlock/silver,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"tF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"tJ" = (
+/mob/living/basic/cow,
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 6
+	},
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"uk" = (
+/obj/effect/decal/cleanable/ants,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"uO" = (
+/obj/machinery/light/directional/east,
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"vG" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"xi" = (
+/obj/machinery/power/shuttle_engine/heater,
+/obj/structure/window/reinforced{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/shuttle/escape)
+"yB" = (
+/obj/structure/closet/crate/decorations,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"yG" = (
+/obj/effect/turf_decal/siding/wood/end,
+/obj/machinery/light/directional/north,
+/obj/machinery/computer/emergency_shuttle,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"yY" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sink/kitchen/directional/west,
+/obj/structure/chair/stool/bamboo,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"zQ" = (
+/obj/structure/table,
+/obj/item/reagent_containers/spray,
+/obj/item/reagent_containers/cup/glass/bottle/holywater,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"zZ" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 4
+	},
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"AY" = (
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"Bx" = (
+/turf/open/floor/iron/stairs/old,
+/area/shuttle/escape)
+"BF" = (
+/obj/structure/sink/kitchen/directional/west,
+/obj/structure/chair/stool/bamboo,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"CE" = (
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"Dh" = (
+/obj/machinery/light/directional/south,
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"Du" = (
+/obj/machinery/scanner_gate/cami_shuttle,
+/turf/open/floor/carpet,
+/area/shuttle/escape)
+"El" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"Fv" = (
+/obj/machinery/light/directional/east,
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"FP" = (
+/obj/effect/turf_decal/siding/wood/end,
+/obj/item/megaphone,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"Ij" = (
+/obj/item/radio/intercom/chapel,
+/turf/closed/wall/mineral/silver,
+/area/shuttle/escape)
+"IE" = (
+/obj/effect/turf_decal/siding/blue/end{
+	dir = 1
+	},
+/turf/open/floor/carpet/cyan,
+/area/shuttle/escape)
+"IJ" = (
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"Jv" = (
+/obj/structure/chair/greyscale{
+	dir = 4
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"JM" = (
+/obj/effect/turf_decal/siding/dark_blue{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/dark_blue,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"JO" = (
+/obj/machinery/light/directional/east,
+/obj/structure/chair/stool/bamboo,
+/obj/structure/sink/kitchen/directional/west,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"JU" = (
+/obj/machinery/light/directional/south,
+/obj/structure/table,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"Ls" = (
+/obj/structure/rack,
+/obj/machinery/light/directional/south,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"NK" = (
+/obj/effect/decal/cleanable/blood/tracks{
+	dir = 8
+	},
+/obj/machinery/light/small/directional,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"OS" = (
+/obj/structure/closet/crate/critter,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"PT" = (
+/obj/machinery/light/directional/north,
+/obj/structure/chair/greyscale{
+	dir = 8
+	},
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"PV" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/red,
+/area/shuttle/escape)
+"QE" = (
+/obj/structure/kitchenspike,
+/mob/living/basic/sheep,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"Rt" = (
+/obj/structure/bed/maint,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+"TW" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"Uh" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on{
+	dir = 1
+	},
+/turf/open/floor/wood,
+/area/shuttle/escape)
+"UC" = (
+/turf/open/floor/carpet,
+/area/shuttle/escape)
+"Vg" = (
+/obj/structure/chair/stool/bamboo,
+/obj/structure/sink/kitchen/directional/east,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"Vt" = (
+/obj/machinery/door/airlock/maintenance_hatch,
+/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/turf/open/floor/iron/smooth,
+/area/shuttle/escape/brig)
+"VL" = (
+/obj/item/soap,
+/obj/item/mop,
+/obj/item/reagent_containers/cup/bucket,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"VR" = (
+/turf/closed/wall/mineral/gold,
+/area/shuttle/escape)
+"VV" = (
+/obj/machinery/light/directional/north,
+/obj/structure/sink/kitchen/directional/east,
+/obj/structure/chair/stool/bamboo,
+/turf/open/floor/iron/showroomfloor,
+/area/shuttle/escape)
+"Ws" = (
+/obj/effect/turf_decal/siding/brown/end{
+	dir = 1
+	},
+/turf/open/floor/carpet/lone/star,
+/area/shuttle/escape)
+"Wy" = (
+/obj/machinery/power/shuttle_engine/huge,
+/turf/open/floor/plating/airless,
+/area/shuttle/escape)
+"Xt" = (
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"XV" = (
+/obj/effect/turf_decal/siding/blue/end,
+/turf/open/floor/carpet/cyan,
+/area/shuttle/escape)
+"YP" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/carpet/blue,
+/area/shuttle/escape)
+"Zt" = (
+/obj/structure/closet/crate/freezer,
+/turf/open/floor/plating,
+/area/shuttle/escape)
+
+(1,1,1) = {"
+bu
+bu
+bu
+bu
+bu
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+aW
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+pg
+ac
+bu
+bu
+bu
+bu
+bu
+"}
+(2,1,1) = {"
+bu
+bu
+bu
+bu
+bu
+ac
+VV
+Vg
+Vg
+hk
+VL
+ac
+cX
+TW
+tF
+Uh
+Ls
+ac
+gd
+Jv
+gY
+vG
+gw
+ac
+bu
+bu
+bu
+bu
+bu
+"}
+(3,1,1) = {"
+bu
+bu
+bu
+bu
+bu
+ac
+ad
+ad
+ad
+ad
+ad
+sJ
+IJ
+TW
+tF
+Uh
+IJ
+Vt
+bt
+bt
+bt
+bt
+bt
+kL
+bu
+bu
+bu
+bu
+bu
+"}
+(4,1,1) = {"
+bu
+bu
+bu
+bu
+bu
+ac
+ad
+ad
+ad
+ad
+ad
+ac
+sj
+TW
+tF
+Uh
+sj
+ac
+bt
+bt
+bt
+bt
+bt
+ac
+bu
+bu
+bu
+bu
+bu
+"}
+(5,1,1) = {"
+bu
+bu
+bu
+bu
+bu
+ac
+yY
+jX
+JO
+BF
+JU
+ac
+bC
+UC
+UC
+UC
+Ls
+ac
+PT
+CE
+uO
+dO
+zQ
+ac
+bu
+bu
+bu
+bu
+bu
+"}
+(6,1,1) = {"
+bu
+bu
+ac
+kL
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+Du
+Du
+Du
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+ac
+kL
+bY
+bY
+bY
+bY
+"}
+(7,1,1) = {"
+bu
+ac
+ac
+am
+ab
+am
+am
+ab
+am
+am
+ab
+am
+ab
+am
+am
+am
+ab
+am
+am
+ab
+am
+am
+ac
+AY
+dv
+xi
+aa
+aa
+Wy
+"}
+(8,1,1) = {"
+ac
+ac
+PV
+am
+am
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+lz
+AY
+uk
+xi
+aa
+aa
+aa
+"}
+(9,1,1) = {"
+ac
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+Dh
+ac
+AY
+AY
+xi
+aa
+aa
+aa
+"}
+(10,1,1) = {"
+kL
+am
+am
+am
+am
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+ac
+AY
+AY
+bY
+bY
+bY
+bY
+"}
+(11,1,1) = {"
+ac
+oX
+am
+am
+am
+am
+am
+Fv
+Fv
+am
+am
+am
+am
+Fv
+Fv
+am
+am
+am
+am
+Fv
+Fv
+am
+ac
+oT
+AY
+bY
+bY
+bu
+bu
+"}
+(12,1,1) = {"
+ac
+ac
+ac
+mX
+JM
+am
+Dh
+ac
+ac
+PV
+Ws
+hB
+Dh
+ac
+Ij
+PV
+Ws
+hB
+Dh
+ac
+ac
+PV
+ac
+Zt
+AY
+bY
+bu
+bu
+bu
+"}
+(13,1,1) = {"
+ac
+ac
+af
+Xt
+aT
+am
+am
+ab
+ab
+am
+am
+am
+am
+ab
+ab
+am
+am
+am
+am
+ab
+ab
+am
+ac
+hv
+of
+kL
+bu
+bu
+bu
+"}
+(14,1,1) = {"
+VR
+ae
+Xt
+Xt
+aT
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+ac
+on
+NK
+bY
+bu
+bu
+bu
+"}
+(15,1,1) = {"
+VR
+YP
+IE
+XV
+aT
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+Dh
+ac
+pp
+tJ
+kL
+bu
+bu
+bu
+"}
+(16,1,1) = {"
+VR
+El
+Xt
+Xt
+aT
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+ac
+QE
+AY
+bY
+bu
+bu
+bu
+"}
+(17,1,1) = {"
+ac
+ac
+Xt
+Xt
+aT
+am
+am
+Fv
+Fv
+am
+am
+am
+am
+Fv
+Fv
+am
+am
+am
+am
+Fv
+Fv
+am
+ac
+OS
+AY
+kL
+bu
+bu
+bu
+"}
+(18,1,1) = {"
+ac
+ac
+ac
+zZ
+pw
+am
+Dh
+ac
+ac
+PV
+Ws
+hB
+Dh
+ac
+Ij
+PV
+Ws
+hB
+Dh
+ac
+ac
+PV
+ac
+OS
+Rt
+bY
+bu
+bu
+bu
+"}
+(19,1,1) = {"
+ac
+yG
+FP
+Bx
+Bx
+am
+am
+ab
+ab
+am
+am
+am
+am
+ab
+ab
+am
+am
+am
+am
+ab
+ab
+am
+ac
+OS
+AY
+bY
+bY
+bu
+bu
+"}
+(20,1,1) = {"
+kL
+sr
+sr
+sr
+sr
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+ac
+uk
+yB
+bY
+bY
+bY
+bY
+"}
+(21,1,1) = {"
+ac
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+am
+Dh
+ac
+AY
+AY
+xi
+aa
+aa
+Wy
+"}
+(22,1,1) = {"
+ac
+ac
+PV
+am
+am
+am
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+Ws
+hB
+am
+lz
+AY
+AY
+xi
+aa
+aa
+aa
+"}
+(23,1,1) = {"
+bu
+ac
+ac
+am
+Fv
+am
+am
+Fv
+am
+am
+Fv
+am
+am
+Fv
+am
+am
+Fv
+am
+am
+Fv
+am
+am
+ac
+Rt
+AY
+xi
+aa
+aa
+aa
+"}
+(24,1,1) = {"
+bu
+bu
+ac
+kL
+ac
+ac
+kL
+ac
+ac
+kL
+ac
+ac
+kL
+ac
+ac
+kL
+ac
+ac
+kL
+ac
+ac
+kL
+ac
+kL
+kL
+bY
+bY
+bY
+bY
+"}

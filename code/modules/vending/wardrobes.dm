@@ -30,6 +30,7 @@
 		/obj/item/clothing/under/rank/security/officer/grey = 3,
 		/obj/item/clothing/under/pants/slacks = 3,
 		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
+		/obj/item/clothing/mask/gas/ghost_mask = 1,
 		)
 	premium = list(
 		/obj/item/clothing/under/rank/security/officer/formal = 3,

@@ -19,6 +19,8 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
+	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -89,7 +91,7 @@
 /mob/living/silicon/robot/model/syndicate/Initialize(mapload)
 	. = ..()
 	laws = new /datum/ai_laws/syndicate_override()
-	addtimer(CALLBACK(src, PROC_REF(show_playstyle)), 5)
+	addtimer(CALLBACK(src, PROC_REF(show_playstyle), 5))
 
 /mob/living/silicon/robot/model/syndicate/create_modularInterface()
 	if(!modularInterface)
@@ -465,6 +467,12 @@
 		smash_headlamp()
 	return COMPONENT_BLOCK_LIGHT_EATER
 
+/mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
+	SIGNAL_HANDLER
+	if (icon_state == "uWu_borg")
+		icon_state = "uWu_borg_rage"
+	else if (icon_state == "uWu_borg_rage")
+		icon_state = "uWu_borg"
 
 /**
  * Handles headlamp smashing

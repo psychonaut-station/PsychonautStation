@@ -25,7 +25,7 @@
 
 /obj/item/clothing/neck/cloak/hos/special
 	name = "special cloak"
-	desc = "Mal hüseyin. Derdimi açikliyorum? Senin dostum dediğin fake insanlar senin iktiri oktan dertlerini dinlerken müge anliya mi benziyor"
+	desc = "Hüseyin kim?"
 	icon_state = "hoscloakspecial"
 
 /obj/item/clothing/neck/cloak/qm

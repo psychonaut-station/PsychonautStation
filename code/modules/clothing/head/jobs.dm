@@ -143,8 +143,8 @@
 	strip_delay = 80
 
 /obj/item/clothing/head/hats/hos/special
-	name = "head of security cap"
-	desc = "A black hat with a golden moon. En iyiler için."
+	name = "special cap"
+	desc = "Mal hüseyin. Derdimi açikliyorum? Senin dostum dediğin fake insanlar senin iktiri oktan dertlerini dinlerken müge anliya mi benziyor"
 	icon_state = "hoscapspecial"
 
 /obj/item/clothing/head/hats/hos/syndicate

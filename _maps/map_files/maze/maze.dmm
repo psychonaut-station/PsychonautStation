@@ -312,9 +312,6 @@
 "AV" = (
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
-"Bs" = (
-/turf/open/space/basic,
-/area/station/maintenance/fore/greater)
 "Cm" = (
 /obj/structure/closet,
 /obj/item/crowbar,
@@ -441645,7 +441642,7 @@ IC
 IC
 IC
 IC
-Bs
+yP
 yP
 yP
 yP

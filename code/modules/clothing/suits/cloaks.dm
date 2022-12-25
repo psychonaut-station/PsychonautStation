@@ -23,11 +23,6 @@
 	desc = "Worn by Securistan, ruling the station with an iron fist."
 	icon_state = "hoscloak"
 
-/obj/item/clothing/neck/cloak/hos/special
-	name = "special cloak"
-	desc = "Hüseyin kim?"
-	icon_state = "hoscloakspecial"
-
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
 	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."

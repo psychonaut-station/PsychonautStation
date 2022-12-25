@@ -104,7 +104,7 @@
 
 /obj/item/clothing/suit/armor/hos/special
 	name = "special armored jacket"
-	desc = "Mal hüseyin. Derdimi açikliyorum? Senin dostum dediğin fake insanlar senin iktiri oktan dertlerini dinlerken müge anliya mi benziyor"
+	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
 	icon_state = "hosjacketspecial"
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter

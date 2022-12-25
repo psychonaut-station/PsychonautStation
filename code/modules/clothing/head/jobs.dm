@@ -144,7 +144,7 @@
 
 /obj/item/clothing/head/hats/hos/special
 	name = "special cap"
-	desc = "Mal hüseyin. Derdimi açikliyorum? Senin dostum dediğin fake insanlar senin iktiri oktan dertlerini dinlerken müge anliya mi benziyor"
+	desc = "A hat with a golden moon."
 	icon_state = "hoscapspecial"
 
 /obj/item/clothing/head/hats/hos/syndicate

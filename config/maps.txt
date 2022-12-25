@@ -42,9 +42,6 @@ endmap
 map maze
 endmap
 
-map yrk
-endmap
-
 map runtimestation
 endmap
 

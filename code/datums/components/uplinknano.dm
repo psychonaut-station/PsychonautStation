@@ -1,3 +1,4 @@
+#define PEN_ROTATIONS 2
 
 /**
  * Uplinks

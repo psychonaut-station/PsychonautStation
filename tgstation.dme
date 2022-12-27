@@ -4051,6 +4051,7 @@
 #include "code\modules\ninja\ninja_stars.dm"
 #include "code\modules\ninja\ninjaDrainAct.dm"
 #include "code\modules\ninja\outfit.dm"
+#include "code\modules\ntagent\outfit.dm"
 #include "code\modules\NTNet\netdata.dm"
 #include "code\modules\NTNet\network.dm"
 #include "code\modules\NTNet\relays.dm"

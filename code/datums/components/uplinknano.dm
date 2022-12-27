@@ -34,7 +34,7 @@
 	var/unlock_text
 	/// The unlock note that is sent to the traitor with this uplink. This is not modular and not recommended to expand upon
 	var/unlock_note
-	/// The failsafe code that causes this uplink to blow up.
+	/// The failsafe code that causes this uplink to blow up
 	var/failsafe_code
 
 /datum/component/nanouplink/Initialize(

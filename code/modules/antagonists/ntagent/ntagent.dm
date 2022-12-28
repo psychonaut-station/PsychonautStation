@@ -5,7 +5,8 @@
 	show_name_in_check_antagonists = TRUE
 	job_rank = ROLE_NT_AGENT
 	show_to_ghosts = FALSE
-	preview_outfit = /datum/outfit/ntagent_preview
+	antag_moodlet = /datum/mood_event/focused
+	preview_outfit = /datum/outfit/ntagent
 	suicide_cry = "Syndicate i sikeyim!!!"
 
 /datum/antagonist/ntagent/on_gain()
@@ -32,14 +33,14 @@
 /datum/antagonist/ntagent/proc/give_mindshield(mob/living/carbon/human/ntagent = owner.current)
 	ADD_TRAIT(ntagent, TRAIT_MINDSHIELD, ROUNDSTART_TRAIT)
 
-/datum/outfit/ntagent_preview
+/datum/outfit/ntagent
 	name = "Nanotrasen Agent (Preview Only)"
-
+	implants = list(/obj/item/implant/explosive,/obj/item/implant/nanouplink/starting)
 	back = /obj/item/mod/control/pre_equipped/empty/ntagentmod
 	l_hand = /obj/item/gun/energy/e_gun/advtaser
 	r_hand = /obj/item/melee/energy/sword/saber/blue
 
-/datum/outfit/ntagent_preview/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/ntagent/post_equip(mob/living/carbon/human/H, visualsOnly)
 	var/obj/item/mod/module/armor_booster/booster = locate() in H.back
 	booster.active = TRUE
 	H.update_worn_back()

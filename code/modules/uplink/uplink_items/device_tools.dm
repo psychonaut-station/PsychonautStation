@@ -54,6 +54,7 @@
 			of the originals, these inferior copies are still quite useful, being able to provide \
 			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
 	item = /obj/item/storage/book/bible/syndicate
+	purchasable_from = ~UPLINK_NANO
 	cost = 5
 
 /datum/uplink_item/device_tools/thermal

@@ -428,6 +428,14 @@
 		new /obj/item/grenade/empgrenade(src)
 	new /obj/item/implanter/emp(src)
 
+/obj/item/storage/box/nano_kit/ms
+	name = "Mindshield kit"
+
+/obj/item/storage/box/nano_kit/ms/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/implantcase/mindshield(src)
+	new /obj/item/implanter/mindshield(src)
+
 /obj/item/storage/box/nano_kit/smg
 	name = "SMG kit"
 

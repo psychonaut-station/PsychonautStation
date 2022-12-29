@@ -1,3 +1,4 @@
+/**
 import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
@@ -16,3 +17,4 @@ const MonsterHunter: Antagonist = {
 };
 
 export default MonsterHunter;
+ */

@@ -189,7 +189,7 @@
 /obj/item/mod/control/pre_equipped/ntagentmod
 	theme = /datum/mod_theme/ntagent
 	applied_cell = /obj/item/stock_parts/cell/super
-	initial_modules = list(
+	applied_modules = list(
 		/obj/item/mod/module/storage/bluespace,
 		/obj/item/mod/module/flamethrower,
 		/obj/item/mod/module/jetpack,

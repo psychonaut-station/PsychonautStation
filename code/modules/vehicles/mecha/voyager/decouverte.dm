@@ -6,7 +6,7 @@
 	max_temperature = 65000
 	max_integrity = 350
 	lights_power = 7
-	armor = list(MELEE = 40, BULLET = 40, LASER = 20, ENERGY = 30, BOMB = 60, BIO = 0, FIRE = 100, ACID = 100) //Uzaydaki "etkenlerden"(daha görmeden ateş eden syndicate gemisi taretleri, revolverlı npc'ler) tek yememesi için orta seviye zırh.
+	armor_type = /datum/armor/mecha_decouverte
 	equip_by_category = list(
 		MECHA_L_ARM = null,
 		MECHA_R_ARM = null,
@@ -31,6 +31,15 @@
 	var/bas_frene = 4
 
 
+/datum/armor/mecha_decouverte
+	melee = 40
+	bullet = 40
+	laser = 20
+	energy = 30
+	bomb = 60
+	bio = 0
+	fire = 100
+	acid = 100
 
 /obj/vehicle/sealed/mecha/voyager/decouverte/Move()
 	. = ..()

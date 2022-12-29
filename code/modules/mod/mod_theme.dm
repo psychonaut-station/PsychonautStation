@@ -940,7 +940,7 @@
 		against every kind of danger in the galaxy, Upon further examination you can see on the inside of the suit, \
 		there is a small logo that reads: Nt."
 	default_skin = "nt"
-	armor = list(MELEE = 20, BULLET = 15, LASER = 20, ENERGY = 15, BOMB = 40, BIO = 100, FIRE = 50, ACID = 85, WOUND = 20)
+	armor_type = /datum/armor/mod_theme_ntagent
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
@@ -987,6 +987,17 @@
 			),
 		),
 	)
+/datum/armor/mod_theme_ntagent
+	melee = 20
+	bullet = 15
+	laser = 20
+	energy = 15
+	bomb = 40
+	bio = 100
+	fire = 50
+	acid = 85
+	wound = 20
+
 /datum/mod_theme/syndicate
 	name = "syndicate"
 	desc = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Spinward Stellar."

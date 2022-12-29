@@ -44,6 +44,9 @@
 /obj/item/clothing/suit/armor/vest/alt/sec
 	icon_state = "armor_sec"
 
+/obj/item/clothing/suit/armor/vest/alt/brig_physician
+	icon_state = "armor_bp"
+
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"
 	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."
@@ -129,6 +132,11 @@
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 80
+
+/obj/item/clothing/suit/armor/hos/special
+	name = "special armored jacket"
+	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
+	icon_state = "hosjacketspecial"
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter trenchcoat"

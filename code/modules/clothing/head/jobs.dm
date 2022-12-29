@@ -181,6 +181,11 @@
 	acid = 60
 	wound = 10
 
+/obj/item/clothing/head/hats/hos/special
+	name = "special cap"
+	desc = "A hat with a golden moon."
+	icon_state = "hoscapspecial"
+
 /obj/item/clothing/head/hats/hos/syndicate
 	name = "syndicate cap"
 	desc = "A black cap fit for a high ranking syndicate officer."

@@ -20,6 +20,11 @@
 	fire = 50
 	acid = 50
 
+/obj/item/clothing/head/hats/booniehat
+	name = "boonie hat"
+	icon_state = "booniehat"
+	desc = "Seems really pricey."
+
 /obj/item/clothing/head/costume/constable
 	name = "constable helmet"
 	desc = "A british looking helmet."

@@ -175,6 +175,8 @@
 		/mob/living/simple_animal/hostile/guardian/gravitokinetic,
 		/mob/living/simple_animal/hostile/guardian/lightning,
 		/mob/living/simple_animal/hostile/guardian/protector,
+		/mob/living/simple_animal/hostile/guardian/punch,
+		// /mob/living/simple_animal/hostile/guardian/punch/timestop,
 		/mob/living/simple_animal/hostile/guardian/ranged,
 		/mob/living/simple_animal/hostile/guardian/standard,
 		/mob/living/simple_animal/hostile/guardian/support,

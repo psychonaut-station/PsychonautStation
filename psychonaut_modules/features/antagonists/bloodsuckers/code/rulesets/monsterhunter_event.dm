@@ -58,7 +58,6 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_PUG,
 		ROLE_POSITRONIC_BRAIN,
 	)
 	required_candidates = 1

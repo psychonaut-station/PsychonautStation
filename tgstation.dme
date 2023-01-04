@@ -3390,6 +3390,7 @@
 #include "code\modules\jobs\job_types\positronic_brain.dm"
 #include "code\modules\jobs\job_types\prisoner.dm"
 #include "code\modules\jobs\job_types\psychologist.dm"
+#include "code\modules\jobs\job_types\pug.dm"
 #include "code\modules\jobs\job_types\quartermaster.dm"
 #include "code\modules\jobs\job_types\research_director.dm"
 #include "code\modules\jobs\job_types\roboticist.dm"

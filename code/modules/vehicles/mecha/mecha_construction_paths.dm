@@ -357,30 +357,6 @@
 		),
 	)
 
-//ABUZER MECH (DECOUVERTE)
-/datum/component/construction/unordered/mecha_chassis/decouverte
-	result = /datum/component/construction/mecha/decouverte
-	steps = list(
-		/obj/item/mecha_parts/part/decouverte_torso,
-		/obj/item/mecha_parts/part/decouverte_left_arm,
-		/obj/item/mecha_parts/part/decouverte_right_arm,
-		/obj/item/mecha_parts/part/decouverte_left_leg,
-		/obj/item/mecha_parts/part/decouverte_right_leg
-	)
-
-/datum/component/construction/mecha/decouverte
-	result = /obj/vehicle/sealed/mecha/voyager/decouverte
-	base_icon = "decouverte"
-
-	circuit_control = /obj/item/circuitboard/mecha/decouverte/main
-	circuit_periph = /obj/item/circuitboard/mecha/decouverte/peripherals
-
-	inner_plating = /obj/item/stack/sheet/iron
-	inner_plating_amount = 5
-
-	outer_plating = /obj/item/stack/sheet/plasteel
-	outer_plating_amount = 5
-
 //GYGAX
 /datum/component/construction/unordered/mecha_chassis/gygax
 	result = /datum/component/construction/mecha/gygax

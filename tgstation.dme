@@ -1656,7 +1656,6 @@
 #include "code\game\objects\effects\temporary_visuals\projectiles\projectile_effects.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\tracer.dm"
 #include "code\game\objects\items\airlock_painter.dm"
-#include "code\game\objects\items\announcer.dm"
 #include "code\game\objects\items\apc_frame.dm"
 #include "code\game\objects\items\binoculars.dm"
 #include "code\game\objects\items\blueprints.dm"

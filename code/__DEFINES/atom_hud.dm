@@ -95,7 +95,6 @@
 #define SECHUD_CLOWN "hudclown"
 #define SECHUD_COOK "hudcook"
 #define SECHUD_CURATOR "hudcurator"
-#define SECHUD_JOURNALIST "hudjournalist"
 #define SECHUD_DETECTIVE "huddetective"
 #define SECHUD_GENETICIST "hudgeneticist"
 #define SECHUD_HEAD_OF_PERSONNEL "hudheadofpersonnel"

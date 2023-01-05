@@ -17,19 +17,20 @@ SUBSYSTEM_DEF(discord_chatter)
 	var/list/json = json_decode(file2text(json_file))
 	poly_speech = json["phrases"]
 
-	if(isnull(poly_speech) || !poly_speech.len)
-		return SS_INIT_FAILURE
-
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/discord_chatter/fire()
-	var/webhook = CONFIG_GET(string/discord_chatter_webhook_url)
+	if(isnull(poly_speech) || !poly_speech.len)
+		return
 
 	var/list/webhook_info = list()
 	webhook_info["content"] = pick(poly_speech)
 
 	var/list/headers = list()
 	headers["Content-Type"] = "application/json"
+	
+	var/webhook = CONFIG_GET(string/discord_chatter_webhook_url)
+
 	var/datum/http_request/request = new()
 	request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/subsys_discord_chatter.json")
 	request.begin_async()

@@ -6,7 +6,7 @@
 	job_rank = ROLE_NT_AGENT
 	show_to_ghosts = FALSE
 	antag_moodlet = /datum/mood_event/focused
-	preview_outfit = /datum/outfit/ntagent
+	preview_outfit = /datum/outfit/ntagent/preview
 	suicide_cry = "Syndicate i sikeyim!!!"
 
 /datum/antagonist/ntagent/on_gain()
@@ -36,11 +36,14 @@
 /datum/outfit/ntagent
 	name = "Nanotrasen Agent"
 	implants = list(/obj/item/implant/explosive,/obj/item/implant/nanouplink/starting)
+
+/datum/outfit/ntagent/preview
+	name = "Nanotrasen Agent (Preview Only)"
 	back = /obj/item/mod/control/pre_equipped/empty/ntagentmod
 	l_hand = /obj/item/gun/energy/e_gun/advtaser
 	r_hand = /obj/item/melee/energy/sword/saber/blue
 
-/datum/outfit/ntagent/post_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/ntagent/preview/post_equip(mob/living/carbon/human/H, visualsOnly)
 	var/obj/item/mod/module/armor_booster/booster = locate() in H.back
 	booster.active = TRUE
 	H.update_worn_back()

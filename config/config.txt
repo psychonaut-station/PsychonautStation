@@ -636,4 +636,8 @@ PR_ANNOUNCEMENTS_PER_ROUND 5
 ## Enables Discord Chatter subsystem, which is basically a Poly in Discord
 #DISCORD_CHATTER
 
+# HTTPS URL of webhook
 DISCORD_CHATTER_WEBHOOK_URL 
+
+# Real time dependant tickrate
+DISCORD_CHATTER_TICKRATE 1200

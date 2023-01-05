@@ -8,11 +8,11 @@ SUBSYSTEM_DEF(discord_chatter)
 
 /datum/controller/subsystem/discord_chatter/Initialize()
 	if (!CONFIG_GET(flag/discord_chatter))
-		return SS_INIT_FAILURE
+		return SS_INIT_NO_NEED
 
 	var/json_file = file("data/npc_saves/Poly.json")
 	if(!fexists(json_file))
-		return SS_INIT_FAILURE
+		return SS_INIT_NO_NEED
 
 	var/list/json = json_decode(file2text(json_file))
 	poly_speech = json["phrases"]

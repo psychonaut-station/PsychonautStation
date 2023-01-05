@@ -355,10 +355,6 @@
 /obj/effect/mob_spawn/ghost_role/venus_human_trap,
 /turf/open/indestructible/necropolis/air,
 /area/station/maintenance/fore/greater)
-"Ex" = (
-/mob/living/simple_animal/hostile/retaliate/clown/mutant/glutton,
-/turf/open/floor/mineral/bananium,
-/area/station/maintenance/fore/greater)
 "Fa" = (
 /obj/item/storage/belt/utility/chief/full,
 /obj/item/melee/energy/sword/saber/purple,
@@ -70209,7 +70205,7 @@ VK
 vH
 yS
 xk
-Ex
+vH
 vH
 MG
 yP

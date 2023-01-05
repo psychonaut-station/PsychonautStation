@@ -645,3 +645,7 @@
 	default = 50
 
 /datum/config_entry/string/morgue_cadaver_override_species
+
+/datum/config_entry/flag/discord_chatter
+
+/datum/config_entry/string/discord_chatter_webhook_url

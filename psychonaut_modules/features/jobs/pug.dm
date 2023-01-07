@@ -4,7 +4,7 @@
 	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "your canine desires." //vicirdek
+	supervisors = "your canine desires."
 	selection_color = "#dddddd"
 	spawn_type = /mob/living/basic/pet/dog/pug
 
@@ -19,3 +19,13 @@
 /datum/job/pug/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	spawned.apply_pref_name(/datum/preference/name/pug, player_client)
+
+/datum/preference/name/pug
+	savefile_key = "pug_name"
+
+	explanation = "Pug name"
+	group = "fun"
+	relevant_job = /datum/job/pug
+
+/datum/preference/name/pug/create_default_value()
+	return pick(GLOB.pug_names)

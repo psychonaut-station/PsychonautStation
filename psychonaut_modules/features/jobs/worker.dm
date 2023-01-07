@@ -1,3 +1,27 @@
+/datum/id_trim/job/worker
+	assignment = "Worker"
+	trim_state = "trim_worker"
+	department_color = COLOR_ENGINEERING_ORANGE
+	subdepartment_color = COLOR_ENGINEERING_ORANGE
+	sechud_icon_state = SECHUD_WORKER
+	minimal_access = list(
+		ACCESS_AUX_BASE,
+		ACCESS_CONSTRUCTION,
+		ACCESS_ENGINEERING,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_MECH_ENGINE,
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_TECH_STORAGE)
+	extra_access = list(
+		ACCESS_ENGINE_EQUIP,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CE,
+		ACCESS_CHANGE_IDS)
+	job = /datum/job/worker
+
+
 /datum/job/worker
 	title = JOB_WORKER
 	description = "Amelelik yap, murettebatin istedigi yapi islerini yap, adiyaman tutun sarma ic, muhendislere racon kes."
@@ -78,3 +102,4 @@
 	head = null
 	mask = /obj/item/clothing/mask/breath
 	internals_slot = ITEM_SLOT_SUITSTORE
+

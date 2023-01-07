@@ -17,10 +17,12 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 	)
 	required_candidates = 1
 	weight = 5
@@ -59,8 +61,10 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
+		JOB_PUG,
 		JOB_AI,
 		JOB_CYBORG,
 	)
@@ -155,10 +159,12 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 	)
 	required_candidates = 2
 	weight = 2
@@ -214,10 +220,12 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 	)
 	required_candidates = 1
 	weight = 3
@@ -263,10 +271,12 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 	)
 	required_candidates = 1
 	weight = 3
@@ -384,6 +394,8 @@
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
+		JOB_PUG,
 	)
 	required_candidates = 2
 	weight = 3
@@ -558,6 +570,8 @@
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
+		JOB_PUG,
 	)
 	required_candidates = 3
 	weight = 3

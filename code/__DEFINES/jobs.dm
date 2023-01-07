@@ -33,6 +33,7 @@
 //No department
 #define JOB_ASSISTANT "Assistant"
 #define JOB_PRISONER "Prisoner"
+#define JOB_PUG "Pug"
 //Command
 #define JOB_CAPTAIN "Captain"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
@@ -48,6 +49,7 @@
 #define JOB_WARDEN "Warden"
 #define JOB_DETECTIVE "Detective"
 #define JOB_SECURITY_OFFICER "Security Officer"
+#define JOB_BRIG_PHYSICIAN "Brig Physician"
 #define JOB_SECURITY_OFFICER_MEDICAL "Security Officer (Medical)"
 #define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
@@ -55,6 +57,7 @@
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
+#define JOB_WORKER "Worker"
 //Medical
 #define JOB_MEDICAL_DOCTOR "Medical Doctor"
 #define JOB_PARAMEDIC "Paramedic"

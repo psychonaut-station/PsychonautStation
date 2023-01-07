@@ -83,6 +83,25 @@
 	. = ..()
 	AddComponent(/datum/component/seclite_attachable, light_icon_state = "flight")
 
+/obj/item/clothing/head/helmet/brig_physician
+	name = "medical helmet"
+	desc = "A bulletproof combat helmet designed specially for physicians."
+	icon_state = "helmet_bp"
+	inhand_icon_state = "helmet"
+	armor_type = /datum/armor/helmet_brig_physician
+	dog_fashion = null
+
+/datum/armor/helmet_brig_physician
+	melee = 15
+	bullet = 60
+	laser = 10
+	energy = 10
+	bomb = 40
+	bio = 0
+	fire = 50
+	acid = 50
+	wound = 5
+
 /obj/item/clothing/head/helmet/marine
 	name = "tactical combat helmet"
 	desc = "A tactical black helmet, sealed from outside hazards with a plate of glass and not much else."

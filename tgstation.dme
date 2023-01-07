@@ -1225,6 +1225,7 @@
 #include "code\datums\martial\plasma_fist.dm"
 #include "code\datums\martial\psychotic_brawl.dm"
 #include "code\datums\martial\sleeping_carp.dm"
+#include "code\datums\martial\taeclowndo.dm"
 #include "code\datums\martial\wrestling.dm"
 #include "code\datums\materials\_material.dm"
 #include "code\datums\materials\alloys.dm"
@@ -2973,6 +2974,7 @@
 #include "code\modules\clothing\shoes\magboots.dm"
 #include "code\modules\clothing\shoes\sandals.dm"
 #include "code\modules\clothing\shoes\sneakers.dm"
+#include "code\modules\clothing\shoes\taeclowndo.dm"
 #include "code\modules\clothing\shoes\wheelys.dm"
 #include "code\modules\clothing\spacesuits\_spacesuits.dm"
 #include "code\modules\clothing\spacesuits\bountyhunter.dm"
@@ -4954,5 +4956,4 @@
 #include "interface\menu.dm"
 #include "interface\stylesheet.dm"
 #include "interface\skin.dmf"
-#include "psychonaut_modules\features\items\taeclowndo.dm"
 // END_INCLUDE

@@ -457,6 +457,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_PUG,
 		ROLE_POSITRONIC_BRAIN,
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)

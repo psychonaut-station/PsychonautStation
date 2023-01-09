@@ -14,12 +14,14 @@ Format:
 endmap
 
 map metastation
-	minplayers 0
+	#default
+	minplayers 25
+	#voteweight 0.5
 	votable
 endmap
 
 map deltastation
-	minplayers 0
+	minplayers 50
 	votable
 endmap
 
@@ -27,20 +29,18 @@ map kilostation
 	votable
 endmap
 
+map selenestation
+	votable
+endmap
+
 map icebox
-	minplayers 0
+	minplayers 25
 	votable
 endmap
 
 map tramstation
-	minplayers 0
+	minplayers 35
 	votable
-endmap
-
-map selenestation
-	minplayers 0
-	votable
-	voteweight 2
 endmap
 
 map maze

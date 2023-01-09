@@ -13,6 +13,6 @@ on:
 jobs:
   has_515_compatibility:
     name: Has 515 Compatibility
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-20.04
     steps:
       - run: echo "You're ready to go!"

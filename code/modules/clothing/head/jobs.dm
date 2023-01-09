@@ -183,7 +183,7 @@
 
 /obj/item/clothing/head/hats/hos/special
 	name = "special cap"
-	desc = "A hat with a golden moon."
+	desc = "Mal huseyin. Derdimi acikliyorum?."
 	icon_state = "hoscapspecial"
 
 /obj/item/clothing/head/hats/hos/syndicate

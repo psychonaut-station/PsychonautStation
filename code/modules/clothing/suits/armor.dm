@@ -135,7 +135,7 @@
 
 /obj/item/clothing/suit/armor/hos/special
 	name = "special armored jacket"
-	desc = "A trenchcoat enhanced with a special lightweight kevlar. The epitome of tactical plainclothes."
+	desc = "Huseyin kim amk"
 	icon_state = "hosjacketspecial"
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter

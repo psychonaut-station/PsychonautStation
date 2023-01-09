@@ -31,7 +31,6 @@ endmap
 
 map selenestation
 	votable
-	voteweight 2
 endmap
 
 map icebox

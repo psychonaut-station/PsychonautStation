@@ -3257,6 +3257,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+"beP" = (
+/obj/structure/cable,
+/obj/machinery/power/solar{
+	id = "forestarboard";
+	name = "Fore-Starboard Solar Array"
+	},
+/turf/open/floor/plating,
+/area/station/solars/starboard/fore)
 "beZ" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -21512,7 +21520,7 @@
 /area/station/engineering/supermatter/room)
 "hja" = (
 /obj/effect/spawner/structure/window/reinforced/tinted,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/station/science/ordnance/bomb)
 "hji" = (
 /obj/structure/rack,
@@ -26710,9 +26718,8 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "iYz" = (
-/obj/structure/lattice/catwalk,
 /obj/machinery/atmospherics/components/unary/passive_vent,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/station/medical/chemistry)
 "iYD" = (
 /obj/machinery/camera/directional/east{
@@ -39076,8 +39083,7 @@
 /area/station/engineering/atmos)
 "mYo" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 1;
-	
+	dir = 1
 	},
 /turf/open/floor/engine,
 /area/station/medical/chemistry)
@@ -47881,7 +47887,7 @@
 /area/station/hallway/secondary/entry)
 "pZf" = (
 /obj/machinery/door/poddoor/incinerator_atmos_aux,
-/turf/open/space/basic,
+/turf/open/floor/plating,
 /area/station/maintenance/disposal/incinerator)
 "pZn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -58416,8 +58422,7 @@
 /area/station/medical/chemistry)
 "tBd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
-	dir = 8;
-	
+	dir = 8
 	},
 /turf/open/floor/engine,
 /area/station/medical/chemistry)
@@ -64248,10 +64253,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
-"vBx" = (
-/obj/structure/lattice/catwalk,
-/turf/open/space/basic,
-/area/station/maintenance/solars/starboard/fore)
 "vBI" = (
 /obj/machinery/light/small/directional/south,
 /obj/structure/table/wood/fancy/red,
@@ -70550,7 +70551,6 @@
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/plating,
 /area/station/medical/medbay)
 "xGE" = (
@@ -121372,7 +121372,7 @@ fUN
 fUN
 fUN
 fUN
-fUN
+beP
 iQW
 fwv
 iQW
@@ -121630,9 +121630,9 @@ xbp
 xbp
 xbp
 xbp
-vBx
 fwv
-vBx
+fwv
+fwv
 xbp
 xbp
 xbp
@@ -122658,9 +122658,9 @@ xbp
 xbp
 xbp
 xbp
-vBx
 fwv
-vBx
+fwv
+fwv
 xbp
 xbp
 xbp

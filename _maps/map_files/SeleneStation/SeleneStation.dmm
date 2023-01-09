@@ -32190,7 +32190,6 @@
 /obj/machinery/atmospherics/components/binary/valve/digital,
 /obj/machinery/airalarm/all_access{
 	dir = 4;
-	frequency = 1450;
 	name = "Grenade Testing Scrubber Control";
 	pixel_x = 25
 	},
@@ -39078,7 +39077,7 @@
 "mYo" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 1;
-	frequency = 1450
+	
 	},
 /turf/open/floor/engine,
 /area/station/medical/chemistry)
@@ -58418,7 +58417,7 @@
 "tBd" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on{
 	dir = 8;
-	frequency = 1450
+	
 	},
 /turf/open/floor/engine,
 /area/station/medical/chemistry)

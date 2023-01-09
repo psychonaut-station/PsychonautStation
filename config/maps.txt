@@ -30,7 +30,6 @@ map kilostation
 endmap
 
 map selenestation
-	default
 	votable
 	voteweight 2
 endmap

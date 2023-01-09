@@ -10092,6 +10092,9 @@
 	name = "Burn Chamber Interior Airlock"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/science/ordnance,
+/obj/machinery/airlock_controller/incinerator_ordmix{
+	pixel_x = -24
+	},
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "dnW" = (
@@ -44425,6 +44428,10 @@
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_interior,
 /obj/machinery/atmospherics/pipe/smart/simple/brown/visible,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
+/obj/machinery/airlock_controller/incinerator_atmos{
+	pixel_x = 40;
+	pixel_y = 8
+	},
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "oxV" = (

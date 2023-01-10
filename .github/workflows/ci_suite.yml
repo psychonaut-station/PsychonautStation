@@ -14,7 +14,6 @@ jobs:
     name: Update the TGS DMAPI
     steps:
     - name: Clone
-      fetch-depth: 0
       uses: actions/checkout@v3
 
     - name: Branch
@@ -25,6 +24,7 @@ jobs:
     - name: Apply DMAPI update
       uses: tgstation/tgs-dmapi-updater@v2
       with:
+        fetch-depth: 0
         header-path: 'code/__DEFINES/tgs.dm'
         library-path: 'code/modules/tgs'
 
@@ -40,6 +40,7 @@ jobs:
       uses: repo-sync/pull-request@v2
       if: ${{ success() }}
       with:
+        fetch-depth: 0
         source_branch: "tgs-dmapi-update"
         destination_branch: "master"
         pr_title: "Automatic TGS DMAPI Update"

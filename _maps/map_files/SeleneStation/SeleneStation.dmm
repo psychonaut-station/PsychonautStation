@@ -8713,11 +8713,11 @@
 	pixel_x = 6;
 	pixel_y = 1
 	},
-/obj/item/flashlight/flare/candle {
+/obj/item/flashlight/flare/candle{
 	pixel_x = 3;
 	pixel_y = 9
 	},
-/obj/item/flashlight/flare/candle {
+/obj/item/flashlight/flare/candle{
 	pixel_x = -5;
 	pixel_y = 3
 	},
@@ -45424,7 +45424,7 @@
 /area/station/medical/medbay/central)
 "oQj" = (
 /obj/structure/table/wood/fancy/green,
-/obj/item/flashlight/flare/candle ,
+/obj/item/flashlight/flare/candle,
 /turf/open/floor/carpet,
 /area/station/service/chapel)
 "oQm" = (
@@ -69601,7 +69601,7 @@
 /obj/item/food/grown/grapes{
 	pixel_y = 8
 	},
-/obj/item/flashlight/flare/candle {
+/obj/item/flashlight/flare/candle{
 	pixel_x = -8;
 	pixel_y = 8
 	},

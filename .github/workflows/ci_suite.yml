@@ -14,6 +14,7 @@ jobs:
     name: Update the TGS DMAPI
     steps:
     - name: Clone
+      fetch-depth: 0
       uses: actions/checkout@v3
 
     - name: Branch

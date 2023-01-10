@@ -80,15 +80,6 @@
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/smooth,
 /area/shuttle/escape/brig)
-"gY" = (
-/obj/structure/chair/greyscale{
-	dir = 4
-	},
-/obj/structure/chair/greyscale{
-	dir = 4
-	},
-/turf/open/floor/iron/smooth,
-/area/shuttle/escape/brig)
 "hk" = (
 /obj/structure/sink/kitchen/directional/east,
 /obj/structure/chair/stool/bamboo,
@@ -108,8 +99,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/escape)
 "kL" = (
-/obj/structure/window/reinforced/fulltile,
-/obj/structure/grille,
+/obj/effect/spawner/structure/window/reinforced/shuttle,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "lz" = (
@@ -473,7 +463,7 @@ Ls
 ac
 gd
 Jv
-gY
+Jv
 vG
 gw
 ac

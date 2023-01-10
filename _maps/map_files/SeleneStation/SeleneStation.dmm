@@ -8146,7 +8146,6 @@
 "cEP" = (
 /obj/structure/grille,
 /obj/structure/lattice,
-/obj/structure/grille/broken,
 /turf/open/space/basic,
 /area/space/nearstation)
 "cES" = (
@@ -57625,7 +57624,6 @@
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
 "sOe" = (
-/obj/structure/grille,
 /obj/structure/grille,
 /obj/structure/lattice,
 /turf/open/space/basic,

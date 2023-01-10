@@ -1,15 +1,23 @@
 /datum/job/brig_physician
 	title = JOB_BRIG_PHYSICIAN
 	description = "Brig'deki mahkumlarin veya is arkadaslarinin tibbi ihtiyaclarini karsilayacak olan kisisin. "
+	auto_deadmin_role_flags = DEADMIN_POSITION_SECURITY
+	department_head = list(JOB_HEAD_OF_SECURITY)
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
-	supervisors = "Head of Security"
-	selection_color = "#ffeeee"
+	supervisors = SUPERVISOR_HOS
+	minimal_player_age = 7
+	exp_requirements = 150
+	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "BRIG_PHYSICIAN"
 
 	outfit = /datum/outfit/job/brig_physician
 	plasmaman_outfit = /datum/outfit/plasmaman/security
+	departments_list = list(
+		/datum/job_department/security,
+		)
 
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_SEC
@@ -18,9 +26,6 @@
 
 	display_order = JOB_DISPLAY_ORDER_SECURITY_OFFICER
 	bounty_types = CIV_JOB_SEC
-	departments_list = list(
-		/datum/job_department/security,
-		)
 
 	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/clothing/head/beret/sec)
 
@@ -36,7 +41,6 @@
 
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 	rpg_title = "Combat Medic"
-	config_tag = "BRIG_PHYSICIAN"
 
 /datum/outfit/job/brig_physician
 	name = "Brig Physician"

@@ -5,11 +5,11 @@
 	faction = FACTION_STATION
 	total_positions = 2
 	spawn_positions = 2
-	supervisors = "the chief engineer"
-	selection_color = "#fff5cc"
-	exp_requirements = 10
+	supervisors = SUPERVISOR_CE
+	exp_requirements = 30
 	exp_required_type = EXP_TYPE_CREW
 	exp_granted_type = EXP_TYPE_CREW
+	config_tag = "WORKER"
 
 	outfit = /datum/outfit/job/worker
 	plasmaman_outfit = /datum/outfit/plasmaman/engineering
@@ -19,6 +19,7 @@
 
 	liver_traits = list(TRAIT_ENGINEER_METABOLISM)
 
+	display_order = JOB_DISPLAY_ORDER_STATION_ENGINEER
 	bounty_types = CIV_JOB_ENG
 	departments_list = list(
 		/datum/job_department/engineering,
@@ -33,7 +34,6 @@
 		/obj/item/clothing/head/utility/hardhat/red/upgraded = 1
 	)
 	rpg_title = "Amele"
-	config_tag = "WORKER"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
 
 

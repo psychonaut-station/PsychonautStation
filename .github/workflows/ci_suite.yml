@@ -9,6 +9,19 @@ on:
     - master
     - 'project/**'
 jobs:
+  update-dmapi:
+    runs-on: ubuntu-20.04
+    name: Update the TGS DMAPI
+    steps:
+    - name: Clone
+      uses: actions/checkout@v3
+
+    - name: Apply DMAPI update
+      uses: tgstation/tgs-dmapi-updater@v2
+      with:
+        header-path: 'code/__DEFINES/tgs.dm'
+        library-path: 'code/modules/tgs'
+
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters

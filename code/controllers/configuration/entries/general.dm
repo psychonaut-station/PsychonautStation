@@ -651,3 +651,4 @@
 /datum/config_entry/string/discord_chatter_webhook_url
 
 /datum/config_entry/number/discord_chatter_tickrate
+/datum/config_entry/flag/toast_notification_on_init

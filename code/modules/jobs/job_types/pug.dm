@@ -4,8 +4,7 @@
 	faction = FACTION_STATION
 	total_positions = 5
 	spawn_positions = 5
-	supervisors = "your canine desires." //vicirdek
-	selection_color = "#dddddd"
+	supervisors = "your canine desires."
 	spawn_type = /mob/living/basic/pet/dog/pug
 
 	departments_list = list(

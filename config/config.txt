@@ -644,3 +644,8 @@ DISCORD_CHATTER_TICKRATE 1200
 ## Comment to disable sending a toast notification on the host server when initializations complete.
 ## Even if this is enabled, a notification will only be sent if there are no clients connected.
 TOAST_NOTIFICATION_ON_INIT
+
+# Webhook URL for Discord rounstart alerts
+#ENABLE_DISCORD_ROUND_ALERTS
+DISCORD_ROUND_ALERT_WEBHOOK_URL
+DISCORD_ROUND_ALERT_ROLE_ID

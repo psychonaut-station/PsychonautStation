@@ -160,7 +160,7 @@ SUBSYSTEM_DEF(ticker)
 				var/list/webhook_info = list()
 				var/list/headers = list()
 
-				webhook_info["content"] = "<@&[CONFIG_GET(string/discord_round_alert_role_id)]> [SSmapping.config.map_name] haritasında yeni round başlıyor!"
+				webhook_info["content"] = "<@&[CONFIG_GET(string/discord_round_alert_role_id)]> **TG:** [SSmapping.config.map_name] haritasında yeni round başlıyor!"
 				headers["Content-Type"] = "application/json"
 
 				var/webhook = CONFIG_GET(string/discord_round_alert_webhook_url)

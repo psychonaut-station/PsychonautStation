@@ -420,6 +420,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 ////////////////////////////////
 
 #define CABLE_RESTRAINTS_COST 15
+#define NOOSE_COST 30
 
 /obj/item/stack/cable_coil
 	name = "cable coil"
@@ -513,6 +514,9 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/image/restraints_icon = image(icon = 'icons/obj/restraints.dmi', icon_state = "cuff")
 	restraints_icon.maptext = MAPTEXT("<span [amount >= CABLE_RESTRAINTS_COST ? "" : "style='color: red'"]>[CABLE_RESTRAINTS_COST]</span>")
 	restraints_icon.color = color
+	
+	var/image/noose_icon = image(icon = 'icons/obj/objects.dmi', icon_state = "noose")
+	noose_icon.maptext = MAPTEXT("<span [amount >= NOOSE_COST ? "" : "style='color: red'"]>[NOOSE_COST]</span>")
 
 	var/list/radial_menu = list(
 	"Layer 1" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-red"),
@@ -520,7 +524,8 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	"Layer 3" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-blue"),
 	"Multilayer cable hub" = image(icon = 'icons/obj/power.dmi', icon_state = "cable_bridge"),
 	"Multi Z layer cable hub" = image(icon = 'icons/obj/power.dmi', icon_state = "cablerelay-broken-cable"),
-	"Cable restraints" = restraints_icon
+	"Cable restraints" = restraints_icon,
+	"Noose" = noose_icon
 	)
 
 	var/layer_result = show_radial_menu(user, src, radial_menu, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
@@ -558,6 +563,10 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 			target_type = /obj/structure/cable/multilayer/multiz
 			target_layer = CABLE_LAYER_2
 			novariants = TRUE
+		if("Noose")
+			if (amount >= NOOSE_COST)
+				if (use(NOOSE_COST))
+					new /obj/structure/chair/noose(user.loc)
 		if("Cable restraints")
 			if (amount >= CABLE_RESTRAINTS_COST)
 				if(use(CABLE_RESTRAINTS_COST))

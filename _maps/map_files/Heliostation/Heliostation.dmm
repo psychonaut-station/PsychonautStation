@@ -11450,7 +11450,7 @@
 "aFP" = (
 /obj/structure/displaycase/captain{
 	req_access = null;
-	req_access_txt = "20"
+	req_access = list("captain")
 	},
 /obj/effect/turf_decal/siding/blue{
 	color = "#4169E1";
@@ -14960,7 +14960,7 @@
 "aPu" = (
 /obj/machinery/door/airlock/command{
 	name = "Chief Medical Officer's Office";
-	req_access_txt = "40"
+	req_access = list("cmo")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,
@@ -24162,7 +24162,7 @@
 "brf" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance";
-	req_access_txt = "5"
+	req_access = list("medical")
 	},
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/hidden/layer2,

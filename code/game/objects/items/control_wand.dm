@@ -125,6 +125,53 @@
 	icon_state = "gangtool-white"
 	region_access = REGION_GENERAL
 
+// Highly modified remote for nt secretary
+/obj/item/door_remote/secretary
+	name = "special door remote"
+	icon_state = "gangtool-secretary"
+	region_access = REGION_SECRETARY
+
+/obj/item/door_remote/secretary/attack_self(mob/user)
+	return
+
+/obj/item/door_remote/secretary/afterattack(atom/target, mob/user)
+	var/mob/living/carbon/human/H = user
+	if(H.mind && H.mind.secretary)
+	//if(HAS_TRAIT(user, TRAIT_SECRETARY))
+		var/obj/machinery/door/door
+
+		if (istype(target, /obj/machinery/door))
+			door = target
+
+			if (!door.opens_with_door_remote)
+				return
+		else
+			for (var/obj/machinery/door/door_on_turf in get_turf(target))
+				if (door_on_turf.opens_with_door_remote)
+					door = door_on_turf
+					break
+
+			if (isnull(door))
+				return
+
+		if (!door.check_access_list(access_list) || !door.requiresID())
+			target.balloon_alert(user, "can't access!")
+			return
+
+		var/obj/machinery/door/airlock/airlock = door
+
+		if (!door.hasPower() || (istype(airlock) && !airlock.canAIControl()))
+			target.balloon_alert(user, mode == WAND_OPEN ? "it won't budge!" : "nothing happens!")
+			return
+
+		if (door.density)
+			door.open()
+		else
+			door.close()
+	else
+		to_chat(user, span_warning("You don't know how to use this!"))
+		return
+
 #undef WAND_OPEN
 #undef WAND_BOLT
 #undef WAND_EMERGENCY

@@ -15,3 +15,9 @@
 	desc = "It's an envirosuit worn by those interning for CentCom. The top is styled after a polo shirt for easy identification."
 	icon_state = "intern_envirosuit"
 	inhand_icon_state = null
+
+/obj/item/clothing/under/plasmaman/nt_secretary
+	name = "Nt secretary plasma envirosuit"
+	desc = "It's an envirosuit worn by Nanotrasen secretaries."
+	icon_state = "secretary_envirosuit"
+	inhand_icon_state = null

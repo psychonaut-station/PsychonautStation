@@ -110,6 +110,13 @@
 	icon_state = "tie_greyscale_untied"
 	greyscale_colors = "#5275b6ff"
 
+/obj/item/clothing/neck/tie/blue/secretary
+	name = "secretary tie"
+	greyscale_colors = COLOR_SECRETARY
+
+/obj/item/clothing/neck/tie/blue/secretary/tied
+	is_tied = TRUE
+
 /obj/item/clothing/neck/tie/red
 	name = "red tie"
 	icon_state = "tie_greyscale_untied"

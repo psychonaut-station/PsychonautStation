@@ -101,6 +101,7 @@
 #define SECHUD_LAWYER "hudlawyer"
 #define SECHUD_MEDICAL_DOCTOR "hudmedicaldoctor"
 #define SECHUD_MIME "hudmime"
+#define SECHUD_NT_SECRETARY "hudntsecretary"
 #define SECHUD_PARAMEDIC "hudparamedic"
 #define SECHUD_PRISONER "hudprisoner"
 #define SECHUD_PSYCHOLOGIST "hudpsychologist"

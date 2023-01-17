@@ -376,6 +376,19 @@
 		/datum/computer_file/program/bounty_board,
 	)
 
+/obj/item/modular_computer/pda/nt_secretary
+	name = "secretary PDA"
+	desc = "A small experimental microcomputer."
+	greyscale_config = null
+	greyscale_colors = null
+	icon_state = "pda-secretary"
+	inserted_item = /obj/item/pen/fountain
+	long_ranged = TRUE
+	starting_programs = list(
+		/datum/computer_file/program/emojipedia,
+		/datum/computer_file/program/newscaster,
+	)
+
 /**
  * Non-roles
  */

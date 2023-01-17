@@ -121,6 +121,7 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
+	accesses_by_region[REGION_SECRETARY] = REGION_ACCESS_SECRETARY
 
 	station_regions = REGION_AREA_STATION
 

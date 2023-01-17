@@ -137,6 +137,42 @@
 /obj/item/storage/box/survival/engineer/crafted
 	crafted = TRUE
 
+//Nt secretary box
+/obj/item/storage/box/nt_secretary
+	name = "Build your own office kit"
+	desc = "Quickly setup your office."
+	icon_state = "nt_secretary_kit"
+	illustration = null
+
+/obj/item/storage/box/nt_secretary/PopulateContents()
+	new	/obj/item/stack/sheet/mineral/wood/fifty(src)
+	new	/obj/item/stack/sheet/iron/twenty(src)
+	new	/obj/item/stack/sheet/glass/twenty(src)
+	new /obj/item/stack/tile/carpet/cyan/twenty(src)
+	new /obj/item/circuitboard/computer/announcer(src)
+	new /obj/item/circuitboard/computer/centcom_messenger(src)
+	new /obj/item/stack/cable_coil(src)
+	new /obj/item/screwdriver(src)
+	new /obj/item/wrench(src)
+
+/obj/item/storage/box/nt_secretary/coffee
+	name = "Office coffee supplies"
+	desc = "You shall need this."
+	icon_state = "nt_secretary_kit"
+	illustration = null
+
+/obj/item/storage/box/nt_secretary/coffee/PopulateContents()
+	new /obj/item/circuitboard/machine/coffeemaker(src)
+	new /obj/item/reagent_containers/cup/coffeepot(src)
+	new /obj/item/reagent_containers/cup/rag(src)
+	new /obj/item/reagent_containers/cup/glass/coffee_cup(src)
+	new /obj/item/reagent_containers/cup/glass/coffee_cup(src)
+	new /obj/item/reagent_containers/condiment/pack/sugar(src)
+	new /obj/item/reagent_containers/condiment/creamer(src)
+	new /obj/item/reagent_containers/condiment/pack/astrotame(src)
+	new /obj/item/coffee_cartridge(src)
+	new /obj/item/coffee_cartridge/fancy(src)
+
 //Mime spell boxes
 
 /obj/item/storage/box/mime

@@ -23,6 +23,16 @@
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/computer/accounting
 
+/obj/item/circuitboard/computer/announcer
+	name = "Announcer Console"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
+	build_path = /obj/machinery/computer/announcer
+
+/obj/item/circuitboard/computer/centcom_messenger
+	name = "Centcom Messenger Console"
+	greyscale_colors = CIRCUIT_COLOR_COMMAND
+	build_path = /obj/machinery/computer/centcom_messenger
+
 //Engineering
 
 /obj/item/circuitboard/computer/apc_control

@@ -1454,3 +1454,25 @@
 
 /area/station/maintenance/external/port/bow
 	name = "\improper Port Bow External Hull Access"
+
+
+// Fulp maps
+/area/station/maintenance/department/medical/plasmaman
+	name = "Plasmaman Medbay"
+	icon_state = "pm_medbay"
+
+/area/station/security/prison/safe/exterior
+	name = "Prison Exterior"
+	icon_state = "prison_ext_safe"
+
+/area/station/solars/ai
+	name = "AI Satellite Solar Array"
+	icon_state = "ai_panels"
+
+/area/station/security/brig/hallway
+	name = "Brig Hallway"
+	icon_state = "brig_hallway"
+
+/area/station/ai_monitored/turret_protected/aisat/solars
+	name = "AI Satellite Solars"
+	icon_state = "ai_solars"

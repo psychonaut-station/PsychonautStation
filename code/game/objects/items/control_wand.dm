@@ -128,6 +128,7 @@
 // Highly modified remote for nt secretary
 /obj/item/door_remote/secretary
 	name = "special door remote"
+	desc = "Nanotrasen Research and Development Division recommends that you should stand away from the airlocks when using this."
 	icon_state = "gangtool-secretary"
 	region_access = REGION_SECRETARY
 

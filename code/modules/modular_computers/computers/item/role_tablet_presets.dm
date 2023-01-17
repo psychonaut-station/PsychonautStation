@@ -358,7 +358,6 @@
 	long_ranged = TRUE
 	starting_programs = list(
 		/datum/computer_file/program/emojipedia,
-		/datum/computer_file/program/newscaster,
 	)
 
 /obj/item/modular_computer/pda/curator/Initialize(mapload)

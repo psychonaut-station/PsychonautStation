@@ -137,10 +137,11 @@
 /obj/item/storage/box/survival/engineer/crafted
 	crafted = TRUE
 
-//Nt secretary box
+//Nt secretary boxes
+
 /obj/item/storage/box/nt_secretary
 	name = "Build your own office kit"
-	desc = "Quickly setup your office."
+	desc = "a.k.a not so rapid office deployment system."
 	icon_state = "nt_secretary_kit"
 	illustration = null
 
@@ -155,6 +156,20 @@
 	new /obj/item/screwdriver(src)
 	new /obj/item/wrench(src)
 
+/obj/item/storage/box/nt_secretary/coffeemakerkit
+	name = "Coffee maker parts"
+	desc = "Coffee maker maker kit for real makers!"
+	icon_state = "nanobox"
+	illustration = null
+
+/obj/item/storage/box/nt_secretary/coffeemakerkit/PopulateContents()
+	new /obj/item/circuitboard/machine/coffeemaker(src)
+	new /obj/item/reagent_containers/cup/beaker(src)
+	new /obj/item/reagent_containers/cup/beaker(src)
+	new /obj/item/stock_parts/water_recycler(src)
+	new /obj/item/stock_parts/capacitor(src)
+	new /obj/item/stock_parts/micro_laser(src)
+
 /obj/item/storage/box/nt_secretary/coffee
 	name = "Office coffee supplies"
 	desc = "You shall need this."
@@ -162,7 +177,7 @@
 	illustration = null
 
 /obj/item/storage/box/nt_secretary/coffee/PopulateContents()
-	new /obj/item/circuitboard/machine/coffeemaker(src)
+	new /obj/item/storage/box/nt_secretary/coffeemakerkit(src)
 	new /obj/item/reagent_containers/cup/coffeepot(src)
 	new /obj/item/reagent_containers/cup/rag(src)
 	new /obj/item/reagent_containers/cup/glass/coffee_cup(src)

@@ -651,4 +651,9 @@
 /datum/config_entry/string/discord_chatter_webhook_url
 
 /datum/config_entry/number/discord_chatter_tickrate
+
 /datum/config_entry/flag/toast_notification_on_init
+
+/datum/config_entry/flag/enable_discord_round_alerts
+/datum/config_entry/string/discord_round_alert_webhook_url
+/datum/config_entry/string/discord_round_alert_role_id

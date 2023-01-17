@@ -241,6 +241,13 @@
 	gloves = /obj/item/clothing/gloves/color/plasmaman/centcom_intern
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_intern
 
+/datum/outfit/plasmaman/nt_secretary
+	name = "Secretary Plasmaman"
+
+	uniform = /obj/item/clothing/under/plasmaman/nt_secretary
+	gloves = /obj/item/clothing/gloves/color/plasmaman/white
+	head = /obj/item/clothing/head/helmet/space/plasmaman/nt_secretary
+
 /datum/outfit/plasmaman/party_janitor
 	name = "ERP Cleaning Plasmaman"
 

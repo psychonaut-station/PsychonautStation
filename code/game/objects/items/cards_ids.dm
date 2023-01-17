@@ -1127,6 +1127,17 @@
 	registered_name = JOB_ERT_CLOWN
 	trim = /datum/id_trim/centcom/ert/clown
 
+/obj/item/card/id/advanced/white
+	name = "white identification card"
+	desc = "impressive, very nice."
+	icon_state = "card_white"
+	assigned_icon_state = "assigned_white"
+	wildcard_slots = WILDCARD_LIMIT_SILVER
+
+/obj/item/card/id/advanced/white/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
+
 /obj/item/card/id/advanced/black
 	name = "black identification card"
 	desc = "This card is telling you one thing and one thing alone. The person holding this card is an utter badass."

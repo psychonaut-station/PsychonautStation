@@ -379,3 +379,9 @@
 	desc = "A special containment helmet designed for CentCom Staff. You know, so any coffee spills don't kill the poor sod."
 	icon_state = "intern_envirohelm"
 	inhand_icon_state = null
+
+/obj/item/clothing/head/helmet/space/plasmaman/nt_secretary
+	name = "Nt secretary plasma envirosuit helmet"
+	desc = "A special containment helmet designed for secretaries."
+	icon_state = "secretary_envirohelm"
+	inhand_icon_state = null

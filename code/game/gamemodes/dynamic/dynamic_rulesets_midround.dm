@@ -225,6 +225,7 @@
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
+		JOB_NT_SECRETARY,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -453,6 +454,7 @@
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
+		JOB_NT_SECRETARY,
 	)
 	restricted_roles = list(
 		JOB_AI,

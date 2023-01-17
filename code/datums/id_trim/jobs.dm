@@ -690,6 +690,23 @@
 		)
 	job = /datum/job/mime
 
+/datum/id_trim/job/nt_secretary
+	assignment = "Nt Secretary"
+	trim_state = "trim_secretary"
+	department_color = COLOR_SECRETARY
+	subdepartment_color = COLOR_SECRETARY
+	sechud_icon_state = SECHUD_NT_SECRETARY
+	minimal_access = list()
+	extra_access = list(
+		ACCESS_MAINT_TUNNELS,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+		)
+	job = /datum/job/nt_secretary
+
 /datum/id_trim/job/paramedic
 	assignment = "Paramedic"
 	trim_state = "trim_paramedic"

@@ -100,5 +100,10 @@
 	icon_state = "stamp-syndicate"
 	dye_color = DYE_SYNDICATE
 
+/obj/item/stamp/secretary
+	name = "secretary's rubber stamp"
+	icon_state = "stamp-secretary"
+	dye_color = null //todo
+
 /obj/item/stamp/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)

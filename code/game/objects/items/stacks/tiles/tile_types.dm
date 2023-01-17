@@ -348,6 +348,9 @@
 /obj/item/stack/tile/carpet/cyan/fifty
 	amount = 50
 
+/obj/item/stack/tile/carpet/cyan/twenty
+	amount = 20
+
 /obj/item/stack/tile/carpet/green/fifty
 	amount = 50
 

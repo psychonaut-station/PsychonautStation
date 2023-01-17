@@ -32,6 +32,7 @@
 
 //No department
 #define JOB_ASSISTANT "Assistant"
+#define JOB_NT_SECRETARY "Nt Secretary"
 #define JOB_PRISONER "Prisoner"
 #define JOB_PUG "Pug"
 //Command

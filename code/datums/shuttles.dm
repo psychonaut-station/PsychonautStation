@@ -569,12 +569,22 @@
 	suffix = "pubby"
 	name = "supply shuttle (Pubby)"
 
+/datum/map_template/shuttle/cargo/helio
+	suffix = "helio"
+	name = "cargo ferry (Helio)"
+
 /datum/map_template/shuttle/emergency/delta
 	suffix = "delta"
 	name = "Delta Station Emergency Shuttle"
 	description = "A large shuttle for a large station, this shuttle can comfortably fit all your overpopulation and crowding needs. Complete with all facilities plus additional equipment."
 	admin_notes = "Go big or go home."
 	credit_cost = CARGO_CRATE_VALUE * 15
+
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 4
+	description = "For when you're not quite ready to say goodbye to your home station. May cause damage to smaller stations."
 
 /datum/map_template/shuttle/emergency/raven
 	suffix = "raven"

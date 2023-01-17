@@ -274,8 +274,7 @@ SUBSYSTEM_DEF(persistence)
 			if(VM.map_name == name)
 				run++
 		if(run >= 2) //If run twice in the last KEEP_ROUNDS_MAP + 1 (including current) rounds, disable map for voting and rotation.
-			continue
-			//blocked_maps += VM.map_name
+			blocked_maps += VM.map_name
 
 /// Puts trophies into trophy cases.
 /datum/controller/subsystem/persistence/proc/set_up_trophies()

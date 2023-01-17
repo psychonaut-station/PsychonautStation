@@ -20,6 +20,7 @@ endmap
 
 map metastation
 	minplayers 0
+	voteweight 0.75
 	votable
 endmap
 
@@ -39,6 +40,11 @@ map icebox
 endmap
 
 map tramstation
+	minplayers 0
+	votable
+endmap
+
+map heliostation
 	minplayers 0
 	votable
 endmap

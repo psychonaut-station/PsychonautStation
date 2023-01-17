@@ -4,7 +4,7 @@
 	name = "announcer console"
 	desc = "A console used for news and low-priority announcements."
 	icon_screen = "announcer"
-	icon_keyboard = "tech_key"
+	icon_keyboard = "rd_key"
 	circuit = /obj/item/circuitboard/computer/announcer
 	light_color = LIGHT_COLOR_BLUE
 

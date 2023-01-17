@@ -74,7 +74,7 @@
 	icon_state = "military_eng"
 
 /obj/item/clothing/under/rank/centcom/nt_secretary
-	name = "\improper CentCom intern's jumpsuit"
+	name = "\improper Nanotrasen secretary's jumpsuit"
 	desc = "It's a jumpsuit worn by Nanotrasen secretaries."
 	icon_state = "nt_secretary"
 	inhand_icon_state = "dg_suit"

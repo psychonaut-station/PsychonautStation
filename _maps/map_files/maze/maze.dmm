@@ -254,7 +254,6 @@
 /turf/open/floor/mineral/bananium,
 /area/station/maintenance/fore/greater)
 "xA" = (
-/obj/effect/spawner/random/trap/deadly,
 /turf/open/indestructible/necropolis/air,
 /area/station/maintenance/fore/greater)
 "yn" = (
@@ -282,7 +281,6 @@
 /turf/open/floor/mineral/bananium,
 /area/station/maintenance/fore/greater)
 "zH" = (
-/obj/effect/spawner/random/trap/deadly,
 /obj/item/storage/medkit/fire,
 /turf/open/indestructible/necropolis/air,
 /area/station/maintenance/fore/greater)
@@ -409,7 +407,6 @@
 /turf/open/floor/mineral/bananium,
 /area/station/maintenance/fore/greater)
 "Jc" = (
-/obj/effect/spawner/random/trap/deadly,
 /turf/open/floor/iron,
 /area/station/engineering/supermatter)
 "JH" = (
@@ -622,7 +619,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
 "VQ" = (
-/obj/effect/spawner/random/trap/deadly,
 /obj/item/storage/medkit/brute,
 /turf/open/indestructible/necropolis/air,
 /area/station/maintenance/fore/greater)

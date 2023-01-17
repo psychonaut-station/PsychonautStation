@@ -81299,7 +81299,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "xWr" = (
-/obj/structure/table,
 /obj/item/storage/box/bodybags,
 /obj/item/clothing/gloves/color/latex,
 /obj/structure/window/reinforced{

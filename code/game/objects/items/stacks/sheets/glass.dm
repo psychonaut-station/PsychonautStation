@@ -71,7 +71,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 			var/obj/item/stack/sheet/rglass/RG = new (get_turf(user))
 			if(!QDELETED(RG))
 				RG.add_fingerprint(user)
-			var/replace = user.get_inactive_held_item()==src
+			var/replace = user.get_inactive_held_item() == src
 			V.use(1)
 			use(1)
 			if(QDELETED(src) && replace && !QDELETED(RG))
@@ -123,7 +123,7 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 			var/obj/item/stack/sheet/plasmarglass/RG = new (get_turf(user))
 			if (!QDELETED(RG))
 				RG.add_fingerprint(user)
-			var/replace = user.get_inactive_held_item()==src
+			var/replace = user.get_inactive_held_item() == src
 			V.use(1)
 			use(1)
 			if(QDELETED(src) && replace)

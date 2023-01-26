@@ -96,8 +96,7 @@
 
 	H.fully_replace_character_name(H.real_name, pick(GLOB.clown_names)) //rename the mob AFTER they're equipped so their ID gets updated properly.
 	H.dna.add_mutation(/datum/mutation/human/clumsy)
-	if(H.mind)
-		H.mind.clowning = TRUE
+	ADD_TRAIT(H, TRAIT_CLOWNING, "[type]")
 	for(var/datum/mutation/human/clumsy/M in H.dna.mutations)
 		M.mutadone_proof = TRUE
 	var/datum/atom_hud/fan = GLOB.huds[DATA_HUD_FAN]

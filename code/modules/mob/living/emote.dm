@@ -262,13 +262,10 @@
 
 /datum/emote/living/laugh/get_sound(mob/living/user)
 	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(H.mind && H.mind.clowning == TRUE)
-			if(user.gender == FEMALE)
-				return 'sound/voice/human/hihiha.ogg'
-			else
-				return pick('sound/voice/human/hihiha.ogg', 'sound/voice/human/hihiha_2.ogg')
-		if(H.dna.species.id == SPECIES_HUMAN && (!H.mind || !H.mind.miming))
+		var/mob/living/carbon/human/human_user = user
+		if(HAS_TRAIT(human_user, TRAIT_CLOWNING))
+			return pick('sound/voice/human/hihiha.ogg', 'sound/voice/human/hihiha_2.ogg')
+		if(human_user.dna.species.id == SPECIES_HUMAN && !HAS_TRAIT(human_user, TRAIT_MIMING))
 			if(user.gender == FEMALE)
 				return 'sound/voice/human/womanlaugh.ogg'
 			else

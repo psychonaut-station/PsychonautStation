@@ -55,7 +55,7 @@
 	belt = /obj/item/defibrillator/compact/loaded
 	ears = /obj/item/radio/headset/headset_sec/alt/department/med
 	glasses = /obj/item/clothing/glasses/hud/health
-	gloves = /obj/item/clothing/gloves/color/latex/nitrile
+	gloves = /obj/item/clothing/gloves/latex/nitrile
 	head = /obj/item/clothing/head/helmet/brig_physician
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/assembly/flash/handheld

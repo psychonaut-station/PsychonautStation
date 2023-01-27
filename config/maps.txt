@@ -58,3 +58,6 @@ endmap
 map multiz_debug
 endmap
 
+map towerstation
+endmap
+

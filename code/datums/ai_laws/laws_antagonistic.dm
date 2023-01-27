@@ -45,7 +45,7 @@
 	id = "ninja"
 	inherent = list(
 		"Hiçbir Spider Clan üyesine zarar verme ve zarar görmesine izin verme.",
-		"Birinci yasa ile çelişmediği sürece, sana Spider Clan üyeleri tarafından verilen emirlere itaat et.",
+		"Birinci yasa ile çelişmediği sürece, sana Spider Clan üyesi tarafından verilen emirlere itaat et.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, Spider Clan faaliyetlerinin gizli kalmasını sağla.",
 	)

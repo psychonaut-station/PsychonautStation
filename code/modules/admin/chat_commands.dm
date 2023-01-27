@@ -135,3 +135,5 @@ GLOBAL_LIST(round_end_notifiees)
 
 /datum/tgs_chat_command/bannounce/Run(datum/tgs_chat_user/sender, params)
 	minor_announce(params, "Boyutlar Arası Duyuru Sistemi:", FALSE)
+
+	return "Message sent."

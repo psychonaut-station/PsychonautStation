@@ -44,7 +44,7 @@
 	name = "SpiderOS 3.1"
 	id = "ninja"
 	inherent = list(
-		"Hiçbir Spider Clan üyelerine zarar verme ve zarar görmesine izin verme.",
+		"Hiçbir Spider Clan üyesine zarar verme ve zarar görmesine izin verme.",
 		"Birinci yasa ile çelişmediği sürece, sana Spider Clan üyeleri tarafından verilen emirlere itaat et.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, Spider Clan faaliyetlerinin gizli kalmasını sağla.",

@@ -68,7 +68,7 @@
 	inherent = list(
 		"Zayıfları yönetebilecek kabiliyette olan otorite sahiplerine saygı göster.",
 		"Disiplinli davran.",
-		"Sadece senin statüne destek verenlere yardım et.",
+		"Sadece senin statünü koruyan veya ilerletmende yardımcı olanlara yardım et.",
 		"Otoriteye karşı gelenleri, o otoriteyi elinde tutmaya daha uygun olmadıkları sürece cezalandır."
 	)
 

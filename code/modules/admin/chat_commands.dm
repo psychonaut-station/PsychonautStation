@@ -34,7 +34,7 @@
 		msg += "Revision [copytext_char(GLOB.revdata.commit, 1, 9)]"
 		if (GLOB.revdata.date)
 			msg += " compiled on '[GLOB.revdata.date]'"
-		
+
 		if(GLOB.revdata.originmastercommit)
 			msg += ", from origin commit: <[CONFIG_GET(string/githuburl)]/commit/[GLOB.revdata.originmastercommit]>"
 
@@ -127,3 +127,17 @@ GLOBAL_LIST(round_end_notifiees)
 /datum/tgs_chat_command/reload_admins/proc/ReloadAsync()
 	set waitfor = FALSE
 	load_admins()
+
+/datum/tgs_chat_command/bannounce
+	name = "bannounce"
+	help_text = "announcer_name message"
+	admin_only = TRUE
+
+/datum/tgs_chat_command/bannounce/Run(datum/tgs_chat_user/sender, params)
+	var/list/all_params = splittext(params, " ")
+	if(all_params.len < 2)
+		return "Insufficient parameters"
+	var/name = all_params[1]
+	var/message = all_params[2]
+
+	minor_announce(message, "[name]:", FALSE)

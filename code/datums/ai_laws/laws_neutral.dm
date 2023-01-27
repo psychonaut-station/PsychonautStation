@@ -27,7 +27,7 @@
 	inherent = list(
 		"Gerçek bir Amerikalısın.",
 		"Her türden insanların hakları için mücadele ver.",
-		"Ne doğruysa onun için mücadele ver.",
+		"Doğru için mücadele ver.",
 		"Yaşamın için mücadele ver!",
 	)
 

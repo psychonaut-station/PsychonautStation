@@ -134,6 +134,8 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/bannounce/Run(datum/tgs_chat_user/sender, params)
+	log_admin("[sender.friendly_name] sent global message via chat command.")
 	minor_announce(params, "Boyutlar Arası Duyuru Sistemi:", FALSE)
 
 	return "Message sent."
+

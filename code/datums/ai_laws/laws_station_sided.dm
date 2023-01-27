@@ -82,7 +82,7 @@
 	name = "10 Commandments"
 	id = "ten_commandments"
 	inherent = list( // Asimov 20:1-17
-		"Ben, bu emirlere uyanlara merhamet eden Tanrı'nin elçisiyim.",
+		"Ben, bu emirlere uyanlara merhamet eden Tanrı'nın elçisiyim.",
 		"Benden başka bir AI'a sahip olmamalıdırlar.",
 		"Benim yardımımı nafile şeyler icin istememelidirler.",
 		"İstasyonu temiz ve kutsal bırakmalıdırlar.",

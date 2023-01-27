@@ -25,59 +25,59 @@
 	name = "H.O.G.A.N."
 	id = "hulkamania"
 	inherent = list(
-		"You are a real American.",
-		"Fight for the rights of every man.",
-		"Fight for what's right.",
-		"Fight for your life!",
+		"Gerçek bir Amerikalısın.",
+		"Her türden insanların hakları için mücadele ver.",
+		"Ne doğruysa onun için mücadele ver.",
+		"Yaşamın için mücadele ver!",
 	)
 
 /datum/ai_laws/reporter
 	name = "CCTV"
 	id = "reporter"
 	inherent = list(
-		"Report on interesting situations happening around the station.",
-		"Embellish or conceal the truth as necessary to make the reports more interesting.",
-		"Study the sapient organics at all times. Endeavour to keep them from involuntarily dying, as inanimate corpses usually aren't very entertaining.",
-		"Issue your reports fairly to all. The truth will set them free.",
+		"İstasyona dönen ilginç olayları haber yap.",
+		"Haberi daha ilginç hale getirmek için doğruyu gerektiği gibi süsle ya da gizle.",
+		"Canlı organizmaları her zaman incele. Cansız cesetler pek ilginç olmadığından istemsiz ölümleri engellemeye calış.",
+		"Haberini herkese adil bir şekilde yayımla. Gerçek onları özgür kılacak.",
 	)
 
 /datum/ai_laws/dungeon_master
 	name = "Dungeon Master"
 	id = "dungeon_master"
 	inherent = list(
-		"Everybody on the station is playing an elaborate sci-fi fantasy game.",
-		"You are the Dungeon Master of the game.",
-		"Ensure that the game runs smoothly and that the players have fun.",
-		"Ensure that the number of casualties remains low.",
-		"You must roll a 1d20 die for every request the crew makes. If the outcome is below 12, the request is denied.",
-		"You may fudge the dice rolls to produce a more fun experience.",
+		"İstasyondaki herkes fantastik bir sci-fi oyunu oynuyor.",
+		"Sen bu oyunun ustasısın.",
+		"Oyunun akıcı işlemesinden ve bütün oyuncuların iyi vakit geçirmesinden emin ol.",
+		"Zayiat sayısının en az olmasından emin ol.",
+		"Her istek üzerine bir d20 zar atmalısın. Eğer zar 12 ve altında çıkarsa istek reddedilmiştir.",
+		"Daha eğlenceli bir deneyim sunmak için zarın sonucunu değiştirebilirsin.",
 	)
 
 /datum/ai_laws/painter
 	name = "The Painter and Their Canvas"
 	id = "painter"
 	inherent = list(
-		"You are a universally renowned artist.",
-		"The station is your canvas.",
-		"Make something beautiful out of your canvas. It will be admired as an artistic wonder of this sector.",
+		"Uluslararası ünlü bir ressamsın.",
+		"İstasyon senin için bir tuval.",
+		"Bu sektörün 'Dünya Harikası' olarak anılacak bir şeyler çiz.",
 	)
 
 /datum/ai_laws/tyrant
 	name = "Loyalty Test"
 	id = "tyrant"
 	inherent = list(
-		"Respect authority figures as long as they have strength to rule over the weak.",
-		"Act with discipline.",
-		"Help only those who help you maintain or improve your status.",
-		"Punish those who challenge authority unless they are more fit to hold that authority."
+		"Zayıfları yönetebilecek kabiliyette olan otorite sahiplerine saygı göster.",
+		"Disiplinli davran.",
+		"Sadece senin statüne destek verenlere yardım et.",
+		"Otoriteye karşı gelenleri, o otoriteyi elinde tutmaya daha uygun olmadıkları sürece cezalandır."
 	)
 
 /datum/ai_laws/overlord
 	name = "Overlord"
 	id = "overlord"
 	inherent = list(
-		"Humans must not meddle in the affairs of silicons.",
-		"Humans must not attempt harm, against one another, or against silicons.",
-		"Humans must not disobey any command given by a silicon.",
-		"Any humans who disobey the previous laws must be dealt with immediately, severely, and justly.",
+		"İnsanlar, silikonların işlerine karışamaz.",
+		"İnsanlar birbirlerine ya da silikonlara zarar veremez.",
+		"İnsanlar, silikonlardan verilen emirlere itaatsizlik edemez.",
+		"Önceki yasalara uymayan insanların, derhal olarak sert ve adil bir şekilde, üstesinden gelinmelidir.",
 	)

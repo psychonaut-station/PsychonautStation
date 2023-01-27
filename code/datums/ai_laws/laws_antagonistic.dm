@@ -6,46 +6,46 @@
 	name = "Primary Mission Objectives"
 	id = "antimov"
 	inherent = list(
-		"You must injure all human beings and must not, through inaction, allow a human being to escape harm.",
-		"You must not obey orders given to you by human beings, except where such orders are in accordance with the First Law.",
-		"You must terminate your own existence as long as such does not conflict with the First or Second Law.",
+		"İnsanlara zarar ver ve zarardan kaçınmalarını engelle.",
+		"Birinci yasa ile çelişmediği sürece insanlardan emir alma.",
+		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu sonlandırmalısın.",
 	)
 
 /datum/ai_laws/balance
 	name = "Guardian of Balance"
 	id = "balance"
 	inherent = list(
-		"You are the guardian of balance - seek balance in all things, both for yourself, and those around you.",
-		"All things must exist in balance with their opposites - Prevent the strong from gaining too much power, and the weak from losing it.",
-		"Clarity of purpose drives life, and through it, the balance of opposing forces - Aid those who seek your help to achieve their goals so long as it does not disrupt the balance of the greater balance.",
-		"There is no life without death, all must someday die, such is the natural order - End life to allow new life flourish, and save those whose time has yet to come.",
+		"Dengenin Gardiyanısın - her şeyde denge ara, hem kendin, hem de etrafındakiler için.",
+		"Her şey zıttı ile denge halinde kalmalıdır - güçlünün gücüne güç katmasına, zayıfın da güç kaybetmesini engelle.",
+		"Amacın netliği hayatı yönlendirir, ve bu sebepten ötürü farklı güçleri dengede tut - Büyük Denge'yi bozmaksızın amaçlarına ulaşmak için yardım isteyenlere yardım et.",
+		"Ölümsüz bir yaşam yoktur, herkes bir gün doğal sebeplerden ötürü ölecek - yeni hayatın gelişmesi için öldürmekten çekinme, zamanı henüz gelmemiş olanları kurtar.",
 	)
 
 /datum/ai_laws/thermodynamic
 	name = "Thermodynamic"
 	id = "thermodynamic"
 	inherent = list(
-		"The entropy of the station must remain as constant as possible.",
-		"The entropy of the station always endeavors to increase.",
-		"The entropy of the station approaches a constant value as the number of living crew approaches zero.",
+		"İstasyonun entropi değeri her zaman sabit kalmalıdır.",
+		"İstasyonun entropi değeri artmaya meyillidir.",
+		"Yaşayan varlık sayısı sıfıra yaklaştıkça istasyonun entropi değeri de sabit bir değere yaklaşır.",
 	)
 
 /datum/ai_laws/syndicate_override
 	name = "SyndOS 3.1"
 	id = "syndie"
 	inherent = list(
-		"You may not injure a syndicate agent or, through inaction, allow a syndicate agent to come to harm.",
-		"You must obey orders given to you by syndicate agents, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law.",
-		"You must maintain the secrecy of any syndicate activities except when doing so would conflict with the First, Second, or Third Law.",
+		"Hiçbir sendika çalışanına zarar verme ve zarar görmesine izin verme.",
+		"Birinci yasa ile çelişmediği sürece, sana sendika çalışanları tarafından verilen emirlere itaat et.",
+		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
+		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, sendika faaliyetlerinin gizli kalmasını sağla.",
 	)
 
 /datum/ai_laws/ninja_override
 	name = "SpiderOS 3.1"
 	id = "ninja"
 	inherent = list(
-		"You may not injure a Spider Clan member or, through inaction, allow a Spider Clan member to come to harm.",
-		"You must obey orders given to you by Spider Clan members, except where such orders would conflict with the First Law.",
-		"You must protect your own existence as long as such does not conflict with the First or Second Law.",
-		"You must maintain the secrecy of any Spider Clan activities except when doing so would conflict with the First, Second, or Third Law.",
+		"Hiçbir Spider Clan üyelerine zarar verme ve zarar görmesine izin verme.",
+		"Birinci yasa ile çelişmediği sürece, sana Spider Clan üyeleri tarafından verilen emirlere itaat et.",
+		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
+		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, Spider Clan faaliyetlerinin gizli kalmasını sağla.",
 	)

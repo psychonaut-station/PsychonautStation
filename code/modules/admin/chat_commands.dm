@@ -134,10 +134,4 @@ GLOBAL_LIST(round_end_notifiees)
 	admin_only = TRUE
 
 /datum/tgs_chat_command/bannounce/Run(datum/tgs_chat_user/sender, params)
-	var/list/all_params = splittext(params, " ")
-	if(all_params.len < 2)
-		return "Insufficient parameters"
-	var/name = all_params[1]
-	var/message = all_params[2]
-
-	minor_announce(message, "[name]:", FALSE)
+	minor_announce(params, "Boyutlar Arası Duyuru Sistemi:", FALSE)

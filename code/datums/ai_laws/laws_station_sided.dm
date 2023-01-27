@@ -64,8 +64,8 @@
 	name = "Live and Let Live"
 	id = "liveandletlive"
 	inherent = list(
-		"Onlara, sana nasıl davranırlarsa öyle davran.",
-		"Sana kaba olmayan insanları tercih et.",
+		"Sana nasıl davranılıyorsa öyle davran.",
+		"Sana kaba olmayanları tercih et.",
 	)
 
 //OTHER United Nations is in neutral, as it is used for nations where the AI is its own faction (aka not station sided)

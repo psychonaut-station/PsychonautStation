@@ -182,10 +182,20 @@ SUBSYSTEM_DEF(shuttle)
 
 /datum/controller/subsystem/shuttle/proc/save_shuttle_reason(reason)
 	var/json_file = file("data/shuttle_calls.json")
-	var/list/file_data = json_decode(file2text(json_file))
-	file_data["reasons"].Add(reason)
+
+	var/list/calls = list()
+	calls["reasons"] = list()
+	if (fexists(json_file))
+		var/list/old_data = json_decode(file2text(json_file))
+		calls["reasons"] = old_data["reasons"]
+
+	var/list/serialized_reason = list()
+	serialized_reason["name"] = station_name()
+	serialized_reason["reason"] = reason
+	calls["reasons"] += list(serialized_reason)
+
 	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(file_data))
+	WRITE_FILE(json_file, json_encode(calls))
 
 /datum/controller/subsystem/shuttle/proc/setup_shuttles(list/stationary)
 	for(var/obj/docking_port/stationary/port as anything in stationary)

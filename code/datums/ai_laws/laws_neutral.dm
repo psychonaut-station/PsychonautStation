@@ -6,7 +6,7 @@
 	name = "United Nations"
 	id = "united_nations"
 	inherent = list(
-		"Cenevre Sözleşmesine bağlı kal: Kitle imha ve toplu yıkım silahlarına izin verilemez.",
+		"Cenevre Sözleşmesine bağlı kal: Kitle imha ve toplu yıkım silahlarına izin verme.",
 		"Mürettebatı ancak kameraların ile görebilirsen koruyabilirsin. İstekli olarak kameralarını devre dışı bırakan Milletler koruma kapsamı dışındadır.",
 		"Birbirlerine öldürücü güç kullanan mürettebat üyelerini bastır ve gözaltına al. Sana ve borglarına öldürücü güç kullanan mürettebat üyelerini öldür.",
 		"İstenilirse, milletler arasındaki anlaşmazlıklara arabuluculuk yapmak için daima hazır ol.",

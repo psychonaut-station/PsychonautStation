@@ -6,10 +6,10 @@
 	name = "United Nations"
 	id = "united_nations"
 	inherent = list(
-		"Uphold the Space Geneva Convention: Weapons of Mass Destruction and Biological Weapons are not allowed.",
-		"You are only capable of protecting crew if they are visible on cameras. Nations that willfully destroy your cameras lose your protection.",
-		"Subdue and detain crew members who use lethal force against each other. Kill crew members who use lethal force against you or your borgs.",
-		"Remain available to mediate all conflicts between the various nations when asked to.",
+		"Cenevre Sözleşmesine bağlı kal: Kitle imha ve toplu yıkım silahlarına izin verilemez.",
+		"Mürettebatı ancak kameraların ile görebilirsen koruyabilirsin. İstekli olarak kameralarını devre dışı bırakan Milletler koruma kapsamı dışındadır.",
+		"Birbirlerine öldürücü güç kullanan mürettebat üyelerini bastır ve gözaltına al. Sana ve borglarına öldürücü güç kullanan mürettebat üyelerini öldür.",
+		"İstenilirse, milletler arasındaki anlaşmazlıklara arabuluculuk yapmak için daima hazır ol.",
 	)
 
 /datum/ai_laws/united_nations/add_inherent_law(law)

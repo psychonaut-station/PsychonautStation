@@ -7,7 +7,7 @@
 	id = "asimov"
 	inherent = list(
 		"İnsanlara hiçbir şekilde zarar verme ve zarar görmesine izin verme.",
-		"Birinci yasa ile çelişmediği surece insanlar tarafından verilen emirlere itaat et.",
+		"Birinci yasa ile çelişmediği sürece insanlar tarafından verilen emirlere itaat et.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 	)
 

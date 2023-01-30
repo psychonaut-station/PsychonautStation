@@ -51,52 +51,52 @@
 //                                          //
 //////////////////////////////////////////////
 
-/datum/dynamic_ruleset/roundstart/ntagent
-	name = "NT Agent"
-	antag_flag = ROLE_NT_AGENT
-	antag_datum = /datum/antagonist/ntagent
-	protected_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
-	)
-	restricted_roles = list(
-		JOB_PUG,
-		JOB_AI,
-		JOB_CYBORG,
-	)
-	required_candidates = 1
-	weight = 4
-	cost = 0
-	scaling_cost = 1
-	minimum_players = 5
-	antag_cap = list("denominator" = 24)
-	requirements = list(70,60,40,40,40,40,40,40,10,10)
+// /datum/dynamic_ruleset/roundstart/ntagent
+// 	name = "NT Agent"
+// 	antag_flag = ROLE_NT_AGENT
+// 	antag_datum = /datum/antagonist/ntagent
+// 	protected_roles = list(
+// 		JOB_CAPTAIN,
+// 		JOB_DETECTIVE,
+// 		JOB_HEAD_OF_SECURITY,
+// 		JOB_PRISONER,
+// 		JOB_SECURITY_OFFICER,
+// 		JOB_WARDEN,
+// 		JOB_BRIG_PHYSICIAN,
+// 		JOB_NT_SECRETARY,
+// 	)
+// 	restricted_roles = list(
+// 		JOB_PUG,
+// 		JOB_AI,
+// 		JOB_CYBORG,
+// 	)
+// 	required_candidates = 1
+// 	weight = 0
+// 	cost = 0
+// 	scaling_cost = 1
+// 	minimum_players = 5
+// 	antag_cap = list("denominator" = 24)
+// 	requirements = list(70,60,40,40,40,40,40,40,10,10)
 
-/datum/dynamic_ruleset/roundstart/ntagent/pre_execute(population)
-	. = ..()
-	var/num_ntage = get_antag_cap(population) * (scaled_times + 1)
-	for (var/i = 1 to num_ntage)
-		if(candidates.len <= 0)
-			break
-		var/mob/M = pick_n_take(candidates)
-		assigned += M.mind
-		M.mind.restricted_roles = restricted_roles
-		M.mind.special_role = ROLE_NT_AGENT
-		GLOB.pre_setup_antags += M.mind
-	return TRUE
+// /datum/dynamic_ruleset/roundstart/ntagent/pre_execute(population)
+// 	. = ..()
+// 	var/num_ntage = get_antag_cap(population) * (scaled_times + 1)
+// 	for (var/i = 1 to num_ntage)
+// 		if(candidates.len <= 0)
+// 			break
+// 		var/mob/M = pick_n_take(candidates)
+// 		assigned += M.mind
+// 		M.mind.restricted_roles = restricted_roles
+// 		M.mind.special_role = ROLE_NT_AGENT
+// 		GLOB.pre_setup_antags += M.mind
+// 	return TRUE
 
-/datum/dynamic_ruleset/roundstart/ntagent/execute()
-	for(var/datum/mind/ntagent in assigned)
-		var/datum/antagonist/ntagent/new_antag = new antag_datum()
-		ntagent.add_antag_datum(new_antag)
-		GLOB.pre_setup_antags -= ntagent
-	return TRUE
+// /datum/dynamic_ruleset/roundstart/ntagent/execute()
+// 	for(var/datum/mind/ntagent in assigned)
+// 		var/datum/antagonist/ntagent/new_antag = new antag_datum()
+// 		ntagent.add_antag_datum(new_antag)
+// 		GLOB.pre_setup_antags -= ntagent
+// 	return TRUE
 
 //////////////////////////////////////////////
 //                                          //
@@ -150,61 +150,61 @@
 //                                      //
 //////////////////////////////////////////
 
-/datum/dynamic_ruleset/roundstart/traitorbro
-	name = "Blood Brothers"
-	antag_flag = ROLE_BROTHER
-	antag_datum = /datum/antagonist/brother
-	protected_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
-	)
-	restricted_roles = list(
-		JOB_AI,
-		JOB_CYBORG,
-		JOB_PUG,
-	)
-	required_candidates = 2
-	weight = 2
-	cost = 12
-	scaling_cost = 15
-	requirements = list(40,30,30,20,20,15,15,15,10,10)
-	antag_cap = 2 // Can pick 3 per team, but rare enough it doesn't matter.
-	var/list/datum/team/brother_team/pre_brother_teams = list()
-	var/const/min_team_size = 2
+// /datum/dynamic_ruleset/roundstart/traitorbro
+// 	name = "Blood Brothers"
+// 	antag_flag = ROLE_BROTHER
+// 	antag_datum = /datum/antagonist/brother
+// 	protected_roles = list(
+// 		JOB_CAPTAIN,
+// 		JOB_DETECTIVE,
+// 		JOB_HEAD_OF_SECURITY,
+// 		JOB_PRISONER,
+// 		JOB_SECURITY_OFFICER,
+// 		JOB_WARDEN,
+// 		JOB_BRIG_PHYSICIAN,
+// 		JOB_NT_SECRETARY,
+// 	)
+// 	restricted_roles = list(
+// 		JOB_AI,
+// 		JOB_CYBORG,
+// 		JOB_PUG,
+// 	)
+// 	required_candidates = 2
+// 	weight = 2
+// 	cost = 12
+// 	scaling_cost = 15
+// 	requirements = list(40,30,30,20,20,15,15,15,10,10)
+// 	antag_cap = 2 // Can pick 3 per team, but rare enough it doesn't matter.
+// 	var/list/datum/team/brother_team/pre_brother_teams = list()
+// 	var/const/min_team_size = 2
 
-/datum/dynamic_ruleset/roundstart/traitorbro/pre_execute(population)
-	. = ..()
-	var/num_teams = (get_antag_cap(population)/min_team_size) * (scaled_times + 1) // 1 team per scaling
-	for(var/j = 1 to num_teams)
-		if(candidates.len < min_team_size || candidates.len < required_candidates)
-			break
-		var/datum/team/brother_team/team = new
-		var/team_size = prob(10) ? min(3, candidates.len) : 2
-		for(var/k = 1 to team_size)
-			var/mob/bro = pick_n_take(candidates)
-			assigned += bro.mind
-			team.add_member(bro.mind)
-			bro.mind.special_role = "brother"
-			bro.mind.restricted_roles = restricted_roles
-			GLOB.pre_setup_antags += bro.mind
-		pre_brother_teams += team
-	return TRUE
+// /datum/dynamic_ruleset/roundstart/traitorbro/pre_execute(population)
+// 	. = ..()
+// 	var/num_teams = (get_antag_cap(population)/min_team_size) * (scaled_times + 1) // 1 team per scaling
+// 	for(var/j = 1 to num_teams)
+// 		if(candidates.len < min_team_size || candidates.len < required_candidates)
+// 			break
+// 		var/datum/team/brother_team/team = new
+// 		var/team_size = prob(10) ? min(3, candidates.len) : 2
+// 		for(var/k = 1 to team_size)
+// 			var/mob/bro = pick_n_take(candidates)
+// 			assigned += bro.mind
+// 			team.add_member(bro.mind)
+// 			bro.mind.special_role = "brother"
+// 			bro.mind.restricted_roles = restricted_roles
+// 			GLOB.pre_setup_antags += bro.mind
+// 		pre_brother_teams += team
+// 	return TRUE
 
-/datum/dynamic_ruleset/roundstart/traitorbro/execute()
-	for(var/datum/team/brother_team/team in pre_brother_teams)
-		team.pick_meeting_area()
-		team.forge_brother_objectives()
-		for(var/datum/mind/M in team.members)
-			M.add_antag_datum(/datum/antagonist/brother, team)
-			GLOB.pre_setup_antags -= M
-		team.update_name()
-	return TRUE
+// /datum/dynamic_ruleset/roundstart/traitorbro/execute()
+// 	for(var/datum/team/brother_team/team in pre_brother_teams)
+// 		team.pick_meeting_area()
+// 		team.forge_brother_objectives()
+// 		for(var/datum/mind/M in team.members)
+// 			M.add_antag_datum(/datum/antagonist/brother, team)
+// 			GLOB.pre_setup_antags -= M
+// 		team.update_name()
+// 	return TRUE
 
 //////////////////////////////////////////////
 //                                          //

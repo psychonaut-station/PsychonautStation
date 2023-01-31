@@ -33,6 +33,9 @@
 /// short form server name used for the DB
 /datum/config_entry/string/serversqlname
 
+/// link that will be displayed on hub title
+/datum/config_entry/string/hub_name_link
+
 /// station name (the name of the station in-game)
 /datum/config_entry/string/stationname
 

@@ -318,16 +318,17 @@ GLOBAL_VAR(restart_counter)
 		features += "closed"
 
 	var/new_status = ""
-	var/hostedby
 	if(config)
+		// If you have already HUB config open, we assume you set those config variables below correctly
 		var/server_name = CONFIG_GET(string/servername)
-		if (server_name)
-			new_status += "<b>[server_name]</b> "
+		var/name_link = CONFIG_GET(string/hub_name_link)
+
+		new_status += "<b><a href='[name_link]'>[server_name] — Modified /tg/station — DISCORD</a></b>"
+
 		if(!CONFIG_GET(flag/norespawn))
 			features += "respawn"
 		if(!CONFIG_GET(flag/allow_ai))
 			features += "AI disabled"
-		hostedby = CONFIG_GET(string/hostedby)
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
@@ -335,9 +336,6 @@ GLOBAL_VAR(restart_counter)
 	var/players = GLOB.clients.len
 
 	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
-
-	if (!host && hostedby)
-		features += "hosted by <b>[hostedby]</b>"
 
 	if(length(features))
 		new_status += ": [jointext(features, ", ")]"

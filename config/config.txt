@@ -21,6 +21,9 @@ $include lua.txt
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
+## Link that will be displayed on hub title
+HUB_NAME_LINK
+
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
 STATIONNAME Space Station 13
 
@@ -640,7 +643,7 @@ PR_ANNOUNCEMENTS_PER_ROUND 5
 #DISCORD_CHATTER
 
 # HTTPS URL of webhook
-DISCORD_CHATTER_WEBHOOK_URL 
+DISCORD_CHATTER_WEBHOOK_URL
 
 # Real time dependant tickrate
 DISCORD_CHATTER_TICKRATE 1200

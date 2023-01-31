@@ -180,6 +180,23 @@ SUBSYSTEM_DEF(shuttle)
 		log_mapping("No /obj/docking_port/mobile/supply placed on the map!")
 	return SS_INIT_SUCCESS
 
+/datum/controller/subsystem/shuttle/proc/save_shuttle_reason(reason)
+	var/json_file = file("data/shuttle_calls.json")
+
+	var/list/calls = list()
+	calls["reasons"] = list()
+	if (fexists(json_file))
+		var/list/old_data = json_decode(file2text(json_file))
+		calls["reasons"] = old_data["reasons"]
+
+	var/list/serialized_reason = list()
+	serialized_reason["name"] = station_name()
+	serialized_reason["reason"] = reason
+	calls["reasons"] += list(serialized_reason)
+
+	fdel(json_file)
+	WRITE_FILE(json_file, json_encode(calls))
+
 /datum/controller/subsystem/shuttle/proc/setup_shuttles(list/stationary)
 	for(var/obj/docking_port/stationary/port as anything in stationary)
 		port.load_roundstart()
@@ -339,6 +356,9 @@ SUBSYSTEM_DEF(shuttle)
 		SSblackbox.record_feedback("text", "shuttle_reason", 1, "[call_reason]")
 		log_shuttle("Shuttle call reason: [call_reason]")
 		SSticker.emergency_reason = call_reason
+
+		save_shuttle_reason(call_reason)
+
 	message_admins("[ADMIN_LOOKUPFLW(user)] has called the shuttle. (<A HREF='?_src_=holder;[HrefToken()];trigger_centcom_recall=1'>TRIGGER CENTCOM RECALL</A>)")
 
 /// Call the emergency shuttle.

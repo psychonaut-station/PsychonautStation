@@ -115,7 +115,7 @@
 	stamp_job = /datum/job/nt_secretary
 	stamp_icon = "paper_stamp-secretary"
 
-/obj/item/paperwork/secretary/Initialize()
+/obj/item/paperwork/secretary/Initialize(mapload)
 	. = ..()
 	/*
 	detailed_desc += span_info(" The stack of documents appear to be a medical report from a nearby station, detailing the autopsy of an unknown xenofauna.")

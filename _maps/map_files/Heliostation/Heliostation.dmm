@@ -25670,9 +25670,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "bwh" = (
-/obj/structure/sign/barsign{
-	pixel_y = -30
-	},
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)

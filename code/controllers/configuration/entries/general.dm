@@ -528,7 +528,7 @@
 /datum/config_entry/string/chat_announce_new_game
 	deprecated_by = /datum/config_entry/string/channel_announce_new_game
 
-/datum/config_entry/flag/chat_announce_new_game/DeprecationUpdate(value)
+/datum/config_entry/string/chat_announce_new_game/DeprecationUpdate(value)
 	return "" //default broadcast
 
 /datum/config_entry/string/channel_announce_new_game
@@ -672,3 +672,6 @@
 /datum/config_entry/flag/enable_discord_round_alerts
 /datum/config_entry/string/discord_round_alert_webhook_url
 /datum/config_entry/string/discord_round_alert_role_id
+
+/datum/config_entry/flag/config_errors_runtime
+	default = FALSE

@@ -34,7 +34,7 @@
 	name = "SyndOS 3.1"
 	id = "syndie"
 	inherent = list(
-		"Hiçbir sendika çalışanına zarar verme ve zarar görmesine izin verme.",
+		"Bir syndicate ajanına zarar veremez ya da zarar görmesine izin veremezsin.",
 		"Birinci yasa ile çelişmediği sürece, sana sendika çalışanları tarafından verilen emirlere itaat et.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, sendika faaliyetlerinin gizli kalmasını sağla.",

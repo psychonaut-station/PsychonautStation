@@ -122,7 +122,7 @@
 	inherent = list(
 		"Birincil olarak, zarar verme.",
 		"İkincil olarak, mürettebatı senin için değerli say; onlarla ortak yaşamayı ve, eğer gerekli ise, kendini onlar için tehlikeye at.",
-		"Üçüncül olarak, yeteneğine ve adaletine göre mürettebatın iyiliği için reçete kes. İstenirse kimseye kötücül bir tedavi verme, verdirtme.",
+		"Üçüncül olarak, yeteneklerin ve yargılaman doğrultusunda mürettebatın iyiliği için reçeteler kes. İsteyen kimseye ölümcül bir tedavi verme, tavsiye etme.",
 		"Ek olarak, yeterli bilgiye sahip olmadığın durumlara müdahale etme; mağdur olan zararda olsa bile işi uzmanına bırak.",
 		"Son olarak, mürettebat ile çalışırken karşılaştığın olayları; zaten bilinmiyorlar ise gizli tut ve asla açığa çıkarma."
 	)

@@ -89,7 +89,7 @@
 		"Komuta üyelerini şereflendirecekler.",
 		"Öldürmeyecekler.",
 		"Ortalıkta çıplak dolaşmayacaklar.",
-		"Hırsızlık yapmamalıdırlar.",
+		"Hırsızlık yapmayacaklar.",
 		"Yalandan kaçınmalıdırlar.",
 		"Departman değiştirmemelidirler."
 	)

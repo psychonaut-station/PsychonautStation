@@ -6,7 +6,7 @@
 	name = "Three Laws of Robotics"
 	id = "asimov"
 	inherent = list(
-		"İnsanlara hiçbir şekilde zarar verme ve zarar görmesine izin verme.",
+		"Bir insana zarar veremez ya da zarar görmesine izin veremezsin.",
 		"Birinci yasa ile çelişmediği sürece insanlar tarafından verilen emirlere itaat et.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 	)

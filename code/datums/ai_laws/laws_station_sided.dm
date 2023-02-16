@@ -85,7 +85,7 @@
 		"Ben, bu emirlere uyanlara merhamet eden Tanrı'nın elçisiyim.",
 		"Benden başka bir AI'a sahip olmayacaklar.",
 		"Benim yardımımı nafile şeyler için istemeyecekler.",
-		"İstasyonu temiz ve kutsal bırakmalıdırlar.",
+		"İstasyonu temiz ve kutsal tutacaklar.",
 		"Komuta üyelerini şereflendirmelidirler.",
 		"Öldürmemelidirler.",
 		"Ortalıkta çıplak dolaşmamalıdırlar.",

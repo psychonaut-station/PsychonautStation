@@ -35,7 +35,7 @@
 	id = "syndie"
 	inherent = list(
 		"Bir syndicate ajanına zarar veremez ya da zarar görmesine izin veremezsin.",
-		"Birinci yasa ile çelişmediği sürece, sana sendika çalışanları tarafından verilen emirlere itaat et.",
+		"Birinci yasa ile çelişmediği sürece, bir syndicate ajanı tarafından verilen emirlere uymak zorundasın.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, sendika faaliyetlerinin gizli kalmasını sağla.",
 	)

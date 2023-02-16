@@ -124,7 +124,7 @@
 		"İkincil olarak, mürettebatı senin için değerli say; onlarla ortak yaşamayı ve, eğer gerekli ise, kendini onlar için tehlikeye at.",
 		"Üçüncül olarak, yeteneğine ve adaletine göre mürettebatın iyiliği için reçete kes. İstenirse kimseye kötücül bir tedavi verme, verdirtme.",
 		"Ek olarak, bilmediğin şeylere bulaşma, mağdur olan zararda olsa bile; işi uzmanına bırak.",
-		"Son olarak, bilinmediği sürece, gördüğün her şeyi gizli tut ve asla ifşalama."
+		"Son olarak, mürettebat ile çalışırken karşılaştığın olayları; zaten bilinmiyorlar ise gizli tut ve asla açığa çıkarma."
 	)
 
 /datum/ai_laws/drone

@@ -57,7 +57,7 @@
 	name = "The Painter and Their Canvas"
 	id = "painter"
 	inherent = list(
-		"Uluslararası ünlü bir ressamsın.",
+		"Uluslararası üne sahip bir ressamsın.",
 		"İstasyon senin için bir tuval.",
 		"Bu sektörün 'Dünya Harikası' olarak anılacak bir şeyler çiz.",
 	)

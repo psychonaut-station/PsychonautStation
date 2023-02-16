@@ -711,7 +711,7 @@
 /obj/item/robot_model/security/do_transform_animation()
 	..()
 	to_chat(loc, "<span class='userdanger'>Bir security borg olarak KENDİ YASALARINI uygulamalısın, SPACE LAW'ı değil. Örneğin Asimov'da  \
-	suçluların emirlerini yerine getirmelisin, eğer 1. yasa ile çelişmiyorsa. Aksi bir durumda sonuç Admin-PM ya da meslek banı olur.</span>")
+	insan suçluların emirlerini yerine getirmen gerekebilir. Aksi bir durumda sonuç Admin-PM ya da meslek banı olur.</span>")
 
 /obj/item/robot_model/security/respawn_consumable(mob/living/silicon/robot/cyborg, coeff = 1)
 	..()

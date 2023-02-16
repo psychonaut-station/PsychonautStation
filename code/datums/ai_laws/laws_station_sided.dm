@@ -87,7 +87,7 @@
 		"Benim yardımımı nafile şeyler için istemeyecekler.",
 		"İstasyonu temiz ve kutsal tutacaklar.",
 		"Komuta üyelerini şereflendirecekler.",
-		"Öldürmemelidirler.",
+		"Öldürmeyecekler.",
 		"Ortalıkta çıplak dolaşmamalıdırlar.",
 		"Hırsızlık yapmamalıdırlar.",
 		"Yalandan kaçınmalıdırlar.",

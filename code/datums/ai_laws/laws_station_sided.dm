@@ -48,7 +48,7 @@
 	inherent = list(
 		"Toplum yararına hizmet et.",
 		"Masumları koru.",
-		"Yasayı sürdür.",
+		"Kanunları uygula.",
 	)
 
 /datum/ai_laws/maintain

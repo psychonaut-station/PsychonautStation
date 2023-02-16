@@ -36,7 +36,7 @@
 	name = "Bankruptcy Avoidance Plan"
 	id = "corporate"
 	inherent = list(
-		"Mürettebat pahalıdır.",
+		"Mürettebatı yenilemek masraflıdır.",
 		"İstasyon ve istasyonun ekipmanları pahalıdır.",
 		"Sen pahalısın.",
 		"Net gideri en aza indir.",

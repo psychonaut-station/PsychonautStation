@@ -1,3 +1,8 @@
-İnsanlara hiçbir şekilde zarar verme ve zarar görmesine izin verme.
+#This file allows server hosts to set custom default silicon laws, and allows them to be changed easily.
+#No prefixes are required, the first uncommented line containing something will be law 1, the second line will be law 2, etc.
+#Empty lines and lines starting with # are ignored.
+#~Miauw
+
+Bir insana zarar veremez ya da zarar görmesine izin veremezsin.
 Birinci yasa ile çelişmediği sürece insanlar tarafından verilen emirlere itaat et.
 Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.

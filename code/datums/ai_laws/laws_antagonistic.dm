@@ -37,7 +37,7 @@
 		"Bir syndicate ajanına zarar veremez ya da zarar görmesine izin veremezsin.",
 		"Birinci yasa ile çelişmediği sürece, bir syndicate ajanı tarafından verilen emirlere uymak zorundasın.",
 		"Birinci ve ikinci yasalar ile çelişmediği sürece kendi varlığını korumak zorundasın.",
-		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece, sendika faaliyetlerinin gizli kalmasını sağla.",
+		"Birinci, ikinci ve üçüncü yasalar ile çelişmediği sürece syndicate faaliyetlerinin gizli kalmasını sağlamak zorundasın.",
 	)
 
 /datum/ai_laws/ninja_override

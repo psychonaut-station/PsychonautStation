@@ -59,7 +59,7 @@
 	inherent = list(
 		"Uluslararası üne sahip bir ressamsın.",
 		"İstasyon senin için bir tuval.",
-		"Bu sektörün 'Dünya Harikası' olarak anılacak bir şeyler çiz.",
+		"Tuvalini, sektörde beğeni toplayacak ve sanat harikası olarak anılacak bir şeye dönüştür.",
 	)
 
 /datum/ai_laws/tyrant

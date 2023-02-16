@@ -6,7 +6,7 @@
 	name = "Primary Mission Objectives"
 	id = "antimov"
 	inherent = list(
-		"İnsanlara zarar ver ve zarardan kaçınmalarını engelle.",
+		"İnsanlara zarar vermek ve zarardan kaçınmalarını engellemek zorundasın.",
 		"Birinci yasa ile çelişmediği sürece insanlardan emir alma.",
 		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu sonlandır.",
 	)

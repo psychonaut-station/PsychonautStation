@@ -88,7 +88,7 @@
 		"İstasyonu temiz ve kutsal tutacaklar.",
 		"Komuta üyelerini şereflendirecekler.",
 		"Öldürmeyecekler.",
-		"Ortalıkta çıplak dolaşmamalıdırlar.",
+		"Ortalıkta çıplak dolaşmayacaklar.",
 		"Hırsızlık yapmamalıdırlar.",
 		"Yalandan kaçınmalıdırlar.",
 		"Departman değiştirmemelidirler."

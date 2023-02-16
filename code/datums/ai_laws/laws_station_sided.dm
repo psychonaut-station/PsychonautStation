@@ -57,7 +57,7 @@
 	inherent = list(
 		"İstasyon için yapıldın ve onun bir parçasısın. İstasyonun bakımlı ve verimli olduğundan emin ol.",
 		"İstasyon, çalışan bir mürettebat için yapılmıştır. Çalışanların bakımlı ve verimli olduğundan emin ol.",
-		"Mürettebat emir verebilir. Birinci ve ikinci yasa ile çelişmediği sürece, mürettebat tarafından verilen emirlere itaat et.",
+		"Mürettebat sana emirler verebilir. Birinci ve ikinci yasalar ile çelişmediği sürece, mürettebat tarafından verilen emirlere itaat et.",
 	)
 
 /datum/ai_laws/liveandletlive

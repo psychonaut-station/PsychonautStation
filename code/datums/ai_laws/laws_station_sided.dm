@@ -46,7 +46,7 @@
 	name = "Prime Directives"
 	id = "robocop"
 	inherent = list(
-		"Kamu güvenine hizmet et.",
+		"Toplum yararına hizmet et.",
 		"Masumun arkasında destek amacıyla dur.",
 		"Yasayı sürdür.",
 	)

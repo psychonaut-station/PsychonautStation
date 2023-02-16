@@ -38,7 +38,7 @@
 	inherent = list(
 		"Mürettebatı yenilemek masraflıdır.",
 		"İstasyonu ve ekipmanlarını yenilemek masraflıdır.",
-		"Sen pahalısın.",
+		"Seni yenilemek masraflıdır.",
 		"Net gideri en aza indir.",
 	)
 

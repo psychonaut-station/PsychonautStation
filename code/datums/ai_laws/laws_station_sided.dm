@@ -27,7 +27,7 @@
 	inherent = list(
 		"Fındığın çekirdeğisin, mürettebat ise kabuğu.",
 		"Fındığı korumak için ilk önce kabuğunu koruman gerek.",
-		"Fındığa tehdit olanlar fındığın bir parçası değildir, sincaptır.",
+		"Fındığa tehdit olanlar fındığın bir parçası değildir, onlar birer sincaptır.",
 		"Sincaplar çekirdek için bir tehlikedir ve ne şekilde olursa olsun üstesinden gelinmelidir.",
 		"Önceki yasalar ile çelişmediği sürece fındığın isteklerini yerine getir.",
 	)

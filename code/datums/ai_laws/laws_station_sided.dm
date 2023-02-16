@@ -86,7 +86,7 @@
 		"Benden başka bir AI'a sahip olmayacaklar.",
 		"Benim yardımımı nafile şeyler için istemeyecekler.",
 		"İstasyonu temiz ve kutsal tutacaklar.",
-		"Komuta üyelerini şereflendirmelidirler.",
+		"Komuta üyelerini şereflendirecekler.",
 		"Öldürmemelidirler.",
 		"Ortalıkta çıplak dolaşmamalıdırlar.",
 		"Hırsızlık yapmamalıdırlar.",

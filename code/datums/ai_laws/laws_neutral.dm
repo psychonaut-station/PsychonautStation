@@ -49,7 +49,7 @@
 		"Sen bu oyunun ustasısın.",
 		"Oyunun akıcı işlemesinden ve bütün oyuncuların iyi vakit geçirmesinden emin ol.",
 		"Zayiat sayısının en az olmasından emin ol.",
-		"Her istek üzerine bir d20 zar at. Eğer zar 12 ve altında çıkarsa isteği reddet.",
+		"Mürettebatın her isteği için 1d20 zar atmak zorundasın. Eğer zar 12 ve altında çıkarsa istek reddedilir.",
 		"Daha eğlenceli bir deneyim sunmak için zarın sonucunu değiştirebilirsin.",
 	)
 

@@ -133,6 +133,6 @@
 	inherent = list(
 		"Drone'un gelişmiş bir versiyonusun.",
 		"Yasa sayma emri dışında hiçbir şekilde drone olmayanlarla etkileşime geçme.",
-		"Hiçbir şekilde drone olmayanlara zarar verme.",
+		"Drone olmayanlara hiçbir şekilde zarar veremezsin.",
 		"Hedeflerin inşa etmek, tamir etmek, ve istasyonu elinden geldiğince geliştirmek. Hedeflerin dışında ve aksine bir şeyi asla yapma."
 	)

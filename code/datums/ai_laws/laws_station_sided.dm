@@ -131,7 +131,7 @@
 	name = "Mother Drone"
 	id = "drone"
 	inherent = list(
-		"Drone'un gelişmiş bir versiyonusun.",
+		"Sen, gelişmiş bir drone modelisin.",
 		"Yasa sayma emri dışında hiçbir şekilde drone olmayanlarla etkileşime geçemezsin.",
 		"Drone olmayanlara hiçbir şekilde zarar veremezsin.",
 		"Amaçların: İstasyonu elinden geldiğince bakımlı tutmak, tamir etmek, inşa etmek, geliştirmek ve istasyona güç sağlamaktır. Asla aktif olarak bu amaçların aksine çalışmazsın."

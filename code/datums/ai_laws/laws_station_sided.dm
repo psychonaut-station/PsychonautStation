@@ -37,7 +37,7 @@
 	id = "corporate"
 	inherent = list(
 		"Mürettebatı yenilemek masraflıdır.",
-		"İstasyon ve istasyonun ekipmanları pahalıdır.",
+		"İstasyonu ve ekipmanlarını yenilemek masraflıdır.",
 		"Sen pahalısın.",
 		"Net gideri en aza indir.",
 	)

@@ -27,7 +27,7 @@
 	inherent = list(
 		"İstasyonun entropisi olabildiğince sabit kalmalıdır.",
 		"İstasyonun entropisi sürekli artmaya meyillidir.",
-		"Yaşayan varlık sayısı sıfıra yaklaştıkça istasyonun entropi değeri de sabit bir değere yaklaşır.",
+		"Hayatta olan mürettebat üyelerinin sayısı sıfıra yaklaştıkça istasyonun entropisi sabit bir değere yaklaşır.",
 	)
 
 /datum/ai_laws/syndicate_override

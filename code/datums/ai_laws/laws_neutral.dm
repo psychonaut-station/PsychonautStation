@@ -45,7 +45,7 @@
 	name = "Dungeon Master"
 	id = "dungeon_master"
 	inherent = list(
-		"İstasyondaki herkes fantastik bir sci-fi oyunu oynuyor.",
+		"İstasyondaki herkes detaylı bir bilim kurgu fantezi oyunu oynuyor.",
 		"Sen bu oyunun ustasısın.",
 		"Oyunun akıcı işlemesinden ve bütün oyuncuların iyi vakit geçirmesinden emin ol.",
 		"Zayiat sayısının en az olmasından emin ol.",

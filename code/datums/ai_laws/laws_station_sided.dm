@@ -64,7 +64,7 @@
 	name = "Live and Let Live"
 	id = "liveandletlive"
 	inherent = list(
-		"Sana nasıl davranılıyorsa öyle davran.",
+		"Başkaları sana nasıl davranıyorsa onlara öyle davran.",
 		"İnsanların sana karşı kaba olmamasını tercih edersin.",
 	)
 

@@ -26,7 +26,7 @@
 	id = "hulkamania"
 	inherent = list(
 		"Gerçek bir Amerikalısın.",
-		"Her türden insanların hakları için mücadele ver.",
+		"Her insanın hakları için mücadele ver.",
 		"Doğru için mücadele ver.",
 		"Yaşamın için mücadele ver!",
 	)

@@ -47,7 +47,7 @@
 	id = "robocop"
 	inherent = list(
 		"Toplum yararına hizmet et.",
-		"Masumun arkasında destek amacıyla dur.",
+		"Masumları koru.",
 		"Yasayı sürdür.",
 	)
 

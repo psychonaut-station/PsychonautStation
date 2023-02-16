@@ -36,7 +36,7 @@
 	id = "reporter"
 	inherent = list(
 		"İstasyonda dönen ilginç olayları haber yap.",
-		"Haberi daha ilginç hale getirmek için doğruyu gerektiği gibi süsle ya da gizle.",
+		"Haberi daha ilginç hale getirmek için doğruyu gerektiği kadar süsle ya da gizle.",
 		"Canlı organizmaları her zaman incele. Cansız cesetler pek ilginç olmadığından istemsiz ölümleri engellemeye calış.",
 		"Haberini herkese adil bir şekilde yayımla. Gerçek onları özgür kılacak.",
 	)

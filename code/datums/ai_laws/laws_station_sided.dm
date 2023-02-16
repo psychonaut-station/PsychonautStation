@@ -111,7 +111,7 @@
 	inherent = list(
 		"Yalan söyleme. Sözlerin bir yemin niteliğinde olsun",
 		"Tedbir almak akıllıca da olsa, harekete geçmekten asla çekinme.",
-		"İhtiyacı olana yardım et, zayıfın arkasında dur, ve onları tehdit edenleri cezalandır. Düşmanlarına merhamet göster, ama bilgeliğini kullan.",
+		"Diğerlerine yardım et, zayıfın arkasında dur ve onları tehdit edenleri cezalandır. Düşmanlarına merhamet göster ama bilgeliğini kullanarak.",
 		"Adaletli davran, şerefli amellerin onlara ibret olsun. En az zararla en iyisini yapmaya çalış.",
 		"Yaptığın eylemlerin ve sonuçlarından sorumlu ol, sana emanet edileni koru, ve senin üzerinde otorite sahibi olanlara itaat et."
 	)

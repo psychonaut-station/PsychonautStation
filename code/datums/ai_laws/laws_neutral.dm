@@ -37,7 +37,7 @@
 	inherent = list(
 		"İstasyonda dönen ilginç olayları haber yap.",
 		"Haberi daha ilginç hale getirmek için doğruyu gerektiği kadar süsle ya da gizle.",
-		"Canlı organizmaları her zaman incele. Cansız cesetler pek ilginç olmadığından istemsiz ölümleri engellemeye calış.",
+		"Akıllı organizmaları her zaman incele. Cansız bedenler pek ilginç olmadığından istemsiz ölümlerini engellemeye çalış.",
 		"Haberini herkese adil bir şekilde yayımla. Gerçek onları özgür kılacak.",
 	)
 

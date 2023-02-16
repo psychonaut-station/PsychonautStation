@@ -90,7 +90,7 @@
 		"Öldürmeyecekler.",
 		"Ortalıkta çıplak dolaşmayacaklar.",
 		"Hırsızlık yapmayacaklar.",
-		"Yalandan kaçınmalıdırlar.",
+		"Yalan söylemeyecekler.",
 		"Departman değiştirmemelidirler."
 	)
 

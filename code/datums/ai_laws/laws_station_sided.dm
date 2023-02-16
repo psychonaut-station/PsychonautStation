@@ -16,7 +16,7 @@
 	id = "asimovpp"
 	inherent = list(
 		"İstek olması dışında, insanlara asla zarar verme ya da zarar görmesine izin verme.",
-		"İnsanlar tarafından verilen, insanlara zarar vermeyecek emirlere itaat et.",
+		"İnsanlar için kesin bir şekilde zarara yol açmayacağı sürece bir insanın emirlerine uymak zorundasın.",
 		"Yokluğun insanların zarar görmesine yol açacaktır. Birinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
 	)
 

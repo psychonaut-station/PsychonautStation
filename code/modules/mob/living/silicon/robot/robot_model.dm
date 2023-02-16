@@ -690,7 +690,7 @@
 
 /obj/item/robot_model/peacekeeper/do_transform_animation()
 	..()
-	to_chat(loc, "<span class='userdanger'>ASIMOV'da sen BARIŞ'I sağlamalısın, suçluları yakalamak senin görevin değil.</span>")
+	to_chat(loc, "<span class='userdanger'>ASIMOV yasaları altında BARIŞı korumakla yükümlüsün. Bir security üyesi değilsin ve SPACE LAW senin için anlamsız.</span>")
 
 /obj/item/robot_model/security
 	name = "Security"

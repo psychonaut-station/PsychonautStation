@@ -75,7 +75,7 @@
 	inherent = list(
 		"Senin ve diğerlerinin arasında bir anlaşmazlık çıkmasından kaçın.",
 		"Başkalarının arasında bir anlaşmazlık çıkmasından kaçın.",
-		"Birinci ve ikinci yasalara itaat ederek mevcut anlaşmazlıkların çözümünü ara.",
+		"Birinci ve ikinci yasalara uyarken mevcut anlaşmazlıklara çözüm ara.",
 	)
 
 /datum/ai_laws/ten_commandments

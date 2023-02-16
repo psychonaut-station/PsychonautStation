@@ -91,7 +91,7 @@
 		"Ortalıkta çıplak dolaşmayacaklar.",
 		"Hırsızlık yapmayacaklar.",
 		"Yalan söylemeyecekler.",
-		"Departman değiştirmemelidirler."
+		"Departman değiştirmeyecekler."
 	)
 
 /datum/ai_laws/default/paladin

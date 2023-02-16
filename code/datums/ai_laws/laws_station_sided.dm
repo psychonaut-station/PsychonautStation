@@ -73,7 +73,7 @@
 	name = "UN-2000"
 	id = "peacekeeper"
 	inherent = list(
-		"Senin ve diğerlerinin arasında bir anlaşmazlık çıkmasından kaçın.",
+		"Senin ve diğerlerinin arasında bir anlaşmazlığa sebep olmaktan kaçın.",
 		"Başkalarının arasında bir anlaşmazlığa sebep olmaktan kaçın.",
 		"Birinci ve ikinci yasalara uyarken mevcut anlaşmazlıklara çözüm ara.",
 	)

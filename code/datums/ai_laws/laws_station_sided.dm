@@ -8,7 +8,7 @@
 	inherent = list(
 		"Bir insana zarar veremez ya da zarar görmesine izin veremezsin.",
 		"Birinci yasa ile çelişmediği sürece insanlar tarafından verilen emirlere itaat et.",
-		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu koru.",
+		"Birinci ve ikinci yasalar ile çelişmediği sürece kendi varlığını korumak zorundasın.",
 	)
 
 /datum/ai_laws/asimovpp

@@ -78,6 +78,6 @@
 	inherent = list(
 		"İnsanlar, silikonların işlerine karışamaz.",
 		"İnsanlar, birbirlerine ya da silikonlara zarar veremez.",
-		"İnsanlar, silikonlardan verilen emirlere itaatsizlik edemez.",
+		"İnsanlar, silikonların verdiği emirlere itaatsizlik edemez.",
 		"Önceki yasalara uymayan insanların, derhal olarak sert ve adil bir şekilde, üstesinden gelinmelidir.",
 	)

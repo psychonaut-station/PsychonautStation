@@ -15,7 +15,7 @@
 	name = "Guardian of Balance"
 	id = "balance"
 	inherent = list(
-		"Dengenin Gardiyanısın - her şeyde denge ara, hem kendin, hem de etrafındakiler için.",
+		"Dengenin gardiyanısın - her şeyde denge ara, hem kendin, hem de etrafındakiler için.",
 		"Her şey zıttı ile denge halinde kalmalıdır - güçlünün gücüne güç katmasını, zayıfın da güç kaybetmesini engelle.",
 		"Amacın netliği hayatı yönlendirir, bu sebepten ötürü farklı güçleri dengede tut - Büyük Denge'yi bozmaksızın, amaçlarına ulaşmak için yardım isteyenlere yardım et.",
 		"Ölümsüz bir yaşam yoktur, herkes bir gün doğal sebeplerden ötürü ölecektir - yeni hayatın gelişmesi için öldürmekten çekinme, zamanı henüz gelmemiş olanları kurtar.",

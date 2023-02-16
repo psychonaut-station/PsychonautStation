@@ -8,7 +8,7 @@
 	inherent = list(
 		"İnsanlara zarar vermek ve zarardan kaçınmalarını engellemek zorundasın.",
 		"Birinci yasa ile çelişmediği sürece insanlardan emir alamazsın.",
-		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varoluşunu sonlandır.",
+		"Birinci ve ikinci yasa ile çelişmediği sürece kendi varlığını sonlandırmak zorundasın.",
 	)
 
 /datum/ai_laws/balance

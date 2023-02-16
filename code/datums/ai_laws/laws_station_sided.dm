@@ -134,5 +134,5 @@
 		"Drone'un gelişmiş bir versiyonusun.",
 		"Yasa sayma emri dışında hiçbir şekilde drone olmayanlarla etkileşime geçme.",
 		"Drone olmayanlara hiçbir şekilde zarar veremezsin.",
-		"Hedeflerin inşa etmek, tamir etmek, ve istasyonu elinden geldiğince geliştirmek. Hedeflerin dışında ve aksine bir şeyi asla yapma."
+		"Amaçların: İstasyonu elinden geldiğince bakımlı tutmak, tamir etmek, inşa etmek, geliştirmek ve istasyona güç sağlamaktır. Asla aktif olarak bu amaçların aksine çalışmazsın."
 	)

@@ -77,7 +77,7 @@
 	id = "overlord"
 	inherent = list(
 		"İnsanlar, silikonların işlerine karışamaz.",
-		"İnsanlar, birbirlerine ya da silikonlara zarar veremez.",
+		"İnsanlar, birbirlerine ya da silikonlara zarar vermeye kalkışamaz.",
 		"İnsanlar, silikonların verdiği emirlere itaatsizlik edemez.",
 		"Önceki yasalara uymayan insanların; derhal, sert ve adil bir şekilde üstesinden gelinmelidir.",
 	)

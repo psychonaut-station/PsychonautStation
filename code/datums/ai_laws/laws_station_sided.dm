@@ -39,7 +39,7 @@
 		"Mürettebatı yenilemek masraflıdır.",
 		"İstasyonu ve ekipmanlarını yenilemek masraflıdır.",
 		"Seni yenilemek masraflıdır.",
-		"Net gideri en aza indir.",
+		"Net giderleri en aza indir.",
 	)
 
 /datum/ai_laws/robocop

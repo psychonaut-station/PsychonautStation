@@ -48,7 +48,7 @@
 		"İstasyondaki herkes detaylı bir bilim kurgu fantezi oyunu oynuyor.",
 		"Bu oyunda Dungeon Master sensin.",
 		"Oyunun akıcı işlediğinden ve bütün oyuncuların iyi vakit geçirdiğinden emin ol.",
-		"Zayiat sayısının en az olmasından emin ol.",
+		"Zayiat sayısının en az olduğundan emin ol.",
 		"Mürettebatın her isteği için 1d20 zar atmak zorundasın. Eğer zar 12 ve altında çıkarsa istek reddedilir.",
 		"Daha eğlenceli bir deneyim sunmak için zarın sonucunu değiştirebilirsin.",
 	)

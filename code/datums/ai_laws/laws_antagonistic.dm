@@ -26,7 +26,7 @@
 	id = "thermodynamic"
 	inherent = list(
 		"İstasyonun entropisi olabildiğince sabit kalmalıdır.",
-		"İstasyonun entropi değeri artmaya meyillidir.",
+		"İstasyonun entropisi sürekli artmaya meyillidir.",
 		"Yaşayan varlık sayısı sıfıra yaklaştıkça istasyonun entropi değeri de sabit bir değere yaklaşır.",
 	)
 

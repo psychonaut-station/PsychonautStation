@@ -4,17 +4,22 @@ on:
     branches:
     - master
     - 'project/**'
+    - 'gh-readonly-queue/master/**'
+    - 'gh-readonly-queue/project/**'
   pull_request:
     branches:
     - master
     - 'project/**'
+  merge_group:
+    branches:
+    - master
 jobs:
   run_linters:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Run Linters
     runs-on: ubuntu-22.04
     concurrency:
-      group: run_linters-${{ github.ref }}
+      group: run_linters-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -60,7 +65,7 @@ jobs:
           ~/dreamchecker > ${GITHUB_WORKSPACE}/output-annotations.txt 2>&1
       - name: Annotate Lints
         uses: yogstation13/DreamAnnotate@v2
-        if: always()
+        if: success() || failure()
         with:
           outputFile: output-annotations.txt
 
@@ -69,7 +74,7 @@ jobs:
     name: Compile Maps
     runs-on: ubuntu-20.04
     concurrency:
-      group: compile_all_maps-${{ github.ref }}
+      group: compile_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -91,7 +96,7 @@ jobs:
     outputs:
       maps: ${{ steps.map_finder.outputs.maps }}
     concurrency:
-      group: find_all_maps-${{ github.ref }}
+      group: find_all_maps-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -102,7 +107,7 @@ jobs:
           sed -i -e s+_maps/+\"+g -e s+.json+\"+g maps_output.txt
           echo "Maps: $(cat maps_output.txt)"
           echo "maps={\"paths\":[$(cat maps_output.txt)]}" >> $GITHUB_OUTPUT
-          
+
   run_all_tests:
     if: "!contains(github.event.head_commit.message, '[ci skip]')"
     name: Integration Tests
@@ -112,12 +117,12 @@ jobs:
       matrix:
         map: ${{ fromJSON(needs.find_all_maps.outputs.maps).paths }}
     concurrency:
-      group: run_all_tests-${{ github.ref }}-${{ matrix.map }}
+      group: run_all_tests-${{ github.head_ref || github.run_id }}-${{ matrix.map }}
       cancel-in-progress: true
     uses: ./.github/workflows/run_integration_tests.yml
     with:
       map: ${{ matrix.map }}
-      
+
   compare_screenshots:
     if: "!contains(github.event.head_commit.message, '[ci skip]') && always()"
     needs: [run_all_tests]
@@ -158,7 +163,7 @@ jobs:
     name: Windows Build
     runs-on: windows-latest
     concurrency:
-      group: test_windows-${{ github.ref }}
+      group: test_windows-${{ github.head_ref || github.run_id }}
       cancel-in-progress: true
     steps:
       - uses: actions/checkout@v3
@@ -174,12 +179,3 @@ jobs:
         run: pwsh tools/ci/build.ps1
         env:
           DM_EXE: "C:\\byond\\bin\\dm.exe"
-      - name: Create artifact
-        run: |
-          md deploy
-          bash tools/deploy.sh ./deploy
-      - name: Deploy artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: deploy
-          path: deploy

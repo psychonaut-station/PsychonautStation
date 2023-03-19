@@ -193,7 +193,7 @@
 /obj/item/storage/box/mime
 	name = "invisible box"
 	desc = "Unfortunately not large enough to trap the mime."
-	foldable = null
+	foldable_result = null
 	icon_state = "box"
 	inhand_icon_state = null
 	alpha = 0
@@ -213,7 +213,7 @@
 	desc = "A special box for sensitive people."
 	icon_state = "hugbox"
 	illustration = "heart"
-	foldable = null
+	foldable_result = null
 
 /obj/item/storage/box/hug/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] clamps the box of hugs on [user.p_their()] jugular! Guess it wasn't such a hugbox after all.."))
@@ -270,7 +270,7 @@
 	desc = "A special box for sensitive people."
 	icon_state = "hugbox"
 	illustration = "heart"
-	foldable = null
+	foldable_result = null
 	mask_type = null
 
 //Mime survival box

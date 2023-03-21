@@ -36,16 +36,16 @@
 	jobtype = /datum/job/synthetic
 	skip_backpack = TRUE
 
-	uniform = /obj/item/clothing/under/costume/deckers
-	suit = /obj/item/clothing/suit/costume/deckers
+	uniform = /obj/item/clothing/under/rank/security/detective/noir
+	suit = /obj/item/clothing/suit/jacket/synthetic
+	neck = /obj/item/clothing/neck/tie/black/tied
 	back = /obj/item/storage/backpack/holding
-	head = /obj/item/clothing/head/utility/hardhat/welding/dblue
 	gloves = /obj/item/clothing/gloves/chief_engineer
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
 	l_pocket = /obj/item/healthanalyzer/advanced
-	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
+	head = null
 	id = null
 
 	backpack_contents = list(

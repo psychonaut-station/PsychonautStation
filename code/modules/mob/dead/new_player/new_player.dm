@@ -105,6 +105,8 @@
 			return "[jobtitle] is unavailable."
 		if(JOB_UNAVAILABLE_BANNED)
 			return "You are currently banned from [jobtitle]."
+		if(JOB_UNAVAILABLE_WHITELISTED)
+			return "You are not whitelisted for [jobtitle] job."
 		if(JOB_UNAVAILABLE_PLAYTIME)
 			return "You do not have enough relevant playtime for [jobtitle]."
 		if(JOB_UNAVAILABLE_ACCOUNTAGE)

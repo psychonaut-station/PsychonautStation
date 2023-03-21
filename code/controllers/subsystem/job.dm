@@ -1085,6 +1085,10 @@ SUBSYSTEM_DEF(job)
 		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_BANNED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_BANNED
 
+	if (possible_job.whitelisted && !check_job_whitelist(player.ckey))
+		JobDebug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_WHITELISTED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_WHITELISTED
+
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))
 		JobDebug("[debug_prefix] player is qdeleted, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")

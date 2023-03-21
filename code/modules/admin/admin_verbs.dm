@@ -225,6 +225,7 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	/client/proc/validate_cards,
 	/client/proc/validate_puzzgrids,
 	/client/proc/view_runtimes,
+	/client/proc/job_whitelist,
 	)
 GLOBAL_LIST_INIT(admin_verbs_possess, list(/proc/possess, /proc/release))
 GLOBAL_PROTECT(admin_verbs_possess)

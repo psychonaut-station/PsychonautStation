@@ -110,7 +110,7 @@
 				continue //Don't show afk admins to adminwho
 			if(!client.holder.fakekey)
 				msg += "\t[display_name] is a [client.holder.rank_names()]\n"
-		msg += span_info("Adminhelps are also sent through TGS to services like IRC and Discord. If no admins are available in game, sending an adminhelp might still be noticed and responded to.")
+		msg += span_info("Eğer müsait bir yetkili yoksa lütfen Discord üzerinden ticket açın.")
 	to_chat(src, msg)
 
 #undef DEFAULT_WHO_CELLS_PER_ROW

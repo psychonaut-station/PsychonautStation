@@ -215,6 +215,14 @@ const JobRow = (
         </Stack.Item>
       </Stack>
     );
+  } else if (data.job_whitelist && data.job_whitelist.indexOf(name) !== -1) {
+    rightSide = (
+      <Stack align="center" height="100%" pr={1}>
+        <Stack.Item grow textAlign="right">
+          <b>Whitelisted</b>
+        </Stack.Item>
+      </Stack>
+    );
   } else {
     rightSide = (
       <PriorityButtons

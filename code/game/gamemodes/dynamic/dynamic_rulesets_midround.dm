@@ -216,6 +216,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -266,6 +267,7 @@
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
+		JOB_SYNTHETIC,
 	)
 	exclusive_roles = list(JOB_AI)
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
@@ -350,6 +352,7 @@
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_BRIG_PHYSICIAN,
+		JOB_SYNTHETIC,
 	)
 	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
 	required_candidates = 5
@@ -427,6 +430,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -772,6 +776,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_SYNTHETIC,
 		ROLE_POSITRONIC_BRAIN,
 		JOB_PUG,
 	)
@@ -833,6 +838,7 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
+		JOB_SYNTHETIC,
 	)
 	required_enemies = list(2, 2, 1, 1, 1, 1, 1, 0, 0, 0)
 	required_candidates = 1

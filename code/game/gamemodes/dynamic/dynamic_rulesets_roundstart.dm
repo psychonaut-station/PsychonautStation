@@ -225,6 +225,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -277,6 +278,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -403,6 +405,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 		JOB_PUG,
 	)
 	required_candidates = 2
@@ -581,6 +584,7 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 		JOB_PUG,
 	)
 	required_candidates = 3

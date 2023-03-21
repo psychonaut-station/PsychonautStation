@@ -127,6 +127,9 @@
 	/// custom ringtone for this job
 	var/job_tone
 
+	/// Won't allow anyone to select this job, if their ckey is not in "data/job_whitelist.txt"
+	var/whitelisted = FALSE
+
 
 /datum/job/New()
 	. = ..()
@@ -292,7 +295,7 @@
 	var/pda_slot = ITEM_SLOT_BELT
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	if(ispath(back, /obj/item/storage/backpack))
+	if(!skip_backpack && ispath(back, /obj/item/storage/backpack))
 		switch(H.backpack)
 			if(GBACKPACK)
 				back = /obj/item/storage/backpack //Grey backpack
@@ -464,6 +467,11 @@
 /// Applies the preference options to the spawning mob, taking the job into account. Assumes the client has the proper mind.
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
 
+/mob/living/carbon/human/species/synthetic/apply_prefs_job(client/player_client, datum/job/job)
+	if(GLOB.current_anonymous_theme)
+		fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+		return
+	apply_pref_name(/datum/preference/name/synthetic, player_client)
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")

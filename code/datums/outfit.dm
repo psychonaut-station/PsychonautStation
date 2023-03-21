@@ -120,6 +120,9 @@
 	/// Any undershirt. While on humans it is a string, here we use paths to stay consistent with the rest of the equips.
 	var/datum/sprite_accessory/undershirt = null
 
+	/// Skips department backpacks, useful if you set a special backpack
+	var/skip_backpack = FALSE
+
 /**
  * Called at the start of the equip proc
  *
@@ -249,7 +252,7 @@
 				var/obj/item/tank/internals/internals = H.is_holding_item_of_type(/obj/item/tank/internals)
 				if(internals)
 					H.open_internals(internals)
-			else 
+			else
 				H.open_internals(H.get_item_by_slot(internals_slot))
 		if(implants)
 			for(var/implant_type in implants)

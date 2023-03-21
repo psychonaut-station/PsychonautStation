@@ -471,7 +471,7 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	set category = "Admin.Game"
 	set name = "Add Job Whitelist"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_FUN))
 		return
 
 	var/ckey = tgui_input_text(usr, "Eklenecek ckey'i girin (büyük küçük fark etmez).\nNot: Eklenen oyuncu whitelist kategörisindeki bütün mesleklere erişebilecek.", "Global Job Whitelist")

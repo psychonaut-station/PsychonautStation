@@ -40,7 +40,7 @@
 	suit = /obj/item/clothing/suit/costume/deckers
 	back = /obj/item/storage/backpack/holding
 	head = /obj/item/clothing/head/utility/hardhat/welding/dblue
-	gloves = /obj/item/clothing/gloves/color/yellow/sprayon
+	gloves = /obj/item/clothing/gloves/chief_engineer
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
 	l_pocket = /obj/item/healthanalyzer/advanced

@@ -40,8 +40,8 @@
 		TRAIT_LIGHTBULB_REMOVER,
 	)
 
-	brutemod = 0.08
-	burnmod = 0.08
+	brutemod = 0.2
+	burnmod = 0.2
 	coldmod = 0
 	heatmod = 1.5
 	stunmod = 0.3

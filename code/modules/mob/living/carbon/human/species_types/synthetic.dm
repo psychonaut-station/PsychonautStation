@@ -56,7 +56,7 @@
 	mutantlungs = null
 	species_language_holder = /datum/language_holder/synthetic
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
-	changesource_flags = NONE
+	changesource_flags = MIRROR_BADMIN
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot,

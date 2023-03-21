@@ -351,7 +351,6 @@
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_BRIG_PHYSICIAN,
-		JOB_SYNTHETIC,
 	)
 	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
 	required_candidates = 5

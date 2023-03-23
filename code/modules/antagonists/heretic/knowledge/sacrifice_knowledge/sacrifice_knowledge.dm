@@ -114,6 +114,8 @@
 			continue
 		if(possible_target.current.stat == DEAD)
 			continue
+		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
+			continue
 
 		valid_targets += possible_target
 

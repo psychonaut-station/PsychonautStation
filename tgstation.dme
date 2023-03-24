@@ -3589,6 +3589,7 @@
 #include "code\modules\jobs\job_types\spawner\syndicate_cybersun_captain.dm"
 #include "code\modules\jobs\job_types\spawner\venus_human_trap.dm"
 #include "code\modules\jobs\job_types\spawner\zombie.dm"
+#include "code\modules\jobs\job_types\synthetic\synthetic_bundle.dm"
 #include "code\modules\keybindings\bindings_atom.dm"
 #include "code\modules\keybindings\bindings_client.dm"
 #include "code\modules\keybindings\focus.dm"

@@ -174,3 +174,35 @@
 	SSblackbox.record_feedback("tally", "chaplain_armor", 1, "[choice_path]")
 	GLOB.holy_armor_type = choice_path
 	return ..()
+
+/obj/item/choice_beacon/synthetic
+	name = "synthetic beacon"
+	desc = "Contains a set of department kits synthetic."
+
+/obj/item/choice_beacon/synthetic/can_use_beacon(mob/living/user)
+	if(user.mind?.synthetic)
+		return ..()
+
+	playsound(src, 'sound/machines/buzz-sigh.ogg', 40, TRUE)
+	return FALSE
+
+/obj/item/choice_beacon/synthetic/open_options_menu(mob/living/user)
+	if(!can_use_beacon(user))
+		return
+
+	var/list/available_bundles = list()
+	var/list/available_bundles_typepaths = list()
+	for(var/datum/synthetic_bundle/bundle as anything in typesof(/datum/synthetic_bundle))
+		var/bundle_name = initial(bundle.name)
+		if (bundle_name == "")
+			continue
+		available_bundles[bundle_name] = bundle_name
+		available_bundles_typepaths[bundle_name] = bundle
+
+	var/chosen_name = tgui_input_list(user, "Select a Kit", "Synthetic Beacon", available_bundles)
+	var/chosen_type = available_bundles_typepaths[chosen_name]
+	if(!ispath(chosen_type, /datum/synthetic_bundle))
+		return
+
+	var/datum/synthetic_bundle/bundle = new chosen_type
+	consume_use(bundle.fill_crate(), user)

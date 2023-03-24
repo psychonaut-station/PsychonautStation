@@ -40,23 +40,26 @@
 	suit = /obj/item/clothing/suit/jacket/synthetic
 	neck = /obj/item/clothing/neck/tie/black/tied
 	back = /obj/item/storage/backpack/holding
-	gloves = /obj/item/clothing/gloves/chief_engineer
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
 	l_pocket = /obj/item/healthanalyzer/advanced
+	r_pocket = /obj/item/melee/baton/telescopic
 
+	gloves = null
 	head = null
 	id = null
 
 	backpack_contents = list(
-		/obj/item/defibrillator/compact/loaded = 1,
-		/obj/item/roller = 1,
-		/obj/item/storage/medkit/toxin = 1,
-		/obj/item/storage/medkit/o2 = 1,
+		/obj/item/storage/medkit/regular = 1,
 		/obj/item/storage/part_replacer/bluespace/tier2 = 1,
-		/obj/item/stack/sheet/iron/fifty = 1,
-		/obj/item/stack/sheet/glass/fifty = 1,
-		/obj/item/analyzer/ranged = 1,
+		/obj/item/choice_beacon/synthetic = 1,
 		)
 
 	implants = list(/obj/item/implant/mindshield)
+
+/datum/outfit/job/synthetic/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	..()
+	if(visualsOnly)
+		return
+	if(H.mind)
+		H.mind.synthetic = TRUE

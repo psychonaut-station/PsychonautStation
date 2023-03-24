@@ -29,7 +29,6 @@
 		TRAIT_QUICK_BUILD,
 		TRAIT_NOFLASH,
 		TRAIT_XENO_IMMUNE,
-		TRAIT_PACIFISM,
 		TRAIT_NOLIMBDISABLE,
 		TRAIT_NODISMEMBER,
 
@@ -42,8 +41,8 @@
 		TRAIT_PREVENT_ANTAG_OBJECTIVE,
 	)
 
-	brutemod = 0.35
-	burnmod = 0.35
+	brutemod = 0.2
+	burnmod = 0.2
 	coldmod = 0
 	heatmod = 1.5
 	stunmod = 0.3

@@ -43,4 +43,5 @@
 		/obj/item/storage/medkit/advanced = 1,
 		/obj/item/healthanalyzer = 1,
 		/obj/item/storage/box/beakers = 1,
+		/obj/item/pinpointer/crew = 1,
 	)

@@ -42,9 +42,9 @@
 	back = /obj/item/storage/backpack/holding
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
-	l_pocket = /obj/item/healthanalyzer/advanced
 	r_pocket = /obj/item/melee/baton/telescopic
 
+	l_pocket = null
 	gloves = null
 	head = null
 	id = null

@@ -34,7 +34,7 @@
 /datum/outfit/job/synthetic
 	name = JOB_SYNTHETIC
 	jobtype = /datum/job/synthetic
-	skip_backpack = TRUE
+	skip_preferences = TRUE
 
 	uniform = /obj/item/clothing/under/rank/security/detective/noir
 	suit = /obj/item/clothing/suit/jacket/synthetic
@@ -43,11 +43,11 @@
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
 	r_pocket = /obj/item/melee/baton/telescopic
+	id = /obj/item/card/id/advanced/centcom/synthetic
 
 	l_pocket = null
 	gloves = null
 	head = null
-	id = null
 
 	backpack_contents = list(
 		/obj/item/storage/medkit/regular = 1,

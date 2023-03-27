@@ -41,8 +41,8 @@
 		TRAIT_PREVENT_ANTAG_OBJECTIVE,
 	)
 
-	brutemod = 0.2
-	burnmod = 0.2
+	brutemod = 0.5
+	burnmod = 0.5
 	coldmod = 0
 	heatmod = 1.5
 	stunmod = 0.3
@@ -69,9 +69,11 @@
 	)
 	examine_limb_id = SPECIES_HUMAN
 
-/datum/species/synthetic/on_species_gain(mob/living/carbon/C, datum/species/old_species)
+/datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
 
+	C.skin_tone = "brown"
+	C.update_body(0)
 	C.set_safe_hunger_level()
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
@@ -79,7 +81,7 @@
 	sec_hud.show_to(C)
 	health_hud.show_to(C)
 
-/datum/species/abductor/on_species_loss(mob/living/carbon/C)
+/datum/species/abductor/on_species_loss(mob/living/carbon/human/C)
 	. = ..()
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]

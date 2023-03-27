@@ -115,6 +115,7 @@
 #define SECHUD_VIROLOGIST "hudvirologist"
 #define SECHUD_WARDEN "hudwarden"
 #define SECHUD_WORKER "hudworker"
+#define SECHUD_SYNTHETIC "hudsynthetic"
 
 #define SECHUD_CHEF "hudchef"
 

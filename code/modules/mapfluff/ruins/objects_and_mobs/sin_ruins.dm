@@ -130,6 +130,9 @@
 		return
 	if(ishuman(AM))
 		var/mob/living/carbon/human/H = AM
+		if (H.mind.synthetic) // skull
+			return
+
 		if(user.real_name != H.dna.real_name)
 			user.real_name = H.dna.real_name
 			H.dna.transfer_identity(user, transfer_SE=1)

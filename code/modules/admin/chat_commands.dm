@@ -120,3 +120,22 @@
 	var/status = "Admins: [allmins.len] (Active: [english_list(adm["present"])] AFK: [english_list(adm["afk"])] Stealth: [english_list(adm["stealth"])] Skipped: [english_list(adm["noflags"])]). "
 	status += "Players: [GLOB.clients.len] (Active: [get_active_player_count(0,1,0)]). Round has [SSticker.HasRoundStarted() ? "" : "not "]started."
 	return status
+
+/datum/tgs_chat_command/validated/job_whitelist
+	name = "whitelist_synth"
+	help_text = "Synthetic mesleği için whitelist'e eklenecek ckey komutu"
+	admin_only = TRUE
+	required_rights = R_ADMIN
+
+/datum/tgs_chat_command/validated/job_whitelist/Validated_Run(datum/tgs_chat_user/sender, params)
+	if (params.len != 1)
+		return "Insufficient parameters"
+
+	var/target = all_params[1]
+	add_job_whitelist(target)
+
+	var/success = "[sender.friendly_name], [target] adlı oyuncuyu Job Whitelist'e ekledi."
+
+	log_admin(success)
+	message_admins(success)
+	return success

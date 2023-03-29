@@ -1,51 +1,23 @@
 /datum/tgs_chat_command/tgscheck
 	name = "check"
-	help_text = "Gets the playercount, gamemode, and address of the server"
+	help_text = "Check round status"
 
 /datum/tgs_chat_command/tgscheck/Run(datum/tgs_chat_user/sender, params)
-	var/server = CONFIG_GET(string/server)
-	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.config.map_name]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]"
+	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""] [GLOB.clients.len] oyuncu ile [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"]."
 
-/datum/tgs_chat_command/gameversion
-	name = "gameversion"
-	help_text = "Gets the version details from the show-server-revision verb, basically"
+/datum/tgs_chat_command/poly
+	name = "poly"
+	help_text = "Poly"
 
-/datum/tgs_chat_command/gameversion/Run(datum/tgs_chat_user/sender, params)
-	var/list/msg = list("")
-	msg += "BYOND Server Version: [world.byond_version].[world.byond_build] (Compiled with: [DM_VERSION].[DM_BUILD])\n"
+/datum/tgs_chat_command/poly/Run(datum/tgs_chat_user/sender, params)
+	var/static/list/poly_speech = null
 
-	if (!GLOB.revdata)
-		msg += "No revision information found."
-	else
-		msg += "Revision [copytext_char(GLOB.revdata.commit, 1, 9)]"
-		if (GLOB.revdata.date)
-			msg += " compiled on '[GLOB.revdata.date]'"
+	if (!poly_speech)
+		var/json_file = file("data/npc_saves/Poly.json")
+		if (!fexists(json_file))
+			poly_speech = list("abi poly'i oldurmusler")
+		else
+			var/list/json = json_decode(file2text(json_file))
+			poly_speech = json["phrases"]
 
-		if(GLOB.revdata.originmastercommit)
-			msg += ", from origin commit: <[CONFIG_GET(string/githuburl)]/commit/[GLOB.revdata.originmastercommit]>"
-
-		if(GLOB.revdata.testmerge.len)
-			msg += "\n"
-			for(var/datum/tgs_revision_information/test_merge/PR as anything in GLOB.revdata.testmerge)
-				msg += "PR #[PR.number] at [copytext_char(PR.head_commit, 1, 9)] [PR.title].\n"
-				if (PR.url)
-					msg += "<[PR.url]>\n"
-	return msg.Join("")
-
-// Notify
-/datum/tgs_chat_command/notify
-	name = "notify"
-	help_text = "Pings the invoker when the round ends"
-
-/datum/tgs_chat_command/notify/Run(datum/tgs_chat_user/sender, params)
-	if(!CONFIG_GET(string/channel_announce_new_game))
-		return "Notifcations are currently disabled"
-
-	for(var/member in SSdiscord.notify_members) // If they are in the list, take them out
-		if(member == sender.mention)
-			SSdiscord.notify_members -= sender.mention
-			return "You will no longer be notified when the server restarts"
-
-	// If we got here, they arent in the list. Chuck 'em in!
-	SSdiscord.notify_members += sender.mention
-	return "You will now be notified when the server restarts"
+	return pick(poly_speech)

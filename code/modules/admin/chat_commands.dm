@@ -128,10 +128,11 @@
 	required_rights = R_ADMIN
 
 /datum/tgs_chat_command/validated/job_whitelist/Validated_Run(datum/tgs_chat_user/sender, params)
-	if (params.len != 1)
+	params = trim(params)
+	if(!params)
 		return "Insufficient parameters"
 
-	var/target = all_params[1]
+	var/target = params
 	add_job_whitelist(target)
 
 	var/success = "[sender.friendly_name], [target] adlı oyuncuyu Job Whitelist'e ekledi."

@@ -1114,6 +1114,12 @@
 	registered_name = JOB_ERT_CLOWN
 	trim = /datum/id_trim/centcom/ert/clown
 
+/obj/item/card/id/advanced/centcom/synthetic
+	name = "\improper Synthetic ID"
+	desc = "A Synthetic ID card."
+	registered_name = JOB_SYNTHETIC
+	trim = /datum/id_trim/job/synthetic
+
 /obj/item/card/id/advanced/white
 	name = "white identification card"
 	desc = "impressive, very nice."

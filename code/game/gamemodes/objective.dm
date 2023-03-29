@@ -141,6 +141,8 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 			continue
 		if(!HAS_TRAIT(SSstation, STATION_TRAIT_LATE_ARRIVALS) && istype(target_area, /area/shuttle/arrival))
 			continue
+		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
+			continue
 		if(possible_target in blacklist)
 			continue
 		possible_targets += possible_target

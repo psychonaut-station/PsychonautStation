@@ -74,6 +74,8 @@ GLOBAL_VAR(restart_counter)
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
+	load_job_whitelist()
+
 	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
 
 	if(fexists(RESTART_COUNTER_PATH))
@@ -323,7 +325,7 @@ GLOBAL_VAR(restart_counter)
 		var/server_name = CONFIG_GET(string/servername)
 		var/name_link = CONFIG_GET(string/hub_name_link)
 
-		new_status += "<b><a href='[name_link]'>[server_name] — Modified /tg/station — DISCORD</a></b>"
+		new_status += "<b><a href='[name_link]'>[server_name] — DISCORD</a></b>"
 
 		if(!CONFIG_GET(flag/norespawn))
 			features += "respawn"

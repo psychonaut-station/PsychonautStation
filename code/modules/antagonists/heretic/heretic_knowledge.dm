@@ -414,6 +414,8 @@
 		var/mob/living/carbon/human/human_to_check = crewmember.current
 		if(!istype(human_to_check) || human_to_check.stat == DEAD || !human_to_check.dna)
 			continue
+		if (HAS_TRAIT(human_to_check, TRAIT_PREVENT_ANTAG_OBJECTIVE))
+			continue
 		var/their_prints = md5(human_to_check.dna.unique_identity)
 		var/their_blood = human_to_check.dna.unique_enzymes
 		// Having their fingerprints or blood present will boost the curse

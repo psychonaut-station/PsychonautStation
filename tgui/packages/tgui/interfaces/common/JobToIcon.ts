@@ -5,6 +5,7 @@ export const JOB2ICON = {
   'Atmospheric Technician': 'fan',
   'Bartender': 'cocktail',
   'Botanist': 'seedling',
+  'Brig Physician': 'circle-plus',
   'Captain': 'crown',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
@@ -28,10 +29,12 @@ export const JOB2ICON = {
   'Lawyer': 'gavel',
   'Medical Doctor': 'staff-snake',
   'Mime': 'comment-slash',
+  'Nt Secretary': 'clipboard-check',
   'Paramedic': 'truck-medical',
   'Personal AI': 'mobile-alt',
   'Prisoner': 'lock',
   'Psychologist': 'brain',
+  'Pug': 'paw',
   'Quartermaster': 'sack-dollar',
   'Research Director': 'user-graduate',
   'Roboticist': 'battery-half',
@@ -43,9 +46,11 @@ export const JOB2ICON = {
   'Security Officer': 'shield-halved',
   'Shaft Miner': 'digging',
   'Station Engineer': 'gears',
+  'Synthetic': 'handshake-angle',
   'Syndicate Operative': 'dragon',
   'Virologist': 'virus',
   'Warden': 'handcuffs',
+  'Worker': 'screwdriver-wrench',
 } as const;
 
 export type AvailableJob = keyof typeof JOB2ICON;

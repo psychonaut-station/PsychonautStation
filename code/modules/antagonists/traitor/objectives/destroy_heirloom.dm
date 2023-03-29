@@ -124,6 +124,8 @@
 			continue
 		if(!ishuman(possible_target.current))
 			continue
+		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
+			continue
 		var/datum/quirk/item_quirk/family_heirloom/quirk = locate() in possible_target.current.quirks
 		if(!quirk || !quirk.heirloom.resolve())
 			continue

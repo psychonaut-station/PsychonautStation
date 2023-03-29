@@ -6,6 +6,7 @@
 	spawn_positions = 5
 	supervisors = "your canine desires."
 	spawn_type = /mob/living/basic/pet/dog/pug
+	display_order = JOB_DISPLAY_ORDER_PSYCHOLOGIST
 
 	departments_list = list(
 		/datum/job_department/service,

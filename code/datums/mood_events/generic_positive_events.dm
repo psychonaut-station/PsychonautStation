@@ -359,3 +359,8 @@
 	mood_change = 2
 	special_screen_obj = "birthday"
 	special_screen_replace = FALSE
+
+/datum/mood_event/farted
+	description = "I had a massive dump!"
+	mood_change = 3
+	timeout = 3 MINUTES

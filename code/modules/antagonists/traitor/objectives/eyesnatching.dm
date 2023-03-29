@@ -66,6 +66,9 @@
 		if(possible_target == generating_for)
 			continue
 
+		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
+			continue
+
 		if(possible_target in already_targeting)
 			continue
 

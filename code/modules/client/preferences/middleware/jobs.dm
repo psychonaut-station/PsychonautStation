@@ -64,6 +64,10 @@
 
 	data["job_preferences"] = preferences.job_preferences
 
+	var/list/job_whitelist = is_whitelisted(user)
+	if (job_whitelist.len)
+		data["job_whitelist"] = job_whitelist
+
 	return data
 
 /datum/preference_middleware/jobs/get_ui_static_data(mob/user)
@@ -111,6 +115,15 @@
 
 	for (var/datum/job/job as anything in SSjob.all_occupations)
 		if (is_banned_from(user.client?.ckey, job.title))
+			data += job.title
+
+	return data
+
+/datum/preference_middleware/jobs/proc/is_whitelisted(mob/user)
+	var/list/data = list()
+
+	for (var/datum/job/job as anything in SSjob.all_occupations)
+		if (job.whitelisted && !check_job_whitelist(user.client?.ckey))
 			data += job.title
 
 	return data

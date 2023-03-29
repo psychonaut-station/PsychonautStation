@@ -466,3 +466,17 @@ Traitors and the like can also be revived with the previous role mostly intact.
 	dat += "Disable footsteps: <a href='?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_FOOTSTEPS]'><b>[SSlag_switch.measures[DISABLE_FOOTSTEPS] ? "On" : "Off"]</b></a> - <span style='font-size:80%'>trait applies to character</span><br />"
 	dat += "</body></html>"
 	usr << browse(dat.Join(), "window=lag_switch_panel;size=420x480")
+
+/client/proc/job_whitelist()
+	set category = "Admin.Game"
+	set name = "Add Job Whitelist"
+
+	if(!check_rights(R_FUN))
+		return
+
+	var/ckey = tgui_input_text(usr, "Eklenecek ckey'i girin (büyük küçük fark etmez).\nNot: Eklenen oyuncu whitelist kategörisindeki bütün mesleklere erişebilecek.", "Global Job Whitelist")
+	if (!ckey)
+		return
+
+	add_job_whitelist(ckey)
+	message_admins("[usr], [ckey] adlı oyuncuyu Job Whitelist'e ekledi.")

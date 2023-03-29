@@ -338,3 +338,10 @@
 /obj/item/clothing/suit/jacket/research_director/Initialize(mapload)
 	. = ..()
 	allowed += /obj/item/storage/bag/xeno
+
+// Synth
+/obj/item/clothing/suit/jacket/synthetic
+	name = "Connor's jacket"
+	desc = "Became human?"
+	icon_state = "synthjacket"
+	body_parts_covered = CHEST | GROIN | ARMS

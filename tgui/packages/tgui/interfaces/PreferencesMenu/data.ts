@@ -148,6 +148,7 @@ export type PreferencesMenuData = {
 
   content_unlocked: BooleanLike;
 
+  job_whitelist: string[];
   job_bans?: string[];
   job_days_left?: Record<string, number>;
   job_required_experience?: Record<

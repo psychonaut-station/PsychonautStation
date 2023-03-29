@@ -1207,5 +1207,19 @@
 	if(CONFIG_GET(flag/security_has_maint_access))
 		access |= list(ACCESS_MAINT_TUNNELS)
 
+/datum/id_trim/job/synthetic
+	assignment = "Synthetic"
+	trim_state = "trim_synth"
+	department_color = COLOR_CENTCOM_BLUE
+	subdepartment_color = COLOR_ADMIN_PINK
+	sechud_icon_state = SECHUD_SYNTHETIC
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+		ACCESS_HOS,
+		)
+	job = /datum/job/synthetic
+
 #undef POPULATION_SCALED_ACCESS
 #undef ALWAYS_GETS_ACCESS

@@ -577,3 +577,21 @@
 	message = "says a swear word!"
 	message_mime = "makes a rude gesture!"
 	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/fart
+	key = "fart"
+	key_third_person = "farts"
+	message = "farts."
+	message_mime = "farts."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+	audio_cooldown = 25 SECONDS
+	vary = TRUE
+
+/datum/emote/living/fart/can_run_emote(mob/living/user, status_check = TRUE , intentional)
+	return ..()
+
+/datum/emote/living/fart/get_sound(mob/living/user)
+	if(ishuman(user))
+		user.add_mood_event("farted", /datum/mood_event/farted)
+		return pick('sound/misc/fart1.ogg', 'sound/misc/fart2.ogg', 'sound/misc/fart3.ogg',
+					'sound/misc/fart4.ogg', 'sound/misc/fart5.ogg', 'sound/misc/fart6.ogg')

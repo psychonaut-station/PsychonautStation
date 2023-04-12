@@ -68,6 +68,7 @@
 #define FACEHAIR 3
 #define EYECOLOR 4
 #define LIPS 5
+#define NOBLOOD 6
 #define NOTRANSSTING 7
 #define NOZOMBIE 8
 #define NO_UNDERWEAR 9
@@ -83,6 +84,11 @@
 #define HAS_MARKINGS 15
 /// Do not draw blood overlay
 #define NOBLOODOVERLAY 16
+
+#define HAS_BONE 19
+#define NOAPPENDIX 23
+
+
 ///No augments, for monkeys in specific because they will turn into fucking freakazoids https://cdn.discordapp.com/attachments/326831214667235328/791313258912153640/102707682-fa7cad80-4294-11eb-8f13-8c689468aeb0.png
 #define NOAUGMENTS 17
 ///will be assigned a universal vampire themed last name shared by their department. this is preferenced!

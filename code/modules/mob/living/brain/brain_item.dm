@@ -496,3 +496,31 @@
 		var/obj/item/bodypart/found_bodypart = owner.get_bodypart((active_hand.held_index % 2) ? BODY_ZONE_L_LEG : BODY_ZONE_R_LEG)
 		return found_bodypart || active_hand
 	return active_hand
+
+/obj/item/organ/internal/brain/positron
+    name = "positronic brain"
+    slot = ORGAN_SLOT_BRAIN
+    zone = BODY_ZONE_CHEST
+    status = ORGAN_ROBOTIC
+    desc = "A cube of shining metal, four inches to a side and covered in shallow grooves. It has an IPC serial number engraved on the top. In order for this Posibrain to be used as a newly built Positronic Brain, it must be coupled with an MMI."
+    icon = 'icons/obj/assemblies/assemblies.dmi'
+    icon_state = "posibrain-ipc"
+    organ_flags = ORGAN_SYNTHETIC
+
+/obj/item/organ/internal/brain/positron/Insert(mob/living/carbon/C, special = 0, drop_if_replaced = 0)
+    ..()
+    if(ishuman(C))
+        var/mob/living/carbon/human/H = C
+        if(H.dna?.species)
+            if(REVIVESBYHEALING in H.dna.species.species_traits)
+                if(H.health > 0)
+                    H.revive(0)
+
+/obj/item/organ/internal/brain/positron/emp_act(severity)
+    switch(severity)
+        if(1)
+            owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 75)
+            to_chat(owner, "<span class='warning'>Alert: Posibrain heavily damaged.</span>")
+        if(2)
+            owner.adjustOrganLoss(ORGAN_SLOT_BRAIN, 25)
+            to_chat(owner, "<span class='warning'>Alert: Posibrain damaged.</span>")

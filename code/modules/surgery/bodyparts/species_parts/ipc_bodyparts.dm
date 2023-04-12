@@ -30,6 +30,7 @@
 /obj/item/bodypart/l_arm/ipc
 	icon = 'icons/mob/species/ipc/bodyparts.dmi'
 	limb_id = "synth"
+	unarmed_attack_sound = 'sound/items/trayhit1.ogg'
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 
@@ -44,6 +45,7 @@
 /obj/item/bodypart/r_arm/ipc
 	icon = 'icons/mob/species/ipc/bodyparts.dmi'
 	limb_id = "synth"
+	unarmed_attack_sound = 'sound/items/trayhit1.ogg'
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 

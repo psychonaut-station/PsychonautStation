@@ -19,7 +19,6 @@
 	meat = /obj/item/stack/sheet/plasteel{amount = 5}
 	skinned_type = /obj/item/stack/sheet/iron{amount = 10}
 	exotic_blood = /datum/reagent/oil
-	damage_overlay_type = "synth"
 	burnmod = 2
 	heatmod = 1.5
 	brutemod = 1
@@ -28,7 +27,6 @@
 	siemens_coeff = 1.5
 	reagent_tag = PROCESS_SYNTHETIC
 	bodytype = BODYTYPE_ROBOTIC
-	attack_sound = 'sound/items/trayhit1.ogg'
 	death_sound = "sound/voice/borg_deathsound.ogg"
 	changesource_flags = MIRROR_BADMIN | WABBAJACK
 	species_language_holder = /datum/language_holder/synthetic
@@ -108,7 +106,7 @@
 /datum/action/innate/change_screen
 	name = "Change Display"
 	check_flags = AB_CHECK_CONSCIOUS
-	icon = 'icons/mob/actions/actions_silicon.dmi'
+	button_icon = 'icons/mob/actions/actions_silicon.dmi'
 	button_icon_state = "drone_vision"
 
 /datum/action/innate/change_screen/Activate()

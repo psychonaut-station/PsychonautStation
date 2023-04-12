@@ -262,7 +262,6 @@
 	desc = "A machine component, installed in the chest. This grants the Machine the ability to process chemicals that enter its systems."
 	alcohol_tolerance = 0
 	toxTolerance = -1
-	toxLethality = 0
 	status = ORGAN_ROBOTIC
 
 /obj/item/organ/internal/liver/cybernetic/upgraded/ipc/emp_act(severity)

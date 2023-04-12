@@ -446,6 +446,9 @@
 	if(C.suiciding)
 		return FALSE //Kevorkian school of robotic medical assistants.
 
+	if(istype(C.dna.species, /datum/species/ipc))
+		return FALSE
+
 	if(bot_cover_flags & BOT_COVER_EMAGGED) //Everyone needs our medicine. (Our medicine is toxins)
 		return TRUE
 

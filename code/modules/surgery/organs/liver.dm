@@ -108,7 +108,7 @@
 	if(filterToxins && !HAS_TRAIT(liver_owner, TRAIT_TOXINLOVER))
 		for(var/datum/reagent/toxin/toxin in cached_reagents)
 			if(status != toxin.affected_organtype) //this particular toxin does not affect this type of organ
-				continue 
+				continue
 			var/amount = round(toxin.volume, CHEMICAL_QUANTISATION_LEVEL) // this is an optimization
 			if(belly)
 				amount += belly.reagents.get_reagent_amount(toxin.type)
@@ -234,7 +234,7 @@
 	liver_resistance = 1.2 * LIVER_DEFAULT_TOX_RESISTANCE // +20%
 	emp_vulnerability = 40
 
-/obj/item/organ/internal/liver/cybernetic/tier3
+/obj/item/organ/internal/liver/cybernetic/upgraded
 	name = "upgraded cybernetic liver"
 	icon_state = "liver-c-u2"
 	desc = "An upgraded version of the cybernetic liver, designed to improve further upon organic livers. It is resistant to alcohol poisoning and is very robust at filtering toxins."
@@ -253,6 +253,25 @@
 		COOLDOWN_START(src, severe_cooldown, 10 SECONDS)
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
 		organ_flags |= ORGAN_SYNTHETIC_EMP //Starts organ faliure - gonna need replacing soon.
+
+/obj/item/organ/internal/liver/cybernetic/upgraded/ipc
+	name = "substance processor"
+	icon_state = "substance_processor"
+	attack_verb_simple = list("processed")
+	attack_verb_continuous = list("processed")
+	desc = "A machine component, installed in the chest. This grants the Machine the ability to process chemicals that enter its systems."
+	alcohol_tolerance = 0
+	toxTolerance = -1
+	toxLethality = 0
+	status = ORGAN_ROBOTIC
+
+/obj/item/organ/internal/liver/cybernetic/upgraded/ipc/emp_act(severity)
+	to_chat(owner, "<span class='warning'>Alert: Your Substance Processor has been damaged. An internal chemical leak is affecting performance.</span>")
+	switch(severity)
+		if(1)
+			owner.toxloss += 15
+		if(2)
+			owner.toxloss += 5
 
 #undef HAS_SILENT_TOXIN
 #undef HAS_NO_TOXIN

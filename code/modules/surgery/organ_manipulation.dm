@@ -125,6 +125,19 @@
 		target_organ = tool
 		if(target_zone != target_organ.zone || target.getorganslot(target_organ.slot))
 			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
+		if(istype(target_organ, /obj/item/organ/internal/brain/positron))
+			var/obj/item/bodypart/affected = target.get_bodypart(check_zone(target_organ.zone))
+			if(!affected)
+				return -1
+			if(IS_ORGANIC_LIMB(affected))
+				to_chat(user, "<span class='notice'>You can't put [target_organ] into a meat enclosure!</span>")
+				return -1
+			if(!isipc(target))
+				to_chat(user, "<span class='notice'>[target] does not have the proper connectors to interface with [target_organ].</span>")
+				return -1
+			display_results(user, target, "<span class='notice'>You begin to insert [target_organ] into [target]'s [parse_zone(target_zone)]...</span>",
+				"[user] begins to insert [target_organ] into [target]'s [parse_zone(target_zone)].",
+				"[user] begins to insert something into [target]'s [parse_zone(target_zone)].")
 			return SURGERY_STEP_FAIL
 		var/obj/item/organ/meatslab = tool
 		if(!meatslab.useable)

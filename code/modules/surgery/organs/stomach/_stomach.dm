@@ -298,6 +298,103 @@
 	metabolism_efficiency = 0.06
 	milk_burn_healing = 0
 
+/obj/item/organ/internal/stomach/battery
+	name = "implantable battery"
+	icon_state = "implant-power"
+	desc = "A battery that stores charge for species that run on electricity."
+	var/max_charge = 5000 //same as upgraded+ cell
+	var/charge = 5000
+
+/obj/item/organ/internal/stomach/battery/Insert(mob/living/carbon/M, special = 0)
+	. = ..()
+	RegisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, .proc/charge)
+	update_nutrition()
+
+/obj/item/organ/internal/stomach/battery/Remove(mob/living/carbon/M, special = 0)
+	UnregisterSignal(owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
+	if(!HAS_TRAIT(owner, TRAIT_NOHUNGER) && HAS_TRAIT(owner, TRAIT_POWERHUNGRY))
+		owner.nutrition = 0
+		owner.throw_alert("nutrition", /atom/movable/screen/alert/nocell)
+	return ..()
+
+/obj/item/organ/internal/stomach/battery/proc/charge(datum/source, amount, repairs)
+	SIGNAL_HANDLER
+	adjust_charge(amount)
+
+/obj/item/organ/internal/stomach/battery/proc/adjust_charge(amount)
+	if(amount > 0)
+		charge = clamp((charge + amount)*(1-(damage/maxHealth)), 0, max_charge)
+	else
+		charge = clamp(charge + amount, 0, max_charge)
+	update_nutrition()
+
+/obj/item/organ/internal/stomach/battery/proc/adjust_charge_scaled(amount)
+	adjust_charge(amount*max_charge/NUTRITION_LEVEL_FULL)
+
+/obj/item/organ/internal/stomach/battery/proc/set_charge(amount)
+	charge = clamp(amount*(1-(damage/maxHealth)), 0, max_charge)
+	update_nutrition()
+
+/obj/item/organ/internal/stomach/battery/proc/set_charge_scaled(amount)
+	set_charge(amount*max_charge/NUTRITION_LEVEL_FULL)
+
+/obj/item/organ/internal/stomach/battery/proc/update_nutrition()
+	if(!HAS_TRAIT(owner, TRAIT_NOHUNGER) && HAS_TRAIT(owner, TRAIT_POWERHUNGRY))
+		owner.nutrition = (charge/max_charge)*NUTRITION_LEVEL_FULL
+
+/obj/item/organ/internal/stomach/battery/emp_act(severity)
+	switch(severity)
+		if(1)
+			adjust_charge(-0.5 * max_charge)
+			applyOrganDamage(30)
+		if(2)
+			adjust_charge(-0.25 * max_charge)
+			applyOrganDamage(15)
+
+/obj/item/organ/internal/stomach/battery/ipc
+	name = "micro-cell"
+	icon_state = "microcell"
+	w_class = WEIGHT_CLASS_NORMAL
+	attack_verb_continuous = list("assault and battery'd")
+	attack_verb_simple = list("assault and battery'd")
+	desc = "A micro-cell, for IPC use. Do not swallow."
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
+	max_charge = 2750 //50 nutrition from 250 charge
+	charge = 2750
+
+/obj/item/organ/internal/stomach/battery/ipc/emp_act(severity)
+	. = ..()
+	switch(severity)
+		if(1)
+			to_chat(owner, "<span class='warning'>Alert: Heavy EMP Detected. Rebooting power cell to prevent damage.</span>")
+		if(2)
+			to_chat(owner, "<span class='warning'>Alert: EMP Detected. Cycling battery.</span>")
+
+/obj/item/organ/internal/stomach/battery/ethereal
+	name = "biological battery"
+	icon_state = "stomach-p" //Welp. At least it's more unique in functionaliy.
+	desc = "A crystal-like organ that stores the electric charge of ethereals."
+	max_charge = 2500 //same as upgraded cell
+	charge = 2500
+
+/obj/item/organ/internal/stomach/battery/ethereal/Insert(mob/living/carbon/M, special = 0)
+	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, .proc/on_electrocute)
+	return ..()
+
+/obj/item/organ/internal/stomach/battery/ethereal/Remove(mob/living/carbon/M, special = 0)
+	UnregisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT)
+	return ..()
+
+/obj/item/organ/internal/stomach/battery/ethereal/proc/on_electrocute(datum/source, shock_damage, shock_source, siemens_coeff = 1, safety = 0, tesla_shock = 0, illusion = 0, stun = TRUE)
+	SIGNAL_HANDLER
+
+	if(illusion)
+		return
+	adjust_charge(shock_damage * siemens_coeff * 20)
+	to_chat(owner, "<span class='notice'>You absorb some of the shock into your body!</span>")
+
+
 /obj/item/organ/internal/stomach/cybernetic
 	name = "basic cybernetic stomach"
 	icon_state = "stomach-c"

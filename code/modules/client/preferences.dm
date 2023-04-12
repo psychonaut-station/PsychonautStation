@@ -39,6 +39,11 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 
 	//character preferences
 	var/slot_randomized //keeps track of round-to-round randomization of the character slot, prevents overwriting
+	var/list/features = list(
+						"ipc_screen" = "Blue",
+						"ipc_antenna" = "None",
+						"ipc_chassis" = "Morpheus Cyberkinetics(Greyscale)"
+						)
 
 	var/list/randomise = list()
 

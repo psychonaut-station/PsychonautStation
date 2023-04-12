@@ -24,6 +24,8 @@
 	var/atom/movable/screen/alert/status_effect/linked_alert
 	/// Used to define if the status effect should be using SSfastprocess or SSprocessing
 	var/processing_speed = STATUS_EFFECT_FAST_PROCESS
+	//If defined, this text will appear when the mob is examined - to use he, she etc. use "SUBJECTPRONOUN" and replace it in the examines themselves
+	var/examine_text
 	/// Do we self-terminate when a fullheal is called?
 	var/remove_on_fullheal = FALSE
 	/// If remove_on_fullheal is TRUE, what flag do we need to be removed?

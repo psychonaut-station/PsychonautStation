@@ -525,6 +525,48 @@
 		if(HM?.timeout)
 			dna.remove_mutation(HM.type)
 
+//Dizziness
+	if(dizziness)
+		var/client/C = client
+		var/pixel_x_diff = 0
+		var/pixel_y_diff = 0
+		var/temp
+		var/saved_dizz = dizziness
+		if(C)
+			var/oldsrc = src
+			var/amplitude = dizziness*(sin(dizziness * world.time) + 1) // This shit is annoying at high strength
+			src = null
+			spawn(0)
+				if(C)
+					temp = amplitude * sin(saved_dizz * world.time)
+					pixel_x_diff += temp
+					C.pixel_x += temp
+					temp = amplitude * cos(saved_dizz * world.time)
+					pixel_y_diff += temp
+					C.pixel_y += temp
+					sleep(3)
+					if(C)
+						temp = amplitude * sin(saved_dizz * world.time)
+						pixel_x_diff += temp
+						C.pixel_x += temp
+						temp = amplitude * cos(saved_dizz * world.time)
+						pixel_y_diff += temp
+						C.pixel_y += temp
+					sleep(3)
+					if(C)
+						C.pixel_x -= pixel_x_diff
+						C.pixel_y -= pixel_y_diff
+			src = oldsrc
+		dizziness = max(dizziness - restingpwr, 0)
+
+	//Jitteriness
+	if(jitteriness)
+		do_jitter_animation(jitteriness)
+		jitteriness = max(jitteriness - restingpwr, 0)
+		add_mood_event("jittery", /datum/mood_event/jittery)
+	else
+		clear_mood_event("jittery", /datum/mood_event/jittery)
+
 /**
  * Handles calling metabolization for dead people.
  * Due to how reagent metabolization code works this couldn't be done anywhere else.

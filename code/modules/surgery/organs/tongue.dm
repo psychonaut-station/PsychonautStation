@@ -412,6 +412,11 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	modifies_speech = TRUE
 	taste_sensitivity = 25 // not as good as an organic tongue
 
+/obj/item/organ/tongue/robot/emp_act(severity)
+	owner.emote("scream")
+	owner.apply_status_effect(STATUS_EFFECT_IPC_EMP)
+
+
 /obj/item/organ/internal/tongue/robot/can_speak_language(language)
 	return TRUE // THE MAGIC OF ELECTRONICS
 

@@ -267,6 +267,16 @@
 	/// The cooldown until the next time this heart can give the host an adrenaline boost.
 	COOLDOWN_DECLARE(adrenaline_cooldown)
 
+/obj/item/organ/internal/heart/cybernetic/ipc
+	desc = "An electronic device that appears to mimic the functions of an organic heart."
+	dose_available = FALSE
+
+/obj/item/organ/internal/heart/cybernetic/ipc/emp_act()
+	. = ..()
+	to_chat(owner, "<span class='warning'>Alert: Cybernetic heart failed one heartbeat</span>")
+	addtimer(CALLBACK(src, .proc/Restart), 10 SECONDS)
+
+
 /obj/item/organ/internal/heart/freedom/on_life(delta_time, times_fired)
 	. = ..()
 	if(owner.health < 5 && COOLDOWN_FINISHED(src, adrenaline_cooldown))

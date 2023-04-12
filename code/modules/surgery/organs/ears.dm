@@ -105,6 +105,31 @@
 	damage_multiplier = 0.1 //STRONK
 	bang_protect = 1 //Fear me weaklings.
 
+/obj/item/organ/internal/ears/robot
+	name = "auditory sensors"
+	icon_state = "robotic_ears"
+	desc = "A pair of microphones intended to be installed in an IPC head, that grant the ability to hear."
+	zone = "head"
+	slot = "ears"
+	gender = PLURAL
+	status = ORGAN_ROBOTIC
+	organ_flags = ORGAN_SYNTHETIC
+
+/obj/item/organ/internal/ears/robot/emp_act(severity)
+	switch(severity)
+		if(1)
+			owner.Jitter(30)
+			owner.Dizzy(30)
+			owner.Knockdown(200)
+			to_chat(owner, "<span class='warning'>Alert: Audio sensors malfunctioning</span>")
+			owner.apply_status_effect(STATUS_EFFECT_IPC_EMP)
+		if(2)
+			owner.Jitter(15)
+			owner.Dizzy(15)
+			owner.Knockdown(100)
+			to_chat(owner, "<span class='warning'>Alert: Audio sensors malfunctioning</span>")
+			owner.apply_status_effect(STATUS_EFFECT_IPC_EMP)
+
 /obj/item/organ/internal/ears/cybernetic
 	name = "cybernetic ears"
 	icon_state = "ears-c"

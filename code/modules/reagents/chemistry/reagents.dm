@@ -37,6 +37,8 @@ GLOBAL_LIST_INIT(name2reagent, build_name2reagent())
 	///pretend this is moles
 	var/volume = 0
 	/// pH of the reagent
+	var/process_flags = ORGANIC
+	// What can process this? ORGANIC, SYNTHETIC, or ORGANIC | SYNTHETIC?. We'll assume by default that it affects organics.
 	var/ph = 7
 	///Purity of the reagent - for use with internal reaction mechanics only. Use below (creation_purity) if you're writing purity effects into a reagent's use mechanics.
 	var/purity = 1

@@ -65,6 +65,25 @@
 		/obj/item/organ/external/tail/lizard,
 	)
 
+/obj/effect/spawner/random/medical/robot
+	name = "robotic teratoma spawner"
+	loot = list(
+		/obj/item/organ/internal/ears/robot = 5,
+		/obj/item/organ/internal/eyes/robotic = 5,
+		/obj/item/organ/internal/eyes/robotic/flashlight = 1,
+		/obj/item/organ/internal/eyes/night_vision = 1,
+		/obj/item/organ/internal/liver/cybernetic = 4,
+		/obj/item/organ/internal/liver/cybernetic/upgraded/ipc = 3,
+		/obj/item/organ/internal/lungs/cybernetic = 4,
+		/obj/item/organ/internal/lungs/cybernetic/tier3= 2,
+		/obj/item/organ/internal/stomach/battery/ipc = 4,
+		/obj/item/organ/internal/adamantine_resonator = 1,
+		/obj/item/organ/internal/eyes/robotic/thermals = 2,
+		/obj/item/organ/internal/heart/gland/viral = 1,
+		/obj/item/organ/internal/eyes/robotic/shield = 2,
+		/obj/item/organ/internal/eyes/robotic/glow = 2,
+		/obj/item/organ/internal/heart/cybernetic = 2)
+
 /obj/effect/spawner/random/medical/two_percent_xeno_egg_spawner
 	name = "2% chance xeno egg spawner"
 	icon_state = "xeno_egg"

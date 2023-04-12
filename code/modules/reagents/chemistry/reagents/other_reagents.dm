@@ -2932,3 +2932,11 @@
 
 	if(DT_PROB(10, delta_time))
 		carbon_metabolizer.set_heartattack(TRUE)
+
+/datum/reagent/oil
+	name = "Oil"
+	description = "Burns in a small smoky fire, mostly used to get Ash."
+	reagent_state = LIQUID
+	color = "#C8A5DC"
+	taste_description = "oil"
+	process_flags = ORGANIC | SYNTHETIC

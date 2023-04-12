@@ -166,7 +166,7 @@ export const DreamMaker = async (dmeFile, options = {}) => {
       fs.writeFileSync(`${dmeBaseName}.m.dme`, injectedContent);
       const dmeContent = fs.readFileSync(`${dmeBaseName}.dme`);
       fs.appendFileSync(`${dmeBaseName}.m.dme`, dmeContent);
-      await runWithWarningChecks(dmPath, [`${dmeBaseName}.m.dme`]);
+      await runWithWarningChecks(dmPath, ["-max_errors", "0", `./${dmeBaseName}.m.dme`, ]);
       fs.writeFileSync(`${dmeBaseName}.dmb`, fs.readFileSync(`${dmeBaseName}.m.dmb`));
       fs.writeFileSync(`${dmeBaseName}.rsc`, fs.readFileSync(`${dmeBaseName}.m.rsc`));
     }

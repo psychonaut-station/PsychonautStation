@@ -322,6 +322,12 @@
 		/obj/item/surgical_drapes,
 	)
 
+/obj/item/organ/internal/cyberimp/arm/power_cord
+	name = "power cord implant"
+	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
+	items_to_create = list(/obj/item/apc_powercord)
+	zone = "l_arm"
+
 /obj/item/organ/internal/cyberimp/arm/surgery/emagged
 	name = "hacked surgical toolset implant"
 	desc = "A set of surgical tools hidden behind a concealed panel on the user's arm. This one seems to have been tampered with."

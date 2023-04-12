@@ -40,3 +40,20 @@
 	var/old_invis = see_invisible
 	see_invisible = new_sight
 	SEND_SIGNAL(src, COMSIG_MOB_SEE_INVIS_CHANGE, see_invisible, old_invis)
+
+
+///Set the jitter of a mob
+/mob/proc/Jitter(amount)
+	jitteriness = max(jitteriness,amount,0)
+
+/**
+  * Set the dizzyness of a mob to a passed in amount
+  *
+  * Except if dizziness is already higher in which case it does nothing
+  */
+/mob/proc/Dizzy(amount)
+	dizziness = max(dizziness,amount,0)
+
+///FOrce set the dizzyness of a mob
+/mob/proc/set_dizziness(amount)
+	dizziness = max(amount, 0)

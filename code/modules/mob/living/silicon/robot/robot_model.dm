@@ -294,6 +294,7 @@
 		/obj/item/borg/lollipop,
 		/obj/item/picket_sign/cyborg,
 		/obj/item/reagent_containers/borghypo/clown,
+		/obj/item/crowbar/cyborg,
 		/obj/item/extinguisher/mini)
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/clown/hacked,
@@ -602,6 +603,7 @@
 	name = "Medical"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
 		/obj/item/healthanalyzer,
 		/obj/item/reagent_containers/borghypo/medical,
 		/obj/item/borg/apparatus/beaker,
@@ -675,6 +677,7 @@
 	name = "Peacekeeper"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
 		/obj/item/rsf/cookiesynth,
 		/obj/item/harmalarm,
 		/obj/item/reagent_containers/borghypo/peace,
@@ -697,6 +700,7 @@
 	name = "Security"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
 		/obj/item/restraints/handcuffs/cable/zipties,
 		/obj/item/melee/baton/security/loaded,
 		/obj/item/gun/energy/disabler/cyborg,
@@ -729,6 +733,7 @@
 	name = "Service"
 	basic_modules = list(
 		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
 		/obj/item/reagent_containers/cup/beaker/large, //I know a shaker is more appropiate but this is for ease of identification
 		/obj/item/reagent_containers/condiment/enzyme,
 		/obj/item/pen,

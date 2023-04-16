@@ -8,7 +8,7 @@
 /datum/round_event_control/changeling
 	name = "Changeling Meteor"
 	typepath = /datum/round_event/ghost_role/changeling
-	weight = 8
+	weight = 0
 	max_occurrences = 3
 	min_players = 20
 	dynamic_should_hijack = TRUE

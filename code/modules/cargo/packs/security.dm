@@ -350,7 +350,6 @@
 	name = "Recalled Weapon Pack"
 	desc = "Contains a set of old Nanotrasen brand autorifles recalled due to choking hazard."
 	cost = CARGO_CRATE_VALUE * 7
-	hidden = TRUE
 	contains = list(
 		/obj/item/gun/ballistic/automatic/wt550 = 2,
 		/obj/item/ammo_box/magazine/wt550m9 = 2,
@@ -361,8 +360,7 @@
 	name = "Recalled Ammo Pack"
 	desc = "Contains four 20-round magazine for the Recalled WT-550 Auto Rifle. \
 	Each magazine is designed to facilitate rapid tactical reloads. Recalled due to Security demands."
-	cost = CARGO_CRATE_VALUE * 4
-	hidden = TRUE
+	cost = CARGO_CRATE_VALUE * 5
 	contains = list(
 		/obj/item/ammo_box/magazine/wt550m9 = 4,
 	)

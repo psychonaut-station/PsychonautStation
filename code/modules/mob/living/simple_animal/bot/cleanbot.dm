@@ -450,3 +450,5 @@
 		if("clean_graffiti")
 			janitor_mode_flags ^= CLEANBOT_CLEAN_DRAWINGS
 	get_targets()
+
+#undef CLEANBOT_CLEANING_TIME

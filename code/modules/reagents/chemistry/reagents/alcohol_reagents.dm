@@ -251,22 +251,6 @@
 		drinker.adjust_hallucinations(4 SECONDS * REM * delta_time)
 	..()
 
-/datum/reagent/consumable/ethanol/raki
-	name = "Rakia"
-	description = "A superb and well-aged single-malt whiskey. Damn."
-	color = "#b4a287" // rgb: 180,162,135
-	boozepwr = 70
-	taste_description = "molasses"
-	ph = 4.5
-	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	glass_price = DRINK_PRICE_STOCK
-
-/datum/glass_style/drinking_glass/raki
-	required_drink_type = /datum/reagent/consumable/ethanol/raki
-	name = "glass of rakia"
-	desc = "TODOOO"
-	icon_state = "raki_glass"
-
 /datum/reagent/consumable/ethanol/thirteenloko
 	name = "Thirteen Loko"
 	description = "A potent mixture of caffeine and alcohol."

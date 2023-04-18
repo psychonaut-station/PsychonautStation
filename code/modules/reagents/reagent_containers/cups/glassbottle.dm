@@ -705,8 +705,8 @@
 	isGlass = FALSE
 
 /obj/item/reagent_containers/cup/glass/bottle/raki
-	name = "Uncle Git's special reserve"
-	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
+	name = "rakia bottle"
+	desc = "Discover the Turkish rakia in the unique flavour of space."
 	icon_state = "rakibottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
 

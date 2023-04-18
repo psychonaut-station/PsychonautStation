@@ -99,15 +99,6 @@
 // rather then having to add it to something else first. They should only contain liquids. They have a default container size of 50.
 // Formatting is the same as food.
 
-/obj/item/reagent_containers/cup/glass/raki
-	name = "Rakia"
-	desc = "TODOOOO"
-	custom_price = PAYCHECK_LOWER * 0.6
-	icon_state = "raki_glass"
-	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 30)
-	spillable = TRUE
-	isGlass = FALSE
-
 /obj/item/reagent_containers/cup/glass/coffee
 	name = "robust coffee"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."

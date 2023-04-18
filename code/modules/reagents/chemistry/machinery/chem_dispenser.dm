@@ -575,6 +575,7 @@
 		/datum/reagent/consumable/ethanol/kahlua,
 		/datum/reagent/consumable/ethanol/beer/maltliquor,
 		/datum/reagent/consumable/ethanol/navy_rum,
+		/datum/reagent/consumable/ethanol/raki,
 		/datum/reagent/consumable/ethanol/rum,
 		/datum/reagent/consumable/ethanol/sake,
 		/datum/reagent/consumable/ethanol/tequila,

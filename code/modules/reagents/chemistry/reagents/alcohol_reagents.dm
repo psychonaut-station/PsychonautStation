@@ -253,10 +253,10 @@
 
 /datum/reagent/consumable/ethanol/raki
 	name = "Rakia"
-	description = "A superb and well-aged single-malt whiskey. Damn."
+	description = "A potent mixture of distilled grapes and strong alcohol."
 	color = "#b4a287" // rgb: 180,162,135
 	boozepwr = 70
-	taste_description = "molasses"
+	taste_description = "bitterness"
 	ph = 4.5
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 	glass_price = DRINK_PRICE_STOCK
@@ -264,7 +264,7 @@
 /datum/glass_style/drinking_glass/raki
 	required_drink_type = /datum/reagent/consumable/ethanol/raki
 	name = "glass of rakia"
-	desc = "TODOOO"
+	desc = "Kalbim seni unutacak kadar adiyse ellerim onu parçalayacak kadar asildir."
 	icon_state = "raki_glass"
 
 /datum/reagent/consumable/ethanol/thirteenloko

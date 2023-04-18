@@ -31,6 +31,7 @@
 				/obj/item/reagent_containers/cup/glass/bottle/beer = 6,
 				/obj/item/reagent_containers/cup/glass/bottle/vodka = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/whiskey = 5,
+				/obj/item/reagent_containers/cup/glass/bottle/raki = 5,
 			),
 		),
 

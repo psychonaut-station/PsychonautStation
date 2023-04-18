@@ -704,12 +704,6 @@
 	list_reagents = list(/datum/reagent/consumable/ethanol/mushi_kombucha = 30)
 	isGlass = FALSE
 
-/obj/item/reagent_containers/cup/glass/bottle/raki
-	name = "Uncle Git's special reserve"
-	desc = "A premium single-malt whiskey, gently matured inside the tunnels of a nuclear shelter. TUNNEL WHISKEY RULES."
-	icon_state = "rakibottle"
-	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
-
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/cup/glass/bottle/molotov
 	name = "molotov cocktail"

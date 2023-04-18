@@ -44,9 +44,6 @@ map northstar
 	votable
 endmap
 
-map maze
-endmap
-
 map runtimestation
 endmap
 

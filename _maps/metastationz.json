@@ -1,8 +1,8 @@
 {
 	"version": 1,
 	"map_name": "MetaStationZ",
-	"map_path": "map_files/MetaStation_Z",
-	"map_file": "MetaStation_Z.dmm",
+	"map_path": "map_files/MetaStationZ",
+	"map_file": "MetaStationZ.dmm",
 	"shuttles": {
 		"cargo": "cargo_box",
 		"ferry": "ferry_fancy",

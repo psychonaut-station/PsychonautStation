@@ -10,7 +10,7 @@
 		#include "map_files\Deltastation\DeltaStation2.dmm"
 		#include "map_files\KiloStation\KiloStation.dmm"
 		#include "map_files\MetaStation\MetaStation.dmm"
-		#include "map_files\MetaStation_Z\MetaStation_Z.dmm"
+		#include "map_files\MetaStationZ\MetaStationZ.dmm"
 		#include "map_files\NorthStar\north_star.dmm"
 		#include "map_files\IceBoxStation\IceBoxStation.dmm"
 		#include "map_files\tramstation\tramstation.dmm"

@@ -1751,9 +1751,7 @@
 "aHt" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/closed/wall,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "aHH" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
 /obj/effect/turf_decal/siding/purple{
@@ -7526,9 +7524,7 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "cMb" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -8572,9 +8568,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "dgc" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/junction{
@@ -10925,9 +10919,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "dYl" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -14646,9 +14638,7 @@
 /area/station/science/xenobiology)
 "fru" = (
 /turf/closed/wall,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "frH" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -15954,9 +15944,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "fUg" = (
 /obj/machinery/camera/directional/north{
 	c_tag = "Engineering - Storage"
@@ -17402,9 +17390,7 @@
 	},
 /obj/structure/sink/directional/east,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "guD" = (
 /obj/effect/spawner/random/engineering/atmospherics_portable,
 /turf/open/floor/plating,
@@ -18572,9 +18558,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "gQw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/line,
@@ -19309,9 +19293,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/trimline/blue/filled/corner,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "hcP" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall/r_wall,
@@ -19688,9 +19670,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "hko" = (
 /obj/effect/turf_decal/bot{
 	dir = 1
@@ -22523,9 +22503,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "ikO" = (
 /obj/machinery/newscaster/directional/north,
 /obj/structure/table/glass,
@@ -23851,9 +23829,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "iDN" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -25898,9 +25874,7 @@
 	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "jkj" = (
 /obj/effect/turf_decal/trimline/red/filled/warning{
 	dir = 4
@@ -27032,9 +27006,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "jCO" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -29027,9 +28999,7 @@
 	},
 /obj/structure/table/glass,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "kmZ" = (
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
@@ -29521,9 +29491,7 @@
 	},
 /obj/item/storage/medkit/brute,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "kvd" = (
 /obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -29588,9 +29556,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "kwp" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/delivery,
@@ -31517,9 +31483,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "lge" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -34541,9 +34505,7 @@
 	},
 /obj/item/storage/medkit/o2,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "mkr" = (
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 4;
@@ -35983,9 +35945,7 @@
 	req_access = null
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "mJE" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -36622,9 +36582,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "mUL" = (
 /obj/machinery/door/airlock/atmos{
 	name = "Hypertorus Fusion Reactor"
@@ -38340,9 +38298,7 @@
 	req_access = null
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "nxu" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -38478,9 +38434,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "nzh" = (
 /obj/structure/table/optable,
 /obj/effect/turf_decal/tile/blue/half/contrasted,
@@ -39913,9 +39867,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "obG" = (
 /turf/closed/wall,
 /area/station/service/theater)
@@ -41352,9 +41304,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "oCq" = (
 /obj/structure/window/reinforced{
 	dir = 8
@@ -44736,9 +44686,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "pOj" = (
 /obj/effect/turf_decal/tile/red/half/contrasted,
 /turf/open/floor/iron,
@@ -46368,9 +46316,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "qrO" = (
 /obj/machinery/chem_dispenser/drinks{
 	dir = 1
@@ -48666,9 +48612,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "rgN" = (
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -53699,9 +53643,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "sQq" = (
 /obj/structure/closet/crate/hydroponics,
 /obj/item/paper/guides/jobs/hydroponics,
@@ -53973,9 +53915,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "sUo" = (
 /turf/open/floor/engine/air,
 /area/station/engineering/atmos)
@@ -54544,9 +54484,7 @@
 "tdg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "tdj" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -57773,9 +57711,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "uke" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/food_or_drink/booze{
@@ -58632,9 +58568,7 @@
 /area/station/security/prison/visit)
 "uzb" = (
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "uzc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
@@ -62166,9 +62100,7 @@
 "vKg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "vKm" = (
 /obj/structure/rack,
 /obj/item/clothing/suit/hazardvest,
@@ -62692,9 +62624,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "vUH" = (
 /obj/structure/table/glass,
 /obj/structure/cable,
@@ -63995,9 +63925,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "wrJ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -65377,9 +65305,7 @@
 	pixel_y = 3
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "wQI" = (
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 8;
@@ -67980,9 +67906,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "xMz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -68278,9 +68202,7 @@
 	dir = 8
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/treatment_center{
-	name = "\improper Cargo Treatment Center"
-	})
+/area/station/cargo/treatment_center)
 "xQS" = (
 /obj/machinery/light/small/directional/north,
 /obj/structure/table/wood,

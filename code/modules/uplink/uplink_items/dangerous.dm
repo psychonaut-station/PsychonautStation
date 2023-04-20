@@ -1,5 +1,3 @@
-// File organised based on progression
-
 //All bundles and telecrystals
 /datum/uplink_category/dangerous
 	name = "Conspicuous Weapons"
@@ -7,8 +5,6 @@
 
 /datum/uplink_item/dangerous
 	category = /datum/uplink_category/dangerous
-
-// No progression cost
 
 /datum/uplink_item/dangerous/foampistol
 	name = "Toy Pistol with Riot Darts"
@@ -82,8 +78,6 @@
 	progression_minimum = 20 MINUTES
 	item = /obj/item/clothing/gloves/rapid
 	cost = 8
-
-// Medium progression cost
 
 /datum/uplink_item/dangerous/doublesword
 	name = "Double-Bladed Energy Sword"

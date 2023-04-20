@@ -3,7 +3,7 @@
 	help_text = "Check round status"
 
 /datum/tgs_chat_command/tgscheck/Run(datum/tgs_chat_user/sender, params)
-	return "[GLOB.round_id ? "Round #[GLOB.round_id]: " : " "][GLOB.clients.len] oyuncu ile [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"]."
+	return new /datum/tgs_message_content("[GLOB.round_id ? "Round #[GLOB.round_id]: " : " "][GLOB.clients.len] oyuncu ile [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"].")
 
 /datum/tgs_chat_command/poly
 	name = "poly"
@@ -20,4 +20,4 @@
 			var/list/json = json_decode(file2text(json_file))
 			poly_speech = json["phrases"]
 
-	return pick(poly_speech)
+	return new /datum/tgs_message_content(pick(poly_speech))

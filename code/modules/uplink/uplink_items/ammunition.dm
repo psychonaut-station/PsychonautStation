@@ -1,5 +1,3 @@
-// File ordered by progression
-
 /datum/uplink_category/ammo
 	name = "Ammunition"
 	weight = 7
@@ -7,8 +5,6 @@
 /datum/uplink_item/ammo
 	category = /datum/uplink_category/ammo
 	surplus = 40
-
-// No progression cost
 
 /datum/uplink_item/ammo/toydarts
 	name = "Box of Riot Darts"
@@ -18,8 +14,6 @@
 	surplus = 0
 	illegal_tech = FALSE
 	purchasable_from = ~UPLINK_NUKE_OPS
-
-// Low progression cost
 
 /datum/uplink_item/ammo/pistol
 	name = "9mm Handgun Magazine"

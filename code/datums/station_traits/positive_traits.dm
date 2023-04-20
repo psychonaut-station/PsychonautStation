@@ -15,7 +15,7 @@
 	. = ..()
 	COOLDOWN_START(src, party_cooldown, rand(PARTY_COOLDOWN_LENGTH_MIN, PARTY_COOLDOWN_LENGTH_MAX))
 
-/datum/station_trait/lucky_winner/process(delta_time)
+/datum/station_trait/lucky_winner/process(seconds_per_tick)
 	if(!COOLDOWN_FINISHED(src, party_cooldown))
 		return
 
@@ -162,49 +162,49 @@
 /datum/station_trait/deathrattle_department/service
 	name = "Deathrattled Service"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_SERVICE
 	department_name = "Service"
 
 /datum/station_trait/deathrattle_department/cargo
 	name = "Deathrattled Cargo"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_CARGO
 	department_name = "Cargo"
 
 /datum/station_trait/deathrattle_department/engineering
 	name = "Deathrattled Engineering"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_ENGINEERING
 	department_name = "Engineering"
 
 /datum/station_trait/deathrattle_department/command
 	name = "Deathrattled Command"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_COMMAND
 	department_name = "Command"
 
 /datum/station_trait/deathrattle_department/science
 	name = "Deathrattled Science"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_SCIENCE
 	department_name = "Science"
 
 /datum/station_trait/deathrattle_department/security
 	name = "Deathrattled Security"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_SECURITY
 	department_name = "Security"
 
 /datum/station_trait/deathrattle_department/medical
 	name = "Deathrattled Medical"
 	trait_flags = NONE
-	weight = 1
+	weight = 2
 	department_to_apply_to = DEPARTMENT_BITFLAG_MEDICAL
 	department_name = "Medical"
 
@@ -212,7 +212,7 @@
 	name = "Deathrattled Station"
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
-	weight = 1
+	weight = 5
 	report_message = "All members of the station have received an implant to notify each other if one of them dies. This should help improve job-safety!"
 	var/datum/deathrattle_group/deathrattle_group
 
@@ -342,3 +342,6 @@
 	report_message = "Due to good performance, we've provided your station with luxury escape pods."
 	trait_to_give = STATION_TRAIT_BIGGER_PODS
 	blacklist = list(/datum/station_trait/cramped_escape_pods)
+
+#undef PARTY_COOLDOWN_LENGTH_MIN
+#undef PARTY_COOLDOWN_LENGTH_MAX

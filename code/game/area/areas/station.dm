@@ -1351,6 +1351,10 @@
 	name = "\improper Mining Office"
 	icon_state = "mining"
 
+/area/station/cargo/treatment_center
+	name = "\improper Cargo Treatment Center"
+	icon_state = "exam_room"
+
 //Science
 
 /area/station/science
@@ -1548,7 +1552,7 @@
 	name = "AI Satellite Solars"
 	icon_state = "ai_solars"
 
-	
+
 //Tramstation - External
 /area/misc/asteroid
 	name = "\improper Asteroid"

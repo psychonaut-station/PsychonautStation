@@ -96,6 +96,10 @@
 	LoadChatFilter()
 	if(CONFIG_GET(flag/load_jobs_from_txt))
 		validate_job_config()
+	if(CONFIG_GET(flag/usewhitelist))
+		load_whitelist()
+
+	load_job_whitelist()
 
 	loaded = TRUE
 

@@ -47,6 +47,9 @@ endmap
 map runtimestation
 endmap
 
+map metastationz
+endmap
+
 map multiz_debug
 endmap
 

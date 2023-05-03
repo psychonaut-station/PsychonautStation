@@ -155,7 +155,7 @@
 			if(recipient_ticket)
 				recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[message]")
 			return
-	cmd_admin_pm(whom, message, recipient_ticket?.ticket_type == AHELP_TYPE_MENTOR)
+	cmd_admin_pm(whom, message, recipient_ticket?.ticket_type == TICKET_TYPE_MENTOR)
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed.
@@ -395,7 +395,7 @@
 		var/already_logged = FALSE
 		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
 		if(!recipient_ticket)
-			new /datum/admin_help(send_message, recipient, TRUE, FALSE, !is_mentor ? AHELP_TYPE_ADMIN : AHELP_TYPE_MENTOR)
+			new /datum/admin_help(send_message, recipient, TRUE, FALSE, !is_mentor ? TICKET_TYPE_ADMIN : TICKET_TYPE_MENTOR)
 			already_logged = TRUE
 			// This action mutates our existing cached ticket information, so we recache
 			ticket = current_ticket
@@ -408,13 +408,13 @@
 		var/message_reply = ""
 		var/message_sound = ""
 		switch (recipient_ticket.ticket_type)
-			if (AHELP_TYPE_ADMIN)
+			if (TICKET_TYPE_ADMIN)
 				message_title = "<font color='red' size='4'><b>-- Administrator private message --</b></font>"
-				message_reply = "<i>Click on the administrator's name to reply.</i>"
+				message_reply = span_adminsay("<i>Click on the administrator's name to reply.</i>")
 				message_sound = "sound/effects/adminhelp.ogg"
-			if (AHELP_TYPE_MENTOR)
+			if (TICKET_TYPE_MENTOR)
 				message_title = "<font color='green' size='4'><b>-- Mentor private message --</b></font>"
-				message_reply = "<i>Click on the mentor's name to reply.</i>"
+				message_reply = span_mentorsay("<i>Click on the mentor's name to reply.</i>")
 				message_sound = "sound/misc/compiler-stage2.ogg"
 
 		to_chat(recipient,
@@ -424,17 +424,16 @@
 
 		recipient.receive_ahelp(
 			link_to_us,
-			span_linkify(send_message),
-			recipient_ticket.ticket_type == AHELP_TYPE_MENTOR
+			span_linkify(send_message)
 		)
 
 		to_chat(recipient,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_adminsay(message_reply),
+			html = message_reply,
 			confidential = TRUE)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("[recipient_ticket.ticket_type == AHELP_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
+			html = span_notice("[recipient_ticket.ticket_type == TICKET_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
 			confidential = TRUE)
 
 		admin_ticket_log(recipient,
@@ -455,7 +454,7 @@
 		if(!ticket)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = span_danger("Error: Admin-PM-Send: Non-admin to non-admin PM communication is forbidden."),
+				html = span_danger("Error: Non-admin to non-admin PM communication is forbidden."),
 				confidential = TRUE)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
@@ -472,7 +471,7 @@
 	if(!ticket)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_danger("Error: Admin-PM-Send: Attempted to send a reply to a closed ticket."),
+			html = span_danger("Error: Attempted to send a reply to a closed ticket."),
 			confidential = TRUE)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -491,14 +490,12 @@
 	if(our_holder)
 		recipient.receive_ahelp(
 			name_key_with_link,
-			span_linkify(keyword_parsed_msg),
-			FALSE,
-			"danger",
+			span_linkify(keyword_parsed_msg)
 		)
 
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("[ticket.ticket_type == AHELP_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
+			html = span_notice("[ticket.ticket_type == TICKET_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
 			confidential = TRUE)
 
 		//omg this is dumb, just fill in both their logs
@@ -746,8 +743,7 @@
 
 	recipient.receive_ahelp(
 		"<a href='?priv_msg=[stealthkey]'>[adminname]</a>",
-		message,
-		FALSE,
+		message
 	)
 
 	to_chat(recipient,
@@ -795,11 +791,18 @@
 
 	return GLOB.directory[searching_ckey]
 
-/client/proc/receive_ahelp(reply_to, message, is_mentor, span_class = "adminsay")
+/client/proc/receive_ahelp(reply_to, message)
+	var/pretty_message = ""
+	switch (current_ticket?.ticket_type)
+		if (TICKET_TYPE_ADMIN)
+			pretty_message = "<span class='adminsay'>Admin PM from-<b>[reply_to]</b>: [message]</span>"
+		if (TICKET_TYPE_MENTOR)
+			pretty_message = "<span class='mentorsay'>Mentor PM from-<b>[reply_to]</b>: [span_mentorsaytext(message)]</span>"
+
 	to_chat(
 		src,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<span class='[span_class]'>[is_mentor ? "Mentor" : "Admin"] PM from-<b>[reply_to]</b>: [message]</span>",
+		html = pretty_message,
 		confidential = TRUE,
 	)
 

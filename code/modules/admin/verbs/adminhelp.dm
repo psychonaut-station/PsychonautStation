@@ -5,8 +5,8 @@
 
 GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
-#define AHELP_TYPE_ADMIN 0
-#define AHELP_TYPE_MENTOR 1
+#define TICKET_TYPE_ADMIN 0
+#define TICKET_TYPE_MENTOR 1
 
 /**
  * # Adminhelp Ticket Manager
@@ -90,7 +90,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<A href='?_src_=holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
-		dat += "[span_adminnotice("[span_adminhelp("[AH.ticket_type == AHELP_TYPE_MENTOR ? "Mentor" : "Admin"] Ticket #[AH.id]")]: <A href='?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
+		dat += "[span_adminnotice("[span_adminhelp("[AH.ticket_type == TICKET_TYPE_MENTOR ? "Mentor" : "Admin"] Ticket #[AH.id]")]: <A href='?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -166,7 +166,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 #define WEBHOOK_URGENT 1
 #define WEBHOOK_NON_URGENT 2
 
-#define REPLACE_SENDER(admin, mentor) ticket_type == AHELP_TYPE_ADMIN ? admin : mentor
+#define REPLACE_SENDER(admin, mentor) ticket_type == TICKET_TYPE_ADMIN ? admin : mentor
 
 /**
  * # Adminhelp Ticket
@@ -207,7 +207,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
 	/// Type of the ticket
-	var/ticket_type = AHELP_TYPE_ADMIN
+	var/ticket_type = TICKET_TYPE_ADMIN
 
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
@@ -216,7 +216,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
  * * msg_raw - The first message of this admin_help: used for the initial title of the ticket
  * * is_bwoink - Boolean operator, TRUE if this ticket was started by an admin PM
  */
-/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE, type = AHELP_TYPE_ADMIN)
+/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE, type = TICKET_TYPE_ADMIN)
 	//clean the input msg
 	var/msg = sanitize(copytext_char(msg_raw, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
@@ -390,18 +390,18 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
 
-	if (type == AHELP_TYPE_ADMIN)
-		. = " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
-		. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
-
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
+	.  = " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
 
+	if (ticket_type == TICKET_TYPE_ADMIN)
+		. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
+		. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
+
 /datum/admin_help/proc/SendNoticeSound(client/C)
-	switch (type)
-		if (AHELP_TYPE_ADMIN)
+	switch (ticket_type)
+		if (TICKET_TYPE_ADMIN)
 			SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
-		if (AHELP_TYPE_MENTOR)
+		if (TICKET_TYPE_MENTOR)
 			SEND_SOUND(C, sound('sound/misc/compiler-stage2.ogg'))
 
 //private
@@ -881,7 +881,7 @@ GLOBAL_DATUM_INIT(mentor_help_ui_handler, /datum/mentor_help_ui_handler, new)
 		user_client.current_ticket.MessageNoRecipient(message, FALSE)
 		return
 
-	new /datum/admin_help(message, user_client, FALSE, FALSE, AHELP_TYPE_MENTOR)
+	new /datum/admin_help(message, user_client, FALSE, FALSE, TICKET_TYPE_MENTOR)
 
 /client/verb/mentorhelp()
 	set category = "Admin"

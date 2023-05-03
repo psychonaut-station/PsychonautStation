@@ -23,6 +23,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
+	/client/proc/summon_ert,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -125,7 +126,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/set_ooc,
 	/client/proc/show_tip,
 	/client/proc/smite,
-	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
 	/client/proc/job_whitelist,

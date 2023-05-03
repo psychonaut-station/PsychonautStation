@@ -2,15 +2,8 @@ import { useBackend, useLocalState } from '../backend';
 import { TextArea, Stack, Button } from '../components';
 import { Window } from '../layouts';
 
-type MentorhelpData = {
-  adminCount: number;
-};
-
 export const Mentorhelp = (props, context) => {
-  const { act, data } = useBackend<MentorhelpData>(context);
-  const {
-    adminCount,
-  } = data;
+  const { act } = useBackend(context);
   const [mhelpMessage, setMhelpMessage] = useLocalState(
     context,
     'ahelp_message',

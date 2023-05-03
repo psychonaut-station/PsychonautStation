@@ -4,6 +4,8 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 GLOBAL_PROTECT(admin_verbs_default)
 /world/proc/AVerbsDefault()
 	return list(
+	/client/proc/cmd_mentor_pm_context, /*right-click mentorPM interface*/
+	/client/proc/cmd_mentor_pm_panel, /*mentor-pm list*/
 	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
 	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/

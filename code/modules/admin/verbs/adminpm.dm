@@ -29,7 +29,7 @@
 			html = span_danger("Error: Admin-PM-Context: Target mob is not a mob, somehow."),
 			confidential = TRUE)
 		return
-	cmd_admin_pm(M.client, null)
+	cmd_admin_pm(M.client, null, FALSE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM Mob") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
 /// Shows a list of clients we could send PMs to, then forwards our choice to cmd_admin_pm
@@ -62,7 +62,7 @@
 	var/target = input(src,"To whom shall we send a message?", "Admin PM", null) as null|anything in sort_list(targets)
 	if (isnull(target))
 		return
-	cmd_admin_pm(targets[target], null)
+	cmd_admin_pm(targets[target], null, FALSE)
 	SSblackbox.record_feedback("tally", "admin_verb", 1, "Admin PM") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
 /// Replys to some existing ahelp, reply to whom, which can be a client or ckey
@@ -155,12 +155,12 @@
 			if(recipient_ticket)
 				recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[message]")
 			return
-	cmd_admin_pm(whom, message)
+	cmd_admin_pm(whom, message, recipient_ticket?.ticket_type == AHELP_TYPE_MENTOR)
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed.
 //whom here is a client, a ckey, or [EXTERNAL_PM_USER] if this is from tgs. message is the default message to send
-/client/proc/cmd_admin_pm(whom, message)
+/client/proc/cmd_admin_pm(whom, message, is_mentor)
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -188,7 +188,7 @@
 	if(!message_to_send)
 		return
 
-	if(!sends_adminpm_message(disambiguate_client(whom), message_to_send))
+	if(!sends_adminpm_message(disambiguate_client(whom), is_mentor, message_to_send))
 		return
 
 	notify_adminpm_message(disambiguate_client(whom), message_to_send)
@@ -304,7 +304,7 @@
 /// or a /client, in which case we send in the standard form
 /// send_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
 /// Returns FALSE if the send failed, TRUE otherwise
-/client/proc/sends_adminpm_message(ambiguious_recipient, send_message)
+/client/proc/sends_adminpm_message(ambiguious_recipient, is_mentor, send_message)
 	if(IsAdminAdvancedProcCall())
 		return FALSE
 
@@ -395,7 +395,7 @@
 		var/already_logged = FALSE
 		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
 		if(!recipient_ticket)
-			new /datum/admin_help(send_message, recipient, TRUE)
+			new /datum/admin_help(send_message, recipient, TRUE, FALSE, !is_mentor ? AHELP_TYPE_ADMIN : AHELP_TYPE_MENTOR)
 			already_logged = TRUE
 			// This action mutates our existing cached ticket information, so we recache
 			ticket = current_ticket
@@ -404,23 +404,37 @@
 			recipient_ticket_id = recipient_ticket?.id
 			SSblackbox.LogAhelp(recipient_ticket_id, "Ticket Opened", send_message, recipient.ckey, src.ckey)
 
+		var/message_title = ""
+		var/message_reply = ""
+		var/message_sound = ""
+		switch (recipient_ticket.ticket_type)
+			if (AHELP_TYPE_ADMIN)
+				message_title = "<font color='red' size='4'><b>-- Administrator private message --</b></font>"
+				message_reply = "<i>Click on the administrator's name to reply.</i>"
+				message_sound = "sound/effects/adminhelp.ogg"
+			if (AHELP_TYPE_MENTOR)
+				message_title = "<font color='green' size='4'><b>-- Mentor private message --</b></font>"
+				message_reply = "<i>Click on the mentor's name to reply.</i>"
+				message_sound = "sound/misc/compiler-stage2.ogg"
+
 		to_chat(recipient,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
+			html = message_title,
 			confidential = TRUE)
 
 		recipient.receive_ahelp(
 			link_to_us,
 			span_linkify(send_message),
+			recipient_ticket.ticket_type == AHELP_TYPE_MENTOR
 		)
 
 		to_chat(recipient,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
+			html = span_adminsay(message_reply),
 			confidential = TRUE)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
+			html = span_notice("[recipient_ticket.ticket_type == AHELP_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
 			confidential = TRUE)
 
 		admin_ticket_log(recipient,
@@ -432,7 +446,7 @@
 			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)
 
 		//always play non-admin recipients the adminhelp sound
-		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(recipient, sound(message_sound))
 		return TRUE
 
 	// Ok if we're here, either this message is for an admin, or someone somehow figured out how to send a new message as a player
@@ -469,7 +483,7 @@
 
 	// Let's play some music for the admin, only if they want it tho
 	if(sound_prefs & SOUND_ADMINHELP)
-		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+		ticket.SendNoticeSound(recipient)
 
 	SEND_SIGNAL(ticket, COMSIG_ADMIN_HELP_REPLIED)
 
@@ -478,12 +492,13 @@
 		recipient.receive_ahelp(
 			name_key_with_link,
 			span_linkify(keyword_parsed_msg),
+			FALSE,
 			"danger",
 		)
 
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
+			html = span_notice("[ticket.ticket_type == AHELP_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
 			confidential = TRUE)
 
 		//omg this is dumb, just fill in both their logs
@@ -732,6 +747,7 @@
 	recipient.receive_ahelp(
 		"<a href='?priv_msg=[stealthkey]'>[adminname]</a>",
 		message,
+		FALSE,
 	)
 
 	to_chat(recipient,
@@ -779,17 +795,69 @@
 
 	return GLOB.directory[searching_ckey]
 
-/client/proc/receive_ahelp(reply_to, message, span_class = "adminsay")
+/client/proc/receive_ahelp(reply_to, message, is_mentor, span_class = "adminsay")
 	to_chat(
 		src,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = "<span class='[span_class]'>Admin PM from-<b>[reply_to]</b>: [message]</span>",
+		html = "<span class='[span_class]'>[is_mentor ? "Mentor" : "Admin"] PM from-<b>[reply_to]</b>: [message]</span>",
 		confidential = TRUE,
 	)
 
 	current_ticket?.player_replied = FALSE
 
 	SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, message)
+
+/// MENTOR PRIVATE MESSAGE ///
+
+/client/proc/cmd_mentor_pm_context(mob/M in GLOB.mob_list)
+	set category = null
+	set name = "Mentor PM Mob"
+	if(!holder)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Mentor-PM-Context: Only administrators may use this command."),
+			confidential = TRUE)
+		return
+	if(!ismob(M))
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Mentor-PM-Context: Target mob is not a mob, somehow."),
+			confidential = TRUE)
+		return
+	cmd_admin_pm(M.client, null, TRUE)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Mentor PM Mob")
+
+/client/proc/cmd_mentor_pm_panel()
+	set category = "Admin"
+	set name = "Mentor PM"
+	if(!holder)
+		to_chat(src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Mentor-PM-Panel: Only administrators may use this command."),
+			confidential = TRUE)
+		return
+
+	var/list/targets = list()
+	for(var/client/client in GLOB.clients)
+		var/nametag = ""
+		var/mob/lad = client.mob
+		var/mob_name = lad?.name
+		var/real_mob_name = lad?.real_name
+		if(!lad)
+			nametag = "(No Mob)"
+		else if(isnewplayer(lad))
+			nametag = "(New Player)"
+		else if(isobserver(lad))
+			nametag = "[mob_name](Ghost)"
+		else
+			nametag = "[real_mob_name](as [mob_name])"
+		targets["[nametag] - [client]"] = client
+
+	var/target = input(src,"To whom shall we send a message?", "Mentor PM", null) as null|anything in sort_list(targets)
+	if (isnull(target))
+		return
+	cmd_admin_pm(targets[target], null, TRUE)
+	SSblackbox.record_feedback("tally", "admin_verb", 1, "Mentor PM") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 
 #undef EXTERNAL_PM_USER
 #undef EXTERNALREPLYCOUNT

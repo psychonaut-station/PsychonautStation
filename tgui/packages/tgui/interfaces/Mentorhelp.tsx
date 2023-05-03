@@ -1,6 +1,5 @@
-import { BooleanLike } from 'common/react';
 import { useBackend, useLocalState } from '../backend';
-import { TextArea, Stack, Button, NoticeBox, Input, Box } from '../components';
+import { TextArea, Stack, Button } from '../components';
 import { Window } from '../layouts';
 
 type MentorhelpData = {

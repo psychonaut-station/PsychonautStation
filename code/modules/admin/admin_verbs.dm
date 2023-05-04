@@ -24,6 +24,9 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
 	/client/proc/summon_ert,
+	/client/proc/cmd_admin_create_centcom_report,
+	/client/proc/requests,
+	/client/proc/robust_dress_shop,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -57,7 +60,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_hostile_environment, /*Allows admins to prevent the emergency shuttle from leaving, also lets admins clear hostile environments if theres one stuck*/
 	/client/proc/cmd_admin_check_contents, /*displays the contents of an instance*/
 	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
-	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_direct_narrate, /*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_headset_message, /*send a message to somebody through their headset as CentCom*/

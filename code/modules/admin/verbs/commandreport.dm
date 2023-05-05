@@ -12,7 +12,7 @@
 	set category = "Admin.Events"
 	set name = "Change Command Name"
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN | R_MENTOR))
 		return
 
 	var/input = input(usr, "Please input a new name for Central Command.", "What?", "") as text|null
@@ -30,7 +30,7 @@
 	if(!check_rights(R_ADMIN | R_MENTOR))
 		return
 
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	// SSblackbox.record_feedback("tally", "admin_verb", 1, "Create Command Report") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
 	var/datum/command_report_menu/tgui = new(usr)
 	tgui.ui_interact(usr)
 

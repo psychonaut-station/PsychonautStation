@@ -150,8 +150,8 @@ GLOBAL_DATUM_INIT(requests, /datum/request_manager, new)
 		return
 
 	// Only admins should be sending actions
-	if (!check_rights(R_ADMIN))
-		to_chat(usr, "You do not have permission to do this, you require +ADMIN", confidential = TRUE)
+	if (!check_rights(R_ADMIN | R_MENTOR))
+		to_chat(usr, "You do not have permission to do this, you require +ADMIN or +MENTOR", confidential = TRUE)
 		return
 
 	// Get the request this relates to

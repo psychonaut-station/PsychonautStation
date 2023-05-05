@@ -444,8 +444,6 @@
 	cmd_admin_areatest(FALSE)
 
 /client/proc/robust_dress_shop()
-	set category = "Admin.Fun"
-	set name = "Make Self Human"
 
 	var/list/baseoutfits = list("Naked","Custom","As Job...", "As Plasmaman...")
 	var/list/outfits = list()

@@ -58,7 +58,7 @@
 		preset_names.Insert(1, command_name())
 
 /datum/command_report_menu/ui_state(mob/user)
-	return GLOB.admin_state
+	return GLOB.mentor_state
 
 /datum/command_report_menu/ui_close()
 	qdel(src)

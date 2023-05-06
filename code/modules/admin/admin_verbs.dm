@@ -22,6 +22,7 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/cmd_change_command_name,
 	/client/proc/make_human_mapview,
 	/client/proc/delete_mob_mapview,
+	/client/proc/show_tip,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -122,7 +123,6 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/run_weather,
 	/client/proc/set_dynex_scale,
 	/client/proc/set_ooc,
-	/client/proc/show_tip,
 	/client/proc/smite,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,

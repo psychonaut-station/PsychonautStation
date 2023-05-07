@@ -145,19 +145,3 @@
 	cost = 15
 	surplus = 50
 	purchasable_from = UPLINK_NANO
-
-/datum/uplink_item/dangerous/katana
-	name = "Katana"
-	desc = "Woefully underpowered in D20.."
-	progression_minimum = 20 MINUTES
-	item = /obj/item/katana
-	cost = 8
-	purchasable_from = ~(UPLINK_TRAITORS | UPLINK_NUKE_OPS)
-
-/datum/uplink_item/dangerous/katana
-	name = "Katana"
-	desc = "Woefully underpowered in D20.."
-	progression_minimum = 20 MINUTES
-	item = /obj/item/toy/katana
-	cost = 8
-	purchasable_from = UPLINK_CLOWN_OPS

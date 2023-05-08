@@ -85,6 +85,6 @@ Exclude = AUTOADMIN
 Edit =
 
 Name = Event Manager
-Include = @ FUN SPAWN POLL
+Include = @ FUN ADMIN SPAWN POLL
 Exclude = AUTOADMIN
 Edit =

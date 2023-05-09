@@ -89,3 +89,8 @@ Name = Mentor
 Include = MENTOR
 Exclude = ADMIN
 Edit =
+
+Name = Event Manager
+Include = FUN ADMIN DEBUG VAREDIT SPAWN POLL
+Exclude = AUTOADMIN
+Edit =

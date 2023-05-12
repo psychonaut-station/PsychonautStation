@@ -83,3 +83,8 @@ Name = Coder
 Include = DEBUG VAREDIT SERVER SPAWN POLL
 Exclude = AUTOADMIN
 Edit =
+
+Name = Event Manager
+Include = FUN ADMIN DEBUG VAREDIT SPAWN POLL
+Exclude = AUTOADMIN
+Edit =

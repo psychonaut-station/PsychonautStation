@@ -23,6 +23,10 @@
 	/// the number that is added to the failure_prob, which is the probability of whether it will spread or not
 	var/adding_failure = 50
 
+	if(HAS_TRAIT(user, TRAIT_PACIFISM) && !attacker_style?.pacifist_style)
+		to_chat(user, span_warning("You don't want to harm [target]!"))
+		return FALSE
+
 /obj/item/resonator/attack_self(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)
 		to_chat(user, span_info("You set the resonator's fields to detonate only after you hit one with it."))
@@ -163,6 +167,10 @@
 	fieldlimit = 6
 	quick_burst_mod = 1
 	adding_failure = 30
+
+	if(HAS_TRAIT(user, TRAIT_PACIFISM) && !attacker_style?.pacifist_style)
+		to_chat(user, span_warning("You don't want to harm [target]!"))
+		return FALSE
 
 /obj/item/resonator/upgraded/attack_self(mob/user)
 	if(mode == RESONATOR_MODE_AUTO)

@@ -98,6 +98,26 @@
 	contains = list(/obj/item/raw_anomaly_core/dimensional)
 	crate_name = "raw dimensional anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
+    
+/datum/supply_pack/science/raw_time_anomaly
+	name = "Raw Time Anomaly"
+	desc = "Contains the raw core of a time anomaly, ready to be implosion-compressed into a powerful artifact."
+	cost = CARGO_CRATE_VALUE * 10
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
+	contains = list(/obj/item/raw_anomaly_core/time)
+	crate_name = "raw time anomaly"
+	crate_type = /obj/structure/closet/crate/secure/science
+
+/datum/supply_pack/science/raw_life_anomaly
+	name = "Raw Life Anomaly"
+	desc = "Contains the raw core of a life anomaly, ready to be implosion-compressed into a powerful artifact."
+	cost = CARGO_CRATE_VALUE * 10
+	access = ACCESS_ORDNANCE
+	access_view = ACCESS_ORDNANCE
+	contains = list(/obj/item/raw_anomaly_core/life)
+	crate_name = "raw life anomaly"
+	crate_type = /obj/structure/closet/crate/secure/science
 
 
 /datum/supply_pack/science/robotics

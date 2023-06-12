@@ -13,7 +13,6 @@
 		/datum/surgery_step/revive,
 		/datum/surgery_step/close,
 	)
-
 /datum/surgery/revival/can_start(mob/user, mob/living/carbon/target)
 	if(!..())
 		return FALSE
@@ -25,7 +24,6 @@
 	if(!target_brain)
 		return FALSE
 	return TRUE
-
 /datum/surgery_step/revive
 	name = "shock brain (defibrillator)"
 	implements = list(
@@ -37,7 +35,6 @@
 	time = 5 SECONDS
 	success_sound = 'sound/magic/lightningbolt.ogg'
 	failure_sound = 'sound/magic/lightningbolt.ogg'
-
 /datum/surgery_step/revive/tool_check(mob/user, obj/item/tool)
 	. = TRUE
 	if(istype(tool, /obj/item/shockpaddles))
@@ -57,7 +54,6 @@
 		else
 			to_chat(user, span_warning("You need an electrode for this!"))
 			return FALSE
-
 /datum/surgery_step/revive/preop(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
@@ -67,13 +63,11 @@
 		span_notice("[user] prepares to shock [target]'s brain with [tool]."),
 	)
 	target.notify_ghost_cloning("Someone is trying to zap your brain.", source = target)
-
 /datum/surgery_step/revive/play_preop_sound(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(istype(tool, /obj/item/shockpaddles))
 		playsound(tool, 'sound/machines/defib_charge.ogg', 75, 0)
 	else
 		..()
-
 /datum/surgery_step/revive/success(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
 	display_results(
 		user,
@@ -93,7 +87,6 @@
 	else
 		target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
 		return FALSE
-
 /datum/surgery_step/revive/failure(mob/user, mob/living/carbon/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
@@ -112,7 +105,7 @@
 	possible_locs = list(BODY_ZONE_HEAD)
 	steps = list(
 		/datum/surgery_step/incise,
-		/datum/surgery_step/revive,
+		/datum/surgery_step/animalrevive,
 		/datum/surgery_step/close,
 	)
 
@@ -125,7 +118,7 @@
 		return FALSE
 	return TRUE
 
-/datum/surgery_step/revive
+/datum/surgery_step/animalrevive
 	name = "shock brain (defibrillator)"
 	implements = list(
 		/obj/item/shockpaddles = 100,
@@ -137,27 +130,8 @@
 	success_sound = 'sound/magic/lightningbolt.ogg'
 	failure_sound = 'sound/magic/lightningbolt.ogg'
 
-/datum/surgery_step/revive/tool_check(mob/user, obj/item/tool)
-	. = TRUE
-	if(istype(tool, /obj/item/shockpaddles))
-		var/obj/item/shockpaddles/paddles = tool
-		if((paddles.req_defib && !paddles.defib.powered) || !HAS_TRAIT(paddles, TRAIT_WIELDED) || paddles.cooldown || paddles.busy)
-			to_chat(user, span_warning("You need to wield both paddles, and [paddles.defib] must be powered!"))
-			return FALSE
-	if(istype(tool, /obj/item/melee/baton/security))
-		var/obj/item/melee/baton/security/baton = tool
-		if(!baton.active)
-			to_chat(user, span_warning("[baton] needs to be active!"))
-			return FALSE
-	if(istype(tool, /obj/item/gun/energy))
-		var/obj/item/gun/energy/egun = tool
-		if(egun.chambered && istype(egun.chambered, /obj/item/ammo_casing/energy/electrode))
-			return TRUE
-		else
-			to_chat(user, span_warning("You need an electrode for this!"))
-			return FALSE
 
-/datum/surgery_step/revive/preop(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/animalrevive/preop(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
 		target,
@@ -167,13 +141,13 @@
 	)
 	target.notify_ghost_cloning("Someone is trying to zap your brain.", source = target)
 
-/datum/surgery_step/revive/play_preop_sound(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/animalrevive/play_preop_sound(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	if(istype(tool, /obj/item/shockpaddles))
 		playsound(tool, 'sound/machines/defib_charge.ogg', 75, 0)
 	else
 		..()
 
-/datum/surgery_step/revive/success(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
+/datum/surgery_step/animalrevive/success(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
 	var/mob/living/target_animal = target
 	display_results(
 		user,
@@ -192,7 +166,7 @@
 		target.visible_message(span_warning("...[target.p_they()] convulses, then lies still."))
 		return FALSE
 
-/datum/surgery_step/revive/failure(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
+/datum/surgery_step/animalrevive/failure(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery)
 	display_results(
 		user,
 		target,

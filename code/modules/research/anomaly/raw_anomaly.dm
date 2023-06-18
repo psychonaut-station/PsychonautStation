@@ -74,6 +74,18 @@
 	anomaly_type = /obj/item/assembly/signaler/anomaly/ectoplasm
 	icon_state = "dimensional_core"
 
+/obj/item/raw_anomaly_core/time
+	name = "raw time core"
+	desc = "The raw core of a time anomaly. You don't even feel it when you touch it."
+	anomaly_type = /obj/item/assembly/signaler/anomaly/time
+	icon_state = "rawcore_time"
+
+/obj/item/raw_anomaly_core/life
+	name = "raw life core"
+	desc = "The raw core of a time anomaly. It seems to contain life."
+	anomaly_type = /obj/item/assembly/signaler/anomaly/life
+	icon_state = "rawcore_life"
+
 /obj/item/raw_anomaly_core/random/Initialize(mapload)
 	. = ..()
 	var/path = pick(subtypesof(/obj/item/raw_anomaly_core))

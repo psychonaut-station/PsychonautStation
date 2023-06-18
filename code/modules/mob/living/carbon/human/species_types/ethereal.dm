@@ -9,7 +9,6 @@
 	exotic_blood = /datum/reagent/consumable/liquidelectricity //Liquid Electricity. fuck you think of something better gamer
 	exotic_bloodtype = "LE"
 	siemens_coeff = 0.5 //They thrive on energy
-	brutemod = 1.25 //They're weak to punches
 	payday_modifier = 0.75
 	species_traits = list(
 		DYNCOLORS,
@@ -201,7 +200,7 @@
 	return list(
 		"Ethereals are a species native to the planet Sprout. \
 		When they were originally discovered, they were at a medieval level of technological progression, \
-		but due to their natural acclimation with electricity, they felt easy among the large NanoTrasen installations.",
+		but due to their natural acclimation with electricity, they felt easy among the large Nanotrasen installations.",
 	)
 
 /datum/species/ethereal/create_pref_unique_perks()

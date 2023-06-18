@@ -41,8 +41,8 @@
 		TRAIT_PREVENT_ANTAG_OBJECTIVE,
 	)
 
-	brutemod = 0.5
-	burnmod = 0.5
+	damage_modifier = 0.5
+	heatmod = 0.5
 	coldmod = 0
 	heatmod = 1.5
 	stunmod = 0.3

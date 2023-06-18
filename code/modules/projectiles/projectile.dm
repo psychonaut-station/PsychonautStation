@@ -94,6 +94,8 @@
 	var/ricochets = 0
 	/// how many times we can ricochet max
 	var/ricochets_max = 0
+	/// how many times we have to ricochet min (unless we hit an atom we can ricochet off)
+	var/min_ricochets = 0
 	/// 0-100 (or more, I guess), the base chance of ricocheting, before being modified by the atom we shoot and our chance decay
 	var/ricochet_chance = 0
 	/// 0-1 (or more, I guess) multiplier, the ricochet_chance is modified by multiplying this after each ricochet
@@ -402,13 +404,14 @@
 	return FALSE
 
 
-/// Called when a mob with PARRY_TRAIT clicks on this projectile or the tile its on, reflecting the projectile within 17 degrees and increasing the bullet's stats.
+/// Called when a mob with PARRY_TRAIT clicks on this projectile or the tile its on, reflecting the projectile within 7 degrees and increasing the bullet's stats.
 /obj/projectile/proc/on_parry(mob/user, list/modifiers)
 	if(SEND_SIGNAL(user, COMSIG_LIVING_PROJECTILE_PARRIED, src) & INTERCEPT_PARRY_EFFECTS)
 		return
 
 	parried = TRUE
 	set_angle(dir2angle(user.dir) + rand(-3, 3))
+	firer = user
 	speed *= 0.8 // Go 20% faster when parried
 	damage *= 1.15 // And do 15% more damage
 	add_atom_colour(COLOR_RED_LIGHT, TEMPORARY_COLOUR_PRIORITY)
@@ -448,8 +451,9 @@
 				store_hitscan_collision(point_cache)
 			return TRUE
 
-	var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
-	def_zone = ran_zone(def_zone, max(100-(7*distance), 5)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
+	if(!HAS_TRAIT(src, TRAIT_ALWAYS_HIT_ZONE))
+		var/distance = get_dist(T, starting) // Get the distance between the turf shot from and the mob we hit and use that for the calculations.
+		def_zone = ran_zone(def_zone, max(100-(7*distance), 5)) //Lower accurancy/longer range tradeoff. 7 is a balanced number to use.
 
 	return process_hit(T, select_target(T, A, A), A) // SELECT TARGET FIRST!
 
@@ -683,7 +687,7 @@
 	var/chance = ricochet_chance * A.receive_ricochet_chance_mod
 	if(firer && HAS_TRAIT(firer, TRAIT_NICE_SHOT))
 		chance += NICE_SHOT_RICOCHET_BONUS
-	if(prob(chance))
+	if(ricochets < min_ricochets || prob(chance))
 		return TRUE
 	return FALSE
 

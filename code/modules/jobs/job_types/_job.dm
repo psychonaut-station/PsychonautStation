@@ -126,6 +126,9 @@
 
 	/// custom ringtone for this job
 	var/job_tone
+	
+	/// Minimal character age for this job
+	var/required_character_age
 
 	/// Won't allow anyone to select this job, if their ckey is not in "data/job_whitelist.txt"
 	var/whitelisted = FALSE
@@ -427,8 +430,7 @@
 		spawn_point.used = TRUE
 		break
 	if(!.)
-		log_world("Couldn't find a round start spawn point for [title]")
-
+		log_mapping("Job [title] ([type]) couldn't find a round start spawn point.")
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()

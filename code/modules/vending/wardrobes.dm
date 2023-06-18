@@ -191,6 +191,7 @@
 	refill_canister = /obj/item/vending_refill/wardrobe/robo_wardrobe
 	extra_price = PAYCHECK_COMMAND * 1.2
 	payment_department = ACCOUNT_SCI
+
 /obj/item/vending_refill/wardrobe/robo_wardrobe
 	machine_name = "RoboDrobe"
 
@@ -273,8 +274,47 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/curator_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/curator_wardrobe
 	machine_name = "CuraDrobe"
+
+/obj/machinery/vending/wardrobe/coroner_wardrobe
+	name = "MortiDrobe"
+	desc = "A favorite among nihilists."
+	icon_state = "coroner_drobe"
+	product_ads = "Any day above ground is a good one!;My day starts when yours ends!;And they call this a dying business!;See you when you're dead!"
+	vend_reply = "Don't forget your \"Buy one get one free\" burial deal!"
+	products = list(
+		/obj/item/storage/box/bodybags = 3,
+		/obj/item/storage/medkit/coroner = 1,
+		/obj/item/toy/crayon/white = 2,
+		/obj/item/clothing/mask/surgical = 1,
+		/obj/item/clothing/shoes/sneakers/black = 1,
+		/obj/item/clothing/suit/toggle/labcoat/coroner = 1,
+		/obj/item/clothing/suit/apron/surgical = 1,
+		/obj/item/clothing/gloves/latex/coroner = 1,
+		/obj/item/clothing/head/utility/surgerycap/black = 1,
+		/obj/item/clothing/under/rank/medical/scrubs/coroner = 1,
+		/obj/item/clothing/under/rank/medical/coroner = 1,
+		/obj/item/clothing/under/rank/medical/coroner/skirt = 1,
+		/obj/item/storage/backpack/coroner = 1,
+		/obj/item/storage/backpack/satchel/coroner = 1,
+		/obj/item/storage/backpack/duffelbag/coroner = 1,
+		/obj/item/clothing/suit/hooded/wintercoat/medical/coroner = 1,
+		/obj/item/radio/headset/headset_srvmed = 2,
+	)
+	contraband = list(
+		/obj/item/knife/ritual = 1,
+		/obj/item/table_clock = 1,
+	)
+	premium = list(
+		/obj/item/autopsy_scanner = 1,
+	)
+	refill_canister = /obj/item/vending_refill/wardrobe/coroner_wardrobe
+	payment_department = ACCOUNT_MED
+
+/obj/item/vending_refill/wardrobe/coroner_wardrobe
+	machine_name = "MortiDrobe"
 
 /obj/machinery/vending/wardrobe/bar_wardrobe
 	name = "BarDrobe"
@@ -307,7 +347,7 @@
 		/obj/item/storage/box/dishdrive = 1,
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/bar_wardrobe
-	payment_department = ACCOUNT_SRV
+	payment_department = ACCOUNT_MED
 	extra_price = PAYCHECK_COMMAND
 /obj/item/vending_refill/wardrobe/bar_wardrobe
 	machine_name = "BarDrobe"
@@ -337,6 +377,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/chef_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/chef_wardrobe
 	machine_name = "ChefDrobe"
 
@@ -411,6 +452,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/law_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/law_wardrobe
 	machine_name = "LawDrobe"
 
@@ -454,6 +496,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/chap_wardrobe
 	payment_department = ACCOUNT_SRV
+
 /obj/item/vending_refill/wardrobe/chap_wardrobe
 	machine_name = "DeusVend"
 
@@ -481,6 +524,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/chem_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/chem_wardrobe
 	machine_name = "ChemDrobe"
 
@@ -502,6 +546,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/gene_wardrobe
 	payment_department = ACCOUNT_SCI
+
 /obj/item/vending_refill/wardrobe/gene_wardrobe
 	machine_name = "GeneDrobe"
 
@@ -525,6 +570,7 @@
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/viro_wardrobe
 	payment_department = ACCOUNT_MED
+
 /obj/item/vending_refill/wardrobe/viro_wardrobe
 	machine_name = "ViroDrobe"
 
@@ -597,6 +643,7 @@
 		/obj/item/clothing/head/hats/intern = 3,
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/cent_wardrobe
+
 /obj/item/vending_refill/wardrobe/cent_wardrobe
 	machine_name = "CentDrobe"
 	light_color = LIGHT_COLOR_ELECTRIC_GREEN

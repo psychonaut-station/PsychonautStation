@@ -6,7 +6,7 @@
 	set desc = "Sends a tip (that you specify) to all players. After all \
 		you're the experienced player here."
 
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN | R_MENTOR))
 		return
 
 	var/input = input(usr, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
@@ -70,7 +70,7 @@
 	src << browse(msg.Join(), "window=Player_playtime_check")
 
 /client/proc/trigger_centcom_recall()
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN | R_MENTOR))
 		return
 	var/message = pick(GLOB.admiral_messages)
 	message = input("Enter message from the on-call admiral to be put in the recall report.", "Admiral Message", message) as text|null

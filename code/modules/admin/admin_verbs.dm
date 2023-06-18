@@ -4,23 +4,25 @@ GLOBAL_LIST_INIT(admin_verbs_default, world.AVerbsDefault())
 GLOBAL_PROTECT(admin_verbs_default)
 /world/proc/AVerbsDefault()
 	return list(
-	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
-	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
+	/client/proc/cmd_mentor_pm_context, /*right-click mentorPM interface*/
+	/client/proc/cmd_mentor_pm_panel, /*mentor-pm list*/
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
 	/client/proc/deadmin, /*destroys our own admin datum so we can play as a regular player*/
-	/client/proc/debugstatpanel,
-	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
 	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
 	/client/proc/hide_verbs, /*hides all our adminverbs*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/mark_datum_mapview,
-	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/reload_admins,
 	/client/proc/requests,
-	/client/proc/secrets,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
+	/client/proc/summon_ert,
+	/client/proc/cmd_admin_create_centcom_report,
+	/client/proc/cmd_change_command_name,
+	/client/proc/make_human_mapview,
+	/client/proc/delete_mob_mapview,
+	/client/proc/show_tip,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -46,6 +48,8 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/admins/proc/view_all_circuits,
 	/datum/verbs/menu/Admin/verb/playerpanel, /* It isn't /datum/admin but it fits no less */
 // Client procs
+	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
+	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
 	/client/proc/admin_call_shuttle, /*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle, /*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	/client/proc/admin_disable_shuttle, /*allows us to disable the emergency shuttle admin-wise so that it cannot be called*/
@@ -54,14 +58,12 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/admin_hostile_environment, /*Allows admins to prevent the emergency shuttle from leaving, also lets admins clear hostile environments if theres one stuck*/
 	/client/proc/cmd_admin_check_contents, /*displays the contents of an instance*/
 	/client/proc/cmd_admin_check_player_exp, /* shows players by playtime */
-	/client/proc/cmd_admin_create_centcom_report,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_admin_direct_narrate, /*send text directly to a player with no padding. Useful for narratives and fluff-text*/
 	/client/proc/cmd_admin_headset_message, /*send a message to somebody through their headset as CentCom*/
 	/client/proc/cmd_admin_local_narrate, /*sends text to all mobs within view of atom*/
 	/client/proc/cmd_admin_subtle_message, /*send a message to somebody as a 'voice in their head'*/
 	/client/proc/cmd_admin_world_narrate, /*sends text to all players with no padding*/
-	/client/proc/cmd_change_command_name,
 	/client/proc/centcom_podlauncher,/*Open a window to launch a Supplypod and configure it or it's contents*/
 	/client/proc/check_ai_laws, /*shows AI and borg laws*/
 	/client/proc/check_antagonists, /*shows all antags*/
@@ -121,12 +123,11 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/run_weather,
 	/client/proc/set_dynex_scale,
 	/client/proc/set_ooc,
-	/client/proc/show_tip,
 	/client/proc/smite,
-	/client/proc/summon_ert,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,
 	/client/proc/job_whitelist,
+	/client/proc/secrets,
 	))
 GLOBAL_PROTECT(admin_verbs_fun)
 GLOBAL_LIST_INIT(admin_verbs_spawn, list(/datum/admins/proc/spawn_atom, /datum/admins/proc/podspawn_atom, /datum/admins/proc/spawn_cargo, /datum/admins/proc/spawn_objasmob, /client/proc/respawn_character, /datum/admins/proc/beaker_panel))
@@ -144,6 +145,7 @@ GLOBAL_PROTECT(admin_verbs_server)
 	/datum/admins/proc/toggleaban,
 	/datum/admins/proc/toggleAI,
 // Client procs
+	/client/proc/reestablish_db_connection, /*reattempt a connection to the database*/
 	/client/proc/adminchangemap,
 	/client/proc/cmd_admin_delete, /*delete an instance/object/mob/etc*/
 	/client/proc/cmd_debug_del_all,
@@ -168,6 +170,8 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	#endif
 	/proc/machine_upgrade,
 	/datum/admins/proc/create_or_modify_area,
+	/client/proc/debugstatpanel,
+	/client/proc/debug_variables, /*allows us to -see- the variables of any instance in the game. +VAREDIT needed to modify*/
 	/client/proc/adventure_manager,
 	/client/proc/atmos_control,
 	/client/proc/callproc,

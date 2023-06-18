@@ -137,7 +137,7 @@
 				. = TRUE
 		if ("adminpm")
 			if (usr.client?.holder && owner)
-				usr.client.cmd_admin_pm(owner, null)
+				usr.client.cmd_admin_pm(owner, null, FALSE)
 
 /datum/interview/ui_data(mob/user)
 	. = list(

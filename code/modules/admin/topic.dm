@@ -23,7 +23,7 @@
 		return
 
 	if(href_list["ahelp"])
-		if(!check_rights(R_ADMIN, TRUE))
+		if(!check_rights(R_ADMIN | R_MENTOR, TRUE))
 			return
 
 		var/ahelp_ref = href_list["ahelp"]
@@ -111,7 +111,7 @@
 		minor_announce("The emergency shuttle will reach its destination in [DisplayTimeText(timer SECONDS)].")
 		message_admins(span_adminnotice("[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds."))
 	else if(href_list["trigger_centcom_recall"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		usr.client.trigger_centcom_recall()
@@ -971,14 +971,14 @@
 		usr.client.smite(H)
 
 	else if(href_list["CentComReply"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
 		usr.client.admin_headset_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
@@ -992,7 +992,7 @@
 		usr.client.admin_headset_message(M)
 
 	else if(href_list["reject_custom_name"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 		var/obj/item/station_charter/charter = locate(href_list["reject_custom_name"])
 		if(istype(charter))
@@ -1741,7 +1741,7 @@
 		editor.ui_interact(usr)
 
 	else if(href_list["show_paper"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/obj/item/paper/paper_to_show = locate(href_list["show_paper"])

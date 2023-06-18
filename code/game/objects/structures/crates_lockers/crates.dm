@@ -69,14 +69,12 @@
 	. = new_overlays
 	if(manifest)
 		. += "manifest"
-
-	if(!opened)
-		if(broken)
-			. += "securecrateemag"
-		else if(locked)
-			. += "securecrater"
-		else if(secure)
-			. += "securecrateg"
+	if(broken)
+		. += "securecrateemag"
+	else if(locked)
+		. += "securecrater"
+	else if(secure)
+		. += "securecrateg"
 
 	if(opened && lid_icon_state)
 		var/mutable_appearance/lid = mutable_appearance(icon = lid_icon, icon_state = lid_icon_state)

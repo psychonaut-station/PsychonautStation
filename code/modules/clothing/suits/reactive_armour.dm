@@ -538,12 +538,10 @@ owner.heal_bodypart_damage(15,0)
 /obj/item/clothing/suit/armor/reactive/life/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!isliving(hitby))
 		return FALSE 
-	var/mob/living/attacker = hitby
-	 owner.visible_message(span_danger("The reactive life armour absorbs energy from the enemy and gives you some back in health!"))
-	attacker.apply_damage_type(50, STAMINA)
-	owner.heal_bodypart_damage(10,0)
+	 owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
+	owner.apply_damage_type(25, STAMINA)
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
-	return FALSE //you didn't actually evade the attack now did you
+	return TRUE 
 
     

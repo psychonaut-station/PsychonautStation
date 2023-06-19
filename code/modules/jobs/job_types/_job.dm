@@ -425,11 +425,11 @@
 		if(spawn_point.name != title)
 			if (!spawn_point.subjobs)
 				continue
-				
+
 			var/is_subjob = FALSE
 			for(var/subjob as anything in spawn_point.subjobs)
 				if (subjob == title)
-					is_subjob = TURE
+					is_subjob = TRUE
 					break
 
 			if (!is_subjob)

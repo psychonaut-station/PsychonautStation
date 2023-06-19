@@ -358,13 +358,20 @@ GLOBAL_VAR(restart_counter)
 	if(config)
 		// If you have already HUB config open, we assume you set those config variables below correctly
 		var/server_name = CONFIG_GET(string/servername)
-		var/name_link = CONFIG_GET(string/hub_name_link)
-		var/website = CONFIG_GET(string/hub_website)
-
-		new_status += "<b><a href='[website]'>[server_name]] — Türkçe SS13</a> — <a href='[name_link]'>Discord</a></b>"
+		new_status += "<b>[server_name]] &#8212; Türkçe SS13</b>"
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
+
+	new_status += "<br>"
+	
+	var/name_link = CONFIG_GET(string/hub_name_link)
+	if (name_link)
+		new_status += "<a href='[name_link]'>Discord</a>"
+
+	var/website = CONFIG_GET(string/hub_website)
+	if (website)
+		new_status += ", <a href='[website]'>Wiki</a>"
 
 	var/players = GLOB.clients.len
 

@@ -498,11 +498,11 @@
 	emp_message = span_warning("The reactive armor's time stopping calculations begin spewing errors!")
 	cooldown_message = span_danger("The reactive time stop system is still recharging! It fails to activate!")
 	reactivearmor_cooldown_duration = 120 SECONDS
-	var/timestop_range = 2
+	var/timestop_range = 1
 
 /obj/item/clothing/suit/armor/reactive/time/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you!"))
-	new /obj/effect/timestop(get_turf(owner), timestop_range, 20, list(owner))
+	new /obj/effect/timestop(get_turf(owner), timestop_range, 10, list(owner))
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -510,7 +510,7 @@
 /obj/item/clothing/suit/armor/reactive/time/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you but leaving someone behind in the process!"))
 	owner.dropItemToGround(src, TRUE, TRUE)
-	new /obj/effect/timestop(get_turf(owner), timestop_range, 50, null)
+	new /obj/effect/timestop(get_turf(owner), 5, 30, null)
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return FALSE //you didn't actually evade the attack now did you

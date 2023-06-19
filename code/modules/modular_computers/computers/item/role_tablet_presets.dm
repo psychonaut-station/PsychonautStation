@@ -101,7 +101,7 @@
 
 /obj/item/modular_computer/pda/heads/quartermaster
 	name = "quartermaster PDA"
-	greyscale_config = /datum/greyscale_config/tablet/stripe_thick/head
+	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
 	greyscale_colors = "#D6B328#6506CA#927444"
 	inserted_item = /obj/item/pen/survival
 	stored_paper = 20

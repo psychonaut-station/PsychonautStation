@@ -109,6 +109,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Security Officer"
 	icon_state = "Security Officer"
 
+/obj/effect/landmark/start/brig_physician
+	name = "Brig Physician"
+	icon_state = JOB_SECURITY_OFFICER
+
 /obj/effect/landmark/start/botanist
 	name = "Botanist"
 	icon_state = "Botanist"
@@ -137,6 +141,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Head of Personnel"
 	icon_state = "Head of Personnel"
 
+/obj/effect/landmark/start/nt_secretary
+	name = JOB_NT_SECRETARY
+	icon_state = JOB_ASSISTANT
+
 /obj/effect/landmark/start/librarian
 	name = "Curator"
 	icon_state = "Curator"
@@ -148,6 +156,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"
 	icon_state = "Station Engineer"
+
+/obj/effect/landmark/start/worker
+	name = "Worker"
+	icon_state = JOB_STATION_ENGINEER
 
 /obj/effect/landmark/start/medical_doctor
 	name = "Medical Doctor"
@@ -201,6 +213,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Cyborg"
 	icon_state = "Cyborg"
 
+/obj/effect/landmark/start/synthetic
+	name = JOB_SYNTHETIC
+	icon_state = JOB_CYBORG
+
 /obj/effect/landmark/start/ai
 	name = "AI"
 	icon_state = "AI"
@@ -218,6 +234,10 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "ai_spawn"
 	primary_ai = FALSE
 	latejoin_active = FALSE
+
+/obj/effect/landmark/start/pug
+	name = JOB_PUG
+	icon_state = JOB_ASSISTANT
 
 //Department Security spawns
 

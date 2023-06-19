@@ -126,7 +126,7 @@
 
 	/// custom ringtone for this job
 	var/job_tone
-	
+
 	/// Minimal character age for this job
 	var/required_character_age
 
@@ -461,10 +461,29 @@
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
 
 /mob/living/carbon/human/species/synthetic/apply_prefs_job(client/player_client, datum/job/job)
-	if(GLOB.current_anonymous_theme)
-		fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
-		return
+	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	if(!player_client)
+		return // Disconnected while checking for the appearance ban.
+
+	src.job = job.title
+
 	apply_pref_name(/datum/preference/name/synthetic, player_client)
+
+	if(fully_randomize)
+		player_client.prefs.apply_prefs_to(src)
+
+		randomize_human_appearance(~RANDOMIZE_SPECIES)
+
+		if(GLOB.current_anonymous_theme)
+			fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+	else
+		player_client.prefs.randomise["species"] = FALSE
+		player_client.prefs.safe_transfer_prefs_to(src, TRUE, FALSE)
+		if(CONFIG_GET(flag/force_random_names))
+			real_name = pick(GLOB.ai_names)
+
+	set_species(/datum/species/synthetic, TRUE)
+	dna.update_dna_identity()
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")

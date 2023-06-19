@@ -503,7 +503,7 @@
 /obj/item/clothing/suit/armor/reactive/time/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you!"))
 	new /obj/effect/timestop(get_turf(owner), timestop_range, 10, list(owner))
-	
+			
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
@@ -511,11 +511,9 @@
 	owner.visible_message(span_danger("The reactive time system stops the time around you but leaving someone behind in the process!"))
 	owner.dropItemToGround(src, TRUE, TRUE)
 	new /obj/effect/timestop(get_turf(owner), 5, 30, null)
-	
+
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return FALSE //you didn't actually evade the attack now did you
-
-
 
 /obj/item/clothing/suit/armor/reactive/life
 	name = "reactive life armor"
@@ -528,11 +526,11 @@
 	if(!isliving(hitby))
 		return FALSE
 
-   var/mob/living/attacker = hitby
+	var/mob/living/attacker = hitby
 	owner.visible_message(span_danger("The reactive life armour absorbs energy from the enemy and gives you some back in health!"))
 	attacker.apply_damage_type(35, STAMINA)
-    owner.heal_bodypart_damage(10,0)
-	
+		owner.heal_bodypart_damage(10,0)
+
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
@@ -540,8 +538,8 @@
 	if(!isliving(hitby))
 		return FALSE 
 
-   owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
-	owner.apply_damage_type(25, STAMINA)
-	
+	owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
+	owner.apply_damage_type(25,STAMINA)
+			
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return FALSE

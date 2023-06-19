@@ -119,7 +119,6 @@
 	crate_name = "raw life anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
 
-
 /datum/supply_pack/science/robotics
 	name = "Robotics Assembly Crate"
 	desc = "The tools you need to replace those finicky humans with a loyal robot army! \

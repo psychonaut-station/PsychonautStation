@@ -1,4 +1,3 @@
-
 /obj/effect/anomaly/life
 	name = "life anomaly"
 	icon_state = "life"

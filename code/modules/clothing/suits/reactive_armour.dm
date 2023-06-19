@@ -497,12 +497,12 @@
 	desc = "An experimental suit of armor that stops the time around the user."
 	emp_message = span_warning("The reactive armor's time stopping calculations begin spewing errors!")
 	cooldown_message = span_danger("The reactive time stop system is still recharging! It fails to activate!")
-	reactivearmor_cooldown_duration = 30 SECONDS
+	reactivearmor_cooldown_duration = 120 SECONDS
 	var/timestop_range = 2
 
 /obj/item/clothing/suit/armor/reactive/time/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you!"))
-	new /obj/effect/timestop(get_turf(owner), timestop_range, 50, list(owner))
+	new /obj/effect/timestop(get_turf(owner), timestop_range, 20, list(owner))
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -510,7 +510,7 @@
 /obj/item/clothing/suit/armor/reactive/time/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you but leaving someone behind in the process!"))
 	owner.dropItemToGround(src, TRUE, TRUE)
-	new /obj/effect/timestop(get_turf(owner), timestop_range, 50, list(owner))
+	new /obj/effect/timestop(get_turf(owner), timestop_range, 50, null)
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return FALSE //you didn't actually evade the attack now did you
@@ -522,15 +522,16 @@
 	desc = "An experimental suit of armor that absorbs energy from the enemy."
 	emp_message = span_warning("The reactive armor's time stopping calculations begin spewing errors!")
 	cooldown_message = span_danger("The reactive time stop system is still recharging! It fails to activate!")
-	reactivearmor_cooldown_duration = 15 SECONDS
+	reactivearmor_cooldown_duration = 30 SECONDS
 
 /obj/item/clothing/suit/armor/reactive/life/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!isliving(hitby))
-		return FALSE 
-	var/mob/living/attacker = hitby
-	  owner.visible_message(span_danger("The reactive life armour absorbs energy from the enemy and gives you some back in health!"))
-	attacker.apply_damage_type(50, STAMINA)
-owner.heal_bodypart_damage(15,0)
+		return FALSE
+
+   var/mob/living/attacker = hitby
+	owner.visible_message(span_danger("The reactive life armour absorbs energy from the enemy and gives you some back in health!"))
+	attacker.apply_damage_type(35, STAMINA)
+    owner.heal_bodypart_damage(10,0)
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
@@ -538,10 +539,9 @@ owner.heal_bodypart_damage(15,0)
 /obj/item/clothing/suit/armor/reactive/life/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	if(!isliving(hitby))
 		return FALSE 
-	 owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
+
+   owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
 	owner.apply_damage_type(25, STAMINA)
 	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
-	return TRUE 
-
-    
+	return FALSE

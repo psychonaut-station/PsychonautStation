@@ -3,11 +3,10 @@
 	name = "life anomaly"
 	icon_state = "life"
 	aSignal = /obj/item/assembly/signaler/anomaly/life
-	immortal = TRUE
-	/// Cooldown for every anomaly pulse
+	density = FALSE
 	COOLDOWN_DECLARE(pulse_cooldown)
 	/// How many seconds between each anomaly pulses
-	var/pulse_delay = 15 SECONDS
+	var/pulse_delay = 30 SECONDS
 	/// Range of the anomaly pulse
 	var/range = 10
 

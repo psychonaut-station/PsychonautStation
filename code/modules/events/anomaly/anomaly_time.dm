@@ -4,7 +4,7 @@
 
 	min_players = 10
 	max_occurrences = 5
-	weight = 20
+	weight = 10
 	description = "This anomaly stopping time of nearby people."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 2

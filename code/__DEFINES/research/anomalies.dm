@@ -7,6 +7,9 @@
 #define MAX_CORES_HALLUCINATION 8
 #define MAX_CORES_BIOSCRAMBLER 8
 #define MAX_CORES_DIMENSIONAL 8
+#define MAX_CORES_TIME 8
+#define MAX_CORES_LIFE 8
+
 
 ///Defines for the different types of explosion a flux anomaly can have
 #define FLUX_NO_EXPLOSION 0

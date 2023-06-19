@@ -141,3 +141,13 @@
 	name = "Refined Dimensional Core"
 	description = "We're trying to save money on our annual renovations at CentCom. Send us a dimensional core."
 	wanted_types = list(/obj/item/assembly/signaler/anomaly/dimensional = TRUE)
+
+/datum/bounty/item/science/ref_anomaly/time
+	name = "Refined Time Core"
+	description = "We are doing some projects related to time. Send us a time core."
+	wanted_types = list(/obj/item/assembly/signaler/anomaly/time = TRUE)
+
+/datum/bounty/item/science/ref_anomaly/life
+	name = "Refined Life Core"
+	description = "We're trying to make a new lifeform. Send us a life core."
+	wanted_types = list(/obj/item/assembly/signaler/anomaly/life = TRUE)

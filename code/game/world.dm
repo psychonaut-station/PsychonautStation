@@ -368,9 +368,9 @@ GLOBAL_VAR(restart_counter)
 
 	new_status += "<br>"
 	if (name_link)
-		new_status += "<a href="[name_link]">Discord</a>"
+		new_status += "<a href='[name_link]'>Discord</a>"
 	if (website)
-		new_status += ", <a href="[website]">Wiki</a>"
+		new_status += ", <a href='[website]'>Wiki</a>"
 
 	var/players = GLOB.clients.len
 

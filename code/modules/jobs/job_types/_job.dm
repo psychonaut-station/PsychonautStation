@@ -423,7 +423,18 @@
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
 		if(spawn_point.name != title)
-			continue
+			if (!spawn_point.subjobs)
+				continue
+
+			var/is_subjob = FALSE
+			for(var/subjob as anything in spawn_point.subjobs)
+				if (subjob == title)
+					is_subjob = TRUE
+					break
+
+			if (!is_subjob)
+				continue
+
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
 			continue

@@ -140,10 +140,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	name = "Head of Personnel"
 	icon_state = "Head of Personnel"
 
-/obj/effect/landmark/start/nt_secretary
-	name = JOB_NT_SECRETARY
-	icon_state = JOB_ASSISTANT
-
 /obj/effect/landmark/start/librarian
 	name = "Curator"
 	icon_state = "Curator"
@@ -155,10 +151,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"
 	icon_state = "Station Engineer"
-
-/obj/effect/landmark/start/worker
-	name = "Worker"
-	icon_state = JOB_STATION_ENGINEER
+	subjobs = list(JOB_WORKER)
 
 /obj/effect/landmark/start/medical_doctor
 	name = "Medical Doctor"

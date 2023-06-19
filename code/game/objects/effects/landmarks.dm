@@ -33,6 +33,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/jobspawn_override = FALSE
 	var/delete_after_roundstart = TRUE
 	var/used = FALSE
+	var/list/subjobs = list()
 
 /obj/effect/landmark/start/proc/after_round_start()
 	// We'd like to keep these around for unit tests, so we can check that they exist.
@@ -60,6 +61,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/assistant
 	name = JOB_ASSISTANT
 	icon_state = JOB_ASSISTANT //icon_state is case sensitive. why are all of these capitalized? because fuck you that's why
+	subjobs = list(JOB_NT_SECRETARY, JOB_PUG)
 
 /obj/effect/landmark/start/assistant/override
 	jobspawn_override = TRUE
@@ -108,10 +110,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/security_officer
 	name = "Security Officer"
 	icon_state = "Security Officer"
-
-/obj/effect/landmark/start/brig_physician
-	name = "Brig Physician"
-	icon_state = JOB_SECURITY_OFFICER
+	subjobs = list(JOB_BRIG_PHYSICIAN)
 
 /obj/effect/landmark/start/botanist
 	name = "Botanist"
@@ -212,10 +211,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
-
-/obj/effect/landmark/start/synthetic
-	name = JOB_SYNTHETIC
-	icon_state = JOB_CYBORG
+	subjobs = list(JOB_SYNTHETIC)
 
 /obj/effect/landmark/start/ai
 	name = "AI"
@@ -234,10 +230,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	icon_state = "ai_spawn"
 	primary_ai = FALSE
 	latejoin_active = FALSE
-
-/obj/effect/landmark/start/pug
-	name = JOB_PUG
-	icon_state = JOB_ASSISTANT
 
 //Department Security spawns
 

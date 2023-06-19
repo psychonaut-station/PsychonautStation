@@ -101,7 +101,7 @@
 
 /obj/item/modular_computer/pda/heads/quartermaster
 	name = "quartermaster PDA"
-	greyscale_config = /datum/greyscale_config/tablet/stripe_thick
+	greyscale_config = /datum/greyscale_config/tablet/stripe_thick/head
 	greyscale_colors = "#D6B328#6506CA#927444"
 	inserted_item = /obj/item/pen/survival
 	stored_paper = 20
@@ -412,6 +412,22 @@
 	starting_programs = list(
 		/datum/computer_file/program/emojipedia,
 		/datum/computer_file/program/newscaster,
+	)
+
+/obj/item/modular_computer/pda/synthetic
+	name = "synthetic PDA"
+	greyscale_config = null
+	greyscale_colors = null
+	icon_state = "pda-secretary"
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest,
+		/datum/computer_file/program/status,
+		/datum/computer_file/program/science,
+		/datum/computer_file/program/robocontrol,
+		/datum/computer_file/program/budgetorders,
+		/datum/computer_file/program/atmosscan,
+		/datum/computer_file/program/alarm_monitor,
+		/datum/computer_file/program/supermatter_monitor,
 	)
 
 /**

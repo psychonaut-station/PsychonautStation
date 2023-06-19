@@ -529,8 +529,7 @@
 	var/mob/living/attacker = hitby
 	owner.visible_message(span_danger("The reactive life armour absorbs energy from the enemy and gives you some back in health!"))
 	attacker.apply_damage_type(35, STAMINA)
-		owner.heal_bodypart_damage(10,0)
-
+	owner.heal_bodypart_damage(10,0)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
 
@@ -539,7 +538,6 @@
 		return FALSE 
 
 	owner.visible_message(span_danger("[src] blocks [attack_text], but gives [owner] fatigue."))
-	owner.apply_damage_type(25,STAMINA)
-			
+	owner.apply_damage_type(25,STAMINA)	
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return FALSE

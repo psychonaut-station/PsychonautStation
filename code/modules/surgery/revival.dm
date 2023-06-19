@@ -171,7 +171,7 @@
 	if(istype(tool, /obj/item/shockpaddles))
 		playsound(tool, 'sound/machines/defib_charge.ogg', 75, 0)
 	else
-	..()
+		..()
 
 /datum/surgery_step/animalrevive/success(mob/user, mob/living/basic/pet/target, target_zone, obj/item/tool, datum/surgery/surgery, default_display_results)
 	var/mob/living/target_animal = target

@@ -98,7 +98,7 @@
 	contains = list(/obj/item/raw_anomaly_core/dimensional)
 	crate_name = "raw dimensional anomaly"
 	crate_type = /obj/structure/closet/crate/secure/science
-    
+
 /datum/supply_pack/science/raw_time_anomaly
 	name = "Raw Time Anomaly"
 	desc = "Contains the raw core of a time anomaly, ready to be implosion-compressed into a powerful artifact."

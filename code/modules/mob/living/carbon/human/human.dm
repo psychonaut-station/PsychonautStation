@@ -1053,3 +1053,16 @@
 
 /mob/living/carbon/human/species/synthetic
 	race = /datum/species/synthetic
+	gib_type = /obj/effect/decal/cleanable/robot_debris
+
+/mob/living/carbon/human/species/synthetic/gib_animation()
+	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
+
+/mob/living/carbon/human/species/synthetic/dust_animation()
+	new /obj/effect/temp_visual/dust_animation(loc, "gibbed-r")
+
+/mob/living/carbon/human/species/synthetic/spawn_gibs()
+	new /obj/effect/gibspawner/robot(drop_location(), src)
+
+/mob/living/carbon/human/species/synthetic/spawn_dust()
+	new /obj/effect/decal/remains/robot(loc)

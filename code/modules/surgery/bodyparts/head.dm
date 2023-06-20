@@ -206,7 +206,7 @@
 
 	if(dropped) //certain overlays only appear when the limb is being detached from its owner.
 
-		if(IS_ORGANIC_LIMB(src)) //having a robotic head hides certain features.
+		if(IS_ORGANIC_LIMB(src) || IS_SYNTHETIC_LIMB(src)) //having a robotic head hides certain features.
 			//facial hair
 			if(facial_hairstyle && (FACEHAIR in species_flags_list))
 				var/datum/sprite_accessory/sprite = GLOB.facial_hairstyles_list[facial_hairstyle]

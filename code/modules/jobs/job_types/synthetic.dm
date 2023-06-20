@@ -42,12 +42,14 @@
 	back = /obj/item/storage/backpack/holding
 	belt = /obj/item/storage/belt/utility/full/powertools/rcd
 	ears = /obj/item/radio/headset/heads/captain/alt
+	l_pocket = /obj/item/modular_computer/pda/synthetic
 	r_pocket = /obj/item/melee/baton/telescopic
 	id = /obj/item/card/id/advanced/centcom/synthetic
 
-	l_pocket = null
 	gloves = null
 	head = null
+
+	pda_slot = ITEM_SLOT_LPOCKET
 
 	backpack_contents = list(
 		/obj/item/storage/medkit/regular = 1,

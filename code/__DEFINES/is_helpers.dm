@@ -93,7 +93,7 @@ GLOBAL_LIST_INIT(turfs_openspace, typecacheof(list(
 #define ismonkey(A) (is_species(A, /datum/species/monkey))
 #define isandroid(A) (is_species(A, /datum/species/android))
 #define isnightmare(A) (is_species(A, /datum/species/shadow/nightmare))
-
+#define issynthetic(A) (is_species(A, /datum/species/synthetic))
 
 //More carbon mobs
 #define isalien(A) (istype(A, /mob/living/carbon/alien))
@@ -267,7 +267,7 @@ GLOBAL_LIST_INIT(glass_sheet_types, typecacheof(list(
 GLOBAL_LIST_INIT(book_types, typecacheof(list(
 	/obj/item/book,
 	/obj/item/spellbook,
-	/obj/item/storage/book)))
+)))
 
 // Jobs
 #define is_job(job_type)  (istype(job_type, /datum/job))

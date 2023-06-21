@@ -30,7 +30,8 @@
 			a Syndicate brand MMI, a straitjacket, and a muzzle."
 	item = /obj/item/storage/backpack/duffelbag/syndie/surgery
 	purchasable_from = ~UPLINK_NANO
-	cost = 3
+	cost = 4
+	surplus = 66
 
 /datum/uplink_item/device_tools/encryptionkey
 	name = "Syndicate Encryption Key"
@@ -49,7 +50,7 @@
 			the seemingly magical books of a certain cult. Though lacking the esoteric abilities \
 			of the originals, these inferior copies are still quite useful, being able to provide \
 			both weal and woe on the battlefield, even if they do occasionally bite off a finger."
-	item = /obj/item/storage/book/bible/syndicate
+	item = /obj/item/book/bible/syndicate
 	purchasable_from = ~UPLINK_NANO
 	cost = 5
 

@@ -6,6 +6,9 @@
 		NOTRANSSTING,
 		NO_UNDERWEAR,
 		NOBLOODOVERLAY,
+		EYECOLOR,
+		HAIR,
+		FACEHAIR,
 	)
 	inherent_traits = list(
 		TRAIT_MINDSHIELD,
@@ -41,13 +44,13 @@
 		TRAIT_PREVENT_ANTAG_OBJECTIVE,
 	)
 
-	brutemod = 0.5
-	burnmod = 0.5
+	damage_modifier = 0.5
 	coldmod = 0
 	heatmod = 1.5
 	stunmod = 0.3
 
 	sexes = FALSE
+	use_skintones = TRUE
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	meat = null
 	mutanttongue = /obj/item/organ/internal/tongue/robot
@@ -55,36 +58,59 @@
 	mutantheart = null
 	mutantliver = null
 	mutantlungs = null
+	mutantappendix = null
 	species_language_holder = /datum/language_holder/synthetic
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 	changesource_flags = MIRROR_BADMIN
 
 	bodypart_overrides = list(
-		BODY_ZONE_HEAD = /obj/item/bodypart/head/robot,
-		BODY_ZONE_CHEST = /obj/item/bodypart/chest/robot,
-		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/robot,
-		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/robot,
-		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/robot,
-		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/robot,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/synthetic,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/synthetic,
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/synthetic,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/synthetic,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/synthetic,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/synthetic,
 	)
-	examine_limb_id = SPECIES_HUMAN
+	examine_limb_id = SPECIES_SYNTHETIC
+
+	var/old_gender = PLURAL
+	var/old_physique = MALE
+	var/old_age = 30
 
 /datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
 	. = ..()
 
-	C.skin_tone = "brown"
+	old_gender = C.gender
+	C.gender = NEUTER
+
+	old_physique = C.physique
+	C.physique = MALE
+
+	old_age = C.age
+	C.age = 30
+
 	C.update_body(0)
 	C.set_safe_hunger_level()
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
+	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC_ADVANCED]
+
 	sec_hud.show_to(C)
 	health_hud.show_to(C)
+	diagnostic_hud.show_to(C)
 
-/datum/species/abductor/on_species_loss(mob/living/carbon/human/C)
+/datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()
+
+	C.gender = old_gender
+	C.physique = old_physique
+	C.age = old_age
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
+	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC_ADVANCED]
+
 	sec_hud.hide_from(C)
 	health_hud.hide_from(C)
+	diagnostic_hud.hide_from(C)

@@ -13,18 +13,19 @@ Format:
 	votable (is this map votable)
 endmap
 
+map birdshot
+	#default
+	maxplayers 66
+	votable
+endmap
+
 map metastation
-	minplayers 0
-	voteweight 0.75
+	minplayers 25
+	#voteweight 0.5
 	votable
 endmap
 
 map deltastation
-	minplayers 0
-	votable
-endmap
-
-map kilostation
 	minplayers 0
 	votable
 endmap

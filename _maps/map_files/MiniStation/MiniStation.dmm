@@ -696,9 +696,7 @@
 /area/station/science/lab)
 "bQ" = (
 /obj/machinery/computer/shuttle/mining{
-	dir = 4;
-	req_access = "0";
-	req_one_access = "0"
+	dir = 4
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -2227,7 +2225,6 @@
 	pixel_x = -4;
 	pixel_y = 4
 	},
-/obj/machinery/firealarm/directional/north,
 /obj/machinery/light{
 	dir = 4;
 	light_color = "#c1caff"

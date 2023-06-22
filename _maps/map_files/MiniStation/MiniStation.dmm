@@ -11974,11 +11974,6 @@
 	id = "psych_shutters";
 	name = "Psychology Privacy Shutters"
 	},
-/obj/machinery/door/poddoor/shutters{
-	dir = 4;
-	id = "psych_shutters";
-	name = "Psychology Privacy Shutters"
-	},
 /turf/open/floor/wood,
 /area/station/medical/psychology)
 "DJ" = (
@@ -12523,10 +12518,9 @@
 	dir = 6
 	},
 /obj/effect/spawner/structure/window/reinforced,
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters{
 	dir = 4;
-	id = s;
+	id = "psych_shutters";
 	name = "Psychology Privacy Shutters"
 	},
 /turf/open/floor/wood,

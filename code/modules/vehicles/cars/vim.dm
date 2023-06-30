@@ -22,6 +22,9 @@
 	var/maximum_mob_size = MOB_SIZE_SMALL
 	COOLDOWN_DECLARE(sound_cooldown)
 
+	var/obj/item/modular_computer/pda/vim/modularInterface
+	var/mob/living/driver
+
 /datum/armor/car_vim
 	melee = 70
 	bullet = 40
@@ -32,11 +35,18 @@
 
 /obj/vehicle/sealed/car/vim/Initialize(mapload)
 	. = ..()
+	create_modularInterface()
 	AddComponent( \
 		/datum/component/shell, \
 		unremovable_circuit_components = list(new /obj/item/circuit_component/vim), \
 		capacity = SHELL_CAPACITY_SMALL, \
 	)
+
+/obj/vehicle/sealed/car/vim/Destroy()
+	if(modularInterface)
+		QDEL_NULL(modularInterface)
+	if(driver)
+		driver = null
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()
@@ -90,13 +100,16 @@
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, TRUE)
 	if(atom_integrity == max_integrity)
 		SEND_SOUND(newoccupant, sound('sound/mecha/nominal.ogg',volume=50))
+	driver = newoccupant
 
 /obj/vehicle/sealed/car/vim/mob_try_exit(mob/pilot, mob/user, silent = FALSE, randomstep = FALSE)
 	. = ..()
+	driver = null
 	update_appearance()
 
 /obj/vehicle/sealed/car/vim/generate_actions()
 	initialize_controller_action_type(/datum/action/vehicle/sealed/climb_out/vim, VEHICLE_CONTROL_DRIVE)
+	initialize_controller_action_type(/datum/action/vehicle/sealed/pda/vim, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/noise/chime, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/noise/buzz, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/headlights/vim, VEHICLE_CONTROL_DRIVE)
@@ -114,6 +127,14 @@
 		. += piloted_overlay
 	if(headlights_toggle)
 		. += headlights_overlay
+
+/obj/vehicle/sealed/car/vim/proc/create_modularInterface()
+	if(!modularInterface)
+		modularInterface = new /obj/item/modular_computer/pda/vim(src)
+	modularInterface.saved_job = "Vim"
+	modularInterface.layer = ABOVE_HUD_PLANE
+	SET_PLANE_EXPLICIT(modularInterface, ABOVE_HUD_PLANE, src)
+	modularInterface.saved_identification = name
 
 /obj/item/circuit_component/vim
 	display_name = "Vim"

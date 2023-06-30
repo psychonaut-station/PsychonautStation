@@ -403,3 +403,47 @@
 	if(iscyborg(silicon_owner))
 		var/mob/living/silicon/robot/robo = silicon_owner
 		robo.lamp_color = COLOR_RED //Syndicate likes it red
+
+/obj/item/modular_computer/pda/vim
+	name = "modular interface"
+	icon_state = "tablet-silicon"
+	base_icon_state = "tablet-silicon"
+	greyscale_config = null
+	greyscale_colors = null
+
+	has_light = FALSE //tablet light button actually enables/disables the vim lamp
+	comp_light_luminosity = 0
+	inserted_item = null
+	has_pda_programs = FALSE
+	starting_programs = list(
+		/datum/computer_file/program/messenger,
+	)
+	var/obj/vehicle/sealed/car/vim/owner_vehicle
+
+/obj/item/modular_computer/pda/vim/Initialize(mapload)
+	. = ..()
+	vis_flags |= VIS_INHERIT_ID
+	owner_vehicle = loc
+	if(!istype(owner_vehicle))
+		owner_vehicle = null
+		stack_trace("[type] initialized outside of a vim, deleting.")
+		return INITIALIZE_HINT_QDEL
+
+/obj/item/modular_computer/pda/vim/Destroy()
+	owner_vehicle = null
+	return ..()
+
+/obj/item/modular_computer/pda/vim/ui_data(mob/user)
+	. = ..()
+	.["light_on"] = owner_vehicle.headlights_toggle
+
+//Makes the flashlight button affect the borg rather than the tablet
+/obj/item/modular_computer/pda/vim/toggle_flashlight()
+	SEND_SIGNAL(owner_vehicle, COMSIG_VIM_HEADLIGHTS_TOGGLED, owner_vehicle.headlights_toggle)
+	owner_vehicle.headlights_toggle = !owner_vehicle.headlights_toggle
+	owner_vehicle.set_light_on(owner_vehicle.headlights_toggle)
+	owner_vehicle.update_appearance()
+	return TRUE
+
+/obj/item/modular_computer/pda/vim/ui_state(mob/user)
+	return GLOB.reverse_contained_state

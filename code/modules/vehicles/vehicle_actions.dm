@@ -455,3 +455,11 @@
 /datum/action/vehicle/sealed/headlights/vim/Trigger(trigger_flags)
 	. = ..()
 	SEND_SIGNAL(vehicle_entered_target, COMSIG_VIM_HEADLIGHTS_TOGGLED, vehicle_entered_target.headlights_toggle)
+
+/datum/action/vehicle/sealed/pda/vim
+	name = "Open Modular Computer"
+	button_icon_state = "vim_pda"
+
+/datum/action/vehicle/sealed/pda/vim/Trigger(trigger_flags)
+	var/obj/vehicle/sealed/car/vim/vim = vehicle_target
+	vim.modularInterface?.interact(vim.driver)

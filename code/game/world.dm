@@ -358,7 +358,7 @@ GLOBAL_VAR(restart_counter)
 	if(config)
 		// If you have already HUB config open, we assume you set those config variables below correctly
 		var/server_name = CONFIG_GET(string/servername)
-		new_status += "<b>[server_name]] &#8212; Türkçe SS13</b>"
+		new_status += "<b>[server_name]</b>]<b> &#8212; Türkçe SS13</b>"
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"

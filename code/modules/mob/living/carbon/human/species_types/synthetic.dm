@@ -1,11 +1,9 @@
 /datum/species/synthetic
 	name = "Synthetic"
 	id = SPECIES_SYNTHETIC
-	species_traits = list(
+	inherent_traits = list(
 		TRAIT_NO_DNA_COPY,
 		TRAIT_NO_UNDERWEAR,
-	)
-	inherent_traits = list(
 		TRAIT_MINDSHIELD,
 		TRAIT_GENELESS,
 		TRAIT_LIMBATTACHMENT,
@@ -13,7 +11,6 @@
 		TRAIT_NOCLONELOSS,
 		TRAIT_NOFIRE,
 		TRAIT_NOHUNGER,
-		TRAIT_NOMETABOLISM,
 		TRAIT_PIERCEIMMUNE,
 		TRAIT_RADIMMUNE,
 		TRAIT_RESISTCOLD,

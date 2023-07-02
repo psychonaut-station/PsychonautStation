@@ -942,6 +942,9 @@
 /obj/machinery/light_switch/directional/north{
 	pixel_y = 32
 	},
+/obj/machinery/modular_computer/preset/id{
+	dir = 8
+	},
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "cz" = (
@@ -6847,7 +6850,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "qy" = (
@@ -7500,6 +7502,9 @@
 /area/station/hallway/primary/fore)
 "sl" = (
 /obj/structure/cable,
+/obj/machinery/modular_computer/preset/id{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/ce)
 "sm" = (
@@ -9518,6 +9523,10 @@
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
+"xS" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space,
+/area/space)
 "xT" = (
 /obj/machinery/vending/tool,
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
@@ -11382,6 +11391,9 @@
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 8
 	},
+/obj/machinery/modular_computer/preset/id{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
 "Cc" = (
@@ -11526,6 +11538,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/modular_computer/preset/id,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "Cq" = (
@@ -12056,9 +12069,16 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "DQ" = (
-/obj/structure/grille,
-/turf/closed/wall,
-/area/station/maintenance/aft/lesser)
+/obj/effect/turf_decal/tile/neutral/opposingcorners{
+	dir = 1
+	},
+/obj/effect/landmark/start/hangover,
+/obj/machinery/light_switch/directional/north{
+	pixel_y = 0;
+	pixel_x = -26
+	},
+/turf/open/floor/iron/checker,
+/area/station/service/theater)
 "DR" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -13566,6 +13586,9 @@
 	pixel_y = 0;
 	pixel_x = -26
 	},
+/obj/machinery/modular_computer/preset/id{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "Id" = (
@@ -14005,6 +14028,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
+"Jn" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space/basic,
+/area/space)
 "Jo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14771,7 +14798,6 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/external,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
 "LM" = (
@@ -15668,16 +15694,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "OD" = (
-/obj/effect/turf_decal/tile/neutral/opposingcorners{
-	dir = 1
-	},
-/obj/effect/landmark/start/hangover,
-/obj/machinery/light_switch/directional/north{
-	pixel_y = 0;
-	pixel_x = -26
-	},
-/turf/open/floor/iron/checker,
-/area/station/service/theater)
+/obj/structure/grille,
+/turf/closed/wall,
+/area/station/maintenance/aft/lesser)
 "OF" = (
 /obj/item/paper/monitorkey,
 /obj/machinery/computer/telecomms/monitor{
@@ -16735,6 +16754,7 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+/obj/item/stamp/head/hos,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "Sp" = (
@@ -16996,6 +17016,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
+"Ti" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "Tj" = (
 /obj/structure/rack,
 /obj/item/mop,
@@ -17343,13 +17367,13 @@
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "Uw" = (
-/obj/structure/table/wood,
-/obj/item/folder/red,
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 8
 	},
-/obj/item/stamp/head/hos,
+/obj/machinery/modular_computer/preset/id{
+	dir = 1
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "Ux" = (
@@ -43905,9 +43929,9 @@ cp
 cp
 cp
 cp
-aa
-aa
-aa
+xS
+xS
+xS
 aa
 aa
 aa
@@ -44163,7 +44187,7 @@ cp
 cp
 cp
 cp
-cp
+bi
 cp
 cp
 cp
@@ -44419,10 +44443,10 @@ cp
 cp
 cp
 cp
-cp
-cp
-cp
-cp
+bi
+bi
+bi
+Jn
 cp
 aa
 aa
@@ -44676,10 +44700,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -44933,10 +44957,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -45190,10 +45214,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -45447,10 +45471,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -45704,10 +45728,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -45961,10 +45985,10 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
-cp
+bi
+Jn
 cp
 aa
 aa
@@ -46218,9 +46242,9 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
+bi
 cp
 cp
 aa
@@ -46475,9 +46499,9 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
+bi
 cp
 cp
 cp
@@ -46732,9 +46756,9 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
+bi
 cp
 cp
 cp
@@ -46989,9 +47013,9 @@ cp
 cp
 cp
 cp
+bi
 cp
-cp
-cp
+bi
 cp
 cp
 cp
@@ -50317,7 +50341,7 @@ Cx
 CA
 mi
 hF
-dA
+Ti
 EQ
 Gg
 CB
@@ -52111,7 +52135,7 @@ zt
 JV
 Ac
 iU
-OD
+DQ
 XS
 En
 Ri
@@ -57016,7 +57040,7 @@ Fb
 Wb
 Yz
 Wm
-DQ
+OD
 qX
 qX
 qX

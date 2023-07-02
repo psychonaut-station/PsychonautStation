@@ -1241,6 +1241,9 @@
 	pixel_y = 0;
 	pixel_x = -26
 	},
+/obj/machinery/modular_computer/preset/command{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "dl" = (
@@ -4324,6 +4327,7 @@
 /area/station/commons/dorms)
 "km" = (
 /obj/effect/turf_decal/siding/wood,
+/obj/machinery/modular_computer/preset/curator,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "kn" = (
@@ -11975,10 +11979,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
-"DE" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space/basic,
-/area/space)
 "DF" = (
 /obj/structure/table,
 /obj/machinery/computer/security/telescreen/ordnance{
@@ -13531,6 +13531,9 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
 	},
+/obj/machinery/modular_computer/preset/engineering{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "HU" = (
@@ -13844,6 +13847,10 @@
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"IO" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space,
+/area/space)
 "IP" = (
 /obj/machinery/computer/cargo/request{
 	dir = 8
@@ -14513,6 +14520,10 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"KV" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "KX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/power/apc/auto_name/directional/west,
@@ -16208,10 +16219,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/wood,
 /area/station/security/brig)
-"Qv" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space,
-/area/space)
 "Qw" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -16409,6 +16416,10 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
+"Rd" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space/basic,
+/area/space)
 "Re" = (
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 1
@@ -16735,10 +16746,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
-"Sl" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/central)
 "Sm" = (
 /obj/machinery/light/directional/east{
 	dir = 2
@@ -43929,9 +43936,9 @@ cp
 cp
 cp
 cp
-Qv
-Qv
-Qv
+IO
+IO
+IO
 aa
 aa
 aa
@@ -44446,7 +44453,7 @@ cp
 bi
 bi
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -44703,7 +44710,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -44960,7 +44967,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -45217,7 +45224,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -45474,7 +45481,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -45731,7 +45738,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -45988,7 +45995,7 @@ cp
 bi
 cp
 bi
-DE
+Rd
 cp
 aa
 aa
@@ -50341,7 +50348,7 @@ Cx
 CA
 mi
 hF
-Sl
+KV
 EQ
 Gg
 CB

@@ -2,13 +2,8 @@
 	name = "Synthetic"
 	id = SPECIES_SYNTHETIC
 	species_traits = list(
-		NO_DNA_COPY,
-		NOTRANSSTING,
-		NO_UNDERWEAR,
-		NOBLOODOVERLAY,
-		EYECOLOR,
-		HAIR,
-		FACEHAIR,
+		TRAIT_NO_DNA_COPY,
+		TRAIT_NO_UNDERWEAR,
 	)
 	inherent_traits = list(
 		TRAIT_MINDSHIELD,

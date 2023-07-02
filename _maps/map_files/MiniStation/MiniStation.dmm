@@ -9523,10 +9523,6 @@
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
-"xS" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space,
-/area/space)
 "xT" = (
 /obj/machinery/vending/tool,
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
@@ -11568,7 +11564,7 @@
 	desc = "A specially-reinforced camera with a long lasting battery, used to monitor the bomb testing site.";
 	invuln = 1;
 	name = "Hardened Bomb-Test Camera";
-	network = list("RD","Toxins");
+	network = list("ordnance");
 	use_power = 0
 	},
 /obj/item/toy/plush/lizard_plushie/space/green{
@@ -13131,6 +13127,10 @@
 /obj/item/ai_module/reset,
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
+"GI" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space,
+/area/space)
 "GJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -13844,6 +13844,10 @@
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"IO" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "IP" = (
 /obj/machinery/computer/cargo/request{
 	dir = 8
@@ -13867,6 +13871,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
+"IT" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space/basic,
+/area/space)
 "IU" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -14028,10 +14036,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
-"Jn" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space/basic,
-/area/space)
 "Jo" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -17016,10 +17020,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
-"Ti" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/central)
 "Tj" = (
 /obj/structure/rack,
 /obj/item/mop,
@@ -43929,9 +43929,9 @@ cp
 cp
 cp
 cp
-xS
-xS
-xS
+GI
+GI
+GI
 aa
 aa
 aa
@@ -44446,7 +44446,7 @@ cp
 bi
 bi
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -44703,7 +44703,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -44960,7 +44960,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -45217,7 +45217,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -45474,7 +45474,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -45731,7 +45731,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -45988,7 +45988,7 @@ cp
 bi
 cp
 bi
-Jn
+IT
 cp
 aa
 aa
@@ -50341,7 +50341,7 @@ Cx
 CA
 mi
 hF
-Ti
+IO
 EQ
 Gg
 CB

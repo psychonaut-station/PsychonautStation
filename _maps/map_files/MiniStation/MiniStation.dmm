@@ -11975,6 +11975,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
+"DE" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space/basic,
+/area/space)
 "DF" = (
 /obj/structure/table,
 /obj/machinery/computer/security/telescreen/ordnance{
@@ -13127,10 +13131,6 @@
 /obj/item/ai_module/reset,
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
-"GI" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space,
-/area/space)
 "GJ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -13844,10 +13844,6 @@
 /obj/structure/weightmachine/weightlifter,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
-"IO" = (
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/hallway/primary/central)
 "IP" = (
 /obj/machinery/computer/cargo/request{
 	dir = 8
@@ -13871,10 +13867,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
-"IT" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/space/basic,
-/area/space)
 "IU" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -16216,6 +16208,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/wood,
 /area/station/security/brig)
+"Qv" = (
+/obj/effect/spawner/random/structure/grille,
+/turf/open/space,
+/area/space)
 "Qw" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -16739,6 +16735,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
+"Sl" = (
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central)
 "Sm" = (
 /obj/machinery/light/directional/east{
 	dir = 2
@@ -43929,9 +43929,9 @@ cp
 cp
 cp
 cp
-GI
-GI
-GI
+Qv
+Qv
+Qv
 aa
 aa
 aa
@@ -44446,7 +44446,7 @@ cp
 bi
 bi
 bi
-IT
+DE
 cp
 aa
 aa
@@ -44703,7 +44703,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -44960,7 +44960,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -45217,7 +45217,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -45474,7 +45474,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -45731,7 +45731,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -45988,7 +45988,7 @@ cp
 bi
 cp
 bi
-IT
+DE
 cp
 aa
 aa
@@ -50341,7 +50341,7 @@ Cx
 CA
 mi
 hF
-IO
+Sl
 EQ
 Gg
 CB
@@ -70883,9 +70883,9 @@ aa
 aa
 aa
 aa
-Cr
+bm
 Cu
-Cr
+bm
 aa
 aa
 aa
@@ -71140,9 +71140,9 @@ aa
 aa
 aa
 aa
+bm
 Cr
-Cr
-Cr
+bm
 aa
 aa
 aa

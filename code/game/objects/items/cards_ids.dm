@@ -1135,6 +1135,14 @@
 /obj/item/card/id/advanced/white/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
+	
+/obj/item/card/id/advanced/centcom/ert/militia
+	registered_name = "Frontier Militia"
+	trim = /datum/id_trim/centcom/ert/militia
+
+/obj/item/card/id/advanced/centcom/ert/militia/general
+	registered_name = "Frontier Militia General"
+	trim = /datum/id_trim/centcom/ert/militia/general
 
 /obj/item/card/id/advanced/black
 	name = "black identification card"

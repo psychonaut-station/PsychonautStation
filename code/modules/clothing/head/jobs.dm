@@ -400,6 +400,7 @@
 	name = "blue surgery cap"
 	icon_state = "surgicalcap"
 	desc = "A blue medical surgery cap to prevent the surgeon's hair from entering the insides of the patient!"
+	flags_inv = HIDEHAIR //Cover your head doctor!
 
 /obj/item/clothing/head/utility/surgerycap/purple
 	name = "burgundy surgery cap"
@@ -497,3 +498,13 @@
 	fire = 100
 	acid = 90
 	wound = 10
+
+//Independant Militia
+/obj/item/clothing/head/beret/militia
+	name = "\improper Militia General's Beret"
+	desc = "A rallying cry for the inhabitants of the Spinward Sector, the heroes that wear this keep the horrors of the galaxy at bay. Call them, and they'll be there in a minute!"
+	icon_state = "beret_badge"
+	greyscale_config = /datum/greyscale_config/beret_badge
+	greyscale_config_worn = /datum/greyscale_config/beret_badge/worn
+	greyscale_colors = "#43523d#a2abb0"
+	armor_type = /datum/armor/beret_sec

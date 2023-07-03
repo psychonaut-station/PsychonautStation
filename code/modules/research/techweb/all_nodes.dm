@@ -1436,9 +1436,9 @@
 		"seed_extractor",
 		"adv_watering_can",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 4000)
-	required_experiments = list(/datum/experiment/scanning/random/plants/wild)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/traits = 3000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
+	required_experiments = list(/datum/experiment/scanning/random/botany/main)
+	discount_experiments = list(/datum/experiment/scanning/random/botany/discount = 4000)
 
 /datum/techweb_node/exp_tools
 	id = "exp_tools"

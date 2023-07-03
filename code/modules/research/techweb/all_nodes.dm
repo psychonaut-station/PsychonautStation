@@ -514,7 +514,7 @@
 		"surgery_viral_bond",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
-	discount_experiments = list(/datum/experiment/scanning/random/plants/traits = 4500)
+	discount_experiments = list(/datum/experiment/scanning/random/botany/discount = 4500)
 
 /datum/techweb_node/alien_surgery
 	id = "alien_surgery"

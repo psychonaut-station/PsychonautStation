@@ -7,11 +7,11 @@
 	if(weak_against_armour && our_armor >= 0)
 		our_armor *= ARMOR_WEAKENED_MULTIPLIER
 	if(silent)
-		return max(0, our_armor - armour_penetration)
+		return max(0, PENETRATE_ARMOUR(our_armor, armour_penetration))
 
 	//the if "armor" check is because this is used for everything on /living, including humans
 	if(armour_penetration)
-		our_armor = max(0, our_armor - armour_penetration)
+		our_armor = max(PENETRATE_ARMOUR(our_armor, armour_penetration), 0)
 		if(penetrated_text)
 			to_chat(src, span_userdanger("[penetrated_text]"))
 		else
@@ -527,3 +527,10 @@
 	for(var/reagent in reagents)
 		var/datum/reagent/R = reagent
 		. |= R.expose_mob(src, methods, reagents[R], show_message, touch_protection)
+
+/// Simplified ricochet angle calculation for mobs (also the base version doesn't work on mobs)
+/mob/living/handle_ricochet(obj/projectile/ricocheting_projectile)
+	var/face_angle = get_angle_raw(ricocheting_projectile.x, ricocheting_projectile.pixel_x, ricocheting_projectile.pixel_y, ricocheting_projectile.p_y, x, y, pixel_x, pixel_y)
+	var/new_angle_s = SIMPLIFY_DEGREES(face_angle + GET_ANGLE_OF_INCIDENCE(face_angle, (ricocheting_projectile.Angle + 180)))
+	ricocheting_projectile.set_angle(new_angle_s)
+	return TRUE

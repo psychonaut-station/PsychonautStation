@@ -127,6 +127,9 @@
 	/// custom ringtone for this job
 	var/job_tone
 
+	/// Minimal character age for this job
+	var/required_character_age
+
 	/// Won't allow anyone to select this job, if their ckey is not in "data/job_whitelist.txt"
 	var/whitelisted = FALSE
 
@@ -420,15 +423,25 @@
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
 		if(spawn_point.name != title)
-			continue
+			if (!spawn_point.subjobs)
+				continue
+
+			var/is_subjob = FALSE
+			for(var/subjob as anything in spawn_point.subjobs)
+				if (subjob == title)
+					is_subjob = TRUE
+					break
+
+			if (!is_subjob)
+				continue
+
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
 			continue
 		spawn_point.used = TRUE
 		break
 	if(!.)
-		log_world("Couldn't find a round start spawn point for [title]")
-
+		log_mapping("Job [title] ([type]) couldn't find a round start spawn point.")
 
 /// Finds a valid latejoin spawn point, checking for events and special conditions.
 /datum/job/proc/get_latejoin_spawn_point()
@@ -459,10 +472,29 @@
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
 
 /mob/living/carbon/human/species/synthetic/apply_prefs_job(client/player_client, datum/job/job)
-	if(GLOB.current_anonymous_theme)
-		fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
-		return
+	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	if(!player_client)
+		return // Disconnected while checking for the appearance ban.
+
+	src.job = job.title
+
 	apply_pref_name(/datum/preference/name/synthetic, player_client)
+
+	if(fully_randomize)
+		player_client.prefs.apply_prefs_to(src)
+
+		randomize_human_appearance(~RANDOMIZE_SPECIES)
+
+		if(GLOB.current_anonymous_theme)
+			fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+	else
+		player_client.prefs.randomise["species"] = FALSE
+		player_client.prefs.safe_transfer_prefs_to(src, TRUE, FALSE)
+		if(CONFIG_GET(flag/force_random_names))
+			real_name = pick(GLOB.ai_names)
+
+	set_species(/datum/species/synthetic, TRUE)
+	dna.update_dna_identity()
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
 	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
@@ -515,7 +547,8 @@
 		return
 	apply_pref_name(/datum/preference/name/ai, player_client) // This proc already checks if the player is appearance banned.
 	set_core_display_icon(null, player_client)
-
+	apply_pref_emote_display(player_client)
+	apply_pref_hologram_display(player_client)
 
 /mob/living/silicon/robot/apply_prefs_job(client/player_client, datum/job/job)
 	if(mmi)

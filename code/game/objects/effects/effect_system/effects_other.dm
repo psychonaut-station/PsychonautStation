@@ -70,10 +70,6 @@
 	icon_state = "ion_trails"
 	anchored = TRUE
 
-/obj/effect/particle_effect/flame_trails
-	name = "flame trails"
-	icon_state = "flame_trails"
-	anchored = TRUE
 /obj/effect/particle_effect/ion_trails/flight
 	icon_state = "ion_trails_flight"
 

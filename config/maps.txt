@@ -13,18 +13,24 @@ Format:
 	votable (is this map votable)
 endmap
 
+map ministation
+	maxplayers 20
+	default
+	votable
+endmap
+
+map birdshot
+	maxplayers 66
+	votable
+endmap
+
 map metastation
 	minplayers 0
-	voteweight 0.75
+	#voteweight 0.5
 	votable
 endmap
 
 map deltastation
-	minplayers 0
-	votable
-endmap
-
-map kilostation
 	minplayers 0
 	votable
 endmap
@@ -35,7 +41,7 @@ map icebox
 endmap
 
 map tramstation
-	minplayers 0
+	minplayers 25
 	votable
 endmap
 
@@ -45,9 +51,6 @@ map northstar
 endmap
 
 map runtimestation
-endmap
-
-map metastationz
 endmap
 
 map multiz_debug

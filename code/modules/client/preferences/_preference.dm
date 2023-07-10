@@ -12,6 +12,8 @@
 /// support the "use gender" option.
 #define PREFERENCE_PRIORITY_BODY_TYPE 4
 
+#define PREFERENCE_PRIORITY_PET_TYPE 4
+
 /// The priority at which names are decided, needed for proper randomization.
 #define PREFERENCE_PRIORITY_NAMES 5
 

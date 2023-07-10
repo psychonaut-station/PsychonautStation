@@ -10,6 +10,9 @@ export BYOND_MINOR=1588
 #rust_g git tag
 export RUST_G_VERSION=1.2.0
 
+#glibc needed for linux builds
+export GLIBC_VERSION=2.34
+
 #node version
 export NODE_VERSION=14
 export NODE_VERSION_PRECISE=14.16.1

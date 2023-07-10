@@ -3,6 +3,12 @@ set -euo pipefail
 
 source dependencies.sh
 
+sudo dpkg --add-architecture i386 
+
+sudo apt-get update || true
+sudo apt-get install libgcc-s1:i386 g++-multilib zlib1g-dev:i386 libssl-dev:i386 lib6:i386
+sudo apt install -o APT::Immediate-Configure=false libssl1.1:i386
+
 mkdir -p ~/.byond/bin
 wget -nv -O ~/.byond/bin/librust_g.so "https://github.com/tgstation/rust-g/releases/download/$RUST_G_VERSION/librust_g.so"
 chmod +x ~/.byond/bin/librust_g.so

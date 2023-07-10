@@ -6,7 +6,7 @@ source dependencies.sh
 sudo dpkg --add-architecture i386 
 
 sudo apt-get update || true
-sudo apt-get install libgcc-s1:i386 g++-multilib zlib1g-dev:i386 libssl-dev:i386 libglib2.0-0 libglib2.0-dev libglib2.0-doc
+sudo apt-get install libgcc-s1:i386 g++-multilib zlib1g-dev:i386 libssl-dev:i386 libglib2.0-0 libglib2.0-dev
 sudo apt install -o APT::Immediate-Configure=false libssl1.1:i386
 
 mkdir -p ~/.byond/bin

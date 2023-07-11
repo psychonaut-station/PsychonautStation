@@ -15,7 +15,7 @@ export LD_LIBRARY_PATH=~/libc/usr/lib/i386-linux-gnu/${LD_LIBRARY_PATH:+:$LD_LIB
 sudo apt-get update || true
 sudo apt-get install libgcc-s1:i386 g++-multilib zlib1g-dev:i386 libssl-dev:i386
 wget http://archive.ubuntu.com/ubuntu/pool/main/o/openssl/libssl1.1_1.1.0g-2ubuntu4_i386.deb
-sudo dpkg -i ./libssl1.1_1.1.0g-2ubuntu4_i386.deb
+# sudo dpkg -i ./libssl1.1_1.1.0g-2ubuntu4_i386.deb
 
 mkdir -p ~/.byond/bin
 wget -nv -O ~/.byond/bin/librust_g.so "https://github.com/tgstation/rust-g/releases/download/$RUST_G_VERSION/librust_g.so"

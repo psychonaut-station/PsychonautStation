@@ -2,7 +2,14 @@
 /datum/preference/choiced/pettype
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "pettype"
-	priority = PREFERENCE_PRIORITY_PET_TYPE
+	body_type = "Pet"
+	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
 
 /datum/preference/choiced/pettype/init_possible_values()
-	return list(PUG, CAT)
+	return list(PUG, CAT, PARROT)
+
+/datum/preference/choiced/pettype/create_default_value()
+	return PUG
+
+/datum/preference/choiced/pettype/apply_to_human(client/client, value)
+	return FALSE

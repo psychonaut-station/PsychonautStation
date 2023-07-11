@@ -1245,16 +1245,18 @@
 
 /// Can this mob read
 /mob/proc/can_read(atom/viewed_atom, reading_check_flags = (READING_CHECK_LITERACY|READING_CHECK_LIGHT), silent = FALSE)
-	if((reading_check_flags & READING_CHECK_LITERACY) && !is_literate())
-		if(!silent)
-			to_chat(src, span_warning("You try to read [viewed_atom], but can't comprehend any of it."))
-		return FALSE
+	if(istype(viewed_atom, /obj/item/modular_computer/pda/vim))
+		return TRUE
+	else
+		if((reading_check_flags & READING_CHECK_LITERACY) && !is_literate())
+			if(!silent)
+				to_chat(src, span_warning("You try to read [viewed_atom], but can't comprehend any of it."))
+			return FALSE
 
-	if((reading_check_flags & READING_CHECK_LIGHT) && !has_light_nearby() && !has_nightvision())
-		if(!silent)
-			to_chat(src, span_warning("It's too dark in here to read!"))
-		return FALSE
-
+		if((reading_check_flags & READING_CHECK_LIGHT) && !has_light_nearby() && !has_nightvision())
+			if(!silent)
+				to_chat(src, span_warning("It's too dark in here to read!"))
+			return FALSE
 	return TRUE
 
 /**

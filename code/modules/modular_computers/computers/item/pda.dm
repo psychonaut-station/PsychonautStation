@@ -433,6 +433,11 @@
 	owner_vehicle = null
 	return ..()
 
+/obj/item/modular_computer/pda/vim/get_ntnet_status()
+	if(!owner_vehicle)
+		return FALSE
+	return ..()
+
 /obj/item/modular_computer/pda/vim/ui_data(mob/user)
 	. = ..()
 	.["light_on"] = owner_vehicle.headlights_toggle

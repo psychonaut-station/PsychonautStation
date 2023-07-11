@@ -12,8 +12,6 @@
 /// support the "use gender" option.
 #define PREFERENCE_PRIORITY_BODY_TYPE 4
 
-#define PREFERENCE_PRIORITY_PET_TYPE 4
-
 /// The priority at which names are decided, needed for proper randomization.
 #define PREFERENCE_PRIORITY_NAMES 5
 
@@ -110,6 +108,8 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	/// If the selected species has this in its /datum/species/var/external_organs,
 	/// will show the feature as selectable.
 	var/relevant_external_organ = null
+
+	var/body_type = "Human"
 
 /// Called on the saved input when retrieving.
 /// Also called by the value sent from the user through UI. Do not trust it.

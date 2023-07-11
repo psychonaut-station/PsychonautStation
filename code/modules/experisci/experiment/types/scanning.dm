@@ -66,8 +66,6 @@
  */
 /datum/experiment/scanning/proc/serialize_progress_stage(atom/target, list/seen_instances)
 	var/scanned_total = traits & EXPERIMENT_TRAIT_DESTRUCTIVE ? scanned[target] : seen_instances.len
-	if(istype(target, /mob/living/carbon/human/species/pod))
-		return EXPERIMENT_PROG_INT("Scan samples of \a Podperson", scanned_total, required_atoms[target])
 	return EXPERIMENT_PROG_INT("Scan samples of \a [initial(target.name)]", scanned_total, required_atoms[target])
 
 /**

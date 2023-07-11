@@ -1096,6 +1096,7 @@
 
 /mob/living/carbon/human/species/pod
 	race = /datum/species/pod
+	name = "Podperson"
 
 /mob/living/carbon/human/species/shadow
 	race = /datum/species/shadow

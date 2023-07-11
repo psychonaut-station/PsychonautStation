@@ -8,7 +8,7 @@ mkdir libc
 sudo wget https://launchpad.net/ubuntu/+source/glibc/2.34-0ubuntu3/+build/22228180/+files/libc6-dev_2.34-0ubuntu3_i386.deb
 sudo dpkg -x libc6-dev_2.34-0ubuntu3_i386.deb ~/libc/
 sudo wget https://launchpad.net/ubuntu/+source/glibc/2.34-0ubuntu3/+build/22228180/+files/libc6_2.34-0ubuntu3_i386.deb
-sudo dpkg -x libc6-x32_2.34-0ubuntu3_i386.deb ~/libc/
+sudo dpkg -x libc6_2.34-0ubuntu3_i386.deb ~/libc/
 LD_LIBRARY_PATH=$LD_LIBRARY_PATH:~/libc/usr/lib/i386-linux-gnu/
 
 sudo apt-get update || true

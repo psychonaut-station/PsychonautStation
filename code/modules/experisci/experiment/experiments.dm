@@ -27,6 +27,18 @@
 		/obj/item/slime_extract/lightpink = 1,
 		/obj/item/slime_extract/rainbow = 10)
 
+/datum/experiment/scanning/random/botany/main
+	name = "Botanical Scanning Experiment"
+	description = "Some research should be done to better understand botany."
+	total_requirement = 10
+	possible_types = list(/mob/living/simple_animal/hostile/bee)
+
+/datum/experiment/scanning/random/botany/discount
+	name = "Botanical Discount Experiment"
+	description = "Centcom wants to scan some pod people."
+	total_requirement = 1
+	possible_types = list(/mob/living/carbon/human/species/pod)
+
 /datum/experiment/scanning/random/cytology/easy
 	name = "Basic Cytology Scanning Experiment"
 	description = "A scientist needs vermin to test on, use the cytology equipment to grow some of these simple critters!"
@@ -173,19 +185,6 @@
 
 /datum/experiment/scanning/random/material/hard/three
 	name = "High Grade Material Scanning Experiment Three"
-
-/datum/experiment/scanning/random/plants/wild
-	name = "Wild Biomatter Mutation Sample"
-	description = "Due to a number of reasons, (Solar Rays, a diet consisting only of unstable mutagen, entropy) plants with lower levels of instability may occasionally mutate upon harvest. Scan one of these samples for us."
-	performance_hint = "\"Wild\" mutations have been recorded to occur above 30 points of instability, while species mutations occur above 60 points of instability."
-	total_requirement = 1
-
-/datum/experiment/scanning/random/plants/traits
-	name = "Unique Biomatter Mutation Sample"
-	description = "We here at CentCom are on the look out for rare and exotic plants with unique properties to brag about to our shareholders. We're looking for a sample with a very specific genes currently."
-	performance_hint = "The wide varities of plants on station each carry various traits, some unique to them. Look for plants that may mutate into what we're looking for."
-	total_requirement = 3
-	possible_plant_genes = list(/datum/plant_gene/trait/squash, /datum/plant_gene/trait/cell_charge, /datum/plant_gene/trait/glow/shadow, /datum/plant_gene/trait/teleport, /datum/plant_gene/trait/brewing, /datum/plant_gene/trait/juicing, /datum/plant_gene/trait/eyes, /datum/plant_gene/trait/sticky)
 
 /datum/experiment/scanning/points/machinery_tiered_scan/tier2_lathes
 	name = "Advanced Stock Parts Benchmark"

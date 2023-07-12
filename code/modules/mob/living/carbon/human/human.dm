@@ -1039,6 +1039,7 @@
 /mob/living/carbon/human/species/synthetic
 	race = /datum/species/synthetic
 	gib_type = /obj/effect/decal/cleanable/robot_debris
+	use_random_name = FALSE
 
 /mob/living/carbon/human/species/synthetic/gib_animation()
 	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")

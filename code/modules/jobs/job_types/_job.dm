@@ -478,8 +478,6 @@
 
 	src.job = job.title
 
-	apply_pref_name(/datum/preference/name/synthetic, player_client)
-
 	if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
 
@@ -487,9 +485,12 @@
 
 		if(GLOB.current_anonymous_theme)
 			fully_replace_character_name(real_name, GLOB.current_anonymous_theme.anonymous_ai_name(TRUE))
+		else
+			apply_pref_name(/datum/preference/name/synthetic, player_client)
 	else
 		player_client.prefs.randomise["species"] = FALSE
 		player_client.prefs.safe_transfer_prefs_to(src, TRUE, FALSE)
+		apply_pref_name(/datum/preference/name/synthetic, player_client)
 		if(CONFIG_GET(flag/force_random_names))
 			real_name = pick(GLOB.ai_names)
 

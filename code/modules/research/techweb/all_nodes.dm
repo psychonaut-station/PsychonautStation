@@ -514,7 +514,7 @@
 		"surgery_viral_bond",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
-	discount_experiments = list(/datum/experiment/scanning/random/botany/main = 4500)
+	discount_experiments = list(/datum/experiment/scanning/random/botany/discount = 4500)
 
 /datum/techweb_node/alien_surgery
 	id = "alien_surgery"
@@ -1436,8 +1436,9 @@
 		"seed_extractor",
 		"adv_watering_can",
 	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 5000)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 7500)
 	required_experiments = list(/datum/experiment/scanning/random/botany/main)
+	discount_experiments = list(/datum/experiment/scanning/random/botany/discount = 4000)
 
 /datum/techweb_node/exp_tools
 	id = "exp_tools"

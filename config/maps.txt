@@ -53,6 +53,9 @@ endmap
 map runtimestation
 endmap
 
+map byos
+endmap
+
 map multiz_debug
 endmap
 

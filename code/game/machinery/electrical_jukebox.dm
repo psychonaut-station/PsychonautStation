@@ -91,7 +91,7 @@
 /obj/machinery/electrical_jukebox/proc/init_proximity_monitor()
 	if(istype(loc, /obj/structure/closet/supplypod))
 		var/obj/structure/closet/supplypod/pod = loc
-		sleep(pod.delays[POD_TRANSIT] + pod.delays[POD_FALLING] + pod.delays[POD_OPENING])
+		sleep(pod.delays[POD_TRANSIT] + pod.delays[POD_FALLING] + pod.delays[POD_OPENING] + 1)
 
 	proximity_monitor = new(src, radius)
 

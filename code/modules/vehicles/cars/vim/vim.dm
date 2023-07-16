@@ -1,9 +1,4 @@
-/**
- * ## VIM!!!!!!!
- *
- * It's a teenie minature mecha... for critters!
- * For the critters that cannot be understood, there is a sound creator in the mecha. It also has headlights.
- */
+
 /obj/vehicle/sealed/car/vim
 	name = "\improper Vim"
 	desc = "An minature exosuit from Nanotrasen, developed to let the irreplacable station pets live a little longer."
@@ -20,6 +15,11 @@
 	engine_sound = 'sound/effects/servostep.ogg'
 	///Maximum size of a mob trying to enter the mech
 	var/maximum_mob_size = MOB_SIZE_SMALL
+
+	var/mob/living/driver
+	var/atom/movable/screen/map_view/ui_view
+	var/obj/item/radio/mech/radio
+
 	COOLDOWN_DECLARE(sound_cooldown)
 
 /datum/armor/car_vim
@@ -32,11 +32,17 @@
 
 /obj/vehicle/sealed/car/vim/Initialize(mapload)
 	. = ..()
+	ui_view = new()
+	ui_view.generate_view("vim_view_[REF(src)]")
 	AddComponent( \
 		/datum/component/shell, \
 		unremovable_circuit_components = list(new /obj/item/circuit_component/vim), \
 		capacity = SHELL_CAPACITY_SMALL, \
 	)
+
+/obj/vehicle/sealed/car/vim/Destroy()
+	if(driver)
+		driver = null
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()
@@ -86,13 +92,16 @@
 
 /obj/vehicle/sealed/car/vim/mob_enter(mob/newoccupant, silent = FALSE)
 	. = ..()
+	var/mob/living/animal_or_basic = newoccupant
 	update_appearance()
 	playsound(src, 'sound/machines/windowdoor.ogg', 50, TRUE)
 	if(atom_integrity == max_integrity)
 		SEND_SOUND(newoccupant, sound('sound/mecha/nominal.ogg',volume=50))
+	driver = animal_or_basic
 
 /obj/vehicle/sealed/car/vim/mob_try_exit(mob/pilot, mob/user, silent = FALSE, randomstep = FALSE)
 	. = ..()
+	driver = null
 	update_appearance()
 
 /obj/vehicle/sealed/car/vim/generate_actions()

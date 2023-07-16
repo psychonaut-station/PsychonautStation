@@ -38,6 +38,8 @@
 	/// What kind of mob type joining players with this job as their assigned role are spawned as.
 	var/spawn_type = /mob/living/carbon/human
 
+	var/living_thing_type = "Human"
+
 	/// If this is set to 1, a text is printed to the player when jobs are assigned, telling him that he should let admins know that he has to disconnect.
 	var/req_admin_notify
 
@@ -455,6 +457,15 @@
 /// Spawns the mob to be played as, taking into account preferences and the desired spawn point.
 /datum/job/proc/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/mob/living/spawn_instance
+	if(living_thing_type == "Pet")
+		var/pettype = player_client.prefs.read_preference(/datum/preference/choiced/pettype)
+		switch(pettype)
+			if(PUG)
+				spawn_type = /mob/living/basic/pet/dog/pug
+			if(CAT)
+				spawn_type = /mob/living/simple_animal/pet/cat
+			if(PARROT)
+				spawn_type = /mob/living/simple_animal/parrot
 	if(ispath(spawn_type, /mob/living/silicon/ai))
 		// This is unfortunately necessary because of snowflake AI init code. To be refactored.
 		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob)

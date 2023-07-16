@@ -24,7 +24,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 1
 	weight = 5
@@ -67,7 +67,7 @@
 // 		JOB_NT_SECRETARY,
 // 	)
 // 	restricted_roles = list(
-// 		JOB_PUG,
+// 		JOB_PET,
 // 		JOB_AI,
 // 		JOB_CYBORG,
 // 	)
@@ -168,7 +168,7 @@
 // 	restricted_roles = list(
 // 		JOB_AI,
 // 		JOB_CYBORG,
-// 		JOB_PUG,
+// 		JOB_PET,
 // 	)
 // 	required_candidates = 2
 // 	weight = 2
@@ -231,7 +231,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 1
 	weight = 3
@@ -284,7 +284,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 1
 	weight = 3
@@ -407,7 +407,7 @@
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 2
 	weight = 3
@@ -586,7 +586,7 @@
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 3
 	weight = 3

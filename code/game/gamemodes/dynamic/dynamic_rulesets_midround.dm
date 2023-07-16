@@ -222,7 +222,7 @@
 		JOB_AI,
 		JOB_CYBORG,
 		ROLE_POSITRONIC_BRAIN,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_candidates = 1
 	weight = 35
@@ -433,7 +433,7 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_PUG,
+		JOB_PET,
 		ROLE_POSITRONIC_BRAIN,
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
@@ -786,7 +786,7 @@
 		JOB_CYBORG,
 		JOB_SYNTHETIC,
 		ROLE_POSITRONIC_BRAIN,
-		JOB_PUG,
+		JOB_PET,
 	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1

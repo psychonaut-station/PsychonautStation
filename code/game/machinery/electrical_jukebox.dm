@@ -10,6 +10,7 @@
 #define CLEARQUEUE(src) "(<a href='?src=[REF(src)];clearqueue=1'>CLEAR QUEUE</a>)"
 
 #define CACHE_DURATION 5 MINUTES
+#define MAX_SOUND_DURATION 8 MINUTES
 
 /datum/web_track
 	var/url = "" // cdn url
@@ -74,8 +75,11 @@
 	var/datum/web_track/current_track
 	var/datum/proximity_monitor/advanced/jukebox/proximity_monitor
 	var/list/queue = list()
+
 	var/caching = TRUE
 	var/list/cached_sounds = list()
+
+	var/list/bad_input_cache = list()
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
@@ -94,6 +98,7 @@
 		sleep(pod.delays[POD_TRANSIT] + pod.delays[POD_FALLING] + pod.delays[POD_OPENING] + 1)
 
 	proximity_monitor = new(src, radius)
+	proximity_monitor.recalculate_field()
 
 /obj/machinery/electrical_jukebox/Destroy()
 	. = ..()
@@ -164,7 +169,7 @@
 /obj/machinery/electrical_jukebox/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "ElectricalJukebox")
+		ui = new(user, src, "ElectricalJukebox", name)
 		ui.open()
 
 /obj/machinery/electrical_jukebox/ui_data(mob/user)
@@ -215,6 +220,11 @@
 		if("add_queue")
 			var/input = tgui_input_music("Add to Queue")
 			if(input)
+				if(bad_input_cache.Find(input))
+					var/cache = bad_input_cache[input]
+					if(istext(cache))
+						to_chat(usr, span_boldwarning(cache), , confidential = TRUE)
+					return
 				add_to_queue(usr, input)
 			return
 		if("clear_queue") //2. onaylama gerekçek
@@ -250,6 +260,9 @@
 	if(!ytdl)
 		return "Youtube-dl was not configured, action unavailable"
 
+	if(!findtext(input, GLOB.is_website))
+		return "Invalid url input"
+
 	var/list/data
 	var/cached = cached_sounds[input]
 
@@ -274,7 +287,7 @@
 		if(!findtext(data["url"], GLOB.is_http_protocol))
 			return "The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played."
 
-		if(data["duration"] > 60 * 10) // 10min
+		if(data["duration"] > MAX_SOUND_DURATION)
 			return "Duration too long!"
 
 		data["timestamp"] = world.time
@@ -300,9 +313,14 @@
 
 /obj/machinery/electrical_jukebox/proc/get_web_sound(input, mob_name, mob_ckey, mob_key_name)
 	busy = TRUE
-	. = get_web_sound_(input, mob_name, mob_ckey, mob_key_name)
+	var/datum/web_track/track = get_web_sound_(input, mob_name, mob_ckey, mob_key_name)
 	busy = FALSE
-	return .
+	if(!check_track(track))
+		var/client/client = GLOB.directory[ckey(mob_ckey)]
+		var/mob/user = client.mob
+		message_admins("[key_name(mob_ckey, TRUE)] requested a bad url on [src] at [get_area_name(src)]. Request: [input] Result: [istext(track) ? track : "no result"] [ADMIN_FULLMONTY_NONAME(user)] [ADMIN_JMP(src)] [REMOVETRAIT(src, user)]")
+		bad_input_cache[input] = track
+	return track
 
 /obj/machinery/electrical_jukebox/proc/play_in_radius(datum/web_track/track)
 	say("Now playing: [track.title] added by [track.mob_name].")
@@ -329,7 +347,7 @@
 	return TRUE
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_track(datum/web_track/track, looped = FALSE)
-	if(!can_play())
+	if(busy || !can_play())
 		return FALSE
 
 	if(world.time - track.timestamp > CACHE_DURATION)
@@ -338,8 +356,11 @@
 		track = new_track
 
 	if(!check_track(track))
-		qdel(track)
-		say("Track is not available. [track.title]")
+		if(!istext(track))
+			say("Track is not available. [track?.title]")
+			qdel(track)
+		else
+			say("Track is not available. [track]")
 		return FALSE
 
 	if(!looped)
@@ -352,23 +373,34 @@
 	play_in_radius(track)
 
 	var/area_name = get_area_name(src, TRUE)
+	var/client/client = GLOB.directory[ckey(track.mob_ckey)]
+	var/mob/user = client.mob
 
 	log_admin("Playing web sound [track.webpage_url_html] on [src] added by [track.mob_key_name] at [area_name]")
-	message_admins("Playing web sound [track.title] on [src] at added by [track.mob_key_name] at [area_name]. [STOP(src)]")
+	message_admins("Playing web sound [track.title] on [src] at added by [key_name(track.mob_key_name, TRUE)] at [area_name]. [ADMIN_FULLMONTY_NONAME(user)] [ADMIN_JMP(src)] [STOP(src)]")
 
 	SSblackbox.record_feedback("nested tally", "played_url", 1, list("[track.mob_ckey]", "[track.webpage_url]"))
 
 	return TRUE
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_input(mob/user, input)
-	if(!can_play())
+	if(busy || !can_play(user))
+		return FALSE
+
+	if(bad_input_cache.Find(input))
+		var/cache = bad_input_cache[input]
+		if(istext(cache))
+			to_chat(user, span_boldwarning(cache), , confidential = TRUE)
 		return FALSE
 
 	var/datum/web_track/track = get_web_sound(input, user.name, user.ckey, key_name(user))
 
 	if(!check_track(track))
-		qdel(track)
-		say("Track is not available. [track.title]")
+		if(!istext(track))
+			say("Track is not available. [track?.title]")
+			qdel(track)
+		else
+			say("Track is not available. [track]")
 		return FALSE
 
 	QDEL_NULL(current_track)
@@ -381,7 +413,7 @@
 	var/area_name = get_area_name(src, TRUE)
 
 	log_admin("[key_name(user)] played web sound [track.webpage_url_html] on [src] at [area_name]")
-	message_admins("[key_name(user)] played web sound [track.title] on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [STOP(src)] [REMOVETRAIT(src, user)]")
+	message_admins("[key_name(user, TRUE)] played web sound [track.title] on [src] at [area_name]. [ADMIN_FULLMONTY_NONAME(user)] [ADMIN_JMP(src)] [STOP(src)] [REMOVETRAIT(src, user)]")
 
 	SSblackbox.record_feedback("nested tally", "played_url", 1, list("[user.ckey]", "[input]"))
 
@@ -394,14 +426,17 @@
 	var/datum/web_track/track = get_web_sound(input, user.name, user.ckey, key_name(user))
 
 	if(!check_track(track))
-		qdel(track)
-		say("Track is not available. [track.title]")
+		if(!istext(track))
+			say("Track is not available. [track?.title]")
+			qdel(track)
+		else
+			say("Track is not available. [track]")
 		return FALSE
 
 	var/area_name = get_area_name(src, TRUE)
 
 	log_admin("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
-	message_admins("[key_name(user)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [CLEARQUEUE(src)] [REMOVETRAIT(src, user)]")
+	message_admins("[key_name(user, TRUE)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_FULLMONTY_NONAME(user)] [ADMIN_JMP(src)] [CLEARQUEUE(src)] [REMOVETRAIT(src, user)]")
 
 	queue += track
 
@@ -434,8 +469,8 @@
 /obj/machinery/electrical_jukebox/proc/on_mob_entered(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(is_playing() && user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-		current_track.extra_data["start"] = (world.time - track_started_at) / 10 || 0
-		user.client?.tgui_panel?.play_music(current_track.url, current_track.extra_data)
+		current_track.extra_data["start"] = (world.time - track_started_at) / 10
+		user.client.tgui_panel?.play_music(current_track.url, current_track.extra_data)
 
 /obj/machinery/electrical_jukebox/proc/on_mob_left(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -456,7 +491,7 @@
 	if(ismob(gone))
 		var/mob/user = gone
 		if(mobs_inside.Find(user))
-			if(get_dist(gone, host) >= current_range)
+			if(get_dist(gone, host) >= current_range || gone.z != host.z) // get_dist z levelin farklı olduğunu fark edemiyor
 				mobs_inside -= user
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, user)
 
@@ -476,12 +511,13 @@
 
 /obj/item/electrical_jukebox_beacon/attack_self()
 	loc.visible_message(span_warning("\The [src] begins to beep loudly!"))
-	var/obj/structure/closet/supplypod/centcompod/toLaunch = new()
-	var/obj/machinery/electrical_jukebox/jukebox = new(toLaunch)
-	new /obj/effect/pod_landingzone(drop_location(), toLaunch)
+	var/obj/structure/closet/supplypod/centcompod/pod = new()
+	var/obj/machinery/electrical_jukebox/jukebox = new(pod)
+	new /obj/effect/pod_landingzone(drop_location(), pod)
 	jukebox.anchored = FALSE
 	qdel(src)
 
+#undef MAX_SOUND_DURATION
 #undef CACHE_DURATION
 
 #undef STOP

@@ -7452,6 +7452,7 @@
 "rZ" = (
 /obj/structure/sign/poster/contraband/random/directional/south,
 /obj/effect/decal/cleanable/vomit/old,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "sa" = (
@@ -15700,6 +15701,7 @@
 /area/station/hallway/secondary/exit)
 "NG" = (
 /obj/effect/landmark/event_spawn,
+/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "NH" = (
@@ -19553,6 +19555,15 @@
 "ZJ" = (
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
+"ZK" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor,
+/area/station/maintenance/port)
 "ZL" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/effect/mapping_helpers/broken_floor,
@@ -47507,7 +47518,7 @@ kD
 iT
 CA
 Es
-Hp
+ZK
 FI
 FI
 Hp

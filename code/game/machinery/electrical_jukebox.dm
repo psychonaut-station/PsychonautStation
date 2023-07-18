@@ -10,7 +10,7 @@
 #define CLEARQUEUE(src) "(<a href='?src=[REF(src)];clearqueue=1'>CLEAR QUEUE</a>)"
 
 #define CACHE_DURATION 5 MINUTES
-#define MAX_SOUND_DURATION 8 MINUTES
+#define MAX_SOUND_DURATION 10 MINUTES
 
 /datum/web_track
 	var/url = "" // cdn url
@@ -62,7 +62,7 @@
 
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"
-	desc = "An advanced music player supports web musics sex."
+	desc = "An advanced music player supports web musics."
 	icon = 'icons/obj/stationobjs.dmi'
 	icon_state = "e-jukebox"
 	density = TRUE
@@ -80,6 +80,8 @@
 	var/list/cached_sounds = list()
 
 	var/list/bad_input_cache = list()
+
+	var/list/mobs_in_range
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
@@ -110,6 +112,8 @@
 
 	QDEL_NULL(queue)
 	QDEL_NULL(proximity_monitor)
+	QDEL_NULL(cached_sounds)
+	QDEL_NULL(bad_input_cache)
 
 	UnregisterSignal(src, COMSIG_PROXIMITY_MOB_ENTERED)
 	UnregisterSignal(src, COMSIG_PROXIMITY_MOB_LEFT)
@@ -227,7 +231,7 @@
 					return
 				add_to_queue(usr, input)
 			return
-		if("clear_queue") //2. onaylama gerekçek
+		if("clear_queue")
 			for(var/track in queue)
 				queue -= track
 				qdel(track)
@@ -253,15 +257,12 @@
 
 /obj/machinery/electrical_jukebox/proc/tgui_input_music(title)
 	var/input = tgui_input_text(usr, "Enter content URL (supported sites only)", title)
-	if(input && length(input) > 10 && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH)) // regex iyi olurdu
+	if(input && findtext(input, GLOB.is_website) && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH)) // regex iyi olurdu
 		return input
 
 /obj/machinery/electrical_jukebox/proc/get_web_sound_(input, mob_name, mob_ckey, mob_key_name)
 	if(!ytdl)
 		return "Youtube-dl was not configured, action unavailable"
-
-	if(!findtext(input, GLOB.is_website))
-		return "Invalid url input"
 
 	var/list/data
 	var/cached = cached_sounds[input]
@@ -287,13 +288,15 @@
 		if(!findtext(data["url"], GLOB.is_http_protocol))
 			return "The media provider returned a content URL that isn't using the HTTP or HTTPS protocol. This is a security risk and the sound will not be played."
 
-		if(data["duration"] > MAX_SOUND_DURATION)
+		if(data["duration"] > MAX_SOUND_DURATION / 10)
 			return "Duration too long!"
 
 		data["timestamp"] = world.time
 
 		if(caching)
 			cached_sounds[input] = data
+
+		qdel(output)
 
 	// url, title, webpage_url, duration, artist, upload_date, album, mob_name, mob_ckey, mob_key_name
 	var/datum/web_track/track = new(
@@ -309,6 +312,8 @@
 		mob_key_name = mob_key_name
 	)
 
+	qdel(data)
+
 	return track
 
 /obj/machinery/electrical_jukebox/proc/get_web_sound(input, mob_name, mob_ckey, mob_key_name)
@@ -322,16 +327,16 @@
 		bad_input_cache[input] = track
 	return track
 
-/obj/machinery/electrical_jukebox/proc/play_in_radius(datum/web_track/track)
+/obj/machinery/electrical_jukebox/proc/play_in_list(datum/web_track/track)
 	say("Now playing: [track.title] added by [track.mob_name].")
-	for(var/mob/user in range(radius - 1, src))
+	for(var/mob/user in mobs_in_range)
 		var/client/client = user.client
 		if(client && client.tgui_panel && client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
 			to_chat(user, "[icon2html(src, client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
 			client.tgui_panel.play_music(track.url, track.extra_data)
 
-/obj/machinery/electrical_jukebox/proc/stop_in_radius()
-	for(var/mob/user in range(radius - 1, src))
+/obj/machinery/electrical_jukebox/proc/stop_in_list()
+	for(var/mob/user in mobs_in_range)
 		if(user && user.client && user.client.tgui_panel)
 			user.client.tgui_panel.stop_music()
 
@@ -343,6 +348,7 @@
 	if(!anchored)
 		if(user)
 			to_chat(user, span_warning("The [src] needs to be secured first!"), confidential = TRUE)
+			balloon_alert(user, "secure first!")
 		return FALSE
 	return TRUE
 
@@ -370,7 +376,7 @@
 	track_started_at = world.time
 	update_icon_state()
 
-	play_in_radius(track)
+	play_in_list(track)
 
 	var/area_name = get_area_name(src, TRUE)
 	var/client/client = GLOB.directory[ckey(track.mob_ckey)]
@@ -408,7 +414,7 @@
 	track_started_at = world.time
 	update_icon_state()
 
-	play_in_radius(track)
+	play_in_list(track)
 
 	var/area_name = get_area_name(src, TRUE)
 
@@ -421,6 +427,12 @@
 
 /obj/machinery/electrical_jukebox/proc/add_to_queue(mob/user, input)
 	if(busy)
+		return FALSE
+
+	if(bad_input_cache.Find(input))
+		var/cache = bad_input_cache[input]
+		if(istext(cache))
+			to_chat(user, span_boldwarning(cache), , confidential = TRUE)
 		return FALSE
 
 	var/datum/web_track/track = get_web_sound(input, user.name, user.ckey, key_name(user))
@@ -445,12 +457,12 @@
 /obj/machinery/electrical_jukebox/proc/stop_music()
 	track_started_at = 0
 	QDEL_NULL(current_track)
-	stop_in_radius()
+	stop_in_list()
 
 /obj/machinery/electrical_jukebox/proc/skip_music(manually = FALSE)
 	if(loop && !manually)
 		track_started_at = 0
-		stop_in_radius()
+		stop_in_list()
 		play_music_by_track(current_track, TRUE)
 	else
 		stop_music()
@@ -478,29 +490,43 @@
 		user.client?.tgui_panel?.stop_music()
 
 /datum/proximity_monitor/advanced/jukebox
-	var/list/mobs_inside = list()
-/datum/proximity_monitor/advanced/jukebox/New(atom/_host, range, _ignore_if_not_on_turf)
+	loc_connections = list(
+		// COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+		// COMSIG_ATOM_EXITED = PROC_REF(on_uncrossed),
+		COMSIG_ATOM_ABSTRACT_ENTERED = PROC_REF(on_entered),
+		COMSIG_ATOM_ABSTRACT_EXITED = PROC_REF(on_uncrossed),
+		COMSIG_ATOM_INITIALIZED_ON = PROC_REF(on_entered),
+	)
+	var/list/mobs_in_range = list()
+
+/datum/proximity_monitor/advanced/jukebox/New(obj/machinery/electrical_jukebox/host, range, ignore_if_not_on_turf)
 	. = ..()
+	if(!istype(host))
+		qdel(src)
+		return
+	host.mobs_in_range = mobs_in_range
 	for(var/mob/user in range(range, host))
 		if(user.client)
-			mobs_inside += user
+			mobs_in_range += user
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, user)
-
+/datum/proximity_monitor/advanced/jukebox/Destroy()
+	. = ..()
+	qdel(mobs_in_range)
 /datum/proximity_monitor/advanced/jukebox/on_uncrossed(turf/source, atom/movable/gone, direction)
 	. = ..()
 	if(ismob(gone))
 		var/mob/user = gone
-		if(mobs_inside.Find(user))
+		if(mobs_in_range.Find(user))
 			if(get_dist(gone, host) >= current_range || gone.z != host.z) // get_dist z levelin farklı olduğunu fark edemiyor
-				mobs_inside -= user
+				mobs_in_range -= user
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, user)
 
 /datum/proximity_monitor/advanced/jukebox/on_entered(turf/source, atom/movable/entered)
 	. = ..()
 	if(ismob(entered))
 		var/mob/user = entered
-		if(user.client && !mobs_inside.Find(user) && get_dist(user, host) < current_range)
-			mobs_inside += user
+		if(user.client && !mobs_in_range.Find(user) && get_dist(user, host) < current_range)
+			mobs_in_range += user
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, user)
 
 /obj/item/electrical_jukebox_beacon

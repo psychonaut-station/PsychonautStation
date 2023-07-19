@@ -662,6 +662,10 @@
 /datum/map_template/shuttle/arrival/box
 	suffix = "box"
 	name = "arrival shuttle (Box)"
+	
+/datum/map_template/shuttle/arrival/mini
+	suffix = "mini"
+	name = "arrival shuttle (Mini)"
 
 /datum/map_template/shuttle/cargo/box
 	suffix = "box"
@@ -804,6 +808,14 @@
 /datum/map_template/shuttle/pirate/grey
 	suffix = "grey"
 	name = "pirate ship (The Space Toolbox)"
+
+/datum/map_template/shuttle/pirate/irs
+	suffix = "irs"
+	name = "pirate ship (Space IRS)"
+
+/datum/map_template/shuttle/pirate/geode
+	suffix = "geode"
+	name = "pirate ship (Lustrous Geode)"
 
 /datum/map_template/shuttle/hunter/space_cop
 	suffix = "space_cop"

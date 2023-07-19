@@ -17,8 +17,8 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -42,8 +42,8 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -67,8 +67,8 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -100,8 +100,8 @@
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -134,8 +134,8 @@
 	dmg_overlay_type = "robotic"
 	is_dimorphic = FALSE
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -171,8 +171,8 @@
 	dmg_overlay_type = "robotic"
 	is_dimorphic = FALSE
 
-	brute_reduction = 5
-	burn_reduction = 4
+	brute_modifier = 5
+	burn_modifier = 4
 
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG

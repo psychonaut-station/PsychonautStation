@@ -403,7 +403,7 @@
 	return FALSE
 
 /obj/machinery/electrical_jukebox/proc/tgui_input_music(title)
-	var/input = tgui_input_text(usr, "Enter content URL (supported sites only, soundcloud)", title)
+	var/input = tgui_input_text(usr, "Enter content URL (supported sites only, soundcloud, youtube)", title)
 	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH) && findtext(input, ytdl_regex))
 		return input
 

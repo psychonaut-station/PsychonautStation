@@ -48,7 +48,6 @@
 // Other roles
 #define ROLE_SYNDICATE "Syndicate"
 #define ROLE_REV "Revolutionary"
-#define ROLE_REV_SUCCESSFUL "Victorious Revolutionary"
 #define ROLE_PAI "pAI"
 #define ROLE_MONKEY_HELMET "Monkey Mind Magnification Helmet"
 #define ROLE_REVENANT "Revenant"
@@ -100,6 +99,7 @@
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
+#define ROLE_BOT "Bot"
 
 /// This defines the antagonists you can operate with in the settings.
 /// Keys are the antagonist, values are the number of days since the player's

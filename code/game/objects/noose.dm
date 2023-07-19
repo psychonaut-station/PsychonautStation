@@ -11,7 +11,7 @@
 	name = "noose"
 	desc = "A noose that.. you/others can hang?"
 	icon_state = "noose"
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/noose.dmi'
 	layer = FLY_LAYER
 	flags_1 = NODECONSTRUCT_1
 	var/mutable_appearance/overlay

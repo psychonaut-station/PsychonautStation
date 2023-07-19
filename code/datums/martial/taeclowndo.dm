@@ -15,7 +15,7 @@
 /datum/action/cooldown/spell/pointed/banana_peel
 	name = "Conjure Banana Peel"
 	desc = "Make a banana peel appear out of thin air right under someone's feet!"
-	button_icon = 'icons/obj/hydroponics/harvest.dmi'
+	button_icon = 'icons/obj/service/hydroponics/harvest.dmi'
 	button_icon_state = "banana_peel"
 	spell_max_level = 1
 	cooldown_time = 10 SECONDS

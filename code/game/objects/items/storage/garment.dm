@@ -14,6 +14,10 @@
 	name = "head of security's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the head of security."
 
+/obj/item/storage/bag/garment/warden
+	name = "warden's garment bag"
+	desc = "A bag for storing extra clothes and shoes. This one belongs to the warden."
+
 /obj/item/storage/bag/garment/hop
 	name = "head of personnel's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the head of personnel."
@@ -91,6 +95,18 @@
 	new /obj/item/clothing/head/hats/hos/special(src)
 	new	/obj/item/clothing/neck/cloak/hos/special(src)
 	new /obj/item/clothing/suit/armor/hos/special(src)
+
+/obj/item/storage/bag/garment/warden/PopulateContents()
+	new /obj/item/clothing/suit/armor/vest/warden(src)
+	new /obj/item/clothing/head/hats/warden(src)
+	new /obj/item/clothing/head/hats/warden/drill(src)
+	new /obj/item/clothing/head/beret/sec/navywarden(src)
+	new /obj/item/clothing/suit/armor/vest/warden/alt(src)
+	new /obj/item/clothing/under/rank/security/warden/formal(src)
+	new /obj/item/clothing/under/rank/security/warden/skirt(src)
+	new /obj/item/clothing/gloves/krav_maga/sec(src)
+	new /obj/item/clothing/glasses/hud/security/sunglasses(src)
+	new /obj/item/clothing/mask/gas/sechailer(src)
 
 /obj/item/storage/bag/garment/research_director/PopulateContents()
 	new /obj/item/clothing/under/rank/rnd/research_director(src)

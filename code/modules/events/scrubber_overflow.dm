@@ -1,8 +1,8 @@
 /datum/round_event_control/scrubber_overflow
 	name = "Scrubber Overflow: Normal"
 	typepath = /datum/round_event/scrubber_overflow
-	weight = 10
-	max_occurrences = 3
+	weight = 0
+	max_occurrences = 0
 	min_players = 10
 	category = EVENT_CATEGORY_JANITORIAL
 	description = "The scrubbers release a tide of mostly harmless froth."
@@ -70,7 +70,7 @@
 	priority_announce("The scrubbers network is experiencing a backpressure surge. Some ejection of contents may occur.", "Atmospherics alert")
 
 /datum/round_event/scrubber_overflow/setup()
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_scrubber))
 		var/turf/scrubber_turf = get_turf(temp_vent)
 		if(!scrubber_turf)
 			continue
@@ -89,7 +89,7 @@
 	. = ..()
 	if(!.)
 		return
-	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent in GLOB.machines)
+	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_scrubber))
 		var/turf/scrubber_turf = get_turf(temp_vent)
 		if(!scrubber_turf)
 			continue
@@ -129,7 +129,7 @@
 	typepath = /datum/round_event/scrubber_overflow/threatening
 	weight = 4
 	min_players = 25
-	max_occurrences = 1
+	max_occurrences = 0
 	earliest_start = 35 MINUTES
 	description = "The scrubbers release a tide of moderately harmless froth."
 	min_wizard_trigger_potency = 0
@@ -144,7 +144,7 @@
 	typepath = /datum/round_event/scrubber_overflow/catastrophic
 	weight = 2
 	min_players = 35
-	max_occurrences = 1
+	max_occurrences = 0
 	earliest_start = 45 MINUTES
 	description = "The scrubbers release a tide of mildly harmless froth."
 	min_wizard_trigger_potency = 3

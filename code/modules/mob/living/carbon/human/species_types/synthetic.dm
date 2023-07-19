@@ -28,6 +28,7 @@
 		TRAIT_XENO_IMMUNE,
 		TRAIT_NOLIMBDISABLE,
 		TRAIT_NODISMEMBER,
+		TRAIT_USES_SKINTONES,
 
 		// Skills
 		TRAIT_KNOW_CYBORG_WIRES,
@@ -44,7 +45,6 @@
 	stunmod = 0.3
 
 	sexes = FALSE
-	use_skintones = TRUE
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	meat = null
 	mutanttongue = /obj/item/organ/internal/tongue/robot

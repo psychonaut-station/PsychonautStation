@@ -27,16 +27,17 @@
 #define EXPERIMENT_515_QDEL_HARD_REFERENCE
 #define EXPERIMENT_515_DONT_CACHE_REF
 
-#endif
-
-#if DM_VERSION >= 516
-#error "Remove all 515 experiments"
-#endif
-
+#else
 #ifndef EXPERIMENT_515_QDEL_HARD_REFERENCE
 #define EXPERIMENT_515_QDEL_HARD_REFERENCE
 #endif
 
 #ifndef EXPERIMENT_515_DONT_CACHE_REF
 #define EXPERIMENT_515_DONT_CACHE_REF
+#endif
+
+#endif
+
+#if DM_VERSION >= 516
+#error "Remove all 515 experiments"
 #endif

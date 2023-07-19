@@ -15,7 +15,7 @@
 #define MAX_SOUND_DURATION 10 MINUTES
 #define REQUEST_COOLDOWN 15 SECONDS
 
-GLOBAL_DATUM_INIT(ytdl_regex, /regex, regex(@"^(https?:\/\/)?(www\.)?(soundcloud\.com\/|youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$", "s"))
+#define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(soundcloud\.com\/|youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
 
 /datum/web_track
 	var/url = ""
@@ -76,6 +76,7 @@ GLOBAL_DATUM_INIT(ytdl_regex, /regex, regex(@"^(https?:\/\/)?(www\.)?(soundcloud
 	var/radius = 12
 	var/busy = FALSE
 	var/ytdl
+	var/static/regex/ytdl_regex = regex(YTDL_REGEX, "s")
 	var/loop = FALSE
 	var/track_started_at = 0
 	var/datum/web_track/current_track
@@ -403,7 +404,7 @@ GLOBAL_DATUM_INIT(ytdl_regex, /regex, regex(@"^(https?:\/\/)?(www\.)?(soundcloud
 
 /obj/machinery/electrical_jukebox/proc/tgui_input_music(title)
 	var/input = tgui_input_text(usr, "Enter content URL (supported sites only, soundcloud)", title)
-	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH) && findtext(input, GLOB.ytdl_regex))
+	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH) && findtext(input, ytdl_regex))
 		return input
 
 /obj/machinery/electrical_jukebox/proc/get_web_sound_(input, mob_name, mob_ckey, mob_key_name)
@@ -712,6 +713,8 @@ GLOBAL_DATUM_INIT(ytdl_regex, /regex, regex(@"^(https?:\/\/)?(www\.)?(soundcloud
 	jukebox.anchored = FALSE
 	qdel(src)
 
+#undef YTDL_REGEX
+
 #undef REQUEST_COOLDOWN
 #undef MAX_SOUND_DURATION
 #undef CACHE_DURATION
@@ -719,6 +722,8 @@ GLOBAL_DATUM_INIT(ytdl_regex, /regex, regex(@"^(https?:\/\/)?(www\.)?(soundcloud
 #undef STOP
 #undef REMOVETRAIT
 #undef CLEARQUEUE
+#undef APPROVEREQUEST
+#undef DENYREQUEST
 
 #undef COMSIG_PROXIMITY_MOB_ENTERED
 #undef COMSIG_PROXIMITY_MOB_LEFT

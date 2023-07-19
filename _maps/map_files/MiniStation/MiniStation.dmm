@@ -4187,11 +4187,13 @@
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "jS" = (
-/obj/machinery/light/directional/west,
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
 /obj/structure/sign/warning/vacuum/external/directional/west,
+/obj/machinery/light{
+	dir = 8
+	},
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -12189,9 +12191,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"DS" = (
-/turf/closed/wall/r_wall,
-/area/space/nearstation)
 "DT" = (
 /obj/machinery/portable_atmospherics/canister,
 /turf/open/floor/iron,
@@ -13477,14 +13476,6 @@
 /obj/structure/sign/poster/official/report_crimes/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
-"Hp" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port)
 "Hq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14894,10 +14885,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
-"Li" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/plating,
-/area/space/nearstation)
 "Lj" = (
 /obj/machinery/door/airlock/engineering{
 	name = "Tech Storage"
@@ -18145,9 +18132,6 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"Vo" = (
-/turf/closed/wall,
-/area/space/nearstation)
 "Vp" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -45013,9 +44997,9 @@ bh
 hN
 iN
 Hm
-Vo
-Li
-Vo
+hM
+hN
+hM
 Hm
 iN
 hN
@@ -47580,7 +47564,7 @@ Es
 Fv
 FI
 FI
-Hp
+Fv
 FI
 FI
 FI
@@ -56810,7 +56794,7 @@ cp
 cp
 cp
 bi
-DS
+gK
 GQ
 UE
 JK
@@ -57067,7 +57051,7 @@ aC
 cp
 aC
 aC
-DS
+gK
 gK
 gK
 gK

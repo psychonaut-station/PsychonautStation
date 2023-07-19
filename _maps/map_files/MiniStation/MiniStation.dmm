@@ -7922,16 +7922,6 @@
 /obj/structure/lattice,
 /turf/open/space,
 /area/space/nearstation)
-"tv" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/simple{
-	dir = 4
-	},
-/obj/structure/lattice,
-/obj/machinery/light/small{
-	dir = 1
-	},
-/turf/open/space,
-/area/space/nearstation)
 "tw" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 4
@@ -13177,7 +13167,6 @@
 /area/station/tcommsat/computer)
 "Gz" = (
 /obj/machinery/seed_extractor,
-/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "GB" = (
@@ -19099,8 +19088,8 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "Ym" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port)
 "Yo" = (
@@ -19219,6 +19208,7 @@
 "YE" = (
 /obj/machinery/biogenerator,
 /obj/structure/sign/poster/official/random/directional/east,
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "YF" = (
@@ -47566,7 +47556,7 @@ FI
 FI
 Fv
 FI
-FI
+wW
 FI
 FY
 Dt
@@ -48638,7 +48628,7 @@ aa
 bh
 aa
 qM
-tv
+tw
 ue
 GF
 tJ
@@ -49923,7 +49913,7 @@ DK
 XM
 th
 qB
-tv
+tw
 tx
 GF
 tJ
@@ -69667,8 +69657,8 @@ aa
 aa
 aa
 aa
-aa
-aa
+cp
+cp
 cp
 cp
 cp

@@ -122,9 +122,6 @@
 /datum/preference/name/ai/create_default_value()
 	return pick(GLOB.ai_names)
 
-/datum/preference/name/synthetic/create_default_value()
-	return pick(GLOB.ai_names)
-
 /datum/preference/name/religion
 	savefile_key = "religion_name"
 

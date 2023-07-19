@@ -69,7 +69,7 @@
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"
 	desc = "An advanced music player supports web music."
-	icon = 'icons/obj/stationobjs.dmi'
+	icon = 'icons/obj/machines/music.dmi'
 	icon_state = "e-jukebox"
 	density = TRUE
 

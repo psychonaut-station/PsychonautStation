@@ -77,21 +77,15 @@
 	var/obj/item/inventory_head
 	var/obj/item/inventory_back
 	/// Access card for Ian.
-	var/obj/item/card/id/access_card = null
 	var/shaved = FALSE
 	var/nofur = FALSE //Corgis that have risen past the material plane of existence.
 	/// Is this corgi physically slow due to age, etc?
 	var/is_slow = FALSE
 
-/mob/living/basic/pet/dog/corgi/examine(mob/user)
-	. = ..()
-	if(access_card)
-		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
 
 /mob/living/basic/pet/dog/corgi/Destroy()
 	QDEL_NULL(inventory_head)
 	QDEL_NULL(inventory_back)
-	QDEL_NULL(access_card)
 	return ..()
 
 /mob/living/basic/pet/dog/corgi/gib()
@@ -101,9 +95,6 @@
 	if(inventory_back)
 		inventory_back.forceMove(drop_location())
 		inventory_back = null
-	if(access_card)
-		access_card.forceMove(drop_location())
-		access_card = null
 	return ..()
 
 /mob/living/basic/pet/dog/corgi/deadchat_plays(mode = ANARCHY_MODE, cooldown = 12 SECONDS)
@@ -230,16 +221,10 @@
 	regenerate_icons()
 	AddElement(/datum/element/strippable, GLOB.strippable_corgi_items)
 	AddElement(/datum/element/swabable, CELL_LINE_TABLE_CORGI, CELL_VIRUS_TABLE_GENERIC_MOB, 1, 5)
-	RegisterSignal(src, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
 
 /**
  * Handler for COMSIG_MOB_TRIED_ACCESS
  */
-/mob/living/basic/pet/dog/corgi/proc/on_tried_access(mob/accessor, obj/locked_thing)
-	SIGNAL_HANDLER
-
-	return locked_thing?.check_access(access_card) ? ACCESS_ALLOWED : ACCESS_DISALLOWED
-
 /mob/living/basic/pet/dog/corgi/exoticcorgi/Initialize(mapload)
 		. = ..()
 		var/newcolor = rgb(rand(0, 255), rand(0, 255), rand(0, 255))
@@ -253,7 +238,6 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	/datum/strippable_item/corgi_head,
 	/datum/strippable_item/corgi_back,
 	/datum/strippable_item/pet_collar,
-	/datum/strippable_item/corgi_id,
 )))
 
 /datum/strippable_item/corgi_head
@@ -282,42 +266,6 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 	corgi_source.inventory_head = null
 	corgi_source.update_corgi_fluff()
 	corgi_source.regenerate_icons()
-
-/datum/strippable_item/pet_collar
-	key = STRIPPABLE_ITEM_PET_COLLAR
-
-/datum/strippable_item/pet_collar/get_item(atom/source)
-	var/mob/living/basic/pet/pet_source = source
-	if (!istype(pet_source))
-		return
-
-	return pet_source.collar
-
-/datum/strippable_item/pet_collar/try_equip(atom/source, obj/item/equipping, mob/user)
-	. = ..()
-	if (!.)
-		return FALSE
-
-	if (!istype(equipping, /obj/item/clothing/neck/petcollar))
-		to_chat(user, span_warning("That's not a collar."))
-		return FALSE
-
-	return TRUE
-
-/datum/strippable_item/pet_collar/finish_equip(atom/source, obj/item/equipping, mob/user)
-	var/mob/living/basic/pet/pet_source = source
-	if (!istype(pet_source))
-		return
-
-	pet_source.add_collar(equipping, user)
-
-/datum/strippable_item/pet_collar/finish_unequip(atom/source, mob/user)
-	var/mob/living/basic/pet/pet_source = source
-	if (!istype(pet_source))
-		return
-
-	var/obj/collar = pet_source.remove_collar(user.drop_location())
-	user.put_in_hands(collar)
 
 /datum/strippable_item/corgi_back
 	key = STRIPPABLE_ITEM_BACK
@@ -362,45 +310,6 @@ GLOBAL_LIST_INIT(strippable_corgi_items, create_strippable_list(list(
 
 	user.put_in_hands(corgi_source.inventory_back)
 	corgi_source.inventory_back = null
-	corgi_source.update_corgi_fluff()
-	corgi_source.regenerate_icons()
-
-/datum/strippable_item/corgi_id
-	key = STRIPPABLE_ITEM_ID
-
-/datum/strippable_item/corgi_id/get_item(atom/source)
-	var/mob/living/basic/pet/dog/corgi/corgi_source = source
-	if (!istype(corgi_source))
-		return
-
-	return corgi_source.access_card
-
-/datum/strippable_item/corgi_id/try_equip(atom/source, obj/item/equipping, mob/user)
-	. = ..()
-	if (!.)
-		return FALSE
-
-	if (!isidcard(equipping))
-		to_chat(user, span_warning("You can't pin [equipping] to [source]!"))
-		return FALSE
-
-	return TRUE
-
-/datum/strippable_item/corgi_id/finish_equip(atom/source, obj/item/equipping, mob/user)
-	var/mob/living/basic/pet/dog/corgi/corgi_source = source
-	if (!istype(corgi_source))
-		return
-
-	equipping.forceMove(source)
-	corgi_source.access_card = equipping
-
-/datum/strippable_item/corgi_id/finish_unequip(atom/source, mob/user)
-	var/mob/living/basic/pet/dog/corgi/corgi_source = source
-	if (!istype(corgi_source))
-		return
-
-	user.put_in_hands(corgi_source.access_card)
-	corgi_source.access_card = null
 	corgi_source.update_corgi_fluff()
 	corgi_source.regenerate_icons()
 

@@ -13,6 +13,7 @@
 
 	/// Our collar
 	var/obj/item/clothing/neck/petcollar/collar
+	var/obj/item/card/id/access_card = null
 
 /mob/living/basic/pet/Initialize(mapload)
 	. = ..()
@@ -22,10 +23,26 @@
 		collar = new(src)
 
 	update_icon(UPDATE_OVERLAYS)
+	if(!iscorgi(src))
+		AddElement(/datum/element/strippable, GLOB.strippable_petcollar)
+	RegisterSignal(src, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
+
+/mob/living/basic/pet/proc/on_tried_access(mob/accessor, obj/locked_thing)
+	SIGNAL_HANDLER
+
+	return locked_thing?.check_access(access_card) ? ACCESS_ALLOWED : ACCESS_DISALLOWED
+
+/mob/living/basic/pet/get_idcard(hand_first)
+	return FALSE
+
+/mob/living/basic/pet/examine(mob/user)
+	. = ..()
+	if(access_card)
+		. += "There appears to be [icon2html(access_card, user)] \a [access_card] pinned to [p_them()]."
 
 /mob/living/basic/pet/Destroy()
 	. = ..()
-
+	QDEL_NULL(access_card)
 	QDEL_NULL(collar)
 
 /mob/living/basic/pet/attackby(obj/item/thing, mob/user, params)
@@ -117,6 +134,10 @@
 	if(new_collar.tagname && !unique_pet)
 		fully_replace_character_name(null, "\proper [new_collar.tagname]")
 
+	if(istype(new_collar, /obj/item/clothing/neck/petcollar/id))
+		var/obj/item/clothing/neck/petcollar/id/newest_collar = new_collar
+		access_card = newest_collar.access
+
 /**
  * Remove the collar from the pet.
  */
@@ -131,5 +152,7 @@
 
 	if(collar_icon_state && update_visuals)
 		update_icon(UPDATE_OVERLAYS)
+
+	access_card = null
 
 	return old_collar

@@ -1,2 +1,1 @@
 Loanselot = Host
-RengaN = Game Master

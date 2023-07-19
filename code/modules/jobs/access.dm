@@ -34,9 +34,9 @@
 		if(check_access(human_accessor.wear_id))
 			return TRUE
 	//if they have a hacky abstract animal ID with the required access, let them in i guess...
-	else if(isanimal(accessor))
-		var/mob/living/simple_animal/animal = accessor
-		if(check_access(animal.access_card))
+	else if(isanimal_or_basicmob(accessor))
+		var/mob/living/basic_or_simple = accessor
+		if(check_access(basic_or_simple))
 			return TRUE
 	else if(isbrain(accessor) && istype(accessor.loc, /obj/item/mmi))
 		var/obj/item/mmi/brain_mmi = accessor.loc

@@ -45,3 +45,14 @@
 /datum/action/vehicle/sealed/headlights/vim/Trigger(trigger_flags)
 	. = ..()
 	SEND_SIGNAL(vehicle_entered_target, COMSIG_VIM_HEADLIGHTS_TOGGLED, vehicle_entered_target.headlights_toggle)
+
+/datum/action/vehicle/sealed/vim/vim_view_stats
+	name = "View Stats"
+	button_icon_state = "mech_view_stats"
+	button_icon = 'icons/mob/actions/actions_mecha.dmi'
+
+/datum/action/vehicle/sealed/vim/vim_view_stats/Trigger(trigger_flags)
+	var/obj/vehicle/sealed/car/vim/vim = vehicle_entered_target
+	if(!owner || !vim || owner != vim.driver)
+		return
+	vim.ui_interact(owner)

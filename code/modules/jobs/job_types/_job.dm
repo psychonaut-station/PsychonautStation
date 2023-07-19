@@ -462,10 +462,12 @@
 		switch(pettype)
 			if(PUG)
 				spawn_type = /mob/living/basic/pet/dog/pug
+			if(BULLTERRIER)
+				spawn_type = /mob/living/basic/pet/dog/bullterrier
 			if(CAT)
 				spawn_type = /mob/living/simple_animal/pet/cat
-			if(PARROT)
-				spawn_type = /mob/living/simple_animal/parrot
+			if(BLACK_CAT)
+				spawn_type = /mob/living/simple_animal/pet/cat/runtime
 	if(ispath(spawn_type, /mob/living/silicon/ai))
 		// This is unfortunately necessary because of snowflake AI init code. To be refactored.
 		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob)

@@ -18,7 +18,7 @@
 
 	var/mob/living/driver
 	var/atom/movable/screen/map_view/ui_view
-	var/obj/item/radio/mech/radio
+	var/obj/item/radio/vim/radio
 
 	COOLDOWN_DECLARE(sound_cooldown)
 
@@ -30,10 +30,15 @@
 	fire = 80
 	acid = 80
 
+/obj/item/radio/vim //this has to go somewhere
+	subspace_transmission = TRUE
+
 /obj/vehicle/sealed/car/vim/Initialize(mapload)
 	. = ..()
 	ui_view = new()
 	ui_view.generate_view("vim_view_[REF(src)]")
+	radio = new(src)
+	radio.name = "[src] radio"
 	AddComponent( \
 		/datum/component/shell, \
 		unremovable_circuit_components = list(new /obj/item/circuit_component/vim), \
@@ -43,6 +48,7 @@
 /obj/vehicle/sealed/car/vim/Destroy()
 	if(driver)
 		driver = null
+	radio = null
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()
@@ -101,14 +107,19 @@
 
 /obj/vehicle/sealed/car/vim/mob_try_exit(mob/pilot, mob/user, silent = FALSE, randomstep = FALSE)
 	. = ..()
-	driver = null
 	update_appearance()
+
+/obj/vehicle/sealed/car/vim/mob_exit(mob/pilot, mob/user, silent = FALSE, randomstep = FALSE)
+	. = ..()
+	driver = null
 
 /obj/vehicle/sealed/car/vim/generate_actions()
 	initialize_controller_action_type(/datum/action/vehicle/sealed/climb_out/vim, VEHICLE_CONTROL_DRIVE)
+	initialize_controller_action_type(/datum/action/vehicle/sealed/vim/vim_view_stats, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/noise/chime, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/noise/buzz, VEHICLE_CONTROL_DRIVE)
 	initialize_controller_action_type(/datum/action/vehicle/sealed/headlights/vim, VEHICLE_CONTROL_DRIVE)
+
 
 /obj/vehicle/sealed/car/vim/update_overlays()
 	. = ..()

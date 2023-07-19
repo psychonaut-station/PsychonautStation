@@ -702,7 +702,7 @@
 /obj/item/electrical_jukebox_beacon
 	name = "electrical jukebox beacon"
 	desc = "N.T. approved electrical jukebox beacon, toss it down and you will have a complementary electrical jukebox delivered to you."
-	icon = 'icons/obj/objects.dmi'
+	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 
 /obj/item/electrical_jukebox_beacon/attack_self()

@@ -16695,13 +16695,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
-"QH" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port)
 "QI" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -19630,15 +19623,6 @@
 "ZJ" = (
 /turf/open/floor/wood,
 /area/station/service/cafeteria)
-"ZK" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port)
 "ZL" = (
 /obj/effect/spawner/random/structure/crate,
 /obj/effect/mapping_helpers/broken_floor,
@@ -47593,13 +47577,13 @@ kD
 iT
 CA
 Es
-ZK
+Fv
 FI
 FI
 Hp
 FI
 FI
-QH
+FI
 FY
 Dt
 CA

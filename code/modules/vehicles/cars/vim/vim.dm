@@ -49,6 +49,7 @@
 	if(driver)
 		driver = null
 	radio = null
+	return ..()
 
 /obj/vehicle/sealed/car/vim/examine(mob/user)
 	. = ..()

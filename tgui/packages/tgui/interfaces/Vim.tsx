@@ -3,7 +3,6 @@ import { useBackend } from '../backend';
 import { ByondUi, Stack, Section, Box, Button, NumberInput, ProgressBar, LabeledList } from '../components';
 import { toFixed } from 'common/math';
 
-
 type MainData = {
   name: string;
   integrity: number;
@@ -18,9 +17,7 @@ type MainData = {
   mech_view: string;
 };
 
-
 export const Vim = (props, context) => {
-  const { act, data } = useBackend<MainData>(context);
   return (
     <Window theme={'ntos'} width={500} height={400}>
       <Window.Content>
@@ -110,7 +107,6 @@ const RadioPane = (props, context) => {
       </LabeledList.Item>
     </LabeledList>
   );
-
 };
 
 const VimStatPane = (props, context) => {
@@ -144,26 +140,21 @@ const VimStatPane = (props, context) => {
 const PowerBar = (props, context) => {
   const { act, data } = useBackend<MainData>(context);
   const { power_level, power_max, circuit } = data;
-    if(circuit === false) {
-
-      return <Box content={'No Circuit board installed!'} />;
-
-    } else if (power_max === null) {
-
-      return <Box content={'No Power cell installed to circuit board!'} />;
-
-    } else {
-     return (
-       <ProgressBar
-         ranges={{
-           good: [0.75 * power_max, Infinity],
-           average: [0.25 * power_max, 0.75 * power_max],
-           bad: [-Infinity, 0.25 * power_max],
-         }}
-          maxValue={power_max}
-          value={power_level}
-       />
-     );
-   }
+  if (circuit === false) {
+    return <Box content={'No Circuit board installed!'} />;
+  } else if (power_max === null) {
+    return <Box content={'No Power cell installed to circuit board!'} />;
+  } else {
+    return (
+      <ProgressBar
+        ranges={{
+          good: [0.75 * power_max, Infinity],
+          average: [0.25 * power_max, 0.75 * power_max],
+          bad: [-Infinity, 0.25 * power_max],
+        }}
+        maxValue={power_max}
+        value={power_level}
+      />
+    );
+  }
 };
-

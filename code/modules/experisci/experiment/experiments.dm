@@ -39,10 +39,6 @@
 	total_requirement = 1
 	possible_types = list(/mob/living/carbon/human/species/pod)
 
-/datum/experiment/scanning/random/botany/discount/serialize_progress_stage(atom/target, list/seen_instances)
-	var/scanned_total = traits & EXPERIMENT_TRAIT_DESTRUCTIVE ? scanned[target] : seen_instances.len
-	return EXPERIMENT_PROG_INT("Scan samples of \a Podpeople", scanned_total, required_atoms[target])
-
 /datum/experiment/scanning/random/cytology/easy
 	name = "Basic Cytology Scanning Experiment"
 	description = "A scientist needs vermin to test on, use the cytology equipment to grow some of these simple critters!"

@@ -20,7 +20,6 @@
 	var/display_duration = ""
 	var/webpage_url = ""
 	var/webpage_url_html = ""
-	var/upload_date = ""
 	var/artist = ""
 	var/album = ""
 	var/timestamp = 0
@@ -30,14 +29,13 @@
 	var/requested = FALSE
 	var/list/as_list = list()
 
-/datum/web_track/New(url, title, webpage_url, duration, artist, upload_date, album, mob_name, mob_ckey, mob_key_name)
+/datum/web_track/New(url, title, webpage_url, duration, artist, album, mob_name, mob_ckey, mob_key_name)
 	src.url = url
 	src.title = title
 	src.duration = duration
 	src.display_duration = DisplayTimeText(duration, 1)
 	src.webpage_url = webpage_url
 	src.webpage_url_html = webpage_url ? "<a href=\"[webpage_url]\">[title]</a>" : title
-	src.upload_date = upload_date
 	src.artist = artist
 	src.album = album
 	timestamp = world.time
@@ -53,7 +51,6 @@
 	track_as_list["link"] = webpage_url
 	track_as_list["webpage_url"] = webpage_url
 	track_as_list["webpage_url_html"] = webpage_url_html
-	track_as_list["upload_date"] = upload_date
 	track_as_list["artist"] = artist
 	track_as_list["album"] = album
 	track_as_list["timestamp"] = timestamp
@@ -433,7 +430,6 @@
 		webpage_url = data["webpage_url"],
 		duration = data["duration"] * 10,
 		artist = data["artist"],
-		upload_date = data["upload_date"],
 		album = data["album"],
 		mob_name = mob_name,
 		mob_ckey = mob_ckey,

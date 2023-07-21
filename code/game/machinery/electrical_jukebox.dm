@@ -2,9 +2,6 @@
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
 
-#define COMSIG_PROXIMITY_MOB_ENTERED "proximity_mob_entered"
-#define COMSIG_PROXIMITY_MOB_LEFT "proximity_mob_left"
-
 #define STOP(src) "(<a href='?src=[REF(src)];cancel=1'>STOP</a>)"
 #define REMOVETRAIT(src, user) "(<a href='?src=[REF(src)];removetrait=[REF(user)]'>REMOVE TRAIT</a>)"
 #define CLEARQUEUE(src) "(<a href='?src=[REF(src)];clearqueue=1'>CLEAR QUEUE</a>)"
@@ -80,7 +77,7 @@
 	var/loop = FALSE
 	var/track_started_at = 0
 	var/datum/web_track/current_track
-	var/datum/proximity_monitor/advanced/jukebox/proximity_monitor
+	var/datum/proximity_monitor/advanced/player_collector/proximity_monitor
 	var/list/queue = list()
 	var/list/requests = list()
 	var/request_cooldown = 0
@@ -642,63 +639,6 @@
 	if(is_playing())
 		user.client?.tgui_panel?.stop_music()
 
-/datum/proximity_monitor/advanced/jukebox
-	loc_connections = list(
-		// COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-		// COMSIG_ATOM_EXITED = PROC_REF(on_uncrossed),
-		COMSIG_ATOM_ABSTRACT_ENTERED = PROC_REF(on_entered),
-		COMSIG_ATOM_ABSTRACT_EXITED = PROC_REF(on_uncrossed),
-		COMSIG_ATOM_INITIALIZED_ON = PROC_REF(on_entered),
-	)
-	var/list/mobs_in_range = list()
-
-/datum/proximity_monitor/advanced/jukebox/New(obj/machinery/electrical_jukebox/host, range, ignore_if_not_on_turf)
-	. = ..()
-	if(!istype(host))
-		qdel(src)
-		return
-	host.mobs_in_range = mobs_in_range
-	for(var/mob/user in range(range, host))
-		if(user.client)
-			mobs_in_range += user
-			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, user)
-/datum/proximity_monitor/advanced/jukebox/Destroy()
-	. = ..()
-	qdel(mobs_in_range)
-/datum/proximity_monitor/advanced/jukebox/on_uncrossed(turf/source, atom/movable/gone, direction)
-	. = ..()
-	if(ismob(gone))
-		var/mob/user = gone
-		if(mobs_in_range.Find(user))
-			if(get_dist(gone, host) >= current_range || gone.z != host.z) // get_dist z levelin farklı olduğunu fark edemiyor
-				mobs_in_range -= user
-				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, user)
-
-/datum/proximity_monitor/advanced/jukebox/on_entered(turf/source, atom/movable/entered)
-	. = ..()
-	if(ismob(entered))
-		var/mob/user = entered
-		if(user.client && !mobs_in_range.Find(user) && get_dist(user, host) < current_range)
-			mobs_in_range += user
-			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, user)
-
-/datum/proximity_monitor/advanced/jukebox/on_moved(atom/movable/movable, atom/old_loc)
-	. = ..()
-	if(movable == host)
-		var/list/old_list = mobs_in_range.Copy()
-		mobs_in_range.Cut()
-		for(var/mob/user in range(current_range, host))
-			if(old_list.Find(user))
-				mobs_in_range += user
-			else
-				if(user.client)
-					mobs_in_range += user
-					SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, user)
-		for(var/mob/user in old_list)
-			if(!mobs_in_range.Find(user))
-				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, user)
-		qdel(old_list)
-
 /obj/item/electrical_jukebox_beacon
 	name = "electrical jukebox beacon"
 	desc = "N.T. approved electrical jukebox beacon, toss it down and you will have a complementary electrical jukebox delivered to you."
@@ -724,9 +664,6 @@
 #undef CLEARQUEUE
 #undef APPROVEREQUEST
 #undef DENYREQUEST
-
-#undef COMSIG_PROXIMITY_MOB_ENTERED
-#undef COMSIG_PROXIMITY_MOB_LEFT
 
 #undef SHELLEO_ERRORLEVEL
 #undef SHELLEO_STDOUT

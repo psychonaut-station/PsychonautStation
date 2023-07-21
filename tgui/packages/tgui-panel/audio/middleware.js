@@ -17,12 +17,19 @@ export const audioMiddleware = (store) => {
   return (next) => (action) => {
     const { type, payload } = action;
     if (type === 'audio/playMusic') {
-      const { url, ...options } = payload;
-      player.play(url, options);
+      const { url, localVolume, ...options } = payload;
+      player.play(url, options, localVolume);
       return next(action);
     }
     if (type === 'audio/stopMusic') {
       player.stop();
+      return next(action);
+    }
+    if (type === 'audio/setLocalVolume') {
+      const volume = payload?.volume;
+      if (typeof volume === 'number' && volume >= 0) {
+        player.setLocalVolume(volume);
+      }
       return next(action);
     }
     if (type === 'settings/update' || type === 'settings/load') {

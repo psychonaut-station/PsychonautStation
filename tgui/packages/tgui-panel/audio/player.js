@@ -21,6 +21,7 @@ export class AudioPlayer {
     // Set up other properties
     this.playing = false;
     this.volume = 1;
+    this.localVolume = 1;
     this.options = {};
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
@@ -30,7 +31,7 @@ export class AudioPlayer {
       this.playing = true;
       this.node.playbackRate = this.options.pitch || 1;
       this.node.currentTime = this.options.start || 0;
-      this.node.volume = this.volume;
+      this.node.volume = this.volume * this.localVolume;
       this.node.play();
       for (let subscriber of this.onPlaySubscribers) {
         subscriber();
@@ -70,7 +71,7 @@ export class AudioPlayer {
     clearInterval(this.playbackInterval);
   }
 
-  play(url, options = {}) {
+  play(url, options = {}, localVolume = 1) {
     if (!this.node) {
       return;
     }
@@ -98,7 +99,15 @@ export class AudioPlayer {
       return;
     }
     this.volume = volume;
-    this.node.volume = volume;
+    this.node.volume = this.localVolume * volume;
+  }
+
+  setLocalVolume(volume) {
+    if (!this.node) {
+      return;
+    }
+    this.localVolume = volume;
+    this.node.volume = this.volume * volume;
   }
 
   onPlay(subscriber) {

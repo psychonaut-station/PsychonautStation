@@ -19,7 +19,7 @@
  * required url string Must be an https URL.
  * optional extra_data list Optional settings.
  */
-/datum/tgui_panel/proc/play_music(url, extra_data)
+/datum/tgui_panel/proc/play_music(url, extra_data, volume = 1)
 	if(!is_ready())
 		return
 	if(!findtext(url, GLOB.is_http_protocol))
@@ -29,6 +29,7 @@
 		for(var/key in extra_data)
 			payload[key] = extra_data[key]
 	payload["url"] = url
+	payload["localVolume"] = volume
 	window.send_message("audio/playMusic", payload)
 
 /**
@@ -40,3 +41,8 @@
 	if(!is_ready())
 		return
 	window.send_message("audio/stopMusic")
+
+/datum/tgui_panel/proc/set_volume(volume)
+	if(!is_ready())
+		return
+	window.send_message("audio/setLocalVolume", list("volume" = volume))

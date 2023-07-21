@@ -66,10 +66,9 @@ export const TrackDetails = (props, context) => {
               icon="info"
               tooltipPosition="bottom"
               tooltip={multiline`
-              You are not allowed to directly use machine, you can
-              make music requests down below for their approval by the
-              Bartender or the admins. When the request gets approved,
-              It will be auto-played if there is nothing playing.
+              You are not allowed to directly use electrical jukebox,
+              instead you can make music requests down below for their
+              approval by the Bartender.
             `}
             />
           )}

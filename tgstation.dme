@@ -1437,6 +1437,7 @@
 #include "code\datums\proximity_monitor\field.dm"
 #include "code\datums\proximity_monitor\proximity_monitor.dm"
 #include "code\datums\proximity_monitor\fields\gravity.dm"
+#include "code\datums\proximity_monitor\fields\player_collective.dm"
 #include "code\datums\proximity_monitor\fields\projectile_dampener.dm"
 #include "code\datums\proximity_monitor\fields\timestop.dm"
 #include "code\datums\quirks\_quirk.dm"

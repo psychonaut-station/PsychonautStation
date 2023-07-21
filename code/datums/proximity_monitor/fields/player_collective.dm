@@ -1,7 +1,3 @@
-#define COMSIG_PROXIMITY_MOB_ENTERED "proximity_mob_entered"
-#define COMSIG_PROXIMITY_MOB_LEFT "proximity_mob_left"
-#define COMSIG_PROXIMITY_MOB_MOVED "proximity_mob_moved"
-
 /datum/proximity_monitor/advanced/player_collector
 	loc_connections = list(
 		COMSIG_ATOM_ABSTRACT_ENTERED = PROC_REF(on_entered),

@@ -473,7 +473,7 @@
 		return
 
 	if(!iscarbon(M))
-		if(istype(M, /mob/living/basic/pet) || istype(M, /mob/living/simple_animal/pet))
+		if(issimplepet_or_basicpet(M))
 			var/mob/living/L = M
 			playsound(defib, 'sound/machines/defib_charge.ogg', 75, 0)
 			M.grab_ghost()

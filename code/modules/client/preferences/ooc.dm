@@ -18,10 +18,10 @@
 	savefile_key = "chat_looc"
 	savefile_identifier = PREFERENCE_PLAYER
 
-/datum/preference/color/enable_looc/create_default_value()
+/datum/preference/toggle/enable_looc/create_default_value()
 	return TRUE
 
-/datum/preference/color/enable_looc/is_accessible(datum/preferences/preferences)
+/datum/preference/toggle/enable_looc/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE
 

@@ -473,14 +473,7 @@
 		return
 
 	if(!iscarbon(M))
-		if(issimplepet_or_basicpet(M))
-			var/mob/living/L = M
-			playsound(defib, 'sound/machines/defib_charge.ogg', 75, 0)
-			M.grab_ghost()
-			L.pet_revive(user)
-			M.emote("gasp")
-			M.visible_message(span_notice("...[M] wakes up, alive and aware!"))
-		else if(req_defib)
+		if(req_defib)
 			to_chat(user, span_warning("The instructions on [defib] don't mention how to revive that..."))
 		else
 			to_chat(user, span_warning("You aren't sure how to revive that..."))

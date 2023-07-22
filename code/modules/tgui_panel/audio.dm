@@ -19,7 +19,7 @@
  * required url string Must be an https URL.
  * optional extra_data list Optional settings.
  */
-/datum/tgui_panel/proc/play_music(url, extra_data, volume = 1)
+/datum/tgui_panel/proc/play_music(url, extra_data)
 	if(!is_ready())
 		return
 	if(!findtext(url, GLOB.is_http_protocol))
@@ -29,7 +29,6 @@
 		for(var/key in extra_data)
 			payload[key] = extra_data[key]
 	payload["url"] = url
-	payload["localVolume"] = volume
 	window.send_message("audio/playMusic", payload)
 
 /**
@@ -42,7 +41,36 @@
 		return
 	window.send_message("audio/stopMusic")
 
-/datum/tgui_panel/proc/set_volume(volume)
+/datum/tgui_panel/proc/create_jukebox_player(jukebox_id)
 	if(!is_ready())
 		return
-	window.send_message("audio/setLocalVolume", list("volume" = volume))
+	window.send_message("audio/jukebox/create", list("jukeboxId" = jukebox_id))
+
+/datum/tgui_panel/proc/destroy_jukebox_player(jukebox_id)
+	if(!is_ready())
+		return
+	window.send_message("audio/jukebox/destroy", list("jukeboxId" = jukebox_id))
+
+/datum/tgui_panel/proc/play_jukebox_music(jukebox_id, url, extra_data, volume)
+	if(!is_ready())
+		return
+	if(!findtext(url, GLOB.is_http_protocol))
+		return
+	var/list/payload = list()
+	if(length(extra_data) > 0)
+		for(var/key in extra_data)
+			payload[key] = extra_data[key]
+	payload["jukeboxId"] = jukebox_id
+	payload["url"] = url
+	payload["volume"] = volume
+	window.send_message("audio/jukebox/playMusic", payload)
+
+/datum/tgui_panel/proc/stop_jukebox_music(jukebox_id)
+	if(!is_ready())
+		return
+	window.send_message("audio/jukebox/stopMusic", list("jukeboxId" = jukebox_id))
+
+/datum/tgui_panel/proc/set_jukebox_volume(jukebox_id, volume)
+	if(!is_ready())
+		return
+	window.send_message("audio/jukebox/setVolume", list("jukeboxId" = jukebox_id, "volume" = volume))

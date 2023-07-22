@@ -25,7 +25,7 @@
 	if(ismob(gone))
 		var/mob/user = gone
 		if(mobs_in_range.Find(user))
-			if(get_dist(gone, host) >= current_range || gone.z != host.z) // get_dist z levelin farklı olduğunu fark edemiyor
+			if(get_dist(gone, host) >= current_range || gone.z != host.z)
 				mobs_in_range -= user
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, user)
 				UnregisterSignal(user, COMSIG_QDELETING)

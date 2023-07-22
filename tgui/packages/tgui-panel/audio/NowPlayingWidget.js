@@ -29,67 +29,138 @@ export const NowPlayingWidget = (props, context) => {
       : upload_date;
 
   return (
-    <Flex align="center">
-      {(audio.playing && (
-        <Flex.Item
-          mx={0.5}
-          grow={1}
-          style={{
-            'white-space': 'nowrap',
-            'overflow': 'hidden',
-            'text-overflow': 'ellipsis',
-          }}>
-          {
-            <Collapsible title={title || 'Unknown Track'} color={'blue'}>
-              <Section>
-                {URL !== 'Song Link Hidden' && (
-                  <Flex.Item grow={1} color="label">
-                    URL: {URL}
-                  </Flex.Item>
-                )}
-                <Flex.Item grow={1} color="label">
-                  Duration: {duration}
+    <Flex>
+      <Flex.Item grow={1}>
+        <Flex direction="column">
+          {audio.playing && (
+            <Flex.Item>
+              <Flex align="center">
+                <Flex.Item
+                  mx={0.5}
+                  grow={1}
+                  style={{
+                    'white-space': 'nowrap',
+                    'overflow': 'hidden',
+                    'text-overflow': 'ellipsis',
+                  }}>
+                  <Collapsible title={title || 'Unknown Track'} color={'blue'}>
+                    <Section>
+                      {URL !== 'Song Link Hidden' && (
+                        <Flex.Item grow={1} color="label">
+                          URL: {URL}
+                        </Flex.Item>
+                      )}
+                      <Flex.Item grow={1} color="label">
+                        Duration: {duration}
+                      </Flex.Item>
+                      {Artist !== 'Song Artist Hidden' &&
+                        Artist !== 'Unknown Artist' && (
+                          <Flex.Item grow={1} color="label">
+                            Artist: {Artist}
+                          </Flex.Item>
+                        )}
+                      {album !== 'Song Album Hidden' &&
+                        album !== 'Unknown Album' && (
+                          <Flex.Item grow={1} color="label">
+                            Album: {album}
+                          </Flex.Item>
+                        )}
+                      {upload_date !== 'Song Upload Date Hidden' &&
+                        upload_date !== 'Unknown Date' && (
+                          <Flex.Item grow={1} color="label">
+                            Uploaded: {date}
+                          </Flex.Item>
+                        )}
+                    </Section>
+                  </Collapsible>
                 </Flex.Item>
-                {Artist !== 'Song Artist Hidden' &&
-                  Artist !== 'Unknown Artist' && (
+                <Flex.Item mx={0.5} fontSize="0.9em">
+                  <Button
+                    tooltip="Stop"
+                    icon="stop"
+                    onClick={() =>
+                      dispatch({
+                        type: 'audio/stopMusic',
+                      })
+                    }
+                  />
+                </Flex.Item>
+              </Flex>
+            </Flex.Item>
+          )}
+          {Object.keys(audio.jukebox).map((jukeboxId) => {
+            const title = audio.jukebox[jukeboxId]?.title,
+              url = audio.jukebox[jukeboxId]?.link,
+              artist = audio.jukebox[jukeboxId]?.artist,
+              album = audio.jukebox[jukeboxId]?.album,
+              duration = audio.jukebox[jukeboxId]?.duration;
+
+            return (
+              <Flex.Item key={jukeboxId}>
+                <Flex align="center">
+                  {audio.jukebox[jukeboxId] ? (
+                    <Flex.Item
+                      mx={0.5}
+                      grow={1}
+                      style={{
+                        'white-space': 'nowrap',
+                        'overflow': 'hidden',
+                        'text-overflow': 'ellipsis',
+                      }}>
+                      {
+                        <Collapsible title={title} color={'blue'}>
+                          <Section>
+                            <Flex.Item grow={1} color="label">
+                              URL: {url}
+                            </Flex.Item>
+                            <Flex.Item grow={1} color="label">
+                              Duration: {duration}
+                            </Flex.Item>
+                            {!!artist && (
+                              <Flex.Item grow={1} color="label">
+                                Artist: {artist}
+                              </Flex.Item>
+                            )}
+                            {!!album && (
+                              <Flex.Item grow={1} color="label">
+                                Album: {album}
+                              </Flex.Item>
+                            )}
+                          </Section>
+                        </Collapsible>
+                      }
+                    </Flex.Item>
+                  ) : (
                     <Flex.Item grow={1} color="label">
-                      Artist: {Artist}
+                      Jukebox: Nothing to play.
                     </Flex.Item>
                   )}
-                {album !== 'Song Album Hidden' && album !== 'Unknown Album' && (
-                  <Flex.Item grow={1} color="label">
-                    Album: {album}
-                  </Flex.Item>
-                )}
-                {upload_date !== 'Song Upload Date Hidden' &&
-                  upload_date !== 'Unknown Date' && (
-                    <Flex.Item grow={1} color="label">
-                      Uploaded: {date}
+                  {!!audio.jukebox[jukeboxId] && (
+                    <Flex.Item mx={0.5} fontSize="0.9em">
+                      <Button
+                        tooltip="Stop"
+                        icon="stop"
+                        onClick={() =>
+                          dispatch({
+                            type: 'audio/jukebox/stopMusic',
+                            payload: { jukeboxId },
+                          })
+                        }
+                      />
                     </Flex.Item>
                   )}
-              </Section>
-            </Collapsible>
-          }
-        </Flex.Item>
-      )) || (
-        <Flex.Item grow={1} color="label">
-          Nothing to play.
-        </Flex.Item>
-      )}
-      {audio.playing && (
-        <Flex.Item mx={0.5} fontSize="0.9em">
-          <Button
-            tooltip="Stop"
-            icon="stop"
-            onClick={() =>
-              dispatch({
-                type: 'audio/stopMusic',
-              })
-            }
-          />
-        </Flex.Item>
-      )}
-      <Flex.Item mx={0.5} fontSize="0.9em">
+                </Flex>
+              </Flex.Item>
+            );
+          })}
+          {!audio.playing && Object.keys(audio.jukebox).length === 0 && (
+            <Flex.Item grow={1} color="label">
+              Nothing to play.
+            </Flex.Item>
+          )}
+        </Flex>
+      </Flex.Item>
+      <Flex.Item mx={0.5} fontSize="0.9em" align="end">
         <Knob
           minValue={0}
           maxValue={1}

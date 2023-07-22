@@ -8,6 +8,7 @@ const initialState = {
   visible: false,
   playing: false,
   track: null,
+  jukebox: {},
 };
 
 export const audioReducer = (state = initialState, action) => {
@@ -20,9 +21,11 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopped') {
+    const visible = Object.values(state.jukebox).filter((s) => !!s).length > 0;
+
     return {
       ...state,
-      visible: false,
+      visible,
       playing: false,
     };
   }
@@ -44,6 +47,62 @@ export const audioReducer = (state = initialState, action) => {
     return {
       ...state,
       visible: !state.visible,
+    };
+  }
+  if (type === 'audio/jukebox/playing') {
+    return {
+      ...state,
+      visible: true,
+    };
+  }
+  if (type === 'audio/jukebox/stopped') {
+    const visible =
+      Object.values(state.jukebox).filter((s) => !!s).length > 0 ||
+      !!state.meta;
+
+    return {
+      ...state,
+      visible,
+    };
+  }
+  if (type === 'audio/jukebox/create') {
+    return {
+      ...state,
+      jukebox: {
+        ...state.jukebox,
+        [payload.jukeboxId]: null,
+      },
+    };
+  }
+  if (type === 'audio/jukebox/destroy') {
+    const jukebox = { ...state.jukebox };
+    delete jukebox[payload.jukeboxId];
+
+    const visible =
+      Object.values(jukebox).filter((s) => !!s).length > 0 || !!state.meta;
+
+    return {
+      ...state,
+      visible,
+      jukebox: jukebox,
+    };
+  }
+  if (type === 'audio/jukebox/playMusic') {
+    return {
+      ...state,
+      jukebox: {
+        ...state.jukebox,
+        [payload.jukeboxId]: payload,
+      },
+    };
+  }
+  if (type === 'audio/jukebox/stopMusic') {
+    return {
+      ...state,
+      jukebox: {
+        ...state.jukebox,
+        [payload.jukeboxId]: null,
+      },
     };
   }
   return state;

@@ -71,12 +71,13 @@ export class AudioPlayer {
     clearInterval(this.playbackInterval);
   }
 
-  play(url, options = {}, localVolume = 1) {
+  play(url, options = {}, volume = 1) {
     if (!this.node) {
       return;
     }
     logger.log('playing', url, options);
     this.options = options;
+    this.localVolume = volume;
     this.node.src = url;
   }
 

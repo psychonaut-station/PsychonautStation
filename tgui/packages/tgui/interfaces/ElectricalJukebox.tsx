@@ -25,10 +25,11 @@ type TrackData = {
   upload_date: string;
   artist: string;
   album: string;
-  timestamp: number;
+  // timestamp: number;
   mob_name: string;
   mob_ckey: string;
   mob_key_name: string;
+  id: string;
 };
 
 export const ElectricalJukebox = () => {
@@ -165,7 +166,7 @@ export const QueueDisplay = (props, context) => {
       }>
       <Table>
         {queue.map((track) => (
-          <QueueRow key={track.timestamp} track={track} />
+          <QueueRow key={track.id} track={track} />
         ))}
       </Table>
     </Section>
@@ -204,7 +205,7 @@ export const RequestsDisplay = (props, context) => {
       {requests.length > 0 ? (
         <Table>
           {requests.map((track) => (
-            <RequestRow key={track.timestamp} track={track} />
+            <RequestRow key={track.id} track={track} />
           ))}
         </Table>
       ) : (
@@ -220,7 +221,7 @@ export const QueueRow = (props: { track: TrackData }, context) => {
   const { can_mob_use } = data;
 
   return (
-    <Table.Row key={track.timestamp} my={1}>
+    <Table.Row key={track.id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
       <Table.Cell collaping>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
@@ -233,7 +234,7 @@ export const QueueRow = (props: { track: TrackData }, context) => {
           disabled={!can_mob_use}
           onClick={() => {
             act('remove_queue', {
-              timestamp: track.timestamp,
+              id: track.id,
             });
           }}
         />
@@ -248,7 +249,7 @@ export const RequestRow = (props: { track: TrackData }, context) => {
   const { can_mob_use, user_key_name } = data;
 
   return (
-    <Table.Row key={track.timestamp} my={1}>
+    <Table.Row key={track.id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
       <Table.Cell collaping>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
@@ -261,7 +262,7 @@ export const RequestRow = (props: { track: TrackData }, context) => {
             textAlign="center"
             onClick={() => {
               act('approve_request', {
-                timestamp: track.timestamp,
+                id: track.id,
               });
             }}
           />
@@ -277,7 +278,7 @@ export const RequestRow = (props: { track: TrackData }, context) => {
           }
           onClick={() => {
             act('discard_request', {
-              timestamp: track.timestamp,
+              id: track.id,
             });
           }}
         />

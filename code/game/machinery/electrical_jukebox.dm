@@ -27,6 +27,7 @@
 	var/mob_ckey = ""
 	var/mob_key_name = ""
 	var/requested = FALSE
+	var/id = ""
 	var/list/as_list = list()
 
 /datum/web_track/New(url, title, webpage_url, duration, artist, album, mob_name, mob_ckey, mob_key_name)
@@ -42,6 +43,7 @@
 	src.mob_name = mob_name
 	src.mob_ckey = mob_ckey
 	src.mob_key_name = mob_key_name
+	id = REF(src)
 	as_list = parse_as_list()
 
 /datum/web_track/proc/parse_as_list()
@@ -53,11 +55,15 @@
 	track_as_list["webpage_url_html"] = webpage_url_html
 	track_as_list["artist"] = artist
 	track_as_list["album"] = album
-	track_as_list["timestamp"] = timestamp
 	track_as_list["mob_name"] = mob_name
 	track_as_list["mob_ckey"] = mob_ckey
 	track_as_list["mob_key_name"] = mob_key_name
+	track_as_list["id"] = id
 	return track_as_list
+
+/datum/web_track/Destroy(force, ...)
+	qdel(as_list)
+	return ..()
 
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"
@@ -66,6 +72,7 @@
 	icon_state = "e-jukebox"
 	density = TRUE
 
+	var/owner = null
 	var/range = 20
 	var/busy = FALSE
 	var/ytdl
@@ -77,16 +84,16 @@
 	var/list/queue = list()
 	var/list/requests = list()
 	var/request_cooldown = 0
-
 	var/list/cached_sounds = list()
-
 	var/list/bad_input_cache = list()
+	var/list/listeners_in_range = list()
 
-	var/list/mobs_in_range
+	var/id = ""
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
 
+	id = REF(src)
 	ytdl = CONFIG_GET(string/invoke_youtubedl)
 
 	RegisterSignal(src, COMSIG_QDELETING, PROC_REF(cleanup))
@@ -104,18 +111,8 @@
 
 	proximity_monitor = new(src, range)
 	proximity_monitor.recalculate_field()
-	mobs_in_range = proximity_monitor.mobs_in_range
 
 /obj/machinery/electrical_jukebox/proc/cleanup()
-
-
-	QDEL_NULL(queue)
-	QDEL_NULL(requests)
-	QDEL_NULL(cached_sounds)
-	QDEL_NULL(bad_input_cache)
-
-	UnregisterSignal(src, COMSIG_QDELETING)
-
 	if(ytdl)
 		stop_music()
 
@@ -124,11 +121,22 @@
 		for(var/track in requests)
 			qdel(track)
 
+		for(var/mob/user in listeners_in_range)
+			user.client?.tgui_panel.destroy_jukebox_player(id)
+
 		QDEL_NULL(proximity_monitor)
 
 		UnregisterSignal(src, COMSIG_PROXIMITY_MOB_ENTERED)
 		UnregisterSignal(src, COMSIG_PROXIMITY_MOB_LEFT)
 		UnregisterSignal(src, COMSIG_PROXIMITY_MOB_MOVED)
+
+	QDEL_NULL(queue)
+	QDEL_NULL(requests)
+	QDEL_NULL(listeners_in_range)
+	QDEL_NULL(cached_sounds)
+	QDEL_NULL(bad_input_cache)
+
+	UnregisterSignal(src, COMSIG_QDELETING)
 
 /obj/machinery/electrical_jukebox/Topic(href, href_list)
 	if(href_list["cancel"])
@@ -292,7 +300,10 @@
 				queue -= track
 				qdel(track)
 		if("remove_queue")
-			remove_track_from_track_list(queue, params["timestamp"])
+			var/datum/web_track/track = locate(params["id"])
+			if(track && queue.Find(track))
+				queue -= track
+				qdel(track)
 			return
 		if("new_request")
 			var/time_elapsed = request_cooldown != 0 ? world.time - request_cooldown : REQUEST_COOLDOWN
@@ -306,33 +317,24 @@
 				balloon_alert(usr, "[display_time]!")
 			return
 		if("approve_request")
-			var/datum/web_track/track = get_track_from_list_by_timestamp(requests, params["timestamp"])
-			if(track)
-				approve_request(usr, track)
+			var/datum/web_track/track = locate(params["id"])
+			if(track && requests.Find(track))
+				requests -= track
+				queue += track
+				track.requested = TRUE
+				message_admins("[key_name(usr, TRUE, TRUE)] [usr.job] approved [key_name(track.mob_key_name, TRUE, TRUE)]'s web sound request [track.webpage_url_html] [REMOVEQUEUE(src, track)].")
 			else
 				to_chat(usr, span_warning("The request has already approved/denied/discarded."), confidential = TRUE)
 			return
 		if("discard_request")
-			var/datum/web_track/track = get_track_from_list_by_timestamp(requests, params["timestamp"])
-			if(track)
-				remove_track_from_track_list(requests, params["timestamp"])
+			to_chat(world, "discard [params["id"]]")
+			var/datum/web_track/track = locate(params["id"])
+			if(track && requests.Find(track))
+				requests -= track
+				qdel(track)
 			else
 				to_chat(usr, span_warning("The request has already approved/denied/discarded."), confidential = TRUE)
 			return
-
-/obj/machinery/electrical_jukebox/proc/get_track_from_list_by_timestamp(list/track_list, timestamp)
-	var/datum/web_track/track
-	for(var/datum/web_track/T in track_list)
-		if(T.timestamp == timestamp)
-			track = T
-			break
-	return track
-
-/obj/machinery/electrical_jukebox/proc/remove_track_from_track_list(list/track_list, timestamp)
-	var/datum/web_track/track = get_track_from_list_by_timestamp(track_list, timestamp)
-	if(track)
-		track_list -= track
-		qdel(track)
 
 /obj/machinery/electrical_jukebox/proc/new_request(mob/user, input)
 	if(busy)
@@ -365,14 +367,6 @@
 
 	return TRUE
 
-/obj/machinery/electrical_jukebox/proc/approve_request(mob/user, datum/web_track/track)
-	if(!istype(track) || !requests.Find(track))
-		return FALSE
-	requests -= track
-	queue += track
-	track.requested = TRUE
-	message_admins("[key_name(user, TRUE, TRUE)] [user.job] approved [key_name(track.mob_key_name, TRUE, TRUE)]'s web sound request [track.webpage_url_html] [REMOVEQUEUE(src, track)].")
-	return TRUE
 
 /obj/machinery/electrical_jukebox/proc/is_playing()
 	if(current_track && world.time - track_started_at < current_track.duration)
@@ -454,16 +448,15 @@
 
 /obj/machinery/electrical_jukebox/proc/play_in_mob_list(datum/web_track/track)
 	say("Now playing: [track.title] added by [track.mob_name].")
-	for(var/mob/user in mobs_in_range)
-		var/client/client = user.client
-		if(client && client.tgui_panel && client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-			to_chat(user, "[icon2html(src, client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
-			client.tgui_panel.play_music(track.url, track.as_list, get_volume(user))
+	for(var/mob/user in listeners_in_range)
+		if(user.client && user.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+			to_chat(user, "[icon2html(src, user.client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
+			user.client.tgui_panel.play_jukebox_music(id, track.url, track.as_list, get_volume(user))
 
 /obj/machinery/electrical_jukebox/proc/stop_in_mob_list()
-	for(var/mob/user in mobs_in_range)
-		if(user && user.client && user.client.tgui_panel)
-			user.client.tgui_panel.stop_music()
+	for(var/mob/user in listeners_in_range)
+		if(user && user.client)
+			user.client.tgui_panel.stop_jukebox_music(id)
 
 /obj/machinery/electrical_jukebox/proc/can_play_music(mob/user = null)
 	if(is_playing())
@@ -472,14 +465,14 @@
 		return FALSE
 	if(!anchored)
 		if(user)
-			to_chat(user, span_warning("[src] needs to be secured first!"), confidential = TRUE)
+			to_chat(user, span_warning("\The [src] needs to be secured first!"), confidential = TRUE)
 			balloon_alert(user, "secure first!")
 		return FALSE
 	return TRUE
 
 /obj/machinery/electrical_jukebox/proc/can_mob_use(mob/user)
 	// if(HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
-	if(HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX) || is_admin(user.client))
+	if(owner == user || HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX) || is_admin(user.client))
 		return TRUE
 	return FALSE
 
@@ -612,19 +605,24 @@
 
 /obj/machinery/electrical_jukebox/proc/on_mob_moved(datum/source, mob/user)
 	SIGNAL_HANDLER
-	if(is_playing())
-		user.client?.tgui_panel?.set_volume(get_volume(user))
+	if(is_playing() && listeners_in_range.Find(user))
+		user.client?.tgui_panel?.set_jukebox_volume(id, get_volume(user))
 
 /obj/machinery/electrical_jukebox/proc/on_mob_entered(datum/source, mob/user)
 	SIGNAL_HANDLER
-	if(is_playing() && user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-		current_track.as_list["start"] = (world.time - track_started_at) / 10
-		user.client.tgui_panel?.play_music(current_track.url, current_track.as_list, get_volume(user))
+	if(user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+		listeners_in_range += user
+		if(is_playing())
+			current_track.as_list["start"] = (world.time - track_started_at) / 10
+			user.client.tgui_panel.play_jukebox_music(id, current_track.url, current_track.as_list, get_volume(user))
+		else
+			user.client.tgui_panel.create_jukebox_player(id)
 
 /obj/machinery/electrical_jukebox/proc/on_mob_left(datum/source, mob/user)
 	SIGNAL_HANDLER
-	if(is_playing())
-		user.client?.tgui_panel?.stop_music()
+	if(listeners_in_range.Find(user))
+		listeners_in_range -= user
+		user.client?.tgui_panel.destroy_jukebox_player(id)
 
 /obj/item/electrical_jukebox_beacon
 	name = "electrical jukebox beacon"
@@ -632,11 +630,12 @@
 	icon = 'icons/obj/machines/floor.dmi'
 	icon_state = "floor_beacon"
 
-/obj/item/electrical_jukebox_beacon/attack_self()
+/obj/item/electrical_jukebox_beacon/attack_self(mob/user)
 	loc.visible_message(span_warning("\The [src] begins to beep loudly!"))
 	var/obj/structure/closet/supplypod/centcompod/pod = new()
 	var/obj/machinery/electrical_jukebox/jukebox = new(pod)
 	new /obj/effect/pod_landingzone(drop_location(), pod)
+	jukebox.owner = user
 	jukebox.anchored = FALSE
 	qdel(src)
 

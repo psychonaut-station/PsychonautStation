@@ -22,10 +22,20 @@
 		collar = new(src)
 
 	update_icon(UPDATE_OVERLAYS)
+	AddElement(/datum/element/strippable, GLOB.strippable_petcollar)
+	RegisterSignal(src, COMSIG_MOB_TRIED_ACCESS, PROC_REF(on_tried_access))
+
+/mob/living/simple_animal/pet/proc/on_tried_access(mob/accessor, obj/locked_thing)
+	SIGNAL_HANDLER
+
+	return locked_thing?.check_access(access_card) ? ACCESS_ALLOWED : ACCESS_DISALLOWED
+
+
+/mob/living/simple_animal/pet/get_idcard(hand_first)
+	return FALSE
 
 /mob/living/simple_animal/pet/Destroy()
 	. = ..()
-
 	QDEL_NULL(collar)
 	QDEL_NULL(access_card)
 
@@ -122,6 +132,10 @@
 	if(new_collar.tagname && !unique_pet)
 		fully_replace_character_name(null, "\proper [new_collar.tagname]")
 
+	if(istype(new_collar, /obj/item/clothing/neck/petcollar/id))
+		var/obj/item/clothing/neck/petcollar/id/newest_collar = new_collar
+		access_card = newest_collar.access
+
 /**
  * Remove the collar from the pet.
  */
@@ -133,6 +147,8 @@
 
 	collar.forceMove(new_loc)
 	collar = null
+
+	access_card = null
 
 	if(collar_icon_state && update_visuals)
 		update_icon(UPDATE_OVERLAYS)

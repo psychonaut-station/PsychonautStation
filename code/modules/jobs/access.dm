@@ -36,13 +36,17 @@
 	//if they have a hacky abstract animal ID with the required access, let them in i guess...
 	else if(isanimal(accessor))
 		var/mob/living/simple_animal/animal = accessor
-		if(check_access(animal.access_card))
+		if(animal.access_card && check_access(animal.access_card))
 			return TRUE
 	else if(isbrain(accessor) && istype(accessor.loc, /obj/item/mmi))
 		var/obj/item/mmi/brain_mmi = accessor.loc
 		if(ismecha(brain_mmi.loc))
 			var/obj/vehicle/sealed/mecha/big_stompy_robot = brain_mmi.loc
 			return check_access_list(big_stompy_robot.operation_req_access)
+	else if(isbasicpet(accessor))
+		var/mob/living/basic/pet/pet = accessor
+		if(pet.access_card && check_access(pet.access_card))
+			return TRUE
 	return FALSE
 
 /obj/item/proc/GetAccess()

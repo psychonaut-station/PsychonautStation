@@ -37,7 +37,7 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 
 /obj/item/gun/energy/laser/captain
-	name = "antique laser gun"
+	name = "\improper antique laser gun"
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = "caplaser"
@@ -47,6 +47,7 @@
 	selfcharge = 1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	obj_flags = UNIQUE_RENAME
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire/antique)
 	unique_reskin = list(
 		"Default" = "caplaser",

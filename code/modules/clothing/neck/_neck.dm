@@ -394,10 +394,6 @@
 	greyscale_colors = "#B40000#545350"
 	armor_type = /datum/armor/large_scarf_syndie
 
-/datum/armor/large_scarf_syndie
-	fire = 50
-	acid = 40
-
 /obj/item/clothing/neck/infinity_scarf
 	name = "infinity scarf"
 	icon_state = "infinity_scarf"
@@ -414,6 +410,10 @@
 	icon_state = "petcollar"
 	var/tagname = null
 
+/datum/armor/large_scarf_syndie
+	fire = 50
+	acid = 40
+
 /obj/item/clothing/neck/petcollar/mob_can_equip(mob/M, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
 	if(!ismonkey(M))
 		return FALSE
@@ -423,26 +423,6 @@
 	tagname = sanitize_name(tgui_input_text(user, "Would you like to change the name on the tag?", "Pet Naming", "Spot", MAX_NAME_LEN))
 	name = "[initial(name)] - [tagname]"
 
-/obj/item/clothing/neck/petcollar/id
-	name = "Id pet collar"
-	desc = "It's for pets."
-	icon_state = "petcollar_id"
-	var/obj/item/card/id/access
-
-/obj/item/clothing/neck/petcollar/id/mob_can_equip(mob/M, slot, disable_warning = FALSE, bypass_equip_delay_self = FALSE, ignore_equipped = FALSE, indirect_action = FALSE)
-	if(ismonkey(M))
-		return FALSE
-	return ..()
-
-/obj/item/clothing/neck/petcollar/id/examine(mob/user)
-	. = ..()
-	if(access)
-		. += "There appears to be [icon2html(access, user)]."
-
-/obj/item/clothing/neck/petcollar/id/attackby(obj/item/I, mob/user, params)
-	if(I.GetID())
-		var/obj/item/card/id/part = I
-		access = part
 //////////////
 //DOPE BLING//
 //////////////

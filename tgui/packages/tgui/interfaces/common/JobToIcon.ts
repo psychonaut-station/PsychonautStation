@@ -35,7 +35,7 @@ export const JOB2ICON = {
   'Personal AI': 'mobile-alt',
   'Prisoner': 'lock',
   'Psychologist': 'brain',
-  'Pet': 'paw',
+  'Pug': 'paw',
   'Quartermaster': 'sack-dollar',
   'Research Director': 'user-graduate',
   'Roboticist': 'battery-half',

@@ -2,16 +2,6 @@
 	group = "Livestock"
 	crate_type = /obj/structure/closet/crate/critter
 
-/datum/supply_pack/critter/petcollarid
-	name = "Pet Collar Crate"
-	desc = "Contains pet collars."
-	cost = CARGO_CRATE_VALUE * 2
-	contains = list(
-		/obj/item/clothing/neck/petcollar = 4,
-		/obj/item/clothing/neck/petcollar/id = 4,
-	)
-	crate_name = "Collar Crate"
-
 /datum/supply_pack/critter/parrot
 	name = "Bird Crate"
 	desc = "Contains five expert telecommunication birds."

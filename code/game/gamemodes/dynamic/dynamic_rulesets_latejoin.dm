@@ -67,7 +67,7 @@
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
-		JOB_PET,
+		JOB_PUG,
 		JOB_AI,
 		JOB_CYBORG,
 	)
@@ -90,7 +90,7 @@
 	antag_flag = ROLE_PROVOCATEUR
 	antag_flag_override = ROLE_REV_HEAD
 	restricted_roles = list(
-		JOB_PET,
+		JOB_PUG,
 		JOB_AI,
 		JOB_CAPTAIN,
 		JOB_CHIEF_ENGINEER,
@@ -207,7 +207,7 @@
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
-		JOB_PET,
+		JOB_PUG,
 		JOB_AI,
 		JOB_CYBORG,
 	)

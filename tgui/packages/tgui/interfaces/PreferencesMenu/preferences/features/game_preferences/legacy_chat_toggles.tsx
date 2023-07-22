@@ -75,6 +75,12 @@ export const chat_ooc: FeatureToggle = {
   component: CheckboxInput,
 };
 
+export const chat_looc: FeatureToggle = {
+  name: 'Enable LOOC',
+  category: 'CHAT',
+  component: CheckboxInput,
+};
+
 export const chat_prayer: FeatureToggle = {
   name: 'Listen to prayers',
   category: 'ADMIN',

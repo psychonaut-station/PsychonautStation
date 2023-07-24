@@ -73,7 +73,7 @@
 	density = TRUE
 
 	var/owner = null
-	var/range = 20
+	var/range = 16
 	var/busy = FALSE
 	var/ytdl
 	var/static/regex/ytdl_regex = regex(YTDL_REGEX, "s")

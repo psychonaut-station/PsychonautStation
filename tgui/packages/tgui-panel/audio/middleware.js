@@ -9,6 +9,7 @@ import { AudioPlayer } from './player';
 export const audioMiddleware = (store) => {
   const player = new AudioPlayer();
   const jukeboxPlayers = {};
+  let adminMusicVolume = 1;
   player.onPlay(() => {
     store.dispatch({ type: 'audio/playing' });
   });
@@ -29,6 +30,7 @@ export const audioMiddleware = (store) => {
     if (type === 'settings/update' || type === 'settings/load') {
       const volume = payload?.adminMusicVolume;
       if (typeof volume === 'number') {
+        adminMusicVolume = volume;
         player.setVolume(volume);
         for (const player of Object.values(jukeboxPlayers)) {
           player.setVolume(volume);
@@ -75,7 +77,9 @@ export const audioMiddleware = (store) => {
     }
     if (type === 'audio/jukebox/setVolume') {
       const { jukeboxId, volume } = payload;
-      jukeboxPlayers[jukeboxId]?.setLocalVolume(volume);
+      if (typeof volume === 'number') {
+        jukeboxPlayers[jukeboxId]?.setLocalVolume(volume);
+      }
       return next(action);
     }
     return next(action);

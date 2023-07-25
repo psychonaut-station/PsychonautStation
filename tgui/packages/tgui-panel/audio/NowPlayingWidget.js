@@ -99,15 +99,15 @@ export const NowPlayingWidget = (props, context) => {
               <Flex.Item key={jukeboxId}>
                 <Flex align="center">
                   {audio.jukebox[jukeboxId] ? (
-                    <Flex.Item
-                      mx={0.5}
-                      grow={1}
-                      style={{
-                        'white-space': 'nowrap',
-                        'overflow': 'hidden',
-                        'text-overflow': 'ellipsis',
-                      }}>
-                      {
+                    <>
+                      <Flex.Item
+                        mx={0.5}
+                        grow={1}
+                        style={{
+                          'white-space': 'nowrap',
+                          'overflow': 'hidden',
+                          'text-overflow': 'ellipsis',
+                        }}>
                         <Collapsible title={title} color={'blue'}>
                           <Section>
                             <Flex.Item grow={1} color="label">
@@ -128,25 +128,23 @@ export const NowPlayingWidget = (props, context) => {
                             )}
                           </Section>
                         </Collapsible>
-                      }
-                    </Flex.Item>
+                      </Flex.Item>
+                      <Flex.Item mx={0.5} fontSize="0.9em">
+                        <Button
+                          tooltip="Stop"
+                          icon="stop"
+                          onClick={() =>
+                            dispatch({
+                              type: 'audio/jukebox/stopMusic',
+                              payload: { jukeboxId },
+                            })
+                          }
+                        />
+                      </Flex.Item>
+                    </>
                   ) : (
-                    <Flex.Item grow={1} color="label">
+                    <Flex.Item color="label" my={0.5}>
                       Jukebox: Nothing to play.
-                    </Flex.Item>
-                  )}
-                  {!!audio.jukebox[jukeboxId] && (
-                    <Flex.Item mx={0.5} fontSize="0.9em">
-                      <Button
-                        tooltip="Stop"
-                        icon="stop"
-                        onClick={() =>
-                          dispatch({
-                            type: 'audio/jukebox/stopMusic',
-                            payload: { jukeboxId },
-                          })
-                        }
-                      />
                     </Flex.Item>
                   )}
                 </Flex>
@@ -154,7 +152,7 @@ export const NowPlayingWidget = (props, context) => {
             );
           })}
           {!audio.playing && Object.keys(audio.jukebox).length === 0 && (
-            <Flex.Item grow={1} color="label">
+            <Flex.Item grow={1} color="label" my={0.5}>
               Nothing to play.
             </Flex.Item>
           )}

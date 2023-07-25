@@ -6,11 +6,11 @@ import { Window } from '../layouts';
 type Data = {
   current_track: TrackData | null;
   elapsed: string;
-  // requested: 0 | 1;
   active: 0 | 1;
   busy: 0 | 1;
   loop: 0 | 1;
   can_mob_use: 0 | 1;
+  banned: 0 | 1;
   user_key_name: string;
   queue: TrackData[];
   requests: TrackData[];
@@ -25,7 +25,6 @@ type TrackData = {
   upload_date: string;
   artist: string;
   album: string;
-  // timestamp: number;
   mob_name: string;
   mob_ckey: string;
   mob_key_name: string;
@@ -52,16 +51,25 @@ export const ElectricalJukebox = () => {
   );
 };
 
-export const TrackDetails = (props, context) => {
+const TrackDetails = (props, context) => {
   const { act, data } = useBackend<Data>(context);
-  const { current_track, elapsed, active, busy, loop, can_mob_use } = data;
+  const { current_track, elapsed, active, busy, loop, can_mob_use, banned } =
+    data;
 
   return (
     <Section
       title="Current Track"
       buttons={
         <>
-          {!can_mob_use && (
+          {!!banned && (
+            <Button
+              color="transparent"
+              icon="info"
+              tooltipPosition="bottom"
+              tooltip="You are banned form using electrical jukebox."
+            />
+          )}
+          {!can_mob_use && !banned && (
             <Button
               color="transparent"
               icon="info"
@@ -69,7 +77,7 @@ export const TrackDetails = (props, context) => {
               tooltip={multiline`
               You are not allowed to directly use electrical jukebox,
               instead you can make music requests down below for their
-              approval by the Bartender.
+              approval by the Bartender, Mime or Clown.
             `}
             />
           )}
@@ -78,16 +86,14 @@ export const TrackDetails = (props, context) => {
             tooltip={active ? 'Stop' : 'Play'}
             tooltipPosition="bottom"
             selected={active}
-            // disabled={busy || (requested ? false : !can_mob_use)}
-            disabled={busy || !can_mob_use}
+            disabled={busy || !can_mob_use || banned}
             onClick={() => act('toggle')}
           />
           <Button
             icon="forward"
             tooltip="Skip"
             tooltipPosition="bottom"
-            // disabled={busy || !active || (requested ? false : !can_mob_use)}
-            disabled={busy || !active || !can_mob_use}
+            disabled={busy || !active || !can_mob_use || banned}
             onClick={() => act('skip')}
           />
           <Button
@@ -95,8 +101,7 @@ export const TrackDetails = (props, context) => {
             tooltip="Loop"
             tooltipPosition="bottom"
             selected={loop}
-            // disabled={busy || (requested ? false : !can_mob_use)}
-            disabled={busy || !can_mob_use}
+            disabled={busy || !can_mob_use || banned}
             onClick={() => act('loop')}
           />
         </>
@@ -135,9 +140,9 @@ export const TrackDetails = (props, context) => {
   );
 };
 
-export const QueueDisplay = (props, context) => {
+const QueueDisplay = (props, context) => {
   const { act, data } = useBackend<Data>(context);
-  const { busy, queue, can_mob_use } = data;
+  const { busy, queue, can_mob_use, banned } = data;
 
   return (
     <Section
@@ -151,7 +156,7 @@ export const QueueDisplay = (props, context) => {
             tooltip="Add"
             tooltipPosition="bottom"
             textAlign="center"
-            disabled={busy || !can_mob_use}
+            disabled={busy || !can_mob_use || banned}
             onClick={() => act('add_queue')}
           />
           <Button
@@ -159,7 +164,7 @@ export const QueueDisplay = (props, context) => {
             tooltip="Clear"
             tooltipPosition="bottom"
             textAlign="center"
-            disabled={busy || !can_mob_use}
+            disabled={busy || !can_mob_use || banned}
             onClick={() => act('clear_queue')}
           />
         </>
@@ -173,16 +178,16 @@ export const QueueDisplay = (props, context) => {
   );
 };
 
-export const RequestsDisplay = (props, context) => {
+const RequestsDisplay = (props, context) => {
   const { act, data } = useBackend<Data>(context);
-  const { busy, can_mob_use, requests } = data;
+  const { busy, can_mob_use, requests, banned } = data;
 
   return (
     <Section
       title="Requests"
       buttons={
         <>
-          {!!can_mob_use && (
+          {!!can_mob_use && !banned && (
             <Button
               color="transparent"
               icon="info"
@@ -197,7 +202,7 @@ export const RequestsDisplay = (props, context) => {
             tooltip="New Request"
             tooltipPosition="bottom"
             textAlign="center"
-            disabled={busy}
+            disabled={busy || banned}
             onClick={() => act('new_request')}
           />
         </>
@@ -215,10 +220,10 @@ export const RequestsDisplay = (props, context) => {
   );
 };
 
-export const QueueRow = (props: { track: TrackData }, context) => {
+const QueueRow = (props: { track: TrackData }, context) => {
   const { act, data } = useBackend<Data>(context);
   const { track } = props;
-  const { can_mob_use } = data;
+  const { can_mob_use, banned } = data;
 
   return (
     <Table.Row key={track.id} my={1}>
@@ -231,7 +236,7 @@ export const QueueRow = (props: { track: TrackData }, context) => {
           tooltipPosition="left"
           tooltip="Remove"
           textAlign="center"
-          disabled={!can_mob_use}
+          disabled={!can_mob_use || banned}
           onClick={() => {
             act('remove_queue', {
               id: track.id,
@@ -243,17 +248,17 @@ export const QueueRow = (props: { track: TrackData }, context) => {
   );
 };
 
-export const RequestRow = (props: { track: TrackData }, context) => {
+const RequestRow = (props: { track: TrackData }, context) => {
   const { act, data } = useBackend<Data>(context);
   const { track } = props;
-  const { can_mob_use, user_key_name } = data;
+  const { can_mob_use, user_key_name, banned } = data;
 
   return (
     <Table.Row key={track.id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
       <Table.Cell collaping>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
-        {!!can_mob_use && (
+        {!!can_mob_use && !banned && (
           <Button
             icon="check"
             selected
@@ -271,7 +276,7 @@ export const RequestRow = (props: { track: TrackData }, context) => {
           icon="times"
           color="red"
           tooltipPosition="left"
-          tooltip={can_mob_use ? 'Deny' : 'Discard'}
+          tooltip={can_mob_use && !banned ? 'Deny' : 'Discard'}
           textAlign="center"
           disabled={
             track.mob_key_name === user_key_name || can_mob_use ? false : true

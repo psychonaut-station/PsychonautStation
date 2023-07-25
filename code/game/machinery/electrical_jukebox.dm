@@ -18,8 +18,8 @@
 #define MAX_SOUND_DURATION 10 MINUTES
 #define REQUEST_COOLDOWN 20 SECONDS
 
-#define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(soundcloud\.com\/|youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
-// #define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
+// #define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(soundcloud\.com\/|youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
+#define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
 
 GLOBAL_LIST_EMPTY(jukebox_bad_input)
 GLOBAL_LIST_EMPTY(jukebox_cache)

@@ -477,7 +477,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			user.client.tgui_panel.stop_jukebox_music(id)
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_track(datum/web_track/track, looped = FALSE)
-	if(busy || is_playing() || !anchored)
+	if(busy || is_playing() || !anchored ||!is_operational)
 		return
 
 	if(world.time - track.timestamp > CACHE_DURATION)
@@ -505,7 +505,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	SSblackbox.record_feedback("nested tally", "played_url", 1, list("[track.mob_ckey]", "[track.webpage_url]"))
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_input(mob/user, input)
-	if(busy || is_playing() || !anchored)
+	if(busy || is_playing() || !anchored || !is_operational)
 		return
 
 	var/cache = GLOB.jukebox_bad_input[input]
@@ -575,6 +575,11 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/input = tgui_input_text(usr, "Enter content URL (supported sites only, youtube)", title)
 	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH) && findtext(input, ytdl_regex))
 		return input
+
+/obj/machinery/electrical_jukebox/on_set_is_operational(old_value)
+	. = ..()
+	if(!is_operational)
+		stop_music()
 
 /obj/machinery/electrical_jukebox/proc/on_mob_moved(datum/source, mob/user)
 	SIGNAL_HANDLER

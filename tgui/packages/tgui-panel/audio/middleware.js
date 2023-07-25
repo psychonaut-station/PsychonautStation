@@ -43,8 +43,14 @@ export const audioMiddleware = (store) => {
       if (!jukeboxPlayers[jukeboxId]) {
         const player = new AudioPlayer();
         jukeboxPlayers[jukeboxId] = player;
+        player.setVolume(adminMusicVolume);
         player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
-        player.onStop(() => store.dispatch({ type: 'audio/jukebox/stopped' }));
+        player.onStop(() =>
+          store.dispatch({
+            type: 'audio/jukebox/stopped',
+            payload: { jukeboxId },
+          })
+        );
       }
       return next(action);
     }
@@ -64,8 +70,14 @@ export const audioMiddleware = (store) => {
       } else {
         const player = new AudioPlayer();
         jukeboxPlayers[jukeboxId] = player;
+        player.setVolume(adminMusicVolume);
         player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
-        player.onStop(() => store.dispatch({ type: 'audio/jukebox/stopped' }));
+        player.onStop(() =>
+          store.dispatch({
+            type: 'audio/jukebox/stopped',
+            payload: { jukeboxId },
+          })
+        );
         player.play(url, options, volume);
       }
       return next(action);

@@ -74,3 +74,8 @@
 	if(!is_ready())
 		return
 	window.send_message("audio/jukebox/setVolume", list("jukeboxId" = jukebox_id, "volume" = volume))
+
+/datum/tgui_panel/proc/destroy_all_jukebox()
+	if(!is_ready())
+		return
+	window.send_message("audio/jukebox/destroyAll")

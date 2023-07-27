@@ -66,8 +66,11 @@ export class AudioPlayer {
     if (!this.node) {
       return;
     }
-    this.node.stop();
-    document.removeChild(this.node);
+    try {
+      this.node.stop?.();
+      document.body.removeChild(this.node);
+      delete this.node;
+    } catch {}
     clearInterval(this.playbackInterval);
   }
 

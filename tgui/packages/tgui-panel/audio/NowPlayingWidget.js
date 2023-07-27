@@ -98,7 +98,7 @@ export const NowPlayingWidget = (props, context) => {
             return (
               <Flex.Item key={jukeboxId}>
                 <Flex align="center">
-                  {audio.jukebox[jukeboxId] ? (
+                  {!!audio.jukebox[jukeboxId] && (
                     <>
                       <Flex.Item
                         mx={0.5}
@@ -142,20 +142,17 @@ export const NowPlayingWidget = (props, context) => {
                         />
                       </Flex.Item>
                     </>
-                  ) : (
-                    <Flex.Item color="label" my={0.5}>
-                      Jukebox: Nothing to play.
-                    </Flex.Item>
                   )}
                 </Flex>
               </Flex.Item>
             );
           })}
-          {!audio.playing && Object.keys(audio.jukebox).length === 0 && (
-            <Flex.Item grow={1} color="label" my={0.5}>
-              Nothing to play.
-            </Flex.Item>
-          )}
+          {!audio.playing &&
+            Object.values(audio.jukebox).filter((i) => !!i).length === 0 && (
+              <Flex.Item grow={1} color="label" my={0.5}>
+                Nothing to play.
+              </Flex.Item>
+            )}
         </Flex>
       </Flex.Item>
       <Flex.Item mx={0.5} fontSize="0.9em" align="end">

@@ -130,7 +130,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			qdel(track)
 
 		for(var/mob/user in listeners_in_range)
-			user.client?.tgui_panel.destroy_jukebox_player(id)
+			user.client?.tgui_panel?.destroy_jukebox_player(id)
 
 		QDEL_NULL(proximity_monitor)
 
@@ -469,15 +469,15 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	for(var/mob/user in listeners_in_range)
 		if(user.client && user.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
 			to_chat(user, "[icon2html(src, user.client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
-			user.client.tgui_panel.play_jukebox_music(id, track.url, track.as_list, get_volume(user))
+			user.client.tgui_panel?.play_jukebox_music(id, track.url, track.as_list, get_volume(user))
 
 /obj/machinery/electrical_jukebox/proc/stop_in_mob_list()
 	for(var/mob/user in listeners_in_range)
 		if(user && user.client)
-			user.client.tgui_panel.stop_jukebox_music(id)
+			user.client.tgui_panel?.stop_jukebox_music(id)
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_track(datum/web_track/track, looped = FALSE)
-	if(busy || is_playing() || !anchored ||!is_operational)
+	if(busy || is_playing() || !anchored || !is_operational)
 		return
 
 	if(world.time - track.timestamp > CACHE_DURATION)
@@ -584,7 +584,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/proc/on_mob_moved(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(is_playing() && listeners_in_range.Find(user))
-		user.client?.tgui_panel.set_jukebox_volume(id, get_volume(user))
+		user.client?.tgui_panel?.set_jukebox_volume(id, get_volume(user))
 
 /obj/machinery/electrical_jukebox/proc/on_mob_entered(datum/source, mob/user)
 	SIGNAL_HANDLER
@@ -592,15 +592,15 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		listeners_in_range += user
 		if(is_playing())
 			current_track.as_list["start"] = (world.time - track_started_at) / 10
-			user.client.tgui_panel.play_jukebox_music(id, current_track.url, current_track.as_list, get_volume(user))
+			user.client.tgui_panel?.play_jukebox_music(id, current_track.url, current_track.as_list, get_volume(user))
 		else
-			user.client.tgui_panel.create_jukebox_player(id)
+			user.client.tgui_panel?.create_jukebox_player(id)
 
 /obj/machinery/electrical_jukebox/proc/on_mob_left(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(listeners_in_range.Find(user))
 		listeners_in_range -= user
-		user.client?.tgui_panel.destroy_jukebox_player(id)
+		user.client?.tgui_panel?.destroy_jukebox_player(id)
 
 /obj/item/electrical_jukebox_beacon
 	name = "electrical jukebox beacon"

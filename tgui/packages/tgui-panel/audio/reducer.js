@@ -58,9 +58,8 @@ export const audioReducer = (state = initialState, action) => {
   if (type === 'audio/jukebox/stopped') {
     let visible = !!state.meta;
     if (!visible) {
-      for (const key of Object.keys(state.jukebox).filter(
-        (k) => k !== payload.jukeboxId
-      )) {
+      for (const key of Object.keys(state.jukebox)) {
+        if (key === payload.jukeboxId) continue;
         if (state.jukebox[key]) {
           visible = true;
           break;

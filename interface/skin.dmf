@@ -45,7 +45,7 @@ menu "menu"
 		saved-params = "is-checked"
 	elem
 		name = "&Admin Help\tF1"
-		command = "adminhelp"
+		command = "tickethelper"
 		category = "&Help"
 		saved-params = "is-checked"
 	elem

@@ -11,7 +11,7 @@ export const Mentorhelp = (props, context) => {
   );
 
   return (
-    <Window title="Create Ticket" theme="admin" height={300} width={500}>
+    <Window title="Create Mentorhelp" theme="admin" height={300} width={500}>
       <Window.Content
         style={{
           'background-image': 'none',

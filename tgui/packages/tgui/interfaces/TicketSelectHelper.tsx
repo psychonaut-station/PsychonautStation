@@ -1,8 +1,8 @@
-import { useBackend, useLocalState } from '../backend';
+import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const TicketSelectHelper = (props, context) => {
+export const TicketSelectHelper = (context) => {
   const { act } = useBackend(context);
 
   return (

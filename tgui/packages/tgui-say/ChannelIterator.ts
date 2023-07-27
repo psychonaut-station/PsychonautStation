@@ -1,3 +1,4 @@
+// prettier-ignore
 export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'LOOC' | 'Admin';
 
 /**

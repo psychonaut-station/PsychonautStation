@@ -1,3 +1,4 @@
+// prettier-ignore
 import { ChannelIterator } from './ChannelIterator';
 
 describe('ChannelIterator', () => {
@@ -20,7 +21,7 @@ describe('ChannelIterator', () => {
     channelIterator.set('OOC');
     expect(channelIterator.current()).toBe('OOC');
   });
-  
+
   it('should set a channel properly', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.current()).toBe('LOOC');
@@ -45,7 +46,7 @@ describe('ChannelIterator', () => {
     channelIterator.set('OOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
-  
+
   it('should return false when current channel is not visible', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.isVisible()).toBe(false);

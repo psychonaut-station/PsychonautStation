@@ -2,7 +2,6 @@ import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
-// prettier-ignore
 export const TicketSelectHelper = (props, context) => {
   const { act } = useBackend(context);
 
@@ -15,7 +14,8 @@ export const TicketSelectHelper = (props, context) => {
         <Stack vertical fill>
           <Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">
-              Herhangi bir meslek, oyun mekaniği gibi şeylerden yardım almak için;
+              Herhangi bir meslek, oyun mekaniği gibi şeylerden yardım almak
+              için;
             </Box>
           </Stack.Item>
           <Stack.Item>

@@ -3,12 +3,11 @@
 @use '../base.scss';
 @use '../colors.scss';
 
-// prettier-ignore
 .TicketSelectHelper__seperator {
   font-size: 0.85em;
   text-align: center;
   margin: 1em 0 2em;
-  
+
   &:before {
     content: '';
     display: inline-block;
@@ -17,7 +16,7 @@
     color: colors.$red;
     background-color: base.$color-bg-section;
   }
-  
+
   &:after {
     content: '';
     display: block;

@@ -1,4 +1,3 @@
-// prettier-ignore
 import { ChannelIterator } from './ChannelIterator';
 
 describe('ChannelIterator', () => {

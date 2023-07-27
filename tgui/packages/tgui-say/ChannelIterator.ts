@@ -1,4 +1,3 @@
-// prettier-ignore
 export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'LOOC' | 'Admin';
 
 /**
@@ -9,7 +8,14 @@ export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'LOOC' | 'Admin';
  */
 export class ChannelIterator {
   private index: number = 0;
-  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'OOC', 'LOOC', 'Admin'];
+  private readonly channels: Channel[] = [
+    'Say',
+    'Radio',
+    'Me',
+    'OOC',
+    'LOOC',
+    'Admin',
+  ];
   private readonly blacklist: Channel[] = ['Admin'];
   private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin'];
 

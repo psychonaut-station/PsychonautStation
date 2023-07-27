@@ -2,7 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const TicketSelectHelper = (context) => {
+export const TicketSelectHelper = (props, context) => {
   const { act } = useBackend(context);
 
   return (

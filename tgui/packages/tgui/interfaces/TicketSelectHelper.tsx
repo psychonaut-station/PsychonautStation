@@ -28,9 +28,8 @@ export const TicketSelectHelper = (context) => {
               onClick={() => act('ticket_mentor')}
             />
           </Stack.Item>
+          <Stack.Item class="TicketSelectHelper__seperator" />
           <Stack.Item>
-          <Stack.Item class="TicketSelectHelper__seperator">
-          </Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">
               Bir konu hakkında şikayetçi olmak için;
             </Box>

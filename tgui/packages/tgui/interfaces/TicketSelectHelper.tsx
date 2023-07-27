@@ -2,6 +2,7 @@ import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
+// prettier-ignore
 export const TicketSelectHelper = (props, context) => {
   const { act } = useBackend(context);
 

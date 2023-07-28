@@ -37,6 +37,13 @@
 	blood_overlay_type = "armor"
 	dog_fashion = /datum/dog_fashion/back/armorvest
 
+/obj/item/clothing/suit/armor/blueshield
+	name = "armor vest"
+	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
+	icon_state = "marine_command"
+	inhand_icon_state = "armor"
+	blood_overlay_type = "armor"
+
 /obj/item/clothing/suit/armor/vest/alt
 	desc = "A Type I armored vest that provides decent protection against most types of damage."
 	icon_state = "armor"

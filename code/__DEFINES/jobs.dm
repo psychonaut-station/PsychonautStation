@@ -45,6 +45,7 @@
 #define JOB_PUG "Pug"
 //Command
 #define JOB_CAPTAIN "Captain"
+#define JOB_BLUESHIELD "Blueshield"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
 #define JOB_HEAD_OF_SECURITY "Head of Security"
 #define JOB_RESEARCH_DIRECTOR "Research Director"
@@ -155,6 +156,7 @@
 #define JOB_DISPLAY_ORDER_DETECTIVE 35
 #define JOB_DISPLAY_ORDER_SECURITY_OFFICER 36
 #define JOB_DISPLAY_ORDER_PRISONER 37
+#define JOB_DISPLAY_ORDER_BLUESHIELD 38
 
 
 #define DEPARTMENT_UNASSIGNED "No Department"

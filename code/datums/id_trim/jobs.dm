@@ -1212,6 +1212,42 @@
 		)
 	job = /datum/job/virologist
 
+/datum/id_trim/job/blueshield
+	assignment = "Blueshield"
+	trim_state = "trim_blueshield"
+	department_color = COLOR_SECURITY_RED
+	subdepartment_color = COLOR_SECURITY_RED
+	sechud_icon_state = SECHUD_EMERGENCY_RESPONSE_TEAM_COMMANDER
+	minimal_access = list(
+	 ACCESS_SECURITY,
+	 ACCESS_RESEARCH,
+	 ACCESS_COURT,
+	 ACCESS_MAINT_TUNNELS,
+	 ACCESS_MORGUE,
+	 ACCESS_MEDICAL,
+	 ACCESS_COMMAND,
+	 ACCESS_MINERAL_STOREROOM,
+	 ACCESS_CARGO,
+	 ACCESS_HOS,
+	 ACCESS_CE,
+	 ACCESS_HOP,
+	 ACCESS_CMO,
+	 ACCESS_QM,
+	 ACCESS_RD,
+	 ACCESS_CAPTAIN,
+
+     )
+	extra_access = list(
+		ACCESS_PHARMACY,
+		ACCESS_PLUMBING,
+		ACCESS_SURGERY,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOS,
+		)
+	job = /datum/job/blueshield
 /datum/id_trim/job/warden
 	assignment = "Warden"
 	trim_state = "trim_warden"

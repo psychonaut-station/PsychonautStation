@@ -1,0 +1,70 @@
+/datum/job/blueshield
+	title = "Blueshield"
+	description = "Protect and serve command members at all cost. "
+	department_head = list("CentCom")
+	faction = "Station"
+	head_announce = list(RADIO_CHANNEL_COMMAND)
+	supervisors = "Central Command"
+	total_positions = 1
+	spawn_positions = 1
+	minimal_player_age = 7
+	exp_requirements = 180
+	exp_required_type = EXP_TYPE_CREW
+	exp_required_type_department = EXP_TYPE_COMMAND
+	exp_granted_type = EXP_TYPE_COMMAND
+
+	outfit = /datum/outfit/job/blueshield
+	plasmaman_outfit = /datum/outfit/plasmaman/blueshield
+
+	paycheck = PAYCHECK_COMMAND
+	paycheck_department = ACCOUNT_SEC
+	config_tag = "BLUESHIELD"
+
+	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM, TRAIT_ROYAL_METABOLISM)
+	bounty_types = CIV_JOB_SEC
+
+	family_heirlooms = list(/obj/item/book/manual/wiki/security_space_law, /obj/item/toy/captainsaid/collector)
+	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
+	rpg_title = "Blueshit"
+	departments_list = list(
+		/datum/job_department/command,
+		)
+
+	mail_goodies = list(
+		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
+		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
+		/obj/item/reagent_containers/cup/glass/bottle/champagne = 5,
+		/obj/item/reagent_containers/cup/glass/bottle/champagne/cursed = 5,
+	)
+
+
+/datum/outfit/job/blueshield
+	name = "Blueshield"
+	jobtype = /datum/job/blueshield
+	id = /obj/item/card/id/advanced/silver
+	id_trim = /datum/id_trim/job/blueshield
+	uniform = /obj/item/clothing/under/rank/blueshield
+	suit = /obj/item/clothing/suit/armor/blueshield
+	belt = /obj/item/modular_computer/pda/security
+	ears = /obj/item/radio/headset/headset_blueshield
+	gloves = /obj/item/clothing/gloves/color/black
+	glasses = /obj/item/clothing/glasses/sunglasses
+	head = /obj/item/clothing/head/beret/blueshield
+	shoes = /obj/item/clothing/shoes/jackboots
+	l_pocket = /obj/item/restraints/handcuffs
+	r_pocket = /obj/item/assembly/flash/handheld
+
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/melee/baton/telescopic,/obj/item/pinpointer/crew)
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
+
+	box = /obj/item/storage/box/survival/security
+
+	implants = list(/obj/item/implant/mindshield)
+	skillchips = list(/obj/item/skillchip/disk_verifier)
+
+
+
+
+

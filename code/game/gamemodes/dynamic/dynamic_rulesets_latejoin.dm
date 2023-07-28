@@ -205,6 +205,7 @@
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
+		JOB_BLUESHIELD,
 	)
 	restricted_roles = list(
 		JOB_PUG,

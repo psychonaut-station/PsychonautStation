@@ -239,6 +239,12 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/heads/captain
 
+/obj/item/radio/headset/headset_blueshield
+	name = "\proper blueshield bowman headset"
+	desc = "This is used by the blueshield. It protects from flashbangs"
+	icon_state = "com_headset_alt"
+	worn_icon_state = "com_headset_alt"
+	keyslot = new /obj/item/encryptionkey/headset_blueshield
 /obj/item/radio/headset/heads/captain/alt
 	name = "\proper the captain's bowman headset"
 	desc = "The headset of the boss. Protects ears from flashbangs."
@@ -246,6 +252,10 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	worn_icon_state = "com_headset_alt"
 
 /obj/item/radio/headset/heads/captain/alt/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
+
+/obj/item/radio/headset/headset_blueshield/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/wearertargeting/earprotection, list(ITEM_SLOT_EARS))
 

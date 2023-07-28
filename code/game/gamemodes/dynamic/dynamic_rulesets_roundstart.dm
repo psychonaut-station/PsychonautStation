@@ -21,6 +21,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
+		JOB_BLUESHIELD,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -228,6 +229,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
+		JOB_BLUESHIELD,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -281,6 +283,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
+		JOB_BLUESHIELD,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -409,6 +412,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 		JOB_PUG,
+		JOB_BLUESHIELD,
 	)
 	required_candidates = 2
 	weight = 3
@@ -588,6 +592,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 		JOB_PUG,
+		JOB_BLUESHIELD,
 	)
 	required_candidates = 3
 	weight = 3

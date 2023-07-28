@@ -405,6 +405,13 @@
 	acid = 50
 	wound = 4
 
+/obj/item/clothing/head/beret/blueshield
+	name = "blue beret"
+	desc = "A blue beret with the security insignia emblazoned on it. For the security officer in you!"
+	icon_state = "gberet"
+	armor_type = /datum/armor/beret_sec
+	greyscale_colors = "#638799#ebebeb"
+
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."
@@ -462,7 +469,7 @@
 	flags_inv ^= HIDEHAIR
 	balloon_alert(user, "[flags_inv & HIDEHAIR ? "tightened" : "loosened "] strings")
 	return TRUE
-	
+
 /obj/item/clothing/head/utility/surgerycap/examine(mob/user)
 	. = ..()
 	. += span_notice("Use in hand to [flags_inv & HIDEHAIR ? "loosen" : "tighten"] the strings.")

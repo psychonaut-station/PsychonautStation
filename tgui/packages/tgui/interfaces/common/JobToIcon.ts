@@ -7,6 +7,7 @@ export const JOB2ICON = {
   'Botanist': 'seedling',
   'Brig Physician': 'circle-plus',
   'Captain': 'crown',
+  'Blueshield': 'shield',
   'Cargo Technician': 'box',
   'CentCom Commander': 'star',
   'CentCom Head Intern': 'pen-fancy',

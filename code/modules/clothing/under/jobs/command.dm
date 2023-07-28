@@ -45,3 +45,20 @@
 	icon_state = "captain_parade"
 	inhand_icon_state = null
 	can_adjust = FALSE
+
+/obj/item/clothing/under/rank/blueshield
+	name = "blueshield's jumpsuit"
+	desc = "An excellent quality wear uniform made for captain's right hand man."
+	icon_state = "delta_merc"
+	armor_type = /datum/armor/clothing_under/rank_blueshield
+	inhand_icon_state = null
+	can_adjust = TRUE
+	sensor_mode = SENSOR_COORDS
+	random_sensor = FALSE
+	body_parts_covered = CHEST|GROIN|ARMS
+
+/datum/armor/clothing_under/rank_blueshield
+	melee = 10
+	fire = 30
+	acid = 30
+	wound = 10

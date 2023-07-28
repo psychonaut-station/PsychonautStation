@@ -183,6 +183,9 @@
 
 /datum/config_entry/flag/ooc_during_round
 
+/datum/config_entry/flag/looc_enabled
+	default = TRUE
+
 // deprecated for unclear name
 /datum/config_entry/number/commendations
 	integer = FALSE

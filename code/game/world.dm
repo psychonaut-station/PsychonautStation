@@ -161,6 +161,8 @@ GLOBAL_VAR(restart_counter)
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
 
+	toggle_looc(CONFIG_GET(flag/looc_enabled))
+
 /// Runs after the call to Master.Initialize, but before the delay kicks in. Used to turn the world execution into some single function then exit
 /world/proc/RunUnattendedFunctions()
 	#ifdef UNIT_TESTS

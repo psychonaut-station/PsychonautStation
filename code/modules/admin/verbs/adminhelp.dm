@@ -920,6 +920,41 @@ GLOBAL_DATUM_INIT(mentor_help_ui_handler, /datum/mentor_help_ui_handler, new)
 
 	current_ticket.player_ticket_panel()
 
+/// TICKET HELPER ///
+
+GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new)
+
+/datum/ticket_helper_ui_handler
+
+/datum/ticket_helper_ui_handler/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/ticket_helper_ui_handler/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "TicketSelectHelper")
+		ui.open()
+		ui.set_autoupdate(FALSE)
+
+/datum/ticket_helper_ui_handler/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+	
+	switch(action)
+		if("ticket_mentor")
+			GLOB.mentor_help_ui_handler.ui_interact(usr)
+		if("ticket_admin")
+			GLOB.admin_help_ui_handler.ui_interact(usr)
+
+	ui.close()
+
+/client/verb/tickethelper()
+	set name = "Tickethelper"
+	set hidden = TRUE 
+
+	GLOB.ticket_helper_ui_handler.ui_interact(mob)
+
 //
 // LOGGING
 //

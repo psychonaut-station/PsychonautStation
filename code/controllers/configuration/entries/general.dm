@@ -66,6 +66,9 @@
 /// log messages sent in OOC
 /datum/config_entry/flag/log_ooc
 
+/// log messages sent in LOOC
+/datum/config_entry/flag/log_looc
+
 /// log login/logout
 /datum/config_entry/flag/log_access
 
@@ -702,12 +705,6 @@
 	default = 50
 
 /datum/config_entry/string/morgue_cadaver_override_species
-
-/datum/config_entry/flag/discord_chatter
-
-/datum/config_entry/string/discord_chatter_webhook_url
-
-/datum/config_entry/number/discord_chatter_tickrate
 
 /datum/config_entry/flag/toast_notification_on_init
 

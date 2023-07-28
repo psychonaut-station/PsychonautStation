@@ -16,6 +16,10 @@
 	paycheck_department = ACCOUNT_SEC
 	config_tag = "BLUESHIELD"
 
+	department_for_prefs = /datum/job_department/captain
+	total_positions = 1
+	spawn_positions = 1
+
 	liver_traits = list(TRAIT_LAW_ENFORCEMENT_METABOLISM, TRAIT_ROYAL_METABOLISM)
 	bounty_types = CIV_JOB_SEC
 

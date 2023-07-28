@@ -211,6 +211,24 @@
 	desc = "Good grief."
 	icon_state = "delinquent"
 
+/obj/item/clothing/head/hats/blueshield
+	name = "\improper Blueshield beret"
+	desc = "A beret made for captains right hand man."
+	icon_state = "gberet"
+	inhand_icon_state = null
+	flags_inv = 0
+	armor_type = /datum/armor/blueshield
+	strip_delay = 80
+
+/datum/armor/hats_blueshield
+	melee = 30
+	bullet = 15
+	laser = 30
+	energy = 40
+	bomb = 25
+	fire = 50
+	acid = 50
+
 /obj/item/clothing/head/hats/intern
 	name = "\improper CentCom Head Intern beancap"
 	desc = "A horrifying mix of beanie and softcap in CentCom green. You'd have to be pretty desperate for power over your peers to agree to wear this."

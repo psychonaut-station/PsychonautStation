@@ -404,13 +404,6 @@
 	fire = 20
 	acid = 50
 	wound = 4
-
-/obj/item/clothing/head/beret/blueshield
-	name = "blue beret"
-	desc = "A blue beret with the security insignia emblazoned on it. For the security officer in you!"
-	icon_state = "gberet"
-	armor_type = /datum/armor/beret_sec
-
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"
 	desc = "A special beret with the Warden's insignia emblazoned on it. For wardens with class."

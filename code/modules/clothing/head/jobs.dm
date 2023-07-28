@@ -410,7 +410,6 @@
 	desc = "A blue beret with the security insignia emblazoned on it. For the security officer in you!"
 	icon_state = "gberet"
 	armor_type = /datum/armor/beret_sec
-	greyscale_colors = "#638799#ebebeb"
 
 /obj/item/clothing/head/beret/sec/navywarden
 	name = "warden's beret"

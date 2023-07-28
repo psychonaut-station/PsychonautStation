@@ -1,14 +1,10 @@
 /datum/job/blueshield
 	title = "Blueshield"
 	description = "Protect and serve command members at all cost. "
-	department_head = list("CentCom")
+	department_head = list(JOB_CAPTAIN)
 	faction = "Station"
 	head_announce = list(RADIO_CHANNEL_COMMAND)
-	supervisors = "Central Command"
-	total_positions = 1
-	spawn_positions = 1
-	minimal_player_age = 7
-	exp_requirements = 180
+	supervisors = SUPERVISOR_CAPTAIN
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
 	exp_granted_type = EXP_TYPE_COMMAND

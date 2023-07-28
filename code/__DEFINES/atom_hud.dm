@@ -119,6 +119,7 @@
 #define SECHUD_WARDEN "hudwarden"
 #define SECHUD_WORKER "hudworker"
 #define SECHUD_SYNTHETIC "hudsynthetic"
+#define SECHUD_BLUESHIELD "hudblueshield"
 
 #define SECHUD_CHEF "hudchef"
 

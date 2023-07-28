@@ -1216,16 +1216,18 @@
 	assignment = "Blueshield"
 	trim_state = "trim_blueshield"
 	department_color = COLOR_SECURITY_RED
-	subdepartment_color = COLOR_SECURITY_RED
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = SECHUD_EMERGENCY_RESPONSE_TEAM_COMMANDER
 	minimal_access = list(
-		ACCESS_SECURITY,
+		ACCESS_BRIG,
+		ACCESS_BRIG_ENTRANCE
 		ACCESS_RESEARCH,
 		ACCESS_COURT,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MORGUE,
 		ACCESS_MEDICAL,
 		ACCESS_COMMAND,
+		ACCES_ENGINEERING,
 		ACCESS_MINERAL_STOREROOM,
 		ACCESS_CARGO,
 		ACCESS_HOS,

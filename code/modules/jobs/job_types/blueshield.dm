@@ -16,7 +16,7 @@
 	paycheck_department = ACCOUNT_SEC
 	config_tag = "BLUESHIELD"
 
-	department_for_prefs = /datum/job_department/captain
+	department_for_prefs = /datum/job_department/security
 	total_positions = 1
 	spawn_positions = 1
 

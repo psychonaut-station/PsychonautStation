@@ -49,7 +49,7 @@
 	ears = /obj/item/radio/headset/headset_blueshield
 	gloves = /obj/item/clothing/gloves/color/black
 	glasses = /obj/item/clothing/glasses/sunglasses
-	head = /obj/item/clothing/head/beret/blueshield
+	head = /obj/item/clothing/head/hats/blueshield
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld

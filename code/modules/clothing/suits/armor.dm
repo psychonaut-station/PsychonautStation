@@ -40,7 +40,7 @@
 /obj/item/clothing/suit/armor/blueshield
 	name = "armor vest"
 	desc = "A slim Type I armored vest that provides decent protection against most types of damage."
-	icon_state = "marine_command"
+	icon_state = "Blueshield_Vest"
 	inhand_icon_state = "armor"
 	blood_overlay_type = "armor"
 

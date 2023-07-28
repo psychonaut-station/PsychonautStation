@@ -214,7 +214,7 @@
 /obj/item/clothing/head/hats/blueshield
 	name = "\improper Blueshield beret"
 	desc = "A beret made for captains right hand man."
-	icon_state = "gberet"
+	icon_state = "Blueshield_Beret"
 	inhand_icon_state = null
 	flags_inv = 0
 	armor_type = /datum/armor/blueshield

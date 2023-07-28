@@ -49,7 +49,7 @@
 /obj/item/clothing/under/rank/blueshield
 	name = "blueshield's jumpsuit"
 	desc = "An excellent quality uniform made for captain's right hand man."
-	icon_state = "delta_merc"
+	icon_state = "Blueshield_Uniform"
 	armor_type = /datum/armor/clothing_under/rank_blueshield
 	inhand_icon_state = null
 	can_adjust = TRUE

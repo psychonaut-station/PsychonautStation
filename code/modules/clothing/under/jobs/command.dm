@@ -46,16 +46,6 @@
 	inhand_icon_state = null
 	can_adjust = FALSE
 
-/obj/item/clothing/under/rank/blueshield
-	name = "blueshield's jumpsuit"
-	desc = "An excellent quality uniform made for captain's right hand man."
-	icon_state = "Blueshield_Uniform"
-	armor_type = /datum/armor/clothing_under/rank_blueshield
-	inhand_icon_state = null
-	can_adjust = TRUE
-	sensor_mode = SENSOR_COORDS
-	random_sensor = FALSE
-	body_parts_covered = CHEST|GROIN|ARMS
 
 /datum/armor/clothing_under/rank_blueshield
 	melee = 10

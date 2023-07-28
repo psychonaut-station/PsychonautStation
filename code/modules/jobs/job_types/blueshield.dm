@@ -3,7 +3,6 @@
 	description = "Protect and serve command members at all cost. "
 	department_head = list(JOB_CAPTAIN)
 	faction = "Station"
-	head_announce = list(RADIO_CHANNEL_COMMAND)
 	supervisors = SUPERVISOR_CAPTAIN
 	exp_required_type = EXP_TYPE_CREW
 	exp_required_type_department = EXP_TYPE_COMMAND
@@ -43,13 +42,13 @@
 	jobtype = /datum/job/blueshield
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/blueshield
-	uniform = /obj/item/clothing/under/rank/blueshield
-	suit = /obj/item/clothing/suit/armor/blueshield
+	uniform = /obj/item/clothing/under/rank/security/officer/formal
+	suit = /obj/item/clothing/suit/armor/vest
 	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_blueshield
 	gloves = /obj/item/clothing/gloves/color/black
+	head = /obj/item/clothing/head/beret/sec/navyofficer
 	glasses = /obj/item/clothing/glasses/sunglasses
-	head = /obj/item/clothing/head/hats/blueshield
 	shoes = /obj/item/clothing/shoes/jackboots
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld

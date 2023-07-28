@@ -1217,11 +1217,12 @@
 	trim_state = "trim_blueshield"
 	department_color = COLOR_ASSISTANT_GRAY
 	subdepartment_color = COLOR_ASSISTANT_GRAY
-	sechud_icon_state = SECHUD_EMERGENCY_RESPONSE_TEAM_COMMANDER
+	sechud_icon_state = SECHUD_BLUESHIELD
 	minimal_access = list(
 		ACCESS_BRIG,
 		ACCESS_BRIG_ENTRANCE,
 		ACCESS_RESEARCH,
+		ACCESS_SCIENCE,
 		ACCESS_COURT,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MORGUE,

@@ -140,6 +140,12 @@
 	desc = "A retro high-powered autorevolver typically used by officers of the New Russia military. Uses .357 ammo."
 	icon_state = "mateba"
 
+/obj/item/gun/ballistic/revolver/mateba/blueshield
+	name = "\improper The Regulator"
+	desc = "A retro high-powered autorevolver used by Blueshield. Uses .357 ammo."
+	icon_state = "mateba"
+	pin = /obj/item/firing_pin/implant/blueshield
+
 /obj/item/gun/ballistic/revolver/golden
 	name = "\improper Golden revolver"
 	desc = "This ain't no game, ain't never been no show, And I'll gladly gun down the oldest lady you know. Uses .357 ammo."

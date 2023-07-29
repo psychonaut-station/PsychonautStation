@@ -12,6 +12,12 @@
 				<b>Function:</b> Allows operation of implant-locked weaponry, preventing equipment from falling into enemy hands."}
 	return dat
 
+/obj/item/implant/blueshield
+	name = "firearms authentication implant for blueshield"
+	desc = "Lets you shoot your guns."
+	icon_state = "auth"
+	actions_types = null
+
 /obj/item/implant/emp
 	name = "emp implant"
 	desc = "Triggers an EMP."

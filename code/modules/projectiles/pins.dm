@@ -130,7 +130,12 @@
 	icon_state = "firing_pin_pindi"
 	req_implant = /obj/item/implant/weapons_auth
 
-
+/obj/item/firing_pin/implant/blueshield
+	name = "blueshield firing pin"
+	icon_state = "firing_pin_loyalty"
+	req_implant = /obj/item/implant/blueshield
+	pin_removable = FALSE
+	fail_message = "blueshield check failed!"
 
 // Honk pin, clown's joke item.
 // Can replace other pins. Replace a pin in cap's laser for extra fun!

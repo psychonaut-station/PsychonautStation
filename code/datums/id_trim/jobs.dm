@@ -1215,8 +1215,8 @@
 /datum/id_trim/job/blueshield
 	assignment = "Blueshield"
 	trim_state = "trim_blueshield"
-	department_color = COLOR_ASSISTANT_GRAY
-	subdepartment_color = COLOR_ASSISTANT_GRAY
+	department_color = COLOR_COMMAND_BLUE
+	subdepartment_color = COLOR_COMMAND_BLUE
 	sechud_icon_state = SECHUD_BLUESHIELD
 	minimal_access = list(
 		ACCESS_BRIG,

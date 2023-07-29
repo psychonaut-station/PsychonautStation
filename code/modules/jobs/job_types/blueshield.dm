@@ -53,14 +53,14 @@
 	l_pocket = /obj/item/restraints/handcuffs
 	r_pocket = /obj/item/assembly/flash/handheld
 
-	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/melee/baton/telescopic,/obj/item/pinpointer/crew)
+	backpack_contents = list(/obj/item/reagent_containers/spray/pepper, /obj/item/melee/baton/telescopic,/obj/item/pinpointer/crew,/obj/item/gun/ballistic/revolver/mateba/blueshield)
 	backpack = /obj/item/storage/backpack/security
 	satchel = /obj/item/storage/backpack/satchel/sec
 	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/security
 
-	implants = list(/obj/item/implant/mindshield)
+	implants = list(/obj/item/implant/mindshield,/obj/item/implant/blueshield)
 	skillchips = list(/obj/item/skillchip/disk_verifier)
 
 

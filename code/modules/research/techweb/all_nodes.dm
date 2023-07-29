@@ -113,6 +113,7 @@
 		"tape",
 		"tech_disk",
 		"timer",
+		"tinyfan_assembly",
 		"titaniumglass",
 		"toner_large",
 		"toner",

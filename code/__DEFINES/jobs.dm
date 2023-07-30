@@ -45,7 +45,6 @@
 #define JOB_PUG "Pug"
 //Command
 #define JOB_CAPTAIN "Captain"
-#define JOB_BLUESHIELD "Blueshield"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
 #define JOB_HEAD_OF_SECURITY "Head of Security"
 #define JOB_RESEARCH_DIRECTOR "Research Director"
@@ -61,6 +60,7 @@
 #define JOB_DETECTIVE "Detective"
 #define JOB_SECURITY_OFFICER "Security Officer"
 #define JOB_BRIG_PHYSICIAN "Brig Physician"
+#define JOB_BLUESHIELD "Blueshield"
 #define JOB_SECURITY_OFFICER_MEDICAL "Security Officer (Medical)"
 #define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"

@@ -45,10 +45,3 @@
 	icon_state = "captain_parade"
 	inhand_icon_state = null
 	can_adjust = FALSE
-
-
-/datum/armor/clothing_under/rank_blueshield
-	melee = 10
-	fire = 30
-	acid = 30
-	wound = 10

@@ -11,6 +11,20 @@ const initialState = {
   jukebox: {},
 };
 
+const visible = (state, payload) => {
+  let visible = !!state.meta;
+  if (!visible) {
+    for (const key of Object.keys(state.jukebox)) {
+      if (key === payload.jukeboxId) continue;
+      if (state.jukebox[key]) {
+        visible = true;
+        break;
+      }
+    }
+  }
+  return visible;
+};
+
 export const audioReducer = (state = initialState, action) => {
   const { type, payload } = action;
   if (type === 'audio/playing') {
@@ -56,20 +70,9 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/jukebox/stopped') {
-    let visible = !!state.meta;
-    if (!visible) {
-      for (const key of Object.keys(state.jukebox)) {
-        if (key === payload.jukeboxId) continue;
-        if (state.jukebox[key]) {
-          visible = true;
-          break;
-        }
-      }
-    }
-
     return {
       ...state,
-      visible,
+      visible: visible(state, payload),
       jukebox: {
         ...state.jukebox,
         [payload.jukeboxId]: null,
@@ -91,6 +94,7 @@ export const audioReducer = (state = initialState, action) => {
 
     return {
       ...state,
+      visible: visible(state, payload),
       jukebox,
     };
   }

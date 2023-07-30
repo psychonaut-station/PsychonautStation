@@ -57,20 +57,14 @@ export const audioMiddleware = (store) => {
     if (type === 'audio/jukebox/destroy') {
       const { jukeboxId } = payload;
       const player = jukeboxPlayers[jukeboxId];
-      if (player) {
-        if (player.playing) player.stop();
-        player.destroy();
-      }
+      if (player) player.destroy();
       delete jukeboxPlayers[jukeboxId];
       return next(action);
     }
     if (type === 'audio/jukebox/destroyAll') {
       for (const jukeboxId of Object.keys(jukeboxPlayers)) {
         const player = jukeboxPlayers[jukeboxId];
-        if (player) {
-          if (player.playing) player.stop();
-          player.destroy();
-        }
+        if (player) player.destroy();
         delete jukeboxPlayers[jukeboxId];
       }
       return next(action);

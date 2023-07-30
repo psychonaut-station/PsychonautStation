@@ -27,14 +27,16 @@ export class AudioPlayer {
     this.onStopSubscribers = [];
     // Listen for playback start events
     this.node.addEventListener('canplaythrough', () => {
-      logger.log('canplaythrough');
-      this.playing = true;
-      this.node.playbackRate = this.options.pitch || 1;
-      this.node.currentTime = this.options.start || 0;
-      this.node.volume = this.volume * this.localVolume;
-      this.node.play();
-      for (let subscriber of this.onPlaySubscribers) {
-        subscriber();
+      if (this.node) {
+        logger.log('canplaythrough');
+        this.playing = true;
+        this.node.playbackRate = this.options.pitch || 1;
+        this.node.currentTime = this.options.start || 0;
+        this.node.volume = this.volume * this.localVolume;
+        this.node.play();
+        for (let subscriber of this.onPlaySubscribers) {
+          subscriber();
+        }
       }
     });
     // Listen for playback stop events
@@ -63,15 +65,15 @@ export class AudioPlayer {
   }
 
   destroy() {
-    if (!this.node) {
-      return;
-    }
     try {
-      this.node.stop?.();
-      document.body.removeChild(this.node);
-      delete this.node;
+      clearInterval(this.playbackInterval);
+      if (this.node) {
+        this.stop();
+        this.node.stop();
+        document.body.removeChild(this.node);
+        delete this.node;
+      }
     } catch {}
-    clearInterval(this.playbackInterval);
   }
 
   play(url, options = {}, volume = 1) {
@@ -89,7 +91,7 @@ export class AudioPlayer {
       return;
     }
     if (this.playing) {
-      for (let subscriber of this.onStopSubscribers) {
+      for (const subscriber of this.onStopSubscribers) {
         subscriber();
       }
     }

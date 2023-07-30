@@ -27,6 +27,8 @@ em						{font-style: normal;	font-weight: bold;}
 .oocplain				{}
 .warningplain			{}
 .ooc					{					font-weight: bold;}
+.looc					{color: #005aa3;	font-weight: bold;}
+.loocplain				{}
 .adminobserverooc		{color: #0099cc;	font-weight: bold;}
 .adminooc				{color: #700038;	font-weight: bold;}
 

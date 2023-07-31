@@ -27,7 +27,7 @@ export class AudioPlayer {
     this.onStopSubscribers = [];
     // Listen for playback start events
     this.node.addEventListener('canplaythrough', () => {
-      if (this.node) {
+      if (this.node && this.node.playbackRate) {
         logger.log('canplaythrough');
         this.playing = true;
         this.node.playbackRate = this.options.pitch || 1;
@@ -67,7 +67,7 @@ export class AudioPlayer {
   destroy() {
     try {
       clearInterval(this.playbackInterval);
-      if (this.node) {
+      if (this.node && this.node.stop) {
         this.stop();
         this.node.stop();
         document.body.removeChild(this.node);

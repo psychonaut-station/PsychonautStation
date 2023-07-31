@@ -18,7 +18,7 @@
 #define MAX_SOUND_DURATION 10 MINUTES
 #define REQUEST_COOLDOWN 20 SECONDS
 
-#define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&]*$"
+#define YTDL_REGEX @"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$"
 
 GLOBAL_LIST_EMPTY(jukebox_bad_input)
 GLOBAL_LIST_EMPTY(jukebox_cache)
@@ -219,23 +219,23 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/electrical_jukebox/welder_act(mob/living/user, obj/item/tool)
-	if(density)
-		if(atom_integrity < max_integrity)
-			if(tool.tool_start_check(user, amount = 1))
-				user.visible_message( \
-					span_notice("[user] begins welding the [src]."), \
-					span_notice("You begin repairing the [src]..."), \
-					span_hear("You hear welding."))
-			if(tool.use_tool(src, user, 40, volume = 50))
-				atom_integrity = max_integrity
-				set_machine_stat(machine_stat & ~BROKEN)
-				user.visible_message( \
-					span_notice("[user] finishes welding the [src]."), \
-					span_notice("You finish repairing the [src]."))
-				update_appearance()
-		else
-			to_chat(user, span_notice("The [src] doesn't need repairing."))
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+	if(atom_integrity < max_integrity)
+		if(!tool.tool_start_check(user, amount = 1))
+			return TOOL_ACT_TOOLTYPE_SUCCESS
+		user.visible_message( \
+			span_notice("[user] starts to repair [src]."), \
+			span_notice("You begin repairing the [src]..."), \
+			span_hear("You hear welding."))
+		if(tool.use_tool(src, user, 40, volume = 50))
+			atom_integrity = max_integrity
+			set_machine_stat(machine_stat & ~BROKEN)
+			user.visible_message( \
+				span_notice("[user] finishes reparing [src]."), \
+				span_notice("You finish repairing the [src]."))
+			update_appearance()
+	else
+		to_chat(user, span_notice("The [src] doesn't need repairing."))
+	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/electrical_jukebox/ui_status(mob/user)
 	if(!ytdl)

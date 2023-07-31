@@ -66,72 +66,69 @@ export class AudioPlayer {
   }
 
   destroy() {
-    try {
-      clearInterval(this.playbackInterval);
-      if (this.node && this.node.stop) {
-        this.stop();
-        this.node.stop();
-        this.node.removeEventListener(
-          'canplaythrough',
-          this.playthroughListener
-        );
+    for (const subscriber of this.onStopSubscribers) {
+      subscriber();
+    }
+    logger.log('stopping');
+    clearInterval(this.playbackInterval);
+    this.playing = false;
+    if (this.node) {
+      this.node.src = '';
+      this.node.stop?.();
+      this.node.removeEventListener?.(
+        'canplaythrough',
+        this.playthroughListener
+      );
+      try {
         document.body.removeChild(this.node);
-        delete this.node;
-      }
-    } catch {}
+      } catch {}
+      delete this.node;
+    }
   }
 
   play(url, options = {}, volume = 1) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      logger.log('playing', url, options);
+      this.options = options;
+      this.localVolume = volume;
+      this.node.src = url;
     }
-    logger.log('playing', url, options);
-    this.options = options;
-    this.localVolume = volume;
-    this.node.src = url;
   }
 
   stop() {
-    if (!this.node) {
-      return;
-    }
-    if (this.playing) {
+    if (this.node && this.playing) {
       for (const subscriber of this.onStopSubscribers) {
         subscriber();
       }
+      logger.log('stopping');
+      this.playing = false;
+      this.node.src = '';
     }
-    logger.log('stopping');
-    this.playing = false;
-    this.node.src = '';
   }
 
   setVolume(volume) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.volume = volume;
+      this.node.volume = this.localVolume * volume;
     }
-    this.volume = volume;
-    this.node.volume = this.localVolume * volume;
   }
 
   setLocalVolume(volume) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.localVolume = volume;
+      this.node.volume = this.volume * volume;
     }
-    this.localVolume = volume;
-    this.node.volume = this.volume * volume;
   }
 
   onPlay(subscriber) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.onPlaySubscribers.push(subscriber);
     }
-    this.onPlaySubscribers.push(subscriber);
   }
 
   onStop(subscriber) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.onStopSubscribers.push(subscriber);
     }
-    this.onStopSubscribers.push(subscriber);
   }
 }

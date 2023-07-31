@@ -39,32 +39,28 @@ export const audioMiddleware = (store) => {
       return next(action);
     }
     if (type === 'audio/jukebox/create') {
-      const { jukeboxId } = payload;
-      if (!jukeboxPlayers[jukeboxId]) {
+      if (!jukeboxPlayers[payload.jukeboxId]) {
         const player = new AudioPlayer();
-        jukeboxPlayers[jukeboxId] = player;
+        jukeboxPlayers[payload.jukeboxId] = player;
         player.setVolume(adminMusicVolume);
         player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
         player.onStop(() =>
           store.dispatch({
             type: 'audio/jukebox/stopped',
-            payload: { jukeboxId },
+            payload: { jukeboxId: payload.jukeboxId },
           })
         );
       }
       return next(action);
     }
     if (type === 'audio/jukebox/destroy') {
-      const { jukeboxId } = payload;
-      const player = jukeboxPlayers[jukeboxId];
-      if (player) player.destroy();
-      delete jukeboxPlayers[jukeboxId];
+      jukeboxPlayers[payload.jukeboxId]?.destroy();
+      delete jukeboxPlayers[payload.jukeboxId];
       return next(action);
     }
     if (type === 'audio/jukebox/destroyAll') {
       for (const jukeboxId of Object.keys(jukeboxPlayers)) {
-        const player = jukeboxPlayers[jukeboxId];
-        if (player) player.destroy();
+        jukeboxPlayers[jukeboxId]?.destroy();
         delete jukeboxPlayers[jukeboxId];
       }
       return next(action);
@@ -89,8 +85,7 @@ export const audioMiddleware = (store) => {
       return next(action);
     }
     if (type === 'audio/jukebox/stopMusic') {
-      const { jukeboxId } = payload;
-      jukeboxPlayers[jukeboxId]?.stop();
+      jukeboxPlayers[payload.jukeboxId]?.stop();
       return next(action);
     }
     if (type === 'audio/jukebox/setVolume') {

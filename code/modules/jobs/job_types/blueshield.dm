@@ -16,6 +16,7 @@
 	config_tag = "BLUESHIELD"
 
 	department_for_prefs = /datum/job_department/security
+	display_order = JOB_DISPLAY_ORDER_SECURITY_OFFICER
 	total_positions = 1
 	spawn_positions = 1
 

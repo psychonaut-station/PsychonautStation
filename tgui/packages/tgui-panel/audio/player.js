@@ -26,7 +26,7 @@ export class AudioPlayer {
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
     // Listen for playback start events
-    this.node.addEventListener('canplaythrough', () => {
+    this.playthroughListener = () => {
       if (this.node && this.node.playbackRate) {
         logger.log('canplaythrough');
         this.playing = true;
@@ -38,7 +38,8 @@ export class AudioPlayer {
           subscriber();
         }
       }
-    });
+    };
+    this.node.addEventListener('canplaythrough', this.playthroughListener);
     // Listen for playback stop events
     this.node.addEventListener('ended', () => {
       logger.log('ended');
@@ -70,6 +71,7 @@ export class AudioPlayer {
       if (this.node && this.node.stop) {
         this.stop();
         this.node.stop();
+        this.node.removeEventListener('canplaythrough', this.playthroughListener);
         document.body.removeChild(this.node);
         delete this.node;
       }

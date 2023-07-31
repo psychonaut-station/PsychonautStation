@@ -71,7 +71,10 @@ export class AudioPlayer {
       if (this.node && this.node.stop) {
         this.stop();
         this.node.stop();
-        this.node.removeEventListener('canplaythrough', this.playthroughListener);
+        this.node.removeEventListener(
+          'canplaythrough',
+          this.playthroughListener
+        );
         document.body.removeChild(this.node);
         delete this.node;
       }

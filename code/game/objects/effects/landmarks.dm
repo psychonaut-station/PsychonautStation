@@ -110,7 +110,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/security_officer
 	name = "Security Officer"
 	icon_state = "Security Officer"
-	subjobs = list(JOB_BRIG_PHYSICIAN)
+	subjobs = list(JOB_BRIG_PHYSICIAN,JOB_BLUESHIELD)
 
 /obj/effect/landmark/start/botanist
 	name = "Botanist"
@@ -123,7 +123,6 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/captain
 	name = "Captain"
 	icon_state = "Captain"
-	subjobs = list(JOB_BLUESHIELD)
 
 /obj/effect/landmark/start/detective
 	name = "Detective"

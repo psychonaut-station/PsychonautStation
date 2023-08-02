@@ -283,6 +283,7 @@
 		/datum/job/assistant = /obj/item/organ/internal/heart/cybernetic, //real cardiac
 		/datum/job/atmospheric_technician = /obj/item/organ/internal/cyberimp/mouth/breathing_tube,
 		/datum/job/bartender = /obj/item/organ/internal/liver/cybernetic/tier3,
+		/datum/job/brig_physician = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/botanist = /obj/item/organ/internal/cyberimp/chest/nutriment,
 		/datum/job/captain = /obj/item/organ/internal/heart/cybernetic/tier3,
 		/datum/job/cargo_technician = /obj/item/organ/internal/stomach/cybernetic/tier2,
@@ -292,6 +293,7 @@
 		/datum/job/chief_medical_officer = /obj/item/organ/internal/cyberimp/chest/reviver,
 		/datum/job/clown = /obj/item/organ/internal/cyberimp/brain/anti_stun, //HONK!
 		/datum/job/cook = /obj/item/organ/internal/cyberimp/chest/nutriment/plus,
+		/datum/job/coroner = /obj/item/organ/internal/tongue/bone, //hes got a bone to pick with you
 		/datum/job/curator = /obj/item/organ/internal/eyes/robotic/glow,
 		/datum/job/detective = /obj/item/organ/internal/lungs/cybernetic/tier3,
 		/datum/job/doctor = /obj/item/organ/internal/cyberimp/arm/surgery,
@@ -301,6 +303,7 @@
 		/datum/job/janitor = /obj/item/organ/internal/eyes/robotic/xray,
 		/datum/job/lawyer = /obj/item/organ/internal/heart/cybernetic/tier2,
 		/datum/job/mime = /obj/item/organ/internal/tongue/robot, //...
+		/datum/job/nt_secretary = /obj/item/organ/internal/liver/cybernetic/tier3,
 		/datum/job/paramedic = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/prisoner = /obj/item/organ/internal/eyes/robotic/shield,
 		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/upgraded,
@@ -313,6 +316,7 @@
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
+		/datum/job/worker = /obj/item/organ/internal/cyberimp/arm/toolset,
 	)
 
 /datum/station_trait/cybernetic_revolution/New()

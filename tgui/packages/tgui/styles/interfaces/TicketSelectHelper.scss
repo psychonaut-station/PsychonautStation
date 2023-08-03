@@ -1,0 +1,26 @@
+@use 'sass:color';
+@use 'sass:math';
+@use '../base.scss';
+@use '../colors.scss';
+
+.TicketSelectHelper__seperator {
+  font-size: 0.85em;
+  text-align: center;
+  margin: 1em 0 2em;
+
+  &:before {
+    content: '';
+    display: inline-block;
+    border-radius: 1em;
+    padding: 0 0.7em;
+    color: colors.$red;
+    background-color: base.$color-bg-section;
+  }
+
+  &:after {
+    content: '';
+    display: block;
+    margin-top: -0.75em;
+    border-bottom: math.div(1em, 6) solid colors.$red;
+  }
+}

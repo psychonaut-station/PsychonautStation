@@ -161,50 +161,50 @@
 
 /datum/station_trait/deathrattle_department/service
 	name = "Deathrattled Service"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SERVICE
 	department_name = "Service"
 
 /datum/station_trait/deathrattle_department/cargo
 	name = "Deathrattled Cargo"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_CARGO
 	department_name = "Cargo"
 
 /datum/station_trait/deathrattle_department/engineering
 	name = "Deathrattled Engineering"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_ENGINEERING
 	department_name = "Engineering"
 
 /datum/station_trait/deathrattle_department/command
 	name = "Deathrattled Command"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_COMMAND
 	department_name = "Command"
 
 /datum/station_trait/deathrattle_department/science
 	name = "Deathrattled Science"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SCIENCE
 	department_name = "Science"
 
 /datum/station_trait/deathrattle_department/security
 	name = "Deathrattled Security"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_SECURITY
 	department_name = "Security"
 
 /datum/station_trait/deathrattle_department/medical
 	name = "Deathrattled Medical"
-	trait_flags = NONE
-	weight = 2
+	trait_flags = STATION_TRAIT_MAP_UNRESTRICTED
+	weight = 1
 	department_to_apply_to = DEPARTMENT_BITFLAG_MEDICAL
 	department_name = "Medical"
 
@@ -212,7 +212,7 @@
 	name = "Deathrattled Station"
 	trait_type = STATION_TRAIT_POSITIVE
 	show_in_report = TRUE
-	weight = 5
+	weight = 1
 	report_message = "All members of the station have received an implant to notify each other if one of them dies. This should help improve job-safety!"
 	var/datum/deathrattle_group/deathrattle_group
 
@@ -283,6 +283,7 @@
 		/datum/job/assistant = /obj/item/organ/internal/heart/cybernetic, //real cardiac
 		/datum/job/atmospheric_technician = /obj/item/organ/internal/cyberimp/mouth/breathing_tube,
 		/datum/job/bartender = /obj/item/organ/internal/liver/cybernetic/tier3,
+		/datum/job/brig_physician = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/botanist = /obj/item/organ/internal/cyberimp/chest/nutriment,
 		/datum/job/captain = /obj/item/organ/internal/heart/cybernetic/tier3,
 		/datum/job/cargo_technician = /obj/item/organ/internal/stomach/cybernetic/tier2,
@@ -292,6 +293,7 @@
 		/datum/job/chief_medical_officer = /obj/item/organ/internal/cyberimp/chest/reviver,
 		/datum/job/clown = /obj/item/organ/internal/cyberimp/brain/anti_stun, //HONK!
 		/datum/job/cook = /obj/item/organ/internal/cyberimp/chest/nutriment/plus,
+		/datum/job/coroner = /obj/item/organ/internal/tongue/bone, //hes got a bone to pick with you
 		/datum/job/curator = /obj/item/organ/internal/eyes/robotic/glow,
 		/datum/job/detective = /obj/item/organ/internal/lungs/cybernetic/tier3,
 		/datum/job/doctor = /obj/item/organ/internal/cyberimp/arm/surgery,
@@ -301,6 +303,7 @@
 		/datum/job/janitor = /obj/item/organ/internal/eyes/robotic/xray,
 		/datum/job/lawyer = /obj/item/organ/internal/heart/cybernetic/tier2,
 		/datum/job/mime = /obj/item/organ/internal/tongue/robot, //...
+		/datum/job/nt_secretary = /obj/item/organ/internal/liver/cybernetic/tier3,
 		/datum/job/paramedic = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/prisoner = /obj/item/organ/internal/eyes/robotic/shield,
 		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/upgraded,
@@ -313,6 +316,7 @@
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
 		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
+		/datum/job/worker = /obj/item/organ/internal/cyberimp/arm/toolset,
 	)
 
 /datum/station_trait/cybernetic_revolution/New()

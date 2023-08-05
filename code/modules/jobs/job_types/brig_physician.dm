@@ -59,10 +59,12 @@
 	head = /obj/item/clothing/head/helmet/brig_physician
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/assembly/flash/handheld
+	l_hand = duffelbag = /obj/item/storage/backpack/duffelbag/sec/surgery
 	l_pocket = /obj/item/modular_computer/pda/security
 
-
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/surgery
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/medical
 	skillchips = list(/obj/item/skillchip/entrails_reader)

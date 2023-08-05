@@ -433,3 +433,12 @@
 	. += light_in
 	. += light_out
 
+/obj/machinery/mineral/ore_redemption/RefreshParts()
+	. = ..()
+	var/point_upgrade_temp = 1
+	var/ore_multiplier_temp = 1
+	for(var/datum/stock_part/micro_laser/internal_laser in component_parts)
+		point_upgrade_temp = 0.80 + (0.20 * internal_laser.tier)
+		ore_multiplier_temp = 0.95 + (0.05 * internal_laser.tier)
+	point_upgrade = point_upgrade_temp
+	ore_multiplier = ore_multiplier_temp

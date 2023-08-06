@@ -17,6 +17,8 @@
 		new /obj/item/reagent_containers/cup/glass/bottle/beer( src )
 	new /obj/item/etherealballdeployer(src)
 	new /obj/item/roulette_wheel_beacon(src)
+	new /obj/item/wrench(src)
+	new /obj/item/electrical_jukebox_beacon(src)
 
 /obj/structure/closet/secure_closet/bar/all_access
 	req_access = null

@@ -21,21 +21,25 @@ export class AudioPlayer {
     // Set up other properties
     this.playing = false;
     this.volume = 1;
+    this.localVolume = 1;
     this.options = {};
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
     // Listen for playback start events
-    this.node.addEventListener('canplaythrough', () => {
-      logger.log('canplaythrough');
-      this.playing = true;
-      this.node.playbackRate = this.options.pitch || 1;
-      this.node.currentTime = this.options.start || 0;
-      this.node.volume = this.volume;
-      this.node.play();
-      for (let subscriber of this.onPlaySubscribers) {
-        subscriber();
+    this.playthroughListener = () => {
+      if (this.node && this.node.playbackRate) {
+        logger.log('canplaythrough');
+        this.playing = true;
+        this.node.playbackRate = this.options.pitch || 1;
+        this.node.currentTime = this.options.start || 0;
+        this.node.volume = this.volume * this.localVolume;
+        this.node.play();
+        for (let subscriber of this.onPlaySubscribers) {
+          subscriber();
+        }
       }
-    });
+    };
+    this.node.addEventListener('canplaythrough', this.playthroughListener);
     // Listen for playback stop events
     this.node.addEventListener('ended', () => {
       logger.log('ended');
@@ -62,56 +66,69 @@ export class AudioPlayer {
   }
 
   destroy() {
-    if (!this.node) {
-      return;
+    for (const subscriber of this.onStopSubscribers) {
+      subscriber();
     }
-    this.node.stop();
-    document.removeChild(this.node);
+    logger.log('stopping');
     clearInterval(this.playbackInterval);
+    this.playing = false;
+    if (this.node) {
+      this.node.src = '';
+      this.node.stop?.();
+      this.node.removeEventListener?.(
+        'canplaythrough',
+        this.playthroughListener
+      );
+      try {
+        document.body.removeChild(this.node);
+      } catch {}
+      delete this.node;
+    }
   }
 
-  play(url, options = {}) {
-    if (!this.node) {
-      return;
+  play(url, options = {}, volume = 1) {
+    if (this.node) {
+      logger.log('playing', url, options);
+      this.options = options;
+      this.localVolume = volume;
+      this.node.src = url;
     }
-    logger.log('playing', url, options);
-    this.options = options;
-    this.node.src = url;
   }
 
   stop() {
-    if (!this.node) {
-      return;
-    }
-    if (this.playing) {
-      for (let subscriber of this.onStopSubscribers) {
+    if (this.node && this.playing) {
+      for (const subscriber of this.onStopSubscribers) {
         subscriber();
       }
+      logger.log('stopping');
+      this.playing = false;
+      this.node.src = '';
     }
-    logger.log('stopping');
-    this.playing = false;
-    this.node.src = '';
   }
 
   setVolume(volume) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.volume = volume;
+      this.node.volume = this.localVolume * volume;
     }
-    this.volume = volume;
-    this.node.volume = volume;
+  }
+
+  setLocalVolume(volume) {
+    if (this.node) {
+      this.localVolume = volume;
+      this.node.volume = this.volume * volume;
+    }
   }
 
   onPlay(subscriber) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.onPlaySubscribers.push(subscriber);
     }
-    this.onPlaySubscribers.push(subscriber);
   }
 
   onStop(subscriber) {
-    if (!this.node) {
-      return;
+    if (this.node) {
+      this.onStopSubscribers.push(subscriber);
     }
-    this.onStopSubscribers.push(subscriber);
   }
 }

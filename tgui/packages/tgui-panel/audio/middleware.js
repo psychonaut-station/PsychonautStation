@@ -8,6 +8,8 @@ import { AudioPlayer } from './player';
 
 export const audioMiddleware = (store) => {
   const player = new AudioPlayer();
+  const jukeboxPlayers = {};
+  let adminMusicVolume = 1;
   player.onPlay(() => {
     store.dispatch({ type: 'audio/playing' });
   });
@@ -28,7 +30,68 @@ export const audioMiddleware = (store) => {
     if (type === 'settings/update' || type === 'settings/load') {
       const volume = payload?.adminMusicVolume;
       if (typeof volume === 'number') {
+        adminMusicVolume = volume;
         player.setVolume(volume);
+        for (const player of Object.values(jukeboxPlayers)) {
+          player.setVolume(volume);
+        }
+      }
+      return next(action);
+    }
+    if (type === 'audio/jukebox/create') {
+      if (!jukeboxPlayers[payload.jukeboxId]) {
+        const player = new AudioPlayer();
+        jukeboxPlayers[payload.jukeboxId] = player;
+        player.setVolume(adminMusicVolume);
+        player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
+        player.onStop(() =>
+          store.dispatch({
+            type: 'audio/jukebox/stopped',
+            payload: { jukeboxId: payload.jukeboxId },
+          })
+        );
+      }
+      return next(action);
+    }
+    if (type === 'audio/jukebox/destroy') {
+      jukeboxPlayers[payload.jukeboxId]?.destroy();
+      delete jukeboxPlayers[payload.jukeboxId];
+      return next(action);
+    }
+    if (type === 'audio/jukebox/destroyAll') {
+      for (const jukeboxId of Object.keys(jukeboxPlayers)) {
+        jukeboxPlayers[jukeboxId]?.destroy();
+        delete jukeboxPlayers[jukeboxId];
+      }
+      return next(action);
+    }
+    if (type === 'audio/jukebox/playMusic') {
+      const { jukeboxId, url, volume, ...options } = payload;
+      if (jukeboxPlayers[jukeboxId]) {
+        jukeboxPlayers[jukeboxId].play(url, options, volume);
+      } else {
+        const player = new AudioPlayer();
+        jukeboxPlayers[jukeboxId] = player;
+        player.setVolume(adminMusicVolume);
+        player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
+        player.onStop(() =>
+          store.dispatch({
+            type: 'audio/jukebox/stopped',
+            payload: { jukeboxId },
+          })
+        );
+        player.play(url, options, volume);
+      }
+      return next(action);
+    }
+    if (type === 'audio/jukebox/stopMusic') {
+      jukeboxPlayers[payload.jukeboxId]?.stop();
+      return next(action);
+    }
+    if (type === 'audio/jukebox/setVolume') {
+      const { jukeboxId, volume } = payload;
+      if (typeof volume === 'number') {
+        jukeboxPlayers[jukeboxId]?.setLocalVolume(volume);
       }
       return next(action);
     }

@@ -1162,6 +1162,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set desc = "Stop Current Sounds"
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
+	tgui_panel?.destroy_all_jukebox()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
 /client/verb/toggle_fullscreen()

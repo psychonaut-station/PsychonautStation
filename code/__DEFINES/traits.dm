@@ -1243,3 +1243,5 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 ///Trait given by /datum/component/germ_sensitive
 #define TRAIT_GERM_SENSITIVE "germ_sensitive"
+
+#define TRAIT_CAN_USE_JUKEBOX "can_use_jukebox"

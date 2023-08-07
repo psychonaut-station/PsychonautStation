@@ -1653,10 +1653,6 @@
 /obj/structure/table/wood,
 /obj/item/clipboard,
 /obj/item/toy/figure/chaplain,
-/obj/structure/sign/poster/official/bless_this_spess{
-	pixel_x = -32;
-	pixel_y = -32
-	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/firealarm/directional/west,
 /obj/machinery/button/door/directional/south{
@@ -3944,9 +3940,7 @@
 /area/station/ai_monitored/security/armory)
 "bdt" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/west{
-	dir = 1
-	},
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
@@ -32028,10 +32022,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "iNY" = (
-/obj/structure/sign/poster/official/help_others{
-	pixel_x = -32;
-	pixel_y = -32
-	},
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
@@ -47013,10 +47003,6 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
 	},
-/obj/structure/sign/poster/official/science{
-	pixel_x = 32;
-	pixel_y = 32
-	},
 /turf/open/floor/glass,
 /area/station/maintenance/space_hut/observatory)
 "mOB" = (
@@ -52263,10 +52249,6 @@
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
 	},
-/obj/structure/sign/poster/official/bless_this_spess{
-	pixel_x = -32;
-	pixel_y = 32
-	},
 /turf/open/floor/glass,
 /area/station/maintenance/space_hut/observatory)
 "oiw" = (
@@ -53360,10 +53342,6 @@
 /obj/structure/chair/office/light,
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
-	},
-/obj/structure/sign/poster/official/safety_internals{
-	pixel_x = 32;
-	pixel_y = -32
 	},
 /turf/open/floor/glass,
 /area/station/maintenance/space_hut/observatory)
@@ -66773,9 +66751,7 @@
 /area/station/maintenance/port/greater)
 "slY" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/west{
-	dir = 1
-	},
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
@@ -78289,9 +78265,7 @@
 /area/station/maintenance/solars/port/fore)
 "vlN" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/west{
-	dir = 4
-	},
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
@@ -88375,9 +88349,7 @@
 /area/station/engineering/supermatter/room)
 "xUm" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/west{
-	dir = 4
-	},
+/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)

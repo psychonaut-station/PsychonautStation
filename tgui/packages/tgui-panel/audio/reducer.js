@@ -9,13 +9,14 @@ const initialState = {
   playing: false,
   track: null,
   jukebox: {},
+  muted: [],
 };
 
 const visible = (state, payload) => {
   let visible = !!state.meta;
   if (!visible) {
     for (const key of Object.keys(state.jukebox)) {
-      if (key === payload.jukeboxId) continue;
+      if (payload && key === payload.jukeboxId) continue;
       if (state.jukebox[key]) {
         visible = true;
         break;
@@ -35,11 +36,9 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopped') {
-    const visible = Object.values(state.jukebox).filter((s) => !!s).length > 0;
-
     return {
       ...state,
-      visible,
+      visible: visible(state),
       playing: false,
     };
   }
@@ -52,7 +51,7 @@ export const audioReducer = (state = initialState, action) => {
   if (type === 'audio/stopMusic') {
     return {
       ...state,
-      visible: false,
+      visible: visible(state),
       playing: false,
       meta: null,
     };
@@ -105,6 +104,20 @@ export const audioReducer = (state = initialState, action) => {
         ...state.jukebox,
         [payload.jukeboxId]: payload,
       },
+    };
+  }
+  if (type === 'audio/jukebox/toggleMute') {
+    const muted = state.muted;
+
+    if (muted.includes(payload.jukeboxId)) {
+      muted.splice(muted.indexOf(payload.jukebox), 1);
+    } else {
+      muted.push(payload.jukeboxId);
+    }
+
+    return {
+      ...state,
+      muted,
     };
   }
   return state;

@@ -95,6 +95,10 @@ export const audioMiddleware = (store) => {
       }
       return next(action);
     }
+    if (type === 'audio/jukebox/toggleMute') {
+      // jukeboxPlayers[payload.jukeboxId]?.toggleMute();
+      return next(action);
+    }
     return next(action);
   };
 };

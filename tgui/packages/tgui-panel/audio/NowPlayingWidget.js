@@ -93,7 +93,8 @@ export const NowPlayingWidget = (props, context) => {
               url = audio.jukebox[jukeboxId]?.link,
               artist = audio.jukebox[jukeboxId]?.artist,
               album = audio.jukebox[jukeboxId]?.album,
-              duration = audio.jukebox[jukeboxId]?.duration;
+              duration = audio.jukebox[jukeboxId]?.duration,
+              muted = audio.muted.includes(jukeboxId);
 
             return (
               <Flex.Item key={jukeboxId}>
@@ -131,11 +132,11 @@ export const NowPlayingWidget = (props, context) => {
                       </Flex.Item>
                       <Flex.Item mx={0.5} fontSize="0.9em">
                         <Button
-                          tooltip="Stop"
-                          icon="stop"
+                          tooltip={muted ? 'Unmute' : 'Mute'}
+                          icon={muted ? 'play' : 'stop'}
                           onClick={() =>
                             dispatch({
-                              type: 'audio/jukebox/stopMusic',
+                              type: 'audio/jukebox/toggleMute',
                               payload: { jukeboxId },
                             })
                           }

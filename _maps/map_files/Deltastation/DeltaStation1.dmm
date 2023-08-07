@@ -11781,7 +11781,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
-/obj/structure/sign/poster/official/plasma_effects/direction/north,
+/obj/structure/sign/poster/official/plasma_effects/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "dgu" = (
@@ -15526,7 +15526,7 @@
 /obj/item/clothing/head/cone,
 /obj/item/clothing/head/cone,
 /obj/item/clothing/head/cone,
-/obj/structure/sign/poster/official/moth_delam/direction/south,
+/obj/structure/sign/poster/official/moth_delam/directional/south,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "enX" = (
@@ -22164,7 +22164,7 @@
 "geR" = (
 /obj/machinery/vending/engivend,
 /obj/effect/turf_decal/delivery,
-/obj/structure/sign/poster/official/moth_hardhat/direction/east,
+/obj/structure/sign/poster/official/moth_hardhat/directional/east,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "geW" = (
@@ -23138,7 +23138,7 @@
 "gqG" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/portable_atmospherics/scrubber,
-/obj/structure/sign/poster/official/there_is_no_gas_giant/direction/east,
+/obj/structure/sign/poster/official/there_is_no_gas_giant/directional/east,
 /turf/open/floor/iron/textured_large,
 /area/station/engineering/atmos/project)
 "gqH" = (
@@ -23994,7 +23994,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
 "gCk" = (
-/obj/structure/sign/poster/random/direction/north,
+/obj/structure/sign/poster/random/directional/north,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/rack,
 /obj/effect/turf_decal/bot,
@@ -29512,7 +29512,7 @@
 /turf/open/floor/iron,
 /area/station/medical/break_room)
 "ifH" = (
-/obj/structure/sign/poster/official/build/direction/south,
+/obj/structure/sign/poster/official/build/directional/south,
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/white,
 /area/station/science/auxlab)
@@ -33119,7 +33119,7 @@
 "jdl" = (
 /obj/machinery/hydroponics/soil,
 /obj/effect/decal/cleanable/dirt,
-/obj/structure/sign/poster/contraband/ambrosia_vulgaris/direction/west,
+/obj/structure/sign/poster/contraband/ambrosia_vulgaris/directional/west,
 /obj/machinery/light/directional/west,
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating,
@@ -37045,13 +37045,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage/tech)
-"keJ" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/siding/purple{
-	dir = 8
-	},
-/turf/open/floor/glass,
-/area/station/maintenance/space_hut/observatory)
 "keL" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
@@ -47890,13 +47883,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/processing)
-"naB" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/siding/purple{
-	dir = 8
-	},
-/turf/open/floor/glass,
-/area/station/maintenance/space_hut/observatory)
 "naN" = (
 /obj/structure/cable,
 /obj/effect/spawner/random/trash/grille_or_waste,
@@ -78265,8 +78251,8 @@
 /area/station/maintenance/solars/port/fore)
 "vlN" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "vlO" = (
@@ -88349,8 +88335,8 @@
 /area/station/engineering/supermatter/room)
 "xUm" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
+/obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
 "xUq" = (
@@ -148805,8 +148791,8 @@ dNn
 mUL
 pgz
 ois
-naB
-keJ
+ois
+ois
 xxK
 mUL
 dNn

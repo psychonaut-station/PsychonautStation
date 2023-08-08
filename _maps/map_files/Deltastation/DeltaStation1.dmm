@@ -43911,12 +43911,6 @@
 	dir = 1
 	},
 /area/station/engineering/atmos/pumproom)
-"lTH" = (
-/obj/structure/chair/sofa/bench/right,
-/obj/structure/chair/sofa/bench,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
-/area/station/hallway/secondary/exit/departure_lounge)
 "lTJ" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red{
@@ -128617,7 +128611,7 @@ jkH
 rWD
 cNE
 uUb
-lTH
+vpp
 jkH
 uQD
 rWD

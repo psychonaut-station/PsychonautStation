@@ -22884,7 +22884,6 @@
 /area/station/medical/pharmacy)
 "diu" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
-/turf/closed/wall,
 /area/station/medical/pharmacy)
 "div" = (
 /obj/structure/cable,
@@ -33104,7 +33103,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor{
 	id = "cargoload";
-	name = "supply dock loading Door"
+	name = "Supply Dock Loading Door"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -34682,7 +34681,7 @@
 	},
 /obj/machinery/door/poddoor{
 	id = "cargounload";
-	name = "supply dock unloading Door"
+	name = "Supply Dock Unloading Door"
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
@@ -37214,7 +37213,6 @@
 /turf/open/floor/iron/diagonal,
 /area/station/medical/break_room)
 "fNs" = (
-/obj/structure/lattice,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/visible,
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/project)
@@ -50907,7 +50905,6 @@
 /area/station/command/heads_quarters/ce)
 "jQY" = (
 /obj/machinery/smartfridge,
-/turf/closed/wall,
 /area/station/service/hydroponics)
 "jRm" = (
 /obj/effect/turf_decal/tile/neutral{
@@ -86120,7 +86117,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/poddoor{
 	id = "cargoload";
-	name = "supply dock loading Door"
+	name = "Supply Dock Loading Door"
 	},
 /turf/open/floor/plating,
 /area/station/cargo/storage)
@@ -90088,7 +90085,6 @@
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "vsT" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/project)
 "vte" = (
@@ -97734,7 +97730,6 @@
 /area/station/medical/morgue)
 "xIn" = (
 /obj/machinery/smartfridge,
-/turf/closed/wall,
 /area/station/service/kitchen)
 "xIx" = (
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -98476,7 +98471,6 @@
 /turf/open/floor/iron,
 /area/station/security/checkpoint)
 "xSu" = (
-/obj/structure/lattice,
 /turf/closed/wall/r_wall,
 /area/station/engineering/gravity_generator)
 "xSB" = (

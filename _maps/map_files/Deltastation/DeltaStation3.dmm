@@ -34869,10 +34869,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/window/left/directional/north{
-	name = "Medical Desk"req_access=list("medical")
+	name = "Medical Desk"
+	req_access = list("medical")
 	},
 /obj/machinery/door/window/left/directional/south{
-	name = "Medbay Desk"req_access=list("medical")
+	name = "Medbay Desk"
+	req_access = list("medical")
 	},
 /turf/open/floor/iron,
 /area/station/medical/medbay/central)

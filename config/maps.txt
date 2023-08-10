@@ -33,6 +33,10 @@ endmap
 
 map olddeltastation
 	minplayer 0
+endmap
+
+map ancientdeltastation
+	minplayer 0
 	votable
 endmap
 

@@ -22631,7 +22631,7 @@
 /obj/machinery/door/window/left/directional/west{
 	name = "Chemistry Desk";
 	req_access = list("pharmacy")
-},
+	},
 /turf/open/floor/iron,
 /area/station/medical/pharmacy)
 "dhc" = (

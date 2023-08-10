@@ -6207,6 +6207,7 @@
 "oN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/effect/landmark/start/coroner,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/medbay/central)
 "oO" = (
@@ -6222,7 +6223,6 @@
 "oQ" = (
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
-/obj/effect/landmark/start/coroner,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/medbay/central)
 "oR" = (

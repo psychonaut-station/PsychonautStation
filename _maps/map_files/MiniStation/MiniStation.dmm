@@ -3138,7 +3138,6 @@
 /obj/structure/sign/painting/library_private{
 	pixel_y = -32
 	},
-/obj/structure/sign/poster/official/no_erp/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
 "hS" = (
@@ -10580,8 +10579,6 @@
 /obj/structure/closet/secure_closet/personal/cabinet{
 	name = "clown's closet"
 	},
-/obj/structure/sign/poster/contraband/clown/directional/north,
-/obj/structure/sign/poster/contraband/clown/directional/west,
 /turf/open/floor/iron,
 /area/station/service/theater)
 "Ad" = (
@@ -13840,13 +13837,13 @@
 	pixel_y = -29
 	},
 /obj/structure/table,
-/obj/item/folder/blue{
-	pixel_y = 2
-	},
-/obj/item/storage/fancy/donut_box,
 /obj/machinery/light/small,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/fax{
+	fax_name = "Bridge";
+	name = "Command's Fax Machine"
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "Ix" = (
@@ -14302,6 +14299,11 @@
 	},
 /obj/structure/sign/painting/library{
 	pixel_y = 32
+	},
+/obj/structure/table/wood,
+/obj/machinery/fax{
+	fax_name = Public;
+	name = "Public Fax Machine"
 	},
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
@@ -15001,7 +15003,6 @@
 	req_access = list("theatre")
 	},
 /obj/item/radio/intercom/directional/east,
-/obj/structure/sign/poster/contraband/clown/directional/north,
 /turf/open/floor/iron,
 /area/station/service/theater)
 "LT" = (
@@ -16868,11 +16869,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
-"RW" = (
-/obj/structure/cable,
-/obj/structure/sign/poster/official/no_erp/directional/south,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/aft)
 "RX" = (
 /obj/structure/table,
 /obj/item/hfr_box/body/waste_output,
@@ -17680,12 +17676,22 @@
 /area/station/engineering/storage_shared)
 "UE" = (
 /obj/structure/rack,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
-/obj/item/gun/energy/laser,
+/obj/item/gun/energy/laser{
+	pixel_y = 3
+	},
+/obj/item/gun/energy/laser{
+	pixel_y = 6
+	},
+/obj/item/gun/energy/laser{
+	pixel_y = 4
+	},
 /obj/machinery/light/directional/east,
 /obj/effect/turf_decal/tile/red{
 	dir = 4
+	},
+/obj/effect/spawner/random/armory/disablers{
+	pixel_x = 4;
+	pixel_y = -2
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
@@ -50458,7 +50464,7 @@ Iv
 PM
 Gg
 Gg
-RW
+Gg
 ax
 YV
 Kn

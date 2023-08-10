@@ -22629,7 +22629,330 @@
 /obj/item/folder/white,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/window/left/directional/west{
-	name = "Chemistry Desk"4";\treq_access = list("pharmacy")\t},/turf/open/floor/iron,/area/station/medical/pharmacy)"dhc" = (/obj/effect/turf_decal/trimline/yellow/filled/line{\tdir = 9\t},/turf/open/floor/iron/white,/area/station/medical/medbay/central)"dhf" = (/obj/machinery/newscaster/directional/south,/turf/open/floor/wood,/area/station/command/meeting_room/council)"dhg" = (/obj/structure/table,/obj/item/storage/secure/briefcase,/obj/structure/sign/poster/random/directional/west,/obj/effect/turf_decal/tile/brown{\tdir = 8\t},/obj/effect/turf_decal/tile/neutral{\tdir = 1\t},/turf/open/floor/iron,/area/station/commons/vacant_room/commissary)"dhm" = (/obj/machinery/camera/directional/north{\tc_tag = "Medbay-Center";\tname = "medbaycamera";\tnetwork = list("ss13","medbay")\t},/obj/effect/turf_decal/trimline/blue/filled/corner{\tdir = 1\t},/turf/open/floor/iron/white,/area/station/medical/medbay/central)"dho" = (/obj/effect/turf_decal/tile/neutral/fourcorners,/obj/effect/turf_decal/trimline/blue/filled/line{\tdir = 1\t},/turf/open/floor/iron/white,/area/station/medical/medbay/central)"dhq" = (/obj/structure/sign/poster/official/report_crimes/directional/north,/turf/open/floor/iron/white,/area/station/medical/medbay/central)"dht" = (/obj/machinery/light/small/directional/north,/obj/structure/sign/departments/medbay/alt/directional/west,/obj/effect/turf_decal/trimline/blue/filled/line{\tdir = 9\t},/turf/open/floor/iron/white,/area/station/medical/medbay/central)"dhv" = (/obj/machinery/camera/directional/west{\tc_tag = "Medbay-PsychologyOffice";\tname = "medbaycamera";\tnetwork = list("ss13","medbay")\t},/obj/structure/tank_holder/extinguisher,/obj/effect/turf_decal/trimline/blue/filled/line{\tdir = 9\t},/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{\tdir = 1\t},/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{\tdir = 8\t},/obj/effect/turf_decal/siding/wood{\tdir = 9\t},/turf/open/floor/iron/white/smooth_large,/area/station/medical/psychology)"dhw" = (/obj/effect/turf_decal/tile/blue/opposingcorners,/obj/effect/turf_decal/siding/blue{\tdir = 10\t},/turf/open/floor/iron/white,/area/station/command/heads_quarters/cmo)"dhx" = (/obj/machinery/door/firedoor,/obj/machinery/door/airlock/medical{\tname = "SurgeryObservation"\t},/obj/effect/mapping_helpers/airlock/access/all/medical/general,/turf/open/floor/iron/dark,/area/station/medical/surgery/theatre)"dhy" = (/obj/effect/turf_decal/siding/wood{\tdir = 1\t},/obj/effect/turf_decal/trimline/blue/filled/line{\tdir = 1\t},/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{\tdir = 1\t},/turf/open/floor/iron/white/smooth_large,/area/station/medical/psychology)"dhz" = (/obj/effect/turf_decal/siding/wood{\tdir = 1\t},/obj/effect/turf_decal/trimline/blue/filled/line{\tdir = 1\t},/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{\tdir = 1\t},/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,/turf/open/floor/iron/white/smooth_large,/area/station/medical/psychology)"dhC" = (/obj/effect/spawner/structure/window/reinforced/tinted,/turf/open/floor/plating,/area/station/maintenance/starboard/aft)"dhQ" = (/turf/closed/wall,/area/station/science/research/abandoned)"dhT" = (/obj/machinery/door/firedoor,/obj/machinery/door/airlock/medical/glass{\tname = "MedbayStorage"\t},/obj/structure/cable,/obj/structure/disposalpipe/segment,/obj/effect/mapping_helpers/airlock/access/all/medical/general,/obj/effect/turf_decal/tile/blue/fourcorners,/turf/open/floor/iron/white,/area/station/medical/storage)"dhU" = (/obj/structure/sign/nanotrasen,/turf/closed/wall/r_wall,/area/station/science/xenobiology)"dhX" = (/obj/structure/disposalpipe/segment{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 1\t},/obj/effect/turf_decal/tile/purple,/obj/effect/turf_decal/tile/purple{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 8\t},/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{\tdir = 1\t},/turf/open/floor/iron,/area/station/science/research)"dib" = (/obj/structure/disposalpipe/segment{\tdir = 4\t},/obj/machinery/door/firedoor,/obj/effect/turf_decal/stripes/line{\tdir = 8\t},/obj/effect/turf_decal/stripes/line{\tdir = 4\t},/turf/open/floor/iron,/area/station/science/research)"dic" = (/obj/structure/disposalpipe/segment{\tdir = 4\t},/obj/effect/landmark/event_spawn,/obj/effect/turf_decal/tile/neutral{\tdir = 1\t},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{\tdir = 4\t},/obj/effect/turf_decal/tile/neutral{\tdir = 8\t},/turf/open/floor/iron,/area/station/science/research)"did" = (/obj/structure/disposalpipe/segment{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 1\t},/obj/effect/turf_decal/tile/purple,/obj/effect/turf_decal/tile/purple{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 8\t},/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{\tdir = 1\t},/turf/open/floor/iron,/area/station/science/research)"die" = (/obj/structure/disposalpipe/segment{\tdir = 4\t},/obj/effect/turf_decal/tile/neutral{\tdir = 1\t},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{\tdir = 4\t},/obj/effect/turf_decal/tile/neutral{\tdir = 8\t},/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{\tdir = 1\t},/turf/open/floor/iron,/area/station/science/research)"dif" = (/obj/structure/disposalpipe/segment{\tdir = 9\t},/obj/effect/turf_decal/tile/purple{\tdir = 1\t},/obj/effect/turf_decal/tile/purple,/obj/effect/turf_decal/tile/purple{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 8\t},/turf/open/floor/iron,/area/station/science/research)"dik" = (/obj/effect/landmark/start/scientist,/obj/structure/cable,/obj/effect/turf_decal/tile/neutral{\tdir = 1\t},/obj/effect/turf_decal/tile/neutral,/obj/effect/turf_decal/tile/neutral{\tdir = 4\t},/obj/effect/turf_decal/tile/neutral{\tdir = 8\t},/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{\tdir = 1\t},/turf/open/floor/iron,/area/station/science/lab)"dil" = (/obj/structure/chair/office/light{\tdir = 4\t},/obj/effect/turf_decal/tile/purple,/turf/open/floor/iron/white,/area/station/science/lab)"dim" = (/obj/structure/table/reinforced,/obj/machinery/door/firedoor,/obj/item/folder,/obj/item/pen,/obj/machinery/door/window/left/directional/south{\tdir = 8;\tname = "ResearchLabDesk";\treq_access = list("science")\t},/obj/machinery/door/poddoor/shutters/preopen{\tid = "rndlab2";\tname = "SecondaryResearchandDevelopmentShutter"\t},/obj/machinery/door/window/right/directional/east,/obj/effect/turf_decal/delivery,/turf/open/floor/iron,/area/station/science/lab)"din" = (/obj/effect/turf_decal/tile/purple{\tdir = 1\t},/obj/effect/turf_decal/tile/purple,/obj/effect/turf_decal/tile/purple{\tdir = 4\t},/obj/effect/turf_decal/tile/purple{\tdir = 8\t},/turf/open/floor/iron,/area/station/hallway/primary/aft)"dio" = (/obj/effect/turf_decal/tile/yellow{\tdir = 1\t},/obj/effect/turf_decal/tile/yellow,/obj/effect/turf_decal/tile/yellow{\tdir = 4\t},/obj/effect/turf_decal/tile/yellow{\tdir = 8\t},/turf/open/floor/iron,/area/station/hallway/primary/aft)"dip" = (/obj/structure/table/reinforced,/obj/machinery/door/firedoor,/obj/machinery/door/poddoor/shutters/preopen{\tid = "chemistbot";\tname = "ChemistrySideShutters"\t},/obj/item/folder/white,/obj/item/pen,/obj/effect/turf_decal/delivery,/obj/machinery/door/window/left/directional/west{\tname = "ChemistryDesk"4"
+	name = "Chemistry Desk";
+	req_access = list("pharmacy")
+},
+/turf/open/floor/iron,
+/area/station/medical/pharmacy)
+"dhc" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
+"dhf" = (
+/obj/machinery/newscaster/directional/south,
+/turf/open/floor/wood,
+/area/station/command/meeting_room/council)
+"dhg" = (
+/obj/structure/table,
+/obj/item/storage/secure/briefcase,
+/obj/structure/sign/poster/random/directional/west,
+/obj/effect/turf_decal/tile/brown{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/commons/vacant_room/commissary)
+"dhm" = (
+/obj/machinery/camera/directional/north{
+	c_tag = "Medbay-Center";
+	name = "medbaycamera";
+	network = list("ss13","medbay")
+	},
+/obj/effect/turf_decal/trimline/blue/filled/corner{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
+"dho" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
+"dhq" = (
+/obj/structure/sign/poster/official/report_crimes/directional/north,
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
+"dht" = (
+/obj/machinery/light/small/directional/north,
+/obj/structure/sign/departments/medbay/alt/directional/west,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/turf/open/floor/iron/white,
+/area/station/medical/medbay/central)
+"dhv" = (
+/obj/machinery/camera/directional/west{
+	c_tag = "Medbay-PsychologyOffice";
+	name = "medbaycamera";
+	network = list("ss13","medbay")
+	},
+/obj/structure/tank_holder/extinguisher,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/psychology)
+"dhw" = (
+/obj/effect/turf_decal/tile/blue/opposingcorners,
+/obj/effect/turf_decal/siding/blue{
+	dir = 10
+	},
+/turf/open/floor/iron/white,
+/area/station/command/heads_quarters/cmo)
+"dhx" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical{
+	name = "Surgery Observation"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/turf/open/floor/iron/dark,
+/area/station/medical/surgery/theatre)
+"dhy" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
+	dir = 1
+	},
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/psychology)
+"dhz" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/mid_joiner{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/white/smooth_large,
+/area/station/medical/psychology)
+"dhC" = (
+/obj/effect/spawner/structure/window/reinforced/tinted,
+/turf/open/floor/plating,
+/area/station/maintenance/starboard/aft)
+"dhQ" = (
+/turf/closed/wall,
+/area/station/science/research/abandoned)
+"dhT" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/medical/glass{
+	name = "Medbay Storage"
+	},
+/obj/structure/cable,
+/obj/structure/disposalpipe/segment,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/turf/open/floor/iron/white,
+/area/station/medical/storage)
+"dhU" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/r_wall,
+/area/station/science/xenobiology)
+"dhX" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"dib" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/door/firedoor,
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"dic" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/landmark/event_spawn,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"did" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"die" = (
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"dif" = (
+/obj/structure/disposalpipe/segment{
+	dir = 9
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/science/research)
+"dik" = (
+/obj/effect/landmark/start/scientist,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral,
+/obj/effect/turf_decal/tile/neutral{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral{
+	dir = 8
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron,
+/area/station/science/lab)
+"dil" = (
+/obj/structure/chair/office/light{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple,
+/turf/open/floor/iron/white,
+/area/station/science/lab)
+"dim" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/item/folder,
+/obj/item/pen,
+/obj/machinery/door/window/left/directional/south{
+	dir = 8;
+	name = "Research Lab Desk";
+	req_access = list("science")
+	},
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "rndlab2";
+	name = "Secondary Researchand Development Shutter"
+	},
+/obj/machinery/door/window/right/directional/east,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron,
+/area/station/science/lab)
+"din" = (
+/obj/effect/turf_decal/tile/purple{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/purple,
+/obj/effect/turf_decal/tile/purple{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
+"dio" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/yellow,
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
+"dip" = (
+/obj/structure/table/reinforced,
+/obj/machinery/door/firedoor,
+/obj/machinery/door/poddoor/shutters/preopen{
+	id = "chemistbot";
+	name = "Chemistry Side Shutters"
+	},
+/obj/item/folder/white,
+/obj/item/pen,
+/obj/effect/turf_decal/delivery,
+/obj/machinery/door/window/left/directional/west{
+	name = "Chemistry Desk"
 	},
 /obj/machinery/door/window/right/directional/east{
 	req_access = list("pharmacy");

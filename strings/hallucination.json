@@ -205,10 +205,10 @@
 		"Armory soyuyolar",
 		"BRİGE YARDIM EDİN",
 		"Medbay patlamış",
-		"@pick(location)@pick(threat) var",
-		"@pick(location)ölü cesetler var",
-		"@pick(location)bomba var",
-		"@pick(location)sendikacılar var"
+		"@pick(location) @pick(threat) var",
+		"@pick(location) ölü cesetler var",
+		"@pick(location) bomba var",
+		"@pick(location) sendikacılar var"
 	],
 
 	"eng_radio": [
@@ -219,9 +219,9 @@
 		"Atmosta plasma var",
 		"HFR patlıyo",
 		"Gravity kapandı",
-		"@pick(location)elektrik yok",
-		"@pick(location)delik var",
-		"@pick(location)hava yok"
+		"@pick(location) elektrik yok",
+		"@pick(location) delik var",
+		"@pick(location) hava yok"
 	],
 
 	"sci_radio": [

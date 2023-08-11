@@ -22,7 +22,6 @@
 	],
 
 	"greetings": [
-		"",
 		"Selam ",
 		"Selam, ",
 		"Bekle, "
@@ -123,6 +122,7 @@
 	"threat": [
 		"%TARGETNAME%",
 		"blob",
+		"flash sesleri",
 		"mavi apc",
 		"changeling",
 		"cultist",
@@ -132,7 +132,8 @@
 		"örümcekler",
 		"hain",
 		"wizard",
-		"uzaylılar"
+		"uzaylılar",
+		"korsanlar"
 	],
 
 	"location": [
@@ -155,7 +156,8 @@
 		"mutfakta",
 		"kütüphanede",
 		"virolojide",
-		"xenobioda"
+		"xenobioda",
+		"vaultta"
 	],
 
 	"sublocation": [
@@ -192,11 +194,21 @@
 
 	"sec_radio": [
 		"%TARGETNAME%'e arrest koyun",
-		"%TARGETNAME%, acil brige gel",
+		"%TARGETNAME% acil brige gel",
+		"%TARGETNAME_CAP% ACİL BRİGE GEL",
 		"%TARGETNAME% brigden dışarı çıkma",
 		"Brigi patlattılar!",
 		"Rev mi var",
-		"Hos'u öldürmüşler!!!"
+		"Hos'u öldürmüşler!!!",
+		"Rev var",
+		"Warden permada ölü",
+		"Armory soyuyolar",
+		"BRİGE YARDIM EDİN",
+		"Medbay patlamış",
+		"@pick(location)@pick(threat) var",
+		"@pick(location)ölü cesetler var",
+		"@pick(location)bomba var",
+		"@pick(location)sendikacılar var"
 	],
 
 	"eng_radio": [
@@ -204,7 +216,12 @@
 		"%TARGETNAME_CAP% BENİ SMYE ATMAYA ÇALIŞIYO",
 		"SM PATLIYO!!!",
 		"Atmosta nightmare var",
-		"Atmosta plasma var"
+		"Atmosta plasma var",
+		"HFR patlıyo",
+		"Gravity kapandı",
+		"@pick(location)elektrik yok",
+		"@pick(location)delik var",
+		"@pick(location)hava yok"
 	],
 
 	"sci_radio": [

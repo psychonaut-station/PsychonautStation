@@ -113,6 +113,7 @@
 	// And actually show them the message, for real.
 	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[radio_channel]" : null, spans, visible_name = TRUE)
 	to_chat(hallucinator, message)
+	hallucinator.log_message("Fake chatter [speaker]: '[chosen]'", LOG_HALLUCINATION)
 
 	// Then clean up.
 	qdel(src)

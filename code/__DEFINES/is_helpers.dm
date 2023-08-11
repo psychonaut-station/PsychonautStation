@@ -94,6 +94,7 @@ GLOBAL_LIST_INIT(turfs_openspace, typecacheof(list(
 #define isdullahan(A) (is_species(A, /datum/species/dullahan))
 #define ismonkey(A) (is_species(A, /datum/species/monkey))
 #define isandroid(A) (is_species(A, /datum/species/android))
+#define isipc(A) (is_species(A, /datum/species/ipc))
 #define isnightmare(A) (is_species(A, /datum/species/shadow/nightmare))
 #define issynthetic(A) (is_species(A, /datum/species/synthetic))
 

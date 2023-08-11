@@ -723,6 +723,14 @@
 	taste_description = "circuitry and steel"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
+/datum/reagent/mutationtoxin/ipc
+	name = "Ipc Mutation Toxin"
+	description = "A IPC toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/ipc
+	taste_description = "circuitry and plasteel"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
+
 //BLACKLISTED RACES
 /datum/reagent/mutationtoxin/skeleton
 	name = "Skeleton Mutation Toxin"
@@ -2798,7 +2806,7 @@
 	var/obj/effect/decal/cleanable/ants/pests = exposed_turf.spawn_unique_cleanable(/obj/effect/decal/cleanable/ants)
 	if(!pests)
 		return
-		
+
 	var/spilled_ants = (round(reac_volume,1) - 5) // To account for ant decals giving 3-5 ants on initialize.
 	pests.reagents.add_reagent(/datum/reagent/ants, spilled_ants)
 	pests.update_ant_damage()

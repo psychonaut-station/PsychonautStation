@@ -54,6 +54,9 @@
 		if(brain)
 			to_chat(user, span_warning("There's already a brain in the MMI!"))
 			return
+		if(istype(newbrain, /obj/item/organ/internal/brain/advanced_posibrain))
+			to_chat(user, span_warning("You cannot put this brain to MMI!"))
+			return
 		if(newbrain.suicided)
 			to_chat(user, span_warning("[newbrain] is completely useless."))
 			return

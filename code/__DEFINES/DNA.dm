@@ -87,6 +87,7 @@
 #define ORGAN_SLOT_TONGUE "tongue"
 #define ORGAN_SLOT_VOICE "vocal_cords"
 #define ORGAN_SLOT_ZOMBIE "zombie_infection"
+#define ORGAN_SLOT_VOLTPROTECT "voltage_protector"
 
 /// Organ slot external
 #define ORGAN_SLOT_EXTERNAL_TAIL "tail"
@@ -98,6 +99,7 @@
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
+#define ORGAN_SLOT_EXTERNAL_IPC_MONITOR "ipc_monitor"
 
 /// Xenomorph organ slots
 #define ORGAN_SLOT_XENO_ACIDGLAND "acid_gland"
@@ -140,6 +142,7 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_LUNGS,
 	ORGAN_SLOT_HEART,
 	ORGAN_SLOT_ZOMBIE,
+	ORGAN_SLOT_VOLTPROTECT,
 	ORGAN_SLOT_THRUSTERS,
 	ORGAN_SLOT_HUD,
 	ORGAN_SLOT_LIVER,

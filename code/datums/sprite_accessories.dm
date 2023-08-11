@@ -2112,6 +2112,15 @@
 	name = "Round"
 	icon_state = "round"
 
+/datum/sprite_accessory/ipc_monitor
+	icon = 'icons/mob/species/ipc/ipc-screens.dmi'
+	color_src = null
+	em_block = TRUE
+
+/datum/sprite_accessory/ipc_monitor/black
+	name = "Blackhead"
+	icon_state = "ipc-blackhead"
+
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/species/moth/moth_wings.dmi'
 	color_src = null

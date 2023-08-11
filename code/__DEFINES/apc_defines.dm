@@ -54,11 +54,13 @@
 /// The APCs external powernet has enough power to charge the APC.
 #define APC_HAS_POWER 2
 
-// Ethereals:
-/// How long it takes an ethereal to drain or charge APCs. Also used as a spam limiter.
+// Ethereals/Ipcs:
+/// How long it takes an ethereal/ipcs to drain or charge APCs. Also used as a spam limiter.
 #define APC_DRAIN_TIME (7.5 SECONDS)
 /// How much power ethereals gain/drain from APCs.
-#define APC_POWER_GAIN 200
+#define APC_POWER_GAIN_ETHEREAL 200
+/// How much power ipcs gain/drain from APCs.
+#define APC_POWER_GAIN_IPC 500
 
 // Wires & EMPs:
 /// The wire value used to reset the APCs wires after one's EMPed.

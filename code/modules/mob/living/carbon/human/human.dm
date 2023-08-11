@@ -1006,6 +1006,19 @@
 /mob/living/carbon/human/species/moth
 	race = /datum/species/moth
 
+/mob/living/carbon/human/species/ipc
+	race = /datum/species/ipc
+
+/mob/living/carbon/human/species/ipc/get_status_tab_items()
+	. = ..()
+	var/obj/item/organ/internal/stomach/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(stomach && istype(stomach, /obj/item/organ/internal/stomach/ipc))
+		var/obj/item/organ/internal/stomach/ipc/ipcstomach = stomach
+		if(ipcstomach.cell)
+			. += "Power: [ipcstomach.cell.charge]/[ipcstomach.cell.maxcharge]"
+		else
+			. += "Power: No Cell..!"
+
 /mob/living/carbon/human/species/mush
 	race = /datum/species/mush
 

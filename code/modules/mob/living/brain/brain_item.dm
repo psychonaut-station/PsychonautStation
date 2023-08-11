@@ -230,7 +230,7 @@
 
 	add_fingerprint(user)
 
-	if(user.zone_selected != BODY_ZONE_HEAD)
+	if(user.zone_selected != zone)
 		return ..()
 
 	var/target_has_brain = C.get_organ_by_type(/obj/item/organ/internal/brain)
@@ -242,7 +242,7 @@
 	//since these people will be dead M != usr
 
 	if(!target_has_brain)
-		if(!C.get_bodypart(BODY_ZONE_HEAD) || !user.temporarilyRemoveItemFromInventory(src))
+		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
 		if(C == user)
@@ -395,6 +395,13 @@
 /obj/item/organ/internal/brain/lustrous/on_insert(mob/living/carbon/organ_owner, special)
 	. = ..()
 	organ_owner.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
+
+/obj/item/organ/internal/brain/advanced_posibrain
+	name = "advanced positronic brain"
+	desc = "Advanced version of the positronic brain"
+	icon_state = "adv_posibrain"
+	zone = BODY_ZONE_CHEST
+	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 

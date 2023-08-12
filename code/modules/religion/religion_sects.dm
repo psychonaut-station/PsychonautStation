@@ -431,6 +431,12 @@
 	alignment = ALIGNMENT_EVIL
 	max_favor = 10000
 	desired_items = list(/obj/item/organ/)
+	rites_list = list(/datum/religion_rites/raise_dead, /datum/religion_rites/living_sacrifice, /datum/religion_rites/raise_undead)
+	altar_icon_state = "convertaltar-maint"
+
+//Necro bibles don't heal or do anything special apart from the standard holy water blessings
+/datum/religion_sect/necro_sect/sect_bless(mob/living/blessed, mob/living/user)
+	return TRUE
 
 /datum/religion_sect/necro_sect/on_sacrifice(obj/item/N, mob/living/L)
 	if(!istype(N, /obj/item/organ))

@@ -5,6 +5,7 @@
  */
 
 import { AudioPlayer } from './player';
+import { selectAudio } from './selectors';
 
 export const audioMiddleware = (store) => {
   const player = new AudioPlayer();
@@ -40,8 +41,10 @@ export const audioMiddleware = (store) => {
     }
     if (type === 'audio/jukebox/create') {
       if (!jukeboxPlayers[payload.jukeboxId]) {
+        const audio = selectAudio(store.getState());
         const player = new AudioPlayer();
         jukeboxPlayers[payload.jukeboxId] = player;
+        player.muted = audio.muted.includes(payload.jukeboxId);
         player.setVolume(adminMusicVolume);
         player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
         player.onStop(() =>
@@ -70,8 +73,10 @@ export const audioMiddleware = (store) => {
       if (jukeboxPlayers[jukeboxId]) {
         jukeboxPlayers[jukeboxId].play(url, options, volume);
       } else {
+        const audio = selectAudio(store.getState());
         const player = new AudioPlayer();
         jukeboxPlayers[jukeboxId] = player;
+        player.muted = audio.muted.includes(payload.jukeboxId);
         player.setVolume(adminMusicVolume);
         player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
         player.onStop(() =>
@@ -96,7 +101,7 @@ export const audioMiddleware = (store) => {
       return next(action);
     }
     if (type === 'audio/jukebox/toggleMute') {
-      // jukeboxPlayers[payload.jukeboxId]?.toggleMute();
+      jukeboxPlayers[payload.jukeboxId]?.toggleMute();
       return next(action);
     }
     return next(action);

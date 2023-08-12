@@ -132,8 +132,20 @@ export const NowPlayingWidget = (props, context) => {
                       </Flex.Item>
                       <Flex.Item mx={0.5} fontSize="0.9em">
                         <Button
+                          tooltip="Stop"
+                          icon="stop"
+                          onClick={() =>
+                            dispatch({
+                              type: 'audio/jukebox/stopMusic',
+                              payload: { jukeboxId },
+                            })
+                          }
+                        />
+                      </Flex.Item>
+                      <Flex.Item mx={0.5} fontSize="0.9em">
+                        <Button
                           tooltip={muted ? 'Unmute' : 'Mute'}
-                          icon={muted ? 'play' : 'stop'}
+                          icon={muted ? 'volume-off' : 'volume-up'}
                           onClick={() =>
                             dispatch({
                               type: 'audio/jukebox/toggleMute',

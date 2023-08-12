@@ -20,6 +20,7 @@ export class AudioPlayer {
     document.body.appendChild(this.node);
     // Set up other properties
     this.playing = false;
+    this.muted = false;
     this.volume = 1;
     this.localVolume = 1;
     this.options = {};
@@ -32,7 +33,7 @@ export class AudioPlayer {
         this.playing = true;
         this.node.playbackRate = this.options.pitch || 1;
         this.node.currentTime = this.options.start || 0;
-        this.node.volume = this.volume * this.localVolume;
+        this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
         this.node.play();
         for (let subscriber of this.onPlaySubscribers) {
           subscriber();
@@ -99,14 +100,21 @@ export class AudioPlayer {
   setVolume(volume) {
     if (this.node) {
       this.volume = volume;
-      this.node.volume = this.localVolume * volume;
+      if (!this.muted) this.node.volume = this.localVolume * volume;
     }
   }
 
   setLocalVolume(volume) {
     if (this.node) {
       this.localVolume = volume;
-      this.node.volume = this.volume * volume;
+      if (!this.muted) this.node.volume = this.volume * volume;
+    }
+  }
+
+  toggleMute() {
+    if (this.node) {
+      this.muted = !this.muted;
+      this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
     }
   }
 

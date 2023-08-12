@@ -252,7 +252,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(admin && isobserver(mob))
 		message = span_looc(span_prefix("LOOC: [usr.client.holder.fakekey ? "Administrator" : usr.client.key]: [msg]"))
 		for(var/mob/M in range(mob))
-			if (M?.canon_client?.holder)
+			if (M.client?.holder)
 				continue
 
 			var/avoid_highlight = M?.canon_client == src
@@ -260,7 +260,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	else
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
 		for(var/mob/M in range(mob))
-			if (M?.canon_client?.holder)
+			if (M.client?.holder)
 				continue
 				
 			var/avoid_highlight = M?.canon_client == src

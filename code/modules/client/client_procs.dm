@@ -485,11 +485,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/datum/http_response/response = request.into_response()
 		if(response.errored || response.status_code != 200)
 			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
-			send2tgs_adminless_only("Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
 		else if (response.body != "[]")
 			var/list/bans = json_decode(response["body"])
 			message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.</B></font>")
-			send2tgs_adminless_only("Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
+			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
 			add_system_note("centcomdb-ban", "Otomatik WL: [bans.len] tane CentComDB Ban kaydi bulunuyor.", "watchlist entry")
 
 	get_message_output("watchlist entry", ckey)

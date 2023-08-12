@@ -461,20 +461,37 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need it's current value now down below.
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+	var/new_account = FALSE
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
 			message_admins("New user: [key_name_admin(src)] is connecting here for the first time.")
-			if (CONFIG_GET(flag/irc_first_connection_alert))
-				send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			new_account = TRUE
 	else if (isnum(cached_player_age) && cached_player_age < nnpa)
 		message_admins("New user: [key_name_admin(src)] just connected with an age of [cached_player_age] day[(player_age == 1?"":"s")]")
 	if(CONFIG_GET(flag/use_account_age_for_jobs) && account_age >= 0)
 		player_age = account_age
 	if(account_age >= 0 && account_age < nnpa)
 		message_admins("[key_name_admin(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-		if (CONFIG_GET(flag/irc_first_connection_alert))
-			send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
+		send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
+
+	if (new_account && CONFIG_GET(string/centcom_ban_db))
+		var/datum/http_request/request = new()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
+		request.begin_async()
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.status_code != 200)
+			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+			send2tgs_adminless_only("Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+		else if (length(response["body"]) > 0)
+			var/ban_count = length(response["body"])
+			message_admins("Yeni oyuncu [key_name_admin(src)] için [ban_count] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
+			send2tgs_adminless_only("Yeni oyuncu [key_name(src)] için [ban_count] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
+			create_message("watchlist entry", ckey, "centcomdb-ban", "Otomatik WL: [ban_count] tane CentComDB Ban kaydi bulunuyor.", secret = 1)
+
 	get_message_output("watchlist entry", ckey)
 	check_ip_intel()
 	validate_key_in_db()

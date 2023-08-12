@@ -422,3 +422,20 @@
 /datum/religion_sect/music/on_conversion(mob/living/chap)
 	. = ..()
 	new /obj/item/choice_beacon/music(get_turf(chap))
+
+/datum/religion_sect/necro_sect
+	name = "Necromancy"
+	desc = "A sect dedicated to the revival and summoning of the dead. Sacrificing living animals grants you favor."
+	quote = "An undead army is a must have!"
+	tgui_icon = "skull"
+	alignment = ALIGNMENT_EVIL
+	max_favor = 10000
+	desired_items = list(/obj/item/organ/)
+
+/datum/religion_sect/necro_sect/on_sacrifice(obj/item/N, mob/living/L)
+	if(!istype(N, /obj/item/organ))
+		return
+	adjust_favor(10, L)
+	to_chat(L, "<span class='notice'>You offer [N] to [GLOB.deity], pleasing them and gaining 10 favor in the process.</span>")
+	qdel(N)
+	return TRUE

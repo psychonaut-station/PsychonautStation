@@ -577,7 +577,15 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		return
 
 	var/msg = "<font color='red' size='6'><b>- KARAKTER MESELESİ -</b></font><br>"
-	msg += "<font color='red'>İnce bir detay iyi düşünülmesi gereken bir kararları ha oldu bitti gitti ye getirmeyeceksin. Planlı hamleler yapacaksın. Hayatını karambole getirmeyeceksin. Bak şairin sözüne; “Yaşam şakaya gelmez, hayatını bütün ciddiyetinle yaşayacaksın.” Adam vurgulamış yani. İşte böyle saçma sapan kararlar alıp sonra ah yandım falan yok. İnce düşünecek geri dönüşü olan kararlar almayacaksın. Bir karar aldın mı? O kararın arkasında duracaksın. Bu öyle bir şey ki hayatına yön veren kararları alırken de saygı duyacaksın.</font>"
+	msg += "<font color='red'>İnce bir detay iyi düşünülmesi gereken bir kararları ha oldu bitti gitti ye "
+	msg += "getirmeyeceksin. Planlı hamleler yapacaksın. Hayatını karambole getirmeyeceksin. Bak şairin sözüne; "
+	msg += "“Yaşam şakaya gelmez, hayatını bütün ciddiyetinle yaşayacaksın.” Adam vurgulamış yani. İşte böyle "
+	msg += "saçma sapan kararlar alıp sonra ah yandım falan yok. İnce düşünecek geri dönüşü olan kararlar "
+	msg += "almayacaksın. Bir karar aldın mı? O kararın arkasında duracaksın. Bu öyle bir şey ki hayatına yön "
+	msg += "veren kararları alırken de saygı duyacaksın.</font>"
+	msg += "<img src='https://psychonautstation.com/~pub/img/km1.jpg' /><br>"
+	msg += "<img src='https://psychonautstation.com/~pub/img/km2.jpg' /><br>"
+	msg += "<img src='https://psychonautstation.com/~pub/img/km3.png' /><br>"
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)

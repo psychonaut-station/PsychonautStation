@@ -490,7 +490,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			var/list/bans = json_decode(response["body"])
 			message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.</B></font>")
 			send2tgs_adminless_only("Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
-			create_message("watchlist entry", ckey, "centcomdb-ban", "Otomatik WL: [bans.len] tane CentComDB Ban kaydi bulunuyor.", secret = 1)
+			add_system_note("centcomdb-ban", "Otomatik WL: [bans.len] tane CentComDB Ban kaydi bulunuyor.", "watchlist entry")
 
 	get_message_output("watchlist entry", ckey)
 	check_ip_intel()
@@ -776,7 +776,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			else
 				CRASH("Key check regex failed for [ckey]")
 
-/client/proc/add_system_note(system_ckey, message)
+/client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.
 	var/datum/db_query/query_get_notes = SSdbcore.NewQuery(
 		"SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = :targetckey AND adminckey = :adminckey AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL)",
@@ -802,7 +802,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(query_get_notes)
 			return
 	qdel(query_get_notes)
-	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
+	create_message(message_type, key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 
 
 /client/proc/check_ip_intel()

@@ -32603,13 +32603,6 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"eHk" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mining Office"
-	},
-/turf/open/floor/plating,
-/area/station/cargo/miningoffice)
 "eHs" = (
 /obj/effect/landmark/start/scientist,
 /obj/structure/cable,
@@ -36082,8 +36075,8 @@
 /obj/item/pen,
 /obj/machinery/door/window/left/directional/west{
 	dir = 4;
-	name = "Mining Desk";
-	req_access = list("mining")
+	name = "Mining Office Desk";
+	req_one_access = list("shipping", "mining")
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -40697,6 +40690,10 @@
 	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
+	},
+/obj/machinery/door/window/right/directional/south{
+	name = "Ore Redemption Access";
+	req_access = list("mineral_storeroom")
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
@@ -55053,9 +55050,6 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
-	},
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mining Office"
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
@@ -85375,9 +85369,6 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mining Office"
-	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
 "urq" = (
@@ -94417,7 +94408,8 @@
 /obj/item/folder/yellow,
 /obj/item/pen,
 /obj/machinery/door/window/left/directional/south{
-	req_access = list("mining")
+	name = "Mining Office Desk";
+	req_one_access = list("shipping", "mining")
 	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -95586,7 +95578,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/mining{
-	name = "Cargo Warehouse"
+	name = "Delivery Office"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/structure/cable,
@@ -142291,7 +142283,7 @@ mFE
 hKA
 mFE
 mWb
-eHk
+mFE
 pDA
 pDA
 wlu

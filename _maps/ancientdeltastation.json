@@ -1,8 +1,8 @@
 {
 	"version": 1,
-	"map_name": "Daha Eski Delta Station",
+	"map_name": "Eski Delta Station",
 	"map_path": "map_files/Deltastation",
-	"map_file": "DeltaStation3.dmm",
+	"map_file": "AncientDeltaStation.dmm",
 	"shuttles": {
 		"emergency": "emergency_delta",
 		"ferry": "ferry_fancy",

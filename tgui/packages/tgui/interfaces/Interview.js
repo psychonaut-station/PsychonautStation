@@ -23,7 +23,8 @@ export const Interview = (props, context) => {
       default:
         return (
           <NoticeBox info>
-            Başvurunuz aktif olan adminlere gönderildi. {queue_pos}. sıradasınız.
+            Başvurunuz aktif olan adminlere gönderildi. {queue_pos}.
+            sıradasınız.
           </NoticeBox>
         );
     }

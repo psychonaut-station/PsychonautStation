@@ -21,7 +21,7 @@
 	if(..())
 		return TRUE
 	var/highscore = 0
-	for(var/obj/machinery/power/bluespace_tap/T in GLOB.machines)
+	for(var/obj/machinery/power/bluespace_tap/T in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/bluespace_tap))
 		highscore = max(highscore, T.total_points)
 	to_chat(world, "<b>Bluespace Harvester Highscore</b>: [highscore >= goal ? "<span class='greenannounce'>": "<span class='boldannounce'>"][highscore]</span>")
 	if(highscore >= goal)
@@ -48,11 +48,11 @@
 							/obj/item/stock_parts/capacitor/quadratic = 5,//Probably okay, right?
 							/obj/item/stack/ore/bluespace_crystal = 5)
 
-/obj/effect/spawner/lootdrop/bluespace_tap
+/obj/effect/spawner/random/structure/bluespace_tap
 	name = "bluespace harvester reward spawner"
-	lootcount = 1
+	spawn_loot_count = 1
 
-/obj/effect/spawner/lootdrop/bluespace_tap/hat
+/obj/effect/spawner/random/structure/bluespace_tap/hat
 	name = "exotic hat"
 	loot = list(
 			/obj/item/clothing/head/collectable/chef,	//same weighing on all of them
@@ -64,11 +64,11 @@
 			/obj/item/clothing/head/collectable/flatcap,
 			/obj/item/clothing/head/collectable/pirate,
 			/obj/item/clothing/head/collectable/kitty,
-			/obj/item/clothing/head/crown/fancy,
+			/obj/item/clothing/head/costume/crown/fancy,
 			/obj/item/clothing/head/collectable/rabbitears,
 			/obj/item/clothing/head/collectable/wizard,
 			/obj/item/clothing/head/collectable/hardhat,
-			/obj/item/clothing/head/collectable/HoS,
+			/obj/item/clothing/head/collectable/hos,
 			/obj/item/clothing/head/collectable/thunderdome,
 			/obj/item/clothing/head/collectable/swat,
 			/obj/item/clothing/head/collectable/slime,
@@ -79,7 +79,7 @@
 	)
 
 
-/obj/effect/spawner/lootdrop/bluespace_tap/cultural
+/obj/effect/spawner/random/structure/bluespace_tap/cultural
 	name = "cultural artifacts"
 	loot = list(
 		/obj/item/grenade/clusterbuster/cleaner = 10,
@@ -87,22 +87,22 @@
 		/obj/item/toy/katana = 10,
 		/obj/item/stack/sheet/iron/twenty = 15,
 		/obj/item/stack/sheet/glass/fifty = 10,
-		/obj/item/stack/sheet/mineral/copper/twenty = 20,
+		/obj/item/stack/sheet/bronze/thirty = 20,
 		/obj/item/sord = 20,
-		/obj/item/toy/syndicateballoon = 15,
+		/obj/item/toy/balloon/syndicate = 15,
 		/obj/item/lighter/greyscale = 5,
 		/obj/item/lighter = 5,
-		/obj/item/gun/ballistic/automatic/toy/pistol = 1,
+		/obj/item/gun/ballistic/automatic/pistol/toy = 1,
 		/obj/item/gun/ballistic/automatic/c20r/toy = 1,
 		/obj/item/gun/ballistic/automatic/l6_saw/toy = 1,
 		/obj/item/gun/ballistic/shotgun/toy = 1,
 		/obj/item/gun/ballistic/shotgun/toy/crossbow = 1,
 		/obj/item/dualsaber/toy = 5,
 		/obj/machinery/smoke_machine = 10,
-		/obj/item/clothing/head/kitty = 5,
+		/obj/item/clothing/head/costume/kitty = 5,
+		/obj/item/clothing/head/costume/kitty/genuine = 5,
 		/obj/item/coin/antagtoken = 5,
-		/obj/item/clothing/suit/cardborg = 10,
-		/obj/item/toy/prize/honk = 10,
+		/obj/item/clothing/suit/costume/cardborg = 10,
 		/obj/item/bedsheet/patriot = 2,
 		/obj/item/bedsheet/rainbow = 2,
 		/obj/item/bedsheet/captain = 2,
@@ -113,52 +113,51 @@
 		/obj/item/clothing/gloves/combat = 5
 	)
 
-/obj/effect/spawner/lootdrop/bluespace_tap/organic
+/obj/effect/spawner/random/structure/bluespace_tap/organic
 	name = "organic objects"
 	loot = list(
 		/obj/item/seeds/random = 10,
-		/obj/item/storage/pill_bottle/charcoal = 25,
 		/obj/item/storage/pill_bottle/mannitol = 25,
 		/obj/item/storage/pill_bottle/mutadone = 25,
 		/obj/item/dnainjector/telemut = 5,
 		/obj/item/dnainjector/chameleonmut = 5,
 		/obj/item/dnainjector/dwarf = 5,
-		/mob/living/simple_animal/pet/dog/corgi/ = 5,
-		/mob/living/simple_animal/pet/cat = 5,
-		/mob/living/simple_animal/pet/dog/bullterrier = 5,
-		/mob/living/simple_animal/pet/penguin = 5,
+		/mob/living/basic/pet/dog/corgi = 5,
+		/mob/living/simple_animal/pet = 5,
+		/mob/living/basic/pet/dog/bullterrier = 5,
+		/mob/living/basic/pet/penguin = 5,
 		/mob/living/simple_animal/parrot = 5,
 		/obj/item/slimepotion/slime/sentience = 5,
 		/obj/item/clothing/mask/cigarette/cigar/havana = 3,
 		/obj/item/stack/sheet/mineral/bananium/five = 10,	//bananas are organic, clearly.
 		/obj/item/storage/box/monkeycubes = 5,
 		/obj/item/stack/tile/carpet/black/fifty = 10,
-		/obj/item/stack/tile/carpet/blue/thirtytwo = 10,
-		/obj/item/stack/tile/carpet/cyan/thirtytwo = 10,
+		/obj/item/stack/tile/carpet/blue/fifty = 10,
+		/obj/item/stack/tile/carpet/cyan/fifty = 10,
 		/obj/item/soap/deluxe = 5
 	)
 
-/obj/effect/spawner/lootdrop/bluespace_tap/food
+/obj/effect/spawner/random/structure/bluespace_tap/food
 	name = "fancy food"
-	lootcount = 3
+	spawn_loot_count = 3
 	loot = list(
-		/obj/item/reagent_containers/food/snacks/burger/crab,
-		/obj/item/reagent_containers/food/snacks/crab_rangoon,
-		/obj/item/reagent_containers/food/snacks/scotchegg,
-		/obj/item/reagent_containers/food/snacks/pancakes/chocolatechip,
-		/obj/item/reagent_containers/food/snacks/carrotfries,
-		/obj/item/reagent_containers/food/snacks/chocolatebunny,
-		/obj/item/reagent_containers/food/snacks/benedict,
-		/obj/item/reagent_containers/food/snacks/cornedbeef,
-		/obj/item/reagent_containers/food/snacks/soup/meatball,
-		/obj/item/reagent_containers/food/snacks/soup/monkeysdelight,
-		/obj/item/reagent_containers/food/snacks/soup/stew,
-		/obj/item/reagent_containers/food/snacks/soup/hotchili,
-		/obj/item/reagent_containers/food/snacks/burrito,
-		/obj/item/reagent_containers/food/snacks/burger/fish,
-		/obj/item/reagent_containers/food/snacks/cubancarp,
-		/obj/item/reagent_containers/food/snacks/fishandchips,
-		/obj/item/reagent_containers/food/snacks/pie/meatpie,
+		/obj/item/food/burger/crab,
+		/obj/item/food/crab_rangoon,
+		/obj/item/food/scotchegg,
+		/obj/item/food/pancakes/chocolatechip,
+		/obj/item/food/carrotfries,
+		/obj/item/food/chocolatebunny,
+		/obj/item/food/benedict,
+		/obj/item/food/cornedbeef,
+		/obj/item/reagent_containers/cup/bowl/soup/meatball_soup,
+		/obj/item/reagent_containers/cup/bowl/soup/monkey,
+		/obj/item/reagent_containers/cup/bowl/soup/stew,
+		/obj/item/reagent_containers/cup/bowl/soup/hotchili,
+		/obj/item/food/burrito,
+		/obj/item/food/burger/fish,
+		/obj/item/food/cubancarp,
+		/obj/item/food/fishandchips,
+		/obj/item/food/pie/meatpie,
 		/obj/item/pizzabox,
 	)
 
@@ -196,10 +195,10 @@
 
 	/// list of possible products
 	var/static/product_list = list(
-	new /datum/data/bluespace_tap_product("Unknown Exotic Hat", /obj/effect/spawner/lootdrop/bluespace_tap/hat, 5000),
-	new /datum/data/bluespace_tap_product("Unknown Snack", /obj/effect/spawner/lootdrop/bluespace_tap/food, 6000),
-	new /datum/data/bluespace_tap_product("Unknown Cultural Artifact", /obj/effect/spawner/lootdrop/bluespace_tap/cultural, 15000),
-	new /datum/data/bluespace_tap_product("Unknown Biological Artifact", /obj/effect/spawner/lootdrop/bluespace_tap/organic, 20000)
+	new /datum/data/bluespace_tap_product("Unknown Exotic Hat", /obj/effect/spawner/random/structure/bluespace_tap/hat, 5000),
+	new /datum/data/bluespace_tap_product("Unknown Snack", /obj/effect/spawner/random/structure/bluespace_tap/food, 6000),
+	new /datum/data/bluespace_tap_product("Unknown Cultural Artifact", /obj/effect/spawner/random/structure/bluespace_tap/cultural, 15000),
+	new /datum/data/bluespace_tap_product("Unknown Biological Artifact", /obj/effect/spawner/random/structure/bluespace_tap/organic, 20000)
 	)
 
 	/// The level the machine is currently mining at. 0 means off
@@ -426,7 +425,7 @@
 
 /obj/item/paper/bluespace_tap
 	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"
-	info = "<h1>Important Instructions!</h1>Please follow all setup instructions to ensure proper operation. <br>\
+	default_raw_text = {"<h1>Important Instructions!</h1>Please follow all setup instructions to ensure proper operation. <br>\
 	1. Create a wire node with ample access to spare power. The device operates independently of APCs. <br>\
 	2. Create a machine frame as normal on the wire node, taking into account the device's dimensions (3 by 3 meters). <br>\
 	3. Insert wiring, circuit board and required components and finish construction according to NT engineering standards. <br>\
@@ -440,7 +439,7 @@
 	For this reason, total shift point production will be calculated and announced at shift end. High totals may result in bonus payments to members of the Engineering department. <p>\
 	<p>NT Science Directorate, Extradimensional Exploitation Research Group</p> \
 	<p><small>Device highly experimental. Not for sale. Do not operate near small children or vital NT assets. Do not tamper with machine. In case of existential dread, stop machine immediately. \
-	Please document any and all extradimensional incursions. In case of imminent death, please leave said documentation in plain sight for clean-up teams to recover.</small></p>"
+	Please document any and all extradimensional incursions. In case of imminent death, please leave said documentation in plain sight for clean-up teams to recover.</small></p>"}
 
 #undef kW
 #undef MW

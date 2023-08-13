@@ -93,7 +93,7 @@ export const Interview = (props, context) => {
           }>
           {!read_only && (
             <p>
-              Lütfen aşağıdaki soruların cevaplayıp 'Gönder' tuşuna basın.
+              Lütfen aşağıdaki soruların cevaplayıp Gönder tuşuna basın.
               <br />
               <br />
               <b>Gönderdiğiniz başvuruyu bir daha değiştiremezsiniz.</b>

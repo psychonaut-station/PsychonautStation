@@ -717,3 +717,8 @@
 
 /datum/config_entry/flag/config_errors_runtime
 	default = FALSE
+
+/datum/config_entry/number/timezone_offset
+	default = 36000
+	min_val = 1
+	integer = TRUE

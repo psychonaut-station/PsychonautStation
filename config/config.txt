@@ -589,3 +589,6 @@ DISCORD_ROUND_ALERT_ROLE_ID
 
 ## Causes configuration errors to spit out runtimes
 CONFIG_ERRORS_RUNTIME
+
+## Timezone offset in deciseconds
+TIMEZONE_OFFSET 36000

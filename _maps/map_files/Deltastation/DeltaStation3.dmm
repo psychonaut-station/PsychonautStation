@@ -1085,6 +1085,15 @@
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"afv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 1
+	},
+/turf/open/floor/iron/grimy,
+/area/station/security/detectives_office)
 "afw" = (
 /obj/structure/chair{
 	dir = 4
@@ -10089,16 +10098,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/detectives_office)
 "bJh" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/item/clothing/suit/jacket{
-	desc = "All the class of a trenchcoat without the security fibers.";
-	icon_state = "detective";
-	name = "trenchcoat"
-	},
-/obj/item/clothing/head/fedora{
-	icon_state = "detective"
-	},
-/obj/item/clothing/gloves/color/black,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -10110,6 +10109,14 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/structure/closet/secure_closet/detective,
+/obj/item/clothing/head/fedora/det_hat{
+	icon_state = "curator"
+	},
+/obj/item/clothing/suit/jacket/det_suit{
+	icon_state = "curator"
+	},
+/obj/item/clothing/under/rank/security/detective,
 /turf/open/floor/iron/dark,
 /area/station/security/detectives_office)
 "bJi" = (
@@ -10657,6 +10664,9 @@
 /area/station/security/detectives_office)
 "bMZ" = (
 /obj/machinery/holopad,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "bNb" = (
@@ -11130,6 +11140,9 @@
 /turf/open/floor/iron/dark,
 /area/station/security/detectives_office)
 "bPg" = (
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "bPi" = (
@@ -16816,7 +16829,7 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "cvT" = (
@@ -32590,6 +32603,13 @@
 /obj/effect/turf_decal/tile/red,
 /turf/open/floor/iron,
 /area/station/security/prison)
+"eHk" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Office"
+	},
+/turf/open/floor/plating,
+/area/station/cargo/miningoffice)
 "eHs" = (
 /obj/effect/landmark/start/scientist,
 /obj/structure/cable,
@@ -36049,10 +36069,10 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Gear Room"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/security/brig,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "fIe" = (
@@ -54457,7 +54477,6 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/cable,
 /obj/effect/landmark/navigate_destination,
 /obj/effect/turf_decal/stripes/line{
@@ -54469,6 +54488,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "brig-entrance"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "liT" = (
@@ -55033,6 +55053,9 @@
 /obj/effect/turf_decal/tile/purple,
 /obj/effect/turf_decal/tile/purple{
 	dir = 8
+	},
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Office"
 	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
@@ -63233,7 +63256,6 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/security/general,
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -63244,6 +63266,7 @@
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "brig-entrance"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/security/entrance,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "nKV" = (
@@ -70030,6 +70053,9 @@
 /area/station/command/heads_quarters/captain)
 "pNY" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 8
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "pOb" = (
@@ -73785,6 +73811,9 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 1
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "qPZ" = (
@@ -75237,6 +75266,9 @@
 "rnO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 9
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "ron" = (
@@ -78256,13 +78288,14 @@
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mining Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/any/supply/shipping,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
 "slH" = (
@@ -85342,6 +85375,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/machinery/door/airlock/mining/glass{
+	name = "Mining Office"
+	},
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
 "urq" = (
@@ -87676,6 +87712,9 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/unres{
+	dir = 4
+	},
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
 "vai" = (
@@ -89488,13 +89527,14 @@
 /obj/machinery/door/airlock/mining/glass{
 	name = "Mining Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/shipping,
+/obj/effect/mapping_helpers/airlock/access/any/supply/mining,
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
 "vEK" = (
@@ -97430,6 +97470,9 @@
 "xXz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/siding/dark_red{
+	dir = 1
+	},
 /turf/open/floor/iron/grimy,
 /area/station/security/detectives_office)
 "xXB" = (
@@ -142248,7 +142291,7 @@ mFE
 hKA
 mFE
 mWb
-mFE
+eHk
 pDA
 pDA
 wlu
@@ -145605,7 +145648,7 @@ aaa
 aaa
 bHr
 bJj
-mhL
+afv
 uhy
 uhy
 mhL
@@ -145862,7 +145905,7 @@ aaa
 aaa
 bHs
 bJk
-mhL
+afv
 bNb
 bPi
 bRj

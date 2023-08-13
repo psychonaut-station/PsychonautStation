@@ -786,6 +786,13 @@ SUBSYSTEM_DEF(job)
 		if(sec.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
 			. += sec
 
+/// Returns a list of minds of given department members
+/datum/controller/subsystem/job/proc/get_department_crew(bitflag)
+	. = list()
+	for(var/datum/mind/mind as anything in get_crewmember_minds())
+		if(mind.assigned_role.departments_bitflags & bitflag)
+			. += mind
+
 /datum/controller/subsystem/job/proc/JobDebug(message)
 	log_job_debug(message)
 
@@ -915,5 +922,14 @@ SUBSYSTEM_DEF(job)
 		return JOB_UNAVAILABLE_GENERIC
 
 	return JOB_AVAILABLE
+
+/datum/controller/subsystem/job/proc/is_occupation_of(job_name, bitflags)
+	for (var/datum/job/job as anything in all_occupations)
+		if (job.title != job_name)
+			continue
+
+		return job.departments_bitflags & bitflags
+
+	return FALSE
 
 #undef VERY_LATE_ARRIVAL_TOAST_PROB

@@ -303,7 +303,7 @@
 		close()
 		return
 	if(needs_update)
-		window.send_message("update", get_payload())
+		send_update()
 
 /**
  * private

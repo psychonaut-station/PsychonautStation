@@ -93,7 +93,6 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/list/queue = list()
 	var/list/requests = list()
 	var/list/listeners_in_range = list()
-	// var/list/clients_in_range = list()
 	var/datum/web_track/current_track
 	var/datum/proximity_monitor/advanced/player_collector/proximity_monitor
 	var/static/regex/ytdl_regex = regex(YTDL_REGEX, "s")
@@ -117,7 +116,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		var/obj/structure/closet/supplypod/pod = loc
 		sleep(pod.delays[POD_TRANSIT] + pod.delays[POD_FALLING] + pod.delays[POD_OPENING] + 1)
 
-	proximity_monitor = new(src, range)
+	proximity_monitor = new(src, range, FALSE)
 	proximity_monitor.recalculate_field()
 
 /obj/machinery/electrical_jukebox/proc/cleanup()
@@ -132,9 +131,6 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		for(var/mob/user in listeners_in_range)
 			user.client?.tgui_panel?.destroy_jukebox_player(id)
 
-		// for(var/client/client in clients_in_range)
-		// 	client.tgui_panel?.destroy_jukebox_player(id)
-
 		QDEL_NULL(proximity_monitor)
 
 		UnregisterSignal(src, COMSIG_PROXIMITY_MOB_ENTERED)
@@ -144,7 +140,6 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	QDEL_NULL(queue)
 	QDEL_NULL(requests)
 	QDEL_NULL(listeners_in_range)
-	// QDEL_NULL(clients_in_range)
 
 	UnregisterSignal(src, COMSIG_QDELETING)
 
@@ -474,17 +469,11 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		if(user.client && user.client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
 			to_chat(user, "[icon2html(src, user.client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
 			user.client.tgui_panel?.play_jukebox_music(id, track.url, track.as_list, get_volume(user))
-	// for(var/client/client in clients_in_range)
-	// 	if(client.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-	// 		to_chat(client, "[icon2html(src, client)] [span_boldnotice("Playing [track.webpage_url_html] added by [track.mob_name] on [src].")]")
-	// 		client.tgui_panel?.play_jukebox_music(id, track.url, track.as_list, get_volume(client.mob))
 
 /obj/machinery/electrical_jukebox/proc/stop_in_mob_list()
 	for(var/mob/user in listeners_in_range)
 		if(user.client)
 			user.client.tgui_panel?.stop_jukebox_music(id)
-	// for(var/client/client in clients_in_range)
-	// 	client.tgui_panel?.stop_jukebox_music(id)
 
 /obj/machinery/electrical_jukebox/proc/play_music_by_track(datum/web_track/track, looped = FALSE)
 	if(busy || is_playing() || !anchored || !is_operational)
@@ -595,29 +584,33 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	SIGNAL_HANDLER
 	if(is_playing() && listeners_in_range.Find(user))
 		user.client?.tgui_panel?.set_jukebox_volume(id, get_volume(user))
-	// if(is_playing() && clients_in_range.Find(user.client))
-	// 	user.client.tgui_panel?.set_jukebox_volume(id, get_volume(user))
 
 /obj/machinery/electrical_jukebox/proc/on_mob_entered(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-	// if(!clients_in_range.Find(user.client) && user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-		listeners_in_range += user
-		// clients_in_range += user.client
+		if(!listeners_in_range.Find(user))
+			listeners_in_range += user
 		if(is_playing())
-			current_track.as_list["start"] = (world.time - track_started_at) / 10
-			user.client.tgui_panel?.play_jukebox_music(id, current_track.url, current_track.as_list, get_volume(user))
-		else
-			user.client.tgui_panel?.create_jukebox_player(id)
+			var/list/options = current_track.as_list.Copy()
+			options["start"] = (world.time - track_started_at) / 10
+			user.client.tgui_panel?.play_jukebox_music(id, current_track.url, options, get_volume(user))
+	RegisterSignal(user, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
 
 /obj/machinery/electrical_jukebox/proc/on_mob_left(datum/source, mob/user)
 	SIGNAL_HANDLER
 	if(listeners_in_range.Find(user))
 		listeners_in_range -= user
 		user.client?.tgui_panel?.destroy_jukebox_player(id)
-	// if(clients_in_range.Find(user.client))
-	// 	clients_in_range -= user.client
-	// 	user.client?.tgui_panel?.destroy_jukebox_player(id)
+	UnregisterSignal(user, COMSIG_MOB_CLIENT_LOGIN)
+
+/obj/machinery/electrical_jukebox/proc/on_mob_login(mob/_mob, client/_client)
+	if(_client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+		if(!listeners_in_range.Find(_mob))
+			listeners_in_range += _mob
+		if(is_playing())
+			var/list/options = current_track.as_list.Copy()
+			options["start"] = (world.time - track_started_at) / 10
+			_client.tgui_panel?.play_jukebox_music(id, current_track.url, options, get_volume(_mob))
 
 /obj/item/electrical_jukebox_beacon
 	name = "electrical jukebox beacon"

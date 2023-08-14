@@ -80,7 +80,7 @@ export const feature_lizard_spines: FeatureChoiced = {
 };
 
 export const feature_ipc_head: FeatureChoiced = {
-  name: 'Ipc Head',
+  name: 'Head',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>
   ) => {

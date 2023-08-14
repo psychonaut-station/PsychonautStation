@@ -247,17 +247,22 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	mob.log_talk(raw_msg, LOG_LOOC)
 
 	var/message
+	var/message_admin = span_looc(span_prefix("LOOC: [key_name_admin(usr)]: [msg]"))
 
 	if(admin && isobserver(mob))
 		message = span_looc(span_prefix("LOOC: [usr.client.holder.fakekey ? "Administrator" : usr.client.key]: [msg]"))
-		for(var/mob/M in range(mob))
-			var/avoid_highlight = M?.canon_client == src
-			to_chat(M, message, avoid_highlighting = avoid_highlight)
 	else
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
-		for(var/mob/M in range(mob))
-			var/avoid_highlight = M?.canon_client == src
-			to_chat(M, message, avoid_highlighting = avoid_highlight)
+
+	for(var/mob/M in range(mob))
+		if (M.client?.holder)
+			continue
+		to_chat(M, message, avoid_highlighting = (M?.client == src))
+
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_LOOC,
+		html = message_admin,
+		confidential = TRUE)
 
 //Checks admin notice
 /client/verb/admin_notice()

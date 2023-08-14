@@ -20,26 +20,26 @@ export class AudioPlayer {
     document.body.appendChild(this.node);
     // Set up other properties
     this.playing = false;
+    this.muted = false;
     this.volume = 1;
     this.localVolume = 1;
     this.options = {};
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
     // Listen for playback start events
-    this.playthroughListener = () => {
-      if (this.node && this.node.playbackRate) {
+    this.node.addEventListener('canplaythrough', () => {
+      if (this.node && this.node instanceof HTMLAudioElement) {
         logger.log('canplaythrough');
         this.playing = true;
         this.node.playbackRate = this.options.pitch || 1;
         this.node.currentTime = this.options.start || 0;
-        this.node.volume = this.volume * this.localVolume;
+        this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
         this.node.play();
         for (let subscriber of this.onPlaySubscribers) {
           subscriber();
         }
       }
-    };
-    this.node.addEventListener('canplaythrough', this.playthroughListener);
+    });
     // Listen for playback stop events
     this.node.addEventListener('ended', () => {
       logger.log('ended');
@@ -66,23 +66,14 @@ export class AudioPlayer {
   }
 
   destroy() {
-    for (const subscriber of this.onStopSubscribers) {
-      subscriber();
-    }
-    logger.log('stopping');
-    clearInterval(this.playbackInterval);
-    this.playing = false;
     if (this.node) {
-      this.node.src = '';
-      this.node.stop?.();
-      this.node.removeEventListener?.(
-        'canplaythrough',
-        this.playthroughListener
-      );
+      this.stop();
+      logger.log('destroyed');
+      clearInterval(this.playbackInterval);
       try {
         document.body.removeChild(this.node);
       } catch {}
-      delete this.node;
+      this.node = null;
     }
   }
 
@@ -109,14 +100,21 @@ export class AudioPlayer {
   setVolume(volume) {
     if (this.node) {
       this.volume = volume;
-      this.node.volume = this.localVolume * volume;
+      if (!this.muted) this.node.volume = this.localVolume * volume;
     }
   }
 
   setLocalVolume(volume) {
     if (this.node) {
       this.localVolume = volume;
-      this.node.volume = this.volume * volume;
+      if (!this.muted) this.node.volume = this.volume * volume;
+    }
+  }
+
+  toggleMute() {
+    if (this.node) {
+      this.muted = !this.muted;
+      this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
     }
   }
 

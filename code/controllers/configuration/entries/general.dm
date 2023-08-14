@@ -78,6 +78,9 @@
 /// log client say
 /datum/config_entry/flag/log_say
 
+/// log chat hallucination
+/datum/config_entry/flag/log_hallucination
+
 /// log admin actions
 /datum/config_entry/flag/log_admin
 	protection = CONFIG_ENTRY_LOCKED
@@ -714,3 +717,8 @@
 
 /datum/config_entry/flag/config_errors_runtime
 	default = FALSE
+
+/datum/config_entry/number/timezone_offset
+	default = 36000
+	min_val = 1
+	integer = TRUE

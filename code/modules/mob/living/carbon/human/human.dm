@@ -1031,7 +1031,8 @@
 			. += "Power: [ipcstomach.cell.charge]/[ipcstomach.cell.maxcharge]"
 		else
 			. += "Power: No Cell..!"
-
+	else
+		. += "Power: No Power..!"
 /mob/living/carbon/human/species/mush
 	race = /datum/species/mush
 

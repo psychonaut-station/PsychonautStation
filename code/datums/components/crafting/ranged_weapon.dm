@@ -329,6 +329,16 @@
 	time = 30 SECONDS //contemplate for a bit
 	category = CAT_WEAPON_RANGED
 
+//datum/crafting_recipe/laser_musket_napoleon
+	//name = "Napoleonic Laser Musket"
+	//result = /obj/item/gun/energy/laser/musket/napoleon
+	//reqs = list(
+		///obj/item/gun/energy/laser/musket = 1,
+		///obj/item/stack/cable_coil = 15,
+		///obj/item/food/grown/onion = 1,
+	//)
+	//tool_behaviors = list(TOOL_SCREWDRIVER)
+	//time = 20 SECONDS
 /datum/crafting_recipe/smoothbore_disabler
 	name = "Smoothbore Disabler"
 	result = /obj/item/gun/energy/disabler/smoothbore

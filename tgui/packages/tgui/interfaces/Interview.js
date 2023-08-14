@@ -17,14 +17,14 @@ export const Interview = (props, context) => {
   const rendered_status = (status) => {
     switch (status) {
       case 'interview_approved':
-        return <NoticeBox success>This interview was approved.</NoticeBox>;
+        return <NoticeBox success>Başvurunuz onaylandı.</NoticeBox>;
       case 'interview_denied':
-        return <NoticeBox danger>This interview was denied.</NoticeBox>;
+        return <NoticeBox danger>Başvurunuz reddedildi.</NoticeBox>;
       default:
         return (
           <NoticeBox info>
-            Your answers have been submitted. You are position {queue_pos} in
-            queue.
+            Başvurunuz aktif olan adminlere gönderildi. {queue_pos}.
+            sıradasınız.
           </NoticeBox>
         );
     }
@@ -56,17 +56,17 @@ export const Interview = (props, context) => {
       canClose={is_admin || status === 'interview_approved'}>
       <Window.Content scrollable>
         {(!read_only && (
-          <Section title="Welcome!">
+          <Section title="Hoş Geldiniz!">
             <p>{linkify_text(welcome_message)}</p>
           </Section>
         )) ||
           rendered_status(status)}
         <Section
-          title="Questionnaire"
+          title="Başvuru"
           buttons={
             <span>
               <Button
-                content={read_only ? 'Submitted' : 'Submit'}
+                content={read_only ? 'Gönderildi' : 'Gönder'}
                 onClick={() => act('submit')}
                 disabled={read_only}
               />
@@ -78,12 +78,12 @@ export const Interview = (props, context) => {
                     onClick={() => act('adminpm')}
                   />
                   <Button
-                    content="Approve"
+                    content="Onayla"
                     color="good"
                     onClick={() => act('approve')}
                   />
                   <Button
-                    content="Deny"
+                    content="Reddet"
                     color="bad"
                     onClick={() => act('deny')}
                   />
@@ -93,25 +93,24 @@ export const Interview = (props, context) => {
           }>
           {!read_only && (
             <p>
-              Please answer the following questions, and press submit when you
-              are satisfied with your answers.
+              Lütfen aşağıdaki soruların cevaplayıp Gönder tuşuna basın.
               <br />
               <br />
-              <b>You will not be able to edit your answers after submitting.</b>
+              <b>Gönderdiğiniz başvuruyu bir daha değiştiremezsiniz.</b>
             </p>
           )}
           {questions.map(({ qidx, question, response }) => (
-            <Section key={qidx} title={`Question ${qidx}`}>
+            <Section key={qidx} title={`Soru ${qidx}`}>
               <p>{linkify_text(question)}</p>
               {((read_only || is_admin) && (
-                <BlockQuote>{response || 'No response.'}</BlockQuote>
+                <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
               )) || (
                 <TextArea
                   value={response}
                   fluid
                   height={10}
                   maxLength={500}
-                  placeholder="Write your response here, max of 500 characters."
+                  placeholder="Cevabını buraya yaz."
                   onChange={(e, input) =>
                     input !== response &&
                     act('update_answer', {

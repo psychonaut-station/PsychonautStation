@@ -31,6 +31,8 @@
 /obj/item/ammo_casing/energy/laser/musket/prime
 	projectile_type = /obj/projectile/beam/laser/musket/prime
 
+/obj/item/ammo_casing/energy/laser/musket/napoeleon
+	projectile_type = /obj/projectile/beam/laser/musket/napoleon
 /obj/item/ammo_casing/energy/laser/practice
 	projectile_type = /obj/projectile/beam/practice
 	select_name = "practice"

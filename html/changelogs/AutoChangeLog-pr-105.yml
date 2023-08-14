@@ -1,0 +1,6 @@
+author: "exdal"
+delete-after: True
+changes:
+  - rscadd: "New hallucination types"
+  - rscadd: "Centcom DB Ban checks"
+  - bugfix: "Timezones"

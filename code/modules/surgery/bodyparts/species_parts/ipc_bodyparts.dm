@@ -7,8 +7,8 @@
 #define ROBOTIC_HEAVY_BURN_MSG "smoldering"
 
 /obj/item/bodypart/head/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	max_damage = 50
 	disabled_wound_penalty = 10
@@ -33,22 +33,6 @@
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
-	var/static/possible_overlays = list(
-		"off" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-off"),
-		"smile" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-smile"),
-		"uwu" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-uwu"),
-		"null" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-null"),
-		"alert" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-alert"),
-		"cool" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-cool"),
-		"dead" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-dead"),
-		"nt" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-nt"),
-		"heartline" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-heartline"),
-		"reddot" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-reddot"),
-		"glitchman" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-glitchman"),
-		"turk" = image(icon = 'icons/mob/species/ipc/bodyparts.dmi', icon_state = "ipc-turk")
-	)
-
-	var/emotion_icon = "off"
 
 /obj/item/bodypart/head/ipc/emp_act(severity)
 	. = ..()
@@ -62,15 +46,9 @@
 
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, remove_client_colour), /datum/client_colour/malfunction), glitch_duration)
 
-/obj/item/bodypart/head/ipc/proc/change_monitor_emote(emote)
-	var/mob/living/carbon/human/H = owner
-	emotion_icon = emote
-
-	to_chat(owner, span_notice("[emotion_icon]"))
-
 /obj/item/bodypart/chest/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
@@ -104,8 +82,8 @@
 	owner.Shake(pixelshiftx = 3, pixelshifty = 0, duration = 2.5 SECONDS)
 
 /obj/item/bodypart/arm/left/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -126,8 +104,8 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
 /obj/item/bodypart/arm/right/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -148,8 +126,8 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
 /obj/item/bodypart/leg/left/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -178,8 +156,8 @@
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 
 /obj/item/bodypart/leg/right/ipc
-	icon = 'icons/mob/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/species/ipc/bodyparts.dmi'
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE

@@ -178,6 +178,10 @@
 			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
 			return SURGERY_STEP_FAIL
 
+		if(!istype(target_organ, /obj/item/organ/internal/brain/advanced_posibrain) && istype(target_organ, /obj/item/organ/internal/brain) && istype(target, /mob/living/carbon/human/species/ipc))
+			to_chat(user, span_warning("You cant put this brain to ipc!"))
+			return SURGERY_STEP_FAIL
+
 		if(!can_use_organ(user, meatslab))
 			return SURGERY_STEP_FAIL
 

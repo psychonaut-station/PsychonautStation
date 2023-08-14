@@ -947,6 +947,18 @@
 /mob/living/carbon/human/monkeybrain
 	ai_controller = /datum/ai_controller/monkey
 
+/mob/living/carbon/human/proc/give_ipcscreen_overlay(overlay_typepath)
+	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
+	var/obj/item/bodypart/bodypart = src.get_bodypart(overlay.attached_body_zone)
+	var/obj/item/organ/external/ipchead/ipcscreen = src.get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
+	if(!bodypart)
+		return null
+	if(!ipcscreen)
+		return null
+	bodypart.add_bodypart_overlay(overlay)
+	src.update_body_parts()
+	return overlay
+
 /mob/living/carbon/human/species
 	var/race = null
 	var/use_random_name = TRUE
@@ -1008,6 +1020,7 @@
 
 /mob/living/carbon/human/species/ipc
 	race = /datum/species/ipc
+	gib_type = /obj/effect/decal/cleanable/robot_debris
 
 /mob/living/carbon/human/species/ipc/get_status_tab_items()
 	. = ..()

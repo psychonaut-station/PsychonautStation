@@ -23,8 +23,13 @@
 	moth.equipOutfit(/datum/outfit/job/cmo, visualsOnly = TRUE)
 	test_screenshot("[/datum/species/moth]", get_flat_icon_for_all_directions(moth))
 
+	var/mob/living/carbon/human/ipc = allocate(/mob/living/carbon/human/dummy/consistent)
+	ipc.dna.features["ipc_monitor"] = "Blackhead"
+	ipc.set_species(/datum/species/ipc)
+	ipc.equipOutfit(/datum/outfit/ipcjacketbiker, visualsOnly = TRUE)
+	test_screenshot("[/datum/species/ipc]", get_flat_icon_for_all_directions(ipc))
 	// The rest of the species
-	for (var/datum/species/species_type as anything in subtypesof(/datum/species) - /datum/species/moth - /datum/species/lizard)
+	for (var/datum/species/species_type as anything in subtypesof(/datum/species) - /datum/species/moth - /datum/species/lizard - /datum/species/ipc)
 		test_screenshot("[species_type]", get_flat_icon_for_all_directions(make_dummy(species_type, /datum/outfit/job/assistant/consistent)))
 
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)

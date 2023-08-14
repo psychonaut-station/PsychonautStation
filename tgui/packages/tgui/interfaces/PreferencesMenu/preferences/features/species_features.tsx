@@ -79,6 +79,15 @@ export const feature_lizard_spines: FeatureChoiced = {
   },
 };
 
+export const feature_ipc_head: FeatureChoiced = {
+  name: 'Ipc Head',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
 export const feature_lizard_tail: FeatureChoiced = {
   name: 'Tail',
   component: (

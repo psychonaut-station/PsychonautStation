@@ -19,7 +19,8 @@
 
 /obj/item/organ/internal/stomach/ipc/on_life(seconds_per_tick, times_fired)
 	. = ..()
-	adjust_charge(-IPC_CHARGE_FACTOR * seconds_per_tick)
+	if(cell && cell.charge > 0)
+		adjust_charge(-IPC_CHARGE_FACTOR * seconds_per_tick)
 	handle_charge(owner, seconds_per_tick, times_fired)
 
 /obj/item/organ/internal/stomach/ipc/on_insert(mob/living/carbon/stomach_owner)

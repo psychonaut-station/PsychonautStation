@@ -2,11 +2,11 @@
 	name = "Ipc"
 	id = SPECIES_IPC
 	examine_limb_id = SPECIES_HUMAN
+	plural_form = "Ipc"
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_GENELESS,
-		TRAIT_LIMBATTACHMENT,
 		TRAIT_NOBREATH,
 		TRAIT_NOCLONELOSS,
 		TRAIT_NOFIRE,
@@ -19,8 +19,8 @@
 		TRAIT_NO_DNA_COPY,
 		TRAIT_NO_TRANSFORMATION_STING,
 		TRAIT_XENO_IMMUNE,
+		TRAIT_NOHUNGER
 	)
-
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
 	mutantbrain = /obj/item/organ/internal/brain/advanced_posibrain
@@ -39,7 +39,7 @@
 	species_language_holder = /datum/language_holder/synthetic
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
-	no_equip_flags = ITEM_SLOT_EYES | ITEM_SLOT_MASK
+	no_equip_flags = ITEM_SLOT_MASK
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/ipc,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/ipc,
@@ -78,6 +78,70 @@
 	update_no_equip_flags(H, NONE)
 	return TRUE
 
+/datum/species/ipc/get_features()
+	var/list/features = ..()
+
+	features += "ipc_monitor"
+
+	return features
+
+/datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
+	human_mob.dna.features["ipc_monitor"] = pick(GLOB.ipc_monitor_list)
+	randomize_external_organs(human_mob)
+
+/datum/species/ipc/get_species_description()
+	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \
+	- based on newly developed Postronic brain technology."
+
+/datum/species/ipc/get_species_lore()
+	return list(
+		"Positronic intelligence really took off in the 26th century, and it is not uncommon to see independent, free-willed \
+		robots on many human stations, particularly in fringe systems where standards are slightly lax and public opinion less relevant \
+		to corporate operations.",
+		"IPCs (Integrated Positronic Chassis) are a loose category of self-willed robots with a humanoid form, \
+		generally self-owned after being 'born' into servitude; they are reliable and dedicated workers, albeit more than slightly \
+		inhuman in outlook and perspective."
+	)
+
+/datum/species/ipc/create_pref_unique_perks()
+	var/list/to_add = list()
+
+	to_add += list(
+		list(
+			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
+			SPECIES_PERK_ICON = "bolt",
+			SPECIES_PERK_NAME = "Shockingly Tasty",
+			SPECIES_PERK_DESC = "Ipcs can feed on electricity from APCs, and do not otherwise need to eat.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
+			SPECIES_PERK_ICON = "robot",
+			SPECIES_PERK_NAME = "Robotic",
+			SPECIES_PERK_DESC = "IPCs have an entirely robotic body, meaning medical care is typically done through Robotics or Engineering. \
+			Whether this is helpful or not is heavily dependent on your coworkers. It does, however, mean you are usually able to perform self-repairs easily.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+			SPECIES_PERK_ICON = "battery-quarter",
+			SPECIES_PERK_NAME = "Cell Battery",
+			SPECIES_PERK_DESC = "If you run out of charge, you can't move.",
+		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+			SPECIES_PERK_ICON = "magnet",
+			SPECIES_PERK_NAME = "EMP Vulnerable",
+			SPECIES_PERK_DESC = "IPC organs are cybernetic, and thus susceptible to electromagnetic interference.",
+		),
+	)
+
+	return to_add
+
+/datum/species/ipc/create_pref_liver_perks()
+	RETURN_TYPE(/list)
+	return list()
+
+/// DATUMS
+
 /datum/action/innate/change_monitor
 	name = "Change Monitor Emote"
 	check_flags = NONE
@@ -86,66 +150,37 @@
 	background_icon_state = "bg_tech"
 	overlay_icon_state = "bg_tech_border"
 	var/static/possible_overlays = list(
-		"off" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-off"),
-		"smile" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-smile"),
-		"uwu" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-uwu"),
-		"null" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-null"),
-		"alert" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-alert"),
-		"cool" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-cool"),
-		"dead" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-dead"),
-		"nt" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-nt"),
-		"heartline" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-heartline"),
-		"reddot" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-reddot"),
-		"glitchman" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-glitchman"),
-		"turk" = image(icon = 'icons/mob/species/ipc/ipc-screens.dmi', icon_state = "ipc-turk")
+		"off",
+		"smile",
+		"uwu",
+		"null",
+		"alert",
+		"cool",
+		"dead",
+		"nt",
+		"heartline",
+		"reddot",
+		"glitchman",
+		"turk",
 	)
-
-/datum/action/innate/change_monitor/IsAvailable(feedback = FALSE)
-	. = ..()
-	if(!.)
-		return
-	var/mob/living/carbon/human/H = owner
-	var/obj/item/bodypart/head/original_head = H.get_bodypart(BODY_ZONE_HEAD)
-	if(!original_head || !istype(original_head, /obj/item/bodypart/head/ipc))
-		return FALSE
-	return TRUE
+	var/emotion_icon = "off"
+	var/datum/bodypart_overlay/simple/ipcscreen/currentoverlay
 
 /datum/action/innate/change_monitor/Activate()
 	var/mob/living/carbon/human/H = owner
-	var/obj/item/bodypart/head/ipc/original_head = H.get_bodypart(BODY_ZONE_HEAD)
-	var/picked_emote = show_radial_menu(H, H, possible_overlays, radius = 36)
-	original_head.change_monitor_emote(picked_emote)
+	var/new_image = tgui_input_list(H, "Select your new display image", "Display Image", possible_overlays)
+	change_monitor_emote(new_image)
 
+/datum/action/innate/change_monitor/proc/change_monitor_emote(emote)
+	var/mob/living/carbon/human/H = owner
+	emotion_icon = emote
+	for(var/path in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))
+		var/datum/bodypart_overlay/simple/ipcscreen/realemote = new path()
+		if(realemote.icon_state == "ipc-[emotion_icon]")
+			currentoverlay = H.give_ipcscreen_overlay(path)
+		else
+			continue
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
-//Ipc head organ
-/obj/item/organ/external/ipchead
-	name = "ipc monitor"
-	desc = "IPC Head Monitor"
-	zone = BODY_ZONE_HEAD
-	slot = ORGAN_SLOT_EXTERNAL_IPC_MONITOR
-	use_mob_sprite_as_obj_sprite = TRUE
-	bodypart_overlay = /datum/bodypart_overlay/mutant/ipchead
-	var/datum/action/innate/change_monitor/change_monitor
-
-/obj/item/organ/external/ipchead/on_insert(mob/living/carbon/organ_owner)
-	. = ..()
-	change_monitor = new
-	change_monitor.Grant(organ_owner)
-
-/obj/item/organ/external/ipchead/on_remove(mob/living/carbon/organ_owner)
-	. = ..()
-	if(change_monitor)
-		change_monitor.Remove(organ_owner)
-
-/obj/item/organ/external/ipchead/on_life(seconds_per_tick, times_fired)
-	. = ..()
-	if(change_monitor)
-		change_monitor.build_all_button_icons()
-
-/datum/bodypart_overlay/mutant/ipchead
-	layers = ALL_EXTERNAL_OVERLAYS
-	feature_key = "ipc_monitor"
-
 //Voltage Protector Organ
 /obj/item/organ/internal/voltprotector
 	name = "High Voltage Protector"

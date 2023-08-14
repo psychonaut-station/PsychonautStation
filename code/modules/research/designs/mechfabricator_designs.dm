@@ -9,6 +9,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "robo_suit"
 
 /datum/design/borg_chest
 	name = "Cyborg Torso"
@@ -20,6 +22,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "robotic_chest"
 
 /datum/design/borg_head
 	name = "Cyborg Head"
@@ -31,6 +35,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "borg_head"
 
 /datum/design/borg_l_arm
 	name = "Cyborg Left Arm"
@@ -42,6 +48,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "borg_l_arm"
 
 /datum/design/borg_r_arm
 	name = "Cyborg Right Arm"
@@ -53,6 +61,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "borg_r_arm"
 
 /datum/design/borg_l_leg
 	name = "Cyborg Left Leg"
@@ -64,6 +74,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "borg_l_leg"
 
 /datum/design/borg_r_leg
 	name = "Cyborg Right Leg"
@@ -75,6 +87,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CHASSIS
 	)
+	research_icon = 'icons/mob/augmentation/augments.dmi'
+	research_icon_state = "borg_r_leg"
 
 //IPC
 /datum/design/ipc_chest
@@ -87,6 +101,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_chest"
 
 /datum/design/ipc_head
 	name = "IPC Head"
@@ -98,6 +114,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_head"
 
 /datum/design/ipc_l_arm
 	name = "IPC Left Arm"
@@ -109,6 +127,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_l_arm"
 
 /datum/design/ipc_r_arm
 	name = "IPC Right Arm"
@@ -120,6 +140,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_r_arm"
 
 /datum/design/ipc_l_leg
 	name = "IPC Left Leg"
@@ -131,6 +153,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_l_leg"
 
 /datum/design/ipc_r_leg
 	name = "IPC Right Leg"
@@ -142,6 +166,8 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_r_leg"
 
 /datum/design/ipc_stomach
 	name = "IPC Cell Holder"

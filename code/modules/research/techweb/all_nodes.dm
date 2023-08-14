@@ -160,6 +160,23 @@
 		"sflash",
 	)
 
+/datum/techweb_node/ipc
+	id = "ipc"
+	starting_node = TRUE
+	display_name = "IPC Construction"
+	description = "Humanoid robotic creatures with monitors in their heads."
+	design_ids = list(
+		"ipc_chest",
+		"ipc_head",
+		"ipc_l_arm",
+		"ipc_l_leg",
+		"ipc_r_arm",
+		"ipc_r_leg",
+		"ipc_stomach",
+		"ipc_voltprotector",
+		"ipc_monitor",
+	)
+
 /datum/techweb_node/mech
 	id = "mecha"
 	starting_node = TRUE
@@ -273,6 +290,7 @@
 		"cybernetic_liver",
 		"cybernetic_lungs",
 		"cybernetic_stomach",
+		"cybernetic_tongue",
 		"defibmountdefault",
 		"dropper",
 		"hemostat",

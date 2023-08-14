@@ -2114,6 +2114,7 @@
 
 /datum/sprite_accessory/ipc_monitor
 	icon = 'icons/mob/human/species/ipc/ipc_screens.dmi'
+	icon_state = "blackhead" //Default icon for mech fab
 	color_src = null
 	em_block = TRUE
 

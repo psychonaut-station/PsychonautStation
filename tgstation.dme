@@ -475,7 +475,6 @@
 #include "code\_globalvars\genetics.dm"
 #include "code\_globalvars\lighting.dm"
 #include "code\_globalvars\logging.dm"
-#include "code\_globalvars\misc.dm"
 #include "code\_globalvars\phobias.dm"
 #include "code\_globalvars\religion.dm"
 #include "code\_globalvars\tgui.dm"

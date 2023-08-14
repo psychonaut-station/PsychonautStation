@@ -696,12 +696,14 @@
 /datum/religion_rites/summon_animals/perform_rite(mob/living/user, atom/religious_tool)
 	var/turf/altar_turf = get_turf(religious_tool)
 	new /obj/effect/temp_visual/bluespace_fissure(altar_turf)
-	user.visible_message("<span class'notice'>A tear in reality appears above the altar!</span>")
+	user.visible_message("<span class'notice'>A tear in reality begins forming above the altar!</span>")
 	return ..()
 
 /datum/religion_rites/summon_animals/invoke_effect(mob/living/user, atom/religious_tool)
 	..()
 	var/turf/altar_turf = get_turf(religious_tool)
+	new /obj/effect/temp_visual/bluespace_fissure(altar_turf)
+	user.visible_message("<span class'notice'>A tear in reality begins forms above the altar!</span>")
 	for(var/i in 1 to 8)
 		var/mob/living/simple_animal/S = create_random_mob(altar_turf, FRIENDLY_SPAWN)
 		S.faction |= "neutral"

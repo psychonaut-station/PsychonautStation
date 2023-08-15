@@ -880,6 +880,7 @@
 
 			var/datum/game_mode/dynamic/dynamic = SSticker.mode
 			dynamic.unfavorable_situation()
+			flicker_all_lights()
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
 			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor

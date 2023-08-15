@@ -236,7 +236,7 @@
 			return
 		// If the tray IS empty, continue on (tray will be placed on the table like other items)
 
-	if(istype(I, /obj/item/toy/cards/deck))
+	if(!user.combat_mode && istype(I, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = I
 		if(dealer_deck.wielded) // deal a card facedown on the table
 			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
@@ -281,8 +281,8 @@
 	else
 		return ..()
 
-/obj/structure/table/attackby_secondary(obj/item/weapon, mob/user, params)
-	if(istype(weapon, /obj/item/toy/cards/deck))
+/obj/structure/table/attackby_secondary(obj/item/weapon, mob/living/user, params)
+	if(!user.combat_mode && istype(weapon, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = weapon
 		if(dealer_deck.wielded) // deal a card faceup on the table
 			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
@@ -901,4 +901,3 @@
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
-

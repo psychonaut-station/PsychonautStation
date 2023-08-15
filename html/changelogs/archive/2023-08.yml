@@ -239,3 +239,27 @@
   - qol: The "Malicious Software Detected" button has been appropriately renamed to
       "Reset Software" for when pAIs are emagged
   - qol: Add a new law notification popup and flavor texts when pAI is emagged
+2023-08-15:
+  SandPoot:
+  - image: Changed screentips icons to something a lot fancier unified with the LMB
+      / RMB text.
+  - qol: There are accessibility preferences to disable this! Look for "Screentip
+      context with images" beside the other screentip preferences.
+  Sealed101:
+  - image: bubblegum's blood smack and blood grab use new bubblegum sprites
+  Seefaaa:
+  - rscadd: "Jukebox player\u0131na mute butonu eklendi."
+  - bugfix: "Jukebox alan\u0131nda sonradan girmeyip i\xE7erisinde do\u011Fanlar i\xE7\
+      in ses \xE7alacak."
+  - bugfix: "Jukebox alan\u0131ndaki mobun client\u0131 de\u011Fi\u015Fti\u011Finde\
+      \ yeni client i\xE7in ses \xE7alacak."
+  Sheits:
+  - image: Re-sprites some of the oldest hairstyles
+  exdal:
+  - rscadd: New hallucination types
+  - rscadd: Centcom DB Ban checks
+  - bugfix: Timezones
+  - rscadd: Turkce Interview panel
+  - rscadd: Latejoin menuye alert seviyesi
+  - qol: Captain's Display Case artik kaptan accessiyle acilabiliyor
+  - rscadd: Secure AI Upload

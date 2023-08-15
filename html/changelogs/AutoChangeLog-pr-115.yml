@@ -1,7 +1,0 @@
-author: "exdal"
-delete-after: True
-changes:
-  - rscadd: "Turkce Interview panel"
-  - rscadd: "Latejoin menuye alert seviyesi"
-  - qol: "Captain's Display Case artik kaptan accessiyle acilabiliyor"
-  - rscadd: "Secure AI Upload"

@@ -1,0 +1,12 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - rscadd: "Poker çipleri eklendi"
+  - rscadd: "Poker çipi makinesi eklendi"
+  - rscadd: "Barmenin dolabına her türden 1 deste kart ve çip makinesi kartı eklendi"
+  - rscdel: "Hand of cards artık çapraz görünmeyecek"
+  - bugfix: "Hand of cards artık blurlu görünmeyecek"
+  - bugfix: "Kart destesi combat mode açıkken masaya vurulduğunda desteden 1 kart yok olmayacak"
+  - bugfix: "Hand of cards masanın ortası yerine ilk kartın bulunduğu konumda oluşucak"
+  - qol: "Hand of cardsa sağ tıklayarak kartları çevirebileceksiniz"
+  - image: "Poker çipi ve makinesi spriteları"

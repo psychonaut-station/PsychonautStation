@@ -250,7 +250,7 @@
 	update_appearance()
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
-
+	
 /obj/machinery/light/update_current_power_usage()
 	if(!on && static_power_used > 0) //Light is off but still powered
 		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
@@ -700,3 +700,8 @@
 /obj/machinery/light/floor/broken
 	status = LIGHT_BROKEN
 	icon_state = "floor-broken"
+
+/proc/flicker_all_lights()
+	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
+		if(is_station_level(L.z))
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker), rand(1, 4)), rand(1, 25))

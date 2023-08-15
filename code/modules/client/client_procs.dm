@@ -825,9 +825,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/list/modifiers = params2list(params)
 
 	var/button_clicked = LAZYACCESS(modifiers, "button")
-	
+
 	var/dragged = LAZYACCESS(modifiers, DRAG)
-	if(dragged && button_clicked != dragged) 
+	if(dragged && button_clicked != dragged)
 		return
 
 	if (object && IS_WEAKREF_OF(object, middle_drag_atom_ref) && button_clicked == LEFT_CLICK)
@@ -1030,7 +1030,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	void.UpdateGreed(actualview[1],actualview[2])
 
 /client/proc/AnnouncePR(announcement)
-	if(prefs && prefs.chat_toggles & CHAT_PULLR)
+	if(get_chat_toggles(src) & CHAT_PULLR)
 		to_chat(src, announcement)
 
 ///Redirect proc that makes it easier to call the unlock achievement proc. Achievement type is the typepath to the award, user is the mob getting the award, and value is an optional variable used for leaderboard value increments

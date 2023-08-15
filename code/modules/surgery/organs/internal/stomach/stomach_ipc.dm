@@ -27,8 +27,9 @@
 	. = ..()
 	RegisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(stomach_owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
-	if(istype(stomach_owner, /mob/living/carbon/human/species/ipc))
+	if(istype(stomach_owner.dna.species, /datum/species/ipc))
 		stomach_owner.remove_status_effect(/datum/status_effect/ipc_powerissue)
+		RegisterSignal(stomach_owner, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 
 /obj/item/organ/internal/stomach/ipc/on_remove(mob/living/carbon/stomach_owner)
 	. = ..()
@@ -37,8 +38,16 @@
 	stomach_owner.clear_mood_event("charge")
 	stomach_owner.clear_alert(ALERT_CHARGE)
 	stomach_owner.remove_status_effect(/datum/status_effect/ipc_powerissue)
-	if(istype(stomach_owner, /mob/living/carbon/human/species/ipc))
+	if(istype(stomach_owner.dna.species, /datum/species/ipc))
+		UnregisterSignal(stomach_owner, COMSIG_MOB_GET_STATUS_TAB_ITEMS)
 		stomach_owner.apply_status_effect(/datum/status_effect/ipc_powerissue)
+
+/obj/item/organ/internal/stomach/ipc/proc/get_status_tab_item(mob/living/carbon/source, list/items)
+	SIGNAL_HANDLER
+	if(cell)
+		items += "Power: [cell.charge]/[cell.maxcharge]"
+	else
+		items += "Power: No Power"
 
 /obj/item/organ/internal/stomach/ipc/proc/charge(datum/source, amount, repairs)
 	SIGNAL_HANDLER

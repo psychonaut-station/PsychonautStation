@@ -2122,6 +2122,10 @@
 	name = "Blackhead"
 	icon_state = "blackhead"
 
+/datum/sprite_accessory/ipc_monitor/white
+	name = "Whitehead"
+	icon_state = "whitehead"
+
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'
 	color_src = null

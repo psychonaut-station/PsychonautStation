@@ -64,7 +64,7 @@
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
-	if(H.health < H.crit_threshold)
+	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
 		H.adjustBruteLoss(1.5 * seconds_per_tick)
 
 /datum/species/ipc/proc/on_emag_act(mob/living/carbon/human/H, mob/user)

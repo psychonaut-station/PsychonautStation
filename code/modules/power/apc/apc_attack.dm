@@ -221,7 +221,8 @@
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "draining power"), alert_timer_duration)
-		if(do_after(user, APC_DRAIN_TIME, target = src))
+		while(do_after(user, APC_DRAIN_TIME, target = src))
+			stomach.drain_time = world.time + APC_DRAIN_TIME
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach.crystal_charge > charge_limit))
 				return
 			balloon_alert(ethereal, "received charge")

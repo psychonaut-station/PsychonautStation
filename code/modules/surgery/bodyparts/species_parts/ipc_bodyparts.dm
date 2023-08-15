@@ -9,26 +9,22 @@
 /obj/item/bodypart/head/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_head"
 	limb_id = SPECIES_IPC
-	max_damage = 50
-	disabled_wound_penalty = 10
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	head_flags = NONE
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
 	heavy_brute_msg = ROBOTIC_HEAVY_BRUTE_MSG
-	can_be_disabled = TRUE
-	disabling_threshold_percentage = 1
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
-	bodypart_traits = list(TRAIT_EASYDISMEMBER)
 	biological_state = BIO_BONE
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
@@ -49,13 +45,14 @@
 /obj/item/bodypart/chest/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_chest"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -84,13 +81,14 @@
 /obj/item/bodypart/arm/left/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_l_arm"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -106,13 +104,14 @@
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_r_arm"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -128,12 +127,13 @@
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_l_leg"
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
@@ -158,12 +158,13 @@
 /obj/item/bodypart/leg/right/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_r_leg"
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
 	brute_modifier = 1
-	burn_modifier = 0.7
+	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG

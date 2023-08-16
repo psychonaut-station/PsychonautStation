@@ -432,7 +432,7 @@
 	max_favor = 10000
 	desired_items = list(/obj/item/organ/)
 	rites_list = list(/datum/religion_rites/raise_dead, /datum/religion_rites/living_sacrifice, /datum/religion_rites/raise_undead)
-	altar_icon_state = "convertaltar-maint"
+	altar_icon_state = "convertaltar_necro"
 
 //Necro bibles don't heal or do anything special apart from the standard holy water blessings
 /datum/religion_sect/necro_sect/sect_bless(mob/living/blessed, mob/living/user)
@@ -457,13 +457,10 @@
 	max_favor = 10000
 	desired_items = list(/obj/item/food/meat)
 	rites_list = list(/datum/religion_rites/summon_carp, /datum/religion_rites/flood_area)
-	altar_icon_state = "convertaltar-blue"
+	altar_icon_state = "convertaltar_carp"
 
 //Carp bibles give people the carp faction!
 /datum/religion_sect/carp_sect/sect_bless(mob/living/L, mob/living/user)
-	if(!isliving(L))
-		return FALSE
-	AddComponent(/datum/component/faction_granter, FACTION_CARP, holy_role_required = HOLY_ROLE_PRIEST, grant_message = span_boldnotice("You are blessed by Carp-Sie. Wild space carp will no longer attack you."))
 	return TRUE
 
 /datum/religion_sect/carp_sect/on_sacrifice(obj/item/N, mob/living/L)
@@ -483,7 +480,7 @@
 	max_favor = 10000
 	desired_items = list(/obj/item/seeds)
 	rites_list = list(/datum/religion_rites/create_podperson,/datum/religion_rites/summon_animals)
-	altar_icon_state = "convertaltar-white"
+	altar_icon_state = "convertaltar_nature"
 
 //plant bibles don't heal or do anything special apart from the standard holy water blessings
 /datum/religion_sect/plant_sect/sect_bless(mob/living/blessed, mob/living/user)

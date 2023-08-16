@@ -1,0 +1,5 @@
+author: "AhmetEfeAkgoz"
+delete-after: True
+changes:
+  - rscadd: "Necromancy, Carp, Nature Sectleri için yeni spritelar"
+  - rscdel: "çalışmayan carp blessing mekaniği kaldırıldı"

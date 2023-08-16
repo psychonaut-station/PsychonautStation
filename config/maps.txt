@@ -32,7 +32,7 @@ map deltastation
 endmap
 
 map ancientdeltastation
-	minplayer 0
+	minplayers 0
 	votable
 endmap
 

@@ -802,3 +802,8 @@
   exdal:
   - rscadd: New station goal, Bluespace Tap
   - rscadd: Creaking lights
+2023-08-17:
+  AhmetEfeAkgoz:
+  - rscadd: "Necromancy, Carp, Nature Sectleri i\xE7in yeni spritelar"
+  - rscdel: "\xE7al\u0131\u015Fmayan carp blessing mekani\u011Fi kald\u0131r\u0131\
+      ld\u0131"

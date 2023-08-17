@@ -1,0 +1,5 @@
+author: "exdal"
+delete-after: True
+changes:
+  - rscadd: "AI detector artik upload key'i gostericek"
+  - bugfix: "Infect AI objektifi icin ai detector eklendi"

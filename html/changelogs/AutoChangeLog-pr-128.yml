@@ -1,0 +1,4 @@
+author: "alibuyuktatli"
+delete-after: True
+changes:
+  - bugfix: "anomaly core ile intihar ederken sinyal yollandıktan sonra ölmeme sorunu çözüldü."

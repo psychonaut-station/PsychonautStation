@@ -9,6 +9,8 @@
 /obj/item/bodypart/head/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	max_damage = 75
+	disabled_wound_penalty = 10
 	icon_state = "ipc_head"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("slapped", "punched")
@@ -29,6 +31,13 @@
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
+/obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(owner)
+		var/partdamage = get_damage()
+		if(max_damage == partdamage)
+			if(prob(50))
+				return drop_limb()
 
 /obj/item/bodypart/head/ipc/emp_act(severity)
 	. = ..()

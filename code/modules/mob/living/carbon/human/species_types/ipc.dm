@@ -1,8 +1,7 @@
 /datum/species/ipc
-	name = "Ipc"
+	name = "\improper Ipc"
 	id = SPECIES_IPC
 	examine_limb_id = SPECIES_HUMAN
-	plural_form = "Ipc"
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_CAN_USE_FLIGHT_POTION,
@@ -10,7 +9,6 @@
 		TRAIT_NOBREATH,
 		TRAIT_NOCLONELOSS,
 		TRAIT_RESISTCOLD,
-		TRAIT_RESISTLOWPRESSURE,
 		TRAIT_NOFIRE,
 		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_PIERCEIMMUNE,
@@ -22,17 +20,19 @@
 		TRAIT_NO_TRANSFORMATION_STING,
 		TRAIT_XENO_IMMUNE,
 		TRAIT_NOHUNGER,
+		TRAIT_NOTOOLFLASH,
 	)
+	ass_image = 'icons/ass/assmachine.png'
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
-	mutantbrain = /obj/item/organ/internal/brain/advanced_posibrain
+	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain
 	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutantstomach = /obj/item/organ/internal/stomach/ipc/high
 	mutantappendix = null
 	mutantheart = null
 	mutantliver = null
 	mutantlungs = null
-	mutanteyes = /obj/item/organ/internal/eyes/robotic/shield
+	mutanteyes = /obj/item/organ/internal/eyes/robotic/basic
 	mutantears = /obj/item/organ/internal/ears/cybernetic
 	mutant_organs = list(/obj/item/organ/internal/voltprotector)
 	external_organs = list(
@@ -52,17 +52,29 @@
 	)
 	var/emageffect = FALSE
 
+/datum/species/ipc/random_name(gender,unique,lastname)
+	var/randname = "[pick(GLOB.posibrain_names)] [rand(1,999)]"
+	return randname
+
 /datum/species/ipc/on_species_gain(mob/living/carbon/C)
 	. = ..()
 	RegisterSignal(C, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
+	RegisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(brain)
+	if(brain && brain.zone != BODY_ZONE_CHEST)
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_ATOM_EMAG_ACT)
+	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
+
+/datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
+	SIGNAL_HANDLER
+	source.balloon_alert(source, "You dont have a mouth!")
+	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
+	return COMSIG_CARBON_BLOCK_EAT
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
@@ -189,6 +201,7 @@
 	desc = "This organ regulates the high electrical voltage coming into your body."
 	icon_state = "volt_protector"
 	slot = ORGAN_SLOT_VOLTPROTECT
+	organ_flags = ORGAN_ROBOTIC
 	zone = BODY_ZONE_CHEST
 
 /obj/item/organ/internal/voltprotector/on_insert(mob/living/carbon/owner)

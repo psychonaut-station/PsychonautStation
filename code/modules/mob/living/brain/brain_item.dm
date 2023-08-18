@@ -244,6 +244,11 @@
 	if(!target_has_brain)
 		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
+		//since these people will be dead M != usr
+		if(!get_location_opened(C, zone))
+			to_chat(user, span_warning("The bodyarea appears closed."))
+			return
+
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
 		if(C == user)
 			msg = "[user] inserts [src] into [user.p_their()] head!"
@@ -396,10 +401,10 @@
 	. = ..()
 	organ_owner.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
 
-/obj/item/organ/internal/brain/advanced_posibrain
-	name = "advanced positronic brain"
-	desc = "Advanced version of the positronic brain"
-	icon_state = "adv_posibrain"
+/obj/item/organ/internal/brain/basic_posibrain
+	name = "basic positronic brain"
+	desc = "Basic version of the positronic brain"
+	icon_state = "basic_posib"
 	zone = BODY_ZONE_CHEST
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
 

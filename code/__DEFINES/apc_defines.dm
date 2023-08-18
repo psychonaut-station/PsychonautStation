@@ -60,7 +60,7 @@
 /// How much power ethereals gain/drain from APCs.
 #define APC_POWER_GAIN_ETHEREAL 200
 /// How much power ipcs gain/drain from APCs.
-#define APC_POWER_GAIN_IPC 500
+#define APC_POWER_GAIN_IPC 1000
 
 // Wires & EMPs:
 /// The wire value used to reset the APCs wires after one's EMPed.

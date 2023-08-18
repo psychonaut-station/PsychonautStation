@@ -27,13 +27,15 @@
 /obj/item/storage/box/survival/PopulateContents()
 	if(crafted)
 		return
-	if(!isnull(mask_type))
+	if(!isnull(mask_type) && !isipc(loc))
 		new mask_type(src)
 
-	if(!isplasmaman(loc))
-		new internal_type(src)
-	else
+	if(isplasmaman(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
+	else if(isipc(loc))
+		new /obj/item/stock_parts/cell/high(src)
+	else
+		new internal_type(src)
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)

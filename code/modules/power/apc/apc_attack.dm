@@ -296,7 +296,10 @@
 			stomach.adjust_charge(APC_POWER_GAIN_IPC)
 			cell.use(APC_POWER_GAIN_IPC)
 			if(!protector)
-				user.apply_damage_type(damage = 25, damagetype = BURN)
+				do_sparks(4, TRUE, src)
+				shock(user, 75)
+			else
+				do_sparks(1, TRUE, src)
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN_IPC)

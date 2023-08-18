@@ -1,11 +1,13 @@
 /obj/item/organ/internal/stomach/ipc
 	name = "cell holder"
-	icon_state = "stomach-ipc" //Welp. At least it's more unique in functionaliy.
+	icon_state = "implant-power" //Welp. At least it's more unique in functionaliy.
 	desc = "A holder, can hold cells for ipc's power source."
+	organ_flags = ORGAN_ROBOTIC
 	organ_traits = list(TRAIT_NOHUNGER) // We have our own hunger mechanic.
 	var/obj/item/stock_parts/cell/cell
 	var/cell_type
 	var/drain_time = 0
+	var/backup_charge = 100
 
 /obj/item/organ/internal/stomach/ipc/Initialize(mapload)
 	. = ..()
@@ -20,8 +22,22 @@
 /obj/item/organ/internal/stomach/ipc/on_life(seconds_per_tick, times_fired)
 	. = ..()
 	if(cell && cell.charge > 0)
+		if(backup_charge < 100)
+			adjust_backup_charge(1 * seconds_per_tick)
 		adjust_charge(-IPC_CHARGE_FACTOR * seconds_per_tick)
 	handle_charge(owner, seconds_per_tick, times_fired)
+
+	if(cell && cell.charge == 0)
+		adjust_backup_charge(-1 * seconds_per_tick)
+
+	if(cell && cell.charge < 0)
+		cell.charge = 0
+
+	if(backup_charge < 0)
+		backup_charge = 0
+
+	if(backup_charge > 100)
+		backup_charge = 100
 
 /obj/item/organ/internal/stomach/ipc/on_insert(mob/living/carbon/stomach_owner)
 	. = ..()
@@ -47,11 +63,12 @@
 	if(cell)
 		items += "Power: [cell.charge]/[cell.maxcharge]"
 	else
-		items += "Power: No Power"
+		items += "Power: No Cell"
+	items += "Backup Power: [backup_charge]/100"
 
 /obj/item/organ/internal/stomach/ipc/proc/charge(datum/source, amount, repairs)
 	SIGNAL_HANDLER
-	adjust_charge(amount / 3.5)
+	adjust_charge(amount / 1.5)
 
 /obj/item/organ/internal/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
 	SIGNAL_HANDLER
@@ -64,9 +81,12 @@
 	if(cell)
 		cell.give(amount)
 
+/obj/item/organ/internal/stomach/ipc/proc/adjust_backup_charge(amount)
+	backup_charge = clamp(backup_charge + amount, 0, 100)
+
 /obj/item/organ/internal/stomach/ipc/proc/handle_charge(mob/living/carbon/carbon, seconds_per_tick, times_fired)
 	if(cell)
-		if (cell.charge <= 10)
+		if (backup_charge == 0)
 			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
 		else
 			carbon.remove_status_effect(/datum/status_effect/ipc_powerissue)
@@ -91,7 +111,8 @@
 	else
 		carbon.add_mood_event("charge", /datum/mood_event/decharged)
 		carbon.throw_alert(ALERT_CHARGE, /atom/movable/screen/alert/emptycell)
-		carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
+		if(backup_charge == 0)
+			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
 
 /obj/item/organ/internal/stomach/ipc/attack_self(mob/user)
 	if(cell)
@@ -128,7 +149,7 @@
 	if (!.)
 		return FALSE
 	owner.visible_message(span_warning("[owner]'s joints are locked!"), span_warning("Your limbs fall still. You no longer doesn't have the power to move joints!"))
-	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
+	owner.add_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return TRUE
 
 /datum/status_effect/ipc_powerissue/get_examine_text()
@@ -136,7 +157,7 @@
 
 /datum/status_effect/ipc_powerissue/on_remove()
 	owner.visible_message(span_notice("[owner] slowly stirs back into motion!"), span_notice("You have gathered enough power to move your body once more."))
-	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_FORCED_STANDING, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
+	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return ..()
 
 /obj/item/organ/internal/stomach/ipc/high

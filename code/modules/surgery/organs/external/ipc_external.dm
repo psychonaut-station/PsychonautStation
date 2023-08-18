@@ -9,6 +9,7 @@
 
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_IPC_MONITOR
+	organ_flags = ORGAN_ROBOTIC
 
 	preference = "feature_ipc_monitor"
 

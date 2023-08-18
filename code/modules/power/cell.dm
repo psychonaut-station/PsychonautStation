@@ -277,7 +277,7 @@
 					return
 				if(istype(stomach))
 					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
-					stomach.adjust_charge(CELL_POWER_GAIN)
+					stomach.adjust_charge(CELL_POWER_GAIN + 440)
 					charge -= CELL_POWER_DRAIN
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))

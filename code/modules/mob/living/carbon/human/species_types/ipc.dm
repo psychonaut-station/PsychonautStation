@@ -72,7 +72,7 @@
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
-	source.balloon_alert(source, "You dont have a mouth!")
+	to_chat(source, span_notice("You dont have a mouth!"))
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
 	return COMSIG_CARBON_BLOCK_EAT
 

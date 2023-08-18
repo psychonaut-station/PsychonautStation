@@ -159,7 +159,8 @@
 	cost = CARGO_CRATE_VALUE * 30
 	special = TRUE
 	access_view = ACCESS_COMMAND
-	contains = list(/obj/item/circuitboard/machine/bsa/front,
+	contains = list(/obj/item/paper/guides/jobs/engineering/bsa,
+					/obj/item/circuitboard/machine/bsa/front,
 					/obj/item/circuitboard/machine/bsa/middle,
 					/obj/item/circuitboard/machine/bsa/back,
 					/obj/item/circuitboard/computer/bsa_control,
@@ -314,3 +315,13 @@
 	)
 	crate_name = "radioactive nebula shielding (IMPORTANT)"
 	crate_type = /obj/structure/closet/crate/engineering
+
+/datum/supply_pack/engineering/bluespace_tap
+	name = "Bluespace Harvester Parts"
+	cost = 15000
+	special = TRUE
+	contains = list(
+					/obj/item/circuitboard/machine/bluespace_tap,
+					/obj/item/paper/bluespace_tap
+					)
+	crate_name = "bluespace harvester parts crate"

@@ -17,8 +17,9 @@
 
 /datum/uplink_item/stealthy_tools/ai_detector
 	name = "Artificial Intelligence Detector"
-	desc = "A functional multitool that turns red when it detects an artificial intelligence watching it, and can be \
-			activated to get an rough estimate of the AI's presence. Knowing when \
+	desc = "A functional multitool that can decrypt upload keys when used on upload computers, \
+			and also can turn red when it detects an artificial \
+			intelligence watching it, and can be activated to get an rough estimate of the AI's presence. Knowing when \
 			an artificial intelligence is watching you is useful for knowing when to maintain cover."
 	item = /obj/item/multitool/ai_detect
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS)

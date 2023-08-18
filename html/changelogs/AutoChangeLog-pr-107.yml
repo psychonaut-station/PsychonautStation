@@ -1,6 +1,0 @@
-author: "Seefaaa"
-delete-after: True
-changes:
-  - rscadd: "Jukebox playerına mute butonu eklendi."
-  - bugfix: "Jukebox alanında sonradan girmeyip içerisinde doğanlar için ses çalacak."
-  - bugfix: "Jukebox alanındaki mobun clientı değiştiğinde yeni client için ses çalacak."

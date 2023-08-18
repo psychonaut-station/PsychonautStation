@@ -1,7 +1,7 @@
 /datum/traitor_objective/ultimate/infect_ai
 	name = "Infect the station AI with an experimental virus."
 	description = "Infect the station AI with an experimental virus. Go to %AREA% to receive an infected law upload board \
-		and use it on the AI core or a law upload console."
+		and use it on the AI core or a law upload console. An AI detector comes together with the board to decrypt the upload key if needed."
 
 	///area type the objective owner must be in to recieve the law upload module
 	var/area/board_area_pickup
@@ -52,5 +52,5 @@
 			podspawn(list(
 				"target" = get_turf(user),
 				"style" = STYLE_SYNDICATE,
-				"spawn" = /obj/item/ai_module/malf,
+				"spawn" = list(/obj/item/ai_module/malf, /obj/item/multitool/ai_detect),
 			))

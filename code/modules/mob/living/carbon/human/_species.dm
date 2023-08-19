@@ -1285,6 +1285,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/weakness = check_species_weakness(weapon, user)
 
 	human.send_item_attack_message(weapon, user, hit_area, affecting)
+	var/obj/item/organ/internal/brain/humanbrain = human.get_organ_slot(ORGAN_SLOT_BRAIN)
 
 
 	var/attack_direction = get_dir(user, human)
@@ -1312,7 +1313,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(BODY_ZONE_HEAD)
 			if(!weapon.get_sharpness() && armor_block < 50)
 				if(prob(weapon.force))
-					if(human.get_organ_slot(ORGAN_SLOT_BRAIN).zone == BODY_ZONE_HEAD)
+					if(humanbrain.zone == BODY_ZONE_HEAD)
 						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
 					if(human.stat == CONSCIOUS)
 						human.visible_message(span_danger("[human] is knocked senseless!"), \
@@ -1322,7 +1323,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(prob(10))
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)
 				else
-					if(human.get_organ_slot(ORGAN_SLOT_BRAIN).zone == BODY_ZONE_HEAD)
+					if(humanbrain.zone == BODY_ZONE_HEAD)
 						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
 
 				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((100 - human.health) * 0.5))) // rev deconversion through blunt trauma.
@@ -1347,10 +1348,10 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					human.visible_message(span_danger("[human] is knocked down!"), \
 								span_userdanger("You're knocked down!"))
 					human.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
-					if(human.get_organ_slot(ORGAN_SLOT_BRAIN).zone == BODY_ZONE_CHEST)
+					if(humanbrain.zone == BODY_ZONE_CHEST)
 						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
 				else
-					if(human.get_organ_slot(ORGAN_SLOT_BRAIN).zone == BODY_ZONE_CHEST)
+					if(humanbrain.zone == BODY_ZONE_CHEST)
 						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
 
 			if(bloody)

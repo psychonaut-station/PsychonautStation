@@ -193,7 +193,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	 **/
 	var/properly_gained = FALSE
 
+	/// Special Gib for specie
 	var/obj/effect/gibspawner/gibspawner = null
+	/// Special remains for specie
 	var/obj/effect/decal/remains/decalremains = null
 
 ///////////

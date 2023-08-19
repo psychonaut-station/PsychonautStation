@@ -510,4 +510,6 @@
 		to bend light around the user, as well as mimetic materials to make the surface of the suit match the \
 		surroundings based off sensor data. This one is built for the Syndicate."
 	stealth_alpha = 30
+	complexity = 0
+	removable = FALSE
 	incompatible_modules = list(/obj/item/mod/module/stealth, /obj/item/mod/module/stealth/ninja)

@@ -300,7 +300,7 @@
 		/obj/item/mod/module/visor/diaghud,
 	)
 	default_pins = list(
-		/obj/item/mod/module/stealth/syndiecate,
+		/obj/item/mod/module/stealth/syndicate,
 	)
 
 

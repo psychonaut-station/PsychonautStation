@@ -16,7 +16,7 @@
 			The suit does come pre-equipped with a special psi-emitter stealth module that makes it impossible to recognize the wearer \
 			as well as causing significant demoralization amongst Nanotrasen crew."
 	item = /obj/item/mod/control/pre_equipped/infiltrator
-	cost = 6
+	cost = 10
 	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS | UPLINK_NANO)
 
 /datum/uplink_item/suits/space_suit

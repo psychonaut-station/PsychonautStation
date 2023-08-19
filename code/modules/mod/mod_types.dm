@@ -299,6 +299,9 @@
 		/obj/item/mod/module/quick_carry,
 		/obj/item/mod/module/visor/diaghud,
 	)
+	default_pins = list(
+		/obj/item/mod/module/stealth/syndiecate,
+	)
 
 
 /obj/item/mod/control/pre_equipped/interdyne

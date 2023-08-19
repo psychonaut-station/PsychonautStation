@@ -1165,14 +1165,12 @@
 /datum/mod_theme/infiltrator
 	name = "infiltrator"
 	desc = "A specialized infiltration suit, developed by the Roseus Galactic Actors Guild to strike fear and awe into the hearts of the public."
-	extended_desc = "Several questions have been raised over the years in regards to the clandestine Infiltrator modular suit. \
-		Why is the suit blood red despite being a sneaking suit? Why did a movie company of all things develop a stealth suit? \
-		The simplest answer is that Roseus Galactic hire more than a few eccentric individuals who know more about \
-		visual aesthetics and prop design than they do functional operative camouflage. But the true reason goes deeper. \
-		The visual appearance of the suit exemplifies brazen displays of power, not true stealth. However, the suit's inbuilt stealth mechanisms\
-		prevent anyone from fully recognizing the occupant, only the suit, creating perfect anonymity. This visual transformation is \
-		backed by inbuilt psi-emitters, heightening stressors common amongst Nanotrasen staff, and clouding identifiable information. \
-		Scrubbed statistical data presented a single correlation within documented psychological profiles. The fear of the Unknown."
+	extended_desc = "Several question arose from why such bizarre aestethic choices were made on a so calles stealth suit\
+	truth is often dissapointing the suit was designed to be a propaganda tool for the Roseus Galactic Actors Guild however our R&D department\
+	decided to make it a bit more practical. The suit is made of a lightweight alloy that is both fire and acid proof\
+	however it is not as durable as other suits. The suit is also equipped with a stealth module that allows the wearer\
+	to become invisible for a short period of time. The suit is also equipped with a demoralizer module that allows the wearer\
+	to demoralize their enemies. The suit is also equipped with a sound dampening module that allows the wearer to be even sneakier."
 	default_skin = "infiltrator"
 	armor_type = /datum/armor/mod_theme_infiltrator
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -1182,7 +1180,7 @@
 	slowdown_active = 0
 	ui_theme = "syndicate"
 	slot_flags = ITEM_SLOT_BELT
-	inbuilt_modules = list(/obj/item/mod/module/infiltrator, /obj/item/mod/module/storage/belt, /obj/item/mod/module/demoralizer)
+	inbuilt_modules = list(/obj/item/mod/module/infiltrator, /obj/item/mod/module/storage/belt, /obj/item/mod/module/demoralizer , /obj/item/mod/module/stealth/syndicate)
 	allowed_suit_storage = list(
 		/obj/item/ammo_box,
 		/obj/item/ammo_casing,
@@ -1219,10 +1217,10 @@
 	)
 
 /datum/armor/mod_theme_infiltrator
-	melee = 50
-	bullet = 50
-	laser = 40
-	energy = 50
+	melee = 5
+	bullet = 5
+	laser = 5
+	energy = 5
 	bomb = 40
 	fire = 100
 	acid = 100

@@ -503,3 +503,11 @@
 	if(deleting)
 		return
 	mod.helmet.flash_protect = initial(mod.helmet.flash_protect)
+
+/obj/item/mod/module/stealth/syndicate
+	name = "MOD syndicate cloaking module"
+	desc = "A module built for the Syndicate, this is a form of visual concealment tech employing esoteric technology \
+		to bend light around the user, as well as mimetic materials to make the surface of the suit match the \
+		surroundings based off sensor data. This one is built for the Syndicate."
+	stealth_alpha = 30
+	incompatible_modules = list(/obj/item/mod/module/stealth, /obj/item/mod/module/stealth/ninja)

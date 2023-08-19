@@ -193,6 +193,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	 **/
 	var/properly_gained = FALSE
 
+	var/obj/effect/gibspawner/gibspawner = null
+	var/obj/effect/decal/remains/decalremains = null
+
 ///////////
 // PROCS //
 ///////////

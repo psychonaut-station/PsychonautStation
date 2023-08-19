@@ -1033,17 +1033,18 @@
 	id = "ipc"
 	display_name = "IPC Construction"
 	description = "Humanoid robotic creatures with monitors in their heads."
-	prereq_ids = list("ai_basic")
+	prereq_ids = list("adv_robotics")
 	design_ids = list(
-		"ipc_chest",
 		"ipc_head",
+		"ipc_chest",
 		"ipc_l_arm",
-		"ipc_l_leg",
 		"ipc_r_arm",
+		"ipc_l_leg",
 		"ipc_r_leg",
+		"ipc_suit",
+		"ipc_monitor",
 		"ipc_stomach",
 		"ipc_voltprotector",
-		"ipc_monitor",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 

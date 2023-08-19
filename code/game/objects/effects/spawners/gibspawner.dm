@@ -159,3 +159,6 @@
 		gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST),list(SOUTH, SOUTHEAST, SOUTHWEST),list(WEST, NORTHWEST, SOUTHWEST),list(EAST, NORTHEAST, SOUTHEAST), GLOB.alldirs, GLOB.alldirs)
 	gibamounts[6] = pick(0, 1, 2)
 	return ..()
+
+/obj/effect/gibspawner/robot/android
+	gib_mob_type = /mob/living/carbon/human/species/android

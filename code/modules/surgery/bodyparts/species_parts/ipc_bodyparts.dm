@@ -33,6 +33,8 @@
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
 	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
 	if(owner)
 		var/partdamage = get_damage()
 		if(max_damage == partdamage)
@@ -74,6 +76,11 @@
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
+/obj/item/bodypart/chest/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
+
 /obj/item/bodypart/chest/ipc/emp_act(severity)
 	. = ..()
 	if(!.)
@@ -110,6 +117,11 @@
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
+/obj/item/bodypart/arm/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
+
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
@@ -133,6 +145,11 @@
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 
+/obj/item/bodypart/arm/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
+
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
@@ -154,6 +171,11 @@
 	biological_state = BIO_BONE
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+
+/obj/item/bodypart/leg/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/leg/left/ipc/emp_act(severity)
 	. = ..()
@@ -185,6 +207,11 @@
 	biological_state = BIO_BONE
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+
+/obj/item/bodypart/leg/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
+	. = ..()
+	if(brute > 0 && prob(10) && owner)
+		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/leg/right/ipc/emp_act(severity)
 	. = ..()

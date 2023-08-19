@@ -91,6 +91,19 @@
 	research_icon_state = "borg_r_leg"
 
 //IPC
+/datum/design/ipc_suit
+	name = "IPC Endoskeleton"
+	id = "ipc_suit"
+	build_type = MECHFAB
+	build_path = /obj/item/ipc_suit
+	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*20, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*20)
+	construction_time = 350
+	category = list(
+		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
+	)
+	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon_state = "ipc_suit"
+
 /datum/design/ipc_chest
 	name = "IPC Chest"
 	id = "ipc_chest"

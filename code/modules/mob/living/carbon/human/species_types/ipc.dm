@@ -25,6 +25,8 @@
 	ass_image = 'icons/ass/assmachine.png'
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
+	gibspawner = /obj/effect/gibspawner/robot/android
+	decalremains = /obj/effect/decal/remains/robot
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain
 	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutantstomach = /obj/item/organ/internal/stomach/ipc/high
@@ -64,11 +66,13 @@
 	if(brain && brain.zone != BODY_ZONE_CHEST)
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
+	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_ATOM_EMAG_ACT)
 	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
+	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER

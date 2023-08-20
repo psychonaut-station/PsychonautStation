@@ -26,6 +26,8 @@
 	if(obj_flags & IN_USE)
 		return
 	obj_flags |= IN_USE
+	if(HAS_TRAIT(user, TRAIT_NOCLONELOSS))
+		user.adjustOxyLoss(amount = damage_on_roll, forced = TRUE)
 	user.adjustCloneLoss(damage_on_roll)
 	if(user.stat)
 		to_chat(user, span_userdanger("No... just one more try..."))

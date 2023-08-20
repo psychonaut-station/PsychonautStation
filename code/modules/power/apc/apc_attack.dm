@@ -236,6 +236,7 @@
 			balloon_alert(ethereal, "received charge")
 			stomach.adjust_charge(APC_POWER_GAIN_ETHEREAL)
 			cell.use(APC_POWER_GAIN_ETHEREAL)
+			charging = APC_CHARGING
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN_ETHEREAL)
@@ -300,6 +301,7 @@
 			balloon_alert(ipc, "received charge")
 			stomach.adjust_charge(APC_POWER_GAIN_IPC)
 			cell.use(APC_POWER_GAIN_IPC)
+			charging = APC_CHARGING
 			if(!protector)
 				shock(user, 75)
 		return

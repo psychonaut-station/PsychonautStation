@@ -815,3 +815,6 @@
   alibuyuktatli:
   - bugfix: "anomaly core ile intihar ederken sinyal yolland\u0131ktan sonra \xF6\
       lmeme sorunu \xE7\xF6z\xFCld\xFC."
+2023-08-20:
+  Seefaaa:
+  - rscadd: Eski Delta Station eklendi.

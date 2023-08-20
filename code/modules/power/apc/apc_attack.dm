@@ -237,6 +237,7 @@
 			stomach.adjust_charge(APC_POWER_GAIN_ETHEREAL)
 			cell.use(APC_POWER_GAIN_ETHEREAL)
 			charging = APC_CHARGING
+			update_appearance()
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN_ETHEREAL)
@@ -256,6 +257,7 @@
 		balloon_alert(ethereal, "transfered power")
 		stomach.adjust_charge(-APC_POWER_GAIN_ETHEREAL)
 		cell.give(APC_POWER_GAIN_ETHEREAL)
+		update_appearance()
 	else
 		balloon_alert(ethereal, "can't transfer power!")
 
@@ -302,6 +304,7 @@
 			stomach.adjust_charge(APC_POWER_GAIN_IPC)
 			cell.use(APC_POWER_GAIN_IPC)
 			charging = APC_CHARGING
+			update_appearance()
 			if(!protector)
 				shock(user, 75)
 		return
@@ -323,6 +326,7 @@
 		balloon_alert(ipc, "transfered power")
 		stomach.adjust_charge(-APC_POWER_GAIN_IPC)
 		cell.give(APC_POWER_GAIN_IPC)
+		update_appearance()
 	else
 		balloon_alert(ipc, "can't transfer power!")
 

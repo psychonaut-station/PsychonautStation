@@ -2,6 +2,7 @@
 	savefile_key = "feature_ipc_monitor"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
+	relevant_external_organ = /obj/item/organ/external/ipchead
 
 /datum/preference/choiced/ipc_head/init_possible_values()
 	return assoc_to_keys_features(GLOB.ipc_monitor_list)

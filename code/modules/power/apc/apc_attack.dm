@@ -234,8 +234,8 @@
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach.crystal_charge > charge_limit))
 				return
 			balloon_alert(ethereal, "received charge")
-			stomach.adjust_charge(APC_POWER_GAIN_ETHEREAL)
-			cell.use(APC_POWER_GAIN_ETHEREAL)
+			stomach.adjust_charge(APC_POWER_GAIN)
+			cell.use(APC_POWER_GAIN)
 			charging = APC_CHARGING
 		return
 

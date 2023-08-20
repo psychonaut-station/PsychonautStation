@@ -512,4 +512,4 @@
 	stealth_alpha = 30
 	complexity = 0
 	removable = FALSE
-	incompatible_modules = list(/obj/item/mod/module/stealth, /obj/item/mod/module/stealth/ninja)
+	incompatible_modules = list(/obj/item/mod/module/stealth)

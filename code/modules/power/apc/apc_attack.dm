@@ -290,6 +290,10 @@
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "draining power"), alert_timer_duration)
+		if(!protector)
+			do_sparks(4, TRUE, src)
+		else
+			do_sparks(1, TRUE, src)
 		if(do_after(user, APC_DRAIN_TIME, target = src))
 			if(cell.charge <= (cell.maxcharge / 2) || (ipccell.charge > charge_limit))
 				return
@@ -297,10 +301,7 @@
 			stomach.adjust_charge(APC_POWER_GAIN_IPC)
 			cell.use(APC_POWER_GAIN_IPC)
 			if(!protector)
-				do_sparks(4, TRUE, src)
 				shock(user, 75)
-			else
-				do_sparks(1, TRUE, src)
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN_IPC)

@@ -811,3 +811,10 @@
   exdal:
   - rscadd: AI detector artik upload key'i gostericek
   - bugfix: Infect AI objektifi icin ai detector eklendi
+2023-08-19:
+  alibuyuktatli:
+  - bugfix: "anomaly core ile intihar ederken sinyal yolland\u0131ktan sonra \xF6\
+      lmeme sorunu \xE7\xF6z\xFCld\xFC."
+2023-08-20:
+  Seefaaa:
+  - rscadd: Eski Delta Station eklendi.

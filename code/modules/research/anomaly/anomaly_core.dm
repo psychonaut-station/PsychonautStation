@@ -20,7 +20,8 @@
 		A.anomalyNeutralize()
 	return TRUE
 
-/obj/item/assembly/signaler/anomaly/manual_suicide(mob/living/carbon/user)
+/obj/item/assembly/signaler/anomaly/manual_suicide(datum/mind/suicidee)
+	var/mob/living/user = suicidee.current
 	user.visible_message(span_suicide("[user]'s [src] is reacting to the radio signal, warping [user.p_their()] body!"))
 	user.set_suicide(TRUE)
 	user.gib()

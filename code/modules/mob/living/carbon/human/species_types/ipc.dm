@@ -20,6 +20,7 @@
 		TRAIT_XENO_IMMUNE,
 		TRAIT_NOHUNGER,
 		TRAIT_NOTOOLFLASH,
+		TRAIT_VIRUSIMMUNE,
 	)
 	ass_image = 'icons/ass/assmachine.png'
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
@@ -94,6 +95,10 @@
 	H.visible_message(span_danger("2 protrusions appeared on [H] head"))
 	update_no_equip_flags(H, NONE)
 	return TRUE
+
+/datum/species/ipc/proc/apply_water(mob/living/carbon/human/H)
+	H.adjustFireLoss(rand(1,3))
+	return
 
 /datum/species/ipc/get_features()
 	var/list/features = ..()

@@ -254,6 +254,11 @@
 	for(var/mob/living/simple_animal/slime/M in src)
 		M.apply_water()
 
+	for(var/mob/living/carbon/human/exposed_human in src)
+		if(isipc(exposed_human))
+			var/datum/species/ipc/ipcspecies = exposed_human.dna.species
+			ipcspecies.apply_water(exposed_human)
+
 	wash(CLEAN_WASH)
 	for(var/atom/movable/movable_content as anything in src)
 		if(ismopable(movable_content)) // Will have already been washed by the wash call above at this point.

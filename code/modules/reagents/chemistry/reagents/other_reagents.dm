@@ -209,6 +209,11 @@
 	for(var/mob/living/simple_animal/slime/exposed_slime in exposed_turf)
 		exposed_slime.apply_water()
 
+	for(var/mob/living/carbon/human/exposed_human in exposed_turf)
+		if(isipc(exposed_human))
+			var/datum/species/ipc/ipcspecies = exposed_human.dna.species
+			ipcspecies.apply_water(exposed_human)
+
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in exposed_turf)
 	if(hotspot && !isspaceturf(exposed_turf))
 		if(exposed_turf.air)

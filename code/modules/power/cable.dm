@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/image/restraints_icon = image(icon = 'icons/obj/restraints.dmi', icon_state = "cuff")
 	restraints_icon.maptext = MAPTEXT("<span [amount >= CABLE_RESTRAINTS_COST ? "" : "style='color: red'"]>[CABLE_RESTRAINTS_COST]</span>")
 	restraints_icon.color = color
-	
+
 	var/image/noose_icon = image(icon = 'icons/obj/noose.dmi', icon_state = "noose")
 	noose_icon.maptext = MAPTEXT("<span [amount >= NOOSE_COST ? "" : "style='color: red'"]>[NOOSE_COST]</span>")
 
@@ -580,6 +580,9 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(affecting && IS_ROBOTIC_LIMB(affecting))
+		if(!affecting.burn_dam)
+			to_chat(user, span_warning("[affecting] is already in good condition!"))
+			return
 		if(user == H)
 			user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.name]."), span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
 			if(!do_after(user, 50, H))

@@ -5,7 +5,7 @@
 	organ_flags = ORGAN_ROBOTIC
 	organ_traits = list(TRAIT_NOHUNGER) // We have our own hunger mechanic.
 	var/obj/item/stock_parts/cell/cell
-	var/cell_type
+	var/obj/item/stock_parts/cell/cell_type = /obj/item/stock_parts/cell/high
 	var/drain_time = 0
 	var/backup_charge = 100
 
@@ -115,10 +115,11 @@
 			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
 
 /obj/item/organ/internal/stomach/ipc/attack_self(mob/user)
+	var/turf/drop_loc = drop_location()
 	if(cell)
 		user.visible_message(span_notice("[user] removes [cell] from [src]!"), span_notice("You remove [cell]."))
 		cell.update_appearance()
-		user.put_in_hands(cell)
+		cell.forceMove(drop_loc)
 		cell = null
 		update_appearance()
 
@@ -160,5 +161,5 @@
 	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return ..()
 
-/obj/item/organ/internal/stomach/ipc/high
-	cell_type = /obj/item/stock_parts/cell/high
+/obj/item/organ/internal/stomach/ipc/empty
+	cell_type = null

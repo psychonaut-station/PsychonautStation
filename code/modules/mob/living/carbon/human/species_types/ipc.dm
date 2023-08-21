@@ -28,7 +28,7 @@
 	decalremains = /obj/effect/decal/remains/robot
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain
 	mutanttongue = /obj/item/organ/internal/tongue/robot
-	mutantstomach = /obj/item/organ/internal/stomach/ipc/high
+	mutantstomach = /obj/item/organ/internal/stomach/ipc
 	mutantappendix = null
 	mutantheart = null
 	mutantliver = null

@@ -333,7 +333,7 @@
 	eye = new /obj/item/organ/internal/eyes/robotic
 	ear = new /obj/item/organ/internal/ears/cybernetic
 	monitor = new /obj/item/organ/external/ipchead
-	stomach = new /obj/item/organ/internal/stomach/ipc/high
+	stomach = new /obj/item/organ/internal/stomach/ipc
 	voltprotector = new /obj/item/organ/internal/voltprotector
 	head = new /obj/item/bodypart/head/ipc
 	chest = new /obj/item/bodypart/chest/ipc

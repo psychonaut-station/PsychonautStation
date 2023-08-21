@@ -186,7 +186,7 @@
 	name = "IPC Cell Holder"
 	id = "ipc_stomach"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/internal/stomach/ipc
+	build_path = /obj/item/organ/internal/stomach/ipc/empty
 	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(

@@ -282,7 +282,8 @@
 	if(!stomach.cell)
 		return
 	var/obj/item/stock_parts/cell/ipccell = stomach.cell
-	var/charge_limit = ipccell.maxcharge - APC_POWER_GAIN_IPC
+	var/apcpowergain = min(ipccell.maxcharge - ipccell.charge, APC_POWER_GAIN_IPC)
+	var/charge_limit = ipccell.maxcharge - apcpowergain
 	if(!((stomach?.drain_time < world.time) && LAZYACCESS(modifiers, RIGHT_CLICK)))
 		return
 	if(ipc.combat_mode)
@@ -290,7 +291,7 @@
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "safeties prevent draining!"), alert_timer_duration)
 			return
 		if(ipccell.charge > charge_limit)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "charge is full!"), alert_timer_duration)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "you cant get more power!"), alert_timer_duration)
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "draining power"), alert_timer_duration)
@@ -302,31 +303,31 @@
 			if(cell.charge <= (cell.maxcharge / 2) || (ipccell.charge > charge_limit))
 				return
 			balloon_alert(ipc, "received charge")
-			stomach.adjust_charge(APC_POWER_GAIN_IPC)
-			cell.use(APC_POWER_GAIN_IPC)
+			stomach.adjust_charge(apcpowergain)
+			cell.use(apcpowergain)
 			charging = APC_CHARGING
 			update_appearance()
 			if(!protector)
 				shock(user, 75)
 		return
 
-	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN_IPC)
+	if(cell.charge >= cell.maxcharge - apcpowergain)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "APC can't receive more power!"), alert_timer_duration)
 		return
-	if(ipccell.charge < APC_POWER_GAIN_IPC)
+	if(ipccell.charge < apcpowergain)
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "charge is too low!"), alert_timer_duration)
 		return
 	stomach.drain_time = world.time + APC_DRAIN_TIME
 	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "transfering power"), alert_timer_duration)
 	if(!do_after(user, APC_DRAIN_TIME, target = src))
 		return
-	if((cell.charge >= (cell.maxcharge - APC_POWER_GAIN_IPC)) || (ipccell.charge < APC_POWER_GAIN_IPC))
+	if((cell.charge >= (cell.maxcharge - apcpowergain)) || (ipccell.charge < apcpowergain))
 		balloon_alert(ipc, "can't transfer power!")
 		return
 	if(istype(stomach))
 		balloon_alert(ipc, "transfered power")
-		stomach.adjust_charge(-APC_POWER_GAIN_IPC)
-		cell.give(APC_POWER_GAIN_IPC)
+		stomach.adjust_charge(-apcpowergain)
+		cell.give(apcpowergain)
 		update_appearance()
 	else
 		balloon_alert(ipc, "can't transfer power!")

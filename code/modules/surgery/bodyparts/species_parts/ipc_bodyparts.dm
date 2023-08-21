@@ -15,7 +15,7 @@
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
@@ -59,7 +59,7 @@
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
@@ -99,7 +99,7 @@
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
@@ -126,7 +126,7 @@
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
@@ -152,7 +152,7 @@
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"
@@ -187,7 +187,7 @@
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC
+	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_IPC
 	brute_modifier = 1
 	burn_modifier = 1.3
 	dmg_overlay_type = "robotic"

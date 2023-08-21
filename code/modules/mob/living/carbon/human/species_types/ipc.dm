@@ -157,6 +157,45 @@
 	RETURN_TYPE(/list)
 	return list()
 
+/datum/species/ipc/handle_environment_pressure(mob/living/carbon/human/H, datum/gas_mixture/environment, seconds_per_tick, times_fired)
+	var/pressure = environment.return_pressure()
+	var/adjusted_pressure = H.calculate_affecting_pressure(pressure)
+
+	// Set alerts and apply damage based on the amount of pressure
+	switch(adjusted_pressure)
+		// Very high pressure, show an alert and take damage
+		if(HAZARD_HIGH_PRESSURE to INFINITY)
+			if(!HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
+				H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+				H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/highpressure, 2)
+			else
+				H.clear_alert(ALERT_PRESSURE)
+
+		// High pressure, show an alert
+		if(WARNING_HIGH_PRESSURE to HAZARD_HIGH_PRESSURE)
+			H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/highpressure, 1)
+
+		// No pressure issues here clear pressure alerts
+		if(WARNING_LOW_PRESSURE to WARNING_HIGH_PRESSURE)
+			H.clear_alert(ALERT_PRESSURE)
+
+		// Low pressure here, show an alert
+		if(HAZARD_LOW_PRESSURE to WARNING_LOW_PRESSURE)
+			// We have low pressure resit trait, clear alerts
+			if(HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
+				H.clear_alert(ALERT_PRESSURE)
+			else
+				H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/lowpressure, 1)
+
+		// Very low pressure, show an alert and take damage
+		else
+			// We have low pressure resit trait, clear alerts
+			if(HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
+				H.clear_alert(ALERT_PRESSURE)
+			else
+				H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+				H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/lowpressure, 2)
+
 /// DATUMS
 
 /datum/action/innate/change_monitor

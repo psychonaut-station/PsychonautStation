@@ -153,7 +153,7 @@
 		shake_camera(earthquake_witness, 2 SECONDS, 4)
 		earthquake_witness.playsound_local(earthquake_witness, 'sound/effects/explosionfar.ogg', 75)
 
-	flicker_all_lights()
+	creak_lights()
 
 	// Step two of the destruction, which detonates the turfs in the earthquake zone. There is no actual explosion, meaning stuff around the earthquake zone is perfectly safe.
 	// All turfs, and everything else that IS in the earthquake zone, however, will behave as if it were bombed.

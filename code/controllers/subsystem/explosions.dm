@@ -552,7 +552,7 @@ SUBSYSTEM_DEF(explosions)
 			addtimer(CALLBACK(listener, TYPE_PROC_REF(/mob, playsound_local), epicenter, null, rand(FREQ_LOWER, FREQ_UPPER), TRUE, frequency, null, null, FALSE, hull_creaking_sound, 0), CREAK_DELAY)
 
 	if (creaking)
-		flicker_all_lights()
+		creak_lights()
 
 #undef CREAK_DELAY
 #undef QUAKE_CREAK_PROB

@@ -35,7 +35,7 @@
 #define DIAG_PATH_HUD "15"
 /// Gland indicators for abductors
 #define GLAND_HUD "16"
-#define SENTIENT_DISEASE_HUD "17"
+#define DISEASE_HUD "17"
 #define AI_DETECT_HUD "18"
 /// Displays launchpads' targeting reticle
 #define DIAG_LAUNCHPAD_HUD "19"
@@ -59,7 +59,7 @@
 #define DATA_HUD_DIAGNOSTIC_BASIC 5
 #define DATA_HUD_DIAGNOSTIC_ADVANCED 6
 #define DATA_HUD_ABDUCTOR 7
-#define DATA_HUD_SENTIENT_DISEASE 8
+#define DATA_HUD_DISEASE 8
 #define DATA_HUD_AI_DETECT 9
 #define DATA_HUD_FAN 10
 

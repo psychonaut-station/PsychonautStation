@@ -15,6 +15,9 @@
 
 /obj/machinery/computer/centcom_messenger/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
+	if (!ishuman(user))
+		return
+		
 	var/mob/living/carbon/human/H = user
 	if(!H.mind.secretary || HAS_TRAIT(user, TRAIT_ILLITERATE))
 		to_chat(user, span_warning("You don't know how to use this!"))

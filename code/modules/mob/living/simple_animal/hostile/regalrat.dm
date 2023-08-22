@@ -120,6 +120,7 @@
 		return
 	else
 		SEND_SIGNAL(target, COMSIG_RAT_INTERACT, src)
+		AddElement(/datum/element/prevent_attacking_of_types, GLOB.typecache_general_bad_hostile_attack_targets, "this tastes awful!")
 	return ..()
 
 #undef REGALRAT_INTERACTION

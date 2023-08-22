@@ -194,18 +194,6 @@
 		/obj/item/mod/module/bikehorn,
 	)
 
-/obj/item/mod/control/pre_equipped/ntagentmod
-	theme = /datum/mod_theme/ntagent
-	applied_cell = /obj/item/stock_parts/cell/super
-	applied_modules = list(
-		/obj/item/mod/module/storage/bluespace,
-		/obj/item/mod/module/flamethrower,
-		/obj/item/mod/module/jetpack,
-		/obj/item/mod/module/flashlight,
-		/obj/item/mod/module/dna_lock,
-		/obj/item/mod/module/chameleon,
-	)
-
 /obj/item/mod/control/pre_equipped/traitor
 	theme = /datum/mod_theme/syndicate
 	applied_cell = /obj/item/stock_parts/cell/super
@@ -531,9 +519,6 @@
 
 /obj/item/mod/control/pre_equipped/empty/syndicate
 	theme = /datum/mod_theme/syndicate
-
-/obj/item/mod/control/pre_equipped/empty/ntagentmod
-	theme = /datum/mod_theme/ntagent
 
 /obj/item/mod/control/pre_equipped/empty/syndicate/honkerative
 	applied_skin = "honkerative"

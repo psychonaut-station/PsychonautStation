@@ -68,8 +68,8 @@
 /datum/atom_hud/abductor
 	hud_icons = list(GLAND_HUD)
 
-/datum/atom_hud/sentient_disease
-	hud_icons = list(SENTIENT_DISEASE_HUD)
+/datum/atom_hud/disease
+	hud_icons = list(DISEASE_HUD)
 
 /datum/atom_hud/ai_detector
 	hud_icons = list(AI_DETECT_HUD)

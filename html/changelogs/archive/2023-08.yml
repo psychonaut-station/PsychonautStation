@@ -818,3 +818,14 @@
 2023-08-20:
   Seefaaa:
   - rscadd: Eski Delta Station eklendi.
+2023-08-21:
+  alibuyuktatli:
+  - bugfix: "ethereallar\u0131n apcden \u015Farj olduktan sonra apclerin \u015Farj\
+      \ olmama sorunu d\xFCzeltildi."
+2023-08-23:
+  AhmetEfeAkgoz:
+  - bugfix: ratkingin ore silo ve apc yiyebilmesi
+  exdal:
+  - rscdel: Sentient Disease kaldirildi
+  - rscdel: NT Agent kaldirildi
+  - balance: Experimental Teleporter nerflendi

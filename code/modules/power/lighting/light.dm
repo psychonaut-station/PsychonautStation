@@ -451,7 +451,7 @@
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-	var/area/local_area =get_room_area(src)
+	var/area/local_area = get_room_area(src)
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
@@ -502,6 +502,11 @@
 		update(FALSE)
 		. = TRUE //did we actually flicker?
 	flickering = FALSE
+
+/obj/machinery/light/proc/flicker_open(amount = rand(10, 20))
+	on = TRUE
+	update(FALSE)
+	flicker(amount)
 
 // ai attack - make lights flicker, because why not
 
@@ -704,7 +709,9 @@
 	status = LIGHT_BROKEN
 	icon_state = "floor-broken"
 
-/proc/flicker_all_lights()
+/proc/creak_lights()
 	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
-		if(is_station_level(L.z))
-			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker), rand(1, 4)), rand(1, 25))
+		if(is_station_level(L.z) && L.on && L.status == LIGHT_OK)
+			L.on = FALSE
+			L.update(FALSE)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))

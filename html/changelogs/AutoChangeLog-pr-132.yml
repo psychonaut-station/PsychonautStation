@@ -1,6 +1,0 @@
-author: "exdal"
-delete-after: True
-changes:
-  - rscdel: "Sentient Disease kaldirildi"
-  - rscdel: "NT Agent kaldirildi"
-  - balance: "Experimental Teleporter nerflendi"

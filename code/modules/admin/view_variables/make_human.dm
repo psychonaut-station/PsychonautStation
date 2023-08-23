@@ -30,4 +30,6 @@
 /client/proc/delete_mob_mapview(mob/M as mob in view(view))
 	set category = "Debug"
 	set name = "Delete Mob"
-	delete_mob(M)
+
+	if(usr && tgui_alert(usr, "Are you sure?", "Delete Mob", list("I'm Sure", "Abort")) == "I'm Sure")
+		delete_mob(M)

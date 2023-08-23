@@ -104,6 +104,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_cat"] = get_consistent_feature_entry(GLOB.tails_list_human) // it's a lie
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(GLOB.tails_list_lizard)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(GLOB.pod_hair_list)
+	target.dna.features["ipc_monitor"] = get_consistent_feature_entry(GLOB.ipc_monitor_list)
+	target.dna.features["ipc_chassis"] = get_consistent_feature_entry(GLOB.ipc_chassis_list)
 
 /// Provides a dummy that is consistently bald, white, naked, etc.
 /mob/living/carbon/human/dummy/consistent

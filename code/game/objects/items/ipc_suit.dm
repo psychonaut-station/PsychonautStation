@@ -12,6 +12,7 @@
 	var/obj/item/organ/internal/ears/cybernetic/ear
 	var/obj/item/organ/external/ipchead/monitor
 	var/obj/item/organ/internal/stomach/ipc/stomach
+	var/obj/item/organ/internal/heart/ipc/heart
 	var/obj/item/organ/internal/voltprotector/voltprotector
 	var/obj/item/bodypart/head/ipc/head
 	var/obj/item/bodypart/chest/ipc/chest
@@ -31,6 +32,7 @@
 	QDEL_NULL(ear)
 	QDEL_NULL(monitor)
 	QDEL_NULL(stomach)
+	QDEL_NULL(heart)
 	QDEL_NULL(voltprotector)
 	QDEL_NULL(head)
 	QDEL_NULL(chest)
@@ -223,6 +225,21 @@
 			to_chat(user, span_notice("You insert the stomach."))
 			update_appearance()
 			return
+	else if(istype(weapon, /obj/item/organ/internal/heart/ipc))
+		var/obj/item/organ/internal/heart/ipc/newheart = weapon
+		if(heart)
+			to_chat(user, span_warning("You have already inserted the heart!"))
+			return
+		else
+			if(!chest)
+				to_chat(user, span_warning("There is no chest!"))
+				return
+			if(!user.transferItemToLoc(weapon, src))
+				return
+			heart = newheart
+			to_chat(user, span_notice("You insert the heart."))
+			update_appearance()
+			return
 	else if(istype(weapon, /obj/item/organ/internal/voltprotector))
 		var/obj/item/organ/internal/voltprotector/newvoltprotector = weapon
 		if(voltprotector)
@@ -243,7 +260,7 @@
 /obj/item/ipc_suit/crowbar_act(mob/living/user, obj/item/prytool)
 	..()
 	var/turf/drop_loc = drop_location()
-	if(brain || tongue || eye || ear || monitor || stomach || voltprotector || head || leftarm || rightarm || leftleg || rightleg)
+	if(brain || tongue || eye || ear || monitor || stomach || heart || voltprotector || head || leftarm || rightarm || leftleg || rightleg)
 		prytool.play_tool_sound(src)
 		to_chat(user, span_notice("You remove the organs from [src]."))
 		brain?.forceMove(drop_loc)
@@ -252,6 +269,7 @@
 		ear?.forceMove(drop_loc)
 		monitor?.forceMove(drop_loc)
 		stomach?.forceMove(drop_loc)
+		heart?.forceMove(drop_loc)
 		voltprotector?.forceMove(drop_loc)
 		head?.forceMove(drop_loc)
 		chest?.forceMove(drop_loc)
@@ -266,6 +284,7 @@
 		ear = null
 		monitor = null
 		stomach = null
+		heart = null
 		voltprotector = null
 		head = null
 		chest = null
@@ -281,7 +300,7 @@
 /obj/item/ipc_suit/screwdriver_act(mob/living/user, obj/item/screwtool)
 	..()
 	. = TRUE
-	if(!(brain && tongue && eye && ear && monitor && stomach && voltprotector && head && chest && leftarm && rightarm && leftleg && rightleg))
+	if(!(brain && tongue && eye && ear && monitor && stomach && heart && voltprotector && head && chest && leftarm && rightarm && leftleg && rightleg))
 		to_chat(user, span_warning("There are unattached parts or organs!"))
 		return
 	if(do_after(user, 25, target = src))
@@ -312,6 +331,8 @@
 		. += span_warning("There is no monitor!")
 	if(!stomach)
 		. += span_warning("There is no stomach!")
+	if(!heart)
+		. += span_warning("There is no heart")
 	if(!voltprotector)
 		. += span_warning("There is no voltage protector!")
 	if(!head)
@@ -332,7 +353,8 @@
 	tongue = new /obj/item/organ/internal/tongue/robot
 	eye = new /obj/item/organ/internal/eyes/robotic
 	ear = new /obj/item/organ/internal/ears/cybernetic
-	monitor = new /obj/item/organ/external/ipchead
+	monitor = new /obj/item/organ/external/ipchead/black
+	heart = new /obj/item/organ/internal/heart/ipc
 	stomach = new /obj/item/organ/internal/stomach/ipc
 	voltprotector = new /obj/item/organ/internal/voltprotector
 	head = new /obj/item/bodypart/head/ipc

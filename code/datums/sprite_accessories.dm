@@ -58,6 +58,8 @@
 	var/gender_specific
 	/// Determines if the accessory will be skipped by color preferences.
 	var/use_static
+	/// The limbs id supplied for full-body replacing features.
+	var/limbs_id
 	/**
 	 * Currently only used by mutantparts so don't worry about hair and stuff.
 	 * This is the source that this accessory will get its color from. Default is MUTCOLOR, but can also be HAIR, FACEHAIR, EYECOLOR and 0 if none.
@@ -2113,18 +2115,61 @@
 	icon_state = "round"
 
 /datum/sprite_accessory/ipc_monitor
-	icon = 'icons/mob/human/species/ipc/ipc_screens.dmi'
-	icon_state = "blackhead" //Default icon for mech fab
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "blackipc"
 	color_src = null
 	em_block = TRUE
 
 /datum/sprite_accessory/ipc_monitor/black
-	name = "Blackhead"
-	icon_state = "blackhead"
+	name = "Black"
+	icon_state = "blackipc"
 
-/datum/sprite_accessory/ipc_monitor/white
-	name = "Whitehead"
-	icon_state = "whitehead"
+/datum/sprite_accessory/ipc_monitor/retro
+	name = "Retro"
+	icon_state = "retroipc"
+
+/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+
+/datum/sprite_accessory/ipc_monitor/hephaestussindustries
+	name = "Hephaestus Industries"
+	icon_state = "hsiipc"
+
+/datum/sprite_accessory/ipc_monitor/shellguardmunitions
+	name = "Shellguard Munitions Standard Series"
+	icon_state = "sgmipc"
+
+/datum/sprite_accessory/ipc_chassis
+	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "blackipc"
+	color_src = null
+	em_block = TRUE
+
+/datum/sprite_accessory/ipc_chassis/black
+	name = "Black"
+	icon_state = "blackipc"
+	limbs_id = "blackipc"
+
+/datum/sprite_accessory/ipc_chassis/retro
+	name = "Retro"
+	icon_state = "retroipc"
+	limbs_id = "retroipc"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+	limbs_id = "bshipc"
+
+/datum/sprite_accessory/ipc_chassis/hephaestussindustries
+	name = "Hephaestus Industries"
+	icon_state = "hsiipc"
+	limbs_id = "hsiipc"
+
+/datum/sprite_accessory/ipc_chassis/shellguardmunitions
+	name = "Shellguard Munitions Standard Series"
+	icon_state = "sgmipc"
+	limbs_id = "sgmipc"
 
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'

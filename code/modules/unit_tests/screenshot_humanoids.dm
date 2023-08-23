@@ -24,7 +24,8 @@
 	test_screenshot("[/datum/species/moth]", get_flat_icon_for_all_directions(moth))
 
 	var/mob/living/carbon/human/ipc = allocate(/mob/living/carbon/human/dummy/consistent)
-	ipc.dna.features["ipc_monitor"] = "Blackhead"
+	ipc.dna.features["ipc_chassis"] = "Black"
+	ipc.dna.features["ipc_monitor"] = "Black"
 	ipc.set_species(/datum/species/ipc)
 	ipc.equipOutfit(/datum/outfit/ipcjacketbiker, visualsOnly = TRUE)
 	test_screenshot("[/datum/species/ipc]", get_flat_icon_for_all_directions(ipc))

@@ -1044,6 +1044,7 @@
 		"ipc_suit",
 		"ipc_monitor",
 		"ipc_stomach",
+		"ipc_heart",
 		"ipc_voltprotector",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)

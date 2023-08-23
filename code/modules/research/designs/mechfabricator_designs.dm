@@ -193,6 +193,17 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
 	)
 
+/datum/design/ipc_heart
+	name = "IPC Heart"
+	id = "ipc_heart"
+	build_type = MECHFAB
+	build_path = /obj/item/organ/internal/heart/ipc
+	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5)
+	construction_time = 100
+	category = list(
+		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
+	)
+
 /datum/design/ipc_voltprotector
 	name = "IPC High Voltage Protector"
 	id = "ipc_voltprotector"
@@ -208,7 +219,7 @@
 	name = "IPC Monitor"
 	id = "ipc_monitor"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/external/ipchead
+	build_path = /obj/item/organ/external/ipchead/black
 	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5 + HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
 	construction_time = 100
 	category = list(

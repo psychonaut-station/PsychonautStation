@@ -30,16 +30,17 @@
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain
 	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutantstomach = /obj/item/organ/internal/stomach/ipc
+	mutantheart = /obj/item/organ/internal/heart/ipc
 	mutantappendix = null
-	mutantheart = null
 	mutantliver = null
 	mutantlungs = null
 	mutanteyes = /obj/item/organ/internal/eyes/robotic/basic
 	mutantears = /obj/item/organ/internal/ears/cybernetic
 	mutant_organs = list(/obj/item/organ/internal/voltprotector)
 	external_organs = list(
-		/obj/item/organ/external/ipchead = "Blackhead",
+		/obj/item/organ/external/ipchead = "Black",
 	)
+	mutant_bodyparts = list("ipc_chassis" = "Black")
 	species_language_holder = /datum/language_holder/synthetic
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
@@ -97,18 +98,34 @@
 	return TRUE
 
 /datum/species/ipc/proc/apply_water(mob/living/carbon/human/H)
-	H.adjustFireLoss(rand(1,3))
+
+	var/obj/item/organ/internal/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
+	if(heart && istype(heart, /obj/item/organ/internal/heart/ipc))
+		H.adjustFireLoss(rand(1,3))
+	else
+		H.adjustFireLoss(rand(5,15))
 	return
 
 /datum/species/ipc/get_features()
 	var/list/features = ..()
 
-	features += "feature_ipc_monitor"
+	features += "feature_ipc_chassis"
 
 	return features
 
+/datum/species/ipc/replace_body(mob/living/carbon/C, datum/species/new_species)
+	..()
+
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[C.dna.features["ipc_chassis"]]
+
+	for(var/obj/item/bodypart/BP as() in C.bodyparts) //Override bodypart data as necessary
+		BP.limb_id = chassis_of_choice.limbs_id
+		BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
+		BP.update_limb()
+
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
 	human_mob.dna.features["ipc_monitor"] = pick(GLOB.ipc_monitor_list)
+	human_mob.dna.features["ipc_chassis"] = pick(GLOB.ipc_chassis_list)
 	randomize_external_organs(human_mob)
 
 /datum/species/ipc/get_species_description()

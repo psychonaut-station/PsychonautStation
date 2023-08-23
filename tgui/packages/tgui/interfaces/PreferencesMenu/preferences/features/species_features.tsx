@@ -79,8 +79,8 @@ export const feature_lizard_spines: FeatureChoiced = {
   },
 };
 
-export const feature_ipc_monitor: FeatureChoiced = {
-  name: 'Head',
+export const feature_ipc_chassis: FeatureChoiced = {
+  name: 'Chassis',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>
   ) => {

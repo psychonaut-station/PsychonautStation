@@ -40,6 +40,7 @@ GLOBAL_LIST_EMPTY(moth_markings_list)
 GLOBAL_LIST_EMPTY(caps_list)
 GLOBAL_LIST_EMPTY(pod_hair_list)
 GLOBAL_LIST_EMPTY(ipc_monitor_list)
+GLOBAL_LIST_EMPTY(ipc_chassis_list)
 
 GLOBAL_LIST_INIT(color_list_ethereal, list(
 	"Blue" = "#3399ff",

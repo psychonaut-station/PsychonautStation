@@ -5,16 +5,19 @@
 
 	use_mob_sprite_as_obj_sprite = TRUE
 	icon = 'icons/mob/human/species/ipc/ipc_screens.dmi'
-	icon_state = "m_ipc_monitor_blackhead_FRONT"
+	icon_state = "m_ipc_monitor_blackipc_FRONT"
 
 	zone = BODY_ZONE_HEAD
 	slot = ORGAN_SLOT_EXTERNAL_IPC_MONITOR
 	organ_flags = ORGAN_ROBOTIC
 
-	preference = "feature_ipc_monitor"
+	preference = "feature_ipc_chassis"
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/ipchead
 	actions_types = list(/datum/action/innate/change_monitor)
+
+/obj/item/organ/external/ipchead/black
+	sprite_accessory_override = /datum/sprite_accessory/ipc_monitor/black
 
 /datum/bodypart_overlay/mutant/ipchead
 	layers = EXTERNAL_FRONT

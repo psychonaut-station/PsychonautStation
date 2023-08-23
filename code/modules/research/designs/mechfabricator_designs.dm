@@ -115,7 +115,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_chest"
+	research_icon_state = "blackipc_chest"
 
 /datum/design/ipc_head
 	name = "IPC Head"
@@ -128,7 +128,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_head"
+	research_icon_state = "blackipc_head"
 
 /datum/design/ipc_l_arm
 	name = "IPC Left Arm"
@@ -141,7 +141,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_l_arm"
+	research_icon_state = "blackipc_l_arm"
 
 /datum/design/ipc_r_arm
 	name = "IPC Right Arm"
@@ -154,7 +154,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_r_arm"
+	research_icon_state = "blackipc_r_arm"
 
 /datum/design/ipc_l_leg
 	name = "IPC Left Leg"
@@ -167,7 +167,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_l_leg"
+	research_icon_state = "blackipc_l_leg"
 
 /datum/design/ipc_r_leg
 	name = "IPC Right Leg"
@@ -180,7 +180,7 @@
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
 	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	research_icon_state = "ipc_r_leg"
+	research_icon_state = "blackipc_r_leg"
 
 /datum/design/ipc_stomach
 	name = "IPC Cell Holder"

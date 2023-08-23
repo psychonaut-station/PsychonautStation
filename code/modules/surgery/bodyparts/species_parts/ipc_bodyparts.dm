@@ -10,7 +10,7 @@
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	disabled_wound_penalty = 10
-	icon_state = "ipc_head"
+	icon_state = "blackipc_head"
 	limb_id = "blackipc"
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
@@ -54,7 +54,7 @@
 /obj/item/bodypart/chest/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_state = "ipc_chest"
+	icon_state = "blackipc_chest"
 	limb_id = "blackipc"
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
@@ -94,7 +94,7 @@
 /obj/item/bodypart/arm/left/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_state = "ipc_l_arm"
+	icon_state = "blackipc_l_arm"
 	limb_id = "blackipc"
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -121,7 +121,7 @@
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_state = "ipc_r_arm"
+	icon_state = "blackipc_r_arm"
 	limb_id = "blackipc"
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -148,7 +148,7 @@
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_state = "ipc_l_leg"
+	icon_state = "blackipc_l_leg"
 	limb_id = "blackipc"
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -183,7 +183,7 @@
 /obj/item/bodypart/leg/right/ipc
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_state = "ipc_r_leg"
+	icon_state = "blackipc_r_leg"
 	limb_id = "blackipc"
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE

@@ -171,6 +171,12 @@
 			SPECIES_PERK_NAME = "EMP Vulnerable",
 			SPECIES_PERK_DESC = "IPC organs are cybernetic, and thus susceptible to electromagnetic interference.",
 		),
+		list(
+			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
+			SPECIES_PERK_ICON = "droplet",
+			SPECIES_PERK_NAME = "Short Circuit",
+			SPECIES_PERK_DESC = "IPC's are not resistant to water, water creates a short circuit in IPC's.",
+		),
 	)
 
 	return to_add

@@ -48,7 +48,7 @@
 	if (.)
 		return
 	switch(action)
-		if("send_centcomMessage")
+		if("send_Message")
 			if(!COOLDOWN_FINISHED(src, message_cooldown))
 				to_chat(usr, span_notice("You have to wait before sending another message."))
 				return FALSE

@@ -117,11 +117,13 @@
 	..()
 
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[C.dna.features["ipc_chassis"]]
-
+	var/list/newfinal_bodypart_overrides = new_species.bodypart_overrides.Copy()
 	for(var/obj/item/bodypart/BP as() in C.bodyparts) //Override bodypart data as necessary
-		BP.limb_id = chassis_of_choice.limbs_id
-		BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
-		BP.update_limb()
+		var/newpath = newfinal_bodypart_overrides?[BP.body_zone]
+		if(newpath)
+			BP.limb_id = chassis_of_choice.limbs_id
+			BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
+			BP.update_limb()
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
 	human_mob.dna.features["ipc_monitor"] = pick(GLOB.ipc_monitor_list)

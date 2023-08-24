@@ -34,9 +34,8 @@
 	target.dna.features["ipc_chassis"] = value
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[value]
 	for(var/obj/item/bodypart/BP as() in target.bodyparts) //Override bodypart data as necessary
-		BP.icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-		BP.is_dimorphic = FALSE
-		BP.should_draw_greyscale = FALSE
-		BP.limb_id = chassis_of_choice.limbs_id
-		BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
-		BP.update_limb()
+		if(isipc(target))
+			BP.icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+			BP.change_appearance('icons/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.limbs_id, FALSE, FALSE)
+			BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
+			BP.update_limb()

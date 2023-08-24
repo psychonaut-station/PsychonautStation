@@ -33,10 +33,8 @@
 	target.dna.features["ipc_monitor"] = value
 	target.dna.features["ipc_chassis"] = value
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[value]
-// BURAYA İF YAP, YAPMAZSAN KODU SİKERSİN
 	for(var/obj/item/bodypart/BP as() in target.bodyparts) //Override bodypart data as necessary
 		BP.icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-		BP.icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
 		BP.is_dimorphic = FALSE
 		BP.should_draw_greyscale = FALSE
 		BP.limb_id = chassis_of_choice.limbs_id

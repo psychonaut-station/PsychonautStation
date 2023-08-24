@@ -45,6 +45,7 @@
 	backpack_contents = list(
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
+		/obj/item/announcementbeacon = 1,
 	)
 	belt = /obj/item/modular_computer/pda/curator
 	ears = /obj/item/radio/headset/headset_srv
@@ -63,3 +64,5 @@
 
 	translator.grant_all_languages(source = LANGUAGE_CURATOR)
 	translator.remove_blocked_language(GLOB.all_languages, source=LANGUAGE_ALL)
+	if(translator.mind)
+		translator.mind.curator = TRUE

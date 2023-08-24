@@ -57,6 +57,7 @@
 
 	var/secretary = FALSE
 	var/synthetic = FALSE
+	var/curator = FALSE
 	/// List of antag datums on this mind
 	var/list/antag_datums
 	/// this mind's ANTAG_HUD should have this icon_state

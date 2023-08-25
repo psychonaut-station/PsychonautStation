@@ -36,4 +36,9 @@
 	COOLDOWN_START(src, announcement_cooldown, ANNOUNCEMENT_COOLDOWN)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] has used the curator's announcer beacon.")
 
+/obj/item/announcementbeacon/examine(mob/user)
+	. = ..()
+	if(!COOLDOWN_FINISHED(src, announcement_cooldown))
+		. += span_notice("Cooldown: [DisplayTimeText(COOLDOWN_TIMELEFT(src, announcement_cooldown), 1)]")
+
 #undef ANNOUNCEMENT_COOLDOWN

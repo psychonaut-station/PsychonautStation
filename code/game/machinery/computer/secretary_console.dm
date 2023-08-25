@@ -40,7 +40,8 @@
 		data["emagged"] = TRUE
 	data["canSendMessage"] = COOLDOWN_FINISHED(src, message_cooldown)
 	data["canRequestSupervisor"] = COOLDOWN_FINISHED(src, request_supervisor_cooldown)
-
+	data["SupervisorRequestCooldown"] = DisplayTimeText(COOLDOWN_TIMELEFT(src, request_supervisor_cooldown), 1)
+	data["MessageSendCooldown"] = DisplayTimeText(COOLDOWN_TIMELEFT(src, message_cooldown), 1)
 	return data
 
 /obj/machinery/computer/secretary_console/ui_act(action, list/params)

@@ -833,3 +833,6 @@
   Seefaaa:
   - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
       \ c\xFCmle bozulmayacak."
+2023-08-25:
+  exdal:
+  - bugfix: creak_lights triggered by derelict

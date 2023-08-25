@@ -214,9 +214,9 @@
 			var/chest_covered = FALSE
 			var/head_covered = FALSE
 			for(var/obj/item/clothing/equipped in exposed_human.get_equipped_items())
-				if((equipped.body_parts_covered & CHEST) && (equipped.get_armor().bio == 100))
+				if((equipped.body_parts_covered & CHEST) && (equipped.get_armor_rating(BIO) == 100))
 					chest_covered = TRUE
-				if((equipped.body_parts_covered & HEAD) && (equipped.get_armor().bio == 100))
+				if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
 					head_covered = TRUE
 			if(!chest_covered || !head_covered)
 				var/datum/species/ipc/ipcspecies = exposed_human.dna.species

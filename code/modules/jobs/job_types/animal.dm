@@ -55,7 +55,7 @@
 		return
 	return spawn_instance
 
-/datum/job/animal/get_spawn_mob/proc/on_examine(datum/source, mob/user, list/examine_list)
+/datum/job/animal/proc/on_examine(datum/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
 	var/mob/living/mob = source
@@ -64,7 +64,7 @@
 	else if(!mob.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
 
-/datum/job/animal/get_spawn_mob/proc/on_qdel(datum/source, force)
+/datum/job/animal/proc/on_qdel(datum/source, force)
 	SIGNAL_HANDLER
 
 	UnregisterSignal(source, list(COMSIG_ATOM_EXAMINE, COMSIG_QDELETING))

@@ -1,6 +1,0 @@
-author: "RengaN02"
-delete-after: True
-changes:
-  - rscadd: "Announcement beacon eklendi."
-  - rscdel: "Secretary Announcement console kaldırıldı."
-  - code_imp: "Centcom messenger console, Secretary Console ile değiştirildi, tgui eklendi."

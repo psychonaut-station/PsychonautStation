@@ -24,12 +24,15 @@
 	spawned.apply_pref_name(/datum/preference/name/animal, player_client)
 
 /datum/job/animal/proc/remove_ai(mob/living/spawned)
+	var/static/list/restricted_components = list(/datum/component/tameable, /datum/component/obeys_commands)
 	if(istype(spawned, /mob/living/simple_animal))
 		var/mob/living/simple_animal/simple_animal = spawned
 		simple_animal.toggle_ai(AI_OFF)
 		simple_animal.can_have_ai = FALSE
+	for(var/component_type in restricted_components)
+		for(var/datum/component/component in spawned.GetComponents(component_type))
+			qdel(component)
 	if(spawned.ai_controller)
-		spawned.ai_controller.set_ai_status(AI_STATUS_OFF)
 		qdel(spawned.ai_controller)
 
 /datum/job/animal/proc/set_max_health(mob/living/spawned)
@@ -39,7 +42,6 @@
 
 /datum/job/animal/proc/register_signals(mob/living/spawn_instance)
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(spawn_instance, COMSIG_QDELETING, PROC_REF(on_qdel))
 
 /datum/job/animal/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/animal_name = player_client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
@@ -63,11 +65,6 @@
 		examine_list += span_deadsay("It totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
 	else if(!mob.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
-
-/datum/job/animal/proc/on_qdel(datum/source, force)
-	SIGNAL_HANDLER
-
-	UnregisterSignal(source, list(COMSIG_ATOM_EXAMINE, COMSIG_QDELETING))
 
 /datum/job/animal/announce_job(mob/living/joining_mob)
 	. = ..()

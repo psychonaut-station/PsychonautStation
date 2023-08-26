@@ -24,7 +24,9 @@
 
 /datum/component/obeys_commands/Destroy(force, silent)
 	. = ..()
-	QDEL_NULL(available_commands)
+	for(var/command_name in available_commands)
+		var/datum/pet_command/command = available_commands[command_name]
+		qdel(command)
 
 /datum/component/obeys_commands/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_LIVING_BEFRIENDED, PROC_REF(add_friend))

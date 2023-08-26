@@ -22,7 +22,7 @@
 
 /datum/pet_command/point_targetting/fetch/Destroy(force)
 	var/mob/living/parent = weak_parent.resolve()
-	parent.RemoveElement(/datum/element/ai_held_item) // fuck tg just drop ^
+	parent?.RemoveElement(/datum/element/ai_held_item) // fuck tg just drop ^
 	return ..()
 
 /datum/pet_command/point_targetting/fetch/add_new_friend(mob/living/tamer)

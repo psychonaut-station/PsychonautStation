@@ -166,3 +166,13 @@
 
 /datum/preference/name/pug/create_default_value()
 	return pick(GLOB.pug_names)
+
+/datum/preference/name/animal
+	savefile_key = "animal_name"
+
+	explanation = "Animal name"
+	group = "fun"
+	relevant_job = /datum/job/animal
+
+/datum/preference/name/animal/create_default_value()
+	return pick(GLOB.pug_names)

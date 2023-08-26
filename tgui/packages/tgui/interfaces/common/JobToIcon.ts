@@ -36,6 +36,7 @@ export const JOB2ICON = {
   'Prisoner': 'lock',
   'Psychologist': 'brain',
   'Pug': 'paw',
+  'Animal': 'paw',
   'Quartermaster': 'sack-dollar',
   'Research Director': 'user-graduate',
   'Roboticist': 'battery-half',

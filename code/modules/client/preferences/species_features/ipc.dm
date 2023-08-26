@@ -7,7 +7,9 @@
 	relevant_mutant_bodypart = "ipc_chassis"
 
 /datum/preference/choiced/ipc_chassis/init_possible_values()
-	var/list/values = list()
+	return assoc_to_keys(GLOB.ipc_chassis_list)
+
+/datum/preference/choiced/ipc_chassis/icon_for(value)
 	var/list/body_parts = list(
 		BODY_ZONE_HEAD,
 		BODY_ZONE_CHEST,
@@ -18,16 +20,13 @@
 		BODY_ZONE_L_LEG,
 		BODY_ZONE_R_LEG,
 	)
-	for (var/chassis_name in GLOB.ipc_chassis_list)
-		var/datum/sprite_accessory/chassis = GLOB.ipc_chassis_list[chassis_name]
-		var/icon/icon_with_chassis = icon('icons/effects/effects.dmi', "nothing")
+	var/datum/sprite_accessory/chassis = GLOB.ipc_chassis_list[value]
+	var/icon/icon_with_chassis = icon('icons/effects/effects.dmi', "nothing")
 
-		for (var/body_part in body_parts)
-			icon_with_chassis.Blend(icon('icons/mob/human/species/ipc/bodyparts.dmi', "[chassis.limbs_id]_[body_part]", dir = SOUTH), ICON_OVERLAY)
+	for (var/body_part in body_parts)
+		icon_with_chassis.Blend(icon('icons/mob/human/species/ipc/bodyparts.dmi', "[chassis.limbs_id]_[body_part]", dir = SOUTH), ICON_OVERLAY)
 
-		values[chassis.name] = icon_with_chassis
-
-	return values
+	return icon_with_chassis
 
 /datum/preference/choiced/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value)
 	target.dna.features["ipc_monitor"] = value

@@ -509,7 +509,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	var/image/restraints_icon = image(icon = 'icons/obj/restraints.dmi', icon_state = "cuff")
 	restraints_icon.maptext = MAPTEXT("<span [amount >= CABLE_RESTRAINTS_COST ? "" : "style='color: red'"]>[CABLE_RESTRAINTS_COST]</span>")
 	restraints_icon.color = color
-	
+
 	var/image/noose_icon = image(icon = 'icons/obj/noose.dmi', icon_state = "noose")
 	noose_icon.maptext = MAPTEXT("<span [amount >= NOOSE_COST ? "" : "style='color: red'"]>[NOOSE_COST]</span>")
 
@@ -653,6 +653,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 	update_appearance()
 
 #undef CABLE_RESTRAINTS_COST
+#undef NOOSE_COST
 #undef UNDER_SMES
 #undef UNDER_TERMINAL
 

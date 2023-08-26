@@ -62,7 +62,7 @@
 
 	var/mob/living/mob = source
 	if(!mob.key)
-		examine_list += span_deadsay("It totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
+		examine_list += span_deadsay("It is totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
 	else if(!mob.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
 

@@ -13,6 +13,9 @@
 /datum/preference/choiced/animal_type/create_default_value()
 	return "Fox"
 
+/datum/preference/choiced/animal_type/icon_for(value)
+	return GLOB.animal_job_types[value]
+
 /datum/preference/choiced/animal_type/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE

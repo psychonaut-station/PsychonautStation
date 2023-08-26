@@ -5,9 +5,6 @@
 
 GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
-#define TICKET_TYPE_ADMIN 0
-#define TICKET_TYPE_MENTOR 1
-
 /**
  * # Adminhelp Ticket Manager
  */
@@ -1291,6 +1288,3 @@ GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new
 #undef WEBHOOK_NON_URGENT
 
 #undef REPLACE_SENDER
-
-#undef TICKET_TYPE_ADMIN
-#undef TICKET_TYPE_MENTOR

@@ -2128,9 +2128,13 @@
 	name = "Black"
 	icon_state = "blackipc"
 
-/datum/sprite_accessory/ipc_monitor/retro
-	name = "Retro"
-	icon_state = "retroipc"
+/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+
+/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+	icon_state = "bs2ipc"
 
 /datum/sprite_accessory/ipc_monitor/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
@@ -2144,6 +2148,10 @@
 	name = "Shellguard Munitions Standard Series"
 	icon_state = "sgmipc"
 
+/datum/sprite_accessory/ipc_monitor/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
+	icon_state = "zhpipc"
+
 /datum/sprite_accessory/ipc_chassis
 	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc"
@@ -2155,15 +2163,15 @@
 	icon_state = "blackipc"
 	limbs_id = "blackipc"
 
-/datum/sprite_accessory/ipc_chassis/retro
-	name = "Retro"
-	icon_state = "retroipc"
-	limbs_id = "retroipc"
-
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
 	icon_state = "bshipc"
 	limbs_id = "bshipc"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+	icon_state = "bs2ipc"
+	limbs_id = "bs2ipc"
 
 /datum/sprite_accessory/ipc_chassis/hephaestussindustries
 	name = "Hephaestus Industries"
@@ -2174,6 +2182,11 @@
 	name = "Shellguard Munitions Standard Series"
 	icon_state = "sgmipc"
 	limbs_id = "sgmipc"
+
+/datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
+	icon_state = "zhpipc"
+	limbs_id = "zhpipc"
 
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'

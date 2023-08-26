@@ -842,6 +842,10 @@
 	name = "None"
 	icon_state = "none"
 
+/datum/sprite_accessory/gradient/full
+	name = "Full"
+	icon_state = "full"
+
 /datum/sprite_accessory/gradient/fadeup
 	name = "Fade Up"
 	icon_state = "fadeup"

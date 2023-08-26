@@ -309,6 +309,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_RECENTLY_BLOCKED_MAGIC "recently_blocked_magic"
 /// The user can do things like use magic staffs without penalty
 #define TRAIT_MAGICALLY_GIFTED "magically_gifted"
+/// This object innately spawns with fantasy variables already applied (the magical component is given to it on initialize), and thus we never want to give it the component again.
+#define TRAIT_INNATELY_FANTASTICAL_ITEM "innately_fantastical_item"
 #define TRAIT_DEPRESSION "depression"
 #define TRAIT_BLOOD_DEFICIENCY "blood_deficiency"
 #define TRAIT_JOLLY "jolly"
@@ -578,6 +580,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Mobs with this trait do care about a few grisly things, such as digging up graves. They also really do not like bringing people back to life or tending wounds, but love autopsies and amputations.
 #define TRAIT_MORBID "morbid"
 
+/// Whether or not the user is in a MODlink call, prevents making more calls
+#define TRAIT_IN_CALL "in_call"
+
 // METABOLISMS
 // Various jobs on the station have historically had better reactions
 // to various drinks and foodstuffs. Security liking donuts is a classic
@@ -651,6 +656,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Cannot be grabbed by goliath tentacles
 #define TRAIT_TENTACLE_IMMUNE "tentacle_immune"
+/// Currently under the effect of overwatch
+#define TRAIT_OVERWATCHED "watcher_overwatched"
+/// Cannot be targetted by watcher overwatch
+#define TRAIT_OVERWATCH_IMMUNE "overwatch_immune"
 
 //non-mob traits
 /// Used for limb-based paralysis, where replacing the limb will fix it.
@@ -763,7 +772,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_CUSTOM_TAP_SOUND "no_tap_sound"
 /// Makes the feedback message when someone else is putting this item on you more noticeable
 #define TRAIT_DANGEROUS_OBJECT "dangerous_object"
-// determines whether or not objects are haunted and teleport/attack randomly
+/// determines whether or not objects are haunted and teleport/attack randomly
 #define TRAIT_HAUNTED "haunted"
 
 //quirk traits
@@ -798,6 +807,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SMOKER "smoker"
 #define TRAIT_POSTERBOY "poster_boy"
 #define TRAIT_THROWINGARM "throwing_arm"
+#define TRAIT_SETTLER "settler"
 
 ///if the atom has a sticker attached to it
 #define TRAIT_STICKERED "stickered"
@@ -1131,6 +1141,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define HALLUCINATION_TRAIT "hallucination_trait"
 /// Trait given by simple/basic mob death
 #define BASIC_MOB_DEATH_TRAIT "basic_mob_death"
+/// Trait given by your current speed
+#define SPEED_TRAIT "speed_trait"
 /// Trait given to mobs that have been autopsied
 #define AUTOPSY_TRAIT "autopsy_trait"
 
@@ -1287,3 +1299,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// This means the "caster" of the spell is changed to the mob's loc
 /// Note this doesn't mean all spells are guaranteed to work or the mob is guaranteed to cast
 #define TRAIT_CASTABLE_LOC "castable_loc"
+
+///Trait given by /datum/element/relay_attacker
+#define TRAIT_RELAYING_ATTACKER "relaying_attacker"

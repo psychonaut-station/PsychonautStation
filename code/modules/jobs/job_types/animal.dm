@@ -44,17 +44,25 @@
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 
 /datum/job/animal/get_spawn_mob(client/player_client, atom/spawn_point)
-	var/animal_name = player_client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
-	var/mob/living/spawn_type_ = GLOB.animal_job_types[animal_name] || spawn_type
+	var/animal_type = player_client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
+	var/mob/living/spawn_type_ = GLOB.animal_job_types[animal_type] || spawn_type
 	var/mob/living/spawn_instance = new spawn_type_(player_client.mob.loc)
+
 	spawn_point.JoinPlayerHere(spawn_instance, TRUE)
 	apply_prefs_job_animal(spawn_instance, player_client)
 	remove_ai(spawn_instance)
 	set_max_health(spawn_instance)
 	register_signals(spawn_instance)
+
+	if(istype(spawn_instance, /mob/living/simple_animal/parrot) && prob(1))
+		spawn_instance.desc = "Doomed to squawk the Earth."
+		spawn_instance.color = "#FFFFFF77"
+		spawn_instance.fully_replace_character_name(spawn_instance.real_name, "The Ghost of [spawn_instance.real_name]")
+
 	if(!player_client)
 		qdel(spawn_instance)
 		return
+
 	return spawn_instance
 
 /datum/job/animal/proc/on_examine(datum/source, mob/user, list/examine_list)

@@ -54,10 +54,14 @@
 	set_max_health(spawn_instance)
 	register_signals(spawn_instance)
 
-	if(istype(spawn_instance, /mob/living/simple_animal/parrot) && prob(1))
-		spawn_instance.desc = "Doomed to squawk the Earth."
-		spawn_instance.color = "#FFFFFF77"
-		spawn_instance.fully_replace_character_name(spawn_instance.real_name, "The Ghost of [spawn_instance.real_name]")
+	switch(spawn_type_)
+		if(/mob/living/simple_animal/parrot)
+			if(prob(1))
+				spawn_instance.desc = "Doomed to squawk the Earth."
+				spawn_instance.color = "#FFFFFF77"
+				spawn_instance.fully_replace_character_name(spawn_instance.real_name, "The Ghost of [spawn_instance.real_name]")
+		if(/mob/living/basic/mothroach)
+			spawn_instance.grant_language(/datum/language/moffic, source = LANGUAGE_MIND)
 
 	if(!player_client)
 		qdel(spawn_instance)

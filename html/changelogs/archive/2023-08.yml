@@ -801,11 +801,11 @@
   - bugfix: multiple balloon alerts when the plumbing RCD is low on ammo
   - code_imp: organized all plumbing designs into static lists for memory savings
   - refactor: removed unused vars for further memory savings
+  YehnBeep:
+  - bugfix: fixed a disconnected APC in Delta's tech storage.
   exdal:
   - rscadd: New station goal, Bluespace Tap
   - rscadd: Creaking lights
-  YehnBeep:
-  - bugfix: fixed a disconnected APC in Delta's tech storage.
 2023-08-17:
   AhmetEfeAkgoz:
   - rscadd: "Necromancy, Carp, Nature Sectleri i\xE7in yeni spritelar"
@@ -880,9 +880,6 @@
   vinylspiders:
   - bugfix: fixes a harddel in particle holders
 2023-08-18:
-  exdal:
-  - rscadd: AI detector artik upload key'i gostericek
-  - bugfix: Infect AI objektifi icin ai detector eklendi
   DeerJesus:
   - bugfix: replaced injector with working passive vent in birdshot incinerator
   - bugfix: conveyor lever in birdshot incinerator
@@ -923,6 +920,9 @@
       effect up. This does not effect reconstruction.
   - balance: Both of the above effects do not effect the CE's roundstart RCD, nor
       any other RCDs such as combat RCDs.
+  exdal:
+  - rscadd: AI detector artik upload key'i gostericek
+  - bugfix: Infect AI objektifi icin ai detector eklendi
   mc-oofert:
   - rscadd: cybernetic moth eyes and their variants
   - bugfix: luminescent eyes no longer make you look like a cyclops in the dark
@@ -1132,10 +1132,6 @@
 2023-08-23:
   AhmetEfeAkgoz:
   - bugfix: ratkingin ore silo ve apc yiyebilmesi
-  exdal:
-  - rscdel: Sentient Disease kaldirildi
-  - rscdel: NT Agent kaldirildi
-  - balance: Experimental Teleporter nerflendi
   Ben10Omintrix:
   - refactor: the goldgrub has been refactored please report any bugs
   - rscadd: the goldgrub can now be tamed and he can have babys
@@ -1156,10 +1152,11 @@
       the request console.
   ZephyrTFA:
   - bugfix: pda messages are no longer hidden from dead players who are not observers
+  exdal:
+  - rscdel: Sentient Disease kaldirildi
+  - rscdel: NT Agent kaldirildi
+  - balance: Experimental Teleporter nerflendi
 2023-08-24:
-  Seefaaa:
-  - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
-      \ c\xFCmle bozulmayacak."
   Fikou:
   - rscadd: wizards are now introverts
   JohnFulpWillard:
@@ -1173,14 +1170,15 @@
   Rhials:
   - rscadd: The roundend report will now read out any achievements ("cheevos" as you
       may know them) earned by players over the course of the round.
+  Seefaaa:
+  - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
+      \ c\xFCmle bozulmayacak."
   Vekter:
   - balance: Grilles will now take 0-1 damage every time they shock something.
   - balance: Powersinks are now available earlier in traitor progression.
   YehnBeep:
   - qol: Icebox perma now has holopads.
 2023-08-25:
-  exdal:
-  - bugfix: creak_lights triggered by derelict
   Ben10Omintrix:
   - bugfix: regal rats now run away from whoever attacked them
   - rscadd: new pet behavior which makes pets defend their owners if they got attacked
@@ -1228,23 +1226,25 @@
   - code_imp: Tram landmarks are now all subtyped instead of map varedits
   distributivgesetz:
   - rscdel: Removes miscellaneous sources of clone damage from the game.
+  exdal:
+  - bugfix: creak_lights triggered by derelict
   iwishforducks:
   - bugfix: You should be able to click on lattices on icebox with the RCD and construct
       a floor now
   mc-oofert:
   - rscadd: becoming a felinid makes your brain smaller (visually)
 2023-08-26:
-  RengaN02:
-  - rscadd: Announcement beacon eklendi.
-  - rscdel: "Secretary Announcement console kald\u0131r\u0131ld\u0131."
-  - code_imp: "Centcom messenger console, Secretary Console ile de\u011Fi\u015Ftirildi,\
-      \ tgui eklendi."
   GoldenAlpharex:
   - bugfix: Fixes the recycler being able to grind the server to a halt by trying
       to recycle the same sheet worth of material over and over and over again.
   Guillaume Prata:
   - qol: Medical Kiosk now have their wand removed with a right click, got new screentips
       and have a few of its chat messages turned into balloon alerts.
+  RengaN02:
+  - rscadd: Announcement beacon eklendi.
+  - rscdel: "Secretary Announcement console kald\u0131r\u0131ld\u0131."
+  - code_imp: "Centcom messenger console, Secretary Console ile de\u011Fi\u015Ftirildi,\
+      \ tgui eklendi."
   YehnBeep:
   - qol: Messenger bags can be crafted with 4 cloth.
   distributivgesetz:
@@ -1260,3 +1260,42 @@
   vinylspiders:
   - refactor: fixed a bunch of instances of callbacks being qdeleted and cleaned up
       related code
+2023-08-27:
+  CoiledLamb:
+  - bugfix: the coroner medkit can now hold every item it spawns with
+  Deadgebert:
+  - bugfix: multitool can be used on APC/Teslacoil/SMES/emitter if it has exposed
+      wires.
+  - qol: Icebox monsters no longer spawn close enough to aggro Lia at round start
+  Fikou:
+  - bugfix: quartermasters get their voice of god power boost correctly
+  Ghommie:
+  - bugfix: Fixed the double-barreled shotgun not working properly
+  Jacquerel:
+  - bugfix: Watchers won't retain an ethereal outline of their wings hovering over
+      their dead body.
+  Kubisopplay:
+  - bugfix: Borgs no longer get permastunned by emotes
+  - bugfix: Borg hud should not fuck up in few situations
+  RikuTheKiller:
+  - bugfix: Light eaters can no longer be eaten by their higher-grade brothers, the
+      trash eaters. (recyclers)
+  Seefaaa:
+  - code_imp: "Unutulmu\u015F definelar"
+  SyncIt21:
+  - bugfix: zipping a duffle bag closes the UI of all storage items opened inside
+      it
+  YesterdaysPromise:
+  - rscadd: 'Gave snow legions a separate corpse-drop pool: ash walkers excluded,
+      but eskimos included.'
+  iwishforducks:
+  - balance: Railings now only cost 2 rods and are much easier to construct. But they
+      can now be destroyed much easier and cut with wirecutters without unwrenching.
+  necromanceranne:
+  - bugfix: Ops wanting to get the CQC kit will actually get given the kit, and not
+      just the CQC book.
+  tf-4:
+  - spellcheck: Fixed a spelling error with the daps emote.
+  vinylspiders:
+  - qol: inserting new high luminosity eyes will now properly remember the previous
+      eyes' color and default to that initially

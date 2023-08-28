@@ -13318,11 +13318,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/aft/lesser)
-"Hc" = (
-/obj/machinery/atmospherics/components/binary/pump,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/main)
 "Hd" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -13874,6 +13869,11 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"IG" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/station/engineering/main)
 "IH" = (
 /obj/machinery/door/airlock/public/glass{
 	id_tag = "permabolt1";
@@ -13885,12 +13885,10 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "II" = (
-/obj/machinery/atmospherics/components/binary/pump/layer4{
-	dir = 8
-	},
+/obj/structure/lattice,
 /obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/main)
+/turf/open/space/basic,
+/area/station/solars/starboard/aft)
 "IJ" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -15466,11 +15464,10 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "Nt" = (
+/obj/machinery/atmospherics/components/binary/pump,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/smooth,
-/area/station/tcommsat/computer)
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "Nu" = (
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/closed/wall/r_wall,
@@ -16115,6 +16112,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
+"Pw" = (
+/obj/structure/lattice,
+/obj/structure/lattice,
+/obj/structure/cable,
+/turf/open/space,
+/area/space/nearstation)
 "Px" = (
 /obj/structure/closet/secure_closet/atmospherics,
 /turf/open/floor/iron,
@@ -18388,6 +18391,13 @@
 /obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
+"WR" = (
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "WS" = (
 /obj/machinery/door/airlock{
 	name = "Frozen Storage"
@@ -18498,6 +18508,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
+"Xe" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/smooth,
+/area/station/tcommsat/computer)
 "Xf" = (
 /obj/structure/table/glass,
 /obj/item/storage/pill_bottle/epinephrine{
@@ -19059,11 +19075,6 @@
 /obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/aft/lesser)
-"YJ" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/station/engineering/main)
 "YL" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -54062,7 +54073,7 @@ We
 We
 We
 We
-Hc
+Nt
 VV
 sZ
 Xg
@@ -54576,8 +54587,8 @@ qG
 Qy
 qG
 qG
-II
-YJ
+WR
+IG
 Ul
 Ul
 ve
@@ -60242,10 +60253,10 @@ Rw
 Rw
 Rw
 Vt
-Kr
-Kr
-aa
-aa
+II
+II
+Pw
+Ul
 Ul
 td
 aa
@@ -64884,7 +64895,7 @@ wf
 OF
 wr
 vh
-Nt
+Xe
 uI
 bh
 aa

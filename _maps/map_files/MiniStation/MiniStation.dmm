@@ -8066,7 +8066,6 @@
 	dir = 4;
 	name = "External Gas to Loop"
 	},
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -8191,7 +8190,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "uk" = (
@@ -9706,7 +9704,6 @@
 	name = "Pharmacy Maintenance"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/medical/pharmacy,
-/obj/structure/cable,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
@@ -12940,10 +12937,10 @@
 /turf/open/floor/iron/dark/telecomms,
 /area/station/tcommsat/server)
 "FX" = (
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "FY" = (
@@ -13891,11 +13888,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
-"II" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/station/solars/starboard/aft)
 "IJ" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -18920,9 +18912,7 @@
 	name = "Telecomms Server Room"
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/tcoms,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/grimy,
@@ -52787,9 +52777,9 @@ NR
 tG
 tU
 ud
-FX
-FX
 uj
+uj
+FX
 ty
 ty
 uH
@@ -59203,7 +59193,7 @@ lR
 cp
 cp
 Ht
-Nt
+KW
 Ht
 cp
 Ht
@@ -59725,7 +59715,7 @@ KW
 Ht
 cp
 Ht
-Nt
+KW
 Ht
 cp
 cp
@@ -59982,7 +59972,7 @@ KW
 cp
 cp
 cp
-Nt
+KW
 cp
 cp
 Kr
@@ -60239,7 +60229,7 @@ Rw
 Rw
 Rw
 Rw
-II
+Rw
 Rw
 Rw
 Vt
@@ -60496,7 +60486,7 @@ KW
 cp
 cp
 cp
-Nt
+KW
 cp
 cp
 Kr
@@ -60753,7 +60743,7 @@ Nt
 Ht
 cp
 Ht
-Nt
+KW
 Ht
 cp
 cp

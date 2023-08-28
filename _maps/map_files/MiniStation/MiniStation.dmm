@@ -7697,6 +7697,7 @@
 "sM" = (
 /obj/machinery/light/small,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible/layer4,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "sO" = (
@@ -7760,8 +7761,8 @@
 /area/station/engineering/main)
 "sZ" = (
 /obj/machinery/light/directional/east,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "ta" = (
@@ -13888,6 +13889,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
+"II" = (
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "IJ" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -15462,6 +15470,11 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
+"Nt" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/station/engineering/main)
 "Nu" = (
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/closed/wall/r_wall,
@@ -17277,6 +17290,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
+"Tr" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "Ts" = (
 /obj/machinery/autolathe,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
@@ -18075,6 +18093,7 @@
 "VV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "VX" = (
@@ -54047,7 +54066,7 @@ We
 We
 We
 We
-Zq
+Tr
 VV
 sZ
 Xg
@@ -54561,8 +54580,8 @@ qG
 Qy
 qG
 qG
-Qy
-Vi
+II
+Nt
 Ul
 Ul
 ve

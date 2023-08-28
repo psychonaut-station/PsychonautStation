@@ -77,6 +77,7 @@
 /datum/outfit/job/worker/mod
 	name = "Worker (MODsuit)"
 
+	suit = null
 	suit_store = /obj/item/tank/internals/oxygen
 	back = /obj/item/mod/control/pre_equipped/engineering
 	head = null

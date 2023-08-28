@@ -65,7 +65,7 @@
 	tile_type = design["type"]
 	icon_state = initial(tile_type.icon_state)
 	cost = design["tile_cost"]
-	secondary = design["secondary"] ? TRUE : FALSE
+	secondary = design["secondary"]
 
 	if(ispath(tile_type, /obj/item/stack/tile/carpet/neon))
 		var/obj/item/stack/tile/carpet/neon/neon_carpet = tile_type
@@ -333,7 +333,7 @@
 				var/obj/item/stack/tile/tile_type = design_info["type"]
 				if(initial(tile_type.turf_type) == floor.type)
 					cost = design_info["tile_cost"]
-					secondary = design_info["secondary"] ? TRUE : FALSE
+					secondary = design_info["secondary"]
 					break
 	if(!cost)
 		balloon_alert(user, "can't deconstruct this type!")

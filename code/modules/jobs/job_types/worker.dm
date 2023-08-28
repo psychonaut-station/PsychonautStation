@@ -73,3 +73,13 @@
 	name = "Worker (Gloves)"
 
 	gloves = /obj/item/clothing/gloves/color/yellow
+
+/datum/outfit/job/worker/mod
+	name = "Worker (MODsuit)"
+
+	suit = null
+	suit_store = /obj/item/tank/internals/oxygen
+	back = /obj/item/mod/control/pre_equipped/engineering
+	head = null
+	mask = /obj/item/clothing/mask/breath
+	internals_slot = ITEM_SLOT_SUITSTORE

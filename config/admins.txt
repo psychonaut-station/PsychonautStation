@@ -1,4 +1,3 @@
 Loanselot = Host
 Banditier = Host
 RengaN = Game Master
-Sefaaa = Host

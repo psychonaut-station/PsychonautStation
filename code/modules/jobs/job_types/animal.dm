@@ -42,6 +42,7 @@
 
 /datum/job/animal/proc/register_signals(mob/living/spawn_instance)
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+	RegisterSignal(spawn_instance, COMSIG_LIVING_UNARMED_ATTACK, PROC_REF(attack_cooldown))
 
 /datum/job/animal/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/animal_type = player_client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
@@ -69,14 +70,19 @@
 
 	return spawn_instance
 
-/datum/job/animal/proc/on_examine(datum/source, mob/user, list/examine_list)
+/datum/job/animal/proc/on_examine(mob/living/source, mob/user, list/examine_list)
 	SIGNAL_HANDLER
 
-	var/mob/living/mob = source
-	if(!mob.key)
+	if(!source.key)
 		examine_list += span_deadsay("It is totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
-	else if(!mob.client)
+	else if(!source.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
+
+/datum/job/animal/proc/attack_cooldown(mob/living/source, atom/target)
+	SIGNAL_HANDLER
+
+	if(ismob(target))
+		source.changeNext_move(CLICK_CD_MELEE * 2)
 
 /datum/job/animal/announce_job(mob/living/joining_mob)
 	. = ..()

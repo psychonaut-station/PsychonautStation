@@ -364,6 +364,9 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	. = ..()
 	. += GLOB.wood_recipes
 
+/obj/item/stack/sheet/mineral/wood/thirty
+	amount = 30
+
 /obj/item/stack/sheet/mineral/wood/fifty
 	amount = 50
 
@@ -480,6 +483,9 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 
 /obj/item/stack/sheet/cloth/five
 	amount = 5
+
+/obj/item/stack/sheet/cloth/thirty
+	amount = 30
 
 GLOBAL_LIST_INIT(durathread_recipes, list ( \
 	new/datum/stack_recipe("durathread jumpsuit", /obj/item/clothing/under/misc/durathread, 4, time = 4 SECONDS, check_density = FALSE, category = CAT_CLOTHING),

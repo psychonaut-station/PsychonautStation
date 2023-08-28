@@ -14299,7 +14299,7 @@
 	},
 /obj/structure/table/wood,
 /obj/machinery/fax{
-	fax_name = Public;
+	fax_name = "Public";
 	name = "Public Fax Machine"
 	},
 /turf/open/floor/carpet,

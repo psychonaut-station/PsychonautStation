@@ -4753,7 +4753,6 @@
 	},
 /obj/structure/cable/layer1,
 /obj/machinery/camera/autoname/directional/north,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "lk" = (
@@ -7919,7 +7918,6 @@
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "tz" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/corner,
 /obj/structure/cable/layer1,
@@ -7971,7 +7969,6 @@
 /area/station/engineering/main)
 "tG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
-/obj/structure/cable,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
 	},
@@ -8021,7 +8018,6 @@
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "tN" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -8110,7 +8106,6 @@
 	dir = 4
 	},
 /obj/structure/cable/layer1,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "tZ" = (
@@ -8147,7 +8142,6 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "ue" = (
@@ -8174,7 +8168,6 @@
 	dir = 4
 	},
 /obj/structure/cable/layer1,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "uh" = (
@@ -8223,7 +8216,6 @@
 	dir = 4
 	},
 /obj/structure/cable/layer1,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "un" = (
@@ -8278,8 +8270,6 @@
 	dir = 4
 	},
 /obj/structure/cable/layer1,
-/obj/structure/cable,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "uv" = (
@@ -12950,10 +12940,10 @@
 /turf/open/floor/iron/dark/telecomms,
 /area/station/tcommsat/server)
 "FX" = (
+/obj/structure/cable,
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "FY" = (
@@ -15632,7 +15622,6 @@
 	dir = 1
 	},
 /obj/machinery/camera/autoname/directional/north,
-/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/main)
 "NS" = (
@@ -52798,10 +52787,10 @@ NR
 tG
 tU
 ud
-uj
-uj
-uj
 FX
+FX
+uj
+ty
 ty
 uH
 Xr

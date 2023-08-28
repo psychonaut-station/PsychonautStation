@@ -15462,12 +15462,6 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
-"Nt" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/space/basic,
-/area/station/solars/starboard/aft)
 "Nu" = (
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/closed/wall/r_wall,
@@ -60739,7 +60733,7 @@ KW
 Ht
 cp
 Ht
-Nt
+KW
 Ht
 cp
 Ht

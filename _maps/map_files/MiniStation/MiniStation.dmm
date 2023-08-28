@@ -13133,9 +13133,6 @@
 /obj/machinery/door/airlock/hatch{
 	name = "MiniSat Foyer"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -14645,7 +14642,6 @@
 	id = "AI Chamber entrance shutters";
 	name = "AI Chamber Entrance Shutters"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/access/all/command/ai_upload,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -18934,7 +18930,6 @@
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Server Room"
 	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/tcoms,
@@ -19153,9 +19148,6 @@
 "YX" = (
 /obj/machinery/door/airlock/hatch{
 	name = "Telecomms Server Room"
-	},
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 1
 	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -69003,7 +68995,7 @@ aa
 aa
 aa
 aa
-aa
+cp
 aa
 aa
 aa

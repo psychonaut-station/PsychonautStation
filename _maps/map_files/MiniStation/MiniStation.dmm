@@ -10064,6 +10064,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
+"yZ" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "za" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -13117,17 +13122,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "GA" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/hatch{
-	name = "MiniSat Foyer"
-	},
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/any/command/general,
-/obj/effect/mapping_helpers/airlock/access/any/command/minisat,
-/obj/effect/mapping_helpers/airlock/access/any/engineering/tcoms,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/smooth_large/airless,
 /area/station/tcommsat/computer)
 "GB" = (
 /obj/structure/cable,
@@ -13889,12 +13884,9 @@
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
 "II" = (
-/obj/machinery/atmospherics/components/binary/pump/layer4{
-	dir = 8
-	},
 /obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/main)
+/turf/open/floor/iron/smooth_large/airless,
+/area/station/tcommsat/computer)
 "IJ" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/tile/neutral{
@@ -15470,10 +15462,11 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "Nt" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
-/turf/open/floor/plating/airless,
-/area/station/engineering/main)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/smooth,
+/area/station/tcommsat/computer)
 "Nu" = (
 /obj/effect/landmark/atmospheric_sanity/ignore_area,
 /turf/closed/wall/r_wall,
@@ -17289,6 +17282,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
+"Tr" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/station/engineering/main)
 "Ts" = (
 /obj/machinery/autolathe,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
@@ -18087,6 +18085,13 @@
 "VV" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+"VW" = (
+/obj/machinery/atmospherics/components/binary/pump/layer4{
+	dir = 8
+	},
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
@@ -19108,11 +19113,6 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"YT" = (
-/obj/machinery/atmospherics/components/binary/pump,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/main)
 "YU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/turf_decal/stripes/line,
@@ -54065,7 +54065,7 @@ We
 We
 We
 We
-YT
+yZ
 VV
 sZ
 Xg
@@ -54579,8 +54579,8 @@ qG
 Qy
 qG
 qG
-II
-Nt
+VW
+Tr
 Ul
 Ul
 ve
@@ -64361,7 +64361,7 @@ Tb
 Tb
 Tb
 uI
-WN
+II
 vg
 Vj
 PG
@@ -64887,7 +64887,7 @@ wf
 OF
 wr
 vh
-GA
+Nt
 uI
 bh
 aa

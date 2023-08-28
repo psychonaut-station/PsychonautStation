@@ -16112,12 +16112,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
-"Pw" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/cable,
-/turf/open/space,
-/area/space/nearstation)
 "Px" = (
 /obj/structure/closet/secure_closet/atmospherics,
 /turf/open/floor/iron,
@@ -60255,7 +60249,7 @@ Rw
 Vt
 II
 II
-Pw
+Ul
 Ul
 Ul
 td

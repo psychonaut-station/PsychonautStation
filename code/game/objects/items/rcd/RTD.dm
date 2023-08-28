@@ -24,6 +24,7 @@
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	has_ammobar = TRUE
 	banned_upgrades = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING | RCD_UPGRADE_ANTI_INTERRUPT | RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN
+	max_secondary_matter = 50
 	secondary_matter_types = list(
 		/obj/item/stack/sheet/cloth = 4,
 		/obj/item/stack/tile/carpet = 1,
@@ -379,7 +380,7 @@
 
 /obj/item/construction/rtd/loaded
 	matter = 350
-	secondary_matter = 100
+	secondary_matter = 50
 
 /obj/item/construction/rtd/admin
 	name = "admin RTD"

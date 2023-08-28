@@ -13124,7 +13124,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable/layer3,
 /obj/effect/mapping_helpers/airlock/access/any/command/general,
 /obj/effect/mapping_helpers/airlock/access/any/command/minisat,
 /obj/effect/mapping_helpers/airlock/access/any/engineering/tcoms,
@@ -17290,11 +17289,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
-"Tr" = (
-/obj/machinery/atmospherics/components/binary/pump,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/main)
 "Ts" = (
 /obj/machinery/autolathe,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted{
@@ -19114,6 +19108,11 @@
 /obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"YT" = (
+/obj/machinery/atmospherics/components/binary/pump,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/engineering/main)
 "YU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/effect/turf_decal/stripes/line,
@@ -54066,7 +54065,7 @@ We
 We
 We
 We
-Tr
+YT
 VV
 sZ
 Xg

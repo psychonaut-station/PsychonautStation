@@ -196,6 +196,12 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white/smooth_large,
 /area/ruin/space/has_grav/ntcomms)
+"qk" = (
+/obj/machinery/light/cold/dim/directional/north,
+/obj/structure/cable,
+/obj/machinery/power/port_gen/pacman/magical,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/ntcomms)
 "ry" = (
 /obj/structure/table,
 /obj/item/storage/box/donkpockets{
@@ -365,11 +371,6 @@
 	use_power = 0
 	},
 /turf/open/floor/iron/dark,
-/area/ruin/space/has_grav/ntcomms)
-"BN" = (
-/obj/structure/cable,
-/obj/machinery/power/port_gen,
-/turf/open/floor/plating,
 /area/ruin/space/has_grav/ntcomms)
 "Ca" = (
 /obj/machinery/computer/arcade/orion_trail{
@@ -737,8 +738,6 @@
 /area/ruin/space/has_grav/ntcomms)
 "XE" = (
 /obj/machinery/light/cold/dim/directional/north,
-/obj/structure/cable,
-/obj/machinery/power/port_gen,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/ntcomms)
 "XX" = (
@@ -1182,7 +1181,7 @@ Sx
 nZ
 or
 XE
-Yq
+bG
 zx
 uX
 ST
@@ -1211,8 +1210,8 @@ nZ
 nZ
 nZ
 or
-BN
-Yq
+bG
+bG
 bG
 Rf
 Kt
@@ -1241,7 +1240,7 @@ nZ
 nZ
 Sx
 or
-XE
+qk
 Yq
 co
 Fp

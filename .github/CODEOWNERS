@@ -1,5 +1,5 @@
 # These stuff require someone with host access
-/.github/workflows/update_tgs_dmapi.yml @exdal
+/.github/ @exdal
 /.tgs.yml @exdal
 /code/world.dm @exdal
 /code/__DEFINES/tgs.config.dm @exdal

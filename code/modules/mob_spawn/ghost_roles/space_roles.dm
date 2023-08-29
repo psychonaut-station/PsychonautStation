@@ -97,10 +97,10 @@
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
-	you_are_text = "You're a nt employee who will monitor the station and report back."
+	you_are_text = "You're a Nanotrasen employee who will monitor the station and report back."
 	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to station command. Do not let the base fall into enemy hands!"
 	important_text = "DO NOT abandon the base."
-	outfit = /datum/outfit/centcom/centcom_intern
+	outfit = /datum/outfit/centcom/ntcomms
 	spawner_job_path = /datum/job/nt_comms
 
 /obj/effect/mob_spawn/ghost_role/human/ntcomms/Destroy()

@@ -280,3 +280,18 @@
 
 /obj/machinery/power/port_gen/pacman/pre_loaded
 	sheets = 15
+
+/obj/machinery/power/port_gen/pacman/magical
+	name = "Magical Power P.A.C.M.A.N Generator"
+
+/obj/machinery/power/port_gen/pacman/magical/process()
+	sheets = INFINITY
+	max_sheets = INFINITY
+	sheet_left = INFINITY
+	..()
+
+/obj/machinery/power/port_gen/pacman/magical/HasFuel()
+	return TRUE
+
+/obj/machinery/power/port_gen/pacman/magical/DropFuel()
+	return

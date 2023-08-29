@@ -199,3 +199,7 @@
 
 /datum/id_trim/centcom/ert/militia/general
 	assignment = "Frontier Militia General"
+
+/datum/id_trim/centcom/ntcomms
+	assignment = "Comms Supervisor"
+	access = list()

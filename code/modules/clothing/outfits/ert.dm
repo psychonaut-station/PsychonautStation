@@ -563,3 +563,30 @@
 	head = /obj/item/clothing/head/beret/militia
 	l_hand = /obj/item/megaphone
 	suit_store = /obj/item/gun/energy/laser/musket/prime
+
+/datum/outfit/centcom/ntcomms
+	name = "Comms Supervisor"
+
+	id = /obj/item/card/id/advanced/centcom
+	id_trim = /datum/id_trim/centcom/ntcomms
+	uniform = /obj/item/clothing/under/rank/centcom/intern
+	back = /obj/item/storage/backpack/satchel
+	box = /obj/item/storage/box/survival
+	belt = /obj/item/melee/baton
+	ears = /obj/item/radio/headset/headset_cent
+	glasses = /obj/item/clothing/glasses/sunglasses
+	gloves = /obj/item/clothing/gloves/color/black
+	shoes = /obj/item/clothing/shoes/sneakers/black
+	l_pocket = null
+	r_pocket = null
+	l_hand = null
+
+/datum/outfit/centcom/centcom_intern/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+	if(visualsOnly)
+		return
+
+	var/obj/item/card/id/W = H.wear_id
+	W.registered_name = H.real_name
+	W.update_label()
+	W.update_icon()
+	return ..()

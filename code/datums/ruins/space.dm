@@ -229,6 +229,12 @@
 	description = "The SSCV Atrus was chartered to survey over 600 planets in its maiden voyage. \
 	Hopefully the SSC is content with an indepth analysis of just this asteroid."
 
+/datum/map_template/ruin/space/ntcomms
+	id = "nanotrasencomms"
+	suffix = "ntcomms.dmm"
+	name = "Nanotrasen Listening Post"
+	description = "This is an post where one of the centcom employees is sent to monitor and assist the station."
+
 /datum/map_template/ruin/space/listeningstation
 	id = "listeningstation"
 	suffix = "listeningstation.dmm"

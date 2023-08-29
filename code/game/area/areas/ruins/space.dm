@@ -567,6 +567,10 @@
 
 	name = "\improper Abandoned Ship"
 
+//NANOTRASEN COMMS
+
+/area/ruin/space/has_grav/ntcomms
+	name = "\improper Nanotrasen Listening Post"
 
 //SYNDICATE LISTENING POST STATION
 

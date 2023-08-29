@@ -273,7 +273,7 @@
 /area/ruin/space/has_grav/listeningstation)
 "zo" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners,
-/obj/effect/mob_spawn/ghost_role/human/nt/comms{
+/obj/effect/mob_spawn/ghost_role/human/ntcomms{
 	dir = 4
 	},
 /turf/open/floor/iron/dark,

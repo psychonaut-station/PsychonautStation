@@ -91,7 +91,7 @@
 
 //Nanotrasen
 
-/obj/effect/mob_spawn/ghost_role/human/nt/comms
+/obj/effect/mob_spawn/ghost_role/human/ntcomms
 	name = "NT Comms Supervisor"
 	prompt_name = "a nt comms supervisor"
 	icon = 'icons/obj/machines/sleeper.dmi'
@@ -103,7 +103,7 @@
 	outfit = /datum/outfit/centcom/centcom_intern
 	spawner_job_path = /datum/job/nt_comms
 
-/obj/effect/mob_spawn/ghost_role/human/nt/comms/Destroy()
+/obj/effect/mob_spawn/ghost_role/human/ntcomms/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 

@@ -23,15 +23,26 @@
 		return
 	spawned.apply_pref_name(/datum/preference/name/animal, player_client)
 
-/datum/job/animal/proc/remove_ai(mob/living/spawned)
-	var/static/list/restricted_components = list(/datum/component/tameable, /datum/component/obeys_commands)
+/datum/job/animal/proc/override_mob(mob/living/spawned as anything)
+	var/static/list/banned_components = list(/datum/component/tameable, /datum/component/obeys_commands)
+	var/static/list/banned_elements = list(/datum/element/venomous)
+	var/static/list/banned_traits = list(TRAIT_VENTCRAWLER_ALWAYS, TRAIT_SPACEWALK)
+
 	if(istype(spawned, /mob/living/simple_animal))
 		var/mob/living/simple_animal/simple_animal = spawned
 		simple_animal.toggle_ai(AI_OFF)
 		simple_animal.can_have_ai = FALSE
-	for(var/component_type in restricted_components)
+
+	for(var/datum/component/component_type as anything in banned_components)
 		for(var/datum/component/component in spawned.GetComponents(component_type))
 			qdel(component)
+
+	for(var/datum/element/element as anything in banned_elements)
+		spawned.RemoveElement(element)
+
+	spawned.remove_traits(banned_traits)
+	spawned.remove_traits(banned_traits, ROUNDSTART_TRAIT)
+
 	if(spawned.ai_controller)
 		qdel(spawned.ai_controller)
 
@@ -51,8 +62,7 @@
 
 	spawn_point.JoinPlayerHere(spawn_instance, TRUE)
 	apply_prefs_job_animal(spawn_instance, player_client)
-	remove_ai(spawn_instance)
-	set_max_health(spawn_instance)
+	override_mob(spawn_instance)
 	register_signals(spawn_instance)
 
 	switch(spawn_type_)

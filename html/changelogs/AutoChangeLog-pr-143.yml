@@ -1,6 +1,0 @@
-author: "Seefaaa"
-delete-after: True
-changes:
-  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile başlayacak."
-  - rscadd: "RTD carpet üretebilecek ve clothla veya carpet geri dönüştürerek şarj olacak."
-  - balance: "Worker slotu 2'den 3'e çıkarıldı.\nbalance Worker'in çantasındaki wood miktarı çantaya RTD ve clothun sığması için 50'den 30'a azaltıldı."

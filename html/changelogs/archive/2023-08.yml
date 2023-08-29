@@ -1299,3 +1299,11 @@
   vinylspiders:
   - qol: inserting new high luminosity eyes will now properly remember the previous
       eyes' color and default to that initially
+2023-08-29:
+  Seefaaa:
+  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
+  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
+      t\xFCrerek \u015Farj olacak."
+  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
+      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
+      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."

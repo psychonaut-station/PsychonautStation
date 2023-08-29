@@ -23,7 +23,7 @@
 		return
 	spawned.apply_pref_name(/datum/preference/name/animal, player_client)
 
-/datum/job/animal/proc/override_mob(mob/living/spawned as anything)
+/datum/job/animal/proc/override_mob(mob/living/spawned)
 	var/static/list/banned_components = list(/datum/component/tameable, /datum/component/obeys_commands)
 	var/static/list/banned_elements = list(/datum/element/venomous)
 	var/static/list/banned_traits = list(TRAIT_VENTCRAWLER_ALWAYS, TRAIT_SPACEWALK)
@@ -49,9 +49,57 @@
 	spawned.setMaxHealth(100)
 	spawned.updatehealth()
 
+	if(spawned.melee_damage_lower > 5)
+		spawned.melee_damage_lower = 5
+
+	if(spawned.melee_damage_upper > 5)
+		spawned.melee_damage_upper = 5
+
+	if(istype(spawned, /mob/living/basic))
+		var/mob/living/basic/spawned_basic = spawned
+
+		if(!(spawned_basic.unsuitable_atmos_damage > 0))
+			spawned_basic.unsuitable_atmos_damage = 1
+			spawned_basic.AddElement( \
+				/datum/element/atmos_requirements, \
+				string_assoc_list(spawned_basic.habitable_atmos), \
+				spawned_basic.unsuitable_atmos_damage \
+			)
+
+		spawned_basic.obj_damage = -1
+		spawned_basic.environment_smash = NONE
+		spawned_basic.sharpness = NONE
+		spawned_basic.wound_bonus = CANT_WOUND
+		spawned_basic.bare_wound_bonus = 0
+
+	if(istype(spawned, /mob/living/simple_animal))
+		var/mob/living/simple_animal/spawned_simple = spawned
+
+		if(!(spawned_simple.unsuitable_atmos_damage > 0))
+			spawned_simple.unsuitable_atmos_damage = 1
+			spawned_simple.AddElement( \
+				/datum/element/atmos_requirements, \
+				string_assoc_list(spawned_simple.atmos_requirements), \
+				spawned_simple.unsuitable_atmos_damage \
+			)
+
+		spawned_simple.obj_damage = -1
+		spawned_simple.environment_smash = NONE
+		spawned_simple.sharpness = NONE
+		spawned_simple.wound_bonus = CANT_WOUND
+		spawned_simple.bare_wound_bonus = 0
+
+	switch(spawned.type)
+		if(/mob/living/simple_animal/parrot)
+			if(prob(1))
+				spawned.desc = "Doomed to squawk the Earth."
+				spawned.color = "#FFFFFF77"
+				spawned.fully_replace_character_name(spawned.real_name, "The Ghost of [spawned.real_name]")
+		if(/mob/living/basic/mothroach)
+			spawned.grant_language(/datum/language/moffic, source = LANGUAGE_MIND)
+
 /datum/job/animal/proc/register_signals(mob/living/spawn_instance)
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(spawn_instance, COMSIG_LIVING_UNARMED_ATTACK, PROC_REF(attack_cooldown))
 
 /datum/job/animal/get_spawn_mob(client/player_client, atom/spawn_point)
 	var/animal_type = player_client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
@@ -62,15 +110,6 @@
 	apply_prefs_job_animal(spawn_instance, player_client)
 	override_mob(spawn_instance)
 	register_signals(spawn_instance)
-
-	switch(spawn_type_)
-		if(/mob/living/simple_animal/parrot)
-			if(prob(1))
-				spawn_instance.desc = "Doomed to squawk the Earth."
-				spawn_instance.color = "#FFFFFF77"
-				spawn_instance.fully_replace_character_name(spawn_instance.real_name, "The Ghost of [spawn_instance.real_name]")
-		if(/mob/living/basic/mothroach)
-			spawn_instance.grant_language(/datum/language/moffic, source = LANGUAGE_MIND)
 
 	if(!player_client)
 		qdel(spawn_instance)
@@ -85,15 +124,3 @@
 		examine_list += span_deadsay("It is totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
 	else if(!source.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
-
-/datum/job/animal/proc/attack_cooldown(mob/living/source, atom/target)
-	SIGNAL_HANDLER
-
-	if(ismob(target))
-		source.changeNext_move(CLICK_CD_MELEE * 2)
-
-/datum/job/animal/announce_job(mob/living/joining_mob)
-	. = ..()
-	if(SSticker.HasRoundStarted())
-		var/animal_type_name = joining_mob.client?.prefs?.read_preference(/datum/preference/choiced/animal_type)
-		announce_arrival(joining_mob, animal_type_name)

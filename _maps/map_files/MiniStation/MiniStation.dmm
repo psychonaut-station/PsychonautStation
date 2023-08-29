@@ -5555,6 +5555,7 @@
 	},
 /obj/machinery/light,
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/light/directional/south,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "nk" = (
@@ -5715,6 +5716,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "nG" = (
@@ -6279,6 +6281,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "oZ" = (
@@ -7700,6 +7703,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"sN" = (
+/obj/effect/turf_decal/tile/neutral{
+	dir = 1
+	},
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron,
+/area/station/hallway/primary/aft)
 "sO" = (
 /obj/machinery/door/poddoor{
 	id = "Secure Storage";
@@ -15259,6 +15269,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
+"ML" = (
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron/grimy,
+/area/station/hallway/secondary/exit)
 "MN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -18014,6 +18028,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"VJ" = (
+/obj/machinery/light/directional/west,
+/turf/open/floor/iron/dark/textured,
+/area/station/medical/medbay/central)
 "VK" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/command/nuke_storage)
@@ -19205,6 +19223,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
+"Zh" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/light/directional/east,
+/turf/open/floor/iron,
+/area/station/hallway/secondary/exit)
 "Zi" = (
 /obj/effect/turf_decal/tile/green/half/contrasted,
 /obj/machinery/vending/wardrobe/hydro_wardrobe,
@@ -46575,7 +46602,7 @@ rZ
 CA
 ih
 RI
-aj
+Zh
 jg
 aj
 jT
@@ -47352,7 +47379,7 @@ wW
 FY
 Dt
 CA
-kZ
+ML
 kZ
 kZ
 iw
@@ -51475,7 +51502,7 @@ OA
 aE
 Ro
 Ro
-Ro
+sN
 Ro
 Ro
 pH
@@ -55831,7 +55858,7 @@ lC
 xT
 kb
 lY
-yt
+VJ
 Yh
 oM
 kb
@@ -59447,7 +59474,7 @@ BS
 BS
 Fe
 BS
-BG
+BS
 Cm
 qd
 yT

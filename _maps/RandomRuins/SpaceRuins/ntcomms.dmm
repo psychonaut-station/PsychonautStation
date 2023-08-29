@@ -1,4 +1,8 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aW" = (
+/obj/machinery/space_heater,
+/turf/open/floor/iron/smooth_large/airless,
+/area/ruin/space/has_grav/listeningstation)
 "bf" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners,
 /obj/structure/chair/office{
@@ -434,6 +438,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/smooth_large/airless,
 /area/ruin/space/has_grav/listeningstation)
+"Hq" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/space_heater,
+/turf/open/floor/iron/smooth_large/airless,
+/area/ruin/space/has_grav/listeningstation)
 "HW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -862,8 +871,8 @@ Tm
 qh
 ry
 ST
-Tz
-Rf
+aW
+Hq
 Tz
 fF
 or

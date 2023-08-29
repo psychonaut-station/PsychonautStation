@@ -89,25 +89,25 @@
 
 ///asteroid comms agent
 
-//Centcom
+//Nanotrasen
 
-/obj/effect/mob_spawn/ghost_role/human/centcom/comms
-	name = "Centcom Comms Supervisor"
-	prompt_name = "a centcom comms supervisor"
+/obj/effect/mob_spawn/ghost_role/human/nt/comms
+	name = "NT Comms Supervisor"
+	prompt_name = "a nt comms supervisor"
 	icon = 'icons/obj/machines/sleeper.dmi'
 	icon_state = "sleeper"
 	mob_species = /datum/species/human
-	you_are_text = "You're a centcom employee who will monitor the station and report back."
+	you_are_text = "You're a nt employee who will monitor the station and report back."
 	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to station command. Do not let the base fall into enemy hands!"
-	important_text = "Help to the station, Do not leave the base."
+	important_text = "DO NOT abandon the base."
 	outfit = /datum/outfit/centcom/centcom_intern
-	spawner_job_path = /datum/job/centcom_comms
+	spawner_job_path = /datum/job/nt_comms
 
-/obj/effect/mob_spawn/ghost_role/human/centcom/comms/Destroy()
+/obj/effect/mob_spawn/ghost_role/human/nt/comms/Destroy()
 	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
 	return ..()
 
-//Centcom
+//Nanotrasen
 
 //Syndicate
 

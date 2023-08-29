@@ -1,5 +1,5 @@
 /obj/item/paper/fluff/ruins/ntcomms
-	name = "Centcom Comms Supervisor Job Report"
+	name = "Nanotrasen Comms Supervisor Job Report"
 	default_raw_text = "Hoşgeldin. Yapman ve yapmaman gereken şeyler aşağıda listelendi..!<br><br> \
 		<ol> \
 		<li>Kameralardan istasyonu izleyip önemli durumları onlara bildirmek.</li> \

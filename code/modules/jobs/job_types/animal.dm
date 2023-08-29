@@ -46,10 +46,8 @@
 	if(spawned.ai_controller)
 		qdel(spawned.ai_controller)
 
-/datum/job/animal/proc/set_max_health(mob/living/spawned)
-	if(spawned.maxHealth < 100)
-		spawned.setMaxHealth(100)
-		spawned.updatehealth()
+	spawned.setMaxHealth(100)
+	spawned.updatehealth()
 
 /datum/job/animal/proc/register_signals(mob/living/spawn_instance)
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

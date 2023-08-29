@@ -89,6 +89,28 @@
 
 ///asteroid comms agent
 
+//Centcom
+
+/obj/effect/mob_spawn/ghost_role/human/centcom/comms
+	name = "Centcom Comms Supervisor"
+	prompt_name = "a centcom comms supervisor"
+	icon = 'icons/obj/machines/sleeper.dmi'
+	icon_state = "sleeper"
+	mob_species = /datum/species/human
+	you_are_text = "You're a centcom employee who will monitor the station and report back."
+	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to station command. Do not let the base fall into enemy hands!"
+	important_text = "Help to the station, Do not leave the base."
+	outfit = /datum/outfit/centcom/centcom_intern
+	spawner_job_path = /datum/job/centcom_comms
+
+/obj/effect/mob_spawn/ghost_role/human/centcom/comms/Destroy()
+	new/obj/structure/showcase/machinery/oldpod/used(drop_location())
+	return ..()
+
+//Centcom
+
+//Syndicate
+
 /obj/effect/mob_spawn/ghost_role/human/lavaland_syndicate/comms/space
 	you_are_text = "You are a syndicate agent, assigned to a small listening post station situated near your hated enemy's top secret research facility: Space Station 13."
 	flavour_text = "Monitor enemy activity as best you can, and try to keep a low profile. Use the communication equipment to provide support to any field agents, and sow disinformation to throw Nanotrasen off your trail. Do not let the base fall into enemy hands!"
@@ -99,6 +121,8 @@
 	if(prob(85)) //only has a 15% chance of existing, otherwise it'll just be a NPC syndie.
 		new /mob/living/basic/syndicate/ranged(get_turf(src))
 		return INITIALIZE_HINT_QDEL
+
+//Syndicate
 
 ///battlecruiser stuff
 

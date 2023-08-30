@@ -70,6 +70,9 @@
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
+	icon = 'icons/obj/weapons/guns/energy/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	icon_state = "lasercannon"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "laser"

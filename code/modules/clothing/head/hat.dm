@@ -220,6 +220,8 @@
 /obj/item/clothing/head/hats/nt_secretary
 	name = "\improper Nt Secretary cap"
 	desc = "The cap of the Nt Secretary, stylish!."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
 	icon_state = "nt_secretary"
 	inhand_icon_state = null
 

@@ -40,7 +40,7 @@
 	name = "\improper antique laser gun"
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
-	icon = 'icons/psychonaut/obj/weapons/guns/energy/energy.dmi'
+	icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_righthand.dmi'
 	inhand_icon_state = "caplaser"
@@ -70,7 +70,7 @@
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
-	icon = 'icons/obj/weapons/guns/energy/energy.dmi'
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	icon_state = "lasercannon"

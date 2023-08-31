@@ -1307,3 +1307,7 @@
   - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
       \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
       mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
+2023-08-31:
+  exdal:
+  - rscdel: Random antag eventleri kaldirildi
+  - qol: Cogu midround antag icin enemy role araliklari arttirildi

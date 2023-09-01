@@ -243,6 +243,8 @@
 /obj/item/clothing/head/hats/hos/special
 	name = "special cap"
 	desc = "Mal huseyin. Derdimi acikliyorum?."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
 	icon_state = "hoscapspecial"
 
 /obj/item/clothing/head/hats/hos/cap/syndicate
@@ -498,7 +500,7 @@
 /obj/item/clothing/head/beret/cargo
 	name = "cargo beret"
 	desc = "No need to compensate when you can wear this beret!"
-	greyscale_colors = "#c99840"
+	greyscale_colors = "#b7723d"
 	flags_1 = NONE
 
 //Curator

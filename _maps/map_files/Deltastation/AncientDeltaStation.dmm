@@ -65830,9 +65830,6 @@
 "oyd" = (
 /obj/structure/table/reinforced,
 /obj/item/folder/yellow,
-/obj/item/computer_disk/atmos,
-/obj/item/computer_disk/atmos,
-/obj/item/computer_disk/atmos,
 /obj/item/stamp/head/ce,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1

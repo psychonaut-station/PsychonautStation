@@ -114,7 +114,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_chest"
 
 /datum/design/ipc_head

@@ -232,7 +232,7 @@
 	name = "Change Monitor Emote"
 	check_flags = NONE
 	button_icon_state = "ipc_monitor"
-	button_icon = 'icons/mob/actions/actions_silicon.dmi'
+	button_icon = 'icons/psychonaut/mob/actions/actions_silicon.dmi'
 	background_icon_state = "bg_tech"
 	overlay_icon_state = "bg_tech_border"
 	var/static/possible_overlays = list(

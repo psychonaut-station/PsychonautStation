@@ -7,8 +7,8 @@
 #define ROBOTIC_HEAVY_BURN_MSG "smoldering"
 
 /obj/item/bodypart/head/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	disabled_wound_penalty = 10
 	icon_state = "blackipc_head"
 	limb_id = "blackipc"
@@ -52,8 +52,8 @@
 	addtimer(CALLBACK(owner, TYPE_PROC_REF(/mob/living/carbon/human, remove_client_colour), /datum/client_colour/malfunction), glitch_duration)
 
 /obj/item/bodypart/chest/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_chest"
 	limb_id = "blackipc"
 	attack_verb_simple = list("slapped", "punched")
@@ -92,8 +92,8 @@
 	owner.Shake(pixelshiftx = 3, pixelshifty = 0, duration = 2.5 SECONDS)
 
 /obj/item/bodypart/arm/left/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_arm"
 	limb_id = "blackipc"
 	attack_verb_simple = list("kicked", "stomped")
@@ -119,8 +119,8 @@
 		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/arm/right/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_arm"
 	limb_id = "blackipc"
 	attack_verb_simple = list("kicked", "stomped")
@@ -146,8 +146,8 @@
 		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/leg/left/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_leg"
 	limb_id = "blackipc"
 	is_dimorphic = FALSE
@@ -181,8 +181,8 @@
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 
 /obj/item/bodypart/leg/right/ipc
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-	icon_static = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_leg"
 	limb_id = "blackipc"
 	is_dimorphic = FALSE

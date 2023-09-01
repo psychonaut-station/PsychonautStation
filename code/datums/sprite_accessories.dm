@@ -2119,7 +2119,7 @@
 	icon_state = "round"
 
 /datum/sprite_accessory/ipc_monitor
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc"
 	color_src = null
 	em_block = TRUE
@@ -2153,7 +2153,7 @@
 	icon_state = "zhpipc"
 
 /datum/sprite_accessory/ipc_chassis
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc"
 	color_src = null
 	em_block = TRUE

@@ -4,7 +4,7 @@
 	desc = "IPC Head Monitor"
 
 	use_mob_sprite_as_obj_sprite = TRUE
-	icon = 'icons/mob/human/species/ipc/ipc_screens.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'
 	icon_state = "m_ipc_monitor_blackipc_FRONT"
 
 	zone = BODY_ZONE_HEAD
@@ -29,7 +29,7 @@
 
 //Screen
 /datum/bodypart_overlay/simple/ipcscreen
-	icon = 'icons/mob/human/species/ipc/ipc_screens.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'
 	layers = EXTERNAL_FRONT
 	var/attached_body_zone = BODY_ZONE_HEAD
 

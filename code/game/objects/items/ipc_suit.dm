@@ -1,7 +1,7 @@
 /obj/item/ipc_suit
 	name = "ipc endoskeleton"
 	desc = "A complex metal backbone with standard limb sockets and pseudomuscle anchors."
-	icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "ipc_suit"
 	w_class = WEIGHT_CLASS_GIGANTIC
 	var/list/features

@@ -24,7 +24,7 @@
 	var/icon/icon_with_chassis = icon('icons/effects/effects.dmi', "nothing")
 
 	for (var/body_part in body_parts)
-		icon_with_chassis.Blend(icon('icons/mob/human/species/ipc/bodyparts.dmi', "[chassis.limbs_id]_[body_part]", dir = SOUTH), ICON_OVERLAY)
+		icon_with_chassis.Blend(icon('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', "[chassis.limbs_id]_[body_part]", dir = SOUTH), ICON_OVERLAY)
 
 	return icon_with_chassis
 
@@ -34,7 +34,7 @@
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = GLOB.ipc_chassis_list[value]
 	for(var/obj/item/bodypart/BP as() in target.bodyparts) //Override bodypart data as necessary
 		if(isipc(target))
-			BP.icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
-			BP.change_appearance('icons/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.limbs_id, FALSE, FALSE)
+			BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+			BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.limbs_id, FALSE, FALSE)
 			BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
 			BP.update_limb()

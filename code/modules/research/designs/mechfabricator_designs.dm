@@ -101,7 +101,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "ipc_suit"
 
 /datum/design/ipc_chest
@@ -127,7 +127,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_head"
 
 /datum/design/ipc_l_arm
@@ -140,7 +140,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_l_arm"
 
 /datum/design/ipc_r_arm
@@ -153,7 +153,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_r_arm"
 
 /datum/design/ipc_l_leg
@@ -166,7 +166,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_l_leg"
 
 /datum/design/ipc_r_leg
@@ -179,7 +179,7 @@
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
 	)
-	research_icon = 'icons/mob/human/species/ipc/bodyparts.dmi'
+	research_icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	research_icon_state = "blackipc_r_leg"
 
 /datum/design/ipc_stomach

@@ -5553,9 +5553,8 @@
 /obj/machinery/computer/operating{
 	dir = 4
 	},
-/obj/machinery/light,
 /obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/machinery/light/directional/south,
+/obj/machinery/light,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "nk" = (

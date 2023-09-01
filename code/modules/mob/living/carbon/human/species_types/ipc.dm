@@ -271,6 +271,7 @@
 /obj/item/organ/internal/voltprotector
 	name = "High Voltage Protector"
 	desc = "This organ regulates the high electrical voltage coming into your body."
+	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "volt_protector"
 	slot = ORGAN_SLOT_VOLTPROTECT
 	organ_flags = ORGAN_ROBOTIC

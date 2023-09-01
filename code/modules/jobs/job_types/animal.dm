@@ -89,6 +89,8 @@
 		spawned_simple.wound_bonus = CANT_WOUND
 		spawned_simple.bare_wound_bonus = 0
 
+	var/datum/language_holder/language_holder = spawned.get_language_holder()
+
 	switch(spawned.type)
 		if(/mob/living/simple_animal/parrot)
 			if(prob(1))
@@ -96,7 +98,11 @@
 				spawned.color = "#FFFFFF77"
 				spawned.fully_replace_character_name(spawned.real_name, "The Ghost of [spawned.real_name]")
 		if(/mob/living/basic/mothroach)
-			spawned.grant_language(/datum/language/moffic, source = LANGUAGE_MIND)
+			language_holder.grant_language(/datum/language/moffic, source = LANGUAGE_ATOM)
+
+	language_holder.remove_blocked_language(/datum/language/common, source = LANGUAGE_ATOM)
+	language_holder.grant_language(/datum/language/common, source = LANGUAGE_ATOM)
+	language_holder.selected_language = /datum/language/common
 
 /datum/job/animal/proc/register_signals(mob/living/spawn_instance)
 	RegisterSignal(spawn_instance, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))

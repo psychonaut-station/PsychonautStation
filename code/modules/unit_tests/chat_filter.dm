@@ -35,8 +35,9 @@
 	)
 
 	test_filter(
-		"<(0_0<) <(0_0)> (>0_0)> KIRBY DANCE!!!",
-		"<(0_0<)",
+		"RP standartlarini yukseltmek icin tm gibi kelimeleri yasakladik. Ama tg coderlari ucube oldugu icin \
+		word match yerine 1984 bir sistem eklemisler.",
+		"tm",
 		BLOCKED_IC_OUTSIDE_PDA,
 		null,
 		null,

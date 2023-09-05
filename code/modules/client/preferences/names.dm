@@ -157,12 +157,12 @@
 /datum/preference/name/bible/create_default_value()
 	return DEFAULT_BIBLE
 
-/datum/preference/name/pug
-	savefile_key = "pug_name"
+/datum/preference/name/animal
+	savefile_key = "animal_name"
 
-	explanation = "Pug name"
+	explanation = "Animal name"
 	group = "fun"
-	relevant_job = /datum/job/pug
+	relevant_job = /datum/job/animal
 
-/datum/preference/name/pug/create_default_value()
+/datum/preference/name/animal/create_default_value()
 	return pick(GLOB.pug_names)

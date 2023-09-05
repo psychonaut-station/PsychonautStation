@@ -57,6 +57,7 @@
 
 	var/secretary = FALSE
 	var/synthetic = FALSE
+	var/curator = FALSE
 	/// List of antag datums on this mind
 	var/list/antag_datums
 	/// this mind's ANTAG_HUD should have this icon_state
@@ -129,7 +130,7 @@
 	.["key"] = key
 	.["name"] = name
 	.["ghostname"] = ghostname
-	.["memories"] = memories
+	.["memories"] = memories.len > 0 ? memories : null
 	.["martial_art"] = martial_art
 	.["antag_datums"] = antag_datums
 	.["holy_role"] = holy_role

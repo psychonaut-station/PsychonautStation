@@ -5,9 +5,6 @@
 
 GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
-#define TICKET_TYPE_ADMIN 0
-#define TICKET_TYPE_MENTOR 1
-
 /**
  * # Adminhelp Ticket Manager
  */
@@ -969,7 +966,7 @@ GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new
 	. = ..()
 	if(.)
 		return
-	
+
 	switch(action)
 		if("ticket_mentor")
 			GLOB.mentor_help_ui_handler.ui_interact(usr)
@@ -980,7 +977,7 @@ GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new
 
 /client/verb/tickethelper()
 	set name = "Tickethelper"
-	set hidden = TRUE 
+	set hidden = TRUE
 
 	GLOB.ticket_helper_ui_handler.ui_interact(mob)
 
@@ -1285,7 +1282,6 @@ GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new
 		return_list[ASAY_LINK_NEW_MESSAGE_INDEX] = jointext(msglist, " ") // without tuples, we must make do!
 		return_list[ASAY_LINK_PINGED_ADMINS_INDEX] = pinged_admins
 		return return_list
-
 
 #undef WEBHOOK_URGENT
 #undef WEBHOOK_NONE

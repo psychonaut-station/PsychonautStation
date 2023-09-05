@@ -364,6 +364,9 @@ GLOBAL_LIST_INIT(wood_recipes, list ( \
 	. = ..()
 	. += GLOB.wood_recipes
 
+/obj/item/stack/sheet/mineral/wood/thirty
+	amount = 30
+
 /obj/item/stack/sheet/mineral/wood/fifty
 	amount = 50
 
@@ -426,6 +429,8 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 	new/datum/stack_recipe("white bandana", /obj/item/clothing/mask/bandana/white, 2, check_density = FALSE, category = CAT_CLOTHING), \
 	null, \
 	new/datum/stack_recipe("backpack", /obj/item/storage/backpack, 4, check_density = FALSE, category = CAT_CONTAINERS), \
+	new/datum/stack_recipe("satchel", /obj/item/storage/backpack/satchel, 4, check_density = FALSE, category = CAT_CONTAINERS), \
+	new/datum/stack_recipe("messenger bag", /obj/item/storage/backpack/messenger, 4, check_density = FALSE, category = CAT_CONTAINERS), \
 	new/datum/stack_recipe("duffel bag", /obj/item/storage/backpack/duffelbag, 6, check_density = FALSE, category = CAT_CONTAINERS), \
 	null, \
 	new/datum/stack_recipe("plant bag", /obj/item/storage/bag/plants, 4, check_density = FALSE, category = CAT_CONTAINERS), \
@@ -478,6 +483,9 @@ GLOBAL_LIST_INIT(cloth_recipes, list ( \
 
 /obj/item/stack/sheet/cloth/five
 	amount = 5
+
+/obj/item/stack/sheet/cloth/thirty
+	amount = 30
 
 GLOBAL_LIST_INIT(durathread_recipes, list ( \
 	new/datum/stack_recipe("durathread jumpsuit", /obj/item/clothing/under/misc/durathread, 4, time = 4 SECONDS, check_density = FALSE, category = CAT_CLOTHING),

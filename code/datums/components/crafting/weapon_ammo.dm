@@ -92,3 +92,13 @@
 		/datum/reagent/consumable/space_cola = 10,
 	)
 	category = CAT_WEAPON_AMMO
+/datum/crafting_recipe/holy_arrow
+	name = "Holy Arrow"
+	result = /obj/item/ammo_casing/arrow/holy
+	reqs = list(
+		/obj/item/stack/sheet/mineral/wood = 5,
+		/obj/item/stack/sheet/iron = 2,
+		/datum/reagent/water/holywater = 10,
+	)
+	tool_paths = list(/obj/item/gun/ballistic/bow/divine)
+	category = CAT_WEAPON_AMMO

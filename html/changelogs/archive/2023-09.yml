@@ -1,0 +1,17 @@
+2023-09-02:
+  AhmetEfeAkgoz:
+  - rscadd: Holy arrow tarifi 10u holy water 5 wood 2 iron
+  Guillaume Prata:
+  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
+      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
+      are not working less often for now on.
+  nikothedude:
+  - balance: Prosthetics and slimepeople can now have limbs dismembered
+  - balance: Slimepeople can now receive slash wounds, but cannot bleed
+  - balance: Most limbs can now be dislocated
+  - refactor: Scar backend reworked, scars will be wiped as they update to the new
+      format
+2023-09-05:
+  Seefaaa:
+  - rscadd: "Pug'\u0131n yerini alacak ve size bir \xE7ok hayvan t\xFCr\xFC sunacak\
+      \ olan Animal mesle\u011Fi."

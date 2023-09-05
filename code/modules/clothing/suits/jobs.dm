@@ -205,6 +205,35 @@
 	icon_state = "suitjacket_black"
 	inhand_icon_state = "ro_suit"
 
+// Cargo
+
+/obj/item/clothing/suit/toggle/cargo_tech
+	name = "cargo gorka"
+	desc = "A brown and black puffy jacket; made from synthetic fabric. Inspired by old Eastern European designs."
+	icon_state = "cargo_jacket"
+	icon = 'icons/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'icons/mob/clothing/suits/jacket.dmi'
+	inhand_icon_state = null
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|ARMS
+	allowed = list(
+		/obj/item/stamp,
+		/obj/item/storage/bag/mail,
+	)
+
+// Quartermaster
+
+/obj/item/clothing/suit/jacket/quartermaster
+	name = "quatermaster's overcoat"
+	desc = "A luxury, brown double-breasted overcoat, made from kangaroo skin. It's gold cuffs linked are styled on the credits symbol. It makes you feel more important then you probably are."
+	icon_state = "qm_coat"
+	blood_overlay_type = "coat"
+	body_parts_covered = CHEST|GROIN|LEGS|ARMS
+	allowed = list(
+		/obj/item/stamp,
+		/obj/item/storage/bag/mail,
+	)
+
 /obj/item/clothing/suit/toggle/lawyer/greyscale
 	name = "formal suit jacket"
 	icon_state = "jacket_lawyer"
@@ -364,5 +393,7 @@
 /obj/item/clothing/suit/jacket/synthetic
 	name = "Connor's jacket"
 	desc = "Became human?"
+	icon = 'icons/psychonaut/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/jacket.dmi'
 	icon_state = "synthjacket"
 	body_parts_covered = CHEST | GROIN | ARMS

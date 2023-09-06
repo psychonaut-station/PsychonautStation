@@ -1,3 +1,8 @@
+#define PA_CONSTRUCTION_UNSECURED  0
+#define PA_CONSTRUCTION_UNWIRED    1
+#define PA_CONSTRUCTION_PANEL_OPEN 2
+#define PA_CONSTRUCTION_COMPLETE   3
+
 /obj/machinery/particle_accelerator/control_box
 	name = "Particle Accelerator Control Console"
 	desc = "This controls the density of the particles."

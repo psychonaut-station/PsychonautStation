@@ -162,3 +162,8 @@
 	icon = 'icons/psychonaut/obj/machines/particle_accelerator.dmi'
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"
+
+#undef PA_CONSTRUCTION_UNSECURED
+#undef PA_CONSTRUCTION_UNWIRED
+#undef PA_CONSTRUCTION_PANEL_OPEN
+#undef PA_CONSTRUCTION_COMPLETE

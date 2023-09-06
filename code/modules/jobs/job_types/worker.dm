@@ -3,8 +3,8 @@
 	description = "Amelelik yap, murettebatin istedigi yapi islerini yap, adiyaman tutun sarma ic, muhendislere racon kes."
 	department_head = list(JOB_CHIEF_ENGINEER)
 	faction = FACTION_STATION
-	total_positions = 2
-	spawn_positions = 2
+	total_positions = 3
+	spawn_positions = 3
 	supervisors = SUPERVISOR_CE
 	exp_requirements = 30
 	exp_required_type = EXP_TYPE_CREW
@@ -31,11 +31,11 @@
 		/obj/item/storage/box/lights/mixed = 20,
 		/obj/item/lightreplacer = 10,
 		/obj/item/holosign_creator/engineering = 8,
+		/obj/item/wrench/bolter = 8,
 		/obj/item/clothing/head/utility/hardhat/red/upgraded = 1
 	)
 	rpg_title = "Amele"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS | JOB_CAN_BE_INTERN
-
 
 /datum/outfit/job/worker
 	name = "Worker"
@@ -44,13 +44,6 @@
 	id_trim = /datum/id_trim/job/worker
 	uniform = /obj/item/clothing/under/pants/jeans
 	suit = /obj/item/clothing/suit/hazardvest
-	backpack_contents = list(
-		/obj/item/stack/sheet/iron/fifty = 1,
-		/obj/item/stack/sheet/plasteel/twenty = 1,
-		/obj/item/stack/sheet/mineral/wood/fifty = 1,
-		/obj/item/stack/sheet/glass/fifty = 1,
-		/obj/item/reagent_containers/cup/soda_cans/cola = 1,
-		)
 	belt = /obj/item/storage/belt/utility/full/engi
 	ears = /obj/item/radio/headset/headset_eng
 	head = /obj/item/clothing/head/utility/hardhat
@@ -61,20 +54,22 @@
 	backpack = /obj/item/storage/backpack/industrial
 	satchel = /obj/item/storage/backpack/satchel/eng
 	duffelbag = /obj/item/storage/backpack/duffelbag/engineering
+	messenger = /obj/item/storage/backpack/messenger/eng
 
-	box = /obj/item/storage/box/survival/engineer
+	backpack_contents = list(
+		/obj/item/stack/sheet/iron/fifty,
+		/obj/item/stack/sheet/glass/fifty,
+		/obj/item/stack/sheet/plasteel/twenty,
+		/obj/item/stack/sheet/mineral/wood/thirty,
+		/obj/item/stack/sheet/cloth/thirty,
+		/obj/item/construction/rcd/loaded,
+		/obj/item/construction/rtd/loaded,
+	)
+
+	box = /obj/item/storage/box/survival/worker
 	pda_slot = ITEM_SLOT_LPOCKET
 
-/datum/outfit/job/engineer/gloved
-	name = "Station Engineer (Gloves)"
+/datum/outfit/job/worker/gloved
+	name = "Worker (Gloves)"
 
 	gloves = /obj/item/clothing/gloves/color/yellow
-
-/datum/outfit/job/engineer/mod
-	name = "Station Engineer (MODsuit)"
-
-	suit_store = /obj/item/tank/internals/oxygen
-	back = /obj/item/mod/control/pre_equipped/engineering
-	head = null
-	mask = /obj/item/clothing/mask/breath
-	internals_slot = ITEM_SLOT_SUITSTORE

@@ -4,7 +4,7 @@
 	weight = 1 //Very rare
 	max_occurrences = 1
 	earliest_start = 1 HOURS
-	min_players = 20
+	min_players = 30
 	dynamic_should_hijack = TRUE
 	category = EVENT_CATEGORY_ENTITIES
 	description = "Spawns a slaughter demon, to hunt by travelling through pools of blood."

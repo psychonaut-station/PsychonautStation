@@ -801,11 +801,11 @@
   - bugfix: multiple balloon alerts when the plumbing RCD is low on ammo
   - code_imp: organized all plumbing designs into static lists for memory savings
   - refactor: removed unused vars for further memory savings
+  YehnBeep:
+  - bugfix: fixed a disconnected APC in Delta's tech storage.
   exdal:
   - rscadd: New station goal, Bluespace Tap
   - rscadd: Creaking lights
-  YehnBeep:
-  - bugfix: fixed a disconnected APC in Delta's tech storage.
 2023-08-17:
   AhmetEfeAkgoz:
   - rscadd: "Necromancy, Carp, Nature Sectleri i\xE7in yeni spritelar"
@@ -880,9 +880,6 @@
   vinylspiders:
   - bugfix: fixes a harddel in particle holders
 2023-08-18:
-  exdal:
-  - rscadd: AI detector artik upload key'i gostericek
-  - bugfix: Infect AI objektifi icin ai detector eklendi
   DeerJesus:
   - bugfix: replaced injector with working passive vent in birdshot incinerator
   - bugfix: conveyor lever in birdshot incinerator
@@ -923,6 +920,9 @@
       effect up. This does not effect reconstruction.
   - balance: Both of the above effects do not effect the CE's roundstart RCD, nor
       any other RCDs such as combat RCDs.
+  exdal:
+  - rscadd: AI detector artik upload key'i gostericek
+  - bugfix: Infect AI objektifi icin ai detector eklendi
   mc-oofert:
   - rscadd: cybernetic moth eyes and their variants
   - bugfix: luminescent eyes no longer make you look like a cyclops in the dark
@@ -1132,10 +1132,6 @@
 2023-08-23:
   AhmetEfeAkgoz:
   - bugfix: ratkingin ore silo ve apc yiyebilmesi
-  exdal:
-  - rscdel: Sentient Disease kaldirildi
-  - rscdel: NT Agent kaldirildi
-  - balance: Experimental Teleporter nerflendi
   Ben10Omintrix:
   - refactor: the goldgrub has been refactored please report any bugs
   - rscadd: the goldgrub can now be tamed and he can have babys
@@ -1156,10 +1152,11 @@
       the request console.
   ZephyrTFA:
   - bugfix: pda messages are no longer hidden from dead players who are not observers
+  exdal:
+  - rscdel: Sentient Disease kaldirildi
+  - rscdel: NT Agent kaldirildi
+  - balance: Experimental Teleporter nerflendi
 2023-08-24:
-  Seefaaa:
-  - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
-      \ c\xFCmle bozulmayacak."
   Fikou:
   - rscadd: wizards are now introverts
   JohnFulpWillard:
@@ -1173,14 +1170,15 @@
   Rhials:
   - rscadd: The roundend report will now read out any achievements ("cheevos" as you
       may know them) earned by players over the course of the round.
+  Seefaaa:
+  - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
+      \ c\xFCmle bozulmayacak."
   Vekter:
   - balance: Grilles will now take 0-1 damage every time they shock something.
   - balance: Powersinks are now available earlier in traitor progression.
   YehnBeep:
   - qol: Icebox perma now has holopads.
 2023-08-25:
-  exdal:
-  - bugfix: creak_lights triggered by derelict
   Ben10Omintrix:
   - bugfix: regal rats now run away from whoever attacked them
   - rscadd: new pet behavior which makes pets defend their owners if they got attacked
@@ -1228,23 +1226,25 @@
   - code_imp: Tram landmarks are now all subtyped instead of map varedits
   distributivgesetz:
   - rscdel: Removes miscellaneous sources of clone damage from the game.
+  exdal:
+  - bugfix: creak_lights triggered by derelict
   iwishforducks:
   - bugfix: You should be able to click on lattices on icebox with the RCD and construct
       a floor now
   mc-oofert:
   - rscadd: becoming a felinid makes your brain smaller (visually)
 2023-08-26:
-  RengaN02:
-  - rscadd: Announcement beacon eklendi.
-  - rscdel: "Secretary Announcement console kald\u0131r\u0131ld\u0131."
-  - code_imp: "Centcom messenger console, Secretary Console ile de\u011Fi\u015Ftirildi,\
-      \ tgui eklendi."
   GoldenAlpharex:
   - bugfix: Fixes the recycler being able to grind the server to a halt by trying
       to recycle the same sheet worth of material over and over and over again.
   Guillaume Prata:
   - qol: Medical Kiosk now have their wand removed with a right click, got new screentips
       and have a few of its chat messages turned into balloon alerts.
+  RengaN02:
+  - rscadd: Announcement beacon eklendi.
+  - rscdel: "Secretary Announcement console kald\u0131r\u0131ld\u0131."
+  - code_imp: "Centcom messenger console, Secretary Console ile de\u011Fi\u015Ftirildi,\
+      \ tgui eklendi."
   YehnBeep:
   - qol: Messenger bags can be crafted with 4 cloth.
   distributivgesetz:
@@ -1260,3 +1260,191 @@
   vinylspiders:
   - refactor: fixed a bunch of instances of callbacks being qdeleted and cleaned up
       related code
+2023-08-27:
+  CoiledLamb:
+  - bugfix: the coroner medkit can now hold every item it spawns with
+  Deadgebert:
+  - bugfix: multitool can be used on APC/Teslacoil/SMES/emitter if it has exposed
+      wires.
+  - qol: Icebox monsters no longer spawn close enough to aggro Lia at round start
+  Fikou:
+  - bugfix: quartermasters get their voice of god power boost correctly
+  Ghommie:
+  - bugfix: Fixed the double-barreled shotgun not working properly
+  - qol: The Achievements UI now shows how many people have unlocked a given achievement.
+  - bugfix: The "Skills" Category for achievements should no longer be hidden.
+  Jacquerel:
+  - bugfix: Watchers won't retain an ethereal outline of their wings hovering over
+      their dead body.
+  Kubisopplay:
+  - bugfix: Borgs no longer get permastunned by emotes
+  - bugfix: Borg hud should not fuck up in few situations
+  MTandi:
+  - bugfix: Fixed Phazon construction message typo
+  RikuTheKiller:
+  - bugfix: Light eaters can no longer be eaten by their higher-grade brothers, the
+      trash eaters. (recyclers)
+  Seefaaa:
+  - code_imp: "Unutulmu\u015F definelar"
+  SyncIt21:
+  - bugfix: zipping a duffle bag closes the UI of all storage items opened inside
+      it
+  YehnBeep:
+  - qol: Stabilized yellow slime extracts no longer spam a message every charge pulse
+      (but examining characters will still show that it's active).
+  YesterdaysPromise:
+  - rscadd: 'Gave snow legions a separate corpse-drop pool: ash walkers excluded,
+      but eskimos included.'
+  carlarctg:
+  - rscadd: Adds a syndicate AI card for nuke ops. Costs 12 TC, can be refunded. Activating
+      it in-hand opens up a ghost poll like normal reinforcements. Base interaction
+      range for syndicate AIs is one, which means they can handle electronics only
+      in proximity.
+  - rscadd: Adds a syndicate AI interaction range upgrade for nuke ops, costs 4 TC
+      and can be applied onto a syndicate AI (inside any container) to increase its
+      interaction range by two per. (Three purchases are recommended for seven tiles
+      of range!)
+  iwishforducks:
+  - balance: Railings now only cost 2 rods and are much easier to construct. But they
+      can now be destroyed much easier and cut with wirecutters without unwrenching.
+  mc-oofert:
+  - qol: rats no longer spawn on multiz cable hubs
+  necromanceranne:
+  - bugfix: Ops wanting to get the CQC kit will actually get given the kit, and not
+      just the CQC book.
+  tf-4:
+  - spellcheck: Fixed a spelling error with the daps emote.
+  vinylspiders:
+  - bugfix: greyscale colors will now update on the mob when modifying them via the
+      VV menu
+  - qol: inserting new high luminosity eyes will now properly remember the previous
+      eyes' color and default to that initially
+2023-08-28:
+  Comxy:
+  - rscadd: New rotator disposal pipe.
+  - bugfix: Flipped transit tube stations are now accessible in the RPD again.
+  - image: New rotator disposal pipe sprite.
+  Das15:
+  - bugfix: Big fuel tanks' capacity is back to 5000.
+  Ghommie:
+  - bugfix: Fixed an issue with the "recolor from string" option in the greyscale
+      modify menu that resulted in invisible icons.
+  Guillaume Prata:
+  - bugfix: Unary vents have a pressure cap on both their pressuring and siphoning
+      mode now, preventing the bypass trick of putting "infinite" pressure on tiles/pipelines.
+  - balance: Overclocked Volume Pumps do not have a pressure cap anymore.
+  Jacquerel:
+  - bugfix: You can't use the bioscrambler belt to turn yourself into a changeling.
+  JohnFulpWillard:
+  - qol: Display case chassis now uses balloon alerts, screentips, examine hints,
+      etc. Basically, the construction steps are more visible to players.
+  LT3:
+  - bugfix: Using an airlock painter on a GAGS airlock works properly
+  - bugfix: Tram will no longer fly off into space when admins try to reset the contents
+  MTandi:
+  - qol: Crafting menu "Can Make" category shows complex recipes first.
+  Sealed101:
+  - bugfix: after a long 6 years, alien alloy once again unlocks the Alien Technology
+      node (the one that lets you print alien alloy)
+  Watermelon914:
+  - rscadd: Added associative list variables and associative list variable manipulation
+      for finer data manipulation and storage.
+  - rscadd: List Find components will now return the index of the element it has found.
+  distributivgesetz:
+  - rscadd: Add an achievement for saving a cascading engine from the final countdown.
+  - balance: Damaging synchronous mesh blobs now incorporates damage resistance of
+      other blob structures when dealing shared damage to those nearby.
+  mc-oofert:
+  - rscadd: clickdragging an autolathe changes its output direction
+  nikothedude:
+  - bugfix: Woundscans no longer runtime
+  - bugfix: Normal health analyzers can no longer give the first aid bonus when woundscanning
+  vinylspiders:
+  - code_imp: fixed some typos
+  - bugfix: fixes a runtime with arrow projectiles
+  xXPawnStarrXx:
+  - bugfix: fixed corn cobs not making seeds and lying to you in the text box.
+2023-08-29:
+  Ben10Omintrix:
+  - bugfix: mobs do not get stuck when running away from danger
+  DATA-xPUNGED:
+  - bugfix: Quartermaster's Overcoat and Cargo's gorka can now hold stamps in their
+      suit slots, just like their winter coat counterpart
+  Fikou:
+  - bugfix: roundstart modlink scryers now come with the nt frequency
+  FlufflesTheDog:
+  - bugfix: Made it easier to place tiles on multi z level holes
+  - bugfix: Non-surgically debraining someone no longer makes their brain unusuable
+  Hatterhat:
+  - bugfix: Ash drakes, colossi, and Bubblegum spawn on Lavaland more often; a sharp
+      increase from the previous bugged amount of "basically never".
+  Jacquerel:
+  - image: progress bars and cleaning particles are now centered on the tile occupied
+      by the target, if it is a big sprite
+  LT3:
+  - balance: Pre-equipped engineering modsuit now includes emergency tether
+  - balance: Pre-equipped atmospherics modsuit now includes magboots
+  OrionTheFox:
+  - rscadd: Cargo now once again has access to a "Cargo Shortskirt", a skirt variant
+      of their shorts!
+  - image: tweaks and adjustments to the Cargo resprite have been made, as well as
+      respriting some missed icons such as the Winter Coats and QM Cloak
+  Seven:
+  - bugfix: Syndicate ranged mobs (and probably other basic mobs) properly update
+      their shell's description to show they are spent.
+  Vincent983:
+  - qol: Various jobs have gotten additional programs uploaded at roundstart, engineers
+      now have the canary and atmospheric scanner programs, atmospheric technicians
+      now have the supermatter monitor, and Robotisists/RDs now have the silliconnect
+      program.
+  carlarctg:
+  - bugfix: Items worn on a void cloak's suit storage are no longer visible on the
+      stripping menu.
+  - qol: Misclicking the turf below a heretic influence no longer leaves a fingerprint.
+  iwishforducks:
+  - bugfix: Railings no longer give more metal than they take
+  san7890:
+  - rscadd: The Lavaland Cursed Slot Machine of Greed suddenly seems a lot more sinister...
+  - refactor: Instead of taking clone damage from the cursed slot machine, you now
+      get a status effect with a number of curses associated with it. There's some
+      interesting florid language associated with the status effect as a nicety until
+      your eventual gibbing from chasing that prize.
+  Seefaaa:
+  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
+  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
+      t\xFCrerek \u015Farj olacak."
+  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
+      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
+      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
+2023-08-30:
+  Ghommie:
+  - sound: Unlocking an achievement now plays a sound by default. You can change it
+      in the Sound category of the game preferences.
+  Melbert:
+  - balance: If your server has non-human morgue cadavers enabled, you will be guaranteed
+      one human cadaver no matter what.
+  - balance: All maps (with the exception of Birdboat) now have an additional morgue
+      cadaver roundstart.
+  RikuTheKiller:
+  - bugfix: Probital overdose no longer causes plasmamen and other inorganics to receive
+      the longest nap in their lives.
+  Sealed101:
+  - qol: Metastation has had more navigate landmarks added, namely for areas like
+      Medbay, Cargo, Engineering, department heads offices and a few more.
+  SyncIt21:
+  - refactor: sheets are merged in a better way when ejected from machines & material
+      related stuff
+  - bugfix: rcd can build wallmounts on reinforced walls
+  - qol: rcd can build directional windows without requiring/building a grill
+  Timberpoes:
+  - bugfix: Fixes an issue where role banned players would be able to accept certain
+      ghost roles they're meant to be banned from.
+  VladinXXV:
+  - qol: The coroner can now store scythes in their labcoat and winter coat suit storage.
+      Ask not for whom the bell tolls...
+  xPokee:
+  - bugfix: fixed skeleton wings not being visible from behind while closed
+2023-08-31:
+  exdal:
+  - rscdel: Random antag eventleri kaldirildi
+  - qol: Cogu midround antag icin enemy role araliklari arttirildi

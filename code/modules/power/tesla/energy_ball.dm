@@ -28,6 +28,7 @@
 	pixel_y = -32
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
+	pass_flags_self = PASSANOMALY
 
 	var/energy
 	var/target
@@ -38,7 +39,7 @@
 	var/energy_to_lower = -20
 	var/list/shocked_things = list()
 
-/obj/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
+/obj/energy_ball/Initialize(mapload, starting_energy = 250, is_miniball = FALSE)
 	. = ..()
 
 	energy = starting_energy
@@ -226,6 +227,13 @@
 		/obj/machinery/portable_atmospherics = FALSE,
 		/obj/machinery/power/emitter = FALSE,
 		/obj/machinery/field/generator = FALSE,
+		/obj/machinery/particle_accelerator/control_box = FALSE,
+		/obj/structure/particle_accelerator/fuel_chamber = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/center = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/left = FALSE,
+		/obj/structure/particle_accelerator/particle_emitter/right = FALSE,
+		/obj/structure/particle_accelerator/power_box = FALSE,
+		/obj/structure/particle_accelerator/end_cap = FALSE,
 		/obj/machinery/field/containment = FALSE,
 		/obj/machinery/camera = FALSE,
 		/obj/machinery/gateway = FALSE,

@@ -638,6 +638,7 @@
 		"sheetifier",
 		"weldingmask",
 		"bolter_wrench",
+		"rad_collector"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 15000)
 	discount_experiments = list(

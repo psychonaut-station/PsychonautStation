@@ -1,5 +1,5 @@
 /// Whether or not it's possible for this atom to be irradiated
-#define CAN_IRRADIATE(atom) (ishuman(##atom) || isitem(##atom))
+#define CAN_IRRADIATE(atom) (ishuman(##atom) || isitem(##atom) || istype(##atom, /obj/machinery/power/energy_accumulator/rad_collector))
 
 /// Sends out a pulse of radiation, eminating from the source.
 /// Radiation is performed by collecting all radiatables within the max range (0 means source only, 1 means adjacent, etc),

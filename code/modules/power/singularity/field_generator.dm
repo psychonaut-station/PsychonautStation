@@ -81,6 +81,11 @@ no power level overlay is currently in the overlays list.
 	. = ..()
 	set_anchored(TRUE)
 
+/obj/machinery/field/generator/welded/Initialize(mapload)
+	. = ..()
+	set_anchored(TRUE)
+	state = FG_WELDED
+
 /obj/machinery/field/generator/process()
 	if(active == FG_ONLINE)
 		calc_power()

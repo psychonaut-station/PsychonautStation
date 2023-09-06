@@ -81,6 +81,16 @@
 	unit_name = "tesla coil"
 	export_types = list(/obj/machinery/power/energy_accumulator/tesla_coil)
 
+/datum/export/large/pa
+	cost = 350
+	unit_name = "particle accelerator part"
+	export_types = list(/obj/structure/particle_accelerator)
+
+/datum/export/large/pa/controls
+	cost = 500
+	unit_name = "particle accelerator control console"
+	export_types = list(/obj/machinery/particle_accelerator/control_box)
+
 /datum/export/large/supermatter
 	cost = CARGO_CRATE_VALUE * 16
 	unit_name = "supermatter shard"
@@ -100,6 +110,17 @@
 	cost = CARGO_CRATE_VALUE * 0.25
 	unit_name = "security barrier"
 	export_types = list(/obj/item/grenade/barrier, /obj/structure/barricade/security)
+
+/datum/export/large/tesla_gen
+	cost = 4000
+	unit_name = "energy ball generator"
+	export_types = list(/obj/machinery/the_singularitygen/tesla)
+
+/datum/export/large/singulo_gen
+	cost = 4000
+	unit_name = "gravitational singularity generator"
+	export_types = list(/obj/machinery/the_singularitygen)
+	include_subtypes = FALSE
 
 /**
  * Gas canister exports.

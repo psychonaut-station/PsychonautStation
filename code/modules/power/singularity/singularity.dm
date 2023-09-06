@@ -11,6 +11,7 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
+	pass_flags_self = PASSANOMALY
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
@@ -165,8 +166,9 @@
 		return
 	time_since_act = 0
 	if(current_size >= STAGE_TWO)
+		radiation_pulse(src, max_range = current_size, threshold = RAD_EXTREME_INSULATION, chance = 100)
 		if(prob(event_chance))
-			event()
+			mezzer()
 	dissipate(seconds_per_tick)
 	check_energy()
 
@@ -386,28 +388,13 @@
 		return FALSE
 	if((locate(/obj/machinery/field/containment) in considered_turf) || (locate(/obj/machinery/shieldwall) in considered_turf))
 		return FALSE
-	else if(locate(/obj/machinery/field/generator) in considered_turf)
+	if(locate(/obj/machinery/field/generator) in considered_turf)
 		var/obj/machinery/field/generator/check_generator = locate(/obj/machinery/field/generator) in considered_turf
 		if(check_generator?.active)
 			return FALSE
-	else if(locate(/obj/machinery/power/shieldwallgen) in considered_turf)
+	if(locate(/obj/machinery/power/shieldwallgen) in considered_turf)
 		var/obj/machinery/power/shieldwallgen/check_shield = locate(/obj/machinery/power/shieldwallgen) in considered_turf
 		if(check_shield?.active)
-			return FALSE
-	return TRUE
-
-/obj/singularity/proc/event()
-	var/numb = rand(1,4)
-	switch(numb)
-		if(1)//EMP
-			emp_area()
-		if(2)//Stun mobs who lack optic scanners
-			mezzer()
-		if(3,4) //Sets all nearby mobs on fire
-			if(current_size < STAGE_SIX)
-				return FALSE
-			combust_mobs()
-		else
 			return FALSE
 	return TRUE
 
@@ -446,8 +433,6 @@
 		span_userdanger("You look directly into the [name] and feel weak.")
 	)
 
-/obj/singularity/proc/emp_area()
-	empulse(src, 8, 10)
 
 /obj/singularity/singularity_act()
 	var/gain = (energy/2)

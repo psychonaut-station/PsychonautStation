@@ -1,19 +1,3 @@
-/*Composed of 7 parts :
-
- 3 Particle Emitters
- 1 Power Box
- 1 Fuel Chamber
- 1 End Cap
- 1 Control computer
-
- Setup map
-
-   |EC|
- CC|FC|
-   |PB|
- PE|PE|PE
-
-*/
 #define PA_CONSTRUCTION_UNSECURED  0
 #define PA_CONSTRUCTION_UNWIRED    1
 #define PA_CONSTRUCTION_PANEL_OPEN 2
@@ -27,7 +11,7 @@
 	anchored = FALSE
 	density = TRUE
 	max_integrity = 500
-	armor = list("melee" = 30, "bullet" = 20, "laser" = 20, "energy" = 0, "bomb" = 0, "bio" = 0, "rad" = 0, "fire" = 90, "acid" = 80)
+	armor = list("melee" = 30, "bullet" = 20, "laser" = 20, "energy" = 0, "bomb" = 0, "bio" = 0, "fire" = 90, "acid" = 80)
 
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/construction_state = PA_CONSTRUCTION_UNSECURED

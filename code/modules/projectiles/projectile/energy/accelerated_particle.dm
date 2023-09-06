@@ -1,6 +1,6 @@
 /obj/projectile/energy/accelerated_particle
 	name = "Accelerated Particles"
-	icon = 'icons/obj/machines/particle_accelerator.dmi'
+	icon = 'icons/psychonaut/obj/machines/particle_accelerator.dmi'
 	icon_state = "particle"
 	range = 10
 	speed = 1

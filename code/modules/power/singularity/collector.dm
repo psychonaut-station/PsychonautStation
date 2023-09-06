@@ -197,6 +197,7 @@
 		update_icon()
 
 /obj/machinery/power/energy_accumulator/rad_collector/update_icon()
+	. = ..()
 	cut_overlays()
 	if(loaded_tank)
 		add_overlay("ptank")

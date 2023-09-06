@@ -38,7 +38,7 @@
 		master = null
 	return ..()
 
-/obj/structure/particle_accelerator/Initialize()
+/obj/structure/particle_accelerator/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation, ROTATION_CLOCKWISE | ROTATION_COUNTERCLOCKWISE)
 

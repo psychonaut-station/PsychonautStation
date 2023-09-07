@@ -80,7 +80,6 @@
 					"<span class='notice'>You remove the external bolts.</span>")
 				return //set_anchored handles the rest of the stuff we need to do.
 			else if(istype(W, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/CC = W
 				if(W.use_tool(src, user, 4 SECONDS, amount=1, volume=100))
 					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
 						"<span class='notice'>You add some wires.</span>")

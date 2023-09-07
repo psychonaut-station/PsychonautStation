@@ -94,7 +94,6 @@
 /obj/machinery/power/energy_accumulator/rad_collector/interact(mob/user)
 	if(anchored)
 		toggle_power()
-		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)
 		user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 		"<span class='notice'>You turn the [src.name] [active? "on":"off"].</span>")
 		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)

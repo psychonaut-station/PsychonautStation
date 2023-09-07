@@ -949,14 +949,14 @@
 
 /mob/living/carbon/human/proc/give_ipcscreen_overlay(overlay_typepath)
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
-	var/obj/item/bodypart/bodypart = src.get_bodypart(overlay.attached_body_zone)
-	var/obj/item/organ/external/ipchead/ipcscreen = src.get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
+	var/obj/item/bodypart/bodypart = get_bodypart(overlay.attached_body_zone)
+	var/obj/item/organ/external/ipchead/ipcscreen = get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
 	if(!bodypart)
 		return null
 	if(!ipcscreen)
 		return null
 	bodypart.add_bodypart_overlay(overlay)
-	src.update_body_parts()
+	update_body_parts()
 	return overlay
 
 /mob/living/carbon/human/species

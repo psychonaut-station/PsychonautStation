@@ -196,9 +196,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///A list containing outfits that will be overridden in the species_equip_outfit proc. [Key = Typepath passed in] [Value = Typepath of outfit you want to equip for this specific species instead].
 	var/list/outfit_override_registry = list()
 
-	// Special Gib for specie
+	// unique gibspawner for species
 	var/obj/effect/gibspawner/gibspawner = null
-	/// Special remains for specie
+	// unique remains for species
 	var/obj/effect/decal/remains/decalremains = null
 
 ///////////

@@ -284,7 +284,6 @@
 			return
 
 
-
 /obj/item/stock_parts/cell/blob_act(obj/structure/blob/B)
 	SSexplosions.high_mov_atom += src
 

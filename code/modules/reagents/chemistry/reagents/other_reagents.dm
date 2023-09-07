@@ -746,7 +746,7 @@
 
 /datum/reagent/mutationtoxin/ipc
 	name = "Ipc Mutation Toxin"
-	description = "A IPC toxin."
+	description = "A monitor's toxin."
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/ipc
 	taste_description = "circuitry and plasteel"

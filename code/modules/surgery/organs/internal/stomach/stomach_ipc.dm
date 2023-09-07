@@ -142,7 +142,7 @@
 
 /atom/movable/screen/alert/status_effect/ipc_powerissue
 	name = "No power"
-	desc = "You no longer have the power to move your body!"
+	desc = "You don't have enough power to move your body!"
 	icon_state = "ipc_nopower"
 
 /datum/status_effect/ipc_powerissue/on_apply()

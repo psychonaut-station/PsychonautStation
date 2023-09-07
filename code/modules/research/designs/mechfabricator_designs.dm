@@ -96,7 +96,7 @@
 	id = "ipc_suit"
 	build_type = MECHFAB
 	build_path = /obj/item/ipc_suit
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*20, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*20)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*20, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*20)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -109,7 +109,7 @@
 	id = "ipc_chest"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/chest/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*20, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*20)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*20, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*20)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -122,7 +122,7 @@
 	id = "ipc_head"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/head/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*3.5, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*3.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3.5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*3.5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*3.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3.5)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -135,7 +135,7 @@
 	id = "ipc_l_arm"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/arm/left/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -148,7 +148,7 @@
 	id = "ipc_r_arm"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/arm/right/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -161,7 +161,7 @@
 	id = "ipc_l_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/left/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -174,7 +174,7 @@
 	id = "ipc_r_leg"
 	build_type = MECHFAB
 	build_path = /obj/item/bodypart/leg/right/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 350
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS
@@ -187,7 +187,7 @@
 	id = "ipc_stomach"
 	build_type = MECHFAB
 	build_path = /obj/item/organ/internal/stomach/ipc/empty
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
@@ -198,7 +198,7 @@
 	id = "ipc_heart"
 	build_type = MECHFAB
 	build_path = /obj/item/organ/internal/heart/ipc
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
@@ -209,7 +209,7 @@
 	id = "ipc_voltprotector"
 	build_type = MECHFAB
 	build_path = /obj/item/organ/internal/voltprotector
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
@@ -220,7 +220,7 @@
 	id = "ipc_monitor"
 	build_type = MECHFAB
 	build_path = /obj/item/organ/external/ipchead/black
-	materials = list(/datum/material/iron= SHEET_MATERIAL_AMOUNT*5 + HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
+	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5 + HALF_SHEET_MATERIAL_AMOUNT, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 5)
 	construction_time = 100
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS

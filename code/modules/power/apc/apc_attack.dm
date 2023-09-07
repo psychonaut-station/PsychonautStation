@@ -290,7 +290,7 @@
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "safeties prevent draining!"), alert_timer_duration)
 			return
 		if(ipccell.charge > charge_limit)
-			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "you cant get more power!"), alert_timer_duration)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "charge is full!"), alert_timer_duration)
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "draining power"), alert_timer_duration)

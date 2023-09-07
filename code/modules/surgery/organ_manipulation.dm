@@ -174,12 +174,12 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
-		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && !istype(target.dna.species, /datum/species/android) && !istype(target.dna.species, /datum/species/ipc))
+		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && !isandroid(target) && !isipc(target))
 			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
 			return SURGERY_STEP_FAIL
 
-		if(!istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && istype(target_organ, /obj/item/organ/internal/brain) && istype(target.dna.species, /datum/species/ipc))
-			to_chat(user, span_warning("You cant put this brain to ipc!"))
+		if(!istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && istype(target_organ, /obj/item/organ/internal/brain) && isipc(target))
+			to_chat(user, span_warning("You cannot put this brain into an ipc!"))
 			return SURGERY_STEP_FAIL
 
 		if(!can_use_organ(user, meatslab))

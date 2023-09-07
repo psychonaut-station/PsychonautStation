@@ -81,12 +81,12 @@
 	unit_name = "tesla coil"
 	export_types = list(/obj/machinery/power/energy_accumulator/tesla_coil)
 
-/datum/export/large/pa
+/datum/export/large/particle_acceletor
 	cost = 350
 	unit_name = "particle accelerator part"
 	export_types = list(/obj/structure/particle_accelerator)
 
-/datum/export/large/pa/controls
+/datum/export/large/particle_acceletor/controls
 	cost = 500
 	unit_name = "particle accelerator control console"
 	export_types = list(/obj/machinery/particle_accelerator/control_box)

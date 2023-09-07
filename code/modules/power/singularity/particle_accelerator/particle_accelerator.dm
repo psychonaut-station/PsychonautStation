@@ -18,7 +18,6 @@
 	var/powered = 0
 	var/strength = null
 
-
 /datum/armor/particle_accelerator
 	melee = 30
 	bullet = 20
@@ -117,10 +116,9 @@
 
 	return ..()
 
-
 /obj/structure/particle_accelerator/deconstruct(disassembled = TRUE)
 	if(!(flags_1 & NODECONSTRUCT_1))
-		new /obj/item/stack/sheet/iron (loc, 5)
+		new /obj/item/stack/sheet/iron(loc, 5)
 	qdel(src)
 
 /obj/structure/particle_accelerator/Move()
@@ -128,7 +126,6 @@
 	if(master && master.active)
 		master.toggle_power()
 		investigate_log("was moved whilst active; it <font color='red'>powered down</font>.", INVESTIGATE_ENGINE)
-
 
 /obj/structure/particle_accelerator/update_icon_state()
 	. = ..()

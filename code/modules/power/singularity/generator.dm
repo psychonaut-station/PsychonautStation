@@ -24,7 +24,7 @@
 	else
 		return ..()
 
-/obj/machinery/the_singularitygen/process(delta_time)
+/obj/machinery/the_singularitygen/process(seconds_per_tick)
 	if(energy > 0)
 		if(energy >= 200)
 			var/turf/T = get_turf(src)
@@ -33,7 +33,7 @@
 			transfer_fingerprints_to(S)
 			qdel(src)
 		else
-			energy -= delta_time * 0.5
+			energy -= seconds_per_tick * 0.5
 	else
 		end_processing()
 		energy = 0

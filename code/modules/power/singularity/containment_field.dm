@@ -165,9 +165,3 @@
 	playsound(src, 'sound/effects/gravhit.ogg', 50, TRUE)
 	considered_atom.throw_at(target, 200, 4)
 	addtimer(CALLBACK(src, PROC_REF(clear_shock)), 5)
-
-/obj/machinery/field/singularity_act(current_size)
-	if(current_size < 5)
-		return
-	else
-		..()

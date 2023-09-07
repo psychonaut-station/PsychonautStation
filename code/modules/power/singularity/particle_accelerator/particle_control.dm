@@ -81,25 +81,24 @@
 				else
 					icon_state = "control_boxc"
 
-/obj/machinery/particle_accelerator/control_box/proc/strength_change()
+/obj/machinery/particle_accelerator/control_box/proc/set_strength(newstrength)
+	strength = newstrength
 	for(var/CP in connected_parts)
 		var/obj/structure/particle_accelerator/part = CP
 		part.strength = strength
 		part.update_icon()
 
-/obj/machinery/particle_accelerator/control_box/proc/add_strength(s)
+/obj/machinery/particle_accelerator/control_box/proc/add_strength()
 	if(assembled && (strength < strength_upper_limit))
-		strength++
-		strength_change()
+		set_strength(strength + 1)
 
 		message_admins("PA Control Computer increased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer increased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("increased to <font color='red'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
 
-/obj/machinery/particle_accelerator/control_box/proc/remove_strength(s)
+/obj/machinery/particle_accelerator/control_box/proc/remove_strength()
 	if(assembled && (strength > 0))
-		strength--
-		strength_change()
+		set_strength(strength - 1)
 
 		message_admins("PA Control Computer decreased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer decreased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
@@ -212,63 +211,6 @@
 	construction_state = anchorvalue ? PA_CONSTRUCTION_UNWIRED : PA_CONSTRUCTION_UNSECURED
 	update_state()
 	update_icon()
-
-/obj/machinery/particle_accelerator/control_box/attackby(obj/item/W, mob/user, params)
-	var/did_something = FALSE
-
-	switch(construction_state)
-		if(PA_CONSTRUCTION_UNSECURED)
-			if(W.tool_behaviour == TOOL_WRENCH && !isinspace())
-				W.play_tool_sound(src, 75)
-				set_anchored(TRUE)
-				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
-					"<span class='notice'>You secure the external bolts.</span>")
-				user.changeNext_move(CLICK_CD_MELEE)
-				return //set_anchored handles the rest of the stuff we need to do.
-		if(PA_CONSTRUCTION_UNWIRED)
-			if(W.tool_behaviour == TOOL_WRENCH)
-				W.play_tool_sound(src, 75)
-				set_anchored(FALSE)
-				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
-					"<span class='notice'>You remove the external bolts.</span>")
-				user.changeNext_move(CLICK_CD_MELEE)
-				return //set_anchored handles the rest of the stuff we need to do.
-			else if(istype(W, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/CC = W
-				if(CC.use(1))
-					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
-						"<span class='notice'>You add some wires.</span>")
-					construction_state = PA_CONSTRUCTION_PANEL_OPEN
-					did_something = TRUE
-		if(PA_CONSTRUCTION_PANEL_OPEN)
-			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
-				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
-					"<span class='notice'>You remove some wires.</span>")
-				construction_state = PA_CONSTRUCTION_UNWIRED
-				did_something = TRUE
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
-					"<span class='notice'>You close the access panel.</span>")
-				construction_state = PA_CONSTRUCTION_COMPLETE
-				did_something = TRUE
-		if(PA_CONSTRUCTION_COMPLETE)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
-					"<span class='notice'>You open the access panel.</span>")
-				construction_state = PA_CONSTRUCTION_PANEL_OPEN
-				did_something = TRUE
-
-	if(did_something)
-		user.changeNext_move(CLICK_CD_MELEE)
-		update_state()
-		update_icon()
-		return
-
-	return ..()
-
-/obj/machinery/particle_accelerator/control_box/blob_act(obj/structure/blob/B)
-	if(prob(50))
-		qdel(src)
 
 /obj/machinery/particle_accelerator/control_box/interact(mob/user)
 	if(construction_state == PA_CONSTRUCTION_PANEL_OPEN)

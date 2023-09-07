@@ -70,18 +70,6 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 	for(var/id in args)
 		ADD_GAS(id, cached_gases)
 
-/datum/gas_mixture/proc/set_moles(gas_id, amt = 0)
-	if(gases[gas_id][MOLES])
-		ADD_GAS(gas_id, gases)
-	gases[gas_id][MOLES] = amt
-
-/datum/gas_mixture/proc/add_moles(gas_id, amt = 0)
-	set_moles(gas_id, gases[gas_id][MOLES] + amt)
-
-/datum/gas_mixture/proc/get_moles(path)
-	var/list/cached_gases = gases
-	return cached_gases[path][MOLES]
-
 ///garbage_collect() - removes any gas list which is empty.
 ///If called with a list as an argument, only removes gas lists with IDs from that list.
 ///Must be used after subtracting from a gas. Must be used after assert_gas()

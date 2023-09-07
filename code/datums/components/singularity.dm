@@ -265,16 +265,6 @@
 /datum/component/singularity/proc/can_move(turf/to_move)
 	if (!to_move)
 		return FALSE
-	if((locate(/obj/machinery/field/containment) in to_move) || (locate(/obj/machinery/shieldwall) in to_move))
-		return FALSE
-	if(locate(/obj/machinery/field/generator) in to_move)
-		var/obj/machinery/field/generator/check_generator = locate(/obj/machinery/field/generator) in to_move
-		if(check_generator?.active)
-			return FALSE
-	if(locate(/obj/machinery/power/shieldwallgen) in to_move)
-		var/obj/machinery/power/shieldwallgen/check_shield = locate(/obj/machinery/power/shieldwallgen) in to_move
-		if(check_shield?.active)
-			return FALSE
 
 	for (var/_thing in to_move)
 		var/atom/thing = _thing

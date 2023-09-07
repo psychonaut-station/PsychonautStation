@@ -282,7 +282,7 @@
 					/obj/structure/particle_accelerator/end_cap)
 	crate_name = "particle accelerator crate"
 
-/datum/supply_pack/engine/sing_gen
+/datum/supply_pack/engine/singulo_gen
 	name = "Singularity Generator Crate"
 	desc = "The key to unlocking the power of Lord Singuloth. Particle Accelerator not included."
 	cost = 5000

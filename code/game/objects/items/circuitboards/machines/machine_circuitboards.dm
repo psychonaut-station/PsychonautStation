@@ -160,7 +160,7 @@
 	)
 
 /obj/item/circuitboard/machine/rad_collector
-	name = "radiation collector (Machine Board)"
+	name = "Radiation Collector"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/power/energy_accumulator/rad_collector
 	req_components = list(

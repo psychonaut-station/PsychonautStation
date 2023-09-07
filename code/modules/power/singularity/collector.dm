@@ -52,12 +52,12 @@
 		power_multiplier += capacitor.tier
 	input_power_multiplier = max(1 * (power_multiplier / 8), 0.25)
 
-/obj/machinery/power/energy_accumulator/rad_collector/process(delta_time)
+/obj/machinery/power/energy_accumulator/rad_collector/process(seconds_per_tick)
 	if(isnull(loaded_tank))
 		return
-	var/totalplasma = loaded_tank.air_contents.get_moles(/datum/gas/plasma)
-	var/totaltrit = loaded_tank.air_contents.get_moles(/datum/gas/tritium)
-	var/totalo2 = loaded_tank.air_contents.get_moles(/datum/gas/oxygen)
+	var/totalplasma = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]
+	var/totaltrit = loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES]
+	var/totalo2 = loaded_tank.air_contents.gases[/datum/gas/oxygen][MOLES]
 	if(!bitcoinmining)
 		if(totalplasma < 0.0001)
 			investigate_log("<font color='red'>out of fuel</font>.", INVESTIGATE_ENGINE)
@@ -66,27 +66,27 @@
 			radio.talk_into(src, msg, RADIO_CHANNEL_ENGINEERING)
 			eject()
 		else
-			var/gasdrained = min(powerproduction_drain*drainratio*delta_time,totalplasma)
+			var/gasdrained = min(powerproduction_drain * drainratio * seconds_per_tick , totalplasma)
 			loaded_tank.air_contents.remove_specific(/datum/gas/plasma, gasdrained)
-			loaded_tank.air_contents.add_moles(/datum/gas/tritium, gasdrained)
+			loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES] += gasdrained
 			var/power_produced = RAD_COLLECTOR_OUTPUT
 			release_energy(power_produced)
-			stored_energy-=power_produced
+			stored_energy -= power_produced
 	else if(is_station_level(z) && SSresearch.science_tech)
 		if(!totaltrit || !totalo2)
 			playsound(src, 'sound/machines/ding.ogg', 50, 1)
 			eject()
 		else
-			var/gasdrained = bitcoinproduction_drain*drainratio*delta_time
+			var/gasdrained = bitcoinproduction_drain * drainratio * seconds_per_tick
 			loaded_tank.air_contents.remove_specific(/datum/gas/tritium, gasdrained)
 			loaded_tank.air_contents.remove_specific(/datum/gas/oxygen, gasdrained)
-			loaded_tank.air_contents.add_moles(/datum/gas/carbon_dioxide, gasdrained*2)
+			loaded_tank.air_contents.gases[/datum/gas/carbon_dioxide][MOLES] += gasdrained * 2
 			var/bitcoins_mined = RAD_COLLECTOR_OUTPUT
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if(D)
-				D.adjust_money((bitcoins_mined*RAD_COLLECTOR_MINING_CONVERSION_RATE) / 2)//about 750 credits per minute with 2 emitters and 6 collectors with stock parts
-			SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, bitcoins_mined*RAD_COLLECTOR_MINING_CONVERSION_RATE)//about 1300 points per minute with the above set up
-			stored_energy-=bitcoins_mined
+				D.adjust_money((bitcoins_mined*RAD_COLLECTOR_MINING_CONVERSION_RATE) / 2) //about 750 credits per minute with 2 emitters and 6 collectors with stock parts
+			SSresearch.science_tech.add_point_type(TECHWEB_POINT_TYPE_DEFAULT, bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE) //about 1300 points per minute with the above set up
+			stored_energy -= bitcoins_mined
 
 /obj/machinery/power/energy_accumulator/rad_collector/interact(mob/user)
 	if(anchored)
@@ -120,6 +120,8 @@
 		loaded_tank = W
 		loaded_tank.air_contents.assert_gases(/datum/gas/plasma, /datum/gas/tritium, /datum/gas/oxygen, /datum/gas/carbon_dioxide)
 		update_icon()
+	else if(W.tool_behaviour == TOOL_WRENCH)
+		default_unfasten_wrench(user, W, 0)
 	else
 		return ..()
 
@@ -138,14 +140,8 @@
 		return TRUE
 	if(default_deconstruction_crowbar(I))
 		return TRUE
-	to_chat(user, "<span class='warning'>There isn't a tank loaded!</span>")
+	to_chat(user, "<span class='warning'>There is no tank loaded!</span>")
 	return TRUE
-
-/obj/machinery/power/energy_accumulator/rad_collector/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WRENCH)
-		default_unfasten_wrench(user, W, 0)
-	else
-		return ..()
 
 /obj/machinery/power/energy_accumulator/rad_collector/multitool_act(mob/living/user, obj/item/I)
 	if(!is_station_level(z) && !SSresearch.science_tech)
@@ -188,8 +184,6 @@
 	if (!Z)
 		return
 	Z.forceMove(drop_location())
-	Z.layer = initial(Z.layer)
-	Z.plane = initial(Z.plane)
 	loaded_tank = null
 	if(active)
 		toggle_power()
@@ -205,7 +199,6 @@
 		return
 	if(active)
 		add_overlay("on")
-
 
 /obj/machinery/power/energy_accumulator/rad_collector/proc/toggle_power()
 	active = !active

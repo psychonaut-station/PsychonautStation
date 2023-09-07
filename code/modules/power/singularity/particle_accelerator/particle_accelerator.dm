@@ -69,14 +69,12 @@
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
 			if(W.tool_behaviour == TOOL_WRENCH && !isinspace() && W.use_tool(src, user, 4 SECONDS, volume=100))
-				W.play_tool_sound(src, 75)
 				set_anchored(TRUE)
 				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
 					"<span class='notice'>You secure the external bolts.</span>")
 				return //set_anchored handles the rest of the stuff we need to do.
 		if(PA_CONSTRUCTION_UNWIRED)
 			if(W.tool_behaviour == TOOL_WRENCH && W.use_tool(src, user, 4 SECONDS, volume=100))
-				W.play_tool_sound(src, 75)
 				set_anchored(FALSE)
 				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
 					"<span class='notice'>You remove the external bolts.</span>")
@@ -94,13 +92,15 @@
 					"<span class='notice'>You remove some wires.</span>")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 4 SECONDS, volume=100))
+			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
+				W.play_tool_sound(target, volume)
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
 				did_something = TRUE
 		if(PA_CONSTRUCTION_COMPLETE)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 4 SECONDS, volume=100))
+			if(W.tool_behaviour == TOOL_SCREWDRIVER)
+				W.play_tool_sound(target, volume)
 				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
 					"<span class='notice'>You open the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN

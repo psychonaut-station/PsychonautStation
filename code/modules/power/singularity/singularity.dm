@@ -11,7 +11,6 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
-	pass_flags_self = PASSANOMALY
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"

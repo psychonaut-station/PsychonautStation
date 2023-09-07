@@ -7,7 +7,6 @@
 	density = FALSE
 	anchored = TRUE
 	light_range = 3
-	pass_flags_self = PASSANOMALY
 
 	var/obj/item/assembly/signaler/anomaly/aSignal = /obj/item/assembly/signaler/anomaly
 	var/area/impact_area

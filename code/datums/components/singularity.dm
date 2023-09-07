@@ -161,17 +161,6 @@
 	if (thing == parent)
 		stack_trace("Singularity tried to consume itself.")
 		return
-	var/turf/thing_turf = thing.loc
-	if(((locate(/obj/machinery/field/containment) in thing_turf) || (locate(/obj/machinery/shieldwall) in thing_turf)) && singularity_size < 5)
-		return
-	else if(locate(/obj/machinery/field/generator) in thing_turf)
-		var/obj/machinery/field/generator/check_generator = locate(/obj/machinery/field/generator) in thing_turf
-		if(check_generator?.active && singularity_size < 5)
-			return
-	else if(locate(/obj/machinery/power/shieldwallgen) in thing_turf)
-		var/obj/machinery/power/shieldwallgen/check_shield = locate(/obj/machinery/power/shieldwallgen) in thing_turf
-		if(check_shield?.active && singularity_size < 5)
-			return
 
 	consume_callback?.Invoke(thing, src)
 

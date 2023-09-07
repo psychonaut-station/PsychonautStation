@@ -7469,7 +7469,7 @@
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "bmf" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
 	dir = 8
@@ -17825,7 +17825,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/rack,
 /obj/item/reagent_containers/blood/random,
-/obj/item/roller,
+/obj/item/emergency_bed,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -18849,7 +18849,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
 "cRa" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -23225,7 +23225,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
 /obj/structure/rack,
-/obj/item/roller,
+/obj/item/emergency_bed,
 /obj/item/reagent_containers/blood,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
@@ -23955,7 +23955,7 @@
 /turf/closed/wall,
 /area/station/medical/surgery/theatre)
 "dsJ" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -24136,7 +24136,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "dtN" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
@@ -29117,7 +29117,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "dWx" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
 /mob/living/carbon/human/species/monkey,
@@ -29131,7 +29131,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/virology)
 "dWB" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
@@ -32349,7 +32349,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/fore)
 "eCr" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/airalarm/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
@@ -44123,7 +44123,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "ici" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/structure/sign/departments/chemistry/directional/south,
 /obj/machinery/light/directional/south,
 /obj/machinery/camera/directional/south{
@@ -44419,7 +44419,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "ifF" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
@@ -44585,7 +44585,6 @@
 /area/station/engineering/atmos/project)
 "ihC" = (
 /obj/structure/closet/secure_closet/hop,
-/obj/item/clothing/suit/costume/ianshirt,
 /obj/item/bedsheet/ian,
 /turf/open/floor/iron/grimy,
 /area/station/command/heads_quarters/hop)
@@ -47310,7 +47309,7 @@
 /turf/open/floor/iron,
 /area/station/cargo/sorting)
 "jck" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -52986,7 +52985,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
 "kMC" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -69819,7 +69818,7 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/medical)
 "pMz" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
@@ -75083,7 +75082,7 @@
 /turf/open/floor/carpet,
 /area/station/commons/vacant_room/office)
 "rmX" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
@@ -76679,7 +76678,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/nuke_storage)
 "rNx" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/trimline/neutral/warning{
 	dir = 4
 	},
@@ -80691,7 +80690,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/fore)
 "sWF" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/iv_drip,
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted,

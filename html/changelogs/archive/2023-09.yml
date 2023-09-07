@@ -250,20 +250,33 @@
   Eronymun:
   - bugfix: The Birdshot Gaming Den now has arcade circuit boards and computer frames
       that actually work.
+  Ghommie:
+  - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
+      rod" from the more generic "fishing rod"
+  LT3:
+  - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
   Melbert:
   - rscadd: '[Icebox] Remaps arrivals and the maintenance around it. Aux base out,
       mass driver into a plasma lake in.'
   Sealed101:
   - bugfix: fixed mirrors not breaking when a curse effect is triggered
+  - balance: colossus' near-death attack now starts after a 0.5 seconds delay
   Thunder12345:
   - bugfix: Public mining storage's camera is now on the mining network instead of
       the gulag.
+  WinstonBeYY:
+  - rscadd: MiniStation eklendi.
+  cnleth:
+  - bugfix: Megafauna now correctly prints the victim's name after a kill
   dieamond13:
   - image: adds special sprites for lungs when you use the smoker quirk
   norsvenska:
   - qol: NorthStar's departmental head offices have had their respective PDA & ID
       imprinters added!
   - qol: The NorthStar Head of Security office has gotten a small expansion.
+  san7890:
+  - refactor: If you transform into another mob and notice bugs with interacting with
+      the game world, please create a bug report as this framework was recently refactored.
   vinylspiders:
   - bugfix: leash unit test will time out less often and increases the timer until
       it is considered 'timed out', to reduce false CI failures

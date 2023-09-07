@@ -1,0 +1,110 @@
+{
+	"version": 1,
+	"map_name": "Prison Break",
+	"map_path": "map_files/PrisonBreak",
+	"map_file": "prisonbreak.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_box",
+		"emergency": "emergency_box"
+	},
+	"job_changes": {
+		"Warden": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Security Officer": {
+			"spawn_positions": 15,
+			"total_positions": 15
+		},
+		"Assistant": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Prisoner": {
+			"spawn_positions": 100,
+			"total_positions": 100
+		},
+		"Cook": {
+			"spawn_positions": 4,
+			"total_positions": 4
+		},
+		"AI": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Cyborg": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Scientist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Roboticist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Geneticist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Mime": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Animal": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Brig Physician": {
+			"spawn_positions": 3,
+			"total_positions": 3
+		},
+		"Atmospheric Technician": {
+			"spawn_positions": 1,
+			"total_positions": 1
+		},
+		"Station Engineer": {
+			"spawn_positions": 3,
+			"total_positions": 3
+		},
+		"Worker": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Janitor": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Virologist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		}
+	},
+	"traits": [
+		{
+			"Up": 1,
+			"Linkage": null,
+			"Baseturf": "/turf/open/lava/plasma/ice_moon"
+			
+		},
+		{
+			"Down": -1,
+			"Up": 1,
+			"Linkage": null,
+			"Baseturf": "/turf/open/openspace/icemoon/keep_below"
+			
+		},
+		{
+			"Down": -1,
+			"Linkage": null,
+			"Baseturf": "/turf/open/openspace/icemoon/keep_below"
+			
+		}
+	]
+	
+}

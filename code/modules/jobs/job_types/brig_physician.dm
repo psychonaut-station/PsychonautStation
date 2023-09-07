@@ -50,7 +50,7 @@
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	suit = /obj/item/clothing/suit/armor/vest/alt/brig_physician
 	backpack_contents = list(
-		/obj/item/roller = 1,
+		/obj/item/emergency_bed = 1,
 		)
 	belt = /obj/item/defibrillator/compact/loaded
 	ears = /obj/item/radio/headset/headset_sec/alt/department/med

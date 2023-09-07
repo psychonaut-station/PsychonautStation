@@ -8,7 +8,7 @@
 		ghost.mind is however used as a reference to the ghost's corpse
 
 	- When creating a new mob for an existing IC character (e.g. cloning a dead guy or borging a brain of a human)
-		the existing mind of the old mob should be transfered to the new mob like so:
+		the existing mind of the old mob should be transferred to the new mob like so:
 
 			mind.transfer_to(new_mob)
 
@@ -130,7 +130,7 @@
 	.["key"] = key
 	.["name"] = name
 	.["ghostname"] = ghostname
-	.["memories"] = memories
+	.["memories"] = memories.len > 0 ? memories : null
 	.["martial_art"] = martial_art
 	.["antag_datums"] = antag_datums
 	.["holy_role"] = holy_role

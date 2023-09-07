@@ -258,7 +258,6 @@
 		balloon_alert(ethereal, "transfered power")
 		stomach.adjust_charge(-APC_POWER_GAIN_ETHEREAL)
 		cell.give(APC_POWER_GAIN_ETHEREAL)
-		update_appearance()
 	else
 		balloon_alert(ethereal, "can't transfer power!")
 
@@ -328,7 +327,6 @@
 		balloon_alert(ipc, "transfered power")
 		stomach.adjust_charge(-apcpowergain)
 		cell.give(apcpowergain)
-		update_appearance()
 	else
 		balloon_alert(ipc, "can't transfer power!")
 

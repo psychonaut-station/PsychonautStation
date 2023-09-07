@@ -97,6 +97,7 @@
 		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)
 		user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 		"<span class='notice'>You turn the [src.name] [active? "on":"off"].</span>")
+		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)
 		var/fuel = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]
 		investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [key_name(user)]. [loaded_tank?"Fuel: [round(fuel/0.29)]%":"<font color='red'>It is empty</font>"].", INVESTIGATE_ENGINE)
 		return

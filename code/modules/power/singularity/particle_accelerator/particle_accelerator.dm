@@ -93,14 +93,14 @@
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
 			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				W.play_tool_sound(target, volume)
+				W.play_tool_sound(src, 100)
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
 				did_something = TRUE
 		if(PA_CONSTRUCTION_COMPLETE)
 			if(W.tool_behaviour == TOOL_SCREWDRIVER)
-				W.play_tool_sound(target, volume)
+				W.play_tool_sound(src, 100)
 				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
 					"<span class='notice'>You open the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN

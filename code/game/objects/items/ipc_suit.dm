@@ -321,33 +321,33 @@
 	. = ..()
 	var/list/nicelist = list()
 	if(!brain)
-		nicelist += list("Brain\s")
+		nicelist += "Brain"
 	if(!tongue)
-		nicelist += list("Tongue\s")
+		nicelist += "Tongue"
 	if(!eye)
-		nicelist += list("Eye\s")
+		nicelist += "Eye"
 	if(!ear)
-		nicelist += list("Ear\s")
+		nicelist += "Ear"
 	if(!monitor)
-		nicelist += list("Monitor\s")
+		nicelist += "Monitor"
 	if(!stomach)
-		nicelist += list("Stomach\s")
+		nicelist += "Stomach"
 	if(!heart)
-		nicelist += list("Heart\s")
+		nicelist += "Heart"
 	if(!voltprotector)
-		nicelist += list("Voltage-Protector\s")
+		nicelist += "Voltage-Protector"
 	if(!head)
-		nicelist += list("Head\s")
+		nicelist += "Head"
 	if(!chest)
-		nicelist += list("Chest\s")
+		nicelist += "Chest"
 	if(!leftarm)
-		nicelist += list("Left arm\s")
+		nicelist += "Left arm"
 	if(!rightarm)
-		nicelist += list("Right arm\s")
+		nicelist += "Right arm"
 	if(!leftleg)
-		nicelist += list("Left leg\s")
+		nicelist += "Left leg"
 	if(!rightleg)
-		nicelist += list("Right leg\s")
+		nicelist += "Right leg"
 	. += span_info("It requires [english_list(nicelist, "no more organs")].")
 
 // For testing

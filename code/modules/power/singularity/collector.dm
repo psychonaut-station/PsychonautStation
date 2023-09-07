@@ -55,6 +55,7 @@
 /obj/machinery/power/energy_accumulator/rad_collector/process(seconds_per_tick)
 	if(isnull(loaded_tank))
 		return
+	loaded_tank.air_contents.assert_gases(/datum/gas/plasma, /datum/gas/tritium, /datum/gas/oxygen)
 	var/totalplasma = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]
 	var/totaltrit = loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES]
 	var/totalo2 = loaded_tank.air_contents.gases[/datum/gas/oxygen][MOLES]
@@ -68,6 +69,7 @@
 		else
 			var/gasdrained = min(powerproduction_drain * drainratio * seconds_per_tick , totalplasma)
 			loaded_tank.air_contents.remove_specific(/datum/gas/plasma, gasdrained)
+			loaded_tank.air_contents.assert_gases(/datum/gas/tritium)
 			loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES] += gasdrained
 			var/power_produced = RAD_COLLECTOR_OUTPUT
 			release_energy(power_produced)
@@ -80,6 +82,7 @@
 			var/gasdrained = bitcoinproduction_drain * drainratio * seconds_per_tick
 			loaded_tank.air_contents.remove_specific(/datum/gas/tritium, gasdrained)
 			loaded_tank.air_contents.remove_specific(/datum/gas/oxygen, gasdrained)
+			loaded_tank.air_contents.assert_gases(/datum/gas/carbon_dioxide)
 			loaded_tank.air_contents.gases[/datum/gas/carbon_dioxide][MOLES] += gasdrained * 2
 			var/bitcoins_mined = RAD_COLLECTOR_OUTPUT
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -91,6 +94,7 @@
 /obj/machinery/power/energy_accumulator/rad_collector/interact(mob/user)
 	if(anchored)
 		toggle_power()
+		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)
 		user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
 		"<span class='notice'>You turn the [src.name] [active? "on":"off"].</span>")
 		var/fuel = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]

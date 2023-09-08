@@ -2426,18 +2426,6 @@
 /obj/structure/cable,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/aft)
-"uG" = (
-/obj/effect/turf_decal/tile/red/opposingcorners,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/machinery/duct,
-/obj/machinery/duct,
-/turf/open/floor/iron/white,
-/area/station/service/kitchen)
 "uJ" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
@@ -4055,11 +4043,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
-"JI" = (
-/obj/machinery/duct,
-/obj/machinery/duct,
-/turf/open/floor/iron/freezer,
-/area/station/commons/toilet/locker)
 "JJ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -4345,7 +4328,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/machinery/duct,
 /obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
@@ -5169,10 +5151,10 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "Uv" = (
+/obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/east{
 	cell_type = /obj/item/stock_parts/cell/infinite
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "Uw" = (
@@ -32711,7 +32693,7 @@ LY
 LY
 LY
 jo
-Zx
+yc
 yc
 yc
 yc
@@ -34005,7 +33987,7 @@ Nh
 cM
 Nh
 cM
-uG
+nO
 EW
 EW
 EW
@@ -37847,7 +37829,7 @@ hq
 BE
 RN
 RN
-JI
+RN
 RN
 RN
 YB
@@ -38360,9 +38342,9 @@ AR
 hq
 BE
 RN
-JI
 RN
-JI
+RN
+RN
 RN
 zw
 yd

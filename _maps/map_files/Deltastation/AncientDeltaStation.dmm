@@ -26688,6 +26688,7 @@
 /obj/item/stock_parts/cell/high,
 /obj/machinery/cell_charger,
 /obj/item/radio/intercom/directional/south,
+/obj/structure/fireaxecabinet/mechremoval/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "dIN" = (
@@ -52413,15 +52414,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"kEw" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/structure/fireaxecabinet/mechremoval/directional/north,
-/turf/open/floor/iron,
-/area/station/science/robotics/mechbay)
 "kEB" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/radiation,
@@ -136002,7 +135994,7 @@ def
 dcH
 dkc
 dlN
-kEw
+dwx
 duY
 dty
 dsh

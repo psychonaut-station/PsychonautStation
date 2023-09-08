@@ -21699,13 +21699,13 @@
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "deh" = (
-/obj/machinery/modular_computer/preset/civilian{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/obj/machinery/computer/rdconsole{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/science/lab)
 "dei" = (
@@ -26688,6 +26688,7 @@
 /obj/item/stock_parts/cell/high,
 /obj/machinery/cell_charger,
 /obj/item/radio/intercom/directional/south,
+/obj/structure/fireaxecabinet/mechremoval/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "dIN" = (
@@ -43059,6 +43060,12 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/research)
+"hNN" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "hNT" = (
 /obj/structure/table/wood,
 /obj/item/paper_bin,
@@ -75785,6 +75792,12 @@
 	},
 /turf/open/floor/carpet,
 /area/station/service/library)
+"rAq" = (
+/obj/effect/turf_decal/trimline/yellow/warning{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "rAw" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/turf_decal/siding/thinplating/dark,
@@ -97926,6 +97939,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
+"yhh" = (
+/obj/structure/window/reinforced/plasma/spawner/directional/west,
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/space/nearstation)
 "yhE" = (
 /obj/structure/table/wood,
 /obj/item/instrument/violin,
@@ -119233,9 +119251,9 @@ qdh
 xPF
 otP
 otP
-otP
-otP
-otP
+hNN
+hNN
+hNN
 rzg
 eyE
 xYD
@@ -119747,9 +119765,9 @@ ovG
 xPF
 otP
 otP
-otP
-otP
-otP
+rAq
+rAq
+rAq
 rzg
 eyE
 fym
@@ -129304,9 +129322,9 @@ gSi
 cnI
 cnI
 cnI
-cnI
-cnI
-cnI
+yhh
+yhh
+yhh
 cnI
 dLY
 lpX

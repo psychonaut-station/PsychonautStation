@@ -15,3 +15,67 @@
   Seefaaa:
   - rscadd: "Pug'\u0131n yerini alacak ve size bir \xE7ok hayvan t\xFCr\xFC sunacak\
       \ olan Animal mesle\u011Fi."
+  mc-oofert:
+  - bugfix: emissive appearances on glowy eyes and such now properly rotate
+2023-09-06:
+  Acantharctia:
+  - rscadd: Added the Numb quirk, that makes you (almost) unable to perceive how much
+      your injuries hurt.
+  Ben10Omintrix:
+  - refactor: the minebots have been refactored please report any bugs
+  - rscadd: minebots can now mine walls and collect ores automatically and they will
+      alert everyone if they find u dead
+  CoiledLamb:
+  - image: cleans up the engineering emergency internals sprite slightly
+  Jackal-boop:
+  - spellcheck: re-writes cosmic heretic lore
+  Krysonism:
+  - image: resprites the noticeboard
+  carlarctg:
+  - bugfix: Fixed walking into grilles to destroy them
+  lizardqueenlexi:
+  - bugfix: Fixed all-in-one grinders not giving all the correct reagents when grinding.
+  - spellcheck: Improved phrasing and syntax on dismemberment mood messages.
+  - bugfix: Snow legions now drop only one corpse, and no longer drop Lavaland corpses.
+2023-09-07:
+  Ben10Omintrix:
+  - bugfix: basic mobs can now use ranged burst attacks
+  Dmeto:
+  - bugfix: Machine frames in NorthStar Cyto are now functional.
+  - qol: Minor cable/pipe changes to NorthStar the xeno containment.
+  - qol: Adds cables under birdshot xeno containment shielding.
+  Eronymun:
+  - bugfix: The Birdshot Gaming Den now has arcade circuit boards and computer frames
+      that actually work.
+  Melbert:
+  - rscadd: '[Icebox] Remaps arrivals and the maintenance around it. Aux base out,
+      mass driver into a plasma lake in.'
+  Sealed101:
+  - bugfix: fixed mirrors not breaking when a curse effect is triggered
+  Thunder12345:
+  - bugfix: Public mining storage's camera is now on the mining network instead of
+      the gulag.
+  dieamond13:
+  - image: adds special sprites for lungs when you use the smoker quirk
+  norsvenska:
+  - qol: NorthStar's departmental head offices have had their respective PDA & ID
+      imprinters added!
+  - qol: The NorthStar Head of Security office has gotten a small expansion.
+  vinylspiders:
+  - bugfix: leash unit test will time out less often and increases the timer until
+      it is considered 'timed out', to reduce false CI failures
+2023-09-08:
+  Ghommie:
+  - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
+      rod" from the more generic "fishing rod"
+  LT3:
+  - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
+  Sealed101:
+  - balance: colossus' near-death attack now starts after a 0.5 seconds delay
+  WinstonBeYY:
+  - rscadd: MiniStation eklendi.
+  cnleth:
+  - bugfix: Megafauna now correctly prints the victim's name after a kill
+  san7890:
+  - refactor: If you transform into another mob and notice bugs with interacting with
+      the game world, please create a bug report as this framework was recently refactored.

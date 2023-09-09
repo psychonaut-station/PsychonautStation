@@ -17,7 +17,7 @@
 /datum/map_template/ruin/space/tgmc_ruin
 	id = "tgmc_ruin"
 	suffix = "tgmc_ruin.dmm"
-	name = "Terra Gov Marine Corps Shuttle"
+	name = "TerraGov Marine Corps Shuttle"
 	description = "A TGMC Cargo mission goes wrong"
 
 /datum/map_template/ruin/space/asteroid1

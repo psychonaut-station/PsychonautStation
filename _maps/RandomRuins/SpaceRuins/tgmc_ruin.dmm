@@ -470,7 +470,7 @@
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
-/obj/structure/window/reinforced/plasma{
+/obj/structure/window/reinforced/spawner{
 	dir = 8
 	},
 /turf/open/floor/plating/airless,

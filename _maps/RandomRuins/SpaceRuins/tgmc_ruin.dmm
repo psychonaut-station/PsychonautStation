@@ -470,6 +470,9 @@
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
+/obj/structure/window/plasma/spawner/directional{
+	dir = 8
+	},
 /turf/open/floor/plating/airless,
 /area/ruin/space)
 "Oh" = (
@@ -480,9 +483,6 @@
 /area/ruin/space)
 "Oj" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /turf/open/floor/plating,
 /area/ruin/space)
 "Oz" = (
@@ -579,14 +579,6 @@
 /obj/machinery/airalarm/directional/south,
 /obj/effect/mapping_helpers/airalarm/all_access,
 /turf/open/floor/pod/dark,
-/area/ruin/space)
-"ZS" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/alien/weeds,
-/turf/open/floor/plating,
 /area/ruin/space)
 
 (1,1,1) = {"
@@ -869,8 +861,8 @@ Gz
 Oj
 Oj
 ji
-ZS
-ZS
+kR
+kR
 Gz
 Gz
 ss

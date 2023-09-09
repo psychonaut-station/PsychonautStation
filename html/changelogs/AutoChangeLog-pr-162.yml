@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Artık \"ı\" harfi yüzünden � ortaya çıkmayacak."

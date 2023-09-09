@@ -562,7 +562,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
-		if(findtext("ABCDEFGHIJKLMNOPWRSTUVWXYZabcdefghijklmnopqrstuvwxyz", message[i])) //Im open to suggestions
+		if(findtext("ABCDEFGHIJKLMNOPWRSTUVWXYZabcdefgh\u0131ijklmnopqrstuvwxyz", message[i])) //Im open to suggestions | \u0131 -> ı
 			new_message += message[i] + message[i] + message[i] //aaalllsssooo ooopppeeennn tttooo sssuuuggggggeeessstttiiiooonsss
 		else
 			new_message += message[i]

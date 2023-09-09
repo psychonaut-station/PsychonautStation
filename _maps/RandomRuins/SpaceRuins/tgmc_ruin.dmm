@@ -205,11 +205,11 @@
 /area/ruin/space)
 "qB" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/gun/ballistic/rifle,
 /obj/structure/alien/weeds,
 /obj/machinery/light/dim/directional/west{
 	dir = 4
 	},
+/obj/item/gun/ballistic/rifle/boltaction/surplus,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "qJ" = (
@@ -266,7 +266,6 @@
 /obj/structure/closet/crate/secure/weapon,
 /obj/item/ammo_box/magazine/m10mm/rifle,
 /obj/item/ammo_box/magazine/m10mm/rifle,
-/obj/item/ammo_box/magazine/m10mm/rifle,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "vm" = (
@@ -287,12 +286,10 @@
 /area/ruin/space)
 "yQ" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/magazine/plastikov9mm,
-/obj/item/ammo_box/magazine/plastikov9mm,
-/obj/item/ammo_box/magazine/plastikov9mm,
 /obj/machinery/light/dim/directional/west{
 	dir = 4
 	},
+/obj/item/ammo_box/magazine/plastikov9mm,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "zz" = (

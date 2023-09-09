@@ -191,6 +191,12 @@
 	dir = 9
 	},
 /area/ruin/space)
+"qp" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space)
 "qu" = (
 /obj/item/paper{
 	default_raw_text = "Ben komutan Husnu tgmcogullari. Görevimiz kargomuzu deneysel koloni Zeta'ya ulastirmakti ancak davetsiz bir misafir gemiye binmis. Tüm mürettebat öldü tek basima kendimi buraya kitleyip kapilari barikatla kapattim. Ancak içeri bir larva girdi ve beni isirdi anlasilan burada ölecegim ama o küçük piçte ölecek her neyse bu notu burada bitiriyorum umarim bunu bir kurtarma ekibi bulur."
@@ -470,9 +476,6 @@
 /obj/machinery/power/shuttle_engine/heater{
 	dir = 4
 	},
-/obj/structure/window/reinforced/spawner{
-	dir = 8
-	},
 /turf/open/floor/plating/airless,
 /area/ruin/space)
 "Oh" = (
@@ -483,6 +486,7 @@
 /area/ruin/space)
 "Oj" = (
 /obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating,
 /area/ruin/space)
 "Oz" = (
@@ -861,8 +865,8 @@ Gz
 Oj
 Oj
 ji
-kR
-kR
+qp
+qp
 Gz
 Gz
 ss

@@ -1,6 +1,0 @@
-author: "WinstonBeYY"
-delete-after: True
-changes:
-  - rscadd: "Mech Removal Tool eklendi"
-  - rscadd: "R&D Console eklendi"
-  - bugfix: "Toxin burn chamber duzeltildi"

@@ -1,4 +1,4 @@
-//Ipc head organ
+// tube monitor for ipc. I wonder if it explodes like in real life?
 /obj/item/organ/external/ipchead
 	name = "ipc monitor"
 	desc = "IPC Head Monitor"

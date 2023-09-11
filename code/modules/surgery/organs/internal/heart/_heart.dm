@@ -293,7 +293,7 @@
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
 
 /obj/item/organ/internal/heart/ipc
-	name = "IPC heart"
+	name = "ipc heart"
 	desc = "A basic electronic device, its actually air pump."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "heart-ipc-on"

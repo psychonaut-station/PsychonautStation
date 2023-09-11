@@ -1,5 +1,5 @@
 /datum/species/ipc
-	name = "\improper Ipc"
+	name = "\improper IPC"
 	id = SPECIES_IPC
 	examine_limb_id = SPECIES_HUMAN
 	inherent_traits = list(
@@ -151,13 +151,13 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bolt",
 			SPECIES_PERK_NAME = "Shockingly Tasty",
-			SPECIES_PERK_DESC = "Ipcs can feed on electricity from APCs, and do not otherwise need to eat.",
+			SPECIES_PERK_DESC = "IPC's can feed on electricity from APCs, and do not otherwise need to eat.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "robot",
 			SPECIES_PERK_NAME = "Robotic",
-			SPECIES_PERK_DESC = "IPCs have an entirely robotic body, meaning medical care is typically done through Robotics or Engineering. \
+			SPECIES_PERK_DESC = "IPC's have an entirely robotic body, meaning medical care is typically done through Robotics or Engineering. \
 			Whether this is helpful or not is heavily dependent on your coworkers. It does, however, mean you are usually able to perform self-repairs easily.",
 		),
 		list(
@@ -170,7 +170,7 @@
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "magnet",
 			SPECIES_PERK_NAME = "EMP Vulnerable",
-			SPECIES_PERK_DESC = "IPC organs are cybernetic, and thus susceptible to electromagnetic interference.",
+			SPECIES_PERK_DESC = "IPC's organs are cybernetic, and thus susceptible to electromagnetic interference.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
@@ -266,9 +266,9 @@
 		else
 			continue
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
-//Voltage Protector Organ
+// Voltage Protector Organ
 /obj/item/organ/internal/voltprotector
-	name = "High Voltage Protector"
+	name = "high voltage protector"
 	desc = "This organ regulates the high electrical voltage coming into your body."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "volt_protector"

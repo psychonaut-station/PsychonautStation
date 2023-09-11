@@ -304,7 +304,6 @@
 		to_chat(user, span_warning("There are unattached parts or organs!"))
 		return
 	if(screwtool.use_tool(src, user, 5 SECONDS))
-		screwtool.play_tool_sound(src)
 		var/mob/living/carbon/human/ipcman = new /mob/living/carbon/human(loc)
 		qdel(ipcman.get_organ_slot(ORGAN_SLOT_BRAIN))
 		var/datum/species/ipc/ipcspecie = new /datum/species/ipc

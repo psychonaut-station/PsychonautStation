@@ -36,5 +36,4 @@
 		if(isipc(target))
 			BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 			BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.limbs_id, FALSE, FALSE)
-			BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
 			BP.update_limb()

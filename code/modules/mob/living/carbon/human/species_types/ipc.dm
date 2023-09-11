@@ -122,7 +122,6 @@
 		var/newpath = newfinal_bodypart_overrides?[BP.body_zone]
 		if(newpath)
 			BP.limb_id = chassis_of_choice.limbs_id
-			BP.name = "\improper[chassis_of_choice.name] [parse_zone(BP.body_zone)]"
 			BP.update_limb()
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)

@@ -93,7 +93,7 @@
 	emageffect = TRUE
 	if(user)
 		to_chat(user, span_notice("You tap [H] on the back with your card."))
-	H.visible_message(span_danger("2 protrusions appeared on [H] head"))
+	H.visible_message(span_danger("2 protrusions appeared on [H]'s head"))
 	update_no_equip_flags(H, NONE)
 	return TRUE
 

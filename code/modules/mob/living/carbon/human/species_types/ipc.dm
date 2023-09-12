@@ -53,7 +53,6 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
-	var/emageffect = FALSE
 
 /datum/species/ipc/random_name(gender,unique,lastname)
 	var/randname = "[pick(GLOB.posibrain_names)] [rand(1,999)]"
@@ -218,7 +217,7 @@
 	button_icon = 'icons/psychonaut/mob/actions/actions_silicon.dmi'
 	background_icon_state = "bg_tech"
 	overlay_icon_state = "bg_tech_border"
-	var/static/possible_overlays = list(
+	var/list/possible_overlays = list(
 		"off",
 		"smile",
 		"uwu",

@@ -35,7 +35,7 @@
 	SIGNAL_HANDLER
 	if(emagged)
 		return FALSE
-	emageffect = TRUE
+	emagged = TRUE
 	if(user)
 		to_chat(user, span_notice("You tap [owner] on the back with your card."))
 	owner.visible_message(span_danger("2 protrusions appeared on [owner]'s head"))

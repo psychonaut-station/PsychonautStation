@@ -1,7 +1,7 @@
 // tube monitor for ipc. I wonder if it explodes like in real life?
 /obj/item/organ/external/ipchead
 	name = "ipc monitor"
-	desc = "IPC Head Monitor"
+	desc = "Tube monitor of an IPC. I wonder if it explodes like in real life?"
 
 	use_mob_sprite_as_obj_sprite = TRUE
 	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'

@@ -85,7 +85,6 @@
 		H.adjustBruteLoss(1.5 * seconds_per_tick)
 
 /datum/species/ipc/proc/apply_water(mob/living/carbon/human/H)
-
 	var/obj/item/organ/internal/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
 	if(heart && istype(heart, /obj/item/organ/internal/heart/ipc))
 		H.adjustFireLoss(rand(1,3))
@@ -95,9 +94,7 @@
 
 /datum/species/ipc/get_features()
 	var/list/features = ..()
-
 	features += "feature_ipc_chassis"
-
 	return features
 
 /datum/species/ipc/replace_body(mob/living/carbon/C, datum/species/new_species)

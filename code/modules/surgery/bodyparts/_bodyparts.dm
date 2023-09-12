@@ -229,6 +229,7 @@
 
 	if(!IS_ORGANIC_LIMB(src))
 		grind_results = null
+
 	if(examine_bodypart_id)
 		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
 	else

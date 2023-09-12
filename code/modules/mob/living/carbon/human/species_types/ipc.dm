@@ -61,17 +61,15 @@
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/C)
 	. = ..()
-	RegisterSignal(C, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
 	RegisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(brain && brain.zone != BODY_ZONE_CHEST)
+	if(brain && brain.zone != BODY_ZONE_CHEST && istype(brain, /obj/item/organ/internal/brain/basic_posibrain))
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
 	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
-	UnregisterSignal(C, COMSIG_ATOM_EMAG_ACT)
 	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
 	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
@@ -85,17 +83,6 @@
 	. = ..()
 	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
 		H.adjustBruteLoss(1.5 * seconds_per_tick)
-
-/datum/species/ipc/proc/on_emag_act(mob/living/carbon/human/H, mob/user)
-	SIGNAL_HANDLER
-	if(emageffect)
-		return FALSE
-	emageffect = TRUE
-	if(user)
-		to_chat(user, span_notice("You tap [H] on the back with your card."))
-	H.visible_message(span_danger("2 protrusions appeared on [H] head"))
-	update_no_equip_flags(H, NONE)
-	return TRUE
 
 /datum/species/ipc/proc/apply_water(mob/living/carbon/human/H)
 
@@ -151,13 +138,13 @@
 			SPECIES_PERK_TYPE = SPECIES_POSITIVE_PERK,
 			SPECIES_PERK_ICON = "bolt",
 			SPECIES_PERK_NAME = "Shockingly Tasty",
-			SPECIES_PERK_DESC = "IPC's can feed on electricity from APCs, and do not otherwise need to eat.",
+			SPECIES_PERK_DESC = "IPCs can feed on electricity from APCs, and do not otherwise need to eat.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEUTRAL_PERK,
 			SPECIES_PERK_ICON = "robot",
 			SPECIES_PERK_NAME = "Robotic",
-			SPECIES_PERK_DESC = "IPC's have an entirely robotic body, meaning medical care is typically done through Robotics or Engineering. \
+			SPECIES_PERK_DESC = "IPCs have an entirely robotic body, meaning medical care is typically done through Robotics or Engineering. \
 			Whether this is helpful or not is heavily dependent on your coworkers. It does, however, mean you are usually able to perform self-repairs easily.",
 		),
 		list(
@@ -170,13 +157,13 @@
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "magnet",
 			SPECIES_PERK_NAME = "EMP Vulnerable",
-			SPECIES_PERK_DESC = "IPC's organs are cybernetic, and thus susceptible to electromagnetic interference.",
+			SPECIES_PERK_DESC = "IPCs organs are cybernetic, and thus susceptible to electromagnetic interference.",
 		),
 		list(
 			SPECIES_PERK_TYPE = SPECIES_NEGATIVE_PERK,
 			SPECIES_PERK_ICON = "droplet",
 			SPECIES_PERK_NAME = "Short Circuit",
-			SPECIES_PERK_DESC = "IPC's are not resistant to water, water creates a short circuit in IPC's.",
+			SPECIES_PERK_DESC = "IPCs are not resistant to water, water creates a short circuit in IPC's.",
 		),
 	)
 
@@ -253,8 +240,11 @@
 
 /datum/action/innate/change_monitor/Activate()
 	var/mob/living/carbon/human/H = owner
-	var/new_image = tgui_input_list(H, "Select your new display image", "Display Image", possible_overlays)
-	change_monitor_emote(new_image)
+	var/overlayslist = new list()
+	for(var/overlay in possible_overlays)
+		overlayslist += image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay]")
+	var/picked_emote = show_radial_menu(H, H, overlayslist, radius = 36)
+	change_monitor_emote(picked_emote)
 
 /datum/action/innate/change_monitor/proc/change_monitor_emote(emote)
 	var/mob/living/carbon/human/H = owner
@@ -263,8 +253,7 @@
 		var/datum/bodypart_overlay/simple/ipcscreen/realemote = new path()
 		if(realemote.icon_state == "ipc-[emotion_icon]")
 			currentoverlay = H.give_ipcscreen_overlay(path)
-		else
-			continue
+			return
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
 // Voltage Protector Organ
 /obj/item/organ/internal/voltprotector

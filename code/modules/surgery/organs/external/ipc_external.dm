@@ -15,6 +15,32 @@
 
 	bodypart_overlay = /datum/bodypart_overlay/mutant/ipchead
 	actions_types = list(/datum/action/innate/change_monitor)
+	var/emagged = FALSE
+
+/obj/item/organ/external/ipchead/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
+
+/obj/item/organ/external/ipchead/Insert(mob/living/carbon/receiver, special, drop_if_replaced)
+	. = ..()
+	RegisterSignal(receiver, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
+	receiver.dna.species.update_no_equip_flags(receiver, ITEM_SLOT_MASK)
+
+/obj/item/organ/external/ipchead/Remove(mob/living/carbon/organ_owner, special, moving)
+	. = ..()
+	UnregisterSignal(organ_owner, COMSIG_ATOM_EMAG_ACT)
+	organ_owner.dna.species.update_no_equip_flags(organ_owner, NONE)
+
+/obj/item/organ/external/ipchead/proc/on_emag_act(mob/user)
+	SIGNAL_HANDLER
+	if(emagged)
+		return FALSE
+	emageffect = TRUE
+	if(user)
+		to_chat(user, span_notice("You tap [owner] on the back with your card."))
+	owner.visible_message(span_danger("2 protrusions appeared on [owner]'s head"))
+	owner.dna.species.update_no_equip_flags(owner, NONE)
+	return TRUE
 
 /obj/item/organ/external/ipchead/black
 	sprite_accessory_override = /datum/sprite_accessory/ipc_monitor/black

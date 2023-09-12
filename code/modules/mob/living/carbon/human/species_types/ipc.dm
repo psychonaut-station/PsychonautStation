@@ -236,7 +236,7 @@
 
 /datum/action/innate/change_monitor/Activate()
 	var/mob/living/carbon/human/H = owner
-	var/overlayslist = new list()
+	var/overlayslist = list()
 	for(var/overlay as anything in possible_overlays)
 		overlayslist += image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay]")
 	var/picked_emote = show_radial_menu(H, H, overlayslist, radius = 36)

@@ -98,7 +98,6 @@
 	return TRUE
 
 /datum/species/ipc/proc/apply_water(mob/living/carbon/human/H)
-
 	var/obj/item/organ/internal/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
 	if(heart && istype(heart, /obj/item/organ/internal/heart/ipc))
 		H.adjustFireLoss(rand(1,3))

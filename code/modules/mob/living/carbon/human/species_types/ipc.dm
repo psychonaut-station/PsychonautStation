@@ -108,9 +108,7 @@
 
 /datum/species/ipc/get_features()
 	var/list/features = ..()
-
 	features += "feature_ipc_chassis"
-
 	return features
 
 /datum/species/ipc/replace_body(mob/living/carbon/C, datum/species/new_species)

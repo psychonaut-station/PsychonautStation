@@ -246,11 +246,10 @@
 		var/image/item_image = image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay_option]")
 		items += list("[overlay_option]" = item_image)
 	var/picked_emote = show_radial_menu(H, H, items, radius = 36)
-	for(var/datum/bodypart_overlay/simple/ipcscreen/path as anything in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))
-		if(initial(path.icon_state) == "ipc-[picked_emote]")
-			emotion_icon = picked_emote
-			currentoverlay = H.give_ipcscreen_overlay(path)
-			return
+	if(isnull(picked_emote))
+		return
+	emotion_icon = picked_emote
+	currentoverlay = H.give_ipcscreen_overlay(possible_overlays[picked_emote])
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
 // Voltage Protector Organ
 /obj/item/organ/internal/voltprotector

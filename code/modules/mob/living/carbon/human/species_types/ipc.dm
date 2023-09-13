@@ -243,7 +243,7 @@
 		return
 	var/list/items = list()
 	for(var/overlay_option in possible_overlays)
-		var/image/item_image = image(icon = possible_overlays[overlay_option].icon, icon_state = possible_overlays[overlay_option].icon_state)
+		var/image/item_image = image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay_option]")
 		items += list("[overlay_option]" = item_image)
 	var/picked_emote = show_radial_menu(H, H, items, radius = 36)
 	for(var/datum/bodypart_overlay/simple/ipcscreen/path as anything in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))

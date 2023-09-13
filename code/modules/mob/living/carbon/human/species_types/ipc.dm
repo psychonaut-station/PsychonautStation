@@ -62,7 +62,7 @@
 	. = ..()
 	RegisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(brain && brain.zone != BODY_ZONE_CHEST && istype(brain, /obj/item/organ/internal/brain/basic_posibrain))
+	if(brain && brain.zone != BODY_ZONE_CHEST)
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
 	C.gib_type = /obj/effect/decal/cleanable/robot_debris
@@ -70,6 +70,9 @@
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
 	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
+	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
+	if(brain && !istype(brain, /obj/item/organ/internal/brain/basic_posibrain))
+		brain.zone = BODY_ZONE_HEAD
 	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
@@ -217,37 +220,35 @@
 	button_icon = 'icons/psychonaut/mob/actions/actions_silicon.dmi'
 	background_icon_state = "bg_tech"
 	overlay_icon_state = "bg_tech_border"
-	var/list/possible_overlays = list(
-		"off",
-		"smile",
-		"uwu",
-		"null",
-		"alert",
-		"cool",
-		"dead",
-		"nt",
-		"heartline",
-		"reddot",
-		"glitchman",
-		"turk",
+	var/static/list/possible_overlays = list(
+		"off" = /datum/bodypart_overlay/simple/ipcscreen/ipcoff,
+		"smile" = /datum/bodypart_overlay/simple/ipcscreen/ipcsmile,
+		"uwu" = /datum/bodypart_overlay/simple/ipcscreen/ipcuwu,
+		"null" = /datum/bodypart_overlay/simple/ipcscreen/ipcnull,
+		"alert" = /datum/bodypart_overlay/simple/ipcscreen/ipcalert,
+		"cool" = /datum/bodypart_overlay/simple/ipcscreen/ipccool,
+		"dead" = /datum/bodypart_overlay/simple/ipcscreen/ipcdead,
+		"nt" = /datum/bodypart_overlay/simple/ipcscreen/ipcnt,
+		"heartline" = /datum/bodypart_overlay/simple/ipcscreen/ipcheartline,
+		"reddot" = /datum/bodypart_overlay/simple/ipcscreen/ipcreddot,
+		"glitchman" = /datum/bodypart_overlay/simple/ipcscreen/ipcglitchman,
+		"turk" = /datum/bodypart_overlay/simple/ipcscreen/ipcturk,
 	)
 	var/emotion_icon = "off"
 	var/datum/bodypart_overlay/simple/ipcscreen/currentoverlay
 
 /datum/action/innate/change_monitor/Activate()
 	var/mob/living/carbon/human/H = owner
-	var/overlayslist = list()
-	for(var/overlay as anything in possible_overlays)
-		overlayslist += image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay]")
-	var/picked_emote = show_radial_menu(H, H, overlayslist, radius = 36)
-	change_monitor_emote(picked_emote)
-
-/datum/action/innate/change_monitor/proc/change_monitor_emote(emote)
-	var/mob/living/carbon/human/H = owner
-	emotion_icon = emote
-	for(var/path in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))
-		var/datum/bodypart_overlay/simple/ipcscreen/realemote = new path()
-		if(realemote.icon_state == "ipc-[emotion_icon]")
+	if(!istype(H))
+		return
+	var/list/items = list()
+	for(var/overlay_option in possible_overlays)
+		var/image/item_image = image(icon = possible_overlays[overlay_option].icon, icon_state = possible_overlays[overlay_option].icon_state)
+		items += list("[overlay_option]" = item_image)
+	var/picked_emote = show_radial_menu(H, H, items, radius = 36)
+	for(var/datum/bodypart_overlay/simple/ipcscreen/path as anything in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))
+		if(initial(path.icon_state) == "ipc-[picked_emote]")
+			emotion_icon = picked_emote
 			currentoverlay = H.give_ipcscreen_overlay(path)
 			return
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////

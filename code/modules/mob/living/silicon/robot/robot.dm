@@ -19,6 +19,7 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
 	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
 
@@ -463,6 +464,14 @@
 	if(lamp_enabled)
 		smash_headlamp()
 	return COMPONENT_BLOCK_LIGHT_EATER
+
+/// special handling for getting shot with a light disruptor/saboteur e.g. the fisher
+/mob/living/silicon/robot/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	if(lamp_enabled)
+		toggle_headlamp(TRUE)
+		to_chat(src, span_warning("Your headlamp was forcibly turned off. Restarting it should fix it, though."))
+	return COMSIG_SABOTEUR_SUCCESS
 
 /mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
 	SIGNAL_HANDLER

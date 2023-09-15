@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - rscdel: "TGMC ruininde centcom id olmayacak."

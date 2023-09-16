@@ -251,6 +251,12 @@
 		return
 	emotion_icon = picked_emote
 	currentoverlay = H.give_ipcscreen_overlay(possible_overlays[picked_emote])
+
+/datum/action/innate/change_monitor/Remove(mob/M)
+	var/mob/living/carbon/human/H = owner
+	H.remove_ipcscreen_overlay()
+	return ..()
+
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
 // Voltage Protector Organ
 /obj/item/organ/internal/voltprotector

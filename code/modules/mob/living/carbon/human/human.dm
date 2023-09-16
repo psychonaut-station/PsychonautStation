@@ -957,13 +957,22 @@
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 	var/obj/item/bodypart/bodypart = get_bodypart(overlay.attached_body_zone)
 	var/obj/item/organ/external/ipchead/ipcscreen = get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
+	var/datum/bodypart_overlay/simple/ipcscreen/oldoverlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
 	if(!bodypart)
 		return null
 	if(!ipcscreen)
 		return null
+
+	bodypart.remove_bodypart_overlay(oldoverlay)
 	bodypart.add_bodypart_overlay(overlay)
 	update_body_parts()
 	return overlay
+
+/mob/living/carbon/human/proc/remove_ipcscreen_overlay()
+	var/obj/item/bodypart/bodypart = get_bodypart(BODY_ZONE_HEAD)
+	var/datum/bodypart_overlay/simple/ipcscreen/overlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
+	bodypart.remove_bodypart_overlay(overlay)
+	update_body_parts()
 
 /mob/living/carbon/human/species
 	var/race = null

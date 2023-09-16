@@ -557,3 +557,49 @@
   - bugfix: Baits are now properly consumed by caught fish and (alive) mobs.
   ZephyrTFA:
   - bugfix: you can no longer bypass html sanitization using the table element. >:(
+2023-09-16:
+  AtomTheProphet:
+  - balance: The spontaneous brain trauma event will no longer occur if there are
+      fewer than 13 players.
+  Donglesplonge:
+  - bugfix: adds the bolted and welded helper to the bar backroom/kitchen coldroom
+      airlock on birdshot, as to prevent chefs from being able to access armor and
+      sunglasses roundstart with barely any work involved
+  Hatterhat:
+  - bugfix: Flares and candles no longer sound like flashlights when being turned
+      on.
+  - bugfix: Getting shot by an SC/FISHER now disables PDA lights for consistency's
+      sake.
+  - balance: Pulling embedded items e.g. shrapnel with hemostats is now a lot faster,
+      and scales appropriately with toolspeed.
+  - balance: You can now pull embedded items with wirecutters, at a speed penalty.
+  Jacquerel:
+  - balance: Watchers will no longer put you at gunpoint.
+  - bugfix: The nuclear operative MODsuit intellicard now actually downloads an AI
+      rather than simply kicking candidates from the game.
+  Pickle-Coding:
+  - bugfix: Fixes tesla coils duplicating the power of >7GeV supermatter zaps.
+  Seefaaa:
+  - rscdel: TGMC ruininde centcom id olmayacak.
+  SyncIt21:
+  - bugfix: returning items to vendors works correctly
+  - bugfix: you can't return items that has stuff in it for e.g. a serving tray with
+      food in it
+  - bugfix: Unary vents & Injectors now link properly with air sensors via multitool
+      both ways
+  Thunder12345:
+  - rscadd: There's a new space ruin in town, be on the lookout for a hidden supply
+      cache.
+  - rscadd: Added a new type of wall which can only be destroyed by blowing it up.
+  Zergspower:
+  - bugfix: Space ruin Anomaly Research - Fixes stacked windows and underplating
+  mc-oofert:
+  - bugfix: the bank machine cannot print holochips worth 0 credits now
+  san7890:
+  - balance: You will be knocked down again on certain vomits. Don't worry, you'll
+      deserve it when it happens.
+  vinylspiders:
+  - bugfix: fixes a bug that would cause grown inedible plant seeds (like tower cap)
+      to vanish from existence upon being added to the seed extractor
+  - bugfix: fixes a issue that would cause fruit wine to bug out when trying to blend
+      its reagent color

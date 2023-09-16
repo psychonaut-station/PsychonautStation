@@ -71,8 +71,8 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
 	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(brain && !istype(brain, /obj/item/organ/internal/brain/basic_posibrain))
-		brain.zone = BODY_ZONE_HEAD
+	if(brain)
+		brain.zone = initial(brain.zone)
 	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
@@ -243,14 +243,14 @@
 		return
 	var/list/items = list()
 	for(var/overlay_option in possible_overlays)
-		var/image/item_image = image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-[overlay_option]")
+		var/datum/bodypart_overlay/simple/ipcscreen/screen = possible_overlays[overlay_option]
+		var/image/item_image = image(icon = initial(screen.icon), icon_state = initial(screen.icon_state))
 		items += list("[overlay_option]" = item_image)
 	var/picked_emote = show_radial_menu(H, H, items, radius = 36)
-	for(var/datum/bodypart_overlay/simple/ipcscreen/path as anything in subtypesof(/datum/bodypart_overlay/simple/ipcscreen))
-		if(initial(path.icon_state) == "ipc-[picked_emote]")
-			emotion_icon = picked_emote
-			currentoverlay = H.give_ipcscreen_overlay(path)
-			return
+	if(isnull(picked_emote))
+		return
+	emotion_icon = picked_emote
+	currentoverlay = H.give_ipcscreen_overlay(possible_overlays[picked_emote])
 ////////////////////////////////////// ORGANS //////////////////////////////////////////////////////
 // Voltage Protector Organ
 /obj/item/organ/internal/voltprotector

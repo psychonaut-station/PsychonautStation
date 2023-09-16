@@ -703,25 +703,16 @@
       turf
 2023-08-16:
   AhmetEfeAkgoz:
-  - rscadd: 'Nature sect
-
-      add :carp sect
-
-      add:Necromany sect
-
-      add:raise dead ritual
-
-      add:summon carp ritual
-
-      add:flood area ritual
-
-      add:summon animals ritual
-
-      add:create podperson ritual
-
-      add:convert into undead ritual
-
-      add:sacrifice living ritual'
+  - rscadd: Nature sect
+  - rscadd: carp sect
+  - rscadd: Necromany sect
+  - rscadd: raise dead ritual
+  - rscadd: summon carp ritual
+  - rscadd: flood area ritual
+  - rscadd: summon animals ritual
+  - rscadd: create podperson ritual
+  - rscadd: convert into undead ritual
+  - rscadd: sacrifice living ritual
   DeerJesus:
   - bugfix: removes bodybag welding tooltip
   FernandoJ8:
@@ -1389,6 +1380,13 @@
       of their shorts!
   - image: tweaks and adjustments to the Cargo resprite have been made, as well as
       respriting some missed icons such as the Winter Coats and QM Cloak
+  Seefaaa:
+  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
+  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
+      t\xFCrerek \u015Farj olacak."
+  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
+      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
+      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
   Seven:
   - bugfix: Syndicate ranged mobs (and probably other basic mobs) properly update
       their shell's description to show they are spent.
@@ -1409,13 +1407,6 @@
       get a status effect with a number of curses associated with it. There's some
       interesting florid language associated with the status effect as a nicety until
       your eventual gibbing from chasing that prize.
-  Seefaaa:
-  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
-  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
-      t\xFCrerek \u015Farj olacak."
-  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
-      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
-      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
 2023-08-30:
   Ghommie:
   - sound: Unlocking an achievement now plays a sound by default. You can change it
@@ -1445,6 +1436,46 @@
   xPokee:
   - bugfix: fixed skeleton wings not being visible from behind while closed
 2023-08-31:
+  Comxy:
+  - bugfix: Fixes Star Gazer getting buckled
+  - image: Removes Star Gazer alpha pixels
+  Fikou:
+  - qol: removes the nukie tool parcel and places the tools directly in their box
+  GoldenAlpharex:
+  - bugfix: Fixes a rare issue that could lead to players entering an infinite disconnection
+      loop from having a null view.
+  Guillaume Prata:
+  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
+      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
+      are not working less often for now on.
+  LukasBeedellCodestuff:
+  - bugfix: Changed icebox permabrig door type to be correct
+  Momo8289:
+  - qol: Cryotubes will now notify medbay if the patient within is dead, and will
+      eject them if auto is on.
+  - qol: Cryotubes will now automatically turn on when a patient enters it if auto
+      is on, but you can no longer close the cryotube on yourself.
+  SyncIt21:
+  - bugfix: autolathe prints the correct amount of stacks and merges it with existing
+      stacks on the turf
+  - bugfix: autolathe takes constant time when printing stacks
+  - code_imp: autolathe will attempt to award you the "getting an upgrade" award only
+      once when printing multiple items & updates UI immediately
   exdal:
   - rscdel: Random antag eventleri kaldirildi
   - qol: Cogu midround antag icin enemy role araliklari arttirildi
+  iwishforducks:
+  - bugfix: Space heaters no longer give extra cells when deconstructed
+  necromanceranne:
+  - bugfix: Compact fishing toolboxes no longer break space and time to contain any
+      normal-sized object. Instead, they only break space and time to contain fishing
+      rods. Settlers migrating to Nanotrasen space have no reasonable explanation
+      for this phenomenon.
+  nikothedude:
+  - balance: Prosthetics and slimepeople can now have limbs dismembered
+  - balance: Slimepeople can now receive slash wounds, but cannot bleed
+  - balance: Most limbs can now be dislocated
+  - refactor: Scar backend reworked, scars will be wiped as they update to the new
+      format
+  san7890:
+  - bugfix: The Cursed Slot Machine should now actually give you more than one pull.

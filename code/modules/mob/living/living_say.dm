@@ -471,6 +471,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		message = capitalize(message)
 		tts_message = capitalize(tts_message)
 
+	message = replacetext(message, "\uFFFD", null) // kekeleme falan olunca ı harfi bozuluyor � ortaya çıkıyor
+	tts_message = replacetext(tts_message, "\uFFFD", null) // bunu geçici olarak önlemek için basit bir yol
+
 	///caps the length of individual letters to 3: ex: heeeeeeyy -> heeeyy
 	/// prevents TTS from choking on unrealistic text while keeping emphasis
 	var/static/regex/length_regex = regex(@"(.+)\1\1\1", "gi")

@@ -14,6 +14,12 @@
 	description = "In case society crumbles, we will be able to restore our zoos to working order with the breeding stock kept in these 100% secure and unbreachable storage facilities. \
 	At no point has anything escaped. That's our story, and we're sticking to it."
 
+/datum/map_template/ruin/space/tgmc_ruin
+	id = "tgmc_ruin"
+	suffix = "tgmc_ruin.dmm"
+	name = "TerraGov Marine Corps Shuttle"
+	description = "A TGMC Cargo mission goes wrong"
+
 /datum/map_template/ruin/space/asteroid1
 	id = "asteroid1"
 	suffix = "asteroid1.dmm"
@@ -125,6 +131,12 @@
 	suffix = "derelict8.dmm"
 	name = "Derelict 8"
 	description = "An auxiliary storage bay might be the least respected room on any functional station, but studies show they are the least likely to be hit in an artillery strike."
+
+/datum/map_template/ruin/space/derelict9
+	id = "derelict9"
+	suffix = "derelict9.dmm"
+	name = "Derelict 9"
+	description = "Someone already found this high-security supply cache already, but were unable to get inside. Perhaps the next visitor will have more luck."
 
 /datum/map_template/ruin/space/empty_shell
 	id = "empty-shell"

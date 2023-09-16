@@ -71,8 +71,8 @@
 	. = ..()
 	UnregisterSignal(C, COMSIG_CARBON_ATTEMPT_EAT)
 	var/obj/item/organ/internal/brain/brain = C.get_organ_slot(ORGAN_SLOT_BRAIN)
-	if(brain && !istype(brain, /obj/item/organ/internal/brain/basic_posibrain))
-		brain.zone = BODY_ZONE_HEAD
+	if(brain)
+		brain.zone = initial(brain.zone)
 	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)

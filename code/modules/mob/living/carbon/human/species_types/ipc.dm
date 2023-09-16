@@ -253,7 +253,7 @@
 	currentoverlay = H.give_ipcscreen_overlay(possible_overlays[picked_emote])
 
 /datum/action/innate/change_monitor/Remove(mob/M)
-	var/mob/living/carbon/human/H = owner
+	var/mob/living/carbon/human/H = M
 	H.remove_ipcscreen_overlay()
 	return ..()
 

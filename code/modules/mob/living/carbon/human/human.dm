@@ -962,8 +962,8 @@
 		return null
 	if(!ipcscreen)
 		return null
-
-	bodypart.remove_bodypart_overlay(oldoverlay)
+	if(oldoverlay)
+		bodypart.remove_bodypart_overlay(oldoverlay)
 	bodypart.add_bodypart_overlay(overlay)
 	update_body_parts()
 	return overlay
@@ -971,7 +971,8 @@
 /mob/living/carbon/human/proc/remove_ipcscreen_overlay()
 	var/obj/item/bodypart/bodypart = get_bodypart(BODY_ZONE_HEAD)
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
-	bodypart.remove_bodypart_overlay(overlay)
+	if(oldoverlay)
+		bodypart.remove_bodypart_overlay(overlay)
 	update_body_parts()
 
 /mob/living/carbon/human/species

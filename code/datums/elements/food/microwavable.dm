@@ -44,7 +44,7 @@
 	if(IS_EDIBLE(result))
 		if(microwaver && microwaver.mind)
 			ADD_TRAIT(result, TRAIT_FOOD_CHEF_MADE, REF(microwaver.mind))
-
+		result.reagents.clear_reagents()
 		source.reagents?.trans_to(result, source.reagents.total_volume)
 
 		BLACKBOX_LOG_FOOD_MADE(result.type)

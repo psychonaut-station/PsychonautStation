@@ -174,6 +174,13 @@
 		if(!findname(.))
 			break
 
+/proc/random_unique_ipc_name(attempts_to_find_unique_name=10)
+	for(var/i in 1 to attempts_to_find_unique_name)
+		. = capitalize(ipc_name())
+
+		if(!findname(.))
+			break
+
 /proc/random_skin_tone()
 	return pick(GLOB.skin_tones)
 

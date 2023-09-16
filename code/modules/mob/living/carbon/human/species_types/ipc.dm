@@ -55,7 +55,14 @@
 	)
 
 /datum/species/ipc/random_name(gender,unique,lastname)
-	var/randname = "[pick(GLOB.posibrain_names)] [rand(1,999)]"
+	if(unique)
+		return random_unique_ipc_name()
+
+	var/randname = ipc_name()
+
+	if(lastname)
+		randname += " [lastname]"
+
 	return randname
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/C)

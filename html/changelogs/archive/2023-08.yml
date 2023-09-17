@@ -703,25 +703,16 @@
       turf
 2023-08-16:
   AhmetEfeAkgoz:
-  - rscadd: 'Nature sect
-
-      add :carp sect
-
-      add:Necromany sect
-
-      add:raise dead ritual
-
-      add:summon carp ritual
-
-      add:flood area ritual
-
-      add:summon animals ritual
-
-      add:create podperson ritual
-
-      add:convert into undead ritual
-
-      add:sacrifice living ritual'
+  - rscadd: Nature sect
+  - rscadd: carp sect
+  - rscadd: Necromany sect
+  - rscadd: raise dead ritual
+  - rscadd: summon carp ritual
+  - rscadd: flood area ritual
+  - rscadd: summon animals ritual
+  - rscadd: create podperson ritual
+  - rscadd: convert into undead ritual
+  - rscadd: sacrifice living ritual
   DeerJesus:
   - bugfix: removes bodybag welding tooltip
   FernandoJ8:

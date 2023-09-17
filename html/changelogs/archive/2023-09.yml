@@ -63,6 +63,12 @@
   - image: Resprited geraniums, poppies, and lilys, along with changing their worn
       icon.
 2023-09-02:
+  AhmetEfeAkgoz:
+  - rscadd: Holy arrow tarifi 10u holy water 5 wood 2 iron
+  Guillaume Prata:
+  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
+      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
+      are not working less often for now on.
   Jacquerel:
   - bugfix: Prevents admins from accidentally gibbing people by closing a confirmation
       window.
@@ -76,6 +82,12 @@
       the malfunctioning tram event should now only fire on maps with a tram!
   Thebleh:
   - bugfix: fixed access on a couple of Engineering and Atmos airlocks on DeltaStation
+  nikothedude:
+  - balance: Prosthetics and slimepeople can now have limbs dismembered
+  - balance: Slimepeople can now receive slash wounds, but cannot bleed
+  - balance: Most limbs can now be dislocated
+  - refactor: Scar backend reworked, scars will be wiped as they update to the new
+      format
 2023-09-03:
   Ben10Omintrix:
   - bugfix: basic ranged mobs will now chase victims
@@ -203,6 +215,9 @@
   Sealed101:
   - bugfix: fixed bileworm evolution deleting anything they devoured; they will now
       eject their contents upon evolution to vileworms
+  Seefaaa:
+  - rscadd: "Pug'\u0131n yerini alacak ve size bir \xE7ok hayvan t\xFCr\xFC sunacak\
+      \ olan Animal mesle\u011Fi."
   mc-oofert:
   - bugfix: emissive appearances on glowy eyes and such now properly rotate
 2023-09-06:
@@ -256,8 +271,6 @@
   Deadgebert:
   - balance: gas mixer output now accurate to set ratio regardless of input temperatures
   Ghommie:
-  - image: The glow shoes from the ClothesMate now actually glow and can be recolored,
-      even with a spraycan.
   - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
       rod" from the more generic "fishing rod"
   Jacquerel:
@@ -280,6 +293,8 @@
   - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
   Sealed101:
   - balance: colossus' near-death attack now starts after a 0.5 seconds delay
+  WinstonBeYY:
+  - rscadd: MiniStation eklendi.
   carlarctg:
   - bugfix: Cauteries now have 'heat', like lighters, welders, etc.
   - qol: You can smoke with a space helmet as long as you have internals on.
@@ -303,6 +318,12 @@
       is rising rapidly
   Majkl-J:
   - bugfix: The messenger app can now be used when laying down.
+  Seefaaa:
+  - bugfix: "Art\u0131k \"\u0131\" harfi y\xFCz\xFCnden \uFFFD ortaya \xE7\u0131kmayacak."
+  WinstonBeYY:
+  - rscadd: Mech Removal Tool eklendi
+  - rscadd: R&D Console eklendi
+  - bugfix: Toxin burn chamber duzeltildi
   san7890:
   - rscadd: Ever see a robot yawn? Don't worry, it makes sense now.
 2023-09-10:
@@ -318,6 +339,8 @@
   - qol: adds some more traitor objective brainwashing default objectives.
   - spellcheck: fixes the double-punctuation on traitor objective brainwashing broadcasts.
   - spellcheck: brainwashing deadchat broadcasts will now auto-punctuate.
+  WinstonBeYY:
+  - rscadd: TGMC Shuttle ruini eklendi
   carshalash:
   - bugfix: ' Corrects various food types from the martian food expansion'
   distributivgesetz:
@@ -635,94 +658,3 @@
       sauce.
   starrm4nn:
   - spellcheck: Fixed some typos on QM's Overcoat
-2023-09-02:
-  AhmetEfeAkgoz:
-  - rscadd: Holy arrow tarifi 10u holy water 5 wood 2 iron
-  Guillaume Prata:
-  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
-      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
-      are not working less often for now on.
-  nikothedude:
-  - balance: Prosthetics and slimepeople can now have limbs dismembered
-  - balance: Slimepeople can now receive slash wounds, but cannot bleed
-  - balance: Most limbs can now be dislocated
-  - refactor: Scar backend reworked, scars will be wiped as they update to the new
-      format
-2023-09-05:
-  Seefaaa:
-  - rscadd: "Pug'\u0131n yerini alacak ve size bir \xE7ok hayvan t\xFCr\xFC sunacak\
-      \ olan Animal mesle\u011Fi."
-  mc-oofert:
-  - bugfix: emissive appearances on glowy eyes and such now properly rotate
-2023-09-06:
-  Acantharctia:
-  - rscadd: Added the Numb quirk, that makes you (almost) unable to perceive how much
-      your injuries hurt.
-  Ben10Omintrix:
-  - refactor: the minebots have been refactored please report any bugs
-  - rscadd: minebots can now mine walls and collect ores automatically and they will
-      alert everyone if they find u dead
-  CoiledLamb:
-  - image: cleans up the engineering emergency internals sprite slightly
-  Jackal-boop:
-  - spellcheck: re-writes cosmic heretic lore
-  Krysonism:
-  - image: resprites the noticeboard
-  carlarctg:
-  - bugfix: Fixed walking into grilles to destroy them
-  lizardqueenlexi:
-  - bugfix: Fixed all-in-one grinders not giving all the correct reagents when grinding.
-  - spellcheck: Improved phrasing and syntax on dismemberment mood messages.
-  - bugfix: Snow legions now drop only one corpse, and no longer drop Lavaland corpses.
-2023-09-07:
-  Ben10Omintrix:
-  - bugfix: basic mobs can now use ranged burst attacks
-  Dmeto:
-  - bugfix: Machine frames in NorthStar Cyto are now functional.
-  - qol: Minor cable/pipe changes to NorthStar the xeno containment.
-  - qol: Adds cables under birdshot xeno containment shielding.
-  Eronymun:
-  - bugfix: The Birdshot Gaming Den now has arcade circuit boards and computer frames
-      that actually work.
-  Melbert:
-  - rscadd: '[Icebox] Remaps arrivals and the maintenance around it. Aux base out,
-      mass driver into a plasma lake in.'
-  Sealed101:
-  - bugfix: fixed mirrors not breaking when a curse effect is triggered
-  Thunder12345:
-  - bugfix: Public mining storage's camera is now on the mining network instead of
-      the gulag.
-  dieamond13:
-  - image: adds special sprites for lungs when you use the smoker quirk
-  norsvenska:
-  - qol: NorthStar's departmental head offices have had their respective PDA & ID
-      imprinters added!
-  - qol: The NorthStar Head of Security office has gotten a small expansion.
-  vinylspiders:
-  - bugfix: leash unit test will time out less often and increases the timer until
-      it is considered 'timed out', to reduce false CI failures
-2023-09-08:
-  Ghommie:
-  - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
-      rod" from the more generic "fishing rod"
-  LT3:
-  - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
-  Sealed101:
-  - balance: colossus' near-death attack now starts after a 0.5 seconds delay
-  WinstonBeYY:
-  - rscadd: MiniStation eklendi.
-  cnleth:
-  - bugfix: Megafauna now correctly prints the victim's name after a kill
-  san7890:
-  - refactor: If you transform into another mob and notice bugs with interacting with
-      the game world, please create a bug report as this framework was recently refactored.
-2023-09-09:
-  Seefaaa:
-  - bugfix: "Art\u0131k \"\u0131\" harfi y\xFCz\xFCnden \uFFFD ortaya \xE7\u0131kmayacak."
-  WinstonBeYY:
-  - rscadd: Mech Removal Tool eklendi
-  - rscadd: R&D Console eklendi
-  - bugfix: Toxin burn chamber duzeltildi
-2023-09-10:
-  WinstonBeYY:
-  - rscadd: TGMC Shuttle ruini eklendi

@@ -1389,6 +1389,13 @@
       of their shorts!
   - image: tweaks and adjustments to the Cargo resprite have been made, as well as
       respriting some missed icons such as the Winter Coats and QM Cloak
+  Seefaaa:
+  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
+  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
+      t\xFCrerek \u015Farj olacak."
+  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
+      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
+      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
   Seven:
   - bugfix: Syndicate ranged mobs (and probably other basic mobs) properly update
       their shell's description to show they are spent.
@@ -1409,13 +1416,6 @@
       get a status effect with a number of curses associated with it. There's some
       interesting florid language associated with the status effect as a nicety until
       your eventual gibbing from chasing that prize.
-  Seefaaa:
-  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
-  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
-      t\xFCrerek \u015Farj olacak."
-  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
-      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
-      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
 2023-08-30:
   Ghommie:
   - sound: Unlocking an achievement now plays a sound by default. You can change it
@@ -1470,6 +1470,9 @@
   - bugfix: autolathe takes constant time when printing stacks
   - code_imp: autolathe will attempt to award you the "getting an upgrade" award only
       once when printing multiple items & updates UI immediately
+  exdal:
+  - rscdel: Random antag eventleri kaldirildi
+  - qol: Cogu midround antag icin enemy role araliklari arttirildi
   iwishforducks:
   - bugfix: Space heaters no longer give extra cells when deconstructed
   necromanceranne:
@@ -1485,7 +1488,3 @@
       format
   san7890:
   - bugfix: The Cursed Slot Machine should now actually give you more than one pull.
-2023-08-31:
-  exdal:
-  - rscdel: Random antag eventleri kaldirildi
-  - qol: Cogu midround antag icin enemy role araliklari arttirildi

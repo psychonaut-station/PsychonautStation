@@ -19,5 +19,7 @@
 /obj/item/clothing/under/plasmaman/nt_secretary
 	name = "Nt secretary plasma envirosuit"
 	desc = "It's an envirosuit worn by Nanotrasen secretaries."
+	icon = 'icons/psychonaut/obj/clothing/under/plasmaman.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/under/plasmaman.dmi'
 	icon_state = "secretary_envirosuit"
 	inhand_icon_state = null

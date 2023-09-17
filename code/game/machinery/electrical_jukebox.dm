@@ -529,10 +529,8 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		if(user)
 			if(track == ERR_DURATION)
 				to_chat(user, span_warning("The duration of the music must be less than [DisplayTimeText(MAX_SOUND_DURATION, 1)]!"))
-				balloon_alert(user, "duration too long!")
 			else
 				to_chat(user, span_warning("Track is not available."))
-				balloon_alert("unavailable!")
 		return FALSE
 	return TRUE
 

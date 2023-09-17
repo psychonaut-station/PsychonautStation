@@ -87,8 +87,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/list/listeners_in_range = list()
 	var/datum/web_track/current_track
 	var/datum/proximity_monitor/advanced/mob_collector/proximity_monitor
-	// var/static/regex/ytdl_regex = regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
-	var/static/regex/ytdl_regex = regex(@"^.+$", "s")
+	var/static/regex/ytdl_regex = regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
 
 /obj/machinery/electrical_jukebox/bar
 	check_trait = TRUE

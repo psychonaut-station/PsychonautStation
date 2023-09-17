@@ -6276,7 +6276,7 @@
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "oY" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 4
 	},
@@ -16694,7 +16694,7 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "Rt" = (
-/obj/structure/bed/roller,
+/obj/structure/bed/medical/emergency,
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/blue/half/contrasted{

@@ -95,7 +95,7 @@
 		grilled_result = new cook_result(original_object.loc, stack_parent.amount)
 
 	else
-		grilled_result = new cook_result(original_object.loc, no_base_reagents = TRUE)
+		grilled_result = new cook_result(original_object.loc)
 		if(original_object.custom_materials)
 			grilled_result.set_custom_materials(original_object.custom_materials)
 

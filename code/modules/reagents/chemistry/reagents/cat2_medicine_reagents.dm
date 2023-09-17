@@ -70,7 +70,7 @@
 			return
 		else //VICTORY ROYALE
 			to_chat(affected_mob, span_hierophant("You win, and the malevolent spirits fade away as well as your wounds."))
-			affected_mob.client.give_award(/datum/award/achievement/misc/helbitaljanken, affected_mob)
+			affected_mob.client.give_award(/datum/award/achievement/jobs/helbitaljanken, affected_mob)
 			affected_mob.revive(HEAL_ALL)
 			holder.del_reagent(type)
 			return
@@ -548,6 +548,7 @@
 		H.set_heartattack(TRUE)
 		volume = 0
 	. = ..()
+	return TRUE
 
 /datum/reagent/medicine/c2/penthrite/on_mob_end_metabolize(mob/living/user)
 	user.clear_alert("penthrite")

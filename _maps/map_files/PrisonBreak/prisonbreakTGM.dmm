@@ -281,6 +281,14 @@
 /obj/machinery/power/terminal,
 /turf/open/floor/plating,
 /area/station/engineering/main)
+"cD" = (
+/obj/structure/chair{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/station/service/cafeteria)
 "cK" = (
 /obj/item/kirbyplants/random,
 /turf/open/floor/iron,
@@ -387,16 +395,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
-"eb" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/plating,
-/area/station/maintenance/port/central)
 "ec" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron,
@@ -720,10 +718,6 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
-"hq" = (
-/turf/closed/wall,
-/turf/open/floor/plating,
-/area/station/commons/toilet/locker)
 "hv" = (
 /obj/structure/disposalpipe/junction{
 	dir = 8
@@ -823,11 +817,6 @@
 "iz" = (
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/port/fore)
-"iB" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/commons/dorms/laundry)
 "iD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -1043,12 +1032,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/service/cafeteria)
-"kt" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "ku" = (
 /obj/machinery/door/poddoor/shutters{
 	id = "visitation";
@@ -1664,10 +1647,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
-"pd" = (
-/turf/closed/wall,
-/turf/open/floor/plating,
-/area/station/maintenance/port/fore)
 "pe" = (
 /obj/structure/chair/plastic{
 	dir = 1
@@ -1897,7 +1876,6 @@
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "qW" = (
-/obj/structure/cable,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2321,13 +2299,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/white,
 /area/station/service/kitchen)
-"tT" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron,
-/area/station/commons/dorms/laundry)
 "tX" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -2416,16 +2387,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
-"uF" = (
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/cable,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port/aft)
 "uJ" = (
 /obj/structure/closet/secure_closet/freezer/kitchen,
 /turf/open/floor/iron/kitchen_coldroom/freezerfloor,
@@ -3048,10 +3009,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/cafeteria)
-"Bl" = (
-/turf/closed/wall,
-/turf/open/floor/plating,
-/area/station/commons/dorms/laundry)
 "Bq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -3381,14 +3338,6 @@
 "DV" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/main)
-"DW" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
-	dir = 4
-	},
-/turf/open/space/basic,
-/area/space/nearstation)
 "Eb" = (
 /turf/closed/wall/r_wall,
 /area/station/command/heads_quarters/hos)
@@ -3620,14 +3569,6 @@
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron,
 /area/station/commons/dorms/laundry)
-"Gh" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/port/aft)
 "Gj" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
@@ -3663,10 +3604,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/storage)
-"GB" = (
-/turf/closed/wall,
-/turf/open/floor/iron,
-/area/station/security/prison/safe)
 "GC" = (
 /obj/structure/table,
 /obj/effect/spawner/random/food_or_drink/booze,
@@ -4189,12 +4126,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 8
 	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
-/obj/structure/disposalpipe/segment{
-	dir = 8
-	},
 /turf/closed/wall,
 /area/station/maintenance/port/aft)
 "Lg" = (
@@ -4227,11 +4158,6 @@
 /obj/structure/stairs/south,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"LH" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/service/cafeteria)
 "LI" = (
 /obj/structure/closet/secure_closet/freezer/meat,
 /obj/machinery/light/directional/west,
@@ -4692,12 +4618,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/security/prison)
-"Qd" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/obj/machinery/power/port_gen/pacman/super,
-/turf/open/floor/plating,
-/area/station/engineering/main)
 "Qe" = (
 /obj/structure/cable,
 /turf/open/floor/iron/white,
@@ -4987,12 +4907,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/dorms/laundry)
-"SR" = (
-/obj/structure/cable,
-/obj/structure/cable,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/service/cafeteria)
 "SY" = (
 /obj/structure/cable,
 /obj/machinery/light/directional/south,
@@ -5243,10 +5157,6 @@
 /obj/machinery/duct,
 /turf/open/floor/plating,
 /area/station/hallway/secondary/exit)
-"Vn" = (
-/turf/closed/wall,
-/turf/open/floor/plating,
-/area/station/maintenance/port/aft)
 "Vp" = (
 /obj/machinery/atmospherics/pipe/layer_manifold/supply/hidden{
 	dir = 4
@@ -5607,7 +5517,6 @@
 /obj/structure/cable,
 /obj/machinery/duct,
 /turf/closed/wall,
-/turf/open/floor/plating,
 /area/station/commons/toilet/locker)
 "YA" = (
 /obj/structure/table/reinforced,
@@ -5644,7 +5553,6 @@
 /turf/open/floor/plating,
 /area/station/service/cafeteria)
 "YL" = (
-/obj/structure/cable,
 /obj/structure/cable,
 /obj/machinery/door/airlock/maintenance,
 /turf/open/floor/plating,
@@ -5840,12 +5748,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
-"ZV" = (
-/obj/structure/closet/secure_closet/security/sec,
-/obj/structure/closet/secure_closet/security/sec,
-/obj/effect/turf_decal/tile/red/half/contrasted,
-/turf/open/floor/iron,
-/area/station/security/brig)
 "ZY" = (
 /obj/machinery/rnd/production/protolathe/department/engineering,
 /obj/machinery/light/directional/west,
@@ -32697,7 +32599,7 @@ yc
 yc
 yc
 yc
-Sv
+yc
 yc
 yc
 yc
@@ -32709,7 +32611,7 @@ yc
 yc
 yc
 yc
-Sv
+yc
 jo
 LY
 LY
@@ -33464,7 +33366,7 @@ LY
 LY
 LY
 jo
-Sv
+yc
 It
 BW
 Nh
@@ -35255,7 +35157,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 kr
 kr
 kr
@@ -35512,7 +35414,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 RU
 Lh
 Lh
@@ -35769,14 +35671,14 @@ LY
 LY
 jo
 fN
-Bl
+kr
 Qp
 Lh
 Lh
 ml
-tT
+pU
 KQ
-iB
+qP
 SQ
 Tp
 GJ
@@ -36026,7 +35928,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 mO
 EZ
 mO
@@ -36283,7 +36185,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 kr
 rw
 rw
@@ -36540,7 +36442,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 mO
 Dy
 mO
@@ -36553,7 +36455,7 @@ gg
 iD
 rC
 iD
-Ah
+cD
 iD
 iD
 rF
@@ -36797,7 +36699,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 Qp
 Lh
 Lh
@@ -37054,7 +36956,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 RU
 Lh
 Lh
@@ -37311,7 +37213,7 @@ LY
 LY
 jo
 fN
-Bl
+kr
 kr
 kr
 kr
@@ -37568,7 +37470,7 @@ LY
 LY
 jo
 fN
-hq
+yd
 tJ
 LV
 fH
@@ -37825,7 +37727,7 @@ LY
 LY
 jo
 fN
-hq
+yd
 BE
 RN
 RN
@@ -38339,7 +38241,7 @@ LY
 jo
 jo
 AR
-hq
+yd
 BE
 RN
 RN
@@ -38596,7 +38498,7 @@ LY
 jo
 Ul
 AR
-hq
+yd
 Ey
 xh
 xh
@@ -38853,7 +38755,7 @@ LY
 jo
 VZ
 fN
-hq
+yd
 yd
 yd
 yd
@@ -39367,7 +39269,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 vp
 vp
 vp
@@ -39630,7 +39532,7 @@ Rl
 Rl
 Rl
 Rl
-SR
+Rl
 nB
 Rl
 kh
@@ -39881,7 +39783,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 yn
 Rd
 JC
@@ -40138,7 +40040,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 na
 JC
 qH
@@ -40395,7 +40297,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 JC
 JC
 JC
@@ -40652,7 +40554,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 na
 JC
 qH
@@ -40671,7 +40573,7 @@ iD
 YP
 YP
 YP
-LH
+Rl
 ks
 yc
 jo
@@ -40909,7 +40811,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 CH
 JC
 JC
@@ -41166,7 +41068,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 na
 JC
 Fv
@@ -41423,7 +41325,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 YP
 JC
 JC
@@ -41444,7 +41346,7 @@ vz
 YP
 YP
 vp
-Gh
+yc
 yc
 aa
 yc
@@ -41680,7 +41582,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 YP
 YP
 YP
@@ -41937,7 +41839,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 yn
 rZ
 rZ
@@ -42451,7 +42353,7 @@ LY
 LY
 jo
 pp
-Aw
+vp
 cK
 rZ
 YP
@@ -42708,7 +42610,7 @@ LY
 LY
 jo
 pp
-Vn
+CP
 sQ
 NY
 sQ
@@ -42964,8 +42866,8 @@ LY
 LY
 LY
 jo
-uF
-Vn
+pp
+CP
 Rz
 vx
 hn
@@ -100809,7 +100711,7 @@ xK
 Nj
 qJ
 xK
-eb
+LK
 We
 qI
 qI
@@ -107220,8 +107122,8 @@ LY
 Bu
 lM
 xK
-GB
-GB
+xK
+xK
 xK
 xK
 lZ
@@ -165561,7 +165463,7 @@ Yh
 pN
 HF
 nl
-pd
+nl
 IW
 jf
 aF
@@ -170191,7 +170093,7 @@ fZ
 mD
 mD
 mD
-BA
+mD
 EA
 yF
 wr
@@ -170448,7 +170350,7 @@ vE
 mD
 ZT
 ZT
-BA
+mD
 bK
 yF
 Mj
@@ -174816,7 +174718,7 @@ TI
 TI
 TI
 ZT
-ZV
+qY
 Cy
 UK
 Bt
@@ -175602,7 +175504,7 @@ Pz
 Pz
 Wb
 Pz
-Qd
+jH
 jH
 SY
 DI
@@ -177391,7 +177293,7 @@ BK
 FI
 QV
 FI
-ql
+QV
 kb
 QV
 QV
@@ -177646,7 +177548,7 @@ fo
 uX
 BK
 FI
-ql
+QV
 FI
 QV
 kb
@@ -177900,10 +177802,10 @@ Xa
 ZC
 Hi
 QV
-ql
-DW
+QV
+BK
 FI
-ql
+QV
 FI
 QV
 gr
@@ -178160,7 +178062,7 @@ fo
 fo
 uX
 FI
-kt
+QV
 FI
 QV
 kb
@@ -178673,7 +178575,7 @@ ql
 QV
 QV
 ql
-de
+FI
 ql
 de
 ql
@@ -181000,9 +180902,9 @@ OV
 OV
 OV
 OV
-pV
-pV
-pV
+OV
+OV
+OV
 pV
 OV
 OV

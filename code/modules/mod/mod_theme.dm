@@ -306,7 +306,7 @@
 		the bare essentials, geared far more for environmental hazards than combat against fauna; however, \
 		this gives way to incredible protection against corrosives and thermal protection good enough for \
 		both casual backstroking through molten magma and romantic walks through arctic terrain. \
-		Instead, the suit is capable of using its' anomalous properties to attract and \
+		Instead, the suit is capable of using its anomalous properties to attract and \
 		carefully distribute layers of ash or ice across the surface; these layers are ablative, but incredibly strong. \
 		Lastly, the suit is capable of compressing and shrinking the mass of the wearer, as well as \
 		rearranging its own constitution, to allow them to fit upright in a sphere form that can \
@@ -936,73 +936,6 @@
 	acid = 30
 	wound = 5
 
-/datum/mod_theme/ntagent
-	name = "Unknown"
-	desc = " A suit which looks very familiar. There is no description on it. Offering armor and protection from space."
-	extended_desc = "A technological wonder, looking very similar to ERT modsuits. On the inside \
-		It has layers of shaped plasteel, chromium steel fibers and ceramic kevlar plates on the inside, \
-		also it has hybrid weave solidified plasma plates to redirect high rays of energy beams, offering immense protection \
-		against every kind of danger in the galaxy, Upon further examination you can see on the inside of the suit, \
-		there is a small logo that reads: Nt."
-	default_skin = "nt"
-	armor_type = /datum/armor/mod_theme_ntagent
-	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
-	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
-	siemens_coefficient = 0
-	complexity_max = 20
-	slowdown_inactive = 0.75
-	slowdown_active = 0.5
-	ui_theme = "ntos"
-	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
-	allowed_suit_storage = list(
-		/obj/item/flashlight,
-		/obj/item/tank/internals,
-		/obj/item/ammo_box,
-		/obj/item/ammo_casing,
-		/obj/item/restraints/handcuffs,
-		/obj/item/assembly/flash,
-		/obj/item/melee/baton,
-		/obj/item/melee/energy/sword,
-		/obj/item/shield/energy,
-	)
-	skins = list(
-		"nt" = list(
-			HELMET_FLAGS = list(
-				UNSEALED_LAYER = NECK_LAYER,
-				UNSEALED_CLOTHING = SNUG_FIT,
-				SEALED_CLOTHING = THICKMATERIAL|STOPSPRESSUREDAMAGE|BLOCK_GAS_SMOKE_EFFECT,
-				UNSEALED_INVISIBILITY = HIDEFACIALHAIR|HIDEHAIR|HIDEJUMPSUIT,
-				SEALED_INVISIBILITY = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT,
-				SEALED_COVER = HEADCOVERSMOUTH|HEADCOVERSEYES|PEPPERPROOF,
-			),
-			CHESTPLATE_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				SEALED_INVISIBILITY = HIDEJUMPSUIT,
-			),
-			GAUNTLETS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				CAN_OVERSLOT = TRUE,
-			),
-			BOOTS_FLAGS = list(
-				UNSEALED_CLOTHING = THICKMATERIAL,
-				SEALED_CLOTHING = STOPSPRESSUREDAMAGE,
-				CAN_OVERSLOT = TRUE,
-			),
-		),
-	)
-/datum/armor/mod_theme_ntagent
-	melee = 20
-	bullet = 15
-	laser = 20
-	energy = 15
-	bomb = 40
-	bio = 100
-	fire = 50
-	acid = 85
-	wound = 20
-
 /datum/mod_theme/syndicate
 	name = "syndicate"
 	desc = "A suit designed by Gorlex Marauders, offering armor ruled illegal in most of Spinward Stellar."
@@ -1016,11 +949,13 @@
 	default_skin = "syndicate"
 	armor_type = /datum/armor/mod_theme_syndicate
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 3
 	max_heat_protection_temperature = FIRE_SUIT_MAX_TEMP_PROTECT
 	siemens_coefficient = 0
 	slowdown_inactive = 1
 	slowdown_active = 0.5
 	ui_theme = "syndicate"
+	resistance_flags = FIRE_PROOF
 	inbuilt_modules = list(/obj/item/mod/module/armor_booster)
 	allowed_suit_storage = list(
 		/obj/item/ammo_box,
@@ -1109,6 +1044,7 @@
 	resistance_flags = FIRE_PROOF|ACID_PROOF
 	atom_flags = PREVENT_CONTENTS_EXPLOSION_1
 	max_heat_protection_temperature = FIRE_IMMUNITY_MAX_TEMP_PROTECT
+	complexity_max = DEFAULT_MAX_COMPLEXITY + 3
 	siemens_coefficient = 0
 	slowdown_inactive = 1
 	slowdown_active = 0.5
@@ -1456,7 +1392,7 @@
 	slowdown_inactive = 1.5
 	slowdown_active = 1
 	ui_theme = "hackerman"
-	inbuilt_modules = list(/obj/item/mod/module/anomaly_locked/kinesis/prebuilt/prototype)
+	inbuilt_modules = list(/obj/item/mod/module/anomaly_locked/kinesis/prototype)
 	allowed_suit_storage = list(
 		/obj/item/analyzer,
 		/obj/item/t_scanner,
@@ -1503,7 +1439,7 @@
 
 /datum/mod_theme/responsory
 	name = "responsory"
-	desc = "A high-speed rescue suit by Nanotrasen, intended for its' emergency response teams."
+	desc = "A high-speed rescue suit by Nanotrasen, intended for its emergency response teams."
 	extended_desc = "A streamlined suit of Nanotrasen design, these sleek black suits are only worn by \
 		elite emergency response personnel to help save the day. While the slim and nimble design of the suit \
 		cuts the ceramics and ablatives in it down, dropping the protection, \
@@ -1784,7 +1720,7 @@
 	siemens_coefficient = 0
 	slowdown_inactive = 0.5
 	slowdown_active = 0
-	activation_step_time = 0.4 SECONDS
+	activation_step_time = MOD_ACTIVATION_STEP_TIME * 0.2
 	allowed_suit_storage = list(
 		/obj/item/gun,
 	)
@@ -1844,7 +1780,7 @@
 	siemens_coefficient = 0
 	slowdown_inactive = 0
 	slowdown_active = 0
-	activation_step_time = 0.1 SECONDS
+	activation_step_time = MOD_ACTIVATION_STEP_TIME * 0.01
 	allowed_suit_storage = list(
 		/obj/item/gun,
 	)

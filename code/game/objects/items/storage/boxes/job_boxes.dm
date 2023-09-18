@@ -44,6 +44,9 @@
 
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_RADIOACTIVE_NEBULA))
 		new /obj/item/storage/pill_bottle/potassiodide(src)
+	
+	if(SSmapping.is_planetary() && LAZYLEN(SSmapping.multiz_levels))
+		new /obj/item/climbing_hook/emergency(src)
 
 /obj/item/storage/box/survival/radio/PopulateContents()
 	..() // we want the survival stuff too.
@@ -78,6 +81,16 @@
 	..() // we want the regular items too.
 	new /obj/item/radio/off(src)
 
+/obj/item/storage/box/survival/worker
+	name = "extended-capacity survival box"
+	desc = "A box with the bare essentials of ensuring the survival of you and others. This one is labelled to contain an extended-capacity tank."
+	illustration = "extendedtank"
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+
+/obj/item/storage/box/survival/worker/PopulateContents()
+	..()
+	new /obj/item/reagent_containers/cup/soda_cans/cola(src)
+
 // Syndie survival box
 /obj/item/storage/box/survival/syndie
 	name = "operation-ready survival box"
@@ -90,28 +103,10 @@
 
 /obj/item/storage/box/survival/syndie/PopulateContents()
 	..()
-	new /obj/item/tool_parcel(src)
+	new /obj/item/crowbar/red(src)
+	new /obj/item/screwdriver/red(src)
+	new /obj/item/weldingtool/mini(src)
 	new /obj/item/paper/fluff/operative(src)
-
-/obj/item/tool_parcel
-	name = "operative toolkit care package"
-	desc = "A small parcel. It contains a few items every operative needs."
-	w_class =  WEIGHT_CLASS_SMALL
-	icon = 'icons/obj/storage/wrapping.dmi'
-	icon_state = "deliverypackage2"
-
-/obj/item/tool_parcel/attack_self(mob/user)
-	. = ..()
-	new /obj/item/crowbar/red(get_turf(user))
-	new /obj/item/screwdriver/red(get_turf(user))
-	new /obj/item/weldingtool/mini(get_turf(user))
-	new /obj/effect/decal/cleanable/wrapping(get_turf(user))
-	if(prob(5))
-		new /obj/item/storage/fancy/cigarettes/cigpack_syndicate(get_turf(user))
-		new /obj/item/lighter(get_turf(user))
-		to_chat(user, span_notice("...oh, someone left some cigarettes in here."))
-	playsound(loc, 'sound/items/poster_ripped.ogg', 20, TRUE)
-	qdel(src)
 
 /obj/item/storage/box/survival/centcom
 	name = "emergency response survival box"
@@ -154,8 +149,7 @@
 	new	/obj/item/stack/sheet/iron/twenty(src)
 	new	/obj/item/stack/sheet/glass/twenty(src)
 	new /obj/item/stack/tile/carpet/cyan/twenty(src)
-	new /obj/item/circuitboard/computer/announcer(src)
-	new /obj/item/circuitboard/computer/centcom_messenger(src)
+	new /obj/item/circuitboard/computer/secretary_console(src)
 	new /obj/item/stack/cable_coil(src)
 	new /obj/item/screwdriver(src)
 	new /obj/item/wrench(src)
@@ -276,11 +270,23 @@
 	illustration = "heart"
 	foldable_result = null
 	mask_type = null
+	var/random_funny_internals = TRUE
+
+/obj/item/storage/box/survival/hug/PopulateContents()
+	if(!random_funny_internals)
+		return ..()
+	internal_type = pick(
+			/obj/item/tank/internals/emergency_oxygen/engi/clown/n2o,
+			/obj/item/tank/internals/emergency_oxygen/engi/clown/bz,
+			/obj/item/tank/internals/emergency_oxygen/engi/clown/helium,
+			)
+	return ..()
 
 //Mime survival box
 /obj/item/storage/box/survival/hug/black
 	icon_state = "hugbox_black"
 	illustration = "heart_black"
+	random_funny_internals = FALSE
 
 //Duplicated suicide/attack self procs, since the survival boxes are a subtype of box/survival
 /obj/item/storage/box/survival/hug/suicide_act(mob/living/user)

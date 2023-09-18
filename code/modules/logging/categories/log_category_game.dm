@@ -41,6 +41,11 @@
 	category = LOG_CATEGORY_GAME_WHISPER
 	config_flag = /datum/config_entry/flag/log_whisper
 	master_category = /datum/log_category/game
+	
+/datum/log_category/game_hallucination
+	category = LOG_CATEGORY_GAME_HALLUCINATION
+	config_flag = /datum/config_entry/flag/log_hallucination
+	master_category = /datum/log_category/game
 
 /datum/log_category/game_ooc
 	category = LOG_CATEGORY_GAME_OOC

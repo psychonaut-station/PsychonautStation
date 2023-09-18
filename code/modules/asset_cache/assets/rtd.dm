@@ -11,11 +11,30 @@
 			for(var/list/design in  GLOB.floor_designs[main_root][sub_category])
 				var/obj/item/stack/tile/type = design["type"]
 				var/icon_state = initial(type.icon_state)
-				if(registered[icon_state])
+				var/sprite_name = icon_state
+
+				if(registered[sprite_name])
 					continue
 
-				Insert(sprite_name = icon_state, I = 'icons/obj/tiles.dmi', icon_state = icon_state)
-				registered[icon_state] = TRUE
+				var/icon/icon = icon(icon = 'icons/obj/tiles.dmi', icon_state = initial(type.icon_state))
+
+				if(ispath(type, /obj/item/stack/tile/carpet/neon))
+					var/obj/item/stack/tile/carpet/neon/neon_carpet = type
+					sprite_name += "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
+
+					if(registered[sprite_name])
+						continue
+
+					var/icon/neon_icon = icon( \
+						icon = initial(neon_carpet.neon_icon) || initial(neon_carpet.icon), \
+						icon_state = initial(neon_carpet.neon_icon_state) || initial(neon_carpet.icon_state) \
+					)
+
+					neon_icon.Blend(initial(neon_carpet.neon_color), ICON_MULTIPLY)
+					icon.Blend(neon_icon, ICON_OVERLAY)
+
+				Insert(sprite_name = sprite_name, I = icon)
+				registered[sprite_name] = TRUE
 
 				var/list/tile_directions = design["tile_rotate_dirs"]
 				if(tile_directions == null)

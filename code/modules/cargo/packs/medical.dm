@@ -126,10 +126,11 @@
 		shmancy degrees? Just get started with this crate containing a medical duffelbag, \
 		Sterilizine spray and collapsible roller bed."
 	cost = CARGO_CRATE_VALUE * 6
-	contains = list(/obj/item/storage/backpack/duffelbag/med/surgery,
-					/obj/item/reagent_containers/medigel/sterilizine,
-					/obj/item/roller,
-				)
+	contains = list(
+		/obj/item/storage/backpack/duffelbag/med/surgery,
+		/obj/item/reagent_containers/medigel/sterilizine,
+		/obj/item/emergency_bed,
+	)
 	crate_name = "surgical supplies crate"
 
 /datum/supply_pack/medical/salglucanister
@@ -181,3 +182,10 @@
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/item/organ/internal/cyberimp/arm/muscle = 2)
 	crate_name = "Strong-Arm implant crate"
+
+/datum/supply_pack/medical/lazarus
+	name = "Lazarus Injectors"
+	desc = "A crate containing two lazarus injectors, which can be used for reviving lesser beings."
+	cost = CARGO_CRATE_VALUE * 3
+	contains = list(/obj/item/lazarus_injector = 2)
+	crate_name = "Lazarus injectors crate"

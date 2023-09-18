@@ -114,7 +114,9 @@
 	// Light projects out backwards from the dir of the light
 	set_light(l_dir = REVERSE_DIR(dir))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	AddElement(/datum/element/atmos_sensitive, mapload)
+	find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/light/LateInitialize()
@@ -170,7 +172,10 @@
 	if(!on || status != LIGHT_OK)
 		return
 
+	. += emissive_appearance(overlay_icon, "[base_state]", src, alpha = src.alpha)
+
 	var/area/local_area = get_room_area(src)
+
 	if(low_power_mode || major_emergency || (local_area?.fire))
 		. += mutable_appearance(overlay_icon, "[base_state]_emergency")
 		return
@@ -250,7 +255,7 @@
 	update_appearance()
 	update_current_power_usage()
 	broken_sparks(start_only=TRUE)
-
+	
 /obj/machinery/light/update_current_power_usage()
 	if(!on && static_power_used > 0) //Light is off but still powered
 		removeStaticPower(static_power_used, AREA_USAGE_STATIC_LIGHT)
@@ -448,7 +453,7 @@
 // returns whether this light has power
 // true if area has power and lightswitch is on
 /obj/machinery/light/proc/has_power()
-	var/area/local_area =get_room_area(src)
+	var/area/local_area = get_room_area(src)
 	return local_area.lightswitch && local_area.power_light
 
 // returns whether this light has emergency power
@@ -499,6 +504,11 @@
 		update(FALSE)
 		. = TRUE //did we actually flicker?
 	flickering = FALSE
+
+/obj/machinery/light/proc/flicker_open(amount = rand(10, 20))
+	on = TRUE
+	update(FALSE)
+	flicker(amount)
 
 // ai attack - make lights flicker, because why not
 
@@ -671,6 +681,11 @@
 	tube?.burn()
 	return
 
+/obj/machinery/light/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	break_light_tube()
+	return COMSIG_SABOTEUR_SUCCESS
+
 /obj/machinery/light/proc/grey_tide(datum/source, list/grey_tide_areas)
 	SIGNAL_HANDLER
 
@@ -678,6 +693,20 @@
 		if(!istype(get_area(src), area_type))
 			continue
 		INVOKE_ASYNC(src, PROC_REF(flicker))
+
+/**
+ * All the effects that occur when a light falls off a wall that it was hung onto.
+ */
+/obj/machinery/light/proc/knock_down()
+	new /obj/item/wallframe/light_fixture(drop_location())
+	new /obj/item/stack/cable_coil(drop_location(), 1, "red")
+	if(status != LIGHT_BROKEN)
+		break_light_tube(FALSE)
+	if(status != LIGHT_EMPTY)
+		drop_light_tube()
+	if(cell)
+		cell.forceMove(drop_location())
+	qdel(src)
 
 /obj/machinery/light/floor
 	name = "floor light"
@@ -700,3 +729,10 @@
 /obj/machinery/light/floor/broken
 	status = LIGHT_BROKEN
 	icon_state = "floor-broken"
+
+/proc/creak_lights()
+	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
+		if(is_station_level(L.z) && L.on && L.status == LIGHT_OK)
+			L.on = FALSE
+			L.update(FALSE)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))

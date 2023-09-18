@@ -1,6 +1,6 @@
 /obj/item/ammo_casing/energy/laser
 	projectile_type = /obj/projectile/beam/laser
-	e_cost = 63
+	e_cost = 83
 	select_name = "kill"
 
 /obj/item/ammo_casing/energy/laser/hellfire
@@ -13,7 +13,7 @@
 
 /obj/item/ammo_casing/energy/lasergun
 	projectile_type = /obj/projectile/beam/laser
-	e_cost = 52
+	e_cost = 62.5
 	select_name = "kill"
 
 /obj/item/ammo_casing/energy/lasergun/old
@@ -31,6 +31,8 @@
 /obj/item/ammo_casing/energy/laser/musket/prime
 	projectile_type = /obj/projectile/beam/laser/musket/prime
 
+/obj/item/ammo_casing/energy/laser/musket/napoeleon
+	projectile_type = /obj/projectile/beam/laser/musket/napoleon
 /obj/item/ammo_casing/energy/laser/practice
 	projectile_type = /obj/projectile/beam/practice
 	select_name = "practice"

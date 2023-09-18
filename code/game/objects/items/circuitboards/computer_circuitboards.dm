@@ -23,16 +23,11 @@
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
 	build_path = /obj/machinery/computer/accounting
 
-/obj/item/circuitboard/computer/announcer
-	name = "Announcer Console"
+/obj/item/circuitboard/computer/secretary_console
+	name = "Secretary Console"
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
-	build_path = /obj/machinery/computer/announcer
+	build_path = /obj/machinery/computer/secretary_console
 
-/obj/item/circuitboard/computer/centcom_messenger
-	name = "Centcom Messenger Console"
-	greyscale_colors = CIRCUIT_COLOR_COMMAND
-	build_path = /obj/machinery/computer/centcom_messenger
-	
 /obj/item/circuitboard/computer/bankmachine
 	name = "Bank Machine Console"
 	greyscale_colors = CIRCUIT_COLOR_COMMAND
@@ -333,14 +328,6 @@
 	name = "White Ship Bridge"
 	greyscale_colors = CIRCUIT_COLOR_GENERIC
 	build_path = /obj/machinery/computer/shuttle/white_ship/bridge
-
-/obj/item/circuitboard/computer/white_ship/pod
-	name = "Salvage Pod"
-	build_path = /obj/machinery/computer/shuttle/white_ship/pod
-
-/obj/item/circuitboard/computer/white_ship/pod/recall
-	name = "Salvage Pod Recall"
-	build_path = /obj/machinery/computer/shuttle/white_ship/pod/recall
 
 /obj/item/circuitboard/computer/bountypad
 	name = "Bounty Pad"

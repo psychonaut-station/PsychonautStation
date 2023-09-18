@@ -48,7 +48,8 @@
 	jobtype = /datum/job/bartender
 
 	id_trim = /datum/id_trim/job/bartender
-	uniform = /obj/item/clothing/under/rank/civilian/bartender
+	neck = /obj/item/clothing/neck/bowtie
+	uniform = /obj/item/clothing/under/costume/buttondown/slacks/service
 	suit = /obj/item/clothing/suit/armor/vest
 	backpack_contents = list(
 		/obj/item/storage/box/beanbag = 1,
@@ -65,3 +66,5 @@
 	if(H.age < AGE_MINOR)
 		W.registered_age = AGE_MINOR
 		to_chat(H, span_notice("You're not technically old enough to access or serve alcohol, but your ID has been discreetly modified to display your age as [AGE_MINOR]. Try to keep that a secret!"))
+
+	ADD_TRAIT(H, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT)

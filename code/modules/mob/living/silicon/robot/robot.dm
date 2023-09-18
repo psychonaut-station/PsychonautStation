@@ -19,6 +19,7 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
 	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
 
@@ -413,11 +414,11 @@
 	// They stay locked down if their wire is cut.
 	if(wires?.is_cut(WIRE_LOCKDOWN))
 		state = TRUE
-	else if(!ai_lockdown)
-		lockdown_timer = addtimer(CALLBACK(src,PROC_REF(lockdown_override), FALSE), 10 MINUTES, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_DELETE_ME | TIMER_STOPPABLE)
-		to_chat(src, "<br><br>[span_alert("ALERT - Remote system lockdown engaged. Trying to hack the lockdown subsystem...")]<br>")
 	if(state)
 		throw_alert(ALERT_HACKED, /atom/movable/screen/alert/locked)
+		if(!ai_lockdown)
+			lockdown_timer = addtimer(CALLBACK(src,PROC_REF(lockdown_override), FALSE), 10 MINUTES, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_DELETE_ME | TIMER_STOPPABLE)
+			to_chat(src, "<br><br>[span_alert("ALERT - Remote system lockdown engaged. Trying to hack the lockdown subsystem...")]<br>")
 	else
 		deltimer(lockdown_timer)
 		clear_alert(ALERT_HACKED)
@@ -463,6 +464,14 @@
 	if(lamp_enabled)
 		smash_headlamp()
 	return COMPONENT_BLOCK_LIGHT_EATER
+
+/// special handling for getting shot with a light disruptor/saboteur e.g. the fisher
+/mob/living/silicon/robot/proc/on_saboteur(datum/source, disrupt_duration)
+	SIGNAL_HANDLER
+	if(lamp_enabled)
+		toggle_headlamp(TRUE)
+		to_chat(src, span_warning("Your headlamp was forcibly turned off. Restarting it should fix it, though."))
+	return COMSIG_SABOTEUR_SUCCESS
 
 /mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
 	SIGNAL_HANDLER
@@ -662,9 +671,6 @@
 		lighting_color_cutoffs = blend_cutoff_colors(lighting_color_cutoffs, list(25, 8, 5))
 		set_invis_see(min(see_invisible, SEE_INVISIBLE_LIVING))
 
-	if(see_override)
-		set_invis_see(see_override)
-
 	if(SSmapping.level_trait(z, ZTRAIT_NOXRAY))
 		new_sight = null
 
@@ -685,6 +691,7 @@
 	update_health_hud()
 	update_icons() //Updates eye_light overlay
 
+
 /mob/living/silicon/robot/revive(full_heal_flags = NONE, excess_healing = 0, force_grab_ghost = FALSE)
 	. = ..()
 	if(!.)
@@ -697,6 +704,7 @@
 	src.set_stat(CONSCIOUS)
 	notify_ai(AI_NOTIFICATION_NEW_BORG)
 	toggle_headlamp(FALSE, TRUE) //This will reenable borg headlamps if doomsday is currently going on still.
+	update_stat()
 	return TRUE
 
 /mob/living/silicon/robot/fully_replace_character_name(oldname, newname)
@@ -706,7 +714,7 @@
 	notify_ai(AI_NOTIFICATION_CYBORG_RENAMED, oldname, newname)
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
-		modularInterface.saved_identification = real_name
+		modularInterface.imprint_id(name = real_name)
 	custom_name = newname
 
 
@@ -1027,3 +1035,13 @@
 /// Draw power from the robot
 /mob/living/silicon/robot/proc/draw_power(power_to_draw)
 	cell?.use(power_to_draw)
+
+
+/mob/living/silicon/robot/set_stat(new_stat)
+	. = ..()
+	update_stat() // This is probably not needed, but hopefully should be a little sanity check for the spaghetti that borgs are built from
+
+/mob/living/silicon/robot/on_knockedout_trait_loss(datum/source)
+	. = ..()
+	set_stat(CONSCIOUS) //This is a horrible hack, but silicon code forced my hand
+	update_stat()

@@ -78,7 +78,7 @@
 
 	if(istype(held_item, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = held_item
-		if(dealer_deck.wielded)
+		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED))
 			context[SCREENTIP_CONTEXT_LMB] = "Deal card"
 			context[SCREENTIP_CONTEXT_RMB] = "Deal card faceup"
 			return CONTEXTUAL_SCREENTIP_SET
@@ -151,7 +151,7 @@
 
 	if(istype(item, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = item
-		if(!dealer_deck.wielded) // recycle card into deck (if unwielded)
+		if(!HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // recycle card into deck (if unwielded)
 			dealer_deck.insert(src)
 			user.balloon_alert_to_viewers("puts card in deck")
 			return
@@ -169,10 +169,10 @@
 			user.balloon_alert_to_viewers("deals a card")
 
 		var/obj/item/toy/cards/cardhand/new_cardhand = new (drop_location())
-		new_cardhand.insert(src)
-		new_cardhand.insert(card)
 		new_cardhand.pixel_x = pixel_x
 		new_cardhand.pixel_y = pixel_y
+		new_cardhand.insert(src)
+		new_cardhand.insert(card)
 
 		if(!isturf(loc)) // make a cardhand in our active hand
 			user.temporarilyRemoveItemFromInventory(src, TRUE)

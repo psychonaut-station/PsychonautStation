@@ -16,7 +16,6 @@
 #define ROLE_OPERATIVE "Operative"
 #define ROLE_TRAITOR "Traitor"
 #define ROLE_WIZARD "Wizard"
-#define ROLE_NT_AGENT "NT Agent"
 
 // Midround roles
 #define ROLE_ABDUCTOR "Abductor"
@@ -33,7 +32,6 @@
 #define ROLE_OPERATIVE_MIDROUND "Operative (Midround)"
 #define ROLE_PARADOX_CLONE "Paradox Clone"
 #define ROLE_REV_HEAD "Head Revolutionary"
-#define ROLE_SENTIENT_DISEASE "Sentient Disease"
 #define ROLE_SLEEPER_AGENT "Syndicate Sleeper Agent"
 #define ROLE_SPACE_DRAGON "Space Dragon"
 #define ROLE_SPIDER "Spider"
@@ -59,8 +57,11 @@
 #define ROLE_PYROCLASTIC_SLIME "Pyroclastic Anomaly Slime"
 #define ROLE_ANOMALY_GHOST "Ectoplasmic Anomaly Ghost"
 #define ROLE_MIND_TRANSFER "Mind Transfer Potion"
+#define ROLE_LAZARUS_GOOD "Friendly Revived Mob"
+#define ROLE_LAZARUS_BAD "Slaved Revived Mob"
 #define ROLE_POSIBRAIN "Posibrain"
 #define ROLE_DRONE "Drone"
+#define ROLE_EMAGGED_BOT "Malfunctioning Bot"
 #define ROLE_DEATHSQUAD "Deathsquad"
 #define ROLE_LAVALAND "Lavaland"
 
@@ -96,6 +97,8 @@
 #define ROLE_SKELETON "Skeleton"
 #define ROLE_ZOMBIE "Zombie"
 #define ROLE_MAINTENANCE_DRONE "Maintenance Drone"
+#define ROLE_DERELICT_DRONE "Derelict Drone"
+#define ROLE_SYNDICATE_DRONE "Syndicate Drone"
 #define ROLE_BATTLECRUISER_CREW "Battlecruiser Crew"
 #define ROLE_BATTLECRUISER_CAPTAIN "Battlecruiser Captain"
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
@@ -111,7 +114,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_CLOWN_OPERATIVE = 14,
 	ROLE_CULTIST = 14,
 	ROLE_HERETIC = 0,
-	ROLE_NT_AGENT = 0,
 	ROLE_MALF = 0,
 	ROLE_OPERATIVE = 14,
 	ROLE_REV_HEAD = 14,
@@ -133,7 +135,6 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_OPERATIVE_MIDROUND = 14,
 	ROLE_PARADOX_CLONE = 0,
 	ROLE_REVENANT = 0,
-	ROLE_SENTIENT_DISEASE = 0,
 	ROLE_SLEEPER_AGENT = 0,
 	ROLE_SPACE_DRAGON = 0,
 	ROLE_SPIDER = 0,

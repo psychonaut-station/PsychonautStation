@@ -56,7 +56,7 @@
 /datum/status_effect/marshal/on_remove()
 	REMOVE_TRAIT(owner, TRAIT_IGNOREDAMAGESLOWDOWN, STATUS_EFFECT_TRAIT)
 
-/datum/status_effect/marshal/tick()
+/datum/status_effect/marshal/tick(seconds_between_ticks)
 	if(!iscarbon(owner))
 		return
 	var/mob/living/carbon/carbie = owner
@@ -74,7 +74,8 @@
 					heal_amt = 3
 				if(WOUND_SEVERITY_CRITICAL)
 					heal_amt = 6
-			if(wound.wound_type == WOUND_BURN)
+			var/datum/wound_pregen_data/pregen_data = GLOB.all_wound_pregen_data[wound.type]
+			if (pregen_data.wounding_types_valid(list(WOUND_BURN)))
 				carbie.adjustFireLoss(-heal_amt)
 			else
 				carbie.adjustBruteLoss(-heal_amt)

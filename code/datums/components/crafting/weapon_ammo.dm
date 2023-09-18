@@ -36,13 +36,12 @@
 	category = CAT_WEAPON_AMMO
 
 /datum/crafting_recipe/frag12
-	name = "FRAG-12 Shell"
+	name = "FRAG-12 Slug Shell"
 	result = /obj/item/ammo_casing/shotgun/frag12
 	reqs = list(
 		/obj/item/ammo_casing/shotgun/techshell = 1,
 		/datum/reagent/glycerol = 5,
-		/datum/reagent/toxin/acid = 5,
-		/datum/reagent/toxin/acid/fluacid = 5,
+		/datum/reagent/toxin/acid/fluacid = 10,
 	)
 	tool_behaviors = list(TOOL_SCREWDRIVER)
 	time = 0.5 SECONDS
@@ -92,4 +91,14 @@
 		/obj/item/stack/sheet = 5,
 		/datum/reagent/consumable/space_cola = 10,
 	)
+	category = CAT_WEAPON_AMMO
+/datum/crafting_recipe/holy_arrow
+	name = "Holy Arrow"
+	result = /obj/item/ammo_casing/arrow/holy
+	reqs = list(
+		/obj/item/stack/sheet/mineral/wood = 5,
+		/obj/item/stack/sheet/iron = 2,
+		/datum/reagent/water/holywater = 10,
+	)
+	tool_paths = list(/obj/item/gun/ballistic/bow/divine)
 	category = CAT_WEAPON_AMMO

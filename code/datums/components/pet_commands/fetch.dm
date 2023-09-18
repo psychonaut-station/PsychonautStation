@@ -20,6 +20,11 @@
 	. = ..()
 	parent.AddElement(/datum/element/ai_held_item) // We don't remove this on destroy because they might still be holding something
 
+/datum/pet_command/point_targetting/fetch/Destroy(force)
+	var/mob/living/parent = weak_parent.resolve()
+	parent?.RemoveElement(/datum/element/ai_held_item) // fuck tg just drop ^
+	return ..()
+
 /datum/pet_command/point_targetting/fetch/add_new_friend(mob/living/tamer)
 	. = ..()
 	RegisterSignal(tamer, COMSIG_MOB_THROW, PROC_REF(listened_throw))

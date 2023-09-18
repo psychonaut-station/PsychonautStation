@@ -108,7 +108,7 @@
 
 	if(prob(capitalize_prob))
 		var/exclamation = pick("!", "!!", "!!!")
-		message = uppertext(message)
+		message = locale_uppertext(message)
 		message += "[apply_speech(exclamation, exclamation)]"
 
 	message_args[TREAT_MESSAGE_ARG] = message

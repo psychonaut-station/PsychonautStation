@@ -55,7 +55,7 @@
 	name = "plague doctor's hat"
 	desc = "These were once used by plague doctors. Will protect you from exposure to the Pestilence."
 	icon_state = "plaguedoctor"
-	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | SNUG_FIT | PLASMAMAN_HELMET_EXEMPT
+	clothing_flags = THICKMATERIAL | BLOCK_GAS_SMOKE_EFFECT | SNUG_FIT | STACKABLE_HELMET_EXEMPT
 	armor_type = /datum/armor/bio_hood_plague
 	flags_inv = NONE
 
@@ -220,6 +220,8 @@
 /obj/item/clothing/head/hats/nt_secretary
 	name = "\improper Nt Secretary cap"
 	desc = "The cap of the Nt Secretary, stylish!."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
 	icon_state = "nt_secretary"
 	inhand_icon_state = null
 

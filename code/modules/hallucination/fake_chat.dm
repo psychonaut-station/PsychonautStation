@@ -26,14 +26,40 @@
 
 	// Get person to affect if radio hallucination
 	var/is_radio = !speaker || force_radio
-	if(is_radio)
-		var/list/humans = list()
+	var/radio_channel = FREQ_COMMON
+	var/list/target_dept = null
+	
+	// Contents of our message
+	var/chosen = specific_message
 
-		for(var/datum/mind/crew_mind in get_crewmember_minds())
-			if(crew_mind.current)
-				humans += crew_mind.current
-		if(humans.len)
-			speaker = pick(humans)
+	if(is_radio)
+		if (prob(50))
+			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
+				radio_channel = FREQ_ENGINEERING
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_ENGINEERING)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "eng_radio")
+			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SECURITY))
+				radio_channel = FREQ_SECURITY
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SECURITY)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "sec_radio")
+			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SCIENCE))
+				radio_channel = FREQ_SCIENCE
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SCIENCE)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "sci_radio")
+
+		if (target_dept)
+			/// Pick from our department radio
+			target_dept -= hallucinator.mind
+			var/datum/mind/chosen_mind = pick(target_dept)
+			speaker = chosen_mind.current
+		else
+			/// Pick from common radio
+			var/list/humans = list()
+			for(var/datum/mind/crew_mind in get_crewmember_minds())
+				if(crew_mind.current && crew_mind.current != hallucinator)
+					humans += crew_mind.current
+			if(humans.len)
+				speaker = pick(humans)
 
 	if(!speaker)
 		return
@@ -42,18 +68,15 @@
 	// Spans of our message
 	var/spans = list(speaker.speech_span)
 
-	// Contents of our message
-	var/chosen = specific_message
 	// If we didn't have a preset one, let's make one up.
 	if(!chosen)
 		if(is_radio)
-			chosen = pick(list("Help!",
-				"[pick_list_replacements(HALLUCINATION_FILE, "people")] is [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
-				"[pick_list_replacements(HALLUCINATION_FILE, "threat")] in [pick_list_replacements(HALLUCINATION_FILE, "location")][prob(50)?"!":"!!"]",
-				"[pick("Where's [hallucinator.first_name()]?", "Set [hallucinator.first_name()] to arrest!")]",
-				"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",
-				"AI [pick("rogue", "is dead")]!!",
-				"Borgs rogue!",
+			chosen = pick(list("Yardım!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
+				"[pick("[hallucinator.first_name()]'i gördün mü?", "[hallucinator.first_name()] isimli kişiyi arrestleyin")]",
+				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
+				"BORGLAR MALF",
 			))
 		else
 			chosen = pick(list("[pick_list_replacements(HALLUCINATION_FILE, "suspicion")]",
@@ -66,12 +89,13 @@
 				"[pick_list_replacements(HALLUCINATION_FILE, "aggressive")]",
 				"[pick_list_replacements(HALLUCINATION_FILE, "help")]!!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "escape")]",
-				"I'm infected, [pick_list_replacements(HALLUCINATION_FILE, "infection_advice")]!",
+				"Hasta oldum, [pick_list_replacements(HALLUCINATION_FILE, "infection_advice")]!",
 			))
 
 		chosen = capitalize(chosen)
 
 	chosen = replacetext(chosen, "%TARGETNAME%", hallucinator.first_name())
+	chosen = replacetext(chosen, "%TARGETNAME_CAP%", uppertext(hallucinator.first_name()))
 
 	// Log the message
 	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [speaker.real_name], Message: [chosen]"
@@ -87,8 +111,9 @@
 		hallucinator.create_chat_message(speaker, understood_language, chosen, spans)
 
 	// And actually show them the message, for real.
-	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[FREQ_COMMON]" : null, spans, visible_name = TRUE)
+	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[radio_channel]" : null, spans, visible_name = TRUE)
 	to_chat(hallucinator, message)
+	hallucinator.log_message("Fake chatter [speaker]: '[chosen]'", LOG_HALLUCINATION)
 
 	// Then clean up.
 	qdel(src)

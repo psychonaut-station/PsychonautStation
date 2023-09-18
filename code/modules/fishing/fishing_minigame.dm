@@ -86,6 +86,7 @@
 		QDEL_NULL(fishing_line)
 	if(lure)
 		QDEL_NULL(lure)
+	SStgui.close_uis(src)
 	user = null
 	used_rod = null
 	return ..()
@@ -148,22 +149,22 @@
 		complete(FALSE)
 
 /datum/fishing_challenge/proc/complete(win = FALSE, perfect_win = FALSE)
+	if(completed)
+		return
 	deltimer(next_phase_timer)
 	completed = TRUE
 	if(user)
 		REMOVE_TRAIT(user, TRAIT_GONE_FISHING, REF(src))
 		if(start_time)
-			var/seconds_spent = (world.time - start_time)/10
+			var/seconds_spent = (world.time - start_time) * 0.1
 			if(!(FISHING_MINIGAME_RULE_NO_EXP in special_effects))
-				user.mind?.adjust_experience(/datum/skill/fishing, min(round(seconds_spent * FISHING_SKILL_EXP_PER_SECOND * experience_multiplier), FISHING_SKILL_EXP_CAP_PER_GAME))
-				if(win && user.mind?.get_skill_level(/datum/skill/fishing) >= SKILL_LEVEL_LEGENDARY)
+				user.mind?.adjust_experience(/datum/skill/fishing, round(seconds_spent * FISHING_SKILL_EXP_PER_SECOND * experience_multiplier))
+				if(user.mind?.get_skill_level(/datum/skill/fishing) >= SKILL_LEVEL_LEGENDARY)
 					user.client?.give_award(/datum/award/achievement/skill/legendary_fisher, user)
-	if(used_rod && phase == MINIGAME_PHASE)
-		used_rod.consume_bait()
 	if(win)
 		if(reward_path != FISHING_DUD)
 			playsound(lure, 'sound/effects/bigsplash.ogg', 100)
-	SEND_SIGNAL(src, COMSIG_FISHING_CHALLENGE_COMPLETED, user, win, perfect_win)
+	SEND_SIGNAL(src, COMSIG_FISHING_CHALLENGE_COMPLETED, user, win)
 	qdel(src)
 
 /datum/fishing_challenge/proc/start_baiting_phase()
@@ -260,7 +261,7 @@
 
 	switch(action)
 		if("win")
-			complete(win = TRUE, perfect_win = params["perfect"])
+			complete(win = TRUE)
 		if("lose")
 			send_alert("it got away")
 			complete(win = FALSE)

@@ -17,14 +17,6 @@
 
 // Low progression cost
 
-/datum/uplink_item/dangerous/Ntsaber
-	name = "Nanotrasen Saber SMG"
-	desc = "Fully automatic submachine gun, very robust if you have the tc for it. Can be stored in belt slot. \
-			Also comes with a supressor for your stealth needs."
-	item = /obj/item/storage/box/nano_kit/smg
-	cost = 27
-	purchasable_from = UPLINK_NANO
-
 /datum/uplink_item/dangerous/pistol
 	name = "Makarov Pistol"
 	desc = "A small, easily concealable handgun that uses 9mm auto rounds in 8-round magazines and is compatible \
@@ -50,16 +42,7 @@
 	progression_minimum = 20 MINUTES
 	item = /obj/item/melee/energy/sword/saber
 	cost = 8
-	purchasable_from = ~(UPLINK_CLOWN_OPS | UPLINK_NANO)
-
-/datum/uplink_item/dangerous/swordnano
-	name = "Energy Sword"
-	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
-			pocketed when inactive. Activating it produces a loud, distinctive noise."
-	progression_minimum = 20 MINUTES
-	item = /obj/item/melee/energy/sword/saber/blue
-	cost = 8
-	purchasable_from = UPLINK_NANO
+	purchasable_from = ~(UPLINK_CLOWN_OPS)
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"
@@ -87,26 +70,7 @@
 	item = /obj/item/dualsaber
 
 	cost = 16
-	purchasable_from = ~(UPLINK_CLOWN_OPS | UPLINK_NANO)
-
-/datum/uplink_item/dangerous/doubleswordnano
-	name = "Double-Bladed Energy Sword"
-	desc = "The double-bladed energy sword does slightly more damage than a standard energy sword and will deflect \
-			all energy projectiles, but requires two hands to wield."
-	progression_minimum = 30 MINUTES
-	item = /obj/item/dualsaber/blue
-
-	cost = 16
-	purchasable_from = UPLINK_NANO
-
-/datum/uplink_item/dangerous/cqcnano
-	name = "Close Quarters Combat"
-	desc = "For better validhunting."
-	progression_minimum = 20 MINUTES
-	item = /obj/item/book/granter/martial/cqc
-
-	cost = 16
-	purchasable_from = UPLINK_NANO
+	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS) //nukies get their own version
 
 /datum/uplink_item/dangerous/doublesword/get_discount_value(discount_type)
 	switch(discount_type)
@@ -136,13 +100,4 @@
 	progression_minimum = 30 MINUTES
 	cost = 13
 	surplus = 50
-	purchasable_from = ~(UPLINK_CLOWN_OPS | UPLINK_NANO)
-
-/datum/uplink_item/dangerous/taser
-	name = "Nanotrasen Taser"
-	desc = "For losers"
-	item = /obj/item/gun/energy/e_gun/advtaser               //taser here
-	progression_minimum = 30 MINUTES
-	cost = 15
-	surplus = 50
-	purchasable_from = UPLINK_NANO
+	purchasable_from = ~(UPLINK_NUKE_OPS | UPLINK_CLOWN_OPS) //nukies get their own version

@@ -66,7 +66,7 @@
 
 	if(istype(held_item, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = held_item
-		if(dealer_deck.wielded)
+		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED))
 			context[SCREENTIP_CONTEXT_LMB] = "Deal card"
 			context[SCREENTIP_CONTEXT_RMB] = "Deal card faceup"
 			. = CONTEXTUAL_SCREENTIP_SET
@@ -236,9 +236,9 @@
 			return
 		// If the tray IS empty, continue on (tray will be placed on the table like other items)
 
-	if(istype(I, /obj/item/toy/cards/deck))
+	if(!user.combat_mode && istype(I, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = I
-		if(dealer_deck.wielded) // deal a card facedown on the table
+		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // deal a card facedown on the table
 			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
 			if(card)
 				attackby(card, user, params)
@@ -281,10 +281,10 @@
 	else
 		return ..()
 
-/obj/structure/table/attackby_secondary(obj/item/weapon, mob/user, params)
-	if(istype(weapon, /obj/item/toy/cards/deck))
+/obj/structure/table/attackby_secondary(obj/item/weapon, mob/living/user, params)
+	if(!user.combat_mode && istype(weapon, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = weapon
-		if(dealer_deck.wielded) // deal a card faceup on the table
+		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // deal a card faceup on the table
 			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
 			if(card)
 				card.Flip()
@@ -314,7 +314,7 @@
 /obj/structure/table/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
 		if(RCD_DECONSTRUCT)
-			return list("mode" = RCD_DECONSTRUCT, "delay" = 24, "cost" = 16)
+			return list("mode" = RCD_DECONSTRUCT, "delay" = 2.4 SECONDS, "cost" = 16)
 	return FALSE
 
 /obj/structure/table/rcd_act(mob/user, obj/item/construction/rcd/the_rcd, passed_mode)
@@ -901,4 +901,3 @@
 		R.add_fingerprint(user)
 		qdel(src)
 	building = FALSE
-

@@ -221,12 +221,14 @@
 			return
 		stomach.drain_time = world.time + APC_DRAIN_TIME
 		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ethereal, "draining power"), alert_timer_duration)
-		if(do_after(user, APC_DRAIN_TIME, target = src))
+		while(do_after(user, APC_DRAIN_TIME, target = src))
+			stomach.drain_time = world.time + APC_DRAIN_TIME
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach.crystal_charge > charge_limit))
 				return
 			balloon_alert(ethereal, "received charge")
 			stomach.adjust_charge(APC_POWER_GAIN)
 			cell.use(APC_POWER_GAIN)
+			charging = APC_CHARGING
 		return
 
 	if(cell.charge >= cell.maxcharge - APC_POWER_GAIN)
@@ -243,7 +245,7 @@
 		balloon_alert(ethereal, "can't transfer power!")
 		return
 	if(istype(stomach))
-		balloon_alert(ethereal, "transfered power")
+		balloon_alert(ethereal, "transferred power")
 		stomach.adjust_charge(-APC_POWER_GAIN)
 		cell.give(APC_POWER_GAIN)
 	else

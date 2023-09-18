@@ -50,7 +50,7 @@
 	uniform = /obj/item/clothing/under/rank/medical/paramedic
 	suit = /obj/item/clothing/suit/armor/vest/alt/brig_physician
 	backpack_contents = list(
-		/obj/item/roller = 1,
+		/obj/item/emergency_bed = 1,
 		)
 	belt = /obj/item/defibrillator/compact/loaded
 	ears = /obj/item/radio/headset/headset_sec/alt/department/med
@@ -60,9 +60,11 @@
 	shoes = /obj/item/clothing/shoes/jackboots
 	r_pocket = /obj/item/assembly/flash/handheld
 	l_pocket = /obj/item/modular_computer/pda/security
+	r_hand = /obj/item/storage/backpack/duffelbag/sec/surgery
 
-
-	duffelbag = /obj/item/storage/backpack/duffelbag/sec/surgery
+	backpack = /obj/item/storage/backpack/security
+	satchel = /obj/item/storage/backpack/satchel/sec
+	duffelbag = /obj/item/storage/backpack/duffelbag/sec
 
 	box = /obj/item/storage/box/survival/medical
 	skillchips = list(/obj/item/skillchip/entrails_reader)

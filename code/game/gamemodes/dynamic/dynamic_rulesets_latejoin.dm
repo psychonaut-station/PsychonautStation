@@ -67,9 +67,9 @@
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
-		JOB_PUG,
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_ANIMAL,
 	)
 	required_candidates = 1
 	weight = 11
@@ -90,7 +90,6 @@
 	antag_flag = ROLE_PROVOCATEUR
 	antag_flag_override = ROLE_REV_HEAD
 	restricted_roles = list(
-		JOB_PUG,
 		JOB_AI,
 		JOB_CAPTAIN,
 		JOB_CHIEF_ENGINEER,
@@ -107,6 +106,7 @@
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
+		JOB_ANIMAL,
 	)
 	enemy_roles = list(
 		JOB_AI,
@@ -207,9 +207,9 @@
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
-		JOB_PUG,
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_ANIMAL,
 	)
 	required_candidates = 1
 	weight = 8

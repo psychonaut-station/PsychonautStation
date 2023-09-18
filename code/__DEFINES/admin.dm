@@ -100,6 +100,9 @@
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
 
+#define TICKET_TYPE_ADMIN 0
+#define TICKET_TYPE_MENTOR 1
+
 /// Amount of time after the round starts that the player disconnect report is issued.
 #define ROUNDSTART_LOGOUT_REPORT_TIME (10 MINUTES)
 

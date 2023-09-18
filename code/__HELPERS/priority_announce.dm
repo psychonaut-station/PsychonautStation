@@ -46,9 +46,9 @@
 		GLOB.news_network.submit_article(text, "Captain's Announcement", "Station Announcements", null)
 	else if(type == "Syndicate Captain")
 		announcement += "<h1 class='alert'>Syndicate Captain Announces</h1>"
-	else if(type == "Secretary")
-		announcement += "<h1 class='alert'>News from secretary!</h1>"
-		GLOB.news_network.submit_article(html_encode(text), "Secretar's Announcement", "Station Announcements", null)
+	else if(type == "Curator")
+		announcement += "<h1 class='alert'>News from Curator!</h1>"
+		GLOB.news_network.submit_article(html_encode(text), "Curator's News", "Station Announcements", null)
 
 	else
 		if(!sender_override)

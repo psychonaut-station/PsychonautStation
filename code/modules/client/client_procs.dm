@@ -1,8 +1,6 @@
 	////////////
 	//SECURITY//
 	////////////
-#define UPLOAD_LIMIT 524288 //Restricts client uploads to the server to 0.5MB
-#define UPLOAD_LIMIT_ADMIN 2621440 //Restricts admin client uploads to the server to 2.5MB
 
 GLOBAL_LIST_INIT(blacklisted_builds, list(
 	"1407" = "bug preventing client display overrides from working leads to clients being able to see things/mobs they shouldn't be able to see",
@@ -203,12 +201,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 //This stops files larger than UPLOAD_LIMIT being sent from client to server via input(), client.Import() etc.
 /client/AllowUpload(filename, filelength)
+	var/client_max_file_size = CONFIG_GET(number/upload_limit)
 	if (holder)
-		if(filelength > UPLOAD_LIMIT_ADMIN)
-			to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT_ADMIN/1024]KiB.</font>")
+		var/admin_max_file_size = CONFIG_GET(number/upload_limit_admin)
+		if(filelength > admin_max_file_size)
+			to_chat(src, span_warning("Error: AllowUpload(): File Upload too large. Upload Limit: [admin_max_file_size/1024]KiB."))
 			return FALSE
-	else if(filelength > UPLOAD_LIMIT)
-		to_chat(src, "<font color='red'>Error: AllowUpload(): File Upload too large. Upload Limit: [UPLOAD_LIMIT/1024]KiB.</font>")
+	else if(filelength > client_max_file_size)
+		to_chat(src, span_warning("Error: AllowUpload(): File Upload too large. Upload Limit: [client_max_file_size/1024]KiB."))
 		return FALSE
 	return TRUE
 
@@ -461,20 +461,38 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need it's current value now down below.
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+	var/new_account = FALSE
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
 			message_admins("New user: [key_name_admin(src)] is connecting here for the first time.")
-			if (CONFIG_GET(flag/irc_first_connection_alert))
-				send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			new_account = TRUE
 	else if (isnum(cached_player_age) && cached_player_age < nnpa)
 		message_admins("New user: [key_name_admin(src)] just connected with an age of [cached_player_age] day[(player_age == 1?"":"s")]")
 	if(CONFIG_GET(flag/use_account_age_for_jobs) && account_age >= 0)
 		player_age = account_age
 	if(account_age >= 0 && account_age < nnpa)
 		message_admins("[key_name_admin(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-		if (CONFIG_GET(flag/irc_first_connection_alert))
-			send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
+		send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
+
+	if (new_account && CONFIG_GET(string/centcom_ban_db))
+		var/datum/http_request/request = new()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
+		request.begin_async()
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.status_code != 200)
+			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+		else
+			var/list/bans = json_decode(response["body"])
+			if (bans.len > 0)
+				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.</B></font>")
+				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu. Otomatik olarak Watchlist'e eklendi.")
+				add_system_note("centcomdb-ban", "Otomatik WL: [bans.len] tane CentComDB Ban kaydi bulunuyor.", "watchlist entry")
+
 	get_message_output("watchlist entry", ckey)
 	check_ip_intel()
 	validate_key_in_db()
@@ -564,7 +582,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		GLOB.admins -= src
 	QDEL_LIST_ASSOC_VAL(char_render_holders)
 
-	active_mousedown_item = null
 	SSambience.remove_ambience_client(src)
 	SSmouse_entered.hovers -= src
 	SSping.currentrun -= src
@@ -759,7 +776,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			else
 				CRASH("Key check regex failed for [ckey]")
 
-/client/proc/add_system_note(system_ckey, message)
+/client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.
 	var/datum/db_query/query_get_notes = SSdbcore.NewQuery(
 		"SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = :targetckey AND adminckey = :adminckey AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL)",
@@ -785,7 +802,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(query_get_notes)
 			return
 	qdel(query_get_notes)
-	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
+	create_message(message_type, key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 
 
 /client/proc/check_ip_intel()
@@ -806,11 +823,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/ab = FALSE
 	var/list/modifiers = params2list(params)
 
+	var/button_clicked = LAZYACCESS(modifiers, "button")
+
 	var/dragged = LAZYACCESS(modifiers, DRAG)
-	if(dragged && !LAZYACCESS(modifiers, dragged)) //I don't know what's going on here, but I don't trust it
+	if(dragged && button_clicked != dragged)
 		return
 
-	if (object && IS_WEAKREF_OF(object, middle_drag_atom_ref) && LAZYACCESS(modifiers, LEFT_CLICK))
+	if (object && IS_WEAKREF_OF(object, middle_drag_atom_ref) && button_clicked == LEFT_CLICK)
 		ab = max(0, 5 SECONDS-(world.time-middragtime)*0.1)
 
 	var/mcl = CONFIG_GET(number/minute_click_limit)
@@ -883,8 +902,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!CONFIG_GET(flag/forbid_preferences_export))
 		add_verb(src, /client/proc/export_preferences)
 
-
-#undef UPLOAD_LIMIT
 
 //checks if a client is afk
 //3000 frames = 5 minutes
@@ -1010,7 +1027,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	void.UpdateGreed(actualview[1],actualview[2])
 
 /client/proc/AnnouncePR(announcement)
-	if(prefs && prefs.chat_toggles & CHAT_PULLR)
+	if(get_chat_toggles(src) & CHAT_PULLR)
 		to_chat(src, announcement)
 
 ///Redirect proc that makes it easier to call the unlock achievement proc. Achievement type is the typepath to the award, user is the mob getting the award, and value is an optional variable used for leaderboard value increments
@@ -1162,6 +1179,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set desc = "Stop Current Sounds"
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
+	tgui_panel?.destroy_all_jukebox()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
 /client/verb/toggle_fullscreen()
@@ -1211,4 +1229,3 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 #undef LIMITER_SIZE
 #undef MINUTE_COUNT
 #undef SECOND_COUNT
-#undef UPLOAD_LIMIT_ADMIN

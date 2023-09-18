@@ -30,6 +30,7 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  security_level: number;
 };
 
 export const JobEntry: SFC<{
@@ -94,6 +95,26 @@ export const JobEntry: SFC<{
   );
 };
 
+const SEC_LEVEL_GREEN = 0;
+const SEC_LEVEL_BLUE = 1;
+const SEC_LEVEL_RED = 2;
+const SEC_LEVEL_DELTA = 3;
+
+const get_security_level = (level: number) => {
+  switch (level) {
+    case SEC_LEVEL_GREEN:
+      return <NoticeBox success>The current alert level is: Green</NoticeBox>;
+    case SEC_LEVEL_BLUE:
+      return <NoticeBox info>The current alert level is: Blue</NoticeBox>;
+    case SEC_LEVEL_RED:
+      return <NoticeBox danger>The current alert level is: Red</NoticeBox>;
+    case SEC_LEVEL_DELTA:
+      return (
+        <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
+      );
+  }
+};
+
 export const JobSelection = (props, context) => {
   const { act, data } = useBackend<Data>(context);
   if (!data?.departments_static) {
@@ -116,6 +137,7 @@ export const JobSelection = (props, context) => {
         <StyleableSection
           title={
             <>
+              {get_security_level(data.security_level)}
               {data.shuttle_status && (
                 <NoticeBox info>{data.shuttle_status}</NoticeBox>
               )}

@@ -12,7 +12,7 @@
 	// Update the chat filters to only have test phrases, just in case the toml is different
 	config.shared_filter_reasons = list("blockedinshared" = BLOCKED_SHARED)
 	config.ic_filter_reasons = list("blockedinic" = BLOCKED_IC)
-	config.ic_outside_pda_filter_reasons = list("<(0_0<)" = BLOCKED_IC_OUTSIDE_PDA)
+	config.ic_outside_pda_filter_reasons = list("tm" = BLOCKED_IC_OUTSIDE_PDA)
 	config.soft_shared_filter_reasons = list("testsoftblocks" = SOFT_BLOCKED_SHARED)
 	config.soft_ic_filter_reasons = list("testsofterblocks" = SOFT_BLOCKED_IC)
 	config.soft_ic_outside_pda_filter_reasons = list("testsoftestblocks" = SOFT_BLOCKED_IC_OUTSIDE_PDA)
@@ -35,8 +35,9 @@
 	)
 
 	test_filter(
-		"<(0_0<) <(0_0)> (>0_0)> KIRBY DANCE!!!",
-		"<(0_0<)",
+		"RP standartlarini yukseltmek icin tm gibi kelimeleri yasakladik. Ama tg coderlari ucube oldugu icin \
+		word match yerine 1984 bir sistem eklemisler.",
+		"tm",
 		BLOCKED_IC_OUTSIDE_PDA,
 		null,
 		null,

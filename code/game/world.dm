@@ -116,17 +116,17 @@ GLOBAL_VAR(restart_counter)
 /world/New()
 	log_world("World loaded at [time_stamp()]!")
 
-	// From a really fucking old commit (91d7150)
-	// I wanted to move it but I think this needs to be after /world/New is called but before any sleeps?
-	// - Dominion/Cyberboss
-	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * 36000
-
 	// First possible sleep()
 	InitTgs()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	ConfigLoaded()
+
+	// From a really fucking old commit (91d7150)
+	// I wanted to move it but I think this needs to be after /world/New is called but before any sleeps?
+	// - Dominion/Cyberboss
+	GLOB.timezoneOffset = text2num(time2text(0,"hh")) * CONFIG_GET(number/timezone_offset)
 
 	if(NO_INIT_PARAMETER in params)
 		return
@@ -328,6 +328,7 @@ GLOBAL_VAR(restart_counter)
 			shutdown_logging() // See comment below.
 			auxcleanup()
 			TgsEndProcess()
+			return ..()
 
 	log_world("World rebooted at [time_stamp()]")
 

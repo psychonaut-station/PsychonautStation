@@ -91,6 +91,8 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 			department_jobs[job_datum.title] = job_data
 
+	data["security_level"] = SSsecurity_level.get_current_level_as_number()
+
 	return data
 
 /datum/latejoin_menu/ui_static_data(mob/user)

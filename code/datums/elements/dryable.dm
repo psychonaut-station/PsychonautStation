@@ -48,3 +48,4 @@
 		var/atom/movable/resulting_atom = new dry_result(source.drop_location())
 		ADD_TRAIT(resulting_atom, TRAIT_DRIED, ELEMENT_TRAIT(type))
 		qdel(source)
+

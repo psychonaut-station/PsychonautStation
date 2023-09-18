@@ -178,6 +178,10 @@
 /turf/open/space/basic,
 /area/ruin/space)
 "pN" = (
+/obj/effect/mob_spawn/corpse/human/commander{
+	mob_name = "Husnu Tgmcogullari";
+	outfit = /datum/outfit/centcom/ert/marine
+	},
 /turf/open/floor/iron/tgmcemblem{
 	dir = 5
 	},

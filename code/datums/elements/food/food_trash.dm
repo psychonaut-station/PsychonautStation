@@ -87,3 +87,4 @@
 
 	INVOKE_ASYNC(src, PROC_REF(async_generate_trash), source)
 	qdel(source)
+

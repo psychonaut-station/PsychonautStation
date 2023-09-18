@@ -89,9 +89,6 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/datum/proximity_monitor/advanced/mob_collector/proximity_monitor
 	var/static/regex/ytdl_regex = regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
 
-/obj/machinery/electrical_jukebox/bar
-	check_trait = TRUE
-
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
 
@@ -102,35 +99,22 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		RegisterSignal(src, COMSIG_PROXIMITY_MOB_ENTERED, PROC_REF(on_mob_entered))
 		RegisterSignal(src, COMSIG_PROXIMITY_MOB_LEFT, PROC_REF(on_mob_left))
 		RegisterSignal(src, COMSIG_PROXIMITY_MOB_MOVED, PROC_REF(on_mob_moved))
-		INVOKE_ASYNC(src, PROC_REF(init_proximity_monitor))
 
-	update_icon_state()
-
-/obj/machinery/electrical_jukebox/proc/init_proximity_monitor()
-	if(istype(loc, /obj/structure/closet/supplypod))
-		var/obj/structure/closet/supplypod/pod = loc
-		sleep(pod.delays[POD_TRANSIT] + pod.delays[POD_FALLING] + pod.delays[POD_OPENING] + 1)
-
-	proximity_monitor = new(src, range, FALSE, FALSE)
-	proximity_monitor.recalculate_field()
+		proximity_monitor = new(src, range, FALSE, FALSE)
+		forceMove(loc) // jukebox turfdan başka bir şeyin içinde init (sadece init) olunca prox monitor turflara düzgün bağlanamıyor nasıl düzgünce halledeceğimi bulamadım | code\datums\components\connect_range.dm:88
+	else
+		update_icon_state()
 
 /obj/machinery/electrical_jukebox/Destroy()
 	if(invoke_youtubedl)
 		stop_music()
 
-		for(var/track in queue)
-			qdel(track)
-		for(var/track in requests)
-			qdel(track)
-
 		for(var/mob/user in listeners_in_range)
 			user.client?.tgui_panel?.destroy_jukebox_player(jukebox_id)
 
 		qdel(proximity_monitor)
-
-	qdel(queue)
-	qdel(requests)
-	qdel(listeners_in_range)
+		QDEL_LIST(queue)
+		QDEL_LIST(requests)
 
 	return ..()
 
@@ -216,17 +200,17 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			return TOOL_ACT_TOOLTYPE_SUCCESS
 		user.visible_message( \
 			span_notice("[user] starts to repair [src]."), \
-			span_notice("You begin repairing the [src]..."), \
+			span_notice("You begin repairing [src]..."), \
 			span_hear("You hear welding."))
 		if(tool.use_tool(src, user, 40, volume = 50))
 			atom_integrity = max_integrity
 			set_machine_stat(machine_stat & ~BROKEN)
 			user.visible_message( \
 				span_notice("[user] finishes reparing [src]."), \
-				span_notice("You finish repairing the [src]."))
+				span_notice("You finish repairing [src]."))
 			update_appearance()
 	else
-		to_chat(user, span_notice("The [src] doesn't need repairing."))
+		to_chat(user, span_notice("[src] doesn't need repairing."))
 	return TOOL_ACT_TOOLTYPE_SUCCESS
 
 /obj/machinery/electrical_jukebox/on_set_is_operational(old_value)
@@ -326,7 +310,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			if(time_elapsed >= REQUEST_COOLDOWN)
 				var/input = tgui_input_music("New Request")
 				if(input)
-					new_request(usr, input)
+					add_queue(usr, input, request = TRUE)
 			else
 				var/display_time = DisplayTimeText(REQUEST_COOLDOWN - time_elapsed)
 				say("You cannot make a new request for [display_time].")
@@ -349,11 +333,11 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	if(!invoke_youtubedl)
 		return ERR_YTDL_NOT_CONFIGURED
 
-	var/list/data
-	var/cached = GLOB.jukebox_cache[input]
+	var/list/track_data
+	var/cached_track_data = GLOB.jukebox_cache[input]
 
-	if(cached && world.time - cached["timestamp"] < CACHE_DURATION)
-		data = cached
+	if(cached_track_data && world.time - cached_track_data["timestamp"] < CACHE_DURATION)
+		track_data = cached_track_data
 	else
 		var/shell_scrubbed_input = shell_url_scrub(input)
 		var/list/output = world.shelleo("[invoke_youtubedl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_scrubbed_input]\"")
@@ -365,29 +349,27 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			return ERR_JSON_RETRIEVAL
 
 		try
-			data = json_decode(stdout)
+			track_data = json_decode(stdout)
 		catch
 			return ERR_JSON_PARSING
 
-		if(!findtext(data["url"], GLOB.is_http_protocol))
+		if(!findtext(track_data["url"], GLOB.is_http_protocol))
 			return ERR_NOT_HTTPS
 
-		if(data["duration"] > MAX_SOUND_DURATION / 10)
+		if(track_data["duration"] * 10 > MAX_SOUND_DURATION)
 			return ERR_DURATION
 
-		data["timestamp"] = world.time
+		track_data["timestamp"] = world.time
 
-		if(cached)
-			qdel(cached)
-		GLOB.jukebox_cache[input] = data
+		GLOB.jukebox_cache[input] = track_data
 
-	var/datum/web_track/track = new(
-		url = data["url"],
-		title = data["title"],
-		webpage_url = data["webpage_url"],
-		duration = data["duration"] * 10,
-		artist = data["artist"],
-		album = data["album"],
+	var/datum/web_track/track = new (
+		url = track_data["url"],
+		title = track_data["title"],
+		webpage_url = track_data["webpage_url"],
+		duration = track_data["duration"] * 10,
+		artist = track_data["artist"],
+		album = track_data["album"],
 		mob_name = mob_name,
 		mob_ckey = mob_ckey
 	)
@@ -473,39 +455,28 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			queue -= track
 			play_music_by_track(track)
 
-/obj/machinery/electrical_jukebox/proc/add_queue(mob/user, input)
+/obj/machinery/electrical_jukebox/proc/add_queue(mob/user, input, request = FALSE)
 	if(busy || !is_operational || !check_input(user, input))
 		return
 
 	var/datum/web_track/track = get_web_sound(input, user.name, user.ckey, key_name(user))
 
-	if(!check_track(track, user))
-		return
-
-	queue += track
-
-	var/area_name = get_area_name(src, TRUE)
-
-	log_admin("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
-	message_admins("[key_name(user, TRUE)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [REMOVEQUEUE(src, track)] [BANJUKEBOX(src, user.client)]")
-
-/obj/machinery/electrical_jukebox/proc/new_request(mob/user, input)
-	if(busy || !is_operational || !check_input(user, input))
-		return
-
-	var/datum/web_track/track = get_web_sound(input, user.name, user.ckey, key_name(user))
-
-	request_cooldown = world.time
+	if(request)
+		request_cooldown = world.time
 
 	if(!check_track(track, user))
 		return
 
-	requests += track
-
 	var/area_name = get_area_name(src, TRUE)
 
-	log_admin("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
-	message_admins("[key_name(user, TRUE)] requested a web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [DENYREQUEST(src, track)] [BANJUKEBOX(src, user.client)]")
+	if(request)
+		requests += track
+		log_admin("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
+		message_admins("[key_name(user, TRUE)] requested a web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [DENYREQUEST(src, track)] [BANJUKEBOX(src, user.client)]")
+	else
+		queue += track
+		log_admin("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
+		message_admins("[key_name(user, TRUE)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [REMOVEQUEUE(src, track)] [BANJUKEBOX(src, user.client)]")
 
 /obj/machinery/electrical_jukebox/proc/is_playing()
 	if(current_track && world.time - track_started_at < current_track.duration)
@@ -518,9 +489,9 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	return FALSE
 
 /obj/machinery/electrical_jukebox/proc/check_input(mob/user, input)
-	var/cached = GLOB.jukebox_invalid_cache[input]
-	if(cached)
-		check_track(cached, user)
+	var/cached_input = GLOB.jukebox_invalid_cache[input]
+	if(cached_input)
+		check_track(cached_input, user)
 		return FALSE
 	return TRUE
 
@@ -681,7 +652,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			if(time_elapsed >= REQUEST_COOLDOWN)
 				var/input = jukebox.tgui_input_music("New Request")
 				if(input)
-					jukebox.new_request(usr, input)
+					jukebox.add_queue(usr, input, request = TRUE)
 			else
 				var/display_time = DisplayTimeText(REQUEST_COOLDOWN - time_elapsed)
 				say("You cannot make a new request for [display_time].")

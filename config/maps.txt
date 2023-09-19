@@ -15,6 +15,10 @@ endmap
 
 # Production-level maps.
 
+map metastationz
+
+endmap
+
 map ministation
 	maxplayers 20
 	votable

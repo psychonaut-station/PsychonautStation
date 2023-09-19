@@ -1849,11 +1849,6 @@
 /obj/machinery/duct,
 /turf/open/floor/iron/freezer,
 /area/station/commons/toilet/locker)
-"ql" = (
-/obj/structure/lattice,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "qo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 5
@@ -178652,7 +178647,7 @@ QV
 FI
 QV
 FI
-ql
+QV
 kb
 QV
 QV
@@ -180197,7 +180192,7 @@ QV
 QV
 QV
 QV
-ql
+QV
 LY
 LY
 LY

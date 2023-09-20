@@ -2054,15 +2054,12 @@
 	pixel_y = -3
 	},
 /obj/structure/table/reinforced,
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
-	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 9
 	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "aMQ" = (
@@ -5643,13 +5640,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage/tech)
-"cao" = (
-/obj/structure/shipping_container/nanotrasen{
-	pixel_x = 10;
-	pixel_y = 22
-	},
-/turf/open/floor/plating,
-/area/station/hallway/primary/port)
 "caO" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
@@ -6792,12 +6782,6 @@
 	dir = 4
 	},
 /area/station/science/lobby)
-"cyR" = (
-/obj/structure/window/reinforced/plasma/spawner/directional/north{
-	dir = 8
-	},
-/turf/open/floor/engine,
-/area/station/engineering/supermatter)
 "cyS" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -9465,13 +9449,6 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating/airless,
 /area/station/solars/starboard/fore)
-"dDZ" = (
-/obj/structure/shipping_container/nanotrasen{
-	pixel_x = -10;
-	pixel_y = -48
-	},
-/turf/open/floor/plating,
-/area/station/hallway/primary/port)
 "dEi" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
@@ -10969,13 +10946,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
-"edQ" = (
-/obj/structure/shipping_container/nanotrasen{
-	pixel_y = -16;
-	pixel_x = 12
-	},
-/turf/open/floor/plating,
-/area/station/hallway/primary/port)
 "eeg" = (
 /turf/closed/wall/mineral/plastitanium,
 /area/station/hallway/secondary/entry)
@@ -14704,12 +14674,9 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "fyz" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	dir = 1
-	},
-/obj/structure/window/reinforced/plasma/spawner/directional/south,
-/turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/obj/structure/shipping_container/nthi,
+/turf/open/floor/plating,
+/area/station/hallway/primary/port)
 "fyJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -19440,9 +19407,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "hnr" = (
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
 	},
@@ -19464,6 +19428,7 @@
 	pixel_x = -1;
 	pixel_y = 1
 	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "hns" = (
@@ -20359,9 +20324,9 @@
 /turf/open/floor/iron/white,
 /area/station/security/prison)
 "hDX" = (
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "hEc" = (
@@ -28473,11 +28438,11 @@
 "knT" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 6
 	},
 /obj/structure/table/optable,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "knY" = (
@@ -36095,11 +36060,6 @@
 "ndS" = (
 /turf/closed/wall/r_wall,
 /area/station/hallway/secondary/command)
-"nem" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on,
-/obj/structure/window/reinforced/plasma/spawner/directional/north,
-/turf/open/floor/engine,
-/area/station/engineering/supermatter)
 "ner" = (
 /obj/machinery/door/airlock/grunge{
 	name = "Morgue"
@@ -42115,12 +42075,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
-"poO" = (
-/obj/structure/window/reinforced/plasma/spawner/directional/north{
-	dir = 4
-	},
-/turf/open/floor/engine,
-/area/station/engineering/supermatter)
 "poS" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 8
@@ -44531,13 +44485,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
-"qgi" = (
-/obj/item/circuitboard/computer/communications{
-	pixel_y = 5
-	},
-/obj/structure/table/wood/fancy/royalblue,
-/turf/open/floor/engine,
-/area/station/engineering/supermatter)
 "qgn" = (
 /obj/machinery/power/apc/auto_name/directional/west{
 	cell_type = null
@@ -57563,10 +57510,12 @@
 /area/station/engineering/supermatter/room)
 "uJY" = (
 /obj/structure/cable,
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/item/storage/backpack/duffelbag/med/surgery{
+	pixel_y = 6
+	},
 /obj/structure/table,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "uKa" = (
@@ -58021,19 +57970,15 @@
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 10
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
 	},
 /obj/structure/table/reinforced,
 /obj/item/defibrillator/loaded,
 /obj/item/defibrillator/loaded,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "uSz" = (
@@ -60571,10 +60516,7 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "vIM" = (
-/obj/structure/shipping_container/nanotrasen{
-	pixel_y = -24;
-	pixel_x = 9
-	},
+/obj/structure/shipping_container/nanotrasen,
 /turf/open/floor/plating,
 /area/station/hallway/primary/port)
 "vIT" = (
@@ -82019,10 +81961,10 @@ sSh
 mjg
 kOK
 kOK
-cao
+vIM
 kOK
-edQ
 kOK
+vIM
 kOK
 xXi
 hCG
@@ -83049,8 +82991,8 @@ kOK
 kOK
 vIM
 kOK
-dDZ
 kOK
+fyz
 kOK
 scY
 pFI
@@ -110782,7 +110724,7 @@ wBE
 oNs
 eyD
 qZB
-poO
+oNs
 hRl
 gOy
 auc
@@ -111038,9 +110980,9 @@ jUx
 bDA
 vfk
 uga
-fyz
-qgi
-nem
+qZB
+oNs
+hRl
 gOy
 vfk
 sJL
@@ -111296,7 +111238,7 @@ wBE
 eEP
 eyD
 qZB
-cyR
+oNs
 hRl
 gOy
 eQL

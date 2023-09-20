@@ -309,8 +309,8 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "karantina"
 	},
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "agR" = (
@@ -7598,12 +7598,8 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 1
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "cSg" = (
@@ -18216,13 +18212,6 @@
 /obj/structure/sign/poster/random/directional/east,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"gOb" = (
-/obj/structure/cable,
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
-/turf/open/floor/iron,
-/area/station/cargo/storage)
 "gOp" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment{
@@ -21415,12 +21404,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "hYA" = (
@@ -25272,9 +25257,6 @@
 /area/station/science/xenobiology/hallway)
 "jld" = (
 /obj/structure/chair/stool/directional/west,
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "jln" = (
@@ -31657,8 +31639,8 @@
 /obj/machinery/door/poddoor/shutters/preopen{
 	id = "karantina"
 	},
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "lwx" = (
@@ -45593,9 +45575,6 @@
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "qCh" = (
@@ -52565,12 +52544,8 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "sVx" = (
@@ -56875,9 +56850,6 @@
 	name = "Crate Returns";
 	pixel_x = -5;
 	pixel_y = -3
-	},
-/obj/structure/window/reinforced/spawner/directional/south{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -87179,7 +87151,7 @@ piJ
 kaf
 auO
 xXf
-gOb
+mmR
 jld
 uxf
 qCa

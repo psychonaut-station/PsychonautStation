@@ -6786,10 +6786,6 @@
 	dir = 4
 	},
 /area/station/science/lobby)
-"cyR" = (
-/obj/structure/shipping_container/nthi,
-/turf/open/floor/plating,
-/area/station/hallway/primary/port)
 "cyS" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -14681,6 +14677,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"fyz" = (
+/obj/structure/shipping_container/nthi,
+/turf/open/floor/plating,
+/area/station/hallway/primary/port)
 "fyJ" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -39380,7 +39380,7 @@
 "oor" = (
 /obj/machinery/door/window/brigdoor/security/holding{
 	id = "Holding Cell";
-	name = "medical area"
+	name = "medical"
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron,
@@ -49969,8 +49969,8 @@
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/door/airlock/public/glass{
-	name = "safe zone"
+/obj/machinery/door/airlock/mining{
+	name = "Cargo Bay"
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -82992,7 +82992,7 @@ kOK
 cao
 kOK
 kOK
-cyR
+fyz
 kOK
 scY
 pFI

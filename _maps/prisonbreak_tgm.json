@@ -5,42 +5,33 @@
 	"map_file": "prisonbreakTGM.dmm",
 	"space_ruin_levels": 0,
 	"space_empty_levels": 0,
-	
 	"shuttles": {
 		"cargo": "cargo_box",
 		"ferry": "ferry_fancy",
 		"whiteship": "whiteship_box",
 		"emergency": "emergency_box"
 	},
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/kitchen"]
+		}
+	},
 	"traits": [
 		{
-			"Up": 1,
-			
-			"Linkage": null,
-			
-			
-			"Baseturf": "/turf/open/lava/plasma/ice_moon"
+			"Up": true,
+			"Linkage": null	
+		},
+		{
+			"Down": true,
+			"Up": true,
+			"Linkage": null
 			
 		},
 		{
-			"Down": -1,
-			"Up": 1,
-			
-			"Linkage": null,
-			
-			
-			"Baseturf": "/turf/open/openspace/icemoon/keep_below"
-			
-		},
-		{
-			"Down": -1,
-			
-			"Linkage": null,
-			
-			
-			"Baseturf": "/turf/open/openspace/icemoon/keep_below"
-			
+			"Down": true,
+			"Linkage": null
 		}
 	]
+	
 	
 }

@@ -20,6 +20,10 @@ map ministation
 	votable
 endmap
 
+map prisonbreak_tgm
+	minplayers 0
+endmap
+
 map birdshot
 	maxplayers 66
 	votable

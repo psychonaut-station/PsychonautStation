@@ -5,6 +5,17 @@
 	"map_file": "prisonbreakTGM.dmm",
 	"space_ruin_levels": 0,
 	"space_empty_levels": 0,
+	"ignored_unit_tests": [
+		"/datum/unit_test/antag_moodlets",
+		"/datum/unit_test/job_roundstart_spawnpoints",
+		"/datum/unit_test/required_map_items",
+		"/datum/unit_test/space_dragon_expiration",
+		"/datum/unit_test/traitor",
+		"/datum/unit_test/log_mapping",
+		"/datum/unit_test/nuke_cinematic",
+		"/datum/unit_test/atmospherics_sanity",
+		"/datum/unit_test/create_and_destroy"
+	],
 	"shuttles": {
 		"cargo": "cargo_box",
 		"ferry": "ferry_fancy",

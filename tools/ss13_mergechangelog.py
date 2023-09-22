@@ -1,12 +1,10 @@
 from __future__ import print_function
-import yaml, os, glob, sys, re, time, argparse
-from datetime import datetime, date, timedelta
+import yaml, os, glob, argparse
+from datetime import datetime, date
 from time import time
 from collections import Counter
 
 today = date.today()
-
-fileDateFormat = "%Y-%m"
 
 opt = argparse.ArgumentParser()
 opt.add_argument('ymlDir', help='The directory of YAML changelogs we will use.')
@@ -15,31 +13,6 @@ opt.add_argument('month', nargs='?', default='')
 args = opt.parse_args()
 archiveDir = os.path.join(args.ymlDir, 'archive')
 ymlFile = os.path.join(archiveDir, args.month + '.yml')
-
-all_changelog_entries = {}
-
-# Do not change the order, add to the bottom of the array if necessary
-validPrefixes = [
-    'bugfix',
-    'wip',
-    'qol',
-    'soundadd',
-    'sounddel',
-    'rscadd',
-    'rscdel',
-    'imageadd',
-    'imagedel',
-    'spellcheck',
-    'experiment',
-    'balance',
-    'code_imp',
-    'refactor',
-    'config',
-    'admin',
-    'server',
-    'sound',
-    'image',
-]
 
 def dictToTuples(inp):
     return [(k, v) for k, v in inp.items()]

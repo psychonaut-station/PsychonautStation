@@ -83235,7 +83235,6 @@
 /area/station/engineering/main)
 "tLY" = (
 /obj/machinery/status_display/evac/directional/south,
-/obj/machinery/lapvend,
 /obj/effect/turf_decal/tile/purple/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/science/lobby)

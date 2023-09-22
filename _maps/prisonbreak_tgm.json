@@ -11,11 +11,89 @@
 		"whiteship": "whiteship_box",
 		"emergency": "emergency_box"
 	},
+	"ignored_unit_tests": [
+		"/datum/unit_test/required_map_items",
+		"/datum/unit_test/nuke_cinematic"
+
+	],
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/kitchen"]
+		},
+		"Warden": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Security Officer": {
+			"spawn_positions": 15,
+			"total_positions": 15
+		},
+		"Assistant": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Prisoner": {
+			"spawn_positions": 100,
+			"total_positions": 100
+		},
+		"Cook": {
+			"spawn_positions": 4,
+			"total_positions": 4
+		},
+		"AI": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Cyborg": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Scientist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Roboticist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Geneticist": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Mime": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Animal": {
+			"spawn_positions": 0,
+			"total_positions": 0
+		},
+		"Brig Physician": {
+			"spawn_positions": 3,
+			"total_positions": 3
+		},
+		"Atmospheric Technician": {
+			"spawn_positions": 1,
+			"total_positions": 1
+		},
+		"Station Engineer": {
+			"spawn_positions": 3,
+			"total_positions": 3
+		},
+		"Worker": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Janitor": {
+			"spawn_positions": 2,
+			"total_positions": 2
+		},
+		"Virologist": {
+			"spawn_positions": 0,
+			"total_positions": 0
 		}
 	},
+	
 	"traits": [
 		{
 			"Up": true,

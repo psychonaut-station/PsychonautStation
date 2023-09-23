@@ -3,7 +3,7 @@
 /obj/item/announcementbeacon
 	name = "Announcement Beacon"
 	desc = "A beacon used for news and low-priority announcements."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/psychonaut/obj/device.dmi'
 	icon_state = "announcement_beacon"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'

@@ -41,17 +41,12 @@
 		return
 	window.send_message("audio/stopMusic")
 
-/datum/tgui_panel/proc/create_jukebox_player(jukebox_id)
-	if(!is_ready())
-		return
-	window.send_message("audio/jukebox/create", list("jukeboxId" = jukebox_id))
-
 /datum/tgui_panel/proc/destroy_jukebox_player(jukebox_id)
 	if(!is_ready())
 		return
 	window.send_message("audio/jukebox/destroy", list("jukeboxId" = jukebox_id))
 
-/datum/tgui_panel/proc/play_jukebox_music(jukebox_id, url, extra_data, volume)
+/datum/tgui_panel/proc/play_jukebox_music(jukebox_id, source_name, url, extra_data, volume)
 	if(!is_ready())
 		return
 	if(!findtext(url, GLOB.is_http_protocol))
@@ -61,6 +56,7 @@
 		for(var/key in extra_data)
 			payload[key] = extra_data[key]
 	payload["jukeboxId"] = jukebox_id
+	payload["sourceName"] = source_name
 	payload["url"] = url
 	payload["volume"] = volume
 	window.send_message("audio/jukebox/playMusic", payload)

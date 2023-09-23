@@ -4,8 +4,6 @@
 #define BANJUKEBOX(src, client) "(<a href='?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
 #define UNBANJUKEBOX(src, client) "(<a href='?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
 
-#define REQUEST_COOLDOWN 20 SECONDS
-
 #define check_jukebox(jukebox) !(jukebox.busy || is_playing(jukebox) || !jukebox.anchored || !jukebox.is_operational)
 #define is_playing(jukebox) (jukebox.player && jukebox.player.track && world.time - jukebox.player.track_started_at < jukebox.player.track.duration)
 #define can_mob_use(jukebox, mob) (jukebox.owner?.resolve() == mob || (jukebox.check_trait && HAS_TRAIT(mob, TRAIT_CAN_USE_JUKEBOX)))
@@ -25,11 +23,12 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/range = 16
 	var/busy = FALSE
 	var/loop = FALSE
-	var/request_cooldown = 0
+	var/request_cooldown = 20 SECONDS
+	var/last_requested_at = 0
 	var/list/queue
 	var/list/requests
 	var/datum/component/web_sound_player/player
-	var/static/regex/ytdl_regex = "" // regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
+	var/static/regex/youtubedl_regex = regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
@@ -246,13 +245,13 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 				LAZYREMOVE(queue, track)
 			return
 		if("new_request")
-			var/time_elapsed = request_cooldown != 0 ? world.time - request_cooldown : REQUEST_COOLDOWN
-			if(time_elapsed >= REQUEST_COOLDOWN)
+			var/time_elapsed = last_requested_at != 0 ? world.time - last_requested_at : request_cooldown
+			if(time_elapsed >= request_cooldown)
 				var/input = tgui_music_input("New Request")
 				if(input)
 					add_queue(usr, input, request = TRUE)
 			else
-				say("You cannot make a new request for [DisplayTimeText(REQUEST_COOLDOWN - time_elapsed)].")
+				say("You cannot make a new request for [DisplayTimeText(request_cooldown - time_elapsed)].")
 			return
 		if("approve_request")
 			var/datum/web_track/track
@@ -329,7 +328,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		return
 	var/datum/web_track/track = get_web_track(input, user.name, user.ckey)
 	if(request)
-		request_cooldown = world.time
+		last_requested_at = world.time
 	if(!check_track(track, user))
 		return
 	var/area_name = get_area_name(src, TRUE)
@@ -362,7 +361,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/proc/tgui_music_input(title)
 	var/input = tgui_input_text(usr, "Enter content URL (youtube only)", title)
 	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-		if(findtext(input, ytdl_regex))
+		if(findtext(input, youtubedl_regex))
 			return input
 		else
 			return tgui_music_input(title)
@@ -390,8 +389,6 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 #undef check_jukebox
 #undef is_playing
 #undef can_mob_use
-
-#undef REQUEST_COOLDOWN
 
 #undef STOP
 #undef REMOVEQUEUE

@@ -37,7 +37,7 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	timestamp = world.time
 	as_list = serialize()
 
-/datum/web_track/proc/renew()
+/datum/web_track/proc/update()
 	var/list/track_data = url_to_web_track(webpage_url, data_only = TRUE)
 	if(islist(track_data))
 		New(track_data["url"], track_data["title"], track_data["webpage_url"], track_data["duration"] * 10, track_data["artist"], track_data["album"], mob_name, mob_ckey)
@@ -112,8 +112,8 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	if(!istype(track))
 		return FALSE
 	if(!check_timestamp(track))
-		var/renew = track.renew()
-		if(renew != TRUE)
+		var/update = track.update()
+		if(update != TRUE)
 			stop()
 			return FALSE
 	if(is_playing(src))

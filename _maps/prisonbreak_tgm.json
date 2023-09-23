@@ -11,18 +11,13 @@
 		"whiteship": "whiteship_box",
 		"emergency": "emergency_box"
 	},
-	"ignored_unit_tests": [
-		"/datum/unit_test/required_map_items",
-		"/datum/unit_test/nuke_cinematic"
-
-	],
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/kitchen"]
 		},
 		"Warden": {
-			"spawn_positions": 2,
-			"total_positions": 2
+			"spawn_positions": 1,
+			"total_positions": 1
 		},
 		"Security Officer": {
 			"spawn_positions": 15,

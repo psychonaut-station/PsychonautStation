@@ -7,7 +7,7 @@
 /turf/open/floor/carpet/red,
 /area/shuttle/escape)
 "ac" = (
-/turf/closed/wall/mineral/silver,
+/turf/closed/indestructible/silver,
 /area/shuttle/escape)
 "ad" = (
 /turf/open/floor/iron/showroomfloor,
@@ -51,12 +51,12 @@
 /turf/open/floor/wood,
 /area/shuttle/escape)
 "bY" = (
-/turf/closed/wall/mineral/iron,
+/turf/closed/indestructible/iron,
 /area/shuttle/escape)
 "cX" = (
 /obj/structure/rack,
 /obj/machinery/light/directional/north,
-/turf/closed/wall/mineral/silver,
+/turf/closed/indestructible/silver,
 /area/shuttle/escape)
 "dv" = (
 /obj/structure/closet/crate/trashcart/filled,
@@ -99,7 +99,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/escape)
 "kL" = (
-/obj/effect/spawner/structure/window/reinforced/shuttle,
+/obj/effect/spawner/structure/window/reinforced/shuttle/indestructible,
 /turf/open/floor/plating,
 /area/shuttle/escape)
 "lz" = (
@@ -273,7 +273,7 @@
 /area/shuttle/escape)
 "Ij" = (
 /obj/item/radio/intercom/chapel,
-/turf/closed/wall/mineral/silver,
+/turf/closed/indestructible/silver,
 /area/shuttle/escape)
 "IE" = (
 /obj/effect/turf_decal/siding/blue/end{
@@ -375,7 +375,7 @@
 /turf/open/floor/iron/showroomfloor,
 /area/shuttle/escape)
 "VR" = (
-/turf/closed/wall/mineral/gold,
+/turf/closed/indestructible/gold,
 /area/shuttle/escape)
 "VV" = (
 /obj/machinery/light/directional/north,

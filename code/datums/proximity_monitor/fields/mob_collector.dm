@@ -16,8 +16,9 @@
 	recalculate_field()
 
 /datum/proximity_monitor/advanced/mob_collector/Destroy()
-	for(var/mob/mob in mobs_in_field)
-		UnregisterSignal(mob, COMSIG_QDELETING)
+	for(var/mob/mob as anything in mobs_in_field)
+		if(mob != host)
+			UnregisterSignal(mob, COMSIG_QDELETING)
 	return ..()
 
 /datum/proximity_monitor/advanced/mob_collector/recalculate_field()
@@ -31,11 +32,13 @@
 		else
 			mobs_in_field += mob
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, mob)
-			RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
+			if(mob != host)
+				RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
 	for(var/mob/mob in old_mobs)
 		if(!mobs_in_field.Find(mob))
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, mob)
-			UnregisterSignal(mob, COMSIG_QDELETING)
+			if(mob != host)
+				UnregisterSignal(mob, COMSIG_QDELETING)
 
 /datum/proximity_monitor/advanced/mob_collector/on_uncrossed(turf/source, atom/movable/gone, direction)
 	. = ..()
@@ -47,7 +50,8 @@
 			if(get_dist(mob, host) >= current_range || gone_loc.z != host_loc.z)
 				mobs_in_field -= mob
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, mob)
-				UnregisterSignal(mob, COMSIG_QDELETING)
+				if(mob != host)
+					UnregisterSignal(mob, COMSIG_QDELETING)
 			else
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_MOVED, mob)
 
@@ -58,7 +62,8 @@
 		if(!mobs_in_field.Find(mob) && get_dist(mob, host) < current_range)
 			mobs_in_field += mob
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_ENTERED, mob)
-			RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
+			if(mob != host)
+				RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
 
 /datum/proximity_monitor/advanced/mob_collector/proc/on_qdeleting(datum/source)
 	SIGNAL_HANDLER

@@ -22,13 +22,11 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/check_trait = FALSE
 	var/range = 16
 	var/busy = FALSE
-	var/loop = FALSE
 	var/request_cooldown = 20 SECONDS
 	var/last_requested_at = 0
 	var/list/queue
 	var/list/requests
 	var/datum/component/web_sound_player/player
-	var/static/regex/youtubedl_regex = regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s")
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
@@ -36,9 +34,9 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 
 	if(invoke_youtubedl)
 		player = AddComponent(/datum/component/web_sound_player, range)
+		RegisterSignal(player, COMSIG_WEB_SOUND_ENDED, PROC_REF(on_ended))
 		forceMove(loc)
 	else
-		STOP_PROCESSING(SSmachines, src)
 		update_icon_state()
 
 /obj/machinery/electrical_jukebox/Destroy()
@@ -59,7 +57,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		stop()
 		var/area_name = get_area_name(src)
 		message_admins("[admin_key_name] stopped [src] at [area_name].")
-		log_admin_private("[admin_key_name] stopped [src] at [area_name].")
+		log_admin("[admin_key_name] stopped [src] at [area_name].")
 	if(href_list["removequeue"])
 		var/datum/web_track/track
 		if(LAZYLEN(queue))
@@ -68,14 +66,14 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			var/user_key_name = key_name(track.mob_ckey, TRUE)
 			LAZYREMOVE(queue, track)
 			message_admins("[admin_key_name] removed track [track.webpage_url_html] from queue added by [user_key_name].")
-			log_admin_private("[admin_key_name] removed track [track.webpage_url_html] from queue added by [user_key_name].")
+			log_admin("[admin_key_name] removed track [track.webpage_url_html] from queue added by [user_key_name].")
 			qdel(track)
 		else
 			if(REF(player.track) == href_list["removequeue"])
 				var/user_key_name = key_name(player.track.mob_ckey, TRUE)
 				skip()
 				message_admins("[admin_key_name] removed track [player.track.webpage_url_html] added by [user_key_name] while playing.")
-				log_admin_private("[admin_key_name] removed track [player.track.webpage_url_html] added by [user_key_name] while playing.")
+				log_admin("[admin_key_name] removed track [player.track.webpage_url_html] added by [user_key_name] while playing.")
 			else
 				to_chat(usr, span_admin("The track has already removed"))
 	if(href_list["deny"])
@@ -86,7 +84,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			var/user_key_name = key_name(track.mob_ckey, TRUE)
 			LAZYREMOVE(requests, track)
 			message_admins("[admin_key_name] denied [user_key_name]'s web sound request [track.webpage_url_html].")
-			log_admin_private("[admin_key_name] denied [user_key_name]'s web sound request [track.webpage_url_html].")
+			log_admin("[admin_key_name] denied [user_key_name]'s web sound request [track.webpage_url_html].")
 		else
 			to_chat(usr, span_admin("The request has already approved/denied/discarded"))
 	if(href_list["ban"])
@@ -95,7 +93,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		if(!GLOB.jukebox_ban.Find(client))
 			GLOB.jukebox_ban += client
 			message_admins("[admin_key_name] banned [client_key_name] from using jukebox for this round. [UNBANJUKEBOX(src, client)]")
-			log_admin_private("[admin_key_name] banned [client_key_name] from using jukebox for this round.")
+			log_admin("[admin_key_name] banned [client_key_name] from using jukebox for this round.")
 		else
 			to_chat(usr, span_admin("[client_key_name] has already banned from using jukebox."))
 	if(href_list["unban"])
@@ -104,13 +102,9 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		if(GLOB.jukebox_ban.Find(client))
 			GLOB.jukebox_ban -= client
 			message_admins("[admin_key_name] unbanned [client_key_name] from using jukebox. [BANJUKEBOX(src, client)]")
-			log_admin_private("[admin_key_name] unbanned [client_key_name] from using jukebox.")
+			log_admin("[admin_key_name] unbanned [client_key_name] from using jukebox.")
 		else
 			to_chat(usr, span_admin("[client_key_name] has already unbanned from using jukebox."))
-
-/obj/machinery/electrical_jukebox/process()
-	if(player?.track && world.time - player.track_started_at > player.track.duration)
-		skip()
 
 /obj/machinery/electrical_jukebox/update_icon_state()
 	icon_state = "[initial(icon_state)][invoke_youtubedl ? is_playing(src) ? "-active" : null : "-broken"]"
@@ -149,12 +143,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/on_set_is_operational(old_value)
 	. = ..()
 	if(!is_operational)
-		if(invoke_youtubedl)
-			STOP_PROCESSING(SSmachines, src)
 		stop()
-	else
-		if(invoke_youtubedl)
-			START_PROCESSING(SSmachines, src)
 
 /obj/machinery/electrical_jukebox/ui_status(mob/user)
 	if(!invoke_youtubedl)
@@ -179,7 +168,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 		.["elapsed"] = null
 	.["active"] = is_playing(src)
 	.["busy"] = busy
-	.["loop"] = loop
+	.["loop"] = player.loop
 	.["can_mob_use"] = can_mob_use(src, user)
 	.["banned"] = GLOB.jukebox_ban.Find(user.client) ? TRUE : FALSE
 	.["user_key_name"] = key_name(user)
@@ -228,7 +217,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			skip(manually = TRUE)
 			return
 		if("loop")
-			loop = !loop
+			player.loop = !player.loop
 			return
 		if("add_queue")
 			var/input = tgui_music_input("Add to Queue")
@@ -313,15 +302,17 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	update_icon_state()
 
 /obj/machinery/electrical_jukebox/proc/skip(manually = FALSE)
-	if(loop && !manually)
-		stop()
-		play_by_track(player.last_track)
-	else
+	if(!player.loop || manually)
 		stop()
 		if(LAZYLEN(queue))
 			var/datum/web_track/track = LAZYACCESS(queue, 1)
 			play_by_track(track)
 			LAZYREMOVE(queue, track)
+
+/obj/machinery/electrical_jukebox/proc/on_ended(datum/web_track/track, loop)
+	SIGNAL_HANDLER
+	if(!loop)
+		skip()
 
 /obj/machinery/electrical_jukebox/proc/add_queue(mob/user, input, request = FALSE)
 	if(busy || !is_operational || !check_input(user, input))
@@ -361,7 +352,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/proc/tgui_music_input(title)
 	var/input = tgui_input_text(usr, "Enter content URL (youtube only)", title)
 	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-		if(findtext(input, youtubedl_regex))
+		if(findtext(input, GLOB.youtubedl_regex))
 			return input
 		else
 			return tgui_music_input(title)

@@ -58,7 +58,7 @@
 	payload["jukeboxId"] = jukebox_id
 	payload["sourceName"] = source_name
 	payload["url"] = url
-	payload["volume"] = volume
+	payload["volume"] = clamp(volume, 0, 1)
 	window.send_message("audio/jukebox/playMusic", payload)
 
 /datum/tgui_panel/proc/stop_jukebox_music(jukebox_id)
@@ -69,7 +69,7 @@
 /datum/tgui_panel/proc/set_jukebox_volume(jukebox_id, volume)
 	if(!is_ready())
 		return
-	window.send_message("audio/jukebox/setVolume", list("jukeboxId" = jukebox_id, "volume" = volume))
+	window.send_message("audio/jukebox/setVolume", list("jukeboxId" = jukebox_id, "volume" = clamp(volume, 0, 1)))
 
 /datum/tgui_panel/proc/destroy_all_jukebox()
 	if(!is_ready())

@@ -2,12 +2,20 @@
 #define SHELLEO_STDOUT 2
 #define SHELLEO_STDERR 3
 
-#define get_volume(player, atom) ((player.range - get_dist(player.parent, atom) - 0.9) / player.range)
+#define VV_HK_PLAY_URL "play_url"
+#define VV_HK_STOP "stop"
+#define VV_HK_SET_LOOP "set_loop"
+#define VV_HK_SET_RANGE "set_range"
+
+#define STOP(src) "(<a href='?src=[REF(src)];stop=1'>STOP</a>)"
+
+#define get_volume(player, atom) (player.parent != atom ? (player.range - get_dist(player.parent, atom) - 0.9) / player.range : 1)
 #define check_timestamp(track) (world.time - track.timestamp < WEB_SOUND_CACHE_DURATION)
 #define check_timestamp_list(track) (islist(track) && (world.time - track["timestamp"] < WEB_SOUND_CACHE_DURATION))
 #define is_playing(player) (player.track && world.time - player.track_started_at < player.track.duration)
 
 GLOBAL_LIST_EMPTY(web_track_cache)
+GLOBAL_VAR_INIT(youtubedl_regex, regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s"))
 
 /datum/web_track
 	var/url
@@ -42,7 +50,7 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	if(islist(track_data))
 		New(track_data["url"], track_data["title"], track_data["webpage_url"], track_data["duration"] * 10, track_data["artist"], track_data["album"], mob_name, mob_ckey)
 		return TRUE
-	return track_data
+	return FALSE
 
 /datum/web_track/proc/serialize(list/options, list/semvers)
 	. = list()
@@ -59,25 +67,36 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	.["track_id"] = REF(src)
 
 /datum/component/web_sound_player
-	dupe_mode = COMPONENT_DUPE_UNIQUE_PASSARGS
+	dupe_mode = COMPONENT_DUPE_UNIQUE
 
 	var/datum/proximity_monitor/advanced/mob_collector/proximity_monitor
+	var/datum/status_effect/status_effect
 	var/list/listeners
 	var/datum/web_track/track
 	var/datum/web_track/last_track
 	var/track_started_at = 0
+	var/loop = FALSE
 	var/source_name
 	var/player_id
 	var/range
 
-/datum/component/web_sound_player/Initialize(_range, _source_name, ...)
+/datum/component/web_sound_player/Initialize(_range = 8, _source_name, _status_effect = /datum/status_effect/good_music, ...)
 	if(!isatom(parent))
+		return COMPONENT_INCOMPATIBLE
+
+	var/atom/atom_parent = parent
+	if(!atom_parent.loc)
 		return COMPONENT_INCOMPATIBLE
 
 	if(!isnum(_range) || _range < 1)
 		return COMPONENT_INCOMPATIBLE
 
+	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_ENTERED, PROC_REF(on_mob_entered))
+	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_LEFT, PROC_REF(on_mob_left))
+	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_MOVED, PROC_REF(on_mob_moved))
+
 	proximity_monitor = new (parent, _range, FALSE, FALSE)
+	status_effect = _status_effect
 	player_id = REF(src)
 	range = _range
 
@@ -86,82 +105,144 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	else
 		source_name = "[parent]"
 
-	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_ENTERED, PROC_REF(on_mob_entered))
-	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_LEFT, PROC_REF(on_mob_left))
-	RegisterSignal(parent, COMSIG_PROXIMITY_MOB_MOVED, PROC_REF(on_mob_moved))
-
 /datum/component/web_sound_player/Destroy(force, silent)
 	track_started_at = 0
 	last_track = null
 	track = null
 
 	if(LAZYLEN(listeners))
-		for(var/mob/user as anything in listeners)
-			user.client?.tgui_panel?.destroy_jukebox_player(player_id)
+		for(var/mob/listener as anything in listeners)
+			listener.client?.tgui_panel?.destroy_jukebox_player(player_id)
 
 	QDEL_NULL(proximity_monitor)
 	UnregisterSignal(parent, list(COMSIG_PROXIMITY_MOB_ENTERED, COMSIG_PROXIMITY_MOB_LEFT, COMSIG_PROXIMITY_MOB_MOVED))
+	STOP_PROCESSING(SSprocessing, src)
 
 	return ..()
 
-/datum/component/web_sound_player/InheritComponent(datum/component/C, i_am_original)
-	var/datum/component/web_sound_player/new_component = C
-	proximity_monitor.set_range(new_component.range)
+/datum/component/web_sound_player/process(seconds_per_tick)
+	if(status_effect && is_playing(src))
+		if(LAZYLEN(listeners))
+			for(var/mob/living/listener in listeners)
+				listener.apply_status_effect(status_effect)
+
+	if(track && world.time - track_started_at > track.duration)
+		stop()
+		SEND_SIGNAL(src, COMSIG_WEB_SOUND_ENDED, track, loop)
+		if(loop)
+			play(last_track)
+
+	if(!is_playing(src))
+		STOP_PROCESSING(SSprocessing, src)
+
+/datum/component/web_sound_player/Topic(href, list/href_list)
+	. = ..()
+	if(href_list["stop"])
+		if(stop())
+			var/atom/atom_parent = parent
+			var/area_name = get_area_name(atom_parent, TRUE)
+			log_admin("[key_name(usr)] stopped [atom_parent] playing web sound at [area_name].")
+			message_admins("[key_name(usr, TRUE)] stopped [atom_parent] playing web sound at [area_name].")
+
+/datum/component/web_sound_player/vv_get_dropdown()
+	. = ..()
+	VV_DROPDOWN_OPTION("", "---------")
+	VV_DROPDOWN_OPTION(VV_HK_PLAY_URL, "Play URL")
+	VV_DROPDOWN_OPTION(VV_HK_STOP, "Stop")
+	VV_DROPDOWN_OPTION(VV_HK_SET_LOOP, "Set Loop")
+	VV_DROPDOWN_OPTION(VV_HK_SET_RANGE, "Set Range")
+
+/datum/component/web_sound_player/vv_do_topic(list/href_list)
+	. = ..()
+	if(href_list[VV_HK_PLAY_URL])
+		var/url = input(usr, "Enter content URL (youtube only)", "Play URL") as text|null
+		if(length(url) && play_url(url))
+			var/atom/atom_parent = parent
+			var/area_name = get_area_name(atom_parent, TRUE)
+			log_admin("[key_name(usr)] played web sound [track.webpage_url] on [atom_parent] at [area_name]")
+			message_admins("[key_name(usr, TRUE)] played web sound [track.webpage_url_html] on [atom_parent] at [area_name]. [ADMIN_QUE(usr)] [ADMIN_JMP(atom_parent)] [STOP(src)]")
+	if(href_list[VV_HK_STOP])
+		if(stop())
+			var/atom/atom_parent = parent
+			var/area_name = get_area_name(atom_parent, TRUE)
+			log_admin("[key_name(usr)] stopped [atom_parent] playing web sound at [area_name].")
+			message_admins("[key_name(usr, TRUE)] stopped [atom_parent] playing web sound at [area_name].")
+	if(href_list[VV_HK_SET_LOOP])
+		var/_loop = input(usr, "1 for true, 0 for false", "Set Loop", loop) as num|null
+		if(_loop == 1)
+			loop = TRUE
+		else if(_loop == 0)
+			loop = FALSE
+	if(href_list[VV_HK_SET_RANGE])
+		var/_range = input(usr, "1 is minimum", "Set Range", range) as num|null
+		if(_range >= 1 && _range != range)
+			set_range(_range)
 
 /datum/component/web_sound_player/proc/play(datum/web_track/track)
 	if(!istype(track))
 		return FALSE
 	if(!check_timestamp(track))
 		var/update = track.update()
-		if(update != TRUE)
+		if(!update)
 			stop()
 			return FALSE
-	if(is_playing(src))
-		stop()
+	stop()
 	src.track = track
 	track_started_at = world.time
-	for(var/mob/user as anything in listeners)
-		if(user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-			user.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, track.as_list, get_volume(src, user))
+	START_PROCESSING(SSprocessing, src)
+	SEND_SIGNAL(src, COMSIG_WEB_SOUND_STARTED, track)
+	for(var/mob/listener as anything in listeners)
+		if(listener.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+			listener.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, track.as_list, get_volume(src, listener))
 	return TRUE
 
 /datum/component/web_sound_player/proc/play_url(url)
 	var/datum/web_track/_track = url_to_web_track(url)
 	if(istype(_track))
-		play(_track)
-		return TRUE
+		return play(_track)
 	return FALSE
 
 /datum/component/web_sound_player/proc/stop()
-	track_started_at = 0
-	last_track = track
-	track = null
-	for(var/mob/user as anything in listeners)
-		user.client?.tgui_panel?.stop_jukebox_music(player_id)
+	if(track)
+		track_started_at = 0
+		last_track = track
+		track = null
+		STOP_PROCESSING(SSprocessing, src)
+		SEND_SIGNAL(src, COMSIG_WEB_SOUND_STOPPED, track)
+		for(var/mob/listener as anything in listeners)
+			listener.client?.tgui_panel?.stop_jukebox_music(player_id)
+		return TRUE
+	return FALSE
 
-/datum/component/web_sound_player/proc/on_mob_entered(datum/source, mob/user)
+/datum/component/web_sound_player/proc/set_range(_range, force_rebuild = FALSE)
+	if(!force_rebuild && _range == range)
+		return
+	range = _range
+	proximity_monitor.set_range(_range, force_rebuild)
+
+/datum/component/web_sound_player/proc/on_mob_entered(datum/source, mob/mob)
 	SIGNAL_HANDLER
-	if(user.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-		if(!LAZYFIND(listeners, user))
-			LAZYADD(listeners, user)
+	if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+		if(!LAZYFIND(listeners, mob))
+			LAZYADD(listeners, mob)
 		if(is_playing(src))
 			var/list/options = track.as_list.Copy()
 			options["start"] = (world.time - track_started_at) / 10
-			user.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, user))
-	RegisterSignal(user, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
+			mob.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, mob))
+	RegisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
 
-/datum/component/web_sound_player/proc/on_mob_left(datum/source, mob/user)
+/datum/component/web_sound_player/proc/on_mob_left(datum/source, mob/mob)
 	SIGNAL_HANDLER
-	if(LAZYFIND(listeners, user))
-		LAZYREMOVE(listeners, user)
-		var/client/client = user.client || GLOB.directory[ckey(user.mind?.key)]
+	if(LAZYFIND(listeners, mob))
+		LAZYREMOVE(listeners, mob)
+		var/client/client = mob.client || GLOB.directory[ckey(mob.mind?.key)]
 		client?.tgui_panel?.destroy_jukebox_player(player_id)
-	UnregisterSignal(user, COMSIG_MOB_CLIENT_LOGIN)
+	UnregisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN)
 
-/datum/component/web_sound_player/proc/on_mob_moved(datum/source, mob/user)
+/datum/component/web_sound_player/proc/on_mob_moved(datum/source, mob/mob)
 	SIGNAL_HANDLER
-	if(is_playing(src) && LAZYFIND(listeners, user))
-		user.client?.tgui_panel?.set_jukebox_volume(player_id, get_volume(src, user))
+	if(is_playing(src) && LAZYFIND(listeners, mob))
+		mob.client?.tgui_panel?.set_jukebox_volume(player_id, get_volume(src, mob))
 
 /datum/component/web_sound_player/proc/on_mob_login(mob/source, client/client)
 	SIGNAL_HANDLER
@@ -178,6 +259,9 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 
 	if(!invoke_youtubedl)
 		return WEB_SOUND_ERR_YTDL_NOT_CONFIGURED
+
+	if(!findtext(url, GLOB.youtubedl_regex))
+		return WEB_SOUND_ERR_INVALID_URL
 
 	var/list/track_data
 	var/list/cached_track_data = GLOB.web_track_cache[url]
@@ -246,6 +330,13 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 #undef check_timestamp
 #undef check_timestamp_list
 #undef is_playing
+
+#undef STOP
+
+#undef VV_HK_PLAY_URL
+#undef VV_HK_STOP
+#undef VV_HK_SET_LOOP
+#undef VV_HK_SET_RANGE
 
 #undef SHELLEO_ERRORLEVEL
 #undef SHELLEO_STDOUT

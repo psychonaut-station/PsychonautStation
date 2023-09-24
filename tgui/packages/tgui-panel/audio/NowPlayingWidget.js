@@ -94,6 +94,7 @@ export const NowPlayingWidget = (props, context) => {
               artist = audio.jukebox[jukeboxId]?.artist,
               album = audio.jukebox[jukeboxId]?.album,
               duration = audio.jukebox[jukeboxId]?.duration,
+              source = audio.jukebox[jukeboxId]?.sourceName,
               muted = audio.muted.includes(jukeboxId);
 
             return (
@@ -127,6 +128,9 @@ export const NowPlayingWidget = (props, context) => {
                                 Album: {album}
                               </Flex.Item>
                             )}
+                            <Flex.Item grow={1} color="label">
+                              Source: {source}
+                            </Flex.Item>
                           </Section>
                         </Collapsible>
                       </Flex.Item>

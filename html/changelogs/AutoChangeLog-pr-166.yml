@@ -1,0 +1,8 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Bazı durumlarda jukebox susması gerekmesine rağmen susmuyordu"
+  - bugfix: "Bir şeyin içine girildiğinde (locker vb.) jukebox durmak yerine çalmaya devam edecek"
+  - balance: "Barmenler her jukebox'ı kullanabilirken artık sonradan çağırılanları sadece çağıran kullanabilecek"
+  - refactor: "Jukebox'ın sıkışık kodu 'web_sound_player' componenti olarak ayrıldı"
+  - admin: "Jukebox admin logu daha az rahatsız edicek."

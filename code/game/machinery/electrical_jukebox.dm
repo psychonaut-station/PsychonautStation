@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/proc/on_ended(datum/web_track/track, loop)
 	SIGNAL_HANDLER
 	if(!loop)
-		skip()
+		INVOKE_ASYNC(src, PROC_REF(skip))
 
 /obj/machinery/electrical_jukebox/proc/add_queue(mob/user, input, request = FALSE)
 	if(busy || !is_operational || !check_input(user, input))

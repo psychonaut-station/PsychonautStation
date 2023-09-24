@@ -1,0 +1,5 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - balance: "Cami shuttleının duvarları artık kırılamaz olucak."
+  - bugfix: "Tgmc ruinindeki duplicate apcler düzeltildi ve ceset remain ile değiştirildi."

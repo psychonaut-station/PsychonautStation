@@ -815,3 +815,17 @@
   mc-oofert:
   - bugfix: clown bomb payload is no longer named badmin payload and no longer disperses
       clowns in cardinal directions only
+2023-09-25:
+  Seefaaa:
+  - bugfix: "Baz\u0131 durumlarda jukebox susmas\u0131 gerekmesine ra\u011Fmen susmuyordu"
+  - bugfix: "Bir \u015Feyin i\xE7ine girildi\u011Finde (locker vb.) jukebox durmak\
+      \ yerine \xE7almaya devam edecek"
+  - balance: "Barmenler her jukebox'\u0131 kullanabilirken art\u0131k sonradan \xE7\
+      a\u011F\u0131r\u0131lanlar\u0131 sadece \xE7a\u011F\u0131ran kullanabilecek"
+  - refactor: "Jukebox'\u0131n s\u0131k\u0131\u015F\u0131k kodu 'web_sound_player'\
+      \ componenti olarak ayr\u0131ld\u0131"
+  - admin: "Jukebox admin logu daha az rahats\u0131z edicek."
+  - balance: "Cami shuttle\u0131n\u0131n duvarlar\u0131 art\u0131k k\u0131r\u0131\
+      lamaz olucak."
+  - bugfix: "Tgmc ruinindeki duplicate apcler d\xFCzeltildi ve ceset remain ile de\u011F\
+      i\u015Ftirildi."

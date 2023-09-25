@@ -24,11 +24,11 @@
 	deactive_msg = "You relax, the peel remaining right in the \"thin air\" it would appear out of."
 	cast_range = 8
 
-/datum/action/cooldown/spell/pointed/banana_peel/InterceptClickOn(mob/living/caller, params, atom/click_target)
+/datum/action/cooldown/spell/pointed/banana_peel/InterceptClickOn(mob/living/caller, params, atom/target)
 	. = ..()
-	var/target = get_turf(click_target)
-	if(get_dist(caller,target)>cast_range)
-		to_chat(caller, "<span class='notice'>\ Target is too far away!</span>")
+	var/target = get_turf(target)
+	if(get_dist(caller, target) > cast_range)
+		caller.balloon_alert(caller, "too far away!")
 		return
 	new /obj/item/grown/bananapeel(target)
 

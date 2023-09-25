@@ -957,13 +957,11 @@
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 	var/obj/item/bodypart/bodypart = get_bodypart(overlay.attached_body_zone)
 	var/obj/item/organ/external/ipchead/ipcscreen = get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
-	var/datum/bodypart_overlay/simple/ipcscreen/oldoverlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
 	if(!bodypart)
 		return null
 	if(!ipcscreen)
 		return null
-	if(oldoverlay)
-		bodypart.remove_bodypart_overlay(oldoverlay)
+	remove_ipcscreen_overlay()
 	bodypart.add_bodypart_overlay(overlay)
 	update_body_parts()
 	return overlay

@@ -278,4 +278,3 @@
 	contains = list(/obj/item/electrical_jukebox_beacon)
 	crate_name =  "electrical jukebox crate"
 	dangerous = TRUE
-	// delivery_limit = 3

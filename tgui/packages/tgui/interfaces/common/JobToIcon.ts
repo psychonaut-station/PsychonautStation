@@ -1,9 +1,13 @@
+export type AvailableJob = keyof typeof JOB2ICON;
+
 /** Icon map of jobs to their fontawesome5 (free) counterpart. */
 export const JOB2ICON = {
   'AI': 'eye',
   'Assistant': 'toolbox',
   'Atmospheric Technician': 'fan',
   'Bartender': 'cocktail',
+  'Bit Avatar': 'code',
+  'Bitrunner': 'gamepad',
   'Botanist': 'seedling',
   'Brig Physician': 'circle-plus',
   'Captain': 'crown',
@@ -17,10 +21,11 @@ export const JOB2ICON = {
   'Chemist': 'prescription-bottle',
   'Chief Engineer': 'user-astronaut',
   'Chief Medical Officer': 'user-md',
-  'Coroner': 'skull',
   'Clown': 'face-grin-tears',
   'Cook': 'utensils',
+  'Coroner': 'skull',
   'Curator': 'book',
+  'Cyber Police': 'qrcode',
   'Cyborg': 'robot',
   'Detective': 'user-secret',
   'Geneticist': 'dna',
@@ -53,5 +58,3 @@ export const JOB2ICON = {
   'Warden': 'handcuffs',
   'Worker': 'screwdriver-wrench',
 } as const;
-
-export type AvailableJob = keyof typeof JOB2ICON;

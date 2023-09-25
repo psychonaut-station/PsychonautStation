@@ -28,7 +28,7 @@ type TrackData = {
   mob_name: string;
   mob_ckey: string;
   mob_key_name: string;
-  id: string;
+  track_id: string;
 };
 
 export const ElectricalJukebox = () => {
@@ -171,7 +171,7 @@ const QueueDisplay = (props, context) => {
       }>
       <Table>
         {queue.map((track) => (
-          <QueueRow key={track.id} track={track} />
+          <QueueRow key={track.track_id} track={track} />
         ))}
       </Table>
     </Section>
@@ -210,7 +210,7 @@ const RequestsDisplay = (props, context) => {
       {requests.length > 0 ? (
         <Table>
           {requests.map((track) => (
-            <RequestRow key={track.id} track={track} />
+            <RequestRow key={track.track_id} track={track} />
           ))}
         </Table>
       ) : (
@@ -226,7 +226,7 @@ const QueueRow = (props: { track: TrackData }, context) => {
   const { can_mob_use, banned } = data;
 
   return (
-    <Table.Row key={track.id} my={1}>
+    <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
       <Table.Cell collaping>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
@@ -239,7 +239,7 @@ const QueueRow = (props: { track: TrackData }, context) => {
           disabled={!can_mob_use || banned}
           onClick={() => {
             act('remove_queue', {
-              id: track.id,
+              track_id: track.track_id,
             });
           }}
         />
@@ -254,7 +254,7 @@ const RequestRow = (props: { track: TrackData }, context) => {
   const { can_mob_use, user_key_name, banned } = data;
 
   return (
-    <Table.Row key={track.id} my={1}>
+    <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
       <Table.Cell collaping>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
@@ -267,7 +267,7 @@ const RequestRow = (props: { track: TrackData }, context) => {
             textAlign="center"
             onClick={() => {
               act('approve_request', {
-                id: track.id,
+                track_id: track.track_id,
               });
             }}
           />
@@ -283,7 +283,7 @@ const RequestRow = (props: { track: TrackData }, context) => {
           }
           onClick={() => {
             act('discard_request', {
-              id: track.id,
+              track_id: track.track_id,
             });
           }}
         />

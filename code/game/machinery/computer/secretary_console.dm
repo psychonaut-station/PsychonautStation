@@ -4,6 +4,7 @@
 /obj/machinery/computer/secretary_console
 	name = "secretary console"
 	desc = "A console for communicating with central command."
+	icon_file_screen = 'icons/psychonaut/obj/machines/computer.dmi'
 	icon_screen = "secretary_console"
 	icon_keyboard = "rd_key"
 	circuit = /obj/item/circuitboard/computer/secretary_console

@@ -14,6 +14,7 @@
 	/// Should we render an unique icon for the keyboard when off?
 	var/keyboard_change_icon = TRUE
 	/// Icon_state of the emissive screen overlay.
+	var/icon_file_screen
 	var/icon_screen = "generic"
 	/// Time it takes to deconstruct with a screwdriver.
 	var/time_to_unscrew = 2 SECONDS
@@ -50,8 +51,8 @@
 
 	// This lets screens ignore lighting and be visible even in the darkest room
 	if(icon_screen)
-		. += mutable_appearance(icon, icon_screen)
-		. += emissive_appearance(icon, icon_screen, src)
+		. += mutable_appearance(icon_file_screen || icon, icon_screen)
+		. += emissive_appearance(icon_file_screen || icon, icon_screen, src)
 
 /obj/machinery/computer/power_change()
 	. = ..()

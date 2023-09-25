@@ -733,6 +733,7 @@
 
 /datum/id_trim/job/nt_secretary
 	assignment = "Nt Secretary"
+	trim_icon = 'icons/psychonaut/obj/card.dmi'
 	trim_state = "trim_secretary"
 	department_color = COLOR_SECRETARY
 	subdepartment_color = COLOR_SECRETARY
@@ -987,6 +988,7 @@
 
 /datum/id_trim/job/brig_physician
 	assignment = "Brig Physician"
+	trim_icon = 'icons/psychonaut/obj/card.dmi'
 	trim_state = "trim_brig_physician"
 	department_color = COLOR_SECURITY_RED
 	subdepartment_color = COLOR_SECURITY_RED
@@ -1197,6 +1199,7 @@
 
 /datum/id_trim/job/worker
 	assignment = "Worker"
+	trim_icon = 'icons/psychonaut/obj/card.dmi'
 	trim_state = "trim_worker"
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE

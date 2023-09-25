@@ -26,11 +26,11 @@
 
 /datum/action/cooldown/spell/pointed/banana_peel/InterceptClickOn(mob/living/caller, params, atom/target)
 	. = ..()
-	var/target = get_turf(target)
-	if(get_dist(caller, target) > cast_range)
+	var/target_turf = get_turf(target)
+	if(get_dist(caller, target_turf) > cast_range)
 		caller.balloon_alert(caller, "too far away!")
 		return
-	new /obj/item/grown/bananapeel(target)
+	new /obj/item/grown/bananapeel(target_turf)
 
 /datum/action/cooldown/spell/pointed/banana_peel/can_cast_spell(feedback = FALSE)
 	return TRUE

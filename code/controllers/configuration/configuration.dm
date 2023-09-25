@@ -480,7 +480,7 @@ Example config:
 	if (isnull(banned_words) || banned_words.len == 0)
 		return null
 
-	var/word_bounds = @"((?<!\pL)(" + jointext(banned_words, "|") + @")(?!\pL))"
+	var/word_bounds = @"((?<!\\pL)(" + jointext(banned_words, "|") + @")(?!\\pL))"
 	return regex(word_bounds, "i")
 
 /// Check to ensure that the jobconfig is valid/in-date.

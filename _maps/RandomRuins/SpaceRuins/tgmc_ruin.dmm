@@ -178,9 +178,14 @@
 /turf/open/space/basic,
 /area/ruin/space)
 "pN" = (
-/obj/effect/mob_spawn/corpse/human/commander{
-	mob_name = "Husnu Tgmcogullari";
-	outfit = /datum/outfit/centcom/ert/marine
+/obj/effect/decal/remains/human{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/paper/crumpled/bloody{
+	pixel_x = 10;
+	pixel_y = -10;
+	default_raw_text = "Ben komutan Husnu tgmcogullari. Görevimiz kargomuzu deneysel koloni Zeta'ya ulastirmakti ancak davetsiz bir misafir gemiye binmis. Tüm mürettebat öldü tek basima kendimi buraya kitleyip kapilari barikatla kapattim. Ancak içeri bir larva girdi ve beni isirdi anlasilan burada ölecegim ama o küçük piçte ölecek her neyse bu notu burada bitiriyorum umarim bunu bir kurtarma ekibi bulur."
 	},
 /turf/open/floor/iron/tgmcemblem{
 	dir = 5
@@ -196,12 +201,6 @@
 /obj/structure/alien/weeds,
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating,
-/area/ruin/space)
-"qu" = (
-/obj/item/paper{
-	default_raw_text = "Ben komutan Husnu tgmcogullari. Görevimiz kargomuzu deneysel koloni Zeta'ya ulastirmakti ancak davetsiz bir misafir gemiye binmis. Tüm mürettebat öldü tek basima kendimi buraya kitleyip kapilari barikatla kapattim. Ancak içeri bir larva girdi ve beni isirdi anlasilan burada ölecegim ama o küçük piçte ölecek her neyse bu notu burada bitiriyorum umarim bunu bir kurtarma ekibi bulur."
-	},
-/turf/open/floor/pod/dark,
 /area/ruin/space)
 "qB" = (
 /obj/structure/closet/crate/secure/weapon,
@@ -397,12 +396,6 @@
 "In" = (
 /turf/open/floor/iron/dark,
 /area/ruin/space)
-"IP" = (
-/obj/machinery/power/apc/auto_name/directional/west,
-/obj/structure/cable,
-/obj/structure/alien/weeds,
-/turf/open/floor/plating,
-/area/ruin/space)
 "JE" = (
 /mob/living/simple_animal/hostile/alien{
 	faction = list("syndicate","xenomorph")
@@ -429,7 +422,6 @@
 /turf/open/floor/plating,
 /area/ruin/space)
 "LX" = (
-/obj/machinery/power/apc/auto_name/directional/west,
 /obj/structure/cable,
 /obj/structure/rack,
 /obj/item/clothing/head/helmet/marine{
@@ -665,7 +657,7 @@ uc
 uc
 dx
 qW
-qu
+qW
 EA
 cm
 eQ
@@ -811,7 +803,7 @@ lw
 qJ
 OX
 Ut
-IP
+kR
 kR
 hg
 mH

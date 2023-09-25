@@ -78,15 +78,6 @@ export const audioReducer = (state = initialState, action) => {
       },
     };
   }
-  if (type === 'audio/jukebox/create') {
-    return {
-      ...state,
-      jukebox: {
-        ...state.jukebox,
-        [payload.jukeboxId]: null,
-      },
-    };
-  }
   if (type === 'audio/jukebox/destroy') {
     const jukebox = { ...state.jukebox };
     delete jukebox[payload.jukeboxId];

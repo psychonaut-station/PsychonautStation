@@ -39,23 +39,6 @@ export const audioMiddleware = (store) => {
       }
       return next(action);
     }
-    if (type === 'audio/jukebox/create') {
-      if (!jukeboxPlayers[payload.jukeboxId]) {
-        const audio = selectAudio(store.getState());
-        const player = new AudioPlayer();
-        jukeboxPlayers[payload.jukeboxId] = player;
-        player.muted = audio.muted.includes(payload.jukeboxId);
-        player.setVolume(adminMusicVolume);
-        player.onPlay(() => store.dispatch({ type: 'audio/jukebox/playing' }));
-        player.onStop(() =>
-          store.dispatch({
-            type: 'audio/jukebox/stopped',
-            payload: { jukeboxId: payload.jukeboxId },
-          })
-        );
-      }
-      return next(action);
-    }
     if (type === 'audio/jukebox/destroy') {
       jukeboxPlayers[payload.jukeboxId]?.destroy();
       delete jukeboxPlayers[payload.jukeboxId];

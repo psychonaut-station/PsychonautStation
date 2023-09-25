@@ -481,7 +481,7 @@ Example config:
 		return null
 
 	// Check for Wide Char words
-	var/word_bounds = @"((?<!\pL)(" + jointext(banned_words, "|") + @")(?!\pL))?/u"
+	var/word_bounds = @"((?<!\pL)(" + jointext(banned_words, "|") + @")(?!\pL))?/ug"
 	return regex(word_bounds, "i")
 
 /// Check to ensure that the jobconfig is valid/in-date.

@@ -867,6 +867,19 @@
   - bugfix: Fixes grounding rods lying about potential power you can generate.
   - code_imp: Convert supermatter_zap() and tesla_zap() zap_str argument unit to be
       in joules, and scales everything that uses that argument.
+  Seefaaa:
+  - bugfix: "Baz\u0131 durumlarda jukebox susmas\u0131 gerekmesine ra\u011Fmen susmuyordu"
+  - bugfix: "Bir \u015Feyin i\xE7ine girildi\u011Finde (locker vb.) jukebox durmak\
+      \ yerine \xE7almaya devam edecek"
+  - balance: "Barmenler her jukebox'\u0131 kullanabilirken art\u0131k sonradan \xE7\
+      a\u011F\u0131r\u0131lanlar\u0131 sadece \xE7a\u011F\u0131ran kullanabilecek"
+  - refactor: "Jukebox'\u0131n s\u0131k\u0131\u015F\u0131k kodu 'web_sound_player'\
+      \ componenti olarak ayr\u0131ld\u0131"
+  - admin: "Jukebox admin logu daha az rahats\u0131z edicek."
+  - balance: "Cami shuttle\u0131n\u0131n duvarlar\u0131 art\u0131k k\u0131r\u0131\
+      lamaz olucak."
+  - bugfix: "Tgmc ruinindeki duplicate apcler d\xFCzeltildi ve ceset remain ile de\u011F\
+      i\u015Ftirildi."
   Singul0:
   - bugfix: Syndicate Modsuit AI's now downloads the current codespeak book upon being
       downloaded.
@@ -894,45 +907,3 @@
       to happen, Adding a downside to pure Ephedrine
   timothymtorres:
   - bugfix: Fix secret documents steal objective failing while inside folder.
-2023-09-23:
-  ArcaneMusic:
-  - bugfix: Conveyor belts now properly show their new screentips on mouseover with
-      tools.
-  Ben10Omintrix:
-  - refactor: seedlings have been refactored into basic mobs please report any bugs
-  - rscadd: seedlings now can have different colored petals and can look after botanys
-      plants
-  - rscadd: seedlings are re-added to the game! they grow out of seedling seeds obtainable
-      from exotic seed crates or traitor uplink
-  GPeckman:
-  - admin: Boneless smite should work properly again.
-  Shadow-Quill:
-  - rscadd: The Message Monitor console's board can now be obtained via the telecoms
-      research node.
-  distributivgesetz, CoiledLamb:
-  - rscadd: 'Added two new awards specifically for engineering and medical: The "Emergency
-      Services Award" and the "Atmospheric Mastery Award". CEs get 3 Emergency Services
-      Awards and 1 Atmospheric Mastery Award and CMOs get 3 Emergency Services Awards.'
-  lizardqueenlexi:
-  - bugfix: Foods that have special conditions for liking/disliking them (such as
-      donuts for sec officers) have these conditions again.
-  - bugfix: Characters with ageusia properly ignore non-toxic food types that they
-      eat.
-  - bugfix: If you examine toxic food, it can no longer appear to you as edible.
-  mc-oofert:
-  - bugfix: clown bomb payload is no longer named badmin payload and no longer disperses
-      clowns in cardinal directions only
-2023-09-25:
-  Seefaaa:
-  - bugfix: "Baz\u0131 durumlarda jukebox susmas\u0131 gerekmesine ra\u011Fmen susmuyordu"
-  - bugfix: "Bir \u015Feyin i\xE7ine girildi\u011Finde (locker vb.) jukebox durmak\
-      \ yerine \xE7almaya devam edecek"
-  - balance: "Barmenler her jukebox'\u0131 kullanabilirken art\u0131k sonradan \xE7\
-      a\u011F\u0131r\u0131lanlar\u0131 sadece \xE7a\u011F\u0131ran kullanabilecek"
-  - refactor: "Jukebox'\u0131n s\u0131k\u0131\u015F\u0131k kodu 'web_sound_player'\
-      \ componenti olarak ayr\u0131ld\u0131"
-  - admin: "Jukebox admin logu daha az rahats\u0131z edicek."
-  - balance: "Cami shuttle\u0131n\u0131n duvarlar\u0131 art\u0131k k\u0131r\u0131\
-      lamaz olucak."
-  - bugfix: "Tgmc ruinindeki duplicate apcler d\xFCzeltildi ve ceset remain ile de\u011F\
-      i\u015Ftirildi."

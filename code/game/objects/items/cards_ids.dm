@@ -1151,6 +1151,7 @@
 /obj/item/card/id/advanced/white
 	name = "white identification card"
 	desc = "impressive, very nice."
+	icon = 'icons/psychonaut/obj/card.dmi'
 	icon_state = "card_white"
 	assigned_icon_state = "assigned_white"
 	wildcard_slots = WILDCARD_LIMIT_SILVER
@@ -1158,7 +1159,7 @@
 /obj/item/card/id/advanced/white/Initialize(mapload)
 	. = ..()
 	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
-	
+
 /obj/item/card/id/advanced/centcom/ert/militia
 	registered_name = "Frontier Militia"
 	trim = /datum/id_trim/centcom/ert/militia

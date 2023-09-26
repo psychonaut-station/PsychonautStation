@@ -907,3 +907,32 @@
       to happen, Adding a downside to pure Ephedrine
   timothymtorres:
   - bugfix: Fix secret documents steal objective failing while inside folder.
+2023-09-26:
+  GPeckman:
+  - bugfix: Intellicards in computers are no longer deleted when the computer is destroyed.
+  - bugfix: Modular consoles can now be deconstructed by right clicking with a wrench.
+  LT3:
+  - admin: Successful restart votes will now restart on the current map
+  - code_imp: End round and persistence data will be saved before executing successful
+      restart vote
+  - spellcheck: Improved wording in greyscale JSON error message
+  Rhials:
+  - bugfix: '"Spooky" meteors will now properly spawn during halloween.'
+  Singul0:
+  - rscadd: Adds an advanced plastic surgery procedure, allowing you to imitate people
+      in pictures. Simply hold a picture in your offhand of the person you wish to
+      imitate as while conducting the surgery! Remember, it's not foolproof, it only
+      changes your name and voice!
+  - rscadd: You can obtain the disk containing the afromentioned surgery. as a role-restricted
+      item to doctors and roboticists for 1TC, as a rare maint loot and BEPIS technode
+      reward
+  Timberpoes:
+  - bugfix: Centcom now rejects contraband that somehow makes it way onto the cargo
+      shuttle mid-transit and returns it.
+  Vincent983:
+  - image: the security records suspected status is now teal instead of orange
+  cko1:
+  - bugfix: "Mesaj balonlar\u0131ndaki T\xFCrk\xE7e karakterler bulan\u0131k g\xF6\
+      z\xFCkmeyecek."
+  xPokee:
+  - image: adds a frog holoform for pAIs

@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Brig Physician, Worker, Nt Secretary id trimleri düzgün gözükecek."

@@ -35,9 +35,18 @@
 		new /obj/effect/decal/cleanable/oil(owner.loc)
 	if(owner)
 		var/partdamage = get_damage()
+		var/mob/living/carbon/oldowner = owner
+		var/brutedam = brute_dam / 2
+		var/burndam = burn_dam / 2
 		if(75 <= partdamage)
 			if(prob(50))
-				return drop_limb()
+				drop_limb()
+				while(brutedam > 5 && burndam > 5)
+					var/bdprt = pick(BODY_ZONE_CHEST,BODY_ZONE_L_ARM,BODY_ZONE_R_ARM,BODY_ZONE_L_LEG,BODY_ZONE_R_LEG)
+					oldowner.apply_damages(brute = 5, burn = 5, def_zone = bdprt)
+					brutedam -= 5
+					burndam -= 5
+				return
 
 /obj/item/bodypart/head/ipc/emp_act(severity)
 	. = ..()

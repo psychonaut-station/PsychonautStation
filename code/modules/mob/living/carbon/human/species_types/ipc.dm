@@ -13,7 +13,6 @@
 		TRAIT_PIERCEIMMUNE,
 		TRAIT_RADIMMUNE,
 		TRAIT_TOXIMMUNE,
-		TRAIT_NOBLOOD,
 		TRAIT_NO_DNA_COPY,
 		TRAIT_NO_TRANSFORMATION_STING,
 		TRAIT_XENO_IMMUNE,
@@ -24,6 +23,8 @@
 	ass_image = 'icons/ass/assmachine.png'
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID
 	meat = null
+	exotic_blood = /datum/reagent/fuel/oil
+	exotic_bloodtype = "LPG"
 	gibspawner = /obj/effect/gibspawner/robot/android
 	decalremains = /obj/effect/decal/remains/robot
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain

@@ -81,7 +81,7 @@
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
 	C.gib_type = /obj/effect/decal/cleanable/robot_debris
-	update_mail_goodies(new_ipc)
+	update_mail_goodies(C)
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()
@@ -131,7 +131,7 @@
 	var/datum/sprite_accessory/ipc_chassis/randomizedchassis
 	for(var/datum/sprite_accessory/ipc_chassis/chassis in GLOB.ipc_chassis_list)
 		if(chassis.icon_state == randomizedtv.icon_state)
-			randomizedchassis = chasis
+			randomizedchassis = chassis
 	human_mob.dna.features["ipc_monitor"] = randomizedtv
 	human_mob.dna.features["ipc_chassis"] = randomizedchassis
 	randomize_external_organs(human_mob)

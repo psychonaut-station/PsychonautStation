@@ -968,6 +968,8 @@
 
 /mob/living/carbon/human/proc/remove_ipcscreen_overlay()
 	var/obj/item/bodypart/bodypart = get_bodypart(BODY_ZONE_HEAD)
+	if(!bodypart)
+		return
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
 	if(overlay)
 		bodypart.remove_bodypart_overlay(overlay)

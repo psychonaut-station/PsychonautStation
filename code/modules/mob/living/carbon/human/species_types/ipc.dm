@@ -118,8 +118,13 @@
 			BP.update_limb()
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["ipc_monitor"] = pick(GLOB.ipc_monitor_list)
-	human_mob.dna.features["ipc_chassis"] = pick(GLOB.ipc_chassis_list)
+	var/datum/sprite_accessory/ipc_monitor/randomizedtv = pick(GLOB.ipc_monitor_list)
+	var/datum/sprite_accessory/ipc_chassis/randomizedchassis
+	for(var/datum/sprite_accessory/ipc_chassis/chassis in GLOB.ipc_chassis_list)
+		if(chassis.icon_state == randomizedtv.icon_state)
+			randomizedchassis = chasis
+	human_mob.dna.features["ipc_monitor"] = randomizedtv
+	human_mob.dna.features["ipc_chassis"] = randomizedchassis
 	randomize_external_organs(human_mob)
 
 /datum/species/ipc/get_species_description()

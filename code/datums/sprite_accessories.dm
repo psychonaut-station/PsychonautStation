@@ -2136,10 +2136,6 @@
 	name = "Bishop Cyberkinetics 2.0"
 	icon_state = "bs2ipc"
 
-/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics
-	name = "Bishop Cyberkinetics"
-	icon_state = "bshipc"
-
 /datum/sprite_accessory/ipc_monitor/hephaestussindustries
 	name = "Hephaestus Industries"
 	icon_state = "hsiipc"

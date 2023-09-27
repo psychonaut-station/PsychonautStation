@@ -54,6 +54,14 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
 
+/datum/species/ipc/update_quirk_mail_goodies(mob/living/carbon/human/recipient, datum/quirk/quirk, list/mail_goodies = list())
+	if(istype(quirk, /datum/quirk/blooddeficiency))
+		mail_goodies += list(
+			/obj/item/reagent_containers/blood/oil
+		)
+	mail_goodies += list(/obj/item/stock_parts/cell/high, /obj/item/weldingtool/mini, /obj/item/stack/cable_coil)
+	return ..()
+
 /datum/species/ipc/random_name(gender,unique,lastname)
 	if(unique)
 		return random_unique_ipc_name()
@@ -73,6 +81,7 @@
 		brain.zone = BODY_ZONE_CHEST
 	C.set_safe_hunger_level()
 	C.gib_type = /obj/effect/decal/cleanable/robot_debris
+	update_mail_goodies(new_ipc)
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/C)
 	. = ..()

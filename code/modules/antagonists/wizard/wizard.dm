@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	ui_name = "AntagInfoWizard"
 	suicide_cry = "FOR THE FEDERATION!!"
 	preview_outfit = /datum/outfit/wizard
-	can_assign_self_objectives = TRUE
+	can_assign_self_objectives = FALSE
 	default_custom_objective = "Demonstrate your incredible and destructive magical powers."
 	hardcore_random_bonus = TRUE
 	var/give_objectives = TRUE

@@ -163,6 +163,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "adp" = (
@@ -286,6 +290,12 @@
 /area/station/ai_monitored/security/armory)
 "ago" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos/pumproom)
 "agw" = (
@@ -440,8 +450,14 @@
 /turf/open/floor/wood,
 /area/station/command/corporate_showroom)
 "aib" = (
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "aid" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
@@ -753,6 +769,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "aps" = (
@@ -762,8 +782,14 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/duct,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "apt" = (
 /obj/machinery/icecream_vat,
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
@@ -1012,7 +1038,11 @@
 "auc" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "auh" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -1054,7 +1084,10 @@
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
 "auO" = (
+<<<<<<< Updated upstream
 /obj/machinery/light_switch/directional/east,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/light/small/directional/east,
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -1120,6 +1153,16 @@
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
+<<<<<<< Updated upstream
+=======
+"avz" = (
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "avA" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood,
@@ -1278,6 +1321,17 @@
 /obj/item/stack/cable_coil,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+<<<<<<< Updated upstream
+=======
+"azs" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "azv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
@@ -1408,8 +1462,16 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "aBw" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/chaplain,
 /turf/open/floor/iron,
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/turf/closed/wall,
+>>>>>>> Stashed changes
 /area/station/cargo/storage)
 "aBJ" = (
 /obj/machinery/disposal/bin,
@@ -1602,6 +1664,14 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
+<<<<<<< Updated upstream
+=======
+"aEz" = (
+/obj/structure/cable,
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "aEA" = (
 /obj/structure/table/wood,
 /obj/item/staff/broom,
@@ -1735,7 +1805,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "aHi" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple/layer2{
 	dir = 6
@@ -1892,6 +1966,10 @@
 	dir = 1
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "aJm" = (
@@ -1907,9 +1985,21 @@
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/greater)
 "aJv" = (
+<<<<<<< Updated upstream
 /obj/structure/sign/warning/fire,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/turf_decal/bot,
+/obj/machinery/atmospherics/pipe/smart/simple/supply/hidden{
+	dir = 8
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "aJz" = (
 /obj/structure/table/glass,
 /obj/item/tank/internals/emergency_oxygen{
@@ -2274,6 +2364,16 @@
 	},
 /turf/closed/wall/r_wall,
 /area/station/cargo/storage)
+<<<<<<< Updated upstream
+=======
+"aOU" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "aPm" = (
 /obj/effect/turf_decal/trimline/blue/filled/line{
 	dir = 8
@@ -2330,6 +2430,16 @@
 /obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
+<<<<<<< Updated upstream
+=======
+"aQp" = (
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "aQE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -2373,8 +2483,14 @@
 	dir = 8
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "aRz" = (
 /obj/structure/table,
 /obj/item/paper_bin,
@@ -2710,18 +2826,28 @@
 	dir = 8
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "aXL" = (
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
+<<<<<<< Updated upstream
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "aXT" = (
 /obj/structure/showcase/machinery/oldpod{
 	desc = "An old NT branded sleeper, decommissioned after the lead acetate incident. None of the functional machinery remains inside.";
@@ -2904,6 +3030,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+<<<<<<< Updated upstream
+=======
+"bam" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/purple/visible,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "bar" = (
 /obj/structure/table,
 /obj/item/reagent_containers/cup/beaker{
@@ -3065,6 +3200,15 @@
 /obj/machinery/light/cold/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/command/teleporter)
+<<<<<<< Updated upstream
+=======
+"bcC" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/structure/barricade/wooden,
+/obj/effect/mapping_helpers/damaged_window,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
+>>>>>>> Stashed changes
 "bcT" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "bridge blast";
@@ -3122,6 +3266,16 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/fore/lesser)
+<<<<<<< Updated upstream
+=======
+"bel" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/stack/sheet/iron,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "bep" = (
 /obj/machinery/air_sensor/oxygen_tank,
 /turf/open/floor/engine/o2,
@@ -3391,12 +3545,21 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "bje" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/emcloset,
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/machinery/duct,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "bjl" = (
 /obj/machinery/rnd/production/techfab/department/service,
 /obj/effect/turf_decal/trimline/brown/warning{
@@ -3849,6 +4012,13 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmospherics_engine)
+<<<<<<< Updated upstream
+=======
+"bqy" = (
+/obj/effect/mapping_helpers/bombable_wall,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
+>>>>>>> Stashed changes
 "bqC" = (
 /obj/structure/table/wood,
 /obj/item/clothing/mask/cigarette/pipe,
@@ -4054,10 +4224,16 @@
 /obj/structure/disposalpipe/sorting/mail{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/effect/mapping_helpers/mail_sorting/supply/cargo_bay,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "bug" = (
 /obj/structure/lattice,
 /obj/item/tank/internals/oxygen/empty,
@@ -4567,11 +4743,19 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "bDK" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "bDN" = (
@@ -4602,6 +4786,7 @@
 /turf/open/floor/iron,
 /area/station/security/office)
 "bEh" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -4609,6 +4794,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "bEv" = (
 /obj/machinery/door/airlock/research/glass/incinerator/ordmix_exterior{
 	name = "Burn Chamber Exterior Airlock"
@@ -5114,7 +5304,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/geneticist,
+=======
+>>>>>>> Stashed changes
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -5122,7 +5315,11 @@
 /obj/machinery/light/directional/east,
 /obj/structure/cable,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "bNP" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -5390,6 +5587,16 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
+<<<<<<< Updated upstream
+=======
+"bTd" = (
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 8
+	},
+/obj/effect/landmark/start/virologist,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "bTj" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/neutral/anticorner/contrasted,
@@ -5907,12 +6114,17 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
 	},
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/binary/pump/on{
 	dir = 1;
 	name = "Cold Loop to Gas"
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "ces" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/processor/slime,
@@ -6102,6 +6314,12 @@
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Air to Mix"
 	},
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "cju" = (
@@ -6331,11 +6549,31 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat/foyer)
+<<<<<<< Updated upstream
+=======
+"cop" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "coJ" = (
 /obj/structure/chair/stool/directional/north,
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
+<<<<<<< Updated upstream
+=======
+"coM" = (
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "cpi" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/circuit/green{
@@ -6375,6 +6613,15 @@
 /obj/structure/sign/poster/random/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
+<<<<<<< Updated upstream
+=======
+"cpt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/duct,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "cpH" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/marker_beacon/yellow,
@@ -6640,6 +6887,14 @@
 "cur" = (
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
+<<<<<<< Updated upstream
+=======
+"cuI" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet/freezer/meat,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "cuM" = (
 /obj/machinery/newscaster/directional/south,
 /obj/effect/turf_decal/tile/bar,
@@ -7048,10 +7303,20 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
 "cAm" = (
+<<<<<<< Updated upstream
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "cAw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7089,6 +7354,10 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "cBf" = (
@@ -7275,6 +7544,14 @@
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
+<<<<<<< Updated upstream
+=======
+"cFN" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "cGj" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -7290,9 +7567,15 @@
 /obj/structure/disposalpipe/sorting/mail/flip{
 	dir = 1
 	},
+<<<<<<< Updated upstream
 /obj/effect/mapping_helpers/mail_sorting/supply/disposals,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/duct,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "cGV" = (
 /obj/machinery/air_sensor/plasma_tank,
 /turf/open/floor/engine/plasma,
@@ -7522,6 +7805,14 @@
 /obj/machinery/firealarm/directional/west,
 /turf/open/floor/plating,
 /area/station/cargo/drone_bay)
+<<<<<<< Updated upstream
+=======
+"cLU" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "cMb" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -7696,6 +7987,7 @@
 /turf/open/floor/wood,
 /area/station/command/corporate_showroom)
 "cQc" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock/public/glass{
 	name = "Space Bridge Access"
 	},
@@ -7716,6 +8008,11 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "cQx" = (
 /obj/machinery/computer/atmos_control/nitrous_tank{
 	dir = 1
@@ -7744,6 +8041,13 @@
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
+<<<<<<< Updated upstream
+=======
+"cQZ" = (
+/obj/structure/table/reinforced,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "cRo" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -7756,8 +8060,14 @@
 	dir = 6
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "cRw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -7925,12 +8235,16 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "cTQ" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock/maintenance{
 	name = "Disposal Conveyor Access"
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/airlock/access/any/service/maintenance,
 /obj/effect/mapping_helpers/airlock/access/any/supply/maintenance,
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "cTU" = (
@@ -8030,9 +8344,39 @@
 /turf/closed/wall/r_wall,
 /area/station/security/checkpoint/engineering)
 "cVL" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/engineering/atmospherics_portable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = 10;
+	pixel_y = 11
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_y = 13;
+	pixel_x = -3
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = 4
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_y = -3;
+	pixel_x = 7
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_x = -5;
+	pixel_y = 1
+	},
+/obj/item/reagent_containers/cup/bottle/nutrient/ez{
+	pixel_y = 1;
+	pixel_x = 1
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "cWr" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -8133,6 +8477,10 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/wood/large,
 /area/station/commons/lounge)
 "cXW" = (
@@ -8262,6 +8610,10 @@
 /area/station/service/lawoffice)
 "daT" = (
 /obj/machinery/atmospherics/pipe/smart/simple/yellow/visible,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mob_spawn/corpse/human,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "dbd" = (
@@ -8571,6 +8923,10 @@
 /area/station/maintenance/port)
 "dfS" = (
 /obj/effect/turf_decal/box/corners,
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "dfU" = (
@@ -8686,6 +9042,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "dho" = (
@@ -8907,6 +9267,10 @@
 "dlc" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/engineering/break_room)
 "dlr" = (
@@ -8958,9 +9322,18 @@
 /turf/open/floor/engine,
 /area/station/engineering/atmospherics_engine)
 "dmS" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "dno" = (
 /obj/effect/turf_decal/stripes/line,
 /mob/living/simple_animal/hostile/zombie{
@@ -9444,9 +9817,17 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/engineering/atmos)
 "dwA" = (
+<<<<<<< Updated upstream
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "dwJ" = (
 /obj/structure/lattice,
 /obj/effect/spawner/random/structure/grille,
@@ -9783,6 +10164,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
+<<<<<<< Updated upstream
+=======
+"dFK" = (
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 8
+	},
+/obj/effect/landmark/start/librarian,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "dFL" = (
 /obj/machinery/firealarm/directional/north,
 /obj/effect/turf_decal/stripes/corner{
@@ -9877,6 +10268,16 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/main)
+<<<<<<< Updated upstream
+=======
+"dHl" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/fullupgrade{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "dHG" = (
 /obj/machinery/atmospherics/components/binary/crystallizer{
 	dir = 4
@@ -9893,7 +10294,11 @@
 "dHM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "dHN" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/box/white{
@@ -9976,6 +10381,19 @@
 /obj/effect/turf_decal/tile/purple,
 /turf/open/floor/iron/white,
 /area/station/science/explab)
+<<<<<<< Updated upstream
+=======
+"dJC" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/turf_decal/siding/yellow{
+	dir = 1
+	},
+/obj/structure/cable,
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "dJK" = (
 /turf/open/floor/iron/stairs/right{
 	dir = 1
@@ -10169,6 +10587,18 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+<<<<<<< Updated upstream
+=======
+"dMx" = (
+/obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "dMz" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 1
@@ -10200,6 +10630,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/courtroom)
+<<<<<<< Updated upstream
+=======
+"dMS" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "dMY" = (
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /obj/structure/window/reinforced/spawner/directional/south,
@@ -10239,6 +10677,7 @@
 /area/station/security/office)
 "dOs" = (
 /obj/structure/sign/warning/no_smoking,
+<<<<<<< Updated upstream
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
 "dOw" = (
@@ -10246,6 +10685,15 @@
 /obj/effect/landmark/start/chemist,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/mapping_helpers/bombable_wall,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
+"dOw" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "dOx" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/clothing/costume,
@@ -10412,7 +10860,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "dQT" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -10484,7 +10936,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "dRR" = (
 /obj/structure/sign/warning/vacuum/external/directional/east,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
@@ -10532,7 +10988,10 @@
 /turf/open/floor/iron/white/textured_large,
 /area/station/commons/fitness)
 "dSG" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/wardrobe/miner,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -10768,6 +11227,16 @@
 /obj/machinery/atmospherics/pipe/bridge_pipe/purple/visible,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+<<<<<<< Updated upstream
+=======
+"dWP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "dXe" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage Room"
@@ -11112,6 +11581,10 @@
 /area/station/service/kitchen/coldroom)
 "ecp" = (
 /obj/effect/turf_decal/bot,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "ecq" = (
@@ -11140,6 +11613,10 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -11234,6 +11711,7 @@
 /area/station/cargo/storage)
 "edP" = (
 /obj/structure/disposalpipe/segment,
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -11241,6 +11719,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "edQ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
@@ -11535,7 +12019,10 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/clown,
+=======
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "ejp" = (
@@ -11636,6 +12123,17 @@
 /obj/machinery/light_switch/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
+<<<<<<< Updated upstream
+=======
+"ekt" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/landmark/start/lawyer,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "eky" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -11895,6 +12393,16 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
+<<<<<<< Updated upstream
+=======
+"eon" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/stack/sheet/iron,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "eoo" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -11937,6 +12445,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/cytology)
+<<<<<<< Updated upstream
+=======
+"epc" = (
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "epv" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/structure/disposalpipe/segment{
@@ -12432,6 +12948,15 @@
 /obj/item/pen,
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
+<<<<<<< Updated upstream
+=======
+"exy" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "exC" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L3"
@@ -12466,7 +12991,11 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "eyX" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 1
@@ -12664,10 +13193,16 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "eEb" = (
+<<<<<<< Updated upstream
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "eEf" = (
 /obj/machinery/camera/directional/north{
 	c_tag = "Bar - Backroom"
@@ -12714,7 +13249,11 @@
 "eEP" = (
 /obj/machinery/light/small/directional/east,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "eER" = (
 /obj/structure/rack,
 /obj/item/storage/box/gloves{
@@ -12803,7 +13342,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "eGJ" = (
 /obj/machinery/door/firedoor,
 /obj/effect/turf_decal/stripes/line,
@@ -13301,8 +13844,13 @@
 /area/station/engineering/atmos/pumproom)
 "eQL" = (
 /obj/machinery/camera/directional/east,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/turf/open/space/basic,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "eQO" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -13974,9 +14522,18 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "fec" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "fee" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/disposalpipe/trunk{
@@ -14121,6 +14678,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "fhn" = (
+<<<<<<< Updated upstream
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -14131,6 +14689,11 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "fhp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -14249,6 +14812,10 @@
 	dir = 8;
 	name = "Port Mix to North Ports"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "fiH" = (
@@ -14309,8 +14876,14 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /obj/machinery/light/directional/east,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "fjD" = (
 /turf/closed/wall,
 /area/station/commons/toilet/auxiliary)
@@ -14615,8 +15188,15 @@
 	dir = 8
 	},
 /obj/machinery/light/directional/west,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "fnc" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/white/smooth_large,
@@ -14632,6 +15212,14 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/research)
+<<<<<<< Updated upstream
+=======
+"fnA" = (
+/obj/structure/table,
+/obj/machinery/recharger,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "fnE" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -14701,6 +15289,17 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/storage)
+<<<<<<< Updated upstream
+=======
+"foY" = (
+/obj/machinery/light/directional/north{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/machinery/cell_charger,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "fpd" = (
 /obj/machinery/door/window{
 	base_state = "right";
@@ -14881,7 +15480,11 @@
 	name = "External Gas to Loop"
 	},
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "fsb" = (
 /obj/item/kirbyplants/organic/plant18,
 /obj/effect/turf_decal/stripes/line{
@@ -14925,6 +15528,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
+<<<<<<< Updated upstream
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "ftj" = (
@@ -14932,6 +15536,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/mime,
 /obj/structure/cable,
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+"ftj" = (
+/obj/machinery/duct,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "ftK" = (
@@ -15156,6 +15767,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+<<<<<<< Updated upstream
+=======
+"fzR" = (
+/obj/machinery/griddle,
+/obj/machinery/duct,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "fAe" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Engineering Security Post"
@@ -15220,8 +15839,14 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/duct,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "fBo" = (
 /obj/machinery/door/window/left/directional/north{
 	dir = 8;
@@ -15585,9 +16210,19 @@
 /turf/open/floor/iron/dark,
 /area/station/command/teleporter)
 "fHq" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/assistant,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "fHy" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating/airless,
@@ -15683,6 +16318,7 @@
 /turf/closed/wall/r_wall,
 /area/station/maintenance/department/engine)
 "fJC" = (
+<<<<<<< Updated upstream
 /obj/structure/barricade/wooden,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
@@ -15690,6 +16326,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+"fJP" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/closed/wall/r_wall,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "fJW" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
@@ -15858,10 +16503,16 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/command/storage/satellite)
 "fNa" = (
+<<<<<<< Updated upstream
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/landmark/start/chaplain,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "fNh" = (
 /obj/machinery/door/poddoor/preopen{
 	id = "Prison Gate";
@@ -15888,12 +16539,17 @@
 /turf/open/floor/iron/white,
 /area/station/science/explab)
 "fNH" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Dock Maintenance"
 	},
 /obj/structure/barricade/wooden,
 /obj/structure/cable,
 /turf/open/floor/plating,
+=======
+/obj/structure/cable,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "fNI" = (
 /obj/structure/sign/poster/contraband/random/directional/east,
@@ -16149,6 +16805,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "fTT" = (
@@ -16337,8 +16997,14 @@
 /obj/machinery/atmospherics/components/binary/pump{
 	name = "Mix to Gas"
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "fXj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/simple/orange/visible,
@@ -16601,6 +17267,15 @@
 	},
 /turf/open/floor/iron/white/smooth_half,
 /area/station/medical/cryo)
+<<<<<<< Updated upstream
+=======
+"gdt" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/effect/turf_decal/trimline/yellow/warning,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "gdF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/stripes/line,
@@ -17449,7 +18124,10 @@
 /turf/open/floor/wood,
 /area/station/service/library)
 "gsP" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/freezer/meat,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/light/small/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -17614,11 +18292,20 @@
 /turf/closed/wall,
 /area/station/commons/storage/primary)
 "guZ" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "gva" = (
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
@@ -17722,6 +18409,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "gxq" = (
@@ -17769,6 +18460,10 @@
 /area/station/security/lockers)
 "gyH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "gyI" = (
@@ -18547,6 +19242,12 @@
 /obj/machinery/atmospherics/pipe/bridge_pipe/scrubbers/visible{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "gMy" = (
@@ -18562,8 +19263,14 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "gMG" = (
 /obj/machinery/status_display/evac/directional/north,
 /obj/machinery/camera/directional/north{
@@ -18681,11 +19388,20 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
 "gOy" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/door/poddoor/shutters/radiation/preopen{
+	id = "engsm";
+	name = "Radiation Chamber Shutters"
+	},
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "gOB" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine,
@@ -18746,8 +19462,14 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "gQw" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/white/line,
@@ -18844,6 +19566,10 @@
 	dir = 4
 	},
 /obj/item/crowbar,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "gTP" = (
@@ -19001,8 +19727,15 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "gWH" = (
 /obj/effect/spawner/random/maintenance,
 /obj/structure/disposalpipe/segment,
@@ -19455,6 +20188,14 @@
 /obj/item/stack/package_wrap,
 /turf/open/floor/iron,
 /area/station/security/prison/work)
+<<<<<<< Updated upstream
+=======
+"hel" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hen" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -19748,12 +20489,19 @@
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
+<<<<<<< Updated upstream
 /obj/machinery/portable_atmospherics/canister,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 8
 	},
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hkE" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -19818,6 +20566,10 @@
 /obj/structure/sign/departments/science/directional/south{
 	color = "#D381C9"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/machinery/door/window/brigdoor/security/holding/left/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "hlq" = (
@@ -20237,6 +20989,12 @@
 /obj/machinery/holopad,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "htS" = (
@@ -20402,7 +21160,11 @@
 /obj/item/radio/intercom/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hwz" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -20873,6 +21635,10 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/landmark/start/psychologist,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "hEc" = (
@@ -21016,12 +21782,17 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
 "hHy" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/landmark/start/lawyer,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hHK" = (
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
@@ -21089,6 +21860,7 @@
 /area/station/maintenance/starboard/aft)
 "hJi" = (
 /obj/effect/turf_decal/stripes/line,
+<<<<<<< Updated upstream
 /obj/machinery/light/directional/south,
 /obj/machinery/camera/directional/south{
 	c_tag = "Engineering Supermatter Aft";
@@ -21096,6 +21868,12 @@
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/item/stack/sheet/iron,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hJv" = (
 /obj/structure/chair/stool/directional/south,
 /obj/structure/disposalpipe/segment{
@@ -21154,6 +21932,10 @@
 /area/station/maintenance/port)
 "hKq" = (
 /obj/structure/table/wood/fancy/orange,
+<<<<<<< Updated upstream
+=======
+/obj/item/electrical_jukebox_beacon,
+>>>>>>> Stashed changes
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/qm)
 "hKv" = (
@@ -21456,9 +22238,19 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical/central)
 "hRl" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/meter,
+/obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
+	dir = 1
+	},
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "hRq" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/door/firedoor,
@@ -21490,7 +22282,13 @@
 "hRD" = (
 /obj/machinery/door/window/brigdoor/security/holding{
 	id = "Holding Cell";
+<<<<<<< Updated upstream
 	name = null
+=======
+	name = null;
+	req_one_access = null;
+	req_access = list("security")
+>>>>>>> Stashed changes
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -21595,7 +22393,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hSP" = (
 /obj/machinery/space_heater,
 /obj/structure/sign/warning/vacuum/external/directional/north,
@@ -21709,7 +22511,11 @@
 	dir = 8
 	},
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "hVn" = (
 /obj/machinery/door/window/right/directional/east{
 	name = "Containment Pen #8";
@@ -21824,6 +22630,7 @@
 /area/station/commons/locker)
 "hWS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+<<<<<<< Updated upstream
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
@@ -21837,6 +22644,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/obj/machinery/light/directional/north,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "hWW" = (
 /obj/structure/bookcase/random,
 /turf/open/floor/iron,
@@ -22170,6 +22983,14 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
+<<<<<<< Updated upstream
+=======
+"icM" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "icR" = (
 /obj/machinery/disposal/bin,
 /obj/structure/disposalpipe/trunk{
@@ -22362,6 +23183,10 @@
 /obj/effect/mapping_helpers/requests_console/assistance,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "igz" = (
@@ -23195,6 +24020,10 @@
 	},
 /obj/effect/turf_decal/tile/yellow/fourcorners,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "itg" = (
@@ -24034,12 +24863,24 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+<<<<<<< Updated upstream
+=======
+"iHo" = (
+/obj/structure/table/reinforced,
+/obj/machinery/duct,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "iHp" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "iHu" = (
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/stripes/line{
@@ -24611,6 +25452,7 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "iQd" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	id = "supplybridge"
 	},
@@ -24618,6 +25460,13 @@
 	dir = 6
 	},
 /turf/open/floor/plating,
+=======
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 4
+	},
+/obj/effect/landmark/start/mime,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "iQg" = (
 /obj/structure/chair,
@@ -24661,12 +25510,21 @@
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "iQF" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	id = "supplybridge"
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
+	},
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "iQI" = (
 /obj/effect/turf_decal/trimline/green/filled/line{
 	dir = 8
@@ -24933,15 +25791,26 @@
 	dir = 1
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "iUv" = (
 /turf/closed/wall/r_wall,
 /area/station/security/prison)
 "iUw" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/botanist,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "iUE" = (
 /obj/effect/spawner/random/maintenance,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -25336,6 +26205,17 @@
 /obj/item/shard,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/lesser)
+<<<<<<< Updated upstream
+=======
+"jbO" = (
+/obj/structure/table/reinforced,
+/obj/machinery/processor{
+	pixel_y = 7;
+	pixel_x = 2
+	},
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "jcc" = (
 /obj/structure/rack,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -25962,7 +26842,11 @@
 /obj/machinery/meter,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "jmr" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -26160,7 +27044,10 @@
 /turf/open/floor/plating,
 /area/station/maintenance/space_hut)
 "jpG" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/miner,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/camera/directional/north{
 	c_tag = "Mining Dock"
 	},
@@ -27111,9 +27998,15 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "jFk" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/maintenance,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
+=======
+/obj/effect/landmark/start/atmospheric_technician,
+/obj/machinery/light/directional/north,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "jFr" = (
 /obj/structure/sign/poster/party_game,
@@ -27208,10 +28101,19 @@
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "jGA" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/start/station_engineer,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "jGE" = (
 /obj/structure/window/spawner/directional/west,
 /obj/structure/window/spawner/directional/north,
@@ -27336,6 +28238,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "jIR" = (
@@ -27545,6 +28451,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
+<<<<<<< Updated upstream
+=======
+"jLE" = (
+/obj/machinery/atmospherics/pipe/smart/simple/purple/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "jLG" = (
 /obj/structure/railing/corner,
 /turf/open/floor/plating/airless,
@@ -27822,12 +28738,18 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "jPE" = (
 /obj/structure/sign/map/left{
 	desc = "A framed picture of the station. Clockwise from security at the top (red), you see engineering (yellow), science (purple), escape (red and white), medbay (green), arrivals (blue and white), and finally cargo (brown).";
@@ -27857,6 +28779,10 @@
 /obj/effect/turf_decal/tile/yellow/opposingcorners{
 	dir = 1
 	},
+<<<<<<< Updated upstream
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/checker,
 /area/station/engineering/atmos/storage/gas)
 "jPJ" = (
@@ -27947,8 +28873,16 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "jRM" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/start/cyborg,
+=======
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/duct,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "jRZ" = (
@@ -28151,7 +29085,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "jUA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/office/light,
@@ -28396,10 +29334,15 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "jYB" = (
+<<<<<<< Updated upstream
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/latejoin,
 /obj/structure/cable,
 /turf/open/floor/iron,
+=======
+/obj/structure/table/reinforced,
+/turf/open/floor/carpet/royalblack,
+>>>>>>> Stashed changes
 /area/station/cargo/storage)
 "jYD" = (
 /obj/structure/chair{
@@ -28448,9 +29391,20 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "jZW" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "jZZ" = (
 /obj/machinery/camera/directional/north{
 	c_tag = "Bridge - Council Chamber"
@@ -28641,7 +29595,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "kcZ" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/latex/nitrile,
@@ -28831,6 +29789,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+<<<<<<< Updated upstream
+=======
+"kgA" = (
+/obj/effect/landmark/start/coroner,
+/obj/machinery/light/directional/north{
+	dir = 2
+	},
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "kgC" = (
 /obj/machinery/door/poddoor/incinerator_ordmix,
 /turf/open/floor/engine/vacuum,
@@ -29276,6 +30244,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
+<<<<<<< Updated upstream
+=======
+"koF" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/structure/cable,
+/obj/item/stack/sheet/iron,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "koW" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=10.2-Aft-Port-Corner";
@@ -29649,9 +30628,19 @@
 /turf/open/floor/iron,
 /area/station/command/gateway)
 "kww" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/components/trinary/filter/flipped/critical,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "kwy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -29712,12 +30701,19 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "kxw" = (
+<<<<<<< Updated upstream
 /obj/machinery/power/apc/auto_name/directional/east{
 	cell_type = null
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+=======
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "kxz" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Medbay Maintenance"
@@ -30246,12 +31242,22 @@
 /turf/open/floor/engine,
 /area/station/science/explab)
 "kHU" = (
+<<<<<<< Updated upstream
 /obj/structure/reagent_dispensers/watertank,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/table/reinforced,
+/obj/machinery/duct,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "kIG" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/maintenance/two,
@@ -30321,11 +31327,18 @@
 	network = list("ss13","engine")
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+<<<<<<< Updated upstream
 /obj/machinery/airalarm/directional/east,
 /obj/effect/mapping_helpers/airalarm/engine_access,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "kKq" = (
 /obj/structure/closet/radiation,
 /obj/effect/turf_decal/stripes/line,
@@ -30798,9 +31811,15 @@
 /turf/open/floor/iron,
 /area/station/security/holding_cell)
 "kSp" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/structure/crate,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/plating,
+=======
+/obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/cook,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "kSs" = (
 /obj/structure/table,
@@ -30942,6 +31961,7 @@
 /turf/open/floor/plating,
 /area/station/service/hydroponics/garden)
 "kUZ" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -30949,6 +31969,17 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/structure/cable,
+/obj/item/stack/sheet/iron,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "kVg" = (
 /obj/structure/chair/office,
 /obj/structure/cable,
@@ -31113,11 +32144,21 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "kXA" = (
+<<<<<<< Updated upstream
 /obj/machinery/space_heater,
 /obj/structure/sign/warning/vacuum/external/directional/north,
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/turf_decal/arrows/red{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/effect/landmark/start/cargo_technician,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "kXD" = (
 /obj/item/radio/intercom/directional/south,
 /obj/machinery/camera/directional/south{
@@ -31443,9 +32484,16 @@
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "ldp" = (
+<<<<<<< Updated upstream
 /mob/living/carbon/human/species/zombie/event/infectious,
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/virology)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "lds" = (
 /obj/structure/table,
 /obj/item/storage/fancy/egg_box,
@@ -31856,12 +32904,20 @@
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "lls" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/structure/closet_maintenance,
 /obj/effect/spawner/random/maintenance,
 /obj/structure/disposalpipe/segment{
 	dir = 5
 	},
 /turf/open/floor/plating,
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 5
+	},
+/obj/effect/landmark/start/geneticist,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "llC" = (
 /obj/structure/disposalpipe/segment{
@@ -32245,7 +33301,11 @@
 /obj/machinery/status_display/evac/directional/south,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "ltb" = (
 /obj/machinery/vending/security,
 /obj/machinery/firealarm/directional/east,
@@ -32590,6 +33650,10 @@
 /obj/structure/sign/departments/security/directional/south{
 	color = "#DE3A3A"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/machinery/door/window/brigdoor/security/holding/left/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "lAu" = (
@@ -32692,7 +33756,11 @@
 "lDP" = (
 /obj/structure/cable,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "lEr" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -32899,7 +33967,10 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "lJo" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/emcloset,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/brown/half/contrasted,
 /turf/open/floor/iron,
@@ -32949,7 +34020,11 @@
 "lLu" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "lLw" = (
 /obj/machinery/door/window/right/directional/east{
 	base_state = "left";
@@ -33055,6 +34130,17 @@
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+<<<<<<< Updated upstream
+=======
+"lMO" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/landmark/latejoin,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "lMW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -33472,10 +34558,21 @@
 /turf/open/floor/wood,
 /area/station/commons/lounge)
 "lUe" = (
+<<<<<<< Updated upstream
 /obj/structure/reagent_dispensers/fueltank,
 /obj/structure/sign/poster/contraband/random/directional/north,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/door/window/left/directional/west{
+	name = "Kitchen"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/service/kitchen,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "lUj" = (
 /obj/structure/table,
 /obj/item/book/manual/wiki/security_space_law{
@@ -34042,7 +35139,11 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mdo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -34078,9 +35179,17 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "mdW" = (
+<<<<<<< Updated upstream
 /obj/structure/safe/floor,
 /obj/item/food/fortunecookie,
 /turf/open/floor/plating,
+=======
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 4
+	},
+/obj/effect/landmark/start/scientist,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "mec" = (
 /obj/effect/turf_decal/bot,
@@ -34405,12 +35514,22 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "mkr" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 4;
 	name = "Gas to Chamber"
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/duct,
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "mkO" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -34590,6 +35709,18 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+<<<<<<< Updated upstream
+=======
+"mnm" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mnq" = (
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -34617,7 +35748,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mnN" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -34915,6 +36050,13 @@
 "mtu" = (
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+<<<<<<< Updated upstream
+=======
+"mty" = (
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/wood,
+/area/station/commons/lounge)
+>>>>>>> Stashed changes
 "mtG" = (
 /obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/security/glass{
@@ -35008,9 +36150,18 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "muu" = (
+<<<<<<< Updated upstream
 /obj/structure/sign/warning/electric_shock,
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/bombable_wall,
+/turf/closed/wall/r_wall,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "mux" = (
 /obj/machinery/airalarm/directional/south,
 /obj/structure/disposalpipe/segment{
@@ -35054,6 +36205,10 @@
 "mvo" = (
 /obj/machinery/atmospherics/pipe/smart/simple/dark/visible,
 /obj/machinery/light/floor,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "mvN" = (
@@ -35186,6 +36341,14 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
+<<<<<<< Updated upstream
+=======
+"mxW" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "myc" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -35268,10 +36431,20 @@
 /area/station/security/prison/mess)
 "mzs" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+<<<<<<< Updated upstream
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/obj/machinery/door/window/left/directional/east{
+	name = "Bar"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/service/bar,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "mzu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -35334,6 +36507,14 @@
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+<<<<<<< Updated upstream
+=======
+"mAA" = (
+/obj/effect/mob_spawn/corpse/human,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "mAJ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -35357,8 +36538,15 @@
 	dir = 1
 	},
 /obj/machinery/meter,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mBw" = (
 /obj/machinery/power/emitter,
 /obj/machinery/light/small/directional/south,
@@ -35563,8 +36751,14 @@
 	dir = 5
 	},
 /obj/machinery/atmospherics/components/trinary/filter/flipped/critical,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/item/stack/sheet/iron,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mEo" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -35671,10 +36865,19 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "mFp" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/scientist,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mFr" = (
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/plating/airless,
@@ -35743,6 +36946,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "mHe" = (
+<<<<<<< Updated upstream
 /obj/item/stack/sheet/plasteel{
 	amount = 10;
 	pixel_x = -2;
@@ -35754,6 +36958,9 @@
 	pixel_x = 2;
 	pixel_y = -2
 	},
+=======
+/obj/structure/table,
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
@@ -35965,6 +37172,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "mLu" = (
@@ -36174,7 +37385,10 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "mNZ" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/virologist,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/light/floor,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -36581,8 +37795,15 @@
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "mVS" = (
+<<<<<<< Updated upstream
 /obj/effect/decal/cleanable/cobweb,
 /obj/effect/spawner/random/trash/janitor_supplies,
+=======
+/obj/structure/reagent_dispensers/plumbed{
+	dir = 8;
+	tank_volume = 1000000
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "mVW" = (
@@ -36639,9 +37860,16 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment,
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/structure/steam_vent,
 /obj/effect/mapping_helpers/broken_floor,
 /obj/structure/cable,
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/obj/structure/cable,
+/obj/machinery/door/airlock/maintenance,
+/obj/structure/barricade/wooden,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "mWU" = (
@@ -36741,7 +37969,11 @@
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible,
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "mYV" = (
 /obj/machinery/door/airlock/research{
 	name = "Ordnance Lab"
@@ -37195,6 +38427,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/main)
+<<<<<<< Updated upstream
+=======
+"nhb" = (
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "nhh" = (
 /obj/structure/table/wood,
 /obj/item/gavelblock,
@@ -37403,6 +38642,7 @@
 /turf/open/floor/iron,
 /area/station/security/office)
 "nkY" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -37410,6 +38650,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/mapping_helpers/bombable_wall,
+/turf/closed/wall/r_wall,
+/area/station/maintenance/starboard/greater)
+>>>>>>> Stashed changes
 "nlB" = (
 /obj/effect/gibspawner/human/bodypartless,
 /obj/structure/cable,
@@ -37484,6 +38729,15 @@
 /obj/item/storage/crayons,
 /turf/open/floor/iron,
 /area/station/commons/storage/tools)
+<<<<<<< Updated upstream
+=======
+"nmO" = (
+/obj/machinery/space_heater{
+	cell = /obj/item/stock_parts/cell/bluespace
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "nmQ" = (
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
@@ -37720,6 +38974,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
+<<<<<<< Updated upstream
+=======
+"nqr" = (
+/obj/effect/landmark/start/bitrunner,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "nqB" = (
 /obj/machinery/door/airlock/external/glass{
 	name = "Supply Door Airlock"
@@ -37802,8 +39063,15 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "nrV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /turf/open/floor/iron/dark,
@@ -37894,11 +39162,19 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "nsM" = (
+<<<<<<< Updated upstream
 /obj/machinery/recharge_station,
 /obj/effect/turf_decal/stripes/end{
 	dir = 4
 	},
 /turf/open/floor/plating,
+=======
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 4
+	},
+/obj/effect/landmark/latejoin,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "nsO" = (
 /obj/machinery/computer/records/security,
@@ -38433,6 +39709,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/engine,
 /area/station/engineering/atmospherics_engine)
 "nBy" = (
@@ -38997,12 +40277,20 @@
 /turf/open/floor/iron,
 /area/station/commons/vacant_room/commissary)
 "nME" = (
+<<<<<<< Updated upstream
 /obj/structure/rack,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/item/storage/toolbox/emergency,
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "nMF" = (
 /obj/machinery/light/small/directional/east,
 /obj/machinery/firealarm/directional/east,
@@ -39161,6 +40449,7 @@
 /obj/effect/turf_decal/trimline/yellow/warning{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "nOK" = (
@@ -39170,6 +40459,24 @@
 /obj/effect/landmark/start/coroner,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+"nOK" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 10
+	},
+/obj/structure/cable,
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 8
+	},
+/obj/effect/landmark/start/roboticist,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "nOU" = (
 /obj/structure/table/wood,
 /obj/item/radio/intercom{
@@ -39495,6 +40802,16 @@
 /obj/item/bouquet/poppy,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+<<<<<<< Updated upstream
+=======
+"nVU" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "nWk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -39533,6 +40850,10 @@
 	dir = 9
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "nWF" = (
@@ -40451,7 +41772,12 @@
 "oor" = (
 /obj/machinery/door/window/brigdoor/security/holding{
 	id = "Holding Cell";
+<<<<<<< Updated upstream
 	name = "medical"
+=======
+	name = "medical";
+	req_one_access = null
+>>>>>>> Stashed changes
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /turf/open/floor/iron,
@@ -40516,6 +41842,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -40695,6 +42025,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance/testlab)
 "otn" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -40703,6 +42034,15 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
+	},
+/obj/effect/gibspawner/human/bodypartless,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "otu" = (
 /turf/closed/wall,
 /area/station/service/chapel)
@@ -40729,6 +42069,7 @@
 /turf/open/floor/plating,
 /area/station/security/prison/work)
 "ouc" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/crate,
 /obj/item/stack/cable_coil{
 	pixel_x = 3;
@@ -40738,6 +42079,8 @@
 /obj/machinery/light_switch/directional/north,
 /obj/effect/spawner/random/engineering/flashlight,
 /obj/effect/spawner/random/engineering/flashlight,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 4
 	},
@@ -40781,6 +42124,20 @@
 /obj/item/reagent_containers/cup/glass/bottle/goldschlager,
 /turf/open/space/basic,
 /area/space/nearstation)
+<<<<<<< Updated upstream
+=======
+"ouA" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/main)
+>>>>>>> Stashed changes
 "ouM" = (
 /obj/structure/sign/painting/library{
 	pixel_y = -32
@@ -41069,6 +42426,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
+<<<<<<< Updated upstream
+=======
+"oAD" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "oAN" = (
 /obj/machinery/gulag_teleporter,
 /obj/effect/turf_decal/tile/red/half/contrasted{
@@ -41343,7 +42707,11 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "oFt" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/orange/hidden,
 /turf/open/floor/iron/stairs/medium{
@@ -41376,6 +42744,10 @@
 "oFK" = (
 /obj/effect/spawner/random/engineering/tracking_beacon,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "oFM" = (
@@ -41795,8 +43167,15 @@
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "oNs" = (
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "oNy" = (
 /obj/machinery/smartfridge/chemistry/preloaded,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -41941,6 +43320,10 @@
 	pixel_y = 3;
 	pixel_x = 7
 	},
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/ooze,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/smooth_large,
 /area/station/medical/virology)
 "oPZ" = (
@@ -42731,6 +44114,14 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
+<<<<<<< Updated upstream
+=======
+"pfO" = (
+/obj/structure/sign/warning/secure_area,
+/obj/effect/mapping_helpers/bombable_wall,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
+>>>>>>> Stashed changes
 "pfP" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/light_switch/directional/south,
@@ -43085,6 +44476,17 @@
 /obj/effect/mob_spawn/corpse/human/clown,
 /turf/open/floor/carpet,
 /area/station/service/theater)
+<<<<<<< Updated upstream
+=======
+"pmU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/obj/effect/landmark/start/bartender,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "pmW" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/status_display/evac/directional/south,
@@ -43726,6 +45128,16 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+<<<<<<< Updated upstream
+=======
+"pxc" = (
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "pxj" = (
 /obj/machinery/door/airlock/research/glass{
 	name = "Robotics Lab"
@@ -43882,10 +45294,16 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "pAe" = (
 /obj/structure/cable,
 /turf/open/floor/iron,
@@ -44328,6 +45746,10 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -44551,8 +45973,11 @@
 /area/station/science/lobby)
 "pLn" = (
 /obj/structure/table,
+<<<<<<< Updated upstream
 /obj/item/stack/sheet/iron/fifty,
 /obj/item/stack/sheet/iron/fifty,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
@@ -45149,8 +46574,14 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "pWD" = (
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 1
@@ -45228,9 +46659,19 @@
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain/private)
 "pXC" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/bartender,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible,
+/obj/effect/mapping_helpers/broken_floor,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "pXM" = (
 /obj/effect/turf_decal/tile/blue,
 /obj/structure/cable,
@@ -46125,9 +47566,15 @@
 /turf/open/floor/engine/o2,
 /area/station/engineering/atmos)
 "qoA" = (
+<<<<<<< Updated upstream
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/gibspawner/human/bodypartless,
+/turf/open/floor/iron,
+/area/station/engineering/break_room)
+>>>>>>> Stashed changes
 "qoC" = (
 /obj/structure/table,
 /obj/item/flashlight/lamp,
@@ -46444,7 +47891,10 @@
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
 "qvY" = (
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/miner,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/brown/half/contrasted,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -46525,6 +47975,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -46751,7 +48205,10 @@
 /area/station/science/explab)
 "qCa" = (
 /obj/structure/rack,
+<<<<<<< Updated upstream
 /obj/machinery/light_switch/directional/south,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted{
 	dir = 8
 	},
@@ -47036,6 +48493,7 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "qGV" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
 	id = "supplybridge"
@@ -47045,6 +48503,14 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "qGZ" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
@@ -47150,7 +48616,11 @@
 "qIS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qJa" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -47238,6 +48708,7 @@
 	codes_txt = "delivery;dir=1";
 	location = "Disposals"
 	},
+<<<<<<< Updated upstream
 /obj/structure/plasticflaps,
 /obj/machinery/door/window/right/directional/north{
 	dir = 2;
@@ -47249,6 +48720,9 @@
 	dir = 1;
 	id = "garbage"
 	},
+=======
+/obj/structure/disposalpipe/segment,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/disposal)
 "qKD" = (
@@ -47257,7 +48731,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/freezer/kitchen,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 10
 	},
@@ -47314,14 +48791,24 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qLJ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qLP" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/bureaucracy/folder{
@@ -47561,10 +49048,17 @@
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
 "qOp" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/start/warden,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "qOs" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Genetics Maintenance"
@@ -47592,8 +49086,14 @@
 	dir = 8;
 	name = "Mix Bypass"
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qOM" = (
 /obj/machinery/vending/hydronutrients,
 /obj/effect/turf_decal/trimline/green/filled/line{
@@ -47972,7 +49472,11 @@
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qUz" = (
 /obj/effect/turf_decal/tile/purple/half/contrasted,
 /turf/open/floor/iron/white,
@@ -48128,8 +49632,14 @@
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "qXk" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -48265,11 +49775,17 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "qZB" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/unary/vent_pump/on{
 	dir = 1
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/structure/closet/secure_closet/miner,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "qZD" = (
 /obj/effect/turf_decal/trimline/blue/filled/corner{
 	dir = 8
@@ -48356,6 +49872,18 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
+<<<<<<< Updated upstream
+=======
+"raH" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "raJ" = (
 /obj/machinery/computer/security/wooden_tv{
 	pixel_x = 1;
@@ -49037,6 +50565,10 @@
 /obj/structure/sign/departments/exam_room/directional/south{
 	color = "#52B4E9"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/machinery/door/window/brigdoor/security/holding/left/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "rnn" = (
@@ -49150,6 +50682,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/ordnance/storage)
 "rqa" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
 	id = "supplybridge"
@@ -49159,6 +50692,14 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold/purple/visible{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "rqc" = (
 /obj/machinery/computer/security/telescreen{
 	desc = "Used for monitoring medbay to ensure patient safety.";
@@ -49281,6 +50822,18 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/iron,
 /area/station/maintenance/department/engine)
+<<<<<<< Updated upstream
+=======
+"rsr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/scrubbers/visible{
+	dir = 10
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "rsz" = (
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 1
@@ -49367,7 +50920,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "rtS" = (
 /obj/machinery/door/morgue{
 	name = "Relic Closet";
@@ -49919,6 +51476,7 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "rCW" = (
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/components/binary/pump{
 	dir = 8;
 	name = "Gas to Filter"
@@ -49926,6 +51484,11 @@
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/light/small/directional/south,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "rDf" = (
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
@@ -50180,8 +51743,14 @@
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "rHn" = (
+<<<<<<< Updated upstream
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter)
+=======
+/obj/item/stack/sheet/iron,
+/turf/open/space/basic,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "rHq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -50489,12 +52058,18 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "rMp" = (
+<<<<<<< Updated upstream
 /obj/machinery/power/apc/auto_name/directional/east{
 	cell_type = null
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "rMr" = (
 /obj/structure/table/glass,
 /obj/item/experi_scanner{
@@ -50598,7 +52173,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
+=======
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 8
+	},
+/obj/effect/landmark/start/station_engineer,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "rNS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -50614,8 +52197,13 @@
 /obj/structure/disposalpipe/segment{
 	dir = 6
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "rOz" = (
 /obj/effect/spawner/random/structure/crate,
 /turf/open/floor/plating,
@@ -50869,12 +52457,18 @@
 /turf/open/floor/plating,
 /area/station/service/chapel)
 "rSa" = (
+<<<<<<< Updated upstream
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 4
 	},
 /obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/sink/kitchen/directional/north,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "rSi" = (
 /obj/structure/chair/office/light{
 	dir = 1;
@@ -51428,7 +53022,10 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/structure/closet/secure_closet/freezer/fridge,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/trimline/brown/warning{
 	dir = 9
 	},
@@ -51485,6 +53082,10 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "scY" = (
@@ -51539,6 +53140,10 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "sdW" = (
@@ -51613,7 +53218,10 @@
 "sfG" = (
 /obj/structure/table,
 /obj/item/storage/toolbox/emergency,
+<<<<<<< Updated upstream
 /obj/machinery/airalarm/directional/east,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
 	},
@@ -51653,10 +53261,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/orange/visible,
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "sgB" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -52077,6 +53690,10 @@
 /obj/structure/sign/departments/botany/directional/south{
 	color = "#9FED58"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/machinery/door/window/brigdoor/security/holding/left/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "sqz" = (
@@ -52204,7 +53821,11 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "stw" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/food_or_drink/booze,
@@ -52259,7 +53880,11 @@
 	name = "Atmos to Loop"
 	},
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "suD" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -52435,9 +54060,15 @@
 /turf/open/floor/iron/white/side,
 /area/station/science/lobby)
 "sxn" = (
+<<<<<<< Updated upstream
 /obj/machinery/power/port_gen/pacman/pre_loaded,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/hydroponics/constructable,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "sxo" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -52674,6 +54305,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/visible{
 	dir = 6
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "sCh" = (
@@ -52737,6 +54372,10 @@
 	dir = 1
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "sCW" = (
@@ -52920,6 +54559,15 @@
 /obj/structure/window/spawner/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/service/cafeteria)
+<<<<<<< Updated upstream
+=======
+"sEO" = (
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/atmospherics_engine)
+>>>>>>> Stashed changes
 "sEZ" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/effect/turf_decal/stripes/white/line,
@@ -53089,6 +54737,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+<<<<<<< Updated upstream
+=======
+"sIC" = (
+/obj/effect/turf_decal/tile/yellow{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/corner,
+/area/station/engineering/atmos/storage/gas)
+>>>>>>> Stashed changes
 "sIG" = (
 /obj/effect/spawner/structure/window,
 /obj/machinery/door/poddoor/shutters/preopen{
@@ -53139,7 +54797,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "sKf" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -53344,7 +55006,11 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "sNx" = (
 /obj/machinery/telecomms/receiver/preset_left,
 /turf/open/floor/circuit/green/telecomms/mainframe,
@@ -53780,7 +55446,11 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/structure/cable,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "sUm" = (
 /obj/effect/decal/cleanable/blood/tracks{
 	dir = 1
@@ -53934,6 +55604,18 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
+<<<<<<< Updated upstream
+=======
+"sVT" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "sVY" = (
 /turf/closed/wall,
 /area/station/service/library)
@@ -53975,11 +55657,17 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "sWB" = (
+<<<<<<< Updated upstream
 /mob/living/simple_animal/hostile/zombie{
 	outfit = null
 	},
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/structure/closet/secure_closet/freezer/kitchen,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "sWF" = (
 /obj/machinery/plate_press,
 /obj/effect/turf_decal/bot,
@@ -54352,8 +56040,15 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "tdg" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
@@ -54437,9 +56132,18 @@
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "tft" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
+=======
+/obj/machinery/atmospherics/pipe/smart/simple/dark/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "tfz" = (
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/circuit,
@@ -54564,8 +56268,13 @@
 	},
 /area/station/medical/morgue)
 "thQ" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/bot_white,
 /obj/effect/landmark/start/cook,
+=======
+/obj/machinery/hydroponics/constructable,
+/obj/machinery/light/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "thT" = (
@@ -54687,6 +56396,10 @@
 /obj/machinery/atmospherics/pipe/smart/simple/supply/visible{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/bombable_wall,
+>>>>>>> Stashed changes
 /turf/closed/wall/r_wall,
 /area/station/engineering/atmos/storage/gas)
 "tkn" = (
@@ -54792,6 +56505,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "tmz" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	dir = 1;
 	id = "supplybridge"
@@ -54801,6 +56515,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "tmB" = (
 /obj/structure/table/wood,
 /obj/item/flashlight/lamp/green{
@@ -55002,9 +56720,16 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "tqt" = (
+<<<<<<< Updated upstream
 /mob/living/carbon/human/species/zombie/event/infectious,
 /turf/open/floor/vault,
 /area/station/medical/virology)
+=======
+/obj/structure/closet/secure_closet/freezer/meat,
+/obj/machinery/light/directional/south,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "tqx" = (
 /obj/machinery/door/window/left/directional/south{
 	dir = 1;
@@ -55180,12 +56905,18 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "ttG" = (
+<<<<<<< Updated upstream
 /obj/item/clothing/gloves/color/rainbow,
 /obj/item/clothing/shoes/sneakers/rainbow,
 /obj/item/clothing/under/color/rainbow,
 /obj/item/clothing/head/soft/rainbow,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "ttM" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -55250,6 +56981,7 @@
 /turf/closed/wall/r_wall,
 /area/station/command/gateway)
 "tvR" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/poddoor/shutters{
 	id = "supplybridge"
 	},
@@ -55258,6 +56990,15 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/structure/cable,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "twd" = (
 /obj/effect/gibspawner/human/bodypartless,
 /obj/effect/decal/cleanable/dirt,
@@ -55387,6 +57128,14 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
+<<<<<<< Updated upstream
+=======
+"txO" = (
+/obj/structure/cable,
+/obj/effect/landmark/start/botanist,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "txP" = (
 /obj/machinery/door/firedoor,
 /obj/effect/decal/cleanable/dirt,
@@ -55523,8 +57272,13 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "tAH" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/cargo_technician,
 /obj/effect/decal/cleanable/dirt,
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/chemist,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "tAQ" = (
@@ -55581,6 +57335,10 @@
 /mob/living/simple_animal/hostile/zombie{
 	outfit = null
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "tBA" = (
@@ -55953,8 +57711,14 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "tJo" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/stripes/line{
@@ -56445,8 +58209,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/spawner/random/engineering/tracking_beacon,
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/roboticist,
 /obj/item/banner/command/mundane,
+=======
+>>>>>>> Stashed changes
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -56803,6 +58570,23 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
+<<<<<<< Updated upstream
+=======
+"tXi" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/yellow{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/starboard)
+>>>>>>> Stashed changes
 "tXk" = (
 /obj/structure/disposalpipe/segment{
 	dir = 9
@@ -57356,6 +59140,7 @@
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
 "ufv" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
@@ -57363,6 +59148,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable,
+/obj/machinery/vending/boozeomat,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "ufI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -57374,7 +59166,11 @@
 /obj/structure/window/reinforced/plasma/spawner/directional/south,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "ugd" = (
 /obj/machinery/door/airlock/external{
 	name = "Labor Camp Shuttle Airlock"
@@ -57452,7 +59248,10 @@
 	department = "Security";
 	name = "Security Requests Console"
 	},
+<<<<<<< Updated upstream
 /mob/living/simple_animal/hostile/gorilla/lesser,
+=======
+>>>>>>> Stashed changes
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/checkpoint/customs)
@@ -57638,7 +59437,10 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "ulX" = (
+<<<<<<< Updated upstream
 /obj/machinery/lapvend,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/tile/purple/half/contrasted{
 	dir = 1
 	},
@@ -57690,7 +59492,11 @@
 	filter_type = list(/datum/gas/nitrogen)
 	},
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "unt" = (
 /obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/tile/yellow/anticorner/contrasted,
@@ -58123,14 +59929,23 @@
 	},
 /area/station/service/chapel)
 "uur" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/maintenance,
+=======
+>>>>>>> Stashed changes
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/closet/secure_closet/freezer/fridge,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "uuv" = (
 /obj/machinery/holopad,
 /obj/effect/turf_decal/stripes/line{
@@ -58158,7 +59973,10 @@
 /obj/machinery/status_display/supply{
 	pixel_y = 32
 	},
+<<<<<<< Updated upstream
 /obj/machinery/jukebox,
+=======
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "uvC" = (
@@ -58319,6 +60137,10 @@
 	dir = 4
 	},
 /obj/machinery/light/no_nightlight/directional/north,
+<<<<<<< Updated upstream
+=======
+/obj/effect/mapping_helpers/broken_floor,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -58350,7 +60172,10 @@
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "uyj" = (
+<<<<<<< Updated upstream
 /obj/machinery/rnd/bepis,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/stripes/end{
 	dir = 4
 	},
@@ -58929,7 +60754,11 @@
 /obj/machinery/status_display/evac/directional/south,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "uIe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -59025,8 +60854,14 @@
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/incident_display/delam/directional/south,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "uJY" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/item/storage/backpack/duffelbag/med/surgery{
@@ -59121,8 +60956,14 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "uLs" = (
 /obj/machinery/airalarm/directional/west,
 /turf/open/floor/iron/dark,
@@ -59336,6 +61177,10 @@
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 1
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "uOH" = (
@@ -59634,6 +61479,16 @@
 /obj/effect/spawner/random/structure/closet_maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+<<<<<<< Updated upstream
+=======
+"uUv" = (
+/obj/structure/cable,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "uUL" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -60255,8 +62110,15 @@
 /area/station/science/explab)
 "vfk" = (
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vfm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/carbon/human/species/monkey/punpun,
@@ -60515,6 +62377,10 @@
 /obj/structure/disposalpipe/sorting/mail,
 /obj/effect/mapping_helpers/mail_sorting/engineering/ce_office,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "vjF" = (
@@ -60548,6 +62414,10 @@
 /obj/structure/sign/departments/engineering/directional/south{
 	color = "#EFB341"
 	},
+<<<<<<< Updated upstream
+=======
+/obj/machinery/door/window/brigdoor/security/holding/left/directional/north,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "vjZ" = (
@@ -60929,12 +62799,21 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "vpU" = (
+<<<<<<< Updated upstream
 /obj/effect/spawner/random/structure/crate,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/disposalpipe/segment{
+	dir = 4
+	},
+/obj/machinery/oven/range,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "vpX" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -61467,8 +63346,15 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vzc" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/computer/turbine_computer{
@@ -61581,6 +63467,13 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
+<<<<<<< Updated upstream
+=======
+"vAl" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vAH" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
@@ -61608,8 +63501,14 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/machinery/status_display/evac/directional/north,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vBf" = (
 /obj/effect/turf_decal/delivery,
 /obj/machinery/door/firedoor,
@@ -61853,6 +63752,10 @@
 "vEK" = (
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/simple/supply/hidden,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage/gas)
 "vET" = (
@@ -61867,10 +63770,19 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "vEV" = (
+<<<<<<< Updated upstream
 /obj/machinery/space_heater,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/iron/dark,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "vFb" = (
 /obj/structure/lattice/catwalk,
 /obj/item/binoculars,
@@ -61991,6 +63903,11 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/atmos/storage/gas)
 "vGN" = (
@@ -62264,7 +64181,11 @@
 "vLX" = (
 /obj/item/wrench,
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vMb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -62282,6 +64203,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/machinery/duct,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "vMw" = (
@@ -62539,8 +64464,14 @@
 	dir = 1
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "vQv" = (
 /obj/structure/table,
 /obj/item/plant_analyzer,
@@ -62958,6 +64889,10 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -63300,6 +65235,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+<<<<<<< Updated upstream
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/machinery/button/door/directional/east{
 	id = "engsm";
@@ -63309,6 +65245,12 @@
 /obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/structure/cable,
+/obj/item/stack/sheet/iron,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "wdG" = (
 /obj/machinery/door/airlock{
 	id_tag = "Cabin3";
@@ -63431,6 +65373,10 @@
 	dir = 4
 	},
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -63506,11 +65452,16 @@
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "wgw" = (
+<<<<<<< Updated upstream
 /obj/structure/sign/warning/secure_area{
 	name = "\improper STAY CLEAR HEAVY MACHINERY"
 	},
 /turf/closed/wall,
 /area/station/maintenance/port/fore)
+=======
+/turf/open/floor/plating,
+/area/station/maintenance/disposal)
+>>>>>>> Stashed changes
 "wgJ" = (
 /obj/structure/sign/map/right,
 /turf/closed/wall,
@@ -63563,6 +65514,10 @@
 /obj/effect/mapping_helpers/mail_sorting/engineering/atmospherics,
 /obj/machinery/duct,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/gibspawner/human/bodypartless,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "whH" = (
@@ -64424,6 +66379,15 @@
 /obj/machinery/light/floor,
 /turf/open/floor/wood/large,
 /area/station/commons/lounge)
+<<<<<<< Updated upstream
+=======
+"wxK" = (
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "wxM" = (
 /obj/machinery/status_display/door_timer{
 	id = "Cell 1";
@@ -64605,8 +66569,14 @@
 	id = "engsm";
 	name = "Radiation Chamber Shutters"
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/engineering/supermatter)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/plating,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "wBF" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/cable,
@@ -64631,8 +66601,14 @@
 /obj/machinery/atmospherics/components/binary/pump/on{
 	name = "Gas to Cold Loop"
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/mapping_helpers/broken_floor,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "wBW" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -64932,6 +66908,13 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/wood,
 /area/station/service/bar/backroom)
+<<<<<<< Updated upstream
+=======
+"wHR" = (
+/obj/effect/landmark/start/clown,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "wHW" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -64994,7 +66977,11 @@
 	dir = 9
 	},
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "wJX" = (
 /turf/open/floor/iron/dark,
 /area/station/security/brig)
@@ -65579,6 +67566,15 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
+<<<<<<< Updated upstream
+=======
+"wUh" = (
+/obj/item/wrench,
+/obj/effect/mapping_helpers/broken_floor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/atmos)
+>>>>>>> Stashed changes
 "wUj" = (
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron/white,
@@ -65864,12 +67860,19 @@
 /turf/closed/wall,
 /area/station/hallway/secondary/service)
 "wZb" = (
+<<<<<<< Updated upstream
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/machinery/light/floor,
 /obj/structure/cable,
 /turf/open/floor/plating,
+=======
+/obj/structure/cable,
+/obj/effect/landmark/start/bitrunner,
+/obj/effect/landmark/start/bitrunner,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "wZe" = (
 /obj/machinery/door/airlock/public/glass{
@@ -66071,7 +68074,11 @@
 	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xdq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/closed/wall,
@@ -66280,8 +68287,14 @@
 /area/station/medical/treatment_center)
 "xgB" = (
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/duct,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "xgD" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/decal/cleanable/dirt,
@@ -66327,6 +68340,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/structure/barricade/wooden,
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/engineering/break_room)
 "xgZ" = (
@@ -66464,10 +68481,16 @@
 /turf/open/floor/wood/parquet,
 /area/station/medical/psychology)
 "xkb" = (
+<<<<<<< Updated upstream
 /obj/item/hand_labeler_refill,
 /obj/structure/rack,
 /obj/machinery/light/small/dim/directional/west,
 /turf/open/floor/plating,
+=======
+/obj/machinery/light/small/dim/directional/west,
+/obj/effect/landmark/start/assistant,
+/turf/open/floor/pod,
+>>>>>>> Stashed changes
 /area/station/maintenance/port/fore)
 "xko" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -66526,11 +68549,14 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "xld" = (
+<<<<<<< Updated upstream
 /obj/structure/table,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/sheet/glass/fifty,
 /obj/item/stack/rods/fifty,
 /obj/item/stack/rods/fifty,
+=======
+>>>>>>> Stashed changes
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
@@ -66671,6 +68697,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/genetics)
 "xoc" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock/maintenance{
 	name = "Mining Dock Maintenance"
 	},
@@ -66680,6 +68707,13 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/disposalpipe/segment,
+/obj/structure/cable,
+/turf/open/floor/carpet/royalblack,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "xoe" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/mapping_helpers/burnt_floor,
@@ -66847,6 +68881,10 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/decal/cleanable/dirt,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -66922,8 +68960,13 @@
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "xtp" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -66936,6 +68979,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
 "xtr" = (
+<<<<<<< Updated upstream
 /obj/machinery/door/airlock/public/glass{
 	name = "Space Bridge Access"
 	},
@@ -66956,6 +69000,12 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/obj/structure/cable,
+/obj/effect/landmark/start/cyborg,
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "xtu" = (
 /obj/machinery/iv_drip,
 /obj/effect/turf_decal/tile/blue/fourcorners,
@@ -67204,6 +69254,13 @@
 "xxp" = (
 /obj/machinery/airalarm/directional/west,
 /obj/effect/mapping_helpers/burnt_floor,
+<<<<<<< Updated upstream
+=======
+/obj/structure/reagent_dispensers/plumbed{
+	dir = 8;
+	tank_volume = 1000000
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "xxF" = (
@@ -67366,6 +69423,16 @@
 /obj/effect/mapping_helpers/burnt_floor,
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
+<<<<<<< Updated upstream
+=======
+"xzS" = (
+/obj/effect/turf_decal/stripes/line,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+/turf/open/floor/engine,
+/area/station/engineering/atmospherics_engine)
+>>>>>>> Stashed changes
 "xAb" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -67403,7 +69470,11 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xAp" = (
 /obj/effect/turf_decal/siding,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -67962,18 +70033,34 @@
 /turf/open/floor/iron/white,
 /area/station/science/ordnance/testlab)
 "xJV" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/shaft_miner,
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/structure/disposalpipe/segment,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "xKk" = (
 /obj/machinery/photocopier,
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "xKl" = (
+<<<<<<< Updated upstream
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xKK" = (
 /turf/closed/wall,
 /area/station/science/research)
@@ -68048,8 +70135,14 @@
 /obj/effect/turf_decal/stripes/corner,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
+=======
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/engine,
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xNb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -68067,9 +70160,21 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "xNi" = (
+<<<<<<< Updated upstream
 /obj/effect/landmark/latejoin,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
+=======
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/obj/structure/showcase/machinery/oldpod/used{
+	dir = 8
+	},
+/obj/effect/landmark/start/janitor,
+/turf/open/floor/pod,
+/area/station/maintenance/port/fore)
+>>>>>>> Stashed changes
 "xNo" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68180,7 +70285,11 @@
 	outfit = null
 	},
 /turf/open/floor/iron/dark,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xPb" = (
 /obj/structure/chair{
 	dir = 8
@@ -68463,6 +70572,16 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+<<<<<<< Updated upstream
+=======
+"xVb" = (
+/obj/structure/table/reinforced,
+/obj/machinery/chem_dispenser/drinks/beer/fullupgrade{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "xVc" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68678,6 +70797,10 @@
 "xYl" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+<<<<<<< Updated upstream
+=======
+/obj/effect/landmark/start/cyborg,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "xYq" = (
@@ -68709,7 +70832,11 @@
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "xYH" = (
 /obj/item/kirbyplants/random/dead,
 /obj/effect/mapping_helpers/broken_floor,
@@ -68892,8 +71019,13 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "yce" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -68963,7 +71095,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/engine,
+<<<<<<< Updated upstream
 /area/station/engineering/supermatter/room)
+=======
+/area/space/nearstation)
+>>>>>>> Stashed changes
 "ycz" = (
 /obj/machinery/firealarm/directional/east,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -68988,6 +71124,10 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/obj/effect/mob_spawn/corpse/human,
+>>>>>>> Stashed changes
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
 "ydj" = (
@@ -69022,6 +71162,12 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+<<<<<<< Updated upstream
+=======
+/mob/living/simple_animal/hostile/zombie{
+	outfit = null
+	},
+>>>>>>> Stashed changes
 /turf/open/floor/engine,
 /area/station/engineering/atmospherics_engine)
 "ydM" = (
@@ -69312,9 +71458,15 @@
 /obj/effect/turf_decal/bot_white,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+<<<<<<< Updated upstream
 /obj/effect/landmark/start/librarian,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
+=======
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/cable,
+/obj/effect/landmark/start/warden,
+>>>>>>> Stashed changes
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "yjc" = (
@@ -69381,8 +71533,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+<<<<<<< Updated upstream
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
+=======
+/turf/closed/wall,
+/area/station/cargo/storage)
+>>>>>>> Stashed changes
 "ykR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/door/window/right/directional/south{
@@ -83442,7 +85599,11 @@ aox
 aox
 jXu
 jXu
+<<<<<<< Updated upstream
 xtr
+=======
+jXu
+>>>>>>> Stashed changes
 jXu
 lMJ
 jXu
@@ -83697,10 +85858,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 qGV
 bEh
 tvR
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -83954,10 +86122,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 tmz
 xgB
 iQF
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -84037,7 +86212,11 @@ lMJ
 lMJ
 xjH
 dFi
+<<<<<<< Updated upstream
 ldp
+=======
+nBF
+>>>>>>> Stashed changes
 tIl
 xjH
 xjH
@@ -84211,10 +86390,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 tmz
 xgB
 iQF
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -84468,10 +86654,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 tmz
 xgB
 iQF
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -84725,10 +86918,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 tmz
 xgB
 iQF
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -84817,7 +87017,11 @@ jjC
 jjC
 wpi
 jjC
+<<<<<<< Updated upstream
 tqt
+=======
+jjC
+>>>>>>> Stashed changes
 xEz
 qgi
 lMJ
@@ -84982,10 +87186,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 tmz
 xgB
 iQF
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -85239,10 +87450,17 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 lMJ
 rqa
 wZb
 iQd
+=======
+aaa
+aaa
+aaa
+aaa
+>>>>>>> Stashed changes
 aaa
 aaa
 aaa
@@ -85494,12 +87712,21 @@ aaa
 aaa
 aaa
 aaa
+<<<<<<< Updated upstream
 aox
 aox
 jXu
 jXu
 cQc
 jXu
+=======
+aaa
+aaa
+lMJ
+lMJ
+lMJ
+lMJ
+>>>>>>> Stashed changes
 lMJ
 lMJ
 lMJ
@@ -85749,6 +87976,7 @@ aaa
 aaa
 aaa
 mWd
+<<<<<<< Updated upstream
 aaa
 aaa
 lMJ
@@ -85760,6 +87988,19 @@ jXu
 aaa
 aaa
 aaa
+=======
+lMJ
+lMJ
+lMJ
+lMJ
+lMJ
+cbz
+jPp
+cbz
+cbz
+cbz
+cbz
+>>>>>>> Stashed changes
 hxo
 bUm
 aok
@@ -86010,6 +88251,7 @@ qvJ
 jfG
 jfG
 jfG
+<<<<<<< Updated upstream
 jXu
 kXA
 ufv
@@ -86017,6 +88259,15 @@ jXu
 aaa
 aaa
 aaa
+=======
+jfG
+cbz
+ufv
+cQZ
+dHl
+xVb
+cbz
+>>>>>>> Stashed changes
 cbz
 cbz
 fQW
@@ -86267,6 +88518,7 @@ eXy
 wCf
 wVa
 sFz
+<<<<<<< Updated upstream
 jXu
 jXu
 hWS
@@ -86275,6 +88527,16 @@ jXu
 jXu
 jXu
 jXu
+=======
+jfG
+cbz
+hWS
+aok
+aok
+fhn
+cbz
+qZB
+>>>>>>> Stashed changes
 qvY
 szu
 wxh
@@ -86527,6 +88789,7 @@ lBm
 qKy
 ybN
 edP
+<<<<<<< Updated upstream
 dwA
 bje
 jXu
@@ -86534,6 +88797,15 @@ ttG
 jXu
 qvY
 aFd
+=======
+dfk
+bje
+rSa
+cbz
+qZB
+qvY
+aok
+>>>>>>> Stashed changes
 uhP
 szu
 cHQ
@@ -86784,11 +89056,19 @@ vfv
 cTQ
 xte
 mzs
+<<<<<<< Updated upstream
 sHu
 kHU
 jXu
 jXu
 jXu
+=======
+jYB
+kHU
+jYB
+cbz
+qZB
+>>>>>>> Stashed changes
 jpG
 aok
 nVG
@@ -86798,6 +89078,7 @@ cbz
 goG
 aok
 aok
+<<<<<<< Updated upstream
 xNi
 aok
 fHq
@@ -86806,6 +89087,16 @@ pXC
 iUw
 tAH
 aBw
+=======
+aok
+aok
+aFd
+aFd
+aFd
+aok
+tAH
+aok
+>>>>>>> Stashed changes
 aok
 mmR
 aok
@@ -87039,6 +89330,7 @@ isO
 gYE
 uEC
 wgw
+<<<<<<< Updated upstream
 twr
 tSL
 xgB
@@ -87048,6 +89340,17 @@ jXu
 ouc
 dSG
 mmR
+=======
+cbz
+nME
+eEb
+fBl
+eEb
+cbz
+ouc
+dSG
+xtr
+>>>>>>> Stashed changes
 xYl
 mmR
 mUz
@@ -87055,6 +89358,7 @@ xdY
 rgN
 rbL
 mmR
+<<<<<<< Updated upstream
 jYB
 hyd
 bNv
@@ -87063,6 +89367,16 @@ nOK
 thQ
 ejo
 dOw
+=======
+rbL
+hyd
+bNv
+hyd
+uKm
+hyd
+ejo
+hyd
+>>>>>>> Stashed changes
 uKm
 mmR
 xac
@@ -87295,12 +89609,21 @@ teg
 wvR
 pQu
 vEH
+<<<<<<< Updated upstream
 jXu
 lUe
 tSL
 rNV
 cGL
 guZ
+=======
+wgw
+cbz
+ldp
+rNV
+cGL
+xoc
+>>>>>>> Stashed changes
 xoc
 xyz
 xyz
@@ -87315,11 +89638,19 @@ rhn
 iqt
 xCt
 tRt
+<<<<<<< Updated upstream
 nkY
 ftj
 yiN
 hHy
 kUZ
+=======
+xCt
+iqt
+yiN
+iqt
+xCt
+>>>>>>> Stashed changes
 bte
 iqt
 utp
@@ -87552,6 +89883,7 @@ fpH
 vhU
 eNU
 aQE
+<<<<<<< Updated upstream
 jXu
 nME
 iUE
@@ -87563,6 +89895,19 @@ mAy
 mmR
 szu
 aFd
+=======
+cbz
+cbz
+lUe
+gQv
+iHo
+jbO
+cbz
+mAy
+mmR
+szu
+aok
+>>>>>>> Stashed changes
 bHm
 cbz
 cbz
@@ -87571,11 +89916,19 @@ hnr
 uSm
 tmm
 cYg
+<<<<<<< Updated upstream
 mFp
 jGA
 mNZ
 qOp
 aok
+=======
+mmR
+hyd
+mNZ
+hyd
+nqr
+>>>>>>> Stashed changes
 hyd
 fkT
 mmR
@@ -87809,6 +90162,7 @@ lbZ
 jXu
 jXu
 jXu
+<<<<<<< Updated upstream
 jXu
 jXu
 tSL
@@ -87818,6 +90172,17 @@ fhn
 jXu
 lJo
 xJV
+=======
+cbz
+thQ
+cpt
+cZu
+ftj
+fhn
+cbz
+lJo
+mmR
+>>>>>>> Stashed changes
 jpI
 uxd
 sfG
@@ -87829,7 +90194,11 @@ uJY
 eLb
 wND
 mmR
+<<<<<<< Updated upstream
 dka
+=======
+kXA
+>>>>>>> Stashed changes
 aok
 dka
 szu
@@ -88063,6 +90432,7 @@ pgJ
 fRZ
 hZQ
 ybi
+<<<<<<< Updated upstream
 twr
 mVS
 xxp
@@ -88073,6 +90443,18 @@ vpU
 twr
 rSa
 jXu
+=======
+mVS
+mVS
+xxp
+cbz
+sxn
+cpt
+vpU
+fzR
+rSa
+cbz
+>>>>>>> Stashed changes
 jXu
 fNH
 jXu
@@ -88321,6 +90703,7 @@ ktG
 mIg
 qMD
 vMd
+<<<<<<< Updated upstream
 ykL
 ykL
 ykL
@@ -88334,6 +90717,21 @@ xkb
 xgB
 nsM
 twr
+=======
+xJV
+xJV
+mkr
+jRM
+jRM
+aps
+xgB
+aok
+cbz
+xkb
+wZb
+nsM
+iQd
+>>>>>>> Stashed changes
 mdW
 jXu
 hvo
@@ -88582,6 +90980,7 @@ gib
 sHu
 rMp
 cVL
+<<<<<<< Updated upstream
 jXu
 uur
 xgB
@@ -88592,6 +90991,18 @@ xgB
 sHu
 twr
 twr
+=======
+sWB
+uur
+cuI
+tqt
+cbz
+jFk
+txO
+fNa
+wHR
+kgA
+>>>>>>> Stashed changes
 jXu
 jmR
 xap
@@ -88837,6 +91248,7 @@ jXu
 jXu
 nzg
 jXu
+<<<<<<< Updated upstream
 jXu
 jXu
 jXu
@@ -88847,6 +91259,18 @@ ykL
 lpS
 lpS
 lpS
+=======
+cbz
+cbz
+cbz
+btP
+aBw
+aBw
+ykL
+pmU
+lMO
+ekt
+>>>>>>> Stashed changes
 kSp
 lls
 jXu
@@ -89100,12 +91524,21 @@ jXu
 bSm
 sHu
 bPM
+<<<<<<< Updated upstream
 sxn
 uUu
 jXu
 rNP
 rNP
 mgv
+=======
+jXu
+bTd
+dFK
+xNi
+rNP
+nOK
+>>>>>>> Stashed changes
 mWE
 lpS
 lpS
@@ -90654,11 +93087,19 @@ aTU
 jSm
 cSm
 aok
+<<<<<<< Updated upstream
 kod
 dXp
 szu
 kod
 aok
+=======
+foY
+dXp
+fnA
+kod
+nmO
+>>>>>>> Stashed changes
 cSm
 aok
 iqt
@@ -104810,7 +107251,11 @@ rac
 fWl
 pCJ
 hkG
+<<<<<<< Updated upstream
 hkG
+=======
+mty
+>>>>>>> Stashed changes
 qXk
 fGH
 eHS
@@ -107373,7 +109818,11 @@ oPp
 tXD
 rwn
 cdX
+<<<<<<< Updated upstream
 vFB
+=======
+tXi
+>>>>>>> Stashed changes
 prY
 sGH
 obG
@@ -109187,7 +111636,11 @@ fnT
 dss
 pMH
 fWA
+<<<<<<< Updated upstream
 fWA
+=======
+nkY
+>>>>>>> Stashed changes
 fWA
 fWA
 puI
@@ -109921,19 +112374,31 @@ cgL
 tCS
 ybl
 eTU
+<<<<<<< Updated upstream
 loA
+=======
+nVU
+>>>>>>> Stashed changes
 tlh
 loA
 erh
 iHu
+<<<<<<< Updated upstream
 xOw
+=======
+fHq
+>>>>>>> Stashed changes
 nTk
 aXK
 xOw
 blG
 tBz
 nTk
+<<<<<<< Updated upstream
 ncx
+=======
+cQc
+>>>>>>> Stashed changes
 acU
 cnK
 sqE
@@ -109954,6 +112419,7 @@ dlc
 iWU
 peM
 wnQ
+<<<<<<< Updated upstream
 pIw
 htP
 vGF
@@ -109961,6 +112427,15 @@ ecp
 toV
 mQi
 fWA
+=======
+iUw
+htP
+sIC
+ecp
+aJv
+mQi
+nkY
+>>>>>>> Stashed changes
 wac
 kQT
 vVr
@@ -110181,17 +112656,30 @@ gLK
 gyH
 mKV
 ncx
+<<<<<<< Updated upstream
 ncx
+=======
+cQc
+>>>>>>> Stashed changes
 mfh
 ncx
 dRp
 ncx
+<<<<<<< Updated upstream
 ncx
 ncx
 ncx
 mfh
 ncx
 pTw
+=======
+cQc
+cQc
+cQc
+mfh
+ncx
+ouA
+>>>>>>> Stashed changes
 qyQ
 cnK
 vYI
@@ -110212,7 +112700,11 @@ ely
 peM
 vbq
 xsy
+<<<<<<< Updated upstream
 lEH
+=======
+cop
+>>>>>>> Stashed changes
 vGF
 tMe
 toV
@@ -110436,6 +112928,7 @@ tCS
 dPy
 vQV
 lnT
+<<<<<<< Updated upstream
 fbf
 fbf
 nKr
@@ -110448,6 +112941,20 @@ fbf
 fbf
 dhi
 rPe
+=======
+cAm
+fbf
+nKr
+coM
+aOU
+rPe
+cAm
+cAm
+fbf
+fbf
+dhi
+aOU
+>>>>>>> Stashed changes
 vjB
 haa
 hRq
@@ -110469,7 +112976,11 @@ uFD
 peM
 peM
 pGu
+<<<<<<< Updated upstream
 lEH
+=======
+cop
+>>>>>>> Stashed changes
 kag
 peM
 tkg
@@ -110704,7 +113215,11 @@ qaA
 wgf
 jUT
 rao
+<<<<<<< Updated upstream
 qaA
+=======
+dmS
+>>>>>>> Stashed changes
 haR
 gZG
 cnK
@@ -110741,7 +113256,11 @@ lgL
 lrK
 heV
 cyW
+<<<<<<< Updated upstream
 cyW
+=======
+bEh
+>>>>>>> Stashed changes
 keX
 hHt
 lRS
@@ -110954,13 +113473,22 @@ vlh
 vuJ
 vlh
 cFu
+<<<<<<< Updated upstream
 kYG
+=======
+bqy
+>>>>>>> Stashed changes
 vlh
 wBM
 vlh
 dOs
+<<<<<<< Updated upstream
 cFu
 vlh
+=======
+pfO
+bcC
+>>>>>>> Stashed changes
 pqb
 vsO
 kYG
@@ -110977,7 +113505,11 @@ dpn
 dQE
 heL
 vML
+<<<<<<< Updated upstream
 ayr
+=======
+qoA
+>>>>>>> Stashed changes
 nck
 phJ
 peM
@@ -111209,6 +113741,7 @@ pTw
 kYG
 wJV
 hUO
+<<<<<<< Updated upstream
 vyZ
 vyZ
 vyZ
@@ -111218,6 +113751,17 @@ vyZ
 fmX
 vyZ
 vyZ
+=======
+dWP
+dWP
+eon
+exy
+eGC
+exy
+fmX
+vyZ
+pzY
+>>>>>>> Stashed changes
 aRt
 xAl
 kYG
@@ -111247,7 +113791,11 @@ pHB
 mJa
 oTj
 sVK
+<<<<<<< Updated upstream
 mJa
+=======
+dMx
+>>>>>>> Stashed changes
 mJa
 ftd
 igy
@@ -111255,7 +113803,11 @@ gxb
 apg
 vuU
 sBV
+<<<<<<< Updated upstream
 mei
+=======
+pXC
+>>>>>>> Stashed changes
 lXu
 fyY
 qSc
@@ -111464,17 +114016,29 @@ vtp
 fbf
 shV
 sGC
+<<<<<<< Updated upstream
 stl
 xMX
 dRN
 otn
 dRN
+=======
+jGA
+xMX
+dRN
+lAu
+mFp
+>>>>>>> Stashed changes
 wdB
 oET
 kKk
 qLw
 vQt
+<<<<<<< Updated upstream
 qLw
+=======
+raH
+>>>>>>> Stashed changes
 tdf
 mdk
 kYG
@@ -111496,7 +114060,11 @@ tKE
 uRL
 peM
 maS
+<<<<<<< Updated upstream
 pIw
+=======
+aEz
+>>>>>>> Stashed changes
 pIw
 hbR
 gxx
@@ -111510,8 +114078,13 @@ dKE
 mHT
 tJF
 nau
+<<<<<<< Updated upstream
 vuU
 jvj
+=======
+tft
+qGV
+>>>>>>> Stashed changes
 vmx
 irz
 hGk
@@ -111721,6 +114294,7 @@ iSI
 qaA
 fqV
 sGC
+<<<<<<< Updated upstream
 stl
 jUx
 frZ
@@ -111733,6 +114307,20 @@ rHn
 mYE
 mYE
 uLp
+=======
+jGA
+jUx
+frZ
+lAu
+lAu
+lAu
+fJC
+lAu
+rHn
+mYE
+mYE
+kUZ
+>>>>>>> Stashed changes
 mdk
 kYG
 nJM
@@ -111768,7 +114356,11 @@ mHT
 gXW
 nau
 cBd
+<<<<<<< Updated upstream
 jvj
+=======
+otn
+>>>>>>> Stashed changes
 nnD
 ndr
 sbl
@@ -111981,6 +114573,7 @@ kYG
 xdn
 jUx
 aXL
+<<<<<<< Updated upstream
 aXL
 rHn
 mkr
@@ -111990,6 +114583,17 @@ rHn
 hko
 hko
 uLp
+=======
+lAu
+lAu
+lAu
+fJC
+rCW
+lAu
+hko
+hko
+azs
+>>>>>>> Stashed changes
 qTX
 kYG
 uJz
@@ -112012,10 +114616,17 @@ peM
 mSM
 mSM
 peM
+<<<<<<< Updated upstream
 ovf
 peM
 uxm
 ruP
+=======
+muu
+peM
+uxm
+dwA
+>>>>>>> Stashed changes
 oqK
 mHT
 hQB
@@ -112025,7 +114636,11 @@ mHT
 egP
 gMt
 vuU
+<<<<<<< Updated upstream
 jvj
+=======
+aQp
+>>>>>>> Stashed changes
 qMm
 lMC
 smZ
@@ -112237,6 +114852,7 @@ nTA
 cKx
 fXi
 uHE
+<<<<<<< Updated upstream
 rHn
 rHn
 kww
@@ -112245,6 +114861,16 @@ sWB
 cAm
 fec
 rHn
+=======
+ghL
+ghL
+lAu
+lAu
+lAu
+lAu
+lAu
+lAu
+>>>>>>> Stashed changes
 fJP
 ycw
 uJL
@@ -112275,10 +114901,17 @@ udD
 sCN
 cyW
 wIa
+<<<<<<< Updated upstream
 cyW
 cyW
 cyW
 cyW
+=======
+nhb
+cyW
+cyW
+bEh
+>>>>>>> Stashed changes
 tds
 nzo
 vuU
@@ -112493,6 +115126,7 @@ nTA
 qZI
 sGC
 stl
+<<<<<<< Updated upstream
 jUx
 wBE
 oNs
@@ -112501,6 +115135,16 @@ qZB
 oNs
 hRl
 gOy
+=======
+koF
+wBE
+oNs
+eyD
+lAu
+lAu
+lAu
+lAu
+>>>>>>> Stashed changes
 auc
 rtQ
 uLp
@@ -112529,6 +115173,7 @@ dsV
 uKa
 hdp
 htY
+<<<<<<< Updated upstream
 ruP
 gSn
 cyW
@@ -112538,6 +115183,17 @@ cyW
 cyW
 cyW
 nzo
+=======
+qOp
+wUh
+cyW
+cyW
+cyW
+mAA
+dOw
+dOw
+guZ
+>>>>>>> Stashed changes
 vuU
 jvj
 qua
@@ -112754,11 +115410,19 @@ jUx
 bDA
 vfk
 uga
+<<<<<<< Updated upstream
 qZB
 oNs
 hRl
 gOy
 vfk
+=======
+lAu
+lAu
+lAu
+lAu
+lAu
+>>>>>>> Stashed changes
 sJL
 uLp
 suj
@@ -112787,6 +115451,7 @@ gto
 aej
 ahV
 ruP
+<<<<<<< Updated upstream
 cyW
 cyW
 tCG
@@ -112796,6 +115461,17 @@ cyW
 lxt
 nzo
 vuU
+=======
+dOw
+cyW
+tCG
+cyW
+dOw
+cyW
+lxt
+guZ
+tft
+>>>>>>> Stashed changes
 iTC
 smt
 mTy
@@ -113006,6 +115682,7 @@ sph
 vGw
 tmq
 sGC
+<<<<<<< Updated upstream
 stl
 qOz
 wBE
@@ -113015,6 +115692,17 @@ qZB
 oNs
 hRl
 gOy
+=======
+bel
+qOz
+gOy
+eEP
+lAu
+lAu
+lAu
+lAu
+lAu
+>>>>>>> Stashed changes
 eQL
 rtQ
 mBo
@@ -113043,6 +115731,7 @@ nud
 gto
 aej
 ahV
+<<<<<<< Updated upstream
 ruP
 cyW
 cyW
@@ -113052,6 +115741,17 @@ cyW
 cyW
 cyW
 nzo
+=======
+uUv
+dOw
+epc
+cyW
+wxK
+cyW
+cyW
+bEh
+fec
+>>>>>>> Stashed changes
 vuU
 dwf
 qMm
@@ -113265,6 +115965,7 @@ pmj
 bgs
 pWB
 lta
+<<<<<<< Updated upstream
 rHn
 rHn
 rHn
@@ -113274,6 +115975,17 @@ muu
 rHn
 rHn
 fJP
+=======
+ghL
+ghL
+lAu
+lAu
+lAu
+lAu
+lAu
+ghL
+dMS
+>>>>>>> Stashed changes
 vBe
 wBV
 aUP
@@ -113305,8 +116017,13 @@ ruP
 ruP
 ruP
 ruP
+<<<<<<< Updated upstream
 cyW
 cyW
+=======
+dOw
+dOw
+>>>>>>> Stashed changes
 dfS
 nzo
 vuU
@@ -113522,17 +116239,30 @@ sGC
 kYG
 hwt
 hSO
+<<<<<<< Updated upstream
 pzY
 pzY
 pzY
+=======
+sVT
+tvR
+tvR
+>>>>>>> Stashed changes
 mny
 iHp
 aHh
 pzY
+<<<<<<< Updated upstream
 pzY
 nro
 kcV
 lLu
+=======
+mnm
+nro
+kcV
+cFN
+>>>>>>> Stashed changes
 sGC
 aaa
 aYx
@@ -113562,9 +116292,15 @@ qhc
 qhc
 mRg
 hcT
+<<<<<<< Updated upstream
 kLi
 kLi
 kLi
+=======
+avz
+vEV
+vEV
+>>>>>>> Stashed changes
 swy
 cFa
 kLi
@@ -113781,7 +116517,11 @@ dQP
 jmq
 gWv
 fjv
+<<<<<<< Updated upstream
 gWv
+=======
+kww
+>>>>>>> Stashed changes
 cRq
 mYE
 mDX
@@ -114036,6 +116776,7 @@ aaa
 kYG
 xYD
 sTY
+<<<<<<< Updated upstream
 sGC
 kYG
 kYG
@@ -114047,6 +116788,19 @@ kYG
 sNt
 sTY
 sGC
+=======
+vAl
+ghL
+ghL
+lAu
+lAu
+vAl
+ghL
+ghL
+sNt
+sTY
+vAl
+>>>>>>> Stashed changes
 kYG
 dgf
 dgk
@@ -114293,6 +117047,7 @@ aaa
 kYG
 qIS
 lDP
+<<<<<<< Updated upstream
 aib
 qZI
 qZI
@@ -114304,6 +117059,19 @@ qZI
 dHM
 lDP
 qZI
+=======
+tmz
+lAu
+hHy
+lAu
+hHy
+ttG
+ttG
+ttG
+dHM
+lDP
+ttG
+>>>>>>> Stashed changes
 kYG
 aWK
 dgk
@@ -114334,7 +117102,11 @@ nGq
 kRf
 uQe
 pul
+<<<<<<< Updated upstream
 nzo
+=======
+guZ
+>>>>>>> Stashed changes
 iGr
 gSn
 fzM
@@ -114549,6 +117321,7 @@ aaa
 aaa
 kYG
 tJb
+<<<<<<< Updated upstream
 lDP
 lDP
 qZI
@@ -114560,6 +117333,19 @@ qZI
 qZI
 qLJ
 lDP
+=======
+kxw
+lDP
+xKl
+hHy
+lAu
+mxW
+xKl
+lAu
+hHy
+qLJ
+hel
+>>>>>>> Stashed changes
 xKl
 kYG
 dgg
@@ -114590,7 +117376,11 @@ cyW
 fBc
 dGq
 uQe
+<<<<<<< Updated upstream
 pul
+=======
+jLE
+>>>>>>> Stashed changes
 nzo
 cQQ
 sCW
@@ -114805,6 +117595,7 @@ aaa
 aaa
 aaa
 kYG
+<<<<<<< Updated upstream
 qoA
 aib
 lDP
@@ -114817,6 +117608,20 @@ qZI
 qZI
 lDP
 aib
+=======
+lAu
+tmz
+lDP
+xKl
+xKl
+hHy
+xOV
+xKl
+hHy
+ttG
+lAu
+tmz
+>>>>>>> Stashed changes
 vLX
 kYG
 aWK
@@ -114843,6 +117648,7 @@ lAh
 dHG
 iui
 cyW
+<<<<<<< Updated upstream
 cyW
 jKG
 gpQ
@@ -114852,6 +117658,17 @@ nzo
 jms
 sCW
 fzM
+=======
+pxc
+gdt
+gpQ
+dJC
+jLE
+nzo
+jms
+sCW
+jZW
+>>>>>>> Stashed changes
 sCW
 qua
 hnn
@@ -115062,6 +117879,7 @@ aaa
 aaa
 aaa
 kYG
+<<<<<<< Updated upstream
 aib
 aib
 bNE
@@ -115075,6 +117893,21 @@ aib
 bNE
 aib
 qZI
+=======
+tmz
+aib
+bNE
+kxw
+oAD
+icM
+tmz
+tmz
+lAu
+tmz
+lAu
+aib
+lAu
+>>>>>>> Stashed changes
 kYG
 dgh
 dgk
@@ -115100,13 +117933,22 @@ lAh
 htD
 ukq
 sdE
+<<<<<<< Updated upstream
 cyW
+=======
+dOw
+>>>>>>> Stashed changes
 jKG
 gpQ
 uQe
 pul
+<<<<<<< Updated upstream
 nzo
 cQQ
+=======
+guZ
+hRl
+>>>>>>> Stashed changes
 sCW
 fzM
 sCW
@@ -115362,7 +118204,11 @@ cIM
 dJK
 uQe
 pul
+<<<<<<< Updated upstream
 nzo
+=======
+guZ
+>>>>>>> Stashed changes
 fiE
 cyW
 uel
@@ -115620,8 +118466,13 @@ vPy
 tjG
 xmb
 mDA
+<<<<<<< Updated upstream
 jZz
 cyW
+=======
+bam
+bEh
+>>>>>>> Stashed changes
 gTC
 cyW
 qMm
@@ -115876,11 +118727,19 @@ vhv
 ldK
 tqY
 pul
+<<<<<<< Updated upstream
 nzo
 fzM
 rZt
 jZz
 cyW
+=======
+fec
+rqa
+rZt
+jZz
+cLU
+>>>>>>> Stashed changes
 ccK
 vFK
 kBh
@@ -116637,7 +119496,11 @@ aaa
 aaa
 fuu
 ucw
+<<<<<<< Updated upstream
 vTX
+=======
+sEO
+>>>>>>> Stashed changes
 eWB
 gHY
 nBu
@@ -116647,7 +119510,11 @@ vTX
 fKv
 vhv
 bYo
+<<<<<<< Updated upstream
 xRc
+=======
+rsr
+>>>>>>> Stashed changes
 qTA
 jZz
 nnD
@@ -116899,7 +119766,11 @@ wCS
 sHM
 kUJ
 uWx
+<<<<<<< Updated upstream
 dmP
+=======
+xzS
+>>>>>>> Stashed changes
 vTX
 vTX
 bqk
@@ -117933,7 +120804,11 @@ tIk
 vhv
 rPF
 fhG
+<<<<<<< Updated upstream
 jvj
+=======
+iQF
+>>>>>>> Stashed changes
 nzP
 xkV
 dtB

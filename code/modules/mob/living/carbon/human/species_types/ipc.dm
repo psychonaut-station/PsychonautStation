@@ -10,7 +10,6 @@
 		TRAIT_NOCLONELOSS,
 		TRAIT_RESISTCOLD,
 		TRAIT_LIVERLESS_METABOLISM,
-		TRAIT_PIERCEIMMUNE,
 		TRAIT_RADIMMUNE,
 		TRAIT_TOXIMMUNE,
 		TRAIT_NO_DNA_COPY,
@@ -132,6 +131,7 @@
 	for(var/datum/sprite_accessory/ipc_chassis/chassis in GLOB.ipc_chassis_list)
 		if(chassis.icon_state == randomizedtv.icon_state)
 			randomizedchassis = chassis
+			break
 	human_mob.dna.features["ipc_monitor"] = randomizedtv
 	human_mob.dna.features["ipc_chassis"] = randomizedchassis
 	randomize_external_organs(human_mob)

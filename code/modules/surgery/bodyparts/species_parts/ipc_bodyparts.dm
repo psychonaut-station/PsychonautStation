@@ -31,21 +31,16 @@
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
 	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
 	if(owner)
-		var/partdamage = get_damage()
+		if(brute > 0 && prob(10))
+			new /obj/effect/decal/cleanable/oil(owner.loc)
+		var/partdamage =
 		var/mob/living/carbon/oldowner = owner
-		var/brutedam = brute_dam / 2
-		var/burndam = burn_dam / 2
-		if(75 <= partdamage)
+		if(get_damage() >= 75)
 			if(prob(50))
 				drop_limb()
-				while(brutedam > 5 && burndam > 5)
-					var/bdprt = pick(BODY_ZONE_CHEST,BODY_ZONE_L_ARM,BODY_ZONE_R_ARM,BODY_ZONE_L_LEG,BODY_ZONE_R_LEG)
-					oldowner.apply_damages(brute = 5, burn = 5, def_zone = bdprt)
-					brutedam -= 5
-					burndam -= 5
+				oldowner.apply_damages(brute = brute_dam * 4/5, burn = burn_dam * 4/5, def_zone = BODY_ZONE_CHEST)
+				heal_damage(brute = brute_dam * 4/5, burn = burn_dam * 4/5)
 				return
 
 /obj/item/bodypart/head/ipc/emp_act(severity)

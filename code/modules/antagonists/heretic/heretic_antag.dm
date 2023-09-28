@@ -23,7 +23,7 @@
 	hijack_speed = 0.5
 	suicide_cry = "THE MANSUS SMILES UPON ME!!"
 	preview_outfit = /datum/outfit/heretic
-	can_assign_self_objectives = TRUE
+	can_assign_self_objectives = FALSE
 	default_custom_objective = "Turn a department into a testament for your dark knowledge."
 	hardcore_random_bonus = TRUE
 	/// Whether we give this antagonist objectives on gain.

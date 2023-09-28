@@ -34,7 +34,6 @@
 	if(owner)
 		if(brute > 0 && prob(10))
 			new /obj/effect/decal/cleanable/oil(owner.loc)
-		var/partdamage =
 		var/mob/living/carbon/oldowner = owner
 		if(get_damage() >= 75)
 			if(prob(50))

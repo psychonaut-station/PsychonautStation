@@ -3024,7 +3024,9 @@
 	dir = 4;
 	id = "garbage"
 	},
-/obj/machinery/recycler,
+/obj/machinery/recycler{
+	dir = 8
+	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
@@ -23158,7 +23160,7 @@
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/cryo)
 "dny" = (
-/obj/machinery/atmospherics/components/unary/cryo_cell,
+/obj/machinery/cryo_cell,
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/cryo)
 "dnB" = (
@@ -90297,7 +90299,7 @@
 /area/station/hallway/primary/central/aft)
 "vTm" = (
 /obj/structure/table/reinforced,
-/obj/item/storage/backpack/duffelbag/med/surgery,
+/obj/item/surgery_tray,
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
 	dir = 8
 	},

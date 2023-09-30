@@ -13,7 +13,6 @@
 		TRAIT_RADIMMUNE,
 		TRAIT_TOXIMMUNE,
 		TRAIT_NO_DNA_COPY,
-		TRAIT_NO_TRANSFORMATION_STING,
 		TRAIT_XENO_IMMUNE,
 		TRAIT_NOHUNGER,
 		TRAIT_NOTOOLFLASH,
@@ -126,9 +125,10 @@
 			BP.update_limb()
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
-	human_mob.dna.features["ipc_monitor"] = "Black"
-	human_mob.dna.features["ipc_chassis"] = "Black"
-	randomize_external_organs(human_mob)
+	var/list/features = ..()
+	features["ipc_monitor"] = "Black"
+	features["ipc_chassis"] = "Black"
+	return features
 
 /datum/species/ipc/get_species_description()
 	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \
@@ -196,7 +196,7 @@
 		// Very high pressure, show an alert and take damage
 		if(HAZARD_HIGH_PRESSURE to INFINITY)
 			if(!HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
-				H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+				H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE * 2) * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 				H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/highpressure, 2)
 			else
 				H.clear_alert(ALERT_PRESSURE)
@@ -223,7 +223,7 @@
 			if(HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
 				H.clear_alert(ALERT_PRESSURE)
 			else
-				H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+				H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * 2 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 				H.throw_alert(ALERT_PRESSURE, /atom/movable/screen/alert/lowpressure, 2)
 
 /// DATUMS

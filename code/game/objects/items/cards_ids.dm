@@ -1722,6 +1722,7 @@
 	var/scribbled_assignment
 	///An icon state used as trim.
 	var/scribbled_trim
+	var/scribbled_trim_icon
 	///The colors for each of the above variables, for when overlays are updated.
 	var/details_colors = list("#000000", "#000000", "#000000")
 
@@ -1779,23 +1780,29 @@
 			details_colors[INDEX_ASSIGNMENT_COLOR] = details["color"] || "#000000"
 		if("Trim")
 			var/static/list/possible_trims
+			var/static/list/possible_trim_icons
 			if(!possible_trims)
 				possible_trims = list()
+				possible_trim_icons = list()
 				for(var/trim_path in typesof(/datum/id_trim))
 					var/datum/id_trim/trim = SSid_access.trim_singletons_by_path[trim_path]
 					if(trim?.trim_state && trim.assignment)
-						possible_trims |= replacetext(trim.trim_state, "trim_", "")
+						var/trim_state = replacetext(trim.trim_state, "trim_", "")
+						possible_trims |= trim_state
+						possible_trim_icons[trim_state] = trim.trim_icon
 				sortTim(possible_trims, GLOBAL_PROC_REF(cmp_typepaths_asc))
 			var/input_trim = tgui_input_list(user, "Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", possible_trims)
 			if(!input_trim || !after_input_check(user, item, input_trim, scribbled_trim))
 				return
 			scribbled_trim = "cardboard_[input_trim]"
+			scribbled_trim_icon = possible_trim_icons[input_trim]
 			var/list/details = item.get_writing_implement_details()
 			details_colors[INDEX_TRIM_COLOR] = details["color"] || "#000000"
 		if("Reset")
 			scribbled_name = null
 			scribbled_assignment = null
 			scribbled_trim = null
+			scribbled_trim_icon = null
 			details_colors = list("#000000", "#000000", "#000000")
 
 	update_appearance()
@@ -1835,7 +1842,7 @@
 		var/mutable_appearance/frame_overlay = mutable_appearance(icon, "cardboard_frame")
 		frame_overlay.color = details_colors[INDEX_TRIM_COLOR]
 		. += frame_overlay
-		var/mutable_appearance/trim_overlay = mutable_appearance(icon, scribbled_trim)
+		var/mutable_appearance/trim_overlay = mutable_appearance(scribbled_trim_icon, scribbled_trim)
 		trim_overlay.color = details_colors[INDEX_TRIM_COLOR]
 		. += trim_overlay
 

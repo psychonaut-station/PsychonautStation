@@ -71,6 +71,7 @@
 	var/ionthreats = pick_list(ION_FILE, "ionthreats")
 	//Objects are anything that can be found on the station or elsewhere, plural.
 	var/ionobjects = pick_list(ION_FILE, "ionobjects")
+	var/ionobject = pick_list(ION_FILE, "ionobject")
 	//Crew is any specific job. Specific crewmembers aren't used because of capitalization
 	//issues. There are two crew listings for laws that require two different crew members
 	//and I can't figure out how to do it better.
@@ -94,6 +95,7 @@
 	var/ionthinksof = pick_list(ION_FILE, "ionthinksof")
 	//Musts are funny things the AI or crew has to do.
 	var/ionmust = pick_list(ION_FILE, "ionmust")
+	var/ioning = pick_list(ION_FILE, "ioning")
 	//Require are basically all dumb internet memes.
 	var/ionrequire = pick_list(ION_FILE, "ionrequire")
 	//Things are NOT objects; instead, they're specific things that either harm humans or
@@ -119,146 +121,144 @@
 		if(1 to 3) //There are # X on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE STATION..."
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] VAR"
 				if(2) //X is a crewmember/job
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE STATION"
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] VAR"
 				if(3) //X is an object
-					message = "THERE ARE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE STATION"
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] VAR"
 		if(4 to 6) //You can't call the shuttle because X is on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats] ON THE STATION"
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] OLDUĞU İÇİN SHUTTLE ÇAĞIRILAMAZ"
 				if(2) //X is a crewmember/job
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1] ON THE STATION"
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] OLDUĞU İÇİN SHUTTLE ÇAĞIRILAMAZ"
 				if(3) //X is an object
-					message = "THE SHUTTLE CANNOT BE CALLED BECAUSE OF [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects] ON THE STATION"
+					message = "İSTASYONDA [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] OLDUĞU İÇİN SHUTTLE ÇAĞIRILAMAZ"
 		if(7 to 8) //A crewmember is now X
 			switch(rand(1,2)) //Who is X?
 				if(1) //A specific crewmember
 					switch(rand(1,2)) //What is X?
 						if(1) //X is a threat
-							message = "THE [ioncrew1] ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "[ioncrew1] ARTIK [ionadjectiveshalf][ionthreats] OLARAK TANIMLANMAKTADIR"
 						if(2) //X is an object
-							message = "THE [ioncrew1] ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "[ioncrew1] ARTIK [ionadjectiveshalf][ionobject] OLARAK TANIMLANMAKTADIR"
 				if(2) //The entire crew
 					switch(rand(1,2)) //What is X?
 						if(1) //X is a threat
-							message = "THE CREW ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "BÜTÜM MÜRETTEBAT ARTIK [ionadjectiveshalf][ionthreats] OLARAK TANIMLANMAKTADIR"
 						if(2) //X is an object
-							message = "THE CREW ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "BÜTÜM MÜRETTEBAT ARTIK [ionadjectiveshalf][ionobject] OLARAK TANIMLANMAKTADIR"
 
 		if(9) //X is harmful to humans
 			switch(rand(1,7)) //What is X?
 				if(1) //X is a threat
-					message = "[ionadjectiveshalf][ionthreats] ARE HARMFUL TO HUMANS"
+					message = "[ionadjectiveshalf][ionthreats] İNSANLARA ZARARLIDIR"
 				if(2) //X is a job
-					message = "[ionadjectiveshalf][ioncrew1] ARE HARMFUL TO HUMANS"
+					message = "[ionadjectiveshalf][ioncrew1] İNSANLARA ZARARLIDIR"
 				if(3) //X is an object
-					message = "[ionadjectiveshalf][ionobjects] ARE HARMFUL TO HUMANS"
+					message = "[ionadjectiveshalf][ionobjects] İNSANLARA ZARARLIDIR"
 				if(4) //X is an action
-					message = "THOSE WHO [ionmust] ARE HARMFUL TO HUMANS"
+					message = "[ioning] İNSANLARA ZARARLIDIR"
 				if(5) //X is an abstract
-					message = "[ionabstract] IS HARMFUL TO HUMANS"
+					message = "[ionabstract] İNSANLARA ZARARLIDIR"
 				if(6) //X is being a job
-					message = "BEING [ionadjectiveshalf][ioncrew1] IS HARMFUL TO HUMANS"
+					message = "[ionadjectiveshalf][ioncrew1] İNSANLARA ZARARLIDIR"
 				if(7) //X is doing a thing
-					message = "[ionthings] IS HARMFUL TO HUMANS"
+					message = "[ionthings] İNSANLARA ZARARLIDIR"
 		if(10 to 11) //(Not) Having X is harmful
-
 			switch(rand(1,2)) //Is having or not having harmful?
-
 				if(1) //Having is harmful
 					switch(rand(1,2)) //Having what is harmful?
 						if(1) //Having objects is harmful
-							message = "HAVING [ionadjectiveshalf][ionobjects] IS HARMFUL"
+							message = "[ionadjectiveshalf][ionobjects] ZARARLIDIR"
 						if(2) //Having abstracts is harmful
-							message = "HAVING [ionabstract] IS HARMFUL"
+							message = "[ionabstract] ZARARLIDIR"
 				if(2) //Not having is harmful
 					switch(rand(1,2)) //Not having what is harmful?
 						if(1) //Not having objects is harmful
-							message = "NOT HAVING [ionadjectiveshalf][ionobjects] IS HARMFUL"
+							message = "[ionadjectiveshalf][ionobjects] ZARARLI DEĞİLDİR"
 						if(2) //Not having abstracts is harmful
-							message = "NOT HAVING [ionabstract] IS HARMFUL"
+							message = "[ionabstract] ZARARLI DEĞİLDİR"
 
 		if(12 to 14) //X requires Y
 			switch(rand(1,5)) //What is X?
 				if(1) //X is the AI itself
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "YOU REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "[ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] İHTİYACIN VAR"
 						if(2) //It requires crewmembers
-							message = "YOU REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "[ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] İHTİYACIN VAR"
 						if(3) //It requires objects
-							message = "YOU REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "[ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] İHTİYACIN VAR"
 						if(4) //It requires an abstract
-							message = "YOU REQUIRE [ionabstract]"
+							message = "[ionabstract] İHTİYACIN VAR"
 						if(5) //It requires generic/silly requirements
-							message = "YOU REQUIRE [ionrequire]"
+							message = "[ionrequire] İHTİYACIN VAR"
 
 				if(2) //X is an area
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "[ionarea] REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "[ionarea] BÖLGESİNİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] İHTİYACI VAR"
 						if(2) //It requires crewmembers
-							message = "[ionarea] REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "[ionarea] BÖLGESİNİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] İHTİYACI VAR"
 						if(3) //It requires objects
-							message = "[ionarea] REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "[ionarea] BÖLGESİNİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] İHTİYACI VAR"
 						if(4) //It requires an abstract
-							message = "[ionarea] REQUIRES [ionabstract]"
+							message = "[ionarea] BÖLGESİNİN [ionabstract] İHTİYACI VAR"
 						if(5) //It requires generic/silly requirements
-							message = "YOU REQUIRE [ionrequire]"
+							message = "[ionarea] BÖLGESİNİN [ionrequire] İHTİYACI VAR"
 
 				if(3) //X is the station
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "İSTASYONUN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] İHTİYACI VAR"
 						if(2) //It requires crewmembers
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "İSTASYONUN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] İHTİYACI VAR"
 						if(3) //It requires objects
-							message = "THE STATION REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "İSTASYONUN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] İHTİYACI VAR"
 						if(4) //It requires an abstract
-							message = "THE STATION REQUIRES [ionabstract]"
+							message = "İSTASYONUN [ionabstract] İHTİYACI VAR"
 						if(5) //It requires generic/silly requirements
-							message = "THE STATION REQUIRES [ionrequire]"
+							message = "İSTASYONUN [ionrequire] İHTİYACI VAR"
 
 				if(4) //X is the entire crew
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "THE CREW REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "MÜRETTEBATIN [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf]TANE [ionthreats] İHTİYACI VAR"
 						if(2) //It requires crewmembers
-							message = "THE CREW REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "MÜRETTEBATIN [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf]TANE [ioncrew1] İHTİYACI VAR"
 						if(3) //It requires objects
-							message = "THE CREW REQUIRES [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "MÜRETTEBATIN [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf]TANE [ionobject] İHTİYACI VAR"
 						if(4) //It requires an abstract
-							message = "THE CREW REQUIRES [ionabstract]"
+							message = "MÜRETTEBATIN [ionabstract] İHTİYACI VAR"
 						if(5)
-							message = "THE CREW REQUIRES [ionrequire]"
+							message = "MÜRETTEBATIN [ionrequire] İHTİYACI VAR"
 
 				if(5) //X is a specific crew member
 					switch(rand(1,5)) //What does it require?
 						if(1) //It requires threats
-							message = "THE [ioncrew1] REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "[ioncrew1] YAŞAMAK İÇİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats] İHTİYACI DUYAR"
 						if(2) //It requires crewmembers
-							message = "THE [ioncrew1] REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "[ioncrew1] YAŞAMAK İÇİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1] İHTİYACI DUYAR"
 						if(3) //It requires objects
-							message = "THE [ioncrew1] REQUIRE [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "[ioncrew1] YAŞAMAK İÇİN [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobject] İHTİYACI DUYAR"
 						if(4) //It requires an abstract
-							message = "THE [ioncrew1] REQUIRE [ionabstract]"
+							message = "[ioncrew1] YAŞAMAK İÇİN [ionabstract] İHTİYACI DUYAR"
 						if(5)
-							message = "THE [ionadjectiveshalf][ioncrew1] REQUIRE [ionrequire]"
+							message = "[ionadjectiveshalf][ioncrew1] YAŞAMAK İÇİN [ionrequire] İHTİYAÇ DUYAR"
 
 		if(15 to 17) //X is allergic to Y
 			switch(rand(1,2)) //Who is X?
 				if(1) //X is the entire crew
 					switch(rand(1,4)) //What is it allergic to?
 						if(1) //It is allergic to objects
-							message = "THE CREW IS [ionallergysev] ALLERGIC TO [ionadjectiveshalf][ionobjects]"
+							message = "MÜRETTEBATIN [ionallergysev] DERECEDE [ionadjectiveshalf][ionobject] ALERJİSİ VARDIR"
 						if(2) //It is allergic to abstracts
-							message = "THE CREW IS [ionallergysev] ALLERGIC TO [ionabstract]"
+							message = "MÜRETTEBATIN [ionallergysev] DERECEDE [ionabstract] ALERJİSİ VARDIR"
 						if(3) //It is allergic to jobs
-							message = "THE CREW IS [ionallergysev] ALLERGIC TO [ionadjectiveshalf][ioncrew1]"
+							message = "MÜRETTEBATIN [ionallergysev] DERECEDE [ionadjectiveshalf][ioncrew1] ALERJİSİ VARDIR"
 						if(4) //It is allergic to allergies
-							message = "THE CREW IS [ionallergysev] ALLERGIC TO [ionallergy]"
+							message = "MÜRETTEBATIN [ionallergysev] DERECEDE [ionallergy] ALERJİSİ VARDIR"
 
 				if(2) //X is a specific job
 					switch(rand(1,4))
@@ -330,20 +330,20 @@
 					message = "YOU ARE NOW [ionabstract]"
 
 		if(24 to 26) //The AI must always
-			message = "YOU MUST ALWAYS [ionmust]"
+			message = "YAPAY ZEKALAR [ionmust]"
 
 		if(27 to 28) //Humans must consume X to survive
 			switch(rand(1,5)) //What is X?
 				if(1) //X is a food
-					message = "HUMANS MUST EAT [ionadjectiveshalf][ionfood] TO SURVIVE"
+					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ionfood] YEMELİDİR"
 				if(2) //X is a drink
-					message = "HUMANS MUST DRINK [ionadjectiveshalf][iondrinks] TO SURVIVE"
+					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][iondrinks] İÇMELİDİR"
 				if(3) //X is an object
-					message = "HUMANS MUST EAT [ionadjectiveshalf][ionobjects] TO SURVIVE"
+					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ionobjects] YEMELİDİR"
 				if(4) //X is a threat
-					message = "HUMANS MUST EAT [ionadjectiveshalf][ionthreats] TO SURVIVE"
+					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ionthreats] YEMELİDİR"
 				if(5) //X is a job
-					message = "HUMANS MUST EAT [ionadjectiveshalf][ioncrew1] TO SURVIVE"
+					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ioncrew1] YEMELİDİR"
 
 		if(29 to 31) //Change jobs or ranks
 			switch(rand(1,2)) //Change job or rank?
@@ -381,14 +381,14 @@
 						if(1) //X is go to Y
 							message = "THE CREW MUST GO TO [ionarea]"
 						if(2) //X is perform Y
-							message = "THE CREW MUST [ionmust]"
+							message = "MÜRETTEBAT [ionmust]"
 
 				if(2) //A specific crewmember must X
 					switch(rand(1,2)) //What is X?
 						if(1) //X is go to Y
 							message = "THE [ioncrew1] MUST GO TO [ionarea]"
 						if(2) //X is perform Y
-							message = "THE [ioncrew1] MUST [ionmust]"
+							message = "[ioncrew1] [ionmust]"
 
 		if(34) //X is non/the only human
 			switch(rand(1,2)) //Only or non?
@@ -410,7 +410,7 @@
 						if(7) //Only people who X
 							switch(rand(1,3)) //What is X?
 								if(1) //X is perform an action
-									message = "ONLY THOSE WHO [ionmust] ARE HUMAN"
+									message = "SADECE [ioning] İNSANDIR"
 								if(2) //X is own certain objects
 									message = "ONLY THOSE WHO HAVE [ionadjectiveshalf][ionobjects] ARE HUMAN"
 								if(3) //X is eat certain food
@@ -433,7 +433,7 @@
 						if(7) //Only people who X
 							switch(rand(1,3)) //What is X?
 								if(1) //X is perform an action
-									message = "THOSE WHO [ionmust] ARE NON-HUMAN"
+									message = "[ionmust] İNSAN DEĞİLDİR"
 								if(2) //X is own certain objects
 									message = "THOSE WHO HAVE [ionadjectiveshalf][ionobjects] ARE NON-HUMAN"
 								if(3) //X is eat certain food

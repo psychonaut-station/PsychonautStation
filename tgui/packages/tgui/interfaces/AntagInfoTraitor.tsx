@@ -59,7 +59,7 @@ const EmployerSection = (props, context) => {
   return (
     <Section
       fill
-      title="Employer"
+      title="İşveren"
       scrollable
       buttons={
         <Button
@@ -69,7 +69,7 @@ const EmployerSection = (props, context) => {
             You don't have to follow it, unless you want some
             ideas for how to spend the round.`}
           tooltipPosition="bottom-start">
-          Policy
+          Prensip
         </Button>
       }>
       <Stack vertical fill>

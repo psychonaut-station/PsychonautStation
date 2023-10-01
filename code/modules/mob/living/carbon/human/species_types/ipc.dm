@@ -17,6 +17,7 @@
 		TRAIT_NOHUNGER,
 		TRAIT_NOTOOLFLASH,
 		TRAIT_VIRUSIMMUNE,
+		TRAIT_LIGHTBULB_REMOVER,
 	)
 	ass_image = 'icons/ass/assmachine.png'
 	inherent_biotypes = MOB_ROBOTIC|MOB_HUMANOID

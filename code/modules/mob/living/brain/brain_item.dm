@@ -273,7 +273,7 @@
 			return
 
 		if(istype(src, /obj/item/organ/internal/brain/basic_posibrain))
-			return ..()
+			return
 
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
 		if(C == user)

@@ -126,8 +126,9 @@
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
 	var/list/features = ..()
-	features["ipc_monitor"] = /datum/sprite_accessory/ipc_monitor/black
-	features["ipc_chassis"] = /datum/sprite_accessory/ipc_chassis/black
+	var/random_thing_text = pick(GLOB.ipc_chassis_list)	// Gets random feature name. Ex: Black or Bishop Cyberkinetics...
+	features["ipc_monitor"] = random_thing_text
+	features["ipc_chassis"] = random_thing_text
 	return features
 
 /datum/species/ipc/get_species_description()

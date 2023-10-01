@@ -970,8 +970,10 @@
 	var/obj/item/bodypart/bodypart = get_bodypart(overlay.attached_body_zone)
 	var/obj/item/organ/external/ipchead/ipcscreen = get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
 	if(!bodypart)
+		qdel(overlay)
 		return null
 	if(!ipcscreen)
+		qdel(overlay)
 		return null
 	remove_ipcscreen_overlay()
 	bodypart.add_bodypart_overlay(overlay)

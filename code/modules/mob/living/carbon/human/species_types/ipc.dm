@@ -121,7 +121,7 @@
 	for(var/obj/item/bodypart/BP as() in C.bodyparts) //Override bodypart data as necessary
 		var/newpath = newfinal_bodypart_overrides?[BP.body_zone]
 		if(newpath)
-			BP.limb_id = chassis_of_choice.limbs_id
+			BP.limb_id = chassis_of_choice.icon_state
 			BP.update_limb()
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)

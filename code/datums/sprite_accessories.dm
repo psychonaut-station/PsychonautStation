@@ -58,8 +58,6 @@
 	var/gender_specific
 	/// Determines if the accessory will be skipped by color preferences.
 	var/use_static
-	/// The limbs id supplied for full-body replacing features.
-	var/limbs_id
 	/**
 	 * Currently only used by mutantparts so don't worry about hair and stuff.
 	 * This is the source that this accessory will get its color from. Default is MUTCOLOR, but can also be HAIR, FACEHAIR, EYECOLOR and 0 if none.
@@ -2159,32 +2157,26 @@
 /datum/sprite_accessory/ipc_chassis/black
 	name = "Black"
 	icon_state = "blackipc"
-	limbs_id = "blackipc"
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
 	name = "Bishop Cyberkinetics"
 	icon_state = "bshipc"
-	limbs_id = "bshipc"
 
 /datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
 	name = "Bishop Cyberkinetics 2.0"
 	icon_state = "bs2ipc"
-	limbs_id = "bs2ipc"
 
 /datum/sprite_accessory/ipc_chassis/hephaestussindustries
 	name = "Hephaestus Industries"
 	icon_state = "hsiipc"
-	limbs_id = "hsiipc"
 
 /datum/sprite_accessory/ipc_chassis/shellguardmunitions
 	name = "Shellguard Munitions Standard Series"
 	icon_state = "sgmipc"
-	limbs_id = "sgmipc"
 
 /datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
 	icon_state = "zhpipc"
-	limbs_id = "zhpipc"
 
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'

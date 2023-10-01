@@ -51,7 +51,7 @@
 	RegisterSignal(charger, COMSIG_MOVABLE_BUMP, PROC_REF(on_bump), TRUE)
 	RegisterSignal(charger, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_move), TRUE)
 	RegisterSignal(charger, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), TRUE)
-	RegisterSignal(charger, COMSIG_LIVING_DEATH, PROC_REF(charge_end))
+	RegisterSignal(charger, COMSIG_LIVING_DEATH, PROC_REF(charge_end), TRUE)
 	charger.setDir(dir)
 	do_charge_indicator(charger, target)
 

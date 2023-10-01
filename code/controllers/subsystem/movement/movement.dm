@@ -99,7 +99,8 @@ SUBSYSTEM_DEF(movement)
 
 /datum/controller/subsystem/movement/proc/dequeue_loop(datum/move_loop/loop)
 	var/list/our_entries = buckets["[loop.timer]"]
-	our_entries -= loop
+	if(our_entries)
+		our_entries -= loop
 	if(!length(our_entries))
 		smash_bucket(bucket_time = loop.timer) // We can't pass an index in for context because we don't know our position
 
@@ -112,4 +113,3 @@ SUBSYSTEM_DEF(movement)
 /datum/controller/subsystem/movement/proc/remove_loop(datum/move_loop/remove)
 	dequeue_loop(remove)
 	remove.loop_stopped()
-

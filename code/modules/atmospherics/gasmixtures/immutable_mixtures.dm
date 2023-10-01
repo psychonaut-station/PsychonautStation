@@ -22,7 +22,8 @@
 
 /datum/gas_mixture/immutable/share(datum/gas_mixture/sharer, our_coeff, sharer_coeff)
 	. = ..()
-	sharer.temperature = initial_temperature
+	if(!isnull(sharer))
+		sharer.temperature = initial_temperature
 	garbage_collect()
 
 /datum/gas_mixture/immutable/react()
@@ -89,5 +90,3 @@
 		ADD_GAS(id, gases)
 		gases[id][MOLES] = mix[id][MOLES]
 		gases[id][ARCHIVE] = mix[id][MOLES]
-
-

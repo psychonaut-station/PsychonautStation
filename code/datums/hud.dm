@@ -361,7 +361,7 @@ GLOBAL_LIST_INIT(huds, list(
 		return
 	for(var/hud_image in hud_icons)
 		for(var/atom/atom_to_remove as anything in atoms_to_remove)
-			client_mob.client.images -= atom_to_remove.active_hud_list?[hud_image]
+			client_mob.client.images -= atom_to_remove?.active_hud_list?[hud_image]
 
 /// remove every hud image for this hud on atom_to_remove from client_mobs's client.images list
 /// optimization of [/datum/atom_hud/proc/remove_atom_from_single_hud] for hot cases, we assert that no nulls will be passed in via the list

@@ -12,6 +12,8 @@
  */
 /proc/is_valid_z_level(turf/source_loc, turf/checking_loc)
 	// if we're both on "station", regardless of multi-z, we'll pass by.
+	if(isnull(source_loc) || isnull(checking_loc))
+		return FALSE
 	if(is_station_level(source_loc.z) && is_station_level(checking_loc.z))
 		return TRUE
 	if(source_loc.z == checking_loc.z)

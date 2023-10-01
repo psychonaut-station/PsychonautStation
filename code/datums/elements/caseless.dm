@@ -17,7 +17,7 @@
 
 /datum/element/caseless/proc/on_fired_casing(obj/item/ammo_casing/shell, atom/target, mob/living/user, fired_from, randomspread, spread, zone_override, params, distro, obj/projectile/proj)
 	SIGNAL_HANDLER
-	if(isnull(proj))
+	if(QDELETED(proj))
 		return
 	if(reusable)
 		proj.AddElement(/datum/element/projectile_drop, shell.type)

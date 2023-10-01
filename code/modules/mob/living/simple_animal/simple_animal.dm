@@ -441,7 +441,7 @@
 	. += "Combat Mode: [combat_mode ? "On" : "Off"]"
 
 /mob/living/simple_animal/proc/drop_loot()
-	if(loot.len)
+	if(loot?.len)
 		for(var/i in loot)
 			new i(loc)
 

@@ -257,6 +257,9 @@
 
 	add_fingerprint(user)
 
+	if(istype(src, /obj/item/organ/internal/brain/basic_posibrain))
+		return
+
 	if(user.zone_selected != zone)
 		return ..()
 
@@ -269,8 +272,6 @@
 	//since these people will be dead M != usr
 
 	if(!target_has_brain)
-		if(istype(src, /obj/item/organ/internal/brain/basic_posibrain))
-			return
 		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 

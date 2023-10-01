@@ -174,7 +174,7 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
-		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && !isandroid(target) && !isipc(target))
+		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && !isipc(target))
 			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
 			return SURGERY_STEP_FAIL
 

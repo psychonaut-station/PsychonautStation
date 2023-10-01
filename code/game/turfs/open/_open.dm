@@ -266,6 +266,8 @@
 					chest_covered = TRUE
 				if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
 					head_covered = TRUE
+				if(head_covered && chest_covered)
+					break
 			if(!chest_covered || !head_covered)
 				var/datum/species/ipc/ipcspecies = exposed_human.dna.species
 				ipcspecies.apply_water(exposed_human)

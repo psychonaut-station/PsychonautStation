@@ -271,10 +271,6 @@
 	if(!target_has_brain)
 		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
-		//since these people will be dead M != usr
-		if(!get_location_opened(C, zone))
-			to_chat(user, span_warning("The bodyarea appears closed."))
-			return
 
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
 		if(C == user)
@@ -433,6 +429,48 @@
 	icon_state = "basic_posib"
 	zone = BODY_ZONE_CHEST
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
+
+/obj/item/organ/internal/brain/basic_posibrain/attack(mob/living/carbon/C, mob/user)
+	if(!istype(C))
+		return ..()
+
+	add_fingerprint(user)
+
+	if(user.zone_selected != zone)
+		return ..()
+
+	var/target_has_brain = C.get_organ_by_type(/obj/item/organ/internal/brain)
+
+	if(!target_has_brain && C.is_eyes_covered())
+		to_chat(user, span_warning("You're going to need to remove [C.p_their()] chest cover first!"))
+		return
+
+	//since these people will be dead M != usr
+
+	if(!target_has_brain)
+		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
+			return
+
+		if(!get_location_opened(C, zone))
+			to_chat(user, span_warning("The bodyarea appears closed."))
+			return
+
+		var/msg = "[C] has [src] inserted into [C.p_their()] chest by [user]."
+		if(C == user)
+			msg = "[user] inserts [src] into [user.p_their()] chest!"
+
+		C.visible_message(span_danger("[msg]"),
+						span_userdanger("[msg]"))
+
+		if(C != user)
+			to_chat(C, span_notice("[user] inserts [src] into your chest."))
+			to_chat(user, span_notice("You insert [src] into [C]'s chest."))
+		else
+			to_chat(user, span_notice("You insert [src] into your chest.") )
+
+		Insert(C)
+	else
+		..()
 
 /obj/item/organ/internal/brain/felinid //A bit smaller than average
 	brain_size = 0.8

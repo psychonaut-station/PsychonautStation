@@ -126,8 +126,8 @@
 
 /datum/species/ipc/randomize_features(mob/living/carbon/human/human_mob)
 	var/list/features = ..()
-	features["ipc_monitor"] = "Black"
-	features["ipc_chassis"] = "Black"
+	features["ipc_monitor"] = /datum/sprite_accessory/ipc_monitor/black
+	features["ipc_chassis"] = /datum/sprite_accessory/ipc_chassis/black
 	return features
 
 /datum/species/ipc/get_species_description()

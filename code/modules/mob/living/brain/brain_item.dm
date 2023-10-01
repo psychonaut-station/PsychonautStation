@@ -252,7 +252,7 @@
 		. += span_info("This one is completely devoid of life.")
 
 /obj/item/organ/internal/brain/attack(mob/living/carbon/C, mob/user)
-	if(!istype(C))
+	if(!istype(C)  || isipc(C))
 		return ..()
 
 	add_fingerprint(user)
@@ -269,10 +269,9 @@
 	//since these people will be dead M != usr
 
 	if(!target_has_brain)
-		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
-			return
-
 		if(istype(src, /obj/item/organ/internal/brain/basic_posibrain))
+			return
+		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."

@@ -372,10 +372,6 @@ GLOBAL_VAR(restart_counter)
 	if (name_link)
 		new_status += "<a href='[name_link]'>Discord</a>"
 
-	var/website = CONFIG_GET(string/hub_website)
-	if (website)
-		new_status += ", <a href='[website]'>Wiki</a>"
-
 	var/players = GLOB.clients.len
 
 	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full

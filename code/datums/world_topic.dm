@@ -162,7 +162,7 @@
 	require_comms_key = TRUE
 
 /datum/world_topic/news_report/Run(list/input)
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	minor_announce(input["message"], input["message_sender"])
 
 /datum/world_topic/adminmsg
 	keyword = "adminmsg"
@@ -205,7 +205,6 @@
 	.["hub"] = GLOB.hub_visibility
 	.["identifier"] = CONFIG_GET(string/serversqlname)
 
-
 	var/list/adm = get_admin_counts()
 	var/list/presentmins = adm["present"]
 	var/list/afkmins = adm["afk"]
@@ -239,3 +238,36 @@
 		// Shuttle status, see /__DEFINES/stat.dm
 		.["shuttle_timer"] = SSshuttle.emergency.timeLeft()
 		// Shuttle timer, in seconds
+
+/datum/world_topic/crewmanifest
+	keyword = "crewmanifest"
+	require_comms_key = TRUE
+
+/datum/world_topic/crewmanifest/Run(list/input)
+	var/list/positions = list()
+	for(var/datum/job_department/department as anything in SSjob.joinable_departments)
+		var/open = 0
+		var/list/exceptions = list()
+		for(var/datum/job/job as anything in department.department_jobs)
+			if(job.total_positions == -1)
+				exceptions += job.title
+				continue
+			var/open_slots = job.total_positions - job.current_positions
+			if(open_slots < 1)
+				continue
+			open += open_slots
+		positions[department.department_name] = list("exceptions" = exceptions, "open" = open)
+	
+	return json_encode(positions)
+
+/datum/world_topic/playerlist
+	keyword = "playerlist"
+	require_comms_key = TRUE
+
+/datum/world_topic/playerlist/Run(list/input)
+	var/list/keys = list()
+	for(var/I in GLOB.clients)
+		var/client/C = I
+		keys += C.key
+
+	return json_encode(keys)

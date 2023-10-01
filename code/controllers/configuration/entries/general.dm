@@ -36,9 +36,6 @@
 /// link that will be displayed on hub title
 /datum/config_entry/string/hub_name_link
 
-/// website link for hub title
-/datum/config_entry/string/hub_website
-
 /// station name (the name of the station in-game)
 /datum/config_entry/string/stationname
 
@@ -327,14 +324,14 @@
 /datum/config_entry/string/wikiurl
 	default = "http://www.tgstation13.org/wiki"
 
-/datum/config_entry/string/forumurl
-	default = "http://tgstation13.org/phpBB/index.php"
+/datum/config_entry/string/websiteurl
+	default = "http://www.psychonautstation.com"
 
 /datum/config_entry/string/rulesurl
-	default = "http://www.tgstation13.org/wiki/Rules"
+	default = "http://www.psychonautstation.com/rules"
 
 /datum/config_entry/string/githuburl
-	default = "https://www.github.com/tgstation/tgstation"
+	default = "https://github.com/psychonaut-station/PsychonautStation"
 
 /datum/config_entry/string/discordbotcommandprefix
 	default = "?"

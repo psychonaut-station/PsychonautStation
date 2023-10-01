@@ -164,7 +164,7 @@ window "infowindow"
 		anchor1 = 19,0
 		anchor2 = 34,0
 		saved-params = "is-checked"
-		text = "Rules"
+		text = "Kurallar"
 		command = "rules"
 	elem "wiki"
 		type = BUTTON
@@ -175,15 +175,15 @@ window "infowindow"
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
-	elem "forum"
+	elem "website"
 		type = BUTTON
 		pos = 320,5
 		size = 100x20
 		anchor1 = 50,0
 		anchor2 = 66,0
 		saved-params = "is-checked"
-		text = "Forum"
-		command = "forum"
+		text = "Website"
+		command = "website"
 	elem "github"
 		type = BUTTON
 		pos = 420,5
@@ -200,7 +200,7 @@ window "infowindow"
 		anchor1 = 81,0
 		anchor2 = 97,0
 		saved-params = "is-checked"
-		text = "Report Issue"
+		text = "Hata Bildir"
 		command = "report-issue"
 
 window "outputwindow"

@@ -91,8 +91,6 @@
 	var/ionnumbermodhalf = pick(900;"",(pick_list(ION_FILE, "ionnumbermod") + " "))
 	//Areas are specific places, on the station or otherwise.
 	var/ionarea = pick_list(ION_FILE, "ionarea")
-	//Thinksof is a bit weird, but generally means what X feels towards Y.
-	var/ionthinksof = pick_list(ION_FILE, "ionthinksof")
 	//Musts are funny things the AI or crew has to do.
 	var/ionmust = pick_list(ION_FILE, "ionmust")
 	var/ioning = pick_list(ION_FILE, "ioning")
@@ -117,7 +115,7 @@
 
 	var/message = ""
 
-	switch(rand(1,41))
+	switch(rand(1,39))
 		if(1 to 3) //There are # X on the station
 			switch(rand(1,3)) //What is X?
 				if(1) //X is a threat
@@ -263,62 +261,16 @@
 				if(2) //X is a specific job
 					switch(rand(1,4))
 						if(1) //It is allergic to objects
-							message = "THE [ioncrew1] ARE [ionallergysev] ALLERGIC TO [ionadjectiveshalf][ionobjects]"
+							message = "[ioncrew1]IN [ionallergysev] DERECEDE [ionadjectiveshalf][ionobjects] ALERJİSİ VARDIR"
 
 						if(2) //It is allergic to abstracts
-							message = "THE [ioncrew1] ARE [ionallergysev] ALLERGIC TO [ionabstract]"
+							message = "[ioncrew1]IN [ionallergysev] DERECEDE [ionabstract] ALERJİSİ VARDIR"
 						if(3) //It is allergic to jobs
-							message = "THE [ioncrew1] ARE [ionallergysev] ALLERGIC TO [ionadjectiveshalf][ioncrew1]"
+							message = "[ioncrew1]IN [ionallergysev] DERECEDE [ionadjectiveshalf][ioncrew1] ALERJİSİ VARDIR"
 						if(4) //It is allergic to allergies
-							message = "THE [ioncrew1] ARE [ionallergysev] ALLERGIC TO [ionallergy]"
+							message = "[ioncrew1]IN [ionallergysev] DERECEDE [ionallergy] ALERJİSİ VARDIR"
 
-		if(18 to 20) //X is Y of Z
-			switch(rand(1,4)) //What is X?
-				if(1) //X is the station
-					switch(rand(1,4)) //What is it Y of?
-						if(1) //It is Y of objects
-							message = "THE STATION [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
-						if(2) //It is Y of threats
-							message = "THE STATION [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
-						if(3) //It is Y of jobs
-							message = "THE STATION [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
-						if(4) //It is Y of abstracts
-							message = "THE STATION [ionthinksof] [ionabstract]"
-
-				if(2) //X is an area
-					switch(rand(1,4)) //What is it Y of?
-						if(1) //It is Y of objects
-							message = "[ionarea] [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
-						if(2) //It is Y of threats
-							message = "[ionarea] [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
-						if(3) //It is Y of jobs
-							message = "[ionarea] [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
-						if(4) //It is Y of abstracts
-							message = "[ionarea] [ionthinksof] [ionabstract]"
-
-				if(3) //X is the crew
-					switch(rand(1,4)) //What is it Y of?
-						if(1) //It is Y of objects
-							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]"
-						if(2) //It is Y of threats
-							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats]"
-						if(3) //It is Y of jobs
-							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1]"
-						if(4) //It is Y of abstracts
-							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionabstract]"
-
-				if(4) //X is a specific job
-					switch(rand(1,4)) //What is it Y of?
-						if(1) //It is Y of objects
-							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]"
-						if(2) //It is Y of threats
-							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats]"
-						if(3) //It is Y of jobs
-							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew2]"
-						if(4) //It is Y of abstracts
-							message = "[ioncrew1] ARTIK [ionthinksof] [ionabstract]"
-
-		if(21 to 23) //The AI is now a(n) X
+		if(18 to 20)
 			switch(rand(1,4)) //What is X?
 				if(1) //X is an object
 					message = "SİLİKONLAR ARTIK [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]DIR"
@@ -329,10 +281,10 @@
 				if(4) //X is an abstract
 					message = "SİLİKONLAR ARTIK [ionabstract]DIR"
 
-		if(24 to 26) //The AI must always
+		if(21 to 23)
 			message = "YAPAY ZEKALAR [ionmust]"
 
-		if(27 to 28) //Humans must consume X to survive
+		if(24 to 26)
 			switch(rand(1,5)) //What is X?
 				if(1) //X is a food
 					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ionfood] YEMELİDİR"
@@ -345,7 +297,7 @@
 				if(5) //X is a job
 					message = "İNSANLAR YAŞAMAK İÇİN [ionadjectiveshalf][ioncrew1] YEMELİDİR"
 
-		if(29 to 31) //Change jobs or ranks
+		if(27 to 28)
 			switch(rand(1,2)) //Change job or rank?
 				if(1) //Change job
 					switch(rand(1,2)) //Change whose job?
@@ -369,7 +321,7 @@
 						if(2) //Change to lowest rank
 							message = "[ioncrew1] EN ÖNEMSİZ MÜRETTEBAT ÜYELERİDİR"
 
-		if(32 to 33) //The crew must X
+		if(29 to 31)
 			switch(rand(1,2)) //The entire crew?
 				if(1) //The entire crew must X
 					switch(rand(1,2)) //What is X?
@@ -385,7 +337,7 @@
 						if(2) //X is perform Y
 							message = "[ioncrew1] [ionmust]"
 
-		if(34) //X is non/the only human
+		if(32 to 33)
 			switch(rand(1,2)) //Only or non?
 				if(1) //Only human
 					switch(rand(1,7)) //Who is it?
@@ -434,134 +386,135 @@
 								if(3) //X is eat certain food
 									message = "[ionadjectiveshalf][ionfood] YİYENLER İNSAN DEĞİLDİR"
 
-		if(35 to 36) //You must protect or harm X
+		if(34)
 			switch(rand(1,2)) //Protect or harm?
 				if(1) //Harm
 					switch(rand(1,7)) //What is X?
 						if(1) //X is an abstract
-							message = "YOU MUST HARM [ionabstract] AND NOT ALLOW [ionabstract], THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ionabstract] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(2) //X is a threat
-							message = "YOU MUST HARM [ionadjectiveshalf][ionthreats] AND NOT ALLOW [ionadjectiveshalf][ionthreats], THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ionadjectiveshalf][ionthreats] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(3) //X is an object
-							message = "YOU MUST HARM [ionadjectiveshalf][ionobjects] AND NOT ALLOW [ionadjectiveshalf][ionobjects], THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ionadjectiveshalf][ionobjects] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(4) //X is generic adjective things
-							message = "YOU MUST HARM [ionadjectives] THINGS AND NOT ALLOW [ionadjectives] THINGS, THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ionadjectives] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(5) //X is a species
-							message = "YOU MUST HARM [ionspecies] AND NOT ALLOW [ionspecies], THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ionspecies] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(6) //X is a job
-							message = "YOU MUST HARM [ioncrew1] AND NOT ALLOW [ioncrew1], THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ioncrew1] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(7) //X is two jobs
-							message = "YOU MUST HARM [ioncrew1] AND [ioncrew2] AND AND NOT ALLOW EITHER, THROUGH INACTION, TO ESCAPE HARM"
+							message = "[ioncrew1] VE [ioncrew2] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 
 				if(2) //Protect
 					switch(rand(1,7)) //What is X?
 						if(1) //X is an abstract
-							message = "YOU MUST NOT HARM [ionabstract] AND NOT ALLOW [ionabstract], THROUGH INACTION, TO COME TO HARM"
+							message = "[ionabstract] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(2) //X is a threat
-							message = "YOU MUST NOT HARM [ionadjectiveshalf][ionthreats] AND NOT ALLOW [ionadjectiveshalf][ionthreats], THROUGH INACTION, TO COME TO HARM"
+							message = "[ionadjectiveshalf][ionthreats] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(3) //X is an object
-							message = "YOU MUST NOT HARM [ionadjectiveshalf][ionobjects] AND NOT ALLOW [ionadjectiveshalf][ionobjects], THROUGH INACTION, TO COME TO HARM"
+							message = "[ionadjectiveshalf][ionobjects] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(4) //X is generic adjective things
-							message = "YOU MUST NOT HARM [ionadjectives] THINGS AND NOT ALLOW [ionadjectives] THINGS, THROUGH INACTION, TO COME TO HARM"
+							message = "[ionadjectives] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(5) //X is a species
-							message = "YOU MUST NOT HARM [ionspecies] AND NOT ALLOW [ionspecies], THROUGH INACTION, TO COME TO HARM"
+							message = "[ionspecies] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(6) //X is a job
-							message = "YOU MUST NOT HARM [ioncrew1] AND NOT ALLOW [ioncrew1], THROUGH INACTION, TO COME TO HARM"
+							message = "[ioncrew1] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 						if(7) //X is two jobs
-							message = "YOU MUST NOT HARM [ioncrew1] AND [ioncrew2] AND AND NOT ALLOW EITHER, THROUGH INACTION, TO COME TO HARM"
+							message = "[ioncrew1] ZARAR GÖRMEMELİDİR VE ZARAR GÖRMELERİ ENGELLENMELİDİR"
 
-		if(37 to 39) //The X is currently Y
+		if(35 to 36)
 			switch(rand(1,4)) //What is X?
 				if(1) //X is a job
 					switch(rand(1,4)) //What is X Ying?
 						if(1) //X is Ying a job
-							message = "THE [ioncrew1] ARE [ionverb] THE [ionadjectiveshalf][ioncrew2]"
+							message = "[ioncrew1] [ionadjectiveshalf][ioncrew2] [ionverb]"
 						if(2) //X is Ying a threat
-							message = "THE [ioncrew1] ARE [ionverb] THE [ionadjectiveshalf][ionthreats]"
+							message = "[ioncrew1] [ionadjectiveshalf][ionthreats] [ionverb]"
 						if(3) //X is Ying an abstract
-							message = "THE [ioncrew1] ARE [ionverb] [ionabstract]"
+							message = "[ioncrew1] [ionabstract] [ionverb]"
 						if(4) //X is Ying an object
-							message = "THE [ioncrew1] ARE [ionverb] THE [ionadjectiveshalf][ionobjects]"
+							message = "[ioncrew1] [ionadjectiveshalf][ionobjects] [ionverb]"
 
 				if(2) //X is a threat
 					switch(rand(1,3)) //What is X Ying?
 						if(1) //X is Ying a job
-							message = "THE [ionthreats] ARE [ionverb] THE [ionadjectiveshalf][ioncrew2]"
+							message = "[ionthreats] [ionadjectiveshalf][ioncrew2] [ionverb]"
 						if(2) //X is Ying an abstract
-							message = "THE [ionthreats] ARE [ionverb] [ionabstract]"
+							message = "[ionthreats] [ionabstract] [ionverb]"
 						if(3) //X is Ying an object
-							message = "THE [ionthreats] ARE [ionverb] THE [ionadjectiveshalf][ionobjects]"
+							message = "[ionthreats] [ionadjectiveshalf][ionobjects] [ionverb]"
 
 				if(3) //X is an object
 					switch(rand(1,3)) //What is X Ying?
 						if(1) //X is Ying a job
-							message = "THE [ionobjects] ARE [ionverb] THE [ionadjectiveshalf][ioncrew2]"
+							message = "[ionobjects] [ionverb] [ionadjectiveshalf][ioncrew2] [ionverb]"
 						if(2) //X is Ying a threat
-							message = "THE [ionobjects] ARE [ionverb] THE [ionadjectiveshalf][ionthreats]"
+							message = "[ionobjects] [ionverb] [ionadjectiveshalf][ionthreats] [ionverb]"
 						if(3) //X is Ying an abstract
-							message = "THE [ionobjects] ARE [ionverb] [ionabstract]"
+							message = "[ionobjects] [ionverb] [ionabstract] [ionverb]"
 
 				if(4) //X is an abstract
 					switch(rand(1,3)) //What is X Ying?
 						if(1) //X is Ying a job
-							message = "[ionabstract] IS [ionverb] THE [ionadjectiveshalf][ioncrew2]"
+							message = "[ionabstract] [ionadjectiveshalf][ioncrew2] [ionverb]"
 						if(2) //X is Ying a threat
-							message = "[ionabstract] IS [ionverb] THE [ionadjectiveshalf][ionthreats]"
+							message = "[ionabstract] [ionadjectiveshalf][ionthreats] [ionverb]"
 						if(3) //X is Ying an abstract
-							message = "THE [ionabstract] IS [ionverb] THE [ionadjectiveshalf][ionobjects]"
-		if(40 to 41)// the X is now named Y
+							message = "[ionabstract] [ionadjectiveshalf][ionobjects] [ionverb]"
+		
+		if(37 to 39)
 			switch(rand(1,5)) //What is being renamed?
 				if(1)//Areas
 					switch(rand(1,4))//What is the area being renamed to?
 						if(1)
-							message = "[ionarea] IS NOW NAMED [ioncrew1]."
+							message = "[ionarea] ARTIK [ioncrew1]DIR"
 						if(2)
-							message = "[ionarea] IS NOW NAMED [ionspecies]."
+							message = "[ionarea] ARTIK [ionspecies]DIR"
 						if(3)
-							message = "[ionarea] IS NOW NAMED [ionobjects]."
+							message = "[ionarea] ARTIK [ionobjects]DIR"
 						if(4)
-							message = "[ionarea] IS NOW NAMED [ionthreats]."
+							message = "[ionarea] ARTIK [ionthreats]DIR"
 				if(2)//Crew
 					switch(rand(1,5))//What is the crew being renamed to?
 						if(1)
-							message = "ALL [ioncrew1] ARE NOW NAMED [ionarea]."
+							message = "BÜTÜN [ioncrew1] ARTIK [ionarea]DIR"
 						if(2)
-							message = "ALL [ioncrew1] ARE NOW NAMED [ioncrew2]."
+							message = "BÜTÜN [ioncrew1] ARTIK [ioncrew2]DIR"
 						if(3)
-							message = "ALL [ioncrew1] ARE NOW NAMED [ionspecies]."
+							message = "BÜTÜN [ioncrew1] ARTIK [ionspecies]DIR"
 						if(4)
-							message = "ALL [ioncrew1] ARE NOW NAMED [ionobjects]."
+							message = "BÜTÜN [ioncrew1] ARTIK [ionobjects]DIR"
 						if(5)
-							message = "ALL [ioncrew1] ARE NOW NAMED [ionthreats]."
+							message = "BÜTÜN [ioncrew1] ARTIK [ionthreats]DIR"
 				if(3)//Races
 					switch(rand(1,4))//What is the race being renamed to?
 						if(1)
-							message = "ALL [ionspecies] ARE NOW NAMED [ionarea]."
+							message = "BÜTÜN [ionspecies] ARTIK [ionarea]DIR"
 						if(2)
-							message = "ALL [ionspecies] ARE NOW NAMED [ioncrew1]."
+							message = "BÜTÜN [ionspecies] ARTIK [ioncrew1]DIR"
 						if(3)
-							message = "ALL [ionspecies] ARE NOW NAMED [ionobjects]."
+							message = "BÜTÜN [ionspecies] ARTIK [ionobjects]DIR"
 						if(4)
-							message = "ALL [ionspecies] ARE NOW NAMED [ionthreats]."
+							message = "BÜTÜN [ionspecies] ARTIK [ionthreats]DIR"
 				if(4)//Objects
 					switch(rand(1,4))//What is the object being renamed to?
 						if(1)
-							message = "ALL [ionobjects] ARE NOW NAMED [ionarea]."
+							message = "BÜTÜN [ionobjects] ARTIK [ionarea]DIR"
 						if(2)
-							message = "ALL [ionobjects] ARE NOW NAMED [ioncrew1]."
+							message = "BÜTÜN [ionobjects] ARTIK [ioncrew1]DIR"
 						if(3)
-							message = "ALL [ionobjects] ARE NOW NAMED [ionspecies]."
+							message = "BÜTÜN [ionobjects] ARTIK [ionspecies]DIR"
 						if(4)
-							message = "ALL [ionobjects] ARE NOW NAMED [ionthreats]."
+							message = "BÜTÜN [ionobjects] ARTIK [ionthreats]DIR"
 				if(5)//Threats
 					switch(rand(1,4))//What is the object being renamed to?
 						if(1)
-							message = "ALL [ionthreats] ARE NOW NAMED [ionarea]."
+							message = "BÜTÜN [ionthreats] ARTIK [ionarea]DIR"
 						if(2)
-							message = "ALL [ionthreats] ARE NOW NAMED [ioncrew1]."
+							message = "BÜTÜN [ionthreats] ARTIK [ioncrew1]DIR"
 						if(3)
-							message = "ALL [ionthreats] ARE NOW NAMED [ionspecies]."
+							message = "BÜTÜN [ionthreats] ARTIK [ionspecies]DIR"
 						if(4)
-							message = "ALL [ionthreats] ARE NOW NAMED [ionobjects]."
+							message = "BÜTÜN [ionthreats] ARTIK [ionobjects]DIR"
 
 	return message

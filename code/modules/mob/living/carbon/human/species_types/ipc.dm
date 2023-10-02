@@ -250,14 +250,14 @@
 		"reddot" = /datum/bodypart_overlay/simple/ipcscreen/ipcreddot,
 		"glitchman" = /datum/bodypart_overlay/simple/ipcscreen/ipcglitchman,
 		"turk" = /datum/bodypart_overlay/simple/ipcscreen/ipcturk,
-		"clown" = /datum/bodypart_overlay/simple/ipcscreen/ipcclown
-		"mime" = /datum/bodypart_overlay/simple/ipcscreen/ipcmime
-		"pinball" = /datum/bodypart_overlay/simple/ipcscreen/ipcpinball
-		"noerp" = /datum/bodypart_overlay/simple/ipcscreen/ipcnoerp
-		"paicat" = /datum/bodypart_overlay/simple/ipcscreen/ipcpaicat
-		"skull" = /datum/bodypart_overlay/simple/ipcscreen/ipcskull
-		"monkey" = /datum/bodypart_overlay/simple/ipcscreen/ipcmonkey
-		"nerd" = /datum/bodypart_overlay/simple/ipcscreen/ipcnerd
+		"clown" = /datum/bodypart_overlay/simple/ipcscreen/ipcclown,
+		"mime" = /datum/bodypart_overlay/simple/ipcscreen/ipcmime,
+		"pinball" = /datum/bodypart_overlay/simple/ipcscreen/ipcpinball,
+		"noerp" = /datum/bodypart_overlay/simple/ipcscreen/ipcnoerp,
+		"paicat" = /datum/bodypart_overlay/simple/ipcscreen/ipcpaicat,
+		"skull" = /datum/bodypart_overlay/simple/ipcscreen/ipcskull,
+		"monkey" = /datum/bodypart_overlay/simple/ipcscreen/ipcmonkey,
+		"nerd" = /datum/bodypart_overlay/simple/ipcscreen/ipcnerd,
 	)
 	var/emotion_icon = "off"
 	var/datum/bodypart_overlay/simple/ipcscreen/currentoverlay

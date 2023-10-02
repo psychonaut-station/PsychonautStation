@@ -275,7 +275,7 @@
 		"cybernetic_liver",
 		"cybernetic_lungs",
 		"cybernetic_stomach",
-		"cybernetic_tongue",
+		"robotic_voicebox",
 		"defibmountdefault",
 		"dropper",
 		"hemostat",

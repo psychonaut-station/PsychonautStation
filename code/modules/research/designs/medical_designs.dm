@@ -825,10 +825,10 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-/datum/design/cybernetic_tongue
-	name = "Cybernetic Tongue"
-	desc = "A cybernetic tongue."
-	id = "cybernetic_tongue"
+/datum/design/robotic_voicebox
+	name = "Robotic Voicebox"
+	desc = "A voice synthesizer that can interface with organic lifeforms."
+	id = "robotic_voicebox"
 	build_type = PROTOLATHE | AWAY_LATHE | MECHFAB
 	construction_time = 30
 	materials = list(/datum/material/iron = SMALL_MATERIAL_AMOUNT*2.5, /datum/material/glass = SMALL_MATERIAL_AMOUNT*4)

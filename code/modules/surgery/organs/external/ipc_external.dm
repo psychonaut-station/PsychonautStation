@@ -68,3 +68,27 @@
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcturk
 	icon_state = "ipc-turk"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcclown
+	icon_state = "ipc-clown"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcmime
+	icon_state = "ipc-mime"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcpinball
+	icon_state = "ipc-pinball"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcnoerp
+	icon_state = "ipc-noerp"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcpaicat
+	icon_state = "ipc-paicat"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcskull
+	icon_state = "ipc-skull"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcmonkey
+	icon_state = "ipc-monkey"
+
+/datum/bodypart_overlay/simple/ipcscreen/ipcnerd
+	icon_state = "ipc-nerd"

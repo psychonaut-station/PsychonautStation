@@ -250,6 +250,14 @@
 		"reddot" = /datum/bodypart_overlay/simple/ipcscreen/ipcreddot,
 		"glitchman" = /datum/bodypart_overlay/simple/ipcscreen/ipcglitchman,
 		"turk" = /datum/bodypart_overlay/simple/ipcscreen/ipcturk,
+		"clown" = /datum/bodypart_overlay/simple/ipcscreen/ipcclown
+		"mime" = /datum/bodypart_overlay/simple/ipcscreen/ipcmime
+		"pinball" = /datum/bodypart_overlay/simple/ipcscreen/ipcpinball
+		"noerp" = /datum/bodypart_overlay/simple/ipcscreen/ipcnoerp
+		"paicat" = /datum/bodypart_overlay/simple/ipcscreen/ipcpaicat
+		"skull" = /datum/bodypart_overlay/simple/ipcscreen/ipcskull
+		"monkey" = /datum/bodypart_overlay/simple/ipcscreen/ipcmonkey
+		"nerd" = /datum/bodypart_overlay/simple/ipcscreen/ipcnerd
 	)
 	var/emotion_icon = "off"
 	var/datum/bodypart_overlay/simple/ipcscreen/currentoverlay
@@ -260,9 +268,15 @@
 		return
 	var/list/items = list()
 	for(var/overlay_option in possible_overlays)
+		if(overlay_option == "clown" || overlay_option == "mime")
+			continue
 		var/datum/bodypart_overlay/simple/ipcscreen/screen = possible_overlays[overlay_option]
 		var/image/item_image = image(icon = initial(screen.icon), icon_state = initial(screen.icon_state))
 		items += list("[overlay_option]" = item_image)
+	if(istype(H.mind.assigned_role, /datum/job/clown))
+		items += list("clown" = image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-clown"))
+	if(istype(H.mind.assigned_role, /datum/job/mime))
+		items += list("mime" = image(icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', icon_state = "ipc-mime"))
 	var/picked_emote = show_radial_menu(H, H, items, radius = 36)
 	if(isnull(picked_emote))
 		return

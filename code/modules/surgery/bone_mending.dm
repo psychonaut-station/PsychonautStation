@@ -24,7 +24,7 @@
 	. = ..()
 	if(.)
 		var/obj/item/bodypart/targeted_bodypart = target.get_bodypart(user.zone_selected)
-		return(targeted_bodypart.get_wound_type(targetable_wound))
+		return(targeted_bodypart?.get_wound_type(targetable_wound))
 
 
 ///// Repair Compound Fracture (Critical)
@@ -53,7 +53,7 @@
 	. = ..()
 	if(.)
 		var/obj/item/bodypart/targeted_bodypart = target.get_bodypart(user.zone_selected)
-		return(targeted_bodypart.get_wound_type(targetable_wound))
+		return(targeted_bodypart?.get_wound_type(targetable_wound))
 
 //SURGERY STEPS
 

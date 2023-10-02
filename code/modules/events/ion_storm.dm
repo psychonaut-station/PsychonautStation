@@ -299,35 +299,35 @@
 				if(3) //X is the crew
 					switch(rand(1,4)) //What is it Y of?
 						if(1) //It is Y of objects
-							message = "THE CREW [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]"
 						if(2) //It is Y of threats
-							message = "THE CREW [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats]"
 						if(3) //It is Y of jobs
-							message = "THE CREW [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1]"
 						if(4) //It is Y of abstracts
-							message = "THE CREW [ionthinksof] [ionabstract]"
+							message = "MÜRETTEBAT ARTIK [ionthinksof] [ionabstract]"
 
 				if(4) //X is a specific job
 					switch(rand(1,4)) //What is it Y of?
 						if(1) //It is Y of objects
-							message = "THE [ioncrew1] [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]"
 						if(2) //It is Y of threats
-							message = "THE [ioncrew1] [ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats]"
 						if(3) //It is Y of jobs
-							message = "THE [ioncrew1][ionthinksof] [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew2]"
+							message = "[ioncrew1] ARTIK [ionthinksof] [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew2]"
 						if(4) //It is Y of abstracts
-							message = "THE [ioncrew1] [ionthinksof] [ionabstract]"
+							message = "[ioncrew1] ARTIK [ionthinksof] [ionabstract]"
 
 		if(21 to 23) //The AI is now a(n) X
 			switch(rand(1,4)) //What is X?
 				if(1) //X is an object
-					message = "YOU ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionobjects]"
+					message = "SİLİKONLAR ARTIK [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionobjects]DIR"
 				if(2) //X is a threat
-					message = "YOU ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ionthreats]"
+					message = "SİLİKONLAR ARTIK [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ionthreats]DIR"
 				if(3) //X is a job
-					message = "YOU ARE NOW [ionnumberbase] [ionnumbermodhalf][ionadjectiveshalf][ioncrew1]"
+					message = "SİLİKONLAR ARTIK [ionnumberbase] [ionnumbermodhalf]TANE [ionadjectiveshalf][ioncrew1]DIR"
 				if(4) //X is an abstract
-					message = "YOU ARE NOW [ionabstract]"
+					message = "SİLİKONLAR ARTIK [ionabstract]DIR"
 
 		if(24 to 26) //The AI must always
 			message = "YAPAY ZEKALAR [ionmust]"
@@ -350,43 +350,38 @@
 				if(1) //Change job
 					switch(rand(1,2)) //Change whose job?
 						if(1) //Change the entire crew's job
-							switch(rand(1,3)) //Change to what?
+							switch(rand(1,2)) //Change to what?
 								if(1) //Change to a specific random job
-									message = "ALL CREWMEMBERS ARE NOW [ionadjectiveshalf][ioncrew1]"
+									message = "BÜTÜN MÜRETTEBAT ARTIK [ionadjectiveshalf][ioncrew1]DIR"
 								if(2) //Change to clowns (HONK)
-									message = "ALL CREWMEMBERS ARE NOW [ionadjectiveshalf]CLOWNS"
-
-								if(3) //Change to heads
-									message = "ALL CREWMEMBERS ARE NOW [ionadjectiveshalf]HEADS OF STAFF"
+									message = "BÜTÜN MÜRETTEBAT ARTIK [ionadjectiveshalf]PAYLAÇODUR"
 						if(2) //Change a specific crewmember's job
-							switch(rand(1,3)) //Change to what?
+							switch(rand(1,2)) //Change to what?
 								if(1) //Change to a specific random job
-									message = "THE [ioncrew1] ARE NOW [ionadjectiveshalf][ioncrew2]"
+									message = "[ioncrew1] ARTIK [ionadjectiveshalf][ioncrew2]DIR"
 								if(2) //Change to clowns (HONK)
-									message = "THE [ioncrew1] ARE NOW [ionadjectiveshalf]CLOWNS"
-								if(3) //Change to heads
-									message = "THE [ioncrew1] ARE NOW [ionadjectiveshalf]HEADS OF STAFF"
+									message = "[ioncrew1] ARTIK [ionadjectiveshalf]PAYLAÇODUR"
 
 				if(2) //Change rank
 					switch(rand(1,2)) //Change to what rank?
 						if(1) //Change to highest rank
-							message = "THE [ioncrew1] ARE NOW THE HIGHEST RANKING CREWMEMBERS"
+							message = "[ioncrew1] EN ÖNEMLİ MÜRETTEBAT ÜYELERİDİR"
 						if(2) //Change to lowest rank
-							message = "THE [ioncrew1] ARE NOW THE LOWEST RANKING CREWMEMBERS"
+							message = "[ioncrew1] EN ÖNEMSİZ MÜRETTEBAT ÜYELERİDİR"
 
 		if(32 to 33) //The crew must X
 			switch(rand(1,2)) //The entire crew?
 				if(1) //The entire crew must X
 					switch(rand(1,2)) //What is X?
 						if(1) //X is go to Y
-							message = "THE CREW MUST GO TO [ionarea]"
+							message = "BÜTÜN MÜRETTEBAT [ionarea] ALANINA İLERLEMELİDİR"
 						if(2) //X is perform Y
 							message = "MÜRETTEBAT [ionmust]"
 
 				if(2) //A specific crewmember must X
 					switch(rand(1,2)) //What is X?
 						if(1) //X is go to Y
-							message = "THE [ioncrew1] MUST GO TO [ionarea]"
+							message = "[ioncrew1] [ionarea] ALANINA İLERLEMELİDİR"
 						if(2) //X is perform Y
 							message = "[ioncrew1] [ionmust]"
 
@@ -395,49 +390,49 @@
 				if(1) //Only human
 					switch(rand(1,7)) //Who is it?
 						if(1) //A specific job
-							message = "ONLY THE [ioncrew1] ARE HUMAN"
+							message = "SADECE [ioncrew1] İNSANDIR"
 						if(2) //Two specific jobs
-							message = "ONLY THE [ioncrew1] AND [ioncrew2] ARE HUMAN"
+							message = "SADECE [ioncrew1] VE [ioncrew2] İNSANDIR"
 						if(3) //Threats
-							message = "ONLY [ionadjectiveshalf][ionthreats] ARE HUMAN"
+							message = "SADECE [ionadjectiveshalf][ionthreats] İNSANDIR"
 						if(4) // Objects
-							message = "ONLY [ionadjectiveshalf][ionobjects] ARE HUMAN"
+							message = "SADECE [ionadjectiveshalf][ionobjects] İNSANDIR"
 						if(5) // Species
-							message = "ONLY [ionspecies] ARE HUMAN"
+							message = "SADECE [ionspecies] İNSANDIR"
 						if(6) //Adjective crewmembers
-							message = "ONLY [ionadjectives] PEOPLE ARE HUMAN"
+							message = "SADECE [ionadjectives] KİŞİLER İNSANDIR"
 
 						if(7) //Only people who X
 							switch(rand(1,3)) //What is X?
 								if(1) //X is perform an action
 									message = "SADECE [ioning] İNSANDIR"
 								if(2) //X is own certain objects
-									message = "ONLY THOSE WHO HAVE [ionadjectiveshalf][ionobjects] ARE HUMAN"
+									message = "SADECE [ionadjectiveshalf][ionobject] SAHİBİ KİŞİLER İNSANDIR"
 								if(3) //X is eat certain food
-									message = "ONLY THOSE WHO EAT [ionadjectiveshalf][ionfood] ARE HUMAN"
+									message = "SADECE [ionadjectiveshalf][ionfood] YİYENLER İNSANDIR"
 
 				if(2) //Non human
 					switch(rand(1,7)) //Who is it?
 						if(1) //A specific job
-							message = "[ioncrew1] ARE NON-HUMAN"
+							message = "[ioncrew1] İNSAN DEĞİLDİR"
 						if(2) //Two specific jobs
-							message = "[ioncrew1] AND [ioncrew2] ARE NON-HUMAN"
+							message = "[ioncrew1] VE [ioncrew2] İNSAN DEĞİLDİR"
 						if(3) //Threats
-							message = "[ionadjectiveshalf][ionthreats] ARE NON-HUMAN"
+							message = "[ionadjectiveshalf][ionthreats] İNSAN DEĞİLDİR"
 						if(4) // Objects
-							message = "[ionadjectiveshalf][ionobjects] ARE NON-HUMAN"
+							message = "[ionadjectiveshalf][ionobjects] İNSAN DEĞİLDİR"
 						if(5) // Species
-							message = "[ionspecies] ARE NON-HUMAN"
+							message = "[ionspecies] İNSAN DEĞİLDİR"
 						if(6) //Adjective crewmembers
-							message = "[ionadjectives] PEOPLE ARE NON-HUMAN"
+							message = "[ionadjectives] İNSAN DEĞİLDİR"
 						if(7) //Only people who X
 							switch(rand(1,3)) //What is X?
 								if(1) //X is perform an action
-									message = "[ionmust] İNSAN DEĞİLDİR"
+									message = "[ioning] İNSAN DEĞİLDİR"
 								if(2) //X is own certain objects
-									message = "THOSE WHO HAVE [ionadjectiveshalf][ionobjects] ARE NON-HUMAN"
+									message = "[ionadjectiveshalf][ionobject] SAHİBİ KİŞİLER İNSAN DEĞİLDİR"
 								if(3) //X is eat certain food
-									message = "THOSE WHO EAT [ionadjectiveshalf][ionfood] ARE NON-HUMAN"
+									message = "[ionadjectiveshalf][ionfood] YİYENLER İNSAN DEĞİLDİR"
 
 		if(35 to 36) //You must protect or harm X
 			switch(rand(1,2)) //Protect or harm?

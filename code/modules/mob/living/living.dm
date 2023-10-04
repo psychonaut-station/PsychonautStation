@@ -947,12 +947,15 @@
  * Checks if there's active surgery on the mob that can be continued with the item
  */
 /mob/living/proc/can_perform_surgery(mob/living/user, params)
+	var/obj/item/bodypart/target_bodypart = get_bodypart(user.zone_selected)
 	for(var/datum/surgery/operations as anything in surgeries)
 		if(user.combat_mode)
 			break
 		if(IS_IN_INVALID_SURGICAL_POSITION(src, operations))
 			continue
 		if(!(operations.surgery_flags & SURGERY_SELF_OPERABLE) && (user == src))
+			continue
+		if((operations.surgery_flags & SURGERY_SELF_OPERABLE) && (target_bodypart?.bodytype & BODYTYPE_IPC) && (user == src))
 			continue
 		var/list/modifiers = params2list(params)
 		if(operations.next_step(user, modifiers))

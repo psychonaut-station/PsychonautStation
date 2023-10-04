@@ -20,7 +20,7 @@
 	sprite_accessory_override = /datum/sprite_accessory/ipc_monitor/black
 
 /datum/bodypart_overlay/mutant/ipchead
-	layers = EXTERNAL_FRONT
+	layers = EXTERNAL_ADJACENT
 	feature_key = "ipc_monitor"
 	color_source = NONE
 
@@ -30,7 +30,7 @@
 //Screen
 /datum/bodypart_overlay/simple/ipcscreen
 	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'
-	layers = EXTERNAL_FRONT
+	layers = EXTERNAL_ADJACENT
 	var/attached_body_zone = BODY_ZONE_HEAD
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcoff

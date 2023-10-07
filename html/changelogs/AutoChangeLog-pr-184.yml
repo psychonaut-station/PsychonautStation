@@ -1,0 +1,5 @@
+author: "exdal"
+delete-after: True
+changes:
+  - admin: "Set OOC Color artik butun yetkililer icin gecerli."
+  - admin: "Ticketlara butun yetkililer erisebilecek."

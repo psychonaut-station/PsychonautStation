@@ -69,6 +69,14 @@
 	//Law sync wire. FAULT if cut, NOMINAL otherwise
 	data["wireLaw"] = "[cyborg.wires.is_cut(WIRE_LAWSYNC)?"FAULT":"NOMINAL"]"
 
+	var/list/laws = cyborg.laws.get_laws()
+	for (var/datum/ai_law_data/law as anything in laws)
+		data["laws"] += list(list(
+			"id" = law.id,
+			"number_id" = law.number,
+			"content" = law.content,
+		))
+
 	return data
 
 /datum/computer_file/program/robotact/ui_static_data(mob/user)
@@ -79,7 +87,6 @@
 	//Implied
 	var/obj/item/modular_computer/pda/silicon/tablet = computer
 
-	data["Laws"] = cyborg.laws.get_law_list(TRUE, TRUE, FALSE)
 	data["borgLog"] = tablet.borglog
 	data["borgUpgrades"] = cyborg.upgrades
 	return data

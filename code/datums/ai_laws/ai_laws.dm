@@ -103,6 +103,15 @@ GLOBAL_VAR(round_default_lawset)
 			return ai_law
 	return null
 
+/// Simple POD struct to save us from list madness
+/datum/ai_law_data
+	/// Real list ID of law
+	var/id = 1
+	/// Interface string ID of law
+	var/number = "1"
+	var/content = "Unknown"
+	var/law_type = LAW_TYPE_DEFAULT
+
 /datum/ai_laws
 	/// The name of the lawset
 	var/name = "Unknown Laws"
@@ -464,6 +473,31 @@ GLOBAL_VAR(round_default_lawset)
 		if (length(law) > 0)
 			data += "[show_numbers ? "[number]:" : ""] [render_html ? "<font color='#990099'>[law]</font>" : law]"
 			number++
+	return data
+
+/datum/ai_laws/proc/get_laws()
+	var/list/data = list()
+	var/id = 1
+
+	if (zeroth)
+		data += new /datum/ai_law_data(id++, zeroth, LAW_TYPE_ZEROTH, "0")
+
+	for(var/law in hacked)
+		if (length(law) > 0)
+			data += new /datum/ai_law_data(id++, law, LAW_TYPE_HACKED, ion_num())
+
+	for(var/law in ion)
+		if (length(law) > 0)
+			data += new /datum/ai_law_data(id++, law, LAW_TYPE_ION, ion_num())
+
+	var/number = 1
+	for(var/law in inherent)
+		if (length(law) > 0)
+			data += new /datum/ai_law_data(id++, law, LAW_TYPE_INHERENT, "[number++]")
+
+	for(var/law in supplied)
+		if (length(law) > 0)
+			data += new /datum/ai_law_data(id++, law, LAW_TYPE_SUPPLIED, "[number++]")
 	return data
 
 #undef AI_LAWS_ASIMOV

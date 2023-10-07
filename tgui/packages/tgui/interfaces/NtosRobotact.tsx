@@ -1,5 +1,6 @@
+import { BooleanLike } from '../../common/react';
 import { useBackend, useSharedState } from '../backend';
-import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section, Slider, Tabs } from '../components';
+import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section, Slider, Tabs, Stack } from '../components';
 import { NtosWindow } from '../layouts';
 
 export const NtosRobotact = (props, context) => {
@@ -12,11 +13,46 @@ export const NtosRobotact = (props, context) => {
   );
 };
 
+type Data = {
+  name: string;
+  designation: string;
+  masterAI: string;
+  borgLog: string[];
+  borgUpgrades: string[];
+  charge: number;
+  maxcharge: number;
+  integrity: number;
+  lampIntensity: number;
+  cover: string;
+  locomotion: string;
+  wireModule: string;
+  wireCamera: string;
+  wireAI: string;
+  wireLaw: string;
+  sensors: BooleanLike;
+  printerPictures: number;
+  printerToner: number;
+  printerTonerMax: number;
+  thrustersInstalled: BooleanLike;
+  thrustersStatus: BooleanLike;
+  selfDestructAble: BooleanLike;
+  laws: Law[];
+};
+
+type Law = {
+  id: number;
+  number_id: string;
+  content: string;
+};
+
 export const NtosRobotactContent = (props, context) => {
-  const { act, data } = useBackend(context);
-  const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
-  const [tab_sub, setTab_sub] = useSharedState(context, 'tab_sub', 1);
+  const { act, data } = useBackend<Data>(context);
   const {
+    name,
+    designation,
+    masterAI,
+    borgLog,
+    borgUpgrades,
     charge,
     maxcharge,
     integrity,
@@ -34,13 +70,10 @@ export const NtosRobotactContent = (props, context) => {
     thrustersInstalled,
     thrustersStatus,
     selfDestructAble,
+    laws,
   } = data;
-  const borgName = data.name || [];
-  const borgType = data.designation || [];
-  const masterAI = data.masterAI || [];
-  const laws = data.Laws || [];
-  const borgLog = data.borgLog || [];
-  const borgUpgrades = data.borgUpgrades || [];
+  const [tab_main, setTab_main] = useSharedState(context, 'tab_main', 1);
+  const [tab_sub, setTab_sub] = useSharedState(context, 'tab_sub', 1);
   return (
     <Flex direction={'column'}>
       <Flex.Item position="relative" mb={1}>
@@ -67,13 +100,11 @@ export const NtosRobotactContent = (props, context) => {
             <Flex.Item width="30%">
               <Section title="Configuration" fill>
                 <LabeledList>
-                  <LabeledList.Item label="Unit">
-                    {borgName.slice(0, 17)}
+                  <LabeledList.Item label="Unit">{name}</LabeledList.Item>
+                  <LabeledList.Item label="Type">
+                    {designation}
                   </LabeledList.Item>
-                  <LabeledList.Item label="Type">{borgType}</LabeledList.Item>
-                  <LabeledList.Item label="AI">
-                    {masterAI.slice(0, 17)}
-                  </LabeledList.Item>
+                  <LabeledList.Item label="AI">{masterAI}</LabeledList.Item>
                 </LabeledList>
               </Section>
             </Flex.Item>
@@ -269,7 +300,6 @@ export const NtosRobotactContent = (props, context) => {
             <Section
               title="Laws"
               fill
-              scrollable
               buttons={
                 <>
                   <Button
@@ -279,11 +309,24 @@ export const NtosRobotactContent = (props, context) => {
                   <Button icon="volume-off" onClick={() => act('lawchannel')} />
                 </>
               }>
-              {laws.map((law) => (
-                <Box mb={1} key={law}>
-                  {law}
-                </Box>
-              ))}
+              <Stack fill vertical>
+                <Stack.Item grow>
+                  <Section fill scrollable>
+                    {laws.map((law) => (
+                      <Tabs.Tab>
+                        <Button
+                          icon="check"
+                          onClick={() =>
+                            act('state', {
+                              id: law.id,
+                            })
+                          }></Button>
+                        {law.number_id}: {law.content}
+                      </Tabs.Tab>
+                    ))}
+                  </Section>
+                </Stack.Item>
+              </Stack>
             </Section>
           </Flex.Item>
         </>
@@ -292,8 +335,8 @@ export const NtosRobotactContent = (props, context) => {
         <Flex.Item height={40}>
           <Section fill scrollable backgroundColor="black">
             {borgLog.map((log) => (
-              <Box mb={1} key={log}>
-                <font color="green">{log}</font>
+              <Box mb={1} key={log} textColor="green">
+                {log}
               </Box>
             ))}
           </Section>

@@ -10,3 +10,7 @@
   Seefaaa:
   - bugfix: "Kald\u0131r\u0131lan Sentient Disease antag tercihlerinde g\xF6z\xFC\
       kmeyecek."
+2023-10-08:
+  exdal:
+  - admin: Set OOC Color artik butun yetkililer icin gecerli.
+  - admin: Ticketlara butun yetkililer erisebilecek.

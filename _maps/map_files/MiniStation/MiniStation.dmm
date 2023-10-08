@@ -8441,7 +8441,6 @@
 /area/station/engineering/main)
 "uU" = (
 /obj/structure/cable,
-/obj/machinery/power/emitter/welded,
 /obj/machinery/power/emitter/welded{
 	dir = 8
 	},

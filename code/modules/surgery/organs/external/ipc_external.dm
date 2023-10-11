@@ -24,6 +24,12 @@
 	feature_key = "ipc_monitor"
 	color_source = NONE
 
+/datum/bodypart_overlay/mutant/ipchead/can_draw_on_bodypart(mob/living/carbon/human/human)
+	if((human.head?.flags_inv & HIDEHAIR) || (human.wear_mask?.flags_inv & HIDEHAIR))
+		return FALSE
+
+	return TRUE
+
 /datum/bodypart_overlay/mutant/ipchead/get_global_feature_list()
 	return GLOB.ipc_monitor_list
 

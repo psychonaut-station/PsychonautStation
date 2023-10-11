@@ -11,7 +11,6 @@
 	else
 		return 0.5
 
-
 /proc/get_location_accessible(mob/located_mob, location)
 	var/covered_locations = 0 //based on body_parts_covered
 	var/face_covered = 0 //based on flags_inv

@@ -582,6 +582,9 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(/obj/structure/gri
 
 	var/obj/item/bodypart/affecting = H.get_bodypart(check_zone(user.zone_selected))
 	if(affecting && IS_ROBOTIC_LIMB(affecting))
+		if(!affecting.burn_dam)
+			to_chat(user, span_warning("[affecting] is already in good condition!"))
+			return
 		if(user == H)
 			user.visible_message(span_notice("[user] starts to fix some of the wires in [H]'s [affecting.name]."), span_notice("You start fixing some of the wires in [H == user ? "your" : "[H]'s"] [affecting.name]."))
 			if(!do_after(user, 50, H))

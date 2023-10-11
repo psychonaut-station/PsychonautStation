@@ -28,6 +28,8 @@
 		blood_type = "H2O"
 	else if(holder.has_reagent(/datum/reagent/toxin/slimejelly))
 		blood_type = "TOX"
+	else if(holder.has_reagent(/datum/reagent/fuel/oil))
+		blood_type = "LPG"
 	else
 		blood_type = null
 	return ..()
@@ -74,7 +76,7 @@
 /obj/item/reagent_containers/blood/snail
 	blood_type = "S"
 	unique_blood = /datum/reagent/lube
-	
+
 /obj/item/reagent_containers/blood/snail/examine()
 	. = ..()
 	. += span_notice("It's a bit slimy... The label indicates that this is meant for snails.")
@@ -95,6 +97,15 @@
 /obj/item/reagent_containers/blood/toxin/examine()
 	. = ..()
 	. += span_notice("There is a toxin warning on the label. This is for slimepeople.")
+
+// for IPCs
+/obj/item/reagent_containers/blood/oil
+	blood_type = "LPG"
+	unique_blood = /datum/reagent/fuel/oil
+
+/obj/item/reagent_containers/blood/oil/examine()
+	. = ..()
+	. += span_notice("There is a flammable warning on the label. This is for IPCs.")
 
 /obj/item/reagent_containers/blood/universal
 	blood_type = "U"

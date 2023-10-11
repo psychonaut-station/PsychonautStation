@@ -257,6 +257,21 @@
 	for(var/mob/living/simple_animal/slime/M in src)
 		M.apply_water()
 
+	for(var/mob/living/carbon/human/exposed_human in src)
+		if(isipc(exposed_human))
+			var/chest_covered = FALSE
+			var/head_covered = FALSE
+			for(var/obj/item/clothing/equipped in exposed_human.get_equipped_items())
+				if((equipped.body_parts_covered & CHEST) && (equipped.get_armor_rating(BIO) == 100))
+					chest_covered = TRUE
+				if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
+					head_covered = TRUE
+				if(head_covered && chest_covered)
+					break
+			if(!chest_covered || !head_covered)
+				var/datum/species/ipc/ipcspecies = exposed_human.dna.species
+				ipcspecies.apply_water(exposed_human)
+
 	wash(CLEAN_WASH)
 	for(var/atom/movable/movable_content as anything in src)
 		if(ismopable(movable_content)) // Will have already been washed by the wash call above at this point.

@@ -199,6 +199,9 @@
 	/// get_damage() / total_damage must surpass this to allow our limb to be disabled, even temporarily, by an EMP.
 	var/robotic_emp_paralyze_damage_percent_threshold = 0.3
 
+	/// If this not null name will be adjusted accordingly
+	var/examine_bodypart_id
+
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
 	unarmed_damage_low = modify_fantasy_variable("unarmed_damage_low", unarmed_damage_low, bonus, minimum = 1)
@@ -227,7 +230,10 @@
 	if(!IS_ORGANIC_LIMB(src))
 		grind_results = null
 
-	name = "[limb_id] [parse_zone(body_zone)]"
+	if(examine_bodypart_id)
+		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
+	else
+		name = "[limb_id] [parse_zone(body_zone)]"
 	update_icon_dropped()
 	refresh_bleed_rate()
 

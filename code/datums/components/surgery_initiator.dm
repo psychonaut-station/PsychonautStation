@@ -97,6 +97,8 @@
 				continue
 			if((surgery.surgery_flags & SURGERY_REQUIRES_REAL_LIMB) && (affecting.bodypart_flags & BODYPART_PSEUDOPART))
 				continue
+			if((surgery.surgery_flags & SURGERY_SELF_OPERABLE) && (carbon_target == user) && (affecting.bodytype & BODYTYPE_IPC))
+				continue
 		else if(carbon_target && (surgery.surgery_flags & SURGERY_REQUIRE_LIMB)) //mob with no limb in surgery zone when we need a limb
 			continue
 		if(IS_IN_INVALID_SURGICAL_POSITION(target, surgery))

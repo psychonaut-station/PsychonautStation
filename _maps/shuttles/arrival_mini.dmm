@@ -15,6 +15,7 @@
 /area/shuttle/arrival)
 "d" = (
 /obj/structure/chair/comfy/shuttle,
+/obj/item/radio/intercom/directional/north,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "h" = (
@@ -154,6 +155,10 @@
 "v" = (
 /obj/item/storage/medkit/regular,
 /obj/structure/table/reinforced/rglass,
+/obj/machinery/requests_console/directional/north{
+	department = "Arrival shuttle";
+	name = "Arrival Shuttle Requests Console"
+	},
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "w" = (
@@ -173,13 +178,6 @@
 	},
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/plating/airless,
-/area/shuttle/arrival)
-"C" = (
-/obj/structure/chair/comfy/shuttle{
-	dir = 4
-	},
-/obj/item/radio/intercom/directional/north,
-/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)
 "E" = (
 /obj/effect/turf_decal/stripes,
@@ -264,7 +262,7 @@ W
 (2,1,1) = {"
 U
 U
-C
+I
 l
 I
 U

@@ -406,7 +406,7 @@
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MOUNTS
-		
+
 /datum/design/tram_controller
 	name = "Tram Controller Cabinet"
 	id = "tram_controller"

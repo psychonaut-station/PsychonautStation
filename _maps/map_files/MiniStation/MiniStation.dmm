@@ -11759,9 +11759,7 @@
 /area/station/hallway/primary/central/fore)
 "CR" = (
 /obj/machinery/light/small,
-/mob/living/simple_animal/hostile/retaliate/goat{
-	name = "Pete"
-	},
+/mob/living/basic/goat/pete,
 /turf/open/floor/iron/freezer,
 /area/station/service/cafeteria)
 "CS" = (

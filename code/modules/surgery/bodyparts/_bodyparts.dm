@@ -669,7 +669,7 @@
 	PROTECTED_PROC(TRUE)
 
 	if (bodytype & BODYTYPE_IPC && prob(10))
-		new /obj/effect/decal/cleanable/oil(src.loc)
+		new /obj/effect/decal/cleanable/oil(drop_location())
 
 	if(brute_dam == new_value)
 		return

@@ -668,6 +668,9 @@
 /obj/item/bodypart/proc/set_brute_dam(new_value)
 	PROTECTED_PROC(TRUE)
 
+	if (bodytype & BODYTYPE_IPC && prob(10))
+		new /obj/effect/decal/cleanable/oil(src.loc)
+
 	if(brute_dam == new_value)
 		return
 	. = brute_dam

@@ -38,7 +38,7 @@ GLOBAL_LIST_INIT(animal_job_types, list(
 	"Fox" = /mob/living/basic/pet/fox,
 	"Frog" = /mob/living/basic/frog,
 	"Giant ant" = /mob/living/basic/ant,
-	"Goat" = /mob/living/simple_animal/hostile/retaliate/goat,
+	"Goat" = /mob/living/basic/goat,
 	"Kitten" = /mob/living/simple_animal/pet/cat/kitten,
 	"Lightgeist" = /mob/living/basic/lightgeist,
 	"Lizard" = /mob/living/basic/lizard,

@@ -22,6 +22,7 @@
 #define INVESTIGATE_RADIATION "radiation"
 #define INVESTIGATE_RECORDS "records"
 #define INVESTIGATE_RESEARCH "research"
+#define INVESTIGATE_TRANSPORT "transport"
 #define INVESTIGATE_WIRES "wires"
 
 // Logging types for log_message()
@@ -49,6 +50,7 @@
 #define LOG_SPEECH_INDICATORS (1 << 21)
 #define LOG_LOOC (1 << 22)
 #define LOG_HALLUCINATION (1 << 23)
+#define LOG_TRANSPORT (1 << 24)
 
 //Individual logging panel pages
 #define INDIVIDUAL_GAME_LOG (LOG_GAME)
@@ -111,6 +113,7 @@
 #define LOG_CATEGORY_TARGET_ZONE_SWITCH "target-zone-switch"
 #define LOG_CATEGORY_TELECOMMS "telecomms"
 #define LOG_CATEGORY_TOOL "tool"
+#define LOG_CATEGORY_TRANSPORT "transport"
 #define LOG_CATEGORY_VIRUS "virus"
 
 // Admin categories

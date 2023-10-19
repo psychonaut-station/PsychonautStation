@@ -114,6 +114,7 @@
 		silo_mats = AddComponent(/datum/component/remote_materials, FALSE, FALSE)
 	playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
 	qdel(design_disk)
+	update_static_data_for_all_viewers()
 
 /// Inserts matter into the RCD allowing it to build
 /obj/item/construction/proc/insert_matter(obj/item, mob/user)
@@ -212,6 +213,11 @@
 		update_appearance()
 		return TRUE
 
+/obj/item/construction/ui_static_data(mob/user)
+	. = list()
+
+	.["silo_upgraded"] = !!(upgrade & RCD_UPGRADE_SILO_LINK)
+
 ///shared data for rcd,rld & plumbing
 /obj/item/construction/ui_data(mob/user)
 	var/list/data = list()
@@ -222,19 +228,6 @@
 		total_matter = 0
 	data["matterLeft"] = total_matter
 
-	var/has_secondary_matter = secondary_matter_types.len > 0 ? TRUE : FALSE
-	if(has_secondary_matter)
-		var/total_secondary_matter = get_secondary_matter(user)
-		if(!total_secondary_matter)
-			total_secondary_matter = 0
-		data["secondaryMatterLeft"] = total_secondary_matter
-		data["hasSecondaryMatter"] = TRUE
-	else
-		data["secondaryMatterLeft"] = 0
-		data["hasSecondaryMatter"] = FALSE
-
-	//silo details
-	data["silo_upgraded"] = !!(upgrade & RCD_UPGRADE_SILO_LINK)
 	data["silo_enabled"] = silo_link
 
 	return data
@@ -262,14 +255,20 @@
 		toggle_silo(ui.user)
 		return TRUE
 
-/obj/item/construction/proc/checkResource(amount, mob/user, secondary = FALSE)
-	if(!secondary)
-		if(!silo_mats || !silo_mats.mat_container || !silo_link)
-			if(silo_link)
-				balloon_alert(user, "silo link invalid!")
-				return FALSE
-			else
-				. = matter >= amount
+	var/update = handle_ui_act(action, params, ui, state)
+	if(isnull(update))
+		update = FALSE
+	return update
+
+/// overwrite to insert custom ui handling for subtypes
+/obj/item/construction/proc/handle_ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	return null
+
+/obj/item/construction/proc/checkResource(amount, mob/user)
+	if(!silo_mats || !silo_mats.mat_container || !silo_link)
+		if(silo_link)
+			balloon_alert(user, "silo link invalid!")
+			return FALSE
 		else
 			if(silo_mats.on_hold())
 				if(user)

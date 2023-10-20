@@ -387,19 +387,21 @@
 		return
 
 	if (small_drip)
-		var/obj/effect/decal/drop = locate() in T
-		if (!drop)
-			var/drop_type = get_exotic_blood_drop()
-			drop = new drop_type(T)
+		var/drop_type = get_exotic_blood_drop()
+		if(!isnull(drop_type))
+			var/obj/effect/decal/drop = locate(drop_type) in T
+			if(!drop)
+				drop = new drop_type(T)
+				return
+
+	var/splatter_type = get_exotic_blood_splatter()
+	if(!isnull(splatter_type))
+		var/obj/effect/decal/splatter = locate(splatter_type) in T
+		if (!splatter)
+			splatter = new splatter_type(T)
+
+		if(QDELETED(splatter))
 			return
-
-	var/obj/effect/decal/splatter = locate() in T
-	if (!splatter)
-		var/splatter_type = get_exotic_blood_splatter()
-		splatter = new splatter_type(T)
-
-	if(QDELETED(splatter))
-		return
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))

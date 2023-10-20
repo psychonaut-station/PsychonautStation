@@ -81,6 +81,7 @@
 
 	old_age = C.age
 	C.age = 30
+	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 	C.update_body(0)
 	C.set_safe_hunger_level()
@@ -92,7 +93,6 @@
 	sec_hud.show_to(C)
 	health_hud.show_to(C)
 	diagnostic_hud.show_to(C)
-	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()
@@ -100,6 +100,7 @@
 	C.gender = old_gender
 	C.physique = old_physique
 	C.age = old_age
+	C.gib_type = /obj/effect/decal/cleanable/blood/gibs
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]

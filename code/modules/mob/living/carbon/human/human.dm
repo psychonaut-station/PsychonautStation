@@ -1049,19 +1049,6 @@
 
 /mob/living/carbon/human/species/ipc
 	race = /datum/species/ipc
-	gib_type = /obj/effect/decal/cleanable/robot_debris
-
-/mob/living/carbon/human/species/ipc/gib_animation()
-	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
-
-/mob/living/carbon/human/species/ipc/dust_animation()
-	new /obj/effect/temp_visual/dust_animation(loc, "gibbed-r")
-
-/mob/living/carbon/human/species/ipc/spawn_gibs()
-	new /obj/effect/gibspawner/robot(drop_location(), src)
-
-/mob/living/carbon/human/species/ipc/spawn_dust()
-	new /obj/effect/decal/remains/robot(loc)
 
 /mob/living/carbon/human/species/mush
 	race = /datum/species/mush

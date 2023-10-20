@@ -207,7 +207,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_BURN = list(
 		WOUND_SERIES_FLESH_BURN_BASIC,
 	),
-	WOUND_PUNCTURE = list(
+	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED
 	),
 ))
@@ -259,7 +259,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 		var/picked_severity
 		for (var/severity_text as anything in shuffle(GLOB.wound_severities_chronological))
 			var/severity = text2num(severity_text)
-			if (severity > severity_min || severity < severity_max)
+			if (!ISINRANGE(severity, severity_min, severity_max))
 				continue
 
 			if (isnull(picked_severity) || ((severity_pick_mode == WOUND_PICK_HIGHEST_SEVERITY && severity > picked_severity) || (severity_pick_mode == WOUND_PICK_LOWEST_SEVERITY && severity < picked_severity)))

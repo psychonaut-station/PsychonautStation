@@ -105,12 +105,20 @@ GLOBAL_VAR(round_default_lawset)
 
 /// Simple POD struct to save us from list madness
 /datum/ai_law_data
-	/// Real list ID of law
 	var/id = 1
-	/// Interface string ID of law
-	var/number = "1"
+	var/law_type = LAW_TYPE_INHERENT
 	var/content = "Unknown"
-	var/law_type = LAW_TYPE_DEFAULT
+	var/display_number = "1"
+
+/datum/ai_law_data/New(param_id, param_content, param_type, param_number)
+	if(param_id)
+		id = param_id
+	if(param_content)
+		content = param_content
+	if(param_type)
+		law_type = param_type
+	if(param_number)
+		display_number = param_number
 
 /datum/ai_laws
 	/// The name of the lawset
@@ -498,6 +506,7 @@ GLOBAL_VAR(round_default_lawset)
 	for(var/law in supplied)
 		if (length(law) > 0)
 			data += new /datum/ai_law_data(id++, law, LAW_TYPE_SUPPLIED, "[number++]")
+
 	return data
 
 #undef AI_LAWS_ASIMOV

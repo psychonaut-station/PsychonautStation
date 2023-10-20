@@ -3,6 +3,20 @@ import { useBackend, useSharedState } from '../backend';
 import { AnimatedNumber, Box, Button, Flex, LabeledList, ProgressBar, Section, Slider, Tabs, Stack } from '../components';
 import { NtosWindow } from '../layouts';
 
+const LAW_TYPE_ZEROTH = 0;
+const LAW_TYPE_INHERENT = 1;
+const LAW_TYPE_SUPPLIED = 2;
+const LAW_TYPE_ION = 3;
+const LAW_TYPE_HACKED = 4;
+
+const lawtype_to_color = {
+  [LAW_TYPE_ZEROTH]: '#ff0000',
+  [LAW_TYPE_INHERENT]: 'white',
+  [LAW_TYPE_SUPPLIED]: '#990099',
+  [LAW_TYPE_ION]: '#547DFE',
+  [LAW_TYPE_HACKED]: '#c00000',
+} as const;
+
 export const NtosRobotact = (props, context) => {
   return (
     <NtosWindow width={800} height={600}>
@@ -41,6 +55,7 @@ type Data = {
 
 type Law = {
   id: number;
+  type: number;
   number_id: string;
   content: string;
 };
@@ -313,16 +328,13 @@ export const NtosRobotactContent = (props, context) => {
                 <Stack.Item grow>
                   <Section fill scrollable>
                     {laws.map((law) => (
-                      <Tabs.Tab>
-                        <Button
-                          icon="check"
-                          onClick={() =>
-                            act('state', {
-                              id: law.id,
-                            })
-                          }></Button>
+                      <Box
+                        key={law.id}
+                        className="candystripe"
+                        textColor={lawtype_to_color[law.type]}>
+                        <Button icon="check" onClick={() => act('state')} />
                         {law.number_id}: {law.content}
-                      </Tabs.Tab>
+                      </Box>
                     ))}
                   </Section>
                 </Stack.Item>

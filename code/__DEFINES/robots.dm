@@ -7,12 +7,11 @@
 #define LAW_ION "ion"
 #define LAW_HACKED "hacked"
 
-#define LAW_TYPE_DEFAULT 0
-#define LAW_TYPE_ZEROTH 1
-#define LAW_TYPE_INHERENT 2
-#define LAW_TYPE_SUPPLIED 3
-#define LAW_TYPE_ION 4
-#define LAW_TYPE_HACKED 5
+#define LAW_TYPE_ZEROTH 0
+#define LAW_TYPE_INHERENT 1
+#define LAW_TYPE_SUPPLIED 2
+#define LAW_TYPE_ION 3
+#define LAW_TYPE_HACKED 4
 
 //AI notification defines
 ///Alert when a new Cyborg is created.

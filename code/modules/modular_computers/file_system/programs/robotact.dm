@@ -70,10 +70,11 @@
 	data["wireLaw"] = "[cyborg.wires.is_cut(WIRE_LAWSYNC)?"FAULT":"NOMINAL"]"
 
 	var/list/laws = cyborg.laws.get_laws()
-	for (var/datum/ai_law_data/law as anything in laws)
+	for (var/datum/ai_law_data/law in laws)
 		data["laws"] += list(list(
 			"id" = law.id,
-			"number_id" = law.number,
+			"type" = law.law_type,
+			"number_id" = law.display_number,
 			"content" = law.content,
 		))
 

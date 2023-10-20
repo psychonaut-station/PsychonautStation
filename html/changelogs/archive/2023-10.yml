@@ -524,6 +524,8 @@
   - refactor: Supermatter Spiders have been refactored into basic mobs, on the extremely
       off chance you spot one and also notice any weird bugs regarding it, please
       report it.
+  - bugfix: Space Dragons can now, once again, tear down walls and eat corpses. They
+      also have regained their special damage modifier when attacking mechs.
   BlueMemesauce:
   - bugfix: Modsuits can no longer be deepfried
   DrDiasyl:
@@ -570,9 +572,6 @@
       client.images
   - admin: VV on images now displays the image in the header
   - admin: VV can now display filters and includes their type
-  san7890:
-  - bugfix: Space Dragons can now, once again, tear down walls and eat corpses. They
-      also have regained their special damage modifier when attacking mechs.
 2023-10-15:
   GPeckman:
   - bugfix: Having all augmented limbs will make you properly spaceproof once again.

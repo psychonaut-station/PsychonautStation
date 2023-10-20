@@ -28,6 +28,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
 	. = ..()
@@ -73,6 +74,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/chest/ipc/emp_act(severity)
 	. = ..()
@@ -108,6 +110,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -130,6 +133,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -151,6 +155,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/leg/left/ipc/emp_act(severity)
 	. = ..()
@@ -181,6 +186,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
 
 /obj/item/bodypart/leg/right/ipc/emp_act(severity)
 	. = ..()

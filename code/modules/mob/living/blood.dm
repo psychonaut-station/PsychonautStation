@@ -319,9 +319,32 @@
 	if(safe)
 		. = safe
 
+/mob/proc/get_exotic_blood_drop()
+	return
+
+/mob/proc/get_exotic_blood_splatter()
+	return
+
+/mob/living/carbon/human/get_exotic_blood_drop()
+	if(!dna.species.exotic_blood || HAS_TRAIT(src, TRAIT_HUSK))
+		return
+
+	switch (dna.species.exotic_blood)
+		if (/datum/reagent/fuel/oil)
+			return /obj/effect/decal/cleanable/oil
+
+/mob/living/carbon/human/get_exotic_blood_splatter()
+	if(!dna.species.exotic_blood || HAS_TRAIT(src, TRAIT_HUSK))
+		return
+
+	switch (dna.species.exotic_blood)
+		if (/datum/reagent/fuel/oil)
+			return /obj/effect/decal/cleanable/oil/streak
+
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T, small_drip)
 	if(get_blood_id() != /datum/reagent/blood)
+		add_splatter_floor_exotic(T, small_drip)
 		return
 	if(!T)
 		T = get_turf(src)
@@ -356,6 +379,27 @@
 	B.transfer_mob_blood_dna(src) //give blood info to the blood decal.
 	if(temp_blood_DNA)
 		B.add_blood_DNA(temp_blood_DNA)
+
+/mob/living/proc/add_splatter_floor_exotic(turf/T, small_drip)
+	if(!T)
+		T = get_turf(src)
+	if(isclosedturf(T) || (isgroundlessturf(T) && !GET_TURF_BELOW(T)))
+		return
+
+	if (small_drip)
+		var/obj/effect/decal/drop = locate() in T
+		if (!drop)
+			var/drop_type = get_exotic_blood_drop()
+			drop = new drop_type(T)
+			return
+
+	var/obj/effect/decal/splatter = locate() in T
+	if (!splatter)
+		var/splatter_type = get_exotic_blood_splatter()
+		splatter = new splatter_type(T)
+
+	if(QDELETED(splatter))
+		return
 
 /mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
 	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))

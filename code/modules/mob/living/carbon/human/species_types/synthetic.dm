@@ -92,6 +92,7 @@
 	sec_hud.show_to(C)
 	health_hud.show_to(C)
 	diagnostic_hud.show_to(C)
+	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 /datum/species/synthetic/on_species_loss(mob/living/carbon/human/C)
 	. = ..()

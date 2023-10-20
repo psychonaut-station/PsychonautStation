@@ -32,7 +32,8 @@
 	var/message = tgui_input_text(user, "", "Announcement")
 	if(!message)
 		return
-	priority_announce(message, null, 'sound/misc/announce_dig.ogg', "Curator", has_important_message=TRUE, players=GLOB.player_list)
+
+	minor_announce(message, "News from Curator!", sound_override = 'sound/misc/announce_dig.ogg')
 	COOLDOWN_START(src, announcement_cooldown, ANNOUNCEMENT_COOLDOWN)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] has used the curator's announcer beacon.")
 

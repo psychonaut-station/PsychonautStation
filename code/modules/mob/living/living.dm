@@ -982,7 +982,7 @@
 	return
 
 /mob/living/proc/makeTrail(turf/target_turf, turf/start, direction)
-	if(!has_gravity() || !isturf(start) || !blood_volume)
+	if(!has_gravity() || !isturf(start) || !blood_volume || get_blood_id() != /datum/reagent/blood)
 		return
 
 	var/blood_exists = locate(/obj/effect/decal/cleanable/trail_holder) in start

@@ -38,11 +38,6 @@
 	/// switch to use internal or remote storage
 	var/silo_link = FALSE
 
-	var/secondary_matter = 0
-	var/max_secondary_matter = 100
-	/// empty list means it doesn't use secondary matter, value means matter amount
-	var/list/secondary_matter_types = list()
-
 /datum/armor/item_construction
 	fire = 100
 	acid = 50
@@ -66,14 +61,9 @@
 /obj/item/construction/proc/get_matter(mob/user)
 	return matter
 
-/obj/item/construction/proc/get_secondary_matter(mob/user)
-	return secondary_matter
-
 /obj/item/construction/examine(mob/user)
 	. = ..()
 	. += "It currently holds [get_matter(user)]/[max_matter] matter-units."
-	if(secondary_matter_types.len)
-		. += "It currently holds [get_secondary_matter(user)]/[max_secondary_matter] secondary matter-units."
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
 		. += "Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
 		var/iron = get_silo_iron()
@@ -141,15 +131,6 @@
 	return loaded
 
 /obj/item/construction/proc/loadwithsheets(obj/item/stack/the_stack, mob/user)
-	for(var/matter_type in secondary_matter_types)
-		if(istype(the_stack, matter_type))
-			var/maxsheets = round((max_secondary_matter - secondary_matter) / secondary_matter_types[matter_type])
-			if(maxsheets > 0)
-				var/amount_to_use = min(the_stack.amount, maxsheets)
-				the_stack.use(amount_to_use)
-				secondary_matter += secondary_matter_types[matter_type] * amount_to_use
-				playsound(loc, 'sound/machines/click.ogg', 50, TRUE)
-				return TRUE
 	if(the_stack.matter_amount <= 0)
 		balloon_alert(user, "invalid sheets!")
 		return FALSE
@@ -178,39 +159,30 @@
 		if(ratio > 0)
 			. += "[icon_state]_charge[ratio]"
 
-/obj/item/construction/proc/useResource(amount, mob/user, secondary = FALSE)
-	if(!secondary)
-		if(!silo_mats || !silo_link)
-			if(matter < amount)
-				if(user)
-					balloon_alert(user, "not enough matter!")
-				return FALSE
-			matter -= amount
-			update_appearance()
-			return TRUE
-		else
-			if(silo_mats.on_hold())
-				if(user)
-					balloon_alert(user, "silo on hold!")
-				return FALSE
-			if(!silo_mats.mat_container)
-				if(user)
-					balloon_alert(user, "no silo detected!")
-				return FALSE
-
-			if(!silo_mats.mat_container.has_enough_of_material(/datum/material/iron, amount * SILO_USE_AMOUNT))
-				if(user)
-					balloon_alert(user, "not enough silo material!")
-				return FALSE
-			silo_mats.use_materials(list(/datum/material/iron = SILO_USE_AMOUNT), multiplier = amount, action = "build", name = "consume")
-			return TRUE
-	else
-		if(secondary_matter < amount)
+/obj/item/construction/proc/useResource(amount, mob/user)
+	if(!silo_mats || !silo_link)
+		if(matter < amount)
 			if(user)
 				balloon_alert(user, "not enough matter!")
 			return FALSE
-		secondary_matter -= amount
+		matter -= amount
 		update_appearance()
+		return TRUE
+	else
+		if(silo_mats.on_hold())
+			if(user)
+				balloon_alert(user, "silo on hold!")
+			return FALSE
+		if(!silo_mats.mat_container)
+			if(user)
+				balloon_alert(user, "no silo detected!")
+			return FALSE
+
+		if(!silo_mats.mat_container.has_enough_of_material(/datum/material/iron, amount * SILO_USE_AMOUNT))
+			if(user)
+				balloon_alert(user, "not enough silo material!")
+			return FALSE
+		silo_mats.use_materials(list(/datum/material/iron = SILO_USE_AMOUNT), multiplier = amount, action = "build", name = "consume")
 		return TRUE
 
 /obj/item/construction/ui_static_data(mob/user)
@@ -270,13 +242,13 @@
 			balloon_alert(user, "silo link invalid!")
 			return FALSE
 		else
-			if(silo_mats.on_hold())
-				if(user)
-					balloon_alert(user, "silo on hold!")
-				return FALSE
-			. = silo_mats.mat_container.has_enough_of_material(/datum/material/iron, amount * SILO_USE_AMOUNT)
+			. = matter >= amount
 	else
-		. = secondary_matter >= amount
+		if(silo_mats.on_hold())
+			if(user)
+				balloon_alert(user, "silo on hold!")
+			return FALSE
+		. = silo_mats.mat_container.has_enough_of_material(/datum/material/iron, amount * SILO_USE_AMOUNT)
 	if(!. && user)
 		balloon_alert(user, "low ammo!")
 		if(has_ammobar)

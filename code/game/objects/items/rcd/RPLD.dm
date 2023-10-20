@@ -375,4 +375,3 @@
 	plumbing_design_types = service_design_types
 
 	. = ..()
-

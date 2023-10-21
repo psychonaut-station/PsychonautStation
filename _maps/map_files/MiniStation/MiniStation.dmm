@@ -1746,7 +1746,7 @@
 	dwidth = 3;
 	height = 15;
 	name = "arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/box;
+	roundstart_template = /datum/map_template/shuttle/arrival/mini;
 	shuttle_id = "arrival_stationary";
 	width = 7
 	},
@@ -8460,7 +8460,6 @@
 /area/station/engineering/main)
 "uU" = (
 /obj/structure/cable,
-/obj/machinery/power/emitter/welded,
 /obj/machinery/power/emitter/welded{
 	dir = 8
 	},

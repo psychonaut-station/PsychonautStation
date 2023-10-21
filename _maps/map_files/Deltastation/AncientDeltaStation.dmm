@@ -40,6 +40,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/filingcabinet/chestdrawer,
 /turf/open/floor/iron,
 /area/station/cargo/miningoffice)
 "aam" = (
@@ -26638,10 +26639,8 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
 "dIF" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on{
-	external_pressure_bound = 140;
-	name = "server vent";
-	pressure_checks = 0
+/obj/machinery/atmospherics/components/unary/passive_vent{
+	name = "server vent"
 	},
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/station/science/server)
@@ -26651,8 +26650,7 @@
 	name = "science camera";
 	network = list("ss13","rd")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/siphon/on{
-	external_pressure_bound = 120;
+/obj/machinery/atmospherics/components/unary/passive_vent{
 	name = "server vent"
 	},
 /turf/open/floor/circuit/green/telecomms/mainframe,
@@ -54942,10 +54940,6 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/storage/toolbox/mechanical{
-	pixel_x = -8;
-	pixel_y = 17
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/holopad,
@@ -56050,6 +56044,7 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/south,
+/obj/machinery/byteforge,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/bitrunning/den)
 "lIc" = (
@@ -56405,7 +56400,6 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "lOg" = (
-/obj/machinery/door/firedoor,
 /obj/machinery/door/airlock/command/glass{
 	name = "Server Access"
 	},
@@ -60987,7 +60981,6 @@
 "nfI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood/old,
-/obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
@@ -67118,6 +67111,13 @@
 	},
 /obj/effect/decal/cleanable/oil/streak,
 /obj/machinery/camera/directional/south,
+/obj/structure/table,
+/obj/item/storage/toolbox/mechanical{
+	pixel_y = 7
+	},
+/obj/item/reagent_containers/cup/soda_cans/space_mountain_wind{
+	pixel_x = 5
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/bitrunning/den)
 "oRI" = (
@@ -75048,7 +75048,6 @@
 /turf/open/floor/iron,
 /area/station/command/gateway)
 "rmA" = (
-/obj/structure/filingcabinet/chestdrawer,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -86890,6 +86889,7 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron/dark,
 /area/station/science/server)
 "uRh" = (
@@ -95040,6 +95040,9 @@
 	},
 /turf/open/space,
 /area/space/nearstation)
+"xoh" = (
+/turf/closed/wall/r_wall,
+/area/station/science/ordnance)
 "xon" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1
@@ -132380,11 +132383,11 @@ sjF
 pEq
 kms
 rsY
-dEA
-dEA
-dEA
-dEA
-dEA
+xoh
+xoh
+xoh
+xoh
+xoh
 dKG
 cPi
 mTI

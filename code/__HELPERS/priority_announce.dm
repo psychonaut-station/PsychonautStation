@@ -32,7 +32,7 @@
  * * encode_title - if TRUE, the title will be HTML encoded
  * * encode_text - if TRUE, the text will be HTML encoded
  */
-/proc/priority_announce(text, title = "", sound, type, sender_override, has_important_message = FALSE, list/mob/players, encode_title = TRUE, encode_text = TRUE, news_network_title = "Central Command Update")
+/proc/priority_announce(text, title = "", sound, type, sender_override, has_important_message = FALSE, list/mob/players, encode_title = TRUE, encode_text = TRUE)
 	if(!text)
 		return
 
@@ -80,7 +80,7 @@
 		if(length(title) > 0)
 			GLOB.news_network.submit_article(title + "<br><br>" + text, "Central Command", "Station Announcements", null)
 		else
-			GLOB.news_network.submit_article(text, news_network_title, "Station Announcements", null)
+			GLOB.news_network.submit_article(text, "Central Command Update", "Station Announcements", null)
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)

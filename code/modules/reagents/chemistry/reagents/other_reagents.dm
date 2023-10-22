@@ -209,6 +209,21 @@
 	for(var/mob/living/simple_animal/slime/exposed_slime in exposed_turf)
 		exposed_slime.apply_water()
 
+	for(var/mob/living/carbon/human/exposed_human in exposed_turf)
+		if(isipc(exposed_human))
+			var/chest_covered = FALSE
+			var/head_covered = FALSE
+			for(var/obj/item/clothing/equipped in exposed_human.get_equipped_items())
+				if((equipped.body_parts_covered & CHEST) && (equipped.get_armor_rating(BIO) == 100))
+					chest_covered = TRUE
+				if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
+					head_covered = TRUE
+				if(head_covered && chest_covered)
+					break
+			if(!chest_covered || !head_covered)
+				var/datum/species/ipc/ipcspecies = exposed_human.dna.species
+				ipcspecies.apply_water(exposed_human)
+
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in exposed_turf)
 	if(hotspot && !isspaceturf(exposed_turf))
 		if(exposed_turf.air)
@@ -780,6 +795,14 @@
 	color = "#5EFF3B" //RGB: 94, 255, 59
 	race = /datum/species/android
 	taste_description = "circuitry and steel"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
+
+/datum/reagent/mutationtoxin/ipc
+	name = "Ipc Mutation Toxin"
+	description = "A monitor's toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/ipc
+	taste_description = "circuitry and plasteel"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_NO_RANDOM_RECIPE
 
 //BLACKLISTED RACES

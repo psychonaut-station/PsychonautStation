@@ -196,6 +196,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///A list containing outfits that will be overridden in the species_equip_outfit proc. [Key = Typepath passed in] [Value = Typepath of outfit you want to equip for this specific species instead].
 	var/list/outfit_override_registry = list()
 
+	// unique gibspawner for species
+	var/obj/effect/gibspawner/gibspawner = null
+	// unique remains for species
+	var/obj/effect/decal/remains/decalremains = null
+
 ///////////
 // PROCS //
 ///////////
@@ -756,6 +761,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					accessory = GLOB.legs_list[source.dna.features["legs"]]
 				if("caps")
 					accessory = GLOB.caps_list[source.dna.features["caps"]]
+				if("ipc_chassis")
+					accessory =  GLOB.ipc_chassis_list[source.dna.features["ipc_chassis"]]
 
 			if(!accessory || accessory.icon_state == "none")
 				continue
@@ -1309,6 +1316,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/weakness = check_species_weakness(weapon, user)
 
 	human.send_item_attack_message(weapon, user, hit_area, affecting)
+	var/obj/item/organ/internal/brain/humanbrain = human.get_organ_slot(ORGAN_SLOT_BRAIN)
 
 
 	var/attack_direction = get_dir(user, human)
@@ -1336,7 +1344,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		if(BODY_ZONE_HEAD)
 			if(!weapon.get_sharpness() && armor_block < 50)
 				if(prob(weapon.force))
-					human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
+					if(humanbrain.zone == BODY_ZONE_HEAD)
+						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 20)
 					if(human.stat == CONSCIOUS)
 						human.visible_message(span_danger("[human] is knocked senseless!"), \
 										span_userdanger("You're knocked senseless!"))
@@ -1345,7 +1354,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					if(prob(10))
 						human.gain_trauma(/datum/brain_trauma/mild/concussion)
 				else
-					human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
+					if(humanbrain.zone == BODY_ZONE_HEAD)
+						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
 
 				if(human.mind && human.stat == CONSCIOUS && human != user && prob(weapon.force + ((100 - human.health) * 0.5))) // rev deconversion through blunt trauma.
 					var/datum/antagonist/rev/rev = human.mind.has_antag_datum(/datum/antagonist/rev)
@@ -1369,6 +1379,11 @@ GLOBAL_LIST_EMPTY(features_by_species)
 					human.visible_message(span_danger("[human] is knocked down!"), \
 								span_userdanger("You're knocked down!"))
 					human.apply_effect(60, EFFECT_KNOCKDOWN, armor_block)
+					if(humanbrain.zone == BODY_ZONE_CHEST)
+						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
+				else
+					if(humanbrain.zone == BODY_ZONE_CHEST)
+						human.adjustOrganLoss(ORGAN_SLOT_BRAIN, weapon.force * 0.2)
 
 			if(bloody)
 				if(human.wear_suit)

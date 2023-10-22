@@ -6,10 +6,11 @@ GLOBAL_PROTECT(admin_verbs_default)
 	return list(
 	/client/proc/cmd_mentor_pm_context, /*right-click mentorPM interface*/
 	/client/proc/cmd_mentor_pm_panel, /*mentor-pm list*/
+	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
+	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
 	/client/proc/cmd_admin_say, /*admin-only ooc chat*/
 	/client/proc/deadmin, /*destroys our own admin datum so we can play as a regular player*/
 	/client/proc/dsay, /*talk in deadchat using our ckey/fakekey*/
-	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
 	/client/proc/hide_verbs, /*hides all our adminverbs*/
 	/client/proc/investigate_show, /*various admintools for investigation. Such as a singulo grief-log*/
 	/client/proc/mark_datum_mapview,
@@ -17,12 +18,11 @@ GLOBAL_PROTECT(admin_verbs_default)
 	/client/proc/requests,
 	/client/proc/stop_sounds,
 	/client/proc/tag_datum_mapview,
-	/client/proc/summon_ert,
-	/client/proc/cmd_admin_create_centcom_report,
-	/client/proc/cmd_change_command_name,
 	/client/proc/make_human_mapview,
 	/client/proc/delete_mob_mapview,
 	/client/proc/show_tip,
+	/client/proc/reset_ooc,
+	/client/proc/set_ooc,
 	)
 GLOBAL_LIST_INIT(admin_verbs_admin, world.AVerbsAdmin())
 GLOBAL_PROTECT(admin_verbs_admin)
@@ -50,8 +50,6 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/datum/verbs/menu/Admin/verb/playerpanel, /* It isn't /datum/admin but it fits no less */
 	/datum/admins/proc/change_shuttle_events, //allows us to change the shuttle events
 // Client procs
-	/client/proc/cmd_admin_pm_context, /*right-click adminPM interface*/
-	/client/proc/cmd_admin_pm_panel, /*admin-pm list*/
 	/client/proc/admin_call_shuttle, /*allows us to call the emergency shuttle*/
 	/client/proc/admin_cancel_shuttle, /*allows us to cancel the emergency shuttle, sending it back to centcom*/
 	/client/proc/admin_disable_shuttle, /*allows us to disable the emergency shuttle admin-wise so that it cannot be called*/
@@ -70,6 +68,7 @@ GLOBAL_PROTECT(admin_verbs_admin)
 	/client/proc/check_ai_laws, /*shows AI and borg laws*/
 	/client/proc/check_antagonists, /*shows all antags*/
 	/client/proc/fax_panel, /*send a paper to fax*/
+	/client/proc/fix_air, /*resets air in designated radius to its default atmos composition*/
 	/client/proc/force_load_lazy_template,
 	/client/proc/game_panel, /*game panel, allows to change game-mode etc*/
 	/client/proc/Getmob, /*teleports a mob to our location*/
@@ -116,6 +115,8 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/cmd_select_equipment,
 	/client/proc/command_report_footnote,
 	/client/proc/delay_command_report,
+	/client/proc/cmd_admin_create_centcom_report,
+	/client/proc/cmd_change_command_name,
 	/client/proc/drop_bomb,
 	/client/proc/drop_dynex_bomb,
 	/client/proc/forceEvent,
@@ -124,10 +125,9 @@ GLOBAL_LIST_INIT(admin_verbs_fun, list(
 	/client/proc/object_say,
 	/client/proc/polymorph_all,
 	/client/proc/remove_marked_mob_ability,
-	/client/proc/reset_ooc,
 	/client/proc/run_weather,
 	/client/proc/set_dynex_scale,
-	/client/proc/set_ooc,
+	/client/proc/summon_ert,
 	/client/proc/smite,
 	/client/proc/toggle_nuke,
 	/client/proc/toggle_random_events,

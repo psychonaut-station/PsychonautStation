@@ -27,13 +27,15 @@
 /obj/item/storage/box/survival/PopulateContents()
 	if(crafted)
 		return
-	if(!isnull(mask_type))
+	if(!isnull(mask_type) && !isipc(loc))
 		new mask_type(src)
 
-	if(!isplasmaman(loc))
-		new internal_type(src)
-	else
+	if(isplasmaman(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
+	else if(isipc(loc))
+		new /obj/item/stock_parts/cell/high(src)
+	else
+		new internal_type(src)
 
 	if(!isnull(medipen_type))
 		new medipen_type(src)
@@ -53,13 +55,18 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
-		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	new /obj/item/tank/internals/plasmaman/belt(src)
-	qdel(mask) // Get rid of the items that shouldn't be
-	qdel(internals)
+	if(isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
+		new /obj/item/tank/internals/plasmaman/belt(src)
+		qdel(mask) // Get rid of the items that shouldn't be
+		qdel(internals)
+	else if(isipc(loc))
+		new /obj/item/stock_parts/cell/high(src)
+		qdel(mask) // Get rid of the items that shouldn't be
+		qdel(internals)
+	else
+		return
 
 // Mining survival box
 /obj/item/storage/box/survival/mining

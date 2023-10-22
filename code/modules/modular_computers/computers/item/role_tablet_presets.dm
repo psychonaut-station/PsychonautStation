@@ -419,9 +419,8 @@
 /obj/item/modular_computer/pda/nt_secretary
 	name = "secretary PDA"
 	desc = "A small experimental microcomputer."
-	greyscale_config = null
-	greyscale_colors = null
-	icon_state = "pda-secretary"
+	greyscale_config = /datum/greyscale_config/tablet/secretary
+	greyscale_colors = "#FAFAFA#a52f29#034885"
 	inserted_item = /obj/item/pen/fountain
 	long_ranged = TRUE
 	starting_programs = list(
@@ -431,9 +430,8 @@
 
 /obj/item/modular_computer/pda/synthetic
 	name = "synthetic PDA"
-	greyscale_config = null
-	greyscale_colors = null
-	icon_state = "pda-secretary"
+	greyscale_config = /datum/greyscale_config/tablet/secretary
+	greyscale_colors = "#FAFAFA#a52f29#034885"
 	starting_programs = list(
 		/datum/computer_file/program/crew_manifest,
 		/datum/computer_file/program/status,

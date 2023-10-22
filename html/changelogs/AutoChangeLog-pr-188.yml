@@ -1,5 +1,0 @@
-author: "beetlejuicetr"
-delete-after: True
-changes:
-  - rscadd: "Arrival shuttle güncellendi. (by winstonbey)"
-  - bugfix: "SM odasındaki üst üste binen emitterler düzeltildi."

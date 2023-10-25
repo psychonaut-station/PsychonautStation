@@ -23,12 +23,7 @@
 	slot_flags = ITEM_SLOT_BELT
 	item_flags = NO_MAT_REDEMPTION | NOBLUDGEON
 	has_ammobar = TRUE
-	banned_upgrades = RCD_UPGRADE_FRAMES | RCD_UPGRADE_SIMPLE_CIRCUITS | RCD_UPGRADE_FURNISHING | RCD_UPGRADE_ANTI_INTERRUPT | RCD_UPGRADE_NO_FREQUENT_USE_COOLDOWN
-	max_secondary_matter = 50
-	secondary_matter_types = list(
-		/obj/item/stack/sheet/cloth = 4,
-		/obj/item/stack/tile/carpet = 1,
-	)
+	banned_upgrades = RCD_ALL_UPGRADES & ~RCD_UPGRADE_SILO_LINK
 
 	/// main category for tile design
 	var/root_category = "Conventional"
@@ -51,8 +46,7 @@
 	var/icon_state
 	/// rcd units to consume for this tile creation
 	var/cost
-	/// uses secondary matter unit
-	var/secondary
+
 	///directions this tile can be placed on the turf
 	var/list/tile_directions
 	/// user friendly names of the tile_directions to be sent to ui
@@ -66,11 +60,6 @@
 	tile_type = design["type"]
 	icon_state = initial(tile_type.icon_state)
 	cost = design["tile_cost"]
-	secondary = design["secondary"]
-
-	if(ispath(tile_type, /obj/item/stack/tile/carpet/neon))
-		var/obj/item/stack/tile/carpet/neon/neon_carpet = tile_type
-		icon_state += "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
 
 	tile_directions = design["tile_rotate_dirs"]
 	if(!tile_directions)
@@ -176,21 +165,17 @@
 	. = ..()
 	ui_interact(user)
 
-/obj/item/construction/rtd/ui_data(mob/user)
+/obj/item/construction/rtd/ui_static_data(mob/user)
 	var/list/data = ..()
-	var/floor_designs = GLOB.floor_designs
 
-	data["selected_root"] = root_category
 	data["root_categories"] = list()
-	for(var/category in floor_designs)
+	for(var/category in GLOB.floor_designs)
 		data["root_categories"] += category
-	data["selected_category"] = design_category
-
-	selected_design.fill_ui_data(data)
+	data["selected_root"] = root_category
 
 	data["categories"] = list()
-	for(var/sub_category as anything in floor_designs[root_category])
-		var/list/target_category =  floor_designs[root_category][sub_category]
+	for(var/sub_category as anything in GLOB.floor_designs[root_category])
+		var/list/target_category =  GLOB.floor_designs[root_category][sub_category]
 
 		var/list/designs = list() //initialize all designs under this category
 		for(var/list/design as anything in target_category)
@@ -201,10 +186,15 @@
 
 	return data
 
-/obj/item/construction/rtd/ui_act(action, params)
-	. = ..()
-	if(.)
-		return
+/obj/item/construction/rtd/ui_data(mob/user)
+	var/list/data = ..()
+
+	data["selected_category"] = design_category
+	selected_design.fill_ui_data(data)
+
+	return data
+
+/obj/item/construction/rtd/handle_ui_act(action, params, datum/tgui/ui, datum/ui_state/state)
 
 	var/floor_designs = GLOB.floor_designs
 	switch(action)
@@ -212,6 +202,7 @@
 			var/new_root = params["root_category"]
 			if(floor_designs[new_root] != null) //is a valid category
 				root_category = new_root
+				update_static_data_for_all_viewers()
 
 		if("set_dir")
 			var/direction = text2dir(params["dir"])
@@ -275,10 +266,10 @@
 		return TRUE
 
 	var/delay = CONSTRUCTION_TIME(selected_design.cost)
-	var/obj/effect/constructing_effect/rcd_effect = new(floor, delay, RCD_FLOORWALL)
+	var/obj/effect/constructing_effect/rcd_effect = new(floor, delay, RCD_TURF)
 
 	//resource sanity check before & after delay along with special effects
-	if(!checkResource(selected_design.cost, user, selected_design.secondary))
+	if(!checkResource(selected_design.cost, user))
 		qdel(rcd_effect)
 		return TRUE
 	var/beam = user.Beam(floor, icon_state = "light_beam", time = delay)
@@ -287,11 +278,11 @@
 		qdel(beam)
 		qdel(rcd_effect)
 		return TRUE
-	if(!checkResource(selected_design.cost, user, selected_design.secondary))
+	if(!checkResource(selected_design.cost, user))
 		qdel(rcd_effect)
 		return TRUE
 
-	if(!useResource(selected_design.cost, user, selected_design.secondary))
+	if(!useResource(selected_design.cost, user))
 		qdel(rcd_effect)
 		return TRUE
 	activate()
@@ -323,7 +314,6 @@
 
 	//we only deconstruct floors which are supported by the RTD
 	var/cost = 0
-	var/secondary = FALSE
 	for(var/main_root in floor_designs)
 		if(cost)
 			break
@@ -334,7 +324,6 @@
 				var/obj/item/stack/tile/tile_type = design_info["type"]
 				if(initial(tile_type.turf_type) == floor.type)
 					cost = design_info["tile_cost"]
-					secondary = design_info["secondary"]
 					break
 	if(!cost)
 		balloon_alert(user, "can't deconstruct this type!")
@@ -344,7 +333,7 @@
 	var/obj/effect/constructing_effect/rcd_effect = new(floor, delay, RCD_DECONSTRUCT)
 
 	//resource sanity check before & after delay along with beam effects
-	if(!checkResource(cost * 0.7, user, secondary)) //no ballon alert for checkResource as it already spans an alert to chat
+	if(!checkResource(cost * 0.7, user)) //no ballon alert for checkResource as it already spans an alert to chat
 		qdel(rcd_effect)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	var/beam = user.Beam(floor, icon_state = "light_beam", time = delay)
@@ -353,12 +342,12 @@
 		qdel(beam)
 		qdel(rcd_effect)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	if(!checkResource(cost * 0.7, user, secondary))
+	if(!checkResource(cost * 0.7, user))
 		qdel(rcd_effect)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 	//do the tiling
-	if(!useResource(cost * 0.7, user, secondary))
+	if(!useResource(cost * 0.7, user))
 		qdel(rcd_effect)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	activate()
@@ -380,14 +369,11 @@
 
 /obj/item/construction/rtd/loaded
 	matter = 350
-	secondary_matter = 50
 
 /obj/item/construction/rtd/admin
 	name = "admin RTD"
 	max_matter = INFINITY
 	matter = INFINITY
-	secondary_matter = INFINITY
-	max_secondary_matter = INFINITY
 
 #undef CONSTRUCTION_TIME
 #undef DECONSTRUCTION_TIME

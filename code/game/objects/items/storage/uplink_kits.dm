@@ -340,12 +340,6 @@
 	icon_state = "syndiebox"
 	illustration = "writing_syndie"
 
-/obj/item/storage/box/nano_kit
-	name= "box"
-	desc = "A sleek, sturdy box."
-	icon_state = "nanobox"
-	illustration = "writing"
-
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"
 	desc = "A box full of a number of rather masterfully engineered paper planes and a manual on \"The Art of Origami\"."
@@ -438,22 +432,6 @@
 	for(var/i in 1 to 5)
 		new /obj/item/grenade/empgrenade(src)
 	new /obj/item/implanter/emp(src)
-
-/obj/item/storage/box/nano_kit/ms
-	name = "Mindshield kit"
-
-/obj/item/storage/box/nano_kit/ms/PopulateContents()
-	for(var/i in 1 to 3)
-		new /obj/item/implantcase/mindshield(src)
-	new /obj/item/implanter/mindshield(src)
-
-/obj/item/storage/box/nano_kit/smg
-	name = "SMG kit"
-
-/obj/item/storage/box/nano_kit/smg/PopulateContents()
-	new /obj/item/gun/ballistic/automatic/proto/unrestricted(src)
-	new /obj/item/suppressor(src)
-	new /obj/item/ammo_box/magazine/smgm9mm(src)
 	
 /obj/item/storage/box/syndie_kit/mail_counterfeit
 	name = "mail counterfeit kit"
@@ -810,6 +788,21 @@
 /obj/item/storage/box/syndie_kit/poster_box/PopulateContents()
 	for(var/i in 1 to poster_count)
 		new /obj/item/poster/traitor(src)
+
+/obj/item/storage/box/syndie_kit/cowboy
+	name = "western outlaw pack"
+	desc = "Contains everything you'll need to be the rootin' tootin' cowboy you always wanted. Either play the Lone Ranger or go in with your posse of outlaws."
+
+/obj/item/storage/box/syndie_kit/cowboy/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/clothing/shoes/cowboy/black/syndicate= 1,
+		/obj/item/clothing/head/cowboy/black/syndicate = 1,
+		/obj/item/storage/belt/holster/nukie/cowboy/full = 1,
+		/obj/item/clothing/under/costume/dutch/syndicate = 1,
+		/obj/item/lighter/skull = 1,
+		/obj/item/sbeacondrop/horse = 1,
+		/obj/item/food/grown/apple = 1,
+	), src)
 
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI

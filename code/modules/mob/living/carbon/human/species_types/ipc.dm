@@ -24,6 +24,8 @@
 	meat = null
 	exotic_blood = /datum/reagent/fuel/oil
 	exotic_bloodtype = "LPG"
+	dust_anim = "dust-h"
+	gib_anim = "gibbed-h"
 	gibspawner = /obj/effect/gibspawner/robot/android
 	decalremains = /obj/effect/decal/remains/robot
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain

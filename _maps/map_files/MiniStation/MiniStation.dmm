@@ -827,7 +827,6 @@
 "cf" = (
 /obj/machinery/power/apc/auto_name/directional/east,
 /obj/structure/cable,
-/obj/effect/landmark/bitrunning/station_reward_spawn,
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/fore)
 "cg" = (
@@ -942,8 +941,12 @@
 "cx" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
-/turf/open/floor/catwalk_floor,
-/area/station/maintenance/fore)
+/obj/machinery/door/airlock/mining{
+	name = "Bitrunning Den"
+	},
+/obj/effect/mapping_helpers/airlock/access/any/supply/bit_den,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/bitrunning/den)
 "cy" = (
 /obj/machinery/modular_computer/preset/id{
 	dir = 8
@@ -1058,9 +1061,10 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "cN" = (
-/obj/effect/spawner/random/structure/grille,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/byteforge,
+/obj/effect/turf_decal/box,
+/turf/open/floor/iron/dark/textured_large,
+/area/station/bitrunning/den)
 "cO" = (
 /obj/structure/closet/secure_closet/hop,
 /obj/machinery/light{
@@ -1414,7 +1418,7 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "dD" = (
-/mob/living/simple_animal/sloth/citrus,
+/mob/living/basic/sloth/citrus,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2164,14 +2168,15 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "fr" = (
-/obj/machinery/door/airlock/mining/glass{
-	name = "Mining Dock"
-	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/access/all/supply/mining,
 /obj/effect/turf_decal/tile/brown/fourcorners,
+/obj/machinery/door/airlock/external{
+	name = "Mining Dock Airlock"
+	},
+/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "fs" = (
@@ -11758,9 +11763,7 @@
 /area/station/hallway/primary/central/fore)
 "CR" = (
 /obj/machinery/light/small,
-/mob/living/simple_animal/hostile/retaliate/goat{
-	name = "Pete"
-	},
+/mob/living/basic/goat/pete,
 /turf/open/floor/iron/freezer,
 /area/station/service/cafeteria)
 "CS" = (
@@ -14139,6 +14142,7 @@
 /obj/item/stack/package_wrap,
 /obj/item/stack/package_wrap,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/spawner/random/structure/grille,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "Jl" = (
@@ -15846,10 +15850,10 @@
 /area/station/tcommsat/computer)
 "Ot" = (
 /obj/structure/cable,
-/obj/machinery/door/airlock/mining{
-	name = "Bitrunning Den"
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/siding/thinplating_new/dark{
+	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/any/supply/bit_den,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/bitrunning/den)
 "Ov" = (
@@ -16392,7 +16396,6 @@
 /area/station/engineering/main)
 "Qk" = (
 /obj/effect/mapping_helpers/broken_floor,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "Ql" = (
@@ -16800,7 +16803,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/bitrunning/den)
 "RF" = (
-/obj/effect/landmark/bitrunning/station_reward_spawn,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "RG" = (
@@ -16978,9 +16980,7 @@
 /area/station/security/brig)
 "Si" = (
 /obj/effect/decal/cleanable/dirt,
-/obj/machinery/computer/quantum_console{
-	dir = 8
-	},
+/obj/machinery/computer/quantum_console,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/bitrunning/den)
 "Sj" = (
@@ -17267,6 +17267,7 @@
 /area/station/ai_monitored/turret_protected/ai)
 "Tc" = (
 /obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "Td" = (
@@ -50493,7 +50494,7 @@ xg
 VY
 bN
 bN
-bN
+cN
 Ot
 bN
 db
@@ -50749,10 +50750,10 @@ Je
 xg
 Tc
 Rc
-Qk
-Rc
+bN
+bN
 cx
-cU
+bN
 dL
 dL
 dL
@@ -51005,8 +51006,8 @@ Ie
 Iw
 xg
 Jk
+Qk
 RF
-cN
 cf
 bS
 cU

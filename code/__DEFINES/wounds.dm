@@ -80,8 +80,10 @@ GLOBAL_LIST_INIT(wound_severities_chronological, list(
 #define BIO_BLOODED (1<<4)
 /// Is connected by a joint - can suffer T1 bone blunt wounds (dislocation)
 #define BIO_JOINTED (1<<5)
+/// For species where blood is exotic
+#define BIO_EXOTIC_SPLATTER (1<<6)
 /// Robotic - can suffer all metal/wired wounds, such as: UNIMPLEMENTED PLEASE UPDATE ONCE SYNTH WOUNDS 9/5/2023 ~Niko
-#define BIO_ROBOTIC (BIO_METAL|BIO_WIRED)
+#define BIO_ROBOTIC (BIO_METAL|BIO_WIRED|BIO_EXOTIC_SPLATTER)
 /// Has flesh and bone - See BIO_BONE and BIO_FLESH
 #define BIO_FLESH_BONE (BIO_BONE|BIO_FLESH)
 /// Standard humanoid - can bleed and suffer all flesh/bone wounds, such as: T1-3 slash/pierce/burn/blunt, except dislocations. Think human heads/chests
@@ -205,7 +207,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 	WOUND_BURN = list(
 		WOUND_SERIES_FLESH_BURN_BASIC,
 	),
-	WOUND_PUNCTURE = list(
+	WOUND_PIERCE = list(
 		WOUND_SERIES_FLESH_PUNCTURE_BLEED
 	),
 ))
@@ -257,7 +259,7 @@ GLOBAL_LIST_INIT(wounding_types_to_series, list(
 		var/picked_severity
 		for (var/severity_text as anything in shuffle(GLOB.wound_severities_chronological))
 			var/severity = text2num(severity_text)
-			if (severity > severity_min || severity < severity_max)
+			if (!ISINRANGE(severity, severity_min, severity_max))
 				continue
 
 			if (isnull(picked_severity) || ((severity_pick_mode == WOUND_PICK_HIGHEST_SEVERITY && severity > picked_severity) || (severity_pick_mode == WOUND_PICK_LOWEST_SEVERITY && severity < picked_severity)))

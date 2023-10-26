@@ -16,7 +16,7 @@ endmap
 # Production-level maps.
 
 map ministation
-	maxplayers 20
+	maxplayers 15
 	votable
 endmap
 

@@ -333,26 +333,6 @@
 	contains = list(/obj/item/storage/belt/holster/energy/thermal = 2)
 	crate_name = "thermal pistol crate"
 
-/datum/supply_pack/security/armory/wt550
-	name = "Recalled Weapon Pack"
-	desc = "Contains a set of old Nanotrasen brand autorifles recalled due to choking hazard."
-	cost = 9800
-	contains = list(
-		/obj/item/gun/ballistic/automatic/wt550 = 2,
-		/obj/item/ammo_box/magazine/wt550m9 = 2,
-	)
-	crate_name = "Recalled rifle crate"
-
-/datum/supply_pack/security/armory/wt550ammo
-	name = "Recalled Ammo Pack"
-	desc = "Contains four 20-round magazine for the Recalled WT-550 Auto Rifle. \
-	Each magazine is designed to facilitate rapid tactical reloads. Recalled due to Security demands."
-	cost = 4000
-	contains = list(
-		/obj/item/ammo_box/magazine/wt550m9 = 4,
-	)
-	crate_name = "Ammo box"
-
 /datum/supply_pack/security/sunglasses
 	name = "Sunglasses Crate"
 	desc = "A single pair of flash-proof sunglasses."

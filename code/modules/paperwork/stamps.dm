@@ -110,7 +110,7 @@
 
 /obj/item/stamp/secretary
 	name = "secretary's rubber stamp"
-	icon = 'psychonaut/obj/service/bureaucracy.dmi'
+	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
 	icon_state = "stamp-secretary"
 	dye_color = DYE_CAPTAIN
 

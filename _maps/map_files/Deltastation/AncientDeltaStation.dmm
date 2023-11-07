@@ -9116,10 +9116,10 @@
 /area/station/maintenance/port/aft)
 "bBg" = (
 /obj/effect/landmark/start/assistant,
-/obj/structure/chair/stool/bar/directional/south,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
 "bBi" = (
@@ -37218,10 +37218,10 @@
 /area/station/maintenance/starboard/fore)
 "gbz" = (
 /obj/effect/landmark/start/hangover,
-/obj/structure/chair/stool/bar/directional/south,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
 "gbB" = (
@@ -49602,10 +49602,10 @@
 /turf/open/floor/iron,
 /area/station/service/lawoffice)
 "jOV" = (
-/obj/structure/chair/stool/bar/directional/south,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
+/obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
 "jOW" = (
@@ -78734,11 +78734,11 @@
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "stu" = (
-/obj/structure/chair/stool/bar/directional/south,
 /obj/machinery/newscaster/directional/west,
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
+/obj/structure/chair/stool/bar/directional/north,
 /turf/open/floor/wood,
 /area/station/service/bar/atrium)
 "stP" = (

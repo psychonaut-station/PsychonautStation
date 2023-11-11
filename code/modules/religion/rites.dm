@@ -711,7 +711,7 @@
 	if(prob(0.1))
 		playsound(altar_turf, 'sound/effects/bamf.ogg', 100, TRUE)
 		altar_turf.visible_message("<span class='boldwarning'>A large form seems to be forcing its way into your reality via the portal [user] opened! RUN!!!</span>")
-		new /mob/living/simple_animal/hostile/jungle/leaper(altar_turf)
+		new /mob/living/basic/leaper(altar_turf)
 	return ..()
 /datum/religion_rites/create_podperson
 	name = "Nature Conversion"
@@ -760,8 +760,3 @@
 	rite_target.set_species(/datum/species/pod)
 	rite_target.visible_message(span_notice("[rite_target] has been converted by the rite of [name]!"))
 	return TRUE
-
-
-
-
-

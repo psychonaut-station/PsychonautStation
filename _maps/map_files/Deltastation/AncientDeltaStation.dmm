@@ -3969,11 +3969,6 @@
 /obj/structure/reagent_dispensers/wall/peppertank/directional/east,
 /turf/open/floor/iron,
 /area/station/security/brig)
-"aCV" = (
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/window/reinforced/spawner/directional/north,
-/turf/open/space,
-/area/space/nearstation)
 "aDb" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -10421,11 +10416,6 @@
 "bLs" = (
 /turf/closed/wall/r_wall,
 /area/station/ai_monitored/security/armory)
-"bLw" = (
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/structure/window/reinforced/spawner/directional/west,
-/turf/open/space,
-/area/space/nearstation)
 "bLx" = (
 /obj/structure/table/reinforced,
 /obj/item/bodypart/chest/robot,
@@ -14035,23 +14025,6 @@
 /obj/machinery/status_display/ai/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
-"cdH" = (
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/aisat/exterior)
 "cea" = (
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
@@ -29269,7 +29242,6 @@
 "dXM" = (
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/sunny/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
@@ -30929,7 +30901,6 @@
 /obj/structure/flora/bush/flowers_br/style_random,
 /obj/structure/flora/bush/jungle/a/style_random,
 /obj/structure/flora/bush/flowers_pp/style_random,
-/obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/grass,
 /area/station/hallway/secondary/exit/departure_lounge)
@@ -36268,7 +36239,6 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/red/diagonal_centre,
 /obj/effect/turf_decal/tile/blue/diagonal_edge,
-/obj/machinery/holopad,
 /turf/open/floor/iron/diagonal,
 /area/station/medical/break_room)
 "fNs" = (
@@ -44507,7 +44477,6 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison/mess)
 "igB" = (
-/obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/flora/bush/fullgrass/style_random,
 /obj/structure/flora/bush/flowers_yw/style_random,
@@ -80045,12 +80014,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/visible,
 /turf/open/floor/iron,
 /area/station/maintenance/department/electrical)
-"sJD" = (
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/window/reinforced/spawner/directional/east,
-/turf/open/space,
-/area/space/nearstation)
 "sJI" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/cable,
@@ -85300,12 +85263,6 @@
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron,
 /area/station/commons/locker)
-"usR" = (
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/window/reinforced/spawner/directional/west,
-/obj/structure/window/reinforced/spawner/directional/west,
-/turf/open/space,
-/area/space/nearstation)
 "utb" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/effect/spawner/random/medical/memeorgans{
@@ -93038,7 +92995,6 @@
 /area/station/engineering/lobby)
 "wLx" = (
 /obj/effect/turf_decal/bot,
-/obj/machinery/airalarm/directional/north,
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/station/cargo/lobby)
@@ -104567,7 +104523,7 @@ btF
 bmH
 bmH
 btF
-bLw
+bmH
 aaa
 bPC
 bRz
@@ -104578,7 +104534,7 @@ caa
 bPC
 bkE
 rGH
-sJD
+xDu
 bmD
 bpF
 bmD
@@ -108690,7 +108646,7 @@ can
 bPC
 bkE
 rGH
-usR
+lNl
 bmH
 bpN
 bmH
@@ -108933,7 +108889,7 @@ auY
 qfd
 qfd
 qfd
-cdH
+qfd
 qfd
 qfd
 ucX
@@ -109718,7 +109674,7 @@ qfd
 qfd
 qfd
 tIU
-aCV
+fEY
 qYo
 qYo
 qYo

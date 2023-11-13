@@ -1,13 +1,13 @@
 @You can use the |, + and _ characters to emphasize parts of what you say in-game (e.g. say"my _ass_ |is| +heavy+." will be outputted as "my <u>ass</u> <i>is</i> <b>heavy</b>."). You can also escape these emphasizers by appending backslashes before them (e.g. say"1\+2\+3" will come out as "1+2+3" and not "1\<b>2\</b>3").
 ♪ Hey, have you ever tried appending the % character before your messages when speaking in-game? ♫
 A Scientist will pay top dollar for your frogs!
-A thrown glass of water can make a slippery tile, allowing you to slow down your pursuers in a pinch.
-Anything you can light a cigarette with, you can use to cauterize a bleeding wound. Technically, that includes the Supermatter.
-As a Blobbernaut, you can communicate with overminds and other Blobbernauts via :b.
-As a Blobbernaut, your HUD shows your health and the core health of the overmind that created you.
-As a Botanist, you can combine production trait chemicals just like a Chemist. Hydrogen(grass) + water(peas) + sugar(grapes) equal mannitol!
-As a Botanist, you can combine production trait chemicals just like a Chemist. Potassium(bananas) + water(watermelons) equal... FUN!
-As a Botanist, you can hack the MegaSeed Vendor to get access to more exotic seeds. These seeds can alternatively be ordered from cargo.
+Bir bardak su fırlatarak kaygan bir zemin oluşturabilirsiniz, sizi kovalayan kişilere karşı ufak bir engel.
+Sigara yakabileceğiniz herhangi bir şey ile kanamanızı da durdurabilirsiniz, teknik olarak SM de buna dahil olabilir.
+Bir Blob, Blobbernaut veya Blob Zombie iseniz söylediğiniz şeyler sadece diğer Blob ve Blob canlıları tarafından duyulabilir.
+Bir Blobbernaut iseniz, arayüzünüzde canınızı ve sizi yaratan Blob'un Core canını görebilirsiniz.
+Bir Botanist olarak, yetiştirdiğiniz bitkilerden alacağınız kimyasallar ile siz de ilaçlar yapabilirsiniz. Hydrogen (Grass) + Water (Watermelon) + Sugar (Sugarcane) eşittir Mannitol!
+Bir Botanist olarak siz de bir Chemist gibi, bitkilerinizden alacağınız kimyasallar ile kesinlikle güvenli deneyler yapabilirsiniz. Potassium (Banana) + Water (Watermelon) eşittir... bedava patlayıcı? Yan yana ekmemeye dikkat edin.
+Bir Botanist olarak, vendorlarınızı hackleyerek daha fazla tohuma, kimyasallara erişebilirsiniz. Alternatif olarak bu tohumları kargodan, kimyasalları da kimyacılardan isteyebilirsiniz.
 As a Botanist, you can mutate the plants growing in your hydroponics trays with Left 4 Zed from your NutriMax vendor.  Once you've ground up a few plants in the biogenerator, it can also produce Left 4 Zed.  Isn't science amazing?
 As a Botanist, you should look into increasing the potency of your plants. This increases the size, amount of chemicals, points gained from grinding them in the biogenerator, and lets people know you are a proficient botanist.
 As a Cargo Technician, you can earn more cargo points by shipping back crates from maintenance, liquid containers, plasma sheets, rare seeds from hydroponics, and more!

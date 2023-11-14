@@ -452,3 +452,6 @@
   - bugfix: People with copied memories can modify their bank account ID as normal.
   - rscdel: The Stethoscope no longer tells you if the target is missing a heart or
       lungs. Now, it will simply say the target is lacking a pulse or not breathing.
+2023-11-14:
+  Seluin:
+  - qol: "4-10 tipleri T\xFCrk\xE7e'ye \xE7evirildi."

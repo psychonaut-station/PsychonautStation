@@ -110,8 +110,9 @@
 
 /obj/item/stamp/secretary
 	name = "secretary's rubber stamp"
+	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
 	icon_state = "stamp-secretary"
-	dye_color = null //todo
+	dye_color = DYE_CAPTAIN
 
 /obj/item/stamp/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)

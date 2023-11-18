@@ -1579,7 +1579,6 @@
 "dU" = (
 /obj/structure/closet/bombcloset/security,
 /obj/machinery/syndicatebomb/training,
-/obj/machinery/syndicatebomb/training,
 /obj/effect/turf_decal/tile/red/half/contrasted,
 /turf/open/floor/iron,
 /area/station/security/brig)
@@ -7216,7 +7215,6 @@
 /turf/open/floor/plating/airless,
 /area/station/engineering/main)
 "ry" = (
-/obj/machinery/air_sensor/air_tank,
 /obj/machinery/portable_atmospherics/canister/air,
 /obj/machinery/atmospherics/pipe/layer_manifold/cyan/hidden{
 	dir = 4
@@ -10472,10 +10470,6 @@
 	id = "chemistry_shutters";
 	name = "Chemistry Shutters"
 	},
-/obj/machinery/door/poddoor/shutters/preopen{
-	id = "chemistry_shutters";
-	name = "Chemistry Shutters"
-	},
 /obj/machinery/door/firedoor,
 /turf/open/floor/iron/white,
 /area/station/medical/pharmacy)
@@ -13388,7 +13382,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
 "Hk" = (
-/obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /turf/open/floor/iron,
 /area/station/engineering/main)
@@ -17400,7 +17393,6 @@
 /turf/open/floor/iron,
 /area/station/service/theater)
 "TB" = (
-/obj/machinery/air_sensor/nitrogen_tank,
 /obj/machinery/portable_atmospherics/canister/nitrogen,
 /obj/machinery/atmospherics/pipe/layer_manifold/green/hidden{
 	dir = 8
@@ -17621,7 +17613,6 @@
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "Un" = (
-/obj/machinery/air_sensor/plasma_tank,
 /obj/machinery/portable_atmospherics/canister/plasma,
 /obj/machinery/atmospherics/pipe/layer_manifold/green/hidden{
 	dir = 8
@@ -17869,7 +17860,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "UZ" = (
-/obj/machinery/air_sensor/oxygen_tank,
 /obj/machinery/portable_atmospherics/canister/oxygen,
 /obj/machinery/atmospherics/pipe/layer_manifold/green/hidden{
 	dir = 8
@@ -19460,7 +19450,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "ZH" = (
-/obj/machinery/air_sensor/carbon_tank,
 /obj/machinery/portable_atmospherics/canister/carbon_dioxide,
 /obj/machinery/atmospherics/pipe/layer_manifold/green/hidden{
 	dir = 8

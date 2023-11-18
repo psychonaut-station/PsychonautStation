@@ -75,6 +75,7 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC | BIO_BLOODED)
+	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /obj/item/bodypart/chest/ipc/emp_act(severity)
 	. = ..()

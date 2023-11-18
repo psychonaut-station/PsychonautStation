@@ -49,10 +49,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"at" = (
-/turf/closed/wall/mineral/plastitanium,
-/turf/open/misc/grass/jungle,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "av" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
@@ -344,12 +340,6 @@
 "fo" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"fq" = (
-/turf/closed/wall/mineral/plastitanium{
-	dir = 2
-	},
-/turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "fs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -943,11 +933,6 @@
 /obj/structure/alien/weeds/node,
 /obj/item/trash/candy,
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"oP" = (
-/obj/structure/spacevine,
-/turf/closed/wall/mineral/plastitanium,
-/turf/open/misc/grass/jungle,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "oS" = (
 /obj/structure/barricade/wooden{
@@ -14181,20 +14166,20 @@ NG
 NG
 NG
 NG
-at
-at
 NG
 NG
 NG
-oP
-mC
-mC
-mC
 NG
-oP
-mC
-at
-at
+NG
+Te
+NG
+NG
+NG
+NG
+Te
+NG
+NG
+NG
 NG
 QQ
 QQ
@@ -17298,7 +17283,7 @@ QQ
 QQ
 QQ
 hP
-WO
+NG
 qc
 Jz
 Jz
@@ -17480,7 +17465,7 @@ QQ
 QQ
 QQ
 hP
-fq
+NG
 qc
 Jz
 Jz
@@ -17662,7 +17647,7 @@ QQ
 QQ
 QQ
 hP
-fq
+NG
 qc
 Jz
 hP
@@ -17844,7 +17829,7 @@ QQ
 QQ
 QQ
 hP
-WO
+NG
 qc
 XE
 AW
@@ -18026,7 +18011,7 @@ QQ
 hP
 hP
 hP
-WO
+NG
 ZP
 qc
 Qc
@@ -18208,7 +18193,7 @@ QQ
 hP
 ry
 ry
-WO
+NG
 ZP
 qc
 AW

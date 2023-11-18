@@ -807,10 +807,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"mC" = (
-/turf/closed/wall/mineral/plastitanium,
-/turf/closed/mineral/ash_rock,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "mE" = (
 /obj/structure/table,
 /obj/machinery/microwave,
@@ -14186,7 +14182,7 @@ QQ
 Ai
 Te
 WO
-mC
+NG
 WO
 Jz
 Jz
@@ -19464,9 +19460,9 @@ QQ
 VL
 QQ
 hP
-mC
-mC
-mC
+NG
+NG
+NG
 WO
 Jz
 Ug

@@ -49,15 +49,16 @@
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"as" = (
+/obj/structure/table,
+/obj/item/surgery_tray/full/morgue,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "av" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
 /obj/item/clothing/suit/apron,
 /turf/open/floor/sepia,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"aw" = (
-/obj/machinery/suit_storage_unit/spaceruin,
-/turf/template_noop,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "ax" = (
 /obj/structure/table/reinforced,
@@ -87,10 +88,6 @@
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"aU" = (
-/obj/item/gun/ballistic/automatic/mini_uzi,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "aX" = (
 /obj/item/shard,
 /turf/open/floor/iron,
@@ -111,6 +108,10 @@
 /obj/structure/table,
 /obj/item/clothing/suit/apron,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"bg" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "bk" = (
 /obj/machinery/hydroponics,
@@ -139,6 +140,13 @@
 /obj/machinery/light,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"bz" = (
+/obj/structure/table,
+/obj/item/gun/energy/laser/hellgun,
+/obj/item/gun/energy/laser/hellgun,
+/obj/item/gun/energy/laser/hellgun,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "bB" = (
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
@@ -160,9 +168,12 @@
 	},
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"ci" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "co" = (
 /obj/item/folder/blue,
-/obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "cr" = (
@@ -175,6 +186,10 @@
 	dir = 8
 	},
 /obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"ct" = (
+/obj/effect/decal/cleanable/blood/gibs/torso,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "cx" = (
@@ -203,6 +218,10 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"cK" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "cN" = (
 /obj/structure/rack,
 /obj/item/stack/sheet/glass{
@@ -230,6 +249,22 @@
 "dn" = (
 /obj/structure/alien/weeds/node,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"dz" = (
+/obj/structure/table,
+/obj/item/melee/energy/sword{
+	pixel_y = 11
+	},
+/obj/item/melee/energy/sword{
+	pixel_y = 6
+	},
+/obj/item/shield/riot{
+	pixel_x = 5
+	},
+/obj/item/shield/riot{
+	pixel_x = 5
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "dE" = (
 /obj/structure/table/reinforced,
@@ -275,10 +310,6 @@
 	},
 /turf/open/floor/iron/showroomfloor,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"ed" = (
-/obj/item/gun/ballistic/revolver/c38,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "ej" = (
 /obj/structure/rack,
 /obj/effect/spawner/random/engineering/tool,
@@ -296,6 +327,12 @@
 "ex" = (
 /obj/structure/alien/resin/wall,
 /turf/open/water/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"eH" = (
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/obj/effect/spawner/random/engineering/toolbox,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "eN" = (
 /obj/structure/rack,
@@ -319,10 +356,36 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"eZ" = (
+/obj/structure/spacevine,
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"fa" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted{
+	pixel_y = 9
+	},
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted{
+	pixel_y = 9
+	},
+/obj/item/gun/ballistic/automatic/l6_saw/unrestricted{
+	pixel_y = 9
+	},
+/obj/item/gun/ballistic/automatic/ar,
+/obj/item/gun/ballistic/automatic/ar,
+/obj/item/gun/ballistic/automatic/ar,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "fb" = (
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"ff" = (
+/obj/structure/alien/weeds/node,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "fg" = (
 /obj/structure/window/reinforced/tinted,
@@ -340,6 +403,10 @@
 "fo" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"fq" = (
+/obj/machinery/power/port_gen/pacman/pre_loaded,
+/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "fs" = (
 /obj/effect/decal/cleanable/dirt,
@@ -423,10 +490,19 @@
 /obj/item/trash/cheesie,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"gv" = (
+/obj/structure/table,
+/obj/item/ammo_box/a40mm,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "gB" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/botanic_leather,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"gH" = (
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "gI" = (
 /obj/effect/decal/cleanable/blood/xtracks,
@@ -532,6 +608,11 @@
 /obj/item/ammo_casing,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"il" = (
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "in" = (
 /obj/item/shard,
 /obj/structure/spacevine,
@@ -546,6 +627,15 @@
 	name = "\improper Nexus Dome Canteen"
 	},
 /turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"ir" = (
+/obj/structure/table/reinforced,
+/obj/item/melee/baton/security/cattleprod/teleprod,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"it" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "iu" = (
 /obj/structure/flora/grass/green,
@@ -677,10 +767,6 @@
 /obj/machinery/smartfridge,
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"kx" = (
-/obj/item/gun/ballistic/automatic/surplus,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "ky" = (
 /obj/machinery/hydroponics,
 /turf/open/floor/iron,
@@ -741,6 +827,10 @@
 /obj/item/bedsheet/rd,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"lm" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "lq" = (
 /obj/structure/spacevine{
 	pixel_y = 24
@@ -779,18 +869,17 @@
 /obj/structure/barricade/wooden,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"mp" = (
+/obj/structure/lattice/catwalk,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "ms" = (
 /obj/structure/closet/gmcloset,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "mv" = (
 /turf/open/floor/grass,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"my" = (
-/obj/structure/table/reinforced{
-	dir = 1
-	},
-/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "mz" = (
 /obj/structure/closet/athletic_mixed,
@@ -838,6 +927,14 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"mW" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/rifle/sniper_rifle,
+/obj/item/gun/ballistic/rifle/sniper_rifle,
+/obj/item/gun/ballistic/rifle/sniper_rifle,
+/obj/item/clothing/head/helmet/swat/nanotrasen,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "mX" = (
 /obj/machinery/light/small{
 	dir = 8
@@ -852,6 +949,11 @@
 /obj/structure/hoop,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"nl" = (
+/obj/item/surgery_tray/full/advanced,
+/obj/structure/table,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "nr" = (
 /obj/machinery/light/small{
 	dir = 4
@@ -863,6 +965,11 @@
 /obj/structure/spacevine,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"nv" = (
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "nB" = (
 /obj/structure/extinguisher_cabinet{
 	dir = 1
@@ -871,11 +978,23 @@
 /obj/item/storage/belt/utility/full,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"nC" = (
+/obj/machinery/light/small{
+	dir = 1
+	},
+/obj/effect/gibspawner/xeno,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "nF" = (
 /turf/closed/mineral/strong,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "nO" = (
 /obj/structure/alien/weeds/node,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"nP" = (
+/obj/structure/table,
+/obj/item/storage/medkit/regular,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "nU" = (
@@ -946,14 +1065,15 @@
 /obj/item/bedsheet/hos,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"ph" = (
+/obj/structure/rack,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "pj" = (
 /obj/machinery/light/small{
 	dir = 8
 	},
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"pm" = (
-/obj/item/gun/ballistic/automatic/gyropistol,
 /turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "po" = (
@@ -971,6 +1091,12 @@
 	name = "\improper Auxillary Hydroponics Dome"
 	},
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"pG" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "pL" = (
 /obj/machinery/vending/coffee,
@@ -991,6 +1117,12 @@
 /obj/effect/spawner/random/engineering/toolbox,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"pW" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/engine/cult{
+	dir = 2
+	},
+/area/ruin/space/has_grav/powered/virtual_domain)
 "pY" = (
 /obj/structure/barricade/wooden{
 	dir = 8
@@ -1010,6 +1142,10 @@
 	dir = 1
 	},
 /turf/open/floor/grass,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"qh" = (
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "qj" = (
 /obj/structure/sink{
@@ -1140,6 +1276,16 @@
 /obj/structure/rack,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"sm" = (
+/obj/structure/table,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/obj/item/ammo_box/magazine/sniper_rounds,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "sp" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -1170,6 +1316,10 @@
 /obj/structure/spacevine,
 /turf/open/misc/grass/jungle,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"sF" = (
+/obj/effect/mob_spawn/corpse/human,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "sM" = (
 /obj/structure/spacevine{
 	pixel_y = 24
@@ -1182,11 +1332,21 @@
 /obj/machinery/light,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"sO" = (
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "sR" = (
 /obj/machinery/light{
 	dir = 8
 	},
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"sT" = (
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/misc/grass/jungle,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "sU" = (
 /obj/structure/extinguisher_cabinet{
@@ -1207,8 +1367,22 @@
 /obj/structure/alien/resin/wall,
 /turf/closed/mineral/strong,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"tg" = (
+/obj/structure/fence/cut/medium{
+	dir = 8
+	},
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "th" = (
 /obj/machinery/seed_extractor,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"ti" = (
+/obj/structure/table,
+/obj/item/gun/grenadelauncher,
+/obj/item/shield/riot{
+	pixel_x = 5
+	},
 /turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "tm" = (
@@ -1258,6 +1432,12 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"un" = (
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/floor/engine/cult{
+	dir = 2
+	},
+/area/ruin/space/has_grav/powered/virtual_domain)
 "up" = (
 /turf/closed/indestructible/binary,
 /area/ruin/space/has_grav/powered/virtual_domain)
@@ -1265,6 +1445,10 @@
 /obj/structure/spacevine,
 /obj/structure/spacevine,
 /turf/closed/mineral/ash_rock,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"uC" = (
+/obj/structure/fence/door/opened,
+/turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "uG" = (
 /obj/machinery/vending/tool,
@@ -1275,8 +1459,8 @@
 /obj/item/megaphone,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"uM" = (
-/obj/item/gun/ballistic/automatic/plastikov,
+"uN" = (
+/obj/effect/mob_spawn/corpse/human/nanotrasensoldier,
 /turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "uP" = (
@@ -1316,6 +1500,12 @@
 "vm" = (
 /obj/structure/closet/secure_closet/freezer/fridge,
 /turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"vp" = (
+/obj/structure/table,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "vv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -1364,6 +1554,10 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"wu" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "wy" = (
 /obj/machinery/seed_extractor,
 /obj/machinery/light{
@@ -1376,9 +1570,9 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"wJ" = (
-/obj/item/gun/ballistic/automatic/ar,
-/turf/open/misc/beach/sand,
+"wR" = (
+/obj/machinery/power/port_gen/pacman/pre_loaded,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "wU" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -1402,13 +1596,6 @@
 	dir = 1
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"xv" = (
-/obj/structure/extinguisher_cabinet{
-	dir = 1
-	},
-/obj/structure/rack,
-/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "xx" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -1434,6 +1621,103 @@
 /obj/structure/rack,
 /obj/item/clothing/under/color/black,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"xP" = (
+/obj/structure/table,
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_x = 6;
+	pixel_y = 6
+	},
+/obj/item/clothing/suit/armor/vest/marine{
+	pixel_x = -8
+	},
+/obj/item/clothing/suit/armor/vest/marine{
+	pixel_x = -8
+	},
+/obj/item/clothing/suit/armor/vest/marine{
+	pixel_x = -8
+	},
+/obj/item/clothing/suit/armor/vest/marine{
+	pixel_x = -8
+	},
+/obj/item/clothing/suit/armor/vest/marine{
+	pixel_x = -8
+	},
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"xS" = (
+/obj/structure/table,
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m7mm{
+	pixel_x = 7;
+	pixel_y = 4
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/obj/item/ammo_box/magazine/m223{
+	pixel_x = -5
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "ya" = (
 /obj/machinery/light{
@@ -1472,8 +1756,26 @@
 /obj/item/clothing/mask/facehugger/dead,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"yA" = (
+/obj/structure/table,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/toxin,
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/o2,
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/fire,
+/obj/item/storage/medkit/brute,
+/obj/item/storage/medkit/brute,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "yH" = (
 /obj/item/clothing/suit/armor/bulletproof,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"yI" = (
+/obj/structure/alien/weeds/node,
+/mob/living/simple_animal/hostile/alien/sentinel,
 /turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "yJ" = (
@@ -1493,9 +1795,17 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"zf" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "zg" = (
 /obj/item/taperecorder,
 /turf/open/floor/carpet/green,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"zj" = (
+/obj/machinery/iv_drip,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "zk" = (
 /obj/structure/table/reinforced{
@@ -1503,6 +1813,10 @@
 	},
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"zu" = (
+/obj/effect/gibspawner,
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "zH" = (
 /obj/structure/bed,
@@ -1530,6 +1844,18 @@
 /obj/item/shard,
 /obj/structure/spacevine,
 /turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Ad" = (
+/obj/item/paper{
+	name = "LV624 PvE Sunucusu";
+	default_raw_text = "Sunucuya hosgeldiniz. Burada ki amaciniz Xenomorphlar ile savasip dostlarinizla eglenmenizdir. !! UYARI !! Eger savasirken hasar alirsaniz gercek dunyadaki bedeniniz bundan etkilenebilir , lütfen bunu goz onunde bulundurarak aksiyon haline geciniz. -TerraGovMarineCorps"
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Ag" = (
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Ai" = (
 /obj/structure/spacevine,
@@ -1623,6 +1949,18 @@
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Bj" = (
+/obj/effect/gibspawner/xeno,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Bt" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Bw" = (
+/obj/effect/mob_spawn/corpse/human/nanotrasensoldier,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "By" = (
 /obj/machinery/light{
 	dir = 1
@@ -1650,10 +1988,6 @@
 /obj/machinery/vending/cola,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Co" = (
-/obj/machinery/firealarm,
-/turf/open/floor/wood,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Ct" = (
 /obj/structure/flora/grass/both,
 /turf/open/floor/grass,
@@ -1670,6 +2004,11 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "CE" = (
 /turf/template_noop,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"CH" = (
+/obj/item/ammo_casing,
+/obj/effect/mob_spawn/corpse/human/assistant,
+/turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "CL" = (
 /obj/structure/table,
@@ -1693,10 +2032,6 @@
 "Dh" = (
 /obj/structure/window/reinforced/tinted,
 /turf/open/floor/iron/showroomfloor,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Dm" = (
-/obj/machinery/power/apc,
-/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Dn" = (
 /obj/machinery/door/airlock/medical/glass{
@@ -1731,6 +2066,10 @@
 /obj/item/assembly/signaler,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"DO" = (
+/obj/structure/fence/door/opened,
+/turf/open/misc/grass/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "DP" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/iron,
@@ -1748,6 +2087,31 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"DZ" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/shotgun/lethal,
+/obj/item/gun/ballistic/shotgun/lethal,
+/obj/item/gun/ballistic/shotgun/lethal,
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/obj/item/flashlight/seclite{
+	pixel_y = 9
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Ea" = (
 /obj/effect/spawner/random/engineering/tool,
 /turf/open/floor/plating,
@@ -1762,6 +2126,10 @@
 "Ew" = (
 /obj/structure/grille/broken,
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"EG" = (
+/mob/living/simple_animal/hostile/alien,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "EI" = (
 /obj/structure/table,
@@ -1795,10 +2163,38 @@
 /obj/structure/filingcabinet,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"EX" = (
+/obj/effect/gibspawner,
+/turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "EY" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Fd" = (
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare,
+/obj/item/flashlight/flare{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/obj/item/flashlight/flare{
+	pixel_x = 4;
+	pixel_y = 7
+	},
+/obj/item/flashlight/flare{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/obj/item/flashlight/flare{
+	pixel_x = 9;
+	pixel_y = -6
+	},
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Ff" = (
 /obj/machinery/biogenerator,
@@ -1814,6 +2210,15 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Fs" = (
 /turf/open/floor/vault,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Fu" = (
+/obj/structure/bed,
+/obj/item/bedsheet/nanotrasen,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Fv" = (
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Fz" = (
 /obj/structure/girder/displaced,
@@ -1850,7 +2255,9 @@
 /turf/open/misc/grass/jungle,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Gy" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "GC" = (
@@ -1870,6 +2277,11 @@
 /obj/machinery/vending/boozeomat,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"GM" = (
+/obj/structure/lattice/catwalk,
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/water/jungle,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "GP" = (
 /obj/item/storage/box/matches,
 /turf/open/floor/wood,
@@ -1885,6 +2297,14 @@
 /obj/structure/fence,
 /obj/structure/spacevine,
 /turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"GZ" = (
+/obj/structure/table,
+/obj/item/storage/medkit/surgery,
+/obj/item/storage/medkit/surgery,
+/obj/item/storage/medkit/surgery,
+/obj/item/autosurgeon,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "He" = (
 /turf/closed/wall,
@@ -1909,6 +2329,10 @@
 "Hp" = (
 /obj/structure/table,
 /turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"HG" = (
+/obj/item/storage/backpack/duffelbag/sec/surgery,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "HI" = (
 /obj/structure/closet/secure_closet/engineering_personal,
@@ -1953,11 +2377,6 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Iz" = (
-/obj/item/storage/medkit/regular,
-/obj/item/storage/medkit/regular,
-/turf/template_noop,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "IC" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/smooth,
@@ -1972,6 +2391,11 @@
 	},
 /obj/item/ammo_casing,
 /turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"IL" = (
+/obj/structure/table,
+/obj/item/stack/sheet/mineral/plasma/thirty,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "IW" = (
 /obj/structure/closet/lawcloset,
@@ -1996,6 +2420,10 @@
 	dir = 4
 	},
 /turf/open/floor/iron/showroomfloor,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Jk" = (
+/obj/machinery/power/port_gen/pacman/pre_loaded,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Jo" = (
 /obj/effect/decal/remains/xeno,
@@ -2052,6 +2480,18 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"JQ" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/automatic/m90/unrestricted{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/automatic/m90/unrestricted{
+	pixel_y = 6
+	},
+/obj/item/gun/ballistic/automatic/m90/unrestricted,
+/obj/item/gun/ballistic/automatic/m90/unrestricted,
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "JU" = (
 /obj/structure/closet/secure_closet/bar,
 /turf/open/floor/iron/smooth,
@@ -2082,10 +2522,6 @@
 	dir = 8
 	},
 /turf/open/floor/iron/showroomfloor,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Kp" = (
-/obj/item/gun/ballistic/automatic/wt550,
-/turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Kq" = (
 /obj/structure/spacevine,
@@ -2160,6 +2596,10 @@
 /obj/item/clothing/mask/cigarette/pipe/cobpipe,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"LE" = (
+/obj/effect/gibspawner,
+/turf/open/floor/iron/smooth,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "LK" = (
 /obj/structure/rack,
 /obj/item/storage/box/handcuffs,
@@ -2198,10 +2638,6 @@
 	},
 /turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Ma" = (
-/obj/item/gun/ballistic/rifle/boltaction,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "Mg" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2214,6 +2650,12 @@
 	},
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Mq" = (
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/obj/item/stack/sheet/mineral/wood/fifty,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Mw" = (
 /obj/item/ammo_casing{
@@ -2239,6 +2681,10 @@
 /obj/item/folder/blue,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"MN" = (
+/obj/effect/gibspawner,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "MQ" = (
 /obj/item/stack/sheet/plasteel{
 	amount = 10
@@ -2256,7 +2702,9 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Nj" = (
 /obj/structure/spacevine,
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
 /turf/open/misc/grass/jungle,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Nk" = (
@@ -2294,10 +2742,6 @@
 /obj/item/bedsheet/captain,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"NP" = (
-/obj/item/gun/ballistic/automatic/tommygun,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "NR" = (
 /obj/effect/decal/cleanable/blood,
 /turf/open/misc/beach/sand,
@@ -2329,6 +2773,10 @@
 /obj/item/storage/toolbox/mechanical,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Os" = (
+/mob/living/simple_animal/hostile/alien/sentinel,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Ow" = (
 /obj/structure/alien/resin/wall,
 /turf/open/misc/beach/sand,
@@ -2340,6 +2788,10 @@
 "Oy" = (
 /obj/structure/rack,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"OA" = (
+/obj/structure/closet/crate/freezer/blood,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "OH" = (
 /obj/effect/decal/cleanable/blood,
@@ -2379,6 +2831,46 @@
 /obj/item/ammo_casing,
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Pq" = (
+/obj/structure/table,
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = -4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = -4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = -4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = 6;
+	pixel_y = 4
+	},
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = -4
+	},
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Px" = (
 /obj/machinery/light{
@@ -2444,6 +2936,10 @@
 /obj/item/ammo_casing,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Qf" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Qh" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2456,9 +2952,12 @@
 /obj/structure/foamedmetal,
 /turf/closed/mineral/strong,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Qq" = (
-/obj/item/gun/ballistic/automatic/l6_saw,
-/turf/open/misc/beach/sand,
+"Qp" = (
+/obj/item/paper{
+	name = "LV624 PvE Sunucusu";
+	default_raw_text = "Sunucuya hosgeldiniz. Burada ki amaciniz Xenomorphlar ile savasip dostlarinizla eglenmenizdir. !! UYARI !! Eger savasirken hasar alirsaniz gercek dunyadaki bedeniniz bundan etkilenebilir , lütfen bunu goz onunde bulundurarak aksiyon haline geciniz. -TerraGovMarineCorps"
+	},
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Qs" = (
 /obj/machinery/light/small{
@@ -2555,12 +3054,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"RB" = (
-/obj/machinery/firealarm{
-	dir = 2
-	},
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "RD" = (
 /obj/machinery/door/airlock/medical/glass{
 	dir = 4;
@@ -2631,6 +3124,12 @@
 /obj/item/storage/box/cups,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"SD" = (
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "SL" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/alien/weeds/node,
@@ -2651,17 +3150,17 @@
 /obj/structure/spacevine,
 /turf/closed/wall/mineral/plastitanium,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Th" = (
+/obj/item/ammo_casing,
+/mob/living/simple_animal/hostile/alien,
+/turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Ti" = (
 /obj/machinery/light{
 	dir = 1
 	},
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Tk" = (
-/obj/structure/rack,
-/obj/machinery/power/apc,
-/turf/open/floor/iron/dark,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Tl" = (
 /obj/structure/hoop{
@@ -2682,25 +3181,70 @@
 /obj/machinery/chem_dispenser,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"Tq" = (
-/obj/structure/table/greyscale,
-/obj/item/gun/energy/beam_rifle,
-/obj/item/gun/energy/laser{
-	pixel_x = 4;
-	pixel_y = -6
+"Tu" = (
+/obj/structure/table,
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
 	},
-/obj/item/gun/energy/laser{
-	pixel_x = -8;
-	pixel_y = 6
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
 	},
-/turf/template_noop,
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/grenade/c4{
+	pixel_y = 2;
+	pixel_x = -6
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/obj/item/grenade/frag{
+	pixel_x = 7
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Tx" = (
 /obj/effect/spawner/random/engineering/tool,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Ty" = (
-/obj/structure/fence,
+/obj/structure/fence{
+	dir = 4
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"TB" = (
+/obj/structure/table,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
+/obj/item/storage/box/lethalshot,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "TN" = (
@@ -2738,6 +3282,18 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Uc" = (
+/obj/structure/table,
+/obj/item/gun/ballistic/automatic/pistol/deagle,
+/obj/item/gun/ballistic/automatic/pistol/deagle,
+/obj/item/gun/ballistic/automatic/pistol/m1911{
+	pixel_y = -7
+	},
+/obj/item/gun/ballistic/automatic/pistol/m1911{
+	pixel_y = -7
+	},
+/turf/open/floor/sepia,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Ue" = (
 /obj/machinery/light/small{
 	dir = 1
@@ -2749,6 +3305,15 @@
 "Ug" = (
 /obj/structure/spacevine,
 /turf/closed/mineral/ash_rock,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Ui" = (
+/obj/structure/bed{
+	dir = 4
+	},
+/obj/item/bedsheet/nanotrasen{
+	dir = 4
+	},
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Um" = (
 /turf/open/floor/plating,
@@ -2808,9 +3373,16 @@
 /obj/item/pinpointer,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"UV" = (
-/obj/item/gun/ballistic/automatic/c20r,
+"UL" = (
+/obj/structure/fence/cut/medium{
+	dir = 8
+	},
 /turf/open/misc/beach/sand,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"UR" = (
+/obj/item/storage/toolbox/electrical,
+/obj/item/storage/toolbox/electrical,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "UW" = (
 /obj/structure/alien/weeds/node,
@@ -2823,6 +3395,10 @@
 "Vf" = (
 /obj/structure/spacevine,
 /turf/closed/wall,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Vq" = (
+/obj/effect/gibspawner/human,
+/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Vr" = (
 /obj/effect/spawner/random/engineering/toolbox,
@@ -2846,6 +3422,11 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "VQ" = (
 /obj/item/clothing/glasses/regular,
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"VX" = (
+/obj/structure/table/reinforced,
+/obj/item/melee/baton/security/boomerang,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Wk" = (
@@ -2888,10 +3469,6 @@
 /obj/machinery/light,
 /turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"WS" = (
-/obj/effect/spawner/random/engineering/tool,
-/turf/open/floor/sepia,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "WU" = (
 /obj/structure/rack,
 /obj/machinery/light{
@@ -2905,18 +3482,6 @@
 	name = "\improper Hydroponics Dome"
 	},
 /turf/open/floor/plating,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"Xl" = (
-/obj/structure/table/greyscale,
-/obj/machinery/recharger{
-	pixel_x = 8;
-	pixel_y = 4
-	},
-/obj/machinery/recharger{
-	pixel_x = -8;
-	pixel_y = 4
-	},
-/turf/template_noop,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Xo" = (
 /obj/machinery/shower{
@@ -2995,10 +3560,6 @@
 /obj/structure/alien/weeds/node,
 /turf/open/misc/beach/sand,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"YB" = (
-/obj/item/gun/ballistic/automatic/m90,
-/turf/open/misc/beach/sand,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "YC" = (
 /obj/structure/spacevine,
 /obj/structure/spacevine,
@@ -3007,6 +3568,11 @@
 "YE" = (
 /obj/structure/closet/cabinet,
 /turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"YK" = (
+/obj/structure/rack,
+/obj/item/storage/toolbox/emergency/turret,
+/turf/open/floor/plating,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "YL" = (
 /obj/structure/table,
@@ -3047,10 +3613,39 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Zk" = (
+/obj/structure/table,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m50,
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = 8
+	},
+/obj/item/ammo_box/magazine/m45{
+	pixel_x = 8
+	},
+/turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Zq" = (
 /obj/structure/table/reinforced,
 /obj/item/assembly/prox_sensor,
 /turf/open/floor/iron/dark,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Zv" = (
+/obj/effect/gibspawner/xeno,
+/turf/open/floor/sepia,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Zx" = (
 /obj/structure/rack,
@@ -5082,7 +5677,7 @@ Qc
 tm
 Qc
 Qc
-Qc
+zf
 Qc
 Qc
 tm
@@ -5811,7 +6406,7 @@ tm
 UW
 Qc
 Qc
-Qc
+zf
 UW
 yi
 Qb
@@ -5986,7 +6581,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 hP
 hP
 tm
@@ -6098,7 +6693,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -6122,7 +6717,7 @@ Ow
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -6168,7 +6763,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 hP
 hP
@@ -6350,7 +6945,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 hP
@@ -6532,9 +7127,9 @@ He
 XE
 XE
 XE
+gP
 Jz
 Jz
-iJ
 hP
 hP
 Fh
@@ -6610,7 +7205,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -6714,15 +7309,15 @@ gP
 XE
 XE
 XE
-Qd
+gP
 Jz
+iJ
 Jz
-Jz
-Qd
+gP
 Wm
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -6873,7 +7468,7 @@ yp
 bB
 yp
 bB
-yp
+Ag
 yp
 bB
 fs
@@ -6896,15 +7491,15 @@ gP
 XE
 XE
 XE
-Nj
+gP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 Wm
-Qd
+DO
 Jz
 Jz
 ry
@@ -7078,7 +7673,7 @@ gP
 XE
 Yu
 XE
-Qd
+DO
 Jz
 Jz
 Jz
@@ -7086,7 +7681,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -7198,7 +7793,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -7260,11 +7855,11 @@ gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
-Qd
+tg
 XE
 XE
 Wm
@@ -7415,7 +8010,7 @@ jV
 Sy
 mH
 bB
-yp
+Ag
 bB
 yp
 dn
@@ -7441,16 +8036,16 @@ Jz
 gP
 XE
 XE
-XE
-Qd
+UL
+gP
 Jz
 Jz
 Jz
-Qd
+tg
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -7623,7 +8218,7 @@ Qd
 He
 XE
 XE
-XE
+uC
 He
 Qd
 Qd
@@ -7632,7 +8227,7 @@ He
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -7996,7 +8591,7 @@ XE
 XE
 XE
 XE
-Qd
+tg
 Jz
 Jz
 ry
@@ -8178,7 +8773,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -8432,7 +9027,7 @@ nF
 Um
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -8453,7 +9048,7 @@ Uz
 Um
 XE
 XE
-Yu
+ff
 XE
 XE
 Yu
@@ -8520,7 +9115,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -8538,11 +9133,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -8702,7 +9297,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -8720,11 +9315,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -8774,7 +9369,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -8867,7 +9462,7 @@ LU
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -8902,11 +9497,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -9049,7 +9644,7 @@ LU
 LU
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -9084,11 +9679,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -9231,11 +9826,11 @@ LU
 LU
 LU
 XE
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -9413,11 +10008,11 @@ LU
 LU
 LU
 XE
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -9448,7 +10043,7 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -9465,7 +10060,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -9630,7 +10225,7 @@ ZP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -9647,7 +10242,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -9753,7 +10348,7 @@ XE
 XE
 Yu
 XE
-pq
+Th
 XE
 Wm
 Yu
@@ -9777,11 +10372,11 @@ LU
 LU
 LU
 XE
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -9812,7 +10407,7 @@ ZP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
@@ -9829,7 +10424,7 @@ XE
 Yu
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -9851,7 +10446,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -9959,11 +10554,11 @@ LU
 LU
 LU
 XE
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -10141,11 +10736,11 @@ LU
 LU
 LU
 XE
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -10178,18 +10773,18 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -10323,11 +10918,11 @@ LU
 LU
 LU
 vf
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -10360,11 +10955,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -10538,7 +11133,7 @@ Jz
 Jz
 Jz
 Jz
-Jz
+Bt
 Jz
 Jz
 Jz
@@ -10557,7 +11152,7 @@ Nj
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -10691,7 +11286,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -10739,8 +11334,8 @@ He
 XE
 XE
 XE
+gP
 Jz
-Ny
 ry
 ry
 ry
@@ -10873,7 +11468,7 @@ VL
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -10917,11 +11512,11 @@ Fi
 AW
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -11055,7 +11650,7 @@ VL
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ZP
@@ -11073,7 +11668,7 @@ Jz
 Jz
 Jz
 Jz
-Jz
+Bt
 Jz
 Jz
 Jz
@@ -11099,12 +11694,12 @@ Fi
 AW
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
-Jz
+gP
+Ny
 ry
 ry
 ry
@@ -11237,7 +11832,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 ZP
 ZP
@@ -11281,11 +11876,11 @@ av
 AW
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 ZP
 ry
@@ -11637,7 +12232,7 @@ VL
 VL
 VL
 QQ
-VL
+bg
 VL
 VL
 VL
@@ -11649,7 +12244,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 ZP
 ZP
 ry
@@ -11755,7 +12350,7 @@ bv
 Um
 Pi
 mi
-Um
+cK
 Um
 bv
 Um
@@ -11831,7 +12426,7 @@ XE
 XE
 Wm
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -11997,7 +12592,7 @@ AW
 VL
 VL
 gN
-VL
+bg
 VL
 VL
 QQ
@@ -12226,7 +12821,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -12373,11 +12968,11 @@ ym
 AW
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -12555,11 +13150,11 @@ th
 AW
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -12737,11 +13332,11 @@ Om
 AW
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -13101,11 +13696,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -13287,7 +13882,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -13362,7 +13957,7 @@ Uz
 Hg
 Uz
 Uz
-Uz
+un
 Uz
 rA
 Uz
@@ -13448,7 +14043,7 @@ LU
 LU
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -13469,7 +14064,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -13630,7 +14225,7 @@ LU
 LU
 XE
 Jz
-wi
+SD
 XE
 Yu
 XE
@@ -13812,7 +14407,7 @@ XE
 XE
 XE
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -14015,7 +14610,7 @@ He
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -14193,11 +14788,11 @@ ry
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -14379,7 +14974,7 @@ Nj
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -14739,11 +15334,11 @@ ZP
 ZP
 ZP
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -14921,11 +15516,11 @@ Jz
 Jz
 Ao
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -15103,15 +15698,15 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
+ci
 XE
-XE
-Qd
+gP
 Jz
 Jz
 Jz
-Jz
+iJ
 Jz
 ry
 ry
@@ -15285,11 +15880,11 @@ Jz
 Jz
 Ao
 Jz
-Qd
+gP
 qc
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -15467,12 +16062,12 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 qc
 XE
 XE
-Qd
-iJ
+gP
+Jz
 Jz
 ry
 Jz
@@ -15516,7 +16111,7 @@ Yu
 XE
 XE
 XE
-Yu
+XE
 XE
 XE
 XE
@@ -15813,7 +16408,7 @@ Um
 Um
 Um
 Um
-Um
+cK
 Um
 Um
 Um
@@ -15831,11 +16426,11 @@ ZP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -15928,7 +16523,7 @@ XE
 Ow
 Ow
 XE
-XE
+ci
 XE
 XE
 XE
@@ -16013,11 +16608,11 @@ ZP
 Jz
 ry
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -16064,7 +16659,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -16136,7 +16731,7 @@ nF
 XE
 XE
 XE
-XE
+ci
 XE
 LU
 LU
@@ -16195,11 +16790,11 @@ ZP
 ry
 ry
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -16364,7 +16959,7 @@ Um
 Um
 Um
 Um
-Um
+TU
 QQ
 hP
 ry
@@ -16377,11 +16972,11 @@ ZP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ry
@@ -16423,12 +17018,12 @@ XE
 XE
 XE
 XE
-CE
-CE
-CE
-CE
-CE
-yn
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 XE
@@ -16559,11 +17154,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -16605,12 +17200,12 @@ XE
 XE
 XE
 XE
-CE
-aw
-aw
-aw
-CE
-CE
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 XE
@@ -16787,27 +17382,13 @@ XE
 XE
 XE
 XE
-CE
-CE
-CE
-CE
-CE
-CE
-XE
-XE
-XE
-XE
-Ow
 XE
 XE
 XE
 XE
 XE
-Yu
 XE
 XE
-XE
-Ow
 XE
 XE
 XE
@@ -16821,6 +17402,20 @@ Yu
 XE
 XE
 XE
+Ow
+XE
+XE
+XE
+Ow
+XE
+XE
+XE
+XE
+XE
+Yu
+XE
+XE
+XE
 nF
 nF
 nF
@@ -16837,7 +17432,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 Ow
@@ -16893,7 +17488,7 @@ Um
 Um
 Um
 Um
-Um
+TU
 Um
 Um
 Um
@@ -16969,12 +17564,12 @@ XE
 XE
 XE
 XE
-CE
-CE
-Tq
-Xl
-CE
-CE
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 XE
@@ -17081,7 +17676,7 @@ Um
 Um
 Um
 Um
-Um
+cK
 Um
 Um
 Um
@@ -17151,12 +17746,12 @@ XE
 XE
 XE
 XE
-CE
-CE
-CE
-CE
-CE
-CE
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 XE
@@ -17333,12 +17928,12 @@ XE
 XE
 XE
 XE
-CE
-Iz
-CE
-CE
-CE
-CE
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 XE
@@ -17472,7 +18067,7 @@ Qc
 He
 Qc
 Qc
-Qc
+zf
 He
 Qc
 Qc
@@ -17515,12 +18110,12 @@ XE
 XE
 XE
 XE
-CE
-CE
-CE
-CE
-CE
-kB
+XE
+XE
+XE
+XE
+XE
+Yu
 XE
 XE
 XE
@@ -17572,7 +18167,7 @@ XE
 XE
 XE
 XE
-XE
+Fv
 XE
 XE
 XE
@@ -17783,7 +18378,7 @@ LU
 LU
 LU
 LU
-XE
+ci
 XE
 XE
 Jz
@@ -17811,10 +18406,10 @@ VL
 VL
 VL
 VL
+bg
 VL
 VL
-VL
-VL
+XN
 VL
 VL
 VL
@@ -17893,7 +18488,7 @@ XE
 XE
 Ow
 XE
-XE
+Fv
 XE
 Ow
 XE
@@ -18016,7 +18611,7 @@ jM
 Qc
 Jy
 Qc
-Qc
+zf
 Qc
 Qc
 Jy
@@ -18058,7 +18653,7 @@ nF
 nF
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -18238,12 +18833,12 @@ nF
 nF
 nF
 nF
-Kp
-kx
-YB
-aU
-uM
-NP
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 XE
 nF
@@ -18420,12 +19015,12 @@ nF
 nF
 nF
 nF
-Qq
-pm
-UV
-wJ
-ed
-Ma
+XE
+XE
+XE
+XE
+XE
+XE
 XE
 nF
 nF
@@ -18498,7 +19093,7 @@ XE
 XE
 XE
 XE
-XE
+Fv
 LU
 LU
 LU
@@ -18568,7 +19163,7 @@ Qc
 He
 hy
 Qc
-Qc
+zf
 AW
 Jz
 Jz
@@ -18659,7 +19254,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 Ow
 Ow
 Ow
@@ -18786,7 +19381,7 @@ nF
 nF
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -18988,7 +19583,7 @@ nF
 nF
 nF
 Yu
-XE
+ci
 XE
 Yu
 XE
@@ -19448,7 +20043,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 WO
 NG
 NG
@@ -19471,11 +20066,11 @@ ZP
 Jz
 Jz
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -19625,12 +20220,12 @@ AW
 AW
 He
 Jz
-Qd
+gP
 Jz
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -19653,11 +20248,11 @@ ZP
 ol
 Ug
 ZP
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -19784,7 +20379,7 @@ ry
 ry
 Jz
 ZP
-ZP
+eZ
 ZP
 ry
 ry
@@ -19821,7 +20416,7 @@ XM
 XM
 hP
 QQ
-QQ
+nO
 QQ
 hP
 XM
@@ -19835,11 +20430,11 @@ ZP
 ZP
 Ug
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -19989,12 +20584,12 @@ QQ
 QQ
 AW
 Jz
-Qd
+gP
 Jz
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 XM
@@ -20162,7 +20757,7 @@ rm
 QQ
 nV
 He
-xv
+sk
 QQ
 Ox
 He
@@ -20171,12 +20766,12 @@ QQ
 QQ
 AW
 Jz
-Qd
+gP
 Jz
 Yu
 XE
 Yu
-Qd
+gP
 Jz
 Jz
 XM
@@ -20199,11 +20794,11 @@ Jz
 Jz
 Ug
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -20353,12 +20948,12 @@ QQ
 He
 He
 He
-Qd
+gP
 Jz
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 XM
@@ -20366,9 +20961,9 @@ fo
 bB
 UA
 He
-Lw
 QQ
-nO
+QQ
+QQ
 He
 bB
 bB
@@ -20381,11 +20976,11 @@ Jz
 ZP
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -20548,7 +21143,7 @@ He
 bB
 He
 He
-nO
+QQ
 QQ
 QQ
 He
@@ -20708,7 +21303,7 @@ QQ
 QQ
 QQ
 QQ
-QQ
+Bw
 QQ
 QQ
 QQ
@@ -20749,7 +21344,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Ny
@@ -20931,7 +21526,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -20964,7 +21559,7 @@ nF
 nF
 nF
 XE
-XE
+Yu
 XE
 nF
 nF
@@ -21041,7 +21636,7 @@ XE
 XE
 XE
 XE
-TU
+yI
 or
 or
 TU
@@ -21113,7 +21708,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -21159,7 +21754,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 nF
 nF
@@ -21276,7 +21871,7 @@ He
 bB
 He
 He
-RB
+QQ
 QQ
 QQ
 He
@@ -21385,7 +21980,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -21458,22 +22053,22 @@ bB
 bB
 ms
 He
-jT
+QQ
 QQ
 QQ
 EN
 bB
-bB
+gH
 bB
 XM
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -21651,11 +22246,11 @@ XM
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -21833,11 +22428,11 @@ XM
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 Yu
-Qd
+gP
 Jz
 Jz
 Jz
@@ -21889,7 +22484,7 @@ nF
 nF
 nF
 nF
-XE
+ci
 XE
 nF
 nF
@@ -22005,7 +22600,7 @@ XM
 XM
 hP
 QQ
-QQ
+ct
 QQ
 hP
 XM
@@ -22163,11 +22758,11 @@ ZP
 Jz
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -22197,11 +22792,11 @@ ZP
 ZP
 ry
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -22345,11 +22940,11 @@ ry
 Jz
 Jz
 Jz
-wi
+SD
 XE
 Yu
 XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -22358,7 +22953,7 @@ ry
 ry
 ZP
 Jz
-Jz
+Bt
 Jz
 ry
 ry
@@ -22367,11 +22962,11 @@ ZP
 ZP
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -22379,11 +22974,11 @@ ry
 ry
 ry
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -22473,7 +23068,7 @@ XE
 XE
 XE
 XE
-Yu
+ff
 XE
 XE
 XE
@@ -22527,11 +23122,11 @@ ry
 ry
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -22549,11 +23144,11 @@ ry
 ry
 Jz
 Jz
-Qd
+gP
 Yu
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -22561,11 +23156,11 @@ ry
 ry
 Jz
 ZP
-Qd
+gP
 XE
 XE
 Yu
-Qd
+gP
 Jz
 Jz
 Jz
@@ -22735,7 +23330,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 Jz
 ZP
 cB
@@ -22891,15 +23486,15 @@ ry
 ry
 ry
 Jz
-wi
+SD
 XE
 Yu
 XE
 XE
-Yu
+ff
 XE
 XE
-Qd
+gP
 Jz
 ry
 ZP
@@ -22913,7 +23508,7 @@ ry
 ry
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -22925,11 +23520,11 @@ Jz
 Jz
 ZP
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -23073,7 +23668,7 @@ ry
 ry
 ry
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -23081,7 +23676,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -23095,11 +23690,11 @@ ry
 ry
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 cB
 Jz
@@ -23107,11 +23702,11 @@ ry
 ry
 ry
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 iu
 Jz
@@ -23278,10 +23873,10 @@ Jz
 Jz
 Jz
 He
-Yu
 XE
 XE
-Qd
+XE
+gP
 Jz
 ZP
 Jz
@@ -23289,11 +23884,11 @@ ry
 ry
 ZP
 ZP
-Qd
+gP
 XE
 XE
 Yu
-Qd
+gP
 Jz
 Jz
 Jz
@@ -23443,13 +24038,13 @@ wi
 He
 XE
 Yu
+uN
 XE
-XE
-Qd
+gP
 Jz
 Jz
 Jz
-Jz
+Bt
 Jz
 Jz
 Jz
@@ -23459,11 +24054,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ZP
 Jz
@@ -23620,14 +24215,14 @@ ZP
 uP
 ZP
 XE
+ci
+XE
+SD
 XE
 XE
-wi
 XE
 XE
-XE
-XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -23639,9 +24234,9 @@ Jz
 Jz
 Jz
 Jz
+Bt
 Jz
-Jz
-Qd
+gP
 XE
 XE
 XE
@@ -23804,7 +24399,7 @@ ZP
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -23827,7 +24422,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 ZP
 Jz
 Jz
@@ -23888,7 +24483,7 @@ nF
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -23986,7 +24581,7 @@ hP
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -24009,15 +24604,15 @@ XE
 Yu
 XE
 XE
-Qd
+gP
 ZP
 ZP
 Jz
 AW
 lz
 QQ
-QQ
-sk
+Jk
+ph
 QQ
 QQ
 QQ
@@ -24106,7 +24701,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -24181,17 +24776,17 @@ Yu
 XE
 XE
 XE
-Yu
-XE
-XE
-XE
-Yu
 XE
 XE
 XE
 XE
 XE
-Qd
+XE
+XE
+XE
+XE
+XE
+gP
 Jz
 Jz
 Jz
@@ -24204,7 +24799,7 @@ QQ
 QQ
 QQ
 He
-QQ
+Jk
 QQ
 lz
 AW
@@ -24332,7 +24927,7 @@ Jz
 Jz
 XE
 XE
-Qd
+gP
 XE
 Yu
 XE
@@ -24479,11 +25074,11 @@ XE
 LU
 LU
 or
-wi
+SD
 or
 Um
 vf
-wi
+SD
 or
 LU
 LU
@@ -24514,7 +25109,7 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -24643,7 +25238,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 Yu
 XE
 XE
@@ -24661,7 +25256,7 @@ XE
 LU
 LU
 LU
-wi
+SD
 or
 Um
 or
@@ -24707,7 +25302,7 @@ aX
 yz
 Gl
 He
-QQ
+it
 QQ
 QQ
 He
@@ -24719,7 +25314,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -24733,21 +25328,21 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 Yu
 XE
 XE
 XE
-Yu
+XE
 XE
 QQ
 QQ
 QQ
+it
 QQ
 QQ
 QQ
-QQ
-QQ
+nO
 QQ
 QQ
 QQ
@@ -24843,7 +25438,7 @@ XE
 LU
 LU
 LU
-ZF
+pG
 or
 TU
 or
@@ -24901,7 +25496,7 @@ hP
 Yu
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -24915,7 +25510,7 @@ Jz
 Jz
 Jz
 ZP
-Qd
+gP
 XE
 XE
 XE
@@ -25158,7 +25753,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -25265,7 +25860,7 @@ QQ
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 ry
@@ -25281,16 +25876,16 @@ ry
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
 Ty
 QQ
 AW
-lz
+vp
 QQ
-QQ
+Jk
 He
 QQ
 QQ
@@ -25393,7 +25988,7 @@ LU
 or
 Um
 vf
-wi
+SD
 or
 LU
 LU
@@ -25435,7 +26030,7 @@ UF
 DP
 QQ
 He
-QQ
+it
 QQ
 DW
 He
@@ -25447,7 +26042,7 @@ XM
 NR
 Yu
 XE
-wi
+SD
 Jz
 ry
 ry
@@ -25463,7 +26058,7 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 Yu
@@ -25471,16 +26066,16 @@ Ty
 QQ
 AW
 lz
-QQ
+it
 QQ
 MZ
 QQ
+it
 QQ
 QQ
 QQ
 QQ
-QQ
-lz
+IL
 AW
 Jz
 Jz
@@ -25571,11 +26166,11 @@ XE
 LU
 LU
 or
-ZF
+pG
 Um
 TU
 Um
-wi
+SD
 or
 LU
 LU
@@ -25618,7 +26213,7 @@ QQ
 He
 hP
 hP
-QQ
+MN
 hP
 hP
 He
@@ -25645,7 +26240,7 @@ ZP
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
@@ -25992,7 +26587,7 @@ XM
 Jz
 Jz
 Jz
-Jz
+sT
 Jz
 ZP
 ry
@@ -26027,7 +26622,7 @@ hP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -26201,7 +26796,7 @@ oZ
 Vf
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
@@ -26209,7 +26804,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -26383,7 +26978,7 @@ ZP
 Vf
 ZP
 Jz
-Qd
+gP
 Jz
 QQ
 QQ
@@ -26485,7 +27080,7 @@ XE
 XE
 VL
 VL
-wi
+SD
 or
 LU
 LU
@@ -26655,7 +27250,7 @@ hP
 hP
 mR
 Um
-Um
+Os
 Um
 TU
 Um
@@ -26880,7 +27475,7 @@ ry
 ry
 XE
 XE
-XE
+ci
 XE
 Yu
 XE
@@ -26906,7 +27501,7 @@ ZP
 Jz
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -27088,7 +27683,7 @@ Jz
 Jz
 Jz
 iu
-wi
+SD
 XE
 XE
 XE
@@ -27117,7 +27712,7 @@ bB
 UA
 He
 Ob
-bB
+EG
 bB
 He
 bB
@@ -27157,7 +27752,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -27270,7 +27865,7 @@ Jz
 Jz
 Jz
 Jz
-wi
+SD
 XE
 Yu
 XE
@@ -27533,7 +28128,7 @@ nF
 nF
 nF
 XE
-XE
+Yu
 XE
 nF
 nF
@@ -27558,7 +28153,7 @@ XE
 XE
 XE
 hP
-Um
+Os
 Um
 Um
 Oy
@@ -27634,11 +28229,11 @@ XE
 XE
 XE
 iu
-wi
+SD
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 Jz
@@ -27666,7 +28261,7 @@ bB
 bB
 Mw
 wE
-bB
+EG
 bB
 bB
 bB
@@ -27816,11 +28411,11 @@ XE
 XE
 XE
 Jz
-wi
+SD
 XE
 Yu
 XE
-Qd
+gP
 Jz
 XE
 Jz
@@ -27844,13 +28439,13 @@ Cu
 bB
 bB
 bB
-bB
+EG
 bB
 Xw
 bB
 tK
 bB
-bB
+dn
 bB
 AW
 ZP
@@ -27981,7 +28576,7 @@ He
 He
 Ok
 QQ
-QQ
+qh
 QQ
 nO
 QQ
@@ -28002,7 +28597,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -28026,7 +28621,7 @@ He
 bB
 He
 He
-Co
+bB
 bB
 bB
 He
@@ -28175,7 +28770,7 @@ QQ
 QQ
 XM
 XE
-XE
+wu
 XE
 XE
 XE
@@ -28208,7 +28803,7 @@ bB
 bB
 ms
 He
-Dm
+bB
 bB
 bB
 EN
@@ -28305,7 +28900,7 @@ XE
 VL
 VL
 VL
-wi
+SD
 or
 LU
 LU
@@ -28347,11 +28942,11 @@ QQ
 QQ
 QQ
 QQ
-QQ
+MN
 QQ
 nO
 QQ
-QQ
+Qf
 QQ
 QQ
 nO
@@ -28524,6 +29119,7 @@ XE
 XE
 XE
 XM
+Bw
 QQ
 QQ
 QQ
@@ -28535,8 +29131,7 @@ QQ
 QQ
 QQ
 QQ
-QQ
-QQ
+Qf
 XM
 XE
 XE
@@ -28557,7 +29152,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 ZP
 ZP
@@ -28647,7 +29242,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -28712,10 +29307,10 @@ QQ
 QQ
 kW
 QQ
+it
 QQ
 QQ
-QQ
-QQ
+MN
 QQ
 aG
 He
@@ -28731,6 +29326,7 @@ XE
 XE
 XE
 XE
+EX
 XE
 XE
 XE
@@ -28738,8 +29334,7 @@ XE
 XE
 XE
 XE
-XE
-wi
+SD
 iu
 ZP
 ZP
@@ -28851,7 +29446,7 @@ XE
 XE
 Um
 Um
-ZF
+pG
 or
 LU
 LU
@@ -28871,7 +29466,7 @@ Jz
 XM
 QQ
 QQ
-QQ
+it
 QQ
 Tx
 ky
@@ -28908,20 +29503,20 @@ XE
 XE
 XE
 Jz
-wi
+SD
+XE
+XE
+XE
+XE
+XE
+ci
 XE
 XE
 XE
 XE
 XE
 XE
-XE
-XE
-XE
-XE
-XE
-XE
-Qd
+gP
 Jz
 ZP
 ZP
@@ -29059,7 +29654,7 @@ QQ
 ky
 He
 bk
-QQ
+Bw
 QQ
 nO
 QQ
@@ -29103,7 +29698,7 @@ XE
 XE
 Yu
 XE
-Qd
+gP
 Jz
 ZP
 ry
@@ -29116,15 +29711,15 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 Jz
 Jz
 XE
-wi
+SD
 XE
 XE
 XE
-Jz
+Bt
 Jz
 Jz
 ry
@@ -29162,7 +29757,7 @@ nF
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -29215,7 +29810,7 @@ XE
 VL
 XN
 VL
-wi
+SD
 or
 LU
 LU
@@ -29298,11 +29893,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 Jz
-Yu
 XE
-wi
+XE
+SD
 XE
 XE
 XE
@@ -29397,7 +29992,7 @@ Yu
 VL
 VL
 VL
-wi
+SD
 or
 LU
 LU
@@ -29454,7 +30049,7 @@ Jz
 Jz
 ZP
 ZP
-Qd
+gP
 ZP
 hP
 hP
@@ -29480,11 +30075,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 Jz
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -29551,7 +30146,7 @@ XE
 nF
 nF
 XE
-wi
+SD
 VL
 VL
 VL
@@ -29563,7 +30158,7 @@ VL
 VL
 VL
 VL
-wi
+SD
 XE
 Yu
 XE
@@ -29614,7 +30209,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 IE
@@ -29733,7 +30328,7 @@ XE
 nF
 nF
 XE
-wi
+SD
 VL
 XE
 XE
@@ -29745,7 +30340,7 @@ XE
 XE
 XE
 VL
-wi
+SD
 XE
 XE
 XE
@@ -29796,7 +30391,7 @@ Jz
 XE
 Yu
 XE
-wi
+SD
 XE
 XE
 Jz
@@ -29844,15 +30439,15 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 Jz
 Jz
 Jz
 XE
+Yu
 XE
 XE
-XE
-wi
+SD
 Jz
 Jz
 Jz
@@ -29927,7 +30522,7 @@ VL
 VL
 Yu
 VL
-wi
+SD
 XE
 XE
 XE
@@ -29939,11 +30534,11 @@ LU
 LU
 LU
 or
-ZF
+pG
 VL
 XN
 VL
-wi
+SD
 or
 LU
 LU
@@ -30013,7 +30608,7 @@ QQ
 QQ
 nO
 hP
-Tk
+tm
 Qc
 Qc
 Qc
@@ -30026,15 +30621,15 @@ Jz
 ZP
 Jz
 Jz
-Qd
-Jz
-Yu
+gP
 Jz
 XE
-Yu
+Jz
 XE
 XE
-wi
+XE
+XE
+SD
 Jz
 ZP
 ry
@@ -30121,7 +30716,7 @@ LU
 LU
 LU
 Um
-ZF
+pG
 VL
 VL
 VL
@@ -30160,7 +30755,7 @@ Jz
 XE
 XE
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -30208,7 +30803,7 @@ XM
 kK
 hP
 Jz
-Qd
+gP
 Jz
 Jz
 Jz
@@ -30216,7 +30811,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 Jz
 Jz
 ry
@@ -30291,7 +30886,7 @@ VL
 VL
 XE
 VL
-wi
+SD
 XE
 XE
 XE
@@ -30303,7 +30898,7 @@ LU
 LU
 LU
 Um
-ZF
+pG
 VL
 VL
 Um
@@ -30339,10 +30934,10 @@ Jz
 XE
 XE
 XE
+uN
 XE
 XE
-XE
-Qd
+gP
 Jz
 ry
 ZP
@@ -30374,7 +30969,7 @@ dR
 QQ
 QQ
 QQ
-QQ
+it
 QQ
 hP
 hP
@@ -30461,7 +31056,7 @@ XE
 Yu
 XE
 XE
-wi
+SD
 XN
 XE
 VL
@@ -30473,7 +31068,7 @@ VL
 VL
 XN
 VL
-wi
+SD
 XE
 Yu
 XE
@@ -30574,13 +31169,13 @@ XM
 Jz
 Jz
 Jz
+Bt
 Jz
-Jz
-Qd
-Yu
+gP
 XE
 XE
-Qd
+XE
+gP
 Jz
 ZP
 ry
@@ -30655,7 +31250,7 @@ VL
 VL
 VL
 VL
-wi
+SD
 XE
 XE
 XE
@@ -30758,11 +31353,11 @@ ZP
 ZP
 ZP
 Jz
-Qd
+gP
 Jz
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -30833,7 +31428,7 @@ VL
 XE
 VL
 XE
-VL
+zu
 VL
 VL
 VL
@@ -30944,7 +31539,7 @@ He
 Jz
 XE
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -31031,7 +31626,7 @@ LU
 Um
 Um
 Um
-ZF
+pG
 VL
 VL
 VL
@@ -31092,7 +31687,7 @@ QQ
 QQ
 XA
 He
-bB
+wR
 bB
 GP
 bB
@@ -31111,7 +31706,7 @@ Lj
 fB
 QQ
 hP
-bB
+wR
 bB
 cE
 hP
@@ -31122,7 +31717,7 @@ hP
 ZP
 ZP
 ZP
-Qd
+gP
 XE
 XE
 XE
@@ -31189,7 +31784,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 XN
 VL
 VL
@@ -31222,7 +31817,7 @@ VL
 Um
 or
 or
-or
+GM
 or
 Um
 Um
@@ -31263,7 +31858,7 @@ ry
 ry
 ry
 Jz
-Jz
+Bt
 ZP
 yZ
 hP
@@ -31287,10 +31882,10 @@ mv
 QQ
 QQ
 XM
-HS
+ir
 QQ
 QQ
-QQ
+Vq
 Ox
 hP
 fo
@@ -31304,11 +31899,11 @@ hP
 hP
 ZP
 Jz
-Qd
+gP
+XE
+XE
 Yu
-XE
-XE
-Qd
+gP
 Jz
 ry
 ry
@@ -31388,7 +31983,7 @@ VL
 VL
 VL
 VL
-VL
+Zv
 VL
 VL
 VL
@@ -31423,7 +32018,7 @@ XE
 XE
 XE
 XE
-Jz
+Bt
 Ny
 Ug
 Jz
@@ -31469,10 +32064,10 @@ QQ
 QQ
 nO
 XM
-HS
+VX
 QQ
 Kz
-QQ
+Bw
 QQ
 hP
 jY
@@ -31486,11 +32081,11 @@ EV
 hP
 Jz
 ZP
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -31585,7 +32180,7 @@ VL
 VL
 Um
 or
-or
+mp
 or
 or
 or
@@ -31759,7 +32354,7 @@ Um
 VL
 VL
 VL
-VL
+zu
 VL
 VL
 VL
@@ -31850,11 +32445,11 @@ bs
 bs
 kK
 Jz
-Qd
+gP
 XE
 XE
-XE
-Qd
+ci
+gP
 Jz
 ZP
 ry
@@ -31917,11 +32512,11 @@ XE
 XE
 Yu
 XE
-wi
+SD
 VL
 VL
 VL
-VL
+Zv
 VL
 VL
 VL
@@ -32032,11 +32627,11 @@ nr
 zg
 XM
 Jz
-Qd
-Yu
+gP
 XE
 XE
-Qd
+XE
+gP
 Jz
 ZP
 ry
@@ -32119,7 +32714,7 @@ XE
 XE
 XE
 XE
-wi
+SD
 He
 VL
 He
@@ -32292,7 +32887,7 @@ Yu
 VL
 VL
 VL
-VL
+zu
 He
 wi
 wi
@@ -32400,7 +32995,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -32475,7 +33070,7 @@ VL
 VL
 XN
 VL
-wi
+SD
 Yu
 XE
 XE
@@ -32546,7 +33141,7 @@ XQ
 QQ
 QQ
 QQ
-QQ
+Vq
 QQ
 QQ
 QQ
@@ -32570,7 +33165,7 @@ QQ
 QQ
 QQ
 QQ
-QQ
+Vq
 QQ
 QQ
 QQ
@@ -32582,7 +33177,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 ZP
 ry
 ry
@@ -32657,7 +33252,7 @@ XE
 VL
 VL
 VL
-wi
+SD
 XE
 XE
 XE
@@ -32753,18 +33348,18 @@ At
 mv
 mv
 QQ
+QQ
+QQ
+QQ
 nO
-QQ
-QQ
-QQ
-vN
+ml
 ml
 XM
 XE
 Yu
 XE
 XE
-Qd
+gP
 Jz
 ry
 ry
@@ -32839,7 +33434,7 @@ VL
 VL
 VL
 VL
-wi
+SD
 XE
 XE
 XE
@@ -32921,7 +33516,7 @@ qt
 QQ
 nO
 ie
-ER
+CH
 Jv
 bc
 QQ
@@ -33128,7 +33723,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ZP
 ry
@@ -33203,7 +33798,7 @@ VL
 VL
 VL
 VL
-wi
+SD
 XE
 XE
 XE
@@ -33281,7 +33876,7 @@ QQ
 nO
 QQ
 QQ
-QQ
+MN
 QQ
 QQ
 jJ
@@ -33310,7 +33905,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 Jz
 ZP
 ry
@@ -33390,7 +33985,7 @@ Yu
 XE
 XE
 XE
-Yu
+ff
 XE
 XE
 XE
@@ -33492,7 +34087,7 @@ XE
 Yu
 XE
 XE
-Qd
+DO
 Jz
 ry
 ry
@@ -33570,7 +34165,7 @@ VL
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -33627,7 +34222,7 @@ ry
 Jz
 Jz
 Jz
-Jz
+Bt
 Jz
 Jz
 hP
@@ -33641,7 +34236,7 @@ He
 He
 He
 He
-QQ
+Bj
 QQ
 He
 He
@@ -33823,7 +34418,7 @@ pb
 XA
 He
 LV
-OH
+il
 QQ
 RQ
 He
@@ -33848,7 +34443,7 @@ Hp
 He
 dP
 vm
-ZG
+lm
 zS
 hP
 ry
@@ -34103,7 +34698,7 @@ XE
 XE
 XE
 Yu
-XE
+ci
 XE
 XE
 XE
@@ -34165,7 +34760,7 @@ Jz
 Ny
 Jz
 Jz
-Qd
+gP
 Yu
 XE
 XE
@@ -34347,11 +34942,11 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -34386,7 +34981,7 @@ QQ
 Hp
 ZG
 ZG
-ZG
+LE
 ZG
 Lt
 ZG
@@ -34533,7 +35128,7 @@ He
 XE
 XE
 XE
-Qd
+gP
 Jz
 Jz
 ZP
@@ -34563,7 +35158,7 @@ mv
 QQ
 QQ
 QQ
-QQ
+sF
 QQ
 ZG
 ZG
@@ -34583,7 +35178,7 @@ ry
 ry
 Jz
 Jz
-Jz
+Bt
 Jz
 Jz
 Jz
@@ -34671,7 +35266,7 @@ XE
 XE
 VL
 Um
-Um
+Os
 Um
 XN
 vf
@@ -34701,7 +35296,7 @@ XE
 ZP
 ol
 ZP
-wi
+SD
 XE
 XE
 XE
@@ -34883,7 +35478,7 @@ qc
 Qz
 ZP
 ZP
-wi
+SD
 Yu
 XE
 Yu
@@ -34897,7 +35492,7 @@ XE
 Yu
 XE
 XE
-Qd
+gP
 ZP
 Jz
 Jz
@@ -34912,7 +35507,7 @@ QQ
 nO
 QQ
 QQ
-lz
+nP
 Um
 QQ
 sk
@@ -34921,8 +35516,8 @@ sk
 QQ
 QQ
 He
-kz
-QQ
+nC
+MN
 mv
 QQ
 QQ
@@ -35065,7 +35660,7 @@ ZP
 ol
 Ny
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -35079,7 +35674,7 @@ XE
 XE
 XE
 XE
-Qd
+gP
 ry
 ry
 Jz
@@ -35115,7 +35710,7 @@ QQ
 QQ
 nO
 QQ
-QQ
+MN
 QQ
 nO
 QQ
@@ -35297,7 +35892,7 @@ QQ
 QQ
 QQ
 QQ
-QQ
+Jk
 QQ
 ml
 QQ
@@ -35429,7 +36024,7 @@ ZP
 Jz
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -35609,9 +36204,9 @@ ry
 ry
 Jz
 Jz
-Jz
+Bt
 Ny
-wi
+SD
 Yu
 XE
 Yu
@@ -35647,7 +36242,7 @@ VL
 VL
 VL
 He
-Lw
+QQ
 QQ
 QQ
 QQ
@@ -35793,7 +36388,7 @@ Jz
 Ny
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -35826,7 +36421,7 @@ Qc
 QQ
 nO
 QQ
-QQ
+Vq
 QQ
 QQ
 lw
@@ -36016,7 +36611,7 @@ QQ
 rf
 rf
 QQ
-QQ
+MN
 rf
 rf
 rf
@@ -36157,7 +36752,7 @@ Jz
 Jz
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -36185,7 +36780,7 @@ Um
 Qc
 Um
 Oy
-Qc
+fq
 Qc
 He
 He
@@ -36261,7 +36856,7 @@ XE
 Uz
 Hg
 Uz
-Uz
+pW
 Uz
 XE
 nF
@@ -36339,7 +36934,7 @@ Jz
 Jz
 Jz
 Jz
-wi
+SD
 Yu
 XE
 Yu
@@ -36479,7 +37074,7 @@ LU
 LU
 LU
 XE
-XE
+ci
 nF
 nF
 nF
@@ -36521,7 +37116,7 @@ ZP
 Jz
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -36931,12 +37526,12 @@ VL
 VL
 VL
 QQ
-VL
-VL
-VL
-VL
-VL
-VL
+CE
+CE
+CE
+CE
+CE
+yn
 QQ
 hP
 Jz
@@ -37031,7 +37626,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -37099,26 +37694,26 @@ Qc
 UW
 Qc
 XM
-QQ
-QQ
-VL
-VL
-VL
-VL
-VL
-VL
-VL
-VL
-VL
-VL
-VL
+OA
 QQ
 VL
 VL
-WS
+VL
+gv
 VL
 VL
+mW
+fa
+Uc
 VL
+VL
+QQ
+CE
+CE
+CE
+CE
+CE
+CE
 QQ
 hP
 XE
@@ -37217,7 +37812,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -37273,7 +37868,7 @@ UW
 Qc
 Qc
 Oy
-Oy
+YK
 Qc
 Um
 Um
@@ -37285,22 +37880,22 @@ QQ
 QQ
 QQ
 QQ
-Tx
+QQ
+Zk
+QQ
+QQ
+DZ
 QQ
 QQ
 QQ
+Qp
 QQ
-QQ
-QQ
-QQ
-VL
-QQ
-VL
-VL
-VL
-VL
-VL
-VL
+CE
+CE
+CE
+CE
+CE
+CE
 QQ
 hP
 Jz
@@ -37447,7 +38042,7 @@ VL
 He
 He
 He
-wi
+SD
 ZP
 Jz
 Um
@@ -37464,25 +38059,25 @@ Qc
 Qc
 XM
 QQ
+Fu
+Fu
+zj
 QQ
-QQ
-QQ
-QQ
-QQ
-VL
-QQ
+xS
 VL
 QQ
 VL
 QQ
-VL
+Pq
 QQ
 VL
-VL
-VL
-VL
-VL
-VL
+QQ
+CE
+CE
+CE
+CE
+CE
+CE
 QQ
 hP
 Jz
@@ -37571,7 +38166,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -37621,7 +38216,7 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Ia
 VL
@@ -37629,7 +38224,7 @@ Ia
 He
 XE
 XE
-wi
+SD
 ry
 Jz
 He
@@ -37645,26 +38240,26 @@ XM
 XM
 XM
 hP
+zj
+Ui
+Ui
 QQ
-Jz
-Jz
 QQ
-QQ
-QQ
-VL
-QQ
+sm
 VL
 QQ
 VL
 QQ
+xP
+Ad
 VL
 QQ
-VL
-VL
-VL
-VL
-VL
-VL
+CE
+CE
+CE
+CE
+CE
+CE
 QQ
 hP
 Jz
@@ -37803,7 +38398,7 @@ Jz
 Jz
 Ny
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -37811,7 +38406,7 @@ XE
 XE
 Yu
 XE
-wi
+SD
 XE
 Jz
 Jz
@@ -37828,25 +38423,25 @@ QQ
 QQ
 rH
 QQ
-Jz
-Jz
 QQ
 QQ
 QQ
+QQ
+TB
 VL
 QQ
-VL
-QQ
-VL
+JQ
 QQ
 VL
 QQ
 VL
-VL
-VL
-VL
-VL
-VL
+QQ
+CE
+CE
+CE
+CE
+CE
+CE
 QQ
 hP
 Jz
@@ -37899,7 +38494,7 @@ XE
 XE
 XE
 Yu
-XE
+ci
 XE
 nF
 nF
@@ -37941,7 +38536,7 @@ XE
 XE
 XE
 XE
-XE
+Yu
 XE
 XE
 XE
@@ -37985,7 +38580,7 @@ Jz
 Jz
 Jz
 Jz
-Qd
+gP
 XE
 Yu
 XE
@@ -38000,7 +38595,7 @@ Jz
 XE
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -38009,26 +38604,26 @@ QQ
 QQ
 QQ
 QQ
+nl
+GZ
+yA
 QQ
 QQ
-QQ
-QQ
-my
-QQ
+Tu
 VL
 QQ
-VL
-QQ
-VL
+ti
+dz
+bz
 QQ
 VL
 QQ
-VL
-VL
-VL
-VL
-VL
-VL
+CE
+CE
+CE
+CE
+CE
+kB
 Ox
 hP
 Jz
@@ -38081,7 +38676,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 nF
@@ -38099,6 +38694,7 @@ XE
 XE
 XE
 XE
+ci
 XE
 XE
 XE
@@ -38107,8 +38703,7 @@ XE
 XE
 XE
 XE
-XE
-XE
+ci
 XE
 XE
 XE
@@ -38182,7 +38777,7 @@ Um
 He
 XE
 XE
-wi
+SD
 XE
 XE
 XE
@@ -38191,12 +38786,12 @@ QQ
 QQ
 QQ
 QQ
+as
+HG
 QQ
 QQ
 QQ
-QQ
-QQ
-VL
+Fd
 VL
 VL
 VL
@@ -38334,7 +38929,7 @@ ry
 ZP
 ZP
 ZP
-Jz
+Bt
 iJ
 ZP
 ry
@@ -38382,9 +38977,9 @@ Um
 Um
 Um
 QQ
-Um
-Um
-Um
+UR
+eH
+eH
 Um
 Um
 Um
@@ -38546,7 +39141,7 @@ Qc
 Um
 Jz
 Jz
-wi
+SD
 XE
 Yu
 XE
@@ -38563,9 +39158,9 @@ QQ
 QQ
 QQ
 QQ
-QQ
-QQ
-QQ
+Mq
+sO
+nv
 QQ
 QQ
 QQ
@@ -38728,7 +39323,7 @@ Qc
 Um
 Jz
 Jz
-wi
+SD
 XE
 XE
 XE
@@ -39078,7 +39673,7 @@ XE
 XE
 XM
 Qc
-Qc
+zf
 Qc
 Qc
 Qc
@@ -39628,7 +40223,7 @@ Si
 Qc
 Qc
 Qc
-Qc
+zf
 Qc
 Qc
 Qc
@@ -40992,7 +41587,7 @@ XE
 XE
 XE
 XE
-XE
+ci
 XE
 XE
 XE
@@ -41429,7 +42024,7 @@ ZP
 ZP
 Jz
 Jz
-Jz
+Bt
 XE
 XE
 Jz
@@ -42164,7 +42759,7 @@ ZP
 ol
 Jz
 XE
-XE
+ci
 Yu
 XE
 XE

@@ -49,9 +49,6 @@
 /datum/map_template/safehouse/bathroom
 	filename = "bathroom.dmm"
 
-/datum/map_template/safehouse/shuttle_big
-	filename = "shuttle_big.dmm"
-
 /**
  * Your safehouse here
  * /datum/map_template/safehouse/your_type

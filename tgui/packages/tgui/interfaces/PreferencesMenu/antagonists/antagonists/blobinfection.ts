@@ -7,8 +7,8 @@ const BlobInfection: Antagonist = {
   name: 'Blob Infection',
   description: [
     multiline`
-      At any point in the middle of the shift, be strucken with an infection
-      that will turn you into the terrifying blob.
+      Vardiyanın ortasında herhangi bir noktada, enfeksiyona yakalanmak
+      sizi korkunç bir blob'a dönüştürecektir.
     `,
     BLOB_MECHANICAL_DESCRIPTION,
   ],

@@ -6,15 +6,14 @@ const CyberPolice: Antagonist = {
   name: 'Cyber Police',
   description: [
     multiline`
-    On the razor edge of the digital realm, the Cyber Authority has tasked
-    enforcement officers with preserving system harmony.
+    Siber Otorite, dijital alemin bıçak sırtında, icra memurlarını sistem
+	uyumunu korumakla görevlendirdi.
     `,
 
     multiline`
-    Using refined martial arts skills, terminate bitrunners in the virtual
-    domain. Look snazzy while doing it. Cyber police are short lived combat
-    roles that spawn from mobs (other than elites or players) in the virtual
-    domain.
+    Rafine dövüş sanat becerilerini kullanarak, sanal alanda bitrunnerları
+	yok edin. Bunu yaparken şık görünün. Cyber Police, sanal alandaki
+	çetelerden (elitler ve oyuncular dışı) ortaya çıkan kısa ömürlü savaş rolleridir.
     `,
   ],
   category: Category.Midround,

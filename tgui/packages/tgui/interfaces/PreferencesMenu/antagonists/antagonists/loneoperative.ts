@@ -7,8 +7,8 @@ const LoneOperative: Antagonist = {
   name: 'Lone Operative',
   description: [
     multiline`
-      A solo nuclear operative that has a higher chance of spawning the longer
-      the nuclear authentication disk stays in one place.
+      Nükleer disk bir yerde ne kadar uzun süre yalnız başına
+	  kalırsa o kadar ortaya çıkma şansı yüksek olan bir nükleer operatör.
     `,
 
     OPERATIVE_MECHANICAL_DESCRIPTION,

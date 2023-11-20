@@ -7,8 +7,8 @@ const OperativeMidround: Antagonist = {
   name: 'Nuclear Assailant',
   description: [
     multiline`
-      A form of nuclear operative that is offered to ghosts in the middle
-      of the shift.
+      Vardiyanın ortasında hayaletlere sunulan
+	  bir tür nükleer operatör.
     `,
     OPERATIVE_MECHANICAL_DESCRIPTION,
   ],

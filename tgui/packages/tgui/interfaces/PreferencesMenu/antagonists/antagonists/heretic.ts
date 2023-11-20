@@ -2,8 +2,8 @@ import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
 export const HERETIC_MECHANICAL_DESCRIPTION = multiline`
-      Find hidden influences and sacrifice crew members to gain magical
-      powers and ascend as one of several paths.
+      Gizli etkileri bulun ve mürettebat üyelerini feda ederek
+	  çeşitli büyülü güçler kazanın ve seçtiğiniz bir yoldan ilerleyin.
    `;
 
 const Heretic: Antagonist = {
@@ -11,9 +11,9 @@ const Heretic: Antagonist = {
   name: 'Heretic',
   description: [
     multiline`
-      Forgotten, devoured, gutted. Humanity has forgotten the eldritch forces
-      of decay, but the mansus veil has weakened. We will make them taste fear
-      again...
+      Unutulmuş, yutulmuş, içi boşaltılmış. İnsanlık çürümenin
+	  kadim güçlerini unuttu ama  Mansus perdesi zayıfladı.
+	  Onlara korkuyu tekrar taddıracağız...
     `,
     HERETIC_MECHANICAL_DESCRIPTION,
   ],

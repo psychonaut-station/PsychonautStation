@@ -2,8 +2,8 @@ import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
 export const REVOLUTIONARY_MECHANICAL_DESCRIPTION = multiline`
-      Armed with a flash, convert as many people to the revolution as you can.
-      Kill or exile all heads of staff on the station.
+      Bir flaşla donanarak, olabildiğince çok insanı devrimci yapın.
+	  İstasyondaki tüm personel şeflerini öldürün ya da sürgüne yollayın.
    `;
 
 const HeadRevolutionary: Antagonist = {

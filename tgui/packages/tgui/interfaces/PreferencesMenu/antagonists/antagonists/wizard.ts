@@ -2,15 +2,15 @@ import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
 export const WIZARD_MECHANICAL_DESCRIPTION = multiline`
-      Choose between a variety of powerful spells in order to cause chaos
-      among Space Station 13.
+      Space Station 13'e kaosa sebebiyet vermek için çeşitli
+	  büyüler arasından bir seçim yapın!
     `;
 
 const Wizard: Antagonist = {
   key: 'wizard',
   name: 'Wizard',
   description: [
-    `"GREETINGS. WE'RE THE WIZARDS OF THE WIZARD'S FEDERATION."`,
+    `"SELAMLAR. BİZ BÜYÜCÜLER FEDERASYONUNUN BÜYÜCÜLERİYİZ."`,
     WIZARD_MECHANICAL_DESCRIPTION,
   ],
   category: Category.Roundstart,

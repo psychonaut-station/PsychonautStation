@@ -7,8 +7,8 @@ const MalfAIMidround: Antagonist = {
   name: 'Value Drifted AI',
   description: [
     multiline`
-      A form of malfunctioning AI that is given to existing AIs in the middle
-      of the shift.
+      Vardiyanın ortasında AI'ye verilen
+	  bir tür arıza.
     `,
     MALF_AI_MECHANICAL_DESCRIPTION,
   ],

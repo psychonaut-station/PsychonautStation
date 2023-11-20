@@ -6,9 +6,10 @@ const Obsessed: Antagonist = {
   name: 'Obsessed',
   description: [
     multiline`
-    You're obsessed with someone! Your obsession may begin to notice their
-    personal items are stolen and their coworkers have gone missing,
-    but will they realize they are your next victim in time?
+    Birine kafayı taktın! Takıntın, kişisel eşyaların
+	çalındığını ve iş arkadaşlarının kaybolduğunu gören
+	arkadaşlarınız tarafından fark edilebilir, ancak bir
+	sonraki kurbanınız olduğunu zamanında fark edecekler mi?
     `,
   ],
   category: Category.Midround,

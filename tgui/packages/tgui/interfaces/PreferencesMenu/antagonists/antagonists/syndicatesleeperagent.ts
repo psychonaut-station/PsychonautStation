@@ -7,8 +7,8 @@ const SyndicateSleeperAgent: Antagonist = {
   name: 'Syndicate Sleeper Agent',
   description: [
     multiline`
-      A form of traitor that can activate at any point in the middle
-      of the shift.
+      Vardiyanın herhangi bir noktasında aktif
+	  hale gelebilen bir tür hain.
     `,
     TRAITOR_MECHANICAL_DESCRIPTION,
   ],

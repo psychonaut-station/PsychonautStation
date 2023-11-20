@@ -6,8 +6,9 @@ const Nightmare: Antagonist = {
   name: 'Nightmare',
   description: [
     multiline`
-      Use your light eater to break sources of light to survive and thrive.
-      Jaunt through the darkness and seek your prey with night vision.
+      Hayatta kalmak ve gelişmek için ışık kaynkalarını
+	  ışık yiyiciniz ile kırın. Karanlıkta ilerlerken gece
+	  görüşünüz ile avınızı arayın.
     `,
   ],
   category: Category.Midround,

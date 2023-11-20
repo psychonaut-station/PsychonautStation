@@ -6,15 +6,15 @@ const SentientCreature: Antagonist = {
   name: 'Sentient Creature',
   description: [
     multiline`
-		Either by cosmic happenstance, or due to crew's shenanigans, you have been
-		given sentience!
+		Herhangi bir kozmik güç tesadüfler ya da mürettebatın maskaralıkları
+		yüzünden size bir bilinç armağan etti!
 	  `,
 
     multiline`
-		This is a blanket preference. The more benign ones include random human 
-		level intelligence events, the cargorilla, and creatures uplifted via sentience 
-		potions. The less friendly ones include the regal rat, and the boosted 
-		mining elite mobs.
+		Bu genelde bir tercihtir. Daha iyi huylu olanlar arasında rastgele
+		insan seviyesinde zeka olayları gerçekleşir, cargorilla ve bilinç
+		iksirleri ile zekası yükseltilmiş yaratıklar bulunur. Daha az dost
+		canlısı olanlar ise regal rat ve güçlendirilmiş maden elit çetelerini içerir.
 	  `,
   ],
   category: Category.Midround,

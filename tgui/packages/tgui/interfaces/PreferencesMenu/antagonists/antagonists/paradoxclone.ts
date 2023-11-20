@@ -6,8 +6,8 @@ const ParadoxClone: Antagonist = {
   name: 'Paradox Clone',
   description: [
     multiline`
-    A freak time-space anomaly has teleported you into another reality!
-    Now you have to find your counterpart and kill and replace them.
+    Garip bir uzay-zaman anomalisi sizi başka bir gerçekliğe ışınladı!
+	Şimdi kendinizin klonunu bulmalı ve onu öldürüp yerine geçmelisiniz!
     `,
   ],
   category: Category.Midround,

@@ -5,7 +5,7 @@ const HereticSmuggler: Antagonist = {
   key: 'hereticsmuggler',
   name: 'Heretic Smuggler',
   description: [
-    'A form of heretic that can activate when joining an ongoing shift.',
+    'Devam eden bir vardiyaya katılırken etkinleştirilebilen bir sapkınlık biçimi.',
     HERETIC_MECHANICAL_DESCRIPTION,
   ],
   category: Category.Latejoin,

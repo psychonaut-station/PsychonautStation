@@ -2,8 +2,8 @@ import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
 export const CHANGELING_MECHANICAL_DESCRIPTION = multiline`
-Transform yourself or others into different identities, and buy from an
-arsenal of biological weaponry with the DNA you collect.
+Kendinizi veya başkalarını farklı kimliklere dönüştürün ve
+topladığınız DNA ile cephaneliğinizden biyolojik araçlar, silahlar satın alın.
 `;
 
 const Changeling: Antagonist = {
@@ -11,8 +11,8 @@ const Changeling: Antagonist = {
   name: 'Changeling',
   description: [
     multiline`
-      A highly intelligent alien predator that is capable of altering their
-      shape to flawlessly resemble a human.
+      Şekilini kusursuz bir şekilde insana benzeyecek şekilde
+	  değiştriebilen son derece zeki uzaylı yırtıcı.
     `,
     CHANGELING_MECHANICAL_DESCRIPTION,
   ],

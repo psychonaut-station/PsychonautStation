@@ -7,8 +7,8 @@ const Provocateur: Antagonist = {
   name: 'Provocateur',
   description: [
     multiline`
-      A form of head revolutionary that can activate when joining an ongoing
-      shift.
+      Devam eden bir vardiyaya katılırken 
+	  etkinleştirilebilen bir tür baş devrimci!
     `,
 
     REVOLUTIONARY_MECHANICAL_DESCRIPTION,

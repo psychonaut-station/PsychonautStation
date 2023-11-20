@@ -5,7 +5,7 @@ const SyndicateInfiltrator: Antagonist = {
   key: 'syndicateinfiltrator',
   name: 'Syndicate Infiltrator',
   description: [
-    'A form of traitor that can activate when joining an ongoing shift.',
+    'Devam eden vardiyaya katılırken etkinleştirilebilen bir tür hain',
     TRAITOR_MECHANICAL_DESCRIPTION,
   ],
   category: Category.Latejoin,

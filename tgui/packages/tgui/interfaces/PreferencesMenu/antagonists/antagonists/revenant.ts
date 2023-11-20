@@ -6,9 +6,9 @@ const Revenant: Antagonist = {
   name: 'Revenant',
   description: [
     multiline`
-      Become the mysterious revenant. Break windows, overload lights, and eat
-      the crew's life force, all while talking to your old community of
-      disgruntled ghosts.
+      Gizemli bir hortlak olun. Camları kırın ışıkları aşırı yüklenin
+	  ve mürettebatın hayat enerjisini yiyin, tüm bunları yaparken de
+	  hoşnutsuz hayaletlerden oluşan eski topluluğunuzla konuşun.
     `,
   ],
   category: Category.Midround,

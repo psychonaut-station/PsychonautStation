@@ -2,8 +2,9 @@ import { Antagonist, Category } from '../base';
 import { multiline } from 'common/string';
 
 export const TRAITOR_MECHANICAL_DESCRIPTION = multiline`
-      Start with an uplink to purchase your gear and take on your sinister
-      objectives. Ascend through the ranks and become an infamous legend.
+      Teçhizatınızı satın almak ve uğursuz hedeflerinize ulaşmak için
+	  bir uplink ile başlayın. Rütbelerinizi yükseltin ve kötü şöhretli
+	  bir efsane olun.
    `;
 
 const Traitor: Antagonist = {
@@ -11,9 +12,9 @@ const Traitor: Antagonist = {
   name: 'Traitor',
   description: [
     multiline`
-      An unpaid debt. A score to be settled. Maybe you were just in the wrong
-      place at the wrong time. Whatever the reasons, you were selected to
-      infiltrate Space Station 13.
+      Ödenmemiş bir borç, kapatılması gereken bir hesap.
+	  Belki de yanlış zamanda yanlış yerdeydiniz, Sebep ne
+	  olursa olsun Space Station 13'e sızmak için seçildiniz.
     `,
     TRAITOR_MECHANICAL_DESCRIPTION,
   ],

@@ -6,8 +6,8 @@ const SpaceDragon: Antagonist = {
   name: 'Space Dragon',
   description: [
     multiline`
-      Become a ferocious space dragon. Breathe fire, summon an army of space
-      carps, crush walls, and terrorize the station.
+      Vahşi bir uzay ejderhası olun. Ateş püskürtün,
+	  carplardan oluşan ordu çağırın ve istasyona terör estirin.
     `,
   ],
   category: Category.Midround,

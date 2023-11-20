@@ -6,16 +6,18 @@ const SpaceNinja: Antagonist = {
   name: 'Space Ninja',
   description: [
     multiline`
-      The Spider Clan practice a sort of augmentation of human flesh in order to
-      achieve a more perfect state of being and follow Postmodern Space Bushido.
+     Örümcek Klanı, daha mükemmel bir varlık durumuna ulaşmak ve
+	 Postmodern bir Uzay Bushidosu'nu takip etmek için insan
+	 bedeninin bir tür büyütülmesini uygular.
     `,
 
     multiline`
-      Become a conniving space ninja, equipped with a katana, gloves to hack
-      into airlocks and APCs, a suit to make you go near-invisible,
-      as well as a variety of abilities in your kit. Hack into arrest consoles
-      to mark everyone as arrest, and even hack into communication consoles to
-      summon more threats to cause chaos on the station!
+      Bir katana, airlock ve APC'leri hacklemek için eldivenler,
+	  nerdeyse görünmez olmanızı sağlayan bir kıyafet ve kitinizdeki
+	  çeşitli yeteneklerle donatılmış, işbirlikçi uzay ninjası olun.
+	  Herkesi tutuklu olarak göstermek için tutuklama konsollarını hackleyin
+	  ve hatta istasyonda kaosa neden olmak için ve daha fazla tehdite yol açmak için
+	  iletişim konsollarını hackleyin!
     `,
   ],
   category: Category.Midround,

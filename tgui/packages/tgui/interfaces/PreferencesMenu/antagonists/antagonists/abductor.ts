@@ -6,16 +6,16 @@ const Abductor: Antagonist = {
   name: 'Abductor',
   description: [
     multiline`
-      Abductors are technologically advanced alien society set on cataloging
-      all species in the system. Unfortunately for their subjects their methods
-      are quite invasive.
+      Abductor'ler tüm türleri katologlamaya kararlı,
+      teknolojik olarak gelişmiş bir uzay topluluğudur. Ancak ne yazık ki denekleri için kullandıkları yöntemler
+      oldukça istilacıdır.
     `,
 
     multiline`
-      You and a partner will become the abductor scientist and agent duo.
-      As an agent, abduct unassuming victims and bring them back to your UFO.
-      As a scientist, scout out victims for your agent, keep them safe, and
-      operate on whoever they bring back.
+      Siz ve partneriniz abducator bilim insanı ve ajanı olacaksınız.
+      Bir ajan olarak, mütevazi kurbanlarınızı kaçırın ve onları kendi UFO'nuza geri getirin.
+      Bir bilim insanı olarak ajanınız için kurbanları bulun, güvende tutun, ve
+      kimi getirirlerse getirsinler ameliyat edin.
     `,
   ],
   category: Category.Midround,

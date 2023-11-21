@@ -6,4 +6,8 @@
 	map_name = "cleanlv624"
 	safehouse_path = /datum/map_template/safehouse/shuttle
 	extra_loot = list(/obj/item/toy/plush/rouny = 1)
+	cost = BITRUNNER_COST_LOW
+	difficulty = BITRUNNER_DIFFICULTY_LOW
+	reward_points = BITRUNNER_REWARD_LOW
+
 	

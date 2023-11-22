@@ -440,7 +440,7 @@
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "ky" = (
-/obj/machinery/hydroponics,
+/obj/machinery/hydroponics/constructable,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "kz" = (
@@ -688,6 +688,7 @@
 /area/ruin/space/has_grav/powered/virtual_domain)
 "rG" = (
 /obj/item/bedsheet/rd,
+/obj/structure/bed,
 /turf/open/floor/carpet/green,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "rH" = (
@@ -952,6 +953,12 @@
 /obj/machinery/power/port_gen/pacman/pre_loaded,
 /turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"wY" = (
+/obj/item/clothing/glasses/regular/hipster,
+/obj/item/bedsheet/captain,
+/obj/structure/bed,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "xn" = (
 /mob/living/simple_animal/hostile/alien/sentinel,
 /turf/open/floor/grass/lavaland,
@@ -1203,13 +1210,6 @@
 	},
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
-"DF" = (
-/obj/item/stack/sheet/glass{
-	amount = 30
-	},
-/obj/structure/rack,
-/turf/open/floor/iron,
-/area/ruin/space/has_grav/powered/virtual_domain)
 "DG" = (
 /obj/structure/spacevine,
 /obj/structure/spacevine,
@@ -1442,6 +1442,11 @@
 /obj/effect/decal/remains/human,
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron,
+/area/ruin/space/has_grav/powered/virtual_domain)
+"Ka" = (
+/obj/structure/bookcase,
+/obj/item/book/manual/nuclear,
+/turf/open/floor/wood,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "Ke" = (
 /obj/item/shard,
@@ -1712,6 +1717,11 @@
 /obj/item/clothing/suit/armor/bulletproof,
 /turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
+"Qp" = (
+/obj/item/bedsheet/rd,
+/obj/structure/bed,
+/turf/open/floor/wood,
+/area/ruin/space/has_grav/powered/virtual_domain)
 "Qx" = (
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron/showroomfloor,
@@ -1829,13 +1839,6 @@
 "TN" = (
 /obj/item/trash/candle,
 /turf/open/floor/wood,
-/area/ruin/space/has_grav/powered/virtual_domain)
-"TQ" = (
-/obj/structure/table,
-/obj/item/stack/sheet/plasteel{
-	amount = 10
-	},
-/turf/open/floor/iron,
 /area/ruin/space/has_grav/powered/virtual_domain)
 "TU" = (
 /obj/structure/alien/weeds/node,
@@ -2220,7 +2223,7 @@ AW
 AW
 AW
 He
-DF
+sk
 QQ
 sk
 He
@@ -2400,7 +2403,7 @@ QQ
 QQ
 Ox
 He
-AQ
+Ka
 ja
 lx
 XM
@@ -2556,7 +2559,7 @@ QQ
 He
 bB
 bB
-aN
+bB
 XM
 mv
 mv
@@ -3065,7 +3068,7 @@ mv
 AW
 bL
 Na
-TQ
+lz
 He
 QQ
 QQ
@@ -5259,7 +5262,7 @@ mv
 AW
 YE
 ja
-lk
+Qp
 He
 bB
 bB
@@ -6029,7 +6032,7 @@ mv
 AW
 Ke
 bB
-NO
+wY
 He
 ON
 cQ

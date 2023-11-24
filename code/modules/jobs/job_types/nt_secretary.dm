@@ -44,8 +44,6 @@
 	rpg_title = "servant"
 	job_flags = JOB_ANNOUNCE_ARRIVAL | JOB_CREW_MANIFEST | JOB_EQUIP_RANK | JOB_CREW_MEMBER | JOB_NEW_PLAYER_JOINABLE | JOB_REOPEN_ON_ROUNDSTART_LOSS | JOB_ASSIGN_QUIRKS
 
-	//mind_traits = list(TRAIT_SECRETARY)
-
 /datum/outfit/job/nt_secretary
 	name = JOB_NT_SECRETARY
 	jobtype = /datum/job/nt_secretary

@@ -44,7 +44,7 @@ GLOBAL_LIST_INIT(animal_job_types, list(
 	"Lizard" = /mob/living/basic/lizard,
 	"Mothroach" = /mob/living/basic/mothroach,
 	"Pug" = /mob/living/basic/pet/dog/pug,
-	"Parrot" = /mob/living/simple_animal/parrot,
+	"Parrot" = /mob/living/basic/parrot,
 	"Penguin" = /mob/living/basic/pet/penguin/emperor,
 	"Polar bear" = /mob/living/basic/bear/snow,
 	"Pony" = /mob/living/basic/pony,

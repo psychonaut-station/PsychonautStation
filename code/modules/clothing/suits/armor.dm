@@ -60,6 +60,8 @@
 	icon_state = "armor_sec"
 
 /obj/item/clothing/suit/armor/vest/alt/brig_physician
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_bp"
 
 /obj/item/clothing/suit/armor/vest/marine
@@ -170,6 +172,8 @@
 /obj/item/clothing/suit/armor/hos/special
 	name = "special armored jacket"
 	desc = "Huseyin kim amk"
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon_state = "hosjacketspecial"
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter

@@ -181,7 +181,6 @@
 
 /datum/preference/name/animal
 	savefile_key = "animal_name"
-
 	explanation = "Animal name"
 	group = "fun"
 	relevant_job = /datum/job/animal

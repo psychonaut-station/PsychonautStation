@@ -139,7 +139,6 @@
 /obj/item/door_remote/secretary/afterattack(atom/target, mob/user)
 	var/mob/living/carbon/human/H = user
 	if(H.mind && H.mind.secretary)
-	//if(HAS_TRAIT(user, TRAIT_SECRETARY))
 		var/obj/machinery/door/door
 
 		if (istype(target, /obj/machinery/door))

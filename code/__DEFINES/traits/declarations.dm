@@ -479,9 +479,6 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Projectile with this trait will always hit the defined zone of a struck living mob.
 #define TRAIT_ALWAYS_HIT_ZONE "always_hit_zone"
 
-/// Allows to use special secretary equipment
-#define TRAIT_SECRETARY "secretary"
-
 /// Mobs with this trait do care about a few grisly things, such as digging up graves. They also really do not like bringing people back to life or tending wounds, but love autopsies and amputations.
 #define TRAIT_MORBID "morbid"
 

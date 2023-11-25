@@ -10,5 +10,3 @@
 	difficulty = BITRUNNER_DIFFICULTY_MEDIUM
 	reward_points = BITRUNNER_REWARD_MEDIUM
 	mob_modules = list(/datum/modular_mob_segment/xenos)
-
-	

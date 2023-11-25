@@ -822,45 +822,6 @@
 /turf/open/floor/iron,
 /area/virtual_domain)
 "vm" = (
-/obj/item/paper{
-	text = <!DOCTYPE html><html><head><title>Xenomorphlar ile Savasmaya Gelen Askerlere Bilgilendirme</title><style>body {background-color: #f2f2f2;
-	font-family: Arial, sans-serif;
-	font-size: 16px;
-	line-height: 1.5;
-	margin: 0;
-	padding: 0;
-	
-	}h1 {
-	background-color: #333;
-	color: #fff;
-	font-size: 24px;
-	margin: 0;
-	padding: 20px;
-	text-align: center;
-	
-	}p {
-	margin: 20px;
-	text-align: justify;
-	
-	}.warning {
-	background-color: #f44336;
-	color: #fff;
-	font-weight: bold;
-	padding: 10px;
-	text-align: center;
-	
-	}</style></head><body><h1>Xenomorphlar ile Savasmaya Gelen Askerlere Bilgilendirme</h1><p>Bu askeri evrak,
- TerraGovMarineCorps'un amacini ve uyarisini icermektedir. Xenomorphlar ile savasmaya gelen askerlerin bilgilendirilmesi amaclanmaktadir.</p><p>Xenomorphlar,
- dunya-disi endoparazit bir yasam formudur. Bu canlilarla savasmak,
- askerlerimiz icin buyuk bir risk olusturur. Bu nedenle,
- askerlerimizin bu canlilarla karsilasmadan once bilgi sahibi olmalari gerekmektedir.</p><p>Xenomorphlar,
- hayat dongusu boyunca bircok farkli evrede bulunurlar. Bu evreler arasinda konak hucre,
- embriyolojik donem,
- yavru ve eriskinlik bulunur. Bu evreler hakkinda daha fazla bilgi edinmek,
- askerlerimizin bu canlilarla karsilasmadan once hazirlikli olmalarini saglayacaktir.</p><p>Askerlerimizin bu canlilarla savasirken dikkat etmeleri gereken bir diger onemli konu,
- hasar alma riskidir. Eger savasirken hasar alirlarsa,
- gercek dunyadaki bedenleri bundan etkilenebilir. Bu nedenle,
- askerlerimizin bu canlilarla savasirken dikkatli olmalari ve gerekli onlemleri almalari gerekmektedir.</p><div class="warning">UYARI: Bu bir askeri evraktir. Izinsiz kullanimi yasaktir.</div></body></html>},
 /turf/open/floor/grass/lavaland,
 /area/virtual_domain)
 "vp" = (

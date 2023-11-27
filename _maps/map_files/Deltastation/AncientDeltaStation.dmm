@@ -4801,7 +4801,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "aKg" = (
 /obj/structure/closet/emcloset,
 /turf/open/floor/plating,
@@ -35860,7 +35860,7 @@
 "fGb" = (
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "fGg" = (
 /obj/effect/turf_decal/tile/purple{
 	dir = 1
@@ -46708,7 +46708,7 @@
 /obj/structure/sign/poster/random/directional/north,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/catwalk_floor/iron_dark,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "iSa" = (
 /obj/machinery/portable_atmospherics/pump,
 /obj/effect/turf_decal/tile/blue{
@@ -48757,7 +48757,7 @@
 	dir = 1
 	},
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "jBG" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/landmark/start/hangover,
@@ -49856,7 +49856,7 @@
 /turf/open/floor/iron/dark/smooth_corner{
 	dir = 4
 	},
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "jSX" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -53199,7 +53199,7 @@
 /obj/machinery/computer/quantum_console,
 /obj/structure/extinguisher_cabinet/directional/west,
 /turf/open/floor/iron/dark/smooth_corner,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "kRs" = (
 /obj/effect/turf_decal/siding/purple{
 	dir = 4
@@ -54913,7 +54913,7 @@
 /obj/structure/cable,
 /obj/machinery/holopad,
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "lqS" = (
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/turf_decal/tile/neutral{
@@ -56015,7 +56015,7 @@
 /obj/machinery/light/directional/south,
 /obj/machinery/byteforge,
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "lIc" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/cafeteria,
@@ -60297,7 +60297,7 @@
 /area/station/service/chapel/office)
 "mWb" = (
 /turf/closed/wall,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "mWc" = (
 /obj/structure/chair/comfy/brown{
 	dir = 4
@@ -67088,7 +67088,7 @@
 	pixel_x = 5
 	},
 /turf/open/floor/iron/dark/smooth_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "oRI" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
@@ -69531,7 +69531,7 @@
 /obj/structure/cable,
 /obj/effect/landmark/start/bitrunner,
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "pIy" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -69983,7 +69983,7 @@
 /obj/effect/decal/cleanable/robot_debris,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/catwalk_floor/iron_dark,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "pOL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -85174,7 +85174,7 @@
 	dir = 4
 	},
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "urq" = (
 /obj/machinery/door/airlock{
 	name = "Jury"
@@ -87810,7 +87810,7 @@
 	name = "Bitrunning Den"
 	},
 /turf/open/floor/iron/dark/textured_large,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "vfU" = (
 /obj/machinery/field/generator,
 /obj/effect/decal/cleanable/dirt,
@@ -90553,7 +90553,7 @@
 "vYr" = (
 /obj/machinery/netpod,
 /turf/open/floor/catwalk_floor/iron_dark,
-/area/station/bitrunning/den)
+/area/station/cargo/bitrunning/den)
 "vYO" = (
 /obj/structure/table/wood,
 /obj/effect/decal/cleanable/dirt,

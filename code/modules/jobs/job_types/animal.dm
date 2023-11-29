@@ -92,7 +92,7 @@
 	var/datum/language_holder/language_holder = spawned.get_language_holder()
 
 	switch(spawned.type)
-		if(/mob/living/simple_animal/parrot)
+		if(/mob/living/basic/parrot)
 			if(prob(1))
 				spawned.desc = "Doomed to squawk the Earth."
 				spawned.color = "#FFFFFF77"

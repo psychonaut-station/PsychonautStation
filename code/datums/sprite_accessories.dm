@@ -85,6 +85,7 @@
 //////////////////////
 /datum/sprite_accessory/hair
 	icon = 'icons/mob/human/human_face.dmi'   // default icon for all hairs
+	var/y_offset = 0 // Y offset to apply so we can have hair that reaches above the player sprite's visual bounding box
 
 	// please make sure they're sorted alphabetically and, where needed, categorized
 	// try to capitalize the names please~
@@ -102,6 +103,11 @@
 /datum/sprite_accessory/hair/afro_large
 	name = "Afro (Large)"
 	icon_state = "hair_bigafro"
+
+/datum/sprite_accessory/hair/afro_huge
+	name = "Afro (Huge)"
+	icon_state = "hair_hugeafro"
+	y_offset = 6
 
 /datum/sprite_accessory/hair/allthefuzz
 	name = "All The Fuzz"
@@ -1774,10 +1780,12 @@
 	color_src = HAIR_COLOR
 
 /datum/sprite_accessory/tails/monkey
-	name = "Monkey"
 	icon = 'icons/mob/human/species/monkey/monkey_tail.dmi'
-	icon_state = "monkey"
 	color_src = FALSE
+
+/datum/sprite_accessory/tails/monkey/standard
+	name = "Monkey"
+	icon_state = "monkey"
 
 /datum/sprite_accessory/pod_hair
 	icon = 'icons/mob/human/species/podperson_hair.dmi'
@@ -2089,11 +2097,11 @@
 	name = "Long + Membrane"
 	icon_state = "longmeme"
 
-/datum/sprite_accessory/spines/aqautic
+/datum/sprite_accessory/spines/aquatic
 	name = "Aquatic"
 	icon_state = "aqua"
 
-/datum/sprite_accessory/spines_animated/aqautic
+/datum/sprite_accessory/spines_animated/aquatic
 	name = "Aquatic"
 	icon_state = "aqua"
 
@@ -2115,6 +2123,66 @@
 /datum/sprite_accessory/caps/round
 	name = "Round"
 	icon_state = "round"
+
+/datum/sprite_accessory/ipc_monitor
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "blackipc"
+	color_src = null
+	em_block = TRUE
+
+/datum/sprite_accessory/ipc_monitor/black
+	name = "Black"
+	icon_state = "blackipc"
+
+/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+
+/datum/sprite_accessory/ipc_monitor/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+	icon_state = "bs2ipc"
+
+/datum/sprite_accessory/ipc_monitor/hephaestussindustries
+	name = "Hephaestus Industries"
+	icon_state = "hsiipc"
+
+/datum/sprite_accessory/ipc_monitor/shellguardmunitions
+	name = "Shellguard Munitions Standard Series"
+	icon_state = "sgmipc"
+
+/datum/sprite_accessory/ipc_monitor/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
+	icon_state = "zhpipc"
+
+/datum/sprite_accessory/ipc_chassis
+	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "blackipc"
+	color_src = null
+	em_block = TRUE
+
+/datum/sprite_accessory/ipc_chassis/black
+	name = "Black"
+	icon_state = "blackipc"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics
+	name = "Bishop Cyberkinetics"
+	icon_state = "bshipc"
+
+/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2
+	name = "Bishop Cyberkinetics 2.0"
+	icon_state = "bs2ipc"
+
+/datum/sprite_accessory/ipc_chassis/hephaestussindustries
+	name = "Hephaestus Industries"
+	icon_state = "hsiipc"
+
+/datum/sprite_accessory/ipc_chassis/shellguardmunitions
+	name = "Shellguard Munitions Standard Series"
+	icon_state = "sgmipc"
+
+/datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
+	name = "Zeng-Hu Pharmaceuticals"
+	icon_state = "zhpipc"
 
 /datum/sprite_accessory/moth_wings
 	icon = 'icons/mob/human/species/moth/moth_wings.dmi'

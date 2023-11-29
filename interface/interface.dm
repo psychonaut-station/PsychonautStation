@@ -14,27 +14,23 @@
 		to_chat(src, span_danger("The wiki URL is not set in the server configuration."))
 	return
 
-/client/verb/forum()
-	set name = "forum"
-	set desc = "Visit the forum."
+/client/verb/website()
+	set name = "website"
+	set desc = "Website'yi ziyaret et"
 	set hidden = TRUE
-	var/forumurl = CONFIG_GET(string/forumurl)
-	if(forumurl)
-		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
-		src << link(forumurl)
+	var/weburl = CONFIG_GET(string/websiteurl)
+	if(weburl)
+		src << link(weburl)
 	else
-		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
+		to_chat(src, span_danger("The website URL is not set in the server configuration."))
 	return
 
 /client/verb/rules()
 	set name = "rules"
-	set desc = "Show Server Rules."
+	set desc = "Sunucu kuralları"
 	set hidden = TRUE
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
-		if(tgui_alert(src, "This will open the rules in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
 		src << link(rulesurl)
 	else
 		to_chat(src, span_danger("The rules URL is not set in the server configuration."))
@@ -46,8 +42,6 @@
 	set hidden = TRUE
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		if(tgui_alert(src, "This will open the Github repository in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
 		src << link(githuburl)
 	else
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
@@ -55,7 +49,7 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
-	set desc = "Report an issue"
+	set desc = "Hata bildir"
 	set hidden = TRUE
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)

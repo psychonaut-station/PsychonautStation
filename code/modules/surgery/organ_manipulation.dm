@@ -87,7 +87,7 @@
 	var/obj/item/tool = user.get_active_held_item()
 	if(step.try_op(user, target, user.zone_selected, tool, src, try_to_fail))
 		return TRUE
-	if(tool && tool.item_flags) //Mechanic organ manipulation isn't done with just surgery tools
+	if(tool && tool.tool_behaviour) //Mechanic organ manipulation isn't done with just surgery tools
 		to_chat(user, span_warning("This step requires a different tool!"))
 		return TRUE
 
@@ -172,6 +172,14 @@
 		var/obj/item/organ/meatslab = tool
 		if(!meatslab.useable)
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
+			return SURGERY_STEP_FAIL
+
+		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && !isipc(target))
+			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
+			return SURGERY_STEP_FAIL
+
+		if(!istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain) && istype(target_organ, /obj/item/organ/internal/brain) && isipc(target))
+			to_chat(user, span_warning("You cannot put this brain into an ipc!"))
 			return SURGERY_STEP_FAIL
 
 		if(!can_use_organ(user, meatslab))

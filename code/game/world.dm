@@ -192,7 +192,7 @@ GLOBAL_VAR(restart_counter)
 	data["tick_usage"] = world.tick_usage
 	data["tick_lag"] = world.tick_lag
 	data["time"] = world.time
-	data["timestamp"] = logger.unix_timestamp_string()
+	data["timestamp"] = rustg_unix_timestamp()
 	return data
 
 /world/proc/SetupLogs()
@@ -367,14 +367,10 @@ GLOBAL_VAR(restart_counter)
 		new_status += " &#8212; <b>[station_name()]</b>"
 
 	new_status += "<br>"
-	
+
 	var/name_link = CONFIG_GET(string/hub_name_link)
 	if (name_link)
 		new_status += "<a href='[name_link]'>Discord</a>"
-
-	var/website = CONFIG_GET(string/hub_website)
-	if (website)
-		new_status += ", <a href='[website]'>Wiki</a>"
 
 	var/players = GLOB.clients.len
 

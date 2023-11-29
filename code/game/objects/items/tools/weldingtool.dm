@@ -141,6 +141,9 @@
 	var/obj/item/bodypart/affecting = attacked_humanoid.get_bodypart(check_zone(user.zone_selected))
 
 	if(affecting && IS_ROBOTIC_LIMB(affecting) && !user.combat_mode)
+		if(!affecting.brute_dam)
+			to_chat(user, span_warning("[affecting] is already in good condition!"))
+			return
 		if(src.use_tool(attacked_humanoid, user, 0, volume=50, amount=1))
 			if(user == attacked_humanoid)
 				user.visible_message(span_notice("[user] starts to fix some of the dents on [attacked_humanoid]'s [affecting.name]."),

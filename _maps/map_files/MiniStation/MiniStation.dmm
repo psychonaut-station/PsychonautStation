@@ -12156,7 +12156,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port)
 "DW" = (
-/obj/structure/cable,
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/iron,
@@ -13786,7 +13785,6 @@
 	mapping_id = "main_turbine";
 	dir = 4
 	},
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
@@ -14716,7 +14714,6 @@
 /turf/open/space,
 /area/space/nearstation)
 "Lb" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -15850,8 +15847,6 @@
 /turf/open/floor/iron/dark/textured_large,
 /area/station/cargo/bitrunning/den)
 "Ov" = (
-/obj/structure/cable,
-/obj/machinery/power/smes,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "Ow" = (
@@ -16513,7 +16508,6 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "QG" = (
-/obj/structure/cable,
 /obj/machinery/button/door/incinerator_vent_atmos_aux{
 	pixel_x = 24;
 	pixel_y = 8
@@ -18065,7 +18059,6 @@
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "VI" = (
-/obj/structure/cable,
 /obj/machinery/power/terminal{
 	dir = 4
 	},
@@ -18342,7 +18335,6 @@
 /area/station/hallway/primary/aft)
 "Wx" = (
 /obj/structure/cable,
-/mob/living/simple_animal/pet/cat/jerry,
 /obj/structure/bed/dogbed/runtime{
 	name = "Jerry's bed"
 	},
@@ -19348,7 +19340,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/hfr_room)
 "Zu" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible/layer2{
 	dir = 4
 	},

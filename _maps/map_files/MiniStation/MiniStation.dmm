@@ -10131,7 +10131,7 @@
 	pixel_y = -25;
 	req_access = list("medical")
 	},
-/mob/living/simple_animal/pet/cat/runtime,
+/mob/living/basic/pet/cat/runtime,
 /obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/passive_vent,
 /turf/open/floor/iron/white,

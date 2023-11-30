@@ -47401,6 +47401,7 @@
 "jeI" = (
 /obj/structure/reagent_dispensers/fueltank,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/camera/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/security/mechbay)
 "jeP" = (
@@ -73229,9 +73230,7 @@
 /area/station/commons/storage/tools)
 "qIZ" = (
 /obj/vehicle/sealed/mecha/ripley/paddy/preset,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/open/floor/iron/dark,
+/turf/open/floor/iron/recharge_floor,
 /area/station/security/mechbay)
 "qJk" = (
 /obj/structure/chair/comfy/brown{

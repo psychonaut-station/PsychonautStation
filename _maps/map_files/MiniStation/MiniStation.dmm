@@ -1765,6 +1765,9 @@
 	dir = 4
 	},
 /obj/machinery/camera/directional/east,
+/obj/machinery/computer/security/labor{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "et" = (
@@ -1892,6 +1895,9 @@
 	dir = 4
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/computer/prisoner/gulag_teleporter_computer{
+	dir = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "eM" = (
@@ -2001,6 +2007,7 @@
 	dir = 4
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/gulag_teleporter,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "fa" = (
@@ -2175,6 +2182,28 @@
 	name = "Cell 1"
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted,
+/turf/open/floor/iron,
+/area/station/security/brig)
+"fu" = (
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/obj/structure/table,
+/obj/item/storage/box/evidence{
+	pixel_x = 9;
+	pixel_y = 8
+	},
+/obj/item/storage/box/prisoner{
+	pixel_x = 9
+	},
+/obj/machinery/recharger{
+	pixel_x = -5;
+	pixel_y = -3
+	},
+/obj/item/hand_labeler{
+	pixel_x = -8;
+	pixel_y = 10
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "fv" = (
@@ -2430,6 +2459,7 @@
 /obj/machinery/flasher/directional/west{
 	id = "Cell 1"
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "fZ" = (
@@ -2555,6 +2585,8 @@
 "gs" = (
 /obj/structure/bed,
 /obj/item/bedsheet,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "gt" = (
@@ -3323,6 +3355,7 @@
 	id = "Cell 2";
 	pixel_y = -22
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "ij" = (
@@ -13780,6 +13813,7 @@
 /obj/structure/bed,
 /obj/item/bedsheet,
 /obj/effect/landmark/start/hangover,
+/obj/machinery/light/small/directional/south,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "Ib" = (
@@ -17455,6 +17489,7 @@
 	id = "Cell 3";
 	pixel_y = -22
 	},
+/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "Sy" = (
@@ -18137,6 +18172,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/command/heads_quarters/rd)
+"UB" = (
+/obj/effect/turf_decal/tile/red/anticorner/contrasted,
+/obj/machinery/photocopier{
+	pixel_y = 3
+	},
+/turf/open/floor/iron,
+/area/station/security/brig)
 "UC" = (
 /turf/open/floor/iron,
 /area/station/engineering/storage_shared)
@@ -18593,6 +18635,10 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/main)
+"VW" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/security/brig)
 "VX" = (
 /obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -19413,6 +19459,11 @@
 /obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron,
 /area/station/engineering/storage/tech)
+"Yf" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/security/brig)
 "Yg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/yellow/visible/layer4,
 /obj/machinery/meter/layer4,
@@ -53587,7 +53638,7 @@ dV
 KQ
 fZ
 ft
-fZ
+VW
 gq
 dV
 ad
@@ -54866,7 +54917,7 @@ fZ
 Mb
 Yy
 Yy
-Yy
+Yf
 Yy
 Yy
 Yy
@@ -55118,18 +55169,18 @@ XV
 fZ
 fZ
 fZ
-fZ
+VW
 GK
 Nm
 fZ
-fZ
+VW
 fZ
 fZ
 Xy
 fZ
 LO
 Vd
-fZ
+VW
 UE
 dV
 Qb
@@ -55637,11 +55688,11 @@ RU
 RU
 RU
 RZ
-Yl
+fu
 es
 eL
 eZ
-OY
+UB
 GW
 fZ
 fZ

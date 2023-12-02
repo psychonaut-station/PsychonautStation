@@ -37,9 +37,9 @@
 
 /// Inits GLOB.species_list. Not using GLOBAL_LIST_INIT b/c it depends on GLOB.string_lists
 /proc/init_species_list()
-	for(var/spath in subtypesof(/datum/species))
-		var/datum/species/S = new spath()
-		GLOB.species_list[S.id] = spath
+	for(var/species_path in subtypesof(/datum/species))
+		var/datum/species/species = new species_path()
+		GLOB.species_list[species.id] = species_path
 	sort_list(GLOB.species_list, GLOBAL_PROC_REF(cmp_typepaths_asc))
 
 /// Inits GLOB.surgeries
@@ -221,7 +221,7 @@
 // Wall mounted machinery which are visually on the wall.
 GLOBAL_LIST_INIT(WALLITEMS_INTERIOR, typecacheof(list(
 	/obj/item/radio/intercom,
-	/obj/item/storage/secure/safe,
+	/obj/structure/secure_safe,
 	/obj/machinery/airalarm,
 	/obj/machinery/bluespace_vendor,
 	/obj/machinery/button,

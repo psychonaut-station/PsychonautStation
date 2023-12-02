@@ -148,6 +148,7 @@
 /obj/item/storage/box/nt_secretary
 	name = "Build your own office kit"
 	desc = "a.k.a not so rapid office deployment system."
+	icon = 'icons/psychonaut/obj/storage/box.dmi'
 	icon_state = "nt_secretary_kit"
 	illustration = null
 
@@ -164,6 +165,7 @@
 /obj/item/storage/box/nt_secretary/coffeemakerkit
 	name = "Coffee maker parts"
 	desc = "Coffee maker maker kit for real makers!"
+	icon = 'icons/psychonaut/obj/storage/box.dmi'
 	icon_state = "nanobox"
 	illustration = null
 
@@ -178,6 +180,7 @@
 /obj/item/storage/box/nt_secretary/coffee
 	name = "Office coffee supplies"
 	desc = "You shall need this."
+	icon = 'icons/psychonaut/obj/storage/box.dmi'
 	icon_state = "nt_secretary_kit"
 	illustration = null
 

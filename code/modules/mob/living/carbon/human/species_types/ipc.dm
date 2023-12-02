@@ -4,7 +4,6 @@
 	examine_limb_id = SPECIES_HUMAN
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
-		TRAIT_CAN_USE_FLIGHT_POTION,
 		TRAIT_GENELESS,
 		TRAIT_NOBREATH,
 		TRAIT_NOCLONELOSS,
@@ -24,6 +23,8 @@
 	meat = null
 	exotic_blood = /datum/reagent/fuel/oil
 	exotic_bloodtype = "LPG"
+	dust_anim = "dust-h"
+	gib_anim = "gibbed-h"
 	gibspawner = /obj/effect/gibspawner/robot/android
 	decalremains = /obj/effect/decal/remains/robot
 	mutantbrain = /obj/item/organ/internal/brain/basic_posibrain
@@ -41,7 +42,6 @@
 	)
 	mutant_bodyparts = list("ipc_chassis" = "Black")
 	species_language_holder = /datum/language_holder/synthetic
-	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	no_equip_flags = ITEM_SLOT_MASK
 	bodypart_overrides = list(

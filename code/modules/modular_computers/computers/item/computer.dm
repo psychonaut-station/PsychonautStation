@@ -48,7 +48,7 @@
 
 	///Flag of the type of device the modular computer is, deciding what types of apps it can run.
 	var/hardware_flag = NONE
-//	Options: PROGRAM_ALL | PROGRAM_CONSOLE | PROGRAM_LAPTOP | PROGRAM_TABLET
+//	Options: PROGRAM_ALL | PROGRAM_CONSOLE | PROGRAM_LAPTOP | PROGRAM_PDA
 
 	///The theme, used for the main menu and file browser apps.
 	var/device_theme = PDA_THEME_NTOS
@@ -324,11 +324,14 @@
 		return FALSE
 
 	. = ..()
+	if(!forced)
+		add_log("manual overriding of permissions and modification of device firmware detected. Reboot and reinstall required.")
 	obj_flags |= EMAGGED
 	device_theme = PDA_THEME_SYNDICATE
-	balloon_alert(user, "syndieOS loaded")
-	if (emag_card)
-		to_chat(user, span_notice("You swipe \the [src] with [emag_card]. A console window momentarily fills the screen, with white text rapidly scrolling past."))
+	if(user)
+		balloon_alert(user, "syndieOS loaded")
+		if (emag_card)
+			to_chat(user, span_notice("You swipe \the [src] with [emag_card]. A console window momentarily fills the screen, with white text rapidly scrolling past."))
 	return TRUE
 
 /obj/item/modular_computer/examine(mob/user)
@@ -399,7 +402,7 @@
 		return
 
 	if(enabled)
-		. += active_program ? mutable_appearance(init_icon, active_program.program_icon_state) : mutable_appearance(init_icon, icon_state_menu)
+		. += active_program ? mutable_appearance(init_icon, active_program.program_open_overlay) : mutable_appearance(init_icon, icon_state_menu)
 	if(atom_integrity <= integrity_failure * max_integrity)
 		. += mutable_appearance(init_icon, "bsod")
 		. += mutable_appearance(init_icon, "broken")
@@ -500,7 +503,7 @@
 	if(!caller || !caller.alert_able || caller.alert_silenced || !alerttext) //Yeah, we're checking alert_able. No, you don't get to make alerts that the user can't silence.
 		return FALSE
 	playsound(src, sound, 50, TRUE)
-	loc.visible_message(span_notice("[icon2html(src)] [span_notice("The [src] displays a [caller.filedesc] notification: [alerttext]")]"))
+	physical.loc.visible_message(span_notice("[icon2html(physical, viewers(physical.loc))] \The [src] displays a [caller.filedesc] notification: [alerttext]"))
 
 /obj/item/modular_computer/proc/ring(ringtone) // bring bring
 	if(HAS_TRAIT(SSstation, STATION_TRAIT_PDA_GLITCHED))
@@ -517,7 +520,6 @@
 	var/list/data = list()
 
 	data["PC_device_theme"] = device_theme
-	data["PC_showbatteryicon"] = !!internal_cell
 
 	if(internal_cell)
 		switch(internal_cell.percent())
@@ -535,8 +537,8 @@
 				data["PC_batteryicon"] = "batt_5.gif"
 		data["PC_batterypercent"] = "[round(internal_cell.percent())]%"
 	else
-		data["PC_batteryicon"] = "batt_5.gif"
-		data["PC_batterypercent"] = "N/C"
+		data["PC_batteryicon"] = null
+		data["PC_batterypercent"] = null
 
 	switch(get_ntnet_status())
 		if(NTNET_NO_SIGNAL)

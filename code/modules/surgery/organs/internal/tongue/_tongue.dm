@@ -94,8 +94,10 @@
 /obj/item/organ/internal/tongue/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 
-	if(speech_args[SPEECH_LANGUAGE] in languages_native)
-		return FALSE //no changes
+	if(speech_args[SPEECH_LANGUAGE] in languages_native) // Speaking a native language?
+		return FALSE // Don't modify speech
+	if(HAS_TRAIT(source, TRAIT_SIGN_LANG)) // No modifiers for signers - I hate this but I simply cannot get these to combine into one statement
+		return FALSE // Don't modify speech
 	modify_speech(source, speech_args)
 
 /obj/item/organ/internal/tongue/proc/modify_speech(datum/source, list/speech_args)
@@ -146,7 +148,7 @@
 /obj/item/organ/internal/tongue/apply_organ_damage(damage_amount, maximum = maxHealth, required_organ_flag)
 	. = ..()
 	if(!owner)
-		return
+		return FALSE
 	apply_tongue_effects()
 
 /// Applies effects to our owner based on how damaged our tongue is

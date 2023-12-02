@@ -36,7 +36,7 @@
 	AddComponent(/datum/component/appearance_on_aggro, aggro_state = "hivelord_alert")
 	spawn_brood = new(src)
 	spawn_brood.Grant(src)
-	ai_controller.set_blackboard_key(BB_TARGETTED_ACTION, spawn_brood)
+	ai_controller.set_blackboard_key(BB_TARGETED_ACTION, spawn_brood)
 
 /mob/living/basic/mining/hivelord/Destroy()
 	QDEL_NULL(spawn_brood)
@@ -102,7 +102,7 @@
 
 /mob/living/basic/hivelord_brood/Initialize(mapload)
 	. = ..()
-	add_traits(list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE), INNATE_TRAIT)
+	add_traits(list(TRAIT_LAVA_IMMUNE, TRAIT_ASHSTORM_IMMUNE, TRAIT_PERMANENTLY_MORTAL), INNATE_TRAIT)
 	AddElement(/datum/element/simple_flying)
 	AddComponent(/datum/component/swarming)
 	AddComponent(/datum/component/clickbox, icon_state = "hivelord", max_scale = INFINITY)

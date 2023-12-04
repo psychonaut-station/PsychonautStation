@@ -2315,7 +2315,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@popperjs/core@npm:^2.11.8, @popperjs/core@npm:^2.9.3":
+"@popperjs/core@npm:^2.11.8":
   version: 2.11.8
   resolution: "@popperjs/core@npm:2.11.8"
   checksum: e5c69fdebf52a4012f6a1f14817ca8e9599cb1be73dd1387e1785e2ed5e5f0862ff817f420a87c7fc532add1f88a12e25aeb010ffcbdc98eace3d55ce2139cf0
@@ -4487,7 +4487,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dateformat@npm:^4.5.1, dateformat@npm:^4.6.2":
+"dateformat@npm:^4.6.2":
   version: 4.6.3
   resolution: "dateformat@npm:4.6.3"
   checksum: c3aa0617c0a5b30595122bc8d1bee6276a9221e4d392087b41cbbdf175d9662ae0e50d0d6dcdf45caeac5153c4b5b0844265f8cd2b2245451e3da19e39e3b65d
@@ -4678,7 +4678,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"dompurify@npm:^2.3.1, dompurify@npm:^2.4.4":
+"dompurify@npm:^2.4.4":
   version: 2.4.7
   resolution: "dompurify@npm:2.4.7"
   checksum: 13c047e772a1998348191554dda403950d45ef2ec75fa0b9915cc179ccea0a39ef780d283109bd72cf83a2a085af6c77664281d4d0106a737bc5f39906364efe
@@ -6520,14 +6520,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"inferno-vnode-flags@npm:7.4.11, inferno-vnode-flags@npm:^7.4.11, inferno-vnode-flags@npm:^7.4.8":
+"inferno-vnode-flags@npm:7.4.11, inferno-vnode-flags@npm:^7.4.11":
   version: 7.4.11
   resolution: "inferno-vnode-flags@npm:7.4.11"
   checksum: 8a2f1d8d546b99c14c31a25a88ac45f076be9ac630202f898c49140aa420cf2c96d871fcc3f8e5813d5176d569a40c3fd1727198edf46306de3a989fe85176ab
   languageName: node
   linkType: hard
 
-"inferno@npm:^7.4.11, inferno@npm:^7.4.8":
+"inferno@npm:^7.4.11":
   version: 7.4.11
   resolution: "inferno@npm:7.4.11"
   dependencies:
@@ -8143,7 +8143,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"marked@npm:^4.0.10, marked@npm:^4.2.12":
+"marked@npm:^4.2.12":
   version: 4.3.0
   resolution: "marked@npm:4.3.0"
   bin:

@@ -8,8 +8,7 @@ import { Window } from './layouts';
 import { useBackend } from './backend';
 import { LoadingScreen } from './interfaces/common/LoadingToolbox';
 
-// const requireInterface = require.context('./interfaces');
-import { loadInterface } from '../psychonaut-ui-patches';
+const requireInterface = require.context('./interfaces');
 
 const routingError =
   (type: 'notFound' | 'missingExport', name: string) => () => {
@@ -78,8 +77,7 @@ export const getRoutedComponent = () => {
     const interfacePathBuilder = interfacePathBuilders.shift()!;
     const interfacePath = interfacePathBuilder(name);
     try {
-      // esModule = requireInterface(interfacePath);
-      esModule = loadInterface(interfacePath);
+      esModule = requireInterface(interfacePath);
     } catch (err) {
       if (err.code !== 'MODULE_NOT_FOUND') {
         throw err;

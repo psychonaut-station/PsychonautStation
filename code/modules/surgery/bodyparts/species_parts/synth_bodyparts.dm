@@ -12,7 +12,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_l_arm"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -37,7 +36,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_r_arm"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -62,7 +60,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_l_leg"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -95,7 +92,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_r_leg"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -128,7 +124,6 @@
 	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell. Especially for synthetics."
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_chest"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -166,7 +161,6 @@
 	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals. Especially for synthetics."
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_head"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"

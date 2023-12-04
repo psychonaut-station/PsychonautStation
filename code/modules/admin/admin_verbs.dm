@@ -173,7 +173,6 @@ GLOBAL_PROTECT(admin_verbs_debug)
 	return list(
 	#ifdef TESTING /* Keep these at the top to not make the list look fugly */
 	/client/proc/check_missing_sprites,
-	/client/proc/run_dynamic_simulations,
 	#endif
 	/proc/machine_upgrade,
 	/datum/admins/proc/create_or_modify_area,
@@ -1194,3 +1193,4 @@ GLOBAL_PROTECT(admin_verbs_poll)
 		QDEL_NULL(segment.ai_controller)
 		segment.AddComponent(/datum/component/mob_chain, front = previous)
 		previous = segment
+

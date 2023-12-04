@@ -115,8 +115,8 @@ const get_security_level = (level: number) => {
   }
 };
 
-export const JobSelection = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+export const JobSelection = (props) => {
+  const { act, data } = useBackend<Data>();
   if (!data?.departments_static) {
     return null; // Stop TGUI whitescreens with TGUI-dev!
   }

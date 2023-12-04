@@ -2,8 +2,8 @@ import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const TicketSelectHelper = (props, context) => {
-  const { act } = useBackend(context);
+export const TicketSelectHelper = (props) => {
+  const { act } = useBackend();
 
   return (
     <Window title="Adminhelp..." theme="ntos_darkmode" height={300} width={500}>

@@ -51,8 +51,8 @@ export const ElectricalJukebox = () => {
   );
 };
 
-const TrackDetails = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const TrackDetails = (props) => {
+  const { act, data } = useBackend<Data>();
   const { current_track, elapsed, active, busy, loop, can_mob_use, banned } =
     data;
 
@@ -140,8 +140,8 @@ const TrackDetails = (props, context) => {
   );
 };
 
-const QueueDisplay = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const QueueDisplay = (props) => {
+  const { act, data } = useBackend<Data>();
   const { busy, queue, can_mob_use, banned } = data;
 
   return (
@@ -178,8 +178,8 @@ const QueueDisplay = (props, context) => {
   );
 };
 
-const RequestsDisplay = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const RequestsDisplay = (props) => {
+  const { act, data } = useBackend<Data>();
   const { busy, can_mob_use, requests, banned } = data;
 
   return (
@@ -220,8 +220,8 @@ const RequestsDisplay = (props, context) => {
   );
 };
 
-const QueueRow = (props: { track: TrackData }, context) => {
-  const { act, data } = useBackend<Data>(context);
+const QueueRow = (props: { track: TrackData }) => {
+  const { act, data } = useBackend<Data>();
   const { track } = props;
   const { can_mob_use, banned } = data;
 
@@ -248,8 +248,8 @@ const QueueRow = (props: { track: TrackData }, context) => {
   );
 };
 
-const RequestRow = (props: { track: TrackData }, context) => {
-  const { act, data } = useBackend<Data>(context);
+const RequestRow = (props: { track: TrackData }) => {
+  const { act, data } = useBackend<Data>();
   const { track } = props;
   const { can_mob_use, user_key_name, banned } = data;
 

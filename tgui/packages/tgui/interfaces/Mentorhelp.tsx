@@ -2,13 +2,9 @@ import { useBackend, useLocalState } from '../backend';
 import { TextArea, Stack, Button } from '../components';
 import { Window } from '../layouts';
 
-export const Mentorhelp = (props, context) => {
-  const { act } = useBackend(context);
-  const [mhelpMessage, setMhelpMessage] = useLocalState(
-    context,
-    'ahelp_message',
-    ''
-  );
+export const Mentorhelp = (props) => {
+  const { act } = useBackend();
+  const [mhelpMessage, setMhelpMessage] = useLocalState('ahelp_message', '');
 
   return (
     <Window title="Create Mentorhelp" theme="admin" height={300} width={500}>

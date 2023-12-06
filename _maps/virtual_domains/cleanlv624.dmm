@@ -885,7 +885,9 @@
 /turf/open/floor/iron,
 /area/virtual_domain)
 "yn" = (
-/obj/effect/landmark/bitrunning/safehouse_spawn,
+/obj/modular_map_root/safehouse{
+	key = "shuttle"
+	},
 /turf/template_noop,
 /area/virtual_domain)
 "yy" = (

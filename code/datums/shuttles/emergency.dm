@@ -38,7 +38,7 @@
 			var/path = pick_weight(events)
 			events -= path
 			mobile.event_list.Add(new path(mobile))
-	
+
 /datum/map_template/shuttle/emergency/backup
 	suffix = "backup"
 	name = "Backup Shuttle"
@@ -129,6 +129,12 @@
 	credit_cost = EMAG_LOCKED_SHUTTLE_COST * 1.8
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
 	occupancy_limit = "70"
+
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 4
+	description = "For when you're not quite ready to say goodbye to your home station. May cause damage to smaller stations."
 
 /datum/map_template/shuttle/emergency/cami
 	suffix = "cami"

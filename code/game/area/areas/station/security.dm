@@ -27,6 +27,14 @@
 	name = "\improper Brig"
 	icon_state = "brig"
 
+/area/station/security/prison/safe/exterior
+	name = "Prison Exterior"
+	icon_state = "prison_ext_safe"
+
+/area/station/security/brig/hallway
+	name = "Brig Hallway"
+	icon_state = "brig_hallway"
+
 /area/station/security/holding_cell
 	name = "\improper Holding Cell"
 	icon_state = "holding_cell"

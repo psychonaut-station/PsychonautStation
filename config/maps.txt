@@ -30,6 +30,11 @@ map deltastation
 	votable
 endmap
 
+map heliostation
+	minplayers 0
+	votable
+endmap
+
 map ancientdeltastation
 	minplayers 0
 	votable

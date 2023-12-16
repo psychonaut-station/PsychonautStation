@@ -23,6 +23,10 @@
 	suffix = "birdshot"
 	name = "supply shuttle (Birdshot)"
 
+/datum/map_template/shuttle/cargo/helio
+	suffix = "helio"
+	name = "cargo ferry (Helio)"
+
 /datum/map_template/shuttle/cargo/box
 	suffix = "box"
 	name = "cargo ferry (Box)"

@@ -19,6 +19,10 @@
 	name = "Medbay Central"
 	icon_state = "med_central"
 
+/area/station/maintenance/department/medical/plasmaman
+	name = "Plasmaman Medbay"
+	icon_state = "pm_medbay"
+
 /area/station/medical/medbay/lobby
 	name = "\improper Medbay Lobby"
 	icon_state = "med_lobby"

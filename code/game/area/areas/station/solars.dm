@@ -52,6 +52,14 @@
 	name = "\improper Port Bow Solar Array"
 	icon_state = "panelsFP"
 
+/area/station/solars/ai
+	name = "AI Satellite Solar Array"
+	icon_state = "ai_panels"
+
+/area/station/ai_monitored/turret_protected/aisat/solars
+	name = "AI Satellite Solars"
+	icon_state = "ai_solars"
+
 /area/station/solars/aisat
 	name = "\improper AI Satellite Solars"
 	icon_state = "panelsAI"

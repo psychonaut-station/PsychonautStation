@@ -86,6 +86,7 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 /datum/dna/Destroy()
 	if(iscarbon(holder))
 		var/mob/living/carbon/cholder = holder
+		remove_all_mutations() // mutations hold a reference to the dna
 		if(cholder.dna == src)
 			cholder.dna = null
 	holder = null
@@ -373,20 +374,21 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.ipc_chassis_list.Find(features["ipc_chassis"]), GLOB.ipc_chassis_list.len))
 
 //Please use add_mutation or activate_mutation instead
-/datum/dna/proc/force_give(datum/mutation/human/HM)
-	if(holder && HM)
-		if(HM.class == MUT_NORMAL)
-			set_se(1, HM)
-		. = HM.on_acquiring(holder)
+/datum/dna/proc/force_give(datum/mutation/human/human_mutation)
+	if(holder && human_mutation)
+		if(human_mutation.class == MUT_NORMAL)
+			set_se(1, human_mutation)
+		. = human_mutation.on_acquiring(holder)
 		if(.)
-			qdel(HM)
+			qdel(human_mutation)
 		update_instability()
 
 //Use remove_mutation instead
-/datum/dna/proc/force_lose(datum/mutation/human/HM)
-	if(holder && (HM in mutations))
-		set_se(0, HM)
-		. = HM.on_losing(holder)
+/datum/dna/proc/force_lose(datum/mutation/human/human_mutation)
+	if(holder && (human_mutation in mutations))
+		set_se(0, human_mutation)
+		. = human_mutation.on_losing(holder)
+		qdel(human_mutation) // qdel mutations on removal
 		update_instability(FALSE)
 		return
 
@@ -532,7 +534,6 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 	if(icon_update)
 		update_body(is_creating = TRUE)
 		update_mutations_overlay()// no lizard with human hulk overlay please.
-
 
 /mob/proc/has_dna()
 	return

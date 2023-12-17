@@ -270,10 +270,10 @@
 	organ_flags = ORGAN_ROBOTIC
 	zone = BODY_ZONE_CHEST
 
-/obj/item/organ/internal/voltprotector/on_insert(mob/living/carbon/owner)
+/obj/item/organ/internal/voltprotector/on_mob_insert(mob/living/carbon/owner)
 	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
 
-/obj/item/organ/internal/voltprotector/on_remove(mob/living/carbon/owner)
+/obj/item/organ/internal/voltprotector/on_mob_remove(mob/living/carbon/owner)
 	UnregisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT)
 
 /obj/item/organ/internal/voltprotector/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)

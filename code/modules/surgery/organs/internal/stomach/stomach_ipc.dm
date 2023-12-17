@@ -39,14 +39,14 @@
 	if(backup_charge > 100)
 		backup_charge = 100
 
-/obj/item/organ/internal/stomach/ipc/on_insert(mob/living/carbon/stomach_owner)
+/obj/item/organ/internal/stomach/ipc/on_mob_insert(mob/living/carbon/stomach_owner)
 	RegisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(stomach_owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
 	if(istype(stomach_owner.dna.species, /datum/species/ipc))
 		stomach_owner.remove_status_effect(/datum/status_effect/ipc_powerissue)
 		RegisterSignal(stomach_owner, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(get_status_tab_item))
 
-/obj/item/organ/internal/stomach/ipc/on_remove(mob/living/carbon/stomach_owner)
+/obj/item/organ/internal/stomach/ipc/on_mob_remove(mob/living/carbon/stomach_owner)
 	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
 	UnregisterSignal(stomach_owner, COMSIG_LIVING_ELECTROCUTE_ACT)
 	stomach_owner.clear_mood_event("charge")

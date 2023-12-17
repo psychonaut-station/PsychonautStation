@@ -6,7 +6,6 @@
 		TRAIT_NO_UNDERWEAR,
 		TRAIT_GENELESS,
 		TRAIT_NOBREATH,
-		TRAIT_NOCLONELOSS,
 		TRAIT_RESISTCOLD,
 		TRAIT_LIVERLESS_METABOLISM,
 		TRAIT_RADIMMUNE,
@@ -272,11 +271,9 @@
 	zone = BODY_ZONE_CHEST
 
 /obj/item/organ/internal/voltprotector/on_insert(mob/living/carbon/owner)
-	. = ..()
 	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
 
 /obj/item/organ/internal/voltprotector/on_remove(mob/living/carbon/owner)
-	. = ..()
 	UnregisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT)
 
 /obj/item/organ/internal/voltprotector/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
@@ -284,4 +281,3 @@
 	if(flags & SHOCK_ILLUSION)
 		return
 	owner.apply_damages(brain = 10)
-

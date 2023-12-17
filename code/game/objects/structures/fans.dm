@@ -64,7 +64,7 @@
 /obj/structure/fans/tiny/craftable/welder_act(mob/living/user, obj/item/I)
 	if(atom_integrity < max_integrity)
 		if(!I.tool_start_check(user, amount = 1))
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 		user.visible_message( \
 			span_notice("[user] starts to repair [src]."), \
 			span_notice("You begin repairing [src]..."), \
@@ -78,7 +78,7 @@
 	else
 		to_chat(user, span_notice("\The [src] doesn't need repairing."))
 
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/fans/tiny/craftable/wrench_act(mob/living/user, obj/item/I)
 	to_chat(user, span_notice("You begin to unfasten [src]..."))
@@ -91,12 +91,12 @@
 		add_fingerprint(user)
 		deconstruct(TRUE)
 
-		return TOOL_ACT_TOOLTYPE_SUCCESS
+		return ITEM_INTERACT_SUCCESS
 
 	return ..()
 
 /obj/structure/fans/tiny/craftable/deconstruct(disassembled = TRUE)
-	if(!(flags_1 & NODECONSTRUCT_1))
+	if(!(obj_flags & NO_DECONSTRUCTION))
 		if(disassembled)
 			var/obj/item/tinyfan_assembly/frame = new(loc)
 			transfer_fingerprints_to(frame)

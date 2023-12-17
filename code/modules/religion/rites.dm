@@ -545,7 +545,7 @@
 			return FALSE
 
 		raise_target = r_target
-		raise_target.notify_ghost_cloning("Your soul is being summoned back to your body by mystical power!", source = src)
+		raise_target.notify_revival("Your soul is being summoned back to your body by mystical power!", source = src)
 		return ..()
 
 /datum/religion_rites/raise_dead/invoke_effect(mob/living/user, atom/movable/religious_tool)

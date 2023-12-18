@@ -4,15 +4,34 @@
  * @license MIT
  */
 
-const initialState = {
+type State = {
+  visible: boolean;
+  playing: boolean;
+  meta: Meta | null;
+  track: unknown | null;
+  jukebox: Record<string, Meta>;
+  muted: string[];
+};
+
+type Meta = {
+  title: string;
+  link: string;
+  artist?: string;
+  upload_date?: string;
+  album?: string;
+  duration: string;
+};
+
+const initialState: State = {
   visible: false,
   playing: false,
+  meta: null,
   track: null,
   jukebox: {},
   muted: [],
 };
 
-const visible = (state, payload) => {
+const visible = (state: State, payload?: any) => {
   let visible = !!state.meta;
   if (!visible) {
     for (const key of Object.keys(state.jukebox)) {

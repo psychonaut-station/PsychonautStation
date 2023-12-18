@@ -105,7 +105,8 @@ const TrackDetails = (props) => {
             onClick={() => act('loop')}
           />
         </>
-      }>
+      }
+    >
       {current_track ? (
         <LabeledList>
           <LabeledList.Item label="Title">
@@ -168,7 +169,8 @@ const QueueDisplay = (props) => {
             onClick={() => act('clear_queue')}
           />
         </>
-      }>
+      }
+    >
       <Table>
         {queue.map((track) => (
           <QueueRow key={track.track_id} track={track} />
@@ -206,7 +208,8 @@ const RequestsDisplay = (props) => {
             onClick={() => act('new_request')}
           />
         </>
-      }>
+      }
+    >
       {requests.length > 0 ? (
         <Table>
           {requests.map((track) => (

@@ -1,5 +1,14 @@
 import { useBackend } from '../backend';
-import { Button, Collapsible, Flex, LabeledList, NoticeBox, Section, Slider, Box } from '../components';
+import {
+  Button,
+  Collapsible,
+  Flex,
+  LabeledList,
+  NoticeBox,
+  Section,
+  Slider,
+  Box,
+} from '../components';
 import { Window } from '../layouts';
 import { formatPower } from '../format';
 
@@ -122,7 +131,8 @@ export const BluespaceTap = (props, context) => {
                   {product.map((singleProduct) => (
                     <LabeledList.Item
                       key={singleProduct.key}
-                      label={singleProduct.name}>
+                      label={singleProduct.name}
+                    >
                       <Button
                         disabled={singleProduct.price >= points}
                         onClick={() =>

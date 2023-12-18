@@ -10,7 +10,8 @@ export const TicketSelectHelper = (props) => {
       <Window.Content
         style={{
           'background-image': 'none',
-        }}>
+        }}
+      >
         <Stack vertical fill>
           <Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">

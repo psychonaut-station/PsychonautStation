@@ -11,7 +11,8 @@ export const Mentorhelp = (props) => {
       <Window.Content
         style={{
           'background-image': 'none',
-        }}>
+        }}
+      >
         <Stack vertical fill>
           <Stack.Item grow>
             <TextArea

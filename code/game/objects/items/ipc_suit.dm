@@ -138,8 +138,8 @@
 			to_chat(user, span_warning("You have already inserted the brain!"))
 			return
 		else
-			if(!head)
-				to_chat(user, span_warning("There is no head!"))
+			if(!chest)
+				to_chat(user, span_warning("There is no chest!"))
 				return
 			if(!user.transferItemToLoc(weapon, src))
 				return

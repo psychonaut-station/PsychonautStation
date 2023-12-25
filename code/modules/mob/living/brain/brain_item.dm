@@ -427,7 +427,6 @@
 	desc = "Basic version of the positronic brain"
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "basic_posib"
-	zone = BODY_ZONE_CHEST
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
 
 /obj/item/organ/internal/brain/felinid //A bit smaller than average

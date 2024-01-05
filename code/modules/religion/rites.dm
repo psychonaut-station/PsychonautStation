@@ -637,7 +637,7 @@
 	var/turf/altar_turf = get_turf(religious_tool)
 	new /obj/effect/temp_visual/bluespace_fissure(altar_turf)
 	user.visible_message("<span class'notice'>A tear in reality appears above the altar!</span>")
-	var/list/candidates = poll_ghost_candidates("Do you wish to be summoned as a Holy Carp?", ROLE_SENTIENCE, null, 10 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
+	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be summoned as a Holy Carp?", ROLE_SENTIENCE, null, 10 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
 	if(!length(candidates))
 		new /obj/effect/gibspawner/generic(altar_turf)
 		user.visible_message("<span class='warning'>The carp pool was not strong enough to bring forth a space carp.")

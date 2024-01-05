@@ -4,12 +4,12 @@
  * @license MIT
  */
 
-import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
-import { forwardRef, ReactNode, RefObject, useEffect } from 'react';
-import { addScrollableNode, removeScrollableNode } from '../events';
 import { canRender, classes } from 'common/react';
+import { forwardRef, ReactNode, RefObject, useRef } from 'react';
 
-export type SectionProps = Partial<{
+import { BoxProps, computeBoxClassName, computeBoxProps } from './Box';
+
+type Props = Partial<{
   buttons: ReactNode;
   fill: boolean;
   fitted: boolean;
@@ -22,7 +22,7 @@ export type SectionProps = Partial<{
   BoxProps;
 
 export const Section = forwardRef(
-  (props: SectionProps, ref: RefObject<HTMLDivElement>) => {
+  (props: Props, forwardedRef: RefObject<HTMLDivElement>) => {
     const {
       className,
       title,
@@ -36,25 +36,15 @@ export const Section = forwardRef(
       ...rest
     } = props;
 
+    const contentRef = useRef<HTMLDivElement>(null);
+
     const hasTitle = canRender(title) || canRender(buttons);
 
-    useEffect(() => {
-      if (!ref?.current) return;
+    function handleMouseEnter() {
+      if (!scrollable || !contentRef.current) return;
 
-      if (scrollable || scrollableHorizontal) {
-        addScrollableNode(ref.current);
-        if (onScroll && ref.current) {
-          ref.current.onscroll = onScroll;
-        }
-      }
-      return () => {
-        if (!ref?.current) return;
-
-        if (scrollable || scrollableHorizontal) {
-          removeScrollableNode(ref.current);
-        }
-      };
-    }, []);
+      contentRef.current.focus();
+    }
 
     return (
       <div
@@ -68,7 +58,7 @@ export const Section = forwardRef(
           computeBoxClassName(rest),
         ])}
         {...computeBoxProps(rest)}
-        ref={ref}
+        ref={forwardedRef}
       >
         {hasTitle && (
           <div className="Section__title">
@@ -77,7 +67,12 @@ export const Section = forwardRef(
           </div>
         )}
         <div className="Section__rest">
-          <div onScroll={onScroll as any} className="Section__content">
+          <div
+            className="Section__content"
+            onMouseEnter={handleMouseEnter}
+            onScroll={onScroll}
+            ref={contentRef}
+          >
             {children}
           </div>
         </div>

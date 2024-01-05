@@ -1,7 +1,8 @@
 import { sortBy } from 'common/collections';
 import { classes } from 'common/react';
-import { useLocalState } from '../../backend';
-import { Flex, Button, Stack, AnimatedNumber } from '../../components';
+import { useState } from 'react';
+
+import { AnimatedNumber, Button, Flex, Stack } from '../../components';
 import { formatSiUnit } from '../../format';
 import { MaterialIcon } from './MaterialIcon';
 import { Material } from './Types';
@@ -80,10 +81,7 @@ type MaterialCounterProps = {
 const MaterialCounter = (props: MaterialCounterProps) => {
   const { material, onEjectRequested, SHEET_MATERIAL_AMOUNT } = props;
 
-  const [hovering, setHovering] = useLocalState(
-    `MaterialCounter__${material.name}`,
-    false,
-  );
+  const [hovering, setHovering] = useState(false);
 
   const sheets = material.amount / SHEET_MATERIAL_AMOUNT;
 
@@ -97,7 +95,7 @@ const MaterialCounter = (props: MaterialCounterProps) => {
         sheets < 1 && 'MaterialDock--disabled',
       ])}
     >
-      <Stack vertial direction={'column-reverse'}>
+      <Stack vertical direction="column-reverse">
         <Flex
           direction="column"
           textAlign="center"

@@ -1,16 +1,18 @@
 import { filter, sortBy } from 'common/collections';
 import { flow } from 'common/fp';
-import { useBackend, useLocalState } from 'tgui/backend';
+import { useState } from 'react';
+import { useBackend } from 'tgui/backend';
 import {
-  Stack,
-  Input,
-  Section,
-  Tabs,
-  NoticeBox,
   Box,
-  Icon,
   Button,
+  Icon,
+  Input,
+  NoticeBox,
+  Section,
+  Stack,
+  Tabs,
 } from 'tgui/components';
+
 import { JOB2ICON } from '../common/JobToIcon';
 import { isRecordMatch } from '../SecurityRecords/helpers';
 import { MedicalRecord, MedicalRecordData } from './types';
@@ -24,7 +26,7 @@ export const MedicalRecordTabs = (props) => {
     ? 'No records found.'
     : 'No match. Refine your search.';
 
-  const [search, setSearch] = useLocalState('search', '');
+  const [search, setSearch] = useState('');
 
   const sorted: MedicalRecord[] = flow([
     filter((record: MedicalRecord) => isRecordMatch(record, search)),
@@ -36,7 +38,7 @@ export const MedicalRecordTabs = (props) => {
       <Stack.Item>
         <Input
           fluid
-          onChange={(_, value) => setSearch(value)}
+          onInput={(_, value) => setSearch(value)}
           placeholder="Name/Job/DNA"
         />
       </Stack.Item>
@@ -81,9 +83,9 @@ export const MedicalRecordTabs = (props) => {
 
 /** Individual crew tab */
 const CrewTab = (props: { record: MedicalRecord }) => {
-  const [selectedRecord, setSelectedRecord] = useLocalState<
+  const [selectedRecord, setSelectedRecord] = useState<
     MedicalRecord | undefined
-  >('medicalRecord', undefined);
+  >();
 
   const { act, data } = useBackend<MedicalRecordData>();
   const { assigned_view } = data;
@@ -103,11 +105,10 @@ const CrewTab = (props: { record: MedicalRecord }) => {
   return (
     <Tabs.Tab
       className="candystripe"
-      label={name}
       onClick={() => selectRecord(record)}
       selected={selectedRecord?.crew_ref === crew_ref}
     >
-      <Box wrap>
+      <Box>
         <Icon name={JOB2ICON[rank] || 'question'} /> {name}
       </Box>
     </Tabs.Tab>

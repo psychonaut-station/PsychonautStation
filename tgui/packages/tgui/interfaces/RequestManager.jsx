@@ -5,6 +5,8 @@
  */
 
 import { decodeHtmlEntities } from 'common/string';
+import { useState } from 'react';
+
 import { useBackend, useLocalState } from '../backend';
 import { Button, Input, Section, Table } from '../components';
 import { Popper } from '../components/Popper';
@@ -19,7 +21,7 @@ export const RequestManager = (props) => {
       Object.entries(displayTypeMap).map(([type, _]) => [type, true]),
     ),
   );
-  const [searchText, setSearchText] = useLocalState('searchText');
+  const [searchText, setSearchText] = useState('');
 
   // Handle filtering
   let displayedRequests = requests.filter(
@@ -130,10 +132,7 @@ const RequestControls = (props) => {
 };
 
 const FilterPanel = (props) => {
-  const [filterVisible, setFilterVisible] = useLocalState(
-    'filterVisible',
-    false,
-  );
+  const [filterVisible, setFilterVisible] = useState(false);
   const [filteredTypes, setFilteredTypes] = useLocalState(
     'filteredTypes',
     Object.fromEntries(
@@ -143,9 +142,7 @@ const FilterPanel = (props) => {
 
   return (
     <Popper
-      options={{
-        placement: 'bottom-start',
-      }}
+      placement="bottom-start"
       popperContent={
         <div
           className="RequestManager__filterPanel"

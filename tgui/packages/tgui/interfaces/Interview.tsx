@@ -118,10 +118,12 @@ export const Interview = (props) => {
                 Lütfen soruları yanıtlayın.
                 <ul>
                   <li>
-                    Enter ya da Gönder butonuna basarak formunu çevrimiçi adminlere gönderebilirsin.
+                    Enter ya da Gönder butonuna basarak formunu çevrimiçi
+                    adminlere gönderebilirsin.
                   </li>
                   <li>
-                    Gönder butonuna basmadığın sürece cevaplarını düzenleyebilirsin.
+                    Gönder butonuna basmadığın sürece cevaplarını
+                    düzenleyebilirsin.
                   </li>
                   <li>Formu doldurduğunda GÖNDER tuşuna bas.</li>
                 </ul>

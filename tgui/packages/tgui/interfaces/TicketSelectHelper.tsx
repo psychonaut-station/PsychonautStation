@@ -9,7 +9,7 @@ export const TicketSelectHelper = (props) => {
     <Window title="Adminhelp..." theme="ntos_darkmode" height={300} width={500}>
       <Window.Content
         style={{
-          'background-image': 'none',
+          backgroundImage: 'none',
         }}
       >
         <Stack vertical fill>
@@ -30,7 +30,7 @@ export const TicketSelectHelper = (props) => {
               onClick={() => act('ticket_mentor')}
             />
           </Stack.Item>
-          <Stack.Item class="TicketSelectHelper__seperator" />
+          <Stack.Item className="TicketSelectHelper__seperator" />
           <Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">
               Bir konu hakkında şikayetçi olmak için;

@@ -12,7 +12,7 @@ export const Mentorhelp = (props) => {
     <Window title="Create Mentorhelp" theme="admin" height={300} width={500}>
       <Window.Content
         style={{
-          'background-image': 'none',
+          backgroundImage: 'none',
         }}
       >
         <Stack vertical fill>

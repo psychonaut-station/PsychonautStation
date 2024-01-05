@@ -98,15 +98,6 @@
 	. = ..()
 	. += span_notice("There is a toxin warning on the label. This is for slimepeople.")
 
-// for IPCs
-/obj/item/reagent_containers/blood/oil
-	blood_type = "LPG"
-	unique_blood = /datum/reagent/fuel/oil
-
-/obj/item/reagent_containers/blood/oil/examine()
-	. = ..()
-	. += span_notice("There is a flammable warning on the label. This is for IPCs.")
-
 /obj/item/reagent_containers/blood/universal
 	blood_type = "U"
 

@@ -249,7 +249,7 @@
 		return span_info("This one is completely devoid of life.")
 
 /obj/item/organ/internal/brain/attack(mob/living/carbon/C, mob/user)
-	if(!istype(C)  || isipc(C))
+	if(!istype(C))
 		return ..()
 
 	add_fingerprint(user)

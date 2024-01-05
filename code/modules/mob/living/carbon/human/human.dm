@@ -1002,30 +1002,6 @@
 /mob/living/carbon/human/monkeybrain
 	ai_controller = /datum/ai_controller/monkey
 
-/mob/living/carbon/human/proc/give_ipcscreen_overlay(overlay_typepath)
-	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
-	var/obj/item/bodypart/bodypart = get_bodypart(overlay.attached_body_zone)
-	var/obj/item/organ/external/ipchead/ipcscreen = get_organ_slot(ORGAN_SLOT_EXTERNAL_IPC_MONITOR)
-	if(!bodypart)
-		qdel(overlay)
-		return null
-	if(!ipcscreen)
-		qdel(overlay)
-		return null
-	remove_ipcscreen_overlay()
-	bodypart.add_bodypart_overlay(overlay)
-	update_body_parts()
-	return overlay
-
-/mob/living/carbon/human/proc/remove_ipcscreen_overlay()
-	var/obj/item/bodypart/bodypart = get_bodypart(BODY_ZONE_HEAD)
-	if(!bodypart)
-		return
-	var/datum/bodypart_overlay/simple/ipcscreen/overlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
-	if(overlay)
-		bodypart.remove_bodypart_overlay(overlay)
-	update_body_parts()
-
 /mob/living/carbon/human/species
 	var/race = null
 	var/use_random_name = TRUE
@@ -1084,9 +1060,6 @@
 
 /mob/living/carbon/human/species/moth
 	race = /datum/species/moth
-
-/mob/living/carbon/human/species/ipc
-	race = /datum/species/ipc
 
 /mob/living/carbon/human/species/mush
 	race = /datum/species/mush

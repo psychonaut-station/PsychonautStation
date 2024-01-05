@@ -1066,26 +1066,6 @@
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
 
-/datum/techweb_node/ipc
-	id = "ipc"
-	display_name = "IPC Construction"
-	description = "Humanoid robotic creatures with monitors in their heads."
-	prereq_ids = list("adv_robotics")
-	design_ids = list(
-		"ipc_head",
-		"ipc_chest",
-		"ipc_l_arm",
-		"ipc_r_arm",
-		"ipc_l_leg",
-		"ipc_r_leg",
-		"ipc_suit",
-		"ipc_monitor",
-		"ipc_stomach",
-		"ipc_heart",
-		"ipc_voltprotector",
-	)
-	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2500)
-
 /datum/techweb_node/ai_adv
 	id = "ai_adv"
 	display_name = "Advanced Artificial Intelligence"

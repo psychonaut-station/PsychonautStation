@@ -1,5 +1,6 @@
 import { useBackend } from '../backend';
 import {
+  Box,
   Button,
   Collapsible,
   Flex,
@@ -7,10 +8,9 @@ import {
   NoticeBox,
   Section,
   Slider,
-  Box,
 } from '../components';
-import { Window } from '../layouts';
 import { formatPower } from '../format';
+import { Window } from '../layouts';
 
 export const BluespaceTap = (props, context) => {
   const { act, data } = useBackend(context);

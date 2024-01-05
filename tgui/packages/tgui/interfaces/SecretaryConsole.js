@@ -1,5 +1,5 @@
 import { useBackend } from '../backend';
-import { Box, NoticeBox, Button } from '../components';
+import { Box, Button, NoticeBox } from '../components';
 import { Window } from '../layouts';
 
 export const SecretaryConsole = (props, context) => {

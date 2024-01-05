@@ -94,9 +94,6 @@
 	message_mime = "screeches silently."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = FALSE
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
-	only_forced_audio = TRUE
-#endif
 
 /datum/emote/living/carbon/human/scream/screech/should_play_sound(mob/user, intentional)
 	if(ismonkey(user))

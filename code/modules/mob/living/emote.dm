@@ -345,10 +345,6 @@
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	mob_type_blacklist_typecache = list(/mob/living/carbon/human) //Humans get specialized scream.
-	// sound callback stays alive when mob gets destroyed by unit tests
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
-	only_forced_audio = TRUE
-#endif
 
 /datum/emote/living/scream/select_message_type(mob/user, message, intentional)
 	. = ..()

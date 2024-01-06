@@ -14,7 +14,7 @@
 	var/obj/item/surgery_tool = parent
 	surgery_tool.item_flags |= ITEM_HAS_CONTEXTUAL_SCREENTIPS
 
-/datum/component/surgery_initiator/Destroy(force, silent)
+/datum/component/surgery_initiator/Destroy(force)
 	last_user_ref = null
 	surgery_target_ref = null
 
@@ -96,8 +96,6 @@
 			if(surgery.requires_bodypart_type && !(affecting.bodytype & surgery.requires_bodypart_type))
 				continue
 			if((surgery.surgery_flags & SURGERY_REQUIRES_REAL_LIMB) && (affecting.bodypart_flags & BODYPART_PSEUDOPART))
-				continue
-			if((surgery.surgery_flags & SURGERY_SELF_OPERABLE) && (carbon_target == user) && (affecting.bodytype & BODYTYPE_IPC))
 				continue
 		else if(carbon_target && (surgery.surgery_flags & SURGERY_REQUIRE_LIMB)) //mob with no limb in surgery zone when we need a limb
 			continue

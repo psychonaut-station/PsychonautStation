@@ -56,9 +56,6 @@
 #define DNA_MOTH_MARKINGS_BLOCK 13
 #define DNA_MUSHROOM_CAPS_BLOCK 14
 #define DNA_POD_HAIR_BLOCK 15
-#define DNA_IPC_MONITOR_BLOCK 16
-#define DNA_IPC_CHASSIS_BLOCK 17
-
 #define DNA_FEATURE_BLOCKS 17
 
 #define DNA_SEQUENCE_LENGTH 4
@@ -101,7 +98,6 @@
 #define ORGAN_SLOT_EXTERNAL_ANTENNAE "antennae"
 #define ORGAN_SLOT_EXTERNAL_BODYMARKINGS "bodymarkings"
 #define ORGAN_SLOT_EXTERNAL_POD_HAIR "pod_hair"
-#define ORGAN_SLOT_EXTERNAL_IPC_MONITOR "ipc_monitor"
 
 /// Xenomorph organ slots
 #define ORGAN_SLOT_XENO_ACIDGLAND "acid_gland"

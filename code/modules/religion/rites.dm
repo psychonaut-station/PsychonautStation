@@ -545,7 +545,7 @@
 			return FALSE
 
 		raise_target = r_target
-		raise_target.notify_ghost_cloning("Your soul is being summoned back to your body by mystical power!", source = src)
+		raise_target.notify_revival("Your soul is being summoned back to your body by mystical power!", source = src)
 		return ..()
 
 /datum/religion_rites/raise_dead/invoke_effect(mob/living/user, atom/movable/religious_tool)
@@ -637,7 +637,7 @@
 	var/turf/altar_turf = get_turf(religious_tool)
 	new /obj/effect/temp_visual/bluespace_fissure(altar_turf)
 	user.visible_message("<span class'notice'>A tear in reality appears above the altar!</span>")
-	var/list/candidates = poll_ghost_candidates("Do you wish to be summoned as a Holy Carp?", ROLE_SENTIENCE, null, 10 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
+	var/list/candidates = SSpolling.poll_ghost_candidates("Do you wish to be summoned as a Holy Carp?", ROLE_SENTIENCE, null, 10 SECONDS, POLL_IGNORE_SENTIENCE_POTION)
 	if(!length(candidates))
 		new /obj/effect/gibspawner/generic(altar_turf)
 		user.visible_message("<span class='warning'>The carp pool was not strong enough to bring forth a space carp.")

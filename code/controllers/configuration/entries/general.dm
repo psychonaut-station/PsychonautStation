@@ -324,8 +324,8 @@
 /datum/config_entry/string/wikiurl
 	default = "http://www.tgstation13.org/wiki"
 
-/datum/config_entry/string/websiteurl
-	default = "http://www.psychonautstation.com"
+/datum/config_entry/string/patreonurl
+	default = "https://www.patreon.com/PsychonautStation"
 
 /datum/config_entry/string/rulesurl
 	default = "http://www.psychonautstation.com/rules"

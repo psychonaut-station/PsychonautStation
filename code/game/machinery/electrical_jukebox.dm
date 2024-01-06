@@ -119,12 +119,12 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 /obj/machinery/electrical_jukebox/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/electrical_jukebox/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity < max_integrity)
 		if(!tool.tool_start_check(user, amount = 1))
-			return TOOL_ACT_TOOLTYPE_SUCCESS
+			return ITEM_INTERACT_SUCCESS
 		user.visible_message( \
 			span_notice("[user] starts to repair [src]."), \
 			span_notice("You begin repairing [src]..."), \
@@ -138,7 +138,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 			update_appearance()
 	else
 		to_chat(user, span_notice("[src] doesn't need repairing."))
-	return TOOL_ACT_TOOLTYPE_SUCCESS
+	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/electrical_jukebox/on_set_is_operational(old_value)
 	. = ..()

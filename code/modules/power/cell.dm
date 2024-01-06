@@ -20,12 +20,12 @@
 	throw_speed = 2
 	throw_range = 5
 	w_class = WEIGHT_CLASS_SMALL
+	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
+	grind_results = list(/datum/reagent/lithium = 15, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
 	///Current charge in cell units
 	var/charge = 0
 	///Maximum charge in cell units
 	var/maxcharge = STANDARD_CELL_CHARGE
-	custom_materials = list(/datum/material/iron=SMALL_MATERIAL_AMOUNT*7, /datum/material/glass=SMALL_MATERIAL_AMOUNT*0.5)
-	grind_results = list(/datum/reagent/lithium = 15, /datum/reagent/iron = 5, /datum/reagent/silicon = 5)
 	///If the cell has been booby-trapped by injecting it with plasma. Chance on use() to explode.
 	var/rigged = FALSE
 	///If the power cell was damaged by an explosion, chance for it to become corrupted and function the same as rigged.
@@ -256,33 +256,6 @@
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))
 			return
-		if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ipc))
-			var/obj/item/organ/internal/stomach/ipc/stomach = maybe_stomach
-			if(!stomach.cell)
-				return
-			var/obj/item/stock_parts/cell/ipccell = stomach.cell
-			var/charge_limit = ipccell.maxcharge - CELL_POWER_GAIN
-			if((stomach.drain_time > world.time) || !stomach)
-				return
-			if(charge < CELL_POWER_DRAIN)
-				to_chat(H, span_warning("[src] doesn't have enough power!"))
-				return
-			if(ipccell.charge > charge_limit)
-				to_chat(H, span_warning("Your charge is full!"))
-				return
-			to_chat(H, span_notice("You begin clumsily channeling power from [src] into your body."))
-			stomach.drain_time = world.time + CELL_DRAIN_TIME
-			if(do_after(user, CELL_DRAIN_TIME, target = src))
-				if((charge < CELL_POWER_DRAIN) || (ipccell.charge > charge_limit))
-					return
-				if(istype(stomach))
-					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
-					stomach.adjust_charge(CELL_POWER_GAIN + 440)
-					charge -= CELL_POWER_DRAIN
-				else
-					to_chat(H, span_warning("You can't receive charge from [src]!"))
-			return
-
 
 /obj/item/stock_parts/cell/blob_act(obj/structure/blob/B)
 	SSexplosions.high_mov_atom += src

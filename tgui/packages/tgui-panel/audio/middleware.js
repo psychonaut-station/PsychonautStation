@@ -66,7 +66,7 @@ export const audioMiddleware = (store) => {
           store.dispatch({
             type: 'audio/jukebox/stopped',
             payload: { jukeboxId },
-          })
+          }),
         );
         player.play(url, options, volume);
       }

@@ -369,6 +369,17 @@
 		else
 			. += uppertext(c)
 
+/proc/locale_lowertext(t)
+	. = ""
+	for(var/c in text2charlist(t))
+		switch(c)
+			if("\u0130")  // İ
+				. += "\u0069" // i
+			if("\u0049")  // I
+				. += "\u0131"  // ı
+			else
+				. += lowertext(c)
+
 /proc/stringmerge(text,compare,replace = "*")
 //This proc fills in all spaces with the "replace" var (* by default) with whatever
 //is in the other string at the same spot (assuming it is not a replace char).

@@ -79,7 +79,9 @@
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = TRUE
-	audio_cooldown = 15 SECONDS
+#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
+	only_forced_audio = TRUE
+#endif
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
 	if(!istype(user))

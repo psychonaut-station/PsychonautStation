@@ -14,11 +14,11 @@
 		to_chat(src, span_danger("The wiki URL is not set in the server configuration."))
 	return
 
-/client/verb/website()
-	set name = "website"
-	set desc = "Website'yi ziyaret et"
+/client/verb/patreon()
+	set name = "patreon"
+	set desc = "Destek ol"
 	set hidden = TRUE
-	var/weburl = CONFIG_GET(string/websiteurl)
+	var/weburl = CONFIG_GET(string/patreonurl)
 	if(weburl)
 		src << link(weburl)
 	else

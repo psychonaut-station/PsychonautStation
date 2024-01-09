@@ -153,8 +153,10 @@
   - bugfix: fixed an /image hard del in ghost code
   - bugfix: fixed a runtime in datum/thrownthing
   - code_imp: progressbars no longer qdel their /image
-2024-01-07:
+2024-01-06:
   13spacemen:
+  - qol: The hub entry shows the next map and shuttle time, and no longer shows the
+      alert
   - qol: Ghosts can now view Wanted Status and Sec Records by examining people
   Melbert:
   - bugfix: Strong arm implant users can shove more correctly.
@@ -168,8 +170,6 @@
       not change the options
   WarlockD:
   - bugfix: Queen bee's made with cytology now work
-  exdal:
-  - bugfix: biogenerator ui duzeltildi
   intercepti0n:
   - image: resprited onmob cone icon.
   jlsnow301:
@@ -183,6 +183,7 @@
   - bugfix: After a raid on the local drug mafia in the sector by TerraGov, the Russian
       Mobsters no longer have access to easy drugs and as a result are no longer 24/7
       running faster than the average spaceman.
+  - bugfix: the eZ-13 MK2 heavy pulse rifle does damage again
   - bugfix: you can use your hand to make minebots go into combat mode again
   necromanceranne:
   - spellcheck: Corrects every misspelled 'kenetic' in the codebase.
@@ -191,3 +192,51 @@
   - code_imp: adds context to image hard dels to make them easier to track
   - bugfix: fixes an /image harddel in station blueprints
   - code_imp: cleaned up some more /image qdels
+2024-01-07:
+  13spacemen:
+  - bugfix: Hub shuttle time works correctly
+  LT3:
+  - bugfix: Morgue trays and freezing temperatures will no longer husk bodies
+  - bugfix: Organs outside bodies will properly receive cold damage
+  Mothblocks:
+  - balance: Instead of too much damage to the head beheading someone, it will now
+      split their skull in half. While their skull is open, you can rip out their
+      eyes with your hands. and they will spill their brain out of their head if they
+      slip.
+  - balance: The Path of Blades ascension will accept either a beheaded person, or
+      someone with their skull split open.
+  - rscdel: Removed the beheading objectives from traitor.
+  exdal:
+  - bugfix: Papers no longer crash tgui
+  - bugfix: Biogenerator no longer crash tgui
+2024-01-08:
+  13spacemen:
+  - bugfix: Jumping to C4 via ghost notification works again
+  DrDiasyl:
+  - qol: It is now possible to craft more Security bio suits
+  - qol: Bio-emergency crate from Cargo now contains a box of latex gloves and sterile
+      masks
+  Ghommie:
+  - bugfix: fixed coupon codes with expiration times.
+  - bugfix: Fixed H.A.R.S. fucking up the brains a little.
+  Majkl-J:
+  - bugfix: spasm_animation now correctly resets the transform, as it should
+  - bugfix: Spamming the weld on a robotic part no longer drains the fuel
+  Thunder12345:
+  - bugfix: The clown planet biodome and virtual domain can now be completed without
+      slipping directly into the exit.
+  fIoppie:
+  - qol: Cargo techs can now access the windoor in the delivery office on Delta.
+  jlsnow301:
+  - bugfix: Comms console should now update as you type.
+  mc-oofert:
+  - bugfix: vents that are turned off dont replay their animation if you go out of
+      sight and back in
+  - bugfix: adds missing navigation landmarks to tramstation
+  scriptis:
+  - refactor: some very large tgui lists (air alarms, all recipes techfab view, techweb
+      view) are loaded on-demand as you scroll, making them not lag so hard
+2024-01-09:
+  Melbert:
+  - bugfix: '"The sister and He Who Wept" Heretic painting will no longer cause big
+      lag'

@@ -151,8 +151,6 @@ GLOBAL_LIST(admin_objective_list) //Prefilled admin assignable objective list
 			continue
 		if(!is_unique_objective(possible_target,dupe_search_range))
 			continue
-		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
-			continue
 		if(possible_target in blacklist)
 			continue
 		if(!is_valid_target(possible_target))

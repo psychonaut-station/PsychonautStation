@@ -244,3 +244,9 @@
   Chubbygummibear:
   - bugfix: popup screen locs will work on clients >1614. Security cameras and Spyglass
       will work
+2024-01-18:
+  Seefaaa:
+  - rscadd: "Oyun kartlar\u0131n\u0131 sonraki rounda saklaman\u0131z\u0131 sa\u011F\
+      layan yeni quirk Koleksiyoncu."
+  exdal:
+  - bugfix: Antag objektifleri duzeltildi

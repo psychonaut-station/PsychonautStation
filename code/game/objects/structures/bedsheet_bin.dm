@@ -336,7 +336,7 @@ LINEN BINS
 /obj/item/bedsheet/ian
 	icon_state = "sheetian"
 	inhand_icon_state = "sheetian"
-	dream_messages = list("bir köpek", "bir tilki"
+	dream_messages = list("bir köpek", "bir tilki")
 
 /obj/item/bedsheet/cosmos
 	name = "cosmic space bedsheet"

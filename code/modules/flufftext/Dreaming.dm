@@ -126,13 +126,14 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	if(prob(50))
 		if(prob(35))
 			fragment += "[pick(GLOB.adverbs)] "
-		fragment += pick(GLOB.ing_verbs)
-	else
-		fragment += "will "
-		fragment += pick(GLOB.verbs)
+	//	fragment += pick(GLOB.ing_verbs)
+	//else
+	//	fragment += "will "
+	//	fragment += pick(GLOB.verbs)
 	. += fragment
 
 	if(prob(25))
+		. += "görüyorsun"
 		return
 
 	//Object
@@ -158,9 +159,9 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 
 /datum/dream/hear_something/GenerateDream(mob/living/carbon/dreamer)
 	. = ..()
-	. += pick("you wind up a toy", "you hear something strange", "you pick out a record to play", "you hit shuffle on your music player")
+	. += pick("bir oyuncak ile oynuyorsun", "garip bir şey duyuyorsun", "kasedi alıyorsun ve oynata basıyorsun")
 	. += CALLBACK(src, PROC_REF(PlayRandomSound))
-	. += "it reminds you of something"
+	. += "sana bir şeyi anımsatıyor"
 
 /datum/dream/hear_something/OnDreamEnd(mob/living/carbon/dreamer)
 	. = ..()
@@ -175,7 +176,7 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	var/sound/random_sound = sound(pick(SSsounds.all_sounds), channel=reserved_sound_channel)
 	random_sound.status = SOUND_STREAM
 	SEND_SOUND(dreamer, random_sound)
-	return "you hear something you weren't expecting!"
+	return "beklemediğin anda bir ses duyuyorsun"
 
 /datum/dream/hear_something/proc/StopSound(mob/living/carbon/dreamer)
 	SEND_SOUND(dreamer, sound(channel=reserved_sound_channel))

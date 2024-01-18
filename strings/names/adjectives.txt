@@ -1,23 +1,19 @@
-bolluk
+bol
 sevimli
 maceracı
 agresif
 hoş
-uyarı
 canlı
-eğlenerek
 antik
-sinirli
 sinirli
 sinir bozucu
 endişeli
 kibirli
-utanmış
+utanç verici
 çekici
-ortalama
 berbat
 kötü
-Güzel
+güzel
 daha iyi
 şaşkın
 büyük
@@ -25,31 +21,27 @@ acı
 siyah
 kanlı
 mavi
-Mavi gözlü
-kızarma
-kaynamak
+mavi gözlü
+kızarmış
+kaynamış
 sıkılmış
 zeki
 cesur
-kırılabilir
+kırgın
 havadar
-kısa bilgi
+kısa
 parlak
 kalın
 kırık
-pürtüklü görünüm
-Meşgul
-sakinlik
-dikkatli olmak
+meşgul
+sakin
 dikkatli
 alımlı
 neşeli
 soğuk
 hantal
 temiz
-temizlemek
 akıllı
-bulutlu
 sakar
 soğuk
 renkli
@@ -58,22 +50,18 @@ kavgacı
 rahat
 endişeli
 kınandı
-kafası karışmış
-soğutma
-Serin
-kooperatif
+soğuk
+serin
 cesur
 deli
-çılgınca çıldırmış
+çılgın
 ürpertici
 çarpık
-kalabalık
 acımasız
-sevimli
 meraklı
 kıvırcık
 kavisli
-Sevimli
+sevimli
 hasarlı
 nemli
 tehlikeli
@@ -90,12 +78,10 @@ azimli
 farklı
 zor
 kirli
-iğrenmiş
+iğrenç
 belirgin
 rahatsız
-başı dönmek
 şüpheli
-sıkıcı
 kuru
 sıkıcı
 tozlu
@@ -115,19 +101,16 @@ fenalık
 heyecanlı
 masraflı
 coşkulu
-bayılmak
+bayık
 adil
 sadık
 ünlü
 süslü
 fantastik
 hızlı
-yağ
-bir kaç
 şiddetli
 pis
 iyi
-pul pul
 düz
 kabarık
 çırpınan
@@ -135,9 +118,9 @@ aptalca
 kırılgan
 zayıf
 çılgın
-donmak
+donmuş
 taze
-arkadaşça
+arkadaşçıl
 korkmuş
 eğlenceli
 bulanık
@@ -147,36 +130,23 @@ devasa
 göz alıcı
 parıldayan
 muhteşem
-iyi
-muhteşem
 zarif
 yapışkan
-Harika
+harika
 kederli
-grotesk
-pis
-huysuz
-Yakışıklı
+yakışıklı
 mutlu
-zor
 sert
 sağlıklı
 ağır
 yardımsever
 çaresiz
-yüksek
-yüksek perdeli
 gülünç
-tıslama
 oyuk
 evsiz
 sade
-berbat
 sıcak
-büyük
 aç
-acıtmak
-sessiz
 boğuk
 buzlu
 hasta
@@ -185,82 +155,47 @@ engin
 imkansız
 ucuz
 masum
-meraklı
 kaşıntılı
-kıskanç
-gergin
-neşeli
-neşeli
 sulu
-tür
-büyük
 geç
 tembel
-ışık
-biraz
 canlı
 yalnız
-uzun
-gevşetmek
-yüksek sesle
-sevimli
-Düşük
+gevşek
+düşük
 şanslı
-muhteşem
-mamut
-birçok
 cüsseli
 melodik
 erimiş
 minyatür
 sisli
-inilti
 modern
 hareketsiz
-Bulanık
 duygusal
-sesini kapatmak
 gizemli
 dar
 edepsiz
 yaramaz
-gergin
-Güzel
 gürültülü
 çeşitli
 besleyici
-çılgın
-itaatkâr
-iğrenç
-garip
+itaatkar
 eskimiş
-eski moda
 açık
-çirkin
 üstün
-panikli
 mükemmel
 minyon
-ova
-plastik
 güzel
 dengeli
 fakir
-güçlü
 değerli
 dikenli
-gurur duymak
 cılız
 hırıltı
-şaşkın
 antika
-hızlı
-sessizlik
-yağmurlu
 ani
 hırçın
 gerçek
-rahatlamak
 itici
 yankılanan
 zengin
@@ -271,15 +206,12 @@ yuvarlak
 tuzlu
 korkutucu
 dağınık
-sıska
 cırtlak
 bencil
 tüylü
 titrek
 sığ
 keskin
-parlak
-titreme
 kısa
 tiz
 utangaç
@@ -294,10 +226,8 @@ yavaş
 küçük
 gülümseyen
 dumanlı
-düz
 yumuşak
 sağlam
-yara
 ekşi
 köpüklü
 baharatlı
@@ -306,9 +236,7 @@ lekesiz
 kare
 ciyaklayan
 bayat
-sabit durmak
 dik
-yapışkan
 fırtınalı
 dümdüz
 garip
@@ -316,53 +244,40 @@ güçlü
 aptal
 varlıklı
 başarılı
-Süper
+süper
 tatlı
 süratli
 yetenekli
 uzun
-ehlileştirmek
-turta
-Tat/Dokunma
 tatsız
-lezzetli
 ufacık
 minnacık
-sunmak
-gergin
 korkunç
 huysuz
-müteşekkir
 susuz
 düşünceli
 düşüncesiz
 gürleyen
 sıkı
 minik
-yorgun
 zorlu
 sorunlu
-en çirkin
-çirkin
 düzensiz
 ilgisiz
 çirkin
 olağan dışı
 üzgün
 gergin
-büyüklük
 muzaffer
-canlı
 sessiz
-Gezinmek
+gezinmek
 ılık
 zayıf
 yorgun
 ıslak
-Fısıldayan
+fısıldayan
 kötü
 geniş
-geniş gözlü
 vahşi
 esprili
 müthiş
@@ -370,6 +285,3 @@ ahşap
 endişeli
 yanlış
 genç
-lezzetli
-çılgın
-hevesli

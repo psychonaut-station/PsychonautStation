@@ -108,7 +108,6 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		custom_dream_nouns += sheet.dream_messages
 
 	. = list()
-	. += "you see"
 
 	//Subject
 	if(custom_dream_nouns.len && prob(90))
@@ -120,8 +119,6 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		fragment = replacetext(fragment, "%ADJECTIVE%", pick(GLOB.adjectives))
 	else
 		fragment = replacetext(fragment, "%ADJECTIVE% ", "")
-	if(findtext(fragment, "%A% "))
-		fragment = "\a [replacetext(fragment, "%A% ", "")]"
 	. += fragment
 
 	//Verb
@@ -145,9 +142,9 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		fragment = replacetext(fragment, "%ADJECTIVE%", pick(GLOB.adjectives))
 	else
 		fragment = replacetext(fragment, "%ADJECTIVE% ", "")
-	if(findtext(fragment, "%A% "))
-		fragment = "\a [replacetext(fragment, "%A% ", "")]"
 	. += fragment
+
+	. += "görüyorsun"
 
 /// Dream plays a random sound at you, chosen from all sounds in the folder
 /datum/dream/hear_something

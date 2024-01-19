@@ -122,18 +122,17 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	. += fragment
 
 	//Verb
-	fragment = ""
-	if(prob(50))
-		if(prob(35))
-			fragment += "[pick(GLOB.adverbs)] "
-	//	fragment += pick(GLOB.ing_verbs)
-	//else
-	//	fragment += "will "
-	//	fragment += pick(GLOB.verbs)
-	. += fragment
+	// fragment = ""
+	// if(prob(50))
+	// 	if(prob(35))
+	// 		fragment += "[pick(GLOB.adverbs)] "
+	// 	fragment += pick(GLOB.ing_verbs)
+	// else
+	// 	fragment += "will "
+	// 	fragment += pick(GLOB.verbs)
+	// . += fragment
 
 	if(prob(25))
-		. += "görüyorsun"
 		return
 
 	//Object

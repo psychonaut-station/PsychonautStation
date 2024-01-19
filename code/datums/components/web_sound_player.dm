@@ -126,7 +126,7 @@ GLOBAL_VAR_INIT(youtubedl_regex, regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|
 			for(var/mob/living/listener in listeners)
 				listener.apply_status_effect(status_effect)
 
-	if(track && world.time - track_started_at > track.duration)
+	if(track && world.time - track_started_at >= track.duration)
 		stop()
 		SEND_SIGNAL(src, COMSIG_WEB_SOUND_ENDED, track, loop)
 		if(loop)

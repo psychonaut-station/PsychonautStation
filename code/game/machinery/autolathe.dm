@@ -188,8 +188,9 @@
 		return
 	build_count = clamp(build_count, 1, 50)
 
+	var/is_stack_recipe = ispath(design.build_path, /obj/item/stack)
 	var/list/materials_per_item = list()
-	var/material_cost_coefficient = ispath(design.build_path, /obj/item/stack) ? 1 : creation_efficiency
+	var/material_cost_coefficient = is_stack_recipe ? 1 : creation_efficiency
 	for(var/datum/material/material as anything in design.materials)
 		var/amount_needed = design.materials[material] * material_cost_coefficient
 		if(istext(material)) // category
@@ -228,41 +229,76 @@
 		say("Not enough power in local network to begin production.")
 		return
 
-	var/build_time_per_item = design.construction_time * creation_efficiency * design.lathe_time_factor
-	materials.use_materials(materials_per_item, multiplier = build_count) // see above comment about coefficient
-	start_making(design, build_count, ui.user, build_time_per_item, materials_per_item)
+	var/total_time = (design.construction_time * design.lathe_time_factor * build_count) ** 0.8
+	var/time_per_item = total_time / build_count
+	start_making(design, build_count, ui.user, time_per_item, materials_per_item)
 	return TRUE
 
 /// Begins the act of making the given design the given number of items
 /// Does not check or use materials/power/etc
 /obj/machinery/autolathe/proc/start_making(datum/design/design, build_count, mob/user, build_time_per_item, list/materials_per_item)
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 
 	busy = TRUE
 	icon_state = "autolathe_n"
 	update_static_data_for_all_viewers()
 
-	for(var/idx in 1 to build_count)
-		addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item), build_time_per_item * idx)
-	addtimer(CALLBACK(src, PROC_REF(finalize_build)), (build_time_per_item * build_count) + 1)
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item, build_time_per_item, build_count), build_time_per_item)
 
 /// Callback for start_making, actually makes the item
 /// Called using timers started by start_making
-/obj/machinery/autolathe/proc/do_make_item(datum/design/design, list/materials_per_item)
-	PRIVATE_PROC(TRUE)
+/obj/machinery/autolathe/proc/do_make_item(datum/design/design, list/materials_per_item, time_per_item, items_remaining)
+	PROTECTED_PROC(TRUE)
+
+	if(!items_remaining) // how
+		finalize_build()
+		return
+
+	if(!is_operational)
+		say("Unable to continue production, power failure.")
+		finalize_build()
+		return
+
+	var/is_stack = ispath(design.build_path, /obj/item/stack)
+	if(!materials.has_materials(materials_per_item, multiplier = is_stack ? items_remaining : 1))
+		say("Unable to continue production, missing materials.")
+		return
+	materials.use_materials(materials_per_item, multiplier = is_stack ? items_remaining : 1)
+
 	var/turf/target = get_step(src, drop_direction)
 	if(isclosedturf(target))
 		target = get_turf(src)
-	var/atom/movable/created = new design.build_path(design.build_path)
-	created.set_custom_materials(materials_per_item.Copy())
+
+	var/atom/movable/created
+	if(is_stack)
+		created = new design.build_path(target, items_remaining)
+	else
+		created = new design.build_path(target)
+		created.set_custom_materials(materials_per_item.Copy())
+
+	created.pixel_x = created.base_pixel_x + rand(-6, 6)
+	created.pixel_y = created.base_pixel_y + rand(-6, 6)
+	for(var/atom/movable/content in created)
+		content.set_custom_materials(list()) // no
 	created.forceMove(target)
 
+	if(is_stack)
+		items_remaining = 0
+	else
+		items_remaining -= 1
+
+	if(!items_remaining)
+		finalize_build()
+		return
+	addtimer(CALLBACK(src, PROC_REF(do_make_item), design, materials_per_item, time_per_item, items_remaining), time_per_item)
+
 /// Resets the icon state and busy flag
-/// Called using a timer started by start_making which is set to run one tick after the last item is made
+/// Called at the end of do_make_item's timer loop
 /obj/machinery/autolathe/proc/finalize_build()
-	PRIVATE_PROC(TRUE)
+	PROTECTED_PROC(TRUE)
 	icon_state = initial(icon_state)
 	busy = FALSE
+	update_static_data_for_all_viewers()
 
 /obj/machinery/autolathe/crowbar_act(mob/living/user, obj/item/tool)
 	if(default_deconstruction_crowbar(tool))

@@ -473,6 +473,7 @@
   - bugfix: Monkeys don't get stuck on obstacles as often.
   Ghommie:
   - image: The "One Lean, Mean, Cleaning Machine" achievement now has its own icon.
+  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
   Momo8289, Pepsilawn, Sinsinins, JohnFulpWillard:
   - bugfix: Clown ops now get a code set for their nuke.
   Seefaaa:
@@ -489,8 +490,6 @@
   FlufflesTheDog:
   - bugfix: Certain areas are now properly protected against grid check. Namely the
       supermatter should consistently be protected.
-  Ghommie:
-  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
   IndieanaJones:
   - bugfix: Dynamic midround rolls will properly consider roundstart players as part
       of the living population again, allowing antagonists with a minimum population

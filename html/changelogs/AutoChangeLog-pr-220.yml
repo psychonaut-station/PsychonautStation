@@ -1,0 +1,4 @@
+author: "exdal"
+delete-after: True
+changes:
+  - admin: "Interviewlar artik tgs araciligi ile loglaniyor"

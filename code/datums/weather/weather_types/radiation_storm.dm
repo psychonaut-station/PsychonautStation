@@ -23,6 +23,8 @@
 							/area/shuttle, /area/station/security/prison/safe, /area/station/security/prison/toilet, /area/icemoon/underground)
 	target_trait = ZTRAIT_STATION
 
+	probability = 0
+
 	immunity_type = TRAIT_RADSTORM_IMMUNE
 	/// Chance we get a negative mutation, if we fail we get a positive one
 	var/negative_mutation_chance = 90

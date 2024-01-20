@@ -312,10 +312,10 @@
 	name = "Radiation Stormfront"
 	report_message = "A radioactive stormfront is passing through your station's system. Expect an increased likelihood of radiation storms passing over your station, as well the potential for multiple radiation storms to occur during your shift."
 	trait_type = STATION_TRAIT_NEGATIVE
-	weight = 2
+	weight = 0
 	event_control_path = /datum/round_event_control/radiation_storm
 	weight_multiplier = 1.5
-	max_occurrences_modifier = 2
+	max_occurrences_modifier = 0
 
 /datum/station_trait/random_event_weight_modifier/dust_storms
 	name = "Dust Stormfront"

@@ -407,11 +407,6 @@
   - code_imp: removed the timeout_mod arg from add_mood_event, which was only used
       for one thing and causes more issues than it's worth
 2024-01-18:
-  Seefaaa:
-  - rscadd: "Oyun kartlar\u0131n\u0131 sonraki rounda saklaman\u0131z\u0131 sa\u011F\
-      layan yeni quirk Koleksiyoncu."
-  exdal:
-  - bugfix: Antag objektifleri duzeltildi
   00-Steven:
   - bugfix: Immobile shells no longer work regardless of anchor state if you put the
       circuit in while it's unanchored.
@@ -458,6 +453,11 @@
   JohnFulpWillard:
   - refactor: Implant pads now use TGUI
   - refactor: Ice cream vats now use a radial menu instead of an HTML one.
+  Seefaaa:
+  - rscadd: "Oyun kartlar\u0131n\u0131 sonraki rounda saklaman\u0131z\u0131 sa\u011F\
+      layan yeni quirk Koleksiyoncu."
+  exdal:
+  - bugfix: Antag objektifleri duzeltildi
   intercepti0n:
   - refactor: Refactored Ore Silo Ui.
   mc-oofert:
@@ -469,15 +469,6 @@
   Ben10Omintrix:
   - bugfix: fix a runtime when loading ghosts to a mulebot
 2024-01-20:
-  Diamond-74:
-  - bugfix: Monkeys don't get stuck on obstacles as often.
-  Ghommie:
-  - image: The "One Lean, Mean, Cleaning Machine" achievement now has its own icon.
-  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
-  Momo8289, Pepsilawn, Sinsinins, JohnFulpWillard:
-  - bugfix: Clown ops now get a code set for their nuke.
-  Seefaaa:
-  - bugfix: "Jukebox \u015Fark\u0131 bitti\u011Finde tak\u0131l\u0131 kalmayacak."
   13spacemen:
   - qol: If you can't heal a body part, you won't get a healing time delay. No more
       spending 5 seconds healing a body part only to get a "can't heal that" message.
@@ -487,9 +478,14 @@
   Chubbygummibear:
   - bugfix: popup screen locs will work on clients >1614. Security cameras and Spyglass
       will work
+  Diamond-74:
+  - bugfix: Monkeys don't get stuck on obstacles as often.
   FlufflesTheDog:
   - bugfix: Certain areas are now properly protected against grid check. Namely the
       supermatter should consistently be protected.
+  Ghommie:
+  - image: The "One Lean, Mean, Cleaning Machine" achievement now has its own icon.
+  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
   IndieanaJones:
   - bugfix: Dynamic midround rolls will properly consider roundstart players as part
       of the living population again, allowing antagonists with a minimum population
@@ -524,8 +520,12 @@
       are still immune to cult stun and cannot be converted by blood cultists.
   - bugfix: Carps now migrate slightly better, probably.
   - bugfix: And Poly now talks better, probably.
+  Momo8289, Pepsilawn, Sinsinins, JohnFulpWillard:
+  - bugfix: Clown ops now get a code set for their nuke.
   OrionTheFox:
   - image: Resprited a majority of undershirts
+  Seefaaa:
+  - bugfix: "Jukebox \u015Fark\u0131 bitti\u011Finde tak\u0131l\u0131 kalmayacak."
   SyncIt21:
   - bugfix: ejecting cells from microwaves via ctrl click now requires player proximity.
   - code_imp: smart fridge content overlay now uses `base_icon_state` instead of a
@@ -538,3 +538,34 @@
       pilot again.
   - bugfix: The various borg apparatuses can no longer pick up other internal borg
       tools.
+2024-01-21:
+  Ben10Omintrix:
+  - bugfix: fixes megafauna AI getting stuck attacking some corpses
+  JohnFulpWillard:
+  - bugfix: Prototype emitters now work.
+  - bugfix: Prototype emitters don't go invisible if screwdriver'd open.
+  - bugfix: Emitters no longer show up as their panel being closed when it is open.
+  LemonInTheDark:
+  - bugfix: The map saving tool will no longer lock up and prevent all further action
+      at random
+  - bugfix: Map saving now takes on the order of seconds, not minutes
+  - bugfix: Fixes an issue with lists that caused strongdmm to report saved maps as
+      broken
+  Melbert:
+  - bugfix: Items and mobs no longer hide behind big runes (heretic, cult, wizard)
+  Rex9001:
+  - bugfix: Lunatics spawned from moon ascension now actually have an objective to
+      assist their ringleader
+  - bugfix: Lunatics now get a moonlight amulette on the ground if they have full
+      hands
+  Rhials:
+  - spellcheck: Modifies some existing Emergency Shuttle prerequisite messages, and
+      adds some missing ones.
+  Zergspower:
+  - bugfix: fixes whispering formatting
+  exdal:
+  - admin: Interviewlar artik tgs araciligi ile loglaniyor
+  lizardqueenlexi:
+  - bugfix: Filled trash bags show up properly when worn.
+  mc-oofert:
+  - bugfix: cyborg inducer respects cell changes

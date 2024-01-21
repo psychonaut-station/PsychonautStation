@@ -57,7 +57,7 @@
 	return if_no_id
 
 //repurposed proc. Now it combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
-/mob/living/carbon/human/get_visible_name()
+/mob/living/carbon/human/get_visible_name(add_id_name = TRUE)
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
 		return "Unknown"
 	var/list/identity = list(null, null)
@@ -67,7 +67,7 @@
 	var/face_name = !isnull(signal_face) ? signal_face : get_face_name("")
 	var/id_name = !isnull(signal_id) ? signal_id : get_id_name("")
 	if(face_name)
-		if(id_name && (id_name != face_name))
+		if(add_id_name && id_name && (id_name != face_name))
 			return "[face_name] (as [id_name])"
 		return face_name
 	if(id_name)
@@ -83,7 +83,7 @@
 	if( head && (head.flags_inv&HIDEFACE) )
 		return if_no_face //Likewise for hats
 	var/obj/item/bodypart/O = get_bodypart(BODY_ZONE_HEAD)
-	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (O.brutestate+O.burnstate)>2 || cloneloss>50 || !real_name || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
+	if( !O || (HAS_TRAIT(src, TRAIT_DISFIGURED)) || (O.brutestate+O.burnstate)>2 || !real_name || HAS_TRAIT(src, TRAIT_INVISIBLE_MAN)) //disfigured. use id-name if possible
 		return if_no_face
 	return real_name
 
@@ -91,7 +91,7 @@
 //Useful when player is being seen by other mobs
 /mob/living/carbon/human/proc/get_id_name(if_no_id = "Unknown")
 	var/obj/item/storage/wallet/wallet = wear_id
-	var/obj/item/modular_computer/pda/pda = wear_id
+	var/obj/item/modular_computer/pda = wear_id
 	var/obj/item/card/id/id = wear_id
 	if(HAS_TRAIT(src, TRAIT_UNKNOWN))
 		. = if_no_id //You get NOTHING, no id name, good day sir
@@ -226,6 +226,73 @@
 	var/valid_scars = format_scars()
 	WRITE_FILE(F["scar[char_index]-[scar_index]"], sanitize_text(valid_scars))
 	WRITE_FILE(F["current_scar_index"], sanitize_integer(scar_index))
+
+/mob/living/carbon/human/proc/format_trading_cards()
+	var/trading_cards = ""
+	var/list/cards = list()
+	for(var/obj/item/tcgcard/card in gather_belongings())
+		if(!cards.Find(card))
+			trading_cards += "[card.format_card()];"
+			cards += card
+	return trading_cards
+
+/mob/living/carbon/human/proc/load_trading_card(card_line, specified_char_index, binder)
+	var/list/card_data = splittext(card_line, "|")
+	if(LAZYLEN(card_data) != TCG_SAVE_LENGTH)
+		return
+	var/version = text2num(card_data[TCG_SAVE_VERS])
+	if(!version || version != TCG_CURRENT_VERSION)
+		return
+	var/obj/item/tcgcard/card = new (get_turf(src), card_data[TCG_SAVE_SERIES], card_data[TCG_SAVE_ID])
+	card.forceMove(binder)
+	return TRUE
+
+/mob/living/carbon/human/proc/load_trading_cards(client/client_source)
+	if(!client_source.ckey || !mind?.original_character_slot_index || !has_quirk(/datum/quirk/item_quirk/collector))
+		return
+
+	var/path = "data/player_saves/[client_source.ckey[1]]/[client_source.ckey]/trading_cards.sav"
+	var/loaded_char_slot = client_source.prefs.default_slot
+
+	if(!loaded_char_slot || !fexists(path))
+		return FALSE
+	var/savefile/F = new /savefile(path)
+	if(!F)
+		return
+
+	var/char_index = mind.original_character_slot_index
+
+	var/cards_string = F["trading_card[char_index]"]
+	var/valid_cards = ""
+
+	var/card_lines = splittext(sanitize_text(cards_string), ";")
+	if(length(card_lines) > 0)
+		var/obj/item/storage/card_binder/binder = new (get_turf(src))
+		var/where = equip_in_one_of_slots(binder, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS), qdel_on_fail = FALSE, indirect_action = TRUE)
+
+		if(where == LOCATION_BACKPACK && back)
+			back.atom_storage.show_contents(src)
+
+		for(var/card_line in card_lines)
+			if(load_trading_card(card_line, char_index, binder))
+				valid_cards += "[card_line];"
+
+	WRITE_FILE(F["trading_card[char_index]"], sanitize_text(valid_cards))
+
+/mob/living/carbon/human/proc/save_trading_cards(nuke = FALSE)
+	if(!ckey || !mind?.original_character_slot_index || !has_quirk(/datum/quirk/item_quirk/collector))
+		return
+
+	var/path = "data/player_saves/[ckey[1]]/[ckey]/trading_cards.sav"
+	var/savefile/F = new /savefile(path)
+	var/char_index = mind.original_character_slot_index
+
+	if(nuke)
+		WRITE_FILE(F["trading_card[char_index]"], "")
+		return
+
+	var/trading_cards = format_trading_cards()
+	WRITE_FILE(F["trading_card[char_index]"], sanitize_text(trading_cards))
 
 ///Returns death message for mob examine text
 /mob/living/carbon/human/proc/generate_death_examine_text()

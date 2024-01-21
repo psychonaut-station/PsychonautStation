@@ -175,15 +175,15 @@ window "infowindow"
 		saved-params = "is-checked"
 		text = "Wiki"
 		command = "wiki"
-	elem "website"
+	elem "patreon"
 		type = BUTTON
 		pos = 320,5
 		size = 100x20
 		anchor1 = 50,0
 		anchor2 = 66,0
 		saved-params = "is-checked"
-		text = "Website"
-		command = "website"
+		text = "Patreon"
+		command = "patreon"
 	elem "github"
 		type = BUTTON
 		pos = 420,5

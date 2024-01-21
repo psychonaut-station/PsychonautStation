@@ -27,13 +27,11 @@
 /obj/item/storage/box/survival/PopulateContents()
 	if(crafted)
 		return
-	if(!isnull(mask_type) && !isipc(loc))
+	if(!isnull(mask_type))
 		new mask_type(src)
 
 	if(isplasmaman(loc))
 		new /obj/item/tank/internals/plasmaman/belt(src)
-	else if(isipc(loc))
-		new /obj/item/stock_parts/cell/high(src)
 	else
 		new internal_type(src)
 
@@ -59,10 +57,6 @@
 	var/obj/item/internals = locate(internal_type) in src
 	if(isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
 		new /obj/item/tank/internals/plasmaman/belt(src)
-		qdel(mask) // Get rid of the items that shouldn't be
-		qdel(internals)
-	else if(isipc(loc))
-		new /obj/item/stock_parts/cell/high(src)
 		qdel(mask) // Get rid of the items that shouldn't be
 		qdel(internals)
 	else

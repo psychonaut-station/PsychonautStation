@@ -114,13 +114,6 @@
 		if(!findname(.))
 			break
 
-/proc/random_unique_ipc_name(attempts_to_find_unique_name=10)
-	for(var/i in 1 to attempts_to_find_unique_name)
-		. = capitalize(ipc_name())
-
-		if(!findname(.))
-			break
-
 /proc/random_skin_tone()
 	return pick(GLOB.skin_tones)
 
@@ -660,11 +653,6 @@ GLOBAL_LIST_EMPTY(species_list)
 
 	if(isliving(occupant))
 		mob_occupant = occupant
-
-	else if(isbodypart(occupant))
-		var/obj/item/bodypart/head/head = occupant
-
-		mob_occupant = head.brainmob
 
 	else if(isorgan(occupant))
 		var/obj/item/organ/internal/brain/brain = occupant

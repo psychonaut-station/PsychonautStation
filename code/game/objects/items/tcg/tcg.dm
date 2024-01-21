@@ -177,6 +177,9 @@ GLOBAL_LIST_EMPTY(tcgcard_radial_choices)
 		icon_state = template.icon_state
 	flipped = !flipped
 
+/obj/item/tcgcard/proc/format_card()
+	return "[TCG_CURRENT_VERSION]|[series]|[id]"
+
 /**
  * A stack item that's not actually a stack because ORDER MATTERS with a deck of cards!
  * The "top" card of the deck will always be the bottom card in the stack for our purposes.

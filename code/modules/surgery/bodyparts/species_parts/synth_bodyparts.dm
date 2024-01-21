@@ -12,7 +12,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_l_arm"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -28,7 +27,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	disabling_threshold_percentage = 1
 
 /obj/item/bodypart/arm/right/synthetic
@@ -37,7 +36,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_r_arm"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -53,7 +51,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	disabling_threshold_percentage = 1
 
 /obj/item/bodypart/leg/left/synthetic
@@ -62,7 +60,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_l_leg"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -78,7 +75,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	disabling_threshold_percentage = 1
 
 /obj/item/bodypart/leg/left/synthetic/emp_act(severity)
@@ -95,7 +92,6 @@
 	limb_id = SPECIES_SYNTHETIC
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_r_leg"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -111,7 +107,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	disabling_threshold_percentage = 1
 
 /obj/item/bodypart/leg/right/synthetic/emp_act(severity)
@@ -128,7 +124,6 @@
 	desc = "A heavily reinforced case containing cyborg logic boards, with space for a standard power cell. Especially for synthetics."
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_chest"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -145,7 +140,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
 
 /obj/item/bodypart/chest/synthetic/emp_act(severity)
@@ -166,7 +161,6 @@
 	desc = "A standard reinforced braincase, with spine-plugged neural socket and sensor gimbals. Especially for synthetics."
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
-	flags_1 = CONDUCT_1
 	icon_state = "synth_head"
 	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
 	dmg_overlay_type = "robotic"
@@ -183,7 +177,7 @@
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
-	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT, CLONE = DEFAULT_CLONE_EXAMINE_TEXT)
+	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 
 /obj/item/bodypart/head/synthetic/emp_act(severity)
 	. = ..()

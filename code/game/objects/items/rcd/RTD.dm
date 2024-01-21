@@ -61,6 +61,10 @@
 	icon_state = initial(tile_type.icon_state)
 	cost = design["tile_cost"]
 
+	if(ispath(tile_type, /obj/item/stack/tile/carpet/neon))
+		var/obj/item/stack/tile/carpet/neon/neon_carpet = tile_type
+		icon_state += "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
+
 	tile_directions = design["tile_rotate_dirs"]
 	if(!tile_directions)
 		selected_direction = null

@@ -128,9 +128,6 @@
 		if(possible_target == generating_for)
 			continue
 
-		if (HAS_TRAIT(possible_target.current, TRAIT_PREVENT_ANTAG_OBJECTIVE))
-			continue
-
 		if(possible_target in already_targeting)
 			continue
 
@@ -278,7 +275,8 @@
 		return
 
 	var/list/possible_turfs = list()
-	for(var/turf/open/open_turf in dropoff_area)
+
+	for(var/turf/open/open_turf in dropoff_area.get_turfs_from_all_zlevels())
 		if(open_turf.is_blocked_turf() || isspaceturf(open_turf))
 			continue
 		possible_turfs += open_turf

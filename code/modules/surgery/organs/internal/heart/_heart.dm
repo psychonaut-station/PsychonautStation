@@ -33,7 +33,7 @@
 	. = ..()
 	icon_state = "[base_icon_state]-[beating ? "on" : "off"]"
 
-/obj/item/organ/internal/heart/Remove(mob/living/carbon/heartless, special = 0)
+/obj/item/organ/internal/heart/Remove(mob/living/carbon/heartless, special, movement_flags)
 	. = ..()
 	if(!special)
 		addtimer(CALLBACK(src, PROC_REF(stop_if_unowned)), 12 SECONDS)
@@ -119,7 +119,7 @@
 			SEND_SOUND(owner, sound('sound/health/fastbeat.ogg', repeat = TRUE, channel = CHANNEL_HEARTBEAT, volume = 40))
 			beat = BEAT_FAST
 
-	else if(beat == BEAT_SLOW)
+	else if(beat != BEAT_NONE)
 		owner.stop_sound_channel(CHANNEL_HEARTBEAT)
 		beat = BEAT_NONE
 
@@ -146,12 +146,14 @@
 	else
 		return ..()
 
-/obj/item/organ/internal/heart/cursed/on_insert(mob/living/carbon/accursed)
+/obj/item/organ/internal/heart/cursed/on_mob_insert(mob/living/carbon/accursed)
 	. = ..()
+
 	accursed.AddComponent(/datum/component/manual_heart, pump_delay = pump_delay, blood_loss = blood_loss, heal_brute = heal_brute, heal_burn = heal_burn, heal_oxy = heal_oxy)
 
-/obj/item/organ/internal/heart/cursed/Remove(mob/living/carbon/accursed, special = FALSE)
+/obj/item/organ/internal/heart/cursed/on_mob_remove(mob/living/carbon/accursed, special = FALSE)
 	. = ..()
+
 	qdel(accursed.GetComponent(/datum/component/manual_heart))
 
 /obj/item/organ/internal/heart/cybernetic
@@ -250,11 +252,3 @@
 		owner.heal_overall_damage(brute = 15, burn = 15, required_bodytype = BODYTYPE_ORGANIC)
 		if(owner.reagents.get_reagent_amount(/datum/reagent/medicine/ephedrine) < 20)
 			owner.reagents.add_reagent(/datum/reagent/medicine/ephedrine, 10)
-
-/obj/item/organ/internal/heart/ipc
-	name = "ipc heart"
-	desc = "A basic electronic device, its actually air pump."
-	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
-	icon_state = "heart-ipc-on"
-	base_icon_state = "heart-ipc"
-	organ_flags = ORGAN_ROBOTIC

@@ -1,21 +1,20 @@
-import { useBackend, useLocalState } from '../backend';
-import { TextArea, Stack, Button } from '../components';
+import { useState } from 'react';
+
+import { useBackend } from '../backend';
+import { Button, Stack, TextArea } from '../components';
 import { Window } from '../layouts';
 
-export const Mentorhelp = (props, context) => {
-  const { act } = useBackend(context);
-  const [mhelpMessage, setMhelpMessage] = useLocalState(
-    context,
-    'ahelp_message',
-    ''
-  );
+export const Mentorhelp = (props) => {
+  const { act } = useBackend();
+  const [mhelpMessage, setMhelpMessage] = useState('');
 
   return (
     <Window title="Create Mentorhelp" theme="admin" height={300} width={500}>
       <Window.Content
         style={{
-          'background-image': 'none',
-        }}>
+          backgroundImage: 'none',
+        }}
+      >
         <Stack vertical fill>
           <Stack.Item grow>
             <TextArea

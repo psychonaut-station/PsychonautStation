@@ -2,15 +2,16 @@ import { useBackend } from '../backend';
 import { Box, Button, Stack } from '../components';
 import { Window } from '../layouts';
 
-export const TicketSelectHelper = (props, context) => {
-  const { act } = useBackend(context);
+export const TicketSelectHelper = (props) => {
+  const { act } = useBackend();
 
   return (
     <Window title="Adminhelp..." theme="ntos_darkmode" height={300} width={500}>
       <Window.Content
         style={{
-          'background-image': 'none',
-        }}>
+          backgroundImage: 'none',
+        }}
+      >
         <Stack vertical fill>
           <Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">
@@ -29,7 +30,7 @@ export const TicketSelectHelper = (props, context) => {
               onClick={() => act('ticket_mentor')}
             />
           </Stack.Item>
-          <Stack.Item class="TicketSelectHelper__seperator" />
+          <Stack.Item className="TicketSelectHelper__seperator" />
           <Stack.Item>
             <Box textAlign="center" mt={1} fontSize="16px">
               Bir konu hakkında şikayetçi olmak için;

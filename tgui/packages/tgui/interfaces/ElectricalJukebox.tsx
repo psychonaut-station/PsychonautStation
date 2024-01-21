@@ -1,4 +1,5 @@
 import { multiline } from 'common/string';
+
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section, Stack, Table } from '../components';
 import { Window } from '../layouts';
@@ -51,8 +52,8 @@ export const ElectricalJukebox = () => {
   );
 };
 
-const TrackDetails = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const TrackDetails = (props) => {
+  const { act, data } = useBackend<Data>();
   const { current_track, elapsed, active, busy, loop, can_mob_use, banned } =
     data;
 
@@ -105,7 +106,8 @@ const TrackDetails = (props, context) => {
             onClick={() => act('loop')}
           />
         </>
-      }>
+      }
+    >
       {current_track ? (
         <LabeledList>
           <LabeledList.Item label="Title">
@@ -140,8 +142,8 @@ const TrackDetails = (props, context) => {
   );
 };
 
-const QueueDisplay = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const QueueDisplay = (props) => {
+  const { act, data } = useBackend<Data>();
   const { busy, queue, can_mob_use, banned } = data;
 
   return (
@@ -168,7 +170,8 @@ const QueueDisplay = (props, context) => {
             onClick={() => act('clear_queue')}
           />
         </>
-      }>
+      }
+    >
       <Table>
         {queue.map((track) => (
           <QueueRow key={track.track_id} track={track} />
@@ -178,8 +181,8 @@ const QueueDisplay = (props, context) => {
   );
 };
 
-const RequestsDisplay = (props, context) => {
-  const { act, data } = useBackend<Data>(context);
+const RequestsDisplay = (props) => {
+  const { act, data } = useBackend<Data>();
   const { busy, can_mob_use, requests, banned } = data;
 
   return (
@@ -206,7 +209,8 @@ const RequestsDisplay = (props, context) => {
             onClick={() => act('new_request')}
           />
         </>
-      }>
+      }
+    >
       {requests.length > 0 ? (
         <Table>
           {requests.map((track) => (
@@ -220,8 +224,8 @@ const RequestsDisplay = (props, context) => {
   );
 };
 
-const QueueRow = (props: { track: TrackData }, context) => {
-  const { act, data } = useBackend<Data>(context);
+const QueueRow = (props: { track: TrackData }) => {
+  const { act, data } = useBackend<Data>();
   const { track } = props;
   const { can_mob_use, banned } = data;
 
@@ -248,8 +252,8 @@ const QueueRow = (props: { track: TrackData }, context) => {
   );
 };
 
-const RequestRow = (props: { track: TrackData }, context) => {
-  const { act, data } = useBackend<Data>(context);
+const RequestRow = (props: { track: TrackData }) => {
+  const { act, data } = useBackend<Data>();
   const { track } = props;
   const { can_mob_use, user_key_name, banned } = data;
 

@@ -13,3 +13,5 @@
 #define SEC_LEVEL_RED 2
 /// Security level is delta. (station destruction immiment)
 #define SEC_LEVEL_DELTA 3
+/// Security level is omega. (Crew holocaust immiment)
+#define SEC_LEVEL_OMEGA 4

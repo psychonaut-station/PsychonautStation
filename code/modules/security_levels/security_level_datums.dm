@@ -90,3 +90,16 @@
 	number_level = SEC_LEVEL_DELTA
 	elevating_to_configuration_key = /datum/config_entry/string/alert_delta
 	shuttle_call_time_mod = ALERT_COEFF_DELTA
+
+/**
+ * OMEGA
+ *
+ * Crew holocaust immiment
+ */
+/datum/security_level/omega
+	name = "omega"
+	announcement_color = "purple"
+	sound = 'sound/misc/airraid.ogg' // Air alarm to signify importance (it Like delta)
+	number_level = SEC_LEVEL_OMEGA
+	elevating_to_configuration_key = /datum/config_entry/string/alert_omega
+	shuttle_call_time_mod = ALERT_COEFF_OMEGA

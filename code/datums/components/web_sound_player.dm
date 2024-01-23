@@ -15,7 +15,6 @@
 #define is_playing(player) (player.track && world.time - player.track_started_at < player.track.duration)
 
 GLOBAL_LIST_EMPTY(web_track_cache)
-GLOBAL_VAR_INIT(youtubedl_regex, regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$", "s"))
 
 /datum/web_track
 	var/url
@@ -260,7 +259,7 @@ GLOBAL_VAR_INIT(youtubedl_regex, regex(@"^(https?:\/\/)?(www\.)?(youtube\.com\/|
 	if(!invoke_youtubedl)
 		return WEB_SOUND_ERR_YTDL_NOT_CONFIGURED
 
-	if(!findtext(url, GLOB.youtubedl_regex))
+	if(!findtext(url, regex(replacetext(CONFIG_GET(string/request_internet_allowed), ",", "|"), "i")))
 		return WEB_SOUND_ERR_INVALID_URL
 
 	var/list/track_data

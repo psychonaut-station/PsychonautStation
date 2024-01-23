@@ -104,7 +104,6 @@ const SEC_LEVEL_GREEN = 0;
 const SEC_LEVEL_BLUE = 1;
 const SEC_LEVEL_RED = 2;
 const SEC_LEVEL_DELTA = 3;
-const SEC_LEVEL_OMEGA = 4;
 
 const get_security_level = (level: number) => {
   switch (level) {
@@ -117,10 +116,6 @@ const get_security_level = (level: number) => {
     case SEC_LEVEL_DELTA:
       return (
         <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
-      );
-    case SEC_LEVEL_OMEGA:
-      return (
-        <NoticeBox color="purple">The current alert level is: Delta</NoticeBox>
       );
   }
 };

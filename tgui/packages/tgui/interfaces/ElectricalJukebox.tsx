@@ -54,8 +54,7 @@ export const ElectricalJukebox = () => {
 
 const TrackDetails = (props) => {
   const { act, data } = useBackend<Data>();
-  const { current_track, elapsed, active, busy, loop, can_use, banned } =
-    data;
+  const { current_track, elapsed, active, busy, loop, can_use, banned } = data;
 
   return (
     <Section

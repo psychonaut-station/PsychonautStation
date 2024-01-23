@@ -107,6 +107,17 @@
 	icon_state = "[initial(icon_state)][youtubedl_configured ? is_playing() ? "-active" : null : "-broken"]"
 	return ..()
 
+/obj/machinery/electrical_jukebox/examine(mob/user)
+	. = ..()
+	. += span_notice("It is owned by [owner?.resolve() || "unknown"].")
+	if(youtubedl_configured)
+		if(is_playing())
+			. += span_notice("It is playing [player.track.title] added by [player.track.mob_name || "unknown"].")
+		else
+			. += span_notice("It is not playing.")
+	else
+		. += span_warning("It is broken.")
+
 /obj/machinery/electrical_jukebox/proc/is_playing()
 	return player && player.track && world.time - player.track_started_at < player.track.duration
 

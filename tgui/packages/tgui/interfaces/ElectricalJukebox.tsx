@@ -1,3 +1,4 @@
+import { BooleanLike } from 'common/react';
 import { multiline } from 'common/string';
 
 import { useBackend } from '../backend';
@@ -7,11 +8,11 @@ import { Window } from '../layouts';
 type Data = {
   current_track: TrackData | null;
   elapsed: string;
-  active: 0 | 1;
-  busy: 0 | 1;
-  loop: 0 | 1;
-  can_use: 0 | 1;
-  banned: 0 | 1;
+  active: BooleanLike;
+  busy: BooleanLike;
+  loop: BooleanLike;
+  can_use: BooleanLike;
+  banned: BooleanLike;
   user_key_name: string;
   queue: TrackData[];
   requests: TrackData[];

@@ -31,8 +31,8 @@ const initialState: State = {
   muted: [],
 };
 
-const visible = (state: State, payload?: any) => {
-  let visible = !!state.meta;
+const visible = (state: State, payload?: any): State => {
+  let visible = state.playing;
   if (!visible) {
     for (const key of Object.keys(state.jukebox)) {
       if (payload && key === payload.jukeboxId) continue;
@@ -42,7 +42,8 @@ const visible = (state: State, payload?: any) => {
       }
     }
   }
-  return visible;
+  state.visible = visible;
+  return state;
 };
 
 export const audioReducer = (state = initialState, action) => {
@@ -55,11 +56,10 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopped') {
-    return {
+    return visible({
       ...state,
-      visible: visible(state),
       playing: false,
-    };
+    });
   }
   if (type === 'audio/playMusic') {
     return {
@@ -68,12 +68,11 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopMusic') {
-    return {
+    return visible({
       ...state,
-      visible: visible(state),
       playing: false,
       meta: null,
-    };
+    });
   }
   if (type === 'audio/toggle') {
     return {
@@ -88,24 +87,28 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/jukebox/stopped') {
-    return {
-      ...state,
-      visible: visible(state, payload),
-      jukebox: {
-        ...state.jukebox,
-        [payload.jukeboxId]: null,
+    return visible(
+      {
+        ...state,
+        jukebox: {
+          ...state.jukebox,
+          [payload.jukeboxId]: null,
+        },
       },
-    };
+      payload,
+    );
   }
   if (type === 'audio/jukebox/destroy') {
     const jukebox = { ...state.jukebox };
     delete jukebox[payload.jukeboxId];
 
-    return {
-      ...state,
-      visible: visible(state, payload),
-      jukebox,
-    };
+    return visible(
+      {
+        ...state,
+        jukebox,
+      },
+      payload,
+    );
   }
   if (type === 'audio/jukebox/playMusic') {
     return {

@@ -4,8 +4,6 @@
 #define BANJUKEBOX(src, client) "(<a href='?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
 #define UNBANJUKEBOX(src, client) "(<a href='?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
 
-GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
-
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"
 	desc = "An advanced music player supports web music."
@@ -22,6 +20,8 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	var/list/queue
 	var/list/requests
 	var/datum/component/web_sound_player/player
+
+	var/static/list/client/jukebox_ban = list()
 
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
@@ -87,8 +87,8 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	else if(href_list["ban"])
 		var/client/client = locate(href_list["ban"])
 		var/client_key_name = key_name(client, TRUE)
-		if(!GLOB.jukebox_ban.Find(client))
-			GLOB.jukebox_ban += client
+		if(!jukebox_ban.Find(client))
+			jukebox_ban += client
 			message_admins("[admin_key_name] banned [client_key_name] from using jukebox for this round. [UNBANJUKEBOX(src, client)]")
 			log_admin("[admin_key_name] banned [client_key_name] from using jukebox for this round.")
 		else
@@ -96,8 +96,8 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	else if(href_list["unban"])
 		var/client/client = locate(href_list["unban"])
 		var/client_key_name = key_name(client, TRUE)
-		if(GLOB.jukebox_ban.Find(client))
-			GLOB.jukebox_ban -= client
+		if(jukebox_ban.Find(client))
+			jukebox_ban -= client
 			message_admins("[admin_key_name] unbanned [client_key_name] from using jukebox. [BANJUKEBOX(src, client)]")
 			log_admin("[admin_key_name] unbanned [client_key_name] from using jukebox.")
 		else
@@ -111,7 +111,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	return player && player.track && world.time - player.track_started_at < player.track.duration
 
 /obj/machinery/electrical_jukebox/proc/can_use(mob/user)
-	return owner?.resolve() == user || (jukebox.check_trait && HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
+	return owner?.resolve() == user || (check_trait && HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
 
 /obj/machinery/electrical_jukebox/proc/can_play()
 	return !busy && is_operational && anchored && !is_playing()
@@ -295,7 +295,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	.["busy"] = busy
 	.["loop"] = player.loop
 	.["can_use"] = can_use(user)
-	.["banned"] = GLOB.jukebox_ban.Find(user.client) ? TRUE : FALSE
+	.["banned"] = jukebox_ban.Find(user.client) ? TRUE : FALSE
 	.["user_key_name"] = key_name(user)
 	.["queue"] = list()
 	if(LAZYLEN(queue))
@@ -312,7 +312,7 @@ GLOBAL_LIST_EMPTY_TYPED(jukebox_ban, /client)
 	if(. || busy || !is_operational || !usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		return
 
-	if(GLOB.jukebox_ban.Find(usr.client))
+	if(jukebox_ban.Find(usr.client))
 		to_chat(usr, span_warning("You are banned from using [src] for this round."))
 		return
 

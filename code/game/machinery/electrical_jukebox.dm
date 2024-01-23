@@ -11,7 +11,7 @@
 	icon_state = "e-jukebox"
 	density = TRUE
 
-	var/datum/weakref/owner
+	var/datum/bank_account/owner_account
 	var/youtubedl_configured = FALSE
 	var/check_trait = FALSE
 	var/busy = FALSE
@@ -109,7 +109,7 @@
 
 /obj/machinery/electrical_jukebox/examine(mob/user)
 	. = ..()
-	. += span_notice("It is owned by [owner?.resolve() || "unknown"].")
+	. += span_notice("It is owned by [owner_account?.account_holder || "unknown"].")
 	if(youtubedl_configured)
 		if(is_playing())
 			. += span_notice("It is playing [player.track.title] added by [player.track.mob_name || "unknown"].")
@@ -121,8 +121,14 @@
 /obj/machinery/electrical_jukebox/proc/is_playing()
 	return player && player.track && world.time - player.track_started_at < player.track.duration
 
-/obj/machinery/electrical_jukebox/proc/can_use(mob/user)
-	return owner?.resolve() == user || (check_trait && HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
+/obj/machinery/electrical_jukebox/proc/can_use(mob/living/user)
+	if(check_trait && HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
+		return TRUE
+	if(owner_account && istype(user))
+		var/obj/item/card/id/id_card = user.get_idcard()
+		if(istype(id_card) && id_card.registered_account == owner_account)
+			return TRUE
+	return FALSE
 
 /obj/machinery/electrical_jukebox/proc/can_play()
 	return !busy && is_operational && anchored && !is_playing()
@@ -404,14 +410,23 @@
 /obj/item/electrical_jukebox_beacon/bar
 	check_trait = TRUE
 
-/obj/item/electrical_jukebox_beacon/attack_self(mob/user)
+/obj/item/electrical_jukebox_beacon/attack_self(mob/living/user)
+	if(!istype(user))
+		return
+
+	var/obj/item/card/id/id_card = user.get_idcard()
+
+	if(!istype(id_card))
+		to_chat(user, span_warning("You need an ID card to use this."))
+		return
+
 	loc.visible_message(span_warning("[src] begins to beep loudly!"))
 
 	var/obj/structure/closet/supplypod/centcompod/pod = new ()
 	var/obj/machinery/electrical_jukebox/jukebox = new (pod)
 	new /obj/effect/pod_landingzone(drop_location(), pod)
 
-	jukebox.owner = WEAKREF(user)
+	jukebox.owner_account = id_card.registered_account
 	jukebox.check_trait = check_trait
 	jukebox.anchored = FALSE
 

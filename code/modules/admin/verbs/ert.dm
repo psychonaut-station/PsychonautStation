@@ -248,6 +248,8 @@
 			ert_operative.log_message("has been selected as \a [ert_antag.name].", LOG_GAME)
 			numagents--
 			teamSpawned++
+			if(ertemplate.type == /datum/ert/deathsquad)
+				SSsecurity_level.set_level(SEC_LEVEL_OMEGA)
 
 		if (teamSpawned)
 			message_admins("[ertemplate.polldesc] has spawned with the mission: [ertemplate.mission]")

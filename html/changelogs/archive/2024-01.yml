@@ -569,3 +569,15 @@
   - bugfix: Filled trash bags show up properly when worn.
   mc-oofert:
   - bugfix: cyborg inducer respects cell changes
+2024-01-24:
+  Seefaaa:
+  - qol: "jukebox'a examine atarsan\u0131z kime ait oldu\u011Funu g\xF6rebileceksiniz."
+  - qol: "jukebox art\u0131k bank account ile ba\u011Fl\u0131 ve jukebox'\u0131n sahibinden\
+      \ id'sini isterseniz jukebox'\u0131 kullanabileceksiniz."
+  - bugfix: "admin m\xFCzik sonland\u0131\u011F\u0131nda chatin \xFCst\xFCnde g\xF6\
+      r\xFCn\xFCr kalmayacak."
+  - config: "request_internet_allowed jukebox i\xE7in de kullan\u0131lacak"
+  exdal:
+  - rscadd: Players Ready artik normal oyunculara gorunur
+  - bugfix: Hub zamani ve log zamanlari duzeltildi
+  - balance: assembly bombalar artik bulky

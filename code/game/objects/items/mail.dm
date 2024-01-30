@@ -359,10 +359,7 @@
 	resistance_flags = NONE
 
 /obj/item/storage/bag/mail/borg/AltClick(mob/living/silicon/robot/user)
-	var/list/itemcontents = src.contents
-	for(var/obj/item as anything in itemcontents)
-		item.forceMove(drop_location())
-		itemcontents -= item
+	atom_storage.remove_all(drop_location())
 
 /obj/item/storage/bag/mail/borg/afterattack(obj/target, mob/user)
 	. = ..()

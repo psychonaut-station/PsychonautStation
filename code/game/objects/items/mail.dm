@@ -355,6 +355,27 @@
 		/obj/item/paper
 	))
 
+/obj/item/storage/bag/mail/borg
+	resistance_flags = NONE
+
+/obj/item/storage/bag/mail/borg/AltClick(mob/living/silicon/robot/user)
+	var/list/itemcontents = src.contents
+	for(var/obj/item as anything in itemcontents)
+		item.forceMove(drop_location())
+		itemcontents -= item
+
+/obj/item/storage/bag/mail/borg/afterattack(obj/target, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(length(src.contents))
+		var/turf/target_turf = get_turf(target)
+		var/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", src.contents)
+		if(isnull(pick))
+			return
+		var/obj/item = pick
+		item.forceMove(target_turf)
+
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"
 	icon_state = "scrap"

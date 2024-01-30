@@ -837,6 +837,30 @@
 	if(enzyme)
 		enzyme.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
+/obj/item/robot_model/cargo
+	name = "Cargo"
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/stamp/borg,
+		/obj/item/stack/package_wrap,
+		/obj/item/stack/wrapping_paper,
+		/obj/item/dest_tagger,
+		/obj/item/hand_labeler/borg,
+		/obj/item/pen,
+		/obj/item/extinguisher/mini,
+		/obj/item/borg/cyborg_clamp,
+		/obj/item/borg/apparatus/sheet_manipulator,
+		/obj/item/storage/bag/mail/borg,
+		/obj/item/borg/apparatus/paper_holder
+	)
+	emag_modules = list(
+		/obj/item/borg/stun,
+	)
+	cyborg_base_icon = "cargo"
+	model_select_icon = "cargo"
+	hat_offset = 0
+
 /obj/item/robot_model/syndicate
 	name = "Syndicate Assault"
 	basic_modules = list(

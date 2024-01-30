@@ -160,6 +160,10 @@
 	set_model = /obj/item/robot_model/clown
 	icon_state = "clown"
 
+/mob/living/silicon/robot/model/cargo
+	set_model = /obj/item/robot_model/cargo
+	icon_state = "cargo"
+
 /mob/living/silicon/robot/model/engineering
 	set_model = /obj/item/robot_model/engineering
 	icon_state = "engineer"

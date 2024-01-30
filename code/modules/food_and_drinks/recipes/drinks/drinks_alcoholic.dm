@@ -659,6 +659,6 @@
 
 /datum/chemical_reaction/drink/raki
 	results = list(/datum/reagent/consumable/ethanol/raki = 10)
-	required_reagents = list(/datum/reagent/consumable/grapejuice = 10)
+	required_reagents = list(/datum/reagent/consumable/grapejuice = 10, /datum/reagent/consumable/sugar = 5)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 	reaction_tags = REACTION_TAG_DRINK | REACTION_TAG_EASY | REACTION_TAG_OTHER

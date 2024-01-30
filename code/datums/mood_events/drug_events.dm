@@ -132,8 +132,6 @@
 	timeout = 8 MINUTES
 
 /datum/mood_event/efkar
-	description = ""
-	mood_change = 0
 	hidden = TRUE
 	timeout = 30 MINUTES  // make it long so the song wont keep playing over and over
 

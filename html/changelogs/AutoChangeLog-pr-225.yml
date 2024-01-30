@@ -1,0 +1,7 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - qol: "jukebox'a examine atarsanız kime ait olduğunu görebileceksiniz."
+  - qol: "jukebox artık bank account ile bağlı ve jukebox'ın sahibinden id'sini isterseniz jukebox'ı kullanabileceksiniz."
+  - bugfix: "admin müzik sonlandığında chatin üstünde görünür kalmayacak."
+  - config: "request_internet_allowed jukebox için de kullanılacak"

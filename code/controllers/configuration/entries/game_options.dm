@@ -174,9 +174,6 @@
 /datum/config_entry/string/alert_delta
 	default = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
 
-/datum/config_entry/string/alert_omega
-	default = "Attention! Station alert level is now Omega! Central Command ordered the Omega security level on the station to be increased. May your God have mercy on you, because death squad will not."
-
 /datum/config_entry/flag/revival_pod_plants
 
 /datum/config_entry/number/revival_brain_life

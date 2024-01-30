@@ -279,4 +279,4 @@
 	. = ..()
 	if(length(stored_crates))
 		. += "There are [length(stored_crates)] things were picked up here."
-	. += span_notice(" <i>Alt-click</i> will drop all the crates. ")
+	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")

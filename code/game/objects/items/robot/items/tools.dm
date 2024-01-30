@@ -219,11 +219,11 @@
 	drop_all_crates()
 
 /obj/item/borg/cyborg_clamp/proc/drop_all_crates()
-	for(var/atom/movable/crate as anything in stored_crates)
+	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate
 
-/obj/item/borg/cyborg_clamp/proc/check_crate_pickup(atom/movable/target)
+/obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
 	if(length(stored_crates) >= max_crates)
 		balloon_alert(host, "too many crates!")
 		return FALSE
@@ -239,21 +239,21 @@
 
 /obj/item/borg/cyborg_clamp/afterattack(obj/target, mob/user)
 	if(istype(target, /obj/structure/closet/crate) || istype(target, /obj/item/delivery/big))
-		var/atom/movable/picked_crate = target
-		if(!check_crate_pickup(picked_crate))
+		var/obj/picked_crate = target
+		if(!can_pickup(picked_crate))
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			balloon_alert(user, "interrupted!")
 			return
-		if(!check_crate_pickup(picked_crate))
+		if(!can_pickup(picked_crate))
 			return
 		stored_crates += picked_crate
 		picked_crate.forceMove(src)
 		balloon_alert(user, "picked up [picked_crate]")
 	else if(length(stored_crates))
 		var/turf/target_turf = get_turf(target)
-		if(target_turf.is_blocked_turf())
+		if(isturf(target_turf) && target_turf.is_blocked_turf())
 			return
 		var/list/crate_radial = list()
 		for(var/obj/crate as anything in stored_crates)
@@ -268,7 +268,7 @@
 			return
 		if(target_turf.is_blocked_turf())
 			return
-		var/atom/movable/dropped_crate = pick
+		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)
 		stored_crates -= pick
 		balloon_alert(user, "dropped [dropped_crate]")

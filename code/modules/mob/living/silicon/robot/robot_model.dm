@@ -852,7 +852,7 @@
 		/obj/item/borg/cyborg_clamp,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/storage/bag/mail/borg,
-		/obj/item/borg/apparatus/paper_holder
+		/obj/item/borg/apparatus/paperwork
 	)
 	emag_modules = list(
 		/obj/item/borg/stun,
@@ -1056,3 +1056,13 @@
 	max_energy = 50
 	recharge_rate = 2
 	name = "Pipe Cleaner Synthesizer"
+
+/datum/robot_energy_storage/wrap_paper
+	max_energy = 50
+	recharge_rate = 5
+	name = "Wrapping paper"
+
+/datum/robot_energy_storage/delivery_paper
+	max_energy = 50
+	recharge_rate = 5
+	name = "Delivery paper"

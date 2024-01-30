@@ -359,22 +359,20 @@
 	resistance_flags = NONE
 
 /obj/item/storage/bag/mail/borg/AltClick(mob/living/silicon/robot/user)
-	var/list/itemcontents = src.contents
-	for(var/obj/item as anything in itemcontents)
-		item.forceMove(drop_location())
-		itemcontents -= item
+	atom_storage.remove_all(drop_location())
 
-/obj/item/storage/bag/mail/borg/afterattack(obj/target, mob/user)
+/obj/item/storage/bag/mail/borg/afterattack(atom/target, mob/user)
 	. = ..()
 	if(.)
 		return
-	if(length(src.contents))
+	if(length(contents))
 		var/turf/target_turf = get_turf(target)
-		var/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", src.contents)
+		if(!isturf(target_turf))
+			return
+		var/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", contents)
 		if(isnull(pick))
 			return
-		var/obj/item = pick
-		item.forceMove(target_turf)
+		atom_storage.attempt_remove(pick, target_turf)
 
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"

@@ -382,9 +382,11 @@
 		. += stored_copy
 	. += arm
 
-/obj/item/borg/apparatus/paperwork/pre_attack(atom/atom, mob/living/user, params)
-	if(istype(atom, /obj/item/paper_bin) && !stored)
-		var/obj/item/paper_bin/paperbin = atom
+
+/obj/item/borg/apparatus/paper_holder/pre_attack(atom/target, mob/living/user, params)
+	if(istype(target, /obj/item/paper_bin) && !stored)
+		var/obj/item/paper_bin/paperbin = target
+
 		if(paperbin.total_paper > 0)
 			var/obj/item/paper/top_paper = pop(paperbin.paper_stack) || paperbin.generate_paper()
 			paperbin.total_paper -= 1
@@ -394,8 +396,8 @@
 			to_chat(user, span_notice("You take [top_paper] out of [paperbin]."))
 			paperbin.update_appearance()
 			update_appearance()
-	else
-		return ..()
+		return TRUE
+	return ..()
 
 /obj/item/borg/apparatus/paperwork/examine()
 	. = ..()

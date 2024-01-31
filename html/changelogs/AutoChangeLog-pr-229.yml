@@ -1,0 +1,5 @@
+author: "Mujan"
+delete-after: True
+changes:
+  - rscadd: "Rakı eklendi, şeker, grape juice ve enzyme ile yapabilirsiniz. Bartender vendorda hazır olarak var"
+  - rscadd: "Çay(TR TR cCc) sprite eklendi"

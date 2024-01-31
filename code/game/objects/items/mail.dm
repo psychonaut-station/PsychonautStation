@@ -358,19 +358,20 @@
 /obj/item/storage/bag/mail/borg
 	resistance_flags = NONE
 
-/obj/item/storage/bag/mail/borg/AltClick(mob/living/silicon/robot/user)
-	atom_storage.remove_all(drop_location())
-
-/obj/item/storage/bag/mail/borg/afterattack(atom/target, mob/user)
+/obj/item/storage/bag/mail/borg/pre_attack(atom/target, mob/user)
 	. = ..()
 	if(.)
+		return
+	if(!user.Adjacent(target))
 		return
 	if(length(contents))
 		var/turf/target_turf = get_turf(target)
 		if(!isturf(target_turf))
 			return
-		var/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", contents)
+		var/obj/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", contents)
 		if(isnull(pick))
+			return
+		if(pick.loc != src)
 			return
 		atom_storage.attempt_remove(pick, target_turf)
 

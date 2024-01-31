@@ -234,10 +234,9 @@
 		return FALSE
 	return TRUE
 
-/obj/item/borg/cyborg_clamp/attack(mob/M, mob/user)
-	return
-
-/obj/item/borg/cyborg_clamp/afterattack(obj/target, mob/user)
+/obj/item/borg/cyborg_clamp/pre_attack(atom/target, mob/user)
+	if(!user.Adjacent(target))
+		return
 	if(istype(target, /obj/structure/closet/crate) || istype(target, /obj/item/delivery/big))
 		var/obj/picked_crate = target
 		if(!can_pickup(picked_crate))
@@ -264,9 +263,10 @@
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
-			balloon_alert(user, "interrupted!")
 			return
 		if(target_turf.is_blocked_turf())
+			return
+		if(pick.loc != src)
 			return
 		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)

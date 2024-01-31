@@ -363,14 +363,14 @@
 		. += "The apparatus currently has [stored] secured."
 	. += span_notice("<i>Alt-click</i> will drop the currently secured item.")
 
-/obj/item/borg/apparatus/paperwork
+/obj/item/borg/apparatus/paper_holder
 	name = "integrated paper holder"
 	desc = "A holder for holding papers."
 	icon = 'icons/psychonaut/mob/silicon/robot_items.dmi'
 	icon_state = "borg_paper_appartus"
 	storable = list(/obj/item/paper)
 
-/obj/item/borg/apparatus/paperwork/update_overlays()
+/obj/item/borg/apparatus/paper_holder/update_overlays()
 	. = ..()
 	var/mutable_appearance/arm = mutable_appearance(icon = icon, icon_state = "borg_paper_appartus_arm")
 	if(stored)
@@ -384,6 +384,8 @@
 
 
 /obj/item/borg/apparatus/paper_holder/pre_attack(atom/target, mob/living/user, params)
+	if(!user.Adjacent(target))
+		return
 	if(istype(target, /obj/item/paper_bin) && !stored)
 		var/obj/item/paper_bin/paperbin = target
 
@@ -399,7 +401,7 @@
 		return TRUE
 	return ..()
 
-/obj/item/borg/apparatus/paperwork/examine()
+/obj/item/borg/apparatus/paper_holder/examine()
 	. = ..()
 	if(stored)
 		. += "The apparatus currently has [stored] secured."

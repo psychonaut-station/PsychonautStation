@@ -852,7 +852,7 @@
 		/obj/item/borg/cyborg_clamp,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/storage/bag/mail/borg,
-		/obj/item/borg/apparatus/paperwork
+		/obj/item/borg/apparatus/paper_holder
 	)
 	emag_modules = list(
 		/obj/item/borg/stun,

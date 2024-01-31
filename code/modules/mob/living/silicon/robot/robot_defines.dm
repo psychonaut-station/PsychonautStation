@@ -162,6 +162,7 @@
 
 /mob/living/silicon/robot/model/cargo
 	set_model = /obj/item/robot_model/cargo
+	icon = 'icons/psychonaut/mob/silicon/robots.dmi'
 	icon_state = "cargo"
 
 /mob/living/silicon/robot/model/engineering

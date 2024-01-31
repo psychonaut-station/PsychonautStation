@@ -857,6 +857,9 @@
 	emag_modules = list(
 		/obj/item/borg/stun,
 	)
+	borg_skins = list(
+		"courier" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
+	)
 	cyborg_base_icon = "cargo"
 	model_select_icon = "cargo"
 	hat_offset = 0

@@ -656,3 +656,7 @@
 /datum/chemical_reaction/drink/blue_hawaiian
 	results = list(/datum/reagent/consumable/ethanol/blue_hawaiian = 5)
 	required_reagents = list(/datum/reagent/consumable/ethanol/coconut_rum = 2, /datum/reagent/consumable/pineapplejuice = 1, /datum/reagent/consumable/lemonjuice = 1, /datum/reagent/consumable/ethanol/curacao = 1)
+
+/datum/chemical_reaction/drink/raki
+	results = list(/datum/reagent/consumable/ethanol/raki = 10)
+	required_reagents = list(/datum/reagent/consumable/enzyme = 5, /datum/reagent/consumable/grapejuice = 10, /datum/reagent/consumable/sugar = 5)

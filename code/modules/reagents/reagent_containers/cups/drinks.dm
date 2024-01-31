@@ -164,6 +164,7 @@
 /obj/item/reagent_containers/cup/glass/mug/tea
 	name = "Duke Purple tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
+	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
 

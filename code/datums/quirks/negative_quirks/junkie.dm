@@ -171,6 +171,7 @@
 	drug_container_type = pick(
 		/obj/item/reagent_containers/cup/glass/bottle/whiskey,
 		/obj/item/reagent_containers/cup/glass/bottle/vodka,
+		/obj/item/reagent_containers/cup/glass/bottle/raki,
 		/obj/item/reagent_containers/cup/glass/bottle/ale,
 		/obj/item/reagent_containers/cup/glass/bottle/beer,
 		/obj/item/reagent_containers/cup/glass/bottle/hcider,

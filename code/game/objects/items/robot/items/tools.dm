@@ -243,7 +243,6 @@
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
-			balloon_alert(user, "interrupted!")
 			return
 		if(!can_pickup(picked_crate))
 			return
@@ -259,7 +258,6 @@
 			crate_radial[crate] = image(icon = initial(crate.icon), icon_state = initial(crate.icon_state))
 		var/obj/pick = show_radial_menu(user, target_turf, crate_radial, radius = 38, require_near = TRUE)
 		if(!pick)
-			balloon_alert(user, "interrupted!")
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
@@ -267,6 +265,8 @@
 		if(target_turf.is_blocked_turf())
 			return
 		if(pick.loc != src)
+			return
+		if(!user.Adjacent(target))
 			return
 		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)

@@ -373,6 +373,8 @@
 			return
 		if(pick.loc != src)
 			return
+		if(!user.Adjacent(target))
+			return
 		atom_storage.attempt_remove(pick, target_turf)
 
 /obj/item/paper/fluff/junkmail_redpill

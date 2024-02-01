@@ -232,6 +232,9 @@
 			continue
 		balloon_alert(host, "crate too heavy!")
 		return FALSE
+	if(target.anchored)
+		balloon_alert(host, "crate is anchored!")
+		return FALSE
 	return TRUE
 
 /obj/item/borg/cyborg_clamp/pre_attack(atom/target, mob/user)
@@ -245,6 +248,8 @@
 		if(!do_after(user, load_time, target = target))
 			return
 		if(!can_pickup(picked_crate))
+			return
+		if(!user.Adjacent(target))
 			return
 		stored_crates += picked_crate
 		picked_crate.forceMove(src)

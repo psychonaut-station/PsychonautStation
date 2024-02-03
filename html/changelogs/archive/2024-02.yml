@@ -1,8 +1,4 @@
 2024-02-01:
-  Mujan:
-  - rscadd: "Rak\u0131 eklendi, \u015Feker, grape juice ve enzyme ile yapabilirsiniz.\
-      \ Bartender vendorda haz\u0131r olarak var"
-  - rscadd: "\xC7ay(TR TR cCc) sprite eklendi"
   Donglesplonge:
   - bugfix: the top and top righthand doors of northstars cargo mail sorting room
       now use any supply general, mining, and bitden access, and the top righthand
@@ -22,6 +18,10 @@
   - refactor: Jukebox has been refactored. Jukebox music now updates as the player
       moves, mutes when the player is deafened, and overall sounds wayyy better. You
       can also now toggle song repeat on jukeboxes.
+  Mujan:
+  - rscadd: "Rak\u0131 eklendi, \u015Feker, grape juice ve enzyme ile yapabilirsiniz.\
+      \ Bartender vendorda haz\u0131r olarak var"
+  - rscadd: "\xC7ay(TR TR cCc) sprite eklendi"
   ZephyrTFA:
   - bugfix: Meteor Satellites no longer erroneously count every piece of paper as
       a protected turf.
@@ -60,3 +60,10 @@
   zxaber:
   - balance: Mech wire panels are now blocked when the mech is occupied. I guess it
       was moved to be behind the seat.
+2024-02-03:
+  Justavidya:
+  - image: modified the cherry cupcake and blue-cherry cupcake sprites
+  Rhials:
+  - qol: Spider eggs will now close their spawn menu when you move away from them.
+  Whoneedspacee:
+  - bugfix: Ash drake's fire breath attack has proper cooldowns again

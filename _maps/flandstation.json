@@ -1,7 +1,7 @@
 {
 	"version": 1,
-	"map_name": "Flandstation",
-	"map_path": "map_files/Flandstation",
+	"map_name": "FlandStation",
+	"map_path": "map_files/FlandStation",
 	"map_file": "FlandStation.dmm",
 	"shuttles": {
 	    "cargo": "cargo_fland",

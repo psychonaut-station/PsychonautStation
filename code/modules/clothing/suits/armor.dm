@@ -65,6 +65,7 @@
 	icon_state = "armor_bp"
 
 /obj/item/clothing/suit/armor/vest/alt/tactical_armor
+	name = "Tactical armor vest"
 	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon_state = "tactical_armor"

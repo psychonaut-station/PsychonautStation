@@ -69,6 +69,7 @@
 	dog_fashion = null
 
 /obj/item/clothing/head/helmet/alt/tactical
+	name = "Tactical helmet"
 	icon_state = "tactical_helmet"
 	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'

@@ -134,17 +134,6 @@
 		icon_state = base_icon_state
 	return ..()
 
-/obj/item/reagent_containers/cup/glass/turkish_coffee
-	name = "Türk Kahvesi"
-	desc = "Careful, the beverage you're about to enjoy is extremely hot."
-	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
-	icon_state = "turk_coffee"
-	base_icon_state = "turk_coffee"
-	list_reagents = list(/datum/reagent/consumable/turk_coffee = 30)
-	spillable = TRUE
-	resistance_flags = FREEZE_PROOF
-	isGlass = FALSE
-
 /obj/item/reagent_containers/cup/glass/ice
 	name = "ice cup"
 	desc = "Careful, cold ice, do not chew."
@@ -177,6 +166,13 @@
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
+
+/obj/item/reagent_containers/cup/glass/mug /turkish_coffee
+	name = "Türk Kahvesi"
+	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
+	icon_state = "tea"
+	list_reagents = list(/datum/reagent/consumable/turk_coffee = 30)
 
 /obj/item/reagent_containers/cup/glass/mug/coco
 	name = "Dutch hot coco"

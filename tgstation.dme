@@ -14,8 +14,6 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
-#include "_maps\FlandStation\FlandStation.dmm"
-#include "_maps\FlandStation\labour_fland.dmm"
 #include "_maps\map_files\FlandStation\FlandStation.dmm"
 #include "_maps\shuttles\emergency_fland.dmm"
 #include "_maps\shuttles\whiteship_fland.dmm"

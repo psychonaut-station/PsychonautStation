@@ -164,9 +164,14 @@
 /obj/item/reagent_containers/cup/glass/mug/tea
 	name = "Duke Purple tea"
 	desc = "An insult to Duke Purple is an insult to the Space Queen! Any proper gentleman will fight you, if you sully this tea."
-	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
+
+/obj/item/reagent_containers/cup/glass/mug/turkish_coffee
+	name = "Türk kahvesi"
+	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	icon_state = "tea"
+	list_reagents = list(/datum/reagent/consumable/turk_coffee = 30)
 
 /obj/item/reagent_containers/cup/glass/mug/coco
 	name = "Dutch hot coco"

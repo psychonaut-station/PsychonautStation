@@ -167,10 +167,9 @@
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
 
-/obj/item/reagent_containers/cup/glass/mug /turkish_coffee
+/obj/item/reagent_containers/cup/glass/mug/turkish_coffee
 	name = "Türk Kahvesi"
 	desc = "Careful, the beverage you're about to enjoy is extremely hot."
-	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/turk_coffee = 30)
 

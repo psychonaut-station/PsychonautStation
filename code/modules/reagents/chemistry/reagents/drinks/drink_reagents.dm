@@ -283,7 +283,7 @@
 /datum/reagent/consumable/tea
 	name = "Tea"
 	description = "Tasty black tea, it has antioxidants, it's good for you!"
-	color = "#101000" // rgb: 16, 16, 0
+	color = "#771a09"
 	nutriment_factor = 0
 	taste_description = "tart black tea"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

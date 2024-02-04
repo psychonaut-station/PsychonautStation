@@ -35,6 +35,11 @@ map ancientdeltastation
 	votable
 endmap
 
+map flandstation
+	minplayers 25
+	votable
+endmap
+
 map icebox
 	minplayers 0
 	votable

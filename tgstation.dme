@@ -14,6 +14,10 @@
 
 // BEGIN_INCLUDE
 #include "_maps\_basemap.dm"
+#include "_maps\FlandStation\FlandStation.dmm"
+#include "_maps\FlandStation\labour_fland.dmm"
+#include "_maps\shuttles\emergency_fland.dmm"
+#include "_maps\shuttles\whiteship_fland.dmm"
 #include "code\__byond_version_compat.dm"
 #include "code\_compile_options.dm"
 #include "code\_experiments.dm"

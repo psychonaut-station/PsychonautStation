@@ -94,6 +94,63 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		LAZYADDASSOC(SSjob.dynamic_forced_occupations, new_malf, "AI")
 	return TRUE
 
+//////////////////////////////////////////
+//                                      //
+//           BLOOD BROTHERS             //
+//                                      //
+//////////////////////////////////////////
+
+/datum/dynamic_ruleset/roundstart/traitorbro
+	name = "Blood Brothers"
+	antag_flag = ROLE_BROTHER
+	antag_datum = /datum/antagonist/brother
+	protected_roles = list(
+		JOB_CAPTAIN,
+		JOB_DETECTIVE,
+		JOB_HEAD_OF_SECURITY,
+		JOB_PRISONER,
+		JOB_SECURITY_OFFICER,
+		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
+		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
+	)
+	restricted_roles = list(
+		JOB_AI,
+		JOB_CYBORG,
+	)
+	weight = 5
+	cost = 8
+	scaling_cost = 15
+	requirements = list(40,30,30,20,20,15,15,15,10,10)
+	antag_cap = 1
+
+/datum/dynamic_ruleset/roundstart/traitorbro/pre_execute(population)
+	. = ..()
+
+	for (var/_ in 1 to get_antag_cap(population) * (scaled_times + 1))
+		var/mob/candidate = pick_n_take(candidates)
+		if (isnull(candidate))
+			break
+
+		assigned += candidate.mind
+		candidate.mind.restricted_roles = restricted_roles
+		candidate.mind.special_role = ROLE_BROTHER
+		GLOB.pre_setup_antags += candidate.mind
+
+	return TRUE
+
+/datum/dynamic_ruleset/roundstart/traitorbro/execute()
+	for (var/datum/mind/mind in assigned)
+		var/datum/team/brother_team/team = new
+		team.add_member(mind)
+		team.forge_brother_objectives()
+		mind.add_antag_datum(/datum/antagonist/brother, team)
+		GLOB.pre_setup_antags -= mind
+
+	return TRUE
+
+
 //////////////////////////////////////////////
 //                                          //
 //               CHANGELINGS                //

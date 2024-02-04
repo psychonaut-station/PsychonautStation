@@ -740,7 +740,7 @@
 		return UPDATE_MOB_HEALTH
 
 /datum/reagent/consumable/turk_coffee
-	name = "Turk Kahvesi"
+	name = "Türk kahvesi"
 	description = "A strong and tasty beverage."
 	color = "#3c2f2f"
 	quality = DRINK_NICE

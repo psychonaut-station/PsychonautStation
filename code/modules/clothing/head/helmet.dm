@@ -68,6 +68,11 @@
 	armor_type = /datum/armor/helmet_alt
 	dog_fashion = null
 
+/obj/item/clothing/head/helmet/alt/tactical
+	icon_state = "tactical_helmet"
+	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'
+
 /datum/armor/helmet_alt
 	melee = 15
 	bullet = 60
@@ -85,6 +90,8 @@
 /obj/item/clothing/head/helmet/brig_physician
 	name = "medical helmet"
 	desc = "A bulletproof combat helmet designed specially for physicians."
+	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'
 	icon_state = "helmet_bp"
 	inhand_icon_state = "helmet"
 	armor_type = /datum/armor/helmet_brig_physician

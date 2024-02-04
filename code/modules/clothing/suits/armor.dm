@@ -64,6 +64,11 @@
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon_state = "armor_bp"
 
+/obj/item/clothing/suit/armor/vest/alt/tactical_armor
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
+	icon_state = "tactical_armor"
+
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"
 	desc = "A set of the finest mass produced, stamped plasteel armor plates, containing an environmental protection unit for all-condition door kicking."

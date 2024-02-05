@@ -67,3 +67,10 @@
   - qol: Spider eggs will now close their spawn menu when you move away from them.
   Whoneedspacee:
   - bugfix: Ash drake's fire breath attack has proper cooldowns again
+2024-02-05:
+  agalargaming, Rengan:
+  - rscadd: "T\xFCrk kahvesi eklendi."
+  - rscadd: Tactical Armor ve Tactical Helmet eklendi.
+  - bugfix: "Soda dispenserden doldurulan \xE7ay d\xFCzeltildi."
+  exdal:
+  - rscadd: Blood Brothers geri geldi

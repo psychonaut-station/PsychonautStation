@@ -1,6 +1,0 @@
-author: "agalargaming, Rengan"
-delete-after: True
-changes:
-  - rscadd: "Türk kahvesi eklendi."
-  - rscadd: "Tactical Armor ve Tactical Helmet eklendi."
-  - bugfix: "Soda dispenserden doldurulan çay düzeltildi."

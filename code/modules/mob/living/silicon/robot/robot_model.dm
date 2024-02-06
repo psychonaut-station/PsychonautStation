@@ -852,10 +852,11 @@
 		/obj/item/borg/cyborg_clamp,
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/storage/bag/mail/borg,
+		/obj/item/boxcutter,
 		/obj/item/borg/apparatus/paper_holder
 	)
 	emag_modules = list(
-		/obj/item/boxcutter,
+		/obj/item/borg/stun,
 	)
 	borg_skins = list(
 		"courier" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),

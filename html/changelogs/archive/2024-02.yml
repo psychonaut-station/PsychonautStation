@@ -85,14 +85,14 @@
   - bugfix: Midroll/Latejoin traitors no longer have access to roundstart traitor
       exclusive items
 2024-02-05:
+  Xander3359:
+  - bugfix: burning a bible no longer gives you INFINITY curses
   agalargaming, Rengan:
   - rscadd: "T\xFCrk kahvesi eklendi."
   - rscadd: Tactical Armor ve Tactical Helmet eklendi.
   - bugfix: "Soda dispenserden doldurulan \xE7ay d\xFCzeltildi."
   exdal:
   - rscadd: Blood Brothers geri geldi
-  Xander3359:
-  - bugfix: burning a bible no longer gives you INFINITY curses
 2024-02-06:
   Higgin:
   - bugfix: fixes contractor abduction RRing people in the offmap hideout without
@@ -122,3 +122,7 @@
   - bugfix: you may no longer altclick ethereal disco balls while unconscious to anchor/unanchor
   vinylspiders:
   - bugfix: fixes a runtime in AI search_tactic
+2024-02-07:
+  Momo8289:
+  - bugfix: Automated IV drips will now be on the layer set by the plumbing constructor
+      when created.

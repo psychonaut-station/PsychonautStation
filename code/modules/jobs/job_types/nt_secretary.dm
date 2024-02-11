@@ -19,7 +19,7 @@
 	exp_granted_type = EXP_TYPE_CREW
 	config_tag = "NT_SECRETARY"
 	bounty_types = CIV_JOB_RANDOM
-	display_order = JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL
+	display_order = JOB_DISPLAY_ORDER_NT_SECRETARY
 	departments_list = list(
 		/datum/job_department/service,
 		)

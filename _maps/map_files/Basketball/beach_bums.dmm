@@ -177,7 +177,7 @@
 /area/centcom/basketball)
 "wN" = (
 /obj/machinery/electrical_jukebox{
-	override_checks = TRUE
+	override_checks = 1
 	},
 /turf/open/misc/beach/sand,
 /area/centcom/basketball)

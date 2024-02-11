@@ -374,7 +374,7 @@
 /area/shuttle/escape)
 "ix" = (
 /obj/machinery/electrical_jukebox{
-	override_checks = TRUE
+	override_checks = 1
 	},
 /turf/open/floor/iron,
 /area/shuttle/escape)

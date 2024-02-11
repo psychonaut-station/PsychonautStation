@@ -366,13 +366,14 @@
 /obj/item/borg/apparatus/paper_holder
 	name = "integrated paper holder"
 	desc = "A holder for holding papers."
-	icon = 'icons/psychonaut/mob/silicon/robot_items.dmi'
-	icon_state = "borg_paper_appartus"
+	icon = 'icons/obj/service/bureaucracy.dmi'
+	icon_state = "clipboard"
 	storable = list(/obj/item/paper)
 
 /obj/item/borg/apparatus/paper_holder/update_overlays()
 	. = ..()
-	var/mutable_appearance/arm = mutable_appearance(icon = icon, icon_state = "borg_paper_appartus_arm")
+	. += "clipboard_over"
+	var/mutable_appearance/arm = mutable_appearance(icon = icon, icon_state = "clipboard_over")
 	if(stored)
 		stored.pixel_x = 0
 		stored.pixel_y = 0

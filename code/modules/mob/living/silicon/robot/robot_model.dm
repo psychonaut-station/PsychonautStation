@@ -412,6 +412,10 @@
 	)
 	cyborg_base_icon = "janitor"
 	model_select_icon = "janitor"
+	borg_skins = list(
+		"janitor" = list(SKIN_ICON = 'icons/mob/silicon/robots.dmi', SKIN_ICON_STATE = "janitor"),
+		"cleaner" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cleaner"),
+	)
 	hat_offset = -5
 	/// Weakref to the wash toggle action we own
 	var/datum/weakref/wash_toggle_ref

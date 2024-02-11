@@ -558,8 +558,6 @@ SUBSYSTEM_DEF(explosions)
 		if(creaking) // 5 seconds after the bang, the station begins to creak
 			addtimer(CALLBACK(listener, TYPE_PROC_REF(/mob, playsound_local), epicenter, null, rand(FREQ_LOWER, FREQ_UPPER), TRUE, frequency, null, null, FALSE, hull_creaking_sound, 0), CREAK_DELAY)
 
-	if (creaking)
-		creak_lights()
 
 #undef CREAK_DELAY
 #undef QUAKE_CREAK_PROB

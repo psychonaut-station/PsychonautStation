@@ -95,7 +95,7 @@
 /area/shuttle/escape)
 "v" = (
 /obj/machinery/electrical_jukebox{
-	public = TRUE
+	override_checks = TRUE
 	},
 /turf/open/floor/light/colour_cycle/dancefloor_a,
 /area/shuttle/escape)

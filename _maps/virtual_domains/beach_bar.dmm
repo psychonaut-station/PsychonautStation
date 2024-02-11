@@ -76,7 +76,7 @@
 "cz" = (
 /obj/effect/turf_decal/sand,
 /obj/machinery/electrical_jukebox{
-	public = TRUE
+	override_checks = TRUE
 	},
 /obj/item/coin/gold,
 /turf/open/floor/sepia,

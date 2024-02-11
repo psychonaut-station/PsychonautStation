@@ -1,0 +1,4 @@
+author: "exdal"
+delete-after: True
+changes:
+  - rscdel: "ışıklar artık patlamalardan yanıp sönmeyecek (sm ve grav gen dahil değil)"

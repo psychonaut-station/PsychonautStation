@@ -109,7 +109,8 @@
 
 /obj/machinery/electrical_jukebox/examine(mob/user)
 	. = ..()
-	. += span_notice("It is owned by [owner_account?.account_holder || "unknown"].")
+	if(!isnull(owner_account))
+		. += span_notice("It is owned by [owner_account.account_holder.")
 	. += get_status_message()
 	
 /obj/machinery/electrical_jukebox/proc/get_status_message()

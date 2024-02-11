@@ -641,11 +641,18 @@
 	dir = 8
 	},
 /obj/structure/rack,
-/obj/item/pickaxe{
-	pixel_x = 7
+/obj/item/stack/conveyor/thirty,
+/obj/item/boulder_beacon{
+	pixel_x = -5
+	},
+/obj/item/conveyor_switch_construct{
+	pixel_x = 10
 	},
 /obj/item/shovel{
 	pixel_x = -7
+	},
+/obj/item/pickaxe{
+	pixel_x = 7
 	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
@@ -1936,12 +1943,6 @@
 /obj/structure/closet/crate{
 	icon_state = "crateopen"
 	},
-/turf/open/floor/iron,
-/area/station/cargo/storage)
-"eS" = (
-/obj/effect/turf_decal/bot,
-/obj/effect/spawner/random/structure/crate_empty,
-/obj/effect/spawner/random/maintenance,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "eT" = (
@@ -6997,7 +6998,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "qV" = (
-/obj/structure/closet/crate/maint,
 /obj/effect/spawner/random/maintenance,
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
@@ -15754,7 +15754,6 @@
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
 "Ow" = (
-/obj/structure/closet/crate/maint,
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
@@ -18312,7 +18311,6 @@
 /area/space)
 "WK" = (
 /obj/effect/spawner/random/maintenance,
-/obj/structure/closet/crate/maint,
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "WL" = (
@@ -47286,7 +47284,7 @@ ew
 dN
 gj
 eA
-eS
+eA
 Cv
 db
 kD

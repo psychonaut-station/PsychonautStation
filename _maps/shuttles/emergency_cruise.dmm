@@ -373,9 +373,7 @@
 /turf/open/floor/carpet/red,
 /area/shuttle/escape)
 "ix" = (
-/obj/machinery/electrical_jukebox{
-	override_checks = 1
-	},
+/obj/machinery/electrical_jukebox/public,
 /turf/open/floor/iron,
 /area/shuttle/escape)
 "iA" = (

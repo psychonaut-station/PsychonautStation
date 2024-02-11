@@ -11,8 +11,6 @@
 	icon_state = "e-jukebox"
 	density = TRUE
 
-	/// public override for special cases, set TRUE by map gen
-	var/override_checks = FALSE
 	var/datum/bank_account/owner_account
 	var/youtubedl_configured = FALSE
 	var/check_trait = FALSE
@@ -124,8 +122,6 @@
 	return player && player.track && world.time - player.track_started_at < player.track.duration
 
 /obj/machinery/electrical_jukebox/proc/can_use(mob/living/user)
-	if (override_checks)
-		return TRUE
 	if(check_trait && HAS_TRAIT(user, TRAIT_CAN_USE_JUKEBOX))
 		return TRUE
 	if(owner_account && istype(user))
@@ -435,6 +431,12 @@
 	jukebox.anchored = FALSE
 
 	qdel(src)
+
+/obj/machinery/electrical_jukebox/public
+	name = "public electrical jukebox"
+
+/obj/machinery/electrical_jukebox/public/can_use(mob/living/user)
+	return TRUE
 
 #undef STOP
 #undef REMOVEQUEUE

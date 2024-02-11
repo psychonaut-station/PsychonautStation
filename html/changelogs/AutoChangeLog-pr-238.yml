@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Eski Delta Station ve MiniStation'ın Mining Office'i boulder beacon ile başlayacak"

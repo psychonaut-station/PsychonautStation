@@ -251,7 +251,6 @@ Bagimsiz
 Bagir
 Bagirlak
 Bagri
-Bagri
 Bagsi
 Bahceli
 Bahsi
@@ -385,7 +384,6 @@ Begdes
 Begdi
 Begduz
 Begec
-Begec
 Begen
 Begence
 Begeni
@@ -482,7 +480,6 @@ Bobuluk
 Bod
 Bodge
 Bog
-Bog
 Boga
 Bogaca
 Bogaci
@@ -544,7 +541,6 @@ Bugan
 Bugateg
 Bugay
 Bugu
-Bugu
 Bugucan
 Bugur
 Buka
@@ -595,7 +591,6 @@ Burke
 Burkev
 Burtag
 Burul
-Buruncuk
 Buruncuk
 Burundu
 Burungu
@@ -666,8 +661,6 @@ Catgal
 Catik
 Catli
 Catuk
-Catuk
-Cav
 Cav
 Cavankul
 Cavildak
@@ -696,9 +689,7 @@ Celen
 Celikten
 Celim
 Celme
-Celme
 Cengel
-Cengiz
 Cengiz
 Cengsi
 Cepen
@@ -728,7 +719,6 @@ Cigendik
 Ciger
 Cigermis
 Cigi
-Cigil
 Cigil
 Cigilvar
 Cigin
@@ -788,7 +778,6 @@ Cucen
 Cuci
 Cuga
 Cugay
-Culcu
 Culcu
 Culum
 Cumuk
@@ -1197,7 +1186,6 @@ Tarta
 Tartagan
 Tarug
 Tasar
-Tasar
 Tasgan
 Tasgaru
 Tasgin
@@ -1274,7 +1262,6 @@ Timagur
 Timucin
 Timur
 Tin
-Tin
 Tingi
 Tinglak
 Tinglar
@@ -1306,7 +1293,6 @@ Tokalig
 Tokol
 Toktak
 Toku
-Toku
 Tokum
 Tokur
 Tokurgak
@@ -1324,7 +1310,6 @@ Tolis
 Tolkan
 Tolmis
 Toluk
-Toluk
 Toman
 Tombay
 Tona
@@ -1337,7 +1322,6 @@ Tonsuz
 Top
 Topak
 Topurgan
-Tor
 Tor
 Toran
 Torcuk
@@ -1355,7 +1339,6 @@ Toruici
 Toruk
 Torulug
 Torum
-Torum
 Torumcu
 Torun
 Torutgen
@@ -1372,7 +1355,6 @@ Toymagur
 Toytimur
 Toz
 Tozluk
-Tozun
 Tozun
 Tube
 Tubek

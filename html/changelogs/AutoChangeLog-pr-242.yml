@@ -1,5 +1,0 @@
-author: "exdal"
-delete-after: True
-changes:
-  - bugfix: "Fonttaki lathelerde cikan arti isareti duzeltildi"
-  - rscdel: "Bridge Assistant kaldirildi"

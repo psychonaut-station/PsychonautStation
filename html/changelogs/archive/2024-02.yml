@@ -235,3 +235,14 @@
   - refactor: Optimized code for autolathe & techfabs in general. Report bugs on github
   Wallem:
   - rscadd: Adds a new suicide_act() to the smite spell
+2024-02-12:
+  Seefaaa:
+  - bugfix: "Eski Delta Station ve MiniStation'\u0131n Mining Office'i boulder beacon\
+      \ ile ba\u015Flayacak"
+  exdal:
+  - bugfix: Fonttaki lathelerde cikan arti isareti duzeltildi
+  - rscdel: Bridge Assistant kaldirildi
+  - bugfix: configde random appearance flagi olmasina ragmen sadece isimleri randomize
+      etme olayi fixlendi
+  - rscdel: "\u0131\u015F\u0131klar art\u0131k patlamalardan yan\u0131p s\xF6nmeyecek\
+      \ (sm ve grav gen dahil de\u011Fil)"

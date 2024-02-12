@@ -1,4 +1,3 @@
-A.Rahman
 Abbas
 Abdi
 Abdo
@@ -995,7 +994,7 @@ Halis
 Halit
 Halli
 Haluk
-Halûk
+HalÃƒÂ»k
 Hamayin
 Hamdin
 Hamili
@@ -1323,13 +1322,6 @@ Lutfiye
 Lutfu
 Lutfullah
 Lutfullah
-M.Akif
-M.Asaf
-M.Cemal
-M.Emin
-M.Halil
-M.Murat
-M.Naci
 Macit
 Mafire
 Maglat
@@ -2425,7 +2417,7 @@ Tursun
 Turulsan
 Turusan
 Tutku
-Tûba
+TÃƒÂ»ba
 Ubeyit
 Ubeyt
 Ufuk

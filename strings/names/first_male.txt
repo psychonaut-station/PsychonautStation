@@ -1,5 +1,3 @@
-A.
-A.Rahman
 Abbas
 Abdi
 Abdo
@@ -606,7 +604,7 @@ Halis
 Halit
 Halli
 Haluk
-Halûk
+HalÃƒÂ»k
 Hamdin
 Hamit
 Hamiza
@@ -793,13 +791,6 @@ Lutfi
 Lutfu
 Lutfullah
 Lutfullah
-M.Akif
-M.Asaf
-M.Cemal
-M.Emin
-M.Halil
-M.Murat
-M.Naci
 Macit
 Mahfuz
 Mahir
@@ -1668,7 +1659,6 @@ Devran
 Mirzememet
 Sihmus
 Tugger
-H.Memet
 Ilker
 Nusamettin
 Kale
@@ -1696,7 +1686,7 @@ Zumrut
 Sihat
 Doner
 Ferahi
-Korkut.Kagan
+Korkut
 Mihrali
 Batdal
 Zivar
@@ -1734,7 +1724,6 @@ Abdil
 Bakir
 Colhan
 Nasir
-M.Sakir
 Nacettin
 Fudeyil
 Behram
@@ -1864,7 +1853,6 @@ Afiyet
 Uner
 Pehluldane
 Otan
-M.Hazret
 Atnan
 Ulvi
 Hamza
@@ -2027,7 +2015,6 @@ Orcay
 Firaz
 Sadullah
 Cazim
-M.Cesim
 Abdulmecit
 Cagtay
 Behcet
@@ -2301,10 +2288,8 @@ Nizameddin
 Seyitahmet
 Salman
 Habes
-M.Mustafa
 Kiyis
 Tayar
-H.Mehmet
 Haso
 Korat
 Yigitcan
@@ -2640,7 +2625,6 @@ Yoksili
 Ebilkasim
 Goksun
 Benset
-H.Ibrahim
 Vecihi
 Aybar
 Hesim
@@ -2877,7 +2861,6 @@ Karabey
 Engin
 Yurdasen
 Hicabi
-A.Yilmaz
 Hatip
 Talih
 Yigitalp
@@ -2944,7 +2927,6 @@ Atif
 Kutfettin
 Muhuyettin
 Nezih
-M.Salih
 Hasib
 Yigit
 Lifat
@@ -3339,4 +3321,3 @@ Erden
 Gencay
 Embiye
 Mekin
-Haciali

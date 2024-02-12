@@ -442,11 +442,6 @@
 /obj/machinery/electrical_jukebox/public/can_use(mob/living/user)
 	return TRUE
 
-/obj/machinery/electrical_jukebox/public/examine(mob/user)
-	. = ..()
-	. += span_notice("Everyone can use it.")
-	. += get_status_message()
-
 #undef STOP
 #undef REMOVEQUEUE
 #undef DENYREQUEST

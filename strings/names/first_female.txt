@@ -2,7 +2,6 @@ Abide
 Abugunes
 Abus
 Acelya
-Acelya
 Acibe
 Adalet
 Adaviye
@@ -85,9 +84,7 @@ Anakiz
 Anber
 Angela
 Ani
-Ani
 Anil
-Anis
 Anis
 Anizeliha
 Anna
@@ -96,7 +93,6 @@ Anse
 Antika
 Anzelha
 Anzeliha
-Anzilha
 Anzilha
 Arafe
 Arefe
@@ -137,7 +133,6 @@ Assiye
 Asu
 Asude
 Asuman
-Asuman
 Asumen
 Asutay
 Asya
@@ -165,7 +160,6 @@ Aybeniz
 Aybike
 Aybikehan
 Ayca
-Ayca
 Aycagul
 Aycan
 Ayce
@@ -186,7 +180,6 @@ Aygun
 Ayhan
 Ayinzelha
 Ayinzeliha
-Ayinzeliha
 Ayise
 Aykut
 Ayla
@@ -197,19 +190,16 @@ Ayne
 Aynel
 Ayney
 Ayni
-Ayni
 Aynigul
 Aynil
 Aynilhayat
 Aynisa
 Ayniye
 Aynizeliha
-Aynizeliha
 Aynur
 Aynzeliha
 Aypen
 Aysa
-Aysan
 Aysan
 Aysana
 Ayse
@@ -218,9 +208,7 @@ Aysecik
 Aysegul
 Aysel
 Aysem
-Aysem
 Aysema
-Aysen
 Aysen
 Aysenur
 Ayser
@@ -231,8 +219,6 @@ Ayseven
 Ayshan
 Aysi
 Aysil
-Aysin
-Aysin
 Aysin
 Aysu
 Aysuda
@@ -328,8 +314,6 @@ Belgizar
 Belgun
 Belguzar
 Belkis
-Belkis
-Belkisa
 Belkisa
 Belkise
 Belkiz
@@ -385,11 +369,9 @@ Besile
 Besim
 Besime
 Besire
-Besire
 Besna
 Besne
 Besra
-Besrayi
 Besrayi
 Besse
 Bessey
@@ -420,7 +402,6 @@ Bildane
 Bilen
 Bilge
 Bilgehan
-Bilgehan
 Bilgen
 Bilger
 Bilgi
@@ -450,7 +431,6 @@ Birnaz
 Birnur
 Birsel
 Birsen
-Birsen
 Birsengul
 Birtane
 Birten
@@ -467,13 +447,10 @@ Burcak
 Burcan
 Burce
 Burcin
-Burcin
-Burcu
 Burcu
 Burla
 Buse
 Busen
-Busra
 Busra
 Buyuk
 Cacani
@@ -540,8 +517,6 @@ Cezmiye
 Cicek
 Cidem
 Cigdem
-Cigdem
-Cigdem
 Cihan
 Cihangul
 Cile
@@ -549,7 +524,6 @@ Cilek
 Cilem
 Ciler
 Cimen
-Cinar
 Cinar
 Cisel
 Cisem
@@ -559,7 +533,6 @@ Claire
 Cuheyna
 Culpan
 Cumarez
-Cumaziye
 Cumaziye
 Cumhuriye
 Cumhuriyet
@@ -639,7 +612,6 @@ Done
 Donus
 Doyduk
 Dudu
-Dudu
 Duduhan
 Dudus
 Duldane
@@ -652,7 +624,6 @@ Durca
 Durcan
 Durdan
 Durdane
-Durdane
 Durdiye
 Durdu
 Durduca
@@ -661,12 +632,10 @@ Durdulu
 Durdunaz
 Duri
 Duriye
-Duriye
 Durmus
 Durna
 Durnel
 Durre
-Durri
 Durri
 Durriye
 Durruye
@@ -680,7 +649,6 @@ Durul
 Durusu
 Duruye
 Dusuze
-Duygu
 Duygu
 Ebazer
 Ebide
@@ -779,7 +747,6 @@ Ergun
 Erika
 Erna
 Ersin
-Ersin
 Erva
 Ese
 Eseli
@@ -830,7 +797,6 @@ Fadile
 Fadili
 Fadim
 Fadima
-Fadima
 Fadimana
 Fadime
 Fadimet
@@ -852,7 +818,6 @@ Farize
 Fasude
 Fatik
 Fatim
-Fatima
 Fatima
 Fatime
 Fatimet
@@ -880,7 +845,6 @@ Fazile
 Fazilet
 Fecia
 Fecri
-Fecriye
 Fecriye
 Fedai
 Feden
@@ -927,7 +891,6 @@ Ferrahnaz
 Ferran
 Feruzan
 Feruze
-Feruze
 Ferya
 Feryal
 Feryat
@@ -948,7 +911,6 @@ Feyfure
 Feyme
 Feyruse
 Feyruz
-Feyruz
 Feyruze
 Feyza
 Feyzan
@@ -961,7 +923,6 @@ Feznur
 Fidan
 Fidda
 Fidiye
-Figan
 Figan
 Figen
 Fikir
@@ -995,14 +956,12 @@ Fugen
 Ful
 Fulden
 Fulya
-Fulya
 Funda
 Funday
 Furdevis
 Furize
 Furuzan
 Furuze
-Fusun
 Fusun
 Gabrielle
 Gade
@@ -1016,13 +975,10 @@ Ganimet
 Ganiye
 Garibe
 Garip
-Garip
 Gaye
 Gayip
 Gazal
-Gazal
 Gazaley
-Gazali
 Gazali
 Gazap
 Gazel
@@ -1039,7 +995,6 @@ Gevher
 Gevi
 Gevri
 Gezal
-Gezal
 Gezer
 Girne
 Gizem
@@ -1051,7 +1006,6 @@ Gokay
 Gokben
 Gokbeni
 Gokce
-Gokcen
 Gokcen
 Gokcenur
 Goknur
@@ -1105,17 +1059,14 @@ Gulbiyaz
 Gulbiye
 Gulbun
 Gulcan
-Gulcan
 Gulcanan
 Gulcay
 Gulcemal
-Gulcen
 Gulcen
 Gulcicek
 Gulcihan
 Gulcim
 Gulcimen
-Gulcin
 Gulcin
 Gulciray
 Gulcun
@@ -1172,7 +1123,6 @@ Gulhediye
 Gulhizar
 Gulhuri
 Guli
-Guli
 Gulin
 Gulinaz
 Gulislam
@@ -1210,7 +1160,6 @@ Gulsade
 Gulsah
 Gulsan
 Gulsay
-Gulsay
 Gulse
 Gulseda
 Gulseher
@@ -1219,7 +1168,6 @@ Gulseli
 Gulsem
 Gulsema
 Gulsemin
-Gulsen
 Gulsen
 Gulsenem
 Gulser
@@ -1291,8 +1239,6 @@ Guntac
 Guran
 Guray
 Gurbet
-Gurbet
-Gurbet
 Gurbic
 Gurcan
 Gurci
@@ -1345,7 +1291,6 @@ Hafile
 Hafise
 Hafiye
 Hafiza
-Hafiza
 Hafize
 Hafsada
 Hafure
@@ -1389,7 +1334,6 @@ Hani
 Hanif
 Hanife
 Hanim
-Hanim
 Hanimsah
 Hanko
 Hankus
@@ -1409,7 +1353,6 @@ Harma
 Hasi
 Hasibe
 Hasime
-Hasime
 Hasine
 Hasiye
 Hasiyet
@@ -1421,7 +1364,6 @@ Hatce
 Hatem
 Hatey
 Hati
-Hatice
 Hatice
 Haticegul
 Haticetul
@@ -1447,7 +1389,6 @@ Havus
 Havva
 Hayal
 Hayat
-Hayic
 Hayic
 Hayirli
 Hayirlise
@@ -1515,7 +1456,6 @@ Hinnas
 Hisedar
 Hisna
 Hiyal
-Hiyal
 Hizni
 Hizniye
 Hizret
@@ -1528,7 +1468,6 @@ Hubiye
 Hubri
 Hudaver
 Hudaye
-Hudeyde
 Hudeyde
 Huhi
 Hulbiye
@@ -1546,24 +1485,19 @@ Humeyra
 Humeyran
 Humeyre
 Humra
-Humra
 Hunaf
 Hunney
 Hureyra
 Hureyre
 Huri
-Huri
 Hurinaz
 Huriye
-Huriye
-Huriyet
 Huriyet
 Huriyya
 Huriziye
 Hurmet
 Hurmiye
 Hurmuz
-Hurrem
 Hurrem
 Hurriyet
 Hurruyet
@@ -1579,13 +1513,11 @@ Huryan
 Husna
 Husne
 Husniye
-Husniye
 Husnugul
 Husnuye
 Husran
 Husulet
 Huveyde
-Huzeyfe
 Huzeyfe
 Huzeyme
 Huzne
@@ -1621,7 +1553,6 @@ Ilday
 Ildeniz
 Ilgen
 Ilgihan
-Ilgin
 Ilgin
 Ilham
 Ilhan
@@ -1669,7 +1600,6 @@ Irade
 Irahma
 Irap
 Iraz
-Iraz
 Irem
 Irep
 Irfan
@@ -1685,7 +1615,6 @@ Isin
 Iskin
 Islim
 Islimgulerman
-Ismahan
 Ismahan
 Ismehan
 Ismet
@@ -1703,7 +1632,6 @@ Jale
 Janet
 Jiyanda
 Julide
-Julide
 Kabet
 Kabul
 Kabule
@@ -1712,7 +1640,6 @@ Kader
 Kadere
 Kadim
 Kadime
-Kadin
 Kadin
 Kadire
 Kadiriye
@@ -1737,7 +1664,6 @@ Kardelen
 Karkas
 Kaside
 Katibe
-Kazi
 Kazi
 Kaziben
 Kazimen
@@ -1766,7 +1692,6 @@ Kezuban
 Kezzibani
 Kibar
 Kibriya
-Kibriya
 Kibriye
 Kifaye
 Kifayet
@@ -1781,7 +1706,6 @@ Kivilcim
 Kiyafet
 Kiymat
 Kiymet
-Kiymet
 Kiz
 Kizi
 Koca
@@ -1793,9 +1717,7 @@ Koncagul
 Koray
 Kubar
 Kubra
-Kubra
 Kucuk
-Kudret
 Kudret
 Kufayet
 Kuffey
@@ -1856,7 +1778,6 @@ Lostahan
 Louise
 Lukres
 Lulufer
-Lutfiye
 Lutfiye
 Lutfuye
 Luup
@@ -1992,7 +1913,6 @@ Memey
 Memihan
 Memmune
 Memnune
-Memnune
 Memune
 Memurhan
 Memuriye
@@ -2017,7 +1937,6 @@ Menisah
 Mensare
 Mensude
 Mensur
-Mensure
 Mensure
 Mensuriye
 Mentese
@@ -2059,7 +1978,6 @@ Meside
 Mesiha
 Mesika
 Meskure
-Meskure
 Mesrure
 Messe
 Messure
@@ -2067,8 +1985,6 @@ Mestinas
 Mesude
 Mesudiye
 Mesule
-Mesule
-Mesure
 Mesure
 Metanet
 Methiye
@@ -2079,7 +1995,6 @@ Mevhide
 Mevhube
 Mevlide
 Mevlidiye
-Mevlude
 Mevlude
 Mevludiye
 Mevra
@@ -2130,13 +2045,11 @@ Minire
 Minise
 Minnet
 Mintaha
-Mintaha
 Mintaiye
 Mintaze
 Mintezime
 Minure
 Minva
-Mirac
 Mirac
 Miraca
 Miran
@@ -2165,7 +2078,6 @@ Miyese
 Miyeser
 Miyesser
 Mizgin
-Mizgin
 Mofide
 Mohsine
 Mohubet
@@ -2178,7 +2090,6 @@ Muazzez
 Mubareke
 Mubarra
 Mubeccel
-Muberra
 Muberra
 Muberrah
 Muberya
@@ -2203,7 +2114,6 @@ Muessel
 Muesser
 Mufet
 Mufide
-Mufide
 Mufude
 Muge
 Mugen
@@ -2214,11 +2124,9 @@ Muhabbet
 Muhabet
 Muhbet
 Muhdiye
-Muhdiye
 Muheddet
 Muheyya
 Muhibbet
-Muhibe
 Muhibe
 Muhibet
 Muhide
@@ -2231,12 +2139,10 @@ Muhteber
 Muhtedir
 Muhterem
 Muhubbet
-Muhubbet
 Muhube
 Mujdat
 Mujde
 Mujdelife
-Mujgan
 Mujgan
 Mujgen
 Mujkan
@@ -2256,7 +2162,6 @@ Mukime
 Mukiye
 Mukrem
 Mukrime
-Mulayim
 Mulayim
 Mulkinas
 Mulkinaz
@@ -2279,8 +2184,6 @@ Munice
 Munife
 Munir
 Munire
-Munire
-Munise
 Munise
 Muntaha
 Muntaze
@@ -2289,14 +2192,12 @@ Munube
 Munufer
 Munure
 Munuse
-Munuse
 Muradiye
 Murakkaz
 Murat
 Murdegul
 Murfet
 Mursen
-Murside
 Murside
 Mursude
 Mursudiye
@@ -2313,18 +2214,15 @@ Musgen
 Mushan
 Muside
 Musliha
-Musliha
 Muslime
 Muslumat
 Muslume
-Mustakime
 Mustakime
 Mustekime
 Mustenire
 Musude
 Musudiye
 Mutaber
-Muteber
 Muteber
 Muterem
 Mutlu
@@ -2367,8 +2265,6 @@ Nafiye
 Nafize
 Nagehan
 Naghan
-Nagihan
-Nagihan
 Nagihan
 Nagile
 Nahibe
@@ -2427,7 +2323,6 @@ Nazende
 Nazey
 Nazgul
 Nazi
-Nazi
 Nazibe
 Nazide
 Nazife
@@ -2442,7 +2337,6 @@ Nazime
 Nazire
 Naziriye
 Naziye
-Nazli
 Nazli
 Nazligul
 Nazlihan
@@ -2468,7 +2362,6 @@ Necate
 Necibe
 Necife
 Necile
-Necla
 Necla
 Necli
 Necmiye
@@ -2519,7 +2412,6 @@ Nesem
 Nesep
 Nesibe
 Nesibegul
-Neside
 Neside
 Nesife
 Nesihat
@@ -2584,7 +2476,6 @@ Nida
 Nidal
 Nidem
 Nigar
-Nigar
 Nigare
 Nigarhan
 Nigmet
@@ -2601,7 +2492,6 @@ Nilda
 Nilfide
 Nilgul
 Nilgun
-Nilgun
 Nilhan
 Nilifer
 Nilofer
@@ -2615,7 +2505,6 @@ Nimet
 Nine
 Nirgun
 Nisa
-Nisan
 Nisan
 Nisangul
 Nisanur
@@ -2634,7 +2523,6 @@ Nuket
 Nukhet
 Nulfet
 Nulgun
-Nulifer
 Nulifer
 Nulufer
 Nur
@@ -2656,13 +2544,10 @@ Nurdem
 Nurden
 Nurdiye
 Nurdogan
-Nurdogan
 Nuren
 Nurey
 Nurfet
-Nurfet
 Nurgiz
-Nurgul
 Nurgul
 Nurgun
 Nurhak
@@ -2685,7 +2570,6 @@ Nursel
 Nurselin
 Nursema
 Nursen
-Nursen
 Nurseren
 Nurses
 Nursev
@@ -2695,7 +2579,6 @@ Nursime
 Nurtac
 Nurtamin
 Nurtekin
-Nurten
 Nurten
 Nurube
 Nurver
@@ -2712,7 +2595,6 @@ Obensen
 Ogey
 Oksan
 Olca
-Olcay
 Olcay
 Olga
 Olgu
@@ -2764,7 +2646,6 @@ Ozler
 Ozminire
 Oznay
 Oznur
-Oznur
 Pakistan
 Pakizar
 Pakize
@@ -2794,7 +2675,6 @@ Perinaz
 Perisan
 Perizade
 Perize
-Peruze
 Peruze
 Perveri
 Pervi
@@ -2913,10 +2793,8 @@ Rihayle
 Rihayye
 Rime
 Rindi
-Rindi
 Risan
 Rizka
-Rizkiye
 Rizkiye
 Rojat
 Rojda
@@ -2936,17 +2814,13 @@ Ruhizar
 Ruhkiye
 Ruhsal
 Ruhsan
-Ruhsan
 Ruhsat
 Ruhunaz
 Ruhuzan
 Ruken
 Rukiye
-Rukiye
 Rukiyet
 Ruksan
-Ruksan
-Rukus
 Rukus
 Rukuye
 Rukuyete
@@ -2954,13 +2828,10 @@ Rukyete
 Rumeysa
 Rusan
 Rusen
-Rusen
 Ruvayda
 Ruveyda
 Ruveyde
-Ruveyde
 Ruvide
-Ruya
 Ruya
 Ruzgar
 Ruziye
@@ -2993,7 +2864,6 @@ Sadile
 Sadire
 Sadise
 Sadiye
-Sadiye
 Saduman
 Sadumar
 Safahat
@@ -3004,7 +2874,6 @@ Safile
 Safinaz
 Safire
 Safiya
-Safiye
 Safiye
 Safiyenur
 Safiyye
@@ -3020,7 +2889,6 @@ Sahaser
 Sahdet
 Sahdiye
 Sahhander
-Sahibe
 Sahibe
 Sahiben
 Sahide
@@ -3044,7 +2912,6 @@ Sahsene
 Sahsenem
 Sahsine
 Sahure
-Saibe
 Saibe
 Saide
 Saile
@@ -3071,7 +2938,6 @@ Samime
 Samine
 Samire
 Samiye
-Samiye
 Samiyet
 Samure
 Sanem
@@ -3083,24 +2949,18 @@ Sanur
 Sapder
 Sapriye
 Sara
-Sara
 Sarah
 Saray
 Sarayi
 Sardane
 Sare
-Sare
-Sari
-Sari
 Sari
 Sariban
 Sarica
 Sariha
 Sariya
-Sariya
 Sariye
 Sarya
-Sati
 Sati
 Satiye
 Saver
@@ -3111,7 +2971,6 @@ Sayan
 Saybe
 Saydet
 Sayen
-Sayeste
 Sayeste
 Sayet
 Saygi
@@ -3169,7 +3028,6 @@ Sefiga
 Sefika
 Sefike
 Sefile
-Sefiye
 Sefiye
 Sefkat
 Sefre
@@ -3268,8 +3126,6 @@ Semsa
 Semse
 Semsey
 Semsi
-Semsi
-Semsi
 Semsihan
 Semsinur
 Semsul
@@ -3280,8 +3136,6 @@ Senal
 Senan
 Senar
 Senay
-Senay
-Sencan
 Sencan
 Sencay
 Sencel
@@ -3296,14 +3150,12 @@ Sener
 Sengin
 Sengonul
 Sengul
-Sengul
 Sengulsen
 Sengun
 Seniha
 Seniye
 Seniz
 Sennur
-Senol
 Senol
 Senure
 Senyurt
@@ -3317,14 +3169,12 @@ Serbay
 Sercan
 Sercen
 Sercin
-Sercin
 Serda
 Serdal
 Serdar
 Serdare
 Seref
 Serefnur
-Seren
 Seren
 Serengul
 Serfinaz
@@ -3336,11 +3186,9 @@ Serican
 Serif
 Serife
 Serin
-Serin
 Serinay
 Serini
 Serma
-Sermin
 Sermin
 Serpil
 Serpin
@@ -3352,7 +3200,6 @@ Servi
 Servin
 Setanay
 Setenay
-Seval
 Seval
 Sevban
 Sevcan
@@ -3367,7 +3214,6 @@ Sevdiye
 Seven
 Sevengul
 Sever
-Sevgi
 Sevgi
 Sevgil
 Sevgili
@@ -3397,7 +3243,6 @@ Sevtap
 Sevzan
 Seyare
 Seycan
-Seyda
 Seyda
 Seydanur
 Seyde
@@ -3430,8 +3275,6 @@ Sezin
 Sezman
 Sibel
 Siddika
-Siddika
-Sidika
 Sidika
 Sidike
 Sidki
@@ -3444,7 +3287,6 @@ Siir
 Sila
 Silay
 Silcan
-Sima
 Sima
 Simal
 Simaperi
@@ -3472,7 +3314,6 @@ Siti
 Sitkiya
 Sitkiye
 Sitti
-Sitti
 Sittiga
 Sittika
 Sittiye
@@ -3495,7 +3336,6 @@ Sonbahar
 Sonel
 Soner
 Songul
-Songul
 Songun
 Sonmez
 Sonnur
@@ -3512,14 +3352,12 @@ Sude
 Sudiye
 Sueda
 Sufeyla
-Sufeyla
 Sufide
 Sugle
 Suha
 Suhan
 Suhendan
 Suher
-Suheyda
 Suheyda
 Suheyla
 Suhilet
@@ -3530,15 +3368,12 @@ Sukruye
 Sukur
 Sulan
 Sulbiye
-Sulbiye
-Sule
 Sule
 Suleybe
 Suleydam
 Suleyha
 Suleyya
 Sulfiye
-Sulhiye
 Sulhiye
 Sultan
 Sultaniye
@@ -3555,16 +3390,12 @@ Sumeyda
 Sumeyha
 Sumeyla
 Sumeyra
-Sumeyra
 Sumeyya
 Sumeyye
 Sumran
 Sumru
-Sumru
-Suna
 Suna
 Sunar
-Sunay
 Sunay
 Sunayet
 Sunbul
@@ -3576,16 +3407,11 @@ Suphan
 Suphiye
 Supiye
 Sura
-Sura
-Surethan
 Surethan
 Sureya
-Sureya
-Sureyya
 Sureyya
 Sureyye
 Suriya
-Suriye
 Suriye
 Surme
 Surmeli
@@ -3595,9 +3421,7 @@ Suruyet
 Susan
 Susanne
 Susen
-Susen
 Susenber
-Susin
 Susin
 Suslu
 Susun
@@ -3606,10 +3430,8 @@ Suuile
 Suule
 Suveybe
 Suveyda
-Suveyda
 Suveydam
 Suveyla
-Suzan
 Suzan
 Suzar
 Suzen
@@ -3698,22 +3520,17 @@ Tolunay
 Tomris
 Tore
 Tuba
-Tuba
 Tubag
 Tubanur
 Tubay
 Tuce
 Tugba
-Tugba
-Tugce
-Tugce
 Tugce
 Tugcenur
 Tugen
 Tuhfe
 Tuhfetullah
 Tukezban
-Tulay
 Tulay
 Tulin
 Tulkubra
@@ -3724,7 +3541,6 @@ Tumay
 Tuna
 Tunahan
 Tunay
-Tuncay
 Tuncay
 Tunga
 Turay
@@ -3772,7 +3588,6 @@ Ulufer
 Ulus
 Ulver
 Ulviye
-Ulviye
 Ulya
 Ulye
 Umahan
@@ -3782,10 +3597,7 @@ Umigulsum
 Umit
 Ummahan
 Ummahani
-Ummahani
-Ummahani
 Umman
-Ummehani
 Ummehani
 Ummihan
 Ummiye
@@ -3793,29 +3605,19 @@ Ummu
 Ummudursun
 Ummugul
 Ummugulsum
-Ummugulsum
 Ummugulsun
 Ummugusu
 Ummugusun
 Ummuhan
-Ummuhan
-Ummuhani
-Ummuhani
-Ummuhani
-Ummuhani
 Ummuhani
 Ummulu
-Ummulu
-Ummus
 Ummus
 Ummusen
-Ummusu
 Ummusu
 Ummusum
 Ummusun
 Ummuye
 Umral
-Umran
 Umran
 Umre
 Umrihan
@@ -3823,9 +3625,7 @@ Umriye
 Umu
 Umuhan
 Umus
-Umus
 Umusen
-Umut
 Umut
 Unal
 Unifer
@@ -3837,7 +3637,6 @@ Upek
 Ureyne
 Urfiye
 Urke
-Urkiye
 Urkiye
 Urku
 Urkus
@@ -3854,7 +3653,6 @@ Util
 Utiye
 Uveyis
 Uveyla
-Uveys
 Uveys
 Uygun
 Uzay
@@ -3909,7 +3707,6 @@ Vural
 Vuslat
 Yade
 Yadigar
-Yadigar
 Yadikar
 Yagmur
 Yahsan
@@ -3929,7 +3726,6 @@ Yazgi
 Yazgul
 Yazgule
 Yazgulu
-Yazi
 Yazi
 Yazile
 Yedigar
@@ -3975,7 +3771,6 @@ Yurdanur
 Yurdanural
 Yurdasen
 Yurttan
-Yusra
 Yusra
 Zade
 Zafen
@@ -4096,7 +3891,6 @@ Zubeyde
 Zufal
 Zugeyra
 Zuhal
-Zuhal
 Zuheyla
 Zuhra
 Zuhre
@@ -4107,7 +3901,6 @@ Zulbiye
 Zulel
 Zuleyha
 Zulfey
-Zulfi
 Zulfi
 Zulfide
 Zulfinaz
@@ -4125,7 +3918,6 @@ Zumrete
 Zumriye
 Zumrut
 Zumruye
-Zure
 Zure
 Zuriye
 Zuruye

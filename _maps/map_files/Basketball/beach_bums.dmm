@@ -176,7 +176,7 @@
 /turf/open/misc/beach/coast,
 /area/centcom/basketball)
 "wN" = (
-/obj/machinery/jukebox,
+/obj/machinery/electrical_jukebox/public,
 /turf/open/misc/beach/sand,
 /area/centcom/basketball)
 "xe" = (

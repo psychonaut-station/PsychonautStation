@@ -118,6 +118,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_ANIMAL,
 	)
 	weight = 5
 	cost = 8

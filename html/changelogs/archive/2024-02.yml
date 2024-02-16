@@ -317,16 +317,6 @@
   necromanceranne:
   - bugfix: The shove blocker module parent type now has the correct typepath.
 2024-02-12:
-  Seefaaa:
-  - bugfix: "Eski Delta Station ve MiniStation'\u0131n Mining Office'i boulder beacon\
-      \ ile ba\u015Flayacak"
-  exdal:
-  - bugfix: Fonttaki lathelerde cikan arti isareti duzeltildi
-  - rscdel: Bridge Assistant kaldirildi
-  - bugfix: configde random appearance flagi olmasina ragmen sadece isimleri randomize
-      etme olayi fixlendi
-  - rscdel: "\u0131\u015F\u0131klar art\u0131k patlamalardan yan\u0131p s\xF6nmeyecek\
-      \ (sm ve grav gen dahil de\u011Fil)"
   Atlasle, JohnFulpWillard:
   - rscadd: Adds the Touchy quirk, you need to be next to something to examine it,
       for 2 extra quirk points.
@@ -348,6 +338,9 @@
   - rscadd: 3 new masks for your characters (thanks to Kovac for the scarf sprites)
   Rhials:
   - bugfix: You can now click things as an alien larva again.
+  Seefaaa:
+  - bugfix: "Eski Delta Station ve MiniStation'\u0131n Mining Office'i boulder beacon\
+      \ ile ba\u015Flayacak"
   SyncIt21:
   - bugfix: machines that should not drop contents when deleted no longer do.
   - refactor: refactors how machines are deconstructed. report bugs on github.
@@ -355,6 +348,13 @@
   - bugfix: The wizard's pets Jimmy and Jommy no longer fight to the death.
   Xander3359:
   - balance: Contractor kit no longer gets RNG items, it's a specific pool now
+  exdal:
+  - bugfix: Fonttaki lathelerde cikan arti isareti duzeltildi
+  - rscdel: Bridge Assistant kaldirildi
+  - bugfix: configde random appearance flagi olmasina ragmen sadece isimleri randomize
+      etme olayi fixlendi
+  - rscdel: "\u0131\u015F\u0131klar art\u0131k patlamalardan yan\u0131p s\xF6nmeyecek\
+      \ (sm ve grav gen dahil de\u011Fil)"
   mc-oofert:
   - rscadd: nanotrasen museum gateway map
 2024-02-13:
@@ -404,11 +404,6 @@
       gloves now look bloody when worn, and damaged gloves now look damaged when worn
   - bugfix: Gaining or losing an arm now correctly updates your hand overlays
 2024-02-14:
-  exdal:
-  - rscadd: 'Public Jukebox: Beach Bum, Cruise ve Disco Inferno shuttlelarina herkesin
-      kullanabilecegi jukebox eklendi'
-  Zergspower:
-  - bugfix: icebox ore generation underground is normal again
   Absolucy:
   - rscadd: Painkillers (i.e morphine, miner's salve) now actually induce analgesic
       effects, preventing various pain-related effects, such as screaming due to pain,
@@ -436,6 +431,11 @@
   - bugfix: knit flesh now heals organs as intended, and does not cause its victims
       to be red forever if interrupted
   - spellcheck: knit flesh chat messages are no longer gramatically incorrect
+  Zergspower:
+  - bugfix: icebox ore generation underground is normal again
+  exdal:
+  - rscadd: 'Public Jukebox: Beach Bum, Cruise ve Disco Inferno shuttlelarina herkesin
+      kullanabilecegi jukebox eklendi'
   vinylspiders:
   - bugfix: '*wag emote is now functional again'
 2024-02-15:
@@ -457,3 +457,11 @@
   - bugfix: Valentines no longer see themselves covered in hearts. They only see their
       Valentine covered in hearts.
   - balance: Scientists have discovered Nuka Cola is not good for short term health.
+2024-02-16:
+  Kylerace:
+  - admin: admins/maintainers can now make the profiler focus on specific subsystems
+      by setting the subsystem var profile_focused to TRUE
+  LemonInTheDark:
+  - refactor: Fucks with how movement keys are handled. Please report any bugs
+  exdal:
+  - balance: assemblybomb'lar tekrardan bulky

@@ -465,3 +465,6 @@
   - refactor: Fucks with how movement keys are handled. Please report any bugs
   exdal:
   - balance: assemblybomb'lar tekrardan bulky
+2024-02-17:
+  exdal:
+  - bugfix: Animal artik blood brother olamayacak

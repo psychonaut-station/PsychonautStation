@@ -20,6 +20,11 @@
 
 	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text)
 
+/atom/proc/balloon_warning(mob/viewer, text)
+	SHOULD_NOT_SLEEP(TRUE)
+
+	INVOKE_ASYNC(src, PROC_REF(balloon_warning_perform), viewer, text)
+
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
 /atom/proc/balloon_alert_to_viewers(message, self_message, vision_distance = DEFAULT_MESSAGE_RANGE, list/ignored_mobs)
@@ -88,6 +93,61 @@
 	// We could lose our loc, and still need to talk to our client, so they are done seperately
 	addtimer(CALLBACK(balloon_alert.loc, PROC_REF(forget_balloon_alert), balloon_alert), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_client), balloon_alert, viewer_client), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
+
+// Do not use.
+// MeasureText blocks. I have no idea for how long.
+// I would've made the maptext_height update on its own, but I don't know
+// if this would look bad on laggy clients.
+/atom/proc/balloon_warning_perform(mob/viewer, text)
+
+	var/client/viewer_client = viewer?.client
+	if (isnull(viewer_client))
+		return
+
+	var/bound_width = world.icon_size
+	if (ismovable(src))
+		var/atom/movable/movable_source = src
+		bound_width = movable_source.bound_width
+
+	var/image/balloon_warning = image(loc = isturf(src) ? src : get_atom_on_turf(src), layer = ABOVE_MOB_LAYER)
+	SET_PLANE_EXPLICIT(balloon_warning, BALLOON_CHAT_PLANE, src)
+	balloon_warning.alpha = 0
+	balloon_warning.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+	balloon_warning.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005; color:red;'><b>[text]</b></span>")
+	balloon_warning.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
+	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH), balloon_warning.maptext_height)
+	balloon_warning.maptext_width = BALLOON_TEXT_WIDTH
+
+	viewer_client?.images += balloon_warning
+
+	var/length_mult = 1 + max(0, length(strip_html_full(text)) - BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MIN) * BALLOON_TEXT_CHAR_LIFETIME_INCREASE_MULT
+
+	animate(
+		balloon_warning,
+		pixel_y = world.icon_size * 1.2,
+		time = BALLOON_TEXT_TOTAL_LIFETIME(length_mult),
+		easing = SINE_EASING | EASE_OUT,
+	)
+
+	animate(
+		alpha = 255,
+		time = BALLOON_TEXT_SPAWN_TIME,
+		easing = CUBIC_EASING | EASE_OUT,
+		flags = ANIMATION_PARALLEL,
+	)
+
+	animate(
+		alpha = 0,
+		time = BALLOON_TEXT_FULLY_VISIBLE_TIME * length_mult,
+		easing = CUBIC_EASING | EASE_IN,
+	)
+
+	LAZYADD(update_on_z, balloon_warning)
+	// These two timers are not the same
+	// One manages the relation to the atom that spawned us, the other to the client we're displaying to
+	// We could lose our loc, and still need to talk to our client, so they are done seperately
+	addtimer(CALLBACK(balloon_warning.loc, PROC_REF(forget_balloon_alert), balloon_warning), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
+	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_image_from_client), balloon_warning, viewer_client), BALLOON_TEXT_TOTAL_LIFETIME(length_mult))
 
 /atom/proc/forget_balloon_alert(image/balloon_alert)
 	LAZYREMOVE(update_on_z, balloon_alert)

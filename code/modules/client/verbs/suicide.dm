@@ -1,16 +1,25 @@
 /// Verb to simply kill yourself (in a very visual way to all players) in game! How family-friendly. Can be governed by a series of multiple checks (i.e. confirmation, is it allowed in this area, etc.) which are
 /// handled and called by the proc this verb invokes. It's okay to block this, because we typically always give mobs in-game the ability to Ghost out of their current mob irregardless of context. This, in contrast,
 /// can have as many different checks as you desire to prevent people from doing the deed to themselves.
+/// If baloon = True, it shows a balloon_warning to suicide, Exit menu dont shows balloon
 /mob/living/verb/suicide()
 	set hidden = TRUE
-	handle_suicide()
+	handle_suicide(balloon = TRUE)
+
+/mob/living/verb/tgui_suicide()
+	set hidden = TRUE
+	handle_suicide(balloon = FALSE)
 
 /// Actually handles the bare basics of the suicide process. Message type is the message we want to dispatch in the world regarding the suicide, using the defines in this file.
 /// Override this ENTIRELY if you want to add any special behavior to your suicide handling, if you fuck up the order of operations then shit will break.
-/mob/living/proc/handle_suicide()
+/mob/living/proc/handle_suicide(balloon = TRUE)
 	SHOULD_CALL_PARENT(FALSE)
-	if(!suicide_alert())
-		return
+	if(balloon)
+		if(!suicide_baloon_alert())
+			return
+	else
+		if(!suicide_alert())
+			return
 
 	set_suicide(TRUE)
 	send_applicable_messages()
@@ -43,6 +52,29 @@
 	if(confirm == "Yes")
 		return TRUE
 
+	balloon_alert(src, "suicide attempt aborted!")
+	return FALSE
+
+/// Sends a balloon_warning to the person attempting to commit suicide. Returns TRUE if they use it again, FALSE otherwise. Check can_suicide here as well.
+/mob/living/proc/suicide_baloon_alert()
+
+	var/oldkey = ckey
+	if(!can_suicide())
+		return FALSE
+	if(HAS_TRAIT_FROM_ONLY(src, TRAIT_SUICIDE_VERB, REF(src)))
+		if(!can_suicide() || (ckey != oldkey))
+			return FALSE
+		REMOVE_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
+		return TRUE
+	else
+		balloon_warning(src, "Are you sure you want to commit suicide? \n If you sure, use this command again..!")
+		ADD_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
+		addtimer(CALLBACK(src, PROC_REF(abortSuicide)), 15 SECONDS)
+	return FALSE
+
+//Just for abort callback
+/mob/living/proc/abortSuicide()
+	REMOVE_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
 	balloon_alert(src, "suicide attempt aborted!")
 	return FALSE
 

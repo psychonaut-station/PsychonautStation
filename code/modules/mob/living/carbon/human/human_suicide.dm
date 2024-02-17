@@ -4,9 +4,13 @@
 #define HUMAN_COMBAT_MODE_SUICIDE_MESSAGE "combat mode message"
 #define HUMAN_DEFAULT_MODE_SUICIDE_MESSAGE "default mode message"
 
-/mob/living/carbon/human/handle_suicide()
-	if(!suicide_alert())
-		return
+/mob/living/carbon/human/handle_suicide(balloon = TRUE)
+	if(balloon)
+		if(!suicide_baloon_alert())
+			return
+	else
+		if(!suicide_alert())
+			return
 
 	set_suicide(TRUE) //need to be called before calling suicide_act as fuck knows what suicide_act will do with your suicide
 

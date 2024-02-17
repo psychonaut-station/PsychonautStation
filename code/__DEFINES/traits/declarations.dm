@@ -833,6 +833,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// For clarity, this trait should always be associated/tied to a reference to the mob that suicided- not anything else.
 #define TRAIT_SUICIDED "committed_suicide"
 
+/// A trait used for control purposes when using suicide verb
+#define TRAIT_SUICIDE_VERB "comitting_suicide_verb"
+
 /// Trait given to a living mob to prevent wizards from making it immortal
 #define TRAIT_PERMANENTLY_MORTAL "permanently_mortal"
 

@@ -69,7 +69,7 @@
 
 	// Not guaranteed to be human. Everything defines verb/suicide separately. Fuck you, still.
 	var/mob/living/carbon/human/human_user = client?.mob
-	human_user?.suicide()
+	human_user?.tgui_suicide()
 
 /atom/movable/screen/escape_menu/leave_body_button
 	icon = 'icons/hud/escape_menu_leave_body.dmi'

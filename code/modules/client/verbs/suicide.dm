@@ -6,13 +6,9 @@
 	set hidden = TRUE
 	handle_suicide(balloon = TRUE)
 
-/mob/living/verb/tgui_suicide()
-	set hidden = TRUE
-	handle_suicide(balloon = FALSE)
-
 /// Actually handles the bare basics of the suicide process. Message type is the message we want to dispatch in the world regarding the suicide, using the defines in this file.
 /// Override this ENTIRELY if you want to add any special behavior to your suicide handling, if you fuck up the order of operations then shit will break.
-/mob/living/proc/handle_suicide(balloon = TRUE)
+/mob/living/proc/handle_suicide(balloon = FALSE)
 	SHOULD_CALL_PARENT(FALSE)
 	if(balloon)
 		if(!suicide_baloon_alert())
@@ -67,7 +63,7 @@
 		REMOVE_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
 		return TRUE
 	else
-		balloon_warning(src, "Are you sure you want to commit suicide? \n If you sure, use this command again..!", 400)
+		balloon_warning(src, "Are you sure you want to commit suicide? \n If you sure, use this command again..!", 300)
 		ADD_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
 		addtimer(CALLBACK(src, PROC_REF(abortSuicide)), 15 SECONDS)
 	return FALSE

@@ -87,6 +87,9 @@
 		adminlog = TRUE,
 		ignorecap = TRUE
 	)
+
+	creak_lights()
+	
 	return TRUE
 
 /// Spawns a scrung and eat the SM.

@@ -109,7 +109,10 @@
 
 /obj/machinery/electrical_jukebox/examine(mob/user)
 	. = ..()
-	. += span_notice("It is owned by [owner_account?.account_holder || "unknown"].")
+
+	if(!isnull(owner_account))
+		. += span_notice("It is owned by [owner_account.account_holder].")
+
 	if(youtubedl_configured)
 		if(is_playing())
 			. += span_notice("It is playing [player.track.title] added by [player.track.mob_name || "unknown"].")
@@ -431,6 +434,12 @@
 	jukebox.anchored = FALSE
 
 	qdel(src)
+
+/obj/machinery/electrical_jukebox/public
+	name = "public electrical jukebox"
+
+/obj/machinery/electrical_jukebox/public/can_use(mob/living/user)
+	return TRUE
 
 #undef STOP
 #undef REMOVEQUEUE

@@ -15,15 +15,15 @@
  * * mob/viewer: The mob the text will be shown to. Nullable (But only in the form of it won't runtime).
  * * text: The text to be shown to viewer. Must not be null.
  */
-/atom/proc/balloon_alert(mob/viewer, text)
+/atom/proc/balloon_alert(mob/viewer, text, width = BALLOON_TEXT_WIDTH)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text)
+	INVOKE_ASYNC(src, PROC_REF(balloon_alert_perform), viewer, text, width)
 
-/atom/proc/balloon_warning(mob/viewer, text)
+/atom/proc/balloon_warning(mob/viewer, text, width = BALLOON_TEXT_WIDTH)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	INVOKE_ASYNC(src, PROC_REF(balloon_warning_perform), viewer, text)
+	INVOKE_ASYNC(src, PROC_REF(balloon_warning_perform), viewer, text, width)
 
 /// Create balloon alerts (text that floats up) to everything within range.
 /// Will only display to people who can see.
@@ -43,8 +43,8 @@
 // MeasureText blocks. I have no idea for how long.
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
-/atom/proc/balloon_alert_perform(mob/viewer, text)
-
+/atom/proc/balloon_alert_perform(mob/viewer, text, custom_width)
+	var custom_text_width = custom_width
 	var/client/viewer_client = viewer?.client
 	if (isnull(viewer_client))
 		return
@@ -59,9 +59,9 @@
 	balloon_alert.alpha = 0
 	balloon_alert.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
 	balloon_alert.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005'>[text]</span>")
-	balloon_alert.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
-	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH), balloon_alert.maptext_height)
-	balloon_alert.maptext_width = BALLOON_TEXT_WIDTH
+	balloon_alert.maptext_x = (custom_text_width - bound_width) * -0.5
+	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, custom_text_width), balloon_alert.maptext_height)
+	balloon_alert.maptext_width = custom_text_width
 
 	viewer_client?.images += balloon_alert
 
@@ -98,8 +98,8 @@
 // MeasureText blocks. I have no idea for how long.
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
-/atom/proc/balloon_warning_perform(mob/viewer, text)
-
+/atom/proc/balloon_warning_perform(mob/viewer, text, custom_width)
+	var custom_text_width = custom_width
 	var/client/viewer_client = viewer?.client
 	if (isnull(viewer_client))
 		return
@@ -114,9 +114,9 @@
 	balloon_warning.alpha = 0
 	balloon_warning.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
 	balloon_warning.maptext = MAPTEXT("<span style='text-align: center; -dm-text-outline: 1px #0005; color:red;'><b>[text]</b></span>")
-	balloon_warning.maptext_x = (BALLOON_TEXT_WIDTH - bound_width) * -0.5
-	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, BALLOON_TEXT_WIDTH), balloon_warning.maptext_height)
-	balloon_warning.maptext_width = BALLOON_TEXT_WIDTH
+	balloon_warning.maptext_x = (custom_text_width - bound_width) * -0.5
+	WXH_TO_HEIGHT(viewer_client?.MeasureText(text, null, custom_text_width), balloon_warning.maptext_height)
+	balloon_warning.maptext_width = custom_text_width
 
 	viewer_client?.images += balloon_warning
 

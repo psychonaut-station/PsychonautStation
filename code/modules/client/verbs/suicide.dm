@@ -63,7 +63,7 @@
 		REMOVE_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
 		return TRUE
 	else
-		balloon_warning(src, "Are you sure you want to commit suicide? \n If you sure, use this command again..!", 300)
+		balloon_warning(src, "Are you sure you want to commit suicide?\nIf you are sure, use this command again..!", 300)
 		ADD_TRAIT(src, TRAIT_SUICIDE_VERB, REF(src))
 		addtimer(CALLBACK(src, PROC_REF(abortSuicide)), 15 SECONDS)
 	return FALSE

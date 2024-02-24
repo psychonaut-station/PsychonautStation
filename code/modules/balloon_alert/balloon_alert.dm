@@ -44,7 +44,7 @@
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
 /atom/proc/balloon_alert_perform(mob/viewer, text, custom_width)
-	var custom_text_width = custom_width
+	var/custom_text_width = custom_width
 	var/client/viewer_client = viewer?.client
 	if (isnull(viewer_client))
 		return
@@ -99,7 +99,7 @@
 // I would've made the maptext_height update on its own, but I don't know
 // if this would look bad on laggy clients.
 /atom/proc/balloon_warning_perform(mob/viewer, text, custom_width)
-	var custom_text_width = custom_width
+	var/custom_text_width = custom_width
 	var/client/viewer_client = viewer?.client
 	if (isnull(viewer_client))
 		return

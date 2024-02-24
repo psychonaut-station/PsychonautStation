@@ -440,6 +440,10 @@
 
 	if(LAZYLEN(assembly.assemblies) == igniter_count)
 		return
+	
+	if(isitem(loc)) // we are in a storage item
+		balloon_alert(user, "can't reach!")
+		return
 
 	if(isitem(loc)) // we are in a storage item
 		balloon_alert(user, "cant reach it!")

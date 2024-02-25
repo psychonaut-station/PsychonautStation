@@ -469,10 +469,6 @@
   exdal:
   - balance: assemblybomb'lar tekrardan bulky
 2024-02-17:
-  WinterDarkraven:
-  - rscadd: In an attempt to stop the greytide, NanoTrasen has increased security's
-      baton energy output. This has, through testing, done nothing but make the device
-      spark more than it used to.
   00-Steven:
   - bugfix: Space cats CAN into space. (They're back to surviving being in unsuitable
       atmos.)
@@ -503,6 +499,10 @@
       boulders too
   Thunder12345:
   - qol: The bitrunning quantum console UI now lists domains in tabs by difficulty.
+  WinterDarkraven:
+  - rscadd: In an attempt to stop the greytide, NanoTrasen has increased security's
+      baton energy output. This has, through testing, done nothing but make the device
+      spark more than it used to.
   destrucktoid:
   - bugfix: Restorative Nanites now heal Slimepeople just as well as they do other
       people.
@@ -714,3 +714,7 @@
   vinylspiders:
   - bugfix: fixes spurious CI failure in museum
   - code_imp: adds a blacklist feature to spawners
+2024-02-25:
+  bigfatbananacyclops:
+  - rscadd: floortile camouflage suit, boots, gloves and crate containing the former
+      items

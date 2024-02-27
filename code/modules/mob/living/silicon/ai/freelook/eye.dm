@@ -33,7 +33,7 @@
 /mob/camera/ai_eye/examine(mob/user) //Displays a silicon's laws to ghosts
 	. = ..()
 	if(istype(ai) && ai.laws && isobserver(user))
-		. += "<b>[ai] has the following laws:</b>"
+		. += "<b>[ai] aşağıdaki yasalara sahiptir:</b>"
 		for(var/law in ai.laws.get_law_list(include_zeroth = TRUE))
 			. += law
 

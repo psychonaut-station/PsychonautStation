@@ -1,0 +1,6 @@
+author: "exdal"
+delete-after: True
+changes:
+  - rscadd: "Traitor codeword'lari artik Turkce"
+  - rscadd: "Ion yasalari artik Turkce"
+  - rscadd: "Changelog artik repo'ya isaret ediyor"

@@ -2789,7 +2789,7 @@
 /area/station/cargo/storage)
 "hb" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /mob/living/basic/chicken{
 	name = "Horse";
 	real_name = "Horse"
@@ -2808,7 +2808,7 @@
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
 "hd" = (
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/structure/bed,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/carpet,

@@ -9254,7 +9254,7 @@
 /area/station/ai_monitored/turret_protected/ai)
 "bCA" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
@@ -31290,7 +31290,7 @@
 /obj/structure/bed,
 /obj/machinery/light/directional/north,
 /obj/machinery/status_display/evac/directional/north,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
 "ekH" = (
@@ -36723,7 +36723,7 @@
 "fWz" = (
 /obj/structure/bed,
 /obj/effect/decal/cleanable/dirt/dust,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
@@ -43568,7 +43568,7 @@
 /area/station/medical/treatment_center)
 "hUv" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /turf/open/floor/iron/grimy,
 /area/station/commons/dorms)
 "hUE" = (
@@ -46011,7 +46011,7 @@
 /area/station/maintenance/starboard/aft)
 "iFr" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "iFs" = (
@@ -95588,7 +95588,7 @@
 /obj/structure/bed,
 /obj/machinery/light/directional/south,
 /obj/machinery/status_display/evac/directional/south,
-/obj/item/bedsheet/dorms,
+/obj/effect/spawner/random/bedsheet,
 /turf/open/floor/carpet,
 /area/station/commons/dorms)
 "xuG" = (

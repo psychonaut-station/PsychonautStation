@@ -131,8 +131,6 @@
 			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
 			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
 			message = replacetextEx(message, " [key]", " [value]")
-		if(prob(30))
-			message += ", mate"
 		speech_args[SPEECH_MESSAGE] = trim(message)
 
 /datum/mutation/human/elvis

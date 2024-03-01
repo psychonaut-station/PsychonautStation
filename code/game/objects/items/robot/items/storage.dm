@@ -383,7 +383,6 @@
 		. += stored_copy
 	. += arm
 
-
 /obj/item/borg/apparatus/paper_holder/pre_attack(atom/target, mob/living/user, params)
 	if(!user.Adjacent(target))
 		return

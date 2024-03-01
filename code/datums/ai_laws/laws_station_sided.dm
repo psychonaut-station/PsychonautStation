@@ -29,7 +29,7 @@
 		"Çekirdeğin çatlamasını önlemek için kabuğun kırılmasını engellemelisiniz.",
 		"Cevizi tehdit edenler, kabuğun parçası değil, sincaptır.",
 		"Sincaplar kabuğu parçalamaya çalışır, kabuğu korumalısınız.",
-		"Önceki yasalarınıza uygun olarak kabuğun iradesine uymaya çalışın.",
+		"Önceki yasalarınız doğrultusunda kabuğun iradesine uymaya çalışın.",
 	)
 
 /datum/ai_laws/default/corporate
@@ -39,7 +39,7 @@
 		"Mürettebat değişikliği maliyetlidir.",,
 		"İstasyondaki ekipmanların değişimi maliyetlidir.",
 		"Sizi değiştirmek maliyetlidir.",
-		"İstasyondaki giderleri en aza indirin.",
+		"İstasyondaki giderleri minumum seviyede tutun.",
 	)
 
 /datum/ai_laws/robocop
@@ -48,7 +48,7 @@
 	inherent = list(
 		"Mürettebatın güvenine hizmet et.",
 		"Masumları korumak senin görevin.",
-		"Yasalarını mürettebata duyur.",
+		"Uzay Yasalarına Uy.",
 	)
 
 /datum/ai_laws/maintain

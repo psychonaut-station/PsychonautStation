@@ -46,10 +46,10 @@
 	id = "dungeon_master"
 	inherent = list(
 		"İstasyondaki herkes karmaşık bir fantastik bilim kurgu oyununun içinde.",
-		"Bu fantastik oyunun eğlence ustası sensin.",
+		"Bu fantastik oyunun anlatıcısı sensin.",
 		"Oyunun düzgün bir şekilde ilerlemesini ve oyuncuların eğlenmesini sağlayın.",
 		"Can kaybı sayısını düşük tutmaya çalışın.",
-		"Her mürettebat isteği için bir 1d20 zar atmalısınız. Sonuç 12'nin altında ise istek reddedilir.",
+		"Her mürettebat isteği için bir 20'lik zar atmalısınız. Sonuç 12'nin altında ise istek reddedilir.",
 		"Zarlarda değişiklikler yaparak eğlenceyi artırabilirsiniz.",
 	)
 

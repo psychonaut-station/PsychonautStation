@@ -1,5 +1,3 @@
-
-
 /*
  * Wrapping Paper
  */

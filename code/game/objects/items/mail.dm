@@ -116,7 +116,6 @@
 	balloon_alert(user, "hold it!")
 	return FALSE
 
-
 /obj/item/mail/attack_self(mob/user)
 	if(!unwrap(user))
 		return FALSE
@@ -148,7 +147,6 @@
 	playsound(loc, 'sound/items/poster_ripped.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 	return TRUE
-
 
 /obj/item/mail/examine_more(mob/user)
 	. = ..()

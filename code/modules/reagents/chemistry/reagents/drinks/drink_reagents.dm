@@ -283,7 +283,7 @@
 /datum/reagent/consumable/tea
 	name = "Tea"
 	description = "Tasty black tea, it has antioxidants, it's good for you!"
-	color = "#101000" // rgb: 16, 16, 0
+	color = "#771a09"
 	nutriment_factor = 0
 	taste_description = "tart black tea"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
@@ -454,8 +454,10 @@
 	affected_mob.set_drugginess(1 MINUTES * REM * seconds_per_tick)
 	affected_mob.adjust_dizzy(3 SECONDS * REM * seconds_per_tick)
 	affected_mob.remove_status_effect(/datum/status_effect/drowsiness)
-	affected_mob.AdjustSleeping(-40 * REM * seconds_per_tick)
+	affected_mob.AdjustSleeping(-4 SECONDS * REM * seconds_per_tick)
 	affected_mob.adjust_bodytemperature(-5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick, affected_mob.get_body_temp_normal())
+	if (SSradiation.can_irradiate_basic(affected_mob))
+		affected_mob.AddComponent(/datum/component/irradiated)
 
 /datum/reagent/consumable/rootbeer
 	name = "root beer"
@@ -497,18 +499,14 @@
 	quality = DRINK_VERYGOOD
 	taste_description = "carbonated oil"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	metabolized_traits = list(TRAIT_SHOCKIMMUNE)
 
 /datum/reagent/consumable/grey_bull/on_mob_metabolize(mob/living/carbon/affected_atom)
 	. = ..()
-	ADD_TRAIT(affected_atom, TRAIT_SHOCKIMMUNE, type)
 	var/obj/item/organ/internal/liver/liver = affected_atom.get_organ_slot(ORGAN_SLOT_LIVER)
 	if(HAS_TRAIT(liver, TRAIT_MAINTENANCE_METABOLISM))
 		affected_atom.add_mood_event("maintenance_fun", /datum/mood_event/maintenance_high)
 		metabolization_rate *= 0.8
-
-/datum/reagent/consumable/grey_bull/on_mob_end_metabolize(mob/living/affected_mob)
-	. = ..()
-	REMOVE_TRAIT(affected_mob, TRAIT_SHOCKIMMUNE, type)
 
 /datum/reagent/consumable/grey_bull/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
@@ -730,6 +728,28 @@
 	. = ..()
 	affected_mob.adjust_dizzy(-10 SECONDS * REM * seconds_per_tick)
 	affected_mob.adjust_drowsiness(-12 SECONDS * REM * seconds_per_tick)
+	var/need_mob_update
+	need_mob_update = affected_mob.SetSleeping(0)
+	affected_mob.adjust_bodytemperature(5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick, 0, affected_mob.get_body_temp_normal())
+	affected_mob.set_jitter_if_lower(10 SECONDS * REM * seconds_per_tick)
+	if(affected_mob.getBruteLoss() && SPT_PROB(10, seconds_per_tick))
+		need_mob_update += affected_mob.heal_bodypart_damage(brute = 1 * REM * seconds_per_tick, burn = 0, updating_health = FALSE)
+	if(need_mob_update)
+		return UPDATE_MOB_HEALTH
+
+/datum/reagent/consumable/turk_coffee
+	name = "Türk kahvesi"
+	description = "A strong and tasty beverage."
+	color = "#3c2f2f"
+	quality = DRINK_NICE
+	taste_description = "Intense and aromatic"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_EASY
+
+/datum/reagent/consumable/turk_coffee/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	affected_mob.adjust_dizzy(-15 SECONDS * REM * seconds_per_tick)
+	affected_mob.adjust_drowsiness(-15 SECONDS * REM * seconds_per_tick)
 	var/need_mob_update
 	need_mob_update = affected_mob.SetSleeping(0)
 	affected_mob.adjust_bodytemperature(5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick, 0, affected_mob.get_body_temp_normal())
@@ -1170,6 +1190,7 @@
 	quality = DRINK_GOOD
 	taste_description = "citrus soda with cucumber"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	glass_price = DRINK_PRICE_HIGH
 
 /datum/reagent/consumable/cucumberlemonade/on_mob_life(mob/living/carbon/doll, seconds_per_tick, times_fired)
 	. = ..()

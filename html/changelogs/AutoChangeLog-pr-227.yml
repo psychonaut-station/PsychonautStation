@@ -1,5 +1,0 @@
-author: "exdal"
-delete-after: True
-changes:
-  - rscadd: "Players Ready artik normal oyunculara gorunur"
-  - bugfix: "Hub zamani ve log zamanlari duzeltildi"

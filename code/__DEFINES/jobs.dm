@@ -50,7 +50,6 @@
 #define JOB_RESEARCH_DIRECTOR "Research Director"
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
-#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
 //Silicon
 #define JOB_SYNTHETIC "Synthetic"
 #define JOB_AI "AI"
@@ -90,6 +89,7 @@
 #define JOB_BARTENDER "Bartender"
 #define JOB_BOTANIST "Botanist"
 #define JOB_COOK "Cook"
+#define JOB_CHEF "Chef" // Alternate cook title.
 #define JOB_JANITOR "Janitor"
 #define JOB_CLOWN "Clown"
 #define JOB_MIME "Mime"
@@ -129,7 +129,7 @@
 #define JOB_DISPLAY_ORDER_ASSISTANT 1
 #define JOB_DISPLAY_ORDER_CAPTAIN 2
 #define JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL 3
-#define JOB_DISPLAY_ORDER_BRIDGE_ASSISTANT 4
+#define JOB_DISPLAY_ORDER_NT_SECRETARY 4
 #define JOB_DISPLAY_ORDER_BARTENDER 5
 #define JOB_DISPLAY_ORDER_BOTANIST 6
 #define JOB_DISPLAY_ORDER_COOK 7

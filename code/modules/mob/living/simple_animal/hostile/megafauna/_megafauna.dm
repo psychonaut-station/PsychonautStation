@@ -27,6 +27,7 @@
 	layer = LARGE_MOB_LAYER //Looks weird with them slipping under mineral walls and cameras and shit otherwise
 	mouse_opacity = MOUSE_OPACITY_OPAQUE // Easier to click on in melee, they're giant targets anyway
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	can_buckle_to = FALSE
 	/// Crusher loot dropped when the megafauna is killed with a crusher
 	var/list/crusher_loot
 	/// Achievement given to surrounding players when the megafauna is killed
@@ -49,6 +50,8 @@
 	var/chosen_attack = 1
 	/// Attack actions, sets chosen_attack to the number in the action
 	var/list/attack_action_types = list()
+	/// Summoning line, said when summoned via megafauna vents.
+	var/summon_line = "I'll kick your ass!"
 
 /mob/living/simple_animal/hostile/megafauna/Initialize(mapload)
 	. = ..()

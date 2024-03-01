@@ -1,5 +1,5 @@
 {
-    "Animal Rights Consortium": {
+    "Hayvan Hakları Sendikası": {
         "allies": "You may cooperate with other syndicate operatives if they support our cause. Maybe you can convince the Bee Liberation Front operatives to cooperate for once?",
         "goal": "The creatures of this world must be freed from the iron grasp of Nanotrasen, and you are their only hope!",
         "introduction": "You are the ARC Terrorist.",
@@ -61,7 +61,7 @@
         "introduction": "You are a Gorlex Marauder.",
         "roundend_report": "was a Gorlex Marauder.",
         "ui_theme": "syndicate",
-        "uplink": "You have been provided with a standard uplink to accomplish your task."
+        "uplink": "You have been provided with a standard uplink to adadccomplish your task."
     },
     "Internal Affairs Agent": {
         "allies": "Do NOT reveal your agent status, to anyone. Work to root out corruption from the station from the shadows.",
@@ -111,5 +111,13 @@
         "roundend_report": "was a terrorist from Waffle Corporation.",
         "ui_theme": "syndicate",
         "uplink": "You have been provided with a standard uplink to accomplish your task."
+    },
+	"Contractor Support Unit": {
+        "allies": "You are being sent to help your designated agent. Their allegiences are above all others.",
+        "goal": "Help your designated agent to the furtest extent you can, their life is above your own.",
+        "introduction": "You are the Contractor Support Agent.",
+        "roundend_report": "was a contractor support agent.",
+        "ui_theme": "syndicate",
+        "uplink": "You do not come with your own uplink, defer to your agent."
     }
 }

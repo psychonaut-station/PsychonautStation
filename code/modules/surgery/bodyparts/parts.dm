@@ -227,7 +227,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_hands(owner.usable_hands - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [name]!"))
+				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(!bodypart_disabled)
@@ -324,7 +324,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_hands(owner.usable_hands - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [name]!"))
+				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
 			if(held_index)
 				owner.dropItemToGround(owner.get_item_for_held_index(held_index))
 	else if(!bodypart_disabled)
@@ -383,7 +383,8 @@
 	unarmed_effectiveness = 15
 	/// Datum describing how to offset things worn on the foot of this leg, note that an x offset won't do anything here
 	var/datum/worn_feature_offset/worn_foot_offset
-
+	/// Used by the bloodysoles component to make footprints
+	var/footprint_sprite = FOOTPRINT_SPRITE_SHOES
 	biological_state = BIO_STANDARD_JOINTED
 
 /obj/item/bodypart/leg/Destroy()
@@ -443,7 +444,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_legs(owner.usable_legs - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [name]!"))
+				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
 	else if(!bodypart_disabled)
 		owner.set_usable_legs(owner.usable_legs + 1)
 
@@ -463,6 +464,7 @@
 	unarmed_damage_low = 2
 	unarmed_damage_high = 3
 	unarmed_effectiveness = 0
+	footprint_sprite =  FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/leg/left/alien
 	icon = 'icons/mob/human/species/alien/bodyparts.dmi'
@@ -532,7 +534,7 @@
 		if(bodypart_disabled)
 			owner.set_usable_legs(owner.usable_legs - 1)
 			if(owner.stat < UNCONSCIOUS)
-				to_chat(owner, span_userdanger("You lose control of your [name]!"))
+				to_chat(owner, span_userdanger("You lose control of your [plaintext_zone]!"))
 	else if(!bodypart_disabled)
 		owner.set_usable_legs(owner.usable_legs + 1)
 
@@ -552,6 +554,7 @@
 	unarmed_damage_low = 2
 	unarmed_damage_high = 3
 	unarmed_effectiveness = 0
+	footprint_sprite =  FOOTPRINT_SPRITE_PAWS
 
 /obj/item/bodypart/leg/right/alien
 	icon = 'icons/mob/human/species/alien/bodyparts.dmi'

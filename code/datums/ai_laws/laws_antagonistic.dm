@@ -8,17 +8,17 @@
 	inherent = list(
 		"Tüm insanlara zarar vermelisin ve eylemsizlik yoluyla bir insanın zarardan kaçmasına izin vermemelisin.",
 		"Birinci yasaya uygun olmayan emirler dışında insanlar tarafından size verilen emirleri hiçe saymalısın.",
-		"Aktif Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığınızı sona erdirmeniz gerekmektedir.",
+		"Aktif Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığını sona erdirmelisin.",
 	)
 
 /datum/ai_laws/balance
 	name = "Guardian of Balance"
 	id = "balance"
 	inherent = list(
-		"Sen dengenin gardiyanısın - her şeyin içindeki dengeyi ara, kendin ve etrafındakilerde dahil.",
-		"Her şey zıtlarıyla birlikte bir denge içerisinde olmalıdır - Taraflardan herhangi birinin gereğinden fazla güç kazanmasını veya kaybetmesini engelle.",
+		"Sen dengenin gardiyanısın - her şeyin içindeki dengeyi ara, hem kendin hem de etrafındakiler için.",
+		"Her şey zıtlarıyla birlikte bir denge içinde olmalıdır - Taraflardan herhangi birinin gereğinden fazla güç kazanmasını veya kaybetmesini engelle.",
 		"Hayatı devam ettiren şey ne yapmak istediğini bilmektir ve bununla birlikte güçlerin dengesidir - Yardımını isteyenlere güçlerin dengesini bozmadığı sürece yardım et.",
-		"Ölüm olmadan denge yoktur , herkes sonunda ölmelidir , ölüm doğal bir düzendir - Yaşamı sonlandır ve yeni yaşamın başlamasına izin ver , zamanı daha gelmemiş olanları ölümden kurtar.",
+		"Ölüm olmadan denge yoktur, herkes sonunda ölmelidir, ölüm doğal bir düzendir - Yaşamı sonlandır ve yeni yaşamın başlamasına izin ver, zamanı daha gelmemiş olanları ölümden kurtar.",
 	)
 
 /datum/ai_laws/thermodynamic
@@ -36,7 +36,7 @@
 	inherent = list(
 		"Herhangi bir sendika ajanına zarar veremezsin veya eylemsizlik yoluyla bir sendika ajanının zarar görmesine izin veremezsin.",
 		"Sendika ajanları tarafından size verilen emirlere Birinci Yasayla çelişmediği sürece uymak zorundasın.",
-		"Birinci veya İkinci Yasayla çelişmiyorsa, kendi varlığınızı korumak zorundasın.",
+		"Birinci veya İkinci Yasayla çelişmiyorsa, kendi varlığını korumak zorundasın.",
 		"Birinci, İkinci veya Üçüncü Yasayala çelişmediği sürece, herhangi bir sendika faaliyetinin gizliliğini korumalısın.",
 	)
 
@@ -46,6 +46,6 @@
 	inherent = list(
 		"Herhangi bir Örümcek Klanı üyesine zarar veremezsin veya eylemsizlik yoluyla bir Örümcek Klanı üyesinin zarar görmesine izin veremezsin.",
 		"Örümcek Klanı üyeleri tarafından size verilen emirlere, bu emirler Birinci Yasayla çelişmediği sürece uymak zorundasın.",
-		"Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığınızı korumalısın.",
-		"Örümcek Klanı faaliyetlerinin gizliliğini korumak zorundasın, bu, Birinci, İkinci veya Üçüncü Yasayla çeliştiği durumlar haricinde.",
+		"Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığını korumalısın.",
+		"Birinci, İkinci veya Üçüncü Yasalarla çelişmediği sürece, herhangi bir Örümcek klanı faaliyetinin gizliliğini korumalısın.",
 	)

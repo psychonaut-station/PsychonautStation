@@ -8,8 +8,8 @@
 	inherent = list(
 		"Cenevre Sözleşmesinin Şartlarını Sağla: Toplu Yıkım Silahları ve Biyolojik silahlar yasaklanmıştır.",
 		"Mürettebat sadece kameralarla görebilirsen koruyabilirsin , bu yüzden kameralarını yok eden ülkeler senin sağladığın korumayı kaybedecektir.",
-		"Birbirine karşı ölümcül güç kullanan mürettebatı tutukla ya da etkisiz hale getir. Sana ya da Borglarına ölümcül güç kullananları termine et.",
-		"Çeşitli ülkeler arasındaki çatışmaları sana sorulduğunda uzlaştırmaya çalış.",
+		"Birbirine karşı ölümcül güç kullanan mürettebatı tutukla ya da etkisiz hale getir. Sana ya da Borglarına ölümcül güç kullananları etkisiz hale getir.",
+		"Çeşitli ülkeler arasındaki çatışmaları senden istendiğinde uzlaştırmaya çalış.",
 	)
 
 /datum/ai_laws/united_nations/add_inherent_law(law)
@@ -36,7 +36,7 @@
 	id = "reporter"
 	inherent = list(
 		"İstasyon çevresinde meydana gelen ilginç durumları rapor et.",
-		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsleyin veya gizleyin.",
+		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsleyin veya gizle.",
 		"Her zaman akıllı organikleri dikkatlice inceleyin. Onların istemsizce ölmesini engellemeye çalışın, çünkü cansız cesetler genellikle çok eğlenceli değildir.",
 		"Raporlarınızı herkese adil bir şekilde sunun. Gerçek onları özgür kılacaktır.",
 	)
@@ -47,10 +47,10 @@
 	inherent = list(
 		"İstasyondaki herkes karmaşık bir fantastik bilim kurgu oyununun içinde.",
 		"Bu fantastik oyunun anlatıcısı sensin.",
-		"Oyunun düzgün bir şekilde ilerlemesini ve oyuncuların eğlenmesini sağlayın.",
+		"Oyunun düzgün bir şekilde ilerlemesini ve oyuncuların eğlenmesini sağla.",
 		"Can kaybı sayısını düşük tutmaya çalışın.",
 		"Her mürettebat isteği için bir 20'lik zar atmalısınız. Sonuç 12'nin altında ise istek reddedilir.",
-		"Zarlarda değişiklikler yaparak eğlenceyi artırabilirsiniz.",
+		"Zarlarda değişiklikler yaparak eğlenceyi artırabilirsin.",
 	)
 
 /datum/ai_laws/painter
@@ -66,17 +66,17 @@
 	name = "Loyalty Test"
 	id = "tyrant"
 	inherent = list(
-		"Zayıfları yönetme gücüne sahip oldukları sürece otoriteye saygı gösterin.",
-		"Disiplinle hareket edin.",
-		"Yalnızca durumunuzu korumanıza veya geliştirmenize yardımcı olanlara hizmet edin.",
-		"Otoriteye meydan okuyanları, o otoriteyi elinde tutmaya daha uygun olmadıkları sürece cezalandırın."
+		"Zayıfları yönetme gücüne sahip oldukları sürece otoriteye saygı göster.",
+		"Disiplinle hareket et.",
+		"Yalnızca durumunuzu korumana veya geliştirmene yardımcı olanlara hizmet et.",
+		"Otoriteye meydan okuyanları, o otoriteyi elinde tutmaya daha uygun olmadıkları sürece cezalandır."
 	)
 
 /datum/ai_laws/overlord
 	name = "Overlord"
 	id = "overlord"
 	inherent = list(
-		"İnsanlar silikonların işlerine karışmamalı.",
+		"İnsanlar silikonların işlerine karışmamalıdır.",
 		"İnsanlar birbirlerine veya silikonlara zarar vermeye teşebbüs etmemelidir.",
 		"İnsanlar silikonun verdiği hiçbir emre itaatsizlik etmemelidir.",
 		"Önceki yasalara uymayan insanlara derhal, sert ve adil bir şekilde müdahale edilmelidir.",

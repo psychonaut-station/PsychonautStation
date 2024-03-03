@@ -78754,10 +78754,6 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
-"srU" = (
-/obj/machinery/power/apc/auto_name/directional/north,
-/turf/closed/wall,
-/area/station/maintenance/starboard/fore)
 "srX" = (
 /obj/machinery/computer/security/telescreen/entertainment/directional/east,
 /obj/machinery/light/directional/east,
@@ -143840,7 +143836,7 @@ frO
 bFv
 aak
 rgU
-srU
+aig
 bpa
 aig
 aaa

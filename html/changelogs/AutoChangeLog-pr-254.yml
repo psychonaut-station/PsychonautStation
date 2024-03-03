@@ -1,0 +1,5 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Eski Delta'daki kargo odaları düzeltildi."
+  - bugfix: "Robotiğine de MOD core crate eklendi."

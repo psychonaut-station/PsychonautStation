@@ -858,7 +858,7 @@
 		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
 	)
 	cyborg_base_icon = "cargo"
-	model_select_icon = "cargo"
+	model_select_icon = "standart"
 	hat_offset = 0
 	haveFlick = FALSE
 

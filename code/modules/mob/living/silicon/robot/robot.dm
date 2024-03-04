@@ -760,10 +760,6 @@
 /mob/living/silicon/robot/proc/update_module_innate()
 	designation = model.name
 	if(hands)
-		if(istype(model, /obj/item/robot_model/cargo))
-			hands.icon = 'icons/psychonaut/hud/screen_cyborg.dmi'
-		else
-			hands.icon = 'icons/hud/screen_cyborg.dmi'
 		hands.icon_state = model.model_select_icon
 
 	REMOVE_TRAITS_IN(src, MODEL_TRAIT)

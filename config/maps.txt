@@ -46,6 +46,9 @@ map metastation
 	votable
 endmap
 
+map metastationz
+endmap
+
 map northstar
 	minplayers 25
 	votable

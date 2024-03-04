@@ -684,8 +684,6 @@
  * Returns FALSE if not all of our objectives are complete, or TRUE otherwise.
  */
 /datum/antagonist/heretic/proc/can_ascend()
-	if(!can_assign_self_objectives)
-		return FALSE // We spurned the offer of the Mansus :(
 	for(var/datum/objective/must_be_done as anything in objectives)
 		if(!must_be_done.check_completion())
 			return FALSE

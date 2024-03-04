@@ -844,7 +844,8 @@
 		/obj/item/borg/apparatus/sheet_manipulator,
 		/obj/item/storage/bag/mail/borg,
 		/obj/item/boxcutter,
-		/obj/item/borg/apparatus/paper_holder
+		/obj/item/borg/apparatus/paper_holder,
+		/obj/item/universal_scanner
 	)
 	emag_modules = list(
 		/obj/item/borg/stun,

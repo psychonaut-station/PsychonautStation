@@ -45,6 +45,8 @@
 	var/allow_riding = TRUE
 	///Whether the borg can stuff itself into disposals
 	var/canDispose = FALSE
+	/// Does it have transform animation (Not recommended for custom borgs)
+	var/haveFlick = TRUE
 	///The y offset of  the hat put on
 	var/hat_offset = -3
 	///The x offsets of a person riding the borg
@@ -276,7 +278,8 @@
 /obj/item/robot_model/proc/do_transform_delay()
 	var/mob/living/silicon/robot/cyborg = loc
 	sleep(0.1 SECONDS)
-	flick("[cyborg_base_icon]_transform", cyborg)
+	if(haveFlick)
+		flick("[cyborg_base_icon]_transform", cyborg)
 	ADD_TRAIT(cyborg, TRAIT_NO_TRANSFORM, REF(src))
 	if(locked_transform)
 		cyborg.ai_lockdown = TRUE
@@ -857,6 +860,7 @@
 	cyborg_base_icon = "cargo"
 	model_select_icon = "cargo"
 	hat_offset = 0
+	haveFlick = FALSE
 
 /obj/item/robot_model/syndicate
 	name = "Syndicate Assault"

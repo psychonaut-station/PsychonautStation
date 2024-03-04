@@ -285,3 +285,7 @@
 	if(length(stored_crates))
 		. += "There are [length(stored_crates)] things were picked up here."
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
+
+/obj/item/hand_labeler/cyborg
+        name = "integrated hand labeler"
+        labels_left = 100

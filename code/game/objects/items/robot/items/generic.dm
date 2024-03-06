@@ -407,8 +407,8 @@
 /obj/item/paperplane/syndicate/hardlight
 	name = "hardlight paper plane"
 	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
-	impact_eye_damage_lower = 10
-	impact_eye_damage_higher = 10
+	eye_dam_lower = 10
+	eye_dam_higher = 10
 	delete_on_impact = TRUE
 	/// Which color is the paper plane?
 	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)

@@ -852,7 +852,7 @@
 		/obj/item/universal_scanner
 	)
 	emag_modules = list(
-		/obj/item/borg/stun,
+		/obj/item/borg/paperplane_crossbow,
 	)
 	borg_skins = list(
 		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),

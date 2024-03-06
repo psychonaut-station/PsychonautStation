@@ -14,6 +14,14 @@
 
 	///The chance of hitting a mob in the eye when thrown, in percentage.
 	var/hit_probability = 2
+
+	/// How much eye damage does it deal at minimum on eye impact?
+	var/eye_dam_lower = 6
+	/// How much eye damage does it deal at maximum on eye impact?
+	var/eye_dam_higher = 8
+	/// Does it get deleted when hitting anything or landing?
+	var/delete_on_impact = FALSE
+
 	///Reference to the paper that's folded up in this paperplane, which we return when unfolded.
 	var/obj/item/paper/internal_paper
 
@@ -54,7 +62,7 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
-		eyes.apply_organ_damage(rand(6,8))
+		eyes.apply_organ_damage(rand(eye_dam_lower, eye_dam_higher))
 	sleep(1 SECONDS)
 	return BRUTELOSS
 

@@ -103,19 +103,27 @@
 			hit_carbon.throw_mode_on(THROW_MODE_TOGGLE)
 
 	. = ..()
-	if(. || !ishuman(hit_atom)) //if the plane is caught or it hits a nonhuman
+	if(. || !ishuman(hit_atom))
+		if(delete_on_impact)
+			qdel(src)
 		return
 	var/mob/living/carbon/human/hit_human = hit_atom
 	var/obj/item/organ/internal/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!prob(hit_probability))
+		if(delete_on_impact)
+			qdel(src)
 		return
 	if(hit_human.is_eyes_covered())
+		if(delete_on_impact)
+			qdel(src)
 		return
 	visible_message(span_danger("\The [src] hits [hit_human] in the eye[eyes ? "" : " socket"]!"))
 	hit_human.adjust_eye_blur(12 SECONDS)
-	eyes?.apply_organ_damage(rand(6, 8))
+	eyes?.apply_organ_damage(rand(eye_dam_lower, eye_dam_higher))
 	hit_human.Paralyze(4 SECONDS)
 	hit_human.emote("scream")
+	if(delete_on_impact)
+		qdel(src)
 
 /obj/item/paperplane/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, gentle, quickstart = TRUE)
 	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, quickstart = quickstart)

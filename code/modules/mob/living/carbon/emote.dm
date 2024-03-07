@@ -203,7 +203,7 @@
 	hands_use_check = TRUE
 
 /datum/emote/living/carbon/thumbsdown
-	key = "thumbsdown
+	key = "thumbsdown"
 	key_third_person = "thumbsdown"
 	message = "flashes a thumbs down."
 	hands_use_check = TRUE

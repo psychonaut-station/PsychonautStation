@@ -5,7 +5,7 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	species_language_holder = /datum/language_holder/fly
 	payday_modifier = 1.0
-	
+	sexes = FALSE
 	
 	
 	

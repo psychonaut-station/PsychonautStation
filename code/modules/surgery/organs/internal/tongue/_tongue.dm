@@ -660,3 +660,4 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	desc = "A spider organ used for speaking and eating."
 	liked_foodtypes = GORE | MEAT | BUGS | GROSS
 	disliked_foodtypes = VEGETABLES | FRUIT
+	say_mod = "hisses"

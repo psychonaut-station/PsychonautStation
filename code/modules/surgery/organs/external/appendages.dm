@@ -17,7 +17,7 @@
 	return GLOB.arachnid_appendages_list
 
 /datum/bodypart_overlay/mutant/arachnid_appendages/get_base_icon_state()
-	return sprite_datum.icon_state //i hate you
+	return sprite_datum.icon_state
 
 /datum/bodypart_overlay/mutant/arachnid_appendages/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return TRUE

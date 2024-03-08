@@ -101,6 +101,8 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features["tail_cat"] = get_consistent_feature_entry(GLOB.tails_list_human) // it's a lie
 	target.dna.features["tail_lizard"] = get_consistent_feature_entry(GLOB.tails_list_lizard)
 	target.dna.features["pod_hair"] = get_consistent_feature_entry(GLOB.pod_hair_list)
+	target.dna.features["arachnid_appendages"] = get_consistent_feature_entry(GLOB.arachnid_appendages_list)
+	target.dna.features["arachnid_chelicerae"] = get_consistent_feature_entry(GLOB.arachnid_chelicerae_list)
 	target.dna.initialize_dna(create_mutation_blocks = FALSE, randomize_features = FALSE)
 	// UF and UI are nondeterministic, even though the features are the same some blocks will randomize slightly
 	// In practice this doesn't matter, but this is for the sake of 100%(ish) consistency

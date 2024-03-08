@@ -40,3 +40,11 @@
 
 	if(istype(attacking_item, /obj/item/melee/flyswatter))
 		damage_mods += 30 // Yes, a 30x damage modifier
+
+/datum/reagent/mutationtoxin/arachnid
+	name = "Arachnid Mutation Toxin"
+	description = "A spidering toxin."
+	color = "#5EFF3B" //RGB: 94, 255, 59
+	race = /datum/species/arachnid
+	taste_description = "webs"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

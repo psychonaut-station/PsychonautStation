@@ -2402,7 +2402,6 @@
 
 /datum/sprite_accessory/arachnid_appendages
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_appendages.dmi'
-	color_src = MUTCOLORS
 
 /datum/sprite_accessory/arachnid_appendages/long
 	name = "Long"
@@ -2430,7 +2429,6 @@
 
 /datum/sprite_accessory/arachnid_chelicerae
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_chelicerae.dmi'
-	color_src = MUTCOLORS
 
 /datum/sprite_accessory/arachnid_chelicerae/basic
 	name = "Basic"

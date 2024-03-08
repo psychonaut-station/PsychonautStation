@@ -740,13 +740,10 @@
 	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 	return ..()
 
-
 /obj/item/organ/internal/eyes/night_vision/arachnid
 	name = "arachnid eyes"
 	desc = "So many eyes!"
-	icon = 'todo'
 	eye_icon_state = "arachnideyes"
-	icon_state = "arachnid_eyeballs"
 	overlay_ignore_lighting = TRUE
 	no_glasses = TRUE
 	low_light_cutoff = list(20, 15, 0)

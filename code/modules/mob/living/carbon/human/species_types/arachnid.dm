@@ -12,8 +12,8 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	meat = /obj/item/food/meat/slab/spider
-	coldmod = 2
-	heatmod = 2
+	coldmod = 1.5
+	heatmod = 1.5
 	mutanteye = /obj/item/organ/internal/eyes/night_vision/arachnid
 	mutanttongue = /obj/item/organ/internal/tongue/arachnid
 	

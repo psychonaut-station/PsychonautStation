@@ -5,7 +5,7 @@
 	preference = "feature_arachnid_appendages"
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_WINGS
-	dna_block = DNA_ARACHNID_APPENDAGE_BLOCK
+	dna_block = DNA_ARACHNID_APPENDAGES_BLOCK
 
 	use_mob_sprite_as_obj_sprite = TRUE
 	bodypart_overlay = /datum/bodypart_overlay/mutant/arachnid_appendages

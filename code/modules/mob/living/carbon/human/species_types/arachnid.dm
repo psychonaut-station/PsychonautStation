@@ -15,7 +15,7 @@
 	coldmod = 3   // = 1.5x cold damage
 	heatmod = 3 // = 1.5x heat damage
 	mutanteye = /obj/item/organ/internal/eyes/night_vision/arachnid
-	
+	mutanttongue = /obj/item/organ/internal/tongue/arachnid
 	
 	
 	

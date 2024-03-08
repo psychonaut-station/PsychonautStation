@@ -368,6 +368,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(GLOB.caps_list.Find(features["caps"]), GLOB.caps_list.len))
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(GLOB.pod_hair_list.Find(features["pod_hair"]), GLOB.pod_hair_list.len))
+	if(DNA_ARACHNID_APPENDAGES_BLOCK)
+		set_uni_feature_block(blocknumber, construct_block(GLOB.arachnid_appendages_list.Find(features["arachnid_appendages"]), GLOB.arachnid_appendages_list.len))
+	if(DNA_ARACHNID_CHELICERAE_BLOCK)
+		set_uni_feature_block(blocknumber, construct_block(GLOB.arachnid_chelicerae_list.Find(features["arachnid_chelicerae"]), GLOB.arachnid_chelicerae_list.len))
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/human_mutation)
@@ -666,6 +670,10 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		dna.features["caps"] = GLOB.caps_list[deconstruct_block(get_uni_feature_block(features, DNA_MUSHROOM_CAPS_BLOCK), GLOB.caps_list.len)]
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = GLOB.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), GLOB.pod_hair_list.len)]
+	if(dna.features["arachnid_appendages"])
+		dna.features["arachnid_appendages"] = GLOB.arachnid_appendages_list[deconstruct_block(get_uni_feature_block(features, DNA_ARACHNID_APPENDAGES_BLOCK), GLOB.arachnid_appendages_list.len)]
+	if(dna.features["arachnid_chelicerae"])
+		dna.features["arachnid_chelicerae"] = GLOB.arachnid_chelicerae_list[deconstruct_block(get_uni_feature_block(features, DNA_ARACHNID_CHELICERAE_BLOCK), GLOB.arachnid_chelicerae_list.len)]
 
 	for(var/obj/item/organ/external/external_organ in organs)
 		external_organ.mutate_feature(features, src)

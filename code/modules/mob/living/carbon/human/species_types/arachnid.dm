@@ -20,6 +20,13 @@
 	
 	
 	
+/datum/species/arachnid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	if(chem.type == /datum/reagent/toxin/pestkiller)
+		H.adjustToxLoss(3 * REM * seconds_per_tick)
+		H.reagents.remove_reagent(chem.type, REAGENTS_METABOLISM * seconds_per_tick)
+		return TRUE
+	return ..()
+
 /datum/species/arachnid/on_species_gain(mob/living/carbon/human/H, datum/species/old_species, pref_load)
 	. = ..()
 	RegisterSignal(H, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_weakness))

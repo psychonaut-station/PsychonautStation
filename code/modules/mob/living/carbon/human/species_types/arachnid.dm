@@ -13,7 +13,7 @@
 	)
 	meat = /obj/item/food/meat/slab/spider
 	siemens_coeff = 1.3
-	mutanteye = /obj/item/organ/internal/eyes/night_vision/arachnid
+	mutanteyes = /obj/item/organ/internal/eyes/night_vision/arachnid
 	mutanttongue = /obj/item/organ/internal/tongue/arachnid
 	external_organs = list(
 		/obj/item/organ/external/arachnid_appendages = "Long",

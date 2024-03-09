@@ -385,3 +385,75 @@
 	if(!pure)
 		for(var/obj/effect/landmark/start/ai/secondary/secondary_ai_spawn in GLOB.start_landmarks_list)
 			secondary_ai_spawn.latejoin_active = TRUE
+
+/datum/station_trait/eddl
+	name = "Each Department Different Language"
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 0 //admin only
+	show_in_report = FALSE
+
+/datum/station_trait/eddl/New()
+    . = ..()
+    RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
+
+/datum/station_trait/eddl/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
+    SIGNAL_HANDLER
+    
+	if(job.faction != FACTION_STATION)
+		return
+	
+	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/sec)
+	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_SERVICE))
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/ser)
+	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_CARGO))
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/car)
+	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_ENGINEERING))
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/eng)
+	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_SCIENCE))
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/sci)
+	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_MEDICAL))
+		spawned.remove_all_languages()
+		spawned.grant_language(/datum/language/department/med)
+	else 
+		return
+	
+/datum/language/department
+    name = "Common"
+    desc = "Departman özel dil."
+    key = "dn"
+    flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
+    default_priority = 0
+    icon_state = "galcom"
+	syllables = list("aga", "buga", "harr", "sie", "dag", "pol")
+	space_chance = 75
+
+/datum/language/department/sec
+	name = "Security Common"
+	key = "da"
+
+/datum/language/department/sci
+	name = "Science Common"
+	key = "db"
+
+/datum/language/department/eng
+	name = "Engineering Common"
+	key = "dc"
+
+/datum/language/department/ser
+	name = "Service Common"
+	key = "dd"
+
+/datum/language/department/car
+	name = "Cargonia Common"
+	key = "de"
+
+/datum/language/department/med
+	name = "Medical Common"
+	key = "df"
+	syllables = list("aga", "buga", "harr", "sie", "dag", "pol", "nya")

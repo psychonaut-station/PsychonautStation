@@ -28,9 +28,9 @@
 /obj/item/bodypart/leg/left/arachnid
 	icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	limb_id = SPECIES_ARACHNID
-  speed_modifier = -0.05
+	speed_modifier = -0.05
 
 /obj/item/bodypart/leg/right/arachnid
 	icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	limb_id = SPECIES_ARACHNID
-  speed_modifier = -0.05
+	speed_modifier = -0.05

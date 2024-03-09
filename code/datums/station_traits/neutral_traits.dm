@@ -403,25 +403,32 @@
 		return
 
 	if((job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-		spawned.grant_language(/datum/language/galactic_common)
+		spawned.grant_language(/datum/language/common)
+		spawned.remove_blocked_language(/datum/language/common)
 	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/sec)
+		spawned.remove_blocked_language(/datum/language/department/sec)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_SERVICE))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/ser)
+		spawned.remove_blocked_language(/datum/language/department/ser)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_CARGO))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/car)
+		spawned.remove_blocked_language(/datum/language/department/car)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_ENGINEERING))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/eng)
+		spawned.remove_blocked_language(/datum/language/department/eng)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_SCIENCE))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/sci)
+		spawned.remove_blocked_language(/datum/language/department/sci)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_MEDICAL))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/med)
+		spawned.remove_blocked_language(/datum/language/department/med)
 	else 
 		return
 	

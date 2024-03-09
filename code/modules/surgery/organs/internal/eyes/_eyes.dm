@@ -744,6 +744,7 @@
 /obj/item/organ/internal/eyes/night_vision/arachnid
 	name = "arachnid eyes"
 	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	eye_icon_state = "arachnideyes"
 	overlay_ignore_lighting = TRUE
 	no_glasses = TRUE

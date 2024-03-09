@@ -401,7 +401,9 @@
 
 	if(job.faction != FACTION_STATION)
 		return
-	
+
+	if((job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+		spawned.grant_language(/datum/language/galactic_common)
 	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/sec)
@@ -435,25 +437,25 @@
 
 /datum/language/department/sec
 	name = "Security Common"
-	key = "da"
+	key = "s"
 
 /datum/language/department/sci
 	name = "Science Common"
-	key = "db"
+	key = "n"
 
 /datum/language/department/eng
 	name = "Engineering Common"
-	key = "dc"
+	key = "e"
 
 /datum/language/department/ser
 	name = "Service Common"
-	key = "dd"
+	key = "v"
 
 /datum/language/department/car
 	name = "Cargonia Common"
-	key = "de"
+	key = "u"
 
 /datum/language/department/med
 	name = "Medical Common"
-	key = "df"
+	key = "m"
 	syllables = list("aga", "buga", "harr", "sie", "dag", "pol", "nya")

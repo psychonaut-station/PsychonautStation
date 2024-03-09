@@ -424,12 +424,12 @@
 		return
 	
 /datum/language/department
-    name = "Common"
-    desc = "Departman özel dil."
-    key = "dn"
-    flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
-    default_priority = 0
-    icon_state = "galcom"
+	name = "Common"
+	desc = "Departman özel dil."
+	key = "dn"
+	flags = TONGUELESS_SPEECH | LANGUAGE_HIDE_ICON_IF_UNDERSTOOD
+	default_priority = 0
+	icon_state = "galcom"
 	syllables = list("aga", "buga", "harr", "sie", "dag", "pol")
 	space_chance = 75
 

@@ -19,45 +19,16 @@
 		/obj/item/organ/external/arachnid_appendages = "Long",
 		/obj/item/organ/external/chelicerae = "Basic",
 	)
+	bodypart_overrides = list(
+		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/arachnid,
+		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/arachnid,
+		BODY_ZONE_HEAD = /obj/item/bodypart/head/arachnid,
+		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/arachnid,
+		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/arachnid,
+		BODY_ZONE_CHEST = /obj/item/bodypart/chest/arachnid,
+	)
 	
 	
-	
-/**
-/obj/item/bodypart/head/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-        is_dimorphic = FALSE
-        head_flags = HEAD_EYESPRITES|HEAD_EYECOLOR
-
-/obj/item/bodypart/chest/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-        is_dimorphic = FALSE
-
-/obj/item/bodypart/arm/left/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-        unarmed_attack_verb = "slash"
-        unarmed_attack_effect = ATTACK_EFFECT_CLAW
-        unarmed_attack_sound = 'sound/weapons/slash.ogg'
-        unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
-
-/obj/item/bodypart/arm/right/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-        unarmed_attack_verb = "slash"
-        unarmed_attack_effect = ATTACK_EFFECT_CLAW
-        unarmed_attack_sound = 'sound/weapons/slash.ogg'
-        unarmed_miss_sound = 'sound/weapons/slashmiss.ogg'
-
-/obj/item/bodypart/leg/left/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-
-/obj/item/bodypart/leg/right/arachnid
-        icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
-        limb_id = SPECIES_ARACHNID
-**/
 /datum/species/arachnid/handle_chemicals(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	if(chem.type == /datum/reagent/toxin/pestkiller)
 		H.adjustToxLoss(3 * REM * seconds_per_tick)

@@ -752,7 +752,7 @@
 	medium_light_cutoff = list(35, 30, 0)
 	high_light_cutoff = list(50, 40, 0)
 
-/obj/item/organ/internal/eyes/night_vision/arachnid/Insert(mob/living/carbon/eye_owner)
+/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_insert(mob/living/carbon/eye_owner)
 	. = ..()
 	if(!ishuman(eye_owner))
 		return
@@ -762,7 +762,7 @@
 	var/datum/species/rec_species = human_receiver.dna.species
 	rec_species.update_no_equip_flags(eye_owner, rec_species.no_equip_flags | ITEM_SLOT_EYES)
 
-/obj/item/organ/internal/eyes/night_vision/arachnid/Remove(mob/living/carbon/eye_owner)
+/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_remove(mob/living/carbon/eye_owner)
 	. = ..()
 	if(!ishuman(eye_owner))
 		return

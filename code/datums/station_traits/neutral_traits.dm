@@ -402,7 +402,7 @@
 	if(job.faction != FACTION_STATION)
 		return
 	
-	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
+	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/sec)
 	else if((job.departments_bitflags & DEPARTMENT_BITFLAG_SERVICE))

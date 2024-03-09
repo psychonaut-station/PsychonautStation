@@ -46,7 +46,7 @@
 /datum/reagent/mutationtoxin/arachnid
 	name = "Arachnid Mutation Toxin"
 	description = "A spidering toxin."
-	color = "#5EFF3B" //RGB: 94, 255, 59
+	color = "#BFB413"
 	race = /datum/species/arachnid
 	taste_description = "webs"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED

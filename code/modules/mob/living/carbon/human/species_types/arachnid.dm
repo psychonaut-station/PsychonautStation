@@ -50,3 +50,8 @@
 	race = /datum/species/arachnid
 	taste_description = "webs"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/chemical_reaction/arachnid_muttoxin
+	results = list(/datum/reagent/mutationtoxin/arachnid = 1)
+	required_reagents = list(/datum/reagent/mutationtoxin/lizard = 1, /datum/reagent/toxin = 1)
+	reaction_tags = REACTION_TAG_EASY

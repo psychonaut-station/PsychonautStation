@@ -395,7 +395,7 @@
 /datum/station_trait/eddl/New()
 	. = ..()
 	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
-//	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, PROC_REF(on_job_after_spawn)) yanlis anlasilma olmus
+//	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, PROC_REF(on_job_after_spawn))
 
 /datum/station_trait/eddl/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
 	SIGNAL_HANDLER
@@ -403,9 +403,6 @@
 	if(job.faction != FACTION_STATION)
 		return
 
-	if((job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
-		spawned.grant_language(/datum/language/common)
-		spawned.remove_blocked_language(/datum/language/common)
 	if((job.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY))
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/sec)
@@ -430,9 +427,10 @@
 		spawned.remove_all_languages()
 		spawned.grant_language(/datum/language/department/med)
 		spawned.remove_blocked_language(/datum/language/department/med)
-	else 
-		return
-	
+	if((job.departments_bitflags & DEPARTMENT_BITFLAG_COMMAND))
+		spawned.grant_language(/datum/language/common)
+		spawned.remove_blocked_language(/datum/language/common)	
+
 /datum/language/department
 	name = "Common"
 	desc = "Departman özel dil."

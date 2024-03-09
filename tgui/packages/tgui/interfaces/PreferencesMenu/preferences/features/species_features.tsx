@@ -110,6 +110,16 @@ export const feature_vampire_status: Feature<string> = {
   component: FeatureDropdownInput,
 };
 
+export const feature_arachnid_appendages: Feature<string> = {
+  name: 'Arachnid Appendages',
+  component: FeatureDropdownInput,
+};
+
+export const feature_arachnid_chelicerae: Feature<string> = {
+  name: 'Arachnid Chelicerae',
+  component: FeatureDropdownInput,
+};
+
 export const heterochromatic: Feature<string> = {
   name: 'Heterochromatic (Right Eye) color',
   component: FeatureColorInput,

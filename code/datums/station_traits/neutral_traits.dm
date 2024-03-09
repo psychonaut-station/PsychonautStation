@@ -393,12 +393,12 @@
 	show_in_report = FALSE
 
 /datum/station_trait/eddl/New()
-    . = ..()
-    RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
+	. = ..()
+	RegisterSignal(SSdcs, COMSIG_GLOB_JOB_AFTER_SPAWN, PROC_REF(on_job_after_spawn))
 
 /datum/station_trait/eddl/proc/on_job_after_spawn(datum/source, datum/job/job, mob/living/spawned, client/player_client)
-    SIGNAL_HANDLER
-    
+	SIGNAL_HANDLER
+
 	if(job.faction != FACTION_STATION)
 		return
 	

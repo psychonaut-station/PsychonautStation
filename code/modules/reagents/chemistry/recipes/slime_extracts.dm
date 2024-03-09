@@ -65,11 +65,6 @@
 	required_reagents = list(/datum/reagent/uranium/radium = 1)
 	required_container = /obj/item/slime_extract/green
 
-/datum/chemical_reaction/slime/sliderman
-	results = list(/datum/reagent/mutationtoxin/arachnid = 1)
-	required_reagents = list(/datum/reagent/iron = 1, /datum/reagent/silver = 1)
-	required_container = /obj/item/slime_extract/green
-
 //Metal
 /datum/chemical_reaction/slime/slimemetal
 	required_reagents = list(/datum/reagent/toxin/plasma = 1)

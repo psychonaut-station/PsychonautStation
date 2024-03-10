@@ -851,6 +851,7 @@
 		/obj/item/borg/apparatus/paper_holder,
 		/obj/item/universal_scanner
 	)
+	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
 		/obj/item/borg/paperplane_crossbow,
 	)

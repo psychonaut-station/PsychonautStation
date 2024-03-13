@@ -37,7 +37,6 @@
 	if(!wiki_url)
 		user.balloon_alert(user, "this book is empty!")
 		return
-
 	credit_book_to_reader(user)
 	DIRECT_OUTPUT(user, browse(WIKI_PAGE_IFRAME(wiki_url, page_link), "window=manual;size=[BOOK_WINDOW_BROWSE_SIZE]")) // if you change this GUARANTEE that it works.
 
@@ -63,16 +62,21 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/security_space_law
-	name = "Space Law"
-	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
+	name = "Uzay Yasası"
+	desc = "Uzay istasyonlarında kanun ve düzeni sağlamak için bir dizi Nanotrasen yönergesi."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
-	starting_title = "Space Law"
-	page_link = "Space_Law"
+	starting_title = "Uzay Yasası"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
 	return OXYLOSS
+
+/obj/item/book/manual/wiki/security_space_law/display_content(mob/living/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "Laws")
+		ui.open()
 
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"

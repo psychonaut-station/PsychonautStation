@@ -8,6 +8,10 @@
 	name = "\improper Delivery Office"
 	icon_state = "cargo_delivery"
 
+/area/station/cargo/treatment_center
+	name = "\improper Cargo Treatment Center"
+	icon_state = "exam_room"
+
 /area/station/cargo/warehouse
 	name = "\improper Warehouse"
 	icon_state = "cargo_warehouse"

@@ -2,3 +2,6 @@
   Seefaaa:
   - bugfix: "Eski Delta'daki kargo odalar\u0131 d\xFCzeltildi."
   - bugfix: "Roboti\u011Fine de MOD core crate eklendi."
+2024-03-05:
+  Seefaaa:
+  - bugfix: Hereticler tekrardan ascend olabilecek.

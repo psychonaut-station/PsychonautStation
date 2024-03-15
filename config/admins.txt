@@ -1,4 +1,0 @@
-Loanselot = Host
-Banditier = Host
-RengaN = Host
-Sefaaa = Host

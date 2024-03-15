@@ -79,7 +79,6 @@
 	C.gib_type = /obj/effect/decal/cleanable/robot_debris
 
 	C.update_body(0)
-	C.set_safe_hunger_level()
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]

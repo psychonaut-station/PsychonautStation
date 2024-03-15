@@ -13,7 +13,8 @@
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_l_arm"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 
 	brute_modifier = 5
@@ -37,7 +38,8 @@
 	attack_verb_simple = list("slapped", "punched")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_r_arm"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 
 	brute_modifier = 5
@@ -61,7 +63,8 @@
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_l_leg"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 
 	brute_modifier = 5
@@ -93,7 +96,8 @@
 	attack_verb_simple = list("kicked", "stomped")
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_r_leg"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 
 	brute_modifier = 5
@@ -125,7 +129,8 @@
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_chest"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 	is_dimorphic = FALSE
 
@@ -162,7 +167,8 @@
 	limb_id = SPECIES_SYNTHETIC
 	icon_greyscale = 'icons/mob/species/synthetic/bodyparts_greyscale.dmi'
 	icon_state = "synth_head"
-	bodytype = BODYTYPE_HUMANOID | BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_SYNTHETIC
+	bodyshape = BODYSHAPE_HUMANOID
 	dmg_overlay_type = "robotic"
 	is_dimorphic = FALSE
 

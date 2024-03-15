@@ -372,6 +372,7 @@
 	return TRUE
 
 /obj/item/syndicate_teleporter/emp_act(severity)
+	. = ..()
 	if(!prob(50/severity))
 		return
 	var/teleported_something = FALSE

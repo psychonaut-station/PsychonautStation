@@ -45,6 +45,8 @@
 	var/allow_riding = TRUE
 	///Whether the borg can stuff itself into disposals
 	var/canDispose = FALSE
+	/// Does it have transform animation (Not recommended for custom borgs)
+	var/haveFlick = TRUE
 	///The y offset of  the hat put on
 	var/hat_offset = -3
 	///The x offsets of a person riding the borg
@@ -212,6 +214,7 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
 	new_model.robot = cyborg
+	cyborg.icon = 'icons/mob/silicon/robots.dmi'
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return
@@ -275,7 +278,8 @@
 /obj/item/robot_model/proc/do_transform_delay()
 	var/mob/living/silicon/robot/cyborg = loc
 	sleep(0.1 SECONDS)
-	flick("[cyborg_base_icon]_transform", cyborg)
+	if(haveFlick)
+		flick("[cyborg_base_icon]_transform", cyborg)
 	ADD_TRAIT(cyborg, TRAIT_NO_TRANSFORM, REF(src))
 	if(locked_transform)
 		cyborg.ai_lockdown = TRUE
@@ -847,15 +851,17 @@
 		/obj/item/borg/apparatus/paper_holder,
 		/obj/item/universal_scanner
 	)
+	radio_channels = list(RADIO_CHANNEL_SUPPLY)
 	emag_modules = list(
-		/obj/item/borg/stun,
+		/obj/item/borg/paperplane_crossbow,
 	)
 	borg_skins = list(
 		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
 	)
 	cyborg_base_icon = "cargo"
-	model_select_icon = "cargo"
+	model_select_icon = "standart"
 	hat_offset = 0
+	haveFlick = FALSE
 
 /obj/item/robot_model/syndicate
 	name = "Syndicate Assault"

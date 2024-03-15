@@ -402,6 +402,93 @@
 		COOLDOWN_START(src, alarm_cooldown, HARM_ALARM_NO_SAFETY_COOLDOWN)
 		user.log_message("used an emagged Cyborg Harm Alarm", LOG_ATTACK)
 
+/// The fabled paper plane crossbow and its hardlight paper planes.
+/obj/item/paperplane/syndicate/hardlight
+	name = "hardlight paper plane"
+	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
+	eye_dam_lower = 10
+	eye_dam_higher = 10
+	delete_on_impact = TRUE
+	/// Which color is the paper plane?
+	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)
+	alpha = 150 // It's hardlight, it's gotta be see-through.
+
+/obj/item/paperplane/syndicate/hardlight/Initialize(mapload)
+	. = ..()
+	color = color_hex2color_matrix(pick(paper_colors))
+	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.
+
+/obj/item/borg/paperplane_crossbow
+	name = "paper plane crossbow"
+	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	icon_state = "crossbow"
+	/// How many planes does the crossbow currently have in its internal magazine?
+	var/planes = 4
+	/// Maximum of planes the crossbow can hold.
+	var/max_planes = 4
+	/// Time it takes to regenerate one plane
+	var/charge_delay = 1 SECONDS
+	/// Is the crossbow currently charging a new paper plane?
+	var/charging = FALSE
+	/// How long is the cooldown between shots?
+	var/shooting_delay = 0.5 SECONDS
+	/// Are we ready to fire again?
+	COOLDOWN_DECLARE(shooting_cooldown)
+
+/obj/item/borg/paperplane_crossbow/examine(mob/user)
+	. = ..()
+	. += span_notice("There is <b>[planes]</b> left inside of its internal magazine, out of [max_planes].")
+	var/charging_speed = 10 / charge_delay
+	. += span_notice("It recharges at a rate of <b>[charging_speed]</b> plane[charging_speed >= 2 ? "s" : ""] per second.")
+
+/obj/item/borg/paperplane_crossbow/equipped()
+	. = ..()
+	check_amount()
+
+/obj/item/borg/paperplane_crossbow/dropped()
+	. = ..()
+	check_amount()
+
+/// A simple proc to check if we're at the max amount of planes, if not, we keep on charging. Called by [/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()].
+/obj/item/borg/paperplane_crossbow/proc/check_amount()
+	if(!charging && planes < max_planes)
+		addtimer(CALLBACK(src, PROC_REF(charge_paper_planes)), charge_delay)
+		charging = TRUE
+
+/// A simple proc to charge paper planes, that then calls [/obj/item/borg/paperplane_crossbow/proc/check_amount()] to see if it should charge another one, over and over.
+/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()
+	planes++
+	charging = FALSE
+	check_amount()
+
+/// A proc for shooting a projectile at the target, it's just that simple, really.
+/obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
+	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
+		return
+	if(planes <= 0)
+		to_chat(user, span_warning("Not enough paper planes left!"))
+		return FALSE
+	planes--
+
+	var/obj/item/paperplane/syndicate/hardlight/plane_to_fire = new /obj/item/paperplane/syndicate/hardlight(get_turf(src.loc))
+
+	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
+	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
+	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
+	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
+	check_amount()
+
+/obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
+	. = ..()
+	check_amount()
+	if(iscyborg(user))
+		var/mob/living/silicon/robot/robot_user = user
+		if(!robot_user.cell.use(10))
+			to_chat(user, span_warning("Not enough power."))
+			return FALSE
+		shoot(target, user, click_params)
+
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG
 #undef HUG_MODE_SHOCK

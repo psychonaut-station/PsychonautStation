@@ -60659,10 +60659,10 @@
 /area/station/maintenance/department/science)
 "nTU" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/landmark/start/hangover,
 /obj/item/pillow/random,
+/obj/item/bedsheet,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "nUc" = (
@@ -101730,7 +101730,7 @@
 /area/station/science/genetics)
 "xso" = (
 /obj/structure/bed/double,
-/obj/item/bedsheet/random/double,
+/obj/item/bedsheet/ian/double,
 /turf/open/floor/wood,
 /area/station/maintenance/port/aft)
 "xsp" = (

@@ -16455,10 +16455,10 @@
 /turf/open/floor/iron/smooth,
 /area/station/ai_monitored/turret_protected/ai)
 "QN" = (
-/obj/structure/safe,
 /obj/item/gun/ballistic/rocketlauncher/unrestricted,
 /obj/item/clothing/mask/luchador/tecnicos,
 /obj/item/reagent_containers/cup/glass/bottle/vodka/badminka,
+/obj/structure/safe/vault,
 /turf/open/floor/circuit,
 /area/station/ai_monitored/command/nuke_storage)
 "QO" = (

@@ -10,12 +10,15 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	if(!mob)
+	var/client_initalized = VALIDATE_CLIENT_INITIALIZATION(src)
+	if(isnull(mob) || !client_initalized)
+		if(!client_initalized)
+			unvalidated_client_error() // we only want to throw this warning message when it's directly related to client failure.
+
+		to_chat(usr, span_warning("Failed to send your OOC message. You attempted to send the following message:\n[span_big(msg)]"))
 		return
 
-	VALIDATE_CLIENT(src)
-
-	if(!holder)
+	if(isnull(holder))
 		if(!GLOB.ooc_allowed)
 			to_chat(src, span_danger("OOC is globally muted."))
 			return
@@ -129,7 +132,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
 /proc/toggle_looc(toggle = null)
-	if(toggle != null) 
+	if(toggle != null)
 		if(toggle != GLOB.looc_allowed)
 			GLOB.looc_allowed = toggle
 		else
@@ -185,10 +188,13 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if(!msg)
 		return
 
-	if(!mob)
+	var/client_initalized = VALIDATE_CLIENT_INITIALIZATION(src)
+	if(isnull(mob) || !client_initalized)
+		if(!client_initalized)
+			unvalidated_client_error() // we only want to throw this warning message when it's directly related to client failure.
+
+		to_chat(usr, span_warning("Failed to send your LOOC message. You attempted to send the following message:\n[span_big(msg)]"))
 		return
-		
-	VALIDATE_CLIENT(src)
 
 	var/admin = check_rights(R_ADMIN, FALSE)
 	if(mob.stat == DEAD && !admin)

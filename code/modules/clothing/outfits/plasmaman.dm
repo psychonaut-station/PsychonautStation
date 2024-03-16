@@ -295,3 +295,10 @@
 	uniform = /obj/item/clothing/under/plasmaman/bitrunner
 	gloves = /obj/item/clothing/gloves/color/plasmaman/black
 	head = /obj/item/clothing/head/helmet/space/plasmaman/bitrunner
+
+/datum/outfit/plasmaman/human_ai
+	name = "Human AI Plasmaman"
+
+	uniform = /obj/item/clothing/under/plasmaman //same
+	gloves = /obj/item/clothing/gloves/color/plasmaman/black
+	head = /obj/item/clothing/head/helmet/space/plasmaman

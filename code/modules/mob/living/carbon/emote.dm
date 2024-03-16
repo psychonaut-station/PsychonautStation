@@ -195,3 +195,15 @@
 	key = "wink"
 	key_third_person = "winks"
 	message = "winks."
+
+/datum/emote/living/carbon/thumbsup
+	key = "thumbsup"
+	key_third_person = "thumbsup"
+	message = "flashes a thumbs up."
+	hands_use_check = TRUE
+
+/datum/emote/living/carbon/thumbsdown
+	key = "thumbsdown"
+	key_third_person = "thumbsdown"
+	message = "flashes a thumbs down."
+	hands_use_check = TRUE

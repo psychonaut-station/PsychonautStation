@@ -408,7 +408,8 @@
 	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
 	eye_dam_lower = 10
 	eye_dam_higher = 10
-	delete_on_impact = TRUE
+	scrap_on_impact = TRUE
+	throw_speed = 0.8
 	/// Which color is the paper plane?
 	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)
 	alpha = 150 // It's hardlight, it's gotta be see-through.
@@ -422,17 +423,17 @@
 	name = "paper plane crossbow"
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
 	icon = 'icons/obj/weapons/guns/energy.dmi'
-	icon_state = "crossbow"
+	icon_state = "crossbow_halloween"
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4
 	/// Maximum of planes the crossbow can hold.
 	var/max_planes = 4
 	/// Time it takes to regenerate one plane
-	var/charge_delay = 1 SECONDS
+	var/charge_delay = 4 SECONDS
 	/// Is the crossbow currently charging a new paper plane?
 	var/charging = FALSE
 	/// How long is the cooldown between shots?
-	var/shooting_delay = 0.5 SECONDS
+	var/shooting_delay = 1.5 SECONDS
 	/// Are we ready to fire again?
 	COOLDOWN_DECLARE(shooting_cooldown)
 
@@ -464,14 +465,9 @@
 
 /// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
-	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
-		return
-	if(planes <= 0)
-		to_chat(user, span_warning("Not enough paper planes left!"))
-		return FALSE
 	planes--
 
-	var/obj/item/paperplane/syndicate/hardlight/plane_to_fire = new /obj/item/paperplane/syndicate/hardlight(get_turf(src.loc))
+	var/obj/item/paperplane/syndicate/hardlight/plane_to_fire = new /obj/item/paperplane/syndicate/hardlight(get_turf(loc))
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
@@ -479,11 +475,20 @@
 	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
 	check_amount()
 
+/obj/item/borg/paperplane_crossbow/proc/canshoot()
+	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
+		return FALSE
+	if(planes <= 0)
+		to_chat(user, span_warning("Not enough paper planes left!"))
+		return FALSE
+
 /obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
 	. = ..()
 	check_amount()
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
+		if(!canshoot())
+			return FALSE
 		if(!robot_user.cell.use(10))
 			to_chat(user, span_warning("Not enough power."))
 			return FALSE

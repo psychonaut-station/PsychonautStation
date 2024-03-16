@@ -30,22 +30,58 @@ export const LawTexts = () => {
           <Section title="Tüm Yasalar">
             <Table>
               <Table.Row>
-                <Table.Cell><Box>Code</Box></Table.Cell>
-                <Table.Cell><Box>Mischief - 1XX</Box></Table.Cell>
-                <Table.Cell><Box>Misdemeanor - 2XX</Box></Table.Cell>
-                <Table.Cell><Box>Felony - 3XX</Box></Table.Cell>
-                <Table.Cell><Box>Grand Felony - 4XX</Box></Table.Cell>
-                <Table.Cell><Box>Capital Crime - 5XX</Box></Table.Cell>
+                <Table.Cell>
+                  <Box>Code</Box>
+                </Table.Cell>
+                <Table.Cell>
+                  <Box>Mischief - 1XX</Box>
+                </Table.Cell>
+                <Table.Cell>
+                  <Box>Misdemeanor - 2XX</Box>
+                </Table.Cell>
+                <Table.Cell>
+                  <Box>Felony - 3XX</Box>
+                </Table.Cell>
+                <Table.Cell>
+                  <Box>Grand Felony - 4XX</Box>
+                </Table.Cell>
+                <Table.Cell>
+                  <Box>Capital Crime - 5XX</Box>
+                </Table.Cell>
               </Table.Row>
               {spaceLawTable.map((v) => {
                 return (
                   <Table.Row key={v}>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.code)}>{v.code}</Box></Table.Cell>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.Mischief)}>{v.Mischief}</Box></Table.Cell>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.Misdemeanor)}>{v.Misdemeanor}</Box></Table.Cell>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.Felony)}>{v.Felony}</Box></Table.Cell>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.GrandFelony)}>{v.GrandFelony}</Box></Table.Cell>
-                    <Table.Cell><Box onClick={(e) => scrollHandler(e, v.CapitalCrime)}>{v.CapitalCrime}</Box></Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.code)}>
+                        {v.code}
+                      </Box>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.Mischief)}>
+                        {v.Mischief}
+                      </Box>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.Misdemeanor)}>
+                        {v.Misdemeanor}
+                      </Box>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.Felony)}>
+                        {v.Felony}
+                      </Box>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.GrandFelony)}>
+                        {v.GrandFelony}
+                      </Box>
+                    </Table.Cell>
+                    <Table.Cell>
+                      <Box onClick={(e) => scrollHandler(e, v.CapitalCrime)}>
+                        {v.CapitalCrime}
+                      </Box>
+                    </Table.Cell>
                   </Table.Row>
                 );
               })}
@@ -53,7 +89,9 @@ export const LawTexts = () => {
           </Section>
           {spaceLawDescriptions.map((v) => {
             return (
-              <Section key={v} id={v.title} title={v.title}>{v.desc}</Section>
+              <Section key={v} id={v.title} title={v.title}>
+                {v.desc}
+              </Section>
             );
           })}
         </Section>

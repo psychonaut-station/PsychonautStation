@@ -1542,10 +1542,8 @@
 /obj/structure/bed{
 	dir = 4
 	},
-/obj/item/bedsheet/dorms{
-	dir = 1
-	},
 /obj/item/pillow/random,
+/obj/item/bedsheet,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "aqW" = (
@@ -18088,10 +18086,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/machinery/door/window/left/directional/south{
-	name = "Pharmacy Desk";
-	req_access = list("pharmacy")
-	},
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/medical/pharmacy)
 "eaO" = (
@@ -31724,6 +31719,7 @@
 	},
 /obj/effect/turf_decal/trimline/neutral,
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/medical/pharmacy)
 "hfk" = (
@@ -38687,6 +38683,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
+"iON" = (
+/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron,
+/area/station/hallway/primary/central/aft)
 "iPb" = (
 /obj/structure/table,
 /obj/item/storage/box/tail_pin,
@@ -63968,9 +63970,9 @@
 /area/station/maintenance/department/science)
 "oLO" = (
 /obj/structure/bed,
-/obj/item/bedsheet/dorms,
 /obj/machinery/status_display/evac/directional/east,
 /obj/item/pillow/random,
+/obj/item/bedsheet,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "oLT" = (
@@ -69336,11 +69338,9 @@
 /obj/structure/bed{
 	dir = 4
 	},
-/obj/item/bedsheet/dorms{
-	dir = 1
-	},
 /obj/machinery/status_display/evac/directional/north,
 /obj/item/pillow/random,
+/obj/item/bedsheet,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "pUp" = (
@@ -89913,10 +89913,10 @@
 /area/station/command/bridge)
 "uEo" = (
 /obj/structure/bed/double,
-/obj/item/bedsheet/dorms_double,
 /obj/machinery/status_display/evac/directional/east,
 /obj/effect/landmark/start/hangover,
 /obj/item/pillow/random,
+/obj/item/bedsheet/double,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "uEv" = (
@@ -94202,6 +94202,11 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/captain)
+"vDv" = (
+/obj/structure/cable,
+/obj/structure/sign/flag/nanotrasen/directional/east,
+/turf/closed/wall,
+/area/station/cargo/bitrunning)
 "vDw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer2,
 /obj/effect/decal/cleanable/dirt,
@@ -96316,6 +96321,7 @@
 /area/station/engineering/atmos)
 "wfK" = (
 /obj/effect/turf_decal/tile/brown/anticorner/contrasted,
+/obj/structure/sign/flag/nanotrasen/directional/south,
 /turf/closed/wall,
 /area/station/security/checkpoint/supply)
 "wfR" = (
@@ -143513,7 +143519,7 @@ tBS
 eBY
 xmu
 feO
-bSa
+iON
 eaI
 hff
 ued
@@ -146794,7 +146800,7 @@ gcD
 qLp
 weh
 vnP
-rXE
+vDv
 vUO
 jHf
 rzD

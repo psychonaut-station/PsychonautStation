@@ -168,7 +168,7 @@ export const LawTexts = () => {
                     backgroundColor={tableItemStyle.background}
                     color={tableItemStyle.color}
                   >
-                    Mühebbet
+                    Müebbet
                     <br />
                     Sürgün
                     <br />
@@ -181,7 +181,7 @@ export const LawTexts = () => {
                     backgroundColor={tableItemStyle.background}
                     color={tableItemStyle.color}
                   >
-                    Mühebbet
+                    Müebbet
                     <br />
                     Sürgün
                     <br />

@@ -2755,10 +2755,6 @@
 /obj/structure/sign/nanotrasen,
 /turf/closed/wall/r_wall,
 /area/station/command/teleporter)
-"aFH" = (
-/obj/structure/lattice,
-/turf/closed/wall,
-/area/station/cargo/miningoffice)
 "aFU" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/airlock/maintenance_hatch{
@@ -7014,15 +7010,6 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "bEf" = (
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	layer = 4.1;
-	name = "Secondary AI Core Access";
-	pixel_x = 4;
-	req_access = list("ai_upload")
-	},
 /obj/item/radio/intercom/directional/north{
 	freerange = 1;
 	listening = 0;
@@ -7049,15 +7036,6 @@
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
 "bEm" = (
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	layer = 4.1;
-	name = "Tertiary AI Core Access";
-	pixel_x = -3;
-	req_access = list("ai_upload")
-	},
 /obj/item/radio/intercom/directional/north{
 	freerange = 1;
 	listening = 0;
@@ -7571,13 +7549,6 @@
 	name = "AI Chamber turret control";
 	pixel_x = 3;
 	pixel_y = -23
-	},
-/obj/machinery/door/window{
-	base_state = "leftsecure";
-	dir = 8;
-	icon_state = "leftsecure";
-	name = "Primary AI Core Access";
-	req_access = list("ai_upload")
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
@@ -11986,7 +11957,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
@@ -18971,6 +18941,7 @@
 	name = "Featherbottom";
 	real_name = "Featherbottom"
 	},
+/obj/machinery/door/window/left/directional/east,
 /turf/open/floor/grass,
 /area/station/cargo/drone_bay)
 "emm" = (
@@ -19401,7 +19372,6 @@
 	name = "Maintenance Hatch"
 	},
 /obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
-/obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/lobby)
 "erM" = (
@@ -24292,7 +24262,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/fore)
 "fxx" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/barricade/wooden,
@@ -32498,10 +32467,6 @@
 /turf/open/floor/iron,
 /area/station/medical/abandoned)
 "hqK" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Fitness Ring"
-	},
 /turf/open/floor/grass,
 /area/station/cargo/drone_bay)
 "hqL" = (
@@ -44203,9 +44168,6 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "kav" = (
-/obj/effect/turf_decal/tile/brown/half/contrasted{
-	dir = 4
-	},
 /obj/structure/sign/poster/official/foam_force_ad,
 /turf/closed/wall,
 /area/station/cargo/miningfoundry)
@@ -49398,17 +49360,6 @@
 /obj/item/papercutter,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
-"lmy" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 4
-	},
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/lobby)
 "lmC" = (
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/effect/decal/cleanable/dirt,
@@ -61034,6 +60985,7 @@
 /area/station/commons/fitness/recreation)
 "nZx" = (
 /obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/grass,
 /area/station/cargo/drone_bay)
 "nZA" = (
@@ -62671,10 +62623,6 @@
 /turf/open/floor/iron/large,
 /area/station/science/auxlab/firing_range)
 "ouU" = (
-/obj/machinery/door/window{
-	dir = 8;
-	name = "Fitness Ring"
-	},
 /obj/effect/landmark/start/botanist,
 /turf/open/floor/grass,
 /area/station/cargo/drone_bay)
@@ -63569,12 +63517,6 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/window/reinforced/spawner/directional/north,
-/obj/machinery/door/window{
-	base_state = "right";
-	dir = 4;
-	icon_state = "right";
-	layer = 3
-	},
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal)
@@ -67499,11 +67441,11 @@
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/south,
-/obj/effect/spawner/random/entertainment/musical_instrument,
-/obj/effect/spawner/random/entertainment/musical_instrument,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/table,
+/obj/effect/spawner/random/entertainment/musical_instrument,
+/obj/effect/spawner/random/entertainment/musical_instrument,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
 "pBY" = (
@@ -68570,7 +68512,6 @@
 /turf/open/floor/iron,
 /area/station/maintenance/starboard/aft)
 "pMT" = (
-/obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/door/poddoor/preopen{
 	id = "Interro_shutters";
@@ -73870,7 +73811,6 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
 "qWB" = (
-/obj/structure/lattice/catwalk,
 /obj/structure/sign/warning/vacuum,
 /turf/closed/wall,
 /area/station/solars/starboard/fore)
@@ -78909,13 +78849,6 @@
 /turf/open/floor/plating,
 /area/station/service/library/abandoned)
 "scX" = (
-/obj/machinery/door/window{
-	base_state = "rightsecure";
-	dir = 4;
-	icon_state = "rightsecure";
-	name = "Primary AI Core Access";
-	req_access = list("ai_upload")
-	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/iron/dark,
@@ -88447,9 +88380,6 @@
 	},
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/disposalpipe/segment,
-/obj/machinery/conveyor{
-	id = "cargodisposals"
-	},
 /obj/structure/plasticflaps,
 /obj/machinery/conveyor{
 	id = "cargodisposals"
@@ -93119,7 +93049,6 @@
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/structure/barricade/wooden,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/cargo/miningfoundry)
 "vsV" = (
@@ -101535,6 +101464,7 @@
 "xrl" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
 "xrr" = (
@@ -104224,13 +104154,12 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/transit_tube)
 "xYM" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/spawner/random/entertainment/plushie,
+/obj/effect/spawner/random/entertainment/plushie,
 /obj/structure/table,
-/obj/effect/spawner/random/entertainment/plushie,
-/obj/effect/spawner/random/entertainment/plushie,
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
 "xYN" = (
@@ -132081,7 +132010,7 @@ xLZ
 ngR
 bUQ
 oLV
-lmy
+iPe
 uGQ
 erv
 qHu
@@ -153134,7 +153063,7 @@ aJE
 aJE
 ofx
 oJR
-aFH
+qZd
 qZd
 xgo
 xgo

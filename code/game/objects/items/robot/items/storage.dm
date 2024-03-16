@@ -362,3 +362,47 @@
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
 	. += span_notice("<i>Alt-click</i> will drop the currently secured item.")
+
+/obj/item/borg/apparatus/paper_holder
+	name = "integrated paper holder"
+	desc = "A holder for holding papers."
+	icon = 'icons/obj/service/bureaucracy.dmi'
+	icon_state = "clipboard"
+	storable = list(/obj/item/paper)
+
+/obj/item/borg/apparatus/paper_holder/update_overlays()
+	. = ..()
+	. += "clipboard_over"
+	var/mutable_appearance/arm = mutable_appearance(icon = icon, icon_state = "clipboard_over")
+	if(stored)
+		stored.pixel_x = 0
+		stored.pixel_y = 0
+		var/mutable_appearance/stored_copy = new /mutable_appearance(stored)
+		stored_copy.layer = FLOAT_LAYER
+		stored_copy.plane = FLOAT_PLANE
+		. += stored_copy
+	. += arm
+
+/obj/item/borg/apparatus/paper_holder/pre_attack(atom/target, mob/living/user, params)
+	if(!user.Adjacent(target))
+		return
+	if(istype(target, /obj/item/paper_bin) && !stored)
+		var/obj/item/paper_bin/paperbin = target
+
+		if(paperbin.total_paper > 0)
+			var/obj/item/paper/top_paper = pop(paperbin.paper_stack) || paperbin.generate_paper()
+			paperbin.total_paper -= 1
+			top_paper.forceMove(src)
+			stored = top_paper
+			RegisterSignal(stored, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_stored_updated_icon))
+			to_chat(user, span_notice("You take [top_paper] out of [paperbin]."))
+			paperbin.update_appearance()
+			update_appearance()
+		return TRUE
+	return ..()
+
+/obj/item/borg/apparatus/paper_holder/examine()
+	. = ..()
+	if(stored)
+		. += "The apparatus currently has [stored] secured."
+	. += span_notice(" <i>Alt-click</i> to drop the currently stored paper. ")

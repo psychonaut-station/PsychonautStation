@@ -1,0 +1,4 @@
+author: "RengaN02"
+delete-after: True
+changes:
+  - bugfix: "Brig Physician, Animal ve NT Secretary spy olamaz."

@@ -737,10 +737,14 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN,
+		JOB_NT_SECRETARY,
+		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
+		JOB_ANIMAL,
 	)
 	required_candidates = 3 // lives or dies by there being a few spies
 	weight = 5

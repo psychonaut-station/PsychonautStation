@@ -475,7 +475,7 @@
 	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
 	check_amount()
 
-/obj/item/borg/paperplane_crossbow/proc/canshoot()
+/obj/item/borg/paperplane_crossbow/proc/canshoot(mob/living/user)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
 		return FALSE
 	if(planes <= 0)
@@ -487,7 +487,7 @@
 	check_amount()
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
-		if(!canshoot())
+		if(!canshoot(user))
 			return FALSE
 		if(!robot_user.cell.use(10))
 			to_chat(user, span_warning("Not enough power."))

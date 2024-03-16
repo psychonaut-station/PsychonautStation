@@ -62,11 +62,12 @@
 	page_link = "Guide_to_engineering"
 
 /obj/item/book/manual/wiki/security_space_law
-	name = "Uzay Yasası"
-	desc = "Uzay istasyonlarında kanun ve düzeni sağlamak için bir dizi Nanotrasen yönergesi."
+	name = "Space Law"
+	desc = "A set of Nanotrasen guidelines for keeping law and order on their space stations."
 	icon_state = "bookSpaceLaw"
 	starting_author = "Nanotrasen"
-	starting_title = "Uzay Yasası"
+	starting_title = "Space Law"
+	page_link = "Space_Law"
 
 /obj/item/book/manual/wiki/security_space_law/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
@@ -75,7 +76,7 @@
 /obj/item/book/manual/wiki/security_space_law/display_content(mob/living/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
-		ui = new(user, src, "Laws")
+		ui = new(user, src, "SpaceLaw")
 		ui.open()
 
 /obj/item/book/manual/wiki/infections

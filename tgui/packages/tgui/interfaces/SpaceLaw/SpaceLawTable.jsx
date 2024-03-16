@@ -4,7 +4,7 @@
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.
 
-export const lawList = [{
+export const spaceLawTable = [{
   code: "X01",
   Mischief: "Disturbing the Peace",
   Misdemeanor: "Assault",

@@ -4,7 +4,7 @@
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.
 
-export const lawDesc = [{
+export const spaceLawDescriptions = [{
   title: "Disturbing the Peace",
   desc: "To disturb the station's or crew's peace.",
 }, {

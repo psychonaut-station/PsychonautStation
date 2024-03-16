@@ -4996,11 +4996,6 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/escape)
 "bgH" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno2";
 	name = "Creature Cell #2"
@@ -5008,6 +5003,7 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "bgL" = (
@@ -7474,11 +7470,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "bIh" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno4";
@@ -7486,6 +7477,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "bIk" = (
@@ -10770,13 +10762,10 @@
 	},
 /area/station/hallway/primary/port)
 "csO" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/floor,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "csR" = (
@@ -25440,11 +25429,8 @@
 	name = "disposals conveyor switch";
 	pixel_x = -8
 	},
-/obj/machinery/door/window/right/directional/east{
-	base_state = "left";
-	icon_state = "left";
-	name = "Danger: Conveyor Access";
-	req_access = list("maint_tunnels")
+/obj/machinery/door/window/right/directional/south{
+	dir = 4
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/supply)
@@ -26727,11 +26713,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/xenobiology)
 "gbj" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno3";
@@ -26739,6 +26720,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "gbt" = (
@@ -39259,11 +39241,6 @@
 /turf/open/floor/carpet/royalblue,
 /area/station/command/heads_quarters/qm)
 "iWX" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno1";
 	name = "Creature Cell #1"
@@ -39271,6 +39248,7 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "iXc" = (
@@ -40429,17 +40407,6 @@
 /obj/effect/landmark/atmospheric_sanity/mark_all_station_areas_as_goal,
 /turf/open/space/basic,
 /area/space)
-"jjm" = (
-/obj/machinery/door/window/brigdoor{
-	dir = 1;
-	name = "Creature Pen";
-	req_access = list("research")
-	},
-/obj/structure/cable,
-/obj/effect/turf_decal/bot,
-/obj/machinery/light/floor,
-/turf/open/floor/iron,
-/area/station/science/xenobiology)
 "jjs" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -43057,16 +43024,12 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/morgue)
 "jNZ" = (
-/obj/machinery/door/window{
-	dir = 4;
-	name = "Mass Driver";
-	req_access = list("chapel_office")
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/machinery/light/small/red/directional/north,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/funeral)
 "jOe" = (
@@ -57607,10 +57570,6 @@
 /turf/open/floor/engine,
 /area/station/engineering/supermatter/room)
 "nkj" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno6";
@@ -57618,6 +57577,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "nkn" = (
@@ -59144,17 +59104,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/breakroom)
-"nCY" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/door/window/right/directional/east{
-	base_state = "left";
-	icon_state = "left";
-	name = "Danger: Conveyor Access";
-	req_access = list("maint_tunnels")
-	},
-/turf/open/floor/iron/dark,
-/area/station/security/checkpoint/supply)
 "nDk" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/table,
@@ -78090,10 +78039,6 @@
 /turf/open/floor/plating,
 /area/station/science/explab)
 "rUl" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno8";
@@ -78101,6 +78046,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "rUn" = (
@@ -104481,10 +104427,6 @@
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningoffice)
 "ycY" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno5";
@@ -104492,6 +104434,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "ydb" = (
@@ -104590,11 +104533,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/construction/mining/aux_base)
-"yeO" = (
-/obj/structure/cable,
-/mob/living/simple_animal/hostile/zombie,
-/turf/open/floor/circuit/green,
-/area/station/science/xenobiology)
 "yeT" = (
 /obj/effect/turf_decal/siding/green{
 	dir = 8
@@ -104737,10 +104675,6 @@
 /turf/open/floor/iron/dark,
 /area/station/cargo/lobby)
 "ygV" = (
-/obj/machinery/door/window/brigdoor{
-	name = "Creature Pen";
-	req_access = list("research")
-	},
 /obj/structure/cable,
 /obj/machinery/door/poddoor/preopen{
 	id = "xeno7";
@@ -104748,6 +104682,7 @@
 	},
 /obj/effect/turf_decal/delivery,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "ygW" = (
@@ -126656,7 +126591,7 @@ csO
 rhi
 tLp
 pWL
-jjm
+csO
 rUl
 rTW
 shO
@@ -127420,14 +127355,14 @@ bEH
 gcr
 mQO
 rTW
-yeO
+shO
 rTW
 gbj
 csO
 ivi
 dxU
 bDZ
-jjm
+csO
 ygV
 rTW
 shO
@@ -128198,7 +128133,7 @@ csO
 uDQ
 dxU
 kSA
-jjm
+csO
 nkj
 rTW
 shO
@@ -128969,7 +128904,7 @@ csO
 bXL
 xzo
 urx
-jjm
+csO
 ycY
 rTW
 shO
@@ -148184,7 +148119,7 @@ wxX
 uBZ
 mlv
 fLO
-nCY
+rPj
 rPj
 puQ
 dkr

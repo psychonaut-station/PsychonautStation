@@ -485,3 +485,6 @@
   projectkepler-ru:
   - rscadd: The Bartender's double barrel shotgun can be purchased for 1,800 credits
       on goodie tab
+2024-03-17:
+  RengaN02:
+  - bugfix: Brig Physician, Animal ve NT Secretary spy olamaz.

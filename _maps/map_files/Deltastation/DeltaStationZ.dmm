@@ -42457,10 +42457,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Bay"
+/obj/machinery/door/airlock/public/glass{
+	name = "Cargo Lobby"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
 "jFJ" = (
@@ -70263,19 +70262,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining/glass{
-	name = "Cargo Office"
-	},
 /obj/effect/landmark/navigate_destination,
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/duct,
 /obj/machinery/door/poddoor/preopen{
 	id = "brigfront";
 	name = "Brig Blast Door"
+	},
+/obj/machinery/door/airlock/public/glass{
+	name = "Cargo Lobby"
 	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
@@ -84081,17 +84079,16 @@
 /area/station/hallway/secondary/command)
 "toS" = (
 /obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/mining{
-	name = "Cargo Bay"
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /obj/machinery/duct,
+/obj/machinery/door/airlock/public/glass{
+	name = "Cargo Lobby"
+	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/office)
 "tpd" = (
@@ -100907,6 +100904,7 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 8
 	},
+/obj/item/defibrillator/loaded,
 /turf/open/floor/iron,
 /area/station/medical/storage)
 "xhW" = (

@@ -22243,9 +22243,9 @@
 /area/station/service/kitchen/abandoned)
 "diQ" = (
 /obj/structure/table/wood,
-/obj/machinery/computer/security/wooden_tv,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron/grimy,
 /area/station/command/bridge)
 "diS" = (
@@ -32629,7 +32629,7 @@
 /obj/item/clothing/suit/toggle/lawyer/black,
 /obj/machinery/status_display/evac/directional/south,
 /obj/item/clothing/head/fedora,
-/obj/item/clothing/under/dress/redeveninggown,
+/obj/item/clothing/under/dress/eveninggown,
 /obj/item/clothing/head/costume/rabbitears,
 /turf/open/floor/iron/grimy,
 /area/station/commons/dorms)
@@ -61675,7 +61675,6 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
-/obj/structure/secure_safe/caps_spare/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "nmX" = (
@@ -64218,9 +64217,9 @@
 "oac" = (
 /obj/structure/table/wood,
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/item/flashlight/lamp,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/computer/security/wooden_tv,
 /turf/open/floor/iron/grimy,
 /area/station/command/bridge)
 "oah" = (

@@ -5367,6 +5367,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/door/password,
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
 "bkn" = (
@@ -55151,6 +55152,11 @@
 	},
 /obj/item/emergency_bed,
 /obj/item/emergency_bed,
+/obj/item/healthanalyzer,
+/obj/item/healthanalyzer{
+	pixel_y = 3
+	},
+/obj/item/healthanalyzer,
 /turf/open/floor/iron/white,
 /area/station/cargo/miningfoundry)
 "mDC" = (
@@ -56077,6 +56083,7 @@
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/construction,
+/obj/machinery/door/password,
 /turf/open/floor/iron,
 /area/station/engineering/gravity_generator)
 "mNJ" = (

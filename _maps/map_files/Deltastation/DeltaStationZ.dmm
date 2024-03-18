@@ -11170,7 +11170,6 @@
 "cxu" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/medkit/regular,
-/obj/structure/secure_safe/caps_spare/directional/west,
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
@@ -19796,6 +19795,12 @@
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/cafeteria)
+"eux" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/secure_safe/caps_spare,
+/turf/open/floor/iron/dark,
+/area/station/command/bridge)
 "euz" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -104139,7 +104144,6 @@
 /obj/item/clothing/head/costume/kitty,
 /obj/item/clothing/under/costume/maid,
 /obj/item/clothing/head/costume/rabbitears,
-/obj/item/clothing/under/dress/redeveninggown,
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "xRa" = (
@@ -143325,7 +143329,7 @@ aaa
 wyH
 fIx
 cxu
-mHO
+eux
 drj
 nEH
 nkU

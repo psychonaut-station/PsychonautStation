@@ -99516,6 +99516,10 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage)
+"wMh" = (
+/obj/item/circuitboard/computer/communications,
+/turf/open/floor/plating/airless,
+/area/station/science/ordnance/bomb)
 "wMi" = (
 /obj/machinery/light_switch/directional/south{
 	pixel_x = -6
@@ -119124,7 +119128,7 @@ aaa
 oec
 bBl
 itR
-itR
+wMh
 gJj
 dBc
 jbR

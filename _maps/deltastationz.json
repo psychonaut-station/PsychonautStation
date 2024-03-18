@@ -1,0 +1,17 @@
+{
+	"version": 1,
+	"map_name": "Delta StationZ",
+	"map_path": "map_files/Deltastation",
+	"map_file": "DeltaStationZ.dmm",
+	"shuttles": {
+		"emergency": "emergency_delta",
+		"ferry": "ferry_fancy",
+		"cargo": "cargo_delta",
+		"whiteship": "whiteship_delta"
+	},
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/bar", "/area/station/commons/lounge"]
+		}
+	}
+}

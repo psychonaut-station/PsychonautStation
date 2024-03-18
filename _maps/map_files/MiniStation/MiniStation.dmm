@@ -13950,8 +13950,8 @@
 /turf/open/floor/iron/smooth,
 /area/station/tcommsat/computer)
 "Ja" = (
-/obj/item/kirbyplants/random,
-/obj/structure/secure_safe/caps_spare/directional/east,
+/obj/structure/table,
+/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "Jb" = (

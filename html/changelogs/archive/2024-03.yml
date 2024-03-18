@@ -568,3 +568,11 @@
       if materials are put on hold while printing
   Tattle:
   - rscadd: Getting shrunk makes you talk small
+2024-03-18:
+  Exester509:
+  - bugfix: Plasmamen will become human in the deathmatch so they don't instantly
+      die
+  Ghommie:
+  - bugfix: FIXED CARGO EXPORTS!
+  JohnFulpWillard:
+  - bugfix: Action abilities hidden from players are now not shown to observers either.

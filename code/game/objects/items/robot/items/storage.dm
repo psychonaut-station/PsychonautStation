@@ -10,6 +10,7 @@
 
 /obj/item/borg/apparatus/Initialize(mapload)
 	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, PROC_REF(safedecon))
+	update_appearance()
 	return ..()
 
 /obj/item/borg/apparatus/Destroy()

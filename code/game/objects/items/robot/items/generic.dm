@@ -424,14 +424,12 @@
 	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "crossbow_halloween"
+	/// Paperplane Type
+	var/obj/item/paperplane/planetype = /obj/item/paperplane/syndicate/hardlight
 	/// How many planes does the crossbow currently have in its internal magazine?
 	var/planes = 4
 	/// Maximum of planes the crossbow can hold.
 	var/max_planes = 4
-	/// Time it takes to regenerate one plane
-	var/charge_delay = 4 SECONDS
-	/// Is the crossbow currently charging a new paper plane?
-	var/charging = FALSE
 	/// How long is the cooldown between shots?
 	var/shooting_delay = 1.5 SECONDS
 	/// Are we ready to fire again?
@@ -440,40 +438,17 @@
 /obj/item/borg/paperplane_crossbow/examine(mob/user)
 	. = ..()
 	. += span_notice("There is <b>[planes]</b> left inside of its internal magazine, out of [max_planes].")
-	var/charging_speed = 10 / charge_delay
-	. += span_notice("It recharges at a rate of <b>[charging_speed]</b> plane[charging_speed >= 2 ? "s" : ""] per second.")
-
-/obj/item/borg/paperplane_crossbow/equipped()
-	. = ..()
-	check_amount()
-
-/obj/item/borg/paperplane_crossbow/dropped()
-	. = ..()
-	check_amount()
-
-/// A simple proc to check if we're at the max amount of planes, if not, we keep on charging. Called by [/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()].
-/obj/item/borg/paperplane_crossbow/proc/check_amount()
-	if(!charging && planes < max_planes)
-		addtimer(CALLBACK(src, PROC_REF(charge_paper_planes)), charge_delay)
-		charging = TRUE
-
-/// A simple proc to charge paper planes, that then calls [/obj/item/borg/paperplane_crossbow/proc/check_amount()] to see if it should charge another one, over and over.
-/obj/item/borg/paperplane_crossbow/proc/charge_paper_planes()
-	planes++
-	charging = FALSE
-	check_amount()
 
 /// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
 	planes--
 
-	var/obj/item/paperplane/syndicate/hardlight/plane_to_fire = new /obj/item/paperplane/syndicate/hardlight(get_turf(loc))
+	var/obj/item/paperplane/plane_to_fire = new planetype(get_turf(loc))
 
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
 	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
 	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
-	check_amount()
 
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/user)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
@@ -488,7 +463,6 @@
 
 /obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
 	. = ..()
-	check_amount()
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 		if(!canshoot(target,user))

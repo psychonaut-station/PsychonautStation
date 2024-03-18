@@ -59,8 +59,8 @@
 /mob/living/simple_animal/hostile/zombie/infectious/brainlessidiot
 	icon_state = "boss"
 	outfit = null
-	maxHealth = 500
-	health = 500
+	maxHealth = 600
+	health = 600
 	melee_damage_lower = 26
 	melee_damage_upper = 26
 	/// Dash ability

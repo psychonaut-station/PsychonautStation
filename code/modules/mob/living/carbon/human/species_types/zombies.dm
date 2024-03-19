@@ -175,47 +175,12 @@
 	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && SPT_PROB(2, seconds_per_tick))
 		playsound(carbon_mob, pick(spooks), 50, TRUE, 10)
 
-/datum/species/zombie/infectious/walkers //TWD referance
-	ai_controlled_species = TRUE
-
-/datum/species/zombie/infectious/walkers/on_species_gain(mob/living/carbon/human/Z, datum/species/old_species)
-	. = ..()
-	Z.become_husk(SPECIES_TRAIT)
-
-/datum/species/zombie/infectious/walkers/on_species_loss(mob/living/carbon/human/Z, datum/species/new_species, pref_load)
-	. = ..()
-	Z.cure_husk(SPECIES_TRAIT)
-
-//miniboss
-/datum/species/zombie/infectious/walkers/freak
-	damage_modifier = 50 //50% less damage
-	/// Dash ability
-	var/datum/action/cooldown/mob_cooldown/dash/dash
-
-/datum/species/zombie/infectious/walkers/freak/on_species_gain(mob/living/carbon/human/Z, datum/species/old_species)
-	. = ..()
-	dash = new
-	dash.Grant(Z)
-	RegisterSignal(Z, COMSIG_ATOM_EX_ACT, PROC_REF(ex_act))
-
-/datum/species/zombie/infectious/walkers/freak/on_species_loss(mob/living/carbon/human/Z, datum/species/new_species, pref_load)
-	. = ..()
-	if(dash)
-		dash.Remove(Z)
-		dash = null
-	UnregisterSignal(Z, COMSIG_ATOM_EX_ACT)
-
-/datum/species/zombie/infectious/walkers/freak/proc/ex_act(severity, target)
-	SIGNAL_HANDLER
-	dash.Trigger(target = target)
-
 // Your skin falls off
 /datum/species/human/krokodil_addict
 	name = "\improper Krokodil Human"
 	id = SPECIES_ZOMBIE_KROKODIL
 	examine_limb_id = SPECIES_HUMAN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
-	inherent_factions = list(FACTION_ZOMBIE) // smells like zombie
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/zombie,
@@ -225,74 +190,3 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/zombie,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie
 	)
-
-// Zombie AI
-/datum/ai_controller/zombie
-	blackboard = list(
-		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
-		BB_REINFORCEMENTS_SAY = "Braainnss..!"
-	)
-
-	ai_movement = /datum/ai_movement/basic_avoidance
-	idle_behavior = /datum/idle_behavior/idle_random_walk
-	planning_subtrees = list(
-		/datum/ai_planning_subtree/simple_find_target,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree/zombie,
-	)
-
-/datum/ai_planning_subtree/basic_melee_attack_subtree/zombie
-	melee_attack_behavior=/datum/ai_behavior/zombie_attack
-
-/datum/ai_behavior/zombie_attack
-	action_cooldown = 0.2 SECONDS // We gotta check unfortunately often because we're in a race condition with nextmove
-	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_REQUIRE_REACH | AI_BEHAVIOR_CAN_PLAN_DURING_EXECUTION
-	///do we finish this action after hitting once?
-	var/terminate_after_action = FALSE
-
-/datum/ai_behavior/zombie_attack/setup(datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
-	. = ..()
-	if(!controller.blackboard[targeting_strategy_key])
-		CRASH("No targeting strategy was supplied in the blackboard for [controller.pawn]")
-	if(HAS_TRAIT(controller.pawn, TRAIT_HANDS_BLOCKED))
-		return FALSE
-	//Hiding location is priority
-	var/atom/target = controller.blackboard[hiding_location_key] || controller.blackboard[target_key]
-	if(QDELETED(target))
-		return FALSE
-
-	set_movement_target(controller, target)
-
-/datum/ai_behavior/zombie_attack/perform(seconds_per_tick, datum/ai_controller/controller, target_key, targeting_strategy_key, hiding_location_key)
-	if (isliving(controller.pawn))
-		var/mob/living/pawn = controller.pawn
-		if (world.time < pawn.next_move)
-			return
-
-	. = ..()
-	var/mob/living/carbon/C = controller.pawn
-	//targeting strategy will kill the action if not real anymore
-	var/atom/target = controller.blackboard[target_key]
-	var/datum/targeting_strategy/targeting_strategy = GET_TARGETING_STRATEGY(controller.blackboard[targeting_strategy_key])
-
-	if(!targeting_strategy.can_attack(C, target))
-		finish_action(controller, FALSE, target_key)
-		return
-
-	var/hiding_target = targeting_strategy.find_hidden_mobs(C, target) //If this is valid, theyre hidden in something!
-
-	controller.set_blackboard_key(hiding_location_key, hiding_target)
-
-	C.set_combat_mode(TRUE)
-	if(hiding_target) //Slap it!
-		C.ClickOn(hiding_target)
-	else
-		C.ClickOn(target)
-
-	if(terminate_after_action)
-		finish_action(controller, TRUE, target_key)
-
-/datum/ai_behavior/zombie_attack/finish_action(datum/ai_controller/controller, succeeded, target_key, targeting_strategy_key, hiding_location_key)
-	. = ..()
-	if(!succeeded)
-		controller.clear_blackboard_key(target_key)

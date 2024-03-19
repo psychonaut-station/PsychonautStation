@@ -1,7 +1,7 @@
 /mob/living/simple_animal/hostile/zombie
 	name = "Shambling Corpse"
 	desc = "When there is no more room in hell, the dead will walk in outer space."
-	icon = 'icons/psychonaut/mob/simple/simple_human.dmi'
+	icon = 'icons/mob/simple/simple_human.dmi'
 	mob_biotypes = MOB_ORGANIC|MOB_HUMANOID
 	sentience_type = SENTIENCE_HUMANOID
 	speak_chance = 0
@@ -30,8 +30,7 @@
 
 /mob/living/simple_animal/hostile/zombie/Initialize(mapload)
 	. = ..()
-	if(outfit)
-		apply_dynamic_human_appearance(src, outfit, /datum/species/zombie, bloody_slots = ITEM_SLOT_OCLOTHING)
+	apply_dynamic_human_appearance(src, outfit, /datum/species/zombie, bloody_slots = ITEM_SLOT_OCLOTHING)
 
 /mob/living/simple_animal/hostile/zombie/AttackingTarget(atom/attacked_target)
 	. = ..()
@@ -51,31 +50,3 @@
 	uniform = /obj/item/clothing/under/color/grey
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = /obj/item/storage/backpack
-
-/mob/living/simple_animal/hostile/zombie/infectious
-	name = "Infectious Shambling Corpse"
-	infection_chance = 8
-
-/mob/living/simple_animal/hostile/zombie/infectious/brainlessidiot
-	icon_state = "boss"
-	outfit = null
-	maxHealth = 600
-	health = 600
-	melee_damage_lower = 26
-	melee_damage_upper = 26
-	/// Dash ability
-	var/datum/action/cooldown/mob_cooldown/dash/dash
-
-/mob/living/simple_animal/hostile/zombie/infectious/brainlessidiot/Initialize(mapload)
-	. = ..()
-	dash = new /datum/action/cooldown/mob_cooldown/dash
-	dash.Grant(src)
-
-/mob/living/simple_animal/hostile/zombie/infectious/brainlessidiot/Destroy()
-	dash = null
-	return ..()
-
-/mob/living/simple_animal/hostile/zombie/infectious/brainlessidiot/ex_act(severity, target)
-	if(dash.Trigger(target = target))
-		return FALSE
-	return ..()

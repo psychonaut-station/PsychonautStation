@@ -31,11 +31,11 @@
 	mutantliver = null
 	mutantlungs = null
 	inherent_biotypes = MOB_UNDEAD|MOB_HUMANOID
+	inherent_factions = list(FACTION_ZOMBIE)
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | ERT_SPAWN
 	bodytemp_normal = T0C // They have no natural body heat, the environment regulates body temp
 	bodytemp_heat_damage_limit = FIRE_MINIMUM_TEMPERATURE_TO_EXIST // Take damage at fire temp
 	bodytemp_cold_damage_limit = MINIMUM_TEMPERATURE_TO_MOVE // take damage below minimum movement temp
-	inherent_factions = list(FACTION_ZOMBIE)
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/zombie,
@@ -175,12 +175,47 @@
 	if(!HAS_TRAIT(carbon_mob, TRAIT_CRITICAL_CONDITION) && SPT_PROB(2, seconds_per_tick))
 		playsound(carbon_mob, pick(spooks), 50, TRUE, 10)
 
+/datum/species/zombie/infectious/walkers //TWD referance
+	ai_controlled_species = TRUE
+
+/datum/species/zombie/infectious/walkers/on_species_gain(mob/living/carbon/human/Z, datum/species/old_species)
+	. = ..()
+	Z.become_husk(SPECIES_TRAIT)
+
+/datum/species/zombie/infectious/walkers/on_species_loss(mob/living/carbon/human/Z, datum/species/new_species, pref_load)
+	. = ..()
+	Z.cure_husk(SPECIES_TRAIT)
+
+//miniboss
+/datum/species/zombie/infectious/walkers/freak
+	damage_modifier = 50 //50% less damage
+	/// Dash ability
+	var/datum/action/cooldown/mob_cooldown/dash/dash
+
+/datum/species/zombie/infectious/walkers/freak/on_species_gain(mob/living/carbon/human/Z, datum/species/old_species)
+	. = ..()
+	dash = new
+	dash.Grant(Z)
+	RegisterSignal(src, COMSIG_ATOM_EX_ACT, PROC_REF(ex_act))
+
+/datum/species/zombie/infectious/walkers/freak/on_species_loss(mob/living/carbon/human/Z, datum/species/new_species, pref_load)
+	. = ..()
+	if(dash)
+		dash.Remove(Z)
+		dash = null
+	UnregisterSignal(target, COMSIG_ATOM_EX_ACT)
+
+/datum/species/zombie/infectious/walkers/freak/proc/ex_act(severity, target)
+	SIGNAL_HANDLER
+	dash.Trigger(target = target)
+
 // Your skin falls off
 /datum/species/human/krokodil_addict
 	name = "\improper Krokodil Human"
 	id = SPECIES_ZOMBIE_KROKODIL
 	examine_limb_id = SPECIES_HUMAN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | ERT_SPAWN
+	inherent_factions = list(FACTION_ZOMBIE) // smells like zombie
 
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/zombie,
@@ -189,4 +224,19 @@
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/zombie,
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/zombie,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/zombie
+	)
+
+// Zombie AI
+/datum/ai_controller/zombie
+	blackboard = list(
+		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
+		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
+		BB_REINFORCEMENTS_SAY = "Braainnss..!"
+	)
+
+	ai_movement = /datum/ai_movement/basic_avoidance
+	idle_behavior = /datum/idle_behavior/idle_random_walk
+	planning_subtrees = list(
+		/datum/ai_planning_subtree/simple_find_target,
+		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 	)

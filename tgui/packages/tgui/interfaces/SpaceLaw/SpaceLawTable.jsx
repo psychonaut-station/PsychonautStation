@@ -121,7 +121,7 @@ export const spaceLawTable = [
     Mischief: ' ',
     Misdemeanor: ' ',
     Felony: [
-      'Yüksek Güvenlikli Zorla İzinsiz Giriş',
+      'Yüksek Güvenlikli Bölgeler için Zorla İzinsiz Giriş',
       'Önceden izin almadan kısıtlı bir alanda bulunmak. Buna herhangi bir Güvenlik Alanı, Komuta alanı (EVA dahil), Makine Dairesi, Atmos veya Toksin Araştırması dairesi dahildir.',
     ],
     GrandFelony: ' ',

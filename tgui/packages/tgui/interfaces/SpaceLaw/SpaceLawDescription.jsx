@@ -52,8 +52,8 @@ export const spaceLawDescriptions = [
         <p>
           Her türlü alet, kimyasal madde ve hatta inşaat malzemesi kısa sürede
           ciddi yaralanmalara yol açabilir. Eğer kurban kritik seviyenin
-          ötesinde bir vahşete maruz kalmışsa, Cinayete Teşebbüsle (401) suçlamayı
-          düşünün.
+          ötesinde bir vahşete maruz kalmışsa, Cinayete Teşebbüsle (401)
+          suçlamayı düşünün.
         </p>
       </Box>
     ),
@@ -173,8 +173,8 @@ export const spaceLawDescriptions = [
         <p>
           Hücre cezasına ek olarak suçlunun telsiz trafiğine de kısıtlamalar
           getirilecek ve bir izleme implantı takılacaktır. İkincil suçlar veya
-          şiddet içeren ayaklanmaları açıkça kışkırtma için İsyan (503) ile suçlamayı
-          düşünün.
+          şiddet içeren ayaklanmaları açıkça kışkırtma için İsyan (503) ile
+          suçlamayı düşünün.
         </p>
       </Box>
     ),
@@ -264,7 +264,8 @@ export const spaceLawDescriptions = [
           Kasıtlı olarak N₂O salmak, kapıları kilitlemek veya elektrik vermek,
           elektrik şebekesini devre dışı bırakmak, barikatlar inşa etmek ve
           hayati olmayan makineleri tahrip etmek sabotajın birçok yönteminden
-          sadece birkaçıdır. Daha şiddetli biçimler için bkz. Büyük Sabotaj (404).
+          sadece birkaçıdır. Daha şiddetli biçimler için bkz. Büyük Sabotaj
+          (404).
         </p>
       </Box>
     ),

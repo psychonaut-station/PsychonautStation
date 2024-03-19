@@ -429,3 +429,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/boombox, 32)
 	icon_state = "download_gun"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/download, 32)
+
+/obj/structure/sign/poster/official/father_of_turks
+	name = "Father of turks"
+	desc = "Atatürk: Father of Modern Turkey and a Great Humanitarian Sprite by (Lamar Ali Johnson)"
+	icon_state = "father_of_turks"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/poster/official/father_of_turks, 32)

@@ -157,9 +157,6 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
-		else if(istype(module, /obj/item/borg/paperplane_crossbow))
-			var/obj/item/borg/paperplane_crossbow/cb = module
-			cb.planes = cb.max_planes
 
 	cyborg.toner = cyborg.tonermax
 

@@ -426,22 +426,17 @@
 	icon_state = "crossbow_halloween"
 	/// Paperplane Type
 	var/obj/item/paperplane/planetype = /obj/item/paperplane/syndicate/hardlight
-	/// How many planes does the crossbow currently have in its internal magazine?
-	var/planes = 4
-	/// Maximum of planes the crossbow can hold.
-	var/max_planes = 4
 	/// How long is the cooldown between shots?
-	var/shooting_delay = 1.5 SECONDS
+	var/shooting_delay = 5 SECONDS
 	/// Are we ready to fire again?
 	COOLDOWN_DECLARE(shooting_cooldown)
 
 /obj/item/borg/paperplane_crossbow/examine(mob/user)
 	. = ..()
-	. += span_notice("There is <b>[planes]</b> left inside of its internal magazine, out of [max_planes].")
+	. += span_notice("That crossbows shooting cooldown is [shooting_delay].")
 
 /// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
-	planes--
 
 	var/obj/item/paperplane/plane_to_fire = new planetype(get_turf(loc))
 
@@ -452,9 +447,6 @@
 
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/user)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
-		return FALSE
-	if(planes <= 0)
-		to_chat(user, span_warning("Not enough paper planes left!"))
 		return FALSE
 	if(target == user)
 		to_chat(user, span_warning("You cant shoot yourself!"))
@@ -467,7 +459,7 @@
 		var/mob/living/silicon/robot/robot_user = user
 		if(!canshoot(target,user))
 			return FALSE
-		if(!robot_user.cell.use(10))
+		if(!robot_user.cell.use(50))
 			to_chat(user, span_warning("Not enough power."))
 			return FALSE
 		shoot(target, user, click_params)

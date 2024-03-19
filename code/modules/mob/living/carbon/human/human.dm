@@ -1096,13 +1096,6 @@
 /mob/living/carbon/human/species/zombie/infectious
 	race = /datum/species/zombie/infectious
 
-/mob/living/carbon/human/species/zombie/infectious/walkers
-    race = /datum/species/zombie/infectious/walkers
-    ai_controller = /datum/ai_controller/zombie
-
-/mob/living/carbon/human/species/zombie/infectious/walkers/freak
-    race = /datum/species/zombie/infectious/walkers/freak
-
 /mob/living/carbon/human/species/synthetic
 	race = /datum/species/synthetic
 	gib_type = /obj/effect/decal/cleanable/robot_debris
@@ -1119,3 +1112,4 @@
 
 /mob/living/carbon/human/species/synthetic/spawn_dust()
 	new /obj/effect/decal/remains/robot(loc)
+	

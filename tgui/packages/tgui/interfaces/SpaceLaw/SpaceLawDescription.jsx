@@ -1,5 +1,5 @@
-// @Genku
-// Türkçeleştirmeye açıktır.
+// @genku
+
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.
 
@@ -32,7 +32,7 @@ export const spaceLawDescriptions = [
         <h3>Notlar</h3>
         <p>
           Kullanılan gücün miktarına ve türüne bağlı olarak, ağır vakalar
-          cinayete teşebbüse yükseltilmelidir. Ölümcül silahlarla yapılan
+          Cinayete Teşebbüse (401) yükseltilmelidir. Ölümcül silahlarla yapılan
           saldırılar daha ağır bir suçtur.
         </p>
       </Box>
@@ -52,7 +52,7 @@ export const spaceLawDescriptions = [
         <p>
           Her türlü alet, kimyasal madde ve hatta inşaat malzemesi kısa sürede
           ciddi yaralanmalara yol açabilir. Eğer kurban kritik seviyenin
-          ötesinde bir vahşete maruz kalmışsa, cinayete teşebbüsle suçlamayı
+          ötesinde bir vahşete maruz kalmışsa, Cinayete Teşebbüsle (401) suçlamayı
           düşünün.
         </p>
       </Box>
@@ -173,7 +173,7 @@ export const spaceLawDescriptions = [
         <p>
           Hücre cezasına ek olarak suçlunun telsiz trafiğine de kısıtlamalar
           getirilecek ve bir izleme implantı takılacaktır. İkincil suçlar veya
-          şiddet içeren ayaklanmaları açıkça kışkırtma için İsyan ile suçlamayı
+          şiddet içeren ayaklanmaları açıkça kışkırtma için İsyan (503) ile suçlamayı
           düşünün.
         </p>
       </Box>
@@ -264,7 +264,7 @@ export const spaceLawDescriptions = [
           Kasıtlı olarak N₂O salmak, kapıları kilitlemek veya elektrik vermek,
           elektrik şebekesini devre dışı bırakmak, barikatlar inşa etmek ve
           hayati olmayan makineleri tahrip etmek sabotajın birçok yönteminden
-          sadece birkaçıdır. Daha şiddetli biçimler için bkz. Büyük Sabotaj.
+          sadece birkaçıdır. Daha şiddetli biçimler için bkz. Büyük Sabotaj (404).
         </p>
       </Box>
     ),
@@ -286,7 +286,7 @@ export const spaceLawDescriptions = [
           sırasında hayati önem taşıyan makineleri tahrip etme veya geniş
           alanları kasten uzaya maruz bırakma Büyük Sabotaj olarak sayılır.
           Sabotaj istasyon personelinin ölümüyle sonuçlanmışsa, suçluyu
-          Cinayetle de suçlamayı düşünün.
+          Cinayetle (501) de suçlamayı düşünün.
         </p>
       </Box>
     ),

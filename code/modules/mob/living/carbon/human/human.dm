@@ -1112,4 +1112,3 @@
 
 /mob/living/carbon/human/species/synthetic/spawn_dust()
 	new /obj/effect/decal/remains/robot(loc)
-	

@@ -1052,10 +1052,6 @@
 /turf/open/floor/iron/checker{
 	dir = 1
 	},
-/area/station/service/bar{
-	name = "\improper Bar"
-	})
-"amn" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/random,

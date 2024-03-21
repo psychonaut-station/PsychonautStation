@@ -1048,14 +1048,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "aml" = (
-/obj/structure/frame/machine/secured,
 /obj/structure/cable,
-/obj/effect/decal/cleanable/dirt,
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron/checker{
-	dir = 1
-	},
-/turf/open/floor/plating,
+/obj/structure/frame/machine/secured,
+/turf/open/floor/iron/dark,
 /area/station/service/bar)
 "amp" = (
 /obj/effect/landmark/start/hangover,
@@ -58776,7 +58771,6 @@
 /obj/machinery/power/apc/auto_name/directional/south{
 	cell_type = /obj/item/stock_parts/cell/empty
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "nkG" = (

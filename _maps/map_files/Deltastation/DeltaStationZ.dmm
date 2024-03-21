@@ -5787,8 +5787,6 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
-"boQ" = (
-)
 "boR" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/department/engine/atmos)
@@ -139436,7 +139434,6 @@ jfy
 fLY
 uSx
 oGZ
-boQ
 oYs
 oYs
 kAZ

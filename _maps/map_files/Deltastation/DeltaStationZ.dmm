@@ -1049,14 +1049,14 @@
 /area/station/hallway/secondary/command)
 "aml" = (
 /obj/structure/frame/machine/secured,
-/turf/open/floor/iron/checker{
-	dir = 1
-	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/random,
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
 /turf/open/floor/plating,
-/area/station/commons/toilet/restrooms)
+/area/station/service/bar)
 "amp" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/turf_decal/bot,
@@ -5787,6 +5787,8 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
+"boQ" = (
+)
 "boR" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/department/engine/atmos)
@@ -139434,7 +139436,7 @@ jfy
 fLY
 uSx
 oGZ
-amn
+boQ
 oYs
 oYs
 kAZ

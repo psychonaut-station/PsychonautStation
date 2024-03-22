@@ -431,10 +431,6 @@
 	/// Are we ready to fire again?
 	COOLDOWN_DECLARE(shooting_cooldown)
 
-/obj/item/borg/paperplane_crossbow/examine(mob/user)
-	. = ..()
-	. += span_notice("That crossbows shooting cooldown is [shooting_delay].")
-
 /// A proc for shooting a projectile at the target, it's just that simple, really.
 /obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/user, params)
 

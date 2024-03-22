@@ -159,9 +159,6 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
-		else if(istype(module, /obj/item/universal_scanner))
-			var/obj/item/universal_scanner/sc = module
-			sc.paper_count = sc.max_paper_count
 
 	cyborg.toner = cyborg.tonermax
 
@@ -861,7 +858,7 @@
 	borg_skins = list(
 		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
 	)
-	cyborg_base_iconfile = 	'icons/psychonaut/mob/silicon/robots.dmi'
+	cyborg_base_iconfile = 'icons/psychonaut/mob/silicon/robots.dmi'
 	cyborg_base_icon = "cargo"
 	model_select_icon = "standard"
 	hat_offset = 0

@@ -179,17 +179,14 @@
 	var/list/model_icons = list()
 	for(var/option in model_list)
 		var/obj/item/robot_model/model = model_list[option]
+		var/model_iconfile = initial(model.cyborg_base_iconfile)
 		var/model_icon = initial(model.cyborg_base_icon)
-		if(option == "Cargo")
-			model_icons[option] = image(icon = 'icons/psychonaut/mob/silicon/robots.dmi', icon_state = "cargo")
-		else
-			model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
+		model_icons[option] = image(icon = model_iconfile, icon_state = model_icon)
 	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
 		return
 
 	model.transform_to(model_list[input_model])
-
 
 /// Used to setup the a basic and (somewhat) unique name for the robot.
 /mob/living/silicon/robot/proc/setup_default_name()

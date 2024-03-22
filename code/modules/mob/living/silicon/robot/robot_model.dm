@@ -19,6 +19,8 @@
 	var/mob/living/silicon/robot/robot
 	///Icon of the module selection screen
 	var/model_select_icon = "nomod"
+	/// Sets icon file for cyborg_base_icon
+	var/cyborg_base_iconfile = 'icons/mob/silicon/robots.dmi'
 	///Produces the icon for the borg and, if no special_light_key is set, the lights
 	var/cyborg_base_icon = "robot"
 	///If we want specific lights, use this instead of copying lights in the dmi
@@ -856,6 +858,7 @@
 	borg_skins = list(
 		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
 	)
+	cyborg_base_iconfile = 	'icons/psychonaut/mob/silicon/robots.dmi'
 	cyborg_base_icon = "cargo"
 	model_select_icon = "standard"
 	hat_offset = 0

@@ -443,9 +443,14 @@
 
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/user)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
+		balloon_alert_to_viewers("*click*")
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
 		return FALSE
 	if(target == user)
 		to_chat(user, span_warning("You cant shoot yourself!"))
+		return FALSE
+	if(!robot_user.cell.use(50))
+		to_chat(user, span_warning("Not enough power."))
 		return FALSE
 	return TRUE
 
@@ -454,9 +459,6 @@
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
 		if(!canshoot(target,user))
-			return FALSE
-		if(!robot_user.cell.use(50))
-			to_chat(user, span_warning("Not enough power."))
 			return FALSE
 		shoot(target, user, click_params)
 

@@ -157,6 +157,9 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
+		else if(istype(module, /obj/item/universal_scanner))
+			var/obj/item/universal_scanner/sc = module
+			sc.paper_count = sc.max_paper_count
 
 	cyborg.toner = cyborg.tonermax
 

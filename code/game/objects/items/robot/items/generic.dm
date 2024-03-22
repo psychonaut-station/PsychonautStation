@@ -443,6 +443,7 @@
 	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
 
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/user)
+	var/mob/living/silicon/robot/robot_user = user
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
 		balloon_alert_to_viewers("*click*")
 		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
@@ -458,7 +459,6 @@
 /obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
 	. = ..()
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/robot_user = user
 		if(!canshoot(target,user))
 			return FALSE
 		shoot(target, user, click_params)

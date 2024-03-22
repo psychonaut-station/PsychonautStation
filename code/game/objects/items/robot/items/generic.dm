@@ -439,6 +439,7 @@
 	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
 	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
 	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
+	addtimer(CALLBACK(src, PROC_REF(charge_up), user), shooting_delay)
 	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
 
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/user)
@@ -461,6 +462,9 @@
 		if(!canshoot(target,user))
 			return FALSE
 		shoot(target, user, click_params)
+
+/obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
+	to_chat(user, span_warning("[src] silently charges up."))
 
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG

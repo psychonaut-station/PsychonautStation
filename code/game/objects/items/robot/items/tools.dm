@@ -298,10 +298,10 @@
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
 
 /obj/item/borg/cyborg_clamp/proc/update_speedmod()
-	if(carrying_humans.length > 0)
+	if(length(carrying_humans) > 0)
 		host.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 	else
 		host.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
-	host.adjustBruteLoss(2 * seconds_per_tick * carrying_humans.length)
+	host.adjustBruteLoss(2 * seconds_per_tick * length(carrying_humans))

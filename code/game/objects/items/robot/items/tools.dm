@@ -188,6 +188,8 @@
 	var/load_time = 3 SECONDS
 	/// The max amount of crates you can carry.
 	var/max_crates = 5
+	/// The humans are we carrying
+	var/list/carrying_humans = list()
 
 /obj/item/borg/cyborg_clamp/Initialize(mapload)
 	host = loc
@@ -222,13 +224,16 @@
 	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate
+	carrying_humans = list()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
 	if(length(stored_crates) >= max_crates)
 		balloon_alert(host, "too many crates!")
 		return FALSE
 	for(var/mob/living/mob in target.get_all_contents())
-		if(mob.mob_size < MOB_SIZE_HUMAN)
+		if(mob.mob_size <= MOB_SIZE_SMALL)
+			continue
+		if(mob.mob_size == MOB_SIZE_HUMAN && host.emagged)
 			continue
 		balloon_alert(host, "crate too heavy!")
 		return FALSE
@@ -253,6 +258,9 @@
 			return
 		stored_crates += picked_crate
 		picked_crate.forceMove(src)
+		for(mob/living/mob in picked_crate.get_all_contents())
+			if(mob.mob_size == MOB_SIZE_HUMAN)
+				carrying_humans += mob
 		balloon_alert(user, "picked up [picked_crate]")
 	else if(length(stored_crates))
 		var/turf/target_turf = get_turf(target)
@@ -276,6 +284,9 @@
 		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)
 		stored_crates -= pick
+		for(mob/living/mob in dropped_crate.get_all_contents())
+			if(mob.mob_size == MOB_SIZE_HUMAN)
+				carrying_humans -= mob
 		balloon_alert(user, "dropped [dropped_crate]")
 	else
 		balloon_alert(user, "invalid target!")
@@ -285,3 +296,12 @@
 	if(length(stored_crates))
 		. += "There are [length(stored_crates)] things were picked up here."
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
+
+/obj/item/borg/cyborg_clamp/proc/update_speedmod()
+	if(carrying_humans.length > 0)
+		host.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
+	else
+		host.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
+
+/obj/item/borg/cyborg_clamp/process(seconds_per_tick)
+	host.adjustBruteLoss(2 * seconds_per_tick * carrying_humans.length)

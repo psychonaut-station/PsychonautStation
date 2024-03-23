@@ -14190,7 +14190,10 @@
 /obj/machinery/door/airlock/command{
 	name = "Quartermaster's Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "bridge-right"
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/qm)
 "deD" = (
@@ -19832,10 +19835,6 @@
 	},
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 4
-	},
-/obj/machinery/camera/directional/east{
-	c_tag = "Cargo Bay - Delivery Office";
-	name = "cargo camera"
 	},
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/disposalpipe/segment{
@@ -25861,7 +25860,10 @@
 /obj/machinery/door/airlock/command{
 	name = "Quartermaster's Office"
 	},
-/obj/effect/mapping_helpers/airlock/access/all/command,
+/obj/effect/mapping_helpers/airlock/access/all/command/general,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
+	cycle_id = "bridge-right"
+	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/qm)
 "fKH" = (
@@ -37462,6 +37464,7 @@
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/light/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "ipI" = (
@@ -80071,6 +80074,10 @@
 /obj/machinery/conveyor{
 	id = "cargodisposals"
 	},
+/obj/machinery/camera/directional/east{
+	c_tag = "Cargo Bay - Delivery Office";
+	name = "cargo camera"
+	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "rWo" = (
@@ -86470,7 +86477,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/random/trash/graffiti,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "tvG" = (

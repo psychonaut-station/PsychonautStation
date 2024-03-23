@@ -258,7 +258,7 @@
 			return
 		stored_crates += picked_crate
 		picked_crate.forceMove(src)
-		for(mob/living/mob in picked_crate.get_all_contents())
+		for(var/mob/living/mob in picked_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				carrying_humans += mob
 		balloon_alert(user, "picked up [picked_crate]")
@@ -284,7 +284,7 @@
 		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)
 		stored_crates -= pick
-		for(mob/living/mob in dropped_crate.get_all_contents())
+		for(var/mob/living/mob in dropped_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				carrying_humans -= mob
 		balloon_alert(user, "dropped [dropped_crate]")

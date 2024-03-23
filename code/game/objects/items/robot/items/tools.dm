@@ -304,8 +304,10 @@
 
 /obj/item/borg/cyborg_clamp/proc/update_speedmod()
 	if(length(carrying_humans) > 0)
+		host.throw_alert(ALERT_HIGHWEIGHT, /atom/movable/screen/alert/highweight)
 		host.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 	else
+		host.clear_alert(ALERT_HIGHWEIGHT)
 		host.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)

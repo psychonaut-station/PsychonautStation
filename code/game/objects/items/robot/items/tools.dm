@@ -182,7 +182,7 @@
 	desc = "Equipment for cyborgs. Lifts objects and loads them into cargo."
 	icon = 'icons/psychonaut/mob/silicon/robot_items.dmi'
 	icon_state = "clamp"
-	var/mob/living/silicon/robot/host = null
+	var/mob/living/silicon/robot/host
 	var/list/stored_crates = list()
 	/// Time it takes to load a crate.
 	var/load_time = 3 SECONDS
@@ -197,7 +197,7 @@
 	return ..()
 
 /obj/item/borg/cyborg_clamp/Destroy()
-	drop_all_crates()
+	drop_all_crates(destroy = TRUE)
 	return ..()
 
 /obj/item/borg/cyborg_clamp/proc/on_death(datum/source, gibbed)
@@ -220,11 +220,22 @@
 /obj/item/borg/cyborg_clamp/AltClick(mob/living/silicon/robot/user)
 	drop_all_crates()
 
-/obj/item/borg/cyborg_clamp/proc/drop_all_crates()
+/obj/item/borg/cyborg_clamp/proc/get_host()
+	if(istype(host))
+		return host
+	else
+		if(iscyborg(host.loc))
+			return host.loc
+	return null
+
+/obj/item/borg/cyborg_clamp/proc/drop_all_crates(destroy = FALSE)
 	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate
-	carrying_humans = list()
+	if(destroy)
+		QDEL_LIST(carrying_humans)
+	else 
+		carrying_humans.len = 0
 	update_speedmod()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
@@ -261,7 +272,7 @@
 		picked_crate.forceMove(src)
 		for(var/mob/living/mob in picked_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
-				carrying_humans += mob
+				LAZYADD(carrying_humans, picked_crate)
 		balloon_alert(user, "picked up [picked_crate]")
 		update_speedmod()
 	else if(length(stored_crates))
@@ -288,7 +299,7 @@
 		stored_crates -= pick
 		for(var/mob/living/mob in dropped_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
-				carrying_humans -= mob
+				LAZYREMOVE(carrying_humans, dropped_crate)
 		balloon_alert(user, "dropped [dropped_crate]")
 		update_speedmod()
 	else
@@ -303,12 +314,14 @@
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
 
 /obj/item/borg/cyborg_clamp/proc/update_speedmod()
-	if(length(carrying_humans) > 0)
-		host.throw_alert(ALERT_HIGHWEIGHT, /atom/movable/screen/alert/highweight)
-		host.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
+	var/mob/living/silicon/robot/owner = get_host()
+	if(length(carrying_humans))
+		owner?.throw_alert(ALERT_HIGHWEIGHT, /atom/movable/screen/alert/highweight)
+		owner?.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 	else
-		host.clear_alert(ALERT_HIGHWEIGHT)
-		host.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
+		owner?.clear_alert(ALERT_HIGHWEIGHT)
+		owner?.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
-	host.adjustBruteLoss(2 * seconds_per_tick * length(carrying_humans))
+	var/mob/living/silicon/robot/owner = get_host()
+	owner?.adjustBruteLoss(2 * seconds_per_tick * length(carrying_humans))

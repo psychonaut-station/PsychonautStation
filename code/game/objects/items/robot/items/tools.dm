@@ -225,6 +225,7 @@
 		crate.forceMove(drop_location())
 		stored_crates -= crate
 	carrying_humans = list()
+	update_speedmod()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
 	if(length(stored_crates) >= max_crates)
@@ -262,6 +263,7 @@
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				carrying_humans += mob
 		balloon_alert(user, "picked up [picked_crate]")
+		update_speedmod()
 	else if(length(stored_crates))
 		var/turf/target_turf = get_turf(target)
 		if(isturf(target_turf) && target_turf.is_blocked_turf())
@@ -288,6 +290,7 @@
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				carrying_humans -= mob
 		balloon_alert(user, "dropped [dropped_crate]")
+		update_speedmod()
 	else
 		balloon_alert(user, "invalid target!")
 
@@ -295,6 +298,8 @@
 	. = ..()
 	if(length(stored_crates))
 		. += "There are [length(stored_crates)] things were picked up here."
+	if(length(carrying_humans))
+		. += span_warning(" DANGER!! High weight detected..! ")
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
 
 /obj/item/borg/cyborg_clamp/proc/update_speedmod()

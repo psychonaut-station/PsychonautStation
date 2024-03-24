@@ -232,7 +232,7 @@
 	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate
-	UNSETEMPTY(carrying_humans)
+	LAZYNULL(carrying_humans)
 	update_speedmod()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)

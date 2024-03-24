@@ -188,7 +188,7 @@
 	var/load_time = 3 SECONDS
 	/// The max amount of crates you can carry.
 	var/max_crates = 5
-	/// The humans are we carrying
+	/// A lazylist of the humans are we carrying.
 	var/list/carrying_humans = list()
 
 /obj/item/borg/cyborg_clamp/Initialize(mapload)

@@ -197,7 +197,7 @@
 	return ..()
 
 /obj/item/borg/cyborg_clamp/Destroy()
-	drop_all_crates(destroy = TRUE)
+	drop_all_crates()
 	return ..()
 
 /obj/item/borg/cyborg_clamp/proc/on_death(datum/source, gibbed)
@@ -228,7 +228,7 @@
 			return host.loc
 	return null
 
-/obj/item/borg/cyborg_clamp/proc/drop_all_crates(destroy = FALSE)
+/obj/item/borg/cyborg_clamp/proc/drop_all_crates()
 	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate

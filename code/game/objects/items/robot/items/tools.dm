@@ -232,10 +232,7 @@
 	for(var/obj/crate as anything in stored_crates)
 		crate.forceMove(drop_location())
 		stored_crates -= crate
-	if(destroy)
-		QDEL_LIST(carrying_humans)
-	else 
-		carrying_humans.len = 0
+	UNSETEMPTY(carrying_humans)
 	update_speedmod()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
@@ -309,13 +306,13 @@
 	. = ..()
 	if(length(stored_crates))
 		. += "There are [length(stored_crates)] things were picked up here."
-	if(length(carrying_humans))
+	if(LAZYLEN(carrying_humans))
 		. += span_warning(" DANGER!! High weight detected..! ")
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
 
 /obj/item/borg/cyborg_clamp/proc/update_speedmod()
 	var/mob/living/silicon/robot/owner = get_host()
-	if(length(carrying_humans))
+	if(LAZYLEN(carrying_humans))
 		owner?.throw_alert(ALERT_HIGHWEIGHT, /atom/movable/screen/alert/highweight)
 		owner?.add_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 	else
@@ -324,4 +321,4 @@
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
 	var/mob/living/silicon/robot/owner = get_host()
-	owner?.adjustBruteLoss(2 * seconds_per_tick * length(carrying_humans))
+	owner?.adjustBruteLoss(2 * seconds_per_tick * LAZYLEN(carrying_humans))

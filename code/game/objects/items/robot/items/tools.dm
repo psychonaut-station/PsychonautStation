@@ -189,7 +189,7 @@
 	/// The max amount of crates you can carry.
 	var/max_crates = 5
 	/// A lazylist of the humans are we carrying.
-	var/list/carrying_humans = list()
+	var/list/carrying_humans
 
 /obj/item/borg/cyborg_clamp/Initialize(mapload)
 	host = loc

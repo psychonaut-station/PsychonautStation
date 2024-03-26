@@ -1767,10 +1767,10 @@
 /turf/open/floor/iron,
 /area/station/maintenance/department/medical/morgue)
 "asO" = (
-/obj/machinery/porta_turret/ai,
 /obj/structure/sign/nanotrasen{
 	pixel_y = -32
 	},
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "asS" = (
@@ -7098,6 +7098,7 @@
 	listening = 0;
 	name = "Private Channel"
 	},
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
 "bEl" = (
@@ -7124,6 +7125,7 @@
 	listening = 0;
 	name = "Private Channel"
 	},
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
 "bEq" = (
@@ -12903,8 +12905,8 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "cQh" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "cQj" = (
@@ -16938,9 +16940,9 @@
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
 "dKK" = (
-/obj/machinery/porta_turret/ai,
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "dKO" = (
@@ -16991,9 +16993,9 @@
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "dLq" = (
-/obj/machinery/porta_turret/ai,
 /obj/machinery/status_display/ai/directional/north,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "dLu" = (
@@ -20635,8 +20637,8 @@
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/office)
 "eCk" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "eCr" = (
@@ -45197,9 +45199,9 @@
 /turf/open/floor/iron,
 /area/station/security/courtroom)
 "kan" = (
-/obj/machinery/porta_turret/ai,
 /obj/machinery/firealarm/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "kav" = (
@@ -54074,10 +54076,10 @@
 /obj/machinery/flasher/directional/north{
 	id = "AI"
 	},
-/obj/machinery/porta_turret/ai,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "mdg" = (
@@ -68238,9 +68240,9 @@
 /turf/open/floor/iron/checker,
 /area/station/service/theater)
 "ptq" = (
-/obj/machinery/porta_turret/ai,
 /obj/structure/sign/warning/electric_shock/directional/south,
 /obj/structure/cable,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "ptC" = (
@@ -75297,8 +75299,8 @@
 /turf/open/floor/wood/large,
 /area/station/service/library/abandoned)
 "qTF" = (
-/obj/machinery/porta_turret/ai,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "qTK" = (
@@ -77476,9 +77478,9 @@
 /turf/open/floor/iron/dark,
 /area/station/service/library)
 "ruN" = (
-/obj/machinery/porta_turret/ai,
 /obj/machinery/status_display/ai/directional/west,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "ruU" = (
@@ -89706,10 +89708,10 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/primary/central/fore)
 "uhG" = (
-/obj/machinery/porta_turret/ai,
 /obj/machinery/firealarm/directional/north,
 /obj/machinery/status_display/ai/directional/east,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/porta_turret_construct,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
 "uhH" = (

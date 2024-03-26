@@ -2671,6 +2671,10 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/ai_monitored/security/armory)
 "aEz" = (
@@ -4771,6 +4775,10 @@
 /obj/item/chair,
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/office)
 "bdz" = (
@@ -8670,6 +8678,10 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable/layer3,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 50
+	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "bTu" = (
@@ -16460,6 +16472,10 @@
 	dir = 4
 	},
 /obj/machinery/light/small/directional/south,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
 "dFg" = (
@@ -18528,6 +18544,10 @@
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple{
 	dir = 10
 	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/circuit/green/telecomms/mainframe,
 /area/station/tcommsat/server)
 "ect" = (
@@ -19667,6 +19687,10 @@
 /obj/effect/turf_decal/tile/red/anticorner/contrasted,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/warden)
 "ers" = (
@@ -22778,6 +22802,10 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "eZV" = (
@@ -24760,7 +24788,9 @@
 	dir = 10
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/south,
+/obj/machinery/power/apc/auto_name/directional/south{
+	cell_type = /obj/item/stock_parts/cell/hyper
+	},
 /turf/open/floor/plating,
 /area/station/cargo/storage)
 "fym" = (
@@ -27129,6 +27159,10 @@
 	name = "Prison Blast Door"
 	},
 /obj/effect/turf_decal/delivery,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "gax" = (
@@ -29890,6 +29924,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/red/half/contrasted,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/office)
 "gCY" = (
@@ -31988,6 +32026,10 @@
 	c_tag = "Medbay - Starboard Hallway";
 	name = "medbay camera";
 	network = list("ss13","medbay")
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/doctor;
+	infection_chance = 8
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
@@ -34376,6 +34418,10 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "hGF" = (
@@ -35511,6 +35557,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "hTv" = (
@@ -36684,6 +36734,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron,
 /area/station/security/office)
+"igr" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/security/execution/transfer)
 "igI" = (
 /obj/machinery/newscaster/directional/north,
 /obj/structure/cable,
@@ -38842,6 +38901,16 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
+"iGA" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/station/tcommsat/server)
 "iGB" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/light/floor/broken,
@@ -38900,6 +38969,10 @@
 "iHg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/holding_cell)
 "iHn" = (
@@ -39695,11 +39768,13 @@
 /turf/open/floor/iron/large,
 /area/station/hallway/secondary/exit/departure_lounge)
 "iRA" = (
+/obj/machinery/holopad/secure,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
 	infection_chance = 50
 	},
-/turf/open/floor/circuit/green,
+/turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "iRF" = (
 /obj/machinery/newscaster/directional/west,
@@ -44138,6 +44213,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 50
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "jPf" = (
@@ -44217,6 +44296,10 @@
 /obj/effect/turf_decal/tile/neutral/full,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/large,
 /area/station/security/brig)
 "jPS" = (
@@ -44931,10 +45014,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/security;
-	infection_chance = 50
-	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "jYs" = (
@@ -47691,6 +47770,17 @@
 /obj/machinery/light/small/broken/directional/east,
 /turf/open/floor/plating,
 /area/station/security/detectives_office/private_investigators_office)
+"kET" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/neutral/full,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/half,
+/area/station/security/range)
 "kFa" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/bot,
@@ -48392,6 +48482,15 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/chemistry)
+"kNV" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/structure/cable/layer3,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 50
+	},
+/turf/open/floor/circuit/green,
+/area/station/ai_monitored/turret_protected/ai)
 "kNY" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -49044,6 +49143,10 @@
 	req_access = list("brig")
 	},
 /obj/machinery/light/small/directional/east,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 1
 	},
@@ -52107,6 +52210,10 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "lGq" = (
@@ -54054,6 +54161,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/lockers)
 "mdB" = (
@@ -58878,6 +58989,17 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
+"nkz" = (
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron,
+/area/station/security/warden)
 "nkG" = (
 /obj/structure/table/wood/poker,
 /obj/effect/decal/cleanable/dirt,
@@ -59731,6 +59853,10 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/neutral/full,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/detectives_office)
 "nuM" = (
@@ -63320,6 +63446,16 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/service/chapel)
+"olS" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/station/tcommsat/server)
 "olV" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -65346,6 +65482,10 @@
 /obj/machinery/light/small/directional/south,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/glass,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "oMV" = (
@@ -71048,6 +71188,10 @@
 /obj/machinery/light_switch/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/turf_decal/tile/neutral/full,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/security/range)
 "pWK" = (
@@ -71373,6 +71517,16 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/science/explab)
+"pZV" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron,
+/area/station/security/lockers)
 "qaq" = (
 /obj/structure/table,
 /obj/item/clothing/gloves/latex,
@@ -78739,6 +78893,10 @@
 /obj/item/kirbyplants/random,
 /obj/machinery/firealarm/directional/west,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 50
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "rKE" = (
@@ -81471,12 +81629,15 @@
 /area/station/service/kitchen)
 "spB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/light/directional/south,
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/execution/transfer)
 "spF" = (
@@ -82959,6 +83120,15 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
+"sHs" = (
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/dark/telecomms,
+/area/station/tcommsat/server)
 "sHt" = (
 /turf/open/space/basic,
 /area/space/nearstation)
@@ -87803,6 +87973,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark/textured_edge{
 	dir = 1
 	},
@@ -89883,6 +90057,14 @@
 /obj/machinery/door/firedoor/border_only,
 /turf/open/floor/wood,
 /area/station/service/theater)
+"ulJ" = (
+/obj/effect/turf_decal/siding/dark_red,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/station/command/heads_quarters/hos)
 "ulQ" = (
 /obj/machinery/status_display/evac/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -93978,6 +94160,18 @@
 /obj/effect/decal/cleanable/blood,
 /turf/open/floor/iron/white,
 /area/station/medical/paramedic)
+"vfF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red{
+	dir = 1
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron,
+/area/station/security/execution/transfer)
 "vfN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/hydroponics/constructable,
@@ -94055,6 +94249,19 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
+"vgv" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/red/half/contrasted{
+	dir = 4
+	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/dark,
+/area/station/security/brig)
 "vgE" = (
 /turf/open/floor/circuit/telecomms,
 /area/station/science/xenobiology)
@@ -94079,6 +94286,20 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/hallway)
+"vhm" = (
+/obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/structure/disposalpipe/segment,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
+/turf/open/floor/iron/grimy,
+/area/station/security/detectives_office)
 "vhq" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
@@ -95895,6 +96116,10 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/brig)
 "vCn" = (
@@ -96494,10 +96719,6 @@
 "vJL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/security;
-	infection_chance = 50
-	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
 "vKl" = (
@@ -100607,6 +100828,10 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
 "wFc" = (
@@ -101189,9 +101414,6 @@
 /area/station/engineering/atmos/storage)
 "wMh" = (
 /obj/effect/spawner/random/structure/grille,
-/obj/machinery/power/apc/auto_name/directional/south{
-	cell_type = /obj/item/stock_parts/cell/hyper
-	},
 /turf/open/space/basic,
 /area/space/nearstation)
 "wMi" = (
@@ -105953,6 +106175,10 @@
 	},
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/security;
+	infection_chance = 8
+	},
 /turf/open/floor/iron,
 /area/station/security/processing)
 "xTd" = (
@@ -114999,7 +115225,7 @@ hGF
 bCu
 wRq
 abJ
-iRA
+abJ
 tKq
 abJ
 kXJ
@@ -116279,7 +116505,7 @@ uJH
 uJH
 uJH
 jay
-kub
+kNV
 yga
 deX
 deX
@@ -116540,7 +116766,7 @@ hkC
 vJL
 hkC
 ncZ
-xvy
+hkC
 hkC
 kub
 hkC
@@ -116796,7 +117022,7 @@ cQh
 nkb
 eLP
 kXJ
-sGJ
+iRA
 kXJ
 kXJ
 xMX
@@ -117577,7 +117803,7 @@ bPC
 gcs
 kkh
 bAN
-fBT
+kkh
 fXG
 bPC
 idU
@@ -145083,7 +145309,7 @@ qJH
 hje
 jDi
 nih
-hup
+sHs
 iyy
 aad
 aad
@@ -145594,7 +145820,7 @@ dZD
 bvw
 pyK
 mSO
-jXs
+iGA
 wRS
 lPm
 hup
@@ -146362,11 +146588,11 @@ jHb
 fdM
 pSh
 uPV
-jXs
+iGA
 tcH
 voi
 agZ
-pyK
+olS
 ktv
 rMt
 auJ
@@ -154579,7 +154805,7 @@ aaa
 dCk
 ixR
 asV
-rlC
+vhm
 rlC
 mDH
 mGt
@@ -157637,7 +157863,7 @@ mSe
 iiR
 log
 onT
-onT
+igr
 nwt
 gGv
 rDu
@@ -157922,7 +158148,7 @@ koq
 dmO
 fJq
 foU
-koq
+vgv
 dmO
 fJq
 qdt
@@ -159977,7 +160203,7 @@ jlV
 oJW
 ufR
 peu
-rIa
+nkz
 pMh
 rIa
 rIa
@@ -160483,7 +160709,7 @@ gCV
 uBY
 vgK
 ljX
-tLx
+kET
 umd
 vgK
 jNM
@@ -160758,7 +160984,7 @@ rOS
 bLs
 tce
 qpz
-qQO
+pZV
 cYD
 hEF
 aaa
@@ -162266,7 +162492,7 @@ lAj
 xmm
 vxs
 lVn
-krO
+vfF
 oJP
 aaa
 aad
@@ -162277,7 +162503,7 @@ cLX
 aNq
 oYp
 aNq
-ida
+ulJ
 psx
 kOA
 aaa

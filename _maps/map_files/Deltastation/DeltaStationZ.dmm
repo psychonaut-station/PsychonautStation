@@ -6260,14 +6260,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/maintenance/department/science)
-"bvj" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/security;
-	infection_chance = 50
-	},
-/turf/open/floor/iron/dark,
-/area/station/ai_monitored/turret_protected/ai_upload)
 "bvw" = (
 /obj/effect/turf_decal/tile/purple/anticorner/contrasted,
 /obj/structure/frame/machine/secured,
@@ -8683,7 +8675,8 @@
 /obj/structure/cable/layer3,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -14401,7 +14394,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -22180,7 +22174,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -25133,7 +25128,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -37473,7 +37469,8 @@
 "iri" = (
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai_upload)
@@ -39701,7 +39698,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -44134,7 +44132,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -48403,7 +48402,8 @@
 /obj/structure/cable/layer3,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
@@ -54818,7 +54818,8 @@
 /obj/structure/cable/layer3,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/grimy,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -69370,7 +69371,8 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/grimy,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -76078,7 +76080,8 @@
 "rfR" = (
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/grimy,
 /area/station/ai_monitored/turret_protected/aisat_interior)
@@ -87436,7 +87439,8 @@
 /obj/structure/cable,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -96888,7 +96892,8 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
@@ -101605,7 +101610,8 @@
 /obj/structure/cable,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
@@ -104065,7 +104071,8 @@
 /obj/structure/cable/layer3,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
@@ -104265,7 +104272,8 @@
 /obj/machinery/light/floor,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai_upload)
@@ -107010,7 +107018,8 @@
 /obj/structure/cable,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/security;
-	infection_chance = 50
+	infection_chance = 50;
+	health = 150
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai_monitored/turret_protected/ai)
@@ -116366,7 +116375,7 @@ vWU
 hmU
 sdK
 tDB
-bvj
+hmU
 tEd
 cJh
 cdt

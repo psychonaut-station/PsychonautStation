@@ -299,7 +299,7 @@
 			nuke_request(reason, usr)
 			to_chat(usr, span_notice("Request sent."))
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
+			priority_announce("İstasyon içi nükleer kendini imha kodları [usr] tarafından talep edilmiştir. Bu talebin onayı ya da reddi kısa süre içinde iletilecektir.", "Nükleer Kendini İmha Kodları Talep Edildi", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
@@ -866,23 +866,23 @@
 				/datum/dynamic_ruleset/midround/dangerous_pirates,
 			)
 			priority_announce(
-				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi sisteminize yönelen bir düşman gemisinden büyük bir sıçrama izi rapor ediyor. Yakın düşman teması için hazırlanın.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 			SSdynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
-				"Attention crew: sector monitoring reports a jump-trace from an unidentified vessel destined for your system. Prepare for probable contact.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi tanımlanamayan bir gemiden sisteminize doğru bir sıçrama izi rapor ediyor. Muhtemel temas için hazırlanın.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 
 			force_event_after(/datum/round_event_control/fugitives, "[hacker] hacking a communications console", rand(20 SECONDS, 1 MINUTES))
 
 		if(HACK_THREAT) // Force an unfavorable situation on the crew
 			priority_announce(
-				"Attention crew, the Nanotrasen Department of Intelligence has received intel suggesting increased enemy activity in your sector beyond that initially reported in today's threat advisory.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine, Nanotrasen İstihbarat Departmanı, sektörünüzdeki düşman faaliyetlerinin bugünkü tehdit uyarısında bildirilenin ötesine geçtiğine dair istihbarat almıştır.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 
 			for(var/mob/crew_member as anything in GLOB.player_list)
@@ -909,8 +909,8 @@
 			else
 				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
 				priority_announce(
-					"Attention crew, it appears that someone on your station has hijacked your telecommunications and broadcasted an unknown signal.",
-					"[command_name()] High-Priority Update",
+					"Mürettebatın dikkatine, istasyonunuzdaki birinin haberleşme sistemlerinizi ele geçirdiği ve bilinmeyen bir sinyal yayınladığı görülüyor.",
+					"[command_name()] Yüksek Öncelikli Bildiri",
 				)
 
 #undef HACK_PIRATE

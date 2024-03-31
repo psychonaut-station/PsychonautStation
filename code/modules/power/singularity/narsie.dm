@@ -253,13 +253,13 @@
 ///First crew last second win check and flufftext for [/proc/begin_the_end()]
 /proc/narsie_end_begin_check()
 	if(QDELETED(GLOB.cult_narsie)) // uno
-		priority_announce("Status report? We detected an anomaly, but it disappeared almost immediately.","[command_name()] Higher Dimensional Affairs", 'sound/misc/notice1.ogg')
+		priority_announce("Durum raporu? Bir anormallik tespit ettik, ama neredeyse anında kayboldu.","[command_name()] Yüksek Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
 		GLOB.cult_narsie = null
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), CULT_FAILURE_NARSIE_KILLED), 2 SECONDS)
 		return
 	priority_announce(
-		text = "An acausal dimensional event has been detected in your sector. Event has been flagged EXTINCTION-CLASS. Directing all available assets toward simulating solutions. SOLUTION ETA: 60 SECONDS.",
-		title = "[command_name()] Higher Dimensional Affairs",
+		text = "Sektörünüzde nedensiz bir boyutsal olay tespit edildi. Olay, FELAKET SINIFI olarak işaretlendi. Mevcut tüm varlıklar simülasyon çözümüne yönlendiriliyor. ÇÖZÜM SÜRESİ: 60 SANİYE.",
+		title = "[command_name()] Yüksek Boyutlu İlişkiler",
 		sound = 'sound/misc/airraid.ogg',
 	)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(narsie_end_second_check)), 50 SECONDS)

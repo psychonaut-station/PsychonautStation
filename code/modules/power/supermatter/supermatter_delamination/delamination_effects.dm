@@ -89,7 +89,7 @@
 	)
 
 	creak_lights()
-	
+
 	return TRUE
 
 /// Spawns a scrung and eat the SM.
@@ -141,10 +141,10 @@
 	// say goodbye to that shuttle of yours
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
 		priority_announce(
-			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
-			title = "Shuttle Failure",
+			text = "Taşıma sırasında acil durum mekik bağlantısında ölümcül hata oluştu. Bağlantı yeniden kurulamıyor.",
+			title = "Mekik Arızası",
 			sound =  'sound/misc/announce_dig.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
 			color_override = "grey",
 		)
 	else
@@ -181,29 +181,29 @@
 /// Spawn an evacuation rift for people to go through.
 /datum/sm_delam/proc/effect_evac_rift_start()
 	var/obj/cascade_portal/rift = new /obj/cascade_portal(get_turf(pick(GLOB.generic_event_spawns)))
-	priority_announce("We have been hit by a sector-wide electromagnetic pulse. All of our systems are heavily damaged, including those \
-		required for shuttle navigation. We can only reasonably conclude that a supermatter cascade is occurring on or near your station.\n\n\
-		Evacuation is no longer possible by conventional means; however, we managed to open a rift near the [get_area_name(rift)]. \
-		All personnel are hereby required to enter the rift by any means available.\n\n\
-		[Gibberish("Retrieval of survivors will be conducted upon recovery of necessary facilities.", FALSE, 5)] \
-		[Gibberish("Good luck--", FALSE, 25)]")
+	priority_announce("Sektör çapında bir elektromanyetik darbe aldık. Mekik navigasyonu için gerekenler de dahil olmak üzere \
+		tüm sistemlerimiz ağır hasar gördü. İstasyonunuzda ya da yakınında bir suppermatter çağlayanı meydana geldiği sonucuna varabiliriz.\n\n\
+		Tahliye artık geleneksel yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
+		Bu vesileyle tüm personelin mevcut herhangi bir yolla yarığa girmesi gerekmektedir.\n\n\
+		[Gibberish("Hayatta kalanların kurtarılması, gerekli imkanların sağlanmasının ardından gerçekleştirilecektir.", FALSE, 5)] \
+		[Gibberish("Bol Şans--", FALSE, 25)]")
 	return rift
 
 /// Announce the destruction of the rift and end the round.
 /datum/sm_delam/proc/effect_evac_rift_end()
-	priority_announce("[Gibberish("The rift has been destroyed, we can no longer help you.", FALSE, 5)]")
+	priority_announce("[Gibberish("Yarık yok edildi, artık size yardım edemeyiz.", FALSE, 5)]")
 
 	sleep(25 SECONDS)
 
-	priority_announce("Reports indicate formation of crystalline seeds following resonance shift event. \
-		Rapid expansion of crystal mass proportional to rising gravitational force. \
-		Matter collapse due to gravitational pull foreseeable.",
-		"Nanotrasen Star Observation Association")
+	priority_announce("Raporlar, bir rezonans kayması olayı sonrası kristal tohumlarının oluşumunu göstermektedir. \
+		Kristal kütlesinin artan yerçekimi kuvvetiyle orantılı olarak hızla genişlemesi \
+		nedeniyle maddenin çökmesi öngörülebilir.",
+		"Nanotrasen Yıldız Gözlem Derneği")
 
 	sleep(25 SECONDS)
 
-	priority_announce("[Gibberish("All attempts at evacuation have now ceased, and all assets have been retrieved from your sector.\n \
-		To the remaining survivors of [station_name()], farewell.", FALSE, 5)]")
+	priority_announce("[Gibberish("Tüm tahliye girişimleri sona ermiş ve sektörünüzdeki tüm kaynaklar geri alınmıştır.\n \
+		[station_name()] İstasyonu hayatta kalanlarına elveda.", FALSE, 5)]")
 
 	if(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)
 		// special message for hijacks

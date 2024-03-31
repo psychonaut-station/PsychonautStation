@@ -225,10 +225,10 @@
 	SSshuttle.emergency.setTimer(0)
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
 	priority_announce(
-		text = "Emergency Shuttle uplink failure, shuttle disabled until further notice.",
-		title = "Uplink Failure",
+		text = "Acil Mekiği uplink arızası, mekik bir sonraki duyuruya kadar devre dışı.",
+		title = "Uplink Uyarısı",
 		sound = 'sound/misc/announce_dig.ogg',
-		sender_override = "Emergency Shuttle Uplink Alert",
+		sender_override = "Acil Durum Mekiği Uplink Uyarısı",
 		color_override = "grey",
 	)
 
@@ -257,10 +257,10 @@
 		SSshuttle.last_call_time = 10 SECONDS //Make sure no insta departures.
 	SSshuttle.emergency.setTimer(SSshuttle.last_call_time)
 	priority_announce(
-		text = "Emergency Shuttle uplink reestablished, shuttle enabled.",
-		title = "Uplink Restored",
+		text = "Acil Mekik bağlantısı yeniden kuruldu, mekik devrede.",
+		title = "Uplink Yeniden Kuruldu",
 		sound = 'sound/misc/announce_dig.ogg',
-		sender_override = "Emergency Shuttle Uplink Alert",
+		sender_override = "Acil Durum Mekiği Uplink Uyarısı",
 		color_override = "green",
 	)
 

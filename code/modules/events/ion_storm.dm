@@ -27,7 +27,7 @@
 
 /datum/round_event/ion_storm/announce(fake)
 	if(prob(announce_chance) || fake)
-		priority_announce("Ion storm detected near the station. Please check all AI-controlled equipment for errors.", "Anomaly Alert", ANNOUNCER_IONSTORM)
+		priority_announce("İstasyon yakınlarında iyon fırtınası tespit edildi. Lütfen yapay zeka kontrollü tüm ekipmanlarda hata olup olmadığını kontrol edin.", "Anomali Uyarısı", ANNOUNCER_IONSTORM)
 
 
 /datum/round_event/ion_storm/start()
@@ -461,7 +461,7 @@
 							message = "[ionabstract] [ionadjectiveshalf][ionthreats] [ionverb]"
 						if(3) //X is Ying an abstract
 							message = "[ionabstract] [ionadjectiveshalf][ionobjects] [ionverb]"
-		
+
 		if(37 to 39)
 			switch(rand(1,5)) //What is being renamed?
 				if(1)//Areas

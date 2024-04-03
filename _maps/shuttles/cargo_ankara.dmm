@@ -1,0 +1,53 @@
+"a" = (/obj/machinery/power/shuttle_engine/propulsion,/obj/effect/turf_decal/stripes/line,/obj/effect/turf_decal/stripes/corner{dir = 4},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"b" = (/obj/machinery/conveyor{dir = 5; id = "cargoshuttle"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"c" = (/obj/machinery/conveyor{dir = 8; id = "cargoshuttle"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"d" = (/obj/effect/turf_decal/tile/yellow{dir = 8},/obj/effect/turf_decal/tile/green,/obj/effect/turf_decal/tile/yellow{dir = 4},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"e" = (/obj/effect/turf_decal/tile/green,/obj/effect/turf_decal/tile/yellow{dir = 4},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"f" = (/obj/machinery/light/directional/north,/obj/effect/turf_decal/box,/obj/effect/turf_decal/tile/yellow{dir = 4},/obj/effect/turf_decal/tile/green{dir = 1},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"g" = (/obj/effect/turf_decal/box,/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"j" = (/obj/docking_port/mobile/supply,/obj/effect/mapping_helpers/airlock/access/all/supply/general,/obj/machinery/door/airlock/survival_pod/glass{name = "Supply Shuttle Airlock"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"l" = (/obj/machinery/door/poddoor{id = "QMLoaddoor"; name = "Supply Dock Loading Door"},/turf/open/floor/mineral/titanium/blue,/area/shuttle/supply)
+"m" = (/obj/machinery/conveyor_switch/oneway{id = "cargoshuttle"},/obj/effect/turf_decal/bot,/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"n" = (/obj/effect/mapping_helpers/airlock/access/all/supply/general,/obj/machinery/door/airlock/survival_pod/glass{name = "Supply Shuttle Airlock"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"o" = (/turf/open/space/basic,/area/space)
+"p" = (/obj/machinery/power/shuttle_engine/propulsion,/obj/effect/turf_decal/stripes/line,/obj/effect/turf_decal/stripes/corner{dir = 1},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"q" = (/obj/machinery/button/door/directional/east{id = "QMLoaddoor"; name = "Loading Doors"; pixel_y = 8},/obj/machinery/button/door/directional/east{id = "QMLoaddoor"; name = "Loading Doors"; pixel_y = -8},/obj/machinery/light/directional/east,/obj/effect/turf_decal/tile/green,/obj/effect/turf_decal/tile/yellow{dir = 4},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"r" = (/obj/effect/turf_decal/box,/obj/effect/turf_decal/tile/yellow{dir = 4},/obj/effect/turf_decal/tile/green{dir = 1},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"s" = (/obj/effect/turf_decal/delivery,/obj/effect/turf_decal/tile/yellow{dir = 8},/obj/effect/turf_decal/tile/green,/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"v" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/survival_pod/spawner/directional/north,/obj/effect/turf_decal/stripes/line{dir = 9},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"x" = (/obj/machinery/power/shuttle_engine/propulsion,/obj/effect/turf_decal/stripes/end{dir = 4},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"y" = (/obj/effect/spawner/structure/window/survival_pod,/turf/closed/wall/mineral/titanium/survival,/area/shuttle/supply)
+"z" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/survival_pod/spawner/directional/north,/obj/effect/turf_decal/stripes/line{dir = 1},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"A" = (/obj/effect/turf_decal/tile/green,/obj/effect/turf_decal/tile/yellow{dir = 4},/obj/machinery/conveyor{dir = 8; id = "cargoshuttle"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"C" = (/obj/effect/turf_decal/tile/yellow{dir = 4},/obj/effect/turf_decal/tile/green{dir = 1},/obj/effect/turf_decal/tile/green,/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"F" = (/obj/machinery/conveyor{dir = 6; id = "cargoshuttle"; name = "cargo shuttle conveyor belt"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"H" = (/obj/effect/turf_decal/bot,/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"I" = (/obj/effect/turf_decal/tile/green{dir = 1},/obj/effect/turf_decal/tile/yellow{dir = 8},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"J" = (/obj/effect/turf_decal/tile/yellow{dir = 8},/obj/effect/turf_decal/tile/green,/obj/effect/turf_decal/tile/green{dir = 1},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"K" = (/obj/machinery/power/shuttle_engine/propulsion,/obj/effect/turf_decal/stripes/end{dir = 8},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"M" = (/obj/effect/turf_decal/tile/green{dir = 1},/obj/effect/turf_decal/tile/yellow{dir = 8},/obj/effect/turf_decal/tile/yellow{dir = 4},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"N" = (/obj/machinery/conveyor{dir = 1; id = "cargoshuttle"; name = "cargo shuttle conveyor belt"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"O" = (/obj/machinery/light/directional/west,/obj/effect/turf_decal/tile/green{dir = 1},/obj/effect/turf_decal/tile/yellow{dir = 8},/turf/open/floor/iron/dark/smooth_large,/area/shuttle/supply)
+"P" = (/obj/machinery/power/shuttle_engine/heater,/obj/structure/window/reinforced/survival_pod/spawner/directional/north,/obj/effect/turf_decal/stripes/line{dir = 5},/turf/open/floor/plating/airless,/area/shuttle/supply)
+"Q" = (/obj/machinery/conveyor{dir = 4; id = "cargoshuttle"; name = "cargo shuttle conveyor belt"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"S" = (/obj/machinery/door/poddoor{id = "QMLoaddoor"; name = "Supply Dock Loading Door"},/obj/machinery/conveyor{dir = 8; id = "QMLoad"},/turf/open/floor/mineral/titanium/blue,/area/shuttle/supply)
+"T" = (/obj/machinery/power/shuttle_engine/propulsion,/obj/effect/turf_decal/stripes/line,/turf/open/floor/plating/airless,/area/shuttle/supply)
+"U" = (/turf/closed/wall/mineral/titanium/survival,/area/shuttle/supply)
+"W" = (/obj/machinery/conveyor{dir = 9; id = "cargoshuttle"},/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"X" = (/obj/effect/turf_decal/delivery/red,/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+"Y" = (/obj/effect/turf_decal/delivery,/turf/open/floor/iron/dark/smooth_half,/area/shuttle/supply)
+
+(1,1,1) = {"
+UUUyUUU
+UMrfrCU
+UIYYYey
+UIbQFel
+yINHXen
+yINmXqU
+UINHXej
+UIWccAS
+UOgggey
+UJsssdU
+UyvzPyU
+oKpTaxo
+"}

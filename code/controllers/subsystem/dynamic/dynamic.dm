@@ -366,7 +366,7 @@ SUBSYSTEM_DEF(dynamic)
 	else
 		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLUE)
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)
-		priority_announce("[SSsecurity_level.current_security_level.elevating_to_announcement]\n\nTüm iletişim konsollarına bir özeti kopyalanmış ve basılmıştır.", "Security level elevated.", ANNOUNCER_INTERCEPT, color_override = SSsecurity_level.current_security_level.announcement_color)
+		priority_announce("[SSsecurity_level.current_security_level.elevating_to_announcement]\n\nTüm iletişim konsollarına bir özeti kopyalanmış ve basılmıştır.", "Güvenlik Seviyesi Arttırıldı.", ANNOUNCER_INTERCEPT, color_override = SSsecurity_level.current_security_level.announcement_color)
 #endif
 
 	return .

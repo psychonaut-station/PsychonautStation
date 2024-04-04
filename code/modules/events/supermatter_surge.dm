@@ -91,7 +91,7 @@
 	end_when = rand(SURGE_DURATION_MIN, SURGE_DURATION_MAX)
 
 /datum/round_event/supermatter_surge/announce(fake)
-	priority_announce("The Crystal Integrity Monitoring System has detected unusual atmospheric properties in the supermatter chamber, energy output from the supermatter crystal has increased significantly. Engineering intervention is required to stabilize the engine.", "Class [surge_class] Supermatter Surge Alert", 'sound/machines/engine_alert3.ogg')
+	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı atmosferik özellikler tespit etti, supermatter kristalinden gelen enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "[surge_class] Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert3.ogg')
 
 /datum/round_event/supermatter_surge/start()
 	engine.bullet_energy = surge_class + SURGE_BULLET_ENERGY_ADDITION
@@ -105,7 +105,7 @@
 	sm_gas.powerloss_inhibition = initial(sm_gas.powerloss_inhibition)
 	sm_gas.heat_power_generation = initial(sm_gas.heat_power_generation)
 	sm_gas.heat_modifier = initial(sm_gas.heat_modifier)
-	priority_announce("The supermatter surge has dissipated, crystal output readings have normalized.", "Anomaly Cleared")
+	priority_announce("Supermatter dalgalanması kayboldu, kristal çıkış değerleri normale döndü.", "Anomali Düzeldi")
 	engine = null
 	sm_gas = null
 
@@ -126,7 +126,7 @@
 	fakeable = FALSE
 
 /datum/round_event/supermatter_surge/poly/announce(fake)
-	priority_announce("The Crystal Integrity Monitoring System has detected unusual parrot type resonance in the supermatter chamber, energy output from the supermatter crystal has increased significantly. Engineering intervention is required to stabilize the engine.", "Class P Supermatter Surge Alert", 'sound/machines/engine_alert3.ogg')
+	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı papağan tipi rezonans tespit etti, supermatter kristalinden enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "P Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert3.ogg')
 
 #undef SURGE_DURATION_MIN
 #undef SURGE_DURATION_MAX

@@ -44,11 +44,11 @@
 	if(isnull(announcement_text) || fake)
 		var/datum/shuttle_loan_situation/fake_situation = pick(subtypesof(/datum/shuttle_loan_situation))
 		announcement_text = initial(fake_situation.announcement_text)
-	priority_announce("Cargo: [announcement_text]", situation.sender)
+	priority_announce("Kargo: [announcement_text]", situation.sender)
 	SSshuttle.shuttle_loan = src
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
-	priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by [command_name()].")
+	priority_announce(situation.thanks_msg, "Kargo mekiğine [command_name()] tarafından el konuldu.")
 
 	dispatched = TRUE
 	var/datum/bank_account/dep_account = SSeconomy.get_dep_account(ACCOUNT_CAR)

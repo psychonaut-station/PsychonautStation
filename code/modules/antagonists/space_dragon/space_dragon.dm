@@ -180,8 +180,8 @@
 	permanant_empower()
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	main_objective?.completed = TRUE
-	priority_announce("A large amount of lifeforms have been detected approaching [station_name()] at extreme speeds. \
-		Remaining crew are advised to evacuate as soon as possible.", "[command_name()] Wildlife Observations", has_important_message = TRUE)
+	priority_announce("Çok sayıda yaşam formunun [station_name()] İstasyonuna aşırı hızlarda yaklaştığı tespit edildi. \
+		Kalan mürettebatın mümkün olan en kısa sürede tahliye edilmesi tavsiye edilmektedir.", "[command_name()] Vahşi Yaşam İzleme", has_important_message = TRUE)
 	sound_to_playing_players('sound/creatures/space_dragon_roar.ogg', volume = 75)
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)
 		rift.carp_stored = 999999

@@ -15,19 +15,19 @@
 	glow_colour = "#be000048"
 	/// Things to yell before you die
 	var/static/list/possible_last_words = list(
-		"Flames and ruin!",
-		"Dooooooooom!!",
+		"Alevler ve yıkım!",
+		"Kııııyyyyyyaaaammeeeettttt!!",
 		"HAHAHAHAHAHA!! AHAHAHAHAHAHAHAHAA!!",
 		"Hee hee hee!! Hoo hoo hoo!! Ha ha haaa!!",
 		"Ohohohohohoho!!",
-		"Cower in fear, puny mortals!",
-		"Tremble before my glory!",
-		"Pick a god and pray!",
-		"It's no use!",
-		"If the gods wanted you to live, they would not have created me!",
-		"God stays in heaven out of fear of what I have created!",
-		"Ruination is come!",
-		"All of creation, bend to my will!",
+		"Korkudan sinmiş, cılız faniler!",
+		"Görkemim karşısında titre!",
+		"Bir tanrı seç ve dua et!",
+		"İşe yaramaz!",
+		"Eğer tanrılar senin yaşamanı isteseydi, beni yaratmazlardı!",
+		"Tanrı benim yarattığım şeyden korktuğu için cennette kalıyor!",
+		"Yıkım geliyor!",
+		"Tüm kainat, irademe boyun eğ!",
 	)
 
 /datum/grand_finale/armageddon/trigger(mob/living/carbon/human/invoker)

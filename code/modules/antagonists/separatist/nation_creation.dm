@@ -69,7 +69,7 @@
 	if(message_admins)
 		message_admins("The nation of [nation.name] has been formed. Affected jobs are [jobs_english_list]. Any new crewmembers with these jobs will join the secession.")
 	if(announcement)
-		var/announce_text = "The new independent state of [nation.name] has formed from the ashes of the [department.department_name] department!"
+		var/announce_text = "Yeni bağımsız [nation.name] devleti, [department.department_name] departmanının küllerinden oluşmuştur!"
 		if(istype(department, /datum/job_department/assistant)) //the text didn't really work otherwise
-			announce_text = "The assistants of the station have risen to form the new independent state of [nation.name]!"
-		priority_announce(announce_text, "Secession from [GLOB.station_name]",  has_important_message = TRUE)
+			announce_text = "İstasyonun asistanları yeni bağımsız [nation.name] devletini kurmak için ayaklandı!"
+		priority_announce(announce_text, "Bağımsızlık Bildirisi",  has_important_message = TRUE)

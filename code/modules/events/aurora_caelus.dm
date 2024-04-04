@@ -18,9 +18,9 @@
 	end_when = 80
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Nanotrasen has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
+	priority_announce("[station_name()] İstasyonu: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onayladı. Bu süre zarfında yıldız ışığı parlak ama sakin yeşil ve mavi renkler arasında gidip gelerek yumuşak olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personel, kendilerine en yakın olan ve açık alana bakan bağlantı noktalarının bulunduğu alana gidebilirler. Işıklardan keyif alacağınızı umuyoruz.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Nanotrasen Meteoroloji Departmanı")
 	for(var/V in GLOB.player_list)
 		var/mob/M = V
 		if((M.client.prefs.read_preference(/datum/preference/toggle/sound_midi)) && is_station_level(M.z))
@@ -58,9 +58,9 @@
 /datum/round_event/aurora_caelus/end()
 	fade_space()
 	fade_kitchen()
-	priority_announce("The aurora caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. Have a pleasant shift, [station_name()], and thank you for watching with us.",
+	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] İstasyonu, ve bizimle birlikte izlediğiniz için teşekkürler.",
 	sound = 'sound/misc/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Nanotrasen Meteoroloji Departmanı")
 
 /datum/round_event/aurora_caelus/proc/fade_space(fade_in = FALSE)
 	set waitfor = FALSE

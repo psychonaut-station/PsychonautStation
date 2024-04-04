@@ -30,12 +30,12 @@
 	var/message = "Your emergency shuttle [cause]. "
 
 	if(SSshuttle.shuttle_insurance)
-		message += "Luckily, your shuttle insurance has covered the costs of repair!"
+		message += "Neyse ki, servis sigortanız onarım masraflarını karşıladı!"
 		if(SSeconomy.get_dep_account(ACCOUNT_CAR))
-			message += " You have been awarded a bonus from [command_name()] for smart spending."
+			message += " Akıllı harcama yaptığınız için [command_name()]'den bir bonus kazandınız."
 	else
-		message += "Your replacement shuttle will be the [new_shuttle.name] until further notice."
-	priority_announce(message, "[command_name()] Spacecraft Engineering")
+		message += "Bir sonraki duyuruya kadar yedek servisiniz  [new_shuttle.name] olacaktır."
+	priority_announce(message, "[command_name()] Uzay Mekiği Mühendisliği")
 
 /datum/round_event/shuttle_catastrophe/setup()
 	if(SSshuttle.shuttle_insurance || !isnull(new_shuttle)) //If an admin has overridden it don't re-roll it

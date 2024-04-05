@@ -30,28 +30,28 @@ export const DiscordVerification = () => {
       <Window.Content>
         {linked ? (
           <>
-            <NoticeBox info>Your account is linked to Discord.</NoticeBox>
-            <Section title="Linked Account" buttons={<RefreshButton />}>
+            <NoticeBox info>Hesabın Discord&apos;a bağlı.</NoticeBox>
+            <Section title="Bağlı Hesap" buttons={<RefreshButton />}>
               <LabeledList>
-                <LabeledList.Item label="Display name">
+                <LabeledList.Item label="Görünen ad">
                   {display_name ?? 'Failed'}
                 </LabeledList.Item>
-                <LabeledList.Item label="Username">
+                <LabeledList.Item label="Kullanıcı adı">
                   {username ?? 'Failed'}
-                </LabeledList.Item>
-                <LabeledList.Item label="Discriminator">
-                  {discriminator ? `#${discriminator}` : 'Failed'}
+                  {discriminator &&
+                    discriminator !== '0' &&
+                    `#${discriminator}`}
                 </LabeledList.Item>
               </LabeledList>
             </Section>
           </>
         ) : (
           <>
-            <NoticeBox danger>Your account is not linked to Discord.</NoticeBox>
-            <Section title="Verification" buttons={<RefreshButton />}>
+            <NoticeBox danger>Hesabın Discord&apos;a bağlı değil.</NoticeBox>
+            <Section title="Doğrulama" buttons={<RefreshButton />}>
               <Box mb={1}>
-                Your one time token is: {token}. You can verify yourself on
-                Discord by using the command:
+                Tek kullanımlık tokenin: {token}. Bu komutu kullanarak
+                Discord&apos;da kendini doğrulayabilirsin:
               </Box>
               <BlockQuote mb={1}>
                 {prefix}verify {token}
@@ -71,7 +71,7 @@ const RefreshButton = () => {
   return (
     <Button
       icon="sync"
-      tooltip="Refresh"
+      tooltip="Yenile"
       tooltipPosition="bottom"
       disabled={!refresh}
       onClick={() => act('refresh')}

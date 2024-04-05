@@ -82,7 +82,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		title = "Savaş İlanı Bildirgesi",
 		sound = 'sound/machines/alarm.ogg',
 		has_important_message = TRUE,
-		sender_override = "Nuclear Operative Outpost",
+		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",
 	)
 	if(user)
@@ -187,7 +187,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		title = "Savaş İlanı Bildirgesi",
 		sound = 'sound/machines/alarm.ogg',
 		has_important_message = TRUE,
-		sender_override = "Nuclear Operative Outpost",
+		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",
 	)
 

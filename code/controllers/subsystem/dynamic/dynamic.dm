@@ -362,7 +362,7 @@ SUBSYSTEM_DEF(dynamic)
 #ifndef MAP_TEST
 	print_command_report(., "[command_name()] Durum Özeti", announce=FALSE)
 	if(greenshift)
-		priority_announce("Güvenlik ve istihbarat birimlerimizin yorulmak bilmeyen çabaları sayesinde, şu anda [station_name()]'na yönelik herhangi bir tehdit bulunmamaktadır. Tüm istasyon inşaat projelerine izin verilmiştir. Güvenli bir vardiya geçirin!", "Güvelik Raporu", SSstation.announcer.get_rand_report_sound(), color_override = "green")
+		priority_announce("Güvenlik ve istihbarat birimlerimizin yorulmak bilmeyen çabaları sayesinde, şu anda [station_name()] İstasyonu'na yönelik herhangi bir tehdit bulunmamaktadır. Tüm istasyon inşaat projelerine izin verilmiştir. Güvenli bir vardiya geçirin!", "Güvelik Raporu", SSstation.announcer.get_rand_report_sound(), color_override = "green")
 	else
 		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLUE)
 			SSsecurity_level.set_level(SEC_LEVEL_BLUE, announce = FALSE)

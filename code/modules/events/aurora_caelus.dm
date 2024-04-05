@@ -58,7 +58,7 @@
 /datum/round_event/aurora_caelus/end()
 	fade_space()
 	fade_kitchen()
-	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] İstasyonu, ve bizimle birlikte izlediğiniz için teşekkürler.",
+	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] İstasyonu bizimle birlikte izlediğiniz için teşekkürler.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Nanotrasen Meteoroloji Departmanı")
 

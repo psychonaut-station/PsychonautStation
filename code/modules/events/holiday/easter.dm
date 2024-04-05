@@ -22,7 +22,7 @@
 	description = "Summons a wave of cute rabbits."
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("[station_name()] İstasyonuna gelen tanımlanamayan tüylü nesneler tespit edildi. Sevimliliğe karşı dikkatli olun.", "Pofuduk Uyarısı", ANNOUNCER_ALIENS)
+	priority_announce("[station_name()] İstasyonu'na gelen tanımlanamayan tüylü nesneler tespit edildi. Sevimliliğe karşı dikkatli olun.", "Pofuduk Uyarısı", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/rabbitrelease/start()

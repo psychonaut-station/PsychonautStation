@@ -18,7 +18,7 @@
 	announce_when = rand(announce_when, announce_when + 50)
 
 /datum/round_event/spider_infestation/announce(fake)
-	priority_announce("[station_name()] İstasyonuna gelen tanımlanamayan yaşam sinyalleri tespit edildi. Kanallar ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Bulgusu", ANNOUNCER_ALIENS)
+	priority_announce("[station_name()] İstasyonu'na gelen tanımlanamayan yaşam sinyalleri tespit edildi. Kanallar ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Bulgusu", ANNOUNCER_ALIENS)
 
 /datum/round_event/spider_infestation/start()
 	create_midwife_eggs(spawncount)

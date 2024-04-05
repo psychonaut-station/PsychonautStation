@@ -262,7 +262,7 @@ SUBSYSTEM_DEF(shuttle)
 			text = "Felaket boyutunda kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - tüm frekanslarda geri çağrı sinyalleri engelleniyor.",
 			title = "Acil Durum Mekiği Gönderildi",
 			sound = ANNOUNCER_SHUTTLECALLED,
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "orange",
 		)
 		if(emergency.timeLeft(1) > emergency_call_time * ALERT_COEFF_AUTOEVAC_CRITICAL)
@@ -276,7 +276,7 @@ SUBSYSTEM_DEF(shuttle)
 			text = "Acil durum mekik uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Paraziti",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 		addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
@@ -290,7 +290,7 @@ SUBSYSTEM_DEF(shuttle)
 			text= "Acil durum mekiği uplink servisleri tekrar devreye girmiştir.",
 			title = "Uplink Bağlantısı Geri Yüklendi",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",
 		)
 		return
@@ -524,7 +524,7 @@ SUBSYSTEM_DEF(shuttle)
 			text = "Kalkış, anlaşmazlık çözülene kadar süresiz olarak ertelenmiştir.",
 			title = "Saldırgan Ortam Tespit Edildi",
 			sound = 'sound/misc/notice1.ogg',
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 	if(!emergency_no_escape && (emergency.mode == SHUTTLE_STRANDED))
@@ -534,7 +534,7 @@ SUBSYSTEM_DEF(shuttle)
 			text = "Acil durum mekiğine binmek için [DisplayTimeText(emergency_dock_time)] süreniz var.",
 			title = "Saldırgan Ortam Çözüldü",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",
 		)
 

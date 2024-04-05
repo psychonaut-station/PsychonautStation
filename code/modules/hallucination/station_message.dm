@@ -20,7 +20,7 @@
 					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
 					title = "Acil Durum Mekiği Varışı",
 					sound = ANNOUNCER_SHUTTLEDOCK,
-					sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+					sender_override = "Acil Durum Mekiği Uyarısı",
 					players = list(hallucinator),
 					color_override = "orange",
 				)

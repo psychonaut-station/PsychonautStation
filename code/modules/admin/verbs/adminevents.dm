@@ -228,7 +228,7 @@
 		text = "Acil Mekiği uplink arızası, mekik bir sonraki duyuruya kadar devre dışı.",
 		title = "Uplink Uyarısı",
 		sound = 'sound/misc/announce_dig.ogg',
-		sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+		sender_override = "Acil Durum Mekiği Uyarısı",
 		color_override = "grey",
 	)
 
@@ -260,7 +260,7 @@
 		text = "Acil Mekik bağlantısı yeniden kuruldu, mekik devrede.",
 		title = "Uplink Yeniden Kuruldu",
 		sound = 'sound/misc/announce_dig.ogg',
-		sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+		sender_override = "Acil Durum Mekiği Uyarısı",
 		color_override = "green",
 	)
 

@@ -144,7 +144,7 @@
 			text = "Taşıma sırasında acil durum mekik bağlantısında ölümcül hata oluştu. Bağlantı yeniden kurulamıyor.",
 			title = "Mekik Arızası",
 			sound =  'sound/misc/announce_dig.ogg',
-			sender_override = "Acil Durum Mekiği Uplink Uyarısı",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 	else

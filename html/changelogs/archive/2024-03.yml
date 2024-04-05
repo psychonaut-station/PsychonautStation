@@ -569,6 +569,8 @@
   Tattle:
   - rscadd: Getting shrunk makes you talk small
 2024-03-18:
+  Bilbo367:
+  - bugfix: Deathmatch players should no longer be able to roll any midround antagonist.
   Exester509:
   - bugfix: Plasmamen will become human in the deathmatch so they don't instantly
       die
@@ -576,3 +578,127 @@
   - bugfix: FIXED CARGO EXPORTS!
   JohnFulpWillard:
   - bugfix: Action abilities hidden from players are now not shown to observers either.
+  Rhials:
+  - bugfix: Plasmamen nukie reinforcements are now properly given a plasmaman-safe
+      outfit.
+  RikuTheKiller:
+  - balance: Smoke Machines, Showers, Vapes, etc will no longer arbitrarily delete
+      a random amount of the chems they are processing
+  Runa-Dacino:
+  - bugfix: fixed consecutive tgui text input inheriting user input from previous
+      input form within the same proc
+  san7890:
+  - bugfix: If you place a headset on a non-Poly Parrot, you should be able to remove
+      it from the parrot as-expected now rather than having the parrot send it to
+      the shadow realm.
+  xXPawnStarrXx:
+  - image: modified gi sprites, making them more customisable.
+2024-03-19:
+  13spacemen:
+  - qol: Sentience potion reason is set via alt-click
+  ArcaneMusic:
+  - rscadd: Disposal bins can now hold destination taggers using right click, and
+      can be removed the same way. Some disposal bins should have some pre-loaded
+      as well.
+  Ghommie:
+  - bugfix: The deathmatch modifiers modal menu can actually be opened now. Also fixed
+      a bunch of issues it had.
+  LT3:
+  - bugfix: Export barcodes are visible on wrapped packages
+  Momo8289:
+  - bugfix: You can no longer determine the result of a dice roll from off-screen.
+  Rhials:
+  - code_imp: Deathmatch files, map names, and keys should all be consistent now.
+  SyncIt21:
+  - bugfix: Selling stuff in cargo gives us money again.
+  san7890:
+  - bugfix: Prisoners who are teleported to the Nanotrasen Work Camp should now always
+      be stripped of their gear to prevent escapes.
+2024-03-20:
+  Nidvex250:
+  - qol: Can now use wirecutters when performing Tend Wounds.
+  Watermelon914:
+  - bugfix: Fixed the lua editor being outright broken.
+  Y0SH1M4S73R:
+  - bugfix: lua scripting should work on BYOND 515.1633
+  antropod:
+  - bugfix: Vending machine no longer shocks you twice when you pulse high voltage
+      wire.
+  - bugfix: Airlock wires window closes when you get shocked
+  genkuqq:
+  - qol: "Yasa kitab\u0131 kullan\u0131m\u0131 kolayla\u015Ft\u0131r\u0131ld\u0131\
+      ."
+  - bugfix: "Yasa kitab\u0131 a\xE7\u0131l\u0131\u015F\u0131 h\u0131z\u0131 artt\u0131\
+      r\u0131ld\u0131."
+2024-03-21:
+  00-Steven:
+  - rscadd: Hemiplegic now lets you pick which side is disabled.
+  - rscadd: The medical records text for hemiplegics now shows which side is disabled.
+  ArcaneMusic:
+  - bugfix: Vending machines now show the correct vending refill name when examine
+      and not full.
+  - code_imp: Mineral logging now collects ore names more cleanly.
+  Bilbo367:
+  - admin: cluster bombs stop spamming admin logs
+  Higgin:
+  - bugfix: basic mob pirates no longer drop fake energy weapon lenses when shooting
+      you to death with lasers.
+  JohnFulpWillard:
+  - bugfix: Clients joining a round twice as a crewmember (via admins or otherwise)
+      no longer break security/medical record consoles permanently.
+  Melbert:
+  - refactor: Infrared emitters now function better (or at least more how you would
+      expect them) (hopefully). Report any oddities
+  - qol: Hand labels now have a visual effect associated, and are also affected by
+      heat / can be cleaned off like stickers.
+  - refactor: Refactored hand labels. They're objects now!
+  Singul0:
+  - bugfix: You can't complete a genetic makeup scan when the targets moves out of
+      target anymore using a genetic sequencer
+  SomeRandomOwl:
+  - admin: Deathmatch Bombs, Smoke, and Liquid floods are now suppressed in the logs
+      and will not actively spam admin logs.
+  - code_imp: adds a area flag to suppress logging for floods and bombs
+  TheVekter:
+  - rscadd: Added 5 new Felinid ear options, ported from Orbstation! (Sprites by Or-Fi-S)
+  Thlumyn:
+  - rscadd: Added corner filled warning decals
+  Xander3359:
+  - bugfix: Fix hack comms console/locate weakpoint objective showing up multiple
+      times
+2024-03-22:
+  AnturK:
+  - bugfix: Painting patronage works again when there's no curator present during
+      the round.
+  Ghommie:
+  - rscadd: Active skillchips are now copied on bitrunning avatars.
+  - rscadd: To celebrate it, a skillchip is now available from the bitrunning order
+      console, which lets you dodge projectiles for the duration of your flips, at
+      the cost of stamina.
+  - rscdel: Removed the (non-working) "Perma-Flipping" and "Echolocation" deathmatch
+      modifiers.
+  - rscadd: Added "No Slowdown", "Random Teleports", "Snail Crawl", "Forcefield Trail"
+      and "Manual Blinking/Breathing" modifiers.
+  - bugfix: Fixed deathmatch cruise missiles looking like standard pods.
+  Melbert:
+  - rscadd: 'Adds 3 Traumas: Primal Instincts (special), Kleptomania (severe), and
+      Possessive (mild)'
+  Rhials:
+  - bugfix: Removes some dirt tiles on the Sunrise deathmatch map, which would fill
+      the map with lavaland atmos.
+  SyncIt21:
+  - bugfix: Vending machines will update its UI if ID is lost at any point
+  - bugfix: Vending machines won't brick if the payment fails (like due to lose of
+      ID) for any reason
+  - bugfix: failing to equip a dual handed item should properly clear out all status
+      effects related to equipping it, for e.g. remove the action button from chainsaw
+  - bugfix: reagent containers like cup & syringe only update target appearance if
+      action was successful.
+  - bugfix: envelops don't stack overlays when interacting with cup & syringes.
+  Watermelon914:
+  - refactor: Auxlua no longer uses the timer subsystem to get stuff done, lua scripts
+      shouldn't slow down timers anymore.
+  myraowo:
+  - rscadd: Added the Chief Engineer's turtleneck and turtleneck skirt to the game.
+  - rscadd: Added the Chief Engineer and Chief Medical Officer's turtlenecks to their
+      respectives garment bags.

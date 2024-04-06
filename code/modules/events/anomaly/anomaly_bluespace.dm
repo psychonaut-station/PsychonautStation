@@ -16,4 +16,4 @@
 /datum/round_event/anomaly/anomaly_bluespace/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("[ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name] bölgesinde bluespace dengesizliği tespit edildi.", "Anomali Uyarısı")
+	priority_announce("[ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name] bölgesinde bluespace dengesizliği tespit etti.", "Anomali Uyarısı")

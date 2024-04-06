@@ -29,4 +29,4 @@
 /datum/round_event/anomaly/anomaly_grav/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("[ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name] bölgesinde yerçekimsel anomali tespit edildi.", "Anomali Uyarısı" , ANNOUNCER_GRANOMALIES)
+	priority_announce("[ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name] bölgesinde yerçekimsel anomali tespit etti.", "Anomali Uyarısı" , ANNOUNCER_GRANOMALIES)

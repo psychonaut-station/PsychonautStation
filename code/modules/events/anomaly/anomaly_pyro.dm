@@ -16,4 +16,4 @@
 /datum/round_event/anomaly/anomaly_pyro/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("[ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name] bölgesinde pyroclastic anomalisi tespit edildi.", "Anomali Uyarısı")
+	priority_announce("[ANOMALY_ANNOUNCE_HARMFUL_TEXT] [impact_area.name] bölgesinde pyroclastic anomalisi tespit etti.", "Anomali Uyarısı")

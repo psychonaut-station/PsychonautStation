@@ -58,7 +58,7 @@
 	else if(the_source_of_our_problems)
 		location_descriptor = get_area(the_source_of_our_problems)
 
-	priority_announce("[location_descriptor || "an unknown area"]. bölgede radyasyon sızıntısı tespit edilmiştir.\
+	priority_announce("[location_descriptor || "Bilinmeyen bir istasyon"] bölgesinde radyasyon sızıntısı tespit edilmiştir.\
 		Tüm mürettebat etkilenen bölgeyi tahliye etmelidir. [pick("Mekaniklerimiz", "Mühendislerimiz", "Bilim Adamlarımız")] \
 		buna içerideki bir makinenin neden olduğunu bildiriyor - sızıntıyı durdurmak için makineyi hızla onarın.", "[command_name()] Mühendislik Departmanı")
 

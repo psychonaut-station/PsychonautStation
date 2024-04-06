@@ -206,7 +206,7 @@
 
 /datum/station_trait/birthday/proc/announce_birthday()
 	report_message = "We here at Nanotrasen would all like to wish [birthday_person ? birthday_person_name : "Employee Name"] a very happy birthday."
-	priority_announce("Mutlu yıllar [birthday_person ? birthday_person_name : "Çalışan Adı"]! Nanotrasen olarak [birthday_person ? thtotext(birthday_person.age + 1) : "255th"] yaş gününü kutlarız.")
+	priority_announce("Mutlu yıllar [birthday_person ? birthday_person_name : "Çalışan Adı"]! Nanotrasen olarak [birthday_person ? "[birthday_person.age + 1]." : "255."] yaş gününü kutlarız.")
 	if(birthday_person)
 		playsound(birthday_person, 'sound/items/party_horn.ogg', 50)
 		birthday_person.add_mood_event("birthday", /datum/mood_event/birthday)

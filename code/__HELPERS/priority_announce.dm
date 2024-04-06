@@ -58,14 +58,14 @@
 	var/header
 	switch(type)
 		if(ANNOUNCEMENT_TYPE_PRIORITY)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Öncelik Duyurusu")
+			header = MAJOR_ANNOUNCEMENT_TITLE("Öncelikli Duyuru")
 			if(length(title) > 0)
 				header += SUBHEADER_ANNOUNCEMENT_TITLE(title)
 		if(ANNOUNCEMENT_TYPE_CAPTAIN)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Kaptanın Duyurusu")
-			GLOB.news_network.submit_article(text, "Kaptanın Duyurusu", "İstasyon Duyuruları", null)
+			header = MAJOR_ANNOUNCEMENT_TITLE("Kaptan Duyurusu")
+			GLOB.news_network.submit_article(text, "Kaptan Duyurusu", "Station Announcements", null)
 		if(ANNOUNCEMENT_TYPE_SYNDICATE)
-			header = MAJOR_ANNOUNCEMENT_TITLE("Sendika Kaptanının Duyurusu")
+			header = MAJOR_ANNOUNCEMENT_TITLE("Sendika Kaptanı Duyurusu")
 		else
 			header += generate_unique_announcement_header(title, sender_override)
 
@@ -87,9 +87,9 @@
 
 	if(isnull(sender_override) && players == GLOB.player_list)
 		if(length(title) > 0)
-			GLOB.news_network.submit_article(title + "<br><br>" + text, "[command_name()]", "İstasyon Duyuruları", null)
+			GLOB.news_network.submit_article(title + "<br><br>" + text, "[command_name()]", "Station Announcements", null)
 		else
-			GLOB.news_network.submit_article(text, "[command_name()] Bildirisi", "İstasyon Duyuruları", null)
+			GLOB.news_network.submit_article(text, "[command_name()] Bildirisi", "Station Announcements", null)
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
@@ -154,6 +154,12 @@
 
 	var/title
 	var/message
+
+	switch(current_level_name)
+		if("green") current_level_name = "Yeşil"
+		if("blue") current_level_name = "Mavi"
+		if("red") current_level_name = "Kırmızı"
+		if("delta") current_level_name = "Delta"
 
 	if(current_level_number > previous_level_number)
 		title = "Dikkat! Güvenlik derecesi [current_level_name] seviyesine arttırıldı."

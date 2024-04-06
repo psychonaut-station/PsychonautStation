@@ -58,7 +58,7 @@
 	effect_emergency_state()
 	effect_cascade_demoralize()
 	priority_announce("Sektörünüzde C Tipi bir rezonans kayması olayı meydana geldi. Taramalar, uzaysal ve yerçekimsel alt yapıyı etkileyen yerel salınım akışına işaret ediyor. \
-		Çoklu rezonans noktaları oluştu. Lütfen bekleyin.", "Nanotrasen Yıldız Gözlem Derneği", ANNOUNCER_SPANOMALIES)
+		Çoklu rezonans noktaları oluştu. Lütfen bekleyin.", "Nanotrasen Yıldız Gözlem Birliği", ANNOUNCER_SPANOMALIES)
 	sleep(2 SECONDS)
 	effect_strand_shuttle()
 	sleep(5 SECONDS)
@@ -89,7 +89,7 @@
 		return FALSE
 	priority_announce("Dikkat: Uzun menzilli anomali taramaları [station_name()] içindeki bir özneden kaynaklanan anormal miktarlarda \
 	harmoni akışı olduğunu gösteriyor, bir rezonans çökmesi meydana gelebilir.",
-	"Nanotrasen Yıldız Gözlem Derneği", 'sound/misc/airraid.ogg')
+	"Nanotrasen Yıldız Gözlem Birliği", 'sound/misc/airraid.ogg')
 	return TRUE
 
 /// Signal calls cant sleep, we gotta do this.

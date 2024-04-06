@@ -300,7 +300,7 @@
 	else if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = money + JACKPOT
 		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'")
-		priority_announce("[get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için [user ? user.real_name : usrname] adlı kişiyi tebrik ederiz!")
+		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
 		jackpots += 1
 		money = 0
 		if(paymode == HOLOCHIP)

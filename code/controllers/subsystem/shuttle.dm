@@ -522,7 +522,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.sound_played = FALSE
 		priority_announce(
 			text = "Kalkış, anlaşmazlık çözülene kadar süresiz olarak ertelenmiştir.",
-			title = "Saldırgan Ortam Tespit Edildi",
+			title = "Tehlikeli Ortam Tespit Edildi",
 			sound = 'sound/misc/notice1.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
@@ -531,8 +531,8 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
 		priority_announce(
-			text = "Acil durum mekiğine binmek için [DisplayTimeText(emergency_dock_time)] süreniz var.",
-			title = "Saldırgan Ortam Çözüldü",
+			text = "Acil durum mekiğine binmek için [DisplayLocaleTimeText(emergency_dock_time)] süreniz var.",
+			title = "Tehlikeli Ortam Çözüldü",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",

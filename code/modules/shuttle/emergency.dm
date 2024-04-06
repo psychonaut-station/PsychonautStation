@@ -612,7 +612,7 @@
 	launch_status = ENDGAME_LAUNCHED
 	setTimer(SSshuttle.emergency_escape_time)
 	priority_announce(
-		text = "Acil durum mekiği doğrudan sıçrama için hazırlanıyor. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] kadar bir süre var.",
+		text = "Acil durum mekiği doğrudan sıçrama için hazırlanıyor. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] dakika var.",
 		title = "Acil Durum Mekiği Transit Arızası",
 		sender_override = "Acil Durum Mekiği Uyarısı",
 		color_override = "orange",

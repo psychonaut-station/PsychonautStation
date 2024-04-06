@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
 		victory_in_progress = TRUE
-		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonu kaybetmemiz an meselesi.", "Biyolojik Tehlike Uyarısı")
+		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonun kaybedilmesi an meselesi", "Biyolojik Tehlike Uyarısı")
 		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		max_blob_points = INFINITY
 		blob_points = INFINITY

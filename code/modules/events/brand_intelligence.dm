@@ -52,7 +52,7 @@
 	if(fake)
 		var/obj/machinery/vending/prototype = pick(subtypesof(/obj/machinery/vending))
 		machine_name = initial(prototype.name)
-	priority_announce("[station_name()] içerisinde yaygın marka istihbaratı tespit edildi. Lütfen tüm [machine_name] marka satıcılarını agresif pazarlama taktikleri açısından inceleyin ve gerekirse yeniden başlatın.", "Makine Öğrenimi Uyarısı")
+	priority_announce("[station_name()] içerisinde kontrolden çıkmış bir marka tespit edildi. Lütfen tüm [machine_name] marka otomatları agresif pazarlama taktikleri açısından denetleyin ve gerekirse sıfırlayın.", "Makine Öğrenimi Uyarısı")
 
 /datum/round_event/brand_intelligence/start()
 	origin_machine.shut_up = FALSE

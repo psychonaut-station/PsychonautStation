@@ -401,7 +401,7 @@
 	)
 	tastes = list("beans" = 2, "rice" = 3, "salt" = 1)
 	foodtypes = VEGETABLES | GRAIN
-	foiled_food = "pilavnbean"
+	foiled_food = "ricenbean"
 
 /obj/item/food/foiltray/noodle
 	name = "noodle"

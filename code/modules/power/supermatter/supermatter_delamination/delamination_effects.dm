@@ -186,7 +186,7 @@
 		Tahliye artık geleneksel yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
 		Bu vesileyle tüm personelin mevcut herhangi bir yolla yarığa girmesi gerekmektedir.\n\n\
 		[Gibberish("Hayatta kalanların kurtarılması, gerekli imkanların sağlanmasının ardından gerçekleştirilecektir.", FALSE, 5)] \
-		[Gibberish("Bol Şans--", FALSE, 25)]")
+		[Gibberish("Bol şans--", FALSE, 25)]")
 	return rift
 
 /// Announce the destruction of the rift and end the round.

@@ -16,26 +16,26 @@
 #define ANNOUNCEMENT_COLORS list("default", "green", "blue", "pink", "yellow", "orange", "red", "purple")
 
 /**
- * Buyuk kirmizi bir duyuru gosterir
+ * Make a big red text announcement to
  *
- * Format:
+ * Formatted like:
  *
- * " Mesaji Gonderen "
+ * " Message from sender "
  *
- * " Baslik "
+ * " Title "
  *
- * " Yazi "
+ * " Text "
  *
  * Arguments
- * * text - gerekli, duyuru metni.
- * * title - opsiyonel, duyuru basligi.
- * * sound - opsiyonel, duyuru ile birlikte oynatilacak ses.
- * * type - opsiyonel, kullanilacak duyuru sablonlari. Bkz. __DEFINES/announcements.dm
- * * sender_override - opsiyonel, duyurunun gondericisini duzenler
- * * has_important_message - opsiyonel, bu mesaj istasyon icin kritik mi (istasyon traitlerini gecersiz kilsin mi), degil mi
- * * players - opsiyonel, mesajin gonderilecegi oyuncular listesi. varsayilan olarak tum oyuncular (yeni oyuncular dahil degildir)
- * * encode_title - opsiyonel, TRUE ise, duyuru basligi HTML kodlu olacaktir
- * * encode_text - opsiyonel, TRUE ise, duyuru metni HTML kodlu olacaktir
+ * * text - required, the text to announce
+ * * title - optional, the title of the announcement.
+ * * sound - optional, the sound played accompanying the announcement
+ * * type - optional, the type of the announcement, for some "preset" announcement templates. See __DEFINES/announcements.dm
+ * * sender_override - optional, modifies the sender of the announcement
+ * * has_important_message - is this message critical to the game (and should not be overridden by station traits), or not
+ * * players - a list of all players to send the message to. defaults to all players (not including new players)
+ * * encode_title - if TRUE, the title will be HTML encoded
+ * * encode_text - if TRUE, the text will be HTML encoded
  */
 /proc/priority_announce(text, title = "", sound, type, sender_override, has_important_message = FALSE, list/mob/players = GLOB.player_list, encode_title = TRUE, encode_text = TRUE, color_override)
 	if(!text)

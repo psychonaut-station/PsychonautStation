@@ -20,16 +20,16 @@
 	announce_when = 2
 
 /datum/round_event/market_crash/announce(fake)
-	var/list/poss_reasons = list("güneş tutulması",\
-		"bazı riskli konut piyasası sonuçları",\
-		"spekülatif Terragov hibelerinin geri tepmesi",\
+	var/list/poss_reasons = list("Güneş tutulması",\
+		"Bazı riskli konut piyasası sonuçları",\
+		"Spekülatif Terragov hibelerinin geri tepmesi",\
 		"Nanotrasen muhasebe personelinin \"işten çıkarıldığına\" dair oldukça abartılı haberler",\
-		"Bir \"moron\" tarafından \"büyük bir yatırım\" \"bir hiç\" haline getirilmesi",\
+		"Bir \"moron\" tarafından \"büyük bir yatırımın\" \"bir hiç\" haline getirilmesi",\
 		"Tiger Cooperative ajanlarının bir dizi baskını",\
-		"tedarik zinciri eksiklikleri",\
+		"Tedarik zinciri eksiklikleri",\
 		"\"Nanotrasen+\" sosyal medya ağının zamansız çöküşü",\
 		"\"Nanotrasen+\" sosyal medya ağının talihsiz başarısı",\
-		"uhh, kötü şans"
+		"Uhh, kötü şans"
 	)
 	var/reason = pick(poss_reasons)
 	priority_announce("[reason] nedeniyle, istasyon içi satıcıların fiyatları kısa bir süre için artırılacaktır.", "Nanotrasen Muhasebe Departmanı")

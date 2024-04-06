@@ -26,7 +26,7 @@
 ///Time in seconds before anomaly is announced
 #define ANOMALY_ANNOUNCE_HARMFUL_TIME (30 EVENT_SECONDS)
 ///Let them know how far away the anomaly is
-#define ANOMALY_ANNOUNCE_HARMFUL_TEXT "Yerel tarayıcılarım kesin olarak:"
+#define ANOMALY_ANNOUNCE_HARMFUL_TEXT "Yerel tarayıcılarımız kesin olarak:"
 
 /**
  * Anomalies that can fuck you up. Give them a bit of warning.
@@ -37,4 +37,4 @@
 ///Time in seconds before anomaly is announced
 #define ANOMALY_ANNOUNCE_DANGEROUS_TIME (30 EVENT_SECONDS)
 ///Let them know how far away the anomaly is
-#define ANOMALY_ANNOUNCE_DANGEROUS_TEXT "Yerel tarayıcılarım kesin olarak:"
+#define ANOMALY_ANNOUNCE_DANGEROUS_TEXT "Yerel tarayıcılarımız kesin olarak:"

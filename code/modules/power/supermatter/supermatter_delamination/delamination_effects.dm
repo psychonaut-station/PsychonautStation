@@ -198,7 +198,7 @@
 	priority_announce("Raporlar, bir rezonans kayması olayı sonrası kristal tohumlarının oluşumunu göstermektedir. \
 		Kristal kütlesinin artan yerçekimi kuvvetiyle orantılı olarak hızla genişlemesi \
 		nedeniyle maddenin çökmesi öngörülebilir.",
-		"Nanotrasen Yıldız Gözlem Derneği")
+		"Nanotrasen Yıldız Gözlem Birliği")
 
 	sleep(25 SECONDS)
 

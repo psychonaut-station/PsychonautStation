@@ -10,8 +10,8 @@
 	announce_when = 1
 
 /datum/round_event/processor_overload/announce(fake)
-	var/alert = pick("Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yüklenmesi muhtemel. Lütfen amirinizle irtib*%xp25)`6cq-BZZT",
-		"Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yüklel*1eta;c5;'1v¬-BZZZT",
+	var/alert = pick("Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yüklenmesi muhtemel. Lütfen şefinizle irtib*%xp25)`6cq-BZZT",
+		"Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yükle*1eta;c5;'1v¬-BZZZT",
 		"Atmosferik hava kabarcığı geliyor. İşlemcinin a#MCi46:5.;@63-BZZZZT",
 		"Atmosferik hava kabar'Fz\\k55_@-BZZZZZT",
 		"Atmosferi:%£ QCbyj^j</.3-BZZZZZZT",

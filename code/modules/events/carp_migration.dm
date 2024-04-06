@@ -29,7 +29,7 @@
 	/// Rarer mob type to spawn, must also be a child of /mob/living/basic/carp. If one of these is created, it will take priority to show ghosts.
 	var/boss_type = /mob/living/basic/carp/mega
 	/// What to describe detecting near the station
-	var/fluff_signal = "Bilinmeyen biyolojik varlıklar"
+	var/fluff_signal = "bilinmeyen biyolojik varlıklar"
 	/// Associated lists of z level to a list of points to travel to, so that grouped fish move to the same places
 	var/list/z_migration_paths = list()
 

@@ -32,7 +32,7 @@
 	if(!(locate(/mob/living/silicon/ai) in GLOB.silicon_mobs))
 		return FALSE
 
-	priority_announce("Tüm istasyon sistemlerinde düşmanca çalışma süreleri tespit edildi. Ahlak çekirdeğine gelebilecek olası hasarı önlemek için lütfen yapay zekanızı devre dışı bırakın.", \
+	priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için lütfen yapay zekanızı devre dışı bırakın.", \
 		"Anomali Uyarısı", ANNOUNCER_AIMALF, players = list(hallucinator))
 	return ..()
 

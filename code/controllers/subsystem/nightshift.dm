@@ -43,7 +43,7 @@ SUBSYSTEM_DEF(nightshift)
 			if(!emergency)
 				announce("Gece aydınlatma ayarları normal ayarlarına döndürülüyor.")
 			else
-				announce("Gece aydınlatması devre dışı bırakılıyor: İstasyon acil durumdadır.")
+				announce("Gece aydınlatması devre dışı bırakılıyor: İstasyon acil durumda")
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)

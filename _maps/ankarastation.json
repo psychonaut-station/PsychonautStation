@@ -3,12 +3,40 @@
 	"map_name": "AnkaraStation",
 	"map_path": "map_files/AnkaraStation",
 	"map_file": "AnkaraStation.dmm",
+	"space_ruin_levels": 0,
+	"space_empty_levels": 0,
+	"planetary": 1, 
 	"shuttles": {
 		"cargo": "cargo_ankara",
 		"ferry": "ferry_fancy",
 		"whiteship": "whiteship_meta",
 		"emergency": "emergency_meta"
 	},
+	"traits": [
+		{
+			"Up": true,
+			"Mining": true,
+			"Linkage": null,
+			"Gravity": true,
+			"No Parallax": true
+		},
+		{
+			"Down": true,
+			"Up": true,
+			"Mining": false,
+			"Linkage": null,			
+			"Gravity": true,
+			"No Parallax": true
+		},
+		{
+			"Down": true,
+			"Mining": false,
+			"Linkage": null,
+			"Gravity": true,
+			"Weather_Downpourstorm": true,
+			"No Parallax": true
+		}
+	],
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/bar", "/area/station/commons/lounge"]

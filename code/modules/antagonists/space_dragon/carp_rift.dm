@@ -206,7 +206,7 @@
 	if(time_charged >= max_charge)
 		charge_state = CHARGE_COMPLETED
 		var/area/A = get_area(src)
-		priority_announce("Uzamsal nesne [initial(A.name)] bölgesindeki en yüksek enerji yüküne ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleri", has_important_message = TRUE)
+		priority_announce("Uzamsal nesne [initial(A.name)] bölgesindeki en yüksek enerji yüküne ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
 		atom_integrity = INFINITY
 		icon_state = "carp_rift_charged"
 		set_light_color(LIGHT_COLOR_DIM_YELLOW)
@@ -226,7 +226,7 @@
 	if(charge_state < CHARGE_FINALWARNING && time_charged >= (max_charge * 0.5))
 		charge_state = CHARGE_FINALWARNING
 		var/area/A = get_area(src)
-		priority_announce("Bir yarık, [initial(A.name)] bölgesinde doğal olmayan büyük bir enerji akışına neden oluyor. Ne pahasına olursa olsun durdurun!", "[command_name()] Vahşi Yaşam Gözlemleri", ANNOUNCER_SPANOMALIES)
+		priority_announce("Bir yarık, [initial(A.name)] bölgesinde doğal olmayan büyük bir enerji akışına neden oluyor. Ne pahasına olursa olsun durdurun!", "[command_name()] Vahşi Yaşam Gözlemleme", ANNOUNCER_SPANOMALIES)
 
 /**
  * Used to create carp controlled by ghosts when the option is available.

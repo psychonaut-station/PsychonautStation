@@ -245,7 +245,7 @@
 /obj/effect/dumpeet_target/proc/startLaunch()
 	DF = new /obj/effect/dumpeet_fall(drop_location())
 	dump = new /obj/structure/checkoutmachine(null, bogdanoff)
-	priority_announce("Spacecoin balonu patladı! [get_area(src)] konumundaki kredi yatırma makinesine gidin ve tüm paranızı kaybetmeden önce nakde çevirin!", sender_override = "CRAB-17 Protokolü")
+	priority_announce("Spacecoin balonu patladı! [get_area(src)] konumundaki kredi yatırma makinesine gidin ve tüm paranızı kaybetmeden önce nakite çevirin!", sender_override = "CRAB-17 Protokolü")
 	animate(DF, pixel_z = -8, time = 5, , easing = LINEAR_EASING)
 	playsound(src,  'sound/weapons/mortar_whistle.ogg', 70, TRUE, 6)
 	addtimer(CALLBACK(src, PROC_REF(endLaunch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation

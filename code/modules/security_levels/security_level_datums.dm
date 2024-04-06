@@ -43,7 +43,7 @@
  * No threats
  */
 /datum/security_level/green
-	name = "Yeşil"
+	name = "green"
 	announcement_color = "green"
 	sound = 'sound/misc/notice2.ogg' // Friendly beep
 	number_level = SEC_LEVEL_GREEN
@@ -56,7 +56,7 @@
  * Caution advised
  */
 /datum/security_level/blue
-	name = "Mavi"
+	name = "blue"
 	announcement_color = "blue"
 	sound = 'sound/misc/notice1.ogg' // Angry alarm
 	number_level = SEC_LEVEL_BLUE
@@ -70,7 +70,7 @@
  * Hostile threats
  */
 /datum/security_level/red
-	name = "Kırmızı"
+	name = "red"
 	announcement_color = "red"
 	sound = 'sound/misc/notice3.ogg' // More angry alarm
 	number_level = SEC_LEVEL_RED
@@ -84,7 +84,7 @@
  * Station destruction is imminent
  */
 /datum/security_level/delta
-	name = "Delta"
+	name = "delta"
 	announcement_color = "purple"
 	sound = 'sound/misc/airraid.ogg' // Air alarm to signify importance
 	number_level = SEC_LEVEL_DELTA

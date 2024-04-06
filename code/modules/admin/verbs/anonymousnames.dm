@@ -185,7 +185,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	player.put_in_hands(new random_path())
 
 /datum/anonymous_theme/wizards/announce_to_all_players()
-	priority_announce("İstasyonunuz bir Büyücü Federasyonu Memetik Tehlikesi ile karşı karşıya. Siz kendiniz değilsiniz ve siz % a2E 34!NOT4--- Akademiye hoş geldiniz, çıraklar!", "Anısal Tehlike", SSstation.announcer.get_rand_alert_sound())
+	priority_announce("İstasyonunuz bir Büyücü Federasyonu Memetik Tehlikesi ile karşı karşıya. Siz kendiniz değilsiniz ve si% a2E 34!NOT4--- Akademiye hoş geldiniz, çıraklar!", "Anısal Tehlike", SSstation.announcer.get_rand_alert_sound())
 
 /datum/anonymous_theme/wizards/anonymous_name(mob/target)
 	var/wizard_name_first = pick(GLOB.wizard_first)

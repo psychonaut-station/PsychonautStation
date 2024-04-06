@@ -81,7 +81,7 @@
  * Great as a less magical / more IC way to return power to a sapped station.
  */
 /proc/power_restore_quick()
-	priority_announce("[station_name()] tüm SMES'leri yeniden sarj edilmiştir. Verdiğimiz rahatsızlıktan dolayı özür dileriz.", "Enerji Sistemleri", ANNOUNCER_POWERON)
+	priority_announce("[station_name()] içerisindeki tüm SMES'leri yeniden sarj edilmiştir. Verdiğimiz rahatsızlıktan dolayı özür dileriz.", "Enerji Sistemleri", ANNOUNCER_POWERON)
 	var/list/all_smes = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes)
 	for(var/obj/machinery/power/smes/smes as anything in all_smes)
 		if(!is_station_level(smes.z))

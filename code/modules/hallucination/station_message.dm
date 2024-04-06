@@ -9,7 +9,7 @@
 /datum/hallucination/station_message/blob_alert
 
 /datum/hallucination/station_message/blob_alert/start()
-	priority_announce("[station_name()] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", \
+	priority_announce("[station_name()] içerisinde 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", \
 		"Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
 	return ..()
 

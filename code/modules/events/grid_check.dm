@@ -22,7 +22,7 @@
 			CRASH("event started without controller!")
 		if(!COOLDOWN_FINISHED(controller, announcement_spam_protection))
 			return
-	priority_announce("[station_name()] İstasyonu'nun güç şebekesinde anormal aktivite tespit edildi. Önlem olarak, istasyonun elektriği henüz belirlenemeyen bir süre boyunca kapalı kalacaktır.", "Kritik Enerji Kesintisi", ANNOUNCER_POWEROFF)
+	priority_announce("[station_name()] güç şebekesinde anormal aktivite tespit edildi. Önlem olarak, istasyonun elektriği henüz belirlenemeyen bir süre boyunca kapalı kalacaktır.", "Kritik Enerji Kesintisi", ANNOUNCER_POWEROFF)
 	if(!fake) // Only start the CD if we're real
 		COOLDOWN_START(controller, announcement_spam_protection, 30 SECONDS)
 

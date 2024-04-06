@@ -25,7 +25,7 @@
 	spawn_meteor(list(/obj/effect/meteor/dark_matteor = 1), null, target)
 
 /datum/round_event/dark_matteor/announce(fake)
-	priority_announce("Uyarı. Meteor uydularına aşırı müdahale, karanlık bir mat-eor çekti. Mat-eor hızla [GLOB.station_name] İstasyonuna yaklaşıyor. Lütfen çarpışmaya hazır olun.", "Meteor Uyarısı", 'sound/misc/airraid.ogg')
+	priority_announce("Uyarı. Meteor uydularına aşırı müdahale, karanlık bir mat-eor çekti. Mat-eor hızla [GLOB.station_name] yaklaşıyor. Lütfen çarpışmaya hazır olun.", "Meteor Uyarısı", 'sound/misc/airraid.ogg')
 
 /datum/event_admin_setup/warn_admin/dark_matteor
 	warning_text = "Dark Matt-eors spawn singularities. The round is ending once a dark matt-eor hits the station. Proceed anyways?"

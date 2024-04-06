@@ -149,7 +149,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
 		victory_in_progress = TRUE
-		priority_announce("Biyolojik tehlike kritik seviyeye ulaştı. İstasyonu kaybetmemiz an meselesi.", "Biyolojik Tehlike Uyarısı")
+		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonu kaybetmemiz an meselesi.", "Biyolojik Tehlike Uyarısı")
 		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		max_blob_points = INFINITY
 		blob_points = INFINITY
@@ -162,7 +162,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_count = blobs_legit.len
 
 	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
-		priority_announce("[station_name()] İstasyonu'nda 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personel salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
+		priority_announce("[station_name()] içerisinde 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
 		has_announced = TRUE
 
 /// Create a blob spore and link it to us

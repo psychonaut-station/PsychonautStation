@@ -203,7 +203,7 @@
 	sleep(25 SECONDS)
 
 	priority_announce("[Gibberish("Tüm tahliye girişimleri sona ermiş ve sektörünüzdeki tüm kaynaklar geri alınmıştır.\n \
-		[station_name()] İstasyonu hayatta kalanlarına elveda.", FALSE, 5)]")
+		[station_name()] hayatta kalanlarına elveda.", FALSE, 5)]")
 
 	if(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)
 		// special message for hijacks

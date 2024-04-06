@@ -122,6 +122,34 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
 
 
+/proc/DisplayLocaleTimeText(time_value, round_seconds_to = 0.1)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
+	if(!second)
+		return "Hemen Şimdi"
+	if(second < 60)
+		return "[second] Saniye"
+	var/minute = FLOOR(second / 60, 1)
+	second = FLOOR(MODULUS(second, 60), round_seconds_to)
+	var/secondT
+	if(second)
+		secondT = "/ [second] Saniye"
+	if(minute < 60)
+		return "[minute] Dakika"
+	var/hour = FLOOR(minute / 60, 1)
+	minute = MODULUS(minute, 60)
+	var/minuteT
+	if(minute)
+		minuteT = "/ [minute] Dakika"
+	if(hour < 24)
+		return "[hour] Saat"
+	var/day = FLOOR(hour / 24, 1)
+	hour = MODULUS(hour, 24)
+	var/hourT
+	if(hour)
+		hourT = "/ [hour] Saat"
+	return "[day] Gün [hourT][minuteT][secondT]"
+
+
 /proc/daysSince(realtimev)
 	return round((world.realtime - realtimev) / (24 HOURS))
 

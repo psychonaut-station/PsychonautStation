@@ -30,11 +30,11 @@
 	var/message = "Your emergency shuttle [cause]. "
 
 	if(SSshuttle.shuttle_insurance)
-		message += "Neyse ki, servis sigortanız onarım masraflarını karşıladı!"
+		message += "Neyse ki, mekik sigortanız onarım masraflarını karşıladı!"
 		if(SSeconomy.get_dep_account(ACCOUNT_CAR))
 			message += " Akıllı harcama yaptığınız için [command_name()]'den bir bonus kazandınız."
 	else
-		message += "Bir sonraki duyuruya kadar yedek servisiniz  [new_shuttle.name] olacaktır."
+		message += "Bir sonraki duyuruya kadar yedek mekiğiniz  [new_shuttle.name] olacaktır."
 	priority_announce(message, "[command_name()] Uzay Mekiği Mühendisliği")
 
 /datum/round_event/shuttle_catastrophe/setup()

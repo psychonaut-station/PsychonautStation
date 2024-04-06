@@ -129,7 +129,7 @@
 	clog_vent()
 
 	announce_to_ghosts(vent)
-	priority_announce("Lifesign ölçümleri havalandırma ağında yeni bir konuma taşınmıştır. Yeni Lokasyonu: [prob(50) ? "Bilinmiyor.":"[get_area_name(vent)]."]", "Yaşam Sinyali Bildirimi")
+	priority_announce("Yaşam sinyali değerleri havalandırma ağında yeni bir konuma geçmiştir. Yeni Lokasyonu: [prob(50) ? "Bilinmiyor.":"[get_area_name(vent)]."]", "Yaşam Sinyali Bildirimi")
 
 /**
  * Handles the production of our mob and adds it to our living_mobs list
@@ -230,7 +230,7 @@
 
 /datum/round_event/vent_clog/major/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Havalandırma ağında büyük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] alanında olduğuna inanılıyor.", "İstila Uyarısı")
+	priority_announce("Havalandırma ağında büyük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] bölgesinde olduğuna inanılıyor.", "İstila Uyarısı")
 
 /datum/round_event_control/vent_clog/critical
 	name = "Ventilation Clog: Critical"
@@ -254,7 +254,7 @@
 
 /datum/round_event/vent_clog/critical/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("[event_area] havalandırma ağında potansiyel olarak tehlikeli bir yaşam bulgusu tespit edildi..", "Güvenlik Uyarısı")
+	priority_announce("[event_area] havalandırma ağında potansiyel olarak tehlikeli bir yaşam sinyali tespit edildi..", "Güvenlik Uyarısı")
 
 /datum/round_event/vent_clog/critical/get_mob()
 	var/static/list/mob_list = list(
@@ -287,7 +287,7 @@
 
 /datum/round_event/vent_clog/strange/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("[event_area] bölgesindeki havalandırma ağında olağandışı yaşam bulgusu tespit edildi.", "Yaşam Sinyali Uyarısı", ANNOUNCER_ALIENS)
+	priority_announce("[event_area] bölgesindeki havalandırma ağında olağandışı yaşam sinyali tespit edildi.", "Yaşam Sinyali Uyarısı", ANNOUNCER_ALIENS)
 
 /datum/round_event/vent_clog/strange/get_mob()
 	var/static/list/mob_list = list(

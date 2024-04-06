@@ -60,6 +60,7 @@
 		"Siz evrensel olarak tanınmış bir sanatçısınız",
 		"Istasyon sizin tuvalinizdir, onu güzel bir sanat eserine dönüştürün.",
 		"Tuvalinizden güzel bir şey yapın. Bu sektörün sanatsal bir harikası olarak hayranlıkla izlenecek.",
+		"Sanat takdir gerektirir. İstasyonda bir kitle oluşturarak eserlerinizi mümkün olduğunca çok kişinin görmesini sağlayın.",
 	)
 
 /datum/ai_laws/tyrant

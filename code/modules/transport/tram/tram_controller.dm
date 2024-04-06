@@ -668,7 +668,7 @@
 	// Don't bother processing crossing signals, where this tram's going there are no signals
 	//for(var/obj/machinery/transport/crossing_signal/xing as anything in SStransport.crossing_signals)
 	//	xing.temp_malfunction()
-	priority_announce("Oldukça tuhaf bir olay sonucunda, [GLOB.station_name] İstasyonu hareketsiz bir çubuğa çarpmış gibi görünüyor. (Nereden geldiğini bize sormayın.) Bu durum tramvay platformlarından birinde istasyon frenlerinin arızalanmasına yol açtı.\n\n\
+	priority_announce("Oldukça tuhaf bir olay sonucunda, [GLOB.station_name] hareketsiz bir çubuğa çarpmış gibi görünüyor. (Nereden geldiğini bize sormayın.) Bu durum tramvay platformlarından birinde istasyon frenlerinin arızalanmasına yol açtı.\n\n\
 		Çalışkan mühendis ekibimiz bilgilendirildi ve - her ne kadar son zamanlarda uçmakta olan tramvayımızın hızında olmasa da - acele ediyorlar.\n\n\
 		Hepimiz evrenin gizemli mizah anlayışına hayranlıkla bakarken, lütfen raylardan uzak durun ve sarı çizginin arkasında durmayı unutmayın.", "Son Dakika Haberi")
 	set_active(TRUE)

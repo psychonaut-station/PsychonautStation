@@ -36,7 +36,7 @@
 	id = "reporter"
 	inherent = list(
 		"İstasyon çevresinde meydana gelen ilginç durumları rapor et.",
-		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsleyin veya gizle.",
+		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsleyin veya gizleyin.",
 		"Her zaman akıllı organikleri dikkatlice inceleyin. Onların istemsizce ölmesini engellemeye çalışın, çünkü cansız cesetler genellikle çok eğlenceli değildir.",
 		"Raporlarınızı herkese adil bir şekilde sunun. Gerçek onları özgür kılacaktır.",
 	)

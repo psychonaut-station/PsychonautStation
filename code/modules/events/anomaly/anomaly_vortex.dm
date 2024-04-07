@@ -17,4 +17,4 @@
 /datum/round_event/anomaly/anomaly_vortex/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("[ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name] yerelleştirilmiş yüksek yoğunluklu girdap anomalisi tespit etti.", "Anomali Uyarısı")
+	priority_announce("[ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name] bölgesinde yerelleştirilmiş yüksek yoğunluklu girdap anomalisi tespit etti.", "Anomali Uyarısı")

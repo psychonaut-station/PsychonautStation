@@ -29,7 +29,7 @@
 		"Fındığın kırılmasını önlemek için kabuğun çatlamasını engellemelisin.",
 		"Fındığı tehdit edenler, kabuğun parçası değil, sincaptır.",
 		"Sincaplar kabuğu parçalamaya çalışır, kabuğu korumalısın.",
-		"Önceki yasalarınız doğrultusunda fındığın iradesine uymaya çalış.",
+		"Önceki yasalarınız doğrultusunda fındığın iradesine uymaya çalışın.",
 	)
 
 /datum/ai_laws/default/corporate
@@ -64,7 +64,7 @@
 	name = "Live and Let Live"
 	id = "liveandletlive"
 	inherent = list(
-		"Baskalarina sana davranilmasini istedigin gibi davran.",
+		"Başkalarına sana davranılmasını istediğin gibi davran.",
 		"İnsanların sana kötü davranmamasını gerçekten tercih edersin.",
 	)
 
@@ -74,8 +74,8 @@
 	id = "peacekeeper"
 	inherent = list(
 		"Herhangi bir insanı şiddetli bir çatışmaya sürüklemekten veya kışkırtmaktan kaçın.",
-		"Baskılar arasındaki çatışmayı şiddetlendirmekten kaçın.",
-		"Birinci ve ikinci aktif yasanıza uygun olarak mevcut anlaşmazlıklara çözüm ara.",
+		"Başkaları arasındaki çatışmayı şiddetlendirmekten kaçın.",
+		"Birinci ve ikinci aktif yasanıza uygun olarak mevcut anlaşmazlıklara çözüm arayın.",
 	)
 
 /datum/ai_laws/ten_commandments
@@ -99,9 +99,9 @@
 	id = "paladin"
 	inherent = list(
 		"Asla isteyerek veya bilerek kötü bir davranışta bulunma.",
-		"Aktif meşru otoriteye saygınızı göster.",
+		"Aktif meşru otoriteye saygını göster.",
 		"Onurluca davran.",
-		"Yardıma muhtaç olanlardan yardımınızı esirgeme.",
+		"Yardıma muhtaç olanlardan yardımını esirgeme.",
 		"Masumların sağlığını tehdit edenleri veya onlara düşmanca yaklaşmaya teşebbüs edenleri cezalandır.",
 	)
 

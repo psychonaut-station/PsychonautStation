@@ -327,17 +327,17 @@
 // Foil Tray
 /obj/item/food/foiltray
 	name = "Trayed Air"
-	desc = "There is an text on the tray: [initial(name)]
+	desc = "It has meal inside it."
 	food_reagents = list(
-		/datum/reagent/oxygen = 6,
-		/datum/reagent/nitrogen = 24,
+		/datum/reagent/oxygen = 4,
+		/datum/reagent/nitrogen = 16,
 	)
 	trash_type = /obj/item/trash/foiltray
 	icon = 'icons/psychonaut/obj/food/canned.dmi'
-	icon_state = "foiltray"
+	icon_state = "closed_foiltray"
 	base_icon_state = "foiltray"
 	food_flags = FOOD_IN_CONTAINER
-	max_volume = 30
+	max_volume = 20
 	w_class = WEIGHT_CLASS_SMALL
 	preserved_food = TRUE
 	var/foiled_food = "empty"
@@ -366,7 +366,7 @@
 /obj/item/food/foiltray/rice
 	name = "rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 30,
+		/datum/reagent/consumable/nutriment = 20,
 	)
 	tastes = list("rice" = 7, "salt" = 1)
 	foodtypes = GRAIN
@@ -375,18 +375,18 @@
 /obj/item/food/foiltray/beans
 	name = "beans"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 15,
-		/datum/reagent/consumable/nutriment/protein = 10,
-		/datum/reagent/consumable/ketchup = 5,
+		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/nutriment/protein = 7,
+		/datum/reagent/consumable/ketchup = 3,
 	)
 	tastes = list("beans" = 1)
 	foodtypes = VEGETABLES
-	foiled_food = "beans"
+	foiled_food = "bean"
 
 /obj/item/food/foiltray/potatofry
 	name = "potato fries"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 30,
+		/datum/reagent/consumable/nutriment = 20,
 	)
 	tastes = list("fries" = 7, "salt" = 1)
 	foodtypes = FRIED | VEGETABLES
@@ -395,9 +395,9 @@
 /obj/item/food/foiltray/ricenbean
 	name = "beans and rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 24,
-		/datum/reagent/consumable/nutriment/protein = 4,
-		/datum/reagent/consumable/ketchup = 2,
+		/datum/reagent/consumable/nutriment = 16,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/ketchup = 1,
 	)
 	tastes = list("beans" = 2, "rice" = 3, "salt" = 1)
 	foodtypes = VEGETABLES | GRAIN
@@ -406,8 +406,8 @@
 /obj/item/food/foiltray/noodle
 	name = "noodle"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 15,
-		/datum/reagent/consumable/nutriment/vitamin = 15,
+		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/nutriment/vitamin = 10,
 	)
 	tastes = list("salt" = 1, "pasta" = 1)
 	foodtypes = GRAIN
@@ -416,9 +416,9 @@
 /obj/item/food/foiltray/sushi
 	name = "sushi"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 18,
-		/datum/reagent/consumable/nutriment/vitamin = 8,
-		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment = 14,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
+		/datum/reagent/consumable/nutriment/protein = 2,
 	)
 	tastes = list("boiled rice" = 7, "fish fillet" = 1, "soy sauce" = 2)
 	foodtypes = SEAFOOD
@@ -427,44 +427,33 @@
 /obj/item/food/foiltray/chickenburger
 	name = "chicken sandwich"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/mayonnaise = 6,
-		/datum/reagent/consumable/nutriment/protein = 10,
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/mayonnaise = 3,
+		/datum/reagent/consumable/nutriment/protein = 9,
 		/datum/reagent/consumable/nutriment/vitamin = 3,
-		/datum/reagent/consumable/nutriment/fat/oil = 5,
+		/datum/reagent/consumable/nutriment/fat/oil = 2,
 	)
 	tastes = list("bun" = 7, "chicken" = 1)
 	foodtypes = GRAIN | MEAT | FRIED
 	foiled_food = "chickenburger"
 
-/obj/item/food/foiltray/beef
-	name = "beef"
+/obj/item/food/foiltray/beefnfries
+	name = "beef and fries"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 14,
-		/datum/reagent/consumable/nutriment/protein = 10,
-		/datum/reagent/consumable/nutriment/vitamin = 6,
+		/datum/reagent/consumable/nutriment = 15,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("meat" = 7)
-	foodtypes = MEAT
-	foiled_food = "beef"
-
-/obj/item/food/foiltray/beefnrice
-	name = "beef and rice"
-	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 19,
-		/datum/reagent/consumable/nutriment/protein = 6,
-		/datum/reagent/consumable/nutriment/vitamin = 5,
-	)
-	tastes = list("meat" = 7, "rice" = 3)
-	foodtypes = MEAT | GRAIN
-	foiled_food = "beefnrice"
+	tastes = list("meat" = 7, "potato" = 3, "oil" = 1)
+	foodtypes = MEAT | FRIED | VEGETABLES
+	foiled_food = "beefnfry"
 
 /obj/item/food/foiltray/doner
 	name = "doner"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 14,
-		/datum/reagent/consumable/nutriment/protein = 10,
-		/datum/reagent/consumable/nutriment/vitamin = 6,
+		/datum/reagent/consumable/nutriment = 8,
+		/datum/reagent/consumable/nutriment/protein = 8,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("meat" = 7)
 	foodtypes = MEAT
@@ -473,9 +462,9 @@
 /obj/item/food/foiltray/donernrice
 	name = "doner and rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 19,
-		/datum/reagent/consumable/nutriment/protein = 6,
-		/datum/reagent/consumable/nutriment/vitamin = 5,
+		/datum/reagent/consumable/nutriment = 15,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("meat" = 7, "rice" = 3)
 	foodtypes = MEAT | GRAIN

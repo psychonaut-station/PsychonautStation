@@ -556,6 +556,21 @@
 	for(var/i in 1 to 4)
 		new /obj/item/sticker/anti_skub(src)
 
+/// Changes all the snack vendor to food vendor
+/datum/station_trait/foodvend
+	name = "Food Vendors"
+	report_message = "While the station was under construction, we realized that we had no snack vendors left, so we placed the food vendors we had instead."
+	trait_type = STATION_TRAIT_NEUTRAL
+	weight = 1
+	show_in_report = TRUE
+
+/datum/station_trait/foodvend/on_round_start()
+	. = ..()
+	for(var/obj/machinery/vending/snack/vendor as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/vending/snack))
+		var/turf/T = get_turf(vendor)
+		new /obj/machinery/vending/meal(T)
+		qdel(vendor)
+
 #undef PRO_SKUB
 #undef ANTI_SKUB
 #undef SKUB_IDFC

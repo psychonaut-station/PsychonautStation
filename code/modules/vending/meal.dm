@@ -3,9 +3,10 @@
 	desc = "An old food machine made by an anonymous company."
 	product_slogans = "Acıktınmı, neyseki biz varız!;Ayın en lezzetli yemekleri burda!"
 	product_ads = "Çok sağlıklı gözüküyor!;Biz varken şefe gerek varmı?;Mmm, çok iyi!;Afiyet olsun!;Farkımız tarzımız!!;1875'den beri!;Tarihin en iyisi!!;"
-	icon_state = "snack"
-	panel_type = "panel2"
-	light_mask = "snack-light-mask"
+	icon = 'icons/psychonaut/obj/machines/vending.dmi'
+	icon_state = "meal"
+	panel_type = "panel11"
+	light_mask = "meal-light-mask"
 	products = list(
 		/obj/item/food/foiltray/rice = 4,
 		/obj/item/food/foiltray/beans = 4,
@@ -14,8 +15,7 @@
 		/obj/item/food/foiltray/noodle = 4,
 		/obj/item/food/foiltray/sushi = 4,
 		/obj/item/food/foiltray/chickenburger = 4,
-		/obj/item/food/foiltray/beef = 4,
-		/obj/item/food/foiltray/beefnrice = 4,
+		/obj/item/food/foiltray/beefnfries = 4,
 		/obj/item/food/foiltray/doner = 4,
 		/obj/item/food/foiltray/donernrice = 4,
 	)

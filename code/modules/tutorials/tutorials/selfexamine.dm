@@ -1,6 +1,6 @@
 /// Tutorial for showing how to examine things.
 /datum/tutorial/examine
-	grandfather_date = "2024-03-06"
+	grandfather_date = "2024-04-01"
 
 /datum/tutorial/examine/perform(list/params)
 	RegisterSignal(user, COMSIG_MOB_EXAMINING, PROC_REF(on_examine))

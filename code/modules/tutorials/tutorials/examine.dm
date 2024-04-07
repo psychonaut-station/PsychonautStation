@@ -13,7 +13,7 @@
 	if (QDELETED(src))
 		return
 
-	show_instruction("Use Shift+Click at anything for examining it!")
+	show_instruction("Use Shift+Click on anything to examine it!")
 
 /datum/tutorial/examine/proc/on_examine(mob/source, atom/target, list/examine_strings)
 	SIGNAL_HANDLER

@@ -1,17 +1,16 @@
-<!-- Write **BELOW** The Headers and **ABOVE** The comments else it may not be viewable. -->
-<!-- You can view Contributing.MD for a detailed description of the pull request process. -->
+<!-- Yazılarını başlıkların **ALTINA** ve yorumların **ÜSTÜNE** yaz, aksi takdirde görünmeyebilir. -->
 
-## About The Pull Request
+## Pull Request Hakkında
 
-<!-- Describe The Pull Request. Please be sure every change is documented or this can delay review and even discourage maintainers from merging your PR! -->
+<!-- Pull Request'i açıkla. Lütfen her değişikliği belirttiğinden emin ol, aksi takdirde bu incelemeyi zorlaştırabilir ve maintainerları PR'ı mergelemekten vazgeçirebilir! -->
 
-## Why It's Good For The Game
+## Oyun İçin Neden Gerekli
 
-<!-- Argue for the merits of your changes and how they benefit the game, especially if they are controversial and/or far reaching. If you can't actually explain WHY what you are doing will improve the game, then it probably isn't good for the game in the first place. -->
+<!-- Yaptığın değişikliklerin yararlarını ve oyuna nasıl fayda sağladığını, özellikle de tartışmalı ve/veya geniş kapsamlı ise, savun. Yaptığın şeyin oyunu NEDEN geliştireceğini gerçekten açıklayamıyorsan, muhtemelen ilk etapta oyun için iyi değildir. -->
 
 ## Changelog
 
-<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. You can read up on GBP and it's effects on PRs in the tgstation guides for contributors. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
+<!-- Eğer PR oyunun oyuncular veya adminler tarafından somut olarak gözlemlenebilecek yönlerini değiştiriyorsa, changelog eklemelisin. Eğer yaptığın değişiklikler oyuncuları veya adminleri ilgilendirmiyorsa, bu kısmı silebilirsin. Lütfen maintainerların uygun gördükleri takdirde tagları kaldırabileceğini ve ekleme yapabileceğini unutma. -->
 
 :cl:
 add: Added new mechanics or gameplay changes
@@ -30,5 +29,5 @@ admin: messed with admin stuff
 server: something server ops should know
 /:cl:
 
-<!-- Both :cl:'s are required for the changelog to work! You can put your name to the right of the first :cl: if you want to overwrite your GitHub username as author ingame. -->
-<!-- You can use multiple of the same prefix (they're only used for the icon ingame) and delete the unneeded ones. Despite some of the tags, changelogs should generally represent how a player might be affected by the changes rather than a summary of the PR's contents. -->
+<!-- Changelogun çalışması için her iki :cl: de gerekli! Oyun içinde değişikliği yapan kişi olarak GitHub kullanıcı adından farklı bir isim kullanmak istiyorsan ilk :cl:'nin sağına adını yazabilirsin. -->
+<!-- Aynı tagdan birden fazla kullanabilirsin (bunlar sadece oyun içinde simge için kullanılıyor) ve gereksiz olanları silebilirsin. Bazı taglar hariç diğerleri PR içeriğinin bir özetinden ziyade oyuncuların değişikliklerden nasıl etkilenebileceğini göstermeli yani bunları bizim değil oyuncuların ve adminlerin anlayabileceği şekilde yazmalısın. -->

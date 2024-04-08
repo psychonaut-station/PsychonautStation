@@ -8,7 +8,10 @@
 	///If we don't check turfs in range if the host's loc isn't a turf
 	var/ignore_if_not_on_turf
 	///The signals of the connect range component, needed to monitor the turfs in range.
-	var/static/list/loc_connections = list(
+	// PSYCHONAUT EDIT CHANGE START - JUKEBOX
+	// var/static/list/loc_connections = list( - PSYCHONAUT EDIT - ORIGINAL
+	var/list/loc_connections = list(
+	// PSYCHONAUT EDIT CHANGE END
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 		COMSIG_ATOM_EXITED = PROC_REF(on_uncrossed),
 		COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON = PROC_REF(on_initialized),

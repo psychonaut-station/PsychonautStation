@@ -16,21 +16,28 @@ export class AudioPlayer {
     document.body.appendChild(this.node);
     // Set up other properties
     this.playing = false;
+    this.muted = false; // PSYCHONAUT EDIT ADDITION - JUKEBOX
     this.volume = 1;
+    this.localVolume = 1; // PSYCHONAUT EDIT ADDITION - JUKEBOX
     this.options = {};
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
     // Listen for playback start events
     this.node.addEventListener('canplaythrough', () => {
-      logger.log('canplaythrough');
-      this.playing = true;
-      this.node.playbackRate = this.options.pitch || 1;
-      this.node.currentTime = this.options.start || 0;
-      this.node.volume = this.volume;
-      this.node.play();
-      for (let subscriber of this.onPlaySubscribers) {
-        subscriber();
-      }
+      if (this.node && this.node instanceof HTMLAudioElement) { // PSYCHONAUT EDIT ADDITION - JUKEBOX
+        logger.log('canplaythrough');
+        this.playing = true;
+        this.node.playbackRate = this.options.pitch || 1;
+        this.node.currentTime = this.options.start || 0;
+        // PSYCHONAUT EDIT CHANGE START - JUKEBOX
+        // this.node.volume = this.volume; - PSYCHONAUT EDIT - ORIGINAL
+        this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
+        // PSYCHONAUT EDIT CHANGE END
+        this.node.play();
+        for (let subscriber of this.onPlaySubscribers) {
+          subscriber();
+        }
+      } // PSYCHONAUT EDIT ADDITION - JUKEBOX
     });
     // Listen for playback stop events
     this.node.addEventListener('ended', () => {
@@ -61,32 +68,52 @@ export class AudioPlayer {
     if (!this.node) {
       return;
     }
-    this.node.stop();
-    document.removeChild(this.node);
+    // PSYCHONAUT EDIT CHANGE START - JUKEBOX - ORIGINAL:
+    // this.node.stop();
+    // document.removeChild(this.node);
+    // clearInterval(this.playbackInterval);
+    this.stop();
+    logger.log('destroyed');
     clearInterval(this.playbackInterval);
+    try {
+      document.body.removeChild(this.node);
+    } catch {}
+    this.node = null;
+    // PSYCHONAUT EDIT CHANGE END
   }
 
-  play(url, options = {}) {
+  play(url, options = {}, volume = 1) { // PSYCHONAUT EDIT CHANGE - JUKEBOX - ORIGINAL: play(url, options = {})
     if (!this.node) {
       return;
     }
     logger.log('playing', url, options);
     this.options = options;
     this.node.src = url;
+    this.localVolume = volume; // PSYCHONAUT EDIT ADDITION - JUKEBOX
   }
 
   stop() {
     if (!this.node) {
       return;
     }
+    // PSYCHONAUT EDIT CHANGE START - JUKEBOX - ORIGINAL:
+    // if (this.playing) {
+    //   for (let subscriber of this.onStopSubscribers) {
+    //     subscriber();
+    //   }
+    // }
+    // logger.log('stopping');
+    // this.playing = false;
+    // this.node.src = '';
     if (this.playing) {
-      for (let subscriber of this.onStopSubscribers) {
+      for (const subscriber of this.onStopSubscribers) {
         subscriber();
       }
+      logger.log('stopping');
+      this.playing = false;
+      this.node.src = '';
     }
-    logger.log('stopping');
-    this.playing = false;
-    this.node.src = '';
+    // PSYCHONAUT EDIT CHANGE END
   }
 
   setVolume(volume) {
@@ -94,8 +121,33 @@ export class AudioPlayer {
       return;
     }
     this.volume = volume;
-    this.node.volume = volume;
+    // PSYCHONAUT EDIT CHANGE START - JUKEBOX
+    // this.node.volume = volume; - PSYCHONAUT EDIT - ORIGINAL
+    if (!this.muted) {
+      this.node.volume = this.localVolume * volume;
+    }
+    // PSYCHONAUT EDIT CHANGE END
   }
+
+  // PSYCHONAUT EDIT ADDITION START - JUKEBOX
+  setLocalVolume(volume) {
+    if (!this.node) {
+      return;
+    }
+    this.localVolume = volume;
+    if (!this.muted) {
+      this.node.volume = this.volume * volume;
+    }
+  }
+
+  toggleMute() {
+    if (!this.node) {
+      return;
+    }
+    this.muted = !this.muted;
+    this.node.volume = this.muted ? 0 : this.volume * this.localVolume;
+  }
+  // PSYCHONAUT EDIT ADDITION END
 
   onPlay(subscriber) {
     if (!this.node) {

@@ -366,17 +366,18 @@
 /obj/item/food/foiltray/rice
 	name = "rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 10,
+		/datum/reagent/consumable/nutriment = 7,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
-	tastes = list("rice" = 7, "salt" = 1)
+	tastes = list("rice" = 19, "salt" = 1) 
 	foodtypes = GRAIN
 	foiled_food = "rice"
 
 /obj/item/food/foiltray/beans
 	name = "beans"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 5,
-		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/ketchup = 2,
 	)
 	tastes = list("beans" = 1)
@@ -386,7 +387,7 @@
 /obj/item/food/foiltray/potatofry
 	name = "potato fries"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 12,
+		/datum/reagent/consumable/nutriment = 4,
 		/datum/reagent/consumable/nutriment/fat/oil = 2,
 	)
 	tastes = list("fries" = 7, "salt" = 1)
@@ -396,19 +397,20 @@
 /obj/item/food/foiltray/ricenbean
 	name = "beans and rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 12,
-		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment = 7,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment/protein = 1,
 		/datum/reagent/consumable/ketchup = 1,
 	)
-	tastes = list("beans" = 2, "rice" = 3, "salt" = 1)
+	tastes = list("beans" = 5, "rice" = 5, "salt" = 1)
 	foodtypes = VEGETABLES | GRAIN
 	foiled_food = "ricenbean"
 
 /obj/item/food/foiltray/noodle
 	name = "noodle"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 7,
-		/datum/reagent/consumable/nutriment/vitamin = 4,
+		/datum/reagent/consumable/hot_ramen = 11,
+		/datum/reagent/consumable/nutriment/fat/oil/corn = 1,
 	)
 	tastes = list("salt" = 1, "pasta" = 1)
 	foodtypes = GRAIN
@@ -417,8 +419,8 @@
 /obj/item/food/foiltray/sushi
 	name = "sushi"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 10,
-		/datum/reagent/consumable/nutriment/vitamin = 3,
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 	)
 	tastes = list("boiled rice" = 7, "fish fillet" = 1, "soy sauce" = 2)
@@ -441,9 +443,9 @@
 /obj/item/food/foiltray/beefnfries
 	name = "beef and fries"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 3,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("meat" = 7, "potato" = 3, "oil" = 1)
 	foodtypes = MEAT | FRIED | VEGETABLES
@@ -456,16 +458,16 @@
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
-	tastes = list("meat" = 7)
+	tastes = list("meat" = 1)
 	foodtypes = MEAT
 	foiled_food = "doner"
 
 /obj/item/food/foiltray/donernrice
 	name = "doner and rice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/nutriment/protein = 2,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("meat" = 7, "rice" = 3)
 	foodtypes = MEAT | GRAIN

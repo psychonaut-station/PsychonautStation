@@ -156,15 +156,15 @@
 	var/message
 
 	switch(current_level_name)
-		switch(current_level_name)
-			if("green")
-				current_level_name = "Yeşil'e"
-			if("blue")
-				current_level_name = "Mavi'ye"
-			if("red")
-				current_level_name = "Kırmızı'ya"
-			if("delta")
-				current_level_name = "Delta'ya"
+		if("green")
+			current_level_name = "Yeşil'e"
+		if("blue")
+			current_level_name = "Mavi'ye"
+		if("red")
+			current_level_name = "Kırmızı'ya"
+		if("delta")
+			current_level_name = "Delta'ya"
+
 
 	if(current_level_number > previous_level_number)
 		title = "Dikkat! Güvenlik seviyesi [current_level_name] yükseltildi."

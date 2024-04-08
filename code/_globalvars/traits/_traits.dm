@@ -652,6 +652,12 @@ GLOBAL_LIST(global_trait_name_map)
 		for(var/tname in GLOB.traits_by_type[key])
 			var/val = GLOB.traits_by_type[key][tname]
 			.[val] = tname
+	// PSYCHONAUT EDIT ADDITION START - PSYCHONAUT TRAITS
+	for(var/key in GLOB.psychonaut_traits)
+		for(var/tname in GLOB.psychonaut_traits[key])
+			var/val = GLOB.psychonaut_traits[key][tname]
+			.[val] = tname
+	// PSYCHONAUT EDIT ADDITION END
 
 	return .
 

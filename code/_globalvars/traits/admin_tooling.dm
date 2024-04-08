@@ -301,5 +301,11 @@ GLOBAL_LIST(admin_trait_name_map)
 		for(var/tname in GLOB.admin_visible_traits[key])
 			var/val = GLOB.admin_visible_traits[key][tname]
 			.[val] = tname
+	// PSYCHONAUT EDIT ADDITION START - PSYCHONAUT TRAITS
+	for(var/key in GLOB.psychonaut_visible_traits)
+		for(var/tname in GLOB.psychonaut_visible_traits[key])
+			var/val = GLOB.psychonaut_visible_traits[key][tname]
+			.[val] = tname
+	// PSYCHONAUT EDIT ADDITION END
 
 	return .

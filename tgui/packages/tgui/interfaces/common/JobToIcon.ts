@@ -9,7 +9,7 @@ export const JOB2ICON = {
   'Bit Avatar': 'code',
   Bitrunner: 'gamepad',
   Botanist: 'seedling',
-  'Brig Physician': 'shield-plus',
+  'Brig Physician': 'shield-heart',
   Captain: 'crown',
   'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',

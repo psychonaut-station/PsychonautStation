@@ -206,7 +206,7 @@
 	if(time_charged >= max_charge)
 		charge_state = CHARGE_COMPLETED
 		var/area/A = get_area(src)
-		priority_announce("Uzamsal nesne [initial(A.name)] bölgesindeki en yüksek enerji yüküne ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
+		priority_announce("Uzaysal nesne [initial(A.name)] bölgesindeki en yüksek enerji düzeyine ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
 		atom_integrity = INFINITY
 		icon_state = "carp_rift_charged"
 		set_light_color(LIGHT_COLOR_DIM_YELLOW)

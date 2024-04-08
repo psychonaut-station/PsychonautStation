@@ -299,7 +299,7 @@
 			nuke_request(reason, usr)
 			to_chat(usr, span_notice("Request sent."))
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("İstasyon içi nükleer kendini imha kodları [usr] tarafından talep edilmiştir. Bu talebin onayı ya da reddi kısa süre içinde iletilecektir.", "Nükleer Kendini İmha Kodları Talep Edildi", SSstation.announcer.get_rand_report_sound())
+			priority_announce("İstasyon nükleer imha kodları [usr] tarafından talep edilmiştir. Bu talebinizle ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer Kendini İmha Kodları Talep Edildi", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
@@ -866,14 +866,14 @@
 				/datum/dynamic_ruleset/midround/dangerous_pirates,
 			)
 			priority_announce(
-				"Mürettebatın dikkatine: sektör gözlemleme sistemi sisteminize yönelen bir düşman gemisinden büyük bir sıçrama izi rapor ediyor. Yakın düşman teması için hazırlanın.",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi, büyük bir düşman gemisinin sisteminize sıçrama yaptığını rapor ediyor. Yakın düşman teması için hazırlanın.",
 				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 			SSdynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
-				"Mürettebatın dikkatine: sektör gözlemleme sistemi tanımlanamayan bir gemiden sisteminize doğru bir sıçrama izi rapor ediyor. Muhtemel temas için hazırlanın.",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi, tanımlanamayan bir geminin sisteminize doğru bir sıçrama yaptığını rapor ediyor. Muhtemel temas için hazırlanın.",
 				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 
@@ -881,7 +881,7 @@
 
 		if(HACK_THREAT) // Force an unfavorable situation on the crew
 			priority_announce(
-				"Mürettebatın dikkatine, Nanotrasen İstihbarat Departmanı, sektörünüzdeki düşman faaliyetlerinin bugünkü tehdit uyarısında bildirilenin ötesine geçtiğine dair istihbarat almıştır.",
+				"Mürettebatın dikkatine, Nanotrasen İstihbarat Departmanı, sektörünüzdeki düşman faaliyetlerinin bugün yayınlanan tehdit bildirisinde belirtilenin ötesine geçtiğine dair istihbarat almıştır.",
 				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 

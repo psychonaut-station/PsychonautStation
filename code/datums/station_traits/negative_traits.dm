@@ -630,9 +630,10 @@
 			var/obj/machinery/nebula_shielding/emergency/rad_shield = /obj/machinery/nebula_shielding/emergency/radiation
 
 			priority_announce(
-				{"Orada her şey yolunda mı? İstasyonun içinden yüksek radyasyon değerleri alıyoruz. \
+				{"Her şey yolunda mı? İstasyonunuzun içinden yüksek radyasyon değerleri alıyoruz. \
 				Şimdilik bir acil durum kalkanı gönderiyoruz, Etkisi [initial(rad_shield.detonate_in) / (1 MINUTES)] dakika sürecektir. \n\n\
-				Nebula kalkanını kurun. Eğer sizinkiler kaybolduysa kargodan yapım kitleri sipariş edebilirsiniz.
+				Nebula kalkanını kurun. Gerekli yapım kitleri mühendislik departmanınızda bulunmaktadır. \
+				Eğer sizinkiler kaybolduysa kargodan yapım kitleri sipariş edebilirsiniz.
 				"}
 			)
 
@@ -661,9 +662,9 @@
 	var/announcement = {"İstasyonunuz radyoaktif bir nebulanın içinde inşa edilmiş durumda. \
 		Standart uzay giysileri nebulaya karşı koruma sağlamaz ve kullanılması kesinlikle önerilmez. \n\n\
 
-		SON DERECE ÖNEMLİ: İstasyon nebulanın derinliklerine doğru düşmektedir ve yerçekimi jeneratörünün doğal radyasyon kalkanı \
-		çok uzun süre dayanmayacak. Mühendislik departmanınız nebulaya karşı koruma kalkanları kurmak için gerekli \
-		tüm malzemelerle donatıldı. Kargodan ilave malzeme sandıkları sipariş edebilirsiniz. \n\n\
+		SON DERECE ÖNEMLİ: İstasyon nebulanın derinliklerine doğru sürüklenmektedir ve yerçekimi jeneratörünün radyasyon kalkanı \
+		çok uzun süre dayanmayacaktır. Mühendislik departmanında nebulaya karşı koruma kalkanları kurmak için gerekli \
+		tüm malzemeler bulunuyor. Kargodan ilave malzeme sandıkları sipariş edebilirsiniz. \n\n\
 		Nebula istasyona girmeden önce [deadline] kadar zamanınız var. \
 		Her kalkan birimi ek bir [shielder_time] kadar koruma süresi sağlayarak istasyonu [max_shielders] koruma birimiyle tamamen koruyacaktır.
 	"}

@@ -159,22 +159,22 @@
 
 // game_options.txt Üzerinden değişiklik yapılırsa etki ediyor.
 /datum/config_entry/string/alert_green
-	default = "İstasyona yönelik tüm tehditler geçmiştir. Güvenlik personellerinin görünürde silahları olmayabilir, gizlilik yasaları tekrardan tam olarak uygulanmaya başlanmıştır."
+	default = "İstasyona yönelik tüm tehditler geçmiştir. Güvenlik görevlileri silah bulundurmayabilir, gizliliğinize tekrardan önem verilmektedir."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "İstasyon, istasyondaki olası düşmanca faaliyetler hakkında güvenilir bilgi aldı. Güvenlik personelinin silahları görünür olabilir, rastgele aramalara izin verilir."
+	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, rastgele aramalara izin verilmektedir."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "Acil tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her zaman hazır bulundurmayabilir ancak görünür halde tutmaya devam edebilir. Rastgele aramalara hala izin verilmektedir."
+	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Rastgele aramalara hala izin verilmektedir."
 
 /datum/config_entry/string/alert_red_upto
-	default = "İstasyona yönelik ciddi bir tehdit var. Güvenlik görevlileri silahlarını her zaman kılıfından çıkarabilir. Rastgele aramalara izin verilirmektedir ve tavsiye edilir."
+	default = "İstasyona yönelik ciddi bir tehdit bulunuyor. Güvenlik görevlileri silahlarını her an kullanabilir. Rastgele aramalara izin verilmektedir ve tavsiye edilir."
 
 /datum/config_entry/string/alert_red_downto
-	default = "İstasyonun yok edilmesi önlendi. Ancak istasyona yönelik ciddi bir tehdit hâlâ devam etmektedir. Güvenlik her zaman silahlarını kılıfından çıkarabilir, rastgele aramalara izin verilirmektedir ve tavsiye edilir."
+	default = "İstasyonun yok edilmesi önlendi. Fakat istasyona yönelik ciddi bir tehdit hâlâ devam etmektedir. Güvenlik görevlileri her an silahlarını kullanabilir, rastgele aramalara izin verilmektedir ve tavsiye edilir."
 
 /datum/config_entry/string/alert_delta
-	default = "İstasyonun yok edilmesi çok yakındır. Tüm mürettebat, personel başkanları tarafından verilen tüm emirlere uymakla yükümlüdür. Bu emirlerin herhangi bir ihlali ölümle cezalandırılabilir. Bu bir tatbikat değildir."
+	default = "İstasyonun yok olması an meselesidir. Tüm mürettebat, personel şefleri tarafından verilen emirlere uymak zorundadır. Bu emirlerin ihlali ölümle cezalandırılabilir. Bu bir tatbikat değildir!"
 
 /datum/config_entry/flag/revival_pod_plants
 

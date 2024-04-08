@@ -273,7 +273,7 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text = "Acil durum mekik uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
+			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Paraziti",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -287,7 +287,7 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text= "Acil durum mekiği uplink servisleri tekrar devreye girmiştir.",
+			text= "Acil durum mekiği uplink servisleri tekrar devreye girdi.",
 			title = "Uplink Bağlantısı Geri Yüklendi",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -521,7 +521,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.timer = null
 		emergency.sound_played = FALSE
 		priority_announce(
-			text = "Kalkış, anlaşmazlık çözülene kadar süresiz olarak ertelenmiştir.",
+			text = "Kalkış, sorunlar ortadan kalkana kadar süresiz olarak ertelenmiştir.",
 			title = "Tehlikeli Ortam Tespit Edildi",
 			sound = 'sound/misc/notice1.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -531,7 +531,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
 		priority_announce(
-			text = "Acil durum mekiğine binmek için [DisplayLocaleTimeText(emergency_dock_time)] süreniz var.",
+			text = "Acil durum mekiğine binebilmeniz için geriye kalan süre: [DisplayLocaleTimeText(emergency_dock_time)]",
 			title = "Tehlikeli Ortam Çözüldü",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",

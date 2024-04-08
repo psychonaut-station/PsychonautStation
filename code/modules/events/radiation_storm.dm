@@ -16,7 +16,7 @@
 	announce_when = 1
 
 /datum/round_event/radiation_storm/announce(fake)
-	priority_announce("İstasyon yakınlarında yüksek düzeyde radyasyon tespit edildi. Bakım, radyasyondan en iyi şekilde korur.", "Anomali Uyarısı", ANNOUNCER_RADIATION)
+	priority_announce("İstasyon yakınlarında yüksek düzeyde radyasyon tespit edildi. Radyasyondan korunmak için Maintenancelere sığınabilirsiniz.", "Anomali Uyarısı", ANNOUNCER_RADIATION)
 	//sound not longer matches the text, but an audible warning is probably good
 
 /datum/round_event/radiation_storm/start()

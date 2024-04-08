@@ -45,7 +45,7 @@
 	var/turf/TO = get_turf(chosen) // the turf of origin we're travelling TO
 
 	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Devasa bluespace yer değişimi tespit edildi.", "Anomali Uyarısı")
+	priority_announce("Devasa boyuttta bluespace yer değişimi tespit edildi.", "Anomali Uyarısı")
 
 	var/list/flashers = list()
 	for(var/mob/living/carbon/C in viewers(TO, null))

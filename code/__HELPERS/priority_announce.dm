@@ -156,16 +156,21 @@
 	var/message
 
 	switch(current_level_name)
-		if("green") current_level_name = "Yeşil"
-		if("blue") current_level_name = "Mavi"
-		if("red") current_level_name = "Kırmızı"
-		if("delta") current_level_name = "Delta"
+		switch(current_level_name)
+			if("green")
+				current_level_name = "Yeşil'e"
+			if("blue")
+				current_level_name = "Mavi'ye"
+			if("red")
+				current_level_name = "Kırmızı'ya"
+			if("delta")
+				current_level_name = "Delta'ya"
 
 	if(current_level_number > previous_level_number)
-		title = "Dikkat! Güvenlik derecesi [current_level_name] seviyesine arttırıldı."
+		title = "Dikkat! Güvenlik seviyesi [current_level_name] yükseltildi."
 		message = selected_level.elevating_to_announcement
 	else
-		title = "Dikkat! Güvenlik derecesi [current_level_name] seviyesine düşürüldü."
+		title = "Dikkat! Güvenlik seviyesi [current_level_name] düşürüldü."
 		message = selected_level.lowering_to_announcement
 
 	var/list/level_announcement_strings = list()

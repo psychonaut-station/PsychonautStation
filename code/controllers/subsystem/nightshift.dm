@@ -27,7 +27,7 @@ SUBSYSTEM_DEF(nightshift)
 	priority_announce(
 		text = message,
 		sound = 'sound/misc/notice2.ogg',
-		sender_override = "Otomatik Işıklandırma Sistemi Duyurusu",
+		sender_override = "Otomatik Işıklandırma Sistemi",
 		color_override = "grey",
 	)
 
@@ -41,7 +41,7 @@ SUBSYSTEM_DEF(nightshift)
 		if(night_time)
 			announcing = FALSE
 			if(!emergency)
-				announce("Gece aydınlatma ayarları normal ayarlarına döndürülüyor.")
+				announce("Gece aydınlatmaları normal ayarlarına döndürülüyor.")
 			else
 				announce("Gece aydınlatması devre dışı bırakılıyor: İstasyon acil durumda")
 	if(emergency)
@@ -55,9 +55,9 @@ SUBSYSTEM_DEF(nightshift)
 		nightshift_active = active
 		if(announce)
 			if (active)
-				announce("İyi akşamlar, mürettebat. Güç tüketimini azaltmak ve bazı türlerin biyolojik saatlerini uyarmak amacıyla istasyondaki tüm ışıklar bu gece için karartılmıştır.")
+				announce("İyi akşamlar, mürettebat. Güç tüketimini azaltmak ve bazı türlerin dinlenmelerini sağlamak amacıyla istasyondaki tüm ışıklar bu gece için karartılmıştır.")
 			else
-				announce("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyondaki tüm ışıklar eski parlaklığına kavuşturuldu.")
+				announce("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyondaki tüm ışıklar eski parlaklığına dönmüştür.")
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))

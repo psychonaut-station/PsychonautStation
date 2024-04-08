@@ -225,7 +225,7 @@
 	SSshuttle.emergency.setTimer(0)
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
 	priority_announce(
-		text = "Acil Mekiği uplink arızası, mekik bir sonraki duyuruya kadar devre dışı.",
+		text = "Acil durum mekiği uplink arızası, mekik bir sonraki duyuruya kadar devre dışı.",
 		title = "Uplink Uyarısı",
 		sound = 'sound/misc/announce_dig.ogg',
 		sender_override = "Acil Durum Mekiği Uyarısı",
@@ -257,7 +257,7 @@
 		SSshuttle.last_call_time = 10 SECONDS //Make sure no insta departures.
 	SSshuttle.emergency.setTimer(SSshuttle.last_call_time)
 	priority_announce(
-		text = "Acil Mekik bağlantısı yeniden kuruldu, mekik devrede.",
+		text = "Acil durum mekiği bağlantısı yeniden kuruldu, mekik devrede.",
 		title = "Uplink Yeniden Kuruldu",
 		sound = 'sound/misc/announce_dig.ogg',
 		sender_override = "Acil Durum Mekiği Uyarısı",

@@ -27,7 +27,7 @@
 
 /datum/round_event/ion_storm/announce(fake)
 	if(prob(announce_chance) || fake)
-		priority_announce("İstasyon yakınlarında iyon fırtınası tespit edildi. Lütfen yapay zeka kontrollü tüm ekipmanlarda hata olup olmadığını kontrol edin.", "Anomali Uyarısı", ANNOUNCER_IONSTORM)
+		priority_announce("İstasyon yakınlarında iyon fırtınası tespit edildi. Lütfen AI kontrollü tüm ekipmanlarda hata olup olmadığını kontrol edin.", "Anomali Uyarısı", ANNOUNCER_IONSTORM)
 
 
 /datum/round_event/ion_storm/start()

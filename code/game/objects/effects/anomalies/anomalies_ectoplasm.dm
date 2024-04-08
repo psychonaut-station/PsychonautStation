@@ -102,7 +102,7 @@
 
 		new /obj/structure/ghost_portal(get_turf(src), candidate_list)
 
-		priority_announce("Anomali kritik boyuta ulaştı. Ektoplazmik patlama tespit edildi.", "Anomali Uyarısı")
+		priority_announce("Anomali kritik kütleye ulaştı. Ektoplazmik patlama tespit edildi.", "Anomali Uyarısı")
 
 /**
  * Manages updating the sprite for the anomaly based on how many orbiters it has.

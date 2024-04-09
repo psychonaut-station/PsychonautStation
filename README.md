@@ -1,5 +1,5 @@
 # Psychonaut Station
-
+ 
 [![Build Status](https://github.com/psychonaut-station/PsychonautStation/workflows/CI%20Suite/badge.svg)](https://github.com/psychonaut-station/PsychonautStation/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Average time to resolve an issue")

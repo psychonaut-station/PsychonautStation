@@ -23,7 +23,7 @@
 		qdel(bird)
 
 /datum/round_event/spooky/announce(fake)
-	priority_announce(pick("KEMIKLERIMI ÇINGIRDATIN!","YOLCULUK ASLA BITMEZ!", "BIR ISKELET FIRLADI!", "MÜRETTEBAT DİKKAT, KORKUYA KAPILACAKSINIZ!") , "ÇAĞRI EVIN IÇINDEN GELIYOR.")
+	priority_announce(pick("BİR İSKELET FIRLADI!", "MÜRETTEBAT DİKKAT, KORKUYA KAPILACAKSINIZ!", "İLİKLERİNE KADAR KORKACAKSIN!") )
 
 //spooky foods (you can't actually make these when it's not halloween)
 /obj/item/food/cookie/sugar/spookyskull

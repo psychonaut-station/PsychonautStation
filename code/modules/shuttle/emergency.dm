@@ -131,9 +131,9 @@
 		var/repeal = (authorized.len < old_len)
 		var/remaining = max(0, auth_need - authorized.len)
 		if(authorized.len && remaining)
-			minor_announce("Mekik erken fırlatılana kadar [remaining] onaya daha ihtiyaç var.", null, alert)
+			minor_announce("Mekik erken fırlatılana kadar [remaining] kişinin daha onayına ihtiyaç var.", null, alert)
 		if(repeal)
-			minor_announce("Erken fırlatma izni iptal edildi, [remaining] onaya daha ihtiyaç var.")
+			minor_announce("Erken fırlatma izni iptal edildi, [remaining] kişinin daha onayına ihtiyaç var.")
 
 	acted_recently += user
 	ui_interact(user)

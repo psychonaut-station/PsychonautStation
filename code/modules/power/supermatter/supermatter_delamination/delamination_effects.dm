@@ -182,7 +182,7 @@
 /datum/sm_delam/proc/effect_evac_rift_start()
 	var/obj/cascade_portal/rift = new /obj/cascade_portal(get_turf(pick(GLOB.generic_event_spawns)))
 	priority_announce("Sektör çapında bir elektromanyetik darbe aldık. Mekik navigasyonu için gerekenler de dahil olmak üzere \
-		tüm sistemlerimiz ağır hasar gördü. İstasyonunuzda ya da yakınında bir suppermatter çağlayanı meydana geldiği sonucuna varabiliriz.\n\n\
+		tüm sistemlerimiz ağır hasar gördü. İstasyonunuzda ya da yakınında bir supermatter dalgası meydana geldiği sonucuna varabiliriz.\n\n\
 		Tahliye artık geleneksel yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
 		Bu vesileyle tüm personelin mevcut herhangi bir yolla yarığa girmesi gerekmektedir.\n\n\
 		[Gibberish("Hayatta kalanların kurtarılması, gerekli imkanların sağlanmasının ardından gerçekleştirilecektir.", FALSE, 5)] \

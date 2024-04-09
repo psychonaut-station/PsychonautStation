@@ -57,7 +57,7 @@ SUBSYSTEM_DEF(nightshift)
 			if (active)
 				announce("İyi akşamlar, mürettebat. Güç tüketimini azaltmak ve bazı türlerin dinlenmelerini sağlamak amacıyla istasyondaki tüm ışıklar bu gece için karartılmıştır.")
 			else
-				announce("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyondaki tüm ışıklar eski parlaklığına dönmüştür.")
+				announce("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyondaki tüm ışıklar eski parlaklığına döndürülmüştür.")
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))

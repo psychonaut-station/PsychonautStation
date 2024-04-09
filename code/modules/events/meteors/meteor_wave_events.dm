@@ -91,7 +91,7 @@
 	wave_name = "meaty"
 
 /datum/round_event/meteor_wave/meaty/announce(fake)
-	priority_announce("Etli madenin istasyonla çarpışma rotasında olduğu tespit edildi.", "Kahretsin, paspası getir.", ANNOUNCER_METEORS)
+	priority_announce("Etli bir meteorun istasyonla çarpışma rotasında olduğu tespit edildi.", "Kahretsin, paspası getir.", ANNOUNCER_METEORS)
 
 /datum/round_event_control/meteor_wave/dust_storm
 	name = "Major Space Dust"

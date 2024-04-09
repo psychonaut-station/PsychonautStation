@@ -105,7 +105,7 @@
 	sm_gas.powerloss_inhibition = initial(sm_gas.powerloss_inhibition)
 	sm_gas.heat_power_generation = initial(sm_gas.heat_power_generation)
 	sm_gas.heat_modifier = initial(sm_gas.heat_modifier)
-	priority_announce("Supermatter dalgalanması kayboldu, kristal çıkış değerleri normale döndü.", "Anomali Düzeldi")
+	priority_announce("Supermatter enerji dalgalanması kayboldu, kristalin enerji çıkış değerleri normale döndü.", "Anomali Düzeldi")
 	engine = null
 	sm_gas = null
 

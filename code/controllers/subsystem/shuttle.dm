@@ -259,7 +259,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_shuttle("[msg] Alive: [alive], Roundstart: [total], Threshold: [threshold]")
 		emergency_no_recall = TRUE
 		priority_announce(
-			text = "Felaket boyutunda kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - tüm frekanslarda geri çağrı sinyalleri engelleniyor.",
+			text = "Felaket denilebilecek derecede kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - tüm frekanslardaki çağırma sinyalleri engellendi",
 			title = "Acil Durum Mekiği Gönderildi",
 			sound = ANNOUNCER_SHUTTLECALLED,
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -273,7 +273,7 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
+			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayLocaleTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Paraziti",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",

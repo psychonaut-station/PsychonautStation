@@ -457,7 +457,7 @@
 			SSjob.safe_code_request_loc = pod_location
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, TYPE_PROC_REF(/datum/controller/subsystem/job, send_spare_id_safe_code), pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Mürettabat kadronuzun eksikliği nedeniyle, Kaptan'ın Yedek Kimliğini güvenceye almak amaçlı istasyonunuz erişim kodlarının teslimatını onaylamıştır. Teslimat [get_area(pod_location)] alanına düşecek Pod aracılığı ile sağlanacaktır. Teslimat Podunun tahmini varış süresi 120 saniye.")
+			minor_announce("Mürettabat kadronuzun eksikliği nedeniyle, Kaptan'ın Yedek Kimliğini güvenceye almak için istasyonunuz erişim kodlarının teslimatı onaylanmıştır. Teslimat [get_area(pod_location)] alanına düşecek Pod aracılığı ile sağlanacaktır. Teslimat Podunun tahmini varış süresi 120 saniye.")
 
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown

@@ -79,7 +79,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /obj/item/nuclear_challenge/proc/war_was_declared(mob/living/user, memo)
 	priority_announce(
 		text = memo,
-		title = "Savaş İlanı Bildirgesi",
+		title = "Savaş İlanı",
 		sound = 'sound/machines/alarm.ogg',
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",
@@ -184,7 +184,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 	priority_announce(
 		text = memo,
-		title = "Savaş İlanı Bildirgesi",
+		title = "Savaş İlanı",
 		sound = 'sound/machines/alarm.ogg',
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",

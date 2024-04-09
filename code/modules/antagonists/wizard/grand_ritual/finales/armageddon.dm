@@ -22,7 +22,6 @@
 		"Ohohohohohoho!!",
 		"Korkudan sinmiş, cılız faniler!",
 		"Görkemim karşısında titre!",
-		"Bir tanrı seç ve dua et!",
 		"İşe yaramaz!",
 		"Eğer tanrılar senin yaşamanı isteseydi, beni yaratmazlardı!",
 		"Tanrı benim yarattığım şeyden korktuğu için cennette kalıyor!",

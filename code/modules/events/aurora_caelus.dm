@@ -18,7 +18,7 @@
 	end_when = 80
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onayladı. Bu süre zarfında yıldız ışığı parlak ama sakin yeşil ve mavi renkler arasında gidip gelerek yumuşak olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personel, kendilerine en yakın olan ve açık alana bakan bağlantı noktalarının bulunduğu alana gidebilirler. Işıklardan keyif alacağınızı umuyoruz.",
+	priority_announce("[station_name()]: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onayladı. Bu süre zarfında yıldız ışığı kadar parlak ama sakin, yeşil ve mavi renkler arasında gidip gelen bir ışık gösterisi olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personel, kendilerine en yakın olan ve açık alana bakan bağlantı noktalarına gidebilirler. Bu ışık gösterisinden keyif alacağınızı umuyoruz.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Nanotrasen Meteoroloji Departmanı")
 	for(var/V in GLOB.player_list)

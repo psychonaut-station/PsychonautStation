@@ -11,7 +11,7 @@
 	announce_when = 1
 
 /datum/round_event/communications_blackout/announce(fake)
-	var/alert = pick( "İyonosferik anomaliler tespit edildi. Geçici telekomünikasyon arızası yaklaşıyor. Lütfen amirinizle irtib*%fj00)`5vc-BZZT",
+	var/alert = pick( "İyonosferik anomaliler tespit edildi. Geçici telekomünikasyon arızası yaklaşıyor. Lütfen şefinizle irtib*%fj00)`5vc-BZZT",
 		"İyonosferik anomaliler tespit edildi. Geçici telekomünikasyon arıza*3mga;b4;'1v¬-BZZZT",
 		"İyonosferik anomaliler tespit edildi. Geçici telek#MCi46:5.;@63-BZZZZT",
 		"İyonosferik anomaliler tesp'fZ\\kg5_0-BZZZZZT",

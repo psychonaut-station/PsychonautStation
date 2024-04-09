@@ -47,7 +47,7 @@
 	for(var/datum/transport_controller/linear/tram/malfunctioning_controller as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 		if(malfunctioning_controller.specific_transport_id == specific_transport_id && malfunctioning_controller.controller_status & COMM_ERROR)
 			malfunctioning_controller.end_malf_event()
-			priority_announce("Tramvaydaki yazılım sıfırlandı, normal operasyonlar şu anda devam ediyor. Verdiğimiz rahatsızlıktan dolayı özür dileriz.", "[command_name()] Mühendislik Departmanı")
+			priority_announce("Tramvaydaki yazılım sıfırlandı, normal faaliyetleri şu anda devam ediyor. Verdiğimiz rahatsızlıktan dolayı özür dileriz.", "[command_name()] Mühendislik Departmanı")
 			return
 
 #undef TRAM_MALFUNCTION_TIME_UPPER

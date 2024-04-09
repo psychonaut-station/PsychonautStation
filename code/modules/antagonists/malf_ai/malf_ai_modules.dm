@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		active = FALSE
 		return
 	if (owner_AI.stat != DEAD)
-		priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için lütfen yapay zekanızı devre dışı bırakın.", "Anomali Uyarısı", ANNOUNCER_AIMALF)
+		priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için AI devre dışı bırakılmalıdır.", "Anomali Uyarısı", ANNOUNCER_AIMALF)
 		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		var/obj/machinery/doomsday_device/DOOM = new(owner_AI)
 		owner_AI.nuking = TRUE

@@ -18,7 +18,7 @@
 /datum/hallucination/station_message/shuttle_dock/start()
 	priority_announce(
 					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
-					title = "Acil Durum Mekiği Varışı",
+					title = "Acil Durum Mekiği Yanaştı",
 					sound = ANNOUNCER_SHUTTLEDOCK,
 					sender_override = "Acil Durum Mekiği Uyarısı",
 					players = list(hallucinator),
@@ -32,7 +32,7 @@
 	if(!(locate(/mob/living/silicon/ai) in GLOB.silicon_mobs))
 		return FALSE
 
-	priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için lütfen yapay zekanızı devre dışı bırakın.", \
+	priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için lütfen AI devre dışı bırakın.", \
 		"Anomali Uyarısı", ANNOUNCER_AIMALF, players = list(hallucinator))
 	return ..()
 
@@ -78,7 +78,7 @@
 	var/area/fake_summon_area = GLOB.areas_by_type[fake_summon_area_type]
 
 	priority_announce(
-		text = "Eski bir tanrıdan gelen figürler, [totally_real_cult_leader.real_name] tarafından bilinmeyen bir boyuttan [fake_summon_area] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
+		text = "Tanrı katından gelen yaratıklar, [totally_real_cult_leader.real_name] tarafından bilinmeyen bir boyuttan [fake_summon_area] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
 		title = "[command_name()] Üstün Boyutlu Olaylar",
 		sound = 'sound/ambience/antag/bloodcult/bloodcult_scribe.ogg',
 		has_important_message = TRUE,

@@ -369,7 +369,7 @@
 		return FALSE
 	var/area/summon_location = get_area(cultist)
 	priority_announce(
-		text = "Eski bir tanrıdan gelen figürler, [cultist.real_name] tarafından bilinmeyen bir boyuttan [summon_location.get_original_area_name()] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
+		text = "Tanrı katından gelen yaratıklar, [cultist.real_name] tarafından bilinmeyen bir boyuttan [summon_location.get_original_area_name()] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
 		sound = 'sound/ambience/antag/bloodcult/bloodcult_scribe.ogg',
 		sender_override = "[command_name()] Üstün Boyutlu Olaylar",
 		has_important_message = TRUE,

@@ -9,7 +9,7 @@
 	description = "Hides surprise filled easter eggs in maintenance."
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Bugün Ulusal 'Tavşan Avı' Günü.","Nazik olun, Çikolatalı Yumurta verin!"))
+	priority_announce(pick("Bugün Ulusal 'Paskalya' Bayramı.","Nazik olun, Çikolatalı Yumurta verin!"))
 
 
 /datum/round_event_control/rabbitrelease

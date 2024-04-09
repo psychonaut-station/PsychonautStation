@@ -149,9 +149,9 @@
 		)
 	else
 	// except if you are on it already, then you are safe c:
-		minor_announce("ERROR: Corruption detected in navigation protocols. Connection with Transponder #XCC-P5831-ES13 lost. \
-				Backup exit route protocol decrypted. Calibrating route...",
-			"Emergency Shuttle", TRUE) // wait out until the rift on the station gets destroyed and the final message plays
+		minor_announce("HATA: Navigasyon protokollerinde bozulma tespit edildi. #XCC-P5831-ES13 vericisi ile bağlantı kesildi. \
+				Yedek kaçış rotası protokolünün şifresi çözüldü. Rota yeniden ayarlanıyor...",
+			"Acil Durum Mekiği", TRUE) // wait out until the rift on the station gets destroyed and the final message plays
 		var/list/mobs = mobs_in_area_type(list(/area/shuttle/escape))
 		for(var/mob/living/mob as anything in mobs) // emulate mob/living/lateShuttleMove() behaviour
 			if(mob.buckled)
@@ -207,12 +207,12 @@
 
 	if(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)
 		// special message for hijacks
-		var/shuttle_msg = "Navigation protocol set to [SSshuttle.emergency.is_hijacked() ? "\[ERROR\]" : "backup route"]. \
-			Reorienting bluespace vessel to exit vector. ETA 15 seconds."
+		var/shuttle_msg = "Navigasyon protokolleri [SSshuttle.emergency.is_hijacked() ? "\[HATA!\]" : "yedek rota"] olarak ayarlandı. \
+			Bluespace gemisi çıkış vektörüne yönlendiriliyor. Tahmini süre 15 saniye."
 		// garble the special message
 		if(SSshuttle.emergency.is_hijacked())
 			shuttle_msg = Gibberish(shuttle_msg, TRUE, 15)
-		minor_announce(shuttle_msg, "Emergency Shuttle", TRUE)
+		minor_announce(shuttle_msg, "Acil Durum Mekiği", TRUE)
 		SSshuttle.emergency.setTimer(15 SECONDS)
 		return
 

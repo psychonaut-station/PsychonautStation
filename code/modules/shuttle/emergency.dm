@@ -131,9 +131,9 @@
 		var/repeal = (authorized.len < old_len)
 		var/remaining = max(0, auth_need - authorized.len)
 		if(authorized.len && remaining)
-			minor_announce("[remaining] authorizations needed until shuttle is launched early", null, alert)
+			minor_announce("Mekik erken fırlatılana kadar [remaining] onaya daha ihtiyaç var.", null, alert)
 		if(repeal)
-			minor_announce("Early launch authorization revoked, [remaining] authorizations needed")
+			minor_announce("Erken fırlatma izni iptal edildi, [remaining] onaya daha ihtiyaç var.")
 
 	acted_recently += user
 	ui_interact(user)
@@ -179,9 +179,9 @@
 	if((authorized.len >= auth_need) || (obj_flags & EMAGGED))
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINES_START_TIME)
-		var/system_error = obj_flags & EMAGGED ? "SYSTEM ERROR:" : null
-		minor_announce("The emergency shuttle will launch in \
-			[TIME_LEFT] seconds", system_error, alert=TRUE)
+		var/system_error = obj_flags & EMAGGED ? "SİSTEM HATASI:" : null
+		minor_announce("Acil durum mekiği [TIME_LEFT] saniye \
+			içerisinde kalkacak.", system_error, alert=TRUE)
 		. = TRUE
 
 /obj/machinery/computer/emergency_shuttle/proc/increase_hijack_stage()
@@ -257,20 +257,20 @@
 		if(NOT_BEGUN)
 			return
 		if(STAGE_1)
-			msg = "AUTHENTICATING - FAIL. AUTHENTICATING - FAIL. AUTHENTICATING - FAI###### Welcome, technician JOHN DOE."
+			msg = "GİRİŞ DENEMESİ - BAŞARISIZ. GİRİŞ DENEMESİ - BAŞARISIZ. GİRİŞ DENEMESİ - BAŞA###### Hoşgeldin, teknisyen."
 		if(STAGE_2)
-			msg = "Warning: Navigational route fails \"IS_AUTHORIZED\". Please try againNN[scramble_message_replace_chars("againagainagainagainagain", 70)]."
+			msg = "Hata: Navigasyon rotası başarısız. Lütfen tekrar deneyiNN[scramble_message_replace_chars("deneyindeneyindeneyin", 70)]."
 		if(STAGE_3)
-			msg = "CRC mismatch at ~h~ in calculated route buffer. Full reset initiated of FTL_NAVIGATION_SERVICES. Memory decrypted for automatic repair."
+			msg = "Hesaplanan rota değerlerinde ~h~ değeri uyuşmazlığı. FTL_NAVIGATION_SERVICES servisi için yeniden başlatma protokolleri uygulanıyor. Otomatik onarım için bellek şifresi çözüldü."
 		if(STAGE_4)
-			msg = "~ACS_directive module_load(cyberdyne.exploit.nanotrasen.shuttlenav)... NT key mismatch. Confirm load? Y...###Reboot complete. $SET transponder_state = 0; System link initiated with connected engines..."
+			msg = "~ACS_direktifi module_load(cyberdyne.exploit.nanotrasen.shuttlenav)... NT anahtar uyuşmazlığı. Yüklemeyi onaylıyor musunuz? E...###Yeniden başlatma tamamlandı. $SET transponder_state = 0; Sistem bağlantısı tekrardan başlatıldı..."
 		if(HIJACKED)
-			msg = "SYSTEM OVERRIDE - Resetting course to \[[scramble_message_replace_chars("###########", 100)]\] \
+			msg = "SİSTEM GEÇERSİZ KILINDI - Rota sıfırlanıyor \[[scramble_message_replace_chars("###########", 100)]\] \
 			([scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]) \
-			{AUTH - ROOT (uid: 0)}.</font>\
-			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Diverting from existing route - Bluespace exit in \
-			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] seconds." : ""]"
-	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Emergency Shuttle", TRUE)
+			{GİRİŞ - ADMİN (uid: 0)}.</font>\
+			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Mevcut rotadan sapıldı - Bluespace çıkışına kalan süre \
+			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] saniye." : ""]"
+	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Acil Durum Mekiği", TRUE)
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user, obj/item/card/emag/emag_card)
 	// How did you even get on the shuttle before it go to the station?
@@ -596,9 +596,9 @@
 					// just double check
 					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
-					minor_announce("Corruption detected in \
-						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/misc/announce_syndi.ogg')
+					minor_announce("Mekiğin navigasyon protokollerinde \
+						bozulma tespit edildi. Lütfen şefinizle iletişime \
+						geçin.", "SİSTEM HATASI:", sound_override = 'sound/misc/announce_syndi.ogg')
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME

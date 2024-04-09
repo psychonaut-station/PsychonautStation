@@ -33,7 +33,7 @@
 	if(!message)
 		return
 
-	minor_announce(message, "News from Curator!", sound_override = 'sound/misc/announce_dig.ogg')
+	minor_announce(message, "Küratör'den Haberler!", sound_override = 'sound/misc/announce_dig.ogg')
 	COOLDOWN_START(src, announcement_cooldown, ANNOUNCEMENT_COOLDOWN)
 	message_admins("[ADMIN_LOOKUPFLW(usr)] has used the curator's announcer beacon.")
 

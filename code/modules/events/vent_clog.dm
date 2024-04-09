@@ -38,7 +38,7 @@
 
 /datum/round_event/vent_clog/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Havalandırma ağında küçük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] bölgesinde olduğuna inanılıyor.", "Gözaltı Bildirimi")
+	priority_announce("Havalandırma ağında küçük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] bölgesinde olduğu tahmin ediliyor.", "Gözaltı Bildirimi")
 
 /datum/round_event/vent_clog/setup()
 	vent = get_vent()

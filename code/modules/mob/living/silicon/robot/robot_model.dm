@@ -217,8 +217,9 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
 	new_model.robot = cyborg
-	cyborg.icon = 'icons/mob/silicon/robots.dmi'
-	cyborg.icon_state = "robot"
+	if(!forced)
+		cyborg.icon = 'icons/mob/silicon/robots.dmi'
+		cyborg.icon_state = "robot"
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return

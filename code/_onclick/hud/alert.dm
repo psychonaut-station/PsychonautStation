@@ -276,6 +276,11 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	desc = "You're getting crushed by high gravity, picking up items and movement will be slowed. You'll also accumulate brute damage!"
 	icon_state = "paralysis"
 
+/atom/movable/screen/alert/highweight
+	name = "High Weight"
+	desc = "You're getting crushed by high weight, movement will be slowed. You'll also accumulate brute damage!"
+	icon_state = "paralysis"
+
 /atom/movable/screen/alert/fire
 	name = "On Fire"
 	desc = "You're on fire. Stop, drop and roll to put the fire out or move to a vacuum area."

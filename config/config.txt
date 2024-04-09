@@ -185,7 +185,11 @@ GUEST_BAN
 # GITHUBURL https://www.github.com/tgstation/tgstation
 
 ## Discord bot command prefix, if the discord bot is used
-# DISCORDBOTCOMMANDPREFIX ?
+# DISCORDBOTCOMMANDPREFIX /
+
+## Used in Discord verification
+# DISCORDBOTTOKEN
+# DISCORDUSERENDPOINT https://discord.com/api/v10/users
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

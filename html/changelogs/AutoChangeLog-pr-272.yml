@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - rscadd: "\"Verify Discord Account\" için tgui ekler"

@@ -167,7 +167,7 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 					airlock.emergency = TRUE
 					airlock.update_icon(ALL, 0)
 
-	minor_announce("Maintenance ve dış hava kilitlerindeki erişim kısıtlamaları kaldırıldı.", "Dikkat! İstasyon genelinde acil durum ilan edildi!",1)
+	minor_announce("Maintenance ve dış airlocklardaki erişim kısıtlamaları kaldırıldı.", "Dikkat! İstasyon genelinde acil durum ilan edildi!",1)
 	GLOB.emergency_access = TRUE
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "enabled"))
 
@@ -185,7 +185,7 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 
 /proc/toggle_bluespace_artillery()
 	GLOB.bsa_unlock = !GLOB.bsa_unlock
-	minor_announce("Bluespace Topçusunun ateşleme protokolleri [GLOB.bsa_unlock? "açıldı" : "kilitlendi"].", "Silah Sistemlerinde Güncelleme:")
+	minor_announce("Bluespace Artillery ateşleme protokolleri [GLOB.bsa_unlock? "açıldı" : "kilitlendi"].", "Silah Sistemlerinde Güncelleme:")
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("bluespace artillery", GLOB.bsa_unlock? "unlocked" : "locked"))
 
 #undef ACCESS_GRANTING_COOLDOWN

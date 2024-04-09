@@ -250,7 +250,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/computer/auxiliary_base, 32)
 	possible_destinations += "[landing_zone.shuttle_id];"
 
 //Serves as a nice mechanic to people get ready for the launch.
-	minor_announce("Geçici üssün iniş bölgesi koordinatları kilitlendi. Mekik kalkış emri için hazır!")
+	minor_announce("Yardımcı üssün iniş koordinatları kilitlendi. Kalkış emri için hazır!")
 	to_chat(user, span_notice("Landing zone set."))
 	return ZONE_SET
 

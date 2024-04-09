@@ -76,7 +76,7 @@
 /datum/job/ai/announce_job(mob/living/joining_mob)
 	. = ..()
 	if(SSticker.HasRoundStarted())
-		minor_announce("[AREACOORD(joining_mob)] lokasyonundaki bir boş bluespace-bağlantılı AI çekirdeğine [joining_mob] indirildi.")
+		minor_announce("[joining_mob] [AREACOORD(joining_mob)] bölgesindeki boş bir bluespace-bağlantılı AI core'a indirildi.")
 
 
 /datum/job/ai/config_check()

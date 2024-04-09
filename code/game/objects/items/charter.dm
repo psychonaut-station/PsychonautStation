@@ -110,7 +110,7 @@
 
 /obj/item/station_charter/banner/rename_station(designation, uname, ureal_name, ukey)
 	set_station_name(designation)
-	minor_announce("[ureal_name] [name_type] ismini değiştirerek [html_decode(station_name())] olarak belirledi.", "Kaptan'ın Sancağı") //decode station_name to avoid minor_announce double encode
+	minor_announce("[ureal_name] [name_type] ismini değiştirerek [html_decode(station_name())] olarak belirledi.", "Kaptanın Sancağı") //decode station_name to avoid minor_announce double encode
 	log_game("[ukey] has renamed the [name_type] as [station_name()].")
 	name = "banner of [station_name()]"
 	desc = "The banner bears the official coat of arms of Nanotrasen, signifying that [station_name()] has been claimed by Captain [uname] in the name of the company."

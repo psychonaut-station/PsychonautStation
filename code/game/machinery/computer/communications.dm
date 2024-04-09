@@ -278,7 +278,7 @@
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
-			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : usr.real_name
+			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("KİMLİK HATASI: CVE-2018-17107", 60) : usr.real_name
 			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye bir [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alma")
 
 			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")

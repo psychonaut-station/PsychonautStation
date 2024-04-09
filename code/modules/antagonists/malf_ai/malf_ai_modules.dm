@@ -407,7 +407,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	minor_announce("Kapı denetleyicilerinde düşmanca faaliyetler tespit edildi. Tecrit protokolleri şu anda yürürlüktedir. Lütfen sakin olun.", "Ağ Uyarısı:", TRUE)
 	to_chat(owner, span_danger("Lockdown initiated. Network reset in 90 seconds."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce),
-		"Otomatik sistem yeniden başlatma tamamlandı. Güvenli bir gün geçirin.",
+		"Otomatik sistem yeniden başlatma protokolü tamamlandı. Güvenli bir gün geçirin.",
 		"Ağ sıfırlama:"), 90 SECONDS)
 	hack_in_progress = FALSE
 

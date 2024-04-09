@@ -18,7 +18,7 @@
 	end_when = 80
 
 /datum/round_event/aurora_caelus/announce()
-	priority_announce("[station_name()]: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onayladı. Bu süre zarfında yıldız ışığı kadar parlak ama sakin, yeşil ve mavi renkler arasında gidip gelen bir ışık gösterisi olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personel, kendilerine en yakın olan ve açık alana bakan bağlantı noktalarına gidebilirler. Bu ışık gösterisinden keyif alacağınızı umuyoruz.",
+	priority_announce("[station_name()]: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onaylıyor. Bu süre zarfında yıldız ışığı kadar parlak ama sakin, yeşil ve mavi renkler arasında gidip gelen bir ışık gösterisi olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personeller, kendilerine en yakın olan ve uzaya bakan bir bölgeye gidebilirler. Bu ışık gösterisinden keyif alacağınızı umuyoruz.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Nanotrasen Meteoroloji Departmanı")
 	for(var/V in GLOB.player_list)
@@ -58,7 +58,7 @@
 /datum/round_event/aurora_caelus/end()
 	fade_space()
 	fade_kitchen()
-	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] bizimle birlikte izlediğiniz için teşekkürler.",
+	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerlerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] bizimle birlikte bu eşsiz ana tanıklık ettiğiniz teşekkür ederiz.",
 	sound = 'sound/misc/notice2.ogg',
 	sender_override = "Nanotrasen Meteoroloji Departmanı")
 

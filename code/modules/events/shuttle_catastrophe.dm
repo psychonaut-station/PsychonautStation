@@ -26,7 +26,7 @@
 /datum/round_event/shuttle_catastrophe/announce(fake)
 	var/cause = pick("[syndicate_name()] çalışanları tarafından saldırıya uğradı", "gizemli bir şekilde ışınlanıp gitti",
 		"motorları çalınmış halde bulundu.", "gün batımına doğru uçtu ve eridi", "çok akıllı bir inekten bir şeyler öğrenmiş ve kendi başına basıp gitmiş.",
-		"pilotu mekiği park etmek yerine geri vitese takması ile birlikte, mekiğin hangara çarpmasına neden olmuş")
+		"pilotun mekiği park etmek yerine geri vitese takması ile birlikte hangara çarpmış")
 	var/message = "Acil durum mekiğiniz [cause]. "
 
 	if(SSshuttle.shuttle_insurance)

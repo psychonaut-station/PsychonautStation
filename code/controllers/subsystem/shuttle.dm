@@ -259,7 +259,7 @@ SUBSYSTEM_DEF(shuttle)
 		log_shuttle("[msg] Alive: [alive], Roundstart: [total], Threshold: [threshold]")
 		emergency_no_recall = TRUE
 		priority_announce(
-			text = "Felaket denilebilecek derecede kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - tüm frekanslardaki çağırma sinyalleri engellendi",
+			text = "Felaket denilebilecek derecede kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - geri çağırma sinyalleri engellendi",
 			title = "Acil Durum Mekiği Gönderildi",
 			sound = ANNOUNCER_SHUTTLECALLED,
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -288,7 +288,7 @@ SUBSYSTEM_DEF(shuttle)
 	if(admin_emergency_no_recall)
 		priority_announce(
 			text= "Acil durum mekiği uplink servisleri tekrar devreye girdi.",
-			title = "Uplink Bağlantısı Geri Yüklendi",
+			title = "Uplink Bağlantısı Tekrardan Sağlandı",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",
@@ -383,7 +383,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	call_reason = trim(html_encode(call_reason))
 
-	var/emergency_reason = "\n\nAcil durumun sebebi:\n[call_reason]"
+	var/emergency_reason = "\n\nAcil durum sebebi:\n[call_reason]"
 
 	emergency.request(
 		signal_origin = signal_origin,

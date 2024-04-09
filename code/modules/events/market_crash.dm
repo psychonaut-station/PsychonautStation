@@ -29,7 +29,7 @@
 		"Tedarik zinciri eksiklikleri",\
 		"\"Nanotrasen+\" sosyal medya ağının zamansız çöküşü",\
 		"\"Nanotrasen+\" sosyal medya ağının talihsiz başarısı",\
-		"Uhh, kötü şans"
+		"Ahh, kötü şans"
 	)
 	var/reason = pick(poss_reasons)
 	priority_announce("[reason] nedeniyle, istasyon içi otomatların fiyatları kısa bir süre için artırılacaktır.", "Nanotrasen Muhasebe Departmanı")

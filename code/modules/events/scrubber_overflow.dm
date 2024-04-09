@@ -67,7 +67,7 @@
 	deadchat_broadcast(" has just been[random ? " randomly" : ""] triggered[cause ? " by [cause]" : ""]!", "<b>Scrubber Overflow: [initial(forced_reagent_type.name)]</b>", message_type=DEADCHAT_ANNOUNCEMENT)
 
 /datum/round_event/scrubber_overflow/announce(fake)
-	priority_announce("Temizlik ağında bir geriye doğru bir basınç dalgalanması yaşanıyor. Bazı içerikler dışarı atılabilir.", "[command_name()] Mühendislik Departmanı")
+	priority_announce("Havanlandırma ağında bir geriye doğru bir basınç dalgalanması yaşanıyor. Bazı şeyler dışarı fışkırabilir.", "[command_name()] Mühendislik Departmanı")
 
 /datum/round_event/scrubber_overflow/setup()
 	for(var/obj/machinery/atmospherics/components/unary/vent_scrubber/temp_vent as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/atmospherics/components/unary/vent_scrubber))

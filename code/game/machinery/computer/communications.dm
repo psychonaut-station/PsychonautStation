@@ -279,7 +279,7 @@
 			bank_account.adjust_money(-shuttle.credit_cost)
 
 			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("KİMLİK HATASI: CVE-2018-17107", 60) : usr.real_name
-			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye bir [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alma")
+			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alımı")
 
 			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")
 			log_shuttle("[key_name(usr)] has purchased [shuttle.name].")
@@ -299,7 +299,7 @@
 			nuke_request(reason, usr)
 			to_chat(usr, span_notice("Request sent."))
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("İstasyon nükleer imha kodları [usr] tarafından talep edilmiştir. Bu talebinizle ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer Kendini İmha Kodları Talep Edildi", SSstation.announcer.get_rand_report_sound())
+			priority_announce("İstasyon nükleer imha kodları [usr] tarafından istenmiştir. Bu istediğiniz ile ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer İmha Kodları İstendi", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
@@ -457,7 +457,7 @@
 			SSjob.safe_code_request_loc = pod_location
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, TYPE_PROC_REF(/datum/controller/subsystem/job, send_spare_id_safe_code), pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Mürettabat kadronuzun eksikliği nedeniyle, Kaptan'ın Yedek Kimliğini güvenceye almak için istasyonunuz erişim kodlarının teslimatı onaylanmıştır. Teslimat [get_area(pod_location)] alanına düşecek Pod aracılığı ile sağlanacaktır. Teslimat Podunun tahmini varış süresi 120 saniye.")
+			minor_announce("Personel eksikliği nedeniyle, kaptanın yedek kimliğinin kodlarını istemenizi onaylıyoruz. Teslimat [get_area(pod_location)] alanına düşecek pod aracılığı ile sağlanacaktır. Teslimat podunun tahmini varış süresi 120 saniye.")
 
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown

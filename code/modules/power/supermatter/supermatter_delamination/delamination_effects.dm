@@ -183,8 +183,8 @@
 	var/obj/cascade_portal/rift = new /obj/cascade_portal(get_turf(pick(GLOB.generic_event_spawns)))
 	priority_announce("Sektör çapında bir elektromanyetik darbe aldık. Mekik navigasyonu için gerekenler de dahil olmak üzere \
 		tüm sistemlerimiz ağır hasar gördü. İstasyonunuzda ya da yakınında bir supermatter dalgası meydana geldiği sonucuna varabiliriz.\n\n\
-		Tahliye artık geleneksel yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
-		Bu vesileyle tüm personelin mevcut herhangi bir yolla yarığa girmesi gerekmektedir.\n\n\
+		Tahliye artık normal yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
+		Tüm personelin ne olursa olsun yarığa girmesi gerekmektedir.\n\n\
 		[Gibberish("Hayatta kalanların kurtarılması, gerekli imkanların sağlanmasının ardından gerçekleştirilecektir.", FALSE, 5)] \
 		[Gibberish("Bol şans--", FALSE, 25)]")
 	return rift
@@ -202,7 +202,7 @@
 
 	sleep(25 SECONDS)
 
-	priority_announce("[Gibberish("Tüm tahliye girişimleri sona ermiş ve sektörünüzdeki tüm kaynaklar geri alınmıştır.\n \
+	priority_announce("[Gibberish("Tüm tahliye girişimleri sona ermiş ve sektörünüzdeki tüm kaynaklar geri çekilmiştir.\n \
 		[station_name()] hayatta kalanlarına elveda.", FALSE, 5)]")
 
 	if(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)

@@ -52,7 +52,7 @@
 	if(insurance_message && insurance_message.answered == 1)
 		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(!station_balance?.adjust_money(-insurance_evaluation))
-			priority_announce("Mekik sigortası için bize yeterince para göndermediniz. Bu, bizlerin terimleriyle, dolandırıcılık olarak kabul edilir. Paranız bizde kalacak, dolandırıcılar!", sender_override = ship_name, color_override = "red")
+			priority_announce("Mekik sigortası için bize yeterince para göndermediniz. Bu, bizlerin tabiriyle, dolandırıcılık olarak kabul edilir. Paranız bizde kalacak, dolandırıcılar!", sender_override = ship_name, color_override = "red")
 			return
 		priority_announce("Mekik sigortası satın aldığınız için teşekkür ederiz!", sender_override = ship_name, color_override = "red")
 		SSshuttle.shuttle_insurance = TRUE

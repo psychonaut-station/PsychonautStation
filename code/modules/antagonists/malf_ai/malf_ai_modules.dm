@@ -262,7 +262,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 		active = FALSE
 		return
 	if (owner_AI.stat != DEAD)
-		priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış çekirdeğine gelebilecek olası hasarı önlemek için AI devre dışı bırakılmalıdır.", "Anomali Uyarısı", ANNOUNCER_AIMALF)
+		priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış modülüne gelebilecek olası hasarı önlemek için AI devre dışı bırakılmalıdır.", "Anomali Uyarısı", ANNOUNCER_AIMALF)
 		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		var/obj/machinery/doomsday_device/DOOM = new(owner_AI)
 		owner_AI.nuking = TRUE
@@ -337,7 +337,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 /obj/machinery/doomsday_device/process()
 	var/turf/T = get_turf(src)
 	if(!T || !is_station_level(T.z))
-		minor_announce("KIYAMET CİHAZI İSTASYON ALANI DIŞINA ÇIKTI, DURDURULUYOR", "HATA H4TA $T4TT4$!T4H.%%!!(%$^^__+ @#F0E4", TRUE)
+		minor_announce("KIYAMET CİHAZI İSTASYON ALANININ DIŞINA ÇIKTI, İPTAL EDİLİYOR", "HATA H4TA $T4TT4$!T4H.%%!!(%$^^__+ @#F0E4", TRUE)
 		owner.ShutOffDoomsdayDevice()
 		return
 	if(!timing)
@@ -404,7 +404,7 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module))
 	var/obj/machinery/computer/communications/random_comms_console = locate() in GLOB.shuttle_caller_list
 	random_comms_console?.post_status("alert", "lockdown")
 
-	minor_announce("Kapı denetleyicilerinde düşmanca faaliyetler tespit edildi. Tecrit protokolleri şu anda yürürlüktedir. Lütfen sakin olun.", "Ağ Uyarısı:", TRUE)
+	minor_announce("Kapı kontrollerinde saldırgan program hataları tespit edildi. İzolasyon protokolleri yürürlükte. Lütfen sakin olun.", "Ağ Uyarısı:", TRUE)
 	to_chat(owner, span_danger("Lockdown initiated. Network reset in 90 seconds."))
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(minor_announce),
 		"Otomatik sistem yeniden başlatma protokolü tamamlandı. Güvenli bir gün geçirin.",

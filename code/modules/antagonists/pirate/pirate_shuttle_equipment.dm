@@ -72,7 +72,7 @@
 
 /// Alerts the crew about the siphon
 /obj/machinery/shuttle_scrambler/proc/send_notification()
-	priority_announce("Veri hırsızlığı sinyali tespit edildi; sinyalin kaynağı yerel GPS ünitelerine kaydedildi.")
+	priority_announce("Veri hırsızlığı sinyali tespit edildi; sinyalin kaynağı yerel GPS cihazlarına kaydedildi.")
 
 /// Switches off the siphon
 /obj/machinery/shuttle_scrambler/proc/toggle_off(mob/user)

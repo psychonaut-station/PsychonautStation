@@ -35,7 +35,7 @@
 	end_when = rand(TRAM_MALFUNCTION_TIME_LOWER, TRAM_MALFUNCTION_TIME_UPPER)
 
 /datum/round_event/tram_malfunction/announce()
-	priority_announce("Otomasyon kontrol sistemimiz tramvayın bilgisayarı ile bağlantısını kaybetmiştir. Mühendisler sorunu teşhis edip çözerken lütfen daha dikkatli olun.", "[command_name()] Mühendislik Departmanı")
+	priority_announce("Otomasyon kontrol sistemimiz tramvayın bilgisayarı ile bağlantısını kaybetmiştir. Mühendisler sorunu teşhis edip çözerken lütfen dikkatli olun.", "[command_name()] Mühendislik Departmanı")
 
 /datum/round_event/tram_malfunction/start()
 	for(var/datum/transport_controller/linear/tram/malfunctioning_controller as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])

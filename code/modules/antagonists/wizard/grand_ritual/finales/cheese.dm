@@ -10,7 +10,7 @@
 
 /datum/grand_finale/cheese/trigger(mob/living/invoker)
 	message_admins("[key_name(invoker)] has summoned forth The Wabbajack and cursed the crew with madness!")
-	priority_announce("Tehlike: İstasyonda son derece güçlü gerçekliği değiştiren bir nesne ortaya çıktı. Acil tahliye tavsiye edilmektedir. Etkisine karşı hazırlıklı olun.", "[command_name()] Yüksek Boyutlu İlişkiler", 'sound/effects/glassbr1.ogg')
+	priority_announce("Tehlike: İstasyonda son derece güçlü gerçekliği değiştiren bir nesne ortaya çıktı. Acil tahliye tavsiye edilmektedir. Etkisine karşı hazırlıklı olun.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/effects/glassbr1.ogg')
 
 	for (var/mob/living/carbon/human/crewmate as anything in GLOB.human_list)
 		if (isnull(crewmate.mind))

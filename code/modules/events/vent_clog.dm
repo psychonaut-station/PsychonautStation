@@ -129,7 +129,7 @@
 	clog_vent()
 
 	announce_to_ghosts(vent)
-	priority_announce("Yaşam sinyali değerleri havalandırma ağında yeni bir konuma geçmiştir. Yeni Lokasyonu: [prob(50) ? "Bilinmiyor.":"[get_area_name(vent)]."]", "Yaşam Sinyali Bildirimi")
+	priority_announce("Yaşam sinyali değerleri havalandırma ağında yeni bir konuma geçmiştir. Yeni konumu: [prob(50) ? "Bilinmiyor.":"[get_area_name(vent)]."]", "Yaşam Sinyali Bildirimi")
 
 /**
  * Handles the production of our mob and adds it to our living_mobs list

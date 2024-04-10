@@ -13,6 +13,10 @@
 	var/icon_keyboard = "generic_key"
 	/// Should we render an unique icon for the keyboard when off?
 	var/keyboard_change_icon = TRUE
+	// PSYCHONAUT EDIT ADDITION START - ICON_OVERRIDES
+	/// Icon of the emissive screen overlay.
+	var/icon_screen_file
+	// PSYCHONAUT EDIT ADDITION END
 	/// Icon_state of the emissive screen overlay.
 	var/icon_screen = "generic"
 	/// Time it takes to deconstruct with a screwdriver.
@@ -50,8 +54,12 @@
 
 	// This lets screens ignore lighting and be visible even in the darkest room
 	if(icon_screen)
-		. += mutable_appearance(icon, icon_screen)
-		. += emissive_appearance(icon, icon_screen, src)
+		// PSYCHONAUT EDIT CHANGE START - ICON_OVERRIDES - ORIGINAL:
+		// . += mutable_appearance(icon, icon_screen)
+		// . += emissive_appearance(icon, icon_screen, src)
+		. += mutable_appearance(icon_screen_file || icon, icon_screen)
+		. += emissive_appearance(icon_screen_file || icon, icon_screen, src)
+		// PSYCHONAUT EDIT CHANGE END
 
 /obj/machinery/computer/power_change()
 	. = ..()

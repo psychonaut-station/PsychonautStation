@@ -271,7 +271,15 @@
 	if(LAZYLEN(stamp_cache) > MAX_PAPER_STAMPS_OVERLAYS)
 		return
 
-	var/mutable_appearance/stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', "paper_[stamp_icon_state]")
+	// PSYCHONAUT EDIT CHANGE START - STAMPS - ORIGINAL:
+	// var/mutable_appearance/stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', "paper_[stamp_icon_state]")
+	var/stamp_icon = 'icons/obj/service/bureaucracy.dmi'
+	for(var/obj/item/stamp as anything in GLOB.psychonaut_stamps)
+		if(stamp::icon_state == stamp_icon_state)
+			stamp_icon = stamp::icon
+			break
+	var/mutable_appearance/stamp_overlay = mutable_appearance(stamp_icon, "paper_[stamp_icon_state]")
+	// PSYCHONAUT EDIT CHANGE END
 	stamp_overlay.pixel_x = rand(-2, 2)
 	stamp_overlay.pixel_y = rand(-3, 2)
 	add_overlay(stamp_overlay)

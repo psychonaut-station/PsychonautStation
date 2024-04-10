@@ -1,30 +1,30 @@
-## Başlık: Hihiha
+## Hihiha
 
 MODULE ID: HIHIHA
 
-### Açıklama:
+### Açıklama
 
 Clown'un güldüğü zaman hihiha sesi çıkartmasını sağlar.
 
-### TG Değişiklikleri:
+### TG Değişiklikleri
 
 - N/A
 
-### Modüler Değişiklikler:
+### Modüler Değişiklikler
 
 - `modular_psychonaut/master_files/code/_globalvars/traits/_traits.dm`: `GLOB.psychonaut_traits`
 - `modular_psychonaut/master_files/code/_globalvars/traits/admin_tooling.dm`: `GLOB.psychonaut_visible_traits`
 - `modular_psychonaut/master_files/code/modules/jobs/job_types/clown.dm`: `/datum/outfit/job/clown/post_equip()`
 - `modular_psychonaut/master_files/code/modules/mob/living/emote.dm`: `/datum/emote/living/laugh/get_sound()`
 
-### Definelar:
+### Definelar ve Helperlar
 
 - `code/__DEFINES/~psychonaut_defines/traits/declarations.dm`: `TRAIT_CLOWNING`
 
-### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar:
+### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 
 - N/A
 
-### Katkıda Bulunanlar:
+### Katkıda Bulunanlar
 
-Seefaaa
+loanselot, Seefaaa

@@ -1,0 +1,1 @@
+#define SECRETARY_BLUE "#3399cc"

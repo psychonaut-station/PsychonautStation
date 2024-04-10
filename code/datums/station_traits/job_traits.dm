@@ -112,7 +112,7 @@
 /datum/station_trait/job/bridge_assistant
 	name = "Bridge Assistant"
 	button_desc = "Sign up to become the Bridge Assistant and watch over the Bridge."
-	weight = 2
+	weight = 0 // PSYCHONAUT EDIT CHANGE - NT_SECRETARY - ORIGINAL: 2
 	report_message = "We have installed a Bridge Assistant on your station."
 	show_in_report = TRUE
 	can_roll_antag = CAN_ROLL_PROTECTED

@@ -443,7 +443,7 @@
 
 
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
-	return "Personel eksikliği nedeniyle, yeni terfi eden Kaptan Vekili [captain.real_name] güvertede!"
+	return "Aşırı Personel eksikliği nedeniyle, yeni terfi eden Kaptan Vekili [captain.real_name] güvertede!"
 
 
 /// Returns an atom where the mob should spawn in.

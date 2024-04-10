@@ -1,0 +1,31 @@
+2024-04-10:
+  Ben10Omintrix:
+  - rscadd: cultists can now convert pets to their side
+  Bilbo367:
+  - image: fixed Fulton balloon having its smallest sprite copy pasted over itself
+  DaCoolBoss:
+  - bugfix: A broken item was removed from the mimesvsclowns ruin. In its place is
+      a spent revolver round.
+  Jacquerel:
+  - bugfix: Driving a vehicle into the supermatter will kill everyone riding the vehicle
+  RengaN:
+  - rscadd: Cargo borg eklendi.
+  - bugfix: "Box cutteri kapal\u0131 bir kutuda kullan\u0131nca kutu art\u0131k oldugu\
+      \ yerde a\xE7\u0131l\u0131yor."
+  RengaN02:
+  - rscadd: "Oyuna, oyuncuya examine mekani\u011Fini \xF6\u011Freten yeni bir tutorial\
+      \ eklendi."
+  - bugfix: "Latejoin Brig Physician iconu d\xFCzeltildi."
+  Rengan:
+  - rscadd: "Snack vendorlar\u0131n\u0131 Food vendorlar\u0131na \xE7eviren yeni bir\
+      \ station trait eklendi."
+  Seefaaa:
+  - rscadd: "\"Verify Discord Account\" i\xE7in tgui ekler"
+  Singul0:
+  - qol: Adds contextual screentips to air alarms
+  SyncIt21:
+  - bugfix: RCD logs are more human readable & stores the player name behind the action.
+  carshalash:
+  - qol: Fishfood is now more easily acquired through cargo
+  genku:
+  - bugfix: "Eski Delta'daki surgery tray dolu ba\u015Flayacak"

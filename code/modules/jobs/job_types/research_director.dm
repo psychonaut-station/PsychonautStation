@@ -48,7 +48,7 @@
 
 
 /datum/job/research_director/get_captaincy_announcement(mob/living/captain)
-	return "Personel eksikliği nedeniyle, yeni terfi eden Kaptan Vekili [captain.real_name] güvertede!"
+	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 
 
 /datum/outfit/job/rd

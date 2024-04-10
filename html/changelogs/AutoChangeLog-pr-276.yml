@@ -1,4 +1,0 @@
-author: "Rengan"
-delete-after: True
-changes:
-  - rscadd: "Snack vendorlarını Food vendorlarına çeviren yeni bir station trait eklendi."

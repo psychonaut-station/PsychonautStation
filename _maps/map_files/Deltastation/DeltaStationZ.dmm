@@ -776,6 +776,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "ahS" = (
@@ -1111,6 +1112,7 @@
 	pixel_x = -4;
 	pixel_y = 9
 	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "amr" = (
@@ -1536,6 +1538,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 9
 	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/storage)
 "aqi" = (
@@ -6182,6 +6185,8 @@
 	dir = 1
 	},
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "bqY" = (
@@ -6874,6 +6879,7 @@
 /obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 4
 	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "bAz" = (
@@ -9127,8 +9133,7 @@
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/science/circuits)
 "bVd" = (
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/decal/cleanable/dirt,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/janitor;
 	health = 200;
@@ -9136,7 +9141,7 @@
 	maxHealth = 200
 	},
 /turf/open/floor/iron,
-/area/station/hallway/secondary/exit)
+/area/station/hallway/secondary/exit/departure_lounge)
 "bVh" = (
 /obj/effect/turf_decal/siding/brown{
 	dir = 4
@@ -9636,6 +9641,12 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "caW" = (
@@ -9772,12 +9783,13 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "ccy" = (
-/obj/effect/spawner/random/trash/food_packaging,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/dark,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "ccA" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -11259,13 +11271,19 @@
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "ctt" = (
-/obj/structure/rack,
-/obj/effect/spawner/random/entertainment/money_small,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
+/obj/structure/bodycontainer/morgue{
+	dir = 8
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "ctw" = (
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=engi1";
@@ -13257,12 +13275,6 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/gibspawner,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
 "cQh" = (
@@ -15512,12 +15524,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/light/directional/east,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit)
 "dre" = (
@@ -17919,12 +17925,6 @@
 	dir = 1
 	},
 /obj/effect/gibspawner,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/cook;
-	infection_chance = 5;
-	maxHealth = 200;
-	health = 200
-	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "dQu" = (
@@ -18517,14 +18517,14 @@
 /turf/open/floor/iron/dark,
 /area/station/service/library/printer)
 "dXy" = (
-/obj/structure/bodycontainer/morgue,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
 /obj/effect/turf_decal/siding/dark{
 	dir = 10
 	},
-/obj/effect/turf_decal/box,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "dXD" = (
@@ -19422,12 +19422,6 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron/dark/corner{
 	dir = 1
 	},
@@ -19455,9 +19449,6 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
-/obj/structure/chair/office{
 	dir = 8
 	},
 /obj/effect/turf_decal/siding/dark/corner{
@@ -19733,6 +19724,12 @@
 /obj/machinery/newscaster/directional/north,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/dark/side{
 	dir = 1
 	},
@@ -20289,12 +20286,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "esu" = (
-/obj/effect/spawner/random/trash/mess,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "esy" = (
 /obj/machinery/duct,
 /obj/structure/cable,
@@ -20747,6 +20741,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/psychologist,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "exA" = (
@@ -21233,6 +21228,10 @@
 /obj/structure/barricade/wooden/crude,
 /turf/open/floor/plating,
 /area/station/hallway/primary/central/fore)
+"eDT" = (
+/obj/effect/landmark/start/security_officer,
+/turf/open/floor/iron/dark,
+/area/station/cargo/storage)
 "eDV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -21303,6 +21302,12 @@
 "eEn" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/doctor;
+	infection_chance = 5;
+	health = 200;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/white/smooth_large,
 /area/station/command/heads_quarters/cmo)
 "eEo" = (
@@ -22413,6 +22418,12 @@
 /area/station/engineering/atmos/project)
 "eQo" = (
 /obj/effect/landmark/event_spawn,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/customs/aft)
 "eQr" = (
@@ -23018,6 +23029,12 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/gibspawner,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/cook;
+	infection_chance = 5;
+	maxHealth = 200;
+	health = 200
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "eWN" = (
@@ -24161,10 +24178,12 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/transit_tube)
 "fkl" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/glass,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/blue,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "fkm" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
 /obj/machinery/rnd/server/master,
@@ -26573,6 +26592,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "fMZ" = (
@@ -27576,6 +27596,7 @@
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "fYK" = (
+/obj/effect/landmark/start/chaplain,
 /turf/open/floor/wood/large,
 /area/station/cargo/storage)
 "fYO" = (
@@ -28828,7 +28849,6 @@
 /area/station/security/prison)
 "gmo" = (
 /obj/structure/table/wood/fancy/orange,
-/obj/item/stack/sheet/mineral/plasma,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
@@ -28836,6 +28856,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 1
 	},
+/obj/item/stack/sheet/mineral/plasma/thirty,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "gmx" = (
@@ -29911,6 +29932,12 @@
 	},
 /obj/effect/spawner/random/structure/closet_private,
 /obj/structure/sign/poster/random/directional/west,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/wood,
 /area/station/hallway/secondary/service)
 "gwx" = (
@@ -30718,6 +30745,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "gEW" = (
@@ -31671,11 +31700,12 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "gPO" = (
-/obj/structure/table/reinforced,
-/obj/item/flashlight/lamp/green,
-/obj/effect/spawner/random/entertainment/money_small,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "gPW" = (
 /obj/structure/rack,
 /obj/item/storage/box/lights/mixed,
@@ -31692,6 +31722,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "gQa" = (
@@ -32551,6 +32582,8 @@
 "haz" = (
 /obj/effect/decal/cleanable/blood/drip,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "haF" = (
@@ -33038,10 +33071,12 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "hfM" = (
-/obj/effect/decal/cleanable/glass,
-/obj/structure/sign/poster/contraband/random/directional/west,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/newscaster/directional/west,
+/obj/effect/turf_decal/siding/blue{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "hfN" = (
 /obj/structure/closet/secure_closet/quartermaster,
 /obj/machinery/firealarm/directional/west,
@@ -33550,6 +33585,12 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 1
 	},
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "hmA" = (
@@ -33900,6 +33941,7 @@
 "hrz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
+/obj/effect/landmark/start/bartender,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "hrG" = (
@@ -34404,6 +34446,7 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "hwS" = (
@@ -35691,26 +35734,22 @@
 /turf/open/floor/iron,
 /area/station/commons/toilet/locker)
 "hNP" = (
-/obj/structure/sign/poster/contraband/random/directional/west,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
+/obj/structure/table/optable,
+/obj/machinery/status_display/supply{
+	pixel_x = -32
 	},
-/obj/structure/closet/crate,
-/obj/item/reagent_containers/cup/glass/waterbottle,
-/obj/item/reagent_containers/cup/glass/waterbottle,
-/obj/item/trash/can/food/chap,
-/obj/item/trash/can/food/larvae,
-/obj/item/trash/can/food/squid_ink,
-/obj/item/food/cornchips/red,
-/obj/item/food/cornchips/blue,
-/obj/item/paper/crumpled/muddy/fluff/elephant_graveyard/rnd_notes{
-	name = "Geriye Kalanlar";
-	default_raw_text = "<p><strong>Kaptan, birçok malzeme dağıtmıştı: silahlar, yemekler ve tıbbi malzemeler. İnsanlar savaşsın diye fakat çoğu öylece kaldı.</strong></p>";
-	pixel_y = 3;
-	pixel_x = 3
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
+	},
+/obj/effect/turf_decal/box/white,
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "hNS" = (
 /obj/structure/cable,
 /obj/structure/disposalpipe/segment,
@@ -36119,6 +36158,8 @@
 "hSl" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "hSu" = (
@@ -36418,6 +36459,12 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/carpet/blue,
 /area/station/medical/psychology)
 "hWf" = (
@@ -37467,21 +37514,15 @@
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "iib" = (
-/obj/machinery/door/airlock/maintenance_hatch{
-	name = "Maintenance Hatch"
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/effect/mapping_helpers/airlock/unres{
+/obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/maintenance,
-/turf/open/floor/iron,
-/area/station/maintenance/fore)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/textured,
+/area/station/cargo/storage)
 "iid" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/structure/cable,
@@ -37689,19 +37730,6 @@
 /obj/effect/turf_decal/tile/neutral,
 /turf/open/floor/iron,
 /area/station/hallway/primary/fore)
-"ikE" = (
-/obj/effect/turf_decal/tile/red/opposingcorners{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
-/turf/open/floor/iron/cafeteria,
-/area/station/service/cafeteria)
 "ikH" = (
 /obj/structure/disposalpipe/segment,
 /obj/effect/spawner/structure/window/reinforced,
@@ -37967,6 +37995,8 @@
 	dir = 8
 	},
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "inl" = (
@@ -38130,10 +38160,11 @@
 /turf/open/floor/iron,
 /area/station/security/prison/garden)
 "ipg" = (
-/obj/structure/rack,
-/obj/item/stack/cable_coil/five,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/blue{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "ipr" = (
 /obj/machinery/computer/rdconsole{
 	dir = 8
@@ -38200,9 +38231,13 @@
 /turf/open/floor/iron/white,
 /area/station/science/research)
 "iql" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/dark,
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "iqn" = (
 /obj/structure/mirror/directional/west,
 /obj/effect/landmark/start/hangover,
@@ -38537,19 +38572,16 @@
 /turf/open/floor/wood,
 /area/station/medical/psychology)
 "iub" = (
-/obj/effect/landmark/start/hangover,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/effect/decal/cleanable/dirt,
+/obj/item/kirbyplants/random,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/janitor;
 	health = 200;
 	infection_chance = 5;
 	maxHealth = 200
 	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/central/fore)
+/turf/open/floor/iron/dark,
+/area/station/hallway/secondary/exit)
 "iud" = (
 /obj/machinery/door/airlock/external{
 	name = "Escape Pod 4";
@@ -40309,15 +40341,18 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "iPE" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
+	outfit = /datum/outfit/job/cook;
 	infection_chance = 5;
-	maxHealth = 200
+	maxHealth = 200;
+	health = 200
 	},
 /turf/open/floor/iron,
-/area/station/hallway/primary/port)
+/area/station/hallway/secondary/entry)
 "iPH" = (
 /obj/structure/chair{
 	dir = 8
@@ -42816,6 +42851,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "jqk" = (
@@ -43329,12 +43370,6 @@
 /obj/effect/landmark/start/hangover,
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/chair/stool/directional/east,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron/dark,
 /area/station/service/theater)
 "jwr" = (
@@ -43348,6 +43383,7 @@
 /area/station/security/checkpoint/customs/fore)
 "jwt" = (
 /obj/item/storage/box/emptysandbags,
+/obj/effect/landmark/start/depsec/engineering,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "jwy" = (
@@ -45221,9 +45257,15 @@
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/tcommsat/server)
 "jQx" = (
-/obj/machinery/vending/autodrobe/all_access,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/airalarm/directional/north,
+/obj/machinery/iv_drip,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "jQB" = (
 /obj/machinery/door/airlock{
 	id_tag = "Toilet_Med";
@@ -45831,15 +45873,14 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "jYc" = (
-/obj/effect/turf_decal/delivery,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
 	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit/departure_lounge)
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 8
+	},
+/turf/open/floor/iron/white,
+/area/station/cargo/storage)
 "jYg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
@@ -46456,11 +46497,12 @@
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
 "kdg" = (
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 8
+	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/generic,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "kdq" = (
 /obj/effect/turf_decal/trimline/purple/filled/corner,
 /obj/effect/turf_decal/stripes/corner,
@@ -48078,12 +48120,20 @@
 /turf/open/floor/wood,
 /area/station/commons/dorms)
 "kvW" = (
-/obj/structure/closet/secure_closet/personal/cabinet,
-/obj/effect/spawner/random/clothing/twentyfive_percent_cyborg_mask,
-/obj/effect/spawner/random/bureaucracy/briefcase,
-/obj/effect/spawner/random/entertainment/wallet_storage,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/bodycontainer/morgue{
+	dir = 2
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 5
+	},
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "kvX" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /turf/open/space/basic,
@@ -48252,6 +48302,7 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/large,
 /area/station/cargo/storage)
 "kyi" = (
@@ -49539,18 +49590,17 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/aft)
 "kOT" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/janitor;
 	health = 200;
 	infection_chance = 5;
 	maxHealth = 200
 	},
-/turf/open/floor/iron/dark,
-/area/station/service/theater)
+/turf/open/floor/iron,
+/area/station/hallway/primary/central/aft)
 "kOU" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -49757,10 +49807,18 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison/mess)
 "kRN" = (
-/obj/effect/spawner/random/trash/food_packaging,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/bodycontainer/morgue{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 4
+	},
+/obj/effect/turf_decal/box/white,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "kRZ" = (
 /obj/structure/table/reinforced,
 /obj/item/clothing/gloves/latex,
@@ -50111,6 +50169,9 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
 	},
+/obj/effect/landmark/start/medical_doctor,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "kWi" = (
@@ -50823,6 +50884,20 @@
 /obj/item/crowbar,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/escape)
+"lei" = (
+/obj/effect/turf_decal/trimline/dark_red/end,
+/obj/machinery/button/crematorium{
+	id = "crematoriumChapel";
+	pixel_x = -26
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "len" = (
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
@@ -50967,6 +51042,7 @@
 "lgh" = (
 /obj/structure/chair/pew/right,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/wood/large,
 /area/station/cargo/storage)
 "lgs" = (
@@ -51922,6 +51998,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/brown,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "lra" = (
@@ -52177,6 +52254,8 @@
 	dir = 6
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "ltY" = (
@@ -53739,6 +53818,8 @@
 	dir = 4
 	},
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "lKe" = (
@@ -55572,12 +55653,6 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/doctor;
-	infection_chance = 5;
-	health = 200;
-	maxHealth = 200
-	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
 "mgX" = (
@@ -56818,6 +56893,8 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "mvF" = (
@@ -58034,6 +58111,12 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/blood,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/doctor;
+	infection_chance = 5;
+	health = 200;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/paramedic)
 "mIb" = (
@@ -58610,6 +58693,11 @@
 /obj/machinery/light_switch/directional/north,
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
+"mOh" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/dark,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "mOo" = (
 /obj/machinery/atmospherics/pipe/heat_exchanging/simple,
 /turf/open/floor/iron/dark/telecomms,
@@ -58887,6 +58975,7 @@
 	},
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/duct,
+/obj/effect/landmark/start/paramedic,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "mRs" = (
@@ -59949,6 +60038,7 @@
 	},
 /obj/effect/turf_decal/tile/yellow,
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "nfZ" = (
@@ -60051,6 +60141,10 @@
 	dir = 1
 	},
 /obj/machinery/vending/snack,
+/obj/machinery/camera/directional/north{
+	c_tag = "Cargo Bay - Fore";
+	name = "cargo camera"
+	},
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "nhi" = (
@@ -62718,19 +62812,9 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "nMm" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/exit)
+/obj/structure/sign/departments/medbay/alt/directional,
+/turf/closed/wall,
+/area/station/maintenance/fore)
 "nMp" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/yellow/visible,
 /obj/machinery/meter,
@@ -64381,6 +64465,10 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/item/clothing/suit/bio_suit,
+/obj/item/clothing/head/bio_hood,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "ogs" = (
@@ -65882,19 +65970,13 @@
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "oyB" = (
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
+"oyI" = (
+/obj/effect/turf_decal/siding/blue,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/spawner/random/clothing/beret_or_rabbitears,
-/obj/effect/spawner/random/clothing/pirate_or_bandana,
-/obj/effect/spawner/random/clothing/bowler_or_that,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/landmark/blobstart,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
-	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "oyJ" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/item/radio/intercom/directional/east,
@@ -66096,6 +66178,12 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/doctor;
+	infection_chance = 5;
+	health = 200;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay)
 "oBq" = (
@@ -66172,6 +66260,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "oCE" = (
@@ -66866,6 +66955,7 @@
 	dir = 1
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "oLL" = (
@@ -67676,16 +67766,15 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
 "oUc" = (
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner,
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
 /obj/effect/turf_decal/siding/dark/corner{
-	dir = 3
+	dir = 4
 	},
 /obj/effect/turf_decal/siding/dark/corner{
-	dir = 4
+	dir = 3
 	},
 /turf/open/floor/iron/dark/textured,
 /area/station/cargo/storage)
@@ -68202,6 +68291,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 5
 	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/wood/large,
 /area/station/cargo/storage)
 "pbu" = (
@@ -70048,6 +70138,7 @@
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
 	},
+/obj/effect/landmark/start/chemist,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "pvu" = (
@@ -70157,6 +70248,11 @@
 /obj/item/radio/intercom/directional/east,
 /turf/open/floor/iron,
 /area/station/maintenance/disposal/incinerator)
+"pws" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/depsec/science,
+/turf/open/floor/iron/dark,
+/area/station/cargo/storage)
 "pwx" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -70331,6 +70427,9 @@
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/exit/departure_lounge)
 "pyd" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "pyh" = (
@@ -71242,6 +71341,8 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "pGE" = (
@@ -71717,6 +71818,12 @@
 /obj/structure/bookcase,
 /turf/open/floor/wood,
 /area/station/service/library/abandoned)
+"pLK" = (
+/obj/machinery/holopad,
+/obj/effect/turf_decal/bot,
+/obj/effect/landmark/start/depsec/supply,
+/turf/open/floor/iron/dark,
+/area/station/cargo/storage)
 "pLQ" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/item/kirbyplants/random,
@@ -71915,8 +72022,21 @@
 /turf/open/floor/iron/white/smooth_large,
 /area/station/medical/virology)
 "pOi" = (
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/machinery/computer/operating{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 8
+	},
+/obj/effect/turf_decal/box,
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "pOm" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
@@ -72386,16 +72506,10 @@
 /turf/open/floor/iron,
 /area/station/security/prison/garden)
 "pTa" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
-/turf/open/floor/iron,
-/area/station/hallway/primary/central/aft)
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/white,
+/area/station/cargo/storage)
 "pTc" = (
 /obj/machinery/door/airlock/silver{
 	name = "Bathroom"
@@ -72606,6 +72720,12 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/service/general,
 /obj/effect/landmark/navigate_destination,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/checker,
 /area/station/hallway/secondary/service)
 "pUA" = (
@@ -72789,6 +72909,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
+/obj/effect/landmark/start/paramedic,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "pWn" = (
@@ -74177,12 +74299,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/blood,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "qlN" = (
@@ -74900,11 +75016,20 @@
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
 "quZ" = (
-/obj/structure/table/reinforced,
-/obj/item/stack/cable_coil/five,
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/item/radio/intercom/directional/north,
+/obj/structure/bed/medical/emergency,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/obj/effect/landmark/start/coroner,
+/obj/machinery/camera/directional/north{
+	c_tag = "Cargo Bay - Fore";
+	name = "cargo camera"
+	},
+/obj/machinery/light/dim/directional/north,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "qvc" = (
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/wood/large,
@@ -76186,6 +76311,7 @@
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/effect/landmark/start/chemist,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "qIf" = (
@@ -76622,17 +76748,14 @@
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "qMq" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/spawner/random/clothing/gloves,
-/obj/effect/spawner/random/clothing/gloves,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "qMv" = (
 /obj/item/radio/intercom/prison/directional/north,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
@@ -77838,6 +77961,7 @@
 /obj/effect/decal/cleanable/plastic,
 /obj/item/clothing/suit/bio_suit/security,
 /obj/item/clothing/head/bio_hood/security,
+/obj/effect/landmark/start/depsec/medical,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "rcP" = (
@@ -82436,6 +82560,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "rZI" = (
@@ -82559,6 +82684,8 @@
 /obj/effect/turf_decal/siding/white{
 	dir = 10
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "saR" = (
@@ -83192,12 +83319,14 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
 "siV" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
+/obj/structure/bodycontainer/morgue,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/status_display/evac/directional/west,
+/obj/effect/turf_decal/siding/blue{
+	dir = 10
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "siX" = (
 /obj/effect/landmark/start/hangover,
 /obj/effect/turf_decal/siding/wood{
@@ -85939,11 +86068,14 @@
 /turf/open/floor/iron/white,
 /area/station/science/xenobiology)
 "sPo" = (
-/obj/effect/decal/cleanable/cobweb/cobweb2,
-/obj/effect/spawner/random/entertainment/wallet_storage,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/noticeboard/directional/north,
+/obj/effect/turf_decal/siding/blue{
+	dir = 5
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/smooth_half,
+/area/station/cargo/storage)
 "sPL" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/decal/cleanable/dirt,
@@ -86422,6 +86554,8 @@
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "sUC" = (
@@ -88980,12 +89114,9 @@
 /turf/open/floor/engine,
 /area/station/science/ordnance/burnchamber)
 "tzM" = (
-/obj/machinery/door/firedoor,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
+/obj/effect/turf_decal/tile/purple{
+	dir = 8
 	},
-/obj/effect/decal/cleanable/dirt,
 /mob/living/simple_animal/hostile/zombie{
 	outfit = /datum/outfit/job/janitor;
 	health = 200;
@@ -88993,7 +89124,7 @@
 	maxHealth = 200
 	},
 /turf/open/floor/iron,
-/area/station/hallway/primary/central/aft)
+/area/station/hallway/primary/central/fore)
 "tzP" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -89763,19 +89894,18 @@
 /turf/open/floor/carpet/green,
 /area/station/service/library)
 "tHN" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/spawner/random/clothing/costume,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
-	dir = 4
-	},
-/obj/effect/turf_decal/bot_red,
-/obj/effect/landmark/generic_maintenance_landmark,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
+/obj/structure/table/reinforced,
+/obj/item/storage/box/bodybags,
+/obj/item/pushbroom,
+/obj/item/reagent_containers/spray/cleaner,
+/obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "tHQ" = (
 /obj/machinery/firealarm/directional/south,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -89786,6 +89916,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /obj/effect/decal/cleanable/vomit,
+/obj/effect/landmark/start/bartender,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "tHV" = (
@@ -90652,6 +90783,8 @@
 "tRo" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners,
 /obj/effect/decal/cleanable/blood/drip,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "tRq" = (
@@ -90753,12 +90886,6 @@
 /obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/tile/neutral,
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
-	},
 /turf/open/floor/iron/dark/corner,
 /area/station/hallway/secondary/exit/departure_lounge)
 "tSU" = (
@@ -92352,6 +92479,12 @@
 /obj/structure/railing,
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/door/firedoor/border_only,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/wood,
 /area/station/service/theater)
 "ulQ" = (
@@ -94349,11 +94482,15 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/primary)
 "uGx" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/spawner/costume/mafia/checkered,
-/obj/structure/chair/stool/directional/south,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/trimline/blue/end,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "uGB" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
@@ -94487,6 +94624,8 @@
 	dir = 4
 	},
 /obj/machinery/duct,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/textured,
 /area/station/cargo/storage)
 "uIF" = (
@@ -95251,16 +95390,20 @@
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "uQj" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/janitor;
-	health = 200;
-	infection_chance = 5;
-	maxHealth = 200
+/obj/machinery/door/airlock/grunge{
+	name = "Morgue"
 	},
-/turf/open/floor/glass/reinforced,
-/area/station/hallway/primary/fore)
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
+/area/station/cargo/storage)
 "uQk" = (
 /turf/open/floor/engine/o2,
 /area/station/engineering/atmos)
@@ -95361,10 +95504,18 @@
 /turf/open/floor/iron/edge,
 /area/station/hallway/primary/central/aft)
 "uRt" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "uRx" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/stripes/line{
@@ -96655,6 +96806,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/chair/wood,
 /obj/effect/decal/cleanable/dirt,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/janitor;
+	health = 200;
+	infection_chance = 5;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/grimy,
 /area/station/service/chapel)
 "vgg" = (
@@ -96990,15 +97147,12 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
 "vkG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/rack,
-/obj/effect/turf_decal/bot_red,
-/obj/effect/turf_decal/tile/yellow/opposingcorners{
-	dir = 1
+/obj/effect/turf_decal/trimline/blue/end{
+	dir = 4
 	},
-/obj/machinery/airalarm/directional/north,
-/turf/open/floor/iron/white,
-/area/station/maintenance/fore)
+/obj/effect/landmark/start/coroner,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "vkK" = (
 /obj/effect/decal/cleanable/glass,
 /turf/open/floor/iron/dark,
@@ -97197,6 +97351,8 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/textured,
 /area/station/cargo/storage)
 "vnq" = (
@@ -98071,6 +98227,7 @@
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/light/dim/directional/south,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/start/chaplain,
 /turf/open/floor/iron/grimy,
 /area/station/cargo/storage)
 "vxN" = (
@@ -98083,18 +98240,15 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "vxO" = (
-/obj/effect/turf_decal/trimline/blue/filled/line{
+/obj/effect/turf_decal/tile/yellow/half/contrasted{
 	dir = 1
 	},
 /obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/doctor;
-	infection_chance = 5;
-	health = 200;
-	maxHealth = 200
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
 /turf/open/floor/iron/white,
-/area/station/medical/medbay/lobby)
+/area/station/cargo/storage)
 "vxQ" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -101114,16 +101268,10 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/gravity_generator)
 "whH" = (
-/obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/effect/decal/cleanable/dirt,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/doctor;
-	infection_chance = 5;
-	health = 200;
-	maxHealth = 200
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/white,
-/area/station/medical/medbay/lobby)
+/area/station/cargo/storage)
 "whK" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -103233,6 +103381,7 @@
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/effect/turf_decal/siding/white,
 /obj/effect/turf_decal/trimline/blue/end,
+/obj/effect/landmark/start/virologist,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "wDD" = (
@@ -104052,6 +104201,7 @@
 /obj/effect/turf_decal/trimline/blue/end{
 	dir = 1
 	},
+/obj/effect/landmark/start/medical_doctor,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "wNk" = (
@@ -104270,6 +104420,8 @@
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 8
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/cargo/storage)
 "wQB" = (
@@ -104284,7 +104436,6 @@
 "wQN" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
 	},
@@ -104814,6 +104965,9 @@
 /area/station/security/courtroom)
 "wYZ" = (
 /obj/structure/chair/pew/left,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 4
+	},
 /turf/open/floor/wood/large,
 /area/station/cargo/storage)
 "wZu" = (
@@ -105200,6 +105354,7 @@
 	dir = 5
 	},
 /obj/machinery/airalarm/directional/north,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/iron/smooth,
 /area/station/cargo/storage)
 "xdn" = (
@@ -105211,12 +105366,21 @@
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "xdA" = (
-/obj/effect/spawner/random/decoration/carpet,
-/obj/effect/spawner/random/structure/furniture_parts,
-/obj/structure/closet/crate/decorations,
+/obj/structure/bodycontainer/crematorium{
+	id = "crematoriumChapel"
+	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /obj/effect/decal/cleanable/cobweb,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/obj/effect/turf_decal/box/red,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "xdH" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/landmark/start/hangover,
@@ -106239,15 +106403,18 @@
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/medical/medsci)
 "xoQ" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/mob/living/simple_animal/hostile/zombie{
-	outfit = /datum/outfit/job/cook;
-	infection_chance = 5;
-	maxHealth = 200;
-	health = 200
+/obj/structure/table/reinforced,
+/obj/item/surgery_tray/full/morgue,
+/obj/structure/sign/clock/directional/west,
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
 	},
-/turf/open/floor/iron,
-/area/station/hallway/secondary/entry)
+/obj/effect/turf_decal/siding/dark{
+	dir = 9
+	},
+/obj/item/clothing/gloves/latex,
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "xoR" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -106283,9 +106450,16 @@
 /turf/open/floor/iron/grimy,
 /area/station/service/library/abandoned)
 "xpn" = (
-/obj/effect/spawner/random/trash/food_packaging,
-/turf/open/floor/plating,
-/area/station/maintenance/fore)
+/obj/structure/mannequin/skeleton,
+/obj/structure/sign/poster/official/report_crimes/directional/south,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/dark{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/small,
+/area/station/cargo/storage)
 "xpt" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -107031,6 +107205,12 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/tile/neutral/full,
+/mob/living/simple_animal/hostile/zombie{
+	outfit = /datum/outfit/job/doctor;
+	infection_chance = 5;
+	health = 200;
+	maxHealth = 200
+	},
 /turf/open/floor/iron/large,
 /area/station/medical/paramedic)
 "xxX" = (
@@ -142554,7 +142734,7 @@ wTU
 ydb
 tXu
 pRg
-ikE
+tXu
 uRf
 oYs
 uoV
@@ -142579,7 +142759,7 @@ iGk
 dUe
 iyq
 iCO
-iPE
+uED
 eeK
 sAh
 jkl
@@ -144381,15 +144561,15 @@ hAc
 ctw
 lSl
 jZs
-iub
+heP
 nxU
 nSk
 gwq
 oRm
 tNP
-tNP
-hIO
 tzM
+hIO
+hyl
 eAI
 eAI
 eAI
@@ -144605,7 +144785,7 @@ fuT
 vbK
 aXu
 dMy
-uQj
+vUN
 dRJ
 vUN
 dMy
@@ -144654,7 +144834,7 @@ xmu
 xmu
 whK
 ahq
-xmu
+kOT
 xmu
 xmu
 whK
@@ -144917,7 +145097,7 @@ lIk
 kHu
 kcc
 nXY
-pTa
+whK
 eAI
 ngQ
 uwi
@@ -145600,7 +145780,7 @@ aaa
 aaa
 sjt
 eIm
-xoQ
+kJd
 wTn
 sjt
 qld
@@ -145642,7 +145822,7 @@ uet
 mXS
 mXS
 aWB
-kOT
+opX
 dBj
 dkD
 pna
@@ -147131,7 +147311,7 @@ wOq
 wOq
 wOq
 wOq
-wOq
+iPE
 cEZ
 wOq
 wOq
@@ -151506,14 +151686,14 @@ qxC
 nPF
 kAc
 oHj
-jdL
-jdL
-jdL
-jdL
-jdL
-iib
-jdL
-jdL
+jrp
+jrp
+jrp
+jrp
+jrp
+jrp
+jrp
+jrp
 jrp
 jrp
 ocO
@@ -151605,7 +151785,7 @@ uNY
 gnb
 bQj
 eiw
-vxO
+buk
 mbA
 uNY
 keH
@@ -151763,12 +151943,12 @@ abi
 pSq
 dmC
 abi
-jdL
+jrp
 xdA
-iql
+lei
 hfM
 siV
-siV
+xoQ
 pOi
 hNP
 jrp
@@ -152020,7 +152200,7 @@ vCM
 vCM
 bmG
 xFw
-jdL
+jrp
 kvW
 uGx
 gPO
@@ -152278,13 +152458,13 @@ oig
 tKV
 gmK
 jdL
-jdL
-jdL
+nMm
+jrp
 quZ
 esu
 qMq
 oyB
-iql
+mOh
 jrp
 iPJ
 fYK
@@ -152321,9 +152501,9 @@ wfK
 oQE
 nkO
 wAl
-rTB
+pws
 vkK
-wAl
+rTB
 dHQ
 njx
 sLK
@@ -152374,7 +152554,7 @@ esr
 feO
 fUJ
 mpk
-whH
+bQj
 wgj
 rFo
 bQj
@@ -152427,7 +152607,7 @@ lho
 fFF
 aGt
 lEp
-jYc
+eWi
 hDl
 qYo
 aaa
@@ -152536,9 +152716,9 @@ ahv
 cCw
 xcZ
 mtu
-jdL
+jrp
 jQx
-siV
+oyI
 uRt
 kdg
 ccy
@@ -152578,7 +152758,7 @@ njx
 sYn
 lky
 jwt
-eAp
+pLK
 rTB
 oSv
 fdK
@@ -152793,7 +152973,7 @@ adR
 adR
 jdL
 naN
-jdL
+jrp
 sPo
 ipg
 ctt
@@ -152802,7 +152982,7 @@ xpn
 jrp
 wak
 yfI
-ske
+iib
 daF
 yfI
 wak
@@ -152835,7 +153015,7 @@ njx
 eew
 cFs
 rcI
-cFs
+eDT
 wux
 rTB
 xLy
@@ -153051,7 +153231,7 @@ aeF
 jrp
 jrp
 rcX
-jrp
+uQj
 jrp
 kYn
 aBM
@@ -153316,7 +153496,7 @@ mGq
 suM
 jrp
 kvs
-gUb
+pTa
 pWh
 lia
 kYn
@@ -153670,7 +153850,7 @@ avM
 slE
 rHI
 dju
-nMm
+dju
 hBL
 vvh
 dju
@@ -153824,7 +154004,7 @@ mXE
 jmR
 saK
 sUA
-pyd
+whH
 bxe
 uWe
 xCC
@@ -153968,7 +154148,7 @@ aur
 lho
 fFF
 aGt
-jkH
+bVd
 aLF
 etI
 ikx
@@ -154195,7 +154375,7 @@ tIV
 mhW
 tIV
 pYp
-bVd
+tIV
 tIV
 tIV
 tIV
@@ -154444,7 +154624,7 @@ mjT
 xjJ
 mhM
 kaN
-mhM
+iub
 fLK
 lmm
 dgd
@@ -154597,7 +154777,7 @@ eJx
 egs
 haz
 rJN
-aRX
+jYc
 pGy
 yfI
 aRX
@@ -154946,7 +155126,7 @@ yeD
 jTA
 aNU
 amz
-rRz
+xNV
 lNd
 opF
 ush
@@ -155882,7 +156062,7 @@ gUb
 dxt
 fML
 ahI
-doI
+vxO
 fUN
 njx
 xdg

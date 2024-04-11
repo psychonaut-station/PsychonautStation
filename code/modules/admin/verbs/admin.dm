@@ -177,6 +177,11 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 		if(MUTE_OOC)
 			mute_string = "OOC"
 			feedback_string = "OOC"
+		// PSYCHONAUT EDIT ADDITION START - LOOC
+		if(MUTE_LOOC)
+			mute_string = "LOOC"
+			feedback_string = "LOOC"
+		// PSYCHONAUT EDIT ADDITION END
 		if(MUTE_PRAY)
 			mute_string = "pray"
 			feedback_string = "Pray"

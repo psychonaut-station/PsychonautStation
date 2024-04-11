@@ -72,6 +72,7 @@
 	if(is_global && stop_ooc && GLOB.ooc_allowed)
 		ooc_toggled = TRUE
 		toggle_ooc(FALSE)
+		toggle_looc(FALSE) // PSYCHONAUT EDIT ADDITION - LOOC
 
 	// Place the /atom/movable/screen/cinematic into everyone's screens, and prevent movement.
 	for(var/mob/watching_mob in watchers)
@@ -90,6 +91,7 @@
 /datum/cinematic/proc/clean_up_cinematic(was_ooc_toggled = FALSE)
 	if(was_ooc_toggled)
 		toggle_ooc(TRUE)
+		toggle_looc(TRUE) // PSYCHONAUT EDIT ADDITION - LOOC
 
 	stop_cinematic()
 

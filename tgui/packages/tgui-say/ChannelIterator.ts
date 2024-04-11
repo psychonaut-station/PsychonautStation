@@ -1,4 +1,4 @@
-export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'Admin';
+export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'LOOC' | 'Admin'; // PSYCHONAUT EDIT CHANGE - LOOC - ORIGINAL: 'Say' | 'Radio' | 'Me' | 'OOC' | 'Admin'
 
 /**
  * ### ChannelIterator
@@ -8,9 +8,19 @@ export type Channel = 'Say' | 'Radio' | 'Me' | 'OOC' | 'Admin';
  */
 export class ChannelIterator {
   private index: number = 0;
-  private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'OOC', 'Admin'];
+  // PSYCHONAUT EDIT CHANGE START - LOOC - ORIGINAL:
+  // private readonly channels: Channel[] = ['Say', 'Radio', 'Me', 'OOC', 'Admin'];
+  private readonly channels: Channel[] = [
+    'Say',
+    'Radio',
+    'Me',
+    'OOC',
+    'LOOC',
+    'Admin',
+  ];
+  // PSYCHONAUT EDIT CHANGE END
   private readonly blacklist: Channel[] = ['Admin'];
-  private readonly quiet: Channel[] = ['OOC', 'Admin'];
+  private readonly quiet: Channel[] = ['OOC', 'LOOC', 'Admin']; // PSYCHONAUT EDIT CHANGE - LOOC - ORIGINAL: ['OOC', 'Admin']
 
   public next(): Channel {
     if (this.blacklist.includes(this.channels[this.index])) {

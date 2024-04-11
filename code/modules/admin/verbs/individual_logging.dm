@@ -21,6 +21,10 @@
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_CKEY, "OOC Log", source, ntype)
 		dat += " | "
+		// PSYCHONAUT EDIT ADDITION START - LOOC
+		dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_CKEY, "LOOC Log", source, ntype)
+		dat += " | "
+		// PSYCHONAUT EDIT ADDITION END
 		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CKEY, "Show All", source, ntype)
 		dat += "</center>"
 	else
@@ -42,6 +46,10 @@
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_MOB, "OOC Log", source, ntype)
 	dat += " | "
+	// PSYCHONAUT EDIT ADDITION START - LOOC
+	dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_MOB, "LOOC Log", source, ntype)
+	dat += " | "
+	// PSYCHONAUT EDIT ADDITION END
 	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Show All", source, ntype)
 	dat += "</center>"
 

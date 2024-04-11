@@ -28,6 +28,7 @@ export const MESSAGE_TYPE_INFO = 'info';
 export const MESSAGE_TYPE_WARNING = 'warning';
 export const MESSAGE_TYPE_DEADCHAT = 'deadchat';
 export const MESSAGE_TYPE_OOC = 'ooc';
+export const MESSAGE_TYPE_LOOC = 'looc'; // PSYCHONAUT EDIT ADDITION - LOOC
 export const MESSAGE_TYPE_ADMINPM = 'adminpm';
 export const MESSAGE_TYPE_COMBAT = 'combat';
 export const MESSAGE_TYPE_ADMINCHAT = 'adminchat';
@@ -88,6 +89,14 @@ export const MESSAGE_TYPES = [
     description: 'The bluewall of global OOC messages',
     selector: '.ooc, .adminooc, .adminobserverooc, .oocplain',
   },
+  // PSYCHONAUT EDIT ADDITION START - LOOC
+  {
+    type: MESSAGE_TYPE_LOOC,
+    name: 'LOOC',
+    description: 'OOC messages from people around you, so called Local OOC',
+    selector: '.looc, .loocplain',
+  },
+  // PSYCHONAUT EDIT ADDITION END
   {
     type: MESSAGE_TYPE_ADMINPM,
     name: 'Admin PMs',

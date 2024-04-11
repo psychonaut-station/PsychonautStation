@@ -128,6 +128,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_econ(log_text, data)
 		if(LOG_OOC)
 			log_ooc(log_text, data)
+		// PSYCHONAUT EDIT ADDITION START - LOOC
+		if(LOG_LOOC)
+			log_looc(log_text, data)
+		// PSYCHONAUT EDIT ADDITION END
 		if(LOG_ADMIN)
 			log_admin(log_text, data)
 		if(LOG_ADMIN_PRIVATE)

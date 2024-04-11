@@ -40,6 +40,10 @@
 			colored_message = "(WHISPER) [colored_message]"
 		if(LOG_OOC)
 			colored_message = "(OOC) [colored_message]"
+		// PSYCHONAUT EDIT ADDITION START - LOOC
+		if(LOG_LOOC)
+			colored_message = "(LOOC) [colored_message]"
+		// PSYCHONAUT EDIT ADDITION END
 		if(LOG_ASAY)
 			colored_message = "(ASAY) [colored_message]"
 		if(LOG_EMOTE)

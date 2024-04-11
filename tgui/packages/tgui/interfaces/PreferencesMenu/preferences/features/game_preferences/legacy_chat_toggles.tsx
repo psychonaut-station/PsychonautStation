@@ -74,6 +74,14 @@ export const chat_ooc: FeatureToggle = {
   component: CheckboxInput,
 };
 
+// PSYCHONAUT EDIT ADDITION START - LOOC
+export const chat_looc: FeatureToggle = {
+  name: 'Enable LOOC',
+  category: 'CHAT',
+  component: CheckboxInput,
+};
+// PSYCHONAUT EDIT ADDITION END
+
 export const chat_prayer: FeatureToggle = {
   name: 'Listen to prayers',
   category: 'ADMIN',

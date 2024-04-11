@@ -6327,4 +6327,6 @@
 #include "modular_psychonaut\modules\nt_secretary\code\job.dm"
 #include "modular_psychonaut\modules\protected_roles\code\protected_roles.dm"
 #include "modular_psychonaut\modules\stamps\code\stamps.dm"
+#include "modular_psychonaut\modules\worker\code\items.dm"
+#include "modular_psychonaut\modules\worker\code\job.dm"
 // END_INCLUDE

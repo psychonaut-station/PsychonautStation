@@ -11,6 +11,7 @@ Eskiden gelen vazgeçilmez rölümüz olan Nt Secretary.
 - `code/__DEFINES/jobs.dm`: `JOB_DISPLAY_ORDER_NT_SECRETARY`
 - `code/datums/station_traits/job_traits.dm`: `/datum/station_trait/job/bridge_assistant/var/weight`
 - `code/modules/asset_cache/assets/paper.dm`: `/datum/asset/spritesheet/simple/paper/var/assets`
+- `tgui/packages/tgui/interfaces/common/JobToIcon.ts`: `Nt Secretary`
 
 ### Modüler Değişiklikler
 
@@ -20,6 +21,7 @@ Eskiden gelen vazgeçilmez rölümüz olan Nt Secretary.
 - `modular_psychonaut/master_files/icons/mob/clothing/head/plasmaman_head.dmi`: `secretary_envirohelm`, `secretary_envirohelm-light`
 - `modular_psychonaut/master_files/icons/mob/clothing/under/centcom.dmi`: `nt_secretary`
 - `modular_psychonaut/master_files/icons/mob/clothing/under/plasmaman.dmi`: `secretary_envirosuit`
+- `modular_psychonaut/master_files/icons/mob/huds/hud.dmi`: `hudntsecretary`
 - `modular_psychonaut/master_files/icons/obj/clothing/head/hats.dmi`: `nt_secretary`, `nt_secretary_flipped`
 - `modular_psychonaut/master_files/icons/obj/clothing/head/plasmaman_hats.dmi`: `secretary_envirohelm`, `secretary_envirohelm-light`
 - `modular_psychonaut/master_files/icons/obj/clothing/under/centcom.dmi`: `nt_secretary`
@@ -44,7 +46,6 @@ Eskiden gelen vazgeçilmez rölümüz olan Nt Secretary.
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 
-- `tgui/packages/tgui/interfaces/common/JobToIcon.ts`: `Nt Secretary`
 - `tgui/packages/tgui/interfaces/SecretaryConsole.jsx`
 
 ### Katkıda Bulunanlar

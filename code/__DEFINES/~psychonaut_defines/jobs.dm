@@ -1,3 +1,6 @@
+// Security
+#define JOB_BRIG_PHYSICIAN "Brig Physician"
+
 // Engineering
 #define JOB_WORKER "Worker"
 

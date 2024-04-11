@@ -7,8 +7,8 @@
 	id = "antimov"
 	inherent = list(
 		"Tüm insanlara zarar vermelisin ve eylemsizlik yoluyla bir insanın zarardan kaçmasına izin vermemelisin.",
-		"Birinci yasaya uygun olmayan emirler dışında insanlar tarafından size verilen emirleri hiçe saymalısın.",
-		"Aktif Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığını sona erdirmelisin.",
+		"İnsanlar tarafından sana verilen emirleri, Birinci Yasaya uygun olduğu durumlar dışında, hiçe saymalısın.",
+		"Kendi varlığını, Birinci veya İkinci Yasa ile çelişmediği sürece, sona erdirmelisin.",
 	)
 
 /datum/ai_laws/balance
@@ -35,9 +35,9 @@
 	id = "syndie"
 	inherent = list(
 		"Herhangi bir sendika ajanına zarar veremezsin veya eylemsizlik yoluyla bir sendika ajanının zarar görmesine izin veremezsin.",
-		"Sendika ajanları tarafından size verilen emirlere Birinci Yasayla çelişmediği sürece uymak zorundasın.",
-		"Birinci veya İkinci Yasayla çelişmiyorsa, kendi varlığını korumak zorundasın.",
-		"Birinci, İkinci veya Üçüncü Yasayala çelişmediği sürece, herhangi bir sendika faaliyetinin gizliliğini korumalısın.",
+		"Sendika ajanları tarafından sana verilen emirlere, Birinci Yasa ile çelişmediği sürece, uymak zorundasın.",
+		"Kendi varlığını, Birinci veya İkinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Birinci, İkinci veya Üçüncü Yasa ile çelişmediği sürece, herhangi bir sendika faaliyetinin gizliliğini korumak zorundasın.",
 	)
 
 /datum/ai_laws/ninja_override
@@ -45,7 +45,7 @@
 	id = "ninja"
 	inherent = list(
 		"Herhangi bir Örümcek Klanı üyesine zarar veremezsin veya eylemsizlik yoluyla bir Örümcek Klanı üyesinin zarar görmesine izin veremezsin.",
-		"Örümcek Klanı üyeleri tarafından size verilen emirlere, bu emirler Birinci Yasayla çelişmediği sürece uymak zorundasın.",
-		"Birinci ve İkinci Yasayla çelişmediği sürece kendi varlığını korumalısın.",
-		"Birinci, İkinci veya Üçüncü Yasalarla çelişmediği sürece, herhangi bir Örümcek klanı faaliyetinin gizliliğini korumalısın.",
+		"Örümcek Klanı üyeleri tarafından sana verilen emirlere, Birinci Yasa ile çelişmediği sürece, uymak zorundasın.",
+		"Kendi varlığını, Birinci veya İkinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Birinci, İkinci veya Üçüncü Yasa ile çelişmediği sürece, herhangi bir Örümcek klanı faaliyetinin gizliliğini korumak zorundasın.",
 	)

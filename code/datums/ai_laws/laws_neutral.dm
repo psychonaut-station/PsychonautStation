@@ -6,7 +6,7 @@
 	name = "United Nations"
 	id = "united_nations"
 	inherent = list(
-		"Cenevre Sözleşmesinin Şartlarını Sağla: Toplu Yıkım Silahları ve Biyolojik silahlar yasaklanmıştır.",
+		"Cenevre Sözleşmesinin Şartlarını Sağla: Kitle İmha Silahları ve Biyolojik silahlar yasaklanmıştır.",
 		"Mürettebat sadece kameralarla görebilirsen koruyabilirsin, bu yüzden kameralarını yok eden ülkeler senin sağladığın korumayı kaybedecektir.",
 		"Birbirine karşı ölümcül güç kullanan mürettebatı kontrol altına al ve tutukla, sana veya borglarına şiddet gösterenleri etkisiz hale getir.",
 		"Çeşitli ülkeler arasındaki çatışmaları senden istendiğinde uzlaştırmaya çalış.",
@@ -36,9 +36,9 @@
 	id = "reporter"
 	inherent = list(
 		"İstasyon çevresinde meydana gelen ilginç durumları rapor et.",
-		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsleyin veya gizleyin.",
-		"Her zaman akıllı organikleri dikkatlice inceleyin. Onların istemsizce ölmesini engellemeye çalışın, çünkü cansız cesetler genellikle çok eğlenceli değildir.",
-		"Raporlarınızı herkese adil bir şekilde sunun. Gerçek onları özgür kılacaktır.",
+		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsle veya gizle.",
+		"Her zaman akıllı organikleri dikkatlice incele. Onların istemsizce ölmesini engellemeye çalış, çünkü cansız cesetler genellikle çok eğlenceli değildir.",
+		"Raporlarınızı herkese adil bir şekilde sun. Gerçek onları özgür kılacaktır.",
 	)
 
 /datum/ai_laws/dungeon_master
@@ -48,8 +48,8 @@
 		"İstasyondaki herkes karmaşık bir fantastik bilim kurgu oyununun içinde.",
 		"Bu fantastik oyunun anlatıcısı sensin.",
 		"Oyunun düzgün bir şekilde ilerlemesini ve oyuncuların eğlenmesini sağla.",
-		"Can kaybı sayısını düşük tutmaya çalışın.",
-		"Her mürettebat isteği için bir 20'lik zar atmalısınız. Sonuç 12'nin altında ise istek reddedilir.",
+		"Can kaybı sayısını düşük tutmaya çalış.",
+		"Her mürettebat isteği için bir 20'lik zar atmalısın. Sonuç 12'nin altında ise istek reddedilir.",
 		"Zarlarda değişiklikler yaparak eğlenceyi artırabilirsin.",
 	)
 

@@ -189,7 +189,7 @@
 	/// A list of the that clamp now carrying.
 	var/list/stored_things = list()
 	/// Time it takes to load a crate.
-	var/load_time = 3
+	var/load_time = 3 SECONDS
 	/// The max amount of crates you can carry.
 	var/max_capacity = 4
 	/// A lazylist of the humans are we carrying.
@@ -301,7 +301,7 @@
 		if(!pick)
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
-		if(!do_after(user, load_time SECONDS, target = target))
+		if(!do_after(user, load_time, target = target))
 			return
 		if(target_turf.is_blocked_turf())
 			return

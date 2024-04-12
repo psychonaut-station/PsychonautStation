@@ -966,7 +966,7 @@
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/cargo)
 	model_flags = BORG_MODEL_CARGO
-	var/one_use = FALSE
+	var/one_time_use = FALSE
 
 /obj/item/borg/upgrade/uclamp/action(mob/living/silicon/robot/R)
 	. = ..()
@@ -975,7 +975,7 @@
 			if(length(C.upgrades) == 3)
 				R.balloon_alert_to_viewers("there is no room for it!")
 				return FALSE
-			if(is_type_in_list(src, C.upgrades) && one_use)
+			if(is_type_in_list(src, C.upgrades) && one_time_use)
 				R.balloon_alert_to_viewers("already installed!")
 				return FALSE
 			C.upgrades += src
@@ -1040,7 +1040,7 @@
 /obj/item/borg/upgrade/uclamp/carry //unique bi isim bulamadıms
 	name = "clamp carry upgrade"
 	desc = "A upgrade for increase what that clamp can carry."
-	one_use = TRUE
+	one_time_use = TRUE
 
 /obj/item/borg/upgrade/uclamp/carry/action(mob/living/silicon/robot/R)
 	. = ..()

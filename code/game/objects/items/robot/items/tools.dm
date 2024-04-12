@@ -291,7 +291,7 @@
 			return
 		var/list/crate_radial = list()
 		for(var/obj/crate as anything in stored_things)
-			crate_radial[crate] = image(icon = crate.icon, icon_state = crate.icon_state)
+			crate_radial[crate] = image(crate)
 		var/obj/pick = show_radial_menu(user, target_turf, crate_radial, radius = 38, require_near = TRUE)
 		if(!pick)
 			return

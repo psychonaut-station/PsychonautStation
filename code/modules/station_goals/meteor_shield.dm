@@ -169,7 +169,7 @@
 			say("Warning. Risk of dark matter congealment entering existent ranges. Further tampering will be reported.")
 		if(EMAGGED_METEOR_SHIELD_THRESHOLD_THREE)
 			say("Warning. Further tampering has been reported.")
-			priority_announce("Warning. Tampering of meteor satellites puts the station at risk of exotic, deadly meteor collisions. Please intervene by checking your GPS devices for strange signals, and dismantling the tampered meteor shields.", "Strange Meteor Signal Warning")
+			priority_announce("Uyarı. Meteor uydularının kurcalanması istasyonu egzotik, ölümcül meteor çarpışmaları riskiyle karşı karşıya bırakmaktadır. Lütfen GPS cihazlarınızı tuhaf sinyallere karşı kontrol ederek ve kurcalanmış meteor kalkanlarını sökerek duruma müdahale edin.", "Garip Meteor Sinyali Uyarısı")
 		if(EMAGGED_METEOR_SHIELD_THRESHOLD_FOUR)
 			say("Warning. Warning. Dark Matt-eor on course for station.")
 			force_event_async(/datum/round_event_control/dark_matteor, "an array of tampered meteor satellites")

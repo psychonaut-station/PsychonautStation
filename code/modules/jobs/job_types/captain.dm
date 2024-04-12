@@ -50,7 +50,7 @@
 
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)
-	return "Captain [captain.real_name] on deck!"
+	return "Kaptan [captain.real_name] güvertede!"
 
 /datum/job/captain/get_radio_information()
 	. = ..()

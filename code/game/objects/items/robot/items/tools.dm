@@ -278,6 +278,11 @@
 		if(!owner.cell.use(cell_usage))
 			to_chat(user, span_warning("Not enough power."))
 			return
+		if(istype(target, /obj/structure/closet))
+			var/obj/structure/closet/c = target
+			if(c.opened)
+				balloon_alert(host, "it is opened!")
+				return
 		stored_things += picked_crate
 		picked_crate.forceMove(src)
 		for(var/mob/living/mob in picked_crate.get_all_contents())

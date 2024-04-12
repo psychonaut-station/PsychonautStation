@@ -281,7 +281,7 @@
 		if(istype(target, /obj/structure/closet))
 			var/obj/structure/closet/c = target
 			if(c.opened)
-				balloon_alert(host, "it is opened!")
+				balloon_alert(host, "close it first!")
 				return
 		stored_things += picked_crate
 		picked_crate.forceMove(src)

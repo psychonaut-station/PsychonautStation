@@ -966,7 +966,7 @@
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/cargo)
 	model_flags = BORG_MODEL_CARGO
-	var/oneUse = FALSE
+	var/one_use = FALSE
 
 /obj/item/borg/upgrade/uclamp/action(mob/living/silicon/robot/R)
 	. = ..()
@@ -975,7 +975,7 @@
 			if(length(C.upgrades) == 3)
 				R.balloon_alert_to_viewers("there is no room for it!")
 				return FALSE
-			if(is_type_in_list(src, C.upgrades) && oneUse)
+			if(is_type_in_list(src, C.upgrades) && one_use)
 				R.balloon_alert_to_viewers("already installed!")
 				return FALSE
 			C.upgrades += src
@@ -1040,7 +1040,7 @@
 /obj/item/borg/upgrade/uclamp/carry //unique bi isim bulamadıms
 	name = "clamp carry upgrade"
 	desc = "A upgrade for increase what that clamp can carry."
-	oneUse = TRUE
+	one_use = TRUE
 
 /obj/item/borg/upgrade/uclamp/carry/action(mob/living/silicon/robot/R)
 	. = ..()
@@ -1052,7 +1052,7 @@
 	. = ..()
 	if (.)
 		for(var/obj/item/borg/cyborg_clamp/C in R.model)
-			C.can_carry = list(/obj/structure/closet/crate, /obj/item/delivery/big)
+			C.can_carry = initial(C.can_carry)
 
 ///This isn't an upgrade or part of the same path, but I'm gonna just stick it here because it's a tool used on cyborgs.
 //A reusable tool that can bring borgs back to life. They gotta be repaired first, though.

@@ -200,13 +200,13 @@
 
 /obj/item/borg/cyborg_clamp/Initialize(mapload)
 	host = loc
-	START_PROCESSING(SSfastprocess, src)
+	START_PROCESSING(SSprocessing, src)
 	RegisterSignal(host, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	return ..()
 
 /obj/item/borg/cyborg_clamp/Destroy()
 	drop_all_crates()
-	STOP_PROCESSING(SSfastprocess, src)
+	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
 /obj/item/borg/cyborg_clamp/proc/on_death(datum/source, gibbed)
@@ -322,11 +322,12 @@
 
 /obj/item/borg/cyborg_clamp/examine()
 	. = ..()
-	. += "There are [length(stored_things) ? length(stored_things) : "0"]/[max_capacity] things were picked up here."
-	if(length(stored_things))
+	var/st = length(stored_things)
+	. += "There are [st ? st : "0"]/[max_capacity] things were picked up here."
+	if(st)
 		. += "Crates:"
 		for(var/obj/crate as anything in stored_things)
-			. += "[crate.name]"
+			. += " [crate.name]"
 	if(LAZYLEN(carrying_humans))
 		. += span_warning(" DANGER!! High weight detected..! ")
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
@@ -342,7 +343,9 @@
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
 	var/mob/living/silicon/robot/owner = get_host()
-	owner?.adjustBruteLoss(0.4 * seconds_per_tick * LAZYLEN(carrying_humans))
-	if(!owner.cell?.use(5 * seconds_per_tick * (LAZYLEN(carrying_humans) ? 1 : 0)))
-		owner.logevent("ERROR: NO POWER")
-		drop_all_crates()
+	var/humans = LAZYLEN(carrying_humans)
+	if(humans)
+		owner?.adjustBruteLoss(0.4 * seconds_per_tick * humans)
+		if(!owner.cell?.use(5 * seconds_per_tick))
+			owner.logevent("ERROR: NO POWER")
+			drop_all_crates()

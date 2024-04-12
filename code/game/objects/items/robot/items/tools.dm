@@ -182,22 +182,31 @@
 	desc = "Equipment for cyborgs. Lifts objects and loads them into cargo."
 	icon = 'icons/psychonaut/mob/silicon/robot_items.dmi'
 	icon_state = "clamp"
+	/// The clamps owner.
 	var/mob/living/silicon/robot/host
-	var/list/stored_crates = list()
+	/// A list of the that clamp can carry.
+	var/list/can_carry = list(/obj/structure/closet/crate, /obj/item/delivery/big)
+	/// A list of the that clamp now carrying.
+	var/list/stored_things = list()
 	/// Time it takes to load a crate.
-	var/load_time = 3 SECONDS
+	var/load_time = 3
 	/// The max amount of crates you can carry.
-	var/max_crates = 5
+	var/max_capacity = 4
 	/// A lazylist of the humans are we carrying.
 	var/list/carrying_humans
+	/// Cell usage.
+	var/cell_usage = 50
+	var/list/upgrades = list()
 
 /obj/item/borg/cyborg_clamp/Initialize(mapload)
 	host = loc
+	START_PROCESSING(SSfastprocess, src)
 	RegisterSignal(host, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	return ..()
 
 /obj/item/borg/cyborg_clamp/Destroy()
 	drop_all_crates()
+	STOP_PROCESSING(SSfastprocess, src)
 	return ..()
 
 /obj/item/borg/cyborg_clamp/proc/on_death(datum/source, gibbed)
@@ -229,14 +238,14 @@
 	return null
 
 /obj/item/borg/cyborg_clamp/proc/drop_all_crates()
-	for(var/obj/crate as anything in stored_crates)
+	for(var/obj/crate as anything in stored_things)
 		crate.forceMove(drop_location())
-		stored_crates -= crate
+		stored_things -= crate
 	LAZYNULL(carrying_humans)
 	update_speedmod()
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
-	if(length(stored_crates) >= max_crates)
+	if(length(stored_things) >= max_capacity)
 		balloon_alert(host, "too many crates!")
 		return FALSE
 	for(var/mob/living/mob in target.get_all_contents())
@@ -252,38 +261,42 @@
 	return TRUE
 
 /obj/item/borg/cyborg_clamp/pre_attack(atom/target, mob/user)
+	var/mob/living/silicon/robot/owner = get_host()
 	if(!user.Adjacent(target))
 		return
-	if(istype(target, /obj/structure/closet/crate) || istype(target, /obj/item/delivery/big))
+	if(is_type_in_list(target, can_carry))
 		var/obj/picked_crate = target
 		if(!can_pickup(picked_crate))
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
-		if(!do_after(user, load_time, target = target))
+		if(!do_after(user, load_time SECONDS, target = target))
 			return
 		if(!can_pickup(picked_crate))
 			return
 		if(!user.Adjacent(target))
 			return
-		stored_crates += picked_crate
+		if(!owner.cell.use(cell_usage))
+			to_chat(user, span_warning("Not enough power."))
+			return
+		stored_things += picked_crate
 		picked_crate.forceMove(src)
 		for(var/mob/living/mob in picked_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				LAZYADD(carrying_humans, picked_crate)
 		balloon_alert(user, "picked up [picked_crate]")
 		update_speedmod()
-	else if(length(stored_crates))
+	else if(length(stored_things))
 		var/turf/target_turf = get_turf(target)
 		if(isturf(target_turf) && target_turf.is_blocked_turf())
 			return
 		var/list/crate_radial = list()
-		for(var/obj/crate as anything in stored_crates)
-			crate_radial[crate] = image(icon = initial(crate.icon), icon_state = initial(crate.icon_state))
+		for(var/obj/crate as anything in stored_things)
+			crate_radial[crate] = image(icon = crate.icon, icon_state = crate.icon_state)
 		var/obj/pick = show_radial_menu(user, target_turf, crate_radial, radius = 38, require_near = TRUE)
 		if(!pick)
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
-		if(!do_after(user, load_time, target = target))
+		if(!do_after(user, load_time SECONDS, target = target))
 			return
 		if(target_turf.is_blocked_turf())
 			return
@@ -293,7 +306,7 @@
 			return
 		var/obj/dropped_crate = pick
 		dropped_crate.forceMove(target_turf)
-		stored_crates -= pick
+		stored_things -= pick
 		for(var/mob/living/mob in dropped_crate.get_all_contents())
 			if(mob.mob_size == MOB_SIZE_HUMAN)
 				LAZYREMOVE(carrying_humans, dropped_crate)
@@ -304,8 +317,11 @@
 
 /obj/item/borg/cyborg_clamp/examine()
 	. = ..()
-	if(length(stored_crates))
-		. += "There are [length(stored_crates)] things were picked up here."
+	. += "There are [length(stored_things) ? length(stored_things) : "0"]/[max_capacity] things were picked up here."
+	if(length(stored_things))
+		. += "Crates:"
+		for(var/obj/crate as anything in stored_things)
+			. += "[crate.name]"
 	if(LAZYLEN(carrying_humans))
 		. += span_warning(" DANGER!! High weight detected..! ")
 	. += span_notice(" <i>Alt-click</i> to drop all the crates. ")
@@ -321,4 +337,7 @@
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
 	var/mob/living/silicon/robot/owner = get_host()
-	owner?.adjustBruteLoss(2 * seconds_per_tick * LAZYLEN(carrying_humans))
+	owner?.adjustBruteLoss(0.4 * seconds_per_tick * LAZYLEN(carrying_humans))
+	if(!owner.cell?.use(5 * seconds_per_tick * (LAZYLEN(carrying_humans) ? 1 : 0)))
+		owner.logevent("ERROR: NO POWER")
+		drop_all_crates()

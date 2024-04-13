@@ -189,7 +189,7 @@
 	/// A list of the that clamp now carrying.
 	var/list/stored_things = list()
 	/// Time it takes to load a crate.
-	var/load_time = 3 SECONDS
+	var/load_time = 4 SECONDS
 	/// The max amount of crates you can carry.
 	var/max_capacity = 4
 	/// A lazylist of the humans are we carrying.
@@ -246,17 +246,17 @@
 
 /obj/item/borg/cyborg_clamp/proc/can_pickup(obj/target)
 	if(length(stored_things) >= max_capacity)
-		balloon_alert(host, "too many crates!")
+		balloon_alert(host, "no space!")
 		return FALSE
 	for(var/mob/living/mob in target.get_all_contents())
 		if(mob.mob_size <= MOB_SIZE_SMALL)
 			continue
 		if(mob.mob_size == MOB_SIZE_HUMAN && host.emagged)
 			continue
-		balloon_alert(host, "crate too heavy!")
+		balloon_alert(host, "target too heavy!")
 		return FALSE
 	if(target.anchored)
-		balloon_alert(host, "crate is anchored!")
+		balloon_alert(host, "target is anchored!")
 		return FALSE
 	return TRUE
 
@@ -323,7 +323,7 @@
 /obj/item/borg/cyborg_clamp/examine()
 	. = ..()
 	var/st = length(stored_things)
-	. += "There are [st ? st : "0"]/[max_capacity] things were picked up here."
+	. += "There are [st]/[max_capacity] things were picked up here."
 	if(st)
 		. += "Crates:"
 		for(var/obj/crate as anything in stored_things)
@@ -342,9 +342,9 @@
 		owner?.remove_movespeed_modifier(/datum/movespeed_modifier/cyborgclamp)
 
 /obj/item/borg/cyborg_clamp/process(seconds_per_tick)
-	var/mob/living/silicon/robot/owner = get_host()
 	var/humans = LAZYLEN(carrying_humans)
 	if(humans)
+		var/mob/living/silicon/robot/owner = get_host()
 		owner?.adjustBruteLoss(0.4 * seconds_per_tick * humans)
 		if(!owner.cell?.use(5 * seconds_per_tick))
 			owner.logevent("ERROR: NO POWER")

@@ -1029,13 +1029,13 @@
 	. = ..()
 	if(.)
 		for(var/obj/item/borg/cyborg_clamp/C in R.model)
-			C.load_time /= 2
+			C.load_time /= 1.5
 
 /obj/item/borg/upgrade/uclamp/time/deactivate(mob/living/silicon/robot/R, user = usr)
 	. = ..()
 	if (.)
 		for(var/obj/item/borg/cyborg_clamp/C in R.model)
-			C.load_time *= 2
+			C.load_time *= 1.5
 
 /obj/item/borg/upgrade/uclamp/carry //unique bi isim bulamadıms
 	name = "clamp carry upgrade"

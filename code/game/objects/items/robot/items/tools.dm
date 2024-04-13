@@ -269,7 +269,7 @@
 		if(!can_pickup(picked_crate))
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
-		if(!do_after(user, load_time, target = target))
+		if(!do_after(user, load_time SECONDS, target = target))
 			return
 		if(!can_pickup(picked_crate))
 			return
@@ -325,7 +325,7 @@
 	var/st = length(stored_things)
 	. += "There are [st]/[max_capacity] things were picked up here."
 	if(st)
-		. += "Crates:"
+		. += "Stored:"
 		for(var/obj/crate as anything in stored_things)
 			. += " [crate.name]"
 	if(LAZYLEN(carrying_humans))

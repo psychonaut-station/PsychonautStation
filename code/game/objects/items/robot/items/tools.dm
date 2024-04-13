@@ -269,7 +269,7 @@
 		if(!can_pickup(picked_crate))
 			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
-		if(!do_after(user, load_time SECONDS, target = target))
+		if(!do_after(user, load_time, target = target))
 			return
 		if(!can_pickup(picked_crate))
 			return

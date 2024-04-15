@@ -281,6 +281,9 @@
 			return
 		if(!can_pickup(picked_crate))
 			return
+		if(istype(c))
+			if(c.opened)
+				return
 		if(!user.Adjacent(target))
 			return
 		stored_things += picked_crate

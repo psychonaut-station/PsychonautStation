@@ -268,6 +268,14 @@
 		var/obj/picked_crate = target
 		if(!can_pickup(picked_crate))
 			return
+		var/obj/structure/closet/c = target
+		if(istype(c))
+			if(c.opened)
+				balloon_alert(host, "close it first!")
+				return
+		if(!owner.cell.use(cell_usage))
+			to_chat(user, span_warning("Not enough power."))
+			return
 		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			return
@@ -275,14 +283,6 @@
 			return
 		if(!user.Adjacent(target))
 			return
-		if(!owner.cell.use(cell_usage))
-			to_chat(user, span_warning("Not enough power."))
-			return
-		if(istype(target, /obj/structure/closet))
-			var/obj/structure/closet/c = target
-			if(c.opened)
-				balloon_alert(host, "close it first!")
-				return
 		stored_things += picked_crate
 		picked_crate.forceMove(src)
 		for(var/mob/living/mob in picked_crate.get_all_contents())

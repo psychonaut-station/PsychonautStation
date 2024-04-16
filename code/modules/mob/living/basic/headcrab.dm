@@ -201,7 +201,7 @@
 
 /datum/bodypart_overlay/mutant/headcrab/get_global_feature_list() 
 	return GLOB.headcrab_list 
-  
+
 /datum/bodypart_overlay/mutant/headcrab/get_base_icon_state() 
 	return sprite_datum.icon_state
 

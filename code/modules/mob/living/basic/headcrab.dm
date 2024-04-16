@@ -37,7 +37,7 @@
 /mob/living/basic/headcrab/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, gentle, quickstart = TRUE)
 	if(stat != DEAD)
 		icon_state = "headcrab_jump"
-	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, quickstart = quickstart)
+	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, gentle, quickstart = quickstart)
 
 /datum/ai_controller/basic_controller/headcrab
 	blackboard = list(

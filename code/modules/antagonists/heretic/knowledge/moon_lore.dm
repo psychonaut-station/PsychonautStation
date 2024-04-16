@@ -189,8 +189,8 @@
 /datum/heretic_knowledge/ultimate/moon_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-	priority_announce("[generate_heretic_text()] Laugh, for the ringleader [user.real_name] has ascended! \
-					The truth shall finally devour the lie! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
+	priority_announce("[generate_heretic_text()] Gülün, çünkü [user.real_name] dirildi! \
+					Gerçek eninde sonunda yalanı yutacaktır! [generate_heretic_text()]","[generate_heretic_text()]", ANNOUNCER_SPANOMALIES)
 
 	user.client?.give_award(/datum/award/achievement/misc/moon_ascension, user)
 	ADD_TRAIT(user, TRAIT_MADNESS_IMMUNE, REF(src))

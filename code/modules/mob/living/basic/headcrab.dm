@@ -34,10 +34,10 @@
 	visible_message(span_danger("\The [src] jumps to the [hit_human]s face!"))
 	hcorgan.Insert(hit_human)
 
-/mob/living/basic/headcrab/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, gentle, quickstart = TRUE)
+/mob/living/basic/headcrab/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, force = FORCE_MOVE_VERY_STRONG, gentle, quickstart = TRUE)
 	if(stat != DEAD)
 		icon_state = "headcrab_jump"
-	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, gentle, quickstart = quickstart)
+	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, force, gentle, quickstart = quickstart)
 
 /datum/ai_controller/basic_controller/headcrab
 	blackboard = list(

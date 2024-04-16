@@ -113,7 +113,7 @@
 		dış donanım ve eşyalarda küçük çaplı hasar beklenmektedir."
 
 	reasons += "Nanotrasen Süper Silahlar Departmanı yeni bir [pick("saha","koruma","nova")] [pick("topu","artillery","tankı","gemisi")] \
-		prototipi deniyorlar. Bazı küçük çaplı hasarlar beklenmektedir.
+		prototipi deniyorlar. Bazı küçük çaplı hasarlar beklenmektedir."
 
 	reasons += "Komşu istasyonlarınızdan biri size taş atıyor. (Belki de \
 		mesajlarınızdan bıkmışlardır.)"

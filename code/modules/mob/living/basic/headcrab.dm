@@ -4,7 +4,7 @@
 	icon = 'icons/psychonaut/mob/nonhuman-player/headcrab.dmi'
 	icon_state = "headcrab"
 	icon_living = "headcrab"
-	icon_dead = "headcrab"
+	icon_dead = "headcrab_dead"
 	health = 10
 	maxHealth = 10
 	melee_attack_cooldown = 1.5 SECONDS
@@ -64,9 +64,9 @@
 /datum/ai_behavior/headcrab_jump
 	action_cooldown = 1 SECONDS
 	behavior_flags = AI_BEHAVIOR_REQUIRE_MOVEMENT | AI_BEHAVIOR_MOVE_AND_PERFORM
-	required_distance = 7
+	required_distance = 6
 	/// range we will try chasing the target before giving up
-	var/chase_range = 7
+	var/chase_range = 6
 	///do we care about avoiding friendly fire?
 	var/avoid_friendly_fire =  TRUE
 

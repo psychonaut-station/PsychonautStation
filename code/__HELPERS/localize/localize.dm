@@ -43,9 +43,6 @@
 		time += 12 HOURS
 	return "[time2text(time, format)] [am_pm]"
 
-//belki lazim olur
-//var/list/unluHarflerascii = list("\u0061", "\u0065", "\u0131", "\u0069", "\u006F", "\u00F6", "\u0075", "\u00FC")
-
 // harfleri kontrol ediyoruz
 /proc/son_iki_harf_unlu_mu(kelime)
 	var/list/unluHarfler = list("a", "e", "ı", "i", "o", "ö", "u", "ü")

@@ -17,7 +17,7 @@
 	faction = list(FACTION_ZOMBIE)
 	pressure_resistance = 200
 	ai_controller = /datum/ai_controller/basic_controller/headcrab
-	var/hctype = /obj/item/organ/external/headcrab/default
+	var/obj/item/organ/external/headcrab/hctype = /obj/item/organ/external/headcrab/default
 
 /mob/living/basic/headcrab/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	. = ..()

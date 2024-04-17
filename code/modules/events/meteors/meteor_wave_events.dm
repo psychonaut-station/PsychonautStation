@@ -50,7 +50,7 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
+	priority_announce("İstasyonla çarpışma rotasında olan meteorlar tespit edildi.", "Meteor Uyarısı", ANNOUNCER_METEORS)
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
@@ -91,7 +91,7 @@
 	wave_name = "meaty"
 
 /datum/round_event/meteor_wave/meaty/announce(fake)
-	priority_announce("Meaty ores have been detected on collision course with the station.", "Oh crap, get the mop.", ANNOUNCER_METEORS)
+	priority_announce("Etli bir meteorun istasyonla çarpışma rotasında olduğu tespit edildi.", "Kahretsin, paspası getir.", ANNOUNCER_METEORS)
 
 /datum/round_event_control/meteor_wave/dust_storm
 	name = "Major Space Dust"
@@ -129,4 +129,4 @@
 	reasons += "[station_name()] has hit a particularly rough patch of space. \
 		Please mind any turbulence or damage from debris."
 
-	priority_announce(pick(reasons), "Collision Alert")
+	priority_announce(pick(reasons), "Çarpışma Uyarısı")

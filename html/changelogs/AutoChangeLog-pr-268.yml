@@ -1,4 +1,0 @@
-author: "genku"
-delete-after: True
-changes:
-  - bugfix: "Eski Delta'daki surgery tray dolu başlayacak"

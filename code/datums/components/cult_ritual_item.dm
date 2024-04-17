@@ -369,9 +369,9 @@
 		return FALSE
 	var/area/summon_location = get_area(cultist)
 	priority_announce(
-		text = "Figments from an eldritch god are being summoned by [cultist.real_name] into [summon_location.get_original_area_name()] from an unknown dimension. Disrupt the ritual at all costs!",
+		text = "Tanrı katından gelen yaratıklar, [cultist.real_name] tarafından bilinmeyen bir boyuttan [summon_location.get_original_area_name()] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
 		sound = 'sound/ambience/antag/bloodcult/bloodcult_scribe.ogg',
-		sender_override = "[command_name()] Higher Dimensional Affairs",
+		sender_override = "[command_name()] Üst Boyutlu İlişkiler",
 		has_important_message = TRUE,
 	)
 	for(var/shielded_turf in spiral_range_turfs(1, cultist, 1))

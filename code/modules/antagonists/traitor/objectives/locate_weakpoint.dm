@@ -126,8 +126,8 @@
 	else
 		explosion(epicenter, devastation_range = 3, heavy_impact_range = 6, light_impact_range = 9, explosion_cause = src)
 	priority_announce(
-				"Attention crew, it appears that a high-power explosive charge has been detonated in your station's weakpoint, causing severe structural damage.",
-				"[command_name()] High-Priority Update"
+				"Mürettebatın dikkatine, istasyonunuzun zayıf noktasında yüksek güçlü bir patlayıcı patlatılmış ve ciddi yapısal hasara neden olmuş gibi görünüyor.",
+				"[command_name()] Yüksek Öncelikli Bildiri"
 				)
 
 	succeed_objective()

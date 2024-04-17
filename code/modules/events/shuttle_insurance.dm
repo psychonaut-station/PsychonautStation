@@ -28,7 +28,7 @@
 	var/insurance_evaluation = 0
 
 /datum/round_event/shuttle_insurance/announce(fake)
-	priority_announce("Incoming subspace communication. Secure channel opened at all communication consoles.", "Incoming Message", SSstation.announcer.get_rand_report_sound())
+	priority_announce("Gelen alt-uzay haberleşme bağlantısı. Tüm iletişim konsollarında güvenli kanal açıldı.", "Gelen Mesaj", SSstation.announcer.get_rand_report_sound())
 
 /datum/round_event/shuttle_insurance/setup()
 	ship_name = pick(strings(PIRATE_NAMES_FILE, "rogue_names"))
@@ -47,12 +47,12 @@
 
 /datum/round_event/shuttle_insurance/proc/answered()
 	if(EMERGENCY_AT_LEAST_DOCKED)
-		priority_announce("You are definitely too late to purchase insurance, my friends. Our agents don't work on site.",sender_override = ship_name, color_override = "red")
+		priority_announce("Sigorta satın almak için kesinlikle çok geç kaldınız dostlarım. Acentelerimiz burada çalışmıyor.",sender_override = ship_name, color_override = "red")
 		return
 	if(insurance_message && insurance_message.answered == 1)
 		var/datum/bank_account/station_balance = SSeconomy.get_dep_account(ACCOUNT_CAR)
 		if(!station_balance?.adjust_money(-insurance_evaluation))
-			priority_announce("You didn't send us enough money for shuttle insurance. This, in the space layman's terms, is considered scamming. We're keeping your money, scammers!", sender_override = ship_name, color_override = "red")
+			priority_announce("Mekik sigortası için bize yeterince para göndermediniz. Bu, bizlerin tabiriyle, dolandırıcılık olarak kabul edilir. Paranız bizde kalacak, dolandırıcılar!", sender_override = ship_name, color_override = "red")
 			return
-		priority_announce("Thank you for purchasing shuttle insurance!", sender_override = ship_name, color_override = "red")
+		priority_announce("Mekik sigortası satın aldığınız için teşekkür ederiz!", sender_override = ship_name, color_override = "red")
 		SSshuttle.shuttle_insurance = TRUE

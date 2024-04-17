@@ -1,5 +1,0 @@
-author: "RengaN"
-delete-after: True
-changes:
-  - rscadd: "Cargo borg eklendi."
-  - bugfix: "Box cutteri kapalı bir kutuda kullanınca kutu artık oldugu yerde açılıyor."

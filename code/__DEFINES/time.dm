@@ -27,19 +27,19 @@
 #define DECEMBER 12
 
 //Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
-#define NEW_YEAR "New Year"
-#define VALENTINES "Valentine's Day"
-#define APRIL_FOOLS "April Fool's Day"
-#define EASTER "Easter"
-#define HALLOWEEN "Halloween"
-#define CHRISTMAS "Christmas"
-#define FESTIVE_SEASON "Festive Season"
-#define GARBAGEDAY "Garbage Day"
-#define MONKEYDAY "Monkey Day"
-#define PRIDE_WEEK "Pride Week"
-#define MOTH_WEEK "Moth Week"
-#define IAN_HOLIDAY "Ian's Birthday"
-#define HOTDOG_DAY "National Hot Dog Day"
+#define NEW_YEAR "Yılbaşı"
+#define VALENTINES "Sevgililer Günü"
+#define APRIL_FOOLS "1 Nisan"
+#define EASTER "Paskalya"
+#define HALLOWEEN "Cadılar Bayramı"
+#define CHRISTMAS "Noel"
+#define FESTIVE_SEASON "Festival Sezonu"
+#define GARBAGEDAY "Çöp Günü"
+#define MONKEYDAY "Maymun Günü"
+#define PRIDE_WEEK "Pride Haftası"
+#define MOTH_WEEK "Moth Haftası"
+#define IAN_HOLIDAY "Ian'ın Doğum Günü"
+#define HOTDOG_DAY "Ulusal Sosisli Günü"
 /*
 
 Days of the week to make it easier to reference them.
@@ -48,13 +48,13 @@ When using time2text(), please use "DDD" to find the weekday. Refrain from using
 
 */
 
-#define MONDAY "Mon"
-#define TUESDAY "Tue"
-#define WEDNESDAY "Wed"
-#define THURSDAY "Thu"
-#define FRIDAY "Fri"
-#define SATURDAY "Sat"
-#define SUNDAY "Sun"
+#define MONDAY "Pzt"
+#define TUESDAY "Sal"
+#define WEDNESDAY "Çar"
+#define THURSDAY "Per"
+#define FRIDAY "Cum"
+#define SATURDAY "Cmt"
+#define SUNDAY "Paz"
 
 #define INFINITE -1 // -1 is commonly used to indicate an infinite time duration
 

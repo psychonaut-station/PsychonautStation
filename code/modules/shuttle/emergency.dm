@@ -484,7 +484,7 @@
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
 				priority_announce(
-					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayLocaleTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
+					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [locale_DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
 					title = "Acil Durum Mekiği Geldi",
 					sound = ANNOUNCER_SHUTTLEDOCK,
 					sender_override = "Acil Durum Mekiği Uyarısı",

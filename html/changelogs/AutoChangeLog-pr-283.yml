@@ -1,0 +1,7 @@
+author: "RengaN"
+delete-after: True
+changes:
+  - rscadd: "Cargo borg için 4 yeni upgrade eklendi."
+  - bugfix: "Cargo borgun insan taşırken hasar almaması düzeltildi."
+  - bugfix: "Cargo borg clampinin radial menüsünde bazen yanlış icon gösterilmesi düzeltildi."
+  - balance: "Cargo borg clampinde kapasite varsayılan olarak 4'e indirildi ve artık kullanırken şarj harcıyor."

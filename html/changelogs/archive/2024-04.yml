@@ -32,3 +32,11 @@
 2024-04-13:
   genku, Seefaaa:
   - spellcheck: "Priority ve Minor Announcelar art\u0131k T\xFCrk\xE7e."
+2024-04-18:
+  RengaN:
+  - rscadd: "Cargo borg i\xE7in 4 yeni upgrade eklendi."
+  - bugfix: "Cargo borgun insan ta\u015F\u0131rken hasar almamas\u0131 d\xFCzeltildi."
+  - bugfix: "Cargo borg clampinin radial men\xFCs\xFCnde bazen yanl\u0131\u015F icon\
+      \ g\xF6sterilmesi d\xFCzeltildi."
+  - balance: "Cargo borg clampinde kapasite varsay\u0131lan olarak 4'e indirildi ve\
+      \ art\u0131k kullan\u0131rken \u015Farj harc\u0131yor."

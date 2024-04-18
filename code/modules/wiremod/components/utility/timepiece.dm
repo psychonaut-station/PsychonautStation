@@ -48,7 +48,7 @@
 		if(COMP_TIMEPIECE_TWENTYFOUR_HOUR)
 			time = station_time_timestamp()
 		if(COMP_TIMEPIECE_TWELVE_HOUR)
-			time = locale_time_to_twelve_hour(station_time())
+			time = time_to_twelve_hour(station_time())
 
 	text_output.set_output(time)
 

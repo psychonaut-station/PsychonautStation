@@ -475,7 +475,7 @@
 #include "code\__HELPERS\view.dm"
 #include "code\__HELPERS\visual_effects.dm"
 #include "code\__HELPERS\weakref.dm"
-#include "code\__HELPERS\localize\localize.dm"
+#include "code\__HELPERS\localization.dm"
 #include "code\__HELPERS\logging\_logging.dm"
 #include "code\__HELPERS\logging\admin.dm"
 #include "code\__HELPERS\logging\antagonists.dm"

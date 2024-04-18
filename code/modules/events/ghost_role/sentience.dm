@@ -41,8 +41,8 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	var/sentience_report = ""
 
 	var/data = pick("uzun menzilli sensörlerimizin", "gelişmiş olasılıksal modellerimizin", "istasyonunuzdaki iletişim trafiği", "tespit ettiğimiz enerji emisyonları")
-	var/pets = pick("hayvanlarından/botlarından", "botlarından/hayvanlarından", "evcil hayvanlarından", "basit canlılarından", "küçük yaşam formlarından")
-	var/strength = pick("insan düzeyinde", "orta düzeyde", "lizard düzeyinde", "güvenlik düzeyinde", "komuta düzeyinde", "clown düzeyinde", "düşük düzeyde", "çok düşük düzeyde")
+	var/pets = pick("hayvanlardan", "robotlardan", "evcil hayvanlardan", "basit canlılardan", "küçük yaşam formlarından")
+	var/strength = pick("insan düzeyinde", "orta düzeyde", "lizard düzeyinde", "komuta düzeyinde", "clown düzeyinde", "düşük düzeyde", "çok düşük düzeyde")
 
 	sentience_report += "Elimizdeki [data] verilerine dayanarak, istasyonunuzdaki [pets] [one] [strength] zeka ve iletişim yeteneği geliştirdiğine inanıyoruz."
 

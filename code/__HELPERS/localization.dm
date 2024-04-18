@@ -3,6 +3,7 @@
 // Lütfen fonksiyonlara açıklama yazmayı unutmayın.
 // Fonksiyonları "locale_" ile başlatırsak güzel olur
 
+// { SURELER }
 /// Decisecond sureyi turkcelestirir. Orn. 3 Dakika / 53 Saniye
 /proc/locale_DisplayTimeText(time_value, round_seconds_to = 0.1)
 	var/second = FLOOR(time_value * 0.1, round_seconds_to)
@@ -31,18 +32,7 @@
 		hourT = " [hour] saat"
 	return "[day] gün[hourT][minuteT][secondT]"
 
-/// Zamani 12lik saat dilimi seklinde gosterir.
-/proc/locale_time_to_twelve_hour(time, format = "hh:mm:ss", timezone = TIMEZONE_UTC)
-	time = MODULUS(time + (timezone - GLOB.timezoneOffset) HOURS, 24 HOURS)
-	var/am_pm = "ÖÖ"
-	if(time > 12 HOURS)
-		am_pm = "ÖS"
-		if(time > 13 HOURS)
-			time -= 12 HOURS
-	else if (time < 1 HOURS)
-		time += 12 HOURS
-	return "[time2text(time, format)] [am_pm]"
-
+// { YAZILAR }
 // harfleri kontrol ediyoruz
 /proc/son_iki_harf_unlu_mu(kelime)
 	var/list/unluHarfler = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
@@ -51,17 +41,20 @@
 	var/h1 = charlist[length(charlist)-1]
 	var/h2 = charlist[length(charlist)]
 	if(h1 in unluHarfler)
-		return list("1",h1) // sondan 2. harf unlu
+		return list("1",h1,h2) // sondan 2. harf unlu
 	if(h2 in unluHarfler)
-		return list(2,h2) // sonuncu harf unlu
+		return list(2,h2,h1) // sonuncu harf unlu
 	// son iki harf unsuz ise sonuncu harfe gore fonksiyonu gelecek
 	return FALSE
 
+
+// gelen yazıyı *text şeklinde döndürme sebebim bug tespitini rahat yapabilmek
+
 // belirtme eki | ı i u ü
-/proc/bek(text)
+/proc/belirtmeEki(text)
 	var/list/kelime = son_iki_harf_unlu_mu(text)
 	if(kelime == FALSE)
-		return text
+		return ("*"+text)
 	if(kelime[1] == "1")
 		switch(kelime[2])
 			if("a","ı")
@@ -73,21 +66,29 @@
 			if("ü","ö")
 				return (text+("'ü"))
 	else
-		return text
-		/*
-		yşsn harflerini uyarla
-		switch(kelime[2])
-			if("k","ı")
-				return (text+("'yı"))
-			if("e","i")
-				return (text+("'yi"))
-			if("o","u")
-				return (text+("'yu"))
-			if("ü","ö")
-				return (text+("'yü"))
-		*/
-
+		return ("*"+text)
 
 // yönelme a e
+
 // bulunma da de ta te
+/proc/bulunmaEki(text)
+	var/list/sert = list("ç", "f", "h", "k", "s", "ş", "t", "p")
+	var/list/kelime = son_iki_harf_unlu_mu(text)
+	if(kelime == FALSE)
+		return ("*"+text)
+	if(kelime[1] == "1")
+		switch(kelime[2])
+			if("a","ı","o","u")
+				if(kelime[3] in sert)
+					return (text+("'ta"))
+				else
+					return (text+("'da"))
+			if("e","i","ü","ö")
+				if(kelime[3] in sert)
+					return (text+("'te"))
+				else
+					return (text+("'de"))
+	else
+		return ("*"+text)
+
 // ayrılma dan den tan ten

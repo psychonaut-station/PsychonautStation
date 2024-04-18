@@ -343,7 +343,7 @@
 	meteorsound = 'sound/items/bikehorn.ogg'
 	threat = 15
 	movement_type = PHASING
-	signature = "Komedi"
+	signature = "Şaka"
 
 /obj/effect/meteor/banana/meteor_effect()
 	..()

@@ -543,7 +543,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 		var/curse_message = pick_n_take(remaining_curses) || "Bir şeyler çok yanlış gidiyor...."
 
-		curse_message += " Mekik üç dakika gecikmeli kalkacaktır."
+		curse_message += " Mekiğin kalkışı üç dakika ertelenmiştir."
 		priority_announce("[curse_message]", "Sistem Hatası", 'sound/misc/notice1.ogg')
 		if(MAX_SHUTTLE_CURSES-totalcurses <= 0)
 			to_chat(user, span_danger(span_big("You sense that the emergency escape shuttle can no longer be cursed. It would be unwise to create more cursed orbs.")))
@@ -554,7 +554,7 @@ Striking a noncultist, however, will tear their flesh."}
 
 		if(totalcurses >= MAX_SHUTTLE_CURSES && (world.time < first_curse_time + SHUTTLE_CURSE_OMFG_TIMESPAN))
 			var/omfg_message = pick_list(CULT_SHUTTLE_CURSE, "omfg_announce") || "BİZİ RAHAT BIRAK!"
-			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), omfg_message, "Öncelik Uyarısı", 'sound/misc/announce_syndi.ogg', null, "Nanotrasen Ulaştırma Bakanlığı: Merkez Komutanlığı"), rand(2 SECONDS, 6 SECONDS))
+			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(priority_announce), omfg_message, "Öncelikli Uyarı", 'sound/misc/announce_syndi.ogg', null, "Nanotrasen Ulaştırma Departmanı"), rand(2 SECONDS, 6 SECONDS))
 			for(var/mob/iter_player as anything in GLOB.player_list)
 				if(IS_CULTIST(iter_player))
 					iter_player.client?.give_award(/datum/award/achievement/misc/cult_shuttle_omfg, iter_player)

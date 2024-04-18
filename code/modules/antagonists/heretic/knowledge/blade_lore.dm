@@ -404,7 +404,7 @@
 /datum/heretic_knowledge/ultimate/blade_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] Kılıçların efendisi, Şampiyonun öğrencisi [user.real_name] dirildi! Onların çeliği, gerçekliği gümüşten bir heykel gibi kesecek! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Kılıçların efendisi [user.real_name] yükseldi! Onların çeliği, gerçekliği gümüşten bir heykelmişcesine kesecek! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

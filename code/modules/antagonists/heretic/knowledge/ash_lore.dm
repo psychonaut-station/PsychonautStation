@@ -212,7 +212,7 @@
 /datum/heretic_knowledge/ultimate/ash_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] Alevlerden korkun, çünkü Ashlord, [user.real_name] dirildi! Alevleri herkesi yakıp kül edecek! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Alevlerden korkun, çünkü Küllerin efendisi [user.real_name] yükseldi! Alevler her şeyi tüketecek! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

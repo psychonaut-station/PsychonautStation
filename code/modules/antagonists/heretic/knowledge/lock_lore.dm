@@ -222,7 +222,7 @@
 /datum/heretic_knowledge/ultimate/lock_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "Delta sınıfı boyutsal anomali tespi[generate_heretic_text()] Gerçeklik paramparça oldu, dağıldı. [user.real_name] dirildi! [generate_heretic_text()]",
+		text = "Delta sınıfı boyutsal anomali tespi[generate_heretic_text()] Gerçeklik paramparça oldu. Geçitler ve kapılar aralandı, [user.real_name] yükseldi! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

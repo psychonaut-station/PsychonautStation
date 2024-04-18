@@ -228,7 +228,7 @@
  */
 /datum/shuttle_loan_situation/mail_strike
 	sender = "Spinward Posta İşçileri Sendikası"
-	announcement_text = "Posta İşçileri Sendikası \" gelişmiş grev taktikleri\" kullanmak için kargo mekiğinizi ödünç almak istiyor. Ödeme kesinlikle posta yoluyla yapılacaktır."
+	announcement_text = "Posta İşçileri Sendikası \"gelişmiş grev taktikleri\" kullanmak için kargo mekiğinizi ödünç almak istiyor. Ödeme postayla yapılacaktır."
 	bonus_points = 0
 	thanks_msg = "Kargo mekiği beş dakika içinde dönecektir."
 	shuttle_transit_text = "Hiçbir şey postaları durduramaz."

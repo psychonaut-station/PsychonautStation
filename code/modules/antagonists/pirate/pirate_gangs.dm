@@ -41,7 +41,7 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	///station responds to message and pays the pirates
 	var/response_received = "İşte bu! Bungopuanlar!"
 	///station responds to message and pays the pirates
-	var/response_rejected = "Hadi ya! Demek bungopuanı yok!"
+	var/response_rejected = "Hadi ya! Demek Bungopuan yok!"
 	///station pays the pirates, but after the ship spawned
 	var/response_too_late = "Bungopuanlarınız çok geç geldi, dünya yeniden başlatılıyor..."
 	///station pays the pirates... but doesn't have enough cash.
@@ -85,7 +85,7 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	response_received = "Güzel, beleş para. Hadi gidelim buradan, çocuklar."
 	response_rejected = "Ödeme yapmamak bir hataydı, şimdi bir ekonomi dersi almanız gerekiyor."
 	response_too_late = "Ödeme yapılsın ya da yapılmasın, bizi görmezden gelmek bir onur meselesiydi. Şimdi biraz saygı öğretme zamanı."
-	response_not_enough = "Eksik ödeme yaptığını fark etmeyeceğimizi mi sandın? Çok komik. Yakında görüşeceğiz."
+	response_not_enough = "Eksik ödeme yaptığınızı fark etmeyeceğimizi mi sandınız? Çok komik. Yakında görüşeceğiz."
 
 ///aristocrat lizards looking to hunt the serfs
 /datum/pirate_gang/silverscales
@@ -118,10 +118,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "The Jolly Roger won't wait forever, maties; we're lying alongside, ready to send you some gifts."
 	possible_answers = list("We'll pay.","We will not be extorted.")
 
-	response_received = "Krediler için teşekkürler, denizciler."
+	response_received = "Krediler için teşekkürler, acemiler."
 	response_rejected = "Hayret bir şey! Herkes güverteye, onların servetlerini ele geçireceğiz!"
 	response_too_late = "Merhamet dilenmek için artık çok geç!"
-	response_not_enough = "Bizi kandırmaya mı çalışıyorsun? Buna pişman olacaksın!"
+	response_not_enough = "Bizi kandırmaya mı çalışıyorsunuz? Buna pişman olacaksınız!"
 
 ///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning
 /datum/pirate_gang/interdyne
@@ -138,7 +138,7 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	possible_answers = list("Very well.","Get a job!")
 
 	response_received = "Cömertliğiniz için teşekkür ederiz. Paranız boşa gitmeyecek."
-	response_rejected = "Sen bir istasyon değilsin, sen bir tümörsün. Onu kesip atmak zorundayız."
+	response_rejected = "Siz bir istasyon değil, bir tümörsünüz. Pekala, sizi kesip atmak zorundayız."
 	response_too_late = "Umarız cilt kanserini seversiniz!"
 	response_not_enough = "Bu bizim operasyonlarımız için yeterli değil. Korkarım biraz daha ödünç almamız gerekecek."
 	announcement_color = "purple"
@@ -156,10 +156,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "Nice stuff you got there, it's ours now."
 	possible_answers = list("Please don't hurt me.","YOU WILL ANSWER TO THE LAW!!")
 
-	response_received = "Bekle, bize gerçekten para mı verdin? Teşekkürler, ama zaten geri kalanı için geliyoruz!"
-	response_rejected = "Kanun biziz! Ve siz sorumlu tutulacaksınız!"
-	response_too_late = "Hiçbir şey, ha? Görünüşe göre Akıntı gemiye geliyor!"
-	response_not_enough = "Bizi kandırmaya mı çalışıyorsun? Sorun değil, istasyonunuzu teminat olarak alacağız."
+	response_received = "Bekle, bize gerçekten para mı verdiniz? Teşekkürler, ama her halükarda geri kalanı için geliyoruz!"
+	response_rejected = "Kanun mu? Kanun biziz! Ve siz sorumlu tutulacaksınız!"
+	response_too_late = "Hiçbir şey, ha? Görünüşe göre geminize geliyoruz!"
+	response_not_enough = "Bizi kandırmaya mı çalışıyorsunuz? Sorun değil, istasyonunuzu teminat olarak alacağız."
 	announcement_color = "yellow"
 
 ///Agents from the space I.R.S. heavily armed to stea- I mean, collect the station's tax dues
@@ -202,6 +202,6 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 
 	response_received = "Mükemmel bir vurgun, sentez devam etmeli."
 	response_rejected = "Konuşmanızdaki kabalığın giderilmesi gerekiyor. Bu konuda size hemen şimdi yardımcı olabiliriz."
-	response_too_late = "O zaman hazır değildiniz ve artık herşey geride kaldı. Sadece ileri gidebiliriz biz asla geri dönmeyiz."
+	response_too_late = "O zaman hazır değildiniz ve artık her şey geride kaldı. Biz sadece ileri gideriz, asla geri dönmeyiz."
 	response_not_enough = "Bize hakaret ettiniz, bu bir kan davası olmayacak, yalnızca adalet yerini bulacak!"
 	announcement_color = "purple"

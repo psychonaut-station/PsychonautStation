@@ -269,7 +269,7 @@
 /datum/heretic_knowledge/ultimate/cosmic_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] İstasyona bir Yıldız Avcısı geldi, [user.real_name] dirildi! Bu istasyon artık Kainat'ın malıdır! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] İstasyonada bir Star Gazer doğdu, [user.real_name] yükseldi! Bu istasyon artık Cosmos'a aittir! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

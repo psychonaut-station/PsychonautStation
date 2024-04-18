@@ -312,7 +312,7 @@
 /datum/heretic_knowledge/ultimate/flesh_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] Sürekli dönen bir döngü. Gerçeklik açığa çıktı. GECENİN EFENDİSİ, [user.real_name] dirildi! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Sürekli kıvrılan bir girdap. Gerçeklik gözler önüne serildi. GECENİN EFENDİSİ, [user.real_name] yükseldi! Durmadan bükülenden korkun! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

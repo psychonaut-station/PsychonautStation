@@ -200,7 +200,7 @@
 /datum/heretic_knowledge/ultimate/void_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] Hiçliğin efendisi [user.real_name] dirildi, dünyaları sona erdirecek Vals'e doğru adım atıyor! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Hiçliğin efendisi [user.real_name] yükseldi, dünyaları sona erdiren Vals adımlarını atıyor! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = ANNOUNCER_SPANOMALIES,
 		color_override = "pink",

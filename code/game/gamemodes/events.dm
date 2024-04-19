@@ -7,7 +7,7 @@
  * but the crew themselves can return power via the engine, solars, or other means of creating power.
  */
 /proc/power_failure()
-	priority_announce("[station_name()] güç şebekesinde anormal aktivite tespit edildi. Önlem olarak, istasyonun elektriği henüz belirlenemeyen bir süre boyunca kapalı kalacaktır.", "Kritik Enerji Kesintisi", ANNOUNCER_POWEROFF)
+	priority_announce("[locale_Suffix_Genitive(station_name())] güç şebekesinde anormal aktivite tespit edildi. Önlem olarak, istasyonun elektriği henüz belirlenemeyen bir süre boyunca kapalı kalacaktır.", "Kritik Enerji Kesintisi", ANNOUNCER_POWEROFF)
 	var/list/all_smes = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes)
 	for(var/obj/machinery/power/smes/smes as anything in all_smes)
 		if(istype(get_area(smes), /area/station/ai_monitored/turret_protected) || !is_station_level(smes.z))

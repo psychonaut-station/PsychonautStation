@@ -209,7 +209,6 @@
 				return (text+("'nun"))
 			if("ü","ö")
 				return (text+("'nüns"))
-		return ("*"+text)
 	else if (kelime[1] == "3")
 		switch(kelime[2])
 			if("0")

@@ -4562,6 +4562,7 @@
 #include "code\modules\mob\living\basic\basic.dm"
 #include "code\modules\mob\living\basic\basic_defense.dm"
 #include "code\modules\mob\living\basic\festivus_pole.dm"
+#include "code\modules\mob\living\basic\headcrab.dm"
 #include "code\modules\mob\living\basic\health_adjustment.dm"
 #include "code\modules\mob\living\basic\tree.dm"
 #include "code\modules\mob\living\basic\blob_minions\blob_ai.dm"

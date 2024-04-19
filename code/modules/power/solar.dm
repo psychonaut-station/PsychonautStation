@@ -28,7 +28,7 @@
 	var/needs_to_update_solar_exposure = TRUE
 	var/obj/effect/overlay/panel
 	var/obj/effect/overlay/panel_edge
-	var/SOLAR_GEN_RATE = 1500
+	var/solar_gen_rate = 1500
 
 /obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
 	. = ..()
@@ -247,7 +247,7 @@
 	if(sunfrac <= 0)
 		return
 
-	var/sgen = SOLAR_GEN_RATE * sunfrac
+	var/sgen = solar_gen_rate * sunfrac
 	add_avail(sgen)
 	if(control)
 		control.gen += sgen
@@ -449,7 +449,10 @@
 
 		var/list/capacity = history["capacity"]
 		if(powernet)
-			capacity += round(max(connected_panels.len, 1) * SOLAR_GEN_RATE)
+			if(connected_panels.len)
+				capacity += calculate_capacity()
+			else
+				capacity += round(1500)
 		if(capacity.len > record_size)
 			capacity.Cut(1, 2)
 
@@ -474,7 +477,7 @@
 /obj/machinery/power/solar_control/ui_data()
 	var/data = list()
 	data["supply"] = round(lastgen)
-	data["capacity"] = connected_panels.len * SOLAR_GEN_RATE
+	data["capacity"] = calculate_capacity()
 	data["azimuth_current"] = azimuth_target
 	data["azimuth_rate"] = azimuth_rate
 	data["max_rotation_rate"] = SSsun.base_rotation * 2
@@ -592,6 +595,13 @@
 
 	for(var/obj/machinery/power/solar/S in connected_panels)
 		S.queue_turn(azimuth)
+
+/obj/machinery/power/solar_control/proc/calculate_capacity()
+	var/cpc = 0
+	if(connected_panels.len)
+		for(var/obj/machinery/power/solar/PS in connected_panels)
+			cpc += round(PS.solar_gen_rate)
+	return cpc
 
 //
 // MISC

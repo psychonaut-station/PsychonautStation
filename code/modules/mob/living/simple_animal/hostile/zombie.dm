@@ -50,3 +50,24 @@
 	uniform = /obj/item/clothing/under/color/grey
 	shoes = /obj/item/clothing/shoes/sneakers/black
 	back = /obj/item/storage/backpack
+
+/datum/outfit/honk_runner
+	name = "Honk Honk Runner"
+	mask = /obj/item/clothing/mask/gas/clown_hat
+	uniform = /obj/item/clothing/under/rank/civilian/clown
+	shoes = /obj/item/clothing/shoes/clown_shoes
+	back = /obj/item/storage/backpack/clown
+
+/mob/living/simple_animal/hostile/honk_runner
+	name = "Honk Honk Runner!!"
+	desc = "Seni Şakalamak İstiyorum!!"
+	maxHealth = 55
+	health = 55
+	melee_damage_lower = 15
+	melee_damage_upper = 15
+	speed = 4
+	attack_sound = 'sound/items/bikehorn.ogg'
+	death_sound =  'sound/misc/sadtrombone.ogg'
+	death_message = "Honk Honk :("
+	speak_chance = 3
+	speak = list("AM","EW")

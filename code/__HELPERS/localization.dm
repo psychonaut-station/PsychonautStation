@@ -173,6 +173,12 @@
 					return (text+("'ten"))
 				else
 					return (text+("'den"))
+	if(kelime[1] == "2")
+		switch(kelime[2])
+			if("a","ı","o","u")
+					return (text+("'dan"))
+			if("e","i","ü","ö")
+					return (text+("'den"))
 	else if(kelime[1] == "3")
 		switch(kelime[2])
 			if("0","6","9")

@@ -44,9 +44,9 @@
 	if(h1 in unluHarfler)
 		return list("1",h1,h2) // sondan 2. harf unlu
 	if(h2 in unluHarfler)
-		return list(2,h2,h1) // sonuncu harf unlu
+		return list("2",h2,h1) // sonuncu harf unlu
 	if(h2 in sayilar)
-		return list(3,h2)
+		return list("3",h2)
 	return FALSE
 
 

@@ -53,7 +53,7 @@
 // gelen yazıyı *text şeklinde döndürme sebebim bug tespitini rahat yapabilmek
 
 /// Belirtme eki | -i, -u / -yi, -yu turkce harfler dahildir
-/proc/locale_Suffix_Accusative(text)
+/proc/locale_suffix_accusative(text)
 	var/list/kelime = getLast2Word(text)
 	if(kelime == FALSE)
 		return ("*"+text)
@@ -96,7 +96,7 @@
 		return ("*"+text)
 
 /// Yonelme eki | -e, -a / -ye, -ya
-/proc/locale_Suffix_Dative(text)
+/proc/locale_suffix_dative(text)
 	var/list/kelime = getLast2Word(text)
 	if(kelime == FALSE)
 		return ("*"+text)
@@ -127,7 +127,7 @@
 		return ("*"+text)
 
 /// Bulunma eki | -de, -da / -te, -ta
-/proc/locale_Suffix_Locative(text)
+/proc/locale_suffix_locative(text)
 	var/list/sert = list("ç", "f", "h", "k", "s", "ş", "t", "p")
 	var/list/kelime = getLast2Word(text)
 	if(kelime == FALSE)
@@ -156,7 +156,7 @@
 		return ("*"+text)
 
 /// Ayrilma eki | -den, -dan / -ten, -tan
-/proc/locale_Suffix_Ablative(text)
+/proc/locale_suffix_ablative(text)
 	var/list/sert = list("ç", "f", "h", "k", "s", "ş", "t", "p")
 	var/list/kelime = getLast2Word(text)
 	if(kelime == FALSE)
@@ -185,7 +185,7 @@
 		return ("*"+text)
 
 /// Ilgi eki | -in, -un / -nin, -nun turkce harfler dahildir
-/proc/locale_Suffix_Genitive(text)
+/proc/locale_suffix_genitive(text)
 	var/list/kelime = getLast2Word(text)
 	if(kelime == FALSE)
 		return ("*"+text)

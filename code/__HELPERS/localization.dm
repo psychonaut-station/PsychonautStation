@@ -38,201 +38,195 @@
 	var/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
 	var/list/last_chars = text2charlist(locale_lowertext(copytext(text, length(text) - 2)))
 	if(!isnull(text2num(last_chars[2])))
-		return list(4, h2)
+		return list(4, last_chars[2])
 	if(last_chars[1] in voxels)
 		return list(1, last_chars[1], last_chars[2])
 	else if(last_chars[2] in voxels)
 		return list(2, last_chars[2], last_chars[1])
 	else
 		return list(3)
-	return FALSE
 
 // gelen yazıyı *text şeklinde döndürme sebebim bug tespitini rahat yapabilmek
 
 /// Belirtme eki | -i, -u / -yi, -yu turkce harfler dahildir
 /proc/locale_suffix_accusative(text)
 	var/list/charlist = last2chars(text)
-	if(charlist == FALSE)
-		return "*[text]"
-	if(charlist[1] == 1)
-		switch(charlist[2])
-			if("a","ı")
-				return "[text]'ı"
-			if("e","i")
-				return "[text]'i"
-			if("o","u")
-				return "[text]'u"
-			if("ü","ö")
-				return "[text]'ü"
-	else if (charlist[1] == 2)
-		switch(charlist[2])
-			if("a","ı")
-				return "[text]'yı"
-			if("e","i")
-				return "[text]'yi"
-			if("o","u")
-				return "[text]'yu"
-			if("ü","ö")
-				return "[text]'yü"
-	else if (kelime[1] == 3)
-		return "[text]'i"
-	else if (kelime[1] == 4)
-		switch(kelime[2])
-			if("0")
-				return "[text]'ı"
-			if("1","5","8")
-				return "[text]'i"
-			if("2","7")
-				return "[text]'yi"
-			if("3","4")
-				return "[text]'ü"
-			if("6")
-				return "[text]'yı"
-			if("9")
-				return "[text]'u"
-	else
-		return "*[text]"
+	switch(charlist[1])
+		if(1)
+			switch(charlist[2])
+				if("a","ı")
+					return "[text]'ı"
+				if("e","i")
+					return "[text]'i"
+				if("o","u")
+					return "[text]'u"
+				if("ü","ö")
+					return "[text]'ü"
+		if (2)
+			switch(charlist[2])
+				if("a","ı")
+					return "[text]'yı"
+				if("e","i")
+					return "[text]'yi"
+				if("o","u")
+					return "[text]'yu"
+				if("ü","ö")
+					return "[text]'yü"
+		if (3)
+			return "[text]'i"
+		if (4)
+			switch(charlist[2])
+				if("0")
+					return "[text]'ı"
+				if("1","5","8")
+					return "[text]'i"
+				if("2","7")
+					return "[text]'yi"
+				if("3","4")
+					return "[text]'ü"
+				if("6")
+					return "[text]'yı"
+				if("9")
+					return "[text]'u"
+		else
+			return "*[text]"
 
 /// Yonelme eki | -e, -a / -ye, -ya
 /proc/locale_suffix_dative(text)
 	var/list/charlist = last2chars(text)
-	if(charlist == FALSE)
-		return ("*[text]")
-	if(charlist[1] == 1)
-		switch(charlist[2])
-			if("a","ı","o","u")
-				return "[text]'a"
-			if("e","i","ü","ö")
-				return "[text]'e"
-	else if (charlist[1] == "2")
-		switch(charlist[2])
-			if("a","ı","o","u")
-				return "[text]'ya"
-			if("e","i","ü","ö")
-				return "[text]'ye"
-	else if (charlist[1] == "3")
-		return "[text]'e"
-	else if (charlist[1] == "4")
-		switch(charlist[2])
-			if("0","9")
-				return "[text]'a"
-			if("1","3","4","5","8")
-				return "[text]'e"
-			if("2","7")
-				return "[text]'ye"
-			if("6")
-				return "[text]'ya"
-	else
-		return "*[text]"
+	switch(charlist[1])
+		if(1)
+			switch(charlist[2])
+				if("a","ı","o","u")
+					return "[text]'a"
+				if("e","i","ü","ö")
+					return "[text]'e"
+		if (2)
+			switch(charlist[2])
+				if("a","ı","o","u")
+					return "[text]'ya"
+				if("e","i","ü","ö")
+					return "[text]'ye"
+		if (3)
+			return "[text]'e"
+		if (4)
+			switch(charlist[2])
+				if("0","9")
+					return "[text]'a"
+				if("1","3","4","5","8")
+					return "[text]'e"
+				if("2","7")
+					return "[text]'ye"
+				if("6")
+					return "[text]'ya"
+		else
+			return "*[text]"
 
 /// Bulunma eki | -de, -da / -te, -ta
 /proc/locale_suffix_locative(text)
-	var/list/voiceless = list("ç", "f", "h", "k", "s", "ş", "t", "p")
+	var/static/list/silent = list("ç", "f", "h", "k", "s", "ş", "t", "p")
 	var/list/charlist = last2chars(text)
-	if(charlist == FALSE)
-		return "*[text]"
-	if(charlist[1] == "1" || charlist[1] == "2")
-		switch(charlist[2])
-			if("a","ı","o","u")
-				if(charlist[3] in sert)
-					return "[text]'ta"
-				else
+	switch(charlist[2])
+		if(1,2)
+			switch(charlist[2])
+				if("a","ı","o","u")
+					if(charlist[3] in silent)
+						return "[text]'ta"
+					else
+						return "[text]'da"
+				if("e","i","ü","ö")
+					if(charlist[3] in silent)
+						return "[text]'te"
+					else
+						return "[text]'de"
+		if (3)
+			return "[text]'de"
+		if (4)
+			switch(charlist[2])
+				if("0","6","9")
 					return "[text]'da"
-			if("e","i","ü","ö")
-				if(charlist[3] in sert)
-					return "[text]'te"
-				else
+				if("1","2","7","8")
 					return "[text]'de"
-	else if (charlist[1] == "3")
-		return "[text]'de"
-	else if (charlist[1] == "4")
-		switch(charlist[2])
-			if("0","6","9")
-				return "[text]'da"
-			if("1","2","7","8")
-				return "[text]'de"
-			if("3","4","5")
-				return "[text]'te"
-	else
-		return "*[text]"
+				if("3","4","5")
+					return "[text]'te"
+		else
+			return "*[text]"
 
 /// Ayrilma eki | -den, -dan / -ten, -tan
 /proc/locale_suffix_ablative(text)
-	var/list/sert = list("ç", "f", "h", "k", "s", "ş", "t", "p")
-	var/list/kelime = getLast2Word(text)
-	if(charlist == FALSE)
-		return "*[text]"
-	if(charlist[1] == "1")
-		switch(charlist[2])
-			if("a","ı","o","u")
-				if(charlist[3] in sert)
-					return "[text]'tan"
-				else
+	var/static/list/silent = list("ç", "f", "h", "k", "s", "ş", "t", "p")
+	var/list/charlist = last2chars(text)
+	switch(charlist[1])
+		if(1)
+			switch(charlist[2])
+				if("a","ı","o","u")
+					if(charlist[3] in silent)
+						return "[text]'tan"
+					else
+						return "[text]'dan"
+				if("e","i","ü","ö")
+					if(charlist[3] in silent)
+						return "[text]'ten"
+					else
+						return "[text]'den"
+		if(2)
+			switch(charlist[2])
+				if("a","ı","o","u")
 					return "[text]'dan"
-			if("e","i","ü","ö")
-				if(charlist[3] in sert)
-					return "[text]'ten"
-				else
+				if("e","i","ü","ö")
 					return "[text]'den"
-	if(charlist[1] == "2")
-		switch(charlist[2])
-			if("a","ı","o","u")
-				return "[text]'dan"
-			if("e","i","ü","ö")
-				return "[text]'den"
-	else if (charlist[1] == "3")
-		return "[text]'den"
-	else if(charlist[1] == "4")
-		switch(charlist[2])
-			if("0","6","9")
-				return "[text]'dan"
-			if("1","2","7","8")
-				return "[text]'den"
-			if("3","4","5")
-				return "[text]'ten"
-	else
-		return "*[text]"
+		if (3)
+			return "[text]'den"
+		if(4)
+			switch(charlist[2])
+				if("0","6","9")
+					return "[text]'dan"
+				if("1","2","7","8")
+					return "[text]'den"
+				if("3","4","5")
+					return "[text]'ten"
+		else
+			return "*[text]"
 
 /// Ilgi eki | -in, -un / -nin, -nun turkce harfler dahildir
 /proc/locale_suffix_genitive(text)
-	var/list/kelime = getLast2Word(text)
-	if(charlist == FALSE)
-		return "*[text]"
-	if(charlist[1] == "1")
-		switch(charlist[2])
-			if("a","ı")
-				return "[text]'ın"
-			if("e","i")
-				return "[text]'in"
-			if("o","u")
-				return "[text]'un"
-			if("ü","ö")
-				return "[text]'ün"
-	else if (charlist[1] == "2")
-		switch(charlist[2])
-			if("a","ı")
-				return "[text]'nın"
-			if("e","i")
-				return "[text]'nin"
-			if("o","u")
-				return "[text]'nun"
-			if("ü","ö")
-				return "[text]'nün"
-	else if (charlist[1] == "3")
-		return "[text]'in"
-	else if (charlist[1] == "4")
-		switch(charlist[2])
-			if("0")
-				return "[text]'ın"
-			if("1","5","8")
-				return "[text]'in"
-			if("2","7")
-				return "[text]'nin"
-			if("3","4")
-				return "[text]'ün"
-			if("6")
-				return "[text]'nın"
-			if("9")
-				return "[text]'un"
-	else
-		return "*[text]"
+	var/list/charlist = last2chars(text)
+	switch(charlist[1])
+		if(1)
+			switch(charlist[2])
+				if("a","ı")
+					return "[text]'ın"
+				if("e","i")
+					return "[text]'in"
+				if("o","u")
+					return "[text]'un"
+				if("ü","ö")
+					return "[text]'ün"
+		if(2)
+			switch(charlist[2])
+				if("a","ı")
+					return "[text]'nın"
+				if("e","i")
+					return "[text]'nin"
+				if("o","u")
+					return "[text]'nun"
+				if("ü","ö")
+					return "[text]'nün"
+		if(3)
+			return "[text]'in"
+		if(4)
+			switch(charlist[2])
+				if("0")
+					return "[text]'ın"
+				if("1","5","8")
+					return "[text]'in"
+				if("2","7")
+					return "[text]'nin"
+				if("3","4")
+					return "[text]'ün"
+				if("6")
+					return "[text]'nın"
+				if("9")
+					return "[text]'un"
+		else
+			return "*[text]"

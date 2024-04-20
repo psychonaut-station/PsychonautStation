@@ -119,7 +119,6 @@
 		return
 
 	if(ht.get_organ_by_type(/obj/item/organ/external/headcrab))
-		finish_action(controller, FALSE, target_key)
 		return
 
 	if(hc.crabbed_someone)
@@ -201,10 +200,14 @@
 	use_mob_sprite_as_obj_sprite = TRUE
 	bodypart_overlay = /datum/bodypart_overlay/mutant/headcrab
 	var/mob/living/basic/headcrab/hc
+	var/causes_damage = TRUE
 
-/obj/item/organ/external/headcrab/Insert(mob/living/carbon/receiver, special, movement_flags)
+/obj/item/organ/external/headcrab/on_mob_insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
+	START_PROCESSING(SSobj, src)
 	if(hc)
+		receiver.Paralyze(3 SECONDS)
+		receiver.emote("scream")
 		var/is_head_protected = FALSE
 		for(var/obj/item/clothing/equipped in receiver.get_equipped_items())
 			if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
@@ -213,14 +216,27 @@
 			try_to_zombie_infect(receiver)
 		hc.crabbed_someone = TRUE
 
-/obj/item/organ/external/headcrab/Remove(mob/living/carbon/organ_owner, special, movement_flags)
+/obj/item/organ/external/headcrab/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
 	. = ..()
+	STOP_PROCESSING(SSobj, src)
 	if(hc)
-		hc.forceMove(get_turf(organ_owner))
+		hc.forceMove(get_turf(src))
 		hc.apply_damage(hc.health)
 		hc.crabbed_someone = FALSE
 		if(!isnull(src))
 			qdel(src)
+
+/obj/item/organ/external/headcrab/process(seconds_per_tick, times_fired)
+	if(!owner)
+		return
+	if(!(src in owner.organs))
+		Remove(owner)
+	if(!hc)
+		return
+	if(causes_damage && !iszombie(owner) && owner.stat != DEAD)
+		owner.adjustOxyLoss(0.5 * seconds_per_tick)
+		if(!owner.get_organ_slot(ORGAN_SLOT_ZOMBIE) && !HAS_TRAIT(owner, TRAIT_NO_ZOMBIFY) && SPT_PROB(50, seconds_per_tick))
+			try_to_zombie_infect(owner)
 
 /obj/item/organ/external/headcrab/default
 	sprite_accessory_override = /datum/sprite_accessory/headcrab/default
@@ -232,10 +248,10 @@
 /datum/bodypart_overlay/mutant/headcrab/can_draw_on_bodypart(mob/living/carbon/human/human)
 	return TRUE
 
-/datum/bodypart_overlay/mutant/headcrab/get_global_feature_list()
-	return GLOB.headcrab_list
+/datum/bodypart_overlay/mutant/headcrab/get_global_feature_list() 
+	return GLOB.headcrab_list 
 
-/datum/bodypart_overlay/mutant/headcrab/get_base_icon_state()
+/datum/bodypart_overlay/mutant/headcrab/get_base_icon_state() 
 	return sprite_datum.icon_state
 
 /datum/bodypart_overlay/mutant/headcrab/get_image(image_layer, obj/item/bodypart/limb)

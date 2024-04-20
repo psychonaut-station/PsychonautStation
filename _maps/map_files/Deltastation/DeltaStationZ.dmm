@@ -84108,12 +84108,6 @@
 	pixel_y = 6
 	},
 /obj/machinery/computer/security/qm,
-/obj/item/paper/crumpled/muddy/fluff/elephant_graveyard/rnd_notes{
-	name = "Istasyon Durum Raporu";
-	default_raw_text = "<p><strong>Salgın sonrasında kalan insanlar, kargoya sığındı. Burada biraz malzeme ve işçilikle bir sığınak oluşturduk fakat işler pek iyi gitmiyor. Elektrik bitmek üzere ve dışarıdaki zombiler her geçen gün yaklaşıyor. Kaptanın söylediğine göre, AI Sat  içerisinde bir konsol parçası varmış ve istasyonun hemen yukarısında eski bir solar panel alanı mevcutmuş. Umarım buradan kaçabiliriz.</strong></p>""<p><strong>Salgın sonrasında kalan insanlar, kargoya sığındı. Burada biraz malzeme ve işçilikle bir sığınak oluşturduk fakat işler pek iyi gitmiyor. Elektrik bitmek üzere ve dışarıdaki zombiler her geçen gün yaklaşıyor. Kaptanın söylediğine göre, AI Sat  içerisinde bir konsol parçası varmış ve istasyonun hemen yukarısında eski bir solar panel alanı mevcutmuş. Umarım buradan kaçabiliriz.</strong></p>";
-	pixel_y = 3;
-	pixel_x = 3
-	},
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},

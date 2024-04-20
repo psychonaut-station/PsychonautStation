@@ -25,7 +25,7 @@
 	if(!ishuman(user))
 		return
 	var/mob/living/carbon/human/H = user
-	if((!H.mind.secretary || HAS_TRAIT(user, TRAIT_ILLITERATE)) && !(obj_flags & EMAGGED))
+	if((!istype(H.mind?.assigned_role, /datum/job/nt_secretary) || HAS_TRAIT(user, TRAIT_ILLITERATE)) && !(obj_flags & EMAGGED))
 		to_chat(user, span_warning("You don't know how to use this!"))
 		return
 	ui = SStgui.try_update_ui(user, src, ui)

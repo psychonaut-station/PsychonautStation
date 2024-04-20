@@ -140,7 +140,7 @@
 
 /obj/item/door_remote/secretary/afterattack(atom/target, mob/user)
 	var/mob/living/carbon/human/H = user
-	if(H.mind && H.mind.secretary)
+	if(istype(H.mind?.assigned_role, /datum/job/nt_secretary))
 		var/obj/machinery/door/door
 
 		if (istype(target, /obj/machinery/door))

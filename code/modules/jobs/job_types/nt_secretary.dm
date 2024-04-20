@@ -70,10 +70,3 @@
 	accessory = /obj/item/clothing/accessory/pocketprotector/full
 
 	implants = list(/obj/item/implant/mindshield)
-
-/datum/outfit/job/nt_secretary/post_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
-	..()
-	if(visualsOnly)
-		return
-	if(H.mind)
-		H.mind.secretary = TRUE

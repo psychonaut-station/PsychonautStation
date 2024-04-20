@@ -278,8 +278,8 @@
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
-			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : usr.real_name
-			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
+			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("KİMLİK HATASI: CVE-2018-17107", 60) : usr.real_name
+			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alımı")
 
 			message_admins("[ADMIN_LOOKUPFLW(usr)] purchased [shuttle.name].")
 			log_shuttle("[key_name(usr)] has purchased [shuttle.name].")
@@ -299,7 +299,7 @@
 			nuke_request(reason, usr)
 			to_chat(usr, span_notice("Request sent."))
 			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [usr]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
+			priority_announce("İstasyon nükleer imha kodları [usr] tarafından istenmiştir. Bu istediğiniz ile ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer İmha Kodları İstendi", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
@@ -457,7 +457,7 @@
 			SSjob.safe_code_request_loc = pod_location
 			SSjob.safe_code_requested = TRUE
 			SSjob.safe_code_timer_id = addtimer(CALLBACK(SSjob, TYPE_PROC_REF(/datum/controller/subsystem/job, send_spare_id_safe_code), pod_location), 120 SECONDS, TIMER_UNIQUE | TIMER_STOPPABLE)
-			minor_announce("Due to staff shortages, your station has been approved for delivery of access codes to secure the Captain's Spare ID. Delivery via drop pod at [get_area(pod_location)]. ETA 120 seconds.")
+			minor_announce("Personel eksikliği nedeniyle, kaptanın yedek kimliğinin kodlarını istemenizi onaylıyoruz. Teslimat [get_area(pod_location)] alanına düşecek pod aracılığı ile sağlanacaktır. Teslimat podunun tahmini varış süresi 120 saniye.")
 
 /obj/machinery/computer/communications/proc/emergency_access_cooldown(mob/user)
 	if(toggle_uses == toggle_max_uses) //you have used up free uses already, do it one more time and start a cooldown
@@ -490,7 +490,7 @@
 		payload["is_filtered"] = TRUE
 
 	send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
-	minor_announce(message, title = "Outgoing message to allied station")
+	minor_announce(message, title = "Müttefik istasyona gönderilen mesaj")
 	usr.log_talk(message, LOG_SAY, tag = "message to the other server")
 	message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
 	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[usr.real_name]", usr, message_type = DEADCHAT_ANNOUNCEMENT)
@@ -866,23 +866,23 @@
 				/datum/dynamic_ruleset/midround/dangerous_pirates,
 			)
 			priority_announce(
-				"Attention crew: sector monitoring reports a massive jump-trace from an enemy vessel destined for your system. Prepare for imminent hostile contact.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi, büyük bir düşman gemisinin sisteminize sıçrama yaptığını rapor ediyor. Yakın düşman teması için hazırlanın.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 			SSdynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
-				"Attention crew: sector monitoring reports a jump-trace from an unidentified vessel destined for your system. Prepare for probable contact.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine: sektör gözlemleme sistemi, tanımlanamayan bir geminin sisteminize doğru bir sıçrama yaptığını rapor ediyor. Muhtemel temas için hazırlanın.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 
 			force_event_after(/datum/round_event_control/fugitives, "[hacker] hacking a communications console", rand(20 SECONDS, 1 MINUTES))
 
 		if(HACK_THREAT) // Force an unfavorable situation on the crew
 			priority_announce(
-				"Attention crew, the Nanotrasen Department of Intelligence has received intel suggesting increased enemy activity in your sector beyond that initially reported in today's threat advisory.",
-				"[command_name()] High-Priority Update",
+				"Mürettebatın dikkatine, Nanotrasen İstihbarat Departmanı, sektörünüzdeki düşman faaliyetlerinin bugün yayınlanan tehdit bildirisinde belirtilenin ötesine geçtiğine dair istihbarat almıştır.",
+				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
 
 			for(var/mob/crew_member as anything in GLOB.player_list)
@@ -909,8 +909,8 @@
 			else
 				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
 				priority_announce(
-					"Attention crew, it appears that someone on your station has hijacked your telecommunications and broadcasted an unknown signal.",
-					"[command_name()] High-Priority Update",
+					"Mürettebatın dikkatine, istasyonunuzdaki birinin haberleşme sistemlerinizi ele geçirdiği ve bilinmeyen bir sinyal yayınladığı görülüyor.",
+					"[command_name()] Yüksek Öncelikli Bildiri",
 				)
 
 #undef HACK_PIRATE

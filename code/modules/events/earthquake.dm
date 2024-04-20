@@ -90,7 +90,7 @@
 		underbelly += GET_TURF_BELOW(turf_to_quake)
 
 /datum/round_event/earthquake/announce(fake)
-	priority_announce("Planetary monitoring systems indicate a devastating seismic event in the near future.", "Seismic Report")
+	priority_announce("Gezegensel izleme sistemleri yakın gelecekte yıkıcı bir deprem olacağına işaret ediyor.", "Sismik Raporu")
 
 /datum/round_event/earthquake/start()
 	notify_ghosts(

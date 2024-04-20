@@ -90468,7 +90468,7 @@
 /area/station/hallway/primary/central/aft)
 "vTm" = (
 /obj/structure/table/reinforced,
-/obj/item/surgery_tray,
+/obj/item/surgery_tray/full,
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted{
 	dir = 8
 	},

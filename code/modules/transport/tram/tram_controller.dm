@@ -668,9 +668,9 @@
 	// Don't bother processing crossing signals, where this tram's going there are no signals
 	//for(var/obj/machinery/transport/crossing_signal/xing as anything in SStransport.crossing_signals)
 	//	xing.temp_malfunction()
-	priority_announce("In a turn of rather peculiar events, it appears that [GLOB.station_name] has struck an immovable rod. (Don't ask us where it came from.) This has led to a station brakes failure on one of the tram platforms.\n\n\
-		Our diligent team of engineers have been informed and they're rushing over - although not quite at the speed of our recently flying tram.\n\n\
-		So while we all look in awe at the universe's mysterious sense of humour, please stand clear of the tracks and remember to stand behind the yellow line.", "Braking News")
+	priority_announce("Oldukça tuhaf bir olay sonucunda, [GLOB.station_name] hareketsiz bir çubuğa çarpmış gibi görünüyor. (Nereden geldiğini bizde bilmiyoruz.) Bu durum tramvay platformlarından birinde frenlerin arızalanmasına yol açtı.\n\n\
+		Çalışkan mühendis ekibimiz bilgilendirildi ve - her ne kadar son zamanlarda uçmakta olan tramvayımızın hızında olmasa da - sorunu çözmek için acele ediyorlar.\n\n\
+		Hepimiz evrenin gizemli mizah anlayışına hayranlıkla bakarken, lütfen raylardan uzak durun ve sarı çizginin arkasında durmayı unutmayın.", "Son Dakika Haberi")
 	set_active(TRUE)
 	set_status_code(CONTROLS_LOCKED, TRUE)
 	dispatch_transport(destination_platform = push_destination)

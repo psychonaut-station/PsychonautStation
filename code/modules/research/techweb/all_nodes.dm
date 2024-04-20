@@ -1011,8 +1011,8 @@
 
 /datum/techweb_node/cyborg_upg_engiminer
 	id = "cyborg_upg_engiminer"
-	display_name = "Cyborg Upgrades: Engineering & Mining"
-	description = "Engineering and Mining upgrades for cyborgs."
+	display_name = "Cyborg Upgrades: Engineering & Mining & Cargo"
+	description = "Cargo, Engineering and Mining upgrades for cyborgs."
 	prereq_ids = list("adv_engi", "basic_mining")
 	design_ids = list(
 		"borg_upgrade_circuitapp",
@@ -1022,6 +1022,10 @@
 		"borg_upgrade_rped",
 		"borg_upgrade_hypermod",
 		"borg_upgrade_inducer",
+		"borg_upgrade_clampcap",
+		"borg_upgrade_clamptime",
+		"borg_upgrade_clampcharge",
+		"borg_upgrade_clampcarry"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = 2000)
 

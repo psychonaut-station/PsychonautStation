@@ -121,6 +121,42 @@ GLOBAL_VAR_INIT(rollovercheck_last_timeofday, 0)
 		hourT = " and [hour] hour[(hour != 1)? "s":""]"
 	return "[day] day[(day != 1)? "s":""][hourT][minuteT][secondT]"
 
+/**
+ * Sureyi Gun, Saat, Dakika ve Saniyeye cevirip geri dondurur.
+ *
+ * Arguments
+ * * time_value - gerekli, cevirilmesi istenilen suredir. '3 MINUTES' veya '1800' seklinde olmasi gerekmektedir.
+ *
+ * Return
+ * * String - Orn. 3 Dakika / 53 Saniye
+ */
+/proc/DisplayLocaleTimeText(time_value, round_seconds_to = 0.1)
+	var/second = FLOOR(time_value * 0.1, round_seconds_to)
+	if(!second)
+		return "hemen şimdi"
+	if(second < 60)
+		return "[second] saniye"
+	var/minute = FLOOR(second / 60, 1)
+	second = FLOOR(MODULUS(second, 60), round_seconds_to)
+	var/secondT
+	if(second)
+		secondT = " [second] saniye"
+	if(minute < 60)
+		return "[minute] dakika[secondT]"
+	var/hour = FLOOR(minute / 60, 1)
+	minute = MODULUS(minute, 60)
+	var/minuteT
+	if(minute)
+		minuteT = " [minute] dakika"
+	if(hour < 24)
+		return "[hour] saat[minuteT][secondT]"
+	var/day = FLOOR(hour / 24, 1)
+	hour = MODULUS(hour, 24)
+	var/hourT
+	if(hour)
+		hourT = " [hour] saat"
+	return "[day] gün[hourT][minuteT][secondT]"
+
 
 /proc/daysSince(realtimev)
 	return round((world.realtime - realtimev) / (24 HOURS))

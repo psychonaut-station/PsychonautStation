@@ -402,6 +402,70 @@
 		COOLDOWN_START(src, alarm_cooldown, HARM_ALARM_NO_SAFETY_COOLDOWN)
 		user.log_message("used an emagged Cyborg Harm Alarm", LOG_ATTACK)
 
+/// The fabled paper plane crossbow and its hardlight paper planes.
+/obj/item/paperplane/syndicate/hardlight
+	name = "hardlight paper plane"
+	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
+	eye_dam_lower = 10
+	eye_dam_higher = 10
+	scrap_on_impact = TRUE
+	throw_speed = 0.8
+	/// Which color is the paper plane?
+	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)
+	alpha = 150 // It's hardlight, it's gotta be see-through.
+
+/obj/item/paperplane/syndicate/hardlight/Initialize(mapload)
+	. = ..()
+	color = color_hex2color_matrix(pick(paper_colors))
+	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.
+
+/obj/item/borg/paperplane_crossbow
+	name = "paper plane crossbow"
+	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	icon_state = "crossbow_halloween"
+	/// Paperplane Type
+	var/obj/item/paperplane/planetype = /obj/item/paperplane/syndicate/hardlight
+	/// How long is the cooldown between shots?
+	var/shooting_delay = 5 SECONDS
+	/// Are we ready to fire again?
+	COOLDOWN_DECLARE(shooting_cooldown)
+
+/// A proc for shooting a projectile at the target, it's just that simple, really.
+/obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/silicon/robot/user, params)
+
+	var/obj/item/paperplane/plane_to_fire = new planetype(get_turf(loc))
+
+	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
+	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
+	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
+	addtimer(CALLBACK(src, PROC_REF(charge_up), user), shooting_delay)
+	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
+
+/obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/silicon/robot/user)
+	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
+		balloon_alert_to_viewers("*click*")
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		return FALSE
+	if(target == user)
+		to_chat(user, span_warning("You cant shoot yourself!"))
+		return FALSE
+	if(!user.cell.use(50))
+		to_chat(user, span_warning("Not enough power."))
+		return FALSE
+	return TRUE
+
+/obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
+	. = ..()
+	if(iscyborg(user))
+		var/mob/living/silicon/robot/robot_user = user
+		if(!canshoot(target,robot_user))
+			return FALSE
+		shoot(target, robot_user, click_params)
+
+/obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
+	to_chat(user, span_warning("[src] silently charges up."))
+
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG
 #undef HUG_MODE_SHOCK

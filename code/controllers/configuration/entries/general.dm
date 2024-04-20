@@ -336,6 +336,11 @@
 /datum/config_entry/string/discordbotcommandprefix
 	default = "?"
 
+/datum/config_entry/string/discordbottoken
+
+/datum/config_entry/string/discorduserendpoint
+	default = "https://discord.com/api/v10/users"
+
 /datum/config_entry/string/roundstatsurl
 
 /datum/config_entry/string/gamelogurl

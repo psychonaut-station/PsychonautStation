@@ -152,6 +152,6 @@
 					header = "Spawn Here!",
 				)
 
-	priority_announce("Unidentified ship detected near the station.")
+	priority_announce("İstasyon yakınlarında tanımlanamayan bir gemi tespit edildi.")
 
 #undef TEAM_BACKSTORY_SIZE

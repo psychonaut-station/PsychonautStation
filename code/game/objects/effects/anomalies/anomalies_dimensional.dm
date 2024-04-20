@@ -76,7 +76,7 @@
 	var/area/new_area = placer.findValidArea()
 	var/turf/new_turf = placer.findValidTurf(new_area)
 
-	priority_announce("Dimensional instability relocated. Expected location: [new_area.name].", "Anomaly Alert")
+	priority_announce("Boyutsal dengesizlik yeniden tespit edildi. Beklenen konum: [new_area.name].", "Anomali Uyarısı")
 	src.forceMove(new_turf)
 	prepare_area()
 

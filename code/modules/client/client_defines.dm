@@ -266,3 +266,6 @@
 
 	/// Does this client have typing indicators enabled?
 	var/typing_indicators = FALSE
+
+	/// Discord verification ui
+	var/datum/verification_menu/verification_menu

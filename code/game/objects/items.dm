@@ -519,6 +519,7 @@
 	. = ..()
 	if(. || !user || anchored)
 		return
+	SStutorials.suggest_tutorial(user, /datum/tutorial/examine)
 	return attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/user, skip_grav = FALSE)

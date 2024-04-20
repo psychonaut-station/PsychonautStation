@@ -39,7 +39,7 @@
 	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
 	priority_announce("Yönelme Eki: [locale_suffix_dative(text)]")
 	priority_announce("İlgi Eki: [locale_suffix_genitive(text)]")
-	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
+	priority_announce("Bulunma Eki: [locale_suffix_locative(text)]")
 
 /proc/last2chars(text)
 	var/static/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")

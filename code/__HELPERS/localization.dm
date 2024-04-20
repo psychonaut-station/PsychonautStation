@@ -45,8 +45,10 @@
 		return list("1",h1,h2) // sondan 2. harf unlu
 	if(h2 in unluHarfler)
 		return list("2",h2,h1) // sonuncu harf unlu
+	if(!(h1 in unluHarfler) && !(h2 in unluHarfler))
+		return (list("3"))
 	if(h2 in sayilar)
-		return list("3",h2)
+		return list("4",h2)
 	return FALSE
 
 
@@ -77,8 +79,9 @@
 				return (text+("'yu"))
 			if("ü","ö")
 				return (text+("'yü"))
-		return ("*"+text)
 	else if (kelime[1] == "3")
+		return (text+("'i"))
+	else if (kelime[1] == "4")
 		switch(kelime[2])
 			if("0")
 				return (text+("'ı"))
@@ -112,8 +115,9 @@
 				return (text+("'ya"))
 			if("e","i","ü","ö")
 				return (text+("'ye"))
-		return ("*"+text)
 	else if (kelime[1] == "3")
+		return (text+("'e"))
+	else if (kelime[1] == "4")
 		switch(kelime[2])
 			if("0","9")
 				return (text+("'a"))
@@ -145,6 +149,8 @@
 				else
 					return (text+("'de"))
 	else if (kelime[1] == "3")
+		return (text+("'de"))
+	else if (kelime[1] == "4")
 		switch(kelime[2])
 			if("0","6","9")
 				return (text+("'da"))
@@ -179,7 +185,9 @@
 				return (text+("'dan"))
 			if("e","i","ü","ö")
 				return (text+("'den"))
-	else if(kelime[1] == "3")
+	else if (kelime[1] == "3")
+		return (text+("'den"))
+	else if(kelime[1] == "4")
 		switch(kelime[2])
 			if("0","6","9")
 				return (text+("'dan"))
@@ -216,6 +224,8 @@
 			if("ü","ö")
 				return (text+("'nün"))
 	else if (kelime[1] == "3")
+		return (text+("'in"))
+	else if (kelime[1] == "4")
 		switch(kelime[2])
 			if("0")
 				return (text+("'ın"))

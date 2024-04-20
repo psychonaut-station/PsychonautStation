@@ -33,23 +33,16 @@
 	return "[day] gün[hourT][minuteT][secondT]"
 
 // { YAZILAR }
-// ekleri kontrol edebilirsiniz
-/proc/testallsuffixes(text)
-	priority_announce("Ayrılma Eki: [locale_suffix_ablative(text)]")
-	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
-	priority_announce("Yönelme Eki: [locale_suffix_dative(text)]")
-	priority_announce("İlgi Eki: [locale_suffix_genitive(text)]")
-	priority_announce("Bulunma Eki: [locale_suffix_locative(text)]")
 
 /proc/last2chars(text)
 	var/static/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
 	var/list/last_chars = text2charlist(locale_lowertext(copytext(text, length(text) - 1)))
 	if(!isnull(text2num(last_chars[2])))
 		return list(4, last_chars[2])
-	if(last_chars[1] in voxels)
-		return list(1, last_chars[1], last_chars[2])
-	else if(last_chars[2] in voxels)
+	if(last_chars[2] in voxels)
 		return list(2, last_chars[2], last_chars[1])
+	else if(last_chars[1] in voxels)
+		return list(1, last_chars[1], last_chars[2])
 	else
 		return list(3)
 

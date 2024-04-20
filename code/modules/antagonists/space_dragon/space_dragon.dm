@@ -180,7 +180,7 @@
 	permanant_empower()
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	main_objective?.completed = TRUE
-	priority_announce("Çok sayıda yaşam formunun [station_name()] aşırı hızlarda yaklaştığı tespit edildi. \
+	priority_announce("Çok sayıda yaşam formunun [locale_suffix_dative(station_name())] doğru aşırı hızlarda yaklaştığı tespit edildi. \
 		Kalan mürettebatın mümkün olan en kısa sürede tahliye edilmesi tavsiye edilmektedir.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
 	sound_to_playing_players('sound/creatures/space_dragon_roar.ogg', volume = 75)
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)

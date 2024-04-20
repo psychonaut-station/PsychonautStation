@@ -16,7 +16,7 @@
 	announce_when = 10
 
 /datum/round_event/ghost_role/space_dragon/announce(fake)
-	priority_announce("[station_name()] yakınında büyük bir organik enerji akışı kaydedildi, lütfen beklemede kalın.", "Yaşam Sinyali")
+	priority_announce("[locale_suffix_genitive(station_name())] yakınlarında büyük bir organik enerji akışı kaydedildi, lütfen beklemede kalın.", "Yaşam Sinyali")
 
 /datum/round_event/ghost_role/space_dragon/spawn_role()
 	var/mob/chosen_one = SSpolling.poll_ghost_candidates(check_jobban = ROLE_SPACE_DRAGON, role = ROLE_SPACE_DRAGON, alert_pic = /mob/living/basic/space_dragon, amount_to_pick = 1)

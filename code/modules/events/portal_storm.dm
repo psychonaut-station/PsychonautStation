@@ -74,7 +74,7 @@
 	set waitfor = 0
 	sound_to_playing_players('sound/magic/lightning_chargeup.ogg')
 	sleep(8 SECONDS)
-	priority_announce("[station_name()] yaklaşan büyük bir bluespace anomalisi tespit edildi. Çarpışma için hazırlanın.")
+	priority_announce("[locale_suffix_dative(station_name())] doğru yaklaşan büyük bir bluespace anomalisi tespit edildi. Çarpışma için hazırlanın.")
 	sleep(2 SECONDS)
 	sound_to_playing_players('sound/magic/lightningbolt.ogg')
 

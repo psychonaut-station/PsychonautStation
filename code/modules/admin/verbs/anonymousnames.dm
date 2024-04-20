@@ -269,7 +269,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	set_station_name("[pick(GLOB.first_names)] [pick(GLOB.last_names)]")
 
 /datum/anonymous_theme/station/announce_to_all_players()
-	priority_announce("[locale_suffix_genitive(station_name())] yakınlarında 9. seviye gerçeklik hatası olayı doğrulandı. Tüm personel, kazara daha fazla gerçeklik olayını tetiklememek için ellerinden gelenin en iyisini yapmaya çalışmalıdır.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
+	priority_announce("[station_name()] yakınlarında 9. seviye gerçeklik hatası olayı doğrulandı. Tüm personel, kazara daha fazla gerçeklik olayını tetiklememek için ellerinden gelenin en iyisini yapmaya çalışmalıdır.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
 
 /datum/anonymous_theme/station/anonymous_name(mob/target)
 	return new_station_name()

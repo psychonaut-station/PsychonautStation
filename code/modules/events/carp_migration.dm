@@ -37,7 +37,7 @@
 	start_when = rand(40, 60)
 
 /datum/round_event/carp_migration/announce(fake)
-	priority_announce("[locale_suffix_genitive(station_name())] yakınlarında [fluff_signal] tespit edildi, lütfen beklemede kalın.", "Yaşam Sinyali Uyarısı")
+	priority_announce("[station_name()] yakınlarında [fluff_signal] tespit edildi, lütfen beklemede kalın.", "Yaşam Sinyali Uyarısı")
 
 /datum/round_event/carp_migration/start()
 	// Stores the most recent fish we spawn

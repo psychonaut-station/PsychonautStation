@@ -74,11 +74,10 @@
 	desc = "A blood-red styled drop pod."
 	specialised = TRUE
 
-/obj/structure/closet/supplypod/podspawn/deathmatch/Entered(atom/movable/arrived)
-	. = ..()
-	if(isliving(arrived))
-		var/mob/living/critter = arrived
+/obj/structure/closet/supplypod/podspawn/deathmatch/preOpen()
+	for(var/mob/living/critter in contents)
 		critter.faction = list(FACTION_HOSTILE) //No infighting, but also KILL!!
+	return ..()
 
 /obj/structure/closet/supplypod/extractionpod
 	name = "Syndicate Extraction Pod"
@@ -111,12 +110,9 @@
 /obj/structure/closet/supplypod/deadmatch_missile
 	name = "cruise missile"
 	desc = "A big ass missile, likely launched from some far-off deep space missile silo."
-	decal = null
-	door = null
-	fin_mask = null
+	style = STYLE_RED_MISSILE
 	explosionSize = list(0,1,2,2)
 	effectShrapnel = TRUE
-	rubble_type = RUBBLE_THIN
 	specialised = TRUE
 	delays = list(POD_TRANSIT = 2.6 SECONDS, POD_FALLING = 0.4 SECONDS)
 	effectMissile = TRUE

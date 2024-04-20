@@ -85,8 +85,8 @@
 			pixel_y = stamp_offset_y + bonus_stamp_offset
 		)
 		stamp_image.appearance_flags |= RESET_COLOR
-		add_overlay(stamp_image)
 		bonus_stamp_offset -= 5
+		. += stamp_image
 
 	if(postmarked == TRUE)
 		var/image/postmark_image = image(
@@ -96,7 +96,7 @@
 			pixel_y = stamp_offset_y + rand(bonus_stamp_offset + 3, 1)
 		)
 		postmark_image.appearance_flags |= RESET_COLOR
-		add_overlay(postmark_image)
+		. += postmark_image
 
 /obj/item/mail/attackby(obj/item/W, mob/user, params)
 	// Destination tagging
@@ -115,7 +115,6 @@
 		return TRUE
 	balloon_alert(user, "hold it!")
 	return FALSE
-
 
 /obj/item/mail/attack_self(mob/user)
 	if(!unwrap(user))
@@ -148,7 +147,6 @@
 	playsound(loc, 'sound/items/poster_ripped.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 	return TRUE
-
 
 /obj/item/mail/examine_more(mob/user)
 	. = ..()
@@ -354,6 +352,28 @@
 		/obj/item/delivery/small,
 		/obj/item/paper
 	))
+
+/obj/item/storage/bag/mail/borg
+	resistance_flags = NONE
+
+/obj/item/storage/bag/mail/borg/pre_attack(atom/target, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.Adjacent(target))
+		return
+	if(length(contents))
+		var/turf/target_turf = get_turf(target)
+		if(!isturf(target_turf))
+			return
+		var/obj/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", contents)
+		if(isnull(pick))
+			return
+		if(pick.loc != src)
+			return
+		if(!user.Adjacent(target))
+			return
+		atom_storage.attempt_remove(pick, target_turf)
 
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"

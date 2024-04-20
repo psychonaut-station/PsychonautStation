@@ -19,6 +19,8 @@
 	var/mob/living/silicon/robot/robot
 	///Icon of the module selection screen
 	var/model_select_icon = "nomod"
+	/// Sets icon file for cyborg_base_icon
+	var/cyborg_base_iconfile = 'icons/mob/silicon/robots.dmi'
 	///Produces the icon for the borg and, if no special_light_key is set, the lights
 	var/cyborg_base_icon = "robot"
 	///If we want specific lights, use this instead of copying lights in the dmi
@@ -157,6 +159,9 @@
 			var/obj/item/gun/energy/gun = module
 			if(!gun.chambered)
 				gun.recharge_newshot() //try to reload a new shot.
+		else if(istype(module, /obj/item/universal_scanner))
+			var/obj/item/universal_scanner/sc = module
+			sc.paper_count = sc.max_paper_count
 
 	cyborg.toner = cyborg.tonermax
 
@@ -212,6 +217,9 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
 	new_model.robot = cyborg
+	if(!forced)
+		cyborg.icon = 'icons/mob/silicon/robots.dmi'
+		cyborg.icon_state = "robot"
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return
@@ -601,7 +609,7 @@
 
 	reagents.expose(our_turf, TOUCH, min(1, 10 / reagents.total_volume))
 	// We use more water doing this then mopping
-	reagents.remove_any(2) //reaction() doesn't use up the reagents
+	reagents.remove_all(2) //reaction() doesn't use up the reagents
 
 /datum/action/toggle_buffer/update_button_name(atom/movable/screen/movable/action_button/current_button, force)
 	if(buffer_on)
@@ -828,6 +836,38 @@
 	if(enzyme)
 		enzyme.reagents.add_reagent(/datum/reagent/consumable/enzyme, 2 * coeff)
 
+/obj/item/robot_model/cargo
+	name = "Cargo"
+	basic_modules = list(
+		/obj/item/assembly/flash/cyborg,
+		/obj/item/crowbar/cyborg,
+		/obj/item/stamp/borg,
+		/obj/item/stack/package_wrap,
+		/obj/item/stack/wrapping_paper,
+		/obj/item/dest_tagger,
+		/obj/item/hand_labeler/borg,
+		/obj/item/pen,
+		/obj/item/extinguisher/mini,
+		/obj/item/borg/cyborg_clamp,
+		/obj/item/borg/apparatus/sheet_manipulator,
+		/obj/item/storage/bag/mail/borg,
+		/obj/item/boxcutter,
+		/obj/item/borg/apparatus/paper_holder,
+		/obj/item/universal_scanner
+	)
+	radio_channels = list(RADIO_CHANNEL_SUPPLY)
+	emag_modules = list(
+		/obj/item/borg/paperplane_crossbow,
+	)
+	borg_skins = list(
+		"Cyclops" = list(SKIN_ICON = 'icons/psychonaut/mob/silicon/robots.dmi', SKIN_ICON_STATE = "cargo"),
+	)
+	cyborg_base_iconfile = 'icons/psychonaut/mob/silicon/robots.dmi'
+	cyborg_base_icon = "cargo"
+	model_select_icon = "standard"
+	hat_offset = 0
+	canDispose = TRUE
+
 /obj/item/robot_model/syndicate
 	name = "Syndicate Assault"
 	basic_modules = list(
@@ -1023,3 +1063,13 @@
 	max_energy = 50
 	recharge_rate = 2
 	name = "Pipe Cleaner Synthesizer"
+
+/datum/robot_energy_storage/wrap_paper
+	max_energy = 50
+	recharge_rate = 5
+	name = "Wrapping paper"
+
+/datum/robot_energy_storage/delivery_paper
+	max_energy = 50
+	recharge_rate = 5
+	name = "Delivery paper"

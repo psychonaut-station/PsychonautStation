@@ -36,7 +36,7 @@
 // harfleri kontrol ediyoruz
 /proc/last2chars(text)
 	var/static/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
-	var/list/last_chars = text2charlist(locale_lowertext(copytext(text, length(text) - 2)))
+	var/list/last_chars = text2charlist(locale_lowertext(copytext(text, length(text) - 1)))
 	if(!isnull(text2num(last_chars[2])))
 		return list(4, last_chars[2])
 	if(last_chars[1] in voxels)

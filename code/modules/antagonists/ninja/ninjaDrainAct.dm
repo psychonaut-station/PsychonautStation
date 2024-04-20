@@ -156,8 +156,9 @@
 /obj/machinery/computer/records/security/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!do_after(ninja, 20 SECONDS, src, extra_checks = CALLBACK(src, PROC_REF(can_hack), ninja)))
 		return
+	var/random_crime_list = world.file2list("strings/random_crimes.txt")
 	for(var/datum/record/crew/target in GLOB.manifest.general)
-		var/crimename = delocale_text(pick(world.file2list("strings/random_crimes.txt")))
+		var/crimename = delocale_text(pick(random_crime_list))
 		var/datum/crime/newcrime = new(name = crimename, details = crimename)
 		target.crimes += newcrime
 		target.wanted_status = WANTED_ARREST

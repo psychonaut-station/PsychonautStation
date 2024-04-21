@@ -90,7 +90,7 @@
 	return ..()
 
 /obj/structure/fans/tiny/craftable/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
+	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
 		if(disassembled)
 			var/obj/item/tinyfan_assembly/frame = new(loc)
 			transfer_fingerprints_to(frame)

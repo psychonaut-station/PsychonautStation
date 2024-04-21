@@ -437,8 +437,9 @@
 	drop_all_crates()
 	return ..()
 
-/obj/item/borg/cyborg_clamp/AltClick(mob/living/silicon/robot/user)
+/obj/item/borg/cyborg_clamp/click_alt(mob/living/silicon/robot/user)
 	drop_all_crates()
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/borg/cyborg_clamp/proc/get_host()
 	if(istype(host))

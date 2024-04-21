@@ -67,7 +67,7 @@
 		update_appearance()
 		qdel(H)
 
-/obj/item/pokerchip/AltClick(mob/user)
+/obj/item/pokerchip/click_alt(mob/user)
 	if(!user.can_perform_action(src, NEED_DEXTERITY | FORBID_TELEKINESIS_REACH))
 		return
 	var/split_amount = tgui_input_number(user, "How many credits worth chip do you want to extract from the stack? (Max: [credits] cr)", "Poker chip", max_value = credits)

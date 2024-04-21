@@ -68,6 +68,8 @@
 /// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
 #define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
 
+#define LOCALE_LOWER_TEXT(thing) locale_lowertext(UNLINT("[thing]"))
+
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"
 

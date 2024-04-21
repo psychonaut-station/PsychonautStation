@@ -68,6 +68,12 @@ ADMIN_VERB(toggle_ooc, R_ADMIN, "Toggle OOC", "Toggle the OOC channel on or off.
 	message_admins("[key_name_admin(user)] toggled OOC.")
 	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle OOC", "[GLOB.ooc_allowed ? "Enabled" : "Disabled"]"))
 
+ADMIN_VERB(toggle_looc, R_ADMIN, "Toggle LOOC", "Toggle the LOOC channel on or off.", ADMIN_CATEGORY_SERVER)
+	toggle_looc()
+	log_admin("[key_name(user)] toggled LOOC.")
+	message_admins("[key_name_admin(user)] toggled LOOC.")
+	SSblackbox.record_feedback("nested tally", "admin_toggle", 1, list("Toggle LOOC", "[GLOB.looc_allowed ? "Enabled" : "Disabled"]"))
+
 ADMIN_VERB(toggle_ooc_dead, R_ADMIN, "Toggle Dead OOC", "Toggle the OOC channel for dead players on or off.", ADMIN_CATEGORY_SERVER)
 	toggle_dooc()
 	log_admin("[key_name(user)] toggled OOC.")

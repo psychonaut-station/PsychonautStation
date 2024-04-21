@@ -13,7 +13,7 @@
 // We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
 // If you "refactor" this to make it "cleaner" I will send you to hell
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/target in world)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_ADMIN, "Admin PM Mob", mob/target in world)
 	if(!ismob(target))
 		to_chat(
 			src,
@@ -25,7 +25,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/t
 	user.cmd_admin_pm(target.client, null)
 	BLACKBOX_LOG_ADMIN_VERB("Admin PM Mob")
 
-ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
 	var/list/targets = list()
 	for(var/client/client in GLOB.clients)
 		var/nametag = ""
@@ -795,34 +795,19 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 
 /// MENTOR PRIVATE MESSAGE ///
 
-/client/proc/cmd_mentor_pm_context(mob/M in GLOB.mob_list)
-	set category = null
-	set name = "Mentor PM Mob"
-	if(!holder)
-		to_chat(src,
-			type = MESSAGE_TYPE_ADMINPM,
-			html = span_danger("Error: Mentor-PM-Context: Only administrators may use this command."),
-			confidential = TRUE)
-		return
-	if(!ismob(M))
-		to_chat(src,
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_mentor_pm_context, R_NONE, "Mentor PM Mob", mob/target in world)
+	if(!ismob(target))
+		to_chat(
+			src,
 			type = MESSAGE_TYPE_ADMINPM,
 			html = span_danger("Error: Mentor-PM-Context: Target mob is not a mob, somehow."),
-			confidential = TRUE)
+			confidential = TRUE
+		)
 		return
-	cmd_admin_pm(M.client, null, TRUE)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Mentor PM Mob")
+	user.cmd_admin_pm(target.client, null, TRUE)
+	BLACKBOX_LOG_ADMIN_VERB("Mentor PM Mob")
 
-/client/proc/cmd_mentor_pm_panel()
-	set category = "Admin"
-	set name = "Mentor PM"
-	if(!holder)
-		to_chat(src,
-			type = MESSAGE_TYPE_ADMINPM,
-			html = span_danger("Error: Mentor-PM-Panel: Only administrators may use this command."),
-			confidential = TRUE)
-		return
-
+ADMIN_VERB(cmd_mentor_pm_panel, R_NONE, "Mentor PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
 	var/list/targets = list()
 	for(var/client/client in GLOB.clients)
 		var/nametag = ""
@@ -842,8 +827,8 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	var/target = input(src,"To whom shall we send a message?", "Mentor PM", null) as null|anything in sort_list(targets)
 	if (isnull(target))
 		return
-	cmd_admin_pm(targets[target], null, TRUE)
-	SSblackbox.record_feedback("tally", "admin_verb", 1, "Mentor PM") // If you are copy-pasting this, ensure the 4th parameter is unique to the new proc!
+	user.cmd_admin_pm(targets[target], null, TRUE)
+	BLACKBOX_LOG_ADMIN_VERB("Mentor PM")
 
 #undef EXTERNAL_PM_USER
 #undef EXTERNALREPLYCOUNT

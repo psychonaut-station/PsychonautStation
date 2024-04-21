@@ -1,6 +1,8 @@
-local SS13 = require("SS13_base")
+local state = require("state")
+
 local Timer = {}
 
+local SSlua = dm.global_vars:get_var("SSlua")
 __Timer_timers = __Timer_timers or {}
 __Timer_callbacks = __Timer_callbacks or {}
 
@@ -24,19 +26,21 @@ end
 
 function __stop_internal_timer(func)
 	local timer = __Timer_timers[func]
-	if timer and not timer.executing then
-		__Timer_timers[func] = nil
-		__Timer_callbacks[func] = nil
-	else
-		timer.terminate = true
+	if timer then
+		if not timer.executing then
+			__Timer_timers[func] = nil
+			__Timer_callbacks[func] = nil
+		else
+			timer.terminate = true
+		end
 	end
 end
 
 __Timer_timer_processing = __Timer_timer_processing or false
-SS13.state:set_var("timer_enabled", 1)
+state.state:set_var("timer_enabled", 1)
 __Timer_timer_process = function(seconds_per_tick)
 	if __Timer_timer_processing then
-		return
+		return 0
 	end
 	__Timer_timer_processing = true
 	local time = dm.world:get_var("time")
@@ -48,17 +52,18 @@ __Timer_timer_process = function(seconds_per_tick)
 			sleep()
 		end
 		if time >= timeData.executeTime then
-			SS13.state:get_var("functions_to_execute"):add(func)
+			state.state:get_var("functions_to_execute"):add(func)
 			timeData.executing = true
 		end
 	end
 	__Timer_timer_processing = false
+	return 1
 end
 
 function Timer.wait(time)
 	local next_yield_index = __next_yield_index
 	__add_internal_timer(function()
-		SS13.SSlua:call_proc("queue_resume", SS13.state, next_yield_index)
+		SSlua:call_proc("queue_resume", state.state, next_yield_index)
 	end, time * 10, false)
 	coroutine.yield()
 end
@@ -77,18 +82,18 @@ function Timer.start_loop(time, amount, func)
 	if amount == 1 then
 		return __add_internal_timer(func, time * 10, false)
 	end
-	local callback = SS13.new("/datum/callback", SS13.state, "call_function")
-	local timedevent = dm.global_proc("_addtimer", callback, time * 10, 40, nil, debug.info(1, "sl"))
-	local doneAmount = 0
+	-- Lua counts from 1 so let's keep consistent with that
+	local doneAmount = 1
+	local funcId
 	local newFunc = function()
-		func()
+		func(doneAmount)
 		doneAmount += 1
-		if doneAmount >= amount then
-			Timer.end_loop(timedevent)
+		if doneAmount > amount then
+			Timer.end_loop(funcId)
 		end
 	end
-	__add_internal_timer(newFunc, time * 10, true)
-	return newFunc
+	funcId = __add_internal_timer(newFunc, time * 10, true)
+	return funcId
 end
 
 function Timer.end_loop(id)

@@ -97,9 +97,11 @@ GLOBAL_PROTECT(lua_usr)
 
 /datum/lua_state/process(seconds_per_tick)
 	if(timer_enabled)
-		call_function("__Timer_timer_process", seconds_per_tick)
+		var/result = call_function("__Timer_timer_process", seconds_per_tick)
+		log_result(result, verbose = FALSE)
 		for(var/function as anything in functions_to_execute)
-			call_function(list("__Timer_callbacks", function))
+			result = call_function(list("__Timer_callbacks", function))
+			log_result(result, verbose = FALSE)
 		functions_to_execute.Cut()
 
 /datum/lua_state/proc/call_function(function, ...)
@@ -107,14 +109,7 @@ GLOBAL_PROTECT(lua_usr)
 	if(islist(function))
 		var/list/new_function_path = list()
 		for(var/path_element in function)
-			if(isweakref(path_element))
-				var/datum/weakref/weak_ref = path_element
-				var/resolved = weak_ref.hard_resolve()
-				if(!resolved)
-					return list("status" = "errored", "param" = "Weakref in function path ([weak_ref] [text_ref(weak_ref)]) resolved to null.", "name" = jointext(function, "."))
-				new_function_path += resolved
-			else
-				new_function_path += path_element
+			new_function_path += path_element
 		function = new_function_path
 	var/msg = "[key_name(usr)] called the lua function \"[function]\" with arguments: [english_list(call_args)]"
 	log_lua(msg)

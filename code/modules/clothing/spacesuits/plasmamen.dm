@@ -59,7 +59,7 @@
 	light_on = FALSE
 	var/helmet_on = FALSE
 	var/smile = FALSE
-	var/smile_color = "#FF0000"
+	var/smile_color = COLOR_RED
 	var/visor_icon = "envisor"
 	var/smile_state = "envirohelm_smile"
 	var/obj/item/clothing/head/attached_hat
@@ -87,9 +87,9 @@
 	else
 		. += span_notice("There's nothing placed on the helmet.")
 
-/obj/item/clothing/head/helmet/space/plasmaman/AltClick(mob/user)
-	if(user.can_perform_action(src))
-		toggle_welding_screen(user)
+/obj/item/clothing/head/helmet/space/plasmaman/click_alt(mob/user)
+	toggle_welding_screen(user)
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/clothing/head/helmet/space/plasmaman/ui_action_click(mob/user, action)
 	if(istype(action, /datum/action/item_action/toggle_welding_screen))
@@ -124,7 +124,7 @@
 		if(smile == FALSE)
 			var/obj/item/toy/crayon/CR = hitting_item
 			to_chat(user, span_notice("You start drawing a smiley face on the helmet's visor.."))
-			if(do_after(user, 25, target = src))
+			if(do_after(user, 2.5 SECONDS, target = src))
 				smile = TRUE
 				smile_color = CR.paint_color
 				to_chat(user, "You draw a smiley on the helmet visor.")

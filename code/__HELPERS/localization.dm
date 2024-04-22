@@ -46,6 +46,14 @@
 	else
 		return list(3)
 
+/proc/voxelcatcher(text)
+	var/static/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
+	var/list/charlist = text2charlist(locale_lowertext(text))
+	for(var/i = length(charlist), i >= 1, i--)
+		if(charlist[i] in voxels)
+			return charlist[i]
+	return FALSE
+
 // gelen yazıyı *text şeklinde döndürme sebebim bug tespitini rahat yapabilmek
 
 /// Belirtme eki | -i, -u / -yi, -yu turkce harfler dahildir

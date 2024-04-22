@@ -43,6 +43,7 @@
 #define JOB_ASSISTANT "Assistant"
 #define JOB_PRISONER "Prisoner"
 #define JOB_ANIMAL "Animal"
+#define JOB_SURVIVOR "Survivor"
 //Command
 #define JOB_CAPTAIN "Captain"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"

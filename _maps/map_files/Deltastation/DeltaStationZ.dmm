@@ -1663,7 +1663,6 @@
 	dir = 8
 	},
 /obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "arE" = (
@@ -6875,6 +6874,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/holopad,
 /obj/structure/cable,
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/commons/escape/escapepost)
 "bBa" = (
@@ -42625,6 +42625,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "jqt" = (
@@ -44518,7 +44519,7 @@
 	dir = 4
 	},
 /obj/effect/landmark/event_spawn,
-/obj/effect/landmark/start/survivor,
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/commons/escape/escapepost)
 "jMk" = (
@@ -54496,7 +54497,7 @@
 /obj/machinery/holopad,
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
-/obj/effect/landmark/start/survivor,
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/commons/escape/escapepost)
 "lWy" = (
@@ -56007,6 +56008,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/bot,
 /obj/machinery/holopad,
+/obj/effect/landmark/start/assistant,
 /turf/open/floor/iron/dark,
 /area/station/commons/escape/escapepost)
 "mqB" = (
@@ -58578,12 +58580,6 @@
 /obj/machinery/duct,
 /obj/effect/landmark/start/paramedic,
 /turf/open/floor/iron/white,
-/area/station/cargo/storage)
-"mRs" = (
-/obj/effect/turf_decal/loading_area,
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/landmark/start/assistant,
-/turf/open/floor/iron/dark,
 /area/station/cargo/storage)
 "mRv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -61491,7 +61487,6 @@
 /obj/structure/chair/office{
 	dir = 8
 	},
-/obj/effect/landmark/start/survivor,
 /turf/open/floor/iron/dark,
 /area/station/commons/escape/escapepost)
 "nBJ" = (
@@ -64630,14 +64625,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/service/janitor,
 /turf/open/floor/iron/checker,
 /area/station/service/janitor)
-"omR" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/effect/landmark/start/assistant,
-/turf/open/floor/iron/dark,
-/area/station/cargo/storage)
 "omU" = (
 /obj/machinery/status_display/evac/directional/east,
 /obj/machinery/camera/directional/east{
@@ -152930,7 +152917,7 @@ qXo
 liM
 pcC
 rTB
-omR
+pUJ
 qUG
 ncT
 hTl
@@ -153711,7 +153698,7 @@ ffc
 rML
 xvU
 eAp
-mRs
+dIa
 uLb
 kwf
 osd

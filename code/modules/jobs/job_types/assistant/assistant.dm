@@ -52,7 +52,20 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	belt = /obj/item/modular_computer/pda/assistant
+	uniform = /obj/item/clothing/under/misc/bouncer
+	suit = /obj/item/clothing/suit/hazardvest
+	belt = /obj/item/storage/belt/utility
+	head = /obj/item/clothing/head/costume/pirate/bandana
+	shoes = /obj/item/clothing/shoes/workboots
+	l_pocket = /obj/item/modular_computer/pda/assistant
+	r_pocket = /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker
+
+	backpack_contents = list(
+		/obj/item/storage/medkit/emergency,
+		/obj/item/food/canned/tomatoes,
+		/obj/item/radio,
+		/obj/item/flashlight/seclite,
+	)
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

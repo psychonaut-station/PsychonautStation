@@ -4,8 +4,7 @@ export type AvailableJob = keyof typeof JOB2ICON;
 export const JOB2ICON = {
   AI: 'eye',
   Assistant: 'toolbox',
-  Survivor: 'skull',
-  'Atmospheric Technician': 'fan',
+   'Atmospheric Technician': 'fan',
   Bartender: 'cocktail',
   'Bit Avatar': 'code',
   Bitrunner: 'gamepad',

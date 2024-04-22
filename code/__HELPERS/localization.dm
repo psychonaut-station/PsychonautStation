@@ -88,8 +88,6 @@
 					return "[text]'yı"
 				if("9")
 					return "[text]'u"
-		else
-			return "*[text]"
 
 /// Yonelme eki | -e, -a / -ye, -ya
 /proc/locale_suffix_dative(text)
@@ -119,8 +117,6 @@
 					return "[text]'ye"
 				if("6")
 					return "[text]'ya"
-		else
-			return "*[text]"
 
 /// Bulunma eki | -de, -da / -te, -ta
 /proc/locale_suffix_locative(text)
@@ -149,8 +145,6 @@
 					return "[text]'de"
 				if("3","4","5")
 					return "[text]'te"
-		else
-			return "*[text]"
 
 /// Ayrilma eki | -den, -dan / -ten, -tan
 /proc/locale_suffix_ablative(text)
@@ -185,8 +179,6 @@
 					return "[text]'den"
 				if("3","4","5")
 					return "[text]'ten"
-		else
-			return "*[text]"
 
 /// Ilgi eki | -in, -un / -nin, -nun turkce harfler dahildir
 /proc/locale_suffix_genitive(text)
@@ -228,5 +220,3 @@
 					return "[text]'nın"
 				if("9")
 					return "[text]'un"
-		else
-			return "*[text]"

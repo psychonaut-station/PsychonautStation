@@ -94,7 +94,6 @@
 	melee_damage_lower = 28
 	melee_damage_upper = 28
 	speed = 1
-	infection_chance = 2
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	death_sound =  'sound/voice/sec_death.ogg'
 	death_message = "Noo :("
@@ -110,7 +109,6 @@
 	melee_damage_lower = 27
 	melee_damage_upper = 27
 	speed = 1
-	infection_chance = 2
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	death_sound =  'sound/voice/sec_death.ogg'
 	death_message = "I'm Robusted..."
@@ -126,7 +124,6 @@
 	melee_damage_lower = 16
 	melee_damage_upper = 16
 	speed = 4
-	infection_chance = 1
 	attack_sound = 'sound/items/bikehorn.ogg'
 	death_sound =  'sound/misc/sadtrombone.ogg'
 	death_message = "Honk Honk :("
@@ -142,7 +139,6 @@
 	melee_damage_lower = 28
 	melee_damage_upper = 28
 	speed = 1
-	infection_chance = 3
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	death_sound =  'sound/voice/sec_death.ogg'
 	death_message = "Noo :("
@@ -158,7 +154,6 @@
 	melee_damage_lower = 30
 	melee_damage_upper = 30
 	speed = 2
-	infection_chance = 8
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	death_sound =  'sound/voice/sec_death.ogg'
 	death_message = "This is not the end..."
@@ -174,7 +169,6 @@
 	melee_damage_lower = 29
 	melee_damage_upper = 29
 	speed = 1
-	infection_chance = 3
 	attack_sound = 'sound/weapons/punchmiss.ogg'
 	death_sound =  'sound/voice/sec_death.ogg'
 	death_message = "This is not the end..."

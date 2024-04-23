@@ -44,7 +44,7 @@
 	else if(last_chars[1] in voxels)
 		return list(1, last_chars[1], last_chars[2])
 	else
-		return list(3)
+		return list(3, voxelcatcher(text))
 
 /proc/voxelcatcher(text)
 	var/static/list/voxels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
@@ -81,7 +81,11 @@
 				if("ü","ö")
 					return "[text]'yü"
 		if (3)
-			return "[text]'i"
+			switch(charlist[2])
+				if(FALSE,"e","i","ü","ö")
+					return "[text]'yi"
+				if("a","ı","o","u")
+					return "[text]'yı"
 		if (4)
 			switch(charlist[2])
 				if("0")
@@ -114,7 +118,11 @@
 				if("e","i","ü","ö")
 					return "[text]'ye"
 		if (3)
-			return "[text]'e"
+			switch(charlist[2])
+				if(FALSE,"e","i","ü","ö")
+					return "[text]'ye"
+				if("a","ı","o","u")
+					return "[text]'ya"
 		if (4)
 			switch(charlist[2])
 				if("0","9")
@@ -144,7 +152,11 @@
 					else
 						return "[text]'de"
 		if (3)
-			return "[text]'de"
+			switch(charlist[2])
+				if(FALSE,"e","i","ü","ö")
+					return "[text]'de"
+				if("a","ı","o","u")
+					return "[text]'da"
 		if (4)
 			switch(charlist[2])
 				if("0","6","9")
@@ -178,7 +190,11 @@
 				if("e","i","ü","ö")
 					return "[text]'den"
 		if (3)
-			return "[text]'den"
+			switch(charlist[2])
+				if(FALSE,"e","i","ü","ö")
+					return "[text]'den"
+				if("a","ı","o","u")
+					return "[text]'dan"
 		if(4)
 			switch(charlist[2])
 				if("0","6","9")
@@ -212,8 +228,12 @@
 					return "[text]'nun"
 				if("ü","ö")
 					return "[text]'nün"
-		if(3)
-			return "[text]'in"
+		if (3)
+			switch(charlist[2])
+				if(FALSE,"e","i","ü","ö")
+					return "[text]'nin"
+				if("a","ı","o","u")
+					return "[text]'nın"
 		if(4)
 			switch(charlist[2])
 				if("0")

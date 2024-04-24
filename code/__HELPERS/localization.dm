@@ -4,13 +4,6 @@
 #define CONSONANT 2
 #define NUMBER 3
 
-/proc/test(text)
-	priority_announce("Ayrılma Eki: [locale_suffix_ablative(text)]")
-	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
-	priority_announce("Yönelme Eki: [locale_suffix_dative(text)]")
-	priority_announce("İlgi Eki: [locale_suffix_genitive(text)]")
-	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
-
 // { Time }
 /// Decisecond time is converted into Turkish time and returned. e.g. 3 Dakika / 53 Saniye
 /proc/locale_DisplayTimeText(time_value, round_seconds_to = 0.1)
@@ -44,7 +37,7 @@
 
 /proc/vowelcatcher(text)
 	var/static/list/vowels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
-	var/list/charlist = text2charlist(replacetext(locale_lowertext(text)," ",""))
+	var/list/charlist = text2charlist(locale_lowertext(text))
 	if(!isnull(text2num(charlist[length(charlist)])))
 		return list(NUMBER,charlist[length(charlist)])
 	if(charlist[length(charlist)] in vowels)
@@ -55,7 +48,8 @@
 	return list(CONSONANT,null,charlist[length(charlist)])
 
 /// Accusative Suffix | -i, -u / -yi, -yu
-/proc/locale_suffix_accusative(text)
+/proc/locale_suffix_accusative(rawtext)
+	var/text = replacetext(rawtext," ","")
 	var/list/charlist = vowelcatcher(text)
 	switch(charlist[1])
 		if(NUMBER)
@@ -90,7 +84,8 @@
 					return "[text]'yü"
 
 /// Dative Suffix | -e, -a / -ye, -ya
-/proc/locale_suffix_dative(text)
+/proc/locale_suffix_dative(rawtext)
+	var/text = replacetext(rawtext," ","")
 	var/list/charlist = vowelcatcher(text)
 	switch(charlist[1])
 		if(NUMBER)
@@ -117,7 +112,8 @@
 					return "[text]'ye"
 
 /// Locative Suffix | -de, -da / -te, -ta
-/proc/locale_suffix_locative(text)
+/proc/locale_suffix_locative(rawtext)
+	var/text = replacetext(rawtext," ","")
 	var/static/list/consonant_assimilation = list("ç", "f", "h", "k", "s", "ş", "t", "p")
 	var/list/charlist = vowelcatcher(text)
 	switch(charlist[1])
@@ -149,7 +145,8 @@
 					return "[text]'da"
 
 /// Ablative Suffix | -den, -dan / -ten, -tan
-/proc/locale_suffix_ablative(text)
+/proc/locale_suffix_ablative(rawtext)
+	var/text = replacetext(rawtext," ","")
 	var/static/list/consonant_assimilation = list("ç", "f", "h", "k", "s", "ş", "t", "p")
 	var/list/charlist = vowelcatcher(text)
 	switch(charlist[1])
@@ -168,7 +165,7 @@
 						return "[text]'tan"
 					else
 						return "[text]'dan"
-				if("e","i","ü","ö")
+				if("e","i","ü","ö",null)
 					if(charlist[3] in consonant_assimilation)
 						return "[text]'ten"
 					else
@@ -181,7 +178,8 @@
 					return "[text]'den"
 
 /// Genitive Suffix| -in, -un / -nin, -nun
-/proc/locale_suffix_genitive(text)
+/proc/locale_suffix_genitive(rawtext)
+	var/text = replacetext(rawtext," ","")
 	var/list/charlist = vowelcatcher(text)
 	switch(charlist[1])
 		if(NUMBER)
@@ -202,7 +200,7 @@
 			switch(charlist[2])
 				if("a","ı")
 					return "[text]'ın"
-				if("e","i")
+				if("e","i",null)
 					return "[text]'in"
 				if("o","u")
 					return "[text]'un"

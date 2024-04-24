@@ -4,6 +4,13 @@
 #define CONSONANT 2
 #define NUMBER 3
 
+/proc/test(text)
+	priority_announce("Ayrılma Eki: [locale_suffix_ablative(text)]")
+	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
+	priority_announce("Yönelme Eki: [locale_suffix_dative(text)]")
+	priority_announce("İlgi Eki: [locale_suffix_genitive(text)]")
+	priority_announce("Belirtme Eki: [locale_suffix_accusative(text)]")
+
 // { Time }
 /// Decisecond time is converted into Turkish time and returned. e.g. 3 Dakika / 53 Saniye
 /proc/locale_DisplayTimeText(time_value, round_seconds_to = 0.1)

@@ -39,7 +39,7 @@
 	var/static/list/vowels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
 	var/list/charlist = text2charlist(locale_lowertext(text))
 	var/last_char = charlist[length(charlist)]
-	if(!isnull(text2num(last_char))
+	if(!isnull(text2num(last_char)))
 		return list(NUMBER,last_char)
 	if(last_char in vowels)
 		return list(VOWEL,last_char)

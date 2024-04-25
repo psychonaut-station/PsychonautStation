@@ -38,14 +38,15 @@
 /proc/vowelcatcher(text)
 	var/static/list/vowels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
 	var/list/charlist = text2charlist(locale_lowertext(text))
-	if(!isnull(text2num(charlist[length(charlist)])))
-		return list(NUMBER,charlist[length(charlist)])
-	if(charlist[length(charlist)] in vowels)
-		return list(VOWEL,charlist[length(charlist)])
+	var/last_char = charlist[length(charlist)]
+	if(!isnull(text2num(last_char))
+		return list(NUMBER,last_char)
+	if(last_char in vowels)
+		return list(VOWEL,last_char)
 	for(var/i = length(charlist), i >= 1, i--)
 		if(charlist[i] in vowels)
-			return list(CONSONANT,charlist[i],charlist[length(charlist)])
-	return list(CONSONANT,null,charlist[length(charlist)])
+			return list(CONSONANT,charlist[i],last_char)
+	return list(CONSONANT,null,last_char)
 
 /// Accusative Suffix | -i, -u / -yi, -yu
 /proc/locale_suffix_accusative(rawtext)

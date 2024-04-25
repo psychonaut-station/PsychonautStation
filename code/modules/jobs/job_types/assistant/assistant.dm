@@ -56,6 +56,7 @@ Assistant
 	suit = /obj/item/clothing/suit/hazardvest
 	belt = /obj/item/storage/belt/utility
 	head = /obj/item/clothing/head/costume/pirate/bandana
+	mask = /obj/item/clothing/mask/facescarf
 	shoes = /obj/item/clothing/shoes/workboots
 	l_pocket = /obj/item/modular_computer/pda/assistant
 	r_pocket = /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker

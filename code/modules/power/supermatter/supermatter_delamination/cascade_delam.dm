@@ -87,7 +87,7 @@
 		return FALSE
 	if(!can_select(sm))
 		return FALSE
-	priority_announce("Dikkat: Uzun menzilli anomali taramaları [locale_suffix_genitive(station_name())] içindeki bir özneden kaynaklanan anormal miktarlarda \
+	priority_announce("Dikkat: Uzun menzilli anomali taramaları [locale_suffix_genitive(station_name())] içindeki bir nesneden kaynaklanan anormal miktarlarda \
 	harmoni akışı olduğunu gösteriyor, bir rezonans çökmesi meydana gelebilir.",
 	"Nanotrasen Yıldız Gözlem Birliği", 'sound/misc/airraid.ogg')
 	return TRUE

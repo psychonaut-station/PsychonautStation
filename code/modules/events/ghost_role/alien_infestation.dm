@@ -42,7 +42,7 @@
 			living_aliens = TRUE
 
 	if(living_aliens || fake)
-		priority_announce("[locale_suffix_dative(station_name())] doğru gelen tanımlanamayan yaşam sinyalleri tespit edildi. Borular ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Sinyali", ANNOUNCER_ALIENS)
+		priority_announce("[locale_suffix_ablative(station_name())] gelen tanımlanamayan yaşam sinyalleri tespit edildi. Borular ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Sinyali", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()

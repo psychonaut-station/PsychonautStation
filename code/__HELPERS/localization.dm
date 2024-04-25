@@ -56,33 +56,33 @@
 		if(NUMBER)
 			switch(charlist[2])
 				if("0")
-					return "[text]'ı"
+					return "[rawtext]'ı"
 				if("1","5","8")
-					return "[text]'i"
+					return "[rawtext]'i"
 				if("2","7")
-					return "[text]'yi"
+					return "[rawtext]'yi"
 				if("3","4")
-					return "[text]'ü"
+					return "[rawtext]'ü"
 				if("6")
-					return "[text]'yı"
+					return "[rawtext]'yı"
 				if("9")
-					return "[text]'u"
+					return "[rawtext]'u"
 		if(CONSONANT)
 			switch(charlist[2])
 				if("e","i","ü","ö",null)
-					return "[text]'i"
+					return "[rawtext]'i"
 				if("a","ı","o","u")
-					return "[text]'ı"
+					return "[rawtext]'ı"
 		if(VOWEL)
 			switch(charlist[2])
 				if("a","ı")
-					return "[text]'yı"
+					return "[rawtext]'yı"
 				if("e","i")
-					return "[text]'yi"
+					return "[rawtext]'yi"
 				if("o","u")
-					return "[text]'yu"
+					return "[rawtext]'yu"
 				if("ü","ö")
-					return "[text]'yü"
+					return "[rawtext]'yü"
 
 /// Dative Suffix | -e, -a / -ye, -ya
 /proc/locale_suffix_dative(rawtext)
@@ -92,25 +92,25 @@
 		if(NUMBER)
 			switch(charlist[2])
 				if("0","9")
-					return "[text]'a"
+					return "[rawtext]'a"
 				if("1","3","4","5","8")
-					return "[text]'e"
+					return "[rawtext]'e"
 				if("2","7")
-					return "[text]'ye"
+					return "[rawtext]'ye"
 				if("6")
-					return "[text]'ya"
+					return "[rawtext]'ya"
 		if(CONSONANT)
 			switch(charlist[2])
 				if("e","i","ü","ö",null)
-					return "[text]'e"
+					return "[rawtext]'e"
 				if("a","ı","o","u")
-					return "[text]'a"
+					return "[rawtext]'a"
 		if(VOWEL)
 			switch(charlist[2])
 				if("a","ı","o","u")
-					return "[text]'ya"
+					return "[rawtext]'ya"
 				if("e","i","ü","ö")
-					return "[text]'ye"
+					return "[rawtext]'ye"
 
 /// Locative Suffix | -de, -da / -te, -ta
 /proc/locale_suffix_locative(rawtext)
@@ -121,29 +121,29 @@
 		if(NUMBER)
 			switch(charlist[2])
 				if("0","6","9")
-					return "[text]'da"
+					return "[rawtext]'da"
 				if("1","2","7","8")
-					return "[text]'de"
+					return "[rawtext]'de"
 				if("3","4","5")
-					return "[text]'te"
+					return "[rawtext]'te"
 		if(CONSONANT)
 			switch(charlist[2])
 				if("a","ı","o","u")
 					if(charlist[3] in consonant_assimilation)
-						return "[text]'ta"
+						return "[rawtext]'ta"
 					else
-						return "[text]'da"
+						return "[rawtext]'da"
 				if("e","i","ü","ö",null)
 					if(charlist[3] in consonant_assimilation)
-						return "[text]'te"
+						return "[rawtext]'te"
 					else
 						return "[text]'de"
 		if(VOWEL)
 			switch(charlist[2])
 				if("e","i","ü","ö")
-					return "[text]'de"
+					return "[rawtext]'de"
 				if("a","ı","o","u")
-					return "[text]'da"
+					return "[rawtext]'da"
 
 /// Ablative Suffix | -den, -dan / -ten, -tan
 /proc/locale_suffix_ablative(rawtext)
@@ -154,29 +154,29 @@
 		if(NUMBER)
 			switch(charlist[2])
 				if("0","6","9")
-					return "[text]'dan"
+					return "[rawtext]'dan"
 				if("1","2","7","8")
-					return "[text]'den"
+					return "[rawtext]'den"
 				if("3","4","5")
-					return "[text]'ten"
+					return "[rawtext]'ten"
 		if(CONSONANT)
 			switch(charlist[2])
 				if("a","ı","o","u")
 					if(charlist[3] in consonant_assimilation)
-						return "[text]'tan"
+						return "[rawtext]'tan"
 					else
-						return "[text]'dan"
+						return "[rawtext]'dan"
 				if("e","i","ü","ö",null)
 					if(charlist[3] in consonant_assimilation)
-						return "[text]'ten"
+						return "[rawtext]'ten"
 					else
-						return "[text]'den"
+						return "[rawtext]'den"
 		if(VOWEL)
 			switch(charlist[2])
 				if("a","ı","o","u")
-					return "[text]'dan"
+					return "[rawtext]'dan"
 				if("e","i","ü","ö")
-					return "[text]'den"
+					return "[rawtext]'den"
 
 /// Genitive Suffix| -in, -un / -nin, -nun
 /proc/locale_suffix_genitive(rawtext)
@@ -186,37 +186,37 @@
 		if(NUMBER)
 			switch(charlist[2])
 				if("0")
-					return "[text]'ın"
+					return "[rawtext]'ın"
 				if("1","5","8")
-					return "[text]'in"
+					return "[rawtext]'in"
 				if("2","7")
-					return "[text]'nin"
+					return "[rawtext]'nin"
 				if("3","4")
-					return "[text]'ün"
+					return "[rawtext]'ün"
 				if("6")
-					return "[text]'nın"
+					return "[rawtext]'nın"
 				if("9")
-					return "[text]'un"
+					return "[rawtext]'un"
 		if(CONSONANT)
 			switch(charlist[2])
 				if("a","ı")
-					return "[text]'ın"
+					return "[rawtext]'ın"
 				if("e","i",null)
-					return "[text]'in"
+					return "[rawtext]'in"
 				if("o","u")
-					return "[text]'un"
+					return "[rawtext]'un"
 				if("ü","ö")
-					return "[text]'ün"
+					return "[rawtext]'ün"
 		if(VOWEL)
 			switch(charlist[2])
 				if("a","ı")
-					return "[text]'nın"
+					return "[rawtext]'nın"
 				if("e","i")
-					return "[text]'nin"
+					return "[rawtext]'nin"
 				if("o","u")
-					return "[text]'nun"
+					return "[rawtext]'nun"
 				if("ü","ö")
-					return "[text]'nün"
+					return "[rawtext]'nün"
 
 #undef VOWEL
 #undef CONSONANT

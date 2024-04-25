@@ -27,7 +27,7 @@
 
 /datum/shuttle_loan_situation/antidote
 	sender = "CentCom Araştırma Girişimleri"
-	announcement_text = "İstasyonunuz epidemiyolojik bir araştırma projesi için seçildi. Araştırma örneklerini alması için bize kargo mekiğinizi gönderin."
+	announcement_text = "İstasyonunuz epidemiyolojik bir araştırma projesi için seçildi. Araştırma örneklerinizi almak için bize kargo mekiğinizi gönderin."
 	shuttle_transit_text = "Virüs örnekleri geliyor."
 	logging_desc = "Virus shuttle"
 

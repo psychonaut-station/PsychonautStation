@@ -52,14 +52,7 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	uniform = /obj/item/clothing/under/misc/bouncer
-	suit = /obj/item/clothing/suit/hazardvest
-	belt = /obj/item/storage/belt/utility
-	head = /obj/item/clothing/head/costume/pirate/bandana
-	mask = /obj/item/clothing/mask/facescarf
-	shoes = /obj/item/clothing/shoes/workboots
-	l_pocket = /obj/item/modular_computer/pda/assistant
-	r_pocket = /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker
+	belt = /obj/item/modular_computer/pda/assistant
 
 	backpack_contents = list(
 		/obj/item/storage/medkit/emergency,
@@ -67,7 +60,7 @@ Assistant
 		/obj/item/radio,
 		/obj/item/flashlight/seclite,
 	)
-
+	
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()
 	for(var/holidayname in GLOB.holidays)

@@ -6966,6 +6966,10 @@
 	pixel_y = -3
 	},
 /obj/effect/turf_decal/bot,
+/obj/item/radio{
+	pixel_x = -6;
+	pixel_y = -3
+	},
 /turf/open/floor/wood/large,
 /area/station/service/chapel)
 "bAR" = (
@@ -17188,6 +17192,18 @@
 "dHf" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/clothing/mask/facescarf,
+/obj/item/clothing/mask/facescarf,
+/obj/item/clothing/mask/facescarf,
+/obj/item/clothing/mask/facescarf,
+/obj/item/clothing/head/costume/pirate/bandana,
+/obj/item/clothing/head/costume/pirate/bandana,
+/obj/item/clothing/head/costume/pirate/bandana,
+/obj/item/clothing/head/costume/pirate/bandana,
+/obj/structure/window/spawner/directional/west,
+/obj/structure/window/spawner/directional/south,
+/obj/effect/turf_decal/bot_red,
 /turf/open/floor/wood/large,
 /area/station/service/chapel)
 "dHo" = (
@@ -75353,6 +75369,18 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/obj/item/storage/belt/utility,
+/obj/item/clothing/under/misc/bouncer,
+/obj/item/clothing/under/misc/bouncer,
+/obj/item/clothing/under/misc/bouncer,
+/obj/item/clothing/under/misc/bouncer,
+/obj/structure/window/spawner/directional/east,
+/obj/structure/window/spawner/directional/south,
+/obj/effect/turf_decal/bot_red,
 /turf/open/floor/wood/large,
 /area/station/service/chapel)
 "qtq" = (

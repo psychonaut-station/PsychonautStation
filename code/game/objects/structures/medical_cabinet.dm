@@ -20,7 +20,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/medical_cabinet, 32)
 
 /obj/structure/medical_cabinet/Initialize(mapload)
 	. = ..()
-	create_storage(storage_type = /datum/storage/surgery_tray)
+	create_storage(storage_type = /datum/storage/medcabinet)
 	populate_contents()
 
 /obj/structure/medical_cabinet/proc/populate_contents()

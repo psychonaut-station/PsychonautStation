@@ -159,7 +159,7 @@
 	var/random_crime_list = world.file2list("strings/random_crimes.txt")
 	for(var/datum/record/crew/target in GLOB.manifest.general)
 		var/crimename = pick(random_crime_list)
-		var/datum/crime/newcrime = new(name = crimename, details = crimename)
+		var/datum/crime/newcrime = new(name = crimename)
 		target.crimes += newcrime
 		target.wanted_status = WANTED_ARREST
 	update_all_security_huds()

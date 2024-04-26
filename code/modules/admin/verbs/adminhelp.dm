@@ -580,9 +580,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	msg += "saçma sapan kararlar alıp sonra ah yandım falan yok. İnce düşünecek geri dönüşü olan kararlar "
 	msg += "almayacaksın. Bir karar aldın mı? O kararın arkasında duracaksın. Bu öyle bir şey ki hayatına yön "
 	msg += "veren kararları alırken de saygı duyacaksın.</font>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km1.jpg' /><br>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km2.jpg' /><br>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km3.png' /><br>"
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)

@@ -38,12 +38,13 @@
 /proc/vowelcatcher(text)
 	var/static/list/vowels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
 	var/list/charlist = text2charlist(locale_lowertext(text))
-	var/last_char = charlist[length(charlist)]
+	var/charlength = length_char(charlist)
+	var/last_char = charlist[charlength]
 	if(!isnull(text2num(last_char)))
 		return list(NUMBER,last_char)
 	if(last_char in vowels)
 		return list(VOWEL,last_char)
-	for(var/i = length(charlist), i >= 1, i--)
+	for(var/i = charlength, i >= 1, i--)
 		if(charlist[i] in vowels)
 			return list(CONSONANT,charlist[i],last_char)
 	return list(CONSONANT,null,last_char)

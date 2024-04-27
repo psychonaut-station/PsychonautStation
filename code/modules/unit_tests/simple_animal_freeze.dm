@@ -96,6 +96,7 @@
 		/mob/living/simple_animal/hostile/zombie/felind_doc,
 		/mob/living/simple_animal/hostile/zombie/soldier_boss,
 		/mob/living/simple_animal/hostile/zombie/pirate_rarr,
+		/mob/living/simple_animal/hostile/megafauna/tank,
 		// DO NOT ADD NEW ENTRIES TO THIS LIST
 		// READ THE COMMENT ABOVE
 	)

@@ -40,3 +40,7 @@
       \ g\xF6sterilmesi d\xFCzeltildi."
   - balance: "Cargo borg clampinde kapasite varsay\u0131lan olarak 4'e indirildi ve\
       \ art\u0131k kullan\u0131rken \u015Farj harc\u0131yor."
+2024-04-27:
+  RengaN02:
+  - code_imp: "Ninjan\u0131n security scramble g\xF6revi yapildiginda artik extra\
+      \ olarak millete rastgele su\xE7 verilecek."

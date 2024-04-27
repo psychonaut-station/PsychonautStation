@@ -44,7 +44,7 @@
 		return list(NUMBER,last_char)
 	if(last_char in vowels)
 		return list(VOWEL,last_char)
-	for(var/i = charlength, i >= 1, i--)
+	for(var/i = charlength - 1, i >= 1, i--)
 		if(charlist[i] in vowels)
 			return list(CONSONANT,charlist[i],last_char)
 	return list(CONSONANT,null,last_char)

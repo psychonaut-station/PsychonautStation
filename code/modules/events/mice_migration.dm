@@ -10,13 +10,13 @@
 	var/maximum_mice = 15
 
 /datum/round_event/mice_migration/announce(fake)
-	var/cause = pick("Uzay soğuğu", "Bütçe kesintileri", "Ragnarok", "İklim değişikliği")
-	var/plural = pick("birkaç", "bir sürü", "bir düzine", "en fazla [maximum_mice]")
+	var/cause = pick("Uzay soğuğu", "Bütçe kesintileri", "Kıyamet", "İklim değişikliği")
+	var/plural = pick("birkaç", "bir sürü", "bir düzine", "yaklaşık [maximum_mice]")
 	var/name = pick("kemirgen", "fare", "enerji̇ tüketen parazi̇t")
 	var/movement = pick("göç ediyor.", "ilerliyor.", "izdiham ediyor.")
-	var/location = pick("maintenance tünellerine", "maintenance bölgesine", "lezzetli kabloların olduğu bölgeye")
+	var/location = pick("maintenance tünellerine", "maintenance bölgesine", "tüm o lezzetli kabloların olduğu yere")
 
-	priority_announce("[cause] nedeni ile, [plural] [name] [location] doğru \
+	priority_announce("[cause] dolayısıyla, [plural] [name] [location] doğru \
 		[movement]", "Kemirgen uyarısı",
 		'sound/creatures/mousesqueek.ogg')
 

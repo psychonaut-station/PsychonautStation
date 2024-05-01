@@ -219,7 +219,7 @@ GLOBAL_DATUM(syndicate_code_response_regex, /regex)
 					if(2)
 						. += LOCALE_LOWER_TEXT(pick(foods))
 					if(3)
-						. += LOCALE_LOWER_TEXT(pick(locations))
+						. += LOWER_TEXT(pick(locations))
 				safety -= 2
 			if(3)
 				switch(rand(1,4))//Abstract nouns, objects, adjectives, threats. Can be selected more than once.

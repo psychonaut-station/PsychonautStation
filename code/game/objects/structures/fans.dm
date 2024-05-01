@@ -89,16 +89,13 @@
 
 	return ..()
 
-/obj/structure/fans/tiny/craftable/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
-		if(disassembled)
-			var/obj/item/tinyfan_assembly/frame = new(loc)
-			transfer_fingerprints_to(frame)
-		else
-			if(buildstacktype)
-				new buildstacktype(loc, buildstackamount)
-	SEND_SIGNAL(src, COMSIG_OBJ_DECONSTRUCT, disassembled)
-	qdel(src)
+/obj/structure/fans/tiny/craftable/atom_deconstruct(disassembled = TRUE)
+	if(disassembled)
+		var/obj/item/tinyfan_assembly/frame = new(loc)
+		transfer_fingerprints_to(frame)
+	else
+		if(buildstacktype)
+			new buildstacktype(loc, buildstackamount)
 
 /obj/item/tinyfan_assembly
 	name = "tiny fan assembly"

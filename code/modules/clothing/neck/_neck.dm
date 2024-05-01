@@ -31,11 +31,11 @@
 	flags_1 = IS_PLAYER_COLORABLE_1
 
 /obj/item/clothing/neck/necklace/jhon
-    name = "chaplain cross"
-    desc = "don't be afraid john."
-    icon = 'icons/psychonaut/obj/clothing/neck.dmi'
-    worn_icon = 'icons/psychonaut/mob/clothing/neck.dmi'
-    icon_state = "cross"
+	name = "chaplain cross"
+	desc = "don't be afraid john."
+	icon = 'icons/psychonaut/obj/clothing/neck.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/neck.dmi'
+	icon_state = "cross"
 
 /obj/item/clothing/neck/bowtie/rainbow
 	name = "rainbow bow tie"

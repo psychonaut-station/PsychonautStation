@@ -7,11 +7,11 @@
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-* **Website:** https://www.psychonautstation.com
+* **Website:** https://turkb.us
 * **Code:** https://github.com/psychonaut-station/PsychonautStation
 * **Wiki:** https://tgstation13.org/wiki/Main_Page
 * **Codedocs:** https://codedocs.tgstation13.org/
-* **Psychonaut Station Discord:** https://www.psychonautstation.com/discord
+* **Psychonaut Station Discord:** https://turkb.us/discord
 
 This is the codebase for the Psychonaut Station flavoured fork of /tg/station which is another fork of SpaceStation 13.
 

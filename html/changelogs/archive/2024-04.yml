@@ -621,15 +621,6 @@
       \ g\xF6sterilmesi d\xFCzeltildi."
   - balance: "Cargo borg clampinde kapasite varsay\u0131lan olarak 4'e indirildi ve\
       \ art\u0131k kullan\u0131rken \u015Farj harc\u0131yor."
-  jlsnow301:
-  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
-  - bugfix: Netpods have had their security against exploits increased.
-  mc-oofert:
-  - bugfix: you no longer need to put your sleeping carp gloves off and on in Deathmatch
-      to get the martial art
-  san7890:
-  - rscadd: Regal Rats are now able to tear down those colorful posters those weird
-      grey creatures keep spackling up on the walls of their rightful domain.
 2024-04-19:
   Iajret:
   - bugfix: cooling and anti-disruption RCD upgrades can now be printed in ancient
@@ -886,6 +877,9 @@
   - bugfix: Fixed tramstation's gravity generator SMES, now functions and charged
       at roundstart.
   - bugfix: NorthStar's gravity generator SMES is now properly charged at roundstart
+  RengaN02:
+  - code_imp: "Ninjan\u0131n security scramble g\xF6revi yapildiginda artik extra\
+      \ olarak millete rastgele su\xE7 verilecek."
   ZephyrTFA:
   - admin: The return of IPIntel
   grungussuss:
@@ -923,6 +917,8 @@
   - bugfix: Combat upgraded AIs no longer get two buggy malf ability pickers if they
       also become malfunctioning
   - refactor: Refactored most of the functionality around malf AI shunting, mech control
+  RengaN:
+  - spellcheck: "\"\u0130skeletler\" ile ilgili bir yaz\u0131m hatas\u0131 d\xFCzeltildi."
   Rhials:
   - admin: Lazy loading map templates now gives you the option to not ghost/teleport
       to the loaded area upon completion.
@@ -932,6 +928,12 @@
   - bugfix: The debug box no longer spills its contents everywhere
   improvedname:
   - qol: Arrivals shuttle is now more player friendly
+  jlsnow301:
+  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
+  - bugfix: Netpods have had their security against exploits increased.
+  mc-oofert:
+  - bugfix: you no longer need to put your sleeping carp gloves off and on in Deathmatch
+      to get the martial art
   san7890:
   - admin: Possess Object is now back in the right-click context menu.
 2024-04-30:

@@ -21,7 +21,7 @@
 			UnregisterSignal(mob, COMSIG_QDELETING)
 	return ..()
 
-/datum/proximity_monitor/advanced/mob_collector/recalculate_field()
+/datum/proximity_monitor/advanced/mob_collector/recalculate_field(full_recalc = FALSE)
 	. = ..()
 	var/list/old_mobs = mobs_in_field.Copy()
 	mobs_in_field.Cut()

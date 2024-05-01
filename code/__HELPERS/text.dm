@@ -410,7 +410,7 @@
 			if ("\u00C7")  // Ç
 				. += "\u00E7"  // ç
 			else
-				. += lowertext(c)
+				. += LOWER_TEXT(c)
 
 /proc/delocale_text(t)
 	. = ""

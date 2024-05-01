@@ -15588,7 +15588,7 @@
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "NW" = (
-/mob/living/simple_animal/hostile/alien/maid/barmaid{
+/mob/living/basic/alien/maid/barmaid{
 	name = "Kura"
 	},
 /turf/open/misc/asteroid/airless,

@@ -391,7 +391,7 @@
 			else
 				. += uppertext(c)
 
-/proc/locale_lowertext(t)
+/proc/locale_lowertext_(t)
 	. = ""
 	for(var/c in text2charlist(t))
 		switch(c)

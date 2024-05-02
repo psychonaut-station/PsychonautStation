@@ -137,7 +137,7 @@
 /area/ruin/space)
 "lE" = (
 /obj/structure/alien/weeds,
-/mob/living/simple_animal/hostile/alien/sentinel,
+/mob/living/basic/alien/sentinel,
 /turf/open/floor/plating,
 /area/ruin/space)
 "lH" = (
@@ -397,13 +397,13 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "JE" = (
-/mob/living/simple_animal/hostile/alien{
+/mob/living/basic/alien{
 	faction = list("syndicate","xenomorph")
 	},
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "JT" = (
-/mob/living/simple_animal/hostile/alien{
+/mob/living/basic/alien{
 	faction = list("syndicate","xenomorph")
 	},
 /obj/structure/alien/weeds,

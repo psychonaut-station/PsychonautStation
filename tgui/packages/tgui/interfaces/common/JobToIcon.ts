@@ -57,7 +57,6 @@ export const JOB2ICON = {
   Synthetic: 'handshake-angle',
   'Syndicate Operative': 'dragon',
   'Veteran Security Advisor': 'ribbon',
-  Virologist: 'virus',
   Warden: 'handcuffs',
   Worker: 'screwdriver-wrench',
 } as const;

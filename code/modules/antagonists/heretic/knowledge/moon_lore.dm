@@ -195,7 +195,7 @@
 	title = "[generate_heretic_text()]",
 	sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
 	color_override = "pink"
-  )
+	)
 
 	user.client?.give_award(/datum/award/achievement/misc/moon_ascension, user)
 	ADD_TRAIT(user, TRAIT_MADNESS_IMMUNE, REF(src))

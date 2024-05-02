@@ -37,7 +37,7 @@
 
 /proc/vowelcatcher(text)
 	var/static/list/vowels = list("a", "e", "ı", "i", "o", "ö", "u", "ü")
-	var/list/charlist = text2charlist(locale_lowertext(text))
+	var/list/charlist = text2charlist(LOCALE_LOWER_TEXT(text))
 	var/charlength = length_char(charlist)
 	var/last_char = charlist[charlength]
 	if(!isnull(text2num(last_char)))

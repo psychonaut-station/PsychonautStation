@@ -530,6 +530,7 @@
 		/obj/item/radio/headset/headset_srv = 2,
 		/obj/item/clothing/suit/chaplainsuit/habit = 1,
 		/obj/item/clothing/head/chaplain/habit_veil = 1,
+		/obj/item/clothing/neck/necklace/jhon = 2,
 	)
 	contraband = list(
 		/obj/item/toy/plush/ratplush = 1,

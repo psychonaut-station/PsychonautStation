@@ -71,6 +71,12 @@
 	description = "benis"
 	mappath = "_maps/templates/holodeck_animeschool.dmm"
 
+/datum/map_template/holodeck/camping
+	name = "Holodeck - Forest Camping"
+	template_id = "holodeck_camping"
+	description = "benis"
+	mappath = "_maps/templates/holodeck_camping.dmm"
+
 /datum/map_template/holodeck/chapelcourt
 	name = "Holodeck - Chapel Courtroom"
 	template_id = "holodeck_chapelcourt"

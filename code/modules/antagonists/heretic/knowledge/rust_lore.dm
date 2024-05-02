@@ -262,7 +262,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Harap olmaktan korkun, [user.real_name] yükseldi! Kimse aşınmadan kaçamayacak! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = ANNOUNCER_SPANOMALIES,
+		sound = 'sound/ambience/antag/heretic/ascend_rust.ogg',
 		color_override = "pink",
 	)
 	new /datum/rust_spread(loc)

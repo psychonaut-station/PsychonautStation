@@ -406,7 +406,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Kılıçların efendisi [user.real_name] yükseldi! Onların çeliği, gerçekliği gümüşten bir heykelmişcesine kesecek! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = ANNOUNCER_SPANOMALIES,
+		sound = 'sound/ambience/antag/heretic/ascend_blade.ogg',
 		color_override = "pink",
 	)
 	user.client?.give_award(/datum/award/achievement/misc/blade_ascension, user)

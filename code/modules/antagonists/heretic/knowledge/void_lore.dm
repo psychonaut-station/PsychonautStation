@@ -202,7 +202,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Hiçliğin efendisi [user.real_name] yükseldi, dünyaları sona erdiren Vals adımlarını atıyor! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = ANNOUNCER_SPANOMALIES,
+		sound = 'sound/ambience/antag/heretic/ascend_void.ogg',
 		color_override = "pink",
 	)
 	user.client?.give_award(/datum/award/achievement/misc/void_ascension, user)

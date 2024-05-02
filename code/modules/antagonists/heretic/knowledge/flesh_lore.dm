@@ -314,7 +314,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Sürekli kıvrılan bir girdap. Gerçeklik gözler önüne serildi. GECENİN EFENDİSİ, [user.real_name] yükseldi! Durmadan bükülenden korkun! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = ANNOUNCER_SPANOMALIES,
+		sound = 'sound/ambience/antag/heretic/ascend_flesh.ogg',
 		color_override = "pink",
 	)
 

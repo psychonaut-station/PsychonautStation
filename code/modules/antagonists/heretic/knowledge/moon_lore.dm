@@ -189,13 +189,12 @@
 /datum/heretic_knowledge/ultimate/moon_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
-
 	priority_announce(
     text= "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
 					Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
-    title = "[generate_heretic_text()]", 
+    title = "[generate_heretic_text()]",
     sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
-		color_override = "pink",
+	color_override = "pink",
   )
 
 	user.client?.give_award(/datum/award/achievement/misc/moon_ascension, user)

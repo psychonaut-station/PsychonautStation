@@ -190,11 +190,11 @@
 	. = ..()
 	var/datum/antagonist/heretic/heretic_datum = IS_HERETIC(user)
 	priority_announce(
-	text= "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
-					Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
-	title = "[generate_heretic_text()]",
-	sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
-	color_override = "pink"
+		text= "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
+			Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
+		title = "[generate_heretic_text()]",
+		sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
+		color_override = "pink"
 	)
 
 	user.client?.give_award(/datum/award/achievement/misc/moon_ascension, user)

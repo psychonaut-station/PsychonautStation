@@ -38,10 +38,6 @@
 /obj/item/reagent_containers/cup/glass/bottle/beer,
 /turf/open/floor/holofloor/asteroid,
 /area/template_noop)
-"k" = (
-/obj/item/stack/sheet/mineral/coal/ten,
-/turf/open/floor/holofloor/asteroid,
-/area/template_noop)
 "l" = (
 /obj/effect/holodeck_effect/mobspawner/pet,
 /turf/open/floor/holofloor/grass,
@@ -148,6 +144,10 @@
 /area/template_noop)
 "J" = (
 /obj/item/toy/plush/beeplushie,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"K" = (
+/obj/item/stack/sheet/mineral/wood/thirty,
 /turf/open/floor/holofloor/grass,
 /area/template_noop)
 "L" = (
@@ -263,7 +263,7 @@ u
 S
 z
 S
-S
+K
 v
 N
 "}
@@ -274,7 +274,7 @@ L
 Z
 S
 B
-k
+z
 r
 S
 R

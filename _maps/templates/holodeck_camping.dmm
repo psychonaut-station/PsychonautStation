@@ -1,62 +1,325 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
-"a" = (/obj/structure/flora/bush/flowers_yw,/turf/open/floor/holofloor/grass,/area/template_noop)
-"b" = (/obj/structure/flora/tree/jungle/small/style_6,/turf/open/floor/holofloor/grass,/area/template_noop)
-"c" = (/obj/structure/flora/bush/leafy,/turf/open/floor/holofloor/grass,/area/template_noop)
-"d" = (/obj/structure/flora/bush/pointy/style_2,/turf/open/floor/holofloor/grass,/area/template_noop)
-"e" = (/obj/item/toy/dodgeball,/turf/open/floor/holofloor/grass,/area/template_noop)
-"f" = (/obj/item/food/canned/chap,/turf/open/floor/holofloor/grass,/area/template_noop)
-"g" = (/obj/structure/closet/crate/grave,/turf/open/floor/holofloor/grass,/area/template_noop)
-"h" = (/obj/structure/flora/rock/pile,/turf/open/floor/holofloor/grass,/area/template_noop)
-"i" = (/obj/structure/chair/wood{dir = 8},/obj/item/reagent_containers/cup/glass/bottle/beer,/turf/open/floor/holofloor/asteroid,/area/template_noop)
-"l" = (/obj/effect/holodeck_effect/mobspawner/pet,/turf/open/floor/holofloor/grass,/area/template_noop)
-"m" = (/obj/structure/flora/bush/flowers_yw,/obj/item/reagent_containers/cup/glass/bottle/beer/light,/turf/open/floor/holofloor/grass,/area/template_noop)
-"n" = (/obj/item/pet_carrier,/turf/open/floor/holofloor/grass,/area/template_noop)
-"o" = (/obj/item/reagent_containers/cup/glass/waterbottle/large,/turf/open/floor/holofloor/asteroid,/area/template_noop)
-"p" = (/obj/structure/flora/bush/stalky,/turf/open/floor/holofloor/grass,/area/template_noop)
-"q" = (/obj/structure/flora/rock/pile/style_2,/turf/open/floor/holofloor/asteroid,/area/template_noop)
-"r" = (/obj/machinery/grill,/obj/item/food/meat/rawbacon,/obj/item/food/meat/rawbacon,/turf/open/floor/holofloor/grass,/area/template_noop)
-"s" = (/obj/structure/water_source/puddle,/obj/structure/flora/bush/reed/style_2{pixel_x = -6},/obj/structure/flora/bush/reed/style_2,/turf/open/floor/holofloor/grass,/area/template_noop)
-"t" = (/obj/structure/flora/bush/sunny/style_2,/turf/open/floor/holofloor/grass,/area/template_noop)
-"u" = (/obj/item/instrument/guitar,/turf/open/floor/holofloor/grass,/area/template_noop)
-"v" = (/obj/item/reagent_containers/cup/glass/bottle/beer,/turf/open/floor/holofloor/grass,/area/template_noop)
-"x" = (/obj/item/storage/fancy/cigarettes/cigpack_candy,/turf/open/floor/holofloor/grass,/area/template_noop)
-"y" = (/obj/structure/flora/bush/flowers_pp,/turf/open/floor/holofloor/grass,/area/template_noop)
-"z" = (/turf/open/floor/holofloor/asteroid,/area/template_noop)
-"A" = (/obj/item/thermometer,/turf/open/floor/holofloor/grass,/area/template_noop)
-"B" = (/obj/structure/flora/bush/leavy,/turf/open/floor/holofloor/grass,/area/template_noop)
-"C" = (/obj/item/dog_bone,/turf/open/floor/holofloor/grass,/area/template_noop)
-"D" = (/obj/item/plate/small,/obj/item/kitchen/spoon/plastic,/turf/open/floor/holofloor/grass,/area/template_noop)
-"E" = (/obj/item/reagent_containers/cup/glass/bottle/raki,/turf/open/floor/holofloor/grass,/area/template_noop)
-"F" = (/obj/item/plate/small,/obj/item/kitchen/fork/plastic,/turf/open/floor/holofloor/grass,/area/template_noop)
-"G" = (/obj/structure/flora/rock/style_3,/turf/open/floor/holofloor/grass,/area/template_noop)
-"H" = (/obj/structure/flora/tree/jungle/small/style_3,/turf/open/floor/holofloor/grass,/area/template_noop)
-"I" = (/obj/item/reagent_containers/cup/glass/waterbottle/large,/turf/open/floor/holofloor/grass,/area/template_noop)
-"J" = (/obj/item/toy/plush/beeplushie,/turf/open/floor/holofloor/grass,/area/template_noop)
-"L" = (/obj/item/chair/wood,/obj/item/reagent_containers/cup/glass/bottle/beer,/turf/open/floor/holofloor/asteroid,/area/template_noop)
-"M" = (/obj/structure/flora/bush/generic,/turf/open/floor/holofloor/grass,/area/template_noop)
-"N" = (/obj/structure/flora/bush/flowers_br,/turf/open/floor/holofloor/grass,/area/template_noop)
-"O" = (/obj/item/reagent_containers/cup/glass/waterbottle,/turf/open/floor/holofloor/grass,/area/template_noop)
-"P" = (/obj/structure/flora/rock/style_2,/turf/open/floor/holofloor/grass,/area/template_noop)
-"Q" = (/obj/item/food/sandwich/blt,/turf/open/floor/holofloor/grass,/area/template_noop)
-"R" = (/obj/structure/flora/bush/lavendergrass,/turf/open/floor/holofloor/grass,/area/template_noop)
-"S" = (/turf/open/floor/holofloor/grass,/area/template_noop)
-"T" = (/obj/structure/table/wood/shuttle_bar,/obj/item/food/meat/slab/monkey,/obj/item/food/meat/slab/monkey,/obj/item/food/meat/slab/monkey,/obj/item/food/meat/slab/monkey,/obj/item/food/meat/slab/monkey,/obj/item/food/meat/slab/xeno,/obj/item/food/meat/slab/xeno,/obj/item/food/meat/slab/xeno,/turf/open/floor/holofloor/grass,/area/template_noop)
-"U" = (/obj/structure/flora/rock/pile/style_3,/turf/open/floor/holofloor/grass,/area/template_noop)
-"V" = (/obj/effect/decal/cleanable/garbage,/turf/open/floor/holofloor/grass,/area/template_noop)
-"W" = (/obj/structure/flora/bush/grassy,/turf/open/floor/holofloor/grass,/area/template_noop)
-"X" = (/obj/item/plate_shard,/turf/open/floor/holofloor/grass,/area/template_noop)
-"Y" = (/obj/item/toy/plush/moth,/turf/open/floor/holofloor/grass,/area/template_noop)
-"Z" = (/obj/structure/firepit,/turf/open/floor/holofloor/asteroid,/area/template_noop)
+"a" = (
+/obj/structure/flora/bush/flowers_yw,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"b" = (
+/obj/structure/flora/tree/jungle/small/style_6,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"c" = (
+/obj/structure/flora/bush/leafy,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"d" = (
+/obj/structure/flora/bush/pointy/style_2,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"e" = (
+/obj/item/toy/dodgeball,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"f" = (
+/obj/item/food/canned/chap,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"g" = (
+/obj/structure/closet/crate/grave,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"h" = (
+/obj/structure/flora/rock/pile,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"i" = (
+/obj/structure/chair/wood{
+	dir = 8
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer,
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
+"l" = (
+/obj/effect/holodeck_effect/mobspawner/pet,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"m" = (
+/obj/structure/flora/bush/flowers_yw,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"n" = (
+/obj/item/pet_carrier,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"o" = (
+/obj/item/reagent_containers/cup/glass/waterbottle/large,
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
+"p" = (
+/obj/structure/flora/bush/stalky,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"q" = (
+/obj/structure/flora/rock/pile/style_2,
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
+"r" = (
+/obj/machinery/grill,
+/obj/item/food/meat/rawbacon,
+/obj/item/food/meat/rawbacon,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"s" = (
+/obj/structure/water_source/puddle,
+/obj/structure/flora/bush/reed/style_2{
+	pixel_x = -6
+	},
+/obj/structure/flora/bush/reed/style_2,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"t" = (
+/obj/structure/flora/bush/sunny/style_2,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"u" = (
+/obj/item/instrument/guitar,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"v" = (
+/obj/item/reagent_containers/cup/glass/bottle/beer,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"w" = (
+/obj/structure/flora/bush/fullgrass,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"x" = (
+/obj/item/storage/fancy/cigarettes/cigpack_candy,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"y" = (
+/obj/structure/flora/bush/flowers_pp,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"z" = (
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
+"A" = (
+/obj/item/thermometer,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"B" = (
+/obj/structure/flora/bush/leavy,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"C" = (
+/obj/item/dog_bone,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"D" = (
+/obj/item/plate/small,
+/obj/item/kitchen/spoon/plastic,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"E" = (
+/obj/item/reagent_containers/cup/glass/bottle/raki,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"F" = (
+/obj/item/plate/small,
+/obj/item/kitchen/fork/plastic,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"G" = (
+/obj/structure/flora/rock/style_3,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"H" = (
+/obj/structure/flora/tree/jungle/small/style_3,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"I" = (
+/obj/item/reagent_containers/cup/glass/waterbottle/large,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"J" = (
+/obj/item/toy/plush/beeplushie,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"L" = (
+/obj/item/chair/wood,
+/obj/item/reagent_containers/cup/glass/bottle/beer,
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
+"M" = (
+/obj/structure/flora/bush/generic,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"N" = (
+/obj/structure/flora/bush/flowers_br,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"O" = (
+/obj/item/reagent_containers/cup/glass/waterbottle,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"P" = (
+/obj/structure/flora/rock/style_2,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"Q" = (
+/obj/item/food/sandwich/blt,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"R" = (
+/obj/structure/flora/bush/lavendergrass,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"S" = (
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"T" = (
+/obj/structure/table/wood/shuttle_bar,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/monkey,
+/obj/item/food/meat/slab/xeno,
+/obj/item/food/meat/slab/xeno,
+/obj/item/food/meat/slab/xeno,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"U" = (
+/obj/structure/flora/rock/pile/style_3,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"V" = (
+/obj/effect/decal/cleanable/garbage,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"W" = (
+/obj/structure/flora/bush/grassy,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"X" = (
+/obj/item/plate_shard,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"Y" = (
+/obj/item/toy/plush/moth,
+/turf/open/floor/holofloor/grass,
+/area/template_noop)
+"Z" = (
+/obj/structure/firepit,
+/turf/open/floor/holofloor/asteroid,
+/area/template_noop)
 
 (1,1,1) = {"
-lJRSQSSgP
-caSVlSSSy
-WXSFLfbed
-OhSuZiEnS
-MlRSSSCIW
-zzozBlRzq
-RNSSzzzpR
-SASSrTsYl
-cSHvSRSSm
-dUlNRxDtG
+l
+c
+W
+O
+M
+z
+R
+S
+c
+d
+"}
+(2,1,1) = {"
+J
+a
+X
+h
+l
+z
+N
+A
+S
+U
+"}
+(3,1,1) = {"
+R
+S
+S
+S
+R
+o
+S
+S
+H
+l
+"}
+(4,1,1) = {"
+S
+V
+F
+u
+S
+z
+S
+S
+v
+N
+"}
+(5,1,1) = {"
+Q
+l
+L
+Z
+S
+B
+z
+r
+S
+R
+"}
+(6,1,1) = {"
+S
+S
+f
+i
+S
+l
+z
+T
+R
+x
+"}
+(7,1,1) = {"
+S
+S
+b
+E
+C
+w
+z
+s
+S
+D
+"}
+(8,1,1) = {"
+g
+S
+e
+n
+I
+z
+p
+Y
+S
+t
+"}
+(9,1,1) = {"
+P
+y
+d
+S
+W
+q
+R
+l
+m
+G
 "}

@@ -1,4 +1,4 @@
-"a" = (/obj/structure/flora/bush/sparsegrass,/turf/open/floor/holofloor/grass,/area/template_noop)
+"a" = (/obj/structure/flora/bush/flowers_yw,/turf/open/floor/holofloor/grass,/area/template_noop)
 "b" = (/obj/structure/flora/tree/jungle/small/style_6,/turf/open/floor/holofloor/grass,/area/template_noop)
 "c" = (/obj/structure/flora/bush/leafy,/turf/open/floor/holofloor/grass,/area/template_noop)
 "d" = (/obj/structure/flora/bush/pointy/style_2,/turf/open/floor/holofloor/grass,/area/template_noop)
@@ -53,9 +53,9 @@ caSVlSSSy
 WXSFLfbed
 OhSuZiEnS
 MlRSSSCIW
-zzozBlazq
+zzozBlRzq
 RNSSzzzpR
 SASSrTsYl
-cSHvSRSam
+cSHvSRSSm
 dUlNRxDtG
 "}

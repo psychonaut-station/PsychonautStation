@@ -391,7 +391,7 @@
 			else
 				. += uppertext(c)
 
-/proc/locale_lowertext(t)
+/proc/locale_lowertext_(t)
 	. = ""
 	for(var/c in text2charlist(t))
 		switch(c)
@@ -410,7 +410,7 @@
 			if ("\u00C7")  // Ç
 				. += "\u00E7"  // ç
 			else
-				. += lowertext(c)
+				. += LOWER_TEXT(c)
 
 /proc/delocale_text(t)
 	. = ""
@@ -867,7 +867,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 		return string
 
 	var/base = next_backslash == 1 ? "" : copytext(string, 1, next_backslash)
-	var/macro = lowertext(copytext(string, next_backslash + length(string[next_backslash]), next_space))
+	var/macro = LOWER_TEXT(copytext(string, next_backslash + length(string[next_backslash]), next_space))
 	var/rest = next_backslash > leng ? "" : copytext(string, next_space + length(string[next_space]))
 
 	//See https://secure.byond.com/docs/ref/info.html#/DM/text/macros
@@ -1164,7 +1164,7 @@ GLOBAL_LIST_INIT(binary, list("0","1"))
 	var/text_length = length(text)
 
 	//remove caps since words will be shuffled
-	text = lowertext(text)
+	text = LOWER_TEXT(text)
 	//remove punctuation for same reasons as above
 	var/punctuation = ""
 	var/punctuation_hit_list = list("!","?",".","-")

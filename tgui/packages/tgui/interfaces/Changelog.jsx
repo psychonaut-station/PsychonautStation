@@ -141,7 +141,7 @@ export class Changelog extends Component {
         </Stack.Item>
         <Stack.Item>
           <Dropdown
-            displayText={selectedDate}
+            autoScroll={false}
             options={dateChoices}
             onSelected={(value) => {
               const index = dateChoices.indexOf(value);
@@ -157,7 +157,7 @@ export class Changelog extends Component {
               return this.getData(dates[index]);
             }}
             selected={selectedDate}
-            width={'150px'}
+            width="150px"
           />
         </Stack.Item>
         <Stack.Item>
@@ -205,7 +205,7 @@ export class Changelog extends Component {
         </p>
         <p>
           {'You can also join our discord '}
-          <a href="http://psychonautstation.com/discord">here</a>.
+          <a href="http://turkb.us/discord">here</a>.
         </p>
         {dateDropdown}
       </Section>

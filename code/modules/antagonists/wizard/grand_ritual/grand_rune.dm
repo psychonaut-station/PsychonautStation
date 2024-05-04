@@ -83,10 +83,10 @@
 /obj/effect/grand_rune/proc/announce_rune()
 	var/area/created_area = get_area(src)
 	if (potency >= GRAND_RITUAL_IMMINENT_FINALE_POTENCY)
-		priority_announce("Major anomalous fluctuations to local spacetime detected in: [created_area.name].", "Anomaly Alert")
+		priority_announce("[created_area.name] bölgesinde alansal uzay-zamanda büyük anormal dalgalanmalar tespit edildi.", "Anomali Uyarısı")
 		return
 	if (potency >= GRAND_RITUAL_RUNES_WARNING_POTENCY)
-		priority_announce("Unusual anomalous energy fluctuations detected in: [created_area.name].", "Anomaly Alert")
+		priority_announce("[created_area.name] bölgesinde olağandışı anormal enerji dalgalanmaları tespit edildi", "Anomali Uyarısı")
 		return
 
 /obj/effect/grand_rune/examine(mob/user)
@@ -187,7 +187,7 @@
 	tear_reality()
 	SEND_SIGNAL(src, COMSIG_GRAND_RUNE_COMPLETE, cheese_sacrificed)
 	flick("[icon_state]_activate", src)
-	addtimer(CALLBACK(src, PROC_REF(remove_rune)), 6)
+	addtimer(CALLBACK(src, PROC_REF(remove_rune)), 0.6 SECONDS)
 	SSblackbox.record_feedback("amount", "grand_runes_invoked", 1)
 
 /obj/effect/grand_rune/proc/remove_rune()
@@ -293,13 +293,13 @@
 	var/announce = null
 	switch (dire_warnings_given)
 		if (0)
-			announce = "Large anomalous energy spike detected in: [created_area.name]."
+			announce = "[created_area.name] bölgesinde büyük bir anormal enerji artışı tespit edildi."
 		if (1)
-			announce = "Automatic causality stabilisation failed, recommend urgent intervention in: [created_area.name]."
+			announce = "[created_area.name] bölgesinde otomatik sebep sonuç ilişkisi dengelemesi başarısız oldu, acil müdahale öneriyoruz."
 		if (2)
-			announce = "Imminent local reality failure in: [created_area.name]. All crew please prepare to evacuate."
+			announce = "[created_area.name] bölgesinde yerel gerçeklik sorunu yaşanıyor Tüm mürettebat lütfen tahliyeye hazırlansın."
 	if (announce)
-		priority_announce(announce, "Anomaly Alert")
+		priority_announce(announce, "Anomali Uyarısı")
 	dire_warnings_given++
 	return ..()
 

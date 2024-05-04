@@ -21,7 +21,7 @@
 			UnregisterSignal(mob, COMSIG_QDELETING)
 	return ..()
 
-/datum/proximity_monitor/advanced/mob_collector/recalculate_field()
+/datum/proximity_monitor/advanced/mob_collector/recalculate_field(full_recalc = FALSE)
 	. = ..()
 	var/list/old_mobs = mobs_in_field.Copy()
 	mobs_in_field.Cut()
@@ -65,6 +65,11 @@
 			if(mob != host)
 				RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
 
+/datum/proximity_monitor/advanced/mob_collector/on_initialized(turf/source, atom/movable/created, init_flags)
+	. = ..()
+	if(ismob(created))
+		addtimer(CALLBACK(src, PROC_REF(on_entered), source, created), 1)
+
 /datum/proximity_monitor/advanced/mob_collector/proc/on_qdeleting(datum/source)
 	SIGNAL_HANDLER
 	if(ismob(source))
@@ -72,10 +77,6 @@
 			mobs_in_field -= source
 			SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_LEFT, source)
 			UnregisterSignal(source, COMSIG_QDELETING)
-
-/datum/proximity_monitor/advanced/mob_collector/proc/on_initialized(turf/source, atom/movable/entered)
-	if(ismob(entered))
-		addtimer(CALLBACK(src, PROC_REF(on_entered), source, entered), 1)
 
 #undef get_atom_loc
 #undef get_host_loc

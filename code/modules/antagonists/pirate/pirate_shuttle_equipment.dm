@@ -72,7 +72,7 @@
 
 /// Alerts the crew about the siphon
 /obj/machinery/shuttle_scrambler/proc/send_notification()
-	priority_announce("Data theft signal detected; source registered on local GPS units.")
+	priority_announce("Veri hırsızlığı sinyali tespit edildi; sinyalin kaynağı yerel GPS cihazlarına kaydedildi.")
 
 /// Switches off the siphon
 /obj/machinery/shuttle_scrambler/proc/toggle_off(mob/user)
@@ -95,6 +95,9 @@
 	icon_keyboard = "syndie_key"
 	light_color = COLOR_SOFT_RED
 	possible_destinations = "pirate_away;pirate_home;pirate_custom"
+
+/obj/machinery/computer/shuttle/pirate/drop_pod
+	possible_destinations = "null"
 
 /obj/machinery/computer/camera_advanced/shuttle_docker/syndicate/pirate
 	name = "pirate shuttle navigation computer"
@@ -232,7 +235,7 @@
 		pad_ref = WEAKREF(I.buffer)
 		return TRUE
 
-/obj/machinery/computer/piratepad_control/LateInitialize()
+/obj/machinery/computer/piratepad_control/post_machine_initialize()
 	. = ..()
 	if(cargo_hold_id)
 		for(var/obj/machinery/piratepad/P as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/piratepad))

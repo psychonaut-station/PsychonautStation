@@ -320,7 +320,7 @@
 	else if(input_level > desired_level)
 		input_level--
 	if(prob(input_level - safe_levels + (emagged * 5)))	//at dangerous levels, start doing freaky shit. prob with values less than 0 treat it as 0
-		priority_announce("Unexpected power spike during Bluespace Harvester Operation. Extra-dimensional intruder alert. Expected location: [get_area_name(src)]. [emagged ? "DANGER: Emergency shutdown failed! Please proceed with manual shutdown." : "Emergency shutdown initiated."]", "Bluespace Harvester Malfunction",sound = SSstation.announcer.get_rand_report_sound())
+		priority_announce("Bluespace Hasat Makinesi çalışması sırasında beklenmedik güç artışı. Çok boyutlu davetsiz misafir alarmı. Beklenen lokasyon: [get_area_name(src)]. [emagged ? "TEHLİKE: Acil durum kapatması başarısız oldu! Lütfen manuel kapatma ile devam edin." : "Acil durum kapatma başlatıldı."]", "Bluespace Hasat Makinesi Arızası",sound = SSstation.announcer.get_rand_report_sound())
 		if(!emagged)
 			input_level = 0	//emergency shutdown unless we're sabotaged
 			desired_level = 0
@@ -423,9 +423,8 @@
 	max_mobs = 5		//Dont' want them overrunning the station
 	max_integrity = 250
 
-/obj/structure/spawner/nether/bluespace_tap/deconstruct(disassembled)
+/obj/structure/spawner/nether/bluespace_tap/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/ore/bluespace_crystal(loc)	//have a reward
-	return ..()
 
 /obj/item/paper/bluespace_tap
 	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"

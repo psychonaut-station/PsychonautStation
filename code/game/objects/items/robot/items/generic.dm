@@ -12,12 +12,13 @@
 /obj/item/borg
 	icon = 'icons/mob/silicon/robot_items.dmi'
 
+/// Cost to use the stun arm
+#define CYBORG_STUN_CHARGE_COST (0.2 * STANDARD_CELL_CHARGE)
+
 /obj/item/borg/stun
 	name = "electrically-charged arm"
 	icon_state = "elecarm"
 	var/stamina_damage = 60 //Same as normal batong
-	/// Cost to use the stun arm
-	var/charge_cost = 200
 	var/cooldown_check = 0
 	/// cooldown between attacks
 	var/cooldown = 4 SECONDS // same as baton
@@ -33,7 +34,7 @@
 			return FALSE
 	if(iscyborg(user))
 		var/mob/living/silicon/robot/robot_user = user
-		if(!robot_user.cell.use(charge_cost))
+		if(!robot_user.cell.use(CYBORG_STUN_CHARGE_COST))
 			return
 
 	user.do_attack_animation(attacked_mob)
@@ -56,6 +57,8 @@
 	playsound(loc, 'sound/weapons/egloves.ogg', 50, TRUE, -1)
 	cooldown_check = world.time + cooldown
 	log_combat(user, attacked_mob, "stunned", src, "(Combat mode: [user.combat_mode ? "On" : "Off"])")
+
+#undef CYBORG_STUN_CHARGE_COST
 
 /obj/item/borg/cyborghug
 	name = "hugging module"
@@ -182,7 +185,7 @@
 						span_danger("You shock [attacked_mob] to no effect."),
 					)
 			playsound(loc, 'sound/effects/sparks2.ogg', 50, TRUE, -1)
-			user.cell.charge -= 500
+			user.cell.use(0.5 * STANDARD_CELL_CHARGE, force = TRUE)
 			COOLDOWN_START(src, shock_cooldown, HUG_SHOCK_COOLDOWN)
 		if(HUG_MODE_CRUSH)
 			if (!COOLDOWN_FINISHED(src, crush_cooldown))
@@ -199,7 +202,7 @@
 				)
 			playsound(loc, 'sound/weapons/smash.ogg', 50, TRUE, -1)
 			attacked_mob.adjustBruteLoss(15)
-			user.cell.charge -= 300
+			user.cell.use(0.3 * STANDARD_CELL_CHARGE, force = TRUE)
 			COOLDOWN_START(src, crush_cooldown, HUG_CRUSH_COOLDOWN)
 
 /obj/item/borg/cyborghug/peacekeeper
@@ -244,17 +247,14 @@
 				return
 
 			to_chat(user, span_notice("You connect to [target_machine]'s power line..."))
-			while(do_after(user, 15, target = target_machine, progress = 0))
+			while(do_after(user, 1.5 SECONDS, target = target_machine, progress = FALSE))
 				if(!user || !user.cell || mode != "draw")
 					return
 
 				if((target_machine.machine_stat & (NOPOWER|BROKEN)) || !target_machine.anchored)
 					break
 
-				if(!user.cell.give(150))
-					break
-
-				target_machine.use_power(200)
+				target_machine.charge_cell(0.15 * STANDARD_CELL_CHARGE, user.cell)
 
 			to_chat(user, span_notice("You stop charging yourself."))
 
@@ -278,7 +278,7 @@
 
 			to_chat(user, span_notice("You connect to [target]'s power port..."))
 
-			while(do_after(user, 15, target = target, progress = 0))
+			while(do_after(user, 1.5 SECONDS, target = target, progress = FALSE))
 				if(!user || !user.cell || mode != "draw")
 					return
 
@@ -316,7 +316,7 @@
 
 		to_chat(user, span_notice("You connect to [target]'s power port..."))
 
-		while(do_after(user, 15, target = target, progress = 0))
+		while(do_after(user, 1.5 SECONDS, target = target, progress = FALSE))
 			if(!user || !user.cell || mode != "charge")
 				return
 
@@ -401,6 +401,70 @@
 		playsound(get_turf(src), 'sound/machines/warning-buzzer.ogg', 130, 3)
 		COOLDOWN_START(src, alarm_cooldown, HARM_ALARM_NO_SAFETY_COOLDOWN)
 		user.log_message("used an emagged Cyborg Harm Alarm", LOG_ATTACK)
+
+/// The fabled paper plane crossbow and its hardlight paper planes.
+/obj/item/paperplane/syndicate/hardlight
+	name = "hardlight paper plane"
+	desc = "Hard enough to hurt, fickle enough to be impossible to pick up."
+	eye_dam_lower = 10
+	eye_dam_higher = 10
+	scrap_on_impact = TRUE
+	throw_speed = 0.8
+	/// Which color is the paper plane?
+	var/list/paper_colors = list(COLOR_CYAN, COLOR_BLUE_LIGHT, COLOR_BLUE)
+	alpha = 150 // It's hardlight, it's gotta be see-through.
+
+/obj/item/paperplane/syndicate/hardlight/Initialize(mapload)
+	. = ..()
+	color = color_hex2color_matrix(pick(paper_colors))
+	alpha = initial(alpha) // It's hardlight, it's gotta be see-through.
+
+/obj/item/borg/paperplane_crossbow
+	name = "paper plane crossbow"
+	desc = "Be careful, don't aim for the eyes- Who am I kidding, <i>definitely</i> aim for the eyes!"
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	icon_state = "crossbow_halloween"
+	/// Paperplane Type
+	var/obj/item/paperplane/planetype = /obj/item/paperplane/syndicate/hardlight
+	/// How long is the cooldown between shots?
+	var/shooting_delay = 5 SECONDS
+	/// Are we ready to fire again?
+	COOLDOWN_DECLARE(shooting_cooldown)
+
+/// A proc for shooting a projectile at the target, it's just that simple, really.
+/obj/item/borg/paperplane_crossbow/proc/shoot(atom/target, mob/living/silicon/robot/user, params)
+
+	var/obj/item/paperplane/plane_to_fire = new planetype(get_turf(loc))
+
+	playsound(src.loc, 'sound/machines/click.ogg', 50, TRUE)
+	plane_to_fire.throw_at(target, plane_to_fire.throw_range, plane_to_fire.throw_speed, user)
+	COOLDOWN_START(src, shooting_cooldown, shooting_delay)
+	addtimer(CALLBACK(src, PROC_REF(charge_up), user), shooting_delay)
+	user.visible_message(span_warning("[user] shoots a paper plane at [target]!"))
+
+/obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/silicon/robot/user)
+	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
+		balloon_alert_to_viewers("*click*")
+		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		return FALSE
+	if(target == user)
+		to_chat(user, span_warning("You cant shoot yourself!"))
+		return FALSE
+	if(!user.cell.use(50))
+		to_chat(user, span_warning("Not enough power."))
+		return FALSE
+	return TRUE
+
+/obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
+	. = ..()
+	if(iscyborg(user))
+		var/mob/living/silicon/robot/robot_user = user
+		if(!canshoot(target,robot_user))
+			return FALSE
+		shoot(target, robot_user, click_params)
+
+/obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
+	to_chat(user, span_warning("[src] silently charges up."))
 
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG

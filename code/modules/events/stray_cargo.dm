@@ -42,7 +42,7 @@
 /datum/round_event/stray_cargo/announce(fake)
 	if(fake)
 		impact_area = find_event_area()
-	priority_announce("Stray cargo pod detected on long-range scanners. Expected location of impact: [impact_area.name].", "Collision Alert")
+	priority_announce("Uzun menzilli tarayıcılarda başıboş kargo kapsülü tespit edildi. Beklenen çarpışma yeri: [impact_area.name].", "Çarpışma Uyarısı")
 
 /**
 * Tries to find a valid area, throws an error if none are found
@@ -102,7 +102,8 @@
 		crate.update_appearance()
 	var/obj/structure/closet/supplypod/pod = make_pod()
 	var/obj/effect/pod_landingzone/landing_marker = new(landing_zone, pod, crate)
-	announce_to_ghosts(landing_marker)
+	var/static/mutable_appearance/target_appearance = mutable_appearance('icons/obj/supplypods_32x32.dmi', "LZ")
+	notify_ghosts("[control.name] has summoned a supply crate!", source = get_turf(landing_marker), header = "Cargo Inbound", alert_overlay = target_appearance)
 
 ///Handles the creation of the pod, in case it needs to be modified beforehand
 /datum/round_event/stray_cargo/proc/make_pod()

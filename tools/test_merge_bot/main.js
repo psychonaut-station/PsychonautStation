@@ -29,26 +29,22 @@ export async function processTestMerges({ github, context }) {
 			process.exit(1);
 		});
 
-	// PR # -> server name -> test merge struct
+	// PR # -> test merge struct
 	const testMergesPerPr = {};
 
 	for (const round of rounds) {
-		const { server, test_merges } = round;
+		const { test_merges } = round;
 
 		for (const testMerge of test_merges) {
 			if (!testMergesPerPr[testMerge]) {
-				testMergesPerPr[testMerge] = {};
+				testMergesPerPr[testMerge] = [];
 			}
 
-			if (!testMergesPerPr[testMerge][server]) {
-				testMergesPerPr[testMerge][server] = [];
-			}
-
-			testMergesPerPr[testMerge][server].push(round);
+			testMergesPerPr[testMerge].push(round);
 		}
 	}
 
-	for (const [prNumber, servers] of Object.entries(testMergesPerPr)) {
+	for (const [prNumber, rounds] of Object.entries(testMergesPerPr)) {
 		const comments = await github.graphql(
 			`
 		query($owner:String!, $repo:String!, $prNumber:Int!) {
@@ -80,26 +76,48 @@ export async function processTestMerges({ github, context }) {
 					comment.body.startsWith(TEST_MERGE_COMMENT_HEADER)
 			);
 
-		const newBody = createComment(servers, existingComment?.body);
+		const newBody = createComment(rounds, existingComment?.body);
 		if (!newBody) {
 			console.log(`No changes for PR #${prNumber}`);
 			continue;
 		}
 
 		if (existingComment === undefined) {
-			await github.rest.issues.createComment({
-				owner: context.repo.owner,
-				repo: context.repo.repo,
-				issue_number: prNumber,
-				body: newBody,
-			});
+			try {
+				await github.rest.issues.createComment({
+					owner: context.repo.owner,
+					repo: context.repo.repo,
+					issue_number: prNumber,
+					body: newBody,
+				});
+			} catch (error) {
+				if(error.status){
+					console.error(`Failed to create comment for #{prNumber}`)
+					console.error(error)
+					continue;
+				}
+				else{
+					throw error
+				}
+			}
 		} else {
-			await github.rest.issues.updateComment({
-				owner: context.repo.owner,
-				repo: context.repo.repo,
-				comment_id: existingComment.databaseId,
-				body: newBody,
-			});
+			try {
+				await github.rest.issues.updateComment({
+					owner: context.repo.owner,
+					repo: context.repo.repo,
+					comment_id: existingComment.databaseId,
+					body: newBody,
+				});
+			} catch (error) {
+				if(error.status){
+					console.error(`Failed to update comment for #{prNumber}`)
+					console.error(error)
+					continue;
+				}
+				else{
+					throw error
+				}
+			}
 		}
 	}
 }

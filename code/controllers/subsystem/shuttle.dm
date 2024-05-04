@@ -259,10 +259,10 @@ SUBSYSTEM_DEF(shuttle)
 		log_shuttle("[msg] Alive: [alive], Roundstart: [total], Threshold: [threshold]")
 		emergency_no_recall = TRUE
 		priority_announce(
-			text = "Catastrophic casualties detected: crisis shuttle protocols activated - jamming recall signals across all frequencies.",
-			title = "Emergency Shuttle Dispatched",
+			text = "Felaket denilebilecek derecede kayıplar tespit edildi: Acil durum mekik protokolleri etkinleştirildi - geri çağırma sinyalleri engellendi",
+			title = "Acil Durum Mekiği Gönderildi",
 			sound = ANNOUNCER_SHUTTLECALLED,
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "orange",
 		)
 		if(emergency.timeLeft(1) > emergency_call_time * ALERT_COEFF_AUTOEVAC_CRITICAL)
@@ -273,10 +273,10 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text = "Emergency shuttle uplink interference detected, shuttle call disabled while the system reinitializes. Estimated restore in [DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
-			title = "Uplink Interference",
+			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayLocaleTimeText(lockout_timer, round_seconds_to = 60)].",
+			title = "Uplink Paraziti",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 		addtimer(CALLBACK(src, PROC_REF(unblock_recall)), lockout_timer)
@@ -287,10 +287,10 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/unblock_recall()
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text= "Emergency shuttle uplink services are now back online.",
-			title = "Uplink Restored",
+			text= "Acil durum mekiği uplink servisleri tekrar devreye girdi.",
+			title = "Uplink Bağlantısı Tekrardan Sağlandı",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",
 		)
 		return
@@ -383,7 +383,7 @@ SUBSYSTEM_DEF(shuttle)
 
 	call_reason = trim(html_encode(call_reason))
 
-	var/emergency_reason = "\n\nNature of emergency:\n[call_reason]"
+	var/emergency_reason = "\n\nAcil durum sebebi:\n[call_reason]"
 
 	emergency.request(
 		signal_origin = signal_origin,
@@ -521,20 +521,20 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.timer = null
 		emergency.sound_played = FALSE
 		priority_announce(
-			text = "Departure has been postponed indefinitely pending conflict resolution.",
-			title = "Hostile Environment Detected",
+			text = "Kalkış, sorunlar ortadan kalkana kadar süresiz olarak ertelenmiştir.",
+			title = "Tehlikeli Ortam Tespit Edildi",
 			sound = 'sound/misc/notice1.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 	if(!emergency_no_escape && (emergency.mode == SHUTTLE_STRANDED))
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
 		priority_announce(
-			text = "You have [DisplayTimeText(emergency_dock_time)] to board the emergency shuttle.",
-			title = "Hostile Environment Resolved",
+			text = "Acil durum mekiğine binebilmeniz için geriye kalan süre: [DisplayLocaleTimeText(emergency_dock_time)]",
+			title = "Tehlikeli Ortam Çözüldü",
 			sound = 'sound/misc/announce_dig.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "green",
 		)
 

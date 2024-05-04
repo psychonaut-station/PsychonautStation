@@ -1422,6 +1422,36 @@
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MEDICAL
 	)
 
+/datum/design/borg_upgrade_surgicalomnitool
+	name = "Advanced Surgical Omnitool Upgrade"
+	id = "borg_upgrade_surgicalomnitool"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/surgery_omnitool
+	materials = list(
+		/datum/material/iron=SHEET_MATERIAL_AMOUNT*5,
+		/datum/material/titanium=SHEET_MATERIAL_AMOUNT*3,
+		/datum/material/silver=SHEET_MATERIAL_AMOUNT*2,
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_MEDICAL
+	)
+
+/datum/design/borg_upgrade_engineeringomnitool
+	name = "Advanced Engineering Omnitool Upgrade"
+	id = "borg_upgrade_engineeringomnitool"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/engineering_omnitool
+	materials = list(
+		/datum/material/iron=SHEET_MATERIAL_AMOUNT*5,
+		/datum/material/titanium=SHEET_MATERIAL_AMOUNT*3,
+		/datum/material/gold=SHEET_MATERIAL_AMOUNT*2,
+	)
+	construction_time = 4 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_ENGINEERING,
+	)
+
 /datum/design/borg_upgrade_trashofholding
 	name = "Trash Bag of Holding"
 	id = "borg_upgrade_trashofholding"
@@ -1657,6 +1687,62 @@
 	construction_time = 12 SECONDS
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_JANITOR
+	)
+
+/datum/design/borg_upgrade_clampcap
+	name = "clamp capacity upgrade"
+	id = "borg_upgrade_clampcap"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/uclamp/cap
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5,
+	)
+	construction_time = 5 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO
+	)
+
+/datum/design/borg_upgrade_clamptime
+	name = "clamp time upgrade"
+	id = "borg_upgrade_clamptime"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/uclamp/time
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5,
+	)
+	construction_time = 5 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO
+	)
+
+/datum/design/borg_upgrade_clampcharge
+	name = "clamp charge upgrade"
+	id = "borg_upgrade_clampcharge"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/uclamp/charge
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5,
+	)
+	construction_time = 5 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO
+	)
+
+/datum/design/borg_upgrade_clampcarry
+	name = "clamp carry upgrade"
+	id = "borg_upgrade_clampcarry"
+	build_type = MECHFAB
+	build_path = /obj/item/borg/upgrade/uclamp/carry
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5,
+	)
+	construction_time = 5 SECONDS
+	category = list(
+		RND_CATEGORY_MECHFAB_CYBORG_MODULES + RND_SUBCATEGORY_MECHFAB_CYBORG_MODULES_CARGO
 	)
 
 /datum/design/mmi

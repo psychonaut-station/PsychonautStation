@@ -517,7 +517,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	state = AHELP_RESOLVED
 	GLOB.ahelp_tickets.ListInsert(src)
 
-	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 50)
+	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 5 SECONDS)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
 	to_chat(initiator, span_adminhelp("Your ticket has been resolved by [REPLACE_SENDER("an admin", "a mentor")]. The [REPLACE_SENDER("Adminhelp", "Mentorhelp")] verb will be returned to you shortly."), confidential = TRUE)
@@ -580,9 +580,6 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	msg += "saçma sapan kararlar alıp sonra ah yandım falan yok. İnce düşünecek geri dönüşü olan kararlar "
 	msg += "almayacaksın. Bir karar aldın mı? O kararın arkasında duracaksın. Bu öyle bir şey ki hayatına yön "
 	msg += "veren kararları alırken de saygı duyacaksın.</font>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km1.jpg' /><br>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km2.jpg' /><br>"
-	msg += "<img src='https://psychonautstation.com/~pub/img/km3.png' /><br>"
 
 	if(initiator)
 		to_chat(initiator, msg, confidential = TRUE)
@@ -1197,10 +1194,10 @@ GLOBAL_DATUM_INIT(ticket_helper_ui_handler, /datum/ticket_helper_ui_handler, new
 		if(!M.mind)
 			continue
 
-		for(var/string in splittext(lowertext(M.real_name), " "))
+		for(var/string in splittext(LOWER_TEXT(M.real_name), " "))
 			if(!(string in ignored_words))
 				nameWords += string
-		for(var/string in splittext(lowertext(M.name), " "))
+		for(var/string in splittext(LOWER_TEXT(M.name), " "))
 			if(!(string in ignored_words))
 				nameWords += string
 

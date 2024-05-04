@@ -191,7 +191,12 @@
 
 	CONFIG_SET(string/asset_transport, new_transport)
 	SSassets.OnConfigLoad()
-	message_admins("[sender.friendly_name] has changed asset transport to [new_transport].")
-	log_admin("[sender.friendly_name] has changed asset transport to [new_transport].")
 
-	return new /datum/tgs_message_content("Asset transport is set to [new_transport].")
+	if (SSassets.transport.validate_config())
+		message_admins("[sender.friendly_name] has changed asset transport to [new_transport].")
+		log_admin("[sender.friendly_name] has changed asset transport to [new_transport].")
+		return new /datum/tgs_message_content("Asset transport is set to [new_transport].")
+	else
+		message_admins("[sender.friendly_name] tried to change asset transport to [new_transport] but failed.")
+		log_admin("[sender.friendly_name] tried to change asset transport to [new_transport] but failed.")
+		return new /datum/tgs_message_content("Cannot change asset transport! Check asset log.")

@@ -1,0 +1,4 @@
+author: "RengaN02"
+delete-after: True
+changes:
+  - bugfix: "NT Secretary'nin remote'unun sprite'ı artık görünecek."

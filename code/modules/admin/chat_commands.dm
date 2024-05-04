@@ -99,7 +99,7 @@
 /datum/tgs_chat_command/validated/sdql
 	name = "sdql"
 	help_text = "Runs an SDQL query"
-	admin_only = TRUE
+	admin_only = FALSE
 	required_rights = R_DEBUG
 
 /datum/tgs_chat_command/validated/sdql/Validated_Run(datum/tgs_chat_user/sender, params)
@@ -127,6 +127,7 @@
 	name = "tidi"
 	help_text = "Gets the time dilation"
 	required_rights = R_DEBUG
+	admin_only = FALSE
 
 /datum/tgs_chat_command/validated/tidi/Validated_Run(datum/tgs_chat_user/sender, params)
 	var/message_body = "Time Dilation: [round(SStime_track.time_dilation_current,1)]% \
@@ -140,6 +141,7 @@
 	name = "mc"
 	help_text = "Master Controller status"
 	required_rights = R_DEBUG
+	admin_only = FALSE
 
 /datum/tgs_chat_command/validated/mc/Validated_Run(datum/tgs_chat_user/sender, params)
 	var/message_body = "CPU: [world.cpu]\n\
@@ -152,3 +154,20 @@
 		message_body += "SSgarbage: TD: [SSgarbage.totaldels], TG: [SSgarbage.totalgcs], Q: [SSgarbage.queues.len]"
 
 	return new /datum/tgs_message_content(message_body)
+
+/datum/tgs_chat_command/validated/reload_config
+	name = "reload_config"
+	help_text = "Reloads config"
+	required_rights = R_DEBUG | R_SERVER
+	admin_only = FALSE
+
+/datum/tgs_chat_command/validated/reload_config/Validated_Run(datum/tgs_chat_user/sender, params)
+	if (!config)
+		return new /datum/tgs_message_content("Game is not ready yet.")
+
+	config.full_wipe()
+	config.Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+	log_admin("[sender.friendly_name] has forcefully reloaded the configuration from disk.")
+	message_admins("[sender.friendly_name] has forcefully reloaded the configuration from disk.")
+
+	return new /datum/tgs_message_content("Reloaded config")

@@ -42,3 +42,16 @@
 2024-05-02:
   MrEmre12:
   - rscadd: "Chaplain i\xE7in ha\xE7 \u015Feklinde bir kolye."
+2024-05-03:
+  Echriser:
+  - qol: conveyor switches now have direction-specific input signals
+  JohnFulpWillard:
+  - bugfix: Monkey changelings that are disguised as someone can now take off their
+      flesh clothes.
+  - bugfix: You can now re-construct pod doors that had deconstruction started.
+  - qol: You can now make pod door assemblies using plasteel in-hand.
+  - bugfix: Monkeys can no longer be knocked over by walking into a windoor on combat
+      mode while they're behind it.
+  - admin: Debug uplinks now shows all categories and won't lock upon buying items
+      like his grace and the syndicate balloon.
+  - bugfix: AIs can now track Silicon as long as their built-in camera is online.

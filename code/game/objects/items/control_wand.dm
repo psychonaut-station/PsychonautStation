@@ -156,6 +156,10 @@
 /obj/item/door_remote/secretary/attack_self(mob/user)
 	return
 
+/obj/item/door_remote/secretary/update_icon_state()
+	. = ..()
+	icon_state = "gangtool-secretary"
+
 /obj/item/door_remote/secretary/afterattack(atom/target, mob/user)
 	var/mob/living/carbon/human/H = user
 	if(istype(H.mind?.assigned_role, /datum/job/nt_secretary))

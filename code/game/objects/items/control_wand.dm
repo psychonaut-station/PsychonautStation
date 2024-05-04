@@ -17,6 +17,7 @@
 	var/mode = WAND_OPEN
 	var/region_access = REGION_GENERAL
 	var/list/access_list
+	var/force_initial_icon = FALSE
 
 /obj/item/door_remote/Initialize(mapload)
 	. = ..()
@@ -91,16 +92,17 @@
 			airlock.update_appearance(UPDATE_ICON)
 
 /obj/item/door_remote/update_icon_state()
-	var/icon_state_mode
-	switch(mode)
-		if(WAND_OPEN)
-			icon_state_mode = "open"
-		if(WAND_BOLT)
-			icon_state_mode = "bolt"
-		if(WAND_EMERGENCY)
-			icon_state_mode = "emergency"
+	if(!force_initial_icon)
+		var/icon_state_mode
+		switch(mode)
+			if(WAND_OPEN)
+				icon_state_mode = "open"
+			if(WAND_BOLT)
+				icon_state_mode = "bolt"
+			if(WAND_EMERGENCY)
+				icon_state_mode = "emergency"
 
-	icon_state = "[base_icon_state]_[department]_[icon_state_mode]"
+		icon_state = "[base_icon_state]_[department]_[icon_state_mode]"
 	return ..()
 
 /obj/item/door_remote/omni
@@ -152,6 +154,7 @@
 	icon = 'icons/psychonaut/obj/device.dmi'
 	icon_state = "gangtool-secretary"
 	region_access = REGION_SECRETARY
+	force_initial_icon = TRUE
 
 /obj/item/door_remote/secretary/attack_self(mob/user)
 	return

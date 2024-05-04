@@ -157,7 +157,7 @@
 	return
 
 /obj/item/door_remote/secretary/update_icon_state()
-	..()
+	. = ..()
 	icon_state = "gangtool-secretary"
 
 /obj/item/door_remote/secretary/afterattack(atom/target, mob/user)

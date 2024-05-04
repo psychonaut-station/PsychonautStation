@@ -23,7 +23,7 @@
 		return
 
 	var/mob/living/carbon/human/H = user
-	if((!H.mind.curator || HAS_TRAIT(user, TRAIT_ILLITERATE)) && !(obj_flags & EMAGGED))
+	if((!istype(H.mind?.assigned_role, /datum/job/curator) || HAS_TRAIT(user, TRAIT_ILLITERATE)) && !(obj_flags & EMAGGED))
 		to_chat(user, span_warning("You don't know how to use this!"))
 		return
 	else if(!COOLDOWN_FINISHED(src, announcement_cooldown))

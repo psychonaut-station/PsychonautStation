@@ -423,9 +423,8 @@
 	max_mobs = 5		//Dont' want them overrunning the station
 	max_integrity = 250
 
-/obj/structure/spawner/nether/bluespace_tap/deconstruct(disassembled)
+/obj/structure/spawner/nether/bluespace_tap/atom_deconstruct(disassembled = TRUE)
 	new /obj/item/stack/ore/bluespace_crystal(loc)	//have a reward
-	return ..()
 
 /obj/item/paper/bluespace_tap
 	name = "paper- 'The Experimental NT Bluespace Harvester - Mining other universes for science and profit!'"

@@ -1185,7 +1185,7 @@
 /turf/open/floor/grass/lavaland,
 /area/virtual_domain)
 "HE" = (
-/mob/living/simple_animal/hostile/alien/queen/large,
+/mob/living/basic/alien/queen/large,
 /turf/open/floor/iron,
 /area/virtual_domain)
 "HS" = (

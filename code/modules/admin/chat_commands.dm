@@ -122,3 +122,16 @@
 	var/status = "Admins: [allmins.len] (Active: [english_list(adm["present"])] AFK: [english_list(adm["afk"])] Stealth: [english_list(adm["stealth"])] Skipped: [english_list(adm["noflags"])]). "
 	status += "Players: [GLOB.clients.len] (Active: [get_active_player_count(0,1,0)]). Round has [SSticker.HasRoundStarted() ? "" : "not "]started."
 	return new /datum/tgs_message_content(status)
+
+/datum/tgs_chat_command/validated/tidi
+	name = "tidi"
+	help_text = "Gets the time dilation"
+	required_rights = R_DEBUG
+
+/datum/tgs_chat_command/validated/tidi/Validated_Run(datum/tgs_chat_user/sender, params)
+	var/message_body = "Time Dilation: [round(SStime_track.time_dilation_current,1)]% \
+						AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, \
+						[round(SStime_track.time_dilation_avg,1)]%, \
+						[round(SStime_track.time_dilation_avg_slow,1)]%)"
+
+	return new /datum/tgs_message_content(message_body)

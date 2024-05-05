@@ -370,6 +370,7 @@
 /obj/effect/turf_decal/siding/blue{
 	dir = 4
 	},
+/obj/item/toy/dodgeball,
 /turf/open/floor/holofloor/chess_white,
 /area/template_noop)
 "Ia" = (
@@ -476,13 +477,13 @@
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "Qy" = (
-/obj/item/toy/dodgeball,
 /obj/effect/turf_decal/siding{
 	dir = 6
 	},
 /obj/effect/turf_decal/siding/corner{
 	dir = 1
 	},
+/obj/machinery/electrical_jukebox/public,
 /turf/open/floor/holofloor/chess_black,
 /area/template_noop)
 "QS" = (
@@ -701,7 +702,7 @@ Xn
 Qk
 ic
 jK
-zm
+iR
 iR
 bU
 pc

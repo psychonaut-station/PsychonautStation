@@ -274,6 +274,12 @@
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	return ..() && user.can_speak(allow_mimes = TRUE)
 
+/datum/emote/living/laugh/get_sound(mob/living/carbon/user)
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/human_user = user
+	return human_user.dna.species.get_laugh_sound(user)
+
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"

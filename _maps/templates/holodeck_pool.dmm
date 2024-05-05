@@ -1,0 +1,757 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ao" = (
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding,
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"bA" = (
+/obj/structure/chair/stool/directional/south,
+/obj/item/clothing/glasses/sunglasses{
+	pixel_y = -2;
+	pixel_x = 2
+	},
+/obj/item/bikehorn/airhorn{
+	pixel_y = -15;
+	pixel_x = -13
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"bU" = (
+/obj/effect/turf_decal/siding/white,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"dG" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 1
+	},
+/obj/structure/closet/crate/bin,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"eP" = (
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding,
+/obj/effect/turf_decal/arrows/white{
+	dir = 4
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"gS" = (
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/obj/effect/turf_decal/siding/end{
+	dir = 1
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"ic" = (
+/obj/effect/turf_decal/siding/wideplating,
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/structure/fluff/fake_scrubber,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"io" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/obj/item/toy/seashell{
+	pixel_x = -7;
+	pixel_y = 5
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"iE" = (
+/obj/machinery/vending/hotdog,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"iR" = (
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"jw" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 4
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"jK" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 1
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"mi" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/structure/rack,
+/obj/item/clothing/shoes/sandal{
+	pixel_y = -4
+	},
+/obj/item/clothing/shoes/sandal{
+	pixel_x = 4
+	},
+/obj/item/clothing/shoes/sandal{
+	pixel_y = 4;
+	pixel_x = 8
+	},
+/obj/item/clothing/shoes/sandal{
+	pixel_y = -7;
+	pixel_x = -3
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"oH" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating/corner{
+	dir = 1
+	},
+/obj/structure/marker_beacon/bronze,
+/obj/effect/turf_decal/siding/blue{
+	dir = 6
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"pc" = (
+/obj/structure/chair/comfy/carp{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/obj/structure/fluff/fake_vent,
+/obj/item/storage/toolbox/fishing{
+	pixel_x = 2;
+	pixel_y = -13
+	},
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"tm" = (
+/obj/machinery/shower/directional/south,
+/obj/structure/fans/tiny,
+/obj/effect/turf_decal/trimline/blue/end,
+/obj/structure/mirror/directional/north,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"uu" = (
+/obj/machinery/vending/boozeomat/all_access,
+/obj/effect/turf_decal/siding/wood/end{
+	dir = 4
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"uG" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/closet,
+/obj/item/clothing/under/shorts/jeanshorts,
+/obj/item/clothing/under/shorts/jeanshorts,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/item/clothing/suit/costume/hawaiian{
+	pixel_y = 7;
+	pixel_x = -3
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"uV" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 9
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"uW" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/item/toy/plush/rouny,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"vt" = (
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"vE" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 5
+	},
+/obj/item/toy/beach_ball,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"wj" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/obj/item/toy/seashell,
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"yJ" = (
+/obj/machinery/vending/clothing,
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"yP" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/item/clothing/head/soft/mime{
+	pixel_y = 3;
+	pixel_x = 5
+	},
+/obj/item/clothing/suit/costume/hawaiian{
+	pixel_y = 7;
+	pixel_x = -3
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"zm" = (
+/obj/item/toy/plush/whiny_plushie,
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"zM" = (
+/obj/effect/turf_decal/siding/wideplating/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue{
+	dir = 8
+	},
+/obj/item/toy/beach_ball/baseball,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light{
+	pixel_x = -14;
+	pixel_y = 15
+	},
+/obj/structure/marker_beacon/cerulean,
+/obj/effect/turf_decal/siding/blue{
+	dir = 5
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"zV" = (
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"AM" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/obj/structure/fluff/beach_umbrella/syndi,
+/obj/item/reagent_containers/cup/soda_cans/starkist{
+	pixel_x = -12;
+	pixel_y = -6
+	},
+/obj/item/fishing_rod{
+	pixel_x = 8;
+	pixel_y = -6
+	},
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"Bs" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"BH" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 8
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"DI" = (
+/obj/item/toy/beach_ball,
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 8
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"DR" = (
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"Eq" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"FL" = (
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"Ia" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 10
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"IF" = (
+/obj/structure/fluff/beach_umbrella/cap,
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/obj/item/reagent_containers/cup/soda_cans/space_mountain_wind{
+	pixel_x = 15
+	},
+/obj/item/reagent_containers/cup/soda_cans/wellcheers{
+	pixel_y = -10;
+	pixel_x = -6
+	},
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"Jj" = (
+/obj/item/toy/plush/shark,
+/obj/effect/turf_decal/siding{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding,
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"JY" = (
+/obj/item/toner,
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"LZ" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"OU" = (
+/obj/structure/closet,
+/obj/item/clothing/under/shorts/jeanshorts,
+/obj/item/clothing/under/shorts/jeanshorts,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/head/costume/garland/rainbowbunch,
+/obj/item/clothing/glasses/sunglasses,
+/obj/item/clothing/glasses/sunglasses,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/siding/wood{
+	dir = 5
+	},
+/obj/effect/turf_decal/bot_white,
+/obj/item/clothing/suit/costume/hawaiian{
+	pixel_y = 7;
+	pixel_x = -3
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"OW" = (
+/obj/effect/turf_decal/siding{
+	dir = 10
+	},
+/obj/effect/turf_decal/siding/corner{
+	dir = 4
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"Pt" = (
+/obj/item/instrument/musicalmoth,
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"Qk" = (
+/obj/structure/chair/comfy/black,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"Qy" = (
+/obj/item/toy/dodgeball,
+/obj/effect/turf_decal/siding{
+	dir = 6
+	},
+/obj/effect/turf_decal/siding/corner{
+	dir = 1
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"QS" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 6
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"Rj" = (
+/obj/structure/chair/comfy/carp{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 1
+	},
+/obj/effect/turf_decal/siding/blue,
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"Tm" = (
+/obj/item/binoculars,
+/obj/item/megaphone,
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"TR" = (
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"Uq" = (
+/obj/effect/turf_decal/siding/wideplating/corner,
+/obj/effect/turf_decal/tile/blue,
+/obj/structure/marker_beacon/burgundy,
+/obj/effect/turf_decal/siding/blue{
+	dir = 9
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"UH" = (
+/obj/structure/fluff/beach_umbrella,
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -8;
+	pixel_y = -6
+	},
+/obj/item/reagent_containers/cup/soda_cans/space_mountain_wind{
+	pixel_x = 15
+	},
+/obj/item/fishing_rod{
+	pixel_x = 11;
+	pixel_y = -8
+	},
+/obj/effect/turf_decal/siding/wood,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"Vb" = (
+/obj/effect/turf_decal/siding/wideplating{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/blue/half/contrasted{
+	dir = 8
+	},
+/obj/effect/turf_decal/siding/blue{
+	dir = 4
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"WU" = (
+/obj/effect/turf_decal/tile/blue{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding/wideplating/corner{
+	dir = 4
+	},
+/obj/item/reagent_containers/cup/glass/bottle/hooch,
+/obj/structure/marker_beacon/violet,
+/obj/effect/turf_decal/siding/blue{
+	dir = 10
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"Xe" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 10
+	},
+/obj/item/toy/plush/beeplushie,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"Xh" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 6
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"Xn" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"XH" = (
+/obj/machinery/vending/cigarette/beach,
+/obj/effect/turf_decal/siding/wood{
+	dir = 9
+	},
+/obj/effect/turf_decal/bot_white,
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"XS" = (
+/obj/structure/chair/comfy/teal,
+/obj/effect/turf_decal/siding/wood,
+/obj/item/instrument/guitar{
+	pixel_y = 4;
+	pixel_x = -1
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
+"XT" = (
+/obj/effect/turf_decal/siding{
+	dir = 4
+	},
+/obj/effect/turf_decal/siding{
+	dir = 8
+	},
+/obj/structure/table,
+/obj/structure/bedsheetbin,
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+"Zg" = (
+/obj/effect/turf_decal/siding/white{
+	dir = 4
+	},
+/turf/open/floor/holofloor/beach/water,
+/area/template_noop)
+"Zr" = (
+/obj/effect/turf_decal/siding/wideplating,
+/obj/effect/turf_decal/tile/blue/half/contrasted,
+/obj/effect/turf_decal/siding/blue{
+	dir = 1
+	},
+/turf/open/floor/holofloor/chess_white,
+/area/template_noop)
+"ZJ" = (
+/obj/effect/turf_decal/arrows/white{
+	color = "#00AAFF";
+	pixel_y = 15
+	},
+/obj/effect/turf_decal/siding/end{
+	dir = 1
+	},
+/obj/item/toy/toy_dagger,
+/turf/open/floor/holofloor/chess_black,
+/area/template_noop)
+
+(1,1,1) = {"
+dG
+jw
+Xe
+gS
+DR
+DR
+TR
+DR
+JY
+OW
+"}
+(2,1,1) = {"
+tm
+Xn
+uW
+Uq
+Bs
+wj
+Bs
+DI
+WU
+ao
+"}
+(3,1,1) = {"
+tm
+Xn
+XS
+Zr
+uV
+BH
+BH
+Ia
+Rj
+eP
+"}
+(4,1,1) = {"
+uG
+zV
+UH
+Zr
+jK
+iR
+zm
+bU
+AM
+Jj
+"}
+(5,1,1) = {"
+OU
+Xn
+Qk
+ic
+jK
+zm
+iR
+bU
+pc
+ao
+"}
+(6,1,1) = {"
+XH
+Xn
+Tm
+Zr
+jK
+iR
+iR
+bU
+IF
+ao
+"}
+(7,1,1) = {"
+yJ
+Xn
+bA
+Zr
+vE
+Zg
+Zg
+QS
+Rj
+eP
+"}
+(8,1,1) = {"
+iE
+Xn
+vt
+zM
+io
+Vb
+Vb
+FL
+oH
+ao
+"}
+(9,1,1) = {"
+uu
+yP
+Xh
+ZJ
+XT
+mi
+Eq
+LZ
+Pt
+Qy
+"}

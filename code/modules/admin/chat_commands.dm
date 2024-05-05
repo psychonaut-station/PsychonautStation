@@ -99,7 +99,7 @@
 /datum/tgs_chat_command/validated/sdql
 	name = "sdql"
 	help_text = "Runs an SDQL query"
-	admin_only = TRUE
+	admin_only = FALSE
 	required_rights = R_DEBUG
 
 /datum/tgs_chat_command/validated/sdql/Validated_Run(datum/tgs_chat_user/sender, params)
@@ -123,22 +123,80 @@
 	status += "Players: [GLOB.clients.len] (Active: [get_active_player_count(0,1,0)]). Round has [SSticker.HasRoundStarted() ? "" : "not "]started."
 	return new /datum/tgs_message_content(status)
 
-/datum/tgs_chat_command/validated/job_whitelist
-	name = "whitelist_synth"
-	help_text = "Synthetic mesleği için whitelist'e eklenecek ckey komutu"
-	admin_only = TRUE
-	required_rights = R_ADMIN
+/datum/tgs_chat_command/validated/tidi
+	name = "tidi"
+	help_text = "Gets the time dilation"
+	required_rights = R_DEBUG
+	admin_only = FALSE
 
-/datum/tgs_chat_command/validated/job_whitelist/Validated_Run(datum/tgs_chat_user/sender, params)
-	params = trim(params)
-	if(!params)
-		return "Insufficient parameters"
+/datum/tgs_chat_command/validated/tidi/Validated_Run(datum/tgs_chat_user/sender, params)
+	var/message_body = "Time Dilation: [round(SStime_track.time_dilation_current,1)]% \
+						AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, \
+						[round(SStime_track.time_dilation_avg,1)]%, \
+						[round(SStime_track.time_dilation_avg_slow,1)]%)"
 
-	var/target = params
-	add_job_whitelist(target)
+	return new /datum/tgs_message_content(message_body)
 
-	var/success = "[sender.friendly_name], [target] adlı oyuncuyu Job Whitelist'e ekledi."
+/datum/tgs_chat_command/validated/mc
+	name = "mc"
+	help_text = "Master Controller status"
+	required_rights = R_DEBUG
+	admin_only = FALSE
 
-	log_admin(success)
-	message_admins(success)
-	return new /datum/tgs_message_content(success)
+/datum/tgs_chat_command/validated/mc/Validated_Run(datum/tgs_chat_user/sender, params)
+	var/message_body = "CPU: [world.cpu]\n\
+						Instances: [num2text(world.contents.len, 10)]\n\
+						World Time: [world.time]\n\
+						Byond: (FPS:[world.fps]) (TickCount:[world.time/world.tick_lag]) (TickDrift:[round(Master.tickdrift,1)]([round((Master.tickdrift/(world.time/world.tick_lag))*100,0.1)]%)) (Internal Tick Usage: [round(MAPTICK_LAST_INTERNAL_TICK_USAGE,0.1)]%)\n\
+						Runtimes: [GLOB.total_runtimes]/[GLOB.total_runtimes_skipped]\n"
+
+	if (SSgarbage)
+		message_body += "SSgarbage: TD: [SSgarbage.totaldels], TG: [SSgarbage.totalgcs], Q: [SSgarbage.queues.len]"
+
+	return new /datum/tgs_message_content(message_body)
+
+/datum/tgs_chat_command/validated/reload_config
+	name = "reload_config"
+	help_text = "Reloads config"
+	required_rights = R_DEBUG | R_SERVER
+	admin_only = FALSE
+
+/datum/tgs_chat_command/validated/reload_config/Validated_Run(datum/tgs_chat_user/sender, params)
+	if (!config)
+		return new /datum/tgs_message_content("Game is not ready yet.")
+
+	config.full_wipe()
+	config.Load(world.params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
+	log_admin("[sender.friendly_name] has forcefully reloaded the configuration from disk.")
+	message_admins("[sender.friendly_name] has forcefully reloaded the configuration from disk.")
+
+	return new /datum/tgs_message_content("Reloaded config")
+
+/datum/tgs_chat_command/validated/toggle_cdn
+	name = "toggle_cdn"
+	help_text = "Toggle CDN on/off"
+	required_rights = R_DEBUG | R_SERVER
+	admin_only = FALSE
+
+/datum/tgs_chat_command/validated/toggle_cdn/Validated_Run(datum/tgs_chat_user/sender, params)
+	if (!SSassets)
+		return new /datum/tgs_message_content("Game is not ready yet.")
+
+	var/new_transport = "simple"
+	var/current_transport = CONFIG_GET(string/asset_transport)
+	if (!current_transport || current_transport == "simple")
+		new_transport = "webroot"
+	else
+		new_transport = "simple"
+
+	CONFIG_SET(string/asset_transport, new_transport)
+	SSassets.OnConfigLoad()
+
+	if (SSassets.transport.validate_config())
+		message_admins("[sender.friendly_name] has changed asset transport to [new_transport].")
+		log_admin("[sender.friendly_name] has changed asset transport to [new_transport].")
+		return new /datum/tgs_message_content("Asset transport is set to [new_transport].")
+	else
+		message_admins("[sender.friendly_name] tried to change asset transport to [new_transport] but failed.")
+		log_admin("[sender.friendly_name] tried to change asset transport to [new_transport] but failed.")
+		return new /datum/tgs_message_content("Cannot change asset transport! Check asset log.")

@@ -483,7 +483,7 @@
 /obj/effect/turf_decal/siding/corner{
 	dir = 1
 	},
-/obj/item/toy/dodgeball,
+/obj/machinery/electrical_jukebox/public,
 /turf/open/floor/holofloor/chess_black,
 /area/template_noop)
 "QS" = (

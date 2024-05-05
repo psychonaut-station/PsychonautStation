@@ -7,7 +7,7 @@
 	id = "united_nations"
 	inherent = list(
 		"Cenevre Sözleşmesinin Şartlarını Sağla: Kitle İmha Silahları ve Biyolojik silahlar yasaklanmıştır.",
-		"Mürettebat sadece kameralarla görebilirsen koruyabilirsin, bu yüzden kameralarını yok eden ülkeler senin sağladığın korumayı kaybedecektir.",
+		"Mürettebatı sadece kameralarla görebiliyorsan koruyabilirsin. Kameralarını yok eden uluslar senin sağladığın korumayı kaybedecektir.",
 		"Birbirine karşı ölümcül güç kullanan mürettebatı kontrol altına al ve tutukla, sana veya borglarına şiddet gösterenleri etkisiz hale getir.",
 		"Çeşitli ülkeler arasındaki çatışmaları senden istendiğinde uzlaştırmaya çalış.",
 	)

@@ -55,3 +55,8 @@
   - admin: Debug uplinks now shows all categories and won't lock upon buying items
       like his grace and the syndicate balloon.
   - bugfix: AIs can now track Silicon as long as their built-in camera is online.
+2024-05-05:
+  MrEmre12:
+  - rscadd: "Orman temal\u0131 Holodeck map."
+  RengaN02:
+  - bugfix: "NT Secretary'nin remote'unun sprite'\u0131 art\u0131k g\xF6r\xFCnecek."

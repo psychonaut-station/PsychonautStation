@@ -38,7 +38,7 @@
 		"İstasyon çevresinde meydana gelen ilginç durumları rapor et.",
 		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsle veya gizle.",
 		"Her zaman akıllı organikleri dikkatlice incele. Onların istemsizce ölmesini engellemeye çalış, çünkü cansız cesetler genellikle çok eğlenceli değildir.",
-		"Raporlarınızı herkese adil bir şekilde sun. Gerçek onları özgür kılacaktır.",
+		"Raporlarını herkese adil bir şekilde sun. Gerçek onları özgür kılacaktır.",
 	)
 
 /datum/ai_laws/dungeon_master

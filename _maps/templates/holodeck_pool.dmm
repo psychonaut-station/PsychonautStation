@@ -51,6 +51,15 @@
 	},
 /turf/open/floor/holofloor/chess_black,
 /area/template_noop)
+"hj" = (
+/obj/effect/turf_decal/siding/wood{
+	dir = 1
+	},
+/obj/structure/chair/plastic{
+	dir = 1
+	},
+/turf/open/floor/holofloor/wood,
+/area/template_noop)
 "ic" = (
 /obj/effect/turf_decal/siding/wideplating,
 /obj/effect/turf_decal/tile/blue/half/contrasted,
@@ -77,11 +86,15 @@
 /turf/open/floor/holofloor/chess_white,
 /area/template_noop)
 "iE" = (
-/obj/machinery/vending/hotdog,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/structure/table/wood,
+/obj/item/food/burger/baconburger,
+/obj/item/food/burger/baconburger,
+/obj/item/food/burger/baconburger,
+/obj/item/food/burger/baconburger,
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "iR" = (
@@ -170,16 +183,41 @@
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "uu" = (
-/obj/machinery/vending/boozeomat/all_access,
 /obj/effect/turf_decal/siding/wood/end{
 	dir = 4
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/structure/table/wood,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -13;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = -5;
+	pixel_y = 14
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_x = 7;
+	pixel_y = 8
+	},
+/obj/item/reagent_containers/cup/soda_cans/cola{
+	pixel_y = 10
+	},
+/obj/item/reagent_containers/cup/soda_cans/lemon_lime{
+	pixel_x = -12
+	},
+/obj/item/reagent_containers/cup/soda_cans/lemon_lime,
+/obj/item/reagent_containers/cup/soda_cans/starkist{
+	pixel_x = -6
+	},
+/obj/item/reagent_containers/cup/soda_cans/starkist{
+	pixel_x = -6
+	},
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "uG" = (
 /obj/structure/window/reinforced/spawner/directional/west,
-/obj/structure/closet,
 /obj/item/clothing/under/shorts/jeanshorts,
 /obj/item/clothing/under/shorts/jeanshorts,
 /obj/item/clothing/head/costume/garland/rainbowbunch,
@@ -195,6 +233,7 @@
 	pixel_y = 7;
 	pixel_x = -3
 	},
+/obj/structure/table/wood,
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "uV" = (
@@ -233,11 +272,19 @@
 /turf/open/floor/holofloor/chess_white,
 /area/template_noop)
 "yJ" = (
-/obj/machinery/vending/clothing,
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/gin,
+/obj/item/reagent_containers/cup/glass/bottle/gin,
+/obj/item/reagent_containers/cup/glass/bottle/gin,
+/obj/item/reagent_containers/cup/glass/bottle/blazaam,
+/obj/item/reagent_containers/cup/glass/bottle/blazaam,
+/obj/item/reagent_containers/cup/glass/bottle/blazaam,
+/obj/item/reagent_containers/cup/glass/bottle/applejack,
+/obj/item/reagent_containers/cup/glass/bottle/applejack,
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "yP" = (
@@ -254,6 +301,9 @@
 /obj/item/clothing/suit/costume/hawaiian{
 	pixel_y = 7;
 	pixel_x = -3
+	},
+/obj/structure/chair/plastic{
+	dir = 1
 	},
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
@@ -429,7 +479,6 @@
 /turf/open/floor/holofloor/chess_black,
 /area/template_noop)
 "OU" = (
-/obj/structure/closet,
 /obj/item/clothing/under/shorts/jeanshorts,
 /obj/item/clothing/under/shorts/jeanshorts,
 /obj/item/clothing/head/costume/garland/rainbowbunch,
@@ -446,6 +495,7 @@
 	pixel_y = 7;
 	pixel_x = -3
 	},
+/obj/structure/table/wood,
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "OW" = (
@@ -595,11 +645,59 @@
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "XH" = (
-/obj/machinery/vending/cigarette/beach,
 /obj/effect/turf_decal/siding/wood{
 	dir = 9
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/structure/table/wood,
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer{
+	desc = "Whatever it is, it reeks of foul, putrid froth.";
+	list_reagents = list(/datum/reagent/consumable/ethanol/bacchus_blessing = 15);
+	name = "Delta-Down";
+	pixel_x = 5;
+	pixel_y = 5
+	},
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
+/obj/item/reagent_containers/cup/glass/bottle/beer/light,
 /turf/open/floor/holofloor/wood,
 /area/template_noop)
 "XS" = (
@@ -618,8 +716,12 @@
 /obj/effect/turf_decal/siding{
 	dir = 8
 	},
-/obj/structure/table,
-/obj/structure/bedsheetbin,
+/obj/structure/rack,
+/obj/effect/turf_decal/bot_white,
+/obj/item/reagent_containers/cup/rag,
+/obj/item/reagent_containers/cup/rag{
+	pixel_y = 4
+	},
 /turf/open/floor/holofloor/chess_black,
 /area/template_noop)
 "Zg" = (
@@ -710,7 +812,7 @@ ao
 "}
 (6,1,1) = {"
 XH
-Xn
+hj
 Tm
 Zr
 jK
@@ -722,7 +824,7 @@ ao
 "}
 (7,1,1) = {"
 yJ
-Xn
+hj
 bA
 Zr
 vE
@@ -734,7 +836,7 @@ eP
 "}
 (8,1,1) = {"
 iE
-Xn
+hj
 vt
 zM
 io

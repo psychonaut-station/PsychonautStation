@@ -277,11 +277,7 @@
 /datum/emote/living/laugh/get_sound(mob/living/carbon/user)
 	if(!ishuman(user))
 		return
-
 	var/mob/living/carbon/human/human_user = user
-	if(HAS_TRAIT(human_user, TRAIT_CLOWNING))
-		return pick('sound/voice/human/hihiha.ogg', 'sound/voice/human/hihiha_2.ogg')
-
 	return human_user.dna.species.get_laugh_sound(user)
 
 /datum/emote/living/look

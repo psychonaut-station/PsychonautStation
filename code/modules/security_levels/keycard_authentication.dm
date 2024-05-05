@@ -125,7 +125,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 	event = event_type
 	waiting = TRUE
 	GLOB.keycard_events.fireEvent("triggerEvent", src)
-	addtimer(CALLBACK(src, PROC_REF(eventSent)), 20)
+	addtimer(CALLBACK(src, PROC_REF(eventSent)), 2 SECONDS)
 
 /obj/machinery/keycard_auth/proc/eventSent()
 	triggerer = null
@@ -135,7 +135,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/keycard_auth, 26)
 /obj/machinery/keycard_auth/proc/triggerEvent(source)
 	event_source = source
 	update_appearance()
-	addtimer(CALLBACK(src, PROC_REF(eventTriggered)), 20)
+	addtimer(CALLBACK(src, PROC_REF(eventTriggered)), 2 SECONDS)
 
 /obj/machinery/keycard_auth/proc/eventTriggered()
 	event_source = null
@@ -167,7 +167,7 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 					airlock.emergency = TRUE
 					airlock.update_icon(ALL, 0)
 
-	minor_announce("Access restrictions on maintenance and external airlocks have been lifted.", "Attention! Station-wide emergency declared!",1)
+	minor_announce("Maintenance ve dış airlocklardaki erişim kısıtlamaları kaldırıldı.", "Dikkat! İstasyon genelinde acil durum ilan edildi!",1)
 	GLOB.emergency_access = TRUE
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "enabled"))
 
@@ -179,13 +179,13 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 					airlock.emergency = FALSE
 					airlock.update_icon(ALL, 0)
 
-	minor_announce("Access restrictions in maintenance areas have been restored.", "Attention! Station-wide emergency rescinded:")
+	minor_announce("Maintenance alanlarındaki erişim kısıtlamaları eski haline getirilmiştir.", "Dikkat! İstasyon genelindeki acil durum sona ermiştir:")
 	GLOB.emergency_access = FALSE
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("emergency maintenance access", "disabled"))
 
 /proc/toggle_bluespace_artillery()
 	GLOB.bsa_unlock = !GLOB.bsa_unlock
-	minor_announce("Bluespace Artillery firing protocols have been [GLOB.bsa_unlock? "unlocked" : "locked"]", "Weapons Systems Update:")
+	minor_announce("Bluespace Artillery ateşleme protokolleri [GLOB.bsa_unlock? "açıldı" : "kilitlendi"].", "Silah Sistemlerinde Güncelleme:")
 	SSblackbox.record_feedback("nested tally", "keycard_auths", 1, list("bluespace artillery", GLOB.bsa_unlock? "unlocked" : "locked"))
 
 #undef ACCESS_GRANTING_COOLDOWN

@@ -228,3 +228,8 @@
 
 /obj/item/trash/shok_roks/lanternfruit
 	icon_state = "shok_roks_lanternfruit"
+
+/obj/item/trash/foiltray
+	name = "empty foil tray"
+	icon = 'icons/psychonaut/obj/service/janitor.dmi'
+	icon_state = "trash_foiltray"

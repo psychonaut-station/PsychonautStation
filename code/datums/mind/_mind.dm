@@ -53,10 +53,6 @@
 
 	/// Martial art on this mind
 	var/datum/martial_art/martial_art
-
-	var/secretary = FALSE
-	var/synthetic = FALSE
-	var/curator = FALSE
 	
 	/// List of antag datums on this mind
 	var/list/antag_datums

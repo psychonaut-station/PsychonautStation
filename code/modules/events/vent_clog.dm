@@ -38,7 +38,7 @@
 
 /datum/round_event/vent_clog/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Minor biological obstruction detected in the ventilation network. Blockage is believed to be in the [event_area].", "Custodial Notification")
+	priority_announce("Havalandırma ağında küçük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] bölgesinde olduğu tahmin ediliyor.", "Gözaltı Bildirimi")
 
 /datum/round_event/vent_clog/setup()
 	vent = get_vent()
@@ -129,7 +129,7 @@
 	clog_vent()
 
 	announce_to_ghosts(vent)
-	priority_announce("Lifesign readings have moved to a new location in the ventilation network. New Location: [prob(50) ? "Unknown.":"[get_area_name(vent)]."]", "Lifesign Notification")
+	priority_announce("Yaşam sinyali değerleri havalandırma ağında yeni bir konuma geçmiştir. Yeni konumu: [prob(50) ? "Bilinmiyor.":"[get_area_name(vent)]."]", "Yaşam Sinyali Bildirimi")
 
 /**
  * Handles the production of our mob and adds it to our living_mobs list
@@ -177,9 +177,9 @@
 		to_chat(user, span_notice("You cannot pump [vent] if it's welded shut!"))
 		return
 
-	to_chat(user, span_notice("You begin pumping [vent] with your plunger."))
+	user.balloon_alert_to_viewers("plunging vent...", "plunging clogged vent...")
 	if(do_after(user, 6 SECONDS, target = vent))
-		to_chat(user, span_notice("You finish pumping [vent]."))
+		user.balloon_alert_to_viewers("finished plunging")
 		clear_signals()
 		kill()
 
@@ -230,7 +230,7 @@
 
 /datum/round_event/vent_clog/major/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Major biological obstruction detected in the ventilation network. Blockage is believed to be in the [event_area] area.", "Infestation Alert")
+	priority_announce("Havalandırma ağında büyük biyolojik tıkanıklık tespit edildi. Tıkanıklığın [event_area] bölgesinde olduğuna inanılıyor.", "İstila Uyarısı")
 
 /datum/round_event_control/vent_clog/critical
 	name = "Ventilation Clog: Critical"
@@ -254,7 +254,7 @@
 
 /datum/round_event/vent_clog/critical/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Potentially hazardous lifesigns detected in the [event_area] ventilation network.", "Security Alert")
+	priority_announce("[event_area] havalandırma ağında potansiyel olarak tehlikeli bir yaşam sinyali tespit edildi..", "Güvenlik Uyarısı")
 
 /datum/round_event/vent_clog/critical/get_mob()
 	var/static/list/mob_list = list(
@@ -287,7 +287,7 @@
 
 /datum/round_event/vent_clog/strange/announce(fake)
 	var/area/event_area = fake ? pick(GLOB.teleportlocs) : get_area_name(vent)
-	priority_announce("Unusual lifesign readings detected in the [event_area] ventilation network.", "Lifesign Alert", ANNOUNCER_ALIENS)
+	priority_announce("[event_area] bölgesindeki havalandırma ağında olağandışı yaşam sinyali tespit edildi.", "Yaşam Sinyali Uyarısı", ANNOUNCER_ALIENS)
 
 /datum/round_event/vent_clog/strange/get_mob()
 	var/static/list/mob_list = list(

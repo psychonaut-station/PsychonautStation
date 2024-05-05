@@ -9,7 +9,7 @@
 	description = "Hides surprise filled easter eggs in maintenance."
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("Bugün Ulusal 'Paskalya' Bayramı.","Nazik olun, Çikolatalı Yumurta verin!"))
 
 
 /datum/round_event_control/rabbitrelease
@@ -22,17 +22,26 @@
 	description = "Summons a wave of cute rabbits."
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
+	priority_announce("[station_name()] gelen tanımlanamayan tüylü nesneler tespit edildi. Sevimliliğe karşı dikkatli olun.", "Pofuduk Uyarısı", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/rabbitrelease/start()
-	for(var/obj/effect/landmark/R in GLOB.landmarks_list)
-		if(R.name != "blobspawn")
-			if(prob(35))
-				if(isspaceturf(R.loc))
-					new /mob/living/basic/rabbit/easter/space(R.loc)
-				else
-					new /mob/living/basic/rabbit/easter(R.loc)
+
+	for(var/obj/effect/landmark/event_spawn/spawn_point as anything in GLOB.generic_event_spawns) //Common public bunnies
+		if(prob(35))
+			new /mob/living/basic/rabbit/easter(spawn_point.loc)
+		CHECK_TICK
+
+	for(var/obj/effect/landmark/event_spawn/spawn_point as anything in GLOB.generic_maintenance_landmarks) // The rare maint bunnies
+		if(prob(15))
+			new /mob/living/basic/rabbit/easter(spawn_point.loc)
+		CHECK_TICK
+
+	for(var/obj/effect/landmark/carpspawn/spawn_point in GLOB.landmarks_list) // The rare space bunnies
+		if(prob(15))
+			new /mob/living/basic/rabbit/easter/space(spawn_point.loc)
+		CHECK_TICK
+
 
 //Easter Baskets
 /obj/item/storage/basket/easter

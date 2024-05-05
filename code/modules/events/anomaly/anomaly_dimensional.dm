@@ -25,7 +25,7 @@
 /datum/round_event/anomaly/anomaly_dimensional/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("Dimensional instability detected on [ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name].", "Anomaly Alert")
+	priority_announce("[ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name] bölgesinde boyutsal dengesizlik tespit etti.", "Anomali Uyarısı")
 
 /datum/event_admin_setup/listed_options/anomaly_dimensional
 	input_text = "Select a dimensional anomaly theme?"

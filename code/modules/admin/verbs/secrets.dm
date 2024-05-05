@@ -1,12 +1,9 @@
 GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 
-/client/proc/secrets() //Creates a verb for admins to open up the ui
-	set name = "Secrets"
-	set desc = "Abuse harder than you ever have before with this handy dandy semi-misc stuff menu"
-	set category = "Admin.Game"
+ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before with this handy dandy semi-misc stuff menu.", ADMIN_CATEGORY_GAME)
+	var/datum/secrets_menu/tgui = new(user)
+	tgui.ui_interact(user.mob)
 	BLACKBOX_LOG_ADMIN_VERB("Secrets Panel")
-	var/datum/secrets_menu/tgui = new(usr)//create the datum
-	tgui.ui_interact(usr)//datum has a tgui component, here we open the window
 
 /datum/secrets_menu
 	var/client/holder //client of whoever is using this datum
@@ -102,25 +99,25 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 					D.cure(0)
 
 		if("list_bombers")
-			holder.list_bombers()
+			holder.holder.list_bombers()
 
 		if("list_signalers")
-			holder.list_signalers()
+			holder.holder.list_signalers()
 
 		if("list_lawchanges")
-			holder.list_law_changes()
+			holder.holder.list_law_changes()
 
 		if("showailaws")
-			holder.check_ai_laws()
+			holder.holder.list_law_changes()
 
 		if("manifest")
-			holder.show_manifest()
+			holder.holder.show_manifest()
 
 		if("dna")
-			holder.list_dna()
+			holder.holder.list_dna()
 
 		if("fingerprints")
-			holder.list_fingerprints()
+			holder.holder.list_fingerprints()
 
 		if("ctfbutton")
 			toggle_id_ctf(holder, CTF_GHOST_CTF_GAME_ID)
@@ -153,7 +150,7 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 			set_station_name(new_name)
 			log_admin("[key_name(holder)] renamed the station to \"[new_name]\".")
 			message_admins(span_adminnotice("[key_name_admin(holder)] renamed the station to: [new_name]."))
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] istasyonun adını \"[new_name]\" olarak değiştirdi.")
 		if("reset_name")
 			var/confirmed = tgui_alert(usr,"Are you sure you want to reset the station name?", "Confirm", list("Yes", "No", "Cancel"))
 			if(confirmed != "Yes")
@@ -162,7 +159,7 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 			set_station_name(new_name)
 			log_admin("[key_name(holder)] reset the station name.")
 			message_admins(span_adminnotice("[key_name_admin(holder)] reset the station name."))
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] istasyonun adını \"[new_name]\" olarak değiştirdi.")
 		if("night_shift_set")
 			var/val = tgui_alert(holder, "What do you want to set night shift to? This will override the automatic system until set to automatic again.", "Night Shift", list("On", "Off", "Automatic"))
 			switch(val)
@@ -335,7 +332,7 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 				if(is_station_level(W.z) && !istype(get_area(W), /area/station/command) && !istype(get_area(W), /area/station/commons) && !istype(get_area(W), /area/station/service) && !istype(get_area(W), /area/station/command/heads_quarters) && !istype(get_area(W), /area/station/security/prison))
 					W.req_access = list()
 			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
-			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
+			priority_announce("CentCom hava kilidi kontrolünü geçersiz kılma etkinleştirildi. Lütfen bu zamanı iş arkadaşlarınızla tanışmaya ayırın.", null, SSstation.announcer.get_rand_report_sound())
 		if("ancap")
 			if(!is_funmin)
 				return
@@ -343,9 +340,9 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 			SSeconomy.full_ancap = !SSeconomy.full_ancap
 			message_admins("[key_name_admin(holder)] toggled Anarcho-capitalist mode")
 			if(SSeconomy.full_ancap)
-				priority_announce("The NAP is now in full effect.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP şu anda tam olarak yürürlüktedir.", null, SSstation.announcer.get_rand_report_sound())
 			else
-				priority_announce("The NAP has been revoked.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP iptal edilmiştir.", null, SSstation.announcer.get_rand_report_sound())
 		if("blackout")
 			if(!is_funmin)
 				return
@@ -377,7 +374,7 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 					"playersonly" = list("desc" = "Only spawn ghost-controlled mobs", "type" = "boolean", "value" = "No"),
 					"ghostpoll" = list("desc" = "Ghost poll question", "type" = "string", "value" = "Do you want to play as %TYPE% portal invader?"),
 					"delay" = list("desc" = "Time between portals, in deciseconds", "type" = "number", "value" = 50),
-					"color" = list("desc" = "Portal color", "type" = "color", "value" = "#00FF00"),
+					"color" = list("desc" = "Portal color", "type" = "color", "value" = COLOR_VIBRANT_LIME),
 					"playlightning" = list("desc" = "Play lightning sounds on announcement", "type" = "boolean", "value" = "Yes"),
 					"announce_players" = list("desc" = "Make an announcement", "type" = "boolean", "value" = "Yes"),
 					"announcement" = list("desc" = "Announcement", "type" = "string", "value" = "Massive bluespace anomaly detected en route to %STATION%. Brace for impact."),
@@ -727,4 +724,3 @@ GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 		var/datum/antagonist/malf_ai/antag_datum = new
 		antag_datum.give_objectives = keep_generic_objecives
 		assign_admin_objective_and_antag(player, antag_datum)
-

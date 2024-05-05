@@ -232,7 +232,7 @@ const QueueRow = (props: { track: TrackData }) => {
   return (
     <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
-      <Table.Cell collaping>{track.duration}</Table.Cell>
+      <Table.Cell collapsing>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         <Button
           icon="minus"
@@ -260,7 +260,7 @@ const RequestRow = (props: { track: TrackData }) => {
   return (
     <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
-      <Table.Cell collaping>{track.duration}</Table.Cell>
+      <Table.Cell collapsing>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         {!!can_use && !banned && (
           <Button

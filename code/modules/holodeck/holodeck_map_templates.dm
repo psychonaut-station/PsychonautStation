@@ -113,6 +113,12 @@
 	description = "benis"
 	mappath = "_maps/templates/holodeck_photobooth.dmm"
 
+/datum/map_template/holodeck/pool
+	name = "Holodeck - Summer Pool"
+	template_id = "holodeck_pool"
+	description = "benis"
+	mappath = "_maps/templates/holodeck_pool.dmm"
+
 /datum/map_template/holodeck/skatepark
 	name = "Holodeck - Skatepark"
 	template_id = "holodeck_skatepark"

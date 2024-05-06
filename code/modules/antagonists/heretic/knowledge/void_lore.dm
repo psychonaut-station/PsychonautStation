@@ -200,7 +200,7 @@
 /datum/heretic_knowledge/ultimate/void_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] The nobleman of void [user.real_name] has arrived, stepping along the Waltz that ends worlds! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Hiçliğin efendisi [user.real_name] yükseldi, dünyaları sona erdiren Vals adımlarını atıyor! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = 'sound/ambience/antag/heretic/ascend_void.ogg',
 		color_override = "pink",

@@ -54,6 +54,9 @@
 	)
 
 /datum/species/human/get_cry_sound(mob/living/carbon/human/human)
+	if(HAS_TRAIT(human, TRAIT_CLOWNING))
+		return 'sound/voice/human/clown_cry1.ogg'
+
 	if(human.physique == FEMALE)
 		return pick(
 			'sound/voice/human/female_cry1.ogg',
@@ -72,8 +75,9 @@
 	return 'sound/voice/human/male_sneeze1.ogg'
 
 /datum/species/human/get_laugh_sound(mob/living/carbon/human/human)
-	if(!ishuman(human))
-		return
+	if(HAS_TRAIT(human, TRAIT_CLOWNING))
+		return 'sound/voice/human/clown_laugh1.ogg'
+
 	if(human.physique == FEMALE)
 		return 'sound/voice/human/womanlaugh.ogg'
 	return pick(

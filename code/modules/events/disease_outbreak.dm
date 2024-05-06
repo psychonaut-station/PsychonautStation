@@ -119,7 +119,7 @@
 		)
 		var/datum/disease/fake_virus = pick(virus_candidates)
 		illness_type = initial(fake_virus.name)
-	priority_announce("[station_name()] 7. seviye viral biyolojik tehlike salgını doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "[illness_type] Uyarısı", ANNOUNCER_OUTBREAK7)
+	priority_announce("[locale_suffix_locative(station_name())] 7. seviye biyolojik salgın olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "[illness_type] Uyarısı", ANNOUNCER_OUTBREAK7)
 
 /datum/round_event/disease_outbreak/setup()
 	announce_when = ADV_ANNOUNCE_DELAY

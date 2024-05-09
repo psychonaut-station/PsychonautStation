@@ -18259,6 +18259,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
 "cNR" = (
@@ -19847,6 +19848,7 @@
 	dir = 1
 	},
 /obj/machinery/chem_master,
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
 "cVU" = (
@@ -21896,6 +21898,10 @@
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 5
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/ore_update,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
 /turf/open/floor/iron/white,
 /area/station/science/lab)
 "dfv" = (
@@ -22535,6 +22541,7 @@
 	receive_ore_updates = 1
 	},
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron/dark,
 /area/station/medical/pharmacy)
 "dkr" = (
@@ -28875,6 +28882,7 @@
 	name = "Virology Requests Console";
 	receive_ore_updates = 1
 	},
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron,
 /area/station/medical/virology)
 "dVv" = (
@@ -31506,6 +31514,11 @@
 	},
 /obj/effect/turf_decal/tile/neutral,
 /obj/machinery/atmospherics/pipe/smart/manifold/scrubbers/visible,
+/obj/machinery/requests_console/directional/south{
+	name = "Atmospherics Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
 "eoe" = (
@@ -33253,6 +33266,7 @@
 	department = "Kitchen";
 	name = "Kitchen Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron/cafeteria,
 /area/station/service/kitchen)
 "eQF" = (
@@ -46213,6 +46227,11 @@
 /obj/machinery/modular_computer/preset/cargochat/service{
 	dir = 8
 	},
+/obj/machinery/requests_console/directional/south{
+	department = "Service Hall";
+	name = "Service Hall Requests Console"
+	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "iJi" = (
@@ -47806,6 +47825,9 @@
 	department = "Head of Personnel's Desk";
 	name = "Head of Personnel's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "jkS" = (
@@ -48016,6 +48038,9 @@
 	department = "Captain's Desk";
 	name = "Captain's Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/information,
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/captain)
 "jpf" = (
@@ -51012,6 +51037,8 @@
 	},
 /obj/structure/sign/poster/official/do_not_question/directional/east,
 /obj/effect/turf_decal/delivery,
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "kiK" = (
@@ -51749,6 +51776,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/ce)
 "ktW" = (
@@ -53454,6 +53484,7 @@
 	name = "HoochMaster 2000"
 	},
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron/dark,
 /area/station/service/bar)
 "kUu" = (
@@ -55655,6 +55686,9 @@
 	department = "Bridge";
 	name = "Bridge Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/grimy,
 /area/station/command/bridge)
 "lBN" = (
@@ -56630,6 +56664,7 @@
 	department = "Hydroponics";
 	name = "Hydroponics Requests Console"
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "lQX" = (
@@ -57245,6 +57280,7 @@
 	c_tag = "Chapel Office";
 	name = "chapel camera"
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/carpet,
 /area/station/service/chapel/office)
 "lZf" = (
@@ -60431,6 +60467,8 @@
 	name = "Quartermaster's Requests Console"
 	},
 /obj/structure/filingcabinet/chestdrawer,
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/announcement,
 /turf/open/floor/iron,
 /area/station/command/heads_quarters/qm)
 "mXc" = (
@@ -61458,6 +61496,9 @@
 	pixel_x = 32
 	},
 /obj/effect/turf_decal/bot_white,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/hos)
 "nku" = (
@@ -66961,6 +67002,8 @@
 /obj/structure/extinguisher_cabinet/directional/south{
 	pixel_x = 26
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/atmos/storage/gas)
 "oOY" = (
@@ -67978,6 +68021,8 @@
 	receive_ore_updates = 1
 	},
 /obj/structure/extinguisher_cabinet/directional/west,
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "pel" = (
@@ -69363,6 +69408,10 @@
 	dir = 4
 	},
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/ore_update,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
 "pEI" = (
@@ -73051,6 +73100,7 @@
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron,
 /area/station/service/janitor)
 "qFy" = (
@@ -73630,6 +73680,9 @@
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
+/obj/effect/mapping_helpers/requests_console/information,
+/obj/effect/mapping_helpers/requests_console/announcement,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/cmo)
 "qOi" = (
@@ -84013,6 +84066,7 @@
 /obj/effect/turf_decal/tile/brown{
 	dir = 4
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
 /turf/open/floor/iron,
 /area/station/cargo/office)
 "tWu" = (
@@ -88488,6 +88542,15 @@
 	},
 /turf/open/floor/wood,
 /area/station/engineering/break_room)
+"vms" = (
+/obj/effect/turf_decal/tile/red,
+/obj/effect/turf_decal/tile/red{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/requests_console/assistance,
+/obj/effect/mapping_helpers/requests_console/supplies,
+/turf/open/floor/iron,
+/area/station/security/brig)
 "vmK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
@@ -89026,6 +89089,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "vwz" = (
@@ -150000,7 +150064,7 @@ bNj
 oNn
 gCn
 gCU
-bnJ
+vms
 bnJ
 bnJ
 bnJ

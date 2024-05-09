@@ -273,7 +273,7 @@ SUBSYSTEM_DEF(shuttle)
 		CRASH("Emergency shuttle block was called, but missing a value for the lockout duration")
 	if(admin_emergency_no_recall)
 		priority_announce(
-			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [DisplayLocaleTimeText(lockout_timer, round_seconds_to = 60)].",
+			text = "Acil durum mekiği uplink paraziti tespit edildi, sistem yeniden başlatılırken mekik çağrısı devre dışı bırakıldı. Tahmini geri yüklenme süresi: [locale_DisplayTimeText(lockout_timer, round_seconds_to = 60)].",
 			title = "Uplink Paraziti",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",
@@ -531,7 +531,7 @@ SUBSYSTEM_DEF(shuttle)
 		emergency.mode = SHUTTLE_DOCKED
 		emergency.setTimer(emergency_dock_time)
 		priority_announce(
-			text = "Acil durum mekiğine binebilmeniz için geriye kalan süre: [DisplayLocaleTimeText(emergency_dock_time)]",
+			text = "Acil durum mekiğine binebilmeniz için geriye kalan süre: [locale_DisplayTimeText(emergency_dock_time)]",
 			title = "Tehlikeli Ortam Çözüldü",
 			sound = 'sound/misc/announce_dig.ogg',
 			sender_override = "Acil Durum Mekiği Uyarısı",

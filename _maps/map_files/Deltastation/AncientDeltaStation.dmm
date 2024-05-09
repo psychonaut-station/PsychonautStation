@@ -23944,38 +23944,30 @@
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dsN" = (
-/obj/item/clothing/gloves/latex,
 /obj/item/clothing/suit/apron/surgical,
 /obj/item/clothing/mask/surgical,
-/obj/item/surgical_drapes,
 /obj/structure/table/reinforced,
-/obj/item/blood_filter,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dsO" = (
-/obj/item/retractor,
-/obj/item/hemostat,
 /obj/structure/table/reinforced,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dsP" = (
-/obj/item/circular_saw,
-/obj/item/surgicaldrill{
-	pixel_y = 5
-	},
 /obj/structure/table/reinforced,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/item/surgery_tray/full,
+/obj/item/clothing/gloves/latex,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dsQ" = (
 /obj/structure/table/reinforced,
-/obj/item/book/manual/wiki/surgery,
-/obj/item/scalpel,
-/obj/item/cautery,
 /obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/item/clothing/suit/apron/surgical,
+/obj/item/clothing/mask/surgical,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/theatre)
 "dsR" = (
@@ -25314,9 +25306,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "dBq" = (
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/item/cautery,
 /obj/structure/table/glass,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/light/directional/north,
@@ -25325,20 +25314,11 @@
 /area/station/medical/surgery/aft)
 "dBr" = (
 /obj/structure/table/glass,
-/obj/item/clothing/gloves/latex,
-/obj/item/surgical_drapes,
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/effect/turf_decal/tile/blue/fourcorners,
-/turf/open/floor/iron/white,
-/area/station/medical/surgery/aft)
-"dBs" = (
-/obj/item/circular_saw,
-/obj/item/scalpel{
-	pixel_y = 12
-	},
-/obj/structure/table/glass,
-/obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/item/surgery_tray/full,
+/obj/item/clothing/gloves/latex,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
 "dBt" = (
@@ -44211,10 +44191,6 @@
 /turf/open/floor/iron/dark/textured,
 /area/station/medical/cryo)
 "icz" = (
-/obj/item/circular_saw,
-/obj/item/scalpel{
-	pixel_y = 12
-	},
 /obj/structure/table/glass,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/light/directional/south,
@@ -92815,9 +92791,6 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/surgery/theatre)
 "wEq" = (
-/obj/item/retractor,
-/obj/item/hemostat,
-/obj/item/cautery,
 /obj/structure/table/glass,
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /turf/open/floor/iron/white,
@@ -95997,10 +95970,10 @@
 /area/space/nearstation)
 "xzY" = (
 /obj/structure/table/glass,
-/obj/item/clothing/gloves/latex,
-/obj/item/surgical_drapes,
 /obj/machinery/airalarm/directional/south,
 /obj/effect/turf_decal/tile/blue/fourcorners,
+/obj/item/surgery_tray/full,
+/obj/item/clothing/gloves/latex,
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
 "xzZ" = (
@@ -146517,7 +146490,7 @@ dXv
 dxl
 dyG
 dma
-dBs
+wEq
 dCP
 dEg
 rLD

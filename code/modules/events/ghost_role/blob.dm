@@ -23,7 +23,7 @@
 /datum/round_event/ghost_role/blob/announce(fake)
 	if(!fake)
 		return //the mob itself handles this.
-	priority_announce("[station_name()] içerisinde 5. seviye biyolojik tehlike salgını doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
+	priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller tehditi kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
 
 /datum/round_event/ghost_role/blob/spawn_role()
 	if(!GLOB.blobstart.len)

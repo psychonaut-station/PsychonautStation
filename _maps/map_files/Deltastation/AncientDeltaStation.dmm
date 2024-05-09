@@ -10677,6 +10677,8 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 8
 	},
+/obj/effect/mapping_helpers/requests_console/supplies,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron,
 /area/station/security/warden)
 "bNn" = (
@@ -26080,6 +26082,7 @@
 	},
 /obj/item/radio/intercom/directional/west,
 /obj/effect/turf_decal/tile/yellow/fourcorners,
+/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "dES" = (
@@ -88542,15 +88545,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/engineering/break_room)
-"vms" = (
-/obj/effect/turf_decal/tile/red,
-/obj/effect/turf_decal/tile/red{
-	dir = 4
-	},
-/obj/effect/mapping_helpers/requests_console/assistance,
-/obj/effect/mapping_helpers/requests_console/supplies,
-/turf/open/floor/iron,
-/area/station/security/brig)
 "vmK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/turf_decal/stripes/corner{
@@ -89089,7 +89083,6 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/requests_console/assistance,
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "vwz" = (
@@ -150064,7 +150057,7 @@ bNj
 oNn
 gCn
 gCU
-vms
+bnJ
 bnJ
 bnJ
 bnJ

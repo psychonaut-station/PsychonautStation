@@ -10,19 +10,14 @@
 	var/maximum_mice = 15
 
 /datum/round_event/mice_migration/announce(fake)
-	var/cause = pick("space-winter", "budget-cuts", "Ragnarok",
-		"space being cold", "\[REDACTED\]", "climate change",
-		"bad luck")
-	var/plural = pick("a number of", "a horde of", "a pack of", "a swarm of",
-		"a whoop of", "not more than [maximum_mice]")
-	var/name = pick("rodents", "mice", "squeaking things",
-		"wire eating mammals", "\[REDACTED\]", "energy draining parasites")
-	var/movement = pick("migrated", "swarmed", "stampeded", "descended")
-	var/location = pick("maintenance tunnels", "maintenance areas",
-		"\[REDACTED\]", "place with all those juicy wires")
+	var/cause = pick("Uzay soğuğu", "Bütçe kesintileri", "Kıyamet", "İklim değişikliği")
+	var/plural = pick("birkaç", "bir sürü", "bir düzine", "yaklaşık [maximum_mice]")
+	var/name = pick("kemirgen", "fare", "enerji̇ tüketen parazi̇t")
+	var/movement = pick("göç ediyor.", "ilerliyor.", "izdiham ediyor.")
+	var/location = pick("maintenance tünellerine", "maintenance bölgesine", "tüm o lezzetli kabloların olduğu yere")
 
-	priority_announce("Due to [cause], [plural] [name] have [movement] \
-		into the [location].", "Migration Alert",
+	priority_announce("[cause] dolayısıyla, [plural] [name] [location] doğru \
+		[movement]", "Kemirgen uyarısı",
 		'sound/creatures/mousesqueek.ogg')
 
 /datum/round_event/mice_migration/start()

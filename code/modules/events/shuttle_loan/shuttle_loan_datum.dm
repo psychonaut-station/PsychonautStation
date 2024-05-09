@@ -26,9 +26,9 @@
 	CRASH("Unimplemented get_spawned_items() on [src.type].")
 
 /datum/shuttle_loan_situation/antidote
-	sender = "CentCom Research Initiatives"
-	announcement_text = "Your station has been chosen for an epidemiological research project. Send us your cargo shuttle to receive your research samples."
-	shuttle_transit_text = "Virus samples incoming."
+	sender = "CentCom Araştırma Girişimleri"
+	announcement_text = "İstasyonunuz epidemiyolojik bir araştırma projesi için seçildi. Araştırma örneklerinizi almak için bize kargo mekiğinizi gönderin."
+	shuttle_transit_text = "Virüs örnekleri geliyor."
 	logging_desc = "Virus shuttle"
 
 /datum/shuttle_loan_situation/antidote/spawn_items(list/spawn_list, list/empty_shuttle_turfs, list/blocked_shutte_turfs)
@@ -51,10 +51,10 @@
 	spawn_list.Add(/obj/item/reagent_containers/cup/bottle/magnitis)
 
 /datum/shuttle_loan_situation/department_resupply
-	sender = "CentCom Supply Department"
-	announcement_text = "Seems we've ordered doubles of our department resupply packages this month. Can we send them to you?"
-	shuttle_transit_text = "Department resupply incoming."
-	thanks_msg = "The cargo shuttle should return in five minutes."
+	sender = "CentCom İkmal Departmanı"
+	announcement_text = "Görünüşe göre bu ay departmanımızın ihtiyaç paketlerinin iki katını sipariş ettik. Onları size gönderebilir miyiz?"
+	shuttle_transit_text = "Departman ikmali geliyor."
+	thanks_msg = "Kargo mekiği beş dakika içinde dönecektir."
 	bonus_points = 0
 	logging_desc = "Resupply packages"
 
@@ -79,9 +79,9 @@
 		new decal(pick_n_take(empty_shuttle_turfs))
 
 /datum/shuttle_loan_situation/syndiehijacking
-	sender = "CentCom Counterintelligence"
-	announcement_text = "The syndicate are trying to infiltrate your station. If you let them hijack your cargo shuttle, you'll save us a headache."
-	shuttle_transit_text = "Syndicate hijack team incoming."
+	sender = "CentCom Karşı İstihbarat"
+	announcement_text = "Sendika istasyonunuza sızmaya çalışıyor. Kargo mekiğinizi kaçırmalarına izin verirseniz, bizi baş ağrısından kurtarmış olursunuz."
+	shuttle_transit_text = "Sendika korsan ekibi geliyor."
 	logging_desc = "Syndicate boarding party"
 
 /datum/shuttle_loan_situation/syndiehijacking/spawn_items(list/spawn_list, list/empty_shuttle_turfs, list/blocked_shutte_turfs)
@@ -96,9 +96,9 @@
 		spawn_list.Add(/mob/living/basic/trooper/syndicate/ranged/infiltrator)
 
 /datum/shuttle_loan_situation/lots_of_bees
-	sender = "CentCom Janitorial Division"
-	announcement_text = "One of our freighters carrying a bee shipment has been attacked by eco-terrorists. Can you clean up the mess for us?"
-	shuttle_transit_text = "Biohazard cleanup incoming."
+	sender = "CentCom Temizlik Departmanı"
+	announcement_text = "Yük gemilerimizden biri arı sevkiyatı yaparken eko-teröristler tarafından saldırıya uğradı. Bizim için bu pisliği temizleyebilir misiniz?"
+	shuttle_transit_text = "Biyolojik tehlike temizliği geliyor."
 	bonus_points = CARGO_CRATE_VALUE * 100 //Toxin bees can be unbeelievably lethal
 	logging_desc = "Shuttle full of bees"
 
@@ -131,10 +131,10 @@
 		new casing(pick_n_take(empty_shuttle_turfs))
 
 /datum/shuttle_loan_situation/jc_a_bomb
-	sender = "CentCom Security Division"
-	announcement_text = "We have discovered an active Syndicate bomb near our VIP shuttle's fuel lines. If you feel up to the task, we will pay you for defusing it."
-	shuttle_transit_text = "Live explosive ordnance incoming. Exercise extreme caution."
-	thanks_msg = "Live explosive ordnance incoming via supply shuttle. Evacuating cargo bay is recommended."
+	sender = "CentCom Güvenlik Departmanı"
+	announcement_text = "VIP mekiğimizin yakıt hatlarının yakınında aktif bir Sendika bombası keşfettik. Eğer bu görevi yapabileceğinizi düşünüyorsanız, bombayı etkisiz hale getirmeniz için size ödeme yapacağız."
+	shuttle_transit_text = "Patlayıcı mühimmat geliyor. Çok dikkatli olun."
+	thanks_msg = "İkmal mekiğiyle birlikte patlayıcı madde geliyor. Kargo bölümünün boşaltılması tavsiye edilir."
 	bonus_points = CARGO_CRATE_VALUE * 225 //If you mess up, people die and the shuttle gets turned into swiss cheese
 	logging_desc = "Shuttle with a ticking bomb"
 
@@ -146,10 +146,10 @@
 		spawn_list.Add(/obj/item/paper/fluff/cargo/bomb/allyourbase)
 
 /datum/shuttle_loan_situation/papers_please
-	sender = "CentCom Paperwork Division"
-	announcement_text = "A neighboring station needs some help handling some paperwork. Could you help process it for us?"
-	shuttle_transit_text = "Paperwork incoming."
-	thanks_msg = "The cargo shuttle should return in five minutes. Payment will be rendered when the paperwork is processed and returned."
+	sender = "CentCom Evrak İşleri Departmanı"
+	announcement_text = "Komşu istasyonlardan birinin bazı evrak işlerinde yardıma ihtiyacı var. Bizim için halledebilir misiniz?"
+	shuttle_transit_text = "Evrak işi geliyor."
+	thanks_msg = "Kargo mekiği beş dakika içinde dönecektir. Ödeme, evraklar tamamlanıp iade edildiği takdirde yapılacaktır."
 	bonus_points = 0 //Payout is made when the stamped papers are returned
 	logging_desc = "Paperwork shipment"
 
@@ -157,10 +157,10 @@
 	spawn_list += subtypesof(/obj/item/paperwork) - typesof(/obj/item/paperwork/photocopy) - typesof(/obj/item/paperwork/ancient)
 
 /datum/shuttle_loan_situation/pizza_delivery
-	sender = "CentCom Spacepizza Division"
-	announcement_text = "It looks like a neighbouring station accidentally delivered their pizza to you instead."
-	shuttle_transit_text = "Pizza delivery!"
-	thanks_msg = "The cargo shuttle should return in five minutes."
+	sender = "CentCom Spacepizza Departmanı"
+	announcement_text = "Görünüşe göre komşu istasyon yanlışlıkla kendi pizzasını size göndermiş."
+	shuttle_transit_text = "Pizza teslimatı!"
+	thanks_msg = "Kargo mekiği beş dakika içinde dönecektir."
 	bonus_points = 0
 	logging_desc = "Pizza delivery"
 
@@ -171,9 +171,9 @@
 		spawn_list.Add(pick(prob(5) ? naughtypizza : nicepizza))
 
 /datum/shuttle_loan_situation/russian_party
-	sender = "CentCom Russian Outreach Program"
-	announcement_text = "A group of angry Russians want to have a party. Can you send them your cargo shuttle then make them disappear?"
-	shuttle_transit_text = "Partying Russians incoming."
+	sender = "CentCom Rusya Sosyal Yardım Programı"
+	announcement_text = "Bir grup öfkeli Rus parti vermek istiyor. Onlara kargo mekiğinizi gönderip ortadan kaybolmalarını sağlayabilir misiniz?"
+	shuttle_transit_text = "Partici Ruslar geliyor."
 	logging_desc = "Russian party squad"
 
 /datum/shuttle_loan_situation/russian_party/spawn_items(list/spawn_list, list/empty_shuttle_turfs, list/blocked_shutte_turfs)
@@ -189,9 +189,9 @@
 		spawn_list.Add(/mob/living/basic/bear/russian)
 
 /datum/shuttle_loan_situation/spider_gift
-	sender = "CentCom Diplomatic Corps"
-	announcement_text = "The Spider Clan has sent us a mysterious gift. Can we ship it to you to see what's inside?"
-	shuttle_transit_text = "Spider Clan gift incoming."
+	sender = "CentCom Diplomatik Birliği"
+	announcement_text = "Örümcek Klanı bize gizemli bir hediye gönderdi. İçinde ne olduğunu görmeniz için size gönderebilir miyiz?"
+	shuttle_transit_text = "Örümcek Klanı'ndan hediye geliyor."
 	logging_desc = "Shuttle full of spiders"
 
 /datum/shuttle_loan_situation/spider_gift/spawn_items(list/spawn_list, list/empty_shuttle_turfs, list/blocked_shutte_turfs)
@@ -227,11 +227,11 @@
  * It sends back a lot of mail to the station, at the cost of wrecking the cargo shuttle a little.
  */
 /datum/shuttle_loan_situation/mail_strike
-	sender = "Spinward Mail Workers Union"
-	announcement_text = "The Mail Workers Union wants to borrow your cargo shuttle to employ \"advanced union strike tactics\" with. Payment is strictly in mails."
+	sender = "Spinward Posta İşçileri Sendikası"
+	announcement_text = "Posta İşçileri Sendikası \"gelişmiş grev taktikleri\" kullanmak için kargo mekiğinizi ödünç almak istiyor. Ödeme postayla yapılacaktır."
 	bonus_points = 0
-	thanks_msg = "The cargo shuttle should return in five minutes."
-	shuttle_transit_text = "Nothing stops the mail."
+	thanks_msg = "Kargo mekiği beş dakika içinde dönecektir."
+	shuttle_transit_text = "Hiçbir şey postaları durduramaz."
 	logging_desc = "Shuttle full of shady mail"
 
 /datum/shuttle_loan_situation/mail_strike/spawn_items(list/spawn_list, list/empty_shuttle_turfs, list/blocked_shutte_turfs)

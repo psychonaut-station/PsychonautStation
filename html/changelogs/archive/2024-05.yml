@@ -60,3 +60,15 @@
   - rscadd: "Orman temal\u0131 Holodeck map."
   RengaN02:
   - bugfix: "NT Secretary'nin remote'unun sprite'\u0131 art\u0131k g\xF6r\xFCnecek."
+2024-05-06:
+  MrEmre12:
+  - qol: "T\xFCrk\xE7e Ai Yasas\u0131 Eklendi"
+  - bugfix: "Eski Delta'daki Aft Surgery/Surgery Theatre odalar\u0131na surgery tray\
+      \ ekler."
+  exdal:
+  - rscadd: Clown icin ozel *cry sesi
+  genku:
+  - spellcheck: Priority Announcelardaki eksiklikler ve hatalar giderildi.
+2024-05-07:
+  MrEmre12:
+  - rscadd: "Yeni Havuz temal\u0131 holodeck map."

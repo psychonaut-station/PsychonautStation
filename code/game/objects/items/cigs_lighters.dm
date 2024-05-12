@@ -745,7 +745,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		"plain",
 		"dame",
 		"thirteen",
-		"snake"
+		"snake",
+		"goldie"
 		)
 
 /obj/item/lighter/Initialize(mapload)

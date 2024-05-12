@@ -718,7 +718,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter
 	name = "\improper Zippo lighter"
 	desc = "The zippo."
-	icon = 'icons/obj/cigarettes.dmi'
+	icon = 'icons/psychonaut/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	inhand_icon_state = "zippo"
 	worn_icon_state = "lighter"

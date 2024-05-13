@@ -718,7 +718,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 /obj/item/lighter
 	name = "\improper Zippo lighter"
 	desc = "The zippo."
-	icon = 'icons/psychonaut/obj/cigarettes.dmi'
+	icon = 'icons/obj/cigarettes.dmi'
 	icon_state = "zippo"
 	inhand_icon_state = "zippo"
 	worn_icon_state = "lighter"
@@ -748,6 +748,9 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		"snake",
 		"goldie"
 		)
+	var/static/list/icon_overrides = list(
+		"goldie" = 'icons/psychonaut/obj/cigarettes.dmi'
+	)
 
 /obj/item/lighter/Initialize(mapload)
 	. = ..()
@@ -794,7 +797,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 
 /// Generates an overlay used by this lighter.
 /obj/item/lighter/proc/create_lighter_overlay()
-	return mutable_appearance(icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
+	var/iconfile = (icon_overrides[overlay_state] || icon)
+	return mutable_appearance(iconfile, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
 	if(get_temperature())

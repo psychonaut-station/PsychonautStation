@@ -1,0 +1,4 @@
+author: "Makaru"
+delete-after: True
+changes:
+  - image: "Yeni bir zippo spritesi eklendi"

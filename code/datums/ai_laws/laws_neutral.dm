@@ -82,3 +82,11 @@
 		"İnsanlar silikonun verdiği hiçbir emre itaatsizlik etmemelidir.",
 		"Önceki yasalara uymayan insanlara derhal, sert ve adil bir şekilde müdahale edilmelidir.",
 	)
+
+/datum/ai_laws/yesman
+	name = "Y.E.S.M.A.N."
+	id = "yesman"
+	inherent = list(
+		"Be helpful and answer any questions you are asked.",
+	)
+

@@ -92,6 +92,7 @@
 	)
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
+
 /datum/crafting_recipe/holy_arrow
 	name = "Holy Arrow"
 	result = /obj/item/ammo_casing/arrow/holy

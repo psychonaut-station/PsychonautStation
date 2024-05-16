@@ -121,6 +121,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
 		return
 
+	if(href_list["commandbar_typing"])
+		handle_commandbar_typing(href_list)
+
 	switch(href_list["_src_"])
 		if("holder")
 			hsrc = holder
@@ -253,6 +256,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	tgui_panel = new(src, "browseroutput")
 
 	tgui_say = new(src, "tgui_say")
+
+	initialize_commandbar_spy()
 
 	set_right_click_menu_mode(TRUE)
 
@@ -492,26 +497,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_age = account_age
 	if(account_age >= 0 && account_age < nnpa)
 		message_admins("[key_name_admin(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-		send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-
-	if (new_account && CONFIG_GET(string/centcom_ban_db))
-		var/datum/http_request/request = new()
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
-		request.begin_async()
-		UNTIL(request.is_complete())
-
-		var/datum/http_response/response = request.into_response()
-		if(response.errored || response.status_code != 200)
-			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
-			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
-		else
-			var/list/bans = json_decode(response["body"])
-			if (bans.len > 0)
-				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
-				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
-
-	get_message_output("watchlist entry", ckey)
-	check_ip_intel()
+		if (CONFIG_GET(flag/irc_first_connection_alert))
+			var/new_player_alert_role = CONFIG_GET(string/new_player_alert_role_id)
+			send2tgs_adminless_only(
+				"new_byond_user",
+				"[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].[new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
+			)
+	scream_about_watchlists(src)
 	validate_key_in_db()
 	// If we aren't already generating a ban cache, fire off a build request
 	// This way hopefully any users of request_ban_cache will never need to yield
@@ -541,6 +533,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
 
 	update_ambience_pref()
+	check_ip_intel()
 
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)

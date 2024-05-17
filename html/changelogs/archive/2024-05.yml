@@ -411,3 +411,49 @@
   - qol: Added activity toggle to voice activator component
   - qol: Added quiet mode to speech component
   - qol: NTNet send component will not use power/trigger if NTNet is offline
+2024-05-17:
+  00-Steven:
+  - bugfix: Emotion masks no longer use a janky workaround for infinite reskinning.
+  - bugfix: Mech pilot suit shows reskinning usage context correctly.
+  - bugfix: Accessories show "wear above/below suit" usage context appropriately.
+  - bugfix: Accessories don't block reskinning usage context when they shouldn't.
+  - bugfix: Showing reskinning usage context cares about the infinite reskinning flag,
+      rather than whether it's in storage or not.
+  - rscdel: Removed redundant reskinning usage context code from medical sprays, now
+      shows reskinning usage context like other reskinnables.
+  Melbert:
+  - bugfix: After 3 years, radiation now causes you to go bald and mutate again
+  Pickle-Coding:
+  - bugfix: Fixes engineering cyborg screwdriver not being pointy. Fixes engineering
+      cyborg crowbar from being pointy.
+  - bugfix: Fixes cyborg omnitools not using the correct wound bonus and armour penetration
+      values.
+  Rengan:
+  - bugfix: Officers sabre and grilles now conducts electricity as it should.
+  Seven:
+  - bugfix: Wings no longer work in space if you activated them beforehand.
+  ShizCalev:
+  - bugfix: Atoms on the border of a tile will now only trigger landmines if they
+      ACTUALLY pass over said mine.
+  Thunder12345:
+  - bugfix: Pyre chaplains can no longer generate infinite favour for free by buying
+      and selling candles. Candles now offer for 40 favour, down from 50.
+  Xander3359:
+  - rscdel: Removes the sleeper protocol traitor objective
+  - balance: RND server/Telecomms sabotage can now show up even later in the round
+  jlsnow301:
+  - bugfix: Simplebot UI won't display '0' anymore when locked
+  mc-oofert:
+  - rscadd: mobile defibrillator mount
+  nikothedude:
+  - code_imp: Most instances of parse_zone now refer to the limb's plaintext_zone
+      var
+  siliconOpossum:
+  - qol: Neckties are now worn underneath suit items and accessories, they can still
+      be optionally worn over them in case you want the "business space suit" look
+  - bugfix: Fixed a bug where accessories wouldn't correctly apply over suits if you
+      equipped the jumpsuit they're attached to after the suit
+  starrm4nn:
+  - spellcheck: Fixes some typos in the goodies section and makes it look a bit more
+      consistent.
+  - bugfix: Fixed the spess knife's cutter tool icon being invisible.

@@ -864,15 +864,10 @@
 	new /obj/item/melee/sabre(src)
 	update_appearance()
 
-/obj/item/storage/belt/sabre/on_click_alt_reskin(datum/source, mob/user)
-	SIGNAL_HANDLER
-
-	if(!contents.len)
-		return NONE
-
-	return ..()
-
 /obj/item/storage/belt/sabre/reskin_obj(mob/user)
+	if(!contents.len)
+		return
+
 	. = ..()
 	if(current_skin)
 		var/obj/item/I = contents[1]

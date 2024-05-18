@@ -6350,12 +6350,11 @@
 	amount = 5
 	},
 /obj/effect/turf_decal/stripes/line,
+/obj/effect/mapping_helpers/requests_console/ore_update,
 /obj/machinery/requests_console/directional/north{
 	department = "Virology";
-	name = "Virology Requests Console";
-	
+	name = "Virology Requests Console"
 	},
-/obj/effect/mapping_helpers/requests_console/ore_update,
 /turf/open/floor/iron,
 /area/station/medical/virology)
 "baG" = (
@@ -12351,8 +12350,7 @@
 /obj/machinery/light/directional/east,
 /obj/machinery/requests_console/directional/east{
 	department = "Xenobiology";
-	name = "Xenobiology Requests Console";
-	
+	name = "Xenobiology Requests Console"
 	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -39698,8 +39696,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/machinery/requests_console/directional/west{
 	department = "Research Director's Desk";
-	name = "Research Director's Requests Console";
-	
+	name = "Research Director's Requests Console"
 	},
 /obj/machinery/photocopier,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
@@ -47583,8 +47580,7 @@
 	},
 /obj/machinery/requests_console/directional/south{
 	department = "Pharmacy";
-	name = "Pharmacy Requests Console";
-	
+	name = "Pharmacy Requests Console"
 	},
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/effect/mapping_helpers/requests_console/ore_update,
@@ -53971,8 +53967,7 @@
 "lcU" = (
 /obj/machinery/requests_console/directional/east{
 	department = "Research Lab";
-	name = "Research Requests Console";
-	
+	name = "Research Requests Console"
 	},
 /obj/machinery/camera/directional/east{
 	c_tag = "Science - Research and Development";
@@ -91206,8 +91201,7 @@
 /obj/structure/table/reinforced,
 /obj/machinery/requests_console/directional/north{
 	department = "Robotics";
-	name = "Robotics Requests Console";
-	
+	name = "Robotics Requests Console"
 	},
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/mapping_helpers/requests_console/supplies,

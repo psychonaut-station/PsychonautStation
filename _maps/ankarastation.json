@@ -23,7 +23,7 @@
 		{
 			"Down": true,
 			"Up": true,
-			"Mining": false,
+			"Mining": true,
 			"Linkage": null,			
 			"Gravity": true,
 			"No Parallax": true
@@ -36,6 +36,7 @@
 			"No Parallax": true
 		}
 	],
+	"minetype": "none",
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/bar", "/area/station/commons/lounge"]

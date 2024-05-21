@@ -22,11 +22,11 @@
 	/// hides time icon effect and mutes sound
 	var/hidden = FALSE
 	/// If true, time stop doesnt plays sound.
-	var/noSound = FALSE
+	var/sound = TRUE
 
-/obj/effect/timestop/Initialize(mapload, radius, time, list/immune_atoms, start = TRUE, silent = FALSE, noSound = FALSE) //Immune atoms assoc list atom = TRUE
+/obj/effect/timestop/Initialize(mapload, radius, time, list/immune_atoms, start = TRUE, silent = FALSE, sound = TRUE) //Immune atoms assoc list atom = TRUE
 	. = ..()
-	src.noSound = noSound
+	src.sound = sound
 	if(!isnull(time))
 		duration = time
 	if(!isnull(radius))
@@ -53,7 +53,7 @@
 
 /obj/effect/timestop/proc/timestop()
 	target = get_turf(src)
-	if(!hidden || !noSound)
+	if(!hidden && sound)
 		playsound(src, 'sound/magic/timeparadox2.ogg', 75, TRUE, -1)
 	chronofield = new (src, freezerange, TRUE, immune, antimagic_flags, channelled)
 	if(!channelled)

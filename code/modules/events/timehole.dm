@@ -44,7 +44,7 @@
 	if(activeFor % second == 0 || prob(10))
 		for(var/i in 1 to number_of_timeholes)
 			var/turf/T = pick(pick_turfs)
-			timeholes += new /obj/effect/timestop(T, 2, second SECONDS, noSound = noSound)
+			timeholes += new /obj/effect/timestop(T, 2, second SECONDS, sound = !noSound)
 
 /datum/event_admin_setup/input_number/timeholeseconds
 	input_text = "For how many seconds will timestop?"
@@ -68,4 +68,4 @@
 	input_text = "Does timestops plays sound?"
 
 /datum/event_admin_setup/question/timehole_nosound/apply_to_event(datum/round_event/timehole/event)
-	event.noSound = !value
+	event.noSound = !chosen

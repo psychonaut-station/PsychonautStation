@@ -9,6 +9,11 @@
 	description = "Space time anomalies appear on the station, randomly teleporting people who walk into them."
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
+	admin_setup = list(
+		/datum/event_admin_setup/input_number/timeholeseconds,
+		/datum/event_admin_setup/input_number/numberoftimehole,
+		/datum/event_admin_setup/question/timehole_nosound
+	)
 
 /datum/round_event/timehole
 	announce_when = 10

@@ -12,7 +12,7 @@
 
 /datum/round_event/timehole
 	announce_when = 10
-	end_when = 60
+	end_when = 40
 
 	var/list/pick_turfs = list()
 	var/list/timeholes = list()
@@ -21,7 +21,6 @@
 
 /datum/round_event/timehole/setup()
 	announce_when = rand(0, 20)
-	end_when = rand(40, 80)
 
 /datum/round_event/timehole/start()
 	for(var/turf/open/floor/T in world)

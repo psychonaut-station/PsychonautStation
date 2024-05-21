@@ -35,7 +35,7 @@
 
 	for(var/i in 1 to number_of_timeholes)
 		var/turf/T = pick(pick_turfs)
-		timeholes += new /obj/effect/timestop(T, 2, second SECONDS, sound = !noSound)
+		timeholes += new /obj/effect/timestop(T, 2, second SECONDS, nosound = noSound)
 
 /datum/round_event/timehole/announce(fake)
 	priority_announce("İstasyonda uzay-zaman anomalileri tespit edildi. Herhangi bir ek veri bulunmamaktadır.", "Anomali Uyarısı", ANNOUNCER_SPANOMALIES)
@@ -44,7 +44,7 @@
 	if(activeFor % second == 0 || prob(10))
 		for(var/i in 1 to number_of_timeholes)
 			var/turf/T = pick(pick_turfs)
-			timeholes += new /obj/effect/timestop(T, 2, second SECONDS, sound = !noSound)
+			timeholes += new /obj/effect/timestop(T, 2, second SECONDS, nosound = noSound)
 
 /datum/event_admin_setup/input_number/timeholeseconds
 	input_text = "For how many seconds will timestop?"

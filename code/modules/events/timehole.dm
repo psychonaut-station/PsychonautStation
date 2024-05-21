@@ -68,4 +68,4 @@
 	input_text = "Does timestops plays sound?"
 
 /datum/event_admin_setup/question/timehole_nosound/apply_to_event(datum/round_event/timehole/event)
-	event.noSound = chosen
+	event.noSound = !chosen

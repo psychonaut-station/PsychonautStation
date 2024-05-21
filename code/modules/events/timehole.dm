@@ -23,7 +23,7 @@
 	var/list/timeholes = list()
 	var/second = 5
 	var/number_of_timeholes = 200
-	var/noSound = FALSE
+	var/noSound = TRUE
 
 /datum/round_event/timehole/setup()
 	announce_when = rand(0, 20)
@@ -35,7 +35,7 @@
 
 	for(var/i in 1 to number_of_timeholes)
 		var/turf/T = pick(pick_turfs)
-		timeholes += new /obj/effect/timestop(T, rand(1,2), second SECONDS, sound = noSound)
+		timeholes += new /obj/effect/timestop(T, rand(1,2), second SECONDS, sound = !noSound)
 
 /datum/round_event/timehole/announce(fake)
 	priority_announce("İstasyonda uzay-zaman anomalileri tespit edildi. Herhangi bir ek veri bulunmamaktadır.", "Anomali Uyarısı", ANNOUNCER_SPANOMALIES)

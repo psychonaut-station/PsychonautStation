@@ -1,4 +1,0 @@
-author: "MrEmre12"
-delete-after: True
-changes:
-  - bugfix: "Eski Delta'daki Ai Sat içerisindeki SMES'e bağlı olan terminal sorunu çözüldü."

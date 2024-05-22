@@ -464,3 +464,7 @@
   MrEmre12:
   - bugfix: "Eski Delta'daki request consolelar d\xFCzg\xFCnce \xE7al\u0131\u015F\
       acak."
+2024-05-22:
+  MrEmre12:
+  - bugfix: "Eski Delta'daki Ai Sat i\xE7erisindeki SMES'e ba\u011Fl\u0131 olan terminal\
+      \ sorunu \xE7\xF6z\xFCld\xFC."

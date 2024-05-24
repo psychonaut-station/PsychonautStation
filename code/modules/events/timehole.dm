@@ -1,4 +1,3 @@
-
 /datum/round_event_control/timehole
 	name = "Timeholes"
 	typepath = /datum/round_event/timehole

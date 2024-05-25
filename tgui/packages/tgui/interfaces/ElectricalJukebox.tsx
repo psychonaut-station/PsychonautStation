@@ -1,5 +1,4 @@
 import { BooleanLike } from 'common/react';
-import { multiline } from 'common/string';
 
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section, Stack, Table } from '../components';
@@ -75,11 +74,11 @@ const TrackDetails = (props) => {
               color="transparent"
               icon="info"
               tooltipPosition="bottom"
-              tooltip={multiline`
-              You are not allowed to directly use electrical jukebox,
-              instead you can make music requests down below for their
-              approval by the Bartender, Mime or Clown.
-            `}
+              tooltip={`
+                You are not allowed to directly use electrical jukebox,
+                instead you can make music requests down below for their
+                approval by the owner of the jukebox.
+              `}
             />
           )}
           <Button
@@ -195,9 +194,7 @@ const RequestsDisplay = (props) => {
               color="transparent"
               icon="info"
               tooltipPosition="bottom"
-              tooltip={multiline`
-              You are allowed to approve or deny the requests.
-            `}
+              tooltip="You are allowed to approve or deny the requests."
             />
           )}
           <Button
@@ -232,7 +229,7 @@ const QueueRow = (props: { track: TrackData }) => {
   return (
     <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
-      <Table.Cell collaping>{track.duration}</Table.Cell>
+      <Table.Cell collapsing>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         <Button
           icon="minus"
@@ -260,7 +257,7 @@ const RequestRow = (props: { track: TrackData }) => {
   return (
     <Table.Row key={track.track_id} my={1}>
       <Table.Cell>{track.title}</Table.Cell>
-      <Table.Cell collaping>{track.duration}</Table.Cell>
+      <Table.Cell collapsing>{track.duration}</Table.Cell>
       <Table.Cell collapsing textAlign="right">
         {!!can_use && !banned && (
           <Button

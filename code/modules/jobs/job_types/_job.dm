@@ -117,7 +117,7 @@
 	/// RPG job names, for the memes
 	var/rpg_title
 
-	/// Alternate titles to register as pointing to this job. 
+	/// Alternate titles to register as pointing to this job.
 	var/list/alternate_titles
 
 	/// Does this job ignore human authority?
@@ -443,7 +443,7 @@
 
 
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
-	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Aşırı Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 
 
 /// Returns an atom where the mob should spawn in.
@@ -556,11 +556,11 @@
 			dna.species.roundstart_changed = TRUE
 			apply_pref_name(/datum/preference/name/backup_human, player_client)
 		if(CONFIG_GET(flag/force_random_names))
-			var/species_type = player_client.prefs.read_preference(/datum/preference/choiced/species)
-			var/datum/species/species = new species_type
-
-			var/gender = player_client.prefs.read_preference(/datum/preference/choiced/gender)
-			real_name = species.random_name(gender, TRUE)
+			real_name = generate_random_name_species_based(
+				player_client.prefs.read_preference(/datum/preference/choiced/gender),
+				TRUE,
+				player_client.prefs.read_preference(/datum/preference/choiced/species),
+			)
 	dna.update_dna_identity()
 
 
@@ -582,9 +582,11 @@
 			if(!player_client)
 				return // Disconnected while checking the appearance ban.
 
-			var/species_type = player_client.prefs.read_preference(/datum/preference/choiced/species)
-			var/datum/species/species = new species_type
-			organic_name = species.random_name(player_client.prefs.read_preference(/datum/preference/choiced/gender), TRUE)
+			organic_name = generate_random_name_species_based(
+				player_client.prefs.read_preference(/datum/preference/choiced/gender),
+				TRUE,
+				player_client.prefs.read_preference(/datum/preference/choiced/species),
+			)
 		else
 			if(!player_client)
 				return // Disconnected while checking the appearance ban.

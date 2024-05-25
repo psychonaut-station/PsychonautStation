@@ -122,7 +122,7 @@
 		candidates_pruned[1].mind.add_antag_datum(/datum/antagonist/heartbreaker)
 
 /datum/round_event/valentines/announce(fake)
-	priority_announce("It's Valentine's Day! Give a valentine to that special someone!")
+	priority_announce("Bugün Sevgililer Günü! O özel kişiye bir sevgililer günü hediyesi ver!")
 
 /obj/item/paper/valentine
 	name = "valentine"

@@ -33,7 +33,7 @@
 	var/lifetime = DEFAULT_METEOR_LIFETIME
 
 	///Used by Stray Meteor event to indicate meteor type (the type of sensor that "detected" it) in announcement
-	var/signature = "motion"
+	var/signature = "Hareket"
 
 /obj/effect/meteor/Initialize(mapload, turf/target)
 	. = ..()
@@ -76,7 +76,7 @@
 /obj/effect/meteor/proc/chase_target(atom/chasing, delay, home)
 	if(!isatom(chasing))
 		return
-	var/datum/move_loop/new_loop = SSmove_manager.move_towards(src, chasing, delay, home, lifetime)
+	var/datum/move_loop/new_loop = GLOB.move_manager.move_towards(src, chasing, delay, home, lifetime)
 	if(!new_loop)
 		return
 
@@ -245,7 +245,7 @@
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
 	threat = 20
-	signature = "thermal"
+	signature = "Termal"
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
@@ -260,7 +260,7 @@
 	hits = 9
 	meteordrop = list(/obj/item/stack/ore/uranium)
 	threat = 35
-	signature = "radiation"
+	signature = "Radyasyon"
 
 /obj/effect/meteor/irradiated/meteor_effect()
 	..()
@@ -278,7 +278,7 @@
 	heavy = TRUE
 	meteorsound = 'sound/effects/break_stone.ogg'
 	threat = 25
-	signature = "ordnance"
+	signature = "Mühimmat"
 	///Number of fragmentation meteors to be spawned
 	var/cluster_count = 8
 
@@ -310,7 +310,7 @@
 	meteordrop = list(/mob/living/basic/carp)
 	dropamt = 1
 	threat = 5
-	signature = "fishing and trawling"
+	signature = "Balıkçılık"
 
 /obj/effect/meteor/carp/Initialize(mapload)
 	if(prob(2))
@@ -326,7 +326,7 @@
 	hits = 12
 	meteordrop = list(/obj/item/stack/ore/bluespace_crystal)
 	threat = 15
-	signature = "bluespace flux"
+	signature = "Bluespace Akışı"
 
 /obj/effect/meteor/bluespace/Bump()
 	..()
@@ -343,7 +343,7 @@
 	meteorsound = 'sound/items/bikehorn.ogg'
 	threat = 15
 	movement_type = PHASING
-	signature = "comedy"
+	signature = "Şaka"
 
 /obj/effect/meteor/banana/meteor_effect()
 	..()
@@ -364,7 +364,7 @@
 	icon_state = "bluespace"
 	hits = 6
 	threat = 10
-	signature = "electromagnetic interference"
+	signature = "Elektromanyetik Parazit"
 
 /obj/effect/meteor/emp/Move()
 	. = ..()
@@ -387,7 +387,7 @@
 	meteordrop = list(/obj/item/food/meat/slab/human, /obj/item/food/meat/slab/human/mutant, /obj/item/organ/internal/heart, /obj/item/organ/internal/lungs, /obj/item/organ/internal/tongue, /obj/item/organ/internal/appendix/)
 	var/meteorgibs = /obj/effect/gibspawner/generic
 	threat = 2
-	signature = "culinary material"
+	signature = "Mutfak Malzemeleri"
 
 /obj/effect/meteor/meaty/Initialize(mapload)
 	for(var/path in meteordrop)
@@ -419,7 +419,7 @@
 	color = "#5EFF00"
 	meteordrop = list(/obj/item/food/meat/slab/xeno, /obj/item/organ/internal/tongue/alien)
 	meteorgibs = /obj/effect/gibspawner/xeno
-	signature = "exotic culinary material"
+	signature = "Egzotik Mutfak Malzemeleri"
 
 /obj/effect/meteor/meaty/xeno/Initialize(mapload)
 	meteordrop += subtypesof(/obj/item/organ/internal/alien)
@@ -440,7 +440,7 @@
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
 	threat = 50
-	signature = "armageddon"
+	signature = "Kıyamet"
 
 /obj/effect/meteor/tunguska/Move()
 	. = ..()

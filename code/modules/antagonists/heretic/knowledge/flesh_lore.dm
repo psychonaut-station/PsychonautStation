@@ -312,9 +312,9 @@
 /datum/heretic_knowledge/ultimate/flesh_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text = "[generate_heretic_text()] Ever coiling vortex. Reality unfolded. ARMS OUTREACHED, THE LORD OF THE NIGHT, [user.real_name] has ascended! Fear the ever twisting hand! [generate_heretic_text()]",
+		text = "[generate_heretic_text()] Sürekli kıvrılan bir girdap. Gerçeklik gözler önüne serildi. GECENİN EFENDİSİ, [user.real_name] yükseldi! Durmadan bükülenden korkun! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = ANNOUNCER_SPANOMALIES,
+		sound = 'sound/ambience/antag/heretic/ascend_flesh.ogg',
 		color_override = "pink",
 	)
 

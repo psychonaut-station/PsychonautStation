@@ -64,5 +64,3 @@
 
 	translator.grant_all_languages(source = LANGUAGE_CURATOR)
 	translator.remove_blocked_language(GLOB.all_languages, source=LANGUAGE_ALL)
-	if(translator.mind)
-		translator.mind.curator = TRUE

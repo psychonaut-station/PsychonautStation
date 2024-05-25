@@ -235,7 +235,6 @@
 		/datum/job/security_officer = /obj/item/organ/internal/cyberimp/arm/flash,
 		/datum/job/shaft_miner = /obj/item/organ/internal/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/internal/cyberimp/arm/toolset,
-		/datum/job/virologist = /obj/item/organ/internal/lungs/cybernetic/tier2,
 		/datum/job/warden = /obj/item/organ/internal/cyberimp/eyes/hud/security,
 		/datum/job/worker = /obj/item/organ/internal/cyberimp/arm/toolset,
 	)
@@ -296,6 +295,15 @@
 	weight_multiplier = 3
 	max_occurrences_modifier = 10 //lotta cows
 
+/datum/station_trait/bright_day
+	name = "Bright Day"
+	report_message = "The stars shine bright and the clouds are scarcer than usual. It's a bright day here on the Ice Moon's surface."
+	trait_type = STATION_TRAIT_POSITIVE
+	weight = 5
+	show_in_report = TRUE
+	trait_flags = STATION_TRAIT_PLANETARY
+	trait_to_give = STATION_TRAIT_BRIGHT_DAY
+
 /datum/station_trait/shuttle_sale
 	name = "Shuttle Firesale"
 	report_message = "The Nanotrasen Emergency Dispatch team is celebrating a record number of shuttle calls in the recent quarter. Some of your emergency shuttle options have been discounted!"
@@ -353,6 +361,26 @@
 	trait_to_give = STATION_TRAIT_ASSISTANT_GIMMICKS
 	show_in_report = TRUE
 	blacklist = list(/datum/station_trait/colored_assistants)
+
+/// Changes all the snack vendor to food vendor
+/datum/station_trait/foodvend
+	name = "Food Vendors"
+	report_message = "While the station was under construction, we realized that we had no snack vendors left, so we placed the food vendors we had instead."
+	trait_type = STATION_TRAIT_POSITIVE
+	weight = 1
+	show_in_report = TRUE
+
+/datum/station_trait/foodvend/New()
+	. = ..()
+	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(replace_vendors))
+
+/datum/station_trait/foodvend/proc/replace_vendors()
+	SIGNAL_HANDLER
+
+	for(var/obj/machinery/vending/snack/vendor as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/vending/snack))
+		var/turf/T = get_turf(vendor)
+		new /obj/machinery/vending/meal(T)
+		qdel(vendor)
 
 #undef PARTY_COOLDOWN_LENGTH_MIN
 #undef PARTY_COOLDOWN_LENGTH_MAX

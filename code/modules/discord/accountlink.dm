@@ -1,38 +1,108 @@
-// IF you have linked your account, this will trigger a verify of the user
 /client/verb/verify_in_discord()
 	set category = "OOC"
 	set name = "Verify Discord Account"
 	set desc = "Verify your discord account with your BYOND account"
 
-	// Safety checks
 	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))
 		return
 
-	// Why this would ever be unset, who knows
-	var/prefix = CONFIG_GET(string/discordbotcommandprefix)
-	if(!prefix)
+	if(!CONFIG_GET(string/discordbotcommandprefix) || !CONFIG_GET(string/discordbottoken) || !CONFIG_GET(string/discorduserendpoint))
 		to_chat(src, span_warning("This feature is disabled."))
+		return
 
 	if(!SSdiscord || !SSdiscord.reverify_cache)
 		to_chat(src, span_warning("Wait for the Discord subsystem to finish initialising"))
 		return
-	var/message = ""
-	// Simple sanity check to prevent a user doing this too often
-	var/cached_one_time_token = SSdiscord.reverify_cache[usr.ckey]
-	if(cached_one_time_token && cached_one_time_token != "")
-		message = "You already generated your one time token, it is [cached_one_time_token]. If you need a new one, you will have to wait until the round ends, or switch to another server; try verifying yourself on Discord by copying this command: <span class='code user-select'>[prefix]verify [cached_one_time_token]</span> and pasting it into the verification channel."
 
+	if(!verification_menu)
+		verification_menu = new(usr)
 
+	verification_menu.ui_interact(usr)
+
+/datum/verification_menu
+	var/client/holder
+	var/last_refresh = 0
+	var/linked = FALSE
+	var/token
+	var/discord_id
+	var/display_name
+	var/username
+	var/discriminator
+
+/datum/verification_menu/New(user)
+	if(istype(user, /client))
+		holder = user
 	else
-		// Will generate one if an expired one doesn't exist already, otherwise will grab existing token
-		var/one_time_token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
-		SSdiscord.reverify_cache[usr.ckey] = one_time_token
-		message = "Your one time token is: [one_time_token]. Assuming you have the required living minutes in game, you can now verify yourself on Discord by using the command: <span class='code user-select'>[prefix]verify [one_time_token]</span>"
+		var/mob/mob_user = user
+		holder = mob_user.client
 
-	//Now give them a browse window so they can't miss whatever we told them
-	var/datum/browser/window = new/datum/browser(usr, "discordverification", "Discord Verification")
-	window.set_content("<div>[message]</div>")
-	window.open()
+	lookup()
 
+/datum/verification_menu/proc/lookup()
+	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 
+	if(discord_id)
+		src.discord_id = discord_id
+		linked = TRUE
+		fetch()
+	else
+		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
+
+		if(cached_token && cached_token != "")
+			token = cached_token
+		else
+			token = SSdiscord.get_or_generate_one_time_token_for_ckey(holder.ckey)
+			SSdiscord.reverify_cache[holder.ckey] = token
+
+/datum/verification_menu/proc/fetch()
+	var/datum/http_request/request = new()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/discorduserendpoint)]/[discord_id]", headers = list("Authorization" = "Bot [CONFIG_GET(string/discordbottoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		var/list/json = json_decode(response["body"])
+		display_name = json["global_name"]
+		username = json["username"]
+		discriminator = json["discriminator"]
+
+/datum/verification_menu/proc/can_refresh()
+	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE
+
+/datum/verification_menu/ui_state(mob/user)
+	return GLOB.always_state
+
+/datum/verification_menu/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "DiscordVerification")
+		ui.open()
+
+/datum/verification_menu/ui_data(mob/user)
+	. = ..()
+	if(linked)
+		.["linked"] = TRUE
+		.["display_name"] = display_name
+		.["username"] = username
+		.["discriminator"] = discriminator
+	else
+		.["token"] = token
+	.["refresh"] = can_refresh()
+
+/datum/verification_menu/ui_static_data(mob/user)
+	. = ..()
+	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)
+
+/datum/verification_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	. = ..()
+	if(.)
+		return
+
+	if(action == "refresh" && can_refresh())
+		last_refresh = world.time
+		lookup()
+		return TRUE

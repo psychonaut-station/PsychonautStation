@@ -34,7 +34,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return
 
 #ifndef TESTING
-	if (lowertext(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
+	if (LOWER_TEXT(hsrc_command) == "_debug") //disable the integrated byond vv in the client side debugging tools since it doesn't respect vv read protections
 		return
 #endif
 
@@ -121,6 +121,9 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		no_tgui_adminhelp(input(src, "Enter your ahelp", "Ahelp") as null|message)
 		return
 
+	if(href_list["commandbar_typing"])
+		handle_commandbar_typing(href_list)
+
 	switch(href_list["_src_"])
 		if("holder")
 			hsrc = holder
@@ -153,6 +156,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
 		return FALSE
 	return TRUE
+
+/client/proc/is_localhost()
+	var/static/localhost_addresses = list(
+		"127.0.0.1",
+		"::1",
+		null,
+	)
+	return address in localhost_addresses
+
 /*
  * Call back proc that should be checked in all paths where a client can send messages
  *
@@ -245,32 +257,13 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	tgui_say = new(src, "tgui_say")
 
+	initialize_commandbar_spy()
+
 	set_right_click_menu_mode(TRUE)
 
 	GLOB.ahelp_tickets.ClientLogin(src)
 	GLOB.interviews.client_login(src)
 	GLOB.requests.client_login(src)
-	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
-	//Admin Authorisation
-	var/datum/admins/admin_datum = GLOB.admin_datums[ckey]
-	if (!isnull(admin_datum))
-		admin_datum.associate(src)
-		connecting_admin = TRUE
-	else if(GLOB.deadmins[ckey])
-		add_verb(src, /client/proc/readmin)
-		connecting_admin = TRUE
-	if(CONFIG_GET(flag/autoadmin))
-		if(!GLOB.admin_datums[ckey])
-			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
-			if (autoadmin_ranks.len == 0)
-				to_chat(world, "Autoadmin rank not found")
-			else
-				new /datum/admins(autoadmin_ranks, ckey)
-	if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin)
-		var/localhost_addresses = list("127.0.0.1", "::1")
-		if(isnull(address) || (address in localhost_addresses))
-			var/datum/admin_rank/localhost_rank = new("!localhost!", R_EVERYTHING, R_DBRANKS, R_EVERYTHING) //+EVERYTHING -DBRANKS *EVERYTHING
-			new /datum/admins(list(localhost_rank), ckey, 1, 1)
 	//preferences datum - also holds some persistent data for the client (because we may as well keep these datums to a minimum)
 	prefs = GLOB.preferences_datums[ckey]
 	if(prefs)
@@ -343,6 +336,29 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 
 	. = ..() //calls mob.Login()
+
+	// Admin Verbs need the client's mob to exist. Must be after ..()
+	var/connecting_admin = FALSE //because de-admined admins connecting should be treated like admins.
+	//Admin Authorisation
+	var/datum/admins/admin_datum = GLOB.admin_datums[ckey]
+	if (!isnull(admin_datum))
+		admin_datum.associate(src)
+		connecting_admin = TRUE
+	else if(GLOB.deadmins[ckey])
+		add_verb(src, /client/proc/readmin)
+		connecting_admin = TRUE
+	if(CONFIG_GET(flag/autoadmin))
+		if(!GLOB.admin_datums[ckey])
+			var/list/autoadmin_ranks = ranks_from_rank_name(CONFIG_GET(string/autoadmin_rank))
+			if (autoadmin_ranks.len == 0)
+				to_chat(world, "Autoadmin rank not found")
+			else
+				new /datum/admins(autoadmin_ranks, ckey)
+
+	if(CONFIG_GET(flag/enable_localhost_rank) && !connecting_admin && is_localhost())
+		var/datum/admin_rank/localhost_rank = new("!localhost!", R_EVERYTHING, R_DBRANKS, R_EVERYTHING) //+EVERYTHING -DBRANKS *EVERYTHING
+		new /datum/admins(list(localhost_rank), ckey, 1, 1)
+
 	if (length(GLOB.stickybanadminexemptions))
 		GLOB.stickybanadminexemptions -= ckey
 		if (!length(GLOB.stickybanadminexemptions))
@@ -481,26 +497,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		player_age = account_age
 	if(account_age >= 0 && account_age < nnpa)
 		message_admins("[key_name_admin(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-		send2tgs_adminless_only("new_byond_user", "[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].")
-
-	if (new_account && CONFIG_GET(string/centcom_ban_db))
-		var/datum/http_request/request = new()
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
-		request.begin_async()
-		UNTIL(request.is_complete())
-
-		var/datum/http_response/response = request.into_response()
-		if(response.errored || response.status_code != 200)
-			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
-			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
-		else
-			var/list/bans = json_decode(response["body"])
-			if (bans.len > 0)
-				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
-				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
-
-	get_message_output("watchlist entry", ckey)
-	check_ip_intel()
+		if (CONFIG_GET(flag/irc_first_connection_alert))
+			var/new_player_alert_role = CONFIG_GET(string/new_player_alert_role_id)
+			send2tgs_adminless_only(
+				"new_byond_user",
+				"[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].[new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
+			)
+	scream_about_watchlists(src)
+	check_centcom_db(new_account)
 	validate_key_in_db()
 	// If we aren't already generating a ban cache, fire off a build request
 	// This way hopefully any users of request_ban_cache will never need to yield
@@ -530,6 +534,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		to_chat(src, span_warning("Unable to access asset cache browser, if you are using a custom skin file, please allow DS to download the updated version, if you are not, then make a bug report. This is not a critical issue but can cause issues with resource downloading, as it is impossible to know when extra resources arrived to you."))
 
 	update_ambience_pref()
+	check_ip_intel()
 
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
@@ -537,6 +542,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if (!interviewee)
 		initialize_menus()
+
+	loot_panel = new(src)
 
 	view_size = new(src, getScreenSize(prefs.read_preference(/datum/preference/toggle/widescreen)))
 	view_size.resetFormat()
@@ -578,8 +585,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	SSserver_maint.UpdateHubStatus()
 	if(credits)
 		QDEL_LIST(credits)
-	if(obj_window)
-		QDEL_NULL(obj_window)
 	if(holder)
 		adminGreet(1)
 		holder.owner = null
@@ -592,6 +597,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	QDEL_NULL(view_size)
 	QDEL_NULL(void)
 	QDEL_NULL(tooltips)
+	QDEL_NULL(loot_panel)
 	seen_messages = null
 	Master.UpdateTickRate()
 	..() //Even though we're going to be hard deleted there are still some things that want to know the destroy is happening
@@ -780,6 +786,23 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			else
 				CRASH("Key check regex failed for [ckey]")
 
+/client/proc/check_centcom_db(new_account)
+	if(new_account && CONFIG_GET(string/centcom_ban_db))
+		var/datum/http_request/request = new()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
+		request.begin_async()
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.status_code != 200)
+			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+		else
+			var/list/bans = json_decode(response["body"])
+			if (bans.len > 0)
+				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
+				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
+
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.
 	var/datum/db_query/query_get_notes = SSdbcore.NewQuery(
@@ -807,15 +830,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			return
 	qdel(query_get_notes)
 	create_message(message_type, key, system_ckey, message, null, null, 0, 0, null, 0, 0)
-
-
-/client/proc/check_ip_intel()
-	set waitfor = 0 //we sleep when getting the intel, no need to hold up the client connection while we sleep
-	if (CONFIG_GET(string/ipintel_email))
-		var/datum/ipintel/res = get_ip_intel(address)
-		if (res.intel >= CONFIG_GET(number/ipintel_rating_bad))
-			message_admins(span_adminnotice("Proxy Detection: [key_name_admin(src)] IP intel rated [res.intel*100]% likely to be a Proxy/VPN."))
-		ip_intel = res.intel
 
 /client/Click(atom/object, atom/location, control, params)
 	if(click_intercept_time)
@@ -1157,7 +1171,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		return 0
 
 	if(!isnum(player_age) || player_age < 0)
-		return 0 
+		return 0
 
 	if(!isnum(days_needed))
 		return 0
@@ -1167,13 +1181,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /// Attempts to make the client orbit the given object, for administrative purposes.
 /// If they are not an observer, will try to aghost them.
 /client/proc/admin_follow(atom/movable/target)
-	var/can_ghost = TRUE
-
-	if (!isobserver(mob))
-		can_ghost = admin_ghost()
-
-	if(!can_ghost)
-		return FALSE
+	if(!isobserver(mob))
+		SSadmin_verbs.dynamic_invoke_verb(src, /datum/admin_verb/admin_ghost)
+		if(!isobserver(mob))
+			return
 
 	var/mob/dead/observer/observer = mob
 	observer.ManualFollow(target)

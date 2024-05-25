@@ -17,5 +17,6 @@
 		"stamp-mime" = 'icons/stamp_icons/large_stamp-mime.png',
 		"stamp-centcom" = 'icons/stamp_icons/large_stamp-centcom.png',
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png',
-		"stamp-secretary" = 'icons/stamp_icons/large_stamp-secretary.png'
+		"stamp-secretary" = 'icons/stamp_icons/large_stamp-secretary.png',
+		"stamp-borg" = 'icons/stamp_icons/large_stamp-borg.png'
 	)

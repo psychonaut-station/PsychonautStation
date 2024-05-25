@@ -276,6 +276,11 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	desc = "You're getting crushed by high gravity, picking up items and movement will be slowed. You'll also accumulate brute damage!"
 	icon_state = "paralysis"
 
+/atom/movable/screen/alert/highweight
+	name = "High Weight"
+	desc = "You're getting crushed by high weight, movement will be slowed. You'll also accumulate brute damage!"
+	icon_state = "paralysis"
+
 /atom/movable/screen/alert/fire
 	name = "On Fire"
 	desc = "You're on fire. Stop, drop and roll to put the fire out or move to a vacuum area."
@@ -301,11 +306,24 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	/// The offer we're linked to, yes this is suspiciously like a status effect alert
 	var/datum/status_effect/offering/offer
 	/// Additional text displayed in the description of the alert.
-	var/additional_desc_text = "Click this alert to take it."
+	var/additional_desc_text = "Click this alert to take it, or shift click it to examiante it."
+	/// Text to override what appears in screentips for the alert
+	var/screentip_override_text
+	/// Whether the offered item can be examined by shift-clicking the alert
+	var/examinable = TRUE
+
+/atom/movable/screen/alert/give/Initialize(mapload, datum/hud/hud_owner)
+	. = ..()
+	register_context()
 
 /atom/movable/screen/alert/give/Destroy()
 	offer = null
 	return ..()
+
+/atom/movable/screen/alert/give/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	context[SCREENTIP_CONTEXT_LMB] = screentip_override_text || "Take [offer.offered_item.name]"
+	context[SCREENTIP_CONTEXT_SHIFT_LMB] = "Examine"
+	return CONTEXTUAL_SCREENTIP_SET
 
 /**
  * Handles assigning most of the variables for the alert that pops up when an item is offered
@@ -357,6 +375,16 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 	handle_transfer()
 
+/atom/movable/screen/alert/give/examine(mob/user)
+	if(!examinable)
+		return ..()
+
+	return list(
+		span_boldnotice(name),
+		span_info("[offer.owner] is offering you the following item (click the alert to take it!):"),
+		"<hr>[jointext(offer.offered_item.examine(user), "\n")]",
+	)
+
 /// An overrideable proc used simply to hand over the item when claimed, this is a proc so that high-fives can override them since nothing is actually transferred
 /atom/movable/screen/alert/give/proc/handle_transfer()
 	var/mob/living/carbon/taker = owner
@@ -367,6 +395,8 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 /atom/movable/screen/alert/give/highfive
 	additional_desc_text = "Click this alert to slap it."
+	screentip_override_text = "High Five"
+	examinable = FALSE
 	/// Tracks active "to slow"ing so we can't spam click
 	var/too_slowing_this_guy = FALSE
 
@@ -424,6 +454,10 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 
 	if(QDELETED(offer.offered_item))
 		examine_list += span_warning("[source]'s arm appears tensed up, as if [source.p_they()] plan on pulling it back suddenly...")
+
+/atom/movable/screen/alert/give/hand
+	screentip_override_text = "Take Hand"
+	examinable = FALSE
 
 /atom/movable/screen/alert/give/hand/get_receiving_name(mob/living/carbon/taker, mob/living/carbon/offerer, obj/item/receiving)
 	additional_desc_text = "Click this alert to take it and let [offerer.p_them()] pull you around!"
@@ -1048,13 +1082,16 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	return TRUE
 
 /atom/movable/screen/alert/Click(location, control, params)
+	SHOULD_CALL_PARENT(TRUE)
+
+	..()
 	if(!usr || !usr.client)
 		return FALSE
 	if(usr != owner)
 		return FALSE
 	var/list/modifiers = params2list(params)
 	if(LAZYACCESS(modifiers, SHIFT_CLICK)) // screen objects don't do the normal Click() stuff so we'll cheat
-		to_chat(usr, span_boldnotice("[name]</span> - <span class='info'>[desc]"))
+		to_chat(usr, examine_block(jointext(examine(usr), "\n")))
 		return FALSE
 	var/datum/our_master = master_ref?.resolve()
 	if(our_master && click_master)
@@ -1068,3 +1105,9 @@ or shoot a gun to move around via Newton's 3rd Law of Motion."
 	master_ref = null
 	owner = null
 	screen_loc = ""
+
+/atom/movable/screen/alert/examine(mob/user)
+	return list(
+		span_boldnotice(name),
+		span_info(desc),
+	)

@@ -15,28 +15,27 @@
 	"traits": [
 		{
 			"Up": true,
-			"Mining": true,
 			"Linkage": null,
 			"Gravity": true,
+			"Baseturf": "/turf/open/water",
 			"No Parallax": true
 		},
 		{
 			"Down": true,
 			"Up": true,
-			"Mining": true,
 			"Linkage": null,			
 			"Gravity": true,
+			"Baseturf": "/turf/open/openspace",
 			"No Parallax": true
 		},
 		{
 			"Down": true,
-			"Mining": false,
 			"Linkage": null,
 			"Gravity": true,
+			"Baseturf": "/turf/open/openspace",
 			"No Parallax": true
 		}
 	],
-	"minetype": "none",
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/service/bar", "/area/station/commons/lounge"]

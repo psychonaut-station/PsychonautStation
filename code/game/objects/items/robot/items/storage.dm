@@ -10,6 +10,7 @@
 
 /obj/item/borg/apparatus/Initialize(mapload)
 	RegisterSignal(loc.loc, COMSIG_BORG_SAFE_DECONSTRUCT, PROC_REF(safedecon))
+	update_appearance()
 	return ..()
 
 /obj/item/borg/apparatus/Destroy()
@@ -50,10 +51,11 @@
 	stored.attack_self(user)
 
 //Alt click drops the stored item.
-/obj/item/borg/apparatus/AltClick(mob/living/silicon/robot/user)
+/obj/item/borg/apparatus/click_alt(mob/living/silicon/robot/user)
 	if(!stored || !issilicon(user))
-		return ..()
+		return CLICK_ACTION_BLOCKING
 	stored.forceMove(user.drop_location())
+	return CLICK_ACTION_SUCCESS
 
 /obj/item/borg/apparatus/pre_attack(atom/atom, mob/living/user, params)
 	if(stored)
@@ -244,16 +246,16 @@
 		bag = mutable_appearance(icon, icon_state = "evidenceobj") // empty bag
 	. += bag
 
-/obj/item/borg/apparatus/organ_storage/AltClick(mob/living/silicon/robot/user)
-	. = ..()
-	if(stored)
-		var/obj/item/organ = stored
-		user.visible_message(span_notice("[user] dumps [organ] from [src]."), span_notice("You dump [organ] from [src]."))
-		cut_overlays()
-		organ.forceMove(get_turf(src))
-	else
+/obj/item/borg/apparatus/organ_storage/click_alt(mob/living/silicon/robot/user)
+	if(!stored)
 		to_chat(user, span_notice("[src] is empty."))
-	return
+		return CLICK_ACTION_BLOCKING
+
+	var/obj/item/organ = stored
+	user.visible_message(span_notice("[user] dumps [organ] from [src]."), span_notice("You dump [organ] from [src]."))
+	cut_overlays()
+	organ.forceMove(get_turf(src))
+	return CLICK_ACTION_SUCCESS
 
 ///Apparatus to allow Engineering/Sabo borgs to manipulate any material sheets.
 /obj/item/borg/apparatus/sheet_manipulator
@@ -362,3 +364,47 @@
 	if(stored)
 		. += "The apparatus currently has [stored] secured."
 	. += span_notice("<i>Alt-click</i> will drop the currently secured item.")
+
+/obj/item/borg/apparatus/paper_holder
+	name = "integrated paper holder"
+	desc = "A holder for holding papers."
+	icon = 'icons/obj/service/bureaucracy.dmi'
+	icon_state = "clipboard"
+	storable = list(/obj/item/paper)
+
+/obj/item/borg/apparatus/paper_holder/update_overlays()
+	. = ..()
+	. += "clipboard_over"
+	var/mutable_appearance/arm = mutable_appearance(icon = icon, icon_state = "clipboard_over")
+	if(stored)
+		stored.pixel_x = 0
+		stored.pixel_y = 0
+		var/mutable_appearance/stored_copy = new /mutable_appearance(stored)
+		stored_copy.layer = FLOAT_LAYER
+		stored_copy.plane = FLOAT_PLANE
+		. += stored_copy
+	. += arm
+
+/obj/item/borg/apparatus/paper_holder/pre_attack(atom/target, mob/living/user, params)
+	if(!user.Adjacent(target))
+		return
+	if(istype(target, /obj/item/paper_bin) && !stored)
+		var/obj/item/paper_bin/paperbin = target
+
+		if(paperbin.total_paper > 0)
+			var/obj/item/paper/top_paper = pop(paperbin.paper_stack) || paperbin.generate_paper()
+			paperbin.total_paper -= 1
+			top_paper.forceMove(src)
+			stored = top_paper
+			RegisterSignal(stored, COMSIG_ATOM_UPDATED_ICON, PROC_REF(on_stored_updated_icon))
+			to_chat(user, span_notice("You take [top_paper] out of [paperbin]."))
+			paperbin.update_appearance()
+			update_appearance()
+		return TRUE
+	return ..()
+
+/obj/item/borg/apparatus/paper_holder/examine()
+	. = ..()
+	if(stored)
+		. += "The apparatus currently has [stored] secured."
+	. += span_notice(" <i>Alt-click</i> to drop the currently stored paper. ")

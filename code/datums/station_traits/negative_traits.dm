@@ -149,7 +149,7 @@
 /datum/station_trait/overflow_job_bureaucracy/proc/set_overflow_job_override(datum/source)
 	SIGNAL_HANDLER
 	var/datum/job/picked_job = pick(SSjob.get_valid_overflow_jobs())
-	chosen_job_name = lowertext(picked_job.title) // like Chief Engineers vs like chief engineers
+	chosen_job_name = LOWER_TEXT(picked_job.title) // like Chief Engineers vs like chief engineers
 	SSjob.set_overflow_role(picked_job.type)
 
 /datum/station_trait/slow_shuttle
@@ -570,6 +570,8 @@
 /datum/station_trait/nebula/hostile/radiation/New()
 	. = ..()
 
+	RegisterSignal(SSdcs, COMSIG_RULESET_BODY_GENERATED_FROM_GHOSTS, PROC_REF(on_spawned_mob))
+
 	for(var/area/target as anything in get_areas(radioactive_areas))
 		RegisterSignal(target, COMSIG_AREA_ENTERED, PROC_REF(on_entered))
 		RegisterSignal(target, COMSIG_AREA_EXITED, PROC_REF(on_exited))
@@ -591,7 +593,7 @@
 		//if engineering isnt valid, just send it to the bridge
 		send_supply_pod_to_area(supply_pack_shielding.generate(null), /area/station/command/bridge, /obj/structure/closet/supplypod/centcompod)
 
-	// Let the viro know resistence is futile
+	// Let medical know resistence is futile
 	send_fax_to_area(new /obj/item/paper/fluff/radiation_nebula_virologist(), /area/station/medical/virology, "NT Virology Department", \
 	force = TRUE, force_pod_type = /obj/structure/closet/supplypod/centcompod)
 
@@ -617,6 +619,19 @@
 
 	// The component handles its own removal
 
+/// When a mob is spawned by dynamic, intercept and give it a little radiation shield. Only works for dynamic mobs!
+/datum/station_trait/nebula/hostile/radiation/proc/on_spawned_mob(datum/source, mob/spawned_mob)
+	SIGNAL_HANDLER
+
+	if(!istype(get_area(spawned_mob), radioactive_areas)) //only if you're spawned in the radioactive areas
+		return
+
+	if(!isliving(spawned_mob)) // Dynamic shouldnt spawn non-living but uhhhhhhh why not
+		return
+
+	var/mob/living/spawnee = spawned_mob
+	spawnee.apply_status_effect(/datum/status_effect/radiation_immunity/radnebula)
+
 /datum/station_trait/nebula/hostile/radiation/apply_nebula_effect(effect_strength = 0)
 	//big bombad now
 	if(effect_strength > 0 && !SSmapping.is_planetary()) //admins can force this
@@ -630,9 +645,10 @@
 			var/obj/machinery/nebula_shielding/emergency/rad_shield = /obj/machinery/nebula_shielding/emergency/radiation
 
 			priority_announce(
-				{"Is everything okay there? We're getting high radiation readings from inside the station. \
-				We're sending an emergency shielding unit for now, it will last [initial(rad_shield.detonate_in) / (1 MINUTES)] minutes. \n\n\
-				Set up the nebula shielding. You can order construction kits at cargo if yours have been lost.
+				{"Her şey yolunda mı? İstasyonunuzun içinden yüksek radyasyon değerleri alıyoruz. \
+				Şimdilik bir acil durum kalkanı gönderiyoruz, Etkisi [initial(rad_shield.detonate_in) / (1 MINUTES)] dakika sürecektir. \n\n\
+				Nebula kalkanını kurun. Gerekli yapım kitleri mühendislik departmanınızda bulunmaktadır. \
+				Eğer sizinkiler kaybolduysa kargodan yapım kitleri sipariş edebilirsiniz.
 				"}
 			)
 
@@ -652,20 +668,20 @@
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
 	//How long do we have untill the first shielding unit needs to be up?
-	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] minute\s"
+	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] dakika"
 	//For how long each shielding unit will protect for
-	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] minute\s"
+	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] dakika"
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down
 	var/max_shielders = ((maximum_nebula_intensity / intensity_increment_time)) / initial(shielder.shielding_strength)
 
-	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
-		Standard spacesuits will not protect against the nebula and using them is strongly discouraged. \n\n\
+	var/announcement = {"İstasyonunuz radyoaktif bir nebulanın içinde inşa edilmiş durumda. \
+		Standart uzay giysileri nebulaya karşı koruma sağlamaz ve kullanılması kesinlikle önerilmez. \n\n\
 
-		EXTREME IMPORTANCE: The station is falling deeper into the nebula, and the gravity generator's innate radiation shielding \
-		will not hold very long. Your engineering department has been supplied with all the necessary supplies to set up \
-		shields to protect against the nebula. Additional supply crates can be ordered at cargo. \n\n\
-		You have [deadline] before the nebula enters the station. \
-		Every shielding unit will provide an additional [shielder_time] of protection, fully protecting the station with [max_shielders] shielding units.
+		SON DERECE ÖNEMLİ: İstasyon nebulanın derinliklerine doğru sürüklenmektedir ve yerçekimi jeneratörünün radyasyon kalkanı \
+		çok uzun süre dayanmayacaktır. Mühendislik departmanında nebulaya karşı koruma kalkanları kurmak için gerekli \
+		tüm malzemeler bulunuyor. Kargodan ilave malzeme sandıkları sipariş edebilirsiniz. \n\n\
+		Nebula istasyona girmeden önce [deadline] kadar zamanınız var. \
+		Her kalkan birimi ek bir [shielder_time] kadar koruma süresi sağlayarak istasyonu [max_shielders] koruma birimiyle tamamen koruyacaktır.
 	"}
 
 	priority_announce(announcement, sound = 'sound/misc/notice1.ogg')

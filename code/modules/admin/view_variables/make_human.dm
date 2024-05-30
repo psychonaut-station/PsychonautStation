@@ -1,35 +1,16 @@
-/client/proc/make_human(mob/M)
-	if(!holder)
-		return
-
-	var/selected_outfit = M.client?.robust_dress_shop()
+ADMIN_VERB_ONLY_CONTEXT_MENU(make_human_mapview, R_NONE, "Make Human", mob/target in view())
+	var/selected_outfit = target.client?.robust_dress_shop()
 	if (!selected_outfit)
 		return
 
-	var/mob/living/carbon/human/newmob = M.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
+	var/mob/living/carbon/human/newmob = target.change_mob_type(/mob/living/carbon/human, null, null, TRUE)
 	if(istype(newmob))
 		newmob.equipOutfit(selected_outfit)
-		message_admins("[key_name_admin(src)] has transformed [M] into [selected_outfit]")
-		log_admin("[key_name(src)] has transformed [M] into [selected_outfit]")
+		message_admins("[key_name_admin(user)] has transformed [target] into [selected_outfit]")
+		log_admin("[key_name(user)] has transformed [target] into [selected_outfit]")
 
-
-/client/proc/make_human_mapview(mob/M as mob in view(view))
-	set category = "Debug"
-	set name = "Make Human"
-	make_human(M)
-
-/client/proc/delete_mob(mob/M)
-	if(!holder || !M)
-		return
-
-	QDEL_IN(M, 1)
-	message_admins("[key_name_admin(src)] has deleted [M]")
-	log_admin("[key_name(src)] has deleted [M]")
-
-
-/client/proc/delete_mob_mapview(mob/M as mob in view(view))
-	set category = "Debug"
-	set name = "Delete Mob"
-
-	if(usr && tgui_alert(usr, "Are you sure?", "Delete Mob", list("I'm Sure", "Abort")) == "I'm Sure")
-		delete_mob(M)
+ADMIN_VERB_ONLY_CONTEXT_MENU(delete_mob_mapview, R_NONE, "Delete Mob", mob/target in view())
+	if(user && tgui_alert(user, "Are you sure?", "Delete Mob", list("I'm Sure", "Abort")) == "I'm Sure")
+		QDEL_IN(target, 1)
+		message_admins("[key_name_admin(user)] has deleted [target]")
+		log_admin("[key_name(user)] has deleted [target]")

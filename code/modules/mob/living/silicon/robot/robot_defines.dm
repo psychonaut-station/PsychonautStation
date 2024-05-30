@@ -52,6 +52,8 @@
 	var/lamp_doom = FALSE
 	///Lamp brightness. Starts at 3, but can be 1 - 5.
 	var/lamp_intensity = 3
+	////Power consumption of the light per lamp_intensity.
+	var/lamp_power_consumption = BORG_LAMP_POWER_CONSUMPTION
 
 	var/mutable_appearance/eye_lights
 
@@ -104,6 +106,7 @@
 	///Random serial number generated for each cyborg upon its initialization
 	var/ident = 0
 	var/locked = TRUE
+	req_one_access = list(ACCESS_ROBOTICS)
 
 	///Whether the robot has no charge left.
 	var/low_power_mode = FALSE
@@ -157,6 +160,11 @@
 /mob/living/silicon/robot/model/clown
 	set_model = /obj/item/robot_model/clown
 	icon_state = "clown"
+
+/mob/living/silicon/robot/model/cargo
+	set_model = /obj/item/robot_model/cargo
+	icon = 'icons/psychonaut/mob/silicon/robots.dmi'
+	icon_state = "cargo"
 
 /mob/living/silicon/robot/model/engineering
 	set_model = /obj/item/robot_model/engineering

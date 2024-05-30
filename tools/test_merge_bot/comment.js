@@ -1,42 +1,34 @@
-const FIND_EXISTING_ENTRIES = /### (.+)\n((?:- .+\n)*)/g;
+const FIND_EXISTING_ENTRIES = /\n\n\n((?:- .+\n)*)/g;
 const ENTRY_PATTERN =
-	/- \[(?<round_id>[0-9]+) @ (?<datetime>.+?)\]\((?<url>.+)\)/;
+	/- (?<round_id>[0-9]+) @ (?<datetime>.+?)$/;
 
-export const createComment = (servers, existingComment) => {
+export const createComment = (rounds, existingComment) => {
 	if (existingComment) {
-		for (const [, serverName, entries] of existingComment.matchAll(
+		for (const [, entries] of existingComment.matchAll(
 			FIND_EXISTING_ENTRIES
 		)) {
-			let server = servers[serverName];
-			if (!server) {
-				server = [];
-				servers[serverName] = server;
-			}
-
 			for (const line of entries.split("\n")) {
 				const match = line.match(ENTRY_PATTERN);
 				if (!match) {
 					continue;
 				}
 
-				const { round_id: roundIdString, datetime, url } = match.groups;
+				const { round_id: roundIdString, datetime } = match.groups;
 				const round_id = parseInt(roundIdString, 10);
 
-				if (server.find((round) => round.round_id === round_id)) {
+				if (rounds.find((round) => round.round_id === round_id)) {
 					continue;
 				}
 
-				server.push({
+				rounds.push({
 					round_id,
 					datetime,
-					url,
 				});
 			}
 		}
 	}
 
-	const roundIds = Object.values(servers)
-		.flat()
+	const roundIds = rounds
 		.map(({ round_id }) => round_id)
 		.sort()
 		.join(", ");
@@ -47,24 +39,16 @@ export const createComment = (servers, existingComment) => {
 		return null;
 	}
 
-	let totalRounds = 0;
+	let totalRounds = rounds.length;
 	let listOfRounds = "";
 
-	for (const [server, rounds] of Object.entries(servers).sort(
-		([a], [b]) => b - a
+	for (const { datetime, round_id } of rounds.sort(
+		(a, b) => b.round_id - a.round_id
 	)) {
-		totalRounds += rounds.length;
-
-		listOfRounds += `${"\n"}### ${server}`;
-
-		for (const { datetime, round_id, url } of rounds.sort(
-			(a, b) => b.round_id - a.round_id
-		)) {
-			listOfRounds += `${"\n"}- [${round_id} @ ${datetime}](${url})`;
-		}
-
-		listOfRounds += "\n";
+		listOfRounds += `${"\n"}- ${round_id} @ ${datetime}`;
 	}
+
+	listOfRounds += "\n";
 
 	return (
 		newHeader +

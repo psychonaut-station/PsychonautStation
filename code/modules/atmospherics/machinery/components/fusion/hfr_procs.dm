@@ -412,8 +412,8 @@
 
 	var/critical = selected_fuel.meltdown_flags & HYPERTORUS_FLAG_CRITICAL_MELTDOWN
 	if(critical)
-		priority_announce("WARNING - The explosion will likely cover a big part of the station and the coming EMP will wipe out most of the electronics. \
-				Get as far away as possible from the reactor or find a way to shut it down.", "Alert", 'sound/misc/notice3.ogg')
+		priority_announce("UYARI - Patlama muhtemelen istasyonun büyük bir bölümünü kaplayacak ve yaklaşan EMP elektronik cihazların çoğunu yok edecektir. \
+				Reaktörden mümkün olduğunca uzaklaşın ya da onu kapatmanın bir yolunu bulun.", "Uyarı", 'sound/misc/notice3.ogg')
 	var/speaking = "[emergency_alert] The Hypertorus fusion reactor has reached critical integrity failure. Emergency magnetic dampeners online."
 	radio.talk_into(src, speaking, common_channel, language = get_selected_language())
 

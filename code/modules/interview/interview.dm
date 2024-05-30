@@ -58,7 +58,7 @@
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \
 			+ "\n[span_adminsay("Başvurunuz onaylandı, 5 saniye içinde yeniden bağlanacaksınız.")]", confidential = TRUE)
-		addtimer(CALLBACK(src, PROC_REF(reconnect_owner)), 50)
+		addtimer(CALLBACK(src, PROC_REF(reconnect_owner)), 5 SECONDS)
 
 	var/clear_message = ""
 	for (var/i in 1 to questions.len)
@@ -79,7 +79,7 @@
 	GLOB.interviews.cooldown_ckeys |= owner_ckey
 	log_admin_private("[key_name(denied_by)] has denied interview #[id] for [owner_ckey][!owner ? "(DC)": ""].")
 	message_admins(span_adminnotice("[key_name(denied_by)] has denied [link_self()] for [owner_ckey][!owner ? "(DC)": ""]."))
-	addtimer(CALLBACK(GLOB.interviews, TYPE_PROC_REF(/datum/interview_manager, release_from_cooldown), owner_ckey), 180)
+	addtimer(CALLBACK(GLOB.interviews, TYPE_PROC_REF(/datum/interview_manager, release_from_cooldown), owner_ckey), 18 SECONDS)
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \

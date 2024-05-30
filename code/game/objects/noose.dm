@@ -13,7 +13,7 @@
 	icon_state = "noose"
 	icon = 'icons/obj/noose.dmi'
 	layer = FLY_LAYER
-	obj_flags = NO_DECONSTRUCTION
+	obj_flags = NO_DEBRIS_AFTER_DECONSTRUCTION
 	var/mutable_appearance/overlay
 
 /obj/structure/chair/noose/attackby(obj/item/W, mob/user, params)

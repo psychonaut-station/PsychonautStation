@@ -2542,7 +2542,7 @@
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /obj/effect/spawner/random/maintenance/two,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "bpM" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
@@ -3935,7 +3935,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/cobweb,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "cgL" = (
 /obj/structure/railing{
 	dir = 8
@@ -5537,7 +5537,9 @@
 /obj/structure/reagent_dispensers/plumbed{
 	dir = 4
 	},
-/obj/structure/broken_flooring/corner/directional/east,
+/obj/effect/turf_decal/bot_white{
+	color = "#52B4E9"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "dbb" = (
@@ -10907,9 +10909,6 @@
 	},
 /turf/open/floor/wood,
 /area/station/service/chapel/funeral)
-"ggs" = (
-/turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
 "ggt" = (
 /obj/structure/table/wood/poker,
 /obj/item/toy/cards/deck,
@@ -11085,7 +11084,7 @@
 	spawn_scatter_radius = 1
 	},
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "gmi" = (
 /obj/machinery/photocopier,
 /turf/open/floor/wood,
@@ -11486,7 +11485,7 @@
 /area/station/cargo/lobby)
 "gvQ" = (
 /turf/closed/wall/r_wall,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "gvR" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -11501,6 +11500,7 @@
 /obj/machinery/duct,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/grimy,
 /area/station/science/breakroom)
 "gwk" = (
@@ -13032,7 +13032,7 @@
 /obj/machinery/meter,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "hmG" = (
 /obj/effect/turf_decal/tile/purple,
 /obj/structure/railing,
@@ -15343,7 +15343,7 @@
 	},
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "iMs" = (
 /obj/effect/turf_decal/tile/purple/opposingcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -17397,6 +17397,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/turf_decal/siding/wood,
 /obj/effect/decal/cleanable/dirt,
+/obj/effect/landmark/event_spawn,
+/obj/effect/landmark/generic_maintenance_landmark,
+/obj/effect/landmark/blobstart,
 /turf/open/floor/iron/grimy,
 /area/station/service/library/abandoned)
 "jUj" = (
@@ -17490,7 +17493,9 @@
 	dir = 4
 	},
 /obj/effect/decal/cleanable/cobweb,
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/bot_white{
+	color = "#52B4E9"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
 "jYZ" = (
@@ -17728,6 +17733,9 @@
 	dir = 8
 	},
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/turf_decal/bot_white{
+	color = "#52B4E9"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/service)
 "keR" = (
@@ -18032,7 +18040,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "koE" = (
 /obj/machinery/door/airlock/maintenance_hatch{
 	name = "Theater Maintenance"
@@ -19207,6 +19215,7 @@
 /obj/effect/turf_decal/bot,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/qm)
 "kWY" = (
@@ -20297,7 +20306,7 @@
 /obj/structure/closet/firecloset,
 /obj/effect/decal/cleanable/cobweb/cobweb2,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "lCh" = (
 /obj/effect/decal/cleanable/confetti,
 /turf/open/floor/plating,
@@ -21529,6 +21538,9 @@
 	dir = 4
 	},
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/effect/turf_decal/bot_white{
+	color = "#74b2d3"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "mou" = (
@@ -24415,7 +24427,7 @@
 	name = "Xenobiology Maintenance"
 	},
 /turf/open/floor/iron/dark,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "ofv" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line,
@@ -27536,7 +27548,7 @@
 "qmg" = (
 /obj/item/toy/plush/rouny,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "qmi" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/arrows{
@@ -29671,7 +29683,6 @@
 /area/station/maintenance/port)
 "rHW" = (
 /obj/structure/table,
-/obj/structure/table,
 /obj/item/binoculars,
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 6
@@ -30906,7 +30917,9 @@
 /obj/structure/reagent_dispensers/plumbed{
 	dir = 4
 	},
-/obj/effect/turf_decal/delivery,
+/obj/effect/turf_decal/bot_white{
+	color = "#52B4E9"
+	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
 "ssP" = (
@@ -31464,7 +31477,7 @@
 "sIV" = (
 /obj/effect/spawner/random/maintenance/two,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "sIX" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden,
 /obj/effect/turf_decal/trimline/purple/filled/line,
@@ -33385,12 +33398,6 @@
 /obj/structure/sign/poster/official/ion_rifle/directional/west,
 /turf/open/floor/iron/dark/small,
 /area/station/science/auxlab/firing_range)
-"tLC" = (
-/obj/effect/spawner/random/trash/garbage{
-	spawn_scatter_radius = 1
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
 "tMv" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/effect/turf_decal/stripes/line{
@@ -34343,7 +34350,7 @@
 "uoB" = (
 /obj/machinery/space_heater,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "uoH" = (
 /obj/structure/broken_flooring/corner/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -37805,7 +37812,7 @@
 	dir = 10
 	},
 /turf/open/floor/iron/dark,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "woR" = (
 /obj/effect/spawner/random/trash/mess,
 /obj/effect/turf_decal/stripes/line{
@@ -39702,6 +39709,7 @@
 "xBm" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/cable,
+/obj/effect/landmark/event_spawn,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
 "xBR" = (
@@ -40274,7 +40282,7 @@
 "xNf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /turf/open/floor/plating,
-/area/station/maintenance/department/science/xenobiology)
+/area/station/maintenance/department/science/lower)
 "xNV" = (
 /obj/structure/sign/poster/official/random/directional/west,
 /obj/machinery/vending/wardrobe/chef_wardrobe,
@@ -101375,7 +101383,7 @@ gYm
 hUS
 rIW
 cgC
-tLC
+abf
 koA
 pyf
 abT
@@ -101621,7 +101629,7 @@ gzm
 gzm
 gvQ
 bpC
-ggs
+vfw
 rIW
 hap
 bXZ

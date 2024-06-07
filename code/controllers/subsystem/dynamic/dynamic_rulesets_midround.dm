@@ -243,7 +243,6 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
-		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -293,7 +292,6 @@
 		JOB_SCIENTIST,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
-		JOB_BRIG_PHYSICIAN
 	)
 	exclusive_roles = list(JOB_AI)
 	required_enemies = list(4,4,4,4,4,4,2,2,2,0)
@@ -383,7 +381,6 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
-		JOB_BRIG_PHYSICIAN,
 		JOB_WARDEN,
 	)
 	required_enemies = list(3,3,3,3,3,2,1,1,0,0)
@@ -461,7 +458,6 @@
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
 		JOB_NT_SECRETARY,
-		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -469,15 +465,7 @@
 		ROLE_POSITRONIC_BRAIN,
 		JOB_ANIMAL,
 	)
-	enemy_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_SECURITY_OFFICER,
-		JOB_CHIEF_ENGINEER,
-		JOB_STATION_ENGINEER
-	)
-	required_enemies = list(6,6,6,6,6,4,4,2,1,0)
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	minimum_round_time = 35 MINUTES
 	weight = 3
@@ -721,7 +709,7 @@
 	antag_flag = ROLE_SPIDER
 	ruleset_category = parent_type::ruleset_category |  RULESET_CATEGORY_NO_WITTING_CREW_ANTAGONISTS
 	required_type = /mob/dead/observer
-	required_enemies = list(4,4,4,4,4,2,2,1,0,0)
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 0
 	weight = 3
 	cost = 8
@@ -740,13 +728,6 @@
 	ruleset_category = parent_type::ruleset_category |  RULESET_CATEGORY_NO_WITTING_CREW_ANTAGONISTS
 	antag_datum = /datum/antagonist/revenant
 	antag_flag = ROLE_REVENANT
-	enemy_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_SECURITY_OFFICER,
-		JOB_CHAPLAIN
-	)
 	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 1
 	weight = 4
@@ -821,7 +802,7 @@
 	ruleset_category = parent_type::ruleset_category |  RULESET_CATEGORY_NO_WITTING_CREW_ANTAGONISTS
 	antag_flag = "Space Pirates"
 	required_type = /mob/dead/observer
-	required_enemies = list(6,6,5,5,4,3,2,1,0,0)
+	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
 	required_candidates = 0
 	weight = 3
 	cost = 8
@@ -847,7 +828,6 @@
 	restricted_roles = list(
 		JOB_AI,
 		JOB_CYBORG,
-		JOB_SYNTHETIC,
 		ROLE_POSITRONIC_BRAIN,
 		JOB_ANIMAL,
 	)
@@ -916,7 +896,6 @@
 		JOB_DETECTIVE,
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
-		JOB_SYNTHETIC,
 		JOB_WARDEN,
 	)
 	required_enemies = list(2, 2, 1, 1, 1, 1, 1, 0, 0, 0)

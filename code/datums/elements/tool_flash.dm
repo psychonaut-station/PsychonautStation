@@ -40,4 +40,4 @@
 		return
 
 	if(user && get_dist(get_turf(source), get_turf(user)) <= 1)
-		user.flash_act(min(flash_strength,1))
+		user.flash_act(max(flash_strength,1))

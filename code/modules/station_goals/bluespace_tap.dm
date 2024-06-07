@@ -123,7 +123,6 @@
 		/obj/item/dnainjector/chameleonmut = 5,
 		/obj/item/dnainjector/dwarf = 5,
 		/mob/living/basic/pet/dog/corgi = 5,
-		/mob/living/simple_animal/pet = 5,
 		/mob/living/basic/pet/dog/bullterrier = 5,
 		/mob/living/basic/pet/penguin = 5,
 		/mob/living/basic/parrot = 5,

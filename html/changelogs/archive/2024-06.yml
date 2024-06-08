@@ -332,3 +332,10 @@
   zxaber:
   - bugfix: 'Tool-based flashes (read: from welders) are no longer incorrectly locked
       at flash level 1. Wear proper PPE!'
+2024-06-08:
+  Melbert:
+  - bugfix: Fix some modifiers to do after speed (sanity, midas gun) stacking when
+      they shouldn't
+  thegrb93:
+  - bugfix: Borg emag module jank when no longer emagged
+  - bugfix: Borg piercing hypospray fail message

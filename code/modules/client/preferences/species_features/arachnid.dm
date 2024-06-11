@@ -1,7 +1,7 @@
 /datum/preference/choiced/arachnid_appendages
 	savefile_key = "feature_arachnid_appendages"
 	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_FEATURES
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Appendages"
 
 /datum/preference/choiced/arachnid_appendages/init_possible_values()
@@ -17,7 +17,7 @@
 /datum/preference/choiced/arachnid_chelicerae
 	savefile_key = "feature_arachnid_chelicerae"
 	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_FEATURES
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Chelicerae"
 
 /datum/preference/choiced/arachnid_chelicerae/init_possible_values()

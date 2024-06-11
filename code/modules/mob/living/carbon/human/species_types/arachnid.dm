@@ -51,7 +51,7 @@
 	if(istype(attacking_item, /obj/item/melee/flyswatter))
 		damage_mods += 30 // Yes, a 30x damage modifier
 
-/datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)
+/datum/species/arachnid/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.dna.features["mcolor"] = "#382928"
 	human.dna.features["arachnid_appendages"] = "Long"
 	human.dna.features["arachnid_chelicerae"] = "Basic"

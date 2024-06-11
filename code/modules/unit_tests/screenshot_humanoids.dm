@@ -28,6 +28,7 @@
 	testable_species -= /datum/species/moth
 
 	var/mob/living/carbon/human/arachnid = allocate(/mob/living/carbon/human/dummy/consistent)
+	arachnid.dna.features["mcolor"] = "#382928"
 	arachnid.dna.features["arachnid_appendages"] = "Long"
 	arachnid.dna.features["arachnid_chelicerae"] = "Basic"
 	arachnid.set_species(/datum/species/arachnid)

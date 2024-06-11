@@ -39,6 +39,7 @@
 
 	var/eye_color_left = "" //set to a hex code to override a mob's left eye color
 	var/eye_color_right = "" //set to a hex code to override a mob's right eye color
+	var/eye_icon = 'icons/mob/human/human_face.dmi'
 	var/eye_icon_state = "eyes"
 	/// The color of the previous left eye before this one was inserted
 	var/old_eye_color_left = "fff"
@@ -128,11 +129,11 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/internal/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	if(isnull(eye_icon_state))
+	if(isnull(eye_icon_state) || isnull(eye_icon))
 		return list()
 
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -BODY_LAYER)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -BODY_LAYER)
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -BODY_LAYER)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -BODY_LAYER)
 	var/list/overlays = list(eye_left, eye_right)
 
 	var/obscured = parent.check_obscured_slots(TRUE)
@@ -741,3 +742,34 @@
 /obj/item/organ/internal/eyes/night_vision/maintenance_adapted/on_mob_remove(mob/living/carbon/unadapted, special = FALSE)
 	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 	return ..()
+
+/obj/item/organ/internal/eyes/night_vision/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	overlay_ignore_lighting = TRUE
+	no_glasses = TRUE
+	low_light_cutoff = list(20, 15, 0)
+	medium_light_cutoff = list(35, 30, 0)
+	high_light_cutoff = list(50, 40, 0)
+
+/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_insert(mob/living/carbon/eye_owner)
+	. = ..()
+	if(!ishuman(eye_owner))
+		return
+	var/mob/living/carbon/human/human_receiver = eye_owner
+	if(!human_receiver.can_mutate())
+		return
+	var/datum/species/rec_species = human_receiver.dna.species
+	rec_species.update_no_equip_flags(eye_owner, rec_species.no_equip_flags | ITEM_SLOT_EYES)
+
+/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_remove(mob/living/carbon/eye_owner)
+	. = ..()
+	if(!ishuman(eye_owner))
+		return
+	var/mob/living/carbon/human/human_receiver = eye_owner
+	if(!human_receiver.can_mutate())
+		return
+	var/datum/species/rec_species = human_receiver.dna.species
+	rec_species.update_no_equip_flags(eye_owner, initial(rec_species.no_equip_flags))

@@ -104,6 +104,24 @@ export const feature_lizard_tail: FeatureChoiced = {
   },
 };
 
+export const feature_arachnid_appendages: FeatureChoiced = {
+  name: 'Arachnid Appendages',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
+export const feature_arachnid_chelicerae: FeatureChoiced = {
+  name: 'Arachnid Chelicerae',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
 export const feature_mcolor: Feature<string> = {
   name: 'Mutant color',
   component: FeatureColorInput,

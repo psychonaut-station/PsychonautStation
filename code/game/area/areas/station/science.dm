@@ -76,6 +76,10 @@
 	name = "\improper Robotics Lab"
 	icon_state = "ass_line"
 
+/area/station/science/robotics/storage
+	name = "\improper Robotics Storage"
+	icon_state = "ass_line"
+
 /area/station/science/robotics/augments
 	name = "\improper Augmentation Theater"
 	icon_state = "robotics"

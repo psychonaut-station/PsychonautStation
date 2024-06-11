@@ -2403,6 +2403,7 @@
 
 /datum/sprite_accessory/arachnid_appendages
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_appendages.dmi'
+	em_block = TRUE
 
 /datum/sprite_accessory/arachnid_appendages/long
 	name = "Long"
@@ -2430,6 +2431,7 @@
 
 /datum/sprite_accessory/arachnid_chelicerae
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_chelicerae.dmi'
+	em_block = TRUE
 
 /datum/sprite_accessory/arachnid_chelicerae/basic
 	name = "Basic"

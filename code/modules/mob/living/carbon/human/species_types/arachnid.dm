@@ -50,14 +50,20 @@
 	if(istype(attacking_item, /obj/item/melee/flyswatter))
 		damage_mods += 30 // Yes, a 30x damage modifier
 
+/datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)
+	human.dna.features["mcolor"] = "#382928"
+	human.dna.features["arachnid_appendages"] = "Long"
+	human.dna.features["arachnid_chelicerae"] = "Basic"
+	human.update_body(is_creating = TRUE)
+
 /datum/species/arachnid/get_species_description()
 	return "Arachnids are a species of humanoid spiders employed by Nanotrasen in recent years."
 
-/datum/species/pod/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.dna.features["mcolor"] = "#382928"
-	human.dna.features["arachnid_appendages"] = "Zigzag"
-	human.dna.features["arachnid_chelicerae"] = "Basic"
-	human.update_body(is_creating = TRUE)
+/datum/species/arachnid/get_physical_attributes()
+	return "deneme1."
+
+/datum/species/arachnid/get_species_lore()
+	return list("deneme2")
 
 /datum/species/arachnid/create_pref_unique_perks()
 	var/list/to_add = list()

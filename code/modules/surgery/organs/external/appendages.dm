@@ -4,7 +4,7 @@
 
 	preference = "feature_arachnid_appendages"
 	zone = BODY_ZONE_CHEST
-	slot = ORGAN_SLOT_EXTERNAL_WINGS
+	slot = ORGAN_SLOT_EXTERNAL_APPENDAGES
 	dna_block = DNA_ARACHNID_APPENDAGES_BLOCK
 
 	use_mob_sprite_as_obj_sprite = TRUE

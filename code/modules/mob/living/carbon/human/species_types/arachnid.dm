@@ -19,6 +19,7 @@
 		/obj/item/organ/external/arachnid_appendages = "Long",
 		/obj/item/organ/external/chelicerae = "Basic",
 	)
+	inert_mutation = /datum/mutation/human/webbing
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/arachnid,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/arachnid,
@@ -58,12 +59,6 @@
 
 /datum/species/arachnid/get_species_description()
 	return "Arachnids are a species of humanoid spiders employed by Nanotrasen in recent years."
-
-/datum/species/arachnid/get_physical_attributes()
-	return "deneme1."
-
-/datum/species/arachnid/get_species_lore()
-	return list("deneme2")
 
 /datum/species/arachnid/create_pref_unique_perks()
 	var/list/to_add = list()

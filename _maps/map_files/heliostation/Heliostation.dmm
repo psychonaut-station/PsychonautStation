@@ -37263,6 +37263,9 @@
 	network = list("ss13","cargo")
 	},
 /obj/effect/turf_decal/delivery,
+/obj/machinery/status_display/supply{
+	pixel_y = 32
+	},
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "hsP" = (
@@ -53486,6 +53489,7 @@
 	dwidth = 3;
 	height = 15;
 	name = "arrivals";
+	roundstart_template = /datum/map_template/shuttle/arrival/northstar;
 	shuttle_id = "arrival_stationary";
 	width = 7
 	},
@@ -65595,6 +65599,12 @@
 /obj/machinery/brm,
 /turf/open/floor/iron/dark,
 /area/station/cargo/miningoffice)
+"swr" = (
+/obj/machinery/status_display/supply{
+	pixel_x = 32
+	},
+/turf/closed/wall,
+/area/station/cargo/storage)
 "swJ" = (
 /obj/structure/chair/wood,
 /obj/effect/mapping_helpers/broken_floor,
@@ -69166,6 +69176,12 @@
 /obj/effect/landmark/blobstart,
 /turf/open/floor/iron,
 /area/station/cargo/warehouse/upper)
+"tKB" = (
+/obj/docking_port/stationary/laborcamp_home{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
 "tKC" = (
 /obj/machinery/computer/scan_consolenew{
 	dir = 4
@@ -105710,7 +105726,7 @@ aaa
 aaa
 aaa
 aaP
-aaa
+tKB
 aaa
 aaa
 aaa
@@ -118939,7 +118955,7 @@ cvB
 hLp
 bnz
 noZ
-pIw
+swr
 teZ
 pWK
 nzy

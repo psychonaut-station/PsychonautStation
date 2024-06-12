@@ -3,6 +3,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Appendages"
+	relevant_external_organ = /obj/item/organ/external/arachnid_appendages
 
 /datum/preference/choiced/arachnid_appendages/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.arachnid_appendages_list)
@@ -19,6 +20,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	main_feature_name = "Chelicerae"
+	relevant_external_organ = /obj/item/organ/external/chelicerae
 
 /datum/preference/choiced/arachnid_chelicerae/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.arachnid_chelicerae_list)

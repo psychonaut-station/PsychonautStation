@@ -55,6 +55,8 @@
 	human.dna.features["mcolor"] = "#382928"
 	human.dna.features["arachnid_appendages"] = "Long"
 	human.dna.features["arachnid_chelicerae"] = "Basic"
+	human.eye_color_left = COLOR_SILVER
+	human.eye_color_right = human.eye_color_left
 	human.update_body(is_creating = TRUE)
 
 /datum/species/arachnid/get_species_description()
@@ -98,5 +100,5 @@
 
 /datum/chemical_reaction/arachnid_muttoxin
 	results = list(/datum/reagent/mutationtoxin/arachnid = 1)
-	required_reagents = list(/datum/reagent/mutationtoxin/lizard = 1, /datum/reagent/toxin = 1)
+	required_reagents = list(/datum/reagent/mutationtoxin/lizard = 1, /datum/reagent/consumable/milk = 1)
 	reaction_tags = REACTION_TAG_EASY

@@ -30,6 +30,8 @@
 	var/mob/living/carbon/human/arachnid = allocate(/mob/living/carbon/human/dummy/consistent)
 	arachnid.dna.features["mcolor"] = "#382928"
 	arachnid.dna.features["arachnid_appendages"] = "Long"
+	arachnid.eye_color_left = COLOR_SILVER
+	arachnid.eye_color_right = COLOR_SILVER
 	arachnid.set_species(/datum/species/arachnid)
 	arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visualsOnly = TRUE)
 	test_screenshot("[/datum/species/arachnid]", get_flat_icon_for_all_directions(arachnid))

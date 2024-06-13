@@ -5911,7 +5911,6 @@
 #include "code\modules\surgery\organs\organ_movement.dm"
 #include "code\modules\surgery\organs\external\_external_organ.dm"
 #include "code\modules\surgery\organs\external\appendages.dm"
-#include "code\modules\surgery\organs\external\chelicerae.dm"
 #include "code\modules\surgery\organs\external\restyling.dm"
 #include "code\modules\surgery\organs\external\spines.dm"
 #include "code\modules\surgery\organs\external\tails.dm"

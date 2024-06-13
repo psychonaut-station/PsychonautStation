@@ -17,7 +17,6 @@
 	mutanttongue = /obj/item/organ/internal/tongue/arachnid
 	external_organs = list(
 		/obj/item/organ/external/arachnid_appendages = "Long",
-		/obj/item/organ/external/chelicerae = "Basic",
 	)
 	inert_mutation = /datum/mutation/human/webbing
 	bodypart_overrides = list(
@@ -54,9 +53,8 @@
 /datum/species/arachnid/prepare_human_for_preview(mob/living/carbon/human/human)
 	human.dna.features["mcolor"] = "#382928"
 	human.dna.features["arachnid_appendages"] = "Long"
-	human.dna.features["arachnid_chelicerae"] = "Basic"
 	human.eye_color_left = COLOR_SILVER
-	human.eye_color_right = human.eye_color_left
+	human.eye_color_right = COLOR_SILVER
 	human.update_body(is_creating = TRUE)
 
 /datum/species/arachnid/get_species_description()

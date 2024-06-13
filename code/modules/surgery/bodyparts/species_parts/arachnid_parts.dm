@@ -2,7 +2,7 @@
 	icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	limb_id = SPECIES_ARACHNID
 	is_dimorphic = FALSE
-	head_flags = HEAD_EYESPRITES|HEAD_EYECOLOR
+	head_flags = HEAD_EYESPRITES | HEAD_EYECOLOR | HEAD_EYEHOLES
 
 /obj/item/bodypart/chest/arachnid
 	icon_greyscale = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'

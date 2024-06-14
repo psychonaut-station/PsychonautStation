@@ -1,7 +1,7 @@
 /datum/species/arachnid
 	name = "Arachnid"
 	id = SPECIES_ARACHNID
-	examine_limb_id = SPECIES_JELLYPERSON
+	examine_limb_id = SPECIES_ARACHNID
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	inherent_factions = list(FACTION_SPIDER)

@@ -50,12 +50,10 @@ export const DiscordVerification = () => {
             <NoticeBox danger>Hesabın Discord&apos;a bağlı değil.</NoticeBox>
             <Section title="Doğrulama" buttons={<RefreshButton />}>
               <Box mb={1}>
-                Tek kullanımlık tokenin: {token}. Bu komutu kullanarak
-                Discord&apos;da kendini doğrulayabilirsin:
+                Bu tokeni Discord&apos;da {prefix}verify yazdıktan sonra
+                yapıştırarak hesabını doğrulayabilirsin:
               </Box>
-              <BlockQuote mb={1}>
-                {prefix}verify {token}
-              </BlockQuote>
+              <BlockQuote mb={1}>{token}</BlockQuote>
             </Section>
           </>
         )}

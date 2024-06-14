@@ -1,0 +1,4 @@
+author: "MrEmre12"
+delete-after: True
+changes:
+  - bugfix: "Eski Delta ai sat elektrik sorununu çözer."

@@ -28,7 +28,6 @@
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/arachnid,
 	)
 
-
 /datum/species/arachnid/handle_chemical(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
 	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)

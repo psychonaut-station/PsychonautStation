@@ -84,7 +84,6 @@
 			alternatives like welding helmets or implants. Their eyes have night vision however.",
 		),
 	)
-
 	return to_add
 
 /datum/reagent/mutationtoxin/arachnid

@@ -13,4 +13,3 @@
 
 /datum/preference/choiced/arachnid_appendages/create_default_value()
 	return /datum/sprite_accessory/arachnid_appendages/long::name
-

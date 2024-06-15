@@ -339,3 +339,8 @@
   thegrb93:
   - bugfix: Borg emag module jank when no longer emagged
   - bugfix: Borg piercing hypospray fail message
+2024-06-15:
+  MrEmre12:
+  - bugfix: "Eski Delta ai sat elektrik sorununu \xE7\xF6zer."
+  Seefaaa:
+  - spellcheck: "Discord verification men\xFCs\xFC daha a\xE7\u0131klay\u0131c\u0131"

@@ -1,7 +1,7 @@
 /datum/species/arachnid
 	name = "Arachnid"
 	id = SPECIES_ARACHNID
-	examine_limb_id = SPECIES_JELLYPERSON
+	examine_limb_id = SPECIES_ARACHNID
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN | SLIME_EXTRACT
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	inherent_factions = list(FACTION_SPIDER)
@@ -27,7 +27,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/arachnid,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/arachnid,
 	)
-
 
 /datum/species/arachnid/handle_chemical(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
@@ -85,7 +84,6 @@
 			alternatives like welding helmets or implants. Their eyes have night vision however.",
 		),
 	)
-
 	return to_add
 
 /datum/reagent/mutationtoxin/arachnid

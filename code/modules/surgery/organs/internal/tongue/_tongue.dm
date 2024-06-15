@@ -655,3 +655,10 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	liked_foodtypes = STONE
 	disliked_foodtypes = NONE //you don't care for much else besides stone
 	toxic_foodtypes = NONE //you can eat fucking uranium
+
+/obj/item/organ/internal/tongue/arachnid
+	name = "arachnid tongue"
+	desc = "A spider organ used for speaking and eating."
+	liked_foodtypes = GORE | MEAT | BUGS | GROSS
+	disliked_foodtypes = VEGETABLES | FRUIT
+	say_mod = "chitters"

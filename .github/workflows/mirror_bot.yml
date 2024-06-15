@@ -1,0 +1,77 @@
+name: Mirror bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 17 * * 5'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  pr_title: Upstream mirror
+  pr_body: This is an automated pull request to merge the latest changes from upstream repository. See last commit's description for conflicts.
+  pr_branch: mirror
+  pr_label: mirror
+  remote_url: https://github.com/tgstation/tgstation.git
+  remote_branch: master
+  commiter_name: github-actions[bot]
+  commiter_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add upstream remote
+        run: |
+          git config user.name "$commiter_name"
+          git config user.email "$commiter_email"
+
+          git remote add upstream "$remote_url"
+          git fetch upstream $remote_branch
+      - name: Merge upstream branch
+        run: |
+          git merge upstream/$remote_branch
+        continue-on-error: true
+      - name: Print conflicts
+        run: |
+          git diff --name-only --diff-filter=U
+      - name: Commit with conflicts
+        run: |
+          git commit --all --no-edit
+      - name: Create new pull request
+        uses: peter-evans/create-pull-request@v3
+        id: create-pull-request
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          author: ${{ env.commiter_name }} <${{ env.commiter_email }}>
+          branch: ${{ env.pr_branch }}
+          branch-suffix: short-commit-hash
+          delete-branch: true
+          title: ${{ env.pr_title }}
+          body: ${{ env.pr_body }}
+          labels: ${{ env.pr_label }}
+      - name: Close previous pull request(s)
+        run: |
+          $query = "repo:${{ github.repository }} is:pr is:open label:${{ env.pr_label }}"
+
+          $pull_requests = $( `
+            gh api -X GET search/issues `
+              -F q="$query" --jq '.items[].number' `
+          )
+
+          $pr_number = ${{ steps.create-pull-request.outputs.pull-request-number }}
+
+          foreach ($number in $pull_requests) {
+            if ($number -ne $pr_number) {
+              gh pr close $number -R ${{ github.repository }} -d -c "Superseded by #$pr_number."
+            }
+          }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh

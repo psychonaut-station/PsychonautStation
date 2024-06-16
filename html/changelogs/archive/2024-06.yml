@@ -333,22 +333,6 @@
   - bugfix: 'Tool-based flashes (read: from welders) are no longer incorrectly locked
       at flash level 1. Wear proper PPE!'
 2024-06-08:
-<<<<<<< HEAD
-  Melbert:
-  - bugfix: Fix some modifiers to do after speed (sanity, midas gun) stacking when
-      they shouldn't
-  thegrb93:
-  - bugfix: Borg emag module jank when no longer emagged
-  - bugfix: Borg piercing hypospray fail message
-2024-06-15:
-  MrEmre12:
-  - bugfix: "Eski Delta ai sat elektrik sorununu \xE7\xF6zer."
-  Seefaaa:
-  - spellcheck: "Discord verification men\xFCs\xFC daha a\xE7\u0131klay\u0131c\u0131"
-2024-06-16:
-  RengaN02:
-  - rscadd: "Arachnid \u0131rk\u0131 oyuna eklendi."
-=======
   00-Steven:
   - refactor: Refactored wall button code, please report any issues.
   - bugfix: Wall buttons actually drop their contents when destroyed.
@@ -724,6 +708,10 @@
   - bugfix: RCD material reclamation
   mc-oofert:
   - rscadd: the flatpacker, a machine unlocked at industrial engineering
+  MrEmre12:
+  - bugfix: "Eski Delta ai sat elektrik sorununu \xE7\xF6zer."
+  Seefaaa:
+  - spellcheck: "Discord verification men\xFCs\xFC daha a\xE7\u0131klay\u0131c\u0131"
 2024-06-16:
   Archie700:
   - qol: Changes description of steal objective to match the name
@@ -746,6 +734,8 @@
   - balance: Gorillas can strangle people.
   Melbert:
   - bugfix: Fix inability to make r-glass by hand inside your backpack
+  RengaN02:
+  - rscadd: "Arachnid \u0131rk\u0131 oyuna eklendi."
   ShizCalev:
   - bugfix: Fixed some surgery failure states not properly setting the correct mood
       event.
@@ -758,4 +748,3 @@
   carlarctg:
   - bugfix: Cosmos spells will no longer star mark your steed
   - qol: Baby plushies are now smaller than their parents
->>>>>>> upstream/master

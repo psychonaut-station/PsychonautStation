@@ -105,9 +105,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		unlock_content = !!parent.IsByondMember()
-		if(unlock_content)
-			max_save_slots = 8
+		unlock_content = TRUE
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()

@@ -43,18 +43,6 @@
 	var/mob/living/carbon/human/H = target
 	if(user.real_name == H.dna.real_name)
 		return
-<<<<<<< HEAD
-	if(ishuman(AM))
-		var/mob/living/carbon/human/H = AM
-
-		if(user.real_name != H.dna.real_name)
-			user.real_name = H.dna.real_name
-			H.dna.transfer_identity(user, transfer_SE=1)
-			user.updateappearance(mutcolor_update=1)
-			user.domutcheck()
-			user.visible_message(span_warning("[user]'s appearance shifts into [H]'s!"), \
-			span_boldannounce("[H.p_They()] think[H.p_s()] [H.p_theyre()] <i>sooo</i> much better than you. Not anymore, [H.p_they()] won't."))
-=======
 
 	user.real_name = H.dna.real_name
 	H.dna.transfer_identity(user, transfer_SE=1)
@@ -62,4 +50,3 @@
 	user.domutcheck()
 	user.visible_message(span_warning("[user]'s appearance shifts into [H]'s!"), \
 	span_boldannounce("[H.p_They()] think[H.p_s()] [H.p_theyre()] <i>sooo</i> much better than you. Not anymore, [H.p_they()] won't."))
->>>>>>> upstream/master

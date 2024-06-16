@@ -34,12 +34,6 @@
 /datum/round_event/tram_malfunction/setup()
 	end_when = rand(TRAM_MALFUNCTION_TIME_LOWER, TRAM_MALFUNCTION_TIME_UPPER)
 
-<<<<<<< HEAD
-/datum/round_event/tram_malfunction/announce()
-	priority_announce("Otomasyon kontrol sistemimiz tramvayın bilgisayarı ile bağlantısını kaybetmiştir. Mühendisler sorunu teşhis edip çözerken lütfen dikkatli olun.", "[command_name()] Mühendislik Departmanı")
-
-=======
->>>>>>> upstream/master
 /datum/round_event/tram_malfunction/start()
 	for(var/datum/transport_controller/linear/tram/malfunctioning_controller as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 		if(malfunctioning_controller.specific_transport_id == specific_transport_id)
@@ -50,10 +44,6 @@
 	for(var/datum/transport_controller/linear/tram/malfunctioning_controller as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 		if(malfunctioning_controller.specific_transport_id == specific_transport_id && malfunctioning_controller.malf_active)
 			malfunctioning_controller.end_malf_event()
-<<<<<<< HEAD
-			priority_announce("Tramvaydaki yazılım sıfırlandı, normal faaliyetleri şu anda devam ediyor. Verdiğimiz rahatsızlıktan dolayı özür dileriz.", "[command_name()] Mühendislik Departmanı")
-=======
->>>>>>> upstream/master
 			return
 
 #undef TRAM_MALFUNCTION_TIME_UPPER

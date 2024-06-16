@@ -11,10 +11,10 @@ permissions:
 
 env:
   pr_title: Upstream mirror
-  pr_body: This is an automated pull request to merge the latest changes from upstream repository. See last commit's description for conflicts.
+  pr_body: This is an automated pull request to merge the latest changes from the upstream repository.
   pr_branch: mirror
   pr_label: mirror
-  remote_url: https://github.com/tgstation/tgstation.git
+  remote_repo: tgstation/tgstation
   remote_branch: master
   commiter_name: github-actions[bot]
   commiter_email: 41898282+github-actions[bot]@users.noreply.github.com
@@ -32,18 +32,50 @@ jobs:
           git config user.name "$commiter_name"
           git config user.email "$commiter_email"
 
-          git remote add upstream "$remote_url"
+          git remote add upstream "https://github.com/$remote_repo.git"
           git fetch upstream $remote_branch
       - name: Merge upstream branch
         run: |
           git merge upstream/$remote_branch
         continue-on-error: true
-      - name: Print conflicts
-        run: |
-          git diff --name-only --diff-filter=U
       - name: Commit with conflicts
+        id: commit
         run: |
-          git commit --all --no-edit
+          $conflicts = $(git diff --name-only --diff-filter=U)
+
+          git commit -a --no-edit
+
+          if ($conflicts.Length -ne 0) {
+            $conflicts_text = "`n"
+            $short_hash = $(git rev-parse --short HEAD)
+
+            foreach ($file in $conflicts) {
+              $line = 1
+              $head_marker = 0
+              $branch_marker = 0
+
+              foreach ($_ in Get-Content $file) {
+                if ($head_marker -ne 0 -and $branch_marker -ne 0) { break }
+
+                if ($_ -match "<<<<<<<") {
+                  $head_marker = $line
+                } elseif ($_ -match ">>>>>>>") {
+                  $branch_marker = $line
+                }
+
+                $line += 1
+              }
+
+              $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-$short_hash/$file#L$head_marker-L$branch_marker"
+              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file#L$head_marker"
+              $theirs = "https://github.com/$Env:remote_repo/blob/$Env:remote_branch/$file#L$head_marker"
+
+              $conflicts_text += "`n- [ ] $file - [current]($current) - [ours]($ours) - [theirs]($theirs)"
+            }
+
+            echo "conflicts=`"'$conflicts_text'`"" >> $Env:GITHUB_OUTPUT
+          }
+        shell: pwsh
       - name: Create new pull request
         uses: peter-evans/create-pull-request@v3
         id: create-pull-request
@@ -54,22 +86,16 @@ jobs:
           branch-suffix: short-commit-hash
           delete-branch: true
           title: ${{ env.pr_title }}
-          body: ${{ env.pr_body }}
+          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}
           labels: ${{ env.pr_label }}
       - name: Close previous pull request(s)
         run: |
-          $query = "repo:${{ github.repository }} is:pr is:open label:${{ env.pr_label }}"
-
-          $pull_requests = $( `
-            gh api -X GET search/issues `
-              -F q="$query" --jq '.items[].number' `
-          )
-
+          $query = "repo:$Env:GITHUB_REPOSITORY is:pr is:open label:$Env:pr_label"
           $pr_number = ${{ steps.create-pull-request.outputs.pull-request-number }}
 
-          foreach ($number in $pull_requests) {
-            if ($number -ne $pr_number) {
-              gh pr close $number -R ${{ github.repository }} -d -c "Superseded by #$pr_number."
+          foreach ($_ in $(gh api -X GET search/issues -F q="$query" --jq '.items[].number')) {
+            if ($_ -ne $pr_number) {
+              gh pr close $_ -R $Env:GITHUB_REPOSITORY -d -c "Superseded by #$pr_number."
             }
           }
         env:

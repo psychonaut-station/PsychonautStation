@@ -369,7 +369,11 @@
 	show_in_report = TRUE
 	blacklist = list(/datum/station_trait/colored_assistants)
 
-<<<<<<< HEAD
+/datum/station_trait/random_event_weight_modifier/assistant_gimmicks/get_pulsar_message()
+	var/advisory_string = "Advisory Level: <b>Grey Sky</b></center><BR>"
+	advisory_string += "Your sector's advisory level is Grey Sky. Our sensors detect abnormal activity among the assistants assigned to your station. We advise you to closely monitor the Tool Storage, Bridge, Tech Storage, and Brig for gathering crowds or petty thievery."
+	return advisory_string
+
 /// Changes all the snack vendor to food vendor
 /datum/station_trait/foodvend
 	name = "Food Vendors"
@@ -389,9 +393,3 @@
 		var/turf/T = get_turf(vendor)
 		new /obj/machinery/vending/meal(T)
 		qdel(vendor)
-=======
-/datum/station_trait/random_event_weight_modifier/assistant_gimmicks/get_pulsar_message()
-	var/advisory_string = "Advisory Level: <b>Grey Sky</b></center><BR>"
-	advisory_string += "Your sector's advisory level is Grey Sky. Our sensors detect abnormal activity among the assistants assigned to your station. We advise you to closely monitor the Tool Storage, Bridge, Tech Storage, and Brig for gathering crowds or petty thievery."
-	return advisory_string
->>>>>>> upstream/master

@@ -71,12 +71,7 @@
 #_maps/RandomRuins/SpaceRuins/space_ghost_restaurant.dmm
 #_maps/RandomRuins/SpaceRuins/spacehotel.dmm
 #_maps/RandomRuins/SpaceRuins/spinwardsmoothies.dmm
-<<<<<<< HEAD
-#_maps/RandomRuins/SpaceRuins/spinwardsmoothies.dmm
 #_maps/RandomRuins/SpaceRuins/tgmc_ruin.dmm
-#_maps/RandomRuins/SpaceRuins/the_faceoff.dmm
-=======
->>>>>>> upstream/master
 #_maps/RandomRuins/SpaceRuins/the_faceoff.dmm
 #_maps/RandomRuins/SpaceRuins/the_outlet.dmm
 #_maps/RandomRuins/SpaceRuins/thelizardsgas.dmm

@@ -295,21 +295,7 @@
 		AfterPutItemOnTable(tool, user)
 		return ITEM_INTERACT_SUCCESS
 
-<<<<<<< HEAD
-/obj/structure/table/attackby_secondary(obj/item/weapon, mob/living/user, params)
-	if(!user.combat_mode && istype(weapon, /obj/item/toy/cards/deck))
-		var/obj/item/toy/cards/deck/dealer_deck = weapon
-		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // deal a card faceup on the table
-			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
-			if(card)
-				card.Flip()
-				attackby(card, user, params)
-			return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-	..()
-	return SECONDARY_ATTACK_CONTINUE_CHAIN
-=======
 	return NONE
->>>>>>> upstream/master
 
 /obj/structure/table/proc/AfterPutItemOnTable(obj/item/thing, mob/living/user)
 	return

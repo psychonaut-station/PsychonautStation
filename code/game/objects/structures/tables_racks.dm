@@ -255,13 +255,8 @@
 			return ITEM_INTERACT_SUCCESS
 		// If the tray IS empty, continue on (tray will be placed on the table like other items)
 
-<<<<<<< HEAD
-	if(!user.combat_mode && istype(I, /obj/item/toy/cards/deck))
-		var/obj/item/toy/cards/deck/dealer_deck = I
-=======
 	if(istype(tool, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = tool
->>>>>>> upstream/master
 		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED)) // deal a card facedown on the table
 			var/obj/item/toy/singlecard/card = dealer_deck.draw(user)
 			if(card)

@@ -449,7 +449,6 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 0.25)
 	build_path = /obj/item/stack/thermoplastic
-	maxstack = 50
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS,
@@ -462,7 +461,6 @@
 	build_type = PROTOLATHE
 	materials = list(/datum/material/plastic = SHEET_MATERIAL_AMOUNT * 0.25)
 	build_path = /obj/item/stack/thermoplastic/light
-	maxstack = 50
 	category = list(
 		RND_CATEGORY_INITIAL,
 		RND_CATEGORY_CONSTRUCTION + RND_SUBCATEGORY_CONSTRUCTION_MATERIALS,

@@ -706,12 +706,12 @@
   - bugfix: Heirophant Club Blink at range
   - bugfix: Crusher Loot
   - bugfix: RCD material reclamation
-  mc-oofert:
-  - rscadd: the flatpacker, a machine unlocked at industrial engineering
   MrEmre12:
   - bugfix: "Eski Delta ai sat elektrik sorununu \xE7\xF6zer."
   Seefaaa:
   - spellcheck: "Discord verification men\xFCs\xFC daha a\xE7\u0131klay\u0131c\u0131"
+  mc-oofert:
+  - rscadd: the flatpacker, a machine unlocked at industrial engineering
 2024-06-16:
   Archie700:
   - qol: Changes description of steal objective to match the name
@@ -748,3 +748,12 @@
   carlarctg:
   - bugfix: Cosmos spells will no longer star mark your steed
   - qol: Baby plushies are now smaller than their parents
+2024-06-17:
+  JackEnoff:
+  - balance: Certain changeling abilities won't work while on fire.
+  TheBoondock:
+  - sound: added compressed air sound for when air tanks are inserted into machinery
+  exdal:
+  - rscadd: Artik OOC renginizi ve ghost formunuzu duzenleyebilirsiniz
+  grungussuss:
+  - rscadd: Added Misha the bear to the HoS office on icebox.

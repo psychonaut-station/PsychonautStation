@@ -323,3 +323,11 @@
 	description = "Not every shuttle makes it back to CentCom."
 	suffix = "lavaland_surface_shuttle_wreckage.dmm"
 	allow_duplicates = FALSE
+
+/datum/map_template/ruin/lavaland/nyx_temple
+	name = "Nyx Temple"
+	id = "nyx_temple"
+	description = "An ancient temple containing nightmares"
+	suffix = "lavaland_nyx_temple"
+	allow_duplicates = TRUE
+	cost = 20

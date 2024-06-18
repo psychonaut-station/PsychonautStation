@@ -329,5 +329,5 @@
 	id = "nyx_temple"
 	description = "An ancient temple containing nightmares"
 	suffix = "lavaland_nyx_temple"
-	allow_duplicates = TRUE
+	allow_duplicates = FALSE
 	cost = 20

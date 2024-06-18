@@ -25,7 +25,7 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "cy" = (
 /obj/effect/mapping_helpers/no_lava,
 /obj/effect/decal/cleanable/blood,
@@ -45,7 +45,7 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "dE" = (
 /obj/structure/stone_tile/block{
 	dir = 4
@@ -64,7 +64,16 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"ej" = (
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "eH" = (
 /obj/structure/stone_tile/block{
 	dir = 4
@@ -82,14 +91,14 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "fx" = (
 /obj/structure/kitchenspike,
 /obj/structure/stone_tile/surrounding/burnt,
 /obj/structure/stone_tile/center,
 /obj/effect/mob_spawn/corpse/human/miner,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "fy" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /obj/structure/stone_tile/block{
@@ -100,7 +109,7 @@
 	},
 /obj/item/spear/bonespear,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "gq" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 1
@@ -108,7 +117,7 @@
 /obj/structure/stone_tile/block/cracked,
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "gx" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 1
@@ -131,12 +140,22 @@
 	dir = 1
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "hF" = (
 /obj/structure/necropolis_gate,
 /obj/structure/stone_tile/slab/cracked,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"hH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/center/cracked,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "iu" = (
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/stone_tile/block{
@@ -146,7 +165,7 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "iU" = (
 /obj/structure/stone_tile/burnt,
 /obj/effect/mapping_helpers/no_lava,
@@ -176,7 +195,7 @@
 	dir = 1
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "jH" = (
 /obj/structure/stone_tile/cracked{
 	dir = 8
@@ -197,7 +216,15 @@
 	},
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"ku" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "kG" = (
 /obj/effect/rune/apocalypse,
 /obj/structure/stone_tile/block{
@@ -206,7 +233,7 @@
 /obj/structure/stone_tile/block,
 /mob/living/basic/demon/slaughter,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "ld" = (
 /obj/structure/stone_tile/cracked,
 /obj/effect/mapping_helpers/no_lava,
@@ -221,7 +248,7 @@
 	triggerer_only = 1
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "lt" = (
 /obj/structure/stone_tile/slab,
 /obj/structure/stone_tile/slab/cracked{
@@ -243,12 +270,12 @@
 /obj/structure/stone_tile/surrounding_tile,
 /obj/item/reagent_containers/cup/bucket/wooden,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "lR" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/mob_spawn/corpse/human/miner,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "no" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -282,7 +309,10 @@
 /obj/structure/stone_tile/block,
 /obj/effect/decal/cleanable/ants,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"rg" = (
+/turf/closed/indestructible/riveted/boss,
+/area/ruin/unpowered/nyx_temple)
 "rs" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
@@ -305,14 +335,14 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/effect/mob_spawn/corpse/human/miner,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "rx" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 1
 	},
 /obj/structure/stone_tile/block,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "rM" = (
 /obj/structure/statue/bone/skull,
 /obj/structure/stone_tile/block{
@@ -322,7 +352,7 @@
 	dir = 4
 	},
 /turf/open/space/basic,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "sd" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 1
@@ -339,7 +369,7 @@
 	},
 /obj/effect/decal/cleanable/blood/hitsplatter,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "ts" = (
 /turf/template_noop,
 /area/template_noop)
@@ -352,7 +382,7 @@
 	pixel_x = -5
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "tT" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile/block,
@@ -361,7 +391,7 @@
 	},
 /obj/machinery/door/airlock/cult/unruned,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "uz" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 8
@@ -371,7 +401,7 @@
 	},
 /obj/machinery/door/airlock/cult/unruned,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "ve" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 4
@@ -380,7 +410,7 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "vU" = (
 /obj/structure/stone_tile/burnt,
 /obj/structure/stone_tile/cracked{
@@ -394,12 +424,12 @@
 	},
 /obj/effect/decal/cleanable/blood,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "vV" = (
 /obj/effect/mob_spawn/corpse/human/clown,
 /obj/structure/stone_tile/slab,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "vX" = (
 /obj/effect/mapping_helpers/no_lava,
 /obj/effect/mapping_helpers/no_lava,
@@ -419,14 +449,16 @@
 	},
 /turf/open/lava/smooth/lava_land_surface,
 /area/lavaland/surface/outdoors)
-"xe" = (
-/turf/closed/indestructible/riveted/boss,
-/area/ruin/unpowered)
+"xd" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/item/pickaxe,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "xg" = (
 /obj/structure/stone_tile/surrounding/burnt,
 /obj/effect/decal/cleanable/blood/footprints,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "xJ" = (
 /obj/structure/stone_tile/block/cracked,
 /obj/structure/stone_tile/block/cracked{
@@ -434,7 +466,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "yi" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /obj/effect/mapping_helpers/no_lava,
@@ -444,7 +476,7 @@
 /obj/structure/statue/bone/skull,
 /obj/structure/stone_tile/slab,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "yk" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -462,7 +494,7 @@
 	},
 /obj/item/reagent_containers/cup/bucket/wooden,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Ac" = (
 /obj/structure/stone_tile/center/cracked,
 /obj/structure/stone_tile/surrounding_tile,
@@ -485,7 +517,7 @@
 /obj/structure/stone_tile/slab,
 /obj/effect/decal/cleanable/garbage,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Bu" = (
 /obj/structure/stone_tile/burnt,
 /obj/structure/stone_tile/block{
@@ -498,7 +530,7 @@
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/decal/cleanable/blood,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "BY" = (
 /obj/structure/stone_tile/block{
 	dir = 4
@@ -508,7 +540,7 @@
 	},
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Ca" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile/cracked{
@@ -527,7 +559,7 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Df" = (
 /obj/item/reagent_containers/cup/bucket/wooden,
 /obj/structure/stone_tile/block/cracked{
@@ -537,7 +569,7 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Du" = (
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /obj/effect/mapping_helpers/no_lava,
@@ -559,7 +591,7 @@
 	},
 /obj/item/reagent_containers/cup/bucket/wooden,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "DU" = (
 /obj/structure/stone_tile/block{
 	dir = 8
@@ -569,7 +601,7 @@
 	},
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "DZ" = (
 /obj/structure/stone_tile/block/cracked,
 /obj/structure/stone_tile/block/cracked{
@@ -577,11 +609,14 @@
 	},
 /obj/effect/decal/cleanable/vomit,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"EU" = (
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "EV" = (
 /obj/structure/stone_tile/slab,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Fi" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
@@ -612,7 +647,7 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "GF" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 8
@@ -629,7 +664,7 @@
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/stone_tile/slab/cracked,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "GR" = (
 /obj/structure/stone_tile/center/cracked,
 /obj/effect/mapping_helpers/no_lava,
@@ -645,7 +680,16 @@
 /obj/structure/stone_tile/slab/cracked,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"Ij" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "Iv" = (
 /obj/structure/stone_tile/block{
 	dir = 8
@@ -654,12 +698,22 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "IF" = (
 /obj/structure/stone_tile/center/burnt,
 /obj/effect/mapping_helpers/no_lava,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/lavaland/surface/outdoors)
+"Jg" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "JG" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
@@ -674,11 +728,11 @@
 /obj/structure/stone_tile/center,
 /obj/effect/decal/cleanable/glass,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "JO" = (
 /obj/structure/stone_tile/slab/cracked,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Km" = (
 /obj/structure/stone_tile/surrounding_tile,
 /obj/effect/mapping_helpers/no_lava,
@@ -697,7 +751,7 @@
 	},
 /obj/structure/stone_tile/block,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "LI" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 4
@@ -712,7 +766,7 @@
 	},
 /obj/effect/decal/cleanable/blood/gibs/down,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "MB" = (
 /obj/structure/stone_tile/block,
 /obj/structure/stone_tile/cracked{
@@ -722,7 +776,10 @@
 	dir = 4
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"MF" = (
+/turf/closed/indestructible/wood,
+/area/ruin/unpowered/nyx_temple)
 "MK" = (
 /obj/structure/stone_tile/center/cracked,
 /obj/effect/mapping_helpers/no_lava,
@@ -733,12 +790,12 @@
 /obj/effect/decal/cleanable/blood/gibs/old,
 /obj/structure/stone_tile/surrounding/burnt,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Ne" = (
 /obj/item/melee/arm_blade,
 /obj/structure/stone_tile/slab/cracked,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Nx" = (
 /obj/structure/stone_tile/block,
 /obj/effect/mapping_helpers/no_lava,
@@ -754,7 +811,7 @@
 	},
 /obj/effect/decal/cleanable/vomit,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Oa" = (
 /obj/structure/stone_tile/block{
 	dir = 1
@@ -784,7 +841,7 @@
 /obj/structure/stone_tile/center,
 /obj/effect/decal/cleanable/blood/gibs/limb,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Oy" = (
 /obj/structure/stone_tile/block/cracked,
 /obj/effect/mapping_helpers/no_lava,
@@ -797,12 +854,12 @@
 /obj/structure/stone_tile/surrounding/burnt,
 /obj/structure/stone_tile/center,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Pk" = (
 /obj/structure/stone_tile/slab/cracked,
 /obj/machinery/door/airlock/cult/unruned,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "PH" = (
 /obj/effect/decal/cleanable/blood/gibs/down,
 /obj/structure/stone_tile/block{
@@ -812,7 +869,7 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "PJ" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
@@ -822,7 +879,7 @@
 	},
 /obj/effect/decal/cleanable/blood/old,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "QE" = (
 /obj/structure/stone_tile/cracked,
 /obj/structure/stone_tile/block{
@@ -852,7 +909,24 @@
 	dir = 1
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"SM" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/center,
+/obj/structure/closet/crate,
+/obj/item/pickaxe,
+/obj/item/kinetic_crusher,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
 "Tm" = (
 /obj/structure/stone_tile/surrounding_tile{
 	dir = 8
@@ -873,7 +947,7 @@
 	},
 /obj/effect/decal/cleanable/blood/hitsplatter,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "UI" = (
 /obj/effect/decal/cleanable/blood/footprints,
 /obj/structure/stone_tile/surrounding_tile{
@@ -888,7 +962,7 @@
 	},
 /obj/structure/stone_tile/center,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "UP" = (
 /obj/structure/stone_tile/center/cracked,
 /obj/effect/decal/cleanable/blood/drip,
@@ -910,14 +984,14 @@
 /obj/structure/stone_tile/center,
 /obj/effect/decal/cleanable/blood/drip,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Xu" = (
 /obj/structure/destructible/cult/pants_altar,
 /obj/structure/stone_tile/surrounding/burnt,
 /obj/item/spear/bonespear,
 /obj/effect/decal/cleanable/blood/gibs/old,
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
 "Yf" = (
 /obj/structure/stone_tile/slab/cracked{
 	dir = 4
@@ -926,7 +1000,11 @@
 	dir = 8
 	},
 /turf/open/indestructible/boss,
-/area/ruin/unpowered)
+/area/ruin/unpowered/nyx_temple)
+"Zc" = (
+/obj/structure/ore_box,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
 "Zh" = (
 /obj/structure/stone_tile/block/cracked{
 	dir = 1
@@ -1014,8 +1092,8 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
+jj
+jj
 jj
 jj
 jj
@@ -1037,9 +1115,9 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
+jj
+jj
+jj
 AJ
 jj
 jj
@@ -1058,10 +1136,10 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
+jj
+jj
+jj
+EU
 AJ
 AJ
 AJ
@@ -1075,15 +1153,15 @@ AJ
 (7,1,1) = {"
 ts
 ts
+ts
 AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+jj
+jj
+EU
+xd
 AJ
 AJ
 AJ
@@ -1097,14 +1175,14 @@ jj
 (8,1,1) = {"
 ts
 ts
+ts
+ts
 AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
+EU
+Zc
 AJ
 AJ
 AJ
@@ -1119,9 +1197,9 @@ GF
 (9,1,1) = {"
 ts
 ts
-AJ
-AJ
-AJ
+ts
+ts
+ts
 AJ
 AJ
 AJ
@@ -1142,17 +1220,17 @@ Zh
 ts
 ts
 ts
+ts
+ts
+ts
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-xe
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
+rg
 AJ
 AJ
 Nx
@@ -1165,16 +1243,16 @@ ts
 ts
 ts
 ts
+ts
+ts
 AJ
 AJ
 AJ
-AJ
-AJ
-xe
+rg
 OC
 fy
 vV
-xe
+rg
 AJ
 Lk
 nP
@@ -1187,17 +1265,17 @@ ts
 ts
 ts
 ts
+ts
 AJ
 AJ
 AJ
 AJ
-AJ
-xe
+rg
 fx
 gU
 Ig
-xe
-xe
+rg
+rg
 vX
 vX
 vX
@@ -1214,12 +1292,12 @@ AJ
 AJ
 AJ
 AJ
-xe
-xe
+rg
+rg
 SL
 UI
 PH
-xe
+rg
 nD
 GR
 vX
@@ -1231,17 +1309,17 @@ ts
 ts
 AJ
 AJ
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
 AJ
 AJ
-xe
+rg
 Cz
 vU
 zc
-xe
+rg
 Ax
 Ax
 Hi
@@ -1252,18 +1330,18 @@ rs
 ts
 AJ
 AJ
-xe
-xe
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
+rg
+rg
 AJ
-xe
-xe
+rg
+rg
 uz
-xe
-xe
+rg
+rg
 Bu
 Ax
 Ax
@@ -1273,20 +1351,20 @@ Ax
 (16,1,1) = {"
 ts
 AJ
-xe
-xe
-xe
+rg
+rg
+rg
 jz
 Ne
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
 LI
 dT
 lH
-xe
-xe
+rg
+rg
 Km
 Ac
 rs
@@ -1295,20 +1373,20 @@ Ax
 (17,1,1) = {"
 ts
 AJ
-xe
-xe
+rg
+rg
 yj
 dT
 EV
 iu
-xe
-xe
+rg
+rg
 lR
 rx
 JO
 fm
 dy
-xe
+rg
 rs
 Ca
 jH
@@ -1317,8 +1395,8 @@ TF
 (18,1,1) = {"
 ts
 AJ
-xe
-xe
+rg
+rg
 sF
 ML
 lk
@@ -1339,20 +1417,20 @@ QE
 (19,1,1) = {"
 ts
 AJ
-xe
-xe
+rg
+rg
 rM
 ve
 MB
 Vd
-xe
-xe
+rg
+rg
 Iv
 rx
 EV
 xJ
 BR
-xe
+rg
 Ax
 UP
 iU
@@ -1361,20 +1439,20 @@ yi
 (20,1,1) = {"
 ts
 AJ
-xe
-xe
-xe
+rg
+rg
+rg
 GO
 ck
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
 DL
 BY
 FY
-xe
-xe
+rg
+rg
 yk
 eH
 IF
@@ -1384,18 +1462,18 @@ Ax
 ts
 AJ
 AJ
-xe
-xe
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
+rg
+rg
 AJ
-xe
-xe
+rg
+rg
 Pk
-xe
-xe
+rg
+rg
 gx
 Ax
 bB
@@ -1407,17 +1485,17 @@ ts
 AJ
 AJ
 AJ
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
 AJ
 AJ
-xe
+rg
 PJ
 JG
 qW
-xe
+rg
 iU
 Ax
 Ax
@@ -1434,12 +1512,12 @@ AJ
 AJ
 AJ
 AJ
-xe
-xe
+rg
+rg
 UD
 NC
 ru
-xe
+rg
 Du
 MK
 Ax
@@ -1456,12 +1534,12 @@ AJ
 AJ
 AJ
 AJ
-xe
+rg
 Lv
 DZ
 Bm
-xe
-xe
+rg
+rg
 Ax
 Ax
 Hi
@@ -1478,11 +1556,11 @@ AJ
 AJ
 AJ
 AJ
-xe
+rg
 tK
 Og
 Df
-xe
+rg
 AJ
 jg
 ZU
@@ -1492,6 +1570,7 @@ Ax
 "}
 (26,1,1) = {"
 ts
+ts
 AJ
 AJ
 AJ
@@ -1499,12 +1578,11 @@ AJ
 AJ
 AJ
 AJ
-AJ
-xe
-xe
-xe
-xe
-xe
+rg
+rg
+rg
+rg
+rg
 AJ
 nD
 Ax
@@ -1514,8 +1592,8 @@ iU
 "}
 (27,1,1) = {"
 ts
-AJ
-AJ
+ts
+ts
 AJ
 AJ
 AJ
@@ -1536,6 +1614,9 @@ Ax
 "}
 (28,1,1) = {"
 ts
+ts
+ts
+ts
 AJ
 AJ
 AJ
@@ -1545,12 +1626,9 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+MF
+rg
+MF
 jg
 Ax
 Ax
@@ -1559,6 +1637,9 @@ MK
 (29,1,1) = {"
 ts
 ts
+ts
+ts
+ts
 AJ
 AJ
 AJ
@@ -1567,13 +1648,10 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+MF
+Jg
+Ij
+ku
 nD
 Sg
 Hi
@@ -1582,6 +1660,8 @@ Hi
 ts
 ts
 ts
+ts
+ts
 AJ
 AJ
 AJ
@@ -1590,12 +1670,10 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+MF
+ej
+hH
+MF
 AJ
 SG
 Ax
@@ -1605,6 +1683,8 @@ ts
 ts
 ts
 ts
+ts
+ts
 AJ
 AJ
 AJ
@@ -1612,12 +1692,10 @@ AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+rg
+SM
+MF
+rg
 AJ
 AJ
 jg
@@ -1628,17 +1706,17 @@ ts
 ts
 ts
 ts
+ts
+ts
 AJ
 AJ
 AJ
 AJ
 AJ
 AJ
-AJ
-AJ
-AJ
-AJ
-AJ
+MF
+rg
+MF
 AJ
 AJ
 AJ
@@ -1649,9 +1727,9 @@ ts
 ts
 ts
 ts
-AJ
-AJ
-AJ
+ts
+ts
+ts
 AJ
 AJ
 AJ

@@ -1,0 +1,1668 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"bB" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ck" = (
+/obj/item/clothing/glasses/nightmare_vision,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"cy" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/decal/cleanable/blood,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"cW" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"dy" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"dE" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"dT" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"eH" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"fm" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"fx" = (
+/obj/structure/kitchenspike,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"fy" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/item/spear/bonespear,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"gq" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"gx" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"gU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"hF" = (
+/obj/structure/necropolis_gate,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"iu" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"iU" = (
+/obj/structure/stone_tile/burnt,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jg" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jj" = (
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jz" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"jH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"kf" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"kG" = (
+/obj/effect/rune/apocalypse,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/mob/living/basic/demon/slaughter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"ld" = (
+/obj/structure/stone_tile/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"lk" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/effect/step_trigger/sound_effect{
+	happens_once = 1;
+	name = "\proper a grave mistake";
+	sound = 'sound/hallucinations/i_see_you1.ogg';
+	triggerer_only = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"lt" = (
+/obj/structure/stone_tile/slab,
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"lH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"lR" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"no" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"nD" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"nP" = (
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"qd" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"qW" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/obj/effect/decal/cleanable/ants,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"rs" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ru" = (
+/obj/structure/bed/maint,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/burnt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"rx" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"rM" = (
+/obj/structure/statue/bone/skull,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/ruin/unpowered)
+"sd" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"sF" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"ts" = (
+/turf/template_noop,
+/area/template_noop)
+"tK" = (
+/obj/structure/bed/maint,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/item/paper{
+	pixel_x = -5
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"tT" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"uz" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"ve" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"vU" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"vV" = (
+/obj/effect/mob_spawn/corpse/human/clown,
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"vX" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"wg" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xa" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xe" = (
+/turf/closed/indestructible/riveted/boss,
+/area/ruin/unpowered)
+"xg" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"xJ" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"yi" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"yj" = (
+/obj/structure/statue/bone/skull,
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"yk" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"zc" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Ac" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/surrounding_tile,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ax" = (
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"AJ" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"AQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Bm" = (
+/obj/structure/stone_tile/slab,
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Bu" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"BR" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"BY" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Ca" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Cz" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Df" = (
+/obj/item/reagent_containers/cup/bucket/wooden,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Du" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"DJ" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"DL" = (
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"DU" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"DZ" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"EV" = (
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Fi" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Fs" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"FY" = (
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"GF" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"GO" = (
+/obj/item/spear/bonespear,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"GR" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Hi" = (
+/obj/structure/stone_tile/block,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ig" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Iv" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"IF" = (
+/obj/structure/stone_tile/center/burnt,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"JG" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/glass,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"JO" = (
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Km" = (
+/obj/structure/stone_tile/surrounding_tile,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Lk" = (
+/obj/structure/ore_box,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Lv" = (
+/obj/structure/bed/maint,
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"LI" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"MB" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"MK" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ML" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/surrounding/burnt,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Ne" = (
+/obj/item/melee/arm_blade,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Nx" = (
+/obj/structure/stone_tile/block,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"NC" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Oa" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ob" = (
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Og" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Oy" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"OC" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Pk" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"PH" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"PJ" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"QE" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Sg" = (
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"SG" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"SL" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Tm" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"TF" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"UD" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"UI" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/center,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"UP" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Vd" = (
+/obj/item/clothing/glasses/sunglasses,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Xu" = (
+/obj/structure/destructible/cult/pants_altar,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/item/spear/bonespear,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Yf" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered)
+"Zh" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ZU" = (
+/obj/item/pickaxe,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+
+(1,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+"}
+(2,1,1) = {"
+ts
+ts
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+ts
+"}
+(3,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+"}
+(4,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+ts
+"}
+(5,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+jj
+DJ
+no
+AJ
+AJ
+"}
+(6,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+Oa
+xa
+AJ
+"}
+(7,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+Fi
+wg
+qd
+jj
+"}
+(8,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+iU
+as
+Ax
+GF
+"}
+(9,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+Ax
+Ax
+Ax
+Zh
+"}
+(10,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+xe
+xe
+xe
+xe
+AJ
+AJ
+Nx
+Tm
+sd
+Ax
+"}
+(11,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+OC
+fy
+vV
+xe
+AJ
+Lk
+nP
+TF
+Ax
+AQ
+"}
+(12,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+fx
+gU
+Ig
+xe
+xe
+vX
+vX
+vX
+Fs
+Oy
+"}
+(13,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+xe
+SL
+UI
+PH
+xe
+nD
+GR
+vX
+vX
+cW
+"}
+(14,1,1) = {"
+ts
+ts
+AJ
+AJ
+xe
+xe
+xe
+xe
+AJ
+AJ
+xe
+Cz
+vU
+zc
+xe
+Ax
+Ax
+Hi
+cy
+rs
+"}
+(15,1,1) = {"
+ts
+AJ
+AJ
+xe
+xe
+xe
+xe
+xe
+xe
+AJ
+xe
+xe
+uz
+xe
+xe
+Bu
+Ax
+Ax
+Ax
+Ax
+"}
+(16,1,1) = {"
+ts
+AJ
+xe
+xe
+xe
+jz
+Ne
+xe
+xe
+xe
+xe
+LI
+dT
+lH
+xe
+xe
+Km
+Ac
+rs
+Ax
+"}
+(17,1,1) = {"
+ts
+AJ
+xe
+xe
+yj
+dT
+EV
+iu
+xe
+xe
+lR
+rx
+JO
+fm
+dy
+xe
+rs
+Ca
+jH
+TF
+"}
+(18,1,1) = {"
+ts
+AJ
+xe
+xe
+sF
+ML
+lk
+kG
+kf
+tT
+gq
+DU
+Xu
+Yf
+xg
+hF
+Ax
+lt
+dE
+QE
+"}
+(19,1,1) = {"
+ts
+AJ
+xe
+xe
+rM
+ve
+MB
+Vd
+xe
+xe
+Iv
+rx
+EV
+xJ
+BR
+xe
+Ax
+UP
+iU
+yi
+"}
+(20,1,1) = {"
+ts
+AJ
+xe
+xe
+xe
+GO
+ck
+xe
+xe
+xe
+xe
+DL
+BY
+FY
+xe
+xe
+yk
+eH
+IF
+Ax
+"}
+(21,1,1) = {"
+ts
+AJ
+AJ
+xe
+xe
+xe
+xe
+xe
+xe
+AJ
+xe
+xe
+Pk
+xe
+xe
+gx
+Ax
+bB
+Km
+bB
+"}
+(22,1,1) = {"
+ts
+AJ
+AJ
+AJ
+xe
+xe
+xe
+xe
+AJ
+AJ
+xe
+PJ
+JG
+qW
+xe
+iU
+Ax
+Ax
+Ax
+Ax
+"}
+(23,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+xe
+UD
+NC
+ru
+xe
+Du
+MK
+Ax
+Ax
+Ax
+"}
+(24,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+Lv
+DZ
+Bm
+xe
+xe
+Ax
+Ax
+Hi
+SG
+AQ
+"}
+(25,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+tK
+Og
+Df
+xe
+AJ
+jg
+ZU
+Ax
+Ax
+Ax
+"}
+(26,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+xe
+xe
+xe
+xe
+xe
+AJ
+nD
+Ax
+Ax
+Ax
+iU
+"}
+(27,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AQ
+ld
+Ob
+Ax
+"}
+(28,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jg
+Ax
+Ax
+MK
+"}
+(29,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+nD
+Sg
+Hi
+"}
+(30,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+SG
+Ax
+"}
+(31,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jg
+"}
+(32,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+"}
+(33,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+"}

@@ -812,14 +812,6 @@
 /obj/effect/decal/cleanable/vomit,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
-"Oa" = (
-/obj/structure/stone_tile/block{
-	dir = 1
-	},
-/obj/structure/stone_tile/block,
-/obj/effect/decal/cleanable/blood/old,
-/turf/open/lava/smooth/lava_land_surface,
-/area/lavaland/surface/outdoors)
 "Ob" = (
 /obj/structure/stone_tile/cracked{
 	dir = 4
@@ -1146,7 +1138,7 @@ AJ
 jj
 jj
 jj
-Oa
+no
 xa
 AJ
 "}

@@ -4,7 +4,7 @@
 	"map_path": "map_files/heliostation",
 	"map_file": "Heliostation.dmm",
 	"shuttles": {
-		"cargo": "cargo_home",
+		"cargo": "cargo_box",
 		"ferry": "ferry_fancy",
 		"whiteship": "whiteship_meta",
 		"emergency": "emergency_tram"

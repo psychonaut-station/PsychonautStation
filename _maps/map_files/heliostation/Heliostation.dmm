@@ -56823,12 +56823,12 @@
 /area/station/engineering/atmos)
 "oWz" = (
 /obj/docking_port/stationary{
-	dir = 4;
-	dwidth = 4;
+	dwidth = 5;
 	height = 7;
 	name = "Cargo Bay";
 	shuttle_id = "cargo_home";
-	width = 12
+	width = 12;
+	dir = 4
 	},
 /turf/open/space/basic,
 /area/space)

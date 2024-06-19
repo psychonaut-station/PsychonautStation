@@ -235,6 +235,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		L[DNA_MUSHROOM_CAPS_BLOCK] = construct_block(SSaccessories.caps_list.Find(features["caps"]), length(SSaccessories.caps_list))
 	if(features["pod_hair"])
 		L[DNA_POD_HAIR_BLOCK] = construct_block(SSaccessories.pod_hair_list.Find(features["pod_hair"]), length(SSaccessories.pod_hair_list))
+	if(features["arachnid_appendages"])
+		L[DNA_ARACHNID_APPENDAGES_BLOCK] = construct_block(SSaccessories.arachnid_appendages_list.Find(features["arachnid_appendages"]), length(SSaccessories.arachnid_appendages_list))
 
 	for(var/blocknum in 1 to DNA_FEATURE_BLOCKS)
 		. += L[blocknum] || random_string(GET_UI_BLOCK_LEN(blocknum), GLOB.hex_characters)
@@ -381,6 +383,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 			set_uni_feature_block(blocknumber, construct_block(SSaccessories.caps_list.Find(features["caps"]), length(SSaccessories.caps_list)))
 		if(DNA_POD_HAIR_BLOCK)
 			set_uni_feature_block(blocknumber, construct_block(SSaccessories.pod_hair_list.Find(features["pod_hair"]), length(SSaccessories.pod_hair_list)))
+		if(DNA_ARACHNID_APPENDAGES_BLOCK)
+			set_uni_feature_block(blocknumber, construct_block(SSaccessories.arachnid_appendages_list.Find(features["arachnid_appendages"]), length(SSaccessories.arachnid_appendages_list)))
 
 //Please use add_mutation or activate_mutation instead
 /datum/dna/proc/force_give(datum/mutation/human/human_mutation)
@@ -681,6 +685,8 @@ GLOBAL_LIST_INIT(total_uf_len_by_block, populate_total_uf_len_by_block())
 		dna.features["caps"] = SSaccessories.caps_list[deconstruct_block(get_uni_feature_block(features, DNA_MUSHROOM_CAPS_BLOCK), length(SSaccessories.caps_list))]
 	if(dna.features["pod_hair"])
 		dna.features["pod_hair"] = SSaccessories.pod_hair_list[deconstruct_block(get_uni_feature_block(features, DNA_POD_HAIR_BLOCK), length(SSaccessories.pod_hair_list))]
+	if(dna.features["arachnid_appendages"])
+		dna.features["arachnid_appendages"] = SSaccessories.arachnid_appendages_list[deconstruct_block(get_uni_feature_block(features, DNA_ARACHNID_APPENDAGES_BLOCK), length(SSaccessories.arachnid_appendages_list))]
 
 	for(var/obj/item/organ/external/external_organ in organs)
 		external_organ.mutate_feature(features, src)

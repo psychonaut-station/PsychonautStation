@@ -351,7 +351,7 @@
 /obj/structure/stone_tile/block{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "sd" = (
 /obj/structure/stone_tile/surrounding_tile{

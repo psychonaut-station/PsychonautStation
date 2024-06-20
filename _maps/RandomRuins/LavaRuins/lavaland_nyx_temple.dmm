@@ -916,7 +916,6 @@
 /obj/structure/stone_tile/center,
 /obj/structure/closet/crate,
 /obj/item/pickaxe,
-/obj/item/kinetic_crusher,
 /turf/open/misc/asteroid/basalt/lava_land_surface,
 /area/ruin/unpowered/nyx_temple)
 "Tm" = (

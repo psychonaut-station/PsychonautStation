@@ -6313,6 +6313,7 @@
 #include "modular_psychonaut\master_files\code\modules\jobs\job_types\_job.dm"
 #include "modular_psychonaut\master_files\code\modules\jobs\job_types\clown.dm"
 #include "modular_psychonaut\master_files\code\modules\mob\living\emote.dm"
+#include "modular_psychonaut\mentor\code\verbs.dm"
 #include "modular_psychonaut\modules\brig_physician\code\clothing.dm"
 #include "modular_psychonaut\modules\brig_physician\code\job.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"

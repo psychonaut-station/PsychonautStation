@@ -135,7 +135,7 @@
 	name = "Lahmacun"
 	reqs = list(
 		/obj/item/food/flatdough = 1,
-		/obj/item/food/raw_meatball = 3,
+		/obj/item/food/raw_meatball = 2,
 		/obj/item/food/grown/tomato = 1
 	)
 	result = /obj/item/food/pizza/lahmacun

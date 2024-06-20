@@ -165,7 +165,7 @@
 	icon = 'icons/psychonaut/obj/food/pizza.dmi'
 	icon_state = "lahmacun"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 26,
+		/datum/reagent/consumable/nutriment = 20,
 		/datum/reagent/consumable/nutriment/protein = 3,
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)

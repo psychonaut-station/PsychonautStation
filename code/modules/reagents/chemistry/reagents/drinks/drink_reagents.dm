@@ -1324,6 +1324,6 @@
 
 /datum/reagent/consumable/ayran/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	if(affected_mob.getBruteLoss() && SPT_PROB(10, seconds_per_tick))
-		if(affected_mob.heal_bodypart_damage(1, 0))
+	if(affected_mob.getFireLoss() && SPT_PROB(10, seconds_per_tick))
+		if(affected_mob.heal_bodypart_damage(brute = 0, burn = 1 * REM * seconds_per_tick, updating_health = FALSE))
 			return UPDATE_MOB_HEALTH

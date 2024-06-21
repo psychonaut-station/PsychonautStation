@@ -46,5 +46,8 @@
 	"workbench.editorAssociations": {
 		"*.dmi": "dmiEditor.dmiEditor"
 	},
-	"Lua.diagnostics.enable": false
+	"Lua.diagnostics.enable": false,
+	"markdownlint.config": {
+		"MD041": false
+	}
 }

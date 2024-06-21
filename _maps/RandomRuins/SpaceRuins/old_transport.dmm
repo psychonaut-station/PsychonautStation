@@ -1,0 +1,839 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ag" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/xenoblood/xgibs/larva/body,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"bh" = (
+/obj/structure/tank_dispenser/oxygen,
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/obj/machinery/airalarm{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/catwalk_floor/iron,
+/area/ruin/space/has_grav/old_transport)
+"cM" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/white,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"cU" = (
+/obj/effect/spawner/random/entertainment/cigarette,
+/turf/open/space/basic,
+/area/space)
+"dm" = (
+/obj/structure/chair/comfy/shuttle,
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"dG" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/vomit,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"ee" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/xenoblood/xgibs/torso,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/catwalk_floor/iron,
+/area/ruin/space/has_grav/old_transport)
+"eA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/item/clothing/head/cone{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/space/has_grav/old_transport)
+"fb" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/cobweb,
+/obj/item/storage/box/rubbershot,
+/obj/item/gun/ballistic/shotgun,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"ha" = (
+/obj/item/kirbyplants/organic/plant3,
+/turf/open/space/basic,
+/area/space)
+"hl" = (
+/obj/effect/decal/cleanable/plastic,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"hJ" = (
+/obj/effect/spawner/random/entertainment/money_small,
+/turf/open/space/basic,
+/area/space)
+"hS" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 9
+	},
+/obj/effect/turf_decal/stripes/corner,
+/obj/structure/table/reinforced,
+/obj/item/storage/toolbox/emergency,
+/obj/item/gps/spaceruin{
+	pixel_x = 6;
+	pixel_y = 2
+	},
+/turf/open/floor/catwalk_floor/iron,
+/area/ruin/space/has_grav/old_transport)
+"hW" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/old_transport)
+"iw" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/head/cone{
+	pixel_x = 8;
+	pixel_y = 8
+	},
+/obj/structure/cable,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/space/has_grav/old_transport)
+"ju" = (
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"jC" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/up,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"kb" = (
+/turf/open/space/basic,
+/area/space)
+"lI" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/old_transport)
+"mV" = (
+/obj/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/old_transport)
+"nt" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"nI" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"nQ" = (
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"oh" = (
+/obj/structure/window/reinforced/shuttle,
+/obj/structure/grille,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/old_transport)
+"oG" = (
+/obj/effect/decal/cleanable/glass,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/machinery/light/red/directional/west,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"qz" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"qJ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/item/clothing/head/cone{
+	pixel_x = -4;
+	pixel_y = 4
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"rz" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/insectguts,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"rJ" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"tQ" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 6
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"uh" = (
+/obj/machinery/power/shuttle_engine/heater,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"uO" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"vB" = (
+/obj/structure/grille/broken,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"wn" = (
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"wH" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space)
+"wM" = (
+/obj/structure/lattice/catwalk,
+/obj/effect/spawner/random/entertainment/plushie,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"xs" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"yK" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"CE" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/bot,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"CF" = (
+/obj/machinery/computer/terminal{
+	content = list("Property of Spinward-Upsilon Sanitation Department. Authorised employees only.");
+	desc = "A garbage truck's dusty old control console.";
+	name = "dashboard";
+	upperinfo = "Controls locked."
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Do" = (
+/obj/structure/lattice/catwalk,
+/obj/effect/spawner/random/entertainment/drugs,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Dr" = (
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/turf/open/space/basic,
+/area/space)
+"FE" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/robot_debris,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"He" = (
+/obj/machinery/power/smes,
+/obj/effect/turf_decal/stripes/line{
+	dir = 6
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 1
+	},
+/obj/machinery/light/red/directional/south,
+/turf/open/floor/catwalk_floor/iron,
+/area/ruin/space/has_grav/old_transport)
+"HR" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Jc" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/spawner/random/entertainment/toy,
+/turf/open/space/basic,
+/area/space)
+"Kq" = (
+/obj/structure/closet/crate/internals,
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"KA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"Mq" = (
+/obj/machinery/computer{
+	name = "Shuttle computer"
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"MJ" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 5
+	},
+/obj/effect/turf_decal/bot,
+/obj/effect/spawner/random/entertainment/wallet_storage,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"MR" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/generic,
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"Np" = (
+/obj/structure/closet/crate/internals,
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/suit/hazardvest{
+	desc = "A high-visibility lifejacket complete with whistle and slot for oxygen tanks.";
+	name = "emergency lifejacket"
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/clothing/head/utility/hardhat/orange{
+	name = "protective hat";
+	pixel_y = 9
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/tank/internals/emergency_oxygen{
+	pixel_x = 3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/item/clothing/mask/breath{
+	pixel_x = -3;
+	pixel_y = -3
+	},
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Nt" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Nw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 10
+	},
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/effect/decal/cleanable/xenoblood/xgibs/down,
+/turf/open/floor/catwalk_floor/iron,
+/area/ruin/space/has_grav/old_transport)
+"QU" = (
+/obj/structure/table/reinforced,
+/obj/structure/cable,
+/obj/machinery/power/apc{
+	cell_type = /obj/item/stock_parts/cell/lead;
+	locked = 0;
+	pixel_y = -25;
+	start_charge = 0
+	},
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/spawner/random/entertainment/cigarette,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Ra" = (
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Rq" = (
+/obj/structure/grille,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Rx" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 1
+	},
+/turf/open/space/basic,
+/area/space)
+"RB" = (
+/obj/structure/lattice,
+/obj/structure/grille/broken,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"RP" = (
+/obj/effect/turf_decal/trimline/blue/filled/line,
+/obj/effect/decal/cleanable/xenoblood/xgibs/body,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Sc" = (
+/obj/structure/chair/comfy/shuttle,
+/turf/open/space/basic,
+/area/space)
+"Se" = (
+/obj/structure/table/reinforced,
+/obj/effect/turf_decal/trimline/blue/filled/line{
+	dir = 4
+	},
+/obj/machinery/cell_charger,
+/obj/item/stock_parts/cell/empty,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/textured,
+/area/ruin/space/has_grav/old_transport)
+"Sr" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"SE" = (
+/obj/machinery/power/shuttle_engine/propulsion,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Ty" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/decal/cleanable/oil,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/space/has_grav/old_transport)
+"Ua" = (
+/obj/effect/turf_decal/stripes/line,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"Up" = (
+/obj/item/kirbyplants/organic/plant18,
+/turf/open/space/basic,
+/area/space)
+"UB" = (
+/turf/open/floor/plating/rust,
+/area/ruin/space/has_grav/old_transport)
+"UC" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/old_transport)
+"WX" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/bot,
+/turf/open/floor/plating/dumpsterair,
+/area/ruin/space/has_grav/old_transport)
+"Xz" = (
+/obj/structure/lattice,
+/turf/open/space/basic,
+/area/ruin/space/has_grav/old_transport)
+"Zw" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/catwalk_floor/iron_dark,
+/area/ruin/space/has_grav/old_transport)
+"ZE" = (
+/turf/closed/wall/mineral/plastitanium,
+/area/ruin/space/has_grav/old_transport)
+
+(1,1,1) = {"
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+"}
+(2,1,1) = {"
+kb
+kb
+Xz
+lI
+RB
+lI
+rJ
+kb
+kb
+Jc
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+"}
+(3,1,1) = {"
+kb
+Rq
+lI
+lI
+oh
+lI
+lI
+Xz
+Up
+kb
+kb
+kb
+kb
+Rq
+Np
+Xz
+ZE
+kb
+kb
+kb
+"}
+(4,1,1) = {"
+kb
+Xz
+UC
+Mq
+nI
+QU
+lI
+lI
+oh
+Xz
+kb
+kb
+kb
+RB
+lI
+kb
+kb
+kb
+Dr
+kb
+"}
+(5,1,1) = {"
+kb
+wM
+oh
+CF
+cM
+Nt
+mV
+fb
+WX
+lI
+ag
+kb
+nQ
+hW
+lI
+uh
+SE
+kb
+kb
+kb
+"}
+(6,1,1) = {"
+kb
+HR
+oh
+yK
+Se
+tQ
+xs
+Ra
+hl
+oG
+Ua
+jC
+rz
+lI
+HR
+kb
+hJ
+kb
+kb
+kb
+"}
+(7,1,1) = {"
+kb
+HR
+oh
+hS
+Zw
+Nw
+xs
+MR
+uO
+dG
+wn
+CE
+UB
+HR
+kb
+kb
+kb
+kb
+kb
+kb
+"}
+(8,1,1) = {"
+kb
+Do
+oh
+Ty
+ee
+iw
+mV
+qJ
+nt
+MJ
+Sr
+RP
+qz
+kb
+kb
+wH
+Rx
+kb
+kb
+kb
+"}
+(9,1,1) = {"
+kb
+Xz
+lI
+bh
+eA
+He
+lI
+dm
+FE
+KA
+Kq
+oh
+UC
+uh
+kb
+kb
+kb
+kb
+kb
+kb
+"}
+(10,1,1) = {"
+kb
+vB
+lI
+lI
+oh
+lI
+UC
+lI
+lI
+ju
+lI
+kb
+Xz
+kb
+lI
+rJ
+kb
+kb
+cU
+kb
+"}
+(11,1,1) = {"
+kb
+kb
+RB
+lI
+rJ
+lI
+Xz
+kb
+lI
+RB
+Sc
+kb
+kb
+ha
+kb
+hW
+RB
+ZE
+kb
+kb
+"}
+(12,1,1) = {"
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+kb
+"}

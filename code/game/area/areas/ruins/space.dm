@@ -699,3 +699,7 @@
 /area/ruin/space/has_grav/garbagetruck/medicalwaste
 /area/ruin/space/has_grav/garbagetruck/squat
 /area/ruin/space/has_grav/garbagetruck/toystore
+
+//Old Transport Ship
+/area/ruin/space/has_grav/old_transport
+	name = "Old Transport Ship"

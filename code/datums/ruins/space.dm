@@ -514,3 +514,8 @@
 	name = "Space-Ruin Decommissioned Garbage Truck NX4"
 	description = "An NX-760 interstellar transport barge. At the end of their life cycle, they are often filled with trash and launched into unexplored space to become someone else's problem. This one is full of commercial trash, and spiders."
 
+/datum/map_template/ruin/space/old_transport
+	id = "old_transport"
+	suffix = "old_transport.dmm"
+	name = "Space-Ruin old Nanotrasen transport ship XY-0898"
+	description = "XY-0898 is an old model that undertook transport missions for a long time, but it is of high quality. It has been unreachable for a long time."

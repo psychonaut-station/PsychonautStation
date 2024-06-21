@@ -18,6 +18,7 @@
 		"plasmaman_gas_filter",
 		"analyzer",
 		"pipe_painter",
+		"tinyfan_assembly",
 	)
 
 /datum/techweb_node/gas_compression

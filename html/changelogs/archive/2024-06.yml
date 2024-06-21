@@ -749,25 +749,18 @@
   - bugfix: Cosmos spells will no longer star mark your steed
   - qol: Baby plushies are now smaller than their parents
 2024-06-17:
-<<<<<<< HEAD
-=======
-  Hacks-The-Doors:
-  - balance: dental pills can now be used in crit.
-  - balance: dental pills now give off a message when you start using them
-  - balance: dental pills have a 2.5 second delay when in soft crit
->>>>>>> upstream/master
-  JackEnoff:
-  - balance: Certain changeling abilities won't work while on fire.
-  TheBoondock:
-  - sound: added compressed air sound for when air tanks are inserted into machinery
-<<<<<<< HEAD
   exdal:
   - rscadd: Artik OOC renginizi ve ghost formunuzu duzenleyebilirsiniz
   grungussuss:
   - rscadd: Added Misha the bear to the HoS office on icebox.
-=======
-  grungussuss:
-  - rscadd: Added Misha the bear to the HoS office on icebox.
+  Hacks-The-Doors:
+  - balance: dental pills can now be used in crit.
+  - balance: dental pills now give off a message when you start using them
+  - balance: dental pills have a 2.5 second delay when in soft crit
+  JackEnoff:
+  - balance: Certain changeling abilities won't work while on fire.
+  TheBoondock:
+  - sound: added compressed air sound for when air tanks are inserted into machinery
 2024-06-18:
   Bisar:
   - balance: Replaced the free reagent purging with actually purging by exploding
@@ -989,4 +982,3 @@
   r3dj4ck0424:
   - bugfix: puts tiles under the wawa tool storage doors
   - bugfix: allows you to access a door and a fire alarm on wawa's prison second floor
->>>>>>> upstream/master

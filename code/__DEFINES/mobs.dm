@@ -84,13 +84,10 @@
 #define BODYTYPE_ALIEN (1<<3)
 ///The limb is from a golem
 #define BODYTYPE_GOLEM (1<<4)
-<<<<<<< HEAD
 ///Sytnth
 #define BODYTYPE_SYNTHETIC (1<<5)
-=======
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
->>>>>>> upstream/master
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.

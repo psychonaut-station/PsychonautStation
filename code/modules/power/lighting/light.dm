@@ -741,16 +741,14 @@
 	status = LIGHT_BROKEN
 	icon_state = "floor-broken"
 
-<<<<<<< HEAD
+/obj/machinery/light/floor/transport
+	name = "transport light"
+	break_if_moved = FALSE
+	layer = BELOW_OPEN_DOOR_LAYER
+
 /proc/creak_lights()
 	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
 		if(is_station_level(L.z) && L.on && L.status == LIGHT_OK)
 			L.on = FALSE
 			L.update(FALSE)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))
-=======
-/obj/machinery/light/floor/transport
-	name = "transport light"
-	break_if_moved = FALSE
-	layer = BELOW_OPEN_DOOR_LAYER
->>>>>>> upstream/master

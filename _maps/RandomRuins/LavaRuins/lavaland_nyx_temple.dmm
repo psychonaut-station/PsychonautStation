@@ -194,6 +194,7 @@
 /obj/structure/stone_tile/cracked{
 	dir = 1
 	},
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "jH" = (
@@ -231,7 +232,7 @@
 	dir = 1
 	},
 /obj/structure/stone_tile/block,
-/mob/living/basic/demon/slaughter,
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "ld" = (
@@ -379,7 +380,10 @@
 /obj/structure/stone_tile/center,
 /obj/effect/decal/cleanable/blood/gibs/body,
 /obj/item/paper{
-	pixel_x = -5
+	pixel_x = -4;
+	pixel_y = 6;
+	default_raw_text = "Uzun süredir burada tutsak tutuluyorum fakat dışarıdan gelen kazma sesleri ümit verici duruyor... İnanın tarihi bilmiyorum çok uzun süredir burada tutuluyorum çantamda kalan son kağıt parçası ve kalemimde çok sağlam değil... Bu aptal mekan Karabasanlarla dolu olduğu için etrafımı pekte gördüğüm söylenemez arada mekanı terk edip yeni av arıyorlar o sırada PDA'mın ışığı ile bir şeyler yazabiliyorum... Pekte tekin değil en son benimle buraya gelen arkadaşımı karşı odaya götürdüler ne olduğunu bilmiyorum bu aptal Karabasanlar tek kelime dahi etmiyor bizimle! Sanırım sıra bana geldi, pek zamanım kalmadı... ";
+	name = "Son"
 	},
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
@@ -663,6 +667,7 @@
 /obj/item/spear/bonespear,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/stone_tile/slab/cracked,
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "GR" = (

@@ -37,5 +37,5 @@ jobs:
             GET_TEST_MERGES_URL: ${{ secrets.GET_TEST_MERGES_URL }}
           with:
             script: |
-              const { processTestMerges } = await import('${{ github.workspace }}/tools/test_merge_bot/main.js')
+              const { processTestMerges } = await import('${{ github.workspace }}/tools/test_merge_bot_2/main.js')
               await processTestMerges({ github, context })

@@ -43,7 +43,10 @@
 		if(COMP_TEXT_LOWER)
 			result = LOWER_TEXT(value)
 		if(COMP_TEXT_UPPER)
-			result = uppertext(value)
+			// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+			// result = uppertext(value)
+			result = locale_uppertext(value)
+			// PSYCHONAUT EDIT CHANGE END
 
 	output.set_output(result)
 

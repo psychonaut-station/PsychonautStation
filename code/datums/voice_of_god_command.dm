@@ -27,7 +27,10 @@ GLOBAL_LIST_INIT(voice_of_god_commands, init_voice_of_god_commands())
  * and the return value of this proc the cooldown variable of the command dictates. (only relevant for things with cooldowns i guess)
  */
 /proc/voice_of_god(message, mob/living/user, list/span_list, base_multiplier = 1, include_speaker = FALSE, forced = null, ignore_spam = FALSE)
-	var/log_message = uppertext(message)
+	// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+	// var/log_message = uppertext(message)
+	var/log_message = locale_uppertext(message)
+	// PSYCHONAUT EDIT CHANGE END
 	var/is_cultie = IS_CULTIST(user)
 	if(LAZYLEN(span_list) && is_cultie)
 		span_list = list("narsiesmall")

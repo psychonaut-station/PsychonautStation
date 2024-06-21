@@ -34,7 +34,10 @@
 
 /datum/action/cooldown/spell/voice_of_god/cast(atom/cast_on)
 	. = ..()
-	var/command_cooldown = voice_of_god(uppertext(command), cast_on, spans, base_multiplier = power_mod)
+	// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+	// var/command_cooldown = voice_of_god(uppertext(command), cast_on, spans, base_multiplier = power_mod)
+	var/command_cooldown = voice_of_god(locale_uppertext(command), cast_on, spans, base_multiplier = power_mod)
+	// PSYCHONAUT EDIT CHANGE END
 	cooldown_time = (command_cooldown * cooldown_mod)
 
 // "Invocation" is done by the actual voice of god proc

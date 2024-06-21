@@ -55,7 +55,10 @@
 		message = replacetext(message, "library", "biblioteca")
 		message = replacetext(message, "traitor", "traidor")
 		message = replacetext(message, "wizard", "mago")
-		message = uppertext(message) //Things end up looking better this way (no mixed cases), and it fits the macho wrestler image.
+		// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+		// message = uppertext(message) //Things end up looking better this way (no mixed cases), and it fits the macho wrestler image.
+		message = locale_uppertext(message)
+		// PSYCHONAUT EDIT CHANGE END
 		if(prob(25))
 			message += " OLE!"
 	speech_args[SPEECH_MESSAGE] = message

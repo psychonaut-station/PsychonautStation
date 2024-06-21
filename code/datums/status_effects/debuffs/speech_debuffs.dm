@@ -132,7 +132,10 @@
 
 	if(prob(capitalize_prob))
 		var/exclamation = pick("!", "!!", "!!!")
-		message = uppertext(message)
+		// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+		// message = uppertext(message)
+		message = locale_uppertext(message)
+		// PSYCHONAUT EDIT CHANGE END
 		message += "[apply_speech(exclamation, exclamation)]"
 
 	message_args[TREAT_MESSAGE_ARG] = message

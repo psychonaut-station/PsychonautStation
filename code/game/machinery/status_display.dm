@@ -92,8 +92,12 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 
 /// Immediately change the display to the given two lines.
 /obj/machinery/status_display/proc/set_messages(line1, line2)
-	line1 = uppertext(line1)
-	line2 = uppertext(line2)
+	// PSYCHONAUT EDIT CHANGE START - LANGUAGE - ORIGINAL:
+	// line1 = uppertext(line1)
+	// line2 = uppertext(line2)
+	line1 = locale_uppertext(line1)
+	line2 = locale_uppertext(line2)
+	// PSYCHONAUT EDIT CHANGE END
 
 	var/message_changed = FALSE
 	if(line1 != message1)

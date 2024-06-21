@@ -77,12 +77,13 @@
 	var/fire_power = 0.5
 	///The Light colour to use when working in fire alarm status
 	var/fire_colour = COLOR_FIRE_LIGHT_RED
-
 	///Power usage - W per unit of luminosity
 	var/power_consumption_rate = 20
+	///break if moved, if false also makes it ignore if the wall its on breaks
+	var/break_if_moved = TRUE
 
 /obj/machinery/light/Move()
-	if(status != LIGHT_BROKEN)
+	if(status != LIGHT_BROKEN && break_if_moved)
 		break_light_tube(TRUE)
 	return ..()
 
@@ -117,7 +118,8 @@
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	AddElement(/datum/element/atmos_sensitive, mapload)
-	find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
+	if(break_if_moved)
+		find_and_hang_on_wall(custom_drop_callback = CALLBACK(src, PROC_REF(knock_down)))
 
 /obj/machinery/light/post_machine_initialize()
 	. = ..()
@@ -739,9 +741,16 @@
 	status = LIGHT_BROKEN
 	icon_state = "floor-broken"
 
+<<<<<<< HEAD
 /proc/creak_lights()
 	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
 		if(is_station_level(L.z) && L.on && L.status == LIGHT_OK)
 			L.on = FALSE
 			L.update(FALSE)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))
+=======
+/obj/machinery/light/floor/transport
+	name = "transport light"
+	break_if_moved = FALSE
+	layer = BELOW_OPEN_DOOR_LAYER
+>>>>>>> upstream/master

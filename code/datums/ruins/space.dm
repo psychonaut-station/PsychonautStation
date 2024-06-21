@@ -519,3 +519,9 @@
 	suffix = "old_transport.dmm"
 	name = "Space-Ruin old Nanotrasen transport ship XY-0898"
 	description = "XY-0898 is an old model that undertook transport missions for a long time, but it is of high quality. It has been unreachable for a long time."
+
+/datum/map_template/ruin/space/gas_station
+	id = "gas_station"
+	suffix = "gas_station.dmm"
+	name = "Space-Ruin old Nanotrasen Gas Station"
+	description = "The last records of the old Nanotrasen gas station indicate an attempted robbery."

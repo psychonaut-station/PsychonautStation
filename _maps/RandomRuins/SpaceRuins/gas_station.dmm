@@ -1,0 +1,1285 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"ae" = (
+/obj/machinery/power/shuttle_engine/propulsion{
+	dir = 8
+	},
+/turf/open/space/basic,
+/area/ruin/space/has_grav/gas_station)
+"aB" = (
+/obj/structure/sign/poster/contraband/syndicate_recruitment/directional/north,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"bq" = (
+/obj/structure/table/wood,
+/obj/machinery/fax,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"bH" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 8
+	},
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"bZ" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/vending/cigarette,
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"eE" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing/corner,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"gJ" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/machinery/light/very_dim/directional/north,
+/obj/structure/sign/clock/directional/north,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"hm" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 10
+	},
+/obj/effect/spawner/random/food_or_drink/donuts,
+/obj/effect/spawner/random/food_or_drink/donuts,
+/obj/machinery/light/very_dim/directional/south,
+/obj/structure/sign/poster/contraband/lusty_xenomorph/directional/south,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 4
+	},
+/area/ruin/space/has_grav/gas_station)
+"hz" = (
+/obj/structure/flora/rock/icy/style_2,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"iZ" = (
+/obj/item/kirbyplants/random/dead,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"jc" = (
+/obj/structure/flora/rock/icy/style_3,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"jV" = (
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"kp" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/green/corner,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 9
+	},
+/obj/effect/spawner/random/decoration,
+/obj/effect/spawner/random/decoration,
+/obj/structure/sign/poster/contraband/jumbo_bar/directional/north,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/dark/textured_corner,
+/area/ruin/space/has_grav/gas_station)
+"ks" = (
+/obj/effect/turf_decal/stripes/asteroid/box,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"lI" = (
+/turf/closed/mineral,
+/area/ruin/space/has_grav/gas_station)
+"mr" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 6
+	},
+/obj/effect/spawner/random/entertainment/plushie,
+/obj/effect/spawner/random/entertainment/plushie,
+/obj/effect/spawner/random/entertainment/plushie,
+/obj/structure/sign/poster/contraband/pizza_imperator/directional/east,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"nd" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/effect/spawner/random/entertainment/money_large,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"nj" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"nm" = (
+/obj/structure/flora/rock/pile/icy,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"nn" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/gas_station)
+"oa" = (
+/obj/structure/flora/rock/pile/icy/style_2,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"oS" = (
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"pg" = (
+/obj/structure/reagent_dispensers/fueltank/large,
+/obj/structure/sign/poster/contraband/microwave/directional/north,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"pp" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/green/line,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/effect/spawner/random/entertainment/musical_instrument,
+/obj/effect/spawner/random/entertainment/musical_instrument,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"qg" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 5
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"qh" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/food/popsicle/creamsicle_orange,
+/obj/item/food/popsicle/creamsicle_orange,
+/obj/item/food/popsicle/creamsicle_berry,
+/obj/item/food/popsicle/creamsicle_berry,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"qs" = (
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"qJ" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/structure/railing{
+	dir = 9
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"qU" = (
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"re" = (
+/obj/effect/turf_decal/stripes/asteroid/box,
+/obj/structure/marker_beacon/jade,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"rp" = (
+/obj/structure/flora/rock/pile/icy/style_random,
+/obj/structure/railing,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"sv" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 4
+	},
+/area/ruin/space/has_grav/gas_station)
+"ta" = (
+/obj/effect/spawner/random/entertainment/drugs,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"tt" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"uj" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"uy" = (
+/obj/structure/sign/poster/contraband/smoke/directional/north,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"uL" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"vg" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"vk" = (
+/obj/structure/flora/rock/pile/icy,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"vo" = (
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"vv" = (
+/obj/structure/table,
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 1
+	},
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"vB" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"vD" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing/corner{
+	dir = 1
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"vX" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"wa" = (
+/obj/machinery/bluespace_vendor/directional/south,
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"wc" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 4
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"wI" = (
+/obj/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space/has_grav/gas_station)
+"xt" = (
+/obj/effect/turf_decal/stripes/asteroid/box,
+/obj/structure/marker_beacon/burgundy,
+/obj/structure/railing{
+	dir = 6
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"xx" = (
+/obj/structure/sign/nanotrasen,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space/has_grav/gas_station)
+"xU" = (
+/obj/effect/spawner/random/entertainment/toy_figure,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"yd" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 4
+	},
+/area/ruin/space/has_grav/gas_station)
+"yO" = (
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"yQ" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"zr" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"zA" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 4
+	},
+/obj/machinery/light/small/dim/directional/north,
+/obj/machinery/airalarm{
+	pixel_y = 25
+	},
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"Cb" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"Cs" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"DO" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"DY" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Ew" = (
+/obj/effect/turf_decal/stripes/asteroid/box,
+/obj/structure/marker_beacon/bronze,
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"EE" = (
+/obj/structure/railing{
+	dir = 10
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Gu" = (
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Gx" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/effect/spawner/random/food_or_drink/booze,
+/obj/effect/spawner/random/food_or_drink/booze,
+/obj/effect/spawner/random/food_or_drink/booze,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"He" = (
+/obj/structure/railing/corner{
+	dir = 8
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Ig" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/light/floor,
+/obj/effect/turf_decal/stripes/asteroid/box,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"IG" = (
+/obj/structure/railing,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"IJ" = (
+/obj/structure/flora/rock/pile/icy/style_2,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"IM" = (
+/obj/effect/turf_decal/trimline/dark_red/corner{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"Jh" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 8
+	},
+/obj/structure/sign/clock/directional/north,
+/obj/item/kirbyplants/random/dead,
+/obj/effect/decal/cleanable/cobweb,
+/turf/open/floor/iron/dark/textured_corner,
+/area/ruin/space/has_grav/gas_station)
+"JI" = (
+/obj/structure/railing/corner,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"JK" = (
+/obj/structure/sign/poster/contraband/pizza_imperator/directional/south,
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"KQ" = (
+/obj/structure/flora/rock/icy/style_3,
+/obj/structure/railing{
+	dir = 8
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Lt" = (
+/obj/effect/turf_decal/trimline/green/corner,
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 8
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"LB" = (
+/obj/structure/flora/rock/pile/icy/style_3,
+/obj/structure/railing,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"LJ" = (
+/obj/effect/turf_decal/stripes/asteroid/box,
+/obj/structure/marker_beacon/indigo,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Mc" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/machinery/vending/coffee,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"Mf" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 6
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"Mx" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 6
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/wrapping,
+/obj/effect/decal/cleanable/plastic,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"MA" = (
+/obj/structure/sign/poster/contraband/masked_men/directional/east,
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 8
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"MS" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/item/kirbyplants/random/dead,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"MU" = (
+/obj/structure/flora/rock/icy,
+/obj/structure/railing{
+	dir = 4
+	},
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Nd" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/structure/closet/secure_closet/freezer/fridge,
+/obj/item/food/popsicle/sea_salt,
+/obj/item/food/popsicle/sea_salt,
+/obj/item/food/popsicle/jumbo,
+/obj/item/food/popsicle/jumbo,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"NH" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 10
+	},
+/obj/machinery/light/small/dim/directional/south,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 4
+	},
+/area/ruin/space/has_grav/gas_station)
+"NZ" = (
+/obj/structure/chair{
+	dir = 8
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"Oj" = (
+/obj/effect/spawner/random/entertainment/plushie,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"OD" = (
+/obj/structure/railing,
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Rb" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"RW" = (
+/obj/effect/spawner/random/exotic/tool,
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Sk" = (
+/obj/effect/turf_decal/trimline/green/corner,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 9
+	},
+/turf/open/floor/iron/dark/textured_corner,
+/area/ruin/space/has_grav/gas_station)
+"Tp" = (
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/glass,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"Tq" = (
+/obj/structure/table/wood,
+/obj/item/paper_bin,
+/obj/item/pen,
+/obj/effect/spawner/random/entertainment/cigarette_pack{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"TO" = (
+/turf/open/misc/asteroid,
+/area/ruin/space/has_grav/gas_station)
+"Uf" = (
+/obj/structure/sign/poster/contraband/communist_state/directional/south,
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"Uy" = (
+/obj/structure/railing/corner{
+	dir = 4
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Vb" = (
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 5
+	},
+/obj/machinery/airalarm{
+	pixel_y = 25
+	},
+/obj/structure/extinguisher_cabinet/directional/east,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/mob_spawn/corpse/human/skeleton,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"Vn" = (
+/obj/effect/turf_decal/sand/plating,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"VQ" = (
+/obj/effect/spawner/random/structure/billboard/nanotrasen,
+/obj/effect/turf_decal/sand/plating,
+/turf/open/floor/plating/airless,
+/area/ruin/space/has_grav/gas_station)
+"Wj" = (
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 1
+	},
+/obj/effect/spawner/random/contraband,
+/obj/effect/spawner/random/contraband,
+/obj/effect/decal/cleanable/dirt,
+/obj/structure/rack,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/ruin/space/has_grav/gas_station)
+"Wl" = (
+/obj/structure/rack,
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 5
+	},
+/obj/effect/spawner/random/entertainment/cigarette_pack{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/spawner/random/entertainment/cigarette_pack{
+	pixel_x = -6;
+	pixel_y = 8
+	},
+/obj/effect/spawner/random/entertainment/cigarette_pack,
+/obj/effect/spawner/random/entertainment/cigarette_pack,
+/obj/effect/spawner/random/entertainment/lighter{
+	pixel_x = 9
+	},
+/obj/effect/spawner/random/entertainment/lighter{
+	pixel_x = 9
+	},
+/obj/structure/sign/poster/contraband/kss13/directional/east,
+/obj/effect/decal/cleanable/cobweb/cobweb2,
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 8
+	},
+/area/ruin/space/has_grav/gas_station)
+"WI" = (
+/obj/structure/flora/rock/icy/style_3,
+/obj/structure/railing{
+	dir = 5
+	},
+/turf/open/misc/asteroid/moon,
+/area/ruin/space/has_grav/gas_station)
+"Xy" = (
+/obj/machinery/door/airlock/shuttle,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/trimline/green/filled/line,
+/obj/effect/turf_decal/trimline/green/filled/line{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"XF" = (
+/turf/open/space/basic,
+/area/space)
+"XK" = (
+/obj/effect/turf_decal/trimline/green/corner{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning{
+	dir = 10
+	},
+/turf/open/floor/iron/dark/textured_corner{
+	dir = 4
+	},
+/area/ruin/space/has_grav/gas_station)
+"Yo" = (
+/obj/machinery/bluespace_vendor/directional/north,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+"Yx" = (
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/green/line,
+/obj/effect/decal/cleanable/dirt,
+/obj/effect/decal/cleanable/traitor_rune,
+/turf/open/floor/iron/dark/textured,
+/area/ruin/space/has_grav/gas_station)
+"ZU" = (
+/obj/item/kirbyplants/random/dead,
+/obj/effect/turf_decal/trimline/green/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/trimline/dark_red/warning,
+/turf/open/floor/iron/dark/textured_edge,
+/area/ruin/space/has_grav/gas_station)
+
+(1,1,1) = {"
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(2,1,1) = {"
+XF
+XF
+XF
+XF
+ae
+Gu
+lI
+xU
+ae
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(3,1,1) = {"
+XF
+XF
+XF
+XF
+DY
+lI
+lI
+lI
+MA
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(4,1,1) = {"
+XF
+XF
+XF
+re
+xx
+nn
+wI
+nn
+nn
+qJ
+Ew
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(5,1,1) = {"
+XF
+XF
+XF
+jc
+nn
+Jh
+bH
+NH
+nn
+pg
+He
+yO
+KQ
+vD
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(6,1,1) = {"
+XF
+XF
+XF
+lI
+wI
+Tq
+bq
+yQ
+wI
+Gu
+hz
+oa
+Gu
+vo
+eE
+XF
+XF
+XF
+XF
+XF
+"}
+(7,1,1) = {"
+XF
+XF
+XF
+lI
+nn
+zA
+yd
+Mx
+nn
+iZ
+TO
+TO
+TO
+Ig
+uL
+xx
+XF
+XF
+XF
+XF
+"}
+(8,1,1) = {"
+XF
+XF
+XF
+lI
+nn
+nn
+wc
+nn
+nn
+qh
+Sk
+zr
+XK
+vo
+vX
+EE
+XF
+XF
+XF
+XF
+"}
+(9,1,1) = {"
+XF
+XF
+XF
+Gu
+nn
+kp
+Lt
+hm
+nn
+Nd
+JK
+nn
+uy
+vo
+vo
+LB
+XF
+XF
+XF
+XF
+"}
+(10,1,1) = {"
+XF
+XF
+XF
+nm
+wI
+Wj
+vg
+nj
+wI
+vo
+wa
+nn
+Yo
+vo
+vo
+He
+DO
+XF
+XF
+XF
+"}
+(11,1,1) = {"
+XF
+XF
+XF
+RW
+wI
+Gx
+Rb
+ZU
+wI
+vo
+qg
+sv
+Mf
+vo
+vo
+VQ
+IG
+XF
+XF
+XF
+"}
+(12,1,1) = {"
+XF
+XF
+XF
+ks
+wI
+pp
+Yx
+Cs
+Xy
+Vn
+vo
+Ig
+Cb
+vo
+vo
+vo
+rp
+XF
+XF
+XF
+"}
+(13,1,1) = {"
+XF
+XF
+XF
+Oj
+wI
+Tp
+qU
+vB
+Xy
+vo
+Sk
+zr
+XK
+vo
+vo
+vo
+OD
+XF
+XF
+XF
+"}
+(14,1,1) = {"
+XF
+XF
+XF
+lI
+nn
+gJ
+vv
+nd
+wI
+MS
+Uf
+nn
+aB
+vo
+Cb
+JI
+qs
+XF
+XF
+XF
+"}
+(15,1,1) = {"
+XF
+XF
+XF
+lI
+nn
+Vb
+IM
+NZ
+wI
+Mc
+wa
+nn
+Yo
+vo
+vo
+OD
+XF
+XF
+XF
+XF
+"}
+(16,1,1) = {"
+XF
+XF
+XF
+lI
+xx
+nn
+Wl
+mr
+nn
+bZ
+qg
+sv
+Mf
+Ig
+vo
+OD
+XF
+XF
+XF
+XF
+"}
+(17,1,1) = {"
+XF
+XF
+XF
+TO
+ta
+nn
+nn
+nn
+xx
+oS
+Uy
+vk
+Gu
+eE
+uj
+xt
+XF
+XF
+XF
+XF
+"}
+(18,1,1) = {"
+XF
+XF
+XF
+XF
+LJ
+Gu
+Gu
+IJ
+lI
+lI
+WI
+jV
+MU
+tt
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(19,1,1) = {"
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+lI
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}
+(20,1,1) = {"
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+XF
+"}

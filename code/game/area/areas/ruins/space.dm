@@ -703,3 +703,7 @@
 //Old Transport Ship
 /area/ruin/space/has_grav/old_transport
 	name = "Old Transport Ship"
+
+//Gas Station
+/area/ruin/space/has_grav/gas_station
+	name = "Old Gas Station"

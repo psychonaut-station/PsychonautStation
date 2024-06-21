@@ -1,0 +1,1737 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"as" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"bB" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ck" = (
+/obj/item/clothing/glasses/nightmare_vision,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"cy" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/decal/cleanable/blood,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"cW" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"dy" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"dE" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"dT" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"ej" = (
+/obj/structure/stone_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"eH" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"fm" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"fx" = (
+/obj/structure/kitchenspike,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"fy" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/item/spear/bonespear,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"gq" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"gx" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"gU" = (
+/obj/effect/decal/cleanable/blood/splatter,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"hF" = (
+/obj/structure/necropolis_gate,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"hH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/center/cracked,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"iu" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"iU" = (
+/obj/structure/stone_tile/burnt,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jg" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jj" = (
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"jz" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"jH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"kf" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"ku" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"kG" = (
+/obj/effect/rune/apocalypse,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/mob/living/basic/demon/slaughter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"ld" = (
+/obj/structure/stone_tile/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"lk" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/effect/step_trigger/sound_effect{
+	happens_once = 1;
+	name = "\proper a grave mistake";
+	sound = 'sound/hallucinations/i_see_you1.ogg';
+	triggerer_only = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"lt" = (
+/obj/structure/stone_tile/slab,
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"lH" = (
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"lR" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"no" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"nD" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"nP" = (
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"qd" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"qW" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/obj/effect/decal/cleanable/ants,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"rg" = (
+/turf/closed/indestructible/riveted/boss,
+/area/ruin/unpowered/nyx_temple)
+"rs" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ru" = (
+/obj/structure/bed/maint,
+/obj/structure/stone_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/burnt,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mob_spawn/corpse/human/miner,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"rx" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"rM" = (
+/obj/structure/statue/bone/skull,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"sd" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"sF" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"ts" = (
+/turf/template_noop,
+/area/template_noop)
+"tK" = (
+/obj/structure/bed/maint,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/item/paper{
+	pixel_x = -5
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"tT" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"uz" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"ve" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"vU" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"vV" = (
+/obj/effect/mob_spawn/corpse/human/clown,
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"vX" = (
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"wg" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xa" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xd" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/item/pickaxe,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"xg" = (
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/effect/decal/cleanable/blood/footprints,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"xJ" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"yi" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"yj" = (
+/obj/structure/statue/bone/skull,
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"yk" = (
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"zc" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Ac" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/surrounding_tile,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ax" = (
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"AJ" = (
+/turf/closed/mineral/volcanic/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"AQ" = (
+/obj/effect/decal/cleanable/blood/old,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Bm" = (
+/obj/structure/stone_tile/slab,
+/obj/effect/decal/cleanable/garbage,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Bu" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"BR" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/decal/cleanable/blood,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"BY" = (
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Ca" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Cz" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Df" = (
+/obj/item/reagent_containers/cup/bucket/wooden,
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Du" = (
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"DJ" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"DL" = (
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"DU" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"DZ" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"EU" = (
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"EV" = (
+/obj/structure/stone_tile/slab,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Fi" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Fs" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"FY" = (
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"GF" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/center/cracked,
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/cracked,
+/turf/open/lava/smooth/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"GO" = (
+/obj/item/spear/bonespear,
+/obj/effect/decal/cleanable/blood/old,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"GR" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Hi" = (
+/obj/structure/stone_tile/block,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Ig" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Ij" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"Iv" = (
+/obj/structure/stone_tile/block{
+	dir = 8
+	},
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"IF" = (
+/obj/structure/stone_tile/center/burnt,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Jg" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/item/reagent_containers/cup/bucket/wooden,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"JG" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/glass,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"JO" = (
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Km" = (
+/obj/structure/stone_tile/surrounding_tile,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Lk" = (
+/obj/structure/ore_box,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Lv" = (
+/obj/structure/bed/maint,
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/structure/stone_tile/block,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"LI" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/gibs/down,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"MB" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"MF" = (
+/turf/closed/indestructible/wood,
+/area/ruin/unpowered/nyx_temple)
+"MK" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ML" = (
+/obj/effect/mob_spawn/corpse/human/miner,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/surrounding/burnt,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Ne" = (
+/obj/item/melee/arm_blade,
+/obj/structure/stone_tile/slab/cracked,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Nx" = (
+/obj/structure/stone_tile/block,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"NC" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/vomit,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Ob" = (
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Og" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/gibs/limb,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Oy" = (
+/obj/structure/stone_tile/block/cracked,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"OC" = (
+/obj/structure/kitchenspike,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/structure/stone_tile/center,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Pk" = (
+/obj/structure/stone_tile/slab/cracked,
+/obj/machinery/door/airlock/cult/unruned,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"PH" = (
+/obj/effect/decal/cleanable/blood/gibs/down,
+/obj/structure/stone_tile/block{
+	dir = 4
+	},
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"PJ" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/blood/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"QE" = (
+/obj/structure/stone_tile/cracked,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Sg" = (
+/obj/effect/mob_spawn/corpse/human/bridgeofficer,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"SG" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"SL" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"SM" = (
+/obj/structure/stone_tile/burnt,
+/obj/structure/stone_tile/cracked{
+	dir = 8
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 1
+	},
+/obj/structure/stone_tile/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/center,
+/obj/structure/closet/crate,
+/obj/item/pickaxe,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/ruin/unpowered/nyx_temple)
+"Tm" = (
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/effect/mapping_helpers/no_lava,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"TF" = (
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"UD" = (
+/obj/structure/stone_tile/block,
+/obj/structure/stone_tile/block{
+	dir = 1
+	},
+/obj/effect/decal/cleanable/blood/hitsplatter,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"UI" = (
+/obj/effect/decal/cleanable/blood/footprints,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/center,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"UP" = (
+/obj/structure/stone_tile/center/cracked,
+/obj/effect/decal/cleanable/blood/drip,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Vd" = (
+/obj/item/clothing/glasses/sunglasses,
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 1
+	},
+/obj/structure/stone_tile/surrounding_tile,
+/obj/structure/stone_tile/center,
+/obj/effect/decal/cleanable/blood/drip,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Xu" = (
+/obj/structure/destructible/cult/pants_altar,
+/obj/structure/stone_tile/surrounding/burnt,
+/obj/item/spear/bonespear,
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Yf" = (
+/obj/structure/stone_tile/slab/cracked{
+	dir = 4
+	},
+/obj/structure/stone_tile/surrounding_tile{
+	dir = 8
+	},
+/turf/open/indestructible/boss,
+/area/ruin/unpowered/nyx_temple)
+"Zc" = (
+/obj/structure/ore_box,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"Zh" = (
+/obj/structure/stone_tile/block/cracked{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+"ZU" = (
+/obj/item/pickaxe,
+/obj/effect/mapping_helpers/no_lava,
+/turf/open/misc/asteroid/basalt/lava_land_surface,
+/area/lavaland/surface/outdoors)
+
+(1,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+"}
+(2,1,1) = {"
+ts
+ts
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+ts
+"}
+(3,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+ts
+ts
+"}
+(4,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+jj
+AJ
+AJ
+AJ
+AJ
+ts
+"}
+(5,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+AJ
+jj
+jj
+jj
+jj
+DJ
+no
+AJ
+AJ
+"}
+(6,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+jj
+EU
+AJ
+AJ
+AJ
+jj
+jj
+jj
+no
+xa
+AJ
+"}
+(7,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+jj
+jj
+EU
+xd
+AJ
+AJ
+AJ
+AJ
+jj
+Fi
+wg
+qd
+jj
+"}
+(8,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+EU
+Zc
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+iU
+as
+Ax
+GF
+"}
+(9,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+Ax
+Ax
+Ax
+Zh
+"}
+(10,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+rg
+rg
+rg
+rg
+rg
+AJ
+AJ
+Nx
+Tm
+sd
+Ax
+"}
+(11,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+rg
+OC
+fy
+vV
+rg
+AJ
+Lk
+nP
+TF
+Ax
+AQ
+"}
+(12,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+rg
+fx
+gU
+Ig
+rg
+rg
+vX
+vX
+vX
+Fs
+Oy
+"}
+(13,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+rg
+SL
+UI
+PH
+rg
+nD
+GR
+vX
+vX
+cW
+"}
+(14,1,1) = {"
+ts
+ts
+AJ
+AJ
+rg
+rg
+rg
+rg
+AJ
+AJ
+rg
+Cz
+vU
+zc
+rg
+Ax
+Ax
+Hi
+cy
+rs
+"}
+(15,1,1) = {"
+ts
+AJ
+AJ
+rg
+rg
+rg
+rg
+rg
+rg
+AJ
+rg
+rg
+uz
+rg
+rg
+Bu
+Ax
+Ax
+Ax
+Ax
+"}
+(16,1,1) = {"
+ts
+AJ
+rg
+rg
+rg
+jz
+Ne
+rg
+rg
+rg
+rg
+LI
+dT
+lH
+rg
+rg
+Km
+Ac
+rs
+Ax
+"}
+(17,1,1) = {"
+ts
+AJ
+rg
+rg
+yj
+dT
+EV
+iu
+rg
+rg
+lR
+rx
+JO
+fm
+dy
+rg
+rs
+Ca
+jH
+TF
+"}
+(18,1,1) = {"
+ts
+AJ
+rg
+rg
+sF
+ML
+lk
+kG
+kf
+tT
+gq
+DU
+Xu
+Yf
+xg
+hF
+Ax
+lt
+dE
+QE
+"}
+(19,1,1) = {"
+ts
+AJ
+rg
+rg
+rM
+ve
+MB
+Vd
+rg
+rg
+Iv
+rx
+EV
+xJ
+BR
+rg
+Ax
+UP
+iU
+yi
+"}
+(20,1,1) = {"
+ts
+AJ
+rg
+rg
+rg
+GO
+ck
+rg
+rg
+rg
+rg
+DL
+BY
+FY
+rg
+rg
+yk
+eH
+IF
+Ax
+"}
+(21,1,1) = {"
+ts
+AJ
+AJ
+rg
+rg
+rg
+rg
+rg
+rg
+AJ
+rg
+rg
+Pk
+rg
+rg
+gx
+Ax
+bB
+Km
+bB
+"}
+(22,1,1) = {"
+ts
+AJ
+AJ
+AJ
+rg
+rg
+rg
+rg
+AJ
+AJ
+rg
+PJ
+JG
+qW
+rg
+iU
+Ax
+Ax
+Ax
+Ax
+"}
+(23,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+rg
+UD
+NC
+ru
+rg
+Du
+MK
+Ax
+Ax
+Ax
+"}
+(24,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+Lv
+DZ
+Bm
+rg
+rg
+Ax
+Ax
+Hi
+SG
+AQ
+"}
+(25,1,1) = {"
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+tK
+Og
+Df
+rg
+AJ
+jg
+ZU
+Ax
+Ax
+Ax
+"}
+(26,1,1) = {"
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+rg
+rg
+rg
+rg
+AJ
+nD
+Ax
+Ax
+Ax
+iU
+"}
+(27,1,1) = {"
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AQ
+ld
+Ob
+Ax
+"}
+(28,1,1) = {"
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+MF
+rg
+MF
+jg
+Ax
+Ax
+MK
+"}
+(29,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+MF
+Jg
+Ij
+ku
+nD
+Sg
+Hi
+"}
+(30,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+MF
+ej
+hH
+MF
+AJ
+SG
+Ax
+"}
+(31,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+rg
+SM
+MF
+rg
+AJ
+AJ
+jg
+"}
+(32,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+MF
+rg
+MF
+AJ
+AJ
+AJ
+AJ
+"}
+(33,1,1) = {"
+ts
+ts
+ts
+ts
+ts
+ts
+ts
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+AJ
+"}

@@ -194,6 +194,7 @@
 /obj/structure/stone_tile/cracked{
 	dir = 1
 	},
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "jH" = (
@@ -231,7 +232,7 @@
 	dir = 1
 	},
 /obj/structure/stone_tile/block,
-/mob/living/basic/demon/slaughter,
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "ld" = (
@@ -666,6 +667,7 @@
 /obj/item/spear/bonespear,
 /obj/effect/decal/cleanable/blood/old,
 /obj/structure/stone_tile/slab/cracked,
+/mob/living/basic/viscerator,
 /turf/open/indestructible/boss,
 /area/ruin/unpowered/nyx_temple)
 "GR" = (

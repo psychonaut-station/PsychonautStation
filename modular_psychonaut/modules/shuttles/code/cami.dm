@@ -1,6 +1,6 @@
 /datum/map_template/shuttle/emergency/cami
 	name = "Cami"
-	prefix = "modular_psychonaut/modules/shuttles/cami/"
+	prefix = "modular_psychonaut/modules/shuttles/maps/"
 	suffix = "cami"
 	credit_cost = CARGO_CRATE_VALUE * 50
 	description = "Uhrevi alemde sorulur sual, Dünyada yaşarken çalsam da kaval, Kurana uymaktir İslamda kural, İbadethanenin simgesi cami."

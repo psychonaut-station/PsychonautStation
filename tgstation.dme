@@ -6333,6 +6333,12 @@
 #include "modular_psychonaut\modules\protected_roles\code\protected_roles.dm"
 #include "modular_psychonaut\modules\shuttles\code\cami.dm"
 #include "modular_psychonaut\modules\stamps\code\stamps.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\admin_only.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\check.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\master_controller.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\reload_config.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\time_dilation.dm"
+#include "modular_psychonaut\modules\tgs_chat\code\toggle_cdn.dm"
 #include "modular_psychonaut\modules\worker\code\items.dm"
 #include "modular_psychonaut\modules\worker\code\job.dm"
 // END_INCLUDE

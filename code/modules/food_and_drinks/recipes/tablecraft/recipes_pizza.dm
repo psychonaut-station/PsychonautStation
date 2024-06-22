@@ -130,13 +130,3 @@
 	)
 	result = /obj/item/food/raw_vegetarian_calzone
 	category = CAT_PIZZA
-
-/datum/crafting_recipe/food/lahmacun
-	name = "Lahmacun"
-	reqs = list(
-		/obj/item/food/flatdough = 1,
-		/obj/item/food/raw_meatball = 2,
-		/obj/item/food/grown/tomato = 1
-	)
-	result = /obj/item/food/pizza/lahmacun
-	category = CAT_PIZZA

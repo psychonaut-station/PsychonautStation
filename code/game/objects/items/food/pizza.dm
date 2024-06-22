@@ -159,28 +159,6 @@
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/pizza/lahmacun
-	name = "Lahmacun"
-	desc = "A delicious-looking ancient dish filled with minced meat."
-	icon = 'icons/psychonaut/obj/food/pizza.dmi'
-	icon_state = "lahmacun"
-	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 20,
-		/datum/reagent/consumable/nutriment/protein = 3,
-		/datum/reagent/consumable/nutriment/vitamin = 5,
-	)
-	tastes = list("crust" = 1, "tomato" = 1, "meat" = 1)
-	foodtypes = GRAIN | VEGETABLES | DAIRY
-	slice_type = /obj/item/food/pizzaslice/lahmacun
-	boxtag = "Lahmacun Special"
-	crafting_complexity = FOOD_COMPLEXITY_2
-
-/obj/item/food/pizza/lahmacun/raw
-	name = "raw lahmacun"
-	icon_state = "lahmacunraw"
-	foodtypes = GRAIN | VEGETABLES | DAIRY | RAW
-	slice_type = null
-
 /obj/item/food/pizza/lahmacun/raw/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/pizza/lahmacun, rand(70 SECONDS, 80 SECONDS), TRUE, TRUE)
 

@@ -3845,7 +3845,7 @@
 "bil" = (
 /obj/structure/railing/wooden_fence,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "bin" = (
 /obj/effect/turf_decal/stripes/asteroid/line{
 	dir = 4
@@ -6355,7 +6355,7 @@
 	dir = 1
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "bPV" = (
 /obj/item/kirbyplants/random/dead,
 /turf/open/floor/plating/snowed/icemoon,
@@ -11339,7 +11339,7 @@
 /area/icemoon/surface/outdoors/nospawn)
 "dlu" = (
 /turf/closed/wall/mineral/wood/nonmetal,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "dlB" = (
 /obj/structure/table/wood,
 /obj/item/storage/photo_album/chapel,
@@ -20622,7 +20622,7 @@
 	dir = 5
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "ghE" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/camera/directional/west{
@@ -23032,7 +23032,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
-/obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /obj/effect/turf_decal/tile/yellow/full,
 /turf/open/floor/iron/large,
 /area/station/medical/treatment_center)
@@ -26910,7 +26910,7 @@
 	dir = 6
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "idN" = (
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/machinery/door/window/brigdoor/left/directional/south{
@@ -30499,15 +30499,12 @@
 "jko" = (
 /obj/structure/railing,
 /obj/structure/rack,
-/obj/item/gun/energy/e_gun/dragnet{
-	pixel_y = 4
-	},
-/obj/item/gun/energy/e_gun/dragnet,
 /obj/structure/cable,
 /obj/machinery/door/firedoor/border_only,
 /obj/effect/turf_decal/tile/red/half/contrasted{
 	dir = 1
 	},
+/obj/effect/spawner/random/armory/dragnet,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory/upper)
 "jkx" = (
@@ -30532,7 +30529,7 @@
 	dir = 9
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "jkN" = (
 /obj/effect/spawner/random/entertainment/arcade,
 /obj/machinery/status_display/ai/directional/north,
@@ -36832,7 +36829,7 @@
 /obj/structure/table/wood,
 /obj/item/flashlight/lantern/on,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "kZa" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -40517,7 +40514,7 @@
 	dir = 10
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "mhq" = (
 /obj/structure/closet,
 /obj/effect/spawner/random/maintenance,
@@ -43300,7 +43297,7 @@
 	},
 /obj/item/soap/deluxe,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "ncB" = (
 /obj/machinery/door/airlock/security/glass{
 	name = "Brig Walkway"
@@ -45421,7 +45418,7 @@
 "nEI" = (
 /obj/item/flashlight/lantern/on,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "nEV" = (
 /obj/machinery/vending/wardrobe/sec_wardrobe,
 /obj/structure/cable,
@@ -47270,7 +47267,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/medical/chemistry,
+/obj/effect/mapping_helpers/airlock/access/all/medical/general,
 /turf/open/floor/iron/smooth,
 /area/station/maintenance/department/medical/central)
 "oiD" = (
@@ -53685,7 +53682,7 @@
 "qbM" = (
 /obj/structure/ore_container/food_trough/raptor_trough,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "qbO" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -58913,7 +58910,7 @@
 	},
 /obj/item/raptor_dex,
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "rAr" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -59302,7 +59299,7 @@
 	dir = 4
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "rEp" = (
 /obj/structure/table,
 /obj/item/hand_labeler,
@@ -74853,8 +74850,13 @@
 /obj/effect/turf_decal/siding/yellow/corner,
 /obj/machinery/status_display/evac/directional/south,
 /obj/structure/table,
-/obj/effect/spawner/random/trash/food_packaging,
-/obj/effect/spawner/random/trash/cigbutt,
+/obj/item/flatpack{
+	board = /obj/item/circuitboard/machine/flatpacker;
+	pixel_x = -5
+	},
+/obj/item/multitool{
+	pixel_x = 8
+	},
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "wve" = (
@@ -74867,7 +74869,7 @@
 /area/station/service/chapel)
 "wvu" = (
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "wvv" = (
 /obj/structure/disposalpipe/segment,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -78423,7 +78425,7 @@
 	dir = 8
 	},
 /turf/open/misc/hay/icemoon,
-/area/icemoon/surface)
+/area/icemoon/underground/explored)
 "xxI" = (
 /obj/machinery/airalarm/directional/north,
 /obj/item/kirbyplants/random,

@@ -159,6 +159,7 @@
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 
+
 /obj/item/food/pizza/vegetable
 	name = "vegetable pizza"
 	desc = "No one of Tomatos Sapiens were harmed during making this pizza."

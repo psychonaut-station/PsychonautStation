@@ -336,7 +336,10 @@ ADMIN_VERB(cmd_controller_view_ui, R_SERVER|R_DEBUG, "Controller Overview", "Vie
 
 
 	if(world.system_type == MS_WINDOWS && CONFIG_GET(flag/toast_notification_on_init) && !length(GLOB.clients))
+		// PSYCHONAUT EDIT CHANGE START - PATCHES - ORIGINAL:
+		// world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\ui_icons\\common\\tg_16.png -port [world.port]")
 		world.shelleo("start /min powershell -ExecutionPolicy Bypass -File tools/initToast/initToast.ps1 -name \"[world.name]\" -icon %CD%\\icons\\ui\\common\\tg_16.png -port [world.port]")
+		// PSYCHONAUT EDIT CHANGE END
 
 	// Set world options.
 	world.change_fps(CONFIG_GET(number/fps))

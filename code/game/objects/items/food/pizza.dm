@@ -159,18 +159,6 @@
 	foodtypes = GRAIN | VEGETABLES | DAIRY
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/pizza/lahmacun/raw/make_bakeable()
-	AddComponent(/datum/component/bakeable, /obj/item/food/pizza/lahmacun, rand(70 SECONDS, 80 SECONDS), TRUE, TRUE)
-
-/obj/item/food/pizzaslice/lahmacun
-	name = "Lahmacun Slice"
-	desc = "Delicious scented wrapped old food."
-	icon = 'icons/psychonaut/obj/food/pizza.dmi'
-	icon_state = "lahmacunslice"
-	tastes = list("crust" = 1, "tomato" = 1, "meat" = 1)
-	foodtypes = GRAIN | VEGETABLES | DAIRY
-	crafting_complexity = FOOD_COMPLEXITY_2
-
 /obj/item/food/pizza/vegetable
 	name = "vegetable pizza"
 	desc = "No one of Tomatos Sapiens were harmed during making this pizza."

@@ -749,10 +749,6 @@
   - bugfix: Cosmos spells will no longer star mark your steed
   - qol: Baby plushies are now smaller than their parents
 2024-06-17:
-  exdal:
-  - rscadd: Artik OOC renginizi ve ghost formunuzu duzenleyebilirsiniz
-  grungussuss:
-  - rscadd: Added Misha the bear to the HoS office on icebox.
   Hacks-The-Doors:
   - balance: dental pills can now be used in crit.
   - balance: dental pills now give off a message when you start using them
@@ -761,6 +757,10 @@
   - balance: Certain changeling abilities won't work while on fire.
   TheBoondock:
   - sound: added compressed air sound for when air tanks are inserted into machinery
+  exdal:
+  - rscadd: Artik OOC renginizi ve ghost formunuzu duzenleyebilirsiniz
+  grungussuss:
+  - rscadd: Added Misha the bear to the HoS office on icebox.
 2024-06-18:
   Bisar:
   - balance: Replaced the free reagent purging with actually purging by exploding
@@ -982,3 +982,25 @@
   r3dj4ck0424:
   - bugfix: puts tiles under the wawa tool storage doors
   - bugfix: allows you to access a door and a fire alarm on wawa's prison second floor
+2024-06-22:
+  AyIong:
+  - qol: Fullscreen mode can now be toggled by pressing F11 or the button at the top
+      right
+  Bisar:
+  - bugfix: Felinids no longer remember losing their tail and regaining it roundstart;
+      you need to do it during the round to get that mood event.
+  FlufflesTheDog:
+  - bugfix: sanitization on citation pda alerts
+  JupiterJaeden:
+  - bugfix: Conga lines of more than 2 no longer break when going up and down stairs.
+  Mothblocks:
+  - qol: Dramatically improves delete character UI and UX.
+  MrEmre12:
+  - rscadd: Eski Delta Atmosa Huge Air Scrubber eklendi.
+  - rscadd: "Lavalan'de ruin olarak nyx tap\u0131na\u011F\u0131 ekler."
+  - bugfix: "Nyx tap\u0131na\u011F\u0131 i\xE7indeki notu d\xFCzeltir."
+  Thunder12345:
+  - rscdel: Locker staffs have been removed from the Ragin' Mages deathmatch lootcrate
+      pool.
+  mc-oofert:
+  - bugfix: borg factory gives you your preference borg name

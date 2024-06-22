@@ -3,7 +3,7 @@ name: Mirror bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 17 * * 5'
+    - cron: '0 14 * * 5'
 
 permissions:
   contents: write
@@ -60,9 +60,9 @@ jobs:
               $branch_marker = 0
 
               foreach ($_ in Get-Content $file) {
-                if ($head_marker -ne 0 -and $_ -match "<<<<<<<") {
+                if ($head_marker -eq 0 -and $_ -match "<<<<<<<") {
                   $head_marker = $line
-                } elseif ($branch_marker -ne 0 -and $_ -match ">>>>>>>") {
+                } elseif ($branch_marker -eq 0 -and $_ -match ">>>>>>>") {
                   $branch_marker = $line
                 } elseif ($_ -match "=======") {
                   $conflicts += 1

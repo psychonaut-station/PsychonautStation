@@ -842,13 +842,29 @@
 	return CLICK_ACTION_SUCCESS
 
 /obj/item/storage/belt/sabre/update_icon_state()
-	icon_state = initial(inhand_icon_state)
-	inhand_icon_state = initial(inhand_icon_state)
-	worn_icon_state = initial(worn_icon_state)
-	if(contents.len)
-		icon_state += "-sabre"
-		inhand_icon_state += "-sabre"
-		worn_icon_state += "-sabre"
+	// PSYCHONAUT EDIT CHANGE START - OFFICERS_SABRE - ORIGINAL:
+	// icon_state = initial(inhand_icon_state)
+	// inhand_icon_state = initial(inhand_icon_state)
+	// worn_icon_state = initial(worn_icon_state)
+	// if(contents.len)
+	// 	icon_state += "-sabre"
+	// 	inhand_icon_state += "-sabre"
+	// 	worn_icon_state += "-sabre"
+	if(current_skin)
+		icon_state = unique_reskin[current_skin]
+		inhand_icon_state = unique_reskin[current_skin]
+		worn_icon_state = unique_reskin[current_skin]
+	else
+		icon_state = initial(icon_state)
+		inhand_icon_state = initial(inhand_icon_state)
+		worn_icon_state = initial(worn_icon_state)
+
+	if(length(contents))
+		var/obj/item/I = contents[1]
+		icon_state += "-[I.icon_state]"
+		inhand_icon_state += "-[I.icon_state]"
+		worn_icon_state += "-[I.icon_state]"
+	// PSYCHONAUT EDIT CHANGE END
 	return ..()
 
 /obj/item/storage/belt/sabre/PopulateContents()

@@ -6,7 +6,7 @@ MODULE ID: PROTECTED_ROLES
 
 Bazı rollerin antag olmaması veya olamaması gerekiyor. Bu modül ile bu rollere antag gelmesini yasaklıyoruz.
 
-Yeni bir role antag kısıtlaması getirmek için `modular_psychonaut/modules/protected_roles/code/protected_roles.dm` dosyasına aşşağıdaki şekildeki gibi eklenmesi gerekiyor.
+Yeni bir role antag kısıtlaması getirmek için [`modular_psychonaut/modules/protected_roles/code/protected_roles.dm`](code/protected_roles.dm) dosyasına aşağıdaki şekil gibi kod satırı eklenmesi gerekiyor.
 
 ```dm
 /datum/job/nt_secretary

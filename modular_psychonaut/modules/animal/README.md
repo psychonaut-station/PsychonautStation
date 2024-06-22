@@ -19,6 +19,7 @@ Oyuncunun belirli hayvanlardan biri olabileceği meslek.
 - `modular_psychonaut/master_files/code/datums/components/pet_commands/obeys_commands.dm`: `/datum/component/obeys_commands/Destroy()`
 - `modular_psychonaut/master_files/code/datums/elements/ai_held_item.dm`: `/datum/element/ai_held_item/Detach()`
 - `modular_psychonaut/modules/protected_roles/code/protected_roles.dm`: `/datum/job/animal/var/antagonist_restricted`
+- `modular_psychonaut/modules/spawn_point/code/spawn_point.dm`: `/datum/job/animal/var/roundstart_spawn_point`
 
 ### Definelar ve Helperlar
 

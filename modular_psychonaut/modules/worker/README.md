@@ -19,6 +19,7 @@ Daha az sorumlulukları olan Station Engineer alternatifi.
 - `modular_psychonaut/master_files/code/datums/id_trim/jobs.dm`: `/datum/id_trim/job/worker`
 - `modular_psychonaut/master_files/icons/mob/huds/hud.dmi`: `hudworker`
 - `modular_psychonaut/master_files/icons/obj/card.dmi`: `trim_worker`, `cardboard_worker`
+- `modular_psychonaut/modules/spawn_point/code/spawn_point.dm`: `/datum/job/worker/var/roundstart_spawn_point`
 
 ### Definelar ve Helperlar
 

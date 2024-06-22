@@ -36,6 +36,7 @@ Eskiden gelen vazgeçilmez rölümüz olan Nt Secretary.
 - `modular_psychonaut/modules/GAGS/json_configs/pda/pda_secretary.json`
 - `modular_psychonaut/modules/GAGS/greyscale_configs.dm`: `/datum/greyscale_config/tablet/secretary`
 - `modular_psychonaut/modules/protected_roles/code/protected_roles.dm`: `/datum/job/nt_secretary/var/antagonist_protected`
+- `modular_psychonaut/modules/spawn_point/code/spawn_point.dm`: `/datum/job/nt_secretary/var/roundstart_spawn_point`
 
 ### Definelar ve Helperlar
 

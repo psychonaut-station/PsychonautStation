@@ -124,7 +124,10 @@
 	.["key"] = key
 	.["name"] = name
 	.["ghostname"] = ghostname
-	.["memories"] = memories
+	// PSYCHONAUT EDIT CHANGE START - ANIMAL - ORIGINAL:
+	// .["memories"] = memories
+	.["memories"] = length(memories) ? memories : null
+	// PSYCHONAUT EDIT CHANGE END
 	.["martial_art"] = martial_art
 	.["antag_datums"] = antag_datums
 	.["holy_role"] = holy_role

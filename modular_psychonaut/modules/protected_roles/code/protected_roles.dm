@@ -1,3 +1,6 @@
+/datum/job/animal
+	antagonist_restricted = TRUE
+
 /datum/job/brig_physician
 	antagonist_protected = TRUE
 

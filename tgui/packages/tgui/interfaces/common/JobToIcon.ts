@@ -55,6 +55,7 @@ export const JOB2ICON = {
   'Syndicate Operative': 'dragon',
   'Veteran Security Advisor': 'ribbon',
   Warden: 'handcuffs',
+  Animal: 'paw', // PSYCHONAUT EDIT ADDITION - ANIMAL
   'Brig Physician': 'shield-heart', // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
   'Nt Secretary': 'clipboard-check', // PSYCHONAUT EDIT ADDITION - NT_SECRETARY
   Worker: 'screwdriver-wrench', // PSYCHONAUT EDIT ADDITION - WORKER

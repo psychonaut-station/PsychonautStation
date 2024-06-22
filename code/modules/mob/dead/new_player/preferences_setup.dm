@@ -103,6 +103,11 @@
 			return image('icons/mob/silicon/ai.dmi', icon_state = resolve_ai_icon(read_preference(/datum/preference/choiced/ai_core_display)), dir = SOUTH)
 		if (istype(preview_job,/datum/job/cyborg))
 			return image('icons/mob/silicon/robots.dmi', icon_state = "robot", dir = SOUTH)
+		// PSYCHONAUT EDIT ADDITION START - ANIMAL
+		if (istype(preview_job,/datum/job/animal))
+			var/mob/living/animal = GLOB.animal_job_types[read_preference(/datum/preference/choiced/animal_type)]
+			return image(animal::icon, icon_state = animal::icon_state, dir = mannequin?.dir || SOUTH)
+		// PSYCHONAUT EDIT ADDITION END
 
 	// Set up the dummy for its photoshoot
 	apply_prefs_to(mannequin, TRUE)

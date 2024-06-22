@@ -17,6 +17,7 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 
 ### Modüler Değişiklikler
 
+- `modular_psychonaut/master_files/code/game/machinery/dance_machine.dm`: `/obj/machinery/jukebox/Initialize()`
 - `modular_psychonaut/master_files/code/game/objects/structures/crates_lockers/closets/secure/bar.dm`: `/obj/structure/closet/secure_closet/bar/PopulateContents()`
 - `modular_psychonaut/master_files/code/modules/client/client_procs.dm`: `/client/stop_client_sounds()`
 

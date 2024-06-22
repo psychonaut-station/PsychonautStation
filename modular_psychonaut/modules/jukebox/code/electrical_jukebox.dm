@@ -12,7 +12,7 @@
 	density = TRUE
 
 	var/datum/bank_account/owner_account
-	var/youtubedl_configured = FALSE
+	var/static/youtubedl_configured = FALSE
 	var/busy = FALSE
 	var/request_cooldown = 20 SECONDS
 	var/last_requested_at = 0
@@ -25,7 +25,7 @@
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
 
-	if(CONFIG_GET(string/invoke_youtubedl))
+	if(!youtubedl_configured && CONFIG_GET(string/invoke_youtubedl))
 		youtubedl_configured = TRUE
 
 	if(youtubedl_configured)
@@ -39,7 +39,7 @@
 	if(youtubedl_configured)
 		if(is_playing())
 			stop()
-		qdel(player)
+		QDEL_NULL(player)
 	return ..()
 
 /obj/machinery/electrical_jukebox/Topic(href, href_list)

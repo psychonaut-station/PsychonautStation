@@ -5,7 +5,7 @@
 	icon_state = "vada"
 	icon_living = "vada"
 	icon_dead = "vada_dead"
-	speak_emote = list("VADAA", "AMINAKE!", "VADEEE", "VADDAA")
+	speak_emote = list("vadee.", "aminake!!",)
 	pass_flags = PASSTABLE
 	mob_size = MOB_SIZE_SMALL
 	mob_biotypes = MOB_ORGANIC|MOB_BUG

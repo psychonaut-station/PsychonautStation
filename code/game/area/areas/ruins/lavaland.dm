@@ -102,3 +102,7 @@
 /area/ruin/unpowered/ratvar
 	outdoors = TRUE
 	ambient_buzz = 'sound/ambience/magma.ogg'
+
+//nyx temple
+/area/ruin/unpowered/nyx_temple
+	ambient_buzz = 'sound/ambience/magma.ogg'

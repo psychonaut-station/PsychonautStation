@@ -5,7 +5,7 @@
 	icon_state = "vada"
 	icon_living = "vada"
 	icon_dead = "vada_dead"
-	speak_emote = list("vadee.", "aminake!!",)
+	speak_emote = list("vadee.", "amınake!!",)
 	pass_flags = PASSTABLE
 	mob_size = MOB_SIZE_SMALL
 	mob_biotypes = MOB_ORGANIC|MOB_BUG
@@ -31,8 +31,8 @@
 	light_range = 1.5 // Bioluminescence!
 	minimum_survivable_temperature = T20C - 100
 	maximum_survivable_temperature = T20C + 120
-	light_color = "#d43229" // The ants that comprise the giant ant still glow red despite the sludge.
-	death_sound = 'sound/_psychonaut/aminake.ogg'
+	light_color = "#d43229" 
+	death_sound = 'sound/_psychonaut/wada.ogg'
 
 	ai_controller = /datum/ai_controller/basic_controller/vada
 
@@ -53,7 +53,5 @@
 	planning_subtrees = list(
 		/datum/ai_planning_subtree/find_nearest_thing_which_attacked_me_to_flee,
 		/datum/ai_planning_subtree/flee_target,
-		/datum/ai_planning_subtree/target_retaliate,
-		/datum/ai_planning_subtree/basic_melee_attack_subtree,
 		/datum/ai_planning_subtree/random_speech/vada,
 	)

@@ -215,10 +215,10 @@
 	emote_see = list("stares ferociously.")
 
 /datum/ai_planning_subtree/random_speech/vada
-	speech_chance = 10
-	speak = list("vadee.", "aminake!!",)
-	sound = list('sound/_psychonaut/aminake.ogg', 'sound/_psychonaut/wada.ogg')
-	emote_hear = list("vada!", "vadeee.", "aminake!!")
+	speech_chance = 5
+	speak = list("vadee.", "amınake!!",)
+	sound = list('sound/_psychonaut/wada.ogg')
+	emote_hear = list("vada!", "vadeee.", "amınake!!")
 	emote_see = list("vadee.", "vada!!")
 
 /datum/ai_planning_subtree/random_speech/cats

@@ -51,5 +51,4 @@ GLOBAL_LIST_INIT(animal_job_types, list(
 	"Pig" = /mob/living/basic/pig,
 	"Rabbit" = /mob/living/basic/rabbit,
 	"Sheep" = /mob/living/basic/sheep,
-	"Vada" = /mob/living/basic/vada,
 ))

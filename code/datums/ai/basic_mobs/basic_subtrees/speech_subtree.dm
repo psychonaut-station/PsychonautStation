@@ -217,7 +217,7 @@
 /datum/ai_planning_subtree/random_speech/vada
 	speech_chance = 5
 	speak = list("vadee.", "amınake!!",)
-	sound = list('sound/_psychonaut/wada.ogg')
+	sound = list('sound/creatures/wada.ogg')
 	emote_hear = list("vada!", "vadeee.", "amınake!!")
 	emote_see = list("vadee.", "vada!!")
 

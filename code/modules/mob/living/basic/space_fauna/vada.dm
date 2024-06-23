@@ -22,7 +22,7 @@
 	response_disarm_simple = "gently push aside"
 	response_harm_continuous = "kicks"
 	response_harm_simple = "kick"
-	butcher_results = list(/obj/item/stack/ore/plasma = 1,)
+	butcher_results = list(/obj/item/stack/ore/plasma = 1)
 	gold_core_spawnable = FRIENDLY_SPAWN
 	faction = list(FACTION_NEUTRAL)
 	can_be_held = TRUE
@@ -32,8 +32,7 @@
 	minimum_survivable_temperature = T20C - 100
 	maximum_survivable_temperature = T20C + 120
 	light_color = "#d43229" // The ants that comprise the giant ant still glow red despite the sludge.
-	death_sound = 'sound/_psychonaut/amınake.ogg'
-	death_message = "VADAA :(...)"
+	death_sound = 'sound/_psychonaut/aminake.ogg'
 
 	ai_controller = /datum/ai_controller/basic_controller/vada
 

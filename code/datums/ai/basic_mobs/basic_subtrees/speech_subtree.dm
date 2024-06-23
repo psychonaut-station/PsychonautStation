@@ -216,10 +216,10 @@
 
 /datum/ai_planning_subtree/random_speech/vada
 	speech_chance = 10
-	speak = list("VADAA", "AMINAKE!", "VADEEE", "VADDAA")
-	sound = list('sound/_psychonaut/amınake.ogg', 'sound/_psychonaut/wada.ogg')
-	emote_hear = list("Gah Gah!", "NOOT NOOT!", "NOOT!", "Noot", "noot", "Prah!", "Grah!")
-	emote_see = list("squawks", "gakkers")
+	speak = list("vadee.", "aminake!!",)
+	sound = list('sound/_psychonaut/aminake.ogg', 'sound/_psychonaut/wada.ogg')
+	emote_hear = list("vada!", "vadeee.", "aminake!!")
+	emote_see = list("vadee.", "vada!!")
 
 /datum/ai_planning_subtree/random_speech/cats
 	speech_chance = 10

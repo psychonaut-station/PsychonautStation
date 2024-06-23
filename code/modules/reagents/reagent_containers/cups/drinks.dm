@@ -551,3 +551,10 @@
 	base_icon_state = "britcup"
 	volume = 30
 	spillable = TRUE
+
+/obj/item/reagent_containers/cup/glass/ayran
+	name = "Ayran"
+	desc = "A drink with an old lid that tastes like milk"
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "ayran"
+	list_reagents = list(/datum/reagent/consumable/ayran = 30)

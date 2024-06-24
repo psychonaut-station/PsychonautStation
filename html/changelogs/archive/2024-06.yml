@@ -1004,3 +1004,6 @@
       pool.
   mc-oofert:
   - bugfix: borg factory gives you your preference borg name
+2024-06-24:
+  mujan,:
+  - rscadd: Ayran eklendi

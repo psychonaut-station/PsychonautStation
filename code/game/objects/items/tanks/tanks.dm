@@ -449,7 +449,7 @@
 		balloon_alert(user, "cant reach it!")
 		return
 
-	if((src in user.get_equipped_items(include_pockets = TRUE, include_accessories = TRUE)) && !user.canUnEquip(src))
+	if((src in user.get_equipped_items(INCLUDE_POCKETS | INCLUDE_ACCESSORIES)) && !user.canUnEquip(src))
 		balloon_alert(user, "it's stuck!")
 		return
 

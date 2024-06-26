@@ -1314,3 +1314,16 @@
 	var/obj/item/organ/internal/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
 		stomach.adjust_charge(reac_volume * 0.003 * STANDARD_CELL_CHARGE)
+
+/datum/reagent/consumable/ayran
+	name = "Ayran"
+	description = "A drink with an old lid that tastes like milk."
+	color = "#DFDFDF" // rgb: 223, 223, 223
+	taste_description = "Ayran"
+	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+
+/datum/reagent/consumable/ayran/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
+	. = ..()
+	if(affected_mob.getFireLoss() && SPT_PROB(10, seconds_per_tick))
+		if(affected_mob.heal_bodypart_damage(brute = 0, burn = 1 * REM * seconds_per_tick, updating_health = FALSE))
+			return UPDATE_MOB_HEALTH

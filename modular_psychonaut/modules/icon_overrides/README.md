@@ -20,6 +20,7 @@ Bunun gibi yapılan değişiklikleri not alıyoruz:
 
 - `code/game/machinery/computer/_computer.dm`: [`/obj/machinery/computer/`: `var/icon_screen_file`, `update_overlays()`]
 - `code/modules/mob/mob.dm`: `/atom/proc/prepare_huds()`
+- `code/modules/projectiles/guns/energy.dm`: `/obj/item/gun/energy/update_icon_state()`
 
 ### Modüler Değişiklikler
 

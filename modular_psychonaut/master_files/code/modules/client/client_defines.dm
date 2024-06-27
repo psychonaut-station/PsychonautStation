@@ -1,3 +1,3 @@
 /client
 	/// Discord verification ui
-	var/verification_menu
+	var/datum/verification_menu/verification_menu

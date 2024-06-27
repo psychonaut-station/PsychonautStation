@@ -6323,6 +6323,7 @@
 #include "modular_psychonaut\master_files\code\modules\jobs\job_types\clown.dm"
 #include "modular_psychonaut\master_files\code\modules\mob\living\emote.dm"
 #include "modular_psychonaut\master_files\code\modules\mob\living\carbon\emote.dm"
+#include "modular_psychonaut\master_files\code\modules\projectiles\guns\energy\laser.dm"
 #include "modular_psychonaut\modules\accountlink\code\verification_menu.dm"
 #include "modular_psychonaut\modules\animal\code\job.dm"
 #include "modular_psychonaut\modules\animal\code\preferences.dm"

@@ -231,7 +231,10 @@
 		return ..()
 
 	var/ratio = get_charge_ratio()
-	var/temp_icon_to_use = initial(icon_state)
+	// PSYCHONAUT EDIT CHANGE START - ICON_OVERRIDES - ORIGINAL:
+	// var/temp_icon_to_use = initial(icon_state)
+	var/temp_icon_to_use = icon_state
+	// PSYCHONAUT EDIT CHANGE END
 	if(modifystate)
 		var/obj/item/ammo_casing/energy/shot = ammo_type[select]
 		temp_icon_to_use += "[shot.select_name]"

@@ -17,7 +17,7 @@
 
 	// PSYCHONAUT EDIT ADDITION START - ACCOUNTLINK
 	if(!CONFIG_GET(string/discordbottoken))
-		to_char(src, span_warning("This feature is not configured."))
+		to_chat(src, span_warning("This feature is not configured."))
 		return
 	// PSYCHONAUT EDIT ADDITION END
 
@@ -47,5 +47,3 @@
 
 	verification_menu.ui_interact(usr)
 	// PSYCHONAUT EDIT CHANGE END
-
-

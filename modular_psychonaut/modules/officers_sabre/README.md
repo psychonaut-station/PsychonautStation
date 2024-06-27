@@ -4,7 +4,7 @@ MODULE ID: OFFICERS_SABRE
 
 ### Açıklama
 
-Kaptanın kılıcına yeni skinler ve reskin etme özelliği ekler.
+Kaptanın kılıcına yeni skinler ekler.
 
 ### TG Değişiklikleri
 

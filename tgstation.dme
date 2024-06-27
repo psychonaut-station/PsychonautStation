@@ -6330,6 +6330,8 @@
 #include "modular_psychonaut\modules\animal\code\supply_pack.dm"
 #include "modular_psychonaut\modules\brig_physician\code\clothing.dm"
 #include "modular_psychonaut\modules\brig_physician\code\job.dm"
+#include "modular_psychonaut\modules\chaplain_sects\code\religion_sects.dm"
+#include "modular_psychonaut\modules\chaplain_sects\code\rites.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
 #include "modular_psychonaut\modules\jukebox\code\mob_collector.dm"

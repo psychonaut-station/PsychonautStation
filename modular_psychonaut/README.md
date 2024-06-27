@@ -8,4 +8,5 @@ Bazı şeyleri eklerken de orada yazmayan belirlediğimiz kurallar bulunuyor.
 - [`ICON_OVERRIDES`](modules/icon_overrides/README.md) - Potansiyel olarak çakışabilecek bir icon ekleyeceksen okumalısın.
 - [`GAGS`](modules/GAGS/README.md) - Bir grayscale eşya ekleyeceksen okumalısın.
 - [`PROTECTED_ROLES`](modules/protected_roles/README.md) - Bir rol ekleyeceksen okumalısın.
+- [`SPAWN_POINT`](modules/spawn_point/README.md) - Bir rol ekleyeceksen okumalısın.
 - [`STAMPS`](modules/stamps/README.md) - Bir stamp ekleyeceksen okumalısın.

@@ -993,35 +993,19 @@
   - bugfix: sanitization on citation pda alerts
   JupiterJaeden:
   - bugfix: Conga lines of more than 2 no longer break when going up and down stairs.
-<<<<<<< HEAD
+  MelokGleb:
+  - image: added sprite for debug heretic painting
   Mothblocks:
   - qol: Dramatically improves delete character UI and UX.
   MrEmre12:
   - rscadd: Eski Delta Atmosa Huge Air Scrubber eklendi.
   - rscadd: "Lavalan'de ruin olarak nyx tap\u0131na\u011F\u0131 ekler."
   - bugfix: "Nyx tap\u0131na\u011F\u0131 i\xE7indeki notu d\xFCzeltir."
-=======
-  MelokGleb:
-  - image: added sprite for debug heretic painting
-  Mothblocks:
-  - qol: Dramatically improves delete character UI and UX.
->>>>>>> upstream/master
   Thunder12345:
   - rscdel: Locker staffs have been removed from the Ragin' Mages deathmatch lootcrate
       pool.
   mc-oofert:
   - bugfix: borg factory gives you your preference borg name
-<<<<<<< HEAD
-2024-06-24:
-  mujan,:
-  - rscadd: Ayran eklendi
-2024-06-25:
-  MrEmre12:
-  - rscadd: Vadaaa
-2024-06-27:
-  RengaN02:
-  - image: "Siyah sabre spritesinin sol alt\u0131ndaki beyaz nokta d\xFCzeltildi."
-=======
 2024-06-23:
   Donglesplonge:
   - balance: most livestock crates, with some exception, have been made cheaper to
@@ -1065,6 +1049,8 @@
       if only a single tile
   - rscadd: Adds an effect for emagging an emag
   - rscadd: Adds an effect for emagging a fake emag
+  mujan:
+  - rscadd: Ayran eklendi
   Paxilmaniac:
   - rscadd: Electric eels now prefer used car batteries for bait.
   Rhials:
@@ -1125,6 +1111,8 @@
   - bugfix: Autopsy experiments for techweb can be performed roundstart
   MrDas:
   - bugfix: Fixed the duration of wizard's mutate spell.
+  MrEmre12:
+  - rscadd: Vadaaa
   Rhials:
   - sound: The abductor team now has their own antag stinger.
   - bugfix: Drone fabricator subtypes that spawn pre-loaded now actually start with
@@ -1235,6 +1223,9 @@
   - bugfix: durand shield doesnt immediately depower the mech when taking stamina
       damage
   - balance: durand shield is a bit stronger
+2024-06-27:
+  RengaN02:
+  - image: "Siyah sabre spritesinin sol alt\u0131ndaki beyaz nokta d\xFCzeltildi."
 2024-06-28:
   Ben10Omintrix:
   - refactor: firebots are now basic bots
@@ -1316,4 +1307,3 @@
   - qol: 'polypore mycelium no longer contains sugar, preventing it from instantly
       creating fringe weaver beverage when ground up. qol: sugar may be acquired from
       grinding fireblossoms instead of polypore mycelium.'
->>>>>>> upstream/master

@@ -51,6 +51,7 @@
 	light_color = LIGHT_COLOR_BLUE
 	light_range = 4
 
+<<<<<<< HEAD
 /obj/structure/fans/tiny/craftable
 	buildstackamount = 5
 	max_integrity = 100
@@ -125,3 +126,7 @@
 		span_hear("You hear ratcheting."))
 
 	qdel(src)
+=======
+/obj/structure/fans/tiny/shield/wrench_act(mob/living/user, obj/item/I)
+	return ITEM_INTERACT_SKIP_TO_ATTACK //how you gonna wrench disassemble a shield?????????
+>>>>>>> upstream/master

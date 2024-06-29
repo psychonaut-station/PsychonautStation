@@ -1049,8 +1049,6 @@
       if only a single tile
   - rscadd: Adds an effect for emagging an emag
   - rscadd: Adds an effect for emagging a fake emag
-  mujan:
-  - rscadd: Ayran eklendi
   Paxilmaniac:
   - rscadd: Electric eels now prefer used car batteries for bait.
   Rhials:
@@ -1060,6 +1058,8 @@
   - qol: Oven trays now count as valid trays to cut food on.
   - rscadd: The game settings menu can now actually be accessed through the escape
       menu.
+  mujan:
+  - rscadd: Ayran eklendi
 2024-06-25:
   00-Steven:
   - refactor: Modular computers (PDAs, laptops, etc) and their applications have had
@@ -1307,3 +1307,23 @@
   - qol: 'polypore mycelium no longer contains sugar, preventing it from instantly
       creating fringe weaver beverage when ground up. qol: sugar may be acquired from
       grinding fireblossoms instead of polypore mycelium.'
+2024-06-29:
+  Bisar:
+  - rscadd: Ashwalkers now start out allied to lavaland fauna (except for raptors).
+      Attacking the fauna will break this alliance with the attacked beast and any
+      who witness it.
+  - bugfix: Ashwalkers are now actually in the ashwalker faction, instead of the neutral
+      one.
+  EnterTheJake:
+  - rscadd: A new Anomaly organ has been introduced, The Voltaic Combat Cyberheart!
+  SyncIt21:
+  - bugfix: you can access your inventory when lying down
+  Vekter:
+  - bugfix: Fixed the visibility of a pipe in Northstar's ordnance lab
+  - bugfix: Fixes the door-bolting buttons in the dorms and bathrooms on Birdshot.
+  aaaa1023:
+  - bugfix: Removed a bush trapped inside a wall above morgue on Tramstation
+  delingar:
+  - bugfix: Lavaland elite are at lavaland fauna faction now
+  junkgle01:
+  - bugfix: added a keycard auth to QM room

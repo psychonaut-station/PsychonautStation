@@ -364,14 +364,12 @@
 /turf/open/space,
 /area/space/nearstation)
 "aT" = (
-/obj/machinery/computer/security/telescreen/vault{
-	pixel_y = 30
-	},
 /obj/machinery/light/small{
 	dir = 8
 	},
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/filingcabinet,
+/obj/machinery/computer/security/telescreen/vault/directional/north,
 /turf/open/floor/wood,
 /area/station/command/heads_quarters/hop)
 "aU" = (
@@ -3086,11 +3084,11 @@
 "hL" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	pixel_x = 4;
 	pixel_y = 5
 	},
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /obj/item/multitool{
 	pixel_x = -6;
 	pixel_y = 5
@@ -3725,7 +3723,7 @@
 "je" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 8
 	},
@@ -4151,6 +4149,7 @@
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 8
 	},
+/obj/machinery/computer/security/telescreen/ordnance/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/science/research)
 "jS" = (
@@ -6227,7 +6226,7 @@
 "oT" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /obj/item/controller,
 /obj/item/compact_remote,
 /obj/item/compact_remote,
@@ -6943,8 +6942,8 @@
 "qP" = (
 /obj/structure/table,
 /obj/item/electronics/apc,
-/obj/item/stock_parts/cell/high,
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /obj/item/electronics/airlock,
 /obj/item/electronics/airlock,
 /obj/effect/turf_decal/tile/yellow{
@@ -7517,7 +7516,7 @@
 "ss" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/emproof{
+/obj/item/stock_parts/power_store/cell/emproof{
 	pixel_x = -4;
 	pixel_y = 6
 	},
@@ -10221,7 +10220,7 @@
 "zt" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -11431,7 +11430,7 @@
 "Ch" = (
 /obj/structure/table,
 /obj/machinery/cell_charger,
-/obj/item/stock_parts/cell/high,
+/obj/item/stock_parts/power_store/cell/high,
 /obj/item/borg/upgrade/rename{
 	pixel_x = 9;
 	pixel_y = 12
@@ -11977,10 +11976,6 @@
 /area/station/hallway/secondary/service)
 "DF" = (
 /obj/structure/table,
-/obj/machinery/computer/security/telescreen/ordnance{
-	dir = 8;
-	pixel_y = 3
-	},
 /obj/item/radio/intercom/directional/south,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -13629,11 +13624,11 @@
 /obj/machinery/cell_charger{
 	pixel_y = 4
 	},
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	pixel_x = 4;
 	pixel_y = 5
 	},
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
@@ -13760,10 +13755,6 @@
 /turf/open/floor/catwalk_floor,
 /area/station/maintenance/aft)
 "Iw" = (
-/obj/machinery/computer/security/telescreen/minisat{
-	dir = 1;
-	pixel_y = -29
-	},
 /obj/structure/table,
 /obj/machinery/light/small,
 /obj/structure/cable,
@@ -13772,6 +13763,7 @@
 	fax_name = "Bridge";
 	name = "Command's Fax Machine"
 	},
+/obj/machinery/computer/security/telescreen/minisat/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "Ix" = (
@@ -14518,11 +14510,11 @@
 /obj/item/electronics/airlock,
 /obj/item/electronics/apc,
 /obj/item/electronics/apc,
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},
-/obj/item/stock_parts/cell/high{
+/obj/item/stock_parts/power_store/cell/high{
 	charge = 100;
 	maxcharge = 15000
 	},

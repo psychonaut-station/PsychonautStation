@@ -184,3 +184,14 @@
 
 /datum/preference/name/animal/create_default_value()
 	return pick(GLOB.pug_names)
+
+/// The name to use while bitrunning
+/datum/preference/name/hacker_alias
+	explanation = "Hacker alias"
+	group = "bitrunning"
+	savefile_key = "hacker_alias"
+	allow_numbers = TRUE
+	relevant_job = /datum/job/bitrunner
+
+/datum/preference/name/hacker_alias/create_default_value()
+	return pick(GLOB.hacker_aliases)

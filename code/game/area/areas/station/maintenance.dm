@@ -71,6 +71,10 @@
 	name = "Science Maintenance"
 	icon_state = "maint_sci"
 
+/area/station/maintenance/department/science/lower
+	name = "Science Maintenance"
+	icon_state = "maint_sci"
+
 /area/station/maintenance/department/science/central
 	name = "Central Science Maintenance"
 	icon_state = "maint_sci_central"

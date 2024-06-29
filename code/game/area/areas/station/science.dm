@@ -20,6 +20,10 @@
 	name = "Research and Development"
 	icon_state = "research"
 
+/area/station/science/lab/research_office
+	name = "Research Office"
+	icon_state = "research"
+
 /area/station/science/xenobiology
 	name = "\improper Xenobiology Lab"
 	icon_state = "xenobio"

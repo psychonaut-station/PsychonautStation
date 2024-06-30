@@ -197,7 +197,10 @@
 				return
 			unwrap_contents()
 			balloon_alert(user, "cutting open package...")
-			post_unwrap_contents(user, rip_open = FALSE)
+			// PSYCHONAUT EDIT CHANGE START - CARGO_BORG - ORIGINAL:
+			// post_unwrap_contents(user, rip_open = FALSE)
+			post_unwrap_contents(rip_open = FALSE)
+			// PSYCHONAUT EDIT CHANGE END
 		else
 			balloon_alert(user, "prime the boxcutter!")
 

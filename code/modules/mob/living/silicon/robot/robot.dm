@@ -166,6 +166,7 @@
 		"Miner" = /obj/item/robot_model/miner,
 		"Janitor" = /obj/item/robot_model/janitor,
 		"Service" = /obj/item/robot_model/service,
+		"Cargo" = /obj/item/robot_model/cargo, // PSYCHONAUT EDIT ADDITION - CARGO_BORG
 	)
 	if(!CONFIG_GET(flag/disable_peaceborg))
 		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
@@ -176,8 +177,12 @@
 	var/list/model_icons = list()
 	for(var/option in model_list)
 		var/obj/item/robot_model/model = model_list[option]
+		var/model_icon_file = model::cyborg_base_icon_file // PSYCHONAUT EDIT ADDITION - ICON_OVERRIDES
 		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
+		// PSYCHONAUT EDIT CHANGE START - ICON_OVERRIDES - ORIGINAL:
+		// model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
+		model_icons[option] = image(icon = model_icon_file, icon_state = model_icon)
+		// PSYCHONAUT EDIT CHANGE END
 
 	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)

@@ -19,6 +19,10 @@
 	var/mob/living/silicon/robot/robot
 	///Icon of the module selection screen
 	var/model_select_icon = "nomod"
+	// PSYCHONAUT EDIT ADDITION START - ICON_OVERRIDES
+	/// Sets icon file for cyborg_base_icon
+	var/cyborg_base_icon_file = 'icons/mob/silicon/robots.dmi'
+	// PSYCHONAUT EDIT ADDITION END
 	///Produces the icon for the borg and, if no special_light_key is set, the lights
 	var/cyborg_base_icon = "robot"
 	///If we want specific lights, use this instead of copying lights in the dmi
@@ -178,6 +182,11 @@
 			if(!gun.chambered)
 				. = TRUE
 				gun.recharge_newshot() //try to reload a new shot.
+		// PSYCHONAUT EDIT ADDITION START - CARGO_BORG
+		else if(istype(module, /obj/item/universal_scanner))
+			var/obj/item/universal_scanner/scanner = module
+			scanner.paper_count = scanner.max_paper_count
+		// PSYCHONAUT EDIT ADDITION END
 
 	if(cyborg.toner < cyborg.tonermax)
 		. = TRUE
@@ -235,6 +244,10 @@
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
 	new_model.robot = cyborg
+	// PSYCHONAUT EDIT ADDITION START - ICON_OVERRIDES
+	cyborg.icon = 'icons/mob/silicon/robots.dmi'
+	cyborg.icon_state = "robot"
+	// PSYCHONAUT EDIT ADDITION END
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return

@@ -19,6 +19,8 @@ Bunun gibi yapılan değişiklikleri not alıyoruz:
 ### TG Değişiklikleri
 
 - `code/game/machinery/computer/_computer.dm`: [`/obj/machinery/computer/`: `var/icon_screen_file`, `update_overlays()`]
+- `code/modules/mob/living/silicon/robot/robot_model.dm`: [`/obj/item/robot_model/`: `var/cyborg_base_icon_file`, `proc/transform_to()`]
+- `code/modules/mob/living/silicon/robot/robot.dm`: `/mob/living/silicon/robot/proc/pick_model()`
 - `code/modules/mob/mob.dm`: `/atom/proc/prepare_huds()`
 - `code/modules/projectiles/guns/energy.dm`: `/obj/item/gun/energy/update_icon_state()`
 

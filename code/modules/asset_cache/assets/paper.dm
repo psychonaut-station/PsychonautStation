@@ -20,5 +20,6 @@
 		// "stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png'
 		"stamp-syndicate" = 'icons/stamp_icons/large_stamp-syndicate.png',
 		// PSYCHONAUT EDIT CHANGE END
-		"stamp-secretary" = 'modular_psychonaut/master_files/icons/stamp_icons/large_stamp-secretary.png' // PSYCHONAUT EDIT ADDITION - NT_SECRETARY
+		"stamp-secretary" = 'modular_psychonaut/master_files/icons/stamp_icons/large_stamp-secretary.png', // PSYCHONAUT EDIT ADDITION - NT_SECRETARY
+		"stamp-borg" = 'modular_psychonaut/master_files/icons/stamp_icons/large_stamp-borg.png', // PSYCHONAUT EDIT ADDITION - CARGO_BORG
 	)

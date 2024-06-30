@@ -1,0 +1,20 @@
+{
+	"version": 1,
+	"map_name": "Heliostation",
+	"map_path": "map_files/heliostation",
+	"map_file": "Heliostation.dmm",
+	"shuttles": {
+		"cargo": "cargo_box",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_tram"
+	},
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/bar", "/area/station/security/prison/mess"]
+		},
+		"Prisoner": {
+			"spawn_positions": 4
+		}
+	}
+}

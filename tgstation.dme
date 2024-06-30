@@ -6334,7 +6334,7 @@
 #include "modular_psychonaut\modules\chaplain_sects\code\rites.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
-#include "modular_psychonaut\modules\jukebox\code\mob_collector.dm"
+#include "modular_psychonaut\modules\jukebox\code\proximity_monitor.dm"
 #include "modular_psychonaut\modules\jukebox\code\supply_pack.dm"
 #include "modular_psychonaut\modules\jukebox\code\tgui_panel.dm"
 #include "modular_psychonaut\modules\jukebox\code\web_sound_player.dm"

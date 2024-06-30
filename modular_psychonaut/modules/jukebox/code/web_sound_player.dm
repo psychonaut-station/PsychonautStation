@@ -68,7 +68,7 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 /datum/component/web_sound_player
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 
-	var/datum/proximity_monitor/advanced/mob_collector/proximity_monitor
+	var/datum/proximity_monitor/advanced/jukebox/proximity_monitor
 	var/datum/status_effect/status_effect
 	var/list/listeners
 	var/datum/web_track/track

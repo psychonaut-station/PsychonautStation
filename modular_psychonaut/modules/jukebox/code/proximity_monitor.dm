@@ -1,7 +1,7 @@
-#define get_atom_loc(monitor, atom) monitor.ignore_if_target_not_on_turf ? atom : get_turf(atom)
-#define get_host_loc(monitor) monitor.ignore_if_not_on_turf ? monitor.host : get_turf(monitor.host)
+#define get_atom_loc(monitor, atom) (monitor.ignore_if_target_not_on_turf ? atom : get_turf(atom))
+#define get_host_loc(monitor) (monitor.ignore_if_not_on_turf ? monitor.host : get_turf(monitor.host))
 
-/datum/proximity_monitor/advanced/mob_collector
+/datum/proximity_monitor/advanced/jukebox
 	loc_connections = list(
 		COMSIG_ATOM_ABSTRACT_ENTERED = PROC_REF(on_entered),
 		COMSIG_ATOM_ABSTRACT_EXITED = PROC_REF(on_uncrossed),
@@ -10,18 +10,18 @@
 	var/ignore_if_target_not_on_turf
 	var/list/mobs_in_field = list()
 
-/datum/proximity_monitor/advanced/mob_collector/New(atom/host, range, ignore_if_not_on_turf = TRUE, _ignore_if_target_not_on_turf = TRUE)
+/datum/proximity_monitor/advanced/jukebox/New(atom/host, range, ignore_if_not_on_turf = TRUE, _ignore_if_target_not_on_turf = TRUE)
 	ignore_if_target_not_on_turf = _ignore_if_target_not_on_turf
 	. = ..()
 	recalculate_field()
 
-/datum/proximity_monitor/advanced/mob_collector/Destroy()
+/datum/proximity_monitor/advanced/jukebox/Destroy()
 	for(var/mob/mob as anything in mobs_in_field)
 		if(mob != host)
 			UnregisterSignal(mob, COMSIG_QDELETING)
 	return ..()
 
-/datum/proximity_monitor/advanced/mob_collector/recalculate_field(full_recalc = FALSE)
+/datum/proximity_monitor/advanced/jukebox/recalculate_field(full_recalc = FALSE)
 	. = ..()
 	var/list/old_mobs = mobs_in_field.Copy()
 	mobs_in_field.Cut()
@@ -40,7 +40,7 @@
 			if(mob != host)
 				UnregisterSignal(mob, COMSIG_QDELETING)
 
-/datum/proximity_monitor/advanced/mob_collector/on_uncrossed(turf/source, atom/movable/gone, direction)
+/datum/proximity_monitor/advanced/jukebox/on_uncrossed(turf/source, atom/movable/gone, direction)
 	. = ..()
 	if(ismob(gone))
 		var/mob/mob = gone
@@ -55,7 +55,7 @@
 			else
 				SEND_SIGNAL(host, COMSIG_PROXIMITY_MOB_MOVED, mob)
 
-/datum/proximity_monitor/advanced/mob_collector/on_entered(turf/source, atom/movable/entered)
+/datum/proximity_monitor/advanced/jukebox/on_entered(turf/source, atom/movable/entered)
 	. = ..()
 	if(ismob(entered))
 		var/mob/mob = entered
@@ -65,12 +65,12 @@
 			if(mob != host)
 				RegisterSignal(mob, COMSIG_QDELETING, PROC_REF(on_qdeleting))
 
-/datum/proximity_monitor/advanced/mob_collector/on_initialized(turf/source, atom/movable/created, init_flags)
+/datum/proximity_monitor/advanced/jukebox/on_initialized(turf/source, atom/movable/created, init_flags)
 	. = ..()
 	if(ismob(created))
 		addtimer(CALLBACK(src, PROC_REF(on_entered), source, created), 1)
 
-/datum/proximity_monitor/advanced/mob_collector/proc/on_qdeleting(datum/source)
+/datum/proximity_monitor/advanced/jukebox/proc/on_qdeleting(datum/source)
 	SIGNAL_HANDLER
 	if(ismob(source))
 		if(mobs_in_field.Find(source))

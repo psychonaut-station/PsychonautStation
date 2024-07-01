@@ -81,7 +81,10 @@
 /datum/quirk/gamer/proc/gamer_moment()
 	// It was a heated gamer moment...
 	var/mob/living/carbon/human/human_holder = quirk_holder
-	human_holder.say(";[pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER")]!!", forced = name)
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// human_holder.say(";[pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER")]!!", forced = name)
+	human_holder.say(";[pick("PİÇ", "AMCIK", "SİKİK", "YAVŞAK", "YARRAK KAFALI", "OROSPU EVLADI")]!!", forced = name)
+	// PSYCHONAUT EDIT CHANGE END
 
 /datum/quirk/gamer/proc/enter_withdrawal()
 	var/mob/living/carbon/human/human_holder = quirk_holder

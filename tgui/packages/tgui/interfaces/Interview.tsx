@@ -76,12 +76,18 @@ export const Interview = (props) => {
     >
       <Window.Content scrollable>
         {(!read_only && (
-          <Section title="Welcome!">
+          // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+          // <Section title="Welcome!">
+          <Section title="Hoş Geldin!">
+            {/* PSYCHONAUT EDIT CHANGE END */}
             <p>{linkifyText(welcome_message)}</p>
           </Section>
         )) || <RenderedStatus status={status} queue_pos={queue_pos} />}
         <Section
-          title="Questionnaire"
+          // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+          // title="Questionnaire"
+          title="Başvuru"
+          // PSYCHONAUT EDIT CHANGE END
           buttons={
             <span>
               <Button
@@ -90,11 +96,18 @@ export const Interview = (props) => {
                 icon="envelope"
                 tooltip={
                   !allAnswered &&
-                  `Please answer all questions.
+                  // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+                  // `Please answer all questions.
+                  //    ${numAnswered} / ${questions.length}`
+                  `Lütfen bütün soruları cevapla.
                      ${numAnswered} / ${questions.length}`
+                  // PSYCHONAUT EDIT CHANGE END
                 }
               >
-                {read_only ? 'Submitted' : 'Submit'}
+                {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                {/* {read_only ? 'Submitted' : 'Submit'} */}
+                {read_only ? 'Gönderildi' : 'Gönder'}
+                {/* PSYCHONAUT EDIT CHANGE END */}
               </Button>
               {!!is_admin && status === 'interview_pending' && (
                 <span>
@@ -102,10 +115,16 @@ export const Interview = (props) => {
                     Admin PM
                   </Button>
                   <Button color="good" onClick={() => act('approve')}>
-                    Approve
+                    {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                    {/* Approve */}
+                    Onayla
+                    {/* PSYCHONAUT EDIT CHANGE END */}
                   </Button>
                   <Button color="bad" onClick={() => act('deny')}>
-                    Deny
+                    {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                    {/* Deny */}
+                    Reddet
+                    {/* PSYCHONAUT EDIT CHANGE END */}
                   </Button>
                 </span>
               )}
@@ -115,20 +134,36 @@ export const Interview = (props) => {
           {!read_only && (
             <>
               <Box as="p" color="label">
-                Please answer the following questions.
+                {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                {/* Please answer the following questions. */}
+                Lütfen aşağıdaki soruları yanıtla.
+                {/* PSYCHONAUT EDIT CHANGE END */}
                 <ul>
                   <li>
-                    You can press enter key or the save button to save an
-                    answer.
+                    {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                    {/* You can press enter key or the save button to save an */}
+                    {/* answer. */}
+                    Bir yanıtı kaydetmek için enter tuşuna veya kaydet düğmesine
+                    basabilirsin.
+                    {/* PSYCHONAUT EDIT CHANGE END */}
                   </li>
                   <li>
-                    You can edit your answers until you press the submit button.
+                    {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                    {/* You can edit your answers until you press the submit button. */}
+                    Gönder düğmesine basana kadar cevaplarını düzenleyebilirsin.
+                    {/* PSYCHONAUT EDIT CHANGE END */}
                   </li>
-                  <li>Press SUBMIT when you are done.</li>
+                  {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                  {/* <li>Press SUBMIT when you are done.</li> */}
+                  <li>İşin bittiğinde GÖNDER düğmesine bas.</li>
+                  {/* PSYCHONAUT EDIT CHANGE END */}
                 </ul>
               </Box>
               <NoticeBox info align="center">
-                You will not be able to edit your answers after submitting.
+                {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+                {/* You will not be able to edit your answers after submitting. */}
+                Başvuruyu gönderdikten sonra cevaplarını düzenleyemezsin.
+                {/* PSYCHONAUT EDIT CHANGE END */}
               </NoticeBox>
             </>
           )}
@@ -146,14 +181,23 @@ const RenderedStatus = (props: { status: string; queue_pos: number }) => {
 
   switch (status) {
     case STATUS.Approved:
-      return <NoticeBox success>This interview was approved.</NoticeBox>;
+      // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+      // return <NoticeBox success>This interview was approved.</NoticeBox>;
+      return <NoticeBox success>Başvurun onaylanmıştır.</NoticeBox>;
+    // PSYCHONAUT EDIT CHANGE END
     case STATUS.Denied:
-      return <NoticeBox danger>This interview was denied.</NoticeBox>;
+      // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+      // return <NoticeBox danger>This interview was denied.</NoticeBox>;
+      return <NoticeBox danger>Başvurun reddedilmiştir.</NoticeBox>;
+    // PSYCHONAUT EDIT CHANGE END
     default:
       return (
         <NoticeBox info>
-          Your answers have been submitted. You are position {queue_pos} in
-          queue.
+          {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+          {/* Your answers have been submitted. You are position {queue_pos} in */}
+          {/* queue. */}
+          Cevapların gönderildi. Başvurular arasında {queue_pos}. sıradasın.
+          {/* PSYCHONAUT EDIT CHANGE END */}
         </NoticeBox>
       );
   }
@@ -181,20 +225,29 @@ const QuestionArea = (props: Question) => {
 
   return (
     <Section
-      title={`Question ${qidx}`}
+      // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+      // title={`Question ${qidx}`}
+      title={`Soru ${qidx}`}
+      // PSYCHONAUT EDIT CHANGE END
       buttons={
         <Button
           disabled={!saveAvailable}
           onClick={saveResponse}
           icon={isSaved ? 'check' : 'save'}
         >
-          {isSaved ? 'Saved' : 'Save'}
+          {/* PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL: */}
+          {/* {isSaved ? 'Saved' : 'Save'} */}
+          {isSaved ? 'Kaydedildi' : 'Kaydet'}
+          {/* PSYCHONAUT EDIT CHANGE END */}
         </Button>
       }
     >
       <p>{linkifyText(question)}</p>
       {((read_only || is_admin) && (
-        <BlockQuote>{response || 'No response.'}</BlockQuote>
+        // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+        // <BlockQuote>{response || 'No response.'}</BlockQuote>
+        <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
+        // PSYCHONAUT EDIT CHANGE END
       )) || (
         <TextArea
           fluid
@@ -202,7 +255,10 @@ const QuestionArea = (props: Question) => {
           maxLength={500}
           onChange={(e, input) => setUserInput(input)}
           onEnter={saveResponse}
-          placeholder="Write your response here, max of 500 characters. Press enter to submit."
+          // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+          // placeholder="Write your response here, max of 500 characters. Press enter to submit."
+          placeholder="Cevabını buraya yaz, en fazla 500 karakter. Göndermek için enter tuşuna bas."
+          // PSYCHONAUT EDIT CHANGE END
           value={response || undefined}
         />
       )}

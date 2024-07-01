@@ -1,7 +1,10 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/wiki(query as text)
 	set name = "wiki"
-	set desc = "Type what you want to know about.  This will open the wiki in your web browser. Type nothing to go to the main page."
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Type what you want to know about.  This will open the wiki in your web browser. Type nothing to go to the main page."
+	set desc = "Ne hakkında bilgi edinmek istediğini yaz. Bu, tarayıcında wiki'yi açacaktır. Ana sayfaya gitmek için boş bırak."
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 	var/wikiurl = CONFIG_GET(string/wikiurl)
 	if(wikiurl)
@@ -16,12 +19,17 @@
 
 /client/verb/forum()
 	set name = "forum"
-	set desc = "Visit the forum."
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Visit the forum."
+	set desc = "Forum'u ziyaret et."
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 	var/forumurl = CONFIG_GET(string/forumurl)
 	if(forumurl)
-		if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
+		// PSYCHONAUT EDIT REMOVAL START - LOCALIZATION - ORIGINAL:
+		// if(tgui_alert(src, "This will open the forum in your browser. Are you sure?",, list("Yes","No"))!="Yes")
+		// 	return
+		// PSYCHONAUT EDIT REMOVAL END
 		src << link(forumurl)
 	else
 		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
@@ -29,12 +37,17 @@
 
 /client/verb/rules()
 	set name = "rules"
-	set desc = "Show Server Rules."
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Show Server Rules."
+	set desc = "Sunucu kurallarını göster."
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
-		if(tgui_alert(src, "This will open the rules in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
+		// PSYCHONAUT EDIT REMOVAL START - LOCALIZATION - ORIGINAL:
+		// if(tgui_alert(src, "This will open the rules in your browser. Are you sure?",, list("Yes","No"))!="Yes")
+		// 	return
+		// PSYCHONAUT EDIT REMOVAL END
 		src << link(rulesurl)
 	else
 		to_chat(src, span_danger("The rules URL is not set in the server configuration."))
@@ -42,12 +55,17 @@
 
 /client/verb/github()
 	set name = "github"
-	set desc = "Visit Github"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Visit Github"
+	set desc = "Github'ı ziyaret et."
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		if(tgui_alert(src, "This will open the Github repository in your browser. Are you sure?",, list("Yes","No"))!="Yes")
-			return
+		// PSYCHONAUT EDIT REMOVAL START - LOCALIZATION - ORIGINAL:
+		// if(tgui_alert(src, "This will open the Github repository in your browser. Are you sure?",, list("Yes","No"))!="Yes")
+		// 	return
+		// PSYCHONAUT EDIT REMOVAL END
 		src << link(githuburl)
 	else
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
@@ -55,18 +73,23 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
-	set desc = "Report an issue"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Report an issue"
+	set desc = "Hata bildir."
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(githuburl)
-		var/message = "This will open the Github issue reporter in your browser. Are you sure?"
-		if(GLOB.revdata.testmerge.len)
-			message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
-			message += GLOB.revdata.GetTestMergeInfo(FALSE)
-		// We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
-		// then the report issue button being tgui-based would be problematic.
-		if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
-			return
+		// PSYCHONAUT EDIT REMOVAL START - LOCALIZATION - ORIGINAL:
+		// var/message = "This will open the Github issue reporter in your browser. Are you sure?"
+		// if(GLOB.revdata.testmerge.len)
+		// 	message += "<br>The following experimental changes are active and are probably the cause of any new or sudden issues you may experience. If possible, please try to find a specific thread for your issue instead of posting to the general issue tracker:<br>"
+		// 	message += GLOB.revdata.GetTestMergeInfo(FALSE)
+		// // We still use tgalert here because some people were concerned that if someone wanted to report that tgui wasn't working
+		// // then the report issue button being tgui-based would be problematic.
+		// if(tgalert(src, message, "Report Issue","Yes","No")!="Yes")
+		// 	return
+		// PSYCHONAUT EDIT REMOVAL END
 
 		// Keep a static version of the template to avoid reading file
 		var/static/issue_template = file2text(".github/ISSUE_TEMPLATE/bug_report.md")

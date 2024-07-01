@@ -226,7 +226,10 @@
 			if(1)
 				owner.emote("twitch")
 			if(2 to 3)
-				owner.say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]", forced=name)
+				// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+				// owner.say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]", forced=name)
+				owner.say("[prob(50) ? ";" : ""][pick("PİÇ", "AMCIK", "SİKİK", "YAVŞAK", "YARRAK KAFALI", "OROSPU EVLADI")]", forced=name)
+				// PSYCHONAUT EDIT CHANGE END
 		var/x_offset_old = owner.pixel_x
 		var/y_offset_old = owner.pixel_y
 		var/x_offset = owner.pixel_x + rand(-2,2)

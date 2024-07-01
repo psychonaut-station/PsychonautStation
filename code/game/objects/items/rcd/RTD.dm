@@ -60,6 +60,13 @@
 	tile_type = design["type"]
 	icon_state = initial(tile_type.icon_state)
 	cost = design["tile_cost"]
+	// PSYCHONAUT EDIT ADDITION START - RTD
+	secondary = design["secondary"]
+
+	if(ispath(tile_type, /obj/item/stack/tile/carpet/neon))
+		var/obj/item/stack/tile/carpet/neon/neon_carpet = tile_type
+		icon_state += "-[replacetext(neon_carpet::neon_color, "#", "")]"
+	// PSYCHONAUT EDIT ADDITION END
 
 	tile_directions = design["tile_rotate_dirs"]
 	if(!tile_directions)
@@ -282,7 +289,10 @@
 	var/obj/effect/constructing_effect/rcd_effect = new(floor, delay, RCD_TURF)
 
 	//resource sanity check before & after delay along with special effects
-	if(!checkResource(selected_design.cost, user))
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!checkResource(selected_design.cost, user))
+	if(!checkResource(selected_design.cost, user, selected_design.secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 	var/beam = user.Beam(floor, icon_state = "light_beam", time = delay)
@@ -291,11 +301,17 @@
 		qdel(beam)
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
-	if(!checkResource(selected_design.cost, user))
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!checkResource(selected_design.cost, user))
+	if(!checkResource(selected_design.cost, user, selected_design.secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 
-	if(!useResource(selected_design.cost, user))
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!useResource(selected_design.cost, user))
+	if(!useResource(selected_design.cost, user, selected_design.secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 	activate()
@@ -332,6 +348,7 @@
 
 	//we only deconstruct floors which are supported by the RTD
 	var/cost = 0
+	var/secondary = FALSE // PSYCHONAUT EDIT ADDITION - RTD
 	for(var/main_root in floor_designs)
 		if(cost)
 			break
@@ -342,6 +359,7 @@
 				var/obj/item/stack/tile/tile_type = design_info["type"]
 				if(initial(tile_type.turf_type) == floor.type)
 					cost = design_info["tile_cost"]
+					secondary = design_info["secondary"] // PSYCHONAUT EDIT ADDITION - RTD
 					break
 	if(!cost)
 		balloon_alert(user, "can't deconstruct this type!")
@@ -351,7 +369,10 @@
 	var/obj/effect/constructing_effect/rcd_effect = new(floor, delay, RCD_DECONSTRUCT)
 
 	//resource sanity check before & after delay along with beam effects
-	if(!checkResource(cost * 0.7, user)) //no ballon alert for checkResource as it already spans an alert to chat
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!checkResource(cost * 0.7, user)) //no ballon alert for checkResource as it already spans an alert to chat
+	if(!checkResource(cost * 0.7, user, secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 	var/beam = user.Beam(floor, icon_state = "light_beam", time = delay)
@@ -360,12 +381,18 @@
 		qdel(beam)
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
-	if(!checkResource(cost * 0.7, user))
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!checkResource(cost * 0.7, user))
+	if(!checkResource(cost * 0.7, user, secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 
 	//do the tiling
-	if(!useResource(cost * 0.7, user))
+	// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+	// if(!useResource(cost * 0.7, user))
+	if(!useResource(cost * 0.7, user, secondary))
+	// PSYCHONAUT EDIT CHANGE END
 		qdel(rcd_effect)
 		return ITEM_INTERACT_BLOCKING
 	activate()

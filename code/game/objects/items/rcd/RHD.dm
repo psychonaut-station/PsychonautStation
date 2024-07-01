@@ -78,6 +78,10 @@
 /obj/item/construction/examine(mob/user)
 	. = ..()
 	. += "It currently holds [get_matter(user)]/[max_matter] matter-units."
+	// PSYCHONAUT EDIT ADDITION START - RTD
+	if(LAZYLEN(secondary_matter_types))
+		. += "It currently holds [secondary_matter]/[max_secondary_matter] secondary matter-units."
+	// PSYCHONAUT EDIT ADDITION END
 	if(upgrade & RCD_UPGRADE_SILO_LINK)
 		. += "Remote storage link state: [silo_link ? "[silo_mats.on_hold() ? "ON HOLD" : "ON"]" : "OFF"]."
 		var/iron = get_silo_iron()

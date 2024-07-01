@@ -17,6 +17,10 @@ type Data = {
   selected_category: string;
   selected_design: string;
   display_tabs: BooleanLike;
+  // PSYCHONAUT EDIT ADDITION START - RTD
+  secondaryMatterLeft?: number;
+  hasSecondaryMatter?: BooleanLike;
+  // PSYCHONAUT EDIT ADDITION END
 };
 
 type Category = {
@@ -31,12 +35,27 @@ type Design = {
 
 export const MatterItem = (props) => {
   const { data } = useBackend<Data>();
-  const { matterLeft } = data;
+  // PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+  // const { matterLeft } = data;
+  // return (
+  //   <LabeledList.Item label="Units Left">
+  //     &nbsp;{matterLeft} Units
+  //   </LabeledList.Item>
+  // );
+  const { matterLeft, secondaryMatterLeft, hasSecondaryMatter } = data;
   return (
-    <LabeledList.Item label="Units Left">
-      &nbsp;{matterLeft} Units
-    </LabeledList.Item>
+    <>
+      <LabeledList.Item label="Units Left">
+        &nbsp;{matterLeft} Units
+      </LabeledList.Item>
+      {!!hasSecondaryMatter && (
+        <LabeledList.Item label="Secondary Units Left">
+          &nbsp;{secondaryMatterLeft} Units
+        </LabeledList.Item>
+      )}
+    </>
   );
+  // PSYCHONAUT EDIT CHANGE END
 };
 
 export const SiloItem = (props) => {

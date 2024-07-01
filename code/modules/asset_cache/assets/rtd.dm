@@ -14,8 +14,30 @@
 				if(registered[icon_state])
 					continue
 
-				Insert(sprite_name = icon_state, I = 'icons/obj/tiles.dmi', icon_state = icon_state)
-				registered[icon_state] = TRUE
+				// PSYCHONAUT EDIT CHANGE START - RTD - ORIGINAL:
+				// Insert(sprite_name = icon_state, I = 'icons/obj/tiles.dmi', icon_state = icon_state)
+				// registered[icon_state] = TRUE
+				var/sprite_name = icon_state
+				var/icon/icon = icon('icons/obj/tiles.dmi', icon_state)
+
+				if(ispath(type, /obj/item/stack/tile/carpet/neon))
+					var/obj/item/stack/tile/carpet/neon/neon_carpet = type
+					sprite_name += "-[replacetext(neon_carpet::neon_color, "#", "")]"
+
+					if(registered[sprite_name])
+						continue
+
+					var/icon/neon_icon = icon( \
+						neon_carpet::neon_icon || neon_carpet::icon, \
+						neon_carpet::neon_icon_state || neon_carpet::icon_state \
+					)
+
+					neon_icon.Blend(neon_carpet::neon_color, ICON_MULTIPLY)
+					icon.Blend(neon_icon, ICON_OVERLAY)
+
+				Insert(sprite_name = sprite_name, I = icon)
+				registered[sprite_name] = TRUE
+				// PSYCHONAUT EDIT CHANGE END
 
 				var/list/tile_directions = design["tile_rotate_dirs"]
 				if(tile_directions == null)

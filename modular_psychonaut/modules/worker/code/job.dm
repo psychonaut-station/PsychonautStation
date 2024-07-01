@@ -62,6 +62,7 @@
 		/obj/item/stack/sheet/glass/fifty,
 		/obj/item/stack/sheet/plasteel/twenty,
 		/obj/item/stack/sheet/mineral/wood/thirty,
+		/obj/item/stack/sheet/cloth/thirty,
 		/obj/item/construction/rcd/loaded,
 		/obj/item/construction/rtd/loaded,
 	)
@@ -75,4 +76,7 @@
 	gloves = /obj/item/clothing/gloves/color/yellow
 
 /obj/item/stack/sheet/mineral/wood/thirty
+	amount = 30
+
+/obj/item/stack/sheet/cloth/thirty
 	amount = 30

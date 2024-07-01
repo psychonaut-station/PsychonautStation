@@ -6348,6 +6348,7 @@
 #include "modular_psychonaut\modules\looc\code\keybinding.dm"
 #include "modular_psychonaut\modules\looc\code\verbs.dm"
 #include "modular_psychonaut\modules\mentor\code\verbs.dm"
+#include "modular_psychonaut\modules\noose\code\noose.dm"
 #include "modular_psychonaut\modules\nt_secretary\code\clothing.dm"
 #include "modular_psychonaut\modules\nt_secretary\code\console.dm"
 #include "modular_psychonaut\modules\nt_secretary\code\items.dm"

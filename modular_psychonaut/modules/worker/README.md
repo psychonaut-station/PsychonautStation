@@ -9,7 +9,7 @@ Daha az sorumlulukları olan Station Engineer alternatifi.
 ### TG Değişiklikleri
 
 - `code/__DEFINES/jobs.dm`: `JOB_GROUP_ENGINEERS`, `JOB_DISPLAY_ORDER_WORKER`
-- `code/game/gamemodes/objective_items.dm`: `/datum/objective_item/steal/traitor/fireaxe/var/excludefromjob`, `/datum/objective_item/steal/blackbox/var/excludefromjob`, [`/datum/objective_item/steal/traitor/insuls/`: `var/excludefromjob`, `var/item_owner`]
+- `code/game/gamemodes/objective_items.dm`: `/datum/objective_item/steal/traitor/fireaxe/var/excludefromjob`, `/datum/objective_item/steal/blackbox/var/excludefromjob`, [`/datum/objective_item/steal/traitor/insuls`: `var/excludefromjob`, `var/item_owner`]
 - `code/game/machinery/computer/crew.dm`: `/datum/crewmonitor/var/jobs`
 - `code/modules/mob/living/basic/bots/cleanbot/cleanbot.dm`: `/mob/living/basic/bot/cleanbot/var/job_titles`
 - `tgui/packages/tgui/interfaces/common/JobToIcon.ts`: `Worker`

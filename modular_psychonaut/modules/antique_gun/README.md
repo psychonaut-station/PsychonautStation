@@ -12,7 +12,7 @@ Kaptanın antik silahına yeni skinler ekler.
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/modules/projectiles/guns/energy/laser.dm`: [`/obj/item/gun/energy/laser/captain/`: `var/obj_flags`, `var/icon`, `var/lefthand_file`, `var/righthand_file`, `var/unique_reskin`, `reskin_obj()`], [`/obj/item/gun/energy/laser/captain/scattershot/`: `var/obj_flags`, `var/icon`, `var/lefthand_file`, `var/righthand_file`, `var/unique_reskin`]
+- `modular_psychonaut/master_files/code/modules/projectiles/guns/energy/laser.dm`: [`/obj/item/gun/energy/laser/captain`: `var/obj_flags`, `var/icon`, `var/lefthand_file`, `var/righthand_file`, `var/unique_reskin`, `reskin_obj()`], [`/obj/item/gun/energy/laser/captain/scattershot`: `var/obj_flags`, `var/icon`, `var/lefthand_file`, `var/righthand_file`, `var/unique_reskin`]
 
 ### Definelar ve Helperlar
 

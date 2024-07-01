@@ -12,8 +12,8 @@ Kaptanın kılıcına yeni skinler ekler.
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/game/objects/items/melee/misc.dm`: [`/obj/item/melee/sabre/`: `var/icon`, `var/icon_state`, `var/inhand_icon_state`, `var/lefthand_file`, `var/righthand_file`]
-- `modular_psychonaut/master_files/code/game/objects/items/storage/belt.dm`: [`/obj/item/storage/belt/sabre/`: `var/icon`, `var/icon_state`, `var/inhand_icon_state`, `var/lefthand_file`, `var/righthand_file`, `var/worn_icon`, `var/worn_icon_state`, `var/unique_reskin`, `on_click_alt_reskin()`, `reskin_obj()`]
+- `modular_psychonaut/master_files/code/game/objects/items/melee/misc.dm`: [`/obj/item/melee/sabre`: `var/icon`, `var/icon_state`, `var/inhand_icon_state`, `var/lefthand_file`, `var/righthand_file`]
+- `modular_psychonaut/master_files/code/game/objects/items/storage/belt.dm`: [`/obj/item/storage/belt/sabre`: `var/icon`, `var/icon_state`, `var/inhand_icon_state`, `var/lefthand_file`, `var/righthand_file`, `var/worn_icon`, `var/worn_icon_state`, `var/unique_reskin`, `on_click_alt_reskin()`, `reskin_obj()`]
 
 ### Definelar ve Helperlar
 

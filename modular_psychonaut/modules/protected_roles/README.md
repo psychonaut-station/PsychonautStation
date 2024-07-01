@@ -24,7 +24,7 @@ Yeni bir role antag kısıtlaması getirmek için [`protected_roles.dm`](code/pr
 ### Modüler Değişiklikler
 
 - `modular_psychonaut/master_files/code/controllers/subsystem/dynamic/dynamic.dm`: `/datum/controller/subsystem/dynamic/configure_ruleset()`
-- `modular_psychonaut/master_files/code/modules/jobs/job_types/_job.dm`: [`/datum/job/`: `var/antagonist_protected`, `var/antagonist_restricted`, `var/protected_antagonists`, `var/restricted_antagonists`]
+- `modular_psychonaut/master_files/code/modules/jobs/job_types/_job.dm`: [`/datum/job`: `var/antagonist_protected`, `var/antagonist_restricted`, `var/protected_antagonists`, `var/restricted_antagonists`]
 
 ### Definelar ve Helperlar
 

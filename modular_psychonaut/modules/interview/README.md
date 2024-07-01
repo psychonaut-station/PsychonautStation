@@ -8,7 +8,7 @@ Onaylanan interviewleri admin-chat'e gönderir ve oyuncuya gönderilen mesajlar�
 
 ### TG Değişiklikleri
 
-- `code/modules/interview/interview.dm`: [`/datum/interview/`: `proc/approve()`, `proc/deny()`], `/mob/dead/new_player/proc/open_interview()`
+- `code/modules/interview/interview.dm`: [`/datum/interview`: `proc/approve()`, `proc/deny()`], `/mob/dead/new_player/proc/open_interview()`
 
 ### Modüler Değişiklikler
 

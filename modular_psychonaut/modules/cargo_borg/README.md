@@ -15,13 +15,13 @@ Kargocu mesleği yapacak olan yeni bir cyborg türü ekler.
 - `code/modules/asset_cache/assets/paper.dm`: `/datum/asset/spritesheet/simple/paper/var/assets`
 - `code/modules/mob/living/silicon/robot/robot_model.dm`: `/obj/item/robot_model/proc/respawn_consumable()`
 - `code/modules/mob/living/silicon/robot/robot.dm`: `/mob/living/silicon/robot/proc/pick_model()`
-- `code/modules/paperwork/paperplane.dm`: [`/obj/item/paperplane/`: `suicide_act()`, `throw_impact()`]
+- `code/modules/paperwork/paperplane.dm`: [`/obj/item/paperplane`: `suicide_act()`, `throw_impact()`]
 - `code/modules/recycling/sortingmachinery.dm`: `/obj/item/delivery/attackby()`
 
 ### Modüler Değişiklikler
 
 - `modular_psychonaut/master_files/code/game/objects/items/stacks/wrap.dm`: `/obj/item/stack/wrapping_paper/var/source`, `/obj/item/stack/package_wrap/var/source`
-- `modular_psychonaut/master_files/code/modules/paperwork/paperplane.dm`: [`/obj/item/paperplane/`: `var/eye_damage_lower`, `var/eye_damage_higher`, `var/scrap_on_impact`, `proc/turn_into_scrap()`]
+- `modular_psychonaut/master_files/code/modules/paperwork/paperplane.dm`: [`/obj/item/paperplane`: `var/eye_damage_lower`, `var/eye_damage_higher`, `var/scrap_on_impact`, `proc/turn_into_scrap()`]
 - `modular_psychonaut/master_files/icons/mob/silicon/robots.dmi`: `cargo`, `cargo_l`, `cargo_e`, `cargo_e_r`
 - `modular_psychonaut/master_files/icons/obj/devices/circuitry_n_data.dmi`: `cyborg_upgrade5`
 - `modular_psychonaut/master_files/icons/obj/service/bureaucracy.dmi`: `paper_stamp-borg`, `stamp-borg`

@@ -19,7 +19,7 @@ Mesleğin başlayacağı landmarkı belirtmek için [`spawn_point.dm`](code/spaw
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/modules/jobs/job_types/_job.dm`: [`/datum/job/`: `var/roundstart_spawn_point`, `get_default_roundstart_spawn_point()`]
+- `modular_psychonaut/master_files/code/modules/jobs/job_types/_job.dm`: [`/datum/job`: `var/roundstart_spawn_point`, `get_default_roundstart_spawn_point()`]
 
 ### Definelar ve Helperlar
 

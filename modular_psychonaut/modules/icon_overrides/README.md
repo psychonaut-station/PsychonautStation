@@ -6,11 +6,11 @@ MODULE ID: ICON_OVERRIDES
 
 #### Birleşik Iconlar
 
-Bazı iconlar çalışmaları için zorunlu olarak belirli icon dosyasında olmaları gerekiyor. Örneğin yeni bir console eklediğinizde `/obj/machinery/computer/var/icon_screen`'in gözükmesi için ekleyeceğiniz iconun `icons/obj/machines/computer.dmi` içerisinde olması gerekiyor. Fakat biz bunu istemediğimiz için gerekli değiştirmeler yaparak `/obj/machinery/computer/var/icon_screen_file` gibi yeni variablelar ekliyoruz. Bu sayede iconu `master_files` içerisindeki [`computer.dmi`](/modular_psychonaut/master_files/icons/obj/machines/computer.dmi) içerisine koyarak çalışmasını sağlayabiliyoruz.
+Bazı iconlar çalışmaları için zorunlu olarak belirli icon dosyasında olmaları gerekiyor. Örneğin yeni bir console eklediğinizde `/obj/machinery/computer/var/icon_screen`'in gözükmesi için ekleyeceğiniz iconun `icons/obj/machines/computer.dmi` içerisinde olması gerekiyor. Fakat biz bunu istemediğimiz için gerekli değiştirmeler yaparak `/obj/machinery/computer/var/icon_screen_file` gibi yeni variablelar ekliyoruz. Bu sayede iconu `master_files` içerisindeki [`computer.dmi`](/modular_psychonaut/master_files/icons/obj/machines/computer.dmi "modular_psychonaut/master_files/icons/obj/machines/computer.dmi") içerisine koyarak çalışmasını sağlayabiliyoruz.
 
 #### Ayrılamayacak Iconlar
 
-Nadir olsa da bazı hard-coded durumlarda ise iconları yukardaki gibi ayırmak imkansız oluyor. Bu durumlarda eklemek istediğimiz iconu `master_files/icons` içerisine orjinal icon dosyasının tamamının kopyası ile birlikte üzerine ekleyerek yapıyoruz. Bu duruma en iyi örnek ise eklediğimiz [`hud.dmi`](/modular_psychonaut/master_files/icons/mob/huds/hud.dmi) olacaktır.
+Nadir olsa da bazı hard-coded durumlarda ise iconları yukardaki gibi ayırmak imkansız oluyor. Bu durumlarda eklemek istediğimiz iconu `master_files/icons` içerisine orjinal icon dosyasının tamamının kopyası ile birlikte üzerine ekleyerek yapıyoruz. Bu duruma en iyi örnek ise eklediğimiz [`hud.dmi`](/modular_psychonaut/master_files/icons/mob/huds/hud.dmi "modular_psychonaut/master_files/icons/mob/huds/hud.dmi") olacaktır.
 
 Bunun gibi yapılan değişiklikleri not alıyoruz:
 

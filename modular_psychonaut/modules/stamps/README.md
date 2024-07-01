@@ -4,7 +4,7 @@ MODULE ID: STAMPS
 
 ### Açıklama
 
-Yeni eklediğimiz stampların çalışması traitlere ile benzer bir yol. Ekleyeceğin yeni stampı [`stamps.dm`](code/stamps.dm) içerisine ekle. Ayrıca eklediğin stampı `modular_psychonaut/master_files/icons/obj/service/bureaucracy.dmi` ve `code/modules/asset_cache/assets/paper.dm` içerisine eklemeyi unutma.
+Yeni eklediğimiz stampların çalışması traitlere ile benzer bir yol. Ekleyeceğin yeni stampı [`stamps.dm`](code/stamps.dm "modular_psychonaut\modules\stamps\code\stamps.dm") içerisine ekle. Ayrıca eklediğin stampı [`bureaucracy.dmi`](/modular_psychonaut/master_files/icons/obj/service/bureaucracy.dmi "modular_psychonaut/master_files/icons/obj/service/bureaucracy.dmi") ve [`paper.dm`](/code/modules/asset_cache/assets/paper.dm "code/modules/asset_cache/assets/paper.dm") içerisine eklemeyi unutma.
 
 ### TG Değişiklikleri
 

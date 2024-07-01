@@ -6341,6 +6341,7 @@
 #include "modular_psychonaut\modules\chaplain_sects\code\religion_sects.dm"
 #include "modular_psychonaut\modules\chaplain_sects\code\rites.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
+#include "modular_psychonaut\modules\items\code\wiki_manuals.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
 #include "modular_psychonaut\modules\jukebox\code\proximity_monitor.dm"
 #include "modular_psychonaut\modules\jukebox\code\supply_pack.dm"

@@ -11,11 +11,14 @@ GLOBAL_VAR_INIT(hub_visibility, FALSE)
 
 GLOBAL_VAR_INIT(ooc_allowed, TRUE) // used with admin verbs to disable ooc - not a config option apparently
 GLOBAL_VAR_INIT(dooc_allowed, TRUE)
+<<<<<<< HEAD
 GLOBAL_VAR_INIT(looc_allowed, TRUE)
 GLOBAL_VAR_INIT(enter_allowed, TRUE)
 GLOBAL_VAR_INIT(shuttle_frozen, FALSE)
 GLOBAL_VAR_INIT(shuttle_left, FALSE)
 GLOBAL_VAR_INIT(tinted_weldhelh, TRUE)
+=======
+>>>>>>> upstream/master
 
 
 // Debug is used exactly once (in living.dm) but is commented out in a lot of places.  It is not set anywhere and only checked.

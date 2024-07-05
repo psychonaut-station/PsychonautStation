@@ -455,13 +455,16 @@
 		return FALSE
 	return TRUE
 
-/obj/item/borg/paperplane_crossbow/afterattack(atom/target, mob/living/user, proximity, click_params)
+/obj/item/borg/paperplane_crossbow/ranged_interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	return interact_with_atom(interacting_with, user, modifiers)
+
+/obj/item/borg/paperplane_crossbow/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
 	if(iscyborg(user))
-		var/mob/living/silicon/robot/robot_user = user
-		if(!canshoot(target,robot_user))
-			return FALSE
-		shoot(target, robot_user, click_params)
+		if(!can_shoot(interacting_with, user))
+			return ITEM_INTERACT_BLOCKING
+		shoot(interacting_with, user)
+		return ITEM_INTERACT_SUCCESS
 
 /obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
 	to_chat(user, span_warning("[src] silently charges up."))

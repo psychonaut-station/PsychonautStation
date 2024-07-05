@@ -461,7 +461,7 @@
 /obj/item/borg/paperplane_crossbow/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	. = ..()
 	if(iscyborg(user))
-		if(!can_shoot(interacting_with, user))
+		if(!canshoot(interacting_with, user))
 			return ITEM_INTERACT_BLOCKING
 		shoot(interacting_with, user)
 		return ITEM_INTERACT_SUCCESS

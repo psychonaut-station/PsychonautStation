@@ -130,3 +130,8 @@
 		examine_list += span_deadsay("It is totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
 	else if(!source.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
+
+/mob/living/get_exp_list(minutes)
+	. = ..()
+	if(mind?.assigned_role?.title == JOB_ANIMAL)
+		.[JOB_ANIMAL] = minutes

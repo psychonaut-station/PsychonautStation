@@ -1,0 +1,5 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Animal rolünün süresi artık takip edilecek"
+  - bugfix: "Kargo borgunun emag eşyası çalışmaya devam edecek"

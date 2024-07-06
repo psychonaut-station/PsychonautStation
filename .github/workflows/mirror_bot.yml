@@ -52,6 +52,7 @@ jobs:
             echo "`n`nThe following files have conflicts:" >> $Env:GITHUB_OUTPUT
 
             $short_hash = $(git rev-parse --short HEAD)
+            $upstream_hash = $(git rev-parse HEAD~1)
 
             foreach ($file in $files) {
               $line = 1
@@ -73,7 +74,7 @@ jobs:
 
               $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-$short_hash/$file#L$head_marker-L$branch_marker"
               $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file#L$head_marker"
-              $theirs = "https://github.com/$Env:remote_repo/blob/$Env:remote_branch/$file#L$head_marker"
+              $theirs = "https://github.com/$Env:remote_repo/blob/$upstream_hash/$file#L$head_marker"
 
               echo "- [ ] $file - $conflicts - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
             }

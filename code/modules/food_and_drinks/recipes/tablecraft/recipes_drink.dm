@@ -154,3 +154,13 @@
 	            /obj/item/food/candy_corn = 2,
 	            /datum/reagent/water = 15)
 	category = CAT_DRINK
+
+/datum/crafting_recipe/ayran
+	name = "Ayran"
+	time = 15
+	reqs = list(/datum/reagent/consumable/salt =1,
+		/datum/reagent/consumable/yoghurt = 2,
+		/datum/reagent/water = 10,
+	)
+	result = /obj/item/reagent_containers/cup/glass/ayran
+	category = CAT_DRINK

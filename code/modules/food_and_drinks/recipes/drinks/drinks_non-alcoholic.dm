@@ -177,7 +177,3 @@
 /datum/chemical_reaction/drink/t_letter
 	results = list(/datum/reagent/consumable/t_letter = 2)
 	required_reagents = list(/datum/reagent/consumable/nothing = 1, /datum/reagent/consumable/tea = 1)
-
-/datum/chemical_reaction/drink/ayran
-	results = list(/datum/reagent/consumable/ayran = 5)
-	required_reagents = list(/datum/reagent/consumable/salt  = 1, /datum/reagent/water = 1, /datum/reagent/consumable/yoghurt = 1)

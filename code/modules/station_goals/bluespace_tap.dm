@@ -127,7 +127,7 @@
 		/mob/living/basic/pet/penguin = 5,
 		/mob/living/basic/parrot = 5,
 		/obj/item/slimepotion/slime/sentience = 5,
-		/obj/item/clothing/mask/cigarette/cigar/havana = 3,
+		/obj/item/cigarette/cigar/havana = 3,
 		/obj/item/stack/sheet/mineral/bananium/five = 10,	//bananas are organic, clearly.
 		/obj/item/storage/box/monkeycubes = 5,
 		/obj/item/stack/tile/carpet/black/fifty = 10,

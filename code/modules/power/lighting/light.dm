@@ -746,7 +746,7 @@
 	break_if_moved = FALSE
 	// has to render above tram things (trams are stupid)
 	layer = BELOW_OPEN_DOOR_LAYER
-<<<<<<< HEAD
+	plane = GAME_PLANE
 
 /proc/creak_lights()
 	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
@@ -754,6 +754,3 @@
 			L.on = FALSE
 			L.update(FALSE)
 			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))
-=======
-	plane = GAME_PLANE
->>>>>>> upstream/master

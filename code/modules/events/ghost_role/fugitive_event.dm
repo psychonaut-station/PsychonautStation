@@ -155,12 +155,10 @@
 					header = "Spawn Here!",
 				)
 
-<<<<<<< HEAD
-	priority_announce("İstasyon yakınlarında tanımlanamayan bir gemi tespit edildi.")
-=======
 	var/list/announcement_text_list = list()
 	var/announcement_title = ""
 	switch(backstory)
+		// TODO: Locale TR
 		if(HUNTER_PACK_COPS)
 			announcement_text_list += "Attention Crew of [GLOB.station_name], this is the Police. A wanted criminal has been reported taking refuge on your station."
 			announcement_text_list += "We have a warrant from the SSC authorities to take them into custody. Officers have been dispatched to your location."
@@ -191,6 +189,5 @@
 		stack_trace("Fugitive hunter announcement was unable to generate an announcement title based on backstory: [backstory]")
 
 	priority_announce(jointext(announcement_text_list, " "), announcement_title)
->>>>>>> upstream/master
 
 #undef TEAM_BACKSTORY_SIZE

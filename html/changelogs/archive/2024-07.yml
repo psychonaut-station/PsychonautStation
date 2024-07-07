@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-2024-07-06:
-  Seefaaa:
-  - bugfix: "Animal rol\xFCn\xFCn s\xFCresi art\u0131k takip edilecek"
-  - bugfix: "Kargo borgunun emag e\u015Fyas\u0131 \xE7al\u0131\u015Fmaya devam edecek"
-=======
 2024-07-01:
   Ben10Omintrix:
   - balance: raptors will now knock off their rider and disable them if hit by any
@@ -379,6 +373,9 @@
       pod,  Humpback emergency shuttle, Pubby monastery shuttle, Birdboat emergency
       shuttle, Birdshot emergency shuttle'
 2024-07-06:
+  Seefaaa:
+  - bugfix: "Animal rol\xFCn\xFCn s\xFCresi art\u0131k takip edilecek"
+  - bugfix: "Kargo borgunun emag e\u015Fyas\u0131 \xE7al\u0131\u015Fmaya devam edecek"
   00-Steven:
   - image: Goody case locked/unlocked sprites have been swapped again, having a gap
       for unlocked and no gap for locked.
@@ -412,4 +409,3 @@
       variant
   necromanceranne:
   - balance: Settlers are a bit slower on their steeds.
->>>>>>> upstream/master

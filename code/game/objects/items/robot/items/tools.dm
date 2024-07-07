@@ -307,12 +307,6 @@
 			. += "Its multitool buffer contains [tool.buffer]"
 			break
 
-#undef PKBORG_DAMPEN_CYCLE_DELAY
-#undef POWER_RECHARGE_CYBORG_DRAIN_MULTIPLIER
-<<<<<<< HEAD
-#undef NO_TOOL
-#undef TOOL_DRAPES
-
 /obj/item/borg/cyborg_clamp
 	name = "hydraulic clamp"
 	desc = "Equipment for cyborgs. Lifts objects and loads them into cargo."
@@ -489,5 +483,6 @@
 		if(!owner.cell?.use(5 * seconds_per_tick))
 			owner.logevent("ERROR: NO POWER")
 			drop_all_crates()
-=======
->>>>>>> upstream/master
+
+#undef PKBORG_DAMPEN_CYCLE_DELAY
+#undef POWER_RECHARGE_CYBORG_DRAIN_MULTIPLIER

@@ -1316,19 +1316,6 @@
       one.
   EnterTheJake:
   - rscadd: A new Anomaly organ has been introduced, The Voltaic Combat Cyberheart!
-<<<<<<< HEAD
-  SyncIt21:
-  - bugfix: you can access your inventory when lying down
-  Vekter:
-  - bugfix: Fixed the visibility of a pipe in Northstar's ordnance lab
-  - bugfix: Fixes the door-bolting buttons in the dorms and bathrooms on Birdshot.
-  aaaa1023:
-  - bugfix: Removed a bush trapped inside a wall above morgue on Tramstation
-  delingar:
-  - bugfix: Lavaland elite are at lavaland fauna faction now
-  junkgle01:
-  - bugfix: added a keycard auth to QM room
-=======
   Higgin:
   - bugfix: Mood buffs/penalties are now properly equal on both positive/negative
       sides.
@@ -1447,4 +1434,3 @@
   - bugfix: fixed the name of a request console in the medical sec outpost on metastation
   mc-oofert:
   - bugfix: both engineers and roboticists may now access the controls of a firebot
->>>>>>> upstream/master

@@ -207,15 +207,11 @@
 /datum/heretic_knowledge/ultimate/moon_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
 	priority_announce(
-		text= "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
+		text = "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
 			Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
-<<<<<<< HEAD
-		color_override = "pink"
-=======
 		color_override = "blue",
->>>>>>> upstream/master
 	)
 
 	ADD_TRAIT(user, TRAIT_MADNESS_IMMUNE, REF(src))

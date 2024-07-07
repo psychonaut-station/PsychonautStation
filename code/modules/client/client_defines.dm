@@ -271,3 +271,6 @@
 
 	/// Discord verification ui
 	var/datum/verification_menu/verification_menu
+
+	///Which ambient sound this client is currently being provided.
+	var/current_ambient_sound

@@ -362,7 +362,7 @@
 		// I could change the network to null but I don't know what would happen, and it seems too hacky for me.
 
 /mob/living/silicon/robot/mode()
-	set name = "Activate Held Object"
+	set name = "Tutulan Nesneyi Kullan"
 	set category = "IC"
 	set src = usr
 

@@ -514,7 +514,7 @@
 
 ///Moves a mob upwards in z level
 /mob/verb/up()
-	set name = "Move Upwards"
+	set name = "Yukarı Yürü"
 	set category = "IC"
 
 	if(remote_control)
@@ -547,7 +547,7 @@
 
 ///Moves a mob down a z level
 /mob/verb/down()
-	set name = "Move Down"
+	set name = "Aşağıya Yürü"
 	set category = "IC"
 
 	if(remote_control)

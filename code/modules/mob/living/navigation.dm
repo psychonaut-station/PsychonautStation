@@ -9,7 +9,7 @@
 	var/list/navigation_images = list()
 
 /mob/living/verb/navigate()
-	set name = "Navigate"
+	set name = "Navigasyon"
 	set category = "IC"
 
 	if(incapacitated())

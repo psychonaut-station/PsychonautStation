@@ -1,6 +1,6 @@
 /mob/verb/pray(msg as text)
 	set category = "IC"
-	set name = "Pray"
+	set name = "Dua Et"
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."), confidential = TRUE)
@@ -45,7 +45,7 @@
 	for(var/client/C in GLOB.admins)
 		if(get_chat_toggles(C) & CHAT_PRAYER)
 			to_chat(C, msg, type = MESSAGE_TYPE_PRAYER, confidential = TRUE)
-	to_chat(usr, span_info("You pray to the gods: \"[msg_tmp]\""), confidential = TRUE)
+	to_chat(usr, span_info("Tanrı'ya \"[msg_tmp]\" duasını ediyorsun..."), confidential = TRUE)
 
 	BLACKBOX_LOG_ADMIN_VERB("Prayer")
 

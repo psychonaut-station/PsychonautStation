@@ -468,7 +468,7 @@
 //mob verbs are a lot faster than object verbs
 //for more info on why this is not atom/pull, see examinate() in mob.dm
 /mob/living/verb/pulled(atom/movable/AM as mob|obj in oview(1))
-	set name = "Pull"
+	set name = "Tut"
 	set category = "Object"
 
 	if(istype(AM) && Adjacent(AM))
@@ -484,7 +484,7 @@
 	update_pull_hud_icon()
 
 /mob/living/verb/stop_pulling1()
-	set name = "Stop Pulling"
+	set name = "Bırak"
 	set category = "IC"
 	stop_pulling()
 
@@ -571,14 +571,14 @@
 // MOB PROCS //END
 
 /mob/living/proc/mob_sleep()
-	set name = "Sleep"
+	set name = "Uyu"
 	set category = "IC"
 
 	if(IsSleeping())
-		to_chat(src, span_warning("You are already sleeping!"))
+		to_chat(src, span_warning("Zaten uyuyorsun!"))
 		return
 	else
-		if(tgui_alert(usr, "You sure you want to sleep for a while?", "Sleep", list("Yes", "No")) == "Yes")
+		if(tgui_alert(usr, "Bir süreliğine uyumak istediğine emin misin?", "Uyu", list("Evet", "Hayır")) == "Evet")
 			SetSleeping(400) //Short nap
 
 
@@ -629,7 +629,7 @@
 		return account
 
 /mob/living/proc/toggle_resting()
-	set name = "Rest"
+	set name = "Dinlen"
 	set category = "IC"
 
 	set_resting(!resting, FALSE)
@@ -1139,7 +1139,7 @@
 	return TRUE
 
 /mob/living/verb/resist()
-	set name = "Resist"
+	set name = "Diren"
 	set category = "IC"
 
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(execute_resist)))
@@ -2730,7 +2730,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	BLACKBOX_LOG_ADMIN_VERB("Give Guardian Spirit")
 
 /mob/living/verb/lookup()
-	set name = "Look Up"
+	set name = "Yukarı Bak"
 	set category = "IC"
 
 	if(looking_vertically)
@@ -2739,7 +2739,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		look_up()
 
 /mob/living/verb/lookdown()
-	set name = "Look Down"
+	set name = "Aşağı Bak"
 	set category = "IC"
 
 	if(looking_vertically)

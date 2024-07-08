@@ -313,21 +313,21 @@ SUBSYSTEM_DEF(shuttle)
 /datum/controller/subsystem/shuttle/proc/canEvac()
 	var/shuttle_refuel_delay = CONFIG_GET(number/shuttle_refuel_delay)
 	if(world.time - SSticker.round_start_time < shuttle_refuel_delay)
-		return "The emergency shuttle is refueling. Please wait [DisplayTimeText(shuttle_refuel_delay - (world.time - SSticker.round_start_time))] before attempting to call."
+		return "Acil durum mekiği yakıt ikmali yapıyor. Lütfen çağırı yapmadan önce [locale_DisplayTimeText(shuttle_refuel_delay - (world.time - SSticker.round_start_time))] bekleyin."
 
 	switch(emergency.mode)
 		if(SHUTTLE_RECALL)
-			return "The emergency shuttle may not be called while returning to CentCom."
+			return "Acil durum mekiği, CentCom'a dönerken çağırılamaz."
 		if(SHUTTLE_CALL)
-			return "The emergency shuttle is already on its way."
+			return "Acil durum mekiği zaten rotasında."
 		if(SHUTTLE_DOCKED)
-			return "The emergency shuttle is already here."
+			return "Acil durum mekiği zaten burada."
 		if(SHUTTLE_IGNITING)
-			return "The emergency shuttle is firing its engines to leave."
+			return "Acil durum mekiği kalkış için hazırlanıyor."
 		if(SHUTTLE_ESCAPE)
-			return "The emergency shuttle is moving away to a safe distance."
+			return "Acil durum mekiği daha güvenli bir rotaya gidiyor."
 		if(SHUTTLE_STRANDED)
-			return "The emergency shuttle has been disabled by CentCom."
+			return "Acil durum mekiği, CentCom tarafından devre dışı bırakıldı."
 
 	return TRUE
 
@@ -360,7 +360,7 @@ SUBSYSTEM_DEF(shuttle)
 		return
 
 	if(length(trim(call_reason)) < CALL_SHUTTLE_REASON_LENGTH && SSsecurity_level.get_current_level_as_number() > SEC_LEVEL_GREEN)
-		to_chat(user, span_alert("You must provide a reason."))
+		to_chat(user, span_alert("Bir sebep belirtmelisin."))
 		return
 
 	var/area/signal_origin = get_area(user)

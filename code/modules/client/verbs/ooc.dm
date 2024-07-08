@@ -193,7 +193,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 	var/admin = check_rights(R_ADMIN, FALSE)
 	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use LOOC."))
+		to_chat(src, span_warning("LOOC özelliğini kullanabilmek için canlı olman gerek."))
 		return
 
 	msg = trim(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
@@ -213,20 +213,19 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
 
 	if (soft_filter_result)
-		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+		if(tgui_alert(usr,"Mesajın \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" kelimesini içeriyor. \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Gerçekten devam etmek istiyor musun?", "Engelli Kelime", list("Evet", "Hayır")) != "Evet")
 			return
 		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
-
 
 	msg = emoji_parse(msg)
 
 	if(!admin)
 		if(!GLOB.looc_allowed)
-			to_chat(src, span_warning("LOOC is globally muted"))
+			to_chat(src, span_warning("LOOC özelliği kapalı."))
 			return
 		if(prefs.muted & MUTE_LOOC)
-			to_chat(src, span_warning("You cannot use LOOC (muted)."))
+			to_chat(src, span_warning("LOOC özelliğini kullanamazsın (susturuldun)."))
 			return
 		if(handle_spam_prevention(raw_msg, MUTE_LOOC))
 			return
@@ -237,12 +236,12 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 			return
 
 	if(is_banned_from(ckey, "LOOC"))
-		to_chat(src, span_warning("You have been banned from LOOC."))
+		to_chat(src, span_warning("LOOC özelliğini kullanman yasak."))
 		return
 
 	var/pref_enable_looc = prefs.read_preference(/datum/preference/toggle/enable_looc)
 	if(!pref_enable_looc)
-		to_chat(src, span_danger("You have LOOC muted."))
+		to_chat(src, span_danger("LOOC özelliği tercih olarak kapalı."))
 		return
 
 	mob.log_talk(raw_msg, LOG_LOOC)
@@ -251,7 +250,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	var/message_admin = span_looc(span_prefix("LOOC: [key_name_admin(usr)]: [msg]"))
 
 	if(admin && isobserver(mob))
-		message = span_looc(span_prefix("LOOC: [usr.client.holder.fakekey ? "Administrator" : usr.client.key]: [msg]"))
+		message = span_looc(span_prefix("LOOC: [usr.client.holder.fakekey ? "Yetkili" : usr.client.key]: [msg]"))
 	else
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
 
@@ -267,14 +266,14 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 
 //Checks admin notice
 /client/verb/admin_notice()
-	set name = "Adminnotice"
+	set name = "Yetkili Notu"
 	set category = "Admin"
-	set desc ="Check the admin notice if it has been set"
+	set desc = "Aktif bir notun varsa görebilirsin"
 
 	if(GLOB.admin_notice)
-		to_chat(src, "[span_boldnotice("Admin Notice:")]\n \t [GLOB.admin_notice]")
+		to_chat(src, "[span_boldnotice("Yetkili Notu:")]\n \t [GLOB.admin_notice]")
 	else
-		to_chat(src, span_notice("There are no admin notices at the moment."))
+		to_chat(src, span_notice("Şu anlık sana yazılmış aktif bir not yok."))
 
 /client/verb/motd()
 	set name = "MOTD"
@@ -288,32 +287,32 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 		to_chat(src, span_notice("The Message of the Day has not been set."))
 
 /client/proc/self_notes()
-	set name = "View Admin Remarks"
+	set name = "Yetkili Notlarını Gör"
 	set category = "OOC"
-	set desc = "View the notes that admins have written about you"
+	set desc = "Yetkililerin senin hakkında ne düşündüklerini gör"
 
 	if(!CONFIG_GET(flag/see_own_notes))
-		to_chat(usr, span_notice("Sorry, that function is not enabled on this server."))
+		to_chat(usr, span_notice("Yetkili notları sunucu bazında aktif değil."))
 		return
 
 	browse_messages(null, usr.ckey, null, TRUE)
 
 /client/proc/self_playtime()
-	set name = "View tracked playtime"
+	set name = "Oyun Süreni Gör"
 	set category = "OOC"
-	set desc = "View the amount of playtime for roles the server has tracked."
+	set desc = "Zaman geçirdiğin mesleklerin süresini gör."
 
 	if(!CONFIG_GET(flag/use_exp_tracking))
-		to_chat(usr, span_notice("Sorry, tracking is currently disabled."))
+		to_chat(usr, span_notice("Oyun süre takibi sunucu bazında aktif değil."))
 		return
 
 	new /datum/job_report_menu(src, usr)
 
 // Ignore verb
 /client/verb/select_ignore()
-	set name = "Ignore"
+	set name = "Engelle"
 	set category = "OOC"
-	set desc ="Ignore a player's messages on the OOC channel"
+	set desc ="Bir kişiyi OOC olarak engelle."
 
 	// Make a list to choose players from
 	var/list/players = list()
@@ -356,7 +355,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	// Check if the list is empty
 	if(!length(players))
 		// Express that there are no players we can ignore in chat
-		to_chat(src, "<span class='infoplain'>There are no other players you can ignore!</span>")
+		to_chat(src, "<span class='infoplain'>Engellemek için biri yok!</span>")
 
 		// Stop running
 		return
@@ -365,7 +364,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	players = sort_list(players)
 
 	// Request the player to ignore
-	var/selection = tgui_input_list(src, "Select a player", "Ignore", players)
+	var/selection = tgui_input_list(src, "Bir Kişi Seç", "Engelle", players)
 
 	// Stop running if we didn't receieve a valid selection
 	if(isnull(selection) || !(selection in players))
@@ -377,7 +376,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	// Check if the selected player is on our ignore list
 	if(selection in prefs.ignoring)
 		// Express that the selected player is already on our ignore list in chat
-		to_chat(src, "<span class='infoplain'>You are already ignoring [selection]!</span>")
+		to_chat(src, "<span class='infoplain'>[selection] adlı kişiyi zaten engelledin!</span>")
 
 		// Stop running
 		return
@@ -389,24 +388,24 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	prefs.save_preferences()
 
 	// Express that we've ignored the selected player in chat
-	to_chat(src, "<span class='infoplain'>You are now ignoring [selection] on the OOC channel.</span>")
+	to_chat(src, "<span class='infoplain'>[selection] adlı kişiyi artık OOC olarak engelledin.</span>")
 
 // Unignore verb
 /client/verb/select_unignore()
-	set name = "Unignore"
+	set name = "Engeli Kaldır"
 	set category = "OOC"
-	set desc = "Stop ignoring a player's messages on the OOC channel"
+	set desc = "OOC engelini kaldır."
 
 	// Check if we've ignored any players
 	if(!length(prefs.ignoring))
 		// Express that we haven't ignored any players in chat
-		to_chat(src, "<span class='infoplain'>You haven't ignored any players!</span>")
+		to_chat(src, "<span class='infoplain'>Zaten hiçbir kişiyi engellemedin!</span>")
 
 		// Stop running
 		return
 
 	// Request the player to unignore
-	var/selection = tgui_input_list(src, "Select a player", "Unignore", prefs.ignoring)
+	var/selection = tgui_input_list(src, "Bir kişi seç", "Engeli Kaldır", prefs.ignoring)
 
 	// Stop running if we didn't receive a selection
 	if(isnull(selection))
@@ -415,7 +414,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	// Check if the selected player is not on our ignore list
 	if(!(selection in prefs.ignoring))
 		// Express that the selected player is not on our ignore list in chat
-		to_chat(src, "<span class='infoplain'>You are not ignoring [selection]!</span>")
+		to_chat(src, "<span class='infoplain'>[selection] engel listende değil!</span>")
 
 		// Stop running
 		return
@@ -427,26 +426,26 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	prefs.save_preferences()
 
 	// Express that we've unignored the selected player in chat
-	to_chat(src, "<span class='infoplain'>You are no longer ignoring [selection] on the OOC channel.</span>")
+	to_chat(src, "<span class='infoplain'>[selection] adlı kişinin engeli kalktı.</span>")
 
 /client/proc/show_previous_roundend_report()
-	set name = "Your Last Round"
+	set name = "Son Roundun"
 	set category = "OOC"
-	set desc = "View the last round end report you've seen"
+	set desc = "Sunucuda en son bulunduğun roundun bitiş bilgilerini gör"
 
 	SSticker.show_roundend_report(src, report_type = PERSONAL_LAST_ROUND)
 
 /client/proc/show_servers_last_roundend_report()
-	set name = "Server's Last Round"
+	set name = "Sunucunun Son Roundu"
 	set category = "OOC"
-	set desc = "View the last round end report from this server"
+	set desc = "En son roundun bitiş bilgilerini gör"
 
 	SSticker.show_roundend_report(src, report_type = SERVER_LAST_ROUND)
 
 /client/verb/fit_viewport()
-	set name = "Fit Viewport"
+	set name = "Görüşü Düzelt"
 	set category = "OOC"
-	set desc = "Fit the width of the map window to match the viewport"
+	set desc = "Görüş alanını pencerenin oranı ile eşitler."
 
 	// Fetch aspect ratio
 	var/view_size = getviewsize(view)
@@ -523,27 +522,6 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	else //Delayed to avoid wingets from Login calls.
 		addtimer(CALLBACK(src, VERB_REF(fit_viewport), 1 SECONDS))
 
-/client/verb/policy()
-	set name = "Show Policy"
-	set desc = "Show special server rules related to your current character."
-	set category = "OOC"
-
-	//Collect keywords
-	var/list/keywords = mob.get_policy_keywords()
-	var/header = get_policy(POLICY_VERB_HEADER)
-	var/list/policytext = list(header,"<hr>")
-	var/anything = FALSE
-	for(var/keyword in keywords)
-		var/p = get_policy(keyword)
-		if(p)
-			policytext += p
-			policytext += "<hr>"
-			anything = TRUE
-	if(!anything)
-		policytext += "No related rules found."
-
-	usr << browse(policytext.Join(""),"window=policy")
-
 /client/verb/fix_stat_panel()
 	set name = "Fix Stat Panel"
 	set hidden = TRUE
@@ -551,8 +529,8 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	init_verbs()
 
 /client/proc/export_preferences()
-	set name = "Export Preferences"
-	set desc = "Export your current preferences to a file."
+	set name = "Verilerini Dışa Aktar"
+	set desc = "Karakter verilerini bir JSON dosyasına aktar."
 	set category = "OOC"
 
 	ASSERT(prefs, "User attempted to export preferences while preferences were null!") // what the fuck

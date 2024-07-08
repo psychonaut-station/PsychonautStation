@@ -1,7 +1,6 @@
 /client/verb/verify_in_discord()
 	set category = "OOC"
-	set name = "Verify Discord Account"
-	set desc = "Verify your discord account with your BYOND account"
+	set name = "Discord Hesabını Doğrula"
 
 	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))

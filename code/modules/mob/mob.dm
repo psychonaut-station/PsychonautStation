@@ -489,7 +489,7 @@
  * for why this isn't atom/verb/examine()
  */
 /mob/verb/examinate(atom/examinify as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
-	set name = "Examine"
+	set name = "İncele"
 	set category = "IC"
 
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), examinify))
@@ -689,7 +689,7 @@
  * Calls attack self on the item and updates the inventory hud for hands
  */
 /mob/verb/mode()
-	set name = "Activate Held Object"
+	set name = "Tutulan Nesneyi Kullan"
 	set category = "Object"
 	set src = usr
 
@@ -719,7 +719,7 @@
  * Only works if flag/allow_respawn is allowed in config
  */
 /mob/verb/abandon_mob()
-	set name = "Respawn"
+	set name = "Yeniden Canlan"
 	set category = "OOC"
 
 	switch(CONFIG_GET(flag/allow_respawn))
@@ -787,7 +787,7 @@
  * Sometimes helps if the user is stuck in another perspective or camera
  */
 /mob/verb/cancel_camera()
-	set name = "Cancel Camera View"
+	set name = "Perspektifi Düzelt"
 	set category = "OOC"
 	reset_perspective(null)
 
@@ -1410,7 +1410,7 @@
 
 ///Show the language menu for this mob
 /mob/verb/open_language_menu_verb()
-	set name = "Open Language Menu"
+	set name = "Dil Menüsünü Aç"
 	set category = "IC"
 
 	get_language_holder().open_language_menu(usr)
@@ -1534,13 +1534,13 @@
 
 ///Shows a tgui window with memories
 /mob/verb/memory()
-	set name = "Memories"
+	set name = "Hatıraların"
 	set category = "IC"
-	set desc = "View your character's memories."
+	set desc = "Karakterinin hatıralarını incele."
 	if(!mind)
-		var/fail_message = "You have no mind!"
+		var/fail_message = "Bir zihnin yok!"
 		if(isobserver(src))
-			fail_message += " You have to be in the current round at some point to have one."
+			fail_message += " Zihne sahip olmak için mevcut turda olman gerek."
 		to_chat(src, span_warning(fail_message))
 		return
 	if(!mind.memory_panel)
@@ -1589,7 +1589,7 @@
 
 /mob/verb/view_skills()
 	set category = "IC"
-	set name = "View Skills"
+	set name = "Becerilerini Gör"
 
 	mind?.print_levels(src)
 

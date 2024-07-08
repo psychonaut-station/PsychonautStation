@@ -1195,16 +1195,15 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	observer.ManualFollow(target)
 
 /client/verb/stop_client_sounds()
-	set name = "Stop Sounds"
+	set name = "Sesleri Sustur"
 	set category = "OOC"
-	set desc = "Stop Current Sounds"
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
 	tgui_panel?.destroy_all_jukebox()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
 /client/verb/toggle_fullscreen()
-	set name = "Toggle Fullscreen"
+	set name = "Tam Ekran Modu"
 	set category = "OOC"
 
 	fullscreen = !fullscreen
@@ -1224,7 +1223,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		winset(usr, "mainwindow", "on-size=attempt_auto_fit_viewport")
 
 /client/verb/toggle_status_bar()
-	set name = "Toggle Status Bar"
+	set name = "Durum Barını Göster"
 	set category = "OOC"
 
 	show_status_bar = !show_status_bar
@@ -1250,29 +1249,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(length(GLOB.admins) > 0 || !SSticker.IsRoundInProgress()) // We only want to report this stuff if we are currently playing.
 		return
 
-	var/list/message_to_send = list()
-	var/static/list/cheesy_messages = null
-
-	if (isnull(cheesy_messages))
-		cheesy_messages = list(
-			"Forever alone :(",
-			"I have no admins online!",
-			"I need a hug :(",
-			"I need someone on me :(",
-			"I want a man :(",
-			"I'm all alone :(",
-			"I'm feeling lonely :(",
-			"I'm so lonely :(",
-			"Someone come hold me :(",
-			"What happened? Where has everyone gone?",
-			"Where has everyone gone?",
-			"Why does nobody love me? :(",
-		)
-
-	message_to_send += pick(cheesy_messages)
-	message_to_send += "(No admins online)"
-
-	send2adminchat("Server", jointext(message_to_send, " "))
+	send2adminchat("Server", "(No admins online)")
 
 #undef ADMINSWARNED_AT
 #undef CURRENT_MINUTE

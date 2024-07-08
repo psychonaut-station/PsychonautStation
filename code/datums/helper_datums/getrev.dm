@@ -53,8 +53,7 @@
 
 /client/verb/showrevinfo()
 	set category = "OOC"
-	set name = "Show Server Revision"
-	set desc = "Check the current server code revision"
+	set name = "Sunucu Bilgilerini Gör"
 
 	var/list/msg = list("")
 	// Round ID

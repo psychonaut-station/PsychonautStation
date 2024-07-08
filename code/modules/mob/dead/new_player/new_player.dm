@@ -358,7 +358,7 @@
 
 ///Resets the Lobby Menu HUD, recreating and reassigning it to the new player
 /mob/dead/new_player/proc/reset_menu_hud()
-	set name = "Reset Lobby Menu HUD"
+	set name = "Lobi Menüsünü Yenile"
 	set category = "OOC"
 	var/mob/dead/new_player/new_player = usr
 	if(!COOLDOWN_FINISHED(new_player, reset_hud_cooldown))

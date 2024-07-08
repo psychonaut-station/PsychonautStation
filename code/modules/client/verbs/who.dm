@@ -2,10 +2,10 @@
 #define NO_ADMINS_ONLINE_MESSAGE "Ticketlar TGS aracılığıyla Discord'a da gönderilir. Oyunda hiçbir yetkili yoksa, bir ticket gönderildiğinde yine de fark edilebilir ve yanıt verilebilir."
 
 /client/verb/who()
-	set name = "Who"
+	set name = "Oyuncu Listesi"
 	set category = "OOC"
 
-	var/msg = "<b>Current Players:</b>\n"
+	var/msg = "<b>Oyuncular:</b>\n"
 
 	var/list/Lines = list()
 	var/columns_per_row = DEFAULT_WHO_CELLS_PER_ROW
@@ -66,7 +66,7 @@
 			msg += "</tr><tr>"
 	msg += "</tr></table>"
 
-	msg += "<b>Total Players: [length(Lines)]</b>"
+	msg += "<b>Toplam: [length(Lines)]</b>"
 	to_chat(src, "<span class='infoplain'>[msg]</span>")
 
 /client/verb/adminwho()

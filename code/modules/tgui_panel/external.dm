@@ -9,7 +9,7 @@
  * tgui panel / chat troubleshooting verb
  */
 /client/verb/fix_tgui_panel()
-	set name = "Fix chat"
+	set name = "Sohbeti Düzelt"
 	set category = "OOC"
 	var/action
 	log_tgui(src, "Started fixing.", context = "verb/fix_tgui_panel")
@@ -17,8 +17,8 @@
 	nuke_chat()
 
 	// Failed to fix, using tgalert as fallback
-	action = tgalert(src, "Did that work?", "", "Yes", "No, switch to old ui")
-	if (action == "No, switch to old ui")
+	action = tgalert(src, "Düzeldi mi?", "", "Yes", "Hayır")
+	if (action != "Evet")
 		winset(src, "output", "on-show=&is-disabled=0&is-visible=1")
 		winset(src, "browseroutput", "is-disabled=1;is-visible=0")
 		log_tgui(src, "Failed to fix.", context = "verb/fix_tgui_panel")
@@ -37,7 +37,7 @@
 	winset(src, "browseroutput", "is-disabled=0;is-visible=1")
 
 /client/verb/refresh_tgui()
-	set name = "Refresh TGUI"
+	set name = "TGUI'ı Yenile"
 	set category = "OOC"
 
 	for(var/window_id in tgui_windows)

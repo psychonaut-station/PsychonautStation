@@ -200,7 +200,7 @@ SUBSYSTEM_DEF(vote)
 	// No valid vote found? No vote
 	if(!istype(to_vote))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("Invalid voting choice."))
+			to_chat(vote_initiator, span_warning("Geçersiz oy seçeneği."))
 		return FALSE
 
 	// Vote can't be initiated in our circumstances? No vote
@@ -227,13 +227,13 @@ SUBSYSTEM_DEF(vote)
 
 	log_vote(to_display)
 	to_chat(world, span_infoplain(vote_font("\n[span_bold(to_display)]\n\
-		Type <b>vote</b> or click <a href='byond://winset?command=vote'>here</a> to place your votes.\n\
-		You have [DisplayTimeText(duration)] to vote.")))
+		Oy kullanmak için <a href='byond://winset?command=vote'>BURAYA</a> tıkla.\n\
+		[locale_DisplayTimeText(duration)] içinde sonuçlar açıklanacak.")))
 
 	// And now that it's going, give everyone a voter action
 	for(var/client/new_voter as anything in GLOB.clients)
 		var/datum/action/vote/voting_action = new()
-		voting_action.name = "Vote: [current_vote.override_question || current_vote.name]"
+		voting_action.name = "Oylama: [current_vote.override_question || current_vote.name]"
 		voting_action.Grant(new_voter.mob)
 
 		new_voter.player_details.player_actions += voting_action
@@ -256,7 +256,7 @@ SUBSYSTEM_DEF(vote)
 	// Even if it's forced we can't vote before we're set up
 	if(!MC_RUNNING(init_stage))
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("You cannot start a vote now, the server is not done initializing."))
+			to_chat(vote_initiator, span_warning("Şu anda bir oylama başlatamazsın, sunucu daha hazır değil!"))
 		return FALSE
 
 	if(forced)
@@ -265,12 +265,12 @@ SUBSYSTEM_DEF(vote)
 	var/next_allowed_time = last_vote_time + CONFIG_GET(number/vote_delay)
 	if(next_allowed_time > world.time)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("A vote was initiated recently. You must wait [DisplayTimeText(next_allowed_time - world.time)] before a new vote can be started!"))
+			to_chat(vote_initiator, span_warning("Yeni bir oylama başlatman için [locale_DisplayTimeText(next_allowed_time - world.time)] beklemelisin."))
 		return FALSE
 
 	if(current_vote)
 		if(vote_initiator)
-			to_chat(vote_initiator, span_warning("There is already a vote in progress! Please wait for it to finish."))
+			to_chat(vote_initiator, span_warning("Devam eden bir oylama zaten var! Bitmesi için bekle."))
 		return FALSE
 
 	return TRUE
@@ -423,17 +423,17 @@ SUBSYSTEM_DEF(vote)
 /// Mob level verb that allows players to vote on the current vote.
 /mob/verb/vote()
 	set category = "OOC"
-	set name = "Vote"
+	set name = "Oy Kullan"
 
 	if(!SSvote.initialized)
-		to_chat(usr, span_notice("<i>Voting is not set up yet!</i>"))
+		to_chat(usr, span_notice("<i>Şu an oy kullanamazın, tekrar dene.</i>"))
 		return
 
 	SSvote.ui_interact(usr)
 
 /// Datum action given to mobs that allows players to vote on the current vote.
 /datum/action/vote
-	name = "Vote!"
+	name = "Oy Kullan!"
 	button_icon_state = "vote"
 	show_to_observers = FALSE
 

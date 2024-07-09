@@ -373,9 +373,6 @@
       pod,  Humpback emergency shuttle, Pubby monastery shuttle, Birdboat emergency
       shuttle, Birdshot emergency shuttle'
 2024-07-06:
-  Seefaaa:
-  - bugfix: "Animal rol\xFCn\xFCn s\xFCresi art\u0131k takip edilecek"
-  - bugfix: "Kargo borgunun emag e\u015Fyas\u0131 \xE7al\u0131\u015Fmaya devam edecek"
   00-Steven:
   - image: Goody case locked/unlocked sprites have been swapped again, having a gap
       for unlocked and no gap for locked.
@@ -394,6 +391,9 @@
   OrionTheFox:
   - image: fixed and touched up the icons for the Doorjack and Cryptographic Sequencer
       (EMAG)
+  Seefaaa:
+  - bugfix: "Animal rol\xFCn\xFCn s\xFCresi art\u0131k takip edilecek"
+  - bugfix: "Kargo borgunun emag e\u015Fyas\u0131 \xE7al\u0131\u015Fmaya devam edecek"
   Seven:
   - balance: Bloody footprint trails go a longer distance now.
   SyncIt21:
@@ -409,3 +409,6 @@
       variant
   necromanceranne:
   - balance: Settlers are a bit slower on their steeds.
+2024-07-09:
+  exdal:
+  - rscdel: Ministation kaldirildi

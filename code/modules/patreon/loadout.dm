@@ -8,33 +8,39 @@
 	return ..()
 
 /datum/loadout_item/head/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/head/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 // Testing
 /datum/loadout_item/head/delinquent_cap
-	donator_only = TRUE
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/loadout_item/glasses/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/glasses/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/loadout_item/accessory/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/accessory/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/loadout_item/neck/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/neck/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/loadout_item/inhand/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/inhand/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/loadout_item/pocket_items/donator
-	donator_only = TRUE
+	abstract_type = /datum/loadout_item/pocket_items/donator
 	additional_displayed_text = list("Patreon")
+	donator_only = TRUE
 
 /datum/preference_middleware/loadout/select_item(datum/loadout_item/selected_item)
 	if(selected_item.donator_only && !is_patron(preferences.parent))

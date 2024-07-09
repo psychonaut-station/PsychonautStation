@@ -23,7 +23,7 @@
 					var/datum/http_response/response = request.into_response()
 
 					if(!response.errored && response.status_code == 200)
-						var/list/json = json_decode(response["body"])
+						var/list/json = json_decode(response.body)
 						if(json["patron"])
 							client.patron = TRUE
 						else

@@ -8,32 +8,33 @@ GLOBAL_LIST_INIT(patrons, init_patrons())
 	set waitfor = 0
 
 	var/endpoint = CONFIG_GET(string/patreonendpoint)
-	if(endpoint)
-		for(var/discord_id in patrons)
-			var/datum/http_request/request = new ()
-			request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?discord_id=[discord_id]")
-			request.begin_async()
+	if(!endpoint)
+		return
 
-			UNTIL(request.is_complete())
+	for(var/ckey in patrons)
+		var/datum/http_request/request = new ()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[ckey]")
+		request.begin_async()
 
-			var/datum/http_response/response = request.into_response()
+		UNTIL(request.is_complete())
 
-			if(!response.errored && response.status_code == 200)
-				var/list/json = json_decode(response.body)
-				if(!json["patron"])
-					patrons -= discord_id
+		var/datum/http_response/response = request.into_response()
+
+		if(!response.errored && response.status_code == 200)
+			var/list/json = json_decode(response.body)
+			if(!json["patron"])
+				patrons -= ckey
 
 /proc/is_patron(client/client, ignore_localhost = FALSE)
+	if(isnull(client))
+		return FALSE
+
 	if(istype(client, /mob))
 		var/mob/mob = client
 		client = mob.client
 
-	if(isnull(client))
-		return FALSE
-
 	if(isnull(client.patron))
-		var/discord_id = SSdiscord.lookup_id(client.ckey)
-		if(discord_id in GLOB.patrons)
+		if(client.ckey in GLOB.patrons)
 			client.patron = TRUE
 		else if(!ignore_localhost && client.is_localhost())
 			client.patron = TRUE

@@ -39,6 +39,9 @@
 	lookup(TRUE)
 
 /datum/verification_menu/proc/lookup(initialization = FALSE)
+	if(isnull(holder))
+		return
+
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 	var/update = FALSE
 
@@ -61,14 +64,14 @@
 			SSdiscord.reverify_cache[holder.ckey] = token
 
 		holder.patron = FALSE
-		if(discord_id in GLOB.patrons)
-			GLOB.patrons -= discord_id
+		if(holder.ckey in GLOB.patrons)
+			GLOB.patrons -= holder.ckey
 
 	if(update)
 		update_static_data(holder.mob)
 
 /datum/verification_menu/proc/fetch_discord()
-	var/datum/http_request/request = new()
+	var/datum/http_request/request = new ()
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/discorduserendpoint)]/[discord_id]", headers = list("Authorization" = "Bot [CONFIG_GET(string/discordbottoken)]"))
 	request.begin_async()
 
@@ -84,24 +87,26 @@
 
 /datum/verification_menu/proc/fetch_patreon()
 	var/endpoint = CONFIG_GET(string/patreonendpoint)
-	if(endpoint)
-		var/datum/http_request/request = new ()
-		request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?discord_id=[discord_id]")
-		request.begin_async()
+	if(!endpoint)
+		return
 
-		UNTIL(request.is_complete())
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[holder.ckey]")
+	request.begin_async()
 
-		var/datum/http_response/response = request.into_response()
+	UNTIL(request.is_complete())
 
-		if(!response.errored && response.status_code == 200)
-			var/list/json = json_decode(response.body)
-			if(json["patron"])
-				holder.patron = TRUE
-				GLOB.patrons |= discord_id
-			else
-				holder.patron = FALSE
-				if(discord_id in GLOB.patrons)
-					GLOB.patrons -= discord_id
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		var/list/json = json_decode(response.body)
+		if(json["patron"])
+			holder.patron = TRUE
+			GLOB.patrons |= holder.ckey
+		else
+			holder.patron = FALSE
+			if(holder.ckey in GLOB.patrons)
+				GLOB.patrons -= holder.ckey
 
 /datum/verification_menu/proc/can_refresh()
 	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE

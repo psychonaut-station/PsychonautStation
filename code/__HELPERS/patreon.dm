@@ -1,8 +1,11 @@
 GLOBAL_LIST_INIT(patrons, init_patrons())
 
 /proc/init_patrons()
-	. = world.file2list("data/patrons.txt")
-	after_init_patrons(.)
+	if(fexists("data/patrons.txt"))
+		. = world.file2list("data/patrons.txt")
+		after_init_patrons(.)
+	else
+		. = list()
 
 /proc/after_init_patrons(list/patrons)
 	set waitfor = 0

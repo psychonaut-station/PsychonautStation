@@ -23,7 +23,6 @@
 /datum/verification_menu
 	var/client/holder
 	var/last_refresh = 0
-	var/linked = FALSE
 	var/token
 	var/discord_id
 	var/display_name
@@ -41,10 +40,14 @@
 
 /datum/verification_menu/proc/lookup()
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
+	var/update = FALSE
+
+	if(src.discord_id != discord_id)
+		update = TRUE
+
+	src.discord_id = discord_id
 
 	if(discord_id)
-		src.discord_id = discord_id
-		linked = TRUE
 		fetch()
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
@@ -54,6 +57,9 @@
 		else
 			token = SSdiscord.get_or_generate_one_time_token_for_ckey(holder.ckey)
 			SSdiscord.reverify_cache[holder.ckey] = token
+
+	if(update)
+		update_static_data(holder.mob)
 
 /datum/verification_menu/proc/fetch()
 	var/datum/http_request/request = new()
@@ -84,17 +90,18 @@
 
 /datum/verification_menu/ui_data(mob/user)
 	. = ..()
-	if(linked)
-		.["linked"] = TRUE
-		.["display_name"] = display_name
-		.["username"] = username
-		.["discriminator"] = discriminator
-	else
-		.["token"] = token
 	.["refresh"] = can_refresh()
 
 /datum/verification_menu/ui_static_data(mob/user)
 	. = ..()
+	if(discord_id)
+		.["linked"] = TRUE
+		.["display_name"] = display_name
+		.["username"] = username
+		.["discriminator"] = discriminator
+		.["patron"] = is_patron(holder, TRUE, TRUE)
+	else
+		.["token"] = token
 	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)
 
 /datum/verification_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)

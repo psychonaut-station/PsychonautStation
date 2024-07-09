@@ -36,9 +36,9 @@
 		var/mob/mob_user = user
 		holder = mob_user.client
 
-	lookup()
+	lookup(TRUE)
 
-/datum/verification_menu/proc/lookup()
+/datum/verification_menu/proc/lookup(initialization = FALSE)
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 	var/update = FALSE
 
@@ -48,7 +48,9 @@
 	src.discord_id = discord_id
 
 	if(discord_id)
-		fetch()
+		fetch_discord()
+		if(!initialization)
+			fetch_patreon()
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
 
@@ -58,10 +60,14 @@
 			token = SSdiscord.get_or_generate_one_time_token_for_ckey(holder.ckey)
 			SSdiscord.reverify_cache[holder.ckey] = token
 
+		holder.patron = FALSE
+		if(discord_id in GLOB.patrons)
+			GLOB.patrons -= discord_id
+
 	if(update)
 		update_static_data(holder.mob)
 
-/datum/verification_menu/proc/fetch()
+/datum/verification_menu/proc/fetch_discord()
 	var/datum/http_request/request = new()
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/discorduserendpoint)]/[discord_id]", headers = list("Authorization" = "Bot [CONFIG_GET(string/discordbottoken)]"))
 	request.begin_async()
@@ -75,6 +81,27 @@
 		display_name = json["global_name"]
 		username = json["username"]
 		discriminator = json["discriminator"]
+
+/datum/verification_menu/proc/fetch_patreon()
+	var/endpoint = CONFIG_GET(string/patreonendpoint)
+	if(endpoint)
+		var/datum/http_request/request = new ()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?discord_id=[discord_id]")
+		request.begin_async()
+
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+
+		if(!response.errored && response.status_code == 200)
+			var/list/json = json_decode(response.body)
+			if(json["patron"])
+				holder.patron = TRUE
+				GLOB.patrons |= discord_id
+			else
+				holder.patron = FALSE
+				if(discord_id in GLOB.patrons)
+					GLOB.patrons -= discord_id
 
 /datum/verification_menu/proc/can_refresh()
 	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE
@@ -99,7 +126,7 @@
 		.["display_name"] = display_name
 		.["username"] = username
 		.["discriminator"] = discriminator
-		.["patron"] = is_patron(holder, TRUE, TRUE)
+		.["patron"] = is_patron(user, TRUE)
 	else
 		.["token"] = token
 	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)

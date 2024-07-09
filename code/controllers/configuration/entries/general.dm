@@ -345,7 +345,7 @@
 	default = "https://discord.com/api/v10/users"
 
 /datum/config_entry/string/patreonendpoint
-	default = "https://api.turkb.us/v2/patreon?discord_id="
+	default = "https://api.turkb.us/v2/patreon"
 
 /datum/config_entry/string/roundstatsurl
 

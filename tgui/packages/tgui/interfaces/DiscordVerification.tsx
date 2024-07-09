@@ -79,8 +79,8 @@ export const DiscordVerification = () => {
           <Box mb={1}>
             Bizi Patreon&apos;dan destekleyerek ayrıcalıklardan
             faydalanabilirsin. Oyun içerisinde Patreon destekçisi sayılmak için
-            destekçilere özel olan Discord rolünü alıp Discord hesabını bağlaman
-            yeterli olacaktır.
+            destekçilere özel olan Discord rolünü alıp Discord hesabını
+            bağladıktan sonra sağ üstten yenile.
           </Box>
         </Section>
       </Window.Content>

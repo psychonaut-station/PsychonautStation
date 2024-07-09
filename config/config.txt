@@ -202,7 +202,7 @@ IPINTEL_REJECT_BAD
 # DISCORDUSERENDPOINT https://discord.com/api/v10/users
 
 ## Used in is_patron helper
-# PATREONENDPOINT https://api.turkb.us/v2/patreon?discord_id=
+# PATREONENDPOINT https://api.turkb.us/v2/patreon
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

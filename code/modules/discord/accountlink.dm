@@ -65,7 +65,7 @@
 	var/datum/http_response/response = request.into_response()
 
 	if(!response.errored && response.status_code == 200)
-		var/list/json = json_decode(response["body"])
+		var/list/json = json_decode(response.body)
 		display_name = json["global_name"]
 		username = json["username"]
 		discriminator = json["discriminator"]

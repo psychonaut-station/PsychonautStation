@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Verify Discord Account ekranı düzeltildi"

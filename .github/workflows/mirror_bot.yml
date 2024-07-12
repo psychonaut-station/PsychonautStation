@@ -10,7 +10,7 @@ permissions:
   pull-requests: write
 
 env:
-  pr_title: \[MDB IGNORE\] \[IDB IGNORE\] Upstream mirror
+  pr_title: '[MDB IGNORE] [IDB IGNORE] Upstream mirror'
   pr_body: This is an automated pull request to merge the latest changes from the upstream repository.
   pr_branch: mirror
   pr_label: mirror

@@ -90,13 +90,6 @@
 		/mob/living/simple_animal/slime/random,
 		/mob/living/simple_animal/slime/transformed_slime,
 		/mob/living/simple_animal/soulscythe,
-		/mob/living/simple_animal/hostile/zombie/shit_sec,
-		/mob/living/simple_animal/hostile/zombie/toolbox_guy,
-		/mob/living/simple_animal/hostile/zombie/honk_runner,
-		/mob/living/simple_animal/hostile/zombie/felind_doc,
-		/mob/living/simple_animal/hostile/zombie/soldier_boss,
-		/mob/living/simple_animal/hostile/zombie/pirate_rarr,
-		/mob/living/simple_animal/hostile/megafauna/tank,
 		// DO NOT ADD NEW ENTRIES TO THIS LIST
 		// READ THE COMMENT ABOVE
 	)

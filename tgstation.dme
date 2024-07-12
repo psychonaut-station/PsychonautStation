@@ -5030,7 +5030,6 @@
 #include "code\modules\mob\living\simple_animal\hostile\megafauna\drake.dm"
 #include "code\modules\mob\living\simple_animal\hostile\megafauna\hierophant.dm"
 #include "code\modules\mob\living\simple_animal\hostile\megafauna\legion.dm"
-#include "code\modules\mob\living\simple_animal\hostile\megafauna\tank.dm"
 #include "code\modules\mob\living\simple_animal\hostile\megafauna\wendigo.dm"
 #include "code\modules\mob\living\simple_animal\hostile\mining_mobs\curse_blob.dm"
 #include "code\modules\mob\living\simple_animal\hostile\mining_mobs\mining_mobs.dm"

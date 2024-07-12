@@ -409,14 +409,6 @@
       variant
   necromanceranne:
   - balance: Settlers are a bit slower on their steeds.
-<<<<<<< HEAD
-2024-07-09:
-  exdal:
-  - rscdel: Ministation kaldirildi
-2024-07-12:
-  Seefaaa:
-  - bugfix: "Verify Discord Account ekran\u0131 d\xFCzeltildi"
-=======
 2024-07-07:
   Holoo-1:
   - bugfix: fixed ninja's adrenaline boost module not being rechargable
@@ -524,6 +516,8 @@
   - balance: Mirage module has been removed from Sec modsuits.
   - balance: Security modsuits now spawn with a better cell and the jetpack module
       preinstalled.
+  exdal:
+  - rscdel: Ministation kaldirildi
   FernandoJ8:
   - bugfix: humanoid species featured are randomized correctly once again
   Ghommie:
@@ -717,6 +711,8 @@
   - qol: Roundstart Mannitol pills are 15u (up from 14u)
   OrionTheFox:
   - image: re-sprited Catwalk Floor Tiles to fit with TG floor tiles
+  Seefaaa:
+  - bugfix: "Verify Discord Account ekran\u0131 d\xFCzeltildi"
   Singul0:
   - qol: adds an oxygen chamber for wawastation ordnance
   - qol: adds some missing critical items needed to do ordnance and xenobiology
@@ -757,4 +753,3 @@
   zoomachina:
   - balance: bluespace navigation gigabeacons are now unlocked with Applied Bluespace
       Research
->>>>>>> upstream/master

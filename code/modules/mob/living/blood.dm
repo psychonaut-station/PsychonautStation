@@ -349,7 +349,6 @@
 	if(safe)
 		. = safe
 
-<<<<<<< HEAD
 /mob/proc/get_exotic_blood_drop()
 	return
 
@@ -371,7 +370,7 @@
 	switch (dna.species.exotic_blood)
 		if (/datum/reagent/fuel/oil)
 			return /obj/effect/decal/cleanable/oil/streak
-=======
+
 /**
  * Returns TRUE if src is compatible with donor's blood, otherwise FALSE.
  * * donor: Carbon mob, the one that is donating blood.
@@ -380,7 +379,6 @@
 	var/patient_blood_data = get_blood_data(get_blood_id())
 	var/donor_blood_data = donor.get_blood_data(donor.get_blood_id())
 	return donor_blood_data["blood_type"] in get_safe_blood(patient_blood_data["blood_type"])
->>>>>>> upstream/master
 
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/T, small_drip)

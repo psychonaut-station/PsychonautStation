@@ -191,39 +191,9 @@
 	text_gain_indication = span_notice("Ye feel like a reet prat like, innit?")
 	text_lose_indication = span_notice("You no longer feel like being rude and sassy.")
 
-<<<<<<< HEAD
-/datum/mutation/human/chav/on_acquiring(mob/living/carbon/human/owner)
-	if(..())
-		return
-	RegisterSignal(owner, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-
-/datum/mutation/human/chav/on_losing(mob/living/carbon/human/owner)
-	if(..())
-		return
-	UnregisterSignal(owner, COMSIG_MOB_SAY)
-
-/datum/mutation/human/chav/proc/handle_speech(datum/source, list/speech_args)
-	SIGNAL_HANDLER
-
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message[1] != "*")
-		message = " [message]"
-		var/list/chav_words = strings("chav_replacement.json", "chav")
-
-		for(var/key in chav_words)
-			var/value = chav_words[key]
-			if(islist(value))
-				value = pick(value)
-
-			message = replacetextEx(message, " [uppertext(key)]", " [uppertext(value)]")
-			message = replacetextEx(message, " [capitalize(key)]", " [capitalize(value)]")
-			message = replacetextEx(message, " [key]", " [value]")
-		speech_args[SPEECH_MESSAGE] = trim(message)
-=======
 /datum/mutation/human/chav/New(class, timer, datum/mutation/human/copymut)
 	. = ..()
-	AddComponent(/datum/component/speechmod, replacements = strings("chav_replacement.json", "chav"), end_string = ", mate", end_string_chance = 30)
->>>>>>> upstream/master
+	AddComponent(/datum/component/speechmod, replacements = strings("chav_replacement.json", "chav"), end_string = "", end_string_chance = 0)
 
 /datum/mutation/human/elvis
 	name = "Elvis"

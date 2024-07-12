@@ -112,8 +112,6 @@
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
-<<<<<<< HEAD
-=======
 /datum/crafting_recipe/arrow
 	name = "Arrow"
 	result = /obj/item/ammo_casing/arrow
@@ -142,20 +140,10 @@
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
-
->>>>>>> upstream/master
 /datum/crafting_recipe/holy_arrow
 	name = "Holy Arrow"
 	result = /obj/item/ammo_casing/arrow/holy
 	reqs = list(
-<<<<<<< HEAD
-		/obj/item/stack/sheet/mineral/wood = 5,
-		/obj/item/stack/sheet/iron = 2,
-		/datum/reagent/water/holywater = 10,
-	)
-	tool_paths = list(/obj/item/gun/ballistic/bow/divine)
-	category = CAT_WEAPON_AMMO
-=======
 		/obj/item/ammo_casing/arrow = 1,
 		/datum/reagent/water/holywater = 10,
 	)
@@ -165,4 +153,3 @@
 	time = 5 SECONDS
 	category = CAT_WEAPON_AMMO
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
->>>>>>> upstream/master

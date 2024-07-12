@@ -1688,10 +1688,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/science/robotics/lab)
-"aAf" = (
-/obj/machinery/incident_display/delam,
-/turf/closed/wall/r_wall,
-/area/station/command/bridge)
 "aAi" = (
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/table/wood/fancy/red,
@@ -41623,6 +41619,7 @@
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/machinery/incident_display/bridge/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "mDw" = (
@@ -48119,6 +48116,7 @@
 "oxe" = (
 /obj/machinery/computer/cargo/request,
 /obj/effect/turf_decal/tile/brown/half/contrasted,
+/obj/machinery/incident_display/bridge/directional/north,
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "oxh" = (
@@ -58243,6 +58241,10 @@
 /area/station/hallway/secondary/service)
 "rrf" = (
 /obj/structure/table/wood,
+/obj/item/storage/crayons,
+/obj/item/storage/fancy/candle_box{
+	pixel_y = 5
+	},
 /turf/open/floor/iron/dark,
 /area/station/service/chapel/office)
 "rrl" = (
@@ -67099,6 +67101,9 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/science)
+"ubh" = (
+/turf/open/openspace/xenobio,
+/area/station/science/xenobiology)
 "ubi" = (
 /turf/open/misc/asteroid/snow/coldroom,
 /area/icemoon/underground/explored)
@@ -67784,9 +67789,8 @@
 /turf/open/floor/plating,
 /area/station/security/prison/safe)
 "ulE" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 1;
-	piping_layer = 2
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
+	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/science/ordnance)
@@ -67900,6 +67904,7 @@
 /obj/structure/chair{
 	dir = 4
 	},
+/obj/structure/sign/departments/exodrone/directional/west,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "unO" = (
@@ -73683,12 +73688,8 @@
 /turf/open/floor/plating,
 /area/station/science/xenobiology)
 "wgu" = (
-/obj/structure/table/wood,
-/obj/item/storage/fancy/candle_box{
-	pixel_y = 5
-	},
-/obj/item/storage/crayons,
 /obj/machinery/newscaster/directional/west,
+/obj/effect/spawner/random/structure/twelve_percent_spirit_board,
 /turf/open/floor/iron/grimy,
 /area/station/service/chapel/office)
 "wgG" = (
@@ -242619,7 +242620,7 @@ xwC
 utR
 pAZ
 bln
-aAf
+qWZ
 oxe
 vmj
 aqB
@@ -254472,12 +254473,12 @@ wHc
 aEA
 dng
 dAB
-ily
-ily
-ily
-ily
-ily
-ily
+ubh
+ubh
+ubh
+ubh
+ubh
+ubh
 qLY
 pnA
 qFp
@@ -254729,12 +254730,12 @@ wHc
 fPO
 pTU
 itt
-ily
-ily
-ily
-ily
-ily
-ily
+ubh
+ubh
+ubh
+ubh
+ubh
+ubh
 qLY
 baF
 fvk
@@ -254986,12 +254987,12 @@ wHc
 oMT
 emK
 uvU
-ily
-ily
-ily
-ily
-ily
-ily
+ubh
+ubh
+ubh
+ubh
+ubh
+ubh
 qLY
 oCA
 fvk

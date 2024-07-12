@@ -34,8 +34,8 @@
 	inhand_icon_state = null
 	flags_inv = HIDEFACE|HIDEHAIR|HIDEFACIALHAIR|HIDESNOUT
 	w_class = WEIGHT_CLASS_SMALL
-	modifies_speech = TRUE
 
+<<<<<<< HEAD
 /obj/item/clothing/mask/luchador/handle_speech(datum/source, list/speech_args)
 	var/message = speech_args[SPEECH_MESSAGE]
 	if(message[1] != "*")
@@ -59,6 +59,11 @@
 		if(prob(25))
 			message += " OLE!"
 	speech_args[SPEECH_MESSAGE] = message
+=======
+/obj/item/clothing/mask/luchador/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = strings("luchador_replacement.json", "luchador"), end_string = " OLE!", end_string_chance = 25, uppercase = TRUE, slots = ITEM_SLOT_MASK)
+>>>>>>> upstream/master
 
 /obj/item/clothing/mask/luchador/tecnicos
 	name = "Tecnicos Mask"

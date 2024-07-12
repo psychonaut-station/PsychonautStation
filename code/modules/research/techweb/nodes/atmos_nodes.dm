@@ -50,7 +50,6 @@
 	description = "Experiments with high-pressure gases and electricity resulting in crystallization and controlled plasma reactions."
 	prereq_ids = list(TECHWEB_NODE_GAS_COMPRESSION, TECHWEB_NODE_ENERGY_MANIPULATION)
 	design_ids = list(
-		"crystallizer",
 		"electrolyzer",
 		"pipe_scrubber",
 		"pacman",
@@ -76,6 +75,7 @@
 		"bolter_wrench",
 		"rpd_loaded",
 		"engine_goggles",
+		"crystallizer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	required_experiments = list(/datum/experiment/ordnance/gaseous/bz)

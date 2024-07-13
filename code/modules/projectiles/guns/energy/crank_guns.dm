@@ -7,9 +7,9 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/musket)
 	slot_flags = ITEM_SLOT_BACK
 	obj_flags = UNIQUE_RENAME
-	can_bayonet = TRUE
-	knife_x_offset = 22
-	knife_y_offset = 11
+
+/obj/item/gun/energy/laser/musket/add_bayonet_point()
+	AddComponent(/datum/component/bayonet_attachable, offset_x = 22, offset_y = 11)
 
 /obj/item/gun/energy/laser/musket/Initialize(mapload)
 	. = ..()
@@ -17,7 +17,7 @@
 	AddComponent( \
 		/datum/component/crank_recharge, \
 		charging_cell = get_cell(), \
-		charge_amount = 500, \
+		charge_amount = STANDARD_CELL_CHARGE * 0.5, \
 		cooldown_time = 2 SECONDS, \
 		charge_sound = 'sound/weapons/laser_crank.ogg', \
 		charge_sound_cooldown_time = 1.8 SECONDS, \
@@ -58,7 +58,7 @@
 	AddComponent( \
 		/datum/component/crank_recharge, \
 		charging_cell = get_cell(), \
-		charge_amount = 1000, \
+		charge_amount = STANDARD_CELL_CHARGE, \
 		cooldown_time = 2 SECONDS, \
 		charge_sound = 'sound/weapons/laser_crank.ogg', \
 		charge_sound_cooldown_time = 1.8 SECONDS, \
@@ -92,11 +92,11 @@
 	shaded_charge = TRUE
 	ammo_x_offset = 1
 	obj_flags = UNIQUE_RENAME
-	can_bayonet = TRUE
-	knife_x_offset = 19
-	knife_y_offset = 13
 	w_class = WEIGHT_CLASS_NORMAL
 	dual_wield_spread = 5 //as intended by the coders
+
+/obj/item/gun/energy/laser/thermal/add_bayonet_point()
+	AddComponent(/datum/component/bayonet_attachable, offset_x = 19, offset_y = 13)
 
 /obj/item/gun/energy/laser/thermal/Initialize(mapload)
 	. = ..()
@@ -105,7 +105,7 @@
 		/datum/component/crank_recharge, \
 		charging_cell = get_cell(), \
 		spin_to_win = TRUE, \
-		charge_amount = 125, \
+		charge_amount = LASER_SHOTS(8, STANDARD_CELL_CHARGE), \
 		cooldown_time = 0.8 SECONDS, \
 		charge_sound = 'sound/weapons/kinetic_reload.ogg', \
 		charge_sound_cooldown_time = 0.8 SECONDS, \

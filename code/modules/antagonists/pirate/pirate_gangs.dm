@@ -39,13 +39,13 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	var/list/possible_answers = list("Please, go away! We'll pay!", "I accept oblivion.")
 
 	///station responds to message and pays the pirates
-	var/response_received = "Yum! Bungopoints!"
+	var/response_received = "İşte bu! Bungopuanlar!"
 	///station responds to message and pays the pirates
-	var/response_rejected = "Foo! No Bungopoints!"
+	var/response_rejected = "Hadi ya! Demek Bungopuan yok!"
 	///station pays the pirates, but after the ship spawned
-	var/response_too_late = "Your Bungopoints arrived too late, rebooting world..."
+	var/response_too_late = "Bungopuanlarınız çok geç geldi, dünya yeniden başlatılıyor..."
 	///station pays the pirates... but doesn't have enough cash.
-	var/response_not_enough = "Not enough Bungopoints have been added into my bank account, rebooting world..."
+	var/response_not_enough = "Banka hesabıma yeterli Bungopuan eklenmedi, dünya yeniden başlatılıyor..."
 
 	/// Have the pirates been paid off?
 	var/paid_off = FALSE
@@ -82,10 +82,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "Do you want to reconsider our offer? Unfortunately, the time for negotiations has passed. Open up; we're coming aboard soon."
 	possible_answers = list("Purchase Insurance.","Reject Offer.")
 
-	response_received = "Sweet, free cash. Let's get outta here, boys."
-	response_rejected = "Not paying was a mistake, now you need to take an economics class."
-	response_too_late = "Payment or not, ignoring us was a matter of pride. Now it's time for us to teach some respect."
-	response_not_enough = "You thought we wouldn't notice if you underpaid? Funny. We'll be seeing you soon."
+	response_received = "Güzel, beleş para. Hadi gidelim buradan, çocuklar."
+	response_rejected = "Ödeme yapmamak bir hataydı, şimdi bir ekonomi dersi almanız gerekiyor."
+	response_too_late = "Ödeme yapılsın ya da yapılmasın, bizi görmezden gelmek bir onur meselesiydi. Şimdi biraz saygı öğretme zamanı."
+	response_not_enough = "Eksik ödeme yaptığınızı fark etmeyeceğimizi mi sandınız? Çok komik. Yakında görüşeceğiz."
 
 ///aristocrat lizards looking to hunt the serfs
 /datum/pirate_gang/silverscales
@@ -100,10 +100,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "Certainly, you don't deserve all of that aboard your vessel. It's going to fit us so much better."
 	possible_answers = list("We'll pay.","Tribute? Really? Go away.")
 
-	response_received = "A most generous donation. May the claws of Tizira reach into the furthest points of the cosmos."
-	response_rejected = "That's for nothing, the first rule of hunting is don't leave without booty."
-	response_too_late = "I see you're trying to pay, but the hunt is already on."
-	response_not_enough = "You've sent an insulting \"donation\". The hunt is on for you."
+	response_received = "Çok cömert bir bağış. Umarım Tizira'nın pençeleri kozmosun en uzak noktalarına kadar uzanır."
+	response_rejected = "Demek öyle, avlanmanın ilk kuralı ganimet olmadan dönmemektir."
+	response_too_late = "Ödeme yapmaya çalıştığınızı görüyorum, ama av çoktan başladı."
+	response_not_enough = "Bizi aşağılayıcı bir \"bağış\" gönderdiniz. Sizin için av çoktan başladı."
 
 ///undead skeleton crew looking for booty
 /datum/pirate_gang/skeletons
@@ -118,10 +118,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "The Jolly Roger won't wait forever, maties; we're lying alongside, ready to send you some gifts."
 	possible_answers = list("We'll pay.","We will not be extorted.")
 
-	response_received = "Thanks for the credits, landlubbers."
-	response_rejected = "Blimey! All hands on deck, we're going to get their riches!"
-	response_too_late = "Too late to beg for mercy!"
-	response_not_enough = "Trying to cheat us? You'll regret this!"
+	response_received = "Krediler için teşekkürler, acemiler."
+	response_rejected = "Hayret bir şey! Herkes güverteye, onların servetlerini ele geçireceğiz!"
+	response_too_late = "Merhamet dilenmek için artık çok geç!"
+	response_not_enough = "Bizi kandırmaya mı çalışıyorsunuz? Buna pişman olacaksınız!"
 
 ///Expirienced formed employes of Interdyne Pharmaceutics now in a path of thievery and reckoning
 /datum/pirate_gang/interdyne
@@ -137,10 +137,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "We humbly ask for a substantial amount of income for the future research of our cause. It sure would be a shame if you got sick, but we can fix that."
 	possible_answers = list("Very well.","Get a job!")
 
-	response_received = "Thank you for your generosity. Your money will not be wasted."
-	response_rejected = "Oh, you're not a station, you're a tumor. Well, we're gonna have to cut it out."
-	response_too_late = "We hope you like skin cancer!"
-	response_not_enough = "This is not nearly enough for our operations. I'm afraid we'll have to borrow some."
+	response_received = "Cömertliğiniz için teşekkür ederiz. Paranız boşa gitmeyecek."
+	response_rejected = "Siz bir istasyon değil, bir tümörsünüz. Pekala, sizi kesip atmak zorundayız."
+	response_too_late = "Umarız cilt kanserini seversiniz!"
+	response_not_enough = "Bu bizim operasyonlarımız için yeterli değil. Korkarım biraz daha ödünç almamız gerekecek."
 	announcement_color = "purple"
 
 ///Previous Nanotrasen Assitant workers fired for many reasons now looking for revenge and your bank account.
@@ -156,10 +156,10 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	arrival_announcement = "Nice stuff you got there, it's ours now."
 	possible_answers = list("Please don't hurt me.","YOU WILL ANSWER TO THE LAW!!")
 
-	response_received = "Wait, you ACTUALLY gave us the money? Thanks, but we're coming for the rest anyways!"
-	response_rejected = "The answer to the law? We are the law! And you will be held responsible!"
-	response_too_late = "Nothing, huh? Looks like the Tide's coming aboard!"
-	response_not_enough = "You trying to cheat us? That's fine, we'll take your station as collateral."
+	response_received = "Bekle, bize gerçekten para mı verdiniz? Teşekkürler, ama her halükarda geri kalanı için geliyoruz!"
+	response_rejected = "Kanun mu? Kanun biziz! Ve siz sorumlu tutulacaksınız!"
+	response_too_late = "Hiçbir şey, ha? Görünüşe göre geminize geliyoruz!"
+	response_not_enough = "Bizi kandırmaya mı çalışıyorsunuz? Sorun değil, istasyonunuzu teminat olarak alacağız."
 	announcement_color = "yellow"
 
 ///Agents from the space I.R.S. heavily armed to stea- I mean, collect the station's tax dues
@@ -179,11 +179,11 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 		if you fail to pay your taxes in time."
 	possible_answers = list("You know, I was just about to pay that. Thanks for the reminder!","I don't care WHO the IRS sends, I'm not paying for my taxes!")
 
-	response_received = "Payment received, We salute you for being law-abiding tax-paying citizens"
-	response_rejected = "We understand, I'm sending a team to your station to resolve the matter."
-	response_too_late = "Too late, A team has already been sent out resolve this matter directly."
-	response_not_enough = "You filed your taxes incorrectly, A team has been sent to assist in liquidating assets and arrest you for tax fraud. \
-		Nothing personel kid."
+	response_received = "Ödeme alındı, Yasalara saygılı vergi ödeyen vatandaşlar olduğunuz için sizi selamlıyoruz."
+	response_rejected = "Anlıyoruz, sorunu çözmek için istasyonunuza bir ekip gönderiyorum."
+	response_too_late = "Çok geç, bu konuyu doğrudan çözmek için bir ekip çoktan gönderildi."
+	response_not_enough = "Vergilerinizi yanlış beyan ettiniz, Varlıkların tasfiyesine yardımcı olmak ve sizi vergi dolandırıcılığından tutuklamak için bir ekip gönderdik. \
+		Kişisel bir şey değil, evlat."
 	announcement_color = "yellow"
 
 //Mutated Ethereals who have adopted bluespace technology in all the wrong ways.
@@ -200,8 +200,30 @@ GLOBAL_LIST_INIT(heavy_pirate_gangs, init_pirate_gangs(is_heavy = TRUE))
 	possible_answers = list("Uh, ok? Sure."," We don't have time for crazy-talk, go away.")
 
 
-	response_received = "An excellent haul, the synthesis shall resume."
-	response_rejected = "The rudeness in your speech needs to be neutralized. And we can help you with that right now."
-	response_too_late = "You were not ready then, and now that time has passed. We can only go forward, never back."
-	response_not_enough = "You have insulted us, but there shall be no feud, only swift justice!"
+	response_received = "Mükemmel bir vurgun, sentez devam etmeli."
+	response_rejected = "Konuşmanızdaki kabalığın giderilmesi gerekiyor. Bu konuda size hemen şimdi yardımcı olabiliriz."
+	response_too_late = "O zaman hazır değildiniz ve artık her şey geride kaldı. Biz sadece ileri gideriz, asla geri dönmeyiz."
+	response_not_enough = "Bize hakaret ettiniz, bu bir kan davası olmayacak, yalnızca adalet yerini bulacak!"
 	announcement_color = "purple"
+
+//medieval militia, from OUTER SPACE!
+/datum/pirate_gang/medieval
+	name = "Medieval Warmongers"
+
+	is_heavy_threat = TRUE
+	ship_template_id = "medieval"
+	ship_name_pool = "medieval_names"
+
+	threat_title = "HOMAGE PAYMENT REQUEST"
+	threat_content = "SALUTATIONS, THIS IS %SHIPNAME AND WE ARE COLLECTING MONEY \
+		FROM THE VASSALS IN OUR TERRITORY, YOU JUST SO HAPPEN TO BE IN IT TOO!! NORMALLY \
+		WE SLAUGHTER WEAKLINGS LIKE YOU FOR TRESPASING ON OUR LAND, BUT WE ARE WILLING \
+		TO WELCOME YOU INTO OUR SPACE IF YOU PAY %PAYOFF AS HOMAGE TO OUR LAW. BE WISE ON YOUR CHOICE!! \
+		(send message. send message. why message not sent?)."
+	arrival_announcement = "I FIGURED OUT HOW TO FLY MY SHIP, WE WILL BE DOCKING NEXT TO YOU IN A MINUTE!!"
+	possible_answers = list("Alright, i like my skull intact.","You are dumb, go larp somewhere else.")
+
+	response_received = "THIS WILL SUFFICE, REMEMBER WHO OWNS YOU!!"
+	response_rejected = "FOOLISH DECISION, I'LL MAKE AN EXAMPLE OUT OF YOUR CARCASS!! (does anyone remember how to pilot our ship?)"
+	response_too_late = "YOU ARE ALREADY UNDER SIEGE YOU BUFFON, ARE YOU BRAINSICK OR IGNORANT?!!"
+	response_not_enough = "DO THINK OF ME AS A JESTER? YOU ARE DEAD MEAT!! (i forgot how to fly the ship, tarnation.)"

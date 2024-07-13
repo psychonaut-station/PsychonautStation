@@ -48,21 +48,25 @@ SUBSYSTEM_DEF(blackmarket)
 		switch(purchase.method)
 			// Find a ltsrbt pad and make it handle the shipping.
 			if(SHIPPING_METHOD_LTSRBT)
-				if(!telepads.len)
+				if(!length(telepads))
 					continue
 				// Prioritize pads that don't have a cooldown active.
-				var/obj/machinery/ltsrbt/free_pad_found
+				var/obj/machinery/ltsrbt/lowest_cd_pad
+				// The time left of the shortest cooldown amongst all telepads.
+				var/lowest_timeleft = INFINITY
 				for(var/obj/machinery/ltsrbt/pad as anything in telepads)
-					if(pad.recharge_cooldown)
+					if(!COOLDOWN_FINISHED(pad, recharge_cooldown))
+						var/timeleft = COOLDOWN_TIMELEFT(pad, recharge_cooldown)
+						if(timeleft < lowest_timeleft)
+							lowest_cd_pad = pad
+							lowest_timeleft = timeleft
 						continue
-					pad.add_to_queue(purchase)
-					free_pad_found = pad
+					lowest_cd_pad = pad
 					break
 
-				if(isnull(free_pad_found))
-					continue
+				lowest_cd_pad.add_to_queue(purchase)
 
-				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being processed by [free_pad_found]."))
+				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being processed by [lowest_cd_pad]."))
 
 			// Get random area, throw it somewhere there.
 			if(SHIPPING_METHOD_TELEPORT)
@@ -75,7 +79,7 @@ SUBSYSTEM_DEF(blackmarket)
 				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting that the order is being teleported to [get_area(targetturf)] in 60 seconds."))
 
 				// do_teleport does not want to teleport items from nullspace, so it just forceMoves and does sparks.
-				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/blackmarket,fake_teleport), purchase, targetturf), 60 SECONDS)
+				addtimer(CALLBACK(src, TYPE_PROC_REF(/datum/controller/subsystem/blackmarket, fake_teleport), purchase, targetturf), 60 SECONDS)
 
 			// Get the current location of the uplink if it exists, then throws the item from space at the station from a random direction.
 			if(SHIPPING_METHOD_LAUNCH)
@@ -84,6 +88,7 @@ SUBSYSTEM_DEF(blackmarket)
 				var/pickedloc = spaceDebrisStartLoc(startSide, T.z)
 
 				var/atom/movable/item = purchase.entry.spawn_item(pickedloc, purchase)
+				purchase.post_purchase_effects(item)
 				item.throw_at(purchase.uplink, 3, 3, spin = FALSE)
 
 				to_chat(buyer, span_notice("[purchase.uplink] flashes a message noting the order is being launched at the station from [dir2text(startSide)]."))
@@ -106,6 +111,7 @@ SUBSYSTEM_DEF(blackmarket)
 	if(QDELETED(purchase))
 		return
 	var/atom/movable/thing = purchase.entry.spawn_item(target, purchase)
+	purchase.post_purchase_effects(thing)
 	var/datum/effect_system/spark_spread/sparks = new
 	sparks.set_up(5, 1, target)
 	sparks.attach(thing)

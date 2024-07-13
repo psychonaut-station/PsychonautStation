@@ -1,4 +1,3 @@
-import { useBackend } from '../backend';
 import {
   BlockQuote,
   Box,
@@ -9,7 +8,9 @@ import {
   Section,
   Stack,
   TextArea,
-} from '../components';
+} from 'tgui-core/components';
+
+import { useBackend } from '../backend';
 import { formatMoney } from '../format';
 import { Window } from '../layouts';
 import { UserDetails } from './Vending';
@@ -178,8 +179,9 @@ export const BountyBoardContent = (props) => {
                   minValue={1}
                   maxValue={1000}
                   value={bountyValue}
+                  step={1}
                   width="80px"
-                  onChange={(e, value) =>
+                  onChange={(value) =>
                     act('bountyVal', {
                       bountyval: value,
                     })

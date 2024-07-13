@@ -16,6 +16,9 @@
 	/// Path to or the item itself what this entry is for, this should be set even if you override spawn_item to spawn your item.
 	var/atom/movable/item
 
+	/// Used to exclude abstract/special paths from the unit test if the value matches the type itself.
+	var/abstract_path
+
 	/// Minimum price for the item if generated randomly.
 	var/price_min = 0
 	/// Maximum price for the item if generated randomly.
@@ -25,7 +28,7 @@
 	/// Maximum amount that there should be of this item in the market if generated randomly.
 	var/stock_max = 0
 	/// Probability for this item to be available. Used by SSblackmarket on init.
-	var/availability_prob = 0
+	var/availability_prob
 
 	///The identifier for the market item, generated on runtime and used to access them in the market categories.
 	var/identifier
@@ -66,11 +69,11 @@
 	if(ismovable(item))
 		var/atom/movable/return_item = item
 		UnregisterSignal(item, COMSIG_QDELETING)
+		item.visible_message(span_notice("[item] vanishes..."))
+		do_sparks(8, FALSE, item)
 		if(isnull(loc))
 			item.moveToNullspace()
 		else
-			do_sparks(8, FALSE, item)
-			item.visible_message(span_notice("[item] vanishes..."))
 			item.forceMove(loc)
 		item = null
 		return return_item
@@ -78,8 +81,15 @@
 		return new item(loc)
 	CRASH("Invalid item type for market item [item || "null"]")
 
-/// Buys the item and makes SSblackmarket handle it.
-/datum/market_item/proc/buy(obj/item/market_uplink/uplink, mob/buyer, shipping_method)
+/**
+ * Buys the item and makes SSblackmarket handle it.
+ *
+ * @param uplink The uplink that is buying the item.
+ * @param buyer The mob that is buying the item.
+ * @param shipping_method The shipping method used to get the market item onto the station.
+ * @param legal_status The legal status of the market. Determines if the item to be spawned is contraband.
+ */
+/datum/market_item/proc/buy(obj/item/market_uplink/uplink, mob/buyer, shipping_method, legal_status)
 	SHOULD_CALL_PARENT(TRUE)
 	// Sanity
 	if(!istype(uplink) || !istype(buyer))
@@ -90,7 +100,7 @@
 		return FALSE
 
 	// Alright, the item has been purchased.
-	var/datum/market_purchase/purchase = new(src, uplink, shipping_method)
+	var/datum/market_purchase/purchase = new(src, uplink, shipping_method, legal_status)
 
 	// SSblackmarket takes care of the shipping.
 	if(SSblackmarket.queue_item(purchase))
@@ -98,6 +108,7 @@
 		buyer.log_message("has succesfully purchased [name] using [shipping_method] for shipping.", LOG_ECON)
 		return TRUE
 	return FALSE
+
 
 // This exists because it is easier to keep track of all the vars this way.
 /datum/market_purchase
@@ -109,13 +120,16 @@
 	var/obj/item/market_uplink/uplink
 	/// Shipping method used to buy this item.
 	var/method
+	/// Is this item considered contraband? If illegal, applies the contraband trait to the item when spawned.
+	var/legallity
 
-/datum/market_purchase/New(datum/market_item/entry, obj/item/market_uplink/uplink, method)
+/datum/market_purchase/New(datum/market_item/entry, obj/item/market_uplink/uplink, method, legal_status)
 	if(!uplink || !entry || !method)
 		CRASH("[type] created with a false value arg: (entry: [entry] - uplink: [uplink] - method: [method])")
 	src.entry = entry
 	src.uplink = uplink
 	src.method = method
+	src.legallity = legal_status
 	RegisterSignal(entry, COMSIG_QDELETING, PROC_REF(on_instance_del))
 	RegisterSignal(uplink, COMSIG_QDELETING, PROC_REF(on_instance_del))
 	if(ismovable(entry.item))
@@ -134,3 +148,13 @@
 		return
 	// Uh oh, uplink or item is gone. We will just keep the money and you will not get your order.
 	qdel(src)
+
+/**
+ * Proc that applies secondary effects to objects that are spawned via a market.
+ *
+ * @param spawned_item - Reference to the atom being spawned.
+ * @param legal_status - Is this item considered legal? If illegal, will apply the contraband trait to the spawned item.
+ */
+/datum/market_purchase/proc/post_purchase_effects(atom/spawned_item)
+	if(!legallity && isobj(spawned_item))
+		ADD_TRAIT(spawned_item, TRAIT_CONTRABAND, INNATE_TRAIT)

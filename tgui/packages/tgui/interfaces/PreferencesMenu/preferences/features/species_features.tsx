@@ -3,9 +3,9 @@ import {
   FeatureChoiced,
   FeatureChoicedServerData,
   FeatureColorInput,
-  FeatureDropdownInput,
   FeatureValueProps,
 } from './base';
+import { FeatureDropdownInput } from './dropdowns';
 
 export const eye_color: Feature<string> = {
   name: 'Eye color',
@@ -68,6 +68,15 @@ export const feature_human_tail: FeatureChoiced = {
   },
 };
 
+export const feature_monkey_tail: FeatureChoiced = {
+  name: 'Tail',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
 export const feature_lizard_legs: FeatureChoiced = {
   name: 'Legs',
   component: (
@@ -88,6 +97,15 @@ export const feature_lizard_spines: FeatureChoiced = {
 
 export const feature_lizard_tail: FeatureChoiced = {
   name: 'Tail',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
+export const feature_arachnid_appendages: FeatureChoiced = {
+  name: 'Arachnid Appendages',
   component: (
     props: FeatureValueProps<string, string, FeatureChoicedServerData>,
   ) => {

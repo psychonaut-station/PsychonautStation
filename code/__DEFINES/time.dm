@@ -27,19 +27,20 @@
 #define DECEMBER 12
 
 //Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
-#define NEW_YEAR "New Year"
-#define VALENTINES "Valentine's Day"
-#define APRIL_FOOLS "April Fool's Day"
-#define EASTER "Easter"
-#define HALLOWEEN "Halloween"
-#define CHRISTMAS "Christmas"
-#define FESTIVE_SEASON "Festive Season"
-#define GARBAGEDAY "Garbage Day"
-#define MONKEYDAY "Monkey Day"
-#define PRIDE_WEEK "Pride Week"
-#define MOTH_WEEK "Moth Week"
-#define IAN_HOLIDAY "Ian's Birthday"
-#define HOTDOG_DAY "National Hot Dog Day"
+#define NEW_YEAR "Yılbaşı"
+#define VALENTINES "Sevgililer Günü"
+#define APRIL_FOOLS "1 Nisan"
+#define EASTER "Paskalya"
+#define HALLOWEEN "Cadılar Bayramı"
+#define CHRISTMAS "Noel"
+#define FESTIVE_SEASON "Festival Sezonu"
+#define GARBAGEDAY "Çöp Günü"
+#define MONKEYDAY "Maymun Günü"
+#define PRIDE_WEEK "Pride Haftası"
+#define MOTH_WEEK "Moth Haftası"
+#define IAN_HOLIDAY "Ian'ın Doğum Günü"
+#define HOTDOG_DAY "Ulusal Sosisli Günü"
+#define ICE_CREAM_DAY "Ulusal Dondurma Günü"
 /*
 
 Days of the week to make it easier to reference them.

@@ -35,7 +35,7 @@
 /datum/round_event/grey_tide/announce(fake)
 	if(fake)
 		severity = rand(1,3)
-	priority_announce("[station_name()] güvenli kilitleme ve şifreleme alt programlarında Gr3y.T1d3 virüsü tespit edildi. Önem derecesi [severity] olarak belirlendi.", "Güvenlik Uyarısı")
+	priority_announce("[locale_suffix_genitive(station_name())] güvenli kilitleme ve şifreleme alt programlarında Gr3y.T1d3 virüsü tespit edildi. Önem derecesi [severity] olarak belirlendi.", "Güvenlik Uyarısı")
 
 /datum/round_event/grey_tide/start()
 	if(!length(grey_tide_areas))

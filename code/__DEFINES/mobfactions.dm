@@ -83,6 +83,8 @@
 #define FACTION_TURRET "turret"
 /// Vines, lots of overlap with plants
 #define FACTION_VINES "vines"
+///raptor factions
+#define FACTION_RAPTOR "raptor"
 /// Zombies
 #define FACTION_ZOMBIE "zombie"
 

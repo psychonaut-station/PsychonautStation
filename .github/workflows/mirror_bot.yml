@@ -1,0 +1,137 @@
+name: Mirror bot
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 14 * * 5'
+
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  pr_title: '[MDB IGNORE] [IDB IGNORE] Upstream mirror'
+  pr_body: This is an automated pull request to merge the latest changes from the upstream repository.
+  pr_branch: mirror
+  pr_label: mirror
+  remote_repo: tgstation/tgstation
+  remote_branch: master
+  commiter_name: github-actions[bot]
+  commiter_email: 41898282+github-actions[bot]@users.noreply.github.com
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - name: Add upstream remote
+        run: |
+          git config user.name "$commiter_name"
+          git config user.email "$commiter_email"
+
+          git remote add upstream "https://github.com/$remote_repo.git"
+          git fetch upstream $remote_branch
+      - name: Merge upstream branch
+        run: |
+          git merge upstream/$remote_branch
+        continue-on-error: true
+      - name: Commit with conflicts
+        id: commit
+        run: |
+          $files = (git diff --name-only --diff-filter=U)
+
+          if ($files.Length -ne 0) {
+            $EOF = -join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) })
+
+            echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
+            echo "`n`nThe following files have conflicts:" >> $Env:GITHUB_OUTPUT
+
+            $deleted_by_us = [System.Collections.ArrayList]@()
+            $deleted_by_them = [System.Collections.ArrayList]@()
+
+            foreach ($_ in (git status --short --porcelain)) {
+              $flag, $file = ($_.replace("  ", " ") -split " ")
+
+              if ($flag -eq "DU") {
+                $deleted_by_us += $file
+              } elseif ($flag -eq "UD") {
+                $deleted_by_them += $file
+              }
+            }
+
+            git commit -a --no-edit
+
+            $short_hash = (git rev-parse --short HEAD)
+            $upstream_hash = (git rev-parse upstream/master)
+
+            foreach ($file in $files) {
+              $line = 1
+              $conflicts = 0
+              $head_marker = 0
+              $branch_marker = 0
+
+              $content = Get-Content $file
+
+              foreach ($_ in $content) {
+                if ($head_marker -eq 0 -and $_ -match "<<<<<<<") {
+                  $head_marker = $line
+                } elseif ($branch_marker -eq 0 -and $_ -match ">>>>>>>") {
+                  $branch_marker = $line
+                } elseif ($_ -match "=======") {
+                  $conflicts += 1
+                }
+
+                $line += 1
+              }
+
+              if ($conflicts -eq 0) {
+                if ($content -match '[^\u0000-\u007F]') {
+                  $conflicts = "binary file"
+                } elseif ($deleted_by_us.Contains($file)) {
+                  $conflicts = "deleted by us"
+                } elseif ($deleted_by_them.Contains($file)) {
+                  $conflicts = "deleted by them"
+                }
+              }
+
+              $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-$short_hash/$file#L$head_marker-L$branch_marker"
+              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file#L$head_marker"
+              $theirs = "https://github.com/$Env:remote_repo/blob/$upstream_hash/$file#L$head_marker"
+
+              echo "- [ ] $file - $conflicts - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
+            }
+
+            echo "$EOF" >> $Env:GITHUB_OUTPUT
+          } else {
+            git commit -a --no-edit
+          }
+        shell: pwsh
+      - name: Create new pull request
+        uses: peter-evans/create-pull-request@v3
+        id: create-pull-request
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          author: ${{ env.commiter_name }} <${{ env.commiter_email }}>
+          branch: ${{ env.pr_branch }}
+          branch-suffix: short-commit-hash
+          delete-branch: true
+          title: ${{ env.pr_title }}
+          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}
+          labels: ${{ env.pr_label }}
+          draft: true
+      - name: Close previous pull request(s)
+        run: |
+          $query = "repo:$Env:GITHUB_REPOSITORY is:pr is:open label:$Env:pr_label"
+          $pr_number = ${{ steps.create-pull-request.outputs.pull-request-number }}
+
+          foreach ($_ in $(gh api -X GET search/issues -F q="$query" --jq '.items[].number')) {
+            if ($_ -ne $pr_number) {
+              gh pr close $_ -R $Env:GITHUB_REPOSITORY -d -c "Superseded by #$pr_number."
+            }
+          }
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        shell: pwsh

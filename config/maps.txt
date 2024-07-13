@@ -15,11 +15,6 @@ endmap
 
 # Production-level maps.
 
-map ministation
-	maxplayers 20
-	votable
-endmap
-
 map birdshot
 	maxplayers 66
 	votable
@@ -57,6 +52,11 @@ endmap
 map tramstation
 	minplayers 35
 	votable
+endmap
+
+map wawastation
+	votable
+	minplayers 40
 endmap
 
 # Debug-only maps.

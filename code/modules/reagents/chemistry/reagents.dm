@@ -29,7 +29,7 @@
 	///The molar mass of the reagent - if you're adding a reagent that doesn't have a recipe, just add a random number between 10 - 800. Higher numbers are "harder" but it's mostly arbitary.
 	var/mass
 	/// color it looks in containers etc
-	var/color = "#000000" // rgb: 0, 0, 0
+	var/color = COLOR_BLACK // rgb: 0, 0, 0
 	///how fast the reagent is metabolized by the mob
 	var/metabolization_rate = REAGENTS_METABOLISM
 	/// above this overdoses happen
@@ -250,7 +250,9 @@ Primarily used in reagents/reaction_agents
 
 /// Should return a associative list where keys are taste descriptions and values are strength ratios
 /datum/reagent/proc/get_taste_description(mob/living/taster)
-	return list("[taste_description]" = 1)
+	if(isnull(taster) || !HAS_TRAIT(taster, TRAIT_DETECTIVES_TASTE))
+		return list("[taste_description]" = 1)
+	return list("[LOWER_TEXT(name)]" = 1)
 
 /**
  * Used when you want the default reagents purity to be equal to the normal effects

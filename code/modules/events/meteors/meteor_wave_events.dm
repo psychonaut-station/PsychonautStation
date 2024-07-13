@@ -109,24 +109,19 @@
 /datum/round_event/meteor_wave/dust_storm/announce(fake)
 	var/list/reasons = list()
 
-	reasons += "[station_name()] is passing through a debris cloud, expect minor damage \
-		to external fittings and fixtures."
+	reasons += "[station_name()] bir enkaz bulutunun içinden geçmektedir \
+		dış donanım ve eşyalarda küçük çaplı hasar beklenmektedir."
 
-	reasons += "Nanotrasen Superweapons Division is testing a new prototype \
-		[pick("field","projection","nova","super-colliding","reactive")] \
-		[pick("cannon","artillery","tank","cruiser","\[REDACTED\]")], \
-		some mild debris is expected."
+	reasons += "Nanotrasen Süper Silahlar Departmanı yeni bir [pick("saha","koruma","nova")] [pick("topu","silahı","tankı","gemisi")] \
+		prototipi deniyorlar. Bazı küçük çaplı hasarlar beklenmektedir."
 
-	reasons += "A neighbouring station is throwing rocks at you. (Perhaps they've \
-		grown tired of your messages.)"
+	reasons += "Komşu istasyonlarınızdan biri size taş atıyor. (Belki de \
+		mesajlarınızdan bıkmışlardır.)"
 
-	reasons += "[station_name()]'s orbit is passing through a cloud of remnants from an asteroid \
-		mining operation. Minor hull damage is to be expected."
+	reasons += "[station_name()] yörüngesi bir asteroit madenciliğinden arta kalan bir \
+		bulutun içinden geçiyor. İstasyon gövdesinde küçük çaplı hasar beklenmektedir."
 
-	reasons += "A large meteoroid on intercept course with [station_name()] has been demolished. \
-		Residual debris may impact the station exterior."
-
-	reasons += "[station_name()] has hit a particularly rough patch of space. \
-		Please mind any turbulence or damage from debris."
+	reasons += "[station_name()] ile kesişme rotasında olan büyük bir meteoroid parçalandı.  \
+		Enkaz kalıntıları istasyonun dış cephesini etkileyebilir."
 
 	priority_announce(pick(reasons), "Çarpışma Uyarısı")

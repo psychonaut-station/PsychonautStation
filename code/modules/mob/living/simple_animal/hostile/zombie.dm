@@ -17,7 +17,7 @@
 	attack_vis_effect = ATTACK_EFFECT_BITE
 	faction = list(FACTION_ZOMBIE)
 	combat_mode = TRUE
-	atmos_requirements = list("min_oxy" = 0, "max_oxy" = 0, "min_plas" = 0, "max_plas" = 0, "min_co2" = 0, "max_co2" = 0, "min_n2" = 0, "max_n2" = 0)
+	atmos_requirements = null
 	minbodytemp = 0
 	status_flags = CANPUSH
 	death_message = "collapses, flesh gone in a pile of bones!"

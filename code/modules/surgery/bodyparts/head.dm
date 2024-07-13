@@ -17,7 +17,7 @@
 	scars_covered_by_clothes = FALSE
 	grind_results = null
 	is_dimorphic = TRUE
-	unarmed_attack_verb = "bite"
+	unarmed_attack_verbs = list("bite", "chomp")
 	unarmed_attack_effect = ATTACK_EFFECT_BITE
 	unarmed_attack_sound = 'sound/weapons/bite.ogg'
 	unarmed_miss_sound = 'sound/weapons/bite.ogg'
@@ -38,7 +38,7 @@
 	/// Hair style
 	var/hairstyle = "Bald"
 	/// Hair colour and style
-	var/hair_color = "#000000"
+	var/hair_color = COLOR_BLACK
 	/// Hair alpha
 	var/hair_alpha = 255
 	/// Is the hair currently hidden by something?
@@ -47,16 +47,22 @@
 	///Facial hair style
 	var/facial_hairstyle = "Shaved"
 	///Facial hair color
-	var/facial_hair_color = "#000000"
+	var/facial_hair_color = COLOR_BLACK
 	///Facial hair alpha
 	var/facial_hair_alpha = 255
 	///Is the facial hair currently hidden by something?
 	var/facial_hair_hidden = FALSE
 
 	/// Gradient styles, if any
-	var/list/gradient_styles = null
+	var/list/gradient_styles = list(
+		"None",	//Hair gradient style
+		"None",	//Facial hair gradient style
+	)
 	/// Gradient colors, if any
-	var/list/gradient_colors = null
+	var/list/gradient_colors = list(
+		COLOR_BLACK,	//Hair gradient color
+		COLOR_BLACK,	//Facial hair gradient color
+	)
 
 	/// An override color that can be cleared later, affects both hair and facial hair
 	var/override_hair_color = null
@@ -69,6 +75,9 @@
 	var/lip_color
 	///Current lipstick trait, if any (such as TRAIT_KISS_OF_DEATH)
 	var/stored_lipstick_trait
+
+	/// How many teeth the head's species has, humans have 32 so that's the default. Used for a limit to dental pill implants.
+	var/teeth_count = 32
 
 	/// Offset to apply to equipment worn on the ears
 	var/datum/worn_feature_offset/worn_ears_offset
@@ -132,7 +141,7 @@
 	if (!can_dismember)
 		return FALSE
 
-	if(owner.stat < HARD_CRIT)
+	if(!HAS_TRAIT(owner, TRAIT_CURSED) && owner.stat < HARD_CRIT)
 		return FALSE
 
 	return ..()
@@ -168,8 +177,8 @@
 		var/obj/item/organ/internal/eyes/eyes = locate(/obj/item/organ/internal/eyes) in src
 		// This is a bit of copy/paste code from eyes.dm:generate_body_overlay
 		if(eyes?.eye_icon_state && (head_flags & HEAD_EYESPRITES))
-			var/image/eye_left = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
-			var/image/eye_right = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
+			var/image/eye_left = image(eyes.eye_icon, "[eyes.eye_icon_state]_l", -BODY_LAYER, SOUTH)
+			var/image/eye_right = image(eyes.eye_icon, "[eyes.eye_icon_state]_r", -BODY_LAYER, SOUTH)
 			if(head_flags & HEAD_EYECOLOR)
 				if(eyes.eye_color_left)
 					eye_left.color = eyes.eye_color_left

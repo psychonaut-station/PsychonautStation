@@ -42,7 +42,7 @@
 			living_aliens = TRUE
 
 	if(living_aliens || fake)
-		priority_announce("[station_name()] gelen tanımlanamayan yaşam sinyalleri tespit edildi. Borular ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Sinyali", ANNOUNCER_ALIENS)
+		priority_announce("[locale_suffix_ablative(station_name())] gelen tanımlanamayan yaşam sinyalleri tespit edildi. Borular ve havalandırma da dahil olmak üzere tüm dış erişimleri emniyete alın.", "Yaşam Sinyali", ANNOUNCER_ALIENS)
 
 
 /datum/round_event/ghost_role/alien_infestation/spawn_role()
@@ -65,7 +65,7 @@
 
 	var/list/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_ALIEN, role = ROLE_ALIEN, alert_pic = /mob/living/carbon/alien/larva, role_name_text = role_name)
 
-	if(!candidates.len)
+	if(!length(candidates))
 		return NOT_ENOUGH_PLAYERS
 
 	while(spawncount > 0 && vents.len && candidates.len)

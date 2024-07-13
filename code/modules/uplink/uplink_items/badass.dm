@@ -14,8 +14,7 @@
 	cost = 20
 	lock_other_purchases = TRUE
 	cant_discount = TRUE
-	purchasable_from = UPLINK_TRAITORS
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /datum/uplink_item/badass/balloon/spawn_item(spawn_path, mob/user, datum/uplink_handler/uplink_handler, atom/movable/source)
 	. = ..()
@@ -37,16 +36,14 @@
 	item = /obj/item/toy/cards/deck/syndicate
 	cost = 1
 	surplus = 40
-	purchasable_from = UPLINK_TRAITORS
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /datum/uplink_item/badass/syndiecigs
 	name = "Syndicate Smokes"
 	desc = "Strong flavor, dense smoke, infused with omnizine."
 	item = /obj/item/storage/fancy/cigarettes/cigpack_syndicate
 	cost = 2
-	purchasable_from = UPLINK_TRAITORS
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /datum/uplink_item/badass/syndiecash
 	name = "Briefcase Full of Cash"
@@ -56,7 +53,7 @@
 	item = /obj/item/storage/briefcase/secure/syndie
 	cost = 3
 	restricted = TRUE
-	illegal_tech = FALSE
+	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
 /datum/uplink_item/badass/costumes/clown
 	name = "Clown Costume"

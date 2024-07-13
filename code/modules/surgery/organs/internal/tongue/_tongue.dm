@@ -184,23 +184,18 @@
 	liked_foodtypes = GORE | MEAT | SEAFOOD | NUTS | BUGS
 	disliked_foodtypes = GRAIN | DAIRY | CLOTH | GROSS
 	voice_filter = @{"[0:a] asplit [out0][out2]; [out0] asetrate=%SAMPLE_RATE%*0.9,aresample=%SAMPLE_RATE%,atempo=1/0.9,aformat=channel_layouts=mono,volume=0.2 [p0]; [out2] asetrate=%SAMPLE_RATE%*1.1,aresample=%SAMPLE_RATE%,atempo=1/1.1,aformat=channel_layouts=mono,volume=0.2[p2]; [p0][0][p2] amix=inputs=3"}
+	var/static/list/speech_replacements = list(
+		new /regex("s+", "g") = "sss",
+		new /regex("S+", "g") = "SSS",
+		new /regex(@"(\w)x", "g") = "$1kss",
+		new /regex(@"(\w)X", "g") = "$1KSSS",
+		new /regex(@"\bx([\-|r|R]|\b)", "g") = "ecks$1",
+		new /regex(@"\bX([\-|r|R]|\b)", "g") = "ECKS$1",
+	)
 
-/obj/item/organ/internal/tongue/lizard/modify_speech(datum/source, list/speech_args)
-	var/static/regex/lizard_hiss = new("s+", "g")
-	var/static/regex/lizard_hiSS = new("S+", "g")
-	var/static/regex/lizard_kss = new(@"(\w)x", "g")
-	var/static/regex/lizard_kSS = new(@"(\w)X", "g")
-	var/static/regex/lizard_ecks = new(@"\bx([\-|r|R]|\b)", "g")
-	var/static/regex/lizard_eckS = new(@"\bX([\-|r|R]|\b)", "g")
-	var/message = speech_args[SPEECH_MESSAGE]
-	if(message[1] != "*")
-		message = lizard_hiss.Replace(message, "sss")
-		message = lizard_hiSS.Replace(message, "SSS")
-		message = lizard_kss.Replace(message, "$1kss")
-		message = lizard_kSS.Replace(message, "$1KSS")
-		message = lizard_ecks.Replace(message, "ecks$1")
-		message = lizard_eckS.Replace(message, "ECKS$1")
-	speech_args[SPEECH_MESSAGE] = message
+/obj/item/organ/internal/tongue/lizard/New(class, timer, datum/mutation/human/copymut)
+	. = ..()
+	AddComponent(/datum/component/speechmod, replacements = speech_replacements)
 
 /obj/item/organ/internal/tongue/lizard/silver
 	name = "silver tongue"
@@ -444,7 +439,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 		var/list/message_word_list = splittext(message, " ")
 		var/list/translated_word_list = list()
 		for(var/word in message_word_list)
-			word = GLOB.english_to_zombie[lowertext(word)]
+			word = GLOB.english_to_zombie[LOWER_TEXT(word)]
 			translated_word_list += word ? word : FALSE
 
 		// all occurrences of characters "eiou" (case-insensitive) are replaced with "r"
@@ -595,6 +590,7 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	say_mod = "meows"
 	liked_foodtypes = SEAFOOD | ORANGES | BUGS | GORE
 	disliked_foodtypes = GROSS | CLOTH | RAW
+	organ_traits = list(TRAIT_WOUND_LICKER)
 
 /obj/item/organ/internal/tongue/jelly
 	name = "jelly tongue"
@@ -654,3 +650,10 @@ GLOBAL_LIST_INIT(english_to_zombie, list())
 	liked_foodtypes = STONE
 	disliked_foodtypes = NONE //you don't care for much else besides stone
 	toxic_foodtypes = NONE //you can eat fucking uranium
+
+/obj/item/organ/internal/tongue/arachnid
+	name = "arachnid tongue"
+	desc = "A spider organ used for speaking and eating."
+	liked_foodtypes = GORE | MEAT | BUGS | GROSS
+	disliked_foodtypes = VEGETABLES | FRUIT
+	say_mod = "chitters"

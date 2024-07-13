@@ -180,7 +180,7 @@
 	permanant_empower()
 	var/datum/objective/summon_carp/main_objective = locate() in objectives
 	main_objective?.completed = TRUE
-	priority_announce("Çok sayıda yaşam formunun [station_name()] aşırı hızlarda yaklaştığı tespit edildi. \
+	priority_announce("Çok sayıda yaşam formunun [locale_suffix_dative(station_name())] doğru aşırı hızlarda yaklaştığı tespit edildi. \
 		Kalan mürettebatın mümkün olan en kısa sürede tahliye edilmesi tavsiye edilmektedir.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
 	sound_to_playing_players('sound/creatures/space_dragon_roar.ogg', volume = 75)
 	for(var/obj/structure/carp_rift/rift as anything in rift_list)
@@ -196,7 +196,7 @@
  */
 /datum/antagonist/space_dragon/proc/permanant_empower()
 	owner.current.fully_heal()
-	owner.current.add_filter("anger_glow", 3, list("type" = "outline", "color" = "#ff330030", "size" = 5))
+	owner.current.add_filter("anger_glow", 3, list("type" = "outline", "color" = COLOR_CARP_RIFT_RED, "size" = 5))
 	owner.current.add_movespeed_modifier(/datum/movespeed_modifier/dragon_rage)
 
 /**
@@ -207,7 +207,7 @@
  */
 /datum/antagonist/space_dragon/proc/rift_empower()
 	owner.current.fully_heal()
-	owner.current.add_filter("anger_glow", 3, list("type" = "outline", "color" = "#ff330030", "size" = 5))
+	owner.current.add_filter("anger_glow", 3, list("type" = "outline", "color" = COLOR_CARP_RIFT_RED, "size" = 5))
 	owner.current.add_movespeed_modifier(/datum/movespeed_modifier/dragon_rage)
 	addtimer(CALLBACK(src, PROC_REF(rift_depower)), 30 SECONDS)
 

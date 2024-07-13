@@ -249,7 +249,7 @@
 	if(sunfrac <= 0)
 		return
 
-	var/sgen = SOLAR_GEN_RATE * sunfrac
+	var/sgen = solar_gen_rate * sunfrac
 	add_avail(power_to_energy(sgen))
 	if(control)
 		control.gen += sgen

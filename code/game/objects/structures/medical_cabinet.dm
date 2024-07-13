@@ -44,13 +44,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/medical_cabinet, 32)
 
 /obj/structure/medical_cabinet/atom_break(damage_flag)
 	. = ..()
-	if(!broken && !(obj_flags & NO_DECONSTRUCTION))
+	if(!broken && !(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
 		broken = 1
 		atom_storage?.remove_all(get_turf(src))
 		update_appearance(UPDATE_ICON)
 
 /obj/structure/medical_cabinet/deconstruct(disassembled = TRUE)
-	if(!(obj_flags & NO_DECONSTRUCTION))
+	if(!(obj_flags & NO_DEBRIS_AFTER_DECONSTRUCTION))
 		if(disassembled)
 			new /obj/item/wallframe/medical_cabinet(loc)
 		else

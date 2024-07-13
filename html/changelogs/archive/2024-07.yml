@@ -516,8 +516,6 @@
   - balance: Mirage module has been removed from Sec modsuits.
   - balance: Security modsuits now spawn with a better cell and the jetpack module
       preinstalled.
-  exdal:
-  - rscdel: Ministation kaldirildi
   FernandoJ8:
   - bugfix: humanoid species featured are randomized correctly once again
   Ghommie:
@@ -573,6 +571,8 @@
   - code_imp: Added the subtype vendor which lets admins and coders vend subtypes
       of a path
   - code_imp: Added the vendor and both varieties of omnitool to runtime station
+  exdal:
+  - rscdel: Ministation kaldirildi
   grungussuss:
   - sound: pen click now has a proper sound
   - sound: scalpel cutting sound now has a clean sound.
@@ -753,3 +753,13 @@
   zoomachina:
   - balance: bluespace navigation gigabeacons are now unlocked with Applied Bluespace
       Research
+2024-07-13:
+  SmArtKar:
+  - bugfix: Other mobs no longer hear your breathing
+  - image: MOD hyposprays no longer use syringe fill sprites
+  - balance: Experimentor's reduction chance is multiplicative, and chance to copy
+      an object has been slightly lowered.
+  - qol: Heads of staff PDAs start with twice as much disk space
+  vinylspiders:
+  - bugfix: password doors and shutters will now play their sound effects again instead
+      of just silently opening/closing

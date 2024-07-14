@@ -36,9 +36,9 @@
 		var/mob/mob_user = user
 		holder = mob_user.client
 
-	lookup(TRUE)
+	lookup()
 
-/datum/verification_menu/proc/lookup(initialization = FALSE)
+/datum/verification_menu/proc/lookup(refresh = FALSE)
 	if(isnull(holder))
 		return
 
@@ -52,8 +52,8 @@
 
 	if(discord_id)
 		fetch_discord()
-		if(!initialization)
-			fetch_patreon()
+		if(refresh)
+			holder.check_patreon()
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
 
@@ -64,8 +64,6 @@
 			SSdiscord.reverify_cache[holder.ckey] = token
 
 		holder.patron = FALSE
-		if(holder.ckey in GLOB.patrons)
-			GLOB.patrons -= holder.ckey
 
 	if(update)
 		update_static_data(holder.mob)
@@ -84,29 +82,6 @@
 		display_name = json["global_name"]
 		username = json["username"]
 		discriminator = json["discriminator"]
-
-/datum/verification_menu/proc/fetch_patreon()
-	var/endpoint = CONFIG_GET(string/patreonendpoint)
-	if(!endpoint)
-		return
-
-	var/datum/http_request/request = new ()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[holder.ckey]")
-	request.begin_async()
-
-	UNTIL(request.is_complete())
-
-	var/datum/http_response/response = request.into_response()
-
-	if(!response.errored && response.status_code == 200)
-		var/list/json = json_decode(response.body)
-		if(json["patron"])
-			holder.patron = TRUE
-			GLOB.patrons |= holder.ckey
-		else
-			holder.patron = FALSE
-			if(holder.ckey in GLOB.patrons)
-				GLOB.patrons -= holder.ckey
 
 /datum/verification_menu/proc/can_refresh()
 	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE
@@ -131,7 +106,7 @@
 		.["display_name"] = display_name
 		.["username"] = username
 		.["discriminator"] = discriminator
-		.["patron"] = is_patron(user, TRUE)
+		.["patron"] = holder.patron
 	else
 		.["token"] = token
 	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)
@@ -143,5 +118,5 @@
 
 	if(action == "refresh" && can_refresh())
 		last_refresh = world.time
-		lookup()
+		lookup(refresh = TRUE)
 		return TRUE

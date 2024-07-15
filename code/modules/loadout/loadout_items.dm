@@ -303,6 +303,9 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 	var/list/displayed_text = list()
 
+	if(donator_only)
+		displayed_text += "Patreon"
+
 	displayed_text += (additional_displayed_text || list())
 
 	if(can_be_greyscale)

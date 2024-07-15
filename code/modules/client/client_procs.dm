@@ -803,7 +803,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
 			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
 		else
-			var/list/bans = json_decode(response["body"])
+			var/list/bans = json_decode(response.body)
 			if (bans.len > 0)
 				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
 				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")

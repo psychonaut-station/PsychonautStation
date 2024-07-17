@@ -11,10 +11,6 @@
 	abstract_type = /datum/loadout_item/head/donator
 	donator_only = TRUE
 
-// Testing
-/datum/loadout_item/head/delinquent_cap
-	donator_only = TRUE
-
 /datum/loadout_item/glasses/donator
 	abstract_type = /datum/loadout_item/glasses/donator
 	donator_only = TRUE

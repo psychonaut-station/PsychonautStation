@@ -105,7 +105,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		unlock_content = !!parent.patron
+		unlock_content = istype(parent) && !!parent.patron
 		if(unlock_content)
 			max_save_slots = 8
 	else

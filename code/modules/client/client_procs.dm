@@ -537,6 +537,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	update_ambience_pref(prefs.read_preference(/datum/preference/toggle/sound_ambience))
 	check_ip_intel()
 
+	check_patreon()
+
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
@@ -807,6 +809,26 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			if (bans.len > 0)
 				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
 				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
+
+/client/proc/check_patreon()
+	var/endpoint = CONFIG_GET(string/patreonendpoint)
+	if(!endpoint)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[ckey]")
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		var/list/json = json_decode(response.body)
+		if(json["patron"])
+			patron = TRUE
+		else
+			patron = FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

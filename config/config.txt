@@ -201,6 +201,9 @@ IPINTEL_REJECT_BAD
 # DISCORDBOTTOKEN
 # DISCORDUSERENDPOINT https://discord.com/api/v10/users
 
+## Used in patreon loadout
+# PATREONENDPOINT https://api.turkb.us/v2/patreon
+
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
 ## This will take priority over the game logs address during reboot.

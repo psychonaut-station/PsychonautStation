@@ -763,3 +763,10 @@
   vinylspiders:
   - bugfix: password doors and shutters will now play their sound effects again instead
       of just silently opening/closing
+2024-07-18:
+  Seefaaa:
+  - bugfix: "Patreon destek\xE7ilerine \xF6zel loadout e\u015Fyalar\u0131 eklenecek.\
+      \ Sen de bizi Patreon ile destekle!"
+  - rscadd: "Art\u0131k OOC renk, ghost form vb. \xF6zellikler i\xE7in Patreon \xFC\
+      yesi olman\u0131z gerekecek. Bununla beraber Patreon \xFCyelerinin 8 karakter\
+      \ slotu olacak."

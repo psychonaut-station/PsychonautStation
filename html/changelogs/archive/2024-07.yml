@@ -754,24 +754,6 @@
   - balance: bluespace navigation gigabeacons are now unlocked with Applied Bluespace
       Research
 2024-07-13:
-<<<<<<< HEAD
-  SmArtKar:
-  - bugfix: Other mobs no longer hear your breathing
-  - image: MOD hyposprays no longer use syringe fill sprites
-  - balance: Experimentor's reduction chance is multiplicative, and chance to copy
-      an object has been slightly lowered.
-  - qol: Heads of staff PDAs start with twice as much disk space
-  vinylspiders:
-  - bugfix: password doors and shutters will now play their sound effects again instead
-      of just silently opening/closing
-2024-07-18:
-  Seefaaa:
-  - bugfix: "Patreon destek\xE7ilerine \xF6zel loadout e\u015Fyalar\u0131 eklenecek.\
-      \ Sen de bizi Patreon ile destekle!"
-  - rscadd: "Art\u0131k OOC renk, ghost form vb. \xF6zellikler i\xE7in Patreon \xFC\
-      yesi olman\u0131z gerekecek. Bununla beraber Patreon \xFCyelerinin 8 karakter\
-      \ slotu olacak."
-=======
   Ben10Omintrix:
   - refactor: request managers have been refactored to typescript
   - bugfix: request manager type filter now works
@@ -977,6 +959,12 @@
   - bugfix: Xenos have a "resist" ui element now. Cool!
   Sadboysuss:
   - bugfix: added a missing cable to Wawastation perma
+  Seefaaa:
+  - bugfix: "Patreon destek\xE7ilerine \xF6zel loadout e\u015Fyalar\u0131 eklenecek.\
+      \ Sen de bizi Patreon ile destekle!"
+  - rscadd: "Art\u0131k OOC renk, ghost form vb. \xF6zellikler i\xE7in Patreon \xFC\
+      yesi olman\u0131z gerekecek. Bununla beraber Patreon \xFCyelerinin 8 karakter\
+      \ slotu olacak."
   SmArtKar:
   - bugfix: Fixes hulks being able to activate dualsabers despite not being able to
       actually do anything with them
@@ -1062,4 +1050,3 @@
   - qol: secmods jetpacks are now pinned by default
   vinylspiders:
   - bugfix: fixed a hard del with soapboxes
->>>>>>> upstream/master

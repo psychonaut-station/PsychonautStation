@@ -52,6 +52,13 @@
 					You may want to check your loadout settings."))
 			continue
 
+		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+		if(loadout_item.donator_only && optional_loadout_owner?.client && !optional_loadout_owner.client.patron)
+			to_chat(optional_loadout_owner, span_boldnotice("The following donator-only item was found \
+				in your character loadout: [real_path || "null"]. \
+				It has been removed, as you are not a patron."))
+			continue
+
 		// Set into sanitize list using converted path key
 		var/list/data = passed_list[path]
 		LAZYSET(sanitized_list, real_path, LAZYLISTDUPLICATE(data))

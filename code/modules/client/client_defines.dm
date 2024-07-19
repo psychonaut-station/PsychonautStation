@@ -271,3 +271,9 @@
 
 	/// Discord verification ui
 	var/datum/verification_menu/verification_menu
+
+	/// If the client is donating us on patreon
+	var/patron
+
+	///Which ambient sound this client is currently being provided.
+	var/current_ambient_sound

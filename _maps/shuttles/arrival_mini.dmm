@@ -31,9 +31,7 @@
 /turf/open/floor/plating/airless,
 /area/shuttle/arrival)
 "k" = (
-/obj/effect/turf_decal/stripes{
-	layer = 2.01
-	},
+/obj/effect/turf_decal/stripes,
 /obj/machinery/vending/cigarette,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/light/directional/south,
@@ -48,7 +46,7 @@
 	pixel_x = -7;
 	pixel_y = 2
 	},
-/obj/item/clothing/mask/cigarette/rollie/cannabis{
+/obj/item/cigarette/rollie/cannabis{
 	pixel_x = 8;
 	pixel_y = 3
 	},
@@ -214,9 +212,7 @@
 "M" = (
 /obj/structure/closet/emcloset,
 /obj/effect/turf_decal/delivery,
-/obj/effect/turf_decal/stripes{
-	layer = 2.01
-	},
+/obj/effect/turf_decal/stripes,
 /obj/machinery/light/directional/south,
 /turf/open/floor/mineral/titanium/blue,
 /area/shuttle/arrival)

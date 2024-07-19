@@ -26,6 +26,7 @@
 		/obj/item/storage/belt/security/webbing = 5,
 		/obj/item/coin/antagtoken = 1,
 		/obj/item/clothing/head/helmet/blueshirt = 1,
+		/obj/item/clothing/gloves/color/black/security/blu = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
 		/obj/item/clothing/head/helmet/alt/tactical = 2,
 		/obj/item/clothing/suit/armor/vest/alt/tactical_armor = 2,

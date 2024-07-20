@@ -516,7 +516,7 @@
 #undef CPR_PANIC_SPEED
 
 /mob/living/carbon/human/cuff_resist(obj/item/I)
-	if(dna?.check_mutation(/datum/mutation/human/hulk))
+	if(HAS_TRAIT(src, TRAIT_HULK))
 		say(pick(";RAAAAAAAARGH!", ";HNNNNNNNNNGGGGGGH!", ";GWAAAAAAAARRRHHH!", "NNNNNNNNGGGGGGGGHH!", ";AAAAAAARRRGH!" ), forced = "hulk")
 		if(..(I, cuff_break = FAST_CUFFBREAK))
 			dropItemToGround(I)
@@ -915,7 +915,7 @@
 
 	var/carrydelay = 5 SECONDS //if you have latex you are faster at grabbing
 	var/skills_space
-	var/fitness_level = mind.get_skill_level(/datum/skill/athletics) - 1
+	var/fitness_level = mind?.get_skill_level(/datum/skill/athletics) - 1
 	if(HAS_TRAIT(src, TRAIT_QUICKER_CARRY))
 		carrydelay -= 2 SECONDS
 	else if(HAS_TRAIT(src, TRAIT_QUICK_CARRY))
@@ -923,6 +923,10 @@
 
 	// can remove up to 2 seconds at legendary
 	carrydelay -= fitness_level * (1/3) SECONDS
+
+	var/obj/item/organ/internal/cyberimp/chest/spine/potential_spine = get_organ_slot(ORGAN_SLOT_SPINE)
+	if(istype(potential_spine))
+		carrydelay *= potential_spine.athletics_boost_multiplier
 
 	if(carrydelay <= 3 SECONDS)
 		skills_space = " very quickly"
@@ -976,10 +980,6 @@
 
 /mob/living/carbon/human/updatehealth()
 	. = ..()
-	if(HAS_TRAIT(src, TRAIT_IGNOREDAMAGESLOWDOWN))
-		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown)
-		remove_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown_flying)
-		return
 	var/health_deficiency = max((maxHealth - health), staminaloss)
 	if(health_deficiency >= 40)
 		add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/damage_slowdown, TRUE, multiplicative_slowdown = health_deficiency / 75)
@@ -1099,19 +1099,5 @@
 /mob/living/carbon/human/species/zombie/infectious
 	race = /datum/species/zombie/infectious
 
-/mob/living/carbon/human/species/synthetic
-	race = /datum/species/synthetic
-	gib_type = /obj/effect/decal/cleanable/robot_debris
-	use_random_name = FALSE
-
-/mob/living/carbon/human/species/synthetic/gib_animation()
-	new /obj/effect/temp_visual/gib_animation(loc, "gibbed-r")
-
-/mob/living/carbon/human/species/synthetic/dust_animation()
-	new /obj/effect/temp_visual/dust_animation(loc, "gibbed-r")
-
-/mob/living/carbon/human/species/synthetic/spawn_gibs()
-	new /obj/effect/gibspawner/robot(drop_location(), src)
-
-/mob/living/carbon/human/species/synthetic/spawn_dust()
-	new /obj/effect/decal/remains/robot(loc)
+/mob/living/carbon/human/species/voidwalker
+	race = /datum/species/voidwalker

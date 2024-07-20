@@ -32,6 +32,8 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	cost = SHEET_MATERIAL_AMOUNT
 	source = /datum/robot_energy_storage/material/glass
 	sniffable = TRUE
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /datum/armor/sheet_glass
 	fire = 50
@@ -105,6 +107,8 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
 	material_flags = NONE
 	tableVariant = /obj/structure/table/glass/plasmaglass
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -163,6 +167,8 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
 	matter_amount = 6
 	tableVariant = /obj/structure/table/reinforced/rglass
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /obj/item/stack/sheet/rglass/fifty
 	amount = 50
@@ -201,6 +207,8 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	gulag_valid = TRUE
 	matter_amount = 8
 	tableVariant = /obj/structure/table/reinforced/plasmarglass
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /datum/armor/sheet_plasmarglass
 	melee = 20
@@ -231,6 +239,8 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
 	tableVariant = /obj/structure/table/reinforced/titaniumglass
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /obj/item/stack/sheet/titaniumglass/fifty
 	amount = 50
@@ -261,6 +271,8 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
 	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
+	pickup_sound = 'sound/items/glass_pick_up.ogg'
+	drop_sound = 'sound/items/glass_drop.ogg'
 
 /obj/item/stack/sheet/plastitaniumglass/fifty
 	amount = 50

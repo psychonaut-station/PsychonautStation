@@ -72,9 +72,9 @@
 				left_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
 				right_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
 		if(left_turf?.dir == dir && left_turf.connectable)
-			. += mutable_appearance('icons/psychonaut/obj/connectors.dmi', "left")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
 		if(right_turf?.dir == dir && right_turf.connectable)
-			. += mutable_appearance('icons/psychonaut/obj/connectors.dmi', "right")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)
 		. += mutable_appearance(icon, "[icon_state]_broken")

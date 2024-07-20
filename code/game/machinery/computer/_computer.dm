@@ -71,9 +71,9 @@
 			if(WEST)
 				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
 				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
-		if(left_comp?.dir == dir && left_comp.connectable)
+		if(!QDELETED(left_comp) && left_comp?.dir == dir && left_comp.connectable)
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
-		if(right_comp?.dir == dir && right_comp.connectable)
+		if(!QDELETED(right_comp) && right_comp?.dir == dir && right_comp.connectable)
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)

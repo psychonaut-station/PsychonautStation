@@ -56,24 +56,24 @@
 			. += icon_keyboard
 
 	if(connectable)
-		var/obj/machinery/computer/left_turf = null
-		var/obj/machinery/computer/right_turf = null
+		var/obj/machinery/computer/left_comp = null
+		var/obj/machinery/computer/right_comp = null
 		switch(dir)
 			if(NORTH)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
 			if(EAST)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
 			if(SOUTH)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
 			if(WEST)
-				left_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
-				right_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
-		if(left_turf?.dir == dir && left_turf.connectable)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+		if(left_comp?.dir == dir && left_comp.connectable)
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
-		if(right_turf?.dir == dir && right_turf.connectable)
+		if(right_comp?.dir == dir && right_comp.connectable)
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)

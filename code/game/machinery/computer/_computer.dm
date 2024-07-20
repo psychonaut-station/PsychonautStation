@@ -20,6 +20,8 @@
 	var/time_to_unscrew = 2 SECONDS
 	/// Are we authenticated to use this? Used by things like comms console, security and medical data, and apc controller.
 	var/authenticated = FALSE
+	///Determines if the computer can connect to other computers (no shuttle computer, etc.)
+	var/connectable = TRUE
 
 /datum/armor/machinery_computer
 	fire = 40
@@ -28,6 +30,17 @@
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	power_change()
+
+	if(connectable && icon_state != "computer")
+		connectable = FALSE
+
+	for(var/obj/machinery/computer/selected in range(1,src))
+		addtimer(CALLBACK(selected, TYPE_PROC_REF(/atom, update_appearance)), 0.02 SECONDS)
+
+/obj/machinery/computer/Destroy()
+	for(var/obj/machinery/computer/selected in range(1,src))
+		addtimer(CALLBACK(selected, TYPE_PROC_REF(/atom, update_appearance)), 0.02 SECONDS)
+	return ..()
 
 /obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -41,6 +54,27 @@
 			. += "[icon_keyboard]_off"
 		else
 			. += icon_keyboard
+
+	if(connectable)
+		var/obj/machinery/computer/left_turf = null
+		var/obj/machinery/computer/right_turf = null
+		switch(dir)
+			if(NORTH)
+				left_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
+				right_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
+			if(EAST)
+				left_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
+				right_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+			if(SOUTH)
+				left_turf = locate(/obj/machinery/computer) in get_step(src, EAST)
+				right_turf = locate(/obj/machinery/computer) in get_step(src, WEST)
+			if(WEST)
+				left_turf = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				right_turf = locate(/obj/machinery/computer) in get_step(src, NORTH)
+		if(left_turf?.dir == dir && left_turf.connectable)
+			. += mutable_appearance('icons/psychonaut/obj/connectors.dmi', "left")
+		if(right_turf?.dir == dir && right_turf.connectable)
+			. += mutable_appearance('icons/psychonaut/obj/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)
 		. += mutable_appearance(icon, "[icon_state]_broken")

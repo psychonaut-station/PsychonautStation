@@ -324,6 +324,8 @@
 
 		new_computer.RefreshParts()
 		new_computer.on_construction(user)
+		for(var/obj/machinery/computer/selected in range(1,src))
+			selected.update_overlays()
 
 	qdel(src)
 	return TRUE

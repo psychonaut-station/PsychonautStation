@@ -20,8 +20,6 @@
 	var/time_to_unscrew = 2 SECONDS
 	/// Are we authenticated to use this? Used by things like comms console, security and medical data, and apc controller.
 	var/authenticated = FALSE
-	///Determines if the computer can connect to other computers (no shuttle computer, etc.)
-	var/connectable = TRUE
 
 /datum/armor/machinery_computer
 	fire = 40
@@ -31,15 +29,14 @@
 	. = ..()
 	power_change()
 
-	if(connectable && icon_state != "computer")
-		connectable = FALSE
-
-	for(var/obj/machinery/computer/selected in range(1,src))
-		addtimer(CALLBACK(selected, TYPE_PROC_REF(/atom, update_appearance)), 0.02 SECONDS)
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance(UPDATE_ICON)
 
 /obj/machinery/computer/Destroy()
-	for(var/obj/machinery/computer/selected in range(1,src))
-		addtimer(CALLBACK(selected, TYPE_PROC_REF(/atom, update_appearance)), 0.02 SECONDS)
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance(UPDATE_ICON)
 	return ..()
 
 /obj/machinery/computer/process()
@@ -55,7 +52,7 @@
 		else
 			. += icon_keyboard
 
-	if(connectable)
+if(icon_state == "computer")
 		var/obj/machinery/computer/left_comp = null
 		var/obj/machinery/computer/right_comp = null
 		switch(dir)
@@ -71,9 +68,9 @@
 			if(WEST)
 				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
 				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
-		if(!QDELETED(left_comp) && left_comp?.dir == dir && left_comp.connectable)
+		if(!QDELETED(left_comp) && left_comp.dir == dir && left_comp.icon_state == "computer")
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
-		if(!QDELETED(right_comp) && right_comp?.dir == dir && right_comp.connectable)
+		if(!QDELETED(right_comp) && right_comp.dir == dir && right_comp.icon_state == "computer")
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)

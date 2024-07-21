@@ -52,7 +52,7 @@
 		else
 			. += icon_keyboard
 
-if(icon_state == "computer")
+	if(icon_state == "computer")
 		var/obj/machinery/computer/left_comp = null
 		var/obj/machinery/computer/right_comp = null
 		switch(dir)

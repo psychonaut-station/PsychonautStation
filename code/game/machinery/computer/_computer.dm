@@ -31,12 +31,12 @@
 
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
-			computer.update_appearance(UPDATE_ICON)
+			computer.update_appearance()
 
 /obj/machinery/computer/Destroy()
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
-			computer.update_appearance(UPDATE_ICON)
+			computer.update_appearance()
 	return ..()
 
 /obj/machinery/computer/process()
@@ -160,7 +160,7 @@
 		new_frame.state = FRAME_COMPUTER_STATE_WIRED
 	else
 		new_frame.state = FRAME_COMPUTER_STATE_GLASSED
-	new_frame.update_appearance(UPDATE_ICON_STATE)
+	new_frame.update_appearance()
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)

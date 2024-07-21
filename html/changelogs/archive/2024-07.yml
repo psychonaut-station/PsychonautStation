@@ -1050,3 +1050,15 @@
   - qol: secmods jetpacks are now pinned by default
   vinylspiders:
   - bugfix: fixed a hard del with soapboxes
+2024-07-21:
+  SmArtKar:
+  - bugfix: Fixed a signal reg error caused by add_occupant being called twice
+  - bugfix: Sentient floorbots can now rip up tiles when emagged
+  - code_imp: Slight cleanup in floorbot code
+  san7890:
+  - admin: Ticking "Job Playtime Exempt" on a player's Job Playtime Tracker panel
+      will also exempt them from BYOND Account Age restrictions now. It previously
+      only exempted them from actual living playtime minutes - this is for the BYOND
+      Account Age in days.
+  zoomachina:
+  - qol: chem dispenser displays units instead of kilowatts

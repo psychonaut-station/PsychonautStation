@@ -29,6 +29,16 @@
 	. = ..()
 	power_change()
 
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/Destroy()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+	return ..()
+
 /obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return FALSE
@@ -41,6 +51,27 @@
 			. += "[icon_keyboard]_off"
 		else
 			. += icon_keyboard
+
+	if(icon_state == "computer")
+		var/obj/machinery/computer/left_comp = null
+		var/obj/machinery/computer/right_comp = null
+		switch(dir)
+			if(NORTH)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+			if(EAST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+			if(SOUTH)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+			if(WEST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+		if(!QDELETED(left_comp) && left_comp.dir == dir && left_comp.icon_state == "computer")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
+		if(!QDELETED(right_comp) && right_comp.dir == dir && right_comp.icon_state == "computer")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)
 		. += mutable_appearance(icon, "[icon_state]_broken")
@@ -109,6 +140,18 @@
 				if(prob(10))
 					atom_break(ENERGY)
 
+/obj/machinery/computer/on_construction(mob/user)
+	..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/setDir(newdir)
+	. = ..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
 /obj/machinery/computer/spawn_frame(disassembled)
 	if(QDELETED(circuit)) //no circuit, no computer frame
 		return
@@ -129,7 +172,7 @@
 		new_frame.state = FRAME_COMPUTER_STATE_WIRED
 	else
 		new_frame.state = FRAME_COMPUTER_STATE_GLASSED
-	new_frame.update_appearance(UPDATE_ICON_STATE)
+	new_frame.update_appearance()
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)

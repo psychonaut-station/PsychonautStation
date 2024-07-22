@@ -146,6 +146,12 @@
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
 
+/obj/machinery/computer/setDir(newdir)
+	. = ..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
 /obj/machinery/computer/spawn_frame(disassembled)
 	if(QDELETED(circuit)) //no circuit, no computer frame
 		return

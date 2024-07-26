@@ -91,14 +91,18 @@
 	end_when = rand(SURGE_DURATION_MIN, SURGE_DURATION_MAX)
 
 /datum/round_event/supermatter_surge/announce(fake)
+<<<<<<< HEAD
 	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı atmosferik durumlar tespit etti, supermatter kristalinden gelen enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "[surge_class] Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert3.ogg')
+=======
+	var/class_to_announce = fake ? pick(1, 2, 3, 4) : surge_class
+	priority_announce("The Crystal Integrity Monitoring System has detected unusual atmospheric properties in the supermatter chamber, energy output from the supermatter crystal has increased significantly. Engineering intervention is required to stabilize the engine.", "Class [class_to_announce] Supermatter Surge Alert", 'sound/machines/engine_alert3.ogg')
+>>>>>>> upstream/master
 
 /datum/round_event/supermatter_surge/start()
 	engine.bullet_energy = surge_class + SURGE_BULLET_ENERGY_ADDITION
 	sm_gas.powerloss_inhibition = (surge_class * SURGE_POWERLOSS_INHIBITION_MODIFIER) + SURGE_BASE_POWERLOSS_INHIBITION
 	sm_gas.heat_power_generation = (surge_class * SURGE_POWER_GENERATION_MODIFIER) - 1
 	sm_gas.heat_modifier = (surge_class * SURGE_HEAT_MODIFIER) - 1
-
 
 /datum/round_event/supermatter_surge/end()
 	engine.bullet_energy = initial(engine.bullet_energy)

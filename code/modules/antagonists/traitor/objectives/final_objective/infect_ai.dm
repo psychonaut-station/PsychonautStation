@@ -51,6 +51,11 @@
 			sent_board = TRUE
 			podspawn(list(
 				"target" = get_turf(user),
+<<<<<<< HEAD
 				"style" = STYLE_SYNDICATE,
 				"spawn" = list(/obj/item/ai_module/malf, /obj/item/multitool/ai_detect),
+=======
+				"style" = /datum/pod_style/syndicate,
+				"spawn" = /obj/item/ai_module/malf,
+>>>>>>> upstream/master
 			))

@@ -1050,13 +1050,6 @@
   - qol: secmods jetpacks are now pinned by default
   vinylspiders:
   - bugfix: fixed a hard del with soapboxes
-<<<<<<< HEAD
-2024-07-21:
-  SmArtKar:
-  - bugfix: Fixed a signal reg error caused by add_occupant being called twice
-  - bugfix: Sentient floorbots can now rip up tiles when emagged
-  - code_imp: Slight cleanup in floorbot code
-=======
 2024-07-20:
   AyIong:
   - bugfix: Announcement subheader will no longer overlap the header if the second
@@ -1106,20 +1099,11 @@
   - qol: Moving the light bulb removal function from the left mouse button to the
       right one.
   - qol: Added & improved tips related to the light fixture
->>>>>>> upstream/master
   san7890:
   - admin: Ticking "Job Playtime Exempt" on a player's Job Playtime Tracker panel
       will also exempt them from BYOND Account Age restrictions now. It previously
       only exempted them from actual living playtime minutes - this is for the BYOND
       Account Age in days.
-<<<<<<< HEAD
-  zoomachina:
-  - qol: chem dispenser displays units instead of kilowatts
-2024-07-23:
-  RengaN02:
-  - image: "Yan yana duran bilgisayarlar\u0131n spriteleri art\u0131k birle\u015F\
-      ik g\xF6z\xFCk\xFCyor."
-=======
   thegrb93:
   - qol: Allow custom borg hat placement for custom borg skins
   theselfish:
@@ -1232,6 +1216,9 @@
   - rscadd: Dehydrator, a machine version of drying rack, with a circuit board and
       available on some kitchens roundstart.
   - image: Updated the color palette of Smart Fridge
+  RengaN02:
+  - image: "Yan yana duran bilgisayarlar\u0131n spriteleri art\u0131k birle\u015F\
+      ik g\xF6z\xFCk\xFCyor."
   SmArtKar:
   - code_imp: Removed 8 cases of double indentation
   - bugfix: Holopads no longer suck in unsuspecting people when crowbared
@@ -1353,4 +1340,3 @@
   - rscadd: Two new arrow variants appear in the crafting menu; sticky and poisonous
       ones! If you want to make arrows at all though, remember to order bow-maker's
       crate at cargo.
->>>>>>> upstream/master

@@ -10,11 +10,7 @@
 
 ## Changelog
 
-<<<<<<< HEAD
 <!-- Eğer PR oyunun oyuncular veya adminler tarafından somut olarak gözlemlenebilecek yönlerini değiştiriyorsa, changelog eklemelisin. Eğer yaptığın değişiklikler oyuncuları veya adminleri ilgilendirmiyorsa, bu kısmı silebilirsin. Lütfen maintainerların uygun gördükleri takdirde tagları kaldırabileceğini ve ekleme yapabileceğini unutma. -->
-=======
-<!-- If your PR modifies aspects of the game that can be concretely observed by players or admins you should add a changelog. If your change does NOT meet this description, remove this section. Be sure to properly mark your PRs to prevent unnecessary GBP loss. You can read up on GBP and its effects on PRs in the tgstation guides for contributors. Please note that maintainers freely reserve the right to remove and add tags should they deem it appropriate. You can attempt to finagle the system all you want, but it's best to shoot for clear communication right off the bat. -->
->>>>>>> upstream/master
 
 :cl:
 add: Added new mechanics or gameplay changes

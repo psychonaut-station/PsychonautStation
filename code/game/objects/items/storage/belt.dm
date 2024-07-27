@@ -864,7 +864,6 @@
 	new /obj/item/melee/sabre(src)
 	update_appearance()
 
-<<<<<<< HEAD
 /obj/item/storage/belt/sabre/on_click_alt_reskin(datum/source, mob/user)
 	if(!contents.len)
 		return NONE
@@ -890,7 +889,6 @@
 		I.update_appearance()
 		update_appearance()
 
-=======
 /obj/item/storage/belt/grass_sabre
 	name = "sabre sheath"
 	desc = "An simple grass sheath designed to hold a sabre of... some sorts. Actual metal one might be too sharp, though..."
@@ -935,7 +933,6 @@
 		worn_icon_state += "-sabre"
 	return ..()
 
->>>>>>> upstream/master
 /obj/item/storage/belt/plant
 	name = "botanical belt"
 	desc = "A sturdy leather belt used to hold most hydroponics supplies."

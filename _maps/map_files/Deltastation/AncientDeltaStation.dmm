@@ -1939,7 +1939,7 @@
 "alu" = (
 /obj/structure/table/reinforced,
 /obj/item/storage/box/ids,
-/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/keycard_auth/wall_mounted/directional/west,
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 1
 	},
@@ -36755,7 +36755,7 @@
 	},
 /obj/machinery/light/directional/south,
 /obj/machinery/status_display/evac/directional/east,
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_x = -5
 	},
 /obj/machinery/light_switch/directional/south{
@@ -58333,7 +58333,7 @@
 /obj/machinery/light_switch/directional/east{
 	pixel_x = 38
 	},
-/obj/machinery/keycard_auth/directional/north{
+/obj/machinery/keycard_auth/wall_mounted/directional/north{
 	pixel_x = 26
 	},
 /obj/effect/turf_decal/tile/neutral{
@@ -65457,7 +65457,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
 "osF" = (
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_y = -38
 	},
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -73606,7 +73606,7 @@
 /obj/machinery/computer/crew{
 	dir = 8
 	},
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_x = 8;
 	pixel_y = -38
 	},
@@ -74838,7 +74838,7 @@
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "rgz" = (
-/obj/machinery/keycard_auth/directional/south{
+/obj/machinery/keycard_auth/wall_mounted/directional/south{
 	pixel_x = 6
 	},
 /obj/machinery/light_switch/directional/south{
@@ -76497,7 +76497,7 @@
 /turf/open/floor/iron/dark,
 /area/station/science/xenobiology)
 "rIR" = (
-/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/keycard_auth/wall_mounted/directional/west,
 /obj/machinery/modular_computer/preset/engineering{
 	dir = 4
 	},
@@ -91908,7 +91908,7 @@
 /area/station/hallway/primary/central/fore)
 "wqv" = (
 /obj/structure/table/wood,
-/obj/machinery/keycard_auth/directional/west,
+/obj/machinery/keycard_auth/wall_mounted/directional/west,
 /obj/item/flashlight/lamp,
 /obj/effect/turf_decal/tile/neutral{
 	dir = 1

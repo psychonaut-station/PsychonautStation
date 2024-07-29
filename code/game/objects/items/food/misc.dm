@@ -797,18 +797,4 @@
 	foodtypes = VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_4
-
-/obj/item/food/cigkofte
-    name = "Çiğ köfte"
-	desc = "Bunun içinde gerçekten çiğ et mi var ?"
-	icon = 'icons/obj/food/food.dmi'
-	icon_state = "cig_kofte"
-	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/protein = 6,
-		/datum/reagent/consumable/nutriment/vitamin = 5,
-	)
-	tastes = list("tomato" = 1, "onion" = 1, "wheat" = 1)
-	foodtypes = VEGETABLES | GRAIN
-	w_class = WEIGHT_CLASS_TINY
-	crafting_complexity = FOOD_COMPLEXITY_2
+	

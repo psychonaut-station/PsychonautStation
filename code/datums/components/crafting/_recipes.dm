@@ -83,7 +83,7 @@
 	src.result = stack_recipe.result_type
 	src.result_amount = stack_recipe.res_amount
 	src.reqs[material] = stack_recipe.req_amount
-	src.category = stack_recipe.category || CAT_MISC
+	src.category = stack_recipe.category || CAT_MISC || CAT_TURKISH
 	src.placement_checks = stack_recipe.placement_checks
 
 /**

@@ -113,7 +113,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         id: create-pull-request
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.WORKFLOW_TOKEN }}
           author: ${{ env.commiter_name }} <${{ env.commiter_email }}>
           branch: ${{ env.pr_branch }}
           branch-suffix: short-commit-hash

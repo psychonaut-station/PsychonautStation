@@ -16,8 +16,8 @@ env:
   pr_label: mirror
   remote_repo: tgstation/tgstation
   remote_branch: master
-  commiter_name: github-actions[bot]
-  commiter_email: 41898282+github-actions[bot]@users.noreply.github.com
+  commiter_name: Psychonaut Station CI
+  commiter_email: 144540560+loanselotci@users.noreply.github.com
 
 jobs:
   mirror:
@@ -113,7 +113,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         id: create-pull-request
         with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+          token: ${{ secrets.BOT_PAT }}
           author: ${{ env.commiter_name }} <${{ env.commiter_email }}>
           branch: ${{ env.pr_branch }}
           branch-suffix: short-commit-hash
@@ -133,5 +133,5 @@ jobs:
             }
           }
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.BOT_PAT }}
         shell: pwsh

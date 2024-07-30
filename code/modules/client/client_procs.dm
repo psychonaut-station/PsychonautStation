@@ -481,7 +481,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		display_unread_notes(src, time_stamp)
 	qdel(query_last_connected)
 
-	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need it's current value now down below.
+	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need its current value now down below.
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
 	var/new_account = FALSE
@@ -536,6 +536,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	update_ambience_pref(prefs.read_preference(/datum/preference/toggle/sound_ambience))
 	check_ip_intel()
+
+	check_patreon()
 
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
@@ -803,10 +805,30 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
 			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
 		else
-			var/list/bans = json_decode(response["body"])
+			var/list/bans = json_decode(response.body)
 			if (bans.len > 0)
 				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
 				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
+
+/client/proc/check_patreon()
+	var/endpoint = CONFIG_GET(string/patreonendpoint)
+	if(!endpoint)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[ckey]")
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		var/list/json = json_decode(response.body)
+		if(json["patron"])
+			patron = TRUE
+		else
+			patron = FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

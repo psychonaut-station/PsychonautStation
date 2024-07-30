@@ -40,6 +40,7 @@
 #define MOTH_WEEK "Moth Haftası"
 #define IAN_HOLIDAY "Ian'ın Doğum Günü"
 #define HOTDOG_DAY "Ulusal Sosisli Günü"
+#define ICE_CREAM_DAY "Ulusal Dondurma Günü"
 /*
 
 Days of the week to make it easier to reference them.

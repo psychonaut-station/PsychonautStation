@@ -31,7 +31,7 @@
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
-	if(length(alert_control.listener.alarms))
+	if(length(alert_control?.listener.alarms))
 		. += "alert:2"
 
 /**

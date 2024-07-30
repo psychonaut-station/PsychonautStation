@@ -139,6 +139,7 @@
 		"reagentgrinder",
 		"microwave_engineering",
 		"smartfridge",
+		"dehydrator",
 		"sheetifier",
 		"fat_sucker",
 		"dish_drive",

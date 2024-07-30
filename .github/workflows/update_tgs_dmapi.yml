@@ -28,8 +28,13 @@ jobs:
     - name: Commit and Push
       continue-on-error: true
       run: |
+<<<<<<< HEAD
         git config user.name PsychonautBot
         git config user.email PsychonautBot@users.noreply.github.com
+=======
+        git config user.name "tgstation-server-ci[bot]"
+        git config user.email "161980869+tgstation-server-ci[bot]@users.noreply.github.com"
+>>>>>>> upstream/master
         git add .
         git commit -m 'Update TGS DMAPI'
         git push -f -u origin tgs-dmapi-update

@@ -1340,22 +1340,15 @@
   - rscadd: Two new arrow variants appear in the crafting menu; sticky and poisonous
       ones! If you want to make arrows at all though, remember to order bow-maker's
       crate at cargo.
-<<<<<<< HEAD
-2024-07-28:
-=======
 2024-07-27:
->>>>>>> upstream/master
   00-Steven:
   - bugfix: Fixes borgs not being able to place apparatus-held items on tables. As
       a side-effect, they can now combat mode right click splash containers as normal
       instead of having their own right-click floor splash.
   Ghommie:
-<<<<<<< HEAD
-=======
   - bugfix: Centcom technicians have been trained to recognize cargo-bought fish.
       You will no longer be able to trick the economy system by buying fish and sending
       it right back. Also nerfed fish selling price very slightly.
->>>>>>> upstream/master
   - bugfix: Fixes projectiles facing north if ricocheting, deflected or homing
   - rscdel: Removed a janky fish bounty
   - rscadd: introduced exporting fish through cargo.
@@ -1390,8 +1383,6 @@
   - bugfix: wawastation ordnance no longer has a light fixture on a window and looks
       objectively slightly better
   - bugfix: wawastation engineering water tanks are now highcap
-<<<<<<< HEAD
-=======
 2024-07-28:
   00-Steven:
   - bugfix: Clicking on a table in the lootpanel with an item in-hand tries to place
@@ -1518,4 +1509,3 @@
   - code_imp: 'improves reagent cross pollination code
 
       :cl:'
->>>>>>> upstream/master

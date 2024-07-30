@@ -113,7 +113,7 @@ jobs:
         uses: peter-evans/create-pull-request@v3
         id: create-pull-request
         with:
-          token: ${{ secrets.WORKFLOW_TOKEN }}
+          token: ${{ secrets.BOT_PAT }}
           author: ${{ env.commiter_name }} <${{ env.commiter_email }}>
           branch: ${{ env.pr_branch }}
           branch-suffix: short-commit-hash
@@ -133,5 +133,5 @@ jobs:
             }
           }
         env:
-          GH_TOKEN: ${{ secrets.WORKFLOW_TOKEN }}
+          GH_TOKEN: ${{ secrets.BOT_PAT }}
         shell: pwsh

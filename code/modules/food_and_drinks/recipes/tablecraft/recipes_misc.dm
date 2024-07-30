@@ -552,4 +552,3 @@
 	)
 	result = /obj/item/food/raw_pita_bread
 	category = CAT_MISCFOOD
-

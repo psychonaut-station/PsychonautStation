@@ -13470,9 +13470,7 @@
 	dir = 9
 	},
 /obj/structure/cable,
-/obj/machinery/power/apc/auto_name/directional/north{
-	pixel_y = 35
-	},
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/lobby)
 "cUO" = (
@@ -16097,10 +16095,6 @@
 /turf/open/floor/iron,
 /area/station/cargo/drone_bay)
 "dyl" = (
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	dir = 4;
-	piping_layer = 2
-	},
 /obj/effect/turf_decal/trimline/purple/filled/line{
 	dir = 9
 	},
@@ -16109,6 +16103,9 @@
 	},
 /obj/structure/sign/poster/official/report_crimes/directional/west,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/ordnance)
 "dyo" = (
@@ -24036,16 +24033,10 @@
 	pixel_y = 3
 	},
 /obj/item/key/security,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	dir = 8;
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_x = 30
-	},
 /obj/effect/turf_decal/stripes/end,
 /obj/effect/turf_decal/siding/thinplating/dark/end,
 /obj/effect/turf_decal/bot_red,
+/obj/machinery/computer/security/telescreen/prison/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/security/warden)
 "fgj" = (
@@ -33403,7 +33394,6 @@
 "hgf" = (
 /obj/structure/bed/medical,
 /obj/machinery/defibrillator_mount/directional/south,
-/obj/machinery/firealarm/directional/west,
 /obj/machinery/light/cold/directional/south,
 /obj/machinery/light_switch/directional/west{
 	pixel_x = -20
@@ -33411,6 +33401,9 @@
 /obj/effect/turf_decal/tile/blue/fourcorners,
 /obj/effect/turf_decal/bot_white{
 	color = "#52B4E9"
+	},
+/obj/machinery/firealarm/directional/west{
+	pixel_y = -9
 	},
 /turf/open/floor/iron/white/textured,
 /area/station/medical/treatment_center)
@@ -43432,10 +43425,9 @@
 /obj/structure/stairs/north,
 /obj/machinery/status_display/ai/directional/north,
 /obj/structure/railing{
-	dir = 4;
-	layer = 3.1
+	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "jpt" = (
 /obj/effect/turf_decal/stripes/line{
@@ -44678,13 +44670,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "jBv" = (
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for monitoring medbay to ensure patient safety.";
-	dir = 4;
-	name = "Medbay Monitor";
-	network = list("medbay");
-	pixel_x = -32
-	},
 /obj/machinery/light_switch/directional/west{
 	pixel_x = -20
 	},
@@ -45773,13 +45758,11 @@
 	dir = 9
 	},
 /obj/effect/turf_decal/bot_red,
-/obj/machinery/power/apc/auto_name/directional/north{
-	pixel_y = 35
-	},
 /obj/machinery/firealarm/directional/north{
 	pixel_x = -26
 	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/north,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/heads_quarters/ce)
 "jNC" = (
@@ -51512,7 +51495,7 @@
 /obj/structure/railing{
 	dir = 4
 	},
-/turf/open/floor/grass,
+/turf/open/floor/iron,
 /area/station/commons/dorms)
 "kYh" = (
 /obj/machinery/autolathe,
@@ -53436,12 +53419,6 @@
 /obj/structure/table/wood,
 /obj/item/book/manual/wiki/security_space_law,
 /obj/item/pen/red,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_y = 30
-	},
 /obj/item/flashlight/lamp{
 	pixel_x = -7;
 	pixel_y = 9
@@ -53449,6 +53426,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 1
 	},
+/obj/machinery/computer/security/telescreen/prison/directional/north,
 /turf/open/floor/carpet/black,
 /area/station/security/detectives_office)
 "lqQ" = (
@@ -60274,7 +60252,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/open/floor/iron,
 /area/station/commons/dorms)
 "mNB" = (
 /obj/structure/disposalpipe/segment{
@@ -82917,7 +82895,7 @@
 /obj/structure/railing{
 	dir = 8
 	},
-/turf/open/floor/grass,
+/turf/open/floor/iron,
 /area/station/hallway/primary/upper)
 "rLg" = (
 /obj/structure/closet/secure_closet/cytology,
@@ -93041,13 +93019,6 @@
 /area/station/maintenance/port/fore)
 "tRd" = (
 /obj/effect/landmark/secequipment,
-/obj/machinery/computer/security/telescreen{
-	desc = "Used for watching Prison Wing holding areas.";
-	dir = 1;
-	name = "Prison Monitor";
-	network = list("prison");
-	pixel_y = -30
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -93061,6 +93032,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/siding/thinplating/dark,
+/obj/machinery/computer/security/telescreen/prison/directional/south,
 /turf/open/floor/iron/dark/textured,
 /area/station/security/office)
 "tRe" = (
@@ -95547,8 +95519,7 @@
 /area/station/station_explore)
 "usy" = (
 /obj/structure/fluff/bus/passable{
-	icon_state = "bottomdoor";
-	layer = 3
+	icon_state = "bottomdoor"
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/station/station_explore)
@@ -106307,10 +106278,8 @@
 /obj/machinery/status_display/evac/directional/west,
 /obj/machinery/camera/autoname/directional/west,
 /obj/effect/turf_decal/tile/blue/fourcorners,
-/obj/machinery/power/apc/auto_name/directional/south{
-	pixel_y = -23
-	},
 /obj/structure/cable,
+/obj/machinery/power/apc/auto_name/directional/south,
 /turf/open/floor/iron/white/textured,
 /area/station/medical/treatment_center)
 "wJT" = (

@@ -1509,3 +1509,9 @@
   - code_imp: 'improves reagent cross pollination code
 
       :cl:'
+2024-07-31:
+  SmArtKar:
+  - image: All implants have received a fresh coat of paint
+  thegrb93:
+  - bugfix: Fixes getting permanently hot or cold if wearing thermal insulation as
+      a lizard

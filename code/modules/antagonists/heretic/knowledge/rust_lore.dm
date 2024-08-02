@@ -1,6 +1,5 @@
 /**
  * # The path of Rust.
- * Spell names are in this language: OLD SLAVIC
  *
  * Goes as follows:
  *
@@ -257,7 +256,7 @@
 		text = "[generate_heretic_text()] Harap olmaktan korkun, [user.real_name] yükseldi! Kimse aşınmadan kaçamayacak! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = 'sound/ambience/antag/heretic/ascend_rust.ogg',
-		color_override = "brown",
+		color_override = "pink",
 	)
 	trigger(loc)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))

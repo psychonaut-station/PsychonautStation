@@ -1510,10 +1510,6 @@
 
       :cl:'
 2024-07-31:
-<<<<<<< HEAD
-  SmArtKar:
-  - image: All implants have received a fresh coat of paint
-=======
   Jacquerel:
   - image: Big balls are now much rounder, to more easily slide down into a cannon.
   SmArtKar:
@@ -1522,7 +1518,6 @@
   - bugfix: 'fix a bug where botany reagents would dissapear from existing plants
 
       :cl:'
->>>>>>> upstream/master
   thegrb93:
   - bugfix: Fixes getting permanently hot or cold if wearing thermal insulation as
       a lizard

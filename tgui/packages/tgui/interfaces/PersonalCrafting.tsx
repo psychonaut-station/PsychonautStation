@@ -81,7 +81,6 @@ const CATEGORY_ICONS_COOKING = {
   'Mexican Food': 'pepper-hot',
   'Misc. Food': 'shapes',
   'Mothic Food': 'shirt',
-  Turkish_Food: 'shapes',
   Pastries: 'cookie',
   Pies: 'chart-pie',
   Pizzas: 'pizza-slice',
@@ -90,6 +89,7 @@ const CATEGORY_ICONS_COOKING = {
   Seafood: 'fish',
   Soups: 'mug-hot',
   Spaghettis: 'wheat-awn',
+  Turkish_Food: 'shapes',
 } as const;
 
 enum MODE {

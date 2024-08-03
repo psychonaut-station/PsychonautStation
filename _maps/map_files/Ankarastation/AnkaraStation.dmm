@@ -73788,6 +73788,9 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/machinery/airlock_sensor/incinerator_atmos{
+	pixel_y = 24
+	},
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "nEE" = (
@@ -103610,24 +103613,6 @@
 /obj/item/clothing/head/costume/garland/poppy,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/lower)
-"tjS" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/machinery/airlock_sensor/incinerator_atmos{
-	pixel_y = 24
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/trimline/dark_blue/filled/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/thinplating/dark{
-	dir = 1
-	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/dark/herringbone,
-/area/station/maintenance/disposal/incinerator)
 "tjV" = (
 /obj/effect/turf_decal/trimline/blue/filled/warning{
 	dir = 10
@@ -217261,7 +217246,7 @@ kDP
 xTq
 nEz
 xTq
-tjS
+tvj
 pBN
 brH
 jZT

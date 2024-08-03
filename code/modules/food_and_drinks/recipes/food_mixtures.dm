@@ -291,4 +291,4 @@
 /datum/chemical_reaction/food/ayran
 	results = list(/datum/reagent/consumable/ayran = 2)
 	required_reagents = list(/datum/reagent/water/salt = 1, /datum/reagent/consumable/yoghurt = 1)
-	reaction_flags = REACTION_TAG_EASY_EASY | REACTION_TAG_DRINK
+	reaction_flags = REACTION_TAG_EASY | REACTION_TAG_DRINK

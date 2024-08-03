@@ -1317,10 +1317,11 @@
 
 /datum/reagent/consumable/ayran
 	name = "Ayran"
-	description = "A drink with an old lid that tastes like milk."
+	description = "Yoğurt, su ve tuzun karıştırılmasıyla elde edilen, serinletici ve ferahlatıcı geleneksel bir Türk içeceği."
 	color = "#DFDFDF" // rgb: 223, 223, 223
-	taste_description = "Ayran"
+	taste_description = "ayran"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
+	default_container = /obj/item/reagent_containers/cup/glass/ayran
 
 /datum/reagent/consumable/ayran/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()

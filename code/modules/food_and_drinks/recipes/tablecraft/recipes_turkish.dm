@@ -15,6 +15,7 @@
 	reqs = list(
 		/datum/reagent/consumable/ayran = 1,
 		/obj/item/food/grown/cucumber = 1,
+		/obj/item/reagent_containers/cup/bowl = 1
 	)
 	result = /obj/item/food/cacik
 	category = CAT_TURKISH

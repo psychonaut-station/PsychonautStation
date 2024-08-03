@@ -25,6 +25,7 @@
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
+	trash_type = /obj/item/reagent_containers/cup/bowl
 
 /obj/item/food/raw_lahmacun
 	name = "Pişmemiş Lahmacun"

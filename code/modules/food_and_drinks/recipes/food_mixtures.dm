@@ -290,6 +290,6 @@
 
 /datum/chemical_reaction/food/ayran
 	results = list(/datum/reagent/consumable/ayran = 1)
-	required_reagents = list(/datum/chemical_reaction/water/salt = 1, /datum/reagent/consumable/yoghurt = 1)
+	required_reagents = list(/datum/chemical_reaction/saltwater = 1, /datum/reagent/consumable/yoghurt = 1)
 	optimal_temp = 600
 	mob_react = FALSE

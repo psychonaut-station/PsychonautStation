@@ -1,5 +1,5 @@
 /datum/crafting_recipe/food/cig_kofte
-	name = "Cig Kofte"
+	name = "Çiğ Köfte"
 	reqs = list(
 		/obj/item/food/grown/onion = 1,
 		/obj/item/food/grown/tomato = 1,
@@ -11,7 +11,7 @@
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/cacik
-	name = "Cacik"
+	name = "Cacık"
 	reqs = list(
 		/datum/reagent/consumable/ayran = 1,
 		/obj/item/food/grown/cucumber = 1,
@@ -21,7 +21,7 @@
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/lahmacun
-	name = "Pişmemiş Lahmacun"
+	name = "Lahmacun"
 	reqs = list(
 		/obj/item/food/grown/tomato = 1,
 		/obj/item/food/grown/onion = 1,
@@ -32,7 +32,7 @@
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/raw_beyti
-	name = "Pişmemiş Beyti"
+	name = "Beyti"
 	reqs = list(
 		/obj/item/food/grown/tomato = 2,
 		/datum/reagent/consumable/nutriment/fat/oil/olive = 2,
@@ -41,4 +41,8 @@
 		/obj/item/food/raw_patty = 1,
 	)
 	result = /obj/item/food/raw_beyti
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/reaction/ayran
+	reaction = /datum/chemical_reaction/food/ayran
 	category = CAT_TURKISH

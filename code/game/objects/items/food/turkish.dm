@@ -1,5 +1,5 @@
 /obj/item/food/cig_kofte
-	name = "Cig Kofte"
+	name = "cig kofte"
 	desc = "İnce bulgur, domates salçası ve çeşitli baharatlarla yoğrularak hazırlanan, acılı ve lezzetli bir Türk mezesidir. Genellikle marul yaprağına sarılarak tüketilir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "cig_kofte"
@@ -13,7 +13,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/cacik
-	name = "Cacık"
+	name = "cacik"
 	desc = "Yoğurt, rendelenmiş salatalık, sarımsak ve nane ile hazırlanan, serinletici ve ferahlatıcı bir Türk mezesi."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "cacik"
@@ -28,7 +28,7 @@
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
 /obj/item/food/raw_lahmacun
-	name = "Pişmemiş Lahmacun"
+	name = "raw lahmacun"
 	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan Türk mutfağına özgü, fırında pişirilmesi gerekilen lezzetli bir yemektir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "raw_lahmacun"
@@ -46,7 +46,7 @@
 	AddComponent(/datum/component/bakeable, /obj/item/food/lahmacun, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
 
 /obj/item/food/lahmacun
-	name = "Lahmacun"
+	name = "lahmacun"
 	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan Türk mutfağına özgü, fırında pişirilen lezzetli bir yemektir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "lahmacun"
@@ -61,7 +61,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/raw_beyti
-	name = "Pişmemiş Beyti"
+	name = "raw beyti"
 	desc = "Beyti, kıyma veya kuzu etinden oluşan, bir Türk yemeğidir. Bu sanki pişmemiş ?"
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "raw_beyti"
@@ -79,7 +79,7 @@
 	AddComponent(/datum/component/bakeable, /obj/item/food/beyti, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
 
 /obj/item/food/beyti
-	name = "Beyti"
+	name = "beyti"
 	desc = "Beyti, kıyma veya kuzu etinden oluşan, bir Türk yemeğidir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "beyti"

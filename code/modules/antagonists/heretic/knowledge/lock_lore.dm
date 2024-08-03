@@ -1,7 +1,5 @@
 /**
  * # The path of Lock.
- * Spell names are in this language: EGYPTIAN
- * Both are related: Egyptian-Mysteries-Secrets-Lock
  *
  * Goes as follows:
  *
@@ -243,7 +241,7 @@
 		text = "Delta sınıfı boyutsal anomali tespi[generate_heretic_text()] Gerçeklik paramparça oldu. Geçitler ve kapılar aralandı, [user.real_name] yükseldi! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = 'sound/ambience/antag/heretic/ascend_knock.ogg',
-		color_override = "yellow",
+		color_override = "pink",
 	)
 
 	// buffs

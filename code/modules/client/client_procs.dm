@@ -827,8 +827,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/list/json = json_decode(response.body)
 		if(json["patron"])
 			patron = TRUE
+			prefs.unlock_content = TRUE
 		else
 			patron = FALSE
+			prefs.unlock_content = FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

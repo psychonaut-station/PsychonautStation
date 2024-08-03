@@ -1,8 +1,8 @@
 {
 	"version": 1,
 	"map_name": "AnkaraStation",
-	"map_path": "map_files/AnkaraStation",
-	"map_file": "AnkaraStation.dmm",
+	"map_path": "map_files/Ankarastation",
+	"map_file": "Ankarastation.dmm",
 	"space_ruin_levels": 0,
 	"space_empty_levels": 0,
 	"planetary": 1, 

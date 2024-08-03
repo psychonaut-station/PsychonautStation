@@ -33509,6 +33509,7 @@
 /obj/item/reagent_containers/cup/soda_cans/space_mountain_wind{
 	pixel_x = 15
 	},
+/obj/effect/mapping_helpers/no_atoms_ontop,
 /turf/open/misc/asteroid/snow/icemoon,
 /area/station/station_explore)
 "ghP" = (
@@ -192435,7 +192436,7 @@ cRQ
 cRQ
 cRQ
 cRQ
-cRQ
+iFh
 cRQ
 cRQ
 cRQ

@@ -27,13 +27,6 @@
 			"Gravity": true,
 			"Baseturf": "/turf/open/openspace",
 			"No Parallax": true
-		},
-		{
-			"Down": true,
-			"Linkage": null,
-			"Gravity": true,
-			"Baseturf": "/turf/open/openspace",
-			"No Parallax": true
 		}
 	],
 	"job_changes": {

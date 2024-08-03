@@ -62,7 +62,7 @@
 
 /obj/item/food/raw_beyti
 	name = "raw beyti"
-	desc = "Beyti, kıyma veya kuzu etinden oluşan, bir Türk yemeğidir. Bu sanki pişmemiş ?"
+	desc = "Beyti, kıyma veya kuzu etinden oluşan, bir Türk yemeğidir. Bu sanki pişmemiş?"
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "raw_beyti"
 	food_reagents = list(

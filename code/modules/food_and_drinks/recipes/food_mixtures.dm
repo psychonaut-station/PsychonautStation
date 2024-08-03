@@ -289,7 +289,7 @@
 	mix_message = "The smell of the mixture reminds you of how you lost access to the country club..."
 
 /datum/chemical_reaction/food/ayran
-	results = list(/datum/reagent/consumable/ayran = 1)
-	required_reagents = list(/datum/chemical_reaction/saltwater = 1, /datum/reagent/consumable/yoghurt = 1)
+	results = list(/datum/reagent/consumable/ayran = 2)
+	required_reagents = list(/datum/reagent/water/salt, /datum/reagent/consumable/yoghurt = 1)
 	optimal_temp = 600
 	mob_react = FALSE

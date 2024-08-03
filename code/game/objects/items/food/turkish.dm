@@ -9,7 +9,7 @@
 	)
 	tastes = list("tomato" = 1, "onion" = 1, "wheat" = 1, "pepper" = 1)
 	foodtypes = VEGETABLES | GRAIN
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/cacik
@@ -23,7 +23,7 @@
 	)
 	tastes = list("yoghurt" = 2, "salt" = 1, "cucumber" = 1)
 	foodtypes = VEGETABLES
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
@@ -39,7 +39,7 @@
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES | RAW
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/raw_lahmacun/make_bakeable()
@@ -57,7 +57,7 @@
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/raw_beyti
@@ -72,7 +72,7 @@
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES | RAW
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/raw_beyti/make_bakeable()
@@ -90,5 +90,5 @@
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES
-	w_class = WEIGHT_CLASS_TINY
+	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2

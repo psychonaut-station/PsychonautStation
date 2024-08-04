@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Discord hesabınızı bağladığınızda Patreon üyesiyseniz ayrıcalıkların uygulanması için sonraki roundu beklemeniz gerekmeyecek."

@@ -42,6 +42,7 @@
 #define CAT_MARTIAN "Martian Food"
 #define CAT_MISCFOOD "Misc. Food"
 #define CAT_MEXICAN "Mexican Food"
+#define CAT_TURKISH "Turkish Food"
 #define CAT_MOTH "Mothic Food"
 #define CAT_PASTRY "Pastries"
 #define CAT_PIE "Pies"

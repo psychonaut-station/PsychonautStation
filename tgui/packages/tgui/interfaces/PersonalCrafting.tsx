@@ -89,6 +89,7 @@ const CATEGORY_ICONS_COOKING = {
   Seafood: 'fish',
   Soups: 'mug-hot',
   Spaghettis: 'wheat-awn',
+  'Turkish Food': 'shapes',
 } as const;
 
 enum MODE {

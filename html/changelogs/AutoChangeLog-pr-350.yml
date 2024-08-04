@@ -1,7 +1,0 @@
-author: "Jaimex"
-delete-after: True
-changes:
-  - rscadd: "Beyti, lahmacun, cacık ve çiğ köfte eklendi."
-  - rscadd: "Türk yemekleri için yemek üretim bölümüne özel kategori eklendi."
-  - rscadd: "Ayran artık üretilebilir."
-  - config: "turkish.dm, recipes_turkish.dm ve turkish.dmi eklendi."

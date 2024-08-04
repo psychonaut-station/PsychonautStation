@@ -142,3 +142,10 @@
   necromanceranne:
   - bugfix: Shoving someone onto a table now causes them to become vulnerable to being
       stunned.
+2024-08-04:
+  Jaimex:
+  - rscadd: "Beyti, lahmacun, cac\u0131k ve \xE7i\u011F k\xF6fte eklendi."
+  - rscadd: "T\xFCrk yemekleri i\xE7in yemek \xFCretim b\xF6l\xFCm\xFCne \xF6zel kategori\
+      \ eklendi."
+  - rscadd: "Ayran art\u0131k \xFCretilebilir."
+  - config: turkish.dm, recipes_turkish.dm ve turkish.dmi eklendi.

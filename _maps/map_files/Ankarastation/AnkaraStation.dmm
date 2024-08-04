@@ -18899,6 +18899,7 @@
 /turf/open/floor/plating,
 /area/station/ai_monitored/turret_protected/aisat_interior)
 "dCe" = (
+/obj/structure/cable,
 /turf/open/floor/circuit/telecomms,
 /area/station/science/xenobiology)
 "dCh" = (
@@ -49570,7 +49571,7 @@
 /area/station/security/brig)
 "jkC" = (
 /obj/machinery/door/poddoor/incinerator_atmos_main,
-/turf/open/misc/asteroid/snow/icemoon,
+/turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "jkD" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
@@ -64551,14 +64552,14 @@
 /area/station/hallway/primary/central/aft)
 "lWo" = (
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_exterior,
-/obj/effect/mapping_helpers/airlock/locked,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper,
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "lWq" = (
@@ -64576,6 +64577,7 @@
 "lWz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
+/obj/machinery/air_sensor/incinerator_tank,
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "lWA" = (
@@ -73309,6 +73311,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/security/brig)
+"nyQ" = (
+/mob/living/basic/slime,
+/obj/structure/cable,
+/turf/open/floor/circuit/telecomms,
+/area/station/science/xenobiology)
 "nyR" = (
 /obj/effect/spawner/random/trash/crushed_can,
 /obj/effect/turf_decal/tile/blue{
@@ -99640,16 +99647,23 @@
 /area/station/commons/lounge)
 "swU" = (
 /obj/machinery/door/airlock/public/glass/incinerator/atmos_exterior,
-/obj/effect/mapping_helpers/airlock/locked,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/atmos,
-/obj/machinery/airlock_controller/incinerator_atmos{
-	pixel_x = -24
-	},
 /obj/effect/turf_decal/stripes/line,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
+/obj/machinery/button/door/incinerator_vent_atmos_main{
+	pixel_x = -24;
+	pixel_y = -8
+	},
+/obj/machinery/button/door/incinerator_vent_atmos_aux{
+	pixel_x = -24;
+	pixel_y = 8
+	},
+/obj/effect/mapping_helpers/airlock/locked,
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 1
+	},
 /turf/open/floor/engine,
 /area/station/maintenance/disposal/incinerator)
 "swZ" = (
@@ -100316,7 +100330,6 @@
 /area/station/security/interrogation)
 "sBU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/dark/visible,
-/obj/machinery/air_sensor/incinerator_tank,
 /obj/machinery/light/small/directional/east,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/visible/layer2,
 /turf/open/floor/engine,
@@ -110052,6 +110065,10 @@
 	},
 /turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/station/station_explore)
+"uuq" = (
+/obj/machinery/airlock_controller/incinerator_atmos,
+/turf/closed/wall/r_wall,
+/area/station/maintenance/disposal/incinerator)
 "uut" = (
 /obj/structure/disposalpipe/trunk/multiz/down{
 	dir = 1
@@ -120202,17 +120219,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/aisat_interior)
-"wqq" = (
-/obj/machinery/button/door/incinerator_vent_atmos_main{
-	pixel_x = -24;
-	pixel_y = -8
-	},
-/obj/machinery/button/door/incinerator_vent_atmos_aux{
-	pixel_x = -24;
-	pixel_y = 8
-	},
-/turf/closed/wall/r_wall,
-/area/station/maintenance/disposal/incinerator)
 "wqt" = (
 /obj/effect/turf_decal/tile/green{
 	dir = 1
@@ -183694,9 +183700,9 @@ fRv
 huh
 srA
 hyM
-ngP
+iCi
 dCe
-ngP
+iCi
 aDP
 uGa
 kIt
@@ -184465,9 +184471,9 @@ fRv
 huh
 srA
 mlt
-ngP
+iCi
 dCe
-ngP
+iCi
 aDP
 lGO
 iGj
@@ -185236,9 +185242,9 @@ fRv
 huh
 srA
 uIk
-ngP
+iCi
 dCe
-ngP
+iCi
 aDP
 abW
 hvJ
@@ -186007,9 +186013,9 @@ mAc
 huh
 srA
 qUh
-ngP
-iNN
-ngP
+iCi
+nyQ
+iCi
 aDP
 kEu
 qMe
@@ -186265,7 +186271,7 @@ gDw
 qoU
 snl
 bDo
-ngP
+iCi
 npu
 rIW
 wkQ
@@ -217245,7 +217251,7 @@ onp
 kDP
 xTq
 nEz
-xTq
+uuq
 tvj
 pBN
 brH
@@ -217759,7 +217765,7 @@ xTq
 xTq
 xTq
 emY
-xTq
+fCI
 ovQ
 kKq
 mGb
@@ -218016,7 +218022,7 @@ yhl
 lwP
 xTC
 jMq
-fCI
+xTq
 oCz
 iCI
 jZT
@@ -218273,7 +218279,7 @@ sRT
 sRT
 sRT
 egO
-wqq
+xTq
 aur
 hVM
 aBi

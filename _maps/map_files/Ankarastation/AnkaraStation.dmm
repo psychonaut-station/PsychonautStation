@@ -398,6 +398,7 @@
 	dir = 8
 	},
 /obj/machinery/camera/autoname/directional/west,
+/obj/effect/landmark/start/roboticist,
 /turf/open/floor/iron/grimy,
 /area/station/science/breakroom)
 "adU" = (
@@ -4025,6 +4026,7 @@
 /obj/effect/turf_decal/siding/red{
 	dir = 1
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/science/auxlab/firing_range)
 "aMM" = (
@@ -18763,6 +18765,7 @@
 /obj/effect/turf_decal/siding/thinplating/dark{
 	dir = 1
 	},
+/obj/effect/landmark/start/roboticist,
 /turf/open/floor/iron/recharge_floor,
 /area/station/science/robotics/lab)
 "dAL" = (
@@ -23333,6 +23336,7 @@
 	dir = 10
 	},
 /obj/structure/disposalpipe/segment,
+/obj/effect/landmark/start/roboticist,
 /turf/open/floor/iron/dark,
 /area/station/science/robotics/lab)
 "erA" = (
@@ -27213,6 +27217,7 @@
 "faM" = (
 /obj/effect/turf_decal/siding/purple,
 /obj/structure/cable,
+/obj/effect/landmark/start/roboticist,
 /turf/open/floor/iron/smooth_half,
 /area/station/science/robotics/lab)
 "faP" = (
@@ -49590,6 +49595,11 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron,
 /area/station/security/brig)
+"jkv" = (
+/obj/effect/turf_decal/tile/bar/opposingcorners,
+/mob/living/carbon/human/species/monkey/punpun,
+/turf/open/floor/iron/dark,
+/area/station/service/bar)
 "jkC" = (
 /obj/machinery/door/poddoor/incinerator_atmos_main,
 /turf/open/floor/engine,
@@ -64202,6 +64212,7 @@
 "lSN" = (
 /obj/structure/displaycase/labcage,
 /obj/effect/turf_decal/delivery/red,
+/obj/structure/cable,
 /turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "lSS" = (
@@ -68276,6 +68287,7 @@
 	dir = 10
 	},
 /obj/machinery/light/small/directional/west,
+/obj/effect/landmark/start/scientist,
 /turf/open/floor/iron/grimy,
 /area/station/science/breakroom)
 "mDR" = (
@@ -81089,7 +81101,6 @@
 	dir = 1
 	},
 /obj/machinery/door/airlock/maintenance_hatch,
-/obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
@@ -225581,7 +225592,7 @@ uge
 wka
 qCk
 gNb
-eQF
+jkv
 eQF
 kKp
 nhx

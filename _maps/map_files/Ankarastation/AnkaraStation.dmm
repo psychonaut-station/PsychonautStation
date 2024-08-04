@@ -18882,6 +18882,7 @@
 /obj/structure/broken_flooring/corner,
 /obj/structure/cable,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/plating,
 /area/station/construction/mining/aux_base)
 "dBJ" = (
@@ -38749,7 +38750,7 @@
 "hfb" = (
 /obj/structure/railing/corner,
 /turf/closed/wall/r_wall,
-/area/station/station_explore)
+/area/station/science/ordnance/testlab)
 "hfc" = (
 /obj/effect/turf_decal/stripes{
 	dir = 4
@@ -49912,6 +49913,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/cable,
+/obj/machinery/camera/autoname/directional/north,
 /turf/open/floor/iron,
 /area/station/construction/storage_wing)
 "jny" = (
@@ -54884,10 +54886,10 @@
 /turf/open/floor/grass,
 /area/station/medical/virology)
 "kis" = (
-/obj/structure/sign/warning/docking/directional/north,
 /obj/effect/turf_decal/tile/blue{
 	dir = 4
 	},
+/obj/structure/sign/warning/docking/directional/north,
 /turf/open/floor/iron/white/corner{
 	dir = 1
 	},
@@ -63628,6 +63630,7 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/airalarm/directional/east,
 /obj/machinery/light/small/directional/east,
+/obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/aft)
 "lMn" = (
@@ -82428,8 +82431,9 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "plf" = (
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/construction/mining/aux_base)
 "pls" = (
@@ -85292,6 +85296,7 @@
 /obj/structure/cable,
 /obj/machinery/airalarm/directional/west,
 /obj/effect/decal/cleanable/dirt,
+/obj/machinery/camera/autoname/directional/west,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/port/fore)
 "pNz" = (
@@ -91906,9 +91911,6 @@
 /turf/closed/wall,
 /area/station/service/cafeteria)
 "rbJ" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
 /obj/structure/rack,
 /obj/item/storage/toolbox/mechanical{
 	pixel_x = -3;
@@ -110940,6 +110942,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
+/obj/machinery/camera/autoname/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
 "uBJ" = (

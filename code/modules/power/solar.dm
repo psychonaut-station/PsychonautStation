@@ -1,4 +1,3 @@
-#define SOLAR_GEN_RATE 1500
 #define OCCLUSION_DISTANCE 20
 #define PANEL_Z_OFFSET 13
 #define PANEL_EDGE_Z_OFFSET (PANEL_Z_OFFSET - 2)
@@ -29,6 +28,7 @@
 	var/needs_to_update_solar_exposure = TRUE
 	var/obj/effect/overlay/panel
 	var/obj/effect/overlay/panel_edge
+	var/solar_gen_rate = 1500
 
 /obj/machinery/power/solar/Initialize(mapload, obj/item/solar_assembly/S)
 	. = ..()
@@ -249,7 +249,7 @@
 	if(sunfrac <= 0)
 		return
 
-	var/sgen = SOLAR_GEN_RATE * sunfrac
+	var/sgen = solar_gen_rate * sunfrac
 	add_avail(power_to_energy(sgen))
 	if(control)
 		control.gen += sgen
@@ -451,7 +451,10 @@
 
 		var/list/capacity = history["capacity"]
 		if(powernet)
-			capacity += round(max(connected_panels.len, 1) * SOLAR_GEN_RATE)
+			if(connected_panels.len)
+				capacity += calculate_capacity()
+			else
+				capacity += round(1500)
 		if(capacity.len > record_size)
 			capacity.Cut(1, 2)
 
@@ -476,7 +479,7 @@
 /obj/machinery/power/solar_control/ui_data()
 	var/data = list()
 	data["supply"] = round(lastgen)
-	data["capacity"] = connected_panels.len * SOLAR_GEN_RATE
+	data["capacity"] = calculate_capacity()
 	data["azimuth_current"] = azimuth_target
 	data["azimuth_rate"] = azimuth_rate
 	data["max_rotation_rate"] = SSsun.base_rotation * 2
@@ -595,6 +598,13 @@
 	for(var/obj/machinery/power/solar/S in connected_panels)
 		S.queue_turn(azimuth)
 
+/obj/machinery/power/solar_control/proc/calculate_capacity()
+	var/cpc = 0
+	if(connected_panels.len)
+		for(var/obj/machinery/power/solar/PS in connected_panels)
+			cpc += round(PS.solar_gen_rate)
+	return cpc
+
 //
 // MISC
 //
@@ -603,7 +613,6 @@
 	name = "paper- 'Going green! Setup your own solar array instructions.'"
 	default_raw_text = "<h1>Welcome</h1><p>At greencorps we love the environment, and space. With this package you are able to help mother nature and produce energy without any usage of fossil fuel or plasma! Singularity energy is dangerous while solar energy is safe, which is why it's better. Now here is how you setup your own solar array.</p><p>You can make a solar panel by wrenching the solar assembly onto a cable node. Adding a glass panel, reinforced or regular glass will do, will finish the construction of your solar panel. It is that easy!</p><p>Now after setting up 19 more of these solar panels you will want to create a solar tracker to keep track of our mother nature's gift, the sun. These are the same steps as before except you insert the tracker equipment circuit into the assembly before performing the final step of adding the glass. You now have a tracker! Now the last step is to add a computer to calculate the sun's movements and to send commands to the solar panels to change direction with the sun. Setting up the solar computer is the same as setting up any computer, so you should have no trouble in doing that. You do need to put a wire node under the computer, and the wire needs to be connected to the tracker.</p><p>Congratulations, you should have a working solar array. If you are having trouble, here are some tips. Make sure all solar equipment are on a cable node, even the computer. You can always deconstruct your creations if you make a mistake.</p><p>That's all to it, be safe, be green!</p>"
 
-#undef SOLAR_GEN_RATE
 #undef OCCLUSION_DISTANCE
 #undef PANEL_Z_OFFSET
 #undef PANEL_EDGE_Z_OFFSET

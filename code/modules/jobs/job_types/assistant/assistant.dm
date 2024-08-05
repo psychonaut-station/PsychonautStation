@@ -56,6 +56,13 @@ Assistant
 	id_trim = /datum/id_trim/job/assistant
 	belt = /obj/item/modular_computer/pda/assistant
 
+	backpack_contents = list(
+		/obj/item/storage/medkit/emergency,
+		/obj/item/food/canned/tomatoes,
+		/obj/item/radio,
+		/obj/item/flashlight/seclite,
+	)
+	
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()
 	for(var/holidayname in GLOB.holidays)

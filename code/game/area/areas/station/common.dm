@@ -155,3 +155,7 @@
 /area/station/commons/storage/mining
 	name = "\improper Public Mining Storage"
 	icon_state = "mining_storage"
+
+/area/station/commons/escape/escapepost
+	name = "\improper Public Escape Post"
+	icon_state = "escape_lounge"

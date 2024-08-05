@@ -85,6 +85,9 @@
 #define FACTION_VINES "vines"
 ///raptor factions
 #define FACTION_RAPTOR "raptor"
+/// Zombies
+#define FACTION_ZOMBIE "zombie"
+
 // Antagonist factions
 
 /// Cultists and their constructs

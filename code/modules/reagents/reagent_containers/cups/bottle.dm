@@ -470,7 +470,7 @@
 	desc = "Yoğurt, su ve tuzun karıştırılmasıyla elde edilen, serinletici ve ferahlatıcı geleneksel bir Türk içeceği."
 	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
 	icon_state = "ayran_bottle"
-	list_reagents = list(/datum/reagent/consumable/ayran = 100)
+	list_reagents = list(/datum/reagent/consumable/ayran = 50)
 
 /*
  *	Syrup bottles, basically a unspillable cup that transfers reagents upon clicking on it with a cup

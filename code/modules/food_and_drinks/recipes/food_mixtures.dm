@@ -287,3 +287,8 @@
 	required_reagents = list(/datum/reagent/consumable/grapejuice = 5)
 	required_catalysts = list(/datum/reagent/consumable/enzyme = 5)
 	mix_message = "The smell of the mixture reminds you of how you lost access to the country club..."
+
+/datum/chemical_reaction/food/ayran
+	results = list(/datum/reagent/consumable/ayran = 2)
+	required_reagents = list(/datum/reagent/water/salt = 1, /datum/reagent/consumable/yoghurt = 1)
+	reaction_flags = REACTION_TAG_EASY | REACTION_TAG_DRINK

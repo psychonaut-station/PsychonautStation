@@ -153,7 +153,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "Bizi Patreon ile destekleyerek ayrıcalıklara erişebilir, sunucunun devamlılığına katkıda bulunabilirsin. <a href=\"[CONFIG_GET(string/patreonurl)]\">Daha fazlası için tıkla</a>.")
 		return FALSE
 	return TRUE
 
@@ -827,8 +827,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/list/json = json_decode(response.body)
 		if(json["patron"])
 			patron = TRUE
+			prefs.unlock_content = TRUE
 		else
 			patron = FALSE
+			prefs.unlock_content = FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

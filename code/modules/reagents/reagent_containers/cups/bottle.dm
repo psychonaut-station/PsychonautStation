@@ -466,7 +466,7 @@
 	list_reagents = list(/datum/reagent/consumable/caramel = 30)
 
 /obj/item/reagent_containers/cup/bottle/ayran
-	name = "Ayran"
+	name = "bottle of ayran"
 	desc = "Yoğurt, su ve tuzun karıştırılmasıyla elde edilen, serinletici ve ferahlatıcı geleneksel bir Türk içeceği."
 	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
 	icon_state = "ayran_bottle"

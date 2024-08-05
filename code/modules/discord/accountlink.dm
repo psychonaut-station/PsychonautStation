@@ -64,6 +64,7 @@
 			SSdiscord.reverify_cache[holder.ckey] = token
 
 		holder.patron = FALSE
+		holder.prefs.unlock_content = FALSE
 
 	if(update)
 		update_static_data(holder.mob)

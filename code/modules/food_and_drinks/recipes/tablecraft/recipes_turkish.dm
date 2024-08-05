@@ -44,5 +44,5 @@
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/reaction/ayran
-	reaction = /datum/chemical_reaction/food/ayran
+	reaction = /datum/chemical_reaction/drink/ayran
 	category = CAT_TURKISH

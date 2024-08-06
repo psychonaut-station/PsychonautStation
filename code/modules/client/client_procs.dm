@@ -537,8 +537,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	update_ambience_pref(prefs.read_preference(/datum/preference/toggle/sound_ambience))
 	check_ip_intel()
 
-	check_patreon()
-
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
@@ -813,7 +811,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 /client/proc/check_patreon()
 	var/endpoint = CONFIG_GET(string/patreonendpoint)
 	if(!endpoint)
-		return
+		return FALSE
 
 	var/datum/http_request/request = new ()
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[ckey]")
@@ -825,12 +823,11 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	if(!response.errored && response.status_code == 200)
 		var/list/json = json_decode(response.body)
-		if(json["patron"])
-			patron = TRUE
-			prefs.unlock_content = TRUE
-		else
-			patron = FALSE
-			prefs.unlock_content = FALSE
+		return json["patron"]
+
+	log_world("Failed to fetch patreon endpoint for [ckey]\nError: [response.error] Status Code: [response.status_code] Body: [response.body]")
+
+	return FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

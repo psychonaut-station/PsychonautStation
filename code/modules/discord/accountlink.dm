@@ -53,7 +53,8 @@
 	if(discord_id)
 		fetch_discord()
 		if(refresh)
-			holder.check_patreon()
+			holder.prefs.unlock_content = holder.check_patreon()
+			holder.prefs.max_save_slots = holder.prefs.unlock_content ? 8 : holder.prefs::max_save_slots
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
 
@@ -63,8 +64,8 @@
 			token = SSdiscord.get_or_generate_one_time_token_for_ckey(holder.ckey)
 			SSdiscord.reverify_cache[holder.ckey] = token
 
-		holder.patron = FALSE
 		holder.prefs.unlock_content = FALSE
+		holder.prefs.max_save_slots = holder.prefs::max_save_slots
 
 	if(update)
 		update_static_data(holder.mob)
@@ -107,7 +108,7 @@
 		.["display_name"] = display_name
 		.["username"] = username
 		.["discriminator"] = discriminator
-		.["patron"] = holder.patron
+		.["patron"] = holder.prefs.unlock_content
 	else
 		.["token"] = token
 	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)

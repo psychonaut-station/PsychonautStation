@@ -1321,7 +1321,7 @@
 	color = "#DFDFDF" // rgb: 223, 223, 223
 	taste_description = "ayran"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
-	default_container = /obj/item/reagent_containers/cup/glass/ayran
+	default_container = /obj/item/reagent_containers/condiment/ayran
 
 /datum/reagent/consumable/ayran/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()

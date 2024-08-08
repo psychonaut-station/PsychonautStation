@@ -37,9 +37,9 @@
 	name = "Station Explore"
 	icon_state = "explored"
 	always_unpowered = FALSE
-	power_environ = TRUE
-	power_equip = TRUE
+	power_environ = FALSE
+	power_equip = FALSE
 	power_light = TRUE
-	requires_power = FALSE
+	requires_power = TRUE
 	area_flags = UNIQUE_AREA | FLORA_ALLOWED
 	outdoors = TRUE

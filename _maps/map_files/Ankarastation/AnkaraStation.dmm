@@ -24265,6 +24265,18 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/security/prison/mess)
+"euD" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/white/line,
+/obj/structure/sign/warning/secure_area/directional/north,
+/turf/open/floor/stone,
+/area/station/station_explore)
 "euU" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 1
@@ -27820,6 +27832,7 @@
 	dir = 4
 	},
 /obj/machinery/keycard_auth/wall_mounted/directional/north,
+/obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/ce)
 "eZl" = (
@@ -28270,18 +28283,6 @@
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/clock/directional/north,
 /turf/open/floor/wood/large,
-/area/station/station_explore)
-"fdn" = (
-/obj/structure/sign/warning/secure_area/directional/north,
-/obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/white/line{
-	dir = 1
-	},
-/obj/effect/turf_decal/stripes/white/line,
-/turf/open/floor/stone,
 /area/station/station_explore)
 "fdp" = (
 /obj/structure/chair/stool/bar,
@@ -32069,6 +32070,15 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/engineering/atmospherics_engine)
+"fOx" = (
+/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/door/poddoor/preopen{
+	id = "ceprivacy";
+	name = "Privacy Shutter"
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/station/command/heads_quarters/ce)
 "fOz" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -41291,7 +41301,6 @@
 	pixel_x = -9;
 	pixel_y = 2
 	},
-/obj/structure/window/reinforced/spawner/directional/south,
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
@@ -41304,6 +41313,7 @@
 /obj/effect/turf_decal/trimline/dark_blue/filled/corner{
 	dir = 4
 	},
+/obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/aisat/exterior)
 "htM" = (
@@ -44650,12 +44660,6 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
-"ibp" = (
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/marker_beacon/burgundy,
-/obj/effect/mapping_helpers/no_atoms_ontop,
-/turf/open/floor/plating/snowed/smoothed/icemoon,
-/area/station/station_explore)
 "ibq" = (
 /obj/effect/turf_decal/siding/wood{
 	dir = 1
@@ -59953,7 +59957,9 @@
 /area/station/science/xenobiology)
 "kQv" = (
 /obj/structure/window/reinforced/spawner/directional/north,
-/turf/open/misc/asteroid/snow/icemoon,
+/obj/effect/mapping_helpers/no_atoms_ontop,
+/obj/structure/marker_beacon/burgundy,
+/turf/open/floor/plating/snowed/smoothed/icemoon,
 /area/station/station_explore)
 "kQx" = (
 /obj/structure/sign/departments/virology/directional/south,
@@ -61717,19 +61723,19 @@
 	name = "Escape Pod 2";
 	space_dir = 1
 	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 8
+	},
+/obj/effect/turf_decal/stripes/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 4
+	},
+/obj/effect/turf_decal/trimline/yellow/filled/line{
+	dir = 8
+	},
 /obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 8
-	},
-/obj/effect/turf_decal/stripes/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
-	dir = 4
-	},
-/obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
 	},
 /turf/open/floor/plating,
@@ -66084,6 +66090,7 @@
 /obj/structure/disposalpipe/trunk{
 	dir = 4
 	},
+/obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/ce)
 "lUs" = (
@@ -106441,7 +106448,6 @@
 	dir = 6
 	},
 /obj/effect/turf_decal/box,
-/obj/structure/cable,
 /obj/item/clothing/suit/hooded/wintercoat/engineering/ce,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/heads_quarters/ce)
@@ -126925,9 +126931,6 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/station/station_explore)
 "wWi" = (
-/obj/effect/mapping_helpers/airlock/cyclelink_helper{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
@@ -126943,6 +126946,9 @@
 	},
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
+	},
+/obj/effect/mapping_helpers/airlock/cyclelink_helper{
+	dir = 4
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
@@ -212323,7 +212329,7 @@ kOh
 pxc
 xID
 htL
-ibp
+nfq
 fVw
 bbq
 jcM
@@ -225950,8 +225956,8 @@ uJj
 hhj
 bbT
 tlS
-hMd
-dbx
+pQO
+euD
 cRQ
 yhl
 djz
@@ -226464,8 +226470,8 @@ nbZ
 ubw
 wNa
 dlL
-pQO
-fdn
+fOx
+dbx
 cRQ
 vLp
 djz

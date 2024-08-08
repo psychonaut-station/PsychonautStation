@@ -22,7 +22,6 @@
 		},
 		{
 			"Down": true,
-			"Up": true,
 			"Linkage": null,			
 			"Gravity": true,
 			"Baseturf": "/turf/open/openspace",

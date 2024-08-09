@@ -21465,6 +21465,7 @@
 /obj/machinery/door/airlock/research/glass{
 	name = "Xenobiology Test Room"
 	},
+/obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/science/xenobiology)
 "dUv" = (
@@ -89712,6 +89713,8 @@
 /obj/effect/turf_decal/stripes{
 	dir = 1
 	},
+/obj/effect/mapping_helpers/airlock/access/all/science/xenobio,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/hidden,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/science/xenobiology)
 "qho" = (

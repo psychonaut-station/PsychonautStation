@@ -86762,7 +86762,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol="arrivals1"";
+	codes_txt = "patrol;next_patrol=arrivals2";
 	location = "hall64"
 	},
 /turf/open/floor/iron,

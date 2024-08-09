@@ -69023,7 +69023,7 @@
 "mto" = (
 /obj/structure/sign/warning/no_smoking/circle/directional/south,
 /turf/closed/wall/r_wall,
-/area/station/engineering/storage)
+/area/station/engineering/main)
 "mtA" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/sign/poster/official/random/directional/west,

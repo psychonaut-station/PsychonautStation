@@ -32,3 +32,14 @@
 	ambience_index = AMBIENCE_MINING
 	area_flags = UNIQUE_AREA
 	outdoors = TRUE
+
+/area/station/station_explore
+	name = "Station Explore"
+	icon_state = "explored"
+	always_unpowered = FALSE
+	power_environ = FALSE
+	power_equip = FALSE
+	power_light = TRUE
+	requires_power = TRUE
+	area_flags = UNIQUE_AREA | FLORA_ALLOWED
+	outdoors = TRUE

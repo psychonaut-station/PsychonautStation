@@ -62,6 +62,11 @@
 	icon_state = "theatre"
 	sound_environment = SOUND_AREA_SMALL_SOFTFLOOR
 
+/area/station/service/cinema
+	name = "\improper Cinema"
+	icon_state = "theatre"
+	sound_environment = SOUND_AREA_LARGE_SOFTFLOOR
+
 /area/station/service/library
 	name = "\improper Library"
 	icon_state = "library"

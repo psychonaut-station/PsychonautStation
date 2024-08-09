@@ -162,42 +162,11 @@
 	. = ..()
 	icon_state = "gangtool-secretary"
 
-/obj/item/door_remote/secretary/afterattack(atom/target, mob/user)
-	var/mob/living/carbon/human/H = user
-	if(istype(H.mind?.assigned_role, /datum/job/nt_secretary))
-		var/obj/machinery/door/door
-
-		if (istype(target, /obj/machinery/door))
-			door = target
-
-			if (!door.opens_with_door_remote)
-				return
-		else
-			for (var/obj/machinery/door/door_on_turf in get_turf(target))
-				if (door_on_turf.opens_with_door_remote)
-					door = door_on_turf
-					break
-
-			if (isnull(door))
-				return
-
-		if (!door.check_access_list(access_list) || !door.requiresID())
-			target.balloon_alert(user, "can't access!")
-			return
-
-		var/obj/machinery/door/airlock/airlock = door
-
-		if (!door.hasPower() || (istype(airlock) && !airlock.canAIControl()))
-			target.balloon_alert(user, mode == WAND_OPEN ? "it won't budge!" : "nothing happens!")
-			return
-
-		if (door.density)
-			door.open()
-		else
-			door.close()
-	else
-		to_chat(user, span_warning("You don't know how to use this!"))
-		return
+/obj/item/door_remote/secretary/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(istype(user.mind?.assigned_role, /datum/job/nt_secretary))
+		return ..()
+	to_chat(user, span_warning("You don't know how to use this!"))
+	return ITEM_INTERACT_BLOCKING
 
 #undef WAND_OPEN
 #undef WAND_BOLT

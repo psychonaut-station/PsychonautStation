@@ -29,11 +29,11 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
 "aag" = (
+/obj/effect/landmark/start/hangover,
 /obj/machinery/navbeacon{
-	codes_txt = "patrol;next_patrol=arrivals1";
+	codes_txt = "patrol;next_patrol=hall60";
 	location = "hall25"
 	},
-/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "aaj" = (
@@ -17434,7 +17434,6 @@
 /turf/open/floor/stone,
 /area/station/station_explore)
 "djj" = (
-/obj/machinery/camera/autoname/directional/south,
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/siding/wood,
 /obj/machinery/firealarm/directional/south,
@@ -29080,11 +29079,11 @@
 	},
 /area/station/hallway/secondary/exit/departure_lounge)
 "flp" = (
-/obj/machinery/door/poddoor/shutters/preopen{
-	id_tag = "kitchenshutters";
-	name = "Kitchen Shutters"
-	},
 /obj/effect/spawner/structure/window,
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Kitchen Shutters";
+	id = "kitchenshutters"
+	},
 /turf/open/floor/plating,
 /area/station/hallway/primary/port)
 "flq" = (
@@ -68194,6 +68193,7 @@
 /obj/effect/turf_decal/trimline/purple/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/plating,
 /area/station/science/xenobiology/hallway)
 "mmi" = (
@@ -82965,6 +82965,10 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=hall64";
+	location = "hall63"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/port)
 "oVV" = (
@@ -86744,6 +86748,25 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
+"pGa" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/turf_decal/tile/blue{
+	dir = 1
+	},
+/obj/effect/turf_decal/tile/green{
+	dir = 4
+	},
+/obj/structure/cable,
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol="arrivals1"";
+	location = "hall64"
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/port)
 "pGf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -100149,6 +100172,13 @@
 /obj/effect/landmark/start/atmospheric_technician,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/engineering/atmos/storage/gas)
+"sdp" = (
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=hall61";
+	location = "hall60"
+	},
+/turf/open/floor/iron,
+/area/station/hallway/primary/central/aft)
 "sdq" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 1
@@ -106051,6 +106081,10 @@
 	},
 /obj/effect/turf_decal/stripes/white/line{
 	dir = 1
+	},
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=hall63";
+	location = "hall62"
 	},
 /turf/open/floor/stone,
 /area/station/hallway/primary/central)
@@ -115613,6 +115647,10 @@
 	},
 /obj/machinery/door/firedoor,
 /obj/machinery/camera/autoname/directional/north,
+/obj/machinery/navbeacon{
+	codes_txt = "patrol;next_patrol=hall62";
+	location = "hall61"
+	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/central/aft)
 "uPc" = (
@@ -118170,6 +118208,14 @@
 	},
 /turf/open/floor/wood,
 /area/station/commons/vacant_room/office)
+"vnJ" = (
+/obj/machinery/door/poddoor/shutters/preopen{
+	name = "Kitchen Shutters";
+	id = "kitchenshutters"
+	},
+/obj/effect/spawner/structure/window,
+/turf/open/floor/plating,
+/area/station/hallway/primary/port)
 "vnK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/effect/decal/cleanable/glass,
@@ -222402,7 +222448,7 @@ ovB
 eXG
 rxn
 doR
-dUw
+pGa
 dLL
 uHf
 uCI
@@ -225485,7 +225531,7 @@ dJg
 hmm
 dJg
 pwu
-flp
+vnJ
 sar
 mgw
 wzq
@@ -246046,7 +246092,7 @@ qDe
 luT
 ugI
 dlN
-pYm
+sdp
 lDS
 sXF
 gpJ

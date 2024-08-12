@@ -142,18 +142,70 @@
   necromanceranne:
   - bugfix: Shoving someone onto a table now causes them to become vulnerable to being
       stunned.
+2024-08-03:
+  Watermelon914:
+  - bugfix: Fixed an infinite TC glitch dupe
+  Y0SH1M4S73R:
+  - admin: The "Suppress Runtime Logging" toggle in the lua editor actually does what
+      it says
 2024-08-04:
   Jaimex:
   - rscadd: "Beyti, lahmacun, cac\u0131k ve \xE7i\u011F k\xF6fte eklendi."
   - rscadd: "T\xFCrk yemekleri i\xE7in yemek \xFCretim b\xF6l\xFCm\xFCne \xF6zel kategori\
       \ eklendi."
   - rscadd: "Ayran art\u0131k \xFCretilebilir."
-  - config: turkish.dm, recipes_turkish.dm ve turkish.dmi eklendi.
 2024-08-05:
+  Ben10Omintrix:
+  - bugfix: juvenile lobstrosities will now look for food
+  OrionTheFox:
+  - image: added and updated belt/suit/mask storage sprites for several knives missing
+      them
   Seefaaa:
   - bugfix: "Discord hesab\u0131n\u0131z\u0131 ba\u011Flad\u0131\u011F\u0131n\u0131\
       zda Patreon \xFCyesiyseniz ayr\u0131cal\u0131klar\u0131n uygulanmas\u0131 i\xE7\
       in sonraki roundu beklemeniz gerekmeyecek."
+  SmArtKar:
+  - bugfix: Lizards no longer die from cold on icebox despite wearing insulation
+  - bugfix: Fixed handyman assistants spawning without a PDA
+  Y0SH1M4S73R:
+  - bugfix: lua scripting now works on linux
+2024-08-06:
+  Ben10Omintrix:
+  - refactor: refactors pet collars and cultist pets into elements
+  EnterTheJake:
+  - image: Ash Blade has received a new sprite.
+  Gaxeer:
+  - rscdel: Remove narsie and ratvar plushies from loadout
+  SmArtKar:
+  - bugfix: Plasmamen helmets now display their smiles + can be painted with spraycans
+  - bugfix: Elevator music no longer restarts when you take a step
+  - image: Resprited teleporter beacons
+  - code_imp: Removed multiple cases of unnecessary updatehealth
+  - bugfix: Bitrunning crate capture zones can no longer be destroyed
+  mc-oofert:
+  - admin: fix hard restart option
+2024-08-07:
+  Absolucy:
+  - bugfix: Fixed a runtime error after draining a heretic influence.
+  LT3:
+  - bugfix: Fixed players being incorrectly immune to certain virus severities
+  MrMelbert, SmArtKar:
+  - bugfix: Holding someone at gunpoint no longer makes all shots count as point blank
+  SmArtKar:
+  - image: Updated clipboard sprite, adds white and black clipboard skins for med/sci
+      and security
+  - bugfix: Tinacusiate no longer changes hearing spans for every single person in-game
+2024-08-08:
+  MTandi:
+  - bugfix: Smartfridges properly dispense `\Improper` items
+  Rhials:
+  - sound: Zipties no longer make handcuff noises when picked up or dropped.
+2024-08-09:
+  SmArtKar:
+  - bugfix: Circuit UI scale no longer has weird rounding
+  - bugfix: Circuit UI no longer gets covered by components menu
+  - bugfix: Fixed Charlie MOD installer not installing MODsuit unless you have a backpack
+      to drop
 2024-08-10:
   Seefaaa:
   - bugfix: "Nt Secretary kumandas\u0131n\u0131 herkes kullanamayacak"

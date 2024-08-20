@@ -104,7 +104,7 @@
 				/obj/item/clothing/under/rank/security/officer = 1)
 	category = CAT_MISC
 
-obj/item/banner/turk
+/obj/item/banner/turk
 	name = "Turk Banner"
 	desc = "Turk Banner."
 	icon = 'icons/psychonaut/obj/banner.dmi'

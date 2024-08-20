@@ -104,6 +104,23 @@
 				/obj/item/clothing/under/rank/security/officer = 1)
 	category = CAT_MISC
 
+obj/item/banner/turk
+	name = "Turk Banner"
+	desc = "Turk Banner."
+	icon = 'icons/psychonaut/obj/banner.dmi'
+	icon_state = "banner_turk"
+	inhand_icon_state = "banner"
+	lefthand_file = 'icons/mob/inhands/equipment/banners_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/equipment/banners_righthand.dmi'
+	warcry = "EVERYONE DOWN ON THE GROUND!!"
+
+/obj/item/banner/turk/Initialize(mapload)
+	. = ..()
+	job_loyalties = DEPARTMENT_BITFLAG_SECURITY
+
+/obj/item/banner/turk/mundane
+	inspiration_available = FALSE
+
 /obj/item/banner/medical
 	name = "meditopia banner"
 	desc = "The banner of Meditopia, generous benefactors that cure wounds and shelter the weak."

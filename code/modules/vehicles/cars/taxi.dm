@@ -5,7 +5,8 @@
 	icon_state = "taxi"
 	max_integrity = 150
 	max_occupants = 4
-	movedelay = 6
+	movedelay = 1
+	vehicle_move_delay = 1.5
 	armor_type = /datum/armor/taxi
 	key_type = /obj/item/key/atv
 	light_system = OVERLAY_LIGHT_DIRECTIONAL

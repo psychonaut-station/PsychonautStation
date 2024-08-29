@@ -5,7 +5,8 @@
 	icon_state = "car"
 	max_integrity = 150
 	max_occupants = 2
-	movedelay = 6
+	movedelay = 1
+	vehicle_move_delay = 1.5
 	armor_type = /datum/armor/retro_line
 	key_type = /obj/item/key/atv
 	light_system = OVERLAY_LIGHT_DIRECTIONAL

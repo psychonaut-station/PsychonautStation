@@ -11962,6 +11962,7 @@
 "cgC" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
 /obj/effect/decal/cleanable/cobweb,
+/obj/machinery/meter,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science/lower)
 "cgH" = (

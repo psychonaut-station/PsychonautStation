@@ -45,3 +45,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/mothic, 32)
 	icon_state = "flag_mars"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/mars, 32)
+
+/obj/structure/sign/flag/turk
+	name = "flag of Republic Turkey"
+	desc = "The flag of Turkey, originally used during the War of Independence, symbolizes the nation's struggle for freedom. Over time, it has become a national symbol, representing the country's sovereignty and unity. The flag serves as a reminder of a significant period in Turkey's history and the resilience of its people."
+	icon = 'icons/psychonaut/obj/flags.dmi'
+	icon_state = "flag_turk"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/flag/turk, 32)

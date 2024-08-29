@@ -3178,6 +3178,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 9
 	},
+/obj/structure/sign/flag/turk/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "aAW" = (
@@ -24991,11 +24992,11 @@
 	pixel_x = 5;
 	pixel_y = -3
 	},
-/obj/structure/extinguisher_cabinet/directional/south,
 /obj/machinery/computer/security/telescreen/entertainment/directional/west,
 /obj/effect/turf_decal/siding/dark{
 	dir = 10
 	},
+/obj/structure/sign/flag/turk/directional/south,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/hos)
 "eAC" = (
@@ -31458,6 +31459,18 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/security/courtroom)
+"fGH" = (
+/obj/structure/closet/secure_closet/security/sec,
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/trimline/white/filled/line{
+	dir = 1
+	},
+/obj/structure/sign/flag/turk/directional/south,
+/turf/open/floor/iron/dark/textured_edge{
+	dir = 1
+	},
+/area/station/security/lockers)
 "fGL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/landmark/start/hangover,
@@ -40106,6 +40119,7 @@
 	dir = 6
 	},
 /obj/machinery/light/small/directional/east,
+/obj/structure/sign/flag/turk/directional/east,
 /turf/open/floor/carpet/black,
 /area/station/command/heads_quarters/ce)
 "hgA" = (
@@ -46597,6 +46611,7 @@
 	},
 /obj/structure/extinguisher_cabinet/directional/north,
 /obj/effect/turf_decal/box,
+/obj/structure/sign/flag/turk/directional/east,
 /turf/open/floor/wood/tile,
 /area/station/command/heads_quarters/captain)
 "irr" = (
@@ -46902,6 +46917,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 4
 	},
+/obj/structure/sign/flag/turk/directional/south,
 /turf/open/floor/iron,
 /area/station/security/brig)
 "iuW" = (
@@ -61002,6 +61018,7 @@
 "kXq" = (
 /obj/effect/turf_decal/tile/blue/opposingcorners,
 /obj/effect/turf_decal/siding/blue,
+/obj/structure/sign/flag/turk/directional/south,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/cmo)
 "kXt" = (
@@ -64496,6 +64513,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 5
 	},
+/obj/structure/sign/flag/nanotrasen/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "lAD" = (
@@ -71260,6 +71278,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 6
 	},
+/obj/structure/sign/flag/nanotrasen/directional/east,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "mLm" = (
@@ -73523,6 +73542,10 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/station/maintenance/solars/starboard/fore)
+"ngD" = (
+/obj/structure/sign/flag/turk/directional/north,
+/turf/open/floor/grass,
+/area/station/hallway/secondary/command)
 "ngG" = (
 /obj/effect/turf_decal/tile/green/opposingcorners,
 /obj/effect/spawner/random/trash/grime,
@@ -75071,6 +75094,7 @@
 /obj/effect/turf_decal/siding/wood{
 	dir = 4
 	},
+/obj/structure/sign/flag/turk/directional/east,
 /turf/open/floor/wood/large,
 /area/station/command/heads_quarters/rd)
 "ntt" = (
@@ -80979,6 +81003,7 @@
 /turf/open/floor/iron/white/textured_large,
 /area/station/commons/fitness)
 "oAD" = (
+/obj/structure/sign/flag/nanotrasen/directional/north,
 /turf/open/floor/grass,
 /area/station/hallway/secondary/command)
 "oAH" = (
@@ -88686,7 +88711,6 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/station/station_explore)
 "pVE" = (
-/obj/item/kirbyplants/random,
 /obj/machinery/status_display/evac/directional/east,
 /obj/structure/sign/nanotrasen{
 	pixel_y = -32
@@ -88697,6 +88721,7 @@
 /obj/effect/turf_decal/siding/dark/end{
 	dir = 4
 	},
+/obj/item/banner/turk,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/heads_quarters/hos)
 "pVM" = (
@@ -90954,6 +90979,7 @@
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 10
 	},
+/obj/structure/sign/flag/turk/directional/west,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/turret_protected/ai)
 "qrw" = (
@@ -94651,10 +94677,10 @@
 	pixel_y = 9
 	},
 /obj/item/pen/blue,
-/obj/structure/sign/flag/nanotrasen/directional/north,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/structure/sign/flag/turk/directional/north,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/meeting_room)
 "rbR" = (
@@ -100920,6 +100946,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/tile/yellow,
+/obj/structure/sign/flag/turk/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/qm)
 "sgH" = (
@@ -110048,6 +110075,16 @@
 /obj/effect/spawner/random/maintenance/three,
 /turf/open/floor/plating,
 /area/station/maintenance/department/science)
+"tOp" = (
+/obj/effect/turf_decal/trimline/red/filled/line,
+/obj/effect/turf_decal/stripes/line,
+/obj/effect/turf_decal/siding/thinplating/dark,
+/obj/effect/turf_decal/trimline/red/filled/line{
+	dir = 1
+	},
+/obj/structure/sign/flag/turk/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/security/prison)
 "tOt" = (
 /obj/structure/table/wood,
 /obj/effect/spawner/random/decoration/ornament,
@@ -123551,10 +123588,10 @@
 	pixel_y = 5;
 	pixel_x = 4
 	},
-/obj/structure/sign/flag/nanotrasen/directional/north,
 /obj/effect/turf_decal/tile/blue/half/contrasted{
 	dir = 1
 	},
+/obj/structure/sign/flag/turk/directional/north,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/meeting_room)
 "wjI" = (
@@ -174266,7 +174303,7 @@ vdp
 xad
 idX
 dyp
-mcN
+tOp
 wHw
 dnV
 tnB
@@ -238281,7 +238318,7 @@ oBo
 puQ
 oUN
 kHN
-rgC
+fGH
 gQc
 ieB
 kmq
@@ -240610,7 +240647,7 @@ pHe
 jXO
 hHV
 xvs
-oAD
+ngD
 maJ
 nJF
 jHK

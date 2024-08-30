@@ -324,19 +324,9 @@
 	suffix = "lavaland_surface_shuttle_wreckage.dmm"
 	allow_duplicates = FALSE
 
-<<<<<<< HEAD
-/datum/map_template/ruin/lavaland/nyx_temple
-	name = "Nyx Temple"
-	id = "nyx_temple"
-	description = "An ancient temple containing nightmares"
-	suffix = "lavaland_nyx_temple.dmm"
-	allow_duplicates = FALSE
-	cost = 20
-=======
 /datum/map_template/ruin/lavaland/crashsite
 	name = "Lava-Ruin Pod Crashsite"
 	id = "crashsite"
 	description = "They launched too early"
 	suffix = "lavaland_surface_crashsite.dmm"
 	allow_duplicates = FALSE
->>>>>>> upstream/master

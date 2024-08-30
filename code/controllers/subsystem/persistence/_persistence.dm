@@ -83,11 +83,8 @@ SUBSYSTEM_DEF(persistence)
 	save_scars()
 	save_custom_outfits()
 	save_delamination_counter()
-<<<<<<< HEAD
 	save_trading_cards()
-=======
 	save_queued_message_bottles()
->>>>>>> upstream/master
 	if(SStransport.can_fire)
 		for(var/datum/transport_controller/linear/tram/transport as anything in SStransport.transports_by_type[TRANSPORT_TYPE_TRAM])
 			save_tram_history(transport.specific_transport_id)

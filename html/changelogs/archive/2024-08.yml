@@ -207,18 +207,8 @@
   - bugfix: Fixed Charlie MOD installer not installing MODsuit unless you have a backpack
       to drop
 2024-08-10:
-<<<<<<< HEAD
   Seefaaa:
   - bugfix: "Nt Secretary kumandas\u0131n\u0131 herkes kullanamayacak"
-2024-08-13:
-  FlufflesTheDog:
-  - bugfix: tadpoles can actually be scooped from ponds
-2024-08-16:
-  Seefaaa:
-  - bugfix: "Midround changeling antagonist tercihlerinde g\xF6z\xFCkecek."
-=======
-  FlufflesTheDog:
-  - bugfix: tadpoles can actually be scooped from ponds
 2024-08-11:
   DaCoolBoss:
   - spellcheck: fixed many incorrect spellings of Waffle Corp and Donk Co.
@@ -231,6 +221,8 @@
   grungussuss and kayozz:
   - sound: white noise from some ambience sounds has been pruned
 2024-08-13:
+  FlufflesTheDog:
+  - bugfix: tadpoles can actually be scooped from ponds
   Majkl-J:
   - bugfix: Felinids no longer phase through diagonal gaps upon seeing a laser
 2024-08-15:
@@ -848,4 +840,3 @@
       free.
   - balance: Plexagon Crew Manifest no longer provides Detomatix resistance, but security
       records and status display control now do.
->>>>>>> upstream/master

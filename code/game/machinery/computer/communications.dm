@@ -278,13 +278,8 @@
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
-<<<<<<< HEAD
-			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("KİMLİK HATASI: CVE-2018-17107", 60) : usr.real_name
-			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alımı")
-=======
 			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : user.real_name
 			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] credits.[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
->>>>>>> upstream/master
 
 			message_admins("[ADMIN_LOOKUPFLW(user)] purchased [shuttle.name].")
 			log_shuttle("[key_name(user)] has purchased [shuttle.name].")
@@ -301,17 +296,10 @@
 			if (!COOLDOWN_FINISHED(src, important_action_cooldown))
 				return
 			var/reason = trim(html_encode(params["reason"]), MAX_MESSAGE_LEN)
-<<<<<<< HEAD
-			nuke_request(reason, usr)
-			to_chat(usr, span_notice("Request sent."))
-			usr.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-			priority_announce("İstasyon nükleer imha kodları [usr] tarafından istenmiştir. Bu istediğiniz ile ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer İmha Kodları İstendi", SSstation.announcer.get_rand_report_sound())
-=======
 			nuke_request(reason, user)
 			to_chat(user, span_notice("Request sent."))
 			user.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
 			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [user]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
->>>>>>> upstream/master
 			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
@@ -493,17 +481,10 @@
 		payload["is_filtered"] = TRUE
 
 	send2otherserver(html_decode(station_name()), message, "Comms_Console", destination == "all" ? null : list(destination), additional_data = payload)
-<<<<<<< HEAD
-	minor_announce(message, title = "Müttefik istasyona gönderilen mesaj")
-	usr.log_talk(message, LOG_SAY, tag = "message to the other server")
-	message_admins("[ADMIN_LOOKUPFLW(usr)] has sent a message to the other server\[s].")
-	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[usr.real_name]", usr, message_type = DEADCHAT_ANNOUNCEMENT)
-=======
 	minor_announce(message, title = "Outgoing message to allied station")
 	user.log_talk(message, LOG_SAY, tag = "message to the other server")
 	message_admins("[ADMIN_LOOKUPFLW(user)] has sent a message to the other server\[s].")
 	deadchat_broadcast(" has sent an outgoing message to the other station(s).</span>", "<span class='bold'>[user.real_name]", user, message_type = DEADCHAT_ANNOUNCEMENT)
->>>>>>> upstream/master
 	GLOB.communications_controller.soft_filtering = FALSE // set it to false at the end of the proc to ensure that everything prior reads as intended
 
 /obj/machinery/computer/communications/ui_data(mob/user)

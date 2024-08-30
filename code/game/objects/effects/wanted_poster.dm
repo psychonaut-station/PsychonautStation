@@ -84,13 +84,8 @@
 	var/text_len = min(length(text), 7)
 	var/start_x = 16 - (2*text_len)
 	var/i
-<<<<<<< HEAD
-	for(i=1; i <= textLen, i++)
-		var/letter = locale_uppertext(text[i])
-=======
 	for(i=1; i <= text_len, i++)
 		var/letter = uppertext(text[i])
->>>>>>> upstream/master
 		var/icon/letter_icon = icon("icon" = 'icons/testing/Font_Minimal.dmi', "icon_state" = letter)
 		letter_icon.Shift(EAST, start_x) //16 - (2*n)
 		letter_icon.Shift(SOUTH, 2)

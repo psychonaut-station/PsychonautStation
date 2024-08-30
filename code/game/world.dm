@@ -223,14 +223,10 @@ GLOBAL_VAR(tracy_log)
 
 	logger.init_logging()
 
-<<<<<<< HEAD
-	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM", 0) + ".yml")
-=======
 	if(GLOB.tracy_log)
 		rustg_file_write("[GLOB.tracy_log]", "[GLOB.log_directory]/tracy.loc")
 
 	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM") + ".yml")
->>>>>>> upstream/master
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
 	if(GLOB.round_id)

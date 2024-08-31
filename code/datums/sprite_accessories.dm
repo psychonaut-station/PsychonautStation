@@ -1069,6 +1069,11 @@
 	name = "Moustache (Handlebar 2)"
 	icon_state = "facial_handlebar2"
 
+/datum/sprite_accessory/facial_hair/turkish
+	name = "Moustache (Turkish)"
+	icon = 'icons/psychonaut/mob/human/human_face.dmi'
+	icon_state = "facial_turk"
+
 /datum/sprite_accessory/facial_hair/elvis
 	name = "Sideburns (Elvis)"
 	icon_state = "facial_elvis"

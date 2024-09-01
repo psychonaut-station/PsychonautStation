@@ -155,6 +155,13 @@
 	icon_state = "nanotrasen_sign1"
 	buildable_sign = FALSE
 
+/obj/structure/sign/logo2
+	name = "\improper AnkaraStation logo sign"
+	desc = "The AnkaraStation logo."
+	icon = 'icons/psychonaut/obj/signs.dmi'
+	icon_state = "ankara"
+	buildable_sign = FALSE
+
 /obj/item/sign
 	name = "sign backing"
 	desc = "A plastic sign backing, use a pen to change the decal. It can be placed on a wall."

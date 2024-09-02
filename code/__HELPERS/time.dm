@@ -9,7 +9,7 @@
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
 	if(!wtime)
 		wtime = world.time
-	return time2text(wtime, format)
+	return time2text(wtime, format, 0)
 
 /proc/station_time(display_only = FALSE, wtime=world.time)
 	return ((((wtime - SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000) - (display_only? GLOB.timezoneOffset : 0)

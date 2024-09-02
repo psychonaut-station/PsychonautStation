@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Changelog'da bir değişiklik olmadıkça oyuna her girdiğinizde changelog'u görmeyeceksiniz."

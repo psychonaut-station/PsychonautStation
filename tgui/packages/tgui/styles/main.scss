@@ -78,7 +78,11 @@
 @include meta.load-css('./interfaces/Trophycase.scss');
 @include meta.load-css('./interfaces/Uplink.scss');
 @include meta.load-css('./interfaces/UtilityModulesPane.scss');
+<<<<<<< HEAD
 @include meta.load-css('./interfaces/TicketSelectHelper.scss');
+=======
+@include meta.load-css('./interfaces/DetectiveBoard.scss');
+>>>>>>> upstream/master
 
 // Layouts
 @include meta.load-css('./layouts/Layout.scss');

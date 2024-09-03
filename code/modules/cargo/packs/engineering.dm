@@ -329,7 +329,6 @@
 	crate_name = "radioactive nebula shielding (IMPORTANT)"
 	crate_type = /obj/structure/closet/crate/engineering
 
-<<<<<<< HEAD
 /datum/supply_pack/engineering/bluespace_tap
 	name = "Bluespace Harvester Parts"
 	cost = 15000
@@ -339,7 +338,7 @@
 					/obj/item/paper/bluespace_tap
 					)
 	crate_name = "bluespace harvester parts crate"
-=======
+
 /datum/supply_pack/engineering/portagrav
 	name = "Portable Gravity Unit Crate"
 	desc = "Contains a portable gravity unit, to make the clown float into the ceiling."
@@ -348,4 +347,3 @@
 	contains = list(/obj/machinery/power/portagrav = 1)
 	crate_name = "portable gravity unit crate"
 	crate_type = /obj/structure/closet/crate/engineering
->>>>>>> upstream/master

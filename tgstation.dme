@@ -2071,11 +2071,8 @@
 #include "code\game\machinery\nebula_shielding.dm"
 #include "code\game\machinery\PDApainter.dm"
 #include "code\game\machinery\photobooth.dm"
-<<<<<<< HEAD
 #include "code\game\machinery\pokerchip_exchanger.dm"
-=======
 #include "code\game\machinery\portagrav.dm"
->>>>>>> upstream/master
 #include "code\game\machinery\prisongate.dm"
 #include "code\game\machinery\prisonlabor.dm"
 #include "code\game\machinery\quantum_pad.dm"
@@ -6048,12 +6045,8 @@
 #include "code\modules\surgery\organs\autosurgeon.dm"
 #include "code\modules\surgery\organs\helpers.dm"
 #include "code\modules\surgery\organs\organ_movement.dm"
-<<<<<<< HEAD
-#include "code\modules\surgery\organs\external\_external_organ.dm"
-#include "code\modules\surgery\organs\external\appendages.dm"
-=======
 #include "code\modules\surgery\organs\external\_visual_organs.dm"
->>>>>>> upstream/master
+#include "code\modules\surgery\organs\external\appendages.dm"
 #include "code\modules\surgery\organs\external\restyling.dm"
 #include "code\modules\surgery\organs\external\spines.dm"
 #include "code\modules\surgery\organs\external\tails.dm"

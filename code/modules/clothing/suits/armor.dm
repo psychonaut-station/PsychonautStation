@@ -59,7 +59,6 @@
 /obj/item/clothing/suit/armor/vest/alt/sec
 	icon_state = "armor_sec"
 
-<<<<<<< HEAD
 /obj/item/clothing/suit/armor/vest/alt/brig_physician
 	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
@@ -70,7 +69,7 @@
 	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon_state = "tactical_armor"
-=======
+
 /obj/item/clothing/suit/armor/vest/press
 	name = "press armor vest"
 	desc = "A blue armor vest used to distinguish <i>non-combatant</i> \"PRESS\" members, like if anyone cares."
@@ -80,7 +79,6 @@
 	. = ..()
 	if(!isinhands)
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
->>>>>>> upstream/master
 
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"

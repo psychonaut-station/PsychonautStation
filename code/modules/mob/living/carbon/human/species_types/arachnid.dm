@@ -15,7 +15,7 @@
 	siemens_coeff = 1.3
 	mutanteyes = /obj/item/organ/internal/eyes/night_vision/arachnid
 	mutanttongue = /obj/item/organ/internal/tongue/arachnid
-	external_organs = list(
+	mutant_organs = list(
 		/obj/item/organ/external/arachnid_appendages = "Long",
 	)
 	inert_mutation = /datum/mutation/human/webbing

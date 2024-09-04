@@ -91,6 +91,8 @@
 #define BODYTYPE_SYNTHETIC (1<<5)
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
+///IPC
+#define BODYTYPE_IPC (1<<6)
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.
@@ -115,6 +117,7 @@
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
 #define SPECIES_HUMAN "human"
+#define SPECIES_IPC "ipc"
 #define SPECIES_SYNTHETIC "synthetic"
 #define SPECIES_JELLYPERSON "jelly"
 #define SPECIES_SLIMEPERSON "slime"

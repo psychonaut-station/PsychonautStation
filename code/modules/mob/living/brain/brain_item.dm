@@ -470,6 +470,9 @@
 	brain_size = 1.3
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_LITERATE, TRAIT_REMOTE_TASTING)
 
+/obj/item/organ/internal/brain/ipc
+	zone = BODY_ZONE_CHEST
+
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 
 /obj/item/organ/internal/brain/proc/has_trauma_type(brain_trauma_type = /datum/brain_trauma, resilience = TRAUMA_RESILIENCE_ABSOLUTE)

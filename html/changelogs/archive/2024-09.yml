@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 2024-09-01:
   RengaN02:
   - rscadd: "T\xFCrk B\u0131y\u0131\u011F\u0131 eklendi."
@@ -5,6 +6,8 @@
   Seefaaa:
   - bugfix: "Changelog'da bir de\u011Fi\u015Fiklik olmad\u0131k\xE7a oyuna her girdi\u011F\
       inizde changelog'u g\xF6rmeyeceksiniz."
+=======
+>>>>>>> upstream/master
 2024-09-04:
   00-Steven:
   - balance: Fax machines with hacked input servos can now send chap slices and cookies.
@@ -45,6 +48,11 @@
       power output a station produces.
   SmArtKar:
   - image: Added new sprites for hellfire lasers
+<<<<<<< HEAD
+=======
+  - bugfix: Cardborg costume no longer gets its appearance deleted when you drop a
+      second hat/suit you are holding in your hand
+>>>>>>> upstream/master
   Watermelon914:
   - bugfix: Fixed a bug that breaks signal handlers on an object if one of the signal
       handlers doesn't return a number value.

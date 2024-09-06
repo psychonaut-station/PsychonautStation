@@ -216,8 +216,6 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/captain
-	big_pointer = TRUE
-	pointer_color = COLOR_COMMAND_BLUE
 
 /// Captain gets all station accesses hardcoded in because it's the Captain.
 /datum/id_trim/job/captain/New()
@@ -340,8 +338,6 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/chief_engineer
-	big_pointer = TRUE
-	pointer_color = COLOR_ENGINEERING_ORANGE
 
 /datum/id_trim/job/chief_medical_officer
 	assignment = JOB_CHIEF_MEDICAL_OFFICER
@@ -381,8 +377,6 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/chief_medical_officer
-	big_pointer = TRUE
-	pointer_color = COLOR_MEDICAL_BLUE
 
 /datum/id_trim/job/clown
 	assignment = JOB_CLOWN
@@ -596,8 +590,6 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/head_of_personnel
-	big_pointer = TRUE
-	pointer_color = COLOR_SERVICE_LIME
 
 /datum/id_trim/job/head_of_security
 	assignment = JOB_HEAD_OF_SECURITY
@@ -647,8 +639,6 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/head_of_security
-	big_pointer = TRUE
-	pointer_color = COLOR_SECURITY_RED
 
 /datum/id_trim/job/head_of_security/refresh_trim_access()
 	. = ..()
@@ -899,8 +889,6 @@
 		ACCESS_CHANGE_IDS,
 	)
 	job = /datum/job/quartermaster
-	big_pointer = TRUE
-	pointer_color = COLOR_CARGO_BROWN
 
 /datum/id_trim/job/research_director
 	assignment = JOB_RESEARCH_DIRECTOR
@@ -949,8 +937,6 @@
 		ACCESS_CHANGE_IDS,
 		)
 	job = /datum/job/research_director
-	big_pointer = TRUE
-	pointer_color = COLOR_SCIENCE_PINK
 
 /datum/id_trim/job/roboticist
 	assignment = JOB_ROBOTICIST
@@ -1264,7 +1250,6 @@
 	extra_access = list()
 	template_access = list()
 	job = /datum/job/veteran_advisor
-	big_pointer = TRUE
 
 /datum/id_trim/job/veteran_advisor/refresh_trim_access()
 	. = ..()
@@ -1334,5 +1319,3 @@
 	extra_access = list()
 	template_access = list()
 	job = /datum/job/human_ai
-	big_pointer = TRUE
-	pointer_color = COLOR_MODERATE_BLUE

@@ -86,7 +86,7 @@
 	if(!.)
 		return
 	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
+	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 /obj/item/bodypart/leg/right/synthetic
@@ -119,7 +119,7 @@
 	if(!.)
 		return
 	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
+	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
 		return
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 

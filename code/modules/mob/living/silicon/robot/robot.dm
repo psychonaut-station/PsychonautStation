@@ -391,7 +391,7 @@
 	return ..()
 
 /mob/living/silicon/robot/execute_mode()
-	if(incapacitated)
+	if(incapacitated())
 		return
 	var/obj/item/W = get_active_held_item()
 	if(W)
@@ -945,7 +945,7 @@
 		M.visible_message(span_warning("[M] really can't seem to mount [src]..."))
 		return
 
-	if(stat || incapacitated)
+	if(stat || incapacitated())
 		return
 	if(model && !model.allow_riding)
 		M.visible_message(span_boldwarning("Unfortunately, [M] just can't seem to hold onto [src]!"))

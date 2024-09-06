@@ -3,6 +3,8 @@ import { useEffect, useState } from 'react';
 import { Box, Stack } from '../../components';
 import { DataEvidence } from './DataTypes';
 
+const Y_OFFSET = -45;
+
 type PinProps = {
   evidence: DataEvidence;
   onStartConnecting: Function;
@@ -18,7 +20,7 @@ export function Pin(props: PinProps) {
     setCreatingRope(true);
     onStartConnecting(evidence, {
       x: args.clientX,
-      y: args.clientY,
+      y: args.clientY + Y_OFFSET,
     });
   }
 
@@ -33,7 +35,7 @@ export function Pin(props: PinProps) {
           evidence_ref: 'not used',
           position: {
             x: args.clientX,
-            y: args.clientY,
+            y: args.clientY + Y_OFFSET,
           },
         });
       }

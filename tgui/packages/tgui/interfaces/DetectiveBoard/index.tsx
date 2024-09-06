@@ -11,6 +11,7 @@ import { Evidence } from './Evidence';
 type Data = {
   cases: DataCase[];
   current_case: number;
+  data_connections: Connection[];
 };
 
 type TypedConnection = {
@@ -18,14 +19,12 @@ type TypedConnection = {
   connection: Connection;
 };
 
-const PIN_Y_OFFSET = 15;
-
-const PIN_CONNECTING_Y_OFFSET = -60;
+const PIN_Y_OFFSET = -30;
 
 export function DetectiveBoard(props) {
   const { act, data } = useBackend<Data>();
 
-  const { cases, current_case } = data;
+  const { cases, current_case, data_connections } = data;
 
   const [connectingEvidence, setConnectingEvidence] =
     useState<DataEvidence | null>(null);
@@ -36,9 +35,8 @@ export function DetectiveBoard(props) {
 
   const [connection, setConnection] = useState<Connection | null>(null);
 
-  const [connections, setConnections] = useState<Connection[]>(
-    current_case - 1 < cases.length ? cases[current_case - 1].connections : [],
-  );
+  const [connections, setConnections] =
+    useState<Connection[]>(data_connections);
 
   function handlePinStartConnecting(
     evidence: DataEvidence,
@@ -48,12 +46,12 @@ export function DetectiveBoard(props) {
     setConnection({
       color: 'red',
       from: getPinPosition(evidence),
-      to: { x: mousePos.x, y: mousePos.y + PIN_CONNECTING_Y_OFFSET },
+      to: mousePos,
     });
   }
 
   function getPinPositionByPosition(evidence: Position) {
-    return { x: evidence.x + 15, y: evidence.y + PIN_Y_OFFSET };
+    return { x: evidence.x + 15, y: evidence.y + 45 };
   }
 
   function getPinPosition(evidence: DataEvidence) {
@@ -110,7 +108,7 @@ export function DetectiveBoard(props) {
         setConnection({
           color: 'red',
           from: getPinPosition(connectingEvidence),
-          to: { x: args.clientX, y: args.clientY - 60 },
+          to: { x: args.clientX, y: args.clientY + PIN_Y_OFFSET },
         });
       }
     }
@@ -122,14 +120,6 @@ export function DetectiveBoard(props) {
       window.removeEventListener('mouseup', handleMouseUp);
     };
   }, [connectingEvidence]);
-
-  useEffect(() => {
-    setConnections(
-      current_case - 1 < cases.length
-        ? cases[current_case - 1].connections
-        : [],
-    );
-  }, [current_case]);
 
   function handleMouseUp(args: MouseEvent) {
     if (movingEvidenceConnections && connectingEvidence) {
@@ -279,33 +269,27 @@ export function DetectiveBoard(props) {
       <Window.Content>
         {cases.length > 0 ? (
           <>
+            <Connections lineWidth={5} connections={connections} zLayer={99} />
+            {movingEvidenceConnections && (
+              <Connections
+                lineWidth={5}
+                connections={retrieveConnections(movingEvidenceConnections)}
+                zLayer={99}
+              />
+            )}
+            {connection && (
+              <Connections
+                lineWidth={5}
+                connections={[connection]}
+                zLayer={99}
+              />
+            )}
             <BoardTabs />
 
             {cases?.map(
               (item, i) =>
                 current_case - 1 === i && (
                   <Box key={cases[i].ref} className="Board__Content">
-                    {movingEvidenceConnections && (
-                      <Connections
-                        lineWidth={5}
-                        connections={retrieveConnections(
-                          movingEvidenceConnections,
-                        )}
-                        zLayer={99}
-                      />
-                    )}
-                    {connection && (
-                      <Connections
-                        lineWidth={5}
-                        connections={[connection]}
-                        zLayer={99}
-                      />
-                    )}
-                    <Connections
-                      lineWidth={5}
-                      connections={connections}
-                      zLayer={99}
-                    />
                     {item?.evidences?.map((evidence, index) => (
                       <Evidence
                         key={evidence.ref}

@@ -172,3 +172,9 @@
   vinylspiders:
   - bugfix: fixed a bug that could sometimes cause jump boots users to retain the
       floating trait indefinitely when using the ability
+2024-09-07:
+  Rhials:
+  - rscadd: Code-Violet Medical Support ERT teams have been rolled out for deployment
+      to Space Station 13 and related Nanotrasen Installations.
+  Singul0:
+  - bugfix: Fixes makarov-stechkin mix up on forgotten ship virtual domain.

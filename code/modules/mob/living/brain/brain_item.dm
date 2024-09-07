@@ -264,9 +264,6 @@
 
 	add_fingerprint(user)
 
-	if(istype(src, /obj/item/organ/internal/brain/basic_posibrain))
-		return
-
 	if(user.zone_selected != zone)
 		return ..()
 
@@ -279,6 +276,8 @@
 	//since these people will be dead M != usr
 
 	if(!target_has_brain)
+		if(!(C.mob_biotypes & MOB_ROBOTIC) && zone != BODY_ZONE_HEAD)
+			return
 		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 
@@ -448,13 +447,6 @@
 	organ_owner.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
 	organ_owner.AddElement(/datum/element/tenacious)
 
-/obj/item/organ/internal/brain/basic_posibrain
-	name = "basic positronic brain"
-	desc = "Basic version of the positronic brain"
-	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
-	icon_state = "basic_posib"
-	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
-
 /obj/item/organ/internal/brain/felinid //A bit smaller than average
 	brain_size = 0.8
 
@@ -471,7 +463,21 @@
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_LITERATE, TRAIT_REMOTE_TASTING)
 
 /obj/item/organ/internal/brain/ipc
+	name = "ipc brain"
+	desc = "Brain shaped shining metal"
+	icon_state = "brain-c"
 	zone = BODY_ZONE_CHEST
+
+/obj/item/organ/internal/brain/ipc/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_alt_click))
+
+/obj/item/organ/internal/brain/ipc/proc/on_alt_click(atom/source, mob/living/living_user)
+	if(zone == BODY_ZONE_CHEST)
+		zone = BODY_ZONE_HEAD
+	else if(zone == BODY_ZONE_HEAD)
+		zone = BODY_ZONE_CHEST
+	balloon_alert(living_user, "zone setted to [zone]")
 
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 

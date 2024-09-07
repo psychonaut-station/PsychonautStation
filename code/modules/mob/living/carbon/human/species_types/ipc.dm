@@ -33,7 +33,7 @@
 	mutantheart = null
 	mutantlungs = null
 	mutantliver = null
-	mutantstomach = null
+	mutantstomach = /obj/item/organ/internal/stomach/ipc
 	mutantappendix = null
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/ipc,
@@ -44,6 +44,27 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
 	gibspawner = /obj/effect/gibspawner/robot/android
+
+
+/datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load)
+	. = ..()
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[ipc.dna.features["ipc_chassis"]]
+	for(var/obj/item/bodypart/BP as() in ipc.bodyparts)
+		BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+		BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+		BP.update_limb()
+
+/datum/species/ipc/randomize_features()
+	var/list/features = ..()
+	features["ipc_chassis"] = SSaccessories.ipc_chassis_list[pick(SSaccessories.ipc_chassis_list)]
+	return features
+
+/datum/species/ipc/get_features()
+	var/list/features = ..()
+
+	features += "feature_ipc_chassis"
+
+	return features
 
 /datum/species/ipc/get_species_description()
 	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \
@@ -98,6 +119,13 @@
 
 	return to_add
 
-/datum/species/ipc/create_pref_liver_perks()
-	RETURN_TYPE(/list)
-	return list()
+/datum/species/ipc/handle_environment_pressure(mob/living/carbon/human/H, datum/gas_mixture/environment, seconds_per_tick, times_fired)
+	. = ..()
+
+	var/pressure = environment.return_pressure()
+	var/adjusted_pressure = H.calculate_affecting_pressure(pressure)
+
+	if(adjusted_pressure >= HAZARD_HIGH_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
+		H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+	else if(adjusted_pressure < HAZARD_LOW_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
+		H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)

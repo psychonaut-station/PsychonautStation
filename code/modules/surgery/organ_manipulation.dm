@@ -174,10 +174,6 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
-		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain))
-			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
-			return SURGERY_STEP_FAIL
-
 		if(!can_use_organ(user, meatslab))
 			return SURGERY_STEP_FAIL
 

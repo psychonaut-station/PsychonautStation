@@ -372,11 +372,9 @@ GLOBAL_VAR(tracy_log)
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
 
-	new_status += "<br>"
-
 	var/name_link = CONFIG_GET(string/hub_name_link)
 	if (name_link)
-		new_status += "<a href='[name_link]'>Discord</a>"
+		new_status += " (<a href='[name_link]'>Discord</a>)"
 
 	var/players = GLOB.clients.len
 

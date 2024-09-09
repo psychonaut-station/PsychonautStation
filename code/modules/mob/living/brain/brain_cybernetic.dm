@@ -63,6 +63,10 @@
 	desc = "A mechanical brain found inside of ipc's. Not to be confused with a positronic brain."
 	zone = BODY_ZONE_CHEST
 
+/obj/item/organ/internal/stomach/ipc/examine(mob/user)
+	. = ..()
+	. += span_notice("Alt+Click to change the organ zone!")
+
 /obj/item/organ/internal/brain/cybernetic/ipc/Initialize(mapload)
 	. = ..()
 	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_alt_click))

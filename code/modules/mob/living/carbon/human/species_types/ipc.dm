@@ -291,7 +291,7 @@
 	var/obj/item/bodypart/bodypart = C.get_bodypart(BODY_ZONE_HEAD)
 	if(!bodypart)
 		return
-	var/datum/bodypart_overlay/simple/ipcscreen/overlay = locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays
+	var/datum/bodypart_overlay/simple/ipcscreen/overlay = (locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays)
 	if(overlay)
 		bodypart.remove_bodypart_overlay(overlay)
 	C.update_body_parts()

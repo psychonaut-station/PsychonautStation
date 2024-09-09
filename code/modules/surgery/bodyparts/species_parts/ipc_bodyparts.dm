@@ -192,13 +192,17 @@
 
 /obj/item/bodypart/leg/left/ipc/emp_act(severity)
 	. = ..()
-	if(!.)
+	if(!. || isnull(owner))
 		return
-	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
-		return
-	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 
+	var/knockdown_time = AUGGED_LEG_EMP_KNOCKDOWN_TIME
+	if (severity == EMP_HEAVY)
+		knockdown_time *= 2
+	owner.Knockdown(knockdown_time)
+	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
+		return
+	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
+	return
 /obj/item/bodypart/leg/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -227,13 +231,17 @@
 
 /obj/item/bodypart/leg/right/ipc/emp_act(severity)
 	. = ..()
-	if(!.)
+	if(!. || isnull(owner))
 		return
-	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
-		return
-	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 
+	var/knockdown_time = AUGGED_LEG_EMP_KNOCKDOWN_TIME
+	if (severity == EMP_HEAVY)
+		knockdown_time *= 2
+	owner.Knockdown(knockdown_time)
+	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
+		return
+	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
+	return
 #undef ROBOTIC_LIGHT_BRUTE_MSG
 #undef ROBOTIC_MEDIUM_BRUTE_MSG
 #undef ROBOTIC_HEAVY_BRUTE_MSG

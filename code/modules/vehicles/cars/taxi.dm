@@ -88,7 +88,6 @@
 	return BULLET_ACT_HIT
 
 /obj/vehicle/sealed/car/taxi/atom_destruction()
-	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)
 	playsound(src, 'sound/vehicles/taxi_crash.ogg', 100)
 	STOP_PROCESSING(SSobj, src)
 	return ..()

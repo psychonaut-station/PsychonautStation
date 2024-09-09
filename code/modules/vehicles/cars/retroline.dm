@@ -88,9 +88,6 @@
 	return BULLET_ACT_HIT
 
 /obj/vehicle/sealed/car/retroline/atom_destruction()
-	explosion(src, devastation_range = -1, light_impact_range = 2, flame_range = 3, flash_range = 4)
-	return ..()
-
-/obj/vehicle/sealed/car/retroline/Destroy()
-	STOP_PROCESSING(SSobj,src)
+	playsound(src, 'sound/vehicles/clowncar_fart.ogg', 100)
+	STOP_PROCESSING(SSobj, src)
 	return ..()

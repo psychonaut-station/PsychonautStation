@@ -2934,7 +2934,7 @@
 	name = "IPC High Voltage Protector"
 	id = "ipc_voltprotector"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/internal/voltprotector
+	build_path = /obj/item/organ/internal/voltage_protector
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(

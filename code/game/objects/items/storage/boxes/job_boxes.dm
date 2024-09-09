@@ -57,6 +57,10 @@
 		new /obj/item/tank/internals/plasmaman/belt(src)
 		qdel(mask) // Get rid of the items that shouldn't be
 		qdel(internals)
+	else if(isipc(loc))
+		new /obj/item/stock_parts/power_store/cell/high(src)
+		qdel(mask)
+		qdel(internals)
 	else
 		return
 

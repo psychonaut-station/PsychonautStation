@@ -143,3 +143,6 @@
 
 /// From whoever has been revealed (atom/revealed)
 #define COMSIG_ATOM_REVEAL "atom_reveal"
+
+/// The atom exposed to water
+#define COMSIG_ATOM_EXPOSED_WATER "exposed_water"

@@ -9,6 +9,7 @@
 	var/obj/item/stock_parts/power_store/cell/cell
 	var/obj/item/stock_parts/power_store/cell/initcell = /obj/item/stock_parts/power_store/cell/high
 	var/backup_charge = 100
+	var/drain_time = 0
 
 /obj/item/organ/internal/stomach/ipc/Initialize(mapload)
 	. = ..()

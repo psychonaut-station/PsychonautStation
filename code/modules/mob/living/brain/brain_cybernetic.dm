@@ -57,3 +57,19 @@
 			apply_organ_damage(20, BRAIN_DAMAGE_SEVERE)
 		if (EMP_LIGHT)
 			apply_organ_damage(10, BRAIN_DAMAGE_MILD)
+
+/obj/item/organ/internal/brain/cybernetic/ipc
+	name = "ipc brain"
+	desc = "A mechanical brain found inside of ipc's. Not to be confused with a positronic brain."
+	zone = BODY_ZONE_CHEST
+
+/obj/item/organ/internal/brain/cybernetic/ipc/Initialize(mapload)
+	. = ..()
+	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_alt_click))
+
+/obj/item/organ/internal/brain/cybernetic/ipc/proc/on_alt_click(atom/source, mob/living/living_user)
+	if(zone == BODY_ZONE_CHEST)
+		zone = BODY_ZONE_HEAD
+	else if(zone == BODY_ZONE_HEAD)
+		zone = BODY_ZONE_CHEST
+	balloon_alert(living_user, "zone setted to [zone]")

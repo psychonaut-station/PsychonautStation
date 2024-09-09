@@ -462,23 +462,6 @@
 	brain_size = 1.3
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_CAN_STRIP, TRAIT_LITERATE, TRAIT_REMOTE_TASTING)
 
-/obj/item/organ/internal/brain/ipc
-	name = "ipc brain"
-	desc = "Brain shaped shining metal"
-	icon_state = "brain-c"
-	zone = BODY_ZONE_CHEST
-
-/obj/item/organ/internal/brain/ipc/Initialize(mapload)
-	. = ..()
-	RegisterSignal(src, COMSIG_CLICK_ALT, PROC_REF(on_alt_click))
-
-/obj/item/organ/internal/brain/ipc/proc/on_alt_click(atom/source, mob/living/living_user)
-	if(zone == BODY_ZONE_CHEST)
-		zone = BODY_ZONE_HEAD
-	else if(zone == BODY_ZONE_HEAD)
-		zone = BODY_ZONE_CHEST
-	balloon_alert(living_user, "zone setted to [zone]")
-
 ////////////////////////////////////TRAUMAS////////////////////////////////////////
 
 /obj/item/organ/internal/brain/proc/has_trauma_type(brain_trauma_type = /datum/brain_trauma, resilience = TRAUMA_RESILIENCE_ABSOLUTE)

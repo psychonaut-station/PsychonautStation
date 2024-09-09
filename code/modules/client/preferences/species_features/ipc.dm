@@ -35,3 +35,7 @@
 			BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 			BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
 			BP.update_limb()
+
+/datum/preference/choiced/ipc_chassis/create_default_value()
+	var/datum/sprite_accessory/ipc_chassis/chassis = /datum/sprite_accessory/ipc_chassis/black
+	return initial(chassis.name)

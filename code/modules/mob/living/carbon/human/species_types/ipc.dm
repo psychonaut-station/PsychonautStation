@@ -215,6 +215,8 @@
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/internal/stomach/ipc/stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(!istype(stomach))
+		to_chat(H, "<span class='warning'>There is nothing in your body to charge.</span>")
 	if(!stomach?.cell)
 		to_chat(H, "<span class='warning'>You try to siphon energy from \the [target], but your power cell is gone!</span>")
 		return

@@ -205,3 +205,8 @@
 #define RND_CATEGORY_INITIAL "initial"
 #define RND_CATEGORY_HACKED "hacked"
 #define RND_CATEGORY_IMPORTED "/Imported Designs"
+
+// IPC Categories
+#define RND_CATEGORY_MECHFAB_IPC "/IPC"
+#define RND_SUBCATEGORY_MECHFAB_IPC_BODYPARTS "/IPC Bodyparts"
+#define RND_SUBCATEGORY_MECHFAB_IPC_ORGANS "/IPC Organs"

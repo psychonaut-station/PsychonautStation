@@ -33,8 +33,4 @@ jobs:
         script: |
           const { processAutoChangelog } = await import('${{ github.workspace }}/tools/pull_request_hooks/autoChangelog.js')
           await processAutoChangelog({ github, context })
-<<<<<<< HEAD
-        github-token: ${{ secrets.BOT_PAT || secrets.GITHUB_TOKEN }}
-=======
         github-token: ${{ steps.app-token-generation.outputs.token || secrets.GITHUB_TOKEN }}
->>>>>>> upstream/master

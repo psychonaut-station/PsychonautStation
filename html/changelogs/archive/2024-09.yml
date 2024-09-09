@@ -173,8 +173,6 @@
   - bugfix: fixed a bug that could sometimes cause jump boots users to retain the
       floating trait indefinitely when using the ability
 2024-09-07:
-<<<<<<< HEAD
-=======
   Ben10Omintrix:
   - bugfix: fixes basic mobs not losing their aggroed appearance after death
   Ghommie:
@@ -194,14 +192,11 @@
   MrStonedOne:
   - bugfix: Fixed the taskbar/menu bar icon showing the virgin orange byond icon instead
       of the chad blue ss13 icon.
->>>>>>> upstream/master
   Rhials:
   - rscadd: Code-Violet Medical Support ERT teams have been rolled out for deployment
       to Space Station 13 and related Nanotrasen Installations.
   Singul0:
   - bugfix: Fixes makarov-stechkin mix up on forgotten ship virtual domain.
-<<<<<<< HEAD
-=======
   Xackii:
   - qol: You don't need two hands to stream with broadcast camera.
 2024-09-08:
@@ -250,4 +245,3 @@
       properly when swapping character slots
   - bugfix: fixed a race condition that was causing carpotoxin to cause liver damage
       to felinids despite being immune
->>>>>>> upstream/master

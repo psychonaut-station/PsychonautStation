@@ -245,3 +245,9 @@
       properly when swapping character slots
   - bugfix: fixed a race condition that was causing carpotoxin to cause liver damage
       to felinids despite being immune
+2024-09-10:
+  Ghommie:
+  - bugfix: beams now take into account the pixel offsets of both origin and target
+      more accurately..
+  exdal:
+  - rscadd: Github App eklendi (test)

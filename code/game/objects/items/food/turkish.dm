@@ -92,3 +92,36 @@
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/raw_kiymali_pide
+	name = "raw kıymalı pide"
+	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan, Türk mutfağına özgü, fırında pişirilmesi gerekilen lezzetli bir pide çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "raw_kıymalı_pide"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 1,
+		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("meat" = 1, "pepper" = 1, "tomato" = 1)
+	foodtypes = MEAT | VEGETABLES | RAW
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/raw_kiymali_pide/make_bakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/kiymali_pide, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
+
+/obj/item/food/kiymali_pide
+	name = "kıymalı pide"
+	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan, Türk mutfağına özgü, fırında pişirilen lezzetli bir pide çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "kıymalı_pide"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/protein = 6,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
+	)
+	tastes = list("meat" = 1, "pepper" = 1, "tomato" = 1)
+	foodtypes = MEAT | VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2

@@ -46,3 +46,14 @@
 /datum/crafting_recipe/food/reaction/ayran
 	reaction = /datum/chemical_reaction/drink/ayran
 	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/kiymali_pide
+	name = "Kıymali Pide"
+	reqs = list(
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/grown/chili = 1,
+		/obj/item/food/doughslice = 1,
+		/obj/item/food/raw_patty = 1,
+	)
+	result = /obj/item/food/raw_kiymali_pide
+	category = CAT_TURKISH

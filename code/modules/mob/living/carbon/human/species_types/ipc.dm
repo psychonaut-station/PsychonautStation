@@ -69,6 +69,11 @@
 		BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
 		BP.update_limb()
 
+/datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
+	. = ..()
+	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
+		H.adjustBruteLoss(1.5 * seconds_per_tick)
+
 /datum/species/ipc/proc/water_act(atom/exposed)
 	SIGNAL_HANDLER
 	var/mob/living/carbon/human/exposed_ipc = exposed

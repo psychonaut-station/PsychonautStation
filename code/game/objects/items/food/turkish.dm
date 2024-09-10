@@ -94,10 +94,10 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/raw_kiymali_pide
-	name = "raw kıymalı pide"
+	name = "raw kiymali pide"
 	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan, Türk mutfağına özgü, fırında pişirilmesi gerekilen lezzetli bir pide çeşididir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
-	icon_state = "raw_kıymalı_pide"
+	icon_state = "raw_kiymali_pide"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 1,
 		/datum/reagent/consumable/nutriment/protein = 2,
@@ -112,10 +112,10 @@
 	AddComponent(/datum/component/bakeable, /obj/item/food/kiymali_pide, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
 
 /obj/item/food/kiymali_pide
-	name = "kıymalı pide"
+	name = "kiymali pide"
 	desc = "İnce hamur üzerine kıyma, domates, biber ve baharatlarla hazırlanan, Türk mutfağına özgü, fırında pişirilen lezzetli bir pide çeşididir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
-	icon_state = "kıymalı_pide"
+	icon_state = "kiymali_pide"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 6,

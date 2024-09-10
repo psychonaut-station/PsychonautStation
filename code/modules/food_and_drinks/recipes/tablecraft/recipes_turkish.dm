@@ -48,7 +48,7 @@
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/kiymali_pide
-	name = "Kiymali Pide"
+	name = "Kıymalı Pide"
 	reqs = list(
 		/obj/item/food/grown/tomato = 1,
 		/obj/item/food/grown/chili = 1,

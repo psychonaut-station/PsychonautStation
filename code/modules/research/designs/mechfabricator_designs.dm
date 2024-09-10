@@ -2942,7 +2942,7 @@
 	)
 
 /datum/design/ipc_power_cord
-	name = "IPC High Voltage Protector"
+	name = "IPC Power Cord"
 	id = "ipc_power_cord"
 	build_type = MECHFAB
 	build_path = /obj/item/organ/internal/cyberimp/arm/power_cord

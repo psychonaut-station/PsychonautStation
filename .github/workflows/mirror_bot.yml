@@ -17,7 +17,7 @@ env:
   remote_repo: tgstation/tgstation
   remote_branch: master
   commiter_name: psychonaut-ci[bot]
-  commiter_email: 54681766+psychonaut-ci[bot]@users.noreply.github.com
+  commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
 
 jobs:
   mirror:

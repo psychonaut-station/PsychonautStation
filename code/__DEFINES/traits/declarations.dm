@@ -241,6 +241,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WOUND_LICKER "wound_licker"
 /// Mobs with this trait are allowed to use silicon emotes
 #define TRAIT_SILICON_EMOTES_ALLOWED "silicon_emotes_allowed"
+/// Makes you immune to welding flashes
+#define TRAIT_NOTOOLFLASH "notoolflash"
 
 /// This trait designate that the mob was originally a monkey
 #define TRAIT_BORN_MONKEY "born_as_a_monkey"
@@ -1279,12 +1281,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 ///Trait which allows mobs to parry mining mob projectiles
 #define TRAIT_MINING_PARRYING "mining_parrying"
 
-
-/// Makes you immune to welding flashes
-#define TRAIT_NOTOOLFLASH "notoolflash"
-
 ///A "fake" effect that should not be subject to normal effect removal methods (like the effect remover component)
 #define TRAIT_ILLUSORY_EFFECT "illusory_effect"
-
 
 // END TRAIT DEFINES

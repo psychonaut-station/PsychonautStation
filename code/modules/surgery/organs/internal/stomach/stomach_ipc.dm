@@ -16,6 +16,12 @@
 	if(initcell)
 		cell = new initcell
 	update_overlays()
+	var/static/list/hovering_item_typechecks = list(
+		/obj/item/stock_parts/power_store/cell = list(
+			SCREENTIP_CONTEXT_LMB = "Place Cell",
+		),
+	)
+	AddElement(/datum/element/contextual_screentip_item_typechecks, hovering_item_typechecks)
 
 /obj/item/organ/internal/stomach/ipc/examine(mob/user)
 	. = ..()
@@ -34,7 +40,7 @@
 	if(cell && cell.charge > 0)
 		if(backup_charge < 100)
 			adjust_backup_charge(1 * seconds_per_tick)
-		adjust_charge(-IPC_CHARGE_FACTOR * seconds_per_tick * (humanowner ? humanowner.physiology.hunger_mod : 1))
+		adjust_charge(-IPC_DISCHARGE_FACTOR * seconds_per_tick * (humanowner ? humanowner.physiology.hunger_mod : 1))
 	handle_charge(owner, seconds_per_tick, times_fired)
 
 	if(cell && cell.charge == 0)

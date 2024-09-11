@@ -317,7 +317,7 @@
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))
 			return
-		if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ipc))
+		else if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ipc))
 			var/obj/item/organ/internal/stomach/ipc/stomach = maybe_stomach
 			if(!stomach.cell)
 				return
@@ -333,12 +333,12 @@
 				return
 			to_chat(H, span_notice("You begin clumsily channeling power from [src] into your body."))
 			stomach.drain_time = world.time + CELL_DRAIN_TIME
-			if(do_after(user, CELL_DRAIN_TIME, target = src))
+			while(do_after(user, CELL_DRAIN_TIME, target = src))
 				if((charge < CELL_POWER_DRAIN) || (ipccell.charge > charge_limit))
 					return
 				if(istype(stomach))
 					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
-					stomach.adjust_charge(CELL_POWER_GAIN + 440)
+					stomach.adjust_charge(CELL_POWER_GAIN)
 					charge -= CELL_POWER_DRAIN
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))

@@ -307,8 +307,6 @@
 #define ETHEREAL_CHARGE_OVERLOAD (2.5 * STANDARD_CELL_CHARGE)
 #define ETHEREAL_CHARGE_DANGEROUS (3 * STANDARD_CELL_CHARGE)
 
-#define IPC_CHARGE_FACTOR 100 //factor at which ipc's charge decreases per second
-
 #define CRYSTALIZE_COOLDOWN_LENGTH (120 SECONDS)
 #define CRYSTALIZE_PRE_WAIT_TIME (40 SECONDS)
 #define CRYSTALIZE_DISARM_WAIT_TIME (120 SECONDS)
@@ -451,6 +449,8 @@
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
 #define ETHEREAL_DISCHARGE_RATE (8e-4 * STANDARD_CELL_CHARGE) // Rate at which ethereal stomach charge decreases
+#define IPC_DISCHARGE_FACTOR 100 //factor at which ipc's charge decreases per second
+
 /// How much nutrition eating clothes as moth gives and drains
 #define CLOTHING_NUTRITION_GAIN 15
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.

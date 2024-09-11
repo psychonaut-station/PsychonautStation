@@ -37,8 +37,7 @@
 
 /obj/item/bodypart/head/ipc/drop_limb(special, dismembered, move_to_floor = TRUE)
 	. = ..()
-	qdel(change_monitor)
-	change_monitor = null
+	QDEL_NULL(change_monitor)
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source)
 	. = ..()
@@ -203,6 +202,7 @@
 		return
 	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
 	return
+
 /obj/item/bodypart/leg/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -242,6 +242,7 @@
 		return
 	to_chat(owner, span_danger("As your [plaintext_zone] unexpectedly malfunctions, it causes you to fall to the ground!"))
 	return
+
 #undef ROBOTIC_LIGHT_BRUTE_MSG
 #undef ROBOTIC_MEDIUM_BRUTE_MSG
 #undef ROBOTIC_HEAVY_BRUTE_MSG

@@ -57,14 +57,14 @@
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
-	to_chat(source, span_notice("You dont have a mouth!"))
+	to_chat(source, span_notice("You have no mouth!"))
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
 	return COMSIG_CARBON_BLOCK_EAT
 
 /datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	. = ..()
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features["ipc_chassis"]]
-	for(var/obj/item/bodypart/BP as() in target.bodyparts)
+	for(var/obj/item/bodypart/BP as anything in target.bodyparts)
 		BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 		BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
 		BP.update_limb()
@@ -221,13 +221,13 @@
 	var/mob/living/carbon/human/H = user
 	var/obj/item/organ/internal/stomach/ipc/stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!istype(stomach))
-		to_chat(H, "<span class='warning'>There is nothing in your body to charge.</span>")
+		to_chat(H, span_warning("There is nothing in your body to charge."))
 	if(!stomach?.cell)
-		to_chat(H, "<span class='warning'>You try to siphon energy from \the [target], but your power cell is gone!</span>")
+		to_chat(H, span_warning("You try to siphon energy from \the [target], but your power cell is gone!"))
 		return
 
 	if(istype(H) && H.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
-		to_chat(user, "<span class='warning'>You are already fully charged!</span>")
+		to_chat(user, span_warning("You are already fully charged!"))
 		return
 
 	if(istype(target, /obj/machinery/power/apc))
@@ -236,7 +236,7 @@
 			A.ipc_interact(H)
 			return
 		else
-			to_chat(user, "<span class='warning'>There is not enough charge to draw from that APC.</span>")
+			to_chat(user, span_warning("There is not enough charge to draw from that APC."))
 			return
 
 ////////////////////////////////////////////////////////////////////////////////////////
@@ -275,7 +275,7 @@
 	for(var/datum/bodypart_overlay/simple/ipcscreen/overlay as anything in possible_overlays)
 		if(overlay.job && !istype(C.mind.assigned_role, overlay.job))
 			continue
-		var/image/item_image = image(icon = initial(overlay.icon), icon_state = initial(overlay.icon_state))
+		var/image/item_image = image(icon = overlay::icon, icon_state = overlay::icon_state)
 		item_images[overlay.name] = item_image
 		items[overlay.name] = overlay
 	var/picked_emote = show_radial_menu(C, C, item_images, radius = 36)

@@ -100,7 +100,7 @@
 	id = TECHWEB_NODE_IPC
 	display_name = "IPC Construction"
 	description = "Humanoid robotic creatures with monitors in their heads."
-	prereq_ids = list(TECHWEB_NODE_AI)
+	prereq_ids = list(TECHWEB_NODE_ROBOTICS)
 	design_ids = list(
 		"ipc_head",
 		"ipc_chest",

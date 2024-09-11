@@ -5,6 +5,7 @@
 	desc = "A holder, can hold cells for ipc's power source."
 	organ_flags = ORGAN_ROBOTIC
 	organ_traits = list(TRAIT_NOHUNGER)
+	flags_1 = HAS_CONTEXTUAL_SCREENTIPS_1
 	var/mob/living/carbon/human/humanowner
 	var/obj/item/stock_parts/power_store/cell/cell
 	var/obj/item/stock_parts/power_store/cell/initcell = /obj/item/stock_parts/power_store/cell/high
@@ -16,17 +17,34 @@
 	if(initcell)
 		cell = new initcell
 	update_overlays()
-	var/static/list/hovering_item_typechecks = list(
-		/obj/item/stock_parts/power_store/cell = list(
-			SCREENTIP_CONTEXT_LMB = "Place Cell",
-		),
-	)
-	AddElement(/datum/element/contextual_screentip_item_typechecks, hovering_item_typechecks)
+	RegisterSignal(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
+
+/obj/item/organ/internal/stomach/ipc/Destroy()
+	UnregisterSignal(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM)
+	return ..()
+
+/obj/item/organ/internal/stomach/ipc/proc/on_requesting_context_from_item(
+	datum/source,
+	list/context,
+	obj/item/held_item,
+)
+	SIGNAL_HANDLER
+
+	if (isnull(held_item))
+		return NONE
+
+	if (istype(held_item, /obj/item/stock_parts/power_store/cell) && !cell)
+		context += list(SCREENTIP_CONTEXT_LMB = "Place Cell")
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(cell)
+		context += list(SCREENTIP_CONTEXT_ALT_LMB = "Remove The Cell")
+		return CONTEXTUAL_SCREENTIP_SET
+	return NONE
 
 /obj/item/organ/internal/stomach/ipc/examine(mob/user)
 	. = ..()
 	if(cell)
-		. += span_notice("Use it for remove [cell].")
+		. += span_notice("Alt-Click to remove [cell].")
 	else
 		. += span_notice("There is pins for a cell.")
 
@@ -132,7 +150,7 @@
 		if(backup_charge == 0)
 			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
 
-/obj/item/organ/internal/stomach/ipc/attack_self(mob/user)
+/obj/item/organ/internal/stomach/ipc/click_alt(mob/user)
 	var/turf/drop_loc = drop_location()
 	if(cell)
 		user.visible_message(span_notice("[user] removes [cell] from [src]!"), span_notice("You remove [cell]."))

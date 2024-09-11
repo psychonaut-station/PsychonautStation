@@ -50,7 +50,7 @@ jobs:
         if: steps.value_holder.outputs.ACTIONS_ENABLED
         run: |
           git config --local user.name "psychonaut-ci[bot]"
-          git config --local user.email "54681766+psychonaut-ci[bot]@users.noreply.github.com"
+          git config --local user.email "181007896+psychonaut-ci[bot]@users.noreply.github.com"
           git pull origin master
           git add html/changelogs
           git commit -m "Automatic changelog compile [ci skip]" -a || true

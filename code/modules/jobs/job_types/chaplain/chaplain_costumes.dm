@@ -289,25 +289,25 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT
 
-/obj/item/clothing/head/helmet/chaplain/chapterhelmet
-	name = "Chapter Helmet"
+/obj/item/clothing/head/helmet/chaplain/chapter
+	name = "chapter chaplain helmet"
 	desc = "For God-Emperor of Mankind!"
 	icon_state = "um_chaphelmet"
 	inhand_icon_state = null
-	icon = 'icons/obj/clothing/head/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/head/chaplain.dmi'
+	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
 
-/obj/item/clothing/suit/chaplainsuit/armor/chaptersuit
-	name = "Chapter  Suit"
+/obj/item/clothing/suit/chaplainsuit/armor/chapter
+	name = "chapter  suit"
 	desc = "For God-Emperor of Mankind!"
 	icon_state = "um_chapsuit"
-	icon = 'icons/obj/clothing/suits/chaplain.dmi'
-	worn_icon = 'icons/mob/clothing/suits/chaplain.dmi'
+	icon = 'icons/psychonaut/obj/clothing/suits/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/chaplain.dmi'
 	inhand_icon_state = null
 	slowdown = 0
 
-/obj/item/clothing/shoes/chapterboots
-	name = "Chapter  Boots"
+/obj/item/clothing/shoes/chapter
+	name = "chapter chaplain  boots"
 	desc = "Anti-Heresy Boots!"
 	icon_state = "um_boots"
 	resistance_flags = NONE

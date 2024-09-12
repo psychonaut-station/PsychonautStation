@@ -312,7 +312,6 @@
 	inhand_icon_state = null
 	slowdown = 0
 
- /// boots
 /obj/item/clothing/shoes/um_boots
 	name = "Chapter Chaplain Boots"
 	desc = "Anti-Heresy Boots!"

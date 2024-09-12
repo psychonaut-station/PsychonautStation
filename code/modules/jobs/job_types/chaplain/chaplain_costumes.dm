@@ -307,8 +307,10 @@
 	slowdown = 0
 
 /obj/item/clothing/shoes/chapter
-	name = "chapter chaplain  boots"
-	desc = "anti-heresy boots!"
+	name = "chapter chaplain boots"
+	desc = "Anti-heresy boots!"
 	icon_state = "um_boots"
+	icon = 'icons/psychonaut/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/feet.dmi'
 	resistance_flags = NONE
 	can_be_tied = FALSE

@@ -298,7 +298,7 @@
 	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
 
 /obj/item/clothing/suit/chaplainsuit/armor/chapter
-	name = "chapter  suit"
+	name = "chapter chaplain suit"
 	desc = "For God-Emperor of Mankind!"
 	icon_state = "um_chapsuit"
 	icon = 'icons/psychonaut/obj/clothing/suits/chaplain.dmi'
@@ -308,7 +308,7 @@
 
 /obj/item/clothing/shoes/chapter
 	name = "chapter chaplain  boots"
-	desc = "Anti-Heresy Boots!"
+	desc = "anti-heresy boots!"
 	icon_state = "um_boots"
 	resistance_flags = NONE
 	can_be_tied = FALSE

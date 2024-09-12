@@ -166,7 +166,7 @@
 	new /obj/item/clothing/head/helmet/chaplain/clock(src)
 	new /obj/item/clothing/suit/chaplainsuit/armor/clock(src)
 
-/obj/item/storage/box/holy/chapterchaplain
+/obj/item/storage/box/holy/chapter
 	name = "Chapter Chaplain kit"
 	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/chapter
 

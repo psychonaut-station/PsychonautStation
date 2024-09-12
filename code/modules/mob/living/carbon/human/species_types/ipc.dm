@@ -64,10 +64,11 @@
 /datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	. = ..()
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features["ipc_chassis"]]
-	for(var/obj/item/bodypart/BP as anything in target.bodyparts)
-		BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-		BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
-		BP.update_limb()
+	if(chassis_of_choice)
+		for(var/obj/item/bodypart/BP as anything in target.bodyparts)
+			BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+			BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+			BP.update_limb()
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()

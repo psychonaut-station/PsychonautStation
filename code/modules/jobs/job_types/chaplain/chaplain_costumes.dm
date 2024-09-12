@@ -289,22 +289,16 @@
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT
 
-/obj/item/clothing/head/helmet/chaplain/um_chaphelmet
-	name = "Chapter Chaplain Helmet"
+/obj/item/clothing/head/helmet/chaplain/chapterhelmet
+	name = "Chapter Helmet"
 	desc = "For God-Emperor of Mankind!"
 	icon_state = "um_chaphelmet"
 	inhand_icon_state = null
 	icon = 'icons/obj/clothing/head/chaplain.dmi'
 	worn_icon = 'icons/mob/clothing/head/chaplain.dmi'
 
-	armor_type = /datum/armor/helmet_chaplain
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
-	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH
-	strip_delay = 80
-	dog_fashion = null
-
-/obj/item/clothing/suit/chaplainsuit/armor/um_chapsuit
-	name = "Chapter Chaplain Suit"
+/obj/item/clothing/suit/chaplainsuit/armor/chaptersuit
+	name = "Chapter  Suit"
 	desc = "For God-Emperor of Mankind!"
 	icon_state = "um_chapsuit"
 	icon = 'icons/obj/clothing/suits/chaplain.dmi'
@@ -312,11 +306,9 @@
 	inhand_icon_state = null
 	slowdown = 0
 
-/obj/item/clothing/shoes/um_boots
-	name = "Chapter Chaplain Boots"
+/obj/item/clothing/shoes/chapterboots
+	name = "Chapter  Boots"
 	desc = "Anti-Heresy Boots!"
 	icon_state = "um_boots"
-	strip_delay = 30
-	equip_delay_other = 50
 	resistance_flags = NONE
 	can_be_tied = FALSE

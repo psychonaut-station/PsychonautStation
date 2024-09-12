@@ -500,12 +500,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	desc = "LIVE MOTHS!"
 	neon_color = COLOR_RED
 
-/datum/barsign/turkubar
-    name = "Turku Bar"
-    icon = 'icons/psychonaut/obj/machines/barsigns.dmi'
-    icon_state = "turku"
-    desc = "Turku Bar Pavyon."
-    neon_color = "#b0b0b0"
 
 // Hidden signs list below this point
 

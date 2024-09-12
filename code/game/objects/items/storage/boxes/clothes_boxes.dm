@@ -168,12 +168,12 @@
 
 /obj/item/storage/box/holy/chapterchaplain
 	name = "Chapter Chaplain kit"
-	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/chaptersuit
+	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/chapter
 
 /obj/item/storage/box/holy/chapterchaplain/PopulateContents()
-	new /obj/item/clothing/head/helmet/chaplain/chapterhelmet(src)
-	new /obj/item/clothing/suit/chaplainsuit/armor/chaptersuit(src)
-	new /obj/item/clothing/shoes/chapterboots(src)
+	new /obj/item/clothing/head/helmet/chaplain/chapter(src)
+	new /obj/item/clothing/suit/chaplainsuit/armor/chapter(src)
+	new /obj/item/clothing/shoes/chapter(src)
 
 /obj/item/storage/box/holy/student
 	name = "Profane Scholar Kit"

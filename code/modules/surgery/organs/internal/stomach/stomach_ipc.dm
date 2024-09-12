@@ -16,7 +16,7 @@
 	. = ..()
 	if(initcell)
 		cell = new initcell
-	update_overlays()
+	update_appearance()
 	RegisterSignal(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
 
 /obj/item/organ/internal/stomach/ipc/Destroy()
@@ -30,13 +30,10 @@
 )
 	SIGNAL_HANDLER
 
-	if (isnull(held_item))
-		return NONE
-
 	if (istype(held_item, /obj/item/stock_parts/power_store/cell) && !cell)
 		context += list(SCREENTIP_CONTEXT_LMB = "Place Cell")
 		return CONTEXTUAL_SCREENTIP_SET
-	else if(cell)
+	else if(isnull(held_item) && cell)
 		context += list(SCREENTIP_CONTEXT_ALT_LMB = "Remove The Cell")
 		return CONTEXTUAL_SCREENTIP_SET
 	return NONE
@@ -48,10 +45,16 @@
 	else
 		. += span_notice("There is pins for a cell.")
 
-/obj/item/organ/internal/stomach/ipc/update_overlays()
+/obj/item/organ/internal/stomach/ipc/update_appearance()
 	. = ..()
+	cut_overlays()
 	if(cell)
-		. += image(cell)
+		var/mutable_appearance/celloverlay = new(cell)
+		celloverlay.plane = FLOAT_PLANE
+		celloverlay.layer = FLOAT_LAYER
+		celloverlay.pixel_x = 0
+		celloverlay.pixel_y = 0
+		add_overlay(celloverlay)
 
 /obj/item/organ/internal/stomach/ipc/on_life(seconds_per_tick, times_fired)
 	. = ..()

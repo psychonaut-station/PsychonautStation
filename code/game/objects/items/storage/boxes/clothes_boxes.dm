@@ -166,6 +166,15 @@
 	new /obj/item/clothing/head/helmet/chaplain/clock(src)
 	new /obj/item/clothing/suit/chaplainsuit/armor/clock(src)
 
+/obj/item/storage/box/holy/chapterchaplain
+	name = "Chapter Chaplain kit"
+	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/um_chapsuit
+
+/obj/item/storage/box/holy/chapterchaplain/PopulateContents()
+	new /obj/item/clothing/head/helmet/chaplain/um_chaphelmet(src)
+	new /obj/item/clothing/suit/chaplainsuit/armor/um_chapsuit(src)
+	new /obj/item/clothing/shoes/um_boots(src)
+
 /obj/item/storage/box/holy/student
 	name = "Profane Scholar Kit"
 	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/studentuni

@@ -170,7 +170,7 @@
 	name = "Chapter Chaplain kit"
 	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/chapter
 
-/obj/item/storage/box/holy/chapterchaplain/PopulateContents()
+/obj/item/storage/box/holy/chapter/PopulateContents()
 	new /obj/item/clothing/head/helmet/chaplain/chapter(src)
 	new /obj/item/clothing/suit/chaplainsuit/armor/chapter(src)
 	new /obj/item/clothing/shoes/chapter(src)

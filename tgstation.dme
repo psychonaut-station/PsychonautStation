@@ -2045,6 +2045,7 @@
 #include "code\game\machinery\digital_clock.dm"
 #include "code\game\machinery\dish_drive.dm"
 #include "code\game\machinery\dna_scanner.dm"
+#include "code\game\machinery\doner_machine.dm"
 #include "code\game\machinery\droneDispenser.dm"
 #include "code\game\machinery\ecto_sniffer.dm"
 #include "code\game\machinery\electrical_jukebox.dm"

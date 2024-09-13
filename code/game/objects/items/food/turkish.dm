@@ -125,3 +125,12 @@
 	foodtypes = MEAT | VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/yaprakdoner
+	name = "Yaprak Doner"
+	desc = "Yaprak döner, ince dilimlenmiş etin dikey şişte pişirilerek hazırlanan bir döner çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "yaprakdoner"
+	foodtypes = MEAT
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2

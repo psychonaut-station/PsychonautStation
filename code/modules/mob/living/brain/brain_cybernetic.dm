@@ -73,3 +73,9 @@
 	else if(zone == BODY_ZONE_HEAD)
 		zone = BODY_ZONE_CHEST
 	balloon_alert(living_user, "zone setted to [zone]")
+
+/obj/item/organ/internal/brain/cybernetic/ipc/attack(mob/living/carbon/C, mob/user)
+	if(zone != BODY_ZONE_HEAD)
+		return // You can't attach the brains of an open-headed target from its head to its chest.
+	else
+		return ..()

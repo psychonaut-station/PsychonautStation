@@ -4,7 +4,7 @@
 	examine_limb_id = SPECIES_HUMAN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
-	species_language_holder = /datum/language_holder/synthetic
+	species_language_holder = /datum/language_holder/ipc
 	sexes = FALSE
 	inherent_traits = list(
 		TRAIT_NO_UNDERWEAR,
@@ -65,10 +65,10 @@
 	. = ..()
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features["ipc_chassis"]]
 	if(chassis_of_choice)
-		for(var/obj/item/bodypart/BP as anything in target.bodyparts)
-			BP.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-			BP.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
-			BP.update_limb()
+		for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
+			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+			bodypart.update_limb()
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
@@ -286,10 +286,9 @@
 	give_overlay(C, head, items[picked_emote])
 
 /datum/action/innate/change_monitor/proc/give_overlay(mob/living/carbon/C, obj/item/bodypart/bodypart, overlay_typepath)
-	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 	if(!bodypart)
-		qdel(overlay)
 		return null
+	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 	remove_overlay(C)
 	bodypart.add_bodypart_overlay(overlay)
 	C.update_body_parts()

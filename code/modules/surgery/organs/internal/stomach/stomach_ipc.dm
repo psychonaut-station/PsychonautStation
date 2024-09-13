@@ -17,24 +17,15 @@
 	if(initcell)
 		cell = new initcell
 	update_appearance()
-	RegisterSignal(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM, PROC_REF(on_requesting_context_from_item))
 
-/obj/item/organ/internal/stomach/ipc/Destroy()
-	UnregisterSignal(src, COMSIG_ATOM_REQUESTING_CONTEXT_FROM_ITEM)
-	return ..()
-
-/obj/item/organ/internal/stomach/ipc/proc/on_requesting_context_from_item(
-	datum/source,
-	list/context,
-	obj/item/held_item,
-)
-	SIGNAL_HANDLER
+/obj/item/organ/internal/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
 
 	if (istype(held_item, /obj/item/stock_parts/power_store/cell) && !cell)
-		context += list(SCREENTIP_CONTEXT_LMB = "Place Cell")
+		context[SCREENTIP_CONTEXT_LMB] = "Place Cell"
 		return CONTEXTUAL_SCREENTIP_SET
 	else if(isnull(held_item) && cell)
-		context += list(SCREENTIP_CONTEXT_ALT_LMB = "Remove The Cell")
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove The Cell"
 		return CONTEXTUAL_SCREENTIP_SET
 	return NONE
 

@@ -276,8 +276,6 @@
 	//since these people will be dead M != usr
 
 	if(!target_has_brain)
-		if(!isipc(C) && zone != BODY_ZONE_HEAD)
-			return
 		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
 

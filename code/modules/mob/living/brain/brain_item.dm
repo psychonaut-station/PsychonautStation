@@ -274,7 +274,8 @@
 		return
 
 	//since these people will be dead M != usr
-	if(isipc(target) && zone != BODY_ZONE_CHEST)
+
+	if(isipc(C) && zone != BODY_ZONE_CHEST)
 		return
 
 	if(!target_has_brain)

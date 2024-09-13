@@ -19,9 +19,12 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+<<<<<<< HEAD
 	RegisterSignal(src, COMSIG_HIT_BY_SABOTEUR, PROC_REF(on_saboteur))
 	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
 	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
+=======
+>>>>>>> upstream/master
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -454,12 +457,13 @@
 	return COMPONENT_BLOCK_LIGHT_EATER
 
 /// special handling for getting shot with a light disruptor/saboteur e.g. the fisher
-/mob/living/silicon/robot/proc/on_saboteur(datum/source, disrupt_duration)
-	SIGNAL_HANDLER
+/mob/living/silicon/robot/on_saboteur(datum/source, disrupt_duration)
+	. = ..()
 	if(lamp_enabled)
 		toggle_headlamp(TRUE)
 		balloon_alert(src, "headlamp off!")
-	return COMSIG_SABOTEUR_SUCCESS
+	COOLDOWN_START(src, disabled_time, disrupt_duration)
+	return TRUE
 
 /mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
 	SIGNAL_HANDLER
@@ -498,6 +502,9 @@
  */
 /mob/living/silicon/robot/proc/toggle_headlamp(turn_off = FALSE, update_color = FALSE)
 	//if both lamp is enabled AND the update_color flag is on, keep the lamp on. Otherwise, if anything listed is true, disable the lamp.
+	if(!COOLDOWN_FINISHED(src, disabled_time))
+		balloon_alert(src, "disrupted!")
+		return FALSE
 	if(!(update_color && lamp_enabled) && (turn_off || lamp_enabled || update_color || !lamp_functional || stat || low_power_mode))
 		set_light_on(lamp_functional && stat != DEAD && lamp_doom) //If the lamp isn't broken and borg isn't dead, doomsday borgs cannot disable their light fully.
 		set_light_color(COLOR_RED) //This should only matter for doomsday borgs, as any other time the lamp will be off and the color not seen
@@ -1021,7 +1028,7 @@
 /mob/living/silicon/robot/get_exp_list(minutes)
 	. = ..()
 
-	var/datum/job/cyborg/cyborg_job_ref = SSjob.GetJobType(/datum/job/cyborg)
+	var/datum/job/cyborg/cyborg_job_ref = SSjob.get_job_type(/datum/job/cyborg)
 
 	.[cyborg_job_ref.title] = minutes
 

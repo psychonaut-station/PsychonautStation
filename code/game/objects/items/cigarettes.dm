@@ -6,8 +6,6 @@ MATCHES
 CIGARETTES
 CIGARS
 SMOKING PIPES
-CHEAP LIGHTERS
-ZIPPO
 
 CIGARETTE PACKETS ARE IN FANCY.DM
 */
@@ -820,6 +818,7 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 	inhand_icon_on = null
 	inhand_icon_off = null
 
+<<<<<<< HEAD:code/game/objects/items/cigs_lighters.dm
 /////////
 //ZIPPO//
 /////////
@@ -1138,6 +1137,8 @@ CIGARETTE PACKETS ARE IN FANCY.DM
 		/obj/item/lighter/bright,
 	)
 
+=======
+>>>>>>> upstream/master:code/game/objects/items/cigarettes.dm
 ///////////
 //ROLLING//
 ///////////

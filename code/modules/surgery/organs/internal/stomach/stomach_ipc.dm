@@ -20,14 +20,12 @@
 
 /obj/item/organ/internal/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-
-	if (istype(held_item, /obj/item/stock_parts/power_store/cell) && !cell)
-		context[SCREENTIP_CONTEXT_LMB] = "Place Cell"
+	if(!isnull(cell))
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove cell"
 		return CONTEXTUAL_SCREENTIP_SET
-	else if(isnull(held_item) && cell)
-		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove The Cell"
+	else if (istype(held_item, /obj/item/stock_parts/power_store/cell))
+		context[SCREENTIP_CONTEXT_LMB] = "Insert cell"
 		return CONTEXTUAL_SCREENTIP_SET
-	return NONE
 
 /obj/item/organ/internal/stomach/ipc/examine(mob/user)
 	. = ..()

@@ -74,8 +74,7 @@
 		zone = BODY_ZONE_CHEST
 	balloon_alert(living_user, "zone setted to [zone]")
 
-/obj/item/organ/internal/brain/cybernetic/ipc/attack(mob/living/carbon/C, mob/user)
-	if(zone != BODY_ZONE_HEAD)
+/obj/item/organ/internal/brain/cybernetic/ipc/attack(mob/living/carbon/target, mob/user)
+	if(!isipc(target) && zone != BODY_ZONE_HEAD)
 		return
-	else
-		return ..()
+	return ..()

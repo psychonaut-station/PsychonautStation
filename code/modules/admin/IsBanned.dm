@@ -247,7 +247,7 @@
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
 
-	if (CONFIG_GET(flag/reuqire_discord_linking))
+	if (CONFIG_GET(flag/require_discord_linking))
 		var/discord_id = SSdiscord.lookup_id(ckey)
 		if (!discord_id)
 			var/cached_token = SSdiscord.reverify_cache[ckey]

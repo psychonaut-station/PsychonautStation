@@ -57,3 +57,86 @@
 	)
 	result = /obj/item/food/raw_kiymali_pide
 	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/etdoner
+	name = "Et Döner"
+	reqs = list(
+		/obj/item/food/breadslice/plain = 2,
+		/obj/item/food/doner/yaprak/et = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/grown/onion = 1,
+	)
+	result = /obj/item/food/doner/et
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/etdoner_sade
+	name = "Sade Et Döner"
+	reqs = list(
+		/obj/item/food/breadslice/plain = 2,
+		/obj/item/food/doner/yaprak/et = 1
+	)
+	result = /obj/item/food/doner/et/sade
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/tavukdoner
+	name = "Tavuk Döner"
+	reqs = list(
+		/obj/item/food/breadslice/plain = 2,
+		/obj/item/food/doner/yaprak/tavuk = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/grown/onion = 1,
+	)
+	result = /obj/item/food/doner/tavuk
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/tavukdoner_sade
+	name = "Sade Tavuk Döner"
+	reqs = list(
+		/obj/item/food/breadslice/plain = 2,
+		/obj/item/food/doner/yaprak/tavuk = 1
+	)
+	result = /obj/item/food/doner/tavuk/sade
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/kisir
+	name = "Kısır"
+	reqs = list(
+		/obj/item/food/grown/onion = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/grown/wheat = 2,
+		/datum/reagent/consumable/lemonjuice = 1,
+		/obj/item/reagent_containers/cup/bowl = 1
+	)
+	result = /obj/item/food/kisir
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/tavton
+	name = "Tavuk Tonbalığı Pilav"
+	reqs = list(
+		/obj/item/food/boiledrice = 2,
+		/obj/item/food/meat/steak/chicken = 1,
+		/obj/item/food/fishmeat = 1,
+	)
+	result = /obj/item/food/tavton
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/menemen
+	name = "Menemen"
+	reqs = list(
+		/obj/item/food/grown/tomato = 3,
+		/obj/item/food/grown/bell_pepper = 2,
+		/obj/item/food/egg = 2
+	)
+	result = /obj/item/food/raw_menemen
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/menemen/onion
+	name = "Soğanlı Menemen"
+	reqs = list(
+		/obj/item/food/grown/tomato = 3,
+		/obj/item/food/grown/bell_pepper = 2,
+		/obj/item/food/egg = 2,
+		/obj/item/food/grown/onion = 1,
+	)
+	result = /obj/item/food/raw_menemen/onion
+	category = CAT_TURKISH

@@ -126,11 +126,154 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/yaprakdoner
-	name = "Yaprak Doner"
-	desc = "Yaprak döner, ince dilimlenmiş etin dikey şişte pişirilerek hazırlanan bir döner çeşididir."
+/obj/item/food/doner/yaprak/et
+	name = "Yaprak Et Doner"
+	desc = "Yaprak et döner, etin dikey şişte pişirilerek hazırlanan bir döner çeşididir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
-	icon_state = "yaprakdoner"
+	icon_state = "yaprakdoner_et"
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/doner/yaprak/tavuk
+	name = "yaprak tavuk doner"
+	desc = "Yaprak tavuk döner, tavuk göğsünün dikey şişte pişirilerek hazırlanan bir döner çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "yaprakdoner_tavuk"
+	foodtypes = MEAT
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/doner/et
+	name = "et doner"
+	desc = "Somun ekmek arası et döner, içerisindeki yaprak döner dışarıya taşmak üzere."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "etdoner"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("meat" = 2, "tomato" = 1, , "onions" = 1, "lettuce" = 1)
+	foodtypes = MEAT | VEGETABLES | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/doner/et/sade
+	name = "sade et doner"
+	desc = "Somun ekmek arası et döner, içerisindeki yaprak döner dışarıya taşmak üzere."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "etdoner_sade"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("meat" = 1)
+	foodtypes = MEAT | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/doner/tavuk
+	name = "tavuk doner"
+	desc = "Somun ekmek arası et döner, içerisindeki yaprak döner dışarıya taşmak üzere."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "tavukdoner"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("chicken" = 2, "tomato" = 1, , "onions" = 1, "lettuce" = 1)
+	foodtypes = MEAT | VEGETABLES | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/doner/tavuk/sade
+	name = "sade tavuk doner"
+	desc = "Somun ekmek arası tavuk döner, içerisindeki yaprak döner dışarıya taşmak üzere."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "tavukdoner_sade"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("chicken" = 1)
+	foodtypes = MEAT | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/kisir
+	name = "kisir"
+	desc = "İnce bulgur, domates salçası, soğan ve çeşitli baharatlarla karıştırarak hazırlanan lezzetli bir Türk yemeğidir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "kisir"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 4,
+	)
+	tastes = list("tomato" = 1, "onion" = 1, "wheat" = 1, "pepper" = 1)
+	foodtypes = VEGETABLES | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/reagent_containers/cup/bowl
+
+// adamın biri bir gün tavuklu pilav yiyormuş, sonra kendi kendine düşünüp ulan bunun içine ton balığı koysam ne güzel olur demiş ton balıklı ve tavuklu pilav olmuş hahaha
+/obj/item/food/tavton
+	name = "tavuk tonbaligi pilav"
+	desc = "Tavuk ve tonbalıklı pilav."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "tavton"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment/protein  = 4,
+	)
+	tastes = list("rice" = 1, "chicken" = 1, "tuna" = 1)
+	foodtypes = VEGETABLES | MEAT | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/reagent_containers/cup/bowl
+
+/obj/item/food/raw_menemen
+	name = "raw menemen"
+	desc = "Menemen, yumurta, biber, domates ve isteğe bağlı olarak soğan kullanılarak yapılan bir Türk yemeğidir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "raw_menemen"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1)
+	foodtypes = VEGETABLES | RAW | BREAKFAST
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/raw_menemen/make_bakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/menemen, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
+
+/obj/item/food/raw_menemen/onion
+	name = "raw soganli menemen"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
+	)
+	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1, "onion" = 1)
+
+/obj/item/food/raw_menemen/onion/make_bakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/menemen/onion, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
+
+/obj/item/food/menemen
+	name = "menemen"
+	desc = "Menemen, yumurta, biber, domates ve isteğe bağlı olarak soğan kullanılarak yapılan bir Türk yemeğidir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "menemen"
+	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1)
+	foodtypes = VEGETABLES | BREAKFAST
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+
+/obj/item/food/menemen/onion
+	name = "soganli menemen"
+	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1, "onion" = 1)

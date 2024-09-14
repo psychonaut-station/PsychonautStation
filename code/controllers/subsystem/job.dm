@@ -778,7 +778,6 @@ SUBSYSTEM_DEF(job)
 		if(sec.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
 			. += sec
 
-<<<<<<< HEAD
 /// Returns a list of minds of given department members
 /datum/controller/subsystem/job/proc/get_department_crew(bitflag)
 	. = list()
@@ -786,10 +785,7 @@ SUBSYSTEM_DEF(job)
 		if(mind.assigned_role.departments_bitflags & bitflag)
 			. += mind
 
-/datum/controller/subsystem/job/proc/JobDebug(message)
-=======
 /datum/controller/subsystem/job/proc/job_debug(message)
->>>>>>> upstream/master
 	log_job_debug(message)
 
 /// Builds various lists of jobs based on station, centcom and additional jobs with icons associated with them.

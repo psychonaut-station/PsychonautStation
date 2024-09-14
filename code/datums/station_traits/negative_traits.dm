@@ -697,13 +697,8 @@
 /datum/station_trait/nebula/hostile/radiation/send_instructions()
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
-<<<<<<< HEAD
-	//How long do we have untill the first shielding unit needs to be up?
-	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] dakika"
-=======
 	//How long do we have until the first shielding unit needs to be up?
-	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] minute\s"
->>>>>>> upstream/master
+	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] dakika"
 	//For how long each shielding unit will protect for
 	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] dakika"
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down

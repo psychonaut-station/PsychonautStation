@@ -232,7 +232,6 @@
 	WRITE_FILE(F["scar[char_index]-[scar_index]"], sanitize_text(valid_scars))
 	WRITE_FILE(F["current_scar_index"], sanitize_integer(scar_index))
 
-<<<<<<< HEAD
 /mob/living/carbon/human/proc/format_trading_cards()
 	var/trading_cards = ""
 	var/list/cards = list()
@@ -300,20 +299,6 @@
 	var/trading_cards = format_trading_cards()
 	WRITE_FILE(F["trading_card[char_index]"], sanitize_text(trading_cards))
 
-///Returns death message for mob examine text
-/mob/living/carbon/human/proc/generate_death_examine_text()
-	var/mob/dead/observer/ghost = get_ghost(TRUE, TRUE)
-	var/t_He = p_They()
-	var/t_his = p_their()
-	var/t_is = p_are()
-	//This checks to see if the body is revivable
-	if(get_organ_by_type(/obj/item/organ/internal/brain) && (client || HAS_TRAIT(src, TRAIT_MIND_TEMPORARILY_GONE) || (ghost?.can_reenter_corpse && ghost?.client)))
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life...")
-	else
-		return span_deadsay("[t_He] [t_is] limp and unresponsive; there are no signs of life and [t_his] soul has departed...")
-
-=======
->>>>>>> upstream/master
 ///copies over clothing preferences like underwear to another human
 /mob/living/carbon/human/proc/copy_clothing_prefs(mob/living/carbon/human/destination)
 	destination.underwear = underwear

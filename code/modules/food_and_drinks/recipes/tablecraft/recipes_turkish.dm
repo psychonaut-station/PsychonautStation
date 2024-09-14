@@ -116,6 +116,7 @@
 		/obj/item/food/boiledrice = 2,
 		/obj/item/food/meat/steak/chicken = 1,
 		/obj/item/food/fishmeat = 1,
+		/obj/item/reagent_containers/cup/bowl = 1
 	)
 	result = /obj/item/food/tavton
 	category = CAT_TURKISH

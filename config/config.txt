@@ -624,3 +624,6 @@ UPLOAD_LIMIT_ADMIN 5242880
 
 ## Timezone offset in deciseconds
 TIMEZONE_OFFSET 108000
+
+## Uncomment to force users to link their Discord accounts before connecting
+# REQUIRE_DISCORD_LINKING

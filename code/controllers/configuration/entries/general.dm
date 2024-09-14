@@ -767,3 +767,6 @@
 	default = 36000
 	min_val = 1
 	integer = TRUE
+
+/datum/config_entry/flag/require_discord_linking
+	default = FALSE

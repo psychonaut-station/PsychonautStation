@@ -247,6 +247,23 @@
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
 
+	if (CONFIG_GET(flag/reuqire_discord_linking))
+		var/discord_id = SSdiscord.lookup_id(ckey)
+		if (!discord_id)
+			var/cached_token = SSdiscord.reverify_cache[ckey]
+			var/token = ""
+
+			if (cached_token && cached_token != "")
+				token = cached_token
+			else
+				token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
+				SSdiscord.reverify_cache[ckey] = token
+
+			var/name_link = CONFIG_GET(string/hub_name_link)
+			var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] linki üzerinden Discord sunucusuna girerek:\n \
+				/verify [token]\nkomutu ile hesabını doğrulayabilirsin."
+			return list("reason" = "DiscordAccount", "desc" = desc)
+
 	return .
 
 /proc/restore_stickybans()

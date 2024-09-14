@@ -246,16 +246,11 @@
   - bugfix: fixed a race condition that was causing carpotoxin to cause liver damage
       to felinids despite being immune
 2024-09-10:
+  exdal:
+  - rscadd: Github App eklendi (test)
   Ghommie:
   - bugfix: beams now take into account the pixel offsets of both origin and target
       more accurately..
-<<<<<<< HEAD
-  exdal:
-  - rscadd: Github App eklendi (test)
-2024-09-11:
-  Emre1212, tatartachanka:
-  - rscadd: "K\u0131ymal\u0131 Pide eklendi."
-=======
   Rhials:
   - bugfix: Modifies the mapping around the icebox cliffside, guaranteeing a bit more
       openness.
@@ -293,6 +288,8 @@
   - bugfix: Mimes french kisses now activate the sm
   DaCoolBoss:
   - bugfix: Added missing entries to server config file iceruinblacklist.txt
+  Emre1212, tatartachanka:
+  - rscadd: "K\u0131ymal\u0131 Pide eklendi."
   EnterTheJake:
   - rscadd: New Heretic Side Knowledge, Void Prison.
   - rscadd: New Void Spell Void Conduit has now replaced Void Blast.
@@ -381,4 +378,6 @@
   - qol: Infiltrator mod hides your voice
   - bugfix: Infiltrator suit now hides moth wings/antenna
   - bugfix: hidden moth wings are no longer capable of flight
->>>>>>> upstream/master
+2024-09-14:
+  Ureus:
+  - rscadd: "Chaplain'a Warhammer temal\u0131 Chapter Chaplain k\u0131yafet kiti ekler"

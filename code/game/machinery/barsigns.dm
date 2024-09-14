@@ -505,7 +505,6 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	icon_state = "turku-bar"
 	desc = "Turku Bar Pavyon."
 	neon_color = "#ffffff"
-// icon = 'icons/psychonaut/obj/machines/barsigns.dmi' staying for tests for now remove before pull request
 
 // Hidden signs list below this point
 

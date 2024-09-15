@@ -45,8 +45,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 
 /obj/machinery/barsign/update_icon_state()
 	if(!(machine_stat & BROKEN) && (!(machine_stat & NOPOWER) || machine_stat & EMPED) && chosen_sign && chosen_sign.icon_state)
+		icon = chosen_sign.icon
 		icon_state = chosen_sign.icon_state
 	else
+		icon = src::icon
 		icon_state = "empty"
 
 	return ..()
@@ -229,6 +231,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 /datum/barsign
 	/// User-visible name of the sign.
 	var/name
+	/// Psychonaut'a eklenen yeni tabelaların görünebilmesi için yeni değişken
+	var/icon
 	/// Icon state associated with this sign
 	var/icon_state
 	/// Description shown in the sign's examine text.
@@ -501,6 +505,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 	neon_color = COLOR_RED
 
 /datum/barsign/turkubar
+	icon = 'icons/psychonaut/obj/machines/barsigns.dmi'
 	name = "Turku Bar"
 	icon_state = "turku-bar"
 	desc = "Turku Bar Pavyon."

@@ -12,12 +12,12 @@
 
 	return new /datum/tgs_message_content(message_body)
 
-// Bildir
-/datum/tgs_chat_command/bildir
-	name = "bildir"
+// Bildirim
+/datum/tgs_chat_command/bildirim
+	name = "bildirim"
 	help_text = "Yeni bir round başladığında özel olarak bildirim alabilmeni sağlıyor"
 
-/datum/tgs_chat_command/bildir/Run(datum/tgs_chat_user/sender, params)
+/datum/tgs_chat_command/bildirim/Run(datum/tgs_chat_user/sender, params)
 	if(!CONFIG_GET(string/channel_announce_new_game))
 		return new /datum/tgs_message_content("Sunucu bildirimleri kapalı.")
 

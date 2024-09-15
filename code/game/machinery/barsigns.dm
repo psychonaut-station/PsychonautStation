@@ -231,8 +231,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/barsign, 32)
 /datum/barsign
 	/// User-visible name of the sign.
 	var/name
-	/// Psychonaut'a eklenen yeni tabelaların görünebilmesi için yeni değişken
-	var/icon
+	/// Icon associated with barsign
+	var/icon = 'icons/obj/machines/barsigns.dmi'
 	/// Icon state associated with this sign
 	var/icon_state
 	/// Description shown in the sign's examine text.

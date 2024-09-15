@@ -43,9 +43,6 @@ SUBSYSTEM_DEF(discord)
 	/// People who have tried to verify this round already
 	var/list/reverify_cache
 
-	/// Common words list, used to generate one time tokens
-	var/list/common_words
-
 	/// The file where notification status is saved
 	var/notify_file = file("data/notify.json")
 
@@ -53,7 +50,6 @@ SUBSYSTEM_DEF(discord)
 	var/enabled = FALSE
 
 /datum/controller/subsystem/discord/Initialize()
-	common_words = world.file2list("strings/1000_most_common.txt")
 	reverify_cache = list()
 	// Check for if we are using TGS, otherwise return and disables firing
 	if(world.TgsAvailable())
@@ -68,7 +64,7 @@ SUBSYSTEM_DEF(discord)
 		pass() // The list can just stay as its default (blank). Pass() exists because it needs a catch
 	var/notifymsg = jointext(people_to_notify, ", ")
 	if(notifymsg)
-		notifymsg += ", a new round is starting!"
+		notifymsg += ", yeni round başlamak üzere!"
 		send2chat(new /datum/tgs_message_content(trim(notifymsg)), CONFIG_GET(string/chat_new_game_notifications)) // Sends the message to the discord, using same config option as the roundstart notification
 	fdel(notify_file) // Deletes the file
 	return SS_INIT_SUCCESS

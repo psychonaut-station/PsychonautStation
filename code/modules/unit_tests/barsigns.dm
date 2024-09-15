@@ -7,12 +7,14 @@
 	var/obj/machinery/barsign_type = /obj/machinery/barsign
 	var/icon/barsign_icon = initial(barsign_type.icon)
 	var/list/barsign_icon_states = icon_states(barsign_icon)
-
+	// Also check the psychonauts barsign icons
+	var/icon/psychonaut_barsign_icon = 'icons/psychonaut/obj/machines/barsigns.dmi'
+	var/list/psychonaut_barsign_icon_states = icon_states(psychonaut_barsign_icon)
 	// Check every datum real bar sign
 	for(var/sign_type in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
 		var/datum/barsign/sign = new sign_type()
 
-		if(!(sign.icon_state in barsign_icon_states))
+		if(!(sign.icon_state in barsign_icon_states || sign.icon_state in psychonaut_barsign_icon_states))
 			TEST_FAIL("Icon state for [sign_type] does not exist in [barsign_icon].")
 
 /**

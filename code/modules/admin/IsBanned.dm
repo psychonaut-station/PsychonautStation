@@ -260,7 +260,7 @@
 				SSdiscord.reverify_cache[ckey] = token
 
 			var/name_link = CONFIG_GET(string/hub_name_link)
-			var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek bir kanala /verify yazdıktan sonra çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
+			var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek Discord kaydın yapıldıktan sonra bir kanala /verify yazınca çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
 			return list("reason" = "DiscordAccount", "desc" = desc)
 
 	return .

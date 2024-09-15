@@ -14,7 +14,7 @@
 	for(var/sign_type in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
 		var/datum/barsign/sign = new sign_type()
 
-		if(!(sign.icon_state in barsign_icon_states || sign.icon_state in psychonaut_barsign_icon_states))
+		if(!((sign.icon_state in barsign_icon_states) || (sign.icon_state in psychonaut_barsign_icon_states)))
 			TEST_FAIL("Icon state for [sign_type] does not exist in [barsign_icon].")
 
 /**

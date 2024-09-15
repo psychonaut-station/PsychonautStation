@@ -5,7 +5,6 @@
 	icon_state = "crate"
 	base_icon_state = "crate"
 	req_access = null
-	can_weld_shut = FALSE
 	horizontal = TRUE
 	allow_objects = TRUE
 	allow_dense = TRUE
@@ -93,6 +92,9 @@
 	else if(secure)
 		. += "securecrateg"
 
+	if(welded)
+		. += icon_welded
+
 	if(opened && lid_icon_state)
 		var/mutable_appearance/lid = mutable_appearance(icon = lid_icon, icon_state = lid_icon_state)
 		lid.pixel_x = lid_x
@@ -172,6 +174,7 @@
 	can_install_electronics = FALSE
 	paint_jobs = null
 	elevation_open = 0
+	can_weld_shut = FALSE
 
 /obj/structure/closet/crate/trashcart //please make this a generic cart path later after things calm down a little
 	desc = "A heavy, metal trashcart with wheels."
@@ -188,6 +191,7 @@
 	base_icon_state = "laundry"
 	elevation = 14
 	elevation_open = 14
+	can_weld_shut = FALSE
 
 /obj/structure/closet/crate/trashcart/Initialize(mapload)
 	. = ..()

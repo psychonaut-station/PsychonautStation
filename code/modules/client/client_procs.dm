@@ -538,7 +538,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	check_ip_intel()
 
 	if(CONFIG_GET(flag/require_discord_linking))
-		var/discord_id = SSdiscord.lookup_id(holder.ckey)
+		var/discord_id = SSdiscord.lookup_id(ckey)
 		if(discord_id)
 			if(is_discord_member(discord_id) == FALSE)
 				if(get_discord(FALSE, discord_id) == FALSE)
@@ -826,7 +826,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
 		return
 
-	var/discord_id = discord_id || SSdiscord.lookup_id(holder.ckey)
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
 
 	if(!discord_id)
 		return
@@ -852,7 +852,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
 		return
 
-	var/discord_id = discord_id || SSdiscord.lookup_id(holder.ckey)
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
 
 	if(!discord_id)
 		return

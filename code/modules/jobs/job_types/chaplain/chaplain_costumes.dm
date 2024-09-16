@@ -292,7 +292,7 @@
 /obj/item/clothing/head/helmet/chaplain/chapter
 	name = "chapter chaplain helmet"
 	desc = "For God-Emperor of Mankind!"
-	icon_state = "um_chaphelmet"
+	icon_state = "rg_chaphelmet"
 	inhand_icon_state = null
 	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
@@ -300,7 +300,7 @@
 /obj/item/clothing/suit/chaplainsuit/armor/chapter
 	name = "chapter chaplain suit"
 	desc = "For God-Emperor of Mankind!"
-	icon_state = "um_chapsuit"
+	icon_state = "rg_chapsuit"
 	icon = 'icons/psychonaut/obj/clothing/suits/chaplain.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/chaplain.dmi'
 	inhand_icon_state = null
@@ -309,7 +309,7 @@
 /obj/item/clothing/shoes/chapter
 	name = "chapter chaplain boots"
 	desc = "Anti-heresy boots!"
-	icon_state = "um_boots"
+	icon_state = "rg_boots"
 	icon = 'icons/psychonaut/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/feet.dmi'
 	resistance_flags = NONE

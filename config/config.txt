@@ -199,7 +199,7 @@ IPINTEL_REJECT_BAD
 
 ## https://github.com/psychonaut-station/api.turkb.us
 # APITOKEN
-# APIURL https://api.turkb.us/v2/patreon
+# APIURL https://api.turkb.us/v2
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()

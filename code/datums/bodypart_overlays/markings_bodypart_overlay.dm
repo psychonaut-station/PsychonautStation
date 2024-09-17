@@ -11,7 +11,7 @@
 
 /// Get the accessory list from SSaccessories. Used in species.dm to get the right sprite
 /datum/bodypart_overlay/simple/body_marking/proc/get_accessory(name)
-	CRASH("get_accessory() not overriden on [type] !")
+	CRASH("get_accessories() not overriden on [type] !")
 
 /datum/bodypart_overlay/simple/body_marking/get_image(layer, obj/item/bodypart/limb)
 	var/gender_string = (use_gender && limb.is_dimorphic) ? (limb.gender == MALE ? MALE : FEMALE + "_") : "" //we only got male and female sprites
@@ -29,9 +29,3 @@
 
 /datum/bodypart_overlay/simple/body_marking/lizard/get_accessory(name)
 	return SSaccessories.lizard_markings_list[name]
-
-/datum/bodypart_overlay/simple/body_marking/ipc
-	dna_feature_key = "ipc_chassis"
-
-/datum/bodypart_overlay/simple/body_marking/ipc/get_accessory(name)
-	return SSaccessories.ipc_chassis_list[name]

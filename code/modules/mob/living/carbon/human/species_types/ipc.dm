@@ -25,7 +25,6 @@
 	exotic_bloodtype = "LPG"
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_EYES | ITEM_SLOT_MASK
-	body_markings = list(/datum/bodypart_overlay/simple/body_marking/ipc = "Black")
 	mutant_organs = list(
 		/obj/item/organ/internal/voltage_protector,
 		/obj/item/organ/internal/cyberimp/arm/power_cord
@@ -100,6 +99,15 @@
 	features += "feature_ipc_chassis"
 
 	return features
+
+/datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
+	. = ..()
+	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features["ipc_chassis"]]
+	if(chassis_of_choice)
+		for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
+			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+			bodypart.update_limb()
 
 /datum/species/ipc/get_species_description()
 	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \

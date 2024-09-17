@@ -2022,7 +2022,7 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	for(var/markings_type in body_markings) //loop through possible species markings
 		var/datum/bodypart_overlay/simple/body_marking/markings = new markings_type() // made to die... mostly because we cant use initial on lists but its convenient and organized
 		var/accessory_name = hooman.dna.features[markings.dna_feature_key] //get the accessory name from dna
-		var/datum/sprite_accessory/accessory = markings.get_accessory(accessory_name) //get the actual datum
+		var/datum/sprite_accessory/moth_markings/accessory = markings.get_accessory(accessory_name) //get the actual datum
 
 		if(isnull(accessory))
 			CRASH("Value: [accessory_name] did not have a corresponding sprite accessory!")

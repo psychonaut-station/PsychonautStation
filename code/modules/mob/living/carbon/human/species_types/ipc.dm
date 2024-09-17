@@ -368,10 +368,6 @@
 	name = "Red Dot"
 	icon_state = "reddot"
 
-/datum/bodypart_overlay/simple/ipcscreen/ipcglitchman
-	name = "Glitch"
-	icon_state = "glitchman"
-
 /datum/bodypart_overlay/simple/ipcscreen/ipcturk
 	name = "Turk"
 	icon_state = "turk"

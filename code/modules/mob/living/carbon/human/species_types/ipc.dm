@@ -24,7 +24,7 @@
 	exotic_blood = /datum/reagent/fuel/oil
 	exotic_bloodtype = "LPG"
 	siemens_coeff = 0.8
-	no_equip_flags = ITEM_SLOT_EYES | ITEM_SLOT_MASK
+	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
 		/obj/item/organ/internal/voltage_protector,
 		/obj/item/organ/internal/cyberimp/arm/power_cord
@@ -326,7 +326,7 @@
 //Screen
 /datum/bodypart_overlay/simple/ipcscreen
 	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'
-	icon_state = "ipc-off"
+	icon_state = "off"
 	layers = EXTERNAL_ADJACENT
 	var/name = "Off"
 	var/attached_body_zone = BODY_ZONE_HEAD
@@ -334,78 +334,94 @@
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcsmile
 	name = "Smile"
-	icon_state = "ipc-smile"
+	icon_state = "smile"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcuwu
 	name = "Uwu"
-	icon_state = "ipc-uwu"
+	icon_state = "uwu"
 
-/datum/bodypart_overlay/simple/ipcscreen/ipcnull
-	name = "Null"
-	icon_state = "ipc-null"
+/datum/bodypart_overlay/simple/ipcscreen/ipcstare
+	name = "Stare"
+	icon_state = "stare"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcalert
 	name = "Alert"
-	icon_state = "ipc-alert"
+	icon_state = "alert"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipccool
 	name = "Cool"
-	icon_state = "ipc-cool"
+	icon_state = "cool"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcdead
 	name = "Dead"
-	icon_state = "ipc-dead"
+	icon_state = "dead"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcnt
 	name = "Nanotrasen"
-	icon_state = "ipc-nt"
+	icon_state = "nt"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcheartline
 	name = "Heart Line"
-	icon_state = "ipc-heartline"
+	icon_state = "heartline"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcreddot
 	name = "Red Dot"
-	icon_state = "ipc-reddot"
+	icon_state = "reddot"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcglitchman
 	name = "Glitch"
-	icon_state = "ipc-glitchman"
+	icon_state = "glitchman"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcturk
 	name = "Turk"
-	icon_state = "ipc-turk"
+	icon_state = "turk"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcclown
 	name = "Clown"
-	icon_state = "ipc-clown"
+	icon_state = "clown"
 	job = /datum/job/clown
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcmime
 	name = "Mime"
-	icon_state = "ipc-mime"
+	icon_state = "mime"
 	job = /datum/job/mime
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcpinball
 	name = "Pinball"
-	icon_state = "ipc-pinball"
+	icon_state = "pinball"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcnoerp
 	name = "No Erp"
-	icon_state = "ipc-noerp"
+	icon_state = "noerp"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcpaicat
 	name = "Cat"
-	icon_state = "ipc-paicat"
+	icon_state = "paicat"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcskull
 	name = "Skull"
-	icon_state = "ipc-skull"
+	icon_state = "skull"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcmonkey
 	name = "Monkey"
-	icon_state = "ipc-monkey"
+	icon_state = "monkey"
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcnerd
 	name = "Nerd"
-	icon_state = "ipc-nerd"
+	icon_state = "nerd"
+
+/datum/bodypart_overlay/simple/ipcscreen/gasmask
+	name = "Gas Mask"
+	icon_state = "gas-mask"
+
+/datum/bodypart_overlay/simple/ipcscreen/breath
+	name = "Breath"
+	icon_state = "breath"
+
+/datum/bodypart_overlay/simple/ipcscreen/angry
+	name = "Angry"
+	icon_state = "angry"
+
+/datum/bodypart_overlay/simple/ipcscreen/flushed
+	name = "Flushed"
+	icon_state = "flushed"

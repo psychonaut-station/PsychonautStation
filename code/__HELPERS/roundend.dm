@@ -246,7 +246,11 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
 	log_game("The round has ended.")
-	send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), CONFIG_GET(string/channel_announce_end_game))
+	var/logs_url = CONFIG_GET(string/gamelogurl)
+	var/round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
+	if (logs_url)
+		round_end_msg += " Round loglarına [logs_url] adresinden ulaşabilirisiniz."
+	send2chat(new /datum/tgs_message_content(round_end_msg), CONFIG_GET(string/channel_announce_end_game))
 	send2adminchat("Server", "Round just ended.")
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))

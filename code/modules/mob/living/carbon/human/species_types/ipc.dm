@@ -1,7 +1,6 @@
 /datum/species/ipc
 	name = "\improper IPC"
 	id = SPECIES_IPC
-	examine_limb_id = SPECIES_HUMAN
 	changesource_flags = MIRROR_BADMIN | WABBAJACK | MIRROR_PRIDE | MIRROR_MAGIC | RACE_SWAP | ERT_SPAWN
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	species_language_holder = /datum/language_holder/ipc
@@ -26,7 +25,11 @@
 	exotic_bloodtype = "LPG"
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_EYES | ITEM_SLOT_MASK
-	mutant_organs = list(/obj/item/organ/internal/voltage_protector, /obj/item/organ/internal/cyberimp/arm/power_cord)
+	body_markings = list(/datum/bodypart_overlay/simple/body_marking/ipc = "Black")
+	mutant_organs = list(
+		/obj/item/organ/internal/voltage_protector,
+		/obj/item/organ/internal/cyberimp/arm/power_cord
+	)
 	mutanteyes = /obj/item/organ/internal/eyes/robotic/basic
 	mutantears = /obj/item/organ/internal/ears/cybernetic
 	mutanttongue = /obj/item/organ/internal/tongue/robot
@@ -60,15 +63,6 @@
 	to_chat(source, span_notice("You have no mouth!"))
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
 	return COMSIG_CARBON_BLOCK_EAT
-
-/datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
-	. = ..()
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features["ipc_chassis"]]
-	if(chassis_of_choice)
-		for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
-			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
-			bodypart.update_limb()
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()

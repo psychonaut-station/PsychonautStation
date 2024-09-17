@@ -25,5 +25,5 @@
 	if(force_use_syllables)
 		return ..()
 	if(prob(70))
-		return "[pick(GLOB.posibrain_names)]-[rand(100, 999)]"
+		return pick(GLOB.posibrain_names)
 	return pick(GLOB.ai_names)

@@ -249,7 +249,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/logs_url = CONFIG_GET(string/gamelogurl)
 	var/round_end_msg = ""
 	if (logs_url)
-		round_end_msg = "Round[GLOB.round_id ? " #\[[GLOB.round_id]\]([logs_url])" : ""] sona erdi."
+		round_end_msg = "Round[GLOB.round_id ? " \[#[GLOB.round_id]\]([logs_url])" : ""] sona erdi."
 	else
 		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
 	send2chat(new /datum/tgs_message_content(round_end_msg), CONFIG_GET(string/channel_announce_end_game))

@@ -248,8 +248,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	log_game("The round has ended.")
 	var/logs_url = CONFIG_GET(string/gamelogurl)
 	var/round_end_msg = ""
-	if (logs_url)
-		round_end_msg = "Round[GLOB.round_id ? " \[#[GLOB.round_id]\]([logs_url])" : ""] sona erdi."
+	if (logs_url && GLOB.round_id)
+		var/texttime = time2text(world.realtime, "YYYY/MM/DD", 0)
+		round_end_msg = "Round \[#[GLOB.round_id]\]([logs_url]/[texttime]/round-[GLOB.round_id]) sona erdi."
 	else
 		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
 	send2chat(new /datum/tgs_message_content(round_end_msg), CONFIG_GET(string/channel_announce_end_game))

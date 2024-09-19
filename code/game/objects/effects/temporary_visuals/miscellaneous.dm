@@ -44,6 +44,9 @@
 /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "xsplatter"
 
+/obj/effect/temp_visual/dir_setting/bloodsplatter/oilsplatter
+	icon = 'icons/psychonaut/mob/silicon/robots.dmi'
+
 /obj/effect/temp_visual/dir_setting/speedbike_trail
 	name = "speedbike trails"
 	icon_state = "ion_fade"

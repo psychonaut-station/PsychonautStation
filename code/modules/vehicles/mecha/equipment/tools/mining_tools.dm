@@ -194,6 +194,10 @@
 	var/splatter_dir = get_dir(chassis, target)
 	if(isalien(target))
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
+	else if(ishuman(target))
+		var/mob/living/carbon/human/victim = target
+		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = victim.dna?.species::splatter_type
+		new splatter_type(victim.loc, victim.dir)
 	else
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
 

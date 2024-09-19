@@ -341,6 +341,10 @@
 					splatter_dir = get_dir(starting, target_turf)
 				if(isalien(living_target))
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
+				else if(ishuman(living_target))
+					var/mob/living/carbon/human/victim = living_target
+					var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = victim.dna.species.splatter_type
+					new splatter_type(victim.loc, victim.dir)
 				else
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
 				if(prob(33))

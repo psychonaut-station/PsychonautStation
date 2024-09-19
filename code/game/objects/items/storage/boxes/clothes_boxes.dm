@@ -228,6 +228,13 @@
 	new /obj/item/clothing/gloves/divine_archer(src)
 	new /obj/item/clothing/shoes/divine_archer(src)
 
+/obj/item/storage/box/holy/tech
+	name = "Tech Priest Kit"
+	typepath_for_preview = /obj/item/clothing/suit/hooded/chaplain_hoodie/tech
+
+/obj/item/storage/box/holy/tech/PopulateContents()
+	new /obj/item/clothing/suit/hooded/chaplain_hoodie/tech(src)
+
 /obj/item/storage/box/floor_camo
 	name = "floor tile camo box"
 	desc = "Thank you for shopping from Camo-J's, our uniquely designed \

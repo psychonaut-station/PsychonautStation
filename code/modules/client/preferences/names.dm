@@ -24,7 +24,7 @@
 
 
 /datum/preference/name/deserialize(input, datum/preferences/preferences)
-	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
+	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
 	return reject_bad_name(input, race.allow_numbers_in_name || allow_numbers)
 
 /datum/preference/name/serialize(input, datum/preferences/preferences)
@@ -34,7 +34,7 @@
 	return reject_bad_name(input, race.allow_numbers_in_name || allow_numbers)
 
 /datum/preference/name/is_valid(value, datum/preferences/preferences)
-	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
+	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
 	return istext(value) && !isnull(reject_bad_name(value, race.allow_numbers_in_name || allow_numbers))
 
 /// A character's real name

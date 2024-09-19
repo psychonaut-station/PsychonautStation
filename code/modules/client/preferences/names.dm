@@ -22,7 +22,7 @@
 	return
 
 /datum/preference/name/deserialize(input, datum/preferences/preferences)
-	return reject_bad_name(input, allow_numbers)
+	return reject_bad_name("[input]", allow_numbers)
 
 /datum/preference/name/serialize(input)
 	// `is_valid` should always be run before `serialize`, so it should not

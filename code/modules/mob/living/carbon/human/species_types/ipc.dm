@@ -251,7 +251,7 @@
 	button_icon = 'icons/psychonaut/mob/actions/actions_silicon.dmi'
 	background_icon_state = "bg_tech"
 	overlay_icon_state = "bg_tech_border"
-	var/emotion_icon
+	var/emotion_icon = /datum/bodypart_overlay/simple/ipcscreen
 
 /datum/action/innate/change_monitor/Grant(mob/grant_to)
 	. = ..()

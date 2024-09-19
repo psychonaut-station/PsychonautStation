@@ -17,25 +17,20 @@
 	/// If the highest priority job matches this, will prioritize this name in the UI
 	var/relevant_job
 
-
 /datum/preference/name/apply_to_human(mob/living/carbon/human/target, value)
 	// Only real_name applies directly, everything else is applied by something else
 	return
 
-
 /datum/preference/name/deserialize(input, datum/preferences/preferences)
-	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
-	return reject_bad_name(input, race.allow_numbers_in_name || allow_numbers)
+	return reject_bad_name(input, allow_numbers)
 
-/datum/preference/name/serialize(input, datum/preferences/preferences)
+/datum/preference/name/serialize(input)
 	// `is_valid` should always be run before `serialize`, so it should not
 	// be possible for this to return `null`.
-	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
-	return reject_bad_name(input, race.allow_numbers_in_name || allow_numbers)
+	return reject_bad_name(input, allow_numbers)
 
-/datum/preference/name/is_valid(value, datum/preferences/preferences)
-	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
-	return istext(value) && !isnull(reject_bad_name(value, race.allow_numbers_in_name || allow_numbers))
+/datum/preference/name/is_valid(value)
+	return istext(value) && !isnull(reject_bad_name(value, allow_numbers))
 
 /// A character's real name
 /datum/preference/name/real_name
@@ -57,7 +52,6 @@
 	)
 
 /datum/preference/name/real_name/deserialize(input, datum/preferences/preferences)
-	input = ..(input, preferences)
 	if (!input)
 		return input
 
@@ -68,7 +62,17 @@
 		else if(first_space == length(input))
 			input += "[pick(GLOB.last_names)]"
 	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
-	return reject_bad_name(input, race.allow_numbers_in_name || allow_numbers)
+	return reject_bad_name(input, race::allow_numbers_in_name || allow_numbers)
+
+/datum/preference/name/real_name/serialize(input, datum/preferences/preferences)
+	// `is_valid` should always be run before `serialize`, so it should not
+	// be possible for this to return `null`.
+	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
+	return reject_bad_name(input, race::allow_numbers_in_name || allow_numbers)
+
+/datum/preference/name/real_name/is_valid(value, datum/preferences/preferences)
+	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
+	return istext(value) && !isnull(reject_bad_name(value, race::allow_numbers_in_name || allow_numbers))
 
 /// The name for a backup human, when nonhumans are made into head of staff
 /datum/preference/name/backup_human
@@ -88,6 +92,7 @@
 	explanation = "Clown name"
 	group = "fun"
 	relevant_job = /datum/job/clown
+	allow_numbers = TRUE
 
 /datum/preference/name/clown/create_default_value()
 	return pick(GLOB.clown_names)
@@ -98,6 +103,7 @@
 	explanation = "Mime name"
 	group = "fun"
 	relevant_job = /datum/job/mime
+	allow_numbers = TRUE
 
 /datum/preference/name/mime/create_default_value()
 	return pick(GLOB.mime_names)
@@ -192,9 +198,6 @@
 
 /datum/preference/name/animal/create_default_value()
 	return pick(GLOB.pug_names)
-
-/datum/preference/name/animal/deserialize(input, datum/preferences/preferences)
-	return reject_bad_name(input, allow_numbers)
 
 /// The name to use while bitrunning
 /datum/preference/name/hacker_alias

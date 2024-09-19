@@ -163,10 +163,10 @@
 		var/client/client = GLOB.directory[ckey(track.mob_ckey)]
 
 		if(!queued)
-			log_admin("[key_name(client)] played web sound [track.webpage_url] on [src] at [area_name]")
+			log_jukebox("[key_name(client)] played web sound [track.webpage_url] on [src] at [area_name]")
 			message_admins("[key_name(client, TRUE)] played web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(client.mob)] [ADMIN_JMP(src)] [STOP(src)] [BANJUKEBOX(src, client)]")
 		else
-			log_admin("Playing web sound [track.webpage_url] on [src] added by [key_name(client)] at [area_name]")
+			log_jukebox("Playing web sound [track.webpage_url] on [src] added by [key_name(client)] at [area_name]")
 			message_admins("Playing web sound [track.webpage_url_html] on [src] added by [key_name(client, TRUE)] at [area_name]. [ADMIN_QUE(client.mob)] [ADMIN_JMP(src)] [STOP(src)] [BANJUKEBOX(src, client)]")
 
 		SSblackbox.record_feedback("nested tally", "jukebox_played_url", 1, list("[client.ckey]", "[track.webpage_url]"))
@@ -215,11 +215,11 @@
 
 	if(request)
 		LAZYADD(requests, track)
-		log_admin("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
+		log_jukebox("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
 		message_admins("[key_name(user, TRUE)] requested a web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [DENYREQUEST(src, track)] [BANJUKEBOX(src, user.client)]")
 	else
 		LAZYADD(queue, track)
-		log_admin("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
+		log_jukebox("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
 		message_admins("[key_name(user, TRUE)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [REMOVEQUEUE(src, track)] [BANJUKEBOX(src, user.client)]")
 
 /obj/machinery/electrical_jukebox/proc/check_input(mob/user, input)

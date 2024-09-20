@@ -538,7 +538,7 @@
 	return "Mutlu Noeller!"
 
 /datum/holiday/boxing
-	name = "Boksör Günü"
+	name = "Boks Günü"
 	begin_day = 26
 	begin_month = DECEMBER
 

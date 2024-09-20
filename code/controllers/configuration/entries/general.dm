@@ -88,6 +88,9 @@
 ///Log Music Requests
 /datum/config_entry/flag/log_internet_request
 
+///Log e-jukebox
+/datum/config_entry/flag/log_jukebox
+
 /// log silicons
 /datum/config_entry/flag/log_silicon
 

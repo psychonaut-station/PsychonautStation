@@ -455,6 +455,9 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 ///Takes the gas index to read from as a second arg (either MOLES or ARCHIVE)
 ///Returns: a string indicating what check failed, or "" if check passes
 /datum/gas_mixture/proc/compare(datum/gas_mixture/sample, index)
+	if(!sample)
+		return ""
+
 	var/list/sample_gases = sample.gases //accessing datum vars is slower than proc vars
 	var/list/cached_gases = gases
 	var/moles_sum = 0

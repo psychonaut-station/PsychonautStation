@@ -61,7 +61,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/assistant
 	name = JOB_ASSISTANT
 	icon_state = JOB_ASSISTANT //icon_state is case sensitive. why are all of these capitalized? because fuck you that's why
-	subjobs = list(JOB_NT_SECRETARY, JOB_ANIMAL)
+	subjobs = list(JOB_ANIMAL)
 
 /obj/effect/landmark/start/assistant/override
 	jobspawn_override = TRUE

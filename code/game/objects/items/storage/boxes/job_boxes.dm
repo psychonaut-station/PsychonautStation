@@ -135,59 +135,6 @@
 /obj/item/storage/box/survival/engineer/crafted
 	crafted = TRUE
 
-//Nt secretary boxes
-
-/obj/item/storage/box/nt_secretary
-	name = "Build your own office kit"
-	desc = "a.k.a not so rapid office deployment system."
-	icon = 'icons/psychonaut/obj/storage/box.dmi'
-	icon_state = "nt_secretary_kit"
-	illustration = null
-
-/obj/item/storage/box/nt_secretary/PopulateContents()
-	new	/obj/item/stack/sheet/mineral/wood/fifty(src)
-	new	/obj/item/stack/sheet/iron/twenty(src)
-	new	/obj/item/stack/sheet/glass/twenty(src)
-	new /obj/item/stack/tile/carpet/cyan/twenty(src)
-	new /obj/item/circuitboard/computer/secretary_console(src)
-	new /obj/item/stack/cable_coil(src)
-	new /obj/item/screwdriver(src)
-	new /obj/item/wrench(src)
-
-/obj/item/storage/box/nt_secretary/coffeemakerkit
-	name = "Coffee maker parts"
-	desc = "Coffee maker maker kit for real makers!"
-	icon = 'icons/psychonaut/obj/storage/box.dmi'
-	icon_state = "nanobox"
-	illustration = null
-
-/obj/item/storage/box/nt_secretary/coffeemakerkit/PopulateContents()
-	new /obj/item/circuitboard/machine/coffeemaker(src)
-	new /obj/item/reagent_containers/cup/beaker(src)
-	new /obj/item/reagent_containers/cup/beaker(src)
-	new /obj/item/stock_parts/water_recycler(src)
-	new /obj/item/stock_parts/capacitor(src)
-	new /obj/item/stock_parts/micro_laser(src)
-
-/obj/item/storage/box/nt_secretary/coffee
-	name = "Office coffee supplies"
-	desc = "You shall need this."
-	icon = 'icons/psychonaut/obj/storage/box.dmi'
-	icon_state = "nt_secretary_kit"
-	illustration = null
-
-/obj/item/storage/box/nt_secretary/coffee/PopulateContents()
-	new /obj/item/storage/box/nt_secretary/coffeemakerkit(src)
-	new /obj/item/reagent_containers/cup/coffeepot(src)
-	new /obj/item/reagent_containers/cup/rag(src)
-	new /obj/item/reagent_containers/cup/glass/coffee_cup(src)
-	new /obj/item/reagent_containers/cup/glass/coffee_cup(src)
-	new /obj/item/reagent_containers/condiment/pack/sugar(src)
-	new /obj/item/reagent_containers/condiment/creamer(src)
-	new /obj/item/reagent_containers/condiment/pack/astrotame(src)
-	new /obj/item/coffee_cartridge(src)
-	new /obj/item/coffee_cartridge/fancy(src)
-
 //Mime spell boxes
 
 /obj/item/storage/box/mime

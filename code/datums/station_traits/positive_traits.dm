@@ -283,7 +283,6 @@
 		/datum/job/janitor = /obj/item/organ/internal/eyes/robotic/xray,
 		/datum/job/lawyer = /obj/item/organ/internal/heart/cybernetic/tier2,
 		/datum/job/mime = /obj/item/organ/internal/tongue/robot, //...
-		/datum/job/nt_secretary = /obj/item/organ/internal/liver/cybernetic/tier3,
 		/datum/job/paramedic = /obj/item/organ/internal/cyberimp/eyes/hud/medical,
 		/datum/job/prisoner = /obj/item/organ/internal/eyes/robotic/shield,
 		/datum/job/psychologist = /obj/item/organ/internal/ears/cybernetic/whisper,

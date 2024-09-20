@@ -115,12 +115,6 @@
 	stamp_job = initial(paperwork_type.stamp_job)
 	stamp_icon = initial(paperwork_type.stamp_icon)
 
-/obj/item/paperwork/secretary
-	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
-	stamp_requested = /obj/item/stamp/secretary
-	stamp_job = /datum/job/nt_secretary
-	stamp_icon = "paper_stamp-secretary"
-
 /obj/item/paperwork/secretary/Initialize(mapload)
 	. = ..()
 	/*

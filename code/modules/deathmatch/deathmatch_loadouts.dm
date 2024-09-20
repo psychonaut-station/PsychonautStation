@@ -765,7 +765,7 @@
 	ears = /obj/item/radio/headset/headset_com
 	neck = /obj/item/clothing/neck/large_scarf/blue
 	//suit
-	id_trim = /datum/id_trim/job/nt_secretary // half tider half command
+	id_trim = /datum/id_trim/job/bridge_assistant // half tider half command
 	id = /obj/item/card/id/advanced/chameleon
 	uniform = /obj/item/clothing/under/trek/command/next
 	l_pocket = /obj/item/gun/energy/e_gun/mini

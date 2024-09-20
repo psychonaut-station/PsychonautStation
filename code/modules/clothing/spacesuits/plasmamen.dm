@@ -476,10 +476,3 @@
 	desc = "An envirohelmet with extended blue light filters for bitrunning plasmamen."
 	icon_state = "bitrunner_envirohelm"
 
-/obj/item/clothing/head/helmet/space/plasmaman/nt_secretary
-	name = "Nt secretary plasma envirosuit helmet"
-	desc = "A special containment helmet designed for secretaries."
-	icon = 'icons/psychonaut/obj/clothing/head/plasmaman_hats.dmi'
-	worn_icon = 'icons/psychonaut/mob/clothing/head/plasmaman_head.dmi'
-	icon_state = "secretary_envirohelm"
-	inhand_icon_state = null

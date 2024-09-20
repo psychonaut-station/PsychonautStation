@@ -390,7 +390,7 @@
 /obj/item/modular_computer/pda/synthetic
 	name = "synthetic PDA"
 	greyscale_config = /datum/greyscale_config/tablet/head
-	greyscale_colors = "#FAFAFA#a52f29#034885"
+	greyscale_colors = "#FAFAFA#a52f29"
 	starting_programs = list(
 		/datum/computer_file/program/status,
 		/datum/computer_file/program/science,

@@ -260,7 +260,7 @@
 
 //Draconic Day is celebrated on May 3rd, the date on which the Draconic language was merged (#26780)
 /datum/holiday/draconic_day
-	name = "Draconic Dil Günü"
+	name = "Draconic Dili Günü"
 	begin_month = MAY
 	begin_day = 3
 

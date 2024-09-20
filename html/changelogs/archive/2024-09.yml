@@ -379,12 +379,8 @@
   - bugfix: Infiltrator suit now hides moth wings/antenna
   - bugfix: hidden moth wings are no longer capable of flight
 2024-09-14:
-<<<<<<< HEAD
   Ureus:
   - rscadd: "Chaplain'a Warhammer temal\u0131 Chapter Chaplain k\u0131yafet kiti ekler"
-2024-09-15:
-=======
->>>>>>> upstream/master
   FlufflesTheDog:
   - bugfix: Echolocation no longer breaks when witnessing a hologram
   - bugfix: Echolocation no longer breaks when witnessing a fulton extraction
@@ -392,15 +388,12 @@
   JohnFulpWillard:
   - rscadd: Lighters now use and require welding fuel to work, but can be used as
       a welding tool for tasks that don't require much heat.
-<<<<<<< HEAD
-=======
   LT3:
   - qol: Medical HUD and crew console can now detect broken (shorted out) suit sensors
       needing repair
   Oxotnak:
   - rscadd: health analyzer now able to print scanned results via Ctrl-shift-click!
   - qol: text from healthscan proc now use < br >
->>>>>>> upstream/master
   Rhials:
   - bugfix: Removes some doubled-up railings on the wizard den/ragin' mages shuttle.
   SmArtKar:
@@ -427,18 +420,6 @@
   - rscadd: you may weld a crate
   - code_imp: that one cool haunted donk outpost ruins tripwires and such use a subsystem
       instead of globals. no real gameplay effect
-<<<<<<< HEAD
-2024-09-16:
-  Ureus:
-  - rscadd: "Chapter Chaplain kit'te bulunan Chaplain costume'leri de\u011Fi\u015F\
-      tirildi."
-2024-09-17:
-  carmingenium:
-  - rscadd: "T\xFCrk\xFC Bar temas\u0131nda barsign ekler"
-2024-09-18:
-  Ureus:
-  - rscadd: "Yeni nullrod ve warhammer temal\u0131 chaplain k\u0131yafeti"
-=======
 2024-09-15:
   Ben10Omintrix:
   - bugfix: fixes basic AI that are supposed to pause during actions not pausing
@@ -502,10 +483,15 @@
   - balance: The detective camera is now silent and doesn't flash.
   Jewelry-x:
   - spellcheck: fixed typos on heretic's "Lionhunter's Rifle"
+  Ureus:
+  - rscadd: "Chapter Chaplain kit'te bulunan Chaplain costume'leri de\u011Fi\u015F\
+      tirildi."
   vinylspiders:
   - bugfix: fixes being able to use chuunibyou shouts while mute
   - bugfix: fixed crafted donuts not getting any sprinkles, ever
 2024-09-17:
+  carmingenium:
+  - rscadd: "T\xFCrk\xFC Bar temas\u0131nda barsign ekler"
   Ghommie:
   - bugfix: You once again need to right click to use tackling gloves.
   Melbert:
@@ -558,6 +544,8 @@
   - bugfix: borgs can perform organ manipulation surgery again
   deathrobotpunch:
   - rscadd: Added new fishing category to games vendor
+  Ureus:
+  - rscadd: "Yeni nullrod ve warhammer temal\u0131 chaplain k\u0131yafeti"
 2024-09-19:
   Bisar:
   - bugfix: Xenomorph restrictions on items they can pick up have had their determining
@@ -633,4 +621,3 @@
       on xenomorphs and other theoretical carbons.
   thegrb93:
   - bugfix: Downstream species not getting internals they need when joining ERT
->>>>>>> upstream/master

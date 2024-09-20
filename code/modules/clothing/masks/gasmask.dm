@@ -531,7 +531,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_inv = HIDEFACIALHAIR
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = null
-<<<<<<< HEAD
+	fishing_modifier = 0
 
 /obj/item/clothing/mask/gas/ghost_mask
 	name = "ghost mask"
@@ -549,6 +549,3 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	visor_flags_cover = MASKCOVERSMOUTH
 	inhand_icon_state = null
 	has_fov = FALSE
-=======
-	fishing_modifier = 0
->>>>>>> upstream/master

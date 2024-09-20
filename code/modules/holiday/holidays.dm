@@ -442,7 +442,7 @@
 	return pick("Communist", "Soviet", "Bolshevik", "Socialist", "Red", "Workers'")
 
 /datum/holiday/kindness
-	name = "Cömertlik Günü"
+	name = "Nezaket Günü"
 	begin_day = 13
 	begin_month = NOVEMBER
 

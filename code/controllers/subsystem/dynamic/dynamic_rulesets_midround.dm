@@ -870,29 +870,6 @@
 	)
 	return TRUE
 
-/// Midround Space Changeling Ruleset (From Ghosts)
-/datum/dynamic_ruleset/midround/from_ghosts/changeling_midround
-	name = "Space Changeling"
-	midround_ruleset_style = MIDROUND_RULESET_STYLE_LIGHT
-	antag_datum = /datum/antagonist/changeling/space
-	antag_flag = ROLE_CHANGELING_MIDROUND
-	antag_flag_override = ROLE_CHANGELING
-	ruleset_category = parent_type::ruleset_category |  RULESET_CATEGORY_NO_WITTING_CREW_ANTAGONISTS
-	required_type = /mob/dead/observer
-	required_enemies = list(2,2,1,1,1,1,1,0,0,0)
-	required_candidates = 1
-	weight = 3
-	cost = 7
-	minimum_players = 15
-	repeatable = TRUE
-	signup_item_path = /obj/effect/meteor/meaty/changeling
-
-/datum/dynamic_ruleset/midround/from_ghosts/changeling_midround/generate_ruleset_body(mob/applicant)
-	var/body = generate_changeling_meteor(applicant)
-	message_admins("[ADMIN_LOOKUPFLW(body)] has been made into a space changeling by the midround ruleset.")
-	log_dynamic("[key_name(body)] was spawned as a space changeling by the midround ruleset.")
-	return body
-
 /// Midround Paradox Clone Ruleset (From Ghosts)
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone
 	name = "Paradox Clone"

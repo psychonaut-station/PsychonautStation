@@ -1031,18 +1031,6 @@
 	to_chat(owner, span_boldannounce("You are a fresh changeling birthed from a headslug! \
 		You aren't as strong as a normal changeling, as you are newly born."))
 
-
-/datum/antagonist/changeling/space
-	name = "\improper Space Changeling"
-
-/datum/antagonist/changeling/space/get_preview_icon()
-	var/icon/final_icon = render_preview_outfit(/datum/outfit/changeling_space)
-	return finish_preview_icon(final_icon)
-
-/datum/antagonist/changeling/space/greet()
-	play_stinger()
-	to_chat(src, span_changeling("Our mind stirs to life, from the depths of an endless slumber..."))
-
 /datum/outfit/changeling
 	name = "Changeling"
 

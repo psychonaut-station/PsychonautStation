@@ -342,13 +342,11 @@
 /datum/config_entry/string/discordbotcommandprefix
 	default = "?"
 
-/datum/config_entry/string/discordbottoken
+/datum/config_entry/string/apitoken
+	protection = CONFIG_ENTRY_HIDDEN
 
-/datum/config_entry/string/discorduserendpoint
-	default = "https://discord.com/api/v10/users"
-
-/datum/config_entry/string/patreonendpoint
-	default = "https://api.turkb.us/v2/patreon"
+/datum/config_entry/string/apiurl
+	default = "https://api.turkb.us/v2"
 
 /datum/config_entry/string/roundstatsurl
 
@@ -770,3 +768,6 @@
 	default = 36000
 	min_val = 1
 	integer = TRUE
+
+/datum/config_entry/flag/require_discord_linking
+	default = FALSE

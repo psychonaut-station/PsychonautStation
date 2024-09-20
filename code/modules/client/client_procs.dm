@@ -537,6 +537,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	update_ambience_pref(prefs.read_preference(/datum/preference/toggle/sound_ambience))
 	check_ip_intel()
 
+	if(CONFIG_GET(flag/require_discord_linking))
+		var/discord_id = SSdiscord.lookup_id(ckey)
+		if(discord_id)
+			if(is_discord_member(discord_id) == FALSE)
+				if(get_discord(FALSE, discord_id) == FALSE)
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+				else
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
@@ -808,13 +819,64 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
 				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
 
+/client/proc/get_discord(no_cache = FALSE, discord_id)
+	if(!no_cache && !isnull(discord))
+		return discord
+
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return
+
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
+
+	if(!discord_id)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/discord/user?discord_id=[discord_id]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		discord = json_decode(response.body)
+	else if(response.status_code == 404)
+		discord = FALSE
+	else
+		discord = null
+
+	return discord
+
+/client/proc/is_discord_member(discord_id)
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return
+
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
+
+	if(!discord_id)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/discord/member?discord_id=[discord_id]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored)
+		if(response.status_code == 200)
+			return TRUE
+		else if(response.status_code == 404)
+			return FALSE
+
 /client/proc/check_patreon()
-	var/endpoint = CONFIG_GET(string/patreonendpoint)
-	if(!endpoint)
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
 		return FALSE
 
 	var/datum/http_request/request = new ()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "[endpoint]?ckey=[ckey]")
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/patreon?ckey=[ckey]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
 	request.begin_async()
 
 	UNTIL(request.is_complete())

@@ -389,7 +389,7 @@
 	return pick("Parrot","Corgi","Cat","Pug","Goat","Fox")
 
 /datum/holiday/boss
-	name = "Patronların Günü"
+	name = "Patronlar Günü"
 	begin_day = 16
 	begin_month = OCTOBER
 	holiday_hat = /obj/item/clothing/head/hats/tophat

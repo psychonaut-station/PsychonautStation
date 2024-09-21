@@ -1,0 +1,5 @@
+author: "exdal"
+delete-after: True
+changes:
+  - rscadd: "Bridge Assistant Station Trait'i geri eklendi"
+  - rscdel: "Nt Secretary kaldirildi"

@@ -149,6 +149,9 @@
 	desc = "A long knife whose main purpose is to cut doner kebab."
 	icon = 'icons/psychonaut/obj/service/kitchen.dmi'
 	icon_state = "doner_knife"
+	lefthand_file = 'icons/psychonaut/mob/inhands/equipment/kitchen_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/equipment/kitchen_righthand.dmi'
+	inhand_icon_state = "doner_knife"
 
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"

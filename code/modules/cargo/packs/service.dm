@@ -334,6 +334,7 @@
 	cost = CARGO_CRATE_VALUE * 7
 	contains = list(
 		/obj/machinery/doner_machine = 1,
-		/obj/item/doner_stick = 2
+		/obj/item/doner_stick = 2,
+		/obj/item/knife/doner = 1
 	)
 	crate_name = "doner machine crate"

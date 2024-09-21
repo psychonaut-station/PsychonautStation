@@ -1,5 +1,5 @@
 /obj/machinery/doner_machine
-	name = "Doner Macjine"
+	name = "Doner Machine"
 	desc = "A doner machine."
 	icon = 'icons/psychonaut/obj/machines/kitchen.dmi'
 	icon_state = "doner_machine"
@@ -27,11 +27,7 @@
 /obj/machinery/doner_machine/update_overlays()
 	. = ..()
 	if(doner_stick)
-		var/iconst = "doner_machine"
-		if(doner_stick.raw)
-			iconst += "_raw"
-		iconst += "_[doner_stick.donericon]"
-		var/mutable_appearance/theoverlay = mutable_appearance(icon, iconst)
+		var/mutable_appearance/theoverlay = mutable_appearance(doner_stick.icon, doner_stick.icon_state)
 		. += theoverlay
 
 /obj/machinery/doner_machine/can_be_unfasten_wrench(mob/user, silent)

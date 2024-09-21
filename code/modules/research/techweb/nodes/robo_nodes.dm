@@ -97,7 +97,7 @@
 		"ai_power_upgrade"
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
-  announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_COMMAND)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_COMMAND)
 
 /datum/techweb_node/ipc
 	id = TECHWEB_NODE_IPC
@@ -116,4 +116,4 @@
 		"ipc_power_cord",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
-  announce_channels = list(RADIO_CHANNEL_SCIENCE)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)

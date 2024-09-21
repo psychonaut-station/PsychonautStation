@@ -172,7 +172,7 @@
 	tastes = list("meat" = 1)
 	foodtypes = MEAT | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
-	crafting_complexity = FOOD_COMPLEXITY_2
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/doner/tavuk
 	name = "tavuk doner"
@@ -202,7 +202,7 @@
 	tastes = list("chicken" = 1)
 	foodtypes = MEAT | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
-	crafting_complexity = FOOD_COMPLEXITY_2
+	crafting_complexity = FOOD_COMPLEXITY_1
 
 /obj/item/food/kisir
 	name = "kisir"
@@ -277,3 +277,18 @@
 /obj/item/food/menemen/onion
 	name = "soganli menemen"
 	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1, "onion" = 1)
+
+/obj/item/food/iskender
+	name = "iskender"
+	desc = "Altında küçük küçük dilimlenmiş pide bulunan, üzerine salça ve kızgın tereyağı dökülen, istenirse yoğurtlu da olabilen, yaprak yaprak kesilmiş döner kebabı; iskender kebap da denir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "iskender"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/protein = 4,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("meat" = 2, "tomato" = 1, "pepper" = 1)
+	foodtypes = VEGETABLES | GRAIN | MEAT
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_3

@@ -141,3 +141,13 @@
 	)
 	result = /obj/item/food/raw_menemen/onion
 	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/iskender
+	name = "Iskender"
+	reqs = list(
+		/obj/item/food/breadslice/plain = 2,
+		/obj/item/food/doner/yaprak/et = 1,
+		/obj/item/food/grown/tomato = 1
+	)
+	result = /obj/item/food/iskender
+	category = CAT_TURKISH

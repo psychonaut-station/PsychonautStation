@@ -343,8 +343,14 @@
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
 				else if(ishuman(living_target))
 					var/mob/living/carbon/human/victim = living_target
-					var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = victim.dna.species.splatter_type
-					new splatter_type(victim.loc, victim.dir)
+					var/isHumanBlood = (victim.get_blood_id() == /datum/reagent/blood)
+					var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = (isHumanBlood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale)
+					var/obj/effect/temp_visual/dir_setting/bloodsplatter/newsplatter = new splatter_type(victim.loc, victim.dir)
+					if(!isHumanBlood)
+						var/datum/reagent/bloodreagent = victim.get_blood_id()
+						newsplatter.color = color_hex2color_matrix(bloodreagent.color)
+						if(HAS_TRAIT(victim, TRAIT_NOBLOOD))
+							newsplatter.alpha = 0
 				else
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
 				if(prob(33))

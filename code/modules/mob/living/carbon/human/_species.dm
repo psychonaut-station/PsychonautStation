@@ -185,8 +185,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/obj/effect/gibspawner/gibspawner = null
 	// unique remains for species
 	var/obj/effect/decal/remains/decalremains = null
-	// unique splatter for species
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter
 
 	// Can we write numbers in name
 	var/allow_numbers_in_name = FALSE

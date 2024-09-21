@@ -48,7 +48,6 @@
 	)
 	gibspawner = /obj/effect/gibspawner/robot/android
 	allow_numbers_in_name = TRUE
-	splatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter/oilsplatter
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load)
 	. = ..()

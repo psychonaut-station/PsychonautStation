@@ -38,7 +38,11 @@
 	if(limb.current_gauze?.splint_factor)
 		wounding_dmg *= (1 - limb.current_gauze.splint_factor)
 	var/blood_bled = rand(1, wounding_dmg * internal_bleeding_coefficient) // 12 brute toolbox can cause up to 15/18/21 bloodloss on mod/sev/crit
-	var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = victim.dna?.species.splatter_type
+	var/isHumanBlood = TRUE
+	var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = /obj/effect/temp_visual/dir_setting/bloodsplatter
+	if(ishuman(victim))
+		isHumanBlood = (victim.get_blood_id() == /datum/reagent/blood)
+		splatter_type = (isHumanBlood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale)
 	switch(blood_bled)
 		if(1 to 6)
 			victim.bleed(blood_bled, TRUE)
@@ -55,7 +59,12 @@
 				span_danger("You spit out a string of blood from the blow to your [limb.plaintext_zone]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
-			new splatter_type(victim.loc, victim.dir)
+			var/obj/effect/temp_visual/dir_setting/bloodsplatter/newsplatter = new splatter_type(victim.loc, victim.dir)
+			if(!isHumanBlood)
+				var/datum/reagent/bloodreagent = victim.get_blood_id()
+				newsplatter.color = color_hex2color_matrix(bloodreagent.color)
+				if(HAS_TRAIT(victim, TRAIT_NOBLOOD))
+					newsplatter.alpha = 0
 			victim.bleed(blood_bled)
 		if(20 to INFINITY)
 			victim.visible_message(
@@ -64,7 +73,12 @@
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.bleed(blood_bled)
-			new splatter_type(victim.loc, victim.dir)
+			var/obj/effect/temp_visual/dir_setting/bloodsplatter/newsplatter = new splatter_type(victim.loc, victim.dir)
+			if(!isHumanBlood)
+				var/datum/reagent/bloodreagent = victim.get_blood_id()
+				newsplatter.color = color_hex2color_matrix(bloodreagent.color)
+				if(HAS_TRAIT(victim, TRAIT_NOBLOOD))
+					newsplatter.alpha = 0
 			victim.add_splatter_floor(get_step(victim.loc, victim.dir))
 
 /datum/wound/pierce/bleed/get_bleed_rate_of_change()

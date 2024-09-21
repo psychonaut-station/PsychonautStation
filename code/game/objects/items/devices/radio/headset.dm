@@ -218,12 +218,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/headset_com
 
-/obj/item/radio/headset/headset_com/nt_secretary
-	name = "secretary radio headset"
-	desc = "A headset for listening the commanding channel."
-	icon = 'icons/psychonaut/obj/clothing/headsets.dmi'
-	icon_state = "secretary_headset"
-
 /obj/item/radio/headset/heads
 	command = TRUE
 
@@ -468,9 +462,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		grant_headset_languages(mob_loc)
 
 /obj/item/radio/headset/click_alt(mob/living/user)
-	if(!istype(user) || !Adjacent(user) || user.incapacitated)
-		return CLICK_ACTION_BLOCKING
-	if (!command)
+	if(!istype(user) || !command)
 		return CLICK_ACTION_BLOCKING
 	use_command = !use_command
 	to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))

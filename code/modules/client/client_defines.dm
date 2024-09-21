@@ -272,3 +272,6 @@
 
 	///Which ambient sound this client is currently being provided.
 	var/current_ambient_sound
+
+	/// Discord information of the client if they have linked their account and we fetched it
+	var/list/discord

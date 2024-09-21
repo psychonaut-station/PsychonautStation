@@ -141,10 +141,6 @@
 	name = "Head PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_head.json'
 
-/datum/greyscale_config/tablet/secretary
-	name = "Nt Secretary PDA"
-	json_config = 'code/datums/greyscale/json_configs/pda_secretary.json'
-
 /datum/greyscale_config/tablet/mime
 	name = "Mime PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_mime.json'

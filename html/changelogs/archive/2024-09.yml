@@ -628,3 +628,8 @@
   - qol: Deceased and asleep humanoids will now close their eyes
   Seefaaa:
   - admin: "Jukebox'\u0131n logu admin log yerine game log'da olucak"
+2024-09-22:
+  exdal:
+  - rscadd: Bridge Assistant Station Trait'i geri eklendi
+  - rscdel: Nt Secretary kaldirildi
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accessleri kaldirildi'

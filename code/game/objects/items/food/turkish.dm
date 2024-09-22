@@ -291,7 +291,7 @@
 	tastes = list("meat" = 2, "tomato" = 1, "pepper" = 1)
 	foodtypes = VEGETABLES | GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
-	crafting_complexity = FOOD_COMPLEXITY_3
+	crafting_complexity = FOOD_COMPLEXITY_4
 
 /obj/item/food/raw_dolma
 	name = "raw dolma"

@@ -145,9 +145,21 @@
 /datum/crafting_recipe/food/iskender
 	name = "Iskender"
 	reqs = list(
-		/obj/item/food/breadslice/plain = 2,
-		/obj/item/food/doner/yaprak/et = 1,
-		/obj/item/food/grown/tomato = 1
+		/obj/item/food/griddle_toast = 1,
+		/obj/item/food/doner/yaprak/et = 2,
+		/obj/item/food/grown/tomato = 1,
+		/datum/reagent/consumable/yoghurt = 10,
 	)
 	result = /obj/item/food/iskender
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/dolma
+	name = "Dolma"
+	reqs = list(
+		/obj/item/food/grown/bell_pepper/green = 1,
+		/obj/item/food/boiledrice = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/grown/onion = 1,
+	)
+	result = /obj/item/food/raw_dolma
 	category = CAT_TURKISH

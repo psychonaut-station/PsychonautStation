@@ -292,3 +292,34 @@
 	foodtypes = VEGETABLES | GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/raw_dolma
+	name = "raw dolma"
+	desc = "Dolma, Balkan, Güney Kafkasya, Orta Asya, Akdeniz, Ege ve Orta Doğu mutfaklarında yeri olan bir yemek çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "raw_dolma"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "onion" = 1)
+	foodtypes = VEGETABLES | RAW
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/raw_dolma/make_bakeable()
+	AddComponent(/datum/component/bakeable, /obj/item/food/dolma, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
+
+/obj/item/food/dolma
+	name = "dolma"
+	desc = "Dolma, Balkan, Güney Kafkasya, Orta Asya, Akdeniz, Ege ve Orta Doğu mutfaklarında yeri olan bir yemek çeşididir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "dolma"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "onion" = 1)
+	foodtypes = VEGETABLES
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_3

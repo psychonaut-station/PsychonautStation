@@ -12,10 +12,20 @@
 	var/isOn = FALSE
 	var/obj/item/doner_stick/doner_stick
 	var/required_bake_time = 1 MINUTES
+	///Sound loop for the sizzling sound
+	var/datum/looping_sound/grill/grillsound
+	var/datum/looping_sound/microwave/nobell/microwaveloop
 
 /obj/machinery/doner_machine/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
+	grillsound = new(src, FALSE)
+	microwaveloop = new(src, FALSE)
+
+/obj/machinery/doner_machine/Destroy()
+	QDEL_NULL(grillsound)
+	QDEL_NULL(microwaveloop)
+	return ..()
 
 /obj/machinery/doner_machine/update_icon_state()
 	if(isOn)
@@ -84,8 +94,12 @@
 	isOn = !isOn
 	if(isOn)
 		begin_processing()
+		grillsound.start()
+		microwaveloop.start()
 	else
 		end_processing()
+		grillsound.stop()
+		microwaveloop.stop()
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 

@@ -15,7 +15,7 @@
 /obj/item/organ/internal/stomach/ipc/Initialize(mapload)
 	. = ..()
 	if(initcell)
-		cell = new initcell
+		cell = new initcell(src)
 	update_appearance()
 
 /obj/item/organ/internal/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
@@ -94,9 +94,10 @@
 		items += "Power: No Cell"
 	items += "Backup Power: [backup_charge]/100"
 
-/obj/item/organ/internal/stomach/ipc/proc/charge(datum/source, amount, repairs)
+/obj/item/organ/internal/stomach/ipc/proc/charge(datum/source, datum/callback/charge_cell, seconds_per_tick)
 	SIGNAL_HANDLER
-	adjust_charge(amount / 1.5)
+
+	charge_cell.Invoke(cell, seconds_per_tick / 1.5)
 
 /obj/item/organ/internal/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
 	SIGNAL_HANDLER

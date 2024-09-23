@@ -195,15 +195,12 @@
 	if(isalien(target))
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
 	else if(ishuman(target))
-		var/mob/living/carbon/human/victim = target
-		var/isHumanBlood = (victim.get_blood_id() == /datum/reagent/blood)
-		var/obj/effect/temp_visual/dir_setting/bloodsplatter/splatter_type = (isHumanBlood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale)
-		var/obj/effect/temp_visual/dir_setting/bloodsplatter/newsplatter = new splatter_type(victim.loc, victim.dir)
-		if(!isHumanBlood)
-			var/datum/reagent/bloodreagent = victim.get_blood_id()
-			newsplatter.color = color_hex2color_matrix(bloodreagent.color)
-			if(HAS_TRAIT(victim, TRAIT_NOBLOOD))
-				newsplatter.alpha = 0
+		var/datum/reagent/blood_id = target.get_blood_id()
+		if(!isnull(blood_id))
+			var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
+			var/obj/splatter = new splatter_type(target.loc, target.dir)
+			if(blood_id != /datum/reagent/blood)
+				splatter.color = color_hex2color_matrix(blood_id.color)
 	else
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
 

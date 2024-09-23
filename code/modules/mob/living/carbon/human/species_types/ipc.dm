@@ -291,11 +291,12 @@
 /datum/action/innate/change_monitor/proc/give_overlay(mob/living/carbon/C, obj/item/bodypart/bodypart, overlay_typepath)
 	if(!bodypart)
 		return null
-	var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 	remove_overlay(C)
-	bodypart.add_bodypart_overlay(overlay)
+	if(overlay_typepath != /datum/bodypart_overlay/simple/ipcscreen)
+		var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
+		bodypart.add_bodypart_overlay(overlay)
 	C.update_body_parts()
-	return overlay
+	return
 
 /datum/action/innate/change_monitor/proc/remove_overlay(mob/living/carbon/C)
 	var/obj/item/bodypart/bodypart = C.get_bodypart(BODY_ZONE_HEAD)
@@ -327,7 +328,6 @@
 //Screen
 /datum/bodypart_overlay/simple/ipcscreen
 	icon = 'icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi'
-	icon_state = "off"
 	layers = EXTERNAL_ADJACENT
 	var/name = "Off"
 	var/attached_body_zone = BODY_ZONE_HEAD
@@ -422,3 +422,11 @@
 /datum/bodypart_overlay/simple/ipcscreen/flushed
 	name = "Flushed"
 	icon_state = "flushed"
+
+/datum/bodypart_overlay/simple/ipcscreen/monoeye
+	name = "Mono Eye"
+	icon_state = "monoeye"
+
+/datum/bodypart_overlay/simple/ipcscreen/heart
+	name = "Heart"
+	icon_state = "heart"

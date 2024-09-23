@@ -12,6 +12,7 @@
 	disabled_wound_penalty = 10
 	icon_state = "blackipc_head"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -73,6 +74,7 @@
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_chest"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -83,7 +85,6 @@
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
 	heavy_brute_msg = ROBOTIC_HEAVY_BRUTE_MSG
-
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
@@ -114,6 +115,7 @@
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_arm"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -141,6 +143,7 @@
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_arm"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -151,7 +154,6 @@
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
 	heavy_brute_msg = ROBOTIC_HEAVY_BRUTE_MSG
-
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
@@ -168,6 +170,7 @@
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_leg"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_IPC
@@ -177,7 +180,6 @@
 	light_brute_msg = ROBOTIC_LIGHT_BRUTE_MSG
 	medium_brute_msg = ROBOTIC_MEDIUM_BRUTE_MSG
 	heavy_brute_msg = ROBOTIC_HEAVY_BRUTE_MSG
-
 	light_burn_msg = ROBOTIC_LIGHT_BURN_MSG
 	medium_burn_msg = ROBOTIC_MEDIUM_BURN_MSG
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
@@ -208,6 +210,7 @@
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_leg"
 	limb_id = "blackipc"
+	dmg_overlay_type = "synth"
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	bodytype = BODYTYPE_ROBOTIC | BODYTYPE_IPC

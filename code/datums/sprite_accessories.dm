@@ -2452,3 +2452,7 @@
 /datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals
 	name = "Zeng-Hu Pharmaceuticals"
 	icon_state = "zhpipc"
+
+/datum/sprite_accessory/ipc_chassis/star_industrial
+	name = "Star Industrial"
+	icon_state = "staripc"

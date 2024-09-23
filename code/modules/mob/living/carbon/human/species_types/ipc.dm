@@ -288,11 +288,11 @@
 	emotion_icon = items[picked_emote]
 	give_overlay(C, head, items[picked_emote])
 
-/datum/action/innate/change_monitor/proc/give_overlay(mob/living/carbon/C, obj/item/bodypart/bodypart, overlay_typepath)
+/datum/action/innate/change_monitor/proc/give_overlay(mob/living/carbon/C, obj/item/bodypart/bodypart, datum/bodypart_overlay/simple/ipcscreen/overlay_typepath)
 	if(!bodypart)
 		return null
 	remove_overlay(C)
-	if(overlay_typepath != /datum/bodypart_overlay/simple/ipcscreen)
+	if(!isnull(overlay_typepath::icon_state))
 		var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
 		bodypart.add_bodypart_overlay(overlay)
 	C.update_body_parts()

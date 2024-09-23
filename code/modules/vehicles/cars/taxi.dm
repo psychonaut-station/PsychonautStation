@@ -28,7 +28,6 @@
 /obj/vehicle/sealed/car/taxi/Initialize(mapload)
 		. = ..()
 		START_PROCESSING(SSobj,src)
-		RegisterSignal(src, COMSIG_MOVABLE_CROSS_OVER,)
 
 /obj/vehicle/sealed/car/taxi/process()
 	if(light_on && (obj_flags & EMAGGED))

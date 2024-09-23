@@ -28,7 +28,6 @@
 /obj/vehicle/sealed/car/retroline/Initialize(mapload)
 		. = ..()
 		START_PROCESSING(SSobj,src)
-		RegisterSignal(src, COMSIG_MOVABLE_CROSS_OVER,)
 
 /obj/vehicle/sealed/car/retroline/process()
 	if(light_on && (obj_flags & EMAGGED))

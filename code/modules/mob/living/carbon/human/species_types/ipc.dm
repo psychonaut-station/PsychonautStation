@@ -19,6 +19,7 @@
 		TRAIT_NOTOOLFLASH,
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_LIGHTBULB_REMOVER,
+		TRAIT_MUTANT_COLORS,
 	)
 	meat = null
 	exotic_blood = /datum/reagent/fuel/oil
@@ -109,6 +110,8 @@
 			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
 			bodypart.update_limb()
+			if(chassis_of_choice.color_src == MUTANT_COLOR)
+				bodypart.should_draw_greyscale = TRUE
 
 /datum/species/ipc/get_species_description()
 	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \

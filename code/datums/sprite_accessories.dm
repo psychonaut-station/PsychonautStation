@@ -2456,3 +2456,8 @@
 /datum/sprite_accessory/ipc_chassis/star_industrial
 	name = "Star Industrial"
 	icon_state = "staripc"
+
+/datum/sprite_accessory/ipc_chassis/mcgreyscale
+	name = "Morpheus Cyberkinetics (Custom)"
+	color_src = MUTANT_COLOR
+	icon_state = "mcgipc"

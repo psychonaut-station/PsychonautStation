@@ -9,6 +9,7 @@
 /obj/item/bodypart/head/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	disabled_wound_penalty = 10
 	icon_state = "blackipc_head"
 	limb_id = "blackipc"
@@ -72,6 +73,7 @@
 /obj/item/bodypart/chest/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_chest"
 	limb_id = "blackipc"
 	dmg_overlay_type = "synth"
@@ -113,6 +115,7 @@
 /obj/item/bodypart/arm/left/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_arm"
 	limb_id = "blackipc"
 	dmg_overlay_type = "synth"
@@ -141,6 +144,7 @@
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_arm"
 	limb_id = "blackipc"
 	dmg_overlay_type = "synth"
@@ -168,6 +172,7 @@
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_l_leg"
 	limb_id = "blackipc"
 	dmg_overlay_type = "synth"
@@ -208,6 +213,7 @@
 /obj/item/bodypart/leg/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
+	icon_greyscale = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_state = "blackipc_r_leg"
 	limb_id = "blackipc"
 	dmg_overlay_type = "synth"

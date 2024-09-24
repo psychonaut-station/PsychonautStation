@@ -61,7 +61,7 @@
 #define APC_POWER_GAIN (0.2 * STANDARD_CELL_CHARGE)
 
 /// How much power ipc's gain/drain from APCs.
-#define APC_POWER_GAIN_IPC (2.5 * APC_POWER_GAIN)
+#define APC_POWER_GAIN_IPC (5 * APC_POWER_GAIN)
 
 // Wires & EMPs:
 /// The wire value used to reset the APCs wires after one's EMPed.

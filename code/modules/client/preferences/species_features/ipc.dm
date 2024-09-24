@@ -33,10 +33,8 @@
 	for(var/obj/item/bodypart/bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		if(isipc(target))
 			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, (chassis_of_choice.color_src == MUTANT_COLOR), FALSE)
 			bodypart.update_limb()
-			if(chassis_of_choice.color_src == MUTANT_COLOR)
-				bodypart.should_draw_greyscale = TRUE
 
 /datum/preference/choiced/ipc_chassis/create_default_value()
 	return /datum/sprite_accessory/ipc_chassis/black::name

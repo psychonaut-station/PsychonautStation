@@ -108,10 +108,8 @@
 	if(chassis_of_choice)
 		for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
 			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, FALSE, FALSE)
+			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, (chassis_of_choice.color_src == MUTANT_COLOR), FALSE)
 			bodypart.update_limb()
-			if(chassis_of_choice.color_src == MUTANT_COLOR)
-				bodypart.should_draw_greyscale = TRUE
 
 /datum/species/ipc/get_species_description()
 	return "The newest in artificial life, IPCs are entirely robotic, synthetic life, made of motors, circuits, and wires \
@@ -308,6 +306,7 @@
 	var/datum/bodypart_overlay/simple/ipcscreen/overlay = (locate(/datum/bodypart_overlay/simple/ipcscreen) in bodypart.bodypart_overlays)
 	if(overlay)
 		bodypart.remove_bodypart_overlay(overlay)
+		qdel(overlay)
 	C.update_body_parts()
 
 /datum/action/innate/change_monitor/proc/on_dead(mob/living/carbon/C, gibbed)

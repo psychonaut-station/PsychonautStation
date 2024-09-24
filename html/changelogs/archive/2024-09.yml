@@ -633,3 +633,8 @@
   - rscadd: Bridge Assistant Station Trait'i geri eklendi
   - rscdel: Nt Secretary kaldirildi
   - balance: 'Paramedigin: Engineering, Science ve Cargo accessleri kaldirildi'
+2024-09-24:
+  Reveyni:
+  - bugfix: "Blue Alert a\xE7\u0131klamas\u0131ndan \"rastgele aramalara izin verilmektedir\"\
+      \ ifadesini kald\u0131r\u0131r,\" aramalara ge\xE7erli bir sebebi olmas\u0131\
+      \ dahilinde izin verilmektedir \" ifadesini ekler."

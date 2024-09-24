@@ -74,9 +74,10 @@
 		balloon_alert(ethereal, "can't transfer power!")
 
 /// Special behavior for when an ipc interacts with an APC.
-/obj/machinery/power/apc/proc/ipc_interact(mob/living/user)
+/obj/machinery/power/apc/proc/ipc_interact(mob/living/user, click_parameters)
 	if(!ishuman(user))
 		return
+	var/list/modifiers = params2list(click_parameters)
 	var/mob/living/carbon/human/ipc = user
 	var/obj/item/organ/internal/stomach/maybe_stomach = ipc.get_organ_slot(ORGAN_SLOT_STOMACH)
 	var/obj/item/organ/internal/maybe_protector = ipc.get_organ_slot(ORGAN_SLOT_VOLTPROTECT)
@@ -97,7 +98,7 @@
 	var/charge_limit = ipccell.maxcharge - apcpowergain
 	if(stomach.drain_time >= world.time)
 		return
-	if(ipc.combat_mode)
+	if(LAZYACCESS(modifiers, LEFT_CLICK))
 		if(cell.charge <= (cell.maxcharge / 2))
 			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "safeties prevent draining!"), alert_timer_duration)
 			return
@@ -121,26 +122,26 @@
 			if(!protector)
 				shock(user, 75)
 		return
-
-	if(cell.charge >= cell.maxcharge - apcpowergain)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "APC can't receive more power!"), alert_timer_duration)
-		return
-	if(ipccell.charge < apcpowergain)
-		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "charge is too low!"), alert_timer_duration)
-		return
-	stomach.drain_time = world.time + APC_DRAIN_TIME
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "transfering power"), alert_timer_duration)
-	if(!do_after(user, APC_DRAIN_TIME, target = src))
-		return
-	if((cell.charge >= (cell.maxcharge - apcpowergain)) || (ipccell.charge < apcpowergain))
-		balloon_alert(ipc, "can't transfer power!")
-		return
-	if(istype(stomach))
-		balloon_alert(ipc, "transfered power")
-		cell.give(-stomach.adjust_charge(-APC_POWER_GAIN_IPC))
-	else
-		balloon_alert(ipc, "can't transfer power!")
-
+	else if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		if(cell.charge >= cell.maxcharge - apcpowergain)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "APC can't receive more power!"), alert_timer_duration)
+			return
+		if(ipccell.charge < apcpowergain)
+			addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "charge is too low!"), alert_timer_duration)
+			return
+		stomach.drain_time = world.time + APC_DRAIN_TIME
+		addtimer(CALLBACK(src, TYPE_PROC_REF(/atom, balloon_alert), ipc, "transfering power"), alert_timer_duration)
+		if(!do_after(user, APC_DRAIN_TIME, target = src))
+			return
+		if((cell.charge >= (cell.maxcharge - apcpowergain)) || (ipccell.charge < apcpowergain))
+			balloon_alert(ipc, "can't transfer power!")
+			return
+		if(istype(stomach))
+			balloon_alert(ipc, "transfered power")
+			cell.give(-stomach.adjust_charge(-APC_POWER_GAIN_IPC))
+		else
+			balloon_alert(ipc, "can't transfer power!")
+	return
 
 // attack with hand - remove cell (if cover open) or interact with the APC
 /obj/machinery/power/apc/attack_hand(mob/user, list/modifiers)

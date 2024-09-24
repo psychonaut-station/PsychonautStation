@@ -219,8 +219,21 @@
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire1"
 
-/obj/item/apc_powercord/afterattack(atom/target, mob/user, proximity_flag, click_parameters)
-	if(!istype(target, /obj/machinery/power/apc) || !ishuman(user) || !proximity_flag)
+/obj/item/apc_powercord/Initialize(mapload)
+	. = ..()
+	register_item_context()
+
+/obj/item/apc_powercord/add_item_context(datum/source, list/context, atom/target, mob/living/user)
+	if (!isapc(target))
+		return NONE
+
+	context[SCREENTIP_CONTEXT_LMB] = "Drain Power"
+	context[SCREENTIP_CONTEXT_RMB] = "Transfer Power"
+
+	return CONTEXTUAL_SCREENTIP_SET
+
+/obj/item/apc_powercord/afterattack(atom/target, mob/user, click_parameters)
+	if(!isapc(target) || !ishuman(user) || !target.Adjacent(user))
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/carbon/human/H = user
@@ -237,8 +250,8 @@
 
 	if(istype(target, /obj/machinery/power/apc))
 		var/obj/machinery/power/apc/A = target
-		if(A.cell && A.cell.charge > A.cell.maxcharge/4)
-			A.ipc_interact(H)
+		if(A.cell)
+			A.ipc_interact(H, click_parameters)
 			return
 		else
 			to_chat(user, span_warning("There is not enough charge to draw from that APC."))

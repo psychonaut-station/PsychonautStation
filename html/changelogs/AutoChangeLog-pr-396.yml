@@ -1,4 +1,0 @@
-author: "Reveyni"
-delete-after: True
-changes:
-  - bugfix: "Blue Alert açıklamasından \"rastgele aramalara izin verilmektedir\" ifadesini kaldırır,\" aramalara geçerli bir sebebi olması dahilinde izin verilmektedir \" ifadesini ekler."

@@ -21,6 +21,7 @@
 
 /obj/machinery/doner_machine/Destroy()
 	QDEL_NULL(grillsound)
+	QDEL_NULL(particles)
 	return ..()
 
 /obj/machinery/doner_machine/update_icon_state()
@@ -55,10 +56,10 @@
 		var/obj/item/doner_stick/newdonerstick = item
 		if(newdonerstick.meatnum != 5)
 			to_chat(user, span_warning("[item] isn't full"))
-			return
+			return ..()
 		if(!newdonerstick.raw)
 			to_chat(user, span_warning("[item] isn't raw!"))
-			return
+			return ..()
 		doner_stick = newdonerstick
 		doner_stick.forceMove(src)
 		update_appearance()
@@ -79,6 +80,7 @@
 	if(doner_stick)
 		user.put_in_hands(doner_stick)
 		doner_stick = null
+		QDEL_NULL(particles)
 		update_appearance()
 
 /obj/machinery/doner_machine/attack_hand_secondary(mob/user, list/modifiers)
@@ -94,21 +96,35 @@
 	else
 		end_processing()
 		grillsound.stop()
+		QDEL_NULL(particles)
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/doner_machine/process(seconds_per_tick)
 	if(!doner_stick || !is_on)
 		return
-
-	doner_stick.current_bake_time += seconds_per_tick * 10 //turn it into ds
-	if(doner_stick.current_bake_time >= required_bake_time)
-		finish_baking()
-
-/obj/machinery/doner_machine/proc/finish_baking()
-	doner_stick.raw = FALSE
-	doner_stick.update_appearance()
-	update_appearance()
+	if(doner_stick.raw)
+		if(!particles)
+			particles = new /particles/smoke/steam/mild/center(src)
+		doner_stick.current_bake_time += seconds_per_tick * 10
+		if(doner_stick.current_bake_time >= required_bake_time)
+			doner_stick.raw = FALSE
+			doner_stick.current_bake_time = 0
+			QDEL_NULL(particles)
+			doner_stick.update_appearance()
+			update_appearance()
+	else
+		if(!particles)
+			particles = new /particles/smoke/burning/small(src)
+		doner_stick.current_bake_time += seconds_per_tick * 10
+		if(doner_stick.current_bake_time >= required_bake_time*2)
+			doner_stick.reset_stick()
+			QDEL_NULL(particles)
+			doner_stick.update_appearance()
+			update_appearance()
+			var/turf/drop_loc = drop_location()
+			for(var/i in 1 to 5)
+				new /obj/item/food/badrecipe(drop_loc)
 
 /obj/item/doner_stick
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
@@ -181,11 +197,15 @@
 				doner.tastes += list(taste = tastes[taste])
 		meatnum--
 		if(!meatnum)
-			raw = TRUE
-			donericon = null
-			tastes = list()
-			qdel(reagents)
-			current_bake_time = 0
+			reset_stick()
 		update_appearance()
 	else
 		return ..()
+
+/obj/item/doner_stick/proc/reset_stick()
+	raw = TRUE
+	donericon = null
+	tastes = list()
+	meatnum = 0
+	qdel(reagents)
+	current_bake_time = 0

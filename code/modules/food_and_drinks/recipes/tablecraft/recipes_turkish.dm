@@ -126,7 +126,7 @@
 	reqs = list(
 		/obj/item/food/grown/tomato = 3,
 		/obj/item/food/grown/bell_pepper = 2,
-		/obj/item/food/egg = 2
+		/obj/item/food/egg = 2,
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen

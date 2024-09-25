@@ -163,10 +163,10 @@
 	default = "İstasyona yönelik tüm tehditler geçmiştir. Güvenlik görevlileri silah bulundurmayabilir, gizliliğinize tekrardan önem verilmektedir."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, rastgele aramalara izin verilmektedir."
+	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, aramalara geçerli bir sebebi olması dahilinde izin verilmektedir."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Rastgele aramalara hala izin verilmektedir."
+	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Aramalara geçerli bir sebebi olması dahilinde verilmektedir."
 
 /datum/config_entry/string/alert_red_upto
 	default = "İstasyona yönelik ciddi bir tehdit bulunuyor. Güvenlik görevlileri silahlarını her an kullanabilir. Rastgele aramalara izin verilmektedir ve tavsiye edilir."

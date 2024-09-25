@@ -149,27 +149,6 @@
 	department = "civilian"
 	region_access = REGION_GENERAL
 
-// Highly modified remote for nt secretary
-/obj/item/door_remote/secretary
-	name = "special door remote"
-	desc = "Nanotrasen Research and Development Division recommends that you should stand away from the airlocks when using this."
-	icon = 'icons/psychonaut/obj/device.dmi'
-	icon_state = "gangtool-secretary"
-	region_access = REGION_SECRETARY
-
-/obj/item/door_remote/secretary/attack_self(mob/user)
-	return
-
-/obj/item/door_remote/secretary/update_icon_state()
-	. = ..()
-	icon_state = "gangtool-secretary"
-
-/obj/item/door_remote/secretary/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
-	if(istype(user.mind?.assigned_role, /datum/job/nt_secretary))
-		return ..()
-	to_chat(user, span_warning("You don't know how to use this!"))
-	return ITEM_INTERACT_BLOCKING
-
 #undef WAND_OPEN
 #undef WAND_BOLT
 #undef WAND_EMERGENCY

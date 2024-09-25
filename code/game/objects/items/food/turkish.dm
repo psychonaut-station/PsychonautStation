@@ -325,3 +325,35 @@
 	foodtypes = VEGETABLES
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/etdoner_pilav
+	name = "pilav ustu et doner"
+	desc = "Pilav üstü et döner, en sevilen sokak lezzetlerinden biridir. Yaprak şeklinde ince ince kesilen et döner, kızartıldıktan sonra pirinç pilavı ile birlikte servis edilir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "etdoner_pilav"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "meat" = 1)
+	foodtypes = VEGETABLES | MEAT | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/plate
+
+/obj/item/food/tavukdoner_pilav
+	name = "pilav ustu tavuk doner"
+	desc = "Pilav üstü tavuk döner, en sevilen sokak lezzetlerinden biridir. Yaprak şeklinde ince ince kesilen tavuk döner, kızartıldıktan sonra pirinç pilavı ile birlikte servis edilir."
+	icon = 'icons/psychonaut/obj/food/turkish.dmi'
+	icon_state = "tavukdoner_pilav"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
+	)
+	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "chicken" = 1)
+	foodtypes = VEGETABLES | MEAT | GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/plate

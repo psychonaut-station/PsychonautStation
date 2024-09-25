@@ -166,3 +166,27 @@
 	)
 	result = /obj/item/food/raw_dolma
 	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/etdoner_pilav
+	name = "Pilav Üstü Et Döner"
+	reqs = list(
+		/obj/item/food/grown/bell_pepper/green = 1,
+		/obj/item/food/boiledrice = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/doner/yaprak/et = 1,
+		/obj/item/plate = 1,
+	)
+	result = /obj/item/food/etdoner_pilav
+	category = CAT_TURKISH
+
+/datum/crafting_recipe/food/tavukdoner_pilav
+	name = "Pilav Üstü Tavuk Döner"
+	reqs = list(
+		/obj/item/food/grown/bell_pepper/green = 1,
+		/obj/item/food/boiledrice = 1,
+		/obj/item/food/grown/tomato = 1,
+		/obj/item/food/doner/yaprak/tavuk = 1,
+		/obj/item/plate = 1,
+	)
+	result = /obj/item/food/tavukdoner_pilav
+	category = CAT_TURKISH

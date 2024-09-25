@@ -127,7 +127,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/doner/yaprak/et
-	name = "Yaprak Et Doner"
+	name = "yaprak et doner"
 	desc = "Yaprak et döner, etin dikey şişte pişirilerek hazırlanan bir döner çeşididir."
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "yaprakdoner_et"
@@ -219,10 +219,9 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 	trash_type = /obj/item/reagent_containers/cup/bowl
 
-// adamın biri bir gün tavuklu pilav yiyormuş, sonra kendi kendine düşünüp ulan bunun içine ton balığı koysam ne güzel olur demiş ton balıklı ve tavuklu pilav olmuş hahaha
 /obj/item/food/tavton
-	name = "tavuk tonbaligi pilav"
-	desc = "Tavuk ve tonbalıklı pilav."
+	name = "tavuklu tonbalikli pilav"
+	desc = "adamın biri bir gün tavuklu pilav yiyormuş, sonra kendi kendine düşünüp ulan bunun içine ton balığı koysam ne güzel olur demiş ton balıklı ve tavuklu pilav olmuş hahaha"
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "tavton"
 	food_reagents = list(
@@ -249,6 +248,7 @@
 	foodtypes = VEGETABLES | RAW | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/plate
 
 /obj/item/food/raw_menemen/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/menemen, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
@@ -273,6 +273,7 @@
 	foodtypes = VEGETABLES | BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	trash_type = /obj/item/plate
 
 /obj/item/food/menemen/onion
 	name = "soganli menemen"
@@ -292,6 +293,7 @@
 	foodtypes = VEGETABLES | GRAIN | MEAT
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_4
+	trash_type = /obj/item/plate
 
 /obj/item/food/raw_dolma
 	name = "raw dolma"

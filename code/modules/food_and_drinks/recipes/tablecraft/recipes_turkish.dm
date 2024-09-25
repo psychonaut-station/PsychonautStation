@@ -127,6 +127,7 @@
 		/obj/item/food/grown/tomato = 3,
 		/obj/item/food/grown/bell_pepper = 2,
 		/obj/item/food/egg = 2
+		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen
 	category = CAT_TURKISH
@@ -138,17 +139,19 @@
 		/obj/item/food/grown/bell_pepper = 2,
 		/obj/item/food/egg = 2,
 		/obj/item/food/grown/onion = 1,
+		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen/onion
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/iskender
-	name = "Iskender"
+	name = "İskender"
 	reqs = list(
 		/obj/item/food/griddle_toast = 1,
 		/obj/item/food/doner/yaprak/et = 2,
 		/obj/item/food/grown/tomato = 1,
 		/datum/reagent/consumable/yoghurt = 10,
+		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/iskender
 	category = CAT_TURKISH

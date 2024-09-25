@@ -9,26 +9,22 @@
 	anchored_tabletop_offset = 11
 	anchored = FALSE
 	pass_flags = PASSTABLE
-	var/isOn = FALSE
+	var/is_on = FALSE
 	var/obj/item/doner_stick/doner_stick
 	var/required_bake_time = 1 MINUTES
 	///Sound loop for the sizzling sound
 	var/datum/looping_sound/grill/grillsound
-	var/datum/looping_sound/microwave/nobell/microwaveloop
 
 /obj/machinery/doner_machine/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
 	grillsound = new(src, FALSE)
-	microwaveloop = new(src, FALSE)
 
 /obj/machinery/doner_machine/Destroy()
 	QDEL_NULL(grillsound)
-	QDEL_NULL(microwaveloop)
 	return ..()
 
 /obj/machinery/doner_machine/update_icon_state()
-	if(isOn)
+	if(is_on)
 		icon_state = "doner_machine_on"
 	else
 		icon_state = src::icon_state
@@ -43,9 +39,9 @@
 /obj/machinery/doner_machine/can_be_unfasten_wrench(mob/user, silent)
 	. = ..()
 	if(doner_stick)
-		to_chat(user, span_warning("You cannot unsecure [src] while its have a doner_stick!"))
+		to_chat(user, span_warning("You cannot unsecure [src] while there is a doner stick attached!"))
 		return CANT_UNFASTEN
-	if(isOn)
+	if(is_on)
 		to_chat(user, span_warning("You cannot unsecure [src] while its on!"))
 		return CANT_UNFASTEN
 
@@ -58,10 +54,10 @@
 	if(istype(item, /obj/item/doner_stick) && !doner_stick)
 		var/obj/item/doner_stick/newdonerstick = item
 		if(newdonerstick.meatnum != 5)
-			to_chat(user, span_warning("This stick isnt full!"))
+			to_chat(user, span_warning("[item] isn't full"))
 			return
 		if(!newdonerstick.raw)
-			to_chat(user, span_warning("That doner isnt raw!"))
+			to_chat(user, span_warning("[item] isn't raw!"))
 			return
 		doner_stick = newdonerstick
 		doner_stick.forceMove(src)
@@ -91,20 +87,18 @@
 		to_chat(usr, span_warning("[src] needs to be secured first!"))
 		balloon_alert(usr, "secure first!")
 		return
-	isOn = !isOn
-	if(isOn)
+	is_on = !is_on
+	if(is_on)
 		begin_processing()
 		grillsound.start()
-		microwaveloop.start()
 	else
 		end_processing()
 		grillsound.stop()
-		microwaveloop.stop()
 	update_appearance()
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/doner_machine/process(seconds_per_tick)
-	if(!doner_stick || !isOn)
+	if(!doner_stick || !is_on)
 		return
 
 	doner_stick.current_bake_time += seconds_per_tick * 10 //turn it into ds

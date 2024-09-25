@@ -113,12 +113,6 @@
 	icon_state = "stamp-syndicate"
 	dye_color = DYE_SYNDICATE
 
-/obj/item/stamp/secretary
-	name = "secretary's rubber stamp"
-	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
-	icon_state = "stamp-secretary"
-	dye_color = DYE_CAPTAIN
-
 /obj/item/stamp/borg
 	name = "integrated rubber stamp"
 	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'

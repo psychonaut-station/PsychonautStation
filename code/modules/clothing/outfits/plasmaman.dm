@@ -252,13 +252,6 @@
 	gloves = /obj/item/clothing/gloves/color/plasmaman/centcom_intern
 	head = /obj/item/clothing/head/helmet/space/plasmaman/centcom_intern
 
-/datum/outfit/plasmaman/nt_secretary
-	name = "Secretary Plasmaman"
-
-	uniform = /obj/item/clothing/under/plasmaman/nt_secretary
-	gloves = /obj/item/clothing/gloves/color/plasmaman/white
-	head = /obj/item/clothing/head/helmet/space/plasmaman/nt_secretary
-
 /datum/outfit/plasmaman/party_janitor
 	name = "ERP Cleaning Plasmaman"
 
@@ -295,6 +288,13 @@
 	uniform = /obj/item/clothing/under/plasmaman/bitrunner
 	gloves = /obj/item/clothing/gloves/color/plasmaman/black
 	head = /obj/item/clothing/head/helmet/space/plasmaman/bitrunner
+
+/datum/outfit/plasmaman/bridge_assistant
+	name = "Bridge Assistant Plasmaman"
+
+	uniform = /obj/item/clothing/under/plasmaman //call me when this is gags and not 10 million new assets
+	gloves = /obj/item/clothing/gloves/color/plasmaman/black
+	head = /obj/item/clothing/head/helmet/space/plasmaman
 
 /datum/outfit/plasmaman/human_ai
 	name = "Human AI Plasmaman"

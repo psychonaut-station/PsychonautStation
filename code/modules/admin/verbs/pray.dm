@@ -84,14 +84,3 @@
 	to_chat(GLOB.admins, msg, confidential = TRUE)
 	for(var/obj/machinery/computer/communications/console in GLOB.shuttle_caller_list)
 		console.override_cooldown()
-
-/// Used by secretary's console
-/proc/supervisor_request(text, mob/sender)
-	var/msg = copytext_char(sanitize(text), 1, MAX_MESSAGE_LEN)
-	GLOB.requests.message_centcom(sender.client, msg)
-	msg = span_adminnotice("<b><font color=blue>SUPERVISOR REQUEST:</font>[ADMIN_FULLMONTY(sender)] [ADMIN_CENTCOM_REPLY(sender)]:</b> [msg]")
-	for(var/client/staff as anything in GLOB.admins)
-		SEND_SOUND(staff, sound('sound/misc/server-ready.ogg'))
-	to_chat(GLOB.admins, msg, confidential = TRUE)
-	for(var/obj/machinery/computer/communications/console in GLOB.shuttle_caller_list)
-		console.override_cooldown()

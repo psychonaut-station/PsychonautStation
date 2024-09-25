@@ -1485,3 +1485,12 @@
 		return
 	head.adjustBleedStacks(5)
 	visible_message(span_notice("[src] gets a nosebleed."), span_warning("You get a nosebleed."))
+
+/mob/living/carbon/get_cell()
+	var/obj/item/organ/internal/stomach/ethereal/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(istype(stomach))
+		return stomach.cell
+	else if(istype(stomach, /obj/item/organ/internal/stomach/ipc) && stomach.cell)
+		return stomach.cell
+	else
+		return ..()

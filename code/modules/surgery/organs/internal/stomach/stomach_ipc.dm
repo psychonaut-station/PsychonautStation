@@ -99,11 +99,11 @@
 
 	charge_cell.Invoke(cell, seconds_per_tick / 1.5)
 
-/obj/item/organ/internal/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
+/obj/item/organ/internal/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, shock_source, siemens_coeff, flags)
 	SIGNAL_HANDLER
 	if(flags & SHOCK_ILLUSION)
 		return
-	adjust_charge(shock_damage * siemens_coeff * 2)
+	adjust_charge(shock_damage * siemens_coeff * 20)
 	to_chat(owner, span_notice("You absorb some of the shock into your body!"))
 
 /obj/item/organ/internal/stomach/ipc/proc/adjust_charge(amount)

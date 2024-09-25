@@ -193,8 +193,7 @@
 		for(var/i in 1 to 2)
 			var/obj/item/food/doner/doner = new donertype(drop_loc)
 			reagents.trans_to(doner, volume)
-			for(var/taste in tastes)
-				doner.tastes += list(taste = tastes[taste])
+			doner.tastes = tastes
 		meatnum--
 		if(!meatnum)
 			reset_stick()

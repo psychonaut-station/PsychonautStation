@@ -18,6 +18,7 @@
 /obj/machinery/doner_machine/Initialize(mapload)
 	. = ..()
 	grillsound = new(src, FALSE)
+	register_context()
 
 /obj/machinery/doner_machine/Destroy()
 	QDEL_NULL(grillsound)
@@ -26,16 +27,35 @@
 
 /obj/machinery/doner_machine/update_icon_state()
 	if(is_on)
-		icon_state = "doner_machine_on"
+		icon_state = "[base_icon_state]-on"
 	else
-		icon_state = src::icon_state
+		icon_state = base_icon_state
 	return ..()
 
 /obj/machinery/doner_machine/update_overlays()
 	. = ..()
 	if(doner_stick)
-		var/mutable_appearance/theoverlay = mutable_appearance(doner_stick.icon, doner_stick.icon_state)
-		. += theoverlay
+		. += mutable_appearance(doner_stick.icon, doner_stick.icon_state)
+
+/obj/machinery/doner_machine/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(isnull(held_item))
+		if(doner_stick)
+			context[SCREENTIP_CONTEXT_LMB] = "Take stick"
+		if(!is_on)
+			context[SCREENTIP_CONTEXT_RMB] = "Turn on"
+		else
+			context[SCREENTIP_CONTEXT_RMB] = "Turn off"
+		return CONTEXTUAL_SCREENTIP_SET
+	if(isnull(doner_stick) && istype(held_item, /obj/item/doner_stick))
+		var/obj/item/doner_stick/stick = held_item
+		if(stick.meat_level == 5)
+			context[SCREENTIP_CONTEXT_LMB] = "Attach stick"
+			return CONTEXTUAL_SCREENTIP_SET
+	else if(!isnull(doner_stick) && !doner_stick.raw && held_item.tool_behaviour == TOOL_KNIFE)
+		context[SCREENTIP_CONTEXT_LMB] = "Slice meat"
+		return CONTEXTUAL_SCREENTIP_SET
+	return NONE
 
 /obj/machinery/doner_machine/can_be_unfasten_wrench(mob/user, silent)
 	. = ..()
@@ -52,20 +72,20 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/doner_machine/attackby(obj/item/item, mob/user, params)
-	if(istype(item, /obj/item/doner_stick) && !doner_stick)
-		var/obj/item/doner_stick/newdonerstick = item
-		if(newdonerstick.meatnum != 5)
+	if(isnull(doner_stick) && istype(item, /obj/item/doner_stick))
+		var/obj/item/doner_stick/stick = item
+		if(stick.meat_level != 5)
 			to_chat(user, span_warning("[item] isn't full"))
-			return ..()
-		if(!newdonerstick.raw)
-			to_chat(user, span_warning("[item] isn't raw!"))
-			return ..()
-		doner_stick = newdonerstick
+			return TRUE
+		doner_stick = stick
 		doner_stick.forceMove(src)
+		if(is_on)
+			begin_processing()
 		update_appearance()
+		return TRUE
 	else if(item.tool_behaviour == TOOL_KNIFE)
-		if(doner_stick)
-			doner_stick.attackby(item, user, params)
+		if(!isnull(doner_stick))
+			. = doner_stick.attackby(item, user, params)
 			update_appearance()
 		else
 			return ..()
@@ -91,7 +111,8 @@
 		return
 	is_on = !is_on
 	if(is_on)
-		begin_processing()
+		if(doner_stick)
+			begin_processing()
 		grillsound.start()
 	else
 		end_processing()
@@ -101,110 +122,108 @@
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/doner_machine/process(seconds_per_tick)
-	if(!doner_stick || !is_on)
+	if(!is_on || !doner_stick)
+		return PROCESS_KILL
+	if(!doner_stick.raw)
 		return
-	if(doner_stick.raw)
-		if(!particles)
-			particles = new /particles/smoke/steam/mild/center(src)
-		doner_stick.current_bake_time += seconds_per_tick * 10
-		if(doner_stick.current_bake_time >= required_bake_time)
-			doner_stick.raw = FALSE
-			doner_stick.current_bake_time = 0
-			QDEL_NULL(particles)
-			doner_stick.update_appearance()
-			update_appearance()
-	else
-		if(!particles)
-			particles = new /particles/smoke/burning/small(src)
-		doner_stick.current_bake_time += seconds_per_tick * 10
-		if(doner_stick.current_bake_time >= required_bake_time*2)
-			doner_stick.reset_stick()
-			QDEL_NULL(particles)
-			doner_stick.update_appearance()
-			update_appearance()
-			var/turf/drop_loc = drop_location()
-			for(var/i in 1 to 5)
-				new /obj/item/food/badrecipe(drop_loc)
+	if(!particles)
+		particles = new /particles/smoke/steam/mild/center(src)
+	doner_stick.current_bake_time += seconds_per_tick * 10
+	if(doner_stick.current_bake_time >= required_bake_time)
+		doner_stick.raw = FALSE
+		doner_stick.current_bake_time = 0
+		doner_stick.update_appearance()
+		update_appearance()
 
 /obj/item/doner_stick
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
-	name = "Doner Stick"
+	name = "doner stick"
 	icon_state = "doner_stick"
 	desc = "A tool for stringing meat on a stick and cooking it."
 	w_class = WEIGHT_CLASS_BULKY
 	item_flags = NO_BLOOD_ON_ITEM
-
 	var/static/list/meat_types = list("birdmeat" = "chicken", "meat" = "meat")
-	var/donericon = null
+	var/meat_type
+	var/meat_level = 0
 	var/raw = TRUE
-	var/meatnum = 0
-
 	var/list/tastes = list()
-
 	///Time spent baking so far
 	var/current_bake_time = 0
 
+/obj/item/doner_stick/Initialize(mapload)
+	. = ..()
+	register_context()
+
 /obj/item/doner_stick/update_icon_state()
-	if(meatnum)
-		var/iconst = ""
-		if(raw)
-			iconst += "raw_"
-		iconst += "[donericon]_"
-		iconst += "doner[meatnum]"
-		icon_state = iconst
+	if(meat_level)
+		icon_state = "[raw ? "raw_" : ""][meat_type]_doner[meat_level]"
 	else
 		icon_state = src::icon_state
 	return ..()
 
+/obj/item/doner_stick/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(raw && meat_level < 5 && meat_types[held_item.icon_state] && istype(held_item, /obj/item/food/meat/slab))
+		context[SCREENTIP_CONTEXT_LMB] = "Add meat"
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(!raw && held_item.tool_behaviour == TOOL_KNIFE)
+		context[SCREENTIP_CONTEXT_LMB] = "Slice meat"
+		return CONTEXTUAL_SCREENTIP_SET
+	return NONE
+
 /obj/item/doner_stick/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/food/meat/slab))
-		var/obj/item/food/meat/slab/meatslab = item
-		if(!meat_types[meatslab.icon_state])
-			to_chat(user, span_warning("You cant put this meat!"))
-			return
+		var/obj/item/food/meat/slab/slab = item
 		if(!raw)
-			to_chat(user, span_warning("You cant put a raw meat to cooked doner!"))
+			to_chat(user, span_warning("You cannot add more meat after [src] is cooked!"))
 			return
-		if(donericon && donericon != meat_types[meatslab.icon_state])
-			to_chat(user, span_warning("You cant put this type of meat to [donericon] doner!"))
+		if(meat_level == 5)
+			to_chat(user, span_warning("You cannot add more meat to it."))
 			return
-		if(meatnum == 5)
-			to_chat(user, span_warning("You cant add more meat to it."))
+		if(!isnull(meat_type) && meat_type != meat_types[slab.icon_state])
+			to_chat(user, span_warning("You cannot mix [slab] with [meat_type] doner!"))
+			return
+		if(!meat_types[slab.icon_state])
+			to_chat(user, span_warning("You cannot use this meat!"))
 			return
 		if(!reagents)
 			create_reagents(250, INJECTABLE)
-		meatslab.reagents.trans_to(src, meatslab.reagents.total_volume)
-		for(var/taste in meatslab.tastes)
-			tastes += list(taste = meatslab.tastes[taste])
-		donericon = meat_types[meatslab.icon_state]
-		meatnum++
-		qdel(meatslab)
+		slab.reagents.trans_to(src, slab.reagents.total_volume)
+		if(!meat_type)
+			meat_type = meat_types[slab.icon_state]
+		for(var/taste in slab.tastes)
+			var/taste_stick = tastes[taste]
+			var/taste_slab = slab.tastes[taste]
+			if(isnull(taste_stick) || taste_stick < taste_slab)
+				tastes[taste] = taste_slab
+		meat_level++
+		qdel(slab)
 		update_appearance()
 	else if(item.tool_behaviour == TOOL_KNIFE)
-		if(!meatnum)
-			to_chat(user, span_warning("There is no meat to cut!"))
+		if(!meat_level)
+			to_chat(user, span_warning("You cannot cut steel!"))
 			return
 		if(raw)
-			to_chat(user, span_warning("This doner is raw!"))
+			to_chat(user, span_warning("[src] is raw!"))
 			return
-		var/donertype = (donericon == "meat") ? /obj/item/food/doner/yaprak/et : /obj/item/food/doner/yaprak/tavuk
-		var/volume = (reagents.total_volume / (meatnum * 2))
-		var/turf/drop_loc = drop_location()
+		var/doner_type = (meat_type == "meat") ? /obj/item/food/doner/yaprak/et : /obj/item/food/doner/yaprak/tavuk
+		var/volume = (reagents.total_volume / (meat_level * 2)) // bunun hesaplamasını anlamadım
+		var/turf/drop_location = drop_location()
 		for(var/i in 1 to 2)
-			var/obj/item/food/doner/doner = new donertype(drop_loc)
+			var/obj/item/food/doner/doner = new doner_type(drop_location)
 			reagents.trans_to(doner, volume)
-			doner.tastes = tastes
-		meatnum--
-		if(!meatnum)
+			doner.tastes = tastes.Copy()
+		meat_level--
+		if(!meat_level)
 			reset_stick()
 		update_appearance()
 	else
 		return ..()
 
 /obj/item/doner_stick/proc/reset_stick()
+	meat_type = null
+	meat_level = 0
 	raw = TRUE
-	donericon = null
 	tastes = list()
-	meatnum = 0
-	qdel(reagents)
 	current_bake_time = 0
+	QDEL_NULL(reagents)

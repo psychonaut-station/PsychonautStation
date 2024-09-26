@@ -89,7 +89,7 @@
 /obj/item/organ/internal/stomach/ipc/proc/get_status_tab_item(mob/living/carbon/source, list/items)
 	SIGNAL_HANDLER
 	if(cell)
-		items += "Power: [cell.charge]/[cell.maxcharge]"
+		items += "Charge Left: [display_energy(cell.charge)]/[display_energy(cell.maxcharge)]"
 	else
 		items += "Power: No Cell"
 	items += "Backup Power: [backup_charge]/100"

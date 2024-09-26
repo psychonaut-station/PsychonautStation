@@ -19,7 +19,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
@@ -67,7 +66,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 	flags = HIGH_IMPACT_RULESET
 
 /datum/dynamic_ruleset/roundstart/malf_ai/ready(forced)
-	var/datum/job/ai_job = SSjob.GetJobType(/datum/job/ai)
+	var/datum/job/ai_job = SSjob.get_job_type(/datum/job/ai)
 
 	// If we're not forced, we're going to make sure we can actually have an AI in this shift,
 	if(!forced && min(ai_job.total_positions - ai_job.current_positions, ai_job.spawn_positions) <= 0)
@@ -79,7 +78,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 /datum/dynamic_ruleset/roundstart/malf_ai/pre_execute(population)
 	. = ..()
 
-	var/datum/job/ai_job = SSjob.GetJobType(/datum/job/ai)
+	var/datum/job/ai_job = SSjob.get_job_type(/datum/job/ai)
 	// Maybe a bit too pedantic, but there should never be more malf AIs than there are available positions, spawn positions or antag cap allocations.
 	var/num_malf = min(get_antag_cap(population), min(ai_job.total_positions - ai_job.current_positions, ai_job.spawn_positions))
 	for (var/i in 1 to num_malf)
@@ -111,7 +110,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
@@ -166,7 +164,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
@@ -218,7 +215,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 	)
 	restricted_roles = list(
@@ -313,7 +309,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 	var/mob/M = pick_n_take(candidates)
 	if (M)
 		assigned += M.mind
-		M.mind.set_assigned_role(SSjob.GetJobType(/datum/job/space_wizard))
+		M.mind.set_assigned_role(SSjob.get_job_type(/datum/job/space_wizard))
 		M.mind.special_role = ROLE_WIZARD
 
 	return TRUE
@@ -347,7 +343,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 		JOB_ANIMAL,
 	)
@@ -450,7 +445,7 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 			break
 		var/mob/M = pick_n_take(candidates)
 		assigned += M.mind
-		M.mind.set_assigned_role(SSjob.GetJobType(job_type))
+		M.mind.set_assigned_role(SSjob.get_job_type(job_type))
 		M.mind.special_role = required_role
 	return TRUE
 
@@ -529,7 +524,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_SYNTHETIC,
 		JOB_ANIMAL,
 	)
@@ -735,7 +729,6 @@ GLOBAL_VAR_INIT(revolutionary_win, FALSE)
 		JOB_PRISONER,
 		JOB_SECURITY_OFFICER,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 		JOB_WARDEN,
 		JOB_SYNTHETIC,
 	)

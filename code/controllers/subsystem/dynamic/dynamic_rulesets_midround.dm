@@ -242,7 +242,6 @@
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -416,7 +415,7 @@
 	return ..()
 
 /datum/dynamic_ruleset/midround/from_ghosts/nuclear/finish_setup(mob/new_character, index)
-	new_character.mind.set_assigned_role(SSjob.GetJobType(/datum/job/nuclear_operative))
+	new_character.mind.set_assigned_role(SSjob.get_job_type(/datum/job/nuclear_operative))
 	new_character.mind.special_role = ROLE_NUCLEAR_OPERATIVE
 	if(index == 1)
 		var/datum/antagonist/nukeop/leader/leader_antag_datum = new()
@@ -460,7 +459,6 @@
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
 		JOB_BRIG_PHYSICIAN,
-		JOB_NT_SECRETARY,
 	)
 	restricted_roles = list(
 		JOB_AI,
@@ -578,7 +576,7 @@
 
 	var/mob/living/carbon/human/new_nightmare = new (find_maintenance_spawn(atmos_sensitive = TRUE, require_darkness = TRUE))
 	player_mind.transfer_to(new_nightmare)
-	player_mind.set_assigned_role(SSjob.GetJobType(/datum/job/nightmare))
+	player_mind.set_assigned_role(SSjob.get_job_type(/datum/job/nightmare))
 	player_mind.special_role = ROLE_NIGHTMARE
 	player_mind.add_antag_datum(/datum/antagonist/nightmare)
 	new_nightmare.set_species(/datum/species/shadow/nightmare)
@@ -998,7 +996,7 @@
 
 	var/mob/living/carbon/human/voidwalker = new (space_turf)
 	player_mind.transfer_to(voidwalker)
-	player_mind.set_assigned_role(SSjob.GetJobType(/datum/job/voidwalker))
+	player_mind.set_assigned_role(SSjob.get_job_type(/datum/job/voidwalker))
 	player_mind.special_role = antag_flag
 	player_mind.add_antag_datum(antag_datum)
 

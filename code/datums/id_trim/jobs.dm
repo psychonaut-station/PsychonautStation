@@ -24,7 +24,7 @@
 
 /datum/id_trim/job/New()
 	if(ispath(job))
-		job = SSjob.GetJobType(job)
+		job = SSjob.get_job_type(job)
 
 	if(isnull(job_changes))
 		job_changes = SSmapping.config.job_changes
@@ -156,6 +156,29 @@
 		)
 	job = /datum/job/bartender
 
+/datum/id_trim/job/pun_pun
+	assignment = "Busser"
+	trim_state = "trim_busser"
+	department_color = COLOR_SERVICE_LIME
+	subdepartment_color = COLOR_SERVICE_LIME
+	sechud_icon_state = SECHUD_BUSSER
+	minimal_access = list(
+		ACCESS_MINERAL_STOREROOM,
+		ACCESS_SERVICE,
+		ACCESS_THEATRE,
+		)
+	extra_access = list(
+		ACCESS_HYDROPONICS,
+		ACCESS_KITCHEN,
+		ACCESS_BAR,
+		)
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+		ACCESS_HOP,
+		)
+	job = /datum/job/pun_pun
+
 /datum/id_trim/job/bitrunner
 	assignment = JOB_BITRUNNER
 	trim_state = "trim_bitrunner"
@@ -202,6 +225,28 @@
 		ACCESS_HOP,
 		)
 	job = /datum/job/botanist
+
+/datum/id_trim/job/bridge_assistant
+	assignment = "Bridge Assistant"
+	trim_state = "trim_assistant"
+	department_color = COLOR_COMMAND_BLUE
+	subdepartment_color = COLOR_COMMAND_BLUE
+	sechud_icon_state = SECHUD_BRIDGE_ASSISTANT
+	minimal_access = list(
+		ACCESS_COMMAND,
+		ACCESS_EVA,
+		ACCESS_GATEWAY,
+		ACCESS_MAINT_TUNNELS,
+		ACCESS_RC_ANNOUNCE,
+		ACCESS_TELEPORTER,
+		ACCESS_WEAPONS,
+	)
+	extra_access = list()
+	template_access = list(
+		ACCESS_CAPTAIN,
+		ACCESS_CHANGE_IDS,
+	)
+	job = /datum/job/bridge_assistant
 
 /datum/id_trim/job/captain
 	assignment = JOB_CAPTAIN
@@ -745,24 +790,6 @@
 		)
 	job = /datum/job/mime
 
-/datum/id_trim/job/nt_secretary
-	assignment = "Nt Secretary"
-	trim_icon = 'icons/psychonaut/obj/card.dmi'
-	trim_state = "trim_secretary"
-	department_color = COLOR_SECRETARY
-	subdepartment_color = COLOR_SECRETARY
-	sechud_icon_state = SECHUD_NT_SECRETARY
-	minimal_access = list()
-	extra_access = list(
-		ACCESS_MAINT_TUNNELS,
-		)
-	template_access = list(
-		ACCESS_CAPTAIN,
-		ACCESS_CHANGE_IDS,
-		ACCESS_HOP,
-		)
-	job = /datum/job/nt_secretary
-
 /datum/id_trim/job/paramedic
 	assignment = JOB_PARAMEDIC
 	trim_state = "trim_paramedic"
@@ -771,8 +798,6 @@
 	sechud_icon_state = SECHUD_PARAMEDIC
 	minimal_access = list(
 		ACCESS_BIT_DEN,
-		ACCESS_CARGO,
-		ACCESS_CONSTRUCTION,
 		ACCESS_HYDROPONICS,
 		ACCESS_MAINT_TUNNELS,
 		ACCESS_MECH_MEDICAL,
@@ -781,7 +806,6 @@
 		ACCESS_MINING,
 		ACCESS_MINING_STATION,
 		ACCESS_MORGUE,
-		ACCESS_SCIENCE,
 		ACCESS_SERVICE,
 		)
 	extra_access = list(
@@ -1089,7 +1113,7 @@
 
 	if(CONFIG_GET(number/depsec_access_level) == POPULATION_SCALED_ACCESS)
 		var/minimal_security_officers = 3 // We do not spawn in any more lockers if there are 5 or less security officers, so let's keep it lower than that number.
-		var/datum/job/J = SSjob.GetJob(JOB_SECURITY_OFFICER)
+		var/datum/job/J = SSjob.get_job(JOB_SECURITY_OFFICER)
 		if((J.spawn_positions - minimal_security_officers) <= 0)
 			access |= elevated_access
 

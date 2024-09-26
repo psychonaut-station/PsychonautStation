@@ -7,7 +7,7 @@
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))
 		return
 
-	if(!CONFIG_GET(string/discordbotcommandprefix) || !CONFIG_GET(string/discordbottoken) || !CONFIG_GET(string/discorduserendpoint))
+	if(!CONFIG_GET(string/discordbotcommandprefix))
 		to_chat(src, span_warning("This feature is disabled."))
 		return
 
@@ -23,11 +23,8 @@
 /datum/verification_menu
 	var/client/holder
 	var/last_refresh = 0
-	var/token
 	var/discord_id
-	var/display_name
-	var/username
-	var/discriminator
+	var/token
 
 /datum/verification_menu/New(user)
 	if(istype(user, /client))
@@ -43,15 +40,12 @@
 		return
 
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
-	var/update = FALSE
 
-	if(src.discord_id != discord_id)
-		update = TRUE
-
+	var/update = src.discord_id != discord_id ? TRUE : FALSE
 	src.discord_id = discord_id
 
 	if(discord_id)
-		fetch_discord()
+		holder.get_discord(refresh, discord_id)
 		if(refresh)
 			holder.prefs.unlock_content = holder.check_patreon()
 			holder.prefs.max_save_slots = holder.prefs.unlock_content ? 8 : holder.prefs::max_save_slots
@@ -69,21 +63,6 @@
 
 	if(update)
 		update_static_data(holder.mob)
-
-/datum/verification_menu/proc/fetch_discord()
-	var/datum/http_request/request = new ()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/discorduserendpoint)]/[discord_id]", headers = list("Authorization" = "Bot [CONFIG_GET(string/discordbottoken)]"))
-	request.begin_async()
-
-	UNTIL(request.is_complete())
-
-	var/datum/http_response/response = request.into_response()
-
-	if(!response.errored && response.status_code == 200)
-		var/list/json = json_decode(response.body)
-		display_name = json["global_name"]
-		username = json["username"]
-		discriminator = json["discriminator"]
 
 /datum/verification_menu/proc/can_refresh()
 	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE
@@ -103,11 +82,11 @@
 
 /datum/verification_menu/ui_static_data(mob/user)
 	. = ..()
-	if(discord_id)
+	if(holder.discord)
 		.["linked"] = TRUE
-		.["display_name"] = display_name
-		.["username"] = username
-		.["discriminator"] = discriminator
+		.["display_name"] = holder.discord["global_name"]
+		.["username"] = holder.discord["username"]
+		.["discriminator"] = holder.discord["discriminator"]
 		.["patron"] = holder.prefs.unlock_content
 	else
 		.["token"] = token

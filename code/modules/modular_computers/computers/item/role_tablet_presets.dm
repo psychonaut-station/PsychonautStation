@@ -387,22 +387,10 @@
 		/datum/computer_file/program/bounty_board,
 	)
 
-/obj/item/modular_computer/pda/nt_secretary
-	name = "secretary PDA"
-	desc = "A small experimental microcomputer."
-	greyscale_config = /datum/greyscale_config/tablet/secretary
-	greyscale_colors = "#FAFAFA#a52f29#034885"
-	inserted_item = /obj/item/pen/fountain
-	long_ranged = TRUE
-	starting_programs = list(
-		/datum/computer_file/program/emojipedia,
-		/datum/computer_file/program/newscaster,
-	)
-
 /obj/item/modular_computer/pda/synthetic
 	name = "synthetic PDA"
-	greyscale_config = /datum/greyscale_config/tablet/secretary
-	greyscale_colors = "#FAFAFA#a52f29#034885"
+	greyscale_config = /datum/greyscale_config/tablet/head
+	greyscale_colors = "#FAFAFA#a52f29"
 	starting_programs = list(
 		/datum/computer_file/program/status,
 		/datum/computer_file/program/science,
@@ -411,6 +399,14 @@
 		/datum/computer_file/program/atmosscan,
 		/datum/computer_file/program/alarm_monitor,
 		/datum/computer_file/program/supermatter_monitor,
+	)
+
+/obj/item/modular_computer/pda/bridge_assistant
+	name = "bridge assistant PDA"
+	greyscale_colors = "#374f7e#a92323"
+	starting_programs = list(
+		/datum/computer_file/program/crew_manifest,
+		/datum/computer_file/program/status,
 	)
 
 /obj/item/modular_computer/pda/veteran_advisor
@@ -441,6 +437,14 @@
 		/datum/computer_file/program/status,
 		/datum/computer_file/program/robocontrol,
 		/datum/computer_file/program/borg_monitor,
+	)
+
+/obj/item/modular_computer/pda/pun_pun
+	name = "monkey PDA"
+	greyscale_colors = "#ffcc66#914800"
+	starting_programs = list(
+		/datum/computer_file/program/bounty_board,
+		/datum/computer_file/program/emojipedia,
 	)
 
 /**

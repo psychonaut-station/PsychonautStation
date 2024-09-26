@@ -5,7 +5,6 @@
 	desc = "A holder, can hold cells for ipc's power source."
 	organ_flags = ORGAN_ROBOTIC
 	organ_traits = list(TRAIT_NOHUNGER)
-	flags_1 = HAS_CONTEXTUAL_SCREENTIPS_1
 	var/mob/living/carbon/human/humanowner
 	var/obj/item/stock_parts/power_store/cell/cell
 	var/obj/item/stock_parts/power_store/cell/initcell = /obj/item/stock_parts/power_store/cell/high
@@ -17,6 +16,7 @@
 	if(initcell)
 		cell = new initcell(src)
 	update_appearance()
+	register_context()
 
 /obj/item/organ/internal/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()

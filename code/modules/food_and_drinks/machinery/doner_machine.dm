@@ -207,7 +207,7 @@
 			to_chat(user, span_warning("[src] is raw!"))
 			return
 		var/doner_type = (meat_type == "meat") ? /obj/item/food/doner/yaprak/et : /obj/item/food/doner/yaprak/tavuk
-		var/volume = (reagents.total_volume / (meat_level * 2)) // bunun hesaplamasını anlamadım
+		var/volume = (reagents.total_volume / (meat_level * 2))
 		var/turf/drop_location = drop_location()
 		for(var/i in 1 to 2)
 			var/obj/item/food/doner/doner = new doner_type(drop_location)

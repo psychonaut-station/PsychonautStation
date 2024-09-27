@@ -136,7 +136,7 @@
 			minor_announce("Erken fırlatma izni iptal edildi, [remaining] kişinin daha onayına ihtiyaç var.")
 
 	acted_recently += user
-	ui_interact(user)
+	SStgui.update_user_uis(user, src)
 
 /obj/machinery/computer/emergency_shuttle/proc/authorize(mob/living/user, source)
 	var/obj/item/card/id/ID = user.get_idcard(TRUE)
@@ -159,7 +159,7 @@
 /obj/machinery/computer/emergency_shuttle/proc/clear_recent_action(mob/user)
 	acted_recently -= user
 	if (!QDELETED(user))
-		ui_interact(user)
+		SStgui.update_user_uis(user, src)
 
 /obj/machinery/computer/emergency_shuttle/process()
 	// Launch check is in process in case auth_need changes for some reason
@@ -597,9 +597,15 @@
 					// just double check
 					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
+<<<<<<< HEAD
 					minor_announce("Mekiğin navigasyon protokollerinde \
 						bozulma tespit edildi. Lütfen şefinizle iletişime \
 						geçin.", "SİSTEM HATASI:", sound_override = 'sound/misc/announce_syndi.ogg')
+=======
+					minor_announce("Corruption detected in \
+						shuttle navigation protocols. Please contact your \
+						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
+>>>>>>> upstream/master
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME

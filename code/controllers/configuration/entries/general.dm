@@ -334,7 +334,11 @@
 	default = "https://www.patreon.com/PsychonautStation"
 
 /datum/config_entry/string/rulesurl
+<<<<<<< HEAD
 	default = "http://turkb.us/rules"
+=======
+	default = "http://tgstation13.org/wiki/Rules"
+>>>>>>> upstream/master
 
 /datum/config_entry/string/githuburl
 	default = "https://github.com/psychonaut-station/PsychonautStation"

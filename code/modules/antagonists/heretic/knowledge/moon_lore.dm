@@ -208,7 +208,7 @@
 		text = "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
 			Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = 'sound/ambience/antag/heretic/ascend_moon.ogg',
+		sound = 'sound/music/antag/heretic/ascend_moon.ogg',
 		color_override = "pink",
 	)
 

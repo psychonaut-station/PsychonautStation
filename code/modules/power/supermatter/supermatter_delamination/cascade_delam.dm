@@ -87,9 +87,15 @@
 		return FALSE
 	if(!can_select(sm))
 		return FALSE
+<<<<<<< HEAD
 	priority_announce("Dikkat: Uzun menzilli anomali taramaları [locale_suffix_genitive(station_name())] içindeki bir nesneden kaynaklanan anormal miktarlarda \
 	harmoni akışı olduğunu gösteriyor, bir rezonans çökmesi meydana gelebilir.",
 	"Nanotrasen Yıldız Gözlem Birliği", 'sound/misc/airraid.ogg')
+=======
+	priority_announce("Attention: Long range anomaly scans indicate abnormal quantities of harmonic flux originating from \
+	a subject within [station_name()], a resonance collapse may occur.",
+	"Nanotrasen Star Observation Association", 'sound/announcer/alarm/airraid.ogg')
+>>>>>>> upstream/master
 	return TRUE
 
 /// Signal calls cant sleep, we gotta do this.

@@ -268,7 +268,11 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	set_station_name("[pick(GLOB.first_names)] [pick(GLOB.last_names)]")
 
 /datum/anonymous_theme/station/announce_to_all_players()
+<<<<<<< HEAD
 	priority_announce("[station_name()] yakınlarında 9. seviye gerçeklik hatası olayı doğrulandı. Tüm personel, kazara daha fazla gerçeklik olayını tetiklememek için ellerinden gelenin en iyisini yapmaya çalışmalıdır.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
+=======
+	priority_announce("Confirmed level 9 reality error event near [station_name()]. All personnel must try their best to carry on, as to not trigger more reality events by accident.", "Central Command Higher Dimensional Affairs", 'sound/announcer/notice/notice1.ogg')
+>>>>>>> upstream/master
 
 /datum/anonymous_theme/station/anonymous_name(mob/target)
 	return new_station_name()

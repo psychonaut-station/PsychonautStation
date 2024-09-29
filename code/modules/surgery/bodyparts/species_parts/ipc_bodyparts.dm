@@ -34,11 +34,13 @@
 
 /obj/item/bodypart/head/ipc/try_attach_limb(mob/living/carbon/new_limb_owner, special)
 	. = ..()
+	RegisterSignal(new_limb_owner, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
 	change_monitor = new(new_limb_owner)
 	change_monitor.Grant(new_limb_owner)
 
 /obj/item/bodypart/head/ipc/drop_limb(special, dismembered, move_to_floor = TRUE)
 	. = ..()
+	UnregisterSignal(special, COMSIG_ATOM_EMAG_ACT)
 	QDEL_NULL(change_monitor)
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
@@ -53,6 +55,13 @@
 				oldowner.apply_damages(brute = brute_dam * 4/5, burn = burn_dam * 4/5, def_zone = BODY_ZONE_CHEST)
 				heal_damage(brute = brute_dam * 9/10, burn = burn_dam * 9/10)
 				return
+
+/obj/item/bodypart/head/ipc/proc/on_emag_act(mob/living/carbon/human/source, mob/user)
+	SIGNAL_HANDLER
+	if(obj_flags & EMAGGED)
+		return FALSE
+	obj_flags |= EMAGGED
+	return TRUE
 
 /obj/item/bodypart/head/ipc/emp_effect(severity, protection)
 	. = ..()

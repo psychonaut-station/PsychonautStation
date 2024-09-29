@@ -288,15 +288,20 @@
 	if(!istype(head))
 		return
 	var/list/possible_overlays = typesof(/datum/bodypart_overlay/simple/ipcscreen)
-	var/list/item_images = list()
+	var/list/built_radial_list = list()
 	var/list/items = list()
 	for(var/datum/bodypart_overlay/simple/ipcscreen/overlay as anything in possible_overlays)
 		if(overlay.job && !istype(C.mind.assigned_role, overlay.job))
 			continue
-		var/image/item_image = image(icon = overlay::icon, icon_state = overlay::icon_state)
-		item_images[overlay.name] = item_image
+		if(overlay.locked && !(head.obj_flags & EMAGGED))
+			continue
+		var/datum/radial_menu_choice/option = new
+		option.image = image(icon = overlay::icon, icon_state = overlay::icon_state)
+		if(overlay.locked)
+			option.warning = TRUE
+		built_radial_list[overlay.name] = option
 		items[overlay.name] = overlay
-	var/picked_emote = show_radial_menu(C, C, item_images, radius = 36)
+	var/picked_emote = show_radial_menu(C, C, built_radial_list, radius = 36)
 	if(isnull(picked_emote))
 		return
 	emotion_icon = items[picked_emote]
@@ -347,6 +352,7 @@
 	var/name = "Off"
 	var/attached_body_zone = BODY_ZONE_HEAD
 	var/datum/job/job = null
+	var/locked = FALSE
 
 /datum/bodypart_overlay/simple/ipcscreen/ipcsmile
 	name = "Smile"
@@ -438,6 +444,14 @@
 	name = "Flushed"
 	icon_state = "flushed"
 
+/datum/bodypart_overlay/simple/ipcscreen/pleading
+	name = "Pleading"
+	icon_state = "pleading"
+
+/datum/bodypart_overlay/simple/ipcscreen/joy
+	name = "Joy"
+	icon_state = "joy"
+
 /datum/bodypart_overlay/simple/ipcscreen/monoeye
 	name = "Mono Eye"
 	icon_state = "monoeye"
@@ -445,3 +459,13 @@
 /datum/bodypart_overlay/simple/ipcscreen/heart
 	name = "Heart"
 	icon_state = "heart"
+
+/datum/bodypart_overlay/simple/ipcscreen/syndicate
+	name = "Syndicate"
+	icon_state = "syndicate"
+	locked = TRUE
+
+/datum/bodypart_overlay/simple/ipcscreen/facehugger
+	name = "Facehugger"
+	icon_state = "facehugger"
+	locked = TRUE

@@ -54,10 +54,18 @@
 	. = ..()
 	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
+	ipc.hud_possible += DIAG_BATT_HUD
+	ipc.prepare_huds(TRUE)
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.add_atom_to_hud(ipc)
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/human/ipc, datum/species/new_species, pref_load)
 	. = ..()
 	UnregisterSignal(ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
+	ipc.hud_possible -= DIAG_BATT_HUD
+	ipc.prepare_huds(TRUE)
+	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
+		diag_hud.remove_atom_from_hud(ipc)
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
@@ -252,6 +260,7 @@
 		var/obj/machinery/power/apc/A = target
 		if(A.cell)
 			A.ipc_interact(H, click_parameters)
+			H.diag_hud_set_humancell(stomach.cell)
 			return
 		else
 			to_chat(user, span_warning("There is not enough charge to draw from that APC."))

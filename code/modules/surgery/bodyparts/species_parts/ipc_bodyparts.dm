@@ -32,15 +32,15 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	var/datum/action/innate/change_monitor/change_monitor
 
-/obj/item/bodypart/head/ipc/try_attach_limb(mob/living/carbon/new_limb_owner, special)
+/obj/item/bodypart/head/ipc/apply_ownership(mob/living/carbon/new_owner)
 	. = ..()
-	RegisterSignal(new_limb_owner, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
-	change_monitor = new(new_limb_owner)
-	change_monitor.Grant(new_limb_owner)
+	RegisterSignal(new_owner, COMSIG_ATOM_EMAG_ACT, PROC_REF(on_emag_act))
+	change_monitor = new(new_owner)
+	change_monitor.Grant(new_owner)
 
-/obj/item/bodypart/head/ipc/drop_limb(special, dismembered, move_to_floor = TRUE)
+/obj/item/bodypart/head/ipc/clear_ownership(mob/living/carbon/old_owner)
 	. = ..()
-	UnregisterSignal(special, COMSIG_ATOM_EMAG_ACT)
+	UnregisterSignal(old_owner, COMSIG_ATOM_EMAG_ACT)
 	QDEL_NULL(change_monitor)
 
 /obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)

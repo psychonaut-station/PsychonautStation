@@ -55,17 +55,21 @@
 	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	ipc.hud_possible += DIAG_BATT_HUD
-	ipc.prepare_huds(TRUE)
+	var/image/I = image('icons/mob/huds/hud.dmi', ipc, "")
+	I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
+	ipc.hud_list[DIAG_BATT_HUD] = I
+	ipc.set_hud_image_active(DIAG_BATT_HUD, update_huds = FALSE)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(ipc)
 
-/datum/species/ipc/on_species_loss(mob/living/carbon/human/ipc, datum/species/new_species, pref_load)
+/datum/species/ipc/on_species_loss(mob/living/carbon/human/old_ipc, datum/species/new_species, pref_load)
 	. = ..()
-	UnregisterSignal(ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
-	ipc.hud_possible -= DIAG_BATT_HUD
-	ipc.prepare_huds(TRUE)
+	UnregisterSignal(old_ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
+	old_ipc.hud_possible -= DIAG_BATT_HUD
+	old_ipc.hud_list -= DIAG_BATT_HUD
+	old_ipc.set_hud_image_inactive(DIAG_BATT_HUD, update_huds = FALSE)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.remove_atom_from_hud(ipc)
+		diag_hud.remove_atom_from_hud(old_ipc)
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER

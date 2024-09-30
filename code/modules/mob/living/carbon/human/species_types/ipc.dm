@@ -313,6 +313,9 @@
 	remove_overlay(C)
 	if(!isnull(overlay_typepath::icon_state))
 		var/datum/bodypart_overlay/simple/ipcscreen/overlay = new overlay_typepath()
+		if(overlay.locked)
+			var/image/holo_animation = image('icons/psychonaut/mob/human/species/ipc/ipc_screens.dmi', C, "hologram")
+			flick_overlay_global(holo_animation, GLOB.clients, 0.6 SECONDS)
 		bodypart.add_bodypart_overlay(overlay)
 	C.update_body_parts()
 	return
@@ -462,10 +465,12 @@
 
 /datum/bodypart_overlay/simple/ipcscreen/syndicate
 	name = "Syndicate"
+	icon = 'icons/mob/clothing/mask.dmi'
 	icon_state = "syndicate"
 	locked = TRUE
 
 /datum/bodypart_overlay/simple/ipcscreen/facehugger
 	name = "Facehugger"
+	icon = 'icons/mob/clothing/mask.dmi'
 	icon_state = "facehugger"
 	locked = TRUE

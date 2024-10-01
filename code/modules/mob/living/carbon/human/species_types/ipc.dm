@@ -55,10 +55,7 @@
 	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	ipc.hud_possible += DIAG_BATT_HUD
-	var/image/I = image('icons/mob/huds/hud.dmi', ipc, "")
-	I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
-	ipc.hud_list += list(DIAG_BATT_HUD = I)
-	ipc.set_hud_image_active(DIAG_BATT_HUD)
+	ipc.prepare_huds(TRUE)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(ipc)
 

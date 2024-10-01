@@ -57,17 +57,17 @@
 	ipc.hud_possible += DIAG_BATT_HUD
 	var/image/I = image('icons/mob/huds/hud.dmi', ipc, "")
 	I.appearance_flags = RESET_COLOR|RESET_TRANSFORM
-	ipc.hud_list[DIAG_BATT_HUD] = I
-	ipc.set_hud_image_active(DIAG_BATT_HUD, update_huds = FALSE)
+	ipc.hud_list += list(DIAG_BATT_HUD = I)
+	ipc.set_hud_image_active(DIAG_BATT_HUD)
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(ipc)
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/human/old_ipc, datum/species/new_species, pref_load)
 	. = ..()
 	UnregisterSignal(old_ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
-	old_ipc.hud_possible -= DIAG_BATT_HUD
+	old_ipc.set_hud_image_inactive(DIAG_BATT_HUD)
 	old_ipc.hud_list -= DIAG_BATT_HUD
-	old_ipc.set_hud_image_inactive(DIAG_BATT_HUD, update_huds = FALSE)
+	old_ipc.hud_possible -= DIAG_BATT_HUD
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.remove_atom_from_hud(old_ipc)
 

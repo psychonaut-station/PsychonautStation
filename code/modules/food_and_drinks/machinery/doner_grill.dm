@@ -126,7 +126,7 @@
 /obj/machinery/doner_grill/process(seconds_per_tick)
 	if(!is_on || !doner_stick)
 		return PROCESS_KILL
-	if(!doner_stick.raw)
+	if(!doner_stick.raw || !doner_stick.meat_level)
 		return
 	if(!particles)
 		particles = new /particles/smoke/steam/mild/center(src)
@@ -139,6 +139,7 @@
 		QDEL_NULL(particles)
 		doner_stick.update_appearance()
 		update_appearance()
+		return PROCESS_KILL
 
 /obj/item/doner_stick
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'

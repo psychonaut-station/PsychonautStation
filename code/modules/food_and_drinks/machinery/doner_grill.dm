@@ -216,7 +216,7 @@
 		if(raw)
 			to_chat(user, span_warning("[src] is raw!"))
 			return
-		if(!do_after(user, 5 SECONDS, target = src.loc || src))
+		if(!do_after(user, 5 SECONDS, target = istype(loc, /obj/machinery/doner_grill) ? loc : src))
 			balloon_alert(user, "interrupted!")
 			return
 		var/doner_type = (meat_type == "meat") ? /obj/item/food/doner/yaprak/et : /obj/item/food/doner/yaprak/tavuk

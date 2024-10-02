@@ -1,0 +1,10 @@
+author: "Zade, Rengan, TatarTachanka"
+delete-after: True
+changes:
+  - rscadd: "Döner Makinesi eklendi."
+  - rscadd: "Et Döner ve Tavuk döner eklendi."
+  - rscadd: "Kısır eklendi."
+  - rscadd: "Ton balıklı tavuklu pilav eklendi."
+  - rscadd: "Menemen eklendi."
+  - rscadd: "İskender eklendi."
+  - rscadd: "Dolma eklendi."

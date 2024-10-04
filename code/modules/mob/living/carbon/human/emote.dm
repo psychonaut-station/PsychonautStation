@@ -63,6 +63,10 @@
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+<<<<<<< HEAD
+=======
+	audio_cooldown = 5 SECONDS
+>>>>>>> upstream/master
 	vary = TRUE
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 	only_forced_audio = TRUE
@@ -107,7 +111,7 @@
 	message = "salutes."
 	message_param = "salutes to %t."
 	hands_use_check = TRUE
-	sound = 'sound/misc/salute.ogg'
+	sound = 'sound/mobs/humanoids/human/salute/salute.ogg'
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"

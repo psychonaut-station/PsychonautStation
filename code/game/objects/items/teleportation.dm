@@ -338,9 +338,15 @@
 	///Maximum distance to teleport user forward
 	var/maximum_teleport_distance = 7
 	//How far the emergency teleport checks for a safe position
+<<<<<<< HEAD
 	var/parallel_teleport_distance = 2
 	var/list/charge_timers = list()
 	var/charge_time = 250  // 25 seconds
+=======
+	var/parallel_teleport_distance = 3
+	// How much blood lost per teleport (out of base 560 blood)
+	var/bleed_amount = 20
+>>>>>>> upstream/master
 
 /obj/item/syndicate_teleporter/proc/use_charge(mob/user)
 	charges = max(charges - 1, 0)
@@ -373,6 +379,17 @@
 	attempt_teleport(user = user, triggered_by_emp = FALSE)
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/obj/item/syndicate_teleporter/process(seconds_per_tick, times_fired)
+	if(SPT_PROB(10, seconds_per_tick) && charges < max_charges)
+		charges++
+		if(ishuman(loc))
+			var/mob/living/carbon/human/holder = loc
+			balloon_alert(holder, "teleporter beeps")
+		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+
+>>>>>>> upstream/master
 /obj/item/syndicate_teleporter/emp_act(severity)
 	. = ..()
 	if(!prob(50/severity))
@@ -433,7 +450,10 @@
 		use_charge(user)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(current_location)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(destination)
-		make_bloods(current_location, destination, user)
+		if(make_bloods(current_location, destination, user))
+			new /obj/effect/temp_visual/circle_wave/syndi_teleporter/bloody(destination)
+		else
+			new /obj/effect/temp_visual/circle_wave/syndi_teleporter(destination)
 		playsound(current_location, SFX_PORTAL_ENTER, 50, 1, SHORT_RANGE_SOUND_EXTRARANGE)
 		playsound(destination, 'sound/effects/phasein.ogg', 25, 1, SHORT_RANGE_SOUND_EXTRARANGE)
 		playsound(destination, SFX_PORTAL_ENTER, 50, 1, SHORT_RANGE_SOUND_EXTRARANGE)
@@ -469,11 +489,14 @@
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(mobloc)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(emergency_destination)
 		balloon_alert(user, "emergency teleport triggered!")
-		if (!HAS_TRAIT(user, TRAIT_NOBLOOD))
-			make_bloods(mobloc, emergency_destination, user)
+		if(make_bloods(destination, emergency_destination, user))
+			new /obj/effect/temp_visual/circle_wave/syndi_teleporter/bloody(destination)
+		else
+			new /obj/effect/temp_visual/circle_wave/syndi_teleporter(destination)
 		playsound(mobloc, SFX_PORTAL_ENTER, 50, 1, SHORT_RANGE_SOUND_EXTRARANGE)
 		playsound(emergency_destination, 'sound/effects/phasein.ogg', 25, 1, SHORT_RANGE_SOUND_EXTRARANGE)
 		playsound(emergency_destination, SFX_PORTAL_ENTER, 50, 1, SHORT_RANGE_SOUND_EXTRARANGE)
+		playsound(src, 'sound/machines/warning-buzzer.ogg', 25, TRUE)
 	else //We tried to save. We failed. Death time.
 		get_fragged(user, destination)
 
@@ -485,7 +508,7 @@
 	new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(destination)
 	playsound(mobloc, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	playsound(destination, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
-	playsound(destination, 'sound/magic/disintegrate.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	playsound(destination, 'sound/effects/magic/disintegrate.ogg', 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	if(!not_holding_tele)
 		to_chat(victim, span_userdanger("You teleport into [destination], [src] tries to save you, but..."))
 	else
@@ -501,16 +524,45 @@
 		victim.apply_damage(20, BRUTE)
 		victim.Paralyze(6 SECONDS)
 		to_chat(victim, span_warning("[user] teleports into you, knocking you to the floor with the bluespace wave!"))
+		victim.throw_at(get_step_rand(victim), 1, 1, user, spin = TRUE)
 
 ///Bleed and make blood splatters at tele start and end points
 /obj/item/syndicate_teleporter/proc/make_bloods(turf/old_location, turf/new_location, mob/living/user)
+	if(HAS_TRAIT(user, TRAIT_NOBLOOD))
+		return FALSE
 	user.add_splatter_floor(old_location)
 	user.add_splatter_floor(new_location)
 	if(!iscarbon(user))
-		return
+		return FALSE
 	var/mob/living/carbon/carbon_user = user
-	carbon_user.bleed(10)
 
+	// always lose a bit
+	carbon_user.bleed(bleed_amount * 0.25)
+	// sometimes lose a lot
+	// average evens out to 10 per teleport, but the randomness spices things up
+	if(prob(25) && bleed_amount)
+		playsound(src, 'sound/effects/wounds/pierce1.ogg', 40, vary = TRUE)
+		visible_message(span_warning("Blood visibly spurts out of [user] as [src] fails to teleport [user.p_their()] body properly!"), \
+			span_boldwarning("Blood visibly spurts out of you as [src] fails to teleport your body properly!"))
+		carbon_user.bleed(bleed_amount * 0.75)
+		carbon_user.spray_blood(pick(GLOB.alldirs), rand(1, 3))
+		return TRUE
+
+	return FALSE
+	// retval used for picking wave type
+
+/// Visual effect spawned when teleporting
+/obj/effect/temp_visual/circle_wave/syndi_teleporter
+	duration = 0.25 SECONDS
+	color = COLOR_SYNDIE_RED
+	max_alpha = 100
+	amount_to_scale = 0.8
+
+/obj/effect/temp_visual/circle_wave/syndi_teleporter/bloody
+	duration = 0.25 SECONDS
+	color = COLOR_VIVID_RED
+	max_alpha = 160
+	amount_to_scale = 1
 
 /obj/item/paper/syndicate_teleporter
 	name = "Teleporter Guide"

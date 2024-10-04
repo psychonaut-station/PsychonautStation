@@ -3,9 +3,14 @@
 	help_text = "Check round status"
 
 /datum/tgs_chat_command/tgscheck/Run(datum/tgs_chat_user/sender, params)
+<<<<<<< HEAD
 	var/message_body = ""
 	if (GLOB.round_id)
 		message_body += "Round #[GLOB.round_id]: "
+=======
+	var/server = CONFIG_GET(string/server)
+	return new /datum/tgs_message_content("[GLOB.round_id ? "Round #[GLOB.round_id]: " : ""][GLOB.clients.len] players on [SSmapping.current_map.map_name]; Round [SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "Active" : "Finishing") : "Starting"] -- [server ? server : "[world.internet_address]:[world.port]"]")
+>>>>>>> upstream/master
 
 	message_body += "[GLOB.clients.len] kişi ile [SSmapping.config.map_name] haritasinda \
 					[SSticker.HasRoundStarted() ? (SSticker.IsRoundInProgress() ? "devam etmekte" : "bitmek üzere") : "başlıyor"]."

@@ -90,7 +90,7 @@
 
 	var/turf/target_turf = get_turf(target)
 	SEND_SIGNAL(target_turf, COMSIG_ATOM_MAGICALLY_UNLOCKED, src, source)
-	playsound(target, 'sound/magic/hereticknock.ogg', 100, TRUE, -1)
+	playsound(target, 'sound/effects/magic/hereticknock.ogg', 100, TRUE, -1)
 
 	return COMPONENT_USE_HAND
 
@@ -240,7 +240,7 @@
 	priority_announce(
 		text = "Delta sınıfı boyutsal anomali tespi[generate_heretic_text()] Gerçeklik paramparça oldu. Geçitler ve kapılar aralandı, [user.real_name] yükseldi! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = 'sound/ambience/antag/heretic/ascend_knock.ogg',
+		sound = 'sound/music/antag/heretic/ascend_knock.ogg',
 		color_override = "pink",
 	)
 

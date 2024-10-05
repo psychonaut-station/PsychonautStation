@@ -743,8 +743,7 @@
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/whistle/get_sound(mob/living/user)
-<<<<<<< HEAD
-	return 'sound/voice/human/whistle1.ogg'
+	return 'sound/mobs/humanoids/human/whistle/whistle1.ogg'
 
 /datum/emote/living/fart
 	key = "fart"
@@ -763,6 +762,3 @@
 		user.add_mood_event("farted", /datum/mood_event/farted)
 		return pick('sound/misc/fart1.ogg', 'sound/misc/fart2.ogg', 'sound/misc/fart3.ogg',
 					'sound/misc/fart4.ogg', 'sound/misc/fart5.ogg', 'sound/misc/fart6.ogg')
-=======
-	return 'sound/mobs/humanoids/human/whistle/whistle1.ogg'
->>>>>>> upstream/master

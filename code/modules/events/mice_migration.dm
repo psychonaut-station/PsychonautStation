@@ -16,15 +16,9 @@
 	var/movement = pick("göç ediyor.", "ilerliyor.", "izdiham ediyor.")
 	var/location = pick("maintenance tünellerine", "maintenance bölgesine", "tüm o lezzetli kabloların olduğu yere")
 
-<<<<<<< HEAD
 	priority_announce("[cause] dolayısıyla, [plural] [name] [location] doğru \
 		[movement]", "Kemirgen uyarısı",
-		'sound/creatures/mousesqueek.ogg')
-=======
-	priority_announce("Due to [cause], [plural] [name] have [movement] \
-		into the [location].", "Migration Alert",
 		'sound/mobs/non-humanoids/mouse/mousesqueek.ogg')
->>>>>>> upstream/master
 
 /datum/round_event/mice_migration/start()
 	SSminor_mapping.trigger_migration(rand(minimum_mice, maximum_mice))

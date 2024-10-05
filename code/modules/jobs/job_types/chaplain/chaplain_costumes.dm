@@ -287,8 +287,7 @@
 	icon_state = "shrinehand"
 	inhand_icon_state = "shrinehand"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-<<<<<<< HEAD
-	flags_inv = HIDEJUMPSUIT
+	flags_inv = HIDEJUMPSUIT|HIDEBELT
 
 /obj/item/clothing/head/helmet/chaplain/chapter
 	name = "chapter chaplain helmet"
@@ -336,7 +335,3 @@
 	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
 	armor_type = /datum/armor/chaplainsuit_armor_weaker
-
-=======
-	flags_inv = HIDEJUMPSUIT|HIDEBELT
->>>>>>> upstream/master

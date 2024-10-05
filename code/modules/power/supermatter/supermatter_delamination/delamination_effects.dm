@@ -141,17 +141,10 @@
 	// say goodbye to that shuttle of yours
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
 		priority_announce(
-<<<<<<< HEAD
 			text = "Taşıma sırasında acil durum mekik bağlantısında ölümcül hata oluştu. Bağlantı yeniden kurulamıyor.",
 			title = "Mekik Arızası",
-			sound =  'sound/misc/announce_dig.ogg',
-			sender_override = "Acil Durum Mekiği Uyarısı",
-=======
-			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
-			title = "Shuttle Failure",
 			sound =  'sound/announcer/announcement/announce_dig.ogg',
-			sender_override = "Emergency Shuttle Uplink Alert",
->>>>>>> upstream/master
+			sender_override = "Acil Durum Mekiği Uyarısı",
 			color_override = "grey",
 		)
 	else

@@ -334,11 +334,7 @@
 	default = "https://www.patreon.com/PsychonautStation"
 
 /datum/config_entry/string/rulesurl
-<<<<<<< HEAD
 	default = "http://turkb.us/rules"
-=======
-	default = "http://tgstation13.org/wiki/Rules"
->>>>>>> upstream/master
 
 /datum/config_entry/string/githuburl
 	default = "https://github.com/psychonaut-station/PsychonautStation"
@@ -768,7 +764,6 @@
 	default = 5242880
 	min_val = 0
 
-<<<<<<< HEAD
 /datum/config_entry/number/timezone_offset
 	default = 36000
 	min_val = 1
@@ -776,7 +771,7 @@
 
 /datum/config_entry/flag/require_discord_linking
 	default = FALSE
-=======
+
 /// The minimum number of tallies a map vote entry can have.
 /datum/config_entry/number/map_vote_minimum_tallies
 	default = 1
@@ -800,4 +795,3 @@
 	default = 100
 	min_val = 0
 	max_val = 100
->>>>>>> upstream/master

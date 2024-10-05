@@ -245,7 +245,7 @@
 /obj/effect/step_trigger/sound_effect{
 	happens_once = 1;
 	name = "\proper a grave mistake";
-	sound = 'sound/hallucinations/i_see_you1.ogg';
+	sound = 'sound/effects/hallucinations/i_see_you1.ogg';
 	triggerer_only = 1
 	},
 /turf/open/indestructible/boss,

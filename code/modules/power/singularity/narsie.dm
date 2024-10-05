@@ -253,35 +253,21 @@
 ///First crew last second win check and flufftext for [/proc/begin_the_end()]
 /proc/narsie_end_begin_check()
 	if(QDELETED(GLOB.cult_narsie)) // uno
-<<<<<<< HEAD
-		priority_announce("Durum raporu? Bir anormallik tespit ettik, ama hemen ortadan kayboldu.","[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
-=======
-		priority_announce("Status report? We detected an anomaly, but it disappeared almost immediately.","[command_name()] Higher Dimensional Affairs", 'sound/announcer/notice/notice1.ogg')
->>>>>>> upstream/master
+		priority_announce("Durum raporu? Bir anormallik tespit ettik, ama hemen ortadan kayboldu.","[command_name()] Üst Boyutlu İlişkiler", 'sound/announcer/notice/notice1.ogg')
 		GLOB.cult_narsie = null
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), CULT_FAILURE_NARSIE_KILLED), 2 SECONDS)
 		return
 	priority_announce(
-<<<<<<< HEAD
 		text = "Sektörünüzde nedensiz bir boyutsal olay tespit edildi. Olay, FELAKET SINIFI olarak işaretlendi. Mevcut tüm varlıklar simülasyon çözümüne yönlendiriliyor. ÇÖZÜM SÜRESİ: 60 SANİYE.",
 		title = "[command_name()] Üst Boyutlu İlişkiler",
-		sound = 'sound/misc/airraid.ogg',
-=======
-		text = "An acausal dimensional event has been detected in your sector. Event has been flagged EXTINCTION-CLASS. Directing all available assets toward simulating solutions. SOLUTION ETA: 60 SECONDS.",
-		title = "[command_name()] Higher Dimensional Affairs",
 		sound = 'sound/announcer/alarm/airraid.ogg',
->>>>>>> upstream/master
 	)
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(narsie_end_second_check)), 50 SECONDS)
 
 ///Second crew last second win check and flufftext for [/proc/begin_the_end()]
 /proc/narsie_end_second_check()
 	if(QDELETED(GLOB.cult_narsie)) // dos
-<<<<<<< HEAD
-		priority_announce("Simülasyonlar sonlandırıldı, sensörler olayların normalleştiğini bildiriyor. İyi iş, mürettebat.","[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
-=======
-		priority_announce("Simulations aborted, sensors report that the acasual event is normalizing. Good work, crew.","[command_name()] Higher Dimensional Affairs", 'sound/announcer/notice/notice1.ogg')
->>>>>>> upstream/master
+		priority_announce("Simülasyonlar sonlandırıldı, sensörler olayların normalleştiğini bildiriyor. İyi iş, mürettebat.","[command_name()] Üst Boyutlu İlişkiler", 'sound/announcer/notice/notice1.ogg')
 		GLOB.cult_narsie = null
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), CULT_FAILURE_NARSIE_KILLED), 2 SECONDS)
 		return
@@ -298,11 +284,7 @@
 ///Third crew last second win check and flufftext for [/proc/begin_the_end()]
 /proc/narsie_apocalypse()
 	if(QDELETED(GLOB.cult_narsie)) // tres
-<<<<<<< HEAD
-		priority_announce("Normalleştirme algılandı! Çözüm paketini iptal edin!","[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
-=======
-		priority_announce("Normalization detected! Abort the solution package!","[command_name()] Higher Dimensional Affairs", 'sound/announcer/notice/notice1.ogg')
->>>>>>> upstream/master
+		priority_announce("Normalleştirme algılandı! Çözüm paketini iptal edin!","[command_name()] Üst Boyutlu İlişkiler", 'sound/announcer/notice/notice1.ogg')
 		SSshuttle.clearHostileEnvironment(GLOB.cult_narsie)
 		GLOB.cult_narsie = null
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(narsie_last_second_win)), 2 SECONDS)

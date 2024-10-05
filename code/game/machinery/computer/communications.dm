@@ -299,13 +299,8 @@
 			nuke_request(reason, user)
 			to_chat(user, span_notice("Request sent."))
 			user.log_message("has requested the nuclear codes from CentCom with reason \"[reason]\"", LOG_SAY)
-<<<<<<< HEAD
 			priority_announce("İstasyon nükleer imha kodları [user] tarafından istenmiştir. Bu istediğiniz ile ilgili sonuç kısa süre içinde iletilecektir.", "Nükleer İmha Kodları İstendi", SSstation.announcer.get_rand_report_sound())
-			playsound(src, 'sound/machines/terminal_prompt.ogg', 50, FALSE)
-=======
-			priority_announce("The codes for the on-station nuclear self-destruct have been requested by [user]. Confirmation or denial of this request will be sent shortly.", "Nuclear Self-Destruct Codes Requested", SSstation.announcer.get_rand_report_sound())
 			playsound(src, 'sound/machines/terminal/terminal_prompt.ogg', 50, FALSE)
->>>>>>> upstream/master
 			COOLDOWN_START(src, important_action_cooldown, IMPORTANT_ACTION_COOLDOWN)
 		if ("restoreBackupRoutingData")
 			if (!authenticated_as_non_silicon_captain(user))

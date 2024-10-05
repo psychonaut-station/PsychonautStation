@@ -338,15 +338,11 @@
 	///Maximum distance to teleport user forward
 	var/maximum_teleport_distance = 7
 	//How far the emergency teleport checks for a safe position
-<<<<<<< HEAD
 	var/parallel_teleport_distance = 2
-	var/list/charge_timers = list()
-	var/charge_time = 250  // 25 seconds
-=======
-	var/parallel_teleport_distance = 3
 	// How much blood lost per teleport (out of base 560 blood)
 	var/bleed_amount = 20
->>>>>>> upstream/master
+	var/list/charge_timers = list()
+	var/charge_time = 25 SECONDS
 
 /obj/item/syndicate_teleporter/proc/use_charge(mob/user)
 	charges = max(charges - 1, 0)
@@ -360,7 +356,7 @@
 	if(ishuman(loc))
 		var/mob/living/carbon/human/holder = loc
 		balloon_alert(holder, "teleporter beeps")
-	playsound(src, 'sound/machines/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+	playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 
 /obj/item/syndicate_teleporter/examine(mob/user)
 	. = ..()
@@ -379,17 +375,6 @@
 	attempt_teleport(user = user, triggered_by_emp = FALSE)
 	return TRUE
 
-<<<<<<< HEAD
-=======
-/obj/item/syndicate_teleporter/process(seconds_per_tick, times_fired)
-	if(SPT_PROB(10, seconds_per_tick) && charges < max_charges)
-		charges++
-		if(ishuman(loc))
-			var/mob/living/carbon/human/holder = loc
-			balloon_alert(holder, "teleporter beeps")
-		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
-
->>>>>>> upstream/master
 /obj/item/syndicate_teleporter/emp_act(severity)
 	. = ..()
 	if(!prob(50/severity))

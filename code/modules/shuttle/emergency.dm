@@ -598,15 +598,9 @@
 					// just double check
 					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
-<<<<<<< HEAD
 					minor_announce("Mekiğin navigasyon protokollerinde \
 						bozulma tespit edildi. Lütfen şefinizle iletişime \
-						geçin.", "SİSTEM HATASI:", sound_override = 'sound/misc/announce_syndi.ogg')
-=======
-					minor_announce("Corruption detected in \
-						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
->>>>>>> upstream/master
+						geçin.", "SİSTEM HATASI:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME

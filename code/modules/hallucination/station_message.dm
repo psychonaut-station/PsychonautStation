@@ -93,15 +93,9 @@
 	var/area/fake_summon_area = GLOB.areas_by_type[fake_summon_area_type]
 
 	priority_announce(
-<<<<<<< HEAD
 		text = "Tanrı katından gelen yaratıklar, [totally_real_cult_leader.real_name] tarafından bilinmeyen bir boyuttan [fake_summon_area] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
 		title = "[command_name()] Üst Boyutlu İlişkiler",
-		sound = 'sound/ambience/antag/bloodcult/bloodcult_scribe.ogg',
-=======
-		text = "Figments from an eldritch god are being summoned by [totally_real_cult_leader.real_name] into [fake_summon_area] from an unknown dimension. Disrupt the ritual at all costs!",
-		title = "[command_name()] Higher Dimensional Affairs",
 		sound = 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
->>>>>>> upstream/master
 		has_important_message = TRUE,
 		players = list(hallucinator),
 	)

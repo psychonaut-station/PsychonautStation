@@ -14,9 +14,7 @@
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/wrapping_paper
 	singular_name = "wrapping paper"
-<<<<<<< HEAD
 	source = /datum/robot_energy_storage/wrap_paper
-=======
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
@@ -34,7 +32,6 @@
 		span_warning("You bap [target_mob] on the head with [src]!"),
 	)
 	target_mob.add_mood_event("roll", /datum/mood_event/bapped)
->>>>>>> upstream/master
 
 /obj/item/stack/wrapping_paper/Initialize(mapload)
 	. = ..()

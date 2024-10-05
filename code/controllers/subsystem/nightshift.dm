@@ -26,13 +26,8 @@ SUBSYSTEM_DEF(nightshift)
 /datum/controller/subsystem/nightshift/proc/announce(message)
 	priority_announce(
 		text = message,
-<<<<<<< HEAD
-		sound = 'sound/misc/notice2.ogg',
-		sender_override = "Otomatik Işıklandırma Sistemi",
-=======
 		sound = 'sound/announcer/notice/notice2.ogg',
-		sender_override = "Automated Lighting System Announcement",
->>>>>>> upstream/master
+		sender_override = "Otomatik Işıklandırma Sistemi Duyurusu",
 		color_override = "grey",
 	)
 

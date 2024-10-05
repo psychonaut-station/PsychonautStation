@@ -52,16 +52,8 @@
 			if(cell.charge <= (cell.maxcharge / 2) || (stomach_cell.charge() > charge_limit))
 				return
 			balloon_alert(ethereal, "received charge")
-<<<<<<< HEAD
-
-			stomach.adjust_charge(APC_POWER_GAIN)
-			cell.use(APC_POWER_GAIN)
-			charging = APC_CHARGING
-			update_appearance()
-=======
 			stomach.adjust_charge(ETHEREAL_APC_POWER_GAIN)
 			cell.use(ETHEREAL_APC_POWER_GAIN)
->>>>>>> upstream/master
 		return
 
 	if(cell.charge >= cell.maxcharge - ETHEREAL_APC_POWER_GAIN)
@@ -78,15 +70,9 @@
 		balloon_alert(ethereal, "can't transfer power!")
 		return
 	if(istype(stomach))
-<<<<<<< HEAD
-		while(do_after(user, APC_DRAIN_TIME, target = src))
-			balloon_alert(ethereal, "transfered power")
-			cell.give(-stomach.adjust_charge(-APC_POWER_GAIN))
-=======
 		while(do_after(user, ETHEREAL_APC_DRAIN_TIME, target = src))
 			balloon_alert(ethereal, "transferred power")
 			cell.give(-stomach.adjust_charge(-ETHEREAL_APC_POWER_GAIN))
->>>>>>> upstream/master
 	else
 		balloon_alert(ethereal, "can't transfer power!")
 

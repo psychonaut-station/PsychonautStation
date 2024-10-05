@@ -157,13 +157,12 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
-<<<<<<< HEAD
 
 			if (CONFIG_GET(flag/enable_discord_round_alerts))
 				var/list/webhook_info = list()
 				var/list/headers = list()
 
-				webhook_info["content"] = "<@&[CONFIG_GET(string/discord_round_alert_role_id)]> **TG:** [SSmapping.config.map_name] haritasında yeni round başlıyor!"
+				webhook_info["content"] = "<@&[CONFIG_GET(string/discord_round_alert_role_id)]> **TG:** [SSmapping.current_map.map_name] haritasında yeni round başlıyor!"
 				headers["Content-Type"] = "application/json"
 
 				var/webhook = CONFIG_GET(string/discord_round_alert_webhook_url)
@@ -171,9 +170,6 @@ SUBSYSTEM_DEF(ticker)
 				request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/discord_roundalert.json")
 				request.begin_async()
 
-=======
-			send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), CONFIG_GET(string/channel_announce_new_game))
->>>>>>> upstream/master
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 

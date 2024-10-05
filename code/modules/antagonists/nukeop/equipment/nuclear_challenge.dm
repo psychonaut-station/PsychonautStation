@@ -79,13 +79,8 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /obj/item/nuclear_challenge/proc/war_was_declared(mob/living/user, memo)
 	priority_announce(
 		text = memo,
-<<<<<<< HEAD
 		title = "Savaş İlanı",
-		sound = 'sound/machines/alarm.ogg',
-=======
-		title = "Declaration of War",
 		sound = 'sound/announcer/alarm/nuke_alarm.ogg',
->>>>>>> upstream/master
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",
@@ -196,13 +191,8 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 	priority_announce(
 		text = memo,
-<<<<<<< HEAD
 		title = "Savaş İlanı",
-		sound = 'sound/machines/alarm.ogg',
-=======
-		title = "Declaration of War",
 		sound = 'sound/announcer/alarm/nuke_alarm.ogg',
->>>>>>> upstream/master
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",

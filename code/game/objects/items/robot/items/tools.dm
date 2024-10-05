@@ -407,7 +407,7 @@
 		if(!owner.cell.use(cell_usage))
 			to_chat(user, span_warning("Not enough power."))
 			return
-		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
+		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			return
 		if(!can_pickup(picked_crate))
@@ -434,7 +434,7 @@
 		var/obj/pick = show_radial_menu(user, target_turf, crate_radial, radius = 38, require_near = TRUE)
 		if(!pick)
 			return
-		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
+		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			return
 		if(target_turf.is_blocked_turf())

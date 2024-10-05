@@ -15,7 +15,7 @@
 	if (istype(O, /obj/item/multitool/ai_detect))
 		to_chat(user, span_notice("Multitool displays [GLOB.upload_key] on it's screen."))
 		for(var/mob/hearing_mob in get_hearers_in_view(3, user))
-			hearing_mob.playsound_local(get_turf(src), 'sound/machines/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+			hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
 
 	else if(istype(O, /obj/item/ai_module))
 		if (!GLOB.upload_key)

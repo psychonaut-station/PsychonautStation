@@ -622,27 +622,6 @@
   thegrb93:
   - bugfix: Downstream species not getting internals they need when joining ERT
 2024-09-21:
-<<<<<<< HEAD
-  FlufflesTheDog:
-  - bugfix: Icebox's virology airlock cycles properly again
-  Melbert:
-  - qol: Deceased and asleep humanoids will now close their eyes
-  Seefaaa:
-  - admin: "Jukebox'\u0131n logu admin log yerine game log'da olucak"
-2024-09-22:
-  exdal:
-  - rscadd: Bridge Assistant Station Trait'i geri eklendi
-  - rscdel: Nt Secretary kaldirildi
-  - balance: 'Paramedigin: Engineering, Science ve Cargo accessleri kaldirildi'
-2024-09-24:
-  Reveyni:
-  - bugfix: "Blue Alert a\xE7\u0131klamas\u0131ndan \"rastgele aramalara izin verilmektedir\"\
-      \ ifadesini kald\u0131r\u0131r,\" aramalara ge\xE7erli bir sebebi olmas\u0131\
-      \ dahilinde izin verilmektedir \" ifadesini ekler."
-2024-09-27:
-  RengaN02:
-  - qol: "Research Director art\u0131k law upload \u015Fifresini ezbere biliyor."
-=======
   00-Steven:
   - bugfix: Changing a bank account's job to or from Curator actually changes whether
       they get a cut from painting patronage.
@@ -681,6 +660,8 @@
   Rhials:
   - bugfix: You can no longer backdoor security records using the Metastation Central
       bitrunner domain.
+  Seefaaa:
+  - admin: "Jukebox'\u0131n logu admin log yerine game log'da olucak"
   SmArtKar:
   - bugfix: Fixed wallmounts not being mountable by using a screwdriver on them
   - bugfix: Fixed robotic revival surgery showing up for simplemobs
@@ -698,6 +679,10 @@
 2024-09-22:
   Ben10Omintrix:
   - bugfix: botkeeper now displays bot's correct states!
+  exdal:
+  - rscadd: Bridge Assistant Station Trait'i geri eklendi
+  - rscdel: Nt Secretary kaldirildi
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accessleri kaldirildi'
   Goat:
   - bugfix: Virtual pirates were yelled at by the virtual syndicate and no longer
       have virtual syndicate headsets.
@@ -778,6 +763,10 @@
       a cybernetic heart.
   - qol: The Living Heart ritual, when putting a new heart into your chest, will now
       heal the heart enough to be just under the "severe damage" threshold, if needed.
+  Reveyni:
+  - bugfix: "Blue Alert a\xE7\u0131klamas\u0131ndan \"rastgele aramalara izin verilmektedir\"\
+      \ ifadesini kald\u0131r\u0131r,\" aramalara ge\xE7erli bir sebebi olmas\u0131\
+      \ dahilinde izin verilmektedir \" ifadesini ekler."
   theselfish:
   - bugfix: The Beer Sixpack no longer magically turns into bottles.
 2024-09-25:
@@ -841,6 +830,8 @@
       lag in xenobio
   Jewelry-x:
   - bugfix: fixed hydroponics tray not updating new crop sprite properly
+  RengaN02:
+  - qol: "Research Director art\u0131k law upload \u015Fifresini ezbere biliyor."
   SmArtKar:
   - rscadd: You can now craft tether anchors, which can be secured with a wrench and
       attached to with right click. They won't let you drift into space and you can
@@ -992,4 +983,3 @@
   - rscadd: added the manufacturing smelter,router,sorter,crafter,lathe,crusher,unloader
   tonty:
   - code_imp: made some code relating to the world's icon size more readable
->>>>>>> upstream/master

@@ -101,12 +101,8 @@
 	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
 /area/ruin/unpowered/ratvar
 	outdoors = TRUE
-<<<<<<< HEAD
-	ambient_buzz = 'sound/ambience/magma.ogg'
+	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
 
 //nyx temple
 /area/ruin/unpowered/nyx_temple
-	ambient_buzz = 'sound/ambience/magma.ogg'
-=======
 	ambient_buzz = 'sound/ambience/lavaland/magma.ogg'
->>>>>>> upstream/master

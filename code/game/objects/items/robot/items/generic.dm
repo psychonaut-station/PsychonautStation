@@ -445,7 +445,7 @@
 /obj/item/borg/paperplane_crossbow/proc/canshoot(atom/target, mob/living/silicon/robot/user)
 	if(!COOLDOWN_FINISHED(src, shooting_cooldown))
 		balloon_alert_to_viewers("*click*")
-		playsound(src, 'sound/weapons/gun/general/dry_fire.ogg', 30, TRUE)
+		playsound(src, 'sound/items/weapons/gun/general/dry_fire.ogg', 30, TRUE)
 		return FALSE
 	if(target == user)
 		to_chat(user, span_warning("You cant shoot yourself!"))

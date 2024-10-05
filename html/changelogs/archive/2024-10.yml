@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-2024-10-03:
-  Zade, Rengan, TatarTachanka:
-  - rscadd: "D\xF6ner Makinesi eklendi."
-  - rscadd: "Et D\xF6ner ve Tavuk d\xF6ner eklendi."
-  - rscadd: "K\u0131s\u0131r eklendi."
-  - rscadd: "Ton bal\u0131kl\u0131 tavuklu pilav eklendi."
-  - rscadd: Menemen eklendi.
-  - rscadd: "\u0130skender eklendi."
-  - rscadd: Dolma eklendi.
-=======
 2024-10-01:
   DaCoolBoss:
   - balance: Donksoft vendors now stock slightly more items, slightly less of each
@@ -57,6 +46,14 @@
   - bugfix: fixed chappies being able to buy an unintended nullrod type
   grungussuss:
   - bugfix: fixed footsteps counting twice on diagonal movement
+  Zade, Rengan, TatarTachanka:
+  - rscadd: "D\xF6ner Makinesi eklendi."
+  - rscadd: "Et D\xF6ner ve Tavuk d\xF6ner eklendi."
+  - rscadd: "K\u0131s\u0131r eklendi."
+  - rscadd: "Ton bal\u0131kl\u0131 tavuklu pilav eklendi."
+  - rscadd: Menemen eklendi.
+  - rscadd: "\u0130skender eklendi."
+  - rscadd: Dolma eklendi.
 2024-10-04:
   00-Steven:
   - rscadd: Reinforced tables may now be hooked up directly to the grid much like
@@ -91,4 +88,3 @@
   - bugfix: fixed wabbajack statue not activating
   timothymtorres:
   - code_imp: Automatically link maps multi-z up/down traits
->>>>>>> upstream/master

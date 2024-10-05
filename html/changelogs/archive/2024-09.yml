@@ -638,3 +638,6 @@
   - bugfix: "Blue Alert a\xE7\u0131klamas\u0131ndan \"rastgele aramalara izin verilmektedir\"\
       \ ifadesini kald\u0131r\u0131r,\" aramalara ge\xE7erli bir sebebi olmas\u0131\
       \ dahilinde izin verilmektedir \" ifadesini ekler."
+2024-09-27:
+  RengaN02:
+  - qol: "Research Director art\u0131k law upload \u015Fifresini ezbere biliyor."

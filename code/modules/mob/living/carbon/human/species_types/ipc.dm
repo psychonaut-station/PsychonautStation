@@ -55,7 +55,8 @@
 	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 	ipc.hud_possible += DIAG_BATT_HUD
-	ipc.prepare_huds(TRUE)
+	ipc.hud_list = null
+	ipc.prepare_huds()
 	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
 		diag_hud.add_atom_to_hud(ipc)
 

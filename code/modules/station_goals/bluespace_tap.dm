@@ -379,7 +379,7 @@
 	points -= A.product_cost
 	A.product_cost = round(1.2 * A.product_cost, 1)
 	var/launch_turf = get_offset_target_turf(src, 0, -2)
-	playsound(launch_turf, 'sound/magic/blink.ogg', 50)
+	playsound(launch_turf, 'sound/effects/magic/blink.ogg', 50)
 	do_sparks(2, FALSE, launch_turf)
 	new A.product_path(launch_turf)
 

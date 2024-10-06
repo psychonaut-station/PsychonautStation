@@ -230,7 +230,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Alevlerden korkun, çünkü Küllerin efendisi [user.real_name] yükseldi! Alevler her şeyi tüketecek! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = 'sound/ambience/antag/heretic/ascend_ash.ogg',
+		sound = 'sound/music/antag/heretic/ascend_ash.ogg',
 		color_override = "pink",
 	)
 

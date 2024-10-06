@@ -714,7 +714,7 @@
 		Her kalkan birimi ek bir [shielder_time] kadar koruma süresi sağlayarak istasyonu [max_shielders] koruma birimiyle tamamen koruyacaktır.
 	"}
 
-	priority_announce(announcement, sound = 'sound/misc/notice1.ogg')
+	priority_announce(announcement, sound = 'sound/announcer/notice/notice1.ogg')
 
 	//Set the display screens to the radiation alert
 	var/datum/radio_frequency/frequency = SSradio.return_frequency(FREQ_STATUS_DISPLAYS)

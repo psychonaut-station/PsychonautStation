@@ -587,7 +587,7 @@
 		return FALSE
 	raise_target.grab_ghost() // Shove them back in their body.
 	raise_target.revive(HEAL_ALL) // Revive them.
-	playsound(altar_turf, 'sound/magic/staff_healing.ogg', 50, TRUE)
+	playsound(altar_turf, 'sound/effects/magic/staff_healing.ogg', 50, TRUE)
 	raise_target = null
 	return ..()
 
@@ -730,7 +730,7 @@
 	for(var/i in 1 to 8)
 		var/mob/living/simple_animal/S = create_random_mob(altar_turf, FRIENDLY_SPAWN)
 		S.faction |= "neutral"
-	playsound(altar_turf, 'sound/ambience/servicebell.ogg', 25, TRUE)
+	playsound(altar_turf, 'sound/ambience/ruin/servicebell.ogg', 25, TRUE)
 	if(prob(0.1))
 		playsound(altar_turf, 'sound/effects/bamf.ogg', 100, TRUE)
 		altar_turf.visible_message("<span class='boldwarning'>A large form seems to be forcing its way into your reality via the portal [user] opened! RUN!!!</span>")

@@ -292,7 +292,7 @@
 
 /obj/machinery/electrical_jukebox/ui_status(mob/user)
 	if(!youtubedl_configured)
-		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
+		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
 

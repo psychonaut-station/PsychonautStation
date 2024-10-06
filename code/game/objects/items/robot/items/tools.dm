@@ -9,8 +9,8 @@
 	resistance_flags = FIRE_PROOF //if it's channeling a cyborg's excess heat, it's probably fireproof
 	force = 5
 	damtype = BURN
-	usesound = list('sound/items/welder.ogg', 'sound/items/welder2.ogg') //the usesounds of a lit welder
-	hitsound = 'sound/items/welder.ogg' //the hitsound of a lit welder
+	usesound = list('sound/items/tools/welder.ogg', 'sound/items/tools/welder2.ogg') //the usesounds of a lit welder
+	hitsound = 'sound/items/tools/welder.ogg' //the hitsound of a lit welder
 
 //Peacekeeper Cyborg Projectile Dampenening Field
 /obj/item/borg/projectile_dampen
@@ -247,7 +247,7 @@
 		if(initial(tool.tool_behaviour) == new_tool_behaviour)
 			reference = tool
 			update_appearance(UPDATE_ICON_STATE)
-			playsound(src, 'sound/items/change_jaws.ogg', 50, TRUE)
+			playsound(src, 'sound/items/tools/change_jaws.ogg', 50, TRUE)
 			break
 
 /obj/item/borg/cyborg_omnitool/update_icon_state()
@@ -267,7 +267,7 @@
 /obj/item/borg/cyborg_omnitool/proc/set_upgraded(upgrade)
 	upgraded = upgraded
 
-	playsound(src, 'sound/items/change_jaws.ogg', 50, TRUE)
+	playsound(src, 'sound/items/tools/change_jaws.ogg', 50, TRUE)
 
 /obj/item/borg/cyborg_omnitool/medical
 	name = "surgical omni-toolset"
@@ -407,7 +407,7 @@
 		if(!owner.cell.use(cell_usage))
 			to_chat(user, span_warning("Not enough power."))
 			return
-		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
+		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			return
 		if(!can_pickup(picked_crate))
@@ -434,7 +434,7 @@
 		var/obj/pick = show_radial_menu(user, target_turf, crate_radial, radius = 38, require_near = TRUE)
 		if(!pick)
 			return
-		playsound(src, 'sound/mecha/hydraulic.ogg', 25, TRUE)
+		playsound(src, 'sound/vehicles/mecha/hydraulic.ogg', 25, TRUE)
 		if(!do_after(user, load_time, target = target))
 			return
 		if(target_turf.is_blocked_turf())

@@ -400,7 +400,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 		if (TICKET_TYPE_ADMIN)
 			SEND_SOUND(C, sound('sound/effects/adminhelp.ogg'))
 		if (TICKET_TYPE_MENTOR)
-			SEND_SOUND(C, sound('sound/misc/compiler-stage2.ogg'))
+			SEND_SOUND(C, sound('sound/machines/compiler/compiler-stage2.ogg'))
 
 //private
 /datum/admin_help/proc/LinkedReplyName(ref_src)

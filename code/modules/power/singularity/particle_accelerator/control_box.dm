@@ -27,6 +27,12 @@
 		return ITEM_INTERACT_SUCCESS
 	return NONE
 
+/obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)
+	. = ..()
+	if(panel_open)
+		wires.interact(user)
+		return TRUE
+
 /obj/machinery/particle_accelerator/control_box/update_icon_state()
 	. = ..()
 	if(active && particle_accelerator)

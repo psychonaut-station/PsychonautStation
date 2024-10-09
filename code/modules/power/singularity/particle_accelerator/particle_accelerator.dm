@@ -7,12 +7,6 @@
 	anchored = FALSE
 	var/reference = null
 
-/obj/machinery/particle_accelerator/proc/connect_master(obj/O)
-	if(O.dir == dir)
-		//master = O
-		return TRUE
-	return FALSE
-
 /obj/machinery/particle_accelerator/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
@@ -73,16 +67,22 @@
 	name = "Particle Accelerator"
 	desc = "particle accelerator."
 	icon = 'icons/psychonaut/obj/machines/engine/128x128.dmi'
-	icon_state = "pa1"
+	icon_state = "pac"
 	anchored = TRUE
 	appearance_flags = LONG_GLIDE
 	var/list/obj/structure/fillers = list()
+	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/fire_delay = 50
 	var/last_shot = 0
 
 /obj/machinery/particle_accelerator/full/setDir(newdir)
 	. = ..()
 	update_appearance()
+
+/obj/machinery/particle_accelerator/full/Destroy()
+	if(master)
+		QDEL_NULL(master)
+	return ..()
 
 /obj/machinery/particle_accelerator/full/update_appearance(updates)
 	. = ..()

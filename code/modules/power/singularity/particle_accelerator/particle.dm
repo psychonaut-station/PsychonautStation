@@ -37,9 +37,9 @@
 		return
 	if(isliving(bumped_atom))
 		toxmob(bumped_atom)
-	/*else if(istype(bumped_atom, /obj/machinery/the_singularitygen))
+	else if(istype(bumped_atom, /obj/machinery/the_singularitygen))
 		var/obj/machinery/the_singularitygen/generator = bumped_atom
-		generator.energy += energy*/
+		generator.energy += energy
 	else if(istype(bumped_atom, /obj/singularity))
 		var/obj/singularity/singuloth = bumped_atom
 		singuloth.energy += energy

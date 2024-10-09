@@ -29,7 +29,7 @@
 
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(panel_open)
+	if(panel_open && particle_accelerator)
 		wires.interact(user)
 		return TRUE
 
@@ -132,7 +132,7 @@
 			filler.parent = src
 			fpa.fillers[pa_ref] = filler
 		qdel(connected_parts[pa_ref])
-	QDEL_LIST_ASSOC(connected_parts)
+	QDEL_LIST(connected_parts)
 	particle_accelerator = fpa
 	return TRUE
 

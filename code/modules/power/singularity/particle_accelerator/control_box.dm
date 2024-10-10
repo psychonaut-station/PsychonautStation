@@ -1,8 +1,16 @@
+#define PA_CONSTRUCTION_UNSECURED  0
+#define PA_CONSTRUCTION_UNWIRED    1
+#define PA_CONSTRUCTION_PANEL_OPEN 2
+#define PA_CONSTRUCTION_COMPLETE   3
+
 /obj/machinery/particle_accelerator/control_box
 	name = "Particle Accelerator Control Console"
 	desc = "This controls the density of the particles."
 	icon_state = "control_box"
 	use_power = NO_POWER_USE
+	idle_power_usage = 500
+	active_power_usage = 10000
+	reference = "control_box"
 	var/interface_control = TRUE
 	var/active = FALSE
 	var/strength = 0
@@ -19,49 +27,115 @@
 	QDEL_NULL(wires)
 	return ..()
 
-/obj/machinery/particle_accelerator/control_box/screwdriver_act(mob/living/user, obj/item/I)
-	if(active)
-		return ITEM_INTERACT_BLOCKING
-	if(default_deconstruction_screwdriver(user, "control_boxw", "control_boxp", I))
-		update_appearance()
-		return ITEM_INTERACT_SUCCESS
-	return NONE
-
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
-	if(panel_open && particle_accelerator)
+	if((construction_state == PA_CONSTRUCTION_PANEL_OPEN) && particle_accelerator)
+		wires.interact(user)
+		return TRUE
+
+/obj/machinery/particle_accelerator/control_box/wirecutter_act(mob/living/user, obj/item/tool)
+	. = ..()
+	if((construction_state == PA_CONSTRUCTION_PANEL_OPEN) && particle_accelerator)
 		wires.interact(user)
 		return TRUE
 
 /obj/machinery/particle_accelerator/control_box/update_icon_state()
 	. = ..()
-	if(active && particle_accelerator)
-		icon_state = "control_boxp[strength]"
-	else
-		icon_state = "control_boxp"
+	switch(construction_state)
+		if(PA_CONSTRUCTION_UNSECURED,PA_CONSTRUCTION_UNWIRED)
+			icon_state="[reference]"
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			icon_state="[reference]w"
+		if(PA_CONSTRUCTION_COMPLETE)
+			if(active)
+				icon_state="[reference]p[strength]"
+			else
+				icon_state="[reference]c"
 
-/obj/machinery/particle_accelerator/control_box/process()
-	if(active && particle_accelerator)
-		particle_accelerator.emit_particle(strength)
+/obj/machinery/particle_accelerator/control_box/blob_act(obj/structure/blob/B)
+	if(prob(50))
+		qdel(src)
+
+/obj/machinery/particle_accelerator/control_box/interact(mob/user)
+	if(construction_state == PA_CONSTRUCTION_PANEL_OPEN)
+		wires.interact(user)
+	else
+		..()
 
 /obj/machinery/particle_accelerator/control_box/proc/is_interactive(mob/user)
 	if(!interface_control)
 		to_chat(user, "<span class='alert'>ERROR: Request timed out. Check wire contacts.</span>")
 		return FALSE
-	if(!anchored && panel_open)
+	if(construction_state != PA_CONSTRUCTION_COMPLETE)
 		return FALSE
 	return TRUE
 
-/obj/machinery/particle_accelerator/control_box/proc/add_strength(s)
-	if(anchored && (strength < strength_upper_limit) && particle_accelerator)
+/obj/machinery/particle_accelerator/control_box/ui_status(mob/user)
+	if(is_interactive(user))
+		return ..()
+	return UI_CLOSE
+
+/obj/machinery/particle_accelerator/control_box/ui_interact(mob/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "ParticleAccelerator", name)
+		ui.open()
+
+/obj/machinery/particle_accelerator/control_box/ui_data(mob/user)
+	var/list/data = list()
+	data["assembled"] = particle_accelerator
+	data["power"] = active
+	data["strength_limit"] = strength_upper_limit
+	data["strength"] = strength
+	return data
+
+/obj/machinery/particle_accelerator/control_box/ui_act(action, params)
+	if(..())
+		return
+
+	switch(action)
+		if("power")
+			if(wires.is_cut(WIRE_POWER))
+				return
+			toggle_power()
+			. = TRUE
+		if("assemble")
+			assemble()
+			. = TRUE
+		if("disassemble")
+			disassemble()
+			. = TRUE
+		if("add_strength")
+			if(wires.is_cut(WIRE_STRENGTH))
+				return
+			add_strength()
+			. = TRUE
+		if("remove_strength")
+			if(wires.is_cut(WIRE_STRENGTH))
+				return
+			remove_strength()
+			. = TRUE
+
+	update_icon()
+
+/obj/machinery/particle_accelerator/control_box/power_change()
+	. = ..()
+	if(machine_stat & NOPOWER)
+		active = FALSE
+		use_power = NO_POWER_USE
+	else if(!machine_stat && (construction_state == PA_CONSTRUCTION_COMPLETE))
+		use_power = IDLE_POWER_USE
+
+/obj/machinery/particle_accelerator/control_box/proc/add_strength()
+	if((construction_state == PA_CONSTRUCTION_COMPLETE) && (strength < strength_upper_limit) && particle_accelerator)
 		strength++
 		particle_accelerator.update_icon()
 		message_admins("PA Control Computer increased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer increased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("increased to <font color='red'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
 
-/obj/machinery/particle_accelerator/control_box/proc/remove_strength(s)
-	if(anchored && (strength > 0) && particle_accelerator)
+/obj/machinery/particle_accelerator/control_box/proc/remove_strength()
+	if((construction_state == PA_CONSTRUCTION_COMPLETE) && (strength > 0) && particle_accelerator)
 		strength--
 		particle_accelerator.update_icon()
 		message_admins("PA Control Computer decreased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
@@ -124,6 +198,7 @@
 
 	var/turf/assemble_loc = get_turf(connected_parts["end_cap"])
 	var/obj/machinery/particle_accelerator/full/fpa = new(assemble_loc)
+	fpa.master = src
 	fpa.setDir(dir)
 	for(var/pa_ref as anything in connected_parts)
 		if(pa_ref != "end_cap")
@@ -132,16 +207,14 @@
 			filler.parent = src
 			fpa.fillers[pa_ref] = filler
 		qdel(connected_parts[pa_ref])
-	QDEL_LIST(connected_parts)
 	particle_accelerator = fpa
 	return TRUE
 
 /obj/machinery/particle_accelerator/control_box/proc/disassemble()
 	if(!particle_accelerator)
-		return
+		return FALSE
 	var/static/list/pa_typepaths = list(
 		"fuel_chamber" = /obj/machinery/particle_accelerator/fuel_chamber,
-		"end_cap" = /obj/machinery/particle_accelerator/end_cap,
 		"power_box" = /obj/machinery/particle_accelerator/power_box,
 		"emitter_center" = /obj/machinery/particle_accelerator/particle_emitter/center,
 		"emitter_left" = /obj/machinery/particle_accelerator/particle_emitter/left,
@@ -151,19 +224,27 @@
 	var/obj/machinery/particle_accelerator/end_cap/end_cap = new(c_turf)
 	end_cap.setDir(dir)
 	end_cap.anchored = TRUE
+	end_cap.construction_state = PA_CONSTRUCTION_COMPLETE
 	for(var/filler_ref as anything in particle_accelerator.fillers)
 		var/turf/pa_turf = get_turf(particle_accelerator.fillers[filler_ref])
 		var/obj/machinery/particle_accelerator/pa_type = pa_typepaths[filler_ref]
 		var/obj/machinery/particle_accelerator/pa = new pa_type(pa_turf)
 		pa.setDir(dir)
 		pa.anchored = TRUE
+		pa.construction_state = PA_CONSTRUCTION_COMPLETE
 	particle_accelerator.master = null
 	QDEL_NULL(particle_accelerator)
+	return TRUE
 
 /obj/machinery/particle_accelerator/control_box/proc/check_part(turf/T, type, list/connected_parts)
 	var/obj/machinery/particle_accelerator/PA = locate(/obj/machinery/particle_accelerator) in T
-	if(istype(PA, type) && PA.anchored)
+	if(istype(PA, type) && (PA.construction_state == PA_CONSTRUCTION_COMPLETE))
 		if(PA.dir == dir)
 			connected_parts[PA.reference] = PA
 			return TRUE
 	return FALSE
+
+#undef PA_CONSTRUCTION_UNSECURED
+#undef PA_CONSTRUCTION_UNWIRED
+#undef PA_CONSTRUCTION_PANEL_OPEN
+#undef PA_CONSTRUCTION_COMPLETE

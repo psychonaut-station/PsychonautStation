@@ -1,3 +1,21 @@
+/*Composed of 7 parts :
+ 3 Particle Emitters: Left - Center - Right
+ 1 Power Box
+ 1 Fuel Chamber
+ 1 End Cap
+ 1 Control computer
+ Setup map
+   |EC|
+ CC|FC|
+   |PB|
+ PE|PE|PE
+*/
+
+#define PA_CONSTRUCTION_UNSECURED  0
+#define PA_CONSTRUCTION_UNWIRED    1
+#define PA_CONSTRUCTION_PANEL_OPEN 2
+#define PA_CONSTRUCTION_COMPLETE   3
+
 /obj/machinery/particle_accelerator
 	name = "Particle Accelerator"
 	desc = "If you see this, please tell this to developers."
@@ -6,11 +24,96 @@
 	density = TRUE
 	anchored = FALSE
 	var/reference = null
+	var/construction_state = PA_CONSTRUCTION_UNSECURED
 
-/obj/machinery/particle_accelerator/wrench_act(mob/living/user, obj/item/tool)
+/obj/machinery/particle_accelerator/examine(mob/user)
 	. = ..()
-	default_unfasten_wrench(user, tool)
-	return ITEM_INTERACT_SUCCESS
+
+	switch(construction_state)
+		if(PA_CONSTRUCTION_UNSECURED)
+			. += "Looks like it's not attached to the flooring."
+		if(PA_CONSTRUCTION_UNWIRED)
+			. += "It is missing some cables."
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			. += "The panel is open."
+
+/obj/machinery/particle_accelerator/set_anchored(anchorvalue)
+	. = ..()
+	if(isnull(.))
+		return
+	construction_state = anchorvalue ? PA_CONSTRUCTION_UNWIRED : PA_CONSTRUCTION_UNSECURED
+	update_state()
+	update_icon()
+
+/obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user, params)
+	if(isnull(reference))
+		return ..()
+	var/did_something = FALSE
+
+	switch(construction_state)
+		if(PA_CONSTRUCTION_UNSECURED)
+			if(W.tool_behaviour == TOOL_WRENCH && !isinspace())
+				W.play_tool_sound(src, 75)
+				set_anchored(TRUE)
+				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
+					"<span class='notice'>You secure the external bolts.</span>")
+				user.changeNext_move(CLICK_CD_MELEE)
+				return //set_anchored handles the rest of the stuff we need to do.
+		if(PA_CONSTRUCTION_UNWIRED)
+			if(W.tool_behaviour == TOOL_WRENCH)
+				W.play_tool_sound(src, 75)
+				set_anchored(FALSE)
+				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
+					"<span class='notice'>You remove the external bolts.</span>")
+				user.changeNext_move(CLICK_CD_MELEE)
+				return //set_anchored handles the rest of the stuff we need to do.
+			else if(istype(W, /obj/item/stack/cable_coil))
+				var/obj/item/stack/cable_coil/CC = W
+				if(CC.use(1))
+					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
+						"<span class='notice'>You add some wires.</span>")
+					construction_state = PA_CONSTRUCTION_PANEL_OPEN
+					did_something = TRUE
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
+				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
+					"<span class='notice'>You remove some wires.</span>")
+				construction_state = PA_CONSTRUCTION_UNWIRED
+				did_something = TRUE
+			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
+				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
+					"<span class='notice'>You close the access panel.</span>")
+				construction_state = PA_CONSTRUCTION_COMPLETE
+				did_something = TRUE
+		if(PA_CONSTRUCTION_COMPLETE)
+			if(W.tool_behaviour == TOOL_SCREWDRIVER)
+				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
+					"<span class='notice'>You open the access panel.</span>")
+				construction_state = PA_CONSTRUCTION_PANEL_OPEN
+				did_something = TRUE
+
+	if(did_something)
+		user.changeNext_move(CLICK_CD_MELEE)
+		update_icon()
+		update_state()
+		return
+
+	return ..()
+
+/obj/machinery/particle_accelerator/proc/update_state()
+	return
+
+/obj/machinery/particle_accelerator/update_icon_state()
+	if(isnull(reference) || istype(src, /obj/machinery/particle_accelerator/control_box))
+		return ..()
+	switch(construction_state)
+		if(PA_CONSTRUCTION_UNSECURED,PA_CONSTRUCTION_UNWIRED)
+			icon_state="[reference]"
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			icon_state="[reference]w"
+		if(PA_CONSTRUCTION_COMPLETE)
+			icon_state="[reference]c"
+	return ..()
 
 /obj/machinery/particle_accelerator/end_cap
 	name = "Alpha Particle Generation Array"
@@ -70,10 +173,12 @@
 	icon_state = "pac"
 	anchored = TRUE
 	appearance_flags = LONG_GLIDE
+	construction_state = PA_CONSTRUCTION_COMPLETE
 	var/list/obj/structure/fillers = list()
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/fire_delay = 50
 	var/last_shot = 0
+	COOLDOWN_DECLARE(next_fire)
 
 /obj/machinery/particle_accelerator/full/setDir(newdir)
 	. = ..()
@@ -83,6 +188,10 @@
 	if(master)
 		QDEL_NULL(master)
 	return ..()
+
+/obj/machinery/particle_accelerator/full/process()
+	if(master && master.active && (last_shot + fire_delay) <= world.time)
+		emit_particle(master.strength)
 
 /obj/machinery/particle_accelerator/full/update_appearance(updates)
 	. = ..()
@@ -100,7 +209,17 @@
 			pixel_x = -96
 			pixel_z = -48
 
+/obj/machinery/particle_accelerator/full/update_icon_state()
+	. = ..()
+	if(master && master.active)
+		icon_state = "pa[master.strength]"
+	else
+		icon_state = "pac"
+
 /obj/machinery/particle_accelerator/full/wrench_act(mob/living/user, obj/item/I)
+	return FALSE
+
+/obj/machinery/particle_accelerator/full/screwdriver_act(mob/living/user, obj/item/I)
 	return FALSE
 
 /obj/machinery/particle_accelerator/full/proc/set_delay(delay)
@@ -110,23 +229,28 @@
 	return 0
 
 /obj/machinery/particle_accelerator/full/proc/emit_particle(strength = 0)
-	if((last_shot + fire_delay) <= world.time)
-		last_shot = world.time
-		for(var/filler as anything in fillers)
-			if(filler != "emitter_center" && filler != "emitter_left" && filler != "emitter_right")
-				continue
-			var/turf/T = get_turf(fillers[filler])
-			var/obj/effect/accelerated_particle/P
-			switch(strength)
-				if(0)
-					P = new/obj/effect/accelerated_particle/weak(T)
-				if(1)
-					P = new/obj/effect/accelerated_particle(T)
-				if(2)
-					P = new/obj/effect/accelerated_particle/strong(T)
-				if(3)
-					P = new/obj/effect/accelerated_particle/powerful(T)
-			P.setDir(dir)
-		return 1
-	return 0
+	last_shot = world.time
+	for(var/filler as anything in fillers)
+		if(filler != "emitter_center" && filler != "emitter_left" && filler != "emitter_right")
+			continue
+		var/turf/T = get_turf(fillers[filler])
+		var/obj/projectile/accelerated_particle/P
+		switch(strength)
+			if(0)
+				P = new/obj/projectile/accelerated_particle/weak(T)
+			if(1)
+				P = new/obj/projectile/accelerated_particle(T)
+			if(2)
+				P = new/obj/projectile/accelerated_particle/strong(T)
+			if(3)
+				P = new/obj/projectile/accelerated_particle/powerful(T)
+		P.firer = src
+		P.fired_from = src
+		P.fire(dir2angle(dir))
+		world.log << P
+	return 1
 
+#undef PA_CONSTRUCTION_UNSECURED
+#undef PA_CONSTRUCTION_UNWIRED
+#undef PA_CONSTRUCTION_PANEL_OPEN
+#undef PA_CONSTRUCTION_COMPLETE

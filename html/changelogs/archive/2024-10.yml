@@ -42,10 +42,6 @@
   - code_imp: You can now shoot projectiles with the shuttle events!
   - bugfix: Fixes projectiles bugging out when fired in shuttle transit space
   - bugfix: Fixes admin forced shuttle events not activating when added mid transit
-  carlarctg:
-  - bugfix: fixed chappies being able to buy an unintended nullrod type
-  grungussuss:
-  - bugfix: fixed footsteps counting twice on diagonal movement
   Zade, Rengan, TatarTachanka:
   - rscadd: "D\xF6ner Makinesi eklendi."
   - rscadd: "Et D\xF6ner ve Tavuk d\xF6ner eklendi."
@@ -54,6 +50,10 @@
   - rscadd: Menemen eklendi.
   - rscadd: "\u0130skender eklendi."
   - rscadd: Dolma eklendi.
+  carlarctg:
+  - bugfix: fixed chappies being able to buy an unintended nullrod type
+  grungussuss:
+  - bugfix: fixed footsteps counting twice on diagonal movement
 2024-10-04:
   00-Steven:
   - rscadd: Reinforced tables may now be hooked up directly to the grid much like
@@ -88,3 +88,40 @@
   - bugfix: fixed wabbajack statue not activating
   timothymtorres:
   - code_imp: Automatically link maps multi-z up/down traits
+2024-10-07:
+  00-Steven:
+  - bugfix: Prosopagnosia actually accounts for hover screentips, showing humans as
+      Unknown in those too.
+  Bisar:
+  - rscadd: Clothing can now hide what you're wearing on your belt.
+  GremlinSeeker:
+  - rscadd: Birdshot Cargo now has a lobby and is slightly more open overall.
+  - rscadd: Re-added the DnD room  to Birdshot
+  - rscadd: re-added the skill station to the library.
+  Jewelry-x:
+  - bugfix: Security Officers (Engineering) can now open crucial doors in Engineering
+      on Birdshot
+  - bugfix: Corrected access inconsistencies for maintenance doors in the Engineering
+      department on Birdshot
+  - bugfix: Resolved naming inconsistency for the front doors of Engineering on Birdshot
+  Melbert:
+  - qol: Runes, crayons, and similar decals no longer have shadows
+  - bugfix: Blood and similar "mess" decals no longer have shadows (again)
+  SmArtKar:
+  - bugfix: Fixed luminiscent major extract activation button not disappearing/updating
+      when it should've
+  Timberpoes:
+  - bugfix: Fixes a bug where the game would assign multiple players to single-slot
+      command roles.
+  Xackii:
+  - rscadd: Showers now heals stamina when you washing. But not for you catgitls.
+  grungussuss:
+  - bugfix: fixed drones being able to store multiple of the same type of tools in
+      their toolbox
+  imedial:
+  - qol: puts silicon laws in the status panel
+  timothymtorres:
+  - bugfix: Fix air alarms to work correctly while connected to a gas sensor
+  - bugfix: Fix paired air alarms and sensors to be able to relink to other devices
+      if turned off, reset, or destroyed.
+  - bugfix: Fix air alarm disabled setting to silence warnings

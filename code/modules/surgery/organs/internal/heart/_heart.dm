@@ -262,6 +262,9 @@
 	bleed_prevention = TRUE
 	emp_vulnerability = 40
 
+/obj/item/organ/internal/heart/cybernetic/tier2/ipc
+	name = "IPC heart"
+
 /obj/item/organ/internal/heart/cybernetic/tier3
 	name = "upgraded cybernetic heart"
 	desc = "An electronic device designed to mimic the functions of an organic human heart. In case of physical trauma, the heart has temporary failsafes to maintain patient stability \

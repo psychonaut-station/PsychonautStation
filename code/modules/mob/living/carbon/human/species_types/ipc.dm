@@ -34,7 +34,7 @@
 	mutantears = /obj/item/organ/internal/ears/cybernetic
 	mutanttongue = /obj/item/organ/internal/tongue/robot
 	mutantbrain = /obj/item/organ/internal/brain/cybernetic/ipc
-	mutantheart = /obj/item/organ/internal/heart/cybernetic/tier2
+	mutantheart = /obj/item/organ/internal/heart/cybernetic/tier2/ipc
 	mutantlungs = null
 	mutantliver = null
 	mutantstomach = /obj/item/organ/internal/stomach/ipc

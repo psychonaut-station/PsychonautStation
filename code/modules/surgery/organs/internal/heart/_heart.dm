@@ -263,7 +263,7 @@
 	emp_vulnerability = 40
 
 /obj/item/organ/internal/heart/cybernetic/tier2/ipc
-	name = "IPC heart"
+	name = "ipc heart"
 
 /obj/item/organ/internal/heart/cybernetic/tier3
 	name = "upgraded cybernetic heart"

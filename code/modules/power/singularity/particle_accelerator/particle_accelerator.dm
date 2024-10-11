@@ -49,51 +49,47 @@
 	if(isnull(reference))
 		return ..()
 	var/did_something = FALSE
-
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
-			if(W.tool_behaviour == TOOL_WRENCH && !isinspace())
+			if(W.tool_behaviour == TOOL_WRENCH && !isinspace() && W.use_tool(src, user, 20))
 				W.play_tool_sound(src, 75)
 				set_anchored(TRUE)
 				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
 					"<span class='notice'>You secure the external bolts.</span>")
-				user.changeNext_move(CLICK_CD_MELEE)
-				return //set_anchored handles the rest of the stuff we need to do.
+				return
 		if(PA_CONSTRUCTION_UNWIRED)
-			if(W.tool_behaviour == TOOL_WRENCH)
+			if(W.tool_behaviour == TOOL_WRENCH && W.use_tool(src, user, 20))
 				W.play_tool_sound(src, 75)
 				set_anchored(FALSE)
 				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
 					"<span class='notice'>You remove the external bolts.</span>")
-				user.changeNext_move(CLICK_CD_MELEE)
-				return //set_anchored handles the rest of the stuff we need to do.
+				return
 			else if(istype(W, /obj/item/stack/cable_coil))
 				var/obj/item/stack/cable_coil/CC = W
-				if(CC.use(1))
+				if(CC.use_tool(src, user, 5, 1))
 					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
 						"<span class='notice'>You add some wires.</span>")
 					construction_state = PA_CONSTRUCTION_PANEL_OPEN
 					did_something = TRUE
 		if(PA_CONSTRUCTION_PANEL_OPEN)
-			if(W.tool_behaviour == TOOL_WIRECUTTER)//TODO:Shock user if its on?
+			if(W.tool_behaviour == TOOL_WIRECUTTER && W.use_tool(src, user, 5))
 				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
 					"<span class='notice'>You remove some wires.</span>")
 				construction_state = PA_CONSTRUCTION_UNWIRED
 				did_something = TRUE
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			else if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 10))
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
 				did_something = TRUE
 		if(PA_CONSTRUCTION_COMPLETE)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER)
+			if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 10))
 				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
 					"<span class='notice'>You open the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
 				did_something = TRUE
 
 	if(did_something)
-		user.changeNext_move(CLICK_CD_MELEE)
 		update_icon()
 		update_state()
 		return
@@ -186,7 +182,9 @@
 
 /obj/machinery/particle_accelerator/full/Destroy()
 	if(master)
-		QDEL_NULL(master)
+		master.active = FALSE
+		master.strength = 0
+		master.particle_accelerator = null
 	return ..()
 
 /obj/machinery/particle_accelerator/full/process()

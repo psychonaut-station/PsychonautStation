@@ -23,9 +23,17 @@
 
 /obj/machinery/particle_accelerator/control_box/Destroy()
 	if(particle_accelerator)
-		QDEL_NULL(particle_accelerator)
+		disassemble()
 	QDEL_NULL(wires)
 	return ..()
+
+/obj/machinery/particle_accelerator/control_box/update_state()
+	if(construction_state < PA_CONSTRUCTION_COMPLETE && particle_accelerator)
+		use_power = NO_POWER_USE
+		strength = 0
+		active = FALSE
+		particle_accelerator.update_appearance()
+		return
 
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -232,7 +240,6 @@
 		pa.setDir(dir)
 		pa.anchored = TRUE
 		pa.construction_state = PA_CONSTRUCTION_COMPLETE
-	particle_accelerator.master = null
 	QDEL_NULL(particle_accelerator)
 	return TRUE
 

@@ -85,6 +85,9 @@ SUBSYSTEM_DEF(mapping)
 	/// list of lazy templates that have been loaded
 	var/list/loaded_lazy_templates
 
+	var/list/random_engine_templates = list()
+	var/list/random_engine_spawners = list()
+
 /datum/controller/subsystem/mapping/PreInit()
 	..()
 #ifdef FORCE_MAP
@@ -363,6 +366,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	multiz_levels = SSmapping.multiz_levels
 	loaded_lazy_templates = SSmapping.loaded_lazy_templates
 
+	random_engine_templates = SSmapping.random_engine_templates
+
 #define INIT_ANNOUNCE(X) to_chat(world, span_boldannounce("[X]")); log_world(X)
 /datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
 	. = list()
@@ -434,6 +439,9 @@ Used by the AI doomsday and the self-destruct nuke.
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
+
+	LoadStationRoomTemplates()
+	load_random_engines()
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
@@ -945,3 +953,35 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	var/number_of_remaining_levels = length(checkable_levels)
 	if(number_of_remaining_levels > 0)
 		CRASH("The following [number_of_remaining_levels] away mission(s) were not loaded: [checkable_levels.Join("\n")]")
+
+/datum/controller/subsystem/mapping/proc/LoadStationRoomTemplates()
+	for(var/item in subtypesof(/datum/map_template/random_room/random_engines))
+		var/datum/map_template/random_room/random_engines/room_type = item
+		if(!(initial(room_type.mappath)))
+			message_admins("Engine Template [initial(room_type.name)] found without mappath. Yell at coders")
+			continue
+		var/datum/map_template/random_room/random_engines/E = new room_type()
+		random_engine_templates[E.room_id] = E
+		map_templates[E.room_id] = E
+
+/datum/controller/subsystem/mapping/proc/load_random_engines()
+	var/start_time = REALTIMEOFDAY
+	for(var/obj/effect/spawner/random_engines/engine_spawner as() in random_engine_spawners)
+		var/list/possible_engine_templates = list()
+		var/datum/map_template/random_room/random_engines/engine_candidate
+		shuffle_inplace(random_engine_templates)
+		for(var/ID in random_engine_templates)
+			engine_candidate = random_engine_templates[ID]
+			if(current_map.map_name != engine_candidate.station_name || engine_candidate.weight == 0 || engine_spawner.room_height != engine_candidate.template_height || engine_spawner.room_width != engine_candidate.template_width)
+				engine_candidate = null
+				continue
+			possible_engine_templates[engine_candidate] = engine_candidate.weight
+		if(possible_engine_templates.len)
+			var/datum/map_template/random_room/random_engines/template = pick_weight(possible_engine_templates)
+			log_world("Loading random engine template [template.name] ([template.type]) at [AREACOORD(engine_spawner)]")
+			template.stationinitload(get_turf(engine_spawner), centered = template.centerspawner)
+		SSmapping.random_engine_spawners -= engine_spawner
+		qdel(engine_spawner)
+	random_engine_spawners = null
+	to_chat(world, span_boldannounce("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!"))
+	log_world("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!")

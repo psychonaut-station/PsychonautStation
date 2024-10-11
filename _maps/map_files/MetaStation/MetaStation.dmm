@@ -64919,6 +64919,10 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
+"wOJ" = (
+/obj/effect/spawner/random_engines/meta,
+/turf/closed/wall,
+/area/station/engineering/storage_shared)
 "wOR" = (
 /obj/effect/landmark/event_spawn,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -110562,7 +110566,7 @@ vIY
 dnH
 dnH
 vIY
-vIY
+wOJ
 gQQ
 lfc
 abI

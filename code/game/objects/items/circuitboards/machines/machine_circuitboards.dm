@@ -1402,7 +1402,7 @@
 	build_path = /obj/machinery/pokerchip_exchanger
 	needs_anchored = FALSE
 	req_components = list()
-	
+
 /obj/item/circuitboard/machine/fishing_portal_generator
 	name = "Fishing Portal Generator"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
@@ -1804,3 +1804,16 @@
 	req_components = list(
 		/obj/item/stack/sheet/iron = 5,
 	)
+
+/obj/item/circuitboard/machine/rad_collector
+	name = "Radiation Collector (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	desc = "Comes with a small amount solder of arranged in the corner: \"If you can read this, you're too close.\""
+	build_path = /obj/machinery/power/rad_collector
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/datum/stock_part/matter_bin = 1,
+		/obj/item/stack/sheet/plasmarglass = 2,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/servo = 1)
+	needs_anchored = FALSE

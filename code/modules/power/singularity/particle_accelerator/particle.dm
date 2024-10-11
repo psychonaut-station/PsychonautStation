@@ -6,7 +6,7 @@
 	anchored = TRUE
 	density = FALSE
 	range = 10
-	speed = 1
+	speed = 0.5
 	damage = 10
 	damage_type = TOX
 

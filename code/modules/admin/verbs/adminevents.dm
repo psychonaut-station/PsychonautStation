@@ -121,6 +121,7 @@ ADMIN_VERB(cmd_admin_add_freeform_ai_law, R_ADMIN, "Add Custom AI Law", "Add a c
 
 	BLACKBOX_LOG_ADMIN_VERB("Add Custom AI Law")
 
+<<<<<<< HEAD
 ADMIN_VERB(call_shuttle, R_ADMIN, "Call Shuttle", "Force a shuttle call with additional modifiers.", ADMIN_CATEGORY_EVENTS)
 	if(EMERGENCY_AT_LEAST_DOCKED)
 		return
@@ -218,6 +219,8 @@ ADMIN_VERB(hostile_environment, R_ADMIN, "Hostile Environment", "Disable the shu
 			SSshuttle.hostile_environments.Cut()
 			SSshuttle.checkHostileEnvironment()
 
+=======
+>>>>>>> upstream/master
 ADMIN_VERB(toggle_nuke, R_DEBUG|R_ADMIN, "Toggle Nuke", "Arm or disarm a nuke.", ADMIN_CATEGORY_EVENTS)
 	var/list/nukes = list()
 	for (var/obj/machinery/nuclearbomb/bomb in world)

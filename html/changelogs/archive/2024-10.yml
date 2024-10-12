@@ -88,14 +88,6 @@
   - bugfix: fixed wabbajack statue not activating
   timothymtorres:
   - code_imp: Automatically link maps multi-z up/down traits
-<<<<<<< HEAD
-2024-10-07:
-  00-Steven:
-  - bugfix: Prosopagnosia actually accounts for hover screentips, showing humans as
-      Unknown in those too.
-  Bisar:
-  - rscadd: Clothing can now hide what you're wearing on your belt.
-=======
 2024-10-05:
   00-Steven:
   - bugfix: Prosopagnosia actually accounts for hover screentips, showing humans as
@@ -106,7 +98,6 @@
   - rscadd: Clothing can now hide what you're wearing on your belt.
   EnterTheJake:
   - bugfix: Heretic Carving Knife runes are no longer triggered by hovering projectiles.
->>>>>>> upstream/master
   GremlinSeeker:
   - rscadd: Birdshot Cargo now has a lobby and is slightly more open overall.
   - rscadd: Re-added the DnD room  to Birdshot
@@ -138,8 +129,6 @@
   - bugfix: Fix paired air alarms and sensors to be able to relink to other devices
       if turned off, reset, or destroyed.
   - bugfix: Fix air alarm disabled setting to silence warnings
-<<<<<<< HEAD
-=======
 2024-10-06:
   Ghommie:
   - bugfix: The pre-emagged fishing portal circuitboard now actually gives you an
@@ -339,4 +328,3 @@
   - bugfix: Shuttles that land next to plasma turfs no longer ruin the mass hallucination
       that is Icebox having Plasma and not just super-deadly; spiky basalt deltas.
       You're welcome; unreality fans.
->>>>>>> upstream/master

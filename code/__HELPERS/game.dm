@@ -332,8 +332,4 @@
 		message = html_encode(message)
 	else
 		message = copytext(message, 2)
-<<<<<<< HEAD
-	to_chat(target, span_purple(examine_block("<span class='oocplain'><b>İpucu: </b>[message]</span>")))
-=======
 	to_chat(target, span_purple(examine_block("<span class='oocplain'><b>[source]: </b>[message]</span>")))
->>>>>>> upstream/master

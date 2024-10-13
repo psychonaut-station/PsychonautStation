@@ -1440,7 +1440,13 @@
 /mob/living/carbon/proc/spray_blood(splatter_direction, splatter_strength = 3)
 	if(!isturf(loc))
 		return
-	var/obj/effect/decal/cleanable/blood/hitsplatter/our_splatter = new(loc)
+	var/obj/effect/decal/cleanable/blood/hitsplatter/our_splatter
+	var/datum/reagent/bloodreagent = get_blood_id()
+	if(bloodreagent != /datum/reagent/blood)
+		our_splatter = new /obj/effect/decal/cleanable/blood/hitsplatter/greyscale(loc)
+		our_splatter.color = color_hex2color_matrix(bloodreagent.color)
+	else
+		our_splatter = new (loc)
 	our_splatter.add_blood_DNA(GET_ATOM_BLOOD_DNA(src))
 	our_splatter.blood_dna_info = get_blood_dna_list()
 	var/turf/targ = get_ranged_target_turf(src, splatter_direction, splatter_strength)
@@ -1484,3 +1490,10 @@
 		return
 	head.adjustBleedStacks(5)
 	visible_message(span_notice("[src] gets a nosebleed."), span_warning("You get a nosebleed."))
+
+/mob/living/carbon/get_cell()
+	var/obj/item/organ/internal/stomach/ethereal/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
+	if(istype(stomach) || istype(stomach, /obj/item/organ/internal/stomach/ipc))
+		return stomach.cell
+	else
+		return ..()

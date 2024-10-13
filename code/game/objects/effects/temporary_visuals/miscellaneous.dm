@@ -44,6 +44,10 @@
 /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "xsplatter"
 
+/obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	splatter_type = "greyscale_splatter"
+
 /obj/effect/temp_visual/dir_setting/speedbike_trail
 	name = "speedbike trails"
 	icon_state = "ion_fade"

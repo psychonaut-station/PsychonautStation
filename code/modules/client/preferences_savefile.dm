@@ -261,7 +261,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference_type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference_type]))
+			write_preference(preference, preference.serialize(value_cache[preference_type], src))
 
 	savefile.set_entry("lastchangelog", lastchangelog)
 	savefile.set_entry("be_special", be_special)
@@ -347,7 +347,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference.type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference.type]))
+			write_preference(preference, preference.serialize(value_cache[preference.type], src))
 
 	save_data["version"] = SAVEFILE_VERSION_MAX //load_character will sanitize any bad data, so assume up-to-date.
 

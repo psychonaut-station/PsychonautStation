@@ -564,7 +564,9 @@ GLOBAL_LIST_INIT(phobia_species, list(
 	"lizards" = typecacheof(list(/datum/species/lizard)),
 	"robots" = typecacheof(list(
 		/datum/species/android,
-		/datum/species/synthetic)),
+		/datum/species/synthetic,
+		/datum/species/ipc,
+	)),
 	"skeletons" = typecacheof(list(
 		/datum/species/plasmaman,
 		/datum/species/skeleton,

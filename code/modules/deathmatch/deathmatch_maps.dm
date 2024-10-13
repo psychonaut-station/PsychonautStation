@@ -215,6 +215,7 @@
 		/datum/outfit/deathmatch_loadout/ethereal,
 		/datum/outfit/deathmatch_loadout/plasmamen,
 		/datum/outfit/deathmatch_loadout/felinid,
+		/datum/outfit/deathmatch_loadout/ipc,
 	)
 	map_name = "species_warfare"
 	key = "species_warfare"

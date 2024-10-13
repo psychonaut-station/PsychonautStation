@@ -89,6 +89,15 @@
 	. = ..()
 	. += span_notice("This appears to be some very overpriced water.")
 
+// for IPCs
+/obj/item/reagent_containers/blood/oil
+	blood_type = "LPG"
+	unique_blood = /datum/reagent/fuel/oil
+
+/obj/item/reagent_containers/blood/oil/examine()
+	. = ..()
+	. += span_notice("There is a flammable warning on the label. This is for IPCs.")
+
 // for slimepeople
 /obj/item/reagent_containers/blood/toxin
 	blood_type = "TOX"

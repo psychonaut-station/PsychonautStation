@@ -328,3 +328,9 @@
   - bugfix: Shuttles that land next to plasma turfs no longer ruin the mass hallucination
       that is Icebox having Plasma and not just super-deadly; spiky basalt deltas.
       You're welcome; unreality fans.
+2024-10-13:
+  Cruix:
+  - bugfix: Fixed chameleon clothing sometimes making you bald or hiding other parts
+      of your sprite.
+  EEASAS:
+  - bugfix: adds plasma to wawastation's xenobio

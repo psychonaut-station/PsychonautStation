@@ -86,7 +86,8 @@ SUBSYSTEM_DEF(mapping)
 	var/list/loaded_lazy_templates
 
 	var/list/random_engine_templates = list()
-	var/list/random_engine_spawners = list()
+	var/obj/effect/random_engine/random_engine_spawner
+	var/datum/map_template/random_room/random_engine/picked_engine
 
 /datum/controller/subsystem/mapping/PreInit()
 	..()
@@ -440,8 +441,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
 
-	LoadStationRoomTemplates()
-	load_random_engines()
+	load_station_room_templates()
+	pick_random_engine()
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
@@ -954,34 +955,50 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(number_of_remaining_levels > 0)
 		CRASH("The following [number_of_remaining_levels] away mission(s) were not loaded: [checkable_levels.Join("\n")]")
 
-/datum/controller/subsystem/mapping/proc/LoadStationRoomTemplates()
-	for(var/item in subtypesof(/datum/map_template/random_room/random_engines))
-		var/datum/map_template/random_room/random_engines/room_type = item
-		if(!(initial(room_type.mappath)))
-			message_admins("Engine Template [initial(room_type.name)] found without mappath. Yell at coders")
-			continue
-		var/datum/map_template/random_room/random_engines/E = new room_type()
+/datum/controller/subsystem/mapping/proc/load_random_rooms()
+	load_random_engines()
+
+/datum/controller/subsystem/mapping/proc/load_station_room_templates()
+	for(var/item in subtypesof(/datum/map_template/random_room/random_engine))
+		var/datum/map_template/random_room/random_engine/room_type = item
+		var/datum/map_template/random_room/random_engine/E = new room_type()
 		random_engine_templates[E.room_id] = E
 		map_templates[E.room_id] = E
+		if(current_map.map_name == E.station_name && E.coordinates.len && isnull(random_engine_spawner))
+			create_engine_spawner(E)
+
+/datum/controller/subsystem/mapping/proc/create_engine_spawner(datum/map_template/random_room/random_engine/engine)
+	var/turf/target = locate(engine.coordinates["x"], engine.coordinates["y"], engine.coordinates["z"])
+	var/obj/effect/random_engine/engine_spawner = new(target)
+	engine_spawner.name = "[current_map.map_name] engine spawner"
+	engine_spawner.room_width = engine::template_width
+	engine_spawner.room_height = engine::template_height
+	random_engine_spawner = engine_spawner
+	return TRUE
+
+/datum/controller/subsystem/mapping/proc/pick_random_engine()
+	var/list/possible_engine_templates = list()
+	var/datum/map_template/random_room/random_engine/engine_candidate
+	shuffle_inplace(random_engine_templates)
+	for(var/ID in random_engine_templates)
+		engine_candidate = random_engine_templates[ID]
+		if(current_map.map_name != engine_candidate.station_name || engine_candidate.weight == 0 || (engine_candidate.mappath && (random_engine_spawner.room_height != engine_candidate.template_height || random_engine_spawner.room_width != engine_candidate.template_width || !engine_candidate.empty_map)))
+			engine_candidate = null
+			continue
+		possible_engine_templates[engine_candidate] = engine_candidate.weight
+	if(!possible_engine_templates.len)
+		return FALSE
+	picked_engine = pick_weight(possible_engine_templates)
+	return TRUE
 
 /datum/controller/subsystem/mapping/proc/load_random_engines()
 	var/start_time = REALTIMEOFDAY
-	for(var/obj/effect/spawner/random_engines/engine_spawner as() in random_engine_spawners)
-		var/list/possible_engine_templates = list()
-		var/datum/map_template/random_room/random_engines/engine_candidate
-		shuffle_inplace(random_engine_templates)
-		for(var/ID in random_engine_templates)
-			engine_candidate = random_engine_templates[ID]
-			if(current_map.map_name != engine_candidate.station_name || engine_candidate.weight == 0 || engine_spawner.room_height != engine_candidate.template_height || engine_spawner.room_width != engine_candidate.template_width)
-				engine_candidate = null
-				continue
-			possible_engine_templates[engine_candidate] = engine_candidate.weight
-		if(possible_engine_templates.len)
-			var/datum/map_template/random_room/random_engines/template = pick_weight(possible_engine_templates)
-			log_world("Loading random engine template [template.name] ([template.type]) at [AREACOORD(engine_spawner)]")
-			template.stationinitload(get_turf(engine_spawner), centered = template.centerspawner)
-		SSmapping.random_engine_spawners -= engine_spawner
-		qdel(engine_spawner)
-	random_engine_spawners = null
-	to_chat(world, span_boldannounce("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!"))
+	if(random_engine_spawner && picked_engine)
+		log_world("Loading random engine template [picked_engine.name] ([picked_engine.type]) at [AREACOORD(random_engine_spawner)]")
+		if(picked_engine.mappath)
+			var/datum/map_template/empty/emptyer = new picked_engine.empty_map
+			emptyer.load(get_turf(random_engine_spawner), centered = picked_engine.centerspawner)
+			picked_engine.load(get_turf(random_engine_spawner), centered = picked_engine.centerspawner)
+	QDEL_NULL(random_engine_spawner)
 	log_world("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!")
+	return TRUE

@@ -8,17 +8,29 @@
 	var/weight = 10 //weight a room has to appear
 	var/stock = 1 //how many times this room can appear in a round
 
-/datum/map_template/random_room/random_engines/meta_supermatter
+/datum/map_template/random_room/random_engine
+	var/datum/map_template/empty/empty_map = null
+	var/list/coordinates = list()
+
+/datum/map_template/empty/meta
+	name = "Meta Emptyer"
+	mappath = "_maps/RandomEngines/MetaStation/empty.dmm"
+	should_place_on_top = FALSE
+
+/datum/map_template/random_room/random_engine/meta_supermatter
 	name = "Meta Supermatter"
 	room_id = "meta_supermatter"
-	mappath = "_maps/RandomEngines/MetaStation/supermatter.dmm"
 	centerspawner = FALSE
-	template_height = 25
-	template_width = 33
-	weight = 0
+	weight = 8
 	station_name = "MetaStation"
+	should_place_on_top = FALSE
+	coordinates = list(
+		"x" = 162,
+		"y" = 141,
+		"z" = 2,
+	)
 
-/datum/map_template/random_room/random_engines/meta_singularity
+/datum/map_template/random_room/random_engine/meta_singularity
 	name = "Meta Singularity"
 	room_id = "meta_singularity"
 	mappath = "_maps/RandomEngines/MetaStation/singularity.dmm"
@@ -27,3 +39,10 @@
 	template_width = 33
 	weight = 8
 	station_name = "MetaStation"
+	should_place_on_top = FALSE
+	empty_map = /datum/map_template/empty/meta
+	coordinates = list(
+		"x" = 162,
+		"y" = 141,
+		"z" = 2,
+	)

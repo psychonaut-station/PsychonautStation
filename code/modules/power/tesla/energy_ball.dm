@@ -10,6 +10,8 @@
 #define BLOB (STRUCTURE + 1)
 #define STRUCTURE (1)
 
+#define EBALL_NORMAL 0
+#define EBALL_DANGER 1
 /// The Tesla engine
 /obj/energy_ball
 	name = "energy ball"
@@ -38,6 +40,10 @@
 	var/energy_to_lower = -20
 	var/list/shocked_things = list()
 
+	var/status = EBALL_NORMAL
+	var/zap_icon_state = NONE
+	var/zap_energy = TESLA_DEFAULT_ENERGY
+
 /obj/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
 	. = ..()
 
@@ -62,6 +68,9 @@
 
 	return ..()
 
+/obj/energy_ball/stationary
+	zap_energy = 5 MEGA JOULES
+
 /obj/energy_ball/process()
 	if(orbiting)
 		energy = 0 // ensure we dont have miniballs of miniballs
@@ -76,7 +85,7 @@
 		pixel_y = 0
 		shocked_things.Cut(1, shocked_things.len / 1.3)
 		var/list/shocking_info = list()
-		tesla_zap(source = src, zap_range = 3, power = TESLA_DEFAULT_ENERGY, shocked_targets = shocking_info)
+		tesla_zap(source = src, zap_range = 3, power = zap_energy, shocked_targets = shocking_info, zap_flags = (energy > 250) ? ZAP_ENERGY_BALL_FLAGS : ZAP_DEFAULT_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
 
 		pixel_x = -ICON_SIZE_X
 		pixel_y = -ICON_SIZE_Y
@@ -84,7 +93,7 @@
 			var/range = rand(1, clamp(orbiting_balls.len, 2, 3))
 			var/list/temp_shock = list()
 			//We zap off the main ball instead of ourselves to make things looks proper
-			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock)
+			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
 			shocking_info += temp_shock
 		shocked_things += shocking_info
 
@@ -135,6 +144,17 @@
 		var/Orchiectomy_target = pick(orbiting_balls)
 		qdel(Orchiectomy_target)
 
+	if(orbiting_balls.len >= 16 && status != EBALL_DANGER)
+		zap_icon_state = OVER_9000_ZAP_ICON_STATE
+		zap_energy = 12 MEGA JOULES
+		status = EBALL_DANGER
+		investigate_log("has entered the danger point.", INVESTIGATE_ENGINE)
+		message_admins("[src] has entered the danger point [ADMIN_VERBOSEJMP(src)].")
+	else if(orbiting_balls.len < 16 && status != EBALL_NORMAL)
+		zap_icon_state = initial(zap_icon_state)
+		zap_energy = initial(zap_energy)
+		status = EBALL_NORMAL
+
 /obj/energy_ball/proc/new_mini_ball()
 	if(!loc)
 		return
@@ -151,6 +171,25 @@
 	var/orbitsize = (icon_dimensions["width"] + icon_dimensions["height"]) * pick(0.4, 0.5, 0.6, 0.7, 0.8)
 	orbitsize -= (orbitsize / ICON_SIZE_ALL) * (ICON_SIZE_ALL * 0.25)
 	miniball.orbit(src, orbitsize, pick(FALSE, TRUE), rand(10, 25), pick(3, 4, 5, 6, 36))
+
+	if(!isnull(color))
+		miniball.color = color
+
+/obj/energy_ball/proc/set_color(color)
+	if(isnull(color))
+		return FALSE
+	src.color = color
+	for (var/obj/energy_ball/ball in orbiting_balls)
+		ball.color = color
+	return TRUE
+
+/obj/energy_ball/proc/after_zap(atom/zapped_atom)
+	var/turf/T = get_turf(src)
+	var/datum/gas_mixture/environment = T.return_air()
+
+	if(orbiting_balls.len >= 16 && environment.gases[GAS_N2O][MOLES] < 1500)
+		explosion(zapped_atom, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3)
+		environment.gases[GAS_N2O][MOLES] -= 1
 
 /obj/energy_ball/Bump(atom/A)
 	dust_mobs(A)
@@ -199,7 +238,7 @@
 	C.investigate_log("has been dusted by an energy ball.", INVESTIGATE_DEATHS)
 	C.dust()
 
-/proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list())
+/proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list(), zap_icon, datum/callback/callback)
 	if(QDELETED(source))
 		return
 	if(!(zap_flags & ZAP_ALLOW_DUPLICATES))
@@ -237,6 +276,7 @@
 		/obj/structure/grille = FALSE,
 		/obj/structure/frame/machine = FALSE,
 		/obj/machinery/particle_accelerator = FALSE,
+		/obj/structure/cable = FALSE
 	))
 
 	//Ok so we are making an assumption here. We assume that view() still calculates from the center out.
@@ -322,7 +362,7 @@
 	if(!closest_atom)
 		return
 	//common stuff
-	source.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time = 5)
+	source.Beam(closest_atom, icon_state= (zap_icon || "lightning[rand(1,12)]"), time = 5)
 	var/zapdir = get_dir(source, closest_atom)
 	if(zapdir)
 		. = zapdir
@@ -349,13 +389,19 @@
 	else
 		power = closest_atom.zap_act(power, zap_flags)
 
+	if(callback)
+		callback.Invoke(closest_atom)
+
 	if(prob(20))//I know I know
 		var/list/shocked_copy = shocked_targets.Copy()
-		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_copy)
-		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets)
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_copy, zap_icon = zap_icon, callback = callback)
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets, zap_icon = zap_icon, callback = callback)
 		shocked_targets += shocked_copy
 	else
-		tesla_zap(source = closest_atom, zap_range = next_range, power = power, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets)
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets, zap_icon = zap_icon, callback = callback)
+
+#undef EBALL_NORMAL
+#undef EBALL_DANGER
 
 #undef BIKE
 #undef COIL

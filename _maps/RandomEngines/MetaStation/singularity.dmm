@@ -29,10 +29,10 @@
 /area/station/engineering/supermatter/room)
 "cP" = (
 /obj/machinery/light/directional/south,
+/obj/structure/sign/warning/vacuum/external/directional/south,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "cT" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 1
 	},
@@ -57,25 +57,13 @@
 "eg" = (
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
-"ej" = (
-/obj/structure/grille,
-/obj/structure/lattice,
+"eH" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/camera/emp_proof/directional/west{
+	c_tag = "Singularity Engine #4"
+	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"eH" = (
-/obj/effect/spawner/structure/window/reinforced/plasma,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/turf/open/floor/plating,
-/area/station/engineering/supermatter/room)
-"eI" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Space Engine Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/structure/cable,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "gQ" = (
 /obj/machinery/the_singularitygen,
 /obj/structure/cable,
@@ -98,7 +86,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "iY" = (
-/obj/structure/cable,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
@@ -107,46 +94,51 @@
 "je" = (
 /turf/template_noop,
 /area/template_noop)
-"kf" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Space Engine Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/engineering/supermatter/room)
 "kO" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"lj" = (
-/obj/machinery/atmospherics/pipe/heat_exchanging/junction,
-/obj/effect/spawner/structure/window/reinforced/plasma,
+"ll" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "lM" = (
 /obj/structure/cable,
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
-"nd" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Space Engine Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "np" = (
 /obj/machinery/the_singularitygen/tesla,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
+"nD" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "nM" = (
 /obj/structure/lattice,
 /turf/open/space/basic,
 /area/space/nearstation)
+"oj" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "ok" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
@@ -173,20 +165,15 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
+"qa" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/plating,
+/area/station/engineering/supermatter/room)
 "qx" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/carpet/black,
-/area/station/engineering/supermatter/room)
-"qz" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Space Engine Room"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "rn" = (
 /obj/machinery/power/energy_accumulator/tesla_coil,
@@ -197,19 +184,24 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/particle_accelerator/fuel_chamber{
-	dir = 4
+	dir = 4;
+	anchored = 1;
+	construction_state = 3
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "sB" = (
-/obj/structure/sign/warning/secure_area,
-/turf/closed/wall/r_wall,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "tg" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 4
 	},
 /obj/machinery/particle_accelerator/particle_emitter/center{
+	anchored = 1;
+	construction_state = 3;
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -226,10 +218,16 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
 	},
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "ut" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 5
+	},
 /obj/machinery/particle_accelerator/particle_emitter/right{
+	anchored = 1;
+	construction_state = 3;
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -237,16 +235,16 @@
 "uU" = (
 /obj/machinery/power/energy_accumulator/grounding_rod,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
-"vd" = (
-/obj/machinery/door/airlock/engineering/glass{
-	name = "PTL Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+"vd" = (
+/obj/structure/lattice/catwalk,
+/obj/machinery/camera/emp_proof/directional/west{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "vB" = (
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/plating/airless,
@@ -264,19 +262,31 @@
 /area/station/engineering/supermatter/room)
 "vY" = (
 /obj/machinery/power/energy_accumulator/grounding_rod,
+/obj/structure/cable,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "wm" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "wo" = (
-/obj/structure/sign/warning/no_smoking,
-/turf/closed/wall/r_wall,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 4
+	},
+/turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "wE" = (
 /obj/structure/table/reinforced,
 /obj/item/flashlight/lamp,
 /turf/open/floor/carpet/black,
+/area/station/engineering/supermatter/room)
+"xk" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "xy" = (
 /obj/structure/cable,
@@ -303,6 +313,20 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
+"yo" = (
+/obj/machinery/door/firedoor,
+/obj/structure/cable,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
+"yP" = (
+/obj/structure/sign/warning/secure_area,
+/turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
 "yR" = (
 /obj/structure/cable,
@@ -365,6 +389,8 @@
 	dir = 6
 	},
 /obj/machinery/particle_accelerator/particle_emitter/left{
+	anchored = 1;
+	construction_state = 3;
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -428,16 +454,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"Fy" = (
-/obj/structure/grille/broken,
-/obj/structure/lattice,
-/turf/open/space/basic,
-/area/space/nearstation)
 "FN" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
 /obj/machinery/particle_accelerator/end_cap{
+	anchored = 1;
+	construction_state = 3;
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -515,19 +538,32 @@
 /obj/machinery/field/generator,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"MO" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
 "MT" = (
 /turf/closed/wall/r_wall,
 /area/station/engineering/supermatter/room)
 "Nv" = (
-/obj/machinery/particle_accelerator/control_box,
 /obj/structure/cable,
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/machinery/particle_accelerator/control_box{
+	anchored = 1;
+	construction_state = 3
+	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "NA" = (
 /obj/machinery/particle_accelerator/power_box{
+	anchored = 1;
+	construction_state = 3;
 	dir = 4
 	},
 /turf/open/floor/plating,
@@ -573,14 +609,11 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "PF" = (
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Supermatter Engine Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/structure/cable,
-/turf/open/floor/plating,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "Qn" = (
 /obj/machinery/power/apc/auto_name/directional/south,
@@ -588,10 +621,13 @@
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
 "QX" = (
+/obj/structure/lattice/catwalk,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
+/obj/machinery/camera/emp_proof/directional/west{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/space/nearstation)
 "Rw" = (
 /obj/machinery/camera/emp_proof/directional/west{
 	c_tag = "Singularity Engine #4"
@@ -621,20 +657,15 @@
 "SS" = (
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"Tj" = (
+/obj/structure/sign/warning/no_smoking,
+/turf/closed/wall/r_wall,
+/area/station/engineering/supermatter/room)
 "UU" = (
 /obj/machinery/camera/emp_proof/directional/east{
 	c_tag = "Singularity Engine #3"
 	},
 /turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
-"Vk" = (
-/obj/machinery/door/firedoor,
-/obj/structure/cable,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Space Engine Room"
-	},
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "Vn" = (
 /obj/machinery/camera/emp_proof/directional/north{
@@ -693,18 +724,18 @@ je
 je
 MT
 kO
-PF
+xk
 kO
-sB
+yP
 MT
 kO
-Vk
+ll
 kO
-wo
-sB
+Tj
+yP
 kO
-kf
-eH
+oj
+qa
 MT
 je
 je
@@ -720,7 +751,7 @@ je
 je
 MT
 Yz
-QX
+NN
 hn
 MT
 ch
@@ -730,7 +761,7 @@ eg
 qx
 MT
 dx
-HO
+zC
 Yf
 MT
 je
@@ -757,7 +788,7 @@ Mt
 Zn
 kO
 dx
-ID
+wo
 Yf
 MT
 je
@@ -774,7 +805,7 @@ je
 je
 kO
 Yz
-HO
+zC
 hn
 kO
 vI
@@ -796,7 +827,7 @@ je
 "}
 (5,1,1) = {"
 MT
-qz
+nD
 MT
 kO
 MT
@@ -812,7 +843,7 @@ Qn
 MT
 dx
 to
-Yf
+PF
 MT
 je
 je
@@ -823,12 +854,12 @@ je
 "}
 (6,1,1) = {"
 zC
-NN
+sB
 JY
 dc
-nd
+MO
 dc
-HO
+zC
 hn
 MT
 kO
@@ -855,7 +886,7 @@ zq
 GM
 kO
 Yz
-HO
+zC
 DK
 MT
 Gs
@@ -882,7 +913,7 @@ hT
 GM
 kO
 Yz
-ID
+wo
 hn
 MT
 zC
@@ -894,7 +925,7 @@ MT
 dx
 ID
 dc
-SS
+oj
 je
 je
 je
@@ -934,7 +965,7 @@ UU
 np
 gQ
 HO
-eI
+yo
 BM
 Ew
 XP
@@ -948,7 +979,7 @@ MT
 dx
 Ew
 Yf
-lj
+kO
 je
 je
 je
@@ -959,8 +990,8 @@ je
 (11,1,1) = {"
 MT
 MT
-vd
 MT
+kO
 MT
 OU
 zC
@@ -988,7 +1019,7 @@ je
 je
 je
 je
-MT
+kO
 NP
 Df
 Oh
@@ -1002,7 +1033,7 @@ MT
 dx
 zC
 Yf
-lj
+kO
 je
 je
 je
@@ -1105,12 +1136,12 @@ nM
 nM
 An
 nM
-nM
+KS
 Bc
 An
 An
 nM
-An
+eH
 je
 je
 je
@@ -1137,7 +1168,7 @@ nM
 nM
 An
 An
-bM
+Bc
 je
 je
 je
@@ -1164,7 +1195,7 @@ nM
 An
 An
 KS
-ej
+bM
 je
 je
 je
@@ -1191,7 +1222,7 @@ Yq
 EM
 EM
 An
-Fy
+An
 je
 je
 je
@@ -1212,13 +1243,13 @@ xy
 An
 wm
 wm
-wm
+KS
 An
 xy
 An
 EM
 nM
-nM
+An
 je
 je
 je
@@ -1245,7 +1276,7 @@ ML
 wm
 EM
 nM
-ej
+Bc
 je
 je
 je
@@ -1272,7 +1303,7 @@ wm
 An
 EM
 An
-An
+bM
 je
 je
 je
@@ -1299,7 +1330,7 @@ wm
 dT
 EM
 An
-nM
+bM
 je
 je
 je
@@ -1326,7 +1357,7 @@ bp
 NU
 EM
 nM
-ej
+Bc
 je
 je
 je
@@ -1380,7 +1411,7 @@ wm
 An
 An
 An
-nM
+bM
 je
 je
 je
@@ -1407,7 +1438,7 @@ ML
 EP
 An
 nM
-ej
+Bc
 je
 je
 je
@@ -1434,7 +1465,7 @@ wm
 hW
 An
 nM
-nM
+An
 je
 je
 je
@@ -1449,6 +1480,7 @@ je
 je
 bM
 hW
+QX
 hW
 hW
 hW
@@ -1458,10 +1490,9 @@ hW
 hW
 hW
 hW
-hW
+vd
 An
-An
-Fy
+bM
 je
 je
 je
@@ -1488,7 +1519,7 @@ Bc
 An
 bM
 KS
-KS
+bM
 je
 je
 je

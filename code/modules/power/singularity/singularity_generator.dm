@@ -19,7 +19,7 @@
 
 /obj/machinery/the_singularitygen/attackby(obj/item/W, mob/user, params)
 	if(W.tool_behaviour == TOOL_WRENCH)
-		default_unfasten_wrench(user, W, 0)
+		default_unfasten_wrench(user, W)
 	else
 		return ..()
 
@@ -37,4 +37,4 @@
 /obj/machinery/the_singularitygen/tesla
 	name = "Tesla Singularity Generator"
 	icon = 'icons/obj/machines/engine/tesla_generator.dmi'
-	creation_type = /obj/energy_ball
+	creation_type = /obj/energy_ball/stationary

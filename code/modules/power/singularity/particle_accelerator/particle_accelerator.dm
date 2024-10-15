@@ -136,6 +136,7 @@
 	desc = "This is where the Alpha particles are accelerated to <b><i>radical speeds</i></b>."
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"
+	var/filled_with = NONE
 
 /obj/machinery/particle_accelerator/fuel_chamber/Initialize(mapload)
 	. = ..()
@@ -174,6 +175,7 @@
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/fire_delay = 50
 	var/last_shot = 0
+	var/filled_with = NONE
 	COOLDOWN_DECLARE(next_fire)
 
 /obj/machinery/particle_accelerator/full/setDir(newdir)
@@ -245,7 +247,7 @@
 		P.firer = src
 		P.fired_from = src
 		P.fire(dir2angle(dir))
-		world.log << P
+		P.filled_with = filled_with
 	return 1
 
 #undef PA_CONSTRUCTION_UNSECURED

@@ -3,12 +3,12 @@
 	desc = "Small things moving very fast."
 	icon = 'icons/psychonaut/obj/machines/engine/particle_accelerator.dmi'
 	icon_state = "particle"
-	anchored = TRUE
-	density = FALSE
+	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	range = 10
 	speed = 0.5
 	damage = 10
 	damage_type = TOX
+	var/filled_with = NONE
 
 /obj/projectile/accelerated_particle/weak
 	range = 8

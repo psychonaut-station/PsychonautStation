@@ -7,8 +7,6 @@
 	var/template_width = 0
 	var/weight = 10 //weight a room has to appear
 	var/stock = 1 //how many times this room can appear in a round
-
-/datum/map_template/random_room/random_engine
 	var/datum/map_template/empty/empty_map = null
 	var/list/coordinates = list()
 

@@ -15,6 +15,13 @@
 "bM" = (
 /turf/closed/wall/r_wall,
 /area/space/nearstation)
+"bW" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron,
+/area/station/engineering/supermatter/room)
 "ch" = (
 /obj/structure/chair/sofa/corp/right,
 /obj/machinery/light/directional/west,
@@ -74,10 +81,10 @@
 /turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "hT" = (
-/obj/machinery/power/rad_collector,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
 	},
+/obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "hW" = (
@@ -105,7 +112,7 @@
 	name = "Supermatter Engine Room"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "lM" = (
 /obj/structure/cable,
@@ -137,7 +144,7 @@
 	name = "Supermatter Engine Room"
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "ok" = (
 /obj/machinery/door/airlock/external,
@@ -190,9 +197,23 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
+"se" = (
+/obj/machinery/power/energy_accumulator/rad_collector/anchored,
+/obj/machinery/power/energy_accumulator/rad_collector/anchored,
+/turf/open/floor/iron/dark,
+/area/station/engineering/supermatter/room)
+"sk" = (
+/obj/machinery/door/firedoor,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/turf/open/floor/plating,
+/area/template_noop)
 "sB" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "tg" = (
@@ -286,7 +307,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/plating,
+/turf/open/floor/iron,
 /area/station/engineering/supermatter/room)
 "xy" = (
 /obj/structure/cable,
@@ -344,8 +365,8 @@
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
 "zq" = (
-/obj/machinery/power/rad_collector,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "zA" = (
@@ -475,7 +496,7 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "GM" = (
-/obj/machinery/power/rad_collector,
+/obj/machinery/power/energy_accumulator/rad_collector/anchored,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "GT" = (
@@ -673,6 +694,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
+"VO" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron,
+/area/station/engineering/supermatter/room)
 "XP" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/structure/cable,
@@ -750,7 +776,7 @@ je
 je
 je
 MT
-Yz
+bW
 NN
 hn
 MT
@@ -762,7 +788,7 @@ qx
 MT
 dx
 zC
-Yf
+VO
 MT
 je
 je
@@ -777,7 +803,7 @@ je
 je
 je
 kO
-Yz
+bW
 cT
 hn
 kO
@@ -789,7 +815,7 @@ Zn
 kO
 dx
 wo
-Yf
+VO
 MT
 je
 je
@@ -804,7 +830,7 @@ je
 je
 je
 kO
-Yz
+bW
 zC
 hn
 kO
@@ -925,7 +951,7 @@ MT
 dx
 ID
 dc
-oj
+sk
 je
 je
 je
@@ -936,7 +962,7 @@ je
 (9,1,1) = {"
 rn
 vY
-GM
+se
 GM
 kO
 Yy
@@ -978,7 +1004,7 @@ zC
 MT
 dx
 Ew
-Yf
+hn
 kO
 je
 je
@@ -1005,7 +1031,7 @@ zC
 MT
 dx
 zC
-Yf
+hn
 kO
 je
 je
@@ -1032,7 +1058,7 @@ AG
 MT
 dx
 zC
-Yf
+hn
 kO
 je
 je

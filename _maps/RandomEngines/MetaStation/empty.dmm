@@ -30,6 +30,10 @@
 /obj/effect/spawner/deleter,
 /turf/open/floor/plating,
 /area/space)
+"X" = (
+/obj/effect/spawner/deleter/atmoshpherics,
+/turf/open/floor/plating,
+/area/space)
 
 (1,1,1) = {"
 a
@@ -38,18 +42,18 @@ a
 a
 v
 W
-W
-W
-v
-v
-W
-W
+X
 W
 v
 v
 W
 W
 W
+v
+v
+W
+W
+X
 v
 a
 a
@@ -239,7 +243,7 @@ o
 W
 o
 o
-W
+X
 a
 a
 a

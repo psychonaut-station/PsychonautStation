@@ -442,7 +442,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
 
 	load_station_room_templates()
-	pick_random_engine()
+	pick_engine(!isnull(current_map.picked_engine))
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
@@ -962,27 +962,31 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	for(var/item in subtypesof(/datum/map_template/random_room/random_engine))
 		var/datum/map_template/random_room/random_engine/room_type = item
 		var/datum/map_template/random_room/random_engine/E = new room_type()
-		random_engine_templates[E.room_id] = E
 		map_templates[E.room_id] = E
-		if(current_map.map_name == E.station_name && E.coordinates.len && isnull(random_engine_spawner))
-			create_engine_spawner(E)
+		if(current_map.map_name == E.station_name)
+			random_engine_templates[E.room_id] = E
+			if(E.coordinates.len && E.template_width && E.template_height && isnull(random_engine_spawner))
+				create_engine_spawner(E)
 
 /datum/controller/subsystem/mapping/proc/create_engine_spawner(datum/map_template/random_room/random_engine/engine)
 	var/turf/target = locate(engine.coordinates["x"], engine.coordinates["y"], engine.coordinates["z"])
 	var/obj/effect/random_engine/engine_spawner = new(target)
 	engine_spawner.name = "[current_map.map_name] engine spawner"
-	engine_spawner.room_width = engine::template_width
-	engine_spawner.room_height = engine::template_height
+	engine_spawner.room_width = engine.template_width
+	engine_spawner.room_height = engine.template_height
 	random_engine_spawner = engine_spawner
 	return TRUE
 
-/datum/controller/subsystem/mapping/proc/pick_random_engine()
+/datum/controller/subsystem/mapping/proc/pick_engine(force = FALSE)
+	if(force)
+		picked_engine = random_engine_templates[current_map.picked_engine]
+		return TRUE
 	var/list/possible_engine_templates = list()
 	var/datum/map_template/random_room/random_engine/engine_candidate
 	shuffle_inplace(random_engine_templates)
 	for(var/ID in random_engine_templates)
 		engine_candidate = random_engine_templates[ID]
-		if(current_map.map_name != engine_candidate.station_name || engine_candidate.weight == 0 || (engine_candidate.mappath && (random_engine_spawner.room_height != engine_candidate.template_height || random_engine_spawner.room_width != engine_candidate.template_width || !engine_candidate.empty_map)))
+		if(engine_candidate.weight == 0 || (engine_candidate.mappath && (random_engine_spawner.room_height != engine_candidate.template_height || random_engine_spawner.room_width != engine_candidate.template_width || !engine_candidate.empty_map)))
 			engine_candidate = null
 			continue
 		possible_engine_templates[engine_candidate] = engine_candidate.weight

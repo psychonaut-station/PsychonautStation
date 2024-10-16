@@ -11,12 +11,12 @@
 	icon = 'icons/effects/landmarks_static.dmi'
 	icon_state = "x"
 	var/turf_type = null
+	var/list/ignore_list = list()
 
 /obj/effect/spawner/deleter/New(loc, ...)
 	. = ..()
 	var/turf/T = loc
-	var/proc_flags = CHANGETURF_IGNORE_AIR
-	T.empty(turf_type, flags = proc_flags)
+	T.empty(turf_type, flags = CHANGETURF_IGNORE_AIR, ignore_typecache = ignore_list)
 	return
 
 /obj/effect/spawner/deleter/space
@@ -26,3 +26,6 @@
 /obj/effect/spawner/deleter/iron_floor
 	icon_state = "generic_event"
 	turf_type = /turf/open/floor/iron
+
+/obj/effect/spawner/deleter/atmoshpherics
+	ignore_list = list(/obj/machinery/atmospherics)

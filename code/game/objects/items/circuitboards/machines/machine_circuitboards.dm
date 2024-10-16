@@ -1809,7 +1809,7 @@
 	name = "Radiation Collector (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	desc = "Comes with a small amount solder of arranged in the corner: \"If you can read this, you're too close.\""
-	build_path = /obj/machinery/power/rad_collector
+	build_path = /obj/machinery/power/energy_accumulator/rad_collector
 	req_components = list(
 		/obj/item/stack/cable_coil = 5,
 		/datum/stock_part/matter_bin = 1,

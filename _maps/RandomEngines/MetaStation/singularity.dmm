@@ -186,8 +186,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
 "se" = (
-/obj/machinery/power/energy_accumulator/rad_collector/anchored,
-/obj/machinery/power/energy_accumulator/rad_collector/anchored,
+/obj/machinery/power/energy_accumulator/rad_collector,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "sk" = (
@@ -471,10 +470,6 @@
 /obj/machinery/power/emitter,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"GM" = (
-/obj/machinery/power/energy_accumulator/rad_collector/anchored,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "GT" = (
 /obj/effect/turf_decal/bot{
 	dir = 1
@@ -858,8 +853,8 @@ je
 (7,1,1) = {"
 rn
 uU
-GM
-GM
+se
+se
 kO
 dx
 iY
@@ -885,8 +880,8 @@ je
 (8,1,1) = {"
 rn
 tt
-GM
-GM
+se
+se
 kO
 dx
 iY
@@ -913,7 +908,7 @@ je
 rn
 uU
 se
-GM
+se
 kO
 NP
 yR

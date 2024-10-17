@@ -137,7 +137,7 @@ ADMIN_VERB(admin_change_map_engine, R_SERVER, "Change Map Engine", "Set the next
 		to_chat(user, span_warning("Next map doesnt have engine options."))
 		return
 	var/engine = tgui_input_list(user, "Change Map Engine", "Select the engine for next map", sort_list(engine_list))
-	next_map.picked_engine = SSmapping.map_templates[engine]
+	next_map.picked_engine = engine_list[engine]
 	var/list/json_value = safe_json_decode(file2text(PATH_TO_NEXT_MAP_JSON))
 	json_value["engine_type"] = next_map.picked_engine
 

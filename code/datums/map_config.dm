@@ -47,6 +47,8 @@
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
 
+	var/picked_engine = null
+
 /**
  * Proc that simply loads the default map config, which should always be functional.
  */
@@ -207,6 +209,9 @@
 				stack_trace("Invalid path in mapping config for additional library areas: \[[path_as_text]\]")
 				continue
 			library_areas += path
+
+	if("engine_type" in json)
+		picked_engine = json["engine_type"]
 
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests

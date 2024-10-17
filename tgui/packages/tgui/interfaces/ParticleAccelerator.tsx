@@ -1,9 +1,18 @@
+import { BooleanLike } from 'common/react';
+
 import { useBackend } from '../backend';
 import { Box, Button, LabeledList, Section } from '../components';
 import { Window } from '../layouts';
 
+type Data = {
+  assembled: BooleanLike;
+  power: BooleanLike;
+  strength_limit: number;
+  strength: number;
+};
+
 export const ParticleAccelerator = (props) => {
-  const { act, data } = useBackend();
+  const { act, data } = useBackend<Data>();
   const { assembled, power, strength_limit, strength } = data;
   return (
     <Window width={350} height={185}>

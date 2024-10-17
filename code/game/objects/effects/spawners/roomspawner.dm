@@ -1,7 +1,7 @@
 /obj/effect/random_engine
 	name = "random engine spawner"
 	icon = 'icons/effects/landmarks_static.dmi'
-	icon_state = "random_room"
+	icon_state = "x"
 	dir = NORTH
 	var/room_width = 0
 	var/room_height = 0

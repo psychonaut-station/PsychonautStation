@@ -70,7 +70,6 @@
 /obj/machinery/the_singularitygen,
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "hn" = (
@@ -159,7 +158,6 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/carpet/black,
 /area/station/engineering/supermatter/room)
 "qa" = (
@@ -219,19 +217,8 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)
-"to" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "tt" = (
 /obj/machinery/power/energy_accumulator/tesla_coil,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 8
-	},
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -274,13 +261,6 @@
 	},
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
-/area/station/engineering/supermatter/room)
-"vY" = (
-/obj/machinery/power/energy_accumulator/grounding_rod,
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "wm" = (
 /turf/open/floor/plating/airless,
@@ -339,7 +319,6 @@
 	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/supermatter/room)
 "yP" = (
@@ -502,20 +481,6 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
-"HO" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
-"ID" = (
-/obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/turf/open/floor/iron/dark,
-/area/station/engineering/supermatter/room)
 "Jc" = (
 /obj/structure/cable,
 /obj/structure/cable/layer1,
@@ -826,7 +791,7 @@ yT
 pB
 ck
 Ay
-to
+yR
 VO
 MT
 je
@@ -880,7 +845,7 @@ kO
 kO
 MT
 dx
-HO
+yR
 hn
 MT
 je
@@ -946,7 +911,7 @@ je
 "}
 (9,1,1) = {"
 rn
-vY
+uU
 se
 GM
 kO
@@ -960,7 +925,7 @@ rs
 Nv
 yR
 yn
-ID
+yR
 yR
 hn
 MT

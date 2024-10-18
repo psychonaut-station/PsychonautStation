@@ -193,8 +193,15 @@
 
 	var/mob/living/carbon/human/human_user = user
 	if(human_user.physique == FEMALE)
-		return pick('sound/mobs/humanoids/human/gasp/gasp_female1.ogg', 'sound/mobs/humanoids/human/gasp/gasp_female2.ogg', 'sound/mobs/humanoids/human/gasp/gasp_female3.ogg')
-	return pick('sound/mobs/humanoids/human/gasp/gasp_male1.ogg', 'sound/mobs/humanoids/human/gasp/gasp_male2.ogg')
+		return pick(
+			'sound/mobs/humanoids/human/gasp/gasp_female1.ogg',
+			'sound/mobs/humanoids/human/gasp/gasp_female2.ogg',
+			'sound/mobs/humanoids/human/gasp/gasp_female3.ogg',
+			)
+	return pick(
+		'sound/mobs/humanoids/human/gasp/gasp_male1.ogg',
+		'sound/mobs/humanoids/human/gasp/gasp_male2.ogg',
+		)
 
 /datum/emote/living/gasp/shock
 	key = "gaspshock"
@@ -263,7 +270,7 @@
 	message = "laughs."
 	message_mime = "laughs silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	audio_cooldown = 5 SECONDS
+	specific_emote_audio_cooldown = 8 SECONDS
 	vary = TRUE
 
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
@@ -312,7 +319,6 @@
 	message = "sneezes."
 	message_mime = "acts out an exaggerated silent sneeze."
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	audio_cooldown = 5 SECONDS
 	vary = TRUE
 
 /datum/emote/living/sneeze/get_sound(mob/living/carbon/human/user)
@@ -326,7 +332,6 @@
 	message = "coughs!"
 	message_mime = "acts out an exaggerated cough!"
 	vary = TRUE
-	audio_cooldown = 5 SECONDS
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_RUNECHAT
 
 /datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional, params)
@@ -743,7 +748,6 @@
 	key_third_person = "whistles"
 	message = "whistles."
 	message_mime = "whistles silently!"
-	audio_cooldown = 5 SECONDS
 	vary = TRUE
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
@@ -754,13 +758,13 @@
 	key = "fart"
 	key_third_person = "farts"
 	message = "farts."
-	message_mime = "farts."
+	message_mime = "farts silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	audio_cooldown = 25 SECONDS
+	specific_emote_audio_cooldown = 25 SECONDS
 	vary = TRUE
 
 /datum/emote/living/fart/can_run_emote(mob/living/user, status_check = TRUE , intentional)
-	return ..()
+	return ..() && user.can_speak(allow_mimes = TRUE)
 
 /datum/emote/living/fart/get_sound(mob/living/user)
 	if(ishuman(user))

@@ -41,14 +41,10 @@
 
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 
-	var/update = src.discord_id != discord_id ? TRUE : FALSE
-	src.discord_id = discord_id
-
 	if(discord_id)
-		holder.get_discord(refresh, discord_id)
+		holder.fetch_discord(refresh, discord_id)
 		if(refresh)
-			holder.prefs.unlock_content = holder.check_patreon()
-			holder.prefs.max_save_slots = holder.prefs.unlock_content ? 8 : holder.prefs::max_save_slots
+			holder.prefs.refresh_membership()
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
 
@@ -59,9 +55,9 @@
 			SSdiscord.reverify_cache[holder.ckey] = token
 
 		holder.prefs.unlock_content = FALSE
-		holder.prefs.max_save_slots = holder.prefs::max_save_slots
 
-	if(update)
+	if(src.discord_id != discord_id)
+		src.discord_id = discord_id
 		update_static_data(holder.mob)
 
 /datum/verification_menu/proc/can_refresh()

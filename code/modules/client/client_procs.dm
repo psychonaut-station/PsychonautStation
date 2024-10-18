@@ -541,7 +541,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/discord_id = SSdiscord.lookup_id(ckey)
 		if(discord_id)
 			if(is_discord_member(discord_id) == FALSE)
-				if(get_discord(FALSE, discord_id) == FALSE)
+				if(fetch_discord(FALSE, discord_id) == FALSE)
 					message_admins("[key_name_admin(src)] has connected while require discord linking is on but their Discord account no longer exist.")
 					log_admin_private("[key_name(src)] has connected while require discord linking is on but their Discord account no longer exist.")
 				else
@@ -819,7 +819,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
 				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
 
-/client/proc/get_discord(no_cache = FALSE, discord_id)
+/client/proc/fetch_discord(no_cache = FALSE, discord_id)
 	if(!no_cache && !isnull(discord))
 		return discord
 
@@ -886,10 +886,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	if(!response.errored && response.status_code == 200)
 		var/list/json = json_decode(response.body)
 		return json["patron"]
-
-	log_world("Failed to fetch patreon endpoint for [ckey]\nError: [response.error] Status Code: [response.status_code] Body: [response.body]")
-
-	return FALSE
 
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.

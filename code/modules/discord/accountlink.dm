@@ -42,7 +42,7 @@
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 
 	if(discord_id)
-		holder.get_discord(refresh, discord_id)
+		holder.fetch_discord(refresh, discord_id)
 		if(refresh)
 			holder.prefs.refresh_membership()
 	else

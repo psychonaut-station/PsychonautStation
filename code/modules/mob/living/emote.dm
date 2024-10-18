@@ -758,13 +758,13 @@
 	key = "fart"
 	key_third_person = "farts"
 	message = "farts."
-	message_mime = "farts."
+	message_mime = "farts silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	audio_cooldown = 25 SECONDS
+	specific_emote_audio_cooldown = 25 SECONDS
 	vary = TRUE
 
 /datum/emote/living/fart/can_run_emote(mob/living/user, status_check = TRUE , intentional)
-	return ..()
+	return ..() && user.can_speak(allow_mimes = TRUE)
 
 /datum/emote/living/fart/get_sound(mob/living/user)
 	if(ishuman(user))

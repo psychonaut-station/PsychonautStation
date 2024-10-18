@@ -887,10 +887,6 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 		var/list/json = json_decode(response.body)
 		return json["patron"]
 
-	log_world("Failed to fetch patreon endpoint for [ckey]\nError: [response.error] Status Code: [response.status_code] Body: [response.body]")
-
-	return FALSE
-
 /client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.
 	var/datum/db_query/query_get_notes = SSdbcore.NewQuery(

@@ -543,4 +543,3 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_cover = MASKCOVERSMOUTH
 	visor_flags_cover = MASKCOVERSMOUTH
 	inhand_icon_state = null
-	has_fov = FALSE

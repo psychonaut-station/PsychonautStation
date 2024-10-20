@@ -47,7 +47,7 @@
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
 
-	var/picked_engine = null
+	var/list/picked_rooms = list()
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -210,8 +210,15 @@
 				continue
 			library_areas += path
 
-	if("engine_type" in json)
-		picked_engine = json["engine_type"]
+	if("room_templates" in json)
+		if(!islist(json["room_templates"]))
+			log_world("map_config \"room_templates\" field is missing or invalid!")
+			return
+		var/list/L = json["room_templates"]
+		for(var/key in L)
+			var/value = L[key]
+			picked_rooms[key] = value
+			world.log << "[key] : [value]"
 
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests

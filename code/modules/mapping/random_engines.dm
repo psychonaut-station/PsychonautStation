@@ -6,14 +6,12 @@
 	var/template_height = 0
 	var/template_width = 0
 	var/weight = 10 //weight a room has to appear
-	var/stock = 1 //how many times this room can appear in a round
 	var/datum/map_template/empty/empty_map = null
 	var/list/coordinates = list()
+	var/room_type = null
 
-/datum/map_template/empty/meta
-	name = "Meta Emptyer"
-	mappath = "_maps/RandomEngines/MetaStation/empty.dmm"
-	should_place_on_top = FALSE
+/datum/map_template/random_room/random_engine
+	room_type = "engine"
 
 /datum/map_template/random_room/random_engine/meta_supermatter
 	name = "Meta Supermatter"
@@ -44,3 +42,43 @@
 		"y" = 141,
 		"z" = 2,
 	)
+
+/datum/map_template/random_room/random_engine/delta_supermatter
+	name = "Delta Supermatter"
+	room_id = "delta_supermatter"
+	centerspawner = FALSE
+	weight = 8
+	station_name = "Delta Station"
+	should_place_on_top = FALSE
+	coordinates = list(
+		"x" = 63,
+		"y" = 106,
+		"z" = 2,
+	)
+
+/datum/map_template/random_room/random_engine/delta_singularity
+	name = "Delta Singularity"
+	room_id = "delta_singularity"
+	mappath = "_maps/RandomEngines/Deltastation/singularity.dmm"
+	centerspawner = FALSE
+	template_height = 31
+	template_width = 23
+	weight = 8
+	station_name = "Delta Station"
+	should_place_on_top = FALSE
+	empty_map = /datum/map_template/empty/delta
+	coordinates = list(
+		"x" = 63,
+		"y" = 106,
+		"z" = 2,
+	)
+
+/datum/map_template/empty/meta
+	name = "Meta Emptyer"
+	mappath = "_maps/RandomEngines/MetaStation/empty.dmm"
+	should_place_on_top = FALSE
+
+/datum/map_template/empty/delta
+	name = "Delta Emptyer"
+	mappath = "_maps/RandomEngines/Deltastation/empty.dmm"
+	should_place_on_top = FALSE

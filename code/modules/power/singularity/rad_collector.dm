@@ -1,12 +1,7 @@
-//radiation needs to be over this amount to get power
 #define RAD_COLLECTOR_EFFICIENCY 80
-#define RAD_COLLECTOR_COEFFICIENT 100
-//(this*100)% of stored power outputted per tick. Doesn't actualy change output total, lower numbers just means collectors output for longer in absence of a source
+#define RAD_COLLECTOR_COEFFICIENT 1000
 #define RAD_COLLECTOR_STORED_OUT 0.04
-//This is gonna need a lot of tweaking to get right. This is the number used to calculate the conversion of watts to research points per process()
 #define RAD_COLLECTOR_MINING_CONVERSION_RATE 0.0001
-//Produces at least 1000 watts if it has more than that stored
-#define RAD_COLLECTOR_OUTPUT min(stored_energy, (stored_energy*RAD_COLLECTOR_STORED_OUT)+1000)
 
 /obj/machinery/power/energy_accumulator/rad_collector
 	name = "Particle Capture Array"
@@ -31,6 +26,8 @@
 	///Multiplier for the amount of gas removed per tick
 	var/power_production_drain = 0.001
 	var/bitcoinproduction_drain = 0.015
+
+	var/bitcoin_produced = 0
 	//Multiplier for tanks and gases insidee
 	var/power_coeff = 1
 	var/bitcoinmining = FALSE
@@ -64,9 +61,7 @@
 			loaded_tank.air_contents.remove_specific(/datum/gas/plasma, gasdrained)
 			loaded_tank.air_contents.assert_gases(/datum/gas/tritium)
 			loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES] += gasdrained
-			var/power_produced = RAD_COLLECTOR_OUTPUT
-			release_energy(power_produced)
-			stored_energy -= power_produced
+			return ..(seconds_per_tick)
 	else if(is_station_level(z) && sciweb)
 		if(!totaltrit || !totalo2)
 			playsound(src, 'sound/machines/ding.ogg', 50, 1)
@@ -77,11 +72,13 @@
 			loaded_tank.air_contents.remove_specific(/datum/gas/oxygen, gasdrained)
 			loaded_tank.air_contents.assert_gases(/datum/gas/carbon_dioxide)
 			loaded_tank.air_contents.gases[/datum/gas/carbon_dioxide][MOLES] += gasdrained * 2
-			var/bitcoins_mined = RAD_COLLECTOR_OUTPUT
+
+			var/bitcoins_mined = min(stored_energy, (stored_energy*0.04)+1000)
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if(D)
 				D.adjust_money((bitcoins_mined*RAD_COLLECTOR_MINING_CONVERSION_RATE) / 2) //about 750 credits per minute with 2 emitters and 6 collectors with stock parts
 			sciweb.add_point_type(TECHWEB_POINT_TYPE_GENERIC, bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE) //about 1300 points per minute with the above set up
+			bitcoin_produced = bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE
 			stored_energy -= bitcoins_mined
 
 /obj/machinery/power/energy_accumulator/rad_collector/interact(mob/user)
@@ -153,18 +150,12 @@
 
 /obj/machinery/power/energy_accumulator/rad_collector/examine(mob/user)
 	. = ..()
-	if(active)
-		if(!bitcoinmining)
-			var/joules = stored_energy * SSmachines.wait * 0.1
-			. += "<span class='notice'>[src]'s display states that it has stored <b>[display_energy(joules)]</b>, and is processing <b>[display_power(RAD_COLLECTOR_OUTPUT)]</b>.</span>"
-		else
-			. += "<span class='notice'>[src]'s display states that it has stored a total of <b>[stored_energy*RAD_COLLECTOR_MINING_CONVERSION_RATE]</b>, and is producing [RAD_COLLECTOR_OUTPUT*RAD_COLLECTOR_MINING_CONVERSION_RATE] research points per minute.</span>"
-	else
-		if(!bitcoinmining)
-			. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Power production mode. Please insert <b>Plasma</b>. Use a multitool to change production modes.\"</span>"
-		else
-			. += "<span class='notice'><b>[src]'s display displays the words:</b> \"Research point production mode. Please insert <b>Tritium</b> and <b>Oxygen</b>. Use a multitool to change production modes.\"</span>"
-
+	if(in_range(user, src) || isobserver(user))
+		. += span_notice("The status display reads:")
+		. += span_notice("[bitcoinmining ? "Research point production mode" : "Power production mode"]")
+		. += span_notice("Radiation collection at <b>[power_coeff*100]%</b>.")
+		. += span_notice("Stored <b>[bitcoinmining ? (stored_energy*RAD_COLLECTOR_MINING_CONVERSION_RATE) : display_energy(get_stored_joules())]</b>.")
+		. += span_notice("[bitcoinmining ? "Producing <b>[bitcoin_produced*RAD_COLLECTOR_MINING_CONVERSION_RATE]</b>" : "Processing <b>[display_power(processed_energy)]</b>"].")
 
 /obj/machinery/power/energy_accumulator/rad_collector/return_analyzable_air()
 	if(loaded_tank)
@@ -226,4 +217,3 @@
 #undef RAD_COLLECTOR_COEFFICIENT
 #undef RAD_COLLECTOR_STORED_OUT
 #undef RAD_COLLECTOR_MINING_CONVERSION_RATE
-#undef RAD_COLLECTOR_OUTPUT

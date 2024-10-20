@@ -130,8 +130,6 @@ GLOBAL_VAR(command_name)
 	var/holiday_name = length(GLOB.holidays) && pick(GLOB.holidays)
 	if(holiday_name)
 		var/datum/holiday/holiday = GLOB.holidays[holiday_name]
-		if(istype(holiday, /datum/holiday/friday_thirteenth))
-			random = 13
 		name = holiday.getStationPrefix()
 		//get normal name
 	if(!name)

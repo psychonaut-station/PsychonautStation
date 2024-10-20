@@ -79,6 +79,11 @@
 /obj/effect/decal/cleanable/blood/splatter/over_window/NeverShouldHaveComeHere(turf/here_turf)
 	return isgroundlessturf(here_turf)
 
+/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	icon_state = "greyscale_streak1"
+	random_icon_states = list("greyscale_streak1", "greyscale_streak2", "greyscale_streak4")
+
 /obj/effect/decal/cleanable/blood/tracks
 	icon_state = "tracks"
 	desc = "They look like tracks left by wheels."
@@ -452,6 +457,51 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	if(!the_window.fulltile)
 		return
 	var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new
+	final_splatter.forceMove(the_window)
+	the_window.vis_contents += final_splatter
+	the_window.bloodied = TRUE
+	qdel(src)
+
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale
+	name = "blood splatter"
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	icon_state = "greyscale_hitsplatter1"
+	random_icon_states = list("greyscale_hitsplatter1", "hitsplatter2", "hitsplatter3")
+
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale/Bump(atom/bumped_atom)
+	if(!iswallturf(bumped_atom) && !istype(bumped_atom, /obj/structure/window))
+		qdel(src)
+		return
+
+	if(istype(bumped_atom, /obj/structure/window))
+		var/obj/structure/window/bumped_window = bumped_atom
+		if(!bumped_window.fulltile)
+			hit_endpoint = TRUE
+			qdel(src)
+			return
+
+	hit_endpoint = TRUE
+	if(isturf(prev_loc))
+		abstract_move(bumped_atom)
+		skip = TRUE
+		//Adjust pixel offset to make splatters appear on the wall
+		if(istype(bumped_atom, /obj/structure/window))
+			land_on_window(bumped_atom)
+		else
+			var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new(prev_loc)
+			final_splatter.color = color
+			final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
+			final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
+	else // This will only happen if prev_loc is not even a turf, which is highly unlikely.
+		abstract_move(bumped_atom)
+		qdel(src)
+
+/// A special case for hitsplatters hitting windows, since those can actually be moved around, store it in the window and slap it in the vis_contents
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale/land_on_window(obj/structure/window/the_window)
+	if(!the_window.fulltile)
+		return
+	var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new
+	final_splatter.color = color
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE

@@ -343,6 +343,13 @@
 					splatter_dir = get_dir(starting, target_turf)
 				if(isalien(living_target))
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
+				else if(ishuman(living_target))
+					var/datum/reagent/blood_id = living_target.get_blood_id()
+					if(!isnull(blood_id))
+						var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
+						var/obj/splatter = new splatter_type(living_target.loc, living_target.dir)
+						if(blood_id != /datum/reagent/blood)
+							splatter.color = color_hex2color_matrix(blood_id.color)
 				else
 					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
 				if(prob(33))

@@ -265,6 +265,11 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			SET_PLANE_EXPLICIT(info_button, ABOVE_HUD_PLANE, anchor)
 			info_button.layer = RADIAL_CONTENT_LAYER
 			E.vis_contents += info_button
+		if (choice_datum?.warning)
+			var/obj/effect/abstract/warning/warning_button = new(E)
+			SET_PLANE_EXPLICIT(warning_button, ABOVE_HUD_PLANE, anchor)
+			warning_button.layer = RADIAL_CONTENT_LAYER
+			E.vis_contents += warning_button
 
 /datum/radial_menu/New()
 	close_button = new
@@ -412,6 +417,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 	/// If provided, will display an info button that will put this text in your chat
 	var/info
+
+	/// If its true, will display an warning indicator
+	var/warning = FALSE
 
 /datum/radial_menu_choice/Destroy(force)
 	. = ..()

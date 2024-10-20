@@ -90,7 +90,8 @@
 			continue
 		if(user == target && !(surgery.surgery_flags & SURGERY_SELF_OPERABLE))
 			continue
-
+		if(user == target && (surgery.surgery_flags & SURGERY_SELF_OPERABLE) && (affecting.bodytype & BODYTYPE_IPC))
+			continue
 		if(isnull(affecting))
 			if(surgery.surgery_flags & SURGERY_REQUIRE_LIMB)
 				continue

@@ -337,6 +337,9 @@
 	for(var/mob/living/basic/slime/M in src)
 		M.apply_water()
 
+	for(var/atom/theatom as anything in src)
+		SEND_SIGNAL(theatom, COMSIG_ATOM_EXPOSED_WATER)
+
 	wash(CLEAN_WASH)
 	for(var/atom/movable/movable_content as anything in src)
 		if(ismopable(movable_content)) // Will have already been washed by the wash call above at this point.

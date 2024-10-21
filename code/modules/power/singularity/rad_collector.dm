@@ -76,20 +76,29 @@
 			var/bitcoins_mined = min(stored_energy, (stored_energy*0.04)+1000)
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if(D)
-				D.adjust_money((bitcoins_mined*RAD_COLLECTOR_MINING_CONVERSION_RATE) / 2) //about 750 credits per minute with 2 emitters and 6 collectors with stock parts
-			sciweb.add_point_type(TECHWEB_POINT_TYPE_GENERIC, bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE) //about 1300 points per minute with the above set up
+				D.adjust_money(1)
+			sciweb.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 1 * power_coeff)
 			bitcoin_produced = bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE
 			stored_energy -= bitcoins_mined
 
 /obj/machinery/power/energy_accumulator/rad_collector/interact(mob/user)
-	if(anchored)
-		toggle_power()
-		user.visible_message("[user.name] turns the [src.name] [active? "on":"off"].", \
-		"<span class='notice'>You turn the [src.name] [active? "on":"off"].</span>")
-		loaded_tank.air_contents.assert_gases(/datum/gas/plasma)
-		var/fuel = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]
-		investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [key_name(user)]. [loaded_tank?"Fuel: [round(fuel/0.29)]%":"<font color='red'>It is empty</font>"].", INVESTIGATE_ENGINE)
+	if(!anchored)
 		return
+	if(locked)
+		to_chat(user, span_warning("The controls are locked!"))
+		return
+	toggle_power()
+	user.visible_message(span_notice("[user.name] turns the [src.name] [active? "on":"off"]."), \
+	span_notice("You turn the [src.name] [active? "on":"off"]."))
+	var/datum/gas_mixture/tank_mix = loaded_tank?.return_air()
+	var/fuel
+	if(bitcoinmining)
+		if(loaded_tank)
+			fuel = tank_mix.gases[/datum/gas/plasma][MOLES]
+	else
+		if(loaded_tank)
+			fuel = tank_mix.gases[/datum/gas/tritium][MOLES] + tank_mix.gases[/datum/gas/oxygen][MOLES]
+	investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [key_name(user)]. [loaded_tank?"Fuel: [round(fuel/0.29)]%":"<font color='red'>It is empty</font>"].", INVESTIGATE_ENGINE)
 
 /obj/machinery/power/energy_accumulator/rad_collector/can_be_unfasten_wrench(mob/user, silent)
 	if(loaded_tank)
@@ -114,10 +123,23 @@
 		loaded_tank = W
 		loaded_tank.air_contents.assert_gases(/datum/gas/plasma, /datum/gas/tritium, /datum/gas/oxygen, /datum/gas/carbon_dioxide)
 		update_icon()
-	else if(W.tool_behaviour == TOOL_WRENCH)
-		default_unfasten_wrench(user, W, 0)
+	else if(W.GetID())
+		if(!allowed(user))
+			to_chat(user, span_danger("Access denied."))
+			return TRUE
+		if(!active)
+			to_chat(user, span_warning("The controls can only be locked when \the [src] is active!"))
+			return TRUE
+		locked = !locked
+		to_chat(user, span_notice("You [locked ? "lock" : "unlock"] the controls."))
+		return TRUE
 	else
 		return ..()
+
+/obj/machinery/power/energy_accumulator/rad_collector/wrench_act(mob/living/user, obj/item/item)
+	. = ..()
+	default_unfasten_wrench(user, item, 10)
+	return TRUE
 
 /obj/machinery/power/energy_accumulator/rad_collector/screwdriver_act(mob/living/user, obj/item/I)
 	if(..())

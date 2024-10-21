@@ -42,7 +42,7 @@
 	SSradiation.processing += pulse_information
 
 	if(intensity)
-		for(var/atom/O in range(5, source))
+		for(var/atom/O in range(max_range, source))
 			O.rad_act(intensity)
 
 	return TRUE

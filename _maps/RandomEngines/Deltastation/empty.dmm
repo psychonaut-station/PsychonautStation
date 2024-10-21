@@ -3,19 +3,19 @@
 /obj/effect/spawner/deleter,
 /turf/open/space/basic,
 /area/space)
-"g" = (
+"o" = (
 /turf/template_noop,
 /area/template_noop)
-"j" = (
+"y" = (
 /obj/effect/spawner/deleter/apc,
 /turf/open/space/basic,
 /area/space)
 
 (1,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -33,14 +33,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (2,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -58,14 +58,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (3,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -83,14 +83,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (4,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -108,14 +108,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (5,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -133,14 +133,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (6,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -158,14 +158,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (7,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -183,14 +183,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (8,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -208,14 +208,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (9,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -233,14 +233,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (10,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -258,14 +258,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (11,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -283,14 +283,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (12,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -308,14 +308,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (13,1,1) = {"
-g
-g
-g
-g
+o
+o
+o
+o
 a
 a
 a
@@ -333,11 +333,14 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (14,1,1) = {"
-g
+o
+o
+o
+o
 a
 a
 a
@@ -355,14 +358,14 @@ a
 a
 a
 a
-a
-a
-a
-g
-g
+o
+o
 "}
 (15,1,1) = {"
-g
+o
+o
+o
+o
 a
 a
 a
@@ -380,14 +383,11 @@ a
 a
 a
 a
-a
-a
-a
-g
-g
+o
+o
 "}
 (16,1,1) = {"
-g
+o
 a
 a
 a
@@ -408,10 +408,11 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (17,1,1) = {"
+o
 a
 a
 a
@@ -432,11 +433,11 @@ a
 a
 a
 a
-a
-g
-g
+o
+o
 "}
 (18,1,1) = {"
+o
 a
 a
 a
@@ -457,9 +458,8 @@ a
 a
 a
 a
-a
-g
-g
+o
+o
 "}
 (19,1,1) = {"
 a
@@ -483,8 +483,8 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (20,1,1) = {"
 a
@@ -508,8 +508,8 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (21,1,1) = {"
 a
@@ -533,8 +533,8 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (22,1,1) = {"
 a
@@ -558,12 +558,11 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (23,1,1) = {"
 a
-j
 a
 a
 a
@@ -583,8 +582,9 @@ a
 a
 a
 a
-g
-g
+a
+o
+o
 "}
 (24,1,1) = {"
 a
@@ -608,11 +608,12 @@ a
 a
 a
 a
-g
-g
+o
+o
 "}
 (25,1,1) = {"
 a
+y
 a
 a
 a
@@ -632,9 +633,8 @@ a
 a
 a
 a
-a
-g
-g
+o
+o
 "}
 (26,1,1) = {"
 a
@@ -658,8 +658,8 @@ a
 a
 a
 a
-a
-a
+o
+o
 "}
 (27,1,1) = {"
 a
@@ -683,8 +683,8 @@ a
 a
 a
 a
-a
-a
+o
+o
 "}
 (28,1,1) = {"
 a
@@ -762,6 +762,56 @@ a
 a
 "}
 (31,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(32,1,1) = {"
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+a
+"}
+(33,1,1) = {"
 a
 a
 a

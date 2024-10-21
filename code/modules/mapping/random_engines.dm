@@ -51,7 +51,7 @@
 	station_name = "Delta Station"
 	should_place_on_top = FALSE
 	coordinates = list(
-		"x" = 63,
+		"x" = 61,
 		"y" = 106,
 		"z" = 2,
 	)
@@ -68,7 +68,7 @@
 	should_place_on_top = FALSE
 	empty_map = /datum/map_template/empty/delta
 	coordinates = list(
-		"x" = 63,
+		"x" = 61,
 		"y" = 106,
 		"z" = 2,
 	)

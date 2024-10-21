@@ -167,7 +167,7 @@
 		if(prob(event_chance))
 			event()
 	dissipate(seconds_per_tick)
-	radiation_pulse(src, 4, 0.1, intensity = min(2500, (energy * 2) + 500))
+	radiation_pulse(src, 5, 0.1, intensity = min(2500, (energy * 2) + 500))
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -197,8 +197,10 @@
 		//It cant go smaller due to e loss
 		dissipate = FALSE
 
-	var/new_grav_pull
-	var/new_consume_range
+	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+
+	var/new_grav_pull = resolved_singularity?.grav_pull || 0
+	var/new_consume_range = resolved_singularity?.consume_range || 0
 
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
@@ -272,7 +274,6 @@
 	else
 		qdel(GetComponent(/datum/component/vision_hurting))
 
-	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
 	if (!isnull(resolved_singularity))
 		resolved_singularity.consume_range = new_consume_range
 		resolved_singularity.grav_pull = new_grav_pull

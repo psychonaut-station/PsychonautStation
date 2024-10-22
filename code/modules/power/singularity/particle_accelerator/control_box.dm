@@ -10,7 +10,7 @@
 	use_power = NO_POWER_USE
 	idle_power_usage = 500
 	active_power_usage = 10000
-	reference = "control_box"
+	circuit = /obj/item/circuitboard/machine/pa/control_box
 	var/interface_control = TRUE
 	var/active = FALSE
 	var/strength = 0
@@ -26,6 +26,17 @@
 		disassemble()
 	QDEL_NULL(wires)
 	return ..()
+
+/obj/machinery/particle_accelerator/control_box/examine(mob/user)
+	. = ..()
+
+	switch(construction_state)
+		if(PA_CONSTRUCTION_UNSECURED)
+			. += "Looks like it's not attached to the flooring."
+		if(PA_CONSTRUCTION_UNWIRED)
+			. += "It is missing some cables."
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			. += "The panel is open."
 
 /obj/machinery/particle_accelerator/control_box/update_state()
 	if(construction_state < PA_CONSTRUCTION_COMPLETE && particle_accelerator)
@@ -222,6 +233,8 @@
 /obj/machinery/particle_accelerator/control_box/proc/disassemble()
 	if(!particle_accelerator)
 		return FALSE
+	if(active)
+		toggle_power()
 	var/static/list/pa_typepaths = list(
 		"fuel_chamber" = /obj/machinery/particle_accelerator/fuel_chamber,
 		"power_box" = /obj/machinery/particle_accelerator/power_box,
@@ -243,7 +256,10 @@
 		pa.setDir(dir)
 		pa.anchored = TRUE
 		pa.construction_state = PA_CONSTRUCTION_COMPLETE
-	QDEL_NULL(particle_accelerator)
+	if(!QDELETED(particle_accelerator))
+		QDEL_NULL(particle_accelerator)
+	else
+		particle_accelerator = null
 	return TRUE
 
 /obj/machinery/particle_accelerator/control_box/proc/check_part(turf/T, type, list/connected_parts)

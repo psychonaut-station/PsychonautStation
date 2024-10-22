@@ -45,62 +45,70 @@
 	update_state()
 	update_icon()
 
-/obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user, params)
-	if(isnull(reference))
-		return ..()
-	var/did_something = FALSE
+/obj/machinery/particle_accelerator/wrench_act(mob/living/user, obj/item/item)
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
-			if(W.tool_behaviour == TOOL_WRENCH && !isinspace() && W.use_tool(src, user, 20))
-				W.play_tool_sound(src, 75)
-				set_anchored(TRUE)
-				user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
-					"<span class='notice'>You secure the external bolts.</span>")
-				return
+			default_unfasten_wrench(user, item, 20)
+			user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
+				"<span class='notice'>You secure the external bolts.</span>")
 		if(PA_CONSTRUCTION_UNWIRED)
-			if(W.tool_behaviour == TOOL_WRENCH && W.use_tool(src, user, 20))
-				W.play_tool_sound(src, 75)
-				set_anchored(FALSE)
-				user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
-					"<span class='notice'>You remove the external bolts.</span>")
-				return
-			else if(istype(W, /obj/item/stack/cable_coil))
-				var/obj/item/stack/cable_coil/CC = W
-				if(CC.use_tool(src, user, 5, 1))
-					user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
-						"<span class='notice'>You add some wires.</span>")
-					construction_state = PA_CONSTRUCTION_PANEL_OPEN
-					did_something = TRUE
-		if(PA_CONSTRUCTION_PANEL_OPEN)
-			if(W.tool_behaviour == TOOL_WIRECUTTER && W.use_tool(src, user, 5))
-				user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
-					"<span class='notice'>You remove some wires.</span>")
-				construction_state = PA_CONSTRUCTION_UNWIRED
-				did_something = TRUE
-			else if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 10))
-				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
-					"<span class='notice'>You close the access panel.</span>")
-				construction_state = PA_CONSTRUCTION_COMPLETE
-				did_something = TRUE
+			default_unfasten_wrench(user, item, 20)
+			user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
+				"<span class='notice'>You remove the external bolts.</span>")
+		else
+			return FALSE
+	update_icon()
+	update_state()
+	return TRUE
+
+/obj/machinery/particle_accelerator/screwdriver_act(mob/living/user, obj/item/tool)
+	switch(construction_state)
 		if(PA_CONSTRUCTION_COMPLETE)
-			if(W.tool_behaviour == TOOL_SCREWDRIVER && W.use_tool(src, user, 10))
+			if(tool.use_tool(src, user, 10))
 				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
 					"<span class='notice'>You open the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
-				did_something = TRUE
+		if(PA_CONSTRUCTION_PANEL_OPEN)
+			if(tool.use_tool(src, user, 10))
+				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
+					"<span class='notice'>You close the access panel.</span>")
+				construction_state = PA_CONSTRUCTION_COMPLETE
+		else
+			return FALSE
+	update_icon()
+	update_state()
+	return TRUE
 
-	if(did_something)
+/obj/machinery/particle_accelerator/wirecutter_act(mob/living/user, obj/item/tool)
+	if(construction_state == PA_CONSTRUCTION_PANEL_OPEN && tool.use_tool(src, user, 5))
+		user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
+			"<span class='notice'>You remove some wires.</span>")
+		construction_state = PA_CONSTRUCTION_UNWIRED
 		update_icon()
 		update_state()
-		return
+		return TRUE
+	else
+		return FALSE
 
+/obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user, params)
+	if(isnull(reference))
+		return ..()
+
+	if(construction_state == PA_CONSTRUCTION_UNWIRED && istype(W, /obj/item/stack/cable_coil))
+		var/obj/item/stack/cable_coil/CC = W
+		if(CC.use_tool(src, user, 5, 1))
+			user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
+				"<span class='notice'>You add some wires.</span>")
+			construction_state = PA_CONSTRUCTION_PANEL_OPEN
+			update_icon()
+			update_state()
 	return ..()
 
 /obj/machinery/particle_accelerator/proc/update_state()
 	return
 
 /obj/machinery/particle_accelerator/update_icon_state()
-	if(isnull(reference) || istype(src, /obj/machinery/particle_accelerator/control_box))
+	if(isnull(reference))
 		return ..()
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED,PA_CONSTRUCTION_UNWIRED)
@@ -114,6 +122,7 @@
 /obj/machinery/particle_accelerator/end_cap
 	name = "Alpha Particle Generation Array"
 	desc = "This is where Alpha particles are generated from \[REDACTED\]."
+	circuit = /obj/item/circuitboard/machine/pa/end_cap
 	icon_state = "end_cap"
 	reference = "end_cap"
 
@@ -124,6 +133,7 @@
 /obj/machinery/particle_accelerator/power_box
 	name = "Particle Focusing EM Lens"
 	desc = "This uses electromagnetic waves to focus the Alpha particles."
+	circuit = /obj/item/circuitboard/machine/pa/power_box
 	icon_state = "power_box"
 	reference = "power_box"
 
@@ -134,6 +144,7 @@
 /obj/machinery/particle_accelerator/fuel_chamber
 	name = "EM Acceleration Chamber"
 	desc = "This is where the Alpha particles are accelerated to <b><i>radical speeds</i></b>."
+	circuit = /obj/item/circuitboard/machine/pa/fuel_chamber
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"
 	var/filled_with = NONE
@@ -145,11 +156,31 @@
 /obj/machinery/particle_accelerator/particle_emitter
 	name = "EM Containment Grid"
 	desc = "This launches the Alpha particles, might not want to stand near this end."
+	circuit = /obj/item/circuitboard/machine/pa/particle_emitter
 	icon_state = "emitter_center"
 
 /obj/machinery/particle_accelerator/particle_emitter/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
+
+/obj/machinery/particle_accelerator/particle_emitter/click_ctrl(mob/living/user)
+	if(construction_state != PA_CONSTRUCTION_UNSECURED)
+		return CLICK_ACTION_BLOCKING
+	var/emitter_direction
+	switch(reference)
+		if("emitter_center")
+			reference = "emitter_left"
+			emitter_direction = "left"
+		if("emitter_left")
+			reference = "emitter_right"
+			emitter_direction = "right"
+		if("emitter_right")
+			reference = "emitter_center"
+			emitter_direction = "center"
+	user.visible_message("<span class='notice'>[user.name] changes the emitter's direction to [emitter_direction].</span>", \
+		"<span class='notice'>You changed the emitter's rotation to [emitter_direction].</span>")
+	icon_state = reference
+	return CLICK_ACTION_SUCCESS
 
 /obj/machinery/particle_accelerator/particle_emitter/center
 	icon_state = "emitter_center"
@@ -186,7 +217,7 @@
 	if(master)
 		master.active = FALSE
 		master.strength = 0
-		master.particle_accelerator = null
+		master.disassemble()
 	return ..()
 
 /obj/machinery/particle_accelerator/full/process()
@@ -220,6 +251,9 @@
 	return FALSE
 
 /obj/machinery/particle_accelerator/full/screwdriver_act(mob/living/user, obj/item/I)
+	return FALSE
+
+/obj/machinery/particle_accelerator/full/wirecutter_act(mob/living/user, obj/item/tool)
 	return FALSE
 
 /obj/machinery/particle_accelerator/full/proc/set_delay(delay)

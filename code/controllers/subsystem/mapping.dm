@@ -442,10 +442,11 @@ Used by the AI doomsday and the self-destruct nuke.
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
 
 	load_station_room_templates()
+#if !defined(MAP_TEST) && !defined(UNIT_TESTS)
 	if(CONFIG_GET(flag/allow_randomized_rooms))
 		pick_room_type()
 		load_random_rooms()
-
+#endif
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id

@@ -440,8 +440,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
-
 	load_station_room_templates()
+
 #if !defined(MAP_TEST) && !defined(UNIT_TESTS)
 	if(CONFIG_GET(flag/allow_randomized_rooms))
 		pick_room_type()
@@ -967,9 +967,11 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		var/datum/map_template/random_room/random_engine/E = new room_type()
 		map_templates[E.room_id] = E
 		if(current_map.map_name == E.station_name)
+#if !defined(MAP_TEST) && !defined(UNIT_TESTS)
 			random_engine_templates[E.room_id] = E
 			if(E.coordinates.len && E.template_width && E.template_height && !random_room_spawners["engine"])
 				create_room_spawner(E, "engine")
+#endif
 
 /datum/controller/subsystem/mapping/proc/create_room_spawner(datum/map_template/random_room/room, roomtype)
 	var/turf/target = locate(room.coordinates["x"], room.coordinates["y"], room.coordinates["z"])

@@ -167,7 +167,7 @@
 		if(prob(event_chance))
 			event()
 	dissipate(seconds_per_tick)
-	radiation_pulse(src, 5, 0.1, intensity = min(2500, (energy * 2) + 500))
+	radiation_pulse(src, 5, 0.1, intensity = (energy * 2) + 500)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)

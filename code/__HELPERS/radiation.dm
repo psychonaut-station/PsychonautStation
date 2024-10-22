@@ -37,13 +37,12 @@
 	pulse_information.chance = chance
 	pulse_information.minimum_exposure_time = minimum_exposure_time
 	pulse_information.turfs_to_process = RANGE_TURFS(max_range, source)
-	pulse_information.intensity = intensity
+	pulse_information.intensity = intensity || (max_range * 250)
 
 	SSradiation.processing += pulse_information
 
-	if(intensity)
-		for(var/atom/O in range(max_range, source))
-			O.rad_act(intensity)
+	for(var/atom/O in range(max_range, source))
+		O.rad_act(pulse_information.intensity)
 
 	return TRUE
 

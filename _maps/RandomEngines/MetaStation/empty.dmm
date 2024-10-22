@@ -3,11 +3,11 @@
 /turf/template_noop,
 /area/template_noop)
 "B" = (
-/obj/effect/spawner/deleter,
+/obj/effect/landmark/deleter,
 /turf/template_noop,
 /area/space)
 "N" = (
-/obj/effect/spawner/deleter,
+/obj/effect/landmark/deleter,
 /turf/open/space/basic,
 /area/space)
 

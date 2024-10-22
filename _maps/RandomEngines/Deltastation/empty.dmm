@@ -1,13 +1,13 @@
 //MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
 "a" = (
-/obj/effect/spawner/deleter,
+/obj/effect/landmark/deleter,
 /turf/open/space/basic,
 /area/space)
 "o" = (
 /turf/template_noop,
 /area/template_noop)
 "y" = (
-/obj/effect/spawner/deleter/apc,
+/obj/effect/landmark/deleter/apc,
 /turf/open/space/basic,
 /area/space)
 

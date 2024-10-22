@@ -86,7 +86,7 @@ SUBSYSTEM_DEF(mapping)
 	var/list/loaded_lazy_templates
 
 	var/list/random_engine_templates = list()
-	var/list/obj/effect/random_room/random_room_spawners = list()
+	var/list/obj/effect/landmark/random_room/random_room_spawners = list()
 	var/list/datum/map_template/random_room/picked_rooms = list()
 
 /datum/controller/subsystem/mapping/PreInit()
@@ -966,16 +966,14 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		var/datum/map_template/random_room/random_engine/room_type = item
 		var/datum/map_template/random_room/random_engine/E = new room_type()
 		map_templates[E.room_id] = E
-#if !defined(MAP_TEST) && !defined(UNIT_TESTS)
 		if(current_map.map_name == E.station_name)
 			random_engine_templates[E.room_id] = E
 			if(E.coordinates.len && E.template_width && E.template_height && !random_room_spawners["engine"])
 				create_room_spawner(E, "engine")
-#endif
 
 /datum/controller/subsystem/mapping/proc/create_room_spawner(datum/map_template/random_room/room, roomtype)
 	var/turf/target = locate(room.coordinates["x"], room.coordinates["y"], room.coordinates["z"])
-	var/obj/effect/random_room/room_spawner = new(target)
+	var/obj/effect/landmark/random_room/room_spawner = new(target)
 	room_spawner.room_width = room.template_width
 	room_spawner.room_height = room.template_height
 	random_room_spawners[roomtype] = room_spawner

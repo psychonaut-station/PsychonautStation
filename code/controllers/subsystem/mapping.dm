@@ -966,8 +966,8 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		var/datum/map_template/random_room/random_engine/room_type = item
 		var/datum/map_template/random_room/random_engine/E = new room_type()
 		map_templates[E.room_id] = E
-		if(current_map.map_name == E.station_name)
 #if !defined(MAP_TEST) && !defined(UNIT_TESTS)
+		if(current_map.map_name == E.station_name)
 			random_engine_templates[E.room_id] = E
 			if(E.coordinates.len && E.template_width && E.template_height && !random_room_spawners["engine"])
 				create_room_spawner(E, "engine")

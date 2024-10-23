@@ -795,3 +795,6 @@
 	default = 100
 	min_val = 0
 	max_val = 100
+
+/datum/config_entry/flag/allow_randomized_rooms
+	default = TRUE

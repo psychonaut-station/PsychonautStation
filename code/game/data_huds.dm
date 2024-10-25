@@ -66,9 +66,12 @@
 /datum/atom_hud/abductor
 	hud_icons = list(GLAND_HUD)
 
+<<<<<<< HEAD
 /datum/atom_hud/disease
 	hud_icons = list(DISEASE_HUD)
 
+=======
+>>>>>>> upstream/master
 /datum/atom_hud/ai_detector
 	hud_icons = list(AI_DETECT_HUD)
 

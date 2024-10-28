@@ -558,3 +558,7 @@
   SmArtKar:
   - bugfix: Plasmamen no longer self-immolate while in stasis
   - bugfix: Lionhunter rifle can no longer be used to teleport to the debug room
+2024-10-28:
+  Seefaaa:
+  - bugfix: "Brig Physician k\u0131l\u0131\u011F\u0131nda ka\xE7ak yolcu olmad\u0131\
+      \u011F\u0131 daha dikkatli kontrol edilecek."

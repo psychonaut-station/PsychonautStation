@@ -366,6 +366,19 @@
 
 // SEPTEMBER
 
+//Tiziran Unification Day is celebrated on Sept 1st, the day on which lizards were made a roundstart race
+/datum/holiday/tiziran_unification
+	name = "Kertenkele Birliği Günü"
+	begin_month = SEPTEMBER
+	begin_day = 1
+	holiday_hat = /obj/item/clothing/head/costume/lizard
+
+/datum/holiday/tiziran_unification/greet()
+	return "400 yılı aşkın bir süre önce bugün, Kertenkele halkı ilk kez tek bir bayrak altında birleşti ve tek bir halk olarak yıldızlarla yüzleşmeye hazır oldu."
+
+/datum/holiday/tiziran_unification/getStationPrefix()
+	return pick("Tizira", "Lizard")
+
 /datum/holiday/ianbirthday
 	name = IAN_HOLIDAY //github.com/tgstation/tgstation/commit/de7e4f0de0d568cd6e1f0d7bcc3fd34700598acb
 	begin_month = SEPTEMBER
@@ -497,6 +510,10 @@
 /datum/holiday/monkey/celebrate()
 	. = ..()
 	SSstation.setup_trait(/datum/station_trait/job/pun_pun)
+	//SSevents should initialize before SSatoms but who knows if it'll ever change.
+	if(GLOB.the_one_and_only_punpun)
+		new /obj/effect/landmark/start/pun_pun(GLOB.the_one_and_only_punpun.loc)
+		qdel(GLOB.the_one_and_only_punpun)
 
 /datum/holiday/xmas
 	name = CHRISTMAS

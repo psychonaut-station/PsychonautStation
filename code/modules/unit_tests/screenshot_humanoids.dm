@@ -23,7 +23,7 @@
 	moth.dna.features["moth_markings"] = "None"
 	moth.dna.features["moth_wings"] = "Firewatch"
 	moth.set_species(/datum/species/moth)
-	moth.equipOutfit(/datum/outfit/job/cmo, visualsOnly = TRUE)
+	moth.equipOutfit(/datum/outfit/job/cmo, visuals_only = TRUE)
 	test_screenshot("[/datum/species/moth]", get_flat_icon_for_all_directions(moth))
 	testable_species -= /datum/species/moth
 
@@ -33,7 +33,7 @@
 	arachnid.eye_color_left = COLOR_SILVER
 	arachnid.eye_color_right = COLOR_SILVER
 	arachnid.set_species(/datum/species/arachnid)
-	arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visualsOnly = TRUE)
+	arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visuals_only = TRUE)
 	test_screenshot("[/datum/species/arachnid]", get_flat_icon_for_all_directions(arachnid))
 	testable_species -= /datum/species/arachnid
 
@@ -55,5 +55,5 @@
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)
 	var/mob/living/carbon/human/dummy/consistent/dummy = allocate(/mob/living/carbon/human/dummy/consistent)
 	dummy.set_species(species)
-	dummy.equipOutfit(job_outfit, visualsOnly = TRUE)
+	dummy.equipOutfit(job_outfit, visuals_only = TRUE)
 	return dummy

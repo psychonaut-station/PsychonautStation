@@ -57,7 +57,7 @@
 	return ..()
 
 /obj/item/paperplane/suicide_act(mob/living/user)
-	var/obj/item/organ/internal/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	user.Stun(20 SECONDS)
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
@@ -110,7 +110,7 @@
 			qdel(src)
 		return
 	var/mob/living/carbon/human/hit_human = hit_atom
-	var/obj/item/organ/internal/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!prob(hit_probability))
 		if(scrap_on_impact)
 			var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))

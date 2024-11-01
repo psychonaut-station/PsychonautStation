@@ -581,17 +581,17 @@
 	var/datum/foreign_calendar/islamic/cal = new(yyyy, mm, dd)
 	return ..(cal.dd, cal.mm, cal.yyyy, ddd)
 
-/datum/holiday/islamic/ramadan/start
-	name = "Ramazan Arifesi"
+/datum/holiday/islamic/ramadan/eve
+	name = "Ramazan Bayramı Arifesi"
 	begin_month = 9
-	begin_day = 1
-	end_day = 3
+	begin_day = 30
+	end_day = 30
 
 /datum/holiday/islamic/ramadan
 	name = "Ramazan Bayramı"
-	end_month = 10
-	begin_day = 28
-	end_day = 1
+	begin_month = 10
+	begin_day = 1
+	end_day = 3
 
 // HEBREW
 

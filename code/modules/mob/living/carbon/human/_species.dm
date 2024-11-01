@@ -185,6 +185,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	// unique remains for species
 	var/obj/effect/decal/remains/decalremains = null
 
+	// Can we write numbers in name
+	var/allow_numbers_in_name = FALSE
+
 ///////////
 // PROCS //
 ///////////

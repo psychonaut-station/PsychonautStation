@@ -9,7 +9,10 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	if(flags_1 & HOLOGRAM_1)
 		return
 	if(drop_bitflags & DROP_BODYPARTS)
-		new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
+		if(dna.species.gibspawner)
+			new dna.species.gibspawner(drop_location(), src, get_static_viruses())
+		else
+			new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
 	else
 		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src, get_static_viruses())
 

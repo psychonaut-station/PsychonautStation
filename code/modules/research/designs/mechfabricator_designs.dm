@@ -2937,7 +2937,7 @@
 	name = "IPC Cell Holder"
 	id = "ipc_stomach"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/internal/stomach/ipc/empty
+	build_path = /obj/item/organ/stomach/ipc/empty
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(
@@ -2948,7 +2948,7 @@
 	name = "IPC High Voltage Protector"
 	id = "ipc_voltprotector"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/internal/voltage_protector
+	build_path = /obj/item/organ/voltage_protector
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(
@@ -2959,7 +2959,7 @@
 	name = "IPC Power Cord"
 	id = "ipc_power_cord"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/internal/cyberimp/arm/power_cord
+	build_path = /obj/item/organ/cyberimp/arm/power_cord
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(

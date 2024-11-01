@@ -317,8 +317,8 @@
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))
 			return
-		else if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ipc))
-			var/obj/item/organ/internal/stomach/ipc/stomach = maybe_stomach
+		else if(istype(maybe_stomach, /obj/item/organ/stomach/ipc))
+			var/obj/item/organ/stomach/ipc/stomach = maybe_stomach
 			if(!stomach.cell)
 				return
 			var/obj/item/stock_parts/power_store/cell/ipccell = stomach.cell

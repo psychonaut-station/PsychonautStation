@@ -177,8 +177,8 @@
 			return SURGERY_STEP_FAIL
 
 
-		if(istype(target_organ, /obj/item/organ/internal/brain))
-			if(istype(target_organ, /obj/item/organ/internal/brain/cybernetic/ipc) && !isipc(target) && target_organ.zone != BODY_ZONE_HEAD)
+		if(istype(target_organ, /obj/item/organ/brain))
+			if(istype(target_organ, /obj/item/organ/brain/cybernetic/ipc) && !isipc(target) && target_organ.zone != BODY_ZONE_HEAD)
 				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
 				return SURGERY_STEP_FAIL
 

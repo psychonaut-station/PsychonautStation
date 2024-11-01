@@ -262,7 +262,7 @@
 	bleed_prevention = TRUE
 	emp_vulnerability = 40
 
-/obj/item/organ/internal/heart/cybernetic/tier2/ipc
+/obj/item/organ/heart/cybernetic/tier2/ipc
 	name = "ipc heart"
 
 /obj/item/organ/heart/cybernetic/tier3

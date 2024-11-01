@@ -1,4 +1,4 @@
-/obj/item/organ/internal/stomach/ipc
+/obj/item/organ/stomach/ipc
 	name = "cell holder"
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "stomach-ipc" //Welp. At least it's more unique in functionaliy.
@@ -11,14 +11,14 @@
 	var/backup_charge = 100
 	var/drain_time = 0
 
-/obj/item/organ/internal/stomach/ipc/Initialize(mapload)
+/obj/item/organ/stomach/ipc/Initialize(mapload)
 	. = ..()
 	if(initcell)
 		cell = new initcell(src)
 	update_appearance()
 	register_context()
 
-/obj/item/organ/internal/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+/obj/item/organ/stomach/ipc/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(!isnull(cell))
 		context[SCREENTIP_CONTEXT_ALT_LMB] = "Remove cell"
@@ -27,14 +27,14 @@
 		context[SCREENTIP_CONTEXT_LMB] = "Insert cell"
 		return CONTEXTUAL_SCREENTIP_SET
 
-/obj/item/organ/internal/stomach/ipc/examine(mob/user)
+/obj/item/organ/stomach/ipc/examine(mob/user)
 	. = ..()
 	if(cell)
 		. += span_notice("Alt-Click to remove [cell].")
 	else
 		. += span_notice("There is pins for a cell.")
 
-/obj/item/organ/internal/stomach/ipc/update_appearance()
+/obj/item/organ/stomach/ipc/update_appearance()
 	. = ..()
 	cut_overlays()
 	if(cell)
@@ -45,7 +45,7 @@
 		celloverlay.pixel_y = 0
 		add_overlay(celloverlay)
 
-/obj/item/organ/internal/stomach/ipc/on_life(seconds_per_tick, times_fired)
+/obj/item/organ/stomach/ipc/on_life(seconds_per_tick, times_fired)
 	. = ..()
 	if(cell && cell.charge > 0)
 		if(backup_charge < 100)
@@ -65,7 +65,7 @@
 	if(backup_charge > 100)
 		backup_charge = 100
 
-/obj/item/organ/internal/stomach/ipc/on_mob_insert(mob/living/carbon/stomach_owner)
+/obj/item/organ/stomach/ipc/on_mob_insert(mob/living/carbon/stomach_owner)
 	. = ..()
 	RegisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(stomach_owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
@@ -75,7 +75,7 @@
 	if(ishuman(stomach_owner))
 		humanowner = stomach_owner
 
-/obj/item/organ/internal/stomach/ipc/on_mob_remove(mob/living/carbon/stomach_owner)
+/obj/item/organ/stomach/ipc/on_mob_remove(mob/living/carbon/stomach_owner)
 	. = ..()
 	UnregisterSignal(stomach_owner, COMSIG_PROCESS_BORGCHARGER_OCCUPANT)
 	UnregisterSignal(stomach_owner, COMSIG_LIVING_ELECTROCUTE_ACT)
@@ -86,7 +86,7 @@
 		stomach_owner.apply_status_effect(/datum/status_effect/ipc_powerissue)
 	humanowner = null
 
-/obj/item/organ/internal/stomach/ipc/proc/get_status_tab_item(mob/living/carbon/source, list/items)
+/obj/item/organ/stomach/ipc/proc/get_status_tab_item(mob/living/carbon/source, list/items)
 	SIGNAL_HANDLER
 	if(cell)
 		items += "Charge Left: [display_energy(cell.charge)]/[display_energy(cell.maxcharge)]"
@@ -94,28 +94,28 @@
 		items += "Power: No Cell"
 	items += "Backup Power: [backup_charge]/100"
 
-/obj/item/organ/internal/stomach/ipc/proc/charge(datum/source, datum/callback/charge_cell, seconds_per_tick)
+/obj/item/organ/stomach/ipc/proc/charge(datum/source, datum/callback/charge_cell, seconds_per_tick)
 	SIGNAL_HANDLER
 
 	charge_cell.Invoke(cell, seconds_per_tick / 1.5)
 	humanowner.diag_hud_set_humancell(cell)
 
-/obj/item/organ/internal/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, shock_source, siemens_coeff = 1, flags)
+/obj/item/organ/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, shock_source, siemens_coeff = 1, flags)
 	SIGNAL_HANDLER
 	if(flags & SHOCK_ILLUSION)
 		return
 	adjust_charge(shock_damage * siemens_coeff * 20)
 	to_chat(owner, span_notice("You absorb some of the shock into your body!"))
 
-/obj/item/organ/internal/stomach/ipc/proc/adjust_charge(amount)
+/obj/item/organ/stomach/ipc/proc/adjust_charge(amount)
 	if(cell)
 		cell.give(amount)
 	humanowner.diag_hud_set_humancell(cell)
 
-/obj/item/organ/internal/stomach/ipc/proc/adjust_backup_charge(amount)
+/obj/item/organ/stomach/ipc/proc/adjust_backup_charge(amount)
 	backup_charge = clamp(backup_charge + amount, 0, 100)
 
-/obj/item/organ/internal/stomach/ipc/proc/handle_charge(mob/living/carbon/carbon, seconds_per_tick, times_fired)
+/obj/item/organ/stomach/ipc/proc/handle_charge(mob/living/carbon/carbon, seconds_per_tick, times_fired)
 	if(cell)
 		if (backup_charge == 0)
 			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
@@ -145,7 +145,7 @@
 		if(backup_charge == 0)
 			carbon.apply_status_effect(/datum/status_effect/ipc_powerissue)
 
-/obj/item/organ/internal/stomach/ipc/click_alt(mob/user)
+/obj/item/organ/stomach/ipc/click_alt(mob/user)
 	var/turf/drop_loc = drop_location()
 	if(cell)
 		user.visible_message(span_notice("[user] removes [cell] from [src]!"), span_notice("You remove [cell]."))
@@ -154,7 +154,7 @@
 		cell = null
 		update_appearance()
 
-/obj/item/organ/internal/stomach/ipc/attackby(obj/item/W, mob/user)
+/obj/item/organ/stomach/ipc/attackby(obj/item/W, mob/user)
 	if(istype(W, /obj/item/stock_parts/power_store/cell))
 		if(!cell)
 			if(!user.transferItemToLoc(W, src))
@@ -193,5 +193,5 @@
 	owner.remove_traits(list(TRAIT_IMMOBILIZED, TRAIT_HANDS_BLOCKED, TRAIT_INCAPACITATED), TRAIT_STATUS_EFFECT(id))
 	return ..()
 
-/obj/item/organ/internal/stomach/ipc/empty
+/obj/item/organ/stomach/ipc/empty
 	initcell = null

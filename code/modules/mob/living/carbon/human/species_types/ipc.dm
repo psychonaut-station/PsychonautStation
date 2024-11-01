@@ -27,17 +27,17 @@
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
-		/obj/item/organ/internal/voltage_protector,
-		/obj/item/organ/internal/cyberimp/arm/power_cord
+		/obj/item/organ/voltage_protector,
+		/obj/item/organ/cyberimp/arm/power_cord
 	)
-	mutanteyes = /obj/item/organ/internal/eyes/robotic/basic
-	mutantears = /obj/item/organ/internal/ears/cybernetic
-	mutanttongue = /obj/item/organ/internal/tongue/robot
-	mutantbrain = /obj/item/organ/internal/brain/cybernetic/ipc
-	mutantheart = /obj/item/organ/internal/heart/cybernetic/tier2/ipc
+	mutanteyes = /obj/item/organ/eyes/robotic/basic
+	mutantears = /obj/item/organ/ears/cybernetic
+	mutanttongue = /obj/item/organ/tongue/robot
+	mutantbrain = /obj/item/organ/brain/cybernetic/ipc
+	mutantheart = /obj/item/organ/heart/cybernetic/tier2/ipc
 	mutantlungs = null
 	mutantliver = null
-	mutantstomach = /obj/item/organ/internal/stomach/ipc
+	mutantstomach = /obj/item/organ/stomach/ipc
 	mutantappendix = null
 	bodypart_overrides = list(
 		BODY_ZONE_HEAD = /obj/item/bodypart/head/ipc,
@@ -93,8 +93,8 @@
 		if(head_covered && chest_covered)
 			break
 	if(!chest_covered || !head_covered)
-		var/obj/item/organ/internal/heart/heart = exposed_ipc.get_organ_slot(ORGAN_SLOT_HEART)
-		if(heart && istype(heart, /obj/item/organ/internal/heart/cybernetic))
+		var/obj/item/organ/heart/heart = exposed_ipc.get_organ_slot(ORGAN_SLOT_HEART)
+		if(heart && istype(heart, /obj/item/organ/heart/cybernetic))
 			exposed_ipc.adjustFireLoss(rand(1,3))
 		else
 			exposed_ipc.adjustFireLoss(rand(5,15))
@@ -193,7 +193,7 @@
 
 ////////////////////////////////////// ORGANS //////////////////////////////////////
 // Voltage Protector Organ
-/obj/item/organ/internal/voltage_protector
+/obj/item/organ/voltage_protector
 	name = "high voltage protector"
 	desc = "This organ regulates the high electrical voltage coming into your body."
 	icon_state = "implant-power"
@@ -201,21 +201,21 @@
 	organ_flags = ORGAN_ROBOTIC
 	zone = BODY_ZONE_CHEST
 
-/obj/item/organ/internal/voltage_protector/on_mob_insert(mob/living/carbon/owner)
+/obj/item/organ/voltage_protector/on_mob_insert(mob/living/carbon/owner)
 	. = ..()
 	RegisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT, PROC_REF(on_electrocute))
 
-/obj/item/organ/internal/voltage_protector/on_mob_remove(mob/living/carbon/owner)
+/obj/item/organ/voltage_protector/on_mob_remove(mob/living/carbon/owner)
 	. = ..()
 	UnregisterSignal(owner, COMSIG_LIVING_ELECTROCUTE_ACT)
 
-/obj/item/organ/internal/voltage_protector/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
+/obj/item/organ/voltage_protector/proc/on_electrocute(datum/source, shock_damage, siemens_coeff = 1, flags = NONE)
 	SIGNAL_HANDLER
 	if(flags & SHOCK_ILLUSION)
 		return
 	owner.apply_damages(brain = 10)
 
-/obj/item/organ/internal/cyberimp/arm/power_cord
+/obj/item/organ/cyberimp/arm/power_cord
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
 	items_to_create = list(/obj/item/apc_powercord)
@@ -247,7 +247,7 @@
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
 	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/internal/stomach/ipc/stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/stomach/ipc/stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(!istype(stomach))
 		to_chat(H, span_warning("There is nothing in your body to charge."))
 	if(!stomach?.cell)

@@ -85,18 +85,18 @@
 		return
 	var/list/modifiers = params2list(click_parameters)
 	var/mob/living/carbon/human/ipc = user
-	var/obj/item/organ/internal/stomach/maybe_stomach = ipc.get_organ_slot(ORGAN_SLOT_STOMACH)
-	var/obj/item/organ/internal/maybe_protector = ipc.get_organ_slot(ORGAN_SLOT_VOLTPROTECT)
-	var/obj/item/organ/internal/voltage_protector/protector
+	var/obj/item/organ/stomach/maybe_stomach = ipc.get_organ_slot(ORGAN_SLOT_STOMACH)
+	var/obj/item/organ/maybe_protector = ipc.get_organ_slot(ORGAN_SLOT_VOLTPROTECT)
+	var/obj/item/organ/voltage_protector/protector
 	if(maybe_protector)
-		if(istype(maybe_protector, /obj/item/organ/internal/voltage_protector))
+		if(istype(maybe_protector, /obj/item/organ/voltage_protector))
 			protector = maybe_protector
 	// how long we wanna wait before we show the balloon alert. don't want it to be very long in case the ipc wants to opt-out of doing that action, just long enough to where it doesn't collide with previously queued balloon alerts.
 	var/alert_timer_duration = 0.75 SECONDS
 
-	if(!istype(maybe_stomach, /obj/item/organ/internal/stomach/ipc))
+	if(!istype(maybe_stomach, /obj/item/organ/stomach/ipc))
 		return
-	var/obj/item/organ/internal/stomach/ipc/stomach = maybe_stomach
+	var/obj/item/organ/stomach/ipc/stomach = maybe_stomach
 	if(!stomach.cell)
 		return
 	var/obj/item/stock_parts/power_store/cell/ipccell = stomach.cell

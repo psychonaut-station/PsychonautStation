@@ -18,7 +18,7 @@
 
 	priority_announce("[cause] dolayısıyla, [plural] [name] [location] doğru \
 		[movement]", "Kemirgen uyarısı",
-		'sound/creatures/mousesqueek.ogg')
+		'sound/mobs/non-humanoids/mouse/mousesqueek.ogg')
 
 /datum/round_event/mice_migration/start()
 	SSminor_mapping.trigger_migration(rand(minimum_mice, maximum_mice))

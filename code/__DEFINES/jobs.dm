@@ -13,6 +13,11 @@
 /// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
 #define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
 
+// Human authority settings
+// If you want to add another setting, make sure to also add it to the if chain in /datum/job_config_type/human_authority/validate_value()
+#define JOB_AUTHORITY_HUMANS_ONLY "HUMANS_ONLY"
+#define JOB_AUTHORITY_NON_HUMANS_ALLOWED "NON_HUMANS_ALLOWED"
+
 #define DEFAULT_RELIGION "Christianity"
 #define DEFAULT_DEITY "Space Jesus"
 #define DEFAULT_BIBLE "Default Bible Name"
@@ -26,6 +31,7 @@
 #define JOB_CONFIG_REQUIRED_CHARACTER_AGE "Required Character Age"
 #define JOB_CONFIG_SPAWN_POSITIONS "Spawn Positions"
 #define JOB_CONFIG_TOTAL_POSITIONS "Total Positions"
+#define JOB_CONFIG_HUMAN_AUTHORITY "Human Authority Whitelist Setting"
 
 /**
  * =======================
@@ -51,6 +57,7 @@
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
 #define JOB_VETERAN_ADVISOR "Veteran Security Advisor"
+#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
 //Silicon
 #define JOB_SYNTHETIC "Synthetic"
 #define JOB_AI "AI"
@@ -86,7 +93,6 @@
 #define JOB_SHAFT_MINER "Shaft Miner"
 #define JOB_BITRUNNER "Bitrunner"
 //Service
-#define JOB_NT_SECRETARY "Nt Secretary"
 #define JOB_BARTENDER "Bartender"
 #define JOB_BOTANIST "Botanist"
 #define JOB_COOK "Cook"
@@ -122,6 +128,14 @@
 #define JOB_CENTCOM_SPECIAL_OFFICER "Special Ops Officer"
 #define JOB_CENTCOM_PRIVATE_SECURITY "Private Security Force"
 
+//Lost crew
+#define JOB_LOSTCREW_ENGINEER "Visiting Engineer"
+#define JOB_LOSTCREW_MEDICAL "Visiting Doctor"
+#define JOB_LOSTCREW_SECURITY "Visiting Officer"
+#define JOB_LOSTCREW_SCIENCE "Visiting Scientist"
+#define JOB_LOSTCREW_CARGO "Visiting Technician"
+#define JOB_LOSTCREW_CIVILLIAN "Visiting Civillian"
+
 #define JOB_GROUP_ENGINEERS list( \
 	JOB_STATION_ENGINEER, \
 	JOB_ATMOSPHERIC_TECHNICIAN, \
@@ -131,7 +145,7 @@
 #define JOB_DISPLAY_ORDER_ASSISTANT 1
 #define JOB_DISPLAY_ORDER_CAPTAIN 2
 #define JOB_DISPLAY_ORDER_HEAD_OF_PERSONNEL 3
-#define JOB_DISPLAY_ORDER_NT_SECRETARY 4
+#define JOB_DISPLAY_ORDER_BRIDGE_ASSISTANT 4
 #define JOB_DISPLAY_ORDER_BARTENDER 5
 #define JOB_DISPLAY_ORDER_BOTANIST 6
 #define JOB_DISPLAY_ORDER_COOK 7

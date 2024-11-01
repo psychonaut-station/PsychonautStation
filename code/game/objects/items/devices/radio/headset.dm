@@ -70,6 +70,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	if(ispath(keyslot2))
 		keyslot2 = new keyslot2()
 	set_listening(TRUE)
+	set_broadcasting(TRUE)
 	recalculateChannels()
 	possibly_deactivate_in_loc()
 
@@ -114,6 +115,22 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		return
 	for(var/language in language_list)
 		user.remove_language(language, language_flags = UNDERSTOOD_LANGUAGE, source = LANGUAGE_RADIOKEY)
+
+// Headsets do not become hearing sensitive as broadcasting instead controls their talk_into capabilities
+/obj/item/radio/headset/set_broadcasting(new_broadcasting, actual_setting = TRUE)
+	broadcasting = new_broadcasting
+	if(actual_setting)
+		should_be_broadcasting = broadcasting
+
+	if (perform_update_icon && !isnull(overlay_mic_idle))
+		update_icon()
+	else if (!perform_update_icon)
+		should_update_icon = TRUE
+
+/obj/item/radio/headset/talk_into_impl(atom/movable/talking_movable, message, channel, list/spans, datum/language/language, list/message_mods)
+	if (!broadcasting)
+		return
+	return ..()
 
 /obj/item/radio/headset/syndicate //disguised to look like a normal headset for stealth ops
 
@@ -217,12 +234,6 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	icon_state = "com_headset"
 	worn_icon_state = "com_headset"
 	keyslot = /obj/item/encryptionkey/headset_com
-
-/obj/item/radio/headset/headset_com/nt_secretary
-	name = "secretary radio headset"
-	desc = "A headset for listening the commanding channel."
-	icon = 'icons/psychonaut/obj/clothing/headsets.dmi'
-	icon_state = "secretary_headset"
 
 /obj/item/radio/headset/heads
 	command = TRUE
@@ -468,9 +479,7 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 		grant_headset_languages(mob_loc)
 
 /obj/item/radio/headset/click_alt(mob/living/user)
-	if(!istype(user) || !Adjacent(user) || user.incapacitated)
-		return CLICK_ACTION_BLOCKING
-	if (!command)
+	if(!istype(user) || !command)
 		return CLICK_ACTION_BLOCKING
 	use_command = !use_command
 	to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))

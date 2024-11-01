@@ -159,13 +159,6 @@
 	icon_state = "tie_greyscale_untied"
 	greyscale_colors = "#5275b6ff"
 
-/obj/item/clothing/neck/tie/blue/secretary
-	name = "secretary tie"
-	greyscale_colors = COLOR_SECRETARY
-
-/obj/item/clothing/neck/tie/blue/secretary/tied
-	is_tied = TRUE
-
 /obj/item/clothing/neck/tie/red
 	name = "red tie"
 	icon_state = "tie_greyscale_untied"
@@ -227,6 +220,10 @@
 	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
+/obj/item/clothing/neck/stethoscope/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/adjust_fishing_difficulty, -3) //FISH DOCTOR?!
+
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] puts \the [src] to [user.p_their()] chest! It looks like [user.p_they()] won't hear much!"))
 	return OXYLOSS
@@ -244,10 +241,10 @@
 	var/heart_strength
 	var/pulse_pressure
 
-	var/obj/item/organ/internal/heart/heart = carbon_patient.get_organ_slot(ORGAN_SLOT_HEART)
-	var/obj/item/organ/internal/lungs/lungs = carbon_patient.get_organ_slot(ORGAN_SLOT_LUNGS)
-	var/obj/item/organ/internal/liver/liver = carbon_patient.get_organ_slot(ORGAN_SLOT_LIVER)
-	var/obj/item/organ/internal/appendix/appendix = carbon_patient.get_organ_slot(ORGAN_SLOT_APPENDIX)
+	var/obj/item/organ/heart/heart = carbon_patient.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/lungs/lungs = carbon_patient.get_organ_slot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/liver/liver = carbon_patient.get_organ_slot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/appendix/appendix = carbon_patient.get_organ_slot(ORGAN_SLOT_APPENDIX)
 
 	var/render_list = list()//information will be packaged in a list for clean display to the user
 
@@ -466,6 +463,10 @@
 
 /obj/item/clothing/neck/petcollar/attack_self(mob/user)
 	tagname = sanitize_name(tgui_input_text(user, "Would you like to change the name on the tag?", "Pet Naming", "Spot", MAX_NAME_LEN))
+	if (!tagname || !length(tagname))
+		name = initial(name)
+		tagname = null
+		return
 	name = "[initial(name)] - [tagname]"
 
 //////////////

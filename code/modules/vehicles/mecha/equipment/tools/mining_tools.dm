@@ -74,7 +74,7 @@
 		if(istype(target, /turf/closed/mineral/gibtonite))
 			var/turf/closed/mineral/gibtonite/giberal_turf = target
 			if(giberal_turf.stage != GIBTONITE_UNSTRUCK)
-				playsound(chassis, 'sound/machines/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
+				playsound(chassis, 'sound/machines/scanner/scanbuzz.ogg', 25, TRUE, SILENCED_SOUND_EXTRARANGE)
 				to_chat(source, span_warning("[icon2html(src, source)] Active gibtonite ore deposit detected! Safety protocols preventing continued drilling."))
 				return
 
@@ -115,7 +115,7 @@
 	while(do_after_mecha(target, source, drill_delay))
 		if(isliving(target))
 			drill_mob(target, source)
-			playsound(src,'sound/weapons/drill.ogg',40,TRUE)
+			playsound(src,'sound/items/weapons/drill.ogg',40,TRUE)
 		else if(isobj(target))
 			var/obj/obj_target = target
 			if(istype(obj_target, /obj/item/boulder))
@@ -123,7 +123,7 @@
 				nu_boulder.manual_process(src, source)
 			else
 				obj_target.take_damage(15, BRUTE, 0, FALSE, get_dir(chassis, target))
-			playsound(src,'sound/weapons/drill.ogg', 40, TRUE)
+			playsound(src,'sound/items/weapons/drill.ogg', 40, TRUE)
 
 		// If we caused a qdel drilling the target, we can stop drilling them.
 		// Prevents starting a do_after on a qdeleted target.
@@ -194,6 +194,13 @@
 	var/splatter_dir = get_dir(chassis, target)
 	if(isalien(target))
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
+	else if(ishuman(target))
+		var/datum/reagent/blood_id = target.get_blood_id()
+		if(!isnull(blood_id))
+			var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
+			var/obj/splatter = new splatter_type(target.loc, target.dir)
+			if(blood_id != /datum/reagent/blood)
+				splatter.color = color_hex2color_matrix(blood_id.color)
 	else
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
 

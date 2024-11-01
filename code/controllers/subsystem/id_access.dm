@@ -121,7 +121,6 @@ SUBSYSTEM_DEF(id_access)
 	accesses_by_region[REGION_SUPPLY] = REGION_ACCESS_SUPPLY
 	accesses_by_region[REGION_COMMAND] = REGION_ACCESS_COMMAND
 	accesses_by_region[REGION_CENTCOM] = REGION_ACCESS_CENTCOM
-	accesses_by_region[REGION_SECRETARY] = REGION_ACCESS_SECRETARY
 
 	station_regions = REGION_AREA_STATION
 
@@ -409,6 +408,12 @@ SUBSYSTEM_DEF(id_access)
 
 	if(trim.assignment)
 		id_card.assignment = trim.assignment
+
+	var/datum/job/trim_job = trim.find_job()
+	if (!isnull(id_card.registered_account))
+		var/datum/job/old_job = id_card.registered_account.account_job
+		id_card.registered_account.account_job = trim_job
+		id_card.registered_account.update_account_job_lists(trim_job, old_job)
 
 	id_card.update_label()
 	id_card.update_icon()

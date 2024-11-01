@@ -35,18 +35,17 @@
 #define DIAG_PATH_HUD "15"
 /// Gland indicators for abductors
 #define GLAND_HUD "16"
-#define DISEASE_HUD "17"
-#define AI_DETECT_HUD "18"
+#define AI_DETECT_HUD "17"
 /// Displays launchpads' targeting reticle
-#define DIAG_LAUNCHPAD_HUD "19"
+#define DIAG_LAUNCHPAD_HUD "18"
 //for antag huds. these are used at the /mob level
-#define ANTAG_HUD "20"
+#define ANTAG_HUD "19"
 // for fans to identify pins
-#define FAN_HUD "21"
+#define FAN_HUD "20"
 /// Mech camera HUD
-#define DIAG_CAMERA_HUD "22"
+#define DIAG_CAMERA_HUD "21"
 /// Steady Hacked APC effect, visible only to Malf AIs
-#define MALF_APC_HUD "23"
+#define MALF_APC_HUD "22"
 
 //by default everything in the hud_list of an atom is an image
 //a value in hud_list with one of these will change that behavior
@@ -61,10 +60,9 @@
 #define DATA_HUD_DIAGNOSTIC 5
 #define DATA_HUD_BOT_PATH 6
 #define DATA_HUD_ABDUCTOR 7
-#define DATA_HUD_DISEASE 8
-#define DATA_HUD_AI_DETECT 9
-#define DATA_HUD_FAN 10
-#define DATA_HUD_MALF_APC 11
+#define DATA_HUD_AI_DETECT 8
+#define DATA_HUD_FAN 9
+#define DATA_HUD_MALF_APC 10
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20
@@ -86,6 +84,7 @@
 #define SECHUD_BITRUNNER "hudbitrunner"
 #define SECHUD_BOTANIST "hudbotanist"
 #define SECHUD_BRIG_PHYSICIAN "hudbrigphysician"
+#define SECHUD_BRIDGE_ASSISTANT "hudbridgeassistant"
 #define SECHUD_CAPTAIN "hudcaptain"
 #define SECHUD_CARGO_TECHNICIAN "hudcargotechnician"
 #define SECHUD_CHAPLAIN "hudchaplain"
@@ -105,7 +104,6 @@
 #define SECHUD_LAWYER "hudlawyer"
 #define SECHUD_MEDICAL_DOCTOR "hudmedicaldoctor"
 #define SECHUD_MIME "hudmime"
-#define SECHUD_NT_SECRETARY "hudntsecretary"
 #define SECHUD_PARAMEDIC "hudparamedic"
 #define SECHUD_PRISONER "hudprisoner"
 #define SECHUD_PSYCHOLOGIST "hudpsychologist"

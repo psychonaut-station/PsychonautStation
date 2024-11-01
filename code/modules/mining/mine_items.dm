@@ -13,7 +13,7 @@
 	. = ..()
 	set_light(set_luminosity, set_cap)
 
-/obj/effect/light_emitter/singularity_pull()
+/obj/effect/light_emitter/singularity_pull(atom/singularity, current_size)
 	return
 
 /obj/effect/light_emitter/singularity_act()
@@ -321,7 +321,7 @@
 		return
 	update_rail_state(FALSE)
 	Move(new_destination)
-	var/sound/thud_sound = sound('sound/weapons/thudswoosh.ogg')
+	var/sound/thud_sound = sound('sound/items/weapons/thudswoosh.ogg')
 	thud_sound.pitch = 0.5
 	playsound(src, thud_sound, 50, TRUE)
 

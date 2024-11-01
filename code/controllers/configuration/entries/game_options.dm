@@ -107,9 +107,22 @@
 
 /datum/config_entry/flag/protect_assistant_from_antagonist //If assistants can be traitor/cult/other
 
-/datum/config_entry/flag/enforce_human_authority //If non-human species are barred from joining as a head of staff
+/datum/config_entry/string/human_authority //Controls how to enforce human authority
+	default = "DISABLED"
 
-/datum/config_entry/flag/enforce_human_authority_on_everyone //If non-human species are barred from joining as a head of staff, including jobs flagged as allowed for non-humans, ie. Quartermaster.
+/////////////////////////////////////////////////Outdated human authority settings
+/datum/config_entry/flag/enforce_human_authority
+	deprecated_by = /datum/config_entry/string/human_authority
+
+/datum/config_entry/flag/enforce_human_authority/DeprecationUpdate(value)
+	return value ? HUMAN_AUTHORITY_NON_HUMAN_WHITELIST : HUMAN_AUTHORITY_DISABLED
+
+/datum/config_entry/flag/enforce_human_authority_on_everyone
+	deprecated_by = /datum/config_entry/string/human_authority
+
+/datum/config_entry/flag/enforce_human_authority_on_everyone/DeprecationUpdate(value)
+	return value ? HUMAN_AUTHORITY_ENFORCED : HUMAN_AUTHORITY_DISABLED
+/////////////////////////////////////////////////
 
 /datum/config_entry/flag/allow_latejoin_antagonists // If late-joining players can be traitor/changeling
 
@@ -163,10 +176,10 @@
 	default = "İstasyona yönelik tüm tehditler geçmiştir. Güvenlik görevlileri silah bulundurmayabilir, gizliliğinize tekrardan önem verilmektedir."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, rastgele aramalara izin verilmektedir."
+	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, aramalara geçerli bir sebebi olması dahilinde izin verilmektedir."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Rastgele aramalara hala izin verilmektedir."
+	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Aramalara geçerli bir sebebi olması dahilinde verilmektedir."
 
 /datum/config_entry/string/alert_red_upto
 	default = "İstasyona yönelik ciddi bir tehdit bulunuyor. Güvenlik görevlileri silahlarını her an kullanabilir. Rastgele aramalara izin verilmektedir ve tavsiye edilir."

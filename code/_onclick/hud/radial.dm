@@ -265,6 +265,11 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			SET_PLANE_EXPLICIT(info_button, ABOVE_HUD_PLANE, anchor)
 			info_button.layer = RADIAL_CONTENT_LAYER
 			E.vis_contents += info_button
+		if (choice_datum?.warning)
+			var/obj/effect/abstract/warning/warning_button = new(E)
+			SET_PLANE_EXPLICIT(warning_button, ABOVE_HUD_PLANE, anchor)
+			warning_button.layer = RADIAL_CONTENT_LAYER
+			E.vis_contents += warning_button
 
 /datum/radial_menu/New()
 	close_button = new
@@ -388,8 +393,8 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	if (user_space)
 		var/turf/user_turf = get_turf(user)
 		var/turf/anchor_turf = get_turf(anchor)
-		offset_x = (anchor_turf.x - user_turf.x) * world.icon_size + anchor.pixel_x - user.pixel_x
-		offset_y = (anchor_turf.y - user_turf.y) * world.icon_size + anchor.pixel_y - user.pixel_y
+		offset_x = (anchor_turf.x - user_turf.x) * ICON_SIZE_X + anchor.pixel_x - user.pixel_x
+		offset_y = (anchor_turf.y - user_turf.y) * ICON_SIZE_Y + anchor.pixel_y - user.pixel_y
 	menu.show_to(user, offset_x, offset_y)
 	menu.wait(user, anchor, require_near)
 	var/answer = menu.selected_choice
@@ -412,6 +417,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 
 	/// If provided, will display an info button that will put this text in your chat
 	var/info
+
+	/// If its true, will display an warning indicator
+	var/warning = FALSE
 
 /datum/radial_menu_choice/Destroy(force)
 	. = ..()

@@ -176,7 +176,7 @@
 	research_tree_icon_state = "blade_upgrade_void"
 
 /datum/heretic_knowledge/blade_upgrade/void/do_melee_effects(mob/living/source, mob/living/target, obj/item/melee/sickly_blade/blade)
-	if(source == target)
+	if(source == target || !isliving(target))
 		return
 
 	target.apply_status_effect(/datum/status_effect/void_chill, 2)
@@ -245,7 +245,7 @@
 	priority_announce(
 		text = "[generate_heretic_text()] Hiçliğin efendisi [user.real_name] yükseldi, dünyaları sona erdiren Vals adımlarını atıyor! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
-		sound = 'sound/ambience/antag/heretic/ascend_void.ogg',
+		sound = 'sound/music/antag/heretic/ascend_void.ogg',
 		color_override = "pink",
 	)
 	user.add_traits(list(TRAIT_RESISTLOWPRESSURE, TRAIT_NEGATES_GRAVITY, TRAIT_MOVE_FLYING, TRAIT_FREE_HYPERSPACE_MOVEMENT), MAGIC_TRAIT)
@@ -258,7 +258,7 @@
 	heavy_storm = new(user, 10)
 	if(ishuman(user))
 		var/mob/living/carbon/human/ascended_human = user
-		var/obj/item/organ/internal/eyes/heretic_eyes = ascended_human.get_organ_slot(ORGAN_SLOT_EYES)
+		var/obj/item/organ/eyes/heretic_eyes = ascended_human.get_organ_slot(ORGAN_SLOT_EYES)
 		heretic_eyes?.color_cutoffs = list(30, 30, 30)
 		ascended_human.update_sight()
 
@@ -341,7 +341,7 @@
 		span_danger("The void storm surrounding [ascended_heretic] deflects [hitting_projectile]!"),
 		span_userdanger("The void storm protects you from [hitting_projectile]!"),
 	)
-	playsound(ascended_heretic, pick('sound/magic/VoidDeflect01.ogg', 'sound/magic/VoidDeflect02.ogg', 'sound/magic/VoidDeflect03.ogg'), 75, TRUE)
+	playsound(ascended_heretic, SFX_VOID_DEFLECT, 75, TRUE)
 	hitting_projectile.firer = ascended_heretic
 	if(prob(75))
 		hitting_projectile.set_angle(get_angle(hitting_projectile.firer, hitting_projectile.fired_from))

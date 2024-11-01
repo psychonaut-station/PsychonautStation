@@ -171,6 +171,7 @@
 	arrived.item_flags |= IN_STORAGE
 	refresh_views()
 	arrived.on_enter_storage(src)
+	RegisterSignal(arrived, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(mousedrop_receive))
 	SEND_SIGNAL(arrived, COMSIG_ITEM_STORED, src)
 	parent.update_appearance()
 
@@ -184,6 +185,7 @@
 	gone.item_flags &= ~IN_STORAGE
 	remove_and_refresh(gone)
 	gone.on_exit_storage(src)
+	UnregisterSignal(gone, COMSIG_MOUSEDROPPED_ONTO)
 	SEND_SIGNAL(gone, COMSIG_ITEM_UNSTORED, src)
 	parent.update_appearance()
 
@@ -451,7 +453,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	SEND_SIGNAL(parent, COMSIG_ATOM_STORED_ITEM, to_insert, user, force)
 	SEND_SIGNAL(src, COMSIG_STORAGE_STORED_ITEM, to_insert, user, force)
-	RegisterSignal(to_insert, COMSIG_MOUSEDROPPED_ONTO, PROC_REF(mousedrop_receive))
 	to_insert.forceMove(real_location)
 	item_insertion_feedback(user, to_insert, override)
 	parent.update_appearance()
@@ -468,7 +469,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 
 	if (target.loc != real_location) // what even
-		UnregisterSignal(target, COMSIG_MOUSEDROPPED_ONTO)
 		return
 
 	if(numerical_stacking)
@@ -573,7 +573,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	refresh_views()
 	parent.update_appearance()
 
-	UnregisterSignal(thing, COMSIG_MOUSEDROPPED_ONTO)
 	SEND_SIGNAL(parent, COMSIG_ATOM_REMOVED_ITEM, thing, remove_to_loc, silent)
 	SEND_SIGNAL(src, COMSIG_STORAGE_REMOVED_ITEM, thing, remove_to_loc, silent)
 	return TRUE
@@ -826,10 +825,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		return
 	if(!iscarbon(user) && !isdrone(user))
 		return
-	var/mob/living/user_living = user
-	if(user_living.incapacitated)
-		return
-
 	attempt_insert(dropping, user)
 	return COMPONENT_CANCEL_MOUSEDROPPED_ONTO
 
@@ -978,7 +973,7 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 		if(user.active_storage == src && user.client)
 			seeing += user
 		else
-			is_using -= user
+			hide_contents(user)
 	return seeing
 
 /**
@@ -1036,8 +1031,6 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
  * * mob/to_hide - the mob to hide the storage from
  */
 /datum/storage/proc/hide_contents(mob/to_hide)
-	if(!to_hide.client)
-		return TRUE
 	if(to_hide.active_storage == src)
 		to_hide.active_storage = null
 
@@ -1050,8 +1043,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 
 	is_using -= to_hide
 
-	to_hide.client.screen -= storage_interfaces[to_hide].list_ui_elements()
-	to_hide.client.screen -= real_location.contents
+	if(to_hide.client)
+		to_hide.client.screen -= storage_interfaces[to_hide].list_ui_elements()
+		to_hide.client.screen -= real_location.contents
 	QDEL_NULL(storage_interfaces[to_hide])
 	storage_interfaces -= to_hide
 
@@ -1082,7 +1076,9 @@ GLOBAL_LIST_EMPTY(cached_storage_typecaches)
 	var/columns = clamp(max_slots, 1, screen_max_columns)
 	var/rows = clamp(CEILING(adjusted_contents / columns, 1) + additional_row, 1, screen_max_rows)
 
-	for (var/ui_user in storage_interfaces)
+	for (var/mob/ui_user as anything in storage_interfaces)
+		if (isnull(storage_interfaces[ui_user]))
+			continue
 		storage_interfaces[ui_user].update_position(screen_start_x, screen_pixel_x, screen_start_y, screen_pixel_y, columns, rows)
 
 	var/current_x = screen_start_x

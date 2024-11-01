@@ -14,7 +14,7 @@
 	melee_damage_upper = 10
 	attack_verb_continuous = "bites"
 	attack_verb_simple = "bite"
-	attack_sound = 'sound/weapons/bite.ogg'
+	attack_sound = 'sound/items/weapons/bite.ogg'
 	attack_vis_effect = ATTACK_EFFECT_BITE
 	response_help_continuous = "pets"
 	response_help_simple = "pet"
@@ -32,7 +32,7 @@
 	minimum_survivable_temperature = T20C - 100
 	maximum_survivable_temperature = T20C + 120
 	light_color = "#d43229" 
-	death_sound = 'sound/creatures/wada.ogg'
+	death_sound = 'sound/mobs/non-humanoids/wada.ogg'
 
 	ai_controller = /datum/ai_controller/basic_controller/vada
 

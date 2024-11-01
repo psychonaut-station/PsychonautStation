@@ -141,10 +141,6 @@
 	name = "Head PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_head.json'
 
-/datum/greyscale_config/tablet/secretary
-	name = "Nt Secretary PDA"
-	json_config = 'code/datums/greyscale/json_configs/pda_secretary.json'
-
 /datum/greyscale_config/tablet/mime
 	name = "Mime PDA"
 	json_config = 'code/datums/greyscale/json_configs/pda_mime.json'
@@ -232,6 +228,21 @@
 	name = "Plushie Carp"
 	icon_file = 'icons/obj/toys/plushes.dmi'
 	json_config = 'code/datums/greyscale/json_configs/plushie_carp.json'
+
+/datum/greyscale_config/pet_carrier
+	name = "Pet Carrier"
+	icon_file = 'icons/obj/pet_carrier.dmi'
+	json_config = 'code/datums/greyscale/json_configs/pet_carrier.json'
+
+/datum/greyscale_config/pet_carrier_inhands_left
+	name = "Pet Carrier Left"
+	icon_file = 'icons/mob/inhands/items_lefthand.dmi'
+	json_config = 'code/datums/greyscale/json_configs/pet_carrier_inhands.json'
+
+/datum/greyscale_config/pet_carrier_inhands_right
+	name = "Pet Carrier Right"
+	icon_file = 'icons/mob/inhands/items_righthand.dmi'
+	json_config = 'code/datums/greyscale/json_configs/pet_carrier_inhands.json'
 
 /datum/greyscale_config/plush_lizard
 	name = "Plushie Lizard"

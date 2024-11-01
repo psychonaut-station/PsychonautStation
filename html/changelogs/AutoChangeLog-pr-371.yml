@@ -1,0 +1,5 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - rscadd: "IPC ırkı oyuna eklendi"
+  - code_imp: "Clown ve mimeler artık isimlerinde sayı kullanabilir."

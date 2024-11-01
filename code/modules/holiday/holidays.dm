@@ -203,7 +203,7 @@
 /datum/holiday/april_fools/celebrate()
 	. = ..()
 	SSjob.set_overflow_role(/datum/job/clown)
-	SSticker.login_music = 'sound/ambience/clown.ogg'
+	SSticker.login_music = 'sound/music/lobby_music/clown.ogg'
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/P = i
 		if(P.client)
@@ -497,10 +497,6 @@
 /datum/holiday/monkey/celebrate()
 	. = ..()
 	SSstation.setup_trait(/datum/station_trait/job/pun_pun)
-	//SSevents should initialize before SSatoms but who knows if it'll ever change.
-	if(GLOB.the_one_and_only_punpun)
-		new /obj/effect/landmark/start/pun_pun(GLOB.the_one_and_only_punpun.loc)
-		qdel(GLOB.the_one_and_only_punpun)
 
 /datum/holiday/xmas
 	name = CHRISTMAS

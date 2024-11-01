@@ -132,14 +132,11 @@
 	/// Minimal character age for this job
 	var/required_character_age
 
-<<<<<<< HEAD
 	/// Won't allow anyone to select this job, if their ckey is not in "data/job_whitelist.txt"
 	var/whitelisted = FALSE
 
-=======
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
->>>>>>> upstream/master
 
 /datum/job/New()
 	. = ..()
@@ -357,14 +354,10 @@
 
 	var/pda_slot = ITEM_SLOT_BELT
 
-<<<<<<< HEAD
-/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visualsOnly = FALSE)
+/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visuals_only = FALSE)
 	if (skip_preferences)
 		return
 
-=======
-/datum/outfit/job/pre_equip(mob/living/carbon/human/H, visuals_only = FALSE)
->>>>>>> upstream/master
 	if(ispath(back, /obj/item/storage/backpack))
 		switch(H.backpack)
 			if(GBACKPACK)

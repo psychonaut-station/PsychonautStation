@@ -882,7 +882,7 @@
 	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 	return ..()
 
-/obj/item/organ/internal/eyes/night_vision/arachnid
+/obj/item/organ/eyes/night_vision/arachnid
 	name = "arachnid eyes"
 	desc = "So many eyes!"
 	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
@@ -893,7 +893,7 @@
 	medium_light_cutoff = list(35, 30, 0)
 	high_light_cutoff = list(50, 40, 0)
 
-/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_insert(mob/living/carbon/eye_owner)
+/obj/item/organ/eyes/night_vision/arachnid/on_mob_insert(mob/living/carbon/eye_owner)
 	. = ..()
 	if(!ishuman(eye_owner))
 		return
@@ -903,7 +903,7 @@
 	var/datum/species/rec_species = human_receiver.dna.species
 	rec_species.update_no_equip_flags(eye_owner, rec_species.no_equip_flags | ITEM_SLOT_EYES)
 
-/obj/item/organ/internal/eyes/night_vision/arachnid/on_mob_remove(mob/living/carbon/eye_owner)
+/obj/item/organ/eyes/night_vision/arachnid/on_mob_remove(mob/living/carbon/eye_owner)
 	. = ..()
 	if(!ishuman(eye_owner))
 		return

@@ -169,12 +169,7 @@ GLOBAL_LIST_INIT(special_roles, list(
 	ROLE_GLITCH = 0,
 	ROLE_PAI = 0,
 	ROLE_SENTIENCE = 0,
-<<<<<<< HEAD
-
-	// END
-=======
 	ROLE_RECOVERED_CREW = 0,
->>>>>>> upstream/master
 ))
 
 //Job defines for what happens when you fail to qualify for any job during job selection

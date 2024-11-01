@@ -33,7 +33,7 @@
 	arachnid.eye_color_left = COLOR_SILVER
 	arachnid.eye_color_right = COLOR_SILVER
 	arachnid.set_species(/datum/species/arachnid)
-	arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visualsOnly = TRUE)
+	arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visuals_only = TRUE)
 	test_screenshot("[/datum/species/arachnid]", get_flat_icon_for_all_directions(arachnid))
 	testable_species -= /datum/species/arachnid
 

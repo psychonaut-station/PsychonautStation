@@ -81,13 +81,8 @@
 	playsound(get_turf(owner), 'sound/effects/magic/clockwork/invoke_general.ogg', 300, TRUE, 5)
 	return //voice of god speaks for us
 
-<<<<<<< HEAD
-/obj/item/organ/internal/vocal_cords/colossus/speak_with(message)
-	var/cooldown = voice_of_god(locale_uppertext(message), owner, spans, base_multiplier)
-=======
 /obj/item/organ/vocal_cords/colossus/speak_with(message)
-	var/cooldown = voice_of_god(uppertext(message), owner, spans, base_multiplier)
->>>>>>> upstream/master
+	var/cooldown = voice_of_god(locale_uppertext(message), owner, spans, base_multiplier)
 	next_command = world.time + (cooldown * cooldown_mod)
 
 /obj/item/organ/adamantine_resonator

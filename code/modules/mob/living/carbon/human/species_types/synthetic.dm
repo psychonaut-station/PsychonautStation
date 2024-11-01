@@ -42,7 +42,7 @@
 	sexes = FALSE
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	meat = null
-	mutanttongue = /obj/item/organ/internal/tongue/robot
+	mutanttongue = /obj/item/organ/tongue/robot
 	mutantstomach = null
 	mutantheart = null
 	mutantliver = null

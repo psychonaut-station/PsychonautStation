@@ -470,7 +470,6 @@
 	organ_owner.gain_trauma(/datum/brain_trauma/special/bluespace_prophet, TRAUMA_RESILIENCE_ABSOLUTE)
 	organ_owner.AddElement(/datum/element/tenacious)
 
-<<<<<<< HEAD
 /obj/item/organ/internal/brain/basic_posibrain
 	name = "basic positronic brain"
 	desc = "Basic version of the positronic brain"
@@ -478,10 +477,7 @@
 	icon_state = "basic_posib"
 	organ_traits = list(TRAIT_ADVANCEDTOOLUSER, TRAIT_LITERATE, TRAIT_CAN_STRIP)
 
-/obj/item/organ/internal/brain/felinid //A bit smaller than average
-=======
 /obj/item/organ/brain/felinid //A bit smaller than average
->>>>>>> upstream/master
 	brain_size = 0.8
 
 /obj/item/organ/brain/lizard //A bit smaller than average

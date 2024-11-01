@@ -35,12 +35,7 @@
 #define DIAG_PATH_HUD "15"
 /// Gland indicators for abductors
 #define GLAND_HUD "16"
-<<<<<<< HEAD
-#define DISEASE_HUD "17"
-#define AI_DETECT_HUD "18"
-=======
 #define AI_DETECT_HUD "17"
->>>>>>> upstream/master
 /// Displays launchpads' targeting reticle
 #define DIAG_LAUNCHPAD_HUD "18"
 //for antag huds. these are used at the /mob level
@@ -65,16 +60,9 @@
 #define DATA_HUD_DIAGNOSTIC 5
 #define DATA_HUD_BOT_PATH 6
 #define DATA_HUD_ABDUCTOR 7
-<<<<<<< HEAD
-#define DATA_HUD_DISEASE 8
-#define DATA_HUD_AI_DETECT 9
-#define DATA_HUD_FAN 10
-#define DATA_HUD_MALF_APC 11
-=======
 #define DATA_HUD_AI_DETECT 8
 #define DATA_HUD_FAN 9
 #define DATA_HUD_MALF_APC 10
->>>>>>> upstream/master
 
 /// cooldown for being shown the images for any particular data hud
 #define ADD_HUD_TO_COOLDOWN 20

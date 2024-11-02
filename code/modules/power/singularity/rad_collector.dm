@@ -37,6 +37,7 @@
 /obj/machinery/power/energy_accumulator/rad_collector/Initialize(mapload)
 	. = ..()
 	sciweb = locate(/datum/techweb/science) in SSresearch.techwebs
+	register_context()
 
 /obj/machinery/power/energy_accumulator/rad_collector/anchored/Initialize(mapload)
 	. = ..()
@@ -178,6 +179,24 @@
 		. += span_notice("Radiation collection at <b>[power_coeff*100]%</b>.")
 		. += span_notice("Stored <b>[bitcoinmining ? (stored_energy*RAD_COLLECTOR_MINING_CONVERSION_RATE) : display_energy(get_stored_joules())]</b>.")
 		. += span_notice("[bitcoinmining ? "Producing <b>[bitcoin_produced*RAD_COLLECTOR_MINING_CONVERSION_RATE]</b>" : "Processing <b>[display_power(processed_energy)]</b>"].")
+
+/obj/machinery/power/energy_accumulator/rad_collector/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = NONE
+	if(isnull(held_item))
+		return
+
+	if(held_item.tool_behaviour == TOOL_WRENCH)
+		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Una" : "A"]nchor"
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(held_item.tool_behaviour == TOOL_CROWBAR && loaded_tank)
+		context[SCREENTIP_CONTEXT_LMB] = "Eject tank"
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(held_item.tool_behaviour == TOOL_MULTITOOL && !active && is_station_level(z) && sciweb)
+		context[SCREENTIP_CONTEXT_LMB] = "Change production mode"
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(istype(held_item, /obj/item/tank/internals/plasma) && !loaded_tank)
+		context[SCREENTIP_CONTEXT_LMB] = "Load tank"
+		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/power/energy_accumulator/rad_collector/return_analyzable_air()
 	if(loaded_tank)

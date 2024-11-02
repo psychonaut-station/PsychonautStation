@@ -1,3 +1,8 @@
+/atom/movable/warp_effect/singularity
+	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
+	pixel_x = -293
+	pixel_y = -293
+
 /// The gravitational singularity
 /obj/singularity
 	name = "gravitational singularity"
@@ -49,6 +54,7 @@
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	var/atom/movable/warp_effect/singularity/warp
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
 	flags_1 = SUPERMATTER_IGNORES_1
@@ -67,6 +73,9 @@
 		singularity_component_type, \
 		consume_callback = CALLBACK(src, PROC_REF(consume)), \
 	)
+
+	warp = new(src)
+	vis_contents += warp
 
 	singularity_component = WEAKREF(new_component)
 
@@ -88,6 +97,8 @@
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSsinguloprocess, src)
+	vis_contents -= warp
+	warp = null
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)
@@ -209,6 +220,8 @@
 			icon_state = "[singularity_icon_variant]_s1"
 			pixel_x = 0
 			pixel_y = 0
+			warp.pixel_x = -293
+			warp.pixel_y = -293
 			new_grav_pull = 4
 			new_consume_range = 0
 			dissipate_delay = 10
@@ -221,6 +234,8 @@
 				icon_state = "[singularity_icon_variant]_s3"
 				pixel_x = -32
 				pixel_y = -32
+				warp.pixel_x = -261
+				warp.pixel_y = -261
 				new_grav_pull = 6
 				new_consume_range = 1
 				dissipate_delay = 5
@@ -233,6 +248,8 @@
 				icon_state = "[singularity_icon_variant]_s5"
 				pixel_x = -64
 				pixel_y = -64
+				warp.pixel_x = -229
+				warp.pixel_y = -229
 				new_grav_pull = 8
 				new_consume_range = 2
 				dissipate_delay = 4
@@ -245,6 +262,8 @@
 				icon_state = "[singularity_icon_variant]_s7"
 				pixel_x = -96
 				pixel_y = -96
+				warp.pixel_x = -197
+				warp.pixel_y = -197
 				new_grav_pull = 10
 				new_consume_range = 3
 				dissipate_delay = 10
@@ -256,6 +275,8 @@
 			icon_state = "[singularity_icon_variant]_s9"
 			pixel_x = -128
 			pixel_y = -128
+			warp.pixel_x = -165
+			warp.pixel_y = -165
 			new_grav_pull = 10
 			new_consume_range = 4
 			dissipate = FALSE //It cant go smaller due to e loss
@@ -265,6 +286,8 @@
 			icon_state = "[singularity_icon_variant]_s11"
 			pixel_x = -160
 			pixel_y = -160
+			warp.pixel_x = -133
+			warp.pixel_y = -133
 			new_grav_pull = 15
 			new_consume_range = 5
 			dissipate = FALSE
@@ -482,6 +505,13 @@
 	)
 	qdel(src)
 	return gain
+
+/obj/singularity/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	. = ..()
+	if(same_z_layer)
+		return
+	if(warp)
+		SET_PLANE(warp, PLANE_TO_TRUE(warp.plane), new_turf)
 
 /obj/singularity/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 12 SECONDS)
 	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))

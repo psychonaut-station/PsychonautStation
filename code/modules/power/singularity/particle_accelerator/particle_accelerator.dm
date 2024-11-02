@@ -26,6 +26,38 @@
 	var/reference = null
 	var/construction_state = PA_CONSTRUCTION_UNSECURED
 
+/obj/machinery/particle_accelerator/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/machinery/particle_accelerator/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = NONE
+	if(isnull(held_item))
+		return
+
+	if(held_item.tool_behaviour == TOOL_WRENCH)
+		switch(construction_state)
+			if(PA_CONSTRUCTION_UNSECURED)
+				context[SCREENTIP_CONTEXT_LMB] = "Secure"
+				return CONTEXTUAL_SCREENTIP_SET
+			if(PA_CONSTRUCTION_UNWIRED)
+				context[SCREENTIP_CONTEXT_LMB] = "Unsecure"
+				return CONTEXTUAL_SCREENTIP_SET
+	else if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
+		switch(construction_state)
+			if(PA_CONSTRUCTION_COMPLETE)
+				context[SCREENTIP_CONTEXT_LMB] = "Open panel"
+				return CONTEXTUAL_SCREENTIP_SET
+			if(PA_CONSTRUCTION_PANEL_OPEN)
+				context[SCREENTIP_CONTEXT_LMB] = "Close panel"
+				return CONTEXTUAL_SCREENTIP_SET
+	else if(held_item.tool_behaviour == TOOL_WIRECUTTER && construction_state == PA_CONSTRUCTION_PANEL_OPEN)
+		context[SCREENTIP_CONTEXT_LMB] = "Cut wires"
+		return CONTEXTUAL_SCREENTIP_SET
+	else if(istype(held_item, /obj/item/stack/cable_coil) && construction_state == PA_CONSTRUCTION_UNWIRED)
+		context[SCREENTIP_CONTEXT_LMB] = "Add wires"
+		return CONTEXTUAL_SCREENTIP_SET
+
 /obj/machinery/particle_accelerator/examine(mob/user)
 	. = ..()
 
@@ -45,7 +77,17 @@
 	update_state()
 	update_icon()
 
+/obj/machinery/particle_accelerator/crowbar_act(mob/living/user, obj/item/item)
+	world.log << "A"
+	world.log << "A"
+
+	world.log << "D"
+	return TRUE
+
 /obj/machinery/particle_accelerator/wrench_act(mob/living/user, obj/item/item)
+	if(panel_open)
+		to_chat(user, span_warning("The panel is open!"))
+		return FALSE
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
 			default_unfasten_wrench(user, item, 20)
@@ -73,6 +115,9 @@
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
+		if(PA_CONSTRUCTION_UNSECURED)
+			default_deconstruction_screwdriver(user, icon_state, icon_state, tool)
+			return TRUE
 		else
 			return FALSE
 	update_icon()
@@ -84,6 +129,7 @@
 		user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
 			"<span class='notice'>You remove some wires.</span>")
 		construction_state = PA_CONSTRUCTION_UNWIRED
+		new /obj/item/stack/cable_coil(get_turf(src), 1)
 		update_icon()
 		update_state()
 		return TRUE
@@ -102,13 +148,17 @@
 			construction_state = PA_CONSTRUCTION_PANEL_OPEN
 			update_icon()
 			update_state()
-	return ..()
+	else if(construction_state == PA_CONSTRUCTION_UNSECURED)
+		if(!default_deconstruction_crowbar(W))
+			return ..()
+	else
+		return ..()
 
 /obj/machinery/particle_accelerator/proc/update_state()
 	return
 
 /obj/machinery/particle_accelerator/update_icon_state()
-	if(isnull(reference))
+	if(isnull(reference) || reference == "control_box")
 		return ..()
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED,PA_CONSTRUCTION_UNWIRED)
@@ -153,47 +203,51 @@
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
+#define CENTER "center"
+#define RIGHT "right"
+#define LEFT "left"
+
 /obj/machinery/particle_accelerator/particle_emitter
 	name = "EM Containment Grid"
 	desc = "This launches the Alpha particles, might not want to stand near this end."
 	circuit = /obj/item/circuitboard/machine/pa/particle_emitter
 	icon_state = "emitter_center"
+	reference = "emitter_center"
+	var/emitter_type = CENTER
 
 /obj/machinery/particle_accelerator/particle_emitter/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/simple_rotation)
 
-/obj/machinery/particle_accelerator/particle_emitter/click_ctrl(mob/living/user)
+/obj/machinery/particle_accelerator/particle_emitter/multitool_act(mob/living/user, obj/item/tool)
 	if(construction_state != PA_CONSTRUCTION_UNSECURED)
-		return CLICK_ACTION_BLOCKING
-	var/emitter_direction
-	switch(reference)
-		if("emitter_center")
-			reference = "emitter_left"
-			emitter_direction = "left"
-		if("emitter_left")
-			reference = "emitter_right"
-			emitter_direction = "right"
-		if("emitter_right")
-			reference = "emitter_center"
-			emitter_direction = "center"
-	user.visible_message("<span class='notice'>[user.name] changes the emitter's direction to [emitter_direction].</span>", \
-		"<span class='notice'>You changed the emitter's rotation to [emitter_direction].</span>")
+		return FALSE
+	switch(emitter_type)
+		if(CENTER)
+			emitter_type = LEFT
+		if(LEFT)
+			emitter_type = RIGHT
+		if(RIGHT)
+			emitter_type = CENTER
+	reference = "emitter_[emitter_type]"
 	icon_state = reference
-	return CLICK_ACTION_SUCCESS
-
-/obj/machinery/particle_accelerator/particle_emitter/center
-	icon_state = "emitter_center"
-	reference = "emitter_center"
+	user.visible_message("<span class='notice'>[user.name] changes the emitter's type to [emitter_type].</span>", \
+		"<span class='notice'>You changed the emitter's type to [emitter_type].</span>")
+	return TRUE
 
 /obj/machinery/particle_accelerator/particle_emitter/left
 	icon_state = "emitter_left"
 	reference = "emitter_left"
+	emitter_type = LEFT
 
 /obj/machinery/particle_accelerator/particle_emitter/right
 	icon_state = "emitter_right"
 	reference = "emitter_right"
+	emitter_type = RIGHT
 
+#undef LEFT
+#undef RIGHT
+#undef CENTER
 /obj/machinery/particle_accelerator/full
 	name = "Particle Accelerator"
 	desc = "particle accelerator."
@@ -209,10 +263,6 @@
 	var/filled_with = NONE
 	COOLDOWN_DECLARE(next_fire)
 
-/obj/machinery/particle_accelerator/full/setDir(newdir)
-	. = ..()
-	update_appearance()
-
 /obj/machinery/particle_accelerator/full/Destroy()
 	if(master)
 		master.active = FALSE
@@ -220,25 +270,32 @@
 		master.disassemble()
 	return ..()
 
+/obj/machinery/particle_accelerator/full/setDir(newdir)
+	. = ..()
+	update_appearance()
+
+/obj/machinery/particle_accelerator/full/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	return NONE
+
 /obj/machinery/particle_accelerator/full/process()
 	if(master && master.active && (last_shot + fire_delay) <= world.time)
 		emit_particle(master.strength)
 
 /obj/machinery/particle_accelerator/full/update_appearance(updates)
 	. = ..()
-	pixel_z = 0
+	pixel_y = 0
 	pixel_x = 0
 	switch(dir)
 		if(NORTH)
 			pixel_x = -48
 		if(SOUTH)
 			pixel_x = -48
-			pixel_z = -96
+			pixel_y = -96
 		if(EAST)
-			pixel_z = -48
+			pixel_y = -48
 		if(WEST)
 			pixel_x = -96
-			pixel_z = -48
+			pixel_y = -48
 
 /obj/machinery/particle_accelerator/full/update_icon_state()
 	. = ..()
@@ -248,13 +305,16 @@
 		icon_state = "pac"
 
 /obj/machinery/particle_accelerator/full/wrench_act(mob/living/user, obj/item/I)
-	return FALSE
+	return
 
 /obj/machinery/particle_accelerator/full/screwdriver_act(mob/living/user, obj/item/I)
-	return FALSE
+	return
 
 /obj/machinery/particle_accelerator/full/wirecutter_act(mob/living/user, obj/item/tool)
-	return FALSE
+	return
+
+/obj/machinery/particle_accelerator/crowbar_act(mob/living/user, obj/item/I)
+	return
 
 /obj/machinery/particle_accelerator/full/proc/set_delay(delay)
 	if(delay >= 0)

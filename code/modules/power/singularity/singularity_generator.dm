@@ -17,11 +17,25 @@
 	var/energy = 0
 	var/creation_type = /obj/singularity
 
-/obj/machinery/the_singularitygen/attackby(obj/item/W, mob/user, params)
-	if(W.tool_behaviour == TOOL_WRENCH)
-		default_unfasten_wrench(user, W)
-	else
-		return ..()
+/obj/machinery/the_singularitygen/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/machinery/the_singularitygen/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = NONE
+	if(isnull(held_item))
+		return
+
+	if(held_item.tool_behaviour == TOOL_WRENCH)
+		if(!anchored)
+			context[SCREENTIP_CONTEXT_LMB] = "Secure"
+		else
+			context[SCREENTIP_CONTEXT_LMB] = "Unsecure"
+		return CONTEXTUAL_SCREENTIP_SET
+
+/obj/machinery/the_singularitygen/wrench_act(mob/living/user, obj/item/item)
+	default_unfasten_wrench(user, item)
+	return
 
 /obj/machinery/the_singularitygen/process()
 	if(energy > 0)

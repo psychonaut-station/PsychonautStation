@@ -351,6 +351,7 @@
 	desc = "A supermassive black hole or hyper-powered teslaball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
 	cost = 3000
 	contains = list(
+		/obj/item/paper/guides/jobs/engineering/pa = 1,
 		/obj/item/circuitboard/machine/pa/control_box = 1,
 		/obj/item/circuitboard/machine/pa/end_cap = 1,
 		/obj/item/circuitboard/machine/pa/power_box = 1,

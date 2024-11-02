@@ -555,10 +555,10 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 8
 	},
-/obj/machinery/particle_accelerator/particle_emitter/center{
+/obj/machinery/particle_accelerator/particle_emitter{
+	dir = 8;
 	anchored = 1;
-	construction_state = 3;
-	dir = 8
+	construction_state = 3
 	},
 /turf/open/floor/plating,
 /area/station/engineering/supermatter/room)

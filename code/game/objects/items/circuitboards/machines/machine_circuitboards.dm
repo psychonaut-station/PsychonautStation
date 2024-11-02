@@ -469,7 +469,7 @@
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/pa/control_box
-	name = "Particle Accelerator Control Console (Machine Board)"
+	name = "Particle Accelerator Control Box (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/particle_accelerator/control_box
 	req_components = list(
@@ -482,7 +482,7 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/particle_accelerator/end_cap
 	req_components = list(
-		/obj/item/stack/cable_coil = 1,
+		/obj/item/stack/cable_coil = 2,
 		/datum/stock_part/capacitor/tier4 = 1,
 		/obj/item/stack/sheet/iron = 5,
 		/datum/stock_part/micro_laser/tier4 = 1)
@@ -493,9 +493,9 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/particle_accelerator/power_box
 	req_components = list(
-		/obj/item/stack/cable_coil = 1,
+		/obj/item/stack/cable_coil = 3,
 		/datum/stock_part/capacitor/tier4 = 1,
-		/obj/item/stack/sheet/iron = 3)
+		/obj/item/stack/sheet/iron = 2)
 	needs_anchored = FALSE
 
 /obj/item/circuitboard/machine/pa/fuel_chamber
@@ -503,7 +503,7 @@
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/particle_accelerator/fuel_chamber
 	req_components = list(
-		/obj/item/stack/cable_coil = 1,
+		/obj/item/stack/cable_coil = 2,
 		/datum/stock_part/capacitor/tier4 = 1,
 		/obj/item/stack/sheet/iron = 2)
 	needs_anchored = FALSE
@@ -511,11 +511,11 @@
 /obj/item/circuitboard/machine/pa/particle_emitter
 	name = "EM Containment Grid (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	build_path = /obj/machinery/particle_accelerator/particle_emitter/center
+	build_path = /obj/machinery/particle_accelerator/particle_emitter
 	req_components = list(
 		/obj/item/stack/cable_coil = 1,
 		/datum/stock_part/capacitor/tier4 = 1,
-		/obj/item/stack/sheet/plasmarglass = 2,
+		/obj/item/stack/sheet/plasmaglass = 2,
 		/obj/item/stack/sheet/iron = 2,
 		/datum/stock_part/micro_laser/tier4 = 2)
 	needs_anchored = FALSE

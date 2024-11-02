@@ -4,17 +4,19 @@
 #define PA_CONSTRUCTION_COMPLETE   3
 
 /obj/machinery/particle_accelerator/control_box
-	name = "Particle Accelerator Control Console"
+	name = "Particle Accelerator Control Box"
 	desc = "This controls the density of the particles."
 	icon_state = "control_box"
 	use_power = NO_POWER_USE
 	idle_power_usage = 500
 	active_power_usage = 10000
 	circuit = /obj/item/circuitboard/machine/pa/control_box
+	reference = "control_box"
 	var/interface_control = TRUE
 	var/active = FALSE
 	var/strength = 0
 	var/strength_upper_limit = 2
+	var/assembled = FALSE
 	var/obj/machinery/particle_accelerator/full/particle_accelerator
 
 /obj/machinery/particle_accelerator/control_box/Initialize(mapload)
@@ -193,6 +195,7 @@
 
 	setDir(F.dir)
 	var/list/obj/machinery/particle_accelerator/connected_parts = list()
+	var/obj/machinery/particle_accelerator/particle_emitter/temporary_emitter
 
 	T = get_step(T,rdir)
 	if(!check_part(T, /obj/machinery/particle_accelerator/fuel_chamber, connected_parts))
@@ -205,16 +208,24 @@
 	if(!check_part(T, /obj/machinery/particle_accelerator/power_box, connected_parts))
 		return FALSE
 	T = get_step(T,dir)
-	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter/center, connected_parts))
+	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
+		return FALSE
+	temporary_emitter = T
+	if(temporary_emitter.emitter_type != "center")
 		return FALSE
 	T = get_step(T,ldir)
-	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter/left, connected_parts))
+	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
+		return FALSE
+	temporary_emitter = T
+	if(temporary_emitter.emitter_type != "left")
 		return FALSE
 	T = get_step(T,rdir)
 	T = get_step(T,rdir)
-	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter/right, connected_parts))
+	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
 		return FALSE
-
+	temporary_emitter = T
+	if(temporary_emitter.emitter_type != "right")
+		return FALSE
 	var/turf/assemble_loc = get_turf(connected_parts["end_cap"])
 	var/obj/machinery/particle_accelerator/full/fpa = new(assemble_loc)
 	fpa.master = src
@@ -228,6 +239,9 @@
 			fpa.fillers[pa_ref] = filler
 		qdel(connected_parts[pa_ref])
 	particle_accelerator = fpa
+	if(!assembled)
+		new /obj/item/paper/guides/jobs/engineering/singularity(get_turf(src))
+		assembled = TRUE
 	return TRUE
 
 /obj/machinery/particle_accelerator/control_box/proc/disassemble()
@@ -238,7 +252,7 @@
 	var/static/list/pa_typepaths = list(
 		"fuel_chamber" = /obj/machinery/particle_accelerator/fuel_chamber,
 		"power_box" = /obj/machinery/particle_accelerator/power_box,
-		"emitter_center" = /obj/machinery/particle_accelerator/particle_emitter/center,
+		"emitter_center" = /obj/machinery/particle_accelerator,
 		"emitter_left" = /obj/machinery/particle_accelerator/particle_emitter/left,
 		"emitter_right" = /obj/machinery/particle_accelerator/particle_emitter/right,
 	)

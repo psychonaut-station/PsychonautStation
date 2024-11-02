@@ -85,7 +85,7 @@
 		pixel_y = 0
 		shocked_things.Cut(1, shocked_things.len / 1.3)
 		var/list/shocking_info = list()
-		tesla_zap(source = src, zap_range = 3, power = zap_energy, shocked_targets = shocking_info, zap_flags = (energy > 250) ? ZAP_ENERGY_BALL_FLAGS : ZAP_DEFAULT_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
+		tesla_zap(source = src, zap_range = 3, power = zap_energy, shocked_targets = shocking_info, zap_flags = (energy > 250) ? ZAP_EBALL_FLAGS : ZAP_DEFAULT_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
 
 		pixel_x = -ICON_SIZE_X
 		pixel_y = -ICON_SIZE_Y
@@ -93,7 +93,7 @@
 			var/range = rand(1, clamp(orbiting_balls.len, 2, 3))
 			var/list/temp_shock = list()
 			//We zap off the main ball instead of ourselves to make things looks proper
-			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
+			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock, zap_icon = zap_icon_state)
 			shocking_info += temp_shock
 		shocked_things += shocking_info
 
@@ -144,17 +144,18 @@
 		var/Orchiectomy_target = pick(orbiting_balls)
 		qdel(Orchiectomy_target)
 
-	if(orbiting_balls.len >= 16 && status != EBALL_DANGER)
+/*
+	if(energy >= 1500 && status != EBALL_DANGER)
 		zap_icon_state = OVER_9000_ZAP_ICON_STATE
 		zap_energy = 12 MEGA JOULES
 		status = EBALL_DANGER
 		investigate_log("has entered the danger point.", INVESTIGATE_ENGINE)
 		message_admins("[src] has entered the danger point [ADMIN_VERBOSEJMP(src)].")
-	else if(orbiting_balls.len < 16 && status != EBALL_NORMAL)
+	else if(energy < 1500 && status != EBALL_NORMAL)
 		zap_icon_state = initial(zap_icon_state)
 		zap_energy = initial(zap_energy)
 		status = EBALL_NORMAL
-
+*/
 /obj/energy_ball/proc/new_mini_ball()
 	if(!loc)
 		return
@@ -184,12 +185,13 @@
 	return TRUE
 
 /obj/energy_ball/proc/after_zap(atom/zapped_atom)
-	var/turf/T = get_turf(src)
-	var/datum/gas_mixture/environment = T.return_air()
-
-	if(orbiting_balls.len >= 16 && environment.gases[GAS_N2O][MOLES] < 1500)
-		explosion(zapped_atom, devastation_range = 1, heavy_impact_range = 2, light_impact_range = 3)
-		environment.gases[GAS_N2O][MOLES] -= 1
+	if(status == EBALL_DANGER)
+		var/turf/T = get_turf(src)
+		var/datum/gas_mixture/environment = T.return_air()
+		if(environment?.total_moles())
+			if(environment.gases[/datum/gas/nitrous_oxide] && (environment.gases[/datum/gas/nitrous_oxide][MOLES]) < 1500)
+				explosion(zapped_atom, devastation_range = 2, heavy_impact_range = 2, light_impact_range = 3)
+				environment.gases[/datum/gas/nitrous_oxide][MOLES] -= 1
 
 /obj/energy_ball/Bump(atom/A)
 	dust_mobs(A)

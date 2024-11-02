@@ -290,12 +290,12 @@
 /obj/item/stock_parts/power_store/attack_self(mob/user)
 	if(ishuman(user))
 		var/mob/living/carbon/human/H = user
-		var/obj/item/organ/internal/stomach/maybe_stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
+		var/obj/item/organ/stomach/maybe_stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
 
-		if(istype(maybe_stomach, /obj/item/organ/internal/stomach/ethereal))
+		if(istype(maybe_stomach, /obj/item/organ/stomach/ethereal))
 
 			var/charge_limit = ETHEREAL_CHARGE_DANGEROUS - CELL_POWER_GAIN
-			var/obj/item/organ/internal/stomach/ethereal/stomach = maybe_stomach
+			var/obj/item/organ/stomach/ethereal/stomach = maybe_stomach
 			var/obj/item/stock_parts/power_store/stomach_cell = stomach.cell
 			if((stomach.drain_time > world.time) || !stomach)
 				return
@@ -314,6 +314,32 @@
 					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
 					stomach.adjust_charge(CELL_POWER_GAIN)
 					charge -= CELL_POWER_DRAIN //you waste way more than you receive, so that ethereals cant just steal one cell and forget about hunger
+				else
+					to_chat(H, span_warning("You can't receive charge from [src]!"))
+			return
+		else if(istype(maybe_stomach, /obj/item/organ/stomach/ipc))
+			var/obj/item/organ/stomach/ipc/stomach = maybe_stomach
+			if(!stomach.cell)
+				return
+			var/obj/item/stock_parts/power_store/cell/ipccell = stomach.cell
+			var/charge_limit = ipccell.maxcharge - CELL_POWER_GAIN * 2.5
+			if((stomach.drain_time > world.time) || !stomach)
+				return
+			if(charge < CELL_POWER_DRAIN)
+				to_chat(H, span_warning("[src] doesn't have enough power!"))
+				return
+			if(ipccell.charge > charge_limit)
+				to_chat(H, span_warning("Your charge is full!"))
+				return
+			to_chat(H, span_notice("You begin clumsily channeling power from [src] into your body."))
+			stomach.drain_time = world.time + CELL_DRAIN_TIME
+			while(do_after(user, CELL_DRAIN_TIME, target = src))
+				if((charge < CELL_POWER_DRAIN) || (ipccell.charge > charge_limit))
+					return
+				if(istype(stomach))
+					to_chat(H, span_notice("You receive some charge from [src], wasting some in the process."))
+					stomach.adjust_charge(CELL_POWER_GAIN * 2.5)
+					charge -= CELL_POWER_DRAIN
 				else
 					to_chat(H, span_warning("You can't receive charge from [src]!"))
 			return

@@ -32,7 +32,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 		else
 			body += "<i>Disabled</i>"
 
-		var/discord = player.client.get_discord()
+		var/discord = player.client.fetch_discord()
 		if(discord)
 			body += "<br><br><b>Discord:</b> @[discord["global_name"]] \[[discord["username"]]\]([discord["id"]])"
 		else if(discord == FALSE)

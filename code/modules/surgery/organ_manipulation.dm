@@ -176,9 +176,15 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
-		if(istype(target_organ, /obj/item/organ/internal/brain/basic_posibrain))
-			to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [parse_zone(target_zone)]!"))
-			return SURGERY_STEP_FAIL
+
+		if(istype(target_organ, /obj/item/organ/brain))
+			if(istype(target_organ, /obj/item/organ/brain/cybernetic/ipc) && !isipc(target) && target_organ.zone != BODY_ZONE_HEAD)
+				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
+				return SURGERY_STEP_FAIL
+
+			else if(isipc(target) && target_organ.zone == BODY_ZONE_HEAD)
+				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
+				return SURGERY_STEP_FAIL
 
 		if(!can_use_organ(user, meatslab))
 			return SURGERY_STEP_FAIL
@@ -309,7 +315,7 @@
 
 ///only operate on internal organs
 /datum/surgery_step/manipulate_organs/internal/can_use_organ(mob/user, obj/item/organ/organ)
-	return isinternalorgan(organ)
+	return !(organ.organ_flags & ORGAN_EXTERNAL)
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/internal/mechanic
@@ -323,7 +329,7 @@
 
 ///Only operate on external organs
 /datum/surgery_step/manipulate_organs/external/can_use_organ(mob/user, obj/item/organ/organ)
-	return isexternalorgan(organ)
+	return (organ.organ_flags & ORGAN_EXTERNAL)
 
 ///prosthetic surgery gives full effectiveness to crowbars (and hemostats)
 /datum/surgery_step/manipulate_organs/external/mechanic

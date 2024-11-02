@@ -44,6 +44,10 @@
 /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter
 	splatter_type = "xsplatter"
 
+/obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	splatter_type = "greyscale_splatter"
+
 /obj/effect/temp_visual/dir_setting/speedbike_trail
 	name = "speedbike trails"
 	icon_state = "ion_fade"
@@ -402,7 +406,12 @@
 	duration = 6
 
 /obj/effect/temp_visual/impact_effect/neurotoxin
-	icon_state = "impact_neurotoxin"
+	icon_state = "impact_spit"
+	color = "#5BDD04"
+
+/obj/effect/temp_visual/impact_effect/ink_spit
+	icon_state = "impact_spit"
+	color = COLOR_NEARLY_ALL_BLACK
 
 /obj/effect/temp_visual/heart
 	name = "heart"

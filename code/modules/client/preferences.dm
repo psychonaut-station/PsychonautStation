@@ -105,10 +105,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		load_path(parent.ckey)
 		if(load_and_save && !fexists(path))
 			try_savefile_type_migration()
-		if(istype(parent))
-			unlock_content = parent.check_patreon()
-			if(unlock_content)
-				max_save_slots = 8
+
+		refresh_membership()
 	else
 		CRASH("attempted to create a preferences datum without a client or mock!")
 	load_savefile()
@@ -537,3 +535,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			default_randomization[preference_key] = RANDOM_ENABLED
 
 	return default_randomization
+
+/datum/preferences/proc/refresh_membership()
+	if(!istype(parent))
+		return
+
+	var/patron = parent.check_patreon()
+	if(isnull(patron)) // Connection failure, retry once
+		patron = parent.check_patreon()
+		var/static/admins_warned = FALSE
+		if(!admins_warned)
+			admins_warned = TRUE
+			message_admins("Patreon membership lookup had a connection failure for a user. This is most likely a temporary issue but if this consistently happens you should bother your server operator to look into it.")
+		if(isnull(patron)) // Retrying didn't work, warn the user
+			log_game("Patreon membership lookup for [parent.ckey] failed due to a connection error.")
+		else
+			log_game("Patreon membership lookup for [parent.ckey] failed due to a connection error but succeeded after retry.")
+
+	if(isnull(patron))
+		to_chat(parent, span_warning("There's been a connection failure while trying to check the status of your Patreon membership."))
+
+	unlock_content = !!patron
+	if(unlock_content)
+		max_save_slots = 8

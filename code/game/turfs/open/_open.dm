@@ -337,6 +337,9 @@
 	for(var/mob/living/basic/slime/M in src)
 		M.apply_water()
 
+	for(var/atom/theatom as anything in src)
+		SEND_SIGNAL(theatom, COMSIG_ATOM_EXPOSED_WATER)
+
 	wash(CLEAN_WASH)
 	for(var/atom/movable/movable_content as anything in src)
 		if(ismopable(movable_content)) // Will have already been washed by the wash call above at this point.
@@ -485,6 +488,15 @@
 
 	playsound(src, 'sound/items/weapons/genhit.ogg', 50, TRUE)
 	new used_tiles.tile_type(src)
+
+/turf/open/apply_main_material_effects(datum/material/main_material, amount, multipier)
+	. = ..()
+	if(!main_material.turf_sound_override)
+		return
+	footstep = main_material.turf_sound_override
+	barefootstep = main_material.turf_sound_override + "barefoot"
+	clawfootstep = main_material.turf_sound_override + "claw"
+	heavyfootstep = FOOTSTEP_GENERIC_HEAVY
 
 /// Very similar to build_with_rods, this exists to allow building transport/tram girders on openspace
 /turf/open/proc/build_with_titanium(obj/item/stack/sheet/mineral/titanium/used_stack, user)

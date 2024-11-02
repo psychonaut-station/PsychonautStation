@@ -32,7 +32,7 @@
 	minimum_survivable_temperature = T20C - 100
 	maximum_survivable_temperature = T20C + 120
 	light_color = "#d43229" 
-	death_sound = 'sound/creatures/wada.ogg'
+	death_sound = 'sound/mobs/non-humanoids/wada.ogg'
 
 	ai_controller = /datum/ai_controller/basic_controller/vada
 

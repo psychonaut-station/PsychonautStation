@@ -22,3 +22,39 @@
   - code_imp: added debug portal with all fish locations
   - qol: Modsuit actions no longer go on cooldown when selected
   - balance: microwave beam module is on a 4s cooldown not 10s
+2024-11-02:
+  00-Steven:
+  - bugfix: NTNRC muting actually works again.
+  13spacemen:
+  - bugfix: alert polls work past roundend
+  Aliceee2ch:
+  - bugfix: you can now place material iron tiles in space like regular iron tiles
+  Ben10Omintrix:
+  - bugfix: monkeys can now pick up and eat nearby food
+  Jewelry-x:
+  - code_imp: removed two one letter variables
+  - admin: clearing the pod bay will not remove the light emitters.
+  - admin: doing a latejoin injection no longer causes a midround one as well
+  Rengan:
+  - rscadd: "IPC \u0131rk\u0131 oyuna eklendi"
+  - code_imp: "Clown ve mimeler art\u0131k isimlerinde say\u0131 kullanabilir."
+  Sealed101:
+  - bugfix: the Derelict vault doors are once again unhackable
+  - qol: the Derelict vault doors provide chat feedback when you try to hack them
+      so you can stop poking them with your tools
+  - bugfix: fixed Make Cyborg admin verb and player panel Make AI not putting the
+      ghosted player in control if they weren't an observer
+  - bugfix: sanity dropping below zero should now properly slowly recover back to
+      zero instead of dropping even further
+  SyncIt21:
+  - bugfix: HPLC can purify inverted chems.
+  carlarctg:
+  - qol: syndicate (and all) climbing hooks are small-sized
+  - code_imp: acetone oxide is blue!!!
+  - bugfix: Fixed being unable to aghost while corpselocked
+  - refactor: Actions will no longer by default apply a melee cooldown equal to action
+      cooldown.
+  - bugfix: Fixed various abilities causing melee jank, most noticeably venus man
+      eaters
+  mc-oofert:
+  - bugfix: fixes cyborg apc frame attachment

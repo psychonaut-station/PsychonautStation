@@ -146,7 +146,7 @@
 			update_icon()
 			update_state()
 	else if(construction_state == PA_CONSTRUCTION_UNSECURED)
-		if(!default_deconstruction_screwdriver(user, icon_state, icon_state, tool) && !default_deconstruction_crowbar(W))
+		if(!default_deconstruction_screwdriver(user, icon_state, icon_state, W) && !default_deconstruction_crowbar(W))
 			return ..()
 	else
 		return ..()

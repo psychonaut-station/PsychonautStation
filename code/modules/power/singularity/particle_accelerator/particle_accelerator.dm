@@ -115,9 +115,6 @@
 				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
 					"<span class='notice'>You close the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
-		if(PA_CONSTRUCTION_UNSECURED)
-			default_deconstruction_screwdriver(user, icon_state, icon_state, tool)
-			return TRUE
 		else
 			return FALSE
 	update_icon()
@@ -149,7 +146,7 @@
 			update_icon()
 			update_state()
 	else if(construction_state == PA_CONSTRUCTION_UNSECURED)
-		if(!default_deconstruction_crowbar(W))
+		if(!default_deconstruction_screwdriver(user, icon_state, icon_state, tool) && !default_deconstruction_crowbar(W))
 			return ..()
 	else
 		return ..()

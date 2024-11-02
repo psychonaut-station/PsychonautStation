@@ -66,9 +66,6 @@
 /datum/atom_hud/abductor
 	hud_icons = list(GLAND_HUD)
 
-/datum/atom_hud/disease
-	hud_icons = list(DISEASE_HUD)
-
 /datum/atom_hud/ai_detector
 	hud_icons = list(AI_DETECT_HUD)
 
@@ -207,6 +204,8 @@ Medical HUD! Basic mode needs suit sensors on.
 	else if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		if(HAS_TRAIT(src, TRAIT_MIND_TEMPORARILY_GONE) || can_defib_client())
 			holder.icon_state = "huddefib"
+		else if(HAS_TRAIT(src, TRAIT_GHOSTROLE_ON_REVIVE))
+			holder.icon_state = "hudghost"
 		else
 			holder.icon_state = "huddead"
 	else
@@ -580,3 +579,21 @@ Diagnostic HUDs!
 	holder.loc = get_turf(src)
 	SET_PLANE(holder,ABOVE_LIGHTING_PLANE,src)
 	set_hud_image_active(MALF_APC_HUD)
+
+/*~~~~~~~~~~~~~~~~~~~
+	HUMAN SPECIES!
+~~~~~~~~~~~~~~~~~~~~~*/
+
+/mob/living/carbon/human/proc/diag_hud_set_humancell(obj/item/stock_parts/power_store/cell/cell)
+	var/image/holder = hud_list?[DIAG_BATT_HUD]
+	if (isnull(holder))
+		return
+	if(cell)
+		var/chargelvl = (cell.charge/cell.maxcharge)
+		holder.icon_state = "hudbatt[RoundDiagBar(chargelvl)]"
+	else
+		holder.icon_state = "hudnobatt"
+	var/icon/I = icon(icon, icon_state, dir)
+	holder.pixel_y = I.Height() - world.icon_size
+	if(holder.pixel_x != 23)
+		holder.pixel_x = 23

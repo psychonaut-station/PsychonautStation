@@ -38,6 +38,8 @@
 	if(limb.current_gauze?.splint_factor)
 		wounding_dmg *= (1 - limb.current_gauze.splint_factor)
 	var/blood_bled = rand(1, wounding_dmg * internal_bleeding_coefficient) // 12 brute toolbox can cause up to 15/18/21 bloodloss on mod/sev/crit
+	var/datum/reagent/blood_id = victim.get_blood_id()
+	var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
 	switch(blood_bled)
 		if(1 to 6)
 			victim.bleed(blood_bled, TRUE)
@@ -54,7 +56,10 @@
 				span_danger("You spit out a string of blood from the blow to your [limb.plaintext_zone]!"),
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			if(!isnull(blood_id))
+				var/obj/splatter = new splatter_type(victim.loc, victim.dir)
+				if(blood_id != /datum/reagent/blood)
+					splatter.color = color_hex2color_matrix(blood_id.color)
 			victim.bleed(blood_bled)
 		if(20 to INFINITY)
 			victim.visible_message(
@@ -63,7 +68,10 @@
 				vision_distance = COMBAT_MESSAGE_RANGE,
 			)
 			victim.bleed(blood_bled)
-			new /obj/effect/temp_visual/dir_setting/bloodsplatter(victim.loc, victim.dir)
+			if(!isnull(blood_id))
+				var/obj/splatter = new splatter_type(victim.loc, victim.dir)
+				if(blood_id != /datum/reagent/blood)
+					splatter.color = color_hex2color_matrix(blood_id.color)
 			victim.add_splatter_floor(get_step(victim.loc, victim.dir))
 
 /datum/wound/pierce/bleed/get_bleed_rate_of_change()
@@ -255,6 +263,49 @@
 /datum/wound/pierce/bleed/severe/update_descriptions()
 	if(!limb.can_bleed())
 		occur_text = "tears a hole open"
+
+/datum/wound/pierce/bleed/severe/eye
+	name = "Eyeball Puncture"
+	desc = "Patient's eye has sustained extreme damage, causing severe bleeding from the ocular cavity."
+	occur_text = "looses a violent spray of blood, revealing a crushed eyeball"
+	var/right_side = FALSE
+
+/datum/wound/pierce/bleed/severe/eye/apply_wound(obj/item/bodypart/limb, silent, datum/wound/old_wound, smited, attack_direction, wound_source, replacing, right_side)
+	var/obj/item/organ/eyes/eyes = locate() in limb
+	if (!istype(eyes))
+		return FALSE
+	. = ..()
+	src.right_side = right_side
+	examine_desc = "has its [right_side ? "right" : "left"] eye pierced clean through, blood spewing from the cavity"
+	RegisterSignal(limb, COMSIG_BODYPART_UPDATE_WOUND_OVERLAY, PROC_REF(wound_overlay))
+	limb.update_part_wound_overlay()
+
+/datum/wound/pierce/bleed/severe/eye/remove_wound(ignore_limb, replaced)
+	if (!isnull(limb))
+		UnregisterSignal(limb, COMSIG_BODYPART_UPDATE_WOUND_OVERLAY)
+	return ..()
+
+/datum/wound/pierce/bleed/severe/eye/proc/wound_overlay(obj/item/bodypart/source, limb_bleed_rate)
+	SIGNAL_HANDLER
+
+	if (limb_bleed_rate <= BLEED_OVERLAY_LOW || limb_bleed_rate > BLEED_OVERLAY_GUSH)
+		return
+
+	if (blood_flow <= BLEED_OVERLAY_LOW)
+		return
+
+	source.bleed_overlay_icon = right_side ? "r_eye" : "l_eye"
+	return COMPONENT_PREVENT_WOUND_OVERLAY_UPDATE
+
+/datum/wound_pregen_data/flesh_pierce/open_puncture/eye
+	wound_path_to_generate = /datum/wound/pierce/bleed/severe/eye
+	viable_zones = list(BODY_ZONE_HEAD)
+	can_be_randomly_generated = FALSE
+
+/datum/wound_pregen_data/flesh_pierce/open_puncture/eye/can_be_applied_to(obj/item/bodypart/limb, list/suggested_wounding_types, datum/wound/old_wound, random_roll, duplicates_allowed, care_about_existing_wounds)
+	if (isnull(locate(/obj/item/organ/eyes) in limb))
+		return FALSE
+	return ..()
 
 /datum/wound/pierce/bleed/critical
 	name = "Ruptured Cavity"

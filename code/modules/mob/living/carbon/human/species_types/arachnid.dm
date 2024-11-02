@@ -6,15 +6,14 @@
 	inherent_biotypes = MOB_ORGANIC|MOB_HUMANOID|MOB_BUG
 	inherent_factions = list(FACTION_SPIDER)
 	species_language_holder = /datum/language_holder/fly
-	payday_modifier = 1.0
 	sexes = FALSE
 	inherent_traits = list(
 		TRAIT_MUTANT_COLORS,
 	)
 	meat = /obj/item/food/meat/slab/spider
 	siemens_coeff = 1.3
-	mutanteyes = /obj/item/organ/internal/eyes/night_vision/arachnid
-	mutanttongue = /obj/item/organ/internal/tongue/arachnid
+	mutanteyes = /obj/item/organ/eyes/night_vision/arachnid
+	mutanttongue = /obj/item/organ/tongue/arachnid
 	mutant_organs = list(
 		/obj/item/organ/external/arachnid_appendages = "Long",
 	)

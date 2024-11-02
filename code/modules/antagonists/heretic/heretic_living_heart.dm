@@ -55,7 +55,7 @@
 /datum/component/living_heart/proc/on_organ_replaced(obj/item/organ/source, obj/item/organ/replacement)
 	SIGNAL_HANDLER
 
-	if(IS_ROBOTIC_ORGAN(replacement))
+	if(IS_ROBOTIC_ORGAN(replacement) && !istype(replacement, /obj/item/organ/heart/cybernetic/tier2/ipc))
 		qdel(src)
 		return
 

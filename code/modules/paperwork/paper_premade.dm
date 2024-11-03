@@ -109,9 +109,9 @@
 	3. Determine the desired direction you want your particle accelerator to face.
 	4. Replace all machine frames like scheme.
 	*   |EC|
- 	* CB|FC|
- 	*   |PB|
- 	* PE|PE|PE
+	* CB|FC|
+	*   |PB|
+	* PE|PE|PE
 	5. Use a multitool in Particle Emiiter's \[PE\] to change type.
 	6. Wrench the seven machines in place.
 	7. Install wires in the seven machines.

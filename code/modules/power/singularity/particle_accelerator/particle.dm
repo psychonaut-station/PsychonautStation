@@ -8,7 +8,6 @@
 	speed = 0.5
 	damage = 10
 	damage_type = TOX
-	var/filled_with = NONE
 
 /obj/projectile/accelerated_particle/weak
 	damage = 5

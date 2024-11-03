@@ -46,10 +46,10 @@
 	else if(held_item.tool_behaviour == TOOL_SCREWDRIVER)
 		switch(construction_state)
 			if(PA_CONSTRUCTION_COMPLETE)
-				context[SCREENTIP_CONTEXT_LMB] = "Open panel"
+				context[SCREENTIP_CONTEXT_LMB] = "Open wire panel"
 				return CONTEXTUAL_SCREENTIP_SET
 			if(PA_CONSTRUCTION_PANEL_OPEN)
-				context[SCREENTIP_CONTEXT_LMB] = "Close panel"
+				context[SCREENTIP_CONTEXT_LMB] = "Close wire panel"
 				return CONTEXTUAL_SCREENTIP_SET
 	else if(held_item.tool_behaviour == TOOL_WIRECUTTER && construction_state == PA_CONSTRUCTION_PANEL_OPEN)
 		context[SCREENTIP_CONTEXT_LMB] = "Cut wires"
@@ -77,16 +77,9 @@
 	update_state()
 	update_icon()
 
-/obj/machinery/particle_accelerator/crowbar_act(mob/living/user, obj/item/item)
-	world.log << "A"
-	world.log << "A"
-
-	world.log << "D"
-	return TRUE
-
 /obj/machinery/particle_accelerator/wrench_act(mob/living/user, obj/item/item)
 	if(panel_open)
-		to_chat(user, span_warning("The panel is open!"))
+		to_chat(user, span_warning("The access panel is open!"))
 		return FALSE
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
@@ -107,14 +100,16 @@
 	switch(construction_state)
 		if(PA_CONSTRUCTION_COMPLETE)
 			if(tool.use_tool(src, user, 10))
-				user.visible_message("<span class='notice'>[user.name] opens the [name]'s access panel.</span>", \
+				user.visible_message("<span class='notice'>[user.name] opens the [name]'s wire panel.</span>", \
 					"<span class='notice'>You open the access panel.</span>")
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(tool.use_tool(src, user, 10))
-				user.visible_message("<span class='notice'>[user.name] closes the [name]'s access panel.</span>", \
-					"<span class='notice'>You close the access panel.</span>")
+				user.visible_message("<span class='notice'>[user.name] closes the [name]'s wire panel.</span>", \
+					"<span class='notice'>You close the wire panel.</span>")
 				construction_state = PA_CONSTRUCTION_COMPLETE
+		if(PA_CONSTRUCTION_UNSECURED)
+			return default_deconstruction_screwdriver(user, icon_state, icon_state, tool)
 		else
 			return FALSE
 	update_icon()
@@ -133,6 +128,12 @@
 	else
 		return FALSE
 
+/obj/machinery/particle_accelerator/crowbar_act(mob/living/user, obj/item/tool)
+	if(construction_state == PA_CONSTRUCTION_UNSECURED)
+		return default_deconstruction_crowbar(tool)
+	else
+		return FALSE
+
 /obj/machinery/particle_accelerator/attackby(obj/item/W, mob/user, params)
 	if(isnull(reference))
 		return ..()
@@ -145,9 +146,6 @@
 			construction_state = PA_CONSTRUCTION_PANEL_OPEN
 			update_icon()
 			update_state()
-	else if(construction_state == PA_CONSTRUCTION_UNSECURED)
-		if(!default_deconstruction_screwdriver(user, icon_state, icon_state, W) && !default_deconstruction_crowbar(W))
-			return ..()
 	else
 		return ..()
 
@@ -194,7 +192,6 @@
 	circuit = /obj/item/circuitboard/machine/pa/fuel_chamber
 	icon_state = "fuel_chamber"
 	reference = "fuel_chamber"
-	var/filled_with = NONE
 
 /obj/machinery/particle_accelerator/fuel_chamber/Initialize(mapload)
 	. = ..()
@@ -257,7 +254,6 @@
 	var/obj/machinery/particle_accelerator/control_box/master = null
 	var/fire_delay = 50
 	var/last_shot = 0
-	var/filled_with = NONE
 	COOLDOWN_DECLARE(next_fire)
 
 /obj/machinery/particle_accelerator/full/Destroy()
@@ -310,7 +306,7 @@
 /obj/machinery/particle_accelerator/full/wirecutter_act(mob/living/user, obj/item/tool)
 	return
 
-/obj/machinery/particle_accelerator/crowbar_act(mob/living/user, obj/item/I)
+/obj/machinery/particle_accelerator/full/crowbar_act(mob/living/user, obj/item/I)
 	return
 
 /obj/machinery/particle_accelerator/full/proc/set_delay(delay)
@@ -338,7 +334,6 @@
 		P.firer = src
 		P.fired_from = src
 		P.fire(dir2angle(dir))
-		P.filled_with = filled_with
 	return 1
 
 #undef PA_CONSTRUCTION_UNSECURED

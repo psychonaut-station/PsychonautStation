@@ -172,13 +172,13 @@
 
 /obj/singularity/process(seconds_per_tick)
 	time_since_act += seconds_per_tick
+	dissipate(seconds_per_tick)
 	if(time_since_act < 2)
 		return
 	time_since_act = 0
 	if(current_size >= STAGE_TWO)
-		if(prob(event_chance))
+		if(SPT_PROB(event_chance, seconds_per_tick))
 			event()
-	dissipate(seconds_per_tick)
 	radiation_pulse(src, 5, 0.1, intensity = (energy * 2) + 500)
 	check_energy()
 

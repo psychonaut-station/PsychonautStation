@@ -1,7 +1,7 @@
 /atom/movable/warp_effect/singularity
 	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
-	pixel_x = -293
-	pixel_y = -293
+	pixel_x = -277
+	pixel_y = -277
 
 /// The gravitational singularity
 /obj/singularity
@@ -72,6 +72,7 @@
 	var/datum/component/singularity/new_component = AddComponent(
 		singularity_component_type, \
 		consume_callback = CALLBACK(src, PROC_REF(consume)), \
+		roaming = (move_self && current_size >= STAGE_TWO), \
 	)
 
 	warp = new(src)
@@ -220,8 +221,8 @@
 			icon_state = "[singularity_icon_variant]_s1"
 			pixel_x = 0
 			pixel_y = 0
-			warp.pixel_x = -293
-			warp.pixel_y = -293
+			warp.pixel_x = -277
+			warp.pixel_y = -277
 			new_grav_pull = 4
 			new_consume_range = 0
 			dissipate_delay = 10
@@ -234,8 +235,8 @@
 				icon_state = "[singularity_icon_variant]_s3"
 				pixel_x = -32
 				pixel_y = -32
-				warp.pixel_x = -261
-				warp.pixel_y = -261
+				warp.pixel_x = -245
+				warp.pixel_y = -245
 				new_grav_pull = 6
 				new_consume_range = 1
 				dissipate_delay = 5
@@ -248,8 +249,8 @@
 				icon_state = "[singularity_icon_variant]_s5"
 				pixel_x = -64
 				pixel_y = -64
-				warp.pixel_x = -229
-				warp.pixel_y = -229
+				warp.pixel_x = -213
+				warp.pixel_y = -213
 				new_grav_pull = 8
 				new_consume_range = 2
 				dissipate_delay = 4
@@ -262,21 +263,21 @@
 				icon_state = "[singularity_icon_variant]_s7"
 				pixel_x = -96
 				pixel_y = -96
-				warp.pixel_x = -197
-				warp.pixel_y = -197
+				warp.pixel_x = -181
+				warp.pixel_y = -181
 				new_grav_pull = 10
 				new_consume_range = 3
-				dissipate_delay = 10
+				dissipate_delay = 4
 				time_since_last_dissipiation = 0
-				dissipate_strength = 10
+				dissipate_strength = 20
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
 			icon = 'icons/effects/288x288.dmi'
 			icon_state = "[singularity_icon_variant]_s9"
 			pixel_x = -128
 			pixel_y = -128
-			warp.pixel_x = -165
-			warp.pixel_y = -165
+			warp.pixel_x = -149
+			warp.pixel_y = -149
 			new_grav_pull = 10
 			new_consume_range = 4
 			dissipate = FALSE //It cant go smaller due to e loss
@@ -286,8 +287,8 @@
 			icon_state = "[singularity_icon_variant]_s11"
 			pixel_x = -160
 			pixel_y = -160
-			warp.pixel_x = -133
-			warp.pixel_y = -133
+			warp.pixel_x = -117
+			warp.pixel_y = -117
 			new_grav_pull = 15
 			new_consume_range = 5
 			dissipate = FALSE

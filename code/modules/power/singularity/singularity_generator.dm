@@ -27,15 +27,11 @@
 		return
 
 	if(held_item.tool_behaviour == TOOL_WRENCH)
-		if(!anchored)
-			context[SCREENTIP_CONTEXT_LMB] = "Secure"
-		else
-			context[SCREENTIP_CONTEXT_LMB] = "Unsecure"
+		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Uns" : "S"]ecure"
 		return CONTEXTUAL_SCREENTIP_SET
 
 /obj/machinery/the_singularitygen/wrench_act(mob/living/user, obj/item/item)
-	default_unfasten_wrench(user, item)
-	return
+	return default_unfasten_wrench(user, item)
 
 /obj/machinery/the_singularitygen/process()
 	if(energy > 0)

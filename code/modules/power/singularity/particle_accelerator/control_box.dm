@@ -210,20 +210,20 @@
 	T = get_step(T,dir)
 	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
 		return FALSE
-	temporary_emitter = T
+	temporary_emitter = locate(/obj/machinery/particle_accelerator/particle_emitter) in T
 	if(temporary_emitter.emitter_type != "center")
 		return FALSE
 	T = get_step(T,ldir)
 	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
 		return FALSE
-	temporary_emitter = T
+	temporary_emitter = locate(/obj/machinery/particle_accelerator/particle_emitter) in T
 	if(temporary_emitter.emitter_type != "left")
 		return FALSE
 	T = get_step(T,rdir)
 	T = get_step(T,rdir)
 	if(!check_part(T, /obj/machinery/particle_accelerator/particle_emitter, connected_parts))
 		return FALSE
-	temporary_emitter = T
+	temporary_emitter = locate(/obj/machinery/particle_accelerator/particle_emitter) in T
 	if(temporary_emitter.emitter_type != "right")
 		return FALSE
 	var/turf/assemble_loc = get_turf(connected_parts["end_cap"])
@@ -251,7 +251,7 @@
 	var/static/list/pa_typepaths = list(
 		"fuel_chamber" = /obj/machinery/particle_accelerator/fuel_chamber,
 		"power_box" = /obj/machinery/particle_accelerator/power_box,
-		"emitter_center" = /obj/machinery/particle_accelerator,
+		"emitter_center" = /obj/machinery/particle_accelerator/particle_emitter,
 		"emitter_left" = /obj/machinery/particle_accelerator/particle_emitter/left,
 		"emitter_right" = /obj/machinery/particle_accelerator/particle_emitter/right,
 	)
@@ -267,6 +267,7 @@
 		pa.setDir(dir)
 		pa.anchored = TRUE
 		pa.construction_state = PA_CONSTRUCTION_COMPLETE
+	QDEL_LIST_ASSOC_VAL(particle_accelerator.fillers)
 	if(!QDELETED(particle_accelerator))
 		QDEL_NULL(particle_accelerator)
 	else

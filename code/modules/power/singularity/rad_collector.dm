@@ -78,7 +78,7 @@
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
 			if(D)
 				D.adjust_money(1)
-			sciweb.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 1 * power_coeff)
+			sciweb.add_point_type(TECHWEB_POINT_TYPE_GENERIC, 0.8 * power_coeff)
 			bitcoin_produced = bitcoins_mined * RAD_COLLECTOR_MINING_CONVERSION_RATE
 			stored_energy -= bitcoins_mined
 

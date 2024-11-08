@@ -30,13 +30,10 @@
 	suffix = "northstar"
 	name = "arrival shuttle (North Star)"
 
-<<<<<<< HEAD
 /datum/map_template/shuttle/arrival/mini
 	suffix = "mini"
 	name = "arrival shuttle (Mini)"
 
-=======
 /datum/map_template/shuttle/arrival/nebula
 	suffix = "nebula"
 	name = "arrival shuttle (Nebula)"
->>>>>>> upstream/master

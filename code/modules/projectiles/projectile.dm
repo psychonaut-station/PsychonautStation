@@ -328,60 +328,6 @@
 		new impact_effect_type(target_turf, hitx, hity)
 
 	var/mob/living/living_target = target
-<<<<<<< HEAD
-
-	if(blocked != 100) // not completely blocked
-		var/obj/item/bodypart/hit_bodypart = living_target.get_bodypart(hit_limb_zone)
-		if (damage)
-			// Make sure that this is first
-			if (!isnull(hit_bodypart) && (hit_bodypart.biological_state & (BIO_METAL|BIO_WIRED)))
-				var/random_damage_mult = RANDOM_DECIMAL(0.85, 1.15) // SOMETIMES you can get more or less sparks
-				var/damage_dealt = ((damage / (1 - (blocked / 100))) * random_damage_mult)
-
-				var/spark_amount = round((damage_dealt / PROJECTILE_DAMAGE_PER_ROBOTIC_SPARK))
-				if (spark_amount > 0)
-					do_sparks(spark_amount, FALSE, living_target)
-					living_target.add_splatter_floor(target_turf)
-			else if (living_target.blood_volume && damage_type == BRUTE && (isnull(hit_bodypart) || hit_bodypart.can_bleed()))
-				var/splatter_dir = dir
-				if(starting)
-					splatter_dir = get_dir(starting, target_turf)
-				if(isalien(living_target))
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target_turf, splatter_dir)
-				else if(ishuman(living_target))
-					var/datum/reagent/blood_id = living_target.get_blood_id()
-					if(!isnull(blood_id))
-						var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
-						var/obj/splatter = new splatter_type(living_target.loc, living_target.dir)
-						if(blood_id != /datum/reagent/blood)
-							splatter.color = color_hex2color_matrix(blood_id.color)
-				else
-					new /obj/effect/temp_visual/dir_setting/bloodsplatter(target_turf, splatter_dir)
-				if(prob(33))
-					living_target.add_splatter_floor(target_turf)
-
-		else if(impact_effect_type && !hitscan)
-			new impact_effect_type(target_turf, hitx, hity)
-
-		var/organ_hit_text = ""
-		if(hit_limb_zone)
-			organ_hit_text = " in \the [living_target.parse_zone_with_bodypart(hit_limb_zone)]"
-		if(suppressed == SUPPRESSED_VERY)
-			playsound(loc, hitsound, 5, TRUE, -1)
-		else if(suppressed)
-			playsound(loc, hitsound, 5, TRUE, -1)
-			to_chat(living_target, span_userdanger("You're shot by \a [src][organ_hit_text]!"))
-		else
-			if(hitsound)
-				var/volume = vol_by_damage()
-				playsound(src, hitsound, volume, TRUE, -1)
-			living_target.visible_message(span_danger("[living_target] is hit by \a [src][organ_hit_text]!"), \
-					span_userdanger("You're hit by \a [src][organ_hit_text]!"), null, COMBAT_MESSAGE_RANGE)
-			if(living_target.is_blind())
-				to_chat(living_target, span_userdanger("You feel something hit you[organ_hit_text]!"))
-
-=======
->>>>>>> upstream/master
 	var/reagent_note
 	if(reagents?.reagent_list)
 		reagent_note = "REAGENTS: [pretty_string_from_reagent_list(reagents.reagent_list)]"

@@ -29,8 +29,6 @@
   - bugfix: alert polls work past roundend
   Aliceee2ch:
   - bugfix: you can now place material iron tiles in space like regular iron tiles
-<<<<<<< HEAD
-=======
   - rscadd: Added new botany module in mechfabricator designs. Gives service cyborg
       plant bag and plant analyzer.
   - rscadd: Added cyborg botanical omni-tool.
@@ -38,24 +36,19 @@
   - qol: Secondary beaker storage can now hold any beakers. It used to spawn with
       one, but when you dropped it - you could no longer pick it back.
   - image: New gardener skin for service cyborg.
->>>>>>> upstream/master
   Ben10Omintrix:
   - bugfix: monkeys can now pick up and eat nearby food
   Jewelry-x:
   - code_imp: removed two one letter variables
   - admin: clearing the pod bay will not remove the light emitters.
   - admin: doing a latejoin injection no longer causes a midround one as well
-<<<<<<< HEAD
   Rengan:
   - rscadd: "IPC \u0131rk\u0131 oyuna eklendi"
   - code_imp: "Clown ve mimeler art\u0131k isimlerinde say\u0131 kullanabilir."
   Sealed101:
-=======
-  Sealed101:
   - bugfix: fixed pure inacusiate not giving you ungarbled whisper hearing at full
       range
   - qol: pure inacusiate will also provide chat messages when its boost is gained/lost
->>>>>>> upstream/master
   - bugfix: the Derelict vault doors are once again unhackable
   - qol: the Derelict vault doors provide chat feedback when you try to hack them
       so you can stop poking them with your tools
@@ -63,11 +56,8 @@
       ghosted player in control if they weren't an observer
   - bugfix: sanity dropping below zero should now properly slowly recover back to
       zero instead of dropping even further
-<<<<<<< HEAD
-=======
   SmArtKar:
   - bugfix: Fixed pressure-proof clothing not preventing plasmamen self-combustion
->>>>>>> upstream/master
   SyncIt21:
   - bugfix: HPLC can purify inverted chems.
   carlarctg:
@@ -81,10 +71,6 @@
   mc-oofert:
   - bugfix: fixes cyborg apc frame attachment
 2024-11-03:
-<<<<<<< HEAD
-  exdal:
-  - rscadd: Milli bayramlarimiz eklendi
-=======
   00-Steven:
   - bugfix: NTNRC channel user list is sorted by status again. It goes operator>online>away>offline.
   - qol: NTNRC channel user list is now alphabetically sorted under its status subcategories.
@@ -118,6 +104,8 @@
       rather than ALL ELIGIBLE CREW.
   Autisem:
   - rscadd: A new cirucit component allows NFC communications
+  exdal:
+  - rscadd: Milli bayramlarimiz eklendi
   Melbert:
   - rscadd: Eyecharts to Medbay
   Sealed101:
@@ -290,4 +278,3 @@
   - spellcheck: the text for failing to succumb is now spanned
   zoomachina:
   - bugfix: e-cigarettes can't be emptied if the cap isn't open
->>>>>>> upstream/master

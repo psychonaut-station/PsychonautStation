@@ -254,7 +254,12 @@
 	return ..()
 
 /mob/living/proc/create_splatter(splatter_dir)
-	new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(src), splatter_dir)
+	var/datum/reagent/blood_id = get_blood_id()
+	if(!isnull(blood_id) && blood_id != /datum/reagent/blood)
+		var/obj/splatter = new /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale(get_turf(src), splatter_dir)
+		splatter.color = color_hex2color_matrix(blood_id.color)
+	else
+		new /obj/effect/temp_visual/dir_setting/bloodsplatter(get_turf(src), splatter_dir)
 
 ///The core of catching thrown items, which non-carbons cannot without the help of items or abilities yet, as they've no throw mode.
 /mob/living/proc/try_catch_item(obj/item/item, skip_throw_mode_check = FALSE, try_offhand = FALSE)

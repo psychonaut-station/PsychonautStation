@@ -185,13 +185,10 @@
 
 	model.transform_to(model_list[input_model])
 
-<<<<<<< HEAD
-=======
 /mob/living/silicon/robot/set_name() //we have our name-making proc to call after we make our mmi, just set identifier here
 	if(identifier == 0)
 		identifier = rand(1, 999)
 
->>>>>>> upstream/master
 /// Used to setup the a basic and (somewhat) unique name for the robot.
 /mob/living/silicon/robot/proc/setup_default_name()
 	var/new_name

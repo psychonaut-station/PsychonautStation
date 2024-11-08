@@ -191,6 +191,7 @@
 	target.apply_damage(10, BRUTE, def_zone, blocked)
 
 	//blood splatters
+<<<<<<< HEAD
 	var/splatter_dir = get_dir(chassis, target)
 	if(isalien(target))
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter/xenosplatter(target.drop_location(), splatter_dir)
@@ -203,6 +204,9 @@
 				splatter.color = color_hex2color_matrix(blood_id.color)
 	else
 		new /obj/effect/temp_visual/dir_setting/bloodsplatter(target.drop_location(), splatter_dir)
+=======
+	target.create_splatter(get_dir(chassis, target))
+>>>>>>> upstream/master
 
 	//organs go everywhere
 	if(target_part && blocked < 100 && prob(10 * drill_level))

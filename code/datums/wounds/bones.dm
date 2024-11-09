@@ -143,8 +143,6 @@
 
 	if(limb.body_zone == BODY_ZONE_CHEST && victim.blood_volume && prob(internal_bleeding_chance + wounding_dmg))
 		var/blood_bled = rand(1, wounding_dmg * (severity == WOUND_SEVERITY_CRITICAL ? 2 : 1.5)) // 12 brute toolbox can cause up to 18/24 bleeding with a severe/critical chest wound
-		var/datum/reagent/blood_id = victim.get_blood_id()
-		var/splatter_type = blood_id == /datum/reagent/blood ? /obj/effect/temp_visual/dir_setting/bloodsplatter : /obj/effect/temp_visual/dir_setting/bloodsplatter/greyscale
 		switch(blood_bled)
 			if(1 to 6)
 				victim.bleed(blood_bled, TRUE)
@@ -161,10 +159,7 @@
 					span_danger("You spit out a string of blood from the blow to your chest!"),
 					vision_distance = COMBAT_MESSAGE_RANGE,
 				)
-				if(!isnull(blood_id))
-					var/obj/splatter = new splatter_type(victim.loc, victim.dir)
-					if(blood_id != /datum/reagent/blood)
-						splatter.color = color_hex2color_matrix(blood_id.color)
+				victim.create_splatter(victim.dir)
 				victim.bleed(blood_bled)
 			if(20 to INFINITY)
 				victim.visible_message(
@@ -173,10 +168,7 @@
 					vision_distance = COMBAT_MESSAGE_RANGE,
 				)
 				victim.bleed(blood_bled)
-				if(!isnull(blood_id))
-					var/obj/splatter = new splatter_type(victim.loc, victim.dir)
-					if(blood_id != /datum/reagent/blood)
-						splatter.color = color_hex2color_matrix(blood_id.color)
+				victim.create_splatter(victim.dir)
 				victim.add_splatter_floor(get_step(victim.loc, victim.dir))
 
 /datum/wound/blunt/bone/modify_desc_before_span(desc)

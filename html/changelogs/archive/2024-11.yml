@@ -104,8 +104,6 @@
       rather than ALL ELIGIBLE CREW.
   Autisem:
   - rscadd: A new cirucit component allows NFC communications
-  exdal:
-  - rscadd: Milli bayramlarimiz eklendi
   Melbert:
   - rscadd: Eyecharts to Medbay
   Sealed101:
@@ -140,6 +138,8 @@
   - code_imp: Moved the reagent deletion signal below updating the total volume of
       containers. If any bugs seem related please report them!
   - bugfix: BVAK injectors have their middleground icon state once more
+  exdal:
+  - rscadd: Milli bayramlarimiz eklendi
   grungussuss:
   - sound: emote pitch shifting has been fixed
   - sound: bike horn sound volume has been reduced
@@ -278,3 +278,35 @@
   - spellcheck: the text for failing to succumb is now spanned
   zoomachina:
   - bugfix: e-cigarettes can't be emptied if the cap isn't open
+2024-11-09:
+  00-Steven:
+  - bugfix: NTNRC no longer endlessly duplicates messages with duplicate contents
+      upon switching channels.
+  - bugfix: The new message header you get when NTNRC runs in the background actually
+      works.
+  - bugfix: NtOS header actually updates if there are no program headers.
+  Fikou:
+  - bugfix: fixes borgs linking to ais in mechs cards and modsuits
+  Ghommie:
+  - bugfix: You can perform fish scanning experiments again.
+  - bugfix: You can actually release fish on water turfs after catching them.
+  - spellcheck: Fixed a typo in the name of material fishing rods.
+  NoselessCanine:
+  - balance: Gas mask filters are now more effective, and their degradation is more
+      heavily influenced by what gasses they are filtering.
+  Rhials:
+  - bugfix: Goliath Tendril Hammer arm (from the gene brain) is now resistant to being
+      burned off by acid/fire.
+  SyncIt21:
+  - bugfix: MK honk shoes now consume bananium & can clown again
+  - code_imp: material container objects end their attack chain early
+  - bugfix: status & newscaster frame won't drop extra glass sheets upon deconstruction
+  necromanceranne:
+  - balance: Some mind altering effects of heretics (predominantly Path of the Moon
+      heretic abilities) are nullified using...a tinfoil hat. But awareness of the
+      mind altering psychotropic eldritch brain wizards has spread amongst the conspiracy
+      theorists. They could be anyone! Even YOU.
+  - balance: Some additional spells (mindswap, nightmare's terrorize) are also blocked.
+  unit0016:
+  - code_imp: Mappers can now opt out of automatically linking their up/down station
+      traits.

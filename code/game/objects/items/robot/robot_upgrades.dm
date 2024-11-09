@@ -809,6 +809,16 @@
 
 	items_to_add = list(/obj/item/borg/cookbook)
 
+/obj/item/borg/upgrade/botany_upgrade
+	name = "Service Cyborg Botany Tools"
+	desc = "An upgrade to the service model cyborg, that let them do gardening and plant processing."
+	icon_state = "module_service"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/service)
+	model_flags = BORG_MODEL_SERVICE
+
+	items_to_add = list(/obj/item/storage/bag/plants/cyborg, /obj/item/borg/cyborg_omnitool/botany, /obj/item/plant_analyzer)
+
 /obj/item/borg/upgrade/uclamp
 	name = "cargo cyborg clamp upgrade"
 	desc = "A upgraded hydraulic clamp replacement for the cargo model's standard clamp."

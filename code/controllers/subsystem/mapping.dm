@@ -370,7 +370,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	random_engine_templates = SSmapping.random_engine_templates
 
 #define INIT_ANNOUNCE(X) to_chat(world, span_boldannounce("[X]")); log_world(X)
-/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE)
+/datum/controller/subsystem/mapping/proc/LoadGroup(list/errorList, name, path, files, list/traits, list/default_traits, silent = FALSE, height_autosetup = TRUE)
 	. = list()
 	var/start_time = REALTIMEOFDAY
 
@@ -400,7 +400,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		while (total_z > traits.len)  // fall back to defaults on extra levels
 			traits += list(default_traits.Copy())
 
-	if(total_z > 1) // it's a multi z map
+	if(total_z > 1 && height_autosetup) // it's a multi z map, and we haven't opted out of trait autosetup
 		for(var/z in 1 to total_z)
 			if(z == 1) // bottom z-level
 				traits[z]["Up"] = TRUE
@@ -439,7 +439,8 @@ Used by the AI doomsday and the self-destruct nuke.
 	// load the station
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
-	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION)
+	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION, height_autosetup = current_map.height_autosetup)
+  
 	load_station_room_templates()
 
 #if !defined(MAP_TEST) && !defined(UNIT_TESTS)

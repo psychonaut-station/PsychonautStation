@@ -24,7 +24,7 @@
 /obj/projectile/accelerated_particle/singularity_pull()
 	return
 
-/obj/projectile/accelerated_particle/Impact(atom/A)
+/obj/projectile/accelerated_particle/impact(atom/A)
 	if(QDELETED(A))
 		return
 	if(istype(A, /obj/machinery/the_singularitygen))

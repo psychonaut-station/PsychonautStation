@@ -6,7 +6,6 @@
 	var/template_height = 0
 	var/template_width = 0
 	var/weight = 10 //weight a room has to appear
-	var/datum/map_template/empty/empty_map = null
 	var/list/coordinates = list()
 	var/room_type = null
 
@@ -36,7 +35,6 @@
 	weight = 8
 	station_name = "MetaStation"
 	should_place_on_top = FALSE
-	empty_map = /datum/map_template/empty/meta
 	coordinates = list(
 		"x" = 162,
 		"y" = 141,
@@ -66,19 +64,8 @@
 	weight = 8
 	station_name = "Delta Station"
 	should_place_on_top = FALSE
-	empty_map = /datum/map_template/empty/delta
 	coordinates = list(
 		"x" = 61,
 		"y" = 106,
 		"z" = 2,
 	)
-
-/datum/map_template/empty/meta
-	name = "Meta Emptyer"
-	mappath = "_maps/RandomEngines/MetaStation/empty.dmm"
-	should_place_on_top = FALSE
-
-/datum/map_template/empty/delta
-	name = "Delta Emptyer"
-	mappath = "_maps/RandomEngines/Deltastation/empty.dmm"
-	should_place_on_top = FALSE

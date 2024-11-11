@@ -104,20 +104,20 @@
 /obj/machinery/power/energy_accumulator/rad_collector/can_be_unfasten_wrench(mob/user, silent)
 	if(loaded_tank)
 		if(!silent)
-			to_chat(user, "<span class='warning'>Remove the plasma tank first!</span>")
+			to_chat(user, span_warning("Remove the plasma tank first!"))
 		return FAILED_UNFASTEN
 	return ..()
 
 /obj/machinery/power/energy_accumulator/rad_collector/attackby(obj/item/W, mob/user, params)
 	if(istype(W, /obj/item/tank/internals/plasma))
 		if(!anchored)
-			to_chat(user, "<span class='warning'>[src] needs to be secured to the floor first!</span>")
+			to_chat(user, span_warning("[src] needs to be secured to the floor first!"))
 			return TRUE
 		if(loaded_tank)
-			to_chat(user, "<span class='warning'>There's already a plasma tank loaded!</span>")
+			to_chat(user, span_warning("There's already a plasma tank loaded!"))
 			return TRUE
 		if(panel_open)
-			to_chat(user, "<span class='warning'>Close the maintenance panel first!</span>")
+			to_chat(user, span_warning("Close the maintenance panel first!"))
 			return TRUE
 		if(!user.transferItemToLoc(W, src))
 			return
@@ -146,7 +146,7 @@
 	if(..())
 		return TRUE
 	if(loaded_tank)
-		to_chat(user, "<span class='warning'>Remove the plasma tank first!</span>")
+		to_chat(user, span_warning("Remove the plasma tank first!"))
 	else
 		default_deconstruction_screwdriver(user, icon_state, icon_state, I)
 	return TRUE
@@ -157,18 +157,18 @@
 		return TRUE
 	if(default_deconstruction_crowbar(I))
 		return TRUE
-	to_chat(user, "<span class='warning'>There is no tank loaded!</span>")
+	to_chat(user, span_warning("There is no tank loaded!"))
 	return TRUE
 
 /obj/machinery/power/energy_accumulator/rad_collector/multitool_act(mob/living/user, obj/item/I)
 	if(!is_station_level(z) && !sciweb)
-		to_chat(user, "<span class='warning'>[src] isn't linked to a research system!</span>")
+		to_chat(user, span_warning("[src] isn't linked to a research system!"))
 		return TRUE
 	if(active)
-		to_chat(user, "<span class='warning'>[src] is currently active, producing [bitcoinmining ? "research points":"power"].</span>")
+		to_chat(user, span_warning("[src] is currently active, producing [bitcoinmining ? "research points":"power"]."))
 		return TRUE
 	bitcoinmining = !bitcoinmining
-	to_chat(user, "<span class='warning'>You [bitcoinmining ? "enable":"disable"] the research point production feature of [src].</span>")
+	to_chat(user, span_warning("You [bitcoinmining ? "enable":"disable"] the research point production feature of [src]."))
 	return TRUE
 
 /obj/machinery/power/energy_accumulator/rad_collector/examine(mob/user)

@@ -85,7 +85,7 @@
 
 /obj/machinery/particle_accelerator/control_box/proc/is_interactive(mob/user)
 	if(!interface_control)
-		to_chat(user, "<span class='alert'>ERROR: Request timed out. Check wire contacts.</span>")
+		to_chat(user, span_alert("ERROR: Request timed out. Check wire contacts."))
 		return FALSE
 	if(construction_state != PA_CONSTRUCTION_COMPLETE)
 		return FALSE
@@ -103,12 +103,11 @@
 		ui.open()
 
 /obj/machinery/particle_accelerator/control_box/ui_data(mob/user)
-	var/list/data = list()
-	data["assembled"] = particle_accelerator
-	data["power"] = active
-	data["strength_limit"] = strength_upper_limit
-	data["strength"] = strength
-	return data
+	. = list()
+	.["assembled"] = !isnull(particle_accelerator)
+	.["power"] = active
+	.["strength_limit"] = strength_upper_limit
+	.["strength"] = strength
 
 /obj/machinery/particle_accelerator/control_box/ui_act(action, params)
 	if(..())
@@ -162,6 +161,14 @@
 		message_admins("PA Control Computer decreased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer decreased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("decreased to <font color='green'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
+
+/obj/machinery/particle_accelerator/control_box/proc/set_strength(str = 0)
+	if((construction_state == PA_CONSTRUCTION_COMPLETE) && (str <= strength_upper_limit) && (str >= 0) && particle_accelerator)
+		strength = str
+		particle_accelerator.update_icon()
+		message_admins("PA Control Computer set to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
+		log_game("PA Control Computer set to [strength] by [key_name(usr)] in [AREACOORD(src)]")
+		investigate_log("set to <font color='green'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
 
 /obj/machinery/particle_accelerator/control_box/proc/toggle_power()
 	if(!particle_accelerator)

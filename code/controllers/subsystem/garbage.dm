@@ -332,9 +332,7 @@ SUBSYSTEM_DEF(garbage)
 			QDEL_NULL(apc.terminal)
 		qdel(prior_item)
 		atoms_to_del -= prior_item
-	for(var/atom/item in typecache_filter_list_reverse(atoms_to_del, prioritys))
-		qdel(item)
-		atoms_to_del -= item
+	QDEL_LIST(atoms_to_del)
 
 /// Qdel Item: Holds statistics on each type that passes thru qdel
 /datum/qdel_item

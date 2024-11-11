@@ -347,8 +347,8 @@
 	crate_type = /obj/structure/closet/crate/engineering
 
 /datum/supply_pack/engine/particle_accelerator
-	name = "Particle Accelerator Crate"
-	desc = "A supermassive black hole or hyper-powered teslaball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
+	name = "Particle Accelerator Parts"
+	desc = "A supermassive black hole or hyper-powered tesla ball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
 	cost = 3000
 	contains = list(
 		/obj/item/paper/guides/jobs/engineering/pa = 1,
@@ -357,7 +357,7 @@
 		/obj/item/circuitboard/machine/pa/power_box = 1,
 		/obj/item/circuitboard/machine/pa/fuel_chamber = 1,
 		/obj/item/circuitboard/machine/pa/particle_emitter = 3)
-	crate_name = "particle accelerator crate"
+	crate_name = "particle accelerator parts crate"
 	dangerous = TRUE
 
 /datum/supply_pack/engine/singulo_gen

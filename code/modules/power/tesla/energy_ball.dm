@@ -144,18 +144,6 @@
 		var/Orchiectomy_target = pick(orbiting_balls)
 		qdel(Orchiectomy_target)
 
-/*
-	if(energy >= 1500 && status != EBALL_DANGER)
-		zap_icon_state = OVER_9000_ZAP_ICON_STATE
-		zap_energy = 12 MEGA JOULES
-		status = EBALL_DANGER
-		investigate_log("has entered the danger point.", INVESTIGATE_ENGINE)
-		message_admins("[src] has entered the danger point [ADMIN_VERBOSEJMP(src)].")
-	else if(energy < 1500 && status != EBALL_NORMAL)
-		zap_icon_state = initial(zap_icon_state)
-		zap_energy = initial(zap_energy)
-		status = EBALL_NORMAL
-*/
 /obj/energy_ball/proc/new_mini_ball()
 	if(!loc)
 		return

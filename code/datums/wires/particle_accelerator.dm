@@ -26,7 +26,7 @@
 		if(WIRE_INTERFACE)
 			C.interface_control = !C.interface_control
 		if(WIRE_LIMIT)
-			C.visible_message("<span class='notice'>[icon2html(C, viewers(holder))]<b>[C]</b> makes a large whirring noise.</span>")
+			C.visible_message(span_notice("[icon2html(C, viewers(holder))]<b>[C]</b> makes a large whirring noise."))
 
 /datum/wires/particle_accelerator/control_box/on_cut(wire, mend, source)
 	var/obj/machinery/particle_accelerator/control_box/C = holder
@@ -35,8 +35,7 @@
 			if(C.active == !mend)
 				C.toggle_power()
 		if(WIRE_STRENGTH)
-			for(var/i = 1; i < 3; i++)
-				C.remove_strength()
+			C.set_strength(0)
 		if(WIRE_INTERFACE)
 			if(!mend)
 				C.interface_control = FALSE

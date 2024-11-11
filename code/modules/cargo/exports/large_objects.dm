@@ -103,7 +103,7 @@
 
 /datum/export/large/particle_acceletor
 	cost = 350
-	unit_name = "particle accelerator part"
+	unit_name = "particle accelerator parts"
 	export_types = list(/obj/machinery/particle_accelerator)
 
 /datum/export/large/tesla_gen

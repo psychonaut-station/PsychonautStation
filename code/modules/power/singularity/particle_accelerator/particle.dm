@@ -7,7 +7,7 @@
 	range = 20
 	speed = 0.5
 	damage = 10
-	damage_type = TOX
+	damage_type = BURN
 
 /obj/projectile/accelerated_particle/weak
 	damage = 5
@@ -16,7 +16,7 @@
 	damage = 15
 
 /obj/projectile/accelerated_particle/powerful
-	damage = 50
+	damage = 30
 
 /obj/projectile/accelerated_particle/ex_act(severity, target)
 	qdel(src)

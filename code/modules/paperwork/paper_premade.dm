@@ -254,6 +254,7 @@
 	If things have absolutely gone tits up, there's a rumor that the singularity will reduce in size by a few stages if it swallows a Bag of Holding.
 	And if things are really bad, ~~you could always try sacrificing the Clown to it in a sacrificial ritual style event.~~ This can either decrease the singularity size by a stage or two... or increase it by one or two stages. Your call. The clown will probably find their way into it without you doing anything anyways.
 	"}
+
 /obj/item/paper/fluff/jobs/security/beepsky_mom
 	name = "Note from Beepsky's Mom"
 	default_raw_text = "01001001 00100000 01101000 01101111 01110000 01100101 00100000 01111001 01101111 01110101 00100000 01110011 01110100 01100001 01111001 00100000 01110011 01100001 01100110 01100101 00101110 00100000 01001100 01101111 01110110 01100101 00101100 00100000 01101101 01101111 01101101 00101110"

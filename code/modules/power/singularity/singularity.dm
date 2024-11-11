@@ -99,7 +99,7 @@
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSsinguloprocess, src)
 	vis_contents -= warp
-	warp = null
+	QDEL_NULL(warp)
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)

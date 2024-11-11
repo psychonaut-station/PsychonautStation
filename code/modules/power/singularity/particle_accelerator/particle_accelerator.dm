@@ -84,12 +84,12 @@
 	switch(construction_state)
 		if(PA_CONSTRUCTION_UNSECURED)
 			default_unfasten_wrench(user, item, 20)
-			user.visible_message("<span class='notice'>[user.name] secures the [name] to the floor.</span>", \
-				"<span class='notice'>You secure the external bolts.</span>")
+			user.visible_message(span_notice("[user.name] secures the [name] to the floor."), \
+				span_notice("You secure the external bolts."))
 		if(PA_CONSTRUCTION_UNWIRED)
 			default_unfasten_wrench(user, item, 20)
-			user.visible_message("<span class='notice'>[user.name] detaches the [name] from the floor.</span>", \
-				"<span class='notice'>You remove the external bolts.</span>")
+			user.visible_message(span_notice("[user.name] detaches the [name] from the floor."), \
+				span_notice("You remove the external bolts."))
 		else
 			return FALSE
 	update_icon()
@@ -100,13 +100,13 @@
 	switch(construction_state)
 		if(PA_CONSTRUCTION_COMPLETE)
 			if(tool.use_tool(src, user, 10))
-				user.visible_message("<span class='notice'>[user.name] opens the [name]'s wire panel.</span>", \
-					"<span class='notice'>You open the access panel.</span>")
+				user.visible_message(span_notice("[user.name] opens the [name]'s wire panel."), \
+					span_notice("You open the access panel."))
 				construction_state = PA_CONSTRUCTION_PANEL_OPEN
 		if(PA_CONSTRUCTION_PANEL_OPEN)
 			if(tool.use_tool(src, user, 10))
-				user.visible_message("<span class='notice'>[user.name] closes the [name]'s wire panel.</span>", \
-					"<span class='notice'>You close the wire panel.</span>")
+				user.visible_message(span_notice("[user.name] closes the [name]'s wire panel."), \
+					span_notice("You close the wire panel."))
 				construction_state = PA_CONSTRUCTION_COMPLETE
 		if(PA_CONSTRUCTION_UNSECURED)
 			return default_deconstruction_screwdriver(user, icon_state, icon_state, tool)
@@ -118,8 +118,8 @@
 
 /obj/machinery/particle_accelerator/wirecutter_act(mob/living/user, obj/item/tool)
 	if(construction_state == PA_CONSTRUCTION_PANEL_OPEN && tool.use_tool(src, user, 5))
-		user.visible_message("<span class='notice'>[user.name] removes some wires from the [name].</span>", \
-			"<span class='notice'>You remove some wires.</span>")
+		user.visible_message(span_notice("[user.name] removes some wires from the [name]."), \
+			span_notice("You remove some wires."))
 		construction_state = PA_CONSTRUCTION_UNWIRED
 		new /obj/item/stack/cable_coil(get_turf(src), 1)
 		update_icon()
@@ -141,8 +141,8 @@
 	if(construction_state == PA_CONSTRUCTION_UNWIRED && istype(W, /obj/item/stack/cable_coil))
 		var/obj/item/stack/cable_coil/CC = W
 		if(CC.use_tool(src, user, 5, 1))
-			user.visible_message("<span class='notice'>[user.name] adds wires to the [name].</span>", \
-				"<span class='notice'>You add some wires.</span>")
+			user.visible_message(span_notice("[user.name] adds wires to the [name]."), \
+				span_notice("You add some wires."))
 			construction_state = PA_CONSTRUCTION_PANEL_OPEN
 			update_icon()
 			update_state()
@@ -225,8 +225,8 @@
 			emitter_type = CENTER
 	reference = "emitter_[emitter_type]"
 	icon_state = reference
-	user.visible_message("<span class='notice'>[user.name] changes the emitter's type to [emitter_type].</span>", \
-		"<span class='notice'>You changed the emitter's type to [emitter_type].</span>")
+	user.visible_message(span_notice("[user.name] changes the emitter's type to [emitter_type]."), \
+		span_notice("You changed the emitter's type to [emitter_type]."))
 	return TRUE
 
 /obj/machinery/particle_accelerator/particle_emitter/left

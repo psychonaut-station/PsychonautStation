@@ -443,11 +443,11 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	load_station_room_templates()
 
-#if !defined(MAP_TEST) && !defined(UNIT_TESTS)
+
 	if(CONFIG_GET(flag/allow_randomized_rooms))
 		pick_room_type()
 		load_random_rooms()
-#endif
+
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"
 			UPDATE [format_table_name("round")] SET map_name = :map_name WHERE id = :round_id
@@ -992,7 +992,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	shuffle_inplace(random_engine_templates)
 	for(var/ID in random_engine_templates)
 		engine_candidate = random_engine_templates[ID]
-		if(engine_candidate.weight == 0 || (engine_candidate.mappath && (random_room_spawners["engine"].room_height != engine_candidate.template_height || random_room_spawners["engine"].room_width != engine_candidate.template_width || !engine_candidate.empty_map)))
+		if(engine_candidate.weight == 0 || (engine_candidate.mappath && (random_room_spawners["engine"].room_height != engine_candidate.template_height || random_room_spawners["engine"].room_width != engine_candidate.template_width)))
 			engine_candidate = null
 			continue
 		possible_engine_templates[engine_candidate] = engine_candidate.weight
@@ -1007,8 +1007,6 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		log_world("Loading random engine template [picked_rooms["engine"].name] ([picked_rooms["engine"].type]) at [AREACOORD(random_room_spawners["engine"])]")
 		if(picked_rooms["engine"].mappath)
 			var/datum/map_template/random_room/template = picked_rooms["engine"]
-			var/datum/map_template/empty/emptyer = new template.empty_map
-			emptyer.stationinitload(get_turf(random_room_spawners["engine"]), centered = template.centerspawner)
 			template.stationinitload(get_turf(random_room_spawners["engine"]), centered = template.centerspawner)
 	QDEL_NULL(random_room_spawners["engine"])
 	log_world("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!")

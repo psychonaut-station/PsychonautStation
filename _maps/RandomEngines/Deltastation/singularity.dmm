@@ -59,6 +59,7 @@
 /area/space/nearstation)
 "eV" = (
 /obj/structure/cable,
+/obj/effect/spawner/random/structure/tank_holder,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "fr" = (
@@ -120,6 +121,11 @@
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"iJ" = (
+/obj/structure/cable,
+/obj/structure/closet/secure_closet/engineering_electrical,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "iK" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/light/directional/north,
@@ -154,6 +160,15 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"jI" = (
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Supermatter Engine Room"
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/door/firedoor,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "jU" = (
 /obj/machinery/camera/emp_proof/directional/west{
 	dir = 4;
@@ -186,6 +201,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"md" = (
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "mG" = (
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
@@ -218,6 +240,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"qo" = (
+/turf/closed/wall/r_wall,
+/area/station/maintenance/department/engine)
 "qK" = (
 /obj/machinery/particle_accelerator/power_box{
 	anchored = 1;
@@ -246,6 +271,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"sE" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "tD" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
@@ -308,6 +337,7 @@
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/obj/item/kirbyplants/random,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "yh" = (
@@ -344,6 +374,13 @@
 	},
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"zr" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/visible{
+	dir = 4
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "zv" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -590,8 +627,12 @@
 /turf/template_noop,
 /area/template_noop)
 "LJ" = (
-/turf/open/space/basic,
-/area/space/nearstation)
+/obj/machinery/atmospherics/components/unary/portables_connector/visible{
+	dir = 8
+	},
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "LL" = (
 /obj/machinery/door/airlock/external,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
@@ -615,6 +656,12 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"Mw" = (
+/obj/effect/spawner/random/maintenance,
+/obj/structure/rack,
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "Nk" = (
 /obj/structure/tank_dispenser,
 /turf/open/floor/iron,
@@ -632,6 +679,10 @@
 "Pt" = (
 /obj/machinery/light/directional/west,
 /turf/open/floor/iron,
+/area/station/engineering/singularity/room)
+"Px" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
 /area/station/engineering/singularity/room)
 "PY" = (
 /obj/structure/lattice/catwalk,
@@ -1193,10 +1244,10 @@ Vw
 Vw
 "}
 (16,1,1) = {"
-Vw
-LJ
-LJ
-LJ
+qo
+md
+qo
+qo
 kT
 fw
 zo
@@ -1218,10 +1269,10 @@ Vw
 Vw
 "}
 (17,1,1) = {"
-Vw
-LJ
-LJ
-LJ
+qo
+zr
+sE
+Mw
 kT
 mG
 mG
@@ -1243,10 +1294,10 @@ Vw
 Vw
 "}
 (18,1,1) = {"
-Vw
+qo
 LJ
-LJ
-LJ
+sE
+sE
 kT
 fw
 LL
@@ -1269,8 +1320,8 @@ Vw
 "}
 (19,1,1) = {"
 kT
-kT
-fw
+Px
+jI
 kT
 kT
 hJ
@@ -1564,7 +1615,7 @@ bW
 fw
 IE
 Rd
-eV
+iJ
 Vh
 "}
 (31,1,1) = {"

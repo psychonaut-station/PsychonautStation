@@ -8,6 +8,14 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"ah" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "aP" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8
@@ -73,6 +81,20 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
+"eP" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 1
+	},
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
+"eS" = (
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "eT" = (
 /obj/effect/turf_decal/stripes/line,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -103,6 +125,10 @@
 "je" = (
 /turf/template_noop,
 /area/template_noop)
+"kc" = (
+/obj/machinery/atmospherics/components/unary/portables_connector/visible,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "kO" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
@@ -175,6 +201,22 @@
 /obj/structure/table/reinforced,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
+"pi" = (
+/obj/structure/reagent_dispensers/watertank,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 4
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
+"qo" = (
+/obj/machinery/door/airlock/maintenance,
+/obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
+	dir = 1
+	},
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "qx" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/airalarm/directional/south,
@@ -206,7 +248,7 @@
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/plating,
-/area/station/engineering/singularity/room)
+/area/station/engineering/supermatter/room)
 "sB" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -279,6 +321,12 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"vY" = (
+/obj/effect/spawner/random/maintenance,
+/obj/structure/reagent_dispensers/fueltank,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "wm" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
@@ -313,6 +361,11 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
+"yE" = (
+/obj/effect/spawner/random/structure/closet_maintenance,
+/obj/effect/spawner/random/maintenance,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "yP" = (
 /obj/structure/sign/warning/secure_area,
 /turf/closed/wall/r_wall,
@@ -334,10 +387,27 @@
 "zC" = (
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
+"zE" = (
+/obj/machinery/plumbing/synthesizer{
+	dir = 8;
+	reagent_id = /datum/reagent/water
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
+"zV" = (
+/obj/effect/spawner/structure/window/reinforced,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "An" = (
 /obj/structure/lattice/catwalk,
 /turf/open/space/basic,
 /area/space/nearstation)
+"AC" = (
+/obj/effect/spawner/random/trash/garbage{
+	spawn_scatter_radius = 1
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "AG" = (
 /obj/machinery/light/directional/south,
 /turf/open/floor/iron/dark,
@@ -463,6 +533,9 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"HA" = (
+/turf/closed/wall,
+/area/station/maintenance/department/engine)
 "Jc" = (
 /obj/structure/cable,
 /obj/structure/cable/layer1,
@@ -493,6 +566,10 @@
 /obj/structure/cable/layer1,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"JT" = (
+/obj/machinery/duct,
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "JY" = (
 /obj/machinery/light/directional/west,
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
@@ -648,6 +725,12 @@
 /obj/structure/sign/warning/no_smoking,
 /turf/closed/wall/r_wall,
 /area/station/engineering/singularity/room)
+"TP" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "UU" = (
 /obj/machinery/camera/emp_proof/directional/east{
 	c_tag = "Singularity Engine #3"
@@ -655,6 +738,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
+"Vm" = (
+/turf/open/floor/plating,
+/area/station/maintenance/department/engine)
 "Vn" = (
 /obj/machinery/camera/emp_proof/directional/north{
 	c_tag = "Singularity Engine #2"
@@ -682,6 +768,9 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"XZ" = (
+/turf/closed/wall/r_wall,
+/area/station/maintenance/department/engine)
 "Yq" = (
 /obj/structure/cable,
 /obj/structure/lattice/catwalk,
@@ -843,13 +932,13 @@ MT
 dx
 sB
 hn
-MT
-je
-je
-je
-je
-je
-je
+XZ
+HA
+HA
+HA
+HA
+HA
+XZ
 "}
 (7,1,1) = {"
 rn
@@ -870,13 +959,13 @@ MT
 vM
 sB
 hn
-MT
-je
-je
-je
-je
-je
-je
+XZ
+pi
+kc
+eS
+ah
+eP
+qo
 "}
 (8,1,1) = {"
 rn
@@ -898,12 +987,12 @@ dx
 sB
 zC
 sk
-je
-je
-je
-je
-je
-je
+TP
+Vm
+AC
+JT
+vY
+XZ
 "}
 (9,1,1) = {"
 rn
@@ -924,13 +1013,13 @@ yn
 sB
 sB
 hn
-MT
-je
-je
-je
-je
-je
-je
+XZ
+XZ
+zV
+zV
+zE
+yE
+XZ
 "}
 (10,1,1) = {"
 UU

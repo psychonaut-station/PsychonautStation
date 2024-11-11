@@ -960,6 +960,12 @@ GLOBAL_LIST_EMPTY(map_model_default)
 				if(istype(thing, /obj/effect/landmark))
 					continue
 				if(ismachinery(thing))
+					if(isapc(thing))
+						var/nodel_apc = FALSE
+						for(var/atom_index in 1 to index-1)
+							nodel_apc = nodel_apc || istype(members[atom_index], /obj/effect/landmark/nodelapc)
+						if(!nodel_apc)
+							continue
 					SSgarbage.atoms_to_del += thing
 				else
 					qdel(thing, force=TRUE)

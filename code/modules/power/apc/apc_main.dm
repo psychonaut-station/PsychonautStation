@@ -188,7 +188,7 @@
 	else if(isarea(our_area) && areastring == null)
 		area = our_area
 	if(area)
-		if(area.apc && !SSgarbage.atoms_to_del[area.apc])
+		if(area.apc)
 			log_mapping("Duplicate APC created at [AREACOORD(src)] [area.type]. Original at [AREACOORD(area.apc)] [area.type].")
 		area.apc = src
 

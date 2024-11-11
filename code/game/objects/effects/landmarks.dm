@@ -733,25 +733,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	var/room_width = 0
 	var/room_height = 0
 
-/obj/effect/landmark/deleter
-	name = "All In One Deleter"
-	icon = 'icons/effects/landmarks_static.dmi'
-	icon_state = "x"
-	var/list/ignore_list = list(/obj/effect/landmark)
-
-/obj/effect/landmark/deleter/New(loc, ...)
-	. = ..()
-	var/turf/T = loc
-	for(var/atom/thing in T)
-		if(is_type_in_list(thing, ignore_list))
-			continue
-		if(ismachinery(thing))
-			SSgarbage.atoms_to_del += thing
-		else
-			qdel(thing, force=TRUE)
-	return
-
-/obj/effect/landmark/deleter/apc
+/obj/effect/landmark/nodelapc
+	name = "dont del apc"
 	icon = 'icons/psychonaut/effects/landmarks_static.dmi'
 	icon_state = "xapc"
-	ignore_list = list(/obj/effect/landmark, /obj/machinery/power/apc, /obj/effect/mapping_helpers/apc)

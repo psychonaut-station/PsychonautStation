@@ -443,7 +443,6 @@ Used by the AI doomsday and the self-destruct nuke.
 
 	load_station_room_templates()
 
-
 	if(CONFIG_GET(flag/allow_randomized_rooms))
 		pick_room_type()
 		load_random_rooms()

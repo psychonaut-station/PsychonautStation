@@ -136,6 +136,7 @@ export class DraggableControl extends Component {
         }
       } else if (this.inputRef) {
         const input = this.inputRef.current;
+<<<<<<< HEAD
         if (input) {
           input.value = internalValue;
           // IE8: Dies when trying to focus a hidden element
@@ -145,6 +146,14 @@ export class DraggableControl extends Component {
             input.select();
           } catch {}
         }
+=======
+        input.value = internalValue;
+
+        setTimeout(() => {
+          input.focus();
+          input.select();
+        }, 0);
+>>>>>>> upstream/master
       }
     };
   }

@@ -39,8 +39,13 @@
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
 	progression_minimum = 20 MINUTES
 	item = /obj/item/melee/energy/sword/saber
+<<<<<<< HEAD
 	cost = 8
 	purchasable_from = ~(UPLINK_CLOWN_OPS)
+=======
+	cost = 6
+	purchasable_from = ~UPLINK_CLOWN_OPS
+>>>>>>> upstream/master
 
 /datum/uplink_item/dangerous/powerfist
 	name = "Power Fist"

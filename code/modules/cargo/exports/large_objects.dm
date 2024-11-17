@@ -101,11 +101,6 @@
 	unit_name = "security barrier"
 	export_types = list(/obj/item/grenade/barrier, /obj/structure/barricade/security)
 
-/datum/export/large/particle_acceletor
-	cost = 350
-	unit_name = "particle accelerator parts"
-	export_types = list(/obj/machinery/particle_accelerator)
-
 /datum/export/large/tesla_gen
 	cost = 4000
 	unit_name = "energy ball generator"

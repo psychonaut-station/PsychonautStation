@@ -13,7 +13,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/broken_floor,
-/obj/machinery/duct,
+/obj/effect/landmark/keep/duct,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "aP" = (
@@ -86,7 +86,7 @@
 	dir = 1
 	},
 /obj/effect/turf_decal/stripes/line,
-/obj/machinery/duct,
+/obj/effect/landmark/keep/duct,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "eS" = (
@@ -214,7 +214,7 @@
 	dir = 1
 	},
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/machinery/duct,
+/obj/effect/landmark/keep/duct,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "qx" = (
@@ -388,10 +388,7 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
 "zE" = (
-/obj/machinery/plumbing/synthesizer{
-	dir = 8;
-	reagent_id = /datum/reagent/water
-	},
+/obj/effect/landmark/keep/plumbing,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "zV" = (
@@ -567,7 +564,7 @@
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "JT" = (
-/obj/machinery/duct,
+/obj/effect/landmark/keep/duct,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "JY" = (
@@ -698,13 +695,8 @@
 /area/station/engineering/singularity/room)
 "SK" = (
 /obj/structure/table/reinforced,
-/obj/item/pen/fountain,
-/obj/item/paper{
-	default_raw_text = "Jim Norton's Quebecois Coffee.         You see, in 2265 the Quebecois had finally had enough of Canada's shit, and went to the one place that wasn't corrupted by Canuckistan.Je vais au seul endroit qui n'a pas ??? corrompu par les Canadiens ... ESPACE.";
-	name = "Coffee Shop";
-	pixel_x = -4;
-	pixel_y = 6
-	},
+/obj/item/paper,
+/obj/item/pen,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "SO" = (

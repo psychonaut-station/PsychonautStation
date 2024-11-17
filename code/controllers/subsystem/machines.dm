@@ -30,7 +30,6 @@ SUBSYSTEM_DEF(machines)
 /datum/controller/subsystem/machines/Initialize()
 	makepowernets()
 	fire()
-	SSgarbage.del_the_atoms()
 	return SS_INIT_SUCCESS
 
 /// Registers a machine with the machine subsystem; should only be called by the machine itself during its creation.

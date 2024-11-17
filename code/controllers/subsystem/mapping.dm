@@ -85,6 +85,8 @@ SUBSYSTEM_DEF(mapping)
 	/// list of lazy templates that have been loaded
 	var/list/loaded_lazy_templates
 
+	var/list/machines_delete_after = list()
+
 	var/list/random_engine_templates = list()
 	var/list/obj/effect/landmark/random_room/random_room_spawners = list()
 	var/list/datum/map_template/random_room/picked_rooms = list()
@@ -163,6 +165,8 @@ SUBSYSTEM_DEF(mapping)
 	generate_station_area_list()
 	initialize_reserved_level(base_transit.z_value)
 	calculate_default_z_level_gravities()
+
+	RegisterSignal(SSmachines, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(machiness_post_init))
 
 	return SS_INIT_SUCCESS
 
@@ -957,6 +961,16 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	var/number_of_remaining_levels = length(checkable_levels)
 	if(number_of_remaining_levels > 0)
 		CRASH("The following [number_of_remaining_levels] away mission(s) were not loaded: [checkable_levels.Join("\n")]")
+
+/datum/controller/subsystem/mapping/proc/machiness_post_init()
+	var/list/prioritys = typecacheof(list(/obj/machinery/meter, /obj/machinery/power/apc))
+	for(var/atom/prior_item in typecache_filter_list(machines_delete_after, prioritys))
+		if(istype(prior_item, /obj/machinery/power/apc))
+			var/obj/machinery/power/apc/apc = prior_item
+			QDEL_NULL(apc.terminal)
+		qdel(prior_item)
+		machines_delete_after -= prior_item
+	QDEL_LIST(machines_delete_after)
 
 /datum/controller/subsystem/mapping/proc/load_random_rooms()
 	load_random_engines()

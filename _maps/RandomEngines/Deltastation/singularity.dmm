@@ -843,7 +843,7 @@
 /area/station/engineering/singularity/room)
 "Zi" = (
 /obj/structure/cable,
-/obj/effect/landmark/nodelapc,
+/obj/effect/landmark/keep/apc,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "ZA" = (

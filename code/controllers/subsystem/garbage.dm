@@ -45,9 +45,6 @@ SUBSYSTEM_DEF(garbage)
 	var/list/fail_counts
 
 	var/list/items = list() // Holds our qdel_item statistics datums
-
-	var/list/atoms_to_del = list() // Atoms to delete list
-
 	//Queue
 	var/list/queues
 	#ifdef REFERENCE_TRACKING
@@ -323,16 +320,6 @@ SUBSYSTEM_DEF(garbage)
 	if (istype(SSgarbage.queues))
 		for (var/i in 1 to SSgarbage.queues.len)
 			queues[i] |= SSgarbage.queues[i]
-
-/datum/controller/subsystem/garbage/proc/del_the_atoms()
-	var/list/prioritys = typecacheof(list(/obj/machinery/meter, /obj/machinery/power/apc))
-	for(var/atom/prior_item in typecache_filter_list(atoms_to_del, prioritys))
-		if(istype(prior_item, /obj/machinery/power/apc))
-			var/obj/machinery/power/apc/apc = prior_item
-			QDEL_NULL(apc.terminal)
-		qdel(prior_item)
-		atoms_to_del -= prior_item
-	QDEL_LIST(atoms_to_del)
 
 /// Qdel Item: Holds statistics on each type that passes thru qdel
 /datum/qdel_item

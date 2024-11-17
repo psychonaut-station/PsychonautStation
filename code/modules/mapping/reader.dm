@@ -960,13 +960,15 @@ GLOBAL_LIST_EMPTY(map_model_default)
 				if(istype(thing, /obj/effect/landmark))
 					continue
 				if(ismachinery(thing))
-					if(isapc(thing))
-						var/nodel_apc = FALSE
-						for(var/atom_index in 1 to index-1)
-							nodel_apc = nodel_apc || istype(members[atom_index], /obj/effect/landmark/nodelapc)
-						if(!nodel_apc)
-							continue
-					SSgarbage.atoms_to_del += thing
+					var/skip = FALSE
+					for(var/object in members)
+						if(ispath(object, /obj/effect/landmark/keep))
+							var/obj/effect/landmark/keep/keeper = object
+							if(!isnull(keeper.keep_type) && istype(thing, keeper.keep_type))
+								skip = TRUE
+					if(skip)
+						continue
+					SSmapping.machines_delete_after += thing
 				else
 					qdel(thing, force=TRUE)
 

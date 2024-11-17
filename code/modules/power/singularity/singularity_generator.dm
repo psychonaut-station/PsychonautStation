@@ -8,7 +8,7 @@
 	density = TRUE
 	use_power = NO_POWER_USE
 	resistance_flags = FIRE_PROOF
-
+	max_integrity = 400
 	// You can buckle someone to the singularity generator, then start the engine. Fun!
 	can_buckle = TRUE
 	buckle_lying = FALSE
@@ -45,6 +45,7 @@
 			energy -= 1
 
 /obj/machinery/the_singularitygen/tesla
-	name = "Tesla Singularity Generator"
+	name = "Energy Ball Generator"
+	desc = "An odd device which produces a Energy Ball when set up."
 	icon = 'icons/obj/machines/engine/tesla_generator.dmi'
 	creation_type = /obj/energy_ball/stationary

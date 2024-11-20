@@ -4,7 +4,7 @@
 #define RAD_COLLECTOR_MINING_CONVERSION_RATE 0.0001
 
 /obj/machinery/power/energy_accumulator/rad_collector
-	name = "Particle Capture Array"
+	name = "particle capture array"
 	desc = "A device which uses a large plasma-glass sheet to 'catch' particles, harvesting their stored energy. Do not taunt. Can be loaded with a variety of gases to produce additional power."
 	icon = 'icons/obj/machines/engine/singularity.dmi'
 	icon_state = "ca"

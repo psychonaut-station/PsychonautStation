@@ -1,6 +1,6 @@
 /////SINGULARITY SPAWNER
 /obj/machinery/the_singularitygen
-	name = "Gravitational Singularity Generator"
+	name = "gravitational singularity generator"
 	desc = "An odd device which produces a Gravitational Singularity when set up."
 	icon = 'icons/psychonaut/obj/machines/engine/singularity.dmi'
 	icon_state = "TheSingGen"
@@ -45,7 +45,7 @@
 			energy -= 1
 
 /obj/machinery/the_singularitygen/tesla
-	name = "Energy Ball Generator"
+	name = "energy ball generator"
 	desc = "An odd device which produces a Energy Ball when set up."
 	icon = 'icons/obj/machines/engine/tesla_generator.dmi'
 	creation_type = /obj/energy_ball/stationary

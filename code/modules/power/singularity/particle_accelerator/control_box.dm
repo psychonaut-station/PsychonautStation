@@ -4,7 +4,7 @@
 #define PA_CONSTRUCTION_COMPLETE   3
 
 /obj/machinery/particle_accelerator/control_box
-	name = "Particle Accelerator Control Box"
+	name = "particle accelerator control box"
 	desc = "This controls the density of the particles."
 	icon_state = "control_box"
 	use_power = NO_POWER_USE

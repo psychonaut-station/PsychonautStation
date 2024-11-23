@@ -18,6 +18,7 @@ env:
   remote_branch: master
   commiter_name: psychonaut-ci[bot]
   commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
+  tracked_files: SQL/database_changelog.md,config/
 
 jobs:
   mirror:
@@ -39,21 +40,30 @@ jobs:
         run: |
           $files = [System.Collections.ArrayList]@()
 
-          $db_changelog = "SQL/database_changelog.md"
-          $db_changelog_ahead = (git rev-list --count HEAD..FETCH_HEAD -- $db_changelog)
-          if ($db_changelog_ahead -ne 0) {
-            $files += [Tuple]::Create($db_changelog, $db_changelog_ahead)
-          }
+          function Check-File {
+            param(
+              [string]$File
+            )
 
-          $config = (git rev-list --count HEAD..FETCH_HEAD -- config/)
-          if ($config -ne 0) {
-            $files = (git diff --name-only FETCH_HEAD -- config/)
-            foreach ($file in $files) {
-              $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $file)
+            if ($File.EndsWith("/")) {
+              if ((git rev-list --count HEAD..FETCH_HEAD -- $File) -ne 0) {
+                foreach ($_ in (git diff --name-only FETCH_HEAD -- $File)) {
+                  $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $_)
+                  if ($ahead -ne 0) {
+                    $files.Add([Tuple]::Create($_, $ahead))
+                  }
+                }
+              }
+            } else {
+              $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $File)          
               if ($ahead -ne 0) {
-                $files += [Tuple]::Create($file, $ahead)
+                $files.Add([Tuple]::Create($File, $ahead))
               }
             }
+          }
+
+          foreach ($_ in $Env:tracked_files -split ",") {
+            Check-File -File $_
           }
 
           if ($files.Length -ne 0) {
@@ -62,14 +72,14 @@ jobs:
 
             echo "`n`nThe following tracked files have changed:" >> $Env:GITHUB_OUTPUT
 
-            $today = (Get-Date -format "yyyy-MM-dd")
+            $upstream_hash = (git rev-parse upstream/master)
 
-            foreach ($file in $files) {
-              $last_commit = (git log -n 1 --pretty=format:%H -- $file.item1)
-              $since = (git show -s --date=format:%Y-%m-%d --format=%cd $last_commit)
-              $history = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch`$short-hash/$($file.item1)?since=$since&until=$today"
+            foreach ($_ in $files) {
+              $history = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch\short-hash/$($_.item1)"
+              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:GITHUB_REF_NAME/$($_.item1)"
+              $theirs = "https://github.com/$Env:remote_repo/commits/$upstream_hash/$($_.item1)"
 
-              echo "- [ ] $($file.item1) - $($file.item2) commit(s) - [history]($history)" >> $Env:GITHUB_OUTPUT
+              echo "- [ ] $($_.item1) - $($_.item2) commit(s) - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
             }
 
             echo "$EOF" >> $Env:GITHUB_OUTPUT
@@ -146,7 +156,10 @@ jobs:
             }
           } else {
             echo "`n`nThere were no conflicts." >> $Env:GITHUB_OUTPUT
+
             git commit -a --no-edit
+
+            $short_hash = (git rev-parse --short HEAD)
           }
 
           echo "$EOF" >> $Env:GITHUB_OUTPUT
@@ -154,10 +167,10 @@ jobs:
           $tracked_files = "${{ steps.tracking.outputs.tracked_files }}"
 
           if ($tracked_files.Length -ne 0) {
-            $EOF = "CC$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
             echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
 
-            $tracked_files = $tracked_files.replace("`$short-hash", (git rev-parse --short HEAD))
+            $tracked_files = $tracked_files.replace("\short-hash", $short_hash)
 
             foreach ($_ in $tracked_files -split "`r?`n|`r") {
               echo "$_" >> $Env:GITHUB_OUTPUT

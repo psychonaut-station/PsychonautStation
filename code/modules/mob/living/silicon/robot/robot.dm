@@ -19,8 +19,12 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+<<<<<<< HEAD
 	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
 	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
+=======
+	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_GOT_DAMPENED), PROC_REF(on_dampen))
+>>>>>>> ef2ca85e8eadbfd6944fbe1aeb997a58d458a88b
 
 	robot_modules_background = new()
 	robot_modules_background.icon_state = "block"
@@ -136,6 +140,12 @@
 	QDEL_LIST(upgrades)
 	QDEL_NULL(cell)
 	QDEL_NULL(robot_suit)
+
+	if (smoke_particles)
+		remove_shared_particles(smoke_particles)
+	if (spark_particles)
+		remove_shared_particles(spark_particles)
+
 	return ..()
 
 /mob/living/silicon/robot/Topic(href, href_list)
@@ -967,6 +977,10 @@
 	buckle_mob_flags= RIDER_NEEDS_ARM // just in case
 	return ..()
 
+/mob/living/silicon/robot/post_buckle_mob(mob/living/victim_to_boot)
+	if(HAS_TRAIT(src, TRAIT_GOT_DAMPENED))
+		eject_riders()
+
 /mob/living/silicon/robot/can_resist()
 	if(lockcharge)
 		balloon_alert(src, "locked down!")
@@ -1063,3 +1077,17 @@
 	. = ..()
 	set_stat(CONSCIOUS) //This is a horrible hack, but silicon code forced my hand
 	update_stat()
+
+/mob/living/silicon/robot/proc/on_dampen()
+	SIGNAL_HANDLER
+	eject_riders()
+
+/mob/living/silicon/robot/proc/eject_riders()
+	if(!length(buckled_mobs))
+		return
+	for(var/mob/living/buckled_mob as anything in buckled_mobs)
+		buckled_mob.visible_message(span_warning("[buckled_mob] is knocked off of [src] by the charge in [src]'s chassis induced by the hyperkinetic dampener field!"))
+		buckled_mob.Paralyze(1 SECONDS)
+		unbuckle_mob(buckled_mob)
+	do_sparks(5, 0, src)
+

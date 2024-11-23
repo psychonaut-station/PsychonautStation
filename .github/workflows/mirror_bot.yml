@@ -171,16 +171,3 @@ jobs:
           title: ${{ env.pr_title }}
           body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.config_changes }}
           labels: ${{ env.pr_label }}
-      - name: Close previous pull request(s)
-        run: |
-          $query = "repo:$Env:GITHUB_REPOSITORY is:pr is:open label:$Env:pr_label"
-          $pr_number = ${{ steps.create-pull-request.outputs.pull-request-number }}
-
-          foreach ($_ in $(gh api -X GET search/issues -F q="$query" --jq '.items[].number')) {
-            if ($_ -ne $pr_number) {
-              gh pr close $_ -R $Env:GITHUB_REPOSITORY -d -c "Superseded by #$pr_number."
-            }
-          }
-        env:
-          GH_TOKEN: ${{ steps.app-token-generation.outputs.token || secrets.GITHUB_TOKEN }}
-        shell: pwsh

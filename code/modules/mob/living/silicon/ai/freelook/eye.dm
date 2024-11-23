@@ -16,14 +16,13 @@
 	. = ..()
 	update_ai_detect_hud()
 
-<<<<<<< HEAD
-/mob/camera/ai_eye/examine(mob/user) //Displays a silicon's laws to ghosts
+/mob/eye/camera/ai/examine(mob/user) //Displays a silicon's laws to ghosts
 	. = ..()
 	if(istype(ai) && ai.laws && isobserver(user))
 		. += "<b>[ai] aşağıdaki yasalara sahiptir:</b>"
 		for(var/law in ai.laws.get_law_list(include_zeroth = TRUE))
 			. += law
-=======
+
 /mob/eye/camera/ai/Destroy()
 	if(ai)
 		ai.all_eyes -= src
@@ -34,7 +33,6 @@
 		var/list/L = hud_list[AI_DETECT_HUD]
 		QDEL_LIST(L)
 	return ..()
->>>>>>> upstream/master
 
 /**
  * Returns a list of turfs visible to the client's viewsize. \

@@ -192,14 +192,13 @@
 	crate_name = "Strong-Arm implant crate"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
 
-<<<<<<< HEAD
 /datum/supply_pack/medical/lazarus
 	name = "Lazarus Injectors"
 	desc = "A crate containing two lazarus injectors, which can be used for reviving lesser beings."
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/lazarus_injector = 2)
 	crate_name = "Lazarus injectors crate"
-=======
+
 /datum/supply_pack/medical/paperwork_implants
 	name = "Paperwork Implant Set"
 	desc = "A crate containing two implants, which can be surgically implanted to effectivize crewmembers at paperwork. Warranty void if exposed to electromagnetic pulses."
@@ -207,7 +206,6 @@
 	contains = list(/obj/item/organ/cyberimp/arm/paperwork = 2)
 	crate_name = "Paperwork implant crate"
 	discountable = SUPPLY_PACK_RARE_DISCOUNTABLE
->>>>>>> upstream/master
 
 /datum/supply_pack/medical/lost_crew
 	name = "Recovered NT Employee corpse"

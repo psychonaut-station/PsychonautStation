@@ -7,28 +7,6 @@ $lightBorder: hsl(0, 0%, 73.3%);
 $lightHover: hsl(0, 0%, 91.8%);
 
 $_channel_map: (
-<<<<<<< HEAD
-  'Admin': #ffbbff,
-  'AI': #d65d95,
-  'CCom': #2681a5,
-  'Cling': #4c701f,
-  'Cmd': #fcdf03,
-  'Engi': #f37746,
-  'Hive': #855d85,
-  'io': #1e90ff,
-  'Me': #5975da,
-  'Med': #57b8f0,
-  'OOC': #cca300,
-  'LOOC': #6fbeff,
-  'Ent': #5c8a87,
-  'Radio': #1ecc43,
-  'Say': #a4bad6,
-  'Sci': #c68cfa,
-  'Sec': #dd3535,
-  'Supp': #b88646,
-  'Svc': #6ca729,
-  'Synd': #8f4a4b,
-=======
   'Admin': hsl(300, 100%, 86.7%),
   'AI': hsl(332.2, 59.6%, 60.2%),
   'CCom': hsl(197, 62.6%, 39.8%),
@@ -40,6 +18,7 @@ $_channel_map: (
   'Me': hsl(227, 63.5%, 60.2%),
   'Med': hsl(202, 83.6%, 64.1%),
   'OOC': hsl(47.9, 100%, 40%),
+  'LOOC': hsl(207, 100%, 72%),
   'Ent': hsl(176.1, 20%, 45.1%),
   'Radio': hsl(132.8, 74.4%, 45.9%),
   'Say': hsl(213.6, 37.9%, 74.1%),
@@ -48,7 +27,6 @@ $_channel_map: (
   'Supp': hsl(33.7, 44.9%, 49.8%),
   'Svc': hsl(88.1, 60.6%, 40.8%),
   'Synd': hsl(359.1, 31.8%, 42.5%),
->>>>>>> upstream/master
 );
 
 $channel_keys: map.keys($_channel_map) !default;

@@ -182,21 +182,15 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
-<<<<<<< HEAD
-
 		if(istype(target_organ, /obj/item/organ/brain))
 			if(istype(target_organ, /obj/item/organ/brain/cybernetic/ipc) && !isipc(target) && target_organ.zone != BODY_ZONE_HEAD)
 				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
 				return SURGERY_STEP_FAIL
-
 			else if(isipc(target) && target_organ.zone == BODY_ZONE_HEAD)
 				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
 				return SURGERY_STEP_FAIL
 
-		if(!can_use_organ(user, meatslab))
-=======
 		if(!can_use_organ(meatslab))
->>>>>>> upstream/master
 			return SURGERY_STEP_FAIL
 
 		if (target_zone == BODY_ZONE_PRECISE_EYES)

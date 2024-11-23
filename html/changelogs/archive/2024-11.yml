@@ -291,13 +291,10 @@
   - bugfix: You can perform fish scanning experiments again.
   - bugfix: You can actually release fish on water turfs after catching them.
   - spellcheck: Fixed a typo in the name of material fishing rods.
-<<<<<<< HEAD
-=======
   Jacquerel:
   - bugfix: Living Limbs no longer try to grab things that are under the floor.
   - spellcheck: Living Limb feedback messages now don't redundantly specify that they
       are flesh arms.
->>>>>>> upstream/master
   NoselessCanine:
   - balance: Gas mask filters are now more effective, and their degradation is more
       heavily influenced by what gasses they are filtering.
@@ -314,11 +311,6 @@
       mind altering psychotropic eldritch brain wizards has spread amongst the conspiracy
       theorists. They could be anyone! Even YOU.
   - balance: Some additional spells (mindswap, nightmare's terrorize) are also blocked.
-<<<<<<< HEAD
-  unit0016:
-  - code_imp: Mappers can now opt out of automatically linking their up/down station
-      traits.
-=======
   thegrb93:
   - bugfix: Fixes oil slimes making vegetable oil instead of corn oil
   unit0016:
@@ -837,4 +829,3 @@
       name
   wallem:
   - image: Updates slot machine sprites
->>>>>>> upstream/master

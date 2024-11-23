@@ -179,9 +179,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/list/outfit_override_registry = list()
 
 	// unique gibspawner for species
-	var/obj/effect/gibspawner/gibspawner = null
+	var/obj/effect/gibspawner/gibspawner_type
 	// unique remains for species
-	var/obj/effect/decal/remains/decalremains = null
+	var/obj/effect/decal/remains/remains_type
 
 	// Can we write numbers in name
 	var/allow_numbers_in_name = FALSE

@@ -36,9 +36,19 @@ Space Station 13 is a paranoia-laden round-based roleplaying game set against th
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
-## Contributors
-[Guides for Contributors](.github/CONTRIBUTING.md)
+## Getting started
 
+<<<<<<< HEAD
+=======
+For contribution guidelines refer to the [Guides for Contributors](.github/CONTRIBUTING.md).
+
+For getting started (dev env, compilation) see the HackMD document [here](https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide).
+
+For overall design documentation see [HackMD](https://hackmd.io/@tgstation).
+
+For lore, [see Common Core](https://github.com/tgstation/common_core).
+
+>>>>>>> ef2ca85e8eadbfd6944fbe1aeb997a58d458a88b
 ## LICENSE
 
 All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/psychonaut-station/PsychonautStation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).

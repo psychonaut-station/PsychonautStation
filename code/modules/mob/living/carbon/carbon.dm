@@ -572,7 +572,11 @@
 	set_health(round(maxHealth - getOxyLoss() - getToxLoss() - total_burn - total_brute, DAMAGE_PRECISION))
 	update_stat()
 	update_stamina()
-	if(((maxHealth - total_burn) < HEALTH_THRESHOLD_DEAD*2) && stat == DEAD )
+
+	/// The amount of burn damage needed to be done for this mob to be husked
+	var/husk_threshold = get_bodypart(BODY_ZONE_CHEST).max_damage * -1
+
+	if(((maxHealth - total_burn) < husk_threshold) && stat == DEAD )
 		become_husk(BURN)
 	med_hud_set_health()
 	if(stat == SOFT_CRIT)
@@ -745,7 +749,7 @@
 
 	//Fire and Brute damage overlay (BSSR)
 	var/hurtdamage = getBruteLoss() + getFireLoss() + damageoverlaytemp
-	if(hurtdamage)
+	if(hurtdamage && !HAS_TRAIT(src, TRAIT_ANALGESIA))
 		var/severity = 0
 		switch(hurtdamage)
 			if(5 to 15)
@@ -1497,9 +1501,17 @@
 	head.adjustBleedStacks(5)
 	visible_message(span_notice("[src] gets a nosebleed."), span_warning("You get a nosebleed."))
 
+<<<<<<< HEAD
 /mob/living/carbon/get_cell()
 	var/obj/item/organ/stomach/ethereal/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach) || istype(stomach, /obj/item/organ/stomach/ipc))
 		return stomach.cell
 	else
 		return ..()
+=======
+/mob/living/carbon/check_hit_limb_zone_name(hit_zone)
+	if(get_bodypart(hit_zone))
+		return hit_zone
+	// When a limb is missing the damage is actually passed to the chest
+	return BODY_ZONE_CHEST
+>>>>>>> ef2ca85e8eadbfd6944fbe1aeb997a58d458a88b

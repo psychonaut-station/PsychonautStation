@@ -35,18 +35,42 @@ jobs:
           git remote add upstream "https://github.com/$remote_repo.git"
           git fetch upstream $remote_branch
       - name: Merge upstream branch
+        id: merge
         run: |
-          git merge upstream/$remote_branch
+          $files = (git diff --name-only FETCH_HEAD -- config/)
+
+          if ($files.Length -ne 0) {
+            $EOF = "CC$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            echo "config_changes<<$EOF" >> $Env:GITHUB_OUTPUT
+
+            echo "`n`nThe following config files have changed:" >> $Env:GITHUB_OUTPUT
+
+            $upstream_hash = (git rev-parse upstream/master)
+
+            foreach ($file in $files) {
+              $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $file)
+              $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-\fill-short-hash/$file"
+              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file"
+              $theirs = "https://github.com/$Env:remote_repo/blob/$upstream_hash/$file"
+
+              echo "- [ ] $file - $ahead commit(s) - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
+            }
+
+            echo "$EOF" >> $Env:GITHUB_OUTPUT
+          }
+
+          git merge FETCH_HEAD --no-commit --no-ff
         continue-on-error: true
+        shell: pwsh
       - name: Commit with conflicts
         id: commit
         run: |
           $files = (git diff --name-only --diff-filter=U)
 
-          if ($files.Length -ne 0) {
-            $EOF = -join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) })
+          $EOF = "C$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+          echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
 
-            echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
+          if ($files.Length -ne 0) {
             echo "`n`nThe following files have conflicts:" >> $Env:GITHUB_OUTPUT
 
             $deleted_by_us = [System.Collections.ArrayList]@()
@@ -103,10 +127,26 @@ jobs:
 
               echo "- [ ] $file - $conflicts - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
             }
+          } else {
+            echo "`n`nThere were no conflicts." >> $Env:GITHUB_OUTPUT
+            git commit -a --no-edit
+          }
+
+          echo "$EOF" >> $Env:GITHUB_OUTPUT
+
+          $config_changes = "${{ steps.merge.outputs.config_changes }}"
+
+          if ($config_changes.Length -ne 0) {
+            $EOF = "CC$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            echo "config_changes<<$EOF" >> $Env:GITHUB_OUTPUT
+
+            $config_changes = $config_changes.replace("\fill-short-hash", (git rev-parse --short HEAD))
+
+            foreach ($_ in $config_changes -split "`r?`n|`r") {
+              echo "$_" >> $Env:GITHUB_OUTPUT
+            }
 
             echo "$EOF" >> $Env:GITHUB_OUTPUT
-          } else {
-            git commit -a --no-edit
           }
         shell: pwsh
       - name: Generate App Token
@@ -129,7 +169,7 @@ jobs:
           branch-suffix: short-commit-hash
           delete-branch: true
           title: ${{ env.pr_title }}
-          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}
+          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.config_changes }}
           labels: ${{ env.pr_label }}
       - name: Close previous pull request(s)
         run: |

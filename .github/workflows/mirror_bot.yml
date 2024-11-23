@@ -34,34 +34,51 @@ jobs:
 
           git remote add upstream "https://github.com/$remote_repo.git"
           git fetch upstream $remote_branch
-      - name: Merge upstream branch
-        id: merge
+      - name: Check tracked files
+        id: tracking
         run: |
-          $files = (git diff --name-only FETCH_HEAD -- config/)
+          $files = [System.Collections.ArrayList]@()
 
-          if ($files.Length -ne 0) {
-            $EOF = "CC$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
-            echo "config_changes<<$EOF" >> $Env:GITHUB_OUTPUT
+          $db_changelog = "SQL/database_changelog.md"
+          $db_changelog_ahead = (git rev-list --count HEAD..FETCH_HEAD -- $db_changelog)
+          if ($db_changelog_ahead -ne 0) {
+            $files += [Tuple]::Create($db_changelog, $db_changelog_ahead)
+          }
 
-            echo "`n`nThe following config files have changed:" >> $Env:GITHUB_OUTPUT
-
-            $upstream_hash = (git rev-parse upstream/master)
-
+          $config = (git rev-list --count HEAD..FETCH_HEAD -- config/)
+          if ($config -ne 0) {
+            $files = (git diff --name-only FETCH_HEAD -- config/)
             foreach ($file in $files) {
               $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $file)
-              $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-\fill-short-hash/$file"
-              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file"
-              $theirs = "https://github.com/$Env:remote_repo/blob/$upstream_hash/$file"
+              if ($ahead -ne 0) {
+                $files += [Tuple]::Create($file, $ahead)
+              }
+            }
+          }
 
-              echo "- [ ] $file - $ahead commit(s) - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
+          if ($files.Length -ne 0) {
+            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
+
+            echo "`n`nThe following tracked files have changed:" >> $Env:GITHUB_OUTPUT
+
+            $today = (Get-Date -format "yyyy-MM-dd")
+
+            foreach ($file in $files) {
+              $last_commit = (git log -n 1 --pretty=format:%H -- $file.item1)
+              $since = (git show -s --date=format:%Y-%m-%d --format=%cd $last_commit)
+              $history = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch`$short-hash/$($file.item1)?since=$since&until=$today"
+
+              echo "- [ ] $($file.item1) - $($file.item2) commit(s) - [history]($history)" >> $Env:GITHUB_OUTPUT
             }
 
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
-
+        shell: pwsh
+      - name: Merge upstream branch
+        run: |
           git merge FETCH_HEAD --no-commit --no-ff
         continue-on-error: true
-        shell: pwsh
       - name: Commit with conflicts
         id: commit
         run: |
@@ -134,15 +151,15 @@ jobs:
 
           echo "$EOF" >> $Env:GITHUB_OUTPUT
 
-          $config_changes = "${{ steps.merge.outputs.config_changes }}"
+          $tracked_files = "${{ steps.tracking.outputs.tracked_files }}"
 
-          if ($config_changes.Length -ne 0) {
+          if ($tracked_files.Length -ne 0) {
             $EOF = "CC$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
-            echo "config_changes<<$EOF" >> $Env:GITHUB_OUTPUT
+            echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
 
-            $config_changes = $config_changes.replace("\fill-short-hash", (git rev-parse --short HEAD))
+            $tracked_files = $tracked_files.replace("`$short-hash", (git rev-parse --short HEAD))
 
-            foreach ($_ in $config_changes -split "`r?`n|`r") {
+            foreach ($_ in $tracked_files -split "`r?`n|`r") {
               echo "$_" >> $Env:GITHUB_OUTPUT
             }
 
@@ -169,5 +186,5 @@ jobs:
           branch-suffix: short-commit-hash
           delete-branch: true
           title: ${{ env.pr_title }}
-          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.config_changes }}
+          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.tracked_files }}
           labels: ${{ env.pr_label }}

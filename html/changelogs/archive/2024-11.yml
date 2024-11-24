@@ -829,3 +829,6 @@
       name
   wallem:
   - image: Updates slot machine sprites
+2024-11-24:
+  SyncIt21:
+  - bugfix: inducers can be inserted into storage objects again

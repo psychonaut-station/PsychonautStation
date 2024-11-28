@@ -323,7 +323,7 @@
 	category = CAT_ICE
 
 /datum/crafting_recipe/food/panda
-	name = "Panda icecream"
+	name = "Panda Ice Cream"
 	reqs = list(
 		/obj/item/popsicle_stick = 1,
 		/obj/item/food/chocolatebar = 1,

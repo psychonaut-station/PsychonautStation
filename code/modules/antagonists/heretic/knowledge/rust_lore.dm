@@ -168,6 +168,8 @@
 		The Blacksmith forges ahead! Rusted Hills, CALL MY NAME! WITNESS MY ASCENSION!"
 
 	ascension_achievement = /datum/award/achievement/misc/rust_ascension
+	announcement_text = "%SPOOKY% Fear the decay, for the Rustbringer, %NAME% has ascended! None shall escape the corrosion! %SPOOKY%"
+	announcement_sound = 'sound/music/antag/heretic/ascend_rust.ogg'
 	/// If TRUE, then immunities are currently active.
 	var/immunities_active = FALSE
 	/// A typepath to an area that we must finish the ritual in.
@@ -208,12 +210,15 @@
 
 /datum/heretic_knowledge/ultimate/rust_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
+<<<<<<< HEAD
 	priority_announce(
 		text = "[generate_heretic_text()] Harap olmaktan korkun, [user.real_name] yükseldi! Kimse aşınmadan kaçamayacak! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
 		sound = 'sound/music/antag/heretic/ascend_rust.ogg',
 		color_override = "pink",
 	)
+=======
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 	trigger(loc)
 	RegisterSignal(user, COMSIG_MOVABLE_MOVED, PROC_REF(on_move))
 	RegisterSignal(user, COMSIG_LIVING_LIFE, PROC_REF(on_life))

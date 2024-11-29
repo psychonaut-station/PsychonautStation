@@ -380,6 +380,8 @@
 		I AM UNMATCHED! A STORM OF STEEL AND SILVER IS UPON US! WITNESS MY ASCENSION!"
 
 	ascension_achievement = /datum/award/achievement/misc/blade_ascension
+	announcement_text = "%SPOOKY% Master of blades, the Torn Champion's disciple, %NAME% has ascended! Their steel is that which will cut reality in a maelstom of silver! %SPOOKY%"
+	announcement_sound = 'sound/music/antag/heretic/ascend_blade.ogg'
 
 /datum/heretic_knowledge/ultimate/blade_final/is_valid_sacrifice(mob/living/carbon/human/sacrifice)
 	. = ..()
@@ -390,6 +392,7 @@
 
 /datum/heretic_knowledge/ultimate/blade_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
+<<<<<<< HEAD
 	priority_announce(
 		text = "[generate_heretic_text()] Kılıçların efendisi [user.real_name] yükseldi! Onların çeliği, gerçekliği gümüşten bir heykelmişcesine kesecek! [generate_heretic_text()]",
 		title = "[generate_heretic_text()]",
@@ -397,6 +400,9 @@
 		color_override = "pink",
 	)
 	ADD_TRAIT(user, TRAIT_NEVER_WOUNDED, name)
+=======
+	ADD_TRAIT(user, TRAIT_NEVER_WOUNDED, type)
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 	RegisterSignal(user, COMSIG_HERETIC_BLADE_ATTACK, PROC_REF(on_eldritch_blade))
 	user.apply_status_effect(/datum/status_effect/protective_blades/recharging, null, 8, 30, 0.25 SECONDS, /obj/effect/floating_blade, 1 MINUTES)
 	user.add_stun_absorption(

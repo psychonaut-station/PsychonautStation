@@ -36,11 +36,14 @@ map metastation
 	votable
 endmap
 
+<<<<<<< HEAD
 map northstar
 	minplayers 25
 	votable
 endmap
 
+=======
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 map tramstation
 	minplayers 35
 	votable

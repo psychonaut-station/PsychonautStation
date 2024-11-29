@@ -26,6 +26,7 @@
 	suffix = "pubby"
 	name = "arrival shuttle (Pubby)"
 
+<<<<<<< HEAD
 /datum/map_template/shuttle/arrival/northstar
 	suffix = "northstar"
 	name = "arrival shuttle (North Star)"
@@ -34,6 +35,8 @@
 	suffix = "mini"
 	name = "arrival shuttle (Mini)"
 
+=======
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 /datum/map_template/shuttle/arrival/nebula
 	suffix = "nebula"
 	name = "arrival shuttle (Nebula)"

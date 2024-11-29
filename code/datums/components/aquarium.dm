@@ -118,6 +118,7 @@
 		RegisterSignal(movable, COMSIG_ATOM_UI_INTERACT, PROC_REF(interact))
 
 	movable.AddElement(/datum/element/relay_attackers)
+	movable.AddComponent(/datum/component/fishing_spot, /datum/fish_source/aquarium)
 
 	for(var/atom/movable/content as anything in movable.contents)
 		if(content.flags_1 & INITIALIZED_1)
@@ -150,6 +151,7 @@
 	beauty_by_content = null
 	tracked_fish_by_type = null
 	movable.remove_traits(list(TRAIT_IS_AQUARIUM, TRAIT_AQUARIUM_PANEL_OPEN, TRAIT_STOP_FISH_REPRODUCTION_AND_GROWTH), AQUARIUM_TRAIT)
+	qdel(movable.GetComponent(/datum/component/fishing_spot))
 	REMOVE_KEEP_TOGETHER(movable, AQUARIUM_TRAIT)
 
 /datum/component/aquarium/PreTransfer(atom/movable/new_parent)
@@ -456,15 +458,16 @@
 		ui = new(user, src, "Aquarium", movable.name)
 		ui.open()
 
-/datum/component/aquarium/ui_data(atom/movable/source, mob/user)
+/datum/component/aquarium/ui_data(mob/user)
 	. = ..()
+	var/atom/movable/aquarium = parent
 	.["fluidType"] = fluid_type
 	.["temperature"] = fluid_temp
-	.["allowBreeding"] = HAS_TRAIT_FROM(source, TRAIT_STOP_FISH_REPRODUCTION_AND_GROWTH, AQUARIUM_TRAIT)
+	.["allowBreeding"] = HAS_TRAIT_FROM(aquarium, TRAIT_STOP_FISH_REPRODUCTION_AND_GROWTH, AQUARIUM_TRAIT)
 	.["fishData"] = list()
 	.["feedingInterval"] = feeding_interval / (1 MINUTES)
 	.["propData"] = list()
-	for(var/atom/movable/item as anything in source.contents)
+	for(var/atom/movable/item as anything in aquarium.contents)
 		if(isfish(item))
 			var/obj/item/fish/fish = item
 			.["fishData"] += list(list(

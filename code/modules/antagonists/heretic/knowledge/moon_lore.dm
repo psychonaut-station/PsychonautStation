@@ -162,6 +162,9 @@
 		WITNESS MY ASCENSION, THE MOON SMILES ONCE MORE AND FOREVER MORE IT SHALL!"
 
 	ascension_achievement = /datum/award/achievement/misc/moon_ascension
+	announcement_text = "%SPOOKY% Laugh, for the ringleader %NAME% has ascended! \
+						The truth shall finally devour the lie! %SPOOKY%"
+	announcement_sound = 'sound/music/antag/heretic/ascend_moon.ogg'
 
 /datum/heretic_knowledge/ultimate/moon_final/is_valid_sacrifice(mob/living/sacrifice)
 
@@ -174,6 +177,7 @@
 
 /datum/heretic_knowledge/ultimate/moon_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
+<<<<<<< HEAD
 	priority_announce(
 		text = "[generate_heretic_text()] Gülün, çünkü [user.real_name] yükseldi! \
 			Doğru eninde sonunda yalanı yutacaktır! [generate_heretic_text()]",
@@ -183,6 +187,9 @@
 	)
 
 	ADD_TRAIT(user, TRAIT_MADNESS_IMMUNE, REF(src))
+=======
+	ADD_TRAIT(user, TRAIT_MADNESS_IMMUNE, type)
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 	user.mind.add_antag_datum(/datum/antagonist/lunatic/master)
 	RegisterSignal(user, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 

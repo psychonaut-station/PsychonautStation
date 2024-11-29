@@ -2269,6 +2269,10 @@
 	name = "Lightbearer"
 	icon_state = "lightbearer"
 
+/datum/sprite_accessory/moth_wings/dipped
+	name = "Dipped"
+	icon_state = "dipped"
+
 /datum/sprite_accessory/moth_antennae //Finally splitting the sprite
 	icon = 'icons/mob/human/species/moth/moth_antennae.dmi'
 	color_src = null
@@ -2360,6 +2364,10 @@
 	name = "Lightbearer"
 	icon_state = "lightbearer"
 
+/datum/sprite_accessory/moth_antennae/dipped
+	name = "Dipped"
+	icon_state = "dipped"
+
 /datum/sprite_accessory/moth_markings // the markings that moths can have. finally something other than the boring tan
 	icon = 'icons/mob/human/species/moth/moth_markings.dmi'
 	color_src = null
@@ -2424,6 +2432,7 @@
 	name = "Lightbearer"
 	icon_state = "lightbearer"
 
+<<<<<<< HEAD
 /datum/sprite_accessory/arachnid_appendages
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_appendages.dmi'
 	em_block = TRUE
@@ -2490,3 +2499,8 @@
 	name = "Morpheus Cyberkinetics (Custom)"
 	color_src = MUTANT_COLOR
 	icon_state = "mcgipc"
+=======
+/datum/sprite_accessory/moth_markings/dipped
+	name = "Dipped"
+	icon_state = "dipped"
+>>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215

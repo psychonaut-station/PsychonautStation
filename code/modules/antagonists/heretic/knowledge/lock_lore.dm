@@ -176,7 +176,7 @@
 		The Labyrinth will be Locked no more, and freedom will be ours! WITNESS US!"
 	required_atoms = list(/mob/living/carbon/human = 3)
 	ascension_achievement = /datum/award/achievement/misc/lock_ascension
-	announcement_text = "Delta-class dimensional anomaly detec%SPOOKY% Reality rended, torn. Gates open, doors open, %NAME% has ascended! Fear the tide! %SPOOKY%"
+	announcement_text = "Delta sınıfı boyutsal anomali tespi%SPOOKY% Gerçeklik paramparça oldu. Geçitler ve kapılar aralandı, %NAME% yükseldi! %SPOOKY%"
 	announcement_sound = 'sound/music/antag/heretic/ascend_knock.ogg'
 
 /datum/heretic_knowledge/ultimate/lock_final/recipe_snowflake_check(mob/living/user, list/atoms, list/selected_atoms, turf/loc)
@@ -200,16 +200,6 @@
 
 /datum/heretic_knowledge/ultimate/lock_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-<<<<<<< HEAD
-	priority_announce(
-		text = "Delta sınıfı boyutsal anomali tespi[generate_heretic_text()] Gerçeklik paramparça oldu. Geçitler ve kapılar aralandı, [user.real_name] yükseldi! [generate_heretic_text()]",
-		title = "[generate_heretic_text()]",
-		sound = 'sound/music/antag/heretic/ascend_knock.ogg',
-		color_override = "pink",
-	)
-
-=======
->>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 	// buffs
 	var/datum/action/cooldown/spell/shapeshift/eldritch/ascension/transform_spell = new(user.mind)
 	transform_spell.Grant(user)

@@ -219,7 +219,7 @@
 		WITNESS MY ASCENSION!"
 
 	ascension_achievement = /datum/award/achievement/misc/cosmic_ascension
-	announcement_text = "%SPOOKY% A Star Gazer has arrived into the station, %NAME% has ascended! This station is the domain of the Cosmos! %SPOOKY%"
+	announcement_text = "%SPOOKY% İstasyonada bir Star Gazer doğdu, %NAME% yükseldi! Bu istasyon artık Cosmos'a aittir! %SPOOKY%"
 	announcement_sound = 'sound/music/antag/heretic/ascend_cosmic.ogg'
 	/// A static list of command we can use with our mob.
 	var/static/list/star_gazer_commands = list(
@@ -238,15 +238,6 @@
 
 /datum/heretic_knowledge/ultimate/cosmic_final/on_finished_recipe(mob/living/user, list/selected_atoms, turf/loc)
 	. = ..()
-<<<<<<< HEAD
-	priority_announce(
-		text = "[generate_heretic_text()] İstasyonada bir Star Gazer doğdu, [user.real_name] yükseldi! Bu istasyon artık Cosmos'a aittir! [generate_heretic_text()]",
-		title = "[generate_heretic_text()]",
-		sound = 'sound/music/antag/heretic/ascend_cosmic.ogg',
-		color_override = "pink",
-	)
-=======
->>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 	var/mob/living/basic/heretic_summon/star_gazer/star_gazer_mob = new /mob/living/basic/heretic_summon/star_gazer(loc)
 	star_gazer_mob.maxHealth = INFINITY
 	star_gazer_mob.health = INFINITY

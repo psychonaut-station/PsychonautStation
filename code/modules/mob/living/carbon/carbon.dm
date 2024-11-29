@@ -1497,17 +1497,15 @@
 	head.adjustBleedStacks(5)
 	visible_message(span_notice("[src] gets a nosebleed."), span_warning("You get a nosebleed."))
 
-<<<<<<< HEAD
 /mob/living/carbon/get_cell()
 	var/obj/item/organ/stomach/ethereal/stomach = get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach) || istype(stomach, /obj/item/organ/stomach/ipc))
 		return stomach.cell
 	else
 		return ..()
-=======
+
 /mob/living/carbon/check_hit_limb_zone_name(hit_zone)
 	if(get_bodypart(hit_zone))
 		return hit_zone
 	// When a limb is missing the damage is actually passed to the chest
 	return BODY_ZONE_CHEST
->>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215

@@ -1747,11 +1747,7 @@
 #include "code\datums\proximity_monitor\proximity_monitor.dm"
 #include "code\datums\proximity_monitor\fields\ai_target_tracking.dm"
 #include "code\datums\proximity_monitor\fields\gravity.dm"
-<<<<<<< HEAD
 #include "code\datums\proximity_monitor\fields\mob_collector.dm"
-#include "code\datums\proximity_monitor\fields\projectile_dampener.dm"
-=======
->>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215
 #include "code\datums\proximity_monitor\fields\timestop.dm"
 #include "code\datums\proximity_monitor\fields\void_storm.dm"
 #include "code\datums\proximity_monitor\fields\projectile_dampener\projectile_dampener.dm"

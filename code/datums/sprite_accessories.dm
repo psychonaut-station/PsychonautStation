@@ -2432,7 +2432,10 @@
 	name = "Lightbearer"
 	icon_state = "lightbearer"
 
-<<<<<<< HEAD
+/datum/sprite_accessory/moth_markings/dipped
+	name = "Dipped"
+	icon_state = "dipped"
+
 /datum/sprite_accessory/arachnid_appendages
 	icon = 'icons/psychonaut/mob/human/species/arachnid/arachnid_appendages.dmi'
 	em_block = TRUE
@@ -2499,8 +2502,3 @@
 	name = "Morpheus Cyberkinetics (Custom)"
 	color_src = MUTANT_COLOR
 	icon_state = "mcgipc"
-=======
-/datum/sprite_accessory/moth_markings/dipped
-	name = "Dipped"
-	icon_state = "dipped"
->>>>>>> f176db342c88a0e6c1ec150fbeb2fe4f5e2f3215

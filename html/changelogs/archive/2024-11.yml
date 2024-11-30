@@ -1068,3 +1068,14 @@
   paganiy:
   - rscadd: 'Add a new item to the chef traitor''s uplink: Molt''Obeso sauce. A sauce
       that makes people want to eat too much.'
+2024-11-30:
+  Absolucy:
+  - bugfix: Light Step now properly prevents your hands and clothes from getting covered
+      in blood when stepping in it.
+  - bugfix: Fixed double-encoded messages with AI shuttle call reasons.
+  CRITAWAKETS:
+  - rscadd: Added in the modulo operator to the circuit arithmetic component.
+  Ghommie:
+  - bugfix: Aquariums are now potential fishing spots.
+  SmArtKar:
+  - bugfix: Fixed Nebula's robotics fabricators being obstructed roundstart

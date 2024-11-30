@@ -47,7 +47,7 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
-	gibspawner = /obj/effect/gibspawner/robot/android
+	gibspawner_type = /obj/effect/gibspawner/robot/android
 	allow_numbers_in_name = TRUE
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load)

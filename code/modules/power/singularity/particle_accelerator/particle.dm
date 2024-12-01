@@ -6,7 +6,7 @@
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
 	reflectable = TRUE
 	range = 20
-	speed = 0.5
+	speed = 1
 	damage = 10
 	damage_type = TOX
 

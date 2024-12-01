@@ -142,8 +142,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///What gas does this species breathe? Used by suffocation screen alerts, most of actual gas breathing is handled by mutantlungs. See [life.dm][code/modules/mob/living/carbon/human/life.dm]
 	var/breathid = GAS_O2
 
-	///What anim to use for dusting
-	var/dust_anim = "dust-h"
 	///What anim to use for gibbing
 	var/gib_anim = "gibbed-h"
 
@@ -181,9 +179,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	var/list/outfit_override_registry = list()
 
 	// unique gibspawner for species
-	var/obj/effect/gibspawner/gibspawner = null
+	var/obj/effect/gibspawner/gibspawner_type
 	// unique remains for species
-	var/obj/effect/decal/remains/decalremains = null
+	var/obj/effect/decal/remains/remains_type
 
 	// Can we write numbers in name
 	var/allow_numbers_in_name = FALSE

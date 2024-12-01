@@ -160,7 +160,7 @@
 			if(current_size <= STAGE_TWO)
 				investigate_log("has been destroyed by a heavy explosion.", INVESTIGATE_ENGINE)
 				qdel(src)
-				return
+				return TRUE
 
 			energy -= round(((energy + 1) / 2), 1)
 		if(EXPLODE_HEAVY)

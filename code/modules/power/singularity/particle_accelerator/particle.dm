@@ -4,10 +4,11 @@
 	icon = 'icons/psychonaut/obj/machines/engine/particle_accelerator.dmi'
 	icon_state = "particle"
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE
+	reflectable = TRUE
 	range = 20
 	speed = 0.5
 	damage = 10
-	damage_type = BURN
+	damage_type = TOX
 
 /obj/projectile/accelerated_particle/weak
 	damage = 5

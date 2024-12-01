@@ -754,3 +754,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 	icon_state = "xplumbing"
 	keep_type = /obj/machinery/plumbing
 
+/obj/effect/landmark/keep/lightning
+	name = "keep lightning"
+	icon_state = "xlight"
+	keep_type = /obj/machinery/light

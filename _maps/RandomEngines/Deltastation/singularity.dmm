@@ -1057,12 +1057,6 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
-"ZH" = (
-/obj/structure/closet/crate,
-/obj/item/storage/cans/sixbeer,
-/obj/effect/turf_decal/box,
-/turf/open/floor/iron,
-/area/template_noop)
 "ZL" = (
 /obj/structure/table/reinforced,
 /obj/effect/spawner/random/food_or_drink/donkpockets,
@@ -2009,7 +2003,7 @@ EM
 EM
 EM
 EM
-ZH
+EM
 EM
 EM
 EM

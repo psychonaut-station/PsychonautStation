@@ -46,7 +46,7 @@
 		strength = 0
 		active = FALSE
 		particle_accelerator.update_appearance()
-	active_power_usage = (strength*2500)+2500
+	active_power_usage = (strength*1500)+2500
 	return
 
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)

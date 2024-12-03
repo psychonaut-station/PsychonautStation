@@ -443,17 +443,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
-"wj" = (
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
-/obj/machinery/door/firedoor,
-/obj/machinery/door/airlock/engineering/glass{
-	name = "Singularity Engine Room"
-	},
-/obj/structure/cable,
-/turf/open/floor/iron,
-/area/station/engineering/singularity/room)
 "wy" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
@@ -1614,7 +1603,7 @@ Ff
 oH
 DO
 cT
-wj
+dr
 SB
 En
 Xq

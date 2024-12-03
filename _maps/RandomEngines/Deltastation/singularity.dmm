@@ -30,14 +30,25 @@
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "bl" = (
-/obj/structure/closet/crate,
-/obj/item/storage/cans/sixbeer,
-/obj/effect/turf_decal/box,
+/obj/machinery/vending/cigarette,
 /turf/open/floor/iron,
+/area/station/engineering/singularity/room)
+"bs" = (
+/obj/structure/table/reinforced,
+/obj/item/multitool,
+/obj/item/clothing/gloves/color/yellow,
+/obj/item/crowbar,
+/turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 "bQ" = (
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"bS" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
+/obj/machinery/light/small/directional/west,
+/obj/structure/chair/stool/directional/north,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "bZ" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
@@ -50,10 +61,13 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "cx" = (
-/obj/item/multitool,
-/obj/item/clothing/gloves/color/yellow,
-/obj/structure/table/reinforced,
-/turf/open/floor/iron,
+/obj/effect/decal/cleanable/dirt,
+/obj/machinery/modular_computer/preset/civilian{
+	dir = 8
+	},
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
 /area/station/engineering/singularity/room)
 "cK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -150,6 +164,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"hV" = (
+/obj/structure/chair/stool/directional/north,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "ih" = (
 /obj/structure/cable,
 /obj/structure/cable/layer1,
@@ -194,6 +212,10 @@
 "jL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
+"jO" = (
+/obj/effect/landmark/keep/lightning,
+/turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "jT" = (
 /obj/structure/lattice/catwalk,
@@ -275,8 +297,8 @@
 /area/station/engineering/singularity/room)
 "nM" = (
 /obj/machinery/firealarm/directional/east,
-/obj/item/kirbyplants/random,
-/turf/open/floor/iron,
+/obj/effect/spawner/structure/window/reinforced/plasma,
+/turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "ol" = (
 /obj/effect/turf_decal/stripes/line{
@@ -368,6 +390,11 @@
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
+"sT" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/checker,
+/area/station/engineering/singularity/room)
 "sX" = (
 /obj/structure/chair/office{
 	dir = 4
@@ -429,13 +456,16 @@
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "vy" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/decal/cleanable/oil,
-/turf/open/floor/iron,
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
 /area/station/engineering/singularity/room)
 "vz" = (
-/obj/effect/turf_decal/box,
-/obj/effect/spawner/random/structure/closet_empty/crate/with_loot,
+/obj/machinery/door/firedoor,
+/obj/effect/mapping_helpers/airlock/access/all/engineering/general,
+/obj/machinery/door/airlock/engineering/glass{
+	name = "Singularity Engine Room"
+	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "vR" = (
@@ -464,8 +494,8 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
 "xr" = (
-/obj/structure/closet/radiation,
-/obj/effect/turf_decal/delivery,
+/obj/effect/landmark/keep/lightning,
+/obj/machinery/vending/coffee,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "xu" = (
@@ -536,10 +566,8 @@
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "Aw" = (
-/obj/structure/closet/firecloset,
-/obj/machinery/light/directional/east,
-/obj/effect/turf_decal/delivery,
-/turf/open/floor/iron,
+/obj/effect/decal/cleanable/dirt,
+/turf/closed/wall/r_wall,
 /area/station/engineering/singularity/room)
 "AY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -610,6 +638,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
+"Ek" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
+/area/station/engineering/singularity/room)
 "En" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -636,8 +671,7 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "Gy" = (
-/obj/structure/table/reinforced,
-/obj/item/crowbar,
+/obj/structure/closet/firecloset,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "He" = (
@@ -683,8 +717,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "IS" = (
-/obj/structure/table/reinforced,
-/turf/open/floor/iron,
+/turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 "Ja" = (
 /obj/structure/grille,
@@ -693,6 +726,12 @@
 "Jf" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
+/area/station/engineering/singularity/room)
+"Ji" = (
+/obj/effect/decal/cleanable/dirt,
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
 /area/station/engineering/singularity/room)
 "Jq" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -724,8 +763,9 @@
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 1
 	},
-/obj/effect/decal/cleanable/dirt,
-/turf/open/floor/iron/checker,
+/turf/open/floor/iron/checker{
+	dir = 1
+	},
 /area/station/engineering/singularity/room)
 "Nb" = (
 /obj/structure/cable/layer1,
@@ -737,12 +777,11 @@
 /area/station/engineering/singularity/room)
 "NH" = (
 /obj/effect/landmark/keep/lightning,
-/obj/item/kirbyplants/random,
+/obj/structure/tank_dispenser,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "Os" = (
-/obj/structure/tank_dispenser,
-/obj/effect/turf_decal/delivery,
+/obj/structure/closet/secure_closet/engineering_personal,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "OF" = (
@@ -815,11 +854,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "RD" = (
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1
-	},
 /obj/effect/decal/cleanable/oil,
-/obj/effect/decal/cleanable/dirt,
 /turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 "RW" = (
@@ -911,6 +946,10 @@
 /area/station/engineering/singularity/room)
 "Vw" = (
 /obj/machinery/power/energy_accumulator/tesla_coil,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
+"VS" = (
+/obj/structure/closet/radiation,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "VU" = (
@@ -1018,9 +1057,24 @@
 /obj/structure/extinguisher_cabinet/directional/south,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
-"ZL" = (
-/obj/structure/chair,
+"ZH" = (
+/obj/structure/closet/crate,
+/obj/item/storage/cans/sixbeer,
+/obj/effect/turf_decal/box,
 /turf/open/floor/iron,
+/area/template_noop)
+"ZL" = (
+/obj/structure/table/reinforced,
+/obj/effect/spawner/random/food_or_drink/donkpockets,
+/obj/item/paper_bin{
+	pixel_x = -5;
+	pixel_y = 3
+	},
+/obj/item/pen{
+	pixel_x = -5;
+	pixel_y = 5
+	},
+/turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 
 (1,1,1) = {"
@@ -1593,7 +1647,7 @@ fW
 Ff
 Xq
 SB
-Xq
+jO
 Ff
 uh
 EM
@@ -1712,11 +1766,11 @@ Ff
 Xq
 En
 pc
-pc
-vy
-Xq
-pc
-Xq
+Aw
+bZ
+bZ
+bZ
+bZ
 Ff
 cK
 gh
@@ -1737,12 +1791,12 @@ bZ
 Xq
 En
 Xq
-vz
+bZ
 bl
 Xq
+hV
 Xq
-Gy
-bZ
+bS
 wI
 Xq
 TH
@@ -1764,11 +1818,11 @@ En
 af
 vz
 Xq
-pc
+Ji
 ZL
 cx
-bZ
-wI
+bs
+Ek
 RD
 VU
 gh
@@ -1787,13 +1841,13 @@ Zz
 SB
 En
 Xq
-Xq
+vz
 pc
-Xq
-Xq
 IS
-bZ
-wI
+vy
+IS
+vy
+sT
 MB
 ta
 gh
@@ -1814,10 +1868,10 @@ PJ
 Xq
 nM
 xr
-Aw
+pc
 Os
-He
-bZ
+Gy
+VS
 nl
 wI
 NH
@@ -1955,7 +2009,7 @@ EM
 EM
 EM
 EM
-EM
+ZH
 EM
 EM
 EM

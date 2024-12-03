@@ -9,7 +9,7 @@
 	icon_state = "control_box"
 	use_power = NO_POWER_USE
 	idle_power_usage = 500
-	active_power_usage = 10000
+	active_power_usage = 2500
 	circuit = /obj/item/circuitboard/machine/pa/control_box
 	reference = "control_box"
 	var/interface_control = TRUE
@@ -46,7 +46,8 @@
 		strength = 0
 		active = FALSE
 		particle_accelerator.update_appearance()
-		return
+	active_power_usage = (strength*2500)+2500
+	return
 
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)
 	. = ..()
@@ -153,6 +154,7 @@
 		message_admins("PA Control Computer increased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer increased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("increased to <font color='red'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
+		update_state()
 
 /obj/machinery/particle_accelerator/control_box/proc/remove_strength()
 	if((construction_state == PA_CONSTRUCTION_COMPLETE) && (strength > 0) && particle_accelerator)
@@ -161,6 +163,7 @@
 		message_admins("PA Control Computer decreased to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer decreased to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("decreased to <font color='green'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
+		update_state()
 
 /obj/machinery/particle_accelerator/control_box/proc/set_strength(str = 0)
 	if((construction_state == PA_CONSTRUCTION_COMPLETE) && (str <= strength_upper_limit) && (str >= 0) && particle_accelerator)
@@ -169,6 +172,7 @@
 		message_admins("PA Control Computer set to [strength] by [ADMIN_LOOKUPFLW(usr)] in [ADMIN_VERBOSEJMP(src)]")
 		log_game("PA Control Computer set to [strength] by [key_name(usr)] in [AREACOORD(src)]")
 		investigate_log("set to <font color='green'>[strength]</font> by [key_name(usr)] at [AREACOORD(src)]", INVESTIGATE_ENGINE)
+		update_state()
 
 /obj/machinery/particle_accelerator/control_box/proc/toggle_power()
 	if(!particle_accelerator)

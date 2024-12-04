@@ -565,10 +565,6 @@
 /obj/effect/spawner/random/maintenance,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
-"Aw" = (
-/obj/effect/decal/cleanable/dirt,
-/turf/closed/wall/r_wall,
-/area/station/engineering/singularity/room)
 "AY" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
@@ -1760,7 +1756,7 @@ Ff
 Xq
 En
 pc
-Aw
+Ff
 bZ
 bZ
 bZ

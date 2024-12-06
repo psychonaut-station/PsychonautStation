@@ -458,9 +458,13 @@
 #define DOOR_CRUSH_DAMAGE 15 //the amount of damage that airlocks deal when they crush you
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
+<<<<<<< HEAD
 #define ETHEREAL_DISCHARGE_RATE (8e-4 * STANDARD_CELL_CHARGE) // Rate at which ethereal stomach charge decreases
 #define IPC_DISCHARGE_FACTOR 100 //factor at which ipc's charge decreases per second
 
+=======
+#define ETHEREAL_DISCHARGE_RATE (8e-3 * STANDARD_CELL_CHARGE) // Rate at which ethereal stomach charge decreases
+>>>>>>> 558e6528c1a1b58b344d66adaac4593f6ef5797a
 /// How much nutrition eating clothes as moth gives and drains
 #define CLOTHING_NUTRITION_GAIN 15
 #define REAGENTS_METABOLISM 0.2 //How many units of reagent are consumed per second, by default.

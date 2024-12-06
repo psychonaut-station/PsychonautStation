@@ -1077,10 +1077,6 @@
   - rscadd: Added in the modulo operator to the circuit arithmetic component.
   Ghommie:
   - bugfix: Aquariums are now potential fishing spots.
-<<<<<<< HEAD
-  SmArtKar:
-  - bugfix: Fixed Nebula's robotics fabricators being obstructed roundstart
-=======
   - balance: Aquarium kits can now be printed from cargo, service, science protolathes
       as well as the autolathe. They no longer have to be ordered from cargo.
   - balance: Revamped the "Growth/Reproduction" setting for aquarium to "Safe Mode",
@@ -1099,4 +1095,3 @@
   - bugfix: Fixed Nebula's robotics fabricators being obstructed roundstart
   - bugfix: Fixed damage overlays hiding themselves or flickering when you get wounded.
   - bugfix: Fixed projectile parrying
->>>>>>> 558e6528c1a1b58b344d66adaac4593f6ef5797a

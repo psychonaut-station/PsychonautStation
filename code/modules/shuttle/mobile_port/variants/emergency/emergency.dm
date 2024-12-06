@@ -165,10 +165,10 @@
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
 				priority_announce(
-					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
-					title = "Emergency Shuttle Arrival",
+					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [locale_DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
+					title = "Acil Durum Mekiği Geldi",
 					sound = ANNOUNCER_SHUTTLEDOCK,
-					sender_override = "Emergency Shuttle Uplink Alert",
+					sender_override = "Acil Durum Mekiği Uyarısı",
 					color_override = "orange",
 				)
 				ShuttleDBStuff()
@@ -228,9 +228,9 @@
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
 				priority_announce(
-					text = "The emergency shuttle has left the station. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
-					title = "Emergency Shuttle Departure",
-					sender_override = "Emergency Shuttle Uplink Alert",
+					text = "Acil durum mekiği istasyondan ayrıldı. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] dakika var.",
+					title = "Acil Durum Mekiği Kalkışı",
+					sender_override = "Acil Durum Mekiği Uyarısı",
 					color_override = "orange",
 				)
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
@@ -278,9 +278,9 @@
 					// just double check
 					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
-					minor_announce("Corruption detected in \
-						shuttle navigation protocols. Please contact your \
-						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
+					minor_announce("Mekiğin navigasyon protokollerinde \
+						bozulma tespit edildi. Lütfen şefinizle iletişime \
+						geçin.", "SİSTEM HATASI:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
@@ -294,9 +294,9 @@
 	launch_status = ENDGAME_LAUNCHED
 	setTimer(SSshuttle.emergency_escape_time)
 	priority_announce(
-		text = "The emergency shuttle is preparing for direct jump. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
-		title = "Emergency Shuttle Transit Failure",
-		sender_override = "Emergency Shuttle Uplink Alert",
+		text = "Acil durum mekiği doğrudan sıçrama için hazırlanıyor. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] dakika var.",
+		title = "Acil Durum Mekiği Transit Arızası",
+		sender_override = "Acil Durum Mekiği Uyarısı",
 		color_override = "orange",
 	)
 

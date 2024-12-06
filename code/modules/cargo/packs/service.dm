@@ -285,7 +285,6 @@
 	crate_type = /obj/structure/closet/crate/large
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
-<<<<<<< HEAD
 /datum/supply_pack/service/electrical_jukebox
 	name = "Electrical Jukebox Crate"
 	desc = "An advanced music player supports web music."
@@ -294,23 +293,6 @@
 	crate_name =  "electrical jukebox crate"
 	dangerous = TRUE
 
-/datum/supply_pack/service/aquarium_kit
-	name = "Aquarium Kit"
-	desc = "Everything you need to start your own aquarium. Contains aquarium construction kit, \
-		fish catalog, fish food and three freshwater fish from our collection."
-	cost = CARGO_CRATE_VALUE * 5
-	contains = list(/obj/item/book/manual/fish_catalog,
-					/obj/item/storage/fish_case/random/freshwater = 3,
-					/obj/item/reagent_containers/cup/fish_feed,
-					/obj/item/storage/box/aquarium_props,
-					/obj/item/aquarium_kit,
-				)
-	crate_name = "aquarium kit crate"
-	crate_type = /obj/structure/closet/crate/wooden
-	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
-
-=======
->>>>>>> 45c4edc57962406d4a7e11ec76b62884b5ff7900
 /// Spare bar sign wallmount
 /datum/supply_pack/service/bar_sign
 	name = "Bar Sign Replacement Kit"

@@ -558,7 +558,6 @@ Diagnostic HUDs!
 	SET_PLANE(holder,ABOVE_LIGHTING_PLANE,src)
 	set_hud_image_active(MALF_APC_HUD)
 
-<<<<<<< HEAD
 /*~~~~~~~~~~~~~~~~~~~
 	HUMAN SPECIES!
 ~~~~~~~~~~~~~~~~~~~~~*/
@@ -576,7 +575,7 @@ Diagnostic HUDs!
 	holder.pixel_y = I.Height() - world.icon_size
 	if(holder.pixel_x != 23)
 		holder.pixel_x = 23
-=======
+
 #define CACHED_WIDTH_INDEX "width"
 #define CACHED_HEIGHT_INDEX "height"
 
@@ -594,4 +593,3 @@ Diagnostic HUDs!
 
 #undef CACHED_WIDTH_INDEX
 #undef CACHED_HEIGHT_INDEX
->>>>>>> 45c4edc57962406d4a7e11ec76b62884b5ff7900

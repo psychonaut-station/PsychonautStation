@@ -2868,6 +2868,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+<<<<<<< HEAD
 //IPC
 
 /datum/design/ipc_chest
@@ -2979,4 +2980,16 @@
 	construction_time = 100
 	category = list(
 		RND_CATEGORY_MECHFAB_IPC + RND_SUBCATEGORY_MECHFAB_IPC_ORGANS
+=======
+/datum/design/module/mister_janitor
+	name = "Cleaning Mister Module"
+	id = "mod_mister_janitor"
+	materials = list(
+		/datum/material/glass =HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/titanium =HALF_SHEET_MATERIAL_AMOUNT * 1,
+	)
+	build_path = /obj/item/mod/module/mister/cleaner
+	category = list(
+		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SERVICE
+>>>>>>> 45c4edc57962406d4a7e11ec76b62884b5ff7900
 	)

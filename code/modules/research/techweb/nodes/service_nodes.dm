@@ -160,6 +160,7 @@
 		"fishing_portal_generator",
 		"fishing_rod",
 		"fish_case",
+		"aquarium_kit",
 	)
 
 /datum/techweb_node/fishing_equip_adv

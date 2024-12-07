@@ -285,6 +285,7 @@
 	crate_type = /obj/structure/closet/crate/large
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
+<<<<<<< HEAD
 /datum/supply_pack/service/electrical_jukebox
 	name = "Electrical Jukebox Crate"
 	desc = "An advanced music player supports web music."
@@ -308,6 +309,8 @@
 	crate_type = /obj/structure/closet/crate/wooden
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
+=======
+>>>>>>> 45c4edc57962406d4a7e11ec76b62884b5ff7900
 /// Spare bar sign wallmount
 /datum/supply_pack/service/bar_sign
 	name = "Bar Sign Replacement Kit"

@@ -8,8 +8,8 @@
 	desc = "This controls the density of the particles."
 	icon_state = "control_box"
 	use_power = NO_POWER_USE
-	idle_power_usage = 500
-	active_power_usage = 2500
+	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 2
+	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 2.5
 	circuit = /obj/item/circuitboard/machine/pa/control_box
 	reference = "control_box"
 	var/interface_control = TRUE
@@ -46,7 +46,7 @@
 		strength = 0
 		active = FALSE
 		particle_accelerator.update_appearance()
-	active_power_usage = (strength*1500)+2500
+	active_power_usage = (strength * BASE_MACHINE_ACTIVE_CONSUMPTION * 1.5)+initial(active_power_usage)
 	return
 
 /obj/machinery/particle_accelerator/control_box/multitool_act(mob/living/user, obj/item/I)

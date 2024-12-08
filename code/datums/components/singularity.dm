@@ -209,6 +209,8 @@
 
 		if(grav_pull < dist_to_tile) //If we've exited the singulo's range already, just skip us
 			continue
+		if(!isturf(tile))
+			continue
 
 		var/in_consume_range = (dist_to_tile <= consume_range)
 		if (in_consume_range)

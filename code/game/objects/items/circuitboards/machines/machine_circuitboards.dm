@@ -457,7 +457,7 @@
 		/obj/item/stack/sheet/plasteel = 5)
 
 /obj/item/circuitboard/machine/rad_collector
-	name = "Radiation Collector (Machine Board)"
+	name = "Particle Capture Array (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
 	build_path = /obj/machinery/power/energy_accumulator/rad_collector
 	req_components = list(

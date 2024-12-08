@@ -68,9 +68,6 @@
 
 	return ..()
 
-/obj/energy_ball/stationary
-	zap_energy = 5 MEGA JOULES
-
 /obj/energy_ball/process()
 	if(orbiting)
 		energy = 0 // ensure we dont have miniballs of miniballs
@@ -227,6 +224,10 @@
 	var/mob/living/carbon/C = A
 	C.investigate_log("has been dusted by an energy ball.", INVESTIGATE_DEATHS)
 	C.dust()
+
+/// Energy Ball spawned by a energy ball generator
+/obj/energy_ball/stationary
+	zap_energy = 5 MEGA JOULES
 
 /proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list(), zap_icon, datum/callback/callback)
 	if(QDELETED(source))

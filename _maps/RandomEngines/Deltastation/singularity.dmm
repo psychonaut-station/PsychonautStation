@@ -36,8 +36,8 @@
 "bs" = (
 /obj/structure/table/reinforced,
 /obj/item/multitool,
-/obj/item/clothing/gloves/color/yellow,
 /obj/item/crowbar,
+/obj/item/clothing/gloves/color/yellow,
 /turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 "bQ" = (
@@ -1028,6 +1028,7 @@
 "YJ" = (
 /obj/structure/table,
 /obj/structure/cable,
+/obj/item/binoculars,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "Zq" = (

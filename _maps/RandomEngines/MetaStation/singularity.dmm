@@ -232,6 +232,7 @@
 /area/station/engineering/singularity/room)
 "oW" = (
 /obj/structure/table/reinforced,
+/obj/item/binoculars,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "qx" = (

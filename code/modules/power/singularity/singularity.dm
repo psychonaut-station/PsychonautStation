@@ -54,6 +54,7 @@
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	/// Warp effect of the singularity
 	var/atom/movable/warp_effect/singularity/warp
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
@@ -336,6 +337,18 @@
 		expand()
 	return TRUE
 
+/obj/singularity/proc/check_danger()
+	. = TRUE
+	if(current_size < STAGE_THREE)
+		. = FALSE
+	if(current_size <= STAGE_FOUR)
+		. = check_cardinals_range(0)
+	if(current_size > STAGE_FOUR)
+		. = TRUE
+	return .
+
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
 /obj/singularity/proc/consume(atom/thing)
 	if(istype(thing, /obj/item/storage/backpack/holding) && !consumed_supermatter && !collapsing)
 		consume_boh(thing)
@@ -345,6 +358,15 @@
 	energy += gain
 	if(istype(thing, /obj/machinery/power/supermatter_crystal) && !consumed_supermatter)
 		supermatter_upgrade()
+
+	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
+		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
+			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
+		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
+			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
+
+#undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
 
 /obj/singularity/proc/supermatter_upgrade()
 	name = "supermatter-charged [initial(name)]"

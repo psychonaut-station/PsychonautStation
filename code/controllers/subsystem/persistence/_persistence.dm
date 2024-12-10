@@ -45,6 +45,8 @@ SUBSYSTEM_DEF(persistence)
 
 	var/rounds_since_engine_exploded = 0
 	var/delam_highscore = 0
+	var/rounds_since_singularity_death = 0
+	var/singularity_death_record = 0
 	var/tram_hits_this_round = 0
 	var/tram_hits_last_round = 0
 
@@ -69,6 +71,7 @@ SUBSYSTEM_DEF(persistence)
 	load_randomized_recipes()
 	load_custom_outfits()
 	load_delamination_counter()
+	load_singularity_death_counter()
 	load_tram_counter()
 	load_adventures()
 	return SS_INIT_SUCCESS
@@ -83,6 +86,7 @@ SUBSYSTEM_DEF(persistence)
 	save_scars()
 	save_custom_outfits()
 	save_delamination_counter()
+	save_singularity_death_counter()
 	save_trading_cards()
 	save_queued_message_bottles()
 	if(SStransport.can_fire)

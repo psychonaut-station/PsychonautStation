@@ -6367,11 +6367,8 @@
 #include "code\modules\vending\liberation.dm"
 #include "code\modules\vending\liberation_toy.dm"
 #include "code\modules\vending\magivend.dm"
-<<<<<<< HEAD
-#include "code\modules\vending\meal.dm"
-=======
 #include "code\modules\vending\mail.dm"
->>>>>>> 614ff76f1ffe671b0ab8506776d0a30b9e81ba3b
+#include "code\modules\vending\meal.dm"
 #include "code\modules\vending\medical.dm"
 #include "code\modules\vending\medical_wall.dm"
 #include "code\modules\vending\megaseed.dm"

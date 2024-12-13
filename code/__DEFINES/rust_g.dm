@@ -260,8 +260,6 @@
 	#define url_encode(text) rustg_url_encode(text)
 	#define url_decode(text) rustg_url_decode(text)
 #endif
-<<<<<<< HEAD
-=======
 
 /// Provided a static RSC file path or a raw text file path, returns the duration of the file in deciseconds as a float.
 /proc/rustg_sound_length(file_path)
@@ -305,4 +303,3 @@
  *)
 */
 #define rustg_sound_length_list(file_paths) json_decode(RUSTG_CALL(RUST_G, "sound_len_list")(json_encode(file_paths)))
->>>>>>> 614ff76f1ffe671b0ab8506776d0a30b9e81ba3b

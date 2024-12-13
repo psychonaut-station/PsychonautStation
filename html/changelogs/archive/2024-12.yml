@@ -229,17 +229,11 @@
   - bugfix: runetext fades in correctly in bulk. signers rejoice
   zxaber:
   - bugfix: Mechs with crowbar-like tools can now hold adjacent firelocks open correctly.
-<<<<<<< HEAD
-2024-12-09:
-=======
 2024-12-08:
->>>>>>> 614ff76f1ffe671b0ab8506776d0a30b9e81ba3b
   SyncIt21:
   - refactor: improved attack chain code for rapid pipe dispenser
   - code_imp: organized lists & global vars for rapid pipe dispenser into their own
       respective files & improved a bunch of code
-<<<<<<< HEAD
-=======
 2024-12-09:
   FlufflesTheDog:
   - bugfix: Dimensional shifter relics work more reliably.
@@ -338,4 +332,3 @@
   - bugfix: Fixed moths only being able to fly if they spawn in zero gravity
   grungussuss:
   - bugfix: '*me emote works again'
->>>>>>> 614ff76f1ffe671b0ab8506776d0a30b9e81ba3b

@@ -238,7 +238,6 @@
 	key_third_person = "winks"
 	message = "winks."
 
-<<<<<<< HEAD
 /datum/emote/living/carbon/thumbsup
 	key = "thumbsup"
 	key_third_person = "thumbsup"
@@ -250,7 +249,7 @@
 	key_third_person = "thumbsdown"
 	message = "flashes a thumbs down."
 	hands_use_check = TRUE
-=======
+
 /datum/emote/living/carbon/hiss
 	key = "hiss"
 	key_third_person = "hisses"
@@ -265,4 +264,3 @@
 	if(isalien(user))
 		return SFX_HISS
 	return user.dna.species.get_hiss_sound()
->>>>>>> 614ff76f1ffe671b0ab8506776d0a30b9e81ba3b

@@ -249,3 +249,18 @@
 	key_third_person = "thumbsdown"
 	message = "flashes a thumbs down."
 	hands_use_check = TRUE
+
+/datum/emote/living/carbon/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/hiss/get_sound(mob/living/carbon/user)
+	. = ..()
+	if(!istype(user))
+		return
+	if(isalien(user))
+		return SFX_HISS
+	return user.dna.species.get_hiss_sound()

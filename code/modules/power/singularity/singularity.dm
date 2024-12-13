@@ -337,17 +337,12 @@
 		expand()
 	return TRUE
 
-/obj/singularity/proc/check_danger()
-	. = TRUE
+/obj/singularity/proc/is_dangerous()
 	if(current_size < STAGE_THREE)
-		. = FALSE
-	if(current_size <= STAGE_FOUR)
-		. = check_cardinals_range(0)
-	if(current_size > STAGE_FOUR)
-		. = TRUE
-	return .
-
-#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+		return FALSE
+	else if(current_size <= STAGE_FOUR)
+		return check_cardinals_range(0)
+	return TRUE
 
 /obj/singularity/proc/consume(atom/thing)
 	if(istype(thing, /obj/item/storage/backpack/holding) && !consumed_supermatter && !collapsing)
@@ -358,15 +353,6 @@
 	energy += gain
 	if(istype(thing, /obj/machinery/power/supermatter_crystal) && !consumed_supermatter)
 		supermatter_upgrade()
-
-	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
-		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
-			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
-		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
-		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
-			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
-
-#undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
 
 /obj/singularity/proc/supermatter_upgrade()
 	name = "supermatter-charged [initial(name)]"
@@ -571,3 +557,17 @@
 /obj/singularity/shuttle_event/no_escape
 	energy = STAGE_SIX_ENERGY
 	consumed_supermatter = TRUE // so we can get to the final stage
+
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
+/// Singularity spawned by a singularity generator
+/obj/singularity/stationary/consume(atom/thing)
+	. = ..()
+	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
+		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
+			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
+		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
+			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
+
+#undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE

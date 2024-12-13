@@ -15,7 +15,7 @@
 	buckle_requires_restraints = TRUE
 
 	var/energy = 0
-	var/creation_type = /obj/singularity
+	var/creation_type = /obj/singularity/stationary
 
 /obj/machinery/the_singularitygen/Initialize(mapload)
 	. = ..()

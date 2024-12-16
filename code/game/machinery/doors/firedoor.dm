@@ -291,6 +291,7 @@
 
 /obj/machinery/door/firedoor/proc/process_results(datum/source)
 	SIGNAL_HANDLER
+
 	for(var/area/place in affecting_areas)
 		if(!place.fire_detect) //if any area is set to disable detection
 			return

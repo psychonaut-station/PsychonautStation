@@ -91,14 +91,31 @@ DEFINE_BITFIELD(sign_features, list(
 	configured_advert = "advert_meson"
 	configured_advert_duration = 7 SECONDS
 
+/obj/machinery/incident_display/delam/post_machine_initialize()
+	. = ..()
+	if(SSmapping.picked_rooms["engine"])
+		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
+		if(engine_template.engine_type == "singularity")
+			name = NAME_SINGULARITY
+			desc = DESC_SINGULARITY
+			sign_features = DISPLAY_SINGULARITY_DEATH
+
 /obj/machinery/incident_display/tram
 	name = NAME_TRAM
 	desc = DESC_TRAM
 	sign_features = DISPLAY_TRAM
 
+/obj/machinery/incident_display/singularity_death
+	name = NAME_SINGULARITY
+	desc = DESC_SINGULARITY
+	sign_features = DISPLAY_SINGULARITY_DEATH
+	configured_advert = "advert_meson"
+	configured_advert_duration = 7 SECONDS
+
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/bridge, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/delam, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 32)
 
 /obj/machinery/incident_display/Initialize(mapload)
 	..()

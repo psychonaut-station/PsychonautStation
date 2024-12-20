@@ -522,6 +522,11 @@
 	if(warp)
 		SET_PLANE(warp, PLANE_TO_TRUE(warp.plane), new_turf)
 
+/obj/singularity/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		. += "Energy: [energy]"
+
 /obj/singularity/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 12 SECONDS)
 	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))
 

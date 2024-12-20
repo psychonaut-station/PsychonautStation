@@ -225,6 +225,11 @@
 	C.investigate_log("has been dusted by an energy ball.", INVESTIGATE_DEATHS)
 	C.dust()
 
+/obj/energy_ball/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		. += "Energy: [energy]"
+
 /// Energy Ball spawned by a energy ball generator
 /obj/energy_ball/stationary
 	zap_energy = 5 MEGA JOULES

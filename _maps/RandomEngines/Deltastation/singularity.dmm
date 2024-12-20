@@ -5,6 +5,13 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"ai" = (
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/obj/machinery/incident_display/singularity_death/directional/south,
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "aF" = (
 /obj/machinery/light/directional/south,
 /obj/structure/sign/warning/vacuum/external/directional/south,
@@ -700,6 +707,7 @@
 "HZ" = (
 /obj/effect/landmark/keep/apc,
 /obj/structure/cable,
+/obj/machinery/incident_display/singularity_death/directional/north,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "Im" = (
@@ -1588,7 +1596,7 @@ OT
 bZ
 Xq
 mM
-af
+ai
 YB
 EM
 EM

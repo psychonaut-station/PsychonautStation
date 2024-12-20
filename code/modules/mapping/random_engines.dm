@@ -11,6 +11,7 @@
 
 /datum/map_template/random_room/random_engine
 	room_type = "engine"
+	var/engine_type = null
 
 /datum/map_template/random_room/random_engine/meta_supermatter
 	name = "Meta Supermatter"
@@ -24,6 +25,7 @@
 		"y" = 141,
 		"z" = 2,
 	)
+	engine_type = "supermatter"
 
 /datum/map_template/random_room/random_engine/meta_singularity
 	name = "Meta Singularity"
@@ -40,6 +42,7 @@
 		"y" = 141,
 		"z" = 2,
 	)
+	engine_type = "singularity"
 
 /datum/map_template/random_room/random_engine/delta_supermatter
 	name = "Delta Supermatter"
@@ -53,6 +56,7 @@
 		"y" = 106,
 		"z" = 2,
 	)
+	engine_type = "supermatter"
 
 /datum/map_template/random_room/random_engine/delta_singularity
 	name = "Delta Singularity"
@@ -69,3 +73,4 @@
 		"y" = 106,
 		"z" = 2,
 	)
+	engine_type = "singularity"

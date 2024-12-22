@@ -62,20 +62,12 @@
 /obj/item/melee/sabre
 	name = "officer's sabre"
 	desc = "An elegant weapon, its monomolecular edge is capable of cutting through flesh and bone with ease."
-<<<<<<< HEAD
 	icon = 'icons/psychonaut/obj/weapons/sword.dmi'
 	icon_state = "sabre_red"
 	inhand_icon_state = "sabre_red"
+	icon_angle = -45
 	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/swords_lefthand.dmi'
 	righthand_file = 'icons/psychonaut/mob/inhands/weapons/swords_righthand.dmi'
-=======
-	icon = 'icons/obj/weapons/sword.dmi'
-	icon_state = "sabre"
-	inhand_icon_state = "sabre"
-	icon_angle = -45
-	lefthand_file = 'icons/mob/inhands/weapons/swords_lefthand.dmi'
-	righthand_file = 'icons/mob/inhands/weapons/swords_righthand.dmi'
->>>>>>> a9990a477f1b1eac567e88e4953c89b8caf7dff1
 	obj_flags = CONDUCTS_ELECTRICITY | UNIQUE_RENAME
 	force = 15
 	throwforce = 10

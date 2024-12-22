@@ -333,8 +333,6 @@
   grungussuss:
   - bugfix: '*me emote works again'
 2024-12-14:
-<<<<<<< HEAD
-=======
   EnterTheJake:
   - bugfix: temporary blocks such as blade heretic orbiting knives properly stop body
       throws.
@@ -350,14 +348,11 @@
   - balance: medical doctors can buy Reagent Dartgun from traitor uplink
   SmArtKar:
   - bugfix: Fixes primed stingbangs being invisible
->>>>>>> a9990a477f1b1eac567e88e4953c89b8caf7dff1
   SmArtKar, LemonInTheDark:
   - rscadd: Changed how spraycans color items - "old" mode is still availible via
       right click.
   - refactor: Refactored how some items and effects color things so that they look
       prettier.
-<<<<<<< HEAD
-=======
   SyncIt21:
   - code_imp: improved code for leaning
   distributivgesetz:
@@ -476,4 +471,3 @@
   - bugfix: Poultice works on dead people
   SmArtKar:
   - bugfix: Fixed an airlock unlocking runtime
->>>>>>> a9990a477f1b1eac567e88e4953c89b8caf7dff1

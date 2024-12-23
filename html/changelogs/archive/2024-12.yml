@@ -471,3 +471,6 @@
   - bugfix: Poultice works on dead people
   SmArtKar:
   - bugfix: Fixed an airlock unlocking runtime
+2024-12-23:
+  Melbert:
+  - bugfix: Lobby button sprites

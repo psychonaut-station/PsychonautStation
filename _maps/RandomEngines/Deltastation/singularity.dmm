@@ -132,7 +132,7 @@
 "eM" = (
 /obj/structure/cable,
 /obj/machinery/camera/emp_proof/directional/north{
-	c_tag = "Particle Accelerator Room 1"
+	c_tag = "Singularity Engine #2"s"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
@@ -218,7 +218,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/delivery,
 /obj/machinery/camera/emp_proof/directional/east{
-	c_tag = "Particle Accelerator Room 6"
+	c_tag = "Singularity Engine #4"
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
@@ -237,7 +237,7 @@
 /area/space/nearstation)
 "jY" = (
 /obj/machinery/camera/emp_proof/directional/west{
-	c_tag = "Particle Accelerator Room 4"
+	c_tag = "Singularity Engine #5"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
@@ -375,7 +375,7 @@
 /area/station/engineering/singularity/room)
 "qd" = (
 /obj/machinery/camera/emp_proof/directional/north{
-	c_tag = "Particle Accelerator Room 3"
+	c_tag = "Singularity Engine #7"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
@@ -629,7 +629,7 @@
 /area/space/nearstation)
 "BQ" = (
 /obj/machinery/camera/emp_proof/directional/north{
-	c_tag = null"Particle Accelerator Room 2"
+	c_tag = "Singularity Engine #1"
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
@@ -781,7 +781,7 @@
 "KM" = (
 /obj/structure/chair/sofa/corp/corner,
 /obj/machinery/camera/emp_proof/directional/north{
-	c_tag = "Particle Accelerator Room 7"
+	c_tag = "Singularity Engine #3"
 	},
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
@@ -810,7 +810,7 @@
 /obj/effect/landmark/keep/lightning,
 /obj/structure/tank_dispenser,
 /obj/machinery/camera/emp_proof/directional/east{
-	c_tag = "Particle Accelerator Room 5"
+	c_tag = "Singularity Engine #6"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)

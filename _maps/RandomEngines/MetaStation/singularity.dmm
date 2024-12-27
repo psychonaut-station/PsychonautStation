@@ -640,7 +640,7 @@
 /obj/effect/landmark/keep/lightning,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/camera/emp_proof/directional/west{
-	c_tag = "Singularity Engine #3"
+	c_tag = "Singularity Engine #5"
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/dark,
@@ -747,6 +747,9 @@
 /obj/machinery/firealarm/directional/south,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/camera/emp_proof/directional/south{
+	c_tag = "Singularity Engine #3"
+	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "PP" = (
@@ -839,6 +842,13 @@
 	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
+"Vw" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/machinery/camera/emp_proof/directional/south{
+	c_tag = "Singularity Engine #3"
+	},
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "Wj" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable,
@@ -891,7 +901,7 @@ je
 MT
 kc
 wJ
-hn
+Vw
 MT
 ch
 eg

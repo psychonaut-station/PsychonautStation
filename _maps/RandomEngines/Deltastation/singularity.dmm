@@ -131,6 +131,9 @@
 /area/station/engineering/singularity/room)
 "eM" = (
 /obj/structure/cable,
+/obj/machinery/camera/emp_proof/directional/north{
+	c_tag = "Particle Accelerator Room 1"
+	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "eS" = (
@@ -214,6 +217,9 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/delivery,
+/obj/machinery/camera/emp_proof/directional/east{
+	c_tag = "Particle Accelerator Room 6"
+	},
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
 "jL" = (
@@ -229,6 +235,12 @@
 /obj/structure/cable/layer1,
 /turf/open/space/basic,
 /area/space/nearstation)
+"jY" = (
+/obj/machinery/camera/emp_proof/directional/west{
+	c_tag = "Particle Accelerator Room 4"
+	},
+/turf/open/floor/iron,
+/area/station/engineering/singularity/room)
 "lb" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
@@ -360,6 +372,12 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/delivery,
 /turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
+"qd" = (
+/obj/machinery/camera/emp_proof/directional/north{
+	c_tag = "Particle Accelerator Room 3"
+	},
+/turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "qR" = (
 /obj/structure/lattice/catwalk,
@@ -609,6 +627,12 @@
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"BQ" = (
+/obj/machinery/camera/emp_proof/directional/north{
+	c_tag = null"Particle Accelerator Room 2"
+	},
+/turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
 "Cq" = (
 /obj/effect/turf_decal/tile/yellow/opposingcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -756,6 +780,9 @@
 /area/space/nearstation)
 "KM" = (
 /obj/structure/chair/sofa/corp/corner,
+/obj/machinery/camera/emp_proof/directional/north{
+	c_tag = "Particle Accelerator Room 7"
+	},
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "LD" = (
@@ -782,6 +809,9 @@
 "NH" = (
 /obj/effect/landmark/keep/lightning,
 /obj/structure/tank_dispenser,
+/obj/machinery/camera/emp_proof/directional/east{
+	c_tag = "Particle Accelerator Room 5"
+	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "Os" = (
@@ -1544,7 +1574,7 @@ ol
 fW
 Td
 Ff
-Xq
+qd
 SB
 Xq
 YB
@@ -1636,7 +1666,7 @@ Xq
 QE
 ZG
 Ff
-fW
+BQ
 lb
 vR
 Jq
@@ -1693,7 +1723,7 @@ SB
 Pk
 Xq
 Ez
-Xq
+jY
 Xq
 SB
 Xq

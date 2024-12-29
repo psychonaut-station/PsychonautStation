@@ -7,7 +7,7 @@
 #define VV_HK_SET_LOOP "set_loop"
 #define VV_HK_SET_RANGE "set_range"
 
-#define STOP(src) "(<a href='?src=[REF(src)];stop=1'>STOP</a>)"
+#define STOP(src) "(<a href='byond://?src=[REF(src)];stop=1'>STOP</a>)"
 
 #define get_volume(player, atom) (player.parent != atom ? (player.range - get_dist(player.parent, atom) - 0.9) / player.range : 1)
 #define check_timestamp(track) (world.time - track.timestamp < WEB_SOUND_CACHE_DURATION)

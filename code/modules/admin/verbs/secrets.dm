@@ -347,10 +347,7 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 			if(SSeconomy.full_ancap)
 				priority_announce("NAP şu anda tam olarak yürürlüktedir.", null, SSstation.announcer.get_rand_report_sound())
 			else
-<<<<<<< HEAD
 				priority_announce("NAP iptal edilmiştir.", null, SSstation.announcer.get_rand_report_sound())
-=======
-				priority_announce("The NAP has been revoked.", null, SSstation.announcer.get_rand_report_sound())
 		if("send_shuttle_back")
 			if (!is_funmin)
 				return
@@ -379,7 +376,6 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 				addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(return_escape_shuttle), make_announcement), new_timer SECONDS)
 			else
 				INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(return_escape_shuttle), make_announcement)
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
 		if("blackout")
 			if(!is_funmin)
 				return

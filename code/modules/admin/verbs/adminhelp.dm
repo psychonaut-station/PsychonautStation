@@ -87,11 +87,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<A href='byond://?_src_=holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
-<<<<<<< HEAD
-		dat += "[span_adminnotice("[span_adminhelp("[AH.ticket_type == TICKET_TYPE_MENTOR ? "Mentor" : "Admin"] Ticket #[AH.id]")]: <A href='?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
-=======
-		dat += "[span_adminnotice("[span_adminhelp("Ticket #[AH.id]")]: <A href='byond://?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
+		dat += "[span_adminnotice("[span_adminhelp("[AH.ticket_type == TICKET_TYPE_MENTOR ? "Mentor" : "Admin"] Ticket #[AH.id]")]: <A href='byond://?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
 
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
@@ -390,16 +386,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 /datum/admin_help/proc/ClosureLinks(ref_src)
 	if(!ref_src)
 		ref_src = "[REF(src)]"
-<<<<<<< HEAD
-
-	.  = " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
-	. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
-=======
 	. = " (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
 	. += " (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=icissue'>IC</A>)"
 	. += " (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=close'>CLOSE</A>)"
 	. += " (<A href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=resolve'>RSLVE</A>)"
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
 
 	if (ticket_type == TICKET_TYPE_ADMIN)
 		. += " (<A HREF='?_src_=holder;[HrefToken(forceGlobal = TRUE)];ahelp=[ref_src];ahelp_action=reject'>REJT</A>)"
@@ -431,16 +421,12 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
-<<<<<<< HEAD
-	var/admin_msg = span_adminnotice(span_adminhelp("[REPLACE_SENDER("Admin", "Mentor")] Ticket [TicketHref("#[id]", ref_src)]</span><b>: [LinkedReplyName(ref_src)] [FullMonty(ref_src)]:</b> [span_linkify(keywords_lookup(msg))]"))
-=======
 	var/admin_msg = fieldset_block(
-		span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
+		span_adminhelp("[REPLACE_SENDER("Admin", "Mentor")] Ticket [TicketHref("#[id]", ref_src)]"),
 		"<b>[LinkedReplyName(ref_src)]</b>\n\n\
 		[span_linkify(keywords_lookup(msg))]\n\n\
 		<b class='smaller'>[FullMonty(ref_src)]</b>",
 		"boxed_message red_box")
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	log_admin_private("[REPLACE_SENDER("Admin", "Mentor")] Ticket #[id]: [key_name(initiator)]: [msg]")

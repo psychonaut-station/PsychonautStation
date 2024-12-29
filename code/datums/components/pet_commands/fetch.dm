@@ -22,16 +22,12 @@
 		return
 	parent.AddElement(/datum/element/ai_held_item) // We don't remove this on destroy because they might still be holding something
 
-<<<<<<< HEAD
-/datum/pet_command/point_targeting/fetch/Destroy(force)
+/datum/pet_command/fetch/Destroy(force)
 	var/mob/living/parent = weak_parent.resolve()
 	parent?.RemoveElement(/datum/element/ai_held_item)
 	return ..()
 
-/datum/pet_command/point_targeting/fetch/add_new_friend(mob/living/tamer)
-=======
 /datum/pet_command/fetch/add_new_friend(mob/living/tamer)
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
 	. = ..()
 	RegisterSignal(tamer, COMSIG_MOB_THROW, PROC_REF(listened_throw))
 

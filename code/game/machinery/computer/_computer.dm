@@ -31,7 +31,6 @@
 	. = ..()
 	power_change()
 
-<<<<<<< HEAD
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
@@ -41,7 +40,7 @@
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
 	return ..()
-=======
+
 /obj/machinery/computer/CanAllowThrough(atom/movable/mover, border_dir) // allows projectiles to fly over the computer
 	. = ..()
 	if(.)
@@ -58,7 +57,6 @@
 	if(prob(projectiles_pass_chance))
 		return TRUE
 	return FALSE
->>>>>>> ad79bcbbeb564791f1358120dff470d8fdebf87d
 
 /obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))

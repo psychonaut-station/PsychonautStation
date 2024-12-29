@@ -76,6 +76,9 @@
 	sec_hud_set_ID()
 	sec_hud_set_implants()
 	sec_hud_set_security_status()
+	//...battery hud...
+	if(isipc(src))
+		diag_hud_set_humancell()
 	//...fan gear
 	fan_hud_set_fandom()
 	//...and display them.

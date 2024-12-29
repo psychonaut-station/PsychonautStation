@@ -203,6 +203,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/storage/bag/mail = 3,
 		/obj/item/radio/headset/headset_cargo = 3,
 		/obj/item/clothing/accessory/pocketprotector = 3,
+		/obj/item/flatpack/mailsorter = 1,
 	)
 	premium = list(
 		/obj/item/clothing/head/costume/mailman = 1,
@@ -524,7 +525,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/clothing/shoes/laceup = 2,
 		/obj/item/radio/headset/headset_srv = 2,
 		/obj/item/storage/box/evidence = 2,
-		/obj/item/fish_feed = 1,
+		/obj/item/reagent_containers/cup/fish_feed = 1,
 	)
 	refill_canister = /obj/item/vending_refill/wardrobe/law_wardrobe
 	payment_department = ACCOUNT_SRV

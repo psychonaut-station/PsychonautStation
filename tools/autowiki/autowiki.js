@@ -36,7 +36,7 @@ async function main() {
 	const bot = new MWBot()
 
 	await bot.loginGetEditToken({
-		apiUrl: "https://wiki.turkb.us/api.php",
+		apiUrl: "https://wiki.ss13.org/api.php",
 		username: USERNAME,
 		password: PASSWORD,
 	})

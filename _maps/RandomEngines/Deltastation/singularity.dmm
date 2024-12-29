@@ -132,7 +132,7 @@
 "eM" = (
 /obj/structure/cable,
 /obj/machinery/camera/emp_proof/directional/north{
-	c_tag = "Singularity Engine #2"s"
+	c_tag = "Singularity Engine #2"
 	},
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)

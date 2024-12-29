@@ -37,6 +37,7 @@
 	else if(istype(A, /obj/energy_ball))
 		var/obj/energy_ball/tesloose = A
 		tesloose.energy += damage
+		tesloose.external_power_immediate += damage * tesloose.particle_energy
 	else if(istype(A, /obj/structure/blob))
 		var/obj/structure/blob/blob = A
 		blob.take_damage(damage * 0.6)

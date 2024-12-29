@@ -5630,6 +5630,7 @@
 #include "code\modules\power\supermatter\supermatter_delamination\common_delams.dm"
 #include "code\modules\power\supermatter\supermatter_delamination\delamination_effects.dm"
 #include "code\modules\power\tesla\coil.dm"
+#include "code\modules\power\tesla\eball_gas.dm"
 #include "code\modules\power\tesla\energy_ball.dm"
 #include "code\modules\power\turbine\turbine.dm"
 #include "code\modules\power\turbine\turbine_computer.dm"

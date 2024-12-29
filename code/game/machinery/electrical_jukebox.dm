@@ -1,8 +1,8 @@
-#define STOP(src) "(<a href='?src=[REF(src)];stop=1'>STOP</a>)"
-#define REMOVEQUEUE(src, track) "(<a href='?src=[REF(src)];removequeue=[REF(track)]'>REMOVE</a>)"
-#define DENYREQUEST(src, track) "(<a href='?src=[REF(src)];deny=[REF(track)]'>DENY</a>)"
-#define BANJUKEBOX(src, client) "(<a href='?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
-#define UNBANJUKEBOX(src, client) "(<a href='?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
+#define STOP(src) "(<a href='byond://?src=[REF(src)];stop=1'>STOP</a>)"
+#define REMOVEQUEUE(src, track) "(<a href='byond://?src=[REF(src)];removequeue=[REF(track)]'>REMOVE</a>)"
+#define DENYREQUEST(src, track) "(<a href='byond://?src=[REF(src)];deny=[REF(track)]'>DENY</a>)"
+#define BANJUKEBOX(src, client) "(<a href='byond://?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
+#define UNBANJUKEBOX(src, client) "(<a href='byond://?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
 
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"

@@ -98,7 +98,7 @@
 	SIGNAL_HANDLER
 
 	charge_cell.Invoke(cell, seconds_per_tick / 1.5)
-	humanowner.diag_hud_set_humancell(cell)
+	humanowner.diag_hud_set_humancell()
 
 /obj/item/organ/stomach/ipc/proc/on_electrocute(datum/source, shock_damage, shock_source, siemens_coeff = 1, flags)
 	SIGNAL_HANDLER
@@ -110,7 +110,7 @@
 /obj/item/organ/stomach/ipc/proc/adjust_charge(amount)
 	if(cell)
 		cell.give(amount)
-	humanowner.diag_hud_set_humancell(cell)
+	humanowner.diag_hud_set_humancell()
 
 /obj/item/organ/stomach/ipc/proc/adjust_backup_charge(amount)
 	backup_charge = clamp(backup_charge + amount, 0, 100)

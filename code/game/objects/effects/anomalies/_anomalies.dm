@@ -84,6 +84,8 @@
 
 /// Move in a direction
 /obj/effect/anomaly/proc/move_anomaly()
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return
 	step(src, pick(GLOB.alldirs))
 
 /obj/effect/anomaly/proc/detonate()

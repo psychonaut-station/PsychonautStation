@@ -235,6 +235,8 @@
 	cached_index = 0
 
 /datum/component/singularity/proc/move()
+	if(HAS_TRAIT(parent, TRAIT_GRABBED_BY_KINESIS))
+		return
 	var/drifting_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if (!QDELETED(target) && prob(chance_to_move_to_target))
@@ -351,6 +353,8 @@
 
 /datum/component/singularity/bloodthirsty/move()
 	var/atom/atom_parent = parent
+	if(HAS_TRAIT(atom_parent, TRAIT_GRABBED_BY_KINESIS))
+		return
 	//handle current target
 	if(target && !QDELETED(target))
 		if(istype(target, /obj/machinery/power/singularity_beacon))

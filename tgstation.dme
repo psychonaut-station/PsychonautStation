@@ -2373,6 +2373,7 @@
 #include "code\game\objects\effects\temporary_visuals\projectiles\projectile_effects.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\tracer.dm"
 #include "code\game\objects\items\airlock_painter.dm"
+#include "code\game\objects\items\anomaly_kinesis.dm"
 #include "code\game\objects\items\apc_frame.dm"
 #include "code\game\objects\items\bear_armor.dm"
 #include "code\game\objects\items\binoculars.dm"

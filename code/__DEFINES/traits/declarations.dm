@@ -693,6 +693,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MOVE_UPSIDE_DOWN "move_upside_down"
 /// Disables the floating animation. See above.
 #define TRAIT_NO_FLOATING_ANIM "no-floating-animation"
+/// Disables the movement beacuse we are grabbed by kinesis.(For energy ball and singularity)
+#define TRAIT_GRABBED_BY_KINESIS "grabbed_by_kinesis"
 
 /// Cannot be turned into a funny skeleton by the plasma river
 #define TRAIT_NO_PLASMA_TRANSFORM "no_plasma_transform"

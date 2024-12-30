@@ -61,7 +61,6 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	var/gas_heat_modifier = 0
 	var/gas_heat_resistance = 0
 	var/gas_power_transmission_rate = 0
-
 	var/gas_powerloss_inhibition = 0
 	var/gas_heat_power_generation = 0
 
@@ -74,10 +73,20 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	var/zap_transmission_rate = 1.25
 	var/list/zap_factors
 
+	var/powerloss_linear_threshold = 0
+	var/powerloss_linear_offset = 0
+
+	var/internal_energy = 0
+
+	var/powerloss_inhibition = 0
+	var/heat_power_generation = 0
+
 /obj/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
 	. = ..()
 	current_gas_behavior = init_eball_gas()
 	absorbed_gasmix = new()
+	powerloss_linear_threshold = sqrt(POWERLOSS_LINEAR_RATE / 3 * POWERLOSS_CUBIC_DIVISOR ** 3)
+	powerloss_linear_offset = -1 * powerloss_linear_threshold * POWERLOSS_LINEAR_RATE + (powerloss_linear_threshold / POWERLOSS_CUBIC_DIVISOR) ** 3
 
 	energy = starting_energy
 	miniball = is_miniball
@@ -105,6 +114,10 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	if(orbiting)
 		energy = 0 // ensure we dont have miniballs of miniballs
 	else
+		if(energy <= 0)
+			investigate_log("collapsed.", INVESTIGATE_ENGINE)
+			qdel(src)
+			return FALSE
 		process_atmos()
 		handle_energy()
 
@@ -112,11 +125,13 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 
 		playsound(src.loc, 'sound/effects/magic/lightningbolt.ogg', 100, TRUE, extrarange = 30)
 
-		pixel_x = 0
-		pixel_y = 0
+		if(!HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+			pixel_x = 0
+			pixel_y = 0
+
 		shocked_things.Cut(1, shocked_things.len / 1.3)
 		var/list/shocking_info = list()
-		tesla_zap(source = src, zap_range = 3, power = (zap_energy * min(energy/250, zap_transmission_rate)), shocked_targets = shocking_info, zap_flags = ZAP_EBALL_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
+		tesla_zap(source = src, zap_range = 3, power = max((zap_energy * min(energy/250, zap_transmission_rate)) + heat_power_generation - powerloss_inhibition, 1 MEGA JOULES), shocked_targets = shocking_info, zap_flags = ZAP_EBALL_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
 
 		pixel_x = -ICON_SIZE_X
 		pixel_y = -ICON_SIZE_Y
@@ -152,6 +167,8 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 
 /obj/energy_ball/proc/can_move(turf/to_move)
 	if (!to_move)
+		return FALSE
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
 		return FALSE
 
 	for (var/_thing in to_move)
@@ -204,12 +221,18 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	return TRUE
 
 /obj/energy_ball/proc/after_zap(atom/zapped_atom)
-	if(status == EBALL_DANGER)
-		var/datum/gas_mixture/environment = get_environment()
-		if(environment?.total_moles())
-			if(environment.gases[/datum/gas/nitrous_oxide] && (environment.gases[/datum/gas/nitrous_oxide][MOLES]) < 1500)
-				explosion(zapped_atom, devastation_range = 2, heavy_impact_range = 2, light_impact_range = 3)
-				environment.gases[/datum/gas/nitrous_oxide][MOLES] -= 1
+	if(isliving(zapped_atom))
+		var/mob/living/zapped_mob = zapped_atom
+		if(is_clown_job(zapped_mob.mind?.assigned_role))
+			if(prob(50))
+				energy *= 2
+				zap_energy *= 1.5
+			else
+				energy = 0
+
+	if(absorbed_gasmix.temperature > 1273.15)
+		if(gas_percentage[/datum/gas/nitrous_oxide] < 0.5)
+			explosion(zapped_atom, devastation_range = 2, heavy_impact_range = 2, light_impact_range = 3)
 
 /obj/energy_ball/Bump(atom/A)
 	dust_mobs(A)
@@ -268,6 +291,7 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	absorbed_gasmix = env?.remove_ratio(absorption_ratio) || new()
 	absorbed_gasmix.volume = (env?.volume || CELL_VOLUME) * absorption_ratio // To match the pressure.
 	calculate_gases()
+	calculate_internal_energy()
 
 	for (var/gas_path in absorbed_gasmix.gases)
 		var/datum/eball_gas/eball_gas = current_gas_behavior[gas_path]
@@ -296,6 +320,37 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 /obj/energy_ball/proc/get_environment()
 	var/turf/T = get_turf(src)
 	return T.return_air()
+
+/obj/energy_ball/proc/calculate_internal_energy()
+
+	var/list/additive_power = list()
+
+	/// If we have a small amount of external_power_trickle we just round it up to 40.
+	additive_power[SM_POWER_EXTERNAL_IMMEDIATE] = external_power_immediate
+	external_power_immediate = 0
+	additive_power[SM_POWER_HEAT] = gas_heat_power_generation * absorbed_gasmix.temperature * GAS_HEAT_POWER_SCALING_COEFFICIENT
+
+	// I'm sorry for this, but we need to calculate power lost immediately after power gain.
+	// Helps us prevent cases when someone dumps superhothotgas into the SM and shoots the power to the moon for one tick.
+	/// Power if we dont have decay. Used for powerloss calc.
+	var/momentary_power = internal_energy
+	for(var/powergain_type in additive_power)
+		momentary_power += additive_power[powergain_type]
+	if(momentary_power < powerloss_linear_threshold) // Negative numbers
+		additive_power[SM_POWER_POWERLOSS] = -1 * (momentary_power / POWERLOSS_CUBIC_DIVISOR) ** 3
+	else
+		additive_power[SM_POWER_POWERLOSS] = -1 * (momentary_power * POWERLOSS_LINEAR_RATE + powerloss_linear_offset)
+	// Positive number
+	additive_power[SM_POWER_POWERLOSS_GAS] = -1 * gas_powerloss_inhibition *  additive_power[SM_POWER_POWERLOSS]
+	additive_power[SM_POWER_POWERLOSS_SOOTHED] = -1 * min(1-gas_powerloss_inhibition , 0.2) *  additive_power[SM_POWER_POWERLOSS]
+
+	for(var/powergain_types in additive_power)
+		internal_energy += additive_power[powergain_types]
+	internal_energy = max(internal_energy, 0)
+	powerloss_inhibition = (additive_power[SM_POWER_POWERLOSS_GAS] + additive_power[SM_POWER_POWERLOSS_SOOTHED]) * 1e4
+	heat_power_generation = additive_power[SM_POWER_HEAT] * 1e4
+
+	return additive_power
 
 /obj/energy_ball/proc/calculate_gases()
 	gas_percentage = list()
@@ -371,7 +426,7 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	data["orbiting_balls"] = orbiting_balls.len
 	data["energy_to_lower"] = energy_to_lower
 	data["energy_to_raise"] = energy_to_raise
-	data["zap_energy"] = (zap_energy * min(energy/250, 1.25))
+	data["zap_energy"] = max((zap_energy * min(energy/250, zap_transmission_rate)) + heat_power_generation - powerloss_inhibition, 1 MEGA JOULES)
 
 	data["absorbed_ratio"] = absorption_ratio
 	var/list/formatted_gas_percentage = list()

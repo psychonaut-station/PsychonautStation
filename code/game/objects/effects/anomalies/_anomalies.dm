@@ -86,6 +86,8 @@
 /obj/effect/anomaly/proc/move_anomaly()
 	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
 		return
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
 	step(src, pick(GLOB.alldirs))
 
 /obj/effect/anomaly/proc/detonate()

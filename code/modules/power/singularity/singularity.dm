@@ -177,6 +177,8 @@ GLOBAL_LIST_EMPTY(all_singularities)
 	return TRUE
 
 /obj/singularity/process(seconds_per_tick)
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
 	time_since_act += seconds_per_tick
 	dissipate(seconds_per_tick)
 	if(time_since_act < 2)

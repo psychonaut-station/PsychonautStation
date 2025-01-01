@@ -634,3 +634,18 @@
 	new /obj/item/food/grown/banana/bunch/monkeybomb(src)
 	// Somewhere to store it all.
 	new /obj/item/storage/backpack/messenger(src)
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher
+	name = "anti singularity case"
+	weapon_to_spawn = /obj/item/gun/ballistic/rocketlauncher/anomaly_catcher
+	extra_to_spawn = /obj/item/ammo_casing/rocket/anomaly_catcher
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher/Initialize(mapload)
+	. = ..()
+	atom_storage.max_total_storage = 10
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher/PopulateContents()
+	new weapon_to_spawn (src)
+	new /obj/item/gun/energy/kinesis(src)
+	for(var/i in 1 to 2)
+		new extra_to_spawn (src)

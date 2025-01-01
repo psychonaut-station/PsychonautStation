@@ -137,3 +137,33 @@ among other potential differences. This granularity is helpful for things like t
 	if(firer) //troll
 		firer.visible_message(span_danger("[src] blows up as soon as [firer] fires it!"))
 		on_hit(firer)
+
+/obj/projectile/bullet/anomaly_catcher
+	name = "\improper HE rocket"
+	desc = "Boom."
+	icon = 'icons/psychonaut/obj/weapons/guns/projectiles.dmi'
+	icon_state= "anom-catcher"
+	damage = 0
+	sharpness = NONE
+	embed_type = null
+	shrapnel_type = null
+	ricochets_max = 0
+	var/obj/item/ammo_casing/rocket/anomaly_catcher/catcher
+	var/static/list/catchable = typecacheof(list(/obj/energy_ball, /obj/singularity, /obj/effect/anomaly, /mob/living))
+
+/obj/projectile/bullet/anomaly_catcher/Initialize(mapload)
+	. = ..()
+	catcher = new(src)
+
+/obj/projectile/bullet/anomaly_catcher/impact(atom/target)
+	catcher.forceMove(get_turf(src))
+
+	if(!is_type_in_typecache(target, catchable))
+		return
+
+	var/obj/target_object = target
+	catcher.catch_anomaly(target_object)
+	return ..()
+
+/obj/projectile/bullet/anomaly_catcher/singularity_act()
+	return

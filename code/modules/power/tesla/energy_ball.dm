@@ -28,8 +28,6 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	light_range = 6
 	move_resist = INFINITY
 	obj_flags = CAN_BE_HIT | DANGEROUS_POSSESSION
-	pixel_x = -ICON_SIZE_X
-	pixel_y = -ICON_SIZE_Y
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
 
@@ -81,6 +79,8 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	var/powerloss_inhibition = 0
 	var/heat_power_generation = 0
 
+	SET_BASE_PIXEL(-ICON_SIZE_X, -ICON_SIZE_Y)
+
 /obj/energy_ball/Initialize(mapload, starting_energy = 50, is_miniball = FALSE)
 	. = ..()
 	current_gas_behavior = init_eball_gas()
@@ -114,6 +114,8 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	if(orbiting)
 		energy = 0 // ensure we dont have miniballs of miniballs
 	else
+		if(!(datum_flags & DF_ISPROCESSING))
+			return
 		if(energy <= 0)
 			investigate_log("collapsed.", INVESTIGATE_ENGINE)
 			qdel(src)

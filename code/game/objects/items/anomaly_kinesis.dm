@@ -7,6 +7,8 @@
 	inhand_icon_state = "smoothbore1"
 	w_class = WEIGHT_CLASS_HUGE
 	weapon_weight = WEAPON_MEDIUM
+	automatic_charge_overlays = FALSE
+	display_empty = FALSE
 
 	/// Range of the knesis grab.
 	var/grab_range = 15

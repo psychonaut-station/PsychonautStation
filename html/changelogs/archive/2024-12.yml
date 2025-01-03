@@ -714,13 +714,6 @@
   - bugfix: Fix vent clog event triggering on non-station areas
   - bugfix: Fix custom map loading ignoring JSON values that were ignored previously.
       (minetype, planetary, etc.)
-<<<<<<< HEAD
-2024-12-30:
-  LT3:
-  - bugfix: Premade/vending machine flatpacks now display what board is inside
-  RengaN02:
-  - bugfix: "Ipclerin hudunun g\xF6z\xFCkmemesi d\xFCzeltildi"
-=======
 2024-12-28:
   00-Steven:
   - bugfix: Lesser quiver actually has less slots as intended.
@@ -733,7 +726,6 @@
   - bugfix: breaking out of a closet won't spam chat or shake like it's having a seizure
   - code_imp: plumbing reaction chamber won't waste extra ticks for the pipeline when
       sending out catalysts
->>>>>>> 6fd72f8f68821f4c10e1bd7c0177e82a8cc01df5
   carlarctg:
   - rscadd: Adds rift fishing to the game. Includes new wacky fish!
   - rscadd: Drained and undrained influences can be fished in, the latter only by
@@ -741,8 +733,6 @@
       to other people, so don't be stupid!
   - rscadd: influences cannot be bombed for fish.
   - rscadd: Heretics can now infuse their fishing rod, and fish for knowledge.
-<<<<<<< HEAD
-=======
 2024-12-29:
   00-Steven:
   - spellcheck: Give alert 'examiante' > 'examine'.
@@ -778,6 +768,8 @@
   00-Steven:
   - bugfix: Photocopying no longer removes the stamp overlays from the original paper,
       and actually copies them to the copy.
+  RengaN02:
+  - bugfix: "Ipclerin hudunun g\xF6z\xFCkmemesi d\xFCzeltildi"
   Rhials:
   - balance: When dominating a mech as a Malfunctioning AI, the core you shunted from
       will disable your Doomsday Counterdown when destroyed. Make sure to protect
@@ -795,4 +787,3 @@
   - bugfix: Blood no longer gets colored with the item its attached to
   mc-oofert:
   - rscadd: forensics spoofing kit for traitors/whoever with an uplink
->>>>>>> 6fd72f8f68821f4c10e1bd7c0177e82a8cc01df5

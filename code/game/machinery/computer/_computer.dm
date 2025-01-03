@@ -31,7 +31,6 @@
 	. = ..()
 	power_change()
 
-<<<<<<< HEAD
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
@@ -41,12 +40,11 @@
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
 	return ..()
-=======
+
 /obj/machinery/computer/mouse_drop_receive(mob/living/dropping, mob/user, params)
 	. = ..()
 	// We add the component only once here & not in Initialize() because there are tons of computers & we don't want to add to their init times
 	LoadComponent(/datum/component/leanable, dropping)
->>>>>>> 6fd72f8f68821f4c10e1bd7c0177e82a8cc01df5
 
 /obj/machinery/computer/CanAllowThrough(atom/movable/mover, border_dir) // allows projectiles to fly over the computer
 	. = ..()

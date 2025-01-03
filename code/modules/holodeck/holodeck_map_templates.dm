@@ -62,7 +62,6 @@
 /datum/map_template/holodeck/camping
 	name = "Holodeck - Forest Camping"
 	template_id = "holodeck_camping"
-	description = "benis"
 	mappath = "_maps/templates/holodeck_camping.dmm"
 
 /datum/map_template/holodeck/chapelcourt
@@ -98,7 +97,6 @@
 /datum/map_template/holodeck/pool
 	name = "Holodeck - Summer Pool"
 	template_id = "holodeck_pool"
-	description = "benis"
 	mappath = "_maps/templates/holodeck_pool.dmm"
 
 /datum/map_template/holodeck/skatepark

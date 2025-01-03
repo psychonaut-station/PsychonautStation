@@ -28,7 +28,25 @@ type EballGasMetadata = {
   };
 };
 
-type SingularityTeslaProps = {
+type TeslaProps = {
+  sectionButton?: ReactNode;
+  name: string;
+  type: string;
+  id: number;
+  uid: string;
+  energy: number;
+  energy_to_lower: number;
+  energy_to_raise: number;
+  orbiting_balls: number;
+  zap_energy: number;
+  absorbed_ratio: number;
+  gas_composition: { [gas_path: string]: number };
+  gas_temperature: number;
+  gas_total_moles: number;
+  gas_metadata: EballGasMetadata;
+};
+
+type SingularityProps = {
   sectionButton?: ReactNode;
   name: string;
   type: string;
@@ -41,13 +59,6 @@ type SingularityTeslaProps = {
   radiation_pulse: number;
   energy_to_lower: number;
   energy_to_raise: number;
-  orbiting_balls: number;
-  zap_energy: number;
-  absorbed_ratio: number;
-  gas_composition: { [gas_path: string]: number };
-  gas_temperature: number;
-  gas_total_moles: number;
-  gas_metadata: EballGasMetadata;
 };
 
 // LabeledList but stack and with a chevron dropdown.
@@ -97,10 +108,13 @@ const EntryData = (props: EntryProps) => {
 };
 
 export type SingularityTeslaData = {
-  anomaly_data: Omit<SingularityTeslaProps, 'sectionButton' | 'gas_metadata'>[];
+  anomaly_data: Omit<
+    TeslaProps & SingularityProps,
+    'sectionButton' | 'gas_metadata'
+  >[];
 };
 
-export const SingularityContent = (props: SingularityTeslaProps) => {
+export const SingularityContent = (props: SingularityProps) => {
   const {
     sectionButton,
     name,
@@ -178,7 +192,7 @@ export const SingularityContent = (props: SingularityTeslaProps) => {
   );
 };
 
-export const TeslaContent = (props: SingularityTeslaProps) => {
+export const TeslaContent = (props: TeslaProps) => {
   const {
     sectionButton,
     name,

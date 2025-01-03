@@ -29,7 +29,7 @@ export const NtosSupermatter = (props) => {
     eball_gas_metadata,
     focus_uid,
   } = data;
-  const [activeUID, setActiveUID] = useState(0);
+  const [activeUID, setActiveUID] = useState('0');
   const activeScreen = all_data.find((sm) => sm.uid === activeUID);
 
   return (

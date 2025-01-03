@@ -49,6 +49,8 @@
 /obj/item/gun/energy/kinesis/process_fire(atom/target, mob/living/user, message = TRUE, params = null, zone_override = "", bonus_spread = 0)
 	if(isliving(user))
 		add_fingerprint(user)
+	if(grabbed_atom)
+		return
 	if(!range_check(target))
 		balloon_alert(user, "too far!")
 		return
@@ -61,6 +63,12 @@
 		return
 	grab_atom(target)
 
+/obj/item/gun/energy/kinesis/examine(mob/user)
+	. = ..()
+	. += span_notice("It glows [has_core ? "blue" : "orange"]")
+	if(!has_core)
+		. += span_notice("You can insert \a gravitational anomaly core for upgrade [src].")
+
 /obj/item/gun/energy/kinesis/proc/can_grab(atom/target)
 	if(owner == target)
 		return FALSE
@@ -71,13 +79,13 @@
 	var/atom/movable/movable_target = target
 	if(movable_target.throwing)
 		return FALSE
+	if(check_for_containment_field(owner, target))
+		return FALSE
 	if(istype(target, /obj/energy_ball))
 		return TRUE
 	if(istype(target, /obj/singularity))
 		return TRUE
 	if(istype(target, /obj/effect/anomaly))
-		return TRUE
-	if(!check_for_containment_field(owner, target))
 		return TRUE
 	return FALSE
 
@@ -93,6 +101,14 @@
 /obj/item/gun/energy/kinesis/update_icon_state()
 	icon_state = "[has_core ? "super_":""][base_icon_state][grabbed_atom ? "_on":""]"
 	return ..()
+
+/obj/item/gun/energy/kinesis/singularity_pull(atom/singularity, current_size)
+	if(!isloc(src) || !isliving(loc))
+		return ..()
+	var/mob/living/user = loc
+	if(user.get_active_held_item() != src)
+		return ..()
+	return
 
 /obj/item/gun/energy/kinesis/proc/on_catcher_click(atom/source, location, control, params, user)
 	SIGNAL_HANDLER
@@ -116,9 +132,9 @@
 	if(istype(tool, /obj/item/assembly/signaler/anomaly))
 		var/obj/item/assembly/signaler/anomaly/anomaly = tool
 		if(ispath(anomaly.anomaly_type, /obj/effect/anomaly/grav))
-			to_chat(user, span_notice("You insert [anomaly] into the chest plate, and the armour gently hums to life."))
+			to_chat(user, span_notice("You brought the [anomaly] closer to the gun and the [anomaly] crumbled into dust."))
 			has_core = TRUE
-			color = "#008cff"
+			outline_effect = "#008cff"
 			update_icon_state()
 			qdel(anomaly)
 			return ITEM_INTERACT_SUCCESS
@@ -128,19 +144,20 @@
 	grabbed_atom.add_traits(list(TRAIT_NO_FLOATING_ANIM, TRAIT_GRABBED_BY_KINESIS), REF(src))
 	RegisterSignal(grabbed_atom, COMSIG_MOVABLE_SET_ANCHORED, PROC_REF(on_setanchored))
 	playsound(grabbed_atom, 'sound/items/weapons/contractor_baton/contractorbatonhit.ogg', 75, TRUE)
-	kinesis_icon = mutable_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", layer = grabbed_atom.layer - 0.1)
-	kinesis_icon.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
-	kinesis_icon.overlays += emissive_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", offset_spokesman = grabbed_atom)
-	grabbed_atom.add_overlay(kinesis_icon)
 	grabbed_atom.add_filter("zpef_glow", 2, list("type" = "outline", "color" = outline_effect, "size" = 1))
-	kinesis_beam = owner.Beam(grabbed_atom, "kinesis")
-	kinesis_catcher = owner.overlay_fullscreen("kinesis", /atom/movable/screen/fullscreen/cursor_catcher/kinesis, 0)
-	kinesis_catcher.assign_to_mob(owner)
+	if(has_core)
+		kinesis_icon = mutable_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", layer = grabbed_atom.layer - 0.1)
+		kinesis_icon.appearance_flags = RESET_ALPHA|RESET_COLOR|RESET_TRANSFORM
+		kinesis_icon.overlays += emissive_appearance(icon = 'icons/effects/effects.dmi', icon_state = "kinesis", offset_spokesman = grabbed_atom)
+		grabbed_atom.add_overlay(kinesis_icon)
+		kinesis_beam = owner.Beam(grabbed_atom, "kinesis")
+		kinesis_catcher = owner.overlay_fullscreen("kinesis", /atom/movable/screen/fullscreen/cursor_catcher/kinesis, 0)
+		kinesis_catcher.assign_to_mob(owner)
 	RegisterSignal(kinesis_catcher, COMSIG_SCREEN_ELEMENT_CLICK, PROC_REF(on_catcher_click))
 	soundloop.start()
 	START_PROCESSING(SSfastprocess, src)
 	update_icon_state()
-	addtimer(CALLBACK(src, PROC_REF(clear_callback)), 7 SECONDS)
+	addtimer(CALLBACK(src, PROC_REF(clear_callback)), 6 SECONDS)
 
 /obj/item/gun/energy/kinesis/proc/clear_grab(playsound = TRUE)
 	if(!grabbed_atom)

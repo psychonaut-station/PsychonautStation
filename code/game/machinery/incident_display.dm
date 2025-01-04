@@ -8,10 +8,13 @@ GLOBAL_LIST_EMPTY(map_incident_displays)
 #define DISPLAY_DELAM (1<<0)
 /// Display current number of tram hits on incident sign
 #define DISPLAY_TRAM (1<<1)
+/// Display days since the last singularity death on incident sign
+#define DISPLAY_SINGULARITY_DEATH (1<<2)
 
 DEFINE_BITFIELD(sign_features, list(
 	"DISPLAY_DELAM" = DISPLAY_DELAM,
 	"DISPLAY_TRAM" = DISPLAY_TRAM,
+	"DISPLAY_SINGULARITY_DEATH" = DISPLAY_SINGULARITY_DEATH,
 ))
 
 #define TREND_RISING "rising"
@@ -19,9 +22,11 @@ DEFINE_BITFIELD(sign_features, list(
 
 #define NAME_DELAM "delamination incident display"
 #define NAME_TRAM "tram incident display"
+#define NAME_SINGULARITY "singularity incident display"
 
 #define DESC_DELAM "A signs describe how long it's been since the last delamination incident. Features an advert for SAFETY MOTH."
 #define DESC_TRAM "A display that provides the number of tram related safety incidents this shift."
+#define DESC_SINGULARITY "A signs describe how long it's been since the last singularity engine-related death. Features an advert for SAFETY MOTH."
 
 #define DISPLAY_PIXEL_1_W 21
 #define DISPLAY_PIXEL_1_Z -2
@@ -60,6 +65,10 @@ DEFINE_BITFIELD(sign_features, list(
 	var/last_delam = 0
 	/// Delam record high-score
 	var/delam_record = 0
+	// Tracks the number of shifts since the last singularity death
+	var/last_singularity_death = 0
+	// Tracks the record for the longest duration without a singularity death
+	var/singularity_deaths_record = 0
 	/// If the display is currently running live updated content
 	var/live_display = FALSE
 	/// The default advert to show on this display
@@ -82,14 +91,31 @@ DEFINE_BITFIELD(sign_features, list(
 	configured_advert = "advert_meson"
 	configured_advert_duration = 7 SECONDS
 
+/obj/machinery/incident_display/delam/post_machine_initialize()
+	. = ..()
+	if(SSmapping.picked_rooms["engine"])
+		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
+		if(engine_template.engine_type == "singularity")
+			name = NAME_SINGULARITY
+			desc = DESC_SINGULARITY
+			sign_features = DISPLAY_SINGULARITY_DEATH
+
 /obj/machinery/incident_display/tram
 	name = NAME_TRAM
 	desc = DESC_TRAM
 	sign_features = DISPLAY_TRAM
 
+/obj/machinery/incident_display/singularity_death
+	name = NAME_SINGULARITY
+	desc = DESC_SINGULARITY
+	sign_features = DISPLAY_SINGULARITY_DEATH
+	configured_advert = "advert_meson"
+	configured_advert_duration = 7 SECONDS
+
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/bridge, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/delam, 32)
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
+MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 32)
 
 /obj/machinery/incident_display/Initialize(mapload)
 	..()
@@ -100,6 +126,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 	. = ..()
 	GLOB.map_incident_displays += src
 	update_delam_count(SSpersistence.rounds_since_engine_exploded, SSpersistence.delam_highscore)
+	update_last_singularity_death(SSpersistence.rounds_since_singularity_death, SSpersistence.singularity_death_record)
 	RegisterSignal(SStransport, COMSIG_TRAM_COLLISION, PROC_REF(update_tram_count))
 
 	update_appearance()
@@ -137,6 +164,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 	if(held_item?.tool_behaviour == TOOL_MULTITOOL && !living_user.combat_mode)
 		if(sign_features == DISPLAY_TRAM)
 			context[SCREENTIP_CONTEXT_LMB] = "change to delam mode"
+		else if(sign_features == DISPLAY_DELAM)
+			context[SCREENTIP_CONTEXT_LMB] = "change to singularity mode"
 		else
 			context[SCREENTIP_CONTEXT_LMB] = "change to tram mode"
 
@@ -172,6 +201,15 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		desc = DESC_DELAM
 		sign_features = DISPLAY_DELAM
 		update_delam_count(SSpersistence.rounds_since_engine_exploded, SSpersistence.delam_highscore)
+		update_appearance()
+		return TRUE
+	else if(sign_features == DISPLAY_DELAM)
+		tool.play_tool_sound(src)
+		balloon_alert(user, "set to singularity deaths")
+		name = NAME_SINGULARITY
+		desc = DESC_SINGULARITY
+		sign_features = DISPLAY_SINGULARITY_DEATH
+		update_last_singularity_death(SSpersistence.rounds_since_singularity_death, SSpersistence.singularity_death_record)
 		update_appearance()
 		return TRUE
 	else
@@ -220,6 +258,19 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 /obj/machinery/incident_display/proc/update_delam_count(new_count, record)
 	delam_record = record
 	last_delam = min(new_count, 199)
+	update_appearance()
+
+/**
+ * Update the count of shifts since the last singularity death
+ *
+ * Use the provided args to update the incident display when in singuloose mode.
+ * Arguments:
+ * * new_count - number of shifts without a singuloose
+ * * record - current high score for the singuloose count
+ */
+/obj/machinery/incident_display/proc/update_last_singularity_death(new_count, record)
+	singularity_deaths_record = record
+	last_singularity_death = min(new_count, 199)
 	update_appearance()
 
 /**
@@ -361,13 +412,56 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 			. += tram_trend_overlay
 			. += tram_trend_emissive
 
+	if(sign_features & DISPLAY_SINGULARITY_DEATH)
+		. += mutable_appearance('icons/psychonaut/obj/machines/incident_display.dmi', "overlay_singularity")
+		. += emissive_appearance('icons/psychonaut/obj/machines/incident_display.dmi', "overlay_singularity", src, alpha = DISPLAY_PIXEL_ALPHA)
+
+		var/singularity_deaths_pos1 = clamp(last_singularity_death, 0, 199) % 10
+		var/mutable_appearance/singularity_deaths_pos1_overlay = mutable_appearance(icon, "num_[singularity_deaths_pos1]")
+		var/mutable_appearance/singularity_deaths_pos1_emissive = emissive_appearance(icon, "num_[singularity_deaths_pos1]", src, alpha = DISPLAY_PIXEL_ALPHA)
+		singularity_deaths_pos1_overlay.color = delam_display_color
+		singularity_deaths_pos1_overlay.pixel_w = DISPLAY_PIXEL_1_W
+		singularity_deaths_pos1_emissive.pixel_w = DISPLAY_PIXEL_1_W
+		singularity_deaths_pos1_overlay.pixel_z = DISPLAY_PIXEL_1_Z
+		singularity_deaths_pos1_emissive.pixel_z = DISPLAY_PIXEL_1_Z
+		. += singularity_deaths_pos1_overlay
+		. += singularity_deaths_pos1_emissive
+
+		var/singularity_deaths_pos2 = (clamp(last_singularity_death, 0, 199) / 10) % 10
+		var/mutable_appearance/singularity_deaths_pos2_overlay = mutable_appearance(icon, "num_[singularity_deaths_pos2]")
+		var/mutable_appearance/singularity_deaths_pos2_emissive = emissive_appearance(icon, "num_[singularity_deaths_pos2]", src, alpha = DISPLAY_PIXEL_ALPHA)
+		singularity_deaths_pos2_overlay.color = delam_display_color
+		singularity_deaths_pos2_overlay.pixel_w = DISPLAY_PIXEL_2_W
+		singularity_deaths_pos2_emissive.pixel_w = DISPLAY_PIXEL_2_W
+		singularity_deaths_pos2_overlay.pixel_z = DISPLAY_PIXEL_2_Z
+		singularity_deaths_pos2_emissive.pixel_z = DISPLAY_PIXEL_2_Z
+		. += singularity_deaths_pos2_overlay
+		. += singularity_deaths_pos2_emissive
+
+		if(last_singularity_death >= 100)
+			. += mutable_appearance(icon, "num_100_red")
+			. += emissive_appearance(icon, "num_100_red", src, alpha = DISPLAY_BASE_ALPHA)
+
+		if(last_singularity_death == singularity_deaths_record)
+			var/mutable_appearance/singularity_deaths_trend_overlay = mutable_appearance(icon, TREND_RISING)
+			var/mutable_appearance/singularity_deaths_trend_emissive = emissive_appearance(icon, "[TREND_RISING]", src, alpha = DISPLAY_PIXEL_ALPHA)
+			singularity_deaths_trend_overlay.color = COLOR_DISPLAY_GREEN
+			. += singularity_deaths_trend_overlay
+			. += singularity_deaths_trend_emissive
+		else
+			var/mutable_appearance/singularity_deaths_trend_overlay = mutable_appearance(icon, TREND_FALLING)
+			var/mutable_appearance/singularity_deaths_trend_emissive = emissive_appearance(icon, "[TREND_FALLING]", src, alpha = DISPLAY_PIXEL_ALPHA)
+			singularity_deaths_trend_overlay.color = COLOR_DISPLAY_RED
+			. += singularity_deaths_trend_overlay
+			. += singularity_deaths_trend_emissive
+
 /obj/machinery/incident_display/examine(mob/user)
 	. = ..()
 	if(atom_integrity < max_integrity)
 		. += span_notice("It can be repaired with a [EXAMINE_HINT("welder")].")
 
 	if(sign_features & DISPLAY_DELAM)
-		. += span_notice("It can be changed to display tram hits with a [EXAMINE_HINT("multitool")].")
+		. += span_notice("It can be changed to display shifts since the last singularity death with a [EXAMINE_HINT("multitool")].")
 		if(last_delam >= 0)
 			. += span_info("It has been [last_delam] shift\s since the last delamination event at this Nanotrasen facility.")
 			switch(last_delam)
@@ -401,14 +495,32 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 			else
 				. += span_info("Incredible! You're probably reading this from medbay.<br/>")
 
+	if(sign_features & DISPLAY_SINGULARITY_DEATH)
+		. += span_notice("It can be changed to display tram hits with a [EXAMINE_HINT("multitool")].")
+		. += span_info("It has been [last_singularity_death] shift\s since the last singularity engine-related death.")
+		switch(last_singularity_death)
+			if(0)
+				. += span_info("A tragedy has occurred today.<br/>")
+			if(1 to 5)
+				. += span_info("Keep working on safety protocols.<br/>")
+			if(6 to 10)
+				. += span_info("The station is improving!<br/>")
+			if(31)
+				. += span_info("Nice.<br/>")
+			else
+				. += span_info("Outstanding safety record!<br/>")
+
 #undef DISPLAY_DELAM
 #undef DISPLAY_TRAM
+#undef DISPLAY_SINGULARITY_DEATH
 
 #undef NAME_DELAM
 #undef NAME_TRAM
+#undef NAME_SINGULARITY
 
 #undef DESC_DELAM
 #undef DESC_TRAM
+#undef DESC_SINGULARITY
 
 #undef TREND_RISING
 #undef TREND_FALLING

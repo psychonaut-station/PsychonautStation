@@ -91,6 +91,18 @@
 	icon_state = "engine_sm_room_upper"
 	sound_environment = SOUND_AREA_LARGE_ENCLOSED
 
+/area/station/engineering/singularity
+	name = "\improper Singularity Engine"
+	icon = 'icons/psychonaut/area/areas_station.dmi'
+	icon_state = "engine_singularity"
+	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
+	sound_environment = SOUND_AREA_SMALL_ENCLOSED
+
+/area/station/engineering/singularity/room
+	name = "\improper Singularity Engine Room"
+	icon_state = "engine_singularity_room"
+	sound_environment = SOUND_AREA_LARGE_ENCLOSED
+
 /area/station/engineering/break_room
 	name = "\improper Engineering Foyer"
 	icon_state = "engine_break"

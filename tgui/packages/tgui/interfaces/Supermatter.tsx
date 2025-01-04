@@ -31,7 +31,8 @@ type SMGasMetadata = {
 
 type SupermatterProps = {
   sectionButton?: ReactNode;
-  uid: number;
+  id: number;
+  uid: string;
   area_name: string;
   integrity: number;
   integrity_factors: { name: string; amount: number }[];
@@ -100,6 +101,7 @@ const SupermatterEntry = (props: SupermatterEntryProps) => {
 export const SupermatterContent = (props: SupermatterProps) => {
   const {
     sectionButton,
+    id,
     uid,
     area_name,
     integrity,
@@ -137,7 +139,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
         <Section
           fill
           scrollable
-          title={uid + '. ' + area_name}
+          title={id + '. ' + area_name}
           buttons={sectionButton}
         >
           <Stack vertical>

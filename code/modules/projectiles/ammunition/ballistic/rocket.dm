@@ -46,3 +46,9 @@
 /obj/item/ammo_casing/a75/update_icon_state()
 	. = ..()
 	icon_state = "[base_icon_state]"
+
+/obj/item/ammo_casing/rocket/anomaly_catcher
+	icon = 'icons/psychonaut/obj/weapons/guns/ammo.dmi'
+	icon_state = "anom-catcher"
+	base_icon_state = "anom-catcher"
+	projectile_type = /obj/projectile/bullet/anomaly_catcher

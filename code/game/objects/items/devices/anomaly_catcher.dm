@@ -14,15 +14,17 @@
 /obj/item/anomaly_catcher/update_overlays()
 	. = ..()
 	if(!isnull(catched))
-		var/mutable_appearance/appearance = new (catched.appearance)
+		var/mutable_appearance/appearance = new (catched)
 		var/list/dimensions = get_icon_dimensions(catched.icon)
 
 		appearance.transform = matrix().Scale((1 / (dimensions["width"] / 16)), 1 / (dimensions["height"] / 16))
 		appearance.pixel_x = catched.pixel_x
 		appearance.pixel_y = catched.pixel_y
+		appearance.plane = FLOAT_PLANE
+		appearance.layer = FLOAT_LAYER
 
 		. += appearance
-		. += mutable_appearance(icon, "anomaly_catcher_glass")
+		. += "anomaly_catcher_glass"
 
 /obj/item/anomaly_catcher/proc/catch_anomaly(obj/O)
 	catched = O

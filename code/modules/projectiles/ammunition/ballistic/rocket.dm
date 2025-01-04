@@ -48,6 +48,8 @@
 	icon_state = "[base_icon_state]"
 
 /obj/item/ammo_casing/rocket/anomaly_catcher
+	name = "\improper IE-AC200 rocket"
+	desc = "An 84mm Anomaly Catcher rocket. Fire at anomalies and pray."
 	icon = 'icons/psychonaut/obj/weapons/guns/ammo.dmi'
 	icon_state = "anom-catcher"
 	base_icon_state = "anom-catcher"

@@ -731,7 +731,6 @@
 "HZ" = (
 /obj/effect/landmark/keep/apc,
 /obj/structure/cable,
-/obj/machinery/incident_display/singularity_death/directional/north,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "Im" = (
@@ -969,6 +968,7 @@
 "Un" = (
 /obj/structure/chair/sofa/corp/right,
 /obj/machinery/light/directional/north,
+/obj/machinery/incident_display/singularity_death/directional/north,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "UH" = (

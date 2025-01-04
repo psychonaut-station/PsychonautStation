@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { Button, ProgressBar, Section, Table } from 'tgui-core/components';
+import { capitalizeAll } from 'tgui-core/string';
 
-import { capitalizeAll } from '../../common/string';
 import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
 import {

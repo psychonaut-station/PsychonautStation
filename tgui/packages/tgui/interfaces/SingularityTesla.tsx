@@ -1,9 +1,5 @@
 import { filter, sortBy } from 'common/collections';
-import { toFixed } from 'common/math';
-import { BooleanLike } from 'common/react';
 import { ReactNode, useState } from 'react';
-
-import { capitalizeAll } from '../../common/string';
 import {
   Box,
   Button,
@@ -11,7 +7,11 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+import { capitalizeAll } from 'tgui-core/string';
+
 import { getGasFromPath } from '../constants';
 
 const logScale = (value) => Math.log2(16 + Math.max(0, value)) - 4;

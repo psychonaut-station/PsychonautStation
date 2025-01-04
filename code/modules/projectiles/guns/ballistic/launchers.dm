@@ -148,5 +148,6 @@
 		return FALSE
 	obj_flags |= EMAGGED
 	backblast = TRUE
+	AddElement(/datum/element/backblast)
 	balloon_alert(user, "backblast enabled")
 	return TRUE

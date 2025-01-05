@@ -23,7 +23,7 @@
 	release_timer = addtimer(CALLBACK(src, PROC_REF(release)), 3 MINUTES, (TIMER_UNIQUE|TIMER_OVERRIDE))
 	if(istype(catched, /obj/energy_ball) || istype(catched, /obj/singularity))
 		var/obj/singularity/singuloose = catched
-		singuloose.energy *= 2
+		singuloose.energy *= 1.5
 	return TRUE
 
 /obj/item/anomaly_catcher/update_overlays()

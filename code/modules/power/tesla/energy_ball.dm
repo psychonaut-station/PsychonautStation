@@ -232,7 +232,7 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 			else
 				energy = 0
 
-	if(absorbed_gasmix.temperature > 12731.5 && gas_percentage[/datum/gas/plasma] > 0.2)
+	if(absorbed_gasmix.temperature > 12731.5 && gas_percentage[/datum/gas/plasma] > 0.2 && energy > 600)
 		if(gas_percentage[/datum/gas/nitrous_oxide] < 0.5)
 			explosion(zapped_atom, devastation_range = 2, heavy_impact_range = 2, light_impact_range = 3)
 

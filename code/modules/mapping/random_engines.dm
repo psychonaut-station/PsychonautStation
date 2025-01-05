@@ -30,7 +30,7 @@
 /datum/map_template/random_room/random_engine/meta_singularity
 	name = "Meta Singularity"
 	room_id = "meta_singularity"
-	mappath = "_maps/RandomEngines/MetaStation/singularity.dmm"
+	mappath = "_maps/RandomRooms/MetaStation/singularity.dmm"
 	centerspawner = FALSE
 	template_height = 25
 	template_width = 33
@@ -61,7 +61,7 @@
 /datum/map_template/random_room/random_engine/delta_singularity
 	name = "Delta Singularity"
 	room_id = "delta_singularity"
-	mappath = "_maps/RandomEngines/Deltastation/singularity.dmm"
+	mappath = "_maps/RandomRooms/Deltastation/singularity.dmm"
 	centerspawner = FALSE
 	template_height = 31
 	template_width = 23

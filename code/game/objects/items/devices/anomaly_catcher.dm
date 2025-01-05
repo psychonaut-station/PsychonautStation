@@ -9,7 +9,22 @@
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	var/obj/catched
 	var/mutable_appearance/lightning_overlay
+	var/release_timer
 	var/is_catched_processing = FALSE
+
+/obj/item/anomaly_catcher/Destroy()
+	release()
+	return ..()
+
+/obj/item/anomaly_catcher/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		return FALSE
+	obj_flags |= EMAGGED
+	release_timer = addtimer(CALLBACK(src, PROC_REF(release)), 3 MINUTES, (TIMER_UNIQUE|TIMER_OVERRIDE))
+	if(istype(catched, /obj/energy_ball) || istype(catched, /obj/singularity))
+		var/obj/singularity/singuloose = catched
+		singuloose.energy *= 2
+	return TRUE
 
 /obj/item/anomaly_catcher/update_overlays()
 	. = ..()
@@ -36,7 +51,7 @@
 		is_catched_processing = TRUE
 	lightning_overlay = mutable_appearance(icon = 'icons/effects/effects.dmi', icon_state = "lightning")
 	add_overlay(lightning_overlay)
-	addtimer(CALLBACK(src, PROC_REF(release)), 2 MINUTES)
+	release_timer = addtimer(CALLBACK(src, PROC_REF(release)), 2 MINUTES, (TIMER_UNIQUE|TIMER_OVERRIDE))
 
 /obj/item/anomaly_catcher/proc/release()
 	SIGNAL_HANDLER
@@ -49,4 +64,5 @@
 	is_catched_processing = FALSE
 	cut_overlay(lightning_overlay)
 	lightning_overlay = null
-	qdel(src)
+	if(!QDELING(src))
+		qdel(src)

@@ -61,6 +61,56 @@
 	else
 		. += span_warning("You're not too sure what's on top though...")
 
+/obj/item/food/muffin/banana
+	name = "banana muffin"
+	icon = 'icons/psychonaut/obj/food/food.dmi'
+	icon_state = "banana_muffin"
+	desc = "A delicious and spongy little cake, with banana."
+	tastes = list("muffin" = 3, "banana" = 1)
+	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/muffin/carrot
+	name = "banana muffin"
+	icon = 'icons/psychonaut/obj/food/food.dmi'
+	icon_state = "carrot_muffin"
+	desc = "A delicious and spongy little cake, with carrot."
+	tastes = list("muffin" = 3, "carrot" = 1)
+	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/muffin/watermelon
+	name = "watermelon muffin"
+	icon = 'icons/psychonaut/obj/food/food.dmi'
+	icon_state = "watermelon_muffin"
+	desc = "A delicious and spongy little cake, with watermelon."
+	tastes = list("muffin" = 3, "watermelonslice" = 1)
+	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/muffin/pineapple
+	name = "pineapple muffin"
+	icon = 'icons/psychonaut/obj/food/food.dmi'
+	icon_state = "pineapple_muffin"
+	desc = "A delicious and spongy little cake, with pineapple."
+	tastes = list("muffin" = 3, "grape" = 1)
+	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
+/obj/item/food/muffin/grapes
+	name = "Grapes muffin"
+	icon = 'icons/psychonaut/obj/food/food.dmi'
+	icon_state = "grapes_muffin"
+	desc = "A delicious and spongy little cake, with grapes"
+	tastes = list("muffin" = 3, "grapes" = 1)
+	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	venue_value = FOOD_PRICE_NORMAL
+	crafting_complexity = FOOD_COMPLEXITY_3
+
 ////////////////////////////////////////////WAFFLES////////////////////////////////////////////
 
 /obj/item/food/waffles

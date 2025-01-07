@@ -583,7 +583,7 @@
 		if(undershirt.has_sensor == BROKEN_SENSORS)
 			. += list(span_notice("The [undershirt]'s medical sensors are sparking."))
 
-	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST) && !isnull(client))
-		. += client.prefs.background_info["character_desc"]
+	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST) && !isnull(client) && !!(client.prefs.background_info["character_desc"]))
+		. += "OOC Information: [client.prefs.background_info["character_desc"]]"
 
 #undef ADD_NEWLINE_IF_NECESSARY

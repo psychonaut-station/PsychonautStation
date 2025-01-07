@@ -5,6 +5,7 @@ import { useBackend } from '../../backend';
 import { Button, Stack } from '../../components';
 import { Window } from '../../layouts';
 import { AntagsPage } from './AntagsPage';
+import { BackgroundPage } from './BackgroundPage';
 import { PreferencesMenuData } from './data';
 import { JobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout/index';
@@ -20,6 +21,7 @@ enum Page {
   Species,
   Quirks,
   Loadout,
+  Background,
 }
 
 const CharacterProfiles = (props: {
@@ -82,6 +84,10 @@ export const CharacterPreferenceWindow = (props) => {
       pageContents = <LoadoutPage />;
       break;
 
+    case Page.Background:
+      pageContents = <BackgroundPage />;
+      break;
+
     default:
       exhaustiveCheck(currentPage);
   }
@@ -103,7 +109,7 @@ export const CharacterPreferenceWindow = (props) => {
           </Stack.Item>
           {!data.content_unlocked && (
             <Stack.Item align="center">
-              Buy BYOND premium for more slots!
+              Become a patron for more slots!
             </Stack.Item>
           )}
           <Stack.Divider />
@@ -117,6 +123,16 @@ export const CharacterPreferenceWindow = (props) => {
                   otherActivePages={[Page.Species]}
                 >
                   Character
+                </PageButton>
+              </Stack.Item>
+
+              <Stack.Item grow>
+                <PageButton
+                  currentPage={currentPage}
+                  page={Page.Background}
+                  setPage={setCurrentPage}
+                >
+                  Background
                 </PageButton>
               </Stack.Item>
 

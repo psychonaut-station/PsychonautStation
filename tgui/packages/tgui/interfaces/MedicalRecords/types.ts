@@ -27,6 +27,7 @@ export type MedicalRecord = {
   rank: string;
   species: string;
   trim: string;
+  medical_records: string;
 };
 
 export type MedicalNote = {

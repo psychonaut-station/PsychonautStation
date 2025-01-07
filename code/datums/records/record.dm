@@ -84,6 +84,12 @@
 	/// Current arrest status
 	var/wanted_status = WANTED_NONE
 
+	// Flavor Texts
+	var/medical_records
+	var/security_records
+	var/employment_records
+	var/exploit_records
+
 	///Photo used for records, which we store here so we don't have to constantly make more of.
 	var/list/obj/item/photo/record_photos
 
@@ -108,6 +114,10 @@
 	physical_status = PHYSICAL_ACTIVE,
 	mental_status = MENTAL_STABLE,
 	quirk_notes,
+	medical_records = "No further details.",
+	security_records = "No further details.",
+	employment_records = "No further details.",
+	exploit_records = "No further details.",
 )
 	. = ..()
 	src.lock_ref = lock_ref
@@ -118,6 +128,11 @@
 	src.physical_status = physical_status
 	src.mental_status = mental_status
 	src.quirk_notes = quirk_notes
+
+	src.medical_records = medical_records
+	src.security_records = security_records
+	src.employment_records = employment_records
+	src.exploit_records = exploit_records
 
 	GLOB.manifest.general += src
 
@@ -244,7 +259,7 @@
 	return new_photo
 
 /// Returns a paper printout of the current record's crime data.
-/datum/record/crew/proc/get_rapsheet(alias, header = "Rapsheet", description = "No further details.")
+/datum/record/crew/proc/get_rapsheet(alias, description, header = "Rapsheet")
 	var/print_count = ++GLOB.manifest.print_count
 	var/obj/item/paper/printed_paper = new
 	var/final_paper_text = "<center><b>SR-[print_count]: [header]</b></center><br>"
@@ -300,6 +315,8 @@
 		final_paper_text += "- [security_note]<br>"
 	if(description)
 		final_paper_text += "- [description]<br>"
+	if(security_records)
+		final_paper_text += "- [security_records]<br>"
 
 	printed_paper.name = "SR-[print_count] '[name]'"
 	printed_paper.add_raw_text(final_paper_text)

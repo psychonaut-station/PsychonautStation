@@ -310,6 +310,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	//Background Information
+	background_info = save_data?["background_info"]
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)
@@ -319,6 +322,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
+	background_info = SANITIZE_LIST(background_info)
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -367,6 +371,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
+
+	//Background Information
+	save_data["background_info"] = background_info
 
 	return TRUE
 

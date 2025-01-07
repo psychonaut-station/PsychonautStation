@@ -8,6 +8,7 @@
 	var/static/list/datum/computer_file/command_programs = list(
 		/datum/computer_file/program/science,
 		/datum/computer_file/program/status,
+		/datum/computer_file/program/crew_records,
 	)
 
 /obj/item/computer_disk/command/Initialize(mapload)

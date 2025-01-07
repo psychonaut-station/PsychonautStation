@@ -169,6 +169,8 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
+  background_info: Record<string, string>;
+
   keybindings: Record<string, string[]>;
   overflow_role: string;
   selected_quirks: string[];

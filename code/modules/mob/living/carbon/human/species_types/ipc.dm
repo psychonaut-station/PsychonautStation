@@ -47,27 +47,17 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
-	gibspawner = /obj/effect/gibspawner/robot/android
+	gibspawner_type = /obj/effect/gibspawner/robot/android
 	allow_numbers_in_name = TRUE
 
-/datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load)
+/datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
-	ipc.hud_possible += DIAG_BATT_HUD
-	ipc.hud_list = null
-	ipc.prepare_huds()
-	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.add_atom_to_hud(ipc)
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/human/old_ipc, datum/species/new_species, pref_load)
 	. = ..()
 	UnregisterSignal(old_ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
-	old_ipc.set_hud_image_inactive(DIAG_BATT_HUD)
-	old_ipc.hud_list -= DIAG_BATT_HUD
-	old_ipc.hud_possible -= DIAG_BATT_HUD
-	for(var/datum/atom_hud/data/diagnostic/diag_hud in GLOB.huds)
-		diag_hud.remove_atom_from_hud(old_ipc)
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
@@ -262,7 +252,7 @@
 		var/obj/machinery/power/apc/A = target
 		if(A.cell)
 			A.ipc_interact(H, click_parameters)
-			H.diag_hud_set_humancell(stomach.cell)
+			H.diag_hud_set_humancell()
 			return
 		else
 			to_chat(user, span_warning("There is not enough charge to draw from that APC."))

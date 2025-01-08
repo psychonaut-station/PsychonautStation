@@ -539,7 +539,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return default_randomization
 
 /datum/preferences/proc/refresh_membership()
-	if(!istype(parent))
+	set waitfor = FALSE
+
+	if(!istype(parent, /client))
 		return
 
 	var/patron = parent.check_patreon()

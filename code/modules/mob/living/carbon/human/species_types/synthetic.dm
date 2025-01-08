@@ -65,7 +65,7 @@
 	var/old_physique = MALE
 	var/old_age = 30
 
-/datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+/datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 
 	old_gender = C.gender

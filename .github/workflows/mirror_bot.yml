@@ -14,10 +14,11 @@ env:
   pr_body: This is an automated pull request to merge the latest changes from the upstream repository.
   pr_branch: mirror
   pr_label: mirror
-  remote_repo: tgstation/tgstation
-  remote_branch: master
+  upstream_repo: tgstation/tgstation
+  upstream_branch: master
   commiter_name: psychonaut-ci[bot]
   commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
+  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/
 
 jobs:
   mirror:
@@ -27,26 +28,64 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
-      - name: Add upstream remote
+      - name: Fetch upstream remote
+        run: |
+          git remote add upstream "https://github.com/$upstream_repo.git"
+          git fetch upstream $upstream_branch
+      - name: Check tracked files
+        id: tracking
+        run: |
+          $files = [System.Collections.ArrayList]@()
+
+          foreach ($_ in $Env:tracked_files -split ",") {
+            if ($_.EndsWith("/")) {
+              if ((git rev-list --count HEAD..FETCH_HEAD -- $_) -ne 0) {
+                foreach ($_ in (git diff --name-only FETCH_HEAD -- $_)) {
+                  $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $_)
+                  if ($ahead -ne 0) { $files.Add([Tuple]::Create($_, $ahead)) }
+                }
+              }
+            } else {
+              $ahead = (git rev-list --count HEAD..FETCH_HEAD -- $_)
+              if ($ahead -ne 0) { $files.Add([Tuple]::Create($_, $ahead)) }
+            }
+          }
+
+          if ($files.Count -ne 0) {
+            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
+
+            echo "`n`nThe following tracked files have changed:" >> $Env:GITHUB_OUTPUT
+
+            $upstream_hash = (git rev-parse FETCH_HEAD)
+
+            foreach ($_ in $files) {
+              $current = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch\short-hash/$($_.item1)"
+              $ours = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:GITHUB_REF_NAME/$($_.item1)"
+              $theirs = "https://github.com/$Env:upstream_repo/commits/$upstream_hash/$($_.item1)"
+
+              echo "- [ ] $($_.item1) - $($_.item2) commit(s) - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
+            }
+
+            echo "$EOF" >> $Env:GITHUB_OUTPUT
+          }
+        shell: pwsh
+      - name: Merge upstream branch
         run: |
           git config user.name "$commiter_name"
           git config user.email "$commiter_email"
 
-          git remote add upstream "https://github.com/$remote_repo.git"
-          git fetch upstream $remote_branch
-      - name: Merge upstream branch
-        run: |
-          git merge upstream/$remote_branch
+          git merge FETCH_HEAD --no-commit --no-ff
         continue-on-error: true
       - name: Commit with conflicts
         id: commit
         run: |
           $files = (git diff --name-only --diff-filter=U)
 
-          if ($files.Length -ne 0) {
-            $EOF = -join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) })
+          $EOF = "C$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+          echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
 
-            echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
+          if ($files.Length -ne 0) {
             echo "`n`nThe following files have conflicts:" >> $Env:GITHUB_OUTPUT
 
             $deleted_by_us = [System.Collections.ArrayList]@()
@@ -62,10 +101,10 @@ jobs:
               }
             }
 
-            git commit -a --no-edit
+            git commit --all --no-edit
 
             $short_hash = (git rev-parse --short HEAD)
-            $upstream_hash = (git rev-parse upstream/master)
+            $upstream_hash = (git rev-parse FETCH_HEAD)
 
             foreach ($file in $files) {
               $line = 1
@@ -88,25 +127,44 @@ jobs:
               }
 
               if ($conflicts -eq 0) {
-                if ($content -match '[^\u0000-\u007F]') {
-                  $conflicts = "binary file"
-                } elseif ($deleted_by_us.Contains($file)) {
+                if ($deleted_by_us.Contains($file)) {
                   $conflicts = "deleted by us"
                 } elseif ($deleted_by_them.Contains($file)) {
                   $conflicts = "deleted by them"
+                } elseif ($content -match '[^\u0000-\u007F]') {
+                  $conflicts = "binary file"
                 }
               }
 
               $current = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:pr_branch-$short_hash/$file#L$head_marker-L$branch_marker"
               $ours = "https://github.com/$Env:GITHUB_REPOSITORY/blob/$Env:GITHUB_REF_NAME/$file#L$head_marker"
-              $theirs = "https://github.com/$Env:remote_repo/blob/$upstream_hash/$file#L$head_marker"
+              $theirs = "https://github.com/$Env:upstream_repo/blob/$upstream_hash/$file#L$head_marker"
 
               echo "- [ ] $file - $conflicts - [diff]($current) - [origin]($ours) - [upstream]($theirs)" >> $Env:GITHUB_OUTPUT
             }
+          } else {
+            echo "`n`nThere were no conflicts." >> $Env:GITHUB_OUTPUT
+
+            git commit --all --no-edit
+
+            $short_hash = (git rev-parse --short HEAD)
+          }
+
+          echo "$EOF" >> $Env:GITHUB_OUTPUT
+
+          $tracked_files = "${{ steps.tracking.outputs.tracked_files }}"
+
+          if ($tracked_files.Length -ne 0) {
+            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
+
+            $tracked_files = $tracked_files.replace("\short-hash", $short_hash)
+
+            foreach ($_ in $tracked_files -split "`r?`n|`r") {
+              echo "$_" >> $Env:GITHUB_OUTPUT
+            }
 
             echo "$EOF" >> $Env:GITHUB_OUTPUT
-          } else {
-            git commit -a --no-edit
           }
         shell: pwsh
       - name: Generate App Token
@@ -129,13 +187,12 @@ jobs:
           branch-suffix: short-commit-hash
           delete-branch: true
           title: ${{ env.pr_title }}
-          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}
+          body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.tracked_files }}
           labels: ${{ env.pr_label }}
       - name: Close previous pull request(s)
         run: |
           $query = "repo:$Env:GITHUB_REPOSITORY is:pr is:open label:$Env:pr_label"
           $pr_number = ${{ steps.create-pull-request.outputs.pull-request-number }}
-
           foreach ($_ in $(gh api -X GET search/issues -F q="$query" --jq '.items[].number')) {
             if ($_ -ne $pr_number) {
               gh pr close $_ -R $Env:GITHUB_REPOSITORY -d -c "Superseded by #$pr_number."

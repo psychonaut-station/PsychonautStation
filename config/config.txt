@@ -8,6 +8,7 @@ $include resources.txt
 $include interviews.txt
 $include lua.txt
 $include auxtools.txt
+$include map_vote.txt
 
 # You can use the @ character at the beginning of a config option to lock it from being edited in-game
 # Example usage:
@@ -626,3 +627,9 @@ TIMEZONE_OFFSET 108000
 
 ## Uncomment to force users to link their Discord accounts before connecting
 # REQUIRE_DISCORD_LINKING
+
+## Uncomment to allow admins with +DEBUG to start the byond-tracy profiler during the round.
+#ALLOW_TRACY_START
+
+## Uncomment to allow admins with +DEBUG to queue the next round to run the byond-tracy profiler.
+#ALLOW_TRACY_QUEUE

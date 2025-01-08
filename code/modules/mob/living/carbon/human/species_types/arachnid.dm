@@ -34,7 +34,7 @@
 	if(chem.type == /datum/reagent/toxin/pestkiller)
 		H.adjustToxLoss(3 * REM * seconds_per_tick)
 
-/datum/species/arachnid/on_species_gain(mob/living/carbon/human/H, datum/species/old_species, pref_load)
+/datum/species/arachnid/on_species_gain(mob/living/carbon/human/H, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	RegisterSignal(H, COMSIG_MOB_APPLY_DAMAGE_MODIFIERS, PROC_REF(damage_weakness))
 

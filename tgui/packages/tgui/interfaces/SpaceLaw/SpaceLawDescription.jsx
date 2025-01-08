@@ -3,7 +3,7 @@
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.
 
-import { Box } from '../../components';
+import { Box } from 'tgui-core/components';
 
 export const spaceLawDescriptions = [
   {

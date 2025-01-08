@@ -387,33 +387,12 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 			recipient_ticket_id = recipient_ticket?.id
 			SSblackbox.LogAhelp(recipient_ticket_id, "Ticket Opened", send_message, recipient.ckey, src.ckey)
 
-		var/message_title = ""
-		var/message_reply = ""
-		var/message_sound = ""
-		switch (recipient_ticket.ticket_type)
-			if (TICKET_TYPE_ADMIN)
-				message_title = "<font color='red' size='4'><b>-- Administrator private message --</b></font>"
-				message_reply = span_adminsay("<i>Click on the administrator's name to reply.</i>")
-				message_sound = "sound/effects/adminhelp.ogg"
-			if (TICKET_TYPE_MENTOR)
-				message_title = "<font color='green' size='4'><b>-- Mentor private message --</b></font>"
-				message_reply = span_mentorsay("<i>Click on the mentor's name to reply.</i>")
-				message_sound = "sound/misc/compiler-stage2.ogg"
-
-		to_chat(recipient,
-			type = MESSAGE_TYPE_ADMINPM,
-			html = message_title,
-			confidential = TRUE)
-
 		recipient.receive_ahelp(
 			link_to_us,
-			span_linkify(send_message)
+			span_linkify(send_message),
+			recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? "mentorsay" : null
 		)
 
-		to_chat(recipient,
-			type = MESSAGE_TYPE_ADMINPM,
-			html = message_reply,
-			confidential = TRUE)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
 			html = span_notice("[recipient_ticket.ticket_type == TICKET_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
@@ -428,7 +407,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)
 
 		//always play non-admin recipients the adminhelp sound
-		SEND_SOUND(recipient, sound(message_sound))
+		SEND_SOUND(recipient, sound(recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? 'sound/machines/compiler/compiler-stage2.ogg' : 'sound/effects/adminhelp.ogg'))
 		return TRUE
 
 	// Ok if we're here, either this message is for an admin, or someone somehow figured out how to send a new message as a player
@@ -473,7 +452,8 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 	if(our_holder)
 		recipient.receive_ahelp(
 			name_key_with_link,
-			span_linkify(keyword_parsed_msg)
+			span_linkify(keyword_parsed_msg),
+			recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? "mentorsay" : "danger"
 		)
 
 		to_chat(src,
@@ -514,7 +494,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 
 	return TRUE
 
-/// Notifies all admins about the existance of an admin pm, then logs the pm
+/// Notifies all admins about the existence of an admin pm, then logs the pm
 /// message_target here can be either [EXTERNAL_PM_USER], indicating that this message is intended for some external chat channel
 /// or a /client, in which case we send in the standard form
 /// log_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
@@ -719,20 +699,10 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 	message_admins("External message from [sender] to [recipient_name_linked] : [message]")
 	log_admin_private("External PM: [sender] -> [recipient_name] : [message]")
 
-	to_chat(recipient,
-		type = MESSAGE_TYPE_ADMINPM,
-		html = "<font color='red' size='4'><b>-- Administrator private message --</b></font>",
-		confidential = TRUE)
-
 	recipient.receive_ahelp(
-		"<a href='?priv_msg=[stealthkey]'>[adminname]</a>",
-		message
+		"<a href='byond://?priv_msg=[stealthkey]'>[adminname]</a>",
+		message,
 	)
-
-	to_chat(recipient,
-		type = MESSAGE_TYPE_ADMINPM,
-		html = span_adminsay("<i>Click on the administrator's name to reply.</i>"),
-		confidential = TRUE)
 
 	admin_ticket_log(recipient, "<font color='purple'>PM From [tgs_tagged]: [message]</font>", log_in_blackbox = FALSE)
 
@@ -774,19 +744,31 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 
 	return GLOB.directory[searching_ckey]
 
-/client/proc/receive_ahelp(reply_to, message)
-	var/pretty_message = ""
-	switch (current_ticket?.ticket_type)
-		if (TICKET_TYPE_ADMIN)
-			pretty_message = "<span class='adminsay'>Admin PM from-<b>[reply_to]</b>: [message]</span>"
-		if (TICKET_TYPE_MENTOR)
-			pretty_message = "<span class='mentorsay'>Mentor PM from-<b>[reply_to]</b>: [span_mentorsaytext(message)]</span>"
+/client/proc/receive_ahelp(reply_to, message, span_class = "adminsay")
+	var/message_title = ""
+	var/message_sender = ""
+	var/message_reply = ""
+
+	switch(span_class)
+		if("mentorsay")
+			message_title = span_mentorsay("Mentor private message")
+			message_sender = "<span class='[span_class]'>Mentor PM from-<b>[reply_to]</b></span>"
+			message_reply = "<i class='[span_class]'>Click on the mentor's name to reply.</i>"
+		else
+			message_title = span_adminhelp("Administrator private message")
+			message_sender = "<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>"
+			message_reply = "<i class='[span_class]'>Click on the administrator's name to reply.</i>"
 
 	to_chat(
 		src,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = pretty_message,
-		confidential = TRUE,
+		html = fieldset_block(
+			message_title,
+			"[message_sender]\n\n\
+			<span class='[span_class]'>[message]</span>\n\n\
+			[message_reply]",
+			"boxed_message red_box"),
+		confidential = TRUE
 	)
 
 	current_ticket?.player_replied = FALSE

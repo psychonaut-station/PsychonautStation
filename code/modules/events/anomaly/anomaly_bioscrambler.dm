@@ -17,4 +17,4 @@
 /datum/round_event/anomaly/anomaly_bioscrambler/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("[ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name] bölgesinde biyolojik uzuv değiştirme maddesi tespit etti. Etkilerine karşı koymak için biyo-giysiler veya başka koruyucu ekipmanlar kullanın. Hesaplanan yaşam süresi %9£$T$%F3 yıl.", "Anomali Uyarısı")
+	priority_announce("[ANOMALY_ANNOUNCE_MEDIUM_TEXT] [impact_area.name] bölgesinde biyolojik uzuv değiştirme maddesi tespit etti. Etkilerine karşı koymak için biyo-giysiler veya başka koruyucu ekipmanlar kullanın.", "Anomali Uyarısı")

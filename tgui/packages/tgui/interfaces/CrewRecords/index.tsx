@@ -13,7 +13,9 @@ export const CrewRecords = (props) => {
   return (
     <Window title="Crew Records" width={750} height={550}>
       <Window.Content>
-        <CrewRecordsContent />
+        <Stack fill>
+          {!authenticated ? <UnauthorizedView /> : <AuthView />}
+        </Stack>
       </Window.Content>
     </Window>
   );

@@ -5470,7 +5470,6 @@
 #include "code\modules\modular_computers\file_system\programs\card.dm"
 #include "code\modules\modular_computers\file_system\programs\cargoship.dm"
 #include "code\modules\modular_computers\file_system\programs\coupon.dm"
-#include "code\modules\modular_computers\file_system\programs\crew_records.dm"
 #include "code\modules\modular_computers\file_system\programs\crewmanifest.dm"
 #include "code\modules\modular_computers\file_system\programs\dept_order.dm"
 #include "code\modules\modular_computers\file_system\programs\emojipedia.dm"

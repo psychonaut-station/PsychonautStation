@@ -51,7 +51,6 @@
 	starting_programs = list(
 		/datum/computer_file/program/chatclient,
 		/datum/computer_file/program/card_mod,
-		/datum/computer_file/program/crew_records,
 	)
 
 // ===== IDENTIFICATION CONSOLE =====
@@ -63,7 +62,6 @@
 		/datum/computer_file/program/card_mod,
 		/datum/computer_file/program/job_management,
 		/datum/computer_file/program/crew_manifest,
-		/datum/computer_file/program/crew_records,
 	)
 
 /obj/machinery/modular_computer/preset/id/centcom

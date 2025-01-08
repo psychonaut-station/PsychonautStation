@@ -169,7 +169,11 @@ export type PreferencesMenuData = {
   >;
   job_preferences: Record<string, JobPriority>;
 
-  background_info: Record<string, string>;
+  character_desc: string;
+  medical_records: string;
+  security_records: string;
+  employment_records: string;
+  exploit_records: string;
 
   keybindings: Record<string, string[]>;
   overflow_role: string;

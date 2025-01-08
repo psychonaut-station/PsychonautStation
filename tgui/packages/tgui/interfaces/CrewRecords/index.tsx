@@ -6,15 +6,6 @@ import { CrewRecordTabs } from './RecordTabs';
 import { CrewRecordView } from './RecordView';
 import { CrewRecordData } from './types';
 
-export const CrewRecordsContent = (props) => {
-  const { act, data } = useBackend<CrewRecordData>();
-  const { authenticated } = data;
-
-  return (
-    <Stack fill>{!authenticated ? <UnauthorizedView /> : <AuthView />}</Stack>
-  );
-};
-
 export const CrewRecords = (props) => {
   const { data } = useBackend<CrewRecordData>();
   const { authenticated } = data;

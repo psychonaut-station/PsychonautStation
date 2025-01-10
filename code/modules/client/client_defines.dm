@@ -272,6 +272,7 @@
 
 	///Which ambient sound this client is currently being provided.
 	var/current_ambient_sound
+<<<<<<< HEAD
 
 	/// Discord information of the client if they have linked their account and we fetched it
 	var/list/discord
@@ -279,3 +280,5 @@
 	/// Does this client's mob need to rebuild its plane masters after login?
 	/// This is currently only used so a client can switch between 515 and 516 without breaking their rendering.
 	var/rebuild_plane_masters = FALSE
+=======
+>>>>>>> 91981e151c75f3e971951612f161e81f9898f5b8

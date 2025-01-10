@@ -709,6 +709,7 @@
 
 /obj/item/storage/toolbox/guncase/anomaly_catcher
 	name = "anti singularity case"
+	desc = "A weapon's case. Has a singularity amblem on the cover."
 	icon = 'icons/psychonaut/obj/storage/case.dmi'
 	icon_state = "antisingularity_case"
 	weapon_to_spawn = /obj/item/gun/ballistic/rocketlauncher/anomaly_catcher

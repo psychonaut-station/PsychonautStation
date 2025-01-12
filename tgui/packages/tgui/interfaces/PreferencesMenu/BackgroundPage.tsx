@@ -16,8 +16,9 @@ export const BackgroundPage = () => {
   } = data;
   const [characterDesc, setCharacterDesc] = useState(character_desc);
   const [medicalRecords, setMedicalRecords] = useState(medical_records);
-  const [securityRecords, setSecurityRecords] = useState(employment_records);
-  const [employmentRecords, setEmploymentRecords] = useState(security_records);
+  const [securityRecords, setSecurityRecords] = useState(security_records);
+  const [employmentRecords, setEmploymentRecords] =
+    useState(employment_records);
   const [exploitsRecords, setExploitsRecords] = useState(exploit_records);
 
   const [numberOfCharacterDesc, setNumberOfCharacterDesc] = useState(
@@ -64,7 +65,10 @@ export const BackgroundPage = () => {
                         icon="save"
                         disabled={characterDesc === character_desc}
                         onClick={() =>
-                          act('character_desc', { value: characterDesc })
+                          act('set_background_data', {
+                            preference: 'character_desc',
+                            value: characterDesc,
+                          })
                         }
                       >
                         Save
@@ -82,7 +86,7 @@ export const BackgroundPage = () => {
                     width="100%"
                     height="100px"
                     style={{
-                      border: `1px solid ${numberOfCharacterDesc > 256 ? '#D4282B' : '#5A7BA1'}`,
+                      border: `1px solid ${numberOfCharacterDesc > 256 && '#D4282B'}`,
                     }}
                     onChange={(e, value) => setCharacterDesc(value)}
                     onInput={(e, value) =>
@@ -117,7 +121,10 @@ export const BackgroundPage = () => {
                             icon="save"
                             disabled={medicalRecords === medical_records}
                             onClick={() =>
-                              act('medical_records', { value: medicalRecords })
+                              act('set_background_data', {
+                                preference: 'medical_records',
+                                value: medicalRecords,
+                              })
                             }
                           >
                             Save
@@ -135,7 +142,7 @@ export const BackgroundPage = () => {
                         width="100%"
                         height="100px"
                         style={{
-                          border: `1px solid ${numberOfMedicalRecords > 256 ? '#D4282B' : '#5A7BA1'}`,
+                          border: `1px solid ${numberOfMedicalRecords > 256 && '#D4282B'}`,
                         }}
                         onChange={(e, value) => setMedicalRecords(value)}
                         onInput={(e, value) =>
@@ -168,7 +175,8 @@ export const BackgroundPage = () => {
                             icon="save"
                             disabled={securityRecords === security_records}
                             onClick={() =>
-                              act('security_records', {
+                              act('set_background_data', {
+                                preference: 'security_records',
                                 value: securityRecords,
                               })
                             }
@@ -188,7 +196,7 @@ export const BackgroundPage = () => {
                         width="100%"
                         height="100px"
                         style={{
-                          border: `1px solid ${numberOfSecurityRecords > 256 ? '#D4282B' : '#5A7BA1'}`,
+                          border: `1px solid ${numberOfSecurityRecords > 256 && '#D4282B'}`,
                         }}
                         onChange={(e, value) => setSecurityRecords(value)}
                         onInput={(e, value) =>
@@ -225,7 +233,8 @@ export const BackgroundPage = () => {
                             icon="save"
                             disabled={employmentRecords === employment_records}
                             onClick={() =>
-                              act('employment_records', {
+                              act('set_background_data', {
+                                preference: 'employment_records',
                                 value: employmentRecords,
                               })
                             }
@@ -247,7 +256,7 @@ export const BackgroundPage = () => {
                         width="100%"
                         height="100px"
                         style={{
-                          border: `1px solid ${numberOfEmploymentRecords > 256 ? '#D4282B' : '#5A7BA1'}`,
+                          border: `1px solid ${numberOfEmploymentRecords > 256 && '#D4282B'}`,
                         }}
                         onChange={(e, value) => setEmploymentRecords(value)}
                         onInput={(e, value) =>
@@ -280,7 +289,10 @@ export const BackgroundPage = () => {
                             icon="save"
                             disabled={exploitsRecords === exploit_records}
                             onClick={() =>
-                              act('exploit_records', { value: exploitsRecords })
+                              act('set_background_data', {
+                                preference: 'exploit_records',
+                                value: exploitsRecords,
+                              })
                             }
                           >
                             Save
@@ -298,7 +310,7 @@ export const BackgroundPage = () => {
                         width="100%"
                         height="100px"
                         style={{
-                          border: `1px solid ${numberOfExploitsRecords > 256 ? '#D4282B' : '#5A7BA1'}`,
+                          border: `1px solid ${numberOfExploitsRecords > 256 && '#D4282B'}`,
                         }}
                         onChange={(e, value) => setExploitsRecords(value)}
                         onInput={(e, value) =>

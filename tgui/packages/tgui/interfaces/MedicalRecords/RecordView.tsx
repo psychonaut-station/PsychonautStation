@@ -208,7 +208,7 @@ export const MedicalRecordView = (props) => {
             </LabeledList.Item>
             <LabeledList.Item label="Medical Records">
               <EditableText
-                field="med_record"
+                field="medical_records"
                 target_ref={crew_ref}
                 text={medical_records}
               />

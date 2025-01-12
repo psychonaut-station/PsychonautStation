@@ -259,7 +259,7 @@
 	return new_photo
 
 /// Returns a paper printout of the current record's crime data.
-/datum/record/crew/proc/get_rapsheet(alias, description, header = "Rapsheet")
+/datum/record/crew/proc/get_rapsheet(alias, header = "Rapsheet", description = "No further details.")
 	var/print_count = ++GLOB.manifest.print_count
 	var/obj/item/paper/printed_paper = new
 	var/final_paper_text = "<center><b>SR-[print_count]: [header]</b></center><br>"
@@ -313,10 +313,10 @@
 	final_paper_text += "<center>Important Notes:</center><br>"
 	if(security_note)
 		final_paper_text += "- [security_note]<br>"
-	if(description)
-		final_paper_text += "- [description]<br>"
 	if(security_records)
 		final_paper_text += "- [security_records]<br>"
+	if(description)
+		final_paper_text += "- [description]<br>"
 
 	printed_paper.name = "SR-[print_count] '[name]'"
 	printed_paper.add_raw_text(final_paper_text)

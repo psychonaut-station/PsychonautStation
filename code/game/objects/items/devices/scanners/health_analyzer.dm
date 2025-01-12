@@ -198,7 +198,7 @@
 			render_list += "<span class='info ml-1'>Subject Medical Notes:</span>"
 			for(var/i in 1 to length(found_record.medical_notes))
 				var/datum/medical_note/medical_note = found_record.medical_notes[i]
-				render_list += "<BR>\n\t [i]:[medical_note.content]"
+				render_list += "<br>\n\t[i]: [medical_note.content]"
 
 	// Body part damage report
 	if(iscarbon(target))

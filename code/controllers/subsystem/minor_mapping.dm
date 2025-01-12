@@ -125,7 +125,7 @@ SUBSYSTEM_DEF(minor_mapping)
 			if(thing_on_table.invisibility || !thing_on_table.alpha || !thing_on_table.mouse_opacity)
 				continue
 			thing_on_table.forceMove(get_turf(another_table))
-	var/obj/machinery/computer/records/crew/laptop/laptop = new /obj/machinery/computer/records/crew/laptop(picked_turf)
+	var/obj/machinery/computer/records/crew/laptop/laptop = new (picked_turf)
 	var/laptopdir
 	var/list/possible_dirs = GLOB.cardinals.Copy()
 	var/static/list/passList = list(

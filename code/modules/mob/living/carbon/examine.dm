@@ -596,8 +596,9 @@
 		if(iter_scar.is_visible(user))
 			. += iter_scar.get_examine_description(user)
 
-	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST) && !isnull(client) && !!(client.prefs.background_info["character_desc"]))
-		. += "OOC Information: [client.prefs.background_info["character_desc"]]"
+	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
+		if(flavor_text)
+			. += "<span class='info'>OOC Information:</span> [flavor_text]"
 
 
 #undef ADD_NEWLINE_IF_NECESSARY

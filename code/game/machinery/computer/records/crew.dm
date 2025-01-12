@@ -4,7 +4,7 @@
 	icon_screen = "explosive"
 	icon_keyboard = "security_key"
 	req_one_access = list(ACCESS_COMMAND, ACCESS_DETECTIVE)
-	circuit = /obj/item/circuitboard/computer/med_data
+	circuit = /obj/item/circuitboard/computer/crew_data
 	light_color = LIGHT_COLOR_BLUE
 
 /obj/machinery/computer/records/crew/syndie
@@ -19,6 +19,7 @@
 	icon_screen = "crewlaptop"
 	icon_keyboard = "laptop_key"
 	pass_flags = PASSTABLE
+	projectiles_pass_chance = 100
 
 /obj/machinery/computer/records/crew/attacked_by(obj/item/attacking_item, mob/living/user)
 	. = ..()
@@ -74,7 +75,7 @@
 		return FALSE
 
 	target.age = 18
-	target.blood_type = pick(list("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-"))
+	target.blood_type = pick("A+", "A-", "B+", "B-", "O+", "O-", "AB+", "AB-")
 	target.gender = "Unknown"
 	target.major_disabilities = ""
 	target.major_disabilities_desc = ""

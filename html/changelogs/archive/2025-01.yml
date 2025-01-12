@@ -78,17 +78,10 @@
   SmArtKar, AnturK:
   - admin: Fixes admin observe showing all antags as revs upon enabling Real Name
       Display
-<<<<<<< HEAD
-=======
-  high-speedspin-cycle:
-  - qol: The experimental deconstructive scanner can now scan multiple items.
->>>>>>> 91981e151c75f3e971951612f161e81f9898f5b8
   necromanceranne:
   - balance: The compact combat shotgun is now found in the warden's locker.
   timothymtorres:
   - bugfix: Fix pAIs interacting with machinery via alt/ctrl clicking.
-<<<<<<< HEAD
-=======
 2025-01-05:
   Ben10Omintrix:
   - qol: virtual pet holograms now automatically follow you when released rather than
@@ -253,4 +246,3 @@
       displayed as blue.
   high-speedspin-cycle:
   - balance: Overdose thresholds now positively scale with high purity
->>>>>>> 91981e151c75f3e971951612f161e81f9898f5b8

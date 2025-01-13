@@ -91,15 +91,6 @@ DEFINE_BITFIELD(sign_features, list(
 	configured_advert = "advert_meson"
 	configured_advert_duration = 7 SECONDS
 
-/obj/machinery/incident_display/delam/post_machine_initialize()
-	. = ..()
-	if(SSmapping.picked_rooms["engine"])
-		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
-		if(engine_template.engine_type == "singularity")
-			name = NAME_SINGULARITY
-			desc = DESC_SINGULARITY
-			sign_features = DISPLAY_SINGULARITY_DEATH
-
 /obj/machinery/incident_display/tram
 	name = NAME_TRAM
 	desc = DESC_TRAM
@@ -120,6 +111,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 3
 /obj/machinery/incident_display/Initialize(mapload)
 	..()
 	register_context()
+	if(mapload && sign_features == DISPLAY_DELAM && SSmapping.picked_rooms["engine"])
+		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
+		if(engine_template.engine_type == "singularity")
+			name = NAME_SINGULARITY
+			desc = DESC_SINGULARITY
+			sign_features = DISPLAY_SINGULARITY_DEATH
+
 	return INITIALIZE_HINT_LATELOAD
 
 /obj/machinery/incident_display/post_machine_initialize()
@@ -236,9 +234,13 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 3
 	if(prob(33))
 		last_delam = 0
 		delam_record = 0
+		last_singularity_death = 0
+		singularity_deaths_record = 0
 	else
 		last_delam = rand(1,99)
 		delam_record = rand(1,99)
+		last_singularity_death = rand(1,99)
+		singularity_deaths_record = rand(1,99)
 
 	update_appearance()
 

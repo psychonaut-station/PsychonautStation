@@ -9,7 +9,7 @@
 	if(fexists(SINGULARITY_DEATH_HIGHSCORE_FILEPATH))
 		singularity_death_record = text2num(file2text(SINGULARITY_DEATH_HIGHSCORE_FILEPATH))
 	for(var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
-		sign.update_delam_count(rounds_since_singularity_death, singularity_death_record)
+		sign.update_last_singularity_death(rounds_since_singularity_death, singularity_death_record)
 
 /datum/controller/subsystem/persistence/proc/save_singularity_death_counter()
 	rustg_file_write("[rounds_since_singularity_death + 1]", SINGULARITY_DEATH_COUNT_FILEPATH)

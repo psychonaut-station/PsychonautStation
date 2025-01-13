@@ -116,6 +116,7 @@
 		/obj/item/circuitboard/computer/crew,
 		/obj/item/circuitboard/computer/communications,
 		/obj/item/circuitboard/computer/bankmachine,
+		/obj/item/circuitboard/computer/crew_data
 	)
 
 /obj/effect/spawner/random/techstorage/rnd_secure_all

@@ -67,6 +67,7 @@
 			rank = target.rank,
 			species = target.species,
 			trim = target.trim,
+			medical_records = target.medical_records,
 		))
 
 	data["records"] = records
@@ -157,5 +158,6 @@
 	target.rank = "Unknown"
 	target.species = "Unknown"
 	target.trim = "Unknown"
+	target.medical_records = ""
 
 	return TRUE

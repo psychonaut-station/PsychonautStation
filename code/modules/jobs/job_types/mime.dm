@@ -35,7 +35,10 @@
 	voice_of_god_silence_power = 3
 
 	job_tone = "silence"
-
+	alt_titles = list(
+		"Mime",
+		"Pantomimist",
+	)
 
 /datum/job/mime/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

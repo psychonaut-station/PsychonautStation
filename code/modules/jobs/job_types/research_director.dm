@@ -47,6 +47,14 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+	alt_titles = list(
+		"Research Director",
+		"Silicon Administrator",
+		"Lead Researcher",
+		"Biorobotics Director",
+		"Research Supervisor",
+		"Chief Science Officer"
+	)
 
 /datum/job/research_director/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

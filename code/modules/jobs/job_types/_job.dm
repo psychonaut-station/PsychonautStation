@@ -1,3 +1,5 @@
+
+
 /datum/job
 	/// The name of the job , used for preferences, bans and more. Make sure you know what you're doing before changing this.
 	var/title = "NOPE"
@@ -138,6 +140,9 @@
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
 
+	/// The list of alternative job titles people can pick from
+	var/list/alt_titles
+
 /datum/job/New()
 	. = ..()
 	var/new_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
@@ -146,6 +151,10 @@
 	var/new_total_positions = CHECK_MAP_JOB_CHANGE(title, "total_positions")
 	if(isnum(new_total_positions))
 		total_positions = new_total_positions
+
+	for(var/alt_title in alt_titles)
+		if(!SSjob.all_alt_titles[alt_title])
+			SSjob.all_alt_titles[alt_title] = title
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
@@ -186,9 +195,9 @@
 
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
-/datum/job/proc/announce_job(mob/living/joining_mob)
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title)
 	if(head_announce)
-		announce_head(joining_mob, head_announce)
+		announce_head(joining_mob, head_announce, job_title)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -227,8 +236,22 @@
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
+	if(visual_only)
+		return
 
-/datum/job/proc/announce_head(mob/living/carbon/human/human, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+	var/chosen_title = player_client?.prefs.alt_job_titles[equipping.title] || equipping.title
+	if(chosen_title == equipping.title)
+		return
+	var/obj/item/card/id/card = wear_id
+	if(istype(card))
+		card.assignment = chosen_title
+		card.update_label()
+	var/list/all_contents = get_all_contents()
+	var/obj/item/modular_computer/pda/pda = locate() in all_contents
+	if(!isnull(pda))
+		pda.imprint_id(job_name = chosen_title)
+
+/datum/job/proc/announce_head(mob/living/carbon/human/human, channels, job_title) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(!human)
 		return
 	var/obj/machinery/announcement_system/system
@@ -241,7 +264,7 @@
 		return
 	system = pick(available_machines)
 	//timer because these should come after the captain announcement
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(system, TYPE_PROC_REF(/obj/machinery/announcement_system, announce), AUTO_ANNOUNCE_NEWHEAD, human.real_name, human.job, channels), 1))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(system, TYPE_PROC_REF(/obj/machinery/announcement_system, announce), AUTO_ANNOUNCE_NEWHEAD, human.real_name, job_title, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)

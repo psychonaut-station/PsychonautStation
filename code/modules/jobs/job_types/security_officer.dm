@@ -45,7 +45,12 @@
 		JOB_SECURITY_OFFICER_SCIENCE,
 	)
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Security Officer",
+		"Security Operative",
+		"Peacekeeper",
+		"Security Cadet",
+	)
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 

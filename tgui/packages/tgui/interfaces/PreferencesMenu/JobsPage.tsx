@@ -175,7 +175,7 @@ const PriorityButtons = (props: {
 };
 
 const JobRow = (props: { className?: string; job: Job; name: string }) => {
-  const { data } = useBackend<PreferencesMenuData>();
+  const { act, data } = useBackend<PreferencesMenuData>();
   const { className, job, name } = props;
 
   const isOverflow = data.overflow_role === name;
@@ -186,6 +186,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
+
+  const alt_title_selected = data.job_alt_titles[name]
+    ? data.job_alt_titles[name]
+    : name;
 
   let rightSide: ReactNode;
 
@@ -235,25 +239,51 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   }
 
   return (
-    <Stack.Item className={className} height="100%" mt={0}>
-      <Stack fill align="center">
-        <Tooltip content={job.description} position="bottom-start">
+    <Box
+      className={className}
+      style={{
+        'margin-top': 0,
+      }}
+    >
+      <Stack>
+        <Tooltip
+          content={
+            <Box>
+              <b>{alt_title_selected}</b> <br /> <br /> {job.description}
+            </Box>
+          }
+          position="right"
+        >
           <Stack.Item
+            align="center"
             className="job-name"
-            width="50%"
+            width="60%"
             style={{
-              paddingLeft: '0.3em',
+              'padding-left': '0.3em',
             }}
+            noChevron={1}
           >
-            {name}
+            {!job.alt_titles ? (
+              <Box className="Button">{name}</Box>
+            ) : (
+              <Dropdown
+                width="100%"
+                options={job.alt_titles}
+                displayText={alt_title_selected}
+                onSelected={(value) =>
+                  act('set_job_title', { job: name, new_title: value })
+                }
+                color
+              />
+            )}
           </Stack.Item>
         </Tooltip>
 
-        <Stack.Item grow className="options">
+        <Stack.Item width="40%" className="options" /* SKYRAT EDIT */>
           {rightSide}
         </Stack.Item>
       </Stack>
-    </Stack.Item>
+    </Box>
   );
 };
 

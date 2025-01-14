@@ -256,3 +256,10 @@
   - sound: Add hair clipper sound to hair razor item
   zoomachina:
   - spellcheck: succesful -> successful
+2025-01-14:
+  Rengan:
+  - rscadd: "Karakter olu\u015Fturma men\xFCs\xFCne karakter ge\xE7mi\u015Fini yazmak\
+      \ i\xE7in Background k\u0131sm\u0131 eklendi."
+  - rscadd: Crew records console oyuna eklendi.
+  - rscadd: "Adveanced health analyzerde art\u0131k ki\u015Finin medikal notlar\u0131\
+      \ g\xF6z\xFCk\xFCcek."

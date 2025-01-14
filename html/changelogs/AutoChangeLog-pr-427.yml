@@ -1,6 +1,0 @@
-author: "Rengan"
-delete-after: True
-changes:
-  - rscadd: "Karakter oluşturma menüsüne karakter geçmişini yazmak için Background kısmı eklendi."
-  - rscadd: "Crew records console oyuna eklendi."
-  - rscadd: "Adveanced health analyzerde artık kişinin medikal notları gözükücek."

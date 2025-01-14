@@ -453,6 +453,7 @@
 			else
 				. += c
 
+// Just like the copytext proc but this works with non-english characters too
 /proc/locale_copytext(t, start, end)
 	var/list/char_list = text2charlist(t)
 	var/thend = end > length(char_list) ? PREVENT_CHARACTER_TRIM_LOSS(length(char_list)) : 0

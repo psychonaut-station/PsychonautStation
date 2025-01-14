@@ -48,7 +48,6 @@
 		"Xenoarchaeologist",
 		"Research Assistant",
 		"Graduate Student",
-		"Artificer",
 		"Cryptozoologist",
 	)
 

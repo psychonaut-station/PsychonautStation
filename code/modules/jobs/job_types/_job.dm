@@ -236,20 +236,9 @@
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
-	if(visual_only)
+	if(visual_only || istype(equipping, /datum/job/security_officer))
 		return
-
-	var/chosen_title = player_client?.prefs.alt_job_titles[equipping.title] || equipping.title
-	if(chosen_title == equipping.title)
-		return
-	var/obj/item/card/id/card = wear_id
-	if(istype(card))
-		card.assignment = chosen_title
-		card.update_label()
-	var/list/all_contents = get_all_contents()
-	var/obj/item/modular_computer/pda/pda = locate() in all_contents
-	if(!isnull(pda))
-		pda.imprint_id(job_name = chosen_title)
+	equipping.set_alt_title(src, player_client)
 
 /datum/job/proc/announce_head(mob/living/carbon/human/human, channels, job_title) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(!human)
@@ -684,3 +673,16 @@
 /datum/job/proc/after_latejoin_spawn(mob/living/spawning)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
+
+/datum/job/proc/set_alt_title(mob/living/carbon/human/H, client/player_client)
+	var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
+	if(chosen_title == title)
+		return
+	var/obj/item/card/id/card = H.wear_id
+	if(istype(card))
+		card.assignment = chosen_title
+		card.update_label()
+	var/list/all_contents = H.get_all_contents()
+	var/obj/item/modular_computer/pda/pda = locate() in all_contents
+	if(!isnull(pda))
+		pda.imprint_id(job_name = chosen_title)

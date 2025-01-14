@@ -249,7 +249,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
     <Box
       className={className}
       style={{
-        'margin-top': 0,
+        marginTop: 0,
       }}
     >
       <Stack>
@@ -266,7 +266,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
             className="job-name"
             grow
             style={{
-              'padding-left': '0.3em',
+              paddingLeft: '0.3em',
             }}
             noChevron={1}
           >
@@ -280,7 +280,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                 onSelected={(value) =>
                   act('set_job_title', { job: name, new_title: value })
                 }
-                color
+                color=""
               />
             )}
           </Stack.Item>

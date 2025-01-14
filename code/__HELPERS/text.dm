@@ -453,6 +453,12 @@
 			else
 				. += c
 
+/proc/locale_copytext(t, start, end)
+	var/list/char_list = text2charlist(t)
+	var/thend = end > length(char_list) ? PREVENT_CHARACTER_TRIM_LOSS(length(char_list)) : 0
+	var/list/copied_list = char_list.Copy(start, thend)
+	return jointext(copied_list, "")
+
 /proc/stringmerge(text,compare,replace = "*")
 //This proc fills in all spaces with the "replace" var (* by default) with whatever
 //is in the other string at the same spot (assuming it is not a replace char).

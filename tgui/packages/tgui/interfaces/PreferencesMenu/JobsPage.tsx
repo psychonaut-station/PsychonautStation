@@ -118,11 +118,18 @@ const PriorityButtons = (props: {
         alignItems: 'center',
         height: '100%',
         justifyContent: 'flex-end',
-        paddingLeft: '0.3em',
+        paddingLeft: '0.4em',
+        paddingRight: '0.4em',
       }}
     >
       {isOverflow ? (
         <>
+          <Stack.Item height={PRIORITY_BUTTON_SIZE}>
+            <Box height={PRIORITY_BUTTON_SIZE} width={PRIORITY_BUTTON_SIZE} />
+          </Stack.Item>
+          <Stack.Item height={PRIORITY_BUTTON_SIZE}>
+            <Box height={PRIORITY_BUTTON_SIZE} width={PRIORITY_BUTTON_SIZE} />
+          </Stack.Item>
           <PriorityButton
             name="Off"
             modifier="off"
@@ -257,7 +264,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           <Stack.Item
             align="center"
             className="job-name"
-            width="60%"
+            grow
             style={{
               'padding-left': '0.3em',
             }}
@@ -279,7 +286,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           </Stack.Item>
         </Tooltip>
 
-        <Stack.Item width="40%" className="options" /* SKYRAT EDIT */>
+        <Stack.Item shrink className="options">
           {rightSide}
         </Stack.Item>
       </Stack>

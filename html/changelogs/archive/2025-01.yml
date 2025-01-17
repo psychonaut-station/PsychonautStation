@@ -246,35 +246,19 @@
       displayed as blue.
   high-speedspin-cycle:
   - balance: Overdose thresholds now positively scale with high purity
-<<<<<<< HEAD
-2025-01-13:
-=======
 2025-01-11:
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
   Y0SH1M4S73R:
   - qol: Xenomorphs that have had their organs removed, or replaced with organs they
       shouldn't normally have, keep those organs (or lack thereof) when evolving.
   - bugfix: Xenomorphs that somehow get skillchips or brain traumas will keep them
       when evolving.
-<<<<<<< HEAD
-=======
   lukevale:
   - bugfix: Fixes the extra pixals the flooring decal line trim, and the striped version
       has where it's not ment to.
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
   timothymtorres:
   - sound: Add hair clipper sound to hair razor item
   zoomachina:
   - spellcheck: succesful -> successful
-<<<<<<< HEAD
-2025-01-14:
-  Rengan:
-  - rscadd: "Karakter olu\u015Fturma men\xFCs\xFCne karakter ge\xE7mi\u015Fini yazmak\
-      \ i\xE7in Background k\u0131sm\u0131 eklendi."
-  - rscadd: Crew records console oyuna eklendi.
-  - rscadd: "Adveanced health analyzerde art\u0131k ki\u015Finin medikal notlar\u0131\
-      \ g\xF6z\xFCk\xFCcek."
-=======
 2025-01-12:
   00-Steven:
   - bugfix: Only red glowstick fluid gives permanent unnaturally red eyes on overdose.
@@ -367,6 +351,12 @@
   - bugfix: fixes plasma stabilizer module not showing a visor on modsuits
   - bugfix: makes the plasma stabilizer module actually visible
   - bugfix: makes rave module grey by default as it was meant to be
+  Rengan:
+  - rscadd: "Karakter olu\u015Fturma men\xFCs\xFCne karakter ge\xE7mi\u015Fini yazmak\
+      \ i\xE7in Background k\u0131sm\u0131 eklendi."
+  - rscadd: Crew records console oyuna eklendi.
+  - rscadd: "Adveanced health analyzerde art\u0131k ki\u015Finin medikal notlar\u0131\
+      \ g\xF6z\xFCk\xFCcek."
   SmArtKar:
   - bugfix: Fixed wawa's xenobio reagent grinders being inaccessible
   - bugfix: Fixed camouflage implant missing icon
@@ -518,4 +508,3 @@
       it, you'll only be able to understand Space Carps unless you steal a fish tongue.
   gleypi:
   - spellcheck: fixed the tong clacking message
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67

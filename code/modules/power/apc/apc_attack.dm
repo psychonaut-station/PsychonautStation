@@ -24,12 +24,7 @@
 	else
 		if(maybe_ethereal_stomach.cell.charge() >= ETHEREAL_CHARGE_NORMAL)
 			togglelock(user)
-<<<<<<< HEAD
-		ethereal_interact(user, modifiers)
-
-=======
 		ethereal_interact(human_user, maybe_ethereal_stomach, modifiers)
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
 	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /// Special behavior for when an ethereal interacts with an APC.

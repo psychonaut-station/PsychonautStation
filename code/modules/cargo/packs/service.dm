@@ -316,7 +316,6 @@
 	crate_name = "bowmaking starter kit crate"
 	crate_type = /obj/structure/closet/crate/wooden
 
-<<<<<<< HEAD
 /// Doner Machine.
 /datum/supply_pack/service/doner_grill
 	name = "Doner Grill Crate"
@@ -328,11 +327,10 @@
 		/obj/item/knife/doner = 1
 	)
 	crate_name = "doner grill crate"
-=======
+
 /datum/supply_pack/service/mousetraps
 	name = "Pest-B-Gon Mousetraps"
 	desc = "Three boxes of handy little spring-loaded traps for catching pesty rodents. Keep out of reach of children!"
 	cost = CARGO_CRATE_VALUE * 2
 	contains = list(/obj/item/storage/box/mousetraps = 3)
 	crate_name = "mousetraps crate"
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67

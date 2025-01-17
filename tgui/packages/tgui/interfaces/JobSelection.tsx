@@ -113,29 +113,6 @@ type DepartmentEntryProps = {
   department: Department;
 };
 
-<<<<<<< HEAD
-const SEC_LEVEL_GREEN = 0;
-const SEC_LEVEL_BLUE = 1;
-const SEC_LEVEL_RED = 2;
-const SEC_LEVEL_DELTA = 3;
-
-const get_security_level = (level: number) => {
-  switch (level) {
-    case SEC_LEVEL_GREEN:
-      return <NoticeBox success>The current alert level is: Green</NoticeBox>;
-    case SEC_LEVEL_BLUE:
-      return <NoticeBox info>The current alert level is: Blue</NoticeBox>;
-    case SEC_LEVEL_RED:
-      return <NoticeBox danger>The current alert level is: Red</NoticeBox>;
-    case SEC_LEVEL_DELTA:
-      return (
-        <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
-      );
-  }
-};
-
-export const JobSelection = (props) => {
-=======
 function DepartmentEntry(props: DepartmentEntryProps) {
   const { name, department } = props;
   const { act } = useBackend<Data>();
@@ -195,8 +172,22 @@ function DepartmentEntry(props: DepartmentEntryProps) {
   );
 }
 
+const securityLevel = (level: number) => {
+  switch (level) {
+    case 0:
+      return <NoticeBox success>The current alert level is: Green</NoticeBox>;
+    case 1:
+      return <NoticeBox info>The current alert level is: Blue</NoticeBox>;
+    case 2:
+      return <NoticeBox danger>The current alert level is: Red</NoticeBox>;
+    case 3:
+      return (
+        <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
+      );
+  }
+};
+
 export function JobSelection(props) {
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
   const { act, data } = useBackend<Data>();
   if (!data?.departments_static) {
     return null; // Stop TGUI whitescreens with TGUI-dev!
@@ -225,26 +216,11 @@ export function JobSelection(props) {
           scrollable
           title={
             <>
-<<<<<<< HEAD
-              {get_security_level(data.security_level)}
-              {data.shuttle_status && (
-                <NoticeBox info>{data.shuttle_status}</NoticeBox>
-              )}
-              <span style={{ color: 'grey' }}>
-                It is currently {data.round_duration} into the shift.
-              </span>
-              <Button
-                style={{ position: 'absolute', right: '1em' }}
-                onClick={() => act('select_job', { job: 'Random' })}
-                content="Random Job!"
-                tooltip="Roll target random job. You can re-roll or cancel your random job if you don't like it."
-              />
-=======
+              {securityLevel(data.security_level)}
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
                 It is currently {round_duration} into the shift.
               </Box>
->>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
             </>
           }
         >

@@ -100,5 +100,7 @@
 
 	var/flavor_text
 
-	/// Height of the mob
-	VAR_PROTECTED/mob_height = HUMAN_HEIGHT_MEDIUM
+	/// Base height of the mob, modified by stuff like dwarfism or species
+	VAR_PRIVATE/base_mob_height = HUMAN_HEIGHT_MEDIUM
+	/// Actual height of the mob. Don't touch this one, it is set via update_mob_height()
+	VAR_FINAL/mob_height = HUMAN_HEIGHT_MEDIUM

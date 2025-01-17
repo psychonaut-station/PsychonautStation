@@ -321,6 +321,16 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 	)
 	selected_language = /datum/language/uncommon
 
+/datum/language_holder/lizard/hear_common
+	selected_language = /datum/language/draconic
+	understood_languages = list(
+		/datum/language/common = list(LANGUAGE_ATOM),
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+	)
+	spoken_languages = list(
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+	)
+
 /datum/language_holder/monkey
 	understood_languages = list(
 		/datum/language/common = list(LANGUAGE_ATOM),
@@ -503,6 +513,7 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 		/datum/language/nekomimetic = list(LANGUAGE_ATOM),
 	)
 
+<<<<<<< HEAD
 /datum/language_holder/ipc
 	understood_languages = list(
 		/datum/language/common = list(LANGUAGE_ATOM),
@@ -513,6 +524,35 @@ GLOBAL_LIST_INIT(prototype_language_holders, init_language_holder_prototypes())
 		/datum/language/common = list(LANGUAGE_ATOM),
 		/datum/language/uncommon = list(LANGUAGE_ATOM),
 		/datum/language/machine = list(LANGUAGE_ATOM),
+=======
+/datum/language_holder/carp
+	selected_language = /datum/language/carptongue
+	understood_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+	)
+	spoken_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+	)
+
+/datum/language_holder/carp/dragon
+	understood_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+		/datum/language/common = list(LANGUAGE_ATOM),
+	)
+	spoken_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+		/datum/language/draconic = list(LANGUAGE_ATOM),
+	)
+
+/datum/language_holder/carp/hear_common
+	understood_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+		/datum/language/common = list(LANGUAGE_ATOM),
+	)
+	spoken_languages = list(
+		/datum/language/carptongue = list(LANGUAGE_ATOM),
+>>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67
 	)
 
 // Given to atoms by default

@@ -1318,6 +1318,7 @@
 	var/mob/living/carbon/exposed_carbon = exposed_mob
 	var/obj/item/organ/stomach/ethereal/stomach = exposed_carbon.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(stomach))
+<<<<<<< HEAD
 		stomach.adjust_charge(reac_volume * 0.02 * ETHEREAL_CHARGE_NORMAL)
 
 /datum/reagent/consumable/ayran
@@ -1333,3 +1334,6 @@
 	if(affected_mob.getFireLoss() && SPT_PROB(10, seconds_per_tick))
 		if(affected_mob.heal_bodypart_damage(brute = 0, burn = 1 * REM * seconds_per_tick, updating_health = FALSE))
 			return UPDATE_MOB_HEALTH
+=======
+		stomach.adjust_charge(reac_volume * 20 * ETHEREAL_DISCHARGE_RATE)
+>>>>>>> 322bffc3f9d467d5cafa3f41dbd3a6f0a995ac67

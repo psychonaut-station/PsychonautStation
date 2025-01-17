@@ -35,17 +35,16 @@
 	voice_of_god_silence_power = 3
 
 	job_tone = "silence"
+
 	alt_titles = list(
 		"Mime",
 		"Pantomimist",
 	)
 
 /datum/job/mime/after_spawn(mob/living/spawned, client/player_client)
-	. = ..()
-	if(!ishuman(spawned))
-		return
-	spawned.apply_pref_name(/datum/preference/name/mime, player_client)
-
+	if (ishuman(spawned))
+		spawned.apply_pref_name(/datum/preference/name/mime, player_client)
+	return ..()
 
 /datum/outfit/job/mime
 	name = "Mime"

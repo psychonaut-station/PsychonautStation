@@ -27,13 +27,29 @@
 	var/tgui_say
 	var/typing_indicators
 
-/datum/client_interface/New()
-	..()
-	var/static/mock_client_uid = 0
-	mock_client_uid++
+	///these persist between logins/logouts during the same round.
+	var/datum/player_details/player_details
+	var/reconnecting = FALSE
 
-	src.key = "[key]_[mock_client_uid]"
-	ckey = ckey(key)
+/datum/client_interface/New(key)
+	..()
+	if(key)
+		src.key = key
+		ckey = ckey(key)
+		if(GLOB.player_details[ckey])
+			reconnecting = TRUE
+			player_details = GLOB.player_details[ckey]
+		else
+			player_details = new(ckey)
+			player_details.byond_version = world.byond_version
+			player_details.byond_build = world.byond_build
+			GLOB.player_details[ckey] = player_details
+	else
+		var/static/mock_client_uid = 0
+		mock_client_uid++
+
+		src.key = "[key]_[mock_client_uid]"
+		ckey = ckey(key)
 
 #ifdef UNIT_TESTS // otherwise this shit can leak into production servers which is drather bad
 	GLOB.directory[ckey] = src

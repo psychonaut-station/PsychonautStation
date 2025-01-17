@@ -91,8 +91,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
-	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
-	file_data["additional data"]["station integrity"] = station_integrity
+	roundend_station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
+	file_data["additional data"]["station integrity"] = roundend_station_integrity
 	WRITE_FILE(json_file, json_encode(file_data))
 
 	SSblackbox.record_feedback("nested tally", "round_end_stats", num_survivors, list("survivors", "total"))
@@ -103,7 +103,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	.[POPCOUNT_SURVIVORS] = num_survivors
 	.[POPCOUNT_ESCAPEES] = num_escapees
 	.[POPCOUNT_SHUTTLE_ESCAPEES] = num_shuttle_escapees
-	.["station_integrity"] = station_integrity
+	.["station_integrity"] = roundend_station_integrity
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1

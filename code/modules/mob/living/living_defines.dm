@@ -233,3 +233,5 @@
 
 	/// How long it takes to return to 0 stam
 	var/stamina_regen_time = 10 SECONDS
+
+	var/talkcount = 0

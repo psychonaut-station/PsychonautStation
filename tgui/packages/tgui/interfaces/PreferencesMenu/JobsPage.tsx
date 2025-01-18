@@ -199,10 +199,12 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
     : name;
 
   let rightSide: ReactNode;
+  let allowedToPlay = true;
 
   if (experienceNeeded) {
     const { experience_type, required_playtime } = experienceNeeded;
     const hoursNeeded = Math.ceil(required_playtime / 60);
+    allowedToPlay = false;
 
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -212,6 +214,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (daysLeft > 0) {
+    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -220,6 +223,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (data.job_bans && data.job_bans.indexOf(name) !== -1) {
+    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -228,6 +232,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (data.job_whitelist && data.job_whitelist.indexOf(name) !== -1) {
+    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -261,15 +266,8 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           }
           position="right"
         >
-          <Stack.Item
-            align="center"
-            className="job-name"
-            grow
-            style={{
-              paddingLeft: '0.3em',
-            }}
-          >
-            {!job.alt_titles ? (
+          <Stack.Item align="center" className="job-name" width="60%">
+            {!allowedToPlay || !job.alt_titles ? (
               <Box className="Button">{name}</Box>
             ) : (
               <Dropdown
@@ -286,7 +284,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           </Stack.Item>
         </Tooltip>
 
-        <Stack.Item shrink className="options">
+        <Stack.Item grow className="options">
           {rightSide}
         </Stack.Item>
       </Stack>

@@ -1,5 +1,5 @@
 import { sortBy } from 'common/collections';
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, useState } from 'react';
 import { Box, Button, Dropdown, Stack, Tooltip } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
@@ -194,9 +194,9 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
 
-  const alt_title_selected = data.job_alt_titles[name]
-    ? data.job_alt_titles[name]
-    : name;
+  const [selectedAltTitle, setSelectedAltTitle] = useState(
+    data.job_alt_titles[name] ? data.job_alt_titles[name] : name,
+  );
 
   let rightSide: ReactNode;
   let allowedToPlay = true;
@@ -261,7 +261,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
         <Tooltip
           content={
             <Box>
-              <b>{alt_title_selected}</b> <br /> <br /> {job.description}
+              <b>{selectedAltTitle}</b> <br /> <br /> {job.description}
             </Box>
           }
           position="right"
@@ -273,11 +273,12 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
               <Dropdown
                 width="100%"
                 options={job.alt_titles}
-                displayText={alt_title_selected}
-                selected={alt_title_selected}
-                onSelected={(value) =>
-                  act('set_job_title', { job: name, new_title: value })
-                }
+                displayText={selectedAltTitle}
+                selected={selectedAltTitle}
+                onSelected={(value) => {
+                  setSelectedAltTitle(value);
+                  act('set_job_title', { job: name, new_title: value });
+                }}
                 color=""
               />
             )}

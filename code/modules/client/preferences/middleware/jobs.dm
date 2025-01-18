@@ -31,7 +31,7 @@
 	var/new_job_title = params["new_title"]
 	var/datum/job/job = SSjob.get_job(default_job_title)
 
-	if(isnull(job) || !job.alt_job_titles[new_job_title])
+	if(isnull(job) || !job.alt_titles[new_job_title])
 		return FALSE
 
 	preferences.alt_job_titles[default_job_title] = new_job_title

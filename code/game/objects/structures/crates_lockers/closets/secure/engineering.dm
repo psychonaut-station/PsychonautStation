@@ -19,6 +19,10 @@
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/storage/box/stickers/chief_engineer(src)
+	if(SSmapping.picked_rooms["engine"])
+		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
+		if(engine_template.engine_type == "singularity")
+			new /obj/item/storage/toolbox/guncase/anomaly_catcher(src)
 
 /obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
 	. = ..()

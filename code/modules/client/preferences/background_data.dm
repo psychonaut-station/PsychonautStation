@@ -8,13 +8,13 @@
 	return
 
 /datum/preference/background_data/deserialize(input, datum/preferences/preferences)
-	return STRIP_HTML_FULL(input, 256)
+	return STRIP_HTML_LOCALE_FULL(input, 256)
 
 /datum/preference/background_data/create_default_value()
 	return ""
 
 /datum/preference/background_data/is_valid(value)
-	return istext(value) && length(value) <= 256
+	return istext(value) && length_char(value) <= 256
 
 /datum/preference/background_data/character_desc
 	savefile_key = "character_desc"

@@ -268,7 +268,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
         >
           <Stack.Item align="center" className="job-name" width="60%">
             {!allowedToPlay || !job.alt_titles ? (
-              <Box className="Button">{name}</Box>
+              name
             ) : (
               <Dropdown
                 width="100%"
@@ -280,6 +280,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
                   act('set_job_title', { job: name, new_title: value });
                 }}
                 color=""
+                className="PreferencesMenu__Jobs__AltTitleDropdown"
               />
             )}
           </Stack.Item>

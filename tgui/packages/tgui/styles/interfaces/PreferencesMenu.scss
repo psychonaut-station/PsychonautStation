@@ -196,6 +196,15 @@ $department_map: (
       white-space: nowrap;
       width: 19px;
     }
+
+    &__AltTitleDropdown {
+      padding: 0;
+      padding-right: 3px;
+      line-height: normal;
+      height: inherit;
+      display: flex;
+      align-items: center;
+    }
   }
 
   &__Quirks {

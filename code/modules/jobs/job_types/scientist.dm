@@ -45,7 +45,6 @@
 		"Lab Technician",
 		"Theoretical Physicist",
 		"Ordnance Technician",
-		"Xenoarchaeologist",
 		"Research Assistant",
 		"Graduate Student",
 		"Cryptozoologist",

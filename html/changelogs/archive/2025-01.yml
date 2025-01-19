@@ -511,3 +511,9 @@
 2025-01-18:
   EnterTheJake:
   - image: Codex Cicatrix has received a new sprite
+2025-01-19:
+  RengaN02:
+  - rscadd: Singularity engine eklendi.
+  Rengan:
+  - bugfix: "Character backgroundu yazarken T\xFCrk\xE7e karakterlerin s\u0131k\u0131\
+      nt\u0131 \xE7\u0131karmas\u0131 d\xFCzeltildi"

@@ -54,7 +54,6 @@
 		"Station Commander",
 		"Commanding Officer",
 		"Site Manager",
-		"Criminally Underpaid Babysitter",
 	)
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)

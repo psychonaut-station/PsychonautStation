@@ -118,18 +118,11 @@ const PriorityButtons = (props: {
         alignItems: 'center',
         height: '100%',
         justifyContent: 'flex-end',
-        paddingLeft: '0.4em',
-        paddingRight: '0.4em',
+        paddingLeft: '0.3em',
       }}
     >
       {isOverflow ? (
         <>
-          <Stack.Item height={PRIORITY_BUTTON_SIZE}>
-            <Box height={PRIORITY_BUTTON_SIZE} width={PRIORITY_BUTTON_SIZE} />
-          </Stack.Item>
-          <Stack.Item height={PRIORITY_BUTTON_SIZE}>
-            <Box height={PRIORITY_BUTTON_SIZE} width={PRIORITY_BUTTON_SIZE} />
-          </Stack.Item>
           <PriorityButton
             name="Off"
             modifier="off"

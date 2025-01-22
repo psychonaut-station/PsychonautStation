@@ -20,6 +20,15 @@
 		/datum/surgery_step/close,
 	)
 
+/datum/surgery/repair_bone_hairline/mechanic
+	name = "Structural microfracture repair (hairline)"
+	requires_bodypart_type = BODYTYPE_ROBOTIC
+	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/repair_bone_hairline,
+		/datum/surgery_step/mechanic_close,
+	)
+
 ///// Repair Compound Fracture (Critical)
 /datum/surgery/repair_bone_compound
 	name = "Repair Compound Fracture"
@@ -40,6 +49,19 @@
 		/datum/surgery_step/reset_compound_fracture,
 		/datum/surgery_step/repair_bone_compound,
 		/datum/surgery_step/close,
+	)
+
+/datum/surgery/repair_bone_compound/mechanic
+	name = "Critical fracture stabilization"
+	requires_bodypart_type = BODYTYPE_ROBOTIC
+	steps = list(
+		/datum/surgery_step/mechanic_open,
+		/datum/surgery_step/open_hatch,
+		/datum/surgery_step/mechanic_unwrench,
+		/datum/surgery_step/reset_compound_fracture,
+		/datum/surgery_step/repair_bone_compound,
+		/datum/surgery_step/mechanic_wrench,
+		/datum/surgery_step/mechanic_close,
 	)
 
 //SURGERY STEPS
@@ -203,6 +225,10 @@
 		/datum/surgery_step/clamp_bleeders/discard_skull_debris,
 		/datum/surgery_step/repair_skull
 	)
+
+/datum/surgery/cranial_reconstruction/mechanic
+	name = "Skullplate realignment"
+	requires_bodypart_type = BODYTYPE_ROBOTIC
 
 /datum/surgery_step/clamp_bleeders/discard_skull_debris
 	name = "discard skull debris (hemostat)"

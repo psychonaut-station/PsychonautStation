@@ -187,6 +187,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
+  const alt_titles = [
+    ...(job.alt_titles || []),
+    !job.alt_titles?.includes(name) && name,
+  ];
 
   const [selectedAltTitle, setSelectedAltTitle] = useState(
     data.job_alt_titles[name] ? data.job_alt_titles[name] : name,
@@ -256,22 +260,18 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           position="right"
         >
           <Stack.Item align="center" className="job-name" width="60%">
-            {!job.alt_titles ? (
-              name
-            ) : (
-              <Dropdown
-                width="100%"
-                options={job.alt_titles}
-                displayText={selectedAltTitle}
-                selected={selectedAltTitle}
-                onSelected={(value) => {
-                  setSelectedAltTitle(value);
-                  act('set_job_title', { job: name, new_title: value });
-                }}
-                color=""
-                className="PreferencesMenu__Jobs__AltTitleDropdown"
-              />
-            )}
+            <Dropdown
+              width="100%"
+              options={alt_titles}
+              displayText={selectedAltTitle}
+              selected={selectedAltTitle}
+              onSelected={(value) => {
+                setSelectedAltTitle(value);
+                act('set_job_title', { job: name, new_title: value });
+              }}
+              color=""
+              className="PreferencesMenu__Jobs__AltTitleDropdown"
+            />
           </Stack.Item>
         </Tooltip>
 

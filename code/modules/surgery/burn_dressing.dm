@@ -29,10 +29,6 @@
 	ASSERT(burn_wound, "[type] on [target] has no burn wound when it should have been guaranteed to have one by can_start")
 	return burn_wound.infestation > 0
 
-/datum/surgery/debride/mechanic
-	name = "Burned surface refinement"
-	requires_bodypart_type = BODYTYPE_ROBOTIC
-
 //SURGERY STEPS
 
 ///// Debride

@@ -30,6 +30,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 	var/datum/action/innate/change_monitor/change_monitor
 
 /obj/item/bodypart/head/ipc/apply_ownership(mob/living/carbon/new_owner)
@@ -102,6 +103,7 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	wing_types = list(/obj/item/organ/wings/functional/robotic)
+	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
 /obj/item/bodypart/chest/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()
@@ -144,6 +146,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
 /obj/item/bodypart/arm/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()
@@ -172,6 +175,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
 /obj/item/bodypart/arm/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()
@@ -199,6 +203,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
+	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
 /obj/item/bodypart/leg/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()
@@ -241,6 +246,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
+	biological_state = BIO_ROBOTIC
 
 /obj/item/bodypart/leg/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()

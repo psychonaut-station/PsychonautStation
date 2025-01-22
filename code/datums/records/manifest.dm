@@ -107,6 +107,11 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/obj/item/card/id/id_card = person.get_idcard(hand_first = FALSE)
 	var/assignment = id_card?.get_trim_assignment() || person.mind.assigned_role.title
 
+	var/medical_records = person.client?.prefs.read_preference(/datum/preference/background_data/medical_records)
+	var/security_records = person.client?.prefs.read_preference(/datum/preference/background_data/security_records)
+	var/employment_records = person.client?.prefs.read_preference(/datum/preference/background_data/employment_records)
+	var/exploit_records = person.client?.prefs.read_preference(/datum/preference/background_data/exploit_records)
+
 	var/mutable_appearance/character_appearance = new(person.appearance)
 	var/person_gender = "Other"
 	if(person.gender == "male")
@@ -152,6 +157,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		medical_records = medical_records,
+		security_records = security_records,
+		employment_records = employment_records,
+		exploit_records = exploit_records,
 	)
 
 /// Edits the rank and trim of the found record.

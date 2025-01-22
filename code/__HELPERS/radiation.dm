@@ -25,6 +25,7 @@
 	threshold,
 	chance = DEFAULT_RADIATION_CHANCE,
 	minimum_exposure_time = 0,
+	intensity = 0,
 )
 	if(!SSradiation.can_fire)
 		return
@@ -36,8 +37,12 @@
 	pulse_information.chance = chance
 	pulse_information.minimum_exposure_time = minimum_exposure_time
 	pulse_information.turfs_to_process = RANGE_TURFS(max_range, source)
+	pulse_information.intensity = intensity || (max_range * 250)
 
 	SSradiation.processing += pulse_information
+
+	for(var/atom/O in range(max_range, source))
+		O.rad_act(pulse_information.intensity)
 
 	return TRUE
 
@@ -48,6 +53,7 @@
 	var/chance
 	var/minimum_exposure_time
 	var/list/turfs_to_process
+	var/intensity
 
 #define MEDIUM_RADIATION_THRESHOLD_RANGE 0.5
 #define EXTREME_RADIATION_CHANCE 30

@@ -119,6 +119,7 @@ const PriorityButtons = (props: {
         height: '100%',
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
+        paddingRight: '0.3em',
       }}
     >
       {isOverflow ? (
@@ -192,12 +193,10 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   );
 
   let rightSide: ReactNode;
-  let allowedToPlay = true;
 
   if (experienceNeeded) {
     const { experience_type, required_playtime } = experienceNeeded;
     const hoursNeeded = Math.ceil(required_playtime / 60);
-    allowedToPlay = false;
 
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
@@ -207,7 +206,6 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (daysLeft > 0) {
-    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -216,7 +214,6 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (data.job_bans && data.job_bans.indexOf(name) !== -1) {
-    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -225,7 +222,6 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
       </Stack>
     );
   } else if (data.job_whitelist && data.job_whitelist.indexOf(name) !== -1) {
-    allowedToPlay = false;
     rightSide = (
       <Stack align="center" height="100%" pr={1}>
         <Stack.Item grow textAlign="right">
@@ -260,7 +256,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           position="right"
         >
           <Stack.Item align="center" className="job-name" width="60%">
-            {!allowedToPlay || !job.alt_titles ? (
+            {!job.alt_titles ? (
               name
             ) : (
               <Dropdown

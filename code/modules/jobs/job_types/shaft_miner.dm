@@ -27,7 +27,14 @@
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
 	rpg_title = "Adventurer"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Shaft Miner",
+		"Union Miner",
+		"Excavator",
+		"Spelunker",
+		"Drill Technician",
+		"Prospector",
+	)
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"

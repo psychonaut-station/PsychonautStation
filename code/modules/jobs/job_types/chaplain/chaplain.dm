@@ -35,7 +35,19 @@
 	voice_of_god_power = 2 //Chaplains are very good at speaking with the voice of god
 
 	job_tone = "holy"
-
+	alt_titles = list(
+		"Chaplain",
+		"Priest",
+		"Preacher",
+		"Reverend",
+		"Oracle",
+		"Pontifex",
+		"Magister",
+		"High Priest",
+		"Imam",
+		"Rabbi",
+		"Monk",
+	)
 
 /datum/job/chaplain/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

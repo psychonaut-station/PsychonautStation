@@ -36,6 +36,19 @@ Assistant
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Lout"
 	config_tag = "ASSISTANT"
+	alt_titles = list(
+		"Assistant",
+		"Civilian",
+		"Tourist",
+		"Businessman",
+		"Businesswoman",
+		"Trader",
+		"Entertainer",
+		"Freelancer",
+		"Artist",
+		"Off-Duty Staff",
+		"Off-Duty Crew",
+	)
 
 /datum/job/assistant/get_outfit(consistent)
 	if(consistent)

@@ -30,6 +30,11 @@
 	)
 	rpg_title = "Recluse"
 	job_flags = STATION_JOB_FLAGS
+	alt_titles = list(
+		"Bitrunner",
+		"Cyberspace Specialist",
+		"Hacker"
+	)
 
 /datum/outfit/job/bitrunner
 	name = "Bitrunner"

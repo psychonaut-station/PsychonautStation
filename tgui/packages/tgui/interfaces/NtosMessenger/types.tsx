@@ -16,6 +16,7 @@ export type NtPicture = {
 export type NtMessenger = {
   name: string;
   job: string;
+  job_trim: string;
   ref?: string;
 };
 

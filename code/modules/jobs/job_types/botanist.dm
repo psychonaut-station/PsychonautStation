@@ -38,6 +38,15 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Gardener"
+	alt_titles = list(
+		"Botanist",
+		"Hydroponicist",
+		"Gardener",
+		"Botanical Researcher",
+		"Herbalist",
+		"Florist",
+		"Rancher",
+	)
 
 /datum/outfit/job/botanist
 	name = "Botanist"

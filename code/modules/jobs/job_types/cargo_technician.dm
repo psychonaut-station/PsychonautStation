@@ -34,7 +34,14 @@
 	)
 	rpg_title = "Merchantman"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Cargo Technician",
+		"Warehouse Technician",
+		"Deck Worker",
+		"Mailman",
+		"Union Associate",
+		"Inventory Associate",
+	)
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"

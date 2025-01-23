@@ -39,6 +39,7 @@ type Data = {
   priority: BooleanLike;
   round_duration: string;
   security_level: number;
+  job_alt_titles: Record<string, string>;
 };
 
 type JobEntryProps = {
@@ -50,8 +51,11 @@ type JobEntryProps = {
 
 function JobEntry(props: JobEntryProps) {
   const { jobName, job, department, onClick } = props;
+  const { data } = useBackend<Data>();
+  const { job_alt_titles } = data;
 
   const jobIcon = JOB2ICON[jobName] || null;
+  const seleectedName = job_alt_titles[jobName] || jobName;
 
   return (
     <Button
@@ -93,7 +97,9 @@ function JobEntry(props: JobEntryProps) {
             <Icon name={jobIcon} />
           </Stack.Item>
         )}
-        <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item>
+        <Stack.Item grow>
+          {job.command ? <b>{seleectedName}</b> : seleectedName}
+        </Stack.Item>
         <Stack.Item>
           <span
             style={{

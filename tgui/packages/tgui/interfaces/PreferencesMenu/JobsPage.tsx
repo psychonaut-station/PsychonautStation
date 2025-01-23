@@ -1,5 +1,5 @@
 import { sortBy } from 'common/collections';
-import { PropsWithChildren, ReactNode } from 'react';
+import { PropsWithChildren, ReactNode, useState } from 'react';
 import { Box, Button, Dropdown, Stack, Tooltip } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
 
@@ -119,6 +119,7 @@ const PriorityButtons = (props: {
         height: '100%',
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
+        paddingRight: '0.3em',
       }}
     >
       {isOverflow ? (
@@ -175,7 +176,7 @@ const PriorityButtons = (props: {
 };
 
 const JobRow = (props: { className?: string; job: Job; name: string }) => {
-  const { data } = useBackend<PreferencesMenuData>();
+  const { act, data } = useBackend<PreferencesMenuData>();
   const { className, job, name } = props;
 
   const isOverflow = data.overflow_role === name;
@@ -186,6 +187,12 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
+  const alt_titles = [...(job.alt_titles || [])];
+  if (!alt_titles.includes(name)) alt_titles.push(name);
+
+  const [selectedAltTitle, setSelectedAltTitle] = useState(
+    data.job_alt_titles[name] ? data.job_alt_titles[name] : name,
+  );
 
   let rightSide: ReactNode;
 
@@ -235,17 +242,34 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   }
 
   return (
-    <Stack.Item className={className} height="100%" mt={0}>
-      <Stack fill align="center">
-        <Tooltip content={job.description} position="bottom-start">
-          <Stack.Item
-            className="job-name"
-            width="50%"
-            style={{
-              paddingLeft: '0.3em',
-            }}
-          >
-            {name}
+    <Box
+      className={className}
+      style={{
+        marginTop: 0,
+      }}
+    >
+      <Stack>
+        <Tooltip
+          content={
+            <Box>
+              <b>{selectedAltTitle}</b> <br /> <br /> {job.description}
+            </Box>
+          }
+          position="right"
+        >
+          <Stack.Item align="center" className="job-name" width="60%">
+            <Dropdown
+              width="100%"
+              options={alt_titles}
+              displayText={selectedAltTitle}
+              selected={selectedAltTitle}
+              onSelected={(value) => {
+                setSelectedAltTitle(value);
+                act('set_job_title', { job: name, new_title: value });
+              }}
+              color=""
+              className="PreferencesMenu__Jobs__AltTitleDropdown"
+            />
           </Stack.Item>
         </Tooltip>
 
@@ -253,7 +277,7 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
           {rightSide}
         </Stack.Item>
       </Stack>
-    </Stack.Item>
+    </Box>
   );
 };
 

@@ -517,3 +517,6 @@
   Rengan:
   - bugfix: "Character backgroundu yazarken T\xFCrk\xE7e karakterlerin s\u0131k\u0131\
       nt\u0131 \xE7\u0131karmas\u0131 d\xFCzeltildi"
+2025-01-23:
+  Rengan:
+  - bugfix: "Ipcnin hairline fracture gibi yaralanmalar\u0131 olmas\u0131 d\xFCzeltildi"

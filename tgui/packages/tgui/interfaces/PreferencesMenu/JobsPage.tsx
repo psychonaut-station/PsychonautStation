@@ -187,10 +187,8 @@ const JobRow = (props: { className?: string; job: Job; name: string }) => {
   const experienceNeeded =
     data.job_required_experience && data.job_required_experience[name];
   const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
-  const alt_titles = [
-    ...(job.alt_titles || []),
-    !job.alt_titles?.includes(name) && name,
-  ];
+  const alt_titles = [...(job.alt_titles || [])];
+  if (!alt_titles.includes(name)) alt_titles.push(name);
 
   const [selectedAltTitle, setSelectedAltTitle] = useState(
     data.job_alt_titles[name] ? data.job_alt_titles[name] : name,

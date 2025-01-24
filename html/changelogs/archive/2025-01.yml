@@ -512,16 +512,6 @@
   EnterTheJake:
   - image: Codex Cicatrix has received a new sprite
 2025-01-19:
-<<<<<<< HEAD
-  RengaN02:
-  - rscadd: Singularity engine eklendi.
-  Rengan:
-  - bugfix: "Character backgroundu yazarken T\xFCrk\xE7e karakterlerin s\u0131k\u0131\
-      nt\u0131 \xE7\u0131karmas\u0131 d\xFCzeltildi"
-2025-01-23:
-  Rengan:
-  - bugfix: "Ipcnin hairline fracture gibi yaralanmalar\u0131 olmas\u0131 d\xFCzeltildi"
-=======
   Absolucy:
   - qol: Small and tiny mobs no longer trigger squeaking objects when walking over
       them.
@@ -538,6 +528,11 @@
   - bugfix: Plants with reagent traits in the graft now properly say the name of the
       grafted reagent
   - image: yet another medkit resprite
+  RengaN02:
+  - rscadd: Singularity engine eklendi.
+  Rengan:
+  - bugfix: "Character backgroundu yazarken T\xFCrk\xE7e karakterlerin s\u0131k\u0131\
+      nt\u0131 \xE7\u0131karmas\u0131 d\xFCzeltildi"
   SmArtKar:
   - bugfix: Fixed active turfs on the new Turreted Outpost ruin.
 2025-01-20:
@@ -605,6 +600,8 @@
       an issue report if they exhibit any unusual behaviour.
   Melbert:
   - bugfix: Heads with brains no longer look debrained
+  Rengan:
+  - bugfix: "Ipcnin hairline fracture gibi yaralanmalar\u0131 olmas\u0131 d\xFCzeltildi"
   SmArtKar:
   - bugfix: Clipboards should no longer retain pens that got removed via Instant Recall
   StrangeWeirdKitten:
@@ -677,4 +674,3 @@
   mc-oofert:
   - rscadd: outpost 31, the icebox ruin. Also its associated mobs, and megafauna,
       and loot. Im not spoiling anything, find it yourself.
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89

@@ -580,14 +580,11 @@ GLOBAL_LIST_INIT(phobia_species, list(
 		/datum/species/plasmaman,
 		/datum/species/skeleton,
 	)),
-<<<<<<< HEAD
 	"spiders" = typecacheof(list(
 		/datum/species/arachnid,
 	)),
-=======
 	"space" = typecacheof(list(/datum/species/voidwalker)),
 	"supernatural" = typecacheof(list(/datum/species/voidwalker))
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
 ))
 
 /// Creates a regular expression to match against the given phobia

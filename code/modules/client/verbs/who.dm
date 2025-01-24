@@ -75,16 +75,7 @@
 
 	var/list/lines = list()
 	var/payload_string = generate_adminwho_string()
-<<<<<<< HEAD
-	var/header
-
-	if(payload_string == NO_ADMINS_ONLINE_MESSAGE)
-		header = "Şu Anda Çevrimiçi Bir Yetkili Yok"
-	else
-		header = "Çevrimiçi Yetkililer:"
-=======
-	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "No Admins Currently Online" : "Current Admins"
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
+	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Şu Anda Çevrim İçi Bir Yetkili Yok" : "Çevrim İçi Yetkililer"
 
 	lines += span_bold(header)
 	lines += payload_string

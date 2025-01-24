@@ -28,7 +28,7 @@
 	var/is_radio = !speaker || force_radio
 	var/radio_channel = FREQ_COMMON
 	var/list/target_dept = null
-	
+
 	// Contents of our message
 	var/chosen = specific_message
 
@@ -71,22 +71,12 @@
 	// If we didn't have a preset one, let's make one up.
 	if(!chosen)
 		if(is_radio)
-<<<<<<< HEAD
 			chosen = pick(list("Yardım!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
-				"[pick("[hallucinator.first_name()]'i gördün mü?", "[hallucinator.first_name()] isimli kişiyi arrestleyin")]",
+				"[pick("[first_name(hallucinator.name)]'i gördün mü?", "[first_name(hallucinator.name)]'i arrestleyin")]",
 				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
 				"BORGLAR MALF",
-=======
-			chosen = pick(list("Help!",
-				"[pick_list_replacements(HALLUCINATION_FILE, "people")] is [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
-				"[pick_list_replacements(HALLUCINATION_FILE, "threat")] in [pick_list_replacements(HALLUCINATION_FILE, "location")][prob(50)?"!":"!!"]",
-				"[pick("Where's [first_name(hallucinator.name)]?", "Set [first_name(hallucinator.name)] to arrest!")]",
-				"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",
-				"AI [pick("rogue", "is dead")]!!",
-				"Borgs rogue!",
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
 			))
 		else
 			chosen = pick(list("[pick_list_replacements(HALLUCINATION_FILE, "suspicion")]",
@@ -104,12 +94,8 @@
 
 		chosen = capitalize(chosen)
 
-<<<<<<< HEAD
-	chosen = replacetext(chosen, "%TARGETNAME%", hallucinator.first_name())
-	chosen = replacetext(chosen, "%TARGETNAME_CAP%", uppertext(hallucinator.first_name()))
-=======
 	chosen = replacetext(chosen, "%TARGETNAME%", first_name(hallucinator.name))
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
+	chosen = replacetext(chosen, "%TARGETNAME_CAP%", locale_uppertext(first_name(hallucinator.name)))
 
 	// Log the message
 	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [speaker.real_name], Message: [chosen]"

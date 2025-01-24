@@ -31,27 +31,7 @@
 			INVOKE_ASYNC(src, PROC_REF(spectral_change), human_user, user, source)
 		return
 
-<<<<<<< HEAD
-	if(ishuman(C))
-		var/mob/living/carbon/human/H = C
-		if(istype(H.dna.species, /datum/species/skeleton))
-			return //undeads are unaffected by the spook-pocalypse.
-		if(istype(H.dna.species, /datum/species/zombie))
-			H.adjustStaminaLoss(25)
-			H.Paralyze(15) //zombies can't resist the doot
-		C.set_jitter_if_lower(70 SECONDS)
-		C.set_stutter(40 SECONDS)
-		if((!istype(H.dna.species, /datum/species/skeleton)) && (!istype(H.dna.species, /datum/species/golem)) && (!istype(H.dna.species, /datum/species/android)) && (!istype(H.dna.species, /datum/species/ipc)) && (!istype(H.dna.species, /datum/species/jelly)))
-			C.adjustStaminaLoss(18) //boneless humanoids don't lose the will to live
-		to_chat(C, "<font color='red' size='4'><B>DOOT</B></font>")
-		to_chat(C, span_robot("<font size='4'>You're feeling more bony.</font>"))
-		INVOKE_ASYNC(src, PROC_REF(spectral_change), H)
-		if(single_use)
-			to_chat(user, span_warning("You feel like [source] has lost its spookiness..."))
-			Detach(source)
-=======
 	to_chat(target, span_userdanger("<b>DOOT</b"))
->>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
 
 	if(isskeleton(target)) // skeletons are totally immune, no redundant skeletonization or bad mood event.
 		return

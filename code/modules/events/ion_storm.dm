@@ -406,7 +406,11 @@
 						if(6) //X is a job
 							message = "[ioncrew1] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
 						if(7) //X is two jobs
+<<<<<<< HEAD
 							message = "[ioncrew1] VE [ioncrew2] ZARAR GÖRMELİDİR VE ZARARDAN KAÇINMALARINI ÖNLENMELİDİR"
+=======
+							message = "YOU MUST HARM [ioncrew1] AND [ioncrew2] AND NOT ALLOW EITHER, THROUGH INACTION, TO ESCAPE HARM"
+>>>>>>> bf0bbaed64b62a9e32895319620768e517759d89
 
 				if(2) //Protect
 					switch(rand(1,7)) //What is X?

@@ -809,3 +809,21 @@
 		user.add_mood_event("farted", /datum/mood_event/farted)
 		return pick('sound/misc/fart1.ogg', 'sound/misc/fart2.ogg', 'sound/misc/fart3.ogg',
 					'sound/misc/fart4.ogg', 'sound/misc/fart5.ogg', 'sound/misc/fart6.ogg')
+
+/datum/emote/living/pose
+	key = "pose"
+	key_third_person = "poses"
+	message = "poses"
+	emote_type =  EMOTE_VISIBLE
+
+/datum/emote/living/pose/run_emote(mob/living/user, params, type_override, intentional)
+	. = ..()
+	var/image/emote_animation = image('icons/psychonaut/mob/human/emote_visuals.dmi', user, "jojoeffect")
+	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
+
+/datum/emote/living/pose/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
+	. = ..()
+	if(!.)
+		return FALSE
+	var/list/stands = user.get_all_linked_holoparasites()
+	return length(stands) || istype(user, /mob/living/basic/guardian)

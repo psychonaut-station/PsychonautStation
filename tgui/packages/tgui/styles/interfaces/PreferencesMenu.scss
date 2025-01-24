@@ -168,6 +168,9 @@ $department_map: (
 
           .job-name {
             font-size: 17px;
+            & .Dropdown__arrow-button {
+              margin-left: 5px;
+            }
           }
         }
       }
@@ -216,6 +219,10 @@ $department_map: (
         height: 100%;
         vertical-align: middle;
       }
+    }
+    & .Dropdown__menuentry {
+      font-weight: normal;
+      font-size: 12px;
     }
   }
 

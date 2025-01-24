@@ -43,6 +43,13 @@
 		for(var/mob/dead/observe as anything in observers)
 			observe.reset_perspective(null)
 
+	QDEL_NULL(name_tag)
+	if(name_tag_shadow)
+		client?.screen -= name_tag_shadow
+		name_tag_shadow.UnregisterSignal(src, COMSIG_MOVABLE_Z_CHANGED)
+		hud_used.always_visible_inventory -= name_tag_shadow
+		QDEL_NULL(name_tag_shadow)
+
 	qdel(hud_used)
 	QDEL_LIST(client_colours)
 	ghostize(can_reenter_corpse = FALSE) //False, since we're deleting it currently
@@ -97,6 +104,9 @@
 	update_movespeed(TRUE)
 	become_hearing_sensitive()
 	log_mob_tag("TAG: [tag] CREATED: [key_name(src)] \[[type]\]")
+
+	name_tag = new(src)
+	update_name_tag()
 
 /**
  * Generate the tag for this mob
@@ -1171,6 +1181,8 @@
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
+	update_name_tag(real_name)
+
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 
 	return TRUE
@@ -1636,3 +1648,14 @@
 	SIGNAL_HANDLER
 	var/datum/atom_hud/datahud = GLOB.huds[GLOB.trait_to_hud[new_trait]]
 	datahud.hide_from(src)
+
+/mob/proc/update_name_tag(passed_name)
+	if(QDELETED(name_tag))
+		return
+	if(!passed_name)
+		passed_name = name
+
+	var/the_check = findtext(passed_name, " the")
+	if(the_check)
+		passed_name = copytext(passed_name, 1, the_check)
+	name_tag.set_name(name)

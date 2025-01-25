@@ -37,6 +37,12 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Aeromancer"
+	alt_titles = list(
+		"Atmospheric Technician",
+		"Life Support Technician",
+		"Emergency Fire Technician",
+		"Firefighter",
+	)
 
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"

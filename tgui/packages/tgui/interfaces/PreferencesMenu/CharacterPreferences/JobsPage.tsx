@@ -1,5 +1,5 @@
 import { sortBy } from 'common/collections';
-import { PropsWithChildren, ReactNode, useState } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Dropdown, Stack, Tooltip } from 'tgui-core/components';
 import { classes } from 'tgui-core/react';
@@ -199,9 +199,9 @@ function JobRow(props: JobRowProps) {
   const alt_titles = [...(job.alt_titles || [])];
   if (!alt_titles.includes(name)) alt_titles.push(name);
 
-  const [selectedAltTitle, setSelectedAltTitle] = useState(
-    data.job_alt_titles[name] ? data.job_alt_titles[name] : name,
-  );
+  let selectedAltTitle = data.job_alt_titles[name]
+    ? data.job_alt_titles[name]
+    : name;
 
   let rightSide: ReactNode;
 
@@ -270,10 +270,8 @@ function JobRow(props: JobRowProps) {
             <Dropdown
               width="100%"
               options={alt_titles}
-              displayText={selectedAltTitle}
               selected={selectedAltTitle}
               onSelected={(value) => {
-                setSelectedAltTitle(value);
                 act('set_job_title', { job: name, new_title: value });
               }}
               color=""

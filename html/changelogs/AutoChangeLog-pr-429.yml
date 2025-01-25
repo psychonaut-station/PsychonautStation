@@ -1,0 +1,4 @@
+author: "dwasint, Rengan"
+delete-after: True
+changes:
+  - rscadd: "Joblara alternatif başlıklar eklendi, Occupations sekmesinden seçebilirsiniz."

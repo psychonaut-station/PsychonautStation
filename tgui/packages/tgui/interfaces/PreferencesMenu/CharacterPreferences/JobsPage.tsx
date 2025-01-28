@@ -261,7 +261,9 @@ function JobRow(props: JobRowProps) {
         <Tooltip
           content={
             <Box>
-              <b>{selectedAltTitle}</b> <br /> <br /> {job.description}
+              <b>{selectedAltTitle}</b>
+              <br />
+              {job.description}
             </Box>
           }
           position="right"

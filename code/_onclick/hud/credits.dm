@@ -17,41 +17,39 @@
 		SScredits.finalize()
 		credit_order_for_this_round = list()
 		credit_order_for_this_round += SScredits.episode_string
-		credit_order_for_this_round += SScredits.producers_string
+		credit_order_for_this_round += ""
 		credit_order_for_this_round += SScredits.disclaimers_string
 		credit_order_for_this_round += SScredits.cast_string
-		credit_order_for_this_round += "<center>The Admin Bus</center>"
 		var/list/admins = shuffle(SScredits.admin_pref_images)
-
-		var/y_offset = 0
 		var/admin_length = length(admins)
-		for(var/i in 1 to admin_length)
-			var/x_offset = -40
-			for(var/b in 1 to 8)
-				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
-				if(!picked)
-					break
-				picked.pixel_x = x_offset
-				picked.pixel_y = y_offset
-				x_offset += 70
-				credit_order_for_this_round += picked
+		var/y_offset = 0
+		if(admin_length)
+			credit_order_for_this_round += "<center>The Admin Bus</center>"
+			for(var/i in 1 to admin_length)
+				var/x_offset = -40
+				for(var/b in 1 to 8)
+					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
+					if(!picked)
+						break
+					picked.pixel_x = x_offset
+					picked.pixel_y = y_offset
+					x_offset += 70
+					credit_order_for_this_round += picked
 
-		credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
 		var/list/patrons = shuffle(SScredits.patrons_pref_images)
-
 		var/patrons_length = length(patrons)
-		for(var/i in 1 to patrons_length)
-			var/x_offset = -40
-			for(var/b in 1 to 8)
-				if(b == 1)
-					y_offset = 0
-				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
-				if(!picked)
-					break
-				picked.pixel_x = x_offset
-				picked.pixel_y = y_offset
-				x_offset += 70
-				credit_order_for_this_round += picked
+		if(patrons_length)
+			credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
+			for(var/i in 1 to patrons_length)
+				var/x_offset = -40
+				for(var/b in 1 to 8)
+					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
+					if(!picked)
+						break
+					picked.pixel_x = x_offset
+					picked.pixel_y = y_offset
+					x_offset += 70
+					credit_order_for_this_round += picked
 
 		for(var/i in SScredits.major_event_icons)
 			credit_order_for_this_round += i

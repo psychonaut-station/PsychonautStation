@@ -70,8 +70,7 @@ SUBSYSTEM_DEF(ticker)
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
 
-	/// The station integrity at roundend.
-	var/roundend_station_integrity
+	var/list/popcount
 
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/byond_sound_formats = list(

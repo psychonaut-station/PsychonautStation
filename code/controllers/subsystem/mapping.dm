@@ -87,9 +87,10 @@ SUBSYSTEM_DEF(mapping)
 
 	var/list/machines_delete_after = list()
 
-	var/list/random_engine_templates = list()
-	var/list/obj/effect/landmark/random_room/random_room_spawners = list()
-	var/list/datum/map_template/random_room/picked_rooms = list()
+	var/list/modular_room_templates = list()
+
+	var/list/obj/effect/landmark/random_room/modular_room_spawners = list()
+	var/list/datum/map_template/modular_room/picked_rooms = list()
 
 /datum/controller/subsystem/mapping/PreInit()
 	..()
@@ -371,7 +372,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	multiz_levels = SSmapping.multiz_levels
 	loaded_lazy_templates = SSmapping.loaded_lazy_templates
 
-	random_engine_templates = SSmapping.random_engine_templates
+	modular_room_templates = SSmapping.modular_room_templates
 
 #define INIT_ANNOUNCE(X) to_chat(world, span_boldannounce("[X]"), MESSAGE_TYPE_DEBUG); log_world(X)
 
@@ -449,7 +450,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	load_station_room_templates()
 
 	if(CONFIG_GET(flag/allow_randomized_rooms))
-		pick_room_type()
+		pick_room_types()
 		load_random_rooms()
 
 	if(SSdbcore.Connect())
@@ -974,54 +975,56 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	QDEL_LIST(machines_delete_after)
 
 /datum/controller/subsystem/mapping/proc/load_random_rooms()
-	load_random_engines()
+	for(var/roomtype in picked_rooms)
+		load_random_room(roomtype)
 
 /datum/controller/subsystem/mapping/proc/load_station_room_templates()
-	for(var/item in subtypesof(/datum/map_template/random_room/random_engine))
-		var/datum/map_template/random_room/random_engine/room_type = item
-		var/datum/map_template/random_room/random_engine/E = new room_type()
-		map_templates[E.room_id] = E
-		if(current_map.map_name == E.station_name)
-			random_engine_templates[E.room_id] = E
-			if(E.coordinates.len && E.template_width && E.template_height && !random_room_spawners["engine"])
-				create_room_spawner(E, "engine")
+	for(var/item in subtypesof(/datum/map_template/modular_room))
+		var/datum/map_template/modular_room/room_type = item
+		var/datum/map_template/modular_room/R = new room_type()
+		map_templates[R.room_id] = R
+		if(current_map.map_name == R.station_name)
+			modular_room_templates[R.room_type] += list("[R.room_id]" = R)
+			if(R.coordinates.len && R.template_width && R.template_height && !modular_room_spawners[R.room_type])
+				create_room_spawner(R, R.room_type)
 
-/datum/controller/subsystem/mapping/proc/create_room_spawner(datum/map_template/random_room/room, roomtype)
+/datum/controller/subsystem/mapping/proc/create_room_spawner(datum/map_template/modular_room/room, roomtype)
 	var/turf/target = locate(room.coordinates["x"], room.coordinates["y"], room.coordinates["z"])
 	var/obj/effect/landmark/random_room/room_spawner = new(target)
 	room_spawner.room_width = room.template_width
 	room_spawner.room_height = room.template_height
-	random_room_spawners[roomtype] = room_spawner
+	modular_room_spawners[roomtype] = room_spawner
 	return TRUE
 
-/datum/controller/subsystem/mapping/proc/pick_room_type()
-	pick_engine(!isnull(current_map.picked_rooms["engine"]))
+/datum/controller/subsystem/mapping/proc/pick_room_types()
+	for(var/roomtype in modular_room_templates)
+		pick_room(roomtype, !isnull(current_map.picked_rooms[roomtype]))
 
-/datum/controller/subsystem/mapping/proc/pick_engine(force = FALSE)
+/datum/controller/subsystem/mapping/proc/pick_room(roomtype, force = FALSE)
 	if(force)
-		picked_rooms["engine"] = random_engine_templates[current_map.picked_rooms["engine"]]
+		picked_rooms[roomtype] = modular_room_templates[roomtype][current_map.picked_rooms[roomtype]]
 		return TRUE
-	var/list/possible_engine_templates = list()
-	var/datum/map_template/random_room/random_engine/engine_candidate
-	shuffle_inplace(random_engine_templates)
-	for(var/ID in random_engine_templates)
-		engine_candidate = random_engine_templates[ID]
-		if(engine_candidate.weight == 0 || (engine_candidate.mappath && (random_room_spawners["engine"].room_height != engine_candidate.template_height || random_room_spawners["engine"].room_width != engine_candidate.template_width)))
-			engine_candidate = null
+	var/list/possible_room_templates = list()
+	var/datum/map_template/modular_room/room_candidate
+	shuffle_inplace(modular_room_templates[roomtype])
+	for(var/ID in modular_room_templates[roomtype])
+		room_candidate = modular_room_templates[roomtype][ID]
+		if(room_candidate.weight == 0 || (room_candidate.mappath && (modular_room_spawners[roomtype].room_height != room_candidate.template_height || modular_room_spawners[roomtype].room_width != room_candidate.template_width)))
+			room_candidate = null
 			continue
-		possible_engine_templates[engine_candidate] = engine_candidate.weight
-	if(!possible_engine_templates.len)
+		possible_room_templates[room_candidate] = room_candidate.weight
+	if(!possible_room_templates.len)
 		return FALSE
-	picked_rooms["engine"] = pick_weight(possible_engine_templates)
+	picked_rooms[roomtype] = pick_weight(possible_room_templates)
 	return TRUE
 
-/datum/controller/subsystem/mapping/proc/load_random_engines()
+/datum/controller/subsystem/mapping/proc/load_random_room(roomtype)
 	var/start_time = REALTIMEOFDAY
-	if(random_room_spawners["engine"] && picked_rooms["engine"])
-		log_world("Loading random engine template [picked_rooms["engine"].name] ([picked_rooms["engine"].type]) at [AREACOORD(random_room_spawners["engine"])]")
-		if(picked_rooms["engine"].mappath)
-			var/datum/map_template/random_room/template = picked_rooms["engine"]
-			template.stationinitload(get_turf(random_room_spawners["engine"]), centered = template.centerspawner)
-	QDEL_NULL(random_room_spawners["engine"])
-	log_world("Loaded Random Engine in [(REALTIMEOFDAY - start_time)/10]s!")
+	if(modular_room_spawners[roomtype] && picked_rooms[roomtype])
+		log_world("Loading [roomtype] template [picked_rooms[roomtype].name] ([picked_rooms[roomtype].type]) at [AREACOORD(modular_room_spawners[roomtype])]")
+		if(picked_rooms[roomtype].mappath)
+			var/datum/map_template/modular_room/template = picked_rooms[roomtype]
+			template.stationinitload(get_turf(modular_room_spawners[roomtype]), centered = template.centerspawner)
+	QDEL_NULL(modular_room_spawners[roomtype])
+	log_world("Loaded [roomtype] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return TRUE

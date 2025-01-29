@@ -259,7 +259,7 @@
 	key = "sweatdrop"
 	key_third_person = "sweatdrops"
 	message = "sweats."
-	emote_type =  EMOTE_AUDIBLE | EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = TRUE
 	sound = 'sound/effects/sweatdrop.ogg'
 

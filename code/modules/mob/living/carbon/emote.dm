@@ -273,7 +273,7 @@
 
 /datum/emote/living/carbon/annoyed
 	key = "annoyed"
-	emote_type =   EMOTE_AUDIBLE | EMOTE_VISIBLE
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/annoyed/run_emote(mob/living/carbon/user, params, type_override, intentional)
 	. = ..()

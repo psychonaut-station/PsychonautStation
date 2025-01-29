@@ -51,7 +51,8 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext = "<center>[ckey]</center>"
 		patrons_pref_images += appereance
 
-	for(var/ckey in GLOB.admin_datums)
+	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
+		world.log << ckey
 		var/datum/client_interface/interface = new(ckey(ckey))
 		var/datum/preferences/mocked = new(interface)
 

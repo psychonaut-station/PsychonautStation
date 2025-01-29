@@ -974,10 +974,6 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		machines_delete_after -= prior_item
 	QDEL_LIST(machines_delete_after)
 
-/datum/controller/subsystem/mapping/proc/load_random_rooms()
-	for(var/roomtype in picked_rooms)
-		load_random_room(roomtype)
-
 /datum/controller/subsystem/mapping/proc/load_station_room_templates()
 	for(var/item in subtypesof(/datum/map_template/modular_room))
 		var/datum/map_template/modular_room/room_type = item
@@ -1017,6 +1013,10 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		return FALSE
 	picked_rooms[roomtype] = pick_weight(possible_room_templates)
 	return TRUE
+
+/datum/controller/subsystem/mapping/proc/load_random_rooms()
+	for(var/roomtype in picked_rooms)
+		load_random_room(roomtype)
 
 /datum/controller/subsystem/mapping/proc/load_random_room(roomtype)
 	var/start_time = REALTIMEOFDAY

@@ -259,7 +259,7 @@
 	key = "sweatdrop"
 	key_third_person = "sweatdrops"
 	message = "sweats."
-	emote_type = EMOTE_VISIBLE
+	emote_type =  EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = TRUE
 	sound = 'sound/effects/sweatdrop.ogg'
 
@@ -273,7 +273,7 @@
 
 /datum/emote/living/carbon/annoyed
 	key = "annoyed"
-	emote_type =  EMOTE_VISIBLE
+	emote_type =   EMOTE_AUDIBLE | EMOTE_VISIBLE
 
 /datum/emote/living/carbon/annoyed/run_emote(mob/living/carbon/user, params, type_override, intentional)
 	. = ..()

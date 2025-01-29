@@ -820,13 +820,14 @@
 	. = ..()
 	var/image/emote_animation = image('icons/psychonaut/mob/human/emote_visuals.dmi', user, "jojoeffect")
 	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
-	var/list/stands = user.get_all_linked_holoparasites()
-	for(var/mob/living/basic/guardian/stand as anything in stands)
-		stand.emote(key, intentional = FALSE)
+	var/list/guardians = user.get_all_linked_holoparasites()
+	for(var/mob/living/basic/guardian/guardian as anything in guardians)
+		guardian.emote(key, intentional = FALSE)
 
 /datum/emote/living/pose/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
 	. = ..()
 	if(!.)
 		return FALSE
-	var/list/stands = user.get_all_linked_holoparasites()
-	return length(stands) || istype(user, /mob/living/basic/guardian)
+	if(istype(user, /mob/living/basic/guardian) ||length(user.get_all_linked_holoparasites()))
+		return TRUE
+	return FALSE

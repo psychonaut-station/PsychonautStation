@@ -814,7 +814,7 @@
 	key = "pose"
 	key_third_person = "poses"
 	message = "poses."
-	emote_type =  EMOTE_VISIBLE
+	emote_type = EMOTE_VISIBLE
 
 /datum/emote/living/pose/run_emote(mob/living/user, params, type_override, intentional)
 	. = ..()

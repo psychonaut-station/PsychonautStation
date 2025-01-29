@@ -6,7 +6,6 @@
 	name = "Meta Supermatter"
 	room_id = "meta_supermatter"
 	centerspawner = FALSE
-	weight = 8
 	station_name = "MetaStation"
 	should_place_on_top = FALSE
 	coordinates = list(
@@ -23,7 +22,6 @@
 	centerspawner = FALSE
 	template_height = 25
 	template_width = 33
-	weight = 8
 	station_name = "MetaStation"
 	should_place_on_top = FALSE
 	coordinates = list(
@@ -37,7 +35,6 @@
 	name = "Delta Supermatter"
 	room_id = "delta_supermatter"
 	centerspawner = FALSE
-	weight = 8
 	station_name = "Delta Station"
 	should_place_on_top = FALSE
 	coordinates = list(
@@ -54,7 +51,6 @@
 	centerspawner = FALSE
 	template_height = 31
 	template_width = 23
-	weight = 8
 	station_name = "Delta Station"
 	should_place_on_top = FALSE
 	coordinates = list(

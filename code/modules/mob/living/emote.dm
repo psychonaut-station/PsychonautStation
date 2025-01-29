@@ -824,7 +824,7 @@
 	for(var/mob/living/basic/guardian/guardian as anything in guardians)
 		guardian.emote(key, intentional = FALSE)
 
-/datum/emote/living/pose/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
+/datum/emote/living/pose/can_run_emote(mob/living/user, status_check = TRUE, intentional, params)
 	. = ..()
 	if(!.)
 		return FALSE

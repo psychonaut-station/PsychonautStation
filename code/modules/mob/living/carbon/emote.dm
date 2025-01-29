@@ -273,13 +273,11 @@
 
 /datum/emote/living/carbon/annoyed
 	key = "annoyed"
-	key_third_person = "annoyed"
-	message = "annoys"
 	emote_type =  EMOTE_VISIBLE
-	vary = TRUE
-	sound = 'sound/effects/annoyed.ogg'
 
 /datum/emote/living/carbon/annoyed/run_emote(mob/living/carbon/user, params, type_override, intentional)
 	. = ..()
 	var/image/emote_animation = image('icons/psychonaut/mob/human/emote_visuals.dmi', user, "annoyed", pixel_x = 10, pixel_y = 10)
 	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
+	// as this emote has no message, it won't play a sound due to the parent proc, so we play it manually here
+	playsound(user,'sound/effects/annoyed.ogg',50,TRUE)

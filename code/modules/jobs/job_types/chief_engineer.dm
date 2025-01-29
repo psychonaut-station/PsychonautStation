@@ -49,7 +49,11 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-
+	alt_titles = list(
+		"Chief Engineer",
+		"Engineering Foreman",
+		"Head of Engineering",
+	)
 
 /datum/job/chief_engineer/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
@@ -67,7 +71,7 @@
 	id_trim = /datum/id_trim/job/chief_engineer
 	uniform = /obj/item/clothing/under/rank/engineering/chief_engineer
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/silver = 1,
 		/obj/item/construction/rcd/ce = 1,
 	)
 	belt = /obj/item/storage/belt/utility/chief/full

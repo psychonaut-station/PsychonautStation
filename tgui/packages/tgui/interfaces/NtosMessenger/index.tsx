@@ -145,11 +145,18 @@ const ContactsScreen = (props: any) => {
 
   const searchChatByName = createSearch(
     searchUser,
-    (chat: NtChat) => chat.recipient.name + chat.recipient.job,
+    (chat: NtChat) =>
+      chat.recipient.name +
+      chat.recipient.job +
+      (chat.recipient.job !== chat.recipient.job_trim &&
+        chat.recipient.job_trim),
   );
   const searchMessengerByName = createSearch(
     searchUser,
-    (messenger: NtMessenger) => messenger.name + messenger.job,
+    (messenger: NtMessenger) =>
+      messenger.name +
+      messenger.job +
+      (messenger.job !== messenger.job_trim && messenger.job_trim),
   );
 
   const chatToButton = (chat: NtChat) => {

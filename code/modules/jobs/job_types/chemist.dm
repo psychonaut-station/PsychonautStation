@@ -36,7 +36,12 @@
 	)
 	rpg_title = "Alchemist"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Chemist",
+		"Pharmacist",
+		"Pharmacologist",
+		"Trainee Pharmacist",
+	)
 
 /datum/outfit/job/chemist
 	name = "Chemist"

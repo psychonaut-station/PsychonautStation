@@ -16,6 +16,12 @@
 	job_flags = JOB_NEW_PLAYER_JOINABLE
 	config_tag = "ANIMAL"
 
+	alt_titles = list(
+		"Animal",
+		"Spirit Animal",
+		"Emotional Support Animal"
+	)
+
 /datum/job/animal/proc/apply_prefs_job_animal(mob/living/spawned, client/player_client)
 	spawned.job = title
 	if(GLOB.current_anonymous_theme || CONFIG_GET(flag/force_random_names))

@@ -219,6 +219,10 @@
 		var/list/L = json["room_templates"]
 		for(var/key in L)
 			var/value = L[key]
+			var/path = text2path(value)
+			if(!ispath(path,/datum/map_template/modular_room)) // Outdated
+				stack_trace("Invalid path in mapping config for room templates: \[[value]\]")
+				continue
 			picked_rooms[key] = value
 
 	if ("height_autosetup" in json)

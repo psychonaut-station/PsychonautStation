@@ -124,7 +124,7 @@ ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set th
 	var/list/json_value = safe_json_decode(file2text(PATH_TO_NEXT_MAP_JSON))
 	var/changed_something = FALSE
 	var/list/next_map_room_templates = list()
-	for(var/datum/map_template/modular_room/item in subtypesof(/datum/map_template/modular_room))
+	for(var/datum/map_template/modular_room/item as anything in subtypesof(/datum/map_template/modular_room))
 		if(item.station_name != next_map.map_name || isnull(item.room_type))
 			continue
 		next_map_room_templates[item.room_type] += list("[item.room_id]" = item)
@@ -135,7 +135,7 @@ ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set th
 		if(change_room != "Yes")
 			continue
 		var/list/template_list = next_map_room_templates[roomtype]
-		var/selected_room = tgui_input_list(user, "Change Room Template", "Select", "Random"|sort_list(template_list))
+		var/selected_room = tgui_input_list(user, "Change Room Template", "Select", sort_list(template_list)|"Random")
 		if(selected_room != "Random")
 			next_map.picked_rooms[roomtype] = template_list[selected_room]
 		else

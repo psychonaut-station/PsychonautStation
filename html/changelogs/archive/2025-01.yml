@@ -691,3 +691,6 @@
   dwasint, Rengan:
   - rscadd: "Joblara alternatif ba\u015Fl\u0131klar eklendi, Occupations sekmesinden\
       \ se\xE7ebilirsiniz."
+2025-01-29:
+  RengaN02:
+  - bugfix: ipcler heretic kalbine sahip olabilecek

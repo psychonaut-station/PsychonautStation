@@ -27,10 +27,6 @@
 	var/tgui_say
 	var/typing_indicators
 
-	///these persist between logins/logouts during the same round.
-	var/datum/player_details/player_details
-	var/reconnecting = FALSE
-
 /datum/client_interface/New(key)
 	..()
 	var/static/mock_client_uid = 0

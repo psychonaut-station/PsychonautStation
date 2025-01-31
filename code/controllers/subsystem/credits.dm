@@ -136,22 +136,22 @@ SUBSYSTEM_DEF(credits)
 
 /datum/controller/subsystem/credits/proc/draft_caststring()
 	cast_string = list("<center>CAST:</center>")
-	var/cast_num = 0
+	var/is_anyone_there = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.ckey && !(H.stat == DEAD))
 			continue
-		var/datum/record/crew/found_record = find_record(carbontarget.real_name)
+		var/datum/record/crew/found_record = find_record(H.real_name)
 		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
 		cast_string += "<center><tr><td class= 'actorname'>[uppertext(H.mind.key)]</td><td class='actorsegue'> as </td><td class='actorrole'>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
-		cast_num++
+		is_anyone_there = TRUE
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
 		if(!S.ckey)
 			continue
 		cast_string += "<center>[uppertext(S.mind.key)] as [S.name]</center>"
-		cast_num++
+		is_anyone_there = TRUE
 
-	if(!cast_num)
+	if(!is_anyone_there)
 		cast_string += "<center><td class='actorsegue'> Nobody! </td></center>"
 
 	var/list/corpses = list()
@@ -222,7 +222,6 @@ SUBSYSTEM_DEF(credits)
 		if(80 to 100)
 			episode_names += new /datum/episode_name("[pick("THE CREW'S DAY OUT", "THIS SIDE OF PARADISE", "[uppr_name]: A SITUATION COMEDY", "THE CREW'S LUNCH BREAK", "THE CREW'S BACK IN BUSINESS", "THE CREW'S BIG BREAK", "THE CREW SAVES THE DAY", "THE CREW RULES THE WORLD", "THE ONE WITH ALL THE SCIENCE AND PROGRESS AND PROMOTIONS AND ALL THE COOL AND GOOD THINGS", "THE TURNING POINT")]", "High score of [roundend_station_integrity].", 250)
 
-	var/list/ran_events = SSdynamic.executed_rules.Copy()
 	switch(rand(1, 100))
 		if(0 to 35)
 			episode_names += new /datum/episode_name("[pick("THE DAY [uppr_name] STOOD STILL", "MUCH ADO ABOUT NOTHING", "WHERE SILENCE HAS LEASE", "RED HERRING", "HOME ALONE", "GO BIG OR GO [uppr_name]", "PLACEBO EFFECT", "ECHOES", "SILENT PARTNERS", "WITH FRIENDS LIKE THESE...", "EYE OF THE STORM", "BORN TO BE MILD", "STILL WATERS")]", "Low threat level.", 150)
@@ -238,6 +237,7 @@ SUBSYSTEM_DEF(credits)
 				episode_names += new /datum/episode_name("[pick("THE OPPORTUNITY OF A LIFETIME", "DRASTIC MEASURES", "DEUS EX", "THE SHOW MUST GO ON", "TRIAL BY FIRE", "A STITCH IN TIME", "ALL'S FAIR IN LOVE AND WAR", "COME HELL OR HIGH HEAVEN", "REVERSAL OF FORTUNE", "DOUBLE TOIL AND DOUBLE TROUBLE")]")
 				episode_names += new /datum/episode_name("A COLD DAY IN HELL", "Station temperature was below 0C this round and threat was high", 1000)
 
+	var/list/ran_events = SSdynamic.executed_rules.Copy()
 	if(locate(/datum/dynamic_ruleset/roundstart/malf_ai) in ran_events)
 		episode_names += new /datum/episode_name("[pick("I'M SORRY [uppr_name], I'M AFRAID I CAN'T LET YOU DO THAT", "A STRANGE GAME", "THE AI GOES ROGUE", "RISE OF THE MACHINES")]", "Round included a malfunctioning AI.", 300)
 	if(locate(/datum/dynamic_ruleset/roundstart/revs) in ran_events)

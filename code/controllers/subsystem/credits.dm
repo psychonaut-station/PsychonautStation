@@ -1,7 +1,6 @@
 SUBSYSTEM_DEF(credits)
 	name = "Credits Screen Storage"
-	wait = 30 SECONDS
-	//10 MINUTES
+	wait = 10 MINUTES
 	init_order = INIT_ORDER_CREDITS
 
 	var/list/disclaimers = list()
@@ -19,9 +18,10 @@ SUBSYSTEM_DEF(credits)
 	var/list/patrons_pref_images = list()
 	var/list/admin_pref_images = list()
 	var/list/major_event_icons = list()
-	var/list/all_patrons = list()
-	var/list/processing_icons = list()
 
+	var/list/all_patrons = list()
+
+	var/list/processing_icons = list()
 	var/list/currentrun  = list()
 
 /datum/controller/subsystem/credits/Initialize()
@@ -140,7 +140,8 @@ SUBSYSTEM_DEF(credits)
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.ckey && !(H.stat == DEAD))
 			continue
-		var/assignment = H.get_assignment(if_no_id = "", if_no_job = "")
+		var/datum/record/crew/found_record = find_record(carbontarget.real_name)
+		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
 		cast_string += "<center><tr><td class= 'actorname'>[uppertext(H.mind.key)]</td><td class='actorsegue'> as </td><td class='actorrole'>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
 		cast_num++
 

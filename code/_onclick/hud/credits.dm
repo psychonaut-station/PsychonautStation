@@ -21,13 +21,13 @@
 		credit_order_for_this_round += SScredits.disclaimers_string
 		credit_order_for_this_round += SScredits.cast_string
 		var/list/admins = shuffle(SScredits.admin_pref_images)
-		var/admin_length = length(admins)
+		var/admins_length = length(admins)
 		var/y_offset = 0
-		if(admin_length)
+		if(admins_length)
 			credit_order_for_this_round += "<center>The Admin Bus</center>"
-			for(var/i in 1 to admin_length)
-				var/x_offset = -40
-				for(var/b in 1 to 8)
+			for(var/i in 1 to admins_length)
+				var/x_offset = -8
+				for(var/b in 1 to 7)
 					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
 					if(!picked)
 						break
@@ -41,8 +41,8 @@
 		if(patrons_length)
 			credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
 			for(var/i in 1 to patrons_length)
-				var/x_offset = -40
-				for(var/b in 1 to 8)
+				var/x_offset = -8
+				for(var/b in 1 to 7)
 					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
 					if(!picked)
 						break
@@ -51,19 +51,24 @@
 					x_offset += 70
 					credit_order_for_this_round += picked
 
-		for(var/i in SScredits.major_event_icons)
-			credit_order_for_this_round += i
-			var/list/returned_images = SScredits.resolve_clients(SScredits.major_event_icons[i], i)
-			for(var/y in 1 to length(returned_images))
-				var/x_offset = -40
-				for(var/b in 1 to 8)
-					var/atom/movable/screen/map_view/char_preview/client_image = pick_n_take(returned_images)
-					if(!client_image)
+		for(var/obj/effect/title_card_object/MA as anything in SScredits.major_event_icons)
+			credit_order_for_this_round += MA
+			var/list/antagonist_icons = SScredits.major_event_icons[MA]
+			for(var/i in 1 to length(antagonist_icons))
+				var/x_offset = -8
+				for(var/b in 1 to 7)
+					if(!length(antagonist_icons))
 						break
-					client_image.pixel_x = x_offset
-					client_image.pixel_y = y_offset
+					var/reference = pick(antagonist_icons)
+					var/atom/movable/screen/map_view/char_preview/picked = antagonist_icons[reference]
+					antagonist_icons -= reference
+					if(!picked)
+						break
+					picked.pixel_x = x_offset
+					picked.pixel_y = y_offset
 					x_offset += 70
-					credit_order_for_this_round += client_image
+					credit_order_for_this_round += picked
+
 
 	var/count = 0
 	for(var/I in credit_order_for_this_round)
@@ -78,7 +83,7 @@
 		_credits += new /atom/movable/screen/credit(null, null, I, src)
 		if(istype(I, /atom/movable/screen/map_view/char_preview))
 			count++
-			if(count >= 8)
+			if(count >= 7)
 				count = 0
 				sleep(CREDIT_SPAWN_SPEED)
 		if(!istype(I, /atom/movable/screen/map_view/char_preview))

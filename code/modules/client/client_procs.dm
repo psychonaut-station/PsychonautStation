@@ -600,7 +600,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.interviews.client_logout(src)
 	GLOB.requests.client_logout(src)
 	SSserver_maint.UpdateHubStatus()
-	if(credits)
+	if(credits && !isnull(credits))
 		QDEL_LIST(credits)
 	if(holder)
 		holder.owner = null

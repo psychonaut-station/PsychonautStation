@@ -1,6 +1,7 @@
 SUBSYSTEM_DEF(credits)
 	name = "Credits Screen Storage"
-	flags = SS_NO_FIRE
+	wait = 30 SECONDS
+	//10 MINUTES
 	init_order = INIT_ORDER_CREDITS
 
 	var/list/disclaimers = list()
@@ -20,9 +21,41 @@ SUBSYSTEM_DEF(credits)
 
 	var/list/all_patrons = list()
 
+	var/list/processing_icons = list()
+	/// Tracks what bit of processing we're on, so we can resume post yield in the right place
+	var/processing_part
+
 /datum/controller/subsystem/credits/Initialize()
 	generate_pref_images()
 	return SS_INIT_SUCCESS
+
+/datum/controller/subsystem/credits/fire(resumed = 0)
+	if(!isnull(processing_part) && !processing_icons[processing_part])
+		processing_part = null
+
+	for(var/datum/weakref/weakref in processing_icons)
+		if(!isnull(processing_part) && weakref != processing_part)
+			continue
+		var/next_index = processing_icons.Find(weakref) + 1
+		if(next_index > length(processing_icons))
+			next_index = 1
+		var/atom/movable/screen/map_view/char_preview/appereance = processing_icons[weakref]
+		var/mob/living/living_mob = weakref.resolve()
+		if(!iscarbon(living_mob) || living_mob.stat == DEAD)
+			processing_part = processing_icons[next_index]
+			continue
+		appereance.appearance = living_mob.appearance
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 120
+		appereance.maptext_y = -8
+		appereance.maptext_x = -43
+		appereance.maptext = "<center>[living_mob.real_name]</center>"
+
+		processing_part = processing_icons[next_index]
+
+/datum/controller/subsystem/credits/Recover()
+	processing_icons = SScredits.processing_icons
+	major_event_icons = SScredits.major_event_icons
 
 /datum/controller/subsystem/credits/proc/draft()
 	draft_episode_names()
@@ -45,19 +78,20 @@ SUBSYSTEM_DEF(credits)
 
 		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
 		appereance.update_body()
+		appereance.setDir(SOUTH)
 		appereance.maptext_width = 120
-		appereance.maptext_y = -8
 		appereance.maptext_x = -43
+		appereance.maptext_y = -8
 		appereance.maptext = "<center>[ckey]</center>"
 		patrons_pref_images += appereance
 
 	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		world.log << ckey
 		var/datum/client_interface/interface = new(ckey(ckey))
 		var/datum/preferences/mocked = new(interface)
 
 		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
 		appereance.update_body()
+		appereance.setDir(SOUTH)
 		appereance.maptext_width = 120
 		appereance.maptext_x = -43
 		appereance.maptext_y = -8
@@ -132,7 +166,7 @@ SUBSYSTEM_DEF(credits)
 		cast_string += "<center><h3>[true_story_bro]</h3><br>In memory of those that did not make it.<br>[english_list(corpses)].<br></center>"
 	cast_string += "</div><br>"
 
-/datum/controller/subsystem/credits/proc/generate_major_icon(list/mobs, passed_icon_state)
+/datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
 	if(!passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA
@@ -146,41 +180,31 @@ SUBSYSTEM_DEF(credits)
 		MA.pixel_x = 80
 		major_event_icons += MA
 		major_event_icons[MA] = list()
+	return MA
 
-	major_event_icons[MA] |= mobs
-
-/datum/controller/subsystem/credits/proc/resolve_clients(list/clients, icon_state)
-	var/list/created_appearances = list()
-
-	//hell
-	if(icon_state == "cult")
-		var/datum/team/cult/cult = locate(/datum/team/cult) in GLOB.antagonist_teams
-		if(cult)
-			for(var/mob/living/cultist in cult.true_cultists)
-				if(!cultist.client)
-					continue
-				clients |= WEAKREF(cultist.client)
-	if(icon_state == "revolution")
-		var/datum/team/revolution/cult = locate(/datum/team/revolution) in GLOB.antagonist_teams
-		if(cult)
-			for(var/datum/mind/cultist in (cult.ex_revs + cult.ex_headrevs + cult.members))
-				if(!cultist?.current?.client)
-					continue
-				clients |= WEAKREF(cultist.current.client)
-
-	for(var/datum/weakref/weak as anything in clients)
-		var/client/client = weak.resolve()
-		if(!client)
-			continue
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, client.prefs)
-		var/mutable_appearance/preview = new(getFlatIcon(client.mob?.appearance))
+/datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
+	if(!client || !living_mob || !passed_icon_state)
+		return
+	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
+	var/atom/movable/screen/map_view/char_preview/appereance
+	if(processing_icons[WEAKREF(living_mob)])
+		appereance = processing_icons[WEAKREF(living_mob)]
+	else
+		appereance = new(null, client.prefs)
+		var/mutable_appearance/preview = new(living_mob.appearance)
 		appereance.appearance = preview.appearance
+		appereance.setDir(SOUTH)
 		appereance.maptext_width = 120
 		appereance.maptext_y = -8
-		appereance.maptext_x = -42
-		appereance.maptext = "<center>[client.mob.real_name]</center>"
-		created_appearances += appereance
-	return created_appearances
+		appereance.maptext_x = -43
+		appereance.maptext = "<center>[living_mob.real_name]</center>"
+	major_event_icons[MA] += list(REF(living_mob) = appereance)
+	processing_icons[WEAKREF(living_mob)] = appereance
+
+/datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
+	if(isnull(weakref))
+		return
+	return processing_icons[weakref]
 
 /datum/controller/subsystem/credits/proc/draft_episode_names()
 	var/uppr_name = uppertext(station_name()) //so we don't run these two 500 times

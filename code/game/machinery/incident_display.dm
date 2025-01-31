@@ -112,7 +112,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 3
 	..()
 	register_context()
 	if(mapload && sign_features == DISPLAY_DELAM && SSmapping.picked_rooms["engine"])
-		var/datum/map_template/random_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
+		var/datum/map_template/modular_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
 		if(engine_template.engine_type == "singularity")
 			name = NAME_SINGULARITY
 			desc = DESC_SINGULARITY

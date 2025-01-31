@@ -679,34 +679,17 @@
   - balance: Simultaneously having traits that both make you easier and harder to
       wound will now act like you have neither, resulting in you taking the normal
       amount of wound damage.
-<<<<<<< HEAD
-=======
   EEASAS:
   - map: modularizes the comms agent ruin on icebox
   Gaxeer:
   - refactor: replace bubble sort with timsort for cameralist, move global procs to
       `cameranet` datum
->>>>>>> f1e6e71abfe9c5ea2ab417df9b2342e4e0468d95
   KingkumaArt:
   - qol: Ethereals can now live off wine again.
   jlsnow301:
   - bugfix: TGUI Say window has been tweaked slightly to look and run cleanly.
   - bugfix: The character preferences menu has been greatly refactored, hopefully
       opening faster.
-<<<<<<< HEAD
-  valzargaming:
-  - bugfix: Typo in path for cavesound3.ogg
-2025-01-26:
-  dwasint, Rengan:
-  - rscadd: "Joblara alternatif ba\u015Fl\u0131klar eklendi, Occupations sekmesinden\
-      \ se\xE7ebilirsiniz."
-2025-01-29:
-  RengaN02:
-  - bugfix: ipcler heretic kalbine sahip olabilecek
-2025-01-30:
-  Rengan:
-  - rscadd: annoyed, sweat, ve pose emotesi eklendi.
-=======
   necromanceranne:
   - rscadd: Cargo can order lethal shotgun shells from the Imports tab, at a premium.
   - balance: The black market source for buckshot can get normal types of buckshot,
@@ -718,6 +701,9 @@
   valzargaming:
   - bugfix: Typo in path for cavesound3.ogg
 2025-01-26:
+  dwasint, Rengan:
+  - rscadd: "Joblara alternatif ba\u015Fl\u0131klar eklendi, Occupations sekmesinden\
+      \ se\xE7ebilirsiniz."
   Profakos:
   - bugfix: IEDs can now also be crafted using pipes you have ripped up from the ground.
   SmArtKar:
@@ -779,6 +765,8 @@
       go to "OOC" tabs)'
   - qol: '"Tip of the Round" and "Show Server Revision" are also typed as "Info",
       rather than "OOC" and untyped respectively'
+  RengaN02:
+  - bugfix: ipcler heretic kalbine sahip olabilecek
   SmArtKar:
   - bugfix: Fixed evidence bag not reverting to tiny size after dumping its contents
       out
@@ -809,6 +797,8 @@
   OrionTheFox:
   - image: resprited Extinguisher Cabinets (did you know there's craftable Extinguishers?
       "Improvised cooling spray"? I didn't. Now I do though, and so do you!)
+  Rengan:
+  - rscadd: annoyed, sweat, ve pose emotesi eklendi.
   SmArtKar:
   - bugfix: Springlock MODule now only activates when you have at least a single sealed
       piece
@@ -873,4 +863,3 @@
       messenger app.
   - bugfix: fixed PAIs not being able to turn off the GPS tracking using their gpa
       app.
->>>>>>> f1e6e71abfe9c5ea2ab417df9b2342e4e0468d95

@@ -25,7 +25,6 @@ SUBSYSTEM_DEF(credits)
 	var/list/currentrun  = list()
 
 /datum/controller/subsystem/credits/Initialize()
-	generate_pref_images()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/credits/fire(resumed = 0)
@@ -61,40 +60,9 @@ SUBSYSTEM_DEF(credits)
 	draft_caststring()
 
 /datum/controller/subsystem/credits/proc/finalize()
-	generate_pref_images()
 	finalize_name()
 	finalize_episodestring()
 	finalize_disclaimerstring()
-
-/datum/controller/subsystem/credits/proc/generate_pref_images()
-	patrons_pref_images = list()
-	admin_pref_images = list()
-
-	for(var/ckey in all_patrons)
-		var/datum/client_interface/interface = new(ckey)
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 120
-		appereance.maptext_x = -43
-		appereance.maptext_y = -8
-		appereance.maptext = "<center>[ckey]</center>"
-		patrons_pref_images += appereance
-
-	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		var/datum/client_interface/interface = new(ckey(ckey))
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 120
-		appereance.maptext_x = -43
-		appereance.maptext_y = -8
-		appereance.maptext = "<center>[ckey]</center>"
-		admin_pref_images += appereance
 
 /datum/controller/subsystem/credits/proc/finalize_name()
 	if(customized_name)

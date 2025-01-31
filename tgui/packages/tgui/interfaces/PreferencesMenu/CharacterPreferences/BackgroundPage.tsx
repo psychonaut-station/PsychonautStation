@@ -86,7 +86,11 @@ export const BackgroundPage = () => {
           <TextArea
             width="100%"
             height="100px"
-            style={numberOfCharacterDesc > 256 && { borderColor: '#D4282B' }}
+            style={
+              numberOfCharacterDesc > 256
+                ? { borderColor: '#D4282B' }
+                : undefined
+            }
             onChange={(e, value) => setCharacterDesc(value)}
             onInput={(e, value) => setNumberOfCharacterDesc(value.length)}
             value={characterDesc}
@@ -139,7 +143,9 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfMedicalRecords > 256 && { borderColor: '#D4282B' }
+                  numberOfMedicalRecords > 256
+                    ? { borderColor: '#D4282B' }
+                    : undefined
                 }
                 onChange={(e, value) => setMedicalRecords(value)}
                 onInput={(e, value) => setNumberOfMedicalRecords(value.length)}
@@ -191,7 +197,9 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfSecurityRecords > 256 && { borderColor: '#D4282B' }
+                  numberOfSecurityRecords > 256
+                    ? { borderColor: '#D4282B' }
+                    : undefined
                 }
                 onChange={(e, value) => setSecurityRecords(value)}
                 onInput={(e, value) => setNumberOfSecurityRecords(value.length)}
@@ -247,7 +255,9 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfEmploymentRecords > 256 && { borderColor: '#D4282B' }
+                  numberOfEmploymentRecords > 256
+                    ? { borderColor: '#D4282B' }
+                    : undefined
                 }
                 onChange={(e, value) => setEmploymentRecords(value)}
                 onInput={(e, value) =>
@@ -301,7 +311,9 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfExploitsRecords > 256 && { borderColor: '#D4282B' }
+                  numberOfExploitsRecords > 256
+                    ? { borderColor: '#D4282B' }
+                    : undefined
                 }
                 onChange={(e, value) => setExploitsRecords(value)}
                 onInput={(e, value) => setNumberOfExploitsRecords(value.length)}

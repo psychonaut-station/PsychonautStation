@@ -386,7 +386,9 @@ GLOBAL_DATUM(main_supermatter_engine, /obj/machinery/power/supermatter_crystal)
 /// Returns data that are exclusively about this sm.
 /obj/machinery/power/supermatter_crystal/proc/sm_ui_data()
 	var/list/data = list()
-	data["uid"] = uid
+	data["type"] = "supermatter"
+	data["id"] = uid
+	data["uid"] = "sm_[uid]"
 	data["area_name"] = get_area_name(src)
 
 	data["integrity"] = get_integrity_percent()

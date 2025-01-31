@@ -73,6 +73,8 @@
 
 	var/pb_knockback = 0
 
+	var/fire_in = 0
+
 	/// Cooldown for the visible message sent from gun flipping.
 	COOLDOWN_DECLARE(flip_cooldown)
 
@@ -354,6 +356,10 @@
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
 		balloon_alert(user, "use both hands!")
 		return
+
+	if(fire_in && !do_after(user, fire_in, target = user))
+		balloon_alert(user, "interrupted!")
+		return
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0
@@ -558,7 +564,7 @@
 			return TRUE
 
 /obj/item/gun/animate_atom_living(mob/living/owner)
-	new /mob/living/simple_animal/hostile/mimic/copy/ranged(drop_location(), src, owner)
+	new /mob/living/basic/mimic/copy/ranged(drop_location(), src, owner)
 
 /obj/item/gun/proc/handle_suicide(mob/living/carbon/human/user, mob/living/carbon/human/target, params, bypass_timer)
 	if(!ishuman(user) || !ishuman(target))

@@ -47,6 +47,14 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+	alt_titles = list(
+		"Research Director",
+		"Silicon Administrator",
+		"Lead Researcher",
+		"Biorobotics Director",
+		"Research Supervisor",
+		"Chief Science Officer"
+	)
 
 /datum/job/research_director/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
@@ -67,7 +75,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/research_director/turtleneck
 	suit = /obj/item/clothing/suit/toggle/labcoat/research_director
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/silver = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/rd
 	head = /obj/item/clothing/head/beret/science/rd

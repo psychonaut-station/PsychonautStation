@@ -1,0 +1,4 @@
+author: "RengaN02"
+delete-after: True
+changes:
+  - bugfix: "Background informationda yazı uzunlugunu düzelttikten sonra border colorun düzelmemesi düzeltildi."

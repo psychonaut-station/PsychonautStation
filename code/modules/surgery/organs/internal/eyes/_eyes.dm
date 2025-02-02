@@ -51,7 +51,7 @@
 	var/obj/effect/abstract/eyelid_effect/eyelid_left
 	var/obj/effect/abstract/eyelid_effect/eyelid_right
 
-	/// Glasses cannot be worn over these eyes. Currently unused
+	/// Glasses cannot be worn over these eyes.
 	var/no_glasses = FALSE
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
@@ -80,6 +80,15 @@
 	RegisterSignal(receiver, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(on_face_wash))
 	if (scarring)
 		apply_scarring_effects()
+
+	if(!no_glasses)
+		return
+
+	var/mob/living/carbon/human/human_receiver = receiver
+	if(!human_receiver.can_mutate())
+		return
+	var/datum/species/rec_species = human_receiver.dna.species
+	rec_species.update_no_equip_flags(human_receiver, rec_species.no_equip_flags | ITEM_SLOT_EYES)
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call update_body
@@ -117,6 +126,9 @@
 			organ_owner.remove_fov_trait(type)
 		if(!special)
 			human_owner.update_body()
+		if(human_owner.can_mutate() && no_glasses)
+			var/datum/species/rec_species = human_owner.dna.species
+			rec_species.update_no_equip_flags(organ_owner, initial(rec_species.no_equip_flags))
 
 	// Cure blindness from eye damage
 	organ_owner.cure_blind(EYE_DAMAGE)
@@ -1004,6 +1016,14 @@
 	icon_state = "lizard_eyes"
 	synchronized_blinking = FALSE
 
+/obj/item/organ/eyes/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	overlay_ignore_lighting = TRUE
+	no_glasses = TRUE
+
 /obj/item/organ/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
 	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
@@ -1045,23 +1065,3 @@
 	low_light_cutoff = list(20, 15, 0)
 	medium_light_cutoff = list(35, 30, 0)
 	high_light_cutoff = list(50, 40, 0)
-
-/obj/item/organ/eyes/night_vision/arachnid/on_mob_insert(mob/living/carbon/eye_owner)
-	. = ..()
-	if(!ishuman(eye_owner))
-		return
-	var/mob/living/carbon/human/human_receiver = eye_owner
-	if(!human_receiver.can_mutate())
-		return
-	var/datum/species/rec_species = human_receiver.dna.species
-	rec_species.update_no_equip_flags(eye_owner, rec_species.no_equip_flags | ITEM_SLOT_EYES)
-
-/obj/item/organ/eyes/night_vision/arachnid/on_mob_remove(mob/living/carbon/eye_owner)
-	. = ..()
-	if(!ishuman(eye_owner))
-		return
-	var/mob/living/carbon/human/human_receiver = eye_owner
-	if(!human_receiver.can_mutate())
-		return
-	var/datum/species/rec_species = human_receiver.dna.species
-	rec_species.update_no_equip_flags(eye_owner, initial(rec_species.no_equip_flags))

@@ -33,7 +33,7 @@
 		arachnid.dna.features["arachnid_appendages"] = "Long"
 		arachnid.eye_color_left = COLOR_SILVER
 		arachnid.eye_color_right = COLOR_SILVER
-		arachnid.set_species()
+		arachnid.set_species(arachnid_type)
 		arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visuals_only = TRUE)
 		test_screenshot("[arachnid_type]", get_flat_icon_for_all_directions(arachnid))
 		testable_species -= arachnid_type

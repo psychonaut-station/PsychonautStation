@@ -63,8 +63,8 @@
 /obj/item/organ/eyes/Initialize(mapload)
 	. = ..()
 	if (blink_animation)
-		eyelid_left = new(src, "[eye_icon_state]_l")
-		eyelid_right = new(src, "[eye_icon_state]_r")
+		eyelid_left = new(src, eye_icon, "[eye_icon_state]_l")
+		eyelid_right = new(src, eye_icon, "[eye_icon_state]_r")
 
 /obj/item/organ/eyes/Destroy()
 	QDEL_NULL(eyelid_left)
@@ -474,8 +474,9 @@
 	layer = -BODY_LAYER
 	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_state)
+/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_icon, new_state)
 	. = ..()
+	icon = new_icon
 	icon_state = new_state
 
 #undef BASE_BLINKING_DELAY

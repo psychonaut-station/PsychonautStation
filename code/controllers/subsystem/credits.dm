@@ -59,6 +59,7 @@ SUBSYSTEM_DEF(credits)
 	draft_episode_names()
 	draft_disclaimers()
 	draft_caststring()
+	all_patrons = get_patrons()
 
 /datum/controller/subsystem/credits/proc/finalize()
 	generate_pref_images()
@@ -454,6 +455,21 @@ SUBSYSTEM_DEF(credits)
 	if(avg_divide)
 		return avg_temp / avg_divide
 	return T0C
+
+/datum/controller/subsystem/credits/proc/get_patrons()
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return FALSE
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/patreon/patrons", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		return json_decode(response.body)
 
 /obj/effect/title_card_object
 	plane = SPLASHSCREEN_PLANE

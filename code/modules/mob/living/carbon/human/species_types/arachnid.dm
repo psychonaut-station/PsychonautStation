@@ -12,7 +12,7 @@
 	)
 	meat = /obj/item/food/meat/slab/spider
 	siemens_coeff = 1.3
-	mutanteyes = /obj/item/organ/eyes/night_vision/arachnid
+	mutanteyes = /obj/item/organ/eyes/arachnid
 	mutanttongue = /obj/item/organ/tongue/arachnid
 	mutant_organs = list(
 		/obj/item/organ/external/arachnid_appendages = "Long",
@@ -58,6 +58,19 @@
 /datum/species/arachnid/get_species_description()
 	return "Arachnids are a species of humanoid spiders employed by Nanotrasen in recent years."
 
+/datum/species/arachnid/get_species_lore()
+	return list(
+		"Science has seen its fair share of questionable experiments, but few as controversial as the creation of the arachnids.",
+
+		"Engineered in secret laboratories through extensive genetic modification, arachnids were originally designed as biological weapons. \
+		They were meant to be controlled, deployed, and discarded as needed. However, they developed far beyond their intended purpose, \
+		and the experiments eventually spiraled out of control.",
+
+		"Following their escape, arachnids spread across the galaxy. Some integrated into society, while others formed isolated colonies. \
+		Their culture is built on pragmatism and adaptability, with varying perspectives on individuality and collective survival. \
+		One thing remains universal among them—the innate drive to control their surroundings and secure their future."
+	)
+
 /datum/species/arachnid/create_pref_unique_perks()
 	var/list/to_add = list()
 
@@ -80,16 +93,20 @@
 			SPECIES_PERK_ICON = "sun",
 			SPECIES_PERK_NAME = "Maybe Too Many Eyes",
 			SPECIES_PERK_DESC = "Arachnids cannot equip any kind of eyewear, requiring \
-			alternatives like welding helmets or implants. Their eyes have night vision however.",
+			alternatives like welding helmets or implants. [istype(mutanteyes, /obj/item/organ/eyes/night_vision) ? "Their eyes have night vision however." : ""]",
 		),
 	)
 	return to_add
+
+/datum/species/arachnid/cavespider
+	id = SPECIES_CAVESPIDER
+	mutanteyes = /obj/item/organ/eyes/night_vision/arachnid
 
 /datum/reagent/mutationtoxin/arachnid
 	name = "Arachnid Mutation Toxin"
 	description = "A spidering toxin."
 	color = "#BFB413"
-	race = /datum/species/arachnid
+	race = /datum/species/arachnid/cavespider
 	taste_description = "webs"
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
 

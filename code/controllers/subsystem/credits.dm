@@ -384,7 +384,7 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/proc/generate_admin_icons()
 	admin_pref_icons = list()
 	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		var/datum/client_interface/interface = new(ckey(ckey))
+		var/datum/client_interface/interface = new(ckey)
 		var/datum/preferences/mocked = new(interface)
 
 		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)

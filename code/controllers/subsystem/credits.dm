@@ -15,8 +15,8 @@ SUBSYSTEM_DEF(credits)
 
 	var/customized_name = ""
 
-	var/list/patrons_pref_images = list()
-	var/list/admin_pref_images = list()
+	var/list/patrons_pref_icons = list()
+	var/list/admin_pref_icons = list()
 	var/list/major_event_icons = list()
 
 	var/list/all_patrons = list()
@@ -25,7 +25,8 @@ SUBSYSTEM_DEF(credits)
 	var/list/currentrun  = list()
 
 /datum/controller/subsystem/credits/Initialize()
-	generate_pref_images()
+	all_patrons = get_patrons()
+	generate_patron_icons()
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/credits/fire(resumed = 0)
@@ -43,9 +44,10 @@ SUBSYSTEM_DEF(credits)
 		if(!isnull(living_mob) && living_mob.stat != DEAD)
 			appereance.appearance = living_mob.appearance
 			appereance.setDir(SOUTH)
-			appereance.maptext_width = 120
-			appereance.maptext_y = -8
-			appereance.maptext_x = -43
+			appereance.maptext_width = 88
+			appereance.maptext_height = 48
+			appereance.maptext_y = -16
+			appereance.maptext_x = -32
 			appereance.maptext = "<center>[living_mob.real_name]</center>"
 		if (MC_TICK_CHECK)
 			return
@@ -54,48 +56,18 @@ SUBSYSTEM_DEF(credits)
 	processing_icons = SScredits.processing_icons
 	major_event_icons = SScredits.major_event_icons
 	customized_name = SScredits.customized_name
+	patrons_pref_icons = SScredits.patrons_pref_icons
 
 /datum/controller/subsystem/credits/proc/draft()
 	draft_episode_names()
 	draft_disclaimers()
 	draft_caststring()
-	all_patrons = get_patrons()
+	generate_admin_icons()
 
 /datum/controller/subsystem/credits/proc/finalize()
-	generate_pref_images()
 	finalize_name()
 	finalize_episodestring()
 	finalize_disclaimerstring()
-
-/datum/controller/subsystem/credits/proc/generate_pref_images()
-	patrons_pref_images = list()
-	admin_pref_images = list()
-
-	for(var/ckey in all_patrons)
-		var/datum/client_interface/interface = new(ckey)
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 120
-		appereance.maptext_x = -43
-		appereance.maptext_y = -8
-		appereance.maptext = "<center>[ckey]</center>"
-		patrons_pref_images += appereance
-
-	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		var/datum/client_interface/interface = new(ckey(ckey))
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 120
-		appereance.maptext_x = -43
-		appereance.maptext_y = -8
-		appereance.maptext = "<center>[ckey]</center>"
-		admin_pref_images += appereance
 
 /datum/controller/subsystem/credits/proc/finalize_name()
 	if(customized_name)
@@ -182,6 +154,41 @@ SUBSYSTEM_DEF(credits)
 		major_event_icons[MA] = list()
 	return MA
 
+/// Character Icons ///
+
+/datum/controller/subsystem/credits/proc/generate_patron_icons()
+	patrons_pref_icons = list()
+	for(var/ckey in all_patrons)
+		var/datum/client_interface/interface = new(ckey)
+		var/datum/preferences/mocked = new(interface)
+
+		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
+		appereance.update_body()
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
+		appereance.maptext = "<center>[ckey]</center>"
+		patrons_pref_icons += appereance
+
+/datum/controller/subsystem/credits/proc/generate_admin_icons()
+	admin_pref_icons = list()
+	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
+		var/datum/client_interface/interface = new(ckey(ckey))
+		var/datum/preferences/mocked = new(interface)
+
+		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
+		appereance.update_body()
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
+		appereance.maptext = "<center>[ckey]</center>"
+		admin_pref_icons += appereance
+
+
 /datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
 	if(!client || !living_mob || !passed_icon_state)
 		return
@@ -194,12 +201,15 @@ SUBSYSTEM_DEF(credits)
 		var/mutable_appearance/preview = new(living_mob.appearance)
 		appereance.appearance = preview.appearance
 		appereance.setDir(SOUTH)
-		appereance.maptext_width = 120
-		appereance.maptext_y = -8
-		appereance.maptext_x = -43
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
 		appereance.maptext = "<center>[living_mob.real_name]</center>"
 	major_event_icons[MA] += list(REF(living_mob) = appereance)
 	processing_icons[WEAKREF(living_mob)] = appereance
+
+/// Character Icons ///
 
 /datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
 	if(isnull(weakref))
@@ -469,7 +479,8 @@ SUBSYSTEM_DEF(credits)
 	var/datum/http_response/response = request.into_response()
 
 	if(!response.errored && response.status_code == 200)
-		return json_decode(response.body)
+		var/list/json = json_decode(response.body)
+		return json["patrons"]
 
 /obj/effect/title_card_object
 	plane = SPLASHSCREEN_PLANE

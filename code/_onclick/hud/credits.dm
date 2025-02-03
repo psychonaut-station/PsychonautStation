@@ -20,43 +20,43 @@
 		credit_order_for_this_round += ""
 		credit_order_for_this_round += SScredits.disclaimers_string
 		credit_order_for_this_round += SScredits.cast_string
-		var/list/admins = shuffle(SScredits.admin_pref_images)
+		var/list/admins = shuffle(SScredits.admin_pref_icons)
 		var/admins_length = length(admins)
 		var/y_offset = 0
 		if(admins_length)
 			credit_order_for_this_round += "<center>The Admin Bus</center>"
 			for(var/i in 1 to admins_length)
-				var/x_offset = -8
-				for(var/b in 1 to 7)
+				var/x_offset = -16
+				for(var/b in 1 to 6)
 					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
 					if(!picked)
 						break
 					picked.pixel_x = x_offset
 					picked.pixel_y = y_offset
-					x_offset += 70
+					x_offset += 96
 					credit_order_for_this_round += picked
 
-		var/list/patrons = shuffle(SScredits.patrons_pref_images)
+		var/list/patrons = shuffle(SScredits.patrons_pref_icons)
 		var/patrons_length = length(patrons)
 		if(patrons_length)
 			credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
 			for(var/i in 1 to patrons_length)
-				var/x_offset = -8
-				for(var/b in 1 to 7)
+				var/x_offset = -16
+				for(var/b in 1 to 6)
 					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
 					if(!picked)
 						break
 					picked.pixel_x = x_offset
 					picked.pixel_y = y_offset
-					x_offset += 70
+					x_offset += 96
 					credit_order_for_this_round += picked
 
 		for(var/obj/effect/title_card_object/MA as anything in SScredits.major_event_icons)
 			credit_order_for_this_round += MA
 			var/list/antagonist_icons = SScredits.major_event_icons[MA]
 			for(var/i in 1 to length(antagonist_icons))
-				var/x_offset = -8
-				for(var/b in 1 to 7)
+				var/x_offset = -16
+				for(var/b in 1 to 6)
 					if(!length(antagonist_icons))
 						break
 					var/reference = pick(antagonist_icons)
@@ -66,7 +66,7 @@
 						break
 					picked.pixel_x = x_offset
 					picked.pixel_y = y_offset
-					x_offset += 70
+					x_offset += 96
 					credit_order_for_this_round += picked
 
 
@@ -83,7 +83,7 @@
 		_credits += new /atom/movable/screen/credit(null, null, I, src)
 		if(istype(I, /atom/movable/screen/map_view/char_preview))
 			count++
-			if(count >= 7)
+			if(count >= 6)
 				count = 0
 				sleep(CREDIT_SPAWN_SPEED)
 		if(!istype(I, /atom/movable/screen/map_view/char_preview))

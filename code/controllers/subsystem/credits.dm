@@ -138,84 +138,6 @@ SUBSYSTEM_DEF(credits)
 		cast_string += "<center><h3>[true_story_bro]</h3><br>In memory of those that did not make it.<br>[english_list(corpses)].<br></center>"
 	cast_string += "</div><br>"
 
-/datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
-	if(!passed_icon_state)
-		return
-	var/obj/effect/title_card_object/MA
-	for(var/obj/effect/title_card_object/effect as anything in major_event_icons)
-		if(effect.icon_state == passed_icon_state)
-			MA = effect
-			break
-	if(!MA)
-		MA = new
-		MA.icon_state = passed_icon_state
-		MA.pixel_x = 80
-		major_event_icons += MA
-		major_event_icons[MA] = list()
-	return MA
-
-/// Character Icons ///
-
-/datum/controller/subsystem/credits/proc/generate_patron_icons()
-	patrons_pref_icons = list()
-	for(var/ckey in all_patrons)
-		var/datum/client_interface/interface = new(ckey)
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
-		patrons_pref_icons += appereance
-
-/datum/controller/subsystem/credits/proc/generate_admin_icons()
-	admin_pref_icons = list()
-	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		var/datum/client_interface/interface = new(ckey(ckey))
-		var/datum/preferences/mocked = new(interface)
-
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
-		admin_pref_icons += appereance
-
-
-/datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
-	if(!client || !living_mob || !passed_icon_state)
-		return
-	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
-	var/atom/movable/screen/map_view/char_preview/appereance
-	if(processing_icons[WEAKREF(living_mob)])
-		appereance = processing_icons[WEAKREF(living_mob)]
-	else
-		appereance = new(null, client.prefs)
-		var/mutable_appearance/preview = new(living_mob.appearance)
-		appereance.appearance = preview.appearance
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[living_mob.real_name]</center>"
-	major_event_icons[MA] += list(REF(living_mob) = appereance)
-	processing_icons[WEAKREF(living_mob)] = appereance
-
-/// Character Icons ///
-
-/datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
-	if(isnull(weakref))
-		return
-	return processing_icons[weakref]
-
 /datum/controller/subsystem/credits/proc/draft_episode_names()
 	var/uppr_name = uppertext(station_name())
 
@@ -443,6 +365,81 @@ SUBSYSTEM_DEF(credits)
 		if(all_braindamaged && human_escapees > 2)
 			episode_names += new /datum/episode_name("...AND PRAY THERE'S INTELLIGENT LIFE SOMEWHERE OUT IN SPACE, 'CAUSE THERE'S BUGGER ALL DOWN HERE IN [uppr_name]", "Everyone was braindamaged this round.", human_escapees * 500)
 
+/datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
+	if(!passed_icon_state)
+		return
+	var/obj/effect/title_card_object/MA
+	for(var/obj/effect/title_card_object/effect as anything in major_event_icons)
+		if(effect.icon_state == passed_icon_state)
+			MA = effect
+			break
+	if(!MA)
+		MA = new
+		MA.icon_state = passed_icon_state
+		MA.pixel_x = 80
+		major_event_icons += MA
+		major_event_icons[MA] = list()
+	return MA
+
+/datum/controller/subsystem/credits/proc/generate_admin_icons()
+	admin_pref_icons = list()
+	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
+		var/datum/client_interface/interface = new(ckey(ckey))
+		var/datum/preferences/mocked = new(interface)
+
+		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
+		appereance.update_body()
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
+		appereance.maptext = "<center>[ckey]</center>"
+		admin_pref_icons += appereance
+
+/datum/controller/subsystem/credits/proc/generate_patron_icons()
+	if(isnull(all_patrons))
+		return
+	patrons_pref_icons = list()
+	for(var/ckey in all_patrons)
+		var/datum/client_interface/interface = new(ckey)
+		var/datum/preferences/mocked = new(interface)
+
+		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
+		appereance.update_body()
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
+		appereance.maptext = "<center>[ckey]</center>"
+		patrons_pref_icons += appereance
+
+/datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
+	if(!client || !living_mob || !passed_icon_state)
+		return
+	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
+	var/atom/movable/screen/map_view/char_preview/appereance
+	if(processing_icons[WEAKREF(living_mob)])
+		appereance = processing_icons[WEAKREF(living_mob)]
+	else
+		appereance = new(null, client.prefs)
+		var/mutable_appearance/preview = new(living_mob.appearance)
+		appereance.appearance = preview.appearance
+		appereance.setDir(SOUTH)
+		appereance.maptext_width = 88
+		appereance.maptext_height = 48
+		appereance.maptext_y = -16
+		appereance.maptext_x = -32
+		appereance.maptext = "<center>[living_mob.real_name]</center>"
+	major_event_icons[MA] += list(REF(living_mob) = appereance)
+	processing_icons[WEAKREF(living_mob)] = appereance
+
+/datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
+	if(isnull(weakref))
+		return
+	return processing_icons[weakref]
+
 /datum/controller/subsystem/credits/proc/blackbox_feedback_num(key)
 	if(SSblackbox.feedback_list[key])
 		var/datum/feedback_variable/FV = SSblackbox.feedback_list[key]
@@ -468,7 +465,7 @@ SUBSYSTEM_DEF(credits)
 
 /datum/controller/subsystem/credits/proc/get_patrons()
 	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
-		return FALSE
+		return
 
 	var/datum/http_request/request = new ()
 	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/patreon/patrons", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))

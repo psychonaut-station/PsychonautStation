@@ -58,11 +58,11 @@
 /// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message.
 #define STRIP_HTML_FULL(text, limit) (GLOB.html_tags.Replace(copytext(text, 1, limit), ""))
 
-/// Simply removes the < and > characters, and limits the length of the message. Uses locale_copytext instead of copytext.
-#define STRIP_HTML_LOCALE_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(locale_copytext(text, 1, limit), ""))
+/// Simply removes the < and > characters, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))
 
-/// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message. Uses locale_copytext instead of copytext.
-#define STRIP_HTML_LOCALE_FULL(text, limit) (GLOB.html_tags.Replace(locale_copytext(text, 1, limit), ""))
+/// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_FULL(text, limit) (GLOB.html_tags.Replace(copytext_char(text, 1, limit), ""))
 
 /**
  * stuff like `copytext(input, length(input))` will trim the last character of the input,

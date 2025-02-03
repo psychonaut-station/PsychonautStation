@@ -8,7 +8,7 @@
 	return
 
 /datum/preference/background_data/deserialize(input, datum/preferences/preferences)
-	return STRIP_HTML_LOCALE_FULL(input, 256)
+	return STRIP_HTML_LOCALE_FULL(input, 257)
 
 /datum/preference/background_data/create_default_value()
 	return ""

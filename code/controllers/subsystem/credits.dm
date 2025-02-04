@@ -25,9 +25,14 @@ SUBSYSTEM_DEF(credits)
 	var/list/currentrun  = list()
 
 /datum/controller/subsystem/credits/Initialize()
+#if defined(UNIT_TESTS)
+	return SS_INIT_NO_NEED
+#else
 	all_patrons = get_patrons()
 	generate_patron_icons()
+
 	return SS_INIT_SUCCESS
+#endif
 
 /datum/controller/subsystem/credits/fire(resumed = 0)
 	if (!resumed)
@@ -385,6 +390,9 @@ SUBSYSTEM_DEF(credits)
 	admin_pref_icons = list()
 	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
 		var/datum/client_interface/interface = new(ckey)
+		var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
+		if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
+			continue
 		var/datum/preferences/mocked = new(interface)
 
 		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
@@ -403,6 +411,9 @@ SUBSYSTEM_DEF(credits)
 	patrons_pref_icons = list()
 	for(var/ckey in all_patrons)
 		var/datum/client_interface/interface = new(ckey)
+		var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
+		if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
+			continue
 		var/datum/preferences/mocked = new(interface)
 
 		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)

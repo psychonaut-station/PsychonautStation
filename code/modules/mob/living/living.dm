@@ -3039,3 +3039,23 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(HAS_TRAIT(src, TRAIT_ANALGESIA) && !force)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
+
+/mob/living/verb/export_character_icon()
+	set name = "Export Character Icon"
+	set category = "OOC"
+
+	var/mutable_appearance/living_appearance = new(appearance)
+	living_appearance.setDir(SOUTH)
+	var/icon/output_icon = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(living_appearance, defdir = direction, no_anim = TRUE)
+		output_icon.Insert(partial, dir = direction)
+
+	var/time = world.timeofday
+	var/finalpath = "tmp/character_icon_[real_name]_[time].png"
+
+	fcopy(output_icon, finalpath)
+
+	DIRECT_OUTPUT(usr, ftp(file(finalpath)))
+	qdel(living_appearance)

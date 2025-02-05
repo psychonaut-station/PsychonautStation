@@ -1353,6 +1353,44 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	send2adminchat("Server", jointext(message_to_send, " "))
 
+/client/verb/export_preferences_icon()
+	set name = "Export Preferences Icon"
+	set category = "OOC"
+	if(is_guest_key(key))
+		return
+
+	var/icon/output_icon = icon('icons/effects/effects.dmi', "nothing")
+	var/atom/movable/screen/map_view/char_preview/character_preview_view
+	var/datum/client_interface/client_interface
+	var/datum/preferences/mocked_prefs
+
+	if(isnull(prefs.character_preview_view))
+		client_interface = new(ckey)
+		mocked_prefs = new(client_interface)
+		character_preview_view = new(null, mocked_prefs)
+		character_preview_view.update_body()
+	else
+		character_preview_view = prefs.character_preview_view
+
+	var/mutable_appearance/appearance = new(character_preview_view.appearance)
+	appearance.setDir(SOUTH)
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(appearance, defdir = direction, no_anim = TRUE)
+		output_icon.Insert(partial, dir = direction)
+
+	var/time = world.timeofday
+	var/finalpath = "tmp/character_icon_[ckey]_[time].png"
+
+	fcopy(output_icon, finalpath)
+
+	DIRECT_OUTPUT(usr, ftp(file(finalpath)))
+	if(!isnull(client_interface))
+		qdel(appearance)
+		qdel(character_preview_view)
+		qdel(mocked_prefs)
+		qdel(client_interface)
+
 #undef ADMINSWARNED_AT
 #undef CURRENT_MINUTE
 #undef CURRENT_SECOND

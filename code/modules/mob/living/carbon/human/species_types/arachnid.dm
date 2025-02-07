@@ -15,7 +15,7 @@
 	mutanteyes = /obj/item/organ/eyes/arachnid
 	mutanttongue = /obj/item/organ/tongue/arachnid
 	mutant_organs = list(
-		/obj/item/organ/external/arachnid_appendages = "Long",
+		/obj/item/organ/arachnid_appendages = "Long",
 	)
 	inert_mutation = /datum/mutation/human/webbing
 	bodypart_overrides = list(

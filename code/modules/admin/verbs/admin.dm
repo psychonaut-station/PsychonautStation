@@ -159,7 +159,7 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 	BLACKBOX_LOG_ADMIN_VERB("Drop Everything")
 
 ADMIN_VERB(set_credits_title, R_FUN, "Set Credits Title", "Set the title that will show on round end credits.", ADMIN_CATEGORY_FUN)
-	var/title = tgui_input_text(user, "Set Credits Title:", title = "Credits Title")
+	var/title = tgui_input_text(user, "What do you want the title to be?", title = "Credits Title")
 	if(!title)
 		return
 	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))

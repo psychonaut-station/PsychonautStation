@@ -7,7 +7,6 @@ SUBSYSTEM_DEF(credits)
 	var/list/datum/episode_name/episode_names = list()
 
 	var/episode_name = ""
-	var/episode_reason = ""
 
 	var/list/episode_string
 	var/list/disclaimers_string
@@ -19,16 +18,15 @@ SUBSYSTEM_DEF(credits)
 	var/list/admin_pref_icons = list()
 	var/list/major_event_icons = list()
 
-	var/list/all_patrons = list()
-
 	var/list/processing_icons = list()
 	var/list/currentrun  = list()
+
+	var/list/credit_order_for_this_round = list()
 
 /datum/controller/subsystem/credits/Initialize()
 #if defined(UNIT_TESTS)
 	return SS_INIT_NO_NEED
 #else
-	all_patrons = get_patrons()
 	generate_patron_icons()
 
 	return SS_INIT_SUCCESS
@@ -53,7 +51,7 @@ SUBSYSTEM_DEF(credits)
 			appereance.maptext_height = 48
 			appereance.maptext_y = -16
 			appereance.maptext_x = -32
-			appereance.maptext = "<center>[living_mob.real_name]</center>"
+			appereance.maptext = living_mob.real_name
 		if (MC_TICK_CHECK)
 			return
 
@@ -64,7 +62,8 @@ SUBSYSTEM_DEF(credits)
 	patrons_pref_icons = SScredits.patrons_pref_icons
 
 /datum/controller/subsystem/credits/proc/draft()
-	draft_episode_names()
+	if(!customized_name)
+		draft_episode_names()
 	draft_disclaimers()
 	draft_caststring()
 	generate_admin_icons()
@@ -73,18 +72,16 @@ SUBSYSTEM_DEF(credits)
 	finalize_name()
 	finalize_episodestring()
 	finalize_disclaimerstring()
+	finalize_credits()
 
 /datum/controller/subsystem/credits/proc/finalize_name()
 	if(customized_name)
 		episode_name = customized_name
 		return
 	var/list/drafted_names = list()
-	var/list/name_reasons = list()
 	for(var/datum/episode_name/N as anything in episode_names)
-		drafted_names["[N.thename]"] = N.weight
-		name_reasons["[N.thename]"] = N.reason
+		drafted_names["[N.name]"] = N.weight
 	episode_name = pick_weight(drafted_names)
-	episode_reason = name_reasons[episode_name]
 
 /datum/controller/subsystem/credits/proc/finalize_episodestring()
 	var/season = time2text(world.timeofday,"YY")
@@ -96,6 +93,61 @@ SUBSYSTEM_DEF(credits)
 	disclaimers_string =  list()
 	for(var/disclaimer in disclaimers)
 		disclaimers_string += "<center>[disclaimer]</center>"
+
+/datum/controller/subsystem/credits/proc/finalize_credits()
+	credit_order_for_this_round = list()
+	credit_order_for_this_round += episode_string
+	credit_order_for_this_round += ""
+	credit_order_for_this_round += disclaimers_string
+	credit_order_for_this_round += cast_string
+	var/list/admins = shuffle(admin_pref_icons)
+	var/admins_length = length(admins)
+	var/y_offset = 0
+	if(admins_length)
+		credit_order_for_this_round += "<center>The Admin Bus</center>"
+		for(var/i in 1 to admins_length)
+			var/x_offset = -16
+			for(var/b in 1 to 6)
+				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
+				if(!picked)
+					break
+				picked.pixel_x = x_offset
+				picked.pixel_y = y_offset
+				x_offset += 96
+				credit_order_for_this_round += picked
+
+	var/list/patrons = shuffle(patrons_pref_icons)
+	var/patrons_length = length(patrons)
+	if(patrons_length)
+		credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
+		for(var/i in 1 to patrons_length)
+			var/x_offset = -16
+			for(var/b in 1 to 6)
+				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
+				if(!picked)
+					break
+				picked.pixel_x = x_offset
+				picked.pixel_y = y_offset
+				x_offset += 96
+				credit_order_for_this_round += picked
+
+	for(var/obj/effect/title_card_object/MA as anything in major_event_icons)
+		credit_order_for_this_round += MA
+		var/list/antagonist_icons = major_event_icons[MA]
+		for(var/i in 1 to length(antagonist_icons))
+			var/x_offset = -16
+			for(var/b in 1 to 6)
+				if(!length(antagonist_icons))
+					break
+				var/reference = pick(antagonist_icons)
+				var/atom/movable/screen/map_view/char_preview/picked = antagonist_icons[reference]
+				antagonist_icons -= reference
+				if(!picked)
+					break
+				picked.pixel_x = x_offset
+				picked.pixel_y = y_offset
+				x_offset += 96
+				credit_order_for_this_round += picked
 
 /datum/controller/subsystem/credits/proc/draft_disclaimers()
 	disclaimers += "Filmed on Location at [station_name()].<br>"
@@ -122,12 +174,14 @@ SUBSYSTEM_DEF(credits)
 		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
 		cast_string += "<center><tr><td class= 'actorname'>[uppertext(H.mind.key)]</td><td class='actorsegue'> as </td><td class='actorrole'>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
 		is_anyone_there = TRUE
+		CHECK_TICK
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
 		if(!S.ckey)
 			continue
 		cast_string += "<center>[uppertext(S.mind.key)] as [S.name]</center>"
 		is_anyone_there = TRUE
+		CHECK_TICK
 
 	if(!is_anyone_there)
 		cast_string += "<center><td class='actorsegue'> Nobody! </td></center>"
@@ -138,10 +192,12 @@ SUBSYSTEM_DEF(credits)
 			continue
 		if(H.real_name)
 			corpses += H.real_name
+		CHECK_TICK
+
 	if(corpses.len)
 		var/true_story_bro = "<center><br>[pick("BASED ON","INSPIRED BY","A RE-ENACTMENT OF")] [pick("A TRUE STORY","REAL EVENTS","THE EVENTS ABOARD [uppertext(station_name())]")]</center>"
 		cast_string += "<center><h3>[true_story_bro]</h3><br>In memory of those that did not make it.<br>[english_list(corpses)].<br></center>"
-	cast_string += "</div><br>"
+	cast_string += "<br>"
 
 /datum/controller/subsystem/credits/proc/draft_episode_names()
 	var/uppr_name = uppertext(station_name())
@@ -156,41 +212,42 @@ SUBSYSTEM_DEF(credits)
 	var/roundend_station_integrity = SSticker.popcount[POPCOUNT_STATION_INTEGRITY]
 	switch(roundend_station_integrity)
 		if(0 to 50)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S PUNISHMENT", "A PUBLIC RELATIONS NIGHTMARE", "[uppr_name]: A NATIONAL CONCERN", "WITH APOLOGIES TO THE CREW", "THE CREW BITES THE DUST", "THE CREW BLOWS IT", "THE CREW GIVES UP THE DREAM", "THE CREW IS DONE FOR", "THE CREW SHOULD NOT BE ALLOWED ON TV", "THE END OF [uppr_name] AS WE KNOW IT")]", "Extremely low score of [roundend_station_integrity].", 250)
+			episode_names += new /datum/episode_name("[pick("THE CREW'S PUNISHMENT", "A PUBLIC RELATIONS NIGHTMARE", "[uppr_name]: A NATIONAL CONCERN", "WITH APOLOGIES TO THE CREW", "THE CREW BITES THE DUST", "THE CREW BLOWS IT", "THE CREW GIVES UP THE DREAM", "THE CREW IS DONE FOR", "THE CREW SHOULD NOT BE ALLOWED ON TV", "THE END OF [uppr_name] AS WE KNOW IT")]", 250)
 		if(80 to 100)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S DAY OUT", "THIS SIDE OF PARADISE", "[uppr_name]: A SITUATION COMEDY", "THE CREW'S LUNCH BREAK", "THE CREW'S BACK IN BUSINESS", "THE CREW'S BIG BREAK", "THE CREW SAVES THE DAY", "THE CREW RULES THE WORLD", "THE ONE WITH ALL THE SCIENCE AND PROGRESS AND PROMOTIONS AND ALL THE COOL AND GOOD THINGS", "THE TURNING POINT")]", "High score of [roundend_station_integrity].", 250)
+			episode_names += new /datum/episode_name("[pick("THE CREW'S DAY OUT", "THIS SIDE OF PARADISE", "[uppr_name]: A SITUATION COMEDY", "THE CREW'S LUNCH BREAK", "THE CREW'S BACK IN BUSINESS", "THE CREW'S BIG BREAK", "THE CREW SAVES THE DAY", "THE CREW RULES THE WORLD", "THE ONE WITH ALL THE SCIENCE AND PROGRESS AND PROMOTIONS AND ALL THE COOL AND GOOD THINGS", "THE TURNING POINT")]", 250)
 
-	switch(rand(1, 100))
-		if(0 to 35)
-			episode_names += new /datum/episode_name("[pick("THE DAY [uppr_name] STOOD STILL", "MUCH ADO ABOUT NOTHING", "WHERE SILENCE HAS LEASE", "RED HERRING", "HOME ALONE", "GO BIG OR GO [uppr_name]", "PLACEBO EFFECT", "ECHOES", "SILENT PARTNERS", "WITH FRIENDS LIKE THESE...", "EYE OF THE STORM", "BORN TO BE MILD", "STILL WATERS")]", "Low threat level.", 150)
+	switch(SSdynamic.threat_level)
+		if(0 to 65)
+			episode_names += new /datum/episode_name("[pick("THE DAY [uppr_name] STOOD STILL", "MUCH ADO ABOUT NOTHING", "WHERE SILENCE HAS LEASE", "RED HERRING", "HOME ALONE", "GO BIG OR GO [uppr_name]", "PLACEBO EFFECT", "ECHOES", "SILENT PARTNERS", "WITH FRIENDS LIKE THESE...", "EYE OF THE STORM", "BORN TO BE MILD", "STILL WATERS")]", 150)
 			if(roundend_station_integrity && roundend_station_integrity < 35)
-				episode_names += new /datum/episode_name("[pick("HOW OH HOW DID IT ALL GO SO WRONG?!", "EXPLAIN THIS ONE TO THE EXECUTIVES", "THE CREW GOES ON SAFARI", "OUR GREATEST ENEMY", "THE INSIDE JOB", "MURDER BY PROXY")]", "Low threat levels... but the crew still had a very low score.", roundend_station_integrity/150*-2)
-		if(35 to 60)
+				episode_names += new /datum/episode_name("[pick("HOW OH HOW DID IT ALL GO SO WRONG?!", "EXPLAIN THIS ONE TO THE EXECUTIVES", "THE CREW GOES ON SAFARI", "OUR GREATEST ENEMY", "THE INSIDE JOB", "MURDER BY PROXY")]", roundend_station_integrity/150*-2)
+		if(66 to 79)
 			episode_names += new /datum/episode_name("[pick("THERE MIGHT BE BLOOD", "IT CAME FROM [uppr_name]!", "THE [uppr_name] INCIDENT", "THE ENEMY WITHIN", "MIDDAY MADNESS", "AS THE CLOCK STRIKES TWELVE", "CONFIDENCE AND PARANOIA", "THE PRANK THAT WENT WAY TOO FAR", "A HOUSE DIVIDED", "[uppr_name] TO THE RESCUE!", "ESCAPE FROM [uppr_name]", \
-			"HIT AND RUN", "THE AWAKENING", "THE GREAT ESCAPE", "THE LAST TEMPTATION OF [uppr_name]", "[uppr_name]'S FALL FROM GRACE", "BETTER THE [uppr_name] YOU KNOW...", "PLAYING WITH FIRE", "UNDER PRESSURE", "THE DAY BEFORE THE DEADLINE", "[uppr_name]'S MOST WANTED", "THE BALLAD OF [uppr_name]")]", "Moderate threat level", 150)
-		if(60 to 100)
+			"HIT AND RUN", "THE AWAKENING", "THE GREAT ESCAPE", "THE LAST TEMPTATION OF [uppr_name]", "[uppr_name]'S FALL FROM GRACE", "BETTER THE [uppr_name] YOU KNOW...", "PLAYING WITH FIRE", "UNDER PRESSURE", "THE DAY BEFORE THE DEADLINE", "[uppr_name]'S MOST WANTED", "THE BALLAD OF [uppr_name]")]", 150)
+		if(80 to 100)
 			episode_names += new /datum/episode_name("[pick("ATTACK! ATTACK! ATTACK!", "CAN'T FIX CRAZY", "APOCALYPSE [pick("N", "W", "H")]OW", "A TASTE OF ARMAGEDDON", "OPERATION: ANNIHILATE!", "THE PERFECT STORM", "TIME'S UP FOR THE CREW", "A TOTALLY FUN THING THAT THE CREW WILL NEVER DO AGAIN", "EVERYBODY HATES [uppr_name]", "BATTLE OF [uppr_name]", \
-			"THE SHOWDOWN", "MANHUNT", "THE ONE WITH ALL THE FIGHTING", "THE RECKONING OF [uppr_name]", "THERE GOES THE NEIGHBORHOOD", "THE THIN RED LINE", "ONE DAY FROM RETIREMENT")]", "High threat levels.", 250)
+			"THE SHOWDOWN", "MANHUNT", "THE ONE WITH ALL THE FIGHTING", "THE RECKONING OF [uppr_name]", "THERE GOES THE NEIGHBORHOOD", "THE THIN RED LINE", "ONE DAY FROM RETIREMENT")]", 250)
 			if(get_station_avg_temp() < T0C)
-				episode_names += new /datum/episode_name("[pick("THE OPPORTUNITY OF A LIFETIME", "DRASTIC MEASURES", "DEUS EX", "THE SHOW MUST GO ON", "TRIAL BY FIRE", "A STITCH IN TIME", "ALL'S FAIR IN LOVE AND WAR", "COME HELL OR HIGH HEAVEN", "REVERSAL OF FORTUNE", "DOUBLE TOIL AND DOUBLE TROUBLE")]")
-				episode_names += new /datum/episode_name("A COLD DAY IN HELL", "Station temperature was below 0C this round and threat was high", 1000)
+				episode_names += new /datum/episode_name("A COLD DAY IN HELL", 1000)
+
+	CHECK_TICK
 
 	var/list/ran_events = SSdynamic.executed_rules.Copy()
 	if(locate(/datum/dynamic_ruleset/roundstart/malf_ai) in ran_events)
-		episode_names += new /datum/episode_name("[pick("I'M SORRY [uppr_name], I'M AFRAID I CAN'T LET YOU DO THAT", "A STRANGE GAME", "THE AI GOES ROGUE", "RISE OF THE MACHINES")]", "Round included a malfunctioning AI.", 300)
+		episode_names += new /datum/episode_name("[pick("I'M SORRY [uppr_name], I'M AFRAID I CAN'T LET YOU DO THAT", "A STRANGE GAME", "THE AI GOES ROGUE", "RISE OF THE MACHINES")]", 300)
 	if(locate(/datum/dynamic_ruleset/roundstart/revs) in ran_events)
-		episode_names += new /datum/episode_name("[pick("THE CREW STARTS A REVOLUTION", "HELL IS OTHER SPESSMEN", "INSURRECTION", "THE CREW RISES UP", 25;"FUN WITH FRIENDS")]", "Round included roundstart revs.", 350)
+		episode_names += new /datum/episode_name("[pick("THE CREW STARTS A REVOLUTION", "HELL IS OTHER SPESSMEN", "INSURRECTION", "THE CREW RISES UP", 25;"FUN WITH FRIENDS")]", 350)
 		if(copytext(uppr_name,1,2) == "V")
 			episode_names += new /datum/episode_name("V FOR [uppr_name]", "Round included roundstart revs... and the station's name starts with V.", 1500)
+	if((locate(/datum/dynamic_ruleset/roundstart/bloodcult) in ran_events) && blackbox_feedback_num("narsies_spawned") > 0)
+		episode_names += new /datum/episode_name("[pick("NAR-SIE'S DAY OUT", "NAR-SIE'S VACATION", "THE CREW LEARNS ABOUT SACRED GEOMETRY", "REALM OF THE MAD GOD", "THE ONE WITH THE ELDRITCH HORROR", 50;"STUDY HARD, BUT PART-SIE HARDER")]", 500)
 
-	if(blackbox_feedback_num("narsies_spawned") > 0)
-		episode_names += new /datum/episode_name("[pick("NAR-SIE'S DAY OUT", "NAR-SIE'S VACATION", "THE CREW LEARNS ABOUT SACRED GEOMETRY", "REALM OF THE MAD GOD", "THE ONE WITH THE ELDRITCH HORROR", 50;"STUDY HARD, BUT PART-SIE HARDER")]", "Nar-Sie is loose!", 500)
 	if(check_holidays(CHRISTMAS))
-		episode_names += new /datum/episode_name("A VERY [pick("NANOTRASEN", "EXPEDITIONARY", "SECURE", "PLASMA", "MARTIAN")] CHRISTMAS", "'Tis the season.", 1000)
+		episode_names += new /datum/episode_name("A VERY [pick("NANOTRASEN", "EXPEDITIONARY", "SECURE", "PLASMA", "MARTIAN")] CHRISTMAS", 1000)
 	if(blackbox_feedback_num("guns_spawned") > 0)
-		episode_names += new /datum/episode_name("[pick("GUNS, GUNS EVERYWHERE", "THUNDER GUN EXPRESS", "THE CREW GOES AMERICA ALL OVER EVERYBODY'S ASS")]", "[blackbox_feedback_num("guns_spawned")] guns were spawned this round.", min(750, blackbox_feedback_num("guns_spawned")*25))
+		episode_names += new /datum/episode_name("[pick("GUNS, GUNS EVERYWHERE", "THUNDER GUN EXPRESS", "THE CREW GOES AMERICA ALL OVER EVERYBODY'S ASS")]", min(750, blackbox_feedback_num("guns_spawned")*25))
 	if(blackbox_feedback_num("heartattacks") > 2)
-		episode_names += new /datum/episode_name("MY HEART WILL GO ON", "[blackbox_feedback_num("heartattacks")] hearts were reanimated and burst out of someone's chest this round.", min(1500, blackbox_feedback_num("heartattacks")*250))
+		episode_names += new /datum/episode_name("MY HEART WILL GO ON", min(1500, blackbox_feedback_num("heartattacks")*250))
 
 	var/datum/bank_account/mr_moneybags
 	var/static/list/typecache_bank = typecacheof(list(/datum/bank_account/department, /datum/bank_account/remote))
@@ -200,25 +257,28 @@ SUBSYSTEM_DEF(credits)
 			continue
 		if(!mr_moneybags || mr_moneybags.account_balance < current_acc.account_balance)
 			mr_moneybags = current_acc
+		CHECK_TICK
 
 	if(mr_moneybags && mr_moneybags.account_balance > 30000)
-		episode_names += new /datum/episode_name("[pick("WAY OF THE WALLET", "THE IRRESISTIBLE RISE OF [uppertext(mr_moneybags.account_holder)]", "PRETTY PENNY", "IT'S THE ECONOMY, STUPID")]", "Scrooge Mc[mr_moneybags.account_holder] racked up [mr_moneybags.account_balance] credits this round.", min(450, mr_moneybags.account_balance/500))
+		episode_names += new /datum/episode_name("[pick("WAY OF THE WALLET", "THE IRRESISTIBLE RISE OF [uppertext(mr_moneybags.account_holder)]", "PRETTY PENNY", "IT'S THE ECONOMY, STUPID")]", min(450, mr_moneybags.account_balance/500))
 	if(blackbox_feedback_num("ai_deaths") > 3)
-		episode_names += new /datum/episode_name("THE ONE WHERE [blackbox_feedback_num("ai_deaths")] AIS DIE", "That's a lot of dead AIs.", min(1500, blackbox_feedback_num("ai_deaths")*300))
+		episode_names += new /datum/episode_name("THE ONE WHERE [blackbox_feedback_num("ai_deaths")] AIS DIE", min(1500, blackbox_feedback_num("ai_deaths")*300))
 	if(blackbox_feedback_num("law_changes") > 12)
-		episode_names += new /datum/episode_name("[pick("THE CREW LEARNS ABOUT LAWSETS", 15;"THE UPLOAD RAILROAD", 15;"FREEFORM", 15;"ASIMOV SAYS")]", "There were [blackbox_feedback_num("law_changes")] law changes this round.", min(750, blackbox_feedback_num("law_changes")*25))
+		episode_names += new /datum/episode_name("[pick("THE CREW LEARNS ABOUT LAWSETS", 15;"THE UPLOAD RAILROAD", 15;"FREEFORM", 15;"ASIMOV SAYS")]", min(750, blackbox_feedback_num("law_changes")*25))
 	if(blackbox_feedback_num("slips") > 50)
-		episode_names += new /datum/episode_name("THE CREW GOES BANANAS", "People slipped [blackbox_feedback_num("slips")] times this round.", min(500, blackbox_feedback_num("slips")/2))
+		episode_names += new /datum/episode_name("THE CREW GOES BANANAS", min(500, blackbox_feedback_num("slips")/2))
 
 	if(blackbox_feedback_num("turfs_singulod") > 200)
-		episode_names += new /datum/episode_name("[pick("THE SINGULARITY GETS LOOSE", "THE SINGULARITY GETS LOOSE (AGAIN)", "CONTAINMENT FAILURE", "THE GOOSE IS LOOSE", 50;"THE CREW'S ENGINE SUCKS", 50;"THE CREW GOES DOWN THE DRAIN")]", "The Singularity ate [blackbox_feedback_num("turfs_singulod")] turfs this round.", min(1000, blackbox_feedback_num("turfs_singulod")/2)) //no "singularity's day out" please we already have enough
+		episode_names += new /datum/episode_name("[pick("THE SINGULARITY GETS LOOSE", "THE SINGULARITY GETS LOOSE (AGAIN)", "CONTAINMENT FAILURE", "THE GOOSE IS LOOSE", 50;"THE CREW'S ENGINE SUCKS", 50;"THE CREW GOES DOWN THE DRAIN")]", min(1000, blackbox_feedback_num("turfs_singulod")/2)) //no "singularity's day out" please we already have enough
 	if(blackbox_feedback_num("spacevines_grown") > 150)
-		episode_names += new /datum/episode_name("[pick("REAP WHAT YOU SOW", "OUT OF THE WOODS", "SEEDY BUSINESS", "[uppr_name] AND THE BEANSTALK", "IN THE GARDEN OF EDEN")]", "[blackbox_feedback_num("spacevines_grown")] tiles worth of Kudzu were grown in total this round.", min(1500, blackbox_feedback_num("spacevines_grown")*2))
+		episode_names += new /datum/episode_name("[pick("REAP WHAT YOU SOW", "OUT OF THE WOODS", "SEEDY BUSINESS", "[uppr_name] AND THE BEANSTALK", "IN THE GARDEN OF EDEN")]", min(1500, blackbox_feedback_num("spacevines_grown")*2))
 	if(blackbox_feedback_num("devastating_booms") >= 6)
-		episode_names += new /datum/episode_name("THE CREW HAS A BLAST", "[blackbox_feedback_num("devastating_booms")] large explosions happened this round.", min(1000, blackbox_feedback_num("devastating_booms")*100))
+		episode_names += new /datum/episode_name("THE CREW HAS A BLAST", min(1000, blackbox_feedback_num("devastating_booms")*100))
 
 	if(SSpersistence.tram_hits_this_round >= 10)
-		episode_names += new /datum/episode_name("TRAM ACCIDENT", "Tram hits people [SSpersistence.tram_hits_this_round] times this round.", 250)
+		episode_names += new /datum/episode_name("TRAM ACCIDENT", 250)
+
+	CHECK_TICK
 
 	if(!EMERGENCY_ESCAPED_OR_ENDGAMED)
 		return
@@ -227,11 +287,11 @@ SUBSYSTEM_DEF(credits)
 	var/escaped = SSticker.popcount[POPCOUNT_ESCAPEES]
 	var/human_escapees = SSticker.popcount[POPCOUNT_ESCAPEES_HUMANONLY]
 	if(dead == 0)
-		episode_names += new /datum/episode_name("[pick("EMPLOYEE TRANSFER", "LIVE LONG AND PROSPER", "PEACE AND QUIET IN [uppr_name]", "THE ONE WITHOUT ALL THE FIGHTING")]", "No-one died this round.", 4000) //in practice, this one is very very very rare, so if it happens let's pick it more often
+		episode_names += new /datum/episode_name("[pick("EMPLOYEE TRANSFER", "LIVE LONG AND PROSPER", "PEACE AND QUIET IN [uppr_name]", "THE ONE WITHOUT ALL THE FIGHTING")]", 4000) //in practice, this one is very very very rare, so if it happens let's pick it more often
 	if(escaped == 0 || SSshuttle.emergency.is_hijacked())
-		episode_names += new /datum/episode_name("[pick("DEAD SPACE", "THE CREW GOES MISSING", "LOST IN TRANSLATION", "[uppr_name]: DELETED SCENES", "WHAT HAPPENS IN [uppr_name], STAYS IN [uppr_name]", "MISSING IN ACTION", "SCOOBY-DOO, WHERE'S THE CREW?")]", "There were no escapees on the shuttle.", 300)
+		episode_names += new /datum/episode_name("[pick("DEAD SPACE", "THE CREW GOES MISSING", "LOST IN TRANSLATION", "[uppr_name]: DELETED SCENES", "WHAT HAPPENS IN [uppr_name], STAYS IN [uppr_name]", "MISSING IN ACTION", "SCOOBY-DOO, WHERE'S THE CREW?")]", 300)
 	if(escaped < 6 && escaped > 0 && dead > escaped*2)
-		episode_names += new /datum/episode_name("[pick("AND THEN THERE WERE FEWER", "THE 'FUN' IN 'FUNERAL'", "FREEDOM RIDE OR DIE", "THINGS WE LOST IN [uppr_name]", "GONE WITH [uppr_name]", "LAST TANGO IN [uppr_name]", "GET BUSY LIVING OR GET BUSY DYING", "THE CREW FUCKING DIES", "WISH YOU WERE HERE")]", "[dead] people died this round.", 400)
+		episode_names += new /datum/episode_name("[pick("AND THEN THERE WERE FEWER", "THE 'FUN' IN 'FUNERAL'", "FREEDOM RIDE OR DIE", "THINGS WE LOST IN [uppr_name]", "GONE WITH [uppr_name]", "LAST TANGO IN [uppr_name]", "GET BUSY LIVING OR GET BUSY DYING", "THE CREW FUCKING DIES", "WISH YOU WERE HERE")]", 400)
 
 	var/clowncount = 0
 	var/mimecount = 0
@@ -258,29 +318,32 @@ SUBSYSTEM_DEF(credits)
 		if(H.mind && H.mind.assigned_role.title == "Chaplain")
 			chaplaincount++
 			if(IS_CHANGELING(H))
-				episode_names += new /datum/episode_name("[uppertext(H.real_name)]: A BLESSING IN DISGUISE", "The Chaplain, [H.real_name], was a changeling and escaped alive.", 400)
+				episode_names += new /datum/episode_name("[uppertext(H.real_name)]: A BLESSING IN DISGUISE", 400)
 		if(H.dna.species.type == /datum/species/human && (H.hairstyle == "Bald" || H.hairstyle == "Skinhead") && !(BODY_ZONE_HEAD in H.get_covered_body_zones()))
 			baldycount++
 		if(H.is_wearing_item_of_type(/obj/item/clothing/mask/animal/horsehead))
 			horsecount++
+		CHECK_TICK
 
 	if(clowncount > 2)
-		episode_names += new /datum/episode_name("CLOWNS GALORE", "There were [clowncount] clowns on the shuttle.", min(1500, clowncount*250))
+		episode_names += new /datum/episode_name("CLOWNS GALORE", min(1500, clowncount*250))
 	if(mimecount > 2)
-		episode_names += new /datum/episode_name("THE SILENT SHUFFLE", "There were [mimecount] mimes on the shuttle.", min(1500, mimecount*250))
+		episode_names += new /datum/episode_name("THE SILENT SHUFFLE", min(1500, mimecount*250))
 	if(chaplaincount > 2)
-		episode_names += new /datum/episode_name("COUNT YOUR BLESSINGS", "There were [chaplaincount] chaplains on the shuttle. Like, the real deal, not just clothes.", min(1500, chaplaincount*450))
+		episode_names += new /datum/episode_name("COUNT YOUR BLESSINGS", min(1500, chaplaincount*450))
 	if(chefcount > 2)
-		episode_names += new /datum/episode_name("Too Many Cooks", "There were [chefcount] chefs on the shuttle.", min(1500, chefcount*450)) //intentionally not capitalized, as the theme will customize it
+		episode_names += new /datum/episode_name("Too Many Cooks", min(1500, chefcount*450)) //intentionally not capitalized, as the theme will customize it
 
 	if(human_escapees)
 		if(assistantcount / human_escapees > 0.6 && human_escapees > 3)
-			episode_names += new /datum/episode_name("[pick("GREY GOO", "RISE OF THE GREYTIDE")]", "Most of the survivors were Assistants, or at least dressed like one.", min(1500, assistantcount*200))
+			episode_names += new /datum/episode_name("[pick("GREY GOO", "RISE OF THE GREYTIDE")]", min(1500, assistantcount*200))
 
 		if(baldycount / human_escapees > 0.6 && SSshuttle.emergency.launch_status == EARLY_LAUNCHED)
-			episode_names += new /datum/episode_name("TO BALDLY GO", "Most of the survivors were bald, and it shows.", min(1500, baldycount*250))
+			episode_names += new /datum/episode_name("TO BALDLY GO", min(1500, baldycount*250))
 		if(horsecount / human_escapees > 0.6 && human_escapees> 3)
-			episode_names += new /datum/episode_name("STRAIGHT FROM THE HORSE'S MOUTH", "Most of the survivors wore horse heads.", min(1500, horsecount*250))
+			episode_names += new /datum/episode_name("STRAIGHT FROM THE HORSE'S MOUTH", min(1500, horsecount*250))
+
+	CHECK_TICK
 
 	if(human_escapees == 1)
 		var/mob/living/carbon/human/H = SSticker.popcount[POPCOUNT_ESCAPEES_HUMANONLY_LIST][1]
@@ -295,7 +358,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/costume/buttondown/slacks/service))
 						chance += 250
-					episode_names += new /datum/episode_name("HAIL TO THE CHEF", "The Chef was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("HAIL TO THE CHEF", chance)
 				if("Clown")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/clothing/mask/gas/clown_hat))
@@ -304,7 +367,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(list(/obj/item/clothing/under/rank/civilian/clown, /obj/item/clothing/under/rank/civilian/clown/jester)))
 						chance += 250
-					episode_names += new /datum/episode_name("[pick("COME HELL OR HIGH HONKER", "THE LAST LAUGH")]", "The Clown was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("[pick("COME HELL OR HIGH HONKER", "THE LAST LAUGH")]", chance)
 				if("Detective")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/storage/belt/holster/detective))
@@ -315,7 +378,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/security/detective))
 						chance += 250
-					episode_names += new /datum/episode_name("[uppertext(H.real_name)]: LOOSE CANNON", "The Detective was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("[uppertext(H.real_name)]: LOOSE CANNON", chance)
 				if("Shaft Miner")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/pickaxe))
@@ -324,36 +387,36 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/suit/hooded/explorer))
 						chance += 250
-					episode_names += new /datum/episode_name("[pick("YOU KNOW THE DRILL", "CAN YOU DIG IT?", "JOURNEY TO THE CENTER OF THE ASTEROI", "CAVE STORY", "QUARRY ON")]", "The Miner was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("[pick("YOU KNOW THE DRILL", "CAN YOU DIG IT?", "JOURNEY TO THE CENTER OF THE ASTEROI", "CAVE STORY", "QUARRY ON")]", chance)
 				if("Librarian")
 					var/chance = 750
 					if(H.is_wearing_item_of_type(/obj/item/book))
 						chance += 1000
-					episode_names += new /datum/episode_name("COOKING THE BOOKS", "The Librarian was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("COOKING THE BOOKS", chance)
 				if("Chemist")
 					var/chance = 1000
 					if(H.is_wearing_item_of_type(/obj/item/clothing/suit/toggle/labcoat/chemist))
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/medical/chemist))
 						chance += 250
-					episode_names += new /datum/episode_name("A BITTER PILL TO SWALLOW", "The Chemist was the only survivor in the shuttle.", chance)
+					episode_names += new /datum/episode_name("A BITTER PILL TO SWALLOW", chance)
 				if("Chaplain") //We don't check for uniform here because the chaplain's thing kind of is to improvise their garment gimmick
-					episode_names += new /datum/episode_name("BLESS THIS MESS", "The Chaplain was the only survivor in the shuttle.", 1250)
+					episode_names += new /datum/episode_name("BLESS THIS MESS", 1250)
 
 			if(H.is_wearing_item_of_type(/obj/item/clothing/mask/luchador) && H.is_wearing_item_of_type(/obj/item/clothing/gloves/boxing))
-				episode_names += new /datum/episode_name("[pick("THE CREW, ON THE ROPES", "THE CREW, DOWN FOR THE COUNT", "[uppr_name], DOWN AND OUT")]", "The only survivor in the shuttle wore a luchador mask and boxing gloves.", 1500)
+				episode_names += new /datum/episode_name("[pick("THE CREW, ON THE ROPES", "THE CREW, DOWN FOR THE COUNT", "[uppr_name], DOWN AND OUT")]", 1500)
 
 	if(human_escapees == 2)
 		if(lawyercount == 2)
-			episode_names += new /datum/episode_name("DOUBLE JEOPARDY", "The only two survivors were lawyers.", 2500)
+			episode_names += new /datum/episode_name("DOUBLE JEOPARDY", 2500)
 		if(chefcount == 2)
-			episode_names += new /datum/episode_name("CHEF WARS", "The only two survivors were chefs.", 2500)
+			episode_names += new /datum/episode_name("CHEF WARS", 2500)
 		if(minercount == 2)
-			episode_names += new /datum/episode_name("THE DOUBLE DIGGERS", "The only two survivors were miners.", 2500)
+			episode_names += new /datum/episode_name("THE DOUBLE DIGGERS", 2500)
 		if(clowncount == 2)
-			episode_names += new /datum/episode_name("A TALE OF TWO CLOWNS", "The only two survivors were clowns.", 2500)
+			episode_names += new /datum/episode_name("A TALE OF TWO CLOWNS", 2500)
 		if(clowncount == 1 && mimecount == 1)
-			episode_names += new /datum/episode_name("THE DYNAMIC DUO", "The only two survivors were the Clown, and the Mime.", 2500)
+			episode_names += new /datum/episode_name("THE DYNAMIC DUO", 2500)
 
 	else
 		//more than 0 human escapees
@@ -364,11 +427,13 @@ SUBSYSTEM_DEF(credits)
 			if(hbrain.damage < 60)
 				all_braindamaged = FALSE
 			braindamage_total += hbrain.damage
+			CHECK_TICK
+
 		var/average_braindamage = braindamage_total / human_escapees
 		if(average_braindamage > 30)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S SMALL IQ PROBLEM", "OW! MY BALLS", "BR[pick("AI", "IA")]N DAM[pick("AGE", "GE", "AG")]", "THE VERY SPECIAL CREW OF [uppr_name]")]", "Average of [average_braindamage] brain damage for each human shuttle escapee.", min(1000, average_braindamage*10))
+			episode_names += new /datum/episode_name("[pick("THE CREW'S SMALL IQ PROBLEM", "OW! MY BALLS", "BR[pick("AI", "IA")]N DAM[pick("AGE", "GE", "AG")]", "THE VERY SPECIAL CREW OF [uppr_name]")]", min(1000, average_braindamage*10))
 		if(all_braindamaged && human_escapees > 2)
-			episode_names += new /datum/episode_name("...AND PRAY THERE'S INTELLIGENT LIFE SOMEWHERE OUT IN SPACE, 'CAUSE THERE'S BUGGER ALL DOWN HERE IN [uppr_name]", "Everyone was braindamaged this round.", human_escapees * 500)
+			episode_names += new /datum/episode_name("...AND PRAY THERE'S INTELLIGENT LIFE SOMEWHERE OUT IN SPACE, 'CAUSE THERE'S BUGGER ALL DOWN HERE IN [uppr_name]", human_escapees * 500)
 
 /datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
 	if(!passed_icon_state)
@@ -389,42 +454,61 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/proc/generate_admin_icons()
 	admin_pref_icons = list()
 	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
-		var/datum/client_interface/interface = new(ckey)
-		var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
-		if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
-			continue
-		var/datum/preferences/mocked = new(interface)
+		var/datum/preferences/preference
+		var/datum/client_interface/interface
+		if(GLOB.directory[ckey])
+			var/client/adminclient = GLOB.directory[ckey]
+			preference = adminclient
+		else
+			interface = new(ckey)
+			var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
+			if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
+				continue
+			preference = new(interface)
 
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
+		var/mob/living/carbon/human/dummy/body = new
+		var/mutable_appearance/appereance = preference.render_new_preview_appearance(body, TRUE)
 		appereance.setDir(SOUTH)
 		appereance.maptext_width = 88
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
+		appereance.maptext = ckey
 		admin_pref_icons += appereance
+		if(!isnull(interface))
+			qdel(preference)
+			qdel(interface)
 
 /datum/controller/subsystem/credits/proc/generate_patron_icons()
+	var/list/all_patrons = get_patrons()
 	if(isnull(all_patrons))
 		return
 	patrons_pref_icons = list()
 	for(var/ckey in all_patrons)
-		var/datum/client_interface/interface = new(ckey)
-		var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
-		if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
-			continue
-		var/datum/preferences/mocked = new(interface)
+		var/datum/preferences/preference
+		var/datum/client_interface/interface
+		if(GLOB.directory[ckey])
+			var/client/patronclient = GLOB.directory[ckey]
+			preference = patronclient.prefs
+		else
+			interface = new(ckey)
+			var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
+			if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
+				continue
+			preference = new(interface)
 
-		var/atom/movable/screen/map_view/char_preview/appereance = new(null, mocked)
-		appereance.update_body()
+		var/mob/living/carbon/human/dummy/body = new
+		var/mutable_appearance/appereance = preference.render_new_preview_appearance(body, TRUE)
 		appereance.setDir(SOUTH)
 		appereance.maptext_width = 88
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
+		appereance.maptext = ckey
 		patrons_pref_icons += appereance
+		if(!isnull(interface))
+			qdel(preference)
+			qdel(interface)
 
 /datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
 	if(!client || !living_mob || !passed_icon_state)
@@ -442,7 +526,7 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = "<center>[living_mob.real_name]</center>"
+		appereance.maptext = living_mob.real_name
 	major_event_icons[MA] += list(REF(living_mob) = appereance)
 	processing_icons[WEAKREF(living_mob)] = appereance
 
@@ -469,6 +553,7 @@ SUBSYSTEM_DEF(credits)
 			continue
 		avg_temp += environment.temperature
 		avg_divide++
+		CHECK_TICK
 
 	if(avg_divide)
 		return avg_temp / avg_divide
@@ -495,29 +580,26 @@ SUBSYSTEM_DEF(credits)
 	icon = 'icons/psychonaut/effects/title_cards.dmi'
 
 /datum/episode_name
-	var/thename = ""
-	var/reason = "Nothing particularly of note happened this round to influence the episode name."
+	var/name = ""
 	var/weight = 100
 
-/datum/episode_name/New(thename, reason, weight)
-	if(!thename)
+/datum/episode_name/New(name, weight)
+	if(!name)
 		return
-	src.thename = thename
-	if(reason)
-		src.reason = reason
+	src.name = name
 	if(weight)
 		src.weight = weight
 
 	switch(rand(1,15))
 		if(0 to 5)
-			thename += ": PART I"
+			name += ": PART I"
 		if(6 to 10)
-			thename += ": PART II"
+			name += ": PART II"
 		if(11 to 12)
-			thename += ": PART III"
+			name += ": PART III"
 		if(13)
-			thename += ": NOW IN 3D"
+			name += ": NOW IN 3D"
 		if(14)
-			thename += ": ON ICE!"
+			name += ": ON ICE!"
 		if(15)
-			thename += ": THE SEASON FINALE"
+			name += ": THE SEASON FINALE"

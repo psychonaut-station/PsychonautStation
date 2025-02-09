@@ -2,73 +2,15 @@
 #define CREDIT_SPAWN_SPEED 1 SECONDS
 #define CREDIT_ANIMATE_HEIGHT (16 * world.icon_size)
 #define CREDIT_EASE_DURATION 2.2 SECONDS
-#define CREDITS_PATH "[global.config.directory]/contributors.dmi"
 
 /client/proc/RollCredits()
 	set waitfor = FALSE
-	if(!fexists(CREDITS_PATH) || !prefs?.read_preference(/datum/preference/toggle/show_roundend_credits))
+	if(!prefs?.read_preference(/datum/preference/toggle/show_roundend_credits))
 		return
 	LAZYINITLIST(credits)
 	var/list/_credits = credits
 	add_verb(src, /client/proc/ClearCredits)
-	var/static/list/credit_order_for_this_round
-	if(isnull(credit_order_for_this_round))
-		SScredits.draft()
-		SScredits.finalize()
-		credit_order_for_this_round = list()
-		credit_order_for_this_round += SScredits.episode_string
-		credit_order_for_this_round += ""
-		credit_order_for_this_round += SScredits.disclaimers_string
-		credit_order_for_this_round += SScredits.cast_string
-		var/list/admins = shuffle(SScredits.admin_pref_icons)
-		var/admins_length = length(admins)
-		var/y_offset = 0
-		if(admins_length)
-			credit_order_for_this_round += "<center>The Admin Bus</center>"
-			for(var/i in 1 to admins_length)
-				var/x_offset = -16
-				for(var/b in 1 to 6)
-					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
-					if(!picked)
-						break
-					picked.pixel_x = x_offset
-					picked.pixel_y = y_offset
-					x_offset += 96
-					credit_order_for_this_round += picked
-
-		var/list/patrons = shuffle(SScredits.patrons_pref_icons)
-		var/patrons_length = length(patrons)
-		if(patrons_length)
-			credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
-			for(var/i in 1 to patrons_length)
-				var/x_offset = -16
-				for(var/b in 1 to 6)
-					var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
-					if(!picked)
-						break
-					picked.pixel_x = x_offset
-					picked.pixel_y = y_offset
-					x_offset += 96
-					credit_order_for_this_round += picked
-
-		for(var/obj/effect/title_card_object/MA as anything in SScredits.major_event_icons)
-			credit_order_for_this_round += MA
-			var/list/antagonist_icons = SScredits.major_event_icons[MA]
-			for(var/i in 1 to length(antagonist_icons))
-				var/x_offset = -16
-				for(var/b in 1 to 6)
-					if(!length(antagonist_icons))
-						break
-					var/reference = pick(antagonist_icons)
-					var/atom/movable/screen/map_view/char_preview/picked = antagonist_icons[reference]
-					antagonist_icons -= reference
-					if(!picked)
-						break
-					picked.pixel_x = x_offset
-					picked.pixel_y = y_offset
-					x_offset += 96
-					credit_order_for_this_round += picked
-
+	var/list/credit_order_for_this_round = SScredits.credit_order_for_this_round
 
 	var/count = 0
 	for(var/I in credit_order_for_this_round)
@@ -109,7 +51,6 @@
 
 /atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P)
 	. = ..()
-	icon = CREDITS_PATH
 	parent = P
 	var/view = P?.view
 	var/list/offsets = screen_loc_to_offset("3,1", view)
@@ -164,7 +105,6 @@
 	parent?.screen += src
 
 /atom/movable/screen/credit/Destroy()
-	icon = null
 	if(parent)
 		parent.screen -= src
 		LAZYREMOVE(parent.credits, src)
@@ -178,4 +118,3 @@
 #undef CREDIT_EASE_DURATION
 #undef CREDIT_ROLL_SPEED
 #undef CREDIT_SPAWN_SPEED
-#undef CREDITS_PATH

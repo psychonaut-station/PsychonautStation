@@ -231,6 +231,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	var/speed_round = (STATION_TIME_PASSED() <= 10 MINUTES)
 	popcount = gather_roundend_feedback()
+	SScredits.draft()
+	SScredits.finalize()
 
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)

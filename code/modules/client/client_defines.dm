@@ -64,6 +64,8 @@
 	COOLDOWN_DECLARE(say_slowmode)
 	/// The last urgent ahelp that this player sent
 	COOLDOWN_DECLARE(urgent_ahelp_cooldown)
+	/// The last exported character or prefererences icon that this player use
+	COOLDOWN_DECLARE(export_character_icon)
 
 		/////////
 		//OTHER//

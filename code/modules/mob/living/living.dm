@@ -3044,6 +3044,12 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	set name = "Export Character Icon"
 	set category = "OOC"
 
+	if(!COOLDOWN_FINISHED(client, export_character_icon))
+		tgui_alert(usr, "You must wait [DisplayTimeText(COOLDOWN_TIMELEFT(client, export_character_icon))] before exporting your character icon again!", "Export Character Icon")
+		return FALSE
+
+	COOLDOWN_START(client, export_character_icon, (CONFIG_GET(number/seconds_cooldown_for_character_icon_export) * (1 SECONDS)))
+
 	var/mutable_appearance/living_appearance = new(appearance)
 	living_appearance.setDir(SOUTH)
 	var/icon/output_icon = icon('icons/effects/effects.dmi', "nothing")

@@ -46,6 +46,7 @@ type CharacterControlsProps = {
   gender: Gender;
   setGender: (gender: Gender) => void;
   showGender: boolean;
+  handleExportIcon: () => void;
 };
 
 function CharacterControls(props: CharacterControlsProps) {
@@ -79,6 +80,15 @@ function CharacterControls(props: CharacterControlsProps) {
           />
         </Stack.Item>
       )}
+      <Stack.Item>
+        <Button
+          onClick={props.handleExportIcon}
+          fontSize="22px"
+          icon="download"
+          tooltip="Export Character Icon"
+          tooltipPosition="top"
+        />
+      </Stack.Item>
     </Stack>
   );
 }
@@ -586,6 +596,9 @@ export function MainPage(props: MainPageProps) {
                 showGender={
                   currentSpeciesData ? !!currentSpeciesData.sexes : true
                 }
+                handleExportIcon={() => {
+                  act('export_character_icon');
+                }}
               />
             </Stack.Item>
 

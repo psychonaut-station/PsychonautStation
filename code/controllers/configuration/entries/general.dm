@@ -807,3 +807,6 @@
 /datum/config_entry/flag/allow_tracy_queue
 	protection = CONFIG_ENTRY_LOCKED
 
+/datum/config_entry/number/seconds_cooldown_for_character_icon_export
+	default = 30
+	min_val = 1

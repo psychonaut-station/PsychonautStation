@@ -1,9 +1,3 @@
-<<<<<<< HEAD
-2025-02-02:
-  RengaN02:
-  - bugfix: "Background informationda yaz\u0131 uzunlugunu d\xFCzelttikten sonra border\
-      \ colorun d\xFCzelmemesi d\xFCzeltildi."
-=======
 2025-02-01:
   AyIong:
   - qol: 'You can choose in preferences what layout use into the Smartfridge or Vending
@@ -26,6 +20,9 @@
       of the inventory room.
   MTandi:
   - bugfix: Fixed medbot emag VFX
+  RengaN02:
+  - bugfix: "Background informationda yaz\u0131 uzunlugunu d\xFCzelttikten sonra border\
+      \ colorun d\xFCzelmemesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: Large fish should not render behind their wall mounts now
   - rscadd: Added fishing bags, found in fun vendors or made from carpskin.
@@ -111,4 +108,3 @@
   TiviPlus:
   - server: An issue where more than 16 admin flags could not exist in the DB has
       been corrected
->>>>>>> 2b89a0493932fab70fd0affbc0a9faf5e220740e

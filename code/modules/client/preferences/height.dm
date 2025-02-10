@@ -2,6 +2,7 @@
 	savefile_key = "height"
 	savefile_identifier = PREFERENCE_CHARACTER
 	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	randomize_by_default = FALSE
 
 /datum/preference/choiced/height/init_possible_values()
 	return list("Short", "Medium", "Tall")
@@ -18,3 +19,16 @@
 
 /datum/preference/choiced/height/create_default_value()
 	return "Medium"
+
+/datum/preference/choiced/height/is_accessible(datum/preferences/preferences)
+	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = GLOB.species_prototypes[species_type]
+
+	if(istype(species, /datum/species/monkey))
+		return FALSE
+	if(!(species.inherent_biotypes & MOB_ORGANIC)) // Plasmaman, IPC etc.
+		return FALSE
+	if(("Settler" in preferences.all_quirks) || ("Spacer" in preferences.all_quirks))
+		return FALSE
+
+	return ..()

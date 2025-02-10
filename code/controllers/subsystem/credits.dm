@@ -41,17 +41,18 @@ SUBSYSTEM_DEF(credits)
 
 	while(currentrun.len)
 		var/datum/weakref/weakref = currentrun[currentrun.len]
-		var/atom/movable/screen/map_view/char_preview/appereance = currentrun[weakref]
+		var/mutable_appearance/appereance = currentrun[weakref]
 		currentrun.len--
 		var/mob/living/living_mob = weakref.resolve()
 		if(!isnull(living_mob) && living_mob.stat != DEAD)
 			appereance.appearance = living_mob.appearance
+			appereance.transform = matrix()
 			appereance.setDir(SOUTH)
 			appereance.maptext_width = 88
 			appereance.maptext_height = 48
 			appereance.maptext_y = -16
 			appereance.maptext_x = -32
-			appereance.maptext = living_mob.real_name
+			appereance.maptext = "<center>[living_mob.real_name]</center>"
 		if (MC_TICK_CHECK)
 			return
 
@@ -172,7 +173,7 @@ SUBSYSTEM_DEF(credits)
 			continue
 		var/datum/record/crew/found_record = find_record(H.real_name)
 		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
-		cast_string += "<center><tr><td class= 'actorname'>[uppertext(H.mind.key)]</td><td class='actorsegue'> as </td><td class='actorrole'>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
+		cast_string += "<center><tr><td>[uppertext(H.mind.key)]</td><td> as </td><td>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 
@@ -184,7 +185,7 @@ SUBSYSTEM_DEF(credits)
 		CHECK_TICK
 
 	if(!is_anyone_there)
-		cast_string += "<center><td class='actorsegue'> Nobody! </td></center>"
+		cast_string += "<center><td> Nobody! </td></center>"
 
 	var/list/corpses = list()
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
@@ -458,7 +459,7 @@ SUBSYSTEM_DEF(credits)
 		var/datum/client_interface/interface
 		if(GLOB.directory[ckey])
 			var/client/adminclient = GLOB.directory[ckey]
-			preference = adminclient
+			preference = adminclient.prefs
 		else
 			interface = new(ckey)
 			var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
@@ -467,13 +468,14 @@ SUBSYSTEM_DEF(credits)
 			preference = new(interface)
 
 		var/mob/living/carbon/human/dummy/body = new
-		var/mutable_appearance/appereance = preference.render_new_preview_appearance(body, TRUE)
+		var/mutable_appearance/appereance = new
+		appereance.appearance = preference.render_new_preview_appearance(body, TRUE)
 		appereance.setDir(SOUTH)
 		appereance.maptext_width = 88
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = ckey
+		appereance.maptext = "<center>[ckey]</center>"
 		admin_pref_icons += appereance
 		if(!isnull(interface))
 			qdel(preference)
@@ -498,13 +500,14 @@ SUBSYSTEM_DEF(credits)
 			preference = new(interface)
 
 		var/mob/living/carbon/human/dummy/body = new
-		var/mutable_appearance/appereance = preference.render_new_preview_appearance(body, TRUE)
+		var/mutable_appearance/appereance = new
+		appereance.appearance = preference.render_new_preview_appearance(body, TRUE)
 		appereance.setDir(SOUTH)
 		appereance.maptext_width = 88
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = ckey
+		appereance.maptext = "<center>[ckey]</center>"
 		patrons_pref_icons += appereance
 		if(!isnull(interface))
 			qdel(preference)
@@ -514,19 +517,18 @@ SUBSYSTEM_DEF(credits)
 	if(!client || !living_mob || !passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
-	var/atom/movable/screen/map_view/char_preview/appereance
+	var/mutable_appearance/appereance
 	if(processing_icons[WEAKREF(living_mob)])
 		appereance = processing_icons[WEAKREF(living_mob)]
 	else
-		appereance = new(null, client.prefs)
-		var/mutable_appearance/preview = new(living_mob.appearance)
-		appereance.appearance = preview.appearance
+		appereance = new (living_mob.appearance)
+		appereance.transform = matrix()
 		appereance.setDir(SOUTH)
 		appereance.maptext_width = 88
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = living_mob.real_name
+		appereance.maptext = "<center>[living_mob.real_name]</center>"
 	major_event_icons[MA] += list(REF(living_mob) = appereance)
 	processing_icons[WEAKREF(living_mob)] = appereance
 

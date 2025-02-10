@@ -28,7 +28,6 @@ SUBSYSTEM_DEF(credits)
 	return SS_INIT_NO_NEED
 #else
 	generate_patron_icons()
-
 	return SS_INIT_SUCCESS
 #endif
 

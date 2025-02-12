@@ -222,7 +222,7 @@ SUBSYSTEM_DEF(credits)
 				"HİT VE KAÇ", "UYANIŞ", "BÜYÜK KAÇIŞ", "[locale_uppertext(locale_suffix_genitive(uppr_name))] SON AYARTISI", "[locale_uppertext(locale_suffix_genitive(uppr_name))] DÜŞÜŞÜ", "ATEŞLE OYNAMAK", "BASKI ALTINDA", "SON GÜNDEN ÖNCEKİ GÜN", "[locale_uppertext(locale_suffix_genitive(uppr_name))] ARANANLARI")]", 150)
 		if(80 to 100)
 			episode_names += new /datum/episode_name("[pick("SALDIRI! SALDIRI! SALDIRI!", "DELİLİĞİ TAMİR EDEMEZSİN", "KIYAMET", "KIYAMETİN TADI", "OPERASYON: YOK EDİN!", "KUSURSUZ FIRTINA", "MÜRETTEBATIN ZAMANI DOLDU", "HERKES [locale_uppertext(locale_suffix_ablative(uppr_name))] NEFRET EDİYOR", "[uppr_name] SAVAŞI", \
-				"KAPIŞMA", "İNSAN AVI", "KAVGANIN OLDUĞU BÖLÜM", "[locale_uppertext(locale_suffix_genitive(uppr_name))] HESAP GÜNÜ", "KOMŞULUK ELDE DEĞİL", "EMEKLİLİĞE BİR GÜN KALA")]", 250)
+				"KAPIŞMA", "İNSAN AVI", "KAVGANIN OLDUĞU BÖLÜM", "[locale_uppertext(locale_suffix_genitive(uppr_name))] HESAP GÜNÜ", "İNCELEN KIRMIZI ÇİZGİ", "EMEKLİLİĞE BİR GÜN KALA")]", 250)
 			if(get_station_avg_temp() < T0C)
 				episode_names += new /datum/episode_name("CEHENNEMDE SOĞUK BİR GÜN", 1000)
 

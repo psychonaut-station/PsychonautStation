@@ -171,14 +171,14 @@ SUBSYSTEM_DEF(credits)
 			continue
 		var/datum/record/crew/found_record = find_record(H.real_name)
 		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
-		cast_string += "<center><tr><td>[assignment == "" ? "" : "[assignment]"] [H.real_name]</td><td>: </td><td>[locale_uppertext(H.mind.key)]</td></tr></center>"
+		cast_string += "<center><tr><td>[assignment == "" ? "" : "[assignment]"] [H.real_name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
 		if(!S.ckey)
 			continue
-		cast_string += "<center>[S.name]: [uppertext(S.mind.key)]</center>"
+		cast_string += "<center><tr><td>[S.name]</td><td> : </td><td>[S.mind.key]</td></tr></center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 

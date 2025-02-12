@@ -185,17 +185,14 @@ SUBSYSTEM_DEF(credits)
 	if(!is_anyone_there)
 		cast_string += "<center><td> Kimse! </td></center>"
 
-	var/list/corpses = list()
+	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
+	cast_string += "<br><center>Hayatta kalamayanların anısına.<br></center>"
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(!H.mind)
+		if(!H.mind || !H.ckey || !H.real_name)
 			continue
-		if(H.real_name)
-			corpses += H.real_name
+		cast_string += "<center><tr><td>[H.real_name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
 		CHECK_TICK
 
-	if(corpses.len)
-		var/true_story_bro = "<center><br>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</center>"
-		cast_string += "<center><h3>[true_story_bro]</h3><br>Hayatta kalamayanların anısına.<br>[english_list(corpses)].<br></center>"
 	cast_string += "<br>"
 
 /datum/controller/subsystem/credits/proc/draft_episode_names()

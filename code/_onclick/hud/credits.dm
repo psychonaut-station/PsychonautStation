@@ -19,16 +19,16 @@
 		if(istype(I, /obj/effect/title_card_object)) //huge image sleep
 			sleep(CREDIT_SPAWN_SPEED * 3.3)
 			count = 0
-		if(count && !istype(I, /atom/movable/screen/map_view/char_preview))
+		if(count && !istype(I, /mutable_appearance))
 			sleep(CREDIT_SPAWN_SPEED)
 
 		_credits += new /atom/movable/screen/credit(null, null, I, src)
-		if(istype(I, /atom/movable/screen/map_view/char_preview))
+		if(istype(I, /mutable_appearance))
 			count++
 			if(count >= 6)
 				count = 0
 				sleep(CREDIT_SPAWN_SPEED)
-		if(!istype(I, /atom/movable/screen/map_view/char_preview))
+		else
 			sleep(CREDIT_SPAWN_SPEED)
 			count = 0
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
@@ -54,17 +54,6 @@
 	parent = P
 	var/view = P?.view
 	var/list/offsets = screen_loc_to_offset("3,1", view)
-
-	if(istype(credited, /atom/movable/screen/map_view/char_preview))
-		var/atom/movable/screen/map_view/char_preview/choice = credited
-		choice.plane = plane
-		choice.screen_loc = screen_loc
-		choice.alpha = alpha
-		maptext_width = choice.maptext_width
-		maptext = choice.maptext
-		appearance = choice.appearance
-		screen_loc = offset_to_screen_loc(offsets[1] + choice.pixel_x, offsets[2] + choice.pixel_y)
-		add_overlay(choice)
 
 	if(istype(credited, /mutable_appearance))
 		var/mutable_appearance/choice = credited

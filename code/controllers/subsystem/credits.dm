@@ -153,7 +153,7 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/proc/draft_disclaimers()
 	disclaimers += "[locale_suffix_locative(station_name())] çekilmiştir.<br>"
 	disclaimers += "BYOND© kameraları ve lensleri ile çekilmiştir. Uzay görüntüleri NASA tarafından sağlanmıştır.<br>"
-	disclaimers += "Ek özel görsel efektler LUMMOX® JR. Motion Picture Productions tarafından sağlanmıştır.<br>"
+	disclaimers += "Özel görsel efektler LUMMOX® JR. Motion Picture Productions tarafından sağlanmıştır.<br>"
 	disclaimers += "Tüm hakları saklıdır.<br>"
 	disclaimers += "<br>"
 	disclaimers += "Tüm tehlikeli sahneler düşük maaşlı ve harcanabilir stajyerler tarafından gerçekleştirilmiştir. EVDE DENEMEYİN.<br>"

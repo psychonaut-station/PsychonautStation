@@ -194,7 +194,7 @@ SUBSYSTEM_DEF(credits)
 		CHECK_TICK
 
 	if(corpses.len)
-		var/true_story_bro = "<center><br>[pick("GERÇEK OLAYLARDAN ILHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</center>"
+		var/true_story_bro = "<center><br>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</center>"
 		cast_string += "<center><h3>[true_story_bro]</h3><br>Hayatta kalamayanların anısına.<br>[english_list(corpses)].<br></center>"
 	cast_string += "<br>"
 

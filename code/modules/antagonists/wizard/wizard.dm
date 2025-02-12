@@ -230,7 +230,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	wiz_mob.fully_replace_character_name(wiz_mob.real_name, newname)
 
 	if(credits_icon)
-		var/atom/movable/screen/map_view/char_preview/antag_appereance = SScredits.get_antagonist_icon(WEAKREF(wiz_mob))
+		var/mutable_appearance/antag_appereance = SScredits.get_antagonist_icon(WEAKREF(wiz_mob.mind))
 		if(!isnull(antag_appereance))
 			antag_appereance.maptext = "<center>[newname]</center>"
 

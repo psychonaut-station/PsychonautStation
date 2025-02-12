@@ -93,7 +93,7 @@
 		maptext_x = world.icon_size + 8
 		maptext_y = (world.icon_size / 2) - 4
 		maptext_width = world.icon_size * 12
-		maptext_height = world.icon_size * 2
+		maptext_height = world.icon_size * 3
 
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)

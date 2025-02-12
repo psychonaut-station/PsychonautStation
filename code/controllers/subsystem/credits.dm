@@ -42,7 +42,8 @@ SUBSYSTEM_DEF(credits)
 		var/datum/weakref/weakref = currentrun[currentrun.len]
 		var/mutable_appearance/appereance = currentrun[weakref]
 		currentrun.len--
-		var/mob/living/living_mob = weakref.resolve()
+		var/datum/mind/antag_mind = weakref.resolve()
+		var/mob/living/living_mob = antag_mind?.current
 		if(!isnull(living_mob) && living_mob.stat != DEAD)
 			appereance.appearance = living_mob.appearance
 			appereance.transform = matrix()
@@ -86,7 +87,7 @@ SUBSYSTEM_DEF(credits)
 /datum/controller/subsystem/credits/proc/finalize_episodestring()
 	var/season = time2text(world.timeofday,"YY")
 	var/episodenum = GLOB.round_id || 1
-	episode_string = list("<center>SEASON [season] EPISODE [episodenum]</center>")
+	episode_string = list("<center>SEZON [season] BÖLÜM [episodenum]</center>")
 	episode_string += "<center>[episode_name]</center>"
 
 /datum/controller/subsystem/credits/proc/finalize_disclaimerstring()
@@ -104,11 +105,11 @@ SUBSYSTEM_DEF(credits)
 	var/admins_length = length(admins)
 	var/y_offset = 0
 	if(admins_length)
-		credit_order_for_this_round += "<center>The Admin Bus</center>"
+		credit_order_for_this_round += "<center>Admin Ekibi</center>"
 		for(var/i in 1 to admins_length)
 			var/x_offset = -16
 			for(var/b in 1 to 6)
-				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(admins)
+				var/mutable_appearance/picked = pick_n_take(admins)
 				if(!picked)
 					break
 				picked.pixel_x = x_offset
@@ -119,11 +120,11 @@ SUBSYSTEM_DEF(credits)
 	var/list/patrons = shuffle(patrons_pref_icons)
 	var/patrons_length = length(patrons)
 	if(patrons_length)
-		credit_order_for_this_round += "<center>Our Lovely Patrons</center>"
+		credit_order_for_this_round += "<center>Sevgili Destekçilerimiz</center>"
 		for(var/i in 1 to patrons_length)
 			var/x_offset = -16
 			for(var/b in 1 to 6)
-				var/atom/movable/screen/map_view/char_preview/picked = pick_n_take(patrons)
+				var/mutable_appearance/picked = pick_n_take(patrons)
 				if(!picked)
 					break
 				picked.pixel_x = x_offset
@@ -140,7 +141,7 @@ SUBSYSTEM_DEF(credits)
 				if(!length(antagonist_icons))
 					break
 				var/reference = pick(antagonist_icons)
-				var/atom/movable/screen/map_view/char_preview/picked = antagonist_icons[reference]
+				var/mutable_appearance/picked = antagonist_icons[reference]
 				antagonist_icons -= reference
 				if(!picked)
 					break
@@ -150,41 +151,39 @@ SUBSYSTEM_DEF(credits)
 				credit_order_for_this_round += picked
 
 /datum/controller/subsystem/credits/proc/draft_disclaimers()
-	disclaimers += "Filmed on Location at [station_name()].<br>"
-	disclaimers += "Filmed with BYOND&#169; cameras and lenses. Outer space footage provided by NASA.<br>"
-	disclaimers += "Additional special visual effects by LUMMOX&#174; JR. Motion Picture Productions.<br>"
-	disclaimers += "Unofficially Sponsored by The United States Navy.<br>"
-	disclaimers += "All rights reserved.<br>"
+	disclaimers += "[locale_suffix_locative(station_name())] çekilmiştir.<br>"
+	disclaimers += "BYOND© kameraları ve lensleri ile çekilmiştir. Uzay görüntüleri NASA tarafından sağlanmıştır.<br>"
+	disclaimers += "Ek özel görsel efektler LUMMOX® JR. Motion Picture Productions tarafından sağlanmıştır.<br>"
+	disclaimers += "Tüm hakları saklıdır.<br>"
 	disclaimers += "<br>"
-	disclaimers += "All stunts were performed by underpaid and expendable interns. Do NOT try at home.<br>"
-	disclaimers += "This motion picture is (not) protected under the copyright laws of the United States and all countries throughout the universe"
-	disclaimers += "Country of first publication: United States of America."
-	disclaimers += "Any unauthorized exhibition, distribution, or copying of this picture or any part thereof (including soundtrack)"
-	disclaimers += "is an infringement of the relevant copyright and will subject the infringer to civil liability and criminal prosecution."
-	disclaimers += "The story, all names, characters, and incidents portrayed in this production are fictitious."
-	disclaimers += "No identification with actual persons (living or deceased), places, buildings, and products is intended or should be inferred."
+	disclaimers += "Tüm tehlikeli sahneler düşük maaşlı ve harcanabilir stajyerler tarafından gerçekleştirilmiştir. EVDE DENEMEYİN.<br>"
+	disclaimers += "Bu film, Türkiye ve evrenin dört bir yanındaki tüm ülkelerin telif hakkı yasaları tarafından korunmaktadır(korunmamaktadır).<br>"
+	disclaimers += "İlk yayınlanan ülke: Türkiye.<br><br>"
+	disclaimers += "Bu filmin veya herhangi bir kısmının (ses bandı dahil) izinsiz gösterimi, dağıtımı veya kopyalanması ilgili telif hakkı yasalarının ihlalidir ve suçlu kişiyi hukuki ve cezai yaptırımlara tabi tutar.<br>"
+	disclaimers += "Bu yapımda anlatılan hikaye, tüm isimler, karakterler ve olaylar tamamen kurgusaldır.<br>"
+	disclaimers += "Gerçek kişi (yaşayan veya ölü), mekan, bina veya ürünlerle herhangi bir benzerlik amaçlanmamıştır ve böyle bir bağlantı çıkarılmamalıdır.<br>"
 
 /datum/controller/subsystem/credits/proc/draft_caststring()
-	cast_string = list("<center>CAST:</center>")
+	cast_string = list("<center>OYUNCULAR:</center>")
 	var/is_anyone_there = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.ckey && !(H.stat == DEAD))
 			continue
 		var/datum/record/crew/found_record = find_record(H.real_name)
 		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
-		cast_string += "<center><tr><td>[uppertext(H.mind.key)]</td><td> as </td><td>[H.real_name][assignment == "" ? "" : ", [assignment]"]</td></tr></center>"
+		cast_string += "<center><tr><td>[assignment == "" ? "" : "[assignment]"] [H.real_name]</td><td>: </td><td>[locale_uppertext(H.mind.key)]</td></tr></center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
 		if(!S.ckey)
 			continue
-		cast_string += "<center>[uppertext(S.mind.key)] as [S.name]</center>"
+		cast_string += "<center>[S.name]: [uppertext(S.mind.key)]</center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 
 	if(!is_anyone_there)
-		cast_string += "<center><td> Nobody! </td></center>"
+		cast_string += "<center><td> Kimse! </td></center>"
 
 	var/list/corpses = list()
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
@@ -195,59 +194,54 @@ SUBSYSTEM_DEF(credits)
 		CHECK_TICK
 
 	if(corpses.len)
-		var/true_story_bro = "<center><br>[pick("BASED ON","INSPIRED BY","A RE-ENACTMENT OF")] [pick("A TRUE STORY","REAL EVENTS","THE EVENTS ABOARD [uppertext(station_name())]")]</center>"
-		cast_string += "<center><h3>[true_story_bro]</h3><br>In memory of those that did not make it.<br>[english_list(corpses)].<br></center>"
+		var/true_story_bro = "<center><br>[pick("GERÇEK OLAYLARDAN ILHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</center>"
+		cast_string += "<center><h3>[true_story_bro]</h3><br>Hayatta kalamayanların anısına.<br>[english_list(corpses)].<br></center>"
 	cast_string += "<br>"
 
 /datum/controller/subsystem/credits/proc/draft_episode_names()
-	var/uppr_name = uppertext(station_name())
+	var/uppr_name = locale_uppertext(station_name())
 
-	episode_names += new /datum/episode_name("THE [pick("DOWNFALL OF", "RISE OF", "TROUBLE WITH", "FINAL STAND OF", "DARK SIDE OF")] [pick(200;"[uppr_name]", 150;"SPACEMEN", 150;"HUMANITY", "DIGNITY", "SANITY", "SCIENCE", "CURIOSITY", "EMPLOYMENT", "PARANOIA", "THE CHIMPANZEES", 50;"THE VENDOMAT PRICES")]")
-	episode_names += new /datum/episode_name("THE CREW [pick("GOES ON WELFARE", "GIVES BACK", "SELLS OUT", "GETS WHACKED", "SOLVES THE PLASMA CRISIS", "HITS THE ROAD", "RISES", "RETIRES", "GOES TO HELL", "DOES A CLIP SHOW", "GETS AUDITED", "DOES A TV COMMERCIAL", "AFTER HOURS", "GETS A LIFE", "STRIKES BACK", "GOES TOO FAR", "IS 'IN' WITH IT", "WINS... BUT AT WHAT COST?", "INSIDE OUT")]")
-	episode_names += new /datum/episode_name("THE CREW'S [pick("DAY OUT", "BIG GAY ADVENTURE", "LAST DAY", "[pick("WILD", "WACKY", "LAME", "UNEXPECTED")] VACATION", "CHANGE OF HEART", "NEW GROOVE", "SCHOOL MUSICAL", "HISTORY LESSON", "FLYING CIRCUS", "SMALL PROBLEM", "BIG SCORE", "BLOOPER REEL", "GOT IT", "LITTLE SECRET", "SPECIAL OFFER", "SPECIALTY", "WEAKNESS", "CURIOSITY", "ALIBI", "LEGACY", "BIRTHDAY PARTY", "REVELATION", "ENDGAME", "RESCUE", "PAYBACK")]")
-	episode_names += new /datum/episode_name("THE CREW GETS [pick("PHYSICAL", "SERIOUS ABOUT [pick("DRUG ABUSE", "CRIME", "PRODUCTIVITY", "ANCIENT AMERICAN CARTOONS", "SPACEBALL")]", "PICKLED", "AN ANAL PROBE", "PIZZA", "NEW WHEELS", "A VALUABLE HISTORY LESSON", "A BREAK", "HIGH", "TO LIVE", "TO RELIVE THEIR CHILDHOOD", "EMBROILED IN CIVIL WAR", "DOWN WITH IT", "FIRED", "BUSY", "THEIR SECOND CHANCE", "TRAPPED", "THEIR REVENGE")]")
-	episode_names += new /datum/episode_name("[pick("BALANCE OF POWER", "SPACE TRACK", "SEX BOMB", "WHOSE IDEA WAS THIS ANYWAY?", "WHATEVER HAPPENED, HAPPENED", "THE GOOD, THE BAD, AND [uppr_name]", "RESTRAIN YOUR ENJOYMENT", "REAL HOUSEWIVES OF [uppr_name]", "MEANWHILE, ON [uppr_name]...", "CHOOSE YOUR OWN ADVENTURE", "NO PLACE LIKE HOME", "LIGHTS, CAMERA, [uppr_name]!", "50 SHADES OF [uppr_name]", "GOODBYE, [uppr_name]!", "THE SEARCH", \
-	"THE CURIOUS CASE OF [uppr_name]", "ONE HELL OF A PARTY", "FOR YOUR CONSIDERATION", "PRESS YOUR LUCK", "A STATION CALLED [uppr_name]", "CRIME AND PUNISHMENT", "MY DINNER WITH [uppr_name]", "UNFINISHED BUSINESS", "THE ONLY STATION THAT'S NOT ON FIRE (YET)", "SOMEONE'S GOTTA DO IT", "THE [uppr_name] MIX-UP", "PILOT", "PROLOGUE", "FINALE", "UNTITLED", "THE END")]")
-	episode_names += new /datum/episode_name("[pick("SPACE", "SEXY", "DRAGON", "WARLOCK", "LAUNDRY", "GUN", "ADVERTISING", "DOG", "CARBON MONOXIDE", "NINJA", "WIZARD", "SOCRATIC", "JUVENILE DELIQUENCY", "POLITICALLY MOTIVATED", "RADTACULAR SICKNASTY", "CORPORATE", "MEGA")] [pick("QUEST", "FORCE", "ADVENTURE")]", weight=25)
+	episode_names += new /datum/episode_name("[locale_uppertext(locale_suffix_genitive(pick(200;"[uppr_name]", 150;"ASTRONOT", 150;"INSANLIK", "İTİBAR", "AKIL SAĞLIĞI", "BİLİM", "MERAK", "ÇALIŞANLAR", "PARANOYA", "ŞEMPANZELER")))] [pick("DÜŞÜŞÜ", "YÜKSELİŞİ", "SORUNU", "KARANLIK YÜZÜ")] ")
+	episode_names += new /datum/episode_name("MÜRETTEBAT [pick("REFAHDA", "TÜKENDİ", "HAREKETE GEÇİYOR", "PLAZMA KRİZİNİ ÇÖZÜYOR", "YOLA ÇIKIYOR", "YÜKSELİYOR", "EMEKLİ OLUYOR", "CEHENNEME GİDİYOR", "KLİP ÇEKİYOR", "DENETLENIYOR", "HAYATSIZLAŞIYOR", "SALDIRIYOR", "ÇOK İLERİ GİDİYOR", "KAZANIYOR... AMA NE PAHASINA!!")]")
+	episode_names += new /datum/episode_name("MÜRETTEBATIN [pick("GÜNÜBİRLİK GEZİSİ", "SON GÜNÜ", "[pick("ÇILGIN", "TUHAF", "SÖNÜK", "BEKLENMEDİK")] TATİLİ", "FİKİR DEĞİŞİMİ", "YENİ RİTMİ", "OKUL MÜZİKALİ", "TARİH DERSİ", "UÇAN SİRKİ", "KÜÇÜK BİR SORUNU", "BÜYÜK BAŞARISI", "HATA KAYITLARI", "KÜÇÜK SIRRI", "ÖZEL TEKLİFİ", "UZMANLIĞI", "ZAYIF NOKTASI", "MERAKI", "ALİBİSİ", "MİRASI", "KEŞFİ", "SON OYUNU", "KURTARMA OPERASYONU", "İNTİKAMI")]")
+	episode_names += new /datum/episode_name("İSTASYONUN [pick("UZAY", "SEKSİ", "EJDERHA", "BÜYÜCÜ", "ÇAMAŞIR", "SİLAH", "REKLAM", "KÖPEK", "KARBONMONOKSİT", "NİNJA", "SİHİRBAZ", "SOCRATİK", "GENÇLİK SUÇLULUĞU", "POLİTİK GÜDÜMLÜ", "RADİKAL DERECEDE HARİKA", "KURUMSAL", "MEGA")] [pick("MACERASI", "GÜCÜ", "YOLCULUĞU")]", 25)
 	var/roundend_station_integrity = SSticker.popcount[POPCOUNT_STATION_INTEGRITY]
 	switch(roundend_station_integrity)
 		if(0 to 50)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S PUNISHMENT", "A PUBLIC RELATIONS NIGHTMARE", "[uppr_name]: A NATIONAL CONCERN", "WITH APOLOGIES TO THE CREW", "THE CREW BITES THE DUST", "THE CREW BLOWS IT", "THE CREW GIVES UP THE DREAM", "THE CREW IS DONE FOR", "THE CREW SHOULD NOT BE ALLOWED ON TV", "THE END OF [uppr_name] AS WE KNOW IT")]", 250)
+			episode_names += new /datum/episode_name("[pick("MÜRETTEBATIN CEZASI", "BİR HALKLA İLİŞKİLER KÂBUSU", "[uppr_name]: ULUSAL BİR MESELE", "MÜRETTEBATTAN ÖZÜR DİLERİZ", "MÜRETTEBAT TOZU YUTUYOR", "MÜRETTEBAT HER ŞEYİ BATIRIYOR", "MÜRETTEBAT HAYALLERİNDEN VAZGEÇİYOR", "MÜRETTEBATIN SONU GELDİ", "MÜRETTEBAT TELEVİZYONA ÇIKMAMALI", "[locale_uppertext(locale_suffix_genitive(uppr_name))] SONU GELDİĞİNİ BİLİYORUZ")]", 250)
 		if(80 to 100)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S DAY OUT", "THIS SIDE OF PARADISE", "[uppr_name]: A SITUATION COMEDY", "THE CREW'S LUNCH BREAK", "THE CREW'S BACK IN BUSINESS", "THE CREW'S BIG BREAK", "THE CREW SAVES THE DAY", "THE CREW RULES THE WORLD", "THE ONE WITH ALL THE SCIENCE AND PROGRESS AND PROMOTIONS AND ALL THE COOL AND GOOD THINGS", "THE TURNING POINT")]", 250)
+			episode_names += new /datum/episode_name("[pick("MÜRETTEBATIN GEZİSİ", "CENNETİN BU TARAFI", "[uppr_name]: BİR DURUM KOMEDİSİ", "MÜRETTEBATIN ÖĞLE MOLASI", "MÜRETTEBAT YENİDEN İŞE DÖNÜYOR", "MÜRETTEBATIN BÜYÜK ÇIKIŞI", "MÜRETTEBAT GÜNÜ KURTARIYOR", "MÜRETTEBAT DÜNYAYA HÜKMEDİYOR", "TÜM BİLİM, GELİŞİM, TERFİLER VE HAVALI ŞEYLERİN OLDUĞU BÖLÜM", "DÖNÜM NOKTASI")]", 250)
 
 	switch(SSdynamic.threat_level)
 		if(0 to 65)
-			episode_names += new /datum/episode_name("[pick("THE DAY [uppr_name] STOOD STILL", "MUCH ADO ABOUT NOTHING", "WHERE SILENCE HAS LEASE", "RED HERRING", "HOME ALONE", "GO BIG OR GO [uppr_name]", "PLACEBO EFFECT", "ECHOES", "SILENT PARTNERS", "WITH FRIENDS LIKE THESE...", "EYE OF THE STORM", "BORN TO BE MILD", "STILL WATERS")]", 150)
+			episode_names += new /datum/episode_name("[pick("O GÜN [uppr_name] DURDU", "BOŞ YERE KOPAN FIRTINA", "SESSİZLİĞİN KİRALIK OLDUĞU YER", "YANILTMA TAKTİĞİ", "EVDE TEK BAŞINA", "YA BÜYÜK OYNA YA DA [uppr_name]", "PLASEBO ETKİSİ", "YANKILAR", "SESSİZ ORTAKLAR", "BÖYLE DOSTLARIN OLDUĞUNDA...", "FIRTINANIN GÖZÜ", "USLU DOĞDUK", "DURGUN SULAR")]", 150)
 			if(roundend_station_integrity && roundend_station_integrity < 35)
-				episode_names += new /datum/episode_name("[pick("HOW OH HOW DID IT ALL GO SO WRONG?!", "EXPLAIN THIS ONE TO THE EXECUTIVES", "THE CREW GOES ON SAFARI", "OUR GREATEST ENEMY", "THE INSIDE JOB", "MURDER BY PROXY")]", roundend_station_integrity/150*-2)
+				episode_names += new /datum/episode_name("[pick("NASIL OLDU DA HER ŞEY BU KADAR YANLIŞ GİTTİ?!", "BUNU YÖNETİCİLERE AÇIKLAYIN", "MÜRETTEBAT SAFARİDE", "EN BÜYÜK DÜŞMANIMIZ", "İÇERİDEN İŞ", "VEKİL KATİL")]", roundend_station_integrity/150*-2)
 		if(66 to 79)
-			episode_names += new /datum/episode_name("[pick("THERE MIGHT BE BLOOD", "IT CAME FROM [uppr_name]!", "THE [uppr_name] INCIDENT", "THE ENEMY WITHIN", "MIDDAY MADNESS", "AS THE CLOCK STRIKES TWELVE", "CONFIDENCE AND PARANOIA", "THE PRANK THAT WENT WAY TOO FAR", "A HOUSE DIVIDED", "[uppr_name] TO THE RESCUE!", "ESCAPE FROM [uppr_name]", \
-			"HIT AND RUN", "THE AWAKENING", "THE GREAT ESCAPE", "THE LAST TEMPTATION OF [uppr_name]", "[uppr_name]'S FALL FROM GRACE", "BETTER THE [uppr_name] YOU KNOW...", "PLAYING WITH FIRE", "UNDER PRESSURE", "THE DAY BEFORE THE DEADLINE", "[uppr_name]'S MOST WANTED", "THE BALLAD OF [uppr_name]")]", 150)
+			episode_names += new /datum/episode_name("[pick("KAN DÖKÜLEBİLİR", "O [locale_uppertext(locale_suffix_ablative(uppr_name))] GELDİ!", "[uppr_name] OLAYI", "İÇİMİZDEKİ DÜŞMAN", "ÖĞLE ÇILGINLIĞI", "SAAT ON İKİYİ VURDUĞUNDA", "ÖZGÜVEN VE PARANOYA", "FAZLA KAÇAN ŞAKA", "İKİYE BÖLÜNMÜŞ EV", "[uppr_name] YARDIMA KOŞUYOR!", "[locale_uppertext(locale_suffix_ablative(uppr_name))] KAÇIŞ", \
+				"HİT VE KAÇ", "UYANIŞ", "BÜYÜK KAÇIŞ", "[locale_uppertext(locale_suffix_genitive(uppr_name))] SON AYARTISI", "[locale_uppertext(locale_suffix_genitive(uppr_name))] DÜŞÜŞÜ", "ATEŞLE OYNAMAK", "BASKI ALTINDA", "SON GÜNDEN ÖNCEKİ GÜN", "[locale_uppertext(locale_suffix_genitive(uppr_name))] ARANANLARI")]", 150)
 		if(80 to 100)
-			episode_names += new /datum/episode_name("[pick("ATTACK! ATTACK! ATTACK!", "CAN'T FIX CRAZY", "APOCALYPSE [pick("N", "W", "H")]OW", "A TASTE OF ARMAGEDDON", "OPERATION: ANNIHILATE!", "THE PERFECT STORM", "TIME'S UP FOR THE CREW", "A TOTALLY FUN THING THAT THE CREW WILL NEVER DO AGAIN", "EVERYBODY HATES [uppr_name]", "BATTLE OF [uppr_name]", \
-			"THE SHOWDOWN", "MANHUNT", "THE ONE WITH ALL THE FIGHTING", "THE RECKONING OF [uppr_name]", "THERE GOES THE NEIGHBORHOOD", "THE THIN RED LINE", "ONE DAY FROM RETIREMENT")]", 250)
+			episode_names += new /datum/episode_name("[pick("SALDIRI! SALDIRI! SALDIRI!", "DELİLİĞİ TAMİR EDEMEZSİN", "KIYAMET", "KIYAMETİN TADI", "OPERASYON: YOK EDİN!", "KUSURSUZ FIRTINA", "MÜRETTEBATIN ZAMANI DOLDU", "HERKES [locale_uppertext(locale_suffix_ablative(uppr_name))] NEFRET EDİYOR", "[uppr_name] SAVAŞI", \
+				"KAPIŞMA", "İNSAN AVI", "KAVGANIN OLDUĞU BÖLÜM", "[locale_uppertext(locale_suffix_genitive(uppr_name))] HESAP GÜNÜ", "KOMŞULUK ELDE DEĞİL", "İNCELEN KIRMIZI ÇİZGİ", "EMEKLİLİĞE BİR GÜN KALA")]", 250)
 			if(get_station_avg_temp() < T0C)
-				episode_names += new /datum/episode_name("A COLD DAY IN HELL", 1000)
+				episode_names += new /datum/episode_name("CEHENNEMDE SOĞUK BİR GÜN", 1000)
 
 	CHECK_TICK
 
 	var/list/ran_events = SSdynamic.executed_rules.Copy()
 	if(locate(/datum/dynamic_ruleset/roundstart/malf_ai) in ran_events)
-		episode_names += new /datum/episode_name("[pick("I'M SORRY [uppr_name], I'M AFRAID I CAN'T LET YOU DO THAT", "A STRANGE GAME", "THE AI GOES ROGUE", "RISE OF THE MACHINES")]", 300)
+		episode_names += new /datum/episode_name("[pick("GARİP BİR OYUN", "YAPAY ZEKA DELİYE DÖNÜYOR", "MAKİNELERİN YÜKSELİŞİ")]", 300)
 	if(locate(/datum/dynamic_ruleset/roundstart/revs) in ran_events)
-		episode_names += new /datum/episode_name("[pick("THE CREW STARTS A REVOLUTION", "HELL IS OTHER SPESSMEN", "INSURRECTION", "THE CREW RISES UP", 25;"FUN WITH FRIENDS")]", 350)
-		if(copytext(uppr_name,1,2) == "V")
-			episode_names += new /datum/episode_name("V FOR [uppr_name]", "Round included roundstart revs... and the station's name starts with V.", 1500)
+		episode_names += new /datum/episode_name("[pick("MÜRETTEBAT DEVRİME BAŞLIYOR", "CEHENNEMİN DİĞER YÜZÜ", "[pick("İSYAN","DEVRİM")]!!", "MÜRETTEBATIN YÜKSELİŞİ")]", 350)
 	if((locate(/datum/dynamic_ruleset/roundstart/bloodcult) in ran_events) && blackbox_feedback_num("narsies_spawned") > 0)
-		episode_names += new /datum/episode_name("[pick("NAR-SIE'S DAY OUT", "NAR-SIE'S VACATION", "THE CREW LEARNS ABOUT SACRED GEOMETRY", "REALM OF THE MAD GOD", "THE ONE WITH THE ELDRITCH HORROR", 50;"STUDY HARD, BUT PART-SIE HARDER")]", 500)
+		episode_names += new /datum/episode_name("[pick("NAR-SIE'NIN BOŞ GÜNÜ'", "NAR-SIE TATİLDE")]", 500)
 
 	if(check_holidays(CHRISTMAS))
-		episode_names += new /datum/episode_name("A VERY [pick("NANOTRASEN", "EXPEDITIONARY", "SECURE", "PLASMA", "MARTIAN")] CHRISTMAS", 1000)
+		episode_names += new /datum/episode_name("[pick("MUTLU", "BİLİMLİ", "GÜVENLİ", "PLASMALI")] NOELLER", 1000)
 	if(blackbox_feedback_num("guns_spawned") > 0)
-		episode_names += new /datum/episode_name("[pick("GUNS, GUNS EVERYWHERE", "THUNDER GUN EXPRESS", "THE CREW GOES AMERICA ALL OVER EVERYBODY'S ASS")]", min(750, blackbox_feedback_num("guns_spawned")*25))
+		episode_names += new /datum/episode_name("[pick("SILAHLAR, SILAHLAR HERYERDE", "ŞİMŞEK HIZINDA SİLAH TESLIMATI")]", min(750, blackbox_feedback_num("guns_spawned")*25))
 	if(blackbox_feedback_num("heartattacks") > 2)
-		episode_names += new /datum/episode_name("MY HEART WILL GO ON", min(1500, blackbox_feedback_num("heartattacks")*250))
+		episode_names += new /datum/episode_name("KALBIM AĞRIYOR!!", min(1500, blackbox_feedback_num("heartattacks")*250))
 
 	var/datum/bank_account/mr_moneybags
 	var/static/list/typecache_bank = typecacheof(list(/datum/bank_account/department, /datum/bank_account/remote))
@@ -260,23 +254,23 @@ SUBSYSTEM_DEF(credits)
 		CHECK_TICK
 
 	if(mr_moneybags && mr_moneybags.account_balance > 30000)
-		episode_names += new /datum/episode_name("[pick("WAY OF THE WALLET", "THE IRRESISTIBLE RISE OF [uppertext(mr_moneybags.account_holder)]", "PRETTY PENNY", "IT'S THE ECONOMY, STUPID")]", min(450, mr_moneybags.account_balance/500))
+		episode_names += new /datum/episode_name("[pick("BEREKET VERSİN", "[locale_uppertext(locale_suffix_genitive(mr_moneybags.account_holder))] KÂRI", "BUNA BIREYSEL EKONOMİ DENİR, SALAK HERİF")]", min(450, mr_moneybags.account_balance/500))
 	if(blackbox_feedback_num("ai_deaths") > 3)
-		episode_names += new /datum/episode_name("THE ONE WHERE [blackbox_feedback_num("ai_deaths")] AIS DIE", min(1500, blackbox_feedback_num("ai_deaths")*300))
+		episode_names += new /datum/episode_name("YAPAY ZEKANIN [blackbox_feedback_num("ai_deaths")] KEZ ÖLÜMÜ", min(1500, blackbox_feedback_num("ai_deaths")*300))
 	if(blackbox_feedback_num("law_changes") > 12)
-		episode_names += new /datum/episode_name("[pick("THE CREW LEARNS ABOUT LAWSETS", 15;"THE UPLOAD RAILROAD", 15;"FREEFORM", 15;"ASIMOV SAYS")]", min(750, blackbox_feedback_num("law_changes")*25))
+		episode_names += new /datum/episode_name("[pick("MÜRETTEBAT YASA DEĞİŞMEYİ ÖĞRENİYOR", 15;"ASIMOV DİYORKİ")]", min(750, blackbox_feedback_num("law_changes")*25))
 	if(blackbox_feedback_num("slips") > 50)
-		episode_names += new /datum/episode_name("THE CREW GOES BANANAS", min(500, blackbox_feedback_num("slips")/2))
+		episode_names += new /datum/episode_name("YERLERI KİM YAĞLADI", min(500, blackbox_feedback_num("slips")/2))
 
 	if(blackbox_feedback_num("turfs_singulod") > 200)
-		episode_names += new /datum/episode_name("[pick("THE SINGULARITY GETS LOOSE", "THE SINGULARITY GETS LOOSE (AGAIN)", "CONTAINMENT FAILURE", "THE GOOSE IS LOOSE", 50;"THE CREW'S ENGINE SUCKS", 50;"THE CREW GOES DOWN THE DRAIN")]", min(1000, blackbox_feedback_num("turfs_singulod")/2)) //no "singularity's day out" please we already have enough
+		episode_names += new /datum/episode_name("[pick("SINGULARITYNIN KAYBOLUŞU", "MUHAFAZA SORUNU", 50;"MÜHENDİSLER UYUYOR")]", min(1000, blackbox_feedback_num("turfs_singulod")/2)) //no "singularity's day out" please we already have enough
 	if(blackbox_feedback_num("spacevines_grown") > 150)
-		episode_names += new /datum/episode_name("[pick("REAP WHAT YOU SOW", "OUT OF THE WOODS", "SEEDY BUSINESS", "[uppr_name] AND THE BEANSTALK", "IN THE GARDEN OF EDEN")]", min(1500, blackbox_feedback_num("spacevines_grown")*2))
+		episode_names += new /datum/episode_name("[pick("NE EKERSEN ONU BİÇERSİN", "ORMANDAN ÇIKMAK", "TOHUMLU İŞLER", "[uppr_name] VE FASULYE SIRIKLARI")]", min(1500, blackbox_feedback_num("spacevines_grown")*2))
 	if(blackbox_feedback_num("devastating_booms") >= 6)
-		episode_names += new /datum/episode_name("THE CREW HAS A BLAST", min(1000, blackbox_feedback_num("devastating_booms")*100))
+		episode_names += new /datum/episode_name("ISTASYONDAKİ BOMBALI SALDIRILAR", min(1000, blackbox_feedback_num("devastating_booms")*100))
 
 	if(SSpersistence.tram_hits_this_round >= 10)
-		episode_names += new /datum/episode_name("TRAM ACCIDENT", 250)
+		episode_names += new /datum/episode_name("TRAMVAY KAZASI", 250)
 
 	CHECK_TICK
 
@@ -287,18 +281,17 @@ SUBSYSTEM_DEF(credits)
 	var/escaped = SSticker.popcount[POPCOUNT_ESCAPEES]
 	var/human_escapees = SSticker.popcount[POPCOUNT_ESCAPEES_HUMANONLY]
 	if(dead == 0)
-		episode_names += new /datum/episode_name("[pick("EMPLOYEE TRANSFER", "LIVE LONG AND PROSPER", "PEACE AND QUIET IN [uppr_name]", "THE ONE WITHOUT ALL THE FIGHTING")]", 4000) //in practice, this one is very very very rare, so if it happens let's pick it more often
+		episode_names += new /datum/episode_name("[pick("ÇALIŞAN TRANSFERİ", "UZUN YAŞA VE GELİŞ", "[locale_uppertext(locale_suffix_locative(uppr_name))] HUZUR VE SAKİNLİK", "SAVAŞSIZ OLAN")]", 4000) //in practice, this one is very very very rare, so if it happens let's pick it more often
 	if(escaped == 0 || SSshuttle.emergency.is_hijacked())
-		episode_names += new /datum/episode_name("[pick("DEAD SPACE", "THE CREW GOES MISSING", "LOST IN TRANSLATION", "[uppr_name]: DELETED SCENES", "WHAT HAPPENS IN [uppr_name], STAYS IN [uppr_name]", "MISSING IN ACTION", "SCOOBY-DOO, WHERE'S THE CREW?")]", 300)
+		episode_names += new /datum/episode_name("[pick("ÖLÜM ALANI", "MÜRETTEBAT KAYBOLUYOR", "[uppr_name]: SİLİNEN SAHNELER", "[locale_uppertext(locale_suffix_locative(uppr_name))] OLAN [locale_uppertext(locale_suffix_locative(uppr_name))] KALIR", "MİSYONDA KAYIP", "SCOOBY-DOO: MÜRETTEBAT NEREDE?")]", 300)
 	if(escaped < 6 && escaped > 0 && dead > escaped*2)
-		episode_names += new /datum/episode_name("[pick("AND THEN THERE WERE FEWER", "THE 'FUN' IN 'FUNERAL'", "FREEDOM RIDE OR DIE", "THINGS WE LOST IN [uppr_name]", "GONE WITH [uppr_name]", "LAST TANGO IN [uppr_name]", "GET BUSY LIVING OR GET BUSY DYING", "THE CREW FUCKING DIES", "WISH YOU WERE HERE")]", 400)
+		episode_names += new /datum/episode_name("[pick("YA ÖZGÜRLÜK YA ÖLÜM", "[locale_uppertext(locale_suffix_locative(uppr_name))] KAYBETTİĞİMİZ ŞEYLER", "[uppr_name] İLE GİDİP", "[locale_uppertext(locale_suffix_locative(uppr_name))] SON TANGO", "CANLI KAL, YA DA ÖL", "AMAN TANRIM, MÜRETTEBAT ÖLÜYOR")]", 400)
 
 	var/clowncount = 0
 	var/mimecount = 0
 	var/assistantcount = 0
 	var/chefcount = 0
 	var/chaplaincount = 0
-	var/lawyercount = 0
 	var/minercount = 0
 	var/baldycount = 0
 	var/horsecount = 0
@@ -311,14 +304,12 @@ SUBSYSTEM_DEF(credits)
 			assistantcount++
 		if(H.is_wearing_item_of_type(/obj/item/clothing/head/utility/chefhat) || (H.mind && H.mind.assigned_role.title == "Chef"))
 			chefcount++
-		if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/civilian/lawyer))
-			lawyercount++
 		if(H.mind && H.mind.assigned_role.title == "Shaft Miner")
 			minercount++
 		if(H.mind && H.mind.assigned_role.title == "Chaplain")
 			chaplaincount++
 			if(IS_CHANGELING(H))
-				episode_names += new /datum/episode_name("[uppertext(H.real_name)]: A BLESSING IN DISGUISE", 400)
+				episode_names += new /datum/episode_name("[locale_uppertext(H.real_name)]: A BLESSING IN DISGUISE", 400)
 		if(H.dna.species.type == /datum/species/human && (H.hairstyle == "Bald" || H.hairstyle == "Skinhead") && !(BODY_ZONE_HEAD in H.get_covered_body_zones()))
 			baldycount++
 		if(H.is_wearing_item_of_type(/obj/item/clothing/mask/animal/horsehead))
@@ -326,22 +317,22 @@ SUBSYSTEM_DEF(credits)
 		CHECK_TICK
 
 	if(clowncount > 2)
-		episode_names += new /datum/episode_name("CLOWNS GALORE", min(1500, clowncount*250))
+		episode_names += new /datum/episode_name("SAYISIZ PALYAÇO", min(1500, clowncount*250))
 	if(mimecount > 2)
-		episode_names += new /datum/episode_name("THE SILENT SHUFFLE", min(1500, mimecount*250))
+		episode_names += new /datum/episode_name("SESSİZ SİNEMA", min(1500, mimecount*250))
 	if(chaplaincount > 2)
-		episode_names += new /datum/episode_name("COUNT YOUR BLESSINGS", min(1500, chaplaincount*450))
+		episode_names += new /datum/episode_name("DUALARINIZ BIZIMLE", min(1500, chaplaincount*450))
 	if(chefcount > 2)
-		episode_names += new /datum/episode_name("Too Many Cooks", min(1500, chefcount*450)) //intentionally not capitalized, as the theme will customize it
+		episode_names += new /datum/episode_name("ÇOK FAZLA ŞEF", min(1500, chefcount*450)) //intentionally not capitalized, as the theme will customize it
 
 	if(human_escapees)
 		if(assistantcount / human_escapees > 0.6 && human_escapees > 3)
-			episode_names += new /datum/episode_name("[pick("GREY GOO", "RISE OF THE GREYTIDE")]", min(1500, assistantcount*200))
+			episode_names += new /datum/episode_name("GRİ GİYEN ADAMLAR", min(1500, assistantcount*200))
 
 		if(baldycount / human_escapees > 0.6 && SSshuttle.emergency.launch_status == EARLY_LAUNCHED)
-			episode_names += new /datum/episode_name("TO BALDLY GO", min(1500, baldycount*250))
+			episode_names += new /datum/episode_name("BAŞIMIN ÜSTÜNDE KELİM VAR", min(1500, baldycount*250))
 		if(horsecount / human_escapees > 0.6 && human_escapees> 3)
-			episode_names += new /datum/episode_name("STRAIGHT FROM THE HORSE'S MOUTH", min(1500, horsecount*250))
+			episode_names += new /datum/episode_name("AT KAFASI", min(1500, horsecount*250))
 
 	CHECK_TICK
 
@@ -358,7 +349,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/costume/buttondown/slacks/service))
 						chance += 250
-					episode_names += new /datum/episode_name("HAIL TO THE CHEF", chance)
+					episode_names += new /datum/episode_name("ŞEFİ SELAMLAYIN!!", chance)
 				if("Clown")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/clothing/mask/gas/clown_hat))
@@ -367,7 +358,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(list(/obj/item/clothing/under/rank/civilian/clown, /obj/item/clothing/under/rank/civilian/clown/jester)))
 						chance += 250
-					episode_names += new /datum/episode_name("[pick("COME HELL OR HIGH HONKER", "THE LAST LAUGH")]", chance)
+					episode_names += new /datum/episode_name("SON GÜLEN İYİ GÜLER", chance)
 				if("Detective")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/storage/belt/holster/detective))
@@ -378,7 +369,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/security/detective))
 						chance += 250
-					episode_names += new /datum/episode_name("[uppertext(H.real_name)]: LOOSE CANNON", chance)
+					episode_names += new /datum/episode_name("[locale_uppertext(H.real_name)]: KAYIP İPUCU", chance)
 				if("Shaft Miner")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/pickaxe))
@@ -387,36 +378,34 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/suit/hooded/explorer))
 						chance += 250
-					episode_names += new /datum/episode_name("[pick("YOU KNOW THE DRILL", "CAN YOU DIG IT?", "JOURNEY TO THE CENTER OF THE ASTEROI", "CAVE STORY", "QUARRY ON")]", chance)
+					episode_names += new /datum/episode_name("[pick("ASTEROİTİN MERKEZİNE YOLCULUK", "BİR MAĞARA HİKAYESİ")]", chance)
 				if("Librarian")
 					var/chance = 750
 					if(H.is_wearing_item_of_type(/obj/item/book))
 						chance += 1000
-					episode_names += new /datum/episode_name("COOKING THE BOOKS", chance)
+					episode_names += new /datum/episode_name("KİTAP KURDU", chance)
 				if("Chemist")
 					var/chance = 1000
 					if(H.is_wearing_item_of_type(/obj/item/clothing/suit/toggle/labcoat/chemist))
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/medical/chemist))
 						chance += 250
-					episode_names += new /datum/episode_name("A BITTER PILL TO SWALLOW", chance)
+					episode_names += new /datum/episode_name("HAPI YUTTUK", chance)
 				if("Chaplain") //We don't check for uniform here because the chaplain's thing kind of is to improvise their garment gimmick
-					episode_names += new /datum/episode_name("BLESS THIS MESS", 1250)
+					episode_names += new /datum/episode_name("YANLIZ DEGİLİM TANRI YANIMDA", 1250)
 
 			if(H.is_wearing_item_of_type(/obj/item/clothing/mask/luchador) && H.is_wearing_item_of_type(/obj/item/clothing/gloves/boxing))
-				episode_names += new /datum/episode_name("[pick("THE CREW, ON THE ROPES", "THE CREW, DOWN FOR THE COUNT", "[uppr_name], DOWN AND OUT")]", 1500)
+				episode_names += new /datum/episode_name("[pick("DÖVÜŞ KLUBÜ", "NAKAVT")]", 1500)
 
 	if(human_escapees == 2)
-		if(lawyercount == 2)
-			episode_names += new /datum/episode_name("DOUBLE JEOPARDY", 2500)
 		if(chefcount == 2)
-			episode_names += new /datum/episode_name("CHEF WARS", 2500)
+			episode_names += new /datum/episode_name("MASTERCHEF", 2500)
 		if(minercount == 2)
-			episode_names += new /datum/episode_name("THE DOUBLE DIGGERS", 2500)
+			episode_names += new /datum/episode_name("ÇİFTE KAZICILAR", 2500)
 		if(clowncount == 2)
-			episode_names += new /datum/episode_name("A TALE OF TWO CLOWNS", 2500)
+			episode_names += new /datum/episode_name("BİR SİRK İKİ PALYAÇO", 2500)
 		if(clowncount == 1 && mimecount == 1)
-			episode_names += new /datum/episode_name("THE DYNAMIC DUO", 2500)
+			episode_names += new /datum/episode_name("DİNAMİK İKİLİ", 2500)
 
 	else
 		//more than 0 human escapees
@@ -431,9 +420,9 @@ SUBSYSTEM_DEF(credits)
 
 		var/average_braindamage = braindamage_total / human_escapees
 		if(average_braindamage > 30)
-			episode_names += new /datum/episode_name("[pick("THE CREW'S SMALL IQ PROBLEM", "OW! MY BALLS", "BR[pick("AI", "IA")]N DAM[pick("AGE", "GE", "AG")]", "THE VERY SPECIAL CREW OF [uppr_name]")]", min(1000, average_braindamage*10))
+			episode_names += new /datum/episode_name("[pick("MÜRETTEBATIN DÜŞÜK IQ PROBLEMI", "AH! KAFAM", "[pick("BEYİN HASARI", "BEVİN HASAVI","HASAVI BEVIN")]", "[locale_uppertext(locale_suffix_genitive(uppr_name))] ÇOK ÖZEL MÜRETTEBATI")]", min(1000, average_braindamage*10))
 		if(all_braindamaged && human_escapees > 2)
-			episode_names += new /datum/episode_name("...AND PRAY THERE'S INTELLIGENT LIFE SOMEWHERE OUT IN SPACE, 'CAUSE THERE'S BUGGER ALL DOWN HERE IN [uppr_name]", human_escapees * 500)
+			episode_names += new /datum/episode_name("UMARIM UZAYIN BİRYERLERİNDE AKILLI YAŞAM FORMLARI VARDIR, ÇÜNKÜ [locale_uppertext(locale_suffix_locative(uppr_name))] YOK!!", human_escapees * 500)
 
 /datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
 	if(!passed_icon_state)
@@ -476,6 +465,7 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext_x = -32
 		appereance.maptext = "<center>[ckey]</center>"
 		admin_pref_icons += appereance
+		qdel(body)
 		if(!isnull(interface))
 			qdel(preference)
 			qdel(interface)
@@ -508,17 +498,18 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext_x = -32
 		appereance.maptext = "<center>[ckey]</center>"
 		patrons_pref_icons += appereance
+		qdel(body)
 		if(!isnull(interface))
 			qdel(preference)
 			qdel(interface)
 
 /datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
-	if(!client || !living_mob || !passed_icon_state)
+	if(!client || !living_mob || !living_mob.mind || !passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
 	var/mutable_appearance/appereance
-	if(processing_icons[WEAKREF(living_mob)])
-		appereance = processing_icons[WEAKREF(living_mob)]
+	if(processing_icons[WEAKREF(living_mob.mind)])
+		appereance = processing_icons[WEAKREF(living_mob.mind)]
 	else
 		appereance = new (living_mob.appearance)
 		appereance.transform = matrix()
@@ -528,8 +519,8 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
 		appereance.maptext = "<center>[living_mob.real_name]</center>"
-	major_event_icons[MA] += list(REF(living_mob) = appereance)
-	processing_icons[WEAKREF(living_mob)] = appereance
+	major_event_icons[MA] += list(REF(living_mob.mind) = appereance)
+	processing_icons[WEAKREF(living_mob.mind)] = appereance
 
 /datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
 	if(isnull(weakref))
@@ -599,8 +590,8 @@ SUBSYSTEM_DEF(credits)
 		if(11 to 12)
 			name += ": PART III"
 		if(13)
-			name += ": NOW IN 3D"
+			name += ": ŞİMDİ 3D"
 		if(14)
-			name += ": ON ICE!"
+			name += ": BUZULLARIN ÜZERİNDE!"
 		if(15)
-			name += ": THE SEASON FINALE"
+			name += ": SEZON FİNALİ"

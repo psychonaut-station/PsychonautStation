@@ -185,11 +185,14 @@ SUBSYSTEM_DEF(credits)
 	if(!is_anyone_there)
 		cast_string += "<center><td> Kimse! </td></center>"
 
+	var/is_anyone_died = FALSE
 	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
-	cast_string += "<br><center>Hayatta kalamayanların anısına.<br></center>"
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
 		if(!H.mind || !H.ckey || !H.real_name)
 			continue
+		if(!is_anyone_died)
+			cast_string += "<br><center>Hayatta kalamayanların anısına.<br></center>"
+			is_anyone_died = TRUE
 		cast_string += "<center><tr><td>[H.real_name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
 		CHECK_TICK
 

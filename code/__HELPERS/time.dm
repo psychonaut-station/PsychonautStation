@@ -6,9 +6,7 @@
 	var/time_string = time2text(world.timeofday, format)
 	return show_ds ? "[time_string]:[world.timeofday % 10]" : time_string
 
-/proc/gameTimestamp(format = "hh:mm:ss", wtime=null)
-	if(!wtime)
-		wtime = world.time
+/proc/gameTimestamp(format = "hh:mm:ss", wtime=world.time)
 	return time2text(wtime, format, 0)
 
 /proc/station_time(display_only = FALSE, wtime=world.time)

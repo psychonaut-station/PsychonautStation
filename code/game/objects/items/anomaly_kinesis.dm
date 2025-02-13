@@ -1,6 +1,6 @@
 /obj/item/gun/energy/kinesis
 	name = "Zero Point Energy Field Manipulator"
-	desc = "A tractor beam-type weapon designed for handling hazardous anomalys."
+	desc = "A tractor-beam-type weapon designed for handling hazardous anomalies."
 	icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
 	base_icon_state = "kinesis_gun"
 	icon_state = "kinesis_gun"

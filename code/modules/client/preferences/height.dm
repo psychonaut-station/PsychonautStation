@@ -18,7 +18,7 @@
 	target.set_mob_height(height)
 
 /datum/preference/choiced/height/create_default_value()
-	return "Medium"
+	return pick("Short", "Medium", "Tall")
 
 /datum/preference/choiced/height/is_accessible(datum/preferences/preferences)
 	var/species_type = preferences.read_preference(/datum/preference/choiced/species)

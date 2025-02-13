@@ -788,7 +788,7 @@ GLOBAL_LIST_INIT(human_heights_to_offsets, list(
 /// This list contains all the layers that must offset, with its value being whether it's a part of the upper half of the body (TRUE) or not (FALSE)
 GLOBAL_LIST_INIT(layers_to_offset, list(
 	// Weapons commonly cross the middle of the sprite so they get cut in half by the filter
-	"[HANDS_LAYER]" = LOWER_BODY,
+	"[HANDS_LAYER]" = NO_MODIFY,
 	// Very tall hats will get cut off by filter
 	"[HEAD_LAYER]" = UPPER_BODY,
 	// Hair will get cut off by filter

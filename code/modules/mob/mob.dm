@@ -1652,10 +1652,4 @@
 /mob/proc/update_name_tag(passed_name)
 	if(QDELETED(name_tag))
 		return
-	if(!passed_name)
-		passed_name = name
-
-	var/the_check = findtext(passed_name, " the")
-	if(the_check)
-		passed_name = copytext(passed_name, 1, the_check)
 	name_tag.set_name(name)

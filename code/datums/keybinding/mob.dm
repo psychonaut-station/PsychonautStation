@@ -198,3 +198,24 @@
 	full_name = "View Pet Commands"
 	description = "Hold down to see all the commands you can give your pets!"
 	keybind_signal = COMSIG_KB_LIVING_VIEW_PET_COMMANDS
+
+/datum/keybinding/mob/show_names
+	hotkey_keys = list("Ctrl")
+	name = "show_names"
+	full_name = "Show Names"
+	description = "Lets you see peoples names."
+	keybind_signal = COMSIG_KB_MOB_SHOW_NAMES_DOWN
+
+/datum/keybinding/mob/show_names/down(client/user)
+	. = ..()
+	if(.)
+		return
+	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
+		name_tag.alpha = 255
+
+/datum/keybinding/mob/show_names/up(client/user)
+	. = ..()
+	if(.)
+		return
+	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
+		name_tag.alpha = 0

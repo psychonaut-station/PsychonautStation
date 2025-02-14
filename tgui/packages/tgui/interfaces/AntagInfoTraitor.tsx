@@ -1,10 +1,4 @@
-import {
-  BlockQuote,
-  Button,
-  Dimmer,
-  Section,
-  Stack,
-} from 'tgui-core/components';
+import { BlockQuote, Button, Section, Stack } from 'tgui-core/components';
 import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
@@ -36,8 +30,6 @@ type Info = {
   intro: string;
   code: string;
   failsafe_code: string;
-  replacement_code: string;
-  replacement_frequency: string;
   has_uplink: BooleanLike;
   uplink_intro: string;
   uplink_unlock_info: string;
@@ -108,37 +100,12 @@ const EmployerSection = (props) => {
 
 const UplinkSection = (props) => {
   const { data } = useBackend<Info>();
-  const {
-    has_uplink,
-    uplink_intro,
-    uplink_unlock_info,
-    code,
-    failsafe_code,
-    replacement_code,
-    replacement_frequency,
-  } = data;
+  const { has_uplink, uplink_intro, uplink_unlock_info, code, failsafe_code } =
+    data;
   return (
     <Section title="Uplink" mb={!has_uplink && -1}>
       <Stack fill>
-        {(!has_uplink && (
-          <Dimmer>
-            <Stack.Item fontSize="16px">
-              <Section textAlign="Center">
-                Your uplink is missing or destroyed. <br />
-                Craft a Syndicate Uplink Beacon and then speak
-                <br />
-                <span style={goalstyle}>
-                  <b>{replacement_code}</b>
-                </span>{' '}
-                on frequency{' '}
-                <span style={goalstyle}>
-                  <b>{replacement_frequency}</b>
-                </span>{' '}
-                after synchronizing with the beacon.
-              </Section>
-            </Stack.Item>
-          </Dimmer>
-        )) || (
+        {
           <>
             <Stack.Item bold>
               {uplink_intro}
@@ -154,9 +121,10 @@ const UplinkSection = (props) => {
               <BlockQuote>{uplink_unlock_info}</BlockQuote>
             </Stack.Item>
           </>
-        )}
+        }
       </Stack>
       <br />
+<<<<<<< HEAD
       {(has_uplink && (
         <Section textAlign="Center">
           Eğer uplinkini kaybedersen, Syndicate Uplink Beacon aracılığı ile{' '}
@@ -170,12 +138,15 @@ const UplinkSection = (props) => {
           kelimesini fısıldayarak yeni bir uplink elde edebilirsin.
         </Section>
       )) || (
+=======
+      {
+>>>>>>> 6fcfe165e056bac2f90f5cdce76e14fdfbd42c8d
         <Section>
           {' '}
           <br />
           <br />
         </Section>
-      )}
+      }
     </Section>
   );
 };

@@ -30,6 +30,10 @@
 	suffix = "mini"
 	name = "arrival shuttle (Mini)"
 
+/datum/map_template/shuttle/arrival/northstar
+	suffix = "northstar"
+	name = "arrival shuttle (North Star)"
+
 /datum/map_template/shuttle/arrival/nebula
 	suffix = "nebula"
 	name = "arrival shuttle (Nebula)"

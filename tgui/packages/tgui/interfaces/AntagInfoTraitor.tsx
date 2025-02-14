@@ -124,23 +124,7 @@ const UplinkSection = (props) => {
         }
       </Stack>
       <br />
-<<<<<<< HEAD
-      {(has_uplink && (
-        <Section textAlign="Center">
-          Eğer uplinkini kaybedersen, Syndicate Uplink Beacon aracılığı ile{' '}
-          <span style={goalstyle}>
-            <b>{replacement_frequency}</b>
-          </span>{' '}
-          frekansına,{' '}
-          <span style={goalstyle}>
-            <b>{replacement_code}</b>
-          </span>{' '}
-          kelimesini fısıldayarak yeni bir uplink elde edebilirsin.
-        </Section>
-      )) || (
-=======
       {
->>>>>>> 6fcfe165e056bac2f90f5cdce76e14fdfbd42c8d
         <Section>
           {' '}
           <br />

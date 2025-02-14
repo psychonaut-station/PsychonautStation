@@ -108,12 +108,6 @@
   TiviPlus:
   - server: An issue where more than 16 admin flags could not exist in the DB has
       been corrected
-<<<<<<< HEAD
-2025-02-10:
-  Absolucy:
-  - bugfix: Fixed some mistakes I made while fixing the void cloak.
-  necromanceranne:
-=======
 2025-02-08:
   Absolucy:
   - bugfix: Fixed some mistakes I made while fixing the void cloak.
@@ -133,23 +127,12 @@
       your attack speed for exactly one punch.
   - code_imp: Fixes up a bit of odd rounding that occurs in the experience gain totals
       and uses division instead of multipliers where it makes sense.
->>>>>>> 6fcfe165e056bac2f90f5cdce76e14fdfbd42c8d
   - refactor: Gun maintenance is now consolidated into a single item, the gun maintenance
       kit, rather than multiple different item interactions. It is handled on the
       maintenance kit itself, and not in gun code.
   - qol: You can order maintenance kits from cargo, and get some out of the security
       equipment vendor. Helpful if someone spilled acid onto your disabler. You can
       also make a makeshift one from maintenance trash.
-<<<<<<< HEAD
-2025-02-12:
-  Rengan:
-  - rscadd: "Character Setup'a boy se\xE7imi eklendi."
-  - rscadd: "Arachnid \u0131rk\u0131 roundstarta eklendi."
-2025-02-13:
-  SadSeal:
-  - spellcheck: "Zero Point Energy Field Manipulator'un a\xE7\u0131klamas\u0131ndaki\
-      \ yaz\u0131m yanl\u0131\u015F\u0131 d\xFCzeltildi"
-=======
   vinylspiders:
   - qol: alien eggs (xeno embryos, headslugs, etc) will now show up on the advanced
       medical scanner
@@ -200,6 +183,8 @@
   Rengan:
   - bugfix: When you cast examine to the disguised detective, its assignment will
       now display correctly.
+  - rscadd: "Character Setup'a boy se\xE7imi eklendi."
+  - rscadd: "Arachnid \u0131rk\u0131 roundstarta eklendi."
   grungussuss:
   - sound: new sounds for cloth items
 2025-02-13:
@@ -219,6 +204,9 @@
   - refactor: Refactored pixel offsets of mobs. Report any oddities
   RusselNotSCP:
   - qol: Andromeda Bitters bottle now only dispenses in 1-5u increments
+  SadSeal:
+  - spellcheck: "Zero Point Energy Field Manipulator'un a\xE7\u0131klamas\u0131ndaki\
+      \ yaz\u0131m yanl\u0131\u015F\u0131 d\xFCzeltildi"
   SmArtKar:
   - admin: Admins can now make vendors free without too much hassle
   - bugfix: Fixed duplicated comsigs/text and HARS head deletion from prosthetic replacement
@@ -258,4 +246,3 @@
   timothymtorres:
   - code_imp: Optimize Nyctophobia quirk to not process while certain traits present
   - code_imp: Convert weather duration to use time defines
->>>>>>> 6fcfe165e056bac2f90f5cdce76e14fdfbd42c8d

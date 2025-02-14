@@ -2277,7 +2277,6 @@
 #include "code\game\objects\empulse.dm"
 #include "code\game\objects\items.dm"
 #include "code\game\objects\items_reskin.dm"
-#include "code\game\objects\noose.dm"
 #include "code\game\objects\obj_defense.dm"
 #include "code\game\objects\objs.dm"
 #include "code\game\objects\structures.dm"

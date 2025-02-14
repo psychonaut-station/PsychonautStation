@@ -225,6 +225,7 @@
 			if(1)
 				owner.emote("twitch")
 			if(2 to 3)
+<<<<<<< HEAD
 				owner.say("[prob(50) ? ";" : ""][pick("PİÇ", "AMCIK", "SİKİK", "YAVŞAK", "YARRAK KAFALI", "OROSPU EVLADI")]", forced=name)
 		var/x_offset_old = owner.pixel_x
 		var/y_offset_old = owner.pixel_y
@@ -232,6 +233,13 @@
 		var/y_offset = owner.pixel_y + rand(-1,1)
 		animate(owner, pixel_x = x_offset, pixel_y = y_offset, time = 1)
 		animate(owner, pixel_x = x_offset_old, pixel_y = y_offset_old, time = 1)
+=======
+				owner.say("[prob(50) ? ";" : ""][pick("SHIT", "PISS", "FUCK", "CUNT", "COCKSUCKER", "MOTHERFUCKER", "TITS")]", forced=name)
+		var/w_offset =  rand(-2, 2)
+		var/z_offset = rand(-1, 1)
+		animate(owner, pixel_w = w_offset, pixel_z = z_offset, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE|ANIMATION_PARALLEL)
+		animate(owner, pixel_w = -w_offset, pixel_z = -z_offset, time = 0.1 SECONDS, flags = ANIMATION_RELATIVE)
+>>>>>>> 6fcfe165e056bac2f90f5cdce76e14fdfbd42c8d
 
 
 //Deafness makes you deaf.

@@ -21,6 +21,8 @@
 	for(var/obj/item/item in assistant.contents)
 		if(item.item_flags & ABSTRACT)
 			bad_contents -= item
+		if(istype(item, /obj/effect/abstract))
+			bad_contents -= item
 
 	// Now, let's test to see if all of their clothing got properly deleted.
 	TEST_ASSERT_EQUAL(length(bad_contents), 0, "Assistant still has items in its contents after being put through an emagged recycler!")

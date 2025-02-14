@@ -468,3 +468,4 @@
 	plane = PLANE_NAME_TAGS_BLOCKER
 	render_target = NAME_TAG_RENDER_TARGET
 	render_relay_planes = list()
+	multiz_scaled = FALSE

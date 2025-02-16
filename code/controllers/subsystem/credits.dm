@@ -1,5 +1,5 @@
 SUBSYSTEM_DEF(credits)
-	name = "Credits Screen Storage"
+	name = "Roundend Credits"
 	wait = 10 MINUTES
 	init_order = INIT_ORDER_CREDITS
 
@@ -52,7 +52,7 @@ SUBSYSTEM_DEF(credits)
 			appereance.maptext_height = 48
 			appereance.maptext_y = -16
 			appereance.maptext_x = -32
-			appereance.maptext = "<center>[living_mob.real_name]</center>"
+			appereance.maptext = "<center>[antag_mind.name]</center>"
 		if (MC_TICK_CHECK)
 			return
 
@@ -105,8 +105,8 @@ SUBSYSTEM_DEF(credits)
 	var/admins_length = length(admins)
 	var/y_offset = 0
 	if(admins_length)
-		credit_order_for_this_round += "<center>Admin Ekibi</center>"
-		for(var/i in 1 to admins_length)
+		credit_order_for_this_round += "<center>Yetkili Ekibi</center>"
+		for(var/i in 1 to (admins_length % 6 == 0 ? admins_length : admins_length + (6 - (admins_length % 6)))/6)
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				var/mutable_appearance/picked = pick_n_take(admins)
@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(credits)
 	var/patrons_length = length(patrons)
 	if(patrons_length)
 		credit_order_for_this_round += "<center>Sevgili Destekçilerimiz</center>"
-		for(var/i in 1 to patrons_length)
+		for(var/i in 1 to (patrons_length % 6 == 0 ? patrons_length : patrons_length + (6 - (patrons_length % 6)))/6)
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				var/mutable_appearance/picked = pick_n_take(patrons)
@@ -135,7 +135,8 @@ SUBSYSTEM_DEF(credits)
 	for(var/obj/effect/title_card_object/MA as anything in major_event_icons)
 		credit_order_for_this_round += MA
 		var/list/antagonist_icons = major_event_icons[MA]
-		for(var/i in 1 to length(antagonist_icons))
+		var/antagonists_length = length(antagonist_icons)
+		for(var/i in 1 to (antagonists_length % 6 == 0 ? antagonists_length : antagonists_length + (6 - (antagonists_length % 6)))/6)
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				if(!length(antagonist_icons))
@@ -169,9 +170,7 @@ SUBSYSTEM_DEF(credits)
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
 		if(!H.ckey && !(H.stat == DEAD))
 			continue
-		var/datum/record/crew/found_record = find_record(H.real_name)
-		var/assignment = !isnull(found_record) ? found_record.rank : H.get_assignment(if_no_id = "", if_no_job = "")
-		cast_string += "<center><tr><td>[assignment == "" ? "" : "[assignment]"] [H.real_name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
+		cast_string += "<center><tr><td>[H.mind.name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
 		is_anyone_there = TRUE
 		CHECK_TICK
 
@@ -188,12 +187,12 @@ SUBSYSTEM_DEF(credits)
 	var/is_anyone_died = FALSE
 	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(!H.mind || !H.ckey || !H.real_name)
+		if(!H.mind || !H.ckey)
 			continue
 		if(!is_anyone_died)
-			cast_string += "<br><center>Hayatta kalamayanların anısına.<br></center>"
+			cast_string += "<br><center>Hayatta kalamayanların anısına.</center><br>"
 			is_anyone_died = TRUE
-		cast_string += "<center><tr><td>[H.real_name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
+		cast_string += "<center><tr><td>[H.last_mind.name]</td><td> : </td><td>[H.last_mind.key]</td></tr></center>"
 		CHECK_TICK
 
 	cast_string += "<br>"
@@ -309,7 +308,7 @@ SUBSYSTEM_DEF(credits)
 		if(H.mind && H.mind.assigned_role.title == "Chaplain")
 			chaplaincount++
 			if(IS_CHANGELING(H))
-				episode_names += new /datum/episode_name("[locale_uppertext(H.real_name)]: A BLESSING IN DISGUISE", 400)
+				episode_names += new /datum/episode_name("[locale_uppertext(H.mind.name)]: A BLESSING IN DISGUISE", 400)
 		if(H.dna.species.type == /datum/species/human && (H.hairstyle == "Bald" || H.hairstyle == "Skinhead") && !(BODY_ZONE_HEAD in H.get_covered_body_zones()))
 			baldycount++
 		if(H.is_wearing_item_of_type(/obj/item/clothing/mask/animal/horsehead))
@@ -369,7 +368,7 @@ SUBSYSTEM_DEF(credits)
 						chance += 500
 					if(H.is_wearing_item_of_type(/obj/item/clothing/under/rank/security/detective))
 						chance += 250
-					episode_names += new /datum/episode_name("[locale_uppertext(H.real_name)]: KAYIP İPUCU", chance)
+					episode_names += new /datum/episode_name("[locale_uppertext(H.mind.name)]: KAYIP İPUCU", chance)
 				if("Shaft Miner")
 					var/chance = 250
 					if(H.is_wearing_item_of_type(/obj/item/pickaxe))
@@ -442,7 +441,11 @@ SUBSYSTEM_DEF(credits)
 
 /datum/controller/subsystem/credits/proc/generate_admin_icons()
 	admin_pref_icons = list()
-	for(var/ckey in GLOB.admin_datums|GLOB.deadmins)
+	var/list/all_admins = GLOB.admin_datums + GLOB.deadmins
+	for(var/ckey in all_admins)
+		var/datum/admins/admin_datum = all_admins[ckey]
+		if(!(admin_datum.rank_flags() & R_AUTOADMIN))
+			continue
 		var/datum/preferences/preference
 		var/datum/client_interface/interface
 		if(GLOB.directory[ckey])
@@ -518,7 +521,7 @@ SUBSYSTEM_DEF(credits)
 		appereance.maptext_height = 48
 		appereance.maptext_y = -16
 		appereance.maptext_x = -32
-		appereance.maptext = "<center>[living_mob.real_name]</center>"
+		appereance.maptext = "<center>[living_mob.mind.name]</center>"
 	major_event_icons[MA] += list(REF(living_mob.mind) = appereance)
 	processing_icons[WEAKREF(living_mob.mind)] = appereance
 

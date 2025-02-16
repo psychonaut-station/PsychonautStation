@@ -169,13 +169,22 @@
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/mecha_kineticgun
 	equip_cooldown = 10
 	name = "Exosuit Proto-kinetic Accelerator"
-	desc = "An exosuit-mounted mining tool that does increased damage in low pressure. Drawing from an onboard power source allows it to project further than the handheld version."
+	desc = "An exosuit-mounted mining tool that does increased damage in low pressure. \
+		Drawing from an onboard power source allows it to project further than the handheld version. \
+		Cannot be used in the station due to safety regulations."
 	icon_state = "mecha_kineticgun"
 	energy_drain = 30
 	projectile = /obj/projectile/kinetic/mech
 	fire_sound = 'sound/items/weapons/kinetic_accel.ogg'
 	harmful = TRUE
 	mech_flags = EXOSUIT_MODULE_COMBAT | EXOSUIT_MODULE_WORKING
+
+// en basit çözüm heralde
+/obj/item/mecha_parts/mecha_equipment/weapon/energy/mecha_kineticgun/action_checks(atom/target)
+	. = ..()
+	if(. && is_station_level(chassis.z))
+		to_chat(chassis.occupants, span_warning("Error -- Equipment is disabled in the station due to safety regulations."))
+		return FALSE
 
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/taser
 	name = "\improper PBT \"Pacifier\" mounted taser"

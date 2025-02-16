@@ -53,4 +53,4 @@
 #define RCD_RESULT_BYPASS_FREQUENT_USE_COOLDOWN "bypass_frequent_use_cooldown"
 
 /// How much longer does it take to deconstruct rwalls?
-#define RCD_RWALL_DELAY_MULT 2
+#define RCD_RWALL_DELAY_MULT 4

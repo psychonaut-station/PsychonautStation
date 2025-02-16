@@ -47,6 +47,12 @@
 	. = ..()
 	ore_box = new(src)
 
+	// opsiyon 1, basit ama ic olarak mantığı yok
+	// if(!is_mining_level(z))
+	// 	movedelay *= 2.5
+
+	apply_floor_mod()
+
 /obj/vehicle/sealed/mecha/clarke/atom_destruction()
 	if(ore_box)
 		INVOKE_ASYNC(ore_box, TYPE_PROC_REF(/obj/structure/ore_box, dump_box_contents))
@@ -56,6 +62,27 @@
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_search_ruins)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/clarke_scoop_body)
+
+// opsiyon 1, basit ama ic olarak mantığı yok
+// /obj/vehicle/sealed/mecha/clarke/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+// 	. = ..()
+// 	if(is_mining_level(new_turf.z))
+// 		movedelay = src::movedelay
+// 	else
+// 		movedelay = src::movedelay * 2.5
+
+/obj/vehicle/sealed/mecha/clarke/on_move()
+	. = ..()
+	apply_floor_mod()
+
+// opsiyon 2; palet falan, sebebi var yani
+/obj/vehicle/sealed/mecha/clarke/proc/apply_floor_mod()
+	var/turf/open/turf = get_turf(src)
+	if(istype(turf))
+		if(turf.footstep == FOOTSTEP_SAND || turf.footstep == FOOTSTEP_GRASS)
+			movedelay = src::movedelay
+			return
+	movedelay = src::movedelay * 2.5
 
 //Ore Box Controls
 

@@ -51,4 +51,4 @@
 	if(!ismovable(loc) || QDELING(loc))
 		return PROCESS_KILL
 	var/atom/movable/our_atom = loc
-	set_name(our_mob.name)
+	set_name(our_atom.name)

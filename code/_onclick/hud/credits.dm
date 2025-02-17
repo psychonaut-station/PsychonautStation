@@ -19,7 +19,7 @@
 		if(istype(I, /obj/effect/title_card_object)) //huge image sleep
 			sleep(CREDIT_SPAWN_SPEED * 3.3)
 			count = 0
-		if(count && !istype(I, /mutable_appearance))
+		if(count && !istype(I, /mutable_appearance) && !istype(I, /obj/effect/cast_object))
 			sleep(CREDIT_SPAWN_SPEED)
 
 		_credits += new /atom/movable/screen/credit(null, null, I, src)
@@ -28,11 +28,16 @@
 			if(count >= 6)
 				count = 0
 				sleep(CREDIT_SPAWN_SPEED)
+		else if(istype(I, /obj/effect/cast_object))
+			count++
+			if(count >= 2)
+				count = 0
+				sleep(CREDIT_SPAWN_SPEED)
 		else
 			sleep(CREDIT_SPAWN_SPEED)
 			count = 0
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
-	remove_verb(src, /client/proc/ClearCredits)
+	INVOKE_ASYNC(src, TYPE_PROC_REF(/client, ClearCredits))
 
 /client/proc/ClearCredits()
 	set name = "Hide Credits"
@@ -77,6 +82,14 @@
 		screen_loc = offset_to_screen_loc(offsets[1] + choice.pixel_x, offsets[2] + choice.pixel_y)
 		add_overlay(choice)
 
+	if(istype(credited, /obj/effect/cast_object))
+		var/obj/effect/cast_object/choice = credited
+		maptext = MAPTEXT_PIXELLARI(choice.maptext)
+		maptext_x = choice.maptext_x
+		maptext_y = choice.maptext_y
+		maptext_width = choice.maptext_width
+		maptext_height = choice.maptext_height
+
 	if(istext(credited))
 		maptext = MAPTEXT_PIXELLARI(credited)
 		maptext_x = world.icon_size + 8
@@ -96,7 +109,7 @@
 /atom/movable/screen/credit/Destroy()
 	if(parent)
 		parent.screen -= src
-		LAZYREMOVE(parent.credits, src)
+		parent.credits -= src
 		parent = null
 	return ..()
 

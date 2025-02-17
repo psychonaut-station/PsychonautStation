@@ -168,16 +168,35 @@ SUBSYSTEM_DEF(credits)
 	cast_string = list("<center>OYUNCULAR:</center>")
 	var/is_anyone_there = FALSE
 	for(var/mob/living/carbon/human/H in GLOB.player_list)
-		if(!H.ckey && !(H.stat == DEAD))
+		if(!H.ckey && !(H.stat == DEAD) && !H.mind)
 			continue
-		cast_string += "<center><tr><td>[H.mind.name]</td><td> : </td><td>[H.mind.key]</td></tr></center>"
+
+		var/obj/effect/cast_object/human_name = new
+		human_name.maptext = "<p align='right'>[H.mind.name]</p>"
+		human_name.maptext_width = 232
+
+		var/obj/effect/cast_object/human_key = new
+		human_key.maptext = "<p align='left'><b>[H.mind.key]</b></p>"
+		human_key.maptext_width = 232
+		human_key.maptext_x = 240
+
+		cast_string += list(human_name, human_key)
 		is_anyone_there = TRUE
 		CHECK_TICK
 
 	for(var/mob/living/silicon/S in GLOB.silicon_mobs)
-		if(!S.ckey)
+		if(!S.ckey && !S.mind)
 			continue
-		cast_string += "<center><tr><td>[S.name]</td><td> : </td><td>[S.mind.key]</td></tr></center>"
+		var/obj/effect/cast_object/silicon_name = new
+		silicon_name.maptext = "<p align='right'>[S.name]</p>"
+		silicon_name.maptext_width = 224
+
+		var/obj/effect/cast_object/silicon_key = new
+		silicon_key.maptext = "<p align='left'>[S.mind.key]</p>"
+		silicon_key.maptext_width = 224
+		silicon_key.maptext_x = 240
+
+		cast_string += list(silicon_name, silicon_key)
 		is_anyone_there = TRUE
 		CHECK_TICK
 
@@ -186,13 +205,24 @@ SUBSYSTEM_DEF(credits)
 
 	var/is_anyone_died = FALSE
 	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
+
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(!H.mind || !H.ckey)
+		if(!H.last_mind || !H.ckey)
 			continue
 		if(!is_anyone_died)
 			cast_string += "<br><center>Hayatta kalamayanların anısına.</center><br>"
 			is_anyone_died = TRUE
-		cast_string += "<center><tr><td>[H.last_mind.name]</td><td> : </td><td>[H.last_mind.key]</td></tr></center>"
+
+		var/obj/effect/cast_object/human_name = new
+		human_name.maptext = "<p align='right'>[H.last_mind.name]</p>"
+		human_name.maptext_width = 224
+
+		var/obj/effect/cast_object/human_key = new
+		human_key.maptext = "<p align='left'>[H.last_mind.key]</p>"
+		human_key.maptext_width = 224
+		human_key.maptext_x = 240
+
+		cast_string += list(human_name, human_key)
 		CHECK_TICK
 
 	cast_string += "<br>"
@@ -574,6 +604,9 @@ SUBSYSTEM_DEF(credits)
 	plane = SPLASHSCREEN_PLANE
 	icon = 'icons/psychonaut/effects/title_cards.dmi'
 
+/obj/effect/cast_object
+	plane = SPLASHSCREEN_PLANE
+
 /datum/episode_name
 	var/name = ""
 	var/weight = 100
@@ -598,3 +631,7 @@ SUBSYSTEM_DEF(credits)
 			name += ": BUZULLARIN ÜZERİNDE!"
 		if(15)
 			name += ": SEZON FİNALİ"
+
+/*
+
+ */

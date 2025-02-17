@@ -21,7 +21,7 @@
 	for(var/obj/item/item in assistant.contents)
 		if(item.item_flags & ABSTRACT)
 			bad_contents -= item
-		if(istype(item, /obj/effect/abstract) || istype(item, /atom/movable/screen/name_shadow))
+		if(istype(item, /obj/effect/abstract) || istype(item, /atom/movable/screen/name_shadow) || isnull(item))
 			bad_contents -= item
 
 	// Now, let's test to see if all of their clothing got properly deleted.

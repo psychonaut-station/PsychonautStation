@@ -19,10 +19,12 @@
 	maptext_height = world.icon_size * 1.5
 	maptext_x = ((NAME_TAG_WIDTH - bound_width) * -0.5) - loc.base_pixel_x
 	maptext_y = src::maptext_y - loc.base_pixel_y
-	RegisterSignal(loc, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(update_z))
+	RegisterSignal(movable_loc, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(update_z))
 	START_PROCESSING(SSname_tags, src)
 
 /obj/effect/abstract/name_tag/Destroy(force)
+	if(QDELETED(loc))
+		return ..()
 	if(ismovable(loc))
 		var/atom/movable/movable_loc = loc
 		movable_loc.vis_contents -= src

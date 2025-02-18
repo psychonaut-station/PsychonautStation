@@ -65,11 +65,14 @@
 
 /obj/vehicle/sealed/mecha/clarke/proc/apply_floor_mod()
 	var/turf/open/turf = get_turf(src)
+	var/movedelay = src::movedelay
+	if(overclock_mode)
+		movedelay = movedelay / overclock_coeff
 	if(istype(turf))
 		if(turf.footstep == FOOTSTEP_SAND || turf.footstep == FOOTSTEP_GRASS)
-			movedelay = src::movedelay
+			src.movedelay = movedelay
 			return
-	movedelay = src::movedelay * 2.5
+	src.movedelay = movedelay * 2.5
 
 //Ore Box Controls
 

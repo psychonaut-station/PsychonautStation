@@ -169,10 +169,10 @@
 /obj/vehicle/sealed/mecha/emp_act(severity)
 	. = ..()
 	if (. & EMP_PROTECT_SELF)
-		return
+		return .
 	if(get_charge())
 		use_energy((cell.charge/3)/(severity*2))
-		take_damage(30 / severity, BURN, ENERGY, 1)
+		take_damage(40 / severity, BURN, ENERGY, 1)
 	log_message("EMP detected", LOG_MECHA, color="red")
 
 	//Mess with the focus of the inbuilt camera if present

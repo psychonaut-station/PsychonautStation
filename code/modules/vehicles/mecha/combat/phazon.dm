@@ -23,6 +23,8 @@
 		MECHA_ARMOR = 2,
 	)
 	phase_state = "phazon-phase"
+	var/phasing_disabled = FALSE
+	var/was_phasing = FALSE
 
 /datum/armor/mecha_phazon
 	melee = 30
@@ -37,6 +39,34 @@
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_phasing)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_switch_damtype)
+
+/obj/vehicle/sealed/mecha/phazon/emp_act(severity)
+	. = ..()
+	if (. & EMP_PROTECT_SELF)
+		return .
+	addtimer(CALLBACK(src, TYPE_PROC_REF(/obj/vehicle/sealed/mecha/phazon, restore_phasing)), 8 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)
+	phasing_disabled = TRUE
+	if(phasing)
+		phasing = ""
+		was_phasing = TRUE
+		if(isclosedturf(loc))
+			var/turf/emergency_destination = get_teleport_loc(loc, src, distance = 0, closed_turf_check = TRUE, errorx = 1, errory = 1)
+			if(emergency_destination)
+				if(!try_step_multiz(get_dir(src, emergency_destination)))
+					forceMove(emergency_destination)
+		for(var/mob/occupant as anything in occupants)
+			balloon_alert(occupant, "phasing interrupted")
+			var/datum/action/action = locate(/datum/action/vehicle/sealed/mecha/mech_toggle_phasing) in occupant.actions
+			action.button_icon_state = "mech_phasing_off"
+			action.build_all_button_icons()
+
+/obj/vehicle/sealed/mecha/phazon/proc/restore_phasing()
+	phasing_disabled = FALSE
+	if(was_phasing)
+		for(var/mob/occupant as anything in occupants)
+			SEND_SOUND(occupant, sound('sound/machines/beep/triple_beep.ogg', volume=50))
+			balloon_alert(occupant, "phasing restored")
+	was_phasing = FALSE
 
 /datum/action/vehicle/sealed/mecha/mech_switch_damtype
 	name = "Reconfigure arm microtool arrays"
@@ -71,6 +101,10 @@
 	if(!..())
 		return
 	if(!chassis || !(owner in chassis.occupants))
+		return
+	var/obj/vehicle/sealed/mecha/phazon/phazon_chassis = chassis
+	if(istype(phazon_chassis) && phazon_chassis.phasing_disabled)
+		chassis.balloon_alert(owner, "malfunctioning!")
 		return
 	chassis.phasing = chassis.phasing ? "" : "phasing"
 	button_icon_state = "mech_phasing_[chassis.phasing ? "on" : "off"]"

@@ -47,6 +47,8 @@
 	. = ..()
 	ore_box = new(src)
 
+	apply_floor_mod()
+
 /obj/vehicle/sealed/mecha/clarke/atom_destruction()
 	if(ore_box)
 		INVOKE_ASYNC(ore_box, TYPE_PROC_REF(/obj/structure/ore_box, dump_box_contents))
@@ -56,6 +58,21 @@
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_search_ruins)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/clarke_scoop_body)
+
+/obj/vehicle/sealed/mecha/clarke/on_move()
+	. = ..()
+	apply_floor_mod()
+
+/obj/vehicle/sealed/mecha/clarke/proc/apply_floor_mod()
+	var/turf/open/turf = get_turf(src)
+	var/movedelay = src::movedelay
+	if(overclock_mode)
+		movedelay = movedelay / overclock_coeff
+	if(istype(turf))
+		if(turf.footstep == FOOTSTEP_SAND || turf.footstep == FOOTSTEP_GRASS)
+			src.movedelay = movedelay
+			return
+	src.movedelay = movedelay * 2.5
 
 //Ore Box Controls
 

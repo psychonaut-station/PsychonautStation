@@ -179,7 +179,6 @@
 	harmful = TRUE
 	mech_flags = EXOSUIT_MODULE_COMBAT | EXOSUIT_MODULE_WORKING
 
-// en basit çözüm heralde
 /obj/item/mecha_parts/mecha_equipment/weapon/energy/mecha_kineticgun/action_checks(atom/target)
 	. = ..()
 	if(. && is_station_level(chassis.z))

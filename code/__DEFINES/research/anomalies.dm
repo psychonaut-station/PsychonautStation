@@ -7,9 +7,6 @@
 #define MAX_CORES_HALLUCINATION 8
 #define MAX_CORES_BIOSCRAMBLER 8
 #define MAX_CORES_DIMENSIONAL 8
-// phazon sayısını 3'e limitleyecek (sorun bu değildi gerçi)
-// ⚠ ectoplasmic kargodan satın alınamıyormuş sadece roundstart veya event bunu hesaba katınca
-// phazonu nasıl nerfleriz aklıma gelmedi phaze cost'unu arttırmaktan başka
 #define MAX_CORES_ECTOPLASMIC 3
 
 ///Defines for the different types of explosion a flux anomaly can have

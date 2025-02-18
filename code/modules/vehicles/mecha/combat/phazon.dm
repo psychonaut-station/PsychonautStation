@@ -5,7 +5,6 @@
 	base_icon_state = "phazon"
 	movedelay = 2
 	step_energy_drain = 4
-	// düz 2x, çarpanı arttırabiliriz belki
 	phasing_energy_drain = parent_type::phasing_energy_drain * 2
 	max_integrity = 200
 	armor_type = /datum/armor/mecha_phazon

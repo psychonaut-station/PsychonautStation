@@ -105,10 +105,7 @@
 
 /obj/vehicle/sealed/mecha/blob_act(obj/structure/blob/B)
 	log_message("Attack by blob. Attacker - [B].", LOG_MECHA, color="red")
-	// 30 -> 40 belki daha arttırılabilir armor da hesaba katılarak
-	// ayrıca mechalar da melee girmiyo zaten blobun eline fırsat geçerse
-	// geçirmesi gayet adil olur gibi
-	take_damage(40, BRUTE, MELEE, 0, get_dir(src, B))
+	take_damage(50, BRUTE, MELEE, 0, get_dir(src, B))
 
 /obj/vehicle/sealed/mecha/attack_tk()
 	return
@@ -169,8 +166,6 @@
 			if(occupants)
 				SSexplosions.low_mov_atom += occupants
 
-// emp emin değilim ama yeterince zarar veriyor gibi geldi
-// yine de tartışırız
 /obj/vehicle/sealed/mecha/emp_act(severity)
 	. = ..()
 	if (. & EMP_PROTECT_SELF)

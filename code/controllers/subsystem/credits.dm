@@ -106,7 +106,7 @@ SUBSYSTEM_DEF(credits)
 	var/y_offset = 0
 	if(admins_length)
 		credit_order_for_this_round += "<center>Yetkili Ekibi</center>"
-		for(var/i in 1 to (admins_length % 6 == 0 ? admins_length : admins_length + (6 - (admins_length % 6)))/6)
+		for(var/i in 1 to CEILING(admins_length / 6, 1))
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				var/mutable_appearance/picked = pick_n_take(admins)
@@ -121,7 +121,7 @@ SUBSYSTEM_DEF(credits)
 	var/patrons_length = length(patrons)
 	if(patrons_length)
 		credit_order_for_this_round += "<center>Sevgili Destekçilerimiz</center>"
-		for(var/i in 1 to (patrons_length % 6 == 0 ? patrons_length : patrons_length + (6 - (patrons_length % 6)))/6)
+		for(var/i in 1 to CEILING(patrons_length / 6, 1))
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				var/mutable_appearance/picked = pick_n_take(patrons)
@@ -136,7 +136,7 @@ SUBSYSTEM_DEF(credits)
 		credit_order_for_this_round += MA
 		var/list/antagonist_icons = major_event_icons[MA]
 		var/antagonists_length = length(antagonist_icons)
-		for(var/i in 1 to (antagonists_length % 6 == 0 ? antagonists_length : antagonists_length + (6 - (antagonists_length % 6)))/6)
+		for(var/i in 1 to CEILING(antagonists_length / 6, 1))
 			var/x_offset = -16
 			for(var/b in 1 to 6)
 				if(!length(antagonist_icons))
@@ -631,7 +631,3 @@ SUBSYSTEM_DEF(credits)
 			name += ": BUZULLARIN ÜZERİNDE!"
 		if(15)
 			name += ": SEZON FİNALİ"
-
-/*
-
- */

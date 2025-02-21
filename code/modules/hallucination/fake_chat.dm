@@ -71,12 +71,24 @@
 	// If we didn't have a preset one, let's make one up.
 	if(!chosen)
 		if(is_radio)
+<<<<<<< HEAD
 			chosen = pick(list("Yardım!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
 				"[pick("[first_name(hallucinator.name)]'i gördün mü?", "[first_name(hallucinator.name)]'i arrestleyin")]",
 				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
 				"BORGLAR MALF",
+=======
+			chosen = pick(list("Help!",
+				"Help [pick_list_replacements(HALLUCINATION_FILE, "location")][prob(50)?"!":"!!"]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "people")] is [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "people")] has [pick_list_replacements(HALLUCINATION_FILE, "contraband")]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "threat")] in [pick_list_replacements(HALLUCINATION_FILE, "location")][prob(50)?"!":"!!"]",
+				"[pick("Where's [first_name(hallucinator.name)]?", "Set [first_name(hallucinator.name)] to arrest!")]",
+				"[pick("C","Ai, c","Someone c","Rec")]all the shuttle!",
+				"AI [pick("rogue", "is dead")]!!",
+				"Borgs rogue!",
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 			))
 		else
 			chosen = pick(list("[pick_list_replacements(HALLUCINATION_FILE, "suspicion")]",

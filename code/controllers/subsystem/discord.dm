@@ -64,8 +64,15 @@ SUBSYSTEM_DEF(discord)
 		pass() // The list can just stay as its default (blank). Pass() exists because it needs a catch
 	var/notifymsg = jointext(people_to_notify, ", ")
 	if(notifymsg)
+<<<<<<< HEAD
 		notifymsg += ", yeni round başlamak üzere!"
 		send2chat(new /datum/tgs_message_content(trim(notifymsg)), CONFIG_GET(string/chat_new_game_notifications)) // Sends the message to the discord, using same config option as the roundstart notification
+=======
+		notifymsg += ", a new round is starting!"
+		for(var/channel_tag in CONFIG_GET(str_list/chat_new_game_notifications))
+			// Sends the message to the discord, using same config option as the roundstart notification
+			send2chat(new /datum/tgs_message_content(trim(notifymsg)), channel_tag)
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 	fdel(notify_file) // Deletes the file
 	return SS_INIT_SUCCESS
 

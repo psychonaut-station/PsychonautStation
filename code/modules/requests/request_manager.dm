@@ -143,7 +143,11 @@ GLOBAL_DATUM_INIT(requests, /datum/request_manager, new)
 		ui.open()
 
 /datum/request_manager/ui_state(mob/user)
+<<<<<<< HEAD
 	return GLOB.mentor_state
+=======
+	return ADMIN_STATE(R_ADMIN)
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 
 /datum/request_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if (..())

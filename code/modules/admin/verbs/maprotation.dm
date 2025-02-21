@@ -116,6 +116,7 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 			message_admins("[key_name_admin(user)] has changed the map to [virtual_map.map_name]")
 			SSmap_vote.admin_override = TRUE
 
+<<<<<<< HEAD
 ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set the next map's map templates.", ADMIN_CATEGORY_SERVER)
 	if(!SSmap_vote.next_map_config)
 		to_chat(user, span_warning("Next map has not selected"))
@@ -149,3 +150,7 @@ ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set th
 	if(fexists(PATH_TO_NEXT_MAP_JSON))
 		fdel(PATH_TO_NEXT_MAP_JSON)
 	text2file(json_encode(json_value), PATH_TO_NEXT_MAP_JSON)
+=======
+ADMIN_VERB(admin_revert_map, R_SERVER, "Revert Map Vote", "Revert the map vote, allowing a new vote.", ADMIN_CATEGORY_SERVER)
+	SSmap_vote.revert_next_map(user)
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591

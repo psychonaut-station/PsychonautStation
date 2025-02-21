@@ -62,9 +62,19 @@
 	],
 
 	"aggressive": [
+<<<<<<< HEAD
 		"@pick(add_name)orospu evladı mısın",
 		"@pick(add_name)kaçma!",
 		"@pick(add_name)kaç benden, yakalarsam öldürücem"
+=======
+		"@pick(add_name)fuck off!",
+		"@pick(add_name)fuck you!",
+		"@pick(add_name)get out!",
+		"@pick(add_name)give me that!",
+		"@pick(add_name)i'm going to kill you!",
+		"@pick(add_name)stop!!",
+		"@pick(add_name)stop it!"
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 	],
 
 	"help": [
@@ -76,10 +86,21 @@
 	],
 
 	"escape": [
+<<<<<<< HEAD
 		"@pick(add_name)takip et!",
 		"@pick(add_name)KAÇ!!",
 		"Geldiler",
 		"Arkadandaki kim"
+=======
+		"@pick(add_name)follow me!",
+		"@pick(add_name)follow me",
+		"@pick(add_name)look out!",
+		"@pick(add_name)RUN!!",
+		"It's here!",
+		"Oh shit!",
+		"They're coming!",
+		"They're behind me!"
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 	],
 
 	"infection_advice": [
@@ -95,18 +116,21 @@
 		"Borg",
 		"Kaptan",
 		"Ce",
+		"Chef",
+		"Clown",
 		"Cmo",
 		"Genetik",
 		"Hop",
 		"Hos",
 		"Janitor",
+		"Mime",
 		"Qm",
 		"Rd",
-		"Robo",
-		"Viro"
+		"Robo"
 	],
 
 	"accusations": [
+<<<<<<< HEAD
 		"changeling",
 		"cultist",
 		"heretic",
@@ -117,10 +141,70 @@
 		"wizard",
 		"cult",
 		"öldü"
+=======
+		"a changeling",
+		"a cultist",
+		"a heretic",
+		"a ling",
+		"a murderer",
+		"a rev",
+		"a revhead",
+		"a spy",
+		"a tator",
+		"a traitor",
+		"a wizard",
+		"assaulting me",
+		"attacking me",
+		"bad",
+		"cult",
+		"dead",
+		"drawing runes",
+		"flashing people",
+		"kidnapping me",
+		"killing people",
+		"mindswapped",
+		"rogue",
+		"shooting me",
+		"suicided",
+		"the traitor",
+		"the wizard"
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
+	],
+
+	"contraband" : [
+		"a bomb",
+		"a syndibomb",
+		"a ttv",
+		"a death wand",
+		"a desword",
+		"an emag",
+		"an esword",
+		"a makarov",
+		"a mech",
+		"a powersink",
+		"a red suit",
+		"a revolver",
+		"a staff of change",
+		"a supermatter shard",
+		"armblade",
+		"cult halo",
+		"cult robes on",
+		"died",
+		"dual esword",
+		"heretic sword",
+		"hulk",
+		"my backpack",
+		"my heirloom",
+		"my id",
+		"my stuff",
+		"romerol",
+		"the fire axe",
+		"the spare id"
 	],
 
 	"threat": [
 		"%TARGETNAME%",
+<<<<<<< HEAD
 		"blob",
 		"flash sesleri",
 		"mavi apc",
@@ -134,6 +218,36 @@
 		"wizard",
 		"uzaylılar",
 		"korsanlar"
+=======
+		"Blob",
+		"Blue APC",
+		"Bomb",
+		"Carps",
+		"Changeling",
+		"Cult",
+		"Cult rune",
+		"Dragon",
+		"Fire",
+		"Harm",
+		"Help",
+		"Heretics",
+		"Heretic",
+		"I hear flashing",
+		"Kudzu",
+		"Ling",
+		"Nightmare",
+		"Ops",
+		"Plasma",
+		"Revenant",
+		"Rune",
+		"Runes",
+		"Spiders",
+		"Spy",
+		"Traitor",
+		"Wizard",
+		"Xenos",
+		"Zombies"
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 	],
 
 	"location": [
@@ -185,11 +299,32 @@
 	],
 
 	"advice": [
+<<<<<<< HEAD
 		"Kolay gelsin",
 		"Kimi öldüreceğini biliyorsın",
 		"BIRAK",
 		"@pick(add_name)seni öldürmek istiyo",
 		"Buradan ayrılman gerek, derhal"
+=======
+		"Good luck. You'll need it.",
+		"Hmm...not sure about that.",
+		"Just do it.",
+		"Kill that person. You know who.",
+		"Look out!",
+		"No. Stop what you're doing.",
+		"Something is coming.",
+		"Something is wrong.",
+		"That person wants to kill you.",
+		"They're coming for you.",
+		"They're out to get you.",
+		"This will end badly.",
+		"Trust that person.",
+		"Trust no-one.",
+		"Yes. You're doing the right thing.",
+		"You have my permission. Do it.",
+		"You should be wary of that person.",
+		"You should go somewhere else. Quickly."
+>>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 	],
 
 	"sec_radio": [

@@ -1181,7 +1181,7 @@
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
-	update_name_tag(real_name)
+	update_name_tag()
 
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 

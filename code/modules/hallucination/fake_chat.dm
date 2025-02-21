@@ -72,9 +72,11 @@
 	if(!chosen)
 		if(is_radio)
 			chosen = pick(list("Yardım!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "location")] yardım[prob(50)?"!":"!!"]",
 				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
 				"[pick("[first_name(hallucinator.name)]'i gördün mü?", "[first_name(hallucinator.name)]'i arrestleyin")]",
+				"[pick("Shuttle çağır!","Ai, shuttle çağır!","Birisi shuttle çağırsın!","Shuttle'ı geri çağırın!")]",
 				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
 				"BORGLAR MALF",
 			))

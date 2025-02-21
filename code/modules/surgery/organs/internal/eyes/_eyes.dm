@@ -1066,3 +1066,8 @@
 	low_light_cutoff = list(20, 15, 0)
 	medium_light_cutoff = list(35, 30, 0)
 	high_light_cutoff = list(50, 40, 0)
+
+/obj/item/organ/eyes/pod
+	name = "pod eyes"
+	desc = "Strangest salad you've ever seen."
+	foodtype_flags = PODPERSON_ORGAN_FOODTYPES

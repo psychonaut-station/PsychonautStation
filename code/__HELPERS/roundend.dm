@@ -253,7 +253,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		round_end_msg = "Round \[#[GLOB.round_id]\]([logs_url]/[texttime]/round-[GLOB.round_id]) sona erdi."
 	else
 		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
-	send2chat(new /datum/tgs_message_content(round_end_msg), CONFIG_GET(string/channel_announce_end_game))
+	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
+		send2chat(new /datum/tgs_message_content(round_end_msg), channel_tag)
 	send2adminchat("Server", "Round just ended.")
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))
@@ -294,6 +295,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	//stop collecting feedback during grifftime
 	SSblackbox.Seal()
+
+	world.TgsTriggerEvent("tg-Roundend", wait_for_completion = TRUE)
 
 	sleep(5 SECONDS)
 	ready_for_reboot = TRUE

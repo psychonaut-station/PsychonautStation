@@ -210,8 +210,10 @@
 	. = ..()
 	if(.)
 		return
-	for(var/mob/living/living in view(user.view, user.mob))
-		living.update_name_tag()
+	if(COOLDOWN_FINISHED(user, update_nametag_cooldown))
+		for(var/mob/living/living in view(user.view, user.mob))
+			living.update_name_tag()
+		COOLDOWN_START(user, update_nametag_cooldown, 5 SECONDS)
 
 	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
 		name_tag.alpha = 255

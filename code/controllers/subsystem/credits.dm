@@ -483,10 +483,9 @@ SUBSYSTEM_DEF(credits)
 		if(!appearance)
 			continue
 		appearance.setDir(SOUTH)
-		var/bound_width = our_dummy.bound_width || world.icon_size
 		appearance.maptext_width = 88
 		appearance.maptext_height = world.icon_size * 1.5
-		appearance.maptext_x = ((88 - bound_width) * -0.5) - our_dummy.base_pixel_x
+		appearance.maptext_x = ((88 - world.icon_size) * -0.5) - our_dummy.base_pixel_x
 		appearance.maptext_y = -16
 		appearance.maptext = "<center>[ckey]</center>"
 		admin_appearances += appearance
@@ -506,10 +505,9 @@ SUBSYSTEM_DEF(credits)
 		if(!appearance)
 			continue
 		appearance.setDir(SOUTH)
-		var/bound_width = our_dummy.bound_width || world.icon_size
 		appearance.maptext_width = 88
 		appearance.maptext_height = world.icon_size * 1.5
-		appearance.maptext_x = ((88 - bound_width) * -0.5) - our_dummy.base_pixel_x
+		appearance.maptext_x = ((88 - world.icon_size) * -0.5) - our_dummy.base_pixel_x
 		appearance.maptext_y = -16
 		appearance.maptext = "<center>[ckey]</center>"
 		patron_appearances += appearance

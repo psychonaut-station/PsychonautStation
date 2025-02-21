@@ -1317,6 +1317,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(selected_job && !ispath(selected_job::spawn_type, /mob/living/carbon/human)) // If the selected job's spawn_type isnt human (AI, cyborg etc.) we just returning mutable_appearance
 		var/mob/living/spawn_type = selected_job::spawn_type
 		var/mutable_appearance/appearance = mutable_appearance(spawn_type::icon, spawn_type::icon_state)
+		appearance.name = ckey
 		if(ispath(spawn_type, /mob/living/silicon/ai))
 			var/ai_core_value = selected_char?["preferred_ai_core_display"]
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
@@ -1374,9 +1375,10 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 				continue
 			our_human.add_quirk(quirk_type)
 
-	var/mutable_appearance/appereance = new
-	appereance.appearance = our_human.appearance
+	var/mutable_appearance/appearance = new
+	appearance.appearance = our_human.appearance
+	appearance.name = ckey
 	if(we_created)
 		qdel(our_human)
 
-	return appereance
+	return appearance

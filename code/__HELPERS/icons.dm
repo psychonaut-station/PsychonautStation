@@ -1307,9 +1307,6 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
 	var/datum/job/selected_job
-	var/list/job_weight_list = list()
-
-	var/datum/job/selected_job
 	var/highest_pref = 0
 
 	for(var/job in job_preferences)

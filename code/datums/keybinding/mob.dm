@@ -198,13 +198,15 @@
 	full_name = "View Pet Commands"
 	description = "Hold down to see all the commands you can give your pets!"
 	keybind_signal = COMSIG_KB_LIVING_VIEW_PET_COMMANDS
+	can_reuse_keybind = TRUE
 
 /datum/keybinding/mob/show_names
 	hotkey_keys = list("Shift")
-	name = "show_names"
-	full_name = "Show Names"
-	description = "Lets you see peoples names."
-	keybind_signal = COMSIG_KB_MOB_SHOW_NAMES_DOWN
+	name = "show_name_tags"
+	full_name = "Show name tags"
+	description = "Lets you see people's names below their body."
+	keybind_signal = COMSIG_KB_MOB_SHOW_NAME_TAGS_DOWN
+	can_reuse_keybind = TRUE
 
 /datum/keybinding/mob/show_names/down(client/user)
 	. = ..()

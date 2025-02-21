@@ -55,13 +55,15 @@
 	if (!input)
 		return input
 
-	if (CONFIG_GET(flag/humans_need_surnames) && preferences.read_preference(/datum/preference/choiced/species) == /datum/species/human)
+	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
+
+	if (CONFIG_GET(flag/humans_need_surnames) && race == /datum/species/human)
 		var/first_space = findtext(input, " ")
 		if(!first_space) //we need a surname
 			input += " [pick(GLOB.last_names)]"
 		else if(first_space == length(input))
 			input += "[pick(GLOB.last_names)]"
-	var/datum/species/race = preferences.read_preference(/datum/preference/choiced/species)
+
 	return reject_bad_name(input, race::allow_numbers_in_name || allow_numbers)
 
 /datum/preference/name/real_name/serialize(input, datum/preferences/preferences)

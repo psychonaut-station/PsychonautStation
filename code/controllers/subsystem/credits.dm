@@ -14,9 +14,9 @@ SUBSYSTEM_DEF(credits)
 
 	var/customized_name = ""
 
-	var/list/patrons_pref_icons = list()
-	var/list/admin_pref_icons = list()
-	var/list/major_event_icons = list()
+	var/list/patron_appearances = list()
+	var/list/admin_appearances = list()
+	var/list/antag_appearances = list()
 
 	var/list/processing_icons = list()
 	var/list/currentrun  = list()
@@ -40,27 +40,28 @@ SUBSYSTEM_DEF(credits)
 
 	while(currentrun.len)
 		var/datum/weakref/weakref = currentrun[currentrun.len]
-		var/mutable_appearance/appereance = currentrun[weakref]
+		var/mutable_appearance/appearance = currentrun[weakref]
 		currentrun.len--
 		var/datum/mind/antag_mind = weakref.resolve()
 		var/mob/living/living_mob = antag_mind?.current
 		if(!isnull(living_mob) && living_mob.stat != DEAD)
-			appereance.appearance = living_mob.appearance
-			appereance.transform = matrix()
-			appereance.setDir(SOUTH)
-			appereance.maptext_width = 88
-			appereance.maptext_height = 48
-			appereance.maptext_y = -16
-			appereance.maptext_x = -32
-			appereance.maptext = "<center>[antag_mind.name]</center>"
+			appearance.appearance = living_mob.appearance
+			appearance.transform = matrix()
+			appearance.setDir(SOUTH)
+			var/bound_width = living_mob.bound_width || world.icon_size
+			appearance.maptext_width = 88
+			appearance.maptext_height = world.icon_size * 1.5
+			appearance.maptext_x = ((88 - bound_width) * -0.5) - living_mob.base_pixel_x
+			appearance.maptext_y = -16
+			appearance.maptext = "<center>[antag_mind.name]</center>"
 		if (MC_TICK_CHECK)
 			return
 
 /datum/controller/subsystem/credits/Recover()
 	processing_icons = SScredits.processing_icons
-	major_event_icons = SScredits.major_event_icons
+	antag_appearances = SScredits.antag_appearances
 	customized_name = SScredits.customized_name
-	patrons_pref_icons = SScredits.patrons_pref_icons
+	patron_appearances = SScredits.patron_appearances
 
 /datum/controller/subsystem/credits/proc/draft()
 	if(!customized_name)
@@ -101,7 +102,7 @@ SUBSYSTEM_DEF(credits)
 	credit_order_for_this_round += ""
 	credit_order_for_this_round += disclaimers_string
 	credit_order_for_this_round += cast_string
-	var/list/admins = shuffle(admin_pref_icons)
+	var/list/admins = shuffle(admin_appearances)
 	var/admins_length = length(admins)
 	var/y_offset = 0
 	if(admins_length)
@@ -117,7 +118,7 @@ SUBSYSTEM_DEF(credits)
 				x_offset += 96
 				credit_order_for_this_round += picked
 
-	var/list/patrons = shuffle(patrons_pref_icons)
+	var/list/patrons = shuffle(patron_appearances)
 	var/patrons_length = length(patrons)
 	if(patrons_length)
 		credit_order_for_this_round += "<center>Sevgili Destekçilerimiz</center>"
@@ -132,9 +133,9 @@ SUBSYSTEM_DEF(credits)
 				x_offset += 96
 				credit_order_for_this_round += picked
 
-	for(var/obj/effect/title_card_object/MA as anything in major_event_icons)
+	for(var/obj/effect/title_card_object/MA as anything in antag_appearances)
 		credit_order_for_this_round += MA
-		var/list/antagonist_icons = major_event_icons[MA]
+		var/list/antagonist_icons = antag_appearances[MA]
 		var/antagonists_length = length(antagonist_icons)
 		for(var/i in 1 to CEILING(antagonists_length / 6, 1))
 			var/x_offset = -16
@@ -457,7 +458,7 @@ SUBSYSTEM_DEF(credits)
 	if(!passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA
-	for(var/obj/effect/title_card_object/effect as anything in major_event_icons)
+	for(var/obj/effect/title_card_object/effect as anything in antag_appearances)
 		if(effect.icon_state == passed_icon_state)
 			MA = effect
 			break
@@ -465,95 +466,74 @@ SUBSYSTEM_DEF(credits)
 		MA = new
 		MA.icon_state = passed_icon_state
 		MA.pixel_x = 80
-		major_event_icons += MA
-		major_event_icons[MA] = list()
+		antag_appearances += MA
+		antag_appearances[MA] = list()
 	return MA
 
 /datum/controller/subsystem/credits/proc/generate_admin_icons()
-	admin_pref_icons = list()
+	admin_appearances = list()
+
 	var/list/all_admins = GLOB.admin_datums + GLOB.deadmins
+	var/mob/living/carbon/human/dummy/our_dummy = new()
 	for(var/ckey in all_admins)
 		var/datum/admins/admin_datum = all_admins[ckey]
 		if(!(admin_datum.rank_flags() & R_AUTOADMIN))
 			continue
-		var/datum/preferences/preference
-		var/datum/client_interface/interface
-		if(GLOB.directory[ckey])
-			var/client/adminclient = GLOB.directory[ckey]
-			preference = adminclient.prefs
-		else
-			interface = new(ckey)
-			var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
-			if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
-				continue
-			preference = new(interface)
+		var/mutable_appearance/appearance = render_offline_appearance(ckey, our_dummy)
+		if(!appearance)
+			continue
+		appearance.setDir(SOUTH)
+		var/bound_width = our_dummy.bound_width || world.icon_size
+		appearance.maptext_width = 88
+		appearance.maptext_height = world.icon_size * 1.5
+		appearance.maptext_x = ((88 - bound_width) * -0.5) - our_dummy.base_pixel_x
+		appearance.maptext_y = -16
+		appearance.maptext = "<center>[ckey]</center>"
+		admin_appearances += appearance
 
-		var/mob/living/carbon/human/dummy/body = new
-		var/mutable_appearance/appereance = new
-		appereance.appearance = preference.render_new_preview_appearance(body, TRUE)
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
-		admin_pref_icons += appereance
-		qdel(body)
-		if(!isnull(interface))
-			qdel(preference)
-			qdel(interface)
+	qdel(our_dummy)
 
 /datum/controller/subsystem/credits/proc/generate_patron_icons()
+	set waitfor = FALSE
+
 	var/list/all_patrons = get_patrons()
 	if(isnull(all_patrons))
 		return
-	patrons_pref_icons = list()
+	patron_appearances = list()
+	var/mob/living/carbon/human/dummy/our_dummy = new()
 	for(var/ckey in all_patrons)
-		var/datum/preferences/preference
-		var/datum/client_interface/interface
-		if(GLOB.directory[ckey])
-			var/client/patronclient = GLOB.directory[ckey]
-			preference = patronclient.prefs
-		else
-			interface = new(ckey)
-			var/save_folder = "data/player_saves/[ckey[1]]/[ckey]"
-			if(!fexists("[save_folder]/preferences.json") && !fexists("[save_folder]/preferences.sav"))
-				continue
-			preference = new(interface)
-
-		var/mob/living/carbon/human/dummy/body = new
-		var/mutable_appearance/appereance = new
-		appereance.appearance = preference.render_new_preview_appearance(body, TRUE)
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[ckey]</center>"
-		patrons_pref_icons += appereance
-		qdel(body)
-		if(!isnull(interface))
-			qdel(preference)
-			qdel(interface)
+		var/mutable_appearance/appearance = render_offline_appearance(ckey, our_dummy)
+		if(!appearance)
+			continue
+		appearance.setDir(SOUTH)
+		var/bound_width = our_dummy.bound_width || world.icon_size
+		appearance.maptext_width = 88
+		appearance.maptext_height = world.icon_size * 1.5
+		appearance.maptext_x = ((88 - bound_width) * -0.5) - our_dummy.base_pixel_x
+		appearance.maptext_y = -16
+		appearance.maptext = "<center>[ckey]</center>"
+		patron_appearances += appearance
+	qdel(our_dummy)
 
 /datum/controller/subsystem/credits/proc/create_antagonist_icon(client/client, mob/living/living_mob, passed_icon_state)
 	if(!client || !living_mob || !living_mob.mind || !passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
-	var/mutable_appearance/appereance
+	var/mutable_appearance/appearance
 	if(processing_icons[WEAKREF(living_mob.mind)])
-		appereance = processing_icons[WEAKREF(living_mob.mind)]
+		appearance = processing_icons[WEAKREF(living_mob.mind)]
 	else
-		appereance = new (living_mob.appearance)
-		appereance.transform = matrix()
-		appereance.setDir(SOUTH)
-		appereance.maptext_width = 88
-		appereance.maptext_height = 48
-		appereance.maptext_y = -16
-		appereance.maptext_x = -32
-		appereance.maptext = "<center>[living_mob.mind.name]</center>"
-	major_event_icons[MA] += list(REF(living_mob.mind) = appereance)
-	processing_icons[WEAKREF(living_mob.mind)] = appereance
+		appearance = new (living_mob.appearance)
+		appearance.transform = matrix()
+		appearance.setDir(SOUTH)
+		var/bound_width = living_mob.bound_width || world.icon_size
+		appearance.maptext_width = 88
+		appearance.maptext_height = world.icon_size * 1.5
+		appearance.maptext_x = ((88 - bound_width) * -0.5) - living_mob.base_pixel_x
+		appearance.maptext_y = -16
+		appearance.maptext = "<center>[living_mob.mind.name]</center>"
+	antag_appearances[MA] += list(REF(living_mob.mind) = appearance)
+	processing_icons[WEAKREF(living_mob.mind)] = appearance
 
 /datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
 	if(isnull(weakref))

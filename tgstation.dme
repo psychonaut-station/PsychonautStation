@@ -1763,11 +1763,8 @@
 #include "code\datums\proximity_monitor\proximity_monitor.dm"
 #include "code\datums\proximity_monitor\fields\ai_target_tracking.dm"
 #include "code\datums\proximity_monitor\fields\gravity.dm"
-<<<<<<< HEAD
-#include "code\datums\proximity_monitor\fields\mob_collector.dm"
-=======
 #include "code\datums\proximity_monitor\fields\heretic_arena.dm"
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
+#include "code\datums\proximity_monitor\fields\mob_collector.dm"
 #include "code\datums\proximity_monitor\fields\timestop.dm"
 #include "code\datums\proximity_monitor\fields\void_storm.dm"
 #include "code\datums\proximity_monitor\fields\projectile_dampener\projectile_dampener.dm"

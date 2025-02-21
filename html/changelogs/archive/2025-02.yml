@@ -247,15 +247,11 @@
   - code_imp: Optimize Nyctophobia quirk to not process while certain traits present
   - code_imp: Convert weather duration to use time defines
 2025-02-15:
-<<<<<<< HEAD
-  Jacquerel:
-=======
   Ghommie:
   - rscadd: Added three tips to the fishing tips text file.
   Jacquerel:
   - admin: Gives admins the ability to make mobs say/emote things from a list at random
       intervals for the rest of their lives.
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
   - rscdel: Misplaced or stolen traitor uplinks can no longer be recreated using a
       radio code and special device, guard yours carefully or buy a backup implant.
   - rscdel: Roundstart traitors can no longer take on additional objectives in order
@@ -265,10 +261,6 @@
       uplink, rather than only midround traitors.
   - rscadd: Traitors can buy Romerol for 25 TC, after 30 minutes of time has passed
       in a round.
-<<<<<<< HEAD
-  davethwave:
-  - rscdel: Removed the weighting of viro symptoms
-=======
   - image: Watchers won't display an animated cog at the same time as using their
       gaze attack.
   Melbert:
@@ -469,4 +461,3 @@
   - code_imp: optimized some icon code
   necromanceranne:
   - image: Changes Sakhno rifles from olive drab to a wooden finish.
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591

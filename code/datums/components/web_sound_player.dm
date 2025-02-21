@@ -195,8 +195,9 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	START_PROCESSING(SSprocessing, src)
 	SEND_SIGNAL(src, COMSIG_WEB_SOUND_STARTED, track)
 	for(var/mob/listener as anything in listeners)
-		if(listener.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
-			listener.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, track.as_list, get_volume(src, listener))
+		var/pref_volume = listener.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_instruments)
+		if(pref_volume)
+			listener.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, track.as_list, get_volume(src, listener) * pref_volume / 100)
 	return TRUE
 
 /datum/component/web_sound_player/proc/play_url(url)
@@ -225,13 +226,14 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 
 /datum/component/web_sound_player/proc/on_mob_entered(datum/source, mob/mob)
 	SIGNAL_HANDLER
-	if(mob.client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+	var/pref_volume = mob.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_instruments)
+	if(pref_volume)
 		if(!LAZYFIND(listeners, mob))
 			LAZYADD(listeners, mob)
 		if(is_playing(src))
 			var/list/options = track.as_list.Copy()
 			options["start"] = (world.time - track_started_at) / 10
-			mob.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, mob))
+			mob.client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, mob) * pref_volume / 100)
 	RegisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
 
 /datum/component/web_sound_player/proc/on_mob_left(datum/source, mob/mob)
@@ -245,17 +247,19 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 /datum/component/web_sound_player/proc/on_mob_moved(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	if(is_playing(src) && LAZYFIND(listeners, mob))
-		mob.client?.tgui_panel?.set_jukebox_volume(player_id, get_volume(src, mob))
+		var/pref_volume = mob.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_instruments) || 100
+		mob.client?.tgui_panel?.set_jukebox_volume(player_id, get_volume(src, mob) * pref_volume / 100)
 
 /datum/component/web_sound_player/proc/on_mob_login(mob/source, client/client)
 	SIGNAL_HANDLER
-	if(client?.prefs.read_preference(/datum/preference/toggle/sound_jukebox))
+	var/pref_volume = client?.prefs.read_preference(/datum/preference/numeric/volume/sound_instruments)
+	if(pref_volume)
 		if(LAZYFIND(listeners, source))
 			LAZYADD(listeners, source)
 		if(is_playing(src))
 			var/list/options = track.as_list.Copy()
 			options["start"] = (world.time - track_started_at) / 10
-			client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, source))
+			client.tgui_panel?.play_jukebox_music(player_id, source_name, track.url, options, get_volume(src, source) * pref_volume / 100)
 
 /proc/url_to_web_track(url, data_only = FALSE)
 	var/invoke_youtubedl = CONFIG_GET(string/invoke_youtubedl)

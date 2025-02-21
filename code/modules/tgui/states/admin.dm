@@ -25,22 +25,7 @@ GLOBAL_PROTECT(admin_states)
 		return UI_INTERACTIVE
 	return UI_CLOSE
 
-<<<<<<< HEAD
-/**
- * tgui state: mentor_state
- *
- * Checks that the user is a mentor BUT ALSO an admin.
- */
-
-GLOBAL_DATUM_INIT(mentor_state, /datum/ui_state/mentor_state, new)
-
-/datum/ui_state/mentor_state/can_use_topic(src_object, mob/user)
-	if(check_rights_for(user.client, R_MENTOR | R_ADMIN))
-		return UI_INTERACTIVE
-	return UI_CLOSE
-=======
 /datum/ui_state/admin_state/vv_edit_var(var_name, var_value)
 	if(var_name == NAMEOF(src, required_perms))
 		return FALSE
 	return ..()
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591

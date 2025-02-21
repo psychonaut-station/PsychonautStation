@@ -76,24 +76,11 @@
 	qdel(tile_obj)
 	cost = design["tile_cost"]
 
-<<<<<<< HEAD
-	if(ispath(tile_type, /obj/item/stack/tile/carpet/neon))
-		var/obj/item/stack/tile/carpet/neon/neon_carpet = tile_type
-		icon_state += "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
+	if(ispath(turf_type, /turf/open/floor/carpet/neon))
+		var/turf/open/floor/carpet/neon/neon_carpet = turf_type
+		var/color_code = "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
+		icon_css_class += color_code
 
-	tile_directions = design["tile_rotate_dirs"]
-	if(!tile_directions)
-		selected_direction = null
-		ui_directional_data = null
-		return
-
-	ui_directional_data = list()
-	for(var/tile_direction in tile_directions)
-		ui_directional_data += dir2text(tile_direction)
-	selected_direction = tile_directions[1]
-
-=======
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 /// fill all information to be sent to the UI
 /datum/tile_info/proc/fill_ui_data(list/data, selected_direction)
 	data["selected_recipe"] = name

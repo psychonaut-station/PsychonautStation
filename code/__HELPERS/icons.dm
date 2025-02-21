@@ -1309,15 +1309,13 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/datum/job/selected_job
 	var/list/job_weight_list = list()
 
-	for(var/j in job_preferences) // Selecting highest priorityed job for outfit, if its not high, we picking it by weight
-		if(job_preferences[j] == JP_HIGH)
-			selected_job = SSjob.name_occupations[j]
-			break
-		else
-			job_weight_list[j] = job_preferences[j]
+	var/datum/job/selected_job
+	var/highest_pref = 0
 
-	if(job_weight_list.len && !selected_job)
-		selected_job = pick_weight(job_weight_list)
+	for(var/job in job_preferences)
+		if(job_preferences[job] > highest_pref)
+			selected_job = SSjob.get_job(job)
+			highest_pref = job_preferences[job]
 
 	if(selected_job && !ispath(selected_job::spawn_type, /mob/living/carbon/human)) // If the selected job's spawn_type isnt human (AI, cyborg etc.) we just returning mutable_appearance
 		var/mob/living/spawn_type = selected_job::spawn_type

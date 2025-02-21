@@ -20,7 +20,6 @@
 	maptext_x = ((NAME_TAG_WIDTH - bound_width) * -0.5) - loc.base_pixel_x
 	maptext_y = src::maptext_y - loc.base_pixel_y
 	RegisterSignal(movable_loc, COMSIG_MOVABLE_Z_CHANGED, PROC_REF(update_z))
-	START_PROCESSING(SSname_tags, src)
 
 /obj/effect/abstract/name_tag/Destroy(force)
 	if(QDELETED(loc))
@@ -48,9 +47,3 @@
 
 /obj/effect/abstract/name_tag/proc/update_z(datum/source, turf/old_turf, turf/new_turf, same_z_layer)
 	SET_PLANE(src, PLANE_TO_TRUE(src.plane), new_turf)
-
-/obj/effect/abstract/name_tag/process(seconds_per_tick)
-	if(!ismovable(loc) || QDELING(loc))
-		return PROCESS_KILL
-	var/atom/movable/our_atom = loc
-	set_name(our_atom.name)

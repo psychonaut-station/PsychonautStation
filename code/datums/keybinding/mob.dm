@@ -200,7 +200,7 @@
 	keybind_signal = COMSIG_KB_LIVING_VIEW_PET_COMMANDS
 
 /datum/keybinding/mob/show_names
-	hotkey_keys = list("Ctrl")
+	hotkey_keys = list("Shift")
 	name = "show_names"
 	full_name = "Show Names"
 	description = "Lets you see peoples names."
@@ -210,6 +210,9 @@
 	. = ..()
 	if(.)
 		return
+	for(var/mob/living/living in view(user.view, user.mob))
+		living.update_name_tag()
+
 	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
 		name_tag.alpha = 255
 

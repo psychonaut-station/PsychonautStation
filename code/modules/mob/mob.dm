@@ -1649,7 +1649,7 @@
 	var/datum/atom_hud/datahud = GLOB.huds[GLOB.trait_to_hud[new_trait]]
 	datahud.hide_from(src)
 
-/mob/proc/update_name_tag(passed_name)
+/mob/proc/update_name_tag()
 	if(QDELETED(name_tag))
 		return
 	name_tag.set_name(name)

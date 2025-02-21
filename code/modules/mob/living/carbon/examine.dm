@@ -603,22 +603,9 @@
 			age_text = "withering away"
 	. += list(span_notice("[p_They()] appear[p_s()] to be [age_text]."))
 
-<<<<<<< HEAD
-	if(istype(w_uniform, /obj/item/clothing/under))
-		var/obj/item/clothing/under/undershirt = w_uniform
-		if(undershirt.has_sensor == BROKEN_SENSORS)
-			. += list(span_notice("The [undershirt]'s medical sensors are sparking."))
-
-	for(var/datum/scar/iter_scar as anything in all_scars)
-		if(iter_scar.is_visible(user))
-			. += iter_scar.get_examine_description(user)
-
 	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		if(flavor_text)
 			. += "<span class='info'>OOC Information:</span> [flavor_text]"
 
-
-=======
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
 #undef ADD_NEWLINE_IF_NECESSARY
 #undef CARBON_EXAMINE_EMBEDDING_MAX_DIST

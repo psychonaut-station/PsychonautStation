@@ -51,11 +51,7 @@ ADMIN_VERB(create_command_report, R_ADMIN | R_MENTOR, "Create Command Report", "
 		preset_names.Insert(1, command_name())
 
 /datum/command_report_menu/ui_state(mob/user)
-<<<<<<< HEAD
-	return GLOB.mentor_state
-=======
-	return ADMIN_STATE(R_ADMIN)
->>>>>>> f4b88965991eff53ea44b26de94339706d8fb591
+	return ADMIN_STATE(R_MENTOR)
 
 /datum/command_report_menu/ui_close()
 	qdel(src)

@@ -67,6 +67,7 @@ const RecordInfo = (props) => {
     species,
     wanted_status,
     voice,
+    security_records,
   } = foundRecord;
 
   const hasValidCrimes = !!crimes.find((crime) => !!crime.valid);
@@ -190,6 +191,13 @@ const RecordInfo = (props) => {
                 field="security_note"
                 target_ref={crew_ref}
                 text={note}
+              />
+            </LabeledList.Item>
+            <LabeledList.Item label="Security Records">
+              <EditableText
+                field="security_records"
+                target_ref={crew_ref}
+                text={security_records}
               />
             </LabeledList.Item>
           </LabeledList>

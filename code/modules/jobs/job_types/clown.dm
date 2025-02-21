@@ -38,13 +38,18 @@
 
 	job_tone = "honk"
 
+	alt_titles = list(
+		"Clown",
+		"Jester",
+		"Joker",
+		"Comedian",
+		"Professional Nuisance",
+	)
 
 /datum/job/clown/after_spawn(mob/living/spawned, client/player_client)
-	. = ..()
-	if(!ishuman(spawned))
-		return
-	spawned.apply_pref_name(/datum/preference/name/clown, player_client)
-
+	if (ishuman(spawned))
+		spawned.apply_pref_name(/datum/preference/name/clown, player_client)
+	return ..()
 
 /datum/outfit/job/clown
 	name = "Clown"

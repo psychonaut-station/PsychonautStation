@@ -322,6 +322,8 @@
 
 /datum/config_entry/string/server
 
+/datum/config_entry/string/public_address
+
 /datum/config_entry/string/banappeals
 
 /datum/config_entry/string/wikiurl
@@ -796,6 +798,9 @@
 	min_val = 0
 	max_val = 100
 
+/datum/config_entry/flag/allow_randomized_rooms
+	default = TRUE
+
 /// If admins with +DEBUG can initialize byond-tracy midround.
 /datum/config_entry/flag/allow_tracy_start
 	protection = CONFIG_ENTRY_LOCKED
@@ -803,3 +808,4 @@
 /// If admins with +DEBUG can queue byond-tracy to run the next round.
 /datum/config_entry/flag/allow_tracy_queue
 	protection = CONFIG_ENTRY_LOCKED
+

@@ -327,3 +327,10 @@
 		/obj/item/knife/doner = 1
 	)
 	crate_name = "doner grill crate"
+
+/datum/supply_pack/service/mousetraps
+	name = "Pest-B-Gon Mousetraps"
+	desc = "Three boxes of handy little spring-loaded traps for catching pesty rodents. Keep out of reach of children!"
+	cost = CARGO_CRATE_VALUE * 2
+	contains = list(/obj/item/storage/box/mousetraps = 3)
+	crate_name = "mousetraps crate"

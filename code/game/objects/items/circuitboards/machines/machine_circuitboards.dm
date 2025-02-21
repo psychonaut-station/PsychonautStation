@@ -456,9 +456,74 @@
 		/obj/item/stack/sheet/glass = 10,
 		/obj/item/stack/sheet/plasteel = 5)
 
+/obj/item/circuitboard/machine/rad_collector
+	name = "Particle Capture Array (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/power/energy_accumulator/rad_collector
+	req_components = list(
+		/obj/item/stack/cable_coil = 5,
+		/datum/stock_part/matter_bin = 1,
+		/obj/item/stack/sheet/plasmarglass = 2,
+		/datum/stock_part/capacitor = 1,
+		/datum/stock_part/servo = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/pa/control_box
+	name = "Particle Accelerator Control Box (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/particle_accelerator/control_box
+	req_components = list(
+		/obj/item/stack/sheet/glass = 10
+	)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/pa/end_cap
+	name = "Alpha Particle Generation Array (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/particle_accelerator/end_cap
+	req_components = list(
+		/obj/item/stack/cable_coil = 2,
+		/datum/stock_part/capacitor/tier4 = 1,
+		/obj/item/stack/sheet/iron = 5,
+		/datum/stock_part/micro_laser/tier4 = 1)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/pa/power_box
+	name = "Particle Focusing EM Lens (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/particle_accelerator/power_box
+	req_components = list(
+		/obj/item/stack/cable_coil = 3,
+		/datum/stock_part/capacitor/tier4 = 1,
+		/obj/item/stack/sheet/iron = 2)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/pa/fuel_chamber
+	name = "EM Acceleration Chamber (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/particle_accelerator/fuel_chamber
+	req_components = list(
+		/obj/item/stack/cable_coil = 2,
+		/datum/stock_part/capacitor/tier4 = 1,
+		/obj/item/stack/sheet/iron = 2)
+	needs_anchored = FALSE
+
+/obj/item/circuitboard/machine/pa/particle_emitter
+	name = "EM Containment Grid (Machine Board)"
+	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
+	build_path = /obj/machinery/particle_accelerator/particle_emitter
+	req_components = list(
+		/obj/item/stack/cable_coil = 1,
+		/datum/stock_part/capacitor/tier4 = 1,
+		/obj/item/stack/sheet/plasmaglass = 2,
+		/obj/item/stack/sheet/iron = 2,
+		/datum/stock_part/micro_laser/tier4 = 2)
+	needs_anchored = FALSE
+
+
 //Generic
 /obj/item/circuitboard/machine/component_printer
-	name = "\improper Component Printer (Machine Board)"
+	name = "\improper Component Printer"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/component_printer
 	req_components = list(
@@ -467,7 +532,7 @@
 	)
 
 /obj/item/circuitboard/machine/module_duplicator
-	name = "\improper Module Duplicator (Machine Board)"
+	name = "\improper Module Duplicator"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/module_duplicator
 	req_components = list(
@@ -833,7 +898,7 @@
 		/obj/item/stack/sheet/glass = 1)
 
 /obj/item/circuitboard/machine/chem_mass_spec
-	name = "High-Performance Liquid Chromatography"
+	name = "High-Performance Liquid Chromatography Machine"
 	greyscale_colors = CIRCUIT_COLOR_MEDICAL
 	build_path = /obj/machinery/chem_mass_spec
 	req_components = list(
@@ -1402,7 +1467,7 @@
 	build_path = /obj/machinery/pokerchip_exchanger
 	needs_anchored = FALSE
 	req_components = list()
-	
+
 /obj/item/circuitboard/machine/fishing_portal_generator
 	name = "Fishing Portal Generator"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
@@ -1619,7 +1684,7 @@
 		)
 
 /obj/item/circuitboard/machine/coffeemaker
-	name = "Coffeemaker (Machine Board)"
+	name = "Coffeemaker"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/coffeemaker
 	req_components = list(

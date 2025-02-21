@@ -33,7 +33,13 @@
 	family_heirlooms = list(/obj/item/toy/plush/pkplush)
 	rpg_title = "Necromancer"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Roboticist",
+		"Biomechanical Engineer",
+		"Mechatronic Engineer",
+		"Apprentice Roboticist",
+		"Ripperdoc",
+	)
 
 /datum/job/roboticist/New()
 	. = ..()

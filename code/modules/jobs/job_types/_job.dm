@@ -138,6 +138,9 @@
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
 
+	/// The list of alternative job titles people can pick from
+	var/list/alt_titles
+
 /datum/job/New()
 	. = ..()
 	var/new_spawn_positions = CHECK_MAP_JOB_CHANGE(title, "spawn_positions")
@@ -147,10 +150,13 @@
 	if(isnum(new_total_positions))
 		total_positions = new_total_positions
 
+	for(var/alt_title in alt_titles)
+		if(!SSjob.all_alt_titles[alt_title])
+			SSjob.all_alt_titles[alt_title] = title
+
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
 	SHOULD_CALL_PARENT(TRUE)
-	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 	if(length(mind_traits))
 		spawned.mind.add_traits(mind_traits, JOB_TRAIT)
 
@@ -159,6 +165,7 @@
 		liver.add_traits(liver_traits, JOB_TRAIT)
 
 	if(!ishuman(spawned))
+		SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
 		return
 
 	var/mob/living/carbon/human/spawned_human = spawned
@@ -180,15 +187,17 @@
 		for(var/i in roundstart_experience)
 			spawned_human.mind.adjust_experience(i, roundstart_experience[i], TRUE)
 
+	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_SPAWN, src, spawned, player_client)
+
 /// Return the outfit to use
 /datum/job/proc/get_outfit(consistent)
 	return outfit
 
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
-/datum/job/proc/announce_job(mob/living/joining_mob)
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title)
 	if(head_announce)
-		announce_head(joining_mob, head_announce)
+		announce_head(joining_mob, head_announce, job_title)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -227,8 +236,11 @@
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
+	if(visual_only || istype(equipping, /datum/job/security_officer))
+		return
+	equipping.set_alt_title(src, player_client)
 
-/datum/job/proc/announce_head(mob/living/carbon/human/human, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/datum/job/proc/announce_head(mob/living/carbon/human/human, channels, job_title) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(!human)
 		return
 	var/obj/machinery/announcement_system/system
@@ -241,7 +253,7 @@
 		return
 	system = pick(available_machines)
 	//timer because these should come after the captain announcement
-	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(system, TYPE_PROC_REF(/obj/machinery/announcement_system, announce), AUTO_ANNOUNCE_NEWHEAD, human.real_name, human.job, channels), 1))
+	SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(system, TYPE_PROC_REF(/obj/machinery/announcement_system, announce), AUTO_ANNOUNCE_NEWHEAD, human.real_name, job_title, channels), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -661,3 +673,16 @@
 /datum/job/proc/after_latejoin_spawn(mob/living/spawning)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
+
+/datum/job/proc/set_alt_title(mob/living/carbon/human/H, client/player_client)
+	var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
+	if(chosen_title == title)
+		return
+	var/obj/item/card/id/card = H.wear_id
+	if(istype(card))
+		card.assignment = chosen_title
+		card.update_label()
+	var/list/all_contents = H.get_all_contents()
+	var/obj/item/modular_computer/pda/pda = locate() in all_contents
+	if(!isnull(pda))
+		pda.imprint_id(job_name = chosen_title)

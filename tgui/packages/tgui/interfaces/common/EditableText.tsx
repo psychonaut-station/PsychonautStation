@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
-import { Box, Button, Input, Stack } from 'tgui-core/components';
+import { Box, Button, Input } from 'tgui-core/components';
 
 type Props = {
   color?: string;
@@ -41,34 +41,30 @@ export const EditableText = (props: Props) => {
       value={text}
     />
   ) : (
-    <Stack>
-      <Stack.Item>
-        <Box
-          as="span"
-          color={!text ? 'grey' : color || 'white'}
-          style={{
-            textDecoration: 'underline',
-            textDecorationColor: 'white',
-            textDecorationThickness: '1px',
-            textUnderlineOffset: '1px',
-          }}
-          onClick={() => setEditing(true)}
-        >
-          {!text ? '(none)' : text}
-        </Box>
-      </Stack.Item>
-      <Stack.Item>
-        <Button
-          color="transparent"
-          icon="backspace"
-          ml={1}
-          onClick={() =>
-            act('edit_field', { field: field, ref: target_ref, value: '' })
-          }
-          tooltip="Clear"
-          tooltipPosition="bottom"
-        />
-      </Stack.Item>
-    </Stack>
+    <Box>
+      <Box
+        as="span"
+        color={!text ? 'grey' : color || 'white'}
+        style={{
+          textDecoration: 'underline',
+          textDecorationColor: 'white',
+          textDecorationThickness: '1px',
+          textUnderlineOffset: '1px',
+        }}
+        onClick={() => setEditing(true)}
+      >
+        {!text ? '(none)' : text}
+      </Box>
+      <Button
+        color="transparent"
+        icon="backspace"
+        ml={1}
+        onClick={() =>
+          act('edit_field', { field: field, ref: target_ref, value: '' })
+        }
+        tooltip="Clear"
+        tooltipPosition="bottom"
+      />
+    </Box>
   );
 };

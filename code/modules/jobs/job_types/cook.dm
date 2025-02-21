@@ -50,6 +50,13 @@
 		JOB_CHEF,
 	)
 	job_flags = STATION_JOB_FLAGS
+	alt_titles = list(
+		"Cook",
+		"Chef",
+		"Butcher",
+		"Culinary Artist",
+		"Sous-Chef",
+	)
 
 /datum/job/cook/award_service(client/winner, award)
 	winner.give_award(award, winner.mob)

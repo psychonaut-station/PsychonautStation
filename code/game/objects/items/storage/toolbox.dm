@@ -7,8 +7,8 @@
 	lefthand_file = 'icons/mob/inhands/equipment/toolbox_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/toolbox_righthand.dmi'
 	obj_flags = CONDUCTS_ELECTRICITY
-	force = 12
-	throwforce = 12
+	force = 13
+	throwforce = 13
 	throw_speed = 2
 	throw_range = 7
 	demolition_mod = 1.25
@@ -203,8 +203,8 @@
 	var/power = 0
 	for (var/obj/item/stack/telecrystal/stored_crystals in get_all_contents())
 		power += (stored_crystals.amount / 2)
-	force = 19 + power
-	throwforce = 22 + power
+	force = initial(force) + power
+	throwforce = initial(throwforce) + power
 
 /obj/item/storage/toolbox/mechanical/old/clean/attack(mob/target, mob/living/user)
 	calc_damage()
@@ -387,20 +387,6 @@
 	name = "4.6x30mm AP ammo box"
 	ammo_to_spawn = /obj/item/ammo_box/magazine/wt550m9/wtap
 
-/obj/item/storage/toolbox/maint_kit
-	name = "gun maintenance kit"
-	desc = "It contains some gun maintenance supplies"
-	icon_state = "maint_kit"
-	inhand_icon_state = "ammobox"
-	has_latches = FALSE
-	drop_sound = 'sound/items/handling/ammobox_drop.ogg'
-	pickup_sound = 'sound/items/handling/ammobox_pickup.ogg'
-
-/obj/item/storage/toolbox/maint_kit/PopulateContents()
-	new /obj/item/gun_maintenance_supplies(src)
-	new /obj/item/gun_maintenance_supplies(src)
-	new /obj/item/gun_maintenance_supplies(src)
-
 //repairbot assembly
 /obj/item/storage/toolbox/tool_act(mob/living/user, obj/item/tool, list/modifiers)
 	if(!istype(tool, /obj/item/assembly/prox_sensor))
@@ -504,9 +490,15 @@
 
 /obj/item/storage/toolbox/guncase/traitor/click_alt_secondary(mob/user)
 	. = ..()
-	var/i_dont_even_think_once_about_blowing_stuff_up = tgui_alert(user, "Would you like to activate the evidence disposal bomb now?", "BYE BYE", list("Yes","No"))
-	if(i_dont_even_think_once_about_blowing_stuff_up == "No")
+	if(currently_exploding)
+		user.balloon_alert(user, "already exploding!")
 		return
+
+	var/i_dont_even_think_once_about_blowing_stuff_up = tgui_alert(user, "Would you like to activate the evidence disposal bomb now?", "BYE BYE", list("Yes","No"))
+
+	if(i_dont_even_think_once_about_blowing_stuff_up != "Yes" || currently_exploding || QDELETED(user) || QDELETED(src) || user.can_perform_action(src, NEED_DEXTERITY|NEED_HANDS|ALLOW_RESTING))
+		return
+
 	explosion_timer = addtimer(CALLBACK(src, PROC_REF(think_fast_chucklenuts)), 5 SECONDS, (TIMER_UNIQUE|TIMER_OVERRIDE))
 	to_chat(user, span_warning("You prime [src]'s evidence disposal bomb!"))
 	log_bomber(user, "has activated a", src, "for detonation")
@@ -706,3 +698,22 @@
 	new /obj/item/food/grown/banana/bunch/monkeybomb(src)
 	// Somewhere to store it all.
 	new /obj/item/storage/backpack/messenger(src)
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher
+	name = "anti singularity case"
+	desc = "A weapon's case. Has a singularity amblem on the cover."
+	icon = 'icons/psychonaut/obj/storage/case.dmi'
+	icon_state = "antisingularity_case"
+	weapon_to_spawn = /obj/item/gun/ballistic/rocketlauncher/anomaly_catcher
+	extra_to_spawn = /obj/item/ammo_casing/rocket/anomaly_catcher
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher/Initialize(mapload)
+	. = ..()
+	atom_storage.max_specific_storage = WEIGHT_CLASS_HUGE
+	atom_storage.max_total_storage = 11
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher/PopulateContents()
+	new weapon_to_spawn (src)
+	new /obj/item/gun/energy/kinesis (src)
+	for(var/i in 1 to 2)
+		new extra_to_spawn (src)

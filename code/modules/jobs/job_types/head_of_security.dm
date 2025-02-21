@@ -40,7 +40,13 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-
+	alt_titles = list(
+		"Head of Security",
+		"Security Commander",
+		"Chief Constable",
+		"Chief of Security",
+		"Sheriff",
+	)
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
@@ -56,6 +62,7 @@
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
+		/obj/item/melee/baton/security/loaded/hos = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt

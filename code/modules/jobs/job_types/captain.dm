@@ -49,7 +49,12 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-
+	alt_titles = list(
+		"Captain",
+		"Station Commander",
+		"Commanding Officer",
+		"Site Manager",
+	)
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)
 	return "Kaptan [captain.real_name] güvertede!"
@@ -67,7 +72,7 @@
 	uniform = /obj/item/clothing/under/rank/captain
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/gold = 1,
 		/obj/item/station_charter = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/captain

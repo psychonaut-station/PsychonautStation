@@ -28,7 +28,7 @@
 	var/is_radio = !speaker || force_radio
 	var/radio_channel = FREQ_COMMON
 	var/list/target_dept = null
-	
+
 	// Contents of our message
 	var/chosen = specific_message
 
@@ -74,14 +74,14 @@
 			chosen = pick(list("Yardım!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
-				"[pick("[hallucinator.first_name()]'i gördün mü?", "[hallucinator.first_name()] isimli kişiyi arrestleyin")]",
+				"[pick("[first_name(hallucinator.name)]'i gördün mü?", "[first_name(hallucinator.name)]'i arrestleyin")]",
 				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
 				"BORGLAR MALF",
 			))
 		else
 			chosen = pick(list("[pick_list_replacements(HALLUCINATION_FILE, "suspicion")]",
 				"[pick_list_replacements(HALLUCINATION_FILE, "conversation")]",
-				"[pick_list_replacements(HALLUCINATION_FILE, "greetings")][hallucinator.first_name()]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "greetings")][first_name(hallucinator.name)]!",
 				"[pick_list_replacements(HALLUCINATION_FILE, "getout")]",
 				"[pick_list_replacements(HALLUCINATION_FILE, "weird")]",
 				"[pick_list_replacements(HALLUCINATION_FILE, "didyouhearthat")]",
@@ -94,8 +94,8 @@
 
 		chosen = capitalize(chosen)
 
-	chosen = replacetext(chosen, "%TARGETNAME%", hallucinator.first_name())
-	chosen = replacetext(chosen, "%TARGETNAME_CAP%", uppertext(hallucinator.first_name()))
+	chosen = replacetext(chosen, "%TARGETNAME%", first_name(hallucinator.name))
+	chosen = replacetext(chosen, "%TARGETNAME_CAP%", locale_uppertext(first_name(hallucinator.name)))
 
 	// Log the message
 	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [speaker.real_name], Message: [chosen]"

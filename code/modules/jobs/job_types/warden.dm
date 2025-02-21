@@ -41,6 +41,13 @@
 	)
 	rpg_title = "Jailor"
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT
+	alt_titles = list(
+		"Warden",
+		"Brig Sergeant",
+		"Dispatch Officer",
+		"Brig Governor",
+		"Jailer",
+	)
 
 /datum/outfit/job/warden
 	name = "Warden"

@@ -43,6 +43,9 @@
 	if(!SSjob.has_minimum_jobs(crew_threshold = 3, jobs = JOB_GROUP_ENGINEERS, head_jobs = list(JOB_CHIEF_ENGINEER)))
 		return FALSE
 
+	if(isnull(GLOB.main_supermatter_engine))
+		return FALSE
+
 /datum/round_event/supermatter_surge
 	announce_when = 4
 	end_when = SURGE_DURATION_MIN

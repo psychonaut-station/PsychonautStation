@@ -26,6 +26,7 @@ export type SecurityRecord = {
   trim: string;
   wanted_status: string;
   voice: string;
+  security_records: string;
 };
 
 export type Crime = {

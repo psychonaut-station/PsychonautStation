@@ -193,6 +193,12 @@
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span><br>"
 			if(advanced)
 				render_list += "<span class='info ml-1'>Subject Minor Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, TRUE)].</span><br>"
+		var/datum/record/crew/found_record = find_record(carbontarget.real_name)
+		if(advanced && !isnull(found_record) && find_functional_ntnet_relay() && is_station_level(target.z) && length(found_record.medical_notes))
+			render_list += "<span class='info ml-1'>Subject Medical Notes:</span>"
+			for(var/i in 1 to length(found_record.medical_notes))
+				var/datum/medical_note/medical_note = found_record.medical_notes[i]
+				render_list += "<br>\n\t[i]: [medical_note.content]"
 
 	// Body part damage report
 	if(iscarbon(target))
@@ -669,7 +675,7 @@
 
 /obj/item/healthanalyzer/simple/disease
 	name = "disease state analyzer"
-	desc = "Another of MeLo-Tech's dubiously useful medsci scanners, the disease analyzer is a pretty rare find these days - NT found out that giving their hospitals the lowest-common-denominator pandemic equipment resulted in too much financial loss of life to be profitable. There's rumours that the inbuilt AI is jealous of the first aid analyzer's success."
+	desc = "Another of MeLo-Tech's dubiously useful medsci scanners, the disease analyzer is a pretty rare find these days - NT found out that giving their hospitals the lowest-common-denominator pandemic equipment resulted in too much financial loss of life to be profitable. There are rumours that the inbuilt AI is jealous of the first aid analyzer's success."
 	icon_state = "disease_aid"
 	mode = SCANNER_NO_MODE
 	encouragements = list("encourages you to take your medication", "briefly displays a spinning cartoon heart", "reasures you about your condition", \

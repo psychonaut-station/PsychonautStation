@@ -131,6 +131,7 @@
 			species = target.species,
 			trim = target.trim,
 			wanted_status = target.wanted_status,
+			security_records = target.security_records
 		))
 
 	data["records"] = records
@@ -266,6 +267,7 @@
 	target.citations.Cut()
 	target.crimes.Cut()
 	target.security_note = null
+	target.security_records = ""
 	target.wanted_status = WANTED_NONE
 
 	return TRUE

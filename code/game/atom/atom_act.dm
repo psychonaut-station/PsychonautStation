@@ -150,7 +150,7 @@
 		step(harmed_atom, REVERSE_DIR(harmed_atom.dir))
 
 ///Handle the atom being slipped over
-/atom/proc/handle_slip(mob/living/carbon/slipped_carbon, knockdown_amount, obj/slipping_object, lube, paralyze, force_drop)
+/atom/proc/handle_slip(mob/living/carbon/slipped_carbon, knockdown_amount, obj/slipping_object, lube, paralyze, daze, force_drop)
 	return
 
 ///Used for making a sound when a mob involuntarily falls into the ground.
@@ -253,3 +253,9 @@
 ///This atom has been hit by a hulkified mob in hulk mode (user)
 /atom/proc/attack_hulk(mob/living/carbon/human/user)
 	SEND_SIGNAL(src, COMSIG_ATOM_HULK_ATTACK, user)
+
+/**
+ * Respond to an radiation acting on our item
+ */
+/atom/proc/rad_act(intensity)
+	return

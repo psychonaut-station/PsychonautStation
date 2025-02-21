@@ -18,7 +18,7 @@ env:
   upstream_branch: master
   commiter_name: psychonaut-ci[bot]
   commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
-  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/
+  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/,dependencies.sh
 
 jobs:
   mirror:
@@ -60,7 +60,7 @@ jobs:
             $upstream_hash = (git rev-parse FETCH_HEAD)
 
             foreach ($_ in $files) {
-              $current = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch\short-hash/$($_.item1)"
+              $current = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:pr_branch-\short-hash/$($_.item1)"
               $ours = "https://github.com/$Env:GITHUB_REPOSITORY/commits/$Env:GITHUB_REF_NAME/$($_.item1)"
               $theirs = "https://github.com/$Env:upstream_repo/commits/$upstream_hash/$($_.item1)"
 

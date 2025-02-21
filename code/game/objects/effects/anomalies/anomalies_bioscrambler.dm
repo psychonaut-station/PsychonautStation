@@ -16,7 +16,7 @@
 	/// Range of the anomaly pulse
 	var/range = 2
 
-/obj/effect/anomaly/bioscrambler/Initialize(mapload, new_lifespan, drops_core)
+/obj/effect/anomaly/bioscrambler/Initialize(mapload, new_lifespan)
 	. = ..()
 	pursuit_target = WEAKREF(find_nearest_target())
 
@@ -32,6 +32,8 @@
 		nearby.bioscramble(name)
 
 /obj/effect/anomaly/bioscrambler/move_anomaly()
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return
 	update_target()
 	if (isnull(pursuit_target))
 		return ..()

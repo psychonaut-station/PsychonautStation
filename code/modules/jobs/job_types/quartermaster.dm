@@ -37,12 +37,22 @@
 	job_flags = STATION_JOB_FLAGS | HEAD_OF_STAFF_JOB_FLAGS
 	voice_of_god_power = 1.4 //Command staff has authority
 	human_authority = JOB_AUTHORITY_NON_HUMANS_ALLOWED
+	alt_titles = list(
+		"Quartermaster",
+		"Union Requisitions Officer",
+		"Deck Chief",
+		"Warehouse Supervisor",
+		"Supply Foreman",
+		"Pretend Head of Supply",
+		"Logistics Coordinator",
+		"Cargyptian Overseer",
+	)
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
 	jobtype = /datum/job/quartermaster
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/bronze = 1,
 	)
 	id_trim = /datum/id_trim/job/quartermaster
 	id = /obj/item/card/id/advanced/silver

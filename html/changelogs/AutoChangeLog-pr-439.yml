@@ -1,0 +1,4 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - rscadd: "Round Ende Credits eklendi, eğer görmek istesemezseniz Game Preferences > UI > Show Roundend Credits tikini kapatabilirsiniz."

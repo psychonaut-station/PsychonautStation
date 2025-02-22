@@ -479,7 +479,14 @@ SUBSYSTEM_DEF(credits)
 		var/datum/admins/admin_datum = all_admins[ckey]
 		if(!(admin_datum.rank_flags() & R_AUTOADMIN))
 			continue
-		var/mutable_appearance/appearance = render_offline_appearance(ckey, our_dummy)
+		var/mutable_appearance/appearance
+		if(GLOB.preferences_datums[ckey])
+			var/datum/preferences/preferences_datum = GLOB.preferences_datums[ckey]
+			our_dummy.wipe_state()
+			appearance = new
+			appearance.appearance = preferences_datum.render_new_preview_appearance(our_dummy, TRUE)
+		else
+			appearance = render_offline_appearance(ckey, our_dummy)
 		if(!appearance)
 			continue
 		appearance.setDir(SOUTH)
@@ -501,7 +508,14 @@ SUBSYSTEM_DEF(credits)
 	patron_appearances = list()
 	var/mob/living/carbon/human/dummy/our_dummy = new()
 	for(var/ckey in all_patrons)
-		var/mutable_appearance/appearance = render_offline_appearance(ckey, our_dummy)
+		var/mutable_appearance/appearance
+		if(GLOB.preferences_datums[ckey])
+			var/datum/preferences/preferences_datum = GLOB.preferences_datums[ckey]
+			our_dummy.wipe_state()
+			appearance = new
+			appearance.appearance = preferences_datum.render_new_preview_appearance(our_dummy, TRUE)
+		else
+			appearance = render_offline_appearance(ckey, our_dummy)
 		if(!appearance)
 			continue
 		appearance.setDir(SOUTH)

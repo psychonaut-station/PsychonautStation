@@ -40,7 +40,6 @@
 	name = "Energy Sword"
 	desc = "The energy sword is an edged weapon with a blade of pure energy. The sword is small enough to be \
 			pocketed when inactive. Activating it produces a loud, distinctive noise."
-	progression_minimum = 20 MINUTES
 	item = /obj/item/melee/energy/sword/saber
 	cost = 6
 	purchasable_from = ~UPLINK_CLOWN_OPS
@@ -51,7 +50,6 @@
 			Upon hitting a target, the piston-ram will extend forward to make contact for some serious damage. \
 			Using a wrench on the piston valve will allow you to tweak the amount of gas used per punch to \
 			deal extra damage and hit targets further. Use a screwdriver to take out any attached tanks."
-	progression_minimum = 20 MINUTES
 	item = /obj/item/melee/powerfist
 	cost = 6
 	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS
@@ -59,7 +57,6 @@
 /datum/uplink_item/dangerous/rapid
 	name = "Gloves of the North Star"
 	desc = "These gloves let the user punch people very fast. Does not improve weapon attack speed or the meaty fists of a hulk."
-	progression_minimum = 20 MINUTES
 	item = /obj/item/clothing/gloves/rapid
 	cost = 8
 
@@ -86,7 +83,6 @@
 	name = "Holoparasites"
 	desc = "Though capable of near sorcerous feats via use of hardlight holograms and nanomachines, they require an \
 			organic host as a home base and source of fuel. Holoparasites come in various types and share damage with their host."
-	progression_minimum = 30 MINUTES
 	item = /obj/item/guardian_creator/tech
 	cost = 18
 	surplus = 0

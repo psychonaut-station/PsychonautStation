@@ -149,3 +149,6 @@ ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set th
 	if(fexists(PATH_TO_NEXT_MAP_JSON))
 		fdel(PATH_TO_NEXT_MAP_JSON)
 	text2file(json_encode(json_value), PATH_TO_NEXT_MAP_JSON)
+
+ADMIN_VERB(admin_revert_map, R_SERVER, "Revert Map Vote", "Revert the map vote, allowing a new vote.", ADMIN_CATEGORY_SERVER)
+	SSmap_vote.revert_next_map(user)

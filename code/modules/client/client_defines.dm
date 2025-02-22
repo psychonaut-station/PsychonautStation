@@ -275,3 +275,6 @@
 
 	/// Discord information of the client if they have linked their account and we fetched it
 	var/list/discord
+
+	/// The last name tag update runned by our client
+	COOLDOWN_DECLARE(update_nametag_cooldown)

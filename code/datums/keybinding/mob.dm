@@ -198,3 +198,31 @@
 	full_name = "View Pet Commands"
 	description = "Hold down to see all the commands you can give your pets!"
 	keybind_signal = COMSIG_KB_LIVING_VIEW_PET_COMMANDS
+	can_reuse_keybind = TRUE
+
+/datum/keybinding/mob/show_names
+	hotkey_keys = list("Shift")
+	name = "show_name_tags"
+	full_name = "Show name tags"
+	description = "Lets you see people's names below their body."
+	keybind_signal = COMSIG_KB_MOB_SHOW_NAME_TAGS_DOWN
+	can_reuse_keybind = TRUE
+
+/datum/keybinding/mob/show_names/down(client/user)
+	. = ..()
+	if(.)
+		return
+	if(COOLDOWN_FINISHED(user, update_nametag_cooldown))
+		for(var/mob/living/living in view(user.view, user.mob))
+			living.update_name_tag()
+		COOLDOWN_START(user, update_nametag_cooldown, 1 SECONDS)
+
+	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
+		name_tag.alpha = 255
+
+/datum/keybinding/mob/show_names/up(client/user)
+	. = ..()
+	if(.)
+		return
+	for(var/atom/movable/screen/plane_master/name_tags/name_tag as anything in user.mob?.hud_used.get_true_plane_masters(PLANE_NAME_TAGS))
+		name_tag.alpha = 0

@@ -674,6 +674,7 @@
 		newname = "Pet Slime"
 	target_slime.name = newname
 	target_slime.real_name = newname
+	target_slime.update_name_tag()
 	qdel(src)
 
 /obj/item/slimepotion/slime/sentience

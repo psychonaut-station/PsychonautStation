@@ -211,6 +211,7 @@
 	all_eyes += eyeobj
 	eyeobj.ai = src
 	eyeobj.name = "[name] (AI Eye)"
+	eyeobj.update_name_tag()
 	eyeobj.setLoc(loc, TRUE)
 	eyeobj.RegisterSignal(src, COMSIG_CLICK_SHIFT, TYPE_PROC_REF(/mob/eye/camera/ai, examinate_check))
 	set_eyeobj_visible(TRUE)

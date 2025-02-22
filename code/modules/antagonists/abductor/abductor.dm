@@ -8,6 +8,7 @@
 	show_to_ghosts = TRUE
 	suicide_cry = "FOR THE MOTHERSHIP!!" // They can't even talk but y'know
 	stinger_sound = 'sound/music/antag/ayylien.ogg'
+	credits_icon = "abductors"
 	var/datum/team/abductor_team/team
 	var/sub_role
 	var/outfit

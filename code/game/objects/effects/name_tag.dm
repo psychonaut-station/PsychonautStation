@@ -1,6 +1,6 @@
 /obj/effect/abstract/name_tag
 	name = ""
-	icon = null // we want nothing
+	icon = null
 	alpha = 180
 	plane = PLANE_NAME_TAGS
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

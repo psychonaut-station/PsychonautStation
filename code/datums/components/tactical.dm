@@ -46,6 +46,10 @@
 	RegisterSignal(user, COMSIG_HUMAN_GET_FORCED_NAME, PROC_REF(on_name_inquiry))
 	ADD_TRAIT(user, TRAIT_UNKNOWN, REF(src))
 
+	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
+	name_tag.hiding_references |= REF(src)
+	name_tag.hide()
+
 	current_slot = slot
 
 	on_icon_update(source)
@@ -106,6 +110,10 @@
 	current_slot = null
 	user.remove_alt_appearance("sneaking_mission[REF(src)]")
 	REMOVE_TRAIT(user, TRAIT_UNKNOWN, REF(src))
+
+	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
+	name_tag.hiding_references -= REF(src)
+	name_tag.show()
 
 ///Checks if a mob is holding us, and if so we will modify our appearance to properly match w/ the mob.
 /datum/component/tactical/proc/tactical_update(obj/item/source)

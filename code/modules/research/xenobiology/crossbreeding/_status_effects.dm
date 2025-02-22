@@ -137,6 +137,7 @@
 	var/mob/living/carbon/C = clone
 	if(istype(C) && istype(O))
 		C.real_name = O.real_name
+		C.update_name_tag()
 		O.dna.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
 	if(owner.mind)
@@ -746,6 +747,7 @@
 	var/mob/living/carbon/C = clone
 	if(istype(C) && istype(O))
 		C.real_name = O.real_name
+		C.update_name_tag()
 		O.dna.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
 	return ..()
@@ -827,6 +829,7 @@
 		var/mob/living/carbon/human/H = owner
 		originalDNA.transfer_identity(H)
 		H.real_name = originalname
+		H.update_name_tag()
 		H.updateappearance(mutcolor_update=1)
 
 /datum/status_effect/brokenpeace

@@ -101,6 +101,11 @@
 
 	//We are now going to move
 	var/add_delay = mob.cached_multiplicative_slowdown
+	if(mob.face_mouse && mob.dir != direct && !(mob.movement_type & FLYING))
+		if((NSCOMPONENT(mob.dir) && NSDIRFLIP(mob.dir) == direct) || (EWCOMPONENT(mob.dir) && EWDIRFLIP(mob.dir) == direct)) // If we're waling backwards
+			add_delay += /datum/movespeed_modifier/backward_walk::multiplicative_slowdown
+		else //Otherwise
+			add_delay += /datum/movespeed_modifier/side_walk::multiplicative_slowdown
 	var/new_glide_size = DELAY_TO_GLIDE_SIZE(add_delay * ( (NSCOMPONENT(direct) && EWCOMPONENT(direct)) ? sqrt(2) : 1 ) )
 	mob.set_glide_size(new_glide_size) // set it now in case of pulled objects
 	//If the move was recent, count using old_move_delay

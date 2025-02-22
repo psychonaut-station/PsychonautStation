@@ -195,6 +195,7 @@
 		return
 	. = combat_mode
 	combat_mode = new_mode
+
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	if(silent || !(client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode)))

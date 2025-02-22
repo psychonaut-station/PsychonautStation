@@ -59,6 +59,7 @@
 #define COMSIG_KB_LIVING_TOGGLEMOVEINTENT_DOWN "keybinding_mob_togglemoveintent_down"
 #define COMSIG_KB_LIVING_TOGGLEMOVEINTENTALT_DOWN "keybinding_mob_togglemoveintentalt_down"
 #define COMSIG_KB_LIVING_VIEW_PET_COMMANDS "keybinding_living_view_pet_commands"
+#define COMSIG_KB_LIVING_FACECURSOR_DOWN "keybinding_living_facecursor_down"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"

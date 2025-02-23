@@ -1,4 +1,0 @@
-author: "Rengan"
-delete-after: True
-changes:
-  - rscadd: "Basınca etrafımızdaki canlıların isimlerini görebilmemizi sağlayan bir keybind eklendi, Varsayılan tuş: Ctrl"

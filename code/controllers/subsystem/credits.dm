@@ -193,7 +193,7 @@ SUBSYSTEM_DEF(credits)
 		silicon_name.maptext_width = 224
 
 		var/obj/effect/cast_object/silicon_key = new
-		silicon_key.maptext = "<p align='left'>[S.mind.key]</p>"
+		silicon_key.maptext = "<p align='left'><b>[S.mind.key]</b></p>"
 		silicon_key.maptext_width = 224
 		silicon_key.maptext_x = 240
 
@@ -219,7 +219,7 @@ SUBSYSTEM_DEF(credits)
 		human_name.maptext_width = 224
 
 		var/obj/effect/cast_object/human_key = new
-		human_key.maptext = "<p align='left'>[H.last_mind.key]</p>"
+		human_key.maptext = "<p align='left'><b>[H.last_mind.key]</b></p>"
 		human_key.maptext_width = 224
 		human_key.maptext_x = 240
 

@@ -69,10 +69,14 @@
 	if(overclock_mode)
 		movedelay = movedelay / overclock_coeff
 	if(istype(turf))
-		if(turf.footstep == FOOTSTEP_SAND || turf.footstep == FOOTSTEP_GRASS)
+		if( \
+			turf.footstep == FOOTSTEP_SAND || turf.footstep == FOOTSTEP_GRASS || \
+			istype(turf, /turf/open/misc/asteroid) || istype(turf, /turf/open/lava) || \
+			istype(turf, /turf/open/misc/ice) \
+		)
 			src.movedelay = movedelay
 			return
-	src.movedelay = movedelay * 2.5
+	src.movedelay = movedelay * 2
 
 //Ore Box Controls
 

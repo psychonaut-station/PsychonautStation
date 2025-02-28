@@ -212,8 +212,12 @@
 	var/mob/living/silicon/pai/new_pai = new(src)
 	new_pai.name = candidate.name || pick(GLOB.ninja_names)
 	new_pai.real_name = new_pai.name
+<<<<<<< HEAD
 	new_pai.update_name_tag()
 	new_pai.key = candidate.ckey
+=======
+	new_pai.PossessByPlayer(candidate.ckey)
+>>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
 	set_personality(new_pai)
 	SSpai.candidates -= ckey
 	return TRUE

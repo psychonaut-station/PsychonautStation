@@ -73,8 +73,12 @@
 #define MOB_PLANT (1 << 10)
 ///The mob is a goopy creature, probably coming from xenobiology.
 #define MOB_SLIME (1 << 11)
-/// Mob is fish or water-related.
+///The mob is fish or water-related.
 #define MOB_AQUATIC (1 << 12)
+///The mob is a mining-related mob. It's the plasma, you see. Gets in ya bones.
+#define MOB_MINING (1 << 13)
+///The mob is a crustacean. Like crabs. Or lobsters.
+#define MOB_CRUSTACEAN (1 << 14)
 
 //Lung respiration type flags
 #define RESPIRATION_OXYGEN (1 << 0)
@@ -97,8 +101,15 @@
 #define BODYTYPE_SYNTHETIC (1<<5)
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
+<<<<<<< HEAD
 ///IPC
 #define BODYTYPE_IPC (1<<6)
+=======
+//The limb is plantly (and will regen if photosynthesis is active)
+#define BODYTYPE_PLANT (1<<6)
+//This limb is shadowy and will regen if shadowheal is active
+#define BODYTYPE_SHADOW (1<<7)
+>>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.

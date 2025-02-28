@@ -24,8 +24,12 @@
 
 	pai.name = chosen_name
 	pai.real_name = pai.name
+<<<<<<< HEAD
 	pai.update_name_tag()
 	pai.key = choice.key
+=======
+	pai.PossessByPlayer(choice.key)
+>>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
 	card.set_personality(pai)
 	if(SSpai.candidates[key])
 		SSpai.candidates -= key
@@ -39,7 +43,7 @@
 /mob/proc/make_pai(delete_old)
 	var/obj/item/pai_card/card = new(src)
 	var/mob/living/silicon/pai/pai = new(card)
-	pai.key = key
+	pai.PossessByPlayer(key)
 	pai.name = name
 	card.set_personality(pai)
 	if(delete_old)

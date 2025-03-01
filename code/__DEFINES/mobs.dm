@@ -101,15 +101,12 @@
 #define BODYTYPE_SYNTHETIC (1<<5)
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
-<<<<<<< HEAD
-///IPC
-#define BODYTYPE_IPC (1<<6)
-=======
 //The limb is plantly (and will regen if photosynthesis is active)
 #define BODYTYPE_PLANT (1<<6)
 //This limb is shadowy and will regen if shadowheal is active
 #define BODYTYPE_SHADOW (1<<7)
->>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
+///IPC
+#define BODYTYPE_IPC (1<<8)
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.

@@ -396,7 +396,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-<<<<<<< HEAD
 /datum/design/board/crewdata
 	name = "Crew Records Console Board"
 	desc = "Allows for the construction of circuit boards used to build a crew records console."
@@ -406,7 +405,7 @@
 		RND_CATEGORY_COMPUTER + RND_SUBCATEGORY_COMPUTER_COMMAND
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_COMMAND
-=======
+
 /datum/design/board/shuttle
 	category = list("Computer Boards", "Shuttle Machinery")
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_CARGO
@@ -422,4 +421,3 @@
 	desc = "Allows for the construction of circuit boards used to build a console that enables the targetting of custom flight locations"
 	id = "shuttle_docker"
 	build_path = /obj/item/circuitboard/computer/shuttle/docker
->>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128

@@ -24,12 +24,8 @@
 
 	pai.name = chosen_name
 	pai.real_name = pai.name
-<<<<<<< HEAD
 	pai.update_name_tag()
-	pai.key = choice.key
-=======
 	pai.PossessByPlayer(choice.key)
->>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
 	card.set_personality(pai)
 	if(SSpai.candidates[key])
 		SSpai.candidates -= key

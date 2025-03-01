@@ -1291,8 +1291,6 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 			appearance.underlays -= underlay
 	return appearance
 
-<<<<<<< HEAD
-
 /// Renders a ckey's preferences appearance from their savefile
 /proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
@@ -1382,7 +1380,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		qdel(our_human)
 
 	return appearance
-=======
+
 /**
  * Copies the passed /appearance, returns a /mutable_appearance
  *
@@ -1411,4 +1409,3 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	copy.underlays = underlays_to_keep
 
 	return copy
->>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128

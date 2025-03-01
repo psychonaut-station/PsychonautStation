@@ -803,7 +803,6 @@
 
 	items_to_add = list(/obj/item/storage/bag/plants/cyborg, /obj/item/borg/cyborg_omnitool/botany, /obj/item/plant_analyzer)
 
-<<<<<<< HEAD
 /obj/item/borg/upgrade/uclamp
 	name = "cargo cyborg clamp upgrade"
 	desc = "A upgraded hydraulic clamp replacement for the cargo model's standard clamp."
@@ -899,7 +898,7 @@
 	if (.)
 		for(var/obj/item/borg/cyborg_clamp/C in R.model)
 			C.can_carry = initial(C.can_carry)
-=======
+
 /obj/item/borg/upgrade/shuttle_blueprints
 	name = "Engineering Cyborg Shuttle Blueprint Database"
 	desc = "An upgrade to the engineering model cyborg allowing for the construction and expansion of shuttles."
@@ -909,8 +908,6 @@
 	model_flags = BORG_MODEL_ENGINEERING
 
 	items_to_add = list(/obj/item/shuttle_blueprints/borg)
-
->>>>>>> 7618427ae11eb83ef7314d2926b5f443a6440128
 
 ///This isn't an upgrade or part of the same path, but I'm gonna just stick it here because it's a tool used on cyborgs.
 //A reusable tool that can bring borgs back to life. They gotta be repaired first, though.

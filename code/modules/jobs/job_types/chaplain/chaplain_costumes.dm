@@ -330,7 +330,7 @@
 	icon = 'icons/psychonaut/obj/clothing/shoes.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/feet.dmi'
 	resistance_flags = NONE
-	can_be_tied = FALSE
+	fastening_type = SHOES_SLIPON
 
 /obj/item/clothing/suit/hooded/chaplain_hoodie/tech
 	name = "tech priest cloak"

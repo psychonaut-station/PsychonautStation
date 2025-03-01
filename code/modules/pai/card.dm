@@ -213,7 +213,7 @@
 	new_pai.name = candidate.name || pick(GLOB.ninja_names)
 	new_pai.real_name = new_pai.name
 	new_pai.update_name_tag()
-	new_pai.key = candidate.ckey
+	new_pai.PossessByPlayer(candidate.ckey)
 	set_personality(new_pai)
 	SSpai.candidates -= ckey
 	return TRUE

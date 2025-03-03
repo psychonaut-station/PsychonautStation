@@ -666,7 +666,7 @@
 		return .
 	crew_monitor = new /datum/action/item_action/crew_monitor(src)
 	crew_monitor.Grant(borg)
-	icon_state = "scanner"
+	icon_state = "crew_monitor"
 
 
 /obj/item/borg/upgrade/pinpointer/deactivate(mob/living/silicon/robot/borg, mob/living/user = usr)
@@ -898,6 +898,16 @@
 	if (.)
 		for(var/obj/item/borg/cyborg_clamp/C in R.model)
 			C.can_carry = initial(C.can_carry)
+
+/obj/item/borg/upgrade/shuttle_blueprints
+	name = "Engineering Cyborg Shuttle Blueprint Database"
+	desc = "An upgrade to the engineering model cyborg allowing for the construction and expansion of shuttles."
+	icon_state = "module_engineer"
+	require_model = TRUE
+	model_type = list(/obj/item/robot_model/engineering, /obj/item/robot_model/saboteur)
+	model_flags = BORG_MODEL_ENGINEERING
+
+	items_to_add = list(/obj/item/shuttle_blueprints/borg)
 
 ///This isn't an upgrade or part of the same path, but I'm gonna just stick it here because it's a tool used on cyborgs.
 //A reusable tool that can bring borgs back to life. They gotta be repaired first, though.

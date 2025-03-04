@@ -227,7 +227,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		return
 
 	last_words = message
-	last_words_timer = addtimer(CALLBACK(src, PROC_REF(clear_last_words)), 30 SECONDS, (TIMER_UNIQUE|TIMER_OVERRIDE)) // 3 MINUTES
+	last_words_timer = addtimer(CALLBACK(src, PROC_REF(clear_last_words)), 3 MINUTES, (TIMER_UNIQUE|TIMER_OVERRIDE))
 
 	//Get which verb is prefixed to the message before radio but after most modifications
 	message_mods[SAY_MOD_VERB] = say_mod(message, message_mods)

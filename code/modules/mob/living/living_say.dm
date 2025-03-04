@@ -186,7 +186,6 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 				var/message_len = length_char(message)
 				message = copytext_char(message, 1, health_diff) + "[message_len > health_diff ? "-.." : "..."]"
 				message = Ellipsis(message, 10, 1)
-				last_words = message
 				message_mods[WHISPER_MODE] = MODE_WHISPER_CRIT
 				succumbed = TRUE
 		else
@@ -226,6 +225,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		if(succumbed)
 			succumb()
 		return
+
+	last_words = message
+	last_words_timer = addtimer(CALLBACK(src, PROC_REF(clear_last_words)), 30 SECONDS, (TIMER_UNIQUE|TIMER_OVERRIDE)) // 3 MINUTES
 
 	//Get which verb is prefixed to the message before radio but after most modifications
 	message_mods[SAY_MOD_VERB] = say_mod(message, message_mods)

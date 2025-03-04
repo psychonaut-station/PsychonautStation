@@ -166,6 +166,8 @@
 
 	///used for database logging
 	var/last_words
+	/// Timer for clearing last_words
+	var/last_words_timer
 
 	///whether this can be picked up and held.
 	var/can_be_held = FALSE

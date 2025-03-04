@@ -3056,3 +3056,10 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(HAS_TRAIT(src, TRAIT_ANALGESIA) && !force)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
+
+/mob/living/proc/clear_last_words()
+	SIGNAL_HANDLER
+
+	if(isnull(last_words))
+		return
+	last_words = null

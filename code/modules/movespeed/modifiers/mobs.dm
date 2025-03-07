@@ -181,8 +181,13 @@
 	blacklisted_movetypes = MOVETYPES_NOT_TOUCHING_GROUND
 	multiplicative_slowdown = - /turf/open/water::slowdown
 
+<<<<<<< HEAD
 /datum/movespeed_modifier/backward_walk
 	multiplicative_slowdown = 1.5
 
 /datum/movespeed_modifier/side_walk
 	multiplicative_slowdown = 0.75
+=======
+/datum/movespeed_modifier/tail_dragger
+	multiplicative_slowdown = 4
+>>>>>>> a5528c23a22a18d65a8150c066acc0c3c4f9d082

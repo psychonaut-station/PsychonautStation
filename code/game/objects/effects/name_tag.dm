@@ -34,14 +34,21 @@
 	if(harderforce)
 		return ..()
 
-/obj/effect/abstract/name_tag/proc/hide(force = FALSE)
+/obj/effect/abstract/name_tag/proc/refresh()
 	check_references()
-	if(hiding_references.len || force)
+	if(hiding_references.len)
+		hide()
+	else
+		show()
+
+/obj/effect/abstract/name_tag/proc/hide()
+	check_references()
+	if(hiding_references.len)
 		alpha = 0
 
-/obj/effect/abstract/name_tag/proc/show(force = FALSE)
+/obj/effect/abstract/name_tag/proc/show()
 	check_references()
-	if(!hiding_references.len || force)
+	if(!hiding_references.len)
 		alpha = 255
 
 /obj/effect/abstract/name_tag/proc/check_references()

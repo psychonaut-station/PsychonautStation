@@ -86,7 +86,6 @@
 			continue // Don't spread smoke where there's already smoke!
 		for(var/mob/living/smoker in spread_turf)
 			smoke_mob(smoker, seconds_per_tick)
-			on_entered(spread_turf, smoker)
 
 		var/obj/effect/particle_effect/fluid/smoke/spread_smoke = new type(spread_turf, group, src)
 		reagents.copy_to(spread_smoke, reagents.total_volume)
@@ -139,8 +138,8 @@
 
 /obj/effect/particle_effect/fluid/smoke/proc/on_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
-	if(ismob(arrived))
-		var/mob/M = arrived
+	if(ismob(gone))
+		var/mob/M = gone
 		var/obj/effect/abstract/name_tag/name_tag = M.name_tag
 		name_tag.hiding_references -= WEAKREF(src)
 		name_tag.show()

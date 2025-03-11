@@ -1641,3 +1641,4 @@
 	if(QDELETED(name_tag))
 		return
 	name_tag.set_name(name)
+	name_tag.refresh()

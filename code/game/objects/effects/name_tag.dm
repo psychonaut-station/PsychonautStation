@@ -37,21 +37,25 @@
 /obj/effect/abstract/name_tag/proc/refresh()
 	check_references()
 	if(hiding_references.len)
-		hide()
-	else
-		show()
-
-/obj/effect/abstract/name_tag/proc/hide()
-	check_references()
-	if(hiding_references.len)
 		alpha = 0
-
-/obj/effect/abstract/name_tag/proc/show()
-	check_references()
-	if(!hiding_references.len)
+	else
 		alpha = 255
 
+/obj/effect/abstract/name_tag/proc/hide(datum/weakref/weakref)
+	if(!weakref)
+		return
+	hiding_references |= weakref
+	refresh()
+
+/obj/effect/abstract/name_tag/proc/show(datum/weakref/weakref)
+	if(!weakref)
+		return
+	hiding_references -= weakref
+	refresh()
+
 /obj/effect/abstract/name_tag/proc/check_references()
+	if(!hiding_references.len)
+		return
 	for(var/datum/weakref/weakref in hiding_references)
 		var/datum/datum = weakref.resolve()
 		if(isnull(datum))

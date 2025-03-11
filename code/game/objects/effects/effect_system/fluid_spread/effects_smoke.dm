@@ -86,6 +86,7 @@
 			continue // Don't spread smoke where there's already smoke!
 		for(var/mob/living/smoker in spread_turf)
 			smoke_mob(smoker, seconds_per_tick)
+			on_entered(spread_turf, smoker)
 
 		var/obj/effect/particle_effect/fluid/smoke/spread_smoke = new type(spread_turf, group, src)
 		reagents.copy_to(spread_smoke, reagents.total_volume)

@@ -35,12 +35,20 @@
 		return ..()
 
 /obj/effect/abstract/name_tag/proc/hide(force = FALSE)
+	check_references()
 	if(hiding_references.len || force)
 		alpha = 0
 
 /obj/effect/abstract/name_tag/proc/show(force = FALSE)
+	check_references()
 	if(!hiding_references.len || force)
 		alpha = 255
+
+/obj/effect/abstract/name_tag/proc/check_references()
+	for(var/datum/weakref/weakref in hiding_references)
+		var/datum/datum = weakref.resolve()
+		if(isnull(datum))
+			hiding_references -= weakref
 
 /obj/effect/abstract/name_tag/proc/set_name(incoming_name)
 	maptext = MAPTEXT_GRAND9K("<span style='text-align: center'>[incoming_name]</span>")

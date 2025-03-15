@@ -97,7 +97,7 @@
 	icon_state = "pineapple_muffin"
 	desc = "A delicious and spongy little cake, with pineapple."
 	tastes = list("muffin" = 3, "grape" = 1)
-	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|PINEAPPLE|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 

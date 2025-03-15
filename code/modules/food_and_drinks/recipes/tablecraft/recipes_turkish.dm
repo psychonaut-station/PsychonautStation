@@ -131,6 +131,7 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen
+	added_foodtypes = BREAKFAST
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/menemen/onion
@@ -168,6 +169,7 @@
 	)
 	result = /obj/item/food/raw_dolma
 	removed_foodtypes = BREAKFAST
+	added_foodtypes = RAW
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/etdoner_pilav

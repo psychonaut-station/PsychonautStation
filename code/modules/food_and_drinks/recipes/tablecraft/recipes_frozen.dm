@@ -337,5 +337,5 @@
 		/datum/reagent/consumable/sugar = 2
 	)
 	result = /obj/item/food/popsicle/panda
-	added_foodtypes = JUNKFOOD
+	added_foodtypes = DAIRY
 	category = CAT_ICE

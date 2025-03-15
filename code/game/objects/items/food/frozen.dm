@@ -467,5 +467,5 @@
 		/datum/reagent/consumable/sugar = 2,
 	)
 	overlay_state = "panda"
-	foodtypes = DAIRY | SUGAR
+	foodtypes = DAIRY | SUGAR | JUNKFOOD
 	crafting_complexity = FOOD_COMPLEXITY_3

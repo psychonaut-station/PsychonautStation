@@ -134,16 +134,11 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 		// Update PDA to match new trim.
 		var/obj/item/modular_computer/pda/pda = spawning.get_item_by_slot(ITEM_SLOT_BELT)
-<<<<<<< HEAD
-		if(istype(pda))
-			pda.imprint_id(spawning.real_name, assignment)
-	else
-		set_alt_title(spawning, player_client)
-=======
 		var/assignment = worn_id.get_trim_assignment()
 		if(istype(pda) && !isnull(assignment))
 			pda.imprint_id(spawning.real_name, assignment, worn_id)
->>>>>>> 05223caa015a4614a364007e0a9f09691c281a6a
+	else
+		set_alt_title(spawning, player_client)
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 

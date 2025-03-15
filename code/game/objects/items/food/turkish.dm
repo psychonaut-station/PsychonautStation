@@ -38,7 +38,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES | RAW
+	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -56,7 +56,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 5,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES
+	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -71,7 +71,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 4,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES | RAW
+	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -89,7 +89,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 6,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES
+	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -104,7 +104,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("meat" = 1, "pepper" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES | RAW
+	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -122,7 +122,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("meat" = 1, "pepper" = 1, "tomato" = 1)
-	foodtypes = MEAT | VEGETABLES
+	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
@@ -230,7 +230,7 @@
 		/datum/reagent/consumable/nutriment/protein  = 4,
 	)
 	tastes = list("rice" = 1, "chicken" = 1, "tuna" = 1)
-	foodtypes = VEGETABLES | MEAT | GRAIN
+	foodtypes = MEAT|GRAIN|SEAFOOD
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 	trash_type = /obj/item/reagent_containers/cup/bowl
@@ -245,7 +245,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1)
-	foodtypes = VEGETABLES | RAW | BREAKFAST
+	foodtypes = MEAT|VEGETABLES|RAW|BREAKFAST
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 	trash_type = /obj/item/plate
@@ -305,7 +305,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "onion" = 1)
-	foodtypes = VEGETABLES | RAW
+	foodtypes = VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_3
 

@@ -23,7 +23,7 @@
 	var/datum/universal_icon/icon_with_chassis = uni_icon('icons/effects/effects.dmi', "nothing")
 
 	for (var/body_part in body_parts)
-		icon_with_chassis.Blend(uni_icon('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', "[chassis.icon_state]_[body_part]", dir = SOUTH), ICON_OVERLAY)
+		icon_with_chassis.blend_icon(uni_icon('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', "[chassis.icon_state]_[body_part]", dir = SOUTH), ICON_OVERLAY)
 
 	return icon_with_chassis
 

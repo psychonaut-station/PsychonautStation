@@ -67,7 +67,7 @@
 	icon_state = "banana_muffin"
 	desc = "A delicious and spongy little cake, with banana."
 	tastes = list("muffin" = 3, "banana" = 1)
-	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -77,7 +77,7 @@
 	icon_state = "carrot_muffin"
 	desc = "A delicious and spongy little cake, with carrot."
 	tastes = list("muffin" = 3, "carrot" = 1)
-	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|VEGETABLES
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -87,7 +87,7 @@
 	icon_state = "watermelon_muffin"
 	desc = "A delicious and spongy little cake, with watermelon."
 	tastes = list("muffin" = 3, "watermelonslice" = 1)
-	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -97,7 +97,7 @@
 	icon_state = "pineapple_muffin"
 	desc = "A delicious and spongy little cake, with pineapple."
 	tastes = list("muffin" = 3, "grape" = 1)
-	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 
@@ -107,7 +107,7 @@
 	icon_state = "grapes_muffin"
 	desc = "A delicious and spongy little cake, with grapes"
 	tastes = list("muffin" = 3, "grapes" = 1)
-	foodtypes = GRAIN | FRUIT | SUGAR | BREAKFAST
+	foodtypes = GRAIN|DAIRY|SUGAR|BREAKFAST|FRUIT
 	venue_value = FOOD_PRICE_NORMAL
 	crafting_complexity = FOOD_COMPLEXITY_3
 

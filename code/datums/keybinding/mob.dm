@@ -212,8 +212,11 @@
 	. = ..()
 	if(.)
 		return
+	var/mob/M = user.mob
+	if(HAS_TRAIT(M, TRAIT_PROSOPAGNOSIA))
+		return
 	if(COOLDOWN_FINISHED(user, update_nametag_cooldown))
-		for(var/mob/living/living in view(user.view, user.mob))
+		for(var/mob/living/living in view(user.view, M))
 			living.update_name_tag()
 		COOLDOWN_START(user, update_nametag_cooldown, 1 SECONDS)
 

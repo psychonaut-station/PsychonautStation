@@ -62,7 +62,7 @@
 	return //voice of god speaks for us
 
 /obj/item/organ/vocal_cords/colossus/speak_with(message)
-	var/cooldown = voice_of_god(uppertext(message), owner, spans, base_multiplier)
+	var/cooldown = voice_of_god(locale_uppertext(message), owner, spans, base_multiplier)
 	next_command = world.time + (cooldown * cooldown_mod)
 
 // Anomalous crystal

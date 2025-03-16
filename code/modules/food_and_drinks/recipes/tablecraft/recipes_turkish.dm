@@ -119,6 +119,7 @@
 		/obj/item/reagent_containers/cup/bowl = 1
 	)
 	result = /obj/item/food/tavton
+	removed_foodtypes = BREAKFAST
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/menemen
@@ -130,6 +131,7 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen
+	added_foodtypes = BREAKFAST
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/menemen/onion
@@ -142,6 +144,7 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/raw_menemen/onion
+	added_foodtypes = BREAKFAST
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/iskender
@@ -165,6 +168,8 @@
 		/obj/item/food/grown/onion = 1,
 	)
 	result = /obj/item/food/raw_dolma
+	removed_foodtypes = BREAKFAST
+	added_foodtypes = RAW
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/etdoner_pilav
@@ -177,6 +182,7 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/etdoner_pilav
+	removed_foodtypes = BREAKFAST
 	category = CAT_TURKISH
 
 /datum/crafting_recipe/food/tavukdoner_pilav
@@ -189,4 +195,5 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/tavukdoner_pilav
+	removed_foodtypes = BREAKFAST
 	category = CAT_TURKISH

@@ -509,6 +509,7 @@
 		/obj/item/food/grown/banana = 1
 	)
 	result = /obj/item/food/muffin/banana
+	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
 	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/watermelonmuffin
@@ -519,6 +520,7 @@
 		/obj/item/food/watermelonslice  = 2,
 	)
 	result = /obj/item/food/muffin/watermelon
+	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
 	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/pineapplemuffin
@@ -529,6 +531,7 @@
 		/obj/item/food/grown/pineapple = 1,
 	)
 	result = /obj/item/food/muffin/pineapple
+	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
 	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/grapesmuffin
@@ -539,6 +542,7 @@
 		/obj/item/food/grown/grapes = 1,
 	)
 	result = /obj/item/food/muffin/grapes
+	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
 	category = CAT_PASTRY
 
 /datum/crafting_recipe/food/carrotmuffin
@@ -549,6 +553,7 @@
 		/obj/item/food/grown/carrot = 1,
 	)
 	result = /obj/item/food/muffin/carrot
+	added_foodtypes = BREAKFAST|SUGAR|VEGETABLES|DAIRY
 	category = CAT_PASTRY
 
 ////////////////////////////////////////////OTHER////////////////////////////////////////////

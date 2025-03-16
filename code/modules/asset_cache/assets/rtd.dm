@@ -15,22 +15,18 @@
 					var/sprite_name = sanitize_css_class_name("[tile_data.icon_file]-[tile_data.icon_state]-[dir2text(direction)]")
 					if(registered[sprite_name])
 						continue
-<<<<<<< HEAD
-					var/icon/icon = icon(tile_data.icon_file, tile_data.icon_state, direction)
+					var/datum/universal_icon/icon = uni_icon(tile_data.icon_file, tile_data.icon_state, direction)
 					if(ispath(tile_data.tile_type, /obj/item/stack/tile/carpet/neon))
 						var/turf/open/floor/carpet/neon/neon_carpet = tile_data.turf_type
 						var/color_code = replacetext(initial(neon_carpet.neon_color), "#", "")
 						sprite_name = sanitize_css_class_name("[tile_data.icon_file]-[tile_data.icon_state]-[color_code]-[dir2text(direction)]")
 						if(registered[sprite_name])
 							continue
-						var/icon/neon_icon = icon( \
-							icon = initial(neon_carpet.neon_icon) || initial(neon_carpet.icon), \
-							icon_state = initial(neon_carpet.neon_icon_state) || initial(neon_carpet.icon_state) \
+						var/datum/universal_icon/neon_icon = uni_icon( \
+							initial(neon_carpet.neon_icon) || initial(neon_carpet.icon), \
+							initial(neon_carpet.neon_icon_state) || initial(neon_carpet.icon_state) \
 						)
-						neon_icon.Blend(initial(neon_carpet.neon_color), ICON_MULTIPLY)
-						icon.Blend(neon_icon, ICON_OVERLAY)
-					Insert(sprite_name, icon)
-=======
-					insert_icon(sprite_name, uni_icon(tile_data.icon_file, tile_data.icon_state, direction))
->>>>>>> 05223caa015a4614a364007e0a9f09691c281a6a
+						neon_icon.blend_color(initial(neon_carpet.neon_color), ICON_MULTIPLY)
+						icon.blend_icon(neon_icon, ICON_OVERLAY)
+					insert_icon(sprite_name, icon)
 					registered[sprite_name] = TRUE

@@ -1,0 +1,5 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - bugfix: "Prosopagnosia quirki olanlar canlılar artık diğer canlıların isimlerini nametagler aracılığı ile göremeyecek."
+  - bugfix: "Smoke içinde nametagların gözükmesi düzeltildi."

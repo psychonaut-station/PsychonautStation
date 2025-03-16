@@ -212,6 +212,9 @@
 	. = ..()
 	if(.)
 		return
+	var/mob/living/living_mob = user.mob
+	if(istype(living_mob) && living_mob.has_quirk(/datum/quirk/prosopagnosia))
+		return
 	if(COOLDOWN_FINISHED(user, update_nametag_cooldown))
 		for(var/mob/living/living in view(user.view, user.mob))
 			living.update_name_tag()

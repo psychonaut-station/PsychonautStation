@@ -78,7 +78,7 @@
 
 	if(ispath(turf_type, /turf/open/floor/carpet/neon))
 		var/turf/open/floor/carpet/neon/neon_carpet = turf_type
-		var/color_code = "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
+		var/color_code = replacetext(initial(neon_carpet.neon_color), "#", "")
 		icon_css_class += color_code
 
 /// fill all information to be sent to the UI
@@ -149,7 +149,7 @@
 
 /obj/item/construction/rtd/ui_assets(mob/user)
 	return list(
-		get_asset_datum(/datum/asset/spritesheet/rtd),
+		get_asset_datum(/datum/asset/spritesheet_batched/rtd),
 	)
 
 /obj/item/construction/rtd/attack_self(mob/user)

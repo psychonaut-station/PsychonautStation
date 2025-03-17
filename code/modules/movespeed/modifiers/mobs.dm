@@ -186,3 +186,6 @@
 
 /datum/movespeed_modifier/side_walk
 	multiplicative_slowdown = 0.75
+
+/datum/movespeed_modifier/tail_dragger
+	multiplicative_slowdown = 4

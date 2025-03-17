@@ -1,3 +1,8 @@
 2025-03-16:
   Rengan:
   - rscadd: "T\xFCrk\xE7e olmayan fontlara t\xFCrk\xE7e karakterler eklendi"
+2025-03-17:
+  Rengan:
+  - bugfix: "Prosopagnosia quirki olanlar canl\u0131lar art\u0131k di\u011Fer canl\u0131\
+      lar\u0131n isimlerini nametagler arac\u0131l\u0131\u011F\u0131 ile g\xF6remeyecek."
+  - bugfix: "Smoke i\xE7inde nametaglar\u0131n g\xF6z\xFCkmesi d\xFCzeltildi."

@@ -49,6 +49,7 @@ export class AudioPlayer {
     const audio = (this.element = new Audio(url));
     audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     audio.playbackRate = this.options.pitch || 1;
+    audio.currentTime = this.options.start || 0;
 
     logger.log('playing', url, options);
 

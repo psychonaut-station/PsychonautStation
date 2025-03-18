@@ -5,6 +5,9 @@
 	main_feature_name = "Chassis"
 	should_generate_icons = TRUE
 
+/datum/preference/choiced/ipc_chassis/has_relevant_feature(datum/preferences/preferences)
+	return current_species_has_savekey(preferences)
+
 /datum/preference/choiced/ipc_chassis/init_possible_values()
 	return assoc_to_keys_features(SSaccessories.ipc_chassis_list)
 

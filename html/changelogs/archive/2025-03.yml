@@ -414,3 +414,16 @@
   - bugfix: "Prosopagnosia quirki olanlar canl\u0131lar art\u0131k di\u011Fer canl\u0131\
       lar\u0131n isimlerini nametagler arac\u0131l\u0131\u011F\u0131 ile g\xF6remeyecek."
   - bugfix: "Smoke i\xE7inde nametaglar\u0131n g\xF6z\xFCkmesi d\xFCzeltildi."
+2025-03-18:
+  ArcaneMusic:
+  - balance: Sheets of material and stock blocks are now subject to elastic price
+      changes. AKA, if you sell materials, their price will go down after sale and
+      will return after some time.
+  - bugfix: Stock blocks can no longer be made with no value or with a quantity of
+      zero material.
+  - bugfix: The GMM Machine can now no longer create stock blocks when unpowered.
+  - qol: The GMM machine now lights up when powered.
+  Melbert:
+  - bugfix: Plaslamen can see prefs again
+  SmArtKar:
+  - bugfix: Fixed basic mobs not idling due to nearby ghosts

@@ -427,3 +427,6 @@
   - bugfix: Plaslamen can see prefs again
   SmArtKar:
   - bugfix: Fixed basic mobs not idling due to nearby ghosts
+2025-03-19:
+  Rengan:
+  - bugfix: "Ipc chassisin Ipc olmayan \u0131rklarda g\xF6z\xFCkmesi d\xFCzeltildi."

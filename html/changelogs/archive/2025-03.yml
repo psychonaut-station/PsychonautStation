@@ -430,3 +430,6 @@
 2025-03-19:
   Rengan:
   - bugfix: "Ipc chassisin Ipc olmayan \u0131rklarda g\xF6z\xFCkmesi d\xFCzeltildi."
+2025-03-20:
+  Seefaaa:
+  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."

@@ -98,7 +98,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy, client/person_client)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -112,7 +112,8 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/employment_records = person.client?.prefs.read_preference(/datum/preference/background_data/employment_records)
 	var/exploit_records = person.client?.prefs.read_preference(/datum/preference/background_data/exploit_records)
 
-	var/mutable_appearance/character_appearance = new(person.appearance)
+	var/mutable_appearance/character_appearance = new(appearance_proxy?.appearance || person.appearance)
+
 	var/person_gender = "Other"
 	if(person.gender == "male")
 		person_gender = "Male"

@@ -98,11 +98,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-<<<<<<< HEAD
-/datum/manifest/proc/inject(mob/living/carbon/human/person, client/person_client)
-=======
-/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy)
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
+/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy, client/person_client)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -111,16 +107,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/obj/item/card/id/id_card = person.get_idcard(hand_first = FALSE)
 	var/assignment = id_card?.get_trim_assignment() || person.mind.assigned_role.title
 
-<<<<<<< HEAD
 	var/medical_records = person.client?.prefs.read_preference(/datum/preference/background_data/medical_records)
 	var/security_records = person.client?.prefs.read_preference(/datum/preference/background_data/security_records)
 	var/employment_records = person.client?.prefs.read_preference(/datum/preference/background_data/employment_records)
 	var/exploit_records = person.client?.prefs.read_preference(/datum/preference/background_data/exploit_records)
 
-	var/mutable_appearance/character_appearance = new(person.appearance)
-=======
 	var/mutable_appearance/character_appearance = new(appearance_proxy?.appearance || person.appearance)
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
+
 	var/person_gender = "Other"
 	if(person.gender == "male")
 		person_gender = "Male"

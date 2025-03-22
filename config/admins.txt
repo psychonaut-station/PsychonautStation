@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 #List users here to be made admins with the format: ckey = rank name.
 #Ckey will be converted to ckey format, lowercase with no punctuation except '@'.
 #Rank name will match anything after ' = ' and has not format requirements.
@@ -152,4 +150,3 @@ WaylandSmithy = Game Master
 NamelessFairy = Game Master
 WalterMeldron = Game Master
 san7890 = Game Master
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91

@@ -7,11 +7,8 @@
 	job_rank = ROLE_BLOB
 	ui_name = "AntagInfoBlob"
 	stinger_sound = 'sound/music/antag/blobalert.ogg'
-<<<<<<< HEAD
 	credits_icon = "blob"
-=======
 	antag_hud_name = "blob"
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
 	/// Action to release a blob infection
 	var/datum/action/innate/blobpop/pop_action
 	/// Initial points for a human blob

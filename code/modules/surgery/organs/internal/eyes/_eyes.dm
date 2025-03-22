@@ -37,15 +37,10 @@
 	/// Are these eyes immune to pepperspray?
 	var/pepperspray_protect = FALSE
 
-<<<<<<< HEAD
-	var/eye_color_left = "" //set to a hex code to override a mob's left eye color
-	var/eye_color_right = "" //set to a hex code to override a mob's right eye color
-	var/eye_icon = 'icons/mob/human/human_face.dmi'
-=======
 	var/eye_color_left = null // set to a hex code to override a mob's left eye color
 	var/eye_color_right = null // set to a hex code to override a mob's right eye color
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
 	var/eye_icon_state = "eyes"
+	var/eye_icon = 'icons/mob/human/human_face.dmi'
 	/// Do these eyes have blinking animations
 	var/blink_animation = TRUE
 	/// Icon state for iris overlays

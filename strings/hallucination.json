@@ -1,19 +1,12 @@
 {
 	"suspicion": [
-<<<<<<< HEAD
 		"Ne yaptığını gördüm",
 		"@pick(add_name)ne saklıyorsun",
 		"@pick(add_name)sen hain misin",
 		"@pick(add_name)hain",
 		"@pick(add_name)hain galiba, öldürelim mi?",
-		"@pick(add_name)"
-=======
-		"@pick(add_name)i know what you're doing",
-		"@pick(add_name)i'm watching you...",
-		"@pick(add_name)what are you hiding?",
-		"I saw that",
-		"I'm watching you"
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
+		"@pick(add_name)",
+		"Seni izliyorum"
 	],
 
 	"conversation": [

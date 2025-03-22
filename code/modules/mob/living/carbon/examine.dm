@@ -588,6 +588,10 @@
 	if(agetext)
 		. += agetext
 
+	if(mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
+		if(flavor_text)
+			. += "<span class='info'>OOC Information:</span> [flavor_text]"
+
 /// Reports all body parts which are mismatched with the user's species
 /mob/living/carbon/human/proc/get_mismatched_limb_text()
 	var/list/covered = get_covered_body_zones()
@@ -629,10 +633,6 @@
 			age_text = "withering away"
 
 	return span_notice("[p_They()] appear[p_s()] to be [age_text].")
-
-	if((mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
-		if(flavor_text)
-			. += "<span class='info'>OOC Information:</span> [flavor_text]"
 
 #undef ADD_NEWLINE_IF_NECESSARY
 #undef CARBON_EXAMINE_EMBEDDING_MAX_DIST

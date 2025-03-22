@@ -53,8 +53,7 @@
 			speaker = pick(valid_corpses)
 
 	// Get person to affect if radio hallucination
-<<<<<<< HEAD
-	var/is_radio = !speaker || force_radio
+	var/is_radio = force_radio || isnull(speaker)
 	var/radio_channel = FREQ_COMMON
 	var/list/target_dept = null
 
@@ -62,39 +61,22 @@
 	var/chosen = specific_message
 
 	if(is_radio)
-		if (prob(50))
-			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
+		if(prob(50))
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
 				radio_channel = FREQ_ENGINEERING
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_ENGINEERING)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "eng_radio")
-			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SECURITY))
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SECURITY))
 				radio_channel = FREQ_SECURITY
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SECURITY)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "sec_radio")
-			if (SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SCIENCE))
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SCIENCE))
 				radio_channel = FREQ_SCIENCE
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SCIENCE)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "sci_radio")
 
-		if (target_dept)
-			/// Pick from our department radio
-			target_dept -= hallucinator.mind
-			var/datum/mind/chosen_mind = pick(target_dept)
-			speaker = chosen_mind.current
-		else
-			/// Pick from common radio
-			var/list/humans = list()
-			for(var/datum/mind/crew_mind in get_crewmember_minds())
-				if(crew_mind.current && crew_mind.current != hallucinator)
-					humans += crew_mind.current
-			if(humans.len)
-				speaker = pick(humans)
-
-	if(!speaker)
-=======
-	var/is_radio = force_radio || isnull(speaker)
-	if(is_radio)
-		for(var/datum/mind/crew_mind in shuffle(get_crewmember_minds()))
+		var/list/crewmembers = target_dept || get_crewmember_minds()
+		for(var/datum/mind/crew_mind in shuffle(crewmembers))
 			if(crew_mind == hallucinator.mind)
 				continue
 			var/list/shared_languages = get_hallucinating_spoken_languages(crew_mind.current) & understood_languages
@@ -105,7 +87,6 @@
 			break
 
 	if(isnull(speaker))
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
 		return
 
 	// Time to generate a message.

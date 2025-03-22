@@ -406,19 +406,7 @@
       power to shuttles, nor can they be used to add unlimited shuttle power.
   - bugfix: Constructed shuttle engines now connect to shuttles when build, rather
       than needing to be unachored and then reanchored.
-<<<<<<< HEAD
-2025-03-16:
-  Rengan:
-  - rscadd: "T\xFCrk\xE7e olmayan fontlara t\xFCrk\xE7e karakterler eklendi"
-2025-03-17:
-  Rengan:
-  - bugfix: "Prosopagnosia quirki olanlar canl\u0131lar art\u0131k di\u011Fer canl\u0131\
-      lar\u0131n isimlerini nametagler arac\u0131l\u0131\u011F\u0131 ile g\xF6remeyecek."
-  - bugfix: "Smoke i\xE7inde nametaglar\u0131n g\xF6z\xFCkmesi d\xFCzeltildi."
-2025-03-18:
-=======
 2025-03-15:
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
   ArcaneMusic:
   - balance: Sheets of material and stock blocks are now subject to elastic price
       changes. AKA, if you sell materials, their price will go down after sale and
@@ -427,23 +415,12 @@
       zero material.
   - bugfix: The GMM Machine can now no longer create stock blocks when unpowered.
   - qol: The GMM machine now lights up when powered.
-<<<<<<< HEAD
-=======
   Holoo-1:
   - bugfix: fixed white space when observing in auto observe mode
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91
   Melbert:
   - bugfix: Plaslamen can see prefs again
   SmArtKar:
   - bugfix: Fixed basic mobs not idling due to nearby ghosts
-<<<<<<< HEAD
-2025-03-19:
-  Rengan:
-  - bugfix: "Ipc chassisin Ipc olmayan \u0131rklarda g\xF6z\xFCkmesi d\xFCzeltildi."
-2025-03-20:
-  Seefaaa:
-  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."
-=======
   hry-gh:
   - bugfix: icons generate properly for janicarts
 2025-03-16:
@@ -462,6 +439,8 @@
   Mothblocks:
   - rscadd: You can now craft radio jammers.
   - balance: Radio jammers have had their cost lowered from 5 TC to 1 TC.
+  Rengan:
+  - rscadd: "T\xFCrk\xE7e olmayan fontlara t\xFCrk\xE7e karakterler eklendi"
   SmArtKar:
   - bugfix: You can no longer insert infinite amounts of slime cores into advanced
       chem grenades
@@ -493,6 +472,10 @@
       from a book, you can now swap between them at will via a button in the IC tab!
   RandomDudeFromTheRim:
   - spellcheck: fixed a single typo when using Vortex Recall
+  Rengan:
+  - bugfix: "Prosopagnosia quirki olanlar canl\u0131lar art\u0131k di\u011Fer canl\u0131\
+      lar\u0131n isimlerini nametagler arac\u0131l\u0131\u011F\u0131 ile g\xF6remeyecek."
+  - bugfix: "Smoke i\xE7inde nametaglar\u0131n g\xF6z\xFCkmesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: You no longer can insert sheets into unpowered, broken or opened autolathes.
   - qol: Screwdriver/crowbar/multitool interactions on autolathes now work with left
@@ -582,6 +565,8 @@
   - bugfix: fixed a small rendering issue with fishes inside an aquarium.
   Melbert:
   - bugfix: Fixed drunkness mood printout
+  Rengan:
+  - bugfix: "Ipc chassisin Ipc olmayan \u0131rklarda g\xF6z\xFCkmesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: Fixed premium internals boxes still being stretched
   Twaticus:
@@ -629,6 +614,8 @@
       point of impact, up from a 1 tile radius.
   - code_imp: Changes floor diseases from advanced diseases into basic diseases. Should
       mostly function the same, except you can't mutate them.
+  Seefaaa:
+  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."
   timothymtorres:
   - code_imp: Remove redundant NOT operator from CALCULATE_ADJACENT_TURFS
   warbluke:
@@ -691,4 +678,3 @@
       for certain guns
   warbluke:
   - bugfix: Toner cartridges are no longer larger than the airlock sprayer.
->>>>>>> 81f4a8f5fd9406a7f099929421b44b2cedcaac91

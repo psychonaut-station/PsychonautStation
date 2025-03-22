@@ -8,6 +8,7 @@
 	ui_name = "AntagInfoBlob"
 	stinger_sound = 'sound/music/antag/blobalert.ogg'
 	credits_icon = "blob"
+	antag_hud_name = "blob"
 	/// Action to release a blob infection
 	var/datum/action/innate/blobpop/pop_action
 	/// Initial points for a human blob

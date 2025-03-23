@@ -589,6 +589,8 @@
       iron
   Rhials:
   - qol: Blobs now have a custom icon for the orbit menu/ComboHUD.
+  Seefaaa:
+  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."
   SmArtKar:
   - qol: Improved formatting on holopad controls for AI
   - bugfix: Fixed holopads softlocking AIs
@@ -614,8 +616,6 @@
       point of impact, up from a 1 tile radius.
   - code_imp: Changes floor diseases from advanced diseases into basic diseases. Should
       mostly function the same, except you can't mutate them.
-  Seefaaa:
-  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."
   timothymtorres:
   - code_imp: Remove redundant NOT operator from CALCULATE_ADJACENT_TURFS
   warbluke:
@@ -678,3 +678,9 @@
       for certain guns
   warbluke:
   - bugfix: Toner cartridges are no longer larger than the airlock sprayer.
+2025-03-23:
+  Ghommie:
+  - bugfix: Custom material toolboxes and fishing rods can now be printed with alloys
+      such a plasteel and plasmaglass.
+  Melbert:
+  - bugfix: Failing to inject no longer prints a strange message

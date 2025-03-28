@@ -277,6 +277,8 @@
 
 	set_holdable(/obj/item/clothing)
 
+/datum/storage/bag/garment/hos
+	max_slots = 20
 
 ///Mail storage bag
 /datum/storage/bag/mail

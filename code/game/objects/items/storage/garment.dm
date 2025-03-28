@@ -14,6 +14,7 @@
 /obj/item/storage/bag/garment/hos
 	name = "head of security's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the head of security."
+	storage_type = /datum/storage/bag/garment/hos
 
 /obj/item/storage/bag/garment/warden
 	name = "warden's garment bag"
@@ -70,29 +71,6 @@
 	)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-<<<<<<< HEAD
-	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/grey(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/parade(src)
-	new /obj/item/clothing/under/rank/security/head_of_security/parade/female(src)
-	new /obj/item/clothing/gloves/tackler/combat(src)
-	new /obj/item/clothing/suit/armor/hos(src)
-	new /obj/item/clothing/suit/armor/hos/hos_formal(src)
-	new /obj/item/clothing/suit/armor/hos/trenchcoat/winter(src)
-	new /obj/item/clothing/suit/armor/vest/leather(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch(src)
-	new /obj/item/clothing/glasses/hud/security/sunglasses/gars/giga(src)
-	new /obj/item/clothing/head/hats/hos/beret(src)
-	new /obj/item/clothing/head/hats/hos/cap(src)
-	new /obj/item/clothing/mask/gas/sechailer/swat(src)
-	new /obj/item/clothing/neck/cloak/hos(src)
-	new /obj/item/clothing/suit/armor/hos/trenchcoat/winter(src)
-	new /obj/item/clothing/head/hats/hos/special(src)
-	new	/obj/item/clothing/neck/cloak/hos/special(src)
-	new /obj/item/clothing/suit/armor/hos/special(src)
-=======
 	return list(
 		/obj/item/clothing/under/rank/security/head_of_security/skirt,
 		/obj/item/clothing/under/rank/security/head_of_security/alt,
@@ -111,8 +89,10 @@
 		/obj/item/clothing/head/hats/hos/cap,
 		/obj/item/clothing/mask/gas/sechailer/swat,
 		/obj/item/clothing/neck/cloak/hos,
+		/obj/item/clothing/head/hats/hos/special,
+		/obj/item/clothing/neck/cloak/hos/special,
+		/obj/item/clothing/suit/armor/hos/special,
 	)
->>>>>>> 2d25cc8dc9023d9e77acca25fefd666df0bb6f74
 
 /obj/item/storage/bag/garment/warden/PopulateContents()
 	return list(

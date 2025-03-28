@@ -627,14 +627,11 @@
 	worn_icon_state = "sheath_red"
 	w_class = WEIGHT_CLASS_BULKY
 	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
-<<<<<<< HEAD
 	unique_reskin = list(
 		"Red" = "sheath_red",
 		"Black" = "sheath_black"
 	)
-=======
 	storage_type = /datum/storage/sabre_belt
->>>>>>> 2d25cc8dc9023d9e77acca25fefd666df0bb6f74
 
 /obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()

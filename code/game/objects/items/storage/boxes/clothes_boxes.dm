@@ -205,9 +205,11 @@
 	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/chapter
 
 /obj/item/storage/box/holy/chapter/PopulateContents()
-	new /obj/item/clothing/head/helmet/chaplain/chapter(src)
-	new /obj/item/clothing/suit/chaplainsuit/armor/chapter(src)
-	new /obj/item/clothing/shoes/chapter(src)
+	return list(
+		/obj/item/clothing/head/helmet/chaplain/chapter,
+		/obj/item/clothing/suit/chaplainsuit/armor/chapter,
+		/obj/item/clothing/shoes/chapter,
+	)
 
 /obj/item/storage/box/holy/student
 	name = "Profane Scholar Kit"
@@ -280,7 +282,9 @@
 	typepath_for_preview = /obj/item/clothing/suit/hooded/chaplain_hoodie/tech
 
 /obj/item/storage/box/holy/tech/PopulateContents()
-	new /obj/item/clothing/suit/hooded/chaplain_hoodie/tech(src)
+	return list(
+		/obj/item/clothing/suit/hooded/chaplain_hoodie/tech,
+	)
 
 /obj/item/storage/box/floor_camo
 	name = "floor tile camo box"

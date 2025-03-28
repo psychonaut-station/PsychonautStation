@@ -28,6 +28,14 @@
 	allow_big_nesting = TRUE
 	max_specific_storage = WEIGHT_CLASS_BULKY
 
+/datum/storage/toolbox/guncase/anomaly_catcher
+	max_total_storage = 11
+
+/datum/storage/toolbox/guncase/anomaly_catcher/New(atom/parent, max_slots, max_specific_storage, max_total_storage)
+	. = ..()
+
+	set_holdable(exception_hold_list = /obj/item/gun/energy/kinesis)
+
 ///Double sword toolbox
 /datum/storage/toolbox/double_sword
 	max_slots = 5

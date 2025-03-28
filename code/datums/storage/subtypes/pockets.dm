@@ -215,19 +215,12 @@
 	max_total_storage,
 )
 	. = ..()
-<<<<<<< HEAD
-	set_holdable(list(/obj/item/reagent_containers/cup/glass/bottle/vodka,
-					  /obj/item/reagent_containers/cup/glass/bottle/molotov,
-					  /obj/item/reagent_containers/cup/glass/bottle/raki,
-					  /obj/item/reagent_containers/cup/glass/drinkingglass,
-					  /obj/item/ammo_box/strilka310))
-=======
->>>>>>> 2d25cc8dc9023d9e77acca25fefd666df0bb6f74
 
 	set_holdable(list(
 		/obj/item/reagent_containers/cup/glass/bottle/vodka,
-		/obj/item/reagent_containers/cup/glass/bottle/molotov,,
-		/obj/item/reagent_containers/cup/glass/drinkingglass,,
+		/obj/item/reagent_containers/cup/glass/bottle/molotov,
+		/obj/item/reagent_containers/cup/glass/bottle/raki,
+		/obj/item/reagent_containers/cup/glass/drinkingglass,
 		/obj/item/ammo_box/strilka310
 	))
 

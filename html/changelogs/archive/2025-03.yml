@@ -678,18 +678,12 @@
       for certain guns
   warbluke:
   - bugfix: Toner cartridges are no longer larger than the airlock sprayer.
-<<<<<<< HEAD
-2025-03-23:
-=======
 2025-03-22:
->>>>>>> 2d25cc8dc9023d9e77acca25fefd666df0bb6f74
   Ghommie:
   - bugfix: Custom material toolboxes and fishing rods can now be printed with alloys
       such a plasteel and plasmaglass.
   Melbert:
   - bugfix: Failing to inject no longer prints a strange message
-<<<<<<< HEAD
-=======
 2025-03-23:
   ArcaneMusic:
   - image: The civilian bounty teleporter pad and pirate bounty pads now have new
@@ -851,4 +845,3 @@
   - bugfix: Fixed toolbelts being able to unintended items
   distributivgesetz:
   - bugfix: Players on 516 can submit votes for IRV again.
->>>>>>> 2d25cc8dc9023d9e77acca25fefd666df0bb6f74

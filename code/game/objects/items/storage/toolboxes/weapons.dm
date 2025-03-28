@@ -350,3 +350,20 @@
 		/obj/item/reagent_containers/hypospray/medipen/methamphetamine,
 		/obj/item/clothing/under/rank/prisoner/nosensor,
 	)
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher
+	name = "anti singularity case"
+	desc = "A weapon's case. Has a singularity amblem on the cover."
+	icon = 'icons/psychonaut/obj/storage/case.dmi'
+	icon_state = "antisingularity_case"
+	weapon_to_spawn = /obj/item/gun/ballistic/rocketlauncher/anomaly_catcher
+	extra_to_spawn = /obj/item/ammo_casing/rocket/anomaly_catcher
+	storage_type = /datum/storage/toolbox/guncase/anomaly_catcher
+
+/obj/item/storage/toolbox/guncase/anomaly_catcher/PopulateContents()
+	. = list()
+
+	. += weapon_to_spawn
+	for(var/i in 1 to 2)
+		. += extra_to_spawn
+	. += /obj/item/gun/energy/kinesis

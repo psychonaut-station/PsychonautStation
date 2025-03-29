@@ -1,5 +1,5 @@
 ///Returns location. Returns null if no location was found.
-/proc/get_teleport_loc(turf/location, mob/target, distance = 1, density_check = FALSE, closed_turf_check = FALSE, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
+/proc/get_teleport_loc(turf/location, atom/target, distance = 1, density_check = FALSE, closed_turf_check = FALSE, errorx = 0, errory = 0, eoffsetx = 0, eoffsety = 0)
 /*
 Location where the teleport begins, target that will teleport, distance to go, density checking 0/1(yes/no), closed turf checking.
 Random error in tile placement x, error in tile placement y, and block offset.

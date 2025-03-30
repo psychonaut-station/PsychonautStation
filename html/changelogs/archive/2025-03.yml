@@ -845,3 +845,7 @@
   - bugfix: Fixed toolbelts being able to unintended items
   distributivgesetz:
   - bugfix: Players on 516 can submit votes for IRV again.
+2025-03-30:
+  AyIong:
+  - bugfix: Fixed small character preview, color matrix preview, mech preview, and
+      other previews with uses ByondUI map

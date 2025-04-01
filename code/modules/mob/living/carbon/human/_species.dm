@@ -188,6 +188,8 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	// Can we write numbers in name
 	var/allow_numbers_in_name = FALSE
 
+	var/monkey_species = /datum/species/monkey
+
 ///////////
 // PROCS //
 ///////////

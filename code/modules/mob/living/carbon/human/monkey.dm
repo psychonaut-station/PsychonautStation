@@ -9,7 +9,7 @@
 		var/cap = CONFIG_GET(number/monkeycap)
 		if (LAZYLEN(SSmobs.cubemonkeys) > cap)
 			if (spawner)
-				to_chat(spawner, span_warning("Bluespace harmonics prevent the spawning of more than [cap] monkeys on the station at one time!"))
+				to_chat(spawner, span_warning("Bluespace harmonics prevent the spawning of more than [cap] monkeys/kobolds on the station at one time!"))
 			return INITIALIZE_HINT_QDEL
 		SSmobs.cubemonkeys += src
 	return ..()
@@ -141,3 +141,12 @@ GLOBAL_DATUM(the_one_and_only_punpun, /mob/living/carbon/human/species/monkey/pu
 		file_data["relic_mask"] = wear_mask ? wear_mask.type : null
 	fdel(json_file)
 	WRITE_FILE(json_file, json_encode(file_data))
+
+/mob/living/carbon/human/species/monkey/kobold
+	race = /datum/species/monkey/kobold
+
+/mob/living/carbon/human/species/monkey/kobold/Initialize(mapload, cubespawned, mob/spawner)
+	. = ..()
+	var/datum/mutation/human/race/race_mut = dna.get_mutation(/datum/mutation/human/race)
+	race_mut.original_species = /datum/species/lizard
+	race_mut.original_name = generate_random_name_species_based(gender, species_type = /datum/species/lizard)

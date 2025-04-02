@@ -16,7 +16,6 @@
 	update_fov()
 	gravity_setup()
 	ADD_TRAIT(src, TRAIT_UNIQUE_IMMERSE, INNATE_TRAIT)
-	AddComponent(/datum/component/hitsplat)
 
 /mob/living/prepare_huds()
 	..()

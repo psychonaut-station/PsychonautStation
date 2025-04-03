@@ -3,6 +3,7 @@ import {
   FeatureChoiced,
   FeatureChoicedServerData,
   FeatureColorInput,
+  FeatureIcon,
   FeatureValueProps,
 } from './base';
 import { FeatureDropdownInput } from './dropdowns';
@@ -111,6 +112,34 @@ export const feature_arachnid_appendages: FeatureChoiced = {
   ) => {
     return <FeatureDropdownInput buttons {...props} />;
   },
+};
+
+export const feature_pony_tail: FeatureChoiced = {
+  name: 'Tail',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
+export const feature_pony_choice: FeatureChoiced = {
+  name: 'Archetype',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+
+export const feature_pony_cutie_mark: Feature<string, undefined> = {
+  name: 'Cutie Mark',
+  component: FeatureIcon,
+};
+
+export const unicorn_tk_color: Feature<string> = {
+  name: 'Aura Manifest Color',
+  component: FeatureColorInput,
 };
 
 export const feature_mcolor: Feature<string> = {

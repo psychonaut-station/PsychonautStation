@@ -117,6 +117,8 @@
 #define BODYSHAPE_DIGITIGRADE (1<<2)
 ///The limb is snouted.
 #define BODYSHAPE_SNOUTED (1<<3)
+///The limb is a pony limb.
+#define BODYSHAPE_PONY (1<<4)
 
 #define BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE (BODYTYPE_ROBOTIC | BODYTYPE_LARVA_PLACEHOLDER | BODYTYPE_GOLEM | BODYTYPE_PEG)
 #define BODYTYPE_CAN_BE_BIOSCRAMBLED(bodytype) (!(bodytype & BODYTYPE_BIOSCRAMBLE_INCOMPATIBLE))
@@ -156,6 +158,7 @@
 #define SPECIES_ZOMBIE_KROKODIL "krokodil_zombie"
 #define SPECIES_VOIDWALKER "voidwalker"
 #define SPECIES_KOBOLD "kobold"
+#define SPECIES_PONY "pony"
 
 // Like species IDs, but not specifically attached a species.
 #define BODYPART_ID_ALIEN "alien"
@@ -165,6 +168,7 @@
 #define BODYPART_ID_PSYKER "psyker"
 #define BODYPART_ID_MEAT "meat"
 #define BODYPART_ID_PEG "peg"
+#define BODYPART_ID_PONY "pony"
 
 
 //See: datum/species/var/digitigrade_customization
@@ -413,6 +417,8 @@
 #define OFFSET_SUIT "suit"
 #define OFFSET_NECK "neck"
 #define OFFSET_HELD "held"
+#define OFFSET_EYES "eyes"
+
 
 //MINOR TWEAKS/MISC
 #define AGE_MIN 17 //youngest a character can be

@@ -1,19 +1,23 @@
-//Returns the world time in english
-/proc/worldtime2text()
-	return gameTimestamp("hh:mm:ss", world.time)
-
+/// Returns UTC timestamp with the specifified format and optionally deciseconds
 /proc/time_stamp(format = "hh:mm:ss", show_ds)
-	var/time_string = time2text(world.timeofday, format)
+	var/time_string = time2text(world.timeofday, format, TIMEZONE_UTC)
 	return show_ds ? "[time_string]:[world.timeofday % 10]" : time_string
 
+/// Returns timestamp since the server started, for use with world.time
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=world.time)
+<<<<<<< HEAD
 	return time2text(wtime, format, 0)
+=======
+	return time2text(wtime, format, NO_TIMEZONE)
+>>>>>>> 05b8967b855e721bae9a3a6c7fa285d50e70aa7a
 
+///returns the current IC station time in a world.time format
 /proc/station_time(display_only = FALSE, wtime=world.time)
 	return ((((wtime - SSticker.round_start_time) * SSticker.station_time_rate_multiplier) + SSticker.gametime_offset) % 864000) - (display_only? GLOB.timezoneOffset : 0)
 
+///returns the current IC station time in a human readable format
 /proc/station_time_timestamp(format = "hh:mm:ss", wtime)
-	return time2text(station_time(TRUE, wtime), format)
+	return time2text(station_time(TRUE, wtime), format, NO_TIMEZONE)
 
 /proc/station_time_debug(force_set)
 	if(isnum(force_set))
@@ -25,9 +29,9 @@
 	else
 		SSticker.gametime_offset = CEILING(SSticker.gametime_offset, 3600)
 
-//returns timestamp in a sql and a not-quite-compliant ISO 8601 friendly format
+///returns timestamp in a sql and a not-quite-compliant ISO 8601 friendly format. Do not use for SQL, use NOW() instead
 /proc/ISOtime(timevar)
-	return time2text(timevar || world.timeofday, "YYYY-MM-DD hh:mm:ss")
+	return time2text(timevar || world.timeofday, "YYYY-MM-DD hh:mm:ss", world.timezone)
 
 
 GLOBAL_VAR_INIT(midnight_rollovers, 0)

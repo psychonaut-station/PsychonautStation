@@ -123,6 +123,36 @@
 
 // FEBRUARY
 
+<<<<<<< HEAD
+=======
+/datum/holiday/groundhog
+	name = "Groundhog Day"
+	begin_day = 2
+	begin_month = FEBRUARY
+
+/datum/holiday/groundhog/getStationPrefix()
+	return pick("Deja Vu") //I have been to this place before
+
+/datum/holiday/nz
+	name = "Waitangi Day"
+	timezones = list(TIMEZONE_NZDT, TIMEZONE_CHADT)
+	begin_day = 6
+	begin_month = FEBRUARY
+	holiday_colors = list(
+		COLOR_UNION_JACK_BLUE,
+		COLOR_WHITE,
+		COLOR_UNION_JACK_RED,
+		COLOR_WHITE,
+	)
+
+/datum/holiday/nz/getStationPrefix()
+	return pick("Aotearoa","Kiwi","Fish 'n' Chips","Kākāpō","Southern Cross")
+
+/datum/holiday/nz/greet()
+	var/nz_age = text2num(time2text(world.timeofday, "YYYY", TIMEZONE_NZST)) - 1840
+	return "On this day [nz_age] years ago, New Zealand's Treaty of Waitangi, the founding document of the nation, was signed!"
+
+>>>>>>> 05b8967b855e721bae9a3a6c7fa285d50e70aa7a
 /datum/holiday/valentines
 	name = VALENTINES
 	begin_day = 13
@@ -145,7 +175,7 @@
 	poster_icon = "holiday_cake" // is a lie
 
 /datum/holiday/birthday/greet()
-	var/game_age = text2num(time2text(world.timeofday, "YYYY")) - 2003
+	var/game_age = text2num(time2text(world.timeofday, "YYYY", world.timezone)) - 2003
 	var/Fact
 	switch(game_age)
 		if(16)
@@ -659,7 +689,7 @@
 
 /datum/holiday/easter/shouldCelebrate(dd, mm, yyyy, ddd)
 	if(!begin_month)
-		current_year = text2num(time2text(world.timeofday, "YYYY"))
+		current_year = text2num(time2text(world.timeofday, "YYYY", world.timezone))
 		var/list/easterResults = EasterDate(current_year+year_offset)
 
 		begin_day = easterResults["day"]

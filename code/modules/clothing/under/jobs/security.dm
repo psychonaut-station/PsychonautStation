@@ -30,7 +30,7 @@
 
 /obj/item/clothing/under/rank/security/officer
 	name = "security uniform"
-	desc = "A cute uwu meow jumpsuit with a belt. On the belt there are numbers and letters: 68747470733a2f2f796f7574752e62652f64517734773957675863513f73693d4b6b32546f4f4d466c4e645a576d6d45. On the other side of belt are three letters: HEX"
+	desc = "A tactical security jumpsuit for officers complete with Nanotrasen belt buckle."
 	icon_state = "rsecurity"
 	inhand_icon_state = "r_suit"
 

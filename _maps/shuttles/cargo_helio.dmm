@@ -13,7 +13,7 @@
 /obj/machinery/door/airlock/titanium{
 	name = "Supply Shuttle Airlock"
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/mineral/titanium/blue,
 /area/shuttle/supply)
 "f" = (
 /obj/structure/window/reinforced/spawner/directional/west,
@@ -108,7 +108,7 @@
 /obj/docking_port/mobile/supply{
 	dir = 4
 	},
-/turf/open/floor/plating/airless,
+/turf/open/floor/mineral/titanium/purple,
 /area/shuttle/supply)
 "M" = (
 /obj/machinery/conveyor{

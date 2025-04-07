@@ -26,15 +26,18 @@
 	suffix = "pubby"
 	name = "arrival shuttle (Pubby)"
 
-/datum/map_template/shuttle/arrival/omega
-	suffix = "omega"
-	name = "arrival shuttle (Omega)"
+/datum/map_template/shuttle/arrival/mini
+	suffix = "mini"
+	name = "arrival shuttle (Mini)"
 
 /datum/map_template/shuttle/arrival/northstar
 	suffix = "northstar"
 	name = "arrival shuttle (North Star)"
 
-/datum/map_template/shuttle/arrival/mini
-	suffix = "mini"
-	name = "arrival shuttle (Mini)"
+/datum/map_template/shuttle/arrival/nebula
+	suffix = "nebula"
+	name = "arrival shuttle (Nebula)"
 
+/datum/map_template/shuttle/arrival/helio
+	suffix = "helio"
+	name = "arrival shuttle (Helio)"

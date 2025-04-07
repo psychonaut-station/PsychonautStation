@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { Box, Button, Section, Stack, Table } from '../../components';
+import { Box, Button, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { spaceLawDescriptions } from './SpaceLawDescription';
 import { spaceLawTable } from './SpaceLawTable';

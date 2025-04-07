@@ -5,7 +5,7 @@
 // You do not need to raise this if you are adding new values that have sane defaults.
 // Only raise this value when changing the meaning/format/name/layout of an existing value
 // where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 44
+#define SAVEFILE_VERSION_MAX 48
 
 /*
 SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Carn
@@ -104,6 +104,22 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if (current_version < 43)
 		migrate_legacy_sound_toggles(savefile)
 
+	if (current_version < 45)
+		migrate_quirk_to_loadout(
+			quirk_to_migrate = "Pride Pin",
+			new_typepath = /obj/item/clothing/accessory/pride,
+			data_to_migrate = list(INFO_RESKIN = save_data?["pride_pin"]),
+		)
+	if (current_version < 46)
+		migrate_boolean_sound_prefs_to_default_volume()
+	if (current_version < 47)
+		migrate_boolean_sound_prefs_to_default_volume_v2()
+	if (current_version < 48)
+		migrate_quirk_to_loadout(
+			quirk_to_migrate = "Colorist",
+			new_typepath = /obj/item/dyespray,
+		)
+
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
 	if(!parent)
@@ -122,14 +138,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			for(var/hotkeytobind in kb.hotkey_keys)
 				if(hotkeytobind == "Unbound")
 					addedbind = TRUE
-				else if(!length(binds_by_key[hotkeytobind])) //Only bind to the key if nothing else is bound
+				else if(!length(binds_by_key[hotkeytobind]) || kb.can_reuse_keybind) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= hotkeytobind
 					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
 				if(classickeytobind == "Unbound")
 					addedbind = TRUE
-				else if(!length(binds_by_key[classickeytobind])) //Only bind to the key if nothing else is bound
+				else if(!length(binds_by_key[classickeytobind]) || kb.can_reuse_keybind) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= classickeytobind
 					addedbind = TRUE
 
@@ -141,7 +157,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 /datum/preferences/proc/announce_conflict(list/notadded)
 	to_chat(parent, "<span class='warningplain'><b><u>Keybinding Conflict</u></b></span>\n\
-					<span class='warningplain'><b>There are new <a href='?src=[REF(src)];open_keybindings=1'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</b></span>")
+					<span class='warningplain'><b>There are new <a href='byond://?src=[REF(src)];open_keybindings=1'>keybindings</a> that default to keys you've already bound. The new ones will be unbound.</b></span>")
 	for(var/item in notadded)
 		var/datum/keybinding/conflicted = item
 		to_chat(parent, span_danger("[conflicted.category]: [conflicted.full_name] needs updating"))
@@ -254,7 +270,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference_type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference_type]))
+			write_preference(preference, preference.serialize(value_cache[preference_type], src))
 
 	savefile.set_entry("lastchangelog", lastchangelog)
 	savefile.set_entry("be_special", be_special)
@@ -284,13 +300,13 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		return FALSE
 
 	// Read everything into cache
-	for (var/preference_type in GLOB.preference_entries)
-		var/datum/preference/preference = GLOB.preference_entries[preference_type]
+	// Uses priority order as some values may rely on others for creating default values
+	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
 			continue
 
-		value_cache -= preference_type
-		read_preference(preference_type)
+		value_cache -= preference.type
+		read_preference(preference.type)
 
 	//Character
 	randomise = save_data?["randomise"]
@@ -301,6 +317,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	//Alt Job Titles
+	alt_job_titles = save_data?["alt_job_titles"]
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(needs_update >= 0)
@@ -310,6 +329,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
+	alt_job_titles = SANITIZE_LIST(alt_job_titles)
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -340,7 +360,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference.type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference.type]))
+			write_preference(preference, preference.serialize(value_cache[preference.type], src))
 
 	save_data["version"] = SAVEFILE_VERSION_MAX //load_character will sanitize any bad data, so assume up-to-date.
 
@@ -359,7 +379,47 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 
+	//Alt Job Titles
+	save_data["alt_job_titles"] = alt_job_titles
+
 	return TRUE
+
+/datum/preferences/proc/switch_to_slot(new_slot)
+	// SAFETY: `load_character` performs sanitization on the slot number
+	if (!load_character(new_slot))
+		tainted_character_profiles = TRUE
+		randomise_appearance_prefs()
+		save_character()
+
+	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
+		preference_middleware.on_new_character(usr)
+
+	character_preview_view.update_body()
+
+/datum/preferences/proc/remove_current_slot()
+	PRIVATE_PROC(TRUE)
+
+	var/closest_slot
+	for (var/other_slot in default_slot - 1 to 1 step -1)
+		var/save_data = savefile.get_entry("character[other_slot]")
+		if (!isnull(save_data))
+			closest_slot = other_slot
+			break
+
+	if (isnull(closest_slot))
+		for (var/other_slot in default_slot + 1 to max_save_slots)
+			var/save_data = savefile.get_entry("character[other_slot]")
+			if (!isnull(save_data))
+				closest_slot = other_slot
+				break
+
+	if (isnull(closest_slot))
+		stack_trace("remove_current_slot() being called when there are no slots to go to, the client should prevent this")
+		return
+
+	savefile.remove_entry("character[default_slot]")
+	tainted_character_profiles = TRUE
+	switch_to_slot(closest_slot)
 
 /datum/preferences/proc/sanitize_be_special(list/input_be_special)
 	var/list/output = list()

@@ -3,19 +3,23 @@
 	icon = 'icons/obj/clothing/neck.dmi'
 	body_parts_covered = NECK
 	slot_flags = ITEM_SLOT_NECK
+	interaction_flags_click = NEED_DEXTERITY
 	strip_delay = 40
 	equip_delay_other = 40
 
 /obj/item/clothing/neck/worn_overlays(mutable_appearance/standing, isinhands = FALSE)
 	. = ..()
-	if(isinhands)
+	if(isinhands || !(body_parts_covered & HEAD))
 		return
+	if(damaged_clothes)
+		. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
 
-	if(body_parts_covered & HEAD)
-		if(damaged_clothes)
-			. += mutable_appearance('icons/effects/item_damage.dmi', "damagedmask")
-		if(GET_ATOM_BLOOD_DNA_LENGTH(src))
-			. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
+/obj/item/clothing/neck/separate_worn_overlays(mutable_appearance/standing, mutable_appearance/draw_target, isinhands, icon_file)
+	. = ..()
+	if(isinhands || !(body_parts_covered & HEAD))
+		return
+	if(GET_ATOM_BLOOD_DNA_LENGTH(src))
+		. += mutable_appearance('icons/effects/blood.dmi', "maskblood")
 
 /obj/item/clothing/neck/bowtie
 	name = "bow tie"
@@ -110,11 +114,8 @@
 	user.update_clothing(ITEM_SLOT_NECK)
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/clothing/neck/tie/alt_click_secondary(mob/user)
-	. = ..()
-	if(!user.can_perform_action(src, NEED_DEXTERITY))
-		return
-	alternate_worn_layer = alternate_worn_layer == initial(alternate_worn_layer) ? NONE : initial(alternate_worn_layer)
+/obj/item/clothing/neck/tie/click_alt_secondary(mob/user)
+	alternate_worn_layer = (alternate_worn_layer == initial(alternate_worn_layer) ? NONE : initial(alternate_worn_layer))
 	user.update_clothing(ITEM_SLOT_NECK)
 	balloon_alert(user, "wearing [alternate_worn_layer == initial(alternate_worn_layer) ? "below" : "above"] suits")
 
@@ -160,13 +161,6 @@
 	name = "blue tie"
 	icon_state = "tie_greyscale_untied"
 	greyscale_colors = "#5275b6ff"
-
-/obj/item/clothing/neck/tie/blue/secretary
-	name = "secretary tie"
-	greyscale_colors = COLOR_SECRETARY
-
-/obj/item/clothing/neck/tie/blue/secretary/tied
-	is_tied = TRUE
 
 /obj/item/clothing/neck/tie/red
 	name = "red tie"
@@ -229,6 +223,10 @@
 	desc = "An outdated medical apparatus for listening to the sounds of the human body. It also makes you look like you know what you're doing."
 	icon_state = "stethoscope"
 
+/obj/item/clothing/neck/stethoscope/Initialize(mapload)
+	. = ..()
+	AddComponent(/datum/component/adjust_fishing_difficulty, -3) //FISH DOCTOR?!
+
 /obj/item/clothing/neck/stethoscope/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] puts \the [src] to [user.p_their()] chest! It looks like [user.p_they()] won't hear much!"))
 	return OXYLOSS
@@ -246,10 +244,10 @@
 	var/heart_strength
 	var/pulse_pressure
 
-	var/obj/item/organ/internal/heart/heart = carbon_patient.get_organ_slot(ORGAN_SLOT_HEART)
-	var/obj/item/organ/internal/lungs/lungs = carbon_patient.get_organ_slot(ORGAN_SLOT_LUNGS)
-	var/obj/item/organ/internal/liver/liver = carbon_patient.get_organ_slot(ORGAN_SLOT_LIVER)
-	var/obj/item/organ/internal/appendix/appendix = carbon_patient.get_organ_slot(ORGAN_SLOT_APPENDIX)
+	var/obj/item/organ/heart/heart = carbon_patient.get_organ_slot(ORGAN_SLOT_HEART)
+	var/obj/item/organ/lungs/lungs = carbon_patient.get_organ_slot(ORGAN_SLOT_LUNGS)
+	var/obj/item/organ/liver/liver = carbon_patient.get_organ_slot(ORGAN_SLOT_LIVER)
+	var/obj/item/organ/appendix/appendix = carbon_patient.get_organ_slot(ORGAN_SLOT_APPENDIX)
 
 	var/render_list = list()//information will be packaged in a list for clean display to the user
 
@@ -348,7 +346,7 @@
 				render_list += "<span class='notice ml-1'>[target.p_Their()] pulse is [pulse_pressure] and [heart_strength].</span>\n"
 
 	//display our packaged information in an examine block for easy reading
-	to_chat(user, examine_block(jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
+	to_chat(user, boxed_message(jointext(render_list, "")), type = MESSAGE_TYPE_INFO)
 
 ///////////
 //SCARVES//
@@ -414,6 +412,8 @@
 /obj/item/clothing/neck/large_scarf
 	name = "large scarf"
 	icon_state = "large_scarf"
+	icon_preview = 'icons/obj/fluff/previews.dmi'
+	icon_state_preview = "scarf_large"
 	w_class = WEIGHT_CLASS_TINY
 	custom_price = PAYCHECK_CREW
 	greyscale_colors = "#C6C6C6#EEEEEE"
@@ -466,6 +466,10 @@
 
 /obj/item/clothing/neck/petcollar/attack_self(mob/user)
 	tagname = sanitize_name(tgui_input_text(user, "Would you like to change the name on the tag?", "Pet Naming", "Spot", MAX_NAME_LEN))
+	if (!tagname || !length(tagname))
+		name = initial(name)
+		tagname = null
+		return
 	name = "[initial(name)] - [tagname]"
 
 //////////////
@@ -490,29 +494,25 @@
 	selling = !selling
 	to_chat(user, span_notice("[src] has been set to [selling ? "'Sell'" : "'Get Price'"] mode."))
 
-/obj/item/clothing/neck/necklace/dope/merchant/afterattack(obj/item/I, mob/user, proximity)
-	. = ..()
-	if(!proximity)
-		return
-	. |= AFTERATTACK_PROCESSED_ITEM
-	var/datum/export_report/ex = export_item_and_contents(I, delete_unsold = selling, dry_run = !selling)
+/obj/item/clothing/neck/necklace/dope/merchant/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	var/datum/export_report/ex = export_item_and_contents(interacting_with, delete_unsold = selling, dry_run = !selling)
 	var/price = 0
 	for(var/x in ex.total_amount)
 		price += ex.total_value[x]
 
 	if(price)
 		var/true_price = round(price*profit_scaling)
-		to_chat(user, span_notice("[selling ? "Sold" : "Getting the price of"] [I], value: <b>[true_price]</b> credits[I.contents.len ? " (exportable contents included)" : ""].[profit_scaling < 1 && selling ? "<b>[round(price-true_price)]</b> credit\s taken as processing fee\s." : ""]"))
+		to_chat(user, span_notice("[selling ? "Sold" : "Getting the price of"] [interacting_with], value: <b>[true_price]</b> credits[interacting_with.contents.len ? " (exportable contents included)" : ""].[profit_scaling < 1 && selling ? "<b>[round(price-true_price)]</b> credit\s taken as processing fee\s." : ""]"))
 		if(selling)
 			new /obj/item/holochip(get_turf(user), true_price)
 	else
-		to_chat(user, span_warning("There is no export value for [I] or any items within it."))
+		to_chat(user, span_warning("There is no export value for [interacting_with] or any items within it."))
 
-	return .
+	return ITEM_INTERACT_BLOCKING
 
 /obj/item/clothing/neck/beads
 	name = "plastic bead necklace"
-	desc = "A cheap, plastic bead necklace. Show team spirit! Collect them! Throw them away! The posibilites are endless!"
+	desc = "A cheap, plastic bead necklace. Show team spirit! Collect them! Throw them away! The possibilities are endless!"
 	icon = 'icons/obj/clothing/neck.dmi'
 	icon_state = "beads"
 	color = "#ffffff"

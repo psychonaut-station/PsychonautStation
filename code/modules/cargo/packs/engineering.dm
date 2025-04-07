@@ -76,7 +76,7 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/inducer/orderable = 2)
 	crate_name = "inducer crate"
-	crate_type = /obj/structure/closet/crate/engineering/electrical
+	crate_type = /obj/structure/closet/crate/nakamura
 
 /datum/supply_pack/engineering/pacman
 	name = "P.A.C.M.A.N Generator Crate"
@@ -86,13 +86,13 @@
 	access_view = ACCESS_ENGINEERING
 	contains = list(/obj/machinery/power/port_gen/pacman)
 	crate_name = "\improper PACMAN generator crate"
-	crate_type = /obj/structure/closet/crate/engineering/electrical
+	crate_type = /obj/structure/closet/crate/nakamura
 
 /datum/supply_pack/engineering/power
 	name = "Power Cell Crate"
 	desc = "Looking for power overwhelming? Look no further. Contains three high-voltage power cells."
 	cost = CARGO_CRATE_VALUE * 3
-	contains = list(/obj/item/stock_parts/cell/high = 3)
+	contains = list(/obj/item/stock_parts/power_store/cell/high = 3)
 	crate_name = "power cell crate"
 	crate_type = /obj/structure/closet/crate/engineering/electrical
 
@@ -106,7 +106,6 @@
 	contains = list(/obj/machinery/power/shuttle_engine/propulsion/burst/cargo)
 	crate_name = "shuttle engine crate"
 	crate_type = /obj/structure/closet/crate/secure/engineering
-	special = TRUE
 
 /datum/supply_pack/engineering/tools
 	name = "Toolbox Crate"
@@ -199,7 +198,6 @@
 	desc = "Protect the very existence of this station with these Anti-Meteor defenses. \
 		Contains three Shield Generator Satellites."
 	cost = CARGO_CRATE_VALUE * 6
-	special = TRUE
 	access_view = ACCESS_COMMAND
 	contains = list(/obj/machinery/satellite/meteor_shield = 3)
 	crate_name= "shield sat crate"
@@ -209,7 +207,6 @@
 	name = "Shield System Control Board"
 	desc = "A control system for the Shield Generator Satellite system."
 	cost = CARGO_CRATE_VALUE * 10
-	special = TRUE
 	access_view = ACCESS_COMMAND
 	contains = list(/obj/item/circuitboard/computer/sat_control)
 	crate_name= "shield control board crate"
@@ -338,3 +335,42 @@
 					/obj/item/paper/bluespace_tap
 					)
 	crate_name = "bluespace harvester parts crate"
+
+/datum/supply_pack/engineering/portagrav
+	name = "Portable Gravity Unit Crate"
+	desc = "Contains a portable gravity unit, to make the clown float into the ceiling."
+	cost = CARGO_CRATE_VALUE * 4
+	access_view = ACCESS_ENGINEERING
+	contains = list(/obj/machinery/power/portagrav = 1)
+	crate_name = "portable gravity unit crate"
+	crate_type = /obj/structure/closet/crate/engineering
+
+/datum/supply_pack/engine/particle_accelerator
+	name = "Particle Accelerator Parts"
+	desc = "A supermassive black hole or hyper-powered tesla ball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
+	cost = 3000
+	contains = list(
+		/obj/item/paper/guides/jobs/engineering/pa = 1,
+		/obj/item/circuitboard/machine/pa/control_box = 1,
+		/obj/item/circuitboard/machine/pa/end_cap = 1,
+		/obj/item/circuitboard/machine/pa/power_box = 1,
+		/obj/item/circuitboard/machine/pa/fuel_chamber = 1,
+		/obj/item/circuitboard/machine/pa/particle_emitter = 3)
+	crate_name = "particle accelerator parts crate"
+	dangerous = TRUE
+
+/datum/supply_pack/engine/singulo_gen
+	name = "Singularity Generator Crate"
+	desc = "The key to unlocking the power of Lord Singuloth. Particle Accelerator not included."
+	cost = 5000
+	contains = list(/obj/machinery/the_singularitygen = 1)
+	crate_name = "singularity generator crate"
+	dangerous = TRUE
+
+/datum/supply_pack/engine/tesla_gen
+	name = "Tesla Generator Crate"
+	desc = "The key to unlocking the power of the Tesla energy ball. Particle Accelerator not included."
+	cost = 5000
+	contains = list(/obj/machinery/the_singularitygen/tesla = 1)
+	crate_name = "tesla generator crate"
+	dangerous = TRUE

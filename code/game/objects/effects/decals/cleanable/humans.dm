@@ -75,9 +75,15 @@
 	plane = GAME_PLANE
 	vis_flags = VIS_INHERIT_PLANE
 	alpha = 180
+	is_mopped = FALSE
 
 /obj/effect/decal/cleanable/blood/splatter/over_window/NeverShouldHaveComeHere(turf/here_turf)
 	return isgroundlessturf(here_turf)
+
+/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	icon_state = "greyscale_streak1"
+	random_icon_states = list("greyscale_streak1", "greyscale_streak2", "greyscale_streak4")
 
 /obj/effect/decal/cleanable/blood/tracks
 	icon_state = "tracks"
@@ -87,22 +93,35 @@
 	dryname = "dried tracks"
 	drydesc = "Some old bloody tracks left by wheels. Machines are evil, perhaps."
 
-/obj/effect/decal/cleanable/trail_holder //not a child of blood on purpose
+/obj/effect/decal/cleanable/blood/trail_holder
 	name = "blood"
-	icon = 'icons/effects/blood.dmi'
 	desc = "Your instincts say you shouldn't be following these."
+	icon = 'icons/effects/blood.dmi'
+	icon_state = null
+	random_icon_states = null
 	beauty = -50
 	var/list/existing_dirs = list()
 
-/obj/effect/decal/cleanable/trail_holder/can_bloodcrawl_in()
-	return TRUE
+/obj/effect/decal/cleanable/blood/trail_holder/replace_decal(obj/effect/decal/cleanable/blood/trail_holder/blood_decal)
+	if(blood_state != blood_decal.blood_state)
+		return FALSE
+	return ..()
+
+// normal version of the above trail holder object for use in less convoluted things
+/obj/effect/decal/cleanable/blood/trails
+	desc = "Looks like a corpse was smeared all over the floor like ketchup. Kinda makes you hungry."
+	random_icon_states = list("trails_1", "trails_2")
+	icon_state = "trails_1"
+	beauty = -50
+	dryname = "dried tracks"
+	drydesc = "Looks like a corpse was smeared all over the floor like ketchup, but it's all dried up and nasty now, ew. You lose some of your appetite."
 
 /obj/effect/decal/cleanable/blood/gibs
 	name = "gibs"
 	desc = "They look bloody and gruesome."
 	icon = 'icons/effects/blood.dmi'
 	icon_state = "gib1"
-	layer = LOW_OBJ_LAYER
+	layer = GIB_LAYER
 	plane = GAME_PLANE
 	random_icon_states = list("gib1", "gib2", "gib3", "gib4", "gib5", "gib6")
 	mergeable_decal = FALSE
@@ -111,6 +130,8 @@
 	drydesc = "They look bloody and gruesome while some terrible smell fills the air."
 	decal_reagent = /datum/reagent/consumable/liquidgibs
 	reagent_amount = 5
+
+	is_mopped = TRUE // probably shouldn't be, but janitor powercreep
 
 /obj/effect/decal/cleanable/blood/gibs/Initialize(mapload, list/datum/disease/diseases)
 	. = ..()
@@ -263,9 +284,9 @@
 
 	for(var/Ddir in GLOB.cardinals)
 		if(old_entered_dirs & Ddir)
-			entered_dirs |= angle2dir_cardinal(dir2angle(Ddir) + ang_change)
+			entered_dirs |= turn_cardinal(Ddir, ang_change)
 		if(old_exited_dirs & Ddir)
-			exited_dirs |= angle2dir_cardinal(dir2angle(Ddir) + ang_change)
+			exited_dirs |= turn_cardinal(Ddir, ang_change)
 
 	update_appearance()
 	return ..()
@@ -287,7 +308,7 @@
 
 /obj/effect/decal/cleanable/blood/footprints/update_icon()
 	. = ..()
-	alpha = min(BLOODY_FOOTPRINT_BASE_ALPHA + (255 - BLOODY_FOOTPRINT_BASE_ALPHA) * bloodiness / (BLOOD_ITEM_MAX / 2), 255)
+	alpha = max(BLOODY_FOOTPRINT_BASE_ALPHA, min(255 * (bloodiness / 15), 255))
 
 //Cache of bloody footprint images
 //Key:
@@ -314,7 +335,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 /obj/effect/decal/cleanable/blood/footprints/examine(mob/user)
 	. = ..()
 	if((shoe_types.len + species_types.len) > 0)
-		. += "You recognise the [name] as belonging to:"
+		. += "You recognise \the [src] as belonging to:"
 		for(var/sole in shoe_types)
 			var/obj/item/clothing/item = sole
 			var/article = initial(item.gender) == PLURAL ? "Some" : "A"
@@ -345,6 +366,9 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	pass_flags = PASSTABLE | PASSGRILLE
 	icon_state = "hitsplatter1"
 	random_icon_states = list("hitsplatter1", "hitsplatter2", "hitsplatter3")
+	plane = GAME_PLANE
+	layer = ABOVE_WINDOW_LAYER
+	is_mopped = FALSE
 	/// The turf we just came from, so we can back up when we hit a wall
 	var/turf/prev_loc
 	/// The cached info about the blood
@@ -441,6 +465,51 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	if(!the_window.fulltile)
 		return
 	var/obj/effect/decal/cleanable/blood/splatter/over_window/final_splatter = new
+	final_splatter.forceMove(the_window)
+	the_window.vis_contents += final_splatter
+	the_window.bloodied = TRUE
+	qdel(src)
+
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale
+	name = "blood splatter"
+	icon = 'icons/psychonaut/effects/blood.dmi'
+	icon_state = "greyscale_hitsplatter1"
+	random_icon_states = list("greyscale_hitsplatter1", "hitsplatter2", "hitsplatter3")
+
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale/Bump(atom/bumped_atom)
+	if(!iswallturf(bumped_atom) && !istype(bumped_atom, /obj/structure/window))
+		qdel(src)
+		return
+
+	if(istype(bumped_atom, /obj/structure/window))
+		var/obj/structure/window/bumped_window = bumped_atom
+		if(!bumped_window.fulltile)
+			hit_endpoint = TRUE
+			qdel(src)
+			return
+
+	hit_endpoint = TRUE
+	if(isturf(prev_loc))
+		abstract_move(bumped_atom)
+		skip = TRUE
+		//Adjust pixel offset to make splatters appear on the wall
+		if(istype(bumped_atom, /obj/structure/window))
+			land_on_window(bumped_atom)
+		else
+			var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new(prev_loc)
+			final_splatter.color = color
+			final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
+			final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
+	else // This will only happen if prev_loc is not even a turf, which is highly unlikely.
+		abstract_move(bumped_atom)
+		qdel(src)
+
+/// A special case for hitsplatters hitting windows, since those can actually be moved around, store it in the window and slap it in the vis_contents
+/obj/effect/decal/cleanable/blood/hitsplatter/greyscale/land_on_window(obj/structure/window/the_window)
+	if(!the_window.fulltile)
+		return
+	var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new
+	final_splatter.color = color
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE

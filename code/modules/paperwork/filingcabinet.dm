@@ -56,7 +56,7 @@
 		icon_state = "[initial(icon_state)]-open"
 		sleep(0.5 SECONDS)
 		icon_state = initial(icon_state)
-	else if(!user.combat_mode)
+	else if(!user.combat_mode || (P.item_flags & NOBLUDGEON))
 		to_chat(user, span_warning("You can't put [P] in [src]!"))
 	else
 		return ..()
@@ -83,7 +83,7 @@
 
 	return data
 
-/obj/structure/filingcabinet/ui_act(action, params)
+/obj/structure/filingcabinet/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	. = ..()
 	if(.)
 		return
@@ -104,7 +104,7 @@
 	return ..()
 
 /obj/structure/filingcabinet/attack_self_tk(mob/user)
-	. = COMPONENT_CANCEL_ATTACK_CHAIN
+	. = ITEM_INTERACT_BLOCKING
 	if(contents.len)
 		if(prob(40 + contents.len * 5))
 			var/obj/item/I = pick(contents)
@@ -152,7 +152,10 @@
 		var/obj/item/paper/med_record_paper = new /obj/item/paper(src)
 		var/med_record_text = "<CENTER><B>Medical Record</B></CENTER><BR>"
 		med_record_text += "Name: [record.name] Rank: [record.rank]<BR>\nGender: [record.gender]<BR>\nAge: [record.age]<BR>"
-		med_record_text += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [record.blood_type]<BR>\nDNA: [record.dna_string]<BR>\n<BR>\nPhysical Status: [record.physical_status]<BR>\nMental Status: [record.mental_status]<BR>\nMinor Disabilities: [record.minor_disabilities]<BR>\nDetails: [record.minor_disabilities_desc]<BR>\n<BR>\nMajor Disabilities: [record.major_disabilities]<BR>\nDetails: [record.major_disabilities_desc]<BR>\n<BR>\nImportant Notes:<BR>\n\t[record.medical_notes]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
+		med_record_text += "<BR>\n<CENTER><B>Medical Data</B></CENTER><BR>\nBlood Type: [record.blood_type]<BR>\nDNA: [record.dna_string]<BR>\n<BR>\nPhysical Status: [record.physical_status]<BR>\nMental Status: [record.mental_status]<BR>\nMinor Disabilities: [record.minor_disabilities]<BR>\nDetails: [record.minor_disabilities_desc]<BR>\n<BR>\nMajor Disabilities: [record.major_disabilities]<BR>\nDetails: [record.major_disabilities_desc]<BR>\n<BR>\nImportant Notes:"
+		for(var/datum/medical_note/medical_note in record.medical_notes)
+			med_record_text += "<BR>\n\t[medical_note.content]"
+		med_record_text += "<BR>\n[record.medical_records]<BR>\n<BR>\n<CENTER><B>Comments/Log</B></CENTER><BR>"
 		med_record_text += "</TT>"
 		med_record_paper.add_raw_text(med_record_text)
 		med_record_paper.name = "paper - '[record.name]'"
@@ -203,4 +206,3 @@ GLOBAL_LIST_EMPTY(employmentCabinets)
 		fillCurrent()
 		virgin = FALSE
 	return ..()
-

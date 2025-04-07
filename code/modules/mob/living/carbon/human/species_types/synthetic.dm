@@ -42,7 +42,7 @@
 	sexes = FALSE
 	inherent_biotypes = MOB_ROBOTIC | MOB_HUMANOID
 	meat = null
-	mutanttongue = /obj/item/organ/internal/tongue/robot
+	mutanttongue = /obj/item/organ/tongue/robot
 	mutantstomach = null
 	mutantheart = null
 	mutantliver = null
@@ -65,7 +65,7 @@
 	var/old_physique = MALE
 	var/old_age = 30
 
-/datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species)
+/datum/species/synthetic/on_species_gain(mob/living/carbon/human/C, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 
 	old_gender = C.gender
@@ -82,7 +82,7 @@
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC_ADVANCED]
+	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 
 	sec_hud.show_to(C)
 	health_hud.show_to(C)
@@ -98,7 +98,7 @@
 
 	var/datum/atom_hud/sec_hud = GLOB.huds[DATA_HUD_SECURITY_ADVANCED]
 	var/datum/atom_hud/health_hud = GLOB.huds[DATA_HUD_MEDICAL_ADVANCED]
-	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC_ADVANCED]
+	var/datum/atom_hud/diagnostic_hud = GLOB.huds[DATA_HUD_DIAGNOSTIC]
 
 	sec_hud.hide_from(C)
 	health_hud.hide_from(C)

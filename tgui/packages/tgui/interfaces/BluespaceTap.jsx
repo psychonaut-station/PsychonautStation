@@ -8,8 +8,8 @@ import {
   NoticeBox,
   Section,
   Slider,
-} from '../components';
-import { formatPower } from '../format';
+} from 'tgui-core/components';
+import { formatPower } from 'tgui-core/format';
 import { Window } from '../layouts';
 
 export const BluespaceTap = (props, context) => {

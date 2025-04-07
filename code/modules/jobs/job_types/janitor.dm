@@ -31,6 +31,15 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "slip"
+	alt_titles = list(
+		"Janitor",
+		"Custodian",
+		"Custodial Technician",
+		"Sanitation Technician",
+		"Maintenance Technician",
+		"Concierge",
+		"Maid",
+	)
 
 /datum/outfit/job/janitor
 	name = "Janitor"

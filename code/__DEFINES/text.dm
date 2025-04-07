@@ -58,6 +58,12 @@
 /// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message.
 #define STRIP_HTML_FULL(text, limit) (GLOB.html_tags.Replace(copytext(text, 1, limit), ""))
 
+/// Simply removes the < and > characters, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))
+
+/// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_FULL(text, limit) (GLOB.html_tags.Replace(copytext_char(text, 1, limit), ""))
+
 /**
  * stuff like `copytext(input, length(input))` will trim the last character of the input,
  * because DM does it so it copies until the char BEFORE the `end` arg, so we need to bump `end` by 1 in these cases.
@@ -114,3 +120,7 @@
 #define SPLASH_FILE "splashes.json"
 ///File location for mother hallucination lines
 #define MOTHER_FILE "mother.json"
+
+#define ALPHABET list("a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z")
+#define VOWELS list("a", "e", "i", "o", "u")
+#define CONSONANTS (ALPHABET - VOWELS)

@@ -226,17 +226,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-/datum/design/plumbing_rcd_sci
-	name = "Research Plumbing Constructor"
-	id = "plumbing_rcd_sci"
-	build_type = PROTOLATHE | AWAY_LATHE
-	materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT*37.5, /datum/material/glass =SHEET_MATERIAL_AMOUNT*18.75, /datum/material/plastic =HALF_SHEET_MATERIAL_AMOUNT)
-	build_path = /obj/item/construction/plumbing/research
-	category = list(
-		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_PLUMBING
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
-
 /datum/design/plumbing_rcd_service
 	name = "Service Plumbing Constructor"
 	id = "plumbing_rcd_service"
@@ -436,3 +425,13 @@
 		RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING_ADVANCED
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING
+
+/datum/design/shuttle_blueprints
+	name = "Shuttle Blueprints"
+	desc = "Blueprints suitable for constructing shuttles"
+	id = "shuttle_blueprints"
+	build_type = PROTOLATHE
+	materials = list(/datum/material/plastic = HALF_SHEET_MATERIAL_AMOUNT)
+	build_path = /obj/item/shuttle_blueprints
+	category = list(RND_CATEGORY_TOOLS + RND_SUBCATEGORY_TOOLS_ENGINEERING)
+	departmental_flags = DEPARTMENT_BITFLAG_CARGO | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_SCIENCE

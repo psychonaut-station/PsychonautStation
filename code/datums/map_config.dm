@@ -40,12 +40,16 @@
 	var/job_changes = list()
 	/// List of additional areas that count as a part of the library
 	var/library_areas = list()
+	/// Boolean - if TRUE, the "Up" and "Down" traits are automatically distributed to the map's z-levels. If FALSE; they're set via JSON.
+	var/height_autosetup = TRUE
 
 	/// List of unit tests that are skipped when running this map
 	var/list/skipped_tests
 
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
+
+	var/list/picked_rooms = list()
 
 /**
  * Proc that simply loads the default map config, which should always be functional.
@@ -208,6 +212,22 @@
 				continue
 			library_areas += path
 
+	if("room_templates" in json)
+		if(!islist(json["room_templates"]))
+			log_world("map_config \"room_templates\" field is missing or invalid!")
+			return
+		var/list/L = json["room_templates"]
+		for(var/key in L)
+			var/value = L[key]
+			var/path = text2path(value)
+			if(!ispath(path,/datum/map_template/modular_room)) // Outdated
+				stack_trace("Invalid path in mapping config for room templates: \[[value]\]")
+				continue
+			picked_rooms[key] = value
+
+	if ("height_autosetup" in json)
+		height_autosetup = json["height_autosetup"]
+
 #ifdef UNIT_TESTS
 	// Check for unit tests to skip, no reason to check these if we're not running tests
 	for(var/path_as_text in json["ignored_unit_tests"])
@@ -219,7 +239,7 @@
 #endif
 
 	defaulted = FALSE
-	return TRUE
+	return json
 #undef CHECK_EXISTS
 
 /datum/map_config/proc/GetFullMapPaths()

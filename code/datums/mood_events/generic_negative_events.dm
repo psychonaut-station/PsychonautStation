@@ -33,6 +33,11 @@
 	mood_change = -2
 	timeout = 3 MINUTES
 
+/datum/mood_event/inked
+	description = "I've been splashed with squid ink. Tastes like salt."
+	mood_change = -3
+	timeout = 3 MINUTES
+
 /datum/mood_event/slipped
 	description = "I slipped. I should be more careful next time..."
 	mood_change = -2
@@ -53,24 +58,9 @@
 	mood_change = -8
 	timeout = 5 MINUTES
 
-/datum/mood_event/depression_minimal
-	description = "I feel a bit down."
-	mood_change = -10
-	timeout = 2 MINUTES
-
-/datum/mood_event/depression_mild
+/datum/mood_event/depression
 	description = "I feel sad for no particular reason."
 	mood_change = -12
-	timeout = 2 MINUTES
-
-/datum/mood_event/depression_moderate
-	description = "I feel miserable."
-	mood_change = -14
-	timeout = 2 MINUTES
-
-/datum/mood_event/depression_severe
-	description = "I've lost all hope."
-	mood_change = -16
 	timeout = 2 MINUTES
 
 /datum/mood_event/shameful_suicide //suicide_acts that return SHAME, like sord
@@ -163,12 +153,12 @@
 	mood_change = -3
 
 /datum/mood_event/claustrophobia
-	description = "Why do I feel trapped?!  Let me out!!!"
+	description = "Why do I feel trapped?! Let me out!!!"
 	mood_change = -7
 	timeout = 1 MINUTES
 
 /datum/mood_event/bright_light
-	description = "I hate it in the light...I need to find a darker place..."
+	description = "I hate it in the light... I need to find a darker place..."
 	mood_change = -12
 
 /datum/mood_event/family_heirloom_missing
@@ -212,15 +202,20 @@
 		return
 	return ..()
 
+/datum/mood_event/startled
+	description = "Hearing that word made me think about something scary."
+	mood_change = -1
+	timeout = 1 MINUTES
+
+/datum/mood_event/phobia
+	description = "I saw something very frightening."
+	mood_change = -4
+	timeout = 4 MINUTES
+
 /datum/mood_event/spooked
 	description = "The rattling of those bones... It still haunts me."
 	mood_change = -4
 	timeout = 4 MINUTES
-
-/datum/mood_event/loud_gong
-	description = "That loud gong noise really hurt my ears!"
-	mood_change = -3
-	timeout = 2 MINUTES
 
 /datum/mood_event/notcreeping
 	description = "The voices are not happy, and they painfully contort my thoughts into getting back on task."
@@ -301,20 +296,10 @@
 	mood_change = -25
 	timeout = 4 MINUTES
 
-/datum/mood_event/high_five_alone
-	description = "I tried getting a high-five with no one around, how embarassing!"
-	mood_change = -2
-	timeout = 60 SECONDS
-
 /datum/mood_event/high_five_full_hand
 	description = "Oh god, I don't even know how to high-five correctly..."
 	mood_change = -1
 	timeout = 45 SECONDS
-
-/datum/mood_event/left_hanging
-	description = "But everyone loves high fives! Maybe people just... hate me?"
-	mood_change = -2
-	timeout = 90 SECONDS
 
 /datum/mood_event/too_slow
 	description = "NO! HOW COULD I BE... TOO SLOW???"
@@ -332,10 +317,20 @@
 	mood_change *= people_laughing_at_you
 	return ..()
 
-//These are unused so far but I want to remember them to use them later
 /datum/mood_event/surgery
 	description = "THEY'RE CUTTING ME OPEN!!"
 	mood_change = -8
+	var/surgery_completed = FALSE
+
+/datum/mood_event/surgery/success
+	description = "That surgery really hurt... Glad it worked, I guess..."
+	timeout = 3 MINUTES
+	surgery_completed = TRUE
+
+/datum/mood_event/surgery/failure
+	description = "AHHHHHGH! THEY FILLETED ME ALIVE!"
+	timeout = 10 MINUTES
+	surgery_completed = TRUE
 
 /datum/mood_event/bald
 	description = "I need something to cover my head..."
@@ -380,14 +375,19 @@
 	description = "I feel off-balance without my tail."
 	mood_change = -2
 
-/datum/mood_event/tail_regained_right
-	description = "My tail is back, but that was traumatic..."
-	mood_change = -2
-	timeout = 5 MINUTES
-
 /datum/mood_event/tail_regained_wrong
 	description = "Is this some kind of sick joke?! This is NOT the right tail."
 	mood_change = -12 // -8 for tail still missing + -4 bonus for being frakenstein's monster
+	timeout = 5 MINUTES
+
+/datum/mood_event/tail_regained_species
+	description = "This tail is not mine, but at least it balances me out..."
+	mood_change = -5
+	timeout = 5 MINUTES
+
+/datum/mood_event/tail_regained_right
+	description = "My tail is back, but that was traumatic..."
+	mood_change = -2
 	timeout = 5 MINUTES
 
 /datum/mood_event/burnt_wings
@@ -491,6 +491,41 @@
 
 //Used by the Veteran Advisor trait job
 /datum/mood_event/desentized
-	description = "Nothing will ever rival with what I seen in the past..."
+	description = "Nothing will ever rival what I've seen in the past..."
 	mood_change = -3
 	special_screen_obj = "mood_desentized"
+
+//Used for the psychotic brawling martial art, if the person is a pacifist.
+/datum/mood_event/pacifism_bypassed
+	description = "I DIDN'T MEAN TO HURT THEM!"
+	mood_change = -20
+	timeout = 10 MINUTES
+
+//Gained when you're hit over the head with wrapping paper or cardboard roll
+/datum/mood_event/bapped
+	description = "Ow.. my head, I feel a bit foolish now!"
+	mood_change = -1
+	timeout = 3 MINUTES
+
+/datum/mood_event/bapped/add_effects()
+	// Felinids apparently hate being hit over the head with cardboard
+	if(isfelinid(owner))
+		mood_change = -2
+
+/datum/mood_event/encountered_evil
+	description = "I didn't want to believe it, but there are people out there that are genuinely evil."
+	mood_change = -4
+	timeout = 1 MINUTES
+
+/datum/mood_event/smoke_in_face
+	description = "Cigarette smoke is disgusting."
+	mood_change = -3
+	timeout = 30 SECONDS
+
+/datum/mood_event/smoke_in_face/add_effects(param)
+	if(HAS_TRAIT(owner, TRAIT_ANOSMIA))
+		description = "Cigarette smoke is unpleasant."
+		mood_change = -1
+	if(HAS_TRAIT(owner, TRAIT_SMOKER))
+		description = "Blowing smoke in my face, really?"
+		mood_change = 0

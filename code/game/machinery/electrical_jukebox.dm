@@ -1,8 +1,8 @@
-#define STOP(src) "(<a href='?src=[REF(src)];stop=1'>STOP</a>)"
-#define REMOVEQUEUE(src, track) "(<a href='?src=[REF(src)];removequeue=[REF(track)]'>REMOVE</a>)"
-#define DENYREQUEST(src, track) "(<a href='?src=[REF(src)];deny=[REF(track)]'>DENY</a>)"
-#define BANJUKEBOX(src, client) "(<a href='?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
-#define UNBANJUKEBOX(src, client) "(<a href='?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
+#define STOP(src) "(<a href='byond://?src=[REF(src)];stop=1'>STOP</a>)"
+#define REMOVEQUEUE(src, track) "(<a href='byond://?src=[REF(src)];removequeue=[REF(track)]'>REMOVE</a>)"
+#define DENYREQUEST(src, track) "(<a href='byond://?src=[REF(src)];deny=[REF(track)]'>DENY</a>)"
+#define BANJUKEBOX(src, client) "(<a href='byond://?src=[REF(src)];ban=[REF(client)]'>JUKEBOX BAN</a>)"
+#define UNBANJUKEBOX(src, client) "(<a href='byond://?src=[REF(src)];unban=[REF(client)]'>UNBAN</a>)"
 
 /obj/machinery/electrical_jukebox
 	name = "electrical jukebox"
@@ -163,10 +163,10 @@
 		var/client/client = GLOB.directory[ckey(track.mob_ckey)]
 
 		if(!queued)
-			log_admin("[key_name(client)] played web sound [track.webpage_url] on [src] at [area_name]")
+			log_jukebox("[key_name(client)] played web sound [track.webpage_url] on [src] at [area_name]")
 			message_admins("[key_name(client, TRUE)] played web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(client.mob)] [ADMIN_JMP(src)] [STOP(src)] [BANJUKEBOX(src, client)]")
 		else
-			log_admin("Playing web sound [track.webpage_url] on [src] added by [key_name(client)] at [area_name]")
+			log_jukebox("Playing web sound [track.webpage_url] on [src] added by [key_name(client)] at [area_name]")
 			message_admins("Playing web sound [track.webpage_url_html] on [src] added by [key_name(client, TRUE)] at [area_name]. [ADMIN_QUE(client.mob)] [ADMIN_JMP(src)] [STOP(src)] [BANJUKEBOX(src, client)]")
 
 		SSblackbox.record_feedback("nested tally", "jukebox_played_url", 1, list("[client.ckey]", "[track.webpage_url]"))
@@ -215,11 +215,11 @@
 
 	if(request)
 		LAZYADD(requests, track)
-		log_admin("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
+		log_jukebox("[key_name(user)] requested a web sound [track.webpage_url_html] on [src] at [area_name]")
 		message_admins("[key_name(user, TRUE)] requested a web sound [track.webpage_url_html] on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [DENYREQUEST(src, track)] [BANJUKEBOX(src, user.client)]")
 	else
 		LAZYADD(queue, track)
-		log_admin("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
+		log_jukebox("[key_name(user)] added web sound [track.webpage_url_html] to queue on [src] at [area_name]")
 		message_admins("[key_name(user, TRUE)] added web sound [track.title] to queue on [src] at [area_name]. [ADMIN_QUE(user)] [ADMIN_JMP(src)] [REMOVEQUEUE(src, track)] [BANJUKEBOX(src, user.client)]")
 
 /obj/machinery/electrical_jukebox/proc/check_input(mob/user, input)
@@ -292,7 +292,7 @@
 
 /obj/machinery/electrical_jukebox/ui_status(mob/user)
 	if(!youtubedl_configured)
-		user.playsound_local(src, 'sound/misc/compiler-failure.ogg', 25, TRUE)
+		user.playsound_local(src, 'sound/machines/compiler/compiler-failure.ogg', 25, TRUE)
 		return UI_CLOSE
 	return ..()
 
@@ -440,6 +440,12 @@
 
 /obj/machinery/electrical_jukebox/public/can_use(mob/living/user)
 	return TRUE
+
+/obj/machinery/jukebox/no_access/Initialize(mapload)
+	. = ..()
+	if(mapload)
+		new /obj/machinery/electrical_jukebox/public(loc)
+		return INITIALIZE_HINT_QDEL
 
 #undef STOP
 #undef REMOVEQUEUE

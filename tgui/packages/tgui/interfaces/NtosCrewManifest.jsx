@@ -1,14 +1,14 @@
 import { map } from 'common/collections';
+import { Button, Section, Table } from 'tgui-core/components';
 
 import { useBackend } from '../backend';
-import { Button, Section, Table } from '../components';
 import { NtosWindow } from '../layouts';
 
 export const NtosCrewManifest = (props) => {
   const { act, data } = useBackend();
   const { manifest = {} } = data;
   return (
-    <NtosWindow width={400} height={480}>
+    <NtosWindow width={500} height={480}>
       <NtosWindow.Content scrollable>
         <Section
           title="Crew Manifest"
@@ -26,7 +26,15 @@ export const NtosCrewManifest = (props) => {
                 {entries.map((entry) => (
                   <Table.Row key={entry.name} className="candystripe">
                     <Table.Cell bold>{entry.name}</Table.Cell>
-                    <Table.Cell>({entry.rank})</Table.Cell>
+                    <Table.Cell>
+                      {entry.rank === entry.trim ? (
+                        entry.rank
+                      ) : (
+                        <>
+                          {entry.rank} ({entry.trim})
+                        </>
+                      )}
+                    </Table.Cell>
                   </Table.Row>
                 ))}
               </Table>

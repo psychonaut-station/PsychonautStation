@@ -13,7 +13,7 @@
 	paycheck = PAYCHECK_CREW
 	paycheck_department = ACCOUNT_CAR
 	display_order = JOB_DISPLAY_ORDER_BITRUNNER
-	bounty_types = CIV_JOB_RANDOM
+	bounty_types = CIV_JOB_BITRUN
 	departments_list = list(
 		/datum/job_department/cargo,
 		)
@@ -30,6 +30,11 @@
 	)
 	rpg_title = "Recluse"
 	job_flags = STATION_JOB_FLAGS
+	alt_titles = list(
+		"Bitrunner",
+		"Cyberspace Specialist",
+		"Hacker"
+	)
 
 /datum/outfit/job/bitrunner
 	name = "Bitrunner"

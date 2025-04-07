@@ -15,12 +15,13 @@
 	. = ..()
 	dead_ai.name = src.name
 	dead_ai.real_name = src.name
+	dead_ai.update_name_tag()
 
 ///dead slimes, with a var for whatever color you want.
 /obj/effect/mob_spawn/corpse/slime
 	mob_type = /mob/living/basic/slime
 	icon = 'icons/mob/simple/slimes.dmi'
-	icon_state = "grey baby slime" //sets the icon in the map editor
+	icon_state = "grey-baby-dead" //sets the icon in the map editor
 	///the color of the slime you're spawning.
 	var/slime_species = /datum/slime_type/grey
 

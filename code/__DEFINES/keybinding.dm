@@ -4,6 +4,9 @@
 #define COMSIG_KB_ACTIVATED (1<<0)
 #define COMSIG_KB_EMOTE "keybinding_emote_down"
 
+///Signal sent when a keybind is deactivated
+#define DEACTIVATE_KEYBIND(A) "[A]_DEACTIVATED"
+
 //Admin
 #define COMSIG_KB_ADMIN_ASAY_DOWN "keybinding_admin_asay_down"
 #define COMSIG_KB_ADMIN_DSAY_DOWN "keybinding_admin_dsay_down"
@@ -26,6 +29,7 @@
 //Client
 #define COMSIG_KB_CLIENT_GETHELP_DOWN "keybinding_client_gethelp_down"
 #define COMSIG_KB_CLIENT_SCREENSHOT_DOWN "keybinding_client_screenshot_down"
+#define COMSIG_KB_CLIENT_FULLSCREEN_DOWN "keybinding_client_fullscreen_down"
 #define COMSIG_KB_CLIENT_MINIMALHUD_DOWN "keybinding_client_minimalhud_down"
 
 //Communication
@@ -54,6 +58,8 @@
 #define COMSIG_KB_LIVING_DISABLE_COMBAT_DOWN "keybinding_living_disable_combat_down"
 #define COMSIG_KB_LIVING_TOGGLEMOVEINTENT_DOWN "keybinding_mob_togglemoveintent_down"
 #define COMSIG_KB_LIVING_TOGGLEMOVEINTENTALT_DOWN "keybinding_mob_togglemoveintentalt_down"
+#define COMSIG_KB_LIVING_VIEW_PET_COMMANDS "keybinding_living_view_pet_commands"
+#define COMSIG_KB_LIVING_FACECURSOR_DOWN "keybinding_living_facecursor_down"
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"
@@ -77,6 +83,7 @@
 #define COMSIG_KB_MOB_TARGETBODYGROIN_DOWN "keybinding_mob_targetbodygroin_down"
 #define COMSIG_KB_MOB_TARGETLEFTLEG_DOWN "keybinding_mob_targetleftleg_down"
 #define COMSIG_KB_MOB_BLOCKMOVEMENT_DOWN "keybinding_mob_blockmovement_down"
+#define COMSIG_KB_MOB_SHOW_NAME_TAGS_DOWN "keybinding_mob_show_name_tags_down"
 
 //Robot
 #define COMSIG_KB_SILICON_TOGGLEMODULEONE_DOWN "keybinding_silicon_togglemoduleone_down"

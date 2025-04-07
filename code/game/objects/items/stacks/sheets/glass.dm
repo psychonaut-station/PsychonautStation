@@ -27,11 +27,13 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/glass
 	grind_results = list(/datum/reagent/silicon = 20)
 	material_type = /datum/material/glass
-	tableVariant = /obj/structure/table/glass
+	table_type = /obj/structure/table/glass
 	matter_amount = 4
 	cost = SHEET_MATERIAL_AMOUNT
 	source = /datum/robot_energy_storage/material/glass
 	sniffable = TRUE
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /datum/armor/sheet_glass
 	fire = 50
@@ -63,7 +65,7 @@ GLOBAL_LIST_INIT(glass_recipes, list ( \
 			return
 		CC.use(5)
 		use(1)
-		to_chat(user, span_notice("You attach wire to the [name]."))
+		to_chat(user, span_notice("You attach wire to \the [src]."))
 		var/obj/item/stack/light_w/new_tile = new(user.loc)
 		if (!QDELETED(new_tile))
 			new_tile.add_fingerprint(user)
@@ -104,7 +106,9 @@ GLOBAL_LIST_INIT(pglass_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/plasmaglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10)
 	material_flags = NONE
-	tableVariant = /obj/structure/table/glass/plasmaglass
+	table_type = /obj/structure/table/glass/plasmaglass
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/plasmaglass/fifty
 	amount = 50
@@ -162,7 +166,9 @@ GLOBAL_LIST_INIT(reinforced_glass_recipes, list ( \
 	merge_type = /obj/item/stack/sheet/rglass
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/iron = 10)
 	matter_amount = 6
-	tableVariant = /obj/structure/table/reinforced/rglass
+	table_type = /obj/structure/table/reinforced/rglass
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/rglass/fifty
 	amount = 50
@@ -200,7 +206,9 @@ GLOBAL_LIST_INIT(prglass_recipes, list ( \
 	grind_results = list(/datum/reagent/silicon = 20, /datum/reagent/toxin/plasma = 10, /datum/reagent/iron = 10)
 	gulag_valid = TRUE
 	matter_amount = 8
-	tableVariant = /obj/structure/table/reinforced/plasmarglass
+	table_type = /obj/structure/table/reinforced/plasmarglass
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /datum/armor/sheet_plasmarglass
 	melee = 20
@@ -230,7 +238,9 @@ GLOBAL_LIST_INIT(titaniumglass_recipes, list(
 	armor_type = /datum/armor/sheet_titaniumglass
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/titaniumglass
-	tableVariant = /obj/structure/table/reinforced/titaniumglass
+	table_type = /obj/structure/table/reinforced/titaniumglass
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/titaniumglass/fifty
 	amount = 50
@@ -260,7 +270,9 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	material_flags = NONE
 	resistance_flags = ACID_PROOF
 	merge_type = /obj/item/stack/sheet/plastitaniumglass
-	tableVariant = /obj/structure/table/reinforced/plastitaniumglass
+	table_type = /obj/structure/table/reinforced/plastitaniumglass
+	pickup_sound = 'sound/items/handling/materials/glass_pick_up.ogg'
+	drop_sound = 'sound/items/handling/materials/glass_drop.ogg'
 
 /obj/item/stack/sheet/plastitaniumglass/fifty
 	amount = 50
@@ -278,6 +290,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	desc = "A nasty looking shard of glass."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "large"
+	icon_angle = -45
 	w_class = WEIGHT_CLASS_TINY
 	force = 5
 	throwforce = 10
@@ -287,7 +300,7 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	custom_materials = list(/datum/material/glass=SHEET_MATERIAL_AMOUNT)
 	attack_verb_continuous = list("stabs", "slashes", "slices", "cuts")
 	attack_verb_simple = list("stab", "slash", "slice", "cut")
-	hitsound = 'sound/weapons/bladeslice.ogg'
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
 	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/item_shard
 	max_integrity = 40
@@ -296,7 +309,10 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	var/shiv_type = /obj/item/knife/shiv
 	var/craft_time = 3.5 SECONDS
 	var/obj/item/stack/sheet/weld_material = /obj/item/stack/sheet/glass
-	embedding = list("embed_chance" = 65)
+	embed_type = /datum/embedding/shard
+
+/datum/embedding/shard
+	embed_chance = 65
 
 /datum/armor/item_shard
 	melee = 100
@@ -344,20 +360,16 @@ GLOBAL_LIST_INIT(plastitaniumglass_recipes, list(
 	if(T && is_station_level(T.z))
 		SSblackbox.record_feedback("tally", "station_mess_destroyed", 1, name)
 
-/obj/item/shard/afterattack(atom/A as mob|obj, mob/user, proximity)
-	. = ..()
-	if(!proximity || !(src in user))
+/obj/item/shard/afterattack(atom/target, mob/user, click_parameters)
+	if(!iscarbon(user) || !user.is_holding(src))
 		return
-	if(isturf(A))
+
+	var/mob/living/carbon/jab = user
+	if(jab.get_all_covered_flags() & HANDS)
 		return
-	if(istype(A, /obj/item/storage))
-		return
-	var/hit_hand = ((user.active_hand_index % 2 == 0) ? "r_" : "l_") + "arm"
-	if(ishuman(user))
-		var/mob/living/carbon/human/H = user
-		if(!H.gloves && !HAS_TRAIT(H, TRAIT_PIERCEIMMUNE)) // golems, etc
-			to_chat(H, span_warning("[src] cuts into your hand!"))
-			H.apply_damage(force*0.5, BRUTE, hit_hand, attacking_item = src)
+
+	to_chat(user, span_warning("[src] cuts into your hand!"))
+	jab.apply_damage(force * 0.5, BRUTE, user.get_active_hand(), attacking_item = src)
 
 /obj/item/shard/attackby(obj/item/item, mob/user, params)
 	if(istype(item, /obj/item/lightreplacer))

@@ -10,6 +10,8 @@
 	desc = "Ashes to ashes, dust to dust, and into space."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "ash"
+	plane = GAME_PLANE
+	layer = CLEANABLE_OBJECT_LAYER
 	mergeable_decal = FALSE
 	beauty = -50
 	decal_reagent = /datum/reagent/ash
@@ -62,7 +64,7 @@
 /obj/effect/decal/cleanable/dirt
 	name = "dirt"
 	desc = "Someone should clean that up."
-	icon = 'icons/effects/dirt.dmi'
+	icon = 'icons/effects/dirt_misc.dmi'
 	icon_state = "dirt-flat-0"
 	base_icon_state = "dirt"
 	smoothing_flags = NONE
@@ -70,6 +72,8 @@
 	canSmoothWith = SMOOTH_GROUP_CLEANABLE_DIRT + SMOOTH_GROUP_WALLS
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	beauty = -75
+	/// Set to FALSE if your dirt has no smoothing sprites
+	var/is_tileable = TRUE
 
 /obj/effect/decal/cleanable/dirt/Initialize(mapload)
 	. = ..()
@@ -78,14 +82,16 @@
 	if(!isnull(broken_flooring))
 		return
 	var/turf/T = get_turf(src)
-	if(T.tiled_dirt)
+	if(T.tiled_dirt && is_tileable)
+		icon = 'icons/effects/dirt.dmi'
+		icon_state = "dirt-0"
 		smoothing_flags = SMOOTH_BITMASK
 		QUEUE_SMOOTH(src)
-	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+	if(smoothing_flags & USES_SMOOTHING)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 
 /obj/effect/decal/cleanable/dirt/Destroy()
-	if(smoothing_flags & (SMOOTH_CORNERS|SMOOTH_BITMASK))
+	if(smoothing_flags & USES_SMOOTHING)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
 
@@ -94,6 +100,7 @@
 	desc = "A thin layer of dust coating the floor."
 	icon_state = "dust"
 	base_icon_state = "dust"
+	is_tileable = FALSE
 
 /obj/effect/decal/cleanable/dirt/dust/Initialize(mapload)
 	. = ..()
@@ -144,12 +151,14 @@
 	name = "cobweb"
 	desc = "Somebody should remove that."
 	gender = NEUTER
+	plane = GAME_PLANE
 	layer = WALL_OBJ_LAYER
 	icon = 'icons/effects/web.dmi'
 	icon_state = "cobweb1"
 	resistance_flags = FLAMMABLE
 	beauty = -100
 	clean_type = CLEAN_TYPE_HARD_DECAL
+	is_mopped = FALSE
 
 /obj/effect/decal/cleanable/cobweb/cobweb2
 	icon_state = "cobweb2"
@@ -160,6 +169,8 @@
 	gender = NEUTER
 	icon = 'icons/effects/effects.dmi'
 	icon_state = "molten"
+	plane = GAME_PLANE
+	layer = CLEANABLE_OBJECT_LAYER
 	mergeable_decal = FALSE
 	beauty = -150
 	clean_type = CLEAN_TYPE_HARD_DECAL
@@ -245,6 +256,8 @@
 	name = "chemical pile"
 	desc = "A pile of chemicals. You can't quite tell what's inside it."
 	gender = NEUTER
+	plane = GAME_PLANE
+	layer = CLEANABLE_OBJECT_LAYER
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "ash"
 
@@ -322,6 +335,8 @@
 	desc = "Torn pieces of cardboard and paper, left over from a package."
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "paper_shreds"
+	plane = GAME_PLANE
+	layer = CLEANABLE_OBJECT_LAYER
 
 /obj/effect/decal/cleanable/wrapping/pinata
 	name = "pinata shreds"
@@ -331,13 +346,16 @@
 /obj/effect/decal/cleanable/wrapping/pinata/syndie
 	icon_state = "syndie_pinata_shreds"
 
+/obj/effect/decal/cleanable/wrapping/pinata/donk
+	icon_state = "donk_pinata_shreds"
+
 /obj/effect/decal/cleanable/garbage
 	name = "decomposing garbage"
 	desc = "A split open garbage bag, its stinking content seems to be partially liquified. Yuck!"
 	icon = 'icons/obj/debris.dmi'
 	icon_state = "garbage"
 	plane = GAME_PLANE
-	layer = FLOOR_CLEAN_LAYER //To display the decal over wires.
+	layer = CLEANABLE_OBJECT_LAYER
 	beauty = -150
 	clean_type = CLEAN_TYPE_HARD_DECAL
 
@@ -356,7 +374,7 @@
 	decal_reagent = /datum/reagent/ants
 	reagent_amount = 5
 	/// Sound the ants make when biting
-	var/bite_sound = 'sound/weapons/bite.ogg'
+	var/bite_sound = 'sound/items/weapons/bite.ogg'
 
 /obj/effect/decal/cleanable/ants/Initialize(mapload)
 	if(mapload && reagent_amount > 2)
@@ -440,10 +458,10 @@
 	name = "pool of fuel"
 	desc = "A pool of flammable fuel. Its probably wise to clean this off before something ignites it..."
 	icon_state = "fuel_pool"
-	layer = LOW_OBJ_LAYER
 	beauty = -50
 	clean_type = CLEAN_TYPE_BLOOD
 	mouse_opacity = MOUSE_OPACITY_OPAQUE
+	resistance_flags = UNACIDABLE | ACID_PROOF | FIRE_PROOF | FLAMMABLE //gross way of doing this but would need to disassemble fire_act call stack otherwise
 	/// Maximum amount of hotspots this pool can create before deleting itself
 	var/burn_amount = 3
 	/// Is this fuel pool currently burning?
@@ -453,6 +471,10 @@
 
 /obj/effect/decal/cleanable/fuel_pool/Initialize(mapload, burn_stacks)
 	. = ..()
+	var/static/list/ignition_trigger_connections = list(
+		COMSIG_TURF_MOVABLE_THROW_LANDED = PROC_REF(ignition_trigger),
+	)
+	AddElement(/datum/element/connect_loc, ignition_trigger_connections)
 	for(var/obj/effect/decal/cleanable/fuel_pool/pool in get_turf(src)) //Can't use locate because we also belong to that turf
 		if(pool == src)
 			continue
@@ -461,6 +483,15 @@
 
 	if(burn_stacks)
 		burn_amount = max(min(burn_stacks, 10), 1)
+
+	return INITIALIZE_HINT_LATELOAD
+
+// Just in case of fires, do this after mapload.
+/obj/effect/decal/cleanable/fuel_pool/LateInitialize()
+// We don't want to burn down the create_and_destroy test area
+#ifndef UNIT_TESTS
+	RegisterSignal(src, COMSIG_ATOM_TOUCHED_SPARKS, PROC_REF(ignition_trigger))
+#endif
 
 /obj/effect/decal/cleanable/fuel_pool/fire_act(exposed_temperature, exposed_volume)
 	. = ..()
@@ -509,6 +540,28 @@
 		ignite()
 	return ..()
 
+/obj/effect/decal/cleanable/fuel_pool/on_entered(datum/source, atom/movable/entered_atom)
+	. = ..()
+	if(entered_atom.throwing) // don't light from things being thrown over us, we handle that somewhere else
+		return
+	ignition_trigger(source = src, enflammable_atom = entered_atom)
+
+/obj/effect/decal/cleanable/fuel_pool/proc/ignition_trigger(datum/source, atom/movable/enflammable_atom)
+	SIGNAL_HANDLER
+
+	if(isitem(enflammable_atom))
+		var/obj/item/enflamed_item = enflammable_atom
+		if(enflamed_item.get_temperature() > FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
+			ignite()
+		return
+	else if(isliving(enflammable_atom))
+		var/mob/living/enflamed_liver = enflammable_atom
+		if(enflamed_liver.on_fire)
+			ignite()
+	else if(istype(enflammable_atom, /obj/effect/particle_effect/sparks))
+		ignite()
+
+
 /obj/effect/decal/cleanable/fuel_pool/hivis
 	icon_state = "fuel_pool_hivis"
 
@@ -519,6 +572,10 @@
 	icon_state = "rubble"
 	mergeable_decal = FALSE
 	beauty = -10
+	plane = GAME_PLANE
+	layer = GIB_LAYER
+	clean_type = CLEAN_TYPE_HARD_DECAL
+	is_mopped = FALSE
 
 /obj/effect/decal/cleanable/rubble/Initialize(mapload)
 	. = ..()

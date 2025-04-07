@@ -20,6 +20,8 @@
 	var/time_to_unscrew = 2 SECONDS
 	/// Are we authenticated to use this? Used by things like comms console, security and medical data, and apc controller.
 	var/authenticated = FALSE
+	/// Will projectiles be able to pass over this computer?
+	var/projectiles_pass_chance = 65
 
 /datum/armor/machinery_computer
 	fire = 40
@@ -28,6 +30,38 @@
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	power_change()
+
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/Destroy()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+	return ..()
+
+/obj/machinery/computer/mouse_drop_receive(mob/living/dropping, mob/user, params)
+	. = ..()
+	// We add the component only once here & not in Initialize() because there are tons of computers & we don't want to add to their init times
+	LoadComponent(/datum/component/leanable, dropping)
+
+/obj/machinery/computer/CanAllowThrough(atom/movable/mover, border_dir) // allows projectiles to fly over the computer
+	. = ..()
+	if(.)
+		return
+	if(!projectiles_pass_chance)
+		return FALSE
+	if(!isprojectile(mover))
+		return FALSE
+	var/obj/projectile/proj = mover
+	if(!anchored)
+		return TRUE
+	if(proj.firer && Adjacent(proj.firer))
+		return TRUE
+	if(prob(projectiles_pass_chance))
+		return TRUE
+	return FALSE
 
 /obj/machinery/computer/process()
 	if(machine_stat & (NOPOWER|BROKEN))
@@ -41,6 +75,27 @@
 			. += "[icon_keyboard]_off"
 		else
 			. += icon_keyboard
+
+	if(icon_state == "computer")
+		var/obj/machinery/computer/left_comp = null
+		var/obj/machinery/computer/right_comp = null
+		switch(dir)
+			if(NORTH)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+			if(EAST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+			if(SOUTH)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+			if(WEST)
+				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
+		if(!QDELETED(left_comp) && left_comp.dir == dir && left_comp.icon_state == "computer")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
+		if(!QDELETED(right_comp) && right_comp.dir == dir && right_comp.icon_state == "computer")
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)
 		. += mutable_appearance(icon, "[icon_state]_broken")
@@ -76,26 +131,28 @@
 			if(machine_stat & BROKEN)
 				playsound(src.loc, 'sound/effects/hit_on_shattered_glass.ogg', 70, TRUE)
 			else
-				playsound(src.loc, 'sound/effects/glasshit.ogg', 75, TRUE)
+				playsound(src.loc, 'sound/effects/glass/glasshit.ogg', 75, TRUE)
 		if(BURN)
-			playsound(src.loc, 'sound/items/welder.ogg', 100, TRUE)
+			playsound(src.loc, 'sound/items/tools/welder.ogg', 100, TRUE)
 
 /obj/machinery/computer/atom_break(damage_flag)
 	if(!circuit) //no circuit, no breaking
 		return
 	. = ..()
 	if(.)
-		playsound(loc, 'sound/effects/glassbr3.ogg', 100, TRUE)
+		playsound(loc, 'sound/effects/glass/glassbr3.ogg', 100, TRUE)
 		set_light(0)
 
 /obj/machinery/computer/proc/imprint_gps(gps_tag) // Currently used by the upload computers and communications console
-	var/tracker = gps_tag
-	if(!tracker) // Don't give a null GPS signal if there is none
-		return
-	for(var/obj/item/circuitboard/computer/board in src.contents)
-		if(!contents || board.GetComponent(/datum/component/gps))
+	if(!length(gps_tag)) // Don't give a null GPS signal if there is none
+		CRASH("[src] called imprint_gps without setting gps_tag")
+	var/set_tracker = FALSE
+	for(var/obj/item/circuitboard/computer/board in contents)
+		if(board.GetComponent(/datum/component/gps))
 			return
-		board.AddComponent(/datum/component/gps, "[tracker]")
+		board.AddComponent(/datum/component/gps, "[gps_tag]")
+		set_tracker = TRUE
+	if (set_tracker)
 		balloon_alert_to_viewers("board tracker enabled", vision_distance = 1)
 
 /obj/machinery/computer/emp_act(severity)
@@ -108,6 +165,18 @@
 			if(2)
 				if(prob(10))
 					atom_break(ENERGY)
+
+/obj/machinery/computer/on_construction(mob/user)
+	..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/setDir(newdir)
+	. = ..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
 
 /obj/machinery/computer/spawn_frame(disassembled)
 	if(QDELETED(circuit)) //no circuit, no computer frame
@@ -129,12 +198,18 @@
 		new_frame.state = FRAME_COMPUTER_STATE_WIRED
 	else
 		new_frame.state = FRAME_COMPUTER_STATE_GLASSED
-	new_frame.update_appearance(UPDATE_ICON_STATE)
+	new_frame.update_appearance()
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	update_use_power(ACTIVE_POWER_USE)
+
+/obj/machinery/computer/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
+	SHOULD_CALL_PARENT(TRUE)
+	. = ..()
+	if(!issilicon(ui.user))
+		playsound(src, SFX_KEYBOARD_CLICKS, 10, TRUE, FALSE)
 
 /obj/machinery/computer/ui_close(mob/user)
 	SHOULD_CALL_PARENT(TRUE)

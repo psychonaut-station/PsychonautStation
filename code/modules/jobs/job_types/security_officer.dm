@@ -45,7 +45,12 @@
 		JOB_SECURITY_OFFICER_SCIENCE,
 	)
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Security Officer",
+		"Security Operative",
+		"Peacekeeper",
+		"Security Cadet",
+	)
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 
@@ -83,7 +88,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	var/ears = null
 	var/accessory = null
-	var/list/dep_trim = null
+	var/datum/id_trim/dep_trim = null
 	var/destination = null
 
 	switch(department)
@@ -119,15 +124,20 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 
 	// If there's a departmental sec trim to apply to the card, overwrite.
 	if(dep_trim)
+		var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
 		var/obj/item/card/id/worn_id = spawning.get_idcard(hand_first = FALSE)
+		var/assignment = "[chosen_title] ([department])"
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
+		worn_id.assignment = assignment
+		worn_id.update_label()
 		spawning.sec_hud_set_ID()
 
 		// Update PDA to match new trim.
 		var/obj/item/modular_computer/pda/pda = spawning.get_item_by_slot(ITEM_SLOT_BELT)
-		var/assignment = worn_id.get_trim_assignment()
-		if(istype(pda) && !isnull(assignment))
-			pda.imprint_id(spawning.real_name, assignment)
+		if(istype(pda))
+			pda.imprint_id(spawning.real_name, assignment, worn_id)
+	else
+		set_alt_title(spawning, player_client)
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 
@@ -157,11 +167,14 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	department,
 	distribution,
 )
-	var/obj/machinery/announcement_system/announcement_system = pick(GLOB.announcement_systems)
+	var/obj/machinery/announcement_system/announcement_system = get_announcement_system(/datum/aas_config_entry/announce_officer)
 	if (isnull(announcement_system))
 		return
 
-	announcement_system.announce_officer(officer, department)
+	announcement_system.announce(/datum/aas_config_entry/announce_officer, list(
+		"OFFICER" = officer.real_name,
+		"DEPARTMENT" = department,
+	), list(RADIO_CHANNEL_SECURITY))
 
 	var/list/targets = list()
 
@@ -182,10 +195,14 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	if (!targets.len)
 		return
 
+	// I thought it would be great, if AAS also modifies PDA messages. Especially because it's AASs message.
 	var/datum/signal/subspace/messaging/tablet_message/signal = new(announcement_system, list(
 		"fakename" = "Security Department Update",
 		"fakejob" = "Automated Announcement System",
-		"message" = "Officer [officer.real_name] has been assigned to your department, [department].",
+		"message" = announcement_system.compile_config_message(/datum/aas_config_entry/announce_officer, list(
+			"OFFICER" = officer.real_name,
+			"DEPARTMENT" = department,
+		)),
 		"targets" = targets,
 		"automated" = TRUE,
 	))
@@ -218,7 +235,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		)
 	belt = /obj/item/modular_computer/pda/security
 	ears = /obj/item/radio/headset/headset_sec/alt
-	gloves = /obj/item/clothing/gloves/color/black
+	gloves = /obj/item/clothing/gloves/color/black/security
 	head = /obj/item/clothing/head/helmet/sec
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs

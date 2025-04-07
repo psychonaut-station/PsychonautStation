@@ -33,6 +33,7 @@
 		/obj/item/healthanalyzer = 10,
 		/obj/item/shovel/serrated/dull = 5,
 		/obj/effect/spawner/random/medical/organs = 5,
+		/obj/item/reagent_containers/cup/organ_jar/brain_in_a_jar = 5,
 		/obj/effect/spawner/random/medical/memeorgans = 1,
 		/obj/item/scythe = 1,
 	)
@@ -42,6 +43,13 @@
 	job_flags = STATION_JOB_FLAGS
 
 	rpg_title = "Undertaker"
+	alt_titles = list(
+		"Coroner",
+		"Forensic Pathologist",
+		"Mortician",
+		"Autopsy Technician",
+		"Morgue Supervisor",
+	)
 
 /datum/outfit/job/coroner
 	name = "Coroner"

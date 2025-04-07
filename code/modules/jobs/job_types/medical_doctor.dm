@@ -37,7 +37,14 @@
 	)
 	rpg_title = "Cleric"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Medical Doctor",
+		"Surgeon",
+		"Nurse",
+		"General Practitioner",
+		"Medical Resident",
+		"Physician",
+	)
 
 /datum/outfit/job/doctor
 	name = "Medical Doctor"

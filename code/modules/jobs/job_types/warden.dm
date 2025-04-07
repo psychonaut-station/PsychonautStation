@@ -41,6 +41,13 @@
 	)
 	rpg_title = "Jailor"
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT
+	alt_titles = list(
+		"Warden",
+		"Brig Sergeant",
+		"Dispatch Officer",
+		"Brig Governor",
+		"Jailer",
+	)
 
 /datum/outfit/job/warden
 	name = "Warden"
@@ -55,7 +62,7 @@
 	belt = /obj/item/modular_computer/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
-	gloves = /obj/item/clothing/gloves/color/black
+	gloves = /obj/item/clothing/gloves/color/black/security
 	head = /obj/item/clothing/head/hats/warden/red
 	shoes = /obj/item/clothing/shoes/jackboots/sec
 	l_pocket = /obj/item/restraints/handcuffs

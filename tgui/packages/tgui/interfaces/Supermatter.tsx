@@ -1,9 +1,5 @@
 import { filter, sortBy } from 'common/collections';
-import { toFixed } from 'common/math';
-import { BooleanLike } from 'common/react';
 import { ReactNode, useState } from 'react';
-
-import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -11,7 +7,11 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+import { toFixed } from 'tgui-core/math';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { getGasFromPath } from '../constants';
 import { Window } from '../layouts';
 
@@ -31,7 +31,8 @@ type SMGasMetadata = {
 
 type SupermatterProps = {
   sectionButton?: ReactNode;
-  uid: number;
+  id: number;
+  uid: string;
   area_name: string;
   integrity: number;
   integrity_factors: { name: string; amount: number }[];
@@ -100,6 +101,7 @@ const SupermatterEntry = (props: SupermatterEntryProps) => {
 export const SupermatterContent = (props: SupermatterProps) => {
   const {
     sectionButton,
+    id,
     uid,
     area_name,
     integrity,
@@ -137,7 +139,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
         <Section
           fill
           scrollable
-          title={uid + '. ' + area_name}
+          title={id + '. ' + area_name}
           buttons={sectionButton}
         >
           <Stack vertical>

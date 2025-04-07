@@ -191,7 +191,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/holy, 32)
 
 /obj/structure/sign/departments/holy_alt
 	name = "\improper Chapel sign"
-	sign_change_name = "Department - Chapel"
+	sign_change_name = "Department - Chapel Alt"
 	desc = "A sign labelling a religious area."
 	icon_state = "chapel"
 
@@ -214,6 +214,14 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/lawyer, 32)
 	icon_state = "cargo"
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/cargo, 32)
+
+/obj/structure/sign/departments/exodrone
+	name = "\improper Exodrone sign"
+	sign_change_name = "Department - Cargo: exodrone"
+	desc = "A sign labelling an area where exodrones are used."
+	icon_state = "exodrone"
+
+MAPPING_DIRECTIONAL_HELPERS(/obj/structure/sign/departments/exodrone, 32)
 
 ///////SECURITY
 

@@ -45,8 +45,6 @@
 	var/datum/click_intercept = null
 	///Time when the click was intercepted
 	var/click_intercept_time = 0
-	///Used for admin AI interaction
-	var/AI_Interact = FALSE
 
 	///Used to cache this client's bans to save on DB queries
 	var/ban_cache = null
@@ -140,7 +138,7 @@
 	var/list/credits
 
 	///these persist between logins/logouts during the same round.
-	var/datum/player_details/player_details
+	var/datum/persistent_client/persistent_client
 
 	///Should only be a key-value list of north/south/east/west = atom/movable/screen.
 	var/list/char_render_holders
@@ -271,3 +269,12 @@
 
 	/// Discord verification ui
 	var/datum/verification_menu/verification_menu
+
+	///Which ambient sound this client is currently being provided.
+	var/current_ambient_sound
+
+	/// Discord information of the client if they have linked their account and we fetched it
+	var/list/discord
+
+	/// The last name tag update runned by our client
+	COOLDOWN_DECLARE(update_nametag_cooldown)

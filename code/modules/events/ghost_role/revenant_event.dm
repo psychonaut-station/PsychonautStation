@@ -34,7 +34,7 @@
 	if(isnull(chosen_one))
 		return NOT_ENOUGH_PLAYERS
 	var/list/spawn_locs = list()
-	for(var/mob/living/L in GLOB.dead_mob_list) //look for any dead bodies
+	for(var/mob/living/carbon/human/L in GLOB.dead_mob_list) //look for any harvestable bodies
 		var/turf/T = get_turf(L)
 		if(T && is_station_level(T.z))
 			spawn_locs += T
@@ -51,7 +51,7 @@
 		return MAP_ERROR
 
 	var/mob/living/basic/revenant/revvie = new(pick(spawn_locs))
-	revvie.key = chosen_one.key
+	revvie.PossessByPlayer(chosen_one.key)
 	message_admins("[ADMIN_LOOKUPFLW(revvie)] has been made into a revenant by an event.")
 	revvie.log_message("was spawned as a revenant by an event.", LOG_GAME)
 	spawned_mobs += revvie

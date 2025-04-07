@@ -86,7 +86,7 @@
 	if(!.)
 		return
 	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
+	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
 		return
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 /obj/item/bodypart/leg/right/synthetic
@@ -119,7 +119,7 @@
 	if(!.)
 		return
 	owner.Knockdown(severity == EMP_HEAVY ? 20 SECONDS : 10 SECONDS)
-	if(owner.incapacitated(IGNORE_RESTRAINTS|IGNORE_GRAB)) // So the message isn't duplicated. If they were stunned beforehand by something else, then the message not showing makes more sense anyways.
+	if(INCAPACITATED_IGNORING(owner, INCAPABLE_RESTRAINTS|INCAPABLE_GRAB))
 		return
 	to_chat(owner, span_danger("As your [src.name] unexpectedly malfunctions, it causes you to fall to the ground!"))
 
@@ -146,7 +146,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
-	wing_types = list(/obj/item/organ/external/wings/functional/robotic)
+	wing_types = list(/obj/item/organ/wings/functional/robotic)
 
 /obj/item/bodypart/chest/synthetic/emp_act(severity)
 	. = ..()

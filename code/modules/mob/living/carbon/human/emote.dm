@@ -1,29 +1,6 @@
 /datum/emote/living/carbon/human
 	mob_type_allowed_typecache = list(/mob/living/carbon/human)
 
-
-/datum/emote/living/carbon/human/cry
-	key = "cry"
-	key_third_person = "cries"
-	message = "cries."
-	message_mime = "sobs silently."
-	audio_cooldown = 5 SECONDS
-	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	vary = TRUE
-	stat_allowed = SOFT_CRIT
-
-/datum/emote/living/carbon/human/cry/run_emote(mob/user, params, type_override, intentional)
-	. = ..()
-	if(!ishuman(user))
-		return
-	var/mob/living/carbon/human/human_user = user
-	QDEL_IN(human_user.give_emote_overlay(/datum/bodypart_overlay/simple/emote/cry), 12.8 SECONDS)
-
-/datum/emote/living/carbon/human/cry/get_sound(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	return user.dna.species.get_cry_sound(user)
-
 /datum/emote/living/carbon/human/dap
 	key = "dap"
 	key_third_person = "daps"
@@ -41,41 +18,11 @@
 	message = "pushes up their glasses."
 	emote_type = EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/glasses/can_run_emote(mob/user, status_check = TRUE, intentional)
+/datum/emote/living/carbon/human/glasses/can_run_emote(mob/user, status_check = TRUE, intentional, params)
 	var/obj/eyes_slot = user.get_item_by_slot(ITEM_SLOT_EYES)
 	if(istype(eyes_slot, /obj/item/clothing/glasses/regular) || istype(eyes_slot, /obj/item/clothing/glasses/sunglasses))
 		return ..()
 	return FALSE
-
-/datum/emote/living/carbon/human/cough
-	key = "cough"
-	key_third_person = "coughs"
-	message = "coughs!"
-	message_mime = "acts out an exaggerated cough!"
-	vary = TRUE
-	audio_cooldown = 5 SECONDS
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE | EMOTE_RUNECHAT
-
-/datum/emote/living/cough/can_run_emote(mob/user, status_check = TRUE , intentional)
-	return !HAS_TRAIT(user, TRAIT_SOOTHED_THROAT) && ..()
-
-/datum/emote/living/carbon/human/cough/get_sound(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	return user.dna.species.get_cough_sound(user)
-/datum/emote/living/carbon/human/sneeze
-	key = "sneeze"
-	key_third_person = "sneezes"
-	message = "sneezes."
-	audio_cooldown = 5 SECONDS
-	message_mime = "acts out an exaggerated silent sneeze."
-	vary = TRUE
-	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-
-/datum/emote/living/carbon/human/sneeze/get_sound(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	return user.dna.species.get_sneeze_sound(user)
 
 /datum/emote/living/carbon/human/glasses/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
@@ -116,14 +63,15 @@
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	specific_emote_audio_cooldown = 10 SECONDS
 	vary = TRUE
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 	only_forced_audio = TRUE
 #endif
 
-/datum/emote/carbon/human/scream/run_emote(mob/user, params, type_override, intentional = FALSE)
+/datum/emote/living/carbon/human/scream/can_run_emote(mob/user, status_check = TRUE , intentional, params)
 	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
-		return
+		return FALSE
 	return ..()
 
 /datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
@@ -160,7 +108,7 @@
 	message = "salutes."
 	message_param = "salutes to %t."
 	hands_use_check = TRUE
-	sound = 'sound/misc/salute.ogg'
+	sound = 'sound/mobs/humanoids/human/salute/salute.ogg'
 
 /datum/emote/living/carbon/human/shrug
 	key = "shrug"
@@ -174,9 +122,7 @@
 
 /datum/emote/living/carbon/human/wag/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
-	var/obj/item/organ/external/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	//I am so sorry my son
 	//We bypass helpers here cause we already have the tail
 	if(oranges_accessory.wag_flags & WAG_WAGGING) //We verified the tail exists in can_run_emote()
@@ -186,14 +132,14 @@
 
 /datum/emote/living/carbon/human/wag/select_message_type(mob/user, intentional)
 	. = ..()
-	var/obj/item/organ/external/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+	var/obj/item/organ/tail/oranges_accessory = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(oranges_accessory.wag_flags & WAG_WAGGING)
 		. = "stops wagging " + message
 	else
 		. = "wags " + message
 
-/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check, intentional)
-	var/obj/item/organ/external/tail/tail = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
+/datum/emote/living/carbon/human/wag/can_run_emote(mob/user, status_check, intentional, params)
+	var/obj/item/organ/tail/tail = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_TAIL)
 	if(tail?.wag_flags & WAG_ABLE)
 		return ..()
 	return FALSE
@@ -205,9 +151,7 @@
 
 /datum/emote/living/carbon/human/wing/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
-	var/obj/item/organ/external/wings/functional/wings = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
+	var/obj/item/organ/wings/functional/wings = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
 	if(isnull(wings))
 		CRASH("[type] ran on a mob that has no wings!")
 	if(wings.wings_open)
@@ -216,12 +160,12 @@
 		wings.open_wings()
 
 /datum/emote/living/carbon/human/wing/select_message_type(mob/user, intentional)
-	var/obj/item/organ/external/wings/functional/wings = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
+	var/obj/item/organ/wings/functional/wings = user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS)
 	var/emote_verb = wings.wings_open ? "closes" : "opens"
 	return "[emote_verb] [message]"
 
-/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional)
-	if(!istype(user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/external/wings/functional))
+/datum/emote/living/carbon/human/wing/can_run_emote(mob/user, status_check = TRUE, intentional, params)
+	if(!istype(user.get_organ_slot(ORGAN_SLOT_EXTERNAL_WINGS), /obj/item/organ/wings/functional))
 		return FALSE
 	return ..()
 
@@ -230,10 +174,48 @@
 	key_third_person = "clears throat"
 	message = "clears their throat."
 
+/datum/emote/living/carbon/human/blink
+	key = "blink"
+	key_third_person = "blinks"
+	message = "blinks."
+
+/datum/emote/living/carbon/human/blink/can_run_emote(mob/living/carbon/human/user, status_check, intentional, params)
+	if (!ishuman(user) || HAS_TRAIT(user, TRAIT_PREVENT_BLINKING) || HAS_TRAIT(user, TRAIT_NO_EYELIDS))
+		return FALSE
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	if (!eyes)
+		return FALSE
+	return ..()
+
+/datum/emote/living/carbon/human/blink/run_emote(mob/living/carbon/human/user, params, type_override, intentional)
+	. = ..()
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	eyes.blink()
+
+/datum/emote/living/carbon/human/blink_r
+	key = "blink_r"
+	name = "blink (Rapid)"
+	message = "blinks rapidly."
+
+/datum/emote/living/carbon/human/blink_r/can_run_emote(mob/living/carbon/human/user, status_check, intentional, params)
+	if (!ishuman(user) || HAS_TRAIT(user, TRAIT_PREVENT_BLINKING) || HAS_TRAIT(user, TRAIT_NO_EYELIDS))
+		return FALSE
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	if (!eyes)
+		return FALSE
+	return ..()
+
+/datum/emote/living/carbon/human/blink_r/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	for (var/i in 1 to 3)
+		addtimer(CALLBACK(eyes, TYPE_PROC_REF(/obj/item/organ/eyes, blink), 0.1 SECONDS, FALSE), i * 0.2 SECONDS)
+	eyes.animate_eyelids(user)
+
 ///Snowflake emotes only for le epic chimp
 /datum/emote/living/carbon/human/monkey
 
-/datum/emote/living/carbon/human/monkey/can_run_emote(mob/user, status_check = TRUE, intentional)
+/datum/emote/living/carbon/human/monkey/can_run_emote(mob/user, status_check = TRUE, intentional, params)
 	if(ismonkey(user))
 		return ..()
 	return FALSE

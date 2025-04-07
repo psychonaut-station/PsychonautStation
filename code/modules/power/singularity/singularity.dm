@@ -1,3 +1,10 @@
+/atom/movable/warp_effect/singularity
+	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
+	pixel_x = -277
+	pixel_y = -277
+
+GLOBAL_LIST_EMPTY(all_singularities)
+
 /// The gravitational singularity
 /obj/singularity
 	name = "gravitational singularity"
@@ -11,6 +18,8 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
+
+	var/uid = 0
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
@@ -28,11 +37,11 @@
 	var/maximum_stage = STAGE_SIX
 
 	///How strong are we?
-	var/energy = 100
+	var/energy = 50
 	///Do we lose energy over time?
 	var/dissipate = TRUE
 	/// How long should it take for us to dissipate in seconds?
-	var/dissipate_delay = 20
+	var/dissipate_delay = 15
 	/// How much energy do we lose every dissipate_delay?
 	var/dissipate_strength = 1
 	/// How long its been (in seconds) since the last dissipation
@@ -43,20 +52,24 @@
 	var/move_self = TRUE
 	///If the singularity has eaten a supermatter shard and can go to stage six
 	var/consumed_supermatter = FALSE
+	/// Is the black hole collapsing into nothing
+	var/collapsing = FALSE
 	/// How long it's been since the singulo last acted, in seconds
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	/// Warp effect of the singularity
+	var/atom/movable/warp_effect/singularity/warp
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
 	flags_1 = SUPERMATTER_IGNORES_1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF
 	obj_flags = CAN_BE_HIT | DANGEROUS_POSSESSION
 
-/obj/singularity/Initialize(mapload, starting_energy = 50)
+/obj/singularity/Initialize(mapload, starting_energy)
 	. = ..()
 
-	energy = starting_energy
+	energy = starting_energy || energy
 
 	START_PROCESSING(SSsinguloprocess, src)
 	SSpoints_of_interest.make_point_of_interest(src)
@@ -64,11 +77,15 @@
 	var/datum/component/singularity/new_component = AddComponent(
 		singularity_component_type, \
 		consume_callback = CALLBACK(src, PROC_REF(consume)), \
+		roaming = (move_self && current_size >= STAGE_TWO), \
 	)
+
+	warp = new(src)
+	vis_contents += warp
 
 	singularity_component = WEAKREF(new_component)
 
-	expand(current_size)
+	check_energy()
 
 	for (var/obj/machinery/power/singularity_beacon/singu_beacon as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/singularity_beacon))
 		if (singu_beacon.active)
@@ -86,6 +103,9 @@
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSsinguloprocess, src)
+	vis_contents -= warp
+	QDEL_NULL(warp)
+	GLOB.all_singularities -= src
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)
@@ -146,7 +166,7 @@
 			if(current_size <= STAGE_TWO)
 				investigate_log("has been destroyed by a heavy explosion.", INVESTIGATE_ENGINE)
 				qdel(src)
-				return
+				return TRUE
 
 			energy -= round(((energy + 1) / 2), 1)
 		if(EXPLODE_HEAVY)
@@ -157,14 +177,17 @@
 	return TRUE
 
 /obj/singularity/process(seconds_per_tick)
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
 	time_since_act += seconds_per_tick
+	dissipate(seconds_per_tick)
 	if(time_since_act < 2)
 		return
 	time_since_act = 0
 	if(current_size >= STAGE_TWO)
-		if(prob(event_chance))
+		if(SPT_PROB(event_chance, seconds_per_tick))
 			event()
-	dissipate(seconds_per_tick)
+	radiation_pulse(src, 5, 0.1, intensity = (energy * 2) + 500)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -194,8 +217,10 @@
 		//It cant go smaller due to e loss
 		dissipate = FALSE
 
-	var/new_grav_pull
-	var/new_consume_range
+	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+
+	var/new_grav_pull = resolved_singularity?.grav_pull || 0
+	var/new_consume_range = resolved_singularity?.consume_range || 0
 
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
@@ -204,9 +229,11 @@
 			icon_state = "[singularity_icon_variant]_s1"
 			pixel_x = 0
 			pixel_y = 0
+			warp.pixel_x = -277
+			warp.pixel_y = -277
 			new_grav_pull = 4
 			new_consume_range = 0
-			dissipate_delay = 10
+			dissipate_delay = 15
 			time_since_last_dissipiation = 0
 			dissipate_strength = 1
 		if(STAGE_TWO)
@@ -216,9 +243,11 @@
 				icon_state = "[singularity_icon_variant]_s3"
 				pixel_x = -32
 				pixel_y = -32
+				warp.pixel_x = -245
+				warp.pixel_y = -245
 				new_grav_pull = 6
 				new_consume_range = 1
-				dissipate_delay = 5
+				dissipate_delay = 10
 				time_since_last_dissipiation = 0
 				dissipate_strength = 5
 		if(STAGE_THREE)
@@ -228,11 +257,13 @@
 				icon_state = "[singularity_icon_variant]_s5"
 				pixel_x = -64
 				pixel_y = -64
+				warp.pixel_x = -213
+				warp.pixel_y = -213
 				new_grav_pull = 8
 				new_consume_range = 2
-				dissipate_delay = 4
+				dissipate_delay = 6
 				time_since_last_dissipiation = 0
-				dissipate_strength = 20
+				dissipate_strength = 15
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
@@ -240,17 +271,21 @@
 				icon_state = "[singularity_icon_variant]_s7"
 				pixel_x = -96
 				pixel_y = -96
+				warp.pixel_x = -181
+				warp.pixel_y = -181
 				new_grav_pull = 10
 				new_consume_range = 3
-				dissipate_delay = 10
+				dissipate_delay = 4
 				time_since_last_dissipiation = 0
-				dissipate_strength = 10
+				dissipate_strength = 25
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
 			icon = 'icons/effects/288x288.dmi'
 			icon_state = "[singularity_icon_variant]_s9"
 			pixel_x = -128
 			pixel_y = -128
+			warp.pixel_x = -149
+			warp.pixel_y = -149
 			new_grav_pull = 10
 			new_consume_range = 4
 			dissipate = FALSE //It cant go smaller due to e loss
@@ -260,6 +295,8 @@
 			icon_state = "[singularity_icon_variant]_s11"
 			pixel_x = -160
 			pixel_y = -160
+			warp.pixel_x = -117
+			warp.pixel_y = -117
 			new_grav_pull = 15
 			new_consume_range = 5
 			dissipate = FALSE
@@ -269,7 +306,6 @@
 	else
 		qdel(GetComponent(/datum/component/vision_hurting))
 
-	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
 	if (!isnull(resolved_singularity))
 		resolved_singularity.consume_range = new_consume_range
 		resolved_singularity.grav_pull = new_grav_pull
@@ -291,24 +327,35 @@
 		qdel(src)
 		return FALSE
 	switch(energy)//Some of these numbers might need to be changed up later -Mport
-		if(1 to 199)
+		if(STAGE_ONE_ENERGY_REQUIREMENT to STAGE_TWO_ENERGY_REQUIREMENT)
 			allowed_size = STAGE_ONE
-		if(200 to 499)
+		if(STAGE_TWO_ENERGY_REQUIREMENT to STAGE_THREE_ENERGY_REQUIREMENT)
 			allowed_size = STAGE_TWO
-		if(500 to 999)
+		if(STAGE_THREE_ENERGY_REQUIREMENT to STAGE_FOUR_ENERGY_REQUIREMENT)
 			allowed_size = STAGE_THREE
-		if(1000 to 1999)
+		if(STAGE_FOUR_ENERGY_REQUIREMENT to STAGE_FIVE_ENERGY_REQUIREMENT)
 			allowed_size = STAGE_FOUR
-		if(2000 to INFINITY)
-			if(energy >= 3000 && consumed_supermatter)
-				allowed_size = STAGE_SIX
-			else
-				allowed_size = STAGE_FIVE
+		if(STAGE_FIVE_ENERGY_REQUIREMENT to STAGE_SIX_ENERGY_REQUIREMENT)
+			allowed_size = STAGE_FIVE
+		if(STAGE_SIX_ENERGY_REQUIREMENT to INFINITY)
+			allowed_size = consumed_supermatter ? STAGE_SIX : STAGE_FIVE
+
 	if(current_size != allowed_size)
 		expand()
 	return TRUE
 
+/obj/singularity/proc/is_dangerous()
+	if(current_size < STAGE_THREE)
+		return FALSE
+	else if(current_size <= STAGE_FOUR)
+		return check_cardinals_range(0)
+	return TRUE
+
 /obj/singularity/proc/consume(atom/thing)
+	if(istype(thing, /obj/item/storage/backpack/holding) && !consumed_supermatter && !collapsing)
+		consume_boh(thing)
+		return
+
 	var/gain = thing.singularity_act(current_size, src)
 	energy += gain
 	if(istype(thing, /obj/machinery/power/supermatter_crystal) && !consumed_supermatter)
@@ -319,6 +366,25 @@
 	desc = "[initial(desc)] It glows fiercely with inner fire."
 	consumed_supermatter = TRUE
 	set_light(10)
+
+/obj/singularity/proc/consume_boh(obj/boh)
+	collapsing = TRUE
+	name = "unstable [initial(name)]"
+	desc = "[initial(desc)] It seems to be collapsing in on itself."
+	visible_message(
+		message = span_danger("As [src] consumes [boh], it begins to collapse in on itself!"),
+		blind_message = span_hear("You hear aggressive crackling!"),
+		vision_distance = 15,
+	)
+	playsound(loc, 'sound/effects/clockcult_gateway_disrupted.ogg', 200, vary = TRUE, extrarange = 3, falloff_exponent = 1, frequency = -1, pressure_affected = FALSE, ignore_walls = TRUE, falloff_distance = 7)
+	addtimer(CALLBACK(src, PROC_REF(consume_boh_sfx)), 4 SECONDS)
+	animate(src, time = 4 SECONDS, transform = transform.Scale(0.25), flags = ANIMATION_PARALLEL, easing = ELASTIC_EASING)
+	animate(time = 0.5 SECONDS, alpha = 0)
+	QDEL_IN(src, 4.1 SECONDS)
+	qdel(boh)
+
+/obj/singularity/proc/consume_boh_sfx()
+	playsound(loc, 'sound/effects/supermatter.ogg', 200, vary = TRUE, extrarange = 3, falloff_exponent = 1, frequency = 0.5, pressure_affected = FALSE, ignore_walls = TRUE, falloff_distance = 7)
 
 /obj/singularity/proc/check_cardinals_range(steps, retry_with_move = FALSE)
 	. = length(GLOB.cardinals) //Should be 4.
@@ -428,7 +494,7 @@
 		if(istype(stunned_human.glasses, /obj/item/clothing/glasses/meson))
 			var/obj/item/clothing/glasses/meson/check_meson = stunned_human.glasses
 			if(check_meson.vision_flags & SEE_TURFS)
-				to_chat(stunned_human, span_notice("You look directly into the [name], good thing you had your protective eyewear on!"))
+				to_chat(stunned_human, span_notice("You look directly into \the [src], good thing you had your protective eyewear on!"))
 				continue
 
 		apply_stun(stunned_mob)
@@ -436,8 +502,8 @@
 /obj/singularity/proc/apply_stun(mob/living/carbon/stunned_mob)
 	stunned_mob.apply_effect(60, EFFECT_STUN)
 	stunned_mob.visible_message(
-		span_danger("[stunned_mob] stares blankly at the [name]!"),
-		span_userdanger("You look directly into the [name] and feel weak.")
+		span_danger("[stunned_mob] stares blankly at \the [src]!"),
+		span_userdanger("You look directly into \the [src] and feel weak.")
 	)
 
 /obj/singularity/proc/emp_area()
@@ -456,6 +522,70 @@
 	qdel(src)
 	return gain
 
+/obj/singularity/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	. = ..()
+	if(same_z_layer)
+		return
+	if(warp)
+		SET_PLANE(warp, PLANE_TO_TRUE(warp.plane), new_turf)
+
+/obj/singularity/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		. += "Energy: [energy]"
+
+/obj/singularity/proc/get_energy_to_raise()
+	switch(allowed_size)
+		if(STAGE_ONE)
+			return STAGE_TWO_ENERGY_REQUIREMENT
+		if(STAGE_TWO)
+			return STAGE_THREE_ENERGY_REQUIREMENT
+		if(STAGE_THREE)
+			return STAGE_FOUR_ENERGY_REQUIREMENT
+		if(STAGE_FOUR)
+			return STAGE_FIVE_ENERGY_REQUIREMENT
+		if(STAGE_FIVE)
+			if(consumed_supermatter)
+				return STAGE_SIX_ENERGY_REQUIREMENT
+			else
+				return INFINITY
+		if(STAGE_SIX)
+			return INFINITY
+
+/obj/singularity/proc/get_energy_to_lower()
+	switch(allowed_size)
+		if(STAGE_ONE)
+			return 0
+		if(STAGE_TWO)
+			return STAGE_TWO_ENERGY_REQUIREMENT
+		if(STAGE_THREE)
+			return STAGE_THREE_ENERGY_REQUIREMENT
+		if(STAGE_FOUR)
+			return STAGE_FOUR_ENERGY_REQUIREMENT
+		if(STAGE_FIVE)
+			return STAGE_FIVE_ENERGY_REQUIREMENT
+		if(STAGE_SIX)
+			return STAGE_SIX_ENERGY_REQUIREMENT
+
+/obj/singularity/proc/add_to_cims()
+	GLOB.all_singularities += src
+	uid = length(GLOB.all_singularities) + length(GLOB.all_energy_balls)
+
+/obj/singularity/proc/ntcims_ui_data()
+	var/list/data = list()
+	data["name"] = name
+	data["type"] = "singularity"
+	data["id"] = uid
+	data["uid"] = "anomaly_[uid]"
+	data["current_size"] = current_size
+	data["energy"] = energy
+	data["dissipate_delay"] = dissipate_delay
+	data["dissipate_strength"] = dissipate_strength
+	data["radiation_pulse"] = energy * 2 + 500
+	data["energy_to_lower"] = get_energy_to_lower()
+	data["energy_to_raise"] = get_energy_to_raise()
+	return data
+
 /obj/singularity/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 12 SECONDS)
 	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))
 
@@ -471,10 +601,6 @@
 	. = ..()
 	deadchat_plays(mode = DEMOCRACY_MODE)
 
-/// Special singularity that spawns for shuttle events only
-/obj/singularity/shuttle_event
-	anchored = FALSE
-
 /// Special singularity spawned by being sucked into a black hole during emagged orion trail.
 /obj/singularity/orion
 	move_self = FALSE
@@ -487,3 +613,29 @@
 /obj/singularity/orion/process(seconds_per_tick)
 	if(SPT_PROB(0.5, seconds_per_tick))
 		mezzer()
+
+/// Special singularity that spawns for shuttle events only
+/obj/singularity/shuttle_event
+	anchored = FALSE // this is required to work with shuttle event otherwise singularity gets stuck and doesn't move
+
+/obj/singularity/shuttle_event/no_escape
+	energy = STAGE_SIX_ENERGY
+	consumed_supermatter = TRUE // so we can get to the final stage
+
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
+/// Singularity spawned by a singularity generator
+/obj/singularity/stationary/Initialize(mapload, starting_energy)
+	. = ..()
+	add_to_cims()
+
+/obj/singularity/stationary/consume(atom/thing)
+	. = ..()
+	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
+		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
+			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
+		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
+			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
+
+#undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE

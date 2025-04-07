@@ -1,4 +1,4 @@
-import { BooleanLike } from 'common/react';
+import { BooleanLike } from 'tgui-core/react';
 
 export type NtMessage = {
   message: string;
@@ -16,6 +16,7 @@ export type NtPicture = {
 export type NtMessenger = {
   name: string;
   job: string;
+  job_trim: string;
   ref?: string;
 };
 

@@ -1,6 +1,6 @@
 //Blocks an attempt to connect before even creating our client datum thing.
 
-//How many new ckey matches before we revert the stickyban to it's roundstart state
+//How many new ckey matches before we revert the stickyban to its roundstart state
 //These are exclusive, so once it goes over one of these numbers, it reverts the ban
 #define STICKYBAN_MAX_MATCHES 15
 #define STICKYBAN_MAX_EXISTING_USER_MATCHES 3 //ie, users who were connected before the ban triggered
@@ -214,7 +214,7 @@
 
 		if (ban["fromdb"])
 			if(SSdbcore.Connect())
-				INVOKE_ASYNC(SSdbcore, /datum/controller/subsystem/dbcore/proc.QuerySelect, list(
+				INVOKE_ASYNC(SSdbcore, TYPE_PROC_REF(/datum/controller/subsystem/dbcore, QuerySelect), list(
 					SSdbcore.NewQuery(
 						"INSERT INTO [format_table_name("stickyban_matched_ckey")] (matched_ckey, stickyban) VALUES (:ckey, :bannedckey) ON DUPLICATE KEY UPDATE last_matched = now()",
 						list("ckey" = ckey, "bannedckey" = bannedckey)
@@ -246,6 +246,22 @@
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+
+	if (!real_bans_only && !C && CONFIG_GET(flag/require_discord_linking))
+		var/discord_id = SSdiscord.lookup_id(ckey)
+		if (!discord_id)
+			var/cached_token = SSdiscord.reverify_cache[ckey]
+			var/token = ""
+
+			if (cached_token && cached_token != "")
+				token = cached_token
+			else
+				token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
+				SSdiscord.reverify_cache[ckey] = token
+
+			var/name_link = CONFIG_GET(string/hub_name_link)
+			var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek Discord kaydın yapıldıktan sonra bir kanala /verify yazınca çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
+			return list("reason" = "DiscordAccount", "desc" = desc)
 
 	return .
 

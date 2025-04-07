@@ -14,6 +14,7 @@
 				/obj/item/seeds/apple = 3,
 				/obj/item/seeds/banana = 3,
 				/obj/item/seeds/chili/bell_pepper = 3,
+				/obj/item/seeds/chili/bell_pepper/green = 3,
 				/obj/item/seeds/berry = 3,
 				/obj/item/seeds/cherry = 3,
 				/obj/item/seeds/chili = 3,

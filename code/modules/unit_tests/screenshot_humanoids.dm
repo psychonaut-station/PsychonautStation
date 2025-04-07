@@ -23,9 +23,20 @@
 	moth.dna.features["moth_markings"] = "None"
 	moth.dna.features["moth_wings"] = "Firewatch"
 	moth.set_species(/datum/species/moth)
-	moth.equipOutfit(/datum/outfit/job/cmo, visualsOnly = TRUE)
+	moth.equipOutfit(/datum/outfit/job/cmo, visuals_only = TRUE)
 	test_screenshot("[/datum/species/moth]", get_flat_icon_for_all_directions(moth))
 	testable_species -= /datum/species/moth
+
+	for (var/datum/species/arachnid_type as anything in typesof(/datum/species/arachnid))
+		var/mob/living/carbon/human/arachnid = allocate(/mob/living/carbon/human/dummy/consistent)
+		arachnid.dna.features["mcolor"] = "#382928"
+		arachnid.dna.features["arachnid_appendages"] = "Long"
+		arachnid.eye_color_left = COLOR_SILVER
+		arachnid.eye_color_right = COLOR_SILVER
+		arachnid.set_species(arachnid_type)
+		arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visuals_only = TRUE)
+		test_screenshot("[arachnid_type]", get_flat_icon_for_all_directions(arachnid))
+		testable_species -= arachnid_type
 
 	// More in depth test for slimes since they have a lot going on
 	for (var/datum/species/slime_type as anything in typesof(/datum/species/jelly))
@@ -45,5 +56,5 @@
 /datum/unit_test/screenshot_humanoids/proc/make_dummy(species, job_outfit)
 	var/mob/living/carbon/human/dummy/consistent/dummy = allocate(/mob/living/carbon/human/dummy/consistent)
 	dummy.set_species(species)
-	dummy.equipOutfit(job_outfit, visualsOnly = TRUE)
+	dummy.equipOutfit(job_outfit, visuals_only = TRUE)
 	return dummy

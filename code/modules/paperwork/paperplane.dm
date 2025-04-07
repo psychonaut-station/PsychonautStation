@@ -4,7 +4,6 @@
 	icon = 'icons/obj/service/bureaucracy.dmi'
 	icon_state = "paperplane"
 	base_icon_state = "paperplane"
-	custom_fire_overlay = "paperplane_onfire"
 	throw_range = 7
 	throw_speed = 1
 	throwforce = 0
@@ -56,8 +55,13 @@
 	internal_paper = null
 	return ..()
 
+/obj/item/paperplane/custom_fire_overlay()
+	if (!custom_fire_overlay)
+		custom_fire_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', "paperplane_onfire", appearance_flags = RESET_COLOR|KEEP_APART)
+	return custom_fire_overlay
+
 /obj/item/paperplane/suicide_act(mob/living/user)
-	var/obj/item/organ/internal/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	user.Stun(20 SECONDS)
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
@@ -86,7 +90,7 @@
 /obj/item/paperplane/attackby(obj/item/attacking_item, mob/user, params)
 	if(burn_paper_product_attackby_check(attacking_item, user))
 		return
-	if(istype(attacking_item, /obj/item/pen) || istype(attacking_item, /obj/item/toy/crayon))
+	if(IS_WRITING_UTENSIL(attacking_item))
 		to_chat(user, span_warning("You should unfold [src] before changing it!"))
 		return
 	else if(istype(attacking_item, /obj/item/stamp)) //we don't randomize stamps on a paperplane
@@ -99,7 +103,7 @@
 /obj/item/paperplane/throw_impact(atom/hit_atom, datum/thrownthing/throwingdatum)
 	if(iscarbon(hit_atom) && HAS_TRAIT(hit_atom, TRAIT_PAPER_MASTER))
 		var/mob/living/carbon/hit_carbon = hit_atom
-		if(hit_carbon.can_catch_item(TRUE))
+		if(hit_carbon.can_catch_item(src, skip_throw_mode_check = TRUE))
 			hit_carbon.throw_mode_on(THROW_MODE_TOGGLE)
 
 	. = ..()
@@ -110,7 +114,7 @@
 			qdel(src)
 		return
 	var/mob/living/carbon/human/hit_human = hit_atom
-	var/obj/item/organ/internal/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!prob(hit_probability))
 		if(scrap_on_impact)
 			var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))

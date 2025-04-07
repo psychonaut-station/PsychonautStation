@@ -57,7 +57,7 @@
 			qdel(holochip)
 		else
 			to_chat(user, span_warning("You cannot exchange that much holochip to poker chips."))
-			playsound(src, 'sound/machines/buzz-sigh.ogg', 50, TRUE)
+			playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
 			qdel(pokerchip)
 		return TRUE
 

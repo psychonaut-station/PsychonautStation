@@ -14,7 +14,7 @@
 
 /obj/item/toy/cards/cardhand/suicide_act(mob/living/carbon/user)
 	user.visible_message(span_suicide("[user] is slitting [user.p_their()] wrists with \the [src]! It looks like [user.p_they()] [user.p_have()] a crummy hand!"))
-	playsound(src, 'sound/items/cardshuffle.ogg', 50, TRUE)
+	playsound(src, 'sound/items/cards/cardshuffle.ogg', 50, TRUE)
 	return BRUTELOSS
 
 /obj/item/toy/cards/cardhand/examine(mob/user)
@@ -90,7 +90,7 @@
 
 	update_appearance()
 
-/obj/item/toy/cards/cardhand/alt_click_secondary(mob/user)
+/obj/item/toy/cards/cardhand/click_alt_secondary(mob/user)
 	. = ..()
 
 	if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY | FORBID_TELEKINESIS_REACH) || user.held_items[user.active_hand_index] != src)
@@ -102,7 +102,7 @@
 	update_appearance()
 
 /obj/item/toy/cards/cardhand/proc/check_menu(mob/living/user)
-	return isliving(user) && !user.incapacitated()
+	return isliving(user) && !user.incapacitated
 
 /obj/item/toy/cards/cardhand/attackby(obj/item/weapon, mob/living/user, params, flip_card = FALSE)
 	var/obj/item/toy/singlecard/card

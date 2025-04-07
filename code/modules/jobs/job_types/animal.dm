@@ -16,6 +16,12 @@
 	job_flags = JOB_NEW_PLAYER_JOINABLE
 	config_tag = "ANIMAL"
 
+	alt_titles = list(
+		"Animal",
+		"Spirit Animal",
+		"Emotional Support Animal"
+	)
+
 /datum/job/animal/proc/apply_prefs_job_animal(mob/living/spawned, client/player_client)
 	spawned.job = title
 	if(GLOB.current_anonymous_theme || CONFIG_GET(flag/force_random_names))
@@ -130,3 +136,8 @@
 		examine_list += span_deadsay("It is totally catatonic. The stresses of life in deep-space must have been too much for it. Any recovery is unlikely.")
 	else if(!source.client)
 		examine_list += "It has a blank, absent-minded stare and appears completely unresponsive to anything. It may snap out of it soon."
+
+/mob/living/get_exp_list(minutes)
+	. = ..()
+	if(mind?.assigned_role?.title == JOB_ANIMAL)
+		.[JOB_ANIMAL] = minutes

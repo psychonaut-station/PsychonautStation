@@ -276,7 +276,7 @@
 /area/ruin/space)
 "vV" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/gun/ballistic/automatic/plastikov,
+/obj/item/gun/ballistic/automatic/smartgun,
 /obj/structure/alien/weeds,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
@@ -289,7 +289,7 @@
 /obj/machinery/light/dim/directional/west{
 	dir = 4
 	},
-/obj/item/ammo_box/magazine/plastikov9mm,
+/obj/item/ammo_box/magazine/smartgun,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "zz" = (

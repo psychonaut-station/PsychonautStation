@@ -6,47 +6,58 @@
 	message = "is strumming the air and headbanging like a safari chimp."
 	hands_use_check = TRUE
 
-/datum/emote/living/carbon/blink
-	key = "blink"
-	key_third_person = "blinks"
-	message = "blinks."
-
-/datum/emote/living/carbon/blink_r
-	key = "blink_r"
-	name = "blink (Rapid)"
-	message = "blinks rapidly."
-
 /datum/emote/living/carbon/clap
 	key = "clap"
 	key_third_person = "claps"
 	message = "claps."
-	muzzle_ignore = TRUE
 	hands_use_check = TRUE
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	audio_cooldown = 5 SECONDS
 	vary = TRUE
+	affected_by_pitch = FALSE
 
 /datum/emote/living/carbon/clap/get_sound(mob/living/user)
-	if(ishuman(user))
-		if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
-			return
-		else
-			return pick('sound/misc/clap1.ogg',
-							'sound/misc/clap2.ogg',
-							'sound/misc/clap3.ogg',
-							'sound/misc/clap4.ogg')
+	if(!user.get_bodypart(BODY_ZONE_L_ARM) || !user.get_bodypart(BODY_ZONE_R_ARM))
+		return
+	return pick(
+		'sound/mobs/humanoids/human/clap/clap1.ogg',
+		'sound/mobs/humanoids/human/clap/clap2.ogg',
+		'sound/mobs/humanoids/human/clap/clap3.ogg',
+		'sound/mobs/humanoids/human/clap/clap4.ogg',
+	)
 
 /datum/emote/living/carbon/crack
 	key = "crack"
 	key_third_person = "cracks"
 	message = "cracks their knuckles."
-	sound = 'sound/misc/knuckles.ogg'
+	sound = 'sound/mobs/humanoids/human/knuckle_crack/knuckles.ogg'
+	hands_use_check = TRUE
 	cooldown = 6 SECONDS
 
-/datum/emote/living/carbon/crack/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional)
+/datum/emote/living/carbon/crack/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional, params)
 	if(!iscarbon(user) || user.usable_hands < 2)
 		return FALSE
 	return ..()
+
+/datum/emote/living/carbon/cry
+	key = "cry"
+	key_third_person = "cries"
+	message = "cries."
+	message_mime = "sobs silently."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	vary = TRUE
+	stat_allowed = SOFT_CRIT
+
+/datum/emote/living/carbon/cry/run_emote(mob/user, params, type_override, intentional)
+	. = ..()
+	if(!ishuman(user))
+		return
+	var/mob/living/carbon/human/human_user = user
+	QDEL_IN(human_user.give_emote_overlay(/datum/bodypart_overlay/simple/emote/cry), 12.8 SECONDS)
+
+/datum/emote/living/carbon/cry/get_sound(mob/living/carbon/human/user)
+	if(!istype(user))
+		return
+	return user.dna.species.get_cry_sound(user)
 
 /datum/emote/living/carbon/circle
 	key = "circle"
@@ -62,6 +73,33 @@
 	if(user.put_in_hands(N))
 		to_chat(user, span_notice("You make a circle with your hand."))
 
+/datum/emote/living/carbon/meow
+	key = "meow"
+	key_third_person = "meows"
+	vary = TRUE
+	sound = SFX_CAT_MEOW
+	message = "meows!"
+	message_mime = "meows silently."
+	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/meow/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional, params)
+	if(!iscarbon(user) || (!istype(user.get_organ_slot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/cat)))
+		return FALSE
+	return ..()
+
+/datum/emote/living/carbon/purr
+	key = "purr"
+	key_third_person = "purrs"
+	vary = TRUE
+	sound = SFX_CAT_PURR
+	message = "purrs."
+	emote_type = EMOTE_AUDIBLE
+
+/datum/emote/living/carbon/purr/can_run_emote(mob/living/carbon/user, status_check = TRUE , intentional, params)
+	if(!iscarbon(user) || (!istype(user.get_organ_slot(ORGAN_SLOT_TONGUE), /obj/item/organ/tongue/cat)) || HAS_MIND_TRAIT(user, TRAIT_MIMING))
+		return FALSE
+	return ..()
+
 /datum/emote/living/carbon/moan
 	key = "moan"
 	key_third_person = "moans"
@@ -76,8 +114,6 @@
 
 /datum/emote/living/carbon/noogie/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
 	var/obj/item/hand_item/noogie/noogie = new(user)
 	if(user.put_in_hands(noogie))
 		to_chat(user, span_notice("You ready your noogie'ing hand."))
@@ -126,8 +162,6 @@
 
 /datum/emote/living/carbon/slap/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
 	var/obj/item/hand_item/slapper/N = new(user)
 	if(user.put_in_hands(N))
 		to_chat(user, span_notice("You ready your slapping hand."))
@@ -144,9 +178,6 @@
 
 /datum/emote/living/carbon/hand/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if(!.)
-		return
-
 	var/obj/item/hand_item/hand/hand = new(user)
 	if(user.put_in_hands(hand))
 		to_chat(user, span_notice("You ready your hand."))
@@ -162,11 +193,14 @@
 	message_param = "snaps their fingers at %t."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	hands_use_check = TRUE
-	muzzle_ignore = TRUE
+	affected_by_pitch = FALSE
 
 /datum/emote/living/carbon/snap/get_sound(mob/living/user)
 	if(ishuman(user))
-		return pick('sound/misc/fingersnap1.ogg', 'sound/misc/fingersnap2.ogg')
+		return pick(
+			'sound/mobs/humanoids/human/snap/fingersnap1.ogg',
+			'sound/mobs/humanoids/human/snap/fingersnap2.ogg',
+			)
 	return null
 
 /datum/emote/living/carbon/shoesteal
@@ -177,8 +211,6 @@
 
 /datum/emote/living/carbon/shoesteal/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
-	if (!.)
-		return
 	var/obj/item/hand_item/stealer/stealing_hand = new(user)
 	if (user.put_in_hands(stealing_hand))
 		user.balloon_alert(user, "preparing to steal shoes...")
@@ -207,3 +239,45 @@
 	key_third_person = "thumbsdown"
 	message = "flashes a thumbs down."
 	hands_use_check = TRUE
+
+/datum/emote/living/carbon/hiss
+	key = "hiss"
+	key_third_person = "hisses"
+	message = "hisses!"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	vary = TRUE
+
+/datum/emote/living/carbon/hiss/get_sound(mob/living/carbon/user)
+	. = ..()
+	if(!istype(user))
+		return
+	if(isalien(user))
+		return SFX_HISS
+	return user.dna.species.get_hiss_sound()
+
+/datum/emote/living/carbon/sweatdrop
+	key = "sweatdrop"
+	key_third_person = "sweatdrops"
+	message = "sweats."
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	vary = TRUE
+	sound = 'sound/effects/sweatdrop.ogg'
+
+/datum/emote/living/carbon/sweatdrop/run_emote(mob/living/carbon/user, params, type_override, intentional)
+	. = ..()
+	var/image/emote_animation = image('icons/psychonaut/mob/human/emote_visuals.dmi', user, "sweatdrop", pixel_x = 10, pixel_y = 10)
+	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
+
+/datum/emote/living/carbon/sweatdrop/sweat //This is entirely the same as sweatdrop, however people might use either, so I'm adding this one instead of editing the other one.
+	key = "sweat"
+
+/datum/emote/living/carbon/annoyed
+	key = "annoyed"
+	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+
+/datum/emote/living/carbon/annoyed/run_emote(mob/living/carbon/user, params, type_override, intentional)
+	. = ..()
+	var/image/emote_animation = image('icons/psychonaut/mob/human/emote_visuals.dmi', user, "annoyed", pixel_x = 10, pixel_y = 10)
+	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
+	// as this emote has no message, it won't play a sound due to the parent proc, so we play it manually here
+	playsound(user,'sound/effects/annoyed.ogg',50,TRUE)

@@ -16549,7 +16549,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/textured,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "bxH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white,
@@ -17760,7 +17760,7 @@
 /obj/effect/turf_decal/bot,
 /obj/structure/cable,
 /turf/open/floor/iron/textured,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "bEv" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -27179,7 +27179,7 @@
 /area/station/ai_monitored/security/armory)
 "dbI" = (
 /turf/closed/wall,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "dbT" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
@@ -50129,7 +50129,7 @@
 /turf/open/floor/iron/textured_half{
 	dir = 1
 	},
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "lVp" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/orange/visible{
 	dir = 4
@@ -58704,7 +58704,7 @@
 	},
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron/textured,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "pac" = (
 /turf/closed/wall,
 /area/station/cargo/drone_bay)
@@ -60473,7 +60473,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "pLK" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/stripes/corner,
@@ -71326,7 +71326,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/iron/textured,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "tMM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71793,7 +71793,7 @@
 "tXW" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
-/area/station/commons/storage)
+/area/station/commons/storage/tools)
 "tXX" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8

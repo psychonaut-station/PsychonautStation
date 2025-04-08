@@ -16540,16 +16540,16 @@
 	},
 /area/station/hallway/secondary/exit/departure_lounge)
 "bxG" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 10
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/textured,
-/area/station/commons/storage/tools)
+/obj/effect/decal/cleanable/dirt/dust,
+/obj/effect/turf_decal/delivery,
+/turf/open/floor/plating,
+/area/station/maintenance/port)
 "bxH" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/white,
@@ -17749,18 +17749,12 @@
 /turf/open/floor/iron,
 /area/station/security/checkpoint/customs/auxiliary)
 "bEu" = (
-/obj/machinery/power/apc/auto_name/directional/north,
 /obj/structure/rack,
 /obj/item/crowbar,
 /obj/item/screwdriver,
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line,
-/obj/effect/turf_decal/bot,
-/obj/structure/cable,
 /turf/open/floor/iron/textured,
-/area/station/commons/storage/tools)
+/area/station/maintenance/port)
 "bEv" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -17789,7 +17783,6 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "bEC" = (
-/obj/effect/decal/cleanable/dirt/dust,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment,
@@ -27177,9 +27170,6 @@
 /obj/effect/spawner/random/armory/e_gun,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
-"dbI" = (
-/turf/closed/wall,
-/area/station/commons/storage/tools)
 "dbT" = (
 /obj/effect/turf_decal/delivery,
 /obj/effect/decal/cleanable/dirt,
@@ -50117,19 +50107,20 @@
 /turf/open/floor/carpet,
 /area/station/security/detectives_office)
 "lVm" = (
-/obj/machinery/door/airlock/engineering{
-	name = "Arrivals Maintenance"
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable,
+/obj/effect/mapping_helpers/airlock/access/any/engineering/maintenance,
+/obj/machinery/door/airlock/maintenance{
+	name = "Maintenance Access"
+	},
 /turf/open/floor/iron/textured_half{
 	dir = 1
 	},
-/area/station/commons/storage/tools)
+/area/station/maintenance/port)
 "lVp" = (
 /obj/machinery/atmospherics/pipe/bridge_pipe/orange/visible{
 	dir = 4
@@ -58695,16 +58686,12 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
 "oZY" = (
-/obj/machinery/airalarm/directional/north,
 /obj/structure/table,
 /obj/machinery/cell_charger,
 /obj/item/stock_parts/power_store/cell/high,
-/obj/effect/turf_decal/tile/yellow/half/contrasted{
-	dir = 1
-	},
 /obj/effect/turf_decal/stripes/line,
-/turf/open/floor/iron/textured,
-/area/station/commons/storage/tools)
+/turf/open/floor/plating,
+/area/station/maintenance/port)
 "pac" = (
 /turf/closed/wall,
 /area/station/cargo/drone_bay)
@@ -60473,7 +60460,7 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/cable,
 /turf/open/floor/iron,
-/area/station/commons/storage/tools)
+/area/station/maintenance/port)
 "pLK" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/effect/turf_decal/stripes/corner,
@@ -71318,15 +71305,15 @@
 /area/station/science/ordnance/storage)
 "tMF" = (
 /obj/machinery/light/small/directional/south,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
 /obj/structure/cable,
-/turf/open/floor/iron/textured,
-/area/station/commons/storage/tools)
+/obj/effect/decal/cleanable/dirt/dust,
+/turf/open/floor/plating,
+/area/station/maintenance/port)
 "tMM" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -71790,10 +71777,6 @@
 /obj/effect/spawner/random/armory/shotgun,
 /turf/open/floor/iron/dark/textured,
 /area/station/ai_monitored/security/armory)
-"tXW" = (
-/obj/effect/spawner/structure/window,
-/turf/open/floor/plating,
-/area/station/commons/storage/tools)
 "tXX" = (
 /obj/effect/turf_decal/trimline/yellow/filled/line{
 	dir = 8
@@ -97335,10 +97318,10 @@ bjp
 tyc
 kHH
 bfm
-dbI
-tXW
+nCC
+nCC
 lVm
-dbI
+nCC
 nCC
 nCC
 nCC
@@ -97592,10 +97575,10 @@ xDE
 tyc
 mcT
 bvH
-dbI
+nCC
 bEu
 tMF
-dbI
+nCC
 bFT
 qTU
 cXQ
@@ -97849,7 +97832,7 @@ xDE
 tyc
 mcT
 cvS
-dbI
+nCC
 oZY
 bxG
 pKi

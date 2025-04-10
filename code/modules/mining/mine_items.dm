@@ -13,7 +13,7 @@
 	. = ..()
 	set_light(set_luminosity, set_cap)
 
-/obj/effect/light_emitter/singularity_pull()
+/obj/effect/light_emitter/singularity_pull(atom/singularity, current_size)
 	return
 
 /obj/effect/light_emitter/singularity_act()
@@ -139,6 +139,10 @@
 	roundstart_template = /datum/map_template/shuttle/mining/northstar
 	height = 6
 
+/obj/docking_port/stationary/mining_home/nebula
+	roundstart_template = /datum/map_template/shuttle/mining/nebula
+	height = 10
+
 /obj/docking_port/stationary/mining_home/common
 	name = "SS13: Common Mining Dock"
 	shuttle_id = "commonmining_home"
@@ -160,6 +164,8 @@
 	close_sound = 'sound/machines/trapdoor/trapdoor_shut.ogg'
 	set_dir_on_move = TRUE
 	can_buckle = TRUE
+	can_weld_shut = FALSE
+
 	/// Whether we're on a set of rails or just on the ground
 	var/on_rails = FALSE
 	/// How many turfs we are travelling, also functions as speed (more momentum = faster)
@@ -177,6 +183,10 @@
 		. += span_notice("You can give this a bump to send it on its way, or drag it off the rails to drag it around.")
 	else
 		. += span_notice("Drag this onto a mine cart rail to set it on its way.")
+
+// We don't want the locked crate overlay show up.
+/obj/structure/closet/crate/miningcar/closet_update_overlays(list/new_overlays)
+	return
 
 /obj/structure/closet/crate/miningcar/Move(atom/newloc, direct, glide_size_override, update_dir)
 	if(isnull(newloc))
@@ -295,17 +305,16 @@
 	update_rail_state(FALSE)
 	return ..()
 
-/obj/structure/closet/crate/miningcar/MouseDrop(atom/over, src_location, over_location, src_control, over_control, params)
-	. = ..()
-	if(!isliving(usr) || !usr.Adjacent(over) || !usr.Adjacent(src))
+/obj/structure/closet/crate/miningcar/mouse_drop_dragged(atom/over, mob/user, src_location, over_location, params)
+	if(!isliving(user))
 		return
 	if(on_rails)
 		if(isopenturf(over))
-			try_take_off_rails(usr, over)
+			try_take_off_rails(user, over)
 		return
 
 	if(istype(over, /obj/structure/minecart_rail) || (isopenturf(over) && (locate(/obj/structure/minecart_rail) in over)))
-		try_put_on_rails(usr, get_turf(over))
+		try_put_on_rails(user, get_turf(over))
 		return
 
 /**
@@ -320,7 +329,7 @@
 		return
 	update_rail_state(FALSE)
 	Move(new_destination)
-	var/sound/thud_sound = sound('sound/weapons/thudswoosh.ogg')
+	var/sound/thud_sound = sound('sound/items/weapons/thudswoosh.ogg')
 	thud_sound.pitch = 0.5
 	playsound(src, thud_sound, 50, TRUE)
 

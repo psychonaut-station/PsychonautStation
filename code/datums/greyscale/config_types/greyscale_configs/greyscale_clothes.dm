@@ -622,6 +622,14 @@
 	name = "Waistcoat (Worn)"
 	icon_file = 'icons/mob/clothing/accessories.dmi'
 
+// Digi Stuff
+
+/datum/greyscale_config/digitigrade
+	name = "Digitigrade Clothes"
+	icon_file = 'icons/mob/clothing/digi_template.dmi'
+	json_config = 'code/datums/greyscale/json_configs/digitigrade.json'
+
+
 //
 // SUIT + HEAD
 // (Specifically for toggleable suits with hats, i.e. winter coats)
@@ -824,3 +832,12 @@
 /datum/greyscale_config/jester_hat/worn
 	name = "Jester Hat (Worn)"
 	icon_file = 'icons/mob/clothing/head/costume.dmi'
+
+/datum/greyscale_config/fedora
+	name = "Fedora"
+	icon_file = 'icons/obj/clothing/head/hats.dmi'
+	json_config = 'code/datums/greyscale/json_configs/fedora.json'
+
+/datum/greyscale_config/fedora/worn
+	name = "Fedora (Worn)"
+	icon_file = 'icons/mob/clothing/head/hats.dmi'

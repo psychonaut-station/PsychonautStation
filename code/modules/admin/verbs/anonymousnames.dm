@@ -94,7 +94,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 			return
 		var/mob/living/carbon/human/human_mob = player
 		var/original_name = player.real_name //id will not be changed if you do not do this
-		randomize_human(player) //do this first so the special name can be given
+		randomize_human_normie(player) //do this first so the special name can be given
 		player.fully_replace_character_name(original_name, anonymous_name(player))
 		if(extras_enabled)
 			player_extras(player)
@@ -196,51 +196,64 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 
 /obj/item/storage/box/wizard_kit
 	name = "Generic Wizard Cosplay Kit"
+	storage_type = /datum/storage/box/wizard
 
 /obj/item/storage/box/wizard_kit/PopulateContents()
-	new /obj/item/clothing/head/wizard(src)
-	new /obj/item/clothing/suit/wizrobe(src)
-	new /obj/item/clothing/shoes/sandal(src)
+	return list(
+		/obj/item/clothing/head/wizard,
+		/obj/item/clothing/suit/wizrobe,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /obj/item/storage/box/wizard_kit/red
 	name = "Evocation Wizard Cosplay Kit"
 
 /obj/item/storage/box/wizard_kit/red/PopulateContents()
-	new /obj/item/clothing/head/wizard/red(src)
-	new /obj/item/clothing/suit/wizrobe/red(src)
-	new /obj/item/clothing/shoes/sandal(src)
+	return list(
+		/obj/item/clothing/head/wizard/red,
+		/obj/item/clothing/suit/wizrobe/red,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /obj/item/storage/box/wizard_kit/yellow
 	name = "Translocation Wizard Cosplay Kit"
 
 /obj/item/storage/box/wizard_kit/yellow/PopulateContents()
-	new /obj/item/clothing/head/wizard/yellow(src)
-	new /obj/item/clothing/suit/wizrobe/yellow(src)
-	new /obj/item/clothing/shoes/sandal(src)
+	return list(
+		/obj/item/clothing/head/wizard/yellow,
+		/obj/item/clothing/suit/wizrobe/yellow,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /obj/item/storage/box/wizard_kit/magusred
 	name = "Conjuration Wizard Cosplay Kit"
 
-/obj/item/storage/box/wizard_kit/yellow/PopulateContents()
-	new /obj/item/clothing/head/wizard/magus(src)
-	new /obj/item/clothing/suit/wizrobe/magusred(src)
-	new /obj/item/clothing/shoes/sandal(src)
+/obj/item/storage/box/wizard_kit/magusred/PopulateContents()
+	return list(
+		/obj/item/clothing/head/wizard/magus,
+		/obj/item/clothing/suit/wizrobe/magusred,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /obj/item/storage/box/wizard_kit/magusblue
 	name = "Transmutation Wizard Cosplay Kit"
 
-/obj/item/storage/box/wizard_kit/yellow/PopulateContents()
-	new /obj/item/clothing/head/wizard/magus(src)
-	new /obj/item/clothing/suit/wizrobe/magusblue(src)
-	new /obj/item/clothing/shoes/sandal(src)
+/obj/item/storage/box/wizard_kit/magusblue/PopulateContents()
+	return list(
+		/obj/item/clothing/head/wizard/magus,
+		/obj/item/clothing/suit/wizrobe/magusblue,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /obj/item/storage/box/wizard_kit/black
 	name = "Necromancy Wizard Cosplay Kit"
 
 /obj/item/storage/box/wizard_kit/black/PopulateContents()
-	new /obj/item/clothing/head/wizard/black(src)
-	new /obj/item/clothing/suit/wizrobe/black(src)
-	new /obj/item/clothing/shoes/sandal(src)
+	return list(
+		/obj/item/clothing/head/wizard/black,
+		/obj/item/clothing/suit/wizrobe/black,
+		/obj/item/clothing/shoes/sandal,
+	)
 
 /datum/anonymous_theme/spider_clan
 	name = "Spider Clan"
@@ -268,7 +281,7 @@ GLOBAL_DATUM(current_anonymous_theme, /datum/anonymous_theme)
 	set_station_name("[pick(GLOB.first_names)] [pick(GLOB.last_names)]")
 
 /datum/anonymous_theme/station/announce_to_all_players()
-	priority_announce("[station_name()] yakınlarında 9. seviye gerçeklik hatası olayı doğrulandı. Tüm personel, kazara daha fazla gerçeklik olayını tetiklememek için ellerinden gelenin en iyisini yapmaya çalışmalıdır.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/misc/notice1.ogg')
+	priority_announce("[station_name()] yakınlarında 9. seviye gerçeklik hatası olayı doğrulandı. Tüm personel, kazara daha fazla gerçeklik olayını tetiklememek için ellerinden gelenin en iyisini yapmaya çalışmalıdır.", "[command_name()] Üst Boyutlu İlişkiler", 'sound/announcer/notice/notice1.ogg')
 
 /datum/anonymous_theme/station/anonymous_name(mob/target)
 	return new_station_name()

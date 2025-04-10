@@ -128,6 +128,7 @@
 		INVOKE_ASYNC(src, PROC_REF(do_destroy_girder), target, cultist)
 		return COMPONENT_NO_AFTERATTACK
 
+
 	if(istype(target, /obj/structure/destructible/cult))
 		INVOKE_ASYNC(src, PROC_REF(do_unanchor_structure), target, cultist)
 		return COMPONENT_NO_AFTERATTACK
@@ -161,7 +162,7 @@
 	// For carbonss we also want to clear out the stomach of any holywater
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		var/obj/item/organ/internal/stomach/belly = carbon_target.get_organ_slot(ORGAN_SLOT_STOMACH)
+		var/obj/item/organ/stomach/belly = carbon_target.get_organ_slot(ORGAN_SLOT_STOMACH)
 		if(belly)
 			holy_to_unholy += belly.reagents.get_reagent_amount(/datum/reagent/water/holywater)
 			belly.reagents.del_reagent(/datum/reagent/water/holywater)
@@ -175,7 +176,7 @@
  * cultist - the mob doing the destroying
  */
 /datum/component/cult_ritual_item/proc/do_destroy_girder(obj/structure/girder/cult/cult_girder, mob/living/cultist)
-	playsound(cult_girder, 'sound/weapons/resonator_blast.ogg', 40, TRUE, ignore_walls = FALSE)
+	playsound(cult_girder, 'sound/items/weapons/resonator_blast.ogg', 40, TRUE, ignore_walls = FALSE)
 	cultist.visible_message(
 		span_warning("[cultist] strikes [cult_girder] with [parent]!"),
 		span_notice("You demolish [cult_girder].")
@@ -319,7 +320,7 @@
 	if(scribe_failed)
 		failed = CALLBACK(GLOBAL_PROC, scribe_failed)
 
-	SEND_SOUND(cultist, sound('sound/weapons/slice.ogg', 0, 1, 10))
+	SEND_SOUND(cultist, sound('sound/items/weapons/slice.ogg', 0, 1, 10))
 	if(!do_after(cultist, scribe_mod, target = get_turf(cultist), timed_action_flags = IGNORE_SLOWDOWNS))
 		cleanup_shields()
 		failed?.Invoke()
@@ -370,7 +371,7 @@
 	var/area/summon_location = get_area(cultist)
 	priority_announce(
 		text = "Tanrı katından gelen yaratıklar, [cultist.real_name] tarafından bilinmeyen bir boyuttan [summon_location.get_original_area_name()] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
-		sound = 'sound/ambience/antag/bloodcult/bloodcult_scribe.ogg',
+		sound = 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
 		sender_override = "[command_name()] Üst Boyutlu İlişkiler",
 		has_important_message = TRUE,
 	)
@@ -403,7 +404,7 @@
 	if(!rune.Adjacent(cultist))
 		return FALSE
 
-	if(cultist.incapacitated())
+	if(cultist.incapacitated)
 		return FALSE
 
 	if(cultist.stat == DEAD)
@@ -426,7 +427,7 @@
 	if(QDELETED(tool) || !cultist.is_holding(tool))
 		return FALSE
 
-	if(cultist.incapacitated() || cultist.stat == DEAD)
+	if(cultist.incapacitated || cultist.stat == DEAD)
 		to_chat(cultist, span_warning("You can't draw a rune right now."))
 		return FALSE
 

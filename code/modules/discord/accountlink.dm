@@ -7,7 +7,7 @@
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))
 		return
 
-	if(!CONFIG_GET(string/discordbotcommandprefix) || !CONFIG_GET(string/discordbottoken) || !CONFIG_GET(string/discorduserendpoint))
+	if(!CONFIG_GET(string/discordbotcommandprefix))
 		to_chat(src, span_warning("This feature is disabled."))
 		return
 
@@ -23,12 +23,8 @@
 /datum/verification_menu
 	var/client/holder
 	var/last_refresh = 0
-	var/linked = FALSE
-	var/token
 	var/discord_id
-	var/display_name
-	var/username
-	var/discriminator
+	var/token
 
 /datum/verification_menu/New(user)
 	if(istype(user, /client))
@@ -39,13 +35,16 @@
 
 	lookup()
 
-/datum/verification_menu/proc/lookup()
+/datum/verification_menu/proc/lookup(refresh = FALSE)
+	if(isnull(holder))
+		return
+
 	var/discord_id = SSdiscord.lookup_id(holder.ckey)
 
 	if(discord_id)
-		src.discord_id = discord_id
-		linked = TRUE
-		fetch()
+		holder.fetch_discord(refresh, discord_id)
+		if(refresh)
+			holder.prefs.refresh_membership()
 	else
 		var/cached_token = SSdiscord.reverify_cache[holder.ckey]
 
@@ -55,20 +54,11 @@
 			token = SSdiscord.get_or_generate_one_time_token_for_ckey(holder.ckey)
 			SSdiscord.reverify_cache[holder.ckey] = token
 
-/datum/verification_menu/proc/fetch()
-	var/datum/http_request/request = new()
-	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/discorduserendpoint)]/[discord_id]", headers = list("Authorization" = "Bot [CONFIG_GET(string/discordbottoken)]"))
-	request.begin_async()
+		holder.prefs.unlock_content = FALSE
 
-	UNTIL(request.is_complete())
-
-	var/datum/http_response/response = request.into_response()
-
-	if(!response.errored && response.status_code == 200)
-		var/list/json = json_decode(response["body"])
-		display_name = json["global_name"]
-		username = json["username"]
-		discriminator = json["discriminator"]
+	if(src.discord_id != discord_id)
+		src.discord_id = discord_id
+		update_static_data(holder.mob)
 
 /datum/verification_menu/proc/can_refresh()
 	return last_refresh != 0 ? world.time - last_refresh > 30 SECONDS : TRUE
@@ -84,17 +74,18 @@
 
 /datum/verification_menu/ui_data(mob/user)
 	. = ..()
-	if(linked)
-		.["linked"] = TRUE
-		.["display_name"] = display_name
-		.["username"] = username
-		.["discriminator"] = discriminator
-	else
-		.["token"] = token
 	.["refresh"] = can_refresh()
 
 /datum/verification_menu/ui_static_data(mob/user)
 	. = ..()
+	if(holder.discord)
+		.["linked"] = TRUE
+		.["display_name"] = holder.discord["global_name"]
+		.["username"] = holder.discord["username"]
+		.["discriminator"] = holder.discord["discriminator"]
+		.["patron"] = holder.prefs.unlock_content
+	else
+		.["token"] = token
 	.["prefix"] = CONFIG_GET(string/discordbotcommandprefix)
 
 /datum/verification_menu/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -104,5 +95,5 @@
 
 	if(action == "refresh" && can_refresh())
 		last_refresh = world.time
-		lookup()
+		lookup(refresh = TRUE)
 		return TRUE

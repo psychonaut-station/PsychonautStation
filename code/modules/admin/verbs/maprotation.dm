@@ -1,12 +1,3 @@
-
-ADMIN_VERB(force_random_rotate, R_SERVER, "Trigger 'Random' Map Rotation", "Force a map vote.", ADMIN_CATEGORY_SERVER)
-	var/rotate = tgui_alert(user,"Force a random map rotation to trigger?", "Rotate map?", list("Yes", "Cancel"))
-	if (rotate != "Yes")
-		return
-	message_admins("[key_name_admin(user)] is forcing a random map rotation.")
-	log_admin("[key_name(user)] is forcing a random map rotation.")
-	SSmapping.maprotate()
-
 ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_CATEGORY_SERVER)
 	var/list/maprotatechoices = list()
 	for (var/map in config.maplist)
@@ -76,19 +67,13 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 				fdel("data/custom_map_json/[config_file]")
 			if(!fcopy(config_file, "data/custom_map_json/[config_file]"))
 				return
-			if (virtual_map.LoadConfig("data/custom_map_json/[config_file]", TRUE) != TRUE)
+
+			json_value = virtual_map.LoadConfig("data/custom_map_json/[config_file]", TRUE)
+
+			if(!json_value)
 				to_chat(src, span_warning("Failed to load config: [config_file]. Check that the fields are filled out correctly. \"map_path\": \"custom\" and \"map_file\": \"your_map_name.dmm\""))
 				return
-			json_value = list(
-				"version" = MAP_CURRENT_VERSION,
-				"map_name" = virtual_map.map_name,
-				"map_path" = virtual_map.map_path,
-				"map_file" = virtual_map.map_file,
-				"shuttles" = virtual_map.shuttles,
-				"traits" = virtual_map.traits,
-				"job_changes" = virtual_map.job_changes,
-				"library_areas" = virtual_map.library_areas,
-			)
+
 		else
 			virtual_map = load_map_config()
 			virtual_map.map_name = input(user, "Choose the name for the map", "Map Name") as null|text
@@ -119,14 +104,51 @@ ADMIN_VERB(admin_change_map, R_SERVER, "Change Map", "Set the next map.", ADMIN_
 			fdel(PATH_TO_NEXT_MAP_JSON)
 		text2file(json_encode(json_value), PATH_TO_NEXT_MAP_JSON)
 
-		if(SSmapping.changemap(virtual_map))
+		if(SSmap_vote.set_next_map(virtual_map))
 			message_admins("[key_name_admin(user)] has changed the map to [virtual_map.map_name]")
-			SSmapping.map_force_chosen = TRUE
+			SSmap_vote.admin_override = TRUE
 		fdel("data/custom_map_json/[config_file]")
 	else
 		var/datum/map_config/virtual_map = maprotatechoices[chosenmap]
 		message_admins("[key_name_admin(user)] is changing the map to [virtual_map.map_name]")
 		log_admin("[key_name(user)] is changing the map to [virtual_map.map_name]")
-		if (SSmapping.changemap(virtual_map))
+		if (SSmap_vote.set_next_map(virtual_map))
 			message_admins("[key_name_admin(user)] has changed the map to [virtual_map.map_name]")
-			SSmapping.map_force_chosen = TRUE
+			SSmap_vote.admin_override = TRUE
+
+ADMIN_VERB(admin_change_map_templates, R_SERVER, "Change Map Templates", "Set the next map's map templates.", ADMIN_CATEGORY_SERVER)
+	if(!SSmap_vote.next_map_config)
+		to_chat(user, span_warning("Next map has not selected"))
+		return
+	var/datum/map_config/next_map = SSmap_vote.next_map_config
+	var/list/json_value = safe_json_decode(file2text(PATH_TO_NEXT_MAP_JSON))
+	var/changed_something = FALSE
+	var/list/next_map_room_templates = list()
+	for(var/datum/map_template/modular_room/item as anything in subtypesof(/datum/map_template/modular_room))
+		if(item.station_name != next_map.map_name || isnull(item.room_type))
+			continue
+		next_map_room_templates[item.room_type] += list("[item.room_id]" = item)
+	for(var/roomtype in next_map_room_templates)
+		if(length(next_map_room_templates[roomtype]) < 2)
+			continue
+		var/change_room = tgui_alert(user,"Do you want to modify the [roomtype]?", "Map Rooms", list("Yes", "No"))
+		if(change_room != "Yes")
+			continue
+		var/list/template_list = next_map_room_templates[roomtype]
+		var/selected_room = tgui_input_list(user, "Change Room Template", "Select", sort_list(template_list)|"Random")
+		if(selected_room != "Random")
+			next_map.picked_rooms[roomtype] = template_list[selected_room]
+		else
+			next_map.picked_rooms[roomtype] = null
+		changed_something = TRUE
+		message_admins("[key_name_admin(user)] has changed the next map's [roomtype] to [selected_room]")
+		log_admin("[key_name(user)] has changed the next map's [roomtype] to [selected_room]")
+	if(!changed_something)
+		return
+	json_value["room_templates"] = next_map.picked_rooms
+	if(fexists(PATH_TO_NEXT_MAP_JSON))
+		fdel(PATH_TO_NEXT_MAP_JSON)
+	text2file(json_encode(json_value), PATH_TO_NEXT_MAP_JSON)
+
+ADMIN_VERB(admin_revert_map, R_SERVER, "Revert Map Vote", "Revert the map vote, allowing a new vote.", ADMIN_CATEGORY_SERVER)
+	SSmap_vote.revert_next_map(user)

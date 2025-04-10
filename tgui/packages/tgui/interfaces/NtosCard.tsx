@@ -1,6 +1,3 @@
-import { BooleanLike } from 'common/react';
-
-import { useBackend } from '../backend';
 import {
   Box,
   Button,
@@ -9,7 +6,10 @@ import {
   NumberInput,
   Section,
   Stack,
-} from '../components';
+} from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
+
+import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
 import { NTOSData } from '../layouts/NtosWindow';
 import { AccessList } from './common/AccessList';
@@ -69,6 +69,7 @@ export const NtosCardContent = (props) => {
     trimAccess,
     wildcardFlags,
     wildcardSlots,
+    hasTrim,
   } = data;
 
   return (
@@ -93,7 +94,11 @@ export const NtosCardContent = (props) => {
             />
           }
         >
-          <TemplateDropdown templates={templates} />
+          {hasTrim ? (
+            <TemplateDropdown templates={templates} />
+          ) : (
+            'Templates require a trim already applied to the card. Please use an ID Painter to apply a trim.'
+          )}
         </Section>
       )}
       <Stack mt={1}>

@@ -14,4 +14,4 @@ const ChangelingMidround: Antagonist = {
   category: Category.Midround,
 };
 
-// export default ChangelingMidround;
+export default ChangelingMidround;

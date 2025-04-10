@@ -6,6 +6,8 @@
 	var/obj/effect/portal/P2 = new newtype(actual_destination, _lifespan, P1, TRUE, null)
 	if(!istype(P1) || !istype(P2))
 		return
+	playsound(P1, SFX_PORTAL_CREATED, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+	playsound(P2, SFX_PORTAL_CREATED, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	P1.link_portal(P2)
 	P1.hardlinked = TRUE
 	return list(P1, P2)
@@ -64,12 +66,11 @@
 	return ..()
 
 // Prevents portals spawned by jaunter/handtele from floating into space when relocated to an adjacent tile.
-/obj/effect/portal/newtonian_move(direction, instant = FALSE, start_delay = 0)
+/obj/effect/portal/newtonian_move(inertia_angle, instant = FALSE, start_delay = 0, drift_force = 0, controlled_cap = null)
 	return TRUE
 
 /obj/effect/portal/attackby(obj/item/W, mob/user, params)
 	if(user && Adjacent(user))
-		playsound(loc, "sound/effects/portal_travel.ogg" , 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		teleport(user)
 		return TRUE
 
@@ -79,7 +80,6 @@
 		return TRUE
 
 /obj/effect/portal/Bumped(atom/movable/bumper)
-	playsound(loc, "sound/effects/portal_travel.ogg" , 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 	teleport(bumper)
 
 /obj/effect/portal/attack_hand(mob/user, list/modifiers)
@@ -87,13 +87,11 @@
 	if(.)
 		return
 	if(Adjacent(user))
-		playsound(loc, "sound/effects/portal_travel.ogg" , 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		teleport(user)
 
 
 /obj/effect/portal/attack_robot(mob/living/user)
 	if(Adjacent(user))
-		playsound(loc, "sound/effects/portal_travel.ogg" , 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		teleport(user)
 
 /obj/effect/portal/Initialize(mapload, _lifespan = 0, obj/effect/portal/_linked, automatic_link = FALSE, turf/hard_target_override)
@@ -103,7 +101,7 @@
 		. = INITIALIZE_HINT_QDEL
 		CRASH("Somebody fucked up.")
 	if(_lifespan > 0)
-		QDEL_IN(src, _lifespan)
+		addtimer(CALLBACK(src, PROC_REF(expire)), _lifespan, TIMER_DELETE_ME)
 	link_portal(_linked)
 	hardlinked = automatic_link
 	if(isturf(hard_target_override))
@@ -111,7 +109,11 @@
 	if(wibbles)
 		apply_wibbly_filters(src)
 
-/obj/effect/portal/singularity_pull()
+/obj/effect/portal/proc/expire()
+	playsound(loc, SFX_PORTAL_CLOSE, 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
+	qdel(src)
+
+/obj/effect/portal/singularity_pull(atom/singularity, current_size)
 	return
 
 /obj/effect/portal/singularity_act()
@@ -126,32 +128,40 @@
 		QDEL_NULL(linked)
 	else
 		linked = null
-	playsound(loc, "sound/effects/portal_close.ogg" , 50, FALSE, SHORT_RANGE_SOUND_EXTRARANGE)
 	return ..()
 
-/obj/effect/portal/attack_ghost(mob/dead/observer/O)
-	if(!teleport(O, TRUE))
+/obj/effect/portal/attack_ghost(mob/dead/observer/ghost)
+	if(!teleport(ghost, force = TRUE))
 		return ..()
+	return BULLET_ACT_FORCE_PIERCE
 
-/obj/effect/portal/proc/teleport(atom/movable/M, force = FALSE)
-	if(!force && (!istype(M) || iseffect(M) || (ismecha(M) && !mech_sized) || (!isobj(M) && !ismob(M)))) //Things that shouldn't teleport.
+/obj/effect/portal/bullet_act(obj/projectile/hitting_projectile, def_zone, piercing_hit)
+	if (!teleport(hitting_projectile, force = TRUE))
+		return ..()
+	return BULLET_ACT_FORCE_PIERCE
+
+/obj/effect/portal/proc/teleport(atom/movable/moving, force = FALSE)
+	if(!force && (!istype(moving) || iseffect(moving) || (ismecha(moving) && !mech_sized) || (!isobj(moving) && !ismob(moving)))) //Things that shouldn't teleport.
 		return
 	var/turf/real_target = get_link_target_turf()
 	if(!istype(real_target))
 		return FALSE
-	if(!force && (!ismecha(M) && !isprojectile(M) && M.anchored && !allow_anchored))
+
+	if(!force && (!ismecha(moving) && !isprojectile(moving) && moving.anchored && !allow_anchored))
 		return
 	var/no_effect = FALSE
 	if(last_effect == world.time || sparkless)
 		no_effect = TRUE
 	else
 		last_effect = world.time
-	var/turf/start_turf = get_turf(M)
-	if(do_teleport(M, real_target, innate_accuracy_penalty, no_effects = no_effect, channel = teleport_channel, forced = force_teleport))
-		if(isprojectile(M))
-			var/obj/projectile/P = M
-			P.ignore_source_check = TRUE
-		new /obj/effect/temp_visual/portal_animation(start_turf, src, M)
+	var/turf/start_turf = get_turf(moving)
+	if(do_teleport(moving, real_target, innate_accuracy_penalty, no_effects = no_effect, channel = teleport_channel, forced = force_teleport))
+		if(isprojectile(moving))
+			var/obj/projectile/proj = moving
+			proj.ignore_source_check = TRUE
+		new /obj/effect/temp_visual/portal_animation(start_turf, src, moving)
+		playsound(start_turf, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		playsound(real_target, SFX_PORTAL_ENTER, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		return TRUE
 	return FALSE
 
@@ -186,7 +196,7 @@
 			linked = P
 			break
 
-/obj/effect/portal/permanent/teleport(atom/movable/M, force = FALSE)
+/obj/effect/portal/permanent/teleport(atom/movable/moving, force = FALSE)
 	set_linked() // update portal links
 	. = ..()
 
@@ -210,10 +220,10 @@
 	name = "one-use portal"
 	desc = "This is probably the worst decision you'll ever make in your life."
 
-/obj/effect/portal/permanent/one_way/one_use/teleport(atom/movable/M, force = FALSE)
+/obj/effect/portal/permanent/one_way/one_use/teleport(atom/movable/moving, force = FALSE)
 	. = ..()
-	if (. && !isdead(M))
-		qdel(src)
+	if (. && !isdead(moving))
+		expire()
 
 /**
  * Animation used for transitioning atoms which are teleporting somewhere via a portal

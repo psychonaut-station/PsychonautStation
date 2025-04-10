@@ -30,7 +30,10 @@
 	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
 	rpg_title = "Genemancer"
 	job_flags = STATION_JOB_FLAGS
-
+	alt_titles = list(
+		"Geneticist",
+		"Mutation Researcher",
+	)
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"

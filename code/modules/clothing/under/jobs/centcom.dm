@@ -60,6 +60,7 @@
 	desc = "A dark colored uniform worn by CentCom's conscripted military forces."
 	icon_state = "military"
 	inhand_icon_state = "bl_suit"
+	can_adjust = FALSE
 	armor_type = /datum/armor/clothing_under/centcom_military
 
 /datum/armor/clothing_under/centcom_military
@@ -72,10 +73,3 @@
 	name = "tactical engineering uniform"
 	desc = "A dark colored uniform worn by CentCom's regular military engineers."
 	icon_state = "military_eng"
-
-/obj/item/clothing/under/rank/centcom/nt_secretary
-	name = "\improper Nanotrasen secretary's jumpsuit"
-	desc = "It's a jumpsuit worn by Nanotrasen secretaries."
-	icon_state = "nt_secretary"
-	inhand_icon_state = "dg_suit"
-	can_adjust = FALSE

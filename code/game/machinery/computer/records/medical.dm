@@ -18,6 +18,7 @@
 	icon_screen = "medlaptop"
 	icon_keyboard = "laptop_key"
 	pass_flags = PASSTABLE
+	projectiles_pass_chance = 100
 
 /obj/machinery/computer/records/medical/attacked_by(obj/item/attacking_item, mob/living/user)
 	. = ..()
@@ -31,7 +32,6 @@
 		return
 	ui = SStgui.try_update_ui(user, src, ui)
 	if (!ui)
-		character_preview_view = create_character_preview_view(user)
 		ui = new(user, src, "MedicalRecords")
 		ui.set_autoupdate(FALSE)
 		ui.open()
@@ -66,6 +66,7 @@
 			rank = target.rank,
 			species = target.species,
 			trim = target.trim,
+			medical_records = target.medical_records,
 		))
 
 	data["records"] = records
@@ -95,7 +96,9 @@
 		if("add_note")
 			if(!params["content"])
 				return FALSE
-			var/content = trim(params["content"], MAX_MESSAGE_LEN)
+			var/content = reject_bad_name(params["content"], allow_numbers = TRUE, max_length = MAX_MESSAGE_LEN, strict = TRUE, cap_after_symbols = FALSE)
+			if(!content)
+				return FALSE
 
 			var/datum/medical_note/new_note = new(usr.name, content)
 			while(length(target.medical_notes) > 2)
@@ -156,5 +159,6 @@
 	target.rank = "Unknown"
 	target.species = "Unknown"
 	target.trim = "Unknown"
+	target.medical_records = ""
 
 	return TRUE

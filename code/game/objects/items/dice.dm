@@ -9,20 +9,10 @@
 	icon = 'icons/obj/toys/dice.dmi'
 	icon_state = "dicebag"
 	w_class = WEIGHT_CLASS_SMALL
-
-/obj/item/storage/dice/Initialize(mapload)
-	. = ..()
-	atom_storage.allow_quick_gather = TRUE
-	atom_storage.set_holdable(/obj/item/dice)
+	storage_type = /datum/storage/dice
 
 /obj/item/storage/dice/PopulateContents()
-	new /obj/item/dice/d4(src)
-	new /obj/item/dice/d6(src)
-	new /obj/item/dice/d8(src)
-	new /obj/item/dice/d10(src)
-	new /obj/item/dice/d12(src)
-	new /obj/item/dice/d20(src)
-	var/picked = pick(list(
+	var/static/list/obj/item/options = list(
 		/obj/item/dice/d1,
 		/obj/item/dice/d2,
 		/obj/item/dice/fudge,
@@ -31,8 +21,17 @@
 		/obj/item/dice/eightbd20,
 		/obj/item/dice/fourdd6,
 		/obj/item/dice/d100,
-	))
-	new picked(src)
+	)
+
+	return list(
+		/obj/item/dice/d4,
+		/obj/item/dice/d6,
+		/obj/item/dice/d8,
+		/obj/item/dice/d10,
+		/obj/item/dice/d12,
+		/obj/item/dice/d20,
+		pick(options),
+	)
 
 /obj/item/storage/dice/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] is gambling with death! It looks like [user.p_theyre()] trying to commit suicide!"))
@@ -41,14 +40,19 @@
 /obj/item/storage/dice/hazard
 
 /obj/item/storage/dice/hazard/PopulateContents()
-	new /obj/item/dice/d6(src)
-	new /obj/item/dice/d6(src)
-	new /obj/item/dice/d6(src)
+	var/list/obj/item/dices = list(
+		new /obj/item/dice/d6,
+		new /obj/item/dice/d6,
+		new /obj/item/dice/d6,
+	)
+
 	for(var/i in 1 to 2)
 		if(prob(7))
-			new /obj/item/dice/d6/ebony(src)
+			dices += /obj/item/dice/d6/ebony
 		else
-			new /obj/item/dice/d6(src)
+			dices += /obj/item/dice/d6
+
+	return dices
 
 ///this is a prototype for dice, for a real d6 use "/obj/item/dice/d6"
 /obj/item/dice
@@ -89,6 +93,7 @@
 			result = rigged_value
 
 	. = result
+	playsound(src, 'sound/items/dice_roll.ogg', 50, TRUE)
 
 	var/fake_result = roll(sides)//Daredevil isn't as good as he used to be
 	var/comment = ""
@@ -181,7 +186,7 @@
 	name = "knucklebones rules"
 	default_raw_text = "How to play knucklebones<br>\
 	<ul>\
-	<li>Make two 3x3 grids right next to eachother using anything you can find to mark the ground. I like using the bartenders hologram projector.</li>\
+	<li>Make two 3x3 grids right next to each other using anything you can find to mark the ground. I like using the bartenders hologram projector.</li>\
 	<li>Take turns rolling the dice and moving the dice into one of the three rows on your 3x3 grid.</li>\
 	<li>Your goal is to get the most points by putting die of the same number in the same row.</li>\
 	<li>If you have two of the same die in the same row, you will add them together and then times the sum by two. Then add that to the rest of the die.</li>\
@@ -360,10 +365,8 @@
 		if(4)
 			//Destroy Equipment
 			selected_turf.visible_message(span_userdanger("Everything [user] is holding and wearing disappears!"))
-			for(var/obj/item/non_implant in user)
-				if(istype(non_implant, /obj/item/implant))
-					continue
-				qdel(non_implant)
+			var/list/belongings = user.get_all_gear()
+			QDEL_LIST(belongings)
 		if(5)
 			//Monkeying
 			selected_turf.visible_message(span_userdanger("[user] transforms into a monkey!"))
@@ -395,9 +398,9 @@
 		if(11)
 			//Cookie
 			selected_turf.visible_message(span_userdanger("A cookie appears out of thin air!"))
-			var/obj/item/food/cookie/C = new(drop_location())
+			var/obj/item/food/cookie/ooh_a_cookie = new(drop_location())
 			do_smoke(0, holder = src, location = drop_location())
-			C.name = "Cookie of Fate"
+			ooh_a_cookie.name = "Cookie of Fate"
 		if(12)
 			//Healing
 			selected_turf.visible_message(span_userdanger("[user] looks very healthy!"))
@@ -433,7 +436,7 @@
 			var/mob/chosen_one = SSpolling.poll_ghosts_for_target("Do you want to play as [span_danger("[user.real_name]'s")] [span_notice("Servant")]?", check_jobban = ROLE_WIZARD, role = ROLE_WIZARD, poll_time = 5 SECONDS, checked_target = human_servant, alert_pic = user, role_name_text = "dice servant")
 			if(chosen_one)
 				message_admins("[ADMIN_LOOKUPFLW(chosen_one)] was spawned as Dice Servant")
-				human_servant.key = chosen_one.key
+				human_servant.PossessByPlayer(chosen_one.key)
 
 			human_servant.equipOutfit(/datum/outfit/butler)
 			var/datum/mind/servant_mind = new /datum/mind()
@@ -509,8 +512,8 @@
 		to_summon,
 		get_turf(cast_on),
 		precision = 1,
-		asoundin = 'sound/magic/wand_teleport.ogg',
-		asoundout = 'sound/magic/wand_teleport.ogg',
+		asoundin = 'sound/effects/magic/wand_teleport.ogg',
+		asoundout = 'sound/effects/magic/wand_teleport.ogg',
 		channel = TELEPORT_CHANNEL_MAGIC,
 	)
 

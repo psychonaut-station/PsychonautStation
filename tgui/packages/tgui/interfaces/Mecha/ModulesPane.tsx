@@ -1,8 +1,4 @@
-import { toFixed } from 'common/math';
-import { classes } from 'common/react';
 import { GasmixParser } from 'tgui/interfaces/common/GasmixParser';
-
-import { useBackend } from '../../backend';
 import {
   Box,
   Button,
@@ -14,8 +10,12 @@ import {
   ProgressBar,
   Section,
   Stack,
-} from '../../components';
-import { formatPower } from '../../format';
+} from 'tgui-core/components';
+import { formatPower } from 'tgui-core/format';
+import { toFixed } from 'tgui-core/math';
+import { classes } from 'tgui-core/react';
+
+import { useBackend } from '../../backend';
 import { MainData, MechModule } from './data';
 
 const moduleSlotIcon = (param) => {
@@ -474,26 +474,28 @@ const SnowflakeSleeper = (props) => {
         ))}
       </LabeledList.Item>
       <LabeledList.Item label="Reagent Injection">
-        {injectible_reagents.map((reagent) => (
-          <LabeledList.Item
-            className="candystripe"
-            key={reagent.name}
-            label={reagent.name}
-          >
-            <LabeledList.Item label={`${reagent.volume}u`}>
-              <Button
-                onClick={() =>
-                  act('equip_act', {
-                    ref: ref,
-                    gear_action: `inject_reagent_${reagent.name}`,
-                  })
-                }
+        {injectible_reagents
+          ? injectible_reagents.map((reagent) => (
+              <LabeledList.Item
+                className="candystripe"
+                key={reagent.name}
+                label={reagent.name}
               >
-                Inject
-              </Button>
-            </LabeledList.Item>
-          </LabeledList.Item>
-        ))}
+                <LabeledList.Item label={`${reagent.volume}u`}>
+                  <Button
+                    onClick={() =>
+                      act('equip_act', {
+                        ref: ref,
+                        gear_action: `inject_reagent_${reagent.name}`,
+                      })
+                    }
+                  >
+                    Inject
+                  </Button>
+                </LabeledList.Item>
+              </LabeledList.Item>
+            ))
+          : 'Unavailable'}
       </LabeledList.Item>
     </>
   );

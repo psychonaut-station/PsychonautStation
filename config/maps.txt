@@ -15,22 +15,12 @@ endmap
 
 # Production-level maps.
 
-map ministation
-	maxplayers 20
-	votable
-endmap
-
 map birdshot
 	maxplayers 66
 	votable
 endmap
 
 map deltastation
-	minplayers 0
-	votable
-endmap
-
-map ancientdeltastation
 	minplayers 0
 	votable
 endmap
@@ -51,12 +41,12 @@ map theiastation
 	votable
 endmap
 
-map northstar
-	minplayers 25
+map tramstation
+	minplayers 35
 	votable
 endmap
 
-map tramstation
+map nebulastation
 	minplayers 35
 	votable
 endmap

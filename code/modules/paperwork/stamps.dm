@@ -20,7 +20,7 @@
 	return OXYLOSS
 
 /obj/item/stamp/get_writing_implement_details()
-	var/datum/asset/spritesheet/sheet = get_asset_datum(/datum/asset/spritesheet/simple/paper)
+	var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet/simple/paper)
 	return list(
 		interaction_mode = MODE_STAMPING,
 		stamp_icon_state = icon_state,
@@ -112,12 +112,6 @@
 	name = "Syndicate rubber stamp"
 	icon_state = "stamp-syndicate"
 	dye_color = DYE_SYNDICATE
-
-/obj/item/stamp/secretary
-	name = "secretary's rubber stamp"
-	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
-	icon_state = "stamp-secretary"
-	dye_color = DYE_CAPTAIN
 
 /obj/item/stamp/borg
 	name = "integrated rubber stamp"

@@ -255,7 +255,9 @@
 /turf/open/floor/carpet/red,
 /area/shuttle/escape)
 "Du" = (
-/obj/machinery/scanner_gate/cami_shuttle,
+/obj/machinery/scanner_gate/cami_shuttle{
+	dir = 8
+	},
 /turf/open/floor/carpet,
 /area/shuttle/escape)
 "El" = (

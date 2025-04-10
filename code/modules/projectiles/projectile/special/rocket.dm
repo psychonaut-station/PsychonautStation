@@ -2,7 +2,7 @@
 	name ="explosive bolt"
 	icon_state= "bolter"
 	damage = 50
-	embedding = null
+	embed_type = null
 	shrapnel_type = null
 
 /obj/projectile/bullet/gyro/on_hit(atom/target, blocked = 0, pierce_hit)
@@ -17,7 +17,7 @@
 	icon_state= "missile"
 	damage = 50
 	sharpness = NONE
-	embedding = null
+	embed_type = null
 	shrapnel_type = null
 	ricochets_max = 0
 	/// Whether we do extra damage when hitting a mech or silicon
@@ -137,3 +137,28 @@ among other potential differences. This granularity is helpful for things like t
 	if(firer) //troll
 		firer.visible_message(span_danger("[src] blows up as soon as [firer] fires it!"))
 		on_hit(firer)
+
+/obj/projectile/bullet/anomaly_catcher
+	name = "\improper AC200 rocket"
+	desc = "Woink."
+	icon = 'icons/psychonaut/obj/weapons/guns/projectiles.dmi'
+	icon_state= "anom-catcher"
+	damage = 20
+	sharpness = NONE
+	embed_type = null
+	shrapnel_type = null
+	ricochets_max = 0
+	var/static/list/catchable = list(/obj/energy_ball, /obj/singularity, /obj/effect/anomaly, /mob/living)
+
+/obj/projectile/bullet/anomaly_catcher/impact(atom/target)
+	if(!is_type_in_list(target, catchable))
+		return ..()
+
+	var/obj/item/anomaly_catcher/catcher = new (get_turf(src))
+	var/obj/target_object = target
+	catcher.catch_anomaly(target_object)
+	deletion_queued = PROJECTILE_IMPACT_DELETE
+	return
+
+/obj/projectile/bullet/anomaly_catcher/singularity_act()
+	return

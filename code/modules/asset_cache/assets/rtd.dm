@@ -1,73 +1,31 @@
-/datum/asset/spritesheet/rtd
+/datum/asset/spritesheet_batched/rtd
 	name = "rtd"
 
-/datum/asset/spritesheet/rtd/create_spritesheets()
-	//some tiles may share the same icon but have diffrent properties to animate that icon
-	//so we keep track of what icons we registered
+/datum/asset/spritesheet_batched/rtd/create_spritesheets()
 	var/list/registered = list()
 
 	for(var/main_root in GLOB.floor_designs)
 		for(var/sub_category in GLOB.floor_designs[main_root])
-			for(var/list/design in  GLOB.floor_designs[main_root][sub_category])
-				var/obj/item/stack/tile/type = design["type"]
-				var/icon_state = initial(type.icon_state)
-				var/sprite_name = icon_state
-
-				if(registered[sprite_name])
-					continue
-
-				var/icon/icon = icon(icon = 'icons/obj/tiles.dmi', icon_state = initial(type.icon_state))
-
-				if(ispath(type, /obj/item/stack/tile/carpet/neon))
-					var/obj/item/stack/tile/carpet/neon/neon_carpet = type
-					sprite_name += "-[replacetext(initial(neon_carpet.neon_color), "#", "")]"
-
+			for(var/list/design in GLOB.floor_designs[main_root][sub_category])
+				if(!design["datum"])
+					populate_rtd_datums()
+				var/datum/tile_info/tile_data = design["datum"]
+				var/list/directions = tile_data.tile_directions_numbers || list(SOUTH)
+				for(var/direction as anything in directions)
+					var/sprite_name = sanitize_css_class_name("[tile_data.icon_file]-[tile_data.icon_state]-[dir2text(direction)]")
 					if(registered[sprite_name])
 						continue
-
-					var/icon/neon_icon = icon( \
-						icon = initial(neon_carpet.neon_icon) || initial(neon_carpet.icon), \
-						icon_state = initial(neon_carpet.neon_icon_state) || initial(neon_carpet.icon_state) \
-					)
-
-					neon_icon.Blend(initial(neon_carpet.neon_color), ICON_MULTIPLY)
-					icon.Blend(neon_icon, ICON_OVERLAY)
-
-				Insert(sprite_name = sprite_name, I = icon)
-				registered[sprite_name] = TRUE
-
-				var/list/tile_directions = design["tile_rotate_dirs"]
-				if(tile_directions == null)
-					continue
-
-				for(var/direction as anything in tile_directions)
-					//we can rotate the icon is css for these directions
-					if(direction in GLOB.tile_dont_rotate)
-						continue
-
-					//but for these directions we have to do some hacky stuff
-					var/icon/img = icon(icon = 'icons/obj/tiles.dmi', icon_state = icon_state)
-					switch(direction)
-						if(NORTHEAST)
-							img.Turn(-180)
-							var/icon/east_rotated = icon(icon = 'icons/obj/tiles.dmi', icon_state = icon_state)
-							east_rotated.Turn(-90)
-							img.Blend(east_rotated,ICON_MULTIPLY)
-							img.SetIntensity(2,2,2)
-						if(NORTHWEST)
-							img.Turn(-180)
-							var/icon/west_rotated = icon(icon = 'icons/obj/tiles.dmi', icon_state = icon_state)
-							west_rotated.Turn(90)
-							img.Blend(west_rotated,ICON_MULTIPLY)
-							img.SetIntensity(2,2,2)
-						if(SOUTHEAST)
-							var/icon/east_rotated = icon(icon = 'icons/obj/tiles.dmi', icon_state = icon_state)
-							east_rotated.Turn(-90)
-							img.Blend(east_rotated,ICON_MULTIPLY)
-							img.SetIntensity(2,2,2)
-						if(SOUTHWEST)
-							var/icon/west_rotated = icon(icon = 'icons/obj/tiles.dmi', icon_state = icon_state)
-							west_rotated.Turn(90)
-							img.Blend(west_rotated,ICON_MULTIPLY)
-							img.SetIntensity(2,2,2)
-					Insert(sprite_name = "[icon_state]-[dir2text(direction)]", I = img)
+					var/datum/universal_icon/icon = uni_icon(tile_data.icon_file, tile_data.icon_state, direction)
+					if(ispath(tile_data.tile_type, /obj/item/stack/tile/carpet/neon))
+						var/turf/open/floor/carpet/neon/neon_carpet = tile_data.turf_type
+						var/color_code = replacetext(neon_carpet::neon_color, "#", "")
+						sprite_name = sanitize_css_class_name("[tile_data.icon_file]-[tile_data.icon_state]-[color_code]-[dir2text(direction)]")
+						if(registered[sprite_name])
+							continue
+						var/neon_icon_file = neon_carpet::neon_icon || neon_carpet::icon
+						var/neon_icon_state = "[neon_carpet::neon_icon_state || neon_carpet::base_icon_state]-0"
+						var/datum/universal_icon/neon_icon = uni_icon(neon_icon_file, neon_icon_state)
+						neon_icon.blend_color(neon_carpet::neon_color, ICON_MULTIPLY)
+						icon.blend_icon(neon_icon, ICON_OVERLAY)
+					insert_icon(sprite_name, icon)
+					registered[sprite_name] = TRUE

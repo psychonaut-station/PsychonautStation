@@ -11,6 +11,8 @@
 	hardware_flag = PROGRAM_LAPTOP
 	max_idle_programs = 3
 	w_class = WEIGHT_CLASS_NORMAL
+	interaction_flags_mouse_drop = NEED_HANDS
+
 
 	// No running around with open laptops in hands.
 	item_flags = SLOWS_WHILE_IN_HAND
@@ -26,6 +28,16 @@
 	. = ..()
 	if(screen_on)
 		. += span_notice("Alt-click to close it.")
+
+/obj/item/modular_computer/laptop/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	. = ..()
+	if(screen_on)
+		context[SCREENTIP_CONTEXT_ALT_LMB] = "Close"
+		context[SCREENTIP_CONTEXT_RMB] = "Interact"
+	else
+		context[SCREENTIP_CONTEXT_RMB] = "Open"
+
+	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/modular_computer/laptop/Initialize(mapload)
 	. = ..()
@@ -58,27 +70,15 @@
 
 	try_toggle_open(usr)
 
-/obj/item/modular_computer/laptop/MouseDrop(obj/over_object, src_location, over_location)
-	. = ..()
-	if(over_object == usr || over_object == src)
-		try_toggle_open(usr)
+/obj/item/modular_computer/laptop/mouse_drop_dragged(atom/over_object, mob/user, src_location, over_location, params)
+	if(over_object == user || over_object == src)
+		try_toggle_open(user)
 		return
 	if(istype(over_object, /atom/movable/screen/inventory/hand))
 		var/atom/movable/screen/inventory/hand/H = over_object
-		var/mob/M = usr
-
-		if(M.stat != CONSCIOUS || HAS_TRAIT(M, TRAIT_HANDS_BLOCKED))
+		if(!isturf(loc))
 			return
-		if(!isturf(loc) || !Adjacent(M))
-			return
-		M.put_in_hand(src, H.held_index)
-
-/obj/item/modular_computer/laptop/attack_hand(mob/user, list/modifiers)
-	. = ..()
-	if(.)
-		return
-	if(screen_on && isturf(loc))
-		return attack_self(user)
+		user.put_in_hand(src, H.held_index)
 
 /obj/item/modular_computer/laptop/proc/try_toggle_open(mob/living/user)
 	if(issilicon(user))
@@ -96,6 +96,14 @@
 		return CLICK_ACTION_BLOCKING
 	try_toggle_open(user) // Close it.
 	return CLICK_ACTION_SUCCESS
+
+/obj/item/modular_computer/laptop/attack_hand_secondary(mob/user, list/modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
+
+	attack_self(user)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/item/modular_computer/laptop/proc/toggle_open(mob/living/user=null)
 	if(screen_on)

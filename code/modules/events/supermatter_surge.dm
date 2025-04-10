@@ -43,6 +43,9 @@
 	if(!SSjob.has_minimum_jobs(crew_threshold = 3, jobs = JOB_GROUP_ENGINEERS, head_jobs = list(JOB_CHIEF_ENGINEER)))
 		return FALSE
 
+	if(isnull(GLOB.main_supermatter_engine))
+		return FALSE
+
 /datum/round_event/supermatter_surge
 	announce_when = 4
 	end_when = SURGE_DURATION_MIN
@@ -91,14 +94,14 @@
 	end_when = rand(SURGE_DURATION_MIN, SURGE_DURATION_MAX)
 
 /datum/round_event/supermatter_surge/announce(fake)
-	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı atmosferik durumlar tespit etti, supermatter kristalinden gelen enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "[surge_class] Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert3.ogg')
+	var/class_to_announce = fake ? pick(1, 2, 3, 4) : surge_class
+	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı atmosferik durumlar tespit etti, supermatter kristalinden gelen enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "[class_to_announce] Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert/engine_alert3.ogg')
 
 /datum/round_event/supermatter_surge/start()
 	engine.bullet_energy = surge_class + SURGE_BULLET_ENERGY_ADDITION
 	sm_gas.powerloss_inhibition = (surge_class * SURGE_POWERLOSS_INHIBITION_MODIFIER) + SURGE_BASE_POWERLOSS_INHIBITION
 	sm_gas.heat_power_generation = (surge_class * SURGE_POWER_GENERATION_MODIFIER) - 1
 	sm_gas.heat_modifier = (surge_class * SURGE_HEAT_MODIFIER) - 1
-
 
 /datum/round_event/supermatter_surge/end()
 	engine.bullet_energy = initial(engine.bullet_energy)
@@ -126,7 +129,7 @@
 	fakeable = FALSE
 
 /datum/round_event/supermatter_surge/poly/announce(fake)
-	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı papağan tipi rezonans tespit etti, supermatter kristalinden enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "P Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert3.ogg')
+	priority_announce("Kristal Bütünlüğü İzleme Sistemi supermatter odasında olağandışı papağan tipi rezonans tespit etti, supermatter kristalinden enerji çıkışı önemli ölçüde arttı. Motoru stabilize etmek için mühendislik müdahalesi gerekmektedir.", "P Sınıfı Supermatter Dalgalanma Uyarısı", 'sound/machines/engine_alert/engine_alert3.ogg')
 
 #undef SURGE_DURATION_MIN
 #undef SURGE_DURATION_MAX

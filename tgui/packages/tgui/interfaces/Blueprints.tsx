@@ -1,12 +1,13 @@
-import { BooleanLike } from 'common/react';
+import { Box, Button, Divider, Section, Stack } from 'tgui-core/components';
+import { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
-import { Box, Button, Divider, Section, Stack } from '../components';
 import { Window } from '../layouts';
 
 type Data = {
   area_notice: string;
   area_name: string;
+  area_allows_shuttle_docking: boolean;
   wire_data: WireData[];
   legend: string;
   legend_viewing_list: string;
@@ -97,7 +98,14 @@ const WireArea = () => {
 
 const MainMenu = () => {
   const { act, data } = useBackend<Data>();
-  const { area_notice, area_name, fluff_notice, station_name, viewing } = data;
+  const {
+    area_notice,
+    area_name,
+    area_allows_shuttle_docking,
+    fluff_notice,
+    station_name,
+    viewing,
+  } = data;
 
   return (
     <Section title={`${station_name} blueprints`}>
@@ -129,6 +137,18 @@ const MainMenu = () => {
             onClick={() => act('edit_area')}
           >
             Change area name
+          </Button>
+        </Stack.Item>
+        <Stack.Item>
+          <Button
+            fluid
+            pb={0.75}
+            textAlign="center"
+            icon={area_allows_shuttle_docking ? 'toggle-on' : 'toggle-off'}
+            iconPosition="right"
+            onClick={() => act('toggle_allow_shuttle_docking')}
+          >
+            Allow shuttle docking
           </Button>
         </Stack.Item>
         <Stack.Item>

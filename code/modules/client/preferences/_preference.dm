@@ -18,14 +18,25 @@
 /// support the "use gender" option.
 #define PREFERENCE_PRIORITY_BODY_TYPE 5
 
+/// Used for preferences that rely on body setup being finalized.
+#define PREFERENCE_PRORITY_LATE_BODY_TYPE 6
+
+/// Equpping items based on preferences.
+/// Should happen after species and body type to make sure it looks right.
+/// Mostly redundant, but a safety net for saving/loading.
+#define PREFERENCE_PRIORITY_LOADOUT 7
+
 /// The priority at which names are decided, needed for proper randomization.
-#define PREFERENCE_PRIORITY_NAMES 6
+#define PREFERENCE_PRIORITY_NAMES 8
 
 /// Preferences that aren't names, but change the name changes set by PREFERENCE_PRIORITY_NAMES.
-#define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 7
+#define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 9
+
+/// The priority at which names are decided, needed for proper randomization.
+#define PREFERENCE_PRIORITY_BACKGROUND_INFORMATION 10
 
 /// The maximum preference priority, keep this updated, but don't use it for `priority`.
-#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAME_MODIFICATIONS
+#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_BACKGROUND_INFORMATION
 
 /// For choiced preferences, this key will be used to set display names in constant data.
 #define CHOICED_PREFERENCE_DISPLAY_NAMES "display_names"
@@ -103,9 +114,9 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	/// DOES have random body on, will this already be randomized?
 	var/randomize_by_default = TRUE
 
-	/// If the selected species has this in its /datum/species/mutant_bodyparts,
+	/// If the selected species has this in its /datum/species/body_markings,
 	/// will show the feature as selectable.
-	var/relevant_mutant_bodypart = null
+	var/relevant_body_markings = null
 
 	/// If the selected species has this in its /datum/species/inherent_traits,
 	/// will show the feature as selectable.
@@ -134,7 +145,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 /// Called on the input while saving.
 /// Input is the current value, output is what to save in the savefile.
-/datum/preference/proc/serialize(input)
+/datum/preference/proc/serialize(input, datum/preferences/preferences)
 	SHOULD_NOT_SLEEP(TRUE)
 	return input
 
@@ -182,14 +193,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Given a savefile, writes the inputted value.
 /// Returns TRUE for a successful application.
 /// Return FALSE if it is invalid.
-/datum/preference/proc/write(list/save_data, value)
+/datum/preference/proc/write(list/save_data, value, datum/preferences/preferences)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if (!is_valid(value))
+	if (!is_valid(value, preferences))
 		return FALSE
 
 	if (!isnull(save_data))
-		save_data[savefile_key] = serialize(value)
+		save_data[savefile_key] = serialize(value, preferences)
 
 	return TRUE
 
@@ -269,7 +280,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preferences/proc/write_preference(datum/preference/preference, preference_value)
 	var/save_data = get_save_data_for_savefile_identifier(preference.savefile_identifier)
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(save_data, new_value)
+	var/success = preference.write(save_data, new_value, src)
 	if (success)
 		value_cache[preference.type] = new_value
 	return success
@@ -282,7 +293,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 		return FALSE
 
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(null, new_value)
+	var/success = preference.write(null, new_value, src)
 
 	if (!success)
 		return FALSE
@@ -300,7 +311,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Checks that a given value is valid.
 /// Must be overriden by subtypes.
 /// Any type can be passed through.
-/datum/preference/proc/is_valid(value)
+/datum/preference/proc/is_valid(value, datum/preferences/preferences)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("`is_valid()` was not implemented for [type]!")
@@ -309,7 +320,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/proc/compile_ui_data(mob/user, value)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	return serialize(value)
+	return serialize(value, user.client?.prefs)
 
 /// Returns data compiled into the preferences JSON asset
 /datum/preference/proc/compile_constant_data()
@@ -317,23 +328,27 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 	return null
 
+/// Checks the species currently selected by the passed preferences object to see if it has this preference's key as a feature.
+/datum/preference/proc/current_species_has_savekey(datum/preferences/preferences)
+	var/species_type = preferences.read_preference(/datum/preference/choiced/species)
+	var/datum/species/species = GLOB.species_prototypes[species_type]
+	return (savefile_key in species.get_features())
+
+/// Checks if this preference is relevant and thus visible to the passed preferences object.
+/datum/preference/proc/has_relevant_feature(datum/preferences/preferences)
+	if(isnull(relevant_inherent_trait) && isnull(relevant_external_organ) && isnull(relevant_head_flag) && isnull(relevant_body_markings))
+		return TRUE
+
+	return current_species_has_savekey(preferences)
+
 /// Returns whether or not this preference is accessible.
 /// If FALSE, will not show in the UI and will not be editable (by update_preference).
 /datum/preference/proc/is_accessible(datum/preferences/preferences)
 	SHOULD_CALL_PARENT(TRUE)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	if ( \
-		!isnull(relevant_mutant_bodypart) \
-		|| !isnull(relevant_inherent_trait) \
-		|| !isnull(relevant_external_organ) \
-		|| !isnull(relevant_head_flag) \
-	)
-		var/species_type = preferences.read_preference(/datum/preference/choiced/species)
-
-		var/datum/species/species = GLOB.species_prototypes[species_type]
-		if (!(savefile_key in species.get_features()))
-			return FALSE
+	if (!has_relevant_feature(preferences))
+		return FALSE
 
 	if (!should_show_on_page(preferences.current_window))
 		return FALSE
@@ -378,14 +393,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	return cached_values
 
 /// Returns a list of every possible value, serialized.
-/datum/preference/choiced/proc/get_choices_serialized()
+/datum/preference/choiced/proc/get_choices_serialized(datum/preferences/preferences)
 	// Override `init_values()` instead.
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/list/serialized_choices = list()
 
 	for (var/choice in get_choices())
-		serialized_choices += serialize(choice)
+		serialized_choices += serialize(choice, preferences)
 
 	return serialized_choices
 
@@ -397,7 +412,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	CRASH("`init_possible_values()` was not implemented for [type]!")
 
 /// When `should_generate_icons` is TRUE, this proc is called for every value.
-/// It can return either an icon or a typepath to an atom to create.
+/// It can return either an /datum/universal_icon (see uni_icon() DEFINE) or a typepath to an atom to create.
 /datum/preference/choiced/proc/icon_for(value)
 	SHOULD_CALL_PARENT(FALSE)
 	SHOULD_NOT_SLEEP(TRUE)

@@ -35,7 +35,7 @@
 	family_heirlooms = list(/obj/item/reagent_containers/cup/glass/flask/gold, /obj/item/toy/captainsaid/collector)
 
 	mail_goodies = list(
-		/obj/item/clothing/mask/cigarette/cigar/havana = 20,
+		/obj/item/cigarette/cigar/havana = 20,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 15,
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 5,
 		/obj/item/reagent_containers/cup/glass/bottle/champagne/cursed = 5,
@@ -46,8 +46,15 @@
 	job_flags = STATION_JOB_FLAGS | HEAD_OF_STAFF_JOB_FLAGS
 	rpg_title = "Star Duke"
 
-	voice_of_god_power = 1.4 //Command staff has authority
+	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
+	voice_of_god_power = 1.4 //Command staff has authority
+	alt_titles = list(
+		"Captain",
+		"Station Commander",
+		"Commanding Officer",
+		"Site Manager",
+	)
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)
 	return "Kaptan [captain.real_name] güvertede!"
@@ -65,7 +72,7 @@
 	uniform = /obj/item/clothing/under/rank/captain
 	suit = /obj/item/clothing/suit/armor/vest/capcarapace
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/gold = 1,
 		/obj/item/station_charter = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/captain
@@ -91,7 +98,7 @@
 
 	var/special_charter
 
-/datum/outfit/job/captain/pre_equip(mob/living/carbon/human/H, visualsOnly)
+/datum/outfit/job/captain/pre_equip(mob/living/carbon/human/H, visuals_only)
 	. = ..()
 	special_charter = CHECK_MAP_JOB_CHANGE(JOB_CAPTAIN, "special_charter")
 	if(!special_charter)
@@ -104,9 +111,9 @@
 	else if(!r_hand)
 		r_hand = /obj/item/station_charter/banner
 
-/datum/outfit/job/captain/post_equip(mob/living/carbon/human/equipped, visualsOnly)
+/datum/outfit/job/captain/post_equip(mob/living/carbon/human/equipped, visuals_only)
 	. = ..()
-	if(visualsOnly || !special_charter)
+	if(visuals_only || !special_charter)
 		return
 
 	var/obj/item/station_charter/banner/celestial_charter = locate() in equipped.held_items

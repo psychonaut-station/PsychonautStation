@@ -40,6 +40,7 @@
 #define MOTH_WEEK "Moth Haftası"
 #define IAN_HOLIDAY "Ian'ın Doğum Günü"
 #define HOTDOG_DAY "Ulusal Sosisli Günü"
+#define ICE_CREAM_DAY "Ulusal Dondurma Günü"
 /*
 
 Days of the week to make it easier to reference them.
@@ -56,8 +57,6 @@ When using time2text(), please use "DDD" to find the weekday. Refrain from using
 #define SATURDAY "Sat"
 #define SUNDAY "Sun"
 
-#define INFINITE -1 // -1 is commonly used to indicate an infinite time duration
-
 #define MILLISECONDS *0.01
 
 #define DECISECONDS *1 //the base unit all of these defines are scaled by, because byond uses that as a unit of measurement for some fucking reason
@@ -67,6 +66,9 @@ When using time2text(), please use "DDD" to find the weekday. Refrain from using
 #define MINUTES SECONDS*60
 
 #define HOURS MINUTES*60
+
+#define DAYS HOURS*24
+#define YEARS DAYS*365 //fuck leap days, they were removed in 2069
 
 #define TICKS *world.tick_lag
 

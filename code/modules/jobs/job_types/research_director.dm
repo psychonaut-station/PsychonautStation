@@ -44,8 +44,23 @@
 	rpg_title = "Archmagister"
 	job_flags = STATION_JOB_FLAGS | HEAD_OF_STAFF_JOB_FLAGS
 
-	voice_of_god_power = 1.4 //Command staff has authority
+	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
+	voice_of_god_power = 1.4 //Command staff has authority
+	alt_titles = list(
+		"Research Director",
+		"Silicon Administrator",
+		"Lead Researcher",
+		"Biorobotics Director",
+		"Research Supervisor",
+		"Chief Science Officer"
+	)
+
+/datum/job/research_director/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	if (!GLOB.upload_key)
+		GLOB.upload_key = random_code(4)
+	spawned.add_mob_memory(/datum/memory/key/silicon_decrypt_key, upload_key = GLOB.upload_key)
 
 /datum/job/research_director/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
@@ -58,9 +73,9 @@
 	id = /obj/item/card/id/advanced/silver
 	id_trim = /datum/id_trim/job/research_director
 	uniform = /obj/item/clothing/under/rank/rnd/research_director/turtleneck
-	suit = /obj/item/clothing/suit/jacket/research_director
+	suit = /obj/item/clothing/suit/toggle/labcoat/research_director
 	backpack_contents = list(
-		/obj/item/melee/baton/telescopic = 1,
+		/obj/item/melee/baton/telescopic/silver = 1,
 		)
 	belt = /obj/item/modular_computer/pda/heads/rd
 	head = /obj/item/clothing/head/beret/science/rd

@@ -7,7 +7,7 @@
 	icon_state = "dshotgun_sawn"
 	inhand_icon_state = "gun"
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/grenadelauncher
-	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
+	fire_sound = 'sound/items/weapons/gun/general/grenade_launch.ogg'
 	w_class = WEIGHT_CLASS_NORMAL
 	pin = /obj/item/firing_pin/implant/pindicate
 	bolt_type = BOLT_TYPE_NO_BOLT
@@ -35,7 +35,7 @@
 	name = "gyrojet pistol"
 	desc = "A prototype pistol designed to fire self propelled rockets."
 	icon_state = "gyropistol"
-	fire_sound = 'sound/weapons/gun/general/grenade_launch.ogg'
+	fire_sound = 'sound/items/weapons/gun/general/grenade_launch.ogg'
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m75
 	burst_size = 1
 	fire_delay = 0
@@ -54,7 +54,7 @@
 	worn_icon_state = "rocketlauncher"
 	SET_BASE_PIXEL(-8, 0)
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/rocketlauncher
-	fire_sound = 'sound/weapons/gun/general/rocket_launch.ogg'
+	fire_sound = 'sound/items/weapons/gun/general/rocket_launch.ogg'
 	slot_flags = ITEM_SLOT_BACK
 	w_class = WEIGHT_CLASS_BULKY
 	can_suppress = FALSE
@@ -89,9 +89,11 @@
 		This one has been fitted with a special backblast diverter to prevent 'friendly' fire 'accidents' during use."
 	backblast = FALSE
 
-/obj/item/gun/ballistic/rocketlauncher/afterattack()
+/obj/item/gun/ballistic/rocketlauncher/try_fire_gun(atom/target, mob/living/user, params)
 	. = ..()
-	magazine.get_round(FALSE) //Hack to clear the mag after it's fired
+	if(!.)
+		return
+	magazine.get_round() //Hack to clear the mag after it's fired
 
 /obj/item/gun/ballistic/rocketlauncher/attack_self_tk(mob/user)
 	return //too difficult to remove the rocket with TK
@@ -129,3 +131,23 @@
 	desc = "A reusable rocket propelled grenade launcher. The words \"Syndicate this way\" and an arrow have been written near the barrel. \
 	A sticker near the cheek rest reads, \"ENSURE AREA BEHIND IS CLEAR BEFORE FIRING\""
 	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/rocketlauncher/empty
+
+/obj/item/gun/ballistic/rocketlauncher/anomaly_catcher
+	name = "\improper IE-AC200 Rocket Launcher"
+	desc = "A reusable rocket propelled anomaly catcher grenade launcher. An arrow pointing toward the front of the launcher \
+		alongside the words \"Front Toward Anomaly \" are printed on the tube."
+	icon = 'icons/psychonaut/obj/weapons/guns/wide_guns.dmi'
+	pin = /obj/item/firing_pin
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/rocketlauncher/anomaly_catcher
+	cartridge_wording = "rocket"
+	backblast = FALSE
+	fire_in = 3 SECONDS
+
+/obj/item/gun/ballistic/rocketlauncher/anomaly_catcher/emag_act(mob/user, obj/item/card/emag/emag_card)
+	if(obj_flags & EMAGGED)
+		return FALSE
+	obj_flags |= EMAGGED
+	backblast = TRUE
+	AddElement(/datum/element/backblast)
+	balloon_alert(user, "backblast enabled")
+	return TRUE

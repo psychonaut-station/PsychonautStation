@@ -38,3 +38,7 @@
 	suffix = "mini"
 	name = "arrival shuttle (Mini)"
 
+/datum/map_template/shuttle/arrival/fulp
+	suffix = "fulp"
+	name = "arrival shuttle (Fulp)"
+

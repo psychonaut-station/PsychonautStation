@@ -35306,7 +35306,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
 /obj/machinery/camera/directional/east{
-	c_tag = "Prison - Mess Hall Port";
+	c_tag = "prison - Mess Hall Port";
 	name = "prison camera"
 	},
 /turf/open/floor/iron,

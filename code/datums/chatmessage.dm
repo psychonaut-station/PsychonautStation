@@ -69,6 +69,8 @@
 	if (!istype(target))
 		CRASH("Invalid target given for chatmessage")
 	if(QDELETED(owner) || !istype(owner) || !owner.client)
+
+		world.log << "[!!QDELETED(owner)] [!istype(owner)] [!owner.client]"
 		stack_trace("/datum/chatmessage created with [isnull(owner) ? "null" : "invalid"] mob owner")
 		qdel(src)
 		return

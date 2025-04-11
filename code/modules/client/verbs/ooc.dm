@@ -256,14 +256,16 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
 
 	for(var/mob/M in range(mob))
+		if(isliving(mob))
+			M.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
 		if (M.client?.holder)
 			continue
 		to_chat(M, message, avoid_highlighting = (M?.client == src))
-		M.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
 
-	for(var/client/client in GLOB.admins)
-		client.mob?.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
-		to_chat(client, html = message_admin, type = MESSAGE_TYPE_LOOC, avoid_highlighting = (client == src))
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_LOOC,
+		html = message_admin,
+		confidential = TRUE)
 
 //Checks admin notice
 /client/verb/admin_notice()

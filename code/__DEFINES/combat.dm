@@ -166,6 +166,7 @@ DEFINE_BITFIELD(status_flags, list(
 #define SAMETILE_MESSAGE_RANGE 1
 #define COMBAT_MESSAGE_RANGE 3
 #define DEFAULT_MESSAGE_RANGE 7
+#define LOOC_MESSAGE_RANGE 9
 
 //Shove knockdown lengths (deciseconds)
 #define SHOVE_KNOCKDOWN_SOLID 2 SECONDS

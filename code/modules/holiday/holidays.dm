@@ -130,10 +130,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 // FEBRUARY
 
-<<<<<<< HEAD
-=======
 /datum/holiday/groundhog
-	name = "Groundhog Day"
+	name = "Bugün Aslında Dündü"
 	begin_day = 2
 	begin_month = FEBRUARY
 
@@ -141,7 +139,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	return pick("Deja Vu") //I have been to this place before
 
 /datum/holiday/nz
-	name = "Waitangi Day"
+	name = "Waitangi Günü"
 	timezones = list(TIMEZONE_NZDT, TIMEZONE_CHADT)
 	begin_day = 6
 	begin_month = FEBRUARY
@@ -157,9 +155,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/nz/greet()
 	var/nz_age = text2num(time2text(world.timeofday, "YYYY", TIMEZONE_NZST)) - 1840
-	return "On this day [nz_age] years ago, New Zealand's Treaty of Waitangi, the founding document of the nation, was signed!"
+	return "[nz_age] yıl önce bugün, Yeni Zelanda'nın Waitangi Antlaşması, ulusun kurucu belgesi, imzalandı!"
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 /datum/holiday/valentines
 	name = VALENTINES
 	begin_day = 13
@@ -250,13 +247,10 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	)
 
 /datum/holiday/pi/getStationPrefix()
-<<<<<<< HEAD
-	return pick("Sin","Cos","Tanjant","Sekant", "Kosekant", "Kotanjant")
-=======
-	return pick("Sine","Cosine","Tangent","Secant", "Cosecant", "Cotangent")
+	return pick("Sinüs","Cosinüs","Tanjant","Sekant", "Kosekant", "Kotanjant")
 
 /datum/holiday/no_this_is_patrick
-	name = "St. Patrick's Day"
+	name = "Aziz Patrick Günü"
 	begin_day = 17
 	begin_month = MARCH
 	holiday_hat = /obj/item/clothing/head/soft/green
@@ -273,11 +267,10 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	)
 
 /datum/holiday/no_this_is_patrick/getStationPrefix()
-	return pick("Blarney","Green","Leprechaun","Booze")
+	return pick("Blarney","Yeşil","Leprikon","İçki")
 
 /datum/holiday/no_this_is_patrick/greet()
-	return "Happy National Inebriation Day!"
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+	return "Ulusal Sarhoşluk Gününüz Kutlu Olsun!"
 
 // APRIL
 
@@ -328,18 +321,15 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/fourtwenty/getStationPrefix()
 	return pick("Snoop","Blunt","Toke","Dank","Cheech","Chong")
 
-<<<<<<< HEAD
-=======
 /datum/holiday/tea
-	name = "National Tea Day"
+	name = "Ulusal Çay Günü"
 	begin_day = 21
 	begin_month = APRIL
 	holiday_mail = list(/obj/item/reagent_containers/cup/glass/mug/tea)
 
 /datum/holiday/tea/getStationPrefix()
-	return pick("Crumpet","Assam","Oolong","Pu-erh","Sweet Tea","Green","Black")
+	return pick("Crumpet","Assam","Oolong","Pu-erh","Tatlı Çay","Yeşil","Siyah")
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 /datum/holiday/earth
 	name = "Dünya Günü"
 	begin_day = 22
@@ -379,20 +369,23 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	name = "Atatürk’ü Anma, Gençlik ve Spor Bayramı"
 	begin_day = 19
 	begin_month = MAY
-<<<<<<< HEAD
 	holiday_colors = list(
 		COLOR_TURKISH_RED,
 		COLOR_WHITE,
 	)
-=======
+
+/datum/holiday/firefighter
+	name = "İtfaiyeciler Günü"
+	begin_day = 4
+	begin_month = MAY
 	holiday_hat = /obj/item/clothing/head/utility/hardhat/red
 	holiday_mail = list(/obj/item/extinguisher/mini)
 
 /datum/holiday/firefighter/getStationPrefix()
-	return pick("Burning","Blazing","Plasma","Fire")
+	return pick("Yanan","Alevli","Plazma","Ateş")
 
 /datum/holiday/bee
-	name = "Bee Day"
+	name = "Dünya Arı Günü"
 	begin_day = 20
 	begin_month = MAY
 	holiday_mail = list(
@@ -403,8 +396,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	)
 
 /datum/holiday/bee/getStationPrefix()
-	return pick("Bee","Honey","Hive","Africanized","Mead","Buzz")
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+	return pick("Arı","Bal","Kovan","Afrikalılaştırılmış","Ballı","Vızz")
 
 // JUNE
 
@@ -489,30 +481,37 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	name = "Milli Birlik ve Demokrasi Günü"
 	begin_day = 15
 	begin_month = JULY
-<<<<<<< HEAD
-=======
-	no_mail_holiday = TRUE
-	holiday_hat = /obj/item/clothing/head/cowboy/brown
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 	holiday_colors = list(
 		COLOR_TURKISH_RED,
 		COLOR_WHITE,
 	)
 
-<<<<<<< HEAD
-=======
+/datum/holiday/usa
+	name = "Amerikan Bağımsızlık Günü"
+	timezones = list(TIMEZONE_EDT, TIMEZONE_CDT, TIMEZONE_MDT, TIMEZONE_MST, TIMEZONE_PDT, TIMEZONE_AKDT, TIMEZONE_HDT, TIMEZONE_HST)
+	begin_day = 4
+	begin_month = JULY
+	no_mail_holiday = TRUE
+	holiday_hat = /obj/item/clothing/head/cowboy/brown
+	holiday_colors = list(
+		COLOR_OLD_GLORY_BLUE,
+		COLOR_OLD_GLORY_RED,
+		COLOR_WHITE,
+		COLOR_OLD_GLORY_RED,
+		COLOR_WHITE,
+	)
 
 /datum/holiday/usa/getStationPrefix()
-	return pick("Independent","American","Burger","Bald Eagle","Star-Spangled", "Fireworks")
+	return pick("Bağımsız","Amerikan","Burger","Kel Kartal","Yıldızlarla Süslü", "Havai Fişekler")
 
 /datum/holiday/writer
-	name = "Writer's Day"
+	name = "Yazarlar Günü"
 	begin_day = 8
 	begin_month = JULY
 	holiday_mail = list(/obj/item/pen/fountain)
 
 /datum/holiday/france
-	name = "Bastille Day"
+	name = "Bastille Günü"
 	timezones = list(TIMEZONE_CEST)
 	begin_day = 14
 	begin_month = JULY
@@ -526,10 +525,10 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	holiday_pattern = PATTERN_VERTICAL_STRIPE
 
 /datum/holiday/france/getStationPrefix()
-	return pick("Francais", "Fromage", "Zut", "Merde", "Sacrebleu")
+	return pick("Fransız", "Fromaj", "Zut", "Merde", "Sacrebleu")
 
 /datum/holiday/france/greet()
-	return "Do you hear the people sing?"
+	return "İnsanların şarkı söylediğini duyuyor musunuz?"
 
 /datum/holiday/hotdogday
 	name = HOTDOG_DAY
@@ -538,9 +537,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	holiday_mail = list(/obj/item/food/hotdog)
 
 /datum/holiday/hotdogday/greet()
-	return "Happy National Hot Dog Day!"
+	return "Ulusal Sosisli Sandviç Gününüz Kutlu Olsun!"
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 //Gary Gygax's birthday, a fitting day for Wizard's Day
 /datum/holiday/wizards_day
 	name = "Wizard'ın Günü"  // ozel isim gibi
@@ -606,30 +604,27 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/ianbirthday/getStationPrefix()
 	return pick("Ian", "Corgi", "Erro")
 
-<<<<<<< HEAD
-=======
 /datum/holiday/pirate
-	name = "Talk-Like-a-Pirate Day"
+	name = "Korsan Gibi Konuşma Günü"
 	begin_day = 19
 	begin_month = SEPTEMBER
 	holiday_hat = /obj/item/clothing/head/costume/pirate
 	holiday_mail = list(/obj/item/clothing/head/costume/pirate)
 
 /datum/holiday/pirate/greet()
-	return "Ye be talkin' like a pirate today or else ye'r walkin' tha plank, matey!"
+	return "Bugün bir korsan gibi konuşmalısın yoksa tahtada yürürsün, dostum!"
 
 /datum/holiday/pirate/getStationPrefix()
 	return pick("Yarr","Scurvy","Yo-ho-ho")
 
 /datum/holiday/questions
-	name = "Stupid-Questions Day"
+	name = "Aptal Soru Sor Günü"
 	begin_day = 28
 	begin_month = SEPTEMBER
 
 /datum/holiday/questions/greet()
-	return "Are you having a happy [name]?"
+	return "Mutlu bir Aptal Soru Sor Günü geçiriyor musunuz?"
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 // OCTOBER
 
 /datum/holiday/animal
@@ -640,16 +635,13 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/animal/getStationPrefix()
 	return pick("Parrot","Corgi","Cat","Pug","Goat","Fox")
 
-<<<<<<< HEAD
-=======
 /datum/holiday/smile
-	name = "Smiling Day"
+	name = "Dünya Gülümseme Günü"
 	begin_day = 7
 	begin_month = OCTOBER
 	holiday_hat = /obj/item/clothing/head/costume/papersack/smiley
 	holiday_mail = list(/obj/item/sticker/smile)
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 /datum/holiday/boss
 	name = "Patronlar Günü"
 	begin_day = 16
@@ -708,10 +700,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/october_revolution/getStationPrefix()
 	return pick("Communist", "Soviet", "Bolshevik", "Socialist", "Red", "Workers'")
 
-<<<<<<< HEAD
-=======
 /datum/holiday/remembrance_day
-	name = "Remembrance Day"
+	name = "Anma Günü"
 	begin_month = NOVEMBER
 	begin_day = 11
 	holiday_hat = /obj/item/food/grown/poppy
@@ -722,20 +712,19 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	)
 
 /datum/holiday/remembrance_day/greet()
-	return "Lest we forget."
+	return "Unutmayalım."
 
 /datum/holiday/remembrance_day/getStationPrefix()
-	return pick("Peace", "Armistice", "Poppy")
+	return pick("Barış", "Ateşkes", "Gelincik")
 
 /datum/holiday/lifeday
-	name = "Life Day"
+	name = "Yaşam Günü"
 	begin_day = 17
 	begin_month = NOVEMBER
 
 /datum/holiday/lifeday/getStationPrefix()
-	return pick("Itchy", "Lumpy", "Malla", "Kazook") //he really pronounced it "Kazook", I wish I was making shit up
+	return pick("Kaşıntılı", "Yumrulu", "Malla", "Kazook") //he really pronounced it "Kazook", I wish I was making shit up
 
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 /datum/holiday/kindness
 	name = "Nezaket Günü"
 	begin_day = 13
@@ -875,12 +864,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 // MOVING DATES
 
 /datum/holiday/programmers
-<<<<<<< HEAD
 	name = "Yazılımcılar Günü"
-=======
-	name = "Programmers' Day"
 	holiday_mail = list(/obj/item/sticker/robot)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 
 /datum/holiday/programmers/shouldCelebrate(dd, mm, yyyy, ddd) //Programmer's day falls on the 2^8th day of the year
 	if(mm == 9)

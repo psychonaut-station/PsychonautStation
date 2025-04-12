@@ -143,14 +143,10 @@
 				. = TRUE
 		if ("adminpm")
 			if (usr.client?.holder && owner)
-<<<<<<< HEAD
 				usr.client.cmd_admin_pm(owner, null, FALSE)
-=======
-				usr.client.cmd_admin_pm(owner, null)
 		if("check_centcom")
 			if(usr.client?.holder && owner)
 				usr.client?.holder.open_centcom_bans(owner_ckey)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 
 /datum/interview/ui_data(mob/user)
 	. = list(

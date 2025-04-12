@@ -36,15 +36,8 @@
 		available_commands[new_command.command_name] = new_command
 
 /datum/component/obeys_commands/Destroy(force)
-<<<<<<< HEAD
-	. = ..()
-	for(var/command_name in available_commands)
-		var/datum/pet_command/command = available_commands[command_name]
-		qdel(command)
-=======
 	QDEL_LIST_ASSOC_VAL(available_commands)
 	return ..()
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 
 /datum/component/obeys_commands/RegisterWithParent()
 	RegisterSignal(parent, COMSIG_LIVING_BEFRIENDED, PROC_REF(add_friend))

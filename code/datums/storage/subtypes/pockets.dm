@@ -202,10 +202,7 @@
 	set_holdable(list(
 		/obj/item/reagent_containers/cup/glass/bottle/vodka,
 		/obj/item/reagent_containers/cup/glass/bottle/molotov,
-<<<<<<< HEAD
 		/obj/item/reagent_containers/cup/glass/bottle/raki,
-=======
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 		/obj/item/reagent_containers/cup/glass/drinkingglass,
 		/obj/item/ammo_box/strilka310
 	))

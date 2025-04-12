@@ -13,7 +13,6 @@
 /obj/item/storage/bag/garment/hos
 	name = "head of security's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the head of security."
-	storage_type = /datum/storage/bag/garment/hos
 
 /obj/item/storage/bag/garment/warden
 	name = "warden's garment bag"
@@ -44,7 +43,7 @@
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
 	atom_storage.numerical_stacking = FALSE
 	atom_storage.max_total_storage = 200
-	atom_storage.max_slots = 15
+	atom_storage.max_slots = 20
 	atom_storage.insert_preposition = "in"
 	atom_storage.set_holdable(/obj/item/clothing)
 
@@ -75,30 +74,6 @@
 	new /obj/item/clothing/shoes/laceup(src)
 
 /obj/item/storage/bag/garment/hos/PopulateContents()
-<<<<<<< HEAD
-	return list(
-		/obj/item/clothing/under/rank/security/head_of_security/skirt,
-		/obj/item/clothing/under/rank/security/head_of_security/alt,
-		/obj/item/clothing/under/rank/security/head_of_security/alt/skirt,
-		/obj/item/clothing/under/rank/security/head_of_security/grey,
-		/obj/item/clothing/under/rank/security/head_of_security/parade,
-		/obj/item/clothing/under/rank/security/head_of_security/parade/female,
-		/obj/item/clothing/gloves/tackler/combat,
-		/obj/item/clothing/suit/armor/hos,
-		/obj/item/clothing/suit/armor/hos/hos_formal,
-		/obj/item/clothing/suit/armor/hos/trenchcoat/winter,
-		/obj/item/clothing/suit/armor/vest/leather,
-		/obj/item/clothing/glasses/hud/security/sunglasses/eyepatch,
-		/obj/item/clothing/glasses/hud/security/sunglasses/gars/giga,
-		/obj/item/clothing/head/hats/hos/beret,
-		/obj/item/clothing/head/hats/hos/cap,
-		/obj/item/clothing/mask/gas/sechailer/swat,
-		/obj/item/clothing/neck/cloak/hos,
-		/obj/item/clothing/head/hats/hos/special,
-		/obj/item/clothing/neck/cloak/hos/special,
-		/obj/item/clothing/suit/armor/hos/special,
-	)
-=======
 	new /obj/item/clothing/under/rank/security/head_of_security/skirt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt(src)
 	new /obj/item/clothing/under/rank/security/head_of_security/alt/skirt(src)
@@ -116,7 +91,9 @@
 	new /obj/item/clothing/head/hats/hos/cap(src)
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/clothing/neck/cloak/hos(src)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+	new /obj/item/clothing/head/hats/hos/special(src)
+	new /obj/item/clothing/neck/cloak/hos/special(src)
+	new /obj/item/clothing/suit/armor/hos/special(src)
 
 /obj/item/storage/bag/garment/warden/PopulateContents()
 	new /obj/item/clothing/suit/armor/vest/warden(src)

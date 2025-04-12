@@ -80,9 +80,7 @@
 		"custom_vendor_refill",
 		"bounty_pad_control",
 		"bounty_pad",
-<<<<<<< HEAD
 		"crewdata",
-=======
 		"digital_clock_frame",
 		"telescreen_research",
 		"telescreen_ordnance",
@@ -90,7 +88,6 @@
 		"telescreen_prison",
 		"telescreen_bar",
 		"telescreen_entertainment",
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SERVICE)

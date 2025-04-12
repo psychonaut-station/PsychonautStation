@@ -5,11 +5,7 @@
 
 /// Returns timestamp since the server started, for use with world.time
 /proc/gameTimestamp(format = "hh:mm:ss", wtime=world.time)
-<<<<<<< HEAD
-	return time2text(wtime, format, 0)
-=======
 	return time2text(wtime, format, NO_TIMEZONE)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 
 ///returns the current IC station time in a world.time format
 /proc/station_time(display_only = FALSE, wtime=world.time)

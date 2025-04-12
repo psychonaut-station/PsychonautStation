@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-2025-04-07:
-  exdal:
-  - balance: 'Paramedigin: Engineering, Science ve Cargo accesslerini geri verir'
-2025-04-10:
-  Rengan:
-  - rscdel: "Fontlar\u0131n k\xF6t\xFC g\xF6z\xFCkmesi sebebiyle baz\u0131 fontlar\
-      \ T\xFCrk\xE7e karakterleri olmayan eski hallerine al\u0131nd\u0131."
-=======
 2025-04-01:
   Ghommie:
   - bugfix: Fish will no longer drown if left half-submerged in a fishable turf on
@@ -140,6 +131,8 @@
   - rscadd: Added a system to create hairstyles with multiple layers to allow better
       interaction with hats and helmets
   - image: Added additional sprite layers to the Ponytail (High) hairstyle
+  exdal:
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accesslerini geri verir'
   Holoo-1:
   - bugfix: fixed emp flashlight not working on cyborgs
   Jacquerel:
@@ -285,6 +278,9 @@
   - balance: Smoke machines now work as inhalation to turfs and touch to mobs.
   LT3:
   - bugfix: Supermatter delamination now applies hallucinations based on distance
+  Rengan:
+  - rscdel: "Fontlar\u0131n k\xF6t\xFC g\xF6z\xFCkmesi sebebiyle baz\u0131 fontlar\
+      \ T\xFCrk\xE7e karakterleri olmayan eski hallerine al\u0131nd\u0131."
   SmArtKar:
   - rscadd: You can now mark newscaster channels as cross-sector to send messages
       to other servers.
@@ -357,4 +353,3 @@
   vinylspiders:
   - bugfix: fixes persistent paintings not loading
   - bugfix: fixes flipped table spawners not initializing correctly
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9

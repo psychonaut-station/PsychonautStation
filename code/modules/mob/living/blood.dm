@@ -379,7 +379,7 @@
 //to add a splatter of blood or other mob liquid.
 /mob/living/proc/add_splatter_floor(turf/splatter_turf, small_drip)
 	if(get_blood_id() != /datum/reagent/blood)
-		add_splatter_floor_exotic(T, small_drip)
+		add_splatter_floor_exotic(splatter_turf, small_drip)
 		return
 	if(!splatter_turf)
 		splatter_turf = get_turf(src)
@@ -415,34 +415,30 @@
 	if(temp_blood_DNA)
 		blood_spew.add_blood_DNA(temp_blood_DNA)
 
-<<<<<<< HEAD
-/mob/living/proc/add_splatter_floor_exotic(turf/T, small_drip)
-	if(!T)
-		T = get_turf(src)
-	if(isclosedturf(T) || (isgroundlessturf(T) && !GET_TURF_BELOW(T)))
+/mob/living/proc/add_splatter_floor_exotic(turf/splatter_turf, small_drip)
+	if(!splatter_turf)
+		splatter_turf = get_turf(src)
+	if(isclosedturf(splatter_turf) || (isgroundlessturf(splatter_turf) && !GET_TURF_BELOW(splatter_turf)))
 		return
 
 	if (small_drip)
 		var/drop_type = get_exotic_blood_drop()
 		if(!isnull(drop_type))
-			var/obj/effect/decal/drop = locate(drop_type) in T
+			var/obj/effect/decal/drop = locate(drop_type) in splatter_turf
 			if(!drop)
-				drop = new drop_type(T)
+				drop = new drop_type(splatter_turf)
 				return
 
 	var/splatter_type = get_exotic_blood_splatter()
 	if(!isnull(splatter_type))
-		var/obj/effect/decal/splatter = locate(splatter_type) in T
+		var/obj/effect/decal/splatter = locate(splatter_type) in splatter_turf
 		if (!splatter)
-			splatter = new splatter_type(T)
+			splatter = new splatter_type(splatter_turf)
 
 		if(QDELETED(splatter))
 			return
 
-/mob/living/carbon/human/add_splatter_floor(turf/T, small_drip)
-=======
 /mob/living/carbon/human/add_splatter_floor(turf/splatter_turf, small_drip)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 	if(!HAS_TRAIT(src, TRAIT_NOBLOOD))
 		. = ..()
 

@@ -25,11 +25,8 @@
 	var/initial_inline_html
 	var/initial_inline_js
 	var/initial_inline_css
-<<<<<<< HEAD
-	var/mouse_event_macro_set = FALSE
-	var/communication_locked = FALSE
-=======
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+
+	var/communication_locked = FALSE // bu tg'de yok bizde niye var bilmiyorum amk
 
 	var/list/oversized_payloads = list()
 

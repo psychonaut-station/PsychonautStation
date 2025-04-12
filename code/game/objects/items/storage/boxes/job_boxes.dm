@@ -100,8 +100,7 @@
 	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
 
 /obj/item/storage/box/survival/worker/PopulateContents()
-	. = ..()
-	. += /obj/item/reagent_containers/cup/soda_cans/cola
+	new /obj/item/reagent_containers/cup/soda_cans/cola(src)
 
 // Syndie survival box
 /obj/item/storage/box/survival/syndie

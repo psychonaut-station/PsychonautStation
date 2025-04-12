@@ -273,13 +273,12 @@
 	///Which ambient sound this client is currently being provided.
 	var/current_ambient_sound
 
-<<<<<<< HEAD
 	/// Discord information of the client if they have linked their account and we fetched it
 	var/list/discord
 
 	/// The last name tag update runned by our client
 	COOLDOWN_DECLARE(update_nametag_cooldown)
-=======
+
 	/// The DPI scale of the client. 1 is equivalent to 100% window scaling, 2 will be 200% window scaling
 	var/window_scaling
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+

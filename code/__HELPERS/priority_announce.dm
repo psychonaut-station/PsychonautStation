@@ -62,13 +62,8 @@
 			if(length(title) > 0)
 				header += SUBHEADER_ANNOUNCEMENT_TITLE(title)
 		if(ANNOUNCEMENT_TYPE_CAPTAIN)
-<<<<<<< HEAD
 			header = MAJOR_ANNOUNCEMENT_TITLE("Kaptan Duyurusu")
 			GLOB.news_network.submit_article(text, "Kaptan Duyurusu", "Station Announcements", null)
-=======
-			header = MAJOR_ANNOUNCEMENT_TITLE("Captain's Announcement")
-			GLOB.news_network.submit_article(text, "Captain's Announcement", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
 		if(ANNOUNCEMENT_TYPE_SYNDICATE)
 			header = MAJOR_ANNOUNCEMENT_TITLE("Sendika Kaptanı Duyurusu")
 		else
@@ -94,11 +89,7 @@
 		if(length(title) > 0)
 			GLOB.news_network.submit_article(title + "<br><br>" + text, "[command_name()]", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 		else
-<<<<<<< HEAD
-			GLOB.news_network.submit_article(text, "[command_name()] Bildirisi", "Station Announcements", null)
-=======
-			GLOB.news_network.submit_article(text, "[command_name()] Update", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
->>>>>>> d0581568630505ca09383a9c94f80e726f5fb7e9
+			GLOB.news_network.submit_article(text, "[command_name()] Bildirisi", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)

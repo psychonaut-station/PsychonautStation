@@ -36107,6 +36107,7 @@
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/table/reinforced/rglass,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "gKI" = (
@@ -60246,6 +60247,8 @@
 "pGn" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/secure_safe/caps_spare,
+/obj/structure/table/reinforced/rglass,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "pGq" = (
@@ -60571,6 +60574,7 @@
 	},
 /obj/effect/turf_decal/trimline/blue/filled/line,
 /obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/table/reinforced/rglass,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "pNI" = (
@@ -65557,6 +65561,10 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
+"rCD" = (
+/obj/structure/secure_safe/caps_spare,
+/turf/open/floor/wood/large,
+/area/station/command/bridge)
 "rCS" = (
 /obj/structure/chair/sofa/left/brown{
 	desc = "Made of very expensive furs, probably from an endangered animal.";
@@ -78162,7 +78170,6 @@
 /area/station/maintenance/department/security/upper)
 "wyd" = (
 /obj/effect/turf_decal/trimline/blue/filled/line,
-/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "wyj" = (
@@ -122440,7 +122447,7 @@ wyd
 anm
 lQp
 mWw
-xWv
+rCD
 xMJ
 hwb
 bQq

@@ -7240,7 +7240,7 @@
 	dwidth = 3;
 	height = 15;
 	name = "arrivals";
-	roundstart_template = /datum/map_template/shuttle/arrival/fulp;
+	roundstart_template = /datum/map_template/shuttle/arrival/theia;
 	shuttle_id = "arrival_stationary";
 	width = 7
 	},

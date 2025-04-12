@@ -4,7 +4,7 @@
 	"map_path": "map_files/TheiaStation",
 	"map_file": "TheiaStation.dmm",
 	"shuttles": {
-		"cargo": "cargo_fulp",
+		"cargo": "cargo_theia",
 		"ferry": "ferry_fancy",
 		"whiteship": "whiteship_meta",
 		"emergency": "emergency_theia"
@@ -12,9 +12,6 @@
 	"job_changes": {
 		"Cook": {
 			"additional_cqc_areas": ["/area/station/commons/lounge"]
-		},
-		"Prisoner": {
-			"spawn_positions": 2
 		}
 	}	
 }

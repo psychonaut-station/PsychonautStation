@@ -1,7 +1,7 @@
 /datum/preference/choiced/height
 	savefile_key = "height"
 	savefile_identifier = PREFERENCE_CHARACTER
-	category = PREFERENCE_CATEGORY_NON_CONTEXTUAL
+	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/height/init_possible_values()

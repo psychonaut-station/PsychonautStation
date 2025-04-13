@@ -34,9 +34,9 @@
 	suffix = "northstar"
 	name = "arrival shuttle (North Star)"
 
-/datum/map_template/shuttle/arrival/fulp
-	suffix = "fulp"
-	name = "arrival shuttle (Fulp)"
+/datum/map_template/shuttle/arrival/theia
+	suffix = "theia"
+	name = "arrival shuttle (Theia)"
 
 /datum/map_template/shuttle/arrival/nebula
 	suffix = "nebula"

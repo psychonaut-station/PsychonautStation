@@ -1,7 +1,7 @@
 SUBSYSTEM_DEF(credits)
 	name = "Roundend Credits"
 	wait = 10 MINUTES
-	init_order = INIT_ORDER_CREDITS
+	init_stage = INITSTAGE_LAST
 
 	var/list/disclaimers = list()
 	var/list/datum/episode_name/episode_names = list()

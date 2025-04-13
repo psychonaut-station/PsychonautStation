@@ -131,8 +131,6 @@
   - rscadd: Added a system to create hairstyles with multiple layers to allow better
       interaction with hats and helmets
   - image: Added additional sprite layers to the Ponytail (High) hairstyle
-  exdal:
-  - balance: 'Paramedigin: Engineering, Science ve Cargo accesslerini geri verir'
   Holoo-1:
   - bugfix: fixed emp flashlight not working on cyborgs
   Jacquerel:
@@ -174,6 +172,8 @@
   Wallem:
   - qol: The active sonar module has been slightly tweaked, resulting in smoother
       updates & a red tinge on highlighted humans.
+  exdal:
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accesslerini geri verir'
   hry-gh:
   - qol: there's a new UI preference called UI scale which allows people that use
       windows scaling to have their UIs original size with the contents zoomed out,
@@ -353,3 +353,12 @@
   vinylspiders:
   - bugfix: fixes persistent paintings not loading
   - bugfix: fixes flipped table spawners not initializing correctly
+2025-04-13:
+  AyIong:
+  - bugfix: Examine box title border will not come out of... borders
+  Melbert:
+  - rscdel: Links have underlines again
+  Rengan:
+  - qol: "Character setupdaki boy se\xE7imi features k\u0131sm\u0131na al\u0131nd\u0131\
+      ."
+  - qol: Loocye runechat eklendi.

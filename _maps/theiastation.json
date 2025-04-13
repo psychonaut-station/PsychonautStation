@@ -11,7 +11,7 @@
 	},
 	"job_changes": {
 		"Cook": {
-			"additional_cqc_areas": ["/area/station/commons/lounge"]
+			"additional_cqc_areas": ["/area/station/service/kitchen/diner"]
 		}
 	}	
 }

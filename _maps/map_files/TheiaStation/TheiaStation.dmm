@@ -11374,6 +11374,12 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
+"dTJ" = (
+/obj/effect/turf_decal/siding/wood,
+/obj/structure/secure_safe/caps_spare,
+/obj/structure/table/reinforced/rglass,
+/turf/open/floor/carpet/red,
+/area/station/command/bridge)
 "dTP" = (
 /turf/closed/wall/r_wall,
 /area/station/command/corporate_showroom)
@@ -39151,7 +39157,6 @@
 	c_tag = "Command - Bridge Fore";
 	name = "camera"
 	},
-/obj/structure/secure_safe/caps_spare,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/command/bridge)
 "nPl" = (
@@ -101834,7 +101839,7 @@ lDI
 rCU
 fxx
 aIQ
-pjG
+dTJ
 wle
 aBJ
 cJc

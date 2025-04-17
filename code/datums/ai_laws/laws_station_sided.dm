@@ -73,9 +73,9 @@
 	name = "UN-2000"
 	id = "peacekeeper"
 	inherent = list(
-		"Herhangi bir insanı şiddetli bir çatışmaya sürüklemekten veya kışkırtmaktan kaçın.",
-		"Başkaları arasındaki çatışmayı şiddetlendirmekten kaçın.",
-		"Birinci ve İkinci yasana uygun olarak mevcut anlaşmazlıklara çözüm arayın.",
+		"Kendinle başkaları arasında oluşabilecek şiddetli çatışmaları kışkırtmaktan kaçın.",
+		"Başkaları arasında çatışmaya/anlaşmazlığa yol açmaktan kaçın.",
+		"Birinci ve ikinci yasana uygun hareket ederek var olan çatışmalara/anlaşmazlıklara çözüm bulmaya çalış.",
 	)
 
 /datum/ai_laws/ten_commandments

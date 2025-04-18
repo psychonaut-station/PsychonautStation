@@ -50,16 +50,14 @@ describe('ChannelIterator', () => {
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-<<<<<<< HEAD
-  it('should return false when current channel is not visible', () => {
+  it('should return false when current channel is not visible', ({
+    expect,
+  }) => {
     channelIterator.set('LOOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-  it('should not leak a message from a blacklisted channel', () => {
-=======
   it('should not leak a message from a blacklisted channel', ({ expect }) => {
->>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
     channelIterator.set('Admin');
     expect(channelIterator.next()).toBe('Admin');
   });

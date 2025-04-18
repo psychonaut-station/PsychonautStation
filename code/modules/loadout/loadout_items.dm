@@ -313,15 +313,10 @@ GLOBAL_LIST_INIT(all_loadout_categories, init_loadout_categories())
 
 	// Mothblocks is hellbent on recolorable and reskinnable being only tooltips for items for visual clarity, so ask her before changing these
 	var/list/displayed_text = list()
-<<<<<<< HEAD
 
 	if(donator_only)
-		displayed_text += "Patreon"
+		group = "Patreon"
 
-	displayed_text += (additional_displayed_text || list())
-
-=======
->>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
 	if(can_be_greyscale)
 		displayed_text[FA_ICON_PALETTE] = "Recolorable"
 

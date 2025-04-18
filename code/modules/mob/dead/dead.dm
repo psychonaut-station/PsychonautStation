@@ -29,26 +29,6 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/canUseStorage()
 	return FALSE
 
-<<<<<<< HEAD
-/mob/dead/get_status_tab_items()
-	. = ..()
-	if(SSticker.HasRoundStarted())
-		return
-	var/time_remaining = SSticker.GetTimeLeft()
-	if(time_remaining > 0)
-		. += "Time To Start: [round(time_remaining/10)]s"
-	else if(time_remaining == -10)
-		. += "Time To Start: DELAYED"
-	else
-		. += "Time To Start: SOON"
-
-	. += "Players: [LAZYLEN(GLOB.clients)]"
-	. += "Players Ready: [SSticker.totalPlayersReady]"
-	if(client.holder)
-		. += "Admins Ready: [SSticker.total_admins_ready] / [length(GLOB.admins)]"
-
-=======
->>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
 #define SERVER_HOPPER_TRAIT "server_hopper"
 
 /mob/dead/proc/server_hop()

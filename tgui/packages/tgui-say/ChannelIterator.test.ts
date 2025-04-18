@@ -23,16 +23,12 @@ describe('ChannelIterator', () => {
     expect(channelIterator.current()).toBe('OOC');
   });
 
-<<<<<<< HEAD
-  it('should set a channel properly', () => {
+  it('should set a channel properly', ({ expect }) => {
     channelIterator.set('LOOC');
     expect(channelIterator.current()).toBe('LOOC');
   });
 
-  it('should return true when current channel is "Say"', () => {
-=======
   it('should return true when current channel is "Say"', ({ expect }) => {
->>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
     channelIterator.set('Say');
     expect(channelIterator.isSay()).toBe(true);
   });

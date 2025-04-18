@@ -353,21 +353,6 @@
   vinylspiders:
   - bugfix: fixes persistent paintings not loading
   - bugfix: fixes flipped table spawners not initializing correctly
-<<<<<<< HEAD
-2025-04-13:
-  AyIong:
-  - bugfix: Examine box title border will not come out of... borders
-  Melbert:
-  - rscdel: Links have underlines again
-  Rengan:
-  - qol: "Character setupdaki boy se\xE7imi features k\u0131sm\u0131na al\u0131nd\u0131\
-      ."
-  - qol: Loocye runechat eklendi.
-2025-04-18:
-  MoruQWGlasses:
-  - bugfix: "Peacekeeper yasalar\u0131n\u0131n yanl\u0131\u015F \xE7evirisini d\xFC\
-      zeltir."
-=======
 2025-04-12:
   00-Steven:
   - bugfix: Deep fryers now properly ding once your item is perfectly fried and smell
@@ -379,6 +364,10 @@
   Melbert:
   - bugfix: You can operate through surgical masks again
   - rscdel: Links have underlines again
+  Rengan:
+  - qol: "Character setupdaki boy se\xE7imi features k\u0131sm\u0131na al\u0131nd\u0131\
+      ."
+  - qol: Loocye runechat eklendi.
   Webcomicartist:
   - rscadd: People shoved onto wooden tables now have a 1 in 3 chance to break it,
       for all your wrestling needs - but please do not let this pull request distract
@@ -582,4 +571,6 @@
   - qol: you can now reset the adjustable pane splitters in chat settings
   mcbalaam:
   - qol: Improved chat messages when controlling a mech as an AI
->>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
+  MoruQWGlasses:
+  - bugfix: "Peacekeeper yasalar\u0131n\u0131n yanl\u0131\u015F \xE7evirisini d\xFC\
+      zeltir."

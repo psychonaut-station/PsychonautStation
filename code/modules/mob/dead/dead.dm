@@ -29,6 +29,7 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 /mob/dead/canUseStorage()
 	return FALSE
 
+<<<<<<< HEAD
 /mob/dead/get_status_tab_items()
 	. = ..()
 	if(SSticker.HasRoundStarted())
@@ -46,6 +47,8 @@ INITIALIZE_IMMEDIATE(/mob/dead)
 	if(client.holder)
 		. += "Admins Ready: [SSticker.total_admins_ready] / [length(GLOB.admins)]"
 
+=======
+>>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
 #define SERVER_HOPPER_TRAIT "server_hopper"
 
 /mob/dead/proc/server_hop()

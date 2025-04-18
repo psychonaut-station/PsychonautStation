@@ -244,9 +244,11 @@
 
 /datum/reagent/water/expose_turf(turf/open/exposed_turf, reac_volume)
 	. = ..()
+
 	if(!istype(exposed_turf))
 		return
 
+<<<<<<< HEAD
 	var/cool_temp = cooling_temperature
 	if(reac_volume >= 5)
 		exposed_turf.MakeSlippery(TURF_WET_WATER, 10 SECONDS, min(reac_volume*1.5 SECONDS, 60 SECONDS))
@@ -254,8 +256,12 @@
 	for(var/atom/theatom as anything in exposed_turf)
 		SEND_SIGNAL(theatom, COMSIG_ATOM_EXPOSED_WATER)
 
+=======
+>>>>>>> 03cbf3f0e89061e4a31d23d8d0adb1c3048d6231
 	for(var/mob/living/basic/slime/exposed_slime in exposed_turf)
 		exposed_slime.apply_water()
+
+	var/cool_temp = cooling_temperature
 
 	var/obj/effect/hotspot/hotspot = (locate(/obj/effect/hotspot) in exposed_turf)
 	if(hotspot && !isspaceturf(exposed_turf))
@@ -264,6 +270,12 @@
 			air.temperature = max(min(air.temperature-(cool_temp*1000), air.temperature/cool_temp),TCMB)
 			air.react(src)
 			qdel(hotspot)
+
+	if(isgroundlessturf(exposed_turf) || isnoslipturf(exposed_turf))
+		return
+
+	if(reac_volume >= 5)
+		exposed_turf.MakeSlippery(TURF_WET_WATER, 10 SECONDS, min(reac_volume*1.5 SECONDS, 60 SECONDS))
 
 /*
  * Water reaction to an object
@@ -1225,7 +1237,7 @@
 /datum/reagent/iron/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
 	if(affected_mob.blood_volume < BLOOD_VOLUME_NORMAL)
-		affected_mob.blood_volume += 0.25 * seconds_per_tick
+		affected_mob.blood_volume += BLOOD_REGEN_FACTOR * seconds_per_tick
 
 /datum/reagent/gold
 	name = "Gold"

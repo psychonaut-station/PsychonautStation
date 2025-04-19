@@ -296,4 +296,3 @@ SUBSYSTEM_DEF(discord)
 	if (length(discord_mention_extraction_regex.group) == 1)
 		return discord_mention_extraction_regex.group[1]
 	return null
-

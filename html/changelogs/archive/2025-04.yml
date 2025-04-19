@@ -559,6 +559,9 @@
   - bugfix: You can't fax unfaxable things by putting them in faxable things
   - rscadd: Cyborgs and the AI have regained understanding of various non-human languages,
       but only partially (66%).
+  MoruQWGlasses:
+  - bugfix: "Peacekeeper yasalar\u0131n\u0131n yanl\u0131\u015F \xE7evirisini d\xFC\
+      zeltir."
   SmArtKar:
   - qol: Redesigned the loadout UI
   - balance: Monocles now work as prescription glasses
@@ -571,6 +574,15 @@
   - qol: you can now reset the adjustable pane splitters in chat settings
   mcbalaam:
   - qol: Improved chat messages when controlling a mech as an AI
-  MoruQWGlasses:
-  - bugfix: "Peacekeeper yasalar\u0131n\u0131n yanl\u0131\u015F \xE7evirisini d\xFC\
-      zeltir."
+2025-04-19:
+  Absolucy:
+  - bugfix: Fixed FOV checks improperly handling diagonal directions.
+  Holoo-1:
+  - balance: emp flashlight costs 4 -> 2 tc
+  Thunder12345:
+  - rscadd: Added support for modularly loaded shuttles.
+  - rscadd: The Scrapheap Challenge emergency shuttle now comes in randomly generated
+      variants.
+  vinylspiders:
+  - bugfix: shoes with the squeak component will no longer play a squeaking sound
+      when you aren't actually walking (like in a wheelchair for instance)

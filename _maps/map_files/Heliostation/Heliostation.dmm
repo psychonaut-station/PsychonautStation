@@ -65561,10 +65561,6 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
-"rCD" = (
-/obj/structure/secure_safe/caps_spare,
-/turf/open/floor/wood/large,
-/area/station/command/bridge)
 "rCS" = (
 /obj/structure/chair/sofa/left/brown{
 	desc = "Made of very expensive furs, probably from an endangered animal.";
@@ -122447,7 +122443,7 @@ wyd
 anm
 lQp
 mWw
-rCD
+xWv
 xMJ
 hwb
 bQq

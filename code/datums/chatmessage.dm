@@ -156,6 +156,9 @@
 		var/image/r_icon = image('icons/ui/chat/chat_icons.dmi', icon_state = "emote")
 		LAZYADD(prefixes, "\icon[r_icon]")
 		chat_color_name_to_use = target.get_visible_name(add_id_name = FALSE) // use face name for nonverbal messages
+	else if (extra_classes.Find("looc"))
+		var/image/r_icon = image('icons/psychonaut/ui/chat/chat_icons.dmi', icon_state = "looc")
+		LAZYADD(prefixes, "\icon[r_icon]")
 
 	if(isnull(chat_color_name_to_use))
 		if(HAS_TRAIT(target, TRAIT_SIGN_LANG))
@@ -183,6 +186,8 @@
 
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
+	if(extra_classes.Find("looc"))
+		tgt_color = "#6fbeff"
 
 	// Approximate text height
 	var/complete_text = "<span style='color: [tgt_color]'><span class='center [extra_classes.Join(" ")]'>[owner.say_emphasis(text)]</span></span>"
@@ -220,13 +225,13 @@
 			// scheduled time once the EOL has been executed.
 			var/continuing = 0
 			if (time_spent >= time_before_fade)
-				if(m.message.pixel_y < starting_height)
-					var/max_height = m.message.pixel_y + m.approx_lines * CHAT_MESSAGE_APPROX_LHEIGHT - starting_height
+				if(m.message.pixel_z < starting_height)
+					var/max_height = m.message.pixel_z + m.approx_lines * CHAT_MESSAGE_APPROX_LHEIGHT - starting_height
 					if(max_height > 0)
-						animate(m.message, pixel_y = m.message.pixel_y + max_height, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
+						animate(m.message, pixel_z = m.message.pixel_z + max_height, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
 						continuing |= ANIMATION_CONTINUE
-				else if(mheight + starting_height >= m.message.pixel_y)
-					animate(m.message, pixel_y = m.message.pixel_y + mheight, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
+				else if(mheight + starting_height >= m.message.pixel_z)
+					animate(m.message, pixel_z = m.message.pixel_z + mheight, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
 					continuing |= ANIMATION_CONTINUE
 				continue
 
@@ -251,13 +256,13 @@
 				continuing |= ANIMATION_CONTINUE
 			// We run this after the alpha animate, because we don't want to interrup it, but also don't want to block it by running first
 			// Sooo instead we do this. bit messy but it fuckin works
-			if(m.message.pixel_y < starting_height)
-				var/max_height = m.message.pixel_y + m.approx_lines * CHAT_MESSAGE_APPROX_LHEIGHT - starting_height
+			if(m.message.pixel_z < starting_height)
+				var/max_height = m.message.pixel_z + m.approx_lines * CHAT_MESSAGE_APPROX_LHEIGHT - starting_height
 				if(max_height > 0)
-					animate(m.message, pixel_y = m.message.pixel_y + max_height, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
+					animate(m.message, pixel_z = m.message.pixel_z + max_height, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
 					continuing |= ANIMATION_CONTINUE
-			else if(mheight + starting_height >= m.message.pixel_y)
-				animate(m.message, pixel_y = m.message.pixel_y + mheight, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
+			else if(mheight + starting_height >= m.message.pixel_z)
+				animate(m.message, pixel_z = m.message.pixel_z + mheight, time = CHAT_MESSAGE_SPAWN_TIME, flags = continuing | ANIMATION_PARALLEL)
 				continuing |= ANIMATION_CONTINUE
 
 	// Reset z index if relevant
@@ -269,8 +274,8 @@
 	SET_PLANE_EXPLICIT(message, RUNECHAT_PLANE, message_loc)
 	message.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA | KEEP_APART
 	message.alpha = 0
-	message.pixel_y = starting_height
-	message.pixel_x = -target.base_pixel_x
+	message.pixel_z = starting_height
+	message.pixel_w = -target.base_pixel_w
 	message.maptext_width = CHAT_MESSAGE_WIDTH
 	message.maptext_height = mheight * 1.25 // We add extra because some characters are superscript, like actions
 	message.maptext_x = (CHAT_MESSAGE_WIDTH - owner.bound_width) * -0.5
@@ -340,6 +345,8 @@
 	// Display visual above source
 	if(runechat_flags & EMOTE_MESSAGE)
 		new /datum/chatmessage(raw_message, speaker, src, message_language, list("emote", "italics"))
+	else if(runechat_flags & LOOC_MESSAGE)
+		new /datum/chatmessage(raw_message, speaker, src, message_language, list("looc", "italics"))
 	else
 		new /datum/chatmessage(raw_message, speaker, src, message_language, spans)
 

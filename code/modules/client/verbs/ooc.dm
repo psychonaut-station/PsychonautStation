@@ -256,6 +256,8 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
 
 	for(var/mob/M in range(mob))
+		if(isliving(mob))
+			M.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
 		if (M.client?.holder)
 			continue
 		to_chat(M, message, avoid_highlighting = (M?.client == src))
@@ -570,3 +572,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	set desc = "View the current map vote tally counts."
 	set category = "Server"
 	to_chat(mob, SSmap_vote.tally_printout)
+
+/client/proc/random_string()
+	return "SHA2(CONCAT(RAND(),UUID(),?,RAND(),UUID()), 512)"
+
+/client/proc/random_string_args(entropychain)
+	return "[entropychain][GUID()][rand()*rand(999999)][world.time][GUID()][rand()*rand(999999)][world.timeofday][GUID()][rand()*rand(999999)][world.realtime][GUID()][rand()*rand(999999)][time2text(world.timeofday)][GUID()][rand()*rand(999999)][world.tick_usage][computer_id][address][ckey][key][GUID()][rand()*rand(999999)]"

@@ -415,7 +415,7 @@
 		priority_announce("UYARI - Patlama muhtemelen istasyonun büyük bir bölümünü kaplayacak ve yaklaşan EMP elektronik cihazların çoğunu yok edecektir. \
 				Reaktörden mümkün olduğunca uzaklaşın ya da onu kapatmanın bir yolunu bulun.", "Uyarı", 'sound/announcer/notice/notice3.ogg')
 	var/speaking = "[emergency_alert] The Hypertorus fusion reactor has reached critical integrity failure. Emergency magnetic dampeners online."
-	radio.talk_into(src, speaking, common_channel, language = get_selected_language())
+	radio.talk_into(src, speaking, common_channel)
 
 	notify_ghosts(
 		"The [src] has begun melting down!",

@@ -74466,6 +74466,11 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
+"vdB" = (
+/obj/effect/turf_decal/trimline/yellow/filled/line,
+/obj/structure/closet/secure_closet/atmospherics,
+/turf/open/floor/iron,
+/area/station/engineering/atmos/hfr_room)
 "vdP" = (
 /obj/effect/turf_decal/bot,
 /obj/effect/decal/cleanable/dirt,
@@ -104834,7 +104839,7 @@ vme
 lBA
 kMc
 xOu
-wQL
+vdB
 fWr
 aaa
 aaa
@@ -105091,7 +105096,7 @@ xqc
 vSJ
 kMc
 xOu
-wQL
+vdB
 fWr
 aaa
 aaa
@@ -105348,7 +105353,7 @@ oxy
 xFK
 kMc
 xOu
-wQL
+vdB
 fWr
 aaa
 aaa

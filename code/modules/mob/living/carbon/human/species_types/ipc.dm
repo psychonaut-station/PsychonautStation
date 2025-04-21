@@ -71,10 +71,9 @@
 
 /datum/species/ipc/wash(mob/living/carbon/human/H)
 	. = FALSE
-	var/mob/living/carbon/human/exposed_ipc = H
 	var/chest_covered = FALSE
 	var/head_covered = FALSE
-	for(var/obj/item/clothing/equipped in exposed_ipc.get_equipped_items())
+	for(var/obj/item/clothing/equipped in H.get_equipped_items())
 		if((equipped.body_parts_covered & CHEST) && (equipped.get_armor_rating(BIO) == 100))
 			chest_covered = TRUE
 		if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
@@ -82,11 +81,11 @@
 		if(head_covered && chest_covered)
 			break
 	if(!chest_covered || !head_covered)
-		var/obj/item/organ/heart/heart = exposed_ipc.get_organ_slot(ORGAN_SLOT_HEART)
+		var/obj/item/organ/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
 		if(heart && istype(heart, /obj/item/organ/heart/cybernetic))
-			exposed_ipc.adjustFireLoss(rand(1,3))
+			H.adjustFireLoss(rand(1,3))
 		else
-			exposed_ipc.adjustFireLoss(rand(5,15))
+			H.adjustFireLoss(rand(5,15))
 		return TRUE
 
 /datum/species/ipc/randomize_features()

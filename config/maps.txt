@@ -53,7 +53,7 @@ endmap
 
 map heliostation
 	votable
-	minplayers 40
+	minplayers 20
 endmap
 
 # Debug-only maps.

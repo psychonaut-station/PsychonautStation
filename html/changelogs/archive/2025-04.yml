@@ -586,3 +586,6 @@
   vinylspiders:
   - bugfix: shoes with the squeak component will no longer play a squeaking sound
       when you aren't actually walking (like in a wheelchair for instance)
+2025-04-20:
+  exdal:
+  - bugfix: ready sayisi tekrardan gorunuyor

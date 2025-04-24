@@ -37,7 +37,7 @@ map metastation
 endmap
 
 map theiastation
-	minplayers 15
+	minplayers 10
 	votable
 endmap
 
@@ -54,11 +54,6 @@ endmap
 map wawastation
 	votable
 	minplayers 40
-endmap
-
-map heliostation
-	votable
-	minplayers 25
 endmap
 
 # Debug-only maps.

@@ -358,9 +358,6 @@
 	for(var/mob/living/basic/slime/M in src)
 		M.apply_water()
 
-	for(var/atom/theatom as anything in src)
-		SEND_SIGNAL(theatom, COMSIG_ATOM_EXPOSED_WATER)
-
 	wash(CLEAN_WASH, TRUE)
 	return TRUE
 

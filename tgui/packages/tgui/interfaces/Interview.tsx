@@ -211,14 +211,20 @@ const QuestionArea = (props: Question) => {
       }
     >
       <p>{linkifyText(question)}</p>
+<<<<<<< HEAD
       {((read_only || is_admin) && (
         <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
       )) || (
+=======
+      {read_only || is_admin ? (
+        <BlockQuote>{response || 'No response.'}</BlockQuote>
+      ) : (
+>>>>>>> 78617540aca18381c653618d74a6ae161e5ef214
         <TextArea
           fluid
           height={10}
           maxLength={500}
-          onChange={(e, input) => setUserInput(input)}
+          onChange={setUserInput}
           onEnter={saveResponse}
           placeholder="Cevabını buraya yaz. En fazla 500 karakter girebilirsin. Bittiğinde ENTER tuşuna bas."
           value={response || undefined}

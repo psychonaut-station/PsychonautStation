@@ -266,8 +266,6 @@
 
 	if(reac_volume >= 5)
 		exposed_turf.MakeSlippery(TURF_WET_WATER, 10 SECONDS, min(reac_volume*1.5 SECONDS, 60 SECONDS))
-		for(var/atom/theatom as anything in exposed_turf)
-			SEND_SIGNAL(theatom, COMSIG_ATOM_EXPOSED_WATER)
 
 /*
  * Water reaction to an object

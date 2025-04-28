@@ -146,9 +146,6 @@
 /// From whoever has been revealed (atom/revealed)
 #define COMSIG_ATOM_REVEAL "atom_reveal"
 
-/// The atom exposed to water
-#define COMSIG_ATOM_EXPOSED_WATER "exposed_water"
-
 /// From /atom/proc/set_density(new_value) for when an atom changes density
 #define COMSIG_ATOM_DENSITY_CHANGED "atom_density_change"
 

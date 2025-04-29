@@ -263,7 +263,7 @@ GLOBAL_LIST_EMPTY(all_singularities)
 				new_consume_range = 2
 				dissipate_delay = 6
 				time_since_last_dissipiation = 0
-				dissipate_strength = 10
+				dissipate_strength = 15
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
@@ -277,7 +277,7 @@ GLOBAL_LIST_EMPTY(all_singularities)
 				new_consume_range = 3
 				dissipate_delay = 4
 				time_since_last_dissipiation = 0
-				dissipate_strength = 20
+				dissipate_strength = 25
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
 			icon = 'icons/effects/288x288.dmi'

@@ -1324,6 +1324,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		if(ispath(spawn_type, /mob/living/silicon/ai))
 			var/ai_core_value = selected_char?["preferred_ai_core_display"]
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
+			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
+				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
 		return appearance
 
 	var/we_created = FALSE

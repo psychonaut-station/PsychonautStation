@@ -7,17 +7,17 @@
 	reflectable = TRUE
 	range = 20
 	speed = 1
-	damage = 12
+	damage = 15
 	damage_type = TOX
 
 /obj/projectile/accelerated_particle/weak
 	damage = 5
 
 /obj/projectile/accelerated_particle/strong
-	damage = 18
+	damage = 20
 
 /obj/projectile/accelerated_particle/powerful
-	damage = 34
+	damage = 35
 
 /obj/projectile/accelerated_particle/ex_act(severity, target)
 	qdel(src)

@@ -113,6 +113,9 @@ SUBSYSTEM_DEF(mapping)
 		if(!current_map || current_map.defaulted)
 			to_chat(world, span_boldannounce("Unable to load next or default map config, defaulting to [old_config.map_name]."))
 			current_map = old_config
+	var/mapping_url = config.Get(/datum/config_entry/string/webmap_url)
+	if(mapping_url != "")
+		current_map.mapping_url = mapping_url
 	plane_offset_to_true = list()
 	true_to_offset_planes = list()
 	plane_to_offset = list()
@@ -969,6 +972,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(number_of_remaining_levels > 0)
 		CRASH("The following [number_of_remaining_levels] away mission(s) were not loaded: [checkable_levels.Join("\n")]")
 
+<<<<<<< HEAD
 /datum/controller/subsystem/mapping/proc/machiness_post_init()
 	var/list/prioritys = typecacheof(list(/obj/machinery/meter, /obj/machinery/power/apc))
 	for(var/atom/prior_item in typecache_filter_list(machines_delete_after, prioritys))
@@ -1033,3 +1037,15 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	QDEL_NULL(modular_room_spawners[roomtype])
 	log_world("Loaded [roomtype] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return TRUE
+=======
+///Returns the map name, with an openlink action tied to it (if one exists) for the map.
+/datum/map_config/proc/return_map_name(webmap_included)
+	var/text
+	if(feedback_link)
+		text = "<a href='byond://?action=openLink&link=[url_encode(feedback_link)]'>[map_name]</a>"
+	else
+		text = map_name
+	if(webmap_included && !isnull(SSmapping.current_map.mapping_url))
+		text += " | <a href='byond://?action=openWebMap'>(Show Map)</a>"
+	return text
+>>>>>>> 915659c50861e8963350bee23d9f6bd18b228853

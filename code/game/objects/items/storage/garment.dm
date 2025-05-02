@@ -5,6 +5,7 @@
 	desc = "A bag for storing extra clothes and shoes."
 	slot_flags = NONE
 	resistance_flags = FLAMMABLE
+	storage_type = /datum/storage/bag/garment
 
 /obj/item/storage/bag/garment/captain
 	name = "captain's garment bag"
@@ -38,6 +39,7 @@
 	name = "quartermasters's garment bag"
 	desc = "A bag for storing extra clothes and shoes. This one belongs to the quartermaster."
 
+<<<<<<< HEAD
 /obj/item/storage/bag/garment/Initialize(mapload)
 	. = ..()
 	atom_storage.max_specific_storage = WEIGHT_CLASS_NORMAL
@@ -47,6 +49,8 @@
 	atom_storage.insert_preposition = "in"
 	atom_storage.set_holdable(/obj/item/clothing)
 
+=======
+>>>>>>> 915659c50861e8963350bee23d9f6bd18b228853
 /obj/item/storage/bag/garment/captain/PopulateContents()
 	new /obj/item/clothing/under/rank/captain(src)
 	new /obj/item/clothing/under/rank/captain/skirt(src)

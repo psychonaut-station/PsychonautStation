@@ -29845,6 +29845,7 @@
 /area/station/medical/virology)
 "ktP" = (
 /obj/structure/cable,
+/obj/machinery/pdapainter/security,
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hos)
 "ktW" = (
@@ -32724,7 +32725,7 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/emergency/starboard)
 "lwX" = (
-/obj/structure/displaycase,
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/maintenance/department/bridge)
 "lwY" = (
@@ -41495,9 +41496,9 @@
 	},
 /area/station/science/breakroom)
 "oEZ" = (
-/obj/structure/displaycase,
 /obj/structure/cable,
 /obj/machinery/light/small/directional/east,
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/corporate_showroom)
 "oFa" = (
@@ -45235,9 +45236,9 @@
 /turf/open/floor/wood/large,
 /area/station/security/courtroom)
 "qaj" = (
-/obj/structure/displaycase,
 /obj/structure/cable,
 /obj/item/radio/intercom/directional/east,
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/corporate_showroom)
 "qak" = (
@@ -54469,8 +54470,8 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "tqO" = (
-/obj/structure/displaycase,
 /obj/structure/cable,
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/corporate_showroom)
 "tqR" = (
@@ -54742,10 +54743,10 @@
 /turf/open/floor/carpet/green,
 /area/station/security/courtroom/holding)
 "txh" = (
-/obj/structure/displaycase,
 /obj/item/stack/tile/iron{
 	pixel_y = -2
 	},
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/maintenance/department/bridge)
 "txx" = (
@@ -62507,9 +62508,9 @@
 /turf/open/floor/wood,
 /area/station/service/lawoffice)
 "wna" = (
-/obj/structure/displaycase,
 /obj/machinery/light/small/directional/east,
 /obj/structure/cable,
+/obj/structure/displaycase/trophy,
 /turf/open/floor/carpet/royalblack,
 /area/station/command/corporate_showroom)
 "wnh" = (

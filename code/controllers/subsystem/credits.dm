@@ -142,9 +142,7 @@ SUBSYSTEM_DEF(credits)
 			for(var/b in 1 to 6)
 				if(!length(antagonist_icons))
 					break
-				var/reference = pick(antagonist_icons)
-				var/mutable_appearance/picked = antagonist_icons[reference]
-				antagonist_icons -= reference
+				var/mutable_appearance/picked = pick_n_take(antagonist_icons)
 				if(!picked)
 					break
 				picked.pixel_x = x_offset
@@ -208,18 +206,18 @@ SUBSYSTEM_DEF(credits)
 	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
 
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(!H.last_mind || !H.ckey)
+		if(!H.ckey)
 			continue
 		if(!is_anyone_died)
 			cast_string += "<br><center>Hayatta kalamayanların anısına.</center><br>"
 			is_anyone_died = TRUE
 
 		var/obj/effect/cast_object/human_name = new
-		human_name.maptext = "<p align='right'>[H.last_mind.name]</p>"
+		human_name.maptext = "<p align='right'>[H.real_name]</p>"
 		human_name.maptext_width = 224
 
 		var/obj/effect/cast_object/human_key = new
-		human_key.maptext = "<p align='left'><b>[H.last_mind.key]</b></p>"
+		human_key.maptext = "<p align='left'><b>[H.ckey]</b></p>"
 		human_key.maptext_width = 224
 		human_key.maptext_x = 240
 
@@ -262,7 +260,7 @@ SUBSYSTEM_DEF(credits)
 	if(locate(/datum/dynamic_ruleset/roundstart/malf_ai) in ran_events)
 		episode_names += new /datum/episode_name("[pick("GARİP BİR OYUN", "YAPAY ZEKA DELİYE DÖNÜYOR", "MAKİNELERİN YÜKSELİŞİ")]", 300)
 	if(locate(/datum/dynamic_ruleset/roundstart/revs) in ran_events)
-		episode_names += new /datum/episode_name("[pick("MÜRETTEBAT DEVRİME BAŞLIYOR", "CEHENNEMİN DİĞER YÜZÜ", "[pick("İSYAN","DEVRİM")]!!", "MÜRETTEBATIN YÜKSELİŞİ")]", 350)
+		episode_names += new /datum/episode_name("[pick("MÜRETTEBAT DEVRİME BAŞLIYOR", "CEHENNEMİN DİĞER YÜZÜ", "[pick("İSYAN","DEVRİM")]!!", "MÜRETTEBATIN YÜKSELİŞİ", "AYAKLANIN KARDEŞLERİM!!")]", 350)
 	if((locate(/datum/dynamic_ruleset/roundstart/bloodcult) in ran_events) && blackbox_feedback_num("narsies_spawned") > 0)
 		episode_names += new /datum/episode_name("[pick("NAR-SIE'NIN BOŞ GÜNÜ'", "NAR-SIE TATİLDE")]", 500)
 
@@ -452,7 +450,7 @@ SUBSYSTEM_DEF(credits)
 		if(average_braindamage > 30)
 			episode_names += new /datum/episode_name("[pick("MÜRETTEBATIN DÜŞÜK IQ PROBLEMI", "AH! KAFAM", "[pick("BEYİN HASARI", "BEVİN HASAVI","HASAVI BEVIN")]", "[locale_uppertext(locale_suffix_genitive(uppr_name))] ÇOK ÖZEL MÜRETTEBATI")]", min(1000, average_braindamage*10))
 		if(all_braindamaged && human_escapees > 2)
-			episode_names += new /datum/episode_name("UMARIM UZAYIN BİRYERLERİNDE AKILLI YAŞAM FORMLARI VARDIR, ÇÜNKÜ [locale_uppertext(locale_suffix_locative(uppr_name))] YOK!!", human_escapees * 500)
+			episode_names += new /datum/episode_name("UMARIM UZAYIN BİR YERLERİNDE AKILLI YAŞAM FORMLARI VARDIR, ÇÜNKÜ [locale_uppertext(locale_suffix_locative(uppr_name))] YOK!!", human_escapees * 500)
 
 /datum/controller/subsystem/credits/proc/get_title_card(passed_icon_state)
 	if(!passed_icon_state)
@@ -544,7 +542,7 @@ SUBSYSTEM_DEF(credits)
 		appearance.maptext_x = ((88 - bound_width) * -0.5) - living_mob.base_pixel_x
 		appearance.maptext_y = -16
 		appearance.maptext = "<center>[living_mob.mind.name]</center>"
-	antag_appearances[MA] += list(REF(living_mob.mind) = appearance)
+	antag_appearances[MA] += appearance
 	processing_icons[WEAKREF(living_mob.mind)] = appearance
 
 /datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)

@@ -206,18 +206,18 @@ SUBSYSTEM_DEF(credits)
 	cast_string += "<br><center><h3>[pick("GERÇEK OLAYLARDAN İLHAM ALINMIŞTIR","GERÇEK BİR HİKAYEDEN ESİNLENİLMİŞTİR")]</h3></center>"
 
 	for(var/mob/living/carbon/human/H in GLOB.dead_mob_list)
-		if(!H.ckey)
+		if(!H.last_mind)
 			continue
 		if(!is_anyone_died)
 			cast_string += "<br><center>Hayatta kalamayanların anısına.</center><br>"
 			is_anyone_died = TRUE
 
 		var/obj/effect/cast_object/human_name = new
-		human_name.maptext = "<p align='right'>[H.real_name]</p>"
+		human_name.maptext = "<p align='right'>[H.last_mind.name]</p>"
 		human_name.maptext_width = 224
 
 		var/obj/effect/cast_object/human_key = new
-		human_key.maptext = "<p align='left'><b>[H.ckey]</b></p>"
+		human_key.maptext = "<p align='left'><b>[H.last_mind.key]</b></p>"
 		human_key.maptext_width = 224
 		human_key.maptext_x = 240
 

@@ -132,11 +132,11 @@ GLOBAL_LIST_INIT(ai_core_display_screens, sort_list(list(
 	"Triumvirate-M",
 	"Triumvirate",
 	"Weird",
-	"A.M"
+	"Allied Mastercomputer"
 )))
 
 GLOBAL_LIST_INIT(ai_core_display_screen_icons, list(
-	"A.M" = 'icons/psychonaut/mob/silicon/ai.dmi',
+	"Allied Mastercomputer" = 'icons/psychonaut/mob/silicon/ai.dmi',
 ))
 
 /// A form of resolve_ai_icon that is guaranteed to never sleep.

@@ -1,5 +1,0 @@
-author: "Nukkun, Rengan"
-delete-after: True
-changes:
-  - rscadd: "Ai ekranlarına Allied Mastercomputer ekranı eklendi."
-  - bugfix: "AI eye'ye examine atınca lawları 2 kez göstermesi düzeltildi."

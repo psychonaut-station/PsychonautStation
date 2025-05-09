@@ -58,6 +58,8 @@ GLOBAL_LIST_EMPTY(all_singularities)
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	/// The intensity multiplier for radiation pulses
+	var/intensity_multiplier = 2.5
 	/// Warp effect of the singularity
 	var/atom/movable/warp_effect/singularity/warp
 
@@ -187,7 +189,7 @@ GLOBAL_LIST_EMPTY(all_singularities)
 	if(current_size >= STAGE_TWO)
 		if(SPT_PROB(event_chance, seconds_per_tick))
 			event()
-	radiation_pulse(src, 5, 0.1, intensity = (energy * 2) + 500)
+	radiation_pulse(src, 5, 0.1, intensity = (energy * intensity_multiplier * 2) + 500)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -625,6 +627,9 @@ GLOBAL_LIST_EMPTY(all_singularities)
 #define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
 
 /// Singularity spawned by a singularity generator
+/obj/singularity/stationary
+	intensity_multiplier = 1
+
 /obj/singularity/stationary/Initialize(mapload, starting_energy)
 	. = ..()
 	add_to_cims()

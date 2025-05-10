@@ -136,6 +136,7 @@ SUBSYSTEM_DEF(credits)
 	for(var/obj/effect/title_card_object/MA as anything in antag_appearances)
 		credit_order_for_this_round += MA
 		var/list/antagonist_icons = antag_appearances[MA]
+		antagonist_icons = shuffle(antagonist_icons)
 		var/antagonists_length = length(antagonist_icons)
 		for(var/i in 1 to CEILING(antagonists_length / 6, 1))
 			var/x_offset = -16

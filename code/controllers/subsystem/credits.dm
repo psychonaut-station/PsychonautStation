@@ -134,22 +134,23 @@ SUBSYSTEM_DEF(credits)
 				credit_order_for_this_round += picked
 
 	for(var/obj/effect/title_card_object/MA as anything in antag_appearances)
-		credit_order_for_this_round += MA
 		var/list/antagonist_icons = antag_appearances[MA]
 		antagonist_icons = shuffle(antagonist_icons)
 		var/antagonists_length = length(antagonist_icons)
-		for(var/i in 1 to CEILING(antagonists_length / 6, 1))
-			var/x_offset = -16
-			for(var/b in 1 to 6)
-				if(!length(antagonist_icons))
-					break
-				var/mutable_appearance/picked = pick_n_take(antagonist_icons)
-				if(!picked)
-					break
-				picked.pixel_x = x_offset
-				picked.pixel_y = y_offset
-				x_offset += 96
-				credit_order_for_this_round += picked
+		if(antagonists_length)
+			credit_order_for_this_round += MA
+			for(var/i in 1 to CEILING(antagonists_length / 6, 1))
+				var/x_offset = -16
+				for(var/b in 1 to 6)
+					if(!length(antagonist_icons))
+						break
+					var/mutable_appearance/picked = pick_n_take(antagonist_icons)
+					if(!picked)
+						break
+					picked.pixel_x = x_offset
+					picked.pixel_y = y_offset
+					x_offset += 96
+					credit_order_for_this_round += picked
 
 /datum/controller/subsystem/credits/proc/draft_disclaimers()
 	disclaimers += "[locale_suffix_locative(station_name())] çekilmiştir.<br>"

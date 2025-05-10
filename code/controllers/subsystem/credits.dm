@@ -465,7 +465,6 @@ SUBSYSTEM_DEF(credits)
 	if(!MA)
 		MA = new
 		MA.icon_state = passed_icon_state
-		MA.pixel_x = 80
 		antag_appearances += MA
 		antag_appearances[MA] = list()
 	return MA
@@ -594,6 +593,7 @@ SUBSYSTEM_DEF(credits)
 /obj/effect/title_card_object
 	plane = SPLASHSCREEN_PLANE
 	icon = 'icons/psychonaut/effects/title_cards.dmi'
+	pixel_x = 80
 
 /obj/effect/cast_object
 	plane = SPLASHSCREEN_PLANE

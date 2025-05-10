@@ -536,10 +536,9 @@ SUBSYSTEM_DEF(credits)
 		appearance = new (living_mob.appearance)
 		appearance.transform = matrix()
 		appearance.setDir(SOUTH)
-		var/bound_width = living_mob.bound_width || world.icon_size
 		appearance.maptext_width = 88
 		appearance.maptext_height = world.icon_size * 1.5
-		appearance.maptext_x = ((88 - bound_width) * -0.5) - living_mob.base_pixel_x
+		appearance.maptext_x = ((88 - world.icon_size) * -0.5) - living_mob.base_pixel_x
 		appearance.maptext_y = -16
 		appearance.maptext = "<center>[living_mob.mind.name]</center>"
 	antag_appearances[MA] += appearance

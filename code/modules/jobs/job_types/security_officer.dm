@@ -128,7 +128,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = spawning.get_idcard(hand_first = FALSE)
 		var/assignment = "[chosen_title] ([department])"
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
-		worn_id.assignment = alt_title_assignment
+		worn_id.assignment = assignment
 		worn_id.update_label()
 		spawning.sec_hud_set_ID()
 

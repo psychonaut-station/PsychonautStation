@@ -969,7 +969,6 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(number_of_remaining_levels > 0)
 		CRASH("The following [number_of_remaining_levels] away mission(s) were not loaded: [checkable_levels.Join("\n")]")
 
-<<<<<<< HEAD
 /datum/controller/subsystem/mapping/proc/machiness_post_init()
 	var/list/prioritys = typecacheof(list(/obj/machinery/meter, /obj/machinery/power/apc))
 	for(var/atom/prior_item in typecache_filter_list(machines_delete_after, prioritys))
@@ -1034,7 +1033,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	QDEL_NULL(modular_room_spawners[roomtype])
 	log_world("Loaded [roomtype] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return TRUE
-=======
+
 ///Returns the map name, with an openlink action tied to it (if one exists) for the map.
 /datum/map_config/proc/return_map_name(webmap_included)
 	var/text
@@ -1045,4 +1044,3 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(webmap_included && !isnull(SSmapping.current_map.mapping_url))
 		text += " | <a href='byond://?action=openWebMap'>(Show Map)</a>"
 	return text
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e

@@ -28,13 +28,9 @@
 	else if(holder.has_reagent(/datum/reagent/water))
 		blood_type = BLOOD_TYPE_H2O
 	else if(holder.has_reagent(/datum/reagent/toxin/slimejelly))
-<<<<<<< HEAD
-		blood_type = "TOX"
-	else if(holder.has_reagent(/datum/reagent/fuel/oil))
-		blood_type = "LPG"
-=======
 		blood_type = BLOOD_TYPE_TOX
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
+	else if(holder.has_reagent(/datum/reagent/fuel/oil))
+		blood_type = BLOOD_TYPE_OIL
 	else
 		blood_type = null
 	return ..()

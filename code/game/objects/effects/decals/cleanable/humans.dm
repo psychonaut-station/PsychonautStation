@@ -507,8 +507,7 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE
-<<<<<<< HEAD
-	qdel(src)
+	expire()
 
 /obj/effect/decal/cleanable/blood/hitsplatter/greyscale
 	name = "blood splatter"
@@ -518,31 +517,34 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 
 /obj/effect/decal/cleanable/blood/hitsplatter/greyscale/Bump(atom/bumped_atom)
 	if(!iswallturf(bumped_atom) && !istype(bumped_atom, /obj/structure/window))
-		qdel(src)
+		expire()
 		return
 
 	if(istype(bumped_atom, /obj/structure/window))
 		var/obj/structure/window/bumped_window = bumped_atom
 		if(!bumped_window.fulltile)
 			hit_endpoint = TRUE
-			qdel(src)
+			expire()
 			return
 
 	hit_endpoint = TRUE
-	if(isturf(prev_loc))
+	if(!isturf(prev_loc)) // This will only happen if prev_loc is not even a turf, which is highly unlikely.
 		abstract_move(bumped_atom)
-		skip = TRUE
-		//Adjust pixel offset to make splatters appear on the wall
-		if(istype(bumped_atom, /obj/structure/window))
-			land_on_window(bumped_atom)
-		else
-			var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new(prev_loc)
-			final_splatter.color = color
-			final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
-			final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
-	else // This will only happen if prev_loc is not even a turf, which is highly unlikely.
-		abstract_move(bumped_atom)
-		qdel(src)
+		expire()
+		return
+
+	abstract_move(bumped_atom)
+	skip = TRUE
+	//Adjust pixel offset to make splatters appear on the wall
+	if(istype(bumped_atom, /obj/structure/window))
+		land_on_window(bumped_atom)
+		return
+
+	var/obj/effect/decal/cleanable/blood/splatter/over_window/greyscale/final_splatter = new(prev_loc)
+	final_splatter.add_blood_DNA(blood_dna_info)
+	final_splatter.color = color
+	final_splatter.pixel_x = (dir == EAST ? 32 : (dir == WEST ? -32 : 0))
+	final_splatter.pixel_y = (dir == NORTH ? 32 : (dir == SOUTH ? -32 : 0))
 
 /// A special case for hitsplatters hitting windows, since those can actually be moved around, store it in the window and slap it in the vis_contents
 /obj/effect/decal/cleanable/blood/hitsplatter/greyscale/land_on_window(obj/structure/window/the_window)
@@ -553,7 +555,4 @@ GLOBAL_LIST_EMPTY(bloody_footprints_cache)
 	final_splatter.forceMove(the_window)
 	the_window.vis_contents += final_splatter
 	the_window.bloodied = TRUE
-	qdel(src)
-=======
 	expire()
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e

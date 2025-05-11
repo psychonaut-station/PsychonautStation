@@ -665,7 +665,7 @@
 	liked_foodtypes = STONE
 	disliked_foodtypes = NONE //you don't care for much else besides stone
 	toxic_foodtypes = NONE //you can eat fucking uranium
-<<<<<<< HEAD
+	languages_native = list(/datum/language/terrum)
 
 /obj/item/organ/tongue/arachnid
 	name = "arachnid tongue"
@@ -673,6 +673,4 @@
 	liked_foodtypes = GORE | MEAT | BUGS | GROSS
 	disliked_foodtypes = VEGETABLES | FRUIT
 	say_mod = "chitters"
-=======
-	languages_native = list(/datum/language/terrum)
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
+	languages_native = list(/datum/language/buzzwords)

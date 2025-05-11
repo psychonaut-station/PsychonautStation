@@ -22,22 +22,6 @@ export const BackgroundPage = () => {
     useState(employment_records);
   const [exploitsRecords, setExploitsRecords] = useState(exploit_records);
 
-  const [numberOfCharacterDesc, setNumberOfCharacterDesc] = useState(
-    character_desc?.length || 0,
-  );
-  const [numberOfMedicalRecords, setNumberOfMedicalRecords] = useState(
-    medical_records?.length || 0,
-  );
-  const [numberOfSecurityRecords, setNumberOfSecurityRecords] = useState(
-    employment_records?.length || 0,
-  );
-  const [numberOfEmploymentRecords, setNumberOfEmploymentRecords] = useState(
-    security_records?.length || 0,
-  );
-  const [numberOfExploitsRecords, setNumberOfExploitsRecords] = useState(
-    exploit_records?.length || 0,
-  );
-
   const serverData = useServerPrefs();
   if (!serverData) return;
 
@@ -52,14 +36,14 @@ export const BackgroundPage = () => {
                 as="span"
                 m={1}
                 color={
-                  numberOfCharacterDesc > 192
-                    ? numberOfCharacterDesc > 256
+                  characterDesc.length > 192
+                    ? characterDesc.length > 256
                       ? 'red'
                       : 'yellow'
                     : 'green'
                 }
               >
-                {numberOfCharacterDesc}/256
+                {characterDesc.length}/256
               </Box>
 
               <Button
@@ -87,14 +71,11 @@ export const BackgroundPage = () => {
             width="100%"
             height="100px"
             style={
-              numberOfCharacterDesc > 256
+              characterDesc.length > 256
                 ? { borderColor: '#D4282B' }
                 : undefined
             }
-            onChange={(value) => {
-              setCharacterDesc(value);
-              setNumberOfCharacterDesc(value.length);
-            }}
+            onChange={setCharacterDesc}
             value={characterDesc}
           />
         </Section>
@@ -111,14 +92,14 @@ export const BackgroundPage = () => {
                     as="span"
                     m={1}
                     color={
-                      numberOfMedicalRecords > 192
-                        ? numberOfMedicalRecords > 256
+                      medicalRecords.length > 192
+                        ? medicalRecords.length > 256
                           ? 'red'
                           : 'yellow'
                         : 'green'
                     }
                   >
-                    {numberOfMedicalRecords}/256
+                    {medicalRecords.length}/256
                   </Box>
                   <Button
                     icon="save"
@@ -145,14 +126,11 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfMedicalRecords > 256
+                  medicalRecords.length > 256
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(value) => {
-                  setMedicalRecords(value);
-                  setNumberOfMedicalRecords(value.length);
-                }}
+                onChange={setMedicalRecords}
                 value={medicalRecords}
               />
             </Section>
@@ -167,14 +145,14 @@ export const BackgroundPage = () => {
                     as="span"
                     m={1}
                     color={
-                      numberOfSecurityRecords > 192
-                        ? numberOfSecurityRecords > 256
+                      securityRecords.length > 192
+                        ? securityRecords.length > 256
                           ? 'red'
                           : 'yellow'
                         : 'green'
                     }
                   >
-                    {numberOfSecurityRecords}/256
+                    {securityRecords.length}/256
                   </Box>
                   <Button
                     icon="save"
@@ -201,14 +179,11 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfSecurityRecords > 256
+                  securityRecords.length > 256
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(value) => {
-                  setSecurityRecords(value);
-                  setNumberOfSecurityRecords(value.length);
-                }}
+                onChange={setSecurityRecords}
                 value={securityRecords}
               />
             </Section>
@@ -227,14 +202,14 @@ export const BackgroundPage = () => {
                     as="span"
                     m={1}
                     color={
-                      numberOfEmploymentRecords > 192
-                        ? numberOfEmploymentRecords > 256
+                      employmentRecords.length > 192
+                        ? employmentRecords.length > 256
                           ? 'red'
                           : 'yellow'
                         : 'green'
                     }
                   >
-                    {numberOfEmploymentRecords}/256
+                    {employmentRecords.length}/256
                   </Box>
                   <Button
                     icon="save"
@@ -261,14 +236,11 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfEmploymentRecords > 256
+                  employmentRecords.length > 256
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(value) => {
-                  setEmploymentRecords(value);
-                  setNumberOfEmploymentRecords(value.length);
-                }}
+                onChange={setEmploymentRecords}
                 value={employmentRecords}
               />
             </Section>
@@ -283,14 +255,14 @@ export const BackgroundPage = () => {
                     as="span"
                     m={1}
                     color={
-                      numberOfExploitsRecords > 192
-                        ? numberOfExploitsRecords > 256
+                      exploitsRecords.length > 192
+                        ? exploitsRecords.length > 256
                           ? 'red'
                           : 'yellow'
                         : 'green'
                     }
                   >
-                    {numberOfExploitsRecords}/256
+                    {exploitsRecords.length}/256
                   </Box>
                   <Button
                     icon="save"
@@ -317,15 +289,11 @@ export const BackgroundPage = () => {
                 width="100%"
                 height="100px"
                 style={
-                  numberOfExploitsRecords > 256
+                  exploitsRecords.length > 256
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(value) => {
-                  console.log(value);
-                  setExploitsRecords(value);
-                  setNumberOfExploitsRecords(value.length);
-                }}
+                onChange={setExploitsRecords}
                 value={exploitsRecords}
               />
             </Section>

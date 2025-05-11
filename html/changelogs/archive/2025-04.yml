@@ -584,8 +584,6 @@
   Goat, LePiromano:
   - qol: Photocopiers now have boards meaning you can build, destroy, and remake them.
       (If you're a mapper use the prebuilt version to prestock your photocopiers)
-  Holoo-1:
-  - balance: emp flashlight costs 4 -> 2 tc
   LT3:
   - bugfix: Fixed opening character preferences menu before subsystem is initialized
   Maximal08:

@@ -91,7 +91,7 @@ export const BackgroundPage = () => {
                 ? { borderColor: '#D4282B' }
                 : undefined
             }
-            onChange={(e, value) => setCharacterDesc(value)}
+            onChange={setCharacterDesc}
             onInput={(e, value) => setNumberOfCharacterDesc(value.length)}
             value={characterDesc}
           />
@@ -147,7 +147,7 @@ export const BackgroundPage = () => {
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(e, value) => setMedicalRecords(value)}
+                onChange={setMedicalRecords}
                 onInput={(e, value) => setNumberOfMedicalRecords(value.length)}
                 value={medicalRecords}
               />
@@ -201,7 +201,7 @@ export const BackgroundPage = () => {
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(e, value) => setSecurityRecords(value)}
+                onChange={setSecurityRecords}
                 onInput={(e, value) => setNumberOfSecurityRecords(value.length)}
                 value={securityRecords}
               />
@@ -259,7 +259,7 @@ export const BackgroundPage = () => {
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(e, value) => setEmploymentRecords(value)}
+                onChange={setEmploymentRecords}
                 onInput={(e, value) =>
                   setNumberOfEmploymentRecords(value.length)
                 }
@@ -315,7 +315,7 @@ export const BackgroundPage = () => {
                     ? { borderColor: '#D4282B' }
                     : undefined
                 }
-                onChange={(e, value) => setExploitsRecords(value)}
+                onChange={setExploitsRecords}
                 onInput={(e, value) => setNumberOfExploitsRecords(value.length)}
                 value={exploitsRecords}
               />

@@ -55,10 +55,6 @@ export class AudioPlayer {
     this.options = options;
     this.localVolume = volume;
 
-<<<<<<< HEAD
-    const audio = (this.element = new Audio(url));
-    audio.volume = this.muted ? 0 : this.volume * this.localVolume;
-=======
     const audio = new Audio(url);
     if (!audio) {
       logger.log('failed to create audio element');
@@ -66,8 +62,7 @@ export class AudioPlayer {
     }
     this.element = audio;
 
-    audio.volume = this.volume;
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
+    audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     audio.playbackRate = this.options.pitch || 1;
     audio.currentTime = this.options.start || 0;
 

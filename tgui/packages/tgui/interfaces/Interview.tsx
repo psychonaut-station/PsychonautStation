@@ -211,15 +211,9 @@ const QuestionArea = (props: Question) => {
       }
     >
       <p>{linkifyText(question)}</p>
-<<<<<<< HEAD
-      {((read_only || is_admin) && (
-        <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
-      )) || (
-=======
       {read_only || is_admin ? (
-        <BlockQuote>{response || 'No response.'}</BlockQuote>
+        <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
       ) : (
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
         <TextArea
           fluid
           height={10}

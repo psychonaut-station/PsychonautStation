@@ -577,17 +577,13 @@
 2025-04-19:
   Absolucy:
   - bugfix: Fixed FOV checks improperly handling diagonal directions.
-<<<<<<< HEAD
   Holoo-1:
   - balance: emp flashlight costs 4 -> 2 tc
-=======
   AyIong:
   - bugfix: Navigating to categories in preferences works again
   Goat, LePiromano:
   - qol: Photocopiers now have boards meaning you can build, destroy, and remake them.
       (If you're a mapper use the prebuilt version to prestock your photocopiers)
-  Holoo-1:
-  - balance: emp flashlight costs 4 -> 2 tc
   LT3:
   - bugfix: Fixed opening character preferences menu before subsystem is initialized
   Maximal08:
@@ -597,7 +593,6 @@
   - bugfix: Human skin suit no longer gives a useless action
   SmArtKar:
   - bugfix: Ash storms do damage again
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
   Thunder12345:
   - rscadd: Added support for modularly loaded shuttles.
   - rscadd: The Scrapheap Challenge emergency shuttle now comes in randomly generated
@@ -606,10 +601,8 @@
   - bugfix: shoes with the squeak component will no longer play a squeaking sound
       when you aren't actually walking (like in a wheelchair for instance)
 2025-04-20:
-<<<<<<< HEAD
   exdal:
   - bugfix: ready sayisi tekrardan gorunuyor
-=======
   Absolucy:
   - qol: MODlink scryers now alert the user if they try to call without a charged
       power cell.
@@ -876,4 +869,3 @@
       naturally. Donk spikes still maintain their high embed chance and inability
       to fall out naturally. Macroplastics launched straight into your body, as sponsored
       by the Donk Corporation.
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e

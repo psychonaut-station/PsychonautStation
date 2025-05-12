@@ -97,7 +97,6 @@ SUBSYSTEM_DEF(minor_mapping)
 
 	return shuffle(suitable)
 
-<<<<<<< HEAD
 /datum/controller/subsystem/minor_mapping/proc/place_crewrecords()
 	var/area/hoproom = GLOB.areas_by_type[/area/station/command/heads_quarters/hop]
 	if(isnull(hoproom)) //no hop room, what will he assist?
@@ -166,7 +165,4 @@ SUBSYSTEM_DEF(minor_mapping)
 		laptopdir = pick(GLOB.cardinals)
 	laptop.setDir(laptopdir)
 
-#undef PROB_MOUSE_SPAWN
-=======
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
 #undef PROB_SPIDER_REPLACEMENT

@@ -33,14 +33,7 @@
 		var/mob/mob_user = user
 		holder = mob_user.client
 
-<<<<<<< HEAD
 	lookup()
-=======
-	//Now give them a browse window so they can't miss whatever we told them
-	var/datum/browser/window = new /datum/browser(usr, "discordverification", "Discord Verification")
-	window.set_content("<div>[message]</div>")
-	window.open()
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
 
 /datum/verification_menu/proc/lookup(refresh = FALSE)
 	if(isnull(holder))

@@ -267,7 +267,7 @@
 /datum/storage/bag/garment
 	numerical_stacking = FALSE
 	max_total_storage = 200
-	max_slots = 15
+	max_slots = 20
 	insert_preposition = "in"
 
 /datum/storage/bag/garment/New(atom/parent, max_slots, max_specific_storage, max_total_storage)

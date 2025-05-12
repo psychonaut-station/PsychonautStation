@@ -85,10 +85,8 @@ GLOBAL_LIST_INIT(wound_severities_chronological, list(
 #define BIO_BLOODED (1<<4)
 /// Is connected by a joint - can suffer T1 bone blunt wounds (dislocation)
 #define BIO_JOINTED (1<<5)
-/// For species where blood is exotic
-#define BIO_EXOTIC_SPLATTER (1<<6)
 /// Robotic - can suffer all metal/wired wounds, such as: UNIMPLEMENTED PLEASE UPDATE ONCE SYNTH WOUNDS 9/5/2023 ~Niko
-#define BIO_ROBOTIC (BIO_METAL|BIO_WIRED|BIO_EXOTIC_SPLATTER)
+#define BIO_ROBOTIC (BIO_METAL|BIO_WIRED)
 /// Has flesh and bone - See BIO_BONE and BIO_FLESH
 #define BIO_FLESH_BONE (BIO_BONE|BIO_FLESH)
 /// Standard humanoid - can bleed and suffer all flesh/bone wounds, such as: T1-3 slash/pierce/burn/blunt, except dislocations. Think human heads/chests

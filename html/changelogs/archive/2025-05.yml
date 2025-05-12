@@ -1,10 +1,8 @@
-<<<<<<< HEAD
 2025-05-09:
   Nukkun, Rengan:
   - rscadd: "Ai ekranlar\u0131na Allied Mastercomputer ekran\u0131 eklendi."
   - bugfix: "AI eye'ye examine at\u0131nca lawlar\u0131 2 kez g\xF6stermesi d\xFC\
       zeltildi."
-=======
 2025-05-01:
   Ezel/Improvedname, JohnFulpWillard:
   - balance: Cult daggers boomerang back to non-cultists who throw it.
@@ -247,4 +245,3 @@
   necromanceranne:
   - bugfix: Caps how much eyeblur can be caused by things like projectiles.
   - bugfix: The tesla cannon now fires actually visible bolts.
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e

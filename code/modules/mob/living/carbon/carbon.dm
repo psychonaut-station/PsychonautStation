@@ -1430,19 +1430,9 @@
 /mob/living/carbon/proc/spray_blood(splatter_direction, splatter_strength = 3)
 	if(!isturf(loc))
 		return
-<<<<<<< HEAD
-	var/obj/effect/decal/cleanable/blood/hitsplatter/our_splatter
-	var/datum/reagent/bloodreagent = get_blood_id()
-	if(bloodreagent != /datum/reagent/blood)
-		our_splatter = new /obj/effect/decal/cleanable/blood/hitsplatter/greyscale(loc)
-		our_splatter.color = color_hex2color_matrix(bloodreagent.color)
-	else
-		our_splatter = new (loc)
-=======
 	if(dna.blood_type.no_bleed_overlays)
 		return
 	var/obj/effect/decal/cleanable/blood/hitsplatter/our_splatter = new(loc)
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
 	our_splatter.add_blood_DNA(GET_ATOM_BLOOD_DNA(src))
 	our_splatter.blood_dna_info = get_blood_dna_list()
 	our_splatter.color = get_blood_dna_color(our_splatter.blood_dna_info)

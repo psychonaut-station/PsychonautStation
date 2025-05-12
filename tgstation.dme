@@ -3939,11 +3939,8 @@
 #include "code\modules\client\preferences\scarred_eye.dm"
 #include "code\modules\client\preferences\screentips.dm"
 #include "code\modules\client\preferences\security_department.dm"
-<<<<<<< HEAD
 #include "code\modules\client\preferences\show_roundend_credits.dm"
-=======
 #include "code\modules\client\preferences\silicon_gender.dm"
->>>>>>> c2af205775a014f79240c9928e9aa0abee21958e
 #include "code\modules\client\preferences\skin_tone.dm"
 #include "code\modules\client\preferences\sounds.dm"
 #include "code\modules\client\preferences\species.dm"

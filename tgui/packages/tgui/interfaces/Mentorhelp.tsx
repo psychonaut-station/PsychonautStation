@@ -22,7 +22,7 @@ export const Mentorhelp = (props) => {
               height="100%"
               value={mhelpMessage}
               placeholder="Mentor help"
-              onChange={(e, value) => setMhelpMessage(value)}
+              onChange={setMhelpMessage}
             />
           </Stack.Item>
           <Stack.Item>

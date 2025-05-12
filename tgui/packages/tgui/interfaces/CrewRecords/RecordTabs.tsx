@@ -37,8 +37,9 @@ export const CrewRecordTabs = (props) => {
       <Stack.Item>
         <Input
           fluid
-          onInput={(_, value) => setSearch(value)}
           placeholder="Name/Job/DNA"
+          onChange={setSearch}
+          expensive
         />
       </Stack.Item>
       <Stack.Item grow>

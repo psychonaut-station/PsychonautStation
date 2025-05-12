@@ -1064,7 +1064,7 @@
 	return
 
 /mob/living/proc/makeTrail(turf/target_turf, turf/start, direction)
-	if(!has_gravity() || !isturf(start) || !blood_volume || get_blood_id() != /datum/reagent/blood)
+	if(!has_gravity() || !isturf(start) || !blood_volume)
 		return
 
 	var/trail_type = getTrail()

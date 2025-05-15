@@ -14,6 +14,15 @@ type AudioOptions = {
   end?: number;
 };
 
+function isProtectedError(error: ErrorEvent): boolean {
+  return (
+    typeof error === 'object' &&
+    error !== null &&
+    'isTrusted' in error &&
+    error.isTrusted
+  );
+}
+
 export class AudioPlayer {
   element: HTMLAudioElement | null;
   options: AudioOptions;
@@ -46,7 +55,13 @@ export class AudioPlayer {
     this.options = options;
     this.localVolume = volume;
 
-    const audio = (this.element = new Audio(url));
+    const audio = new Audio(url);
+    if (!audio) {
+      logger.log('failed to create audio element');
+      return;
+    }
+    this.element = audio;
+
     audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     audio.playbackRate = this.options.pitch || 1;
     audio.currentTime = this.options.start || 0;
@@ -59,7 +74,11 @@ export class AudioPlayer {
     });
 
     audio.addEventListener('error', (error) => {
-      logger.log('playback error', error);
+      if (isProtectedError(error)) {
+        Byond.sendMessage('audio/protected');
+      }
+      logger.log('playback error:', JSON.stringify(error));
+      this.stop();
     });
 
     if (this.options.end) {
@@ -74,7 +93,10 @@ export class AudioPlayer {
       });
     }
 
-    audio.play()?.catch((error) => logger.log('playback error', error));
+    audio.play()?.catch(() => {
+      // no error is passed here, it's sent to the event listener
+      logger.log('playback failed');
+    });
 
     this.onPlaySubscribers.forEach((subscriber) => subscriber());
   }
@@ -85,7 +107,7 @@ export class AudioPlayer {
     logger.log('stopping');
 
     this.element.pause();
-    this.element = null;
+    this.destroy();
 
     this.onStopSubscribers.forEach((subscriber) => subscriber());
   }

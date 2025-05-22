@@ -7,7 +7,7 @@
 #define ETHEREAL_APC_ALERT_DELAY (0.75 SECONDS)
 
 // IPCs:
-#define IPC_APC_POWER_GAIN (STANDARD_BATTERY_CHARGE)
+#define IPC_APC_POWER_GAIN (STANDARD_CELL_CHARGE)
 
 /obj/machinery/power/apc/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
@@ -113,10 +113,9 @@
 
 
 /// Special behavior for when an ipc interacts with an APC.
-/obj/machinery/power/apc/proc/ipc_interact(mob/living/user, click_parameters)
+/obj/machinery/power/apc/proc/ipc_interact(mob/living/user, list/modifiers)
 	if(!ishuman(user))
 		return
-	var/list/modifiers = params2list(click_parameters)
 	var/mob/living/carbon/human/ipc = user
 	var/obj/item/organ/stomach/maybe_stomach = ipc.get_organ_slot(ORGAN_SLOT_STOMACH)
 	var/obj/item/organ/maybe_protector = ipc.get_organ_slot(ORGAN_SLOT_VOLTPROTECT)

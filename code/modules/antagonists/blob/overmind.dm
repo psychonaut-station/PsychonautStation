@@ -376,6 +376,6 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		mind.add_antag_datum(/datum/antagonist/blob)
 
 /mob/eye/blob/get_mob_appearance()
-	if(!QDELETED(blob_core))
+	if(!isnull(blob_core))
 		return blob_core.appearance
 	return ..()

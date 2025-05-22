@@ -233,7 +233,7 @@
 		ai.relay_speech(message, speaker, message_language, raw_message, radio_freq, spans, message_mods)
 
 /mob/eye/camera/ai/get_mob_appearance()
-	if(!QDELETED(ai))
+	if(!isnull(ai))
 		return ai.appearance
 	return ..()
 

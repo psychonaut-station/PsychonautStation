@@ -45,7 +45,10 @@ SUBSYSTEM_DEF(credits)
 		var/datum/mind/antag_mind = weakref.resolve()
 		var/mob/living/living_mob = antag_mind?.current
 		if(!isnull(living_mob) && living_mob.stat != DEAD)
-			appearance.appearance = living_mob.appearance
+			if(isliving(living_mob) && !isbrain(living_mob))
+				appearance.copy_overlays(living_mob, TRUE)
+			else
+				appearance.appearance = living_mob.get_mob_appearance()
 			appearance.transform = matrix()
 			appearance.setDir(SOUTH)
 			var/bound_width = living_mob.bound_width || world.icon_size
@@ -534,7 +537,7 @@ SUBSYSTEM_DEF(credits)
 	if(processing_icons[WEAKREF(living_mob.mind)])
 		appearance = processing_icons[WEAKREF(living_mob.mind)]
 	else
-		appearance = new (living_mob.appearance)
+		appearance = new (living_mob.get_mob_appearance())
 		appearance.transform = matrix()
 		appearance.setDir(SOUTH)
 		appearance.maptext_width = 88

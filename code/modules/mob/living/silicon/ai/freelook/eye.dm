@@ -239,6 +239,11 @@
 	if(relay_speech && speaker && ai && !radio_freq && speaker != ai && GLOB.cameranet.checkCameraVis(speaker))
 		ai.relay_speech(message, speaker, message_language, raw_message, radio_freq, spans, message_mods)
 
+/mob/eye/camera/ai/get_mob_appearance()
+	if(!QDELETED(ai))
+		return ai.appearance
+	return ..()
+
 /obj/effect/overlay/ai_detect_hud
 	name = ""
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT

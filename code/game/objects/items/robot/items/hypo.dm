@@ -55,6 +55,7 @@
 		/datum/reagent/consumable/berryjuice, /datum/reagent/consumable/cherryjelly, /datum/reagent/consumable/coffee,\
 		/datum/reagent/consumable/cream, /datum/reagent/consumable/dr_gibb, /datum/reagent/consumable/grenadine,\
 		/datum/reagent/consumable/ice, /datum/reagent/consumable/lemon_lime, /datum/reagent/consumable/limejuice,\
+<<<<<<< HEAD
 		/datum/reagent/consumable/lemonjuice, /datum/reagent/consumable/menthol, /datum/reagent/consumable/nothing,\
 		/datum/reagent/consumable/milk, /datum/reagent/consumable/orangejuice, /datum/reagent/consumable/peachjuice,\
 		/datum/reagent/consumable/pineapplejuice, /datum/reagent/consumable/pwr_game, /datum/reagent/consumable/shamblers,\
@@ -69,6 +70,24 @@
 		/datum/reagent/consumable/ethanol/tequila, /datum/reagent/consumable/ethanol/triple_sec, /datum/reagent/consumable/ethanol/vermouth,\
 		/datum/reagent/consumable/ethanol/vodka, /datum/reagent/consumable/ethanol/whiskey, /datum/reagent/consumable/ethanol/wine,\
 		/datum/reagent/consumable/ethanol/raki\
+=======
+		/datum/reagent/consumable/lemonjuice, /datum/reagent/consumable/melon_soda, /datum/reagent/consumable/menthol,\
+		/datum/reagent/consumable/milk, /datum/reagent/consumable/nothing, /datum/reagent/consumable/orangejuice,\
+		/datum/reagent/consumable/peachjuice, /datum/reagent/consumable/pineapplejuice, /datum/reagent/consumable/pwr_game,\
+		/datum/reagent/consumable/shamblers, /datum/reagent/consumable/sodawater, /datum/reagent/consumable/sol_dry,\
+		/datum/reagent/consumable/soymilk, /datum/reagent/consumable/space_cola, /datum/reagent/consumable/spacemountainwind,\
+		/datum/reagent/consumable/space_up, /datum/reagent/consumable/tea, /datum/reagent/consumable/tomatojuice,\
+		/datum/reagent/consumable/tonic, /datum/reagent/consumable/vinegar, /datum/reagent/water,\
+		/datum/reagent/consumable/ethanol/absinthe, /datum/reagent/consumable/ethanol/ale, /datum/reagent/consumable/ethanol/applejack,\
+		/datum/reagent/consumable/ethanol/beer, /datum/reagent/consumable/ethanol/champagne, /datum/reagent/consumable/ethanol/coconut_rum,\
+		/datum/reagent/consumable/ethanol/cognac, /datum/reagent/consumable/ethanol/creme_de_coconut, /datum/reagent/consumable/ethanol/creme_de_cacao,\
+		/datum/reagent/consumable/ethanol/creme_de_menthe, /datum/reagent/consumable/ethanol/curacao, /datum/reagent/consumable/ethanol/gin,\
+		/datum/reagent/consumable/ethanol/hcider, /datum/reagent/consumable/ethanol/kahlua, /datum/reagent/consumable/ethanol/beer/maltliquor,\
+		/datum/reagent/consumable/ethanol/navy_rum, /datum/reagent/consumable/ethanol/rice_beer, /datum/reagent/consumable/ethanol/rum,\
+		/datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila, /datum/reagent/consumable/ethanol/triple_sec,\
+		/datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka, /datum/reagent/consumable/ethanol/whiskey,\
+		/datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/yuyake,\
+>>>>>>> a884c2d1d8b6c9a640eed7ec56b087711f8121e3
 	)
 #define EXPANDED_SERVICE_REAGENTS list(\
 	/datum/reagent/consumable/blackpepper,\

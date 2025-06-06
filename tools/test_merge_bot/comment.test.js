@@ -1,6 +1,7 @@
 import { strict as assert } from "assert";
 import { createComment } from "./comment.js";
 
+<<<<<<< HEAD
 const baseRounds = [
 	{
 		round_id: 1,
@@ -10,13 +11,28 @@ const baseRounds = [
 
 const baseComment = createComment(
 	baseRounds,
+=======
+const baseServers = {
+  bagil: [
+    {
+      round_id: 1,
+      datetime: "2020-01-01 00:00:00",
+      server: "bagil",
+      url: "https://tgstation13.org/round/1",
+    },
+  ],
+};
 
-	null
+const baseComment = createComment(
+  baseServers,
+>>>>>>> a884c2d1d8b6c9a640eed7ec56b087711f8121e3
+
+  null,
 );
 
 assert.equal(
-	baseComment,
-	`<!-- test_merge_bot: 1 -->
+  baseComment,
+  `<!-- test_merge_bot: 1 -->
 This pull request was test merged in 1 round(s).
 <details><summary>Round list</summary>
 
@@ -24,12 +40,13 @@ This pull request was test merged in 1 round(s).
 - 1 @ 2020-01-01 00:00:00
 
 </details>
-`
+`,
 );
 
 assert.equal(createComment(baseRounds, baseComment), null);
 
 assert.equal(
+<<<<<<< HEAD
 	createComment(
 		[
 			{
@@ -40,6 +57,22 @@ assert.equal(
 		baseComment
 	),
 	`<!-- test_merge_bot: 1, 2 -->
+=======
+  createComment(
+    {
+      bagil: [
+        {
+          round_id: 2,
+          datetime: "2020-01-01 01:00:00",
+          server: "bagil",
+          url: "https://tgstation13.org/round/2",
+        },
+      ],
+    },
+    baseComment,
+  ),
+  `<!-- test_merge_bot: 1, 2 -->
+>>>>>>> a884c2d1d8b6c9a640eed7ec56b087711f8121e3
 This pull request was test merged in 2 round(s).
 <details><summary>Round list</summary>
 
@@ -48,5 +81,5 @@ This pull request was test merged in 2 round(s).
 - 1 @ 2020-01-01 00:00:00
 
 </details>
-`
+`,
 );

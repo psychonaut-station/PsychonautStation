@@ -129,7 +129,7 @@
 		if(istype(id, /obj/item/card/id/advanced/chameleon))
 			id_gender ||= gender
 			id_species ||= dna.species.name
-			id_blood_type ||= dna.blood_type
+			id_blood_type ||= get_bloodtype()
 
 		if(istype(id, /obj/item/card/id/advanced))
 			var/obj/item/card/id/advanced/advancedID = id
@@ -343,7 +343,7 @@
 					target_record.citations += new_citation
 					new_citation.alert_owner(usr, src, target_record.name, "You have been fined [fine] credits for '[citation_name]'. Fines may be paid at security.")
 					investigate_log("New Citation: <strong>[citation_name]</strong> Fine: [fine] | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
-					SSblackbox.ReportCitation(REF(new_citation), human_user.ckey, human_user.real_name, target_record.name, citation_name, fine)
+					SSblackbox.ReportCitation(REF(new_citation), human_user.ckey, human_user.real_name, target_record.name, citation_name, null, fine)
 
 					return
 
@@ -356,6 +356,7 @@
 
 					target_record.crimes += new_crime
 					investigate_log("New Crime: <strong>[crime_name]</strong> | Added to [target_record.name] by [key_name(human_user)]", INVESTIGATE_RECORDS)
+					SSblackbox.ReportCitation(REF(new_crime), human_user.ckey, human_user.real_name, target_record.name, crime_name, null)
 					to_chat(human_user, span_notice("Successfully added a crime."))
 
 					return
@@ -595,8 +596,7 @@
 		return FALSE
 
 	if(gloves)
-		if(gloves.wash(clean_types))
-			update_worn_gloves()
+		gloves.wash(clean_types)
 	else if((clean_types & CLEAN_TYPE_BLOOD) && blood_in_hands > 0)
 		blood_in_hands = 0
 		update_worn_gloves()
@@ -624,13 +624,13 @@
 /mob/living/carbon/human/wash(clean_types)
 	. = ..()
 	if(!is_mouth_covered() && clean_lips())
-		. = TRUE
+		. |= COMPONENT_CLEANED
 
 	// Wash hands if exposed
 	if(!gloves && (clean_types & CLEAN_TYPE_BLOOD) && blood_in_hands > 0 && !(check_covered_slots() & ITEM_SLOT_GLOVES))
 		blood_in_hands = 0
 		update_worn_gloves()
-		. = TRUE
+		. |= COMPONENT_CLEANED
 
 	if(dna.species.wash(src))
 		. = TRUE
@@ -965,12 +965,6 @@
 	if(!force)
 		return FALSE
 	return ..()
-
-/mob/living/carbon/human/reagent_check(datum/reagent/chem, seconds_per_tick, times_fired)
-	. = ..()
-	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
-		return
-	return dna.species.handle_chemical(chem, src, seconds_per_tick, times_fired)
 
 /mob/living/carbon/human/updatehealth()
 	. = ..()

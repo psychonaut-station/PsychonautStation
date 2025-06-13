@@ -140,6 +140,7 @@
 
 /datum/status_effect/slime_clone/on_apply()
 	var/typepath = owner.type
+<<<<<<< HEAD
 	clone = new typepath(owner.loc)
 	var/mob/living/carbon/O = owner
 	var/mob/living/carbon/C = clone
@@ -148,6 +149,15 @@
 		C.update_name_tag()
 		O.dna.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
+=======
+	clone = new typepath(owner.drop_location())
+	if(iscarbon(owner) && iscarbon(clone))
+		var/mob/living/carbon/carbon_owner = owner
+		var/mob/living/carbon/carbon_clone = clone
+		carbon_clone.real_name = carbon_owner.real_name
+		carbon_owner.dna.copy_dna(carbon_clone.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
+		carbon_clone.updateappearance(mutcolor_update = TRUE)
+>>>>>>> 715f44e3e2e122b7750ec7bd128ef370a9619646
 	if(owner.mind)
 		originalmind = owner.mind
 		owner.mind.transfer_to(clone)
@@ -750,6 +760,7 @@
 
 /datum/status_effect/stabilized/cerulean/on_apply()
 	var/typepath = owner.type
+<<<<<<< HEAD
 	clone = new typepath(owner.loc)
 	var/mob/living/carbon/O = owner
 	var/mob/living/carbon/C = clone
@@ -758,6 +769,15 @@
 		C.update_name_tag()
 		O.dna.transfer_identity(C)
 		C.updateappearance(mutcolor_update=1)
+=======
+	clone = new typepath(owner.drop_location())
+	if(iscarbon(owner) && iscarbon(clone))
+		var/mob/living/carbon/carbon_owner = owner
+		var/mob/living/carbon/carbon_clone = clone
+		carbon_clone.real_name = carbon_owner.real_name
+		carbon_owner.dna.copy_dna(carbon_clone.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
+		carbon_clone.updateappearance(mutcolor_update = TRUE)
+>>>>>>> 715f44e3e2e122b7750ec7bd128ef370a9619646
 	return ..()
 
 /datum/status_effect/stabilized/cerulean/tick(seconds_between_ticks)
@@ -820,7 +840,7 @@
 		var/mob/living/carbon/human/H = owner
 		originalDNA = new H.dna.type
 		originalname = H.real_name
-		H.dna.copy_dna(originalDNA)
+		H.dna.copy_dna(originalDNA, COPY_DNA_SE|COPY_DNA_SPECIES)
 		randomize_human(H)
 	return ..()
 
@@ -834,11 +854,19 @@
 /datum/status_effect/stabilized/green/on_remove()
 	to_chat(owner, span_notice("You feel more like yourself."))
 	if(ishuman(owner))
+<<<<<<< HEAD
 		var/mob/living/carbon/human/H = owner
 		originalDNA.transfer_identity(H)
 		H.real_name = originalname
 		H.update_name_tag()
 		H.updateappearance(mutcolor_update=1)
+=======
+		var/mob/living/carbon/human/human = owner
+		originalDNA.copy_dna(human.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
+		human.real_name = originalname
+		human.updateappearance(mutcolor_update=1)
+	originalDNA = null
+>>>>>>> 715f44e3e2e122b7750ec7bd128ef370a9619646
 
 /datum/status_effect/brokenpeace
 	id = "brokenpeace"

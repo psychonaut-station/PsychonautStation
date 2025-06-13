@@ -22,11 +22,15 @@
 		"Aynen"
 	],
 
+<<<<<<< HEAD
 	"greetings": [
 		"Selam ",
 		"Selam, ",
 		"Bekle, "
 	],
+=======
+	"greetings": ["", "Hello ", "Hey, ", "Hi ", "It's ", "Wait, "],
+>>>>>>> 715f44e3e2e122b7750ec7bd128ef370a9619646
 
 	"getout": [
 		"@pick(add_name)siktir git",
@@ -49,11 +53,7 @@
 		"Neydi lan o?"
 	],
 
-	"add_name": [
-		"",
-		"%TARGETNAME% ",
-		"%TARGETNAME%, "
-	],
+	"add_name": ["", "%TARGETNAME% ", "%TARGETNAME%, "],
 
 	"doubt": [
 		"@pick(add_name)bekle",
@@ -132,7 +132,7 @@
 		"intihar etti"
 	],
 
-	"contraband" : [
+	"contraband": [
 		"a bomb",
 		"a syndibomb",
 		"a ttv",
@@ -288,5 +288,4 @@
 		"Madenciler robotiği dövüyor!!",
 		"RD odasında Ninja var"
 	]
-
 }

@@ -161,6 +161,7 @@ window "info_and_buttons"
 		splitter = 2
 		show-splitter = false
 
+<<<<<<< HEAD
 window "infobuttons"
 	elem "infobuttons"
 		type = MAIN
@@ -234,6 +235,8 @@ window "infobuttons"
 		text = "Fullscreen"
 		command = "fullscreen"
 
+=======
+>>>>>>> 715f44e3e2e122b7750ec7bd128ef370a9619646
 window "infowindow"
 	elem "infowindow"
 		type = MAIN

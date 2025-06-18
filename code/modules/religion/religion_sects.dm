@@ -533,9 +533,9 @@
 	quote = "An undead army is a must have!"
 	tgui_icon = "skull"
 	alignment = ALIGNMENT_EVIL
-	max_favor = 10000
+	max_favor = 1500
 	desired_items = list(/obj/item/organ/)
-	rites_list = list(/datum/religion_rites/raise_dead, /datum/religion_rites/living_sacrifice, /datum/religion_rites/raise_undead)
+	rites_list = list(/datum/religion_rites/living_sacrifice, /datum/religion_rites/raise_undead)
 	altar_icon_state = "convertaltar_necro"
 
 //Necro bibles don't heal or do anything special apart from the standard holy water blessings
@@ -545,8 +545,8 @@
 /datum/religion_sect/necro_sect/on_sacrifice(obj/item/N, mob/living/L)
 	if(!istype(N, /obj/item/organ))
 		return
-	adjust_favor(10, L)
-	to_chat(L, "<span class='notice'>You offer [N] to [GLOB.deity], pleasing them and gaining 10 favor in the process.</span>")
+	adjust_favor(30, L)
+	to_chat(L, "<span class='notice'>You offer [N] to [GLOB.deity], pleasing them and gaining 30 favor in the process.</span>")
 	qdel(N)
 	return TRUE
 

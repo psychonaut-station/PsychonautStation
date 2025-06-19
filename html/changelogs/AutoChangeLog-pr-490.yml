@@ -1,4 +1,0 @@
-author: "Rengan"
-delete-after: True
-changes:
-  - bugfix: "Bir noktada 2 bilgisayar varken 2 bilgisayarın birleşme overlayı düzeltildi."

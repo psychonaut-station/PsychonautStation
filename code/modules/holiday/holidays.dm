@@ -398,6 +398,23 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/bee/getStationPrefix()
 	return pick("Arı","Bal","Kovan","Afrikalılaştırılmış","Ballı","Vızz")
 
+/datum/holiday/goth
+	name = "Goth Day"
+	begin_day = 22
+	begin_month = MAY
+	holiday_mail = list(
+		/obj/item/lipstick,
+		/obj/item/lipstick/black,
+		/obj/item/clothing/suit/costume/gothcoat,
+	)
+	holiday_colors = list(
+		COLOR_WHITE,
+		COLOR_BLACK,
+	)
+
+/datum/holiday/goth/getStationPrefix()
+	return pick("Goth", "Sanguine", "Tenebris", "Lacrimosa", "Umbra", "Noctis")
+
 // JUNE
 
 /// Garbage DAYYYYY

@@ -11,6 +11,7 @@
 		log_silicon("\A [name] was created at [loc_name(src)].")
 		message_admins("\A [name] was created at [ADMIN_VERBOSEJMP(src)].")
 
+<<<<<<< HEAD
 /obj/machinery/computer/upload/attackby(obj/item/O, mob/user, list/modifiers)
 	if (istype(O, /obj/item/multitool/ai_detect))
 		to_chat(user, span_notice("Multitool displays [GLOB.upload_key] on it's screen."))
@@ -21,6 +22,10 @@
 		if (!GLOB.upload_key)
 			GLOB.upload_key = random_code(4) // just incase
 
+=======
+/obj/machinery/computer/upload/attackby(obj/item/O, mob/user, list/modifiers, list/attack_modifiers)
+	if(istype(O, /obj/item/ai_module))
+>>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 		var/obj/item/ai_module/M = O
 		if(machine_stat & (NOPOWER|BROKEN|MAINT))
 			return

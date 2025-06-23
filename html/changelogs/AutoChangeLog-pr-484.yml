@@ -1,0 +1,5 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - balance: "Hızlandırılmış parçacıkların gücü arttırıldı."
+  - balance: "Smin oluşturduğu singularity artık daha çok elektrik üretiyor."

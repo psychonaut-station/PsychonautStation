@@ -1,0 +1,6 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - bugfix: "Roundend credits'de antag iconları fixlendi"
+  - bugfix: "Roundend credits'de ölüler listesinde kimsenin gözükmemesi düzeltildi."
+  - spellcheck: "Roundend credits'de bazı yazılar düzeltildi."

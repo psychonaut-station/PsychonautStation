@@ -225,8 +225,6 @@
 	charger.balloon_alert(robot, "restock process complete")
 	charger.sendmats = FALSE
 
-
-
 /obj/item/robot_model/proc/get_or_create_estorage(storage_type)
 	return (locate(storage_type) in storages) || new storage_type(src)
 
@@ -241,13 +239,9 @@
 /obj/item/robot_model/proc/transform_to(new_config_type, forced = FALSE, transform = TRUE)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
-<<<<<<< HEAD
-	new_model.robot = cyborg
 	if(!forced)
 		cyborg.icon = 'icons/mob/silicon/robots.dmi'
 		cyborg.icon_state = "robot"
-=======
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return

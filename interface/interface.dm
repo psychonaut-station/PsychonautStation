@@ -25,21 +25,11 @@
 	set name = "patreon"
 	set desc = "Destek ol"
 	set hidden = TRUE
-<<<<<<< HEAD
 	var/weburl = CONFIG_GET(string/patreonurl)
-	if(weburl)
-		src << link(weburl)
-	else
-		to_chat(src, span_danger("The website URL is not set in the server configuration."))
-	return
-=======
-
-	var/forumurl = CONFIG_GET(string/forumurl)
-	if(!forumurl)
+	if(!weburl)
 		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
 		return
-	DIRECT_OUTPUT(src, link(forumurl))
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
+	DIRECT_OUTPUT(src, link(weburl))
 
 /client/verb/rules()
 	set name = "rules"
@@ -47,13 +37,7 @@
 	set hidden = TRUE
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
-<<<<<<< HEAD
-	if(rulesurl)
-		src << link(rulesurl)
-	else
-=======
 	if(!rulesurl)
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 		to_chat(src, span_danger("The rules URL is not set in the server configuration."))
 		return
 	DIRECT_OUTPUT(src, link(rulesurl))
@@ -64,26 +48,15 @@
 	set hidden = TRUE
 
 	var/githuburl = CONFIG_GET(string/githuburl)
-<<<<<<< HEAD
-	if(githuburl)
-		src << link(githuburl)
-	else
-=======
 	if(!githuburl)
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))
 		return
 	DIRECT_OUTPUT(src, link(githuburl))
 
 /client/verb/reportissue()
 	set name = "report-issue"
-<<<<<<< HEAD
 	set desc = "Hata bildir"
-	set hidden = TRUE
-=======
-	set desc = "Report an issue"
 
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)
 		to_chat(src, span_danger("The Github URL is not set in the server configuration."))

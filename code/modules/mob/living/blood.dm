@@ -447,28 +447,6 @@
 		matches |= (blood_type.blood_flags & blood_flags)
 	return matches
 
-/mob/proc/get_exotic_blood_drop()
-	return
-
-/mob/proc/get_exotic_blood_splatter()
-	return
-
-/mob/living/carbon/human/get_exotic_blood_drop()
-	if(!dna.species.exotic_blood || HAS_TRAIT(src, TRAIT_HUSK))
-		return
-
-	switch (dna.species.exotic_blood)
-		if (/datum/reagent/fuel/oil)
-			return /obj/effect/decal/cleanable/oil
-
-/mob/living/carbon/human/get_exotic_blood_splatter()
-	if(!dna.species.exotic_blood || HAS_TRAIT(src, TRAIT_HUSK))
-		return
-
-	switch (dna.species.exotic_blood)
-		if (/datum/reagent/fuel/oil)
-			return /obj/effect/decal/cleanable/oil/streak
-
 /**
  * Returns TRUE if src is compatible with donor's blood, otherwise FALSE.
  * * donor: Mob that is donating blood.

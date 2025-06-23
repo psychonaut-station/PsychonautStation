@@ -1,5 +1,5 @@
 # Psychonaut Station
- 
+
 [![Build Status](https://github.com/psychonaut-station/PsychonautStation/workflows/CI%20Suite/badge.svg)](https://github.com/psychonaut-station/PsychonautStation/actions?query=workflow%3A%22CI+Suite%22)
 [![Percentage of issues still open](https://isitmaintained.com/badge/open/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Percentage of issues still open")
 [![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Average time to resolve an issue")
@@ -7,35 +7,19 @@
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-<<<<<<< HEAD
-| Website                    | Link                                           |
-|----------------------------|------------------------------------------------|
-| Website                    | [https://tr.ss13.org](https://tr.ss13.org)          |
-| Code                       | [https://github.com/psychonaut-station/PsychonautStation](https://github.com/psychonaut-station/PsychonautStation)    |
-| Wiki                       | [https://wiki.ss13.org/Anasayfa](https://wiki.ss13.org/Anasayfa)   |
-| Codedocs                   | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)       |
-| Psychonaut Station Discord | [https://tr.ss13.org/discord](https://tr.ss13.org/discord) |
-| Coderbus Discord           | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)               |
-=======
-| Website             | Link                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| Website             | [https://tgstation13.org](https://tgstation13.org)                                                   |
-| Code                | [https://github.com/tgstation/tgstation](https://github.com/tgstation/tgstation)                     |
-| Wiki                | [https://tgstation13.org/wiki/Main_Page](https://tgstation13.org/wiki/Main_Page)                     |
-| Codedocs            | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)                               |
-| /tg/station Discord | [https://tgstation13.org/phpBB/viewforum.php?f=60](https://tgstation13.org/phpBB/viewforum.php?f=60) |
-| Coderbus Discord    | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                             |
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
+| Website                    | Link                                                                                                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Website                    | [https://tr.ss13.org](https://tr.ss13.org)                                                                         |
+| Code                       | [https://github.com/psychonaut-station/PsychonautStation](https://github.com/psychonaut-station/PsychonautStation) |
+| Wiki                       | [https://wiki.ss13.org/Anasayfa](https://wiki.ss13.org/Anasayfa)                                                   |
+| Codedocs                   | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)                                             |
+| Psychonaut Station Discord | [https://tr.ss13.org/discord](https://tr.ss13.org/discord)                                                         |
+| Coderbus Discord           | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                           |
 
 This is the codebase for the Psychonaut Station flavoured fork of /tg/station which is another fork of SpaceStation 13.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
 
-<<<<<<< HEAD
-=======
-_All github inquiries (such as moderation actions) may be handled via the /tg/station discord [#coding-general](https://discord.com/channels/326822144233439242/326831214667235328). Simply ping the `@Maintainer` role, following the guide on asking questions located in the channel description, with your issue!_
-
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 ## DOWNLOADING
 
 [Downloading](.github/guides/DOWNLOADING.md)

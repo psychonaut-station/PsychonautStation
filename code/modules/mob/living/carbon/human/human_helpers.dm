@@ -271,7 +271,7 @@
 	var/card_lines = splittext(sanitize_text(cards_string), ";")
 	if(length(card_lines) > 0)
 		var/obj/item/storage/card_binder/binder = new (get_turf(src))
-		var/where = equip_in_one_of_slots(binder, list(LOCATION_BACKPACK = ITEM_SLOT_BACKPACK, LOCATION_HANDS = ITEM_SLOT_HANDS), qdel_on_fail = FALSE, indirect_action = TRUE)
+		var/where = equip_in_one_of_slots(binder, list(LOCATION_BACKPACK = ITEM_SLOT_BACK, LOCATION_HANDS = ITEM_SLOT_HANDS), qdel_on_fail = FALSE, indirect_action = TRUE)
 
 		if(where == LOCATION_BACKPACK && back)
 			back.atom_storage.show_contents(src)

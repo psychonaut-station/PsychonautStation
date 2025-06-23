@@ -166,7 +166,6 @@
 	M.toggle_move_intent()
 	return TRUE
 
-<<<<<<< HEAD
 /datum/keybinding/living/face_cursor
 	hotkey_keys = list("Unbound")
 	name = "face_cursor"
@@ -187,7 +186,7 @@
 		return
 	var/mob/M = user.mob
 	M.face_mouse = FALSE
-=======
+
 /datum/keybinding/living/toggle_throw_mode
 	hotkey_keys = list("R", "Southwest") // END
 	name = "toggle_throw_mode"
@@ -249,4 +248,3 @@
 	if(!HAS_TRAIT(living_user, TRAIT_CAN_HOLD_ITEMS))
 		return
 	living_user.give()
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592

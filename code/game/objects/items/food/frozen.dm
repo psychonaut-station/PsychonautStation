@@ -454,7 +454,7 @@
 	overlay_state = "meatsicle"
 	foodtypes = RAW | MEAT | SUGAR
 	crafting_complexity = FOOD_COMPLEXITY_4
-<<<<<<< HEAD
+	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
 
 /obj/item/food/popsicle/panda
 	name = "panda ice cream"
@@ -470,6 +470,3 @@
 	overlay_state = "panda"
 	foodtypes = DAIRY|SUGAR|JUNKFOOD
 	crafting_complexity = FOOD_COMPLEXITY_3
-=======
-	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592

@@ -598,17 +598,15 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	else
 		power = closest_atom.zap_act(power, zap_flags)
 
-<<<<<<< HEAD
 	if(callback)
 		callback.Invoke(closest_atom)
-=======
+
 	// Electrolysis.
 	var/turf/target_turf = get_turf(closest_atom)
 	if(target_turf?.return_air())
 		var/datum/gas_mixture/air_mixture = target_turf.return_air()
 		air_mixture.electrolyze(working_power = power / 200)
 		target_turf.air_update_turf()
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 
 	if(prob(20))//I know I know
 		var/list/shocked_copy = shocked_targets.Copy()

@@ -22,13 +22,12 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	meat = null
-	exotic_blood = /datum/reagent/fuel/oil
 	exotic_bloodtype = BLOOD_TYPE_OIL
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
 		/obj/item/organ/voltage_protector,
-		/obj/item/organ/cyberimp/arm/power_cord
+		/obj/item/organ/cyberimp/arm/toolkit/power_cord
 	)
 	mutanteyes = /obj/item/organ/eyes/robotic/basic
 	mutantears = /obj/item/organ/ears/cybernetic
@@ -47,7 +46,6 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
-	gibspawner_type = /obj/effect/gibspawner/robot/android
 	allow_numbers_in_name = TRUE
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
@@ -203,7 +201,7 @@
 		return
 	owner.apply_damages(brain = 10)
 
-/obj/item/organ/cyberimp/arm/power_cord
+/obj/item/organ/cyberimp/arm/toolkit/power_cord
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
 	items_to_create = list(/obj/item/apc_powercord)

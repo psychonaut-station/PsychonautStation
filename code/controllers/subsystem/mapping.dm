@@ -354,7 +354,6 @@ Used by the AI doomsday and the self-destruct nuke.
 	else
 		GLOB.arcade_prize_pool += /obj/item/stack/tile/fakespace/loaded
 
-
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	initialized = SSmapping.initialized

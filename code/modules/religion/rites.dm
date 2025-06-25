@@ -10,8 +10,10 @@
 	/// message when you invoke
 	var/invoke_msg
 	var/favor_cost = 0
-	/// does the altar auto-delete the rite
-	var/auto_delete = TRUE
+
+	///Rite flags we use mostly to know when it should be deleted.
+	// RITE_AUTO_DELETE | RITE_ALLOW_MULTIPLE_PERFORMS | RITE_ONE_TIME_USE
+	var/rite_flags = RITE_AUTO_DELETE
 
 /datum/religion_rites/New()
 	. = ..()
@@ -60,9 +62,15 @@
 ///Does the thing if the rite was successfully performed. return value denotes that the effect successfully (IE a harm rite does harm)
 /datum/religion_rites/proc/invoke_effect(mob/living/user, atom/religious_tool)
 	SHOULD_CALL_PARENT(TRUE)
-	GLOB.religious_sect.on_riteuse(user,religious_tool)
+	GLOB.religious_sect.on_riteuse(user, religious_tool)
 	return TRUE
 
+///Called if invoke effect returns TRUE, for effects meant to occur only if the rite passes.
+/datum/religion_rites/proc/post_invoke_effects(mob/living/user, atom/religious_tool)
+	SHOULD_CALL_PARENT(TRUE)
+	if(!(rite_flags & RITE_ONE_TIME_USE))
+		return
+	GLOB.religious_sect.rites_list.Remove(src.type)
 
 /**** Mechanical God ****/
 
@@ -119,8 +127,10 @@
 	name = "Receive Blessing"
 	desc = "Receive a blessing from the machine god to further your ascension."
 	ritual_length = 5 SECONDS
-	ritual_invocations =list( "Let your will power our forges.",
-							"...Help us in our great conquest!")
+	ritual_invocations = list(
+		"Let your will power our forges.",
+		"...Help us in our great conquest!",
+	)
 	invoke_msg = "The end of flesh is near!"
 	favor_cost = 2000
 
@@ -507,7 +517,7 @@
 		if(!movable_reltool.can_buckle) //yes, if you have somehow managed to have someone buckled to something that now cannot buckle, we will still let you perform the rite!
 			to_chat(user, span_warning("This rite requires a religious device that individuals can be buckled to."))
 			return FALSE
-		if(isskeleton(user))
+		if(iszombie(user))
 			to_chat(user, span_warning("You've already converted yourself. To convert others, they must be buckled to [movable_reltool]."))
 			return FALSE
 		to_chat(user, span_warning("You're going to convert yourself with this ritual."))
@@ -528,7 +538,7 @@
 				break
 	if(!rite_target)
 		return FALSE
-	rite_target.set_species(/datum/species/skeleton)
+	rite_target.set_species(/datum/species/zombie)
 	rite_target.visible_message(span_notice("[rite_target] has been converted by the rite of [name]!"))
 	return TRUE
 
@@ -635,7 +645,7 @@
 		to_chat(user, "<span class='warning'>The sacrifice is no longer alive, it needs to be alive until the end of the rite!</span>")
 		chosen_sacrifice = null
 		return FALSE
-	var/favor_gained = 200 + round(chosen_sacrifice.health * 2)
+	var/favor_gained = round(chosen_sacrifice.health * 2)
 	GLOB.religious_sect?.adjust_favor(favor_gained, user)
 	new /obj/effect/temp_visual/cult/blood/out(altar_turf)
 	to_chat(user, "<span class='notice'>[GLOB.deity] absorbs [chosen_sacrifice], leaving blood and gore in its place. [GLOB.deity] rewards you with [favor_gained] favor.</span>")

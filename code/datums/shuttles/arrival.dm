@@ -38,6 +38,10 @@
 	suffix = "theia"
 	name = "arrival shuttle (Theia)"
 
+/datum/map_template/shuttle/arrival/catwalk
+	suffix = "catwalk"
+	name = "arrival shuttle (Catwalk)"
+
 /datum/map_template/shuttle/arrival/nebula
 	suffix = "nebula"
 	name = "arrival shuttle (Nebula)"

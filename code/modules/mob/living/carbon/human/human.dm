@@ -653,6 +653,9 @@
 		update_worn_gloves()
 		. = TRUE
 
+	if(dna.species.wash(src))
+		. = TRUE
+
 //Turns a mob black, flashes a skeleton overlay
 //Just like a cartoon!
 /mob/living/carbon/human/proc/electrocution_animation(anim_duration)

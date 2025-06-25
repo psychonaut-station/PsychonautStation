@@ -2076,3 +2076,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return HUMAN_HEIGHT_TALLEST
 
 	return null
+
+/datum/species/proc/wash(mob/living/carbon/human/H)
+	return FALSE

@@ -134,7 +134,6 @@
 	if(!isprojectile(mover) && !mover.throwing && (passthroughable & border_dir))
 		return TRUE
 
-
 #undef PIXEL_SHIFTING
 #undef SHIFTING_PARENT
 #undef SHIFTING_ITEMS

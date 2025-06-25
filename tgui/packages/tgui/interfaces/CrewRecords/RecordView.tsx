@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Box,
   Button,
@@ -39,6 +40,8 @@ export const CrewRecordView = (props) => {
     exploit_records,
   } = foundRecord;
 
+  const [isValid, setIsValid] = useState(true);
+
   const minor_disabilities_array = getQuirkStrings(minor_disabilities);
   const major_disabilities_array = getQuirkStrings(major_disabilities);
   const quirk_notes_array = getQuirkStrings(quirk_notes);
@@ -78,13 +81,15 @@ export const CrewRecordView = (props) => {
               <RestrictedInput
                 minValue={min_age}
                 maxValue={max_age}
-                onEnter={(event, value) =>
+                onEnter={(value) =>
+                  isValid &&
                   act('edit_field', {
+                    crew_ref: crew_ref,
                     field: 'age',
-                    ref: crew_ref,
                     value: value,
                   })
                 }
+                onValidationChange={setIsValid}
                 value={age}
               />
             </LabeledList.Item>

@@ -51,6 +51,7 @@
 	if(client)
 		INVOKE_ASYNC(src, PROC_REF(apply_pref_name), /datum/preference/name/ai, client)
 		INVOKE_ASYNC(src, PROC_REF(apply_pref_hologram_display), client)
+		set_gender(client)
 
 	INVOKE_ASYNC(src, PROC_REF(set_core_display_icon))
 
@@ -157,9 +158,14 @@
 		C = client
 	if(!input && !C?.prefs?.read_preference(/datum/preference/choiced/ai_core_display))
 		icon_state = initial(icon_state)
+		icon = initial(icon)
 	else
 		var/preferred_icon = input ? input : C.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 		icon_state = resolve_ai_icon(preferred_icon)
+		if(GLOB.ai_core_display_screen_icons.Find(preferred_icon))
+			icon = GLOB.ai_core_display_screen_icons[preferred_icon]
+		else
+			icon = initial(icon)
 
 /// Apply an AI's hologram preference
 /mob/living/silicon/ai/proc/apply_pref_hologram_display(client/player_client)
@@ -204,6 +210,9 @@
 		if(option == "Portrait")
 			iconstates[option] = image(icon = src.icon, icon_state = "ai-portrait")
 			continue
+		if(GLOB.ai_core_display_screen_icons.Find(option))
+			iconstates[option] = image(icon = GLOB.ai_core_display_screen_icons[option], icon_state = resolve_ai_icon_sync(option))
+			continue
 		iconstates[option] = image(icon = src.icon, icon_state = resolve_ai_icon(option))
 
 	view_core()
@@ -234,8 +243,13 @@
 		else if(!connected_robot.cell || connected_robot.cell.charge <= 0)
 			robot_status = "DEPOWERED"
 		//Name, Health, Battery, Model, Area, and Status! Everything an AI wants to know about its borgies!
-		. += "[connected_robot.name] | S.Integrity: [connected_robot.health]% | Cell: [connected_robot.cell ? "[display_energy(connected_robot.cell.charge)]/[display_energy(connected_robot.cell.maxcharge)]" : "Empty"] | \
-		Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | Status: [robot_status]"
+		. += list(list("[connected_robot.name]: ",
+			"S.Integrity: [connected_robot.health]% | \
+			Cell: [connected_robot.cell ? "[display_energy(connected_robot.cell.charge)]/[display_energy(connected_robot.cell.maxcharge)]" : "Empty"] | \
+			Model: [connected_robot.designation] | Loc: [get_area_name(connected_robot, TRUE)] | \
+			Status: [robot_status]",
+			"src=[REF(src)];track_cyborg=[text_ref(connected_robot)]",
+		))
 	. += "AI shell beacons detected: [LAZYLEN(GLOB.available_ai_shells)]" //Count of total AI shells
 
 /mob/living/silicon/ai/proc/ai_call_shuttle()
@@ -368,6 +382,7 @@
 	the_mmi.brainmob.name = src.real_name
 	the_mmi.brainmob.real_name = src.real_name
 	the_mmi.brainmob.container = the_mmi
+	the_mmi.brainmob.gender = src.gender
 
 	var/has_suicided_trait = HAS_TRAIT(src, TRAIT_SUICIDED)
 	the_mmi.brainmob.set_suicide(has_suicided_trait)
@@ -389,6 +404,12 @@
 	..()
 	if(usr != src)
 		return
+
+	if(href_list["track_cyborg"])
+		var/mob/living/silicon/robot/cyborg = locate(href_list["track_cyborg"]) in connected_robots
+		if(!cyborg)
+			return
+		ai_tracking_tool.set_tracked_mob(cyborg)
 
 	if(href_list["emergencyAPC"]) //This check comes before incapacitated because the only time it would be useful is when we have no power.
 		if(!apc_override)

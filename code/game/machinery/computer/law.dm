@@ -11,7 +11,7 @@
 		log_silicon("\A [name] was created at [loc_name(src)].")
 		message_admins("\A [name] was created at [ADMIN_VERBOSEJMP(src)].")
 
-/obj/machinery/computer/upload/attackby(obj/item/O, mob/user, params)
+/obj/machinery/computer/upload/attackby(obj/item/O, mob/user, list/modifiers)
 	if (istype(O, /obj/item/multitool/ai_detect))
 		to_chat(user, span_notice("Multitool displays [GLOB.upload_key] on it's screen."))
 		for(var/mob/hearing_mob in get_hearers_in_view(3, user))

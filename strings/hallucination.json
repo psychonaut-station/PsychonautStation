@@ -22,15 +22,7 @@
 		"Aynen"
 	],
 
-<<<<<<< HEAD
-	"greetings": [
-		"Selam ",
-		"Selam, ",
-		"Bekle, "
-	],
-=======
-	"greetings": ["", "Hello ", "Hey, ", "Hi ", "It's ", "Wait, "],
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
+	"greetings": ["Selam ", "Selam, ", "Bekle, "],
 
 	"getout": [
 		"@pick(add_name)siktir git",
@@ -48,19 +40,11 @@
 		"khhhhh"
 	],
 
-	"didyouhearthat": [
-		"Sesi duydun mu?",
-		"Neydi lan o?"
-	],
+	"didyouhearthat": ["Sesi duydun mu?", "Neydi lan o?"],
 
 	"add_name": ["", "%TARGETNAME% ", "%TARGETNAME%, "],
 
-	"doubt": [
-		"@pick(add_name)bekle",
-		"Şey...",
-		"Ne?",
-		"Neden?"
-	],
+	"doubt": ["@pick(add_name)bekle", "Şey...", "Ne?", "Neden?"],
 
 	"aggressive": [
 		"@pick(add_name)orospu evladı mısın",

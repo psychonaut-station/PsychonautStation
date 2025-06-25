@@ -240,9 +240,6 @@
   necromanceranne:
   - bugfix: Caps how much eyeblur can be caused by things like projectiles.
   - bugfix: The tesla cannon now fires actually visible bolts.
-<<<<<<< HEAD
-2025-05-16:
-=======
 2025-05-10:
   00-Steven:
   - bugfix: NTos file manager program actually shows the program names, instead of
@@ -254,17 +251,9 @@
   L1nd:
   - balance: spiders can't wrap megafauna
   - bugfix: nonhuman spider cocoons looks accordingly
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
-  Maximal08:
-  - bugfix: Fixing the arrow display when using the multitool
-  SmArtKar:
-  - bugfix: Fixed explorer masks going invisible when you put on a goliath hood
-  - qol: Improved
-<<<<<<< HEAD
 2025-05-23:
   Rengan:
   - bugfix: "IPC'nin \u015Farj olamamas\u0131 d\xFCzeltildi."
-=======
   rageguy505:
   - bugfix: carpenter and claw hammer can now test for brain health.
   throwawayuseless:
@@ -386,6 +375,11 @@
       into them!
   TealSeer:
   - bugfix: fixed cross-server newscaster functionality
+  Maximal08:
+  - bugfix: Fixing the arrow display when using the multitool
+  SmArtKar:
+  - bugfix: Fixed explorer masks going invisible when you put on a goliath hood
+  - qol: Improved
 2025-05-17:
   Absolucy:
   - bugfix: False walls properly smooth with objects now, such as other false walls.
@@ -837,4 +831,3 @@
   - qol: Info buttons previously at the top right of your screen (Changelog, wiki,
       forums) is now in the Escape menu.
   - qol: Fullscreen is now a preferences and will follow you through rounds.
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592

@@ -52,12 +52,11 @@
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
-	RegisterSignal(ipc, COMSIG_ATOM_EXPOSED_WATER, PROC_REF(water_act))
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/human/old_ipc, datum/species/new_species, pref_load)
 	. = ..()
-	UnregisterSignal(old_ipc, list(COMSIG_ATOM_EXPOSED_WATER, COMSIG_CARBON_ATTEMPT_EAT))
+	UnregisterSignal(old_ipc, COMSIG_CARBON_ATTEMPT_EAT)
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
@@ -70,12 +69,11 @@
 	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
 		H.adjustBruteLoss(1.5 * seconds_per_tick)
 
-/datum/species/ipc/proc/water_act(atom/exposed)
-	SIGNAL_HANDLER
-	var/mob/living/carbon/human/exposed_ipc = exposed
+/datum/species/ipc/wash(mob/living/carbon/human/H)
+	. = FALSE
 	var/chest_covered = FALSE
 	var/head_covered = FALSE
-	for(var/obj/item/clothing/equipped in exposed_ipc.get_equipped_items())
+	for(var/obj/item/clothing/equipped in H.get_equipped_items())
 		if((equipped.body_parts_covered & CHEST) && (equipped.get_armor_rating(BIO) == 100))
 			chest_covered = TRUE
 		if((equipped.body_parts_covered & HEAD) && (equipped.get_armor_rating(BIO) == 100))
@@ -83,12 +81,12 @@
 		if(head_covered && chest_covered)
 			break
 	if(!chest_covered || !head_covered)
-		var/obj/item/organ/heart/heart = exposed_ipc.get_organ_slot(ORGAN_SLOT_HEART)
+		var/obj/item/organ/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
 		if(heart && istype(heart, /obj/item/organ/heart/cybernetic))
-			exposed_ipc.adjustFireLoss(rand(1,3))
+			H.adjustFireLoss(rand(1,3))
 		else
-			exposed_ipc.adjustFireLoss(rand(5,15))
-		return
+			H.adjustFireLoss(rand(5,15))
+		return TRUE
 
 /datum/species/ipc/randomize_features()
 	var/list/features = ..()

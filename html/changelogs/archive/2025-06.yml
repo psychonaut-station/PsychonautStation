@@ -515,3 +515,13 @@
   - bugfix: Reflex Hammers now fit in medical storage items, IE. medbelts and medkits.
   - balance: People with welding-eyes or similar will not have their pupils react
       to penlight examination.
+2025-06-24:
+  Rengan:
+  - balance: "H\u0131zland\u0131r\u0131lm\u0131\u015F par\xE7ac\u0131klar\u0131n g\xFC\
+      c\xFC artt\u0131r\u0131ld\u0131."
+  - balance: "Smin olu\u015Fturdu\u011Fu singularity art\u0131k daha \xE7ok elektrik\
+      \ \xFCretiyor."
+  - bugfix: "Roundend credits'de antag iconlar\u0131 fixlendi"
+  - bugfix: "Roundend credits'de \xF6l\xFCler listesinde kimsenin g\xF6z\xFCkmemesi\
+      \ d\xFCzeltildi."
+  - spellcheck: "Roundend credits'de baz\u0131 yaz\u0131lar d\xFCzeltildi."

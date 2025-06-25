@@ -1685,3 +1685,6 @@
 		return
 	name_tag.set_name(name)
 	name_tag.refresh()
+
+/mob/proc/get_mob_appearance()
+	return appearance

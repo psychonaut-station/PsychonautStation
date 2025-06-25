@@ -1,14 +1,3 @@
-<<<<<<< HEAD
-2025-06-19:
-  Rengan:
-  - bugfix: "Bir noktada 2 bilgisayar varken 2 bilgisayar\u0131n birle\u015Fme overlay\u0131\
-      \ d\xFCzeltildi."
-  SadSeal5:
-  - rscdel: "Resurrect Ritesi kalkt\u0131"
-  - balance: "Art\u0131k iskelet yerine zombi yap\u0131yor sect"
-  - balance: "Art\u0131k maymunlar 400 favor yerine 200 favor veriyor"
-  - balance: "Art\u0131k organlar 10 favor yerine 30 favor veriyor"
-=======
 2025-06-01:
   Rhials:
   - spellcheck: Diamond material statue names are no longer punctuated.
@@ -446,6 +435,14 @@
   timothymtorres:
   - bugfix: Fix water vapor making water tiles and no slip turfs wet
   - bugfix: Fix admin immersion buttons scaling incorrectly when UI is stretched.
+  Rengan:
+  - bugfix: "Bir noktada 2 bilgisayar varken 2 bilgisayar\u0131n birle\u015Fme overlay\u0131\
+      \ d\xFCzeltildi."
+  SadSeal5:
+  - rscdel: "Resurrect Ritesi kalkt\u0131"
+  - balance: "Art\u0131k iskelet yerine zombi yap\u0131yor sect"
+  - balance: "Art\u0131k maymunlar 400 favor yerine 200 favor veriyor"
+  - balance: "Art\u0131k organlar 10 favor yerine 30 favor veriyor"
 2025-06-20:
   00-Steven:
   - rscadd: You can take pictures over advanced camera consoles.
@@ -518,4 +515,3 @@
   - bugfix: Reflex Hammers now fit in medical storage items, IE. medbelts and medkits.
   - balance: People with welding-eyes or similar will not have their pupils react
       to penlight examination.
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592

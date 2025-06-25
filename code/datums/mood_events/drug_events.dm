@@ -135,7 +135,6 @@
 	mood_change = -8
 	timeout = 8 MINUTES
 
-<<<<<<< HEAD
 /datum/mood_event/efkar
 	hidden = TRUE
 	timeout = 30 MINUTES  // make it long so the song wont keep playing over and over
@@ -146,9 +145,8 @@
 
 	to_chat(owner, span_notice("A song starts playing inside your head."))
 	owner.playsound_local(get_turf(owner), 'sound/_psychonaut/mood_efkar.ogg', 100, FALSE, pressure_affected = FALSE, use_reverb = TRUE)
-=======
+
 /datum/mood_event/sadness_inverse
 	description = "I'M SO SAD..."
 	mood_change = -150
 	special_screen_obj = "mood_happiness_bad"
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592

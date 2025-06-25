@@ -2,20 +2,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 /mob/living/carbon/human/gib_animation()
 	new /obj/effect/temp_visual/gib_animation(loc, dna.species.gib_anim)
 
-<<<<<<< HEAD
-/mob/living/carbon/human/spawn_gibs(drop_bitflags=NONE)
-	if(flags_1 & HOLOGRAM_1)
-		return
-	if(drop_bitflags & DROP_BODYPARTS)
-		if(!isnull(dna.species.gibspawner_type))
-			new dna.species.gibspawner_type(drop_location(), src, get_static_viruses())
-		else
-			new /obj/effect/gibspawner/human(drop_location(), src, get_static_viruses())
-	else
-		new /obj/effect/gibspawner/human/bodypartless(drop_location(), src, get_static_viruses())
-
-=======
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 /mob/living/carbon/human/spawn_dust(just_ash)
 	if(just_ash)
 		return ..()
@@ -23,8 +9,6 @@ GLOBAL_LIST_EMPTY(dead_players_during_shift)
 	var/bone_type = /obj/effect/decal/remains/human
 	if(isplasmaman(src))
 		bone_type = /obj/effect/decal/remains/plasma
-	else if(!isnull(dna.species.remains_type))
-		bone_type = dna.species.remains_type
 
 	var/obj/effect/decal/remains/human/bones = new bone_type(loc)
 	bones.pixel_z = -6

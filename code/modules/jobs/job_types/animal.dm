@@ -76,7 +76,7 @@
 		spawned_basic.environment_smash = NONE
 		spawned_basic.sharpness = NONE
 		spawned_basic.wound_bonus = CANT_WOUND
-		spawned_basic.bare_wound_bonus = 0
+		spawned_basic.exposed_wound_bonus = 0
 
 	if(istype(spawned, /mob/living/simple_animal))
 		var/mob/living/simple_animal/spawned_simple = spawned
@@ -93,7 +93,7 @@
 		spawned_simple.environment_smash = NONE
 		spawned_simple.sharpness = NONE
 		spawned_simple.wound_bonus = CANT_WOUND
-		spawned_simple.bare_wound_bonus = 0
+		spawned_simple.exposed_wound_bonus = 0
 
 	var/datum/language_holder/language_holder = spawned.get_language_holder()
 

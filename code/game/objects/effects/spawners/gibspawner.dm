@@ -126,18 +126,12 @@
 
 /obj/effect/gibspawner/robot/Initialize(mapload, mob/living/source_mob, list/datum/disease/diseases, blood_dna_info)
 	if(!gibdirections.len)
-<<<<<<< HEAD
-		gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST),list(SOUTH, SOUTHEAST, SOUTHWEST),list(WEST, NORTHWEST, SOUTHWEST),list(EAST, NORTHEAST, SOUTHEAST), GLOB.alldirs, GLOB.alldirs)
-	gibamounts[6] = pick(0, 1, 2)
-	return ..()
-
-/obj/effect/gibspawner/robot/android
-	gib_mob_type = /mob/living/carbon/human/species/android
-=======
 		gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST), list(SOUTH, SOUTHEAST, SOUTHWEST), list(WEST, NORTHWEST, SOUTHWEST), list(EAST, NORTHEAST, SOUTHEAST), GLOB.alldirs, GLOB.alldirs)
 	gibtypes[/obj/effect/decal/cleanable/blood/gibs/robot_debris/limb] = pick(0, 1, 2)
 	. = ..()
 	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 	sparks.set_up(2, 1, drop_location())
 	sparks.start()
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
+
+/obj/effect/gibspawner/robot/android
+	gib_mob_type = /mob/living/carbon/human/species/android

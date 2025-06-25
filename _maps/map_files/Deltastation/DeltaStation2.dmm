@@ -79456,14 +79456,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron,
 /area/station/medical/abandoned)
-<<<<<<< HEAD
-"tHf" = (
-/obj/effect/decal/cleanable/dirt,
-/obj/structure/cable,
-/turf/open/floor/plating,
-/area/station/maintenance/solars/port/fore)
-=======
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
 "tHg" = (
 /obj/structure/table,
 /obj/item/fuel_pellet{

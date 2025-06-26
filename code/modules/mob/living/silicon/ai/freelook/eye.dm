@@ -16,13 +16,6 @@
 	. = ..()
 	update_ai_detect_hud()
 
-/mob/eye/camera/ai/examine(mob/user) //Displays a silicon's laws to ghosts
-	. = ..()
-	if(istype(ai) && ai.laws && isobserver(user))
-		. += "<b>[ai] aşağıdaki yasalara sahiptir:</b>"
-		for(var/law in ai.laws.get_law_list(include_zeroth = TRUE))
-			. += law
-
 /mob/eye/camera/ai/Destroy()
 	if(ai)
 		ai.all_eyes -= src
@@ -125,7 +118,7 @@
 /mob/eye/camera/ai/examine(mob/user) //Displays a silicon's laws to ghosts
 	. = ..()
 	if(istype(ai) && ai.laws && isobserver(user))
-		. += "<b>[ai] has the following laws:</b>"
+		. += "<b>[ai] aşağıdaki yasalara sahiptir:</b>"
 		for(var/law in ai.laws.get_law_list(include_zeroth = TRUE))
 			. += law
 
@@ -238,6 +231,11 @@
 	. = ..()
 	if(relay_speech && speaker && ai && !radio_freq && speaker != ai && GLOB.cameranet.checkCameraVis(speaker))
 		ai.relay_speech(message, speaker, message_language, raw_message, radio_freq, spans, message_mods)
+
+/mob/eye/camera/ai/get_mob_appearance()
+	if(!isnull(ai))
+		return ai.appearance
+	return ..()
 
 /obj/effect/overlay/ai_detect_hud
 	name = ""

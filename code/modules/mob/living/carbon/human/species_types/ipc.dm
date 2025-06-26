@@ -23,7 +23,7 @@
 	)
 	meat = null
 	exotic_blood = /datum/reagent/fuel/oil
-	exotic_bloodtype = "LPG"
+	exotic_bloodtype = BLOOD_TYPE_OIL
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
@@ -230,7 +230,7 @@
 
 	return CONTEXTUAL_SCREENTIP_SET
 
-/obj/item/apc_powercord/afterattack(atom/target, mob/user, click_parameters)
+/obj/item/apc_powercord/afterattack(atom/target, mob/user, list/modifiers)
 	if(!isapc(target) || !ishuman(user) || !target.Adjacent(user))
 		return ..()
 	user.changeNext_move(CLICK_CD_MELEE)
@@ -249,7 +249,7 @@
 	if(istype(target, /obj/machinery/power/apc))
 		var/obj/machinery/power/apc/A = target
 		if(A.cell)
-			A.ipc_interact(H, click_parameters)
+			A.ipc_interact(H, modifiers)
 			H.diag_hud_set_humancell()
 			return
 		else

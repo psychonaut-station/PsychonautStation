@@ -1,19 +1,1 @@
-# These stuff require someone with host access
-/.github/ @exdal
-/.tgs.yml @exdal
-/code/world.dm @exdal
-/code/__DEFINES/tgs.config.dm @exdal
-/code/__DEFINES/tgs.dm @exdal
-/code/__DEFINES/_globals.dm @exdal
-/code/__HELPERS/chat.dm @exdal
-/code/__HELPERS/jatum.dm @exdal
-/code/game/world.dm @exdal
-/code/controllers/subsystem/atoms.dm @exdal
-/code/controllers/globals.dm @exdal
-/code/datums/helper_datums/getrev.dm @exdal
-/code/modules/tgs/ @exdal
-/code/ze_genesis_call/ @exdal
-/tools/tgs_test/ @exdal
-/config/ @exdal
-
 * @Seefaaa

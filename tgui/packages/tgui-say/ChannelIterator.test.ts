@@ -23,16 +23,12 @@ describe('ChannelIterator', () => {
     expect(channelIterator.current()).toBe('OOC');
   });
 
-<<<<<<< HEAD
-  it('should set a channel properly', ({ expect }) => {
+  it('should set a channel properly', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.current()).toBe('LOOC');
   });
 
-  it('should return true when current channel is "Say"', ({ expect }) => {
-=======
   it('should return true when current channel is "Say"', () => {
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
     channelIterator.set('Say');
     expect(channelIterator.isSay()).toBe(true);
   });
@@ -52,18 +48,12 @@ describe('ChannelIterator', () => {
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-<<<<<<< HEAD
-  it('should return false when current channel is not visible', ({
-    expect,
-  }) => {
+  it('should return false when current channel is not visible', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-  it('should not leak a message from a blacklisted channel', ({ expect }) => {
-=======
   it('should not leak a message from a blacklisted channel', () => {
->>>>>>> 87b3788cbbcea797949e856cfed8f64d65238592
     channelIterator.set('Admin');
     expect(channelIterator.next()).toBe('Admin');
   });

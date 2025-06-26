@@ -887,7 +887,7 @@
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "RD" = (
-/obj/effect/decal/cleanable/oil,
+/obj/effect/decal/cleanable/blood/oil,
 /turf/open/floor/iron/checker,
 /area/station/engineering/singularity/room)
 "RW" = (

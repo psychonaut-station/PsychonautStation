@@ -6,5 +6,6 @@
 	var/template_height = 0
 	var/template_width = 0
 	var/weight = 10 //weight a room has to appear
-	var/list/coordinates = list()
+	var/list/coordinates = list() // x and y coordinates from strongdmm (NOT INGAME COORDINATES)
 	var/room_type = null
+	var/group = "Station"

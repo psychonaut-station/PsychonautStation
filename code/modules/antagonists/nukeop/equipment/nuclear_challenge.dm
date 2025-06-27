@@ -16,6 +16,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 			Must be used within five minutes, or your benefactors will lose interest."
 	var/declaring_war = FALSE
 	var/uplink_type = /obj/item/uplink/nuclear
+	var/announcement_sound = 'sound/announcer/alarm/nuke_alarm.ogg'
 
 /obj/item/nuclear_challenge/attack_self(mob/living/user)
 	if(!check_allowed(user))
@@ -79,8 +80,13 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 /obj/item/nuclear_challenge/proc/war_was_declared(mob/living/user, memo)
 	priority_announce(
 		text = memo,
+<<<<<<< HEAD
 		title = "Savaş İlanı",
 		sound = 'sound/announcer/alarm/nuke_alarm.ogg',
+=======
+		title = "Declaration of War",
+		sound = announcement_sound,
+>>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",
@@ -166,6 +172,7 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 /obj/item/nuclear_challenge/clownops
 	uplink_type = /obj/item/uplink/clownop
+	announcement_sound = 'sound/announcer/alarm/clownops.ogg'
 
 /// Subtype that does nothing but plays the war op message. Intended for debugging
 /obj/item/nuclear_challenge/literally_just_does_the_message
@@ -191,8 +198,13 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 
 	priority_announce(
 		text = memo,
+<<<<<<< HEAD
 		title = "Savaş İlanı",
 		sound = 'sound/announcer/alarm/nuke_alarm.ogg',
+=======
+		title = "Declaration of War",
+		sound = announcement_sound,
+>>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 		has_important_message = TRUE,
 		sender_override = "Nükleer Operasyon Merkezi",
 		color_override = "red",

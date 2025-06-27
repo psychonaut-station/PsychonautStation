@@ -150,8 +150,13 @@
 #define BODYTYPE_PLANT (1<<6)
 //This limb is shadowy and will regen if shadowheal is active
 #define BODYTYPE_SHADOW (1<<7)
+<<<<<<< HEAD
 ///IPC
 #define BODYTYPE_IPC (1<<8)
+=======
+//This limb is a ghost limb and can phase through walls.
+#define BODYTYPE_GHOST (1<<8)
+>>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.
@@ -174,6 +179,8 @@
 #define SPECIES_DULLAHAN "dullahan"
 #define SPECIES_ETHEREAL "ethereal"
 #define SPECIES_ETHEREAL_LUSTROUS "lustrous"
+#define SPECIES_GHOST "ghost"
+#define SPECIES_GOLEM "golem"
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
 #define SPECIES_HUMAN "human"
@@ -181,6 +188,7 @@
 #define SPECIES_SYNTHETIC "synthetic"
 #define SPECIES_JELLYPERSON "jelly"
 #define SPECIES_SLIMEPERSON "slime"
+#define SPECIES_SPIRIT "spirit"
 #define SPECIES_LUMINESCENT "luminescent"
 #define SPECIES_STARGAZER "stargazer"
 #define SPECIES_LIZARD "lizard"

@@ -664,6 +664,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
 
+<<<<<<< HEAD
 /datum/job/proc/set_alt_title(mob/living/carbon/human/H, client/player_client)
 	var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
 	if(chosen_title == title)
@@ -676,3 +677,8 @@
 	var/obj/item/modular_computer/pda/pda = locate() in all_contents
 	if(!isnull(pda))
 		pda.imprint_id(job_name = chosen_title)
+=======
+/// Called when a mob that has this job is admin respawned
+/datum/job/proc/on_respawn(mob/new_character)
+	SSjob.equip_rank(new_character, new_character.mind.assigned_role, new_character.client)
+>>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e

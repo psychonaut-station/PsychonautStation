@@ -2988,7 +2988,7 @@
 	name = "IPC Power Cord"
 	id = "ipc_power_cord"
 	build_type = MECHFAB
-	build_path = /obj/item/organ/cyberimp/arm/power_cord
+	build_path = /obj/item/organ/cyberimp/arm/toolkit/power_cord
 	materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT*5)
 	construction_time = 100
 	category = list(

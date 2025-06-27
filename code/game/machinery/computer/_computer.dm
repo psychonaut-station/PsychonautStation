@@ -79,22 +79,42 @@
 	if(icon_state == "computer")
 		var/obj/machinery/computer/left_comp = null
 		var/obj/machinery/computer/right_comp = null
+		var/turf/left_turf = null
+		var/turf/right_turf = null
 		switch(dir)
 			if(NORTH)
-				left_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
-				right_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
+				left_turf = get_step(src, WEST)
+				right_turf = get_step(src, EAST)
 			if(EAST)
-				left_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
-				right_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
+				left_turf = get_step(src, NORTH)
+				right_turf = get_step(src, SOUTH)
 			if(SOUTH)
-				left_comp = locate(/obj/machinery/computer) in get_step(src, EAST)
-				right_comp = locate(/obj/machinery/computer) in get_step(src, WEST)
+				left_turf = get_step(src, EAST)
+				right_turf = get_step(src, WEST)
 			if(WEST)
-				left_comp = locate(/obj/machinery/computer) in get_step(src, SOUTH)
-				right_comp = locate(/obj/machinery/computer) in get_step(src, NORTH)
-		if(!QDELETED(left_comp) && left_comp.dir == dir && left_comp.icon_state == "computer")
+				left_turf = get_step(src, SOUTH)
+				right_turf = get_step(src, NORTH)
+		for(var/obj/machinery/computer/computer in left_turf.contents)
+			if(QDELETED(computer))
+				continue
+			if(computer.dir != dir)
+				continue
+			if(computer.icon_state != "computer")
+				continue
+			left_comp = computer
+			break
+		for(var/obj/machinery/computer/computer in right_turf.contents)
+			if(QDELETED(computer))
+				continue
+			if(computer.dir != dir)
+				continue
+			if(computer.icon_state != "computer")
+				continue
+			right_comp = computer
+			break
+		if(!isnull(left_comp))
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
-		if(!QDELETED(right_comp) && right_comp.dir == dir && right_comp.icon_state == "computer")
+		if(!isnull(right_comp))
 			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
 
 	if(machine_stat & BROKEN)
@@ -166,7 +186,7 @@
 				if(prob(10))
 					atom_break(ENERGY)
 
-/obj/machinery/computer/on_construction(mob/user)
+/obj/machinery/computer/on_construction(mob/user, from_flatpack = FALSE)
 	..()
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")

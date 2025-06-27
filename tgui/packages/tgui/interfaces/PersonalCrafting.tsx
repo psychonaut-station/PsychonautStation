@@ -272,7 +272,7 @@ export const PersonalCrafting = (props) => {
                       (mode === MODE.cooking ? ' recipes...' : ' designs...')
                     }
                     value={searchText}
-                    onInput={(e, value) => {
+                    onChange={(value) => {
                       setPages(1);
                       setSearchText(value);
                     }}
@@ -937,7 +937,7 @@ const RecipeContent = ({ item, craftable, busy, mode, diet }) => {
                       <Divider />
                       {item.foodtypes.map((foodtype) => (
                         <FoodtypeContent
-                          key={item.ref}
+                          key={item.ref + foodtype}
                           type={foodtype}
                           diet={diet}
                         />

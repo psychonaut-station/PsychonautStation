@@ -995,9 +995,9 @@ GLOBAL_LIST_EMPTY(friendly_animal_types)
 			icon_state = thing.icon_state
 			//Despite casting to atom, this code path supports mutable appearances, so let's be nice to them
 			if(isnull(icon_state) || (isatom(thing) && thing.flags_1 & HTML_USE_INITAL_ICON_1))
-				icon_state = initial(thing.icon_state)
+				icon_state = thing::post_init_icon_state || thing::icon_state
 				if (isnull(dir))
-					dir = initial(thing.dir)
+					dir = thing::dir
 
 		if (isnull(dir))
 			dir = thing.dir
@@ -1324,6 +1324,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		if(ispath(spawn_type, /mob/living/silicon/ai))
 			var/ai_core_value = selected_char?["preferred_ai_core_display"]
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
+			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
+				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
 		return appearance
 
 	var/we_created = FALSE

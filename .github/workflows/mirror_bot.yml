@@ -18,7 +18,7 @@ env:
   upstream_branch: master
   commiter_name: psychonaut-ci[bot]
   commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
-  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/,dependencies.sh
+  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/,tools/UpdatePaths,dependencies.sh
 
 jobs:
   mirror:

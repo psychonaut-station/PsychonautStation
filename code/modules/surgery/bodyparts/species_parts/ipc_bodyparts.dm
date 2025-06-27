@@ -44,11 +44,9 @@
 	UnregisterSignal(old_owner, COMSIG_ATOM_EMAG_ACT)
 	QDEL_NULL(change_monitor)
 
-/obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
+/obj/item/bodypart/head/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, exposed_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
 	. = ..()
 	if(owner)
-		if(brute > 0 && prob(10))
-			new /obj/effect/decal/cleanable/oil(owner.loc)
 		var/mob/living/carbon/oldowner = owner
 		if(get_damage() >= 75)
 			if(prob(50))
@@ -105,11 +103,6 @@
 	wing_types = list(/obj/item/organ/wings/functional/robotic)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
-/obj/item/bodypart/chest/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
-	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
-
 /obj/item/bodypart/chest/ipc/emp_act(severity)
 	. = ..()
 	if(!.)
@@ -148,11 +141,6 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
-/obj/item/bodypart/arm/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
-	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
-
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -177,11 +165,6 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
-/obj/item/bodypart/arm/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
-	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
-
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -204,11 +187,6 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
-
-/obj/item/bodypart/leg/left/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
-	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/leg/left/ipc/emp_act(severity)
 	. = ..()
@@ -247,11 +225,6 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
-
-/obj/item/bodypart/leg/right/ipc/receive_damage(brute = 0, burn = 0, blocked = 0, updating_health = TRUE, forced = FALSE, required_bodytype = null, wound_bonus = 0, bare_wound_bonus = 0, sharpness = NONE, attack_direction = null, damage_source, wound_clothing = TRUE)
-	. = ..()
-	if(brute > 0 && prob(10) && owner)
-		new /obj/effect/decal/cleanable/oil(owner.loc)
 
 /obj/item/bodypart/leg/right/ipc/emp_act(severity)
 	. = ..()

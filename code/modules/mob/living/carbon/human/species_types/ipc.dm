@@ -22,13 +22,12 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	meat = null
-	exotic_blood = /datum/reagent/fuel/oil
-	exotic_bloodtype = "LPG"
+	exotic_bloodtype = BLOOD_TYPE_OIL
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
 		/obj/item/organ/voltage_protector,
-		/obj/item/organ/cyberimp/arm/power_cord
+		// /obj/item/organ/cyberimp/arm/toolkit/power_cord
 	)
 	mutanteyes = /obj/item/organ/eyes/robotic/basic
 	mutantears = /obj/item/organ/ears/cybernetic
@@ -47,7 +46,6 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
-	gibspawner_type = /obj/effect/gibspawner/robot/android
 	allow_numbers_in_name = TRUE
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
@@ -203,11 +201,10 @@
 		return
 	owner.apply_damages(brain = 10)
 
-/obj/item/organ/cyberimp/arm/power_cord
+/obj/item/organ/cyberimp/arm/toolkit/power_cord
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
 	items_to_create = list(/obj/item/apc_powercord)
-	slot = ORGAN_SLOT_RIGHT_ARM_AUG
 
 ////////////////////////////////////// ITEMS //////////////////////////////////////
 
@@ -221,40 +218,43 @@
 	. = ..()
 	register_item_context()
 
-/obj/item/apc_powercord/add_item_context(datum/source, list/context, atom/target, mob/living/user)
+/obj/item/apc_powercord/add_item_context(obj/item/source, list/context, atom/target, mob/living/user)
 	if (!isapc(target))
-		return NONE
+		return ..()
 
 	context[SCREENTIP_CONTEXT_LMB] = "Drain Power"
 	context[SCREENTIP_CONTEXT_RMB] = "Transfer Power"
 
 	return CONTEXTUAL_SCREENTIP_SET
 
-/obj/item/apc_powercord/afterattack(atom/target, mob/user, click_parameters)
+/obj/item/apc_powercord/afterattack(atom/target, mob/user, list/modifiers, list/attack_modifiers)
 	if(!isapc(target) || !ishuman(user) || !target.Adjacent(user))
-		return ..()
-	user.changeNext_move(CLICK_CD_MELEE)
-	var/mob/living/carbon/human/H = user
-	var/obj/item/organ/stomach/ipc/stomach = H.get_organ_slot(ORGAN_SLOT_STOMACH)
+		return
+	var/obj/machinery/power/apc/apc = target
+	var/mob/living/carbon/human/human = user
+
+	human.changeNext_move(CLICK_CD_MELEE)
+
+	var/obj/item/organ/stomach/ipc/stomach = human.get_organ_slot(ORGAN_SLOT_STOMACH)
+
 	if(!istype(stomach))
-		to_chat(H, span_warning("There is nothing in your body to charge."))
-	if(!stomach?.cell)
-		to_chat(H, span_warning("You try to siphon energy from \the [target], but your power cell is gone!"))
+		to_chat(human, span_warning("There is nothing in your body to charge."))
 		return
 
-	if(istype(H) && H.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
-		to_chat(user, span_warning("You are already fully charged!"))
+	if(isnull(stomach.cell))
+		to_chat(human, span_warning("You try to siphon energy from \the [target], but your power cell is gone!"))
 		return
 
-	if(istype(target, /obj/machinery/power/apc))
-		var/obj/machinery/power/apc/A = target
-		if(A.cell)
-			A.ipc_interact(H, click_parameters)
-			H.diag_hud_set_humancell()
-			return
-		else
-			to_chat(user, span_warning("There is not enough charge to draw from that APC."))
-			return
+	if(human.nutrition >= NUTRITION_LEVEL_ALMOST_FULL)
+		to_chat(human, span_warning("You are already fully charged!"))
+		return
+
+	if(isnull(apc.cell))
+		to_chat(human, span_warning("There is not enough charge to draw from that APC."))
+		return
+
+	apc.ipc_interact(human, modifiers)
+	human.diag_hud_set_humancell()
 
 ////////////////////////////////////////////////////////////////////////////////////////
 /datum/action/innate/change_monitor

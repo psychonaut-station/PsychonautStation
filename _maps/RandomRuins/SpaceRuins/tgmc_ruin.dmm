@@ -42,7 +42,7 @@
 /area/ruin/space)
 "eQ" = (
 /obj/structure/cable,
-/obj/effect/decal/cleanable/xenoblood/xsplatter,
+/obj/effect/decal/cleanable/blood/splatter/xeno,
 /turf/open/floor/pod/dark,
 /area/ruin/space)
 "fa" = (
@@ -281,7 +281,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "yG" = (
-/obj/effect/decal/cleanable/xenoblood/xgibs/larva/body,
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva/body,
 /turf/open/floor/pod/dark,
 /area/ruin/space)
 "yQ" = (

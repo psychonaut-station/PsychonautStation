@@ -41,6 +41,7 @@
 	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_lahmacun/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/lahmacun, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
@@ -74,6 +75,7 @@
 	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_beyti/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/beyti, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
@@ -107,6 +109,7 @@
 	foodtypes = MEAT | VEGETABLES | RAW | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_kiymali_pide/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/kiymali_pide, rand(30 SECONDS, 40 SECONDS), TRUE, TRUE)
@@ -234,6 +237,7 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 	trash_type = /obj/item/reagent_containers/cup/bowl
+	custom_materials = list(/datum/material/meat = MEATSLAB_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_menemen
 	name = "raw menemen"

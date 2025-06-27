@@ -44,7 +44,7 @@
 		JOB_SECURITY_OFFICER_SUPPLY,
 		JOB_SECURITY_OFFICER_SCIENCE,
 	)
-	job_flags = STATION_JOB_FLAGS
+	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
 	alt_titles = list(
 		"Security Officer",
 		"Security Operative",

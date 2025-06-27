@@ -17,7 +17,7 @@
 	mutant_organs = list(
 		/obj/item/organ/arachnid_appendages = "Long",
 	)
-	inert_mutation = /datum/mutation/human/webbing
+	inert_mutation = /datum/mutation/webbing
 	bodypart_overrides = list(
 		BODY_ZONE_L_ARM = /obj/item/bodypart/arm/left/arachnid,
 		BODY_ZONE_R_ARM = /obj/item/bodypart/arm/right/arachnid,
@@ -26,13 +26,6 @@
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/arachnid,
 		BODY_ZONE_CHEST = /obj/item/bodypart/chest/arachnid,
 	)
-
-/datum/species/arachnid/handle_chemical(datum/reagent/chem, mob/living/carbon/human/H, seconds_per_tick, times_fired)
-	. = ..()
-	if(. & COMSIG_MOB_STOP_REAGENT_CHECK)
-		return
-	if(chem.type == /datum/reagent/toxin/pestkiller)
-		H.adjustToxLoss(3 * REM * seconds_per_tick)
 
 /datum/species/arachnid/on_species_gain(mob/living/carbon/human/H, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()

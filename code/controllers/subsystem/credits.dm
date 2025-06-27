@@ -245,15 +245,15 @@ SUBSYSTEM_DEF(credits)
 		if(80 to 100)
 			episode_names += new /datum/episode_name("[pick("MÜRETTEBATIN GEZİSİ", "CENNETİN BU TARAFI", "[uppr_name]: BİR DURUM KOMEDİSİ", "MÜRETTEBATIN ÖĞLE MOLASI", "MÜRETTEBAT YENİDEN İŞE DÖNÜYOR", "MÜRETTEBATIN BÜYÜK ÇIKIŞI", "MÜRETTEBAT GÜNÜ KURTARIYOR", "MÜRETTEBAT DÜNYAYA HÜKMEDİYOR", "TÜM BİLİM, GELİŞİM, TERFİLER VE HAVALI ŞEYLERİN OLDUĞU BÖLÜM", "DÖNÜM NOKTASI")]", 250)
 
-	switch(SSdynamic.threat_level)
-		if(0 to 65)
+	switch(SSdynamic.current_tier.tier)
+		if(0 to 1) // DYNAMIC_TIER_GREEN to DYNAMIC_TIER_LOW
 			episode_names += new /datum/episode_name("[pick("O GÜN [uppr_name] DURDU", "BOŞ YERE KOPAN FIRTINA", "SESSİZLİĞİN KİRALIK OLDUĞU YER", "YANILTMA TAKTİĞİ", "EVDE TEK BAŞINA", "YA BÜYÜK OYNA YA DA [uppr_name]", "PLASEBO ETKİSİ", "YANKILAR", "SESSİZ ORTAKLAR", "BÖYLE DOSTLARIN OLDUĞUNDA...", "FIRTINANIN GÖZÜ", "USLU DOĞDUK", "DURGUN SULAR")]", 150)
 			if(roundend_station_integrity && roundend_station_integrity < 35)
 				episode_names += new /datum/episode_name("[pick("NASIL OLDU DA HER ŞEY BU KADAR YANLIŞ GİTTİ?!", "BUNU YÖNETİCİLERE AÇIKLAYIN", "MÜRETTEBAT SAFARİDE", "EN BÜYÜK DÜŞMANIMIZ", "İÇERİDEN İŞ", "VEKİL KATİL")]", roundend_station_integrity/150*-2)
-		if(66 to 79)
+		if(2 to 3) // DYNAMIC_TIER_LOWMEDIUM to DYNAMIC_TIER_MEDIUMHIGH
 			episode_names += new /datum/episode_name("[pick("KAN DÖKÜLEBİLİR", "O [locale_uppertext(locale_suffix_ablative(uppr_name))] GELDİ!", "[uppr_name] OLAYI", "İÇİMİZDEKİ DÜŞMAN", "ÖĞLE ÇILGINLIĞI", "SAAT ON İKİYİ VURDUĞUNDA", "ÖZGÜVEN VE PARANOYA", "FAZLA KAÇAN ŞAKA", "İKİYE BÖLÜNMÜŞ EV", "[uppr_name] YARDIMA KOŞUYOR!", "[locale_uppertext(locale_suffix_ablative(uppr_name))] KAÇIŞ", \
 				"HİT VE KAÇ", "UYANIŞ", "BÜYÜK KAÇIŞ", "[locale_uppertext(locale_suffix_genitive(uppr_name))] SON AYARTISI", "[locale_uppertext(locale_suffix_genitive(uppr_name))] DÜŞÜŞÜ", "ATEŞLE OYNAMAK", "BASKI ALTINDA", "SON GÜNDEN ÖNCEKİ GÜN", "[locale_uppertext(locale_suffix_genitive(uppr_name))] ARANANLARI")]", 150)
-		if(80 to 100)
+		if(4) // DYNAMIC_TIER_HIGH
 			episode_names += new /datum/episode_name("[pick("SALDIRI! SALDIRI! SALDIRI!", "DELİLİĞİ TAMİR EDEMEZSİN", "KIYAMET", "KIYAMETİN TADI", "OPERASYON: YOK EDİN!", "KUSURSUZ FIRTINA", "MÜRETTEBATIN ZAMANI DOLDU", "HERKES [locale_uppertext(locale_suffix_ablative(uppr_name))] NEFRET EDİYOR", "[uppr_name] SAVAŞI", \
 				"KAPIŞMA", "İNSAN AVI", "KAVGANIN OLDUĞU BÖLÜM", "[locale_uppertext(locale_suffix_genitive(uppr_name))] HESAP GÜNÜ", "İNCELEN KIRMIZI ÇİZGİ", "EMEKLİLİĞE BİR GÜN KALA")]", 250)
 			if(get_station_avg_temp() < T0C)
@@ -261,12 +261,12 @@ SUBSYSTEM_DEF(credits)
 
 	CHECK_TICK
 
-	var/list/ran_events = SSdynamic.executed_rules.Copy()
+	var/list/ran_events = SSdynamic.executed_rulesets.Copy()
 	if(locate(/datum/dynamic_ruleset/roundstart/malf_ai) in ran_events)
 		episode_names += new /datum/episode_name("[pick("GARİP BİR OYUN", "YAPAY ZEKA DELİYE DÖNÜYOR", "MAKİNELERİN YÜKSELİŞİ")]", 300)
-	if(locate(/datum/dynamic_ruleset/roundstart/revs) in ran_events)
+	if(locate(/datum/dynamic_ruleset/roundstart/revolution) in ran_events)
 		episode_names += new /datum/episode_name("[pick("MÜRETTEBAT DEVRİME BAŞLIYOR", "CEHENNEMİN DİĞER YÜZÜ", "[pick("İSYAN","DEVRİM")]!!", "MÜRETTEBATIN YÜKSELİŞİ", "AYAKLANIN KARDEŞLERİM!!")]", 350)
-	if((locate(/datum/dynamic_ruleset/roundstart/bloodcult) in ran_events) && blackbox_feedback_num("narsies_spawned") > 0)
+	if((locate(/datum/dynamic_ruleset/roundstart/blood_cult) in ran_events) && blackbox_feedback_num("narsies_spawned") > 0)
 		episode_names += new /datum/episode_name("[pick("NAR-SIE'NIN BOŞ GÜNÜ'", "NAR-SIE TATİLDE")]", 500)
 
 	if(check_holidays(CHRISTMAS))

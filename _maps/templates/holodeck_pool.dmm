@@ -718,8 +718,8 @@
 	},
 /obj/structure/rack,
 /obj/effect/turf_decal/bot_white,
-/obj/item/reagent_containers/cup/rag,
-/obj/item/reagent_containers/cup/rag{
+/obj/item/rag,
+/obj/item/rag{
 	pixel_y = 4
 	},
 /turf/open/floor/holofloor/chess_black,

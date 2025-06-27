@@ -22,11 +22,7 @@
 		"Aynen"
 	],
 
-	"greetings": [
-		"Selam ",
-		"Selam, ",
-		"Bekle, "
-	],
+	"greetings": ["Selam ", "Selam, ", "Bekle, "],
 
 	"getout": [
 		"@pick(add_name)siktir git",
@@ -44,23 +40,11 @@
 		"khhhhh"
 	],
 
-	"didyouhearthat": [
-		"Sesi duydun mu?",
-		"Neydi lan o?"
-	],
+	"didyouhearthat": ["Sesi duydun mu?", "Neydi lan o?"],
 
-	"add_name": [
-		"",
-		"%TARGETNAME% ",
-		"%TARGETNAME%, "
-	],
+	"add_name": ["", "%TARGETNAME% ", "%TARGETNAME%, "],
 
-	"doubt": [
-		"@pick(add_name)bekle",
-		"Şey...",
-		"Ne?",
-		"Neden?"
-	],
+	"doubt": ["@pick(add_name)bekle", "Şey...", "Ne?", "Neden?"],
 
 	"aggressive": [
 		"@pick(add_name)orospu evladı mısın",
@@ -132,7 +116,7 @@
 		"intihar etti"
 	],
 
-	"contraband" : [
+	"contraband": [
 		"a bomb",
 		"a syndibomb",
 		"a ttv",
@@ -288,5 +272,4 @@
 		"Madenciler robotiği dövüyor!!",
 		"RD odasında Ninja var"
 	]
-
 }

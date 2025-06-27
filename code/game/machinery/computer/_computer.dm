@@ -186,7 +186,7 @@
 				if(prob(10))
 					atom_break(ENERGY)
 
-/obj/machinery/computer/on_construction(mob/user)
+/obj/machinery/computer/on_construction(mob/user, from_flatpack = FALSE)
 	..()
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")

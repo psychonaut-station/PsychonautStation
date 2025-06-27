@@ -377,6 +377,7 @@ ROUNDSTART_RACES ipc
 #ROUNDSTART_RACES zombie
 #ROUNDSTART_RACES pod
 #ROUNDSTART_RACES cavespider
+#ROUNDSTART_RACES ghost
 
 ## Races that are radical departures to what a species is, so while they technically can be roundstart - it's probably not wise
 #ROUNDSTART_RACES android

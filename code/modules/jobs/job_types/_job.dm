@@ -676,3 +676,7 @@
 	var/obj/item/modular_computer/pda/pda = locate() in all_contents
 	if(!isnull(pda))
 		pda.imprint_id(job_name = chosen_title)
+
+/// Called when a mob that has this job is admin respawned
+/datum/job/proc/on_respawn(mob/new_character)
+	SSjob.equip_rank(new_character, new_character.mind.assigned_role, new_character.client)

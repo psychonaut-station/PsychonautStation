@@ -376,11 +376,8 @@ ROUNDSTART_RACES ipc
 #ROUNDSTART_RACES skeleton
 #ROUNDSTART_RACES zombie
 #ROUNDSTART_RACES pod
-<<<<<<< HEAD
 #ROUNDSTART_RACES cavespider
-=======
 #ROUNDSTART_RACES ghost
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 ## Races that are radical departures to what a species is, so while they technically can be roundstart - it's probably not wise
 #ROUNDSTART_RACES android

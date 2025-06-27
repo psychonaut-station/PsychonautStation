@@ -689,7 +689,7 @@
 		carp.mind?.holy_role = HOLY_ROLE_PRIEST
 		to_chat(carp, "There is already an established religion onboard the station. You are an acolyte of [GLOB.deity]. Defer to the Chaplain.")
 		GLOB.religious_sect?.on_conversion(carp)
-	if(is_special_character(user))
+	if(user.is_antag())
 		to_chat(carp, "<span class='userdanger'>You are grateful to have been summoned into this word by [user]. Serve [user.real_name], and assist [user.p_them()] in completing [user.p_their()] goals at any cost.</span>")
 	else
 		to_chat(carp, "<span class='big notice'>You are grateful to have been summoned into this world. You are now a member of this station's crew, Try not to cause any trouble.</span>")

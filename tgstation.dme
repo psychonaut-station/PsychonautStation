@@ -6335,11 +6335,8 @@
 #include "code\modules\surgery\bodyparts\species_parts\android_parts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\arachnid_parts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\ethereal_bodyparts.dm"
-<<<<<<< HEAD
-#include "code\modules\surgery\bodyparts\species_parts\ipc_bodyparts.dm"
-=======
 #include "code\modules\surgery\bodyparts\species_parts\ghost_bodyparts.dm"
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
+#include "code\modules\surgery\bodyparts\species_parts\ipc_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\lizard_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\misc_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\moth_bodyparts.dm"

@@ -40,8 +40,7 @@
 		/obj/item/storage/box/lethalshot = 5
 	)
 	rpg_title = "Jailor"
-<<<<<<< HEAD
-	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT
+	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_ANTAG_PROTECTED
 	alt_titles = list(
 		"Warden",
 		"Brig Sergeant",
@@ -49,9 +48,6 @@
 		"Brig Governor",
 		"Jailer",
 	)
-=======
-	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_ANTAG_PROTECTED
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 /datum/outfit/job/warden
 	name = "Warden"

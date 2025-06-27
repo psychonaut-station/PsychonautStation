@@ -406,24 +406,6 @@
 	for(var/datum/mind/khrushchev as anything in members - head_revolutionaries)
 		if(!can_be_headrev(khrushchev))
 			continue
-<<<<<<< HEAD
-		add_memory_in_range(real_headrev, 5, /datum/memory/revolution_rev_victory, protagonist = real_headrev)
-
-/// Handles effects of revs losing, such as making ex-headrevs unrevivable and setting up head of staff memories.
-/datum/team/revolution/proc/defeat_effects()
-	// If the revolution was quelled, make rev heads unable to be revived through pods
-	for (var/datum/mind/rev_head as anything in ex_headrevs)
-		if(!isnull(rev_head.current))
-			ADD_TRAIT(rev_head.current, TRAIT_DEFIB_BLACKLISTED, REF(src))
-
-	for(var/datum/objective/mutiny/head_tracker in objectives)
-		var/mob/living/head_of_staff = head_tracker.target?.current
-		if(!isnull(head_of_staff))
-			add_memory_in_range(head_of_staff, 5, /datum/memory/revolution_heads_victory, protagonist = head_of_staff)
-
-	priority_announce("Görünüşe göre isyan bastırıldı. Lütfen kendiniz ve iş göremez durumdaki meslektaşlarınız işinizin başına dönün. \
-		Kazara yeniden canlanmayı önlemek için tıbbi kayıtlarınızdaki baş devrimcileri şimdiden kara listeye aldık.", null, null, null, "[command_name()] Sadakat Takip Departmanı")
-=======
 		var/client/khruschevs_client = GET_CLIENT(khrushchev.current)
 		if(!(ROLE_REV_HEAD in khruschevs_client.prefs.be_special) && !(ROLE_PROVOCATEUR in khruschevs_client.prefs.be_special))
 			continue
@@ -438,7 +420,6 @@
 	var/datum/mind/new_leader = pick(promotable)
 	var/datum/antagonist/rev/rev = new_leader.has_antag_datum(/datum/antagonist/rev)
 	rev.promote()
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 /// Mutates the ticker to report that the revs have won
 /datum/team/revolution/proc/round_result(finished)

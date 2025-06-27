@@ -856,59 +856,13 @@
 				/datum/dynamic_ruleset/midround/pirates,
 				/datum/dynamic_ruleset/midround/pirates/heavy,
 			)
-<<<<<<< HEAD
-			priority_announce(
-				"Mürettebatın dikkatine: sektör gözlemleme sistemi, büyük bir düşman gemisinin sisteminize sıçrama yaptığını rapor ediyor. Yakın düşman teması için hazırlanın.",
-				"[command_name()] Yüksek Öncelikli Bildiri",
-			)
-			SSdynamic.picking_specific_rule(pick(pirate_rulesets), forced = TRUE, ignore_cost = TRUE)
-=======
 			SSdynamic.force_run_midround(pick(pirate_rulesets))
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 		if(HACK_FUGITIVES) // Triggers fugitives, which can cause confusion / chaos as the crew decides which side help
 			priority_announce(
 				"Mürettebatın dikkatine: sektör gözlemleme sistemi, tanımlanamayan bir geminin sisteminize doğru bir sıçrama yaptığını rapor ediyor. Muhtemel temas için hazırlanın.",
 				"[command_name()] Yüksek Öncelikli Bildiri",
 			)
-<<<<<<< HEAD
-
-			force_event_after(/datum/round_event_control/fugitives, "[hacker] hacking a communications console", rand(20 SECONDS, 1 MINUTES))
-
-		if(HACK_THREAT) // Force an unfavorable situation on the crew
-			priority_announce(
-				"Mürettebatın dikkatine, Nanotrasen İstihbarat Departmanı, sektörünüzdeki düşman faaliyetlerinin bugün yayınlanan tehdit bildirisinde belirtilenin ötesine geçtiğine dair istihbarat almıştır.",
-				"[command_name()] Yüksek Öncelikli Bildiri",
-			)
-
-			for(var/mob/crew_member as anything in GLOB.player_list)
-				if(!is_station_level(crew_member.z))
-					continue
-				shake_camera(crew_member, 15, 1)
-
-			SSdynamic.unfavorable_situation()
-			creak_lights()
-
-		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
-			var/datum/dynamic_ruleset/midround/sleeper_agent_type = /datum/dynamic_ruleset/midround/from_living/autotraitor
-			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 20), 1, 3)
-			var/num_agents_created = 0
-			for(var/num_agents in 1 to rand(1, max_number_of_sleepers))
-				if(!SSdynamic.picking_specific_rule(sleeper_agent_type, forced = TRUE, ignore_cost = TRUE))
-					break
-				num_agents_created++
-
-			if(num_agents_created <= 0)
-				// We failed to run any midround sleeper agents, so let's be patient and run latejoin traitor
-				SSdynamic.picking_specific_rule(/datum/dynamic_ruleset/latejoin/infiltrator, forced = TRUE, ignore_cost = TRUE)
-
-			else
-				// We spawned some sleeper agents, nice - give them a report to kickstart the paranoia
-				priority_announce(
-					"Mürettebatın dikkatine, istasyonunuzdaki birinin haberleşme sistemlerinizi ele geçirdiği ve bilinmeyen bir sinyal yayınladığı görülüyor.",
-					"[command_name()] Yüksek Öncelikli Bildiri",
-				)
-=======
 			SSdynamic.force_run_midround(/datum/dynamic_ruleset/midround/from_ghosts/fugitives)
 
 		if(HACK_SLEEPER) // Trigger one or multiple sleeper agents with the crew (or for latejoining crew)
@@ -919,7 +873,6 @@
 			var/max_number_of_sleepers = clamp(round(length(GLOB.alive_player_list) / 40), 1, 3)
 			if(!SSdynamic.force_run_midround(/datum/dynamic_ruleset/midround/from_living/traitor, forced_max_cap = max_number_of_sleepers))
 				SSdynamic.queue_ruleset(/datum/dynamic_ruleset/latejoin/traitor)
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 #undef HACK_PIRATE
 #undef HACK_FUGITIVES

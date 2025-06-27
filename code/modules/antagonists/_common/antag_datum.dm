@@ -57,13 +57,8 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/hardcore_random_bonus = FALSE
 	/// A path to the audio stinger that plays upon gaining this datum.
 	var/stinger_sound
-<<<<<<< HEAD
-	/// Whether this antag datum blocks rolling new antag datums
-	var/block_midrounds = TRUE
 	/// The icon state for the credits major event icons
 	var/credits_icon
-=======
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 	//ANTAG UI
 
@@ -270,12 +265,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 	for (var/datum/atom_hud/alternate_appearance/basic/antag_hud as anything in GLOB.active_alternate_appearances)
 		antag_hud.apply_to_new_mob(owner.current)
 
-<<<<<<< HEAD
 	if(credits_icon && owner.current.client)
 		SScredits.create_antagonist_icon(owner.current.client, owner.current, credits_icon)
-=======
+
 	LAZYADD(owner.special_roles, (jobban_flag || pref_flag))
->>>>>>> c72e05730cda1fb2a240f2046ed8aa934367a73e
 
 	SEND_SIGNAL(owner, COMSIG_ANTAGONIST_GAINED, src)
 

@@ -497,6 +497,13 @@
 	credit_cost = CARGO_CRATE_VALUE * 18
 	occupancy_limit = "80"
 
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 8
+	description = "A fairly standard shuttle, though larger and slightly better equipped than the Helio Station variant."
+	occupancy_limit = "40"
+
 /datum/map_template/shuttle/emergency/raven
 	suffix = "raven"
 	name = "CentCom Raven Cruiser"
@@ -516,13 +523,6 @@
 	admin_notes = "Has alien surgery tools, and a void core that provides unlimited power."
 	credit_cost = CARGO_CRATE_VALUE * 16
 	occupancy_limit = "xxx"
-
-/datum/map_template/shuttle/emergency/helio
-	suffix = "helio"
-	name = "Helio Station Emergency Shuttle"
-	credit_cost = CARGO_CRATE_VALUE * 8
-	description = "A fairly standard shuttle, though larger and slightly better equipped than the Helio Station variant."
-	occupancy_limit = "40"
 
 /datum/map_template/shuttle/emergency/zeta/prerequisites_met()
 	return SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_ALIENTECH]

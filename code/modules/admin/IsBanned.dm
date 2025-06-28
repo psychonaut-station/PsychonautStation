@@ -112,6 +112,7 @@
 				This ban (BanID #[i["id"]]) was applied on [i["bantime"]] during round ID [i["round_id"]].
 				[expires]"}
 				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
+				send2tgs_adminless_only("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]]) <@&1386376002946465982>")
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
 		if (GLOB.directory[ckey])
@@ -246,6 +247,7 @@
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+		send2tgs_adminless_only("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]] <@&1386376002946465982>")
 
 	if (!real_bans_only && !C && CONFIG_GET(flag/require_discord_linking))
 		var/discord_id = SSdiscord.lookup_id(ckey)

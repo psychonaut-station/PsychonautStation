@@ -82,6 +82,9 @@
 				log_access("Failed Login: [ckey] - Population cap reached")
 				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 
+	if(CONFIG_GET(flag/sql_enabled) && SSdbcore.Connect() && SSdbcore.shutting_down)
+		return list("reason" = "rebooting", "desc" = "\nWorld is rebooting, try again in a few seconds.")
+
 	if(CONFIG_GET(flag/sql_enabled))
 		if(!SSdbcore.Connect())
 			var/msg = "Ban database connection failure. Key [ckey] not checked"
@@ -250,20 +253,25 @@
 		send2tgs_adminless_only("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]] <@&1386376002946465982>")
 
 	if (!real_bans_only && !C && CONFIG_GET(flag/require_discord_linking))
-		var/discord_id = SSdiscord.lookup_id(ckey)
-		if (!discord_id)
-			var/cached_token = SSdiscord.reverify_cache[ckey]
-			var/token = ""
-
-			if (cached_token && cached_token != "")
-				token = cached_token
-			else
-				token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
-				SSdiscord.reverify_cache[ckey] = token
-
-			var/name_link = CONFIG_GET(string/hub_name_link)
-			var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek Discord kaydın yapıldıktan sonra bir kanala /verify yazınca çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
-			return list("reason" = "DiscordAccount", "desc" = desc)
+		if(!SSdbcore.Connect())
+			var/msg = "Discord database connection failure. Key [ckey] not checked"
+			log_world(msg)
+			if (message)
+				message_admins(msg)
+		else
+			if (!SSdiscord.lookup_id(ckey))
+				var/cached_token = SSdiscord.reverify_cache[ckey]
+				var/token = ""
+	
+				if (cached_token)
+					token = cached_token
+				else
+					token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
+					SSdiscord.reverify_cache[ckey] = token
+	
+				var/name_link = CONFIG_GET(string/hub_name_link)
+				var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek Discord kaydın yapıldıktan sonra bir kanala /verify yazınca çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
+				return list("reason" = "DiscordAccount", "desc" = desc)
 
 	return .
 

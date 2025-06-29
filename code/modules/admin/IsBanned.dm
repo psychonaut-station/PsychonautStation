@@ -82,6 +82,9 @@
 				log_access("Failed Login: [ckey] - Population cap reached")
 				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 
+	if(CONFIG_GET(flag/sql_enabled) && SSdbcore.Connect() && SSdbcore.shutting_down)
+		return list("reason" = "rebooting", "desc" = "\nWorld is rebooting, try again in a few seconds.")
+
 	if(CONFIG_GET(flag/sql_enabled))
 		if(!SSdbcore.Connect())
 			var/msg = "Ban database connection failure. Key [ckey] not checked"

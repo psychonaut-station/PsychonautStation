@@ -228,6 +228,9 @@ IPINTEL_REJECT_BAD
 ## The default value assumes yt-dlp is in your system PATH
 # INVOKE_YOUTUBEDL yt-dlp
 
+## Path to text file containing browser cookies to bypass youtube captcha for yt-dlp
+# YTDL_COOKIES ~/cookies.txt
+
 ## Comment this out to disable users ability to use the request internet sounds to be played.
 REQUEST_INTERNET_SOUND
 

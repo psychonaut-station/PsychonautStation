@@ -405,6 +405,9 @@
 /datum/config_entry/string/invoke_youtubedl
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
+/datum/config_entry/string/ytdl_cookies
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
 /datum/config_entry/flag/request_internet_sound
 
 /datum/config_entry/string/request_internet_allowed

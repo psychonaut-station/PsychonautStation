@@ -818,3 +818,5 @@
 
 /datum/config_entry/flag/generate_assets_in_init
 	default = FALSE
+
+/datum/config_entry/string/suspicious_log_discord_role_id

@@ -112,9 +112,7 @@
 				This ban (BanID #[i["id"]]) was applied on [i["bantime"]] during round ID [i["round_id"]].
 				[expires]"}
 				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
-				if (CONFIG_GET(flag/irc_suspicious_log))
-					var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
-					send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]]) [sus_role_id ? " <@&[sus_role_id]>" : ""]")
+				send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])[sus_role_id ? " <@&[sus_role_id]>" : ""]")
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
 		if (GLOB.directory[ckey])

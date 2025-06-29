@@ -112,6 +112,7 @@
 				This ban (BanID #[i["id"]]) was applied on [i["bantime"]] during round ID [i["round_id"]].
 				[expires]"}
 				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
+				var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
 				send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])[sus_role_id ? " <@&[sus_role_id]>" : ""]")
 				return list("reason"="Banned","desc"="[desc]")
 	if (admin)
@@ -247,9 +248,8 @@
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
-		if (CONFIG_GET(flag/irc_suspicious_log))
-			var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
-			send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]] [sus_role_id ? " <@&[sus_role_id]>" : ""]")
+		var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+		send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]][sus_role_id ? " <@&[sus_role_id]>" : ""]")
 
 	if (!real_bans_only && !C && CONFIG_GET(flag/require_discord_linking))
 		var/discord_id = SSdiscord.lookup_id(ckey)

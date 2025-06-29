@@ -677,3 +677,7 @@
   - sound: Adds glass sounds to heretic potions
   necromanceranne:
   - bugfix: Fixes Phazon fire punches. For real this time. It was tested. It works.
+2025-06-29:
+  skewnoss:
+  - map: added TheiaStation
+  - map: added HelioStation

@@ -274,7 +274,8 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	var/list/cached_track_data = GLOB.web_track_cache[url]
 
 	if(isnull(cached_track_data) || !check_timestamp_list(cached_track_data))
-		var/list/output = world.shelleo("[invoke_youtubedl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_url_scrub(url)]\"")
+		var/cookies = CONFIG_GET(string/ytdl_cookies)
+		var/list/output = world.shelleo("[invoke_youtubedl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist [cookies ? "--cookies [cookies]" : ""] -- \"[shell_url_scrub(url)]\"")
 
 		var/errorlevel = output[SHELLEO_ERRORLEVEL]
 		var/stdout = output[SHELLEO_STDOUT]

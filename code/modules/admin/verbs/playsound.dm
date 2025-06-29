@@ -75,8 +75,9 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 	var/list/music_extra_data = list()
 	var/duration = 0
 	if(istext(input))
+		var/cookies = CONFIG_GET(string/ytdl_cookies)
 		var/shell_scrubbed_input = shell_url_scrub(input)
-		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_scrubbed_input]\"")
+		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist [cookies ? "--cookies [cookies]" : ""] -- \"[shell_scrubbed_input]\"")
 		var/errorlevel = output[SHELLEO_ERRORLEVEL]
 		var/stdout = output[SHELLEO_STDOUT]
 		var/stderr = output[SHELLEO_STDERR]

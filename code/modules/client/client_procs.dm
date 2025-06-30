@@ -378,7 +378,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins(span_adminnotice("[key_name(src)] has been detected as spoofing their byond version. Connection rejected."))
 			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
 			log_suspicious_login("Failed Login: [key] - Spoofed byond version")
-			send2tgs_adminless_only("Failed Login: [key] - Spoofed byond version <@&1386376002946465982>")
+			var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+			send2tgs_adminless_only("Suspicious Log | Failed Login: [key] - Spoofed byond version[sus_role_id ? " <@&[sus_role_id]>" : ""]")
 			qdel(src)
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)

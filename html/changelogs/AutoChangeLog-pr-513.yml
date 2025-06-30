@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "Jukebox ve admin müzikleri yeniden YouTube ile çalışıyor"

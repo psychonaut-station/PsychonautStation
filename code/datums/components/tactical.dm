@@ -47,7 +47,7 @@
 	ADD_TRAIT(user, TRAIT_UNKNOWN, REF(src))
 
 	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
-	name_tag.hide(WEAKREF(src))
+	name_tag?.hide(WEAKREF(src))
 
 	current_slot = slot
 
@@ -111,7 +111,7 @@
 	REMOVE_TRAIT(user, TRAIT_UNKNOWN, REF(src))
 
 	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
-	name_tag.show(WEAKREF(src))
+	name_tag?.show(WEAKREF(src))
 
 ///Checks if a mob is holding us, and if so we will modify our appearance to properly match w/ the mob.
 /datum/component/tactical/proc/tactical_update(obj/item/source)

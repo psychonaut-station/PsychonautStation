@@ -59149,6 +59149,10 @@
 /obj/item/radio/intercom/directional/south,
 /turf/open/floor/iron/dark/diagonal,
 /area/station/service/chapel/funeral)
+"rLB" = (
+/obj/structure/cable/layer1,
+/turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
 "rLL" = (
 /obj/effect/landmark/event_spawn,
 /turf/open/floor/carpet,
@@ -60741,6 +60745,11 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/fore/greater)
+"sJl" = (
+/obj/structure/cable/layer1,
+/obj/structure/cable,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "sJv" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -66024,6 +66033,11 @@
 /obj/effect/landmark/start/hangover,
 /turf/open/floor/wood/large,
 /area/station/service/bar)
+"wcx" = (
+/obj/structure/cable,
+/obj/structure/cable/layer1,
+/turf/open/floor/plating/airless,
+/area/space/nearstation)
 "wdh" = (
 /obj/structure/railing,
 /obj/effect/turf_decal/siding/wideplating_new/dark,
@@ -68946,6 +68960,10 @@
 	},
 /turf/open/floor/engine,
 /area/station/science/xenobiology)
+"xZi" = (
+/obj/structure/cable/multilayer/connected,
+/turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
 "xZk" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
@@ -96211,8 +96229,8 @@ cmN
 cWh
 cWh
 cFL
-cFL
-cFL
+xZi
+rLB
 cqE
 cGl
 cqE
@@ -96995,7 +97013,7 @@ crJ
 crJ
 crJ
 crJ
-crJ
+nXv
 crJ
 crJ
 crJ
@@ -97251,9 +97269,9 @@ crJ
 nXv
 aaH
 nXv
-aaH
-eIE
-aaH
+sJl
+wcx
+sJl
 nXv
 aaH
 cGR
@@ -97508,9 +97526,9 @@ crJ
 quw
 cAu
 aaH
-gXs
-gXs
-gXs
+aaH
+eIE
+aaH
 aaH
 cAu
 ciZ
@@ -99050,9 +99068,9 @@ crJ
 quw
 cAu
 aaH
-gXs
-gXs
-gXs
+aaH
+eIE
+aaH
 aaH
 cAu
 ciZ
@@ -99307,9 +99325,9 @@ crJ
 nXv
 aaH
 nXv
-aaH
-eIE
-aaH
+wcx
+wcx
+wcx
 nXv
 aaH
 cGR
@@ -99565,7 +99583,7 @@ crJ
 crJ
 crJ
 crJ
-crJ
+nXv
 crJ
 crJ
 crJ

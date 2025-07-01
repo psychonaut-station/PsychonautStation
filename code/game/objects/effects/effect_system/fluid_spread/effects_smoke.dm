@@ -143,14 +143,14 @@
 	if(ismob(arrived))
 		var/mob/M = arrived
 		var/obj/effect/abstract/name_tag/name_tag = M.name_tag
-		name_tag.hide(WEAKREF(src))
+		name_tag?.hide(WEAKREF(src))
 
 /obj/effect/particle_effect/fluid/smoke/proc/on_exited(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
 	if(ismob(gone))
 		var/mob/M = gone
 		var/obj/effect/abstract/name_tag/name_tag = M.name_tag
-		name_tag.show(WEAKREF(src))
+		name_tag?.show(WEAKREF(src))
 
 /**
  * Makes the smoke react to nearby opening/closing airlocks and the like.

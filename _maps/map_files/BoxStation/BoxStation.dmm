@@ -32401,9 +32401,6 @@
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "cru" = (
-/obj/effect/turf_decal/stripes/corner{
-	dir = 8
-	},
 /obj/machinery/the_singularitygen/tesla,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
@@ -44752,6 +44749,13 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark/herringbone,
 /area/station/commons/dorms)
+"iLV" = (
+/obj/machinery/power/energy_accumulator/rad_collector,
+/obj/effect/turf_decal/stripes/corner{
+	dir = 8
+	},
+/turf/open/floor/plating,
+/area/station/engineering/singularity/room)
 "iMl" = (
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
@@ -99317,7 +99321,7 @@ cDH
 cDH
 jQo
 jQo
-nXv
+jQo
 nXv
 nXv
 nXv
@@ -99572,8 +99576,8 @@ cGd
 cDH
 crt
 cql
+cqb
 cDG
-jQo
 jQo
 jQo
 efH
@@ -99830,7 +99834,7 @@ cFN
 cFJ
 cDx
 cru
-cqb
+iLV
 csb
 jQo
 jQo

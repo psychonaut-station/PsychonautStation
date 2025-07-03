@@ -29555,8 +29555,8 @@
 /turf/open/floor/engine/xenobio,
 /area/station/science/xenobiology)
 "cai" = (
-/obj/machinery/power/smes/full,
 /obj/structure/cable,
+/obj/machinery/power/smes/engineering,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/tcommsat/server)
 "cak" = (

@@ -1,4 +1,5 @@
-import { filter, sortBy } from 'common/collections';
+import { sortBy } from 'es-toolkit';
+import { filter } from 'es-toolkit/compat';
 import { ReactNode, useState } from 'react';
 import {
   Box,
@@ -131,7 +132,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
       ([gas_path, amount]) => amount !== 0,
     );
   }
-  gas_composition = sortBy(gas_composition, ([gas_path, amount]) => -amount);
+  gas_composition = sortBy(gas_composition, [([gas_path, amount]) => -amount]);
 
   return (
     <Stack height="100%">

@@ -1,4 +1,0 @@
-author: "skewnoss"
-delete-after: True
-changes:
-  - bugfix: "Removed duplicate Captain's Spare ID Safe from HelioStation\n:cl:"

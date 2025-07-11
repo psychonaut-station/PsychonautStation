@@ -156,7 +156,11 @@
 #define LOG_CATEGORY_GAME_TRAITOR "game-traitor"
 #define LOG_CATEGORY_GAME_VOTE "game-vote"
 #define LOG_CATEGORY_GAME_WHISPER "game-whisper"
+<<<<<<< HEAD
 #define LOG_CATEGORY_GAME_HALLUCINATION "game-hallucination"
+=======
+#define LOG_CATEGORY_GAME_GHOST_POLLS "game-ghost-polls"
+>>>>>>> 17809430bcf33d15b2f1c8f68686f9a204588354
 
 // HREF categories
 #define LOG_CATEGORY_HREF "href"

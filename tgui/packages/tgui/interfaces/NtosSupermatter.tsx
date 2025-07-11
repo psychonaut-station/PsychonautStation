@@ -4,12 +4,16 @@ import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
+<<<<<<< HEAD
 import {
   SingularityContent,
   SingularityTeslaData,
   TeslaContent,
 } from './SingularityTesla';
 import { SupermatterContent, SupermatterData } from './Supermatter';
+=======
+import { SupermatterContent, type SupermatterData } from './Supermatter';
+>>>>>>> 17809430bcf33d15b2f1c8f68686f9a204588354
 
 type NtosSupermatterData = SupermatterData &
   SingularityTeslaData & {

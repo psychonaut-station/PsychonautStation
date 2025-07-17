@@ -1,4 +1,3 @@
-
 //Hydraulic clamp, Kill clamp, Extinguisher, RCD, Cable layer.
 
 
@@ -402,3 +401,73 @@
 		to_chat(user, span_warning("This kit cannot be applied with hardpoint equipment attached."))
 		return FALSE
 	return ..()
+
+/obj/item/mecha_parts/mecha_equipment/durandupgrade
+	name = "Durand Conversion Kit"
+	desc = "A modkit for Durand."
+	icon_state = "ripleyupgrade"
+	mech_flags = EXOSUIT_MODULE_DURAND
+	var/result = /obj/vehicle/sealed/mecha/marauder/mauler
+
+/obj/item/mecha_parts/mecha_equipment/durandupgrade/attach(obj/vehicle/sealed/mecha/markone, attach_right = FALSE)
+	var/obj/vehicle/sealed/mecha/newmech = new result(get_turf(markone),1)
+	if(!newmech)
+		return
+	QDEL_NULL(newmech.cell)
+	if (markone.cell)
+		newmech.cell = markone.cell
+		markone.cell.forceMove(newmech)
+		markone.cell = null
+	QDEL_NULL(newmech.scanmod)
+	if (markone.scanmod)
+		newmech.scanmod = markone.scanmod
+		markone.scanmod.forceMove(newmech)
+		markone.scanmod = null
+	QDEL_NULL(newmech.capacitor)
+	if (markone.capacitor)
+		newmech.capacitor = markone.capacitor
+		markone.capacitor.forceMove(newmech)
+		markone.capacitor = null
+	QDEL_NULL(newmech.servo)
+	if (markone.servo)
+		newmech.servo = markone.servo
+		markone.servo.forceMove(newmech)
+		markone.servo = null
+	newmech.update_part_values()
+	for(var/obj/item/mecha_parts/mecha_equipment/equipment in markone.flat_equipment) //Move the equipment over...
+		if(istype(equipment, /obj/item/mecha_parts/mecha_equipment/ejector))
+			continue //the new mech already has one.
+		var/righthandgun = markone.equip_by_category[MECHA_R_ARM] == equipment
+		equipment.detach(newmech)
+		equipment.attach(newmech, righthandgun)
+	newmech.dna_lock = markone.dna_lock
+	newmech.mecha_flags |= markone.mecha_flags & ~initial(markone.mecha_flags) // transfer any non-inherent flags like PANEL_OPEN and LIGHTS_ON
+	newmech.set_light_on(newmech.mecha_flags & LIGHTS_ON) // in case the lights were on
+	newmech.strafe = markone.strafe
+	//Integ set to the same percentage integ as the old mecha, rounded to be whole number
+	newmech.update_integrity(round((markone.get_integrity() / markone.max_integrity) * newmech.get_integrity()))
+	if(markone.name != initial(markone.name))
+		newmech.name = markone.name
+	markone.wreckage = FALSE
+	if(HAS_TRAIT(markone, TRAIT_MECHA_CREATED_NORMALLY))
+		ADD_TRAIT(newmech, TRAIT_MECHA_CREATED_NORMALLY, newmech)
+	qdel(markone)
+	playsound(get_turf(newmech),'sound/items/tools/ratchet.ogg',50,TRUE)
+
+/obj/item/mecha_parts/mecha_equipment/durandupgrade/can_attach(obj/vehicle/sealed/mecha/durand/mecha, attach_right = FALSE, mob/user)
+	if(mecha.type != /obj/vehicle/sealed/mecha/durand)
+		to_chat(user, span_warning("This conversion kit can only be applied to Durand models."))
+		return FALSE
+	var/obj/vehicle/sealed/mecha/durand/workmech = mecha
+	// Durand mechas do not have a cargo_hold, so skip this check.
+	// No cargo_hold check needed for Durand.
+	if(!(mecha.mecha_flags & PANEL_OPEN)) //non-removable upgrade, so lets make sure the pilot or owner has their say.
+		to_chat(user, span_warning("[mecha] panel must be open in order to allow this conversion kit."))
+		return FALSE
+	if(LAZYLEN(mecha.occupants)) //We're actually making a new mech and swapping things over, it might get weird if players are involved
+		to_chat(user, span_warning("[mecha] must be unoccupied before this conversion kit can be applied."))
+		return FALSE
+	if(!mecha.cell) //Turns out things break if the cell is missing
+		to_chat(user, span_warning("The conversion process requires a cell installed."))
+		return FALSE
+	return TRUE

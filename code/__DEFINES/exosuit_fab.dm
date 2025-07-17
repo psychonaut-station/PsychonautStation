@@ -39,8 +39,6 @@
 #define EXOSUIT_MODULE_PADDY (1<<11)
 /// Module is compatible with Justice models
 #define EXOSUIT_MODULE_JUSTICE (1<<12)
-/// Module is compatible with Justice models
-#define EXOSUIT_MODULE_DURAND (1<<13)
 
 /// Module is compatible with "Working" Exosuit models - Ripley and Clarke
 #define EXOSUIT_MODULE_WORKING (EXOSUIT_MODULE_RIPLEY | EXOSUIT_MODULE_CLARKE)

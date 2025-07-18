@@ -38,6 +38,11 @@
 /proc/log_vote(text, list/data)
 	logger.Log(LOG_CATEGORY_GAME_VOTE, text, data)
 
+<<<<<<< HEAD
 /// Logging for hallucinations
 /proc/log_hallucination(text, list/data)
 	logger.Log(LOG_CATEGORY_GAME_HALLUCINATION, text, data)
+=======
+/proc/log_ghost_poll(text, list/data)
+	logger.Log(LOG_CATEGORY_GAME_GHOST_POLLS, text, data)
+>>>>>>> b53e9316697481ab66cee7f749057961fa76d1fc

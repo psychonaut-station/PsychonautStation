@@ -218,7 +218,7 @@ export const TeslaContent = (props: TeslaProps) => {
       ([gas_path, amount]) => amount !== 0,
     );
   }
-  gas_composition = sortBy(gas_composition, ([gas_path, amount]) => -amount);
+  gas_composition = sortBy(gas_composition, [([gas_path, amount]) => -amount]);
 
   return (
     <Stack height="100%">

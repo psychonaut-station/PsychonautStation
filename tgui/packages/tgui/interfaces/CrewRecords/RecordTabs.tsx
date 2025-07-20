@@ -30,7 +30,7 @@ export const CrewRecordTabs = (props) => {
 
   const sorted: CrewRecord[] = sortBy(
     filter(records, (record) => isRecordMatch(record, search)),
-    (record) => record.name?.toLowerCase(),
+    [(record) => record.name?.toLowerCase()],
   );
 
   return (

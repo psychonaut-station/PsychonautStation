@@ -473,7 +473,8 @@ no power level overlay is currently in the overlays list.
 		src,
 		"DANGER: Field generator has been destroyed! Containment field is shutting down!",
 		null,
-		list(SPAN_COMMAND)
+		list(SPAN_COMMAND),
+		/datum/language/common
 	)
 	QDEL_NULL(radio)
 	return ..()

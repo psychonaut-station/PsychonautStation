@@ -37143,8 +37143,8 @@
 "neG" = (
 /obj/structure/closet,
 /obj/item/clothing/under/costume/seifuku,
-/obj/item/clothing/under/costume/seifuku/green,
-/obj/item/clothing/under/costume/seifuku/orange,
+/obj/item/clothing/under/costume/seifuku/teal,
+/obj/item/clothing/under/costume/seifuku/tan,
 /obj/item/clothing/under/costume/seifuku/red,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine/atmos)

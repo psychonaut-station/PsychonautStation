@@ -469,13 +469,13 @@ no power level overlay is currently in the overlays list.
 	radio.recalculateChannels()
 
 /obj/machinery/field/generator/singularity/Destroy()
-	QDEL_NULL(radio)
 	radio.talk_into(
 		src,
 		"DANGER: Field generator has been destroyed! Containment field is shutting down!",
 		null,
 		list(SPAN_COMMAND)
 	)
+	QDEL_NULL(radio)
 	return ..()
 
 /obj/machinery/field/generator/singularity/calc_power(set_power_draw)

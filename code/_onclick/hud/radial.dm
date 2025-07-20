@@ -272,7 +272,9 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			info_button.layer = RADIAL_CONTENT_LAYER
 			E.vis_contents += info_button
 		if (choice_datum?.warning)
-			var/obj/effect/abstract/warning/warning_button = new(E)
+			var/obj/effect/abstract/warning/warning_button = new(E, choice_datum.warning)
+			warning_button.name = "Warning: [E.name]"
+			warning_button.tooltip_theme = choice_datum.tooltip_theme
 			SET_PLANE_EXPLICIT(warning_button, ABOVE_HUD_PLANE, anchor)
 			warning_button.layer = RADIAL_CONTENT_LAYER
 			E.vis_contents += warning_button
@@ -442,13 +444,11 @@ GLOBAL_LIST_EMPTY(radial_menus)
 	/// If provided, will display an info button that will put this text in your chat
 	var/info
 
-<<<<<<< HEAD
-	/// If its true, will display an warning indicator
-	var/warning = FALSE
-=======
+	/// If provided, will display an warning button that will put this text in your chat
+	var/warning
+
 	/// If provided, changes the tooltip theme for this choice
 	var/tooltip_theme
->>>>>>> b53e9316697481ab66cee7f749057961fa76d1fc
 
 /datum/radial_menu_choice/Destroy(force)
 	. = ..()

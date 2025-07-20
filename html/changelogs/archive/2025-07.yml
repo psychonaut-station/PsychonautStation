@@ -1,14 +1,7 @@
 2025-07-01:
-<<<<<<< HEAD
   Seefaaa:
   - bugfix: "Jukebox ve admin m\xFCzikleri yeniden YouTube ile \xE7al\u0131\u015F\u0131\
       yor"
-2025-07-04:
-  skewnoss:
-  - bugfix: 'Removed duplicate Captain''s Spare ID Safe from HelioStation
-
-      :cl:'
-=======
   Twaticus:
   - image: resprites the maid uniform and headband using GAGs
   - rscdel: removes standalone maid neckpiece, gloves, and corset
@@ -88,6 +81,8 @@
   - balance: Regenerative black extract can no longer be used to create infinite voidwalker
       loot skulls
 2025-07-04:
+  skewnoss:
+  - bugfix: Removed duplicate Captain''s Spare ID Safe from HelioStation
   KingMapache:
   - rscadd: Added felinid tongue to the felinid disk from research of the limbgrower
   Melbert:
@@ -482,4 +477,3 @@
       hijacked.
   SmArtKar:
   - bugfix: Fixed projectiles inheriting gun's pixel offsets when fired
->>>>>>> b53e9316697481ab66cee7f749057961fa76d1fc

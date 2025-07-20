@@ -4,16 +4,12 @@ import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
-<<<<<<< HEAD
 import {
   SingularityContent,
-  SingularityTeslaData,
+  type SingularityTeslaData,
   TeslaContent,
 } from './SingularityTesla';
-import { SupermatterContent, SupermatterData } from './Supermatter';
-=======
 import { SupermatterContent, type SupermatterData } from './Supermatter';
->>>>>>> b53e9316697481ab66cee7f749057961fa76d1fc
 
 type NtosSupermatterData = SupermatterData &
   SingularityTeslaData & {
@@ -47,7 +43,6 @@ export const NtosSupermatter = (props) => {
             setActiveUID={setActiveUID}
           />
         ) : (
-<<<<<<< HEAD
           <>
             <Section
               title="Detected Supermatters"
@@ -62,7 +57,7 @@ export const NtosSupermatter = (props) => {
               <Table>
                 {sm_data.map((sm) => (
                   <Table.Row key={sm.uid}>
-                    <Table.Cell>{sm.id + '. ' + sm.area_name}</Table.Cell>
+                    <Table.Cell>{`${sm.id}. ${sm.area_name}`}</Table.Cell>
                     <Table.Cell collapsing color="label">
                       Integrity:
                     </Table.Cell>
@@ -107,9 +102,7 @@ export const NtosSupermatter = (props) => {
                 <Table>
                   {anomaly_data.map((anomaly) => (
                     <Table.Row key={anomaly.uid}>
-                      <Table.Cell>
-                        {anomaly.id}. {capitalizeAll(anomaly.name)}
-                      </Table.Cell>
+                      <Table.Cell>{`${anomaly.id}. ${capitalizeAll(anomaly.name)}`}</Table.Cell>
 
                       <Table.Cell collapsing>
                         <Button
@@ -123,52 +116,6 @@ export const NtosSupermatter = (props) => {
               </Section>
             )}
           </>
-=======
-          <Section
-            title="Detected Supermatters"
-            buttons={
-              <Button
-                icon="sync"
-                content="Refresh"
-                onClick={() => act('PRG_refresh')}
-              />
-            }
-          >
-            <Table>
-              {sm_data.map((sm) => (
-                <Table.Row key={sm.uid}>
-                  <Table.Cell>{`${sm.uid}. ${sm.area_name}`}</Table.Cell>
-                  <Table.Cell collapsing color="label">
-                    Integrity:
-                  </Table.Cell>
-                  <Table.Cell collapsing width="120px">
-                    <ProgressBar
-                      value={sm.integrity / 100}
-                      ranges={{
-                        good: [0.9, Infinity],
-                        average: [0.5, 0.9],
-                        bad: [-Infinity, 0.5],
-                      }}
-                    />
-                  </Table.Cell>
-                  <Table.Cell collapsing>
-                    <Button
-                      icon="bell"
-                      color={focus_uid === sm.uid && 'yellow'}
-                      onClick={() => act('PRG_focus', { focus_uid: sm.uid })}
-                    />
-                  </Table.Cell>
-                  <Table.Cell collapsing>
-                    <Button
-                      content="Details"
-                      onClick={() => setActiveUID(sm.uid)}
-                    />
-                  </Table.Cell>
-                </Table.Row>
-              ))}
-            </Table>
-          </Section>
->>>>>>> b53e9316697481ab66cee7f749057961fa76d1fc
         )}
       </NtosWindow.Content>
     </NtosWindow>

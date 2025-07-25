@@ -34,8 +34,8 @@
 
 	for (var/datum/species/arachnid_type as anything in typesof(/datum/species/arachnid))
 		var/mob/living/carbon/human/arachnid = allocate(/mob/living/carbon/human/dummy/consistent)
-		arachnid.dna.features["mcolor"] = "#382928"
-		arachnid.dna.features["arachnid_appendages"] = "Long"
+		arachnid.dna.features[FEATURE_MUTANT_COLOR] = "#382928"
+		arachnid.dna.features[FEATURE_ARACHNID_APPENDAGES] = "Long"
 		arachnid.eye_color_left = COLOR_SILVER
 		arachnid.eye_color_right = COLOR_SILVER
 		arachnid.set_species(arachnid_type)

@@ -1863,11 +1863,7 @@
 #include "code\datums\quirks\negative_quirks\unstable.dm"
 #include "code\datums\quirks\negative_quirks\unusual.dm"
 #include "code\datums\quirks\neutral_quirks\bald.dm"
-<<<<<<< HEAD
-#include "code\datums\quirks\neutral_quirks\borg_ready.dm"
 #include "code\datums\quirks\neutral_quirks\collector.dm"
-=======
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 #include "code\datums\quirks\neutral_quirks\deviant_tastes.dm"
 #include "code\datums\quirks\neutral_quirks\evil.dm"
 #include "code\datums\quirks\neutral_quirks\extrovert.dm"
@@ -2455,11 +2451,7 @@
 #include "code\game\objects\effects\temporary_visuals\projectiles\muzzle.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\projectile_effects.dm"
 #include "code\game\objects\effects\temporary_visuals\projectiles\tracer.dm"
-<<<<<<< HEAD
-#include "code\game\objects\items\airlock_painter.dm"
 #include "code\game\objects\items\anomaly_kinesis.dm"
-=======
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 #include "code\game\objects\items\apc_frame.dm"
 #include "code\game\objects\items\bear_armor.dm"
 #include "code\game\objects\items\binoculars.dm"

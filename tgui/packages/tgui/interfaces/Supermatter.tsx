@@ -140,11 +140,7 @@ export const SupermatterContent = (props: SupermatterProps) => {
         <Section
           fill
           scrollable
-<<<<<<< HEAD
-          title={id + '. ' + area_name}
-=======
-          title={`${uid}. ${area_name}`}
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
+          title={`${id}. ${area_name}`}
           buttons={sectionButton}
         >
           <Stack vertical>

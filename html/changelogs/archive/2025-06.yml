@@ -667,33 +667,25 @@
   jlsnow301:
   - bugfix: Fixed a bluescreen in the cooking menu.
 2025-06-28:
-<<<<<<< HEAD
-=======
   FeudeyTF:
   - rscadd: Added ability to change existing radio channels and create new
   - qol: Added color for some buttons in Telecomms UI
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
   LemonInTheDark:
   - bugfix: Fixed your theme being used for ghost language/multiz buttons
   - image: Updated multiz buttons very slightly
   - image: Added ghost only language menu/multiz buttons
-<<<<<<< HEAD
   Rengan:
   - rscadd: "P\u0130xel Shifting eklendi."
-=======
   SmArtKar:
   - bugfix: Fixed jaws of life losing hit sounds when swapped twice
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
   carlarctg:
   - sound: Adds glass sounds to heretic potions
   necromanceranne:
   - bugfix: Fixes Phazon fire punches. For real this time. It was tested. It works.
 2025-06-29:
-<<<<<<< HEAD
   skewnoss:
   - map: added TheiaStation
   - map: added HelioStation
-=======
   EuSouAFazer:
   - map: The R&D Console and Department Protolathe have been moved from the back to
       the front desk in Catwalk
@@ -757,4 +749,3 @@
       with sounds not playing!
   lelandkemble:
   - bugfix: makes raw meatpizza appear correctly in cooking menu
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4

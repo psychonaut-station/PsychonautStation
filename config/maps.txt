@@ -17,14 +17,6 @@ endmap
 
 # Production-level maps.
 
-<<<<<<< HEAD
-map birdshot
-	maxplayers 66
-	votable
-endmap
-
-=======
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 map deltastation
 	minplayers 0
 	votable

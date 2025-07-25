@@ -90,15 +90,9 @@
 			in addition to dealing high amounts of damage to nearby personnel."
 	progression_minimum = 30 MINUTES
 	item = /obj/item/grenade/syndieminibomb
-<<<<<<< HEAD
-	cost = 6
-	purchasable_from = ~(UPLINK_CLOWN_OPS)
-
-=======
 	cost = 2
 	limited_stock = 4
 	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS /// Ops get their own version.
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 
 /datum/uplink_item/explosives/syndicate_bomb/emp
 	name = "Syndicate EMP Bomb"

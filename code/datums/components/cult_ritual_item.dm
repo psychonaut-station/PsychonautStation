@@ -372,15 +372,9 @@
 	var/area/summon_location = get_area(cultist)
 	var/static/cult_music_played = FALSE
 	priority_announce(
-<<<<<<< HEAD
 		text = "Tanrı katından gelen yaratıklar, [cultist.real_name] tarafından bilinmeyen bir boyuttan [summon_location.get_original_area_name()] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
-		sound = 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
-		sender_override = "[command_name()] Üst Boyutlu İlişkiler",
-=======
-		text = "Figments from an eldritch god are being summoned by [cultist.real_name] into [summon_location.get_original_area_name()] from an unknown dimension. Disrupt the ritual at all costs!",
 		sound = cult_music_played ? 'sound/announcer/notice/notice3.ogg' : 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
-		sender_override = "[command_name()] Higher Dimensional Affairs",
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
+		sender_override = "[command_name()] Üst Boyutlu İlişkiler",
 		has_important_message = TRUE,
 	)
 	cult_music_played = TRUE

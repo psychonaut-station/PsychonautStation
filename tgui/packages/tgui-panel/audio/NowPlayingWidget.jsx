@@ -30,7 +30,6 @@ export const NowPlayingWidget = (props) => {
       : upload_date;
 
   return (
-<<<<<<< HEAD
     <Flex>
       <Flex.Item grow={1}>
         <Flex direction="column">
@@ -50,7 +49,7 @@ export const NowPlayingWidget = (props) => {
                     <Section>
                       {URL !== 'Song Link Hidden' && (
                         <Flex.Item grow={1} color="label">
-                          URL: {URL}
+                          URL: <a href={URL}>{URL}</a>
                         </Flex.Item>
                       )}
                       <Flex.Item grow={1} color="label">
@@ -76,29 +75,6 @@ export const NowPlayingWidget = (props) => {
                         )}
                     </Section>
                   </Collapsible>
-=======
-    <Flex align="center">
-      {(audio.playing && (
-        <Flex.Item
-          mx={0.5}
-          grow={1}
-          style={{
-            whiteSpace: 'nowrap',
-            overflow: 'hidden',
-            textOverflow: 'ellipsis',
-          }}
-        >
-          {
-            <Collapsible title={title || 'Unknown Track'} color={'blue'}>
-              <Section>
-                {URL !== 'Song Link Hidden' && (
-                  <Flex.Item grow={1} color="label">
-                    URL: <a href={URL}>{URL}</a>
-                  </Flex.Item>
-                )}
-                <Flex.Item grow={1} color="label">
-                  Duration: {duration}
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
                 </Flex.Item>
                 <Flex.Item mx={0.5} fontSize="0.9em">
                   <Button

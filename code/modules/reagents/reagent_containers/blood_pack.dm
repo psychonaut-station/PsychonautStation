@@ -15,31 +15,9 @@
 	var/datum/blood_type/bloodtype = get_blood_type(blood_type)
 	reagents.add_reagent(bloodtype.reagent_type, volume, list("blood_type" = bloodtype, "blood_DNA" = bloodtype.dna_string), creation_callback = CALLBACK(src, PROC_REF(on_blood_created)))
 
-<<<<<<< HEAD
-/// Handles updating the container when the reagents change.
-/obj/item/reagent_containers/blood/on_reagent_change(datum/reagents/holder, ...)
-	var/datum/reagent/blood/new_reagent = holder.has_reagent(/datum/reagent/blood)
-	if(new_reagent && new_reagent.data && new_reagent.data["blood_type"])
-		var/datum/blood_type/blood_type = new_reagent.data["blood_type"]
-		blood_type = blood_type.name
-	else if(holder.has_reagent(/datum/reagent/consumable/liquidelectricity))
-		blood_type = BLOOD_TYPE_ETHEREAL
-	else if(holder.has_reagent(/datum/reagent/lube))
-		blood_type = BLOOD_TYPE_SNAIL
-	else if(holder.has_reagent(/datum/reagent/water))
-		blood_type = BLOOD_TYPE_H2O
-	else if(holder.has_reagent(/datum/reagent/toxin/slimejelly))
-		blood_type = BLOOD_TYPE_TOX
-	else if(holder.has_reagent(/datum/reagent/fuel/oil))
-		blood_type = BLOOD_TYPE_OIL
-	else
-		blood_type = null
-	return ..()
-=======
 /obj/item/reagent_containers/blood/proc/on_blood_created(datum/reagent/new_blood)
 	new_blood.AddElement(/datum/element/blood_reagent, null, get_blood_type(blood_type))
 	update_appearance()
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 
 /obj/item/reagent_containers/blood/update_name(updates)
 	. = ..()
@@ -94,12 +72,11 @@
 
 // for IPCs
 /obj/item/reagent_containers/blood/oil
-	blood_type = "LPG"
-	unique_blood = /datum/reagent/fuel/oil
+	blood_type = BLOOD_TYPE_OIL
 
 /obj/item/reagent_containers/blood/oil/examine()
 	. = ..()
-	. += span_notice("There is a flammable warning on the label. This is for IPCs.")
+	. += span_notice("There is a flammable warning on the label.")
 
 // for slimepeople
 /obj/item/reagent_containers/blood/toxin

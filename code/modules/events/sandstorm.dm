@@ -50,13 +50,8 @@
 			kill()
 			return
 
-<<<<<<< HEAD
 	priority_announce("Büyük bir uzay tozu dalgası istasyonun [start_side_text] tarafından yaklaşıyor. \
 		Etkinin önümüzdeki iki dakika içinde gerçekleşmesi beklenmektedir. Tüm çalışanlar mümkünse onarım ve hasar azaltma çalışmalarına yardımcı olmaya teşvik edilmelidir.", "Çarpışma Acil Durum Uyarısı")
-=======
-	priority_announce("A large wave of space dust is approaching from the [start_side_text] side of the station. \
-		Impact is expected in the next two minutes. All employees are encouraged to assist in repairs and damage mitigation if possible.", "Collision Emergency Alert")
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 
 /datum/round_event/sandstorm/tick()
 	spawn_meteors(15, GLOB.meteors_sandstorm, start_side)

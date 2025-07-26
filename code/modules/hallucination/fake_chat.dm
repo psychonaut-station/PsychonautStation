@@ -55,6 +55,7 @@
 	// Get person to affect if radio hallucination
 	var/is_radio = force_radio || isnull(speaker)
 	var/radio_channel = FREQ_COMMON
+	var/radio_channel_name = RADIO_CHANNEL_COMMON
 	var/list/target_dept = null
 
 	// Contents of our message
@@ -64,14 +65,17 @@
 		if(prob(50))
 			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
 				radio_channel = FREQ_ENGINEERING
+				radio_channel_name = RADIO_CHANNEL_ENGINEERING
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_ENGINEERING)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "eng_radio")
 			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SECURITY))
 				radio_channel = FREQ_SECURITY
+				radio_channel_name = RADIO_CHANNEL_SECURITY
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SECURITY)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "sec_radio")
 			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SCIENCE))
 				radio_channel = FREQ_SCIENCE
+				radio_channel_name = RADIO_CHANNEL_SCIENCE
 				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SCIENCE)
 				chosen = pick_list_replacements(HALLUCINATION_FILE, "sci_radio")
 
@@ -138,11 +142,8 @@
 		hallucinator.create_chat_message(speaker, understood_language, chosen, spans)
 
 	// And actually show them the message, for real.
-<<<<<<< HEAD
-	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[radio_channel]" : null, spans, visible_name = TRUE)
-=======
-	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[FREQ_COMMON]" : null, is_radio ? RADIO_CHANNEL_COMMON : null, is_radio ? RADIO_COLOR_COMMON : null, spans, visible_name = TRUE)
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
+	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[radio_channel]" : null, is_radio ? radio_channel_name : null, is_radio ? RADIO_COLOR_COMMON : null, spans, visible_name = TRUE)
+
 	to_chat(hallucinator, message)
 	hallucinator.log_message("Fake chatter [speaker]: '[chosen]'", LOG_HALLUCINATION)
 

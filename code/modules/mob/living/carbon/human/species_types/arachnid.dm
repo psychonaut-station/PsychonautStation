@@ -42,8 +42,8 @@
 		damage_mods += 30 // Yes, a 30x damage modifier
 
 /datum/species/arachnid/prepare_human_for_preview(mob/living/carbon/human/human)
-	human.dna.features["mcolor"] = "#382928"
-	human.dna.features["arachnid_appendages"] = "Long"
+	human.dna.features[FEATURE_MUTANT_COLOR] = "#382928"
+	human.dna.features[FEATURE_ARACHNID_APPENDAGES] = "Long"
 	human.eye_color_left = COLOR_SILVER
 	human.eye_color_right = COLOR_SILVER
 	human.update_body(is_creating = TRUE)

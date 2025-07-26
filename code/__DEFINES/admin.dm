@@ -104,10 +104,9 @@
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
 
-<<<<<<< HEAD
 #define TICKET_TYPE_ADMIN 0
 #define TICKET_TYPE_MENTOR 1
-=======
+
 // Page numbers for the Permission Panel
 #define PERMISSIONS_PAGE_PERMISSIONS 1
 #define PERMISSIONS_PAGE_RANKS 2
@@ -129,7 +128,6 @@
 #define RANK_SOURCE_DB "rank_db"
 #define RANK_SOURCE_BACKUP "rank_backup"
 #define RANK_SOURCE_TEMPORARY "rank_temp"
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 
 /// Amount of time after the round starts that the player disconnect report is issued.
 #define ROUNDSTART_LOGOUT_REPORT_TIME (10 MINUTES)

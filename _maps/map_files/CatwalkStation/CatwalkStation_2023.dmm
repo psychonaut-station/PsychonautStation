@@ -3836,12 +3836,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/ai_monitored/turret_protected/ai_upload)
-<<<<<<< HEAD
-"bjN" = (
-/obj/machinery/photocopier/prebuilt,
-/turf/open/floor/glass,
-/area/station/security/brig)
-=======
 "bkc" = (
 /obj/machinery/light/warm/directional/west,
 /obj/machinery/computer/mech_bay_power_console{
@@ -3849,7 +3843,6 @@
 	},
 /turf/open/floor/iron/smooth,
 /area/station/science/robotics)
->>>>>>> 1b1cc1f668ad88bc1e974844700b37d1d054b6f4
 "bki" = (
 /obj/structure/table/reinforced,
 /obj/machinery/door/firedoor,
@@ -35472,7 +35465,7 @@
 /turf/open/floor/iron/dark,
 /area/station/commons/dorms)
 "kqI" = (
-/obj/machinery/photocopier,
+/obj/machinery/photocopier/prebuilt,
 /turf/open/floor/glass,
 /area/station/security/brig)
 "kra" = (

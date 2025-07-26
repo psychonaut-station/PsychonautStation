@@ -37427,7 +37427,7 @@
 /obj/item/stack/medical/gauze{
 	pixel_x = 8
 	},
-/obj/item/stack/medical/_maps/map_files/Heliostation/Heliostation.dmm,
+/obj/item/stack/medical/bandage,
 /obj/effect/turf_decal/tile/blue/anticorner/contrasted{
 	dir = 4
 	},

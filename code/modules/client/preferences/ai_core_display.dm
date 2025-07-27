@@ -11,6 +11,8 @@
 /datum/preference/choiced/ai_core_display/icon_for(value)
 	if (value == "Random")
 		return uni_icon('icons/mob/silicon/ai.dmi', "questionmark")
+	else if(GLOB.ai_core_display_screen_icons.Find(value))
+		return uni_icon(GLOB.ai_core_display_screen_icons[value], resolve_ai_icon_sync(value))
 	else
 		return uni_icon('icons/mob/silicon/ai.dmi', resolve_ai_icon_sync(value))
 

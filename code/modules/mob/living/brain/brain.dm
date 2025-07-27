@@ -9,7 +9,7 @@
 /mob/living/brain/Initialize(mapload)
 	. = ..()
 	create_dna(src)
-	stored_dna.initialize_dna(random_blood_type())
+	stored_dna.initialize_dna(random_human_blood_type())
 	if(isturf(loc)) //not spawned in an MMI or brain organ (most likely adminspawned)
 		var/obj/item/organ/brain/OB = new(loc) //we create a new brain organ for it.
 		OB.brainmob = src
@@ -111,3 +111,8 @@
 
 	if(container)
 		. += "[container.type]"
+
+/mob/living/brain/get_mob_appearance()
+	if(!isnull(container))
+		return container.appearance
+	return ..()

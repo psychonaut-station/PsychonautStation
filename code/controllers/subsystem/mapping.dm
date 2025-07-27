@@ -89,6 +89,9 @@ SUBSYSTEM_DEF(mapping)
 	/// list of lazy templates that have been loaded
 	var/list/loaded_lazy_templates
 
+	/// List of bounds of the current station map by groups
+	var/list/all_offsets = list()
+
 	var/list/machines_delete_after = list()
 
 	var/list/modular_room_templates = list()
@@ -351,7 +354,6 @@ Used by the AI doomsday and the self-destruct nuke.
 	else
 		GLOB.arcade_prize_pool += /obj/item/stack/tile/fakespace/loaded
 
-
 /datum/controller/subsystem/mapping/Recover()
 	flags |= SS_NO_INIT
 	initialized = SSmapping.initialized
@@ -433,6 +435,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		var/bounds = pm.bounds
 		var/x_offset = bounds ? round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1 : 1
 		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
+		all_offsets[name] = list("x" = x_offset, "y" = y_offset)
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
@@ -451,7 +454,7 @@ Used by the AI doomsday and the self-destruct nuke.
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION, height_autosetup = current_map.height_autosetup)
 
-	load_station_room_templates()
+	load_room_templates()
 
 	if(CONFIG_GET(flag/allow_randomized_rooms))
 		pick_room_types()
@@ -466,9 +469,9 @@ Used by the AI doomsday and the self-destruct nuke.
 
 #ifndef LOWMEMORYMODE
 
-	if(current_map.minetype == "lavaland")
+	if(current_map.minetype == MINETYPE_LAVALAND)
 		LoadGroup(FailedZs, "Lavaland", "map_files/Mining", "Lavaland.dmm", default_traits = ZTRAITS_LAVALAND)
-	else if (!isnull(current_map.minetype) && current_map.minetype != "none")
+	else if (!isnull(current_map.minetype) && current_map.minetype != MINETYPE_NONE && current_map.minetype != MINETYPE_ICE)
 		INIT_ANNOUNCE("WARNING: An unknown minetype '[current_map.minetype]' was set! This is being ignored! Update the maploader code!")
 #endif
 
@@ -529,7 +532,7 @@ GLOBAL_LIST_EMPTY(the_station_areas)
 /datum/controller/subsystem/mapping/proc/preloadRuinTemplates()
 	// Still supporting bans by filename
 	var/list/banned = generateMapList("spaceruinblacklist.txt")
-	if(current_map.minetype == "lavaland")
+	if(current_map.minetype == MINETYPE_LAVALAND)
 		banned += generateMapList("lavaruinblacklist.txt")
 	else if(current_map.blacklist_file)
 		banned += generateMapList(current_map.blacklist_file)
@@ -979,7 +982,14 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		machines_delete_after -= prior_item
 	QDEL_LIST(machines_delete_after)
 
-/datum/controller/subsystem/mapping/proc/load_station_room_templates()
+/datum/controller/subsystem/mapping/proc/locate_spawner_turf(datum/map_template/modular_room/room)
+	var/list/offsets = all_offsets[room.group]
+	var/coordinate_x = (offsets["x"] - 1) + room.coordinates["x"]
+	var/coordinate_y = (offsets["y"] - 1) + room.coordinates["y"]
+	var/turf/target = locate(coordinate_x, coordinate_y, room.coordinates["z"])
+	return target
+
+/datum/controller/subsystem/mapping/proc/load_room_templates()
 	for(var/item in subtypesof(/datum/map_template/modular_room))
 		var/datum/map_template/modular_room/room_type = item
 		var/datum/map_template/modular_room/R = new room_type()
@@ -990,7 +1000,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 				create_room_spawner(R, R.room_type)
 
 /datum/controller/subsystem/mapping/proc/create_room_spawner(datum/map_template/modular_room/room, roomtype)
-	var/turf/target = locate(room.coordinates["x"], room.coordinates["y"], room.coordinates["z"])
+	var/turf/target = locate_spawner_turf(room)
 	var/obj/effect/landmark/random_room/room_spawner = new(target)
 	room_spawner.room_width = room.template_width
 	room_spawner.room_height = room.template_height
@@ -1005,6 +1015,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(force)
 		picked_rooms[roomtype] = modular_room_templates[roomtype][current_map.picked_rooms[roomtype]]
 		return TRUE
+	var/list/room_weights = CONFIG_GET(keyed_list/modular_room_weight)
 	var/list/possible_room_templates = list()
 	var/datum/map_template/modular_room/room_candidate
 	shuffle_inplace(modular_room_templates[roomtype])
@@ -1013,7 +1024,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		if(room_candidate.weight == 0 || (room_candidate.mappath && (modular_room_spawners[roomtype].room_height != room_candidate.template_height || modular_room_spawners[roomtype].room_width != room_candidate.template_width)))
 			room_candidate = null
 			continue
-		possible_room_templates[room_candidate] = room_candidate.weight
+		possible_room_templates[room_candidate] = room_weights[room_candidate.room_id] || room_candidate.weight
 	if(!possible_room_templates.len)
 		return FALSE
 	picked_rooms[roomtype] = pick_weight(possible_room_templates)
@@ -1033,3 +1044,14 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	QDEL_NULL(modular_room_spawners[roomtype])
 	log_world("Loaded [roomtype] in [(REALTIMEOFDAY - start_time)/10]s!")
 	return TRUE
+
+///Returns the map name, with an openlink action tied to it (if one exists) for the map.
+/datum/map_config/proc/return_map_name(webmap_included)
+	var/text
+	if(feedback_link)
+		text = "<a href='byond://?action=openLink&link=[url_encode(feedback_link)]'>[map_name]</a>"
+	else
+		text = map_name
+	if(webmap_included && !isnull(SSmapping.current_map.mapping_url))
+		text += " | <a href='byond://?action=openWebMap'>(Show Map)</a>"
+	return text

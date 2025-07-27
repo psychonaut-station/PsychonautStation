@@ -232,10 +232,6 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 			else
 				energy = 0
 
-	if(absorbed_gasmix.temperature > 12731.5 && gas_percentage[/datum/gas/plasma] > 0.2 && energy > 600)
-		if(gas_percentage[/datum/gas/nitrous_oxide] < 0.5)
-			explosion(zapped_atom, devastation_range = 2, heavy_impact_range = 2, light_impact_range = 3)
-
 /obj/energy_ball/Bump(atom/A)
 	dust_mobs(A)
 
@@ -600,6 +596,13 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 
 	if(callback)
 		callback.Invoke(closest_atom)
+
+	// Electrolysis.
+	var/turf/target_turf = get_turf(closest_atom)
+	if(target_turf?.return_air())
+		var/datum/gas_mixture/air_mixture = target_turf.return_air()
+		air_mixture.electrolyze(working_power = power / 200)
+		target_turf.air_update_turf()
 
 	if(prob(20))//I know I know
 		var/list/shocked_copy = shocked_targets.Copy()

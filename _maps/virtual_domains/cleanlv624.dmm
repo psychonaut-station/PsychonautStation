@@ -1487,7 +1487,7 @@
 /turf/open/floor/grass/lavaland,
 /area/virtual_domain)
 "PI" = (
-/obj/machinery/photocopier{
+/obj/machinery/photocopier/prebuilt{
 	pixel_y = 12
 	},
 /turf/open/floor/wood,

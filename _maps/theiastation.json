@@ -1,0 +1,17 @@
+{
+	"version": 1,
+	"map_name": "TheiaStation",
+	"map_path": "map_files/TheiaStation",
+	"map_file": "TheiaStation.dmm",
+	"shuttles": {
+		"cargo": "cargo_theia",
+		"ferry": "ferry_fancy",
+		"whiteship": "whiteship_meta",
+		"emergency": "emergency_theia"
+	},
+	"job_changes": {
+		"Cook": {
+			"additional_cqc_areas": ["/area/station/service/kitchen/diner"]
+		}
+	}	
+}

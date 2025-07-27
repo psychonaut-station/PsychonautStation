@@ -1,0 +1,7 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - rscadd: "Şarjı azalınca alert veren containtment field generator türü eklendi."
+  - rscdel: "Tesla artık sıcak havada patlamıyor"
+  - admin: "Change map template butonu düzeltildi"
+  - config: "Modular roomların weightleri artık game config üzerinden ayarlanabiliyor."

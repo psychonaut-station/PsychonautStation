@@ -238,6 +238,14 @@
 	description = "A fairly standard shuttle, though larger and slightly better equipped than the Box Station variant."
 	occupancy_limit = "45"
 
+	
+/datum/map_template/shuttle/emergency/theia
+	suffix = "theia"
+	name = "Theia Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 8
+	description = "A fairly standard shuttle, though larger and slightly better equipped than the Box Station variant."
+	occupancy_limit = "40"
+
 /datum/map_template/shuttle/emergency/kilo
 	suffix = "kilo"
 	name = "Kilo Station Emergency Shuttle"
@@ -264,6 +272,14 @@
 	name = "Birdshot Station Emergency Shuttle"
 	credit_cost = CARGO_CRATE_VALUE * 2
 	description = "We pulled this one out of Mothball just for you!"
+	occupancy_limit = "40"
+
+
+/datum/map_template/shuttle/emergency/emergency_catwalk
+	suffix = "catwalk"
+	name = "Catwalk Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 5
+	description = "A standard sized shuttle, featuring a medbay and brig, along with an elevated bridge."
 	occupancy_limit = "40"
 
 /datum/map_template/shuttle/emergency/wawa
@@ -488,6 +504,13 @@
 	It is richly equipped with bushes and free oxygen"
 	credit_cost = CARGO_CRATE_VALUE * 18
 	occupancy_limit = "80"
+
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 8
+	description = "A fairly standard shuttle, though larger and slightly better equipped than the Helio Station variant."
+	occupancy_limit = "40"
 
 /datum/map_template/shuttle/emergency/raven
 	suffix = "raven"

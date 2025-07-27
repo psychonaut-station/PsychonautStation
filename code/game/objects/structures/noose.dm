@@ -48,11 +48,11 @@
 		var/mob/living/carbon/human/buckled_human = buckled
 		height_offset += /mob/living/carbon/human::mob_height - buckled_human.mob_height
 
-	animate(buckled, pixel_y = initial(pixel_y) + height_offset, time = 8, easing = LINEAR_EASING)
+	buckled.add_offsets(REF(src), y_add = initial(pixel_y) + height_offset, time = 8, easing = LINEAR_EASING)
 	ADD_TRAIT(buckled, TRAIT_NO_STAGGER, BUCKLED_TRAIT) // messes with the animation, also youre hanging how you gonna stagger
 
 /obj/structure/noose/post_unbuckle_mob(mob/living/buckled)
-	buckled.add_offsets(type, x_add = 2, y_add = 2)
+	buckled.remove_offsets(REF(src))
 	pixel_x = base_pixel_x
 	layer = initial(layer)
 	STOP_PROCESSING(SSobj, src)

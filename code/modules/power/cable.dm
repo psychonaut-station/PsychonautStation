@@ -594,7 +594,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 					user.put_in_hands(restraints)
 		if("Noose")
 			if (amount >= NOOSE_COST)
-				if(use(NOOSE_COST))
+				if(do_after(user, 5 SECONDS, user_turf) && use(NOOSE_COST))
 					new /obj/structure/noose(user_turf)
 	update_appearance()
 

@@ -30,7 +30,7 @@
 	if(hand)
 		on_limb_detached(hand)
 	RegisterSignal(limb, COMSIG_BODYPART_REMOVED, PROC_REF(on_limb_detached))
-	RegisterSignal(limb, COMSIG_QDELETING, PROC_REF(on_limb_detached))
+	RegisterSignal(limb, COMSIG_QDELETING, PROC_REF(on_limb_qdel))
 	hand = limb
 
 /obj/item/organ/cyberimp/arm/proc/on_limb_detached(obj/item/bodypart/source)
@@ -38,6 +38,10 @@
 	if(source != hand || QDELETED(hand))
 		return
 	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
+	UnregisterSignal(hand, COMSIG_QDELETING)
+	hand = null
+
+/obj/item/organ/cyberimp/arm/proc/on_limb_qdel()
 	UnregisterSignal(hand, COMSIG_QDELETING)
 	hand = null
 

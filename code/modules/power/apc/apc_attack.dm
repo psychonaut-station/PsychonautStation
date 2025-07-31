@@ -176,8 +176,7 @@
 			return
 		if(istype(stomach))
 			balloon_alert(ipc, "transfered power")
-			stomach.adjust_charge(-IPC_APC_POWER_GAIN)
-			cell.give(IPC_APC_POWER_GAIN)
+			cell.give(-stomach.adjust_charge(-IPC_APC_POWER_GAIN))
 		else
 			balloon_alert(ipc, "can't transfer power!")
 	return

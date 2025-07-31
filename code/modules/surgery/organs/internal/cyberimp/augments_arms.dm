@@ -42,6 +42,7 @@
 	hand = null
 
 /obj/item/organ/cyberimp/arm/proc/on_limb_qdel()
+	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
 	UnregisterSignal(hand, COMSIG_QDELETING)
 	hand = null
 
@@ -104,6 +105,10 @@
 		return
 	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_QDELETING, COMSIG_ITEM_ATTACK_SELF))
 	hand = null
+
+/obj/item/organ/cyberimp/arm/toolkit/on_limb_qdel()
+	UnregisterSignal(hand, COMSIG_ITEM_ATTACK_SELF)
+	return ..()
 
 /obj/item/organ/cyberimp/arm/toolkit/proc/on_item_attack_self()
 	SIGNAL_HANDLER

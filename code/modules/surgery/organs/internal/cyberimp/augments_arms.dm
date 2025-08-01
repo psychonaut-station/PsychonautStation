@@ -30,6 +30,7 @@
 	if(hand)
 		on_limb_detached(hand)
 	RegisterSignal(limb, COMSIG_BODYPART_REMOVED, PROC_REF(on_limb_detached))
+	RegisterSignal(limb, COMSIG_QDELETING, PROC_REF(on_limb_qdel))
 	hand = limb
 
 /obj/item/organ/cyberimp/arm/proc/on_limb_detached(obj/item/bodypart/source)
@@ -37,6 +38,12 @@
 	if(source != hand || QDELETED(hand))
 		return
 	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
+	UnregisterSignal(hand, COMSIG_QDELETING)
+	hand = null
+
+/obj/item/organ/cyberimp/arm/proc/on_limb_qdel()
+	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
+	UnregisterSignal(hand, COMSIG_QDELETING)
 	hand = null
 
 /obj/item/organ/cyberimp/arm/toolkit
@@ -96,8 +103,12 @@
 /obj/item/organ/cyberimp/arm/toolkit/on_limb_detached(obj/item/bodypart/source)
 	if(source != hand || QDELETED(hand))
 		return
-	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_ITEM_ATTACK_SELF))
+	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_QDELETING, COMSIG_ITEM_ATTACK_SELF))
 	hand = null
+
+/obj/item/organ/cyberimp/arm/toolkit/on_limb_qdel()
+	UnregisterSignal(hand, COMSIG_ITEM_ATTACK_SELF)
+	return ..()
 
 /obj/item/organ/cyberimp/arm/toolkit/proc/on_item_attack_self()
 	SIGNAL_HANDLER

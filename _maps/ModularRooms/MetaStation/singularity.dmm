@@ -671,7 +671,7 @@
 /obj/effect/turf_decal/bot{
 	dir = 1
 	},
-/obj/machinery/field/generator,
+/obj/machinery/field/generator/singularity,
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "MO" = (

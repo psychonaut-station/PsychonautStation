@@ -505,3 +505,7 @@
 
 /datum/config_entry/number/max_shuttle_size
 	default = 250
+
+/datum/config_entry/keyed_list/modular_room_weight
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM

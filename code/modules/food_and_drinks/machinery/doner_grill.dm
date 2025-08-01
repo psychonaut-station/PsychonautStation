@@ -12,6 +12,8 @@
 	var/is_on = FALSE
 	var/obj/item/doner_stick/doner_stick
 	var/required_bake_time = 1 MINUTES
+	var/need_anchor = TRUE
+	var/doner_stick_scale = 1
 	///Sound loop for the sizzling sound
 	var/datum/looping_sound/grill/grillsound
 
@@ -35,7 +37,9 @@
 /obj/machinery/doner_grill/update_overlays()
 	. = ..()
 	if(doner_stick)
-		. += mutable_appearance(doner_stick.icon, doner_stick.icon_state)
+		var/mutable_appearance/appearance = mutable_appearance(doner_stick.icon, doner_stick.icon_state)
+		appearance.transform = matrix().Scale(doner_stick_scale, doner_stick_scale)
+		. += appearance
 
 /obj/machinery/doner_grill/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
@@ -57,10 +61,10 @@
 
 /obj/machinery/doner_grill/can_be_unfasten_wrench(mob/user, silent)
 	. = ..()
-	if(anchored && doner_stick)
+	if((!need_anchor || anchored) && doner_stick)
 		to_chat(user, span_warning("You cannot unsecure [src] while there is a doner stick attached!"))
 		return CANT_UNFASTEN
-	if(anchored && is_on)
+	if((!need_anchor || anchored) && is_on)
 		to_chat(user, span_warning("You cannot unsecure [src] while its on!"))
 		return CANT_UNFASTEN
 
@@ -72,7 +76,7 @@
 /obj/machinery/doner_grill/attackby(obj/item/item, mob/user, params)
 	if(isnull(doner_stick) && istype(item, /obj/item/doner_stick))
 		var/obj/item/doner_stick/stick = item
-		if(!anchored)
+		if(!(!need_anchor || anchored))
 			to_chat(usr, span_warning("[src] needs to be secured first!"))
 			balloon_alert(usr, "secure first!")
 			return TRUE
@@ -107,7 +111,7 @@
 
 /obj/machinery/doner_grill/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
-	if(!anchored)
+	if(!(!need_anchor || anchored))
 		to_chat(usr, span_warning("[src] needs to be secured first!"))
 		balloon_alert(usr, "secure first!")
 		return
@@ -140,6 +144,12 @@
 		doner_stick.update_appearance()
 		update_appearance()
 		return PROCESS_KILL
+
+/obj/machinery/doner_grill/portable
+	need_anchor = FALSE
+
+/obj/machinery/doner_grill/portable/wrench_act(mob/living/user, obj/item/tool)
+	return ITEM_INTERACT_BLOCKING
 
 /obj/item/doner_stick
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'

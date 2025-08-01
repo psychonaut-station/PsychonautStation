@@ -350,3 +350,29 @@
 	added_throw_range = 8
 	strength_bonus = 8
 	core_applied = TRUE
+/*
+/obj/item/organ/cyberimp/chest/doneristan
+	name = "\improper Donerıstan spinal implant"
+	slot = ORGAN_SLOT_SPINE
+	var/obj/machinery/doner_grill/doneristan
+
+/obj/item/organ/cyberimp/chest/doneristan/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
+	. = ..()
+	doneristan = new /obj/machinery/doner_grill/portable(src)
+	RegisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY, PROC_REF(owner_attackby))
+
+/obj/item/organ/cyberimp/chest/doneristan/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+	. = ..()
+	QDEL_NULL(doneristan)
+	UnregisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY)
+
+/obj/item/organ/cyberimp/chest/doneristan/proc/owner_attackby(datum/source, obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
+	SIGNAL_HANDLER
+	if(user.combat_mode || user.zone_selected != zone)
+		return COMPONENT_NO_AFTERATTACK
+
+	return doneristan.attackby(I, user, modifiers, attack_modifiers)
+*/
+
+
+

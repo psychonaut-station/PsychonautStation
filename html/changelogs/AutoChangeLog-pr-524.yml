@@ -1,5 +1,0 @@
-author: "Rengan"
-delete-after: True
-changes:
-  - rscadd: "IPCye power cord tekrar eklendi."
-  - bugfix: "IPCnin apcye şarj verememe sorunu düzeltildi."

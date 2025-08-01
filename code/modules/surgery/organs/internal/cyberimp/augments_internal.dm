@@ -13,11 +13,12 @@
 	var/emissive_overlay = FALSE
 	/// Bodypart overlay we're going to apply to whoever we're implanted into
 	var/datum/bodypart_overlay/augment/bodypart_aug = null
+	var/bodypart_overlay_type = /datum/bodypart_overlay/augment
 
 /obj/item/organ/cyberimp/Initialize(mapload)
 	. = ..()
 	if (aug_overlay)
-		bodypart_aug = new(src)
+		bodypart_aug = new bodypart_overlay_type(src)
 
 /obj/item/organ/cyberimp/Destroy()
 	QDEL_NULL(bodypart_aug)

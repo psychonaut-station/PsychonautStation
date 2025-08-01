@@ -9,7 +9,7 @@
 	anchored_tabletop_offset = 11
 	anchored = FALSE
 	pass_flags = PASSTABLE
-	var/is_on = FALSE
+	var/on = FALSE
 	var/obj/item/doner_stick/doner_stick
 	var/required_bake_time = 1 MINUTES
 	var/need_anchor = TRUE
@@ -28,7 +28,7 @@
 	return ..()
 
 /obj/machinery/doner_grill/update_icon_state()
-	if(is_on)
+	if(on)
 		icon_state = "[base_icon_state]-on"
 	else
 		icon_state = base_icon_state
@@ -37,16 +37,14 @@
 /obj/machinery/doner_grill/update_overlays()
 	. = ..()
 	if(doner_stick)
-		var/mutable_appearance/appearance = mutable_appearance(doner_stick.icon, doner_stick.icon_state)
-		appearance.transform = matrix().Scale(doner_stick_scale, doner_stick_scale)
-		. += appearance
+		. += mutable_appearance(doner_stick.icon, doner_stick.icon_state)
 
 /obj/machinery/doner_grill/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
 	if(isnull(held_item))
 		if(doner_stick)
 			context[SCREENTIP_CONTEXT_LMB] = "Take stick"
-		if(!is_on)
+		if(!on)
 			context[SCREENTIP_CONTEXT_RMB] = "Turn on"
 		else
 			context[SCREENTIP_CONTEXT_RMB] = "Turn off"
@@ -64,7 +62,7 @@
 	if((!need_anchor || anchored) && doner_stick)
 		to_chat(user, span_warning("You cannot unsecure [src] while there is a doner stick attached!"))
 		return CANT_UNFASTEN
-	if((!need_anchor || anchored) && is_on)
+	if((!need_anchor || anchored) && on)
 		to_chat(user, span_warning("You cannot unsecure [src] while its on!"))
 		return CANT_UNFASTEN
 
@@ -83,7 +81,7 @@
 		doner_stick = stick
 		doner_stick.forceMove(src)
 		required_bake_time = stick.meat_level * 12.5 SECONDS
-		if(is_on)
+		if(on)
 			begin_processing()
 			grillsound.start()
 		update_appearance()
@@ -115,8 +113,12 @@
 		to_chat(usr, span_warning("[src] needs to be secured first!"))
 		balloon_alert(usr, "secure first!")
 		return
-	is_on = !is_on
-	if(is_on)
+	toggle()
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+
+/obj/machinery/doner_grill/proc/toggle()
+	on = !on
+	if(on)
 		if(doner_stick)
 			begin_processing()
 			grillsound.start()
@@ -125,10 +127,9 @@
 		grillsound.stop()
 		QDEL_NULL(particles)
 	update_appearance()
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/doner_grill/process(seconds_per_tick)
-	if(!is_on || !doner_stick)
+	if(!on || !doner_stick)
 		return PROCESS_KILL
 	if(!doner_stick.raw || !doner_stick.meat_level)
 		return

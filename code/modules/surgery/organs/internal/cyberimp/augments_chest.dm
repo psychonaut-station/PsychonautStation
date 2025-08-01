@@ -350,29 +350,97 @@
 	added_throw_range = 8
 	strength_bonus = 8
 	core_applied = TRUE
-/*
-/obj/item/organ/cyberimp/chest/doneristan
-	name = "\improper Donerıstan spinal implant"
+
+/datum/action/item_action/organ_action/kebabistan/toggle
+	name = "Toggle K.E.B.A.B.I.S.T.A.N"
+
+/obj/item/organ/cyberimp/chest/kebabistan
+	name = "\improper K.E.B.A.B.I.S.T.A.N spinal implant"
+	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
+	icon_state = "kebabistan"
+
+	actions_types = list(/datum/action/item_action/organ_action/kebabistan/toggle)
+
+	aug_icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
+	aug_overlay = "kebabistan"
 	slot = ORGAN_SLOT_SPINE
-	var/obj/machinery/doner_grill/doneristan
+	bodypart_overlay_type = /datum/bodypart_overlay/augment/kebabistan
+	var/doner_stick_scale = 0.4
 
-/obj/item/organ/cyberimp/chest/doneristan/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
-	. = ..()
-	doneristan = new /obj/machinery/doner_grill/portable(src)
-	RegisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY, PROC_REF(owner_attackby))
+	var/obj/machinery/doner_grill/kebab_machine
 
-/obj/item/organ/cyberimp/chest/doneristan/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+/obj/item/organ/cyberimp/chest/kebabistan/ui_action_click()
+	kebab_machine.toggle()
+	owner.update_body()
+
+/obj/item/organ/cyberimp/chest/kebabistan/get_overlay(image_layer, obj/item/bodypart/limb)
 	. = ..()
-	QDEL_NULL(doneristan)
+	if(kebab_machine.doner_stick)
+		var/mutable_appearance/appearance = mutable_appearance(kebab_machine.doner_stick.icon, kebab_machine.doner_stick.icon_state)
+		appearance.transform = matrix().Scale(doner_stick_scale, doner_stick_scale)
+		. += appearance
+
+/obj/item/organ/cyberimp/chest/kebabistan/get_overlay_state(image_layer, obj/item/bodypart/limb)
+	return "[aug_overlay]_[kebab_machine.on ? "on" : "off"]"
+
+/obj/item/organ/cyberimp/chest/kebabistan/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
+	. = ..()
+	kebab_machine = new /obj/machinery/doner_grill/portable(src)
+	RegisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY, PROC_REF(owner_attackedby))
+
+/obj/item/organ/cyberimp/chest/kebabistan/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
+	. = ..()
+	QDEL_NULL(kebab_machine)
 	UnregisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY)
 
-/obj/item/organ/cyberimp/chest/doneristan/proc/owner_attackby(datum/source, obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
+/obj/item/organ/cyberimp/chest/kebabistan/proc/owner_attackedby(datum/source, obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
 	SIGNAL_HANDLER
 	if(user.combat_mode || user.zone_selected != zone)
-		return COMPONENT_NO_AFTERATTACK
+		return
 
-	return doneristan.attackby(I, user, modifiers, attack_modifiers)
-*/
+	kebab_machine.attackby(I, user, modifiers, attack_modifiers)
+	owner.update_body()
+	return COMPONENT_NO_AFTERATTACK
 
+/datum/bodypart_overlay/augment/kebabistan
+	layers = EXTERNAL_FRONT
 
+/datum/action/item_action/organ_action/sandy
+	name = "Sandevistan Activation"
 
+/obj/item/organ/cyberimp/chest/sandevistan
+	name = "Militech Apogee Sandevistan"
+	desc = "This model of Sandevistan doesn't exist, at least officially. Off the record, there's gossip of secret Militech Lunar labs producing covert cyberware. It was never meant to be mass produced, but an army would only really need a few pieces like this one to dominate their enemy."
+	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
+	icon_state = "sandy"
+
+	aug_overlay = 'icons/psychonaut/obj/medical/organs/organs.dmi'
+	aug_overlay = "sandy_overlay"
+	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
+	actions_types = list(/datum/action/item_action/organ_action/sandy)
+
+	COOLDOWN_DECLARE(in_the_zone)
+	var/cooldown_time = 45 SECONDS
+
+/obj/item/organ/cyberimp/chest/sandevistan/ui_action_click()
+
+	if((organ_flags & ORGAN_FAILING))
+		to_chat(owner, span_warning("The implant doesn't respond. It seems to be broken..."))
+		return
+
+	if(!COOLDOWN_FINISHED(src, in_the_zone))
+		to_chat(owner, span_warning("The implant doesn't respond. It seems to be recharging..."))
+		return
+	COOLDOWN_START(src, in_the_zone, cooldown_time)
+
+	owner.AddComponent(/datum/component/after_image, 16, 0.5, TRUE)
+	owner.AddComponent(/datum/component/slowing_field, 0.1, 5, 3)
+	owner.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
+	addtimer(CALLBACK(src, PROC_REF(exit_the_zone), owner), 15 SECONDS)
+
+/obj/item/organ/cyberimp/chest/sandevistan/proc/exit_the_zone(mob/living/exiter)
+	var/datum/component/after_image = exiter.GetComponent(/datum/component/after_image)
+	qdel(after_image)
+	var/datum/component/slowing_field = exiter.GetComponent(/datum/component/slowing_field)
+	qdel(slowing_field)
+	exiter.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)

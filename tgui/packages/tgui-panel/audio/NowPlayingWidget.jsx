@@ -21,7 +21,7 @@ export const NowPlayingWidget = (props) => {
     upload_date = audio.meta?.upload_date || 'Unknown Date',
     album = audio.meta?.album || 'Unknown Album',
     duration = audio.meta?.duration,
-    date = !isNaN(upload_date)
+    date = !Number.isNaN(upload_date)
       ? upload_date?.substring(0, 4) +
         '-' +
         upload_date?.substring(4, 6) +
@@ -30,6 +30,7 @@ export const NowPlayingWidget = (props) => {
       : upload_date;
 
   return (
+<<<<<<< HEAD
     <Flex>
       <Flex.Item grow={1}>
         <Flex direction="column">
@@ -75,6 +76,29 @@ export const NowPlayingWidget = (props) => {
                         )}
                     </Section>
                   </Collapsible>
+=======
+    <Flex align="center">
+      {(audio.playing && (
+        <Flex.Item
+          mx={0.5}
+          grow={1}
+          style={{
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}
+        >
+          {
+            <Collapsible title={title || 'Unknown Track'} color={'blue'}>
+              <Section>
+                {URL !== 'Song Link Hidden' && (
+                  <Flex.Item grow={1} color="label">
+                    URL: <a href={URL}>{URL}</a>
+                  </Flex.Item>
+                )}
+                <Flex.Item grow={1} color="label">
+                  Duration: {duration}
+>>>>>>> 4ee0793ecd23876994fa125e4e112a13a6f44455
                 </Flex.Item>
                 <Flex.Item mx={0.5} fontSize="0.9em">
                   <Button
@@ -182,7 +206,7 @@ export const NowPlayingWidget = (props) => {
           value={settings.adminMusicVolume}
           step={0.0025}
           stepPixelSize={1}
-          format={(value) => toFixed(value * 100) + '%'}
+          format={(value) => `${toFixed(value * 100)}%`}
           onChange={(e, value) =>
             settings.update({
               adminMusicVolume: value,

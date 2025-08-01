@@ -4,12 +4,16 @@ import { capitalizeAll } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
+<<<<<<< HEAD
 import {
   SingularityContent,
   SingularityTeslaData,
   TeslaContent,
 } from './SingularityTesla';
 import { SupermatterContent, SupermatterData } from './Supermatter';
+=======
+import { SupermatterContent, type SupermatterData } from './Supermatter';
+>>>>>>> 4ee0793ecd23876994fa125e4e112a13a6f44455
 
 type NtosSupermatterData = SupermatterData &
   SingularityTeslaData & {
@@ -43,6 +47,7 @@ export const NtosSupermatter = (props) => {
             setActiveUID={setActiveUID}
           />
         ) : (
+<<<<<<< HEAD
           <>
             <Section
               title="Detected Supermatters"
@@ -118,6 +123,52 @@ export const NtosSupermatter = (props) => {
               </Section>
             )}
           </>
+=======
+          <Section
+            title="Detected Supermatters"
+            buttons={
+              <Button
+                icon="sync"
+                content="Refresh"
+                onClick={() => act('PRG_refresh')}
+              />
+            }
+          >
+            <Table>
+              {sm_data.map((sm) => (
+                <Table.Row key={sm.uid}>
+                  <Table.Cell>{`${sm.uid}. ${sm.area_name}`}</Table.Cell>
+                  <Table.Cell collapsing color="label">
+                    Integrity:
+                  </Table.Cell>
+                  <Table.Cell collapsing width="120px">
+                    <ProgressBar
+                      value={sm.integrity / 100}
+                      ranges={{
+                        good: [0.9, Infinity],
+                        average: [0.5, 0.9],
+                        bad: [-Infinity, 0.5],
+                      }}
+                    />
+                  </Table.Cell>
+                  <Table.Cell collapsing>
+                    <Button
+                      icon="bell"
+                      color={focus_uid === sm.uid && 'yellow'}
+                      onClick={() => act('PRG_focus', { focus_uid: sm.uid })}
+                    />
+                  </Table.Cell>
+                  <Table.Cell collapsing>
+                    <Button
+                      content="Details"
+                      onClick={() => setActiveUID(sm.uid)}
+                    />
+                  </Table.Cell>
+                </Table.Row>
+              ))}
+            </Table>
+          </Section>
+>>>>>>> 4ee0793ecd23876994fa125e4e112a13a6f44455
         )}
       </NtosWindow.Content>
     </NtosWindow>

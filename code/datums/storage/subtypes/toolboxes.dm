@@ -23,7 +23,7 @@
 	max_specific_storage = WEIGHT_CLASS_BULKY
 
 ///Monkey Guncase toolbox
-/datum/storage/toolbox/guncase/monkey/New(atom/parent, max_slots, max_specific_storage, max_total_storage)
+/datum/storage/toolbox/guncase/monkey/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
 	. = ..()
 	set_locked(STORAGE_SOFT_LOCKED)
 
@@ -38,7 +38,7 @@
 	max_specific_storage = WEIGHT_CLASS_HUGE
 
 ///Fishing toolbox
-/datum/storage/toolbox/fishing/New(atom/parent, max_slots, max_specific_storage, max_total_storage)
+/datum/storage/toolbox/fishing/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
 	. = ..()
 	set_holdable(exception_hold_list = /obj/item/fishing_rod)
 

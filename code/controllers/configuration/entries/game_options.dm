@@ -180,6 +180,9 @@
 /datum/config_entry/string/alert_delta
 	default = "İstasyonun yok olması an meselesidir. Tüm mürettebat, personel şefleri tarafından verilen emirlere uymak zorundadır. Bu emirlerin ihlali ölümle cezalandırılabilir. Bu bir tatbikat değildir!"
 
+/datum/config_entry/flag/roundstart_blue_alert
+	default = TRUE
+
 /datum/config_entry/flag/revival_pod_plants
 
 /datum/config_entry/number/revival_brain_life

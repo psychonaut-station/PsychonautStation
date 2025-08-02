@@ -9,7 +9,7 @@
 	return assoc_to_keys_features(SSaccessories.arachnid_appendages_list)
 
 /datum/preference/choiced/arachnid_appendages/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["arachnid_appendages"] = value
+	target.dna.features[FEATURE_ARACHNID_APPENDAGES] = value
 
 /datum/preference/choiced/arachnid_appendages/create_default_value()
 	return /datum/sprite_accessory/arachnid_appendages/long::name

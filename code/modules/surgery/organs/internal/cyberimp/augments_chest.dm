@@ -351,60 +351,6 @@
 	strength_bonus = 8
 	core_applied = TRUE
 
-/datum/action/item_action/organ_action/kebabistan/toggle
-	name = "Toggle K.E.B.A.B.I.S.T.A.N"
-
-/obj/item/organ/cyberimp/chest/kebabistan
-	name = "\improper K.E.B.A.B.I.S.T.A.N spinal implant"
-	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
-	icon_state = "kebabistan"
-
-	actions_types = list(/datum/action/item_action/organ_action/kebabistan/toggle)
-
-	aug_icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
-	aug_overlay = "kebabistan"
-	slot = ORGAN_SLOT_SPINE
-	bodypart_overlay_type = /datum/bodypart_overlay/augment/kebabistan
-	var/doner_stick_scale = 0.4
-
-	var/obj/machinery/doner_grill/kebab_machine
-
-/obj/item/organ/cyberimp/chest/kebabistan/ui_action_click()
-	kebab_machine.toggle()
-	owner.update_body()
-
-/obj/item/organ/cyberimp/chest/kebabistan/get_overlay(image_layer, obj/item/bodypart/limb)
-	. = ..()
-	if(kebab_machine.doner_stick)
-		var/mutable_appearance/appearance = mutable_appearance(kebab_machine.doner_stick.icon, kebab_machine.doner_stick.icon_state)
-		appearance.transform = matrix().Scale(doner_stick_scale, doner_stick_scale)
-		. += appearance
-
-/obj/item/organ/cyberimp/chest/kebabistan/get_overlay_state(image_layer, obj/item/bodypart/limb)
-	return "[aug_overlay]_[kebab_machine.on ? "on" : "off"]"
-
-/obj/item/organ/cyberimp/chest/kebabistan/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags)
-	. = ..()
-	kebab_machine = new /obj/machinery/doner_grill/portable(src)
-	RegisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY, PROC_REF(owner_attackedby))
-
-/obj/item/organ/cyberimp/chest/kebabistan/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)
-	. = ..()
-	QDEL_NULL(kebab_machine)
-	UnregisterSignal(organ_owner, COMSIG_ATOM_ATTACKBY)
-
-/obj/item/organ/cyberimp/chest/kebabistan/proc/owner_attackedby(datum/source, obj/item/I, mob/living/user, list/modifiers, list/attack_modifiers)
-	SIGNAL_HANDLER
-	if(user.combat_mode || user.zone_selected != zone)
-		return
-
-	kebab_machine.attackby(I, user, modifiers, attack_modifiers)
-	owner.update_body()
-	return COMPONENT_NO_AFTERATTACK
-
-/datum/bodypart_overlay/augment/kebabistan
-	layers = EXTERNAL_FRONT
-
 /datum/action/item_action/organ_action/sandy
 	name = "Sandevistan Activation"
 

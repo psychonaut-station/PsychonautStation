@@ -8355,6 +8355,7 @@
 	dir = 8
 	},
 /obj/structure/cable,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/security/checkpoint/escape)
 "cPg" = (
@@ -9557,6 +9558,7 @@
 	dir = 5
 	},
 /obj/machinery/light/directional/east,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "dnE" = (
@@ -20665,6 +20667,7 @@
 	dir = 6
 	},
 /obj/structure/extinguisher_cabinet/directional/east,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/ai_monitored/security/armory)
 "hbe" = (
@@ -33951,6 +33954,7 @@
 /area/station/security/brig)
 "lUw" = (
 /obj/structure/chair/sofa/bench/left,
+/obj/machinery/firealarm/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/exit/departure_lounge)
 "lUz" = (
@@ -59324,7 +59328,6 @@
 /obj/effect/turf_decal/trimline/red/filled/line{
 	dir = 6
 	},
-/obj/machinery/firealarm/directional/east,
 /turf/open/floor/iron/white,
 /area/station/security/medical)
 "vgr" = (

@@ -21029,6 +21029,7 @@
 /area/station/hallway/primary/aft)
 "chm" = (
 /obj/effect/mapping_helpers/broken_floor,
+/obj/machinery/firealarm/directional/east,
 /turf/open/floor/plating,
 /area/station/maintenance/department/prison)
 "chn" = (
@@ -37620,6 +37621,7 @@
 	c_tag = "AI Upload Foyer";
 	network = list("aiupload")
 	},
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai_monitored/turret_protected/ai_upload_foyer)
 "hky" = (
@@ -62350,6 +62352,7 @@
 	name = "justice injector"
 	},
 /obj/effect/turf_decal/tile/neutral/half/contrasted,
+/obj/effect/landmark/firealarm_sanity,
 /turf/open/floor/iron/dark,
 /area/station/security/execution/education)
 "qvG" = (
@@ -75315,6 +75318,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/maintenance/port)
+"vrb" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/general/hidden,
+/obj/effect/landmark/firealarm_sanity,
+/turf/open/floor/engine/xenobio,
+/area/station/science/xenobiology)
 "vri" = (
 /obj/structure/disposalpipe/segment{
 	dir = 4
@@ -126572,7 +126580,7 @@ uLj
 qpa
 cLY
 msf
-xCy
+vrb
 cpI
 iLB
 hSg

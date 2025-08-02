@@ -603,3 +603,11 @@
   - bugfix: fixed scarp breaking your HUD sometimes
   twilightwanderer:
   - bugfix: Solar console and pipe sprite fixes
+2025-07-28:
+  Rengan:
+  - rscadd: "\u015Earj\u0131 azal\u0131nca alert veren containtment field generator\
+      \ t\xFCr\xFC eklendi."
+  - rscdel: "Tesla art\u0131k s\u0131cak havada patlam\u0131yor"
+  - admin: "Change map template butonu d\xFCzeltildi"
+  - config: "Modular roomlar\u0131n weightleri art\u0131k game config \xFCzerinden\
+      \ ayarlanabiliyor."

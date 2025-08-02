@@ -108,8 +108,9 @@
 	to_chat(owner, span_notice("You absorb some of the shock into your body!"))
 
 /obj/item/organ/stomach/ipc/proc/adjust_charge(amount)
+	. = 0
 	if(cell)
-		cell.give(amount)
+		. = cell.give(amount)
 	humanowner.diag_hud_set_humancell()
 
 /obj/item/organ/stomach/ipc/proc/adjust_backup_charge(amount)

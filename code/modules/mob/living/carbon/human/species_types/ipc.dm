@@ -27,7 +27,7 @@
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(
 		/obj/item/organ/voltage_protector,
-		// /obj/item/organ/cyberimp/arm/toolkit/power_cord
+		/obj/item/organ/cyberimp/arm/toolkit/power_cord
 	)
 	mutanteyes = /obj/item/organ/eyes/robotic/basic
 	mutantears = /obj/item/organ/ears/cybernetic

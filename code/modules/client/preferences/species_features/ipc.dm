@@ -31,7 +31,7 @@
 	return icon_with_chassis
 
 /datum/preference/choiced/ipc_chassis/apply_to_human(mob/living/carbon/human/target, value)
-	target.dna.features["ipc_chassis"] = value
+	target.dna.features[FEATURE_IPC_CHASSIS] = value
 	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[value]
 	for(var/obj/item/bodypart/bodypart as anything in target.bodyparts) //Override bodypart data as necessary
 		if(isipc(target))

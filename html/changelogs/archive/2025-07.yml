@@ -81,8 +81,6 @@
   - balance: Regenerative black extract can no longer be used to create infinite voidwalker
       loot skulls
 2025-07-04:
-  skewnoss:
-  - bugfix: Removed duplicate Captain''s Spare ID Safe from HelioStation
   KingMapache:
   - rscadd: Added felinid tongue to the felinid disk from research of the limbgrower
   Melbert:
@@ -95,6 +93,8 @@
       years where they haven't. There is a probability for whether or not the beacon
       is destroyed from an EMP.
   - bugfix: ' You cannot stack multiple of the same beacon onto a single mech.'
+  skewnoss:
+  - bugfix: Removed duplicate Captain''s Spare ID Safe from HelioStation
   twilightwanderer:
   - bugfix: Fixing print request issues
 2025-07-05:
@@ -603,3 +603,11 @@
   - bugfix: fixed scarp breaking your HUD sometimes
   twilightwanderer:
   - bugfix: Solar console and pipe sprite fixes
+2025-07-28:
+  Rengan:
+  - rscadd: "\u015Earj\u0131 azal\u0131nca alert veren containtment field generator\
+      \ t\xFCr\xFC eklendi."
+  - rscdel: "Tesla art\u0131k s\u0131cak havada patlam\u0131yor"
+  - admin: "Change map template butonu d\xFCzeltildi"
+  - config: "Modular roomlar\u0131n weightleri art\u0131k game config \xFCzerinden\
+      \ ayarlanabiliyor."

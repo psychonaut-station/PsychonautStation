@@ -1015,6 +1015,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 	if(force)
 		picked_rooms[roomtype] = modular_room_templates[roomtype][current_map.picked_rooms[roomtype]]
 		return TRUE
+	var/list/room_weights = CONFIG_GET(keyed_list/modular_room_weight)
 	var/list/possible_room_templates = list()
 	var/datum/map_template/modular_room/room_candidate
 	shuffle_inplace(modular_room_templates[roomtype])
@@ -1023,7 +1024,7 @@ ADMIN_VERB(load_away_mission, R_FUN, "Load Away Mission", "Load a specific away 
 		if(room_candidate.weight == 0 || (room_candidate.mappath && (modular_room_spawners[roomtype].room_height != room_candidate.template_height || modular_room_spawners[roomtype].room_width != room_candidate.template_width)))
 			room_candidate = null
 			continue
-		possible_room_templates[room_candidate] = room_candidate.weight
+		possible_room_templates[room_candidate] = room_weights[room_candidate.room_id] || room_candidate.weight
 	if(!possible_room_templates.len)
 		return FALSE
 	picked_rooms[roomtype] = pick_weight(possible_room_templates)

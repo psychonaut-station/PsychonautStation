@@ -6,3 +6,11 @@
   Rengan:
   - rscadd: "Noose geri eklendi, alt\u0131n\u0131zda sandalye varken 30 cable coil\
       \ ile craft edebilirsiniz"
+2025-08-03:
+  grungussuss:
+  - bugfix: all hand items will now have no cooldown when used with northstar gloves,
+      including circle hand
+  jlsnow301:
+  - admin: Fixed the bluescreen in admin fax panel
+  twilightwanderer:
+  - admin: Added the ability to play your own announce sounds.

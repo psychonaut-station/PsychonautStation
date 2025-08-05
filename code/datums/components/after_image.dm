@@ -89,6 +89,7 @@
 	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
 	layer = BELOW_MOB_LAYER
 	anchored = TRUE
+	density = TRUE
 	var/finalized_alpha = 100
 	var/active = FALSE
 	var/last_appearance_ref
@@ -119,8 +120,10 @@
 		appearance = copy_appearance_filter_overlays(parent.appearance)
 		name = ""
 		mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-		transform = matrix()
+		transform = parent.transform
 		alpha = (alpha / 255.0) * finalized_alpha
+		if(alpha < 100 && density)
+			density = FALSE
 	var/atom/target_loc = loc_override ? loc_override : parent.loc
 	if(target_loc != loc && actual_loc)
 		loc = target_loc

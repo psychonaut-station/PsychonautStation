@@ -360,8 +360,8 @@
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "sandy"
 
-	aug_overlay = 'icons/psychonaut/obj/medical/organs/organs.dmi'
-	aug_overlay = "sandy_overlay"
+	aug_icon = 'icons/psychonaut/mob/human/species/misc/bodypart_overlay_augmentations.dmi'
+	aug_overlay = "sandy"
 	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
 	actions_types = list(/datum/action/item_action/organ_action/sandy)
 
@@ -382,6 +382,8 @@
 	owner.AddComponent(/datum/component/after_image, 16, 0.5, TRUE)
 	owner.AddComponent(/datum/component/slowing_field, 0.1, 5, 3)
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
+	owner.add_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
+
 	addtimer(CALLBACK(src, PROC_REF(exit_the_zone), owner), 15 SECONDS)
 
 /obj/item/organ/cyberimp/chest/sandevistan/proc/exit_the_zone(mob/living/exiter)
@@ -390,3 +392,116 @@
 	var/datum/component/slowing_field = exiter.GetComponent(/datum/component/slowing_field)
 	qdel(slowing_field)
 	exiter.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
+	exiter.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
+
+/obj/item/organ/cyberimp/chest/sandevistan/refurbished
+	name = "refurbished sandevistan"
+	desc = "The branding has been scratched off of these and it looks hastily put together."
+	organ_flags = parent_type::organ_flags & ~ORGAN_HIDDEN
+	cooldown_time = 65 SECONDS
+
+/obj/item/organ/cyberimp/chest/sandevistan/refurbished/ui_action_click(mob/user, actiontype)
+	if(prob(45))
+		if(iscarbon(user))
+			var/mob/living/carbon/carbon = user
+			carbon.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
+			to_chat(user, span_warning("You are overloaded with information and suffer some backlash."))
+	. = ..()
+
+/obj/item/organ/cyberimp/chest/sandevistan/refurbished/exit_the_zone(mob/living/exiter)
+	. = ..()
+	if(prob(55))
+		exiter.adjustBruteLoss(10)
+		to_chat(exiter, span_warning("Your body was not able to handle the strain of [src] causing you to experience some minor bruising."))
+
+/obj/item/organ/cyberimp/chest/chemvat
+	name = "R.A.G.E. chemical system"
+	desc = "Extremely dangerous system that fills the user with a mix of potent drugs."
+	icon = 'icons/psychonaut/obj/clothing/back.dmi'
+
+	icon_state = "chemvat_back"
+	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
+	slot = ORGAN_SLOT_SPINE
+
+	var/obj/item/clothing/mask/chemvat/forced
+	var/obj/item/chemvat_tank/forced_tank
+
+	var/max_ticks_cooldown = 20 SECONDS
+	var/current_ticks_cooldown = 0
+
+	var/list/reagent_list = list(
+		/datum/reagent/determination = 2,
+		/datum/reagent/medicine/c2/penthrite = 3 ,
+		/datum/reagent/drug/bath_salts = 3 ,
+		/datum/reagent/medicine/omnizine = 3,
+		/datum/reagent/medicine/brain_healer = 5,
+	)
+
+	var/mutable_appearance/overlay
+
+/obj/item/organ/cyberimp/chest/chemvat/on_life()
+		//Cost of refilling is a little bit of nutrition, some blood and getting jittery
+	if(owner.nutrition > NUTRITION_LEVEL_STARVING && owner.blood_volume > BLOOD_VOLUME_SURVIVE && current_ticks_cooldown > 0)
+
+		owner.nutrition -= 5
+		owner.blood_volume--
+		owner.adjust_jitter(1)
+		owner.adjust_dizzy(1)
+
+		current_ticks_cooldown -= SSmobs.wait
+
+		return
+
+	if(current_ticks_cooldown <= 0)
+		current_ticks_cooldown = max_ticks_cooldown
+		on_effect()
+
+/obj/item/organ/cyberimp/chest/chemvat/proc/on_effect()
+	var/obj/effect/temp_visual/chempunk/punk = new /obj/effect/temp_visual/chempunk(get_turf(owner))
+	punk.color = "#77BD5D"
+	owner.reagents.add_reagent_list(reagent_list)
+
+	overlay = mutable_appearance('icons/effects/effects.dmi', "biogas", ABOVE_MOB_LAYER)
+	overlay.color = "#77BD5D"
+
+	RegisterSignal(owner,COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(update_owner_overlay))
+
+	addtimer(CALLBACK(src, PROC_REF(remove_overlay)),max_ticks_cooldown/2)
+
+	to_chat(owner,"<span class = 'notice'> You feel a sharp pain as the cocktail of chemicals is injected into your bloodstream!</span>")
+	return
+
+/obj/item/organ/cyberimp/chest/chemvat/proc/update_owner_overlay(atom/source, list/overlays)
+	SIGNAL_HANDLER
+
+	if(overlay)
+		overlays += overlay
+
+/obj/item/organ/cyberimp/chest/chemvat/proc/remove_overlay()
+	QDEL_NULL(overlay)
+
+	UnregisterSignal(owner,COMSIG_ATOM_UPDATE_OVERLAYS)
+
+/obj/item/organ/cyberimp/chest/chemvat/Insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
+	. = ..()
+	forced = new
+	forced_tank = new
+
+	if(receiver.wear_mask && !istype(receiver.wear_mask,/obj/item/clothing/mask/chemvat))
+		receiver.dropItemToGround(receiver.wear_mask, TRUE)
+		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
+	if(!receiver.wear_mask)
+		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
+
+	if(receiver.back && !istype(receiver.back,/obj/item/chemvat_tank))
+		receiver.dropItemToGround(receiver.back, TRUE)
+		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+	if(!receiver.back)
+		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+
+/obj/item/organ/cyberimp/chest/chemvat/Remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+	. = ..()
+	organ_owner.dropItemToGround(organ_owner.wear_mask, TRUE)
+	organ_owner.dropItemToGround(organ_owner.back, TRUE)
+	QDEL_NULL(forced)
+	QDEL_NULL(forced_tank)

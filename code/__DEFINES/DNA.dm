@@ -205,6 +205,7 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_XENO_ACIDGLAND,
 	ORGAN_SLOT_XENO_NEUROTOXINGLAND,
 	ORGAN_SLOT_XENO_EGGSAC,
+	ORGAN_SLOT_SPINE
 ))
 
 // Defines for used in creating "perks" for the species preference pages.

@@ -476,7 +476,7 @@
 	items_to_create = list(
 		/obj/item/emergency_bed/silicon,
 		/obj/item/sensor_device,
-
+		/obj/item/pinpointer/crew,
 	)
 
 /obj/item/organ/cyberimp/arm/toolkit/atmospherics
@@ -487,8 +487,10 @@
 	items_to_create = list(
 		/obj/item/extinguisher,
 		/obj/item/analyzer,
-		/obj/item/crowbar,
-		/obj/item/holosign_creator/atmos
+		/obj/item/crowbar/cyborg,
+		/obj/item/wrench/cyborg,
+		/obj/item/holosign_creator/atmos,
+		/obj/item/pipe_dispenser,
 	)
 
 /obj/item/organ/cyberimp/arm/toolkit/botany
@@ -506,6 +508,26 @@
 		/obj/item/storage/bag/plants,
 		/obj/item/storage/bag/plants/portaseeder
 	)
+
+/obj/item/organ/cyberimp/arm/toolkit/mantis
+	name = "C.H.R.O.M.A.T.A. mantis blade implants"
+	desc = "High tech mantis blade implants, easily portable weapon, that has a high wound potential."
+	icon = 'icons/psychonaut/obj/weapons/sword.dmi'
+	icon_state = "mantis"
+	items_to_create = list(/obj/item/mantis_blade)
+
+/obj/item/organ/cyberimp/arm/toolkit/mantis/syndicate
+	name = "A.R.A.S.A.K.A. mantis blade implants"
+	desc = "Modernized mantis blade designed coined by Tiger operatives, much sharper blade with energy actuators makes it a much deadlier weapon."
+	icon_state = "syndie_mantis"
+	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
+	items_to_create = list(/obj/item/mantis_blade/syndicate)
+
+/obj/item/organ/cyberimp/arm/toolkit/mantis/shield
+	name = "S.A.Y.A. arm defense system implants"
+	desc = "Shield blade implants that allow user to block upcoming attacks at the cost of mobility and offense."
+	icon_state = "shield_mantis"
+	items_to_create = list(/obj/item/mantis_blade/shield)
 
 #define DOAFTER_SOURCE_STRONGARM_INTERACTION "strongarm interaction"
 

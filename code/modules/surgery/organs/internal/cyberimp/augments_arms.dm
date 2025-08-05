@@ -431,15 +431,6 @@
 		/obj/item/surgical_drapes,
 	)
 
-/obj/item/organ/cyberimp/arm/toolkit/cook
-	name = "kitchenware toolset implant"
-	desc = "A set of kitchen tools hidden behind a concealed panel on the user's arm."
-	items_to_create = list(
-		/obj/item/kitchen/rollingpin,
-		/obj/item/knife/kitchen,
-		/obj/item/reagent_containers/cup/beaker
-	)
-
 /obj/item/organ/cyberimp/arm/toolkit/janitor
 	name = "janitorial toolset implant"
 	desc = "A set of janitorial tools hidden behind a concealed panel on the user's arm."

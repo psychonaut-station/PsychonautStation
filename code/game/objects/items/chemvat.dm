@@ -16,6 +16,7 @@
 	ADD_TRAIT(src, TRAIT_NODROP, INNATE_TRAIT)
 
 /obj/item/clothing/mask/chemvat
+	name = "chemvat mask"
 	icon_state = "chemvat_mask"
 	icon = 'icons/psychonaut/obj/clothing/masks.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/mask.dmi'

@@ -484,6 +484,8 @@
 
 /obj/item/organ/cyberimp/chest/chemvat/Insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
+	if(!.)
+		return .
 	forced = new
 	forced_tank = new
 

@@ -76,7 +76,7 @@
 
 /obj/item/organ/cyberimp/eyes/hud/science
 	name = "Science HUD implant"
-	desc = "These cybernetic eye implants will allows you to see the exact chemical regrants and what they break down into."
+	desc = "These cybernetic eye implants will allows you to see the exact chemical reagent and what they break down into."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "eye_implant_science"
 	HUD_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)

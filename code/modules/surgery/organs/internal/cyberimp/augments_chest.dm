@@ -394,13 +394,13 @@
 	exiter.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
 	exiter.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
 
-/obj/item/organ/cyberimp/chest/sandevistan/refurbished
-	name = "refurbished sandevistan"
+/obj/item/organ/cyberimp/chest/sandevistan/hasty
+	name = "hasty sandevistan"
 	desc = "The branding has been scratched off of these and it looks hastily put together."
 	organ_flags = parent_type::organ_flags & ~ORGAN_HIDDEN
 	cooldown_time = 65 SECONDS
 
-/obj/item/organ/cyberimp/chest/sandevistan/refurbished/ui_action_click(mob/user, actiontype)
+/obj/item/organ/cyberimp/chest/sandevistan/hasty/ui_action_click(mob/user, actiontype)
 	if(prob(45))
 		if(iscarbon(user))
 			var/mob/living/carbon/carbon = user
@@ -408,9 +408,9 @@
 			to_chat(user, span_warning("You are overloaded with information and suffer some backlash."))
 	. = ..()
 
-/obj/item/organ/cyberimp/chest/sandevistan/refurbished/exit_the_zone(mob/living/exiter)
+/obj/item/organ/cyberimp/chest/sandevistan/hasty/exit_the_zone(mob/living/exiter)
 	. = ..()
-	if(prob(55))
+	if(prob(45))
 		exiter.adjustBruteLoss(10)
 		to_chat(exiter, span_warning("Your body was not able to handle the strain of [src] causing you to experience some minor bruising."))
 

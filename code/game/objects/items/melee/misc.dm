@@ -745,7 +745,7 @@
 /atom/movable/screen/alert/status_effect/shield_mantis_defense
 	name = "Defensive stance"
 	desc = "You are blocking attacks and projectiles with your armblades. During that, you can't attack and will be slowed down."
-	icon_state = "shield_blade"
+	icon_state = "slime_rainbowshield"
 
 //blocking with blades slow you down
 /datum/movespeed_modifier/shield_blades

@@ -482,10 +482,9 @@
 
 	UnregisterSignal(owner,COMSIG_ATOM_UPDATE_OVERLAYS)
 
-/obj/item/organ/cyberimp/chest/chemvat/Insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
+/obj/item/organ/cyberimp/chest/chemvat/on_mob_insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
-	if(!.)
-		return .
+
 	forced = new
 	forced_tank = new
 
@@ -501,7 +500,7 @@
 	if(!receiver.back)
 		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
 
-/obj/item/organ/cyberimp/chest/chemvat/Remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+/obj/item/organ/cyberimp/chest/chemvat/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
 	organ_owner.dropItemToGround(organ_owner.wear_mask, TRUE)
 	organ_owner.dropItemToGround(organ_owner.back, TRUE)

@@ -362,6 +362,7 @@
 
 	aug_icon = 'icons/psychonaut/mob/human/species/misc/bodypart_overlay_augmentations.dmi'
 	aug_overlay = "sandy"
+	slot = ORGAN_SLOT_SPINE
 	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
 	actions_types = list(/datum/action/item_action/organ_action/sandy)
 

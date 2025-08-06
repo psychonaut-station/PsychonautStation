@@ -148,8 +148,8 @@
 	name = "hasty sandevistan"
 	desc = "A stripped-down Sandevistan unit, assembled hastily from unverified parts."
 	item = /obj/item/organ/cyberimp/chest/sandevistan/hasty
-	price_min = CARGO_CRATE_VALUE * 5
-	price_max = CARGO_CRATE_VALUE * 10
+	price_min = CARGO_CRATE_VALUE * 4
+	price_max = CARGO_CRATE_VALUE * 8
 	stock_max = 1
 	availability_prob = 25
 

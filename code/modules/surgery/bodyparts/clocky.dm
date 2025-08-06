@@ -14,10 +14,11 @@
 	var/lightning_overlay
 	var/lightning_timer
 
-/obj/item/bodypart/head/clock/Destroy() 	/*destroy*/
+/obj/item/bodypart/head/clock/Destroy() 	/* Destroy DONE */
 	QDEL_NULL(core)
 	return ..()
-/obj/item/bodypart/head/clock/on_mob_insert(mob/living/carbon/organ_owner, special, movement_flags) /*tak*/
+
+/obj/item/bodypart/head/clock/on_adding(mob/living/carbon/organ_owner) /*tak DONE*/
 	if(!core)
 		return
 	add_lightning_overlay(30 SECONDS)
@@ -26,19 +27,21 @@
 	RegisterSignal(organ_owner, COMSIG_ATOM_EMP_ACT, PROC_REF(on_emp_act))
 	organ_owner.apply_status_effect(/datum/status_effect/clock_rewind)
 
-/obj/item/bodypart/head/clock/on_mob_remove(mob/living/carbon/organ_owner, special, movement_flags)/*çıkar*/
+/obj/item/bodypart/head/clock/on_removal(mob/living/carbon/old_owner)/*çıkar DONE*/
+	. = ..()
 	if(!core)
 		return
 	organ_owner.RemoveElement(/datum/element/empprotection, EMP_PROTECT_SELF|EMP_PROTECT_CONTENTS)
 	organ_owner.remove_status_effect(/datum/status_effect/clock_rewind)
 	tesla_zap(source = organ_owner, zap_range = 20, power = 2.5e5, cutoff = 1e3)
 	qdel(src)
-/obj/item/bodypart/head/clock/proc/on_emp_act(severity) /*emp animasyon reaksiyon*/
+
+/obj/item/bodypart/head/clock/proc/on_emp_act(severity) /*emp animasyon reaksiyon DONE*/
 	SIGNAL_HANDLER
 	add_lightning_overlay(10 SECONDS)
 
 
-/obj/item/bodypart/head/clock/proc/add_lightning_overlay(time_to_last = 10 SECONDS) /* animasyon */
+/obj/item/bodypart/head/clock/proc/add_lightning_overlay(time_to_last = 10 SECONDS
 	if(lightning_overlay)
 		lightning_timer = addtimer(CALLBACK(src, PROC_REF(clear_lightning_overlay)), time_to_last, (TIMER_UNIQUE|TIMER_OVERRIDE))
 		return
@@ -46,17 +49,40 @@
 	owner.add_overlay(lightning_overlay)
 	lightning_timer = addtimer(CALLBACK(src, PROC_REF(clear_lightning_overlay)), time_to_last, (TIMER_UNIQUE|TIMER_OVERRIDE))
 
-/obj/item/bodypart/head/clock/proc/clear_lightning_overlay() /* animasyon sil */
+/obj/item/bodypart/head/clock/proc/clear_lightning_overlay()
 	owner.cut_overlay(lightning_overlay)
 	lightning_overlay = null
 
-/obj/item/bodypart/head/clock/attack_self(mob/user, modifiers) /* bu silincek attackla takma çıkarma olmayacak ama zye basarak takma için buraya proc lazım olabilir*/
-	. = ..() /* z ye basma burda olabilir*/
+/obj/item/bodypart/head/clock/attack_self(mob/user, modifiers)
+	. = ..()
 	if(.)
 		return
 
-	if(core)
-		return attack(user, user, modifiers)
+	// Check if we have a core installed
+	if(!core)
+		balloon_alert(user, "no core installed!")
+		return
+
+	// // Check if user is carbon-based // 																						@ragnarok
+	// if(!iscarbon(user))
+	// 	balloon_alert(user, "incompatible biology!")
+	// 	return
+
+	balloon_alert(user, "attaching clockwork head...")
+
+	if(!do_after(user, 1 SECONDS, target = user, extra_checks = CALLBACK(src, PROC_REF(can_still_attach), user)))
+		balloon_alert(user, "attachment interrupted!")
+		return
+
+	// Attempt to attach the head
+	if(try_attach_limb(user))
+		balloon_alert(user, "head attached successfully!")
+		playsound(user, 'sound/items/eshield_recharge.ogg', 50)
+	else
+		balloon_alert(user, "attachment failed!")
+
+/obj/item/bodypart/head/clock/proc/can_still_attach(mob/user)
+    return core
 
 /obj/item/bodypart/head/clock/item_interaction(mob/living/user, obj/item/tool, list/modifiers) /*core takma*/
 	if(!istype(tool, required_anomaly))

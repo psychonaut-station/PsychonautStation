@@ -3,15 +3,18 @@
 	var/bullet_speed_multiplier = 1
 	///our movespeed_multipliers
 	var/atom_speed_multiplier = 1
+	///action speed multiplier
+	var/action_speed_multiplier = 1
 	///list of slowed things
 	var/list/affected = list()
 	///our area range
 	var/area_range = 1
 
-/datum/component/slowing_field/Initialize(bullet_speed_multiplier = 1, atom_speed_multiplier = 1, area_range = 1)
+/datum/component/slowing_field/Initialize(bullet_speed_multiplier = 1, atom_speed_multiplier = 1, action_speed_multiplier = 1, area_range = 1)
 	. = ..()
 	src.bullet_speed_multiplier = bullet_speed_multiplier
 	src.atom_speed_multiplier = atom_speed_multiplier
+	src.action_speed_multiplier = action_speed_multiplier
 	src.area_range = area_range
 
 	var/static/list/connections = list(
@@ -63,6 +66,7 @@
 	else if(isliving(arrived))
 		var/mob/living/arrived_movable = arrived
 		arrived_movable.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field, TRUE, atom_speed_multiplier)
+		arrived_movable.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field, TRUE, action_speed_multiplier)
 
 /datum/component/slowing_field/proc/on_exited_turf(datum/source, atom/movable/gone, direction)
 	SIGNAL_HANDLER
@@ -79,6 +83,10 @@
 	else if(isliving(gone))
 		var/mob/living/arrived_movable = gone
 		arrived_movable.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field)
+		arrived_movable.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field)
 
 /datum/movespeed_modifier/status_effect/slowing_field
+	variable = TRUE
+
+/datum/actionspeed_modifier/status_effect/slowing_field
 	variable = TRUE

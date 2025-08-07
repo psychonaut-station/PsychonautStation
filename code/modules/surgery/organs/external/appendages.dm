@@ -6,7 +6,7 @@
 	slot = ORGAN_SLOT_EXTERNAL_APPENDAGES
 
 	preference = "feature_arachnid_appendages"
-	dna_block = DNA_ARACHNID_APPENDAGES_BLOCK
+	dna_block = /datum/dna_block/feature/arachnid_appendages
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 	use_mob_sprite_as_obj_sprite = TRUE
 
@@ -16,7 +16,7 @@
 
 /datum/bodypart_overlay/mutant/arachnid_appendages
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
-	feature_key = "arachnid_appendages"
+	feature_key = FEATURE_ARACHNID_APPENDAGES
 
 /datum/bodypart_overlay/mutant/arachnid_appendages/get_global_feature_list()
 	return SSaccessories.arachnid_appendages_list

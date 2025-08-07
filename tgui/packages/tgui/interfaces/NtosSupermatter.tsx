@@ -6,10 +6,10 @@ import { useBackend } from '../backend';
 import { NtosWindow } from '../layouts';
 import {
   SingularityContent,
-  SingularityTeslaData,
+  type SingularityTeslaData,
   TeslaContent,
 } from './SingularityTesla';
-import { SupermatterContent, SupermatterData } from './Supermatter';
+import { SupermatterContent, type SupermatterData } from './Supermatter';
 
 type NtosSupermatterData = SupermatterData &
   SingularityTeslaData & {
@@ -57,7 +57,7 @@ export const NtosSupermatter = (props) => {
               <Table>
                 {sm_data.map((sm) => (
                   <Table.Row key={sm.uid}>
-                    <Table.Cell>{sm.id + '. ' + sm.area_name}</Table.Cell>
+                    <Table.Cell>{`${sm.id}. ${sm.area_name}`}</Table.Cell>
                     <Table.Cell collapsing color="label">
                       Integrity:
                     </Table.Cell>
@@ -102,9 +102,7 @@ export const NtosSupermatter = (props) => {
                 <Table>
                   {anomaly_data.map((anomaly) => (
                     <Table.Row key={anomaly.uid}>
-                      <Table.Cell>
-                        {anomaly.id}. {capitalizeAll(anomaly.name)}
-                      </Table.Cell>
+                      <Table.Cell>{`${anomaly.id}. ${capitalizeAll(anomaly.name)}`}</Table.Cell>
 
                       <Table.Cell collapsing>
                         <Button

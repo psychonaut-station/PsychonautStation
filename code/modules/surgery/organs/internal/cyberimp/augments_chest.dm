@@ -483,6 +483,8 @@
 	var/max_ticks_cooldown = 20 SECONDS
 	var/current_ticks_cooldown = 0
 
+	var/emp_vulnerability = 40
+
 	var/list/reagent_list = list(
 		/datum/reagent/determination = 2,
 		/datum/reagent/medicine/c2/penthrite = 3 ,
@@ -561,3 +563,11 @@
 	QDEL_NULL(overlay)
 
 	UnregisterSignal(owner,COMSIG_ATOM_UPDATE_OVERLAYS)
+
+/obj/item/organ/cyberimp/chest/chemvat/emp_act(severity)
+	. = ..()
+	if(. & EMP_PROTECT_SELF)
+		return
+	if(prob(emp_vulnerability/severity) && !(organ_flags & ORGAN_EMP))
+		organ_flags |= ORGAN_EMP
+		reagent_list += list(/datum/reagent/toxin/histamine = 10, /datum/reagent/toxin/mutetoxin = 5)

@@ -380,7 +380,7 @@
 
 /obj/item/organ/cyberimp/chest/sandevistan/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
-	clear_effects(TRUE)
+	clear_effects(organ_owner, TRUE)
 
 /obj/item/organ/cyberimp/chest/sandevistan/ui_action_click()
 
@@ -417,21 +417,23 @@
 	active = FALSE
 	COOLDOWN_START(src, in_the_zone, (active_for * cooldown_multiplier) SECONDS)
 
-	clear_effects()
+	clear_effects(owner)
 
 	if(organ_flags & ORGAN_EMP)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
 		owner.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
 		addtimer(CALLBACK(src, PROC_REF(end_emp_effect)), active_for SECONDS)
 
-/obj/item/organ/cyberimp/chest/sandevistan/proc/clear_effects(force = FALSE)
-	var/datum/component/after_image = owner.GetComponent(/datum/component/after_image)
+/obj/item/organ/cyberimp/chest/sandevistan/proc/clear_effects(mob/living/organ_owner, force = FALSE)
+	if(isnull(organ_owner))
+		return FALSE
+	var/datum/component/after_image = organ_owner.GetComponent(/datum/component/after_image)
 	qdel(after_image)
-	var/datum/component/slowing_field = owner.GetComponent(/datum/component/slowing_field)
+	var/datum/component/slowing_field = organ_owner.GetComponent(/datum/component/slowing_field)
 	qdel(slowing_field)
 
-	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
-	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
+	organ_owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
+	organ_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
 	if(force)
 		end_emp_effect()
 

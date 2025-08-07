@@ -35,18 +35,16 @@
 
 /datum/component/after_image/UnregisterFromParent()
 	UnregisterSignal(parent, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE, COMSIG_MOVABLE_THROW_LANDED))
-	for(var/obj/effect/after_image/listed_image in src.after_images)
-		listed_image.active = FALSE
-		qdel(listed_image)
+	clear_images()
 	. = ..()
 
-/datum/component/after_image/Destroy()
+/datum/component/after_image/proc/clear_images()
 	if(length(src.after_images))
 		for(var/obj/effect/after_image/listed_image in src.after_images)
+			sleep(rest_time)
 			qdel(listed_image)
 		src.after_images.Cut()
 		src.after_images = null
-	. = ..()
 
 /datum/component/after_image/proc/change_dir(atom/movable/AM, new_dir, old_dir)
 	src.sync_after_images(new_dir)

@@ -13,6 +13,7 @@
 	base_icon_state = "clocky_head"
 	force = 10
 	dog_fashion = null
+	animal_sounds = list("Tick Tock Tick!","Tick Tick Tick!","Tick Tock?")
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	heat_protection = HEAD
@@ -105,6 +106,60 @@
 
 /obj/item/clothing/head/helmet/clocky/functioning
 	core_installed = TRUE
+
+/obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
+	ADD_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
+	clothing_flags = NONE //force animal sounds to always on.
+	if(flags_inv == initial(flags_inv))
+		flags_inv = HIDEFACIALHAIR
+	name = "Clock Head"
+	desc = "It looks like a Clock, but closer inspection reveals it's melded onto this person's face!"
+	var/update_speech_mod = !modifies_speech && LAZYLEN(animal_sounds)
+	if(update_speech_mod)
+		modifies_speech = TRUE
+	if(ismob(loc))
+		var/mob/M = loc
+		if(M.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+			if(update_speech_mod)
+				RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
+			to_chat(M, span_userdanger("[src] was cursed!"))
+			M.update_worn_head()
+
+/obj/item/clothing/head/helmet/clocky/proc/clear_curse()
+	REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
+	clothing_flags = initial(clothing_flags)
+	flags_inv = initial(flags_inv)
+	name = initial(name)
+	desc = initial(desc)
+	var/update_speech_mod = modifies_speech && !initial(modifies_speech)
+	if(update_speech_mod)
+		modifies_speech = FALSE
+	if(ismob(loc))
+		var/mob/M = loc
+		if(M.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+			to_chat(M, span_notice("[src]'s curse has been lifted!"))
+			if(update_speech_mod)
+				UnregisterSignal(M, COMSIG_MOB_SAY)
+			M.update_worn_head()
+
+/obj/item/clothing/head/helmet/clocky/proc/handle_speech(datum/source, list/speech_args)
+	SIGNAL_HANDLER
+
+	if(clothing_flags & VOICEBOX_DISABLED)
+		return
+	if(!modifies_speech || !LAZYLEN(animal_sounds))
+		return
+	speech_args[SPEECH_MESSAGE] = pick((prob(animal_sounds_alt_probability) && LAZYLEN(animal_sounds_alt)) ? animal_sounds_alt : animal_sounds)
+
+/obj/item/clothing/head/helmet/clocky/equipped(mob/user, slot)
+	if(!iscarbon(user))
+		return ..()
+	if((slot & ITEM_SLOT_HEAD) && HAS_TRAIT_FROM(src, TRAIT_NODROP, CURSED_MASK_TRAIT))
+		to_chat(user, span_userdanger("[src] was cursed!"))
+	return ..()
+
+/obj/item/clothing/head/helmet/clocky
+	cursed = TRUE
 
 
 #undef CLOCKY_INACTIVE_FLAGS

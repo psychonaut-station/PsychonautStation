@@ -196,7 +196,7 @@
 /obj/item/clothing/suit/hazardvest/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, apply_bloom = FALSE)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
 
 /obj/item/clothing/suit/hazardvest/press // Variant used by the Curator
 	name = "press hazard vest"
@@ -442,6 +442,7 @@
 /obj/item/clothing/suit/atmos_overalls/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
+<<<<<<< HEAD
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 // Synth
@@ -452,3 +453,6 @@
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/jacket.dmi'
 	icon_state = "synthjacket"
 	body_parts_covered = CHEST | GROIN | ARMS
+=======
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
+>>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc

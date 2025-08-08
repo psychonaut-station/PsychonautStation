@@ -7,9 +7,8 @@
 		granting the user effective immunity to both psychic threats, and anything that would affect their perception - be it ear, eye, or even brain damage. \
 		It can also violently discharge said energy, inducing hallucinations in others."
 	icon_state = "clocky_head_inactive"
-	icon = "icons/psychonaut/mob/clothing/head/clocky.dmi"
-	worn_icon = "icons/psychonaut/mob/clothing/head/clocky.dmi"
-	base_icon = "icons/psychonaut/mob/clothing/head/clocky.dmi"
+	icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
 	worn_icon_state = "clocky_head_inactive"
 	base_icon_state = "clocky_head"
 	force = 10
@@ -20,7 +19,7 @@
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	strip_delay = 8 SECONDS
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE
 	flags_cover = HEADCOVERSEYES
 	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -58,7 +57,6 @@
 /obj/item/clothing/head/helmet/clocky/equipped(mob/living/user, slot)
 	. = ..()
 	if(slot & ITEM_SLOT_HEAD)
-		RegisterSignal(user, COMSIG_MOB_BEFORE_SPELL_CAST, PROC_REF(pre_cast_core_check))
 		user.update_sight()
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)

@@ -30,8 +30,8 @@ export class AudioPlayer {
   localVolume: number;
   muted: boolean;
 
-  onPlaySubscribers: { (): void }[];
-  onStopSubscribers: { (): void }[];
+  onPlaySubscribers: (() => void)[];
+  onStopSubscribers: (() => void)[];
 
   constructor() {
     this.element = null;

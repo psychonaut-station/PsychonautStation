@@ -626,7 +626,6 @@
 /obj/item/storage/belt/sheath/sabre
 	name = "sabre sheath"
 	desc = "An ornate sheath designed to hold an officer's blade."
-<<<<<<< HEAD
 	icon = 'icons/psychonaut/obj/clothing/belts.dmi'
 	icon_state = "sheath_red"
 	lefthand_file = 'icons/psychonaut/mob/inhands/clothing/belts_lefthand.dmi'
@@ -640,15 +639,9 @@
 		"Red" = "sheath_red",
 		"Black" = "sheath_black"
 	)
-=======
-	icon_state = "sheath"
-	inhand_icon_state = "sheath"
-	worn_icon_state = "sheath"
->>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc
 	storage_type = /datum/storage/sabre_belt
 	stored_blade = /obj/item/melee/sabre
 
-<<<<<<< HEAD
 /obj/item/storage/belt/sabre/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/update_icon_updates_onmob)
@@ -708,10 +701,7 @@
 		I.update_appearance()
 		update_appearance()
 
-/obj/item/storage/belt/grass_sabre
-=======
 /obj/item/storage/belt/sheath/grass_sabre
->>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc
 	name = "sabre sheath"
 	desc = "A simple grass sheath designed to hold a sabre of... some sort. An actual metal one might be too sharp, though..."
 	icon_state = "grass_sheath"

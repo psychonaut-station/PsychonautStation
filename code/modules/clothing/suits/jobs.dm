@@ -442,17 +442,4 @@
 /obj/item/clothing/suit/atmos_overalls/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-<<<<<<< HEAD
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
-
-// Synth
-/obj/item/clothing/suit/jacket/synthetic
-	name = "Connor's jacket"
-	desc = "Became human?"
-	icon = 'icons/psychonaut/obj/clothing/suits/jacket.dmi'
-	worn_icon = 'icons/psychonaut/mob/clothing/suits/jacket.dmi'
-	icon_state = "synthjacket"
-	body_parts_covered = CHEST | GROIN | ARMS
-=======
 		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
->>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc

@@ -603,16 +603,6 @@
   - bugfix: fixed scarp breaking your HUD sometimes
   twilightwanderer:
   - bugfix: Solar console and pipe sprite fixes
-<<<<<<< HEAD
-2025-07-28:
-  Rengan:
-  - rscadd: "\u015Earj\u0131 azal\u0131nca alert veren containtment field generator\
-      \ t\xFCr\xFC eklendi."
-  - rscdel: "Tesla art\u0131k s\u0131cak havada patlam\u0131yor"
-  - admin: "Change map template butonu d\xFCzeltildi"
-  - config: "Modular roomlar\u0131n weightleri art\u0131k game config \xFCzerinden\
-      \ ayarlanabiliyor."
-=======
 2025-07-26:
   grungussuss:
   - bugfix: all hand items will now have no cooldown when used with northstar gloves,
@@ -693,6 +683,13 @@
       of -100 iron, 0.25 used in a craft instead of -25 iron)
   Ezel:
   - qol: Both chefs can now spawn roundstart
+  Rengan:
+  - rscadd: "\u015Earj\u0131 azal\u0131nca alert veren containtment field generator\
+      \ t\xFCr\xFC eklendi."
+  - rscdel: "Tesla art\u0131k s\u0131cak havada patlam\u0131yor"
+  - admin: "Change map template butonu d\xFCzeltildi"
+  - config: "Modular roomlar\u0131n weightleri art\u0131k game config \xFCzerinden\
+      \ ayarlanabiliyor."
   SmArtKar:
   - bugfix: Fixed mannequines runtiming when you try to pull them two times in a row
   - bugfix: Fixed tables allowing people standing on them to climb over things freely
@@ -787,4 +784,3 @@
   Thunder12345:
   - map: Tramstation's xenobiology now receives xeno eggs in the middle of the chamber
       instead of tucked away at the back.
->>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc

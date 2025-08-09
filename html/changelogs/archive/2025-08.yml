@@ -1,21 +1,4 @@
 2025-08-01:
-<<<<<<< HEAD
-  Rengan:
-  - rscadd: IPCye power cord tekrar eklendi.
-  - bugfix: "IPCnin apcye \u015Farj verememe sorunu d\xFCzeltildi."
-2025-08-02:
-  Rengan:
-  - rscadd: "Noose geri eklendi, alt\u0131n\u0131zda sandalye varken 30 cable coil\
-      \ ile craft edebilirsiniz"
-2025-08-03:
-  grungussuss:
-  - bugfix: all hand items will now have no cooldown when used with northstar gloves,
-      including circle hand
-  jlsnow301:
-  - admin: Fixed the bluescreen in admin fax panel
-  twilightwanderer:
-  - admin: Added the ability to play your own announce sounds.
-=======
   00-Steven:
   - bugfix: Newspapers can be scrolled through again.
   Glamyr:
@@ -23,6 +6,9 @@
   Maximal08:
   - qol: Right-clicking with a sheet of metal on a tile puts a computer or machine
       if you have a board of the appropriate type in your other hand.
+  Rengan:
+  - rscadd: IPCye power cord tekrar eklendi.
+  - bugfix: "IPCnin apcye \u015Farj verememe sorunu d\xFCzeltildi."
   SmArtKar:
   - rscdel: Removes forced tint from NVGs
   - bugfix: Fixed eyes not being affected by human height
@@ -60,6 +46,9 @@
   Aliceee2ch:
   - bugfix: Fixed the nukies outpost chemical locker not having beakers inside of
       a beaker box
+  Rengan:
+  - rscadd: "Noose geri eklendi, alt\u0131n\u0131zda sandalye varken 30 cable coil\
+      \ ile craft edebilirsiniz"
   SmArtKar:
   - bugfix: Fixed fire arrow ritual not being accessible
   - bugfix: Fixed certain nullrod types not being usable for certain holy and unholy
@@ -200,4 +189,3 @@
   - qol: Divine Archer coat doesn't cover arms, hands and feet as to match the sprite
   - qol: Divine Archer bracers now have the same armor as Divine Archer coat
   - balance: Divine Archer boots have their own unique armor
->>>>>>> 9636478921c98f5b22d94526c84b5ee3f748f6dc

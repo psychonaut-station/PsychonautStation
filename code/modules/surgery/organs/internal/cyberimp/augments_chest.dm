@@ -422,7 +422,7 @@
 	if(organ_flags & ORGAN_EMP)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
 		owner.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
-		addtimer(CALLBACK(src, PROC_REF(end_emp_effect), organ_owner), active_for SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(end_emp_effect), owner), active_for SECONDS)
 
 /obj/item/organ/cyberimp/chest/sandevistan/proc/clear_effects(mob/living/organ_owner, force = FALSE)
 	if(isnull(organ_owner))

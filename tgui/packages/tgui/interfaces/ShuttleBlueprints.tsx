@@ -147,21 +147,19 @@ const VisualizationToggle = (props: VisualizationToggleProps) => {
 
 const ProblemsTooltip = (props: ProblemsTooltipProps) => {
   const { description, problemHeader, problems, problemStrings } = props;
-
-  const problemElements: React.ReactElement[] = [];
-  for (let i = 0; i < problemStrings.length; i++) {
-    if (problems & (1 << i)) {
-      problemElements.push(<Box key={i}>{`● ${problemStrings[i]}`}</Box>);
-    }
-  }
-
   return (
     <Box>
       {description}
       {problems ? (
         <>
           <Box>{problemHeader}</Box>
-          {problemElements}
+          {problemStrings.reduce(
+            (problemList, problemString, i) =>
+              problems & (1 << i)
+                ? [...problemList, <Box key={i}>{`● ${problemString}`}</Box>]
+                : problemList,
+            [],
+          )}
         </>
       ) : undefined}
     </Box>
@@ -461,14 +459,14 @@ const ShuttleConfiguration = () => {
       <Stack.Item>
         <Button.Confirm
           disabled={!idle || !isMaster}
-          tooltip={`Remove all empty space from the shuttle.${
-            isMaster
+          tooltip={
+            `Remove all empty space from the shuttle.${isMaster}`
               ? idle
                 ? '\nThis will delete any areas left without any space, \
               and will decommission the shuttle entirely if there is nothing left of it.'
                 : '\nThe shuttle must be idle to do this.'
               : '\nOnly the master blueprint can do this.'
-          }`}
+          }
           onClick={() => act('cleanupEmptyTurfs')}
         >
           Clean Up Empty Space

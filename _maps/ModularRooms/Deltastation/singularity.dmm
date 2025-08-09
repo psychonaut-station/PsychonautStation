@@ -315,7 +315,8 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
 "nM" = (
-/obj/effect/landmark/firealarm_sanity,
+/obj/machinery/firealarm/directional/east,
+/obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
 /area/station/engineering/singularity/room)
 "ol" = (
@@ -1533,7 +1534,7 @@ EM
 (18,1,1) = {"
 Ff
 lm
-nM
+vv
 As
 Ff
 bZ
@@ -1894,7 +1895,7 @@ zt
 He
 PJ
 Xq
-bZ
+nM
 xr
 pc
 Os

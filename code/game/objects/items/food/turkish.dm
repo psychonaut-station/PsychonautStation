@@ -60,7 +60,6 @@
 	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
-	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_beyti
 	name = "raw beyti"
@@ -95,7 +94,6 @@
 	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
-	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/raw_kiymali_pide
 	name = "raw kiymali pide"
@@ -130,7 +128,6 @@
 	foodtypes = MEAT | VEGETABLES | GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
-	custom_materials = list(/datum/material/meat = MEATDISH_MATERIAL_AMOUNT)
 
 /obj/item/food/doner/yaprak/et
 	name = "yaprak et doner"

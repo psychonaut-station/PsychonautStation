@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { Component, Fragment } from 'react';
 import {
   Box,
   Button,
@@ -146,8 +146,10 @@ export class Uplink extends Component<any, UplinkState> {
       ) {
         return false;
       }
-      if (value.purchasable_from & uplinkFlag) {
-        return true;
+      {
+        if (value.purchasable_from & uplinkFlag) {
+          return true;
+        }
       }
       return false;
     });

@@ -7,8 +7,6 @@
 	var/role_type = TOWN_OVERFLOW
 	///role flags (special status of roles like detection immune)
 	var/role_flags = NONE
-	///The mafia controller board this mafia role is tied to, in case there's several Mafia games at once.
-	var/datum/mafia_controller/mafia_game_controller
 
 	///The mafia popup we edit text to give different alerts for (such as when to vote).
 	var/atom/movable/screen/mafia_popup/mafia_alert
@@ -43,7 +41,7 @@
 	var/game_status = MAFIA_ALIVE
 
 	///icon state in the mafia dmi of the hud of the role, used in the mafia ui
-	var/hud_icon = SECHUD_ASSISTANT
+	var/hud_icon = "hudassistant"
 	///icon state in the mafia dmi of the hud of the role, used in the mafia ui
 	var/revealed_icon = "assistant"
 	///set this to something cool for antagonists and their window will look different
@@ -52,16 +50,15 @@
 	///The cooldown between being able to send your will in chat.
 	COOLDOWN_DECLARE(note_chat_sending_cooldown)
 
-/datum/mafia_role/New(datum/mafia_controller/new_game)
+/datum/mafia_role/New(datum/mafia_controller/game)
 	. = ..()
-	src.mafia_game_controller = new_game
-	mafia_panel = new(null, new_game)
+	mafia_panel = new(null, game)
 	for(var/datum/mafia_ability/abilities as anything in role_unique_actions + /datum/mafia_ability/voting)
-		role_unique_actions += new abilities(src)
+		role_unique_actions += new abilities(game, src)
 		role_unique_actions -= abilities
 
 /datum/mafia_role/Destroy(force)
-	UnregisterSignal(body, list(COMSIG_MOB_SAY, COMSIG_MOB_DEADSAY))
+	UnregisterSignal(body, COMSIG_MOB_SAY)
 	QDEL_NULL(mafia_alert)
 	QDEL_NULL(mafia_panel)
 	QDEL_LIST(role_unique_actions)
@@ -73,11 +70,10 @@
 
 /datum/mafia_role/proc/register_body(mob/living/carbon/human/new_body)
 	if(body)
-		UnregisterSignal(new_body, list(COMSIG_MOB_SAY, COMSIG_MOB_DEADSAY))
+		UnregisterSignal(new_body, COMSIG_MOB_SAY)
 		mafia_panel.Remove(body)
 	body = new_body
 	RegisterSignal(new_body, COMSIG_MOB_SAY, PROC_REF(handle_speech))
-	RegisterSignal(new_body, COMSIG_MOB_DEADSAY, PROC_REF(handle_speech_dead))
 	mafia_panel.Grant(new_body)
 
 /**
@@ -101,25 +97,19 @@
  * handle_speech
  *
  * Handles Mafia roles talking in chat.
- * First we'll go through their abilities for Ability-specific speech,
- * if none affects it, we will go to day chat (if it is indeed day).
+ * First it will go through their abilities for Ability-specific speech,
+ * if none affects it, we will go to day chat.
  */
 /datum/mafia_role/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 	for(var/datum/mafia_ability/abilities as anything in role_unique_actions)
 		if(abilities.handle_speech(source, speech_args))
 			return
-	if(mafia_game_controller.phase == MAFIA_PHASE_NIGHT)
+	var/datum/mafia_controller/mafia_game = GLOB.mafia_game
+	if(!mafia_game || mafia_game.phase == MAFIA_PHASE_NIGHT)
 		return
 	var/message = "[source]: [html_decode(speech_args[SPEECH_MESSAGE])]"
-	mafia_game_controller.send_message(message, log_only = TRUE)
-
-///Same as handle_speech, but for dead players.
-/datum/mafia_role/proc/handle_speech_dead(datum/source, message)
-	SIGNAL_HANDLER
-	var/message_sent = span_changeling("<b>\[DEAD CHAT\] [source]</b>: [message]")
-	mafia_game_controller.send_message(message_sent, team = MAFIA_TEAM_DEAD)
-	return MOB_DEADSAY_SIGNAL_INTERCEPT
+	mafia_game.send_message(message, log_only = TRUE)
 
 /**
  * Puts the player in their body and keeps track of their previous one to put them back in later.
@@ -133,7 +123,6 @@
 			old_body = player.mob.mind.current, \
 		)
 	body.PossessByPlayer(player.key)
-	ADD_TRAIT(body, TRAIT_CORPSELOCKED, MAFIA_TRAIT)
 
 /**
  * Tests kill immunities, if nothing prevents the kill, kills this role.
@@ -148,8 +137,6 @@
 	if(SEND_SIGNAL(src, COMSIG_MAFIA_ON_KILL, game, attacker, lynch) & MAFIA_PREVENT_KILL)
 		return FALSE
 	game_status = MAFIA_DEAD
-	//can now hear dead chat speaking.
-	team |= MAFIA_TEAM_DEAD
 	body.death()
 	if(lynch)
 		reveal_role(game, verbose = TRUE)

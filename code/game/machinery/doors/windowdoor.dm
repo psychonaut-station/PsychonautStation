@@ -119,24 +119,20 @@
 	switch(dir)
 		if(NORTH,SOUTH)
 			if(unres_sides & NORTH)
-				var/mutable_appearance/side_overlay = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_1", FLOAT_LAYER, src, O_LIGHTING_VISUAL_PLANE, appearance_flags = RESET_COLOR | KEEP_APART)
-				side_overlay.color = LIGHT_COLOR_DEFAULT
+				var/image/side_overlay = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_n")
 				side_overlay.pixel_z = dir == NORTH ? 31 : 6
 				. += side_overlay
 			if(unres_sides & SOUTH)
-				var/mutable_appearance/side_overlay = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_2", FLOAT_LAYER, src, O_LIGHTING_VISUAL_PLANE, appearance_flags = RESET_COLOR | KEEP_APART)
-				side_overlay.color = LIGHT_COLOR_DEFAULT
+				var/image/side_overlay = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_s")
 				side_overlay.pixel_z = dir == NORTH ? -6 : -31
 				. += side_overlay
 		if(EAST,WEST)
 			if(unres_sides & EAST)
-				var/mutable_appearance/side_overlay = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_4", FLOAT_LAYER, src, O_LIGHTING_VISUAL_PLANE, appearance_flags = RESET_COLOR | KEEP_APART)
-				side_overlay.color = LIGHT_COLOR_DEFAULT
+				var/image/side_overlay = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_e")
 				side_overlay.pixel_w = dir == EAST ? 31 : 6
 				. += side_overlay
 			if(unres_sides & WEST)
-				var/mutable_appearance/side_overlay = mutable_appearance('icons/obj/doors/airlocks/station/overlays.dmi', "unres_8", FLOAT_LAYER, src, O_LIGHTING_VISUAL_PLANE, appearance_flags = RESET_COLOR | KEEP_APART)
-				side_overlay.color = LIGHT_COLOR_DEFAULT
+				var/image/side_overlay = image(icon='icons/obj/doors/airlocks/station/overlays.dmi', icon_state="unres_w")
 				side_overlay.pixel_w = dir == EAST ? -6 : -31
 				. += side_overlay
 

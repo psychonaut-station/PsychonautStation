@@ -1,6 +1,7 @@
 {
+	"eslint.workingDirectories": ["./tgui"],
 	"editor.codeActionsOnSave": {
-		"source.fixAll.biome": "explicit"
+		"source.fixAll.eslint": "explicit"
 	},
 	"files.eol": "\n",
 	"files.insertFinalNewline": true,
@@ -9,15 +10,10 @@
 	"git.branchProtection": ["master"],
 	"gitlens.advanced.blame.customArguments": ["-w"],
 	"tgstationTestExplorer.project.resultsType": "json",
-	"[javascript][typescript][javascriptreact][typescriptreact][css][json][jsonc]": {
-		"editor.defaultFormatter": "biomejs.biome",
-		"editor.formatOnSave": true,
-		"editor.rulers": [80]
-	},
-	"[yaml][markdown][html][scss]": {
+	"[javascript][typescript][typescriptreact][javascriptreact][html][scss][css][json][jsonc][markdown][yaml]": {
+		"editor.rulers": [80],
 		"editor.defaultFormatter": "esbenp.prettier-vscode",
-		"editor.formatOnSave": true,
-		"editor.rulers": [80]
+		"editor.formatOnSave": true
 	},
 	"workbench.editorAssociations": {
 		"*.dmi": "dmiEditor.dmiEditor"

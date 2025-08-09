@@ -1,9 +1,6 @@
 import { useState } from 'react';
 import {
   Box,
-  Button,
-  Collapsible,
-  Divider,
   Icon,
   Image,
   LabeledList,
@@ -14,7 +11,7 @@ import {
   Tooltip,
   VirtualList,
 } from 'tgui-core/components';
-import { BooleanLike, classes } from 'tgui-core/react';
+import { classes } from 'tgui-core/react';
 import { capitalize } from 'tgui-core/string';
 
 import { useBackend } from '../backend';
@@ -25,32 +22,18 @@ import type { Material } from './Fabrication/Types';
 type Machine = {
   name: string;
   icon: string;
-  on_hold: boolean;
+  onHold: boolean;
   location: string;
 };
 
-type UserData = {
-  name: string;
-  age: number;
-  assignment: string;
-  account_id: number;
-  account_holder: string;
-  account_assignment: string;
-  accesses: string[];
-  chamelon_override: string | null;
-  silicon_override: string | null;
-  id_read_failure: string | null;
-};
-
 type Log = {
-  raw_materials: string;
-  machine_name: string;
-  area_name: string;
+  rawMaterials: string;
+  machineName: string;
+  areaName: string;
   action: string;
   amount: number;
   time: string;
   noun: string;
-  user_data: UserData;
 };
 
 enum Tab {
@@ -63,12 +46,9 @@ type Data = {
   materials: Material[];
   machines: Machine[];
   logs: Log[];
-  // Banned users is a list of bank account datum IDs
-  banned_users: number[];
-  id_required: BooleanLike;
 };
 
-export const OreSilo = (props: Data) => {
+export const OreSilo = (props: any) => {
   const { act, data } = useBackend<Data>();
   const { SHEET_MATERIAL_AMOUNT, machines, logs } = data;
 
@@ -76,7 +56,7 @@ export const OreSilo = (props: Data) => {
 
   return (
     <Window title="Ore Silo" width={620} height={600}>
-      <Window.Content className="OreSilo">
+      <Window.Content>
         <Stack vertical fill>
           <Stack.Item>
             <Tabs fluid>
@@ -104,12 +84,7 @@ export const OreSilo = (props: Data) => {
                 onRemove={(index) => act('remove', { id: index })}
               />
             ) : null}
-            {currentTab === Tab.Logs && (
-              <>
-                <RestrictButton />
-                <LogsList logs={logs} />
-              </>
-            )}
+            {currentTab === Tab.Logs ? <LogsList logs={logs!} /> : null}
           </Stack.Item>
           <Stack.Item>
             <Section fill>
@@ -173,7 +148,7 @@ const MachineDisplay = (props: MachineProps) => {
     <Box className="FabricatorRecipe">
       <Box
         className={
-          machine.on_hold
+          machine.onHold
             ? classes([
                 'FabricatorRecipe__Title',
                 'FabricatorRecipe__Title--disabled',
@@ -193,7 +168,7 @@ const MachineDisplay = (props: MachineProps) => {
 
       <Tooltip
         content={
-          machine.on_hold
+          machine.onHold
             ? `Resume ${machine.name} usage.`
             : `Put ${machine.name} on hold.`
         }
@@ -207,7 +182,7 @@ const MachineDisplay = (props: MachineProps) => {
             onPause();
           }}
         >
-          <Icon name={machine.on_hold ? 'circle-play' : 'circle-pause'} />
+          <Icon name={machine.onHold ? 'circle-play' : 'circle-pause'} />
         </Box>
       </Tooltip>
       <Tooltip content={`Disconnect ${machine.name}.`}>
@@ -231,32 +206,14 @@ type LogsListProps = {
   logs: Log[];
 };
 
-const RestrictButton = () => {
-  const { act, data } = useBackend<Data>();
-  const { id_required } = data;
-  return (
-    <Box align="center">
-      <Button
-        position="relative"
-        className="__RestrictButton"
-        color={id_required ? 'bad' : 'good'}
-        onClick={() => act('toggle_restrict')}
-      >
-        {id_required ? 'Disable ID Requirement' : 'Enable ID Requirement'}
-      </Button>
-    </Box>
-  );
-};
-
 const LogsList = (props: LogsListProps) => {
   const { logs } = props;
 
   return logs.length > 0 ? (
-    <Section fill scrollable pr={1} align="center">
-      <Divider />
+    <Section fill scrollable pr={1} height="100%">
       <VirtualList>
         {logs.map((log, index) => (
-          <LogEntry key={index} {...log} />
+          <LogEntry key={index} log={log} />
         ))}
       </VirtualList>
     </Section>
@@ -265,83 +222,29 @@ const LogsList = (props: LogsListProps) => {
   );
 };
 
-const UserItem = (props: UserData) => {
-  const {
-    name,
-    age,
-    assignment,
-    account_id,
-    account_holder,
-    account_assignment,
-    accesses,
-    chamelon_override,
-    silicon_override,
-    id_read_failure,
-  } = props;
-  const { act, data } = useBackend<Data>();
-  const { banned_users } = data;
-  return (
-    <Stack align="center" className="__UserItem">
-      <Stack.Item className="__Name">{name}</Stack.Item>
-      <Stack.Item className="__Assignment">{assignment}</Stack.Item>
-      {!id_read_failure && !silicon_override && (
-        <Stack.Item>
-          <Button
-            className="__AntiRoboticistButton" // we have fun here
-            color={banned_users.includes(account_id) ? 'bad' : 'good'}
-            onClick={() => act('toggle_ban', { user_data: props })}
-          >
-            {banned_users.includes(account_id) ? 'Unban' : 'Ban'} User?
-          </Button>
-        </Stack.Item>
-      )}
-    </Stack>
-  );
+type LogProps = {
+  log: Log;
 };
 
-const formatAmount = (action: string, amount: number) => {
-  const isSheetAction = action === 'EJECT' || action === 'DEPOSIT';
-  const rawAmount = Math.abs(amount);
-  if (!isSheetAction) {
-    return rawAmount;
-  }
-  const proportionalAmount = rawAmount / 100;
-  return ` ${proportionalAmount} `;
-};
-
-const LogEntry = (props: Log) => {
-  const {
-    raw_materials,
-    machine_name,
-    area_name,
-    action,
-    amount,
-    time,
-    noun,
-    user_data,
-  } = props;
+const LogEntry = (props: LogProps) => {
+  const { log } = props;
   return (
-    <Collapsible
-      title={`${action.toUpperCase()} ${formatAmount(action, amount)} ${noun}, [${user_data.name} | ${user_data.assignment.toUpperCase()}]`}
+    <Section
+      title={`${capitalize(log.action)}: x${Math.abs(log.amount)} ${log.noun}`}
     >
-      <Section className="__LogEntry">
-        <LabeledList>
-          <LabeledList.Item label="Time">{time}</LabeledList.Item>
-          <LabeledList.Item label="Machine">
-            {capitalize(machine_name)}
-          </LabeledList.Item>
-          <LabeledList.Item label="Location">{area_name}</LabeledList.Item>
-          <LabeledList.Item
-            label="Materials"
-            color={amount > 0 ? 'good' : 'bad'}
-          >
-            {raw_materials}
-          </LabeledList.Item>
-          <LabeledList.Item label="User">
-            <UserItem {...user_data} />
-          </LabeledList.Item>
-        </LabeledList>
-      </Section>
-    </Collapsible>
+      <LabeledList>
+        <LabeledList.Item label="Time">{log.time}</LabeledList.Item>
+        <LabeledList.Item label="Machine">
+          {capitalize(log.machineName)}
+        </LabeledList.Item>
+        <LabeledList.Item label="Location">{log.areaName}</LabeledList.Item>
+        <LabeledList.Item
+          label="Materials"
+          color={log.amount > 0 ? 'good' : 'bad'}
+        >
+          {log.rawMaterials}
+        </LabeledList.Item>
+      </LabeledList>
+    </Section>
   );
 };

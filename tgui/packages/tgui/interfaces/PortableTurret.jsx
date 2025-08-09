@@ -26,93 +26,96 @@ export const PortableTurret = (props) => {
         <NoticeBox>
           Swipe an ID card to {locked ? 'unlock' : 'lock'} this interface.
         </NoticeBox>
-
-        <Section>
-          <LabeledList>
-            <LabeledList.Item
-              label="Status"
+        <>
+          <Section>
+            <LabeledList>
+              <LabeledList.Item
+                label="Status"
+                buttons={
+                  !lasertag_turret &&
+                  (!!allow_manual_control ||
+                    (!!manual_control && !!silicon_user)) && (
+                    <Button
+                      icon={manual_control ? 'wifi' : 'terminal'}
+                      content={
+                        manual_control
+                          ? 'Remotely Controlled'
+                          : 'Manual Control'
+                      }
+                      disabled={manual_control}
+                      color="bad"
+                      onClick={() => act('manual')}
+                    />
+                  )
+                }
+              >
+                <Button
+                  icon={on ? 'power-off' : 'times'}
+                  content={on ? 'On' : 'Off'}
+                  selected={on}
+                  disabled={locked}
+                  onClick={() => act('power')}
+                />
+              </LabeledList.Item>
+            </LabeledList>
+          </Section>
+          {!lasertag_turret && (
+            <Section
+              title="Target Settings"
               buttons={
-                !lasertag_turret &&
-                (!!allow_manual_control ||
-                  (!!manual_control && !!silicon_user)) && (
-                  <Button
-                    icon={manual_control ? 'wifi' : 'terminal'}
-                    content={
-                      manual_control ? 'Remotely Controlled' : 'Manual Control'
-                    }
-                    disabled={manual_control}
-                    color="bad"
-                    onClick={() => act('manual')}
-                  />
-                )
+                <Button.Checkbox
+                  checked={!neutralize_heads}
+                  content="Ignore Command"
+                  disabled={locked}
+                  onClick={() => act('shootheads')}
+                />
               }
             >
-              <Button
-                icon={on ? 'power-off' : 'times'}
-                content={on ? 'On' : 'Off'}
-                selected={on}
-                disabled={locked}
-                onClick={() => act('power')}
-              />
-            </LabeledList.Item>
-          </LabeledList>
-        </Section>
-        {!lasertag_turret && (
-          <Section
-            title="Target Settings"
-            buttons={
               <Button.Checkbox
-                checked={!neutralize_heads}
-                content="Ignore Command"
+                fluid
+                checked={neutralize_all}
+                content="Non-Security and Non-Command"
                 disabled={locked}
-                onClick={() => act('shootheads')}
+                onClick={() => act('shootall')}
               />
-            }
-          >
-            <Button.Checkbox
-              fluid
-              checked={neutralize_all}
-              content="Non-Security and Non-Command"
-              disabled={locked}
-              onClick={() => act('shootall')}
-            />
-            <Button.Checkbox
-              fluid
-              checked={check_weapons}
-              content="Unauthorized Weapons"
-              disabled={locked}
-              onClick={() => act('authweapon')}
-            />
-            <Button.Checkbox
-              fluid
-              checked={neutralize_unidentified}
-              content="Unidentified Life Signs"
-              disabled={locked}
-              onClick={() => act('checkxenos')}
-            />
-            <Button.Checkbox
-              fluid
-              checked={neutralize_nonmindshielded}
-              content="Non-Mindshielded"
-              disabled={locked}
-              onClick={() => act('checkloyal')}
-            />
-            <Button.Checkbox
-              fluid
-              checked={neutralize_criminals}
-              content="Wanted Criminals"
-              disabled={locked}
-              onClick={() => act('shootcriminals')}
-            />
-            <Button.Checkbox
-              fluid
-              checked={neutralize_cyborgs}
-              content="Cyborgs"
-              disabled={locked}
-              onClick={() => act('shootborgs')}
-            />
-          </Section>
-        )}
+              <Button.Checkbox
+                fluid
+                checked={check_weapons}
+                content="Unauthorized Weapons"
+                disabled={locked}
+                onClick={() => act('authweapon')}
+              />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_unidentified}
+                content="Unidentified Life Signs"
+                disabled={locked}
+                onClick={() => act('checkxenos')}
+              />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_nonmindshielded}
+                content="Non-Mindshielded"
+                disabled={locked}
+                onClick={() => act('checkloyal')}
+              />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_criminals}
+                content="Wanted Criminals"
+                disabled={locked}
+                onClick={() => act('shootcriminals')}
+              />
+              <Button.Checkbox
+                fluid
+                checked={neutralize_cyborgs}
+                content="Cyborgs"
+                disabled={locked}
+                onClick={() => act('shootborgs')}
+              />
+            </Section>
+          )}
+        </>
       </Window.Content>
     </Window>
   );

@@ -26,7 +26,7 @@
 	/// The time spent to climb this crate.
 	var/crate_climb_time = 2 SECONDS
 	/// The reference of the manifest paper attached to the cargo crate.
-	var/datum/weakref/manifest
+	var/obj/item/paper/fluff/jobs/cargo/manifest/manifest
 	/// Where the Icons for lids are located.
 	var/lid_icon = 'icons/obj/storage/crates.dmi'
 	/// Icon state to use for lid to display when opened. Leave undefined if there isn't one.
@@ -67,7 +67,7 @@
 	AddComponent(/datum/component/soapbox)
 
 /obj/structure/closet/crate/Destroy()
-	manifest = null
+	QDEL_NULL(manifest)
 	return ..()
 
 /obj/structure/closet/crate/CanAllowThrough(atom/movable/mover, border_dir)
@@ -112,7 +112,8 @@
 	. = ..()
 	if(.)
 		return
-	tear_manifest(user)
+	if(manifest)
+		tear_manifest(user)
 
 /obj/structure/closet/crate/after_open(mob/living/user, force)
 	. = ..()
@@ -123,8 +124,11 @@
 			RemoveElement(/datum/element/elevation, pixel_shift = elevation)
 		if(elevation_open)
 			AddElement(/datum/element/elevation, pixel_shift = elevation_open)
-
-	tear_manifest()
+	if(!QDELETED(manifest))
+		playsound(src, 'sound/items/poster/poster_ripped.ogg', 75, TRUE)
+		manifest.forceMove(get_turf(src))
+		manifest = null
+		update_appearance()
 
 /obj/structure/closet/crate/after_close(mob/living/user)
 	. = ..()
@@ -147,17 +151,12 @@
 
 ///Removes the supply manifest from the closet
 /obj/structure/closet/crate/proc/tear_manifest(mob/user)
-	var/obj/item/paper/fluff/jobs/cargo/manifest/our_manifest = manifest?.resolve()
-	if(QDELETED(our_manifest))
-		manifest = null
-		return
-	if(user)
-		to_chat(user, span_notice("You tear the manifest off of [src]."))
+	to_chat(user, span_notice("You tear the manifest off of [src]."))
 	playsound(src, 'sound/items/poster/poster_ripped.ogg', 75, TRUE)
 
-	our_manifest.forceMove(drop_location(src))
+	manifest.forceMove(loc)
 	if(ishuman(user))
-		user.put_in_hands(our_manifest)
+		user.put_in_hands(manifest)
 	manifest = null
 	update_appearance()
 
@@ -474,26 +473,14 @@
 /obj/structure/closet/crate/add_to_roundstart_list()
 	return
 
-/obj/structure/closet/crate/glitter
+/obj/structure/closet/crate/pink
 	name = "pink crate"
 	desc = "A glittery pink crate."
 	icon_state = "pink"
 	base_icon_state = "pink"
-	var/glitter_prob = 25
-	var/glitter_color = "#ff8080"
 
-/obj/structure/closet/crate/glitter/Moved(atom/old_loc, movement_dir, forced, list/old_locs, momentum_change)
-	. = ..()
-
-	var/turf/old_turf = get_turf(old_loc)
-	if(!old_turf)
-		return
-	if(prob(glitter_prob))
-		old_turf.spawn_glitter(list("[glitter_color]" = 100))
-
-/obj/structure/closet/crate/glitter/lavender
+/obj/structure/closet/crate/lavender
 	name = "lavender crate"
 	desc = "A glittery purple... no, lavender crate."
 	icon_state = "lavender"
 	base_icon_state = "lavender"
-	glitter_color = "#db80ff"

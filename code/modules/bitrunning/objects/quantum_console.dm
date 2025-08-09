@@ -16,11 +16,6 @@
 	. = ..()
 	find_server()
 
-/obj/machinery/computer/quantum_console/examine(mob/user)
-	. = ..()
-	if(!server_ref)
-		. += span_warning("Please install an quantum server in any tile next to this console.")
-
 /obj/machinery/computer/quantum_console/ui_interact(mob/user, datum/tgui/ui)
 	. = ..()
 

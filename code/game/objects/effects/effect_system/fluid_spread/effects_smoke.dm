@@ -98,7 +98,7 @@
 			smoke_mob(smoker, seconds_per_tick)
 
 		var/obj/effect/particle_effect/fluid/smoke/spread_smoke = new type(spread_turf, group, src)
-		reagents.trans_to(spread_smoke, reagents.total_volume, copy_only = TRUE)
+		reagents.copy_to(spread_smoke, reagents.total_volume)
 		spread_smoke.add_atom_colour(color, FIXED_COLOUR_PRIORITY)
 		spread_smoke.lifetime = lifetime
 
@@ -411,7 +411,7 @@
 		return FALSE
 
 	var/fraction = (seconds_per_tick SECONDS) / initial(lifetime)
-	reagents.trans_to(smoker, reagents.total_volume, fraction, methods = SMOKE_MACHINE, copy_only = TRUE)
+	reagents.copy_to(smoker, reagents.total_volume, fraction, copy_methods = SMOKE_MACHINE)
 	reagents.expose(smoker, SMOKE_MACHINE, fraction)
 	return TRUE
 
@@ -442,7 +442,7 @@
 
 /datum/effect_system/fluid_spread/smoke/chem/set_up(range = 1, amount = DIAMOND_AREA(range), atom/holder, atom/location = null, datum/reagents/carry = null, silent = FALSE)
 	. = ..()
-	carry?.trans_to(chemholder, carry.total_volume, copy_only = TRUE)
+	carry?.copy_to(chemholder, carry.total_volume)
 
 	if(silent)
 		return
@@ -471,7 +471,7 @@
 	var/start_loc = holder ? get_turf(holder) : src.location
 	var/mixcolor = mix_color_from_reagents(chemholder.reagent_list)
 	var/obj/effect/particle_effect/fluid/smoke/chem/smoke = new effect_type(start_loc, new /datum/fluid_group(amount))
-	chemholder.trans_to(smoke, chemholder.total_volume, copy_only = TRUE)
+	chemholder.copy_to(smoke, chemholder.total_volume)
 
 	if(mixcolor)
 		smoke.add_atom_colour(mixcolor, FIXED_COLOUR_PRIORITY) // give the smoke color, if it has any to begin with

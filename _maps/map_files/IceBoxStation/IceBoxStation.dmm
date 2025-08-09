@@ -2972,7 +2972,13 @@
 /turf/closed/wall/r_wall,
 /area/station/engineering/storage_shared)
 "aPM" = (
-/turf/open/water/no_planet_atmos,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "aPN" = (
 /obj/structure/cable,
@@ -4608,8 +4614,9 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/nospawn)
 "blA" = (
+/obj/machinery/hydroponics/soil,
 /obj/machinery/light/directional/west,
-/turf/open/water/no_planet_atmos/deep,
+/turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "blM" = (
 /obj/effect/turf_decal/siding/wood{
@@ -11558,12 +11565,6 @@
 	dir = 4
 	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
 /turf/open/floor/iron/large,
 /area/station/service/hydroponics/garden)
 "deg" = (
@@ -15974,12 +15975,6 @@
 /obj/effect/turf_decal/siding/green{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
-	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "esC" = (
@@ -17700,8 +17695,6 @@
 /obj/item/seeds/watermelon,
 /obj/structure/table/glass,
 /obj/item/seeds/tower,
-/obj/item/storage/toolbox/fishing,
-/obj/item/fishing_rod,
 /turf/open/floor/iron/dark,
 /area/station/service/hydroponics/garden)
 "eUm" = (
@@ -17754,9 +17747,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
@@ -21795,18 +21785,6 @@
 	},
 /turf/open/floor/glass/reinforced,
 /area/station/engineering/atmos/pumproom)
-"gcY" = (
-/obj/effect/turf_decal/siding/wood{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral/half/contrasted{
-	dir = 4
-	},
-/obj/structure/railing/corner/end{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/service/hydroponics/garden)
 "gcZ" = (
 /obj/structure/table,
 /obj/item/storage/bag/tray,
@@ -21932,8 +21910,14 @@
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
 "geZ" = (
-/obj/machinery/hydroponics/constructable,
-/turf/open/floor/iron/dark,
+/obj/structure/sink/directional/south,
+/obj/effect/turf_decal/siding/wood{
+	dir = 8
+	},
+/obj/effect/turf_decal/tile/neutral/half/contrasted{
+	dir = 8
+	},
+/turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "gfb" = (
 /turf/closed/wall/r_wall,
@@ -35416,11 +35400,9 @@
 /turf/open/floor/iron,
 /area/mine/laborcamp)
 "kby" = (
+/obj/machinery/hydroponics/soil,
 /obj/structure/extinguisher_cabinet/directional/east,
-/obj/machinery/hydroponics/constructable,
-/obj/effect/turf_decal/siding/wood,
-/obj/structure/railing,
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "kbJ" = (
 /obj/machinery/field/generator,
@@ -38240,9 +38222,6 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/effect/turf_decal/siding/wood/corner{
-	dir = 4
-	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
 "kPH" = (
@@ -40935,12 +40914,6 @@
 /obj/structure/cable,
 /obj/effect/turf_decal/siding/green{
 	dir = 4
-	},
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 8
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 8
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
@@ -43741,10 +43714,10 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos/storage)
 "mut" = (
+/obj/machinery/hydroponics/soil,
 /obj/machinery/light/directional/east,
 /obj/machinery/newscaster/directional/east,
-/obj/machinery/hydroponics/constructable,
-/turf/open/floor/iron/dark,
+/turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "muv" = (
 /obj/effect/decal/cleanable/dirt,
@@ -44331,7 +44304,8 @@
 /turf/open/floor/wood/large,
 /area/station/service/chapel)
 "mCT" = (
-/turf/open/water/no_planet_atmos/deep,
+/obj/machinery/hydroponics/soil,
+/turf/open/floor/grass,
 /area/station/service/hydroponics/garden)
 "mDf" = (
 /obj/machinery/telecomms/server/presets/common,
@@ -60084,14 +60058,11 @@
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 8
 	},
+/obj/effect/turf_decal/siding/wood/corner{
+	dir = 1
+	},
 /obj/structure/disposalpipe/segment{
 	dir = 4
-	},
-/obj/effect/turf_decal/tile/green/half/contrasted{
-	dir = 1
-	},
-/obj/effect/turf_decal/siding/wood{
-	dir = 1
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics/garden)
@@ -231722,7 +231693,7 @@ lil
 anl
 pLZ
 lJO
-aPM
+geZ
 aPM
 aPM
 qTm
@@ -232752,7 +232723,7 @@ kXI
 lJO
 wDf
 sAR
-gcY
+sAR
 lCn
 kPy
 dQI
@@ -233007,7 +232978,7 @@ lNj
 qDI
 lJO
 lJO
-geZ
+mCT
 mut
 kby
 oLm

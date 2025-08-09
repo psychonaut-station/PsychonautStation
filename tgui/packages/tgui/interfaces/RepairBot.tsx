@@ -1,3 +1,4 @@
+import React from 'react';
 import { useBackend } from 'tgui/backend';
 import { BotControl, BotSettings } from 'tgui/interfaces/SimpleBot';
 import { Window } from 'tgui/layouts';

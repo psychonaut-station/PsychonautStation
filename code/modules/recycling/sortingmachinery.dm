@@ -73,22 +73,22 @@
 	if(!hasmob)
 		disposal_holder.destinationTag = sort_tag
 
-/obj/item/delivery/relay_container_resist_act(mob/living/user, obj/container)
+/obj/item/delivery/relay_container_resist_act(mob/living/user, obj/object)
 	if(ismovable(loc))
 		var/atom/movable/movable_loc = loc //can't unwrap the wrapped container if it's inside something.
-		movable_loc.relay_container_resist_act(user, container)
+		movable_loc.relay_container_resist_act(user, object)
 		return
-	to_chat(user, span_notice("You lean on the back of [container] and start pushing to rip the wrapping around it."))
-	if(do_after(user, 5 SECONDS, target = container))
-		if(!user || user.stat != CONSCIOUS || user.loc != container || container.loc != src)
+	to_chat(user, span_notice("You lean on the back of [object] and start pushing to rip the wrapping around it."))
+	if(do_after(user, 5 SECONDS, target = object))
+		if(!user || user.stat != CONSCIOUS || user.loc != object || object.loc != src)
 			return
-		to_chat(user, span_notice("You successfully removed [container]'s wrapping!"))
-		container.forceMove(loc)
+		to_chat(user, span_notice("You successfully removed [object]'s wrapping!"))
+		object.forceMove(loc)
 		unwrap_contents()
 		post_unwrap_contents(user)
 	else
 		if(user.loc == src) //so we don't get the message if we resisted multiple times and succeeded.
-			to_chat(user, span_warning("You fail to remove [container]'s wrapping!"))
+			to_chat(user, span_warning("You fail to remove [object]'s wrapping!"))
 
 /obj/item/delivery/update_icon_state()
 	. = ..()

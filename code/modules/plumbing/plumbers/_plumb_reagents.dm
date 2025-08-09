@@ -27,8 +27,7 @@
 	remove_blacklisted = FALSE, //unused for plumbing, we don't care what reagents are inside us
 	methods = LINEAR, //default round robin technique for transferring reagents
 	show_message = TRUE, //unused for plumbing, used for logging only
-	ignore_stomach = FALSE, //unused for plumbing, reagents flow only between machines & is not injected to mobs at any point in time
-	copy_only = FALSE //unused
+	ignore_stomach = FALSE //unused for plumbing, reagents flow only between machines & is not injected to mobs at any point in time
 )
 	if(QDELETED(target) || !total_volume)
 		return FALSE
@@ -86,6 +85,8 @@
 				transfer_amount = reagent.volume * part
 
 		if(reagent.intercept_reagents_transfer(target_holder, amount))
+			update_total()
+			target_holder.update_total()
 			continue
 
 		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount, copy_data(reagent), chem_temp, reagent.purity, reagent.ph, no_react = TRUE) //we only handle reaction after every reagent has been transferred.
@@ -155,8 +156,7 @@
 	remove_blacklisted = FALSE,
 	methods = LINEAR,
 	show_message = TRUE,
-	ignore_stomach = FALSE,
-	copy_only = FALSE
+	ignore_stomach = FALSE
 )
 	var/obj/machinery/plumbing/reaction_chamber/reactor = my_atom
 	var/list/datum/reagent/catalysts = reactor.catalysts
@@ -233,6 +233,8 @@
 				transfer_amount = working_volume * part
 
 		if(reagent.intercept_reagents_transfer(target_holder, amount))
+			update_total()
+			target_holder.update_total()
 			continue
 
 		transfered_amount = target_holder.add_reagent(reagent.type, transfer_amount, copy_data(reagent), chem_temp, reagent.purity, reagent.ph, no_react = TRUE) //we only handle reaction after every reagent has been transferred.

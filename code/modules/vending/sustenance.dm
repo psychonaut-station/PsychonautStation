@@ -25,7 +25,6 @@
 	default_price = PAYCHECK_LOWER
 	extra_price = PAYCHECK_LOWER * 0.6
 	payment_department = NO_FREEBIES
-	allow_custom = TRUE
 
 /obj/item/vending_refill/sustenance
 	machine_name = "Sustenance Vendor"
@@ -40,21 +39,12 @@
 	all_products_free = FALSE
 	displayed_currency_icon = "digging"
 	displayed_currency_name = " LP"
-	allow_custom = FALSE
 
 /obj/machinery/vending/sustenance/interact(mob/user)
-	if(!isliving(user))
-		return ..()
-	var/mob/living/living_user = user
-	if(!is_operational)
-		to_chat(user, span_warning("Machine does not respond to your ID swipe"))
-		return
-	if(!istype(living_user.get_idcard(TRUE), /obj/item/card/id/advanced/prisoner))
-		if(!req_access)
+	if(isliving(user))
+		var/mob/living/living_user = user
+		if(!(machine_stat & NOPOWER) && !istype(living_user.get_idcard(TRUE), /obj/item/card/id/advanced/prisoner))
 			speak("No valid prisoner account found. Vending is not permitted.")
-			return
-		if(!allowed(user))
-			speak("No valid permissions. Vending is not permitted.")
 			return
 	return ..()
 

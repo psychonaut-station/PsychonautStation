@@ -23,14 +23,8 @@
 
 /datum/award/achievement/mafia/chaplain
 	name = "Chaplain Victory"
-	desc = "The curse finally broken."
-	database_id = MAFIA_MEDAL_CHAPLAIN
-	icon_state = "town"
-
-/datum/award/achievement/mafia/coroner
-	name = "Coroner Victory"
 	desc = "Useless... until the one night the thoughtfeeder confidently claims themselves as detective. Mafia's true bullshit detector."
-	database_id = MAFIA_MEDAL_CORONER
+	database_id = MAFIA_MEDAL_CHAPLAIN
 	icon_state = "town"
 
 /datum/award/achievement/mafia/md

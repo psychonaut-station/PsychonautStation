@@ -1703,7 +1703,7 @@
 /obj/structure/transit_tube/curved{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "aCl" = (
 /turf/closed/wall/r_wall,
@@ -11729,7 +11729,7 @@
 /obj/structure/transit_tube/curved/flipped{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "dZU" = (
 /obj/machinery/light/small/directional/east,
@@ -13539,7 +13539,7 @@
 /obj/structure/transit_tube/diagonal{
 	dir = 4
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "eGZ" = (
 /obj/structure/table/wood,
@@ -14131,6 +14131,7 @@
 /obj/structure/chair/wood/wings{
 	dir = 1
 	},
+/obj/item/toy/plush/goatplushie,
 /mob/living/basic/rabbit,
 /turf/open/floor/wood,
 /area/station/maintenance/aft)
@@ -25953,7 +25954,7 @@
 /obj/structure/transit_tube/curved/flipped{
 	dir = 8
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "jbx" = (
 /obj/machinery/light/directional/west,
@@ -29498,7 +29499,7 @@
 /obj/structure/transit_tube/curved{
 	dir = 8
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "kna" = (
 /obj/structure/showcase/machinery/tv/broken,
@@ -31946,6 +31947,11 @@
 /obj/structure/sign/warning/electric_shock/directional/north,
 /turf/open/space/basic,
 /area/space/nearstation)
+"lip" = (
+/obj/structure/lattice,
+/obj/structure/grille,
+/turf/open/space,
+/area/space/nearstation)
 "liq" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -33724,7 +33730,7 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /obj/structure/lattice,
 /obj/structure/window/reinforced/spawner/directional/west,
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "lQe" = (
 /obj/structure/cable,
@@ -40030,7 +40036,7 @@
 "odE" = (
 /obj/structure/lattice,
 /obj/structure/transit_tube/diagonal,
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "odG" = (
 /obj/structure/lattice,
@@ -40509,6 +40515,10 @@
 	},
 /turf/open/floor/iron/diagonal,
 /area/station/service/theater)
+"olY" = (
+/obj/structure/lattice/catwalk,
+/turf/open/space,
+/area/station/solars/port/fore)
 "omi" = (
 /obj/item/toy/figure/syndie,
 /turf/open/space/basic,
@@ -42240,7 +42250,7 @@
 "oSQ" = (
 /obj/structure/lattice,
 /obj/structure/transit_tube/crossing/horizontal,
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/nearstation)
 "oSS" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -45477,7 +45487,7 @@
 "qdr" = (
 /obj/structure/cable,
 /obj/structure/lattice/catwalk,
-/turf/open/space/basic,
+/turf/open/space,
 /area/station/solars/port/fore)
 "qdH" = (
 /turf/open/floor/circuit,
@@ -46789,6 +46799,12 @@
 /obj/effect/mapping_helpers/airlock/access/all/supply/general,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
+"qDn" = (
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/lattice,
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/space,
+/area/space/nearstation)
 "qDy" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -49295,6 +49311,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/central)
+"rza" = (
+/obj/structure/lattice,
+/turf/open/space,
+/area/space/nearstation)
 "rzc" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -54165,7 +54185,7 @@
 "tjN" = (
 /obj/structure/lattice/catwalk,
 /obj/item/stack/cable_coil/five,
-/turf/open/space/basic,
+/turf/open/space,
 /area/station/solars/port/fore)
 "tjQ" = (
 /obj/item/radio/intercom/directional/north,
@@ -57212,6 +57232,9 @@
 	dir = 1
 	},
 /area/station/ai_monitored/turret_protected/aisat/teleporter)
+"usQ" = (
+/turf/open/space,
+/area/space)
 "usR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -62200,6 +62223,10 @@
 /obj/effect/landmark/start/detective,
 /turf/open/floor/iron,
 /area/station/security/lockers)
+"wdY" = (
+/obj/structure/window/reinforced/spawner/directional/west,
+/turf/open/space,
+/area/space/nearstation)
 "wen" = (
 /obj/effect/turf_decal/trimline/blue/line{
 	dir = 6
@@ -63355,6 +63382,11 @@
 /obj/effect/spawner/structure/window/reinforced,
 /turf/open/floor/plating,
 /area/station/engineering/atmos)
+"wzb" = (
+/obj/structure/lattice,
+/obj/structure/grille/broken,
+/turf/open/space,
+/area/space/nearstation)
 "wzd" = (
 /obj/structure/closet/crate/cargo/mining,
 /obj/item/stack/ore/titanium{
@@ -66499,6 +66531,11 @@
 /obj/structure/cable,
 /turf/open/floor/iron,
 /area/station/security/brig)
+"xHk" = (
+/obj/structure/lattice/catwalk,
+/obj/structure/cable,
+/turf/open/space,
+/area/station/solars/port/fore)
 "xHo" = (
 /obj/effect/turf_decal/tile/purple/anticorner{
 	dir = 1
@@ -80334,7 +80371,7 @@ fop
 koN
 vfu
 vQV
-vQV
+usQ
 nri
 iyK
 poH
@@ -81905,7 +81942,7 @@ lQc
 gWs
 npe
 gpP
-tzz
+qDn
 rbm
 lEr
 pcy
@@ -82159,9 +82196,9 @@ teJ
 tfA
 nri
 dZS
-hmW
+wdY
 lyf
-hmW
+wdY
 aBU
 nri
 tfA
@@ -82416,9 +82453,9 @@ hET
 nri
 vQV
 oSQ
-nri
+rza
 abR
-nri
+rza
 oSQ
 nri
 pkh
@@ -82929,11 +82966,11 @@ qxV
 nri
 nri
 vQV
-nri
+rza
 eGW
 abR
 odE
-nri
+rza
 nri
 vQV
 sGH
@@ -90038,13 +90075,13 @@ vQV
 vQV
 vQV
 vQV
-kwx
-nri
-kwx
-nri
-kwx
-kwx
-kwx
+lip
+rza
+lip
+rza
+lip
+lip
+lip
 vQV
 vQV
 vQV
@@ -90291,21 +90328,21 @@ vQV
 vQV
 vQV
 vQV
-kwx
-kwx
-caH
-kwx
-kwx
+lip
+lip
+wzb
+lip
+lip
 vQV
-nri
+rza
 pkh
-nri
+rza
 vQV
-kwx
-kwx
-kwx
-kwx
-kwx
+lip
+lip
+lip
+lip
+lip
 vQV
 vQV
 vQV
@@ -90548,20 +90585,20 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
 vQV
-nri
+rza
 vQV
 nri
 iIC
 qdr
 iIC
-nri
+rza
 vQV
-nri
+rza
 vQV
-kwx
+lip
 vQV
 vQV
 vQV
@@ -90805,7 +90842,7 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
 vQV
 iIC
@@ -90818,7 +90855,7 @@ iIC
 qdr
 iIC
 vQV
-nri
+rza
 vQV
 vQV
 vQV
@@ -91075,7 +91112,7 @@ iIC
 qdr
 iIC
 vQV
-kwx
+lip
 vQV
 vQV
 vQV
@@ -91319,7 +91356,7 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 nri
 nri
 iIC
@@ -91331,8 +91368,8 @@ iIC
 iIC
 qdr
 iIC
-nri
-kwx
+rza
+lip
 vQV
 vQV
 vQV
@@ -91576,7 +91613,7 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
 vQV
 iIC
@@ -91589,7 +91626,7 @@ iIC
 qdr
 iIC
 vQV
-caH
+wzb
 vQV
 vQV
 vQV
@@ -91833,9 +91870,9 @@ vQV
 vQV
 vQV
 vQV
-caH
+wzb
 vQV
-kwx
+lip
 iIC
 qdr
 iIC
@@ -91846,7 +91883,7 @@ iIC
 qdr
 iIC
 vQV
-caH
+wzb
 vQV
 vQV
 vQV
@@ -92092,18 +92129,18 @@ vQV
 vQV
 nri
 nri
-nri
-nri
+rza
+rza
 qdr
-nri
-nri
+rza
+rza
 qdr
-nri
-nri
+rza
+rza
 qdr
-nri
-nri
-nri
+rza
+rza
+rza
 vQV
 vQV
 vQV
@@ -92347,31 +92384,31 @@ vQV
 vQV
 vQV
 vQV
-nri
+rza
 iKR
 qdr
+xHk
 hom
+xHk
+xHk
+xHk
 hom
-hom
-hom
-hom
-hom
-hom
-hom
-bow
+xHk
+xHk
+olY
 kVU
 bow
-bow
-bow
+olY
+olY
 tjN
-bow
-bow
-hom
-hom
-hom
-hom
-hom
-hom
+olY
+olY
+xHk
+xHk
+xHk
+xHk
+xHk
+xHk
 vCw
 yiQ
 buY
@@ -92606,16 +92643,16 @@ vQV
 vQV
 nri
 nri
-nri
-nri
+rza
+rza
 qdr
-nri
-nri
+rza
+rza
 qdr
-nri
-nri
+rza
+rza
 qdr
-nri
+rza
 nri
 vQV
 vQV
@@ -92861,9 +92898,9 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
-nri
+rza
 iIC
 qdr
 iIC
@@ -93118,7 +93155,7 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
 vQV
 iIC
@@ -93375,8 +93412,8 @@ vQV
 vQV
 vQV
 vQV
-kwx
-nri
+lip
+rza
 nri
 iIC
 qdr
@@ -93632,7 +93669,7 @@ vQV
 vQV
 vQV
 vQV
-kwx
+lip
 vQV
 vQV
 iIC
@@ -93889,7 +93926,7 @@ vQV
 vQV
 vQV
 vQV
-nri
+rza
 vQV
 vQV
 iIC
@@ -94149,13 +94186,13 @@ vQV
 phf
 vQV
 vQV
-nri
+rza
 vQV
 nri
 iIC
 qdr
 iIC
-nri
+rza
 vQV
 nri
 vQV
@@ -112364,7 +112401,7 @@ vQV
 vQV
 vQV
 vQV
-vQV
+usQ
 vQV
 vSR
 vSR
@@ -112621,7 +112658,7 @@ vQV
 vQV
 vQV
 vQV
-vQV
+usQ
 puG
 vSR
 eXY
@@ -113907,7 +113944,7 @@ vQV
 vQV
 vQV
 vQV
-vQV
+usQ
 vSR
 vSR
 nVn

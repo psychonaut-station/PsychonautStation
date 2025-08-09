@@ -20,11 +20,6 @@
 	var/pin_removable = TRUE
 	var/obj/item/gun/gun
 
-/obj/item/firing_pin/Destroy()
-	if(gun)
-		gun_remove()
-	return ..()
-
 /obj/item/firing_pin/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
 	if(!isgun(interacting_with))
 		return NONE
@@ -62,12 +57,10 @@
 	gun = new_gun
 	forceMove(gun)
 	gun.pin = src
-	SEND_SIGNAL(gun, COMSIG_GUN_PIN_INSERTED, src, user)
 	return TRUE
 
 /obj/item/firing_pin/proc/gun_remove(mob/living/user)
 	gun.pin = null
-	SEND_SIGNAL(gun, COMSIG_GUN_PIN_REMOVED, src, user)
 	gun = null
 	return
 
@@ -387,3 +380,9 @@
 		playsound(src, SFX_SCREECH, 75, TRUE)
 		return FALSE
 	return TRUE
+
+/obj/item/firing_pin/Destroy()
+	if(gun)
+		gun.pin = null
+		gun = null
+	return ..()

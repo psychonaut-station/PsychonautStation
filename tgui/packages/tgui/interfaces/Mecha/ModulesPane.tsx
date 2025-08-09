@@ -1040,7 +1040,7 @@ const SnowflakeOreScanner = (props) => {
   const { cooldown } = props.module.snowflake;
   return (
     <LabeledList.Item label="Vent Scanner">
-      <NoticeBox info={cooldown  <= 0}>
+      <NoticeBox info={cooldown <= 0 ? true : false}>
         {cooldown / 10 > 0 ? 'Recharging...' : 'Ready to scan vents'}
         <Button
           my={1}
@@ -1053,7 +1053,7 @@ const SnowflakeOreScanner = (props) => {
               gear_action: 'area_scan',
             })
           }
-          disabled={!(cooldown <= 0 )}
+          disabled={cooldown <= 0 ? false : true}
         >
           Scan all nearby vents
         </Button>

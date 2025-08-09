@@ -28,7 +28,7 @@
 	average_weight = 1500
 	food = /datum/reagent/bluespace
 	feeding_frequency = 10 MINUTES
-	max_integrity = 100
+	health = 50
 	death_text = "%SRC splinters apart into shards!"
 	random_case_rarity = FISH_RARITY_GOOD_LUCK_FINDING_THIS
 	fillet_type = /obj/item/stack/ore/bluespace_crystal
@@ -136,8 +136,7 @@
 	required_temperature_min = BODYTEMP_COLD_DAMAGE_LIMIT // you mean just like a human? that's odd...
 	required_temperature_max = BODYTEMP_HEAT_DAMAGE_LIMIT
 	food = /datum/reagent/blood
-	max_integrity = 800 // apex predator
-	integrity_failure = 0.25
+	health = 600 // apex predator
 	random_case_rarity = FISH_RARITY_GOOD_LUCK_FINDING_THIS
 	fillet_type = /obj/item/food/fishmeat/fish_tail
 	num_fillets = 1
@@ -340,7 +339,7 @@
 
 	for(var/mob/living/fallen_mob in falling_movables)
 		visible_message(span_danger("[src] flattens like a pancake as [fallen_mob] lands on top of it!"))
-		damage_fish(max_integrity * integrity_failure * 0.9) // very "durable"
+		adjust_health(initial(health) * 0.1) // very durable
 		AddElement(/datum/element/squish, 15 SECONDS)
 		fallen_mob.Paralyze(0.5 SECONDS)
 		playsound(src, 'sound/effects/cartoon_sfx/cartoon_splat.ogg', 75)
@@ -368,7 +367,7 @@
 
 	food = /datum/reagent/silicon
 	feeding_frequency = 30 SECONDS
-	max_integrity = 320
+	health = 160
 	death_text = "%SRC calcifies."
 	random_case_rarity = FISH_RARITY_GOOD_LUCK_FINDING_THIS
 	fillet_type = /obj/item/stack/sheet/mineral/diamond
@@ -430,8 +429,7 @@
 	sprite_width = 12
 	sprite_height = 13
 
-	max_integrity = 750
-	integrity_failure = 0.33
+	health = 500
 	death_text = "%SRC decomposes."
 	random_case_rarity = FISH_RARITY_NOPE
 	// hand-tuned to be a your worst enemy
@@ -523,7 +521,7 @@
 
 	death_text = span_big(span_alertalien("%SRC emits a horrendous wailing as it perishes!"))
 	random_case_rarity = FISH_RARITY_NOPE
-	max_integrity = 500
+	health = 250
 	average_size = 30
 	average_weight = 2000
 	fillet_type = /obj/item/food/fishmeat/quality

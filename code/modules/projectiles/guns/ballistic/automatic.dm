@@ -148,6 +148,7 @@
 	selector_switch_icon = TRUE
 	accepted_magazine_type = /obj/item/ammo_box/magazine/m223
 	can_suppress = FALSE
+	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel
 	burst_size = 3
 	burst_delay = 2
 	spread = 5
@@ -155,12 +156,10 @@
 	mag_display = TRUE
 	empty_indicator = TRUE
 	fire_sound = 'sound/items/weapons/gun/smg/shot_alt.ogg'
-	/// Attached underbarrel grenade launcher
-	var/obj/item/gun/ballistic/revolver/grenadelauncher/underbarrel/underbarrel
 
 /obj/item/gun/ballistic/automatic/m90/Initialize(mapload)
 	. = ..()
-	underbarrel = new(src)
+	underbarrel = new /obj/item/gun/ballistic/revolver/grenadelauncher(src)
 	update_appearance()
 
 /obj/item/gun/ballistic/automatic/m90/Destroy()

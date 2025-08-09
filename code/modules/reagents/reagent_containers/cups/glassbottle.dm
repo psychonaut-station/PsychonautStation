@@ -925,7 +925,7 @@
 	if(!bottle)
 		return ..()
 	icon_state = bottle.icon_state
-	bottle.reagents.trans_to(src, 100, copy_only = TRUE)
+	bottle.reagents.copy_to(src, 100)
 	if(istype(bottle, /obj/item/reagent_containers/cup/glass/bottle/juice))
 		desc += " You're not sure if making this out of a carton was the brightest idea."
 		isGlass = FALSE

@@ -85,7 +85,7 @@
 /turf/open/indestructible/dark,
 /area/virtual_domain)
 "B" = (
-/turf/open/space/basic,
+/turf/open/space,
 /area/space/virtual_domain)
 "F" = (
 /obj/structure/closet/crate/internals,

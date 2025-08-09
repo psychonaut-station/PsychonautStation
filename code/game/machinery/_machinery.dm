@@ -636,8 +636,7 @@
 	if((machine_stat & (NOPOWER|BROKEN)) && !(interaction_flags_machine & INTERACT_MACHINE_OFFLINE)) // Check if the machine is broken, and if we can still interact with it if so
 		return FALSE
 
-	var/try_use_signal = SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) | SEND_SIGNAL(src, COMSIG_TRY_USE_MACHINE, user)
-	if(try_use_signal & COMPONENT_CANT_USE_MACHINE_INTERACT)
+	if(SEND_SIGNAL(user, COMSIG_TRY_USE_MACHINE, src) & COMPONENT_CANT_USE_MACHINE_INTERACT)
 		return FALSE
 
 	if(isAdminGhostAI(user))
@@ -1123,7 +1122,7 @@
 	RefreshParts()
 
 	if(shouldplaysound)
-		replacer_tool.play_rped_effect()
+		replacer_tool.play_rped_sound()
 	return TRUE
 
 /obj/machinery/proc/display_parts(mob/user)

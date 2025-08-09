@@ -39,7 +39,6 @@
 	extra_price = PAYCHECK_COMMAND
 	payment_department = ACCOUNT_MED
 	light_mask = "med-light-mask"
-	allow_custom = TRUE
 
 /obj/item/vending_refill/medical
 	machine_name = "NanoMed Plus"
@@ -48,7 +47,6 @@
 /obj/machinery/vending/medical/syndicate
 	name = "\improper SyndiMed Plus"
 	initial_language_holder = /datum/language_holder/syndicate
-	allow_custom = FALSE
 
 /obj/machinery/vending/medical/infested_frigate
 	products = list(
@@ -66,8 +64,6 @@
 		/obj/item/cane/white = 2,
 		/obj/item/clothing/glasses/eyepatch/medical = 2,
 	)
-	allow_custom = FALSE
-
 //Created out of a necessity to get these dumb chems out of the medical tools vendor.
 /obj/machinery/vending/drugs
 	name = "\improper NanoDrug Plus"
@@ -106,7 +102,6 @@
 	extra_price = 100
 	payment_department = ACCOUNT_MED
 	refill_canister = /obj/item/vending_refill/drugs
-	allow_custom = TRUE
 
 /obj/item/vending_refill/drugs
 	machine_name = "NanoDrug Plus"

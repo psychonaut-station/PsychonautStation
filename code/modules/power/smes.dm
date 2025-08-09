@@ -70,12 +70,6 @@
 	terminal.master = src
 	update_appearance(UPDATE_OVERLAYS)
 
-/obj/machinery/power/smes/on_construction(mob/user)
-	var/obj/structure/cable/C = locate() in loc
-	if(!QDELETED(C))
-		cable_layer = C.cable_layer
-		connect_to_network()
-
 /obj/machinery/power/smes/disconnect_terminal()
 	if(terminal)
 		terminal.master = null
@@ -151,7 +145,6 @@
 /obj/machinery/power/smes/proc/total_charge()
 	PROTECTED_PROC(TRUE)
 	SHOULD_NOT_OVERRIDE(TRUE)
-	SHOULD_BE_PURE(TRUE)
 
 	for(var/obj/item/stock_parts/power_store/power_cell in component_parts)
 		. += power_cell.charge()
@@ -395,7 +388,7 @@
 // called after all power processes are finished
 // restores charge level to smes if there was excess this ptick
 /obj/machinery/power/smes/proc/restore()
-	if(!is_operational)
+	if(machine_stat & BROKEN)
 		return
 
 	if(!outputting)

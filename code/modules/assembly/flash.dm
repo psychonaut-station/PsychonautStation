@@ -166,11 +166,7 @@
 		return
 
 	if(targeted)
-		var/flash_result = flashed.flash_act(1, 1)
-		if(flash_result == FLASH_COMPLETED)
-			return //Behavior was overwritten, so we just skip the flashy stunny part and go with the override behavior instead
-
-		if(flash_result)
+		if(flashed.flash_act(1, 1))
 			flashed.set_confusion_if_lower(confusion_duration * CONFUSION_STACK_MAX_MULTIPLIER)
 			visible_message(span_danger("[user] blinds [flashed] with the flash!"), span_userdanger("[user] blinds you with the flash!"))
 			//easy way to make sure that you can only long stun someone who is facing in your direction

@@ -206,7 +206,6 @@
 	desc = "Defend the treasure..."
 	icon_state = "knight_ancient"
 	inhand_icon_state = null
-	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS
 
 /obj/item/clothing/suit/chaplainsuit/armor/ancient/Initialize(mapload)
 	. = ..()
@@ -233,7 +232,6 @@
 	desc = "The ideal outfit for burning the unfaithful."
 	icon_state = "crusader"
 	inhand_icon_state = null
-	body_parts_covered = CHEST|GROIN|LEGS
 
 /obj/item/clothing/suit/chaplainsuit/armor/crusader
 	name = "crusader's armour"

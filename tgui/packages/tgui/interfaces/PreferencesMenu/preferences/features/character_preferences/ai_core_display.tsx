@@ -1,3 +1,4 @@
+import {} from '../base';
 import {
   FeatureIconnedDropdownInput,
   type FeatureWithIcons,

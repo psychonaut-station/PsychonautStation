@@ -218,20 +218,17 @@ class ChatRenderer {
       const lines = String(text)
         .split(',')
         .map((str) => str.trim())
-        .filter((str) => {
-          // Must be longer than one character
-          if (!str || str.length <= 1) return false;
-
-          // Must be alphanumeric (with some punctuation)
-          const isValidFormat =
-            allowedRegex.test(str) ||
-            (str.charAt(0) === '/' && str.charAt(str.length - 1) === '/');
-
-          // Reset lastIndex so it does not mess up the next word
-          allowedRegex.lastIndex = 0;
-
-          return isValidFormat;
-        });
+        .filter(
+          (str) =>
+            // Must be longer than one character
+            str &&
+            str.length > 1 &&
+            // Must be alphanumeric (with some punctuation)
+            (allowedRegex.test(str) ||
+              (str.charAt(0) === '/' && str.charAt(str.length - 1) === '/')) &&
+            // Reset lastIndex so it does not mess up the next word
+            ((allowedRegex.lastIndex = 0) || true),
+        );
       let highlightWords;
       let highlightRegex;
       // Nothing to match, reset highlighting
@@ -412,9 +409,9 @@ class ChatRenderer {
               working_value = true;
             } else if (working_value === '$false') {
               working_value = false;
-            } else if (!Number.isNaN(working_value)) {
+            } else if (!isNaN(working_value)) {
               const parsed_float = parseFloat(working_value);
-              if (!Number.isNaN(parsed_float)) {
+              if (!isNaN(parsed_float)) {
                 working_value = parsed_float;
               }
             }

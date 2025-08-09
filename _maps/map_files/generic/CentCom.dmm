@@ -2,6 +2,9 @@
 "aa" = (
 /turf/open/space/basic,
 /area/space)
+"ad" = (
+/turf/open/space,
+/area/space)
 "ak" = (
 /obj/item/kirbyplants/organic/plant21,
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
@@ -4542,7 +4545,7 @@
 	shuttle_id = "emergency_away";
 	width = 50
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space)
 "uA" = (
 /obj/structure/chair{
@@ -5545,7 +5548,7 @@
 	shuttle_id = "cargo_away";
 	width = 20
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space)
 "yW" = (
 /obj/item/kirbyplants/organic/plant21,
@@ -7450,7 +7453,7 @@
 	shuttle_id = "ferry_away";
 	width = 21
 	},
-/turf/open/space/basic,
+/turf/open/space,
 /area/space)
 "Ip" = (
 /obj/structure/chair/stool/bar/directional/east,
@@ -65293,7 +65296,7 @@ aa
 aa
 aa
 aa
-aa
+ad
 aa
 aa
 aa

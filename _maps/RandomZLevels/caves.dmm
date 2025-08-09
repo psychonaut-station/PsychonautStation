@@ -3,7 +3,7 @@
 /turf/closed/indestructible/rock,
 /area/space/nearstation)
 "ab" = (
-/turf/open/space/basic,
+/turf/open/space,
 /area/space)
 "ac" = (
 /turf/closed/mineral/volcanic,

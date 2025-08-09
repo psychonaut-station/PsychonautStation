@@ -48,10 +48,6 @@
 	/// Set when the drone is begining to leave lavaland after the vent is secured.
 	var/escaping = FALSE
 
-/mob/living/basic/node_drone/Initialize(mapload)
-	. = ..()
-	ADD_TRAIT(src, TRAIT_MINING_AOE_IMMUNE, INNATE_TRAIT)
-
 /mob/living/basic/node_drone/death(gibbed)
 	. = ..()
 	explosion(origin = src, light_impact_range = 1, smoke = 1)
@@ -60,6 +56,7 @@
 	attached_vent?.node = null //clean our reference to the vent both ways.
 	attached_vent = null
 	return ..()
+
 
 /mob/living/basic/node_drone/examine(mob/user)
 	. = ..()

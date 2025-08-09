@@ -95,6 +95,7 @@
 	color_cutoffs = list(10, 35, 10)
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 	actions_types = list(/datum/action/item_action/toggle_nv)
+	forced_glass_color = TRUE
 
 /obj/item/clothing/glasses/meson/night/update_icon_state()
 	. = ..()
@@ -142,6 +143,7 @@
 	color_cutoffs = list(30, 5, 15)
 	glass_colour_type = /datum/client_colour/glass_colour/lightpurple
 	actions_types = list(/datum/action/item_action/toggle_nv)
+	forced_glass_color = TRUE
 
 /obj/item/clothing/glasses/science/night/update_icon_state()
 	. = ..()
@@ -158,10 +160,15 @@
 	color_cutoffs = list(10, 25, 10)
 	glass_colour_type = /datum/client_colour/glass_colour/lightgreen
 	actions_types = list(/datum/action/item_action/toggle_nv)
+	forced_glass_color = TRUE
 
 /obj/item/clothing/glasses/night/update_icon_state()
 	. = ..()
 	icon_state = length(color_cutoffs) ? initial(icon_state) : "night_off"
+
+/obj/item/clothing/glasses/night/colorless
+	desc = parent_type::desc + " Now with 50% less green!"
+	forced_glass_color = FALSE
 
 /obj/item/clothing/glasses/eyepatch
 	name = "eyepatch"

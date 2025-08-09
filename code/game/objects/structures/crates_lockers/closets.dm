@@ -100,8 +100,9 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	var/x_shake_pixel_shift = 2
 	/// how many pixels the closet can shift on the y axes when shaking
 	var/y_shake_pixel_shift = 1
-	///Creates see through image for clients to see while inside closet
-	VAR_PRIVATE/datum/closet_see_inside/closet_see_inside
+
+	VAR_PRIVATE
+		datum/closet_see_inside/closet_see_inside
 
 /datum/armor/structure_closet
 	melee = 20
@@ -1037,13 +1038,15 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 	return TRUE
 
 /obj/structure/closet/container_resist_act(mob/living/user, loc_required = TRUE)
+	if(isstructure(loc))
+		relay_container_resist_act(user, loc)
 	if(opened)
 		return
 	if(ismovable(loc))
 		user.changeNext_move(CLICK_CD_BREAKOUT)
 		user.last_special = world.time + CLICK_CD_BREAKOUT
-		var/atom/movable/movable_parent = loc
-		movable_parent.relay_container_resist_act(user, src)
+		var/atom/movable/AM = loc
+		AM.relay_container_resist_act(user, src)
 		return
 	if(!welded && !locked)
 		open()
@@ -1072,7 +1075,7 @@ GLOBAL_LIST_EMPTY(roundstart_station_closets)
 			to_chat(user, span_warning("You fail to break out of [src]!"))
 
 /obj/structure/closet/relay_container_resist_act(mob/living/user, obj/container)
-	container_resist_act(user)
+	container.container_resist_act(user)
 
 /// Check if someone is still resisting inside, and choose to either keep shaking or stop shaking the closet
 /obj/structure/closet/proc/check_if_shake()

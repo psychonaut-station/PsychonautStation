@@ -40,7 +40,7 @@ export const Newspaper = (props) => {
 
   return (
     <Window width={300} height={400}>
-      <Window.Content backgroundColor="#858387" scrollable>
+      <Window.Content backgroundColor="#858387">
         {current_page === channels.length + 1 ? (
           <NewspaperEnding />
         ) : current_page ? (
@@ -120,8 +120,9 @@ const NewspaperChannel = (props) => {
           <Box fontSize="12px">
             Channel made by: {individual_channel.author_name}
           </Box>
-          {channel_has_messages
-            ? individual_channel.channel_messages.map((message) => (
+          {channel_has_messages ? (
+            <>
+              {individual_channel.channel_messages.map((message) => (
                 <>
                   <Box key={message.message}>
                     <Box
@@ -132,8 +133,11 @@ const NewspaperChannel = (props) => {
                   </Box>
                   <Divider />
                 </>
-              ))
-            : 'No feed stories stem from this channel...'}
+              ))}
+            </>
+          ) : (
+            'No feed stories stem from this channel...'
+          )}
         </Box>
       ))}
     </Section>

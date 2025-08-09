@@ -78,7 +78,7 @@
 /obj/item/clothing/suit/armor/vest/press/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 /obj/item/clothing/suit/armor/vest/marine
 	name = "tactical armor vest"
@@ -245,7 +245,7 @@
 /obj/item/clothing/suit/armor/vest/secjacket/worn_overlays(mutable_appearance/standing, isinhands, icon_file)
 	. = ..()
 	if(!isinhands)
-		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha, effect_type = EMISSIVE_SPECULAR)
+		. += emissive_appearance(icon_file, "[icon_state]-emissive", src, alpha = src.alpha)
 
 /datum/armor/armor_secjacket //Gotta compensate those extra covered limbs
 	melee = 25

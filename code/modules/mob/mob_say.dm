@@ -108,14 +108,8 @@
 
 	return ..()
 
-/**
- * say_dead
- * allows you to speak as a dead person
- * Args:
- * - message: The message you're sending to chat.
- * - mannequin_controller: If someone else is forcing you to speak, this is the mob doing it.
- */
-/mob/proc/say_dead(message, mob/mannequin_controller)
+///Speak as a dead person (ghost etc)
+/mob/proc/say_dead(message)
 	var/name = real_name
 	var/alt_name = ""
 
@@ -123,7 +117,7 @@
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
 
-	var/jb = is_banned_from(mannequin_controller?.ckey || ckey, "Deadchat")
+	var/jb = is_banned_from(ckey, "Deadchat")
 	if(QDELETED(src))
 		return
 

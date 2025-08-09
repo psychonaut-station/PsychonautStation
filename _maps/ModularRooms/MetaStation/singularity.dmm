@@ -65,6 +65,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/effect/landmark/firealarm_sanity,
 /turf/open/floor/plating,
 /area/station/maintenance/department/engine)
 "dT" = (
@@ -134,6 +135,10 @@
 "je" = (
 /turf/template_noop,
 /area/template_noop)
+"ka" = (
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
 "kc" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -264,6 +269,12 @@
 "se" = (
 /obj/machinery/power/energy_accumulator/rad_collector,
 /turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
+"sj" = (
+/obj/effect/turf_decal/stripes/line,
+/obj/structure/cable,
+/obj/machinery/firealarm/directional/south,
+/turf/open/floor/iron,
 /area/station/engineering/singularity/room)
 "sk" = (
 /obj/machinery/door/firedoor,
@@ -411,6 +422,7 @@
 	c_tag = "Singularity Engine #1"
 	},
 /obj/item/kirbyplants/random,
+/obj/machinery/firealarm/directional/south,
 /turf/open/floor/carpet/black,
 /area/station/engineering/singularity/room)
 "yn" = (
@@ -582,6 +594,11 @@
 	},
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
+"Ig" = (
+/obj/machinery/power/energy_accumulator/tesla_coil,
+/obj/machinery/firealarm/directional/north,
+/turf/open/floor/iron/dark,
+/area/station/engineering/singularity/room)
 "In" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
@@ -1009,7 +1026,7 @@ Wj
 In
 sB
 Df
-gk
+sj
 MT
 kO
 kO
@@ -1056,7 +1073,7 @@ vU
 fO
 "}
 (8,1,1) = {"
-rn
+Ig
 tt
 se
 se
@@ -1123,7 +1140,7 @@ aP
 Fw
 NA
 Sh
-zC
+ka
 MT
 dx
 mC

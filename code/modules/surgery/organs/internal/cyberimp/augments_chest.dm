@@ -422,7 +422,7 @@
 	if(organ_flags & ORGAN_EMP)
 		owner.add_or_update_variable_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
 		owner.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field, TRUE, emp_speed_multiplier)
-		addtimer(CALLBACK(src, PROC_REF(end_emp_effect)), active_for SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(end_emp_effect), organ_owner), active_for SECONDS)
 
 /obj/item/organ/cyberimp/chest/sandevistan/proc/clear_effects(mob/living/organ_owner, force = FALSE)
 	if(isnull(organ_owner))
@@ -435,11 +435,11 @@
 	organ_owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/sandevistan)
 	organ_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/sandevistan)
 	if(force)
-		end_emp_effect()
+		end_emp_effect(organ_owner)
 
-/obj/item/organ/cyberimp/chest/sandevistan/proc/end_emp_effect()
-	owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field)
-	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field)
+/obj/item/organ/cyberimp/chest/sandevistan/proc/end_emp_effect(mob/living/organ_owner)
+	organ_owner.remove_movespeed_modifier(/datum/movespeed_modifier/status_effect/slowing_field)
+	organ_owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/status_effect/slowing_field)
 
 /obj/item/organ/cyberimp/chest/sandevistan/emp_act(severity)
 	. = ..()

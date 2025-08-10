@@ -189,3 +189,6 @@
   - qol: Divine Archer coat doesn't cover arms, hands and feet as to match the sprite
   - qol: Divine Archer bracers now have the same armor as Divine Archer coat
   - balance: Divine Archer boots have their own unique armor
+2025-08-10:
+  Melbert:
+  - rscadd: Adds Black Workboots to Loadout

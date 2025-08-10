@@ -13,7 +13,6 @@
 	base_icon_state = "clocky_head"
 	force = 10
 	dog_fashion = null
-	animal_sounds = list("Tick Tock Tick!","Tick Tick Tick!","Tick Tock?")
 	cold_protection = HEAD
 	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
 	heat_protection = HEAD
@@ -22,6 +21,7 @@
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE
 	flags_cover = HEADCOVERSEYES
+	animal_sounds = list("Tick Tock!","Tick Tick","Tick Tock?")
 	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	equip_sound = 'sound/items/handling/helmet/helmet_equip1.ogg'
@@ -112,8 +112,6 @@
 	clothing_flags = NONE //force animal sounds to always on.
 	if(flags_inv == initial(flags_inv))
 		flags_inv = HIDEFACIALHAIR
-	name = "Clock Head"
-	desc = "It looks like a Clock, but closer inspection reveals it's melded onto this person's face!"
 	var/update_speech_mod = !modifies_speech && LAZYLEN(animal_sounds)
 	if(update_speech_mod)
 		modifies_speech = TRUE
@@ -123,7 +121,7 @@
 			if(update_speech_mod)
 				RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 			to_chat(M, span_userdanger("[src] was cursed!"))
-			M.update_worn_head()
+			M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/clear_curse()
 	REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
@@ -140,7 +138,7 @@
 			to_chat(M, span_notice("[src]'s curse has been lifted!"))
 			if(update_speech_mod)
 				UnregisterSignal(M, COMSIG_MOB_SAY)
-			M.update_worn_head()
+			M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER

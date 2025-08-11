@@ -12,7 +12,7 @@ if exist "%CACHE_DIR%" (
     rmdir /S /Q "%CACHE_DIR%"
 )
 
-call "%~1\tools\bootstrap\python.bat" -m dmi.prepare_achievements "%INPUT_FILE%" "%CACHE_DIR%"
+call "%~1\tools\bootstrap\python.bat" -m dmi.state_converter "%INPUT_FILE%" "%CACHE_DIR%"
 
 if exist "%OUTPUT_DIR%" rmdir /S /Q "%OUTPUT_DIR%"
 

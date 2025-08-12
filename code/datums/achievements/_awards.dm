@@ -12,7 +12,7 @@
 	///What ID do we use in db, limited to 32 characters
 	var/database_id
 	//Bump this up if you're changing outdated table identifier and/or achievement type
-	var/achievement_version = 2
+	var/achievement_version = 3
 
 ///This proc loads the achievement data from the hub.
 /datum/award/proc/load(datum/achievement_data/holder)
@@ -51,6 +51,7 @@
 		"achievement_type" = "award",
 		"achievement_name" = name,
 		"achievement_description" = desc,
+		"achievement_iconstate" = icon_state,
 	)
 
 ///Get raw numerical achievement value from the database

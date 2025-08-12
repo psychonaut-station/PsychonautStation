@@ -642,16 +642,7 @@
 	storage_type = /datum/storage/sabre_belt
 	stored_blade = /obj/item/melee/sabre
 
-/obj/item/storage/belt/sabre/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/update_icon_updates_onmob)
-
-/obj/item/storage/belt/sabre/examine(mob/user)
-	. = ..()
-	if(length(contents))
-		. += span_notice("Alt-click it to quickly draw the blade.")
-
-/obj/item/storage/belt/sabre/click_alt(mob/user)
+/obj/item/storage/belt/sheath/sabre/click_alt(mob/user)
 	if(length(contents))
 		var/obj/item/I = contents[1]
 		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("You take [I] out of [src]."))
@@ -661,7 +652,8 @@
 		balloon_alert(user, "it's empty!")
 	return CLICK_ACTION_SUCCESS
 
-/obj/item/storage/belt/sabre/update_icon_state()
+/obj/item/storage/belt/sheath/sabre/update_icon_state()
+	. = ..()
 	icon_state = current_skin ? unique_reskin[current_skin] : initial(icon_state)
 	inhand_icon_state = current_skin ? unique_reskin[current_skin] : initial(inhand_icon_state)
 	worn_icon_state = current_skin ? unique_reskin[current_skin] : initial(worn_icon_state)
@@ -670,19 +662,14 @@
 		icon_state += "-[I.icon_state]"
 		inhand_icon_state += "-[I.icon_state]"
 		worn_icon_state += "-[I.icon_state]"
-	return ..()
 
-/obj/item/storage/belt/sabre/PopulateContents()
-	new /obj/item/melee/sabre(src)
-	update_appearance()
-
-/obj/item/storage/belt/sabre/on_click_alt_reskin(datum/source, mob/user)
+/obj/item/storage/belt/sheath/sabre/on_click_alt_reskin(datum/source, mob/user)
 	if(!contents.len)
 		return NONE
 
 	return ..()
 
-/obj/item/storage/belt/sabre/reskin_obj(mob/user)
+/obj/item/storage/belt/sheath/sabre/reskin_obj(mob/user)
 	. = ..()
 	if(current_skin)
 		var/obj/item/I = contents[1]

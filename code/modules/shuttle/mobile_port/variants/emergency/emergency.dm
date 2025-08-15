@@ -47,10 +47,14 @@
 		SSshuttle.emergency_last_call_loc = signal_origin
 	else
 		SSshuttle.emergency_last_call_loc = null
-
 	priority_announce(
+<<<<<<< HEAD
 		text = "Acil durum mekiği çağrıldı. [red_alert ? "Kırmızı Alarm durumu onaylandı: Öncelikli mekik gönderiliyor. " : "" ][(timeLeft(60 SECONDS))] dakika içinde ulaşacaktır.[reason][SSshuttle.emergency_last_call_loc ? "\n\nÇağrı sinyali izlenmektedir. Sonuçları herhangi bir iletişim konsolunda görüntülenebilir." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nUyarı: Mekik geri çağırma alt prosedürleri devre dışı; Geri çağırma mümkün değil." : ""]",
 		title = "Acil Durum Mekiği Gönderildi",
+=======
+		text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(60 SECONDS)] minute\s.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
+		title = "Emergency Shuttle Dispatched",
+>>>>>>> 4a65d99fcfe931d1abab822102a3544d33eb3ad9
 		sound = ANNOUNCER_SHUTTLECALLED,
 		sender_override = "Acil Durum Mekiği Uyarısı",
 		color_override = "orange",

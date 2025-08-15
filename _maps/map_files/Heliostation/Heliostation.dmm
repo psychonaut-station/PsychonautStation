@@ -5,9 +5,6 @@
 "aab" = (
 /turf/closed/mineral/random/labormineral,
 /area/centcom/asteroid)
-"aac" = (
-/turf/open/space,
-/area/space)
 "aad" = (
 /turf/open/misc/asteroid/airless,
 /area/centcom/asteroid)
@@ -20322,10 +20319,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
-"bZD" = (
-/obj/structure/lattice,
-/turf/open/space,
-/area/space/nearstation)
 "bZL" = (
 /obj/machinery/telecomms/processor/preset_one,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -64014,7 +64007,6 @@
 /obj/structure/chair/sofa/left/brown{
 	dir = 4
 	},
-/obj/item/toy/plush/goatplushie,
 /obj/structure/extinguisher_cabinet/directional/west,
 /obj/effect/decal/cleanable/dirt,
 /turf/open/floor/plating,
@@ -141716,11 +141708,11 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 aaa
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -141972,13 +141964,13 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cdi
 ciX
 cdi
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -142228,15 +142220,15 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cgf
 cdi
 ciY
 cdi
 cgf
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -142484,8 +142476,8 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cdi
 cdi
 cht
@@ -142493,8 +142485,8 @@ ciX
 ckm
 cdi
 cdi
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -142741,7 +142733,7 @@ aaa
 aaa
 aaa
 aaa
-bZD
+aak
 cdh
 cdh
 jRL
@@ -142751,7 +142743,7 @@ chu
 clq
 cdh
 cdh
-bZD
+aak
 aaa
 aaa
 aaa
@@ -142993,12 +142985,12 @@ aaa
 aaa
 aaa
 aaa
-aac
-aac
 aaa
 aaa
 aaa
-bZD
+aaa
+aaa
+aak
 cdi
 qkH
 cgh
@@ -143008,7 +143000,7 @@ chu
 clr
 jQw
 cdi
-bZD
+aak
 aaa
 aaa
 aaa
@@ -143255,7 +143247,7 @@ aaa
 aaa
 aaa
 aaa
-bZD
+aak
 cdh
 cdh
 cgi
@@ -143265,7 +143257,7 @@ chu
 cls
 cdh
 cdh
-bZD
+aak
 aaa
 aaa
 aaa
@@ -143512,8 +143504,8 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cdi
 cdi
 chv
@@ -143521,8 +143513,8 @@ ody
 ckn
 cmi
 cmi
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaq
@@ -143770,15 +143762,15 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cgf
 cdi
 cjs
 cdi
 cgf
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -144028,13 +144020,13 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
+aak
+aak
 cdi
 cdh
 cdi
-bZD
-bZD
+aak
+aak
 aaa
 aaa
 aaa
@@ -144286,11 +144278,11 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
-bZD
-bZD
-bZD
+aak
+aak
+aak
+aak
+aak
 aaa
 aaa
 aaa
@@ -144544,9 +144536,9 @@ aaa
 aaa
 aaa
 aaa
-bZD
-bZD
-bZD
+aak
+aak
+aak
 aaa
 aaa
 aaa

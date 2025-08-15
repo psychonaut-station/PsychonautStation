@@ -189,14 +189,10 @@
 /obj/structure/checkoutmachine/Destroy()
 	stop_dumping()
 	STOP_PROCESSING(SSfastprocess, src)
-<<<<<<< HEAD
 	priority_announce("[get_area(src)] bölümündeki para yatırma makinesi yok edildi. İstasyon içerisindeki para akışı durdu!", sender_override = "CRAB-17 Protokolü")
-=======
-	priority_announce("The credit deposit machine at [get_area(src)] has been destroyed. Station funds have stopped draining!", sender_override = "CRAB-17 Protocol")
 	if(internal_account.account_balance)
 		expel_cash()
 	QDEL_NULL(internal_account)
->>>>>>> 4a65d99fcfe931d1abab822102a3544d33eb3ad9
 	explosion(src, light_impact_range = 1, flame_range = 2)
 	REMOVE_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING, REF(src))
 	return ..()

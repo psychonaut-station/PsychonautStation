@@ -34,14 +34,8 @@
 			iter_wound.on_stasis(seconds_per_tick, times_fired)
 		return stat != DEAD
 
-<<<<<<< HEAD
-	//Update our name based on whether our face is obscured/disfigured
-	name = get_visible_name()
-	update_name_tag()
-=======
 	if(stat == DEAD)
 		return FALSE
->>>>>>> 4a65d99fcfe931d1abab822102a3544d33eb3ad9
 
 	// Handle active mutations
 	for(var/datum/mutation/mutation as anything in dna.mutations)

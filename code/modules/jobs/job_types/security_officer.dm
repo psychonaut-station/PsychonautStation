@@ -128,13 +128,10 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 		var/obj/item/card/id/worn_id = spawning.get_idcard(hand_first = FALSE)
 		var/assignment = "[chosen_title] ([department])"
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
-<<<<<<< HEAD
+
 		worn_id.assignment = assignment
 		worn_id.update_label()
-		spawning.sec_hud_set_ID()
-=======
 		spawning.update_ID_card()
->>>>>>> 4a65d99fcfe931d1abab822102a3544d33eb3ad9
 
 		// Update PDA to match new trim.
 		var/obj/item/modular_computer/pda/pda = spawning.get_item_by_slot(ITEM_SLOT_BELT)

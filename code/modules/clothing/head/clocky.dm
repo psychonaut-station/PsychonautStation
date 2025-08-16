@@ -61,8 +61,11 @@
 
 /obj/item/clothing/head/helmet/clocky/equipped(mob/living/user, slot)
 	. = ..()
+	if(!iscarbon(user))
+		return
 	if(slot & ITEM_SLOT_HEAD)
 		user.update_sight()
+
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)
 	UnregisterSignal(user, COMSIG_MOB_BEFORE_SPELL_CAST)
@@ -76,7 +79,6 @@
 		clothing_flags = CLOCKY_INACTIVE_FLAGS
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
-
 		return
 
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
@@ -117,6 +119,10 @@
 	if(slot & ITEM_SLOT_HEAD)
 		user.update_sight()
 		make_cursed()
+		var/datum/status_effect/applied_effect = user.apply_status_effect(/datum/status_effect/clock_rewind)
+/obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)
+	. = ..()
+	. += span_warning("Once you go clocky, there is no going back...")
 
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
@@ -132,7 +138,6 @@
 			if(update_speech_mod)
 				RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 			to_chat(M, span_userdanger("[src] was cursed!"))
-			// M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/clear_curse()
 	REMOVE_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
@@ -149,7 +154,6 @@
 			to_chat(M, span_notice("[src]'s curse has been lifted!"))
 			if(update_speech_mod)
 				UnregisterSignal(M, COMSIG_MOB_SAY)
-			// M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
@@ -158,15 +162,117 @@
 		return
 	if(!modifies_speech || !LAZYLEN(clock_sounds))
 		return
-	speech_args[SPEECH_MESSAGE] = pick(clock_sounds)
+	var/selected_sound = pick(clock_sounds)
+	if(selected_sound == "Tick Tock!!")
+		playsound(src, 'sound/_psychonaut/dante_panic.ogg', 75, FALSE)
+	speech_args[SPEECH_MESSAGE] = selected_sound
 
-/obj/item/clothing/head/helmet/clocky/equipped(mob/user, slot)
-	if(!iscarbon(user))
-		return ..()
-	if((slot & ITEM_SLOT_HEAD) && HAS_TRAIT_FROM(src, TRAIT_NODROP, HELMET_TRAIT))
-		to_chat(user, span_userdanger("[src] was cursed!"))
+/datum/status_effect/clock_rewind
+	id = "Clock Rewind"
+	status_type = STATUS_EFFECT_UNIQUE
+	duration = STATUS_EFFECT_PERMANENT
+	tick_interval = 2.5 SECONDS
+	alert_type = null
+
+	var/datum/component/aura_healing/aura_healing
+	var/deathTick = 0
+/datum/status_effect/clock_rewind/on_apply()
+	. = ..()
+	if(!.)
+		return FALSE
+	var/static/list/organ_healing = list(
+		ORGAN_SLOT_BRAIN = 1.4,
+	)
+	aura_healing = owner.AddComponent( \
+		/datum/component/aura_healing_no_self, \
+		range = 7, \
+		brute_heal = 1.3, \
+		burn_heal = 1.3, \
+		toxin_heal = 1.3, \
+		suffocation_heal = 1.3, \
+		stamina_heal = 1.3, \
+		simple_heal = 1.3, \
+		organ_healing = organ_healing, \
+		healing_color = "#375637", \
+	)
+	return TRUE
+/datum/status_effect/clock_rewind/on_remove()
+	QDEL_NULL(aura_healing)
 	return ..()
 
+
+
+// for balance and lore accuracy purposes, aura healing is not self-targeting
+/datum/component/aura_healing_no_self
+	parent_type = /datum/component/aura_healing
+
+// exact copy of aura_healing/process with owner removed from healing list.
+/datum/component/aura_healing_no_self/process(seconds_per_tick)
+	// selecting owner to remove later
+	var/mob/living/owner = ismob(parent) ? parent : null
+
+	var/should_show_effect = COOLDOWN_FINISHED(src, last_heal_effect_time)
+	if (should_show_effect)
+		COOLDOWN_START(src, last_heal_effect_time, 1 SECONDS)
+
+	var/list/to_heal = list()
+	var/alert_category = "aura_healing_[REF(src)]"
+
+	if(requires_visibility)
+		for(var/mob/living/candidate in view(range, parent))
+			if (candidate == owner)  // removing owner from heal list
+				continue
+			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
+				continue
+			to_heal[candidate] = TRUE
+	else
+		for(var/mob/living/candidate in range(range, parent))
+			if (candidate == owner)   // removing owner from heal list
+				continue
+			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
+				continue
+			to_heal[candidate] = TRUE
+	// process()
+	for (var/mob/living/candidate as anything in to_heal)
+		if (!current_alerts[candidate])
+			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)
+			alert.desc = "You are being healed by [parent]."
+			current_alerts[candidate] = TRUE
+
+		if (should_show_effect && candidate.health < candidate.maxHealth)
+			new /obj/effect/temp_visual/heal(get_turf(candidate), healing_color)
+
+		if (iscarbon(candidate) || issilicon(candidate) || isbasicmob(candidate))
+			candidate.adjustBruteLoss(-brute_heal * seconds_per_tick, updating_health = FALSE)
+			candidate.adjustFireLoss(-burn_heal * seconds_per_tick, updating_health = FALSE)
+
+		if (iscarbon(candidate))
+			candidate.adjustToxLoss(-toxin_heal * seconds_per_tick, updating_health = FALSE, forced = TRUE)
+			candidate.adjustOxyLoss(-suffocation_heal * seconds_per_tick, updating_health = FALSE)
+			candidate.adjustStaminaLoss(-stamina_heal * seconds_per_tick, updating_stamina = FALSE)
+
+			for (var/organ in organ_healing)
+				candidate.adjustOrganLoss(organ, -organ_healing[organ] * seconds_per_tick)
+
+			var/mob/living/carbon/carbidate = candidate
+			for(var/datum/wound/iter_wound as anything in carbidate.all_wounds)
+				iter_wound.adjust_blood_flow(-wound_clotting * seconds_per_tick)
+
+		else if (isanimal(candidate))
+			var/mob/living/simple_animal/animal_candidate = candidate
+			animal_candidate.adjustHealth(-simple_heal * seconds_per_tick, updating_health = FALSE)
+		else if (isbasicmob(candidate))
+			var/mob/living/basic/basic_candidate = candidate
+			basic_candidate.adjust_health(-simple_heal * seconds_per_tick, updating_health = FALSE)
+
+		if (candidate.blood_volume < BLOOD_VOLUME_NORMAL)
+			candidate.blood_volume += blood_heal * seconds_per_tick
+
+		candidate.updatehealth()
+
+	for (var/mob/living/remove_alert_from as anything in current_alerts - to_heal)
+		remove_alert_from.clear_alert(alert_category)
+		current_alerts -= remove_alert_from
 
 
 

@@ -11,6 +11,7 @@
 	worn_icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
 	worn_icon_state = "clocky_head_inactive"
 	base_icon_state = "clocky_head"
+
 	force = 10
 	dog_fashion = null
 	cold_protection = HEAD
@@ -21,13 +22,16 @@
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE
 	flags_cover = HEADCOVERSEYES
-	animal_sounds = list("Tick Tock!","Tick Tick","Tick Tock?")
 	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	equip_sound = 'sound/items/handling/helmet/helmet_equip1.ogg'
 	pickup_sound = 'sound/items/handling/helmet/helmet_pickup1.ogg'
 	drop_sound = 'sound/items/handling/helmet/helmet_drop1.ogg'
 	armor_type = /datum/armor/head_helmet_clocky
+
+	var/modifies_speech = TRUE // enables speech modification
+	var/list/animal_sounds = list("Tick Tock!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
+	var/cursed = TRUE // if it's a cursed mask variant.
 
 	/// If we have a core or not
 	var/core_installed = FALSE
@@ -147,7 +151,7 @@
 		return
 	if(!modifies_speech || !LAZYLEN(animal_sounds))
 		return
-	speech_args[SPEECH_MESSAGE] = pick((prob(animal_sounds_alt_probability) && LAZYLEN(animal_sounds_alt)) ? animal_sounds_alt : animal_sounds)
+	speech_args[SPEECH_MESSAGE] = pick(animal_sounds)
 
 /obj/item/clothing/head/helmet/clocky/equipped(mob/user, slot)
 	if(!iscarbon(user))
@@ -156,8 +160,7 @@
 		to_chat(user, span_userdanger("[src] was cursed!"))
 	return ..()
 
-/obj/item/clothing/head/helmet/clocky
-	cursed = TRUE
+
 
 
 #undef CLOCKY_INACTIVE_FLAGS

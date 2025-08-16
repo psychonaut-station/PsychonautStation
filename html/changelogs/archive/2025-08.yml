@@ -198,3 +198,7 @@
       \ d\xFCzeltildi."
   Seefaaa:
   - admin: "Admin library console d\xFCzeltildi"
+2025-08-16:
+  Seefaaa:
+  - bugfix: "Jukebox'da yaln\u0131zca youtube oynatabildi\u011Fi de\u011Fil soundcloud\
+      \ oynatabildi\u011Fi yazacak"

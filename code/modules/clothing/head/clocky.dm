@@ -30,7 +30,7 @@
 	armor_type = /datum/armor/head_helmet_clocky
 
 	var/modifies_speech = TRUE // enables speech modification
-	var/list/animal_sounds = list("Tick Tock!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
+	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
 	var/cursed = TRUE // if it's a cursed mask variant.
 
 	/// If we have a core or not
@@ -76,6 +76,7 @@
 		clothing_flags = CLOCKY_INACTIVE_FLAGS
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
+
 		return
 
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
@@ -111,12 +112,18 @@
 /obj/item/clothing/head/helmet/clocky/functioning
 	core_installed = TRUE
 
+/obj/item/clothing/head/helmet/clocky/functioning/equipped(mob/living/user, slot)
+	. = ..()
+	if(slot & ITEM_SLOT_HEAD)
+		user.update_sight()
+		make_cursed()
+
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
-	ADD_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
-	clothing_flags = NONE //force animal sounds to always on.
+	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
+	clothing_flags = NONE //force clock sounds to be always on.
 	if(flags_inv == initial(flags_inv))
 		flags_inv = HIDEFACIALHAIR
-	var/update_speech_mod = !modifies_speech && LAZYLEN(animal_sounds)
+	var/update_speech_mod = modifies_speech && LAZYLEN(clock_sounds)
 	if(update_speech_mod)
 		modifies_speech = TRUE
 	if(ismob(loc))
@@ -125,10 +132,10 @@
 			if(update_speech_mod)
 				RegisterSignal(M, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 			to_chat(M, span_userdanger("[src] was cursed!"))
-			M.update_worn_mask()
+			// M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/clear_curse()
-	REMOVE_TRAIT(src, TRAIT_NODROP, CURSED_MASK_TRAIT)
+	REMOVE_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
 	clothing_flags = initial(clothing_flags)
 	flags_inv = initial(flags_inv)
 	name = initial(name)
@@ -142,21 +149,21 @@
 			to_chat(M, span_notice("[src]'s curse has been lifted!"))
 			if(update_speech_mod)
 				UnregisterSignal(M, COMSIG_MOB_SAY)
-			M.update_worn_mask()
+			// M.update_worn_mask()
 
 /obj/item/clothing/head/helmet/clocky/proc/handle_speech(datum/source, list/speech_args)
 	SIGNAL_HANDLER
 
 	if(clothing_flags & VOICEBOX_DISABLED)
 		return
-	if(!modifies_speech || !LAZYLEN(animal_sounds))
+	if(!modifies_speech || !LAZYLEN(clock_sounds))
 		return
-	speech_args[SPEECH_MESSAGE] = pick(animal_sounds)
+	speech_args[SPEECH_MESSAGE] = pick(clock_sounds)
 
 /obj/item/clothing/head/helmet/clocky/equipped(mob/user, slot)
 	if(!iscarbon(user))
 		return ..()
-	if((slot & ITEM_SLOT_HEAD) && HAS_TRAIT_FROM(src, TRAIT_NODROP, CURSED_MASK_TRAIT))
+	if((slot & ITEM_SLOT_HEAD) && HAS_TRAIT_FROM(src, TRAIT_NODROP, HELMET_TRAIT))
 		to_chat(user, span_userdanger("[src] was cursed!"))
 	return ..()
 

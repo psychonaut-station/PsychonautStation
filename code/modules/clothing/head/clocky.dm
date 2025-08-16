@@ -119,7 +119,10 @@
 	if(slot & ITEM_SLOT_HEAD)
 		user.update_sight()
 		make_cursed()
-		var/datum/status_effect/applied_effect = user.apply_status_effect(/datum/status_effect/clock_rewind)
+		user.apply_status_effect(/datum/status_effect/clock_rewind)
+		if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
+			to_chat(user, span_warning("You can't possibly handle more aura!"))
+
 /obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)
 	. = ..()
 	. += span_warning("Once you go clocky, there is no going back...")

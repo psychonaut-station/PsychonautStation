@@ -9,7 +9,7 @@ jobs:
   generate_documentation:
     permissions:
       contents: write # for JamesIves/github-pages-deploy-action to push changes in repo
-    if: false
+    if: ( !contains(github.event.head_commit.message, '[ci skip]') )
     runs-on: ubuntu-22.04
     concurrency: gen-docs
     steps:

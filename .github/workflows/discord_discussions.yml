@@ -19,7 +19,7 @@ jobs:
   manage-discord-discussion:
     name: Manage Discord Discussion
     runs-on: ubuntu-latest
-    if: false
+    if: contains(github.event.pull_request.labels.*.name, 'Discord Discussion')
     steps:
       - name: Fail if vars.DISCORD_DISCUSSIONS_CHANNEL_ID is unset
         if: ${{ vars.DISCORD_DISCUSSIONS_CHANNEL_ID == '' }}

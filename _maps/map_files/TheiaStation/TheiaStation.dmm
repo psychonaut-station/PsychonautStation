@@ -53859,7 +53859,6 @@
 /turf/open/floor/iron,
 /area/station/engineering/lobby)
 "teq" = (
-/obj/item/paper/fluff/ids_for_dummies,
 /obj/machinery/requests_console/auto_name/directional/north{
 	department = "Bitrunning"
 	},

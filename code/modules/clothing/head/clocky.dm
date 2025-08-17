@@ -102,7 +102,6 @@
 		return NONE
 	balloon_alert(user, "inserting...")
 	if (!do_after(user, delay = 3 SECONDS, target = src))
-		to_chat(user, span_notice("Flames began to emerge from inside the clock"))
 		return ITEM_INTERACT_BLOCKING
 	qdel(weapon)
 	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))

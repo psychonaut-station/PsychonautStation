@@ -80,12 +80,8 @@
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
 		return
-	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))
-		var/obj/item/clothing/head/helmet/clocky/functioning/new_helmet = new(loc)
-		new_helmet.core_installed = TRUE
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	attach_clothing_traits(additional_clothing_traits)
-	qdel(src)
 
 /obj/item/clothing/head/helmet/clocky/Destroy(force)
 	QDEL_LIST(active_components)
@@ -106,15 +102,20 @@
 		return NONE
 	balloon_alert(user, "inserting...")
 	if (!do_after(user, delay = 3 SECONDS, target = src))
+		to_chat(user, span_notice("Flames began to emerge from inside the clock"))
 		return ITEM_INTERACT_BLOCKING
 	qdel(weapon)
-	core_installed = TRUE
-	update_anomaly_state()
-	update_appearance(UPDATE_ICON_STATE)
-	playsound(src, 'sound/machines/crate/crate_open.ogg', 50, FALSE)
-	return ITEM_INTERACT_SUCCESS
+	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))
+		var/obj/item/clothing/head/helmet/clocky/functioning/new_helmet = new /obj/item/clothing/head/helmet/clocky/functioning(get_turf(src))
+		qdel(src)
+		playsound(new_helmet, 'sound/machines/crate/crate_open.ogg', 50, FALSE)
+		return ITEM_INTERACT_SUCCESS
+	else
+		to_chat(user, span_warning("Core zaten takılı!"))
+		return NONE
 
 /obj/item/clothing/head/helmet/clocky/functioning
+	parent_type = /obj/item/clothing/head/helmet/clocky
 	core_installed = TRUE
 
 /obj/item/clothing/head/helmet/clocky/functioning/equipped(mob/living/user, slot)

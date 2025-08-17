@@ -20,7 +20,7 @@
 	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
 	strip_delay = 8 SECONDS
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
-	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE|HIDESNOUT|HIDEANTENNAE|HIDEFACIALHAIR
 	flags_cover = HEADCOVERSEYES
 	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
 	resistance_flags = FIRE_PROOF | ACID_PROOF
@@ -80,9 +80,12 @@
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
 		return
-
+	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))
+		var/obj/item/clothing/head/helmet/clocky/functioning/new_helmet = new(loc)
+		new_helmet.core_installed = TRUE
 	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	attach_clothing_traits(additional_clothing_traits)
+	qdel(src)
 
 /obj/item/clothing/head/helmet/clocky/Destroy(force)
 	QDEL_LIST(active_components)
@@ -140,9 +143,9 @@
 /obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_revive(mob/living/user)
 	SIGNAL_HANDLER
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
-	user.apply_status_effect(/datum/status_effect/clock_rewind)
-	RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
-	UnregisterSignal(user, COMSIG_LIVING_REVIVE)
+		user.apply_status_effect(/datum/status_effect/clock_rewind)
+		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
+		UnregisterSignal(user, COMSIG_LIVING_REVIVE)
 
 
 /obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)

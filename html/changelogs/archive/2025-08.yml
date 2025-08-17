@@ -351,6 +351,11 @@
   - bugfix: looping sounds now stop playing sounds when commaned to do so.
   Melbert:
   - bugfix: Bashing vendors works good again
+  Rengan:
+  - bugfix: "Kaptan\u0131n k\u0131l\u0131c\u0131n\u0131n g\xF6r\xFCnmez olmas\u0131\
+      \ d\xFCzeltildi."
+  Seefaaa:
+  - admin: "Admin library console d\xFCzeltildi"
   SyncIt21:
   - bugfix: product category vendors start out correctly filled & can be refilled
       with cargo ordered vending canisters again
@@ -373,11 +378,6 @@
   uaioy:
   - qol: All coroner's offices that lacked a cabinet will now have one, coroner's
       organ fridge is now more accessible
-  Rengan:
-  - bugfix: "Kaptan\u0131n k\u0131l\u0131c\u0131n\u0131n g\xF6r\xFCnmez olmas\u0131\
-      \ d\xFCzeltildi."
-  Seefaaa:
-  - admin: "Admin library console d\xFCzeltildi"
 2025-08-14:
   plsleavemealon:
   - rscadd: Adds a new bounty app to the PDA allowing you to remotely check your bounties
@@ -425,3 +425,25 @@
   Seefaaa:
   - bugfix: "Jukebox'da yaln\u0131zca youtube oynatabildi\u011Fi de\u011Fil soundcloud\
       \ oynatabildi\u011Fi yazacak"
+2025-08-17:
+  JohnFulpWillard:
+  - qol: Jukebox now has context tips, balloon alerts over messages to chat, and can
+      now RMB to quick toggle music from playing.
+  Melbert:
+  - bugfix: Fixes some potential exploits in mecha ui code
+  - bugfix: Item on-attack effects will trigger as expected when hitting a limb at
+      damage cap
+  Needicla:
+  - bugfix: Spraycan-painted clothing now displays correctly when worn by short-height
+      characters (e.g., Settler); paint no longer disappears on the mob sprite.
+  - code_imp: Worn overlay coloration now uses named filters and recurses to child
+      overlays, making it resilient to later filter changes (like height displacement).
+  Time-Green:
+  - rscadd: Icebox surface is now a 1x3 z-level grid! Rejoice, explorers!
+  exdal:
+  - balance: prefactor a/b tepkime alani 5'ten 2'te dusuruldu
+  - balance: prefactor a/b tepkime hacmi daha da arttilildi
+  panvxv:
+  - balance: Reduced cost of Unmelting Protection and Blazing Star
+  tonyhawq:
+  - spellcheck: shuttles will now say "arriving in 1 minute" instead of "1 minutes"

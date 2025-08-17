@@ -117,11 +117,33 @@
 /obj/item/clothing/head/helmet/clocky/functioning/equipped(mob/living/user, slot)
 	. = ..()
 	if(slot & ITEM_SLOT_HEAD)
+		if(user.stat == DEAD) // helmet cannot be worn by dead players
+			user.dropItemToGround(src, force=TRUE)
+			return
+		// having both aura heals might be unbalanced so only one can be used at a time by one player
+		if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
+			to_chat(user, span_warning("You can't possibly handle more aura!"))
+			user.dropItemToGround(src, force=TRUE)
+			return
 		user.update_sight()
 		make_cursed()
 		user.apply_status_effect(/datum/status_effect/clock_rewind)
-		if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
-			to_chat(user, span_warning("You can't possibly handle more aura!"))
+		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
+		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
+
+/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_death(mob/living/user)
+	SIGNAL_HANDLER
+	user.remove_status_effect(/datum/status_effect/clock_rewind)
+	RegisterSignal(user, COMSIG_LIVING_REVIVE, PROC_REF(on_user_revive))
+	UnregisterSignal(user, COMSIG_LIVING_DEATH)
+
+/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_revive(mob/living/user)
+	SIGNAL_HANDLER
+	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+	user.apply_status_effect(/datum/status_effect/clock_rewind)
+	RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
+	UnregisterSignal(user, COMSIG_LIVING_REVIVE)
+
 
 /obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)
 	. = ..()
@@ -209,7 +231,7 @@
 /datum/component/aura_healing_no_self
 	parent_type = /datum/component/aura_healing
 
-// exact copy of aura_healing/process with owner removed from healing list.
+// exact copy of aura_healing/process() with owner removed from healing list.
 /datum/component/aura_healing_no_self/process(seconds_per_tick)
 	// selecting owner to remove later
 	var/mob/living/owner = ismob(parent) ? parent : null

@@ -1,6 +1,3 @@
-#define CLOCKY_INACTIVE_FLAGS SNUG_FIT|STACKABLE_HELMET_EXEMPT|STOPSPRESSUREDAMAGE|BLOCK_GAS_SMOKE_EFFECT
-#define CLOCKY_ACTIVE_FLAGS CLOCKY_INACTIVE_FLAGS|CASTING_CLOTHES
-
 /obj/item/clothing/head/helmet/clocky
 	name = "clock head"
 	desc = "This piece of headgear harnesses the energies of a hallucinatory anomaly to create a safe audiovisual replica of -all- external stimuli directly into the cerebral cortex, \
@@ -15,14 +12,14 @@
 	force = 10
 	dog_fashion = null
 	cold_protection = HEAD
-	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	heat_protection = HEAD
-	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
+	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
 	strip_delay = 8 SECONDS
-	clothing_flags = CLOCKY_ACTIVE_FLAGS
+	equip_delay_other = 20 SECONDS
+	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | STACKABLE_HELMET_EXEMPT | HEADINTERNALS
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE|HIDESNOUT|HIDEANTENNAE|HIDEFACIALHAIR
-	flags_cover = HEADCOVERSEYES
-	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	equip_sound = 'sound/items/handling/helmet/helmet_equip1.ogg'
 	pickup_sound = 'sound/items/handling/helmet/helmet_pickup1.ogg'
@@ -76,11 +73,9 @@
 
 	// If the core isn't installed, or it's temporarily deactivated, disable special functions.
 	if(!core_installed)
-		clothing_flags = CLOCKY_INACTIVE_FLAGS
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
 		return
-	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	attach_clothing_traits(additional_clothing_traits)
 
 /obj/item/clothing/head/helmet/clocky/Destroy(force)
@@ -154,7 +149,6 @@
 
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
-	clothing_flags = NONE //force clock sounds to be always on.
 	var/update_speech_mod = modifies_speech && LAZYLEN(clock_sounds)
 	if(update_speech_mod)
 		modifies_speech = TRUE
@@ -167,7 +161,6 @@
 
 /obj/item/clothing/head/helmet/clocky/proc/clear_curse()
 	REMOVE_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
-	clothing_flags = initial(clothing_flags)
 	flags_inv = initial(flags_inv)
 	name = initial(name)
 	desc = initial(desc)
@@ -301,6 +294,3 @@
 		current_alerts -= remove_alert_from
 
 
-
-#undef CLOCKY_INACTIVE_FLAGS
-#undef CLOCKY_ACTIVE_FLAGS

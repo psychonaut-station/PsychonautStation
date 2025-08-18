@@ -155,8 +155,6 @@
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
 	clothing_flags = NONE //force clock sounds to be always on.
-	if(flags_inv == initial(flags_inv))
-		flags_inv = HIDEFACIALHAIR
 	var/update_speech_mod = modifies_speech && LAZYLEN(clock_sounds)
 	if(update_speech_mod)
 		modifies_speech = TRUE

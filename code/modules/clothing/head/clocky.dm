@@ -1,8 +1,6 @@
 /obj/item/clothing/head/helmet/clocky
 	name = "clock head"
-	desc = "This piece of headgear harnesses the energies of a hallucinatory anomaly to create a safe audiovisual replica of -all- external stimuli directly into the cerebral cortex, \
-		granting the user effective immunity to both psychic threats, and anything that would affect their perception - be it ear, eye, or even brain damage. \
-		It can also violently discharge said energy, inducing hallucinations in others."
+	desc = "A special clock head that can rewind time for the people, but at a cost."
 	icon_state = "clocky_head_iconise"
 	icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'

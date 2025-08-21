@@ -26,7 +26,6 @@
 
 	var/modifies_speech = TRUE // enables speech modification
 	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
-	var/cursed = TRUE // if it's a cursed mask variant.
 
 	/// If we have a core or not
 	var/core_installed = FALSE
@@ -70,7 +69,7 @@
 				to_chat(user, span_warning("You can't possibly handle more aura!"))
 				user.dropItemToGround(src, force=TRUE)
 				return
-		user.update_sight()
+
 		user.apply_status_effect(/datum/status_effect/clock_rewind)
 		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
 		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))

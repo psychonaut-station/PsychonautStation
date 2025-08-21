@@ -60,10 +60,22 @@
 		return
 	if(slot & ITEM_SLOT_HEAD)
 		user.update_sight()
-
+		if(core_installed)
+			make_cursed()
+			if(user.stat == DEAD) // helmet cannot be worn by dead players
+				user.dropItemToGround(src, force=TRUE)
+				return
+		// having both aura heals might be unbalanced so only one can be used at a time by one player
+			if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
+				to_chat(user, span_warning("You can't possibly handle more aura!"))
+				user.dropItemToGround(src, force=TRUE)
+				return
+		user.update_sight()
+		user.apply_status_effect(/datum/status_effect/clock_rewind)
+		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
+		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)
-	UnregisterSignal(user, COMSIG_MOB_BEFORE_SPELL_CAST)
 	user.update_sight()
 	..()
 
@@ -73,8 +85,17 @@
 	if(!core_installed)
 		detach_clothing_traits(additional_clothing_traits)
 		QDEL_LIST(active_components)
+		clear_curse()
+		if(ismob(loc))
+			var/mob/living/M = loc
+			M.remove_status_effect(/datum/status_effect/clock_rewind)
 		return
 	attach_clothing_traits(additional_clothing_traits)
+	if(ismob(loc))
+		var/mob/living/M = loc
+		if(M.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+			if(!M.has_status_effect(/datum/status_effect/clock_rewind))
+				M.apply_status_effect(/datum/status_effect/clock_rewind)
 
 /obj/item/clothing/head/helmet/clocky/Destroy(force)
 	QDEL_LIST(active_components)
@@ -97,53 +118,27 @@
 	if (!do_after(user, delay = 3 SECONDS, target = src))
 		return ITEM_INTERACT_BLOCKING
 	qdel(weapon)
-	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))
-		var/obj/item/clothing/head/helmet/clocky/functioning/new_helmet = new /obj/item/clothing/head/helmet/clocky/functioning(get_turf(src))
-		qdel(src)
-		playsound(new_helmet, 'sound/machines/crate/crate_open.ogg', 50, FALSE)
-		return ITEM_INTERACT_SUCCESS
-	else
-		to_chat(user, span_warning("Core zaten takılı!"))
-		return NONE
+	core_installed = TRUE
+	update_anomaly_state()
+	update_appearance(UPDATE_ICON_STATE)
+	playsound(src, 'sound/machines/crate/crate_open.ogg', 50, FALSE)
+	return ITEM_INTERACT_SUCCESS
 
 /obj/item/clothing/head/helmet/clocky/functioning
-	parent_type = /obj/item/clothing/head/helmet/clocky
 	core_installed = TRUE
 
-/obj/item/clothing/head/helmet/clocky/functioning/equipped(mob/living/user, slot)
-	. = ..()
-	if(slot & ITEM_SLOT_HEAD)
-		if(user.stat == DEAD) // helmet cannot be worn by dead players
-			user.dropItemToGround(src, force=TRUE)
-			return
-		// having both aura heals might be unbalanced so only one can be used at a time by one player
-		if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
-			to_chat(user, span_warning("You can't possibly handle more aura!"))
-			user.dropItemToGround(src, force=TRUE)
-			return
-		user.update_sight()
-		make_cursed()
-		user.apply_status_effect(/datum/status_effect/clock_rewind)
-		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
-		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
-
-/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_death(mob/living/user)
+/obj/item/clothing/head/helmet/clocky/proc/on_user_death(mob/living/user)
 	SIGNAL_HANDLER
 	user.remove_status_effect(/datum/status_effect/clock_rewind)
 	RegisterSignal(user, COMSIG_LIVING_REVIVE, PROC_REF(on_user_revive))
 	UnregisterSignal(user, COMSIG_LIVING_DEATH)
 
-/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_revive(mob/living/user)
+/obj/item/clothing/head/helmet/clocky/proc/on_user_revive(mob/living/user)
 	SIGNAL_HANDLER
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 		user.apply_status_effect(/datum/status_effect/clock_rewind)
 		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
 		UnregisterSignal(user, COMSIG_LIVING_REVIVE)
-
-
-/obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)
-	. = ..()
-	. += span_warning("Once you go clocky, there is no going back...")
 
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)

@@ -240,6 +240,7 @@
 			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
 				continue
 			to_heal[candidate] = TRUE
+
 	for (var/mob/living/candidate as anything in to_heal)
 		if (!current_alerts[candidate])
 			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)

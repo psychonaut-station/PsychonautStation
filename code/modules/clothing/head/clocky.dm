@@ -1,11 +1,6 @@
-#define CLOCKY_INACTIVE_FLAGS SNUG_FIT|STACKABLE_HELMET_EXEMPT|STOPSPRESSUREDAMAGE|BLOCK_GAS_SMOKE_EFFECT
-#define CLOCKY_ACTIVE_FLAGS CLOCKY_INACTIVE_FLAGS|CASTING_CLOTHES
-
 /obj/item/clothing/head/helmet/clocky
 	name = "clock head"
-	desc = "This piece of headgear harnesses the energies of a hallucinatory anomaly to create a safe audiovisual replica of -all- external stimuli directly into the cerebral cortex, \
-		granting the user effective immunity to both psychic threats, and anything that would affect their perception - be it ear, eye, or even brain damage. \
-		It can also violently discharge said energy, inducing hallucinations in others."
+	desc = "A special clock head that can rewind time for the people, but at a cost."
 	icon_state = "clocky_head_iconise"
 	icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
@@ -15,14 +10,14 @@
 	force = 10
 	dog_fashion = null
 	cold_protection = HEAD
-	min_cold_protection_temperature = HELMET_MIN_TEMP_PROTECT
+	min_cold_protection_temperature = SPACE_HELM_MIN_TEMP_PROTECT
 	heat_protection = HEAD
-	max_heat_protection_temperature = HELMET_MAX_TEMP_PROTECT
-	strip_delay = 8 SECONDS
-	clothing_flags = CLOCKY_ACTIVE_FLAGS
+	max_heat_protection_temperature = SPACE_HELM_MAX_TEMP_PROTECT
+	equip_delay_self = 5 SECONDS
+	equip_delay_other = 20 SECONDS
+	clothing_flags = STOPSPRESSUREDAMAGE | THICKMATERIAL | SNUG_FIT | STACKABLE_HELMET_EXEMPT | HEADINTERNALS
 	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEHAIR|HIDEFACE|HIDESNOUT|HIDEANTENNAE|HIDEFACIALHAIR
-	flags_cover = HEADCOVERSEYES
-	flash_protect = FLASH_PROTECTION_WELDER_SENSITIVE
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	equip_sound = 'sound/items/handling/helmet/helmet_equip1.ogg'
 	pickup_sound = 'sound/items/handling/helmet/helmet_pickup1.ogg'
@@ -31,12 +26,9 @@
 
 	var/modifies_speech = TRUE // enables speech modification
 	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
-	var/cursed = TRUE // if it's a cursed mask variant.
 
 	/// If we have a core or not
 	var/core_installed = FALSE
-	/// Active components to add onto the mob, deleted and created on core installation/removal
-	var/list/active_components = list()
 	/// List of additonal clothing traits to apply when the core is inserted
 	var/list/additional_clothing_traits = list(
 		TRAIT_NOFLASH,
@@ -65,36 +57,50 @@
 		return
 	if(slot & ITEM_SLOT_HEAD)
 		user.update_sight()
-
+		if(!core_installed)
+			to_chat(user, span_warning("You can't wear this without a bioscrambler anomaly core!"))
+			user.dropItemToGround(src, force=TRUE)
+			return
+		if(core_installed)
+			if(user.stat == DEAD) // helmet cannot be worn by dead players
+				user.dropItemToGround(src, force=TRUE)
+				return
+			if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
+				to_chat(user, span_warning("You can't possibly handle more aura!"))
+				user.dropItemToGround(src, force=TRUE)
+				return
+			make_cursed()
+		user.apply_status_effect(/datum/status_effect/clock_rewind)
+		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
+		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)
-	UnregisterSignal(user, COMSIG_MOB_BEFORE_SPELL_CAST)
 	user.update_sight()
-	..()
+	return ..()
 
 /obj/item/clothing/head/helmet/clocky/proc/update_anomaly_state()
-
 	// If the core isn't installed, or it's temporarily deactivated, disable special functions.
 	if(!core_installed)
-		clothing_flags = CLOCKY_INACTIVE_FLAGS
 		detach_clothing_traits(additional_clothing_traits)
-		QDEL_LIST(active_components)
+		clear_curse()
+		if(ismob(loc))
+			var/mob/living/M = loc
+			M.remove_status_effect(/datum/status_effect/clock_rewind)
 		return
-	if(!istype(src, /obj/item/clothing/head/helmet/clocky/functioning))
-		var/obj/item/clothing/head/helmet/clocky/functioning/new_helmet = new(loc)
-		new_helmet.core_installed = TRUE
-	clothing_flags = CLOCKY_ACTIVE_FLAGS
 	attach_clothing_traits(additional_clothing_traits)
-	qdel(src)
-
-/obj/item/clothing/head/helmet/clocky/Destroy(force)
-	QDEL_LIST(active_components)
-	return ..()
+	if(ismob(loc))
+		var/mob/living/M = loc
+		if(M.get_item_by_slot(ITEM_SLOT_HEAD) == src)
+			if(!M.has_status_effect(/datum/status_effect/clock_rewind))
+				M.apply_status_effect(/datum/status_effect/clock_rewind)
 
 /obj/item/clothing/head/helmet/clocky/examine(mob/user)
 	. = ..()
 	if (!core_installed)
 		. += span_warning("It requires a bioscrambler anomaly core in order to function.")
+	else
+		. += span_warning("Once you go clocky, there is no going back...")
+
 
 /obj/item/clothing/head/helmet/clocky/update_icon_state()
 	icon_state = base_icon_state + (core_installed ? "" : "_inactive")
@@ -117,46 +123,21 @@
 /obj/item/clothing/head/helmet/clocky/functioning
 	core_installed = TRUE
 
-/obj/item/clothing/head/helmet/clocky/functioning/equipped(mob/living/user, slot)
-	. = ..()
-	if(slot & ITEM_SLOT_HEAD)
-		if(user.stat == DEAD) // helmet cannot be worn by dead players
-			user.dropItemToGround(src, force=TRUE)
-			return
-		// having both aura heals might be unbalanced so only one can be used at a time by one player
-		if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
-			to_chat(user, span_warning("You can't possibly handle more aura!"))
-			user.dropItemToGround(src, force=TRUE)
-			return
-		user.update_sight()
-		make_cursed()
-		user.apply_status_effect(/datum/status_effect/clock_rewind)
-		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
-		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
-
-/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_death(mob/living/user)
+/obj/item/clothing/head/helmet/clocky/proc/on_user_death(mob/living/user)
 	SIGNAL_HANDLER
 	user.remove_status_effect(/datum/status_effect/clock_rewind)
 	RegisterSignal(user, COMSIG_LIVING_REVIVE, PROC_REF(on_user_revive))
 	UnregisterSignal(user, COMSIG_LIVING_DEATH)
 
-/obj/item/clothing/head/helmet/clocky/functioning/proc/on_user_revive(mob/living/user)
+/obj/item/clothing/head/helmet/clocky/proc/on_user_revive(mob/living/user)
 	SIGNAL_HANDLER
 	if(user.get_item_by_slot(ITEM_SLOT_HEAD) == src)
 		user.apply_status_effect(/datum/status_effect/clock_rewind)
 		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))
 		UnregisterSignal(user, COMSIG_LIVING_REVIVE)
 
-
-/obj/item/clothing/head/helmet/clocky/functioning/examine(mob/user)
-	. = ..()
-	. += span_warning("Once you go clocky, there is no going back...")
-
 /obj/item/clothing/head/helmet/clocky/proc/make_cursed() //apply cursed effects.
 	ADD_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
-	clothing_flags = NONE //force clock sounds to be always on.
-	if(flags_inv == initial(flags_inv))
-		flags_inv = HIDEFACIALHAIR
 	var/update_speech_mod = modifies_speech && LAZYLEN(clock_sounds)
 	if(update_speech_mod)
 		modifies_speech = TRUE
@@ -169,7 +150,6 @@
 
 /obj/item/clothing/head/helmet/clocky/proc/clear_curse()
 	REMOVE_TRAIT(src, TRAIT_NODROP, HELMET_TRAIT)
-	clothing_flags = initial(clothing_flags)
 	flags_inv = initial(flags_inv)
 	name = initial(name)
 	desc = initial(desc)
@@ -203,7 +183,8 @@
 	alert_type = null
 
 	var/datum/component/aura_healing/aura_healing
-	var/deathTick = 0
+	var/death_tick = 0
+
 /datum/status_effect/clock_rewind/on_apply()
 	. = ..()
 	if(!.)
@@ -224,11 +205,10 @@
 		healing_color = "#375637", \
 	)
 	return TRUE
+
 /datum/status_effect/clock_rewind/on_remove()
 	QDEL_NULL(aura_healing)
 	return ..()
-
-
 
 // for balance and lore accuracy purposes, aura healing is not self-targeting
 /datum/component/aura_healing_no_self
@@ -260,7 +240,6 @@
 			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
 				continue
 			to_heal[candidate] = TRUE
-	// process()
 	for (var/mob/living/candidate as anything in to_heal)
 		if (!current_alerts[candidate])
 			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)
@@ -303,6 +282,3 @@
 		current_alerts -= remove_alert_from
 
 
-
-#undef CLOCKY_INACTIVE_FLAGS
-#undef CLOCKY_ACTIVE_FLAGS

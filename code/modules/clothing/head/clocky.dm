@@ -102,6 +102,9 @@
 	. = ..()
 	if (!core_installed)
 		. += span_warning("It requires a bioscrambler anomaly core in order to function.")
+	if (core_installed)
+		. += span_warning("Once you go clocky, there is no going back...")
+
 
 /obj/item/clothing/head/helmet/clocky/update_icon_state()
 	icon_state = base_icon_state + (core_installed ? "" : "_inactive")

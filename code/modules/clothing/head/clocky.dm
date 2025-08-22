@@ -76,10 +76,9 @@
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)
 	user.update_sight()
-	..()
+	return ..()
 
 /obj/item/clothing/head/helmet/clocky/proc/update_anomaly_state()
-
 	// If the core isn't installed, or it's temporarily deactivated, disable special functions.
 	if(!core_installed)
 		detach_clothing_traits(additional_clothing_traits)
@@ -95,14 +94,11 @@
 			if(!M.has_status_effect(/datum/status_effect/clock_rewind))
 				M.apply_status_effect(/datum/status_effect/clock_rewind)
 
-/obj/item/clothing/head/helmet/clocky/Destroy(force)
-	return ..()
-
 /obj/item/clothing/head/helmet/clocky/examine(mob/user)
 	. = ..()
 	if (!core_installed)
 		. += span_warning("It requires a bioscrambler anomaly core in order to function.")
-	if (core_installed)
+	else
 		. += span_warning("Once you go clocky, there is no going back...")
 
 
@@ -187,7 +183,8 @@
 	alert_type = null
 
 	var/datum/component/aura_healing/aura_healing
-	var/deathTick = 0
+	var/death_tick = 0
+
 /datum/status_effect/clock_rewind/on_apply()
 	. = ..()
 	if(!.)
@@ -212,8 +209,6 @@
 /datum/status_effect/clock_rewind/on_remove()
 	QDEL_NULL(aura_healing)
 	return ..()
-
-
 
 // for balance and lore accuracy purposes, aura healing is not self-targeting
 /datum/component/aura_healing_no_self
@@ -245,7 +240,6 @@
 			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
 				continue
 			to_heal[candidate] = TRUE
-	// process()
 	for (var/mob/living/candidate as anything in to_heal)
 		if (!current_alerts[candidate])
 			var/atom/movable/screen/alert/aura_healing/alert = candidate.throw_alert(alert_category, /atom/movable/screen/alert/aura_healing, new_master = parent)

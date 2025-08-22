@@ -422,16 +422,9 @@
   zxaber:
   - rscadd: AIs now get an alert when a new (non-syndicate) AI is brought online.
 2025-08-16:
-<<<<<<< HEAD
-  Seefaaa:
-  - bugfix: "Jukebox'da yaln\u0131zca youtube oynatabildi\u011Fi de\u011Fil soundcloud\
-      \ oynatabildi\u011Fi yazacak"
-2025-08-17:
-=======
   Exester509:
   - bugfix: The death ripley can move again, and thus, kill things that aren't standing
       still right next to it.
->>>>>>> 31846bc965164205ef1a220cfccd161a529a4a29
   JohnFulpWillard:
   - qol: Jukebox now has context tips, balloon alerts over messages to chat, and can
       now RMB to quick toggle music from playing.
@@ -446,18 +439,13 @@
       overlays, making it resilient to later filter changes (like height displacement).
   Time-Green:
   - rscadd: Icebox surface is now a 1x3 z-level grid! Rejoice, explorers!
-<<<<<<< HEAD
-  exdal:
-  - balance: prefactor a/b tepkime alani 5'ten 2'te dusuruldu
-  - balance: prefactor a/b tepkime hacmi daha da arttilildi
-=======
->>>>>>> 31846bc965164205ef1a220cfccd161a529a4a29
   panvxv:
   - balance: Reduced cost of Unmelting Protection and Blazing Star
+  Seefaaa:
+  - bugfix: "Jukebox'da yaln\u0131zca youtube oynatabildi\u011Fi de\u011Fil soundcloud\
+      \ oynatabildi\u011Fi yazacak"
   tonyhawq:
   - spellcheck: shuttles will now say "arriving in 1 minute" instead of "1 minutes"
-<<<<<<< HEAD
-=======
 2025-08-17:
   Bisar:
   - balance: 'Added a list of "universal" items that can fit on any suit storage.
@@ -466,6 +454,9 @@
   - balance: Any item of size "tiny" can now also be worn in suit storage.
   - qol: The suit storage change gives some small amount of sanity to wearing things
       on suit storage, such as emergency oxygen tanks or a pack of smokes.
+  exdal:
+  - balance: prefactor a/b tepkime alani 5'ten 2'te dusuruldu
+  - balance: prefactor a/b tepkime hacmi daha da arttilildi
   throwawayuseless:
   - bugfix: Diode Disks are no longer improperly /improper.
 2025-08-18:
@@ -555,4 +546,3 @@
   paganiy:
   - bugfix: the interns recalculated the damage of the shotguns catridges and made
       corrections
->>>>>>> 31846bc965164205ef1a220cfccd161a529a4a29

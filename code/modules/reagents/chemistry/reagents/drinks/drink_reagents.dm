@@ -1332,7 +1332,6 @@
 	if(istype(stomach))
 		stomach.adjust_charge(reac_volume * 20 * ETHEREAL_DISCHARGE_RATE)
 
-<<<<<<< HEAD
 /datum/reagent/consumable/ayran
 	name = "Ayran"
 	description = "Yoğurt, su ve tuzun karıştırılmasıyla elde edilen, serinletici ve ferahlatıcı geleneksel bir Türk içeceği."
@@ -1346,7 +1345,7 @@
 	if(affected_mob.getFireLoss() && SPT_PROB(10, seconds_per_tick))
 		if(affected_mob.heal_bodypart_damage(brute = 0, burn = 1 * REM * seconds_per_tick, updating_health = FALSE))
 			return UPDATE_MOB_HEALTH
-=======
+
 /datum/reagent/consumable/fruit_punch
 	name = "fruit punch"
 	description = "Impossibly sweet fruit punch. Nobody knows what fruits were used to make it, not even it's creators... \
@@ -1403,4 +1402,3 @@
 	name = "Fruit Punishment"
 	desc = "The unbearable sweetness of the fruit punch is too much to bear without the soothing aura of a liquid cooler! Your body is going into shock!"
 	icon_state = "punch_punishment"
->>>>>>> 31846bc965164205ef1a220cfccd161a529a4a29

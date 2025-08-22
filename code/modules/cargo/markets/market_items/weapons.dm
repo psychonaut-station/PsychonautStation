@@ -161,3 +161,13 @@
 	price_max = CARGO_CRATE_VALUE * 50
 	stock_max = 2
 	availability_prob = 10
+
+/datum/market_item/weapon/surplus_esword
+	name = "Type I 'Iaito' Energy Sword"
+	desc = "A mass-produced energy sword. It is functionally worse than a milspec energy sword commonly found amongst paramilitary organizations. \
+		But hey, better than nothing. Does have some power supply problems, but nothing that a bit of percussive maintenance can't fix."
+	item = /obj/item/melee/energy/sword/surplus
+	price_min = CARGO_CRATE_VALUE * 2
+	price_max = CARGO_CRATE_VALUE * 5
+	stock_max = 2
+	availability_prob = 80

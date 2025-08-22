@@ -208,6 +208,7 @@
 		healing_color = "#375637", \
 	)
 	return TRUE
+
 /datum/status_effect/clock_rewind/on_remove()
 	QDEL_NULL(aura_healing)
 	return ..()

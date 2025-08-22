@@ -65,11 +65,11 @@
 			if(user.stat == DEAD) // helmet cannot be worn by dead players
 				user.dropItemToGround(src, force=TRUE)
 				return
-			make_cursed()
 			if(user.has_status_effect(/datum/status_effect/hippocratic_oath) || user.has_status_effect(/datum/status_effect/clock_rewind))
 				to_chat(user, span_warning("You can't possibly handle more aura!"))
 				user.dropItemToGround(src, force=TRUE)
 				return
+			make_cursed()
 		user.apply_status_effect(/datum/status_effect/clock_rewind)
 		// Register death signal when helmet is equipped, so when user is dead helmet will drop in the following function
 		RegisterSignal(user, COMSIG_LIVING_DEATH, PROC_REF(on_user_death))

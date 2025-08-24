@@ -198,12 +198,12 @@
 	aura_healing = owner.AddComponent( \
 		/datum/component/aura_healing, \
 		range = 7, \
-		brute_heal = 1.4, \
-		burn_heal = 1.4, \
-		toxin_heal = 1.4, \
-		suffocation_heal = 1.4, \
-		stamina_heal = 1.4, \
-		simple_heal = 1.4, \
+		brute_heal = 1.3, \
+		burn_heal = 1.3, \
+		toxin_heal = 1.3, \
+		suffocation_heal = 1.3, \
+		stamina_heal = 1.3, \
+		simple_heal = 1.3, \
 		organ_healing = organ_healing, \
 		healing_color = "#375637", \
 	)

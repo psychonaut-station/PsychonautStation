@@ -25,7 +25,7 @@
 	armor_type = /datum/armor/head_helmet_clocky
 
 	var/modifies_speech = TRUE // enables speech modification
-	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?") // phrases to be said when the player attempts to talk when speech modification is enabled
+	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?","Tick Tack","Tick Tick Tock...") // phrases to be said when the player attempts to talk when speech modification is enabled
 
 	/// If we have a core or not
 	var/core_installed = FALSE
@@ -35,16 +35,17 @@
 		TRAIT_GOOD_HEARING,
 	)
 
-// weaker overall but better against energy
+
 /datum/armor/head_helmet_clocky
-	melee = 15
-	bullet = 15
-	laser = 45
-	energy = 60
 	bomb = 15
 	fire = 50
 	acid = 50
-	wound = 10
+	melee = 10
+	bullet = 10
+	laser = 10
+	energy = 10
+
+
 
 /obj/item/clothing/head/helmet/clocky/Initialize(mapload)
 	. = ..()
@@ -76,6 +77,8 @@
 
 /obj/item/clothing/head/helmet/clocky/dropped(mob/living/user, silent)
 	user.update_sight()
+	clear_curse()
+	user.remove_status_effect(/datum/status_effect/clock_rewind)
 	return ..()
 
 /obj/item/clothing/head/helmet/clocky/proc/update_anomaly_state()
@@ -179,7 +182,7 @@
 	id = "Clock Rewind"
 	status_type = STATUS_EFFECT_UNIQUE
 	duration = STATUS_EFFECT_PERMANENT
-	tick_interval = 2.5 SECONDS
+	tick_interval = 3 SECONDS
 	alert_type = null
 
 	var/datum/component/aura_healing/aura_healing
@@ -193,7 +196,7 @@
 		ORGAN_SLOT_BRAIN = 1.4,
 	)
 	aura_healing = owner.AddComponent( \
-		/datum/component/aura_healing_no_self, \
+		/datum/component/aura_healing, \
 		range = 7, \
 		brute_heal = 1.3, \
 		burn_heal = 1.3, \
@@ -210,14 +213,9 @@
 	QDEL_NULL(aura_healing)
 	return ..()
 
-// for balance and lore accuracy purposes, aura healing is not self-targeting
-/datum/component/aura_healing_no_self
-	parent_type = /datum/component/aura_healing
 
-// exact copy of aura_healing/process() with owner removed from healing list.
-/datum/component/aura_healing_no_self/process(seconds_per_tick)
-	// selecting owner to remove later
-	var/mob/living/owner = ismob(parent) ? parent : null
+
+/datum/component/aura_healing/process(seconds_per_tick)
 
 	var/should_show_effect = COOLDOWN_FINISHED(src, last_heal_effect_time)
 	if (should_show_effect)
@@ -228,15 +226,11 @@
 
 	if(requires_visibility)
 		for(var/mob/living/candidate in view(range, parent))
-			if (candidate == owner)  // removing owner from heal list
-				continue
 			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
 				continue
 			to_heal[candidate] = TRUE
 	else
 		for(var/mob/living/candidate in range(range, parent))
-			if (candidate == owner)   // removing owner from heal list
-				continue
 			if (!isnull(limit_to_trait) && !HAS_TRAIT(candidate, limit_to_trait))
 				continue
 			to_heal[candidate] = TRUE

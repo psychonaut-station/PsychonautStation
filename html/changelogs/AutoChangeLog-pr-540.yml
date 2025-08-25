@@ -1,0 +1,5 @@
+author: "Ragnarok0"
+delete-after: True
+changes:
+  - balance: " Clock Head anomali kaskı artık kendi kullanıcısını heallayabilir."
+  - bugfix: "Clock Head anomali kaskı kesilen kafalardan düşünce cursed kalmayacak."

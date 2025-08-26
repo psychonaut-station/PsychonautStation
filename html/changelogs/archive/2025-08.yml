@@ -551,3 +551,9 @@
   - rscadd: "Clock Head adl\u0131 bioscrambler anomali e\u015Fyas\u0131n\u0131 oyuna\
       \ ekler."
   - rscadd: "Manager jacket adl\u0131 ceketi oyuna ekler."
+2025-08-26:
+  Ragnarok0:
+  - balance: " Clock Head anomali kask\u0131 art\u0131k kendi kullan\u0131c\u0131\
+      s\u0131n\u0131 heallayabilir."
+  - bugfix: "Clock Head anomali kask\u0131 kesilen kafalardan d\xFC\u015F\xFCnce cursed\
+      \ kalmayacak."

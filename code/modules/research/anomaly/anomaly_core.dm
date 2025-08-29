@@ -94,3 +94,9 @@
 	desc = "The neutralized core of an ectoplasmic anomaly. When you hold it close, you can hear faint murmuring from inside. It'd probably be valuable for research."
 	icon_state = "dimensional_core"
 	anomaly_type = /obj/effect/anomaly/ectoplasm
+
+/obj/item/assembly/signaler/anomaly/time
+	name = "\improper time anomaly core"
+	desc = "The neutralized core of a temporal anomaly. It seems to distort your perception of time when you look at it. It'd probably be valuable for research."
+	icon_state = "time_core"
+	anomaly_type = /obj/effect/anomaly/time

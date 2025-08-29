@@ -15,6 +15,7 @@
 		/obj/effect/anomaly/hallucination = /obj/item/clothing/suit/armor/reactive/hallucinating,
 		/obj/effect/anomaly/dimensional = /obj/item/clothing/suit/armor/reactive/barricade,
 		/obj/effect/anomaly/ectoplasm = /obj/item/clothing/suit/armor/reactive/ectoplasm,
+		/obj/effect/anomaly/time = /obj/item/clothing/suit/armor/reactive/time,
 		)
 
 	if(istype(tool, /obj/item/assembly/signaler/anomaly))
@@ -352,6 +353,106 @@
 	owner.adjust_hallucinations_up_to(50 SECONDS, 240 SECONDS)
 	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
 	return TRUE
+
+// Time Anomaly Reactive Armor
+/obj/item/clothing/suit/armor/reactive/time
+	name = "reactive time armor"
+	desc = "An experimental suit of armor that distorts time when struck."
+	emp_message = span_warning("The reactive time armor's chronofield emitters are scrambled!")
+	cooldown_message = span_danger("The time field is still recharging! It fails to activate!")
+	/// List storing the wearer's position history
+	var/list/position_history = list()
+	/// Maximum number of positions to store (100 ticks = 10 seconds)
+	var/max_history_length = 100
+	/// When we last updated position history
+	var/last_history_update = 0
+
+/obj/item/clothing/suit/armor/reactive/time/Initialize(mapload)
+	. = ..()
+	START_PROCESSING(SSfastprocess, src)
+
+/obj/item/clothing/suit/armor/reactive/time/Destroy()
+	STOP_PROCESSING(SSfastprocess, src)
+	return ..()
+
+/obj/item/clothing/suit/armor/reactive/time/process()
+	if(!istype(loc, /mob/living/carbon/human))
+		return
+
+	var/mob/living/carbon/human/wearer = loc
+	if(istype(wearer) && world.time > last_history_update)
+		// Store current position with timestamp
+		var/list/position_data = list("turf" = get_turf(wearer), "time" = world.time)
+		position_history[++position_history.len] = position_data
+
+		// Remove old positions beyond our history limit
+		if(position_history.len > max_history_length)
+			position_history.Cut(1, 2)
+
+		last_history_update = world.time
+
+/obj/item/clothing/suit/armor/reactive/time/reactive_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	var/turf/current_turf = get_turf(owner)
+	if(!current_turf)
+		return FALSE
+
+	// Find position from 10 seconds ago (100 ticks ago)
+	var/target_time = world.time - 100
+	var/turf/time_travel_destination = null
+
+	// Search through position history for the closest position to 10 seconds ago
+	for(var/i = position_history.len; i >= 1; i--)
+		var/list/position_data = position_history[i]
+		if(position_data["time"] <= target_time)
+			time_travel_destination = position_data["turf"]
+			break
+
+	// If we don't have enough history, use the oldest position we have
+	if(!time_travel_destination && position_history.len > 0)
+		var/list/oldest_position = position_history[1]
+		time_travel_destination = oldest_position["turf"]
+
+	if(!time_travel_destination || !isturf(time_travel_destination))
+		owner.visible_message(span_danger("[src] fails to find a temporal anchor point!"))
+		reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
+		return TRUE
+
+	// Directly freeze the character instead of relying on turf timestop
+	owner.Stun(20, ignore_canstun = TRUE) // 2 seconds of stunning
+	owner.add_atom_colour(COLOR_MATRIX_INVERT, TEMPORARY_COLOUR_PRIORITY) // Visual time effect
+
+	// Teleport after a short delay to show the time effect
+	addtimer(CALLBACK(src, PROC_REF(complete_time_travel), owner, time_travel_destination), 20)
+
+	playsound(current_turf, 'sound/effects/magic/timeparadox2.ogg', 50)
+	owner.visible_message(span_danger("[owner] flickers as [src] rewinds time in response to [attack_text]!"))
+	reactivearmor_cooldown = world.time + reactivearmor_cooldown_duration
+	return TRUE
+
+/obj/item/clothing/suit/armor/reactive/time/proc/complete_time_travel(mob/living/carbon/human/owner, turf/destination)
+	if(!owner || !destination)
+		return
+
+	// Remove the color effect before teleporting
+	owner.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
+
+	var/turf/old_turf = get_turf(owner)
+	owner.forceMove(destination)
+
+	// Visual and audio effects at both locations
+	new /obj/effect/temp_visual/circle_wave/gravity(old_turf)
+	new /obj/effect/temp_visual/circle_wave/gravity(destination)
+	new /obj/effect/temp_visual/clock(old_turf)
+	new /obj/effect/temp_visual/clock(destination)
+	playsound(destination, 'sound/effects/magic/timeparadox2.ogg', 75, TRUE, frequency = -1)
+
+	owner.visible_message(span_danger("[owner] materializes as time snaps back!"))
+	to_chat(owner, span_notice("You feel like you've been here before..."))
+
+/obj/item/clothing/suit/armor/reactive/time/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
+	owner.visible_message(span_danger("The reactive time system stops the time around you but leaving someone behind in the process!"))
+	owner.dropItemToGround(src, TRUE, TRUE)
+	new /obj/effect/timestop(get_turf(owner), 5, 30, null)
 
 //Bioscrambling
 /obj/item/clothing/suit/armor/reactive/bioscrambling

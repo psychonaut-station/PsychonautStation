@@ -546,19 +546,6 @@
   paganiy:
   - bugfix: the interns recalculated the damage of the shotguns catridges and made
       corrections
-<<<<<<< HEAD
-2025-08-25:
-  Auraden, Ragnarok0:
-  - rscadd: "Clock Head adl\u0131 bioscrambler anomali e\u015Fyas\u0131n\u0131 oyuna\
-      \ ekler."
-  - rscadd: "Manager jacket adl\u0131 ceketi oyuna ekler."
-2025-08-26:
-  Ragnarok0:
-  - balance: " Clock Head anomali kask\u0131 art\u0131k kendi kullan\u0131c\u0131\
-      s\u0131n\u0131 heallayabilir."
-  - bugfix: "Clock Head anomali kask\u0131 kesilen kafalardan d\xFC\u015F\xFCnce cursed\
-      \ kalmayacak."
-=======
 2025-08-23:
   lelandkemble:
   - bugfix: Fishing gloves MODule now actually lowers the difficulty of fishing like
@@ -571,6 +558,10 @@
   tontyGH:
   - bugfix: New player tutorials will no longer look extremely broken
 2025-08-25:
+  Auraden, Ragnarok0:
+  - rscadd: "Clock Head adl\u0131 bioscrambler anomali e\u015Fyas\u0131n\u0131 oyuna\
+      \ ekler."
+  - rscadd: "Manager jacket adl\u0131 ceketi oyuna ekler."
   Hatterhat:
   - bugfix: Stamina and projectile speed multipliers on pellet-cloud projectiles (e.g.
       buckshot, rubber shot, flechettes) now respect appropriate multipliers when
@@ -598,6 +589,11 @@
   Melbert:
   - rscadd: 'Adds 5 rewards to the Spy item pool: Penbang, Camera Flash, Dagger-Boot,
       Monster Cube Box, and the Spider Bite martial art'
+  Ragnarok0:
+  - balance: " Clock Head anomali kask\u0131 art\u0131k kendi kullan\u0131c\u0131\
+      s\u0131n\u0131 heallayabilir."
+  - bugfix: "Clock Head anomali kask\u0131 kesilen kafalardan d\xFC\u015F\xFCnce cursed\
+      \ kalmayacak."
   Yobrocharlie:
   - bugfix: fixed caves.dmm's runtimes for a downstream
 2025-08-27:
@@ -676,4 +672,3 @@
   - bugfix: Wawastation's garden tables won't fling you around anymore
   loganuk:
   - bugfix: Moves bots elsewhere on wawa AI Sat to stop girder blockage at round start.
->>>>>>> 26937abeb259b74f9525ccd4469b52fb9c26c65d

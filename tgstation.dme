@@ -1755,11 +1755,8 @@
 #include "code\datums\martial\plasma_fist.dm"
 #include "code\datums\martial\psychotic_brawl.dm"
 #include "code\datums\martial\sleeping_carp.dm"
-<<<<<<< HEAD
-#include "code\datums\martial\taeclowndo.dm"
-=======
 #include "code\datums\martial\spiders_bite.dm"
->>>>>>> 26937abeb259b74f9525ccd4469b52fb9c26c65d
+#include "code\datums\martial\taeclowndo.dm"
 #include "code\datums\martial\wrestling.dm"
 #include "code\datums\materials\_material.dm"
 #include "code\datums\materials\alloys.dm"

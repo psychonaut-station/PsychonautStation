@@ -383,7 +383,7 @@
 	if(istype(wearer) && world.time > last_history_update)
 		// Store current position with timestamp
 		var/list/position_data = list("turf" = get_turf(wearer), "time" = world.time)
-		position_history[++position_history.len] = position_data
+		position_history += position_data
 
 		// Remove old positions beyond our history limit
 		if(position_history.len > max_history_length)

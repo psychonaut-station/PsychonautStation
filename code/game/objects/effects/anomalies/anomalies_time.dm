@@ -24,7 +24,7 @@
 	last_timestop = 0
 
 /obj/effect/anomaly/time/anomalyEffect(seconds_per_tick)
-	. = ..(seconds_per_tick)
+	. = ..()
 	if(world.time - last_timestop >= timestop_interval || last_timestop == 0)
 		last_timestop = world.time
 		spawn() src.trigger_timestop()

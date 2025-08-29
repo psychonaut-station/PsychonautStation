@@ -420,6 +420,8 @@
 	// Directly freeze the character instead of relying on turf timestop
 	owner.Stun(20, ignore_canstun = TRUE) // 2 seconds of stunning
 	owner.add_atom_colour(COLOR_MATRIX_INVERT, TEMPORARY_COLOUR_PRIORITY) // Visual time effect
+	ADD_TRAIT(owner, TRAIT_GODMODE, REF(src)) // Make invulnerable during time effect
+	new /obj/effect/temp_visual/time_effect(current_turf) // Time visual effect synced with stun
 
 	// Teleport after a short delay to show the time effect
 	addtimer(CALLBACK(src, PROC_REF(complete_time_travel), owner, time_travel_destination), 20)
@@ -435,6 +437,7 @@
 
 	// Remove the color effect before teleporting
 	owner.remove_atom_colour(TEMPORARY_COLOUR_PRIORITY)
+	REMOVE_TRAIT(owner, TRAIT_GODMODE, REF(src)) // Remove invulnerability
 
 	var/turf/old_turf = get_turf(owner)
 	owner.forceMove(destination)
@@ -442,17 +445,37 @@
 	// Visual and audio effects at both locations
 	new /obj/effect/temp_visual/circle_wave/gravity(old_turf)
 	new /obj/effect/temp_visual/circle_wave/gravity(destination)
-	new /obj/effect/temp_visual/clock(old_turf)
-	new /obj/effect/temp_visual/clock(destination)
+	new /obj/effect/temp_visual/time_effect(destination) // Time effect continues at destination
 	playsound(destination, 'sound/effects/magic/timeparadox2.ogg', 75, TRUE, frequency = -1)
 
 	owner.visible_message(span_danger("[owner] materializes as time snaps back!"))
 	to_chat(owner, span_notice("You feel like you've been here before..."))
 
+// Time effect visual for time reactive armor
+/obj/effect/temp_visual/time_effect
+	name = "time distortion"
+	icon = 'icons/effects/160x160.dmi'
+	icon_state = "time"
+	layer = FLY_LAYER
+	plane = ABOVE_GAME_PLANE
+	pixel_x = -64
+	pixel_y = -64
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	alpha = 125
+	duration = 20 // 2 seconds
+
 /obj/item/clothing/suit/armor/reactive/time/emp_activation(mob/living/carbon/human/owner, atom/movable/hitby, attack_text = "the attack", final_block_chance = 0, damage = 0, attack_type = MELEE_ATTACK)
 	owner.visible_message(span_danger("The reactive time system stops the time around you but leaving someone behind in the process!"))
 	owner.dropItemToGround(src, TRUE, TRUE)
-	new /obj/effect/timestop(get_turf(owner), 5, 30, null)
+
+	// Broken sound effects
+	playsound(get_turf(owner), 'sound/machines/buzz/buzz-sigh.ogg', 50, TRUE)
+	playsound(get_turf(owner), 'sound/machines/defib/defib_failed.ogg', 75, TRUE)
+	playsound(get_turf(owner), 'sound/effects/magic/timeparadox2.ogg', 50, TRUE, frequency = 2) // Higher pitch broken sound
+
+	// Much longer cooldown when EMP'd (3x normal duration)
+	reactivearmor_cooldown = world.time + (reactivearmor_cooldown_duration * 3)
+	return FALSE
 
 //Bioscrambling
 /obj/item/clothing/suit/armor/reactive/bioscrambling

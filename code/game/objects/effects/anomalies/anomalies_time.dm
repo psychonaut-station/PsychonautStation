@@ -34,7 +34,7 @@
 		return // Already active
 	var/list/immune = list()
 	for(var/mob/living/M in range(timestop_range, src))
-		if(HAS_TRAIT(M, TRAIT_TIME_ANOMALY_IMMUNE))
+		if(HAS_TRAIT(M, TRAIT_TIME_STOP_IMMUNE))
 			immune[M] = TRUE
 	time_effect = new /obj/effect/timestop(get_turf(src), timestop_range, timestop_duration, immune, TRUE, TRUE)
 	playsound(src, 'sound/effects/magic/timeparadox2.ogg', vol = 50)
@@ -42,19 +42,19 @@
 
 /obj/effect/anomaly/time/proc/on_entered(datum/source, atom/movable/AM)
 	SIGNAL_HANDLER
-	if(ismob(AM) && !HAS_TRAIT(AM, TRAIT_TIME_ANOMALY_IMMUNE))
+	if(ismob(AM) && !HAS_TRAIT(AM, TRAIT_TIME_STOP_IMMUNE))
 		var/mob/living/M = AM
 		if(istype(M))
 			M.Stun(20, ignore_canstun = TRUE)
 
 /obj/effect/anomaly/time/Bump(atom/A)
-	if(ismob(A) && !HAS_TRAIT(A, TRAIT_TIME_ANOMALY_IMMUNE))
+	if(ismob(A) && !HAS_TRAIT(A, TRAIT_TIME_STOP_IMMUNE))
 		var/mob/living/M = A
 		if(istype(M))
 			M.Stun(20, ignore_canstun = TRUE)
 
 /obj/effect/anomaly/time/Bumped(atom/movable/AM)
-	if(ismob(AM) && !HAS_TRAIT(AM, TRAIT_TIME_ANOMALY_IMMUNE))
+	if(ismob(AM) && !HAS_TRAIT(AM, TRAIT_TIME_STOP_IMMUNE))
 		var/mob/living/M = AM
 		if(istype(M))
 			M.Stun(20, ignore_canstun = TRUE)

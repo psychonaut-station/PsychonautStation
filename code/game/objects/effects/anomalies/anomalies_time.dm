@@ -14,7 +14,7 @@
 	var/timestop_interval = 300 // 30 seconds (in ticks)
 
 /obj/effect/anomaly/time/Initialize(mapload, new_lifespan)
-	. = ..(mapload, new_lifespan)
+	. = ..()
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
 	)

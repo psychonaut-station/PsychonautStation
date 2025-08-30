@@ -46956,7 +46956,7 @@
 /area/station/maintenance/solars/port/aft)
 "kGU" = (
 /obj/effect/turf_decal/stripes/line,
-/obj/structure/filingcabinet/filingcabinet,
+/obj/structure/filingcabinet/white,
 /obj/machinery/airalarm/directional/south,
 /turf/open/floor/iron,
 /area/station/cargo/storage)

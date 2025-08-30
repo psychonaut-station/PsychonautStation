@@ -78,6 +78,7 @@
 	name = "raw time core"
 	desc = "The raw core of an time anomaly. When you look at it, you feel like you're losing your sense of time."
 	anomaly_type = /obj/item/assembly/signaler/anomaly/time
+	icon = 'icons/psychonaut/obj/devices/new_assemblies.dmi'
 	icon_state = "rawcore_time"
 
 /obj/item/raw_anomaly_core/random/Initialize(mapload)

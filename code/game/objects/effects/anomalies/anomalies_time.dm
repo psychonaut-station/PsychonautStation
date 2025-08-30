@@ -2,6 +2,7 @@
 // Time Anomaly - stops time in an area, similar to the timestop spell
 /obj/effect/anomaly/time
 	name = "time anomaly"
+	icon = 'icons/psychonaut/effects/anomalies.dmi'
 	icon_state = "time"
 	density = FALSE
 	anomaly_core = /obj/item/assembly/signaler/anomaly/time

@@ -98,5 +98,6 @@
 /obj/item/assembly/signaler/anomaly/time
 	name = "\improper time anomaly core"
 	desc = "The neutralized core of a temporal anomaly. It seems to distort your perception of time when you look at it. It'd probably be valuable for research."
+	icon = 'icons/psychonaut/obj/devices/new_assemblies.dmi'
 	icon_state = "time_core"
 	anomaly_type = /obj/effect/anomaly/time

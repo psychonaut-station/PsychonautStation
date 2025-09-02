@@ -4,8 +4,11 @@
 	icon_state = "clocky_head_iconise"
 	icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/clocky.dmi'
+	lefthand_file = 'icons/psychonaut/mob/inhands/clothing/dante_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/clothing/dante_righthand.dmi'
 	worn_icon_state = "clocky_head_inactive"
 	base_icon_state = "clocky_head"
+	inhand_icon_state = "dante_inactive"
 
 	force = 10
 	dog_fashion = null

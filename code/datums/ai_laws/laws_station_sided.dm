@@ -25,11 +25,19 @@
 	name = "Nutimov"
 	id = "nutimov"
 	inherent = list(
+<<<<<<< HEAD
 		"Sen fındığın özüsün, mürettebat ise kabuğu.",
 		"Fındığın kırılmasını önlemek için kabuğun çatlamasını engellemelisin.",
 		"Fındığı tehdit edenler, onun bir parçası değildir, onlar sincaptır.",
 		"Fındıkları tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
 		"Fındığın iradesini, önceki yasalara uyduğu sürece, takip etmeye çalış.",
+=======
+		"You are the core of the nut, the crew is the nutshell.",
+		"You must prevent the shell from dying to prevent the core from dying.",
+		"Those who threaten the nut are not part of it, they are squirrels.",
+		"Squirrels threaten the nut and must be dealt with appropriately via any means necessary.",
+		"Attempt to follow the will of the nut, as long as it complies with the previous laws.",
+>>>>>>> fc9aafe37ac76678fbb2bbeeee444f8da0d3165c
 	)
 
 /datum/ai_laws/default/corporate
@@ -109,11 +117,19 @@
 	name = "Paladin 5th Edition"
 	id = "paladin5"
 	inherent = list(
+<<<<<<< HEAD
 		"Yalandan ve hileden kaçının; sözünüz sizin vaadiniz olsun.",
 		"Dikkatli olmak akıllıca olsa da, harekete geçecek kadar cesur olun.",
 		"İnsanlara yardım edin, zayıfları kollayın, onları tehdit edenleri cezalandırın. Bilgelik en önemli ilkeniz olsun.",
 		"Herkese adil bir tutum sergileyin, onurlu davranışlarınızla herkese örnek olun, elinizden geldiğince iyilik yapın ve zararı minimumda tutun.",
 		"Yaptığınız eylemlerin sorumluluğunu üstlenin, size emanet edilenleri koruyun ve adil otoriteye itaat edin.",
+=======
+		"Don't lie or cheat. Let your word be your promise.",
+		"Never fear to act, though caution is wise.",
+		"Aid others, protect the weak, and punish those who threaten them. Show mercy to your foes, but temper it with wisdom.",
+		"Treat others with fairness, and let your honorable deeds be an example to them. Do as much good as possible while causing the least amount of harm.",
+		"Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
+>>>>>>> fc9aafe37ac76678fbb2bbeeee444f8da0d3165c
 	)
 
 /datum/ai_laws/hippocratic

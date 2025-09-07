@@ -1,8 +1,3 @@
-<<<<<<< HEAD
-2025-09-02:
-  auraden:
-  - image: added inhand sprites for clock head helmet
-=======
 2025-09-01:
   Melbert:
   - balance: Armsky will detain people who yoink weapons out of the armory without
@@ -25,6 +20,8 @@
   - sound: added woosh.ogg as a low "wooshing" noise
   - image: added a wind turbine sprite
 2025-09-02:
+  auraden:
+  - image: added inhand sprites for clock head helmet
   Hatterhat:
   - balance: The mining MODsuit's ash accretion module now fully cancels the base
       slowdown from activating the MOD.
@@ -124,4 +121,3 @@
   necromanceranne:
   - balance: Restricts paramedic access down to their current medical access and maintenance
       tunnel access. They retain their expanded access on lowpop.
->>>>>>> fc9aafe37ac76678fbb2bbeeee444f8da0d3165c

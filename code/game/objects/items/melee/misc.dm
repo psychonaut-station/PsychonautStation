@@ -677,6 +677,7 @@
 	wound_bonus = 10
 	armour_penetration = 40
 	attack_speed = 10
+	tool_behaviour = null
 	var/in_stance = FALSE  //Toggle for the defensive stance.
 
 /obj/item/mantis_blade/shield/attack_self(mob/living/user)

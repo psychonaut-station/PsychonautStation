@@ -47,7 +47,6 @@
 		SSshuttle.emergency_last_call_loc = signal_origin
 	else
 		SSshuttle.emergency_last_call_loc = null
-
 	priority_announce(
 		text = "Acil durum mekiği çağrıldı. [red_alert ? "Kırmızı Alarm durumu onaylandı: Öncelikli mekik gönderiliyor. " : "" ][(timeLeft(60 SECONDS))] dakika içinde ulaşacaktır.[reason][SSshuttle.emergency_last_call_loc ? "\n\nÇağrı sinyali izlenmektedir. Sonuçları herhangi bir iletişim konsolunda görüntülenebilir." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nUyarı: Mekik geri çağırma alt prosedürleri devre dışı; Geri çağırma mümkün değil." : ""]",
 		title = "Acil Durum Mekiği Gönderildi",

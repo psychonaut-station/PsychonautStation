@@ -1,0 +1,11 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - rscadd: "Atmos, botany, janitor ve paramedic için toolkit implantları med lathesine eklendi."
+  - rscadd: "Elimizdeki silahın mermisini sayan Ammo Counter eklendi. Combat cybernetics araştırması sonrası med lathesinden basabilirsiniz."
+  - rscadd: "Vücudumuza çeşitli kimyasallar basan R.A.G.E cybernetici eklendi. Belli bir şans ile karaborsa da bulabilirsiniz."
+  - rscadd: "Mantis blade eklendi. Kargo konsolunu hackleyerek alabilirsiniz."
+  - rscadd: "Mantis shield eklendi. Kargo konsolundan alabilirsiniz."
+  - rscadd: "Science gözlüğünün hud implantı versiyonu eklendi."
+  - rscadd: "Sendika Tipi Mantis blade tot uplinkine eklendi."
+  - rscadd: "Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz."

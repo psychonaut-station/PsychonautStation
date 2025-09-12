@@ -1821,11 +1821,8 @@
 #include "code\datums\proximity_monitor\fields\bubble.dm"
 #include "code\datums\proximity_monitor\fields\gravity.dm"
 #include "code\datums\proximity_monitor\fields\heretic_arena.dm"
-<<<<<<< HEAD
 #include "code\datums\proximity_monitor\fields\mob_collector.dm"
-=======
 #include "code\datums\proximity_monitor\fields\space_protection.dm"
->>>>>>> 7010b42b8d37d3c5e7c88a2b60d464b7c3b48d9b
 #include "code\datums\proximity_monitor\fields\timestop.dm"
 #include "code\datums\proximity_monitor\fields\void_storm.dm"
 #include "code\datums\proximity_monitor\fields\projectile_dampener\projectile_dampener.dm"

@@ -121,11 +121,7 @@
   necromanceranne:
   - balance: Restricts paramedic access down to their current medical access and maintenance
       tunnel access. They retain their expanded access on lowpop.
-<<<<<<< HEAD
-2025-09-10:
-=======
 2025-09-06:
->>>>>>> 7010b42b8d37d3c5e7c88a2b60d464b7c3b48d9b
   Darkened-Earth:
   - bugfix: NanoTrasen's atmospherics division has replaced an incorrectly supplied
       HyperTorus Construction Cube(TM) with the correct variant on Catwalk-Class stations
@@ -138,8 +134,6 @@
   - bugfix: Fixed blood drunk miner's dash and some mecha actions not working
   - bugfix: Made synthflesh patches not spam chat messages every tick
   - bugfix: Water cooler explosions no longer runtime
-<<<<<<< HEAD
-=======
   SyncIt21:
   - code_imp: improved code for vending machine payment process
   - bugfix: stop logging 0 credit purchases when vending machines are dispensing returned
@@ -370,4 +364,3 @@
   - admin: Add GPS debug tool to admin debug box
   tiramisuapimancer:
   - bugfix: you can actually get the hat stabilizer modsuit module on the black market
->>>>>>> 7010b42b8d37d3c5e7c88a2b60d464b7c3b48d9b

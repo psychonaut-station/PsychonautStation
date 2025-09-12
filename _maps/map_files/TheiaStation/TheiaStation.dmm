@@ -6688,9 +6688,7 @@
 /area/station/science/ordnance)
 "cln" = (
 /obj/item/canvas/fortyfive_twentyseven,
-/obj/item/stack/sheet/sandblock{
-	amount = 25
-	},
+/obj/item/stack/ore/glass/thirty,
 /obj/item/chisel,
 /obj/machinery/light/small/directional/north,
 /obj/item/radio/intercom/directional/north,

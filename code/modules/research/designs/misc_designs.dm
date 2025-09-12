@@ -1163,6 +1163,7 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+<<<<<<< HEAD
 /datum/design/clocky
 	name = "Clock Head"
 	id = "clocky"
@@ -1177,9 +1178,27 @@
 		/datum/material/uranium = SHEET_MATERIAL_AMOUNT,
 		/datum/material/bluespace = SHEET_MATERIAL_AMOUNT * 0.5
 	)
+=======
+// Anomaly locked item
+
+/datum/design/space_furnace
+	name = "Space Furnace"
+	desc = "A heavy furnace capable of forming a temporary bubble that holds in breathable air. Requires a pyroclastic anomaly core to function."
+	id = "space_furnace"
+	build_type = PROTOLATHE | AWAY_LATHE
+	materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT*5,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT*2.5,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 2.5,
+	)
+	build_path = /obj/item/flashlight/lamp/space_bubble
+>>>>>>> 7010b42b8d37d3c5e7c88a2b60d464b7c3b48d9b
 	category = list(
 		RND_CATEGORY_EQUIPMENT + RND_SUBCATEGORY_EQUIPMENT_SCIENCE
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+<<<<<<< HEAD
 
 
+=======
+>>>>>>> 7010b42b8d37d3c5e7c88a2b60d464b7c3b48d9b

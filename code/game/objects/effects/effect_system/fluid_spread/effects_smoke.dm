@@ -136,6 +136,7 @@
 
 	smoker.smoke_delay = TRUE
 	addtimer(VARSET_CALLBACK(smoker, smoke_delay, FALSE), 1 SECONDS)
+	SEND_SIGNAL(smoker, COMSIG_CARBON_EXPOSED_TO_SMOKE, seconds_per_tick)
 	return TRUE
 
 /obj/effect/particle_effect/fluid/smoke/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)

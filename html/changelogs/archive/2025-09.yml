@@ -364,3 +364,23 @@
   - admin: Add GPS debug tool to admin debug box
   tiramisuapimancer:
   - bugfix: you can actually get the hat stabilizer modsuit module on the black market
+2025-09-13:
+  Melbert:
+  - rscdel: Captain's no longer sorted under Security in places such as the manifest
+      or job selection
+  Rengan:
+  - rscadd: "Atmos, botany, janitor ve paramedic i\xE7in toolkit implantlar\u0131\
+      \ med lathesine eklendi."
+  - rscadd: "Elimizdeki silah\u0131n mermisini sayan Ammo Counter eklendi. Combat\
+      \ cybernetics ara\u015Ft\u0131rmas\u0131 sonras\u0131 med lathesinden basabilirsiniz."
+  - rscadd: "V\xFCcudumuza \xE7e\u015Fitli kimyasallar basan R.A.G.E cybernetici eklendi.\
+      \ Belli bir \u015Fans ile karaborsa da bulabilirsiniz."
+  - rscadd: Mantis blade eklendi. Kargo konsolunu hackleyerek alabilirsiniz.
+  - rscadd: Mantis shield eklendi. Kargo konsolundan alabilirsiniz.
+  - rscadd: "Science g\xF6zl\xFC\u011F\xFCn\xFCn hud implant\u0131 versiyonu eklendi."
+  - rscadd: Sendika Tipi Mantis blade tot uplinkine eklendi.
+  - rscadd: Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz.
+  loganuk:
+  - map: Catwalk - Atmos and Engineering split, new access hallway, new stairs to
+      AI sat, HFR re-located, space for passion projects, new lighting, So many changes
+      to document. [C.A.T]

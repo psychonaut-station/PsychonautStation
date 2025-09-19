@@ -10,17 +10,23 @@
 
 	lefthand_file = 'icons/psychonaut/mob/inhands/equipment/tespih_lefthand.dmi'
 	righthand_file = 'icons/psychonaut/mob/inhands/equipment/tespih_righthand.dmi'
-	tespih_sallama_sound = 'sound/_psychonaut/tespih.ogg'
+
+	var/tespih_sallama_sound = 'sound/_psychonaut/tespih.ogg'
 	var/active = FALSE
 
 /obj/item/tespih/proc/salla(mob/user, delayoverride, volume = 60)
-	if(user)
-		add_fingerprint(user)
 	if(active)
+		to_chat(user, span_notice("[src] sallamayı bırakır."))
+		inhand_icon_state = "tespih"
+		update_appearance()
 		active = FALSE
-		icon_state = (base_icon_state || initial(icon_state)) // fix
-		return
 	else
+		to_chat(user, span_notice("[src] sallamaya başlar."))
+		inhand_icon_state = "tespih_active"
+		update_appearance()
+		playsound(src, tespih_sallama_sound, 60, 1)
 		active = TRUE
-		icon_state = (base_icon_state || initial(icon_state)) + "_active" // fix
-		playsound(src, tespih_sallama_sound, volume, grenade_sound_vary) // fix
+
+/obj/item/tespih/attack_self(mob/user, modifiers)
+	. = ..()
+	salla(user)

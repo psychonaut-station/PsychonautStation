@@ -75,3 +75,7 @@
 ///speed malus given by the fish organ set when dry
 /datum/movespeed_modifier/fish_waterless
 	multiplicative_slowdown = 0.36
+
+// Sandevistan
+/datum/movespeed_modifier/status_effect/sandevistan
+	multiplicative_slowdown = -0.25

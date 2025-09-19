@@ -238,14 +238,6 @@
 	description = "A fairly standard shuttle, though larger and slightly better equipped than the Box Station variant."
 	occupancy_limit = "45"
 
-	
-/datum/map_template/shuttle/emergency/theia
-	suffix = "theia"
-	name = "Theia Station Emergency Shuttle"
-	credit_cost = CARGO_CRATE_VALUE * 8
-	description = "A fairly standard shuttle, though larger and slightly better equipped than the Box Station variant."
-	occupancy_limit = "40"
-
 /datum/map_template/shuttle/emergency/kilo
 	suffix = "kilo"
 	name = "Kilo Station Emergency Shuttle"

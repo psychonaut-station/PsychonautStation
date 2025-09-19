@@ -402,7 +402,6 @@
 		COOLDOWN_START(src, alarm_cooldown, HARM_ALARM_NO_SAFETY_COOLDOWN)
 		user.log_message("used an emagged Cyborg Harm Alarm", LOG_ATTACK)
 
-<<<<<<< HEAD
 /// The fabled paper plane crossbow and its hardlight paper planes.
 /obj/item/paperplane/syndicate/hardlight
 	name = "hardlight paper plane"
@@ -469,7 +468,7 @@
 
 /obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
 	to_chat(user, span_warning("[src] silently charges up."))
-=======
+
 /obj/item/shield_module
 	name = "Shield Activator"
 	icon = 'icons/mob/silicon/robot_items.dmi'
@@ -500,7 +499,6 @@
 	SIGNAL_HANDLER
 	if(active)
 		overlays += shield_overlay
->>>>>>> 96f319c3d2cb5775a2276654d16301c7988cfbcb
 
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG

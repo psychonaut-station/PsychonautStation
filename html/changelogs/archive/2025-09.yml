@@ -365,23 +365,6 @@
   tiramisuapimancer:
   - bugfix: you can actually get the hat stabilizer modsuit module on the black market
 2025-09-13:
-<<<<<<< HEAD
-  Melbert:
-  - rscdel: Captain's no longer sorted under Security in places such as the manifest
-      or job selection
-  Rengan:
-  - rscadd: "Atmos, botany, janitor ve paramedic i\xE7in toolkit implantlar\u0131\
-      \ med lathesine eklendi."
-  - rscadd: "Elimizdeki silah\u0131n mermisini sayan Ammo Counter eklendi. Combat\
-      \ cybernetics ara\u015Ft\u0131rmas\u0131 sonras\u0131 med lathesinden basabilirsiniz."
-  - rscadd: "V\xFCcudumuza \xE7e\u015Fitli kimyasallar basan R.A.G.E cybernetici eklendi.\
-      \ Belli bir \u015Fans ile karaborsa da bulabilirsiniz."
-  - rscadd: Mantis blade eklendi. Kargo konsolunu hackleyerek alabilirsiniz.
-  - rscadd: Mantis shield eklendi. Kargo konsolundan alabilirsiniz.
-  - rscadd: "Science g\xF6zl\xFC\u011F\xFCn\xFCn hud implant\u0131 versiyonu eklendi."
-  - rscadd: Sendika Tipi Mantis blade tot uplinkine eklendi.
-  - rscadd: Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz.
-=======
   FalloutFalcon:
   - rscadd: Soda cans show up in the silver slime drink table.
   - rscadd: Examine tag for items that are not mean to show up ingame.
@@ -411,17 +394,26 @@
       your plan.
   lelandkemble:
   - qol: Eating ice cream no longer curses you
->>>>>>> 96f319c3d2cb5775a2276654d16301c7988cfbcb
   loganuk:
   - map: Catwalk - Atmos and Engineering split, new access hallway, new stairs to
       AI sat, HFR re-located, space for passion projects, new lighting, So many changes
       to document. [C.A.T]
-<<<<<<< HEAD
-=======
   necromanceranne:
   - bugfix: Syndicate Tomes once again can be used to beat the shit out of people.
   - image: The rebellion mask now renders beneath your hair.
   - qol: The rebellion mask now lets you plug in internals.
+  Rengan:
+  - rscadd: "Atmos, botany, janitor ve paramedic i\xE7in toolkit implantlar\u0131\
+      \ med lathesine eklendi."
+  - rscadd: "Elimizdeki silah\u0131n mermisini sayan Ammo Counter eklendi. Combat\
+      \ cybernetics ara\u015Ft\u0131rmas\u0131 sonras\u0131 med lathesinden basabilirsiniz."
+  - rscadd: "V\xFCcudumuza \xE7e\u015Fitli kimyasallar basan R.A.G.E cybernetici eklendi.\
+      \ Belli bir \u015Fans ile karaborsa da bulabilirsiniz."
+  - rscadd: Mantis blade eklendi. Kargo konsolunu hackleyerek alabilirsiniz.
+  - rscadd: Mantis shield eklendi. Kargo konsolundan alabilirsiniz.
+  - rscadd: "Science g\xF6zl\xFC\u011F\xFCn\xFCn hud implant\u0131 versiyonu eklendi."
+  - rscadd: Sendika Tipi Mantis blade tot uplinkine eklendi.
+  - rscadd: Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz.
 2025-09-14:
   ArcaneMusic:
   - rscadd: Boulders from ore-vents can now be used on lava tiles, to create a temporary
@@ -524,4 +516,3 @@
   - bugfix: ore vents should no longer be produce 0 material boulders
   theselfish:
   - balance: a ushanka no longer can protect brainy as much as a metal helmet
->>>>>>> 96f319c3d2cb5775a2276654d16301c7988cfbcb

@@ -11,6 +11,7 @@
 
 /obj/item/borg
 	icon = 'icons/mob/silicon/robot_items.dmi'
+	abstract_type = /obj/item/borg
 
 /// Cost to use the stun arm
 #define CYBORG_STUN_CHARGE_COST (0.2 * STANDARD_CELL_CHARGE)
@@ -401,6 +402,7 @@
 		COOLDOWN_START(src, alarm_cooldown, HARM_ALARM_NO_SAFETY_COOLDOWN)
 		user.log_message("used an emagged Cyborg Harm Alarm", LOG_ATTACK)
 
+<<<<<<< HEAD
 /// The fabled paper plane crossbow and its hardlight paper planes.
 /obj/item/paperplane/syndicate/hardlight
 	name = "hardlight paper plane"
@@ -467,6 +469,38 @@
 
 /obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
 	to_chat(user, span_warning("[src] silently charges up."))
+=======
+/obj/item/shield_module
+	name = "Shield Activator"
+	icon = 'icons/mob/silicon/robot_items.dmi'
+	icon_state = "module_miner"
+	var/active = FALSE
+	var/mutable_appearance/shield_overlay
+
+/obj/item/shield_module/Initialize(mapload)
+	. = ..()
+	shield_overlay = mutable_appearance('icons/mob/effects/durand_shield.dmi', "borg_shield")
+
+/obj/item/shield_module/attack_self(mob/living/silicon/borg)
+	active = !active
+	if(active)
+		playsound(src, 'sound/vehicles/mecha/mech_shield_raise.ogg', 50, FALSE)
+		RegisterSignal(borg, COMSIG_ATOM_UPDATE_OVERLAYS, PROC_REF(on_shield_overlay_update), override = TRUE)
+	else
+		playsound(src, 'sound/vehicles/mecha/mech_shield_drop.ogg', 50, FALSE)
+		UnregisterSignal(borg, COMSIG_ATOM_UPDATE_OVERLAYS)
+	borg.update_appearance()
+
+/obj/item/shield_module/cyborg_unequip(mob/living/silicon/robot/borg)
+	active = FALSE
+	playsound(src, 'sound/vehicles/mecha/mech_shield_drop.ogg', 50, FALSE)
+	borg.cut_overlay(shield_overlay)
+
+/obj/item/shield_module/proc/on_shield_overlay_update(atom/source, list/overlays)
+	SIGNAL_HANDLER
+	if(active)
+		overlays += shield_overlay
+>>>>>>> 96f319c3d2cb5775a2276654d16301c7988cfbcb
 
 #undef HUG_MODE_NICE
 #undef HUG_MODE_HUG

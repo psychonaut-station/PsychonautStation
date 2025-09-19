@@ -115,8 +115,12 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
+<<<<<<< HEAD
 #define isarachnid(A) (is_species(A, /datum/species/arachnid))
 #define isspirit(A) (is_species(A, /datum/species/spirit))
+=======
+#define isghostspecies(A) (is_species(A, /datum/species/ghost))
+>>>>>>> 96f319c3d2cb5775a2276654d16301c7988cfbcb
 #define isgolem(A) (is_species(A, /datum/species/golem))
 #define isipc(A) (is_species(A, /datum/species/ipc))
 #define islizard(A) (is_species(A, /datum/species/lizard))

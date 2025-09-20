@@ -2,6 +2,7 @@
 	name = "tespih"
 	desc = "Burda çok dolaşma bura bizim mahalle ayıktın?"
 	w_class = WEIGHT_CLASS_SMALL
+	custom_price = 5
 
 	icon = 'icons/psychonaut/obj/tespih.dmi'
 	icon_state = "tespih"

@@ -30,3 +30,9 @@
 /obj/item/tespih/attack_self(mob/user, modifiers)
 	. = ..()
 	salla(user)
+
+/obj/item/tespih/dropped(mob/user)
+	. = ..()
+	active = FALSE
+	inhand_icon_state = "tespih"
+	update_appearance()

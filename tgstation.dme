@@ -2578,6 +2578,7 @@
 #include "code\game\objects\items\tail_pin.dm"
 #include "code\game\objects\items\taster.dm"
 #include "code\game\objects\items\teleportation.dm"
+#include "code\game\objects\items\tespih.dm"
 #include "code\game\objects\items\theft_tools.dm"
 #include "code\game\objects\items\tongs.dm"
 #include "code\game\objects\items\toy_mechs.dm"

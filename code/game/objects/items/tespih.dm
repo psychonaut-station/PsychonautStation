@@ -1,5 +1,5 @@
 /obj/item/tespih
-	name = "tespih"
+	name = "tasbih"
 	desc = "Burda çok dolaşma bura bizim mahalle ayıktın?"
 	w_class = WEIGHT_CLASS_SMALL
 	custom_price = 5

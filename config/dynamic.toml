@@ -162,7 +162,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -177,7 +177,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -193,7 +193,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -207,7 +207,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -226,7 +226,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"team_antag",
@@ -242,7 +242,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"team_antag",
@@ -258,7 +258,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"team_antag",
@@ -277,7 +277,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -297,7 +297,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -316,7 +316,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -337,7 +337,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -356,7 +356,7 @@ max_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -372,7 +372,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -391,7 +391,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -407,7 +407,7 @@ min_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"away_antag",
 	"alien",
@@ -426,7 +426,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -442,7 +442,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"away_antag",
 	"spooky",
@@ -457,7 +457,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -473,7 +473,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -482,14 +482,14 @@ tags = [
 
 ["Voidwalker"]
 weight = 5
-min_pop = 30
+min_pop = 40
 blacklisted_roles = []
 min_antag_cap = 1
 max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -506,7 +506,7 @@ max_antag_cap = 4
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -521,7 +521,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"away_antag",
 	"magical",
@@ -536,7 +536,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"away_antag",
 	"magical",
@@ -552,7 +552,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -568,7 +568,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"crew_antag",
 	"destructive",
@@ -584,7 +584,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -601,7 +601,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -617,7 +617,7 @@ max_antag_cap.denominator = 38
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -635,7 +635,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"crew_antag",
 	"destructive",
@@ -650,7 +650,7 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -666,7 +666,7 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -682,7 +682,7 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -701,7 +701,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -723,7 +723,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -744,7 +744,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -763,7 +763,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"away_antag",
@@ -784,7 +784,7 @@ max_antag_cap = 3
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Major
+track = "Major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -804,7 +804,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = Mundane
+track = "Mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -819,7 +819,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Uncategorized
+track = "Uncategorized"
 tags = []
 
 ["Meteor"]
@@ -831,7 +831,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Moderate
+track = "Moderate"
 tags = [
 	"combat",
 	"external",
@@ -846,7 +846,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = Uncategorized
+track = "Uncategorized"
 tags = []
 
 ["The Brute"]

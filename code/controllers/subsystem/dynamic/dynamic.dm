@@ -741,7 +741,7 @@ SUBSYSTEM_DEF(dynamic)
 		data += "repeatable_weight_decrease = [ruleset.repeatable_weight_decrease]\n"
 		data += "repeatable = [ruleset.repeatable]\n"
 		data += "minimum_required_age = [ruleset.minimum_required_age]\n"
-		data += "track = [ruleset.track]\n"
+		data += "track = \"[ruleset.track]\"\n"
 		if(length(ruleset.tags))
 			data += "tags = \[\n"
 			for(var/i in ruleset.tags)

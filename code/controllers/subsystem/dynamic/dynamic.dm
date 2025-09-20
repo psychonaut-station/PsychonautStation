@@ -673,7 +673,7 @@ SUBSYSTEM_DEF(dynamic)
 		log_admin("[key_name(usr)] cancelled the queued midround ruleset.")
 		return
 
-
+#ifdef TESTING
 /// Puts all repo defaults into a dynamic.toml file
 /datum/controller/subsystem/dynamic/proc/build_dynamic_toml()
 	var/data = ""
@@ -784,3 +784,4 @@ SUBSYSTEM_DEF(dynamic)
 	fdel(file(filepath))
 	text2file(data, filepath)
 	return TRUE
+#endif

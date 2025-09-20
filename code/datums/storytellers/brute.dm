@@ -12,8 +12,8 @@
 	extra_settings = list(
 		LOW_END = 0,
 		HIGH_END = 0,
-		EXECUTION_COOLDOWN_LOW = 0.5,
-		EXECUTION_COOLDOWN_HIGH = 0.5,
+		EXECUTION_MULTIPLIER_LOW = 0.5,
+		EXECUTION_MULTIPLIER_HIGH = 0.5,
 	)
 	population_min = 40 // If crew is gonna get hit hard have the numbers to survive it. Somewhat...
 	weight = 1

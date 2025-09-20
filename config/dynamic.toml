@@ -865,8 +865,8 @@ event_weight_multipliers.major = 1
 event_weight_multipliers.roleset = 1.2
 extra_settings.low = 0
 extra_settings.high = 0
-extra_settings.execution_cooldown_low = 0.5
-extra_settings.execution_cooldown_high = 0.5
+extra_settings.execution_multiplier_low = 0.5
+extra_settings.execution_multiplier_high = 0.5
 
 ["The Clown"]
 name = "The Clown"

@@ -12,7 +12,7 @@
 	lefthand_file = 'icons/psychonaut/mob/inhands/equipment/tespih_lefthand.dmi'
 	righthand_file = 'icons/psychonaut/mob/inhands/equipment/tespih_righthand.dmi'
 
-	var/tespih_sallama_sound = 'sound/_psychonaut/tespih.ogg'
+	var/twirl_sound = 'sound/_psychonaut/tespih.ogg'
 	var/active = FALSE
 
 /obj/item/tespih/proc/salla(mob/user, delayoverride, volume = 60)

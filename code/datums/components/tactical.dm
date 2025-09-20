@@ -45,7 +45,7 @@
 	RegisterSignal(user, COMSIG_HUMAN_GET_VISIBLE_NAME, PROC_REF(on_name_inquiry))
 	RegisterSignal(user, COMSIG_HUMAN_GET_FORCED_NAME, PROC_REF(on_name_inquiry))
 	// This forces a name update on the user, so we don't need to call name update ourselves
-	ADD_TRAIT(user, TRAIT_UNKNOWN, REF(src))
+	ADD_TRAIT(user, TRAIT_UNKNOWN_APPEARANCE, REF(src))
 
 	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
 	name_tag?.hide(WEAKREF(src))
@@ -109,7 +109,7 @@
 	))
 	current_slot = null
 	user.remove_alt_appearance("sneaking_mission[REF(src)]")
-	REMOVE_TRAIT(user, TRAIT_UNKNOWN, REF(src))
+	REMOVE_TRAIT(user, TRAIT_UNKNOWN_APPEARANCE, REF(src))
 
 	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
 	name_tag?.show(WEAKREF(src))

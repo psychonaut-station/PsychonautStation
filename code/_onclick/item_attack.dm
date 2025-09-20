@@ -173,6 +173,8 @@
 	return SECONDARY_ATTACK_CALL_NORMAL
 
 /obj/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
+	if (HAS_TRAIT(user, TRAIT_CANT_ATTACK))
+		return FALSE
 	if(..())
 		return TRUE
 	if(!(obj_flags & CAN_BE_HIT))
@@ -231,6 +233,10 @@
 	if(damtype != STAMINA && final_force && HAS_TRAIT(user, TRAIT_PACIFISM))
 		to_chat(user, span_warning("You don't want to harm other living beings!"))
 		return FALSE
+
+	if(damtype != STAMINA && final_force && HAS_TRAIT(user, TRAIT_CANT_ATTACK))
+		to_chat(user, span_warning("You can not attack in this state!"))
+		return
 
 	if(!LAZYACCESS(attack_modifiers, SILENCE_HITSOUND))
 		if(!final_force && !HAS_TRAIT(src, TRAIT_CUSTOM_TAP_SOUND))

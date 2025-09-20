@@ -9,11 +9,11 @@
 
 | Website                    | Link                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
-| Website                    | [https://tr.ss13.org](https://tr.ss13.org)                                                                         |
+| Website                    | [https://ss13.tr](https://ss13.tr)                                                                                 |
 | Code                       | [https://github.com/psychonaut-station/PsychonautStation](https://github.com/psychonaut-station/PsychonautStation) |
-| Wiki                       | [https://wiki.ss13.org/Anasayfa](https://wiki.ss13.org/Anasayfa)                                                   |
+| Wiki                       | [https://wiki.ss13.tr/Anasayfa](https://wiki.ss13.tr/Anasayfa)                                                     |
 | Codedocs                   | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)                                             |
-| Psychonaut Station Discord | [https://tr.ss13.org/discord](https://tr.ss13.org/discord)                                                         |
+| Psychonaut Station Discord | [https://ss13.tr/discord](https://ss13.tr/discord)                                                                 |
 | Coderbus Discord           | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                           |
 
 This is the codebase for the Psychonaut Station flavoured fork of /tg/station which is another fork of SpaceStation 13.

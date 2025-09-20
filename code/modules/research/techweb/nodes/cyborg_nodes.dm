@@ -102,6 +102,7 @@
 		"borg_upgrade_piercinghypospray",
 		"borg_upgrade_surgicalprocessor",
 		"borg_upgrade_surgicalomnitool",
+		"borg_upgrade_syringe",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)
@@ -138,7 +139,7 @@
 	design_ids = list(
 		"borg_upgrade_rped",
 		"borg_upgrade_engineeringomnitool",
-		"borg_upgrade_circuitapp",
+		"borg_upgrade_engineeringapp",
 		"borg_upgrade_inducer",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
@@ -194,6 +195,7 @@
 		"ci-reviver",
 		"ci-antidrop",
 		"ci-antistun",
+		"ci-ammo-counter",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)
@@ -207,6 +209,10 @@
 		"ci-nutrimentplus",
 		"ci-toolset",
 		"ci-surgery",
+		"ci-toolkit-janitor",
+		"ci-toolkit-paramedic",
+		"ci-toolkit-atmospherics",
+		"ci-toolkit-botanic",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

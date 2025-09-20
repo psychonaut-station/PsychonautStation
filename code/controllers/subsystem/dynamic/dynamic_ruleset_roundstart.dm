@@ -38,7 +38,7 @@
 	pref_flag = ROLE_TRAITOR
 	weight = 10
 	min_pop = 3
-	max_antag_cap = list("denominator" = 38)
+	max_antag_cap = list("denominator" = 24)
 	track = EVENT_TRACK_MUNDANE
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 

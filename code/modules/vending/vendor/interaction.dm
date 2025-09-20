@@ -1,5 +1,16 @@
-/// Maximum amount of items in a storage bag that we're transferring items to the vendor from.
-#define MAX_VENDING_INPUT_AMOUNT 30
+//===============================HAND INTERACTION===================================
+/obj/machinery/vending/interact(mob/user)
+	if(seconds_electrified && !(machine_stat & NOPOWER))
+		if(shock(user, 100))
+			return
+
+	if(tilted && !user.buckled)
+		to_chat(user, span_notice("You begin righting [src]."))
+		if(do_after(user, 5 SECONDS, target = src))
+			untilt(user)
+		return
+
+	return ..()
 
 //================================TOOL ACTS==============================================
 /obj/machinery/vending/crowbar_act(mob/living/user, obj/item/attack_item)
@@ -115,9 +126,6 @@
 			var/loaded = 0
 			var/denied_items = 0
 			for(var/obj/item/the_item in storage_item.contents)
-				if(contents.len >= MAX_VENDING_INPUT_AMOUNT) // no more than 30 item can fit inside, legacy from snack vending although not sure why it exists
-					to_chat(user, span_warning("[src]'s compartment is full."))
-					break
 				if(loadingAttempt(the_item, user))
 					loaded++
 				else
@@ -231,5 +239,3 @@
 	. = ..()
 	if (!Adjacent(user, src))
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-#undef MAX_VENDING_INPUT_AMOUNT

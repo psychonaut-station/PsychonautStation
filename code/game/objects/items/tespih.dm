@@ -15,14 +15,14 @@
 	var/twirl_sound = 'sound/_psychonaut/tespih.ogg'
 	var/active = FALSE
 
-/obj/item/tespih/proc/salla(mob/user, delayoverride, volume = 60)
+/obj/item/tespih/proc/twirl(mob/user, delayoverride, volume = 60)
 	if(active)
-		to_chat(user, span_notice("[src] sallamayı bırakır."))
+		to_chat(user, span_notice("You stopped twirling [src]."))
 		inhand_icon_state = "tespih"
 		update_appearance()
 		active = FALSE
 	else
-		to_chat(user, span_notice("[src] sallamaya başlar."))
+		to_chat(user, span_notice("You started twirling [src]."))
 		inhand_icon_state = "tespih_active"
 		update_appearance()
 		playsound(src, tespih_sallama_sound, 60, 1)

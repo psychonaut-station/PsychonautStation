@@ -392,16 +392,6 @@
   - rscadd: Paradox Clones are now tasked to `Be the only [x] alive`, meaning means
       of identity cloning (such as Genetics or Changelings) may throw a wrench in
       your plan.
-  lelandkemble:
-  - qol: Eating ice cream no longer curses you
-  loganuk:
-  - map: Catwalk - Atmos and Engineering split, new access hallway, new stairs to
-      AI sat, HFR re-located, space for passion projects, new lighting, So many changes
-      to document. [C.A.T]
-  necromanceranne:
-  - bugfix: Syndicate Tomes once again can be used to beat the shit out of people.
-  - image: The rebellion mask now renders beneath your hair.
-  - qol: The rebellion mask now lets you plug in internals.
   Rengan:
   - rscadd: "Atmos, botany, janitor ve paramedic i\xE7in toolkit implantlar\u0131\
       \ med lathesine eklendi."
@@ -414,6 +404,16 @@
   - rscadd: "Science g\xF6zl\xFC\u011F\xFCn\xFCn hud implant\u0131 versiyonu eklendi."
   - rscadd: Sendika Tipi Mantis blade tot uplinkine eklendi.
   - rscadd: Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz.
+  lelandkemble:
+  - qol: Eating ice cream no longer curses you
+  loganuk:
+  - map: Catwalk - Atmos and Engineering split, new access hallway, new stairs to
+      AI sat, HFR re-located, space for passion projects, new lighting, So many changes
+      to document. [C.A.T]
+  necromanceranne:
+  - bugfix: Syndicate Tomes once again can be used to beat the shit out of people.
+  - image: The rebellion mask now renders beneath your hair.
+  - qol: The rebellion mask now lets you plug in internals.
 2025-09-14:
   ArcaneMusic:
   - rscadd: Boulders from ore-vents can now be used on lava tiles, to create a temporary
@@ -516,3 +516,8 @@
   - bugfix: ore vents should no longer be produce 0 material boulders
   theselfish:
   - balance: a ushanka no longer can protect brainy as much as a metal helmet
+2025-09-20:
+  Aliceee2ch:
+  - bugfix: Removed rogue decal in DeltaStation garden
+  - bugfix: Added missing RD computer in RD office (Catwalk)
+  - map: Replaced one of RND consoles on bridge with RD computer (Catwalk)

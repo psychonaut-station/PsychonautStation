@@ -16,11 +16,16 @@ SUBSYSTEM_DEF(storyteller)
 		load_storyteller(dynamic_config)
 	return SS_INIT_SUCCESS
 
-/datum/controller/subsystem/storyteller/proc/storyteller_desc(storyteller_name)
-	. = null
-	var/datum/storyteller/storyboy = storyteller_namelist[storyteller_name]
-	if(storyboy)
-		return storyboy.desc
+/datum/controller/subsystem/storyteller/proc/init_storyteller_prototypes(list/dynamic_config)
+	. = list()
+	for(var/datum/storyteller/storyteller_type as anything in subtypesof(/datum/storyteller))
+		var/datum/storyteller/storyteller = new storyteller_type(dynamic_config)
+		. += storyteller
+
+/datum/controller/subsystem/storyteller/proc/init_storyteller_namelist()
+	. = list()
+	for(var/datum/storyteller/storyteller as anything in storyteller_prototypes)
+		.[storyteller.name] = storyteller
 
 /datum/controller/subsystem/storyteller/proc/load_storyteller(list/dynamic_config)
 	var/selected_storyteller_name = trim(file2text("data/next_round_storyteller.txt"))
@@ -35,17 +40,6 @@ SUBSYSTEM_DEF(storyteller)
 	var/list/config = SSdynamic.get_config()
 	current_storyteller = new selected_storyteller.type(config)
 	log_game("Storyteller loaded: [current_storyteller.name]")
-
-/datum/controller/subsystem/storyteller/proc/init_storyteller_prototypes(list/dynamic_config)
-	. = list()
-	for(var/datum/storyteller/storyteller_type as anything in subtypesof(/datum/storyteller))
-		var/datum/storyteller/storyteller = new storyteller_type(dynamic_config)
-		. += storyteller
-
-/datum/controller/subsystem/storyteller/proc/init_storyteller_namelist()
-	. = list()
-	for(var/datum/storyteller/storyteller as anything in storyteller_prototypes)
-		.[storyteller.name] = storyteller
 
 /datum/controller/subsystem/storyteller/proc/get_valid_storytellers(weighted = FALSE)
 	var/filter_threshold = 0
@@ -76,6 +70,19 @@ SUBSYSTEM_DEF(storyteller)
 			valid_storytellers += storyteller.name
 
 	return valid_storytellers
+
+/datum/controller/subsystem/storyteller/proc/storyteller_desc(storyteller_name)
+	. = null
+	var/datum/storyteller/storyboy = storyteller_namelist[storyteller_name]
+	if(storyboy)
+		return storyboy.desc
+
+/datum/controller/subsystem/storyteller/proc/admin_set_storyteller(datum/storyteller/storyteller_type)
+	var/list/config = SSdynamic.get_config()
+	var/datum/storyteller/old_storyteller = current_storyteller
+	current_storyteller = new storyteller_type(config)
+	SSdynamic.set_tier(SSdynamic.current_tier.type, SSticker.totalPlayersReady) //Reload the dynamic tier
+	qdel(old_storyteller)
 
 /datum/controller/subsystem/storyteller/Recover()
 	current_storyteller = SSstoryteller.current_storyteller

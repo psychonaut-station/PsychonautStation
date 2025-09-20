@@ -2065,6 +2065,7 @@
 #include "code\datums\storytellers\nobleman.dm"
 #include "code\datums\storytellers\operative.dm"
 #include "code\datums\storytellers\sleeper.dm"
+#include "code\datums\storytellers\storyteller_admin.dm"
 #include "code\datums\storytellers\warrior.dm"
 #include "code\datums\votes\_vote_datum.dm"
 #include "code\datums\votes\custom_vote.dm"

@@ -554,8 +554,8 @@ SUBSYSTEM_DEF(dynamic)
 	var/low = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_LOW] || 0
 	var/high = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_HIGH] || 0
 	if(!isnull(SSstoryteller.current_storyteller))
-		low *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_COOLDOWN_LOW] || 1
-		high *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_COOLDOWN_HIGH] || 1
+		low *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_LOW] || 1
+		high *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_HIGH] || 1
 	return rand(low, high)
 
 /**
@@ -673,7 +673,7 @@ SUBSYSTEM_DEF(dynamic)
 		log_admin("[key_name(usr)] cancelled the queued midround ruleset.")
 		return
 
-#ifdef TESTING
+
 /// Puts all repo defaults into a dynamic.toml file
 /datum/controller/subsystem/dynamic/proc/build_dynamic_toml()
 	var/data = ""
@@ -760,8 +760,8 @@ SUBSYSTEM_DEF(dynamic)
 
 		data += "\[\"[storyteller.config_tag]\"\]\n"
 		data += "name = \"[storyteller.name]\"\n"
-		data += "desc = [storyteller.desc]\n"
-		data += "welcome_text = [storyteller.welcome_text]\n"
+		data += "desc = \"[storyteller.desc]\"\n"
+		data += "welcome_text = \"[storyteller.welcome_text]\"\n"
 		data += "event_repetition_multiplier = [storyteller.event_repetition_multiplier]\n"
 		data += "restricted = [storyteller.restricted]\n"
 		data += "always_votable = [storyteller.always_votable]\n"
@@ -769,13 +769,13 @@ SUBSYSTEM_DEF(dynamic)
 		data += "population_min = [storyteller.population_min || 0]\n"
 		data += "population_max = [storyteller.population_max || 0]\n"
 
-		for(var/i in 1 to length(storyteller.event_weight_multipliers))
+		for(var/i in storyteller.event_weight_multipliers)
 			data += "event_weight_multipliers.[i] = [storyteller.event_weight_multipliers[i]]\n"
 
-		for(var/i in 1 to length(storyteller.extra_settings))
+		for(var/i in storyteller.extra_settings)
 			data += "extra_settings.[i] = [storyteller.extra_settings[i]]\n"
 
-		for(var/i in 1 to length(storyteller.tag_multipliers))
+		for(var/i in storyteller.tag_multipliers)
 			data += "tag_multipliers.[i] = [storyteller.tag_multipliers[i]]\n"
 		data += "\n"
 		qdel(storyteller)
@@ -784,4 +784,3 @@ SUBSYSTEM_DEF(dynamic)
 	fdel(file(filepath))
 	text2file(data, filepath)
 	return TRUE
-#endif

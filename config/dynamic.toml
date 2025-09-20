@@ -162,7 +162,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -177,7 +177,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -193,7 +193,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -207,7 +207,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -226,7 +226,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "roleset"
 tags = [
 	"combat",
 	"team_antag",
@@ -242,7 +242,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"team_antag",
@@ -258,7 +258,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"team_antag",
@@ -277,7 +277,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -297,7 +297,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -316,7 +316,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -337,7 +337,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -356,7 +356,7 @@ max_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "roleset"
 tags = [
 	"combat",
 	"away_antag",
@@ -372,7 +372,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -391,7 +391,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "roleset"
 tags = [
 	"combat",
 	"away_antag",
@@ -407,7 +407,7 @@ min_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"away_antag",
 	"alien",
@@ -426,7 +426,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "roleset"
 tags = [
 	"combat",
 	"away_antag",
@@ -442,7 +442,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"away_antag",
 	"spooky",
@@ -457,7 +457,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -473,7 +473,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -489,7 +489,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"away_antag",
@@ -506,7 +506,7 @@ max_antag_cap = 4
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -521,7 +521,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"away_antag",
 	"magical",
@@ -536,7 +536,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"away_antag",
 	"magical",
@@ -552,7 +552,7 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -568,7 +568,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"crew_antag",
 	"destructive",
@@ -584,7 +584,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
-track = "Major"
+track = "roleset"
 tags = [
 	"combat",
 	"crew_antag",
@@ -601,7 +601,7 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -617,7 +617,7 @@ max_antag_cap.denominator = 38
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -635,7 +635,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"crew_antag",
 	"destructive",
@@ -650,7 +650,7 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -666,7 +666,7 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -682,7 +682,7 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"crew_antag",
@@ -701,7 +701,7 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -723,7 +723,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -744,7 +744,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -763,7 +763,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"away_antag",
@@ -784,7 +784,7 @@ max_antag_cap = 3
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Major"
+track = "major"
 tags = [
 	"combat",
 	"crew_antag",
@@ -804,7 +804,7 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-track = "Mundane"
+track = "mundane"
 tags = [
 	"combat",
 	"crew_antag",
@@ -831,7 +831,7 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "Moderate"
+track = "moderate"
 tags = [
 	"combat",
 	"external",
@@ -851,208 +851,208 @@ tags = []
 
 ["The Brute"]
 name = "The Brute"
-desc = While the brute will hit hard, it tires quickly.
-welcome_text = Set your eyes on the horizon.
+desc = "While the brute will hit hard, it tires quickly."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 0
 weight = 1
 population_min = 40
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = execution_cooldown_low
-extra_settings.4 = execution_cooldown_high
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1.2
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_cooldown_low = 0.5
+extra_settings.execution_cooldown_high = 0.5
 
 ["The Clown"]
 name = "The Clown"
-desc = The clown creates only harmless events(citation needed), its all fun and games with this one!
-welcome_text = HONKHONKHONKHONKHONK!
+desc = "The clown creates mostly harmless events, its all fun and games with this one!"
+welcome_text = "HONKHONKHONKHONKHONK!"
 event_repetition_multiplier = 1
 restricted = 1
 always_votable = 0
 weight = 0
 population_min = 0
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = communal
-tag_multipliers.2 = spooky
+event_weight_multipliers.mundane = 5
+event_weight_multipliers.moderate = 4
+event_weight_multipliers.major = 0.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 4
+extra_settings.high = 2
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.communal = 1.1
+tag_multipliers.spooky = 1.2
 
 ["The Guide"]
 name = "The Guide"
-desc = The Guide will provide a balanced and varied experience. Consider this the default experience.
-welcome_text = Set your eyes on the horizon.
+desc = "The Guide will provide a balanced and varied experience. Consider this the default experience."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 1
 weight = 1
 population_min = 0
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
 
 ["The Hermit"]
 name = "The Hermit"
-desc = The Hermit will create mostly internal conflict around the station, and rarely any external threats.
-welcome_text = Set your eyes on the horizon.
+desc = "The Hermit will create mostly internal conflict around the station, and rarely any external threats."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 1.3
 restricted = 0
 always_votable = 0
 weight = 3
 population_min = 0
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = external
-tag_multipliers.2 = away_antag
+event_weight_multipliers.mundane = 1.2
+event_weight_multipliers.moderate = 1.1
+event_weight_multipliers.major = 0.9
+event_weight_multipliers.roleset = 0.9
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.external = 0.2
+tag_multipliers.away_antag = 0.8
 
 ["The Jester"]
 name = "The Jester"
-desc = The Jester will create much more events, with higher possibilities of them repeating.
-welcome_text = Set your eyes on the horizon.
+desc = "The Jester will create much more events, with higher possibilities of them repeating."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 1.2
 restricted = 0
 always_votable = 0
 weight = 2
 population_min = 40
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
+event_weight_multipliers.mundane = 1.2
+event_weight_multipliers.moderate = 1.3
+event_weight_multipliers.major = 1.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
 
 ["The Mystic"]
 name = "The Mystic"
-desc = The Mystic gives events from beyond the veil, some of which may even be magic in nature.
-welcome_text = Set your eyes on the horizon.
+desc = "The Mystic gives events from beyond the veil, some of which may even be magic in nature."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 0
 weight = 2
 population_min = 40
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = spooky
-tag_multipliers.2 = magical
-tag_multipliers.3 = space
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.spooky = 1.2
+tag_multipliers.magical = 1.5
+tag_multipliers.space = 1.1
 
 ["The Nobleman"]
 name = "The Nobleman"
-desc = The Nobleman enjoys a good fight but abhors senseless destruction. Prefers heavy hits on single targets.
-welcome_text = Set your eyes on the horizon.
+desc = "The Nobleman enjoys a good fight but abhors senseless destruction. Prefers heavy hits on single targets."
+welcome_text = "Set your eyes on the horizon."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 0
 weight = 3
 population_min = 25
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = combat
-tag_multipliers.2 = destructive
-tag_multipliers.3 = targeted
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.2
+event_weight_multipliers.major = 1.15
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 1.4
+tag_multipliers.destructive = 0.4
+tag_multipliers.targeted = 1.2
 
 ["The Operative"]
 name = "The Operative"
-desc = The Operative tries to create more direct confrontation with human threats.
-welcome_text = The eyes of multiple organizations have been set on the station.
+desc = "The Operative tries to create more direct confrontation with human threats."
+welcome_text = "The eyes of multiple organizations have been set on the station."
 event_repetition_multiplier = 0
 restricted = 1
 always_votable = 0
 weight = 1
 population_min = 45
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = alien
-tag_multipliers.2 = crew_antag
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1.1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.alien = 0.4
+tag_multipliers.crew_antag = 1.5
 
 ["The Sleeper"]
 name = "The Sleeper"
-desc = The Sleeper will create less impactful events, especially ones involving combat or destruction. The chill experience.
-welcome_text = The day is going slowly.
+desc = "The Sleeper will create less impactful events, especially ones involving combat or destruction. The chill experience."
+welcome_text = "The day is going slowly."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 1
 weight = 2
 population_min = 0
 population_max = 45
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = combat
-tag_multipliers.2 = destructive
-tag_multipliers.3 = positive
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.2
+event_weight_multipliers.major = 1.2
+event_weight_multipliers.roleset = 0.1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 0.6
+tag_multipliers.destructive = 0.7
+tag_multipliers.positive = 1.2
 
 ["The Warrior"]
 name = "The Warrior"
-desc = The Warrior will create more impactful events, often focused on combat.
-welcome_text = You feel like a fight is brewing.
+desc = "The Warrior will create more impactful events, often focused on combat."
+welcome_text = "You feel like a fight is brewing."
 event_repetition_multiplier = 0
 restricted = 0
 always_votable = 0
 weight = 1
 population_min = 40
 population_max = 0
-event_weight_multipliers.1 = Mundane
-event_weight_multipliers.2 = Moderate
-event_weight_multipliers.3 = Major
-event_weight_multipliers.4 = Roleset
-extra_settings.1 = low
-extra_settings.2 = high
-extra_settings.3 = EXECUTION_COOLDOWN_MULTIPLIER_LOW
-extra_settings.4 = EXECUTION_COOLDOWN_MULTIPLIER_HIGH
-tag_multipliers.1 = combat
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.3
+event_weight_multipliers.major = 1.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 1.5
 
 

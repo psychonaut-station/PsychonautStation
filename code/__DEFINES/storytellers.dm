@@ -4,10 +4,10 @@
 #define EVENT_TRACKS list(EVENT_TRACK_MUNDANE, EVENT_TRACK_MODERATE, EVENT_TRACK_MAJOR, EVENT_TRACK_ROLESET)
 #define EVENT_PANEL_TRACKS list(EVENT_TRACK_MUNDANE, EVENT_TRACK_MODERATE, EVENT_TRACK_MAJOR, EVENT_TRACK_ROLESET, UNCATEGORIZED_EVENTS, ALL_EVENTS)
 
-#define EVENT_TRACK_MUNDANE "Mundane"
-#define EVENT_TRACK_MODERATE "Moderate"
-#define EVENT_TRACK_MAJOR "Major"
-#define EVENT_TRACK_ROLESET "Roleset"
+#define EVENT_TRACK_MUNDANE "mundane"
+#define EVENT_TRACK_MODERATE "moderate"
+#define EVENT_TRACK_MAJOR "major"
+#define EVENT_TRACK_ROLESET "roleset"
 
 /// When the event is combat oriented (spawning monsters, inherently hostile antags)
 #define TAG_COMBAT "combat"

@@ -16,6 +16,12 @@ SUBSYSTEM_DEF(storyteller)
 		load_storyteller(dynamic_config)
 	return SS_INIT_SUCCESS
 
+/datum/controller/subsystem/storyteller/proc/storyteller_desc(storyteller_name)
+	. = null
+	var/datum/storyteller/storyboy = storyteller_namelist[storyteller_name]
+	if(storyboy)
+		return storyboy.desc
+
 /datum/controller/subsystem/storyteller/proc/load_storyteller(list/dynamic_config)
 	var/selected_storyteller_name = trim(file2text("data/next_round_storyteller.txt"))
 

@@ -20,8 +20,8 @@
 	var/list/extra_settings = list(
 		LOW_END = 0,
 		HIGH_END = 0,
-		EXECUTION_COOLDOWN_MULTIPLIER_LOW = 1,
-		EXECUTION_COOLDOWN_MULTIPLIER_HIGH = 1,
+		EXECUTION_MULTIPLIER_LOW = 1,
+		EXECUTION_MULTIPLIER_HIGH = 1,
 	)
 
 	/// Multipliers of weight to apply for each tag of an event.

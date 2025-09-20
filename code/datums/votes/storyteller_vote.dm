@@ -44,3 +44,8 @@
 	for(var/datum/storyteller/storyteller_type as anything in subtypesof(/datum/storyteller))
 		var/datum/storyteller/storyteller = new storyteller_type()
 		. += storyteller.name
+
+/datum/vote/storyteller_vote/get_winner_text(list/all_winners, real_winner, list/non_voters)
+	. = ..()
+	. += "\n"
+	. += SSstoryteller.storyteller_desc(real_winner)

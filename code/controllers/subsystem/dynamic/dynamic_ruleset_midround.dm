@@ -34,7 +34,7 @@
 	)
 	min_pop = 30
 	min_antag_cap = 0
-	track = EVENT_TRACK_MODERATE
+	track = EVENT_TRACK_ROLESET
 	tags = list(TAG_COMBAT, TAG_TEAM_ANTAG, TAG_OUTSIDER_ANTAG)
 	/// Determines how many eggs to create - can take a formula like antag_cap
 	var/egg_count = 2
@@ -438,7 +438,7 @@
 	min_antag_cap = 1
 	repeatable_weight_decrease = 3
 	signup_atom_appearance = /mob/living/basic/alien
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_ROLESET
 	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_ALIEN)
 
 /datum/dynamic_ruleset/midround/from_ghosts/xenomorph/New(list/dynamic_config)
@@ -528,7 +528,7 @@
 	max_antag_cap = 1
 	repeatable_weight_decrease = 3
 	signup_atom_appearance = /mob/living/basic/space_dragon
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_ROLESET
 	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_DESTRUCTIVE)
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_dragon/can_be_selected()
@@ -603,7 +603,7 @@
 	repeatable = FALSE
 	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_NINJA_HOLDING_FACILITY)
 	signup_atom_appearance = /obj/item/energy_katana
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_ROLESET
 	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_EXTERNAL)
 
 /datum/dynamic_ruleset/midround/from_ghosts/space_ninja/can_be_selected()
@@ -1155,7 +1155,7 @@
 	)
 	min_pop = 30
 	repeatable_weight_decrease = 3
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_ROLESET
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_DESTRUCTIVE)
 
 /datum/dynamic_ruleset/midround/from_living/blob/assign_role(datum/mind/candidate)

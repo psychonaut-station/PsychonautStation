@@ -42,6 +42,8 @@ SUBSYSTEM_DEF(statpanels)
 			"Station Time: [station_time_timestamp()]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 		)
+		if(CONFIG_GET(flag/show_storyteller_in_statpanel) && !isnull(SSstoryteller.current_storyteller))
+			global_data += "Storyteller: [SSstoryteller.current_storyteller.name]"
 
 		if(SSshuttle.emergency)
 			var/ETA = SSshuttle.emergency.getModeStr()

@@ -78,6 +78,9 @@
 	/// Templates necessary for this ruleset to be executed
 	VAR_PROTECTED/list/ruleset_lazy_templates
 
+	var/track = UNCATEGORIZED_EVENTS
+	var/tags = list()
+
 /datum/dynamic_ruleset/New(list/dynamic_config)
 	for(var/new_var in dynamic_config?[config_tag])
 		set_config_value(new_var, dynamic_config[config_tag][new_var])
@@ -192,7 +195,15 @@
 			continue
 		if(!repeatable)
 			return 0
-		final_weight -= repeatable_weight_decrease
+		if(isnull(SSstoryteller.current_storyteller) || !SSstoryteller.current_storyteller.event_repetition_multiplier)
+			final_weight -= repeatable_weight_decrease
+		else
+			final_weight *= SSstoryteller.current_storyteller.event_repetition_multiplier
+
+	if(!isnull(SSstoryteller.current_storyteller))
+		final_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[track] || 1
+		for(var/tag in tags)
+			final_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag] | 1
 
 	return max(final_weight, 0)
 

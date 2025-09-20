@@ -7,6 +7,8 @@
 	description = "Turns off all APCs for a while, or until they are manually rebooted."
 	min_wizard_trigger_potency = 0
 	max_wizard_trigger_potency = 4
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL, TAG_SPOOKY)
 	/// Cooldown for the announement associated with this event.
 	/// Necessary due to the fact that this event is player triggerable.
 	COOLDOWN_DECLARE(announcement_spam_protection)

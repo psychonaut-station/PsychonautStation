@@ -172,6 +172,8 @@
 				)
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
+				if(CONFIG_GET(flag/enable_storyteller) && CONFIG_GET(flag/storyteller_votable))
+					INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/storyteller_vote, vote_initiator_name = "Storyteller Selection", forced = TRUE)
 
 
 		if(SHUTTLE_DOCKED)

@@ -25,12 +25,12 @@
 		to_chat(user, span_notice("You started twirling [src]."))
 		inhand_icon_state = "tespih_active"
 		update_appearance()
-		playsound(src, tespih_sallama_sound, 60, 1)
+		playsound(src, twirl_sound, 60, 1)
 		active = TRUE
 
 /obj/item/tespih/attack_self(mob/user, modifiers)
 	. = ..()
-	salla(user)
+	twirl(user)
 
 /obj/item/tespih/dropped(mob/user)
 	. = ..()

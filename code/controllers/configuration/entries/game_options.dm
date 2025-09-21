@@ -516,8 +516,11 @@
 /datum/config_entry/flag/enable_storyteller
 	default = TRUE
 
-/datum/config_entry/flag/show_storyteller_in_statpanel
+/datum/config_entry/flag/public_storyteller
 	default = TRUE
 
 /datum/config_entry/flag/storyteller_votable
 	default = TRUE
+
+/datum/config_entry/string/default_storyteller
+	default = "Random"

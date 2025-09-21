@@ -122,7 +122,9 @@ SUBSYSTEM_DEF(events)
 			if(!isnull(SSstoryteller.current_storyteller))
 				event_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[event_to_check.track] || 1
 				for(var/tag in event_to_check.tags)
-					event_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag] | 1
+					if(!SSstoryteller.current_storyteller.tag_multipliers.Find(tag))
+						continue
+					event_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag]
 			event_roster[event_to_check] = event_weight
 
 	var/datum/round_event_control/event_to_run = pick_weight(event_roster)

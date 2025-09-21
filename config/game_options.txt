@@ -600,3 +600,13 @@ SPY_HARD_REWARD_TC_THRESHOLD 15
 
 #MODULAR_ROOM_WEIGHT meta_supermatter 10
 #MODULAR_ROOM_WEIGHT meta_singularity 10
+
+### Storyteller config
+## Is it enabled
+ENABLE_STORYTELLER
+## If enabled, everyone will know what's the storyteller is
+PUBLIC_STORYTELLER
+## Storytellers are selected by player votes
+STORYTELLER_VOTABLE
+## If no storyteller is pre-selected, is will use the default storyteller. If it set to Random , a random storyteller will be chosen.
+DEFAULT_STORYTELLER Random

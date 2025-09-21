@@ -203,7 +203,9 @@
 	if(!isnull(SSstoryteller.current_storyteller))
 		final_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[track] || 1
 		for(var/tag in tags)
-			final_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag] | 1
+			if(!SSstoryteller.current_storyteller.tag_multipliers.Find(tag))
+				continue
+			final_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag]
 
 	return max(final_weight, 0)
 

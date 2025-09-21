@@ -25,7 +25,7 @@
 	)
 
 	/// Multipliers of weight to apply for each tag of an event.
-	var/list/tag_multipliers
+	var/list/tag_multipliers = list()
 
 	var/event_repetition_multiplier = 0
 	/// Whether a storyteller is pickable/can be voted for
@@ -34,9 +34,7 @@
 	var/population_min = 0
 	/// If defined, it will not be votable if exceeding the population
 	var/population_max = 0
-	///is a storyteller always able to be voted for(also does not count for the amount of storytellers to pick from)
-	var/always_votable = FALSE
-	///weight this has of being picked for random storyteller/showing up in the vote if not always_votable
+	///weight this has of being picked for random storyteller
 	var/weight = 0
 
 /datum/storyteller/New(list/dynamic_config)

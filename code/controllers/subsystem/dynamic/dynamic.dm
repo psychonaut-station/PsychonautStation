@@ -764,7 +764,6 @@ SUBSYSTEM_DEF(dynamic)
 		data += "welcome_text = \"[storyteller.welcome_text]\"\n"
 		data += "event_repetition_multiplier = [storyteller.event_repetition_multiplier]\n"
 		data += "restricted = [storyteller.restricted]\n"
-		data += "always_votable = [storyteller.always_votable]\n"
 		data += "weight = [storyteller.weight]\n"
 		data += "population_min = [storyteller.population_min || 0]\n"
 		data += "population_max = [storyteller.population_max || 0]\n"

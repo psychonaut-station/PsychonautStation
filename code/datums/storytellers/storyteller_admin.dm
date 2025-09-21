@@ -27,6 +27,10 @@ ADMIN_VERB(storyteller_panel, R_ADMIN, "Storyteller Panel", "Change the Storytel
 		ui.open()
 
 /datum/storyteller_panel/ui_data(mob/user)
+	var/next_storyteller
+	if(SSstoryteller.next_storyteller)
+		next_storyteller = SSstoryteller.next_storyteller.name
+
 	var/list/data = list()
 	var/list/storytellers = list()
 	for(var/datum/storyteller/storyteller in SSstoryteller.storyteller_prototypes)
@@ -36,7 +40,8 @@ ADMIN_VERB(storyteller_panel, R_ADMIN, "Storyteller Panel", "Change the Storytel
 			"restricted" = storyteller.restricted
 		))
 	data["storytellers"] = storytellers
-	data["current_storyteller"] = SSstoryteller.current_storyteller.name
+	data["current_storyteller"] = SSstoryteller.current_storyteller?.name
+	data["next_storyteller"] = next_storyteller
 	return data
 
 /datum/storyteller_panel/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
@@ -46,10 +51,5 @@ ADMIN_VERB(storyteller_panel, R_ADMIN, "Storyteller Panel", "Change the Storytel
 	switch(action)
 		if("set_storyteller")
 			var/storyteller_name = params["storyteller_name"]
-			if(!SSstoryteller.storyteller_namelist[storyteller_name])
-				return
-			var/datum/storyteller/storyteller = SSstoryteller.storyteller_namelist[storyteller_name]
-			message_admins("[key_name_admin(ui.user)] changed storyteller to [storyteller_name].")
-			log_admin("[key_name_admin(ui.user)] changed storyteller to [storyteller_name].")
-			SSstoryteller.admin_set_storyteller(storyteller.type)
-			return TRUE
+			var/for_current_round = params["current_round"]
+			return SSstoryteller.set_storyteller(storyteller_name, for_current_round, TRUE)

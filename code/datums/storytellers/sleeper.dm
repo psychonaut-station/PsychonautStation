@@ -9,8 +9,5 @@
 		EVENT_TRACK_MAJOR = 1.2,
 		EVENT_TRACK_ROLESET = 0.1, ///rolesets are entirely evil atm so crank this down
 	)
-
 	tag_multipliers = list(TAG_COMBAT = 0.6, TAG_DESTRUCTIVE = 0.7, TAG_POSITIVE = 1.2)
-	always_votable = TRUE //good for low pop
-	population_max = 45
 	weight = 2

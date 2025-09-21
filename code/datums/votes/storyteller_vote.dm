@@ -1,9 +1,11 @@
 /datum/vote/storyteller_vote
-	name = "Map"
-	default_message = "Vote for next round's map!"
+	name = "Storyteller"
+	default_message = "Vote for next round's storyteller!"
 	count_method = VOTE_COUNT_METHOD_SINGLE
 	winner_method = VOTE_WINNER_METHOD_SIMPLE
 	display_statistics = FALSE
+	var/current_round = TRUE
+	var/forced = FALSE
 
 /datum/vote/storyteller_vote/New()
 	. = ..()
@@ -30,6 +32,11 @@
 
 	return TRUE
 
+/datum/vote/storyteller_vote/can_be_initiated(forced = FALSE)
+	. = ..()
+	if(. == VOTE_AVAILABLE)
+		src.forced = forced
+
 /datum/vote/storyteller_vote/toggle_votable()
 	CONFIG_SET(flag/storyteller_votable, !CONFIG_GET(flag/storyteller_votable))
 
@@ -37,15 +44,14 @@
 	return CONFIG_GET(flag/storyteller_votable)
 
 /datum/vote/storyteller_vote/finalize_vote(winning_option)
-	text2file(winning_option, "data/next_round_storyteller.txt")
-
-/datum/vote/storyteller_vote/proc/get_vote_choices()
-	. = list()
-	for(var/datum/storyteller/storyteller_type as anything in subtypesof(/datum/storyteller))
-		var/datum/storyteller/storyteller = new storyteller_type()
-		. += storyteller.name
+	SSstoryteller.set_storyteller(winning_option, current_round, forced)
+	forced = initial(forced)
 
 /datum/vote/storyteller_vote/get_winner_text(list/all_winners, real_winner, list/non_voters)
 	. = ..()
 	. += "\n"
 	. += SSstoryteller.storyteller_desc(real_winner)
+
+/datum/vote/storyteller_vote/current_round //For admins
+	name = "Storyteller (Current Round)"
+	current_round = TRUE

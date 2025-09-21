@@ -15,7 +15,7 @@
 	var/twirl_sound = 'sound/_psychonaut/tespih.ogg'
 	var/active = FALSE
 
-/obj/item/tespih/proc/twirl(mob/user, delayoverride, volume = 60)
+/obj/item/tespih/proc/twirl(mob/user, volume = 60)
 	if(active)
 		to_chat(user, span_notice("You stopped twirling [src]."))
 		inhand_icon_state = "tespih"

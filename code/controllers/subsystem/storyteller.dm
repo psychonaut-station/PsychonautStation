@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(storyteller)
 
 	var/select_random = FALSE
 
-	if((!CONFIG_GET(flag/storyteller_votable) && !forced) || !storyteller_namelist[selected_storyteller_name]) //If (its not chosen by admin and storyteller_votable flag is false) or its not a valid storyteller, make it randomised
+	if((!(CONFIG_GET(flag/auto_vote_storyteller) || CONFIG_GET(flag/allow_storyteller_vote)) && !forced) || !storyteller_namelist[selected_storyteller_name]) //If (its not chosen by admin and auto_vote_storyteller flag is false) or its not a valid storyteller, make it randomised
 		if(!storyteller_namelist[selected_storyteller_name] && !isnull(selected_storyteller_name))
 			stack_trace("Storyteller: [selected_storyteller_name] is not a valid storyteller!")
 		select_random = TRUE

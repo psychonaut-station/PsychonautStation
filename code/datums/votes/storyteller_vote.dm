@@ -38,20 +38,22 @@
 		src.forced = forced
 
 /datum/vote/storyteller_vote/toggle_votable()
-	CONFIG_SET(flag/storyteller_votable, !CONFIG_GET(flag/storyteller_votable))
+	CONFIG_SET(flag/allow_storyteller_vote, !CONFIG_GET(flag/allow_storyteller_vote))
 
 /datum/vote/storyteller_vote/is_config_enabled()
-	return CONFIG_GET(flag/storyteller_votable)
+	return CONFIG_GET(flag/allow_storyteller_vote)
 
 /datum/vote/storyteller_vote/finalize_vote(winning_option)
-	SSstoryteller.set_storyteller(winning_option, current_round, forced)
+	SSstoryteller.set_storyteller(winning_option, FALSE, forced)
 	forced = initial(forced)
+
+/datum/vote/storyteller_vote/get_result_text(list/all_winners, real_winner, list/non_voters)
+	if(CONFIG_GET(flag/public_storyteller))
+		return ..()
+	else
+		return null
 
 /datum/vote/storyteller_vote/get_winner_text(list/all_winners, real_winner, list/non_voters)
 	. = ..()
 	. += "\n"
 	. += SSstoryteller.storyteller_desc(real_winner)
-
-/datum/vote/storyteller_vote/current_round //For admins
-	name = "Storyteller (Current Round)"
-	current_round = TRUE

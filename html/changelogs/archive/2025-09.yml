@@ -521,3 +521,6 @@
   - bugfix: Removed rogue decal in DeltaStation garden
   - bugfix: Added missing RD computer in RD office (Catwalk)
   - map: Replaced one of RND consoles on bridge with RD computer (Catwalk)
+2025-09-22:
+  carmingenium:
+  - rscadd: tespih

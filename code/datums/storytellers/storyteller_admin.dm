@@ -53,3 +53,6 @@ ADMIN_VERB(storyteller_panel, R_ADMIN, "Storyteller Panel", "Change the Storytel
 			var/storyteller_name = params["storyteller_name"]
 			var/for_current_round = params["current_round"]
 			return SSstoryteller.set_storyteller(storyteller_name, for_current_round, TRUE)
+		if("storyteller_vv")
+			ui.user?.client?.debug_variables(SSstoryteller)
+			return TRUE

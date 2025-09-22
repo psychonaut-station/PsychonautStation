@@ -42,6 +42,11 @@ export const StorytellerAdmin = (props) => {
               >
                 {forCurrentRound ? 'Set For Current Round' : 'Set For Next Round'}
               </Button.Checkbox>
+              <Button
+                onClick={() => act('storyteller_vv')}
+              >
+                VV
+              </Button>
             </Box>
           }
         >

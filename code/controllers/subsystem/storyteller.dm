@@ -37,15 +37,18 @@ SUBSYSTEM_DEF(storyteller)
 	var/forced = storyteller_data["forced"]
 
 	var/select_random = FALSE
+	var/selected_by = forced ? "Admin" : "Voting"
 
-	if((!(CONFIG_GET(flag/auto_vote_storyteller) || CONFIG_GET(flag/allow_storyteller_vote)) && !forced) || !storyteller_namelist[selected_storyteller_name]) //If (its not chosen by admin and auto_vote_storyteller flag is false) or its not a valid storyteller, make it randomised
+	if((!(CONFIG_GET(flag/auto_vote_storyteller) || CONFIG_GET(flag/allow_storyteller_vote)) && !forced) || !storyteller_namelist[selected_storyteller_name]) //If (its not chosen by admin and not chosen by players) or its not a valid storyteller, make it randomised
 		if(!storyteller_namelist[selected_storyteller_name] && !isnull(selected_storyteller_name))
 			stack_trace("Storyteller: [selected_storyteller_name] is not a valid storyteller!")
 		select_random = TRUE
+		selected_by = "Randomly"
 
 	if(default_storyteller != "Random" && storyteller_namelist[default_storyteller] && select_random) //If default_storyteller is not "Random" and its a valid storyteller and select_random is true, use it
 		selected_storyteller_name = default_storyteller
 		select_random = FALSE
+		selected_by = "Default"
 
 	if(select_random)
 		var/list/storyteller_entries = get_valid_storytellers(weighted = TRUE)
@@ -54,7 +57,7 @@ SUBSYSTEM_DEF(storyteller)
 	var/datum/storyteller/selected_storyteller = storyteller_namelist[selected_storyteller_name]
 	var/list/config = SSdynamic.get_config()
 	current_storyteller = new selected_storyteller.type(config)
-	log_game("Storyteller loaded: [current_storyteller.name]")
+	post_load_storyteller(selected_by)
 
 /datum/controller/subsystem/storyteller/proc/load_storyteller_data()
 	var/json_file = file("data/next_round_storyteller.json")
@@ -62,6 +65,21 @@ SUBSYSTEM_DEF(storyteller)
 		return list()
 
 	return json_decode(file2text(json_file))
+
+/datum/controller/subsystem/storyteller/proc/post_load_storyteller(selected_by)
+	log_game("Storyteller loaded: [current_storyteller.name]")
+	log_storyteller("Storyteller loaded: [current_storyteller.name]")
+	log_storyteller("- Selected by: [selected_by]")
+	SSblackbox.record_feedback(
+		"associative",
+		"storyteller",
+		1,
+		list(
+			"server_name" = CONFIG_GET(string/serversqlname),
+			"name" = current_storyteller.name,
+			"selectedby" = selected_by
+		)
+	)
 
 /datum/controller/subsystem/storyteller/proc/get_valid_storytellers(weighted = FALSE)
 	var/filter_threshold = 0
@@ -100,14 +118,16 @@ SUBSYSTEM_DEF(storyteller)
 	if(isnull(storyteller_prototype))
 		stack_trace("Storyteller: [storyteller_name] is not a valid storyteller!")
 		return FALSE
+	var/user = forced ? key_name_admin(usr) : "\[\"Voting\"\]"
 	if(for_current_round) //If the proc called for the current round, change it immediately
 		var/datum/storyteller/old_storyteller = current_storyteller
 		current_storyteller = new storyteller_prototype.type(config)
 		if(!isnull(SSdynamic.current_tier))
 			SSdynamic.set_tier(SSdynamic.current_tier.type, SSticker.totalPlayersReady) //Reload the dynamic tier
 		qdel(old_storyteller)
-		message_admins("[key_name_admin(usr)] changed storyteller to [storyteller_name].")
-		log_admin("[key_name_admin(usr)] changed storyteller to [storyteller_name].")
+		message_admins("[user] changed storyteller to [storyteller_name].")
+		log_admin("[user] changed storyteller to [storyteller_name].")
+		post_load_storyteller("Admin")
 	else //If the proc called for the next round, save it to json
 		var/datum/storyteller/old_storyteller = next_storyteller
 		next_storyteller = new storyteller_prototype.type //No need to use config, it will handle in the next round
@@ -120,8 +140,8 @@ SUBSYSTEM_DEF(storyteller)
 			fdel(next_storyteller_file)
 		WRITE_FILE(file(next_storyteller_file), json_encode(next_storyteller_data, JSON_PRETTY_PRINT))
 		qdel(old_storyteller)
-		message_admins("[key_name_admin(usr)] set next round's storyteller to [storyteller_name].")
-		log_admin("[key_name_admin(usr)] set next round's storyteller to [storyteller_name].")
+		message_admins("[user] set next round's storyteller to [storyteller_name].")
+		log_admin("[user] set next round's storyteller to [storyteller_name].")
 
 /datum/controller/subsystem/storyteller/vv_edit_var(var_name, var_value)
 	if(var_name == NAMEOF(src, current_storyteller))

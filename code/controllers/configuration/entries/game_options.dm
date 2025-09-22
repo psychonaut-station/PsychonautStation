@@ -514,16 +514,12 @@
 	value_mode = VALUE_MODE_NUM
 
 /datum/config_entry/flag/enable_storyteller
-	default = TRUE
 
 /datum/config_entry/flag/public_storyteller
-	default = TRUE
 
 /datum/config_entry/flag/auto_vote_storyteller
-	default = TRUE
 
 /datum/config_entry/flag/allow_storyteller_vote
-	default = FALSE
 
 /datum/config_entry/string/default_storyteller
 	default = "Random"

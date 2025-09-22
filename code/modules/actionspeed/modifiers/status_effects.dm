@@ -28,3 +28,6 @@
 
 /datum/actionspeed_modifier/status_effect/midas_blight/gold
 	multiplicative_slowdown = 2
+
+/datum/actionspeed_modifier/status_effect/sandevistan
+	multiplicative_slowdown = -0.5

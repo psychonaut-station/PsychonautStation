@@ -39,10 +39,6 @@
 	suffix = "nebula"
 	name = "supply shuttle (Nebula)"
 
-/datum/map_template/shuttle/cargo/theia
-	suffix = "theia"
-	name = "supply shuttle (Theia)"
-
 /datum/map_template/shuttle/cargo/helio
 	suffix = "helio"
 	name = "supply shuttle (Helio)"

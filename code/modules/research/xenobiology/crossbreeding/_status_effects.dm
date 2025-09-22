@@ -145,7 +145,6 @@
 		var/mob/living/carbon/carbon_owner = owner
 		var/mob/living/carbon/carbon_clone = clone
 		carbon_clone.real_name = carbon_owner.real_name
-		carbon_clone.update_name_tag()
 		carbon_owner.dna.copy_dna(carbon_clone.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 		carbon_clone.updateappearance(mutcolor_update = TRUE)
 	if(owner.mind)
@@ -755,7 +754,6 @@
 		var/mob/living/carbon/carbon_owner = owner
 		var/mob/living/carbon/carbon_clone = clone
 		carbon_clone.real_name = carbon_owner.real_name
-		carbon_clone.update_name_tag()
 		carbon_owner.dna.copy_dna(carbon_clone.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 		carbon_clone.updateappearance(mutcolor_update = TRUE)
 	return ..()
@@ -837,7 +835,6 @@
 		var/mob/living/carbon/human/human = owner
 		originalDNA.copy_dna(human.dna, COPY_DNA_SE|COPY_DNA_SPECIES|COPY_DNA_MUTATIONS)
 		human.real_name = originalname
-		human.update_name_tag()
 		human.updateappearance(mutcolor_update=1)
 	originalDNA = null
 

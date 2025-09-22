@@ -183,7 +183,6 @@
 	// Fix their name
 	lich.dna.real_name = lich_mind.name
 	lich.real_name = lich_mind.name
-	lich.update_name_tag()
 	// Slap the lich mind in and get their ghost
 	lich_mind.transfer_to(lich)
 	lich_mind.grab_ghost(force = TRUE)

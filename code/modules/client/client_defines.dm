@@ -271,9 +271,6 @@
 	/// Discord information of the client if they have linked their account and we fetched it
 	var/list/discord
 
-	/// The last name tag update runned by our client
-	COOLDOWN_DECLARE(update_nametag_cooldown)
-
 	/// The DPI scale of the client. 1 is equivalent to 100% window scaling, 2 will be 200% window scaling
 	var/window_scaling
 

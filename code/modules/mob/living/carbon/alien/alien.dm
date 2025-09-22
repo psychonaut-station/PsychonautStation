@@ -175,7 +175,6 @@ Des: Removes all infected images from the alien.
 	if(!alien_name_regex.Find(old_name)) // check to make sure there's no admins doing funny stuff with naming these aliens
 		name = old_name
 		real_name = old_real_name
-		update_name_tag()
 		return
 
 	if(!unique_name)

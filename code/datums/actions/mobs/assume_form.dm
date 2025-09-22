@@ -65,7 +65,6 @@
 	// important: do this at the very end because we might have SIGNAL_ADDTRAIT for this on the mob that's dependent on the above logic
 	SEND_SIGNAL(owner, COMSIG_ACTION_DISGUISED_APPEARANCE, target_atom)
 	ADD_TRAIT(owner, TRAIT_DISGUISED, ACTION_TRAIT)
-	owner.update_name_tag()
 
 /// Resets the appearances of the mob to the default.
 /datum/action/cooldown/mob_cooldown/assume_form/proc/reset_appearances()
@@ -81,7 +80,6 @@
 	owner.desc = initial(owner.desc)
 
 	owner.name = initial(owner.name)
-	owner.update_name_tag()
 	owner.icon = initial(owner.icon)
 	owner.icon_state = initial(owner.icon_state)
 	owner.cut_overlays()

@@ -190,7 +190,6 @@
 		var/slime_id = rand(1, 1000)
 		name = "[slime_type.colour] [life_stage] slime ([slime_id])"
 		real_name = name
-		update_name_tag()
 	return ..()
 
 /mob/living/basic/slime/regenerate_icons()

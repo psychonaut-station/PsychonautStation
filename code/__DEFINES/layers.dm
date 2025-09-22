@@ -4,9 +4,6 @@
 //NEVER HAVE ANYTHING BELOW THIS PLANE ADJUST IF YOU NEED MORE SPACE
 #define LOWEST_EVER_PLANE -55
 
-#define PLANE_NAME_TAGS_BLOCKER -50
-#define NAME_TAG_RENDER_TARGET "*NAME_TAG_RENDER_TARGET"
-
 // Doesn't really layer, just throwing this in here cause it's the best place imo
 #define FIELD_OF_VISION_BLOCKER_PLANE -45
 #define FIELD_OF_VISION_BLOCKER_RENDER_TARGET "*FIELD_OF_VISION_BLOCKER_RENDER_TARGET"
@@ -40,7 +37,6 @@
 #define MASSIVE_OBJ_PLANE 3
 #define GHOST_PLANE 4
 #define POINT_PLANE 5
-#define PLANE_NAME_TAGS 6
 
 //---------- LIGHTING -------------
 /// Normal 1 per turf dynamic lighting underlays

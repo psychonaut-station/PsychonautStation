@@ -22,10 +22,6 @@
 		if(item.item_flags & ABSTRACT)
 			bad_contents -= item
 
-	for(var/atom/atom in assistant.contents)
-		if(istype(atom, /obj/effect/abstract) || istype(atom, /atom/movable/screen/name_shadow))
-			bad_contents -= atom
-
 	// Now, let's test to see if all of their clothing got properly deleted.
 	TEST_ASSERT_EQUAL(length(bad_contents), 0, "Assistant still has items in its contents after being put through an emagged recycler!")
 	// Consistent Assistants will always have the following: ID, PDA, backpack, a uniform, a headset, and a pair of shoes. If any of these are still present, then the recycler did not properly delete the assistant's clothing.
@@ -48,5 +44,4 @@
 	TEST_ASSERT_NULL(assistant.r_store, "Assistant still has an item in their right pocket after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.s_store, "Assistant still has an item in their suit storage slot after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.glasses, "Assistant still has glasses on after being put through an emagged recycler!")
-
 

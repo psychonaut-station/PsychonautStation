@@ -1718,7 +1718,6 @@
 	SEND_SIGNAL(src, COMSIG_LIVING_ON_WABBAJACKED, new_mob)
 	new_mob.name = real_name
 	new_mob.real_name = real_name
-	new_mob.update_name_tag()
 
 	// Transfer mind to the new mob (also handles actions and observers and stuff)
 	if(mind)
@@ -1973,7 +1972,6 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		identifier = rand(1, 999)
 	name = "[name] ([identifier])"
 	real_name = name
-	update_name_tag()
 
 /mob/living/proc/mob_try_pickup(mob/living/user, instant=FALSE)
 	if(!ishuman(user))
@@ -2065,10 +2063,6 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			updatehealth()
 		if(NAMEOF(src, lighting_cutoff))
 			sync_lighting_plane_cutoff()
-		if(NAMEOF(src, name))
-			update_name_tag()
-		if(NAMEOF(src, real_name))
-			update_name_tag()
 
 /mob/living/vv_get_header()
 	. = ..()

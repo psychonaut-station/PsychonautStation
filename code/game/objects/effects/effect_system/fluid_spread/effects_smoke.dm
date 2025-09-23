@@ -17,9 +17,7 @@
 	var/lifetime = 10 SECONDS
 	/// Makes the smoke react to changes on/of its turf.
 	var/static/loc_connections = list(
-		COMSIG_TURF_CALCULATED_ADJACENT_ATMOS = PROC_REF(react_to_atmos_adjacency_changes),
-		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
-		COMSIG_ATOM_EXITED = PROC_REF(on_exited),
+		COMSIG_TURF_CALCULATED_ADJACENT_ATMOS = PROC_REF(react_to_atmos_adjacency_changes)
 	)
 
 /obj/effect/particle_effect/fluid/smoke/Initialize(mapload, datum/fluid_group/group, ...)
@@ -28,18 +26,8 @@
 	setDir(pick(GLOB.cardinals))
 	AddElement(/datum/element/connect_loc, loc_connections)
 	SSsmoke.start_processing(src)
-	var/turf/t_loc = get_turf(src)
-	if(!t_loc)
-		return
-	for(var/mob/living/smoker in t_loc)
-		on_entered(t_loc, smoker)
 
 /obj/effect/particle_effect/fluid/smoke/Destroy()
-	var/turf/t_loc = get_turf(src)
-	if(t_loc)
-		for(var/mob/living/smoker in t_loc)
-			on_exited(t_loc, smoker)
-
 	SSsmoke.stop_processing(src)
 	if (spread_bucket)
 		SSsmoke.cancel_spread(src)
@@ -139,20 +127,6 @@
 	SEND_SIGNAL(smoker, COMSIG_CARBON_EXPOSED_TO_SMOKE, seconds_per_tick)
 	return TRUE
 
-/obj/effect/particle_effect/fluid/smoke/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-	SIGNAL_HANDLER
-	if(ismob(arrived))
-		var/mob/M = arrived
-		var/obj/effect/abstract/name_tag/name_tag = M.name_tag
-		name_tag?.hide(WEAKREF(src))
-
-/obj/effect/particle_effect/fluid/smoke/proc/on_exited(datum/source, atom/movable/gone, direction)
-	SIGNAL_HANDLER
-	if(ismob(gone))
-		var/mob/M = gone
-		var/obj/effect/abstract/name_tag/name_tag = M.name_tag
-		name_tag?.show(WEAKREF(src))
-
 /**
  * Makes the smoke react to nearby opening/closing airlocks and the like.
  * Makes it possible for smoke to spread through airlocks that open after the edge of the smoke cloud has already spread past them.
@@ -220,6 +194,13 @@
 /obj/effect/particle_effect/fluid/smoke/bad
 	lifetime = 16 SECONDS
 
+/obj/effect/particle_effect/fluid/smoke/bad/Initialize(mapload)
+	. = ..()
+	var/static/list/loc_connections = list(
+		COMSIG_ATOM_ENTERED = PROC_REF(on_entered),
+	)
+	AddElement(/datum/element/connect_loc, loc_connections)
+
 /obj/effect/particle_effect/fluid/smoke/bad/smoke_mob(mob/living/carbon/smoker)
 	. = ..()
 	if(!.)
@@ -238,8 +219,8 @@
  * - [old_loc][/atom]: The location the entering atom just was in.
  * - [old_locs][/list/atom]: The set of locations the entering atom was just in.
  */
-/obj/effect/particle_effect/fluid/smoke/bad/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
-	. = ..()
+/obj/effect/particle_effect/fluid/smoke/bad/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
+	SIGNAL_HANDLER
 	if(istype(arrived, /obj/projectile/beam))
 		var/obj/projectile/beam/beam = arrived
 		beam.damage *= 0.5

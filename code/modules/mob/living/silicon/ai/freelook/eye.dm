@@ -198,7 +198,6 @@
 	all_eyes += eyeobj
 	eyeobj.ai = src
 	eyeobj.name = "[name] (AI Eye)"
-	eyeobj.update_name_tag()
 	eyeobj.setLoc(loc, TRUE)
 	set_eyeobj_visible(TRUE)
 

@@ -47,9 +47,6 @@
 	// This forces a name update on the user, so we don't need to call name update ourselves
 	ADD_TRAIT(user, TRAIT_UNKNOWN_APPEARANCE, REF(src))
 
-	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
-	name_tag?.hide(WEAKREF(src))
-
 	current_slot = slot
 
 	on_icon_update(source)
@@ -110,9 +107,6 @@
 	current_slot = null
 	user.remove_alt_appearance("sneaking_mission[REF(src)]")
 	REMOVE_TRAIT(user, TRAIT_UNKNOWN_APPEARANCE, REF(src))
-
-	var/obj/effect/abstract/name_tag/name_tag = user.name_tag
-	name_tag?.show(WEAKREF(src))
 
 ///Checks if a mob is holding us, and if so we will modify our appearance to properly match w/ the mob.
 /datum/component/tactical/proc/tactical_update(obj/item/source)

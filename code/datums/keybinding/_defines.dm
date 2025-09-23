@@ -20,5 +20,3 @@
 #define WEIGHT_EMOTE 70
 #define WEIGHT_AI 80
 #define WEIGHT_LOWEST 999
-
-#define NAME_TAG_WIDTH (world.icon_size * 5)

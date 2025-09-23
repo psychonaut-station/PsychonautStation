@@ -506,7 +506,7 @@ max_antag_cap = 4
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
-track = "major"
+track = "mundane"
 tags = [
 	"combat",
 	"away_antag",

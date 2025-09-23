@@ -788,7 +788,7 @@
 	min_antag_cap = 3
 	repeatable = FALSE
 	signup_atom_appearance = /obj/item/card/id/advanced/prisoner
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_MUNDANE
 	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG)
 
 	/// What backstory is the fugitive(s)?

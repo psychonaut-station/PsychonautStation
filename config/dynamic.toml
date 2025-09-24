@@ -162,6 +162,11 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Latejoin Heretic"]
 weight = 3
@@ -172,6 +177,12 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"magical",
+]
 
 ["Latejoin Changeling"]
 weight = 3
@@ -182,6 +193,12 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"alien",
+]
 
 ["Latejoin Revolution"]
 weight = 1
@@ -190,6 +207,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Spiders"]
 weight.1 = 0
@@ -203,6 +226,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Light Pirates"]
 weight = 3
@@ -213,6 +242,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Heavy Pirates"]
 weight = 3
@@ -223,6 +258,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Midround Wizard"]
 weight.1 = 0
@@ -236,6 +277,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"magical",
+]
 
 ["Midround Nukeops"]
 weight.1 = 0
@@ -250,6 +297,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Midround Clownops"]
 weight = 0
@@ -261,6 +316,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Blob"]
 weight.1 = 0
@@ -274,6 +337,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"destructive",
+]
 
 ["Xenomorph"]
 weight.1 = 0
@@ -287,6 +356,12 @@ max_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
 ["Nightmare"]
 weight = 5
@@ -297,6 +372,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"spooky",
+]
 
 ["Space Dragon"]
 weight.1 = 0
@@ -310,6 +391,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"destructive",
+]
 
 ["Abductors"]
 weight = 5
@@ -320,6 +407,12 @@ min_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"away_antag",
+	"alien",
+	"team_antag",
+]
 
 ["Space Ninja"]
 weight.1 = 0
@@ -333,6 +426,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"external",
+]
 
 ["Revenant"]
 weight = 5
@@ -343,6 +442,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"away_antag",
+	"spooky",
+]
 
 ["Midround Changeling"]
 weight = 5
@@ -353,6 +457,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
 ["Paradox Clone"]
 weight = 5
@@ -363,16 +473,29 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"targeted",
+]
 
 ["Voidwalker"]
 weight = 5
-min_pop = 30
+min_pop = 40
 blacklisted_roles = []
 min_antag_cap = 1
 max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"spooky",
+	"magical",
+]
 
 ["Fugitives"]
 weight = 3
@@ -383,6 +506,11 @@ max_antag_cap = 4
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"away_antag",
+]
 
 ["Morph"]
 weight = 0
@@ -393,6 +521,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"away_antag",
+	"magical",
+]
 
 ["Slaughter Demon"]
 weight = 0
@@ -403,6 +536,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"away_antag",
+	"magical",
+	"spooky",
+]
 
 ["Midround Traitor"]
 weight = 10
@@ -413,6 +552,11 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Midround Malfunctioning AI"]
 weight.1 = 0
@@ -424,6 +568,11 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"crew_antag",
+	"destructive",
+]
 
 ["Blob Infection"]
 weight.1 = 0
@@ -435,6 +584,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"crew_antag",
+	"destructive",
+]
 
 ["Midround Obsessed"]
 weight.1 = 5
@@ -446,6 +601,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+	"targeted",
+]
 
 ["Roundstart Traitor"]
 weight = 10
@@ -456,6 +617,11 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Roundstart Malfunctioning AI"]
 weight.1 = 0
@@ -469,6 +635,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"crew_antag",
+	"destructive",
+]
 
 ["Roundstart Blood Brothers"]
 weight = 5
@@ -479,6 +650,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Roundstart Changeling"]
 weight = 3
@@ -489,6 +666,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"alien",
+]
 
 ["Roundstart Heretics"]
 weight = 3
@@ -499,6 +682,12 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"magical",
+]
 
 ["Roundstart Wizard"]
 weight.1 = 0
@@ -512,6 +701,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"magical",
+]
 
 ["Roundstart Blood Cult"]
 weight.1 = 0
@@ -528,6 +723,13 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+	"magical",
+]
 
 ["Roundstart Nukeops"]
 weight.1 = 0
@@ -542,6 +744,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Roundstart Clownops"]
 weight = 0
@@ -553,6 +763,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Roundstart Revolution"]
 weight.1 = 0
@@ -566,6 +784,12 @@ max_antag_cap = 3
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Roundstart Spies"]
 weight.1 = 0
@@ -580,6 +804,11 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Extended"]
 weight = 0
@@ -590,6 +819,8 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "Uncategorized"
+tags = []
 
 ["Meteor"]
 weight = 0
@@ -600,6 +831,11 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"external",
+]
 
 ["Nations"]
 weight = 0
@@ -610,3 +846,203 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "Uncategorized"
+tags = []
+
+["The Brute"]
+name = "The Brute"
+desc = "While the brute will hit hard, it tires quickly."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1.2
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 0.5
+extra_settings.execution_multiplier_high = 0.5
+
+["The Clown"]
+name = "The Clown"
+desc = "The clown creates mostly harmless events, its all fun and games with this one!"
+welcome_text = "HONKHONKHONKHONKHONK!"
+event_repetition_multiplier = 1
+restricted = 1
+weight = 0
+population_min = 0
+population_max = 0
+event_weight_multipliers.mundane = 5
+event_weight_multipliers.moderate = 4
+event_weight_multipliers.major = 0.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 4
+extra_settings.high = 2
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.communal = 1.1
+tag_multipliers.spooky = 1.2
+
+["The Guide"]
+name = "The Guide"
+desc = "The Guide will provide a balanced and varied experience. Consider this the default experience."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 1
+population_min = 0
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+
+["The Hermit"]
+name = "The Hermit"
+desc = "The Hermit will create mostly internal conflict around the station, and rarely any external threats."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 1.3
+restricted = 0
+weight = 3
+population_min = 0
+population_max = 0
+event_weight_multipliers.mundane = 1.2
+event_weight_multipliers.moderate = 1.1
+event_weight_multipliers.major = 0.9
+event_weight_multipliers.roleset = 0.9
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.external = 0.2
+tag_multipliers.away_antag = 0.8
+
+["The Jester"]
+name = "The Jester"
+desc = "The Jester will create much more events, with higher possibilities of them repeating."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 1.2
+restricted = 0
+weight = 2
+population_min = 40
+population_max = 0
+event_weight_multipliers.mundane = 1.2
+event_weight_multipliers.moderate = 1.3
+event_weight_multipliers.major = 1.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+
+["The Mystic"]
+name = "The Mystic"
+desc = "The Mystic gives events from beyond the veil, some of which may even be magic in nature."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 2
+population_min = 40
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.spooky = 1.2
+tag_multipliers.magical = 1.5
+tag_multipliers.space = 1.1
+
+["The Nobleman"]
+name = "The Nobleman"
+desc = "The Nobleman enjoys a good fight but abhors senseless destruction. Prefers heavy hits on single targets."
+welcome_text = "Set your eyes on the horizon."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 3
+population_min = 25
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.2
+event_weight_multipliers.major = 1.15
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 1.4
+tag_multipliers.destructive = 0.4
+tag_multipliers.targeted = 1.2
+
+["The Operative"]
+name = "The Operative"
+desc = "The Operative tries to create more direct confrontation with human threats."
+welcome_text = "The eyes of multiple organizations have been set on the station."
+event_repetition_multiplier = 0
+restricted = 1
+weight = 1
+population_min = 45
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1
+event_weight_multipliers.major = 1
+event_weight_multipliers.roleset = 1.1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.alien = 0.4
+tag_multipliers.crew_antag = 1.5
+
+["The Sleeper"]
+name = "The Sleeper"
+desc = "The Sleeper will create less impactful events, especially ones involving combat or destruction. The chill experience."
+welcome_text = "The day is going slowly."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 2
+population_min = 0
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.2
+event_weight_multipliers.major = 1.2
+event_weight_multipliers.roleset = 0.1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 0.6
+tag_multipliers.destructive = 0.7
+tag_multipliers.positive = 1.2
+
+["The Warrior"]
+name = "The Warrior"
+desc = "The Warrior will create more impactful events, often focused on combat."
+welcome_text = "You feel like a fight is brewing."
+event_repetition_multiplier = 0
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+event_weight_multipliers.mundane = 1
+event_weight_multipliers.moderate = 1.3
+event_weight_multipliers.major = 1.3
+event_weight_multipliers.roleset = 1
+extra_settings.low = 0
+extra_settings.high = 0
+extra_settings.execution_multiplier_low = 1
+extra_settings.execution_multiplier_high = 1
+tag_multipliers.combat = 1.5
+
+

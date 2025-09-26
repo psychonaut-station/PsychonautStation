@@ -124,6 +124,8 @@
 	if(new_w == pixel_w && new_x == pixel_x && new_y == pixel_y && new_z == pixel_z)
 		return FALSE
 
+	SEND_SIGNAL(src, COMSIG_LIVING_UPDATE_OFFSETS, new_x, new_y, new_w, new_z, animate)
+
 	if(!animate)
 		pixel_w = new_w
 		pixel_x = new_x
@@ -141,7 +143,10 @@
 		pixel_x = new_x,
 		pixel_y = new_y,
 		pixel_z = new_z,
+<<<<<<< HEAD
 		easing = easing,
+=======
+>>>>>>> 25b8f488f43b8e28e1f47306a0fbc4db6707acc1
 		flags = ANIMATION_PARALLEL,
 		time = time,
 	)

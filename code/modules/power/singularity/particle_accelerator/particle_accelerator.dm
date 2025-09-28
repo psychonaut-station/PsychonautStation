@@ -317,7 +317,7 @@
 
 /obj/machinery/particle_accelerator/full/proc/emit_particle(strength = 0)
 	last_shot = world.time
-	for(var/filler as anything in fillers)
+	for(var/filler in fillers)
 		if(filler != "emitter_center" && filler != "emitter_left" && filler != "emitter_right")
 			continue
 		var/turf/T = get_turf(fillers[filler])

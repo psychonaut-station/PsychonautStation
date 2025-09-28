@@ -263,9 +263,9 @@
 /area/ruin/space)
 "uS" = (
 /obj/structure/closet/crate/secure/weapon,
-/obj/item/ammo_box/strilka310/surplus,
-/obj/item/ammo_box/strilka310/surplus,
-/obj/item/ammo_box/strilka310/surplus,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "vm" = (

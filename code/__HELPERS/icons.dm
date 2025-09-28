@@ -1420,7 +1420,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/list/all_quirks = SANITIZE_LIST(selected_char?["all_quirks"])
 	if(SSquirks?.initialized)
 		our_human.cleanse_quirk_datums() // We need to clean all the quirk datums every time
-		for(var/quirk_name as anything in all_quirks)
+		for(var/quirk_name in all_quirks)
 			var/datum/quirk/quirk_type = SSquirks.quirks[quirk_name]
 			if(!(initial(quirk_type.quirk_flags) & QUIRK_CHANGES_APPEARANCE))
 				continue

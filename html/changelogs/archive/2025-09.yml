@@ -521,17 +521,6 @@
   - bugfix: Removed rogue decal in DeltaStation garden
   - bugfix: Added missing RD computer in RD office (Catwalk)
   - map: Replaced one of RND consoles on bridge with RD computer (Catwalk)
-<<<<<<< HEAD
-2025-09-22:
-  carmingenium:
-  - rscadd: tespih
-2025-09-23:
-  carmingenium:
-  - image: "tespih animasyonunda de\u011Fi\u015Fiklik"
-2025-09-24:
-  Rengan:
-  - rscdel: "Nametagler kald\u0131r\u0131ld\u0131"
-=======
   Hatterhat:
   - balance: General ammo boxes (not speedloaders, not stripper clips) can no longer
       multiload into currently loaded magazines (revolver cylinders, internal magazines).
@@ -605,6 +594,8 @@
   - bugfix: Fixed meson and thermal view action for cyborgs
   - bugfix: You can't eject infinite toner from cyborg decal painter anymore.
   - rscdel: Removed now unused cyborg meson and thermal goggles items.
+  carmingenium:
+  - rscadd: tespih
   Ghommie:
   - bugfix: Fixed some recipes taking too long to make.
   SmArtKar:
@@ -615,6 +606,8 @@
   Yobrocharlie:
   - rscadd: Added the Lahti-L39 rifle
 2025-09-23:
+  carmingenium:
+  - image: "tespih animasyonunda de\u011Fi\u015Fiklik"
   Gaxeer:
   - bugfix: '`/proc/duplicate_object` now properly sets copy location'
   Gboster-0:
@@ -652,6 +645,8 @@
   - balance: Hulk arm breaking now uses natural wound determination over forced wound
       effects at arm health thresholds.
   - code_imp: Cleans up some of the mutation code.
+  Rengan:
+  - rscdel: "Nametagler kald\u0131r\u0131ld\u0131"
   timothymtorres:
   - rscadd: Add cooking oil, nutraslop, and beer keg to cargo supply packs. Nutraslop
       serving trays and cooking oil vats can now be pushed and moved.
@@ -668,4 +663,3 @@
   - bugfix: Luxury Shuttle windows now allow some projectiles to pass.
   timothymtorres:
   - qol: Climbable objects now show up as an examine tag.
->>>>>>> 25b8f488f43b8e28e1f47306a0fbc4db6707acc1

@@ -53,13 +53,8 @@
 	// Calculate previous position for transition
 	var/turf/beacon_turf = get_turf(chosen) // the turf of origin we're travelling TO
 
-<<<<<<< HEAD
-	playsound(TO, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Devasa boyutta bluespace yer değişimi tespit edildi.", "Anomali Uyarısı")
-=======
 	playsound(beacon_turf, 'sound/effects/phasein.ogg', 100, TRUE)
-	priority_announce("Massive bluespace translocation detected.", "Anomaly Alert")
->>>>>>> 25b8f488f43b8e28e1f47306a0fbc4db6707acc1
+	priority_announce("Devasa boyutta bluespace yer değişimi tespit edildi.", "Anomali Uyarısı")
 
 	var/list/flashers = list()
 	for(var/mob/living/living in viewers(beacon_turf, null))

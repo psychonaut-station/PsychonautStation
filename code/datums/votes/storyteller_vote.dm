@@ -4,7 +4,6 @@
 	count_method = VOTE_COUNT_METHOD_SINGLE
 	winner_method = VOTE_WINNER_METHOD_SIMPLE
 	display_statistics = FALSE
-	var/current_round = TRUE
 	var/forced = FALSE
 
 /datum/vote/storyteller_vote/New()

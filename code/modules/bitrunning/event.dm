@@ -10,6 +10,7 @@
 	max_occurrences = 0
 	typepath = /datum/round_event/ghost_role/bitrunning_glitch
 	weight = 100
+	tags = list(TAG_OUTSIDER_ANTAG, TAG_TARGETED, TAG_COMBAT)
 	/// List of servers on the station
 	var/list/datum/weakref/active_servers = list()
 

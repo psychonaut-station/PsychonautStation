@@ -38,6 +38,9 @@
 	/// Flags dictating whether this event should be run on certain kinds of map
 	var/map_flags = NONE
 
+	var/track = UNCATEGORIZED_EVENTS
+	var/tags = list()
+
 /datum/round_event_control/New()
 	if(!length(admin_setup))
 		return

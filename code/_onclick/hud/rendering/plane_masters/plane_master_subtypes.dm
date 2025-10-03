@@ -534,26 +534,3 @@
 	SIGNAL_HANDLER
 	var/mob/our_mob = home?.our_hud?.mymob
 	hide_plane(our_mob)
-
-/atom/movable/screen/plane_master/name_tags
-	name = "name tag plane"
-	plane = PLANE_NAME_TAGS
-	appearance_flags = PLANE_MASTER|NO_CLIENT_COLOR
-	blend_mode_override = BLEND_ADD
-	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
-	critical = PLANE_CRITICAL_DISPLAY
-	render_relay_planes = list(RENDER_PLANE_GAME_WORLD)
-	alpha = 0
-
-/atom/movable/screen/plane_master/name_tags/Initialize(mapload)
-	. = ..()
-	add_filter("vision_cone", 1, alpha_mask_filter(render_source = OFFSET_RENDER_TARGET(NAME_TAG_RENDER_TARGET, offset), flags = MASK_INVERSE))
-
-/atom/movable/screen/plane_master/name_tag_blocker
-	name = "name tag blocker blocker"
-	documentation = "This is one of those planes that's only used as a filter. It masks out things that want to be hidden by fov.\
-		<br>Literally just contains FOV images, or masks."
-	plane = PLANE_NAME_TAGS_BLOCKER
-	render_target = NAME_TAG_RENDER_TARGET
-	render_relay_planes = list()
-	multiz_scaled = FALSE

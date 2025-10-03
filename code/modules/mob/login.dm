@@ -134,12 +134,6 @@
 
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_MOB_LOGGED_IN, src)
 
-	if(client && isliving(src) && (!iscyborg(src) && !isAI(src)))
-		name_tag_shadow = new(src)
-		SET_PLANE_EXPLICIT(name_tag_shadow, PLANE_NAME_TAGS_BLOCKER, src)
-		client.screen += name_tag_shadow
-		hud_used.always_visible_inventory += name_tag_shadow
-
 	return TRUE
 
 

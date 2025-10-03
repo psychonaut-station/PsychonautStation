@@ -505,7 +505,7 @@
 				continue
 
 			var/is_subjob = FALSE
-			for(var/subjob as anything in spawn_point.subjobs)
+			for(var/subjob in spawn_point.subjobs)
 				if (subjob == title)
 					is_subjob = TRUE
 					break

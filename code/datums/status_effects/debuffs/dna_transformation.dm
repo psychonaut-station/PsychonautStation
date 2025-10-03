@@ -36,7 +36,6 @@
 	new_dna.copy_dna(transforming.dna, COPY_DNA_SPECIES)
 	transforming.real_name = new_dna.real_name
 	transforming.name = transforming.get_visible_name()
-	transforming.update_name_tag()
 	transforming.updateappearance(mutcolor_update = TRUE)
 	transforming.domutcheck()
 	return TRUE

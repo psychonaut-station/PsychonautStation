@@ -38,7 +38,6 @@
 /mob/living/carbon/human/proc/update_visible_name()
 	SIGNAL_HANDLER
 	name = get_visible_name()
-	update_name_tag()
 
 /// Combines get_id_name() and get_face_name() to determine a mob's name variable. Made into a separate proc as it'll be useful elsewhere
 /mob/living/carbon/human/get_visible_name(add_id_name = TRUE, force_real_name = FALSE)

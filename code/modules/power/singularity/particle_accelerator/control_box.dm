@@ -241,7 +241,7 @@
 	var/obj/machinery/particle_accelerator/full/fpa = new(assemble_loc)
 	fpa.master = src
 	fpa.setDir(dir)
-	for(var/pa_ref as anything in connected_parts)
+	for(var/pa_ref in connected_parts)
 		if(pa_ref != "end_cap")
 			var/turf/pa_turf = get_turf(connected_parts[pa_ref])
 			var/obj/structure/filler/filler = new(pa_turf)
@@ -271,7 +271,7 @@
 	end_cap.setDir(dir)
 	end_cap.anchored = TRUE
 	end_cap.construction_state = PA_CONSTRUCTION_COMPLETE
-	for(var/filler_ref as anything in particle_accelerator.fillers)
+	for(var/filler_ref in particle_accelerator.fillers)
 		var/turf/pa_turf = get_turf(particle_accelerator.fillers[filler_ref])
 		var/obj/machinery/particle_accelerator/pa_type = pa_typepaths[filler_ref]
 		var/obj/machinery/particle_accelerator/fuel_chamber/pa = new pa_type(pa_turf)

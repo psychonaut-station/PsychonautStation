@@ -864,7 +864,6 @@
 	braintype = "AI Shell"
 	name = "Empty AI Shell-[identifier]"
 	real_name = name
-	update_name_tag()
 	GLOB.available_ai_shells |= src
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name //update the camera name too
@@ -884,7 +883,6 @@
 	GLOB.available_ai_shells -= src
 	name = "Unformatted Cyborg-[identifier]"
 	real_name = name
-	update_name_tag()
 	if(!QDELETED(builtInCamera))
 		builtInCamera.c_tag = real_name
 	diag_hud_set_aishell()

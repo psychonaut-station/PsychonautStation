@@ -216,6 +216,3 @@
 
 	/// A ref of the area we're taking our ambient loop from.
 	var/area/ambience_tracked_area
-
-	var/obj/effect/abstract/name_tag/name_tag
-	var/atom/movable/screen/name_shadow/name_tag_shadow

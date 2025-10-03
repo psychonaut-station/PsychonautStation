@@ -227,6 +227,9 @@
 	if(user)
 		the_name = user.real_name
 		visible_message(span_notice("[user] pulls the lever and the slot machine starts spinning!"))
+		if(isliving(user))
+			var/mob/living/living_user = user
+			living_user.add_mood_event("slots_spin", /datum/mood_event/slots)
 	else
 		the_name = "Exaybachay"
 
@@ -307,7 +310,14 @@
 	else if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = money + JACKPOT
 		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'")
+<<<<<<< HEAD
 		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
+=======
+		priority_announce("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!")
+		if(isliving(user) && (user in viewers(src)))
+			var/mob/living/living_user = user
+			living_user.add_mood_event("slots", /datum/mood_event/slots/win/jackpot)
+>>>>>>> 7ee1cd7c069ff3447ba16a77f454aa07e8455a09
 		jackpots += 1
 		money = 0
 		if(paymode == HOLOCHIP)
@@ -323,10 +333,16 @@
 	else if(linelength == 5)
 		visible_message("<b>[src]</b> says, 'Big Winner! You win a thousand credits!'")
 		give_money(BIG_PRIZE)
+		if(isliving(user) && (user in viewers(src)))
+			var/mob/living/living_user = user
+			living_user.add_mood_event("slots", /datum/mood_event/slots/win/big)
 
 	else if(linelength == 4)
 		visible_message("<b>[src]</b> says, 'Winner! You win four hundred credits!'")
 		give_money(SMALL_PRIZE)
+		if(isliving(user) && (user in viewers(src)))
+			var/mob/living/living_user = user
+			living_user.add_mood_event("slots", /datum/mood_event/slots/win)
 
 	else if(linelength == 3)
 		to_chat(user, span_notice("You win three free games!"))
@@ -337,6 +353,9 @@
 		balloon_alert(user, "no luck!")
 		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50)
 		did_player_win = FALSE
+		if(isliving(user) && (user in viewers(src)))
+			var/mob/living/living_user = user
+			living_user.add_mood_event("slots", /datum/mood_event/slots/loss)
 
 	if(did_player_win)
 		add_filter("jackpot_rays", 3, ray_filter)

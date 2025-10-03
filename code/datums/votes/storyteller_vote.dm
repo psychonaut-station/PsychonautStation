@@ -10,13 +10,20 @@
 	. = ..()
 	default_choices = SSstoryteller.get_valid_storytellers()
 
-/datum/vote/storyteller_vote/create_vote()
+/datum/vote/storyteller_vote/reset()
+	. = ..()
+	forced = FALSE
+
+/datum/vote/storyteller_vote/create_vote(mob/vote_creator)
 	var/list/new_choices = SSstoryteller.get_valid_storytellers()
 	if (new_choices)
 		default_choices = new_choices
 	. = ..()
 	if(!.)
 		return FALSE
+
+	if(!isnull(vote_creator))
+		src.forced = TRUE
 
 	if(length(choices) == 1) // Only one choice, no need to vote. Let's just auto-rotate it to the only remaining map because it would just happen anyways.
 		var/datum/storyteller/storyteller = SSstoryteller.storyteller_namelist[choices[1]]
@@ -31,11 +38,6 @@
 
 	return TRUE
 
-/datum/vote/storyteller_vote/can_be_initiated(forced = FALSE)
-	. = ..()
-	if(. == VOTE_AVAILABLE)
-		src.forced = forced
-
 /datum/vote/storyteller_vote/toggle_votable()
 	CONFIG_SET(flag/allow_storyteller_vote, !CONFIG_GET(flag/allow_storyteller_vote))
 
@@ -44,7 +46,6 @@
 
 /datum/vote/storyteller_vote/finalize_vote(winning_option)
 	SSstoryteller.set_storyteller(winning_option, FALSE, forced)
-	forced = initial(forced)
 
 /datum/vote/storyteller_vote/get_result_text(list/all_winners, real_winner, list/non_voters)
 	if(CONFIG_GET(flag/public_storyteller))

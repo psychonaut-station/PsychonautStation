@@ -122,6 +122,9 @@
 		illness_type = initial(fake_virus.name)
 	priority_announce("[locale_suffix_locative(station_name())] 7. seviye biyolojik salgın olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "[illness_type] Uyarısı", ANNOUNCER_OUTBREAK7)
 
+	// Set status displays to biohazard alert
+	send_status_display_biohazard_alert()
+
 /datum/round_event/disease_outbreak/setup()
 	announce_when = ADV_ANNOUNCE_DELAY
 

@@ -34,7 +34,7 @@
 
 /client/verb/rules()
 	set name = "rules"
-	set desc = "Show Server Rules."
+	set desc = "Sunucu kuralları"
 	set hidden = TRUE
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
@@ -56,7 +56,7 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
-	set desc = "Report an issue"
+	set desc = "Hata bildir"
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)

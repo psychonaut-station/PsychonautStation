@@ -33,6 +33,8 @@
       by items that may be on the tile
   - code_imp: adds a shift+alt click on proc for living mobs to explicitly open the
       tgui loot panel in addition to the already existing alt bind
+  auraden:
+  - image: added inhand sprites for clock head helmet
   lelandkemble:
   - rscadd: His Grace will now drink gender-change potions
   timothymtorres:
@@ -390,6 +392,18 @@
   - rscadd: Paradox Clones are now tasked to `Be the only [x] alive`, meaning means
       of identity cloning (such as Genetics or Changelings) may throw a wrench in
       your plan.
+  Rengan:
+  - rscadd: "Atmos, botany, janitor ve paramedic i\xE7in toolkit implantlar\u0131\
+      \ med lathesine eklendi."
+  - rscadd: "Elimizdeki silah\u0131n mermisini sayan Ammo Counter eklendi. Combat\
+      \ cybernetics ara\u015Ft\u0131rmas\u0131 sonras\u0131 med lathesinden basabilirsiniz."
+  - rscadd: "V\xFCcudumuza \xE7e\u015Fitli kimyasallar basan R.A.G.E cybernetici eklendi.\
+      \ Belli bir \u015Fans ile karaborsa da bulabilirsiniz."
+  - rscadd: Mantis blade eklendi. Kargo konsolunu hackleyerek alabilirsiniz.
+  - rscadd: Mantis shield eklendi. Kargo konsolundan alabilirsiniz.
+  - rscadd: "Science g\xF6zl\xFC\u011F\xFCn\xFCn hud implant\u0131 versiyonu eklendi."
+  - rscadd: Sendika Tipi Mantis blade tot uplinkine eklendi.
+  - rscadd: Sandevistan eklendi. Traitor uplinki ve karaborsada bulabilirsiniz.
   lelandkemble:
   - qol: Eating ice cream no longer curses you
   loganuk:
@@ -589,6 +603,8 @@
       server should run somewhat faster now, hopefully.
   Yobrocharlie:
   - rscadd: Added the Lahti-L39 rifle
+  carmingenium:
+  - rscadd: tespih
 2025-09-23:
   Gaxeer:
   - bugfix: '`/proc/duplicate_object` now properly sets copy location'
@@ -599,7 +615,62 @@
       are accounted for.
   - qol: Reworked drunken slurring. No longer inserts a bunch of random apostrophes,
       now creates more + longer drawn out words.
+  carmingenium:
+  - image: "tespih animasyonunda de\u011Fi\u015Fiklik"
   lelandkemble:
   - bugfix: Kickflippers now catch their board every time
   loganuk:
   - bugfix: Fixes endless updates to det forensic scanner into the UI
+2025-09-24:
+  Aliceee2ch:
+  - image: Added inhand sprite for CE professional RCD
+  Ghommie:
+  - qol: You can now rotate cannons.
+  - bugfix: Bluespace anomalies should no longer teleport 'un-teleportable' mobs like
+      anchored AIs or megafauna.
+  Hardly:
+  - spellcheck: Fixes 'souless' typo when trying to use enchanted deck of carot cards
+      as a changeling.
+  Melbert:
+  - bugfix: Atrocinated text is upside down again.
+  Rengan:
+  - rscdel: "Nametagler kald\u0131r\u0131ld\u0131"
+  Xander3359:
+  - bugfix: Fix SMES terminal having null cable_layer
+  mcbalaam, Ez-Briz:
+  - admin: Added a new TGUI spawn panel, removing it's ancestors - HTML "Create X"
+      panels
+  necromanceranne:
+  - balance: Special versions of hulk, such as the wizard's transformation spell and
+      the pirate warlord's superhuman powers, no longer suffer from arm breakage like
+      normal hulks do.
+  - balance: Hulk arm breaking now uses natural wound determination over forced wound
+      effects at arm health thresholds.
+  - code_imp: Cleans up some of the mutation code.
+  timothymtorres:
+  - rscadd: Add cooking oil, nutraslop, and beer keg to cargo supply packs. Nutraslop
+      serving trays and cooking oil vats can now be pushed and moved.
+2025-09-25:
+  Aliceee2ch:
+  - bugfix: Borg inducer can charge again
+  SmArtKar:
+  - bugfix: Fixed delayed viewport fitting on server join/init
+  necromanceranne:
+  - balance: Being frail or being more resistant to wounding is now more consistent
+      about how it hinders or benefits you.
+2025-09-26:
+  DaCoolBoss:
+  - bugfix: Luxury Shuttle windows now allow some projectiles to pass.
+  timothymtorres:
+  - qol: Climbable objects now show up as an examine tag.
+2025-09-29:
+  Cameron-The-Raven:
+  - bugfix: Omens properly transfer their damage modifier when multiple are applied.
+  SmArtKar:
+  - bugfix: Fixed Select Equipment admin verb opening on a blank tab
+  timothymtorres:
+  - qol: 'Add several new examine categories for objects descs that include: bomb-proof,
+      flammable, holograhic, crush-proof, and conductive. Also use hyphens for multi-word
+      examine tags.'
+  - bugfix: Fixes custom materials not appearing for things like structures when examined.
+  - bugfix: Fix custom materials on wood tables and racks

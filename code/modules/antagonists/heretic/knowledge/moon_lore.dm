@@ -162,8 +162,8 @@
 		WITNESS MY ASCENSION, THE MOON SMILES ONCE MORE AND FOREVER MORE IT SHALL!"
 
 	ascension_achievement = /datum/award/achievement/misc/moon_ascension
-	announcement_text = "%SPOOKY% Laugh, for the ringleader %NAME% has ascended! \
-						The truth shall finally devour the lie! %SPOOKY%"
+	announcement_text = "%SPOOKY% Gülün, çünkü %NAME% yükseldi! \
+						Doğru eninde sonunda yalanı yutacaktır! %SPOOKY%"
 	announcement_sound = 'sound/music/antag/heretic/ascend_moon.ogg'
 
 /datum/heretic_knowledge/ultimate/moon_final/is_valid_sacrifice(mob/living/sacrifice)

@@ -439,6 +439,8 @@
   Mothblocks:
   - rscadd: You can now craft radio jammers.
   - balance: Radio jammers have had their cost lowered from 5 TC to 1 TC.
+  Rengan:
+  - rscadd: "T\xFCrk\xE7e olmayan fontlara t\xFCrk\xE7e karakterler eklendi"
   SmArtKar:
   - bugfix: You can no longer insert infinite amounts of slime cores into advanced
       chem grenades
@@ -470,6 +472,10 @@
       from a book, you can now swap between them at will via a button in the IC tab!
   RandomDudeFromTheRim:
   - spellcheck: fixed a single typo when using Vortex Recall
+  Rengan:
+  - bugfix: "Prosopagnosia quirki olanlar canl\u0131lar art\u0131k di\u011Fer canl\u0131\
+      lar\u0131n isimlerini nametagler arac\u0131l\u0131\u011F\u0131 ile g\xF6remeyecek."
+  - bugfix: "Smoke i\xE7inde nametaglar\u0131n g\xF6z\xFCkmesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: You no longer can insert sheets into unpowered, broken or opened autolathes.
   - qol: Screwdriver/crowbar/multitool interactions on autolathes now work with left
@@ -559,6 +565,8 @@
   - bugfix: fixed a small rendering issue with fishes inside an aquarium.
   Melbert:
   - bugfix: Fixed drunkness mood printout
+  Rengan:
+  - bugfix: "Ipc chassisin Ipc olmayan \u0131rklarda g\xF6z\xFCkmesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: Fixed premium internals boxes still being stretched
   Twaticus:
@@ -581,6 +589,8 @@
       iron
   Rhials:
   - qol: Blobs now have a custom icon for the orbit menu/ComboHUD.
+  Seefaaa:
+  - bugfix: "516'da tgui \xE7al\u0131\u015Fmaya devam edecek."
   SmArtKar:
   - qol: Improved formatting on holopad controls for AI
   - bugfix: Fixed holopads softlocking AIs

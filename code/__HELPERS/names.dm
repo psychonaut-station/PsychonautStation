@@ -130,8 +130,6 @@ GLOBAL_VAR(command_name)
 	var/holiday_name = length(GLOB.holidays) && pick(GLOB.holidays)
 	if(holiday_name)
 		var/datum/holiday/holiday = GLOB.holidays[holiday_name]
-		if(istype(holiday, /datum/holiday/friday_thirteenth))
-			random = 13
 		name = holiday.getStationPrefix()
 		//get normal name
 	if(!name)
@@ -265,22 +263,22 @@ GLOBAL_DATUM(syndicate_code_response_regex, /regex)
 			if(2)
 				switch(rand(1,3))//Food, drinks, or places. Only selectable once.
 					if(1)
-						. += LOWER_TEXT(pick(drinks))
+						. += LOCALE_LOWER_TEXT(pick(drinks))
 					if(2)
-						. += LOWER_TEXT(pick(foods))
+						. += LOCALE_LOWER_TEXT(pick(foods))
 					if(3)
 						. += LOWER_TEXT(pick(locations))
 				safety -= 2
 			if(3)
 				switch(rand(1,4))//Abstract nouns, objects, adjectives, threats. Can be selected more than once.
 					if(1)
-						. += LOWER_TEXT(pick(nouns))
+						. += LOCALE_LOWER_TEXT(pick(nouns))
 					if(2)
-						. += LOWER_TEXT(pick(objects))
+						. += LOCALE_LOWER_TEXT(pick(objects))
 					if(3)
-						. += LOWER_TEXT(pick(adjectives))
+						. += LOCALE_LOWER_TEXT(pick(adjectives))
 					if(4)
-						. += LOWER_TEXT(pick(threats))
+						. += LOCALE_LOWER_TEXT(pick(threats))
 		if(!return_list)
 			if(words == 1)
 				. += "."

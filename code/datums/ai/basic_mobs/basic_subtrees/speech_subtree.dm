@@ -217,6 +217,13 @@
 	emote_hear = list("rawrs.","grumbles.","grawls.", "stomps!")
 	emote_see = list("stares ferociously.")
 
+/datum/ai_planning_subtree/random_speech/vada
+	speech_chance = 5
+	speak = list("vadee.", "amınake!!",)
+	sound = list('sound/mobs/non-humanoids/wada.ogg')
+	emote_hear = list("vada!", "vadeee.", "amınake!!")
+	emote_see = list("vadee.", "vada!!")
+
 /datum/ai_planning_subtree/random_speech/cats
 	speech_chance = 10
 	sound = list(SFX_CAT_MEOW)

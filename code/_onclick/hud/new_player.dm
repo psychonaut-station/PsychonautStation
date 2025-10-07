@@ -767,11 +767,12 @@
 		if(hud.mymob.client?.holder)
 			new_maptext = "<span style='text-align: center; vertical-align: middle'>Starting in [time_remaining]<br /> \
 				[LAZYLEN(GLOB.clients)] player\s<br /> \
-				[SSticker.totalPlayersReady] players ready<br /> \
+				[SSticker.totalPlayersReady] player\s ready<br /> \
 				[SSticker.total_admins_ready] / [length(GLOB.admins)] admins ready</span>"
 		else
-			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining]</span><br /> \
-				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
+			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 12px'>[time_remaining]</span><br />\
+				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s<br />\
+				[SSticker.totalPlayersReady] player\s ready</span>"
 
 	maptext = MAPTEXT(new_maptext)
 

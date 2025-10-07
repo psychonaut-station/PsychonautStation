@@ -485,3 +485,4 @@
 	name = "bitrunner's plasma envirosuit helmet"
 	desc = "An envirohelmet with extended blue light filters for bitrunning plasmamen."
 	icon_state = "bitrunner_envirohelm"
+

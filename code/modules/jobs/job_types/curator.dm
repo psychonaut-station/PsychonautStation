@@ -35,6 +35,13 @@
 
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
+	alt_titles = list(
+		"Curator",
+		"Librarian",
+		"Journalist",
+		"Archivist",
+		"Television Presenter"
+	)
 
 /datum/outfit/job/curator
 	name = "Curator"
@@ -45,6 +52,7 @@
 	backpack_contents = list(
 		/obj/item/barcodescanner = 1,
 		/obj/item/choice_beacon/hero = 1,
+		/obj/item/announcementbeacon = 1,
 	)
 	belt = /obj/item/modular_computer/pda/curator
 	ears = /obj/item/radio/headset/headset_srvent

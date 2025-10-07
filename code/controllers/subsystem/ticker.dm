@@ -68,6 +68,8 @@ SUBSYSTEM_DEF(ticker)
 	/// ID of round reboot timer, if it exists
 	var/reboot_timer = null
 
+	var/list/popcount
+
 /datum/controller/subsystem/ticker/Initialize()
 	var/list/byond_sound_formats = list(
 		"mid" = TRUE,
@@ -161,8 +163,22 @@ SUBSYSTEM_DEF(ticker)
 			for(var/client/C in GLOB.clients)
 				window_flash(C, ignorepref = TRUE) //let them know lobby has opened up.
 			to_chat(world, span_notice("<b>Welcome to [station_name()]!</b>"))
+
+			if (CONFIG_GET(flag/enable_discord_round_alerts))
+				var/list/webhook_info = list()
+				var/list/headers = list()
+
+				webhook_info["content"] = "<@&[CONFIG_GET(string/discord_round_alert_role_id)]> **TG:** [SSmapping.current_map.map_name] haritasında yeni round başlıyor!"
+				headers["Content-Type"] = "application/json"
+
+				var/webhook = CONFIG_GET(string/discord_round_alert_webhook_url)
+				var/datum/http_request/request = new()
+				request.prepare(RUSTG_HTTP_METHOD_POST, webhook, json_encode(webhook_info), headers, "tmp/discord_roundalert.json")
+				request.begin_async()
+
 			for(var/channel_tag in CONFIG_GET(str_list/channel_announce_new_game))
 				send2chat(new /datum/tgs_message_content("New round starting on [SSmapping.current_map.map_name]!"), channel_tag)
+
 			current_state = GAME_STATE_PREGAME
 			SEND_SIGNAL(src, COMSIG_TICKER_ENTER_PREGAME)
 

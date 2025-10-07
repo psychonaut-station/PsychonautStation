@@ -131,6 +131,7 @@
 // Used in visible_message_flags, audible_message_flags and runechat_flags
 /// Automatically applies emote related spans/fonts/formatting to the message
 #define EMOTE_MESSAGE (1<<0)
+#define LOOC_MESSAGE (1<<1)
 /// By default, self_message will respect the visual / audible component of the message.
 /// Meaning that if the message is visual, and sourced from a blind mob, they will not see it.
 /// This flag skips that behavior, and will always show the self message to the mob.

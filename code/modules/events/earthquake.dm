@@ -90,7 +90,7 @@
 		underbelly += GET_TURF_BELOW(turf_to_quake)
 
 /datum/round_event/earthquake/announce(fake)
-	priority_announce("Planetary monitoring systems indicate a devastating seismic event in the near future.", "Seismic Report")
+	priority_announce("Gezegensel izleme sistemleri yakın gelecekte yıkıcı bir deprem olacağına işaret ediyor.", "Sismik Raporu")
 
 /datum/round_event/earthquake/start()
 	notify_ghosts(
@@ -156,6 +156,8 @@
 			continue
 		shake_camera(earthquake_witness, 2 SECONDS, 4)
 		earthquake_witness.playsound_local(earthquake_witness, 'sound/effects/explosion/explosionfar.ogg', 75)
+
+	creak_lights()
 
 	// Step two of the destruction, which detonates the turfs in the earthquake zone. There is no actual explosion, meaning stuff around the earthquake zone is perfectly safe.
 	// All turfs, and everything else that IS in the earthquake zone, however, will behave as if it were bombed.

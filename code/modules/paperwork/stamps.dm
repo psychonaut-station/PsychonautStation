@@ -114,5 +114,11 @@
 	icon_state = "stamp-syndicate"
 	dye_color = DYE_SYNDICATE
 
+/obj/item/stamp/borg
+	name = "integrated rubber stamp"
+	icon = 'icons/psychonaut/obj/service/bureaucracy.dmi'
+	icon_state = "stamp-borg"
+	dye_color = DYE_BLUE
+
 /obj/item/stamp/attack_paw(mob/user, list/modifiers)
 	return attack_hand(user, modifiers)

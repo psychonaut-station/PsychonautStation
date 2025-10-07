@@ -571,6 +571,7 @@ ADMIN_VERB(check_bomb_impacts, R_DEBUG, "Check Bomb Impact", "See what the effec
 		if(creaking) // 5 seconds after the bang, the station begins to creak
 			addtimer(CALLBACK(listener, TYPE_PROC_REF(/mob, playsound_local), epicenter, null, rand(FREQ_LOWER, FREQ_UPPER), TRUE, frequency, null, null, FALSE, hull_creaking_sound, 0), CREAK_DELAY)
 
+
 #undef CREAK_DELAY
 #undef QUAKE_CREAK_PROB
 #undef ECHO_CREAK_PROB

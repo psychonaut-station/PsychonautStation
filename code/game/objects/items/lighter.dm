@@ -36,6 +36,10 @@
 		"dame",
 		"thirteen",
 		"snake",
+		"goldie",
+	)
+	var/static/list/icon_overrides = list(
+		"goldie" = 'icons/psychonaut/obj/cigarettes.dmi',
 	)
 
 /obj/item/lighter/Initialize(mapload)
@@ -92,7 +96,7 @@
 
 /// Generates an overlay used by this lighter.
 /obj/item/lighter/proc/create_lighter_overlay()
-	return mutable_appearance(icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
+	return mutable_appearance(icon_overrides[overlay_state] || icon, "lighter_overlay_[overlay_state][lit ? "-on" : ""]")
 
 /obj/item/lighter/ignition_effect(atom/A, mob/user)
 	if(get_temperature())

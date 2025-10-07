@@ -36,6 +36,9 @@
 /// short form server name used for the DB
 /datum/config_entry/string/serversqlname
 
+/// link that will be displayed on hub title
+/datum/config_entry/string/hub_name_link
+
 /// station name (the name of the station in-game)
 /datum/config_entry/string/stationname
 
@@ -63,6 +66,9 @@
 /// log messages sent in OOC
 /datum/config_entry/flag/log_ooc
 
+/// log messages sent in LOOC
+/datum/config_entry/flag/log_looc
+
 /// log login/logout
 /datum/config_entry/flag/log_access
 
@@ -71,6 +77,9 @@
 
 /// log client say
 /datum/config_entry/flag/log_say
+
+/// log chat hallucination
+/datum/config_entry/flag/log_hallucination
 
 /// log admin actions
 /datum/config_entry/flag/log_admin
@@ -81,6 +90,9 @@
 
 ///Log Music Requests
 /datum/config_entry/flag/log_internet_request
+
+///Log e-jukebox
+/datum/config_entry/flag/log_jukebox
 
 /// log silicons
 /datum/config_entry/flag/log_silicon
@@ -327,14 +339,23 @@
 /datum/config_entry/string/forumurl
 	default = "http://tgstation13.org/phpBB/index.php"
 
+/datum/config_entry/string/patreonurl
+	default = "https://www.patreon.com/PsychonautStation"
+
 /datum/config_entry/string/rulesurl
-	default = "http://tgstation13.org/wiki/Rules"
+	default = "http://turkb.us/rules"
 
 /datum/config_entry/string/githuburl
-	default = "https://www.github.com/tgstation/tgstation"
+	default = "https://github.com/psychonaut-station/PsychonautStation"
 
 /datum/config_entry/string/discordbotcommandprefix
 	default = "?"
+
+/datum/config_entry/string/apitoken
+	protection = CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/apiurl
+	default = "https://api.turkb.us/v2"
 
 /datum/config_entry/string/roundstatsurl
 
@@ -386,6 +407,9 @@
 	return str_val != "byond://address:port" && ..()
 
 /datum/config_entry/string/invoke_youtubedl
+	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
+
+/datum/config_entry/string/ytdl_cookies
 	protection = CONFIG_ENTRY_LOCKED | CONFIG_ENTRY_HIDDEN
 
 /datum/config_entry/flag/request_internet_sound
@@ -738,6 +762,10 @@
 
 /datum/config_entry/flag/toast_notification_on_init
 
+/datum/config_entry/flag/enable_discord_round_alerts
+/datum/config_entry/string/discord_round_alert_webhook_url
+/datum/config_entry/string/discord_round_alert_role_id
+
 /datum/config_entry/flag/config_errors_runtime
 	default = FALSE
 
@@ -748,6 +776,14 @@
 /datum/config_entry/number/upload_limit_admin
 	default = 5242880
 	min_val = 0
+
+/datum/config_entry/number/timezone_offset
+	default = 36000
+	min_val = 1
+	integer = TRUE
+
+/datum/config_entry/flag/require_discord_linking
+	default = FALSE
 
 /// The minimum number of tallies a map vote entry can have.
 /datum/config_entry/number/map_vote_minimum_tallies
@@ -773,6 +809,9 @@
 	min_val = 0
 	max_val = 100
 
+/datum/config_entry/flag/allow_randomized_rooms
+	default = TRUE
+
 /// If admins with +DEBUG can initialize byond-tracy midround.
 /datum/config_entry/flag/allow_tracy_start
 	protection = CONFIG_ENTRY_LOCKED
@@ -793,3 +832,5 @@
 
 /datum/config_entry/flag/generate_assets_in_init
 	default = FALSE
+
+/datum/config_entry/string/suspicious_log_discord_role_id

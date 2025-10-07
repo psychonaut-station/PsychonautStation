@@ -93,6 +93,14 @@
 	greyscale_colors = "#414344"
 	flags_1 = IS_PLAYER_COLORABLE_1
 
+/obj/item/clothing/suit/jacket/dante
+	name = "manager jacket"
+	desc = "An oversized jacket. %90 cotton %10 winrate"
+	icon = 'icons/psychonaut/obj/clothing/suits/jacket.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/jacket.dmi'
+	icon_state = "dante"
+
+
 /obj/item/clothing/suit/jacket/fancy
 	name = "fancy fur coat"
 	desc = "Rated 10 out of 10 in Cosmo for best coat brand."

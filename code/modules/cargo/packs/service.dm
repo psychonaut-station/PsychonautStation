@@ -285,6 +285,14 @@
 	crate_type = /obj/structure/closet/crate/large
 	discountable = SUPPLY_PACK_UNCOMMON_DISCOUNTABLE
 
+/datum/supply_pack/service/electrical_jukebox
+	name = "Electrical Jukebox Crate"
+	desc = "An advanced music player supports web music."
+	cost = CARGO_CRATE_VALUE * 4
+	contains = list(/obj/item/electrical_jukebox_beacon)
+	crate_name =  "electrical jukebox crate"
+	dangerous = TRUE
+
 /// Spare bar sign wallmount
 /datum/supply_pack/service/bar_sign
 	name = "Bar Sign Replacement Kit"
@@ -307,6 +315,18 @@
 	)
 	crate_name = "bowmaking starter kit crate"
 	crate_type = /obj/structure/closet/crate/wooden
+
+/// Doner Machine.
+/datum/supply_pack/service/doner_grill
+	name = "Doner Grill Crate"
+	desc = "Otomatik döner makinesi, etin dönerken ısı kaynağına yakın bir şekilde pişirilmesi için tasarlanmış mutfak ekipmanı."
+	cost = CARGO_CRATE_VALUE * 7
+	contains = list(
+		/obj/machinery/doner_grill = 1,
+		/obj/item/doner_stick = 2,
+		/obj/item/knife/doner = 1
+	)
+	crate_name = "doner grill crate"
 
 /datum/supply_pack/service/mousetraps
 	name = "Pest-B-Gon Mousetraps"

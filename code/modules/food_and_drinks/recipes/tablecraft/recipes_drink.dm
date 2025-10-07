@@ -84,6 +84,16 @@
 	result = /obj/item/reagent_containers/cup/glass/bottle/patron
 	category = CAT_DRINK
 
+/datum/crafting_recipe/rakibottle
+	name = "Rakia Bottle"
+	time = 10
+	reqs = list(
+		/obj/item/reagent_containers/cup/glass/bottle = 1,
+		/datum/reagent/consumable/ethanol/raki = 100
+	)
+	result = /obj/item/reagent_containers/cup/glass/bottle/raki
+	category = CAT_DRINK
+
 ////////////////////// Non-alcoholic recipes ///////////////////
 
 /datum/crafting_recipe/holybottle

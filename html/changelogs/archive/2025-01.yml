@@ -78,8 +78,6 @@
   SmArtKar, AnturK:
   - admin: Fixes admin observe showing all antags as revs upon enabling Real Name
       Display
-  high-speedspin-cycle:
-  - qol: The experimental deconstructive scanner can now scan multiple items.
   necromanceranne:
   - balance: The compact combat shotgun is now found in the warden's locker.
   timothymtorres:
@@ -353,6 +351,12 @@
   - bugfix: fixes plasma stabilizer module not showing a visor on modsuits
   - bugfix: makes the plasma stabilizer module actually visible
   - bugfix: makes rave module grey by default as it was meant to be
+  Rengan:
+  - rscadd: "Karakter olu\u015Fturma men\xFCs\xFCne karakter ge\xE7mi\u015Fini yazmak\
+      \ i\xE7in Background k\u0131sm\u0131 eklendi."
+  - rscadd: Crew records console oyuna eklendi.
+  - rscadd: "Adveanced health analyzerde art\u0131k ki\u015Finin medikal notlar\u0131\
+      \ g\xF6z\xFCk\xFCcek."
   SmArtKar:
   - bugfix: Fixed wawa's xenobio reagent grinders being inaccessible
   - bugfix: Fixed camouflage implant missing icon
@@ -524,6 +528,11 @@
   - bugfix: Plants with reagent traits in the graft now properly say the name of the
       grafted reagent
   - image: yet another medkit resprite
+  RengaN02:
+  - rscadd: Singularity engine eklendi.
+  Rengan:
+  - bugfix: "Character backgroundu yazarken T\xFCrk\xE7e karakterlerin s\u0131k\u0131\
+      nt\u0131 \xE7\u0131karmas\u0131 d\xFCzeltildi"
   SmArtKar:
   - bugfix: Fixed active turfs on the new Turreted Outpost ruin.
 2025-01-20:
@@ -591,6 +600,8 @@
       an issue report if they exhibit any unusual behaviour.
   Melbert:
   - bugfix: Heads with brains no longer look debrained
+  Rengan:
+  - bugfix: "Ipcnin hairline fracture gibi yaralanmalar\u0131 olmas\u0131 d\xFCzeltildi"
   SmArtKar:
   - bugfix: Clipboards should no longer retain pens that got removed via Instant Recall
   StrangeWeirdKitten:
@@ -690,6 +701,9 @@
   valzargaming:
   - bugfix: Typo in path for cavesound3.ogg
 2025-01-26:
+  dwasint, Rengan:
+  - rscadd: "Joblara alternatif ba\u015Fl\u0131klar eklendi, Occupations sekmesinden\
+      \ se\xE7ebilirsiniz."
   Profakos:
   - bugfix: IEDs can now also be crafted using pipes you have ripped up from the ground.
   SmArtKar:
@@ -751,6 +765,8 @@
       go to "OOC" tabs)'
   - qol: '"Tip of the Round" and "Show Server Revision" are also typed as "Info",
       rather than "OOC" and untyped respectively'
+  RengaN02:
+  - bugfix: ipcler heretic kalbine sahip olabilecek
   SmArtKar:
   - bugfix: Fixed evidence bag not reverting to tiny size after dumping its contents
       out
@@ -781,6 +797,8 @@
   OrionTheFox:
   - image: resprited Extinguisher Cabinets (did you know there's craftable Extinguishers?
       "Improvised cooling spray"? I didn't. Now I do though, and so do you!)
+  Rengan:
+  - rscadd: annoyed, sweat, ve pose emotesi eklendi.
   SmArtKar:
   - bugfix: Springlock MODule now only activates when you have at least a single sealed
       piece

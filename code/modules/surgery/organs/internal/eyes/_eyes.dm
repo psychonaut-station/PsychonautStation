@@ -40,6 +40,7 @@
 	var/eye_color_left = null // set to a hex code to override a mob's left eye color
 	var/eye_color_right = null // set to a hex code to override a mob's right eye color
 	var/eye_icon_state = "eyes"
+	var/eye_icon = 'icons/mob/human/human_face.dmi'
 	/// Do these eyes have blinking animations
 	var/blink_animation = TRUE
 	/// Icon state for iris overlays
@@ -50,7 +51,7 @@
 	var/obj/effect/abstract/eyelid_effect/eyelid_left
 	var/obj/effect/abstract/eyelid_effect/eyelid_right
 
-	/// Glasses cannot be worn over these eyes. Currently unused
+	/// Glasses cannot be worn over these eyes.
 	var/no_glasses = FALSE
 	/// indication that the eyes are undergoing some negative effect
 	var/damaged = FALSE
@@ -72,8 +73,8 @@
 /obj/item/organ/eyes/Initialize(mapload)
 	. = ..()
 	if (blink_animation)
-		eyelid_left = new(src, "[eye_icon_state]_l")
-		eyelid_right = new(src, "[eye_icon_state]_r")
+		eyelid_left = new(src, eye_icon, "[eye_icon_state]_l")
+		eyelid_right = new(src, eye_icon, "[eye_icon_state]_r")
 
 /obj/item/organ/eyes/Destroy()
 	QDEL_NULL(eyelid_left)
@@ -96,6 +97,15 @@
 	RegisterSignal(receiver, COMSIG_COMPONENT_CLEAN_FACE_ACT, PROC_REF(on_face_wash))
 	if (scarring)
 		apply_scarring_effects()
+
+	if(!no_glasses)
+		return
+
+	var/mob/living/carbon/human/human_receiver = receiver
+	if(!human_receiver.can_mutate())
+		return
+	var/datum/species/rec_species = human_receiver.dna.species
+	rec_species.update_no_equip_flags(human_receiver, rec_species.no_equip_flags | ITEM_SLOT_EYES)
 
 /// Refreshes the visuals of the eyes
 /// If call_update is TRUE, we also will call update_body
@@ -133,6 +143,9 @@
 			organ_owner.remove_fov_trait(type)
 		if(!special)
 			human_owner.update_body()
+		if(human_owner.can_mutate() && no_glasses)
+			var/datum/species/rec_species = human_owner.dna.species
+			rec_species.update_no_equip_flags(organ_owner, initial(rec_species.no_equip_flags))
 
 	// Cure blindness from eye damage
 	organ_owner.cure_blind(EYE_DAMAGE)
@@ -260,11 +273,12 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
-	if(isnull(eye_icon_state))
+	if(isnull(eye_icon_state) || isnull(eye_icon))
 		return list()
 
-	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -EYES_LAYER, parent)
-	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -EYES_LAYER, parent)
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -EYES_LAYER, parent)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -EYES_LAYER, parent)
+
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(overlay_ignore_lighting && !(parent.obscured_slots & HIDEEYES))
@@ -522,8 +536,9 @@
 	layer = -EYES_LAYER
 	vis_flags = VIS_INHERIT_DIR | VIS_INHERIT_PLANE | VIS_INHERIT_ID
 
-/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_state)
+/obj/effect/abstract/eyelid_effect/Initialize(mapload, new_icon, new_state)
 	. = ..()
+	icon = new_icon
 	icon_state = new_state
 
 #undef BASE_BLINKING_DELAY
@@ -1132,6 +1147,14 @@
 	pupils_name = "slit pupils"
 	penlight_message = "have vertically slit pupils and tinted whites"
 
+/obj/item/organ/eyes/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	overlay_ignore_lighting = TRUE
+	no_glasses = TRUE
+
 /obj/item/organ/eyes/night_vision/maintenance_adapted
 	name = "adapted eyes"
 	desc = "These red eyes look like two foggy marbles. They give off a particularly worrying glow in the dark."
@@ -1169,6 +1192,17 @@
 /obj/item/organ/eyes/night_vision/maintenance_adapted/on_mob_remove(mob/living/carbon/unadapted, special = FALSE, movement_flags)
 	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
 	return ..()
+
+/obj/item/organ/eyes/night_vision/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	overlay_ignore_lighting = TRUE
+	no_glasses = TRUE
+	low_light_cutoff = list(20, 15, 0)
+	medium_light_cutoff = list(35, 30, 0)
+	high_light_cutoff = list(50, 40, 0)
 
 /obj/item/organ/eyes/pod
 	name = "pod eyes"

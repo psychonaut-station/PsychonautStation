@@ -73,6 +73,7 @@
 	))
 	/// Areas where you can't be tasked to draw a rune, usually because they're too mean
 	var/static/list/area_blacklist = typecacheof(list(
+		/area/station/engineering/singularity,
 		/area/station/engineering/supermatter,
 		/area/station/engineering/transit_tube,
 		/area/station/science/ordnance/bomb,

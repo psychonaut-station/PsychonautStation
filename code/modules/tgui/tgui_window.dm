@@ -26,6 +26,8 @@
 	var/initial_inline_js
 	var/initial_inline_css
 
+	var/communication_locked = FALSE // bu tg'de yok bizde niye var bilmiyorum amk
+
 	var/list/oversized_payloads = list()
 
 /**
@@ -76,6 +78,7 @@
 	src.initial_inline_js = inline_js
 	src.initial_inline_css = inline_css
 	status = TGUI_WINDOW_LOADING
+	communication_locked = FALSE
 	fatally_errored = FALSE
 	// Build window options
 	var/options = "file=[id].html;can_minimize=0;auto_format=0;"
@@ -393,6 +396,20 @@
 			var/payload_id = payload["id"]
 			append_payload_chunk(payload_id, payload["chunk"])
 			send_message("acknowlegePayloadChunk", list("id" = payload_id))
+
+/**
+ * public
+ *
+ * Blocks all communication with the server until the window is closed or reloaded by browse()
+ */
+/datum/tgui_window/proc/lock_communication()
+	if(!client || isnull(id))
+		return
+	communication_locked = TRUE
+	client << output("", is_browser \
+		? "[id]:lock_communication" \
+		: "[id].browser:lock_communication")
+
 
 /datum/tgui_window/vv_edit_var(var_name, var_value)
 	return var_name != NAMEOF(src, id) && ..()

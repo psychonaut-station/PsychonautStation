@@ -538,6 +538,11 @@
 	flickering = FALSE
 	update(FALSE)
 
+/obj/machinery/light/proc/flicker_open(amount = rand(10, 20))
+	on = TRUE
+	update(FALSE)
+	flicker(amount)
+
 // ai attack - make lights flicker, because why not
 
 /obj/machinery/light/attack_ai(mob/user)
@@ -761,3 +766,10 @@
 	// has to render above tram things (trams are stupid)
 	layer = BELOW_OPEN_DOOR_LAYER
 	plane = GAME_PLANE
+
+/proc/creak_lights()
+	for(var/obj/machinery/light/L in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/light))
+		if(is_station_level(L.z) && L.on && L.status == LIGHT_OK)
+			L.on = FALSE
+			L.update(FALSE)
+			addtimer(CALLBACK(L, TYPE_PROC_REF(/obj/machinery/light, flicker_open), rand(1, 3)), rand(20, 35))

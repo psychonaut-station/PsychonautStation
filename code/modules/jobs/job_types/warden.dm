@@ -41,6 +41,13 @@
 	)
 	rpg_title = "Jailor"
 	job_flags = STATION_JOB_FLAGS | JOB_BOLD_SELECT_TEXT | JOB_ANTAG_PROTECTED
+	alt_titles = list(
+		"Warden",
+		"Brig Sergeant",
+		"Dispatch Officer",
+		"Brig Governor",
+		"Jailer",
+	)
 
 /datum/outfit/job/warden
 	name = "Warden"
@@ -49,7 +56,6 @@
 	id_trim = /datum/id_trim/job/warden
 	uniform = /obj/item/clothing/under/rank/security/warden
 	suit = /obj/item/clothing/suit/armor/vest/warden/alt
-	suit_store = /obj/item/gun/energy/disabler
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		)

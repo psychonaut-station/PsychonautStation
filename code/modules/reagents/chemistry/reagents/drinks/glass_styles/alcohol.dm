@@ -202,6 +202,13 @@
 	icon = 'icons/obj/drinks/drinks.dmi'
 	icon_state = "rice_beer"
 
+/datum/glass_style/drinking_glass/raki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki
+	name = "glass of rakia"
+	desc = "Kalbim seni unutacak kadar adiyse ellerim onu parçalayacak kadar asildir."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
 // Shot glasses
 
 /datum/glass_style/shot_glass/kahlua
@@ -262,3 +269,8 @@
 /datum/glass_style/shot_glass/patron
 	required_drink_type = /datum/reagent/consumable/ethanol/patron
 	icon_state = "shotglassclear"
+
+/datum/glass_style/shot_glass/raki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"

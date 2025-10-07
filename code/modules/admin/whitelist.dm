@@ -1,6 +1,8 @@
 #define WHITELISTFILE "[global.config.directory]/whitelist.txt"
+#define JOBWHITELISTFILE "data/job_whitelist.txt"
 
 GLOBAL_LIST(whitelist)
+GLOBAL_LIST(job_whitelist)
 
 /proc/load_whitelist()
 	GLOB.whitelist = list()
@@ -18,6 +20,24 @@ GLOBAL_LIST(whitelist)
 	if(!GLOB.whitelist)
 		return FALSE
 	. = (ckey in GLOB.whitelist)
+
+/proc/load_job_whitelist()
+	GLOB.job_whitelist = list()
+
+	for(var/line in world.file2list(JOBWHITELISTFILE))
+		if(!line)
+			continue
+		GLOB.job_whitelist += ckey(line)
+
+/proc/check_job_whitelist(ckey)
+	. = (ckey in GLOB.job_whitelist)
+
+/proc/add_job_whitelist(name)
+	if(!name)
+		return
+
+	GLOB.job_whitelist += ckey(name)
+	WRITE_FILE(file(JOBWHITELISTFILE), ckey(name))
 
 ADMIN_VERB(whitelist_player, R_BAN, "Whitelist CKey", "Adds a ckey to the Whitelist file.", ADMIN_CATEGORY_MAIN)
 	var/input_ckey = input("CKey to whitelist: (Adds CKey to the whitelist.txt)") as null|text
@@ -39,3 +59,4 @@ ADMIN_VERB_CUSTOM_EXIST_CHECK(whitelist_player)
 	return CONFIG_GET(flag/usewhitelist)
 
 #undef WHITELISTFILE
+#undef JOBWHITELISTFILE

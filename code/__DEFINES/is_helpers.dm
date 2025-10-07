@@ -115,8 +115,11 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 
 //Human sub-species
 #define isabductor(A) (is_species(A, /datum/species/abductor))
+#define isarachnid(A) (is_species(A, /datum/species/arachnid))
+#define isspirit(A) (is_species(A, /datum/species/spirit))
 #define isghostspecies(A) (is_species(A, /datum/species/ghost))
 #define isgolem(A) (is_species(A, /datum/species/golem))
+#define isipc(A) (is_species(A, /datum/species/ipc))
 #define islizard(A) (is_species(A, /datum/species/lizard))
 #define isashwalker(A) (is_species(A, /datum/species/lizard/ashwalker))
 #define isplasmaman(A) (is_species(A, /datum/species/plasmaman))
@@ -134,7 +137,7 @@ GLOBAL_LIST_INIT(turfs_pass_meteor, typecacheof(list(
 #define ismonkey(A) (is_species(A, /datum/species/monkey))
 #define isandroid(A) (is_species(A, /datum/species/android))
 #define isnightmare(A) (is_species(A, /datum/species/shadow/nightmare))
-
+#define issynthetic(A) (is_species(A, /datum/species/synthetic))
 
 //More carbon mobs
 #define isalien(A) (istype(A, /mob/living/carbon/alien))

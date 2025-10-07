@@ -43,7 +43,7 @@
 		if(COMP_TEXT_LOWER)
 			result = LOWER_TEXT(value)
 		if(COMP_TEXT_UPPER)
-			result = uppertext(value)
+			result = locale_uppertext(value)
 
 	output.set_output(result)
 

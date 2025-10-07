@@ -58,6 +58,12 @@
 /// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message.
 #define STRIP_HTML_FULL(text, limit) (GLOB.html_tags.Replace(copytext(text, 1, limit), ""))
 
+/// Simply removes the < and > characters, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))
+
+/// Removes everything enclose in < and > inclusive of the bracket, and limits the length of the message. Uses copytext_char instead of copytext.
+#define STRIP_HTML_LOCALE_FULL(text, limit) (GLOB.html_tags.Replace(copytext_char(text, 1, limit), ""))
+
 /**
  * stuff like `copytext(input, length(input))` will trim the last character of the input,
  * because DM does it so it copies until the char BEFORE the `end` arg, so we need to bump `end` by 1 in these cases.
@@ -67,6 +73,8 @@
 /// BYOND's string procs don't support being used on datum references (as in it doesn't look for a name for stringification)
 /// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
 #define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
+
+#define LOCALE_LOWER_TEXT(thing) locale_lowertext_("[thing]")
 
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"

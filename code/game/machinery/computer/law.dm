@@ -12,12 +12,24 @@
 		message_admins("\A [name] was created at [ADMIN_VERBOSEJMP(src)].")
 
 /obj/machinery/computer/upload/attackby(obj/item/O, mob/user, list/modifiers, list/attack_modifiers)
-	if(istype(O, /obj/item/ai_module))
+	if (istype(O, /obj/item/multitool/ai_detect))
+		to_chat(user, span_notice("Multitool displays [GLOB.upload_key] on it's screen."))
+		for(var/mob/hearing_mob in get_hearers_in_view(3, user))
+			hearing_mob.playsound_local(get_turf(src), 'sound/machines/beep/triple_beep.ogg', ASSEMBLY_BEEP_VOLUME, TRUE)
+
+	else if(istype(O, /obj/item/ai_module))
+		if (!GLOB.upload_key)
+			GLOB.upload_key = random_code(4) // just incase
+
 		var/obj/item/ai_module/M = O
 		if(machine_stat & (NOPOWER|BROKEN|MAINT))
 			return
 		if(!current)
 			to_chat(user, span_alert("You haven't selected anything to transmit laws to!"))
+			return
+		var/input = stripped_input(user, "Please enter the silicon decryption key.", "Secure Upload")
+		if(input != GLOB.upload_key)
+			to_chat(user, "<span class='caution'>Upload failed!</span> The input key was incorrect!")
 			return
 		if(!can_upload_to(current))
 			to_chat(user, span_alert("Upload failed! Check to make sure [current.name] is functioning properly."))

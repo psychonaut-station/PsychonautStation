@@ -14,9 +14,8 @@
 	. = ..()
 	if(.)
 		return
-	user.adminhelp()
+	GLOB.ticket_helper_ui_handler.ui_interact(user.mob)
 	return TRUE
-
 
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")

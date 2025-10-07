@@ -25,7 +25,7 @@
 	hijack_speed = 0.5
 	suicide_cry = "THE MANSUS SMILES UPON ME!!"
 	preview_outfit = /datum/outfit/heretic
-	can_assign_self_objectives = TRUE
+	can_assign_self_objectives = FALSE
 	default_custom_objective = "Turn a department into a testament for your dark knowledge."
 	hardcore_random_bonus = TRUE
 	stinger_sound = 'sound/music/antag/heretic/heretic_gain.ogg'
@@ -866,8 +866,6 @@
  * Returns FALSE if not all of our objectives are complete, or TRUE otherwise.
  */
 /datum/antagonist/heretic/proc/can_ascend()
-	if(!can_assign_self_objectives)
-		return FALSE // We spurned the offer of the Mansus :(
 	if(feast_of_owls)
 		return FALSE // We sold our ambition for immediate power :/
 	for(var/datum/objective/must_be_done as anything in objectives)

@@ -129,6 +129,9 @@
 	/// Example: If req_one_access = list(ACCESS_ENGINE, ACCESS_CE)- then the user must have either ACCESS_ENGINE or ACCESS_CE in order to use the object.
 	var/list/req_one_access
 
+	/// Whether a user will face atoms on entering them with a mouse. Despite being a mob variable, it is here for performance reasons
+	var/face_mouse = FALSE
+
 /mutable_appearance/emissive_blocker
 
 /mutable_appearance/emissive_blocker/New()
@@ -646,7 +649,7 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move && dir != direction && update_dir)
+	if(set_dir_on_move && dir != direction && update_dir && !face_mouse)
 		setDir(direction)
 
 	var/is_multi_tile_object = is_multi_tile_object(src)
@@ -772,7 +775,7 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && update_dir)
+				if(!. && set_dir_on_move && update_dir && !face_mouse)
 					setDir(first_step_dir)
 				else if(!inertia_moving)
 					newtonian_move(dir2angle(direct))
@@ -819,7 +822,7 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir)
+	if(set_dir_on_move && dir != direct && update_dir && !face_mouse)
 		setDir(direct)
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE

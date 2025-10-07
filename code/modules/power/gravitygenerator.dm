@@ -421,6 +421,9 @@ GLOBAL_LIST_EMPTY(gravity_generators)
 			shake_camera(mobs, 15, 1)
 			mobs.playsound_local(T, null, 100, 1, 0.5, sound_to_use = alert_sound)
 
+	if (is_station_level(T.z))
+		creak_lights()
+
 /obj/machinery/gravity_generator/main/proc/gravity_in_level()
 	var/turf/T = get_turf(src)
 	if(!T)

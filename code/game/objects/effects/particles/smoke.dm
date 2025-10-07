@@ -32,6 +32,9 @@
 	velocity = list(0, 0.3, 0)
 	friction = 0.25
 
+/particles/smoke/steam/mild/center
+	position = list(0, 0, 0)
+
 /particles/smoke/steam/bad
 	icon_state = list("steam_1" = 1, "smoke_1" = 1, "smoke_2" = 1, "smoke_3" = 1)
 	spawning = 2

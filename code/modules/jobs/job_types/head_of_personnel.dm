@@ -45,10 +45,15 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-
+	alt_titles = list(
+		"Head of Personnel",
+		"Executive Officer",
+		"Employment Officer",
+		"Crew Supervisor",
+	)
 
 /datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 
 /datum/job/head_of_personnel/generate_traitor_objective()
 	var/datum/objective/assassinate/captain_replacement/promotion = new()

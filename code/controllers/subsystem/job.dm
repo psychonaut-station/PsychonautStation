@@ -89,6 +89,8 @@ SUBSYSTEM_DEF(job)
 	## Ensure that the key is flush, do not introduce any whitespaces when you uncomment a key. For example:\n## \"# Total Positions\" should always be changed to \"Total Positions\", no additional spacing.\n\
 	## Best of luck editing!\n"
 
+	var/list/all_alt_titles = list()
+
 /datum/controller/subsystem/job/Initialize()
 	setup_job_lists()
 	job_config_datum_singletons = generate_config_singletons() // we set this up here regardless in case someone wants to use the verb to generate the config file.
@@ -595,19 +597,27 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/equip_rank(mob/living/equipping, datum/job/job, client/player_client)
+	if(isnull(player_client?.prefs.alt_job_titles))
+		player_client.prefs.alt_job_titles = list()
+	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
+	var/default_title = job.title
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
 	equipping.on_job_equipping(job, player_client)
-	job.announce_job(equipping)
+	job.announce_job(equipping, chosen_title)
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_always) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
 			player_client.holder.auto_deadmin()
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
+
+	if(player_client && chosen_title != default_title)
+		to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+		to_chat(player_client, span_infoplain(span_warning("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
 
 	job.after_spawn(equipping, player_client)
 
@@ -811,6 +821,13 @@ SUBSYSTEM_DEF(job)
 		if(sec.assigned_role.departments_bitflags & DEPARTMENT_BITFLAG_SECURITY)
 			. += sec
 
+/// Returns a list of minds of given department members
+/datum/controller/subsystem/job/proc/get_department_crew(bitflag)
+	. = list()
+	for(var/datum/mind/mind as anything in get_crewmember_minds())
+		if(mind.assigned_role.departments_bitflags & bitflag)
+			. += mind
+
 /datum/controller/subsystem/job/proc/job_debug(message)
 	log_job_debug(message)
 
@@ -973,6 +990,10 @@ SUBSYSTEM_DEF(job)
 		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_AGE)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
 		return JOB_UNAVAILABLE_AGE
 
+	if (possible_job.whitelisted && !check_job_whitelist(player.ckey))
+		job_debug("[debug_prefix] Error: [get_job_unavailable_error_message(JOB_UNAVAILABLE_WHITELISTED, possible_job.title)], Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
+		return JOB_UNAVAILABLE_WHITELISTED
+
 	// Need to recheck the player exists after is_banned_from since it can query the DB which may sleep.
 	if(QDELETED(player))
 		job_debug("[debug_prefix]: Player is qdeleted, Player: [player][add_job_to_log ? ", Job: [possible_job]" : ""]")
@@ -1000,5 +1021,14 @@ SUBSYSTEM_DEF(job)
 
 	if(employees > crew_threshold)
 		return TRUE
+
+	return FALSE
+
+/datum/controller/subsystem/job/proc/is_occupation_of(job_name, bitflags)
+	for (var/datum/job/job as anything in all_occupations)
+		if (job.title != job_name)
+			continue
+
+		return job.departments_bitflags & bitflags
 
 	return FALSE

@@ -58,7 +58,7 @@ const EmployerSection = (props) => {
   return (
     <Section
       fill
-      title="Employer"
+      title="İşveren"
       scrollable
       buttons={
         <Button
@@ -78,7 +78,7 @@ const EmployerSection = (props) => {
           <Stack vertical>
             <Stack.Item>
               <span style={allystyle}>
-                Your allegiances:
+                Bağlılıkların:
                 <br />
               </span>
               <BlockQuote>{allies}</BlockQuote>
@@ -86,7 +86,7 @@ const EmployerSection = (props) => {
             <Stack.Divider />
             <Stack.Item mb={1}>
               <span style={goalstyle}>
-                Employer thoughts:
+                İşverenin amacı:
                 <br />
               </span>
               <BlockQuote>{goal}</BlockQuote>
@@ -110,7 +110,7 @@ const UplinkSection = (props) => {
             <Stack.Item bold>
               {uplink_intro}
               <br />
-              {code && <span style={goalstyle}>Code: {code}</span>}
+              {code && <span style={goalstyle}>Şifre: {code}</span>}
               <br />
               {failsafe_code && (
                 <span style={badstyle}>Failsafe: {failsafe_code}</span>
@@ -139,7 +139,7 @@ const CodewordsSection = (props) => {
   const { data } = useBackend<Info>();
   const { has_codewords, phrases, responses } = data;
   return (
-    <Section title="Codewords" mb={!has_codewords && -1}>
+    <Section title="Şifre Kelimeler" mb={!has_codewords && -1}>
       <Stack fill>
         {(!has_codewords && (
           <BlockQuote>
@@ -151,24 +151,23 @@ const CodewordsSection = (props) => {
           <>
             <Stack.Item grow basis={0}>
               <BlockQuote>
-                Your employer provided you with the following codewords to
-                identify fellow agents. Use the codewords during regular
-                conversation to identify other agents. Proceed with caution,
-                however, as everyone is a potential foe.
+                İşverenin, yandaş ajanları tanımlaman için sana şifreli
+                kelimeler verdi. Normal konuşma esnasında, ajanları tanımlamak
+                için şifreli kelimeleri kullan.
                 <span style={badstyle}>
-                  &ensp;You have memorized the codewords, allowing you to
-                  recognise them when heard.
+                  &ensp;Şifreli kelimeleri ezberledin, böylece duyduğunda
+                  tanıyabileceksin.
                 </span>
               </BlockQuote>
             </Stack.Item>
             <Stack.Divider mr={1} />
             <Stack.Item grow basis={0}>
               <Stack vertical>
-                <Stack.Item>Code Phrases:</Stack.Item>
+                <Stack.Item>Sorular:</Stack.Item>
                 <Stack.Item bold textColor="blue">
                   {phrases}
                 </Stack.Item>
-                <Stack.Item>Code Responses:</Stack.Item>
+                <Stack.Item>Cevaplar:</Stack.Item>
                 <Stack.Item bold textColor="red">
                   {responses}
                 </Stack.Item>

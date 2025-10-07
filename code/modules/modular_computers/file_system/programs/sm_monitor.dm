@@ -14,6 +14,8 @@
 	var/last_status = SUPERMATTER_INACTIVE
 	/// List of supermatters that we are going to send the data of.
 	var/list/obj/machinery/power/supermatter_crystal/supermatters = list()
+	/// List of supermatters that we are going to send the data of.
+	var/list/obj/anomalies = list()
 	/// The supermatter which will send a notification to us if it's delamming.
 	var/obj/machinery/power/supermatter_crystal/focused_supermatter
 
@@ -25,12 +27,16 @@
 /datum/computer_file/program/supermatter_monitor/kill_program(mob/user)
 	for(var/supermatter in supermatters)
 		clear_supermatter(supermatter)
+	for(var/anomaly in anomalies)
+		clear_anomaly(anomaly)
 	return ..()
 
 /// Refreshes list of active supermatter crystals
 /datum/computer_file/program/supermatter_monitor/proc/refresh()
 	for(var/supermatter in supermatters)
 		clear_supermatter(supermatter)
+	for(var/anomaly in anomalies)
+		clear_anomaly(anomaly)
 	var/turf/user_turf = get_turf(computer.ui_host())
 	if(!user_turf)
 		return
@@ -40,17 +46,30 @@
 			continue
 		supermatters += sm
 		RegisterSignal(sm, COMSIG_QDELETING, PROC_REF(clear_supermatter))
+	for (var/obj/singularity/singularity as anything in GLOB.all_singularities)
+		anomalies += singularity
+		RegisterSignal(singularity, COMSIG_QDELETING, PROC_REF(clear_anomaly))
+	for (var/obj/energy_ball/eball as anything in GLOB.all_energy_balls)
+		anomalies += eball
+		RegisterSignal(eball, COMSIG_QDELETING, PROC_REF(clear_anomaly))
 
 /datum/computer_file/program/supermatter_monitor/ui_static_data(mob/user)
 	var/list/data = list()
 	data["gas_metadata"] = sm_gas_data()
+	data["eball_gas_metadata"] = eball_gas_data()
 	return data
 
 /datum/computer_file/program/supermatter_monitor/ui_data(mob/user)
 	var/list/data = list()
 	data["sm_data"] = list()
+	data["anomaly_data"] = list()
+	data["all_data"] = list()
 	for (var/obj/machinery/power/supermatter_crystal/sm as anything in supermatters)
 		data["sm_data"] += list(sm.sm_ui_data())
+		data["all_data"] += list(sm.sm_ui_data())
+	for (var/obj/singularity/singularity as anything in anomalies)
+		data["anomaly_data"] += list(singularity.ntcims_ui_data())
+		data["all_data"] += list(singularity.ntcims_ui_data())
 	data["focus_uid"] = focused_supermatter?.uid
 	return data
 
@@ -84,6 +103,11 @@
 	if(focused_supermatter == sm)
 		unfocus_supermatter()
 	UnregisterSignal(sm, COMSIG_QDELETING)
+
+/datum/computer_file/program/supermatter_monitor/proc/clear_anomaly(obj/singularity/singulo)
+	SIGNAL_HANDLER
+	anomalies -= singulo
+	UnregisterSignal(singulo, COMSIG_QDELETING)
 
 /datum/computer_file/program/supermatter_monitor/proc/focus_supermatter(obj/machinery/power/supermatter_crystal/sm)
 	if(sm == focused_supermatter)

@@ -78,6 +78,12 @@
 	user.visible_message(span_suicide("[user] pretends to read \the [src] intently... then promptly dies of laughter!"))
 	return OXYLOSS
 
+/obj/item/book/manual/wiki/security_space_law/display_content(mob/living/user, datum/tgui/ui)
+	ui = SStgui.try_update_ui(user, src, ui)
+	if(!ui)
+		ui = new(user, src, "SpaceLaw")
+		ui.open()
+
 /obj/item/book/manual/wiki/infections
 	name = "Infections - Making your own pandemic!"
 	icon_state = "bookInfections"

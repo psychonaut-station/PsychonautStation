@@ -120,6 +120,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Antagonizes the above.
 #define TRAIT_DISCOORDINATED_TOOL_USER "discoordinated_tool_user"
 #define TRAIT_PACIFISM "pacifism"
+#define TRAIT_CANT_ATTACK "cant_attack"
 // Trait added to the user of a hippocratic oath status effect
 #define TRAIT_HIPPOCRATIC_OATH "hippocratic_oath"
 #define TRAIT_IGNORESLOWDOWN "ignoreslow"
@@ -250,6 +251,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EASILY_WOUNDED "easy_limb_wound"
 #define TRAIT_HARDLY_WOUNDED "hard_limb_wound"
 #define TRAIT_NEVER_WOUNDED "never_wounded"
+/// Mobs with this trait do not apply a damage cap to their potential considered wounding damage, resulting in extremely high wounding effects.
+#define TRAIT_BLOODY_MESS "bloody_mess"
 /// Species with this trait have 50% extra chance of bleeding from piercing and slashing wounds
 #define TRAIT_EASYBLEED "easybleed"
 /// Mob recovers from addictions at an accelerated rate
@@ -324,6 +327,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WOUND_LICKER "wound_licker"
 /// Mobs with this trait are allowed to use silicon emotes
 #define TRAIT_SILICON_EMOTES_ALLOWED "silicon_emotes_allowed"
+/// Makes you immune to welding flashes
+#define TRAIT_NOTOOLFLASH "notoolflash"
 
 /// This trait designate that the mob was originally a monkey
 #define TRAIT_BORN_MONKEY "born_as_a_monkey"
@@ -510,7 +515,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Prevents a mob from being unbuckled, currently only used to prevent people from falling over on the tram
 #define TRAIT_CANNOT_BE_UNBUCKLED "cannot_be_unbuckled"
 /// from heparin and nitrous oxide, makes open bleeding wounds rapidly spill more blood
-#define TRAIT_BLOODY_MESS "bloody_mess"
+#define TRAIT_BLOOD_FOUNTAIN "bloody_fountain"
 /// from coagulant reagents, this doesn't affect the bleeding itself but does affect the bleed warning messages
 #define TRAIT_COAGULATING "coagulating"
 /// From anti-convulsant medication against seizures.
@@ -724,6 +729,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_ROD_SUPLEX "rod_suplex"
 /// The mob has an active mime vow of silence, and thus is unable to speak and has other mime things going on
 #define TRAIT_MIMING "miming"
+/// Grants "hihihiha" sound on emote
+#define TRAIT_CLOWNING "clowning"
 
 /// This mob is phased out of reality from magic, either a jaunt or rod form
 #define TRAIT_MAGICALLY_PHASED "magically_phased"
@@ -754,6 +761,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_MOVE_UPSIDE_DOWN "move_upside_down"
 /// Disables the floating animation. See above.
 #define TRAIT_NO_FLOATING_ANIM "no-floating-animation"
+/// Disables the movement beacuse we are grabbed by kinesis.(For energy ball and singularity)
+#define TRAIT_GRABBED_BY_KINESIS "grabbed_by_kinesis"
 
 /// Cannot be turned into a funny skeleton by the plasma river
 #define TRAIT_NO_PLASMA_TRANSFORM "no_plasma_transform"
@@ -1305,6 +1314,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 ///Trait given by /datum/component/germ_sensitive
 #define TRAIT_GERM_SENSITIVE "germ_sensitive"
+
+#define TRAIT_CAN_USE_JUKEBOX "can_use_jukebox"
 
 /// This atom can have spells cast from it if a mob is within it
 /// This means the "caster" of the spell is changed to the mob's loc

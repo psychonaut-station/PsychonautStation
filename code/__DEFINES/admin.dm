@@ -7,6 +7,7 @@
 #define MUTE_ADMINHELP (1<<3)
 #define MUTE_DEADCHAT (1<<4)
 #define MUTE_INTERNET_REQUEST (1<<5)
+#define MUTE_LOOC (1<<6)
 #define MUTE_ALL ALL
 
 //Some constants for DB_Ban
@@ -40,10 +41,11 @@
 #define R_SPAWN (1<<12)
 #define R_AUTOADMIN (1<<13)
 #define R_DBRANKS (1<<14)
+#define R_MENTOR (1<<15)
 
 #define R_DEFAULT R_AUTOADMIN
 
-#define R_EVERYTHING (1<<15)-1 //the sum of all other rank permissions, used for +EVERYTHING
+#define R_EVERYTHING (1<<16)-1 //the sum of all other rank permissions, used for +EVERYTHING
 
 #define ADMIN_QUE(user) "(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];adminmoreinfo=[REF(user)]'>?</a>)"
 #define ADMIN_FLW(user) "(<a href='byond://?_src_=holder;[HrefToken(forceGlobal = TRUE)];adminplayerobservefollow=[REF(user)]'>FLW</a>)"
@@ -101,6 +103,9 @@
 #define AHELP_ACTIVE 1
 #define AHELP_CLOSED 2
 #define AHELP_RESOLVED 3
+
+#define TICKET_TYPE_ADMIN 0
+#define TICKET_TYPE_MENTOR 1
 
 // Page numbers for the Permission Panel
 #define PERMISSIONS_PAGE_PERMISSIONS 1

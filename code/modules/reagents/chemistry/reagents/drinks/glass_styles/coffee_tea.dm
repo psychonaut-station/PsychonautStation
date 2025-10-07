@@ -8,8 +8,16 @@
 /datum/glass_style/drinking_glass/tea
 	required_drink_type = /datum/reagent/consumable/tea
 	name = "glass of tea"
-	desc = "Drinking it from here would not seem right."
-	icon_state = "teaglass"
+	desc = "Tasty black tea, it has antioxidants, it's good for you!"
+	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
+	icon_state = "tea"
+
+/datum/glass_style/shot_glass/tea
+	required_drink_type = /datum/reagent/consumable/tea
+	name = "glass of tea"
+	desc = "Tasty black tea, it has antioxidants, it's good for you!"
+	icon = 'icons/psychonaut/obj/drinks/coffee.dmi'
+	icon_state = "tea"
 
 /datum/glass_style/drinking_glass/icecoffee
 	required_drink_type = /datum/reagent/consumable/icecoffee

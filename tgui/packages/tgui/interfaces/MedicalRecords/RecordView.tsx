@@ -48,6 +48,7 @@ export const MedicalRecordView = (props) => {
     quirk_notes,
     rank,
     species,
+    medical_records,
   } = foundRecord;
 
   const minor_disabilities_array = getQuirkStrings(minor_disabilities);
@@ -210,6 +211,13 @@ export const MedicalRecordView = (props) => {
               {quirk_notes_array.map((quirk, index) => (
                 <Box key={index}>&#8226; {quirk}</Box>
               ))}
+            </LabeledList.Item>
+            <LabeledList.Item label="Medical Records">
+              <EditableText
+                field="medical_records"
+                target_ref={crew_ref}
+                text={medical_records}
+              />
             </LabeledList.Item>
           </LabeledList>
         </Section>

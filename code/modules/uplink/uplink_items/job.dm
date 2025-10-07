@@ -51,6 +51,15 @@
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 	surplus = 25
 
+/datum/uplink_item/role_restricted/taeclowndo_shoes
+	name = "Tae-clown-do Shoes"
+	desc = "A pair of shoes for the most elite agents of the honkmotherland. They grant the mastery of taeclowndo with some honk-fu moves as long as they're worn."
+	cost = 6
+	progression_minimum = 5 MINUTES
+	item = /obj/item/clothing/shoes/clown_shoes/taeclowndo
+	restricted_roles = list(JOB_CLOWN)
+	surplus = 5
+
 /datum/uplink_item/role_restricted/ancient_jumpsuit
 	name = "Ancient Jumpsuit"
 	desc = "A tattered old jumpsuit that will provide absolutely no benefit to you."

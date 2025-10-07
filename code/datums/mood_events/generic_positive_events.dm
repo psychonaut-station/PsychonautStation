@@ -387,6 +387,11 @@
 	special_screen_obj = "birthday"
 	special_screen_replace = FALSE
 
+/datum/mood_event/farted
+	description = "I had a massive dump!"
+	mood_change = 3
+	timeout = 3 MINUTES
+
 /datum/mood_event/basketball_score
 	description = "Swish! Nothing but net."
 	mood_change = 2

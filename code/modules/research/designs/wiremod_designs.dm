@@ -537,7 +537,7 @@
 
 /datum/design/keyboard_shell
 	name = "Keyboard Shell"
-	desc = "A handheld shell that allows the user to input a string"
+	desc = "A handheld shell that allows the user to input a string."
 	id = "keyboard_shell"
 	build_path = /obj/item/keyboard_shell
 	materials = list(/datum/material/glass =SHEET_MATERIAL_AMOUNT, /datum/material/iron = SHEET_MATERIAL_AMOUNT*5)

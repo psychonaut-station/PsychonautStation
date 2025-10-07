@@ -14,12 +14,18 @@ describe('ChannelIterator', () => {
     expect(channelIterator.next()).toBe('Radio');
     expect(channelIterator.next()).toBe('Me');
     expect(channelIterator.next()).toBe('OOC');
+    expect(channelIterator.next()).toBe('LOOC');
     expect(channelIterator.next()).toBe('Say'); // Admin is blacklisted so it should be skipped
   });
 
   it('should set a channel properly', () => {
     channelIterator.set('OOC');
     expect(channelIterator.current()).toBe('OOC');
+  });
+
+  it('should set a channel properly', () => {
+    channelIterator.set('LOOC');
+    expect(channelIterator.current()).toBe('LOOC');
   });
 
   it('should return true when current channel is "Say"', () => {
@@ -39,6 +45,11 @@ describe('ChannelIterator', () => {
 
   it('should return false when current channel is not visible', () => {
     channelIterator.set('OOC');
+    expect(channelIterator.isVisible()).toBe(false);
+  });
+
+  it('should return false when current channel is not visible', () => {
+    channelIterator.set('LOOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
 

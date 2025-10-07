@@ -430,6 +430,13 @@
 	acid = 60
 	wound = 10
 
+/obj/item/clothing/head/hats/hos/special
+	name = "special cap"
+	desc = "Mal huseyin. Derdimi acikliyorum?."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
+	icon_state = "hoscapspecial"
+
 /obj/item/clothing/head/hats/hos/cap/syndicate
 	name = "syndicate cap"
 	desc = "A black cap fit for a high ranking syndicate officer."

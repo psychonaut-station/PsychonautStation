@@ -81,12 +81,12 @@ export const Interview = (props) => {
     >
       <Window.Content scrollable>
         {(!read_only && (
-          <Section title="Welcome!">
+          <Section title="Hoş Geldiniz!">
             <p>{linkifyText(welcome_message)}</p>
           </Section>
         )) || <RenderedStatus status={status} queue_pos={queue_pos} />}
         <Section
-          title="Questionnaire"
+          title="Başvuru"
           buttons={
             <span>
               <Button
@@ -95,11 +95,11 @@ export const Interview = (props) => {
                 icon="envelope"
                 tooltip={
                   !allAnswered &&
-                  `Please answer all questions.
+                  `Lütfen bütün soruları cevapla.
                      ${numAnswered} / ${questions.length}`
                 }
               >
-                {read_only ? 'Submitted' : 'Submit'}
+                {read_only ? 'Gönderildi' : 'Gönder'}
               </Button>
               {!!is_admin && status === 'interview_pending' && (
                 <span>
@@ -107,10 +107,10 @@ export const Interview = (props) => {
                     Admin PM
                   </Button>
                   <Button color="good" onClick={() => act('approve')}>
-                    Approve
+                    Onayla
                   </Button>
                   <Button color="bad" onClick={() => act('deny')}>
-                    Deny
+                    Reddet
                   </Button>
                   {!!centcom_connected && (
                     <Button
@@ -133,20 +133,21 @@ export const Interview = (props) => {
           {!read_only && (
             <>
               <Box as="p" color="label">
-                Please answer the following questions.
+                Lütfen soruları yanıtlayın.
                 <ul>
                   <li>
-                    You can press enter key or the save button to save an
-                    answer.
+                    Enter ya da Gönder butonuna basarak formunu çevrimiçi
+                    adminlere gönderebilirsin.
                   </li>
                   <li>
-                    You can edit your answers until you press the submit button.
+                    Gönder butonuna basmadığın sürece cevaplarını
+                    düzenleyebilirsin.
                   </li>
-                  <li>Press SUBMIT when you are done.</li>
+                  <li>Formu doldurduğunda GÖNDER tuşuna bas.</li>
                 </ul>
               </Box>
               <NoticeBox info align="center">
-                You will not be able to edit your answers after submitting.
+                Formu gönderdikten sonra cevaplarını düzenleyemezsin
               </NoticeBox>
             </>
           )}
@@ -164,14 +165,13 @@ const RenderedStatus = (props: { status: string; queue_pos: number }) => {
 
   switch (status) {
     case STATUS.Approved:
-      return <NoticeBox success>This interview was approved.</NoticeBox>;
+      return <NoticeBox success>Başvurunuz onaylandı.</NoticeBox>;
     case STATUS.Denied:
-      return <NoticeBox danger>This interview was denied.</NoticeBox>;
+      return <NoticeBox danger>Başvurunuz reddedildi.</NoticeBox>;
     default:
       return (
         <NoticeBox info>
-          Your answers have been submitted. You are position {queue_pos} in
-          queue.
+          Başvurunuz aktif olan adminlere gönderildi. {queue_pos}. sıradasınız.
         </NoticeBox>
       );
   }
@@ -199,20 +199,20 @@ const QuestionArea = (props: Question) => {
 
   return (
     <Section
-      title={`Question ${qidx}`}
+      title={`Soru ${qidx}`}
       buttons={
         <Button
           disabled={!saveAvailable}
           onClick={saveResponse}
           icon={isSaved ? 'check' : 'save'}
         >
-          {isSaved ? 'Saved' : 'Save'}
+          {isSaved ? 'Kaydedildi' : 'kaydet'}
         </Button>
       }
     >
       <p>{linkifyText(question)}</p>
       {read_only || is_admin ? (
-        <BlockQuote>{response || 'No response.'}</BlockQuote>
+        <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
       ) : (
         <TextArea
           fluid
@@ -220,7 +220,7 @@ const QuestionArea = (props: Question) => {
           maxLength={500}
           onChange={setUserInput}
           onEnter={saveResponse}
-          placeholder="Write your response here, max of 500 characters. Press enter to submit."
+          placeholder="Cevabını buraya yaz. En fazla 500 karakter girebilirsin. Bittiğinde ENTER tuşuna bas."
           value={response || undefined}
         />
       )}

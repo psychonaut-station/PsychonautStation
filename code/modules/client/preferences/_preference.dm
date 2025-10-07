@@ -32,8 +32,11 @@
 /// Preferences that aren't names, but change the name changes set by PREFERENCE_PRIORITY_NAMES.
 #define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 9
 
+/// The priority at which names are decided, needed for proper randomization.
+#define PREFERENCE_PRIORITY_BACKGROUND_INFORMATION 10
+
 /// The maximum preference priority, keep this updated, but don't use it for `priority`.
-#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAME_MODIFICATIONS
+#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_BACKGROUND_INFORMATION
 
 /// For choiced preferences, this key will be used to set display names in constant data.
 #define CHOICED_PREFERENCE_DISPLAY_NAMES "display_names"
@@ -142,7 +145,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 /// Called on the input while saving.
 /// Input is the current value, output is what to save in the savefile.
-/datum/preference/proc/serialize(input)
+/datum/preference/proc/serialize(input, datum/preferences/preferences)
 	SHOULD_NOT_SLEEP(TRUE)
 	return input
 
@@ -190,14 +193,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Given a savefile, writes the inputted value.
 /// Returns TRUE for a successful application.
 /// Return FALSE if it is invalid.
-/datum/preference/proc/write(list/save_data, value)
+/datum/preference/proc/write(list/save_data, value, datum/preferences/preferences)
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if (!is_valid(value))
+	if (!is_valid(value, preferences))
 		return FALSE
 
 	if (!isnull(save_data))
-		save_data[savefile_key] = serialize(value)
+		save_data[savefile_key] = serialize(value, preferences)
 
 	return TRUE
 
@@ -277,7 +280,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preferences/proc/write_preference(datum/preference/preference, preference_value)
 	var/save_data = get_save_data_for_savefile_identifier(preference.savefile_identifier)
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(save_data, new_value)
+	var/success = preference.write(save_data, new_value, src)
 	if (success)
 		value_cache[preference.type] = new_value
 	return success
@@ -290,7 +293,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 		return FALSE
 
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(null, new_value)
+	var/success = preference.write(null, new_value, src)
 
 	if (!success)
 		return FALSE
@@ -308,7 +311,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Checks that a given value is valid.
 /// Must be overriden by subtypes.
 /// Any type can be passed through.
-/datum/preference/proc/is_valid(value)
+/datum/preference/proc/is_valid(value, datum/preferences/preferences)
 	SHOULD_NOT_SLEEP(TRUE)
 	SHOULD_CALL_PARENT(FALSE)
 	CRASH("`is_valid()` was not implemented for [type]!")
@@ -317,7 +320,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/proc/compile_ui_data(mob/user, value)
 	SHOULD_NOT_SLEEP(TRUE)
 
-	return serialize(value)
+	return serialize(value, user.client?.prefs)
 
 /// Returns data compiled into the preferences JSON asset
 /datum/preference/proc/compile_constant_data()
@@ -390,14 +393,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	return cached_values
 
 /// Returns a list of every possible value, serialized.
-/datum/preference/choiced/proc/get_choices_serialized()
+/datum/preference/choiced/proc/get_choices_serialized(datum/preferences/preferences)
 	// Override `init_values()` instead.
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/list/serialized_choices = list()
 
 	for (var/choice in get_choices())
-		serialized_choices += serialize(choice)
+		serialized_choices += serialize(choice, preferences)
 
 	return serialized_choices
 

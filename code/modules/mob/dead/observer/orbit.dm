@@ -278,8 +278,7 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		var/obj/singularity/singulo = atom_poi
 		misc["extra"] = "Energy: [round(singulo.energy)]"
 
-		if(singulo.current_size > 2)
-			critical = TRUE
+		critical = singulo.is_dangerous()
 
 		return list(misc, critical)
 

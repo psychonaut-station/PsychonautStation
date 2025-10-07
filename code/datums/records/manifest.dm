@@ -103,7 +103,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy, client/person_client)
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -112,7 +112,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/obj/item/card/id/id_card = person.get_idcard(hand_first = FALSE)
 	var/assignment = id_card?.get_trim_assignment() || person.mind.assigned_role.title
 
+	var/medical_records = person.client?.prefs.read_preference(/datum/preference/background_data/medical_records)
+	var/security_records = person.client?.prefs.read_preference(/datum/preference/background_data/security_records)
+	var/employment_records = person.client?.prefs.read_preference(/datum/preference/background_data/employment_records)
+	var/exploit_records = person.client?.prefs.read_preference(/datum/preference/background_data/exploit_records)
+
 	var/mutable_appearance/character_appearance = new(appearance_proxy?.appearance || person.appearance)
+
 	var/person_gender = "Other"
 	if(person.gender == "male")
 		person_gender = "Male"
@@ -120,6 +126,8 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		person_gender = "Female"
 	var/datum/dna/stored/record_dna = new()
 	person.dna.copy_dna(record_dna)
+
+	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
 
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
@@ -130,7 +138,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment,
 		species = record_dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -147,7 +155,7 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		rank = chosen_assignment,
 		species = record_dna.species.name,
 		trim = assignment,
 		// Crew specific
@@ -157,6 +165,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		medical_records = medical_records,
+		security_records = security_records,
+		employment_records = employment_records,
+		exploit_records = exploit_records,
 	)
 
 /// Edits the rank and trim of the found record.

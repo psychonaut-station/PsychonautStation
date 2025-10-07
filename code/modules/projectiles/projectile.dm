@@ -105,6 +105,8 @@
 	/// How many tiles we pass in a single SSprojectiles tick
 	var/speed = 1.25
 
+	var/speed_multiplier = 1
+
 	/// The current angle of the projectile. Initially null, so if the arg is missing from [/fire()], we can calculate it from firer and target as fallback.
 	var/angle
 	/// Angle at the moment of firing
@@ -934,7 +936,7 @@
 /obj/projectile/proc/process_movement(pixels_to_move, hitscan = FALSE, tile_limit = FALSE)
 	if (!isturf(loc) || !movement_vector)
 		return 0
-	var/total_move_distance = pixels_to_move
+	var/total_move_distance = pixels_to_move * speed_multiplier
 	var/movements_done = 0
 	last_projectile_move = world.time
 	while (pixels_to_move > 0 && isturf(loc) && !QDELETED(src) && !deletion_queued)

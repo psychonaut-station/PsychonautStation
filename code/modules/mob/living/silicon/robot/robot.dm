@@ -19,6 +19,8 @@
 	AddElement(/datum/element/ridable, /datum/component/riding/creature/cyborg)
 	RegisterSignal(src, COMSIG_PROCESS_BORGCHARGER_OCCUPANT, PROC_REF(charge))
 	RegisterSignal(src, COMSIG_LIGHT_EATER_ACT, PROC_REF(on_light_eater))
+	//change_icon zaten ikonu kontrol ettiğinden maploadda tanımlanmasında bir sorun yok. Testlerde sorun olursa icon_state kontrol edilip öyle registerlanabilir
+	RegisterSignal(src, COMSIG_BORG_TOGGLE_HARM_INTENT, PROC_REF(change_icon))
 	RegisterSignal(src, SIGNAL_ADDTRAIT(TRAIT_GOT_DAMPENED), PROC_REF(on_dampen))
 
 	inv1 = new /atom/movable/screen/robot/module1()
@@ -170,6 +172,7 @@
 		"Miner" = /obj/item/robot_model/miner,
 		"Janitor" = /obj/item/robot_model/janitor,
 		"Service" = /obj/item/robot_model/service,
+		"Cargo" = /obj/item/robot_model/cargo,
 	)
 	if(!CONFIG_GET(flag/disable_peaceborg))
 		model_list["Peacekeeper"] = /obj/item/robot_model/peacekeeper
@@ -180,9 +183,9 @@
 	var/list/model_icons = list()
 	for(var/option in model_list)
 		var/obj/item/robot_model/model = model_list[option]
+		var/model_iconfile = initial(model.cyborg_base_iconfile)
 		var/model_icon = initial(model.cyborg_base_icon)
-		model_icons[option] = image(icon = 'icons/mob/silicon/robots.dmi', icon_state = model_icon)
-
+		model_icons[option] = image(icon = model_iconfile, icon_state = model_icon)
 	var/input_model = show_radial_menu(src, src, model_icons, radius = 42)
 	if(!input_model || model.type != /obj/item/robot_model)
 		return
@@ -475,6 +478,13 @@
 		balloon_alert(src, "headlamp off!")
 	COOLDOWN_START(src, disabled_time, disrupt_duration)
 	return TRUE
+
+/mob/living/silicon/robot/proc/change_icon(mob/living/silicon/robot/source)
+	SIGNAL_HANDLER
+	if (icon_state == "uWu_borg")
+		icon_state = "uWu_borg_rage"
+	else if (icon_state == "uWu_borg_rage")
+		icon_state = "uWu_borg"
 
 /**
  * Handles headlamp smashing

@@ -124,6 +124,13 @@
 	movement_force = list("KNOCKDOWN" = 3, "THROW" = 5)
 	occupancy_limit = "70"
 
+/datum/map_template/shuttle/emergency/cami
+	suffix = "cami"
+	name = "Cami"
+	credit_cost = CARGO_CRATE_VALUE * 50
+	description = "Uhrevi alemde sorulur sual, Dünyada yaşarken çalsam da kaval, Kurana uymaktir İslamda kural, İbadethanenin simgesi cami."
+	occupancy_limit = "70"
+
 /datum/map_template/shuttle/emergency/luxury
 	suffix = "luxury"
 	name = "Luxury Shuttle"
@@ -489,6 +496,13 @@
 	It is richly equipped with bushes and free oxygen"
 	credit_cost = CARGO_CRATE_VALUE * 18
 	occupancy_limit = "80"
+
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 8
+	description = "A fairly standard shuttle, though larger and slightly better equipped than the Helio Station variant."
+	occupancy_limit = "40"
 
 /datum/map_template/shuttle/emergency/raven
 	suffix = "raven"

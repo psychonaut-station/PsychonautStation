@@ -287,7 +287,7 @@
 	var/list/lawcache_hackedcheck = hackedcheck.Copy()
 	var/forced_log_message = "stating laws[force ? ", forced" : ""]"
 	//"radiomod" is inserted before a hardcoded message to change if and how it is handled by an internal radio.
-	say("[radiomod] Current Active Laws:", forced = forced_log_message)
+	say("[radiomod] Aktif yasalar:", forced = forced_log_message)
 	sleep(1 SECONDS)
 
 	if (lawcache_zeroth)

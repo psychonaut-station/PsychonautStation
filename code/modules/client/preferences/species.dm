@@ -6,7 +6,7 @@
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/species/deserialize(input, datum/preferences/preferences)
-	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
+	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(preferences), SPECIES_HUMAN)]
 
 /datum/preference/choiced/species/serialize(input)
 	var/datum/species/species = input
@@ -27,6 +27,8 @@
 	return values
 
 /datum/preference/choiced/species/apply_to_human(mob/living/carbon/human/target, value)
+	if(issynthetic(target))
+		return
 	target.set_species(value, icon_update = FALSE, pref_load = TRUE)
 
 /datum/preference/choiced/species/compile_constant_data()

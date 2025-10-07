@@ -60,6 +60,17 @@
 /obj/item/clothing/suit/armor/vest/alt/sec
 	icon_state = "armor_sec"
 
+/obj/item/clothing/suit/armor/vest/alt/brig_physician
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
+	icon_state = "armor_bp"
+
+/obj/item/clothing/suit/armor/vest/alt/tactical_armor
+	name = "Tactical armor vest"
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
+	icon_state = "tactical_armor"
+
 /obj/item/clothing/suit/armor/vest/press
 	name = "press armor vest"
 	desc = "A blue armor vest used to distinguish <i>non-combatant</i> \"PRESS\" members, like if anyone cares."
@@ -178,6 +189,13 @@
 	inhand_icon_state = "hostrench"
 	flags_inv = 0
 	strip_delay = 8 SECONDS
+
+/obj/item/clothing/suit/armor/hos/special
+	name = "special armored jacket"
+	desc = "Huseyin kim amk"
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
+	icon_state = "hosjacketspecial"
 
 /obj/item/clothing/suit/armor/hos/trenchcoat/winter
 	name = "head of security's winter trenchcoat"

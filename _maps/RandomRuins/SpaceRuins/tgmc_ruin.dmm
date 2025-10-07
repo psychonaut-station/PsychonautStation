@@ -1,0 +1,889 @@
+//MAP CONVERTED BY dmm2tgm.py THIS HEADER COMMENT PREVENTS RECONVERSION, DO NOT REMOVE
+"aE" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/obj/structure/alien/weeds,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"bg" = (
+/obj/machinery/atmospherics/components/tank/air,
+/turf/open/floor/plating,
+/area/ruin/space)
+"bO" = (
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"ci" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on{
+	dir = 8
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"cm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/light/dim/directional/west{
+	dir = 4
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"dx" = (
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space)
+"dF" = (
+/obj/machinery/power/tracker,
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/space)
+"eF" = (
+/obj/item/food/canned/chap,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"eQ" = (
+/obj/structure/cable,
+/obj/effect/decal/cleanable/blood/splatter/xeno,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"fa" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"fE" = (
+/obj/effect/decal/cleanable/blood/gibs/old,
+/turf/open/floor/plating,
+/area/ruin/space)
+"gm" = (
+/obj/structure/frame/computer{
+	dir = 4;
+	anchored = 1
+	},
+/obj/item/shard{
+	pixel_x = 2;
+	pixel_y = -6
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"gV" = (
+/obj/item/food/canned/peaches/maint,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"hg" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space)
+"hF" = (
+/obj/machinery/porta_turret/syndicate/pod{
+	dir = 9;
+	max_integrity = 60;
+	faction = list("syndicate","xenomorph")
+	},
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space)
+"hN" = (
+/obj/structure/rack,
+/obj/item/clothing/shoes/combat,
+/obj/item/clothing/shoes/combat{
+	pixel_y = 4;
+	pixel_x = 3
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"id" = (
+/obj/structure/table/reinforced,
+/obj/machinery/recharger{
+	pixel_y = 3
+	},
+/obj/item/clothing/accessory/medal/silver/valor{
+	pixel_x = -9;
+	pixel_y = -1
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"iO" = (
+/obj/structure/chair/comfy/shuttle{
+	dir = 8
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"ji" = (
+/obj/structure/cable,
+/obj/machinery/power/solar_control{
+	dir = 8;
+	name = "solar sail control"
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"jo" = (
+/obj/structure/alien/weeds,
+/obj/item/clothing/mask/facehugger/impregnated,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"kR" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"lw" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/plating,
+/area/ruin/space)
+"lE" = (
+/obj/structure/alien/weeds,
+/mob/living/basic/alien/sentinel,
+/turf/open/floor/plating,
+/area/ruin/space)
+"lH" = (
+/obj/structure/alien/egg/burst,
+/turf/open/floor/plating,
+/area/ruin/space)
+"mH" = (
+/obj/machinery/power/smes{
+	charge = 5e+006;
+	output_level = 20000
+	},
+/obj/structure/cable,
+/turf/open/floor/plating,
+/area/ruin/space)
+"nh" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"nJ" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/directional/west,
+/obj/structure/cable,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"ob" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"pp" = (
+/obj/machinery/power/shuttle_engine/propulsion/right{
+	dir = 4
+	},
+/turf/open/space/basic,
+/area/ruin/space)
+"pN" = (
+/obj/effect/decal/remains/human{
+	pixel_y = 6
+	},
+/obj/effect/decal/cleanable/blood,
+/obj/item/paper/crumpled/bloody{
+	pixel_x = 10;
+	pixel_y = -10;
+	default_raw_text = "Ben komutan Husnu tgmcogullari. Görevimiz kargomuzu deneysel koloni Zeta'ya ulastirmakti ancak davetsiz bir misafir gemiye binmis. Tüm mürettebat öldü tek basima kendimi buraya kitleyip kapilari barikatla kapattim. Ancak içeri bir larva girdi ve beni isirdi anlasilan burada ölecegim ama o küçük piçte ölecek her neyse bu notu burada bitiriyorum umarim bunu bir kurtarma ekibi bulur."
+	},
+/turf/open/floor/iron/tgmcemblem{
+	dir = 5
+	},
+/area/ruin/space)
+"pS" = (
+/turf/open/floor/iron/tgmcemblem{
+	dir = 9
+	},
+/area/ruin/space)
+"qp" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space)
+"qB" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/structure/alien/weeds,
+/obj/machinery/light/dim/directional/west{
+	dir = 4
+	},
+/obj/item/gun/ballistic/rifle/boltaction/surplus,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"qJ" = (
+/obj/machinery/atmospherics/components/binary/pump/on,
+/turf/open/floor/plating,
+/area/ruin/space)
+"qW" = (
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"rh" = (
+/obj/machinery/power/apc/auto_name/directional/south,
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"rW" = (
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space)
+"sp" = (
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"ss" = (
+/obj/machinery/power/solar,
+/obj/structure/cable,
+/turf/open/floor/iron/solarpanel/airless,
+/area/ruin/space)
+"te" = (
+/obj/effect/decal/cleanable/blood/gibs/body,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"tG" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"uc" = (
+/turf/open/space/basic,
+/area/template_noop)
+"ug" = (
+/obj/structure/rack,
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_y = 2
+	},
+/obj/item/bodybag/environmental/nanotrasen{
+	pixel_y = 7
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"uS" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
+/obj/item/ammo_box/speedloader/strilka310/surplus,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"vm" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"vV" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/item/gun/ballistic/automatic/smartgun,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"yG" = (
+/obj/effect/decal/cleanable/blood/gibs/xeno/larva/body,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"yQ" = (
+/obj/structure/closet/crate/secure/weapon,
+/obj/machinery/light/dim/directional/west{
+	dir = 4
+	},
+/obj/item/ammo_box/magazine/smartgun,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"zz" = (
+/obj/structure/frame/computer{
+	dir = 4;
+	anchored = 1
+	},
+/obj/item/shard{
+	pixel_x = 4;
+	pixel_y = 4
+	},
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"Ay" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"AL" = (
+/obj/structure/guncase,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"CU" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/tgmcemblem{
+	dir = 1
+	},
+/area/ruin/space)
+"DT" = (
+/obj/effect/decal/cleanable/blood/gibs,
+/turf/open/floor/plating,
+/area/ruin/space)
+"EA" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"Fc" = (
+/obj/structure/alien/weeds/node{
+	maximum_growtime = 240000;
+	minimum_growtime = 120000;
+	growtime = 150000
+	},
+/turf/open/floor/plating,
+/area/ruin/space)
+"Fs" = (
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/marine/medic{
+	pixel_y = 2;
+	pixel_x = 3
+	},
+/obj/item/clothing/suit/armor/vest/marine/medic{
+	pixel_y = -4
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Fy" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"FB" = (
+/obj/structure/rack,
+/obj/item/clothing/gloves/combat{
+	pixel_y = -6
+	},
+/obj/item/clothing/gloves/combat{
+	pixel_y = 1
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"FE" = (
+/obj/structure/alien/resin/wall,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Gz" = (
+/obj/structure/cable,
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space)
+"Hb" = (
+/obj/effect/decal/cleanable/blood/gibs/core,
+/turf/open/floor/plating,
+/area/ruin/space)
+"Hg" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node{
+	maximum_growtime = 240000;
+	minimum_growtime = 120000;
+	growtime = 150000
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Hx" = (
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/obj/structure/alien/resin/wall,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"HQ" = (
+/obj/structure/window/reinforced/shuttle,
+/turf/open/floor/plating,
+/area/ruin/space)
+"In" = (
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"JE" = (
+/mob/living/basic/alien{
+	faction = list("syndicate","xenomorph")
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"JT" = (
+/mob/living/basic/alien{
+	faction = list("syndicate","xenomorph")
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"KE" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/tgmcemblem/center{
+	dir = 8
+	},
+/area/ruin/space)
+"LG" = (
+/obj/machinery/power/terminal,
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"LX" = (
+/obj/structure/cable,
+/obj/structure/rack,
+/obj/item/clothing/head/helmet/marine{
+	pixel_x = -3
+	},
+/obj/item/clothing/suit/armor/vest/marine/security{
+	pixel_y = -5
+	},
+/obj/machinery/light/dim/directional/west,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Mb" = (
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds/node{
+	maximum_growtime = 240000;
+	minimum_growtime = 120000;
+	growtime = 150000
+	},
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Me" = (
+/obj/structure/cable,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"MA" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/obj/structure/alien/weeds,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"MH" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"NR" = (
+/turf/open/floor/iron/tgmcemblem,
+/area/ruin/space)
+"NZ" = (
+/obj/machinery/power/shuttle_engine/heater{
+	dir = 4
+	},
+/turf/open/floor/plating/airless,
+/area/ruin/space)
+"Oh" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/iron/tgmcemblem{
+	dir = 4
+	},
+/area/ruin/space)
+"Oj" = (
+/obj/structure/cable,
+/obj/structure/window/reinforced/spawner/directional/east,
+/turf/open/floor/plating,
+/area/ruin/space)
+"Oz" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/exotic/languagebook,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"OX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/turf/open/floor/plating,
+/area/ruin/space)
+"PJ" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"Qe" = (
+/obj/machinery/door/airlock/external/ruin,
+/obj/structure/fans/tiny,
+/turf/open/floor/plating,
+/area/ruin/space)
+"Ql" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/open/floor/plating,
+/area/ruin/space)
+"Qz" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/turf/closed/wall/mineral/titanium/nodiagonal,
+/area/ruin/space)
+"QJ" = (
+/turf/open/floor/iron/tgmcemblem{
+	dir = 8
+	},
+/area/ruin/space)
+"QV" = (
+/obj/structure/alien/weeds/node{
+	maximum_growtime = 240000;
+	minimum_growtime = 120000;
+	growtime = 150000
+	},
+/obj/structure/alien/weeds,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"Sy" = (
+/obj/structure/rack,
+/obj/effect/spawner/random/maintenance/three,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"TB" = (
+/obj/machinery/porta_turret/syndicate/pod{
+	dir = 10;
+	max_integrity = 60;
+	faction = list("syndicate","xenomorph")
+	},
+/turf/closed/wall/mineral/titanium,
+/area/ruin/space)
+"TP" = (
+/obj/machinery/door/airlock/hatch,
+/obj/structure/cable,
+/obj/structure/barricade/wooden/crude,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"Ut" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/obj/structure/alien/weeds,
+/turf/open/floor/plating,
+/area/ruin/space)
+"VU" = (
+/obj/machinery/door/airlock/hatch,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
+/obj/structure/cable,
+/turf/open/floor/iron/dark,
+/area/ruin/space)
+"WD" = (
+/obj/item/food/canned/beans,
+/turf/open/floor/iron/tgmcemblem{
+	dir = 10
+	},
+/area/ruin/space)
+"WP" = (
+/obj/machinery/atmospherics/components/unary/vent_pump/on,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+"XM" = (
+/obj/item/stack/sheet/mineral/wood,
+/turf/open/floor/iron/tgmcemblem{
+	dir = 6
+	},
+/area/ruin/space)
+"Yb" = (
+/obj/machinery/airalarm/directional/south,
+/obj/effect/mapping_helpers/airalarm/all_access,
+/turf/open/floor/pod/dark,
+/area/ruin/space)
+
+(1,1,1) = {"
+uc
+uc
+uc
+HQ
+HQ
+HQ
+HQ
+HQ
+uc
+uc
+uc
+"}
+(2,1,1) = {"
+uc
+uc
+HQ
+HQ
+zz
+id
+gm
+HQ
+HQ
+uc
+uc
+"}
+(3,1,1) = {"
+uc
+HQ
+HQ
+qW
+iO
+qW
+iO
+qW
+HQ
+HQ
+uc
+"}
+(4,1,1) = {"
+uc
+HQ
+qW
+qW
+pS
+QJ
+WD
+qW
+qW
+HQ
+uc
+"}
+(5,1,1) = {"
+uc
+HQ
+qW
+WP
+CU
+KE
+NR
+gV
+qW
+HQ
+uc
+"}
+(6,1,1) = {"
+uc
+dx
+AL
+eF
+pN
+Oh
+XM
+yG
+Yb
+dx
+uc
+"}
+(7,1,1) = {"
+uc
+dx
+qW
+qW
+EA
+cm
+eQ
+Me
+rh
+dx
+uc
+"}
+(8,1,1) = {"
+hF
+dx
+rW
+rW
+PJ
+Qz
+TP
+rW
+rW
+dx
+TB
+"}
+(9,1,1) = {"
+dx
+Oz
+In
+aE
+jo
+nJ
+Hx
+LX
+FE
+Sy
+dx
+"}
+(10,1,1) = {"
+dx
+Sy
+sp
+tG
+nh
+Fy
+JT
+Sy
+FE
+Sy
+dx
+"}
+(11,1,1) = {"
+dx
+Sy
+sp
+tG
+ob
+fa
+Mb
+Fs
+In
+FB
+dx
+"}
+(12,1,1) = {"
+dx
+tG
+sp
+ug
+QV
+vm
+sp
+MA
+In
+hN
+dx
+"}
+(13,1,1) = {"
+dx
+tG
+Hg
+tG
+MH
+fa
+ob
+tG
+In
+Sy
+dx
+"}
+(14,1,1) = {"
+Qe
+ob
+QV
+JT
+sp
+vm
+sp
+sp
+In
+FE
+Qe
+"}
+(15,1,1) = {"
+dx
+ob
+sp
+sp
+sp
+Ay
+JE
+In
+In
+FE
+dx
+"}
+(16,1,1) = {"
+dx
+vV
+sp
+qB
+In
+Ay
+In
+yQ
+FE
+uS
+dx
+"}
+(17,1,1) = {"
+dx
+rW
+rW
+rW
+rW
+VU
+rW
+rW
+rW
+rW
+dx
+"}
+(18,1,1) = {"
+dx
+bg
+lw
+qJ
+OX
+Ut
+kR
+kR
+hg
+mH
+dx
+"}
+(19,1,1) = {"
+dx
+bg
+Ql
+Hb
+bO
+ci
+bO
+bO
+LG
+mH
+dx
+"}
+(20,1,1) = {"
+dx
+dx
+Hb
+DT
+bO
+lE
+Fc
+bO
+kR
+Gz
+dx
+"}
+(21,1,1) = {"
+ss
+dx
+lH
+fE
+te
+bO
+bO
+bO
+bO
+Gz
+ss
+"}
+(22,1,1) = {"
+ss
+Gz
+Gz
+Oj
+Oj
+ji
+qp
+qp
+Gz
+Gz
+ss
+"}
+(23,1,1) = {"
+uc
+ss
+dx
+NZ
+NZ
+Gz
+NZ
+NZ
+dx
+ss
+uc
+"}
+(24,1,1) = {"
+uc
+uc
+uc
+pp
+pp
+dF
+pp
+pp
+uc
+uc
+uc
+"}

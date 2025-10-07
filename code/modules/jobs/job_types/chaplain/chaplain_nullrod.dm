@@ -424,6 +424,22 @@
 	. = ..()
 	AddElement(/datum/element/kneejerk)
 
+/obj/item/nullrod/mace
+	name = "space mace"
+	desc = "This mace is looks like its from a space chaplain 40 thousand miles away."
+	icon = 'icons/psychonaut/obj/weapons/chaplain.dmi'
+	icon_state = "crozius"
+	inhand_icon_state = "crozius"
+	worn_icon_state = "crozius"
+	worn_icon = 'icons/psychonaut/mob/clothing/back.dmi'
+	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/chaplain_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/weapons/chaplain_righthand.dmi'
+	w_class = WEIGHT_CLASS_BULKY
+	slot_flags = ITEM_SLOT_BACK
+	attack_verb_continuous = list("smashes", "bashes", "crunches")
+	attack_verb_simple = list("smash", "bash", "crunch")
+	menu_description = "A space mace. Can be worn on the back."
+
 // Chainsaw Hand - Cannot be dropped.
 
 /obj/item/nullrod/chainsaw

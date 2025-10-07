@@ -1,6 +1,7 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = PROC_REF(set_job_preference),
+		"set_job_title" = PROC_REF(set_job_title),
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -23,6 +24,17 @@
 
 	preferences.character_preview_view?.update_body()
 
+	return TRUE
+
+/datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
+	var/default_job_title = params["job"]
+	var/new_job_title = params["new_title"]
+	var/datum/job/job = SSjob.get_job(default_job_title)
+
+	if(isnull(job) || !job.alt_titles.Find(new_job_title))
+		return FALSE
+
+	preferences.alt_job_titles[default_job_title] = new_job_title
 	return TRUE
 
 /datum/preference_middleware/jobs/get_constant_data()
@@ -54,6 +66,7 @@
 		jobs[job.title] = list(
 			"description" = job.description,
 			"department" = department_name,
+			"alt_titles" = job.alt_titles,
 		)
 
 	data["departments"] = departments
@@ -64,7 +77,16 @@
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 
+	if(isnull(preferences.alt_job_titles))
+		preferences.alt_job_titles = list()
+
 	data["job_preferences"] = preferences.job_preferences
+
+	data["job_alt_titles"] = preferences.alt_job_titles
+
+	var/list/job_whitelist = is_whitelisted(user)
+	if (job_whitelist.len)
+		data["job_whitelist"] = job_whitelist
 
 	return data
 
@@ -115,6 +137,15 @@
 
 	for (var/datum/job/job as anything in SSjob.all_occupations)
 		if (is_banned_from(user.client?.ckey, job.title))
+			data += job.title
+
+	return data
+
+/datum/preference_middleware/jobs/proc/is_whitelisted(mob/user)
+	var/list/data = list()
+
+	for (var/datum/job/job as anything in SSjob.all_occupations)
+		if (job.whitelisted && !check_job_whitelist(user.client?.ckey))
 			data += job.title
 
 	return data

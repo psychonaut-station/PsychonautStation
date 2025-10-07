@@ -215,6 +215,7 @@
 		/obj/item/reagent_containers/cup/glass/bottle/champagne = 2,
 		/obj/item/reagent_containers/cup/glass/bottle/absinthe/premium = 2,
 		/obj/item/reagent_containers/cup/glass/bottle/goldschlager = 2,
+		/obj/item/reagent_containers/cup/glass/bottle/raki = 2,
 		/obj/item/reagent_containers/cup/glass/bottle/patron = 1,
 		/obj/item/reagent_containers/cup/glass/bottle/kong = 1,
 		/obj/item/reagent_containers/cup/glass/bottle/lizardwine = 1,

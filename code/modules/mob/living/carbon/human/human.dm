@@ -77,6 +77,9 @@
 	update_ID_card()
 	sec_hud_set_implants()
 	sec_hud_set_security_status()
+	//...battery hud...
+	if(isipc(src))
+		diag_hud_set_humancell()
 	//...fan gear
 	fan_hud_set_fandom()
 	//...and display them.
@@ -628,6 +631,9 @@
 		update_worn_gloves()
 		. |= COMPONENT_CLEANED
 
+	if(dna.species.wash(src))
+		. = TRUE
+
 //Turns a mob black, flashes a skeleton overlay
 //Just like a cartoon!
 /mob/living/carbon/human/proc/electrocution_animation(anim_duration)
@@ -1082,6 +1088,9 @@
 /mob/living/carbon/human/species/android
 	race = /datum/species/android
 
+/mob/living/carbon/human/species/arachnid
+	race = /datum/species/arachnid
+
 /mob/living/carbon/human/species/dullahan
 	race = /datum/species/dullahan
 
@@ -1093,6 +1102,9 @@
 
 /mob/living/carbon/human/species/golem
 	race = /datum/species/golem
+
+/mob/living/carbon/human/species/ipc
+	race = /datum/species/ipc
 
 /mob/living/carbon/human/species/jelly
 	race = /datum/species/jelly

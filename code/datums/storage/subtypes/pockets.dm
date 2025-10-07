@@ -212,6 +212,7 @@
 	set_holdable(list(
 		/obj/item/reagent_containers/cup/glass/bottle/vodka,
 		/obj/item/reagent_containers/cup/glass/bottle/molotov,
+		/obj/item/reagent_containers/cup/glass/bottle/raki,
 		/obj/item/reagent_containers/cup/glass/drinkingglass,
 		/obj/item/ammo_box/speedloader/strilka310
 	))

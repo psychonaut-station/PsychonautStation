@@ -1404,6 +1404,18 @@
 	registered_name = JOB_ERT_CLOWN
 	trim = /datum/id_trim/centcom/ert/clown
 
+/obj/item/card/id/advanced/white
+	name = "white identification card"
+	desc = "impressive, very nice."
+	icon = 'icons/psychonaut/obj/card.dmi'
+	icon_state = "card_white"
+	assigned_icon_state = "assigned_white"
+	wildcard_slots = WILDCARD_LIMIT_SILVER
+
+/obj/item/card/id/advanced/white/Initialize(mapload)
+	. = ..()
+	ADD_TRAIT(src, TRAIT_TASTEFULLY_THICK_ID_CARD, ROUNDSTART_TRAIT)
+
 /obj/item/card/id/advanced/centcom/ert/militia
 	registered_name = "Frontier Militia"
 	trim = /datum/id_trim/centcom/ert/militia
@@ -2061,6 +2073,7 @@
 	var/scribbled_assignment
 	///An icon state used as trim.
 	var/scribbled_trim
+	var/scribbled_trim_icon
 	///The colors for each of the above variables, for when overlays are updated.
 	var/details_colors = list(COLOR_BLACK, COLOR_BLACK, COLOR_BLACK)
 	pickup_sound = 'sound/items/handling/materials/cardboard_pick_up.ogg'
@@ -2105,24 +2118,30 @@
 			details_colors[INDEX_ASSIGNMENT_COLOR] = details["color"] || COLOR_BLACK
 		if("Trim")
 			var/static/list/possible_trims
+			var/static/list/possible_trim_icons
 			if(!possible_trims)
 				possible_trims = list()
+				possible_trim_icons = list()
 				for(var/trim_path in typesof(/datum/id_trim))
 					var/datum/id_trim/trim = SSid_access.trim_singletons_by_path[trim_path]
 					if(trim?.trim_state && trim.assignment)
-						possible_trims |= replacetext(trim.trim_state, "trim_", "")
+						var/trim_state = replacetext(trim.trim_state, "trim_", "")
+						possible_trims |= trim_state
+						possible_trim_icons[trim_state] = trim.trim_icon
 				sortTim(possible_trims, GLOBAL_PROC_REF(cmp_typepaths_asc))
 			var/input_trim = tgui_input_list(user, "Select trim to apply to your card.\nNote: This will not grant any trim accesses.", "Forge Trim", possible_trims)
 			if(!input_trim || !after_input_check(user, item, input_trim, scribbled_trim))
 				return
 			playsound(src, SFX_WRITING_PEN, 50, TRUE, SHORT_RANGE_SOUND_EXTRARANGE, SOUND_FALLOFF_EXPONENT + 3, ignore_walls = FALSE)
 			scribbled_trim = "cardboard_[input_trim]"
+			scribbled_trim_icon = possible_trim_icons[input_trim]
 			var/list/details = item.get_writing_implement_details()
 			details_colors[INDEX_TRIM_COLOR] = details["color"] || COLOR_BLACK
 		if("Reset")
 			scribbled_name = null
 			scribbled_assignment = null
 			scribbled_trim = null
+			scribbled_trim_icon = null
 			details_colors = list(COLOR_BLACK, COLOR_BLACK, COLOR_BLACK)
 
 	update_appearance()
@@ -2162,7 +2181,7 @@
 		var/mutable_appearance/frame_overlay = mutable_appearance(icon, "cardboard_frame")
 		frame_overlay.color = details_colors[INDEX_TRIM_COLOR]
 		. += frame_overlay
-		var/mutable_appearance/trim_overlay = mutable_appearance(icon, scribbled_trim)
+		var/mutable_appearance/trim_overlay = mutable_appearance(scribbled_trim_icon, scribbled_trim)
 		trim_overlay.color = details_colors[INDEX_TRIM_COLOR]
 		. += trim_overlay
 

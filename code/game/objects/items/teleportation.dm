@@ -343,29 +343,43 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	//Uses of the device left
-	var/charges = 4
+	var/charges = 3
 	//The maximum number of stored uses
-	var/max_charges = 4
+	var/max_charges = 3
 	///Minimum distance to teleport user forward
 	var/minimum_teleport_distance = 4
 	///Maximum distance to teleport user forward
-	var/maximum_teleport_distance = 8
+	var/maximum_teleport_distance = 7
 	//How far the emergency teleport checks for a safe position
-	var/parallel_teleport_distance = 3
+	var/parallel_teleport_distance = 2
 	// How much blood lost per teleport (out of base 560 blood)
 	var/bleed_amount = 20
+	var/list/charge_timers = list()
+	var/charge_time = 25 SECONDS
 
-/obj/item/syndicate_teleporter/Initialize(mapload)
-	. = ..()
-	START_PROCESSING(SSobj, src)
+/obj/item/syndicate_teleporter/proc/use_charge(mob/user)
+	charges = max(charges - 1, 0)
+	to_chat(user, span_notice("You use [src]. It now has [charges] charge[charges == 1 ? "" : "s"] remaining."))
+	charge_timers.Add(addtimer(CALLBACK(src, PROC_REF(recharge)), charge_time, TIMER_STOPPABLE))
 
-/obj/item/syndicate_teleporter/Destroy(force)
-	STOP_PROCESSING(SSobj, src)
-	return ..()
+/obj/item/syndicate_teleporter/proc/recharge(mob/user)
+	charges = min(charges+1, max_charges)
+	charge_timers.Remove(charge_timers[1])
+
+	if(ishuman(loc))
+		var/mob/living/carbon/human/holder = loc
+		balloon_alert(holder, "teleporter beeps")
+	playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 
 /obj/item/syndicate_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] has <b>[charges]</b> out of [max_charges] charges left.")
+	. += span_notice("It has [charges] charges remaining.")
+	if (length(charge_timers))
+		. += "[span_notice("<b>A small display on the back reads:")]</b>"
+	for (var/i in 1 to length(charge_timers))
+		var/timeleft = timeleft(charge_timers[i])
+		var/loadingbar = num2loadingbar(timeleft/charge_time)
+		. += span_notice("<b>CHARGE #[i]: [loadingbar] ([DisplayTimeText(timeleft)])</b>")
 
 /obj/item/syndicate_teleporter/attack_self(mob/user)
 	. = ..()
@@ -373,14 +387,6 @@
 		return
 	attempt_teleport(user = user, triggered_by_emp = FALSE)
 	return TRUE
-
-/obj/item/syndicate_teleporter/process(seconds_per_tick, times_fired)
-	if(SPT_PROB(10, seconds_per_tick) && charges < max_charges)
-		charges++
-		if(ishuman(loc))
-			var/mob/living/carbon/human/holder = loc
-			balloon_alert(holder, "teleporter beeps")
-		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
 
 /obj/item/syndicate_teleporter/emp_act(severity)
 	. = ..()
@@ -439,7 +445,7 @@
 	else
 		telefrag(destination, user)
 		do_teleport(user, destination, channel = TELEPORT_CHANNEL_FREE)
-		charges = max(charges - 1, 0)
+		use_charge(user)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(current_location)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(destination)
 		if(make_bloods(current_location, destination, user))
@@ -476,7 +482,7 @@
 	if(emergency_destination)
 		telefrag(emergency_destination, user)
 		do_teleport(user, emergency_destination, channel = TELEPORT_CHANNEL_FREE)
-		charges = max(charges - 1, 0)
+		use_charge(user)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(mobloc)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(emergency_destination)
 		balloon_alert(user, "emergency teleport triggered!")
@@ -560,11 +566,11 @@
 	default_raw_text = {"
 		<b>Instructions on your new prototype teleporter:</b><br>
 		<br>
-		This teleporter will teleport the user 4-8 meters in the direction they are facing.<br>
+		This teleporter will teleport the user 4-7 meters in the direction they are facing.<br>
 		<br>
-		It has 4 charges, and will recharge over time randomly. No, sticking the teleporter into an APC, microwave, or electrified airlock will not make it charge faster.<br>
+		It has 3 charges, and will recharge after 25 seconds. No, sticking the teleporter into an APC, microwave, or electrified airlock will not make it charge faster.<br>
 		<br>
-		<b>Warning:</b> Teleporting into walls will activate a failsafe teleport parallel up to 3 meters, but the user will be ripped apart if it fails to find a safe location.<br>
+		<b>Warning:</b> Teleporting into walls will activate a failsafe teleport parallel up to 2 meters, but the user will be ripped apart if it fails to find a safe location.<br>
 		<br>
 		Do not expose the teleporter to electromagnetic pulses. Unwanted malfunctions may occur.
 		<br>

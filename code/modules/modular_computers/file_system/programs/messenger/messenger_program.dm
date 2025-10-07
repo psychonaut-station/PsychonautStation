@@ -99,6 +99,7 @@
 		var/list/data = list()
 		data["name"] = messenger.computer.saved_identification
 		data["job"] = messenger.computer.saved_job
+		data["job_trim"] = SSjob.all_alt_titles[messenger.computer.saved_job]
 		data["ref"] = REF(messenger)
 
 		dictionary[data["ref"]] = data

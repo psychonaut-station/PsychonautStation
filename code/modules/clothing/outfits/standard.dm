@@ -474,3 +474,10 @@
 	W.registered_name = H.real_name
 	W.update_label()
 	W.update_icon()
+
+// used in ipc screenshots
+/datum/outfit/ipcjacketbiker
+	name = "IPC Leather Jacket Biker"
+	suit = /obj/item/clothing/suit/jacket/leather/biker
+	shoes = /obj/item/clothing/shoes/jackboots
+	head = /obj/item/clothing/head/costume/tv_head

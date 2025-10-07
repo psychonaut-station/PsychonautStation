@@ -29,3 +29,5 @@
 /datum/movespeed_modifier/binocs_wielded
 	multiplicative_slowdown = 1.5
 
+/datum/movespeed_modifier/cyborgclamp
+	multiplicative_slowdown = 0.5

@@ -185,14 +185,17 @@
 	return 0 // plays no sound
 
 /mob/living/proc/set_combat_mode(new_mode, silent = TRUE)
-
 	if(HAS_TRAIT(src, TRAIT_COMBAT_MODE_LOCK))
 		return
+
+	if(istype(src, /mob/living/silicon/robot))
+		SEND_SIGNAL(src, COMSIG_BORG_TOGGLE_HARM_INTENT)
 
 	if(combat_mode == new_mode)
 		return
 	. = combat_mode
 	combat_mode = new_mode
+
 	if(hud_used?.action_intent)
 		hud_used.action_intent.update_appearance()
 	if(silent || !client?.prefs.read_preference(/datum/preference/toggle/sound_combatmode))

@@ -83,6 +83,7 @@
 #define SECHUD_BITAVATAR "hudbitavatar"
 #define SECHUD_BITRUNNER "hudbitrunner"
 #define SECHUD_BOTANIST "hudbotanist"
+#define SECHUD_BRIG_PHYSICIAN "hudbrigphysician"
 #define SECHUD_BRIDGE_ASSISTANT "hudbridgeassistant"
 #define SECHUD_CAPTAIN "hudcaptain"
 #define SECHUD_CARGO_TECHNICIAN "hudcargotechnician"
@@ -115,6 +116,8 @@
 #define SECHUD_STATION_ENGINEER "hudstationengineer"
 #define SECHUD_VETERAN_ADVISOR "hudveteranadvisor"
 #define SECHUD_WARDEN "hudwarden"
+#define SECHUD_WORKER "hudworker"
+#define SECHUD_SYNTHETIC "hudsynthetic"
 
 #define SECHUD_CHEF "hudchef"
 

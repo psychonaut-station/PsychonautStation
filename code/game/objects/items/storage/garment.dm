@@ -83,6 +83,9 @@
 	new /obj/item/clothing/head/hats/hos/cap(src)
 	new /obj/item/clothing/mask/gas/sechailer/swat(src)
 	new /obj/item/clothing/neck/cloak/hos(src)
+	new /obj/item/clothing/head/hats/hos/special(src)
+	new /obj/item/clothing/neck/cloak/hos/special(src)
+	new /obj/item/clothing/suit/armor/hos/special(src)
 
 /obj/item/storage/bag/garment/warden/PopulateContents()
 	new /obj/item/clothing/suit/armor/vest/warden(src)

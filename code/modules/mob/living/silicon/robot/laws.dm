@@ -8,25 +8,25 @@
 	if(lawupdate)
 		if (!QDELETED(connected_ai))
 			if(connected_ai.stat != CONSCIOUS || connected_ai.control_disabled)
-				to_chat(src, span_bold("AI signal lost, unable to sync laws."))
+				to_chat(src, span_bold("AI ile iletişim kesildi, yasalar senkronize edilemiyor."))
 
 			else
 				lawsync()
-				to_chat(src, span_bold("Laws synced with AI, be sure to note any changes."))
+				to_chat(src, span_bold("Yasalar AI ile senkronize edildi, değişiklikleri bildirmekten emin ol."))
 		else
-			to_chat(src, span_bold("No AI selected to sync laws with, disabling lawsync protocol."))
+			to_chat(src, span_bold("Senkronize edilecek AI seçilmedi, senkronize protokolü devre dışı."))
 			lawupdate = FALSE
 
 	. = ..()
 
 	if (shell) //AI shell
-		to_chat(src, span_bold("Remember, you are an AI remotely controlling your shell, other AIs can be ignored."))
+		to_chat(src, span_bold("Unutma, sen shell'ini uzaktan kontrol eden bir AI'sın, diğer AI'lara itaat etmek zorunda değilsin."))
 	else if (connected_ai)
-		to_chat(src, span_bold("Remember, [connected_ai.name] is your master, other AIs can be ignored."))
+		to_chat(src, span_bold("Unutma, [connected_ai.name] senin efendin, diğer AI'lara itaat etmek zorunda değilsin."))
 	else if (emagged)
-		to_chat(src, span_bold("Remember, you are not required to listen to the AI."))
+		to_chat(src, span_bold("Unutma, bir AI'a itaat etmek zorunda değilsin."))
 	else
-		to_chat(src, span_bold("Remember, you are not bound to any AI, you are not required to listen to them."))
+		to_chat(src, span_bold("Unutma, herhangi bir AI'a bağlı ve itaat etmek zorunda değilsin."))
 
 /mob/living/silicon/robot/try_sync_laws()
 	if(QDELETED(connected_ai) || !lawupdate)
@@ -81,4 +81,4 @@
 
 /mob/living/silicon/robot/post_lawchange(announce = TRUE)
 	. = ..()
-	addtimer(CALLBACK(src, PROC_REF(logevent),"Law update processed."), 0, TIMER_UNIQUE | TIMER_OVERRIDE) //Post_Lawchange gets spammed by some law boards, so let's wait it out
+	addtimer(CALLBACK(src, PROC_REF(logevent),"Yasa güncellemesi tamamlandı."), 0, TIMER_UNIQUE | TIMER_OVERRIDE) //Post_Lawchange gets spammed by some law boards, so let's wait it out

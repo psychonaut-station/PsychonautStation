@@ -107,3 +107,16 @@
 
 /obj/item/food/grown/bell_pepper/make_bakeable()
 	AddComponent(/datum/component/bakeable, /obj/item/food/roasted_bell_pepper, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
+
+/obj/item/seeds/chili/bell_pepper/green
+	name = "green bell pepper seed pack"
+	icon = 'icons/psychonaut/obj/service/hydroponics/seeds.dmi'
+	icon_state = "seed-green-bell-pepper"
+	plantname = "Green Bell Pepper Plants"
+	product = /obj/item/food/grown/bell_pepper/green
+
+/obj/item/food/grown/bell_pepper/green
+	seed = /obj/item/seeds/chili/bell_pepper/green
+	name = "green bell pepper"
+	icon = 'icons/psychonaut/obj/service/hydroponics/harvest.dmi'
+	icon_state = "green_bell_pepper"

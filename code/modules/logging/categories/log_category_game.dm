@@ -22,6 +22,11 @@
 	config_flag = /datum/config_entry/flag/log_internet_request
 	master_category = /datum/log_category/game
 
+/datum/log_category/game_jukebox
+	category = LOG_CATEGORY_GAME_JUKEBOX
+	config_flag = /datum/config_entry/flag/log_jukebox
+	master_category = /datum/log_category/game
+
 /datum/log_category/game_radio_emote
 	category = LOG_CATEGORY_GAME_RADIO_EMOTE
 	config_flag = /datum/config_entry/flag/log_emote
@@ -47,9 +52,19 @@
 	config_flag = /datum/config_entry/flag/log_whisper
 	master_category = /datum/log_category/game
 
+/datum/log_category/game_hallucination
+	category = LOG_CATEGORY_GAME_HALLUCINATION
+	config_flag = /datum/config_entry/flag/log_hallucination
+	master_category = /datum/log_category/game
+
 /datum/log_category/game_ooc
 	category = LOG_CATEGORY_GAME_OOC
 	config_flag = /datum/config_entry/flag/log_ooc
+	master_category = /datum/log_category/game
+
+/datum/log_category/game_looc
+	category = LOG_CATEGORY_GAME_LOOC
+	config_flag = /datum/config_entry/flag/log_looc
 	master_category = /datum/log_category/game
 
 /datum/log_category/game_prayer

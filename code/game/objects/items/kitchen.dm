@@ -148,6 +148,15 @@
 		attack_verb_continuous = list("prods", "whiffs", "scratches", "pokes")
 		attack_verb_simple = list("prod", "whiff", "scratch", "poke")
 
+/obj/item/knife/doner
+	name = "doner knife"
+	desc = "A long knife whose main purpose is to cut doner kebab."
+	icon = 'icons/psychonaut/obj/service/kitchen.dmi'
+	icon_state = "doner_knife"
+	lefthand_file = 'icons/psychonaut/mob/inhands/equipment/kitchen_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/equipment/kitchen_righthand.dmi'
+	inhand_icon_state = "doner_knife"
+
 /obj/item/kitchen/rollingpin
 	name = "rolling pin"
 	desc = "Used to knock out the Bartender."

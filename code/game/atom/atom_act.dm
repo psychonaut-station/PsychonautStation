@@ -253,3 +253,9 @@
 ///This atom has been hit by a hulkified mob in hulk mode (user)
 /atom/proc/attack_hulk(mob/living/carbon/human/user)
 	SEND_SIGNAL(src, COMSIG_ATOM_HULK_ATTACK, user)
+
+/**
+ * Respond to an radiation acting on our item
+ */
+/atom/proc/rad_act(intensity)
+	return

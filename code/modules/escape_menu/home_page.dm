@@ -115,20 +115,6 @@
 		))
 		offset_order -= offset_order[1]
 
-	var/forumurl = CONFIG_GET(string/forumurl)
-	if(forumurl)
-		resource_panels += page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small/collapsible(
-			null,
-			/* hud_owner = */ null,
-			"Forums",
-			"Visit the server's forums",
-			/* button_screen_loc */ "BOTTOM:30,RIGHT:-20",
-			CALLBACK(client, TYPE_VERB_REF(/client, forum)),
-			/* button_overlay = */ "forums",
-			/* end_point */ offset_order[1],
-		))
-		offset_order -= offset_order[1]
-
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)
 		resource_panels += page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small/collapsible(
@@ -182,4 +168,3 @@
 	client?.prefs.update_static_data(client?.mob)
 	client?.prefs.ui_interact(client?.mob)
 	qdel(src)
-

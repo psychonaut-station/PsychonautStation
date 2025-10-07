@@ -37,6 +37,21 @@ fi
 # install cargo if needed
 if ! [ -x "$has_cargo" ]; then
 	echo "Installing rust..."
+ 	if ! [ -x "$has_sudo" ]; then
+		dpkg --add-architecture i386
+  		wget https://apt.llvm.org/llvm.sh
+    		chmod +x llvm.sh
+      		llvm.sh 14
+		apt-get update
+		apt-get install -y g++-multilib
+	else
+		sudo dpkg --add-architecture i386
+		sudo wget https://apt.llvm.org/llvm.sh
+    		sudo chmod +x llvm.sh
+      		sudo llvm.sh 14
+		sudo apt-get update
+		sudo apt-get install -y g++-multilib
+	fi
 	curl https://sh.rustup.rs -sSf | sh -s -- -y
 	. ~/.profile
 fi

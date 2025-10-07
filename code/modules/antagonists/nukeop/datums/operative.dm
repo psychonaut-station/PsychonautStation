@@ -9,6 +9,7 @@
 	hijack_speed = 2 //If you can't take out the station, take the shuttle instead.
 	suicide_cry = "FOR THE SYNDICATE!!"
 	stinger_sound = 'sound/music/antag/ops.ogg'
+	credits_icon = "nukeops"
 
 	/// Which nukie team are we on?
 	var/datum/team/nuclear/nuke_team

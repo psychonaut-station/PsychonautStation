@@ -178,6 +178,7 @@
 		"inducerengi",
 		"welding_goggles",
 		"tray_goggles",
+		"rad_collector",
 		"geigercounter",
 		"diode_disk_stamina"
 	)
@@ -247,6 +248,7 @@
 		"ci-medhud",
 		"ci-diaghud",
 		"ci-sechud",
+		"ci-scihud",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_ENGINEERING, RADIO_CHANNEL_SECURITY, RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

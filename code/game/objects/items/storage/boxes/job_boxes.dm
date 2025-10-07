@@ -55,13 +55,18 @@
 	new /obj/item/radio/off(src)
 
 /obj/item/storage/box/survival/proc/wardrobe_removal()
-	if(!isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
-		return
 	var/obj/item/mask = locate(mask_type) in src
 	var/obj/item/internals = locate(internal_type) in src
-	new /obj/item/tank/internals/plasmaman/belt(src)
-	qdel(mask) // Get rid of the items that shouldn't be
-	qdel(internals)
+	if(isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
+		new /obj/item/tank/internals/plasmaman/belt(src)
+		qdel(mask) // Get rid of the items that shouldn't be
+		qdel(internals)
+	else if(isipc(loc))
+		new /obj/item/stock_parts/power_store/cell/high(src)
+		qdel(mask)
+		qdel(internals)
+	else
+		return
 
 // Prisoners don't get an escape hook
 /obj/item/storage/box/survival/prisoner
@@ -87,6 +92,15 @@
 /obj/item/storage/box/survival/engineer/radio/PopulateContents()
 	..() // we want the regular items too.
 	new /obj/item/radio/off(src)
+
+/obj/item/storage/box/survival/worker
+	name = "extended-capacity survival box"
+	desc = "A box with the bare essentials of ensuring the survival of you and others. This one is labelled to contain an extended-capacity tank."
+	illustration = "extendedtank"
+	internal_type = /obj/item/tank/internals/emergency_oxygen/engi
+
+/obj/item/storage/box/survival/worker/PopulateContents()
+	new /obj/item/reagent_containers/cup/soda_cans/cola(src)
 
 // Syndie survival box
 /obj/item/storage/box/survival/syndie

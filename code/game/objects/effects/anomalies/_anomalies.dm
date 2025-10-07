@@ -62,6 +62,8 @@
 			countdown.start()
 
 /obj/effect/anomaly/process(seconds_per_tick)
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
 	anomalyEffect(seconds_per_tick)
 	if(death_time < world.time && !immortal)
 		if(loc)
@@ -82,6 +84,8 @@
 
 /// Move in a direction
 /obj/effect/anomaly/proc/move_anomaly()
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return
 	step(src, pick(GLOB.alldirs))
 
 /obj/effect/anomaly/proc/detonate()

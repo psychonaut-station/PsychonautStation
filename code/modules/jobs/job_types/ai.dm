@@ -21,7 +21,11 @@
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 	config_tag = "AI"
-
+	alt_titles = list(
+		"AI",
+		"Station Intelligence",
+		"Automated Overseer"
+	)
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
@@ -78,7 +82,7 @@
 /datum/job/ai/announce_job(mob/living/joining_mob)
 	. = ..()
 	if(SSticker.HasRoundStarted())
-		minor_announce("[joining_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(joining_mob)].")
+		minor_announce("[joining_mob] [AREACOORD(joining_mob)] bölgesindeki boş bir bluespace-bağlantılı AI core'a indirildi.")
 
 
 /datum/job/ai/config_check()

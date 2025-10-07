@@ -76,12 +76,12 @@ ROUNDSTART_LOGOUT_REPORT_TIME_AVERAGE 6000
 
 
 ## ALERT LEVELS ###
-ALERT_GREEN All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
-ALERT_BLUE_UPTO The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted.
-ALERT_BLUE_DOWNTO The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.
-ALERT_RED_UPTO There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised. Additionally, access requirements on some doors have been lifted.
-ALERT_RED_DOWNTO The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
-ALERT_DELTA Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
+# ALERT_GREEN All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced.
+# ALERT_BLUE_UPTO The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted.
+# ALERT_BLUE_DOWNTO The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed.
+# ALERT_RED_UPTO There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised. Additionally, access requirements on some doors have been lifted.
+# ALERT_RED_DOWNTO The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised.
+# ALERT_DELTA Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill.
 
 ## The total weight of station goals possible for a round (allows multiple goals)
 STATION_GOAL_BUDGET 1
@@ -253,7 +253,7 @@ NEAR_DEATH_EXPERIENCE
 ## Set to 4 for "specified", silicons will start with an existing lawset. (If no specified lawset is identified, the AI will spawn with asimov.)
 
 
-DEFAULT_LAWS 0
+DEFAULT_LAWS 3
 
 ## SILICON ASIMOV SUPERIORITY OVERRIDE ###
 ## This makes "Asimov Superiority" show up as a perk for humans in the character creation menu even if asimov is not the default lawset, such as when used with asimov++
@@ -373,9 +373,11 @@ ROUNDSTART_RACES lizard
 ROUNDSTART_RACES moth
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES shadow
+ROUNDSTART_RACES arachnid
 
 ## Races that are better than humans in some ways, but worse in others
 ROUNDSTART_RACES ethereal
+ROUNDSTART_RACES ipc
 #ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES abductor
 #ROUNDSTART_RACES snail
@@ -384,6 +386,7 @@ ROUNDSTART_RACES ethereal
 #ROUNDSTART_RACES skeleton
 #ROUNDSTART_RACES zombie
 #ROUNDSTART_RACES pod
+#ROUNDSTART_RACES cavespider
 #ROUNDSTART_RACES ghost
 
 ## Races that are radical departures to what a species is, so while they technically can be roundstart - it's probably not wise
@@ -590,3 +593,10 @@ SPY_EASY_REWARD_TC_THRESHOLD 5
 ## Hard bounties grant uplink rewards that cost this much TC (or higher).
 ## Also functions as the upper end for medium bounties.
 SPY_HARD_REWARD_TC_THRESHOLD 15
+
+## Modular Room Weight Config
+## See modules\mapping\modular_rooms for the full modular room list
+## Make sure there is one space between the room_id and the weight value.
+
+#MODULAR_ROOM_WEIGHT meta_supermatter 10
+#MODULAR_ROOM_WEIGHT meta_singularity 10

@@ -296,7 +296,7 @@
 
 	add_fingerprint(user)
 
-	if(user.zone_selected != BODY_ZONE_HEAD)
+	if(user.zone_selected != zone)
 		return ..()
 
 	var/target_has_brain = C.get_organ_by_type(/obj/item/organ/brain)
@@ -307,9 +307,13 @@
 
 	//since these people will be dead M != usr
 
+	if(isipc(C) && zone != BODY_ZONE_CHEST)
+		return
+
 	if(!target_has_brain)
-		if(!C.get_bodypart(BODY_ZONE_HEAD) || !user.temporarilyRemoveItemFromInventory(src))
+		if(!C.get_bodypart(zone) || !user.temporarilyRemoveItemFromInventory(src))
 			return
+
 		var/msg = "[C] has [src] inserted into [C.p_their()] head by [user]."
 		if(C == user)
 			msg = "[user] inserts [src] into [user.p_their()] head!"

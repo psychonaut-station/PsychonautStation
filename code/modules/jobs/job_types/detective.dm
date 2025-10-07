@@ -44,7 +44,13 @@
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
 
 	job_tone = "objection"
-
+	alt_titles = list(
+		"Detective",
+		"Forensic Technician",
+		"Private Investigator",
+		"Forensic Scientist",
+		"Paranormal Investigator",
+	)
 
 /datum/outfit/job/detective
 	name = "Detective"

@@ -43,6 +43,13 @@
 	job_flags = STATION_JOB_FLAGS
 
 	rpg_title = "Undertaker"
+	alt_titles = list(
+		"Coroner",
+		"Forensic Pathologist",
+		"Mortician",
+		"Autopsy Technician",
+		"Morgue Supervisor",
+	)
 
 /datum/outfit/job/coroner
 	name = "Coroner"

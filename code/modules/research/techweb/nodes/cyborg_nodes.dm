@@ -76,6 +76,19 @@
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
+/datum/techweb_node/borg_cargo
+	id = "borg_cargo"
+	display_name = "Cargo Cyborg Upgrades"
+	description = "Let them carry crates like a coolie."
+	prereq_ids = list("cybernetics")
+	design_ids = list(
+		"borg_upgrade_clampcap",
+		"borg_upgrade_clamptime",
+		"borg_upgrade_clampcharge",
+		"borg_upgrade_clampcarry",
+	)
+	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
+
 /datum/techweb_node/borg_medical
 	id = TECHWEB_NODE_BORG_MEDICAL
 	display_name = "Medical Cyborg Upgrades"
@@ -182,6 +195,7 @@
 		"ci-reviver",
 		"ci-antidrop",
 		"ci-antistun",
+		"ci-ammo-counter",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)
@@ -195,6 +209,10 @@
 		"ci-nutrimentplus",
 		"ci-toolset",
 		"ci-surgery",
+		"ci-toolkit-janitor",
+		"ci-toolkit-paramedic",
+		"ci-toolkit-atmospherics",
+		"ci-toolkit-botanic",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)
@@ -212,6 +230,7 @@
 		"cybernetic_stomach_tier2",
 		"cybernetic_liver_tier2",
 		"cybernetic_heart_tier2",
+		"robotic_voicebox",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

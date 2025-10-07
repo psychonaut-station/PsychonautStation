@@ -128,17 +128,17 @@ GLOBAL_VAR(restart_counter)
 /world/New()
 	log_world("World loaded at [time_stamp()]!")
 
-	// From a really fucking old commit (91d7150)
-	// I wanted to move it but I think this needs to be after /world/New is called but before any sleeps?
-	// - Dominion/Cyberboss
-	GLOB.timezoneOffset = world.timezone * 36000
-
 	// First possible sleep()
 	InitTgs()
 
 	config.Load(params[OVERRIDE_CONFIG_DIRECTORY_PARAMETER])
 
 	ConfigLoaded()
+
+	// From a really fucking old commit (91d7150)
+	// I wanted to move it but I think this needs to be after /world/New is called but before any sleeps?
+	// - Dominion/Cyberboss
+	GLOB.timezoneOffset = world.timezone * CONFIG_GET(number/timezone_offset)
 
 	if(NO_INIT_PARAMETER in params)
 		return
@@ -176,6 +176,8 @@ GLOBAL_VAR(restart_counter)
 		GLOB.restart_counter = text2num(trim(file2text(RESTART_COUNTER_PATH)))
 		fdel(RESTART_COUNTER_PATH)
 
+	toggle_looc(CONFIG_GET(flag/looc_enabled))
+
 /// Runs after the call to Master.Initialize, but before the delay kicks in. Used to turn the world execution into some single function then exit
 /world/proc/RunUnattendedFunctions()
 	#ifdef UNIT_TESTS
@@ -212,9 +214,9 @@ GLOBAL_VAR(restart_counter)
 	var/override_dir = params[OVERRIDE_LOG_DIRECTORY_PARAMETER]
 	if(!override_dir)
 		var/realtime = world.realtime
-		var/texttime = time2text(realtime, "YYYY/MM/DD", TIMEZONE_UTC)
+		var/texttime = time2text(realtime, "YYYY/MM/DD", NO_TIMEZONE)
 		GLOB.log_directory = "data/logs/[texttime]/round-"
-		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD", TIMEZONE_UTC)]_"
+		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD", NO_TIMEZONE)]_"
 		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
 			GLOB.log_directory += "[GLOB.round_id]"
@@ -235,7 +237,7 @@ GLOBAL_VAR(restart_counter)
 	if(Tracy.trace_path)
 		rustg_file_write("[Tracy.trace_path]", "[GLOB.log_directory]/tracy.loc")
 
-	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM", TIMEZONE_UTC) + ".yml")
+	var/latest_changelog = file("[global.config.directory]/../html/changelogs/archive/" + time2text(world.timeofday, "YYYY-MM", NO_TIMEZONE) + ".yml")
 	GLOB.changelog_hash = fexists(latest_changelog) ? md5(latest_changelog) : 0 //for telling if the changelog has changed recently
 
 	if(GLOB.round_id)
@@ -375,26 +377,21 @@ GLOBAL_VAR(restart_counter)
 		features += "closed"
 
 	var/new_status = ""
-	var/hostedby
 	if(config)
+		// If you have already HUB config open, we assume you set those config variables below correctly
 		var/server_name = CONFIG_GET(string/servername)
-		if (server_name)
-			new_status += "<b>[server_name]</b> "
-		if(CONFIG_GET(flag/allow_respawn))
-			features += "respawn" // show "respawn" regardless of "respawn as char" or "free respawn"
-		if(!CONFIG_GET(flag/allow_ai))
-			features += "AI disabled"
-		hostedby = CONFIG_GET(string/hostedby)
+		new_status += "<b>[server_name]</b>]<b> &#8212; Türkçe SS13</b>"
 
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
 
+	var/name_link = CONFIG_GET(string/hub_name_link)
+	if (name_link)
+		new_status += " (<a href='[name_link]'>Discord</a>)"
+
 	var/players = GLOB.clients.len
 
 	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
-
-	if (!host && hostedby)
-		features += "hosted by <b>[hostedby]</b>"
 
 	if(length(features))
 		new_status += ": [jointext(features, ", ")]"

@@ -24,6 +24,13 @@
 	desc = "Worn by Securistan, ruling the station with an iron fist."
 	icon_state = "hoscloak"
 
+/obj/item/clothing/neck/cloak/hos/special
+	name = "head of security's cloak"
+	desc = "Senin dostum dediğin fake insanlar senin iktiri oktan dertlerini dinlerken müge anliya mi benziyor"
+	icon = 'icons/psychonaut/obj/clothing/cloaks.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/neck.dmi'
+	icon_state = "hoscloakspecial"
+
 /obj/item/clothing/neck/cloak/qm
 	name = "quartermaster's cloak"
 	desc = "Worn by Cargonia, supplying the station with the necessary tools for survival."
@@ -86,4 +93,3 @@
 	desc = "Worn by the wisest of veteran employees, this legendary cloak is only attainable by maintaining a living employment agreement with Nanotrasen for over <b>five thousand hours</b>. This status symbol represents a being is better than you in nearly every quantifiable way, simple as that."
 	icon_state = "playercloak"
 	element_type = /datum/element/skill_reward/veteran
-

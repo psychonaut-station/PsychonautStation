@@ -99,7 +99,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Admin PM
 	if(href_list["priv_msg"])
-		cmd_admin_pm(href_list["priv_msg"],null)
+		cmd_admin_pm(href_list["priv_msg"], null, FALSE)
 		return
 	if (href_list["player_ticket_panel"])
 		view_latest_ticket()
@@ -161,7 +161,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "Bizi Patreon ile destekleyerek ayrıcalıklara erişebilir, sunucunun devamlılığına katkıda bulunabilirsin. <a href=\"[CONFIG_GET(string/patreonurl)]\">Daha fazlası için tıkla</a>.")
 		return FALSE
 	return TRUE
 
@@ -382,6 +382,8 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins(span_adminnotice("[key_name(src)] has been detected as spoofing their byond version. Connection rejected."))
 			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
 			log_suspicious_login("Failed Login: [key] - Spoofed byond version")
+			var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+			send2tgs_adminless_only("Suspicious Log | Failed Login: [key] - Spoofed byond version[sus_role_id ? " <@&[sus_role_id]>" : ""]")
 			qdel(src)
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
@@ -498,17 +500,14 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need its current value now down below.
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+	var/new_account = FALSE
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
 			log_admin_private("New login: [key_name(key, FALSE, TRUE)] (IP: [address], ID: [computer_id]) logged onto the servers for the first time.")
 			message_admins("New user: [key_name_admin(src)] is connecting here for the first time.")
-			if (CONFIG_GET(flag/irc_first_connection_alert))
-				var/new_player_alert_role = CONFIG_GET(string/new_player_alert_role_id)
-				send2tgs_adminless_only(
-					"New-user",
-					"[key_name(src)] is connecting for the first time![new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
-				)
+			send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			new_account = TRUE
 	else if (isnum(cached_player_age) && cached_player_age < nnpa)
 		message_admins("New user: [key_name_admin(src)] just connected with an age of [cached_player_age] day[(player_age == 1?"":"s")]")
 	if(CONFIG_GET(flag/use_account_age_for_jobs) && account_age >= 0)
@@ -522,6 +521,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				"[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].[new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
 			)
 	scream_about_watchlists(src)
+	check_centcom_db(new_account)
 	validate_key_in_db()
 	// If we aren't already generating a ban cache, fire off a build request
 	// This way hopefully any users of request_ban_cache will never need to yield
@@ -553,6 +553,17 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	update_ambience_pref(prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume))
 	check_ip_intel()
 
+	if(CONFIG_GET(flag/require_discord_linking))
+		var/discord_id = SSdiscord.lookup_id(ckey)
+		if(discord_id)
+			if(is_discord_member(discord_id) == FALSE)
+				if(fetch_discord(FALSE, discord_id) == FALSE)
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+				else
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
 		tooltips = new /datum/tooltip(src)
@@ -566,6 +577,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set_fullscreen(logging_in = TRUE)
 	view_size.resetFormat()
 	view_size.setZoomMode()
+	view_size.apply()
 	Master.UpdateTickRate()
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_CLIENT_CONNECT, src)
 	fully_created = TRUE
@@ -606,7 +618,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	GLOB.interviews.client_logout(src)
 	GLOB.requests.client_logout(src)
 	SSserver_maint.UpdateHubStatus()
-	if(credits)
+	if(islist(credits))
 		QDEL_LIST(credits)
 	if(holder)
 		holder.owner = null
@@ -807,7 +819,92 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			else
 				CRASH("Key check regex failed for [ckey]")
 
-/client/proc/add_system_note(system_ckey, message)
+/client/proc/check_centcom_db(new_account)
+	if(new_account && CONFIG_GET(string/centcom_ban_db))
+		var/datum/http_request/request = new()
+		request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/centcom_ban_db)]/[ckey]", "", "")
+		request.begin_async()
+		UNTIL(request.is_complete())
+
+		var/datum/http_response/response = request.into_response()
+		if(response.errored || response.status_code != 200)
+			message_admins("Yeni oyuncu [key_name_admin(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+			send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için sabıka kontrolü sırasında CentCom Ban veritabanı hata verdi. ([response.status_code])")
+		else
+			var/list/bans = json_decode(response.body)
+			if (bans.len > 0)
+				message_admins("<font color='[COLOR_RED]'><B>Yeni oyuncu [key_name_admin(src)] için [bans.len] tane ban kaydı bulundu.</B></font>")
+				send2adminchat("BAN ALERT", "Yeni oyuncu [key_name(src)] için [bans.len] tane ban kaydı bulundu.")
+
+/client/proc/fetch_discord(no_cache = FALSE, discord_id)
+	if(!no_cache && !isnull(discord))
+		return discord
+
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return
+
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
+
+	if(!discord_id)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/discord/user?discord_id=[discord_id]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		discord = json_decode(response.body)
+	else if(response.status_code == 404)
+		discord = FALSE
+	else
+		discord = null
+
+	return discord
+
+/client/proc/is_discord_member(discord_id)
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return
+
+	discord_id = discord_id || SSdiscord.lookup_id(ckey)
+
+	if(!discord_id)
+		return
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/discord/member?discord_id=[discord_id]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored)
+		if(response.status_code == 200)
+			return TRUE
+		else if(response.status_code == 404)
+			return FALSE
+
+/client/proc/check_patreon()
+	if(!CONFIG_GET(string/apiurl) || !CONFIG_GET(string/apitoken))
+		return FALSE
+
+	var/datum/http_request/request = new ()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[CONFIG_GET(string/apiurl)]/patreon?ckey=[ckey]", headers = list("X-EXP-KEY" = "[CONFIG_GET(string/apitoken)]"))
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(!response.errored && response.status_code == 200)
+		var/list/json = json_decode(response.body)
+		return json["patron"]
+
+/client/proc/add_system_note(system_ckey, message, message_type = "note")
 	//check to see if we noted them in the last day.
 	var/datum/db_query/query_get_notes = SSdbcore.NewQuery(
 		"SELECT id FROM [format_table_name("messages")] WHERE type = 'note' AND targetckey = :targetckey AND adminckey = :adminckey AND timestamp + INTERVAL 1 DAY < NOW() AND deleted = 0 AND (expire_timestamp > NOW() OR expire_timestamp IS NULL)",
@@ -833,7 +930,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			qdel(query_get_notes)
 			return
 	qdel(query_get_notes)
-	create_message("note", key, system_ckey, message, null, null, 0, 0, null, 0, 0)
+	create_message(message_type, key, system_ckey, message, null, null, 0, 0, null, 0, 0)
 
 /client/Click(atom/object, atom/location, control, params)
 	if(click_intercept_time)
@@ -1199,6 +1296,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set desc = "Stop Current Sounds"
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
+	tgui_panel?.destroy_all_jukebox()
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
 /client/verb/toggle_fullscreen()

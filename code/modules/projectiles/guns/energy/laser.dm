@@ -82,26 +82,49 @@
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 
 /obj/item/gun/energy/laser/captain
-	name = "antique laser gun"
+	name = "\improper antique laser gun"
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
-	inhand_icon_state = null
+	icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_righthand.dmi'
+	inhand_icon_state = "caplaser"
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
 	force = 10
 	ammo_x_offset = 3
 	selfcharge = 1
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
+	obj_flags = UNIQUE_RENAME
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
+	unique_reskin = list(
+		"Default" = "caplaser",
+		"Supas_12" = "cap_moislaser",
+		"KAFA_1500" = "cap_laserpistol",
+		"Cadwell_Pax" = "cap_smolaser",
+		"Hot_Iron" = "cap_laserrev",
+	)
+
+/obj/item/gun/energy/laser/captain/reskin_obj(mob/M)
+	. = ..()
+	update_appearance()
+	if(icon_state == "caplaser")
+		return
+	inhand_icon_state = icon_state
+
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
+	icon = 'icons/obj/weapons/guns/energy.dmi'
+	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
 	icon_state = "lasercannon"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "laser"
 	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theoretically infinite use."
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	shaded_charge = FALSE
+	unique_reskin = null
 
 /obj/item/gun/energy/laser/cyborg
 	can_charge = FALSE

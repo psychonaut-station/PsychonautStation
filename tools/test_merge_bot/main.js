@@ -17,7 +17,7 @@ export async function processTestMerges({ github, context }) {
         return Promise.reject(
           `Failed to fetch test merges: ${
             response.status
-          } ${await response.text()}`,
+          } ${await response.text()}`
         );
       }
 
@@ -29,26 +29,22 @@ export async function processTestMerges({ github, context }) {
       process.exit(1);
     });
 
-  // PR # -> server name -> test merge struct
+  // PR # -> test merge struct
   const testMergesPerPr = {};
 
   for (const round of rounds) {
-    const { server, test_merges } = round;
+    const { test_merges } = round;
 
     for (const testMerge of test_merges) {
       if (!testMergesPerPr[testMerge]) {
-        testMergesPerPr[testMerge] = {};
+        testMergesPerPr[testMerge] = [];
       }
 
-      if (!testMergesPerPr[testMerge][server]) {
-        testMergesPerPr[testMerge][server] = [];
-      }
-
-      testMergesPerPr[testMerge][server].push(round);
+      testMergesPerPr[testMerge].push(round);
     }
   }
 
-  for (const [prNumber, servers] of Object.entries(testMergesPerPr)) {
+  for (const [prNumber, rounds] of Object.entries(testMergesPerPr)) {
     const comments = await github.graphql(
       `
 		query($owner:String!, $repo:String!, $prNumber:Int!) {
@@ -70,16 +66,16 @@ export async function processTestMerges({ github, context }) {
         owner: context.repo.owner,
         repo: context.repo.repo,
         prNumber: parseInt(prNumber, 10),
-      },
+      }
     );
 
     const existingComment = comments.repository.pullRequest.comments.nodes.find(
       (comment) =>
         comment.author?.login === "github-actions" &&
-        comment.body.startsWith(TEST_MERGE_COMMENT_HEADER),
+        comment.body.startsWith(TEST_MERGE_COMMENT_HEADER)
     );
 
-    const newBody = createComment(servers, existingComment?.body);
+    const newBody = createComment(rounds, existingComment?.body);
     if (!newBody) {
       console.log(`No changes for PR #${prNumber}`);
       continue;

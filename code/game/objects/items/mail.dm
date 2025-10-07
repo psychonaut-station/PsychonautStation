@@ -116,7 +116,6 @@
 	balloon_alert(user, "hold it!")
 	return FALSE
 
-
 /obj/item/mail/attack_self(mob/user)
 	if(!unwrap(user))
 		return FALSE
@@ -148,7 +147,6 @@
 	playsound(loc, 'sound/items/poster/poster_ripped.ogg', vol = 50, vary = TRUE)
 	qdel(src)
 	return TRUE
-
 
 /obj/item/mail/examine_more(mob/user)
 	. = ..()
@@ -224,14 +222,14 @@
 		))
 
 	var/list/junk_names = list(
-		/obj/item/paper/pamphlet/gateway = "[initial(name)] for [pick(GLOB.adjectives)] adventurers",
-		/obj/item/paper/pamphlet/violent_video_games = "[initial(name)] for the truth about the arcade centcom doesn't want to hear",
-		/obj/item/paper/fluff/junkmail_redpill = "[initial(name)] for those feeling [pick(GLOB.adjectives)] working at Nanotrasen",
+		/obj/item/paper/pamphlet/gateway = "[pick(GLOB.adjectives)] maceralar için [initial(name)]",
+		/obj/item/paper/pamphlet/violent_video_games = "Centcom'un duymak istemeyeceği gerçekler için [initial(name)]",
+		/obj/item/paper/fluff/junkmail_redpill = "Nanotrasen'e [pick(GLOB.adjectives)] çalışmak isteyenler için [initial(name)]",
 		/obj/effect/decal/cleanable/ash = "[initial(name)] with INCREDIBLY IMPORTANT ARTIFACT- DELIVER TO SCIENCE DIVISION. HANDLE WITH CARE.",
 	)
 
 	color = pick(department_colors) //eh, who gives a shit.
-	name = special_name ? junk_names[junk] : "important [initial(name)]"
+	name = special_name ? junk_names[junk] : "önemli [initial(name)]"
 
 	junk = new junk(src)
 	return TRUE
@@ -350,6 +348,28 @@
 	resistance_flags = FLAMMABLE
 	custom_premium_price = PAYCHECK_LOWER
 	storage_type = /datum/storage/bag/mail
+
+/obj/item/storage/bag/mail/borg
+	resistance_flags = NONE
+
+/obj/item/storage/bag/mail/borg/pre_attack(atom/target, mob/user)
+	. = ..()
+	if(.)
+		return
+	if(!user.Adjacent(target))
+		return
+	if(length(contents))
+		var/turf/target_turf = get_turf(target)
+		if(!isturf(target_turf))
+			return
+		var/obj/pick = tgui_input_list(user, "Which one will you drop?", "Mail Bag", contents)
+		if(isnull(pick))
+			return
+		if(pick.loc != src)
+			return
+		if(!user.Adjacent(target))
+			return
+		atom_storage.attempt_remove(pick, target_turf)
 
 /obj/item/paper/fluff/junkmail_redpill
 	name = "smudged paper"

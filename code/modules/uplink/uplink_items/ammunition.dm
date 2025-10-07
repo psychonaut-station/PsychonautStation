@@ -23,6 +23,8 @@
 	purchasable_from = ~UPLINK_ALL_SYNDIE_OPS
 	uplink_item_flags = SYNDIE_TRIPS_CONTRABAND
 
+// Medium progression cost
+
 /datum/uplink_item/ammo/pistolap
 	name = "9mm Armour Piercing Magazine"
 	desc = "An additional 8-round 9mm magazine, compatible with the Makarov pistol. \

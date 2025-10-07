@@ -273,8 +273,15 @@
   - bugfix: Screwdriver table deconstruction only deconstructs the top again.
   ArcaneMusic:
   - bugfix: Vorpal Scythe execute messages now read correctly.
+  Ben10Omintrix:
+  - rscadd: cultists can now convert pets to their side
+  Bilbo367:
+  - image: fixed Fulton balloon having its smallest sprite copy pasted over itself
   Bisar:
   - bugfix: Mechs will no longer delete their living non-occupant contents when destroyed.
+  DaCoolBoss:
+  - bugfix: A broken item was removed from the mimesvsclowns ruin. In its place is
+      a spent revolver round.
   Higgin:
   - balance: 'Spies can now get five additional types of objective: Protect Human,
       Protect Nonhuman, Detain, Jailbreak, and Escape (Exile).'
@@ -285,6 +292,8 @@
   IndieanaJones:
   - qol: Basic dexterous mobs now have a health doll and screen damage indication
       like other basic mobs.
+  Jacquerel:
+  - bugfix: Driving a vehicle into the supermatter will kill everyone riding the vehicle
   JohnFulpWillard:
   - rscadd: A bunch of new medipens you can refill with the medipen refiller (survival/luxury/mutadone/saturnx/meth)
   - bugfix: Mech pads, door buttons, message monitors, tram machines, abductor consoles
@@ -307,11 +316,26 @@
   - qol: Recharge stations display their recharging speed in formatted power, rather
       than unformatted energy per cycle.
   - balance: Cells will only consider 0.1% of their charge for calculating shock damage.
+  RengaN:
+  - rscadd: Cargo borg eklendi.
+  - bugfix: "Box cutteri kapal\u0131 bir kutuda kullan\u0131nca kutu art\u0131k oldugu\
+      \ yerde a\xE7\u0131l\u0131yor."
+  RengaN02:
+  - rscadd: "Oyuna, oyuncuya examine mekani\u011Fini \xF6\u011Freten yeni bir tutorial\
+      \ eklendi."
+  - bugfix: "Latejoin Brig Physician iconu d\xFCzeltildi."
+  Rengan:
+  - rscadd: "Snack vendorlar\u0131n\u0131 Food vendorlar\u0131na \xE7eviren yeni bir\
+      \ station trait eklendi."
   Rhials:
   - bugfix: The tide of post-round blob zombies when a blob wins will no longer break
       the speakers in your headset.
+  Seefaaa:
+  - rscadd: "\"Verify Discord Account\" i\xE7in tgui ekler"
+  Singul0:
+  - qol: Adds contextual screentips to air alarms
   SyncIt21:
-  - bugfix: Reagent grinders display reagents of its beaker on examination
+  - bugfix: RCD logs are more human readable & stores the player name behind the action.
   Thunder12345:
   - rscadd: Added support for directional explosions.
   - rscadd: Rocket launcher backblast is now 271% more explosive, check your six for
@@ -320,6 +344,10 @@
       solid object.
   - bugfix: 'X4 charges will now behave correctly when placed on dense atoms (note:
       don''t try to read a variable from an atom you just blew up)'
+  carshalash:
+  - qol: Fishfood is now more easily acquired through cargo
+  genku:
+  - bugfix: "Eski Delta'daki surgery tray dolu ba\u015Flayacak"
   mc-oofert:
   - bugfix: deathmatch can no longer occassionally send people to nullspace
   necromanceranne:
@@ -456,6 +484,8 @@
   ZephyrTFA:
   - admin: Something changed, but you shouldn't be able to notice. If verbs are funky
       report this to <@946283057915232337> on discord.
+  genku, Seefaaa:
+  - spellcheck: "Priority ve Minor Announcelar art\u0131k T\xFCrk\xE7e."
   hyperjll:
   - balance: Haloperidol now purges 2 units per second of itself, should the victim
       have zero stamina. (Stamcrit)
@@ -584,15 +614,13 @@
       from eating dirty food. Strong Stomach does that now.
   - bugfix: Height now applies less weird to certain worn items, bare-handed bloody
       hands, and damage overlays.
-  jlsnow301:
-  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
-  - bugfix: Netpods have had their security against exploits increased.
-  mc-oofert:
-  - bugfix: you no longer need to put your sleeping carp gloves off and on in Deathmatch
-      to get the martial art
-  san7890:
-  - rscadd: Regal Rats are now able to tear down those colorful posters those weird
-      grey creatures keep spackling up on the walls of their rightful domain.
+  RengaN:
+  - rscadd: "Cargo borg i\xE7in 4 yeni upgrade eklendi."
+  - bugfix: "Cargo borgun insan ta\u015F\u0131rken hasar almamas\u0131 d\xFCzeltildi."
+  - bugfix: "Cargo borg clampinin radial men\xFCs\xFCnde bazen yanl\u0131\u015F icon\
+      \ g\xF6sterilmesi d\xFCzeltildi."
+  - balance: "Cargo borg clampinde kapasite varsay\u0131lan olarak 4'e indirildi ve\
+      \ art\u0131k kullan\u0131rken \u015Farj harc\u0131yor."
 2024-04-19:
   Iajret:
   - bugfix: cooling and anti-disruption RCD upgrades can now be printed in ancient
@@ -849,6 +877,9 @@
   - bugfix: Fixed tramstation's gravity generator SMES, now functions and charged
       at roundstart.
   - bugfix: NorthStar's gravity generator SMES is now properly charged at roundstart
+  RengaN02:
+  - code_imp: "Ninjan\u0131n security scramble g\xF6revi yapildiginda artik extra\
+      \ olarak millete rastgele su\xE7 verilecek."
   ZephyrTFA:
   - admin: The return of IPIntel
   grungussuss:
@@ -886,6 +917,8 @@
   - bugfix: Combat upgraded AIs no longer get two buggy malf ability pickers if they
       also become malfunctioning
   - refactor: Refactored most of the functionality around malf AI shunting, mech control
+  RengaN:
+  - spellcheck: "\"\u0130skeletler\" ile ilgili bir yaz\u0131m hatas\u0131 d\xFCzeltildi."
   Rhials:
   - admin: Lazy loading map templates now gives you the option to not ghost/teleport
       to the loaded area upon completion.
@@ -895,6 +928,12 @@
   - bugfix: The debug box no longer spills its contents everywhere
   improvedname:
   - qol: Arrivals shuttle is now more player friendly
+  jlsnow301:
+  - bugfix: Bit avatars no longer have access to free binary comms with the AI outfit
+  - bugfix: Netpods have had their security against exploits increased.
+  mc-oofert:
+  - bugfix: you no longer need to put your sleeping carp gloves off and on in Deathmatch
+      to get the martial art
   san7890:
   - admin: Possess Object is now back in the right-click context menu.
 2024-04-30:

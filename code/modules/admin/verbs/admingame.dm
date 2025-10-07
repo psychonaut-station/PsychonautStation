@@ -32,6 +32,15 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 			body += "<a href='byond://?_src_=holder;[HrefToken()];centcomlookup=[player.client.ckey]'>Search</a>"
 		else
 			body += "<i>Disabled</i>"
+
+		var/discord = player.client.fetch_discord()
+		if(discord)
+			body += "<br><br><b>Discord:</b> @[discord["global_name"]] \[[discord["username"]]\]([discord["id"]])"
+		else if(discord == FALSE)
+			body += "<br><br><b>Discord:</b> <i>Deleted account or left server</i>"
+		else
+			body += "<br><br><b>Discord:</b> <i>Not linked</i>"
+
 		body += "<br><br><b>Show related accounts by:</b> "
 		body += "\[ <a href='byond://?_src_=holder;[HrefToken()];showrelatedacc=cid;client=[REF(player.client)]'>CID</a> | "
 		body += "<a href='byond://?_src_=holder;[HrefToken()];showrelatedacc=ip;client=[REF(player.client)]'>IP</a> \]"
@@ -85,6 +94,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 		body += "<br><b>Mute: </b> "
 		body += "\[<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_IC]'><font color='[(muted & MUTE_IC)?"red":"blue"]'>IC</font></a> | "
 		body += "<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_OOC]'><font color='[(muted & MUTE_OOC)?"red":"blue"]'>OOC</font></a> | "
+		body += "<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_LOOC]'><font color='[(muted & MUTE_LOOC)?"red":"blue"]'>LOOC</font></a> | "
 		body += "<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_PRAY]'><font color='[(muted & MUTE_PRAY)?"red":"blue"]'>PRAY</font></a> | "
 		body += "<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_ADMINHELP]'><font color='[(muted & MUTE_ADMINHELP)?"red":"blue"]'>ADMINHELP</font></a> | "
 		body += "<A href='byond://?_src_=holder;[HrefToken()];mute=[player.ckey];mute_type=[MUTE_INTERNET_REQUEST]'><font color='[(muted & MUTE_INTERNET_REQUEST)?"red":"blue"]'>WEBREQ</font></a> | "
@@ -262,7 +272,7 @@ ADMIN_VERB(respawn_character, R_ADMIN, "Respawn Character", "Respawn a player th
 	if(!record_found && (new_character.mind.assigned_role.job_flags & JOB_CREW_MEMBER))
 		//Power to the user!
 		if(tgui_alert(new_character,"Warning: No data core entry detected. Would you like to announce the arrival of this character by adding them to various databases, such as medical records?",,list("No","Yes")) == "Yes")
-			GLOB.manifest.inject(new_character)
+			GLOB.manifest.inject(new_character, null, new_character.client)
 
 		if(tgui_alert(new_character,"Would you like an active AI to announce this character?",,list("No","Yes")) == "Yes")
 			announce_arrival(new_character, new_character.mind.assigned_role.title)
@@ -415,3 +425,10 @@ ADMIN_VERB(lag_switch_panel, R_ADMIN, "Show Lag Switches", "Display the controls
 	dat += "Disable footsteps: <a href='byond://?_src_=holder;[HrefToken()];change_lag_switch=[DISABLE_FOOTSTEPS]'><b>[SSlag_switch.measures[DISABLE_FOOTSTEPS] ? "On" : "Off"]</b></a> - <span style='font-size:80%'>trait applies to character</span><br />"
 	dat += "</body></html>"
 	user << browse(dat.Join(), "window=lag_switch_panel;size=420x480")
+
+ADMIN_VERB(spawn_panel, R_SPAWN, "Spawn Panel", "Spawn Panel (TGUI).", ADMIN_CATEGORY_GAME)
+	var/datum/spawnpanel/panel = get_spawnpanel_for_admin(user.mob)
+	if(panel)
+		panel.ui_interact(user.mob)
+	BLACKBOX_LOG_ADMIN_VERB("Spawn Panel")
+

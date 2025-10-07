@@ -121,7 +121,7 @@
 	.["key"] = key
 	.["name"] = name
 	.["ghostname"] = ghostname
-	.["memories"] = memories
+	.["memories"] = memories.len > 0 ? memories : null
 	.["antag_datums"] = antag_datums
 	.["holy_role"] = holy_role
 	.["special_role"] = jointext(get_special_roles(), " | ")

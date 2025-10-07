@@ -127,6 +127,13 @@
 	pickup_sound = 'sound/items/handling/helmet/helmet_pickup1.ogg'
 	drop_sound = 'sound/items/handling/helmet/helmet_drop1.ogg'
 
+/obj/item/clothing/head/helmet/alt/tactical
+	name = "Tactical helmet"
+	base_icon_state = "tactical_helmet"
+	icon_state = "tactical_helmet"
+	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'
+
 /datum/armor/helmet_alt
 	melee = 15
 	bullet = 60
@@ -140,6 +147,27 @@
 /obj/item/clothing/head/helmet/alt/Initialize(mapload)
 	. = ..()
 	AddComponent(/datum/component/seclite_attachable, light_icon_state = "flight")
+
+/obj/item/clothing/head/helmet/brig_physician
+	name = "medical helmet"
+	desc = "A bulletproof combat helmet designed specially for physicians."
+	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'
+	icon_state = "helmet_bp"
+	inhand_icon_state = "helmet"
+	armor_type = /datum/armor/helmet_brig_physician
+	dog_fashion = null
+
+/datum/armor/helmet_brig_physician
+	melee = 15
+	bullet = 60
+	laser = 10
+	energy = 10
+	bomb = 40
+	bio = 0
+	fire = 50
+	acid = 50
+	wound = 5
 
 /obj/item/clothing/head/helmet/marine
 	name = "tactical combat helmet"

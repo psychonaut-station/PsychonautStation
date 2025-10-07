@@ -165,6 +165,9 @@ $department_map: (
 
           .job-name {
             font-size: 17px;
+            & .Dropdown__arrow-button {
+              margin-left: 5px;
+            }
           }
         }
       }
@@ -192,6 +195,31 @@ $department_map: (
       transform: translateX(-4px) translateY(-8px) rotate(315deg);
       white-space: nowrap;
       width: 19px;
+    }
+
+    &__AltTitleDropdown {
+      margin: 0;
+      padding: 0 0 0 0.3em;
+      line-height: normal;
+      height: inherit;
+      display: inline-flex;
+      align-items: center;
+      justify-content: space-around;
+
+      & .Dropdown__arrow-button {
+        margin-right: 1px;
+        font-weight: normal;
+        font-size: 12px;
+      }
+
+      & .Dropdown__selected-text {
+        height: 100%;
+        vertical-align: middle;
+      }
+    }
+    & .Dropdown__menuentry {
+      font-weight: normal;
+      font-size: 12px;
     }
   }
 

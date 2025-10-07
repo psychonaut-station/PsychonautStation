@@ -31,7 +31,7 @@
 		owner.hud_used.resist_icon.icon_state = owner.hud_used.resist_icon.base_icon_state
 
 /datum/keybinding/living/look_up
-	hotkey_keys = list("L")
+	hotkey_keys = list("P")
 	name = "look up"
 	full_name = "Look Up"
 	description = "Look up at the next z-level.  Only works if directly below open space."
@@ -165,6 +165,53 @@
 	var/mob/living/M = user.mob
 	M.toggle_move_intent()
 	return TRUE
+
+/datum/keybinding/living/face_cursor
+	hotkey_keys = list("Unbound")
+	name = "face_cursor"
+	full_name = "Face Cursor"
+	description = "Hold for face to cursor."
+	keybind_signal = COMSIG_KB_LIVING_FACECURSOR_DOWN
+
+/datum/keybinding/living/face_cursor/down(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/M = user.mob
+	M.face_mouse = TRUE
+
+/datum/keybinding/living/face_cursor/up(client/user)
+	. = ..()
+	if(.)
+		return
+	var/mob/M = user.mob
+	M.face_mouse = FALSE
+
+/datum/keybinding/living/item_pixel_shift
+	hotkey_keys = list("V")
+	name = "item_pixel_shift"
+	full_name = "Item Pixel Shift"
+	description = "Shift a pulled item's offset"
+	keybind_signal = COMSIG_KB_LIVING_ITEM_PIXEL_SHIFT_DOWN
+
+/datum/keybinding/living/item_pixel_shift/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mob.AddComponent(/datum/component/pixel_shift)
+
+/datum/keybinding/living/pixel_shift
+	hotkey_keys = list("B")
+	name = "pixel_shift"
+	full_name = "Pixel Shift"
+	description = "Shift your characters offset."
+	keybind_signal = COMSIG_KB_LIVING_PIXEL_SHIFT_DOWN
+
+/datum/keybinding/living/pixel_shift/down(client/user)
+	. = ..()
+	if(.)
+		return
+	user.mob.AddComponent(/datum/component/pixel_shift)
 
 /datum/keybinding/living/toggle_throw_mode
 	hotkey_keys = list("Southwest") // END

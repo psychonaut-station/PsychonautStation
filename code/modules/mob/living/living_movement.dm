@@ -59,6 +59,10 @@
 	. = ..()
 	if(.)
 		return
+	var/datum/component/pixel_shift/pixel_shift = GetComponent(/datum/component/pixel_shift)
+	if(pixel_shift)
+		if(pixel_shift.check_passable(mover, border_dir))
+			return TRUE
 	if(mover.throwing)
 		var/mob/thrower = mover.throwing.get_thrower()
 		return (!density || (body_position == LYING_DOWN) || (thrower == src && !ismob(mover)))

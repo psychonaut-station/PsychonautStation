@@ -261,6 +261,7 @@
 		/datum/job/atmospheric_technician = /obj/item/organ/cyberimp/mouth/breathing_tube,
 		/datum/job/bartender = /obj/item/organ/liver/cybernetic/tier3,
 		/datum/job/bitrunner = /obj/item/organ/eyes/robotic/thermals,
+		/datum/job/brig_physician = /obj/item/organ/cyberimp/eyes/hud/medical,
 		/datum/job/botanist = /obj/item/organ/cyberimp/chest/nutriment,
 		/datum/job/captain = /obj/item/organ/heart/cybernetic/tier3,
 		/datum/job/cargo_technician = /obj/item/organ/stomach/cybernetic/tier2,
@@ -293,6 +294,7 @@
 		/datum/job/shaft_miner = /obj/item/organ/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/cyberimp/arm/toolkit/toolset,
 		/datum/job/warden = /obj/item/organ/cyberimp/eyes/hud/security,
+		/datum/job/worker = /obj/item/organ/cyberimp/arm/toolkit/toolset,
 	)
 
 /datum/station_trait/cybernetic_revolution/New()
@@ -427,3 +429,23 @@
 	var/advisory_string = "Advisory Level: <b>Grey Sky</b></center><BR>"
 	advisory_string += "Your sector's advisory level is Grey Sky. Our sensors detect abnormal activity among the assistants assigned to your station. We advise you to closely monitor the Tool Storage, Bridge, Tech Storage, and Brig for gathering crowds or petty thievery."
 	return advisory_string
+
+/// Changes all the snack vendor to food vendor
+/datum/station_trait/foodvend
+	name = "Food Vendors"
+	report_message = "While the station was under construction, we realized that we had no snack vendors left, so we placed the food vendors we had instead."
+	trait_type = STATION_TRAIT_POSITIVE
+	weight = 1
+	show_in_report = TRUE
+
+/datum/station_trait/foodvend/New()
+	. = ..()
+	RegisterSignal(SSatoms, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(replace_vendors))
+
+/datum/station_trait/foodvend/proc/replace_vendors()
+	SIGNAL_HANDLER
+
+	for(var/obj/machinery/vending/snack/vendor as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/vending/snack))
+		var/turf/T = get_turf(vendor)
+		new /obj/machinery/vending/meal(T)
+		qdel(vendor)

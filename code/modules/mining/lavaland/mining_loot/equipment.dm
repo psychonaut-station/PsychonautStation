@@ -41,7 +41,8 @@
 		return
 	var/mob/living/carbon/itemUser = user
 	var/usedHand = itemUser.get_held_index_of_item(src)
-	if(itemUser.has_status_effect(/datum/status_effect/hippocratic_oath))
+	// having both aura heals might be unbalanced so only one can be used at a time by one player
+	if(itemUser.has_status_effect(/datum/status_effect/hippocratic_oath) || itemUser.has_status_effect(/datum/status_effect/clock_rewind))
 		to_chat(user, span_warning("You can't possibly handle the responsibility of more than one rod!"))
 		return
 

@@ -27,12 +27,17 @@ export class AudioPlayer {
   element: HTMLAudioElement | null;
   options: AudioOptions;
   volume: number;
+  localVolume: number;
+  muted: boolean;
 
   onPlaySubscribers: (() => void)[];
   onStopSubscribers: (() => void)[];
 
   constructor() {
     this.element = null;
+
+    this.localVolume = 1;
+    this.muted = false;
 
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
@@ -42,12 +47,13 @@ export class AudioPlayer {
     this.element = null;
   }
 
-  play(url: string, options: AudioOptions = {}): void {
+  play(url: string, options: AudioOptions = {}, volume: number = 1): void {
     if (this.element) {
       this.stop();
     }
 
     this.options = options;
+    this.localVolume = volume;
 
     const audio = new Audio(url);
     if (!audio) {
@@ -56,8 +62,9 @@ export class AudioPlayer {
     }
     this.element = audio;
 
-    audio.volume = this.volume;
+    audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     audio.playbackRate = this.options.pitch || 1;
+    audio.currentTime = this.options.start || 0;
 
     logger.log('playing', url, options);
 
@@ -110,7 +117,23 @@ export class AudioPlayer {
 
     if (!this.element) return;
 
-    this.element.volume = volume;
+    if (!this.muted) this.element.volume = volume * this.localVolume;
+  }
+
+  setLocalVolume(volume: number): void {
+    this.localVolume = volume;
+
+    if (!this.element) return;
+
+    if (!this.muted) this.element.volume = this.volume * volume;
+  }
+
+  toggleMute(): void {
+    this.muted = !this.muted;
+
+    if (!this.element) return;
+
+    this.element.volume = this.muted ? 0 : this.volume * this.localVolume;
   }
 
   onPlay(subscriber: () => void): void {

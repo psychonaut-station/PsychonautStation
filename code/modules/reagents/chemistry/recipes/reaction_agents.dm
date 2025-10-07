@@ -88,13 +88,13 @@
 
 /datum/chemical_reaction/prefactor_b/overheated(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
 	. = ..()
-	explode_shockwave(holder, equilibrium)
-	var/vol = max(20, holder.total_volume/5) //Not letting you have more than 5
+	explode_shockwave(holder, equilibrium, range = 2)
+	var/vol = max(50, holder.total_volume/3) //Not letting you have more than 3
 	clear_reagents(holder, vol)//Lest we explode forever
 
 /datum/chemical_reaction/prefactor_b/overly_impure(datum/reagents/holder, datum/equilibrium/equilibrium, step_volume_added)
 	explode_fire(holder, equilibrium)
-	var/vol = max(20, holder.total_volume/5) //Not letting you have more than 5
+	var/vol = max(50, holder.total_volume/3) //Not letting you have more than 3
 	clear_reagents(holder, vol)
 
 /datum/chemical_reaction/prefactor_a/competitive //So we have a back and forth reaction

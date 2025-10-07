@@ -36138,7 +36138,7 @@
 /turf/open/floor/iron/smooth,
 /area/station/engineering/atmos/upper)
 "kqI" = (
-/obj/machinery/photocopier,
+/obj/machinery/photocopier/prebuilt,
 /turf/open/floor/glass,
 /area/station/security/brig)
 "kra" = (

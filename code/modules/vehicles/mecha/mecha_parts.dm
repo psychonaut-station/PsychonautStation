@@ -358,7 +358,6 @@
 	name = "Ripley Central Control module (Exosuit Board)"
 	icon_state = "mainboard"
 
-
 /obj/item/circuitboard/mecha/gygax/peripherals
 	name = "Gygax Peripherals Control module (Exosuit Board)"
 	icon_state = "mcontroller"

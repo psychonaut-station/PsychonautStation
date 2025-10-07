@@ -593,7 +593,7 @@
 	var/new_message
 	var/message = speech_args[SPEECH_MESSAGE]
 	for(var/i in 1 to length(message))
-		if(findtext("ABCDEFGHIJKLMNOPWRSTUVWXYZabcdefghijklmnopqrstuvwxyz", message[i])) //Im open to suggestions
+		if(findtext("ABCDEFGHIJKLMNOPWRSTUVWXYZabcdefgh\u0131ijklmnopqrstuvwxyz", message[i])) //Im open to suggestions | \u0131 -> ı
 			new_message += message[i] + message[i] + message[i] //aaalllsssooo ooopppeeennn tttooo sssuuuggggggeeessstttiiiooonsss
 		else
 			new_message += message[i]
@@ -717,3 +717,11 @@
 	disliked_foodtypes = NONE //you don't care for much else besides stone
 	toxic_foodtypes = NONE //you can eat fucking uranium
 	languages_native = list(/datum/language/terrum)
+
+/obj/item/organ/tongue/arachnid
+	name = "arachnid tongue"
+	desc = "A spider organ used for speaking and eating."
+	liked_foodtypes = GORE | MEAT | BUGS | GROSS
+	disliked_foodtypes = VEGETABLES | FRUIT
+	say_mod = "chitters"
+	languages_native = list(/datum/language/buzzwords)

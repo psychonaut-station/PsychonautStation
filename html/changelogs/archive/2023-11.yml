@@ -308,6 +308,8 @@
   Isratosh:
   - bugfix: Nuclear operative induction implants now work correctly on antagonists
       and fail on non-antagonists
+  Seefaaa:
+  - bugfix: "Eski deltadaki bar sandalyeleri do\u011Fru y\xF6ne bakacak."
   jlsnow301:
   - bugfix: The screen alert should no longer break ghost UI when it's huge
   lizardqueenlexi:
@@ -447,7 +449,6 @@
       you to cross chasms and lava safely.
   Melbert:
   - bugfix: Split persons can talk to their host once again
-  - bugfix: AI controlled mobs which are immobilized are now properly immobilized
   - bugfix: People with copied memories can modify their bank account ID as normal.
   - rscdel: The Stethoscope no longer tells you if the target is missing a heart or
       lungs. Now, it will simply say the target is lacking a pulse or not breathing.
@@ -532,6 +533,8 @@
   Rhials:
   - bugfix: The full mining lockers in the Lavaland Mafia map have been replaced with
       (empty) mining carts.
+  Seluin:
+  - qol: "4-10 tipleri T\xFCrk\xE7e'ye \xE7evirildi."
   SethLafuente:
   - bugfix: fixes half-covering glassware protecting eyes from chemicals
   SyncIt21:
@@ -659,6 +662,8 @@
   RedBaronFlyer:
   - image: light tube inhand sprites are now grey, as are the icons for the light
       bulb/tube/mixed boxes
+  Seluin:
+  - qol: "11-18 tipleri T\xFCrk\xE7e'ye \xE7evirildi."
   Shadow-Quill:
   - bugfix: 'The CRAB-17 will now only take whole credits, as fractional credits were
       found to be worth less.

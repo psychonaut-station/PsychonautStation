@@ -183,6 +183,7 @@
 		/datum/reagent/consumable/ethanol/vodka,
 		/datum/reagent/consumable/ethanol/whiskey,
 		/datum/reagent/consumable/ethanol/wine,
+		/datum/reagent/consumable/ethanol/raki,
 	)
 
 /obj/machinery/plumbing/synthesizer/beer/Initialize(mapload, bolt, layer)

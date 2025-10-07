@@ -40,10 +40,16 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-
+	alt_titles = list(
+		"Head of Security",
+		"Security Commander",
+		"Chief Constable",
+		"Chief of Security",
+		"Sheriff",
+	)
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 
 
 /datum/outfit/job/hos
@@ -54,7 +60,6 @@
 	id_trim = /datum/id_trim/job/head_of_security
 	uniform = /obj/item/clothing/under/rank/security/head_of_security
 	suit = /obj/item/clothing/suit/armor/hos/trenchcoat
-	suit_store = /obj/item/gun/energy/e_gun
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		/obj/item/melee/baton/security/loaded/hos = 1,

@@ -180,8 +180,8 @@
 		var/obj/item/organ/eyes/eyes = locate(/obj/item/organ/eyes) in src
 		// This is a bit of copy/paste code from eyes.dm:generate_body_overlay
 		if(eyes?.eye_icon_state && (head_flags & HEAD_EYESPRITES))
-			var/image/eye_left = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_l", -EYES_LAYER, SOUTH)
-			var/image/eye_right = image('icons/mob/human/human_face.dmi', "[eyes.eye_icon_state]_r", -EYES_LAYER, SOUTH)
+			var/image/eye_left = image(eyes.eye_icon, "[eyes.eye_icon_state]_l", -EYES_LAYER, SOUTH)
+			var/image/eye_right = image(eyes.eye_icon, "[eyes.eye_icon_state]_r", -EYES_LAYER, SOUTH)
 			if(head_flags & HEAD_EYECOLOR)
 				if(eyes.eye_color_left)
 					eye_left.color = eyes.eye_color_left

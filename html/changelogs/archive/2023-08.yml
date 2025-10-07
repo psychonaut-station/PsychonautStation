@@ -702,6 +702,17 @@
   - bugfix: fixes immerse overlays not being added the first time a mob enters a water
       turf
 2023-08-16:
+  AhmetEfeAkgoz:
+  - rscadd: Nature sect
+  - rscadd: carp sect
+  - rscadd: Necromany sect
+  - rscadd: raise dead ritual
+  - rscadd: summon carp ritual
+  - rscadd: flood area ritual
+  - rscadd: summon animals ritual
+  - rscadd: create podperson ritual
+  - rscadd: convert into undead ritual
+  - rscadd: sacrifice living ritual
   DeerJesus:
   - bugfix: removes bodybag welding tooltip
   FernandoJ8:
@@ -764,13 +775,33 @@
       rifle, which has a scope on it, their main weapon now has a scope.
   - sound: The cargo rifle now has a new, considerably more rifle sized firing sound.
       Gotten from tgmc from https://github.com/tgstation/TerraGov-Marine-Corps/pull/12280.
+  Seefaaa:
+  - rscadd: "Poker \xE7ipleri eklendi"
+  - rscadd: "Poker \xE7ipi makinesi eklendi"
+  - rscadd: "Barmenin dolab\u0131na her t\xFCrden 1 deste kart ve \xE7ip makinesi\
+      \ kart\u0131 eklendi"
+  - rscdel: "Hand of cards art\u0131k \xE7apraz g\xF6r\xFCnmeyecek"
+  - bugfix: "Hand of cards art\u0131k blurlu g\xF6r\xFCnmeyecek"
+  - bugfix: "Kart destesi combat mode a\xE7\u0131kken masaya vuruldu\u011Funda desteden\
+      \ 1 kart yok olmayacak"
+  - bugfix: "Hand of cards masan\u0131n ortas\u0131 yerine ilk kart\u0131n bulundu\u011F\
+      u konumda olu\u015Fucak"
+  - qol: "Hand of cardsa sa\u011F t\u0131klayarak kartlar\u0131 \xE7evirebileceksiniz"
+  - image: "Poker \xE7ipi ve makinesi spritelar\u0131"
   SyncIt21:
   - bugfix: multiple balloon alerts when the plumbing RCD is low on ammo
   - code_imp: organized all plumbing designs into static lists for memory savings
   - refactor: removed unused vars for further memory savings
   YehnBeep:
   - bugfix: fixed a disconnected APC in Delta's tech storage.
+  exdal:
+  - rscadd: New station goal, Bluespace Tap
+  - rscadd: Creaking lights
 2023-08-17:
+  AhmetEfeAkgoz:
+  - rscadd: "Necromancy, Carp, Nature Sectleri i\xE7in yeni spritelar"
+  - rscdel: "\xE7al\u0131\u015Fmayan carp blessing mekani\u011Fi kald\u0131r\u0131\
+      ld\u0131"
   BlueMemesauce:
   - rscadd: 'Add policy for sentient mobs that were revived by lazarus injector (depends
       on config)
@@ -880,6 +911,9 @@
       effect up. This does not effect reconstruction.
   - balance: Both of the above effects do not effect the CE's roundstart RCD, nor
       any other RCDs such as combat RCDs.
+  exdal:
+  - rscadd: AI detector artik upload key'i gostericek
+  - bugfix: Infect AI objektifi icin ai detector eklendi
   mc-oofert:
   - rscadd: cybernetic moth eyes and their variants
   - bugfix: luminescent eyes no longer make you look like a cyclops in the dark
@@ -1087,6 +1121,8 @@
   - code_imp: Replaced the magic strings in slime code with macros. Also included
       some warnings to anyone daring to touch the macros.
 2023-08-23:
+  AhmetEfeAkgoz:
+  - bugfix: ratkingin ore silo ve apc yiyebilmesi
   Ben10Omintrix:
   - refactor: the goldgrub has been refactored please report any bugs
   - rscadd: the goldgrub can now be tamed and he can have babys
@@ -1107,6 +1143,10 @@
       the request console.
   ZephyrTFA:
   - bugfix: pda messages are no longer hidden from dead players who are not observers
+  exdal:
+  - rscdel: Sentient Disease kaldirildi
+  - rscdel: NT Agent kaldirildi
+  - balance: Experimental Teleporter nerflendi
 2023-08-24:
   Fikou:
   - rscadd: wizards are now introverts
@@ -1121,6 +1161,9 @@
   Rhials:
   - rscadd: The roundend report will now read out any achievements ("cheevos" as you
       may know them) earned by players over the course of the round.
+  Seefaaa:
+  - bugfix: "Art\u0131k c\xFCmleye \"\u0131\" ile ba\u015Fland\u0131\u011F\u0131nda\
+      \ c\xFCmle bozulmayacak."
   Vekter:
   - balance: Grilles will now take 0-1 damage every time they shock something.
   - balance: Powersinks are now available earlier in traitor progression.
@@ -1174,6 +1217,8 @@
   - code_imp: Tram landmarks are now all subtyped instead of map varedits
   distributivgesetz:
   - rscdel: Removes miscellaneous sources of clone damage from the game.
+  exdal:
+  - bugfix: creak_lights triggered by derelict
   iwishforducks:
   - bugfix: You should be able to click on lattices on icebox with the RCD and construct
       a floor now
@@ -1186,6 +1231,11 @@
   Guillaume Prata:
   - qol: Medical Kiosk now have their wand removed with a right click, got new screentips
       and have a few of its chat messages turned into balloon alerts.
+  RengaN02:
+  - rscadd: Announcement beacon eklendi.
+  - rscdel: "Secretary Announcement console kald\u0131r\u0131ld\u0131."
+  - code_imp: "Centcom messenger console, Secretary Console ile de\u011Fi\u015Ftirildi,\
+      \ tgui eklendi."
   YehnBeep:
   - qol: Messenger bags can be crafted with 4 cloth.
   distributivgesetz:
@@ -1225,6 +1275,8 @@
   RikuTheKiller:
   - bugfix: Light eaters can no longer be eaten by their higher-grade brothers, the
       trash eaters. (recyclers)
+  Seefaaa:
+  - code_imp: "Unutulmu\u015F definelar"
   SyncIt21:
   - bugfix: zipping a duffle bag closes the UI of all storage items opened inside
       it
@@ -1328,6 +1380,13 @@
       of their shorts!
   - image: tweaks and adjustments to the Cargo resprite have been made, as well as
       respriting some missed icons such as the Winter Coats and QM Cloak
+  Seefaaa:
+  - rscadd: "Worker rapid-tiling-device (RTD) ve 30 cloth ile ba\u015Flayacak."
+  - rscadd: "RTD carpet \xFCretebilecek ve clothla veya carpet geri d\xF6n\xFC\u015F\
+      t\xFCrerek \u015Farj olacak."
+  - balance: "Worker slotu 2'den 3'e \xE7\u0131kar\u0131ld\u0131.\nbalance Worker'in\
+      \ \xE7antas\u0131ndaki wood miktar\u0131 \xE7antaya RTD ve clothun s\u0131\u011F\
+      mas\u0131 i\xE7in 50'den 30'a azalt\u0131ld\u0131."
   Seven:
   - bugfix: Syndicate ranged mobs (and probably other basic mobs) properly update
       their shell's description to show they are spent.
@@ -1402,6 +1461,9 @@
   - bugfix: autolathe takes constant time when printing stacks
   - code_imp: autolathe will attempt to award you the "getting an upgrade" award only
       once when printing multiple items & updates UI immediately
+  exdal:
+  - rscdel: Random antag eventleri kaldirildi
+  - qol: Cogu midround antag icin enemy role araliklari arttirildi
   iwishforducks:
   - bugfix: Space heaters no longer give extra cells when deconstructed
   necromanceranne:

@@ -189,7 +189,6 @@
 
 		if(hint == HUD_LIST_LIST)
 			hud_list[hud] = list()
-
 		else
 			var/image/I = image('icons/mob/huds/hud.dmi', src, "")
 			I.appearance_flags = RESET_COLOR|PIXEL_SCALE|KEEP_APART
@@ -1200,6 +1199,7 @@
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
+
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 
 	return TRUE
@@ -1675,3 +1675,7 @@
 	SIGNAL_HANDLER
 	var/datum/atom_hud/datahud = GLOB.huds[GLOB.trait_to_hud[new_trait]]
 	datahud.hide_from(src)
+
+
+/mob/proc/get_mob_appearance()
+	return appearance

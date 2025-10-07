@@ -53,6 +53,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/clothing/under/rank/security/officer/grey = 3,
 		/obj/item/clothing/under/pants/slacks = 3,
 		/obj/item/clothing/under/rank/security/officer/blueshirt = 3,
+		/obj/item/clothing/mask/gas/ghost_mask = 1,
 		/obj/item/clothing/gloves/color/black/security/blu = 3,
 		/obj/item/clothing/suit/armor/vest/secjacket = 3,
 		/obj/item/clothing/suit/hooded/wintercoat/security = 3,
@@ -583,6 +584,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/radio/headset/headset_srv = 2,
 		/obj/item/clothing/suit/chaplainsuit/habit = 1,
 		/obj/item/clothing/head/chaplain/habit_veil = 1,
+		/obj/item/clothing/neck/necklace/jhon = 2,
 	)
 	contraband = list(
 		/obj/item/toy/plush/ratplush = 1,

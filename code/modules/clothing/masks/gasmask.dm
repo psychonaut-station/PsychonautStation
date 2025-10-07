@@ -530,3 +530,19 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	w_class = WEIGHT_CLASS_NORMAL
 	inhand_icon_state = null
 	fishing_modifier = 0
+
+/obj/item/clothing/mask/gas/ghost_mask
+	name = "ghost mask"
+	desc = "What has two legs and bleeds?"
+	icon = 'icons/psychonaut/obj/clothing/masks.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/mask.dmi'
+	icon_state = "ghost_mask"
+	custom_price = PAYCHECK_CREW * 7
+	clothing_flags = BLOCK_GAS_SMOKE_EFFECT
+	flags_inv = HIDEEARS|HIDEFACE|HIDEFACIALHAIR|HIDEHAIR|HIDESNOUT
+	visor_flags = BLOCK_GAS_SMOKE_EFFECT
+	visor_flags_inv = HIDEFACE|HIDEFACIALHAIR|HIDESNOUT|HIDEEARS
+	w_class = WEIGHT_CLASS_SMALL
+	flags_cover = MASKCOVERSMOUTH
+	visor_flags_cover = MASKCOVERSMOUTH
+	inhand_icon_state = null

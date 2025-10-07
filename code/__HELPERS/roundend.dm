@@ -1,6 +1,9 @@
 #define POPCOUNT_SURVIVORS "survivors" //Not dead at roundend
 #define POPCOUNT_ESCAPEES "escapees" //Not dead and on centcom/shuttles marked as escaped
+#define POPCOUNT_ESCAPEES_HUMANONLY "human_escapees"
+#define POPCOUNT_ESCAPEES_HUMANONLY_LIST "human_escapees_list"
 #define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" //Emergency shuttle only.
+#define POPCOUNT_STATION_INTEGRITY "station_integrity"
 #define PERSONAL_LAST_ROUND "personal last round"
 #define SERVER_LAST_ROUND "server last round"
 
@@ -14,7 +17,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/list/file_data = list("escapees" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "abandoned" = list("humans" = list(), "silicons" = list(), "others" = list(), "npcs" = list()), "ghosts" = list(), "additional data" = list())
 	var/num_survivors = 0 //Count of non-brain non-eye mobs with mind that are alive
 	var/num_escapees = 0 //Above and on centcom z
-	var/num_shuttle_escapees = 0 //Above and on escape shuttle
+	var/num_human_escapees = 0 //Above but humans only
+	var/num_shuttle_escapees = 0 //Above's above and on escape shuttle
+	var/list/list_of_human_escapees = list() //References to all escaped humans
 	var/list/area/shuttle_areas
 	if(SSshuttle?.emergency)
 		shuttle_areas = SSshuttle.emergency.shuttle_areas
@@ -39,6 +44,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 					escape_status = "escapees"
 					if(shuttle_areas[get_area(M)])
 						num_shuttle_escapees++
+						if(ishuman(M))
+							num_human_escapees++
+							list_of_human_escapees += M
 			if(isliving(M))
 				var/mob/living/L = M
 				mob_data["location"] = get_area(L)
@@ -91,8 +99,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	var/datum/station_state/end_state = new /datum/station_state()
 	end_state.count()
-	var/station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
-	file_data["additional data"]["station integrity"] = station_integrity
+	var/roundend_station_integrity = min(PERCENT(GLOB.start_state.score(end_state)), 100)
+	file_data["additional data"]["station integrity"] = roundend_station_integrity
 	WRITE_FILE(json_file, json_encode(file_data))
 
 	SSblackbox.record_feedback("nested tally", "round_end_stats", num_survivors, list("survivors", "total"))
@@ -102,8 +110,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	. = list()
 	.[POPCOUNT_SURVIVORS] = num_survivors
 	.[POPCOUNT_ESCAPEES] = num_escapees
+	.[POPCOUNT_ESCAPEES_HUMANONLY] = num_human_escapees
 	.[POPCOUNT_SHUTTLE_ESCAPEES] = num_shuttle_escapees
-	.["station_integrity"] = station_integrity
+	.[POPCOUNT_ESCAPEES_HUMANONLY_LIST] = list_of_human_escapees
+	.[POPCOUNT_STATION_INTEGRITY] = roundend_station_integrity
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1
@@ -219,6 +229,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	LAZYCLEARLIST(round_end_events)
 
 	var/speed_round = (STATION_TIME_PASSED() <= 10 MINUTES)
+	popcount = gather_roundend_feedback()
+	SScredits.draft()
+	SScredits.finalize()
 
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
@@ -229,7 +242,6 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
 		HandleRandomHardcoreScore(C)
 
-	var/popcount = gather_roundend_feedback()
 	display_report(popcount)
 
 	CHECK_TICK
@@ -246,8 +258,15 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
 	log_game("The round has ended.")
+	var/logs_url = CONFIG_GET(string/gamelogurl)
+	var/round_end_msg = ""
+	if (logs_url && GLOB.round_id)
+		var/texttime = time2text(world.realtime, "YYYY/MM/DD", 0)
+		round_end_msg = "Round \[#[GLOB.round_id]\]([logs_url]/[texttime]/round-[GLOB.round_id]) sona erdi."
+	else
+		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
 	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
-		send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), channel_tag)
+		send2chat(new /datum/tgs_message_content(round_end_msg), channel_tag)
 	send2adminchat("Server", "Round just ended.")
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))

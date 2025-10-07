@@ -40,6 +40,8 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 
 /datum/latejoin_menu/ui_data(mob/user)
 	var/mob/dead/new_player/owner = user
+	if(isnull(owner.client.prefs.alt_job_titles))
+		owner.client.prefs?.alt_job_titles = list()
 	var/list/departments = list()
 	var/list/data = list(
 		"disable_jobs_for_non_observers" = SSlag_switch.measures[DISABLE_NON_OBSJOBS],
@@ -92,6 +94,10 @@ GLOBAL_DATUM_INIT(latejoin_menu, /datum/latejoin_menu, new)
 					department_data["open_slots"] += job_datum.total_positions - job_datum.current_positions
 
 			department_jobs[job_datum.title] = job_data
+
+	data["security_level"] = SSsecurity_level.get_current_level_as_number()
+
+	data["job_alt_titles"] = user.client.prefs?.alt_job_titles
 
 	return data
 

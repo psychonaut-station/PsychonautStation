@@ -189,7 +189,7 @@
 /obj/structure/checkoutmachine/Destroy()
 	stop_dumping()
 	STOP_PROCESSING(SSfastprocess, src)
-	priority_announce("The credit deposit machine at [get_area(src)] has been destroyed. Station funds have stopped draining!", sender_override = "CRAB-17 Protocol")
+	priority_announce("[get_area(src)] bölümündeki para yatırma makinesi yok edildi. İstasyon içerisindeki para akışı durdu!", sender_override = "CRAB-17 Protokolü")
 	if(internal_account.account_balance)
 		expel_cash()
 	QDEL_NULL(internal_account)
@@ -290,7 +290,7 @@
 /obj/effect/dumpeet_target/proc/startLaunch()
 	DF = new /obj/effect/dumpeet_fall(drop_location())
 	dump = new /obj/structure/checkoutmachine(null, bogdanoff)
-	priority_announce("The spacecoin bubble has popped! Get to the credit deposit machine at [get_area(src)] and cash out before you lose all of your funds!", sender_override = "CRAB-17 Protocol")
+	priority_announce("Spacecoin balonu patladı! [get_area(src)] konumundaki para yatırma makinesine gidin ve tüm paranızı kaybetmeden önce nakite çevirin!", sender_override = "CRAB-17 Protokolü")
 	animate(DF, pixel_z = -8, time = 5, , easing = LINEAR_EASING)
 	playsound(src,  'sound/items/weapons/mortar_whistle.ogg', 70, TRUE, 6)
 	addtimer(CALLBACK(src, PROC_REF(endLaunch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation

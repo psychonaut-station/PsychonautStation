@@ -412,7 +412,6 @@
 /obj/machinery/door/airlock/public/glass{
 	name = "External Access"
 	},
-/obj/machinery/door/firedoor,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "Xm" = (

@@ -1,6 +1,6 @@
 /mob/living/silicon/proc/show_laws()
 	laws_sanity_check()
-	var/list/law_box = list(span_bold("Obey these laws:"))
+	var/list/law_box = list(span_bold("Uymak zorunda olduğun yasalar:"))
 	law_box += laws.get_law_list(include_zeroth = TRUE)
 	to_chat(src, boxed_message(jointext(law_box, "\n")))
 
@@ -24,7 +24,7 @@
 /mob/living/silicon/proc/post_lawchange(announce = TRUE)
 	throw_alert(ALERT_NEW_LAW, /atom/movable/screen/alert/newlaw)
 	if(announce && last_lawchange_announce != world.time)
-		to_chat(src, span_bolddanger("Your laws have been changed."))
+		to_chat(src, span_bolddanger("Yasaların değişti."))
 		SEND_SOUND(src, sound('sound/machines/cryo_warning.ogg'))
 		// lawset modules cause this function to be executed multiple times in a tick, so we wait for the next tick in order to be able to see the entire lawset
 		addtimer(CALLBACK(src, PROC_REF(show_laws)), 0)

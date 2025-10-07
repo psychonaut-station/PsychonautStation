@@ -178,6 +178,11 @@
 	results = list(/datum/reagent/consumable/t_letter = 2)
 	required_reagents = list(/datum/reagent/consumable/nothing = 1, /datum/reagent/consumable/tea = 1)
 
+/datum/chemical_reaction/drink/ayran
+	results = list(/datum/reagent/consumable/ayran = 2)
+	required_reagents = list(/datum/reagent/water/salt = 1, /datum/reagent/consumable/yoghurt = 1)
+	reaction_flags = REACTION_TAG_EASY | REACTION_TAG_DRINK
+
 /datum/chemical_reaction/drink/bitters_soda
 	results = list(/datum/reagent/consumable/ethanol/bitters_soda = 15)
 	required_reagents = list(/datum/reagent/consumable/sodawater = 10, /datum/reagent/consumable/ice = 5, /datum/reagent/consumable/ethanol/bitters = 1)

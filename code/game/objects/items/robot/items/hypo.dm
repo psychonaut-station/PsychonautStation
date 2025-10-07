@@ -70,7 +70,7 @@
 		/datum/reagent/consumable/ethanol/navy_rum, /datum/reagent/consumable/ethanol/rice_beer, /datum/reagent/consumable/ethanol/rum,\
 		/datum/reagent/consumable/ethanol/sake, /datum/reagent/consumable/ethanol/tequila, /datum/reagent/consumable/ethanol/triple_sec,\
 		/datum/reagent/consumable/ethanol/vermouth, /datum/reagent/consumable/ethanol/vodka, /datum/reagent/consumable/ethanol/whiskey,\
-		/datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/yuyake,\
+		/datum/reagent/consumable/ethanol/wine, /datum/reagent/consumable/ethanol/yuyake, /datum/reagent/consumable/ethanol/raki,\
 	)
 #define EXPANDED_SERVICE_REAGENTS list(\
 	/datum/reagent/consumable/blackpepper,\

@@ -160,23 +160,25 @@
 
 /datum/config_entry/flag/arrivals_shuttle_require_safe_latejoin //Require the arrivals shuttle to be operational in order for latejoiners to join
 
+
+// game_options.txt Üzerinden değişiklik yapılırsa etki ediyor.
 /datum/config_entry/string/alert_green
-	default = "All threats to the station have passed. Security may not have weapons visible, privacy laws are once again fully enforced."
+	default = "İstasyona yönelik tüm tehditler geçmiştir. Güvenlik görevlileri silah bulundurmayabilir, gizliliğinize tekrardan önem verilmektedir."
 
 /datum/config_entry/string/alert_blue_upto
-	default = "The station has received reliable information about possible hostile activity on the station. Security staff may have weapons visible, random searches are permitted."
+	default = "İstasyona olası düşmanca faaliyetler hakkında güvenilir bir bilgi geldi. Güvenlik görevlileri silah bulundurabilir, aramalara geçerli bir sebebi olması dahilinde izin verilmektedir."
 
 /datum/config_entry/string/alert_blue_downto
-	default = "The immediate threat has passed. Security may no longer have weapons drawn at all times, but may continue to have them visible. Random searches are still allowed."
+	default = "İstasyona yönelik tehdit geçmiştir. Güvenlik görevlileri artık silahlarını her an hazır tutmayabilir ancak bulundurmaya devam edebilir. Aramalara geçerli bir sebebi olması dahilinde verilmektedir."
 
 /datum/config_entry/string/alert_red_upto
-	default = "There is an immediate serious threat to the station. Security may have weapons unholstered at all times. Random searches are allowed and advised."
+	default = "İstasyona yönelik ciddi bir tehdit bulunuyor. Güvenlik görevlileri silahlarını her an kullanabilir. Rastgele aramalara izin verilmektedir ve tavsiye edilir."
 
 /datum/config_entry/string/alert_red_downto
-	default = "The station's destruction has been averted. There is still however an immediate serious threat to the station. Security may have weapons unholstered at all times, random searches are allowed and advised."
+	default = "İstasyonun yok edilmesi önlendi. Fakat istasyona yönelik ciddi bir tehdit hâlâ devam etmektedir. Güvenlik görevlileri her an silahlarını kullanabilir, rastgele aramalara izin verilmektedir ve tavsiye edilir."
 
 /datum/config_entry/string/alert_delta
-	default = "Destruction of the station is imminent. All crew are instructed to obey all instructions given by heads of staff. Any violations of these orders can be punished by death. This is not a drill."
+	default = "İstasyonun yok olması an meselesidir. Tüm mürettebat, personel şefleri tarafından verilen emirlere uymak zorundadır. Bu emirlerin ihlali ölümle cezalandırılabilir. Bu bir tatbikat değildir!"
 
 /datum/config_entry/flag/roundstart_blue_alert
 	default = TRUE
@@ -189,6 +191,9 @@
 	min_val = -1
 
 /datum/config_entry/flag/ooc_during_round
+
+/datum/config_entry/flag/looc_enabled
+	default = TRUE
 
 // deprecated for unclear name
 /datum/config_entry/number/commendations
@@ -503,3 +508,7 @@
 
 /datum/config_entry/number/max_shuttle_size
 	default = 250
+
+/datum/config_entry/keyed_list/modular_room_weight
+	key_mode = KEY_MODE_TEXT
+	value_mode = VALUE_MODE_NUM

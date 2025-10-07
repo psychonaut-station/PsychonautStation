@@ -24,6 +24,9 @@ $include map_vote.txt
 ## Server SQL name: This is the name used to identify the server to the SQL DB, distinct from SERVERNAME as it must be at most 32 characters.
 # SERVERSQLNAME tgstation
 
+## Link that will be displayed on hub title
+HUB_NAME_LINK
+
 ## Station name: The name of the station as it is referred to in-game. If commented out, the game will generate a random name instead.
 STATIONNAME Space Station 13
 
@@ -31,7 +34,7 @@ STATIONNAME Space Station 13
 #HUB
 
 ## Lobby time: This is the amount of time between rounds that players have to setup their characters and be ready.
-LOBBY_COUNTDOWN 120
+LOBBY_COUNTDOWN 180
 
 ## Round End Time: This is the amount of time after the round ends that players have to murder death kill each other.
 ROUND_END_COUNTDOWN 90
@@ -208,7 +211,11 @@ IPINTEL_REJECT_BAD
 # GITHUBURL https://www.github.com/tgstation/tgstation
 
 ## Discord bot command prefix, if the discord bot is used
-# DISCORDBOTCOMMANDPREFIX ?
+# DISCORDBOTCOMMANDPREFIX /
+
+## https://github.com/psychonaut-station/api.turkb.us
+# APITOKEN
+# APIURL https://api.turkb.us/v2
 
 ## Round specific stats address
 ## Link to round specific parsed logs; IE statbus. It is appended with the RoundID automatically by ticker/Reboot()
@@ -232,13 +239,16 @@ IPINTEL_REJECT_BAD
 ## The default value assumes yt-dlp is in your system PATH
 # INVOKE_YOUTUBEDL yt-dlp
 
+## Path to text file containing browser cookies to bypass youtube captcha for yt-dlp
+# YTDL_COOKIES ~/cookies.txt
+
 ## Comment this out to disable users ability to use the request internet sounds to be played.
 REQUEST_INTERNET_SOUND
 
 ## Request Internet Sound Allowed URL'S comma separated, urls here are the only sites allowed through Request Internet Sound, Add more to allow more, or remove to disallow.
 ## The Defaults here are all supported by yt-dlp
 ## Ensure . and / are escaped with \
-REQUEST_INTERNET_ALLOWED youtube\.com\/watch?v=,youtu\.be\/,soundcloud\.com\/,bandcamp\.com\/track\/
+REQUEST_INTERNET_ALLOWED (^(https?:\/\/)?(www\.)?(youtube\.com\/|youtu\.be\/)[\w\-\/?=&%]*$)
 
 ## In-game features
 
@@ -626,6 +636,11 @@ PR_ANNOUNCEMENTS_PER_ROUND 5
 ## Even if this is enabled, a notification will only be sent if there are no clients connected.
 TOAST_NOTIFICATION_ON_INIT
 
+# Webhook URL for Discord rounstart alerts
+#ENABLE_DISCORD_ROUND_ALERTS
+DISCORD_ROUND_ALERT_WEBHOOK_URL
+DISCORD_ROUND_ALERT_ROLE_ID
+
 ## Causes configuration errors to spit out runtimes
 CONFIG_ERRORS_RUNTIME
 
@@ -634,6 +649,12 @@ UPLOAD_LIMIT 524288
 
 ## Restricts admin client uploads to the server, defined in bytes, default is 5MB
 UPLOAD_LIMIT_ADMIN 5242880
+
+## Timezone offset in deciseconds
+TIMEZONE_OFFSET 108000
+
+## Uncomment to force users to link their Discord accounts before connecting
+# REQUIRE_DISCORD_LINKING
 
 ## Uncomment to allow admins with +DEBUG to start the byond-tracy profiler during the round.
 #ALLOW_TRACY_START
@@ -651,3 +672,6 @@ TGUI_MAX_CHUNK_COUNT 32
 ## While this is uncommented, server initialization will include some asset generation usually useful for development.
 ## It increases initialization time significantly so you'll want to disable this in live environments.
 GENERATE_ASSETS_IN_INIT
+
+## Etiketlenmesini istediğin discord rolünün id sini yaz.
+#SUSPICIOUS_LOG_DISCORD_ROLE_ID

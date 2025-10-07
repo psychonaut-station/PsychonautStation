@@ -32,6 +32,11 @@
 	max_slots = 5
 	max_total_storage = 10 //it'll hold enough
 
+///Anomaly catcher toolbox
+/datum/storage/toolbox/guncase/anomalycatcher
+	max_total_storage = 11
+	max_specific_storage = WEIGHT_CLASS_HUGE
+
 ///Fishing toolbox
 /datum/storage/toolbox/fishing/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound)
 	. = ..()

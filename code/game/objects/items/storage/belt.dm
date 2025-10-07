@@ -626,11 +626,67 @@
 /obj/item/storage/belt/sheath/sabre
 	name = "sabre sheath"
 	desc = "An ornate sheath designed to hold an officer's blade."
-	icon_state = "sheath"
-	inhand_icon_state = "sheath"
-	worn_icon_state = "sheath"
+	icon = 'icons/psychonaut/obj/clothing/belts.dmi'
+	icon_state = "sheath_red"
+	lefthand_file = 'icons/psychonaut/mob/inhands/clothing/belts_lefthand.dmi'
+	righthand_file = 'icons/psychonaut/mob/inhands/clothing/belts_righthand.dmi'
+	inhand_icon_state = "sheath_red"
+	worn_icon = 'icons/psychonaut/mob/clothing/belts.dmi'
+	worn_icon_state = "sheath_red"
+	w_class = WEIGHT_CLASS_BULKY
+	interaction_flags_click = parent_type::interaction_flags_click | NEED_DEXTERITY | NEED_HANDS
+	unique_reskin = list(
+		"Red" = "sheath_red",
+		"Black" = "sheath_black"
+	)
 	storage_type = /datum/storage/sabre_belt
 	stored_blade = /obj/item/melee/sabre
+
+/obj/item/storage/belt/sheath/sabre/click_alt(mob/user)
+	if(length(contents))
+		var/obj/item/I = contents[1]
+		user.visible_message(span_notice("[user] takes [I] out of [src]."), span_notice("You take [I] out of [src]."))
+		user.put_in_hands(I)
+		update_appearance()
+	else
+		balloon_alert(user, "it's empty!")
+	return CLICK_ACTION_SUCCESS
+
+/obj/item/storage/belt/sheath/sabre/update_icon_state()
+	. = ..()
+	icon_state = current_skin ? unique_reskin[current_skin] : initial(icon_state)
+	inhand_icon_state = current_skin ? unique_reskin[current_skin] : initial(inhand_icon_state)
+	worn_icon_state = current_skin ? unique_reskin[current_skin] : initial(worn_icon_state)
+	if(contents.len)
+		var/obj/item/I = contents[1]
+		icon_state += "-[I.icon_state]"
+		inhand_icon_state += "-[I.icon_state]"
+		worn_icon_state += "-[I.icon_state]"
+
+/obj/item/storage/belt/sheath/sabre/on_click_alt_reskin(datum/source, mob/user)
+	if(!contents.len)
+		return NONE
+
+	return ..()
+
+/obj/item/storage/belt/sheath/sabre/reskin_obj(mob/user)
+	. = ..()
+	if(current_skin)
+		var/obj/item/I = contents[1]
+		if(isnull(I))
+			current_skin = null
+			icon_state = initial(icon_state)
+			update_appearance()
+			return
+		switch(current_skin)
+			if("Red")
+				I.icon_state = "sabre_red"
+				I.inhand_icon_state = "sabre_red"
+			if("Black")
+				I.icon_state = "sabre_black"
+				I.inhand_icon_state = "sabre_black"
+		I.update_appearance()
+		update_appearance()
 
 /obj/item/storage/belt/sheath/grass_sabre
 	name = "sabre sheath"

@@ -768,6 +768,8 @@
   00-Steven:
   - bugfix: Photocopying no longer removes the stamp overlays from the original paper,
       and actually copies them to the copy.
+  RengaN02:
+  - bugfix: "Ipclerin hudunun g\xF6z\xFCkmemesi d\xFCzeltildi"
   Rhials:
   - balance: When dominating a mech as a Malfunctioning AI, the core you shunted from
       will disable your Doomsday Counterdown when destroyed. Make sure to protect

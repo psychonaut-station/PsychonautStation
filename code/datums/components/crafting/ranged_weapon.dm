@@ -374,6 +374,16 @@
 	category = CAT_WEAPON_RANGED
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED
 
+//datum/crafting_recipe/laser_musket_napoleon
+	//name = "Napoleonic Laser Musket"
+	//result = /obj/item/gun/energy/laser/musket/napoleon
+	//reqs = list(
+		///obj/item/gun/energy/laser/musket = 1,
+		///obj/item/stack/cable_coil = 15,
+		///obj/item/food/grown/onion = 1,
+	//)
+	//tool_behaviors = list(TOOL_SCREWDRIVER)
+	//time = 20 SECONDS
 /datum/crafting_recipe/smoothbore_disabler
 	name = "Smoothbore Disabler"
 	result = /obj/item/gun/energy/disabler/smoothbore

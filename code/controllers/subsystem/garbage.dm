@@ -44,7 +44,6 @@ SUBSYSTEM_DEF(garbage)
 	var/list/fail_counts
 
 	var/list/items = list() // Holds our qdel_item statistics datums
-
 	//Queue
 	var/list/queues
 	#ifdef REFERENCE_TRACKING

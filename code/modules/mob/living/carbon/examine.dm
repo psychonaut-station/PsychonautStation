@@ -180,7 +180,7 @@
 			if(appears_dead)
 				bleed_text += ", but it has pooled and is not flowing."
 			else
-				if(HAS_TRAIT(src, TRAIT_BLOODY_MESS))
+				if(HAS_TRAIT(src, TRAIT_BLOOD_FOUNTAIN))
 					bleed_text += " incredibly quickly"
 				bleed_text += "!"
 
@@ -597,6 +597,10 @@
 	var/agetext = get_age_text()
 	if(agetext)
 		. += agetext
+
+	if(mind?.assigned_role.job_flags & JOB_CREW_MANIFEST)
+		if(flavor_text)
+			. += "<span class='info'>OOC Information:</span> [flavor_text]"
 
 /// Reports all body parts which are mismatched with the user's species
 /mob/living/carbon/human/proc/get_mismatched_limb_text()

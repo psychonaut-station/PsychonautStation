@@ -16,7 +16,7 @@
 
 // Sanitize on load to ensure no invalid paths from older saves get in
 /datum/preference/loadout/deserialize(input, datum/preferences/preferences)
-	return sanitize_loadout_list(input, preferences.parent?.mob)
+	return sanitize_loadout_list(input, preferences?.parent?.mob)
 
 // Default value is null - the loadout list is a lazylist
 /datum/preference/loadout/create_default_value(datum/preferences/preferences)
@@ -50,6 +50,13 @@
 					in your character loadout: [real_path || "null"]. \
 					It has been removed, renamed, or is otherwise missing - \
 					You may want to check your loadout settings."))
+			continue
+
+		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+		if(loadout_item.donator_only && optional_loadout_owner?.client && !optional_loadout_owner.client.prefs.unlock_content)
+			to_chat(optional_loadout_owner, span_boldnotice("The following donator-only item was found \
+				in your character loadout: [real_path || "null"]. \
+				It has been removed, as you are not a patron."))
 			continue
 
 		// Set into sanitize list using converted path key

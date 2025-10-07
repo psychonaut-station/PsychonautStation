@@ -289,3 +289,50 @@
 	inhand_icon_state = "shrinehand"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
 	flags_inv = HIDEJUMPSUIT|HIDEBELT
+
+/obj/item/clothing/head/helmet/chaplain/chapter
+	name = "chapter chaplain helmet"
+	desc = "For God-Emperor of Mankind!"
+	icon_state = "rg_chaphelmet"
+	inhand_icon_state = null
+	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
+
+/obj/item/clothing/suit/chaplainsuit/armor/chapter
+	name = "chapter chaplain suit"
+	desc = "For God-Emperor of Mankind!"
+	icon_state = "rg_chapsuit"
+	icon = 'icons/psychonaut/obj/clothing/suits/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/chaplain.dmi'
+	inhand_icon_state = null
+	slowdown = 0
+
+/obj/item/clothing/shoes/chapter
+	name = "chapter chaplain boots"
+	desc = "Anti-heresy boots!"
+	icon_state = "rg_boots"
+	icon = 'icons/psychonaut/obj/clothing/shoes.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/feet.dmi'
+	resistance_flags = NONE
+	fastening_type = SHOES_SLIPON
+
+/obj/item/clothing/suit/hooded/chaplain_hoodie/tech
+	name = "tech priest cloak"
+	desc = "Specially made cloak for Machine god believers. Offers some protection."
+	icon_state = "chaplain_tech"
+	icon = 'icons/psychonaut/obj/clothing/suits/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/chaplain.dmi'
+	body_parts_covered = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	cold_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	heat_protection = CHEST|GROIN|LEGS|FEET|ARMS|HANDS
+	armor_type = /datum/armor/chaplainsuit_armor_weaker
+	hoodtype = /obj/item/clothing/head/hooded/chaplain_hood/tech
+	hood_up_affix = ""
+
+/obj/item/clothing/head/hooded/chaplain_hood/tech
+	name = "tech priest hood"
+	desc = "A divine hood for Machine God believers."
+	icon_state = "chaplain_techhood"
+	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
+	armor_type = /datum/armor/chaplainsuit_armor_weaker

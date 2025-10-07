@@ -103,6 +103,7 @@
 		/datum/reagent/consumable/ethanol/drunkenblumpkin,\
 		/datum/reagent/consumable/ethanol/fetching_fizz,\
 		/datum/reagent/consumable/ethanol/goldschlager,\
+		/datum/reagent/consumable/ethanol/raki,\
 		/datum/reagent/consumable/ethanol/manhattan_proj,\
 		/datum/reagent/consumable/ethanol/narsour,\
 		/datum/reagent/consumable/ethanol/neurotoxin,\

@@ -4,16 +4,18 @@
 /datum/unit_test/barsigns_icon
 
 /datum/unit_test/barsigns_icon/Run()
-	var/obj/machinery/barsign_type = /obj/machinery/barsign
-	var/icon/barsign_icon = initial(barsign_type.icon)
-	var/list/barsign_icon_states = icon_states(barsign_icon)
-
+	var/list/sign_icon_states = list()
 	// Check every datum real bar sign
-	for(var/sign_type in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
+	for(var/datum/barsign/sign_type as anything in (subtypesof(/datum/barsign) - /datum/barsign/hiddensigns))
+		var/sign_icon = sign_type::icon
+
+		if(isnull(sign_icon_states[sign_icon]))
+			sign_icon_states[sign_icon] = icon_states(sign_icon)
+
 		var/datum/barsign/sign = new sign_type()
 
-		if(!(sign.icon_state in barsign_icon_states))
-			TEST_FAIL("Icon state for [sign_type] does not exist in [barsign_icon].")
+		if(!(sign.icon_state in sign_icon_states[sign_icon]))
+			TEST_FAIL("Icon state for [sign_type] does not exist in [sign_icon].")
 
 /**
  * Check that bar signs have a name and desc, and that the name is unique.

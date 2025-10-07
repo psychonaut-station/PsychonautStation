@@ -23,7 +23,7 @@
 	var/datum/reagent/forced_reagent_type
 
 /datum/round_event/wisdomcow/announce(fake)
-	priority_announce("A wise cow has been spotted in the area. Be sure to ask for her advice.", "Nanotrasen Cow Ranching Agency")
+	priority_announce("Bölgede bilge bir inek görüldü. Tavsiyesini almayı unutmayın.", "Nanotrasen İnek Çiftliği Ajansı")
 
 /datum/round_event/wisdomcow/start()
 	var/turf/targetloc

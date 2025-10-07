@@ -2,7 +2,7 @@
 	desc = "A hand-held environmental scanner which reports current gas levels."
 	name = "gas analyzer"
 	custom_price = PAYCHECK_LOWER * 0.9
-	icon = 'icons/obj/devices/scanner.dmi'
+	icon = 'icons/psychonaut/obj/device.dmi'
 	icon_state = "analyzer"
 	inhand_icon_state = "analyzer"
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'

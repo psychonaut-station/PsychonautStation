@@ -80,7 +80,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	var/keyname = key
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('icons/ui/chat/member_content.dmi', world, "blag")][keyname]</font>"
+			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
 	if(prefs.hearted)
 		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 		keyname = "[sheet.icon_tag("emoji-heart")][keyname]"
@@ -112,7 +112,6 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			else
 				to_chat(receiver, span_ooc(span_prefix("OOC:</span> <EM>[keyname]:</EM> <span class='message linkify'>[msg]")), avoid_highlighting = avoid_highlight)
 
-
 /proc/toggle_ooc(toggle = null)
 	if(toggle != null) //if we're specifically en/disabling ooc
 		if(toggle != GLOB.ooc_allowed)
@@ -131,6 +130,15 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 			return
 	else
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
+
+/proc/toggle_looc(toggle = null)
+	if(toggle != null)
+		if(toggle != GLOB.looc_allowed)
+			GLOB.looc_allowed = toggle
+		else
+			return
+	else //otherwise just toggle it
+		GLOB.looc_allowed = !GLOB.looc_allowed
 
 
 /client/proc/set_ooc()
@@ -162,6 +170,102 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	message_admins("[key_name_admin(user)] has reset the players' ooc color.")
 	log_admin("[key_name_admin(user)] has reset player ooc color.")
 	GLOB.OOC_COLOR = null
+
+
+/client/verb/looc(msg as text)
+	set name = "LOOC"
+	set category = "OOC"
+
+	if(GLOB.say_disabled) //This is here to try to identify lag problems
+		to_chat(usr, span_danger("Speech is currently admin-disabled."))
+		return
+
+	if(!msg)
+		return
+
+	var/client_initalized = VALIDATE_CLIENT_INITIALIZATION(src)
+	if(isnull(mob) || !client_initalized)
+		if(!client_initalized)
+			unvalidated_client_error() // we only want to throw this warning message when it's directly related to client failure.
+
+		to_chat(usr, span_warning("Failed to send your LOOC message. You attempted to send the following message:\n[span_big(msg)]"))
+		return
+
+	var/admin = check_rights(R_ADMIN, FALSE)
+	if(mob.stat == DEAD && !admin)
+		to_chat(src, span_warning("You must be alive to use LOOC."))
+		return
+
+	msg = trim(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))
+	var/raw_msg = msg
+
+	if(!msg)
+		return
+
+	var/list/filter_result = is_ooc_filtered(msg)
+	if (!CAN_BYPASS_FILTER(usr) && filter_result)
+		REPORT_CHAT_FILTER_TO_USER(usr, filter_result)
+		log_filter("LOOC", msg, filter_result)
+		return
+
+	// Protect filter bypassers from themselves.
+	// Demote hard filter results to soft filter results if necessary due to the danger of accidentally speaking in OOC.
+	var/list/soft_filter_result = filter_result || is_soft_ooc_filtered(msg)
+
+	if (soft_filter_result)
+		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
+			return
+		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
+		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
+
+
+	msg = emoji_parse(msg)
+
+	if(!admin)
+		if(!GLOB.looc_allowed)
+			to_chat(src, span_warning("LOOC is globally muted"))
+			return
+		if(prefs.muted & MUTE_LOOC)
+			to_chat(src, span_warning("You cannot use LOOC (muted)."))
+			return
+		if(handle_spam_prevention(raw_msg, MUTE_LOOC))
+			return
+		if(findtext(raw_msg, "byond://"))
+			to_chat(src, span_boldannounce("<B>Advertising other servers is not allowed.</B>"))
+			log_admin("[key_name(src)] has attempted to advertise in LOOC: [raw_msg]")
+			message_admins("[key_name_admin(src)] has attempted to advertise in LOOC: [raw_msg]")
+			return
+
+	if(is_banned_from(ckey, "LOOC"))
+		to_chat(src, span_warning("You have been banned from LOOC."))
+		return
+
+	var/pref_enable_looc = prefs.read_preference(/datum/preference/toggle/enable_looc)
+	if(!pref_enable_looc)
+		to_chat(src, span_danger("You have LOOC muted."))
+		return
+
+	mob.log_talk(raw_msg, LOG_LOOC)
+
+	var/message
+	var/message_admin = span_looc(span_prefix("LOOC: [key_name_admin(usr)]: [msg]"))
+
+	if(admin && isobserver(mob))
+		message = span_looc(span_prefix("LOOC: [usr.client.holder.fakekey ? "Administrator" : usr.client.key]: [msg]"))
+	else
+		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
+
+	for(var/mob/M in range(mob))
+		if(isliving(mob))
+			M.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
+		if (M.client?.holder)
+			continue
+		to_chat(M, message, avoid_highlighting = (M?.client == src))
+
+	to_chat(GLOB.admins,
+		type = MESSAGE_TYPE_LOOC,
+		html = message_admin,
+		confidential = TRUE)
 
 //Checks admin notice
 /client/verb/admin_notice()
@@ -420,10 +524,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 /client/proc/attempt_auto_fit_viewport()
 	if (!prefs?.read_preference(/datum/preference/toggle/auto_fit_viewport))
 		return
+	// No need to attempt to fit the viewport on non-initialized clients as they'll auto-fit viewport right before finishing init
 	if(fully_created)
 		INVOKE_ASYNC(src, VERB_REF(fit_viewport))
-	else //Delayed to avoid wingets from Login calls.
-		addtimer(CALLBACK(src, VERB_REF(fit_viewport), 1 SECONDS))
 
 /client/verb/policy()
 	set name = "Show Policy"
@@ -468,64 +571,6 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	set desc = "View the current map vote tally counts."
 	set category = "Server"
 	to_chat(mob, SSmap_vote.tally_printout)
-
-
-/client/verb/linkforumaccount()
-	set category = "OOC"
-	set name = "Link Forum Account"
-	set desc = "Validates your byond account to your forum account. Required to post on the forums."
-
-	var/uri = CONFIG_GET(string/forum_link_uri)
-	if(!uri)
-		to_chat(src, span_warning("This feature is disabled."))
-		return
-
-	if (!SSdbcore.Connect())
-		to_chat(src, span_danger("No connection to the database."))
-		return
-
-	if  (is_guest_key(ckey))
-		to_chat(src, span_danger("Guests can not link accounts."))
-		return
-
-	var/token = generate_account_link_token()
-
-	var/datum/db_query/query_set_token = SSdbcore.NewQuery("INSERT INTO phpbb.tg_byond_oauth_tokens (`token`, `key`) VALUES (:token, :key)", list("token" = token, "key" = key))
-	if(!query_set_token.Execute())
-		to_chat(src, span_danger("Failed to insert account link token into database, please try again later."))
-		qdel(query_set_token)
-		return
-
-	qdel(query_set_token)
-
-	to_chat(src, "Now opening a window to login to your forum account, your account will automatically be linked the moment you log in. If this window doesn't load, Please go to <a href=\"[uri]?token=[token]\">[uri]?token=[token]</a> - This link will expire in 30 minutes.")
-	src << link("[uri]?token=[token]")
-
-/client/proc/generate_account_link_token()
-	var/static/entropychain
-	if (!entropychain)
-		if (fexists("data/entropychain.txt"))
-			entropychain = file2text("entropychain.txt")
-		else
-			entropychain = "LOL THERE IS NO ENTROPY #HEATDEATH"
-	else if (prob(rand(1,15)))
-		text2file("data/entropychain.txt", entropychain)
-
-	var/datum/db_query/query_get_token = SSdbcore.NewQuery("SELECT [random_string()], [random_string()]", list(random_string_args(entropychain), random_string_args(entropychain)))
-
-	if(!query_get_token.Execute())
-		to_chat(src, span_danger("Failed to get random string token from database. (Error #1)"))
-		qdel(query_get_token)
-		return
-
-	if(!query_get_token.NextRow())
-		to_chat(src, span_danger("Could not locate your token in the database. (Error #2)"))
-		qdel(query_get_token)
-		return
-
-	entropychain = "[query_get_token.item[2]]"
-	return query_get_token.item[1]
-
 
 /client/proc/random_string()
 	return "SHA2(CONCAT(RAND(),UUID(),?,RAND(),UUID()), 512)"

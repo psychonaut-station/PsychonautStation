@@ -132,3 +132,6 @@
 	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
 	sparks.set_up(2, 1, drop_location())
 	sparks.start()
+
+/obj/effect/gibspawner/robot/android
+	gib_mob_type = /mob/living/carbon/human/species/android

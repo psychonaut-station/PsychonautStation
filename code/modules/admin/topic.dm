@@ -23,7 +23,7 @@
 		return
 
 	if(href_list["ahelp"])
-		if(!check_rights(R_ADMIN, TRUE))
+		if(!check_rights(R_ADMIN | R_MENTOR, TRUE))
 			return
 
 		var/ahelp_ref = href_list["ahelp"]
@@ -115,10 +115,10 @@
 			return
 		SSshuttle.emergency.setTimer(timer SECONDS)
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds.")
-		minor_announce("The emergency shuttle will reach its destination in [DisplayTimeText(timer SECONDS)].")
+		minor_announce("Acil durum mekiği [locale_DisplayTimeText(timer SECONDS)] içerisinde varış noktasına ulaşacaktır.")
 		message_admins(span_adminnotice("[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds."))
 	else if(href_list["trigger_centcom_recall"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		usr.client.trigger_centcom_recall()
@@ -858,14 +858,14 @@
 		return SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/admin_smite, locate(href_list["adminsmite"]))
 
 	else if(href_list["CentComReply"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/mob/M = locate(href_list["CentComReply"])
 		usr.client.admin_headset_message(M, RADIO_CHANNEL_CENTCOM)
 
 	else if(href_list["SyndicateReply"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/mob/M = locate(href_list["SyndicateReply"])
@@ -879,7 +879,7 @@
 		usr.client.admin_headset_message(M)
 
 	else if(href_list["reject_custom_name"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 		var/obj/item/station_charter/charter = locate(href_list["reject_custom_name"])
 		if(istype(charter))
@@ -991,156 +991,13 @@
 		GLOB.player_ticket_history.ui_interact(usr)
 		return
 
-	else if(href_list["create_object"])
-		if(!check_rights(R_SPAWN))
-			return
-		return create_object(usr)
-
-	else if(href_list["quick_create_object"])
-		if(!check_rights(R_SPAWN))
-			return
-		return quick_create_object(usr)
-
-	else if(href_list["create_turf"])
-		if(!check_rights(R_SPAWN))
-			return
-		return create_turf(usr)
-
-	else if(href_list["create_mob"])
-		if(!check_rights(R_SPAWN))
-			return
-		return create_mob(usr)
+	else if(href_list["spawn_panel"])
+		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/spawn_panel)
 
 	else if(href_list["dupe_marked_datum"])
 		if(!check_rights(R_SPAWN))
 			return
 		return duplicate_object(marked_datum, spawning_location = get_turf(usr))
-
-	else if(href_list["object_list"]) //this is the laggiest thing ever
-		if(!check_rights(R_SPAWN))
-			return
-
-		var/atom/loc = usr.loc
-
-		var/dirty_paths
-		if (istext(href_list["object_list"]))
-			dirty_paths = list(href_list["object_list"])
-		else if (istype(href_list["object_list"], /list))
-			dirty_paths = href_list["object_list"]
-
-		var/paths = list()
-
-		for(var/dirty_path in dirty_paths)
-			var/path = text2path(dirty_path)
-			if(!path)
-				continue
-			else if(!ispath(path, /obj) && !ispath(path, /turf) && !ispath(path, /mob))
-				continue
-			paths += path
-
-		if(!paths)
-			tgui_alert(usr,"The path list you sent is empty.")
-			return
-
-		var/number = clamp(text2num(href_list["object_count"]), 1, ADMIN_SPAWN_CAP)
-		if(length(paths) * number > ADMIN_SPAWN_CAP)
-			tgui_alert(usr,"Select fewer object types!")
-			return
-
-		var/list/offset = splittext(href_list["offset"],",")
-		var/X = offset.len > 0 ? text2num(offset[1]) : 0
-		var/Y = offset.len > 1 ? text2num(offset[2]) : 0
-		var/Z = offset.len > 2 ? text2num(offset[3]) : 0
-		var/obj_dir = text2num(href_list["object_dir"])
-		if(obj_dir && !(obj_dir in list(1,2,4,8,5,6,9,10)))
-			obj_dir = null
-		var/obj_name = sanitize(href_list["object_name"])
-
-
-		var/atom/target //Where the object will be spawned
-		var/where = href_list["object_where"]
-		if (!( where in list("onfloor","frompod","inhand","inmarked") ))
-			where = "onfloor"
-
-
-		switch(where)
-			if("inhand")
-				if (!iscarbon(usr) && !iscyborg(usr))
-					to_chat(usr, "Can only spawn in hand when you're a carbon mob or cyborg.", confidential = TRUE)
-					where = "onfloor"
-				target = usr
-
-			if("onfloor", "frompod")
-				switch(href_list["offset_type"])
-					if ("absolute")
-						target = locate(0 + X,0 + Y,0 + Z)
-					if ("relative")
-						target = locate(loc.x + X,loc.y + Y,loc.z + Z)
-			if("inmarked")
-				if(!marked_datum)
-					to_chat(usr, "You don't have any object marked. Abandoning spawn.", confidential = TRUE)
-					return
-				else if(!istype(marked_datum, /atom))
-					to_chat(usr, "The object you have marked cannot be used as a target. Target must be of type /atom. Abandoning spawn.", confidential = TRUE)
-					return
-				else
-					target = marked_datum
-
-		var/obj/structure/closet/supplypod/centcompod/pod
-
-		if(target)
-			if(where == "frompod")
-				pod = new()
-
-			for (var/path in paths)
-				for (var/i = 0; i < number; i++)
-					if(path in typesof(/turf))
-						var/turf/O = target
-						var/turf/N = O.ChangeTurf(path)
-						if(N && obj_name)
-							N.name = obj_name
-					else
-						var/atom/O
-						if(where == "frompod")
-							O = new path(pod)
-						else
-							O = new path(target)
-
-						if(!QDELETED(O))
-							O.flags_1 |= ADMIN_SPAWNED_1
-							if(obj_dir)
-								O.setDir(obj_dir)
-							if(obj_name)
-								O.name = obj_name
-								if(ismob(O))
-									var/mob/M = O
-									M.real_name = obj_name
-							if(where == "inhand" && isliving(usr) && isitem(O))
-								var/mob/living/L = usr
-								var/obj/item/I = O
-								L.put_in_hands(I)
-								if(iscyborg(L))
-									var/mob/living/silicon/robot/R = L
-									if(R.model)
-										R.model.add_module(I, TRUE, TRUE)
-										R.activate_module(I)
-
-		if(pod)
-			new /obj/effect/pod_landingzone(target, pod)
-
-		if (number == 1)
-			log_admin("[key_name(usr)] created an instance of [english_list(paths)]")
-			for(var/path in paths)
-				if(ispath(path, /mob))
-					message_admins("[key_name_admin(usr)] created an instance of [english_list(paths)]")
-					break
-		else
-			log_admin("[key_name(usr)] created [number] instances of [english_list(paths)]")
-			for(var/path in paths)
-				if(ispath(path, /mob))
-					message_admins("[key_name_admin(usr)] created [number] instances of [english_list(paths)]")
-					break
-		return
 
 	else if(href_list["check_antagonist"])
 		SSadmin_verbs.dynamic_invoke_verb(usr, /datum/admin_verb/check_antagonists)
@@ -1550,7 +1407,7 @@
 #endif
 
 	else if(href_list["show_paper"])
-		if(!check_rights(R_ADMIN))
+		if(!check_rights(R_ADMIN | R_MENTOR))
 			return
 
 		var/obj/item/paper/paper_to_show = locate(href_list["show_paper"])

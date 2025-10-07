@@ -33,6 +33,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 	var/jobspawn_override = FALSE
 	var/delete_after_roundstart = TRUE
 	var/used = FALSE
+	var/list/subjobs = list()
 
 /obj/effect/landmark/start/proc/after_round_start()
 	// We'd like to keep these around for unit tests, so we can check that they exist.
@@ -60,6 +61,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/assistant
 	name = JOB_ASSISTANT
 	icon_state = JOB_ASSISTANT //icon_state is case sensitive. why are all of these capitalized? because fuck you that's why
+	subjobs = list(JOB_ANIMAL)
 
 /obj/effect/landmark/start/assistant/override
 	jobspawn_override = TRUE
@@ -112,6 +114,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/security_officer
 	name = "Security Officer"
 	icon_state = "Security Officer"
+	subjobs = list(JOB_BRIG_PHYSICIAN)
 
 /obj/effect/landmark/start/botanist
 	name = "Botanist"
@@ -152,6 +155,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/station_engineer
 	name = "Station Engineer"
 	icon_state = "Station Engineer"
+	subjobs = list(JOB_WORKER)
 
 /obj/effect/landmark/start/medical_doctor
 	name = "Medical Doctor"
@@ -201,6 +205,7 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark)
 /obj/effect/landmark/start/cyborg
 	name = "Cyborg"
 	icon_state = "Cyborg"
+	subjobs = list(JOB_SYNTHETIC)
 
 /obj/effect/landmark/start/ai
 	name = "AI"
@@ -719,3 +724,37 @@ INITIALIZE_IMMEDIATE(/obj/effect/landmark/start/new_player)
 
 /obj/effect/landmark/navigate_destination/disposals
 	location = "Disposals"
+
+/obj/effect/landmark/random_room
+	name = "random room spawner"
+	icon = 'icons/effects/landmarks_static.dmi'
+	icon_state = "lift_id"
+	dir = NORTH
+	var/room_width = 0
+	var/room_height = 0
+
+/obj/effect/landmark/keep
+	name = "keep atom"
+	icon = 'icons/psychonaut/effects/landmarks_static.dmi'
+	icon_state = "x"
+	var/keep_type = null
+
+/obj/effect/landmark/keep/apc
+	name = "keep apc"
+	icon_state = "xapc"
+	keep_type = /obj/machinery/power/apc
+
+/obj/effect/landmark/keep/duct
+	name = "keep duct"
+	icon_state = "xduct"
+	keep_type = /obj/machinery/duct
+
+/obj/effect/landmark/keep/plumbing
+	name = "keep plumbing"
+	icon_state = "xplumbing"
+	keep_type = /obj/machinery/plumbing
+
+/obj/effect/landmark/keep/lightning
+	name = "keep lightning"
+	icon_state = "xlight"
+	keep_type = /obj/machinery/light

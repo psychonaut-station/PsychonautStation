@@ -21,20 +21,19 @@
 		output += "?title=Special%3ASearch&profile=default&search=[query]"
 	DIRECT_OUTPUT(src, link(output))
 
-/client/verb/forum()
-	set name = "forum"
-	set desc = "Visit the forum."
+/client/verb/patreon()
+	set name = "patreon"
+	set desc = "Destek ol"
 	set hidden = TRUE
-
-	var/forumurl = CONFIG_GET(string/forumurl)
-	if(!forumurl)
+	var/weburl = CONFIG_GET(string/patreonurl)
+	if(!weburl)
 		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
 		return
-	DIRECT_OUTPUT(src, link(forumurl))
+	DIRECT_OUTPUT(src, link(weburl))
 
 /client/verb/rules()
 	set name = "rules"
-	set desc = "Show Server Rules."
+	set desc = "Sunucu kuralları"
 	set hidden = TRUE
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
@@ -56,7 +55,7 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
-	set desc = "Report an issue"
+	set desc = "Hata bildir"
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)

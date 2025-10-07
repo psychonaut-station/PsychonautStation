@@ -180,6 +180,12 @@
 	icon_state = "tea"
 	list_reagents = list(/datum/reagent/consumable/tea = 30)
 
+/obj/item/reagent_containers/cup/glass/mug/turkish_coffee
+	name = "Türk kahvesi"
+	desc = "Careful, the beverage you're about to enjoy is extremely hot."
+	icon_state = "tea"
+	list_reagents = list(/datum/reagent/consumable/turk_coffee = 30)
+
 /obj/item/reagent_containers/cup/glass/mug/coco
 	name = "Dutch hot coco"
 	desc = "Made in Space South America."
@@ -560,3 +566,4 @@
 	base_icon_state = "britcup"
 	volume = 30
 	spillable = TRUE
+

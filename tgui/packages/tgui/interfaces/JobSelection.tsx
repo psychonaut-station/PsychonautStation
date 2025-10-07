@@ -38,6 +38,8 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  security_level: number;
+  job_alt_titles: Record<string, string>;
 };
 
 type JobEntryProps = {
@@ -49,8 +51,11 @@ type JobEntryProps = {
 
 function JobEntry(props: JobEntryProps) {
   const { jobName, job, department, onClick } = props;
+  const { data } = useBackend<Data>();
+  const { job_alt_titles } = data;
 
   const jobIcon = JOB2ICON[jobName] || null;
+  const seleectedName = job_alt_titles[jobName] || jobName;
 
   return (
     <Button
@@ -92,7 +97,9 @@ function JobEntry(props: JobEntryProps) {
             <Icon name={jobIcon} />
           </Stack.Item>
         )}
-        <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item>
+        <Stack.Item grow>
+          {job.command ? <b>{seleectedName}</b> : seleectedName}
+        </Stack.Item>
         <Stack.Item>
           <span
             style={{
@@ -171,6 +178,21 @@ function DepartmentEntry(props: DepartmentEntryProps) {
   );
 }
 
+const securityLevel = (level: number) => {
+  switch (level) {
+    case 0:
+      return <NoticeBox success>The current alert level is: Green</NoticeBox>;
+    case 1:
+      return <NoticeBox info>The current alert level is: Blue</NoticeBox>;
+    case 2:
+      return <NoticeBox danger>The current alert level is: Red</NoticeBox>;
+    case 3:
+      return (
+        <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
+      );
+  }
+};
+
 export function JobSelection(props) {
   const { act, data } = useBackend<Data>();
   if (!data?.departments_static) {
@@ -200,6 +222,7 @@ export function JobSelection(props) {
           scrollable
           title={
             <>
+              {securityLevel(data.security_level)}
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
                 It is currently {round_duration} into the shift.

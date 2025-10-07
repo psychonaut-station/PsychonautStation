@@ -1,4 +1,4 @@
-ADMIN_VERB(show_tip, R_ADMIN, "Show Tip", "Sends a tip to all players.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(show_tip, R_ADMIN | R_MENTOR, "Show Tip", "Sends a tip to all players.", ADMIN_CATEGORY_MAIN)
 	var/input = input(user, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
 	if(!input)
 		return
@@ -50,7 +50,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 	user << browse(msg.Join(), "window=Player_playtime_check")
 
 /client/proc/trigger_centcom_recall()
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN | R_MENTOR))
 		return
 	var/message = pick(GLOB.admiral_messages)
 	message = input("Enter message from the on-call admiral to be put in the recall report.", "Admiral Message", message) as text|null
@@ -160,6 +160,21 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 	admin_ticket_log(dropee, msg)
 	BLACKBOX_LOG_ADMIN_VERB("Drop Everything")
 
+ADMIN_VERB(set_credits_title, R_FUN, "Set Credits Title", "Set the title that will show on round end credits.", ADMIN_CATEGORY_FUN)
+	var/title = tgui_input_text(user, "What do you want the title to be?", title = "Credits Title")
+	if(!title)
+		return
+	if(SSshuttle.emergency && (SSshuttle.emergency.mode == SHUTTLE_ENDGAME))
+		to_chat(user, span_warning("You cant change the title of credits on endof the game!"))
+		return
+
+	if(!user.holder.check_for_rights(R_SERVER))
+		title = adminscrub(title,500)
+
+	SScredits.customized_name = title
+	log_admin("[key_name(user)] set the credits title to [title]")
+	BLACKBOX_LOG_ADMIN_VERB("Set Credits Title")
+
 /proc/cmd_admin_mute(whom, mute_type, automute = 0)
 	if(!whom)
 		return
@@ -174,6 +189,9 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 		if(MUTE_OOC)
 			mute_string = "OOC"
 			feedback_string = "OOC"
+		if(MUTE_LOOC)
+			mute_string = "LOOC"
+			feedback_string = "LOOC"
 		if(MUTE_PRAY)
 			mute_string = "pray"
 			feedback_string = "Pray"

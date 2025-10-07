@@ -76,6 +76,9 @@
   Nerev4r:
   - qol: Ethereal charging now loops when they're charging (from) APCs or from power
       cells!
+  Seefaaa:
+  - bugfix: "Eski Delta'daki kargo odalar\u0131 d\xFCzeltildi."
+  - bugfix: "Roboti\u011Fine de MOD core crate eklendi."
   Singul0:
   - rscadd: Adds a new changeling ability, "Darkness Adaptation". Making you more
       translucent, especially in darkness and allowing you to see slightly better
@@ -103,6 +106,8 @@
   Rhials:
   - bugfix: Some tiny tiny changes to the smoking room ruin to make it a little less
       ugly.
+  Seefaaa:
+  - bugfix: Hereticler tekrardan ascend olabilecek.
   ValuedEmployee:
   - rscadd: Added new clown shoes "moffers"
   - rscadd: Added moffers to the contraband list of the autodrobe
@@ -224,6 +229,8 @@
       head, or marionette won't transmit over open mic comms
   - refactor: Some say refactor and code cleanup. Vending machines now properly respect
       being shut up. Report any oddities.
+  RengaN:
+  - rscadd: Thumbsup ve thumbsdown emotesi eklendi.
   ValuedEmployee:
   - sound: Added the new moffers sound effect and made moffers use it instead
   cnleth:
@@ -550,6 +557,8 @@
   Melbert:
   - rscadd: MODsuits now use the "suit charge" HUD element to show how much charge
       they have left, rather than a screen alert
+  RengaN02:
+  - bugfix: Brig Physician, Animal ve NT Secretary spy olamaz.
   Rhials:
   - qol: Posters now return to your hand when the hanging process is cancelled, or
       they are snipped down.
@@ -616,6 +625,11 @@
   - bugfix: Vending machine no longer shocks you twice when you pulse high voltage
       wire.
   - bugfix: Airlock wires window closes when you get shocked
+  genkuqq:
+  - qol: "Yasa kitab\u0131 kullan\u0131m\u0131 kolayla\u015Ft\u0131r\u0131ld\u0131\
+      ."
+  - bugfix: "Yasa kitab\u0131 a\xE7\u0131l\u0131\u015F\u0131 h\u0131z\u0131 artt\u0131\
+      r\u0131ld\u0131."
 2024-03-21:
   00-Steven:
   - rscadd: Hemiplegic now lets you pick which side is disabled.

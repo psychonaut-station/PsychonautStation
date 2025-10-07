@@ -132,8 +132,14 @@
 	/// Minimal character age for this job
 	var/required_character_age
 
+	/// Won't allow anyone to select this job, if their ckey is not in "data/job_whitelist.txt"
+	var/whitelisted = FALSE
+
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
+
+	/// The list of alternative job titles people can pick from
+	var/list/alt_titles
 
 /datum/job/New()
 	. = ..()
@@ -143,6 +149,10 @@
 	var/new_total_positions = CHECK_MAP_JOB_CHANGE(title, "total_positions")
 	if(isnum(new_total_positions))
 		total_positions = new_total_positions
+
+	for(var/alt_title in alt_titles)
+		if(!SSjob.all_alt_titles[alt_title])
+			SSjob.all_alt_titles[alt_title] = title
 
 /// Executes after the mob has been spawned in the map. Client might not be yet in the mob, and is thus a separate variable.
 /datum/job/proc/after_spawn(mob/living/spawned, client/player_client)
@@ -185,9 +195,9 @@
 
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
-/datum/job/proc/announce_job(mob/living/joining_mob)
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title)
 	if(head_announce)
-		announce_head(joining_mob, head_announce)
+		announce_head(joining_mob, head_announce, job_title)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.
@@ -226,11 +236,14 @@
 /mob/living/carbon/human/dress_up_as_job(datum/job/equipping, visual_only = FALSE, client/player_client, consistent = FALSE)
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
+	if(visual_only || istype(equipping, /datum/job/security_officer))
+		return
+	equipping.set_alt_title(src, player_client)
 
-/datum/job/proc/announce_head(mob/living/carbon/human/human, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+/datum/job/proc/announce_head(mob/living/carbon/human/human, channels, job_title) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
 	if(human)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = job_title), null, channels, null, TRUE), 1))
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)
@@ -348,6 +361,9 @@
 	var/pda_slot = ITEM_SLOT_BELT
 
 /datum/outfit/job/pre_equip(mob/living/carbon/human/H, visuals_only = FALSE)
+	if (skip_preferences)
+		return
+
 	if(ispath(back, /obj/item/storage/backpack))
 		switch(H.backpack)
 			if(GBACKPACK)
@@ -454,7 +470,7 @@
 
 
 /datum/job/proc/get_captaincy_announcement(mob/living/captain)
-	return "Due to extreme staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Aşırı Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 
 
 /// Returns an atom where the mob should spawn in.
@@ -485,7 +501,18 @@
 /datum/job/proc/get_default_roundstart_spawn_point()
 	for(var/obj/effect/landmark/start/spawn_point as anything in GLOB.start_landmarks_list)
 		if(spawn_point.name != title)
-			continue
+			if (!spawn_point.subjobs)
+				continue
+
+			var/is_subjob = FALSE
+			for(var/subjob in spawn_point.subjobs)
+				if (subjob == title)
+					is_subjob = TRUE
+					break
+
+			if (!is_subjob)
+				continue
+
 		. = spawn_point
 		if(spawn_point.used) //so we can revert to spawning them on top of eachother if something goes wrong
 			continue
@@ -522,9 +549,8 @@
 /// Applies the preference options to the spawning mob, taking the job into account. Assumes the client has the proper mind.
 /mob/living/proc/apply_prefs_job(client/player_client, datum/job/job)
 
-
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
-	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	var/fully_randomize = CONFIG_GET(flag/force_random_names) || GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
 
@@ -556,10 +582,7 @@
 	if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
 
-		if(require_human)
-			randomize_human_appearance(~RANDOMIZE_SPECIES)
-		else
-			randomize_human_appearance()
+		randomize_human_appearance(~RANDOMIZE_SPECIES)
 
 		if (require_human)
 			set_species(/datum/species/human)
@@ -640,6 +663,19 @@
 /datum/job/proc/after_latejoin_spawn(mob/living/spawning)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
+
+/datum/job/proc/set_alt_title(mob/living/carbon/human/H, client/player_client)
+	var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
+	if(chosen_title == title)
+		return
+	var/obj/item/card/id/card = H.wear_id
+	if(istype(card))
+		card.assignment = chosen_title
+		card.update_label()
+	var/list/all_contents = H.get_all_contents()
+	var/obj/item/modular_computer/pda/pda = locate() in all_contents
+	if(!isnull(pda))
+		pda.imprint_id(job_name = chosen_title)
 
 /// Called when a mob that has this job is admin respawned
 /datum/job/proc/on_respawn(mob/new_character)

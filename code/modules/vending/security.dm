@@ -29,6 +29,8 @@
 		/obj/item/clothing/head/helmet/blueshirt = 1,
 		/obj/item/clothing/gloves/color/black/security/blu = 1,
 		/obj/item/clothing/suit/armor/vest/blueshirt = 1,
+		/obj/item/clothing/head/helmet/alt/tactical = 2,
+		/obj/item/clothing/suit/armor/vest/alt/tactical_armor = 2,
 		/obj/item/grenade/stingbang = 1,
 		/obj/item/watertank/pepperspray = 2,
 		/obj/item/storage/belt/holster/energy = 4,

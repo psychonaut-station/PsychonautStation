@@ -17,6 +17,8 @@
 	surplus = 10
 	purchasable_from = ~UPLINK_SERIOUS_OPS
 
+// Low progression cost
+
 /datum/uplink_item/dangerous/pistol
 	name = "Makarov Pistol Case"
 	desc = "A weapon case containing an unknown variant of the Makarov pistol, along with two spare magazines and a box of loose 9mm ammunition. \

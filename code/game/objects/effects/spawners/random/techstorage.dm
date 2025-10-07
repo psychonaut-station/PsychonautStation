@@ -128,6 +128,7 @@
 	loot = list(
 		/obj/item/circuitboard/computer/accounting,
 		/obj/item/circuitboard/computer/bankmachine,
+		/obj/item/circuitboard/computer/crew_data,
 		/obj/item/circuitboard/computer/communications,
 		/obj/item/circuitboard/computer/crew,
 	)

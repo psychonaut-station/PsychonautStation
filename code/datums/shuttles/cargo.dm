@@ -34,6 +34,11 @@
 /datum/map_template/shuttle/cargo/catwalk
 	suffix = "catwalk"
 	name = "cargo ferry (Catwalk)"
+
 /datum/map_template/shuttle/cargo/nebula
 	suffix = "nebula"
 	name = "supply shuttle (Nebula)"
+
+/datum/map_template/shuttle/cargo/helio
+	suffix = "helio"
+	name = "supply shuttle (Helio)"

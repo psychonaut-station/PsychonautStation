@@ -31,6 +31,12 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Tavernkeeper"
+	alt_titles = list(
+		"Bartender",
+		"Mixologist",
+		"Barkeeper",
+		"Barista",
+	)
 
 /datum/job/bartender/award_service(client/winner, award)
 	winner.give_award(award, winner.mob)
@@ -68,3 +74,5 @@
 	if(H.age < AGE_MINOR)
 		W.registered_age = AGE_MINOR
 		to_chat(H, span_notice("You're not technically old enough to access or serve alcohol, but your ID has been discreetly modified to display your age as [AGE_MINOR]. Try to keep that a secret!"))
+
+	ADD_TRAIT(H, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT)

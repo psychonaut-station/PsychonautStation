@@ -13,7 +13,7 @@
 // We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
 // If you "refactor" this to make it "cleaner" I will send you to hell
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/target in world)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_ADMIN, "Admin PM Mob", mob/target in world)
 	if(!ismob(target))
 		to_chat(
 			src,
@@ -25,7 +25,7 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/t
 	user.cmd_admin_pm(target.client, null)
 	BLACKBOX_LOG_ADMIN_VERB("Admin PM Mob")
 
-ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
 	var/list/targets = list()
 	for(var/client/client in GLOB.clients)
 		var/nametag = ""
@@ -138,12 +138,12 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 			if(recipient_ticket)
 				recipient_ticket.AddInteraction("<b>No client found, message not sent:</b><br>[message]")
 			return
-	cmd_admin_pm(whom, message)
+	cmd_admin_pm(whom, message, recipient_ticket?.ticket_type == TICKET_TYPE_MENTOR)
 
 //takes input from cmd_admin_pm_context, cmd_admin_pm_panel or /client/Topic and sends them a PM.
 //Fetching a message if needed.
 //whom here is a client, a ckey, or [EXTERNAL_PM_USER] if this is from tgs. message is the default message to send
-/client/proc/cmd_admin_pm(whom, message)
+/client/proc/cmd_admin_pm(whom, message, is_mentor)
 	if(prefs.muted & MUTE_ADMINHELP)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -171,7 +171,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	if(!message_to_send)
 		return
 
-	if(!sends_adminpm_message(disambiguate_client(whom), message_to_send))
+	if(!sends_adminpm_message(disambiguate_client(whom), is_mentor, message_to_send))
 		return
 
 	notify_adminpm_message(disambiguate_client(whom), message_to_send)
@@ -287,7 +287,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 /// or a /client, in which case we send in the standard form
 /// send_message is the raw message to send, it will be filtered and treated to ensure we do not break any text handling
 /// Returns FALSE if the send failed, TRUE otherwise
-/client/proc/sends_adminpm_message(ambiguious_recipient, send_message)
+/client/proc/sends_adminpm_message(ambiguious_recipient, is_mentor, send_message)
 	if(IsAdminAdvancedProcCall())
 		return FALSE
 
@@ -378,7 +378,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		var/already_logged = FALSE
 		// Full boinks will always be done to players, so we are not guarenteed that they won't have a ticket
 		if(!recipient_ticket)
-			new /datum/admin_help(send_message, recipient, TRUE)
+			new /datum/admin_help(send_message, recipient, TRUE, FALSE, !is_mentor ? TICKET_TYPE_ADMIN : TICKET_TYPE_MENTOR)
 			already_logged = TRUE
 			// This action mutates our existing cached ticket information, so we recache
 			ticket = current_ticket
@@ -390,11 +390,12 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		recipient.receive_ahelp(
 			link_to_us,
 			span_linkify(send_message),
+			recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? "mentorsay" : null
 		)
 
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
+			html = span_notice("[recipient_ticket.ticket_type == TICKET_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(send_message)]"),
 			confidential = TRUE)
 
 		admin_ticket_log(recipient,
@@ -406,7 +407,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 			SSblackbox.LogAhelp(recipient_ticket_id, "Reply", send_message, recip_ckey, our_ckey)
 
 		//always play non-admin recipients the adminhelp sound
-		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+		SEND_SOUND(recipient, sound(recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? 'sound/machines/compiler/compiler-stage2.ogg' : 'sound/effects/adminhelp.ogg'))
 		return TRUE
 
 	// Ok if we're here, either this message is for an admin, or someone somehow figured out how to send a new message as a player
@@ -415,7 +416,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		if(!ticket)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
-				html = span_danger("Error: Admin-PM-Send: Non-admin to non-admin PM communication is forbidden."),
+				html = span_danger("Error: Non-admin to non-admin PM communication is forbidden."),
 				confidential = TRUE)
 			to_chat(src,
 				type = MESSAGE_TYPE_ADMINPM,
@@ -432,7 +433,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	if(!ticket)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_danger("Error: Admin-PM-Send: Attempted to send a reply to a closed ticket."),
+			html = span_danger("Error: Attempted to send a reply to a closed ticket."),
 			confidential = TRUE)
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -443,7 +444,7 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 
 	// Let's play some music for the admin, only if they want it tho
 	if(sound_prefs & SOUND_ADMINHELP)
-		SEND_SOUND(recipient, sound('sound/effects/adminhelp.ogg'))
+		ticket.SendNoticeSound(recipient)
 
 	SEND_SIGNAL(ticket, COMSIG_ADMIN_HELP_REPLIED)
 
@@ -452,12 +453,12 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 		recipient.receive_ahelp(
 			name_key_with_link,
 			span_linkify(keyword_parsed_msg),
-			"danger",
+			recipient_ticket.ticket_type == TICKET_TYPE_MENTOR ? "mentorsay" : "danger"
 		)
 
 		to_chat(src,
 			type = MESSAGE_TYPE_ADMINPM,
-			html = span_notice("Admin PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
+			html = span_notice("[ticket.ticket_type == TICKET_TYPE_ADMIN ? "Admin" : "Mentor"] PM to-<b>[their_name_with_link]</b>: [span_linkify(keyword_parsed_msg)]"),
 			confidential = TRUE)
 
 		//omg this is dumb, just fill in both their logs
@@ -744,14 +745,28 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	return GLOB.directory[searching_ckey]
 
 /client/proc/receive_ahelp(reply_to, message, span_class = "adminsay")
+	var/message_title = ""
+	var/message_sender = ""
+	var/message_reply = ""
+
+	switch(span_class)
+		if("mentorsay")
+			message_title = span_mentorsay("Mentor private message")
+			message_sender = "<span class='[span_class]'>Mentor PM from-<b>[reply_to]</b></span>"
+			message_reply = "<i class='[span_class]'>Click on the mentor's name to reply.</i>"
+		else
+			message_title = span_adminhelp("Administrator private message")
+			message_sender = "<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>"
+			message_reply = "<i class='[span_class]'>Click on the administrator's name to reply.</i>"
+
 	to_chat(
 		src,
 		type = MESSAGE_TYPE_ADMINPM,
 		html = fieldset_block(
-			span_adminhelp("Administrator private message"),
-			"<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>\n\n\
+			message_title,
+			"[message_sender]\n\n\
 			<span class='[span_class]'>[message]</span>\n\n\
-			<i class='adminsay'>Click on the administrator's name to reply.</i>",
+			[message_reply]",
 			"boxed_message red_box"),
 		confidential = TRUE
 	)
@@ -759,6 +774,43 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	current_ticket?.player_replied = FALSE
 
 	SEND_SIGNAL(src, COMSIG_ADMIN_HELP_RECEIVED, message)
+
+/// MENTOR PRIVATE MESSAGE ///
+
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_mentor_pm_context, R_NONE, "Mentor PM Mob", mob/target in world)
+	if(!ismob(target))
+		to_chat(
+			src,
+			type = MESSAGE_TYPE_ADMINPM,
+			html = span_danger("Error: Mentor-PM-Context: Target mob is not a mob, somehow."),
+			confidential = TRUE
+		)
+		return
+	user.cmd_admin_pm(target.client, null, TRUE)
+	BLACKBOX_LOG_ADMIN_VERB("Mentor PM Mob")
+
+ADMIN_VERB(cmd_mentor_pm_panel, R_NONE, "Mentor PM", "Show a list of clients to PM", ADMIN_CATEGORY_MAIN)
+	var/list/targets = list()
+	for(var/client/client in GLOB.clients)
+		var/nametag = ""
+		var/mob/lad = client.mob
+		var/mob_name = lad?.name
+		var/real_mob_name = lad?.real_name
+		if(!lad)
+			nametag = "(No Mob)"
+		else if(isnewplayer(lad))
+			nametag = "(New Player)"
+		else if(isobserver(lad))
+			nametag = "[mob_name](Ghost)"
+		else
+			nametag = "[real_mob_name](as [mob_name])"
+		targets["[nametag] - [client]"] = client
+
+	var/target = input(src,"To whom shall we send a message?", "Mentor PM", null) as null|anything in sort_list(targets)
+	if (isnull(target))
+		return
+	user.cmd_admin_pm(targets[target], null, TRUE)
+	BLACKBOX_LOG_ADMIN_VERB("Mentor PM")
 
 #undef EXTERNAL_PM_USER
 #undef EXTERNALREPLYCOUNT

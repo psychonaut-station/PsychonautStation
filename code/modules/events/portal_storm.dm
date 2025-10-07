@@ -2,7 +2,7 @@
 	name = "Portal Storm: Syndicate Shocktroops"
 	typepath = /datum/round_event/portal_storm/syndicate_shocktroop
 	weight = 2
-	min_players = 15
+	min_players = 40
 	earliest_start = 30 MINUTES
 	category = EVENT_CATEGORY_ENTITIES
 	description = "Syndicate troops pour out of portals."
@@ -74,7 +74,7 @@
 	set waitfor = 0
 	sound_to_playing_players('sound/effects/magic/lightning_chargeup.ogg')
 	sleep(8 SECONDS)
-	priority_announce("Massive bluespace anomaly detected en route to [station_name()]. Brace for impact.")
+	priority_announce("[locale_suffix_dative(station_name())] doğru yaklaşan büyük bir bluespace anomalisi tespit edildi. Çarpışma için hazırlanın.")
 	sleep(2 SECONDS)
 	sound_to_playing_players('sound/effects/magic/lightningbolt.ogg')
 

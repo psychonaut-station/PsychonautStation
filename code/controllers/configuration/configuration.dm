@@ -118,6 +118,8 @@
 	if(CONFIG_GET(flag/usewhitelist))
 		load_whitelist()
 
+	load_job_whitelist()
+
 	loaded = TRUE
 
 	if (Master)
@@ -517,24 +519,8 @@ Example config:
 	if (isnull(banned_words) || banned_words.len == 0)
 		return null
 
-	var/static/regex/should_join_on_word_bounds = regex(@"^\w+$")
-
-	// Stuff like emoticons needs another split, since there's no way to get ":)" on a word bound.
-	// Furthermore, normal words need to be on word bounds, so "(adminhelp)" gets filtered.
-	var/list/to_join_on_whitespace_splits = list()
-	var/list/to_join_on_word_bounds = list()
-
-	for (var/banned_word in banned_words)
-		if (findtext(banned_word, should_join_on_word_bounds))
-			to_join_on_word_bounds += REGEX_QUOTE(banned_word)
-		else
-			to_join_on_whitespace_splits += REGEX_QUOTE(banned_word)
-
-	// We don't want a whitespace_split part if there's no stuff that requires it
-	var/whitespace_split = to_join_on_whitespace_splits.len > 0 ? @"(?:(?:^|\s+)(" + jointext(to_join_on_whitespace_splits, "|") + @")(?:$|\s+))" : ""
-	var/word_bounds = @"(\b(" + jointext(to_join_on_word_bounds, "|") + @")\b)"
-	var/regex_filter = whitespace_split != "" ? "([whitespace_split]|[word_bounds])" : word_bounds
-	return regex(regex_filter, "i")
+	var/word_bounds = @"(\b(" + jointext(banned_words, "|") + @")\b)"
+	return regex(word_bounds, "i")
 
 /// Check to ensure that the jobconfig is valid/in-date.
 /datum/controller/configuration/proc/validate_job_config()

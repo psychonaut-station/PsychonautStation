@@ -2,7 +2,7 @@
 	name = "Anomaly: Vortex"
 	typepath = /datum/round_event/anomaly/anomaly_vortex
 
-	min_players = 20
+	min_players = 35
 	max_occurrences = 2
 	weight = 10
 	description = "This anomaly sucks in and detonates items."
@@ -17,4 +17,4 @@
 /datum/round_event/anomaly/anomaly_vortex/announce(fake)
 	if(isnull(impact_area))
 		impact_area = placer.findValidArea()
-	priority_announce("Localized high-intensity vortex anomaly detected on [ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name]", "Anomaly Alert")
+	priority_announce("[ANOMALY_ANNOUNCE_DANGEROUS_TEXT] [impact_area.name] bölgesinde bölgesel yüksek yoğunluklu vortex anomalisi tespit etti.", "Anomali Uyarısı")

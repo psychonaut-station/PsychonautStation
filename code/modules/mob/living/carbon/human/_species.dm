@@ -179,6 +179,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 	///A list containing outfits that will be overridden in the species_equip_outfit proc. [Key = Typepath passed in] [Value = Typepath of outfit you want to equip for this specific species instead].
 	var/list/outfit_override_registry = list()
 
+	// Can we write numbers in name
+	var/allow_numbers_in_name = FALSE
+
 ///////////
 // PROCS //
 ///////////
@@ -2118,3 +2121,6 @@ GLOBAL_LIST_EMPTY(features_by_species)
 		return HUMAN_HEIGHT_TALLEST
 
 	return null
+
+/datum/species/proc/wash(mob/living/carbon/human/H)
+	return FALSE

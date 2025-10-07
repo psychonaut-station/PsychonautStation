@@ -209,6 +209,12 @@
 			render_list += "<span class='info ml-1'>Subject Major Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MAJOR_DISABILITY, from_scan = TRUE)].</span><br>"
 			if(advanced)
 				render_list += "<span class='info ml-1'>Subject Minor Disabilities: [carbontarget.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, TRUE)].</span><br>"
+		var/datum/record/crew/found_record = find_record(carbontarget.real_name)
+		if(advanced && !isnull(found_record) && find_functional_ntnet_relay() && is_station_level(target.z) && length(found_record.medical_notes))
+			render_list += "<span class='info ml-1'>Subject Medical Notes:</span>"
+			for(var/i in 1 to length(found_record.medical_notes))
+				var/datum/medical_note/medical_note = found_record.medical_notes[i]
+				render_list += "<br>\n\t[i]: [medical_note.content]"
 
 	// Body part damage report
 	if(iscarbon(target))

@@ -142,6 +142,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 /datum/preferences/proc/check_keybindings()
 	if(!parent)
 		return
+
 	var/list/binds_by_key = get_key_bindings_by_key(key_bindings)
 	var/list/notadded = list()
 	for (var/name in GLOB.keybindings_by_name)
@@ -156,14 +157,14 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 			for(var/hotkeytobind in kb.hotkey_keys)
 				if(hotkeytobind == "Unbound")
 					addedbind = TRUE
-				else if(!length(binds_by_key[hotkeytobind])) //Only bind to the key if nothing else is bound
+				else if(!length(binds_by_key[hotkeytobind]) || kb.can_reuse_keybind) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= hotkeytobind
 					addedbind = TRUE
 		else
 			for(var/classickeytobind in kb.classic_keys)
 				if(classickeytobind == "Unbound")
 					addedbind = TRUE
-				else if(!length(binds_by_key[classickeytobind])) //Only bind to the key if nothing else is bound
+				else if(!length(binds_by_key[classickeytobind]) || kb.can_reuse_keybind) //Only bind to the key if nothing else is bound
 					key_bindings[kb.name] |= classickeytobind
 					addedbind = TRUE
 
@@ -242,7 +243,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		update_preferences(data_validity_integer, savefile)
 
 	check_keybindings() // this apparently fails every time and overwrites any unloaded prefs with the default values, so don't load anything after this line or it won't actually save
-	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
 	//Sanitize
 	lastchangelog = sanitize_text(lastchangelog, initial(lastchangelog))
@@ -251,6 +251,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+
+	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
 	if(SHOULD_UPDATE_DATA(data_validity_integer)) //save the updated version
 		var/old_default_slot = default_slot
@@ -292,7 +294,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference_type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference_type]))
+			write_preference(preference, preference.serialize(value_cache[preference_type], src))
 
 	savefile.set_entry("lastchangelog", lastchangelog)
 	savefile.set_entry("be_special", be_special)
@@ -339,6 +341,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	//Alt Job Titles
+	alt_job_titles = save_data?["alt_job_titles"]
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(SHOULD_UPDATE_DATA(data_validity_integer))
@@ -348,6 +353,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
+	alt_job_titles = SANITIZE_LIST(alt_job_titles)
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -378,7 +384,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 		recently_updated_keys -= preference.type
 
 		if (preference.type in value_cache)
-			write_preference(preference, preference.serialize(value_cache[preference.type]))
+			write_preference(preference, preference.serialize(value_cache[preference.type], src))
 
 	save_data["version"] = SAVEFILE_VERSION_MAX //load_character will sanitize any bad data, so assume up-to-date.
 
@@ -396,6 +402,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
+
+	//Alt Job Titles
+	save_data["alt_job_titles"] = alt_job_titles
 
 	return TRUE
 

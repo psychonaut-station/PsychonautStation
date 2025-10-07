@@ -88,6 +88,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// If set to TRUE, will update character_profiles on the next ui_data tick.
 	var/tainted_character_profiles = FALSE
 
+	///Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
+	var/list/alt_job_titles = list()
+
 /datum/preferences/Destroy(force)
 	QDEL_NULL(character_preview_view)
 	QDEL_LIST(middleware)
@@ -554,21 +557,26 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	return default_randomization
 
 /datum/preferences/proc/refresh_membership()
-	var/byond_member = parent.IsByondMember()
-	if(isnull(byond_member)) // Connection failure, retry once
-		byond_member = parent.IsByondMember()
+	set waitfor = FALSE
+
+	if(!istype(parent, /client))
+		return
+
+	var/patron = parent.check_patreon()
+	if(isnull(patron)) // Connection failure, retry once
+		patron = parent.check_patreon()
 		var/static/admins_warned = FALSE
 		if(!admins_warned)
 			admins_warned = TRUE
-			message_admins("BYOND membership lookup had a connection failure for a user. This is most likely an issue on the BYOND side but if this consistently happens you should bother your server operator to look into it.")
-		if(isnull(byond_member)) // Retrying didn't work, warn the user
-			log_game("BYOND membership lookup for [parent.ckey] failed due to a connection error.")
+			message_admins("Patreon membership lookup had a connection failure for a user. This is most likely a temporary issue but if this consistently happens you should bother your server operator to look into it.")
+		if(isnull(patron)) // Retrying didn't work, warn the user
+			log_game("Patreon membership lookup for [parent.ckey] failed due to a connection error.")
 		else
-			log_game("BYOND membership lookup for [parent.ckey] failed due to a connection error but succeeded after retry.")
+			log_game("Patreon membership lookup for [parent.ckey] failed due to a connection error but succeeded after retry.")
 
-	if(isnull(byond_member))
-		to_chat(parent, span_warning("There's been a connection failure while trying to check the status of your BYOND membership. Reconnecting may fix the issue, or BYOND could be experiencing downtime."))
+	if(isnull(patron))
+		to_chat(parent, span_warning("There's been a connection failure while trying to check the status of your Patreon membership."))
 
-	unlock_content = !!byond_member
+	unlock_content = !!patron
 	if(unlock_content)
 		max_save_slots = 8

@@ -284,6 +284,11 @@ em {
   font-weight: bold;
 }
 
+.looc {
+  color: #6fbeff;
+  font-weight: bold;
+}
+
 .adminobserverooc {
   color: hsl(195, 100%, 40%);
   font-weight: bold;
@@ -304,6 +309,16 @@ em {
   font-weight: bold;
 }
 
+.mentorsay {
+  color: green;
+  font-weight: bold;
+}
+
+.mentorsaytext {
+  color: rgb(79, 233, 79);
+  font-weight: bold;
+}
+
 .name {
   font-weight: bold;
 }
@@ -312,6 +327,7 @@ em {
 .emote,
 .infoplain,
 .oocplain,
+.loocplain,
 .warningplain {
 }
 

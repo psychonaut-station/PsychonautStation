@@ -80,6 +80,7 @@ export type Department = {
 export type Job = {
   description: string;
   department: string;
+  alt_titles?: string[];
 };
 
 export type Quirk = {
@@ -160,8 +161,10 @@ export type PreferencesMenuData = {
 
   content_unlocked: BooleanLike;
 
+  job_whitelist: string[];
   job_bans?: string[];
   job_days_left?: Record<string, number>;
+  job_alt_titles: Record<string, string>;
   job_required_experience?: Record<
     string,
     {
@@ -170,6 +173,12 @@ export type PreferencesMenuData = {
     }
   >;
   job_preferences: Record<string, JobPriority>;
+
+  character_desc: string;
+  medical_records: string;
+  security_records: string;
+  employment_records: string;
+  exploit_records: string;
 
   keybindings: Record<string, string[]>;
   overflow_role: string;

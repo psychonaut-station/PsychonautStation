@@ -12,9 +12,10 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	ui_name = "AntagInfoWizard"
 	suicide_cry = "FOR THE FEDERATION!!"
 	preview_outfit = /datum/outfit/wizard
-	can_assign_self_objectives = TRUE
+	can_assign_self_objectives = FALSE
 	default_custom_objective = "Demonstrate your incredible and destructive magical powers."
 	hardcore_random_bonus = TRUE
+	credits_icon = "wizard"
 
 	var/give_objectives = TRUE
 	var/strip = TRUE //strip before equipping
@@ -231,6 +232,11 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		newname = randomname
 
 	wiz_mob.fully_replace_character_name(wiz_mob.real_name, newname)
+
+	if(credits_icon)
+		var/mutable_appearance/antag_appereance = SScredits.get_antagonist_icon(WEAKREF(wiz_mob.mind))
+		if(!isnull(antag_appereance))
+			antag_appereance.maptext = "<center>[newname]</center>"
 
 /datum/antagonist/wizard/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/wizard_mob = mob_override || owner.current

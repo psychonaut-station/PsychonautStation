@@ -120,7 +120,7 @@
 		)
 		var/datum/disease/fake_virus = pick(virus_candidates)
 		illness_type = initial(fake_virus.name)
-	priority_announce("Confirmed outbreak of level 7 viral biohazard aboard [station_name()]. All personnel must contain the outbreak.", "[illness_type] Alert", ANNOUNCER_OUTBREAK7)
+	priority_announce("[locale_suffix_locative(station_name())] 7. seviye biyolojik salgın olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "[illness_type] Uyarısı", ANNOUNCER_OUTBREAK7)
 
 /datum/round_event/disease_outbreak/setup()
 	announce_when = ADV_ANNOUNCE_DELAY
@@ -166,7 +166,7 @@
 	name = "Disease Outbreak: Advanced"
 	typepath = /datum/round_event/disease_outbreak/advanced
 	category = EVENT_CATEGORY_HEALTH
-	weight = 15
+	weight = 10
 	min_players = 35 // To avoid shafting lowpop
 	earliest_start = 15 MINUTES // give the chemist a chance
 	description = "An 'advanced' disease will infect some members of the crew."

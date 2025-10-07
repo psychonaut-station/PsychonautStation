@@ -219,6 +219,9 @@
 	/// The cached info about the blood this organ belongs to, set during on_removal()
 	var/list/blood_dna_info
 
+	/// If this not null name will be adjusted accordingly
+	var/examine_bodypart_id
+
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
 	unarmed_damage_low = modify_fantasy_variable("unarmed_damage_low", unarmed_damage_low, bonus, minimum = 1)
@@ -252,7 +255,10 @@
 	else
 		blood_dna_info = list("Unknown DNA" = get_blood_type(BLOOD_TYPE_O_PLUS))
 
-	name = "[limb_id] [parse_zone(body_zone)]"
+	if(examine_bodypart_id)
+		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
+	else
+		name = "[limb_id] [parse_zone(body_zone)]"
 	update_icon_dropped()
 	refresh_bleed_rate()
 

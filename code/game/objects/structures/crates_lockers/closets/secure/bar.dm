@@ -15,8 +15,17 @@
 	..()
 	for(var/i in 1 to 10)
 		new /obj/item/reagent_containers/cup/glass/bottle/beer(src)
+	new /obj/item/toy/cards/deck(src)
+	new /obj/item/toy/cards/deck/cas/black(src)
+	new /obj/item/toy/cards/deck/kotahi(src)
+	new /obj/item/toy/cards/deck/tarot(src)
+	new /obj/item/toy/cards/deck/wizoff(src)
+	new /obj/item/circuitboard/machine/pokerchip_exchanger(src)
+	new /obj/item/screwdriver(src)
 	new /obj/item/etherealballdeployer(src)
 	new /obj/item/roulette_wheel_beacon(src)
+	new /obj/item/wrench(src)
+	new /obj/item/electrical_jukebox_beacon/bar(src)
 
 /obj/structure/closet/secure_closet/bar/all_access
 	req_access = null

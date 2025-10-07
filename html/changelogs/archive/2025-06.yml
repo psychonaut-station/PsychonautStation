@@ -413,6 +413,14 @@
   - qol: report-issue is now a verb that can be used in chat to open the issue report
       prompt for power users
 2025-06-19:
+  Rengan:
+  - bugfix: "Bir noktada 2 bilgisayar varken 2 bilgisayar\u0131n birle\u015Fme overlay\u0131\
+      \ d\xFCzeltildi."
+  SadSeal5:
+  - rscdel: "Resurrect Ritesi kalkt\u0131"
+  - balance: "Art\u0131k iskelet yerine zombi yap\u0131yor sect"
+  - balance: "Art\u0131k maymunlar 400 favor yerine 200 favor veriyor"
+  - balance: "Art\u0131k organlar 10 favor yerine 30 favor veriyor"
   Sealed101:
   - bugfix: fixed petrified statues dropping victims into nullspace if they somehow
       ended up in a jaunt
@@ -584,6 +592,15 @@
   - rscadd: Fish infusion now gives you scales, and tail color if you hit certain
       thresholds
 2025-06-24:
+  Rengan:
+  - balance: "H\u0131zland\u0131r\u0131lm\u0131\u015F par\xE7ac\u0131klar\u0131n g\xFC\
+      c\xFC artt\u0131r\u0131ld\u0131."
+  - balance: "Smin olu\u015Fturdu\u011Fu singularity art\u0131k daha \xE7ok elektrik\
+      \ \xFCretiyor."
+  - bugfix: "Roundend credits'de antag iconlar\u0131 fixlendi"
+  - bugfix: "Roundend credits'de \xF6l\xFCler listesinde kimsenin g\xF6z\xFCkmemesi\
+      \ d\xFCzeltildi."
+  - spellcheck: "Roundend credits'de baz\u0131 yaz\u0131lar d\xFCzeltildi."
   Sealed101:
   - bugfix: fixed being able to anchor multiple solar panel assemblies on a single
       tile (or any dense tile for that matter)
@@ -657,6 +674,8 @@
   - bugfix: Fixed your theme being used for ghost language/multiz buttons
   - image: Updated multiz buttons very slightly
   - image: Added ghost only language menu/multiz buttons
+  Rengan:
+  - rscadd: "P\u0130xel Shifting eklendi."
   SmArtKar:
   - bugfix: Fixed jaws of life losing hit sounds when swapped twice
   carlarctg:
@@ -664,6 +683,9 @@
   necromanceranne:
   - bugfix: Fixes Phazon fire punches. For real this time. It was tested. It works.
 2025-06-29:
+  skewnoss:
+  - map: added TheiaStation
+  - map: added HelioStation
   EuSouAFazer:
   - map: The R&D Console and Department Protolathe have been moved from the back to
       the front desk in Catwalk

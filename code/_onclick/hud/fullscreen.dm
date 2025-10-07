@@ -255,3 +255,10 @@
 	show_when_dead = TRUE
 	color = "#c90000"
 	alpha = 0
+
+/atom/movable/screen/fullscreen/soul_punishment
+	icon = 'icons/psychonaut/hud/screen_full.dmi'
+	icon_state = "soul_punishment"
+	layer = FULLSCREEN_LAYER
+	plane = FULLSCREEN_PLANE
+	alpha = 60

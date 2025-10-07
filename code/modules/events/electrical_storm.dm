@@ -2,7 +2,7 @@
 	name = "Electrical Storm"
 	typepath = /datum/round_event/electrical_storm
 	earliest_start = 10 MINUTES
-	min_players = 5
+	min_players = 20
 	weight = 20
 	category = EVENT_CATEGORY_ENGINEERING
 	description = "Destroys all lights in a large area."
@@ -15,7 +15,7 @@
 	announce_when = 1
 
 /datum/round_event/electrical_storm/announce(fake)
-	priority_announce("An electrical storm has been detected in your area, please repair potential electronic overloads.", "Electrical Storm Alert")
+	priority_announce("Bölgenizde bir elektrik fırtınası tespit edildi, lütfen olası elektronik aşırı yüklenmeleri onarın.", "Elektrik Fırtınası Uyarısı")
 
 
 /datum/round_event/electrical_storm/start()

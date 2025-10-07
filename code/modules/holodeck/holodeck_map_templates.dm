@@ -59,6 +59,11 @@
 	template_id = "holodeck_animeschool"
 	mappath = "_maps/templates/holodeck_animeschool.dmm"
 
+/datum/map_template/holodeck/camping
+	name = "Holodeck - Forest Camping"
+	template_id = "holodeck_camping"
+	mappath = "_maps/templates/holodeck_camping.dmm"
+
 /datum/map_template/holodeck/chapelcourt
 	name = "Holodeck - Chapel Courtroom"
 	template_id = "holodeck_chapelcourt"
@@ -88,6 +93,11 @@
 	name = "Holodeck - Photobooth"
 	template_id = "holodeck_photobooth"
 	mappath = "_maps/templates/holodeck_photobooth.dmm"
+
+/datum/map_template/holodeck/pool
+	name = "Holodeck - Summer Pool"
+	template_id = "holodeck_pool"
+	mappath = "_maps/templates/holodeck_pool.dmm"
 
 /datum/map_template/holodeck/skatepark
 	name = "Holodeck - Skatepark"

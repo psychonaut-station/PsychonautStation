@@ -35,7 +35,20 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "boom"
-
+	alt_titles = list(
+		"Scientist",
+		"Circuitry Designer",
+		"Xenobiologist",
+		"Cytologist",
+		"Plasma Researcher",
+		"Anomalist",
+		"Lab Technician",
+		"Theoretical Physicist",
+		"Ordnance Technician",
+		"Research Assistant",
+		"Graduate Student",
+		"Cryptozoologist",
+	)
 
 /datum/outfit/job/scientist
 	name = "Scientist"

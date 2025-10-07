@@ -706,6 +706,10 @@
   - bugfix: Heirophant Club Blink at range
   - bugfix: Crusher Loot
   - bugfix: RCD material reclamation
+  MrEmre12:
+  - bugfix: "Eski Delta ai sat elektrik sorununu \xE7\xF6zer."
+  Seefaaa:
+  - spellcheck: "Discord verification men\xFCs\xFC daha a\xE7\u0131klay\u0131c\u0131"
   mc-oofert:
   - rscadd: the flatpacker, a machine unlocked at industrial engineering
 2024-06-16:
@@ -730,6 +734,8 @@
   - balance: Gorillas can strangle people.
   Melbert:
   - bugfix: Fix inability to make r-glass by hand inside your backpack
+  RengaN02:
+  - rscadd: "Arachnid \u0131rk\u0131 oyuna eklendi."
   ShizCalev:
   - bugfix: Fixed some surgery failure states not properly setting the correct mood
       event.
@@ -751,6 +757,8 @@
   - balance: Certain changeling abilities won't work while on fire.
   TheBoondock:
   - sound: added compressed air sound for when air tanks are inserted into machinery
+  exdal:
+  - rscadd: Artik OOC renginizi ve ghost formunuzu duzenleyebilirsiniz
   grungussuss:
   - rscadd: Added Misha the bear to the HoS office on icebox.
 2024-06-18:
@@ -989,6 +997,10 @@
   - image: added sprite for debug heretic painting
   Mothblocks:
   - qol: Dramatically improves delete character UI and UX.
+  MrEmre12:
+  - rscadd: Eski Delta Atmosa Huge Air Scrubber eklendi.
+  - rscadd: "Lavalan'de ruin olarak nyx tap\u0131na\u011F\u0131 ekler."
+  - bugfix: "Nyx tap\u0131na\u011F\u0131 i\xE7indeki notu d\xFCzeltir."
   Thunder12345:
   - rscdel: Locker staffs have been removed from the Ragin' Mages deathmatch lootcrate
       pool.
@@ -1046,6 +1058,8 @@
   - qol: Oven trays now count as valid trays to cut food on.
   - rscadd: The game settings menu can now actually be accessed through the escape
       menu.
+  mujan:
+  - rscadd: Ayran eklendi
 2024-06-25:
   00-Steven:
   - refactor: Modular computers (PDAs, laptops, etc) and their applications have had
@@ -1097,6 +1111,8 @@
   - bugfix: Autopsy experiments for techweb can be performed roundstart
   MrDas:
   - bugfix: Fixed the duration of wizard's mutate spell.
+  MrEmre12:
+  - rscadd: Vadaaa
   Rhials:
   - sound: The abductor team now has their own antag stinger.
   - bugfix: Drone fabricator subtypes that spawn pre-loaded now actually start with
@@ -1207,6 +1223,9 @@
   - bugfix: durand shield doesnt immediately depower the mech when taking stamina
       damage
   - balance: durand shield is a bit stronger
+2024-06-27:
+  RengaN02:
+  - image: "Siyah sabre spritesinin sol alt\u0131ndaki beyaz nokta d\xFCzeltildi."
 2024-06-28:
   Ben10Omintrix:
   - refactor: firebots are now basic bots

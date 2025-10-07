@@ -1,6 +1,6 @@
 GLOBAL_DATUM(everyone_an_antag, /datum/everyone_is_an_antag_controller)
 
-ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before with this handy dandy semi-misc stuff menu.", ADMIN_CATEGORY_GAME)
+ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before with this handy dandy semi-misc stuff menu.", ADMIN_CATEGORY_GAME)
 	var/datum/secrets_menu/tgui = new(user)
 	tgui.ui_interact(user.mob)
 	BLACKBOX_LOG_ADMIN_VERB("Secrets Panel")
@@ -153,7 +153,7 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 			set_station_name(new_name)
 			log_admin("[key_name(holder)] renamed the station to \"[new_name]\".")
 			message_admins(span_adminnotice("[key_name_admin(holder)] renamed the station to: [new_name]."))
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] istasyonun adını \"[new_name]\" olarak değiştirdi.")
 		if("reset_name")
 			var/confirmed = tgui_alert(usr,"Are you sure you want to reset the station name?", "Confirm", list("Yes", "No", "Cancel"))
 			if(confirmed != "Yes")
@@ -162,7 +162,7 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 			set_station_name(new_name)
 			log_admin("[key_name(holder)] reset the station name.")
 			message_admins(span_adminnotice("[key_name_admin(holder)] reset the station name."))
-			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+			priority_announce("[command_name()] istasyonun adını \"[new_name]\" olarak değiştirdi.")
 		if("night_shift_set")
 			var/val = tgui_alert(holder, "What do you want to set night shift to? This will override the automatic system until set to automatic again.", "Night Shift", list("On", "Off", "Automatic"))
 			switch(val)
@@ -349,7 +349,7 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 					airlock.req_access = list()
 					airlock.req_one_access = list()
 			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
-			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
+			priority_announce("CentCom hava kilidi kontrolünü geçersiz kılma etkinleştirildi. Lütfen bu zamanı iş arkadaşlarınızla tanışmaya ayırın.", null, SSstation.announcer.get_rand_report_sound())
 		if("ancap")
 			if(!is_funmin)
 				return
@@ -357,9 +357,9 @@ ADMIN_VERB(secrets, R_NONE, "Secrets", "Abuse harder than you ever have before w
 			SSeconomy.full_ancap = !SSeconomy.full_ancap
 			message_admins("[key_name_admin(holder)] toggled Anarcho-capitalist mode")
 			if(SSeconomy.full_ancap)
-				priority_announce("The NAP is now in full effect.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP şu anda tam olarak yürürlüktedir.", null, SSstation.announcer.get_rand_report_sound())
 			else
-				priority_announce("The NAP has been revoked.", null, SSstation.announcer.get_rand_report_sound())
+				priority_announce("NAP iptal edilmiştir.", null, SSstation.announcer.get_rand_report_sound())
 		if("send_shuttle_back")
 			if (!is_funmin)
 				return

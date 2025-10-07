@@ -7,6 +7,7 @@
 	var/category = CATEGORY_MISC
 	var/weight = WEIGHT_LOWEST
 	var/keybind_signal
+	var/can_reuse_keybind = FALSE
 
 /datum/keybinding/New()
 	if(!keybind_signal)

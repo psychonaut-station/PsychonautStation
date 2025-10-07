@@ -1,5 +1,3 @@
-
-
 /*
  * Wrapping Paper
  */
@@ -16,6 +14,7 @@
 	resistance_flags = FLAMMABLE
 	merge_type = /obj/item/stack/wrapping_paper
 	singular_name = "wrapping paper"
+	source = /datum/robot_energy_storage/wrap_paper
 	throwforce = 0
 	w_class = WEIGHT_CLASS_TINY
 	throw_speed = 3
@@ -95,6 +94,7 @@
 	resistance_flags = FLAMMABLE
 	grind_results = list(/datum/reagent/cellulose = 5)
 	merge_type = /obj/item/stack/package_wrap
+	source = /datum/robot_energy_storage/delivery_paper
 
 /obj/item/stack/package_wrap/suicide_act(mob/living/user)
 	user.visible_message(span_suicide("[user] begins wrapping [user.p_them()]self in \the [src]! It looks like [user.p_theyre()] trying to commit suicide!"))

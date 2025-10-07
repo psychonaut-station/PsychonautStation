@@ -1,3 +1,10 @@
+/atom/movable/warp_effect/singularity
+	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
+	pixel_x = -277
+	pixel_y = -277
+
+GLOBAL_LIST_EMPTY(all_singularities)
+
 /// The gravitational singularity
 /obj/singularity
 	name = "gravitational singularity"
@@ -11,6 +18,8 @@
 	plane = ABOVE_LIGHTING_PLANE
 	light_range = 6
 	appearance_flags = LONG_GLIDE
+
+	var/uid = 0
 
 	/// the prepended string to the icon state (singularity_s1, dark_matter_s1, etc)
 	var/singularity_icon_variant = "singularity"
@@ -32,7 +41,7 @@
 	///Do we lose energy over time?
 	var/dissipate = TRUE
 	/// How long should it take for us to dissipate in seconds?
-	var/dissipate_delay = 20
+	var/dissipate_delay = 15
 	/// How much energy do we lose every dissipate_delay?
 	var/dissipate_strength = 1
 	/// How long its been (in seconds) since the last dissipation
@@ -49,6 +58,10 @@
 	var/time_since_act = 0
 	/// What the game tells ghosts when you make one
 	var/ghost_notification_message = "IT'S LOOSE"
+	/// The intensity multiplier for radiation pulses
+	var/intensity_multiplier = 2.5
+	/// Warp effect of the singularity
+	var/atom/movable/warp_effect/singularity/warp
 
 	pass_flags = PASSTABLE | PASSGLASS | PASSGRILLE | PASSCLOSEDTURF | PASSMACHINE | PASSSTRUCTURE | PASSDOORS
 	flags_1 = SUPERMATTER_IGNORES_1
@@ -68,6 +81,9 @@
 		consume_callback = CALLBACK(src, PROC_REF(consume)), \
 		roaming = (move_self && current_size >= STAGE_TWO), \
 	)
+
+	warp = new(src)
+	vis_contents += warp
 
 	singularity_component = WEAKREF(new_component)
 
@@ -89,6 +105,9 @@
 
 /obj/singularity/Destroy()
 	STOP_PROCESSING(SSsinguloprocess, src)
+	vis_contents -= warp
+	QDEL_NULL(warp)
+	GLOB.all_singularities -= src
 	return ..()
 
 /obj/singularity/attack_tk(mob/user)
@@ -160,14 +179,17 @@
 	return TRUE
 
 /obj/singularity/process(seconds_per_tick)
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
 	time_since_act += seconds_per_tick
+	dissipate(seconds_per_tick)
 	if(time_since_act < 2)
 		return
 	time_since_act = 0
 	if(current_size >= STAGE_TWO)
-		if(prob(event_chance))
+		if(SPT_PROB(event_chance, seconds_per_tick))
 			event()
-	dissipate(seconds_per_tick)
+	radiation_pulse(src, 5, 0.1, intensity = (energy * intensity_multiplier * 2) + 500)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -197,8 +219,10 @@
 		//It cant go smaller due to e loss
 		dissipate = FALSE
 
-	var/new_grav_pull
-	var/new_consume_range
+	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+
+	var/new_grav_pull = resolved_singularity?.grav_pull || 0
+	var/new_consume_range = resolved_singularity?.consume_range || 0
 
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
@@ -207,9 +231,11 @@
 			icon_state = "[singularity_icon_variant]_s1"
 			pixel_x = 0
 			pixel_y = 0
+			warp.pixel_x = -277
+			warp.pixel_y = -277
 			new_grav_pull = 4
 			new_consume_range = 0
-			dissipate_delay = 10
+			dissipate_delay = 15
 			time_since_last_dissipiation = 0
 			dissipate_strength = 1
 		if(STAGE_TWO)
@@ -219,9 +245,11 @@
 				icon_state = "[singularity_icon_variant]_s3"
 				pixel_x = -32
 				pixel_y = -32
+				warp.pixel_x = -245
+				warp.pixel_y = -245
 				new_grav_pull = 6
 				new_consume_range = 1
-				dissipate_delay = 5
+				dissipate_delay = 10
 				time_since_last_dissipiation = 0
 				dissipate_strength = 5
 		if(STAGE_THREE)
@@ -231,11 +259,13 @@
 				icon_state = "[singularity_icon_variant]_s5"
 				pixel_x = -64
 				pixel_y = -64
+				warp.pixel_x = -213
+				warp.pixel_y = -213
 				new_grav_pull = 8
 				new_consume_range = 2
-				dissipate_delay = 4
+				dissipate_delay = 6
 				time_since_last_dissipiation = 0
-				dissipate_strength = 20
+				dissipate_strength = 15
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
@@ -243,17 +273,21 @@
 				icon_state = "[singularity_icon_variant]_s7"
 				pixel_x = -96
 				pixel_y = -96
+				warp.pixel_x = -181
+				warp.pixel_y = -181
 				new_grav_pull = 10
 				new_consume_range = 3
-				dissipate_delay = 10
+				dissipate_delay = 4
 				time_since_last_dissipiation = 0
-				dissipate_strength = 10
+				dissipate_strength = 25
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
 			icon = 'icons/effects/288x288.dmi'
 			icon_state = "[singularity_icon_variant]_s9"
 			pixel_x = -128
 			pixel_y = -128
+			warp.pixel_x = -149
+			warp.pixel_y = -149
 			new_grav_pull = 10
 			new_consume_range = 4
 			dissipate = FALSE //It cant go smaller due to e loss
@@ -263,6 +297,8 @@
 			icon_state = "[singularity_icon_variant]_s11"
 			pixel_x = -160
 			pixel_y = -160
+			warp.pixel_x = -117
+			warp.pixel_y = -117
 			new_grav_pull = 15
 			new_consume_range = 5
 			dissipate = FALSE
@@ -272,7 +308,6 @@
 	else
 		qdel(GetComponent(/datum/component/vision_hurting))
 
-	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
 	if (!isnull(resolved_singularity))
 		resolved_singularity.consume_range = new_consume_range
 		resolved_singularity.grav_pull = new_grav_pull
@@ -309,6 +344,13 @@
 
 	if(current_size != allowed_size)
 		expand()
+	return TRUE
+
+/obj/singularity/proc/is_dangerous()
+	if(current_size < STAGE_THREE)
+		return FALSE
+	else if(current_size <= STAGE_FOUR)
+		return check_cardinals_range(0)
 	return TRUE
 
 /obj/singularity/proc/consume(atom/thing)
@@ -482,6 +524,70 @@
 	qdel(src)
 	return gain
 
+/obj/singularity/on_changed_z_level(turf/old_turf, turf/new_turf, same_z_layer, notify_contents)
+	. = ..()
+	if(same_z_layer)
+		return
+	if(warp)
+		SET_PLANE(warp, PLANE_TO_TRUE(warp.plane), new_turf)
+
+/obj/singularity/examine(mob/user)
+	. = ..()
+	if(isobserver(user))
+		. += "Energy: [energy]"
+
+/obj/singularity/proc/get_energy_to_raise()
+	switch(allowed_size)
+		if(STAGE_ONE)
+			return STAGE_TWO_ENERGY_REQUIREMENT
+		if(STAGE_TWO)
+			return STAGE_THREE_ENERGY_REQUIREMENT
+		if(STAGE_THREE)
+			return STAGE_FOUR_ENERGY_REQUIREMENT
+		if(STAGE_FOUR)
+			return STAGE_FIVE_ENERGY_REQUIREMENT
+		if(STAGE_FIVE)
+			if(consumed_supermatter)
+				return STAGE_SIX_ENERGY_REQUIREMENT
+			else
+				return INFINITY
+		if(STAGE_SIX)
+			return INFINITY
+
+/obj/singularity/proc/get_energy_to_lower()
+	switch(allowed_size)
+		if(STAGE_ONE)
+			return 0
+		if(STAGE_TWO)
+			return STAGE_TWO_ENERGY_REQUIREMENT
+		if(STAGE_THREE)
+			return STAGE_THREE_ENERGY_REQUIREMENT
+		if(STAGE_FOUR)
+			return STAGE_FOUR_ENERGY_REQUIREMENT
+		if(STAGE_FIVE)
+			return STAGE_FIVE_ENERGY_REQUIREMENT
+		if(STAGE_SIX)
+			return STAGE_SIX_ENERGY_REQUIREMENT
+
+/obj/singularity/proc/add_to_cims()
+	GLOB.all_singularities += src
+	uid = length(GLOB.all_singularities) + length(GLOB.all_energy_balls)
+
+/obj/singularity/proc/ntcims_ui_data()
+	var/list/data = list()
+	data["name"] = name
+	data["type"] = "singularity"
+	data["id"] = uid
+	data["uid"] = "anomaly_[uid]"
+	data["current_size"] = current_size
+	data["energy"] = energy
+	data["dissipate_delay"] = dissipate_delay
+	data["dissipate_strength"] = dissipate_strength
+	data["radiation_pulse"] = energy * 2 + 500
+	data["energy_to_lower"] = get_energy_to_lower()
+	data["energy_to_raise"] = get_energy_to_raise()
+	return data
+
 /obj/singularity/deadchat_plays(mode = DEMOCRACY_MODE, cooldown = 12 SECONDS)
 	. = AddComponent(/datum/component/deadchat_control/cardinal_movement, mode, list(), cooldown, CALLBACK(src, PROC_REF(stop_deadchat_plays)))
 
@@ -517,3 +623,24 @@
 /obj/singularity/shuttle_event/no_escape
 	energy = STAGE_SIX_ENERGY
 	consumed_supermatter = TRUE // so we can get to the final stage
+
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
+/// Singularity spawned by a singularity generator
+/obj/singularity/stationary
+	intensity_multiplier = 1
+
+/obj/singularity/stationary/Initialize(mapload, starting_energy)
+	. = ..()
+	add_to_cims()
+
+/obj/singularity/stationary/consume(atom/thing)
+	. = ..()
+	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
+		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
+			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
+		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
+			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
+
+#undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE

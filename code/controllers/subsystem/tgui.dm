@@ -41,6 +41,7 @@ SUBSYSTEM_DEF(tgui)
 
 
 /datum/controller/subsystem/tgui/Shutdown()
+	lock_all_windows()
 	close_all_uis()
 
 /datum/controller/subsystem/tgui/stat_entry(msg)
@@ -242,6 +243,19 @@ SUBSYSTEM_DEF(tgui)
 			ui.close()
 			count++
 	return count
+
+/**
+ * private
+ *
+ * Lock all windows so they will no longer send messages to the server.
+ * This is only to fix a byond bug with reconnects.
+ *
+ * return void
+ */
+/datum/controller/subsystem/tgui/proc/lock_all_windows()
+	for (var/client/client as anything in GLOB.clients)
+		for (var/datum/tgui_window/tgui_window as anything in client?.tgui_windows)
+			tgui_window?.lock_communication()
 
 /**
  * public

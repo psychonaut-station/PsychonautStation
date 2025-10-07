@@ -172,6 +172,8 @@
   Wallem:
   - qol: The active sonar module has been slightly tweaked, resulting in smoother
       updates & a red tinge on highlighted humans.
+  exdal:
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accesslerini geri verir'
   hry-gh:
   - qol: there's a new UI preference called UI scale which allows people that use
       windows scaling to have their UIs original size with the contents zoomed out,
@@ -276,6 +278,9 @@
   - balance: Smoke machines now work as inhalation to turfs and touch to mobs.
   LT3:
   - bugfix: Supermatter delamination now applies hallucinations based on distance
+  Rengan:
+  - rscdel: "Fontlar\u0131n k\xF6t\xFC g\xF6z\xFCkmesi sebebiyle baz\u0131 fontlar\
+      \ T\xFCrk\xE7e karakterleri olmayan eski hallerine al\u0131nd\u0131."
   SmArtKar:
   - rscadd: You can now mark newscaster channels as cross-sector to send messages
       to other servers.
@@ -359,6 +364,10 @@
   Melbert:
   - bugfix: You can operate through surgical masks again
   - rscdel: Links have underlines again
+  Rengan:
+  - qol: "Character setupdaki boy se\xE7imi features k\u0131sm\u0131na al\u0131nd\u0131\
+      ."
+  - qol: Loocye runechat eklendi.
   Webcomicartist:
   - rscadd: People shoved onto wooden tables now have a 1 in 3 chance to break it,
       for all your wrestling needs - but please do not let this pull request distract
@@ -550,6 +559,9 @@
   - bugfix: You can't fax unfaxable things by putting them in faxable things
   - rscadd: Cyborgs and the AI have regained understanding of various non-human languages,
       but only partially (66%).
+  MoruQWGlasses:
+  - bugfix: "Peacekeeper yasalar\u0131n\u0131n yanl\u0131\u015F \xE7evirisini d\xFC\
+      zeltir."
   SmArtKar:
   - qol: Redesigned the loadout UI
   - balance: Monocles now work as prescription glasses
@@ -565,13 +577,13 @@
 2025-04-19:
   Absolucy:
   - bugfix: Fixed FOV checks improperly handling diagonal directions.
+  Holoo-1:
+  - balance: emp flashlight costs 4 -> 2 tc
   AyIong:
   - bugfix: Navigating to categories in preferences works again
   Goat, LePiromano:
   - qol: Photocopiers now have boards meaning you can build, destroy, and remake them.
       (If you're a mapper use the prebuilt version to prestock your photocopiers)
-  Holoo-1:
-  - balance: emp flashlight costs 4 -> 2 tc
   LT3:
   - bugfix: Fixed opening character preferences menu before subsystem is initialized
   Maximal08:
@@ -589,6 +601,8 @@
   - bugfix: shoes with the squeak component will no longer play a squeaking sound
       when you aren't actually walking (like in a wheelchair for instance)
 2025-04-20:
+  exdal:
+  - bugfix: ready sayisi tekrardan gorunuyor
   Absolucy:
   - qol: MODlink scryers now alert the user if they try to call without a charged
       power cell.

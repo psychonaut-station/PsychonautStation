@@ -142,6 +142,8 @@
 #define BODYTYPE_ALIEN (1<<3)
 ///The limb is from a golem
 #define BODYTYPE_GOLEM (1<<4)
+///Sytnth
+#define BODYTYPE_SYNTHETIC (1<<5)
 //The limb is a peg limb
 #define BODYTYPE_PEG (1<<5)
 //The limb is plantly (and will regen if photosynthesis is active)
@@ -150,6 +152,8 @@
 #define BODYTYPE_SHADOW (1<<7)
 //This limb is a ghost limb and can phase through walls.
 #define BODYTYPE_GHOST (1<<8)
+///IPC
+#define BODYTYPE_IPC (1<<9)
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.
@@ -167,6 +171,8 @@
 // Defines for Species IDs. Used to refer to the name of a species, for things like bodypart names or species preferences.
 #define SPECIES_ABDUCTOR "abductor"
 #define SPECIES_ANDROID "android"
+#define SPECIES_ARACHNID "arachnid"
+#define SPECIES_CAVESPIDER "cavespider"
 #define SPECIES_DULLAHAN "dullahan"
 #define SPECIES_ETHEREAL "ethereal"
 #define SPECIES_ETHEREAL_LUSTROUS "lustrous"
@@ -175,6 +181,8 @@
 #define SPECIES_FELINE "felinid"
 #define SPECIES_FLYPERSON "fly"
 #define SPECIES_HUMAN "human"
+#define SPECIES_IPC "ipc"
+#define SPECIES_SYNTHETIC "synthetic"
 #define SPECIES_JELLYPERSON "jelly"
 #define SPECIES_SLIMEPERSON "slime"
 #define SPECIES_LUMINESCENT "luminescent"
@@ -471,6 +479,7 @@
 #define DOOR_CRUSH_DAMAGE 20 //the amount of damage that airlocks deal when they crush you
 
 #define HUNGER_FACTOR 0.05 //factor at which mob nutrition decreases
+#define IPC_DISCHARGE_FACTOR 100 //factor at which ipc's charge decreases per second
 #define ETHEREAL_DISCHARGE_RATE (1e-3 * STANDARD_ETHEREAL_CHARGE) // Rate at which ethereal stomach charge decreases
 /// How much nutrition eating clothes as moth gives and drains
 #define CLOTHING_NUTRITION_GAIN 15

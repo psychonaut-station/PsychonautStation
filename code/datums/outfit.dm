@@ -129,6 +129,9 @@
 	var/datum/sprite_accessory/underwear = null
 	var/datum/sprite_accessory/socks = null
 
+	/// Skips preference equipment (backpacks/jumpsuits), useful if you set a special backpack
+	var/skip_preferences = FALSE
+
 /**
  * Called at the start of the equip proc
  *

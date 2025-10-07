@@ -8,6 +8,7 @@
 #define JOB_UNAVAILABLE_ANTAG_INCOMPAT 6
 /// Checks for character age.
 #define JOB_UNAVAILABLE_AGE 7
+#define JOB_UNAVAILABLE_WHITELISTED 8
 
 /// Used when the `get_job_unavailable_error_message` proc can't make sense of a given code.
 #define GENERIC_JOB_UNAVAILABLE_ERROR "Error: Unknown job availability."
@@ -47,6 +48,7 @@
 //No department
 #define JOB_ASSISTANT "Assistant"
 #define JOB_PRISONER "Prisoner"
+#define JOB_ANIMAL "Animal"
 //Command
 #define JOB_CAPTAIN "Captain"
 #define JOB_HEAD_OF_PERSONNEL "Head of Personnel"
@@ -54,9 +56,10 @@
 #define JOB_RESEARCH_DIRECTOR "Research Director"
 #define JOB_CHIEF_ENGINEER "Chief Engineer"
 #define JOB_CHIEF_MEDICAL_OFFICER "Chief Medical Officer"
-#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
 #define JOB_VETERAN_ADVISOR "Veteran Security Advisor"
+#define JOB_BRIDGE_ASSISTANT "Bridge Assistant"
 //Silicon
+#define JOB_SYNTHETIC "Synthetic"
 #define JOB_AI "AI"
 #define JOB_CYBORG "Cyborg"
 #define JOB_PERSONAL_AI "Personal AI"
@@ -65,6 +68,7 @@
 #define JOB_WARDEN "Warden"
 #define JOB_DETECTIVE "Detective"
 #define JOB_SECURITY_OFFICER "Security Officer"
+#define JOB_BRIG_PHYSICIAN "Brig Physician"
 #define JOB_SECURITY_OFFICER_MEDICAL "Security Officer (Medical)"
 #define JOB_SECURITY_OFFICER_ENGINEERING "Security Officer (Engineering)"
 #define JOB_SECURITY_OFFICER_SCIENCE "Security Officer (Science)"
@@ -72,6 +76,7 @@
 //Engineering
 #define JOB_STATION_ENGINEER "Station Engineer"
 #define JOB_ATMOSPHERIC_TECHNICIAN "Atmospheric Technician"
+#define JOB_WORKER "Worker"
 //Medical
 #define JOB_CORONER "Coroner"
 #define JOB_MEDICAL_DOCTOR "Medical Doctor"

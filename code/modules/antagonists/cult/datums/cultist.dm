@@ -8,6 +8,7 @@
 	pref_flag = ROLE_CULTIST
 	antag_hud_name = "cult"
 	stinger_sound = 'sound/music/antag/bloodcult/bloodcult_gain.ogg'
+	credits_icon = "cult"
 
 	///Boolean on whether the starting equipment should be given to their inventory.
 	var/give_equipment = FALSE

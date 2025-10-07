@@ -81,6 +81,7 @@
 		"custom_vendor_refill",
 		"bounty_pad_control",
 		"bounty_pad",
+		"crewdata",
 		"digital_clock_frame",
 		"telescreen_research",
 		"telescreen_ordnance",
@@ -101,6 +102,7 @@
 		"arcade_battle",
 		"arcade_orion",
 		"slotmachine",
+		"pokerchip_exchanger",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	discount_experiments = list(/datum/experiment/physical/arcade_winner = TECHWEB_TIER_2_POINTS)

@@ -14,6 +14,7 @@
 	/// Should we render an unique icon for the keyboard when off?
 	var/keyboard_change_icon = TRUE
 	/// Icon_state of the emissive screen overlay.
+	var/icon_file_screen
 	var/icon_screen = "generic"
 	/// Time it takes to deconstruct with a screwdriver.
 	var/time_to_unscrew = 2 SECONDS
@@ -29,6 +30,16 @@
 /obj/machinery/computer/Initialize(mapload, obj/item/circuitboard/C)
 	. = ..()
 	power_change()
+
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/Destroy()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+	return ..()
 
 /obj/machinery/computer/mouse_drop_receive(mob/living/dropping, mob/user, params)
 	. = ..()
@@ -65,6 +76,47 @@
 		else
 			. += icon_keyboard
 
+	if(icon_state == "computer")
+		var/obj/machinery/computer/left_comp = null
+		var/obj/machinery/computer/right_comp = null
+		var/turf/left_turf = null
+		var/turf/right_turf = null
+		switch(dir)
+			if(NORTH)
+				left_turf = get_step(src, WEST)
+				right_turf = get_step(src, EAST)
+			if(EAST)
+				left_turf = get_step(src, NORTH)
+				right_turf = get_step(src, SOUTH)
+			if(SOUTH)
+				left_turf = get_step(src, EAST)
+				right_turf = get_step(src, WEST)
+			if(WEST)
+				left_turf = get_step(src, SOUTH)
+				right_turf = get_step(src, NORTH)
+		for(var/obj/machinery/computer/computer in left_turf.contents)
+			if(QDELETED(computer))
+				continue
+			if(computer.dir != dir)
+				continue
+			if(computer.icon_state != "computer")
+				continue
+			left_comp = computer
+			break
+		for(var/obj/machinery/computer/computer in right_turf.contents)
+			if(QDELETED(computer))
+				continue
+			if(computer.dir != dir)
+				continue
+			if(computer.icon_state != "computer")
+				continue
+			right_comp = computer
+			break
+		if(!isnull(left_comp))
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "left")
+		if(!isnull(right_comp))
+			. += mutable_appearance('icons/psychonaut/obj/machines/connectors.dmi', "right")
+
 	if(machine_stat & BROKEN)
 		. += mutable_appearance(icon, "[icon_state]_broken")
 		return // If we don't do this broken computers glow in the dark.
@@ -74,8 +126,8 @@
 
 	// This lets screens ignore lighting and be visible even in the darkest room
 	if(icon_screen)
-		. += mutable_appearance(icon, icon_screen)
-		. += emissive_appearance(icon, icon_screen, src)
+		. += mutable_appearance(icon_file_screen || icon, icon_screen)
+		. += emissive_appearance(icon_file_screen || icon, icon_screen, src)
 
 /obj/machinery/computer/power_change()
 	. = ..()
@@ -134,6 +186,18 @@
 				if(prob(10))
 					atom_break(ENERGY)
 
+/obj/machinery/computer/on_construction(mob/user, from_flatpack = FALSE)
+	..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
+/obj/machinery/computer/setDir(newdir)
+	. = ..()
+	for(var/obj/machinery/computer/computer in range(1, src))
+		if(computer.icon_state == "computer")
+			computer.update_appearance()
+
 /obj/machinery/computer/spawn_frame(disassembled)
 	if(QDELETED(circuit)) //no circuit, no computer frame
 		return
@@ -154,7 +218,7 @@
 		new_frame.state = FRAME_COMPUTER_STATE_WIRED
 	else
 		new_frame.state = FRAME_COMPUTER_STATE_GLASSED
-	new_frame.update_appearance(UPDATE_ICON_STATE)
+	new_frame.update_appearance()
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)

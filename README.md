@@ -1,27 +1,24 @@
-## /tg/station codebase
+# Psychonaut Station
 
-[![Build Status](https://github.com/tgstation/tgstation/workflows/CI%20Suite/badge.svg)](https://github.com/tgstation/tgstation/actions?query=workflow%3A%22CI+Suite%22)
-[![Percentage of issues still open](https://isitmaintained.com/badge/open/tgstation/tgstation.svg)](https://isitmaintained.com/project/tgstation/tgstation "Percentage of issues still open")
-[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/tgstation/tgstation.svg)](https://isitmaintained.com/project/tgstation/tgstation "Average time to resolve an issue")
+[![Build Status](https://github.com/psychonaut-station/PsychonautStation/workflows/CI%20Suite/badge.svg)](https://github.com/psychonaut-station/PsychonautStation/actions?query=workflow%3A%22CI+Suite%22)
+[![Percentage of issues still open](https://isitmaintained.com/badge/open/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Percentage of issues still open")
+[![Average time to resolve an issue](https://isitmaintained.com/badge/resolution/psychonaut-station/PsychonautStation.svg)](https://isitmaintained.com/project/psychonaut-station/PsychonautStation "Average time to resolve an issue")
 ![Coverage](https://img.shields.io/badge/coverage---4%25-red.svg)
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
-| Website             | Link                                                                                                 |
-| ------------------- | ---------------------------------------------------------------------------------------------------- |
-| Website             | https://tgstation13.org                                                                              |
-| Code                | https://github.com/tgstation/tgstation                                                               |
-| Server Config       | https://github.com/tgstation-operations/server-config                                                |
-| Wiki                | https://tgstation13.org/wiki/Main_Page                                                               |
-| Codedocs            | https://codedocs.tgstation13.org/                                                                    |
-| /tg/station Discord | https://tgstation13.org/phpBB/viewforum.php?f=60                                                     |
-| Coderbus Discord    | https://discord.gg/Vh8TJp9                                                                           |
+| Website                    | Link                                                                                                               |
+| -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
+| Website                    | [https://ss13.tr](https://ss13.tr)                                                                                 |
+| Code                       | [https://github.com/psychonaut-station/PsychonautStation](https://github.com/psychonaut-station/PsychonautStation) |
+| Wiki                       | [https://wiki.ss13.tr/Anasayfa](https://wiki.ss13.tr/Anasayfa)                                                     |
+| Codedocs                   | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)                                             |
+| Psychonaut Station Discord | [https://ss13.tr/discord](https://ss13.tr/discord)                                                                 |
+| Coderbus Discord           | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                           |
 
-This is the codebase for the /tg/station flavoured fork of SpaceStation 13.
+This is the codebase for the Psychonaut Station flavoured fork of /tg/station which is another fork of SpaceStation 13.
 
 Space Station 13 is a paranoia-laden round-based roleplaying game set against the backdrop of a nonsensical, metal death trap masquerading as a space station, with charming spritework designed to represent the sci-fi setting and its dangerous undertones. Have fun, and survive!
-
-_All github inquiries (such as moderation actions) may be handled via the /tg/station discord [#coding-general](https://discord.com/channels/326822144233439242/326831214667235328). Simply ping the `@Maintainer` role, following the guide on asking questions located in the channel description, with your issue!_
 
 ## DOWNLOADING
 
@@ -41,21 +38,11 @@ _All github inquiries (such as moderation actions) may be handled via the /tg/st
 
 **[How to compile in VSCode and other build options](tools/build/README.md).**
 
-## Getting started
-
-For contribution guidelines refer to the [Guides for Contributors](.github/CONTRIBUTING.md).
-
-For getting started (dev env, compilation) see the HackMD document [here](https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide).
-
-For overall design documentation see [HackMD](https://hackmd.io/@tgstation).
-
-For lore, [see Common Core](https://github.com/tgstation/common_core).
-
 ## LICENSE
 
-All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
+All code after [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/psychonaut-station/PsychonautStation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU AGPL v3](https://www.gnu.org/licenses/agpl-3.0.html).
 
-All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/tgstation/tgstation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
+All code before [commit 333c566b88108de218d882840e61928a9b759d8f on 2014/31/12 at 4:38 PM PST](https://github.com/psychonaut-station/PsychonautStation/commit/333c566b88108de218d882840e61928a9b759d8f) is licensed under [GNU GPL v3](https://www.gnu.org/licenses/gpl-3.0.html).
 (Including tools unless their readme specifies otherwise.)
 
 See LICENSE and GPLv3.txt for more details.

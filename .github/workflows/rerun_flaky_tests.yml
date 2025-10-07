@@ -1,4 +1,4 @@
-name: Rerun/Report Flaky Tests
+name: Rerun Flaky Tests
 on:
   workflow_run:
     workflows: [CI Suite]
@@ -19,7 +19,7 @@ jobs:
             await rerunFlakyTests({ github, context })
   report_flaky_tests:
     runs-on: ubuntu-latest
-    if: ${{ github.event.workflow_run.conclusion == 'success' && github.event.workflow_run.run_attempt == 2 }}
+    if: false
     steps:
       - name: Checkout
         uses: actions/checkout@v5

@@ -513,4 +513,11 @@
 /datum/map_template/shuttle/emergency/zeta/prerequisites_met()
 	return SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_ALIENTECH]
 
+/datum/map_template/shuttle/emergency/helio
+	suffix = "helio"
+	name = "Helio Station Emergency Shuttle"
+	credit_cost = CARGO_CRATE_VALUE * 8
+	description = "A fairly standard shuttle, though larger and slightly better equipped than the Helio Station variant."
+	occupancy_limit = "40"
+
 #undef EMAG_LOCKED_SHUTTLE_COST

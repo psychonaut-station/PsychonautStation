@@ -8,6 +8,7 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 
 ### TG Değişiklikleri
 
+- `code/__DEFINES/logging.dm`: `LOG_CATEGORY_GAME_JUKEBOX`
 - `code/datums/proximity_monitor/proximity_monitor.dm`: `/datum/proximity_monitor/var/loc_connections`
 - `code/modules/admin/verbs/playsound.dm`: `/proc/web_sound()`
 - `code/modules/jobs/job_types/bartender.dm`: `/datum/job/bartender/after_spawn()`
@@ -30,7 +31,6 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 ### Definelar ve Helperlar
 
 - `code/__DEFINES/~psychonaut_defines/signals.dm`: `COMSIG_PROXIMITY_MOB_ENTERED`, `COMSIG_PROXIMITY_MOB_LEFT`, `COMSIG_PROXIMITY_MOB_MOVED`, `COMSIG_WEB_SOUND_STARTED`, `COMSIG_WEB_SOUND_ENDED`, `COMSIG_WEB_SOUND_STOPPED`
-- `code/__DEFINES/~psychonaut_defines/logging.dm`: `LOG_CATEGORY_GAME_JUKEBOX`
 - `code/__DEFINES/~psychonaut_defines/traits/declarations.dm`: `TRAIT_CAN_USE_JUKEBOX`
 - `code/__DEFINES/~psychonaut_defines/web_sound.dm`
 - `code/__HELPERS/~psychonaut_helpers/logging.dm`: `/proc/log_jukebox()`

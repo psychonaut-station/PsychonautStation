@@ -75,7 +75,7 @@
 /area/virtual_domain/fullbright)
 "cz" = (
 /obj/effect/turf_decal/sand,
-/obj/machinery/jukebox,
+/obj/machinery/electrical_jukebox/public,
 /obj/item/coin/gold,
 /turf/open/floor/sepia,
 /area/virtual_domain/fullbright)

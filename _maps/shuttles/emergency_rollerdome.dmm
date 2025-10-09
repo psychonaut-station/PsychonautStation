@@ -43,7 +43,7 @@
 /turf/closed/wall/mineral/plastitanium/nodiagonal,
 /area/shuttle/escape)
 "hM" = (
-/obj/machinery/jukebox/disco/indestructible,
+/obj/machinery/electrical_jukebox/public,
 /turf/open/floor/light/colour_cycle/dancefloor_a,
 /area/shuttle/escape)
 "hZ" = (

@@ -22,6 +22,13 @@ describe('ChannelIterator', () => {
     expect(channelIterator.current()).toBe('OOC');
   });
 
+	// PSYCHONAUT ADDITION START - LOOC
+  it('should set a channel properly', () => {
+    channelIterator.set('LOOC');
+    expect(channelIterator.current()).toBe('LOOC');
+  });
+	// PSYCHONAUT ADDITION END - LOOC
+
   it('should return true when current channel is "Say"', () => {
     channelIterator.set('Say');
     expect(channelIterator.isSay()).toBe(true);
@@ -41,6 +48,13 @@ describe('ChannelIterator', () => {
     channelIterator.set('OOC');
     expect(channelIterator.isVisible()).toBe(false);
   });
+
+	// PSYCHONAUT ADDITION START - LOOC
+  it('should return false when current channel is not visible', () => {
+    channelIterator.set('LOOC');
+    expect(channelIterator.isVisible()).toBe(false);
+  });
+	// PSYCHONAUT ADDITION END - LOOC
 
   it('should not leak a message from a blacklisted channel', () => {
     channelIterator.set('Admin');

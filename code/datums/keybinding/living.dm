@@ -31,7 +31,7 @@
 		owner.hud_used.resist_icon.icon_state = owner.hud_used.resist_icon.base_icon_state
 
 /datum/keybinding/living/look_up
-	hotkey_keys = list("L")
+	hotkey_keys = list("P") // PSYCHONAUT EDIT - LOOC - Original: hotkey_keys = list("L")
 	name = "look up"
 	full_name = "Look Up"
 	description = "Look up at the next z-level.  Only works if directly below open space."

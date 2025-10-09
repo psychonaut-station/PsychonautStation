@@ -292,6 +292,13 @@ em {
   font-weight: bold;
 }
 
+// PSYCHONAUT ADDITION START - LOOC
+.looc {
+  color: #b30098;
+  font-weight: bold;
+}
+// PSYCHONAUT ADDITION END - LOOC
+
 .adminobserverooc {
   color: hsl(195, 100%, 40%);
   font-weight: bold;
@@ -320,6 +327,7 @@ em {
 .emote,
 .infoplain,
 .oocplain,
+.loocplain, // PSYCHONAUT ADDITION - LOOC
 .warningplain {
 }
 

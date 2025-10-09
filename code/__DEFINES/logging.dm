@@ -151,6 +151,7 @@
 #define LOG_CATEGORY_GAME_VOTE "game-vote"
 #define LOG_CATEGORY_GAME_WHISPER "game-whisper"
 #define LOG_CATEGORY_GAME_GHOST_POLLS "game-ghost-polls"
+#define LOG_CATEGORY_GAME_JUKEBOX "game-jukebox" // PSYCHONAUT ADDITION
 
 // HREF categories
 #define LOG_CATEGORY_HREF "href"

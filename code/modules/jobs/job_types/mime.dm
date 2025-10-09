@@ -39,6 +39,7 @@
 /datum/job/mime/after_spawn(mob/living/spawned, client/player_client)
 	if (ishuman(spawned))
 		spawned.apply_pref_name(/datum/preference/name/mime, player_client)
+	ADD_TRAIT(spawned, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT) // PSYCHONAUT ADDITION - JUKEBOX
 	return ..()
 
 /datum/outfit/job/mime

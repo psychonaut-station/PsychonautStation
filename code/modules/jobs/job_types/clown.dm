@@ -45,6 +45,8 @@
 			var/mob/living/carbon/human/human_clown = spawned
 			human_clown.set_blood_type(BLOOD_TYPE_CLOWN)
 
+	ADD_TRAIT(spawned, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT) // PSYCHONAUT ADDITION - JUKEBOX
+
 	return ..()
 
 /datum/outfit/job/clown

@@ -14,7 +14,7 @@ import { AudioPlayer } from './player';
 import { selectAudio } from './selectors';
 
 export const audioMiddleware = (store) => {
-// PSYCHONAUT EDIT ADDITION START - Electrical Jukebox
+// PSYCHONAUT EDIT ADDITION START - JUKEBOX
 //  const player = new AudioPlayer();
 //  player.onPlay(() => {
 //    store.dispatch({ type: 'audio/playing' });
@@ -123,5 +123,5 @@ export const audioMiddleware = (store) => {
     }
     return next(action);
   };
-  // PSYCHONAUT EDIT ADDITION END - Electrical Jukebox
+  // PSYCHONAUT EDIT ADDITION END - JUKEBOX
 };

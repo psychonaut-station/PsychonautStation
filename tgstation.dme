@@ -412,6 +412,7 @@
 #include "code\__DEFINES\traits\declarations.dm"
 #include "code\__DEFINES\traits\macros.dm"
 #include "code\__DEFINES\traits\sources.dm"
+#include "code\__DEFINES\~psychonaut_defines\admin.dm"
 #include "code\__DEFINES\~psychonaut_defines\chat.dm"
 #include "code\__DEFINES\~psychonaut_defines\keybinding.dm"
 #include "code\__DEFINES\~psychonaut_defines\signals.dm"
@@ -6746,4 +6747,6 @@
 #include "modular_psychonaut\modules\jukebox\code\web_sound_player.dm"
 #include "modular_psychonaut\modules\looc\code\keybinding.dm"
 #include "modular_psychonaut\modules\looc\code\verbs.dm"
+#include "modular_psychonaut\modules\mentor\code\admin_verb.dm"
+#include "modular_psychonaut\modules\mentor\code\adminhelp.dm"
 // END_INCLUDE

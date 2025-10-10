@@ -20,7 +20,7 @@
 		dat += individual_logging_panel_link(M, INDIVIDUAL_COMMS_LOG, LOGSRC_CKEY, "Comms Log", source, ntype)
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_CKEY, "OOC Log", source, ntype)
-		// PSYCHONAUT ADDITION START - LOOC
+		// PSYCHONAUT ADDITION BEGIN - LOOC
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_CKEY, "LOOC Log", source, ntype)
 		// PSYCHONAUT ADDITION END - LOOC
@@ -45,7 +45,7 @@
 	dat += individual_logging_panel_link(M, INDIVIDUAL_COMMS_LOG, LOGSRC_MOB, "Comms Log", source, ntype)
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_OOC_LOG, LOGSRC_MOB, "OOC Log", source, ntype)
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_MOB, "LOOC Log", source, ntype)
 	// PSYCHONAUT ADDITION END - LOOC

@@ -76,7 +76,7 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 	var/duration = 0
 	if(istext(input))
 		var/shell_scrubbed_input = shell_url_scrub(input)
-		// PSYCHONAUT ADDITION START - JUKEBOX
+		// PSYCHONAUT ADDITION BEGIN - JUKEBOX
 		//var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist -- \"[shell_scrubbed_input]\"")
 		var/cookies = CONFIG_GET(string/ytdl_cookies)
 		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist [cookies ? "--cookies [cookies]" : ""] -- \"[shell_scrubbed_input]\"")

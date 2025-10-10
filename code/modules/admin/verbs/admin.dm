@@ -1,4 +1,4 @@
-ADMIN_VERB(show_tip, R_ADMIN, "Show Tip", "Sends a tip to all players.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(show_tip, R_ADMIN | R_MENTOR, "Show Tip", "Sends a tip to all players.", ADMIN_CATEGORY_MAIN) // PSYCHONAUT EDIT ADDITION - MENTOR - (Verb Permissions Changed) - Original: R_ADMIN
 	var/input = input(user, "Please specify your tip that you want to send to the players.", "Tip", "") as message|null
 	if(!input)
 		return
@@ -50,7 +50,7 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 	user << browse(msg.Join(), "window=Player_playtime_check")
 
 /client/proc/trigger_centcom_recall()
-	if(!check_rights(R_ADMIN))
+	if(!check_rights(R_ADMIN | R_MENTOR)) // PSYCHONAUT EDIT ADDITION - MENTOR - Original: if(!check_rights(R_ADMIN))
 		return
 	var/message = pick(GLOB.admiral_messages)
 	message = input("Enter message from the on-call admiral to be put in the recall report.", "Admiral Message", message) as text|null
@@ -174,7 +174,7 @@ ADMIN_VERB(drop_everything, R_ADMIN, "Drop Everything", ADMIN_VERB_NO_DESCRIPTIO
 		if(MUTE_OOC)
 			mute_string = "OOC"
 			feedback_string = "OOC"
-		// PSYCHONAUT ADDITION START - LOOC
+		// PSYCHONAUT ADDITION BEGIN - LOOC
 		if(MUTE_LOOC)
 			mute_string = "LOOC"
 			feedback_string = "LOOC"

@@ -292,7 +292,7 @@ em {
   font-weight: bold;
 }
 
-// PSYCHONAUT ADDITION START - LOOC
+// PSYCHONAUT ADDITION BEGIN - LOOC
 .looc {
   color: #b30098;
   font-weight: bold;
@@ -318,6 +318,18 @@ em {
   color: hsl(224.9, 100%, 63.3%);
   font-weight: bold;
 }
+
+// PSYCHONAUT ADDITION BEGIN - MENTOR
+.mentorsay {
+  color: green;
+  font-weight: bold;
+}
+
+.mentorsaytext {
+  color: rgb(17, 80, 17);
+  font-weight: bold;
+}
+// PSYCHONAUT ADDITION END - MENTOR
 
 .name {
   font-weight: bold;

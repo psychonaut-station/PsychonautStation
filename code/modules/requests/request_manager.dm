@@ -143,16 +143,24 @@ GLOBAL_DATUM_INIT(requests, /datum/request_manager, new)
 		ui.open()
 
 /datum/request_manager/ui_state(mob/user)
-	return ADMIN_STATE(R_ADMIN)
+	// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - (Verb Permissions Changed) - Original:
+	// return ADMIN_STATE(R_ADMIN)
+	return ADMIN_STATE(R_MENTOR)
+	// PSYCHONAUT EDIT ADDITION END - MENTOR
 
 /datum/request_manager/ui_act(action, list/params, datum/tgui/ui, datum/ui_state/state)
 	if (..())
 		return
 
 	// Only admins should be sending actions
-	if (!check_rights(R_ADMIN))
-		to_chat(usr, "You do not have permission to do this, you require +ADMIN", confidential = TRUE)
+	// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - (Verb Permissions Changed) - Original:
+	//if (!check_rights(R_ADMIN))
+	//	to_chat(usr, "You do not have permission to do this, you require +ADMIN", confidential = TRUE)
+	// 	return
+	if (!check_rights(R_ADMIN| R_MENTOR))
+		to_chat(usr, "You do not have permission to do this, you require +ADMIN or +MENTOR", confidential = TRUE)
 		return
+	// PSYCHONAUT EDIT ADDITION END - MENTOR
 
 	if (action == "toggleprint")
 		GLOB.fax_autoprinting = !GLOB.fax_autoprinting

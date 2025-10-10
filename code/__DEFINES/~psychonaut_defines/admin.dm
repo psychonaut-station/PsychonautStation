@@ -1,0 +1,2 @@
+#define TICKET_TYPE_ADMIN 0
+#define TICKET_TYPE_MENTOR 1

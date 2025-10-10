@@ -87,8 +87,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	dat += "<A href='byond://?_src_=holder;[HrefToken()];ahelp_tickets=[state]'>Refresh</A><br><br>"
 	for(var/I in l2b)
 		var/datum/admin_help/AH = I
-		dat += "[span_adminnotice("[span_adminhelp("Ticket #[AH.id]")]: <A href='byond://?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
-
+		dat += "[span_adminnotice("[span_adminhelp("[AH.ticket_type == TICKET_TYPE_MENTOR ? "Mentor" : "Admin"] Ticket #[AH.id]")]: <A href='byond://?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>" // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+		// dat += "[span_adminnotice("[span_adminhelp("Ticket #[AH.id]")]: <A href='byond://?_src_=holder;[HrefToken()];ahelp=[REF(AH)];ahelp_action=ticket'>[AH.initiator_key_name]: [AH.name]</A>")]<br>"
 	usr << browse(dat.Join(), "window=ahelp_list[state];size=600x480")
 
 //Tickets statpanel
@@ -163,6 +163,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 #define WEBHOOK_URGENT 1
 #define WEBHOOK_NON_URGENT 2
 
+#define REPLACE_SENDER(admin, mentor) ticket_type == TICKET_TYPE_ADMIN ? admin : mentor // PSYCHONAUT ADDITION - MENTOR
+
+
 /**
  * # Adminhelp Ticket
  */
@@ -202,6 +205,9 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	/// Has the player replied to this ticket yet?
 	var/player_replied = FALSE
 
+	/// Type of the ticket
+	var/ticket_type = TICKET_TYPE_ADMIN // PSYCHONAUT ADDITION - MENTOR
+
 /**
  * Call this on its own to create a ticket, don't manually assign current_ticket
  *
@@ -209,7 +215,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
  * * msg_raw - The first message of this admin_help: used for the initial title of the ticket
  * * is_bwoink - Boolean operator, TRUE if this ticket was started by an admin PM
  */
-/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE)
+// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+// /datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE)
+/datum/admin_help/New(msg_raw, client/C, is_bwoink, urgent = FALSE, type = TICKET_TYPE_ADMIN)
+// PSYCHONAUT EDIT ADDITION END - MENTOR
 	//clean the input msg
 	var/msg = sanitize(copytext_char(msg_raw, 1, MAX_MESSAGE_LEN))
 	if(!msg || !C || !C.mob)
@@ -218,6 +227,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 	id = ++ticket_counter
 	opened_at = world.time
+
+	ticket_type = type // PSYCHONAUT ADDITION - MENTOR
 
 	name = copytext_char(msg, 1, 100)
 
@@ -363,6 +374,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 //Removes the ahelp verb and returns it after 2 minutes
 /datum/admin_help/proc/TimeoutVerb()
 	remove_verb(initiator, /client/verb/adminhelp)
+	remove_verb(initiator, /client/verb/mentorhelp) // PSYCHONAUT ADDITION - MENTOR
 	initiator.adminhelptimerid = addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 1200, TIMER_STOPPABLE) //2 minute cooldown of admin helps
 
 //private
@@ -404,19 +416,24 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
 	var/admin_msg = fieldset_block(
-		span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
+		span_adminhelp("[REPLACE_SENDER("Admin", "Mentor")] Ticket [TicketHref("#[id]", ref_src)]"), // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+		//span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
 		"<b>[LinkedReplyName(ref_src)]</b>\n\n\
 		[span_linkify(keywords_lookup(msg))]\n\n\
 		<b class='smaller'>[FullMonty(ref_src)]</b>",
 		"boxed_message red_box")
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
-	log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
+	log_admin_private("[REPLACE_SENDER("Admin", "Mentor")] Ticket #[id]: [key_name(initiator)]: [msg]") // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+	// log_admin_private("Ticket #[id]: [key_name(initiator)]: [msg]")
 
 	//send this msg to all admins
 	for(var/client/X in GLOB.admins)
 		if(X.prefs.toggles & SOUND_ADMINHELP)
-			SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+			// PSYCHONAUT EDIT BEGIN - MENTOR - Original:
+			// SEND_SOUND(X, sound('sound/effects/adminhelp.ogg'))
+			SendNoticeSound(X)
+			// PSYCHONAUT EDIT END - MENTOR
 		window_flash(X, ignorepref = TRUE)
 		to_chat(X,
 			type = MESSAGE_TYPE_ADMINPM,
@@ -432,7 +449,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	to_chat(
 		initiator,
 		type = MESSAGE_TYPE_ADMINPM,
-		html = span_notice("PM to-<b>Admins</b>: [span_linkify(message)]"),
+		html = span_notice("PM to-<b>[REPLACE_SENDER("Admins", "Mentors")]</b>: [span_linkify(message)]"), // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+		// html = span_notice("PM to-<b>Admins</b>: [span_linkify(message)]"),
 		confidential = TRUE,
 	)
 
@@ -508,7 +526,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	addtimer(CALLBACK(initiator, TYPE_PROC_REF(/client, giveadminhelpverb)), 5 SECONDS)
 
 	AddInteraction("<font color='green'>Resolved by [key_name].</font>", player_message = "<font color='green'>Ticket resolved!</font>")
-	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
+	to_chat(initiator, span_adminhelp("Your ticket has been resolved by an [REPLACE_SENDER("an admin", "a mentor")]. The [REPLACE_SENDER("Adminhelp", "Mentorhelp")] verb will be returned to you shortly."), confidential = TRUE) // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+	// to_chat(initiator, span_adminhelp("Your ticket has been resolved by an admin. The Adminhelp verb will be returned to you shortly."), confidential = TRUE)
 	if(!silent)
 		SSblackbox.record_feedback("tally", "ahelp_stats", 1, "resolved")
 		var/msg = "Ticket [TicketHref("#[id]")] resolved by [key_name]"
@@ -524,7 +543,10 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	if(initiator)
 		initiator.giveadminhelpverb()
 
-		SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		// PSYCHONAUT EDIT BEGIN - MENTOR - Original:
+		// SEND_SOUND(initiator, sound('sound/effects/adminhelp.ogg'))
+		SendNoticeSound(initiator)
+		// PSYCHONAUT EDIT END - MENTOR
 
 		to_chat(initiator, "<font color='red' size='4'><b>- AdminHelp Rejected! -</b></font>", confidential = TRUE)
 		to_chat(initiator, "<font color='red'><b>Your admin help was rejected.</b> The adminhelp verb has been returned to you so that you may try again.</font>", confidential = TRUE)
@@ -559,9 +581,11 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 //Show the ticket panel
 /datum/admin_help/proc/TicketPanel()
-	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Ticket #[id]</title></head>")
+	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>[REPLACE_SENDER("Admin", "Mentor")] Ticket #[id]</title></head>") // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+	// var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Ticket #[id]</title></head>")
 	var/ref_src = "[REF(src)]"
-	dat += "<h4>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
+	dat += "<h4>[REPLACE_SENDER("Admin Help", "Mentor Help")] Ticket #[id]: [LinkedReplyName(ref_src)]</h4>" // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
+	// dat += "<h4>Admin Help Ticket #[id]: [LinkedReplyName(ref_src)]</h4>"
 	dat += "<b>State: [ticket_status()]</b>"
 	dat += "[FOURSPACES][TicketHref("Refresh", ref_src)][FOURSPACES][TicketHref("Re-Title", ref_src, "retitle")]"
 	if(state != AHELP_ACTIVE)
@@ -711,6 +735,7 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 
 /client/proc/giveadminhelpverb()
 	add_verb(src, /client/verb/adminhelp)
+	add_verb(src, /client/verb/mentorhelp) // PSYCHONAUT ADDITION - MENTOR
 	deltimer(adminhelptimerid)
 	adminhelptimerid = 0
 
@@ -1137,6 +1162,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 		return_list[ASAY_LINK_PINGED_ADMINS_INDEX] = pinged_admins
 		return return_list
 
+#undef REPLACE_SENDER // PSYCHONAUT ADDITION - MENTOR
 
 #undef WEBHOOK_URGENT
 #undef WEBHOOK_NONE

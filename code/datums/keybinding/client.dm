@@ -14,9 +14,11 @@
 	. = ..()
 	if(.)
 		return
-	user.adminhelp()
+	// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR
+	// user.adminhelp()
+	GLOB.ticket_helper_ui_handler.ui_interact(user.mob)
+	// PSYCHONAUT EDIT ADDITION END - MENTOR
 	return TRUE
-
 
 /datum/keybinding/client/screenshot
 	hotkey_keys = list("F2")

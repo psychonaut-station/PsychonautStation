@@ -41,11 +41,14 @@
 	var/static/list/icon_overrides = list(
 		"goldie" = 'icons/psychonaut/obj/cigarettes.dmi',
 	)
+	/// Whether the lighter starts with fuel
+	var/spawns_with_reagent = TRUE
 
 /obj/item/lighter/Initialize(mapload)
 	. = ..()
 	create_reagents(maximum_fuel, REFILLABLE | DRAINABLE)
-	reagents.add_reagent(/datum/reagent/fuel, maximum_fuel)
+	if(spawns_with_reagent)
+		reagents.add_reagent(/datum/reagent/fuel, maximum_fuel)
 	if(!overlay_state)
 		overlay_state = pick(overlay_list)
 	AddComponent(\
@@ -371,3 +374,9 @@
 		/obj/item/lighter/mime,
 		/obj/item/lighter/bright,
 	)
+
+/obj/item/lighter/empty
+	spawns_with_reagent = FALSE
+
+/obj/item/lighter/greyscale/empty
+	spawns_with_reagent = FALSE

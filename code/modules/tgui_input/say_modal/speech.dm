@@ -44,7 +44,7 @@
 		if(OOC_CHANNEL)
 			client.ooc(entry)
 			return TRUE
-		// PSYCHONAUT ADDITION START - LOOC
+		// PSYCHONAUT ADDITION BEGIN - LOOC
 		if(LOOC_CHANNEL)
 			client.looc(entry)
 			return TRUE

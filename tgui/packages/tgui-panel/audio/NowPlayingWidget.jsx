@@ -30,7 +30,7 @@ export const NowPlayingWidget = (props) => {
       : upload_date;
 
   return (
-    /* PSYCHONAUT EDIT ADDITION START - JUKEBOX
+    /* PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
     <Flex align="center">
       {(audio.playing && (
         <Flex.Item

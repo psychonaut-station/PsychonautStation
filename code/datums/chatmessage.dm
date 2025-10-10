@@ -156,7 +156,7 @@
 		var/image/r_icon = image('icons/ui/chat/chat_icons.dmi', icon_state = "emote")
 		LAZYADD(prefixes, "\icon[r_icon]")
 		chat_color_name_to_use = target.get_visible_name(add_id_name = FALSE) // use face name for nonverbal messages
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
 	else if (extra_classes.Find("looc"))
 		var/image/r_icon = image('modular_psychonaut/modules/looc/icons/chat_icons.dmi', icon_state = "looc")
 		LAZYADD(prefixes, "\icon[r_icon]")
@@ -188,7 +188,7 @@
 
 	// We dim italicized text to make it more distinguishable from regular text
 	var/tgt_color = extra_classes.Find("italics") ? target.chat_color_darkened : target.chat_color
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
 	if(extra_classes.Find("looc"))
 		tgt_color = "#6fbeff"
 	// PSYCHONAUT ADDITION END - LOOC
@@ -348,7 +348,7 @@
 	// Display visual above source
 	if(runechat_flags & EMOTE_MESSAGE)
 		new /datum/chatmessage(raw_message, speaker, src, message_language, list("emote", "italics"))
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
 	else if(runechat_flags & LOOC_MESSAGE)
 		new /datum/chatmessage(raw_message, speaker, src, message_language, list("looc", "italics"))
 	// PSYCHONAUT ADDITION END - LOOC

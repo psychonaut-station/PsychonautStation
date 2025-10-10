@@ -96,7 +96,7 @@ export const MESSAGE_TYPES = [
     description: 'The bluewall of global OOC messages',
     selector: '.ooc, .adminooc, .adminobserverooc, .oocplain',
   },
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
   {
     type: MESSAGE_TYPE_LOOC,
     name: 'LOOC',

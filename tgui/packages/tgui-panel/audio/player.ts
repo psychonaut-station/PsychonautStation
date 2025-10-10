@@ -46,7 +46,7 @@ export class AudioPlayer {
   destroy(): void {
     this.element = null;
   }
-  // PSYCHONAUT EDIT ADDITION START - JUKEBOX
+  // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
   // play(url: string, options: AudioOptions = {}): void {
   play(url: string, options: AudioOptions = {}, volume: number = 1): void {
   // PSYCHONAUT EDIT ADDITION END - JUKEBOX
@@ -63,7 +63,7 @@ export class AudioPlayer {
       return;
     }
     this.element = audio;
-    // PSYCHONAUT EDIT ADDITION START - JUKEBOX
+    // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
     //audio.volume = this.volume;
     audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     // PSYCHONAUT EDIT ADDITION END - JUKEBOX
@@ -120,13 +120,13 @@ export class AudioPlayer {
     this.volume = volume;
 
     if (!this.element) return;
-    // PSYCHONAUT EDIT ADDITION START - JUKEBOX
+    // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
     // this.element.volume = volume;
     if (!this.muted) this.element.volume = volume * this.localVolume;
     // PSYCHONAUT EDIT ADDITION END - JUKEBOX
   }
 
-  // PSYCHONAUT ADDITION START - JUKEBOX
+  // PSYCHONAUT ADDITION BEGIN - JUKEBOX
   setLocalVolume(volume: number): void {
     this.localVolume = volume;
 

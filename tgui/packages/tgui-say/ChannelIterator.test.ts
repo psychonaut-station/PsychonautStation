@@ -22,7 +22,7 @@ describe('ChannelIterator', () => {
     expect(channelIterator.current()).toBe('OOC');
   });
 
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
   it('should set a channel properly', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.current()).toBe('LOOC');
@@ -49,7 +49,7 @@ describe('ChannelIterator', () => {
     expect(channelIterator.isVisible()).toBe(false);
   });
 
-	// PSYCHONAUT ADDITION START - LOOC
+	// PSYCHONAUT ADDITION BEGIN - LOOC
   it('should return false when current channel is not visible', () => {
     channelIterator.set('LOOC');
     expect(channelIterator.isVisible()).toBe(false);

@@ -14,7 +14,7 @@ import { AudioPlayer } from './player';
 import { selectAudio } from './selectors';
 
 export const audioMiddleware = (store) => {
-// PSYCHONAUT EDIT ADDITION START - JUKEBOX
+// PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
 //  const player = new AudioPlayer();
 //  player.onPlay(() => {
 //    store.dispatch({ type: 'audio/playing' });

@@ -4,7 +4,7 @@
  * @license MIT
  */
 
-// PSYCHONAUT ADDITION START - JUKEBOX
+// PSYCHONAUT ADDITION BEGIN - JUKEBOX
 type State = {
   visible: boolean;
   playing: boolean;
@@ -58,7 +58,7 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopped') {
-// PSYCHONAUT EDIT ADDITION START - JUKEBOX
+// PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
 //    return {
 //      ...state,
 //       visible: false,
@@ -77,7 +77,7 @@ export const audioReducer = (state = initialState, action) => {
     };
   }
   if (type === 'audio/stopMusic') {
-// PSYCHONAUT EDIT ADDITION START - JUKEBOX
+// PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
 //    return {
 //      ...state,
 //      visible: false,
@@ -97,7 +97,7 @@ export const audioReducer = (state = initialState, action) => {
       visible: !state.visible,
     };
   }
-  // PSYCHONAUT ADDITION START - JUKEBOX
+  // PSYCHONAUT ADDITION BEGIN - JUKEBOX
   if (type === 'audio/jukebox/playing') {
     return {
       ...state,

@@ -74,7 +74,7 @@ export const chat_ooc: FeatureToggle = {
   component: CheckboxInput,
 };
 
-// PSYCHONAUT ADDITION START - LOOC
+// PSYCHONAUT ADDITION BEGIN - LOOC
 export const chat_looc: FeatureToggle = {
   name: 'Enable LOOC',
   category: 'CHAT',

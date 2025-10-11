@@ -5,7 +5,6 @@
 	zone = BODY_ZONE_CHEST
 	slot = ORGAN_SLOT_EXTERNAL_APPENDAGES
 
-	preference = "feature_arachnid_appendages"
 	dna_block = /datum/dna_block/feature/arachnid_appendages
 	restyle_flags = EXTERNAL_RESTYLE_FLESH
 	use_mob_sprite_as_obj_sprite = TRUE

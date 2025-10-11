@@ -346,3 +346,23 @@
   necromanceranne:
   - refactor: The vorpal scythe now handles empowerment more cleanly.
   - refactor: The pipegun now hints at its deep lore.
+2025-10-11:
+  Ghommie:
+  - refactor: Refactored shared nullrod effects into an element.
+  - bugfix: The carp-sie plushie is now an actual plushie.
+  - balance: The toy cargo pack can no longer spawn ANY type of plushie. Instead it'll
+      pull from the dedicated plushie spawner, which now contains the donk, rouny
+      and whiny plushies as well.
+  Iajret:
+  - bugfix: fixed not working MOD suit NVGs
+  Iamgoofball:
+  - bugfix: Fixes the clown/mime honorifics
+  SmArtKar:
+  - balance: Brimdust sacks no longer hit user's mount or allied mobs within lavaland
+      pressure.
+  - balance: Rush glands have had their speed boost reduced, but got a massive increase
+      in duration. Non-implanted glands also only protect from damage slowdowns as
+      opposed to all slowdowns in general.
+  - balance: Goliaths, raptors and goldgrubs are now affected by movespeed modifiers,
+      such as rush glands, when mounted.
+  - image: Brimdust sacks' effect have received a visual upgrade.

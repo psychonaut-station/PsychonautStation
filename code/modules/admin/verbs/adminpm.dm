@@ -764,19 +764,19 @@ ADMIN_VERB(cmd_admin_pm_panel, R_NONE, "Admin PM", "Show a list of clients to PM
 	return GLOB.directory[searching_ckey]
 
 /client/proc/receive_ahelp(reply_to, message, span_class = "adminsay")
-	// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
-	// to_chat(
-	// 	src,
-	// 	type = MESSAGE_TYPE_ADMINPM,
-	// 	html = fieldset_block(
-	// 		span_adminhelp("Administrator private message"),
-	// 		"<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>\n\n\
-	// 		<span class='[span_class]'>[message]</span>\n\n\
-	// 		<i class='adminsay'>Click on the administrator's name to reply.</i>",
-	// 		"boxed_message red_box"),
-	// 	confidential = TRUE
-	// )
-
+	/* PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+	to_chat(
+		src,
+		type = MESSAGE_TYPE_ADMINPM,
+		html = fieldset_block(
+			span_adminhelp("Administrator private message"),
+			"<span class='[span_class]'>Admin PM from-<b>[reply_to]</b></span>\n\n\
+			<span class='[span_class]'>[message]</span>\n\n\
+			<i class='adminsay'>Click on the administrator's name to reply.</i>",
+			"boxed_message red_box"),
+		confidential = TRUE
+	)
+	*/
 	var/message_title = ""
 	var/message_sender = ""
 	var/message_reply = ""

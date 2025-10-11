@@ -415,13 +415,22 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 	msg = sanitize(copytext_char(msg, 1, MAX_MESSAGE_LEN))
 	var/ref_src = "[REF(src)]"
 	//Message to be sent to all admins
+
+	/* PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
 	var/admin_msg = fieldset_block(
-		span_adminhelp("[REPLACE_SENDER("Admin", "Mentor")] Ticket [TicketHref("#[id]", ref_src)]"), // PSYCHONAUT EDIT ADDITION - MENTOR - Original:
-		//span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
+		span_adminhelp("Ticket [TicketHref("#[id]", ref_src)]"),
 		"<b>[LinkedReplyName(ref_src)]</b>\n\n\
 		[span_linkify(keywords_lookup(msg))]\n\n\
 		<b class='smaller'>[FullMonty(ref_src)]</b>",
 		"boxed_message red_box")
+	*/
+	var/admin_msg = fieldset_block(
+		span_adminhelp("[REPLACE_SENDER("Admin", "Mentor")] Ticket [TicketHref("#[id]", ref_src)]"),
+		"<b>[LinkedReplyName(ref_src)]</b>\n\n\
+		[span_linkify(keywords_lookup(msg))]\n\n\
+		<b class='smaller'>[FullMonty(ref_src)]</b>",
+		"boxed_message red_box")
+	// PSYCHONAUT EDIT ADDITION END - MENTOR
 
 	AddInteraction("<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>", player_message = "<font color='red'>[LinkedReplyName(ref_src)]: [msg]</font>")
 	log_admin_private("[REPLACE_SENDER("Admin", "Mentor")] Ticket #[id]: [key_name(initiator)]: [msg]") // PSYCHONAUT EDIT ADDITION - MENTOR - Original:

@@ -466,16 +466,6 @@
 		/obj/item/stack/sheet/glass = 10,
 		/obj/item/stack/sheet/plasteel = 5)
 
-<<<<<<< HEAD
-/obj/item/circuitboard/machine/bluespace_sender
-	name = "Bluespace Sender"
-	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
-	build_path = /obj/machinery/atmospherics/components/unary/bluespace_sender
-	req_components = list(
-		/obj/item/stack/cable_coil = 10,
-		/obj/item/stack/sheet/glass = 10,
-		/obj/item/stack/sheet/plasteel = 5)
-
 /obj/item/circuitboard/machine/rad_collector
 	name = "Particle Capture Array (Machine Board)"
 	greyscale_colors = CIRCUIT_COLOR_ENGINEERING
@@ -540,9 +530,6 @@
 		/datum/stock_part/micro_laser/tier4 = 2)
 	needs_anchored = FALSE
 
-
-=======
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec
 //Generic
 /obj/item/circuitboard/machine/component_printer
 	name = "\improper Component Printer"

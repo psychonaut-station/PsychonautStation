@@ -310,14 +310,10 @@
 	else if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = money + JACKPOT
 		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'")
-<<<<<<< HEAD
 		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
-=======
-		priority_announce("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!")
 		if(isliving(user) && (user in viewers(src)))
 			var/mob/living/living_user = user
 			living_user.add_mood_event("slots", /datum/mood_event/slots/win/jackpot)
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec
 		jackpots += 1
 		money = 0
 		if(paymode == HOLOCHIP)

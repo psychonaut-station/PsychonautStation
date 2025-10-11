@@ -663,13 +663,6 @@
   - bugfix: Luxury Shuttle windows now allow some projectiles to pass.
   timothymtorres:
   - qol: Climbable objects now show up as an examine tag.
-<<<<<<< HEAD
-2025-09-29:
-  Cameron-The-Raven:
-  - bugfix: Omens properly transfer their damage modifier when multiple are applied.
-  SmArtKar:
-  - bugfix: Fixed Select Equipment admin verb opening on a blank tab
-=======
 2025-09-27:
   Aliceee2ch:
   - bugfix: Cell charger now drops cell that it had inside after you destroy it
@@ -689,15 +682,12 @@
   lelandkemble:
   - bugfix: The icebox sec entrance door controlling buttons are now usable.
   - map: increases holopad coverage on wawastation
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec
   timothymtorres:
   - qol: 'Add several new examine categories for objects descs that include: bomb-proof,
       flammable, holograhic, crush-proof, and conductive. Also use hyphens for multi-word
       examine tags.'
   - bugfix: Fixes custom materials not appearing for things like structures when examined.
   - bugfix: Fix custom materials on wood tables and racks
-<<<<<<< HEAD
-=======
 2025-09-28:
   ArcaneMusic:
   - code_imp: Tweaked the animation curves on a number of different object/item/mob
@@ -806,4 +796,3 @@
   - bugfix: containers no longer close unexpectedly when the HUD refreshes (e.g.,
       when lying down/getting up)
   - bugfix: the dye spray can dye the external body parts again
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec

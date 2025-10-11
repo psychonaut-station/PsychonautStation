@@ -1689,11 +1689,9 @@
 	var/datum/atom_hud/datahud = GLOB.huds[GLOB.trait_to_hud[lost_trait]]
 	datahud.hide_from(src)
 
-<<<<<<< HEAD
-
 /mob/proc/get_mob_appearance()
 	return appearance
-=======
+
 /mob/proc/hud_trait_blocker_gained(datum/source, new_trait)
 	SIGNAL_HANDLER
 
@@ -1711,4 +1709,3 @@
 			continue
 		var/datum/atom_hud/datahud = GLOB.huds[GLOB.trait_to_hud[trait]]
 		datahud.show_to(src)
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec

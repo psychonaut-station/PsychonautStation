@@ -544,8 +544,3 @@
 	icon_state = "britcup_empty"
 	base_icon_state = "britcup"
 	volume = 30
-<<<<<<< HEAD
-	spillable = TRUE
-
-=======
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec

@@ -189,15 +189,11 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_count = blobs_legit.len
 
 	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
-<<<<<<< HEAD
 		priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
-=======
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
 
 		// Set status displays to biohazard alert
 		send_status_display_biohazard_alert()
 
->>>>>>> 9cfe263193fc48c4f60e026bdb140fb122c493ec
 		has_announced = TRUE
 
 /// Create a blob spore and link it to us

@@ -212,7 +212,6 @@ GLOBAL_LIST_INIT(traits_by_type, list(
 		"TRAIT_CAN_SIGN_ON_COMMS" = TRAIT_CAN_SIGN_ON_COMMS,
 		"TRAIT_CAN_STRIP" = TRAIT_CAN_STRIP,
 		"TRAIT_CAN_THROW_ITEMS" = TRAIT_CAN_THROW_ITEMS,
-		"TRAIT_CAN_USE_JUKEBOX" = TRAIT_CAN_USE_JUKEBOX, // PSYCHONAUT ADDITION - JUKEBOX
 		"TRAIT_CAN_USE_NUKE" = TRAIT_CAN_USE_NUKE,
 		"TRAIT_CATLIKE_GRACE" = TRAIT_CATLIKE_GRACE,
 		"TRAIT_CHANGELING_HIVEMIND_MUTE" = TRAIT_CHANGELING_HIVEMIND_MUTE,
@@ -807,6 +806,13 @@ GLOBAL_LIST(global_trait_name_map)
 		for(var/tname in GLOB.traits_by_type[key])
 			var/val = GLOB.traits_by_type[key][tname]
 			.[val] = tname
+
+	// PSYCHONAUT EDIT ADDITION START - TRAITS
+	for(var/key in GLOB.psychonaut_traits)
+		for(var/tname in GLOB.psychonaut_traits[key])
+			var/val = GLOB.psychonaut_traits[key][tname]
+			.[val] = tname
+	// PSYCHONAUT EDIT ADDITION END
 
 	return .
 

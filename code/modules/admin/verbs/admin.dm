@@ -113,6 +113,11 @@ ADMIN_VERB(cmd_admin_check_player_exp, R_ADMIN, "Player Playtime", "View player 
 			for(var/key in GLOB.admin_visible_traits)
 				if(istype(D,key))
 					available_traits += GLOB.admin_visible_traits[key]
+			// PSYCHONAUT EDIT ADDITION START - TRAITS
+			for(var/key in GLOB.psychonaut_visible_traits)
+				if(istype(D,key))
+					available_traits += GLOB.psychonaut_visible_traits[key]
+			// PSYCHONAUT EDIT ADDITION END
 		if("Remove")
 			if(!GLOB.admin_trait_name_map)
 				GLOB.admin_trait_name_map = generate_admin_trait_name_map()

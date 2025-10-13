@@ -6731,6 +6731,8 @@
 #include "interface\fonts\tiny_unicode.dm"
 #include "interface\fonts\vcr_osd_mono.dm"
 #include "modular_psychonaut\master_files\code\_globalvars\configuration.dm"
+#include "modular_psychonaut\master_files\code\_globalvars\traits\_traits.dm"
+#include "modular_psychonaut\master_files\code\_globalvars\traits\admin_tooling.dm"
 #include "modular_psychonaut\master_files\code\controllers\configuration\entries\game_options.dm"
 #include "modular_psychonaut\master_files\code\controllers\configuration\entries\general.dm"
 #include "modular_psychonaut\master_files\code\game\world.dm"

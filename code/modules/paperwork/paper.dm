@@ -289,7 +289,12 @@
 
 	if(LAZYLEN(stamp_cache) > MAX_PAPER_STAMPS_OVERLAYS)
 		return
-
+	// PSYCHONAUT EDIT CHANGE START - STAMPS - ORIGINAL:
+	for(var/obj/item/stamp as anything in GLOB.psychonaut_stamps)
+		if(stamp::icon_state == stamp_icon_state)
+			stamp_icon = stamp::icon
+			break
+	// PSYCHONAUT EDIT CHANGE END
 	var/mutable_appearance/stamp_overlay = mutable_appearance(stamp_icon, "paper_[stamp_icon_state]", appearance_flags = KEEP_APART | RESET_COLOR)
 	stamp_overlay.pixel_w = rand(-2, 2)
 	stamp_overlay.pixel_z = rand(-3, 2)

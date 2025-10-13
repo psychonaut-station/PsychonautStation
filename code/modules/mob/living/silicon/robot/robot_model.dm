@@ -180,6 +180,11 @@
 			if(!gun.chambered)
 				. = TRUE
 				gun.recharge_newshot() //try to reload a new shot.
+		// PSYCHONAUT EDIT ADDITION BEGIN - CARGO_BORG
+		else if(istype(module, /obj/item/universal_scanner))
+			var/obj/item/universal_scanner/sc = module
+			sc.paper_count = sc.max_paper_count
+		// PSYCHONAUT EDIT ADDITION END - CARGO_BORG
 
 	if(cyborg.toner < cyborg.tonermax)
 		. = TRUE
@@ -220,8 +225,6 @@
 	charger.balloon_alert(robot, "restock process complete")
 	charger.sendmats = FALSE
 
-
-
 /obj/item/robot_model/proc/get_or_create_estorage(storage_type)
 	return (locate(storage_type) in storages) || new storage_type(src)
 
@@ -236,6 +239,11 @@
 /obj/item/robot_model/proc/transform_to(new_config_type, forced = FALSE, transform = TRUE)
 	var/mob/living/silicon/robot/cyborg = loc
 	var/obj/item/robot_model/new_model = new new_config_type(cyborg)
+	// PSYCHONAUT EDIT ADDITION BEGIN - CARGO_BORG
+	if(!forced)
+		cyborg.icon = 'icons/mob/silicon/robots.dmi'
+		cyborg.icon_state = "robot"
+	// PSYCHONAUT EDIT ADDITION END - CARGO_BORG
 	if(!new_model.be_transformed_to(src, forced))
 		qdel(new_model)
 		return

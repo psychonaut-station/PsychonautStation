@@ -59,7 +59,8 @@
 	user.visible_message(span_suicide("[user] jams [src] in [user.p_their()] nose. It looks like [user.p_theyre()] trying to commit suicide!"))
 	user.adjust_eye_blur(12 SECONDS)
 	if(eyes)
-		eyes.apply_organ_damage(rand(6,8))
+		eyes.apply_organ_damage(rand(eye_dam_lower, eye_dam_higher)) // PSYCHONAUT EDIT ADDITION - CARGO_BORG - Original:
+		// eyes.apply_organ_damage(rand(6,8))
 	sleep(1 SECONDS)
 	return BRUTELOSS
 
@@ -99,18 +100,43 @@
 
 	. = ..()
 	if(. || !ishuman(hit_atom)) //if the plane is caught or it hits a nonhuman
+		// PSYCHONAUT ADDITION BEGIN - CARGO_BORG
+		if(scrap_on_impact)
+			var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))
+			scrap.color = color
+			qdel(src)
+		// PSYCHONAUT ADDITION END - CARGO_BORG
 		return
 	var/mob/living/carbon/human/hit_human = hit_atom
 	var/obj/item/organ/eyes/eyes = hit_human.get_organ_slot(ORGAN_SLOT_EYES)
 	if(!prob(hit_probability))
+		// PSYCHONAUT ADDITION BEGIN - CARGO_BORG
+		if(scrap_on_impact)
+			var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))
+			scrap.color = color
+			qdel(src)
+		// PSYCHONAUT ADDITION END - CARGO_BORG
 		return
 	if(hit_human.is_eyes_covered())
+		// PSYCHONAUT ADDITION BEGIN - CARGO_BORG
+		if(scrap_on_impact)
+			var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))
+			scrap.color = color
+			qdel(src)
+		// PSYCHONAUT ADDITION END - CARGO_BORG
 		return
 	visible_message(span_danger("\The [src] hits [hit_human] in the eye[eyes ? "" : " socket"]!"))
 	hit_human.adjust_eye_blur(12 SECONDS)
-	eyes?.apply_organ_damage(rand(6, 8))
+	eyes?.apply_organ_damage(rand(eye_dam_lower, eye_dam_higher)) // PSYCHONAUT EDIT ADDITION - CARGO_BORG - Original:
+	// eyes?.apply_organ_damage(rand(6, 8))
 	hit_human.Paralyze(4 SECONDS)
 	hit_human.emote("scream")
+	// PSYCHONAUT ADDITION BEGIN - CARGO_BORG
+	if(scrap_on_impact)
+		var/obj/item/paper/crumpled/scrap = new /obj/item/paper/crumpled(get_turf(loc))
+		scrap.color = color
+		qdel(src)
+	// PSYCHONAUT ADDITION END - CARGO_BORG
 
 /obj/item/paperplane/throw_at(atom/target, range, speed, mob/thrower, spin=FALSE, diagonals_first = FALSE, datum/callback/callback, gentle, quickstart = TRUE, throw_type_path = /datum/thrownthing)
 	return ..(target, range, speed, thrower, FALSE, diagonals_first, callback, quickstart = quickstart)

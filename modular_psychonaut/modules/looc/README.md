@@ -13,7 +13,6 @@ Anksiyetesi olan insanlar için uygun OOC.
 - `code/__DEFINES/preferences.dm`: `CHAT_LOOC`, `TOGGLES_DEFAULT_CHAT`
 - `code/__HELPERS/logging/_logging.dm`: `/atom/proc/log_message()`
 - `code/__HELPERS/logging/mob.dm`: `/mob/log_message()`
-
 - `code/datums/cinematics/_cinematic.dm`: `/datum/cinematic/proc/start_cinematic()`, `/datum/cinematic/proc/clean_up_cinematic()`
 - `code/datums/keybinding/living.dm`: `/datum/keybinding/living/look_up/var/hotkey_keys`, `/datum/keybinding/living/look_down/var/hotkey_keys`
 - `code/modules/admin/verbs/admin.dm`: `/proc/cmd_admin_mute()`

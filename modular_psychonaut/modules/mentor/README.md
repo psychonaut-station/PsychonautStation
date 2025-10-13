@@ -8,6 +8,9 @@ Mentor ticket ve rankını oyuna ekler
 
 ### TG Değişiklikleri
 
+`code/__DEFINES/admin.dm`: `R_EVERYTHING`, `R_MENTOR`
+`code/__DEFINES/span.dm`: `span_mentorsay`, `span_mentorsaytext`
+`code/__HELPERS/type2type.dm`: `/proc/rights2text()`
 `code/_globalvars/bitfields.dm`: `admin_flags`
 `code/datums/keybinding/client.dm`: `/datum/keybinding/client/admin_help/down()`
 `code/modules/admin/admin_ranks.dm`: `/datum/admin_rank/proc//process_keyword()`
@@ -25,10 +28,7 @@ Mentor ticket ve rankını oyuna ekler
 
 ### Definelar ve Helperlar
 
-`code/__DEFINES/admin.dm`: `R_EVERYTHING`, `R_MENTOR`
-`code/__DEFINES/span.dm`: `span_mentorsay`, `span_mentorsaytext`
 `code/__DEFINES/~psychonaut_defines/admin.dm`: `TICKET_TYPE_ADMIN`, `TICKET_TYPE_MENTOR`
-`code/__HELPERS/type2type.dm`: `/proc/rights2text()`
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 

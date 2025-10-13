@@ -33,6 +33,8 @@ export type Observable = {
   health: number;
   icon: string;
   mind_icon: string;
+  icon_state: string; // PSYCHONAUT ADDITION - SECHUDS
+  mind_icon_state: string; // PSYCHONAUT ADDITION - SECHUDS
   job: string;
   mind_job: string;
   name: string;

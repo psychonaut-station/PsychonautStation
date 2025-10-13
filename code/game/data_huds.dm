@@ -268,6 +268,10 @@ Security HUDs! Basic mode shows only the job.
 	var/sechud_icon_state = wear_id?.get_sechud_job_icon_state()
 	if(!sechud_icon_state || HAS_TRAIT(src, TRAIT_UNKNOWN_APPEARANCE))
 		sechud_icon_state = "hudno_id"
+	// PSYCHONAUT ADDITION BEGIN - SECHUDS
+	var/sechud_icon = get_sechud_icon(sechud_icon_state)
+	set_hud_image(ID_HUD, sechud_icon)
+	// PSYCHONAUT ADDITION END - SECHUDS
 	set_hud_image_state(ID_HUD, sechud_icon_state)
 	sec_hud_set_security_status()
 	update_visible_name()

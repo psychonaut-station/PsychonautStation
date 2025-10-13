@@ -24,6 +24,8 @@ const antagIcon: IconSettings = {
 };
 
 export function JobIcon(props: Props) {
+// PSYCHONAUT EDIT ADDITION BEGIN - SECHUDS - Original:
+/*
   const { item, realNameDisplay } = props;
 
   // We don't need to cast here but typescript isn't smart enough to know that
@@ -55,4 +57,40 @@ export function JobIcon(props: Props) {
       )}
     </div>
   );
+
+*/
+  const { item, realNameDisplay } = props;
+
+  // We don't need to cast here but typescript isn't smart enough to know that
+  const { icon_state = '', job = '', mind_icon_state = '', mind_job = '', icon = '', mind_icon = '' } = item;
+  let usedIcon = realNameDisplay ? mind_icon || icon : icon;
+  let usedIconState = realNameDisplay ? mind_icon_state || icon_state : icon_state;
+  let usedJob = realNameDisplay ? mind_job || job : job;
+
+  let iconSettings: IconSettings;
+  if ('antag' in item && !realNameDisplay) {
+    iconSettings = antagIcon;
+    usedJob = item.antag;
+    usedIconState = item.antag_icon;
+  } else {
+    iconSettings = normalIcon;
+    iconSettings.dmi = usedIcon;
+  }
+
+  return (
+    <div className="JobIcon">
+      {icon_state === 'borg' ? (
+        <Icon color="lightblue" name={JOB2ICON[usedJob]} ml={0.3} mt={0.4} />
+      ) : (
+        <DmIcon
+          icon={iconSettings.dmi}
+          icon_state={usedIconState}
+          style={{
+            transform: iconSettings.transform,
+          }}
+        />
+      )}
+    </div>
+  );
+// PSYCHONAUT EDIT ADDITION END - SECHUDS
 }

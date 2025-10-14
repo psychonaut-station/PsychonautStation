@@ -6743,6 +6743,7 @@
 #include "modular_psychonaut\master_files\code\modules\categories\log_category_game.dm"
 #include "modular_psychonaut\master_files\code\modules\client\client_procs.dm"
 #include "modular_psychonaut\master_files\code\modules\client\preferences\ooc.dm"
+#include "modular_psychonaut\master_files\code\modules\jobs\job_types\_job.dm"
 #include "modular_psychonaut\master_files\code\modules\logging\categories\log_category_game.dm"
 #include "modular_psychonaut\master_files\code\modules\paperwork\paperplane.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\cyborg_nodes.dm"
@@ -6754,6 +6755,7 @@
 #include "modular_psychonaut\modules\cargo_borg\code\robot_model.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_upgrades.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\screen_alert.dm"
+#include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
 #include "modular_psychonaut\modules\jukebox\code\audio.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
 #include "modular_psychonaut\modules\jukebox\code\mob_collector.dm"
@@ -6766,5 +6768,6 @@
 #include "modular_psychonaut\modules\mentor\code\adminhelp.dm"
 #include "modular_psychonaut\modules\sechuds\code\hud.dm"
 #include "modular_psychonaut\modules\sechuds\code\sechuds.dm"
+#include "modular_psychonaut\modules\spawn_point\code\spawn_point.dm"
 #include "modular_psychonaut\modules\stamps\code\stamps.dm"
 // END_INCLUDE

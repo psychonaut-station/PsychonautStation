@@ -6,7 +6,6 @@ Bazı şeyleri eklerken de orada yazmayan belirlediğimiz kurallar bulunuyor.
 
 - [`TRAITS`](modules/traits/README.md "modular_psychonaut/modules/traits/README.md") - Bir trait ekleyeceksen okumalısın.
 - [`GAGS`](modules/GAGS/README.md "modular_psychonaut/modules/GAGS/README.md") - Bir grayscale eşya ekleyeceksen okumalısın.
-- [`PROTECTED_ROLES`](modules/protected_roles/README.md "modular_psychonaut/modules/protected_roles/README.md") - Bir rol ekleyeceksen okumalısın.
 - [`SPAWN_POINT`](modules/spawn_point/README.md "modular_psychonaut/modules/spawn_point/README.md") - Bir rol ekleyeceksen okumalısın.
 - [`SECHUDS`](modules/sechuds/README.md "modular_psychonaut/modules/sechuds/README.md") - Bir rol ekleyeceksen okumalısın.
 - [`STAMPS`](modules/stamps/README.md "modular_psychonaut/modules/stamps/README.md") - Bir stamp ekleyeceksen okumalısın.

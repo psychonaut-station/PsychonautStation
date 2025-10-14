@@ -6,7 +6,13 @@ MODULE ID: SPAWN_POINT
 
 Kendi eklediğimiz her meslek için haritalara landmark koyamayacağımızdan meslekleri halihazırda var olan landmarklarda başlatmamızı sağlar.
 
-Mesleğin başlayacağı landmarkı belirtmek için [`spawn_point.dm`](code/spawn_point.dm "modular_psychonaut/modules/spawn_point/code/spawn_point.dm") dosyasına aşağıdaki şekil gibi kod satırı eklenmesi gerekiyor.
+Mesleğin başlayacağı landmarkı belirtmek için mesleğin dosyasına aşağıdaki şekil gibi kod satırı eklenmesi gerekiyor.
+
+```dm
+/datum/job/brig_physician
+	...
+  roundstart_spawn_point = /obj/effect/landmark/start/security_officer
+```
 
 ### TG Değişiklikleri
 

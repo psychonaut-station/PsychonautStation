@@ -675,7 +675,10 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 /datum/objective_item/steal/traitor/space_law
 	name = "a book on space law"
 	targetitem = /obj/item/book/manual/wiki/security_space_law
-	excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE)
+	// PSYCHONAUT EDIT CHANGE BEGIN - BRIG_PHYSICIAN - ORIGINAL:
+	// excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE)
+	excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN)
+	// PSYCHONAUT EDIT CHANGE END
 	exists_on_map = TRUE
 	difficulty = 1
 	steal_hint = "Sometimes found in the possession of members of Security and Lawyers. \
@@ -719,6 +722,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_WARDEN,
 		JOB_LAWYER,
 		JOB_DETECTIVE,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 1
@@ -751,6 +755,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	difficulty = 2
 	steal_hint = "A hand-held disabler, often found in the possession of Security Officers."
@@ -769,6 +774,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 2
@@ -795,6 +801,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 3
@@ -816,6 +823,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 3
@@ -833,6 +841,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 2 // lowered for the meme
@@ -874,6 +883,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_RESEARCH_DIRECTOR,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	difficulty = 1
 	steal_hint = "A pair of sunglasses. Lawyers often have a few pairs, as do some heads of staff. \
@@ -933,6 +943,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	difficulty = 2
 	steal_hint = "Steal any stun baton from Security."
@@ -950,6 +961,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_HEAD_OF_SECURITY,
 		JOB_SECURITY_OFFICER,
 		JOB_WARDEN,
+		JOB_BRIG_PHYSICIAN, // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
 	)
 	exists_on_map = TRUE
 	difficulty = 2

@@ -9,3 +9,5 @@ Bazı şeyleri eklerken de orada yazmayan belirlediğimiz kurallar bulunuyor.
 - [`SPAWN_POINT`](modules/spawn_point/README.md "modular_psychonaut/modules/spawn_point/README.md") - Bir rol ekleyeceksen okumalısın.
 - [`SECHUDS`](modules/sechuds/README.md "modular_psychonaut/modules/sechuds/README.md") - Bir rol ekleyeceksen okumalısın.
 - [`STAMPS`](modules/stamps/README.md "modular_psychonaut/modules/stamps/README.md") - Bir stamp ekleyeceksen okumalısın.
+
+<!-- Tg = 1ba3d35e320dd59a8fdf9c7dc73d409ee3c6966c IDli commitin üzerine oluşturulmuştur. Son psychonaut pri 556, Bu prden sonrasını da eklicez tüm hepsi bitince  -->

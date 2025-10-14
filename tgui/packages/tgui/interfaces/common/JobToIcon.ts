@@ -10,6 +10,7 @@ export const JOB2ICON = {
   Bitrunner: 'gamepad',
   Botanist: 'seedling',
   'Bridge Assistant': 'building-shield',
+  'Brig Physician': 'shield-heart', // PSYCHONAUT EDIT ADDITION - BRIG_PHYSICIAN
   Captain: 'crown',
   'Cargo Gorilla': 'paw',
   'Cargo Technician': 'box',

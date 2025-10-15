@@ -6744,6 +6744,7 @@
 #include "modular_psychonaut\master_files\code\game\objects\items\stacks\sheets\sheet_types.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\storage\boxes\job_boxes.dm"
 #include "modular_psychonaut\master_files\code\game\objects\structures\crates_lockers\closets\secure\bar.dm"
+#include "modular_psychonaut\master_files\code\modules\admin\view_variables\make_human.dm"
 #include "modular_psychonaut\master_files\code\modules\categories\log_category_game.dm"
 #include "modular_psychonaut\master_files\code\modules\client\client_procs.dm"
 #include "modular_psychonaut\master_files\code\modules\client\preferences\ooc.dm"

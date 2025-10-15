@@ -121,5 +121,8 @@
 		to_chat(admin, span_warning("[key_name(target)] had no active ahelp, aborting."))
 		return
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+	// admin.cmd_admin_pm(target, message)
 	admin.cmd_admin_pm(target, message)
+	// PSYCHONAUT EDIT ADDITION END - MENTOR
 	target.AddComponent(/datum/component/admin_popup, current_ticket)

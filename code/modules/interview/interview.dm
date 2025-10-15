@@ -137,7 +137,10 @@
 				. = TRUE
 		if ("adminpm")
 			if (usr.client?.holder && owner)
-				usr.client.cmd_admin_pm(owner, null)
+				// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+				// usr.client.cmd_admin_pm(owner, null)
+				usr.client.cmd_admin_pm(owner, null, FALSE)
+				// PSYCHONAUT EDIT ADDITION END - MENTOR
 		if("check_centcom")
 			if(usr.client?.holder && owner)
 				usr.client?.holder.open_centcom_bans(owner_ckey)

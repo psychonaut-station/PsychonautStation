@@ -156,6 +156,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 		JOB_QUARTERMASTER,
 		JOB_RESEARCH_DIRECTOR,
 		JOB_STATION_ENGINEER,
+		JOB_WORKER, // PSYCHONAUT EDIT ADDITION - WORKER
 	)
 	exists_on_map = TRUE
 	difficulty = 3
@@ -605,7 +606,10 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 /datum/objective_item/steal/blackbox
 	name = "the Blackbox"
 	targetitem = /obj/item/blackbox
-	excludefromjob = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN)
+	// PSYCHONAUT EDIT CHANGE BEGIN - WORKER - ORIGINAL:
+	// excludefromjob = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN)
+	excludefromjob = list(JOB_CHIEF_ENGINEER, JOB_STATION_ENGINEER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_WORKER)
+	// PSYCHONAUT EDIT CHANGE END - WORKER
 	exists_on_map = TRUE
 	difficulty = 4
 	steal_hint = "The station's data Blackbox, found solely within Telecommunications."
@@ -620,8 +624,12 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 /datum/objective_item/steal/traitor/insuls
 	name = "some insulated gloves"
 	targetitem = /obj/item/clothing/gloves/color/yellow
-	excludefromjob = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
-	item_owner = list(JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
+	// PSYCHONAUT EDIT CHANGE BEGIN - WORKER - ORIGINAL:
+	//excludefromjob = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
+	//item_owner = list(JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER)
+	excludefromjob = list(JOB_CARGO_TECHNICIAN, JOB_QUARTERMASTER, JOB_ATMOSPHERIC_TECHNICIAN, JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER, JOB_WORKER)
+	item_owner = list(JOB_STATION_ENGINEER, JOB_CHIEF_ENGINEER, JOB_WORKER)
+	// PSYCHONAUT EDIT CHANGE END - WORKER
 	exists_on_map = TRUE
 	difficulty = 1
 	steal_hint = "A basic pair of insulated gloves, usually worn by Assistants, Engineers, or Cargo Technicians."
@@ -678,7 +686,7 @@ GLOBAL_DATUM_INIT(steal_item_handler, /datum/objective_item_handler, new())
 	// PSYCHONAUT EDIT CHANGE BEGIN - BRIG_PHYSICIAN - ORIGINAL:
 	// excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE)
 	excludefromjob = list(JOB_SECURITY_OFFICER, JOB_WARDEN, JOB_HEAD_OF_SECURITY, JOB_LAWYER, JOB_DETECTIVE, JOB_BRIG_PHYSICIAN)
-	// PSYCHONAUT EDIT CHANGE END
+	// PSYCHONAUT EDIT CHANGE END - BRIG_PHYSICIAN
 	exists_on_map = TRUE
 	difficulty = 1
 	steal_hint = "Sometimes found in the possession of members of Security and Lawyers. \

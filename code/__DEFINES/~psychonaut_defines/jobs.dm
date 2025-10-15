@@ -12,3 +12,4 @@
 
 //Security
 #define JOB_BRIG_PHYSICIAN "Brig Physician"
+#define JOB_WORKER "Worker"

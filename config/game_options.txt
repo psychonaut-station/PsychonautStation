@@ -590,3 +590,13 @@ SPY_EASY_REWARD_TC_THRESHOLD 5
 ## Hard bounties grant uplink rewards that cost this much TC (or higher).
 ## Also functions as the upper end for medium bounties.
 SPY_HARD_REWARD_TC_THRESHOLD 15
+
+## Comment this if you want randomized rooms (random engine etc.)
+ALLOW_RANDOMIZED_ROOMS
+
+## Modular Room Weight Config
+## See modules\mapping\modular_rooms for the full modular room list
+## Make sure there is one space between the room_id and the weight value.
+
+#MODULAR_ROOM_WEIGHT meta_supermatter 10
+#MODULAR_ROOM_WEIGHT meta_singularity 10

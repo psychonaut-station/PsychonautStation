@@ -66,6 +66,8 @@
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
 
+	var/list/picked_rooms = list() // PSYCHONAUT ADDITION - MODULAR_ROOMS
+
 /**
  * Proc that simply loads the default map config, which should always be functional.
  */
@@ -236,6 +238,21 @@
 				stack_trace("Invalid path in mapping config for additional library areas: \[[path_as_text]\]")
 				continue
 			library_areas += path
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS
+	if("room_templates" in json)
+		if(!islist(json["room_templates"]))
+			log_world("map_config \"room_templates\" field is missing or invalid!")
+			return
+		var/list/L = json["room_templates"]
+		for(var/key in L)
+			var/value = L[key]
+			var/datum/map_template/modular_room/path = text2path(value)
+			if(!ispath(path,/datum/map_template/modular_room)) // Outdated
+				stack_trace("Invalid path in mapping config for room templates: \[[value]\]")
+				continue
+			picked_rooms[key] = path::room_id
+	// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 	if ("height_autosetup" in json)
 		height_autosetup = json["height_autosetup"]

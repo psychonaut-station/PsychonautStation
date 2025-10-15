@@ -305,10 +305,16 @@
 	return filtered_sets
 
 /// Load the parsed map into the world. You probably want [/proc/load_map]. Keep the signature the same.
-/datum/parsed_map/proc/load(x_offset = 0, y_offset = 0, z_offset = 0, crop_map = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, place_on_top = FALSE, new_z = FALSE)
+// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+// /datum/parsed_map/proc/load(x_offset = 0, y_offset = 0, z_offset = 0, crop_map = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, place_on_top = FALSE, new_z = FALSE)
+/datum/parsed_map/proc/load(x_offset = 0, y_offset = 0, z_offset = 0, crop_map = FALSE, no_changeturf = FALSE, x_lower = -INFINITY, x_upper = INFINITY, y_lower = -INFINITY, y_upper = INFINITY, z_lower = -INFINITY, z_upper = INFINITY, place_on_top = FALSE, new_z = FALSE, clear_area = FALSE)
+// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	//How I wish for RAII
 	Master.StartLoadingMap()
-	. = _load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+	// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+	// . = _load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+	. = _load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+	// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	Master.StopLoadingMap()
 
 #define MAPLOADING_CHECK_TICK \
@@ -323,7 +329,10 @@
 	}
 
 // Do not call except via load() above.
-/datum/parsed_map/proc/_load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+// /datum/parsed_map/proc/_load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+/datum/parsed_map/proc/_load_impl(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	PRIVATE_PROC(TRUE)
 	// Tell ss atoms that we're doing maploading
 	// We'll have to account for this in the following tick_checks so it doesn't overflow
@@ -334,11 +343,20 @@
 	// We make the assumption that if the inner procs runtime, we WANT to do cleanup on them, but we should stil tell our parents we failed
 	// Since well, we did
 	var/sucessful = FALSE
+	// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+	/*
 	switch(map_format)
 		if(MAP_TGM)
 			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
 		else
 			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+	*/
+	switch(map_format)
+		if(MAP_TGM)
+			sucessful = _tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+		else
+			sucessful = _dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+	// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 	// And we are done lads, call it off
 	SSatoms.map_loader_stop(REF(src))
@@ -371,7 +389,10 @@
 // In the tgm format, each gridset contains 255 lines, each line representing one tile, with 255 total gridsets
 // In the dmm format, each gridset contains 255 lines, each line representing one row of tiles, containing 255 * line length characters, with one gridset per z
 // You can think of dmm as storing maps in rows, whereas tgm stores them in columns
-/datum/parsed_map/proc/_tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+// /datum/parsed_map/proc/_tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+/datum/parsed_map/proc/_tgm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	// setup
 	var/list/modelCache = build_cache(no_changeturf)
 	var/space_key = modelCache[SPACE_KEY]
@@ -499,7 +520,10 @@
 			if(!cache)
 				SSatoms.map_loader_stop(REF(src))
 				CRASH("Undefined model key in DMM: [gset.gridLines[i]]")
-			build_coordinate(cache, locate(true_xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z)
+			// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+			// build_coordinate(cache, locate(true_xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z)
+			build_coordinate(cache, locate(true_xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z, clear_area)
+			// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 			// only bother with bounds that actually exist
 			if(!first_found)
@@ -523,7 +547,10 @@
 /// Stanrdard loading, not used in production
 /// Doesn't take advantage of any tgm optimizations, which makes it slower but also more general
 /// Use this if for some reason your map format is messy
-/datum/parsed_map/proc/_dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+// /datum/parsed_map/proc/_dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z)
+/datum/parsed_map/proc/_dmm_load(x_offset, y_offset, z_offset, crop_map, no_changeturf, x_lower, x_upper, y_lower, y_upper, z_lower, z_upper, place_on_top, new_z, clear_area)
+// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	// setup
 	var/list/modelCache = build_cache(no_changeturf)
 	var/space_key = modelCache[SPACE_KEY]
@@ -655,7 +682,10 @@
 				if(!cache)
 					SSatoms.map_loader_stop(REF(src))
 					CRASH("Undefined model key in DMM: [model_key]")
-				build_coordinate(cache, locate(xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z)
+				// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+				// build_coordinate(cache, locate(xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z)
+				build_coordinate(cache, locate(xcrd, ycrd, zcrd), no_afterchange, place_on_top, new_z, clear_area)
+				// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 				// only bother with bounds that actually exist
 				if(!first_found)
@@ -889,7 +919,10 @@ GLOBAL_LIST_EMPTY(map_model_default)
 		.[model_key] = list(members, members_attributes)
 	return .
 
-/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z)
+// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+// /datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z)
+/datum/parsed_map/proc/build_coordinate(list/model, turf/crds, no_changeturf as num, placeOnTop as num, new_z, clear_area as num)
+// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 	// If we don't have a turf, nothing we will do next will actually acomplish anything, so just go back
 	// Note, this would actually drop area vvs in the tile, but like, why tho
 	if(!crds)
@@ -954,6 +987,26 @@ GLOBAL_LIST_EMPTY(map_model_default)
 			instance = create_atom(members[index], crds)//first preloader pass
 		else
 			instance = crds.ChangeTurf(members[index], null, CHANGETURF_DEFER_CHANGE)
+
+		// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS - Original:
+		if(clear_area)
+			var/turf/T = instance
+			for(var/atom/thing in T)
+				if(istype(thing, /obj/effect/landmark))
+					continue
+				if(ismachinery(thing))
+					var/skip = FALSE
+					for(var/object in members)
+						if(ispath(object, /obj/effect/landmark/keep))
+							var/obj/effect/landmark/keep/keeper = object
+							if(!isnull(keeper.keep_type) && istype(thing, keeper.keep_type))
+								skip = TRUE
+					if(skip)
+						continue
+					SSmapping.machines_delete_after += thing
+				else
+					qdel(thing, force=TRUE)
+		// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 		if(GLOB.use_preloader && instance)//second preloader pass, for those atoms that don't ..() in New()
 			world.preloader_load(instance)

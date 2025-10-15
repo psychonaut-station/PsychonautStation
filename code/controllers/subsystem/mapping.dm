@@ -173,6 +173,8 @@ SUBSYSTEM_DEF(mapping)
 	initialize_reserved_level(base_transit.z_value)
 	calculate_default_z_level_gravities()
 
+	RegisterSignal(SSmachines, COMSIG_SUBSYSTEM_POST_INITIALIZE, PROC_REF(machiness_post_init)) // PSYCHONAUT ADDITION - MODULAR_ROOMS
+
 	return SS_INIT_SUCCESS
 
 /datum/controller/subsystem/mapping/fire(resumed)
@@ -428,6 +430,7 @@ Used by the AI doomsday and the self-destruct nuke.
 		var/bounds = pm.bounds
 		var/x_offset = bounds ? round(world.maxx / 2 - bounds[MAP_MAXX] / 2) + 1 : 1
 		var/y_offset = bounds ? round(world.maxy / 2 - bounds[MAP_MAXY] / 2) + 1 : 1
+		all_offsets[name] = list("x" = x_offset, "y" = y_offset) // PSYCHONAUT ADDITION - MODULAR_ROOMS
 		if (!pm.load(x_offset, y_offset, start_z + parsed_maps[P], no_changeturf = TRUE, new_z = TRUE))
 			errorList |= pm.original_path
 	if(!silent)
@@ -445,6 +448,14 @@ Used by the AI doomsday and the self-destruct nuke.
 	station_start = world.maxz + 1
 	INIT_ANNOUNCE("Loading [current_map.map_name]...")
 	LoadGroup(FailedZs, "Station", current_map.map_path, current_map.map_file, current_map.traits, ZTRAITS_STATION, height_autosetup = current_map.height_autosetup)
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - MODULAR_ROOMS
+	load_room_templates()
+
+	if(CONFIG_GET(flag/allow_randomized_rooms))
+		pick_room_types()
+		load_random_rooms()
+	// PSYCHONAUT EDIT ADDITION END - MODULAR_ROOMS
 
 	if(SSdbcore.Connect())
 		var/datum/db_query/query_round_map_name = SSdbcore.NewQuery({"

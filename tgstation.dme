@@ -6763,6 +6763,7 @@
 #include "modular_psychonaut\modules\cargo_borg\code\robot_upgrades.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\screen_alert.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
+#include "modular_psychonaut\modules\items\code\wiki_manuals.dm"
 #include "modular_psychonaut\modules\jukebox\code\audio.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
 #include "modular_psychonaut\modules\jukebox\code\mob_collector.dm"

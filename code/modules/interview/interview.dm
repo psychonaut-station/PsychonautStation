@@ -56,9 +56,21 @@
 	message_admins(span_adminnotice("[key_name(approved_by)] has approved [link_self()] for [owner_ckey][!owner ? "(DC)": ""]."))
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
-		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-			+ "\n[span_adminsay("Your interview was approved, you will now be reconnected in 5 seconds.")]", confidential = TRUE)
+		// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
+		// to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
+		//	+ "\n[span_adminsay("Your interview was approved, you will now be reconnected in 5 seconds.")]", confidential = TRUE)
+		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \
+			+ "\n[span_adminsay("Başvurunuz onaylandı, 5 saniye içinde yeniden bağlanacaksınız.")]", confidential = TRUE)
+		// PSYCHONAUT EDIT ADDITION END - INTERVIEW
 		addtimer(CALLBACK(src, PROC_REF(reconnect_owner)), 5 SECONDS)
+
+	// PSYCHONAUT ADDITION BEGIN - INTERVIEW
+	var/clear_message = ""
+	for (var/i in 1 to questions.len)
+		clear_message += "== Soru: [questions[i]]\nCevap: [responses.len < i ? "Cevap yok" : responses[i]] ==\n"
+
+	send2adminchat("interview-approved", "[owner_ckey] adlı kişinin başvurusu [key_name(approved_by)] tarafından onalyandı.\n```[clear_message]```")
+	// PSYCHONAUT ADDITION END - INTERVIEW
 
 /**
  * Denies the interview and adds the owner to the cooldown for new interviews.
@@ -76,10 +88,14 @@
 	addtimer(CALLBACK(GLOB.interviews, TYPE_PROC_REF(/datum/interview_manager, release_from_cooldown), owner_ckey), 18 SECONDS)
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
-		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-			+ "\n<span class='adminsay'>Unfortunately your interview was denied. Please try submitting another questionnaire." \
-			+ " You may do this in three minutes.</span>", confidential = TRUE)
-
+		// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
+		// to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
+		//	+ "\n<span class='adminsay'>Unfortunately your interview was denied. Please try submitting another questionnaire." \
+		//	+ " You may do this in three minutes.</span>", confidential = TRUE)
+		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \
+			+ "\n<span class='adminsay'>Başvurunuz reddedildi. Lütfen soruları doğru bir şekilde cevaplayın." \
+			+ " 3 dakika sonra tekrardan başvuru gönderebileceksiniz.</span>", confidential = TRUE)
+		// PSYCHONAUT EDIT ADDITION END - INTERVIEW
 /**
  * Forces client to reconnect, used in the callback from approval
  */
@@ -100,8 +116,12 @@
 		if (I) // we can be returned nothing if the user is on cooldown
 			I.ui_interact(M)
 		else
-			to_chat(usr, "<span class='adminsay'>You are on cooldown for interviews. Please" \
-				+ " wait at least 3 minutes before starting a new questionnaire.</span>", confidential = TRUE)
+			// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
+			// to_chat(usr, "<span class='adminsay'>You are on cooldown for interviews. Please" \
+			//	+ " wait at least 3 minutes before starting a new questionnaire.</span>", confidential = TRUE)
+			to_chat(usr, "<span class='adminsay'>Şu an başvuru gönderemezsiniz. Lütfen" \
+				+ " 3 dakika bekleyin.</span>", confidential = TRUE)
+			// PSYCHONAUT EDIT ADDITION END - INTERVIEW
 
 /datum/interview/ui_interact(mob/user, datum/tgui/ui = null)
 	ui = SStgui.try_update_ui(user, src, ui)

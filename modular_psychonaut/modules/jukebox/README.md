@@ -32,7 +32,7 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 
 - `code/__DEFINES/~psychonaut_defines/signals.dm`: `COMSIG_PROXIMITY_MOB_ENTERED`, `COMSIG_PROXIMITY_MOB_LEFT`, `COMSIG_PROXIMITY_MOB_MOVED`, `COMSIG_WEB_SOUND_STARTED`, `COMSIG_WEB_SOUND_ENDED`, `COMSIG_WEB_SOUND_STOPPED`
 - `code/__DEFINES/~psychonaut_defines/traits/declarations.dm`: `TRAIT_CAN_USE_JUKEBOX`
-- `code/__DEFINES/~psychonaut_defines/web_sound.dm`
+- `code/__DEFINES/~psychonaut_defines/web_sound.dm`: `WEB_SOUND_ERR_YTDL_NOT_CONFIGURED`, `WEB_SOUND_ERR_INVALID_URL`, `WEB_SOUND_ERR_NOT_HTTPS`, `WEB_SOUND_ERR_JSON_RETRIEVAL`, `WEB_SOUND_ERR_JSON_PARSING`, `WEB_SOUND_ERR_DURATION`, `WEB_SOUND_CACHE_DURATION`, `WEB_SOUND_MAX_DURATION`
 - `code/__HELPERS/~psychonaut_helpers/logging.dm`: `/proc/log_jukebox()`
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar

@@ -4,6 +4,7 @@ Modülerlik için genel olarak [Skyrat](https://github.com/Skyrat-SS13/Skyrat-tg
 
 Bazı şeyleri eklerken de orada yazmayan belirlediğimiz kurallar bulunuyor.
 
+- [`ITEMS`](modules/items/README.md "modular_psychonaut/modules/items/README.md") - Bir item ekleyeceksen okumalısın.
 - [`TRAITS`](modules/traits/README.md "modular_psychonaut/modules/traits/README.md") - Bir trait ekleyeceksen okumalısın.
 - [`GAGS`](modules/GAGS/README.md "modular_psychonaut/modules/GAGS/README.md") - Bir grayscale eşya ekleyeceksen okumalısın.
 - [`SPAWN_POINT`](modules/spawn_point/README.md "modular_psychonaut/modules/spawn_point/README.md") - Bir rol ekleyeceksen okumalısın.

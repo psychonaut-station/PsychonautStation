@@ -61,7 +61,10 @@ ADMIN_VERB(radio_report, R_DEBUG, "Radio Report", "Shows a report of all radio d
 	browser.open()
 	BLACKBOX_LOG_ADMIN_VERB("Show Radio Report")
 
-ADMIN_VERB(reload_admins, R_NONE, "Reload Admins", "Reloads all admins from the database.", ADMIN_CATEGORY_MAIN)
+// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+// ADMIN_VERB(reload_admins, R_NONE, "Reload Admins", "Reloads all admins from the database.", ADMIN_CATEGORY_MAIN)
+ADMIN_VERB(reload_admins, R_ADMIN, "Reload Admins", "Reloads all admins from the database.", ADMIN_CATEGORY_MAIN)
+// PSYCHONAUT EDIT ADDITION END - MENTOR
 	var/confirm = tgui_alert(user, "Are you sure you want to reload all admins?", "Confirm", list("Yes", "No"))
 	if(confirm != "Yes")
 		return

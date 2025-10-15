@@ -16,11 +16,16 @@ Mentor ticket ve rankını oyuna ekler
 - `code/datums/keybinding/client.dm`: `/datum/keybinding/client/admin_help/down()`
 - `code/modules/admin/admin_ranks.dm`: `/datum/admin_rank/proc//process_keyword()`
 - `code/modules/admin/topic.dm`: `/datum/admins/Topic()`
-- `code/modules/admin/verbs/admin.dm`
-- `code/modules/admin/verbs/adminhelp.dm`
-- `code/modules/admin/verbs/adminpm.dm`
+- `code/modules/admin/verbs/admin.dm`: `show_tip`, `/client/proc/trigger_centcom_recall()`
+- `code/modules/admin/verbs/adminhelp.dm`: `/datum/admin_help_tickets/proc/BrowseTickets()`, `REPLACE_SENDER`, `/datum/admin_help/var/ticket_type`, `/datum/admin_help/New()`, `/datum/admin_help/proc/TimeoutVerb()`, `/datum/admin_help/proc/MessageNoRecipient()`, `/datum/admin_help/proc/reply_to_admins_notification()`, `/datum/admin_help/proc/Reject()`, `/datum/admin_help/proc/TicketPanel()`, `/client/proc/giveadminhelpverb()`
+- `code/modules/admin/verbs/adminpm.dm`: `cmd_admin_pm_context`, `cmd_admin_pm_panel`, `/client/proc/cmd_ahelp_reply()`, `/client/proc/cmd_admin_pm()`, `/client/proc/sends_adminpm_message()`, `/client/proc/receive_ahelp()`
 - `code/modules/admin/verbs/commandreport.dm`: `change_command_name`, `create_command_report`, `/datum/command_report_menu`
+- `code/modules/admin/verbs/diagnostics.dm`: `reload_admins`
 - `code/modules/admin/verbs/individual_logging.dm`: `/proc/show_individual_logging_panel()`
+- `code/modules/admin/verbs/reestablish_db_connection.dm`: `reestablish_db_connection`
+- `code/modules/admin/verbs/secrets.dm`: `secrets`
+- `code/modules/admin/view_variables/view_variables.dm`: `debug_variables`
+- `code/modules/admin/admin_investigate.dm`: `investigate_show`
 - `code/modules/interview/interview.dm`: `/datum/interview/ui_act()`
 - `code/modules/requests/request_manager.dm`: `/datum/request_manager`
 

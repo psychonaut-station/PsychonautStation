@@ -57,8 +57,10 @@
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
-		// to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-		//	+ "\n[span_adminsay("Your interview was approved, you will now be reconnected in 5 seconds.")]", confidential = TRUE)
+		/*
+		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
+			+ "\n[span_adminsay("Your interview was approved, you will now be reconnected in 5 seconds.")]", confidential = TRUE)
+		*/
 		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \
 			+ "\n[span_adminsay("Başvurunuz onaylandı, 5 saniye içinde yeniden bağlanacaksınız.")]", confidential = TRUE)
 		// PSYCHONAUT EDIT ADDITION END - INTERVIEW
@@ -89,9 +91,11 @@
 	if (owner)
 		SEND_SOUND(owner, sound('sound/effects/adminhelp.ogg'))
 		// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
-		// to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
-		//	+ "\n<span class='adminsay'>Unfortunately your interview was denied. Please try submitting another questionnaire." \
-		//	+ " You may do this in three minutes.</span>", confidential = TRUE)
+		/*
+		to_chat(owner, "<font color='red' size='4'><b>-- Interview Update --</b></font>" \
+			+ "\n<span class='adminsay'>Unfortunately your interview was denied. Please try submitting another questionnaire." \
+			+ " You may do this in three minutes.</span>", confidential = TRUE)
+		*/
 		to_chat(owner, "<font color='red' size='4'><b>-- Başvuru --</b></font>" \
 			+ "\n<span class='adminsay'>Başvurunuz reddedildi. Lütfen soruları doğru bir şekilde cevaplayın." \
 			+ " 3 dakika sonra tekrardan başvuru gönderebileceksiniz.</span>", confidential = TRUE)
@@ -117,8 +121,10 @@
 			I.ui_interact(M)
 		else
 			// PSYCHONAUT EDIT ADDITION BEGIN - INTERVIEW - Original:
-			// to_chat(usr, "<span class='adminsay'>You are on cooldown for interviews. Please" \
-			//	+ " wait at least 3 minutes before starting a new questionnaire.</span>", confidential = TRUE)
+			/*
+			to_chat(usr, "<span class='adminsay'>You are on cooldown for interviews. Please" \
+				+ " wait at least 3 minutes before starting a new questionnaire.</span>", confidential = TRUE)
+			*/
 			to_chat(usr, "<span class='adminsay'>Şu an başvuru gönderemezsiniz. Lütfen" \
 				+ " 3 dakika bekleyin.</span>", confidential = TRUE)
 			// PSYCHONAUT EDIT ADDITION END - INTERVIEW

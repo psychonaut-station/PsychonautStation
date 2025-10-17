@@ -102,7 +102,10 @@
 
 		new /obj/structure/ghost_portal(get_turf(src), candidate_list)
 
-		priority_announce("Anomaly has reached critical mass. Ectoplasmic outburst detected.", "Anomaly Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce("Anomaly has reached critical mass. Ectoplasmic outburst detected.", "Anomaly Alert")
+		priority_announce("Anomali kritik kütleye ulaştı. Ektoplazmik patlama tespit edildi.", "Anomali Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /**
  * Manages updating the sprite for the anomaly based on how many orbiters it has.

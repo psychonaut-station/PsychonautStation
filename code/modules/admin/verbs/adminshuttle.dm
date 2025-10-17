@@ -74,6 +74,8 @@ ADMIN_VERB(disable_shuttle, R_ADMIN, "Disable Shuttle", "Those fuckers aren't ge
 	SSshuttle.admin_emergency_no_recall = TRUE
 	SSshuttle.emergency.setTimer(0)
 	SSshuttle.emergency.mode = SHUTTLE_DISABLED
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "Emergency Shuttle uplink failure, shuttle disabled until further notice.",
 		title = "Uplink Failure",
@@ -81,6 +83,15 @@ ADMIN_VERB(disable_shuttle, R_ADMIN, "Disable Shuttle", "Those fuckers aren't ge
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "grey",
 	)
+	*/
+	priority_announce(
+		text = "Acil durum mekiği uplink arızası, mekik bir sonraki duyuruya kadar devre dışı.",
+		title = "Uplink Uyarısı",
+		sound = 'sound/announcer/announcement/announce_dig.ogg',
+		sender_override = "Acil Durum Mekiği Uyarısı",
+		color_override = "grey",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 ADMIN_VERB(enable_shuttle, R_ADMIN, "Enable Shuttle", "Those fuckers ARE getting out.", ADMIN_CATEGORY_SHUTTLE)
 	if(SSshuttle.emergency.mode != SHUTTLE_DISABLED)
@@ -100,6 +111,8 @@ ADMIN_VERB(enable_shuttle, R_ADMIN, "Enable Shuttle", "Those fuckers ARE getting
 	if(SSshuttle.last_call_time < 10 SECONDS && SSshuttle.last_mode != SHUTTLE_IDLE)
 		SSshuttle.last_call_time = 10 SECONDS //Make sure no insta departures.
 	SSshuttle.emergency.setTimer(SSshuttle.last_call_time)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "Emergency Shuttle uplink reestablished, shuttle enabled.",
 		title = "Uplink Restored",
@@ -107,6 +120,15 @@ ADMIN_VERB(enable_shuttle, R_ADMIN, "Enable Shuttle", "Those fuckers ARE getting
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "green",
 	)
+	*/
+	priority_announce(
+		text = "Acil durum mekiği bağlantısı yeniden kuruldu, mekik devrede.",
+		title = "Uplink Yeniden Kuruldu",
+		sound = 'sound/announcer/announcement/announce_dig.ogg',
+		sender_override = "Acil Durum Mekiği Uyarısı",
+		color_override = "green",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 ADMIN_VERB(hostile_environment, R_ADMIN, "Hostile Environment", "Disable the shuttle, naturally.", ADMIN_CATEGORY_SHUTTLE)
 	switch(tgui_alert(user, "Select an Option", "Hostile Environment Manager", list("Enable", "Disable", "Clear All")))

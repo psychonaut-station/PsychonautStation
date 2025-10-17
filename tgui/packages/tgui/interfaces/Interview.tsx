@@ -73,6 +73,8 @@ export const Interview = (props) => {
   const allAnswered = questions.every((q) => q.response);
   const numAnswered = questions.filter((q) => q.response)?.length;
 
+  // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+  /*
   return (
     <Window
       width={550}
@@ -157,11 +159,100 @@ export const Interview = (props) => {
       </Window.Content>
     </Window>
   );
+  */
+  return (
+    <Window
+      width={550}
+      height={600}
+      canClose={is_admin || status === 'interview_approved'}
+    >
+      <Window.Content scrollable>
+        {(!read_only && (
+          <Section title="Hoş Geldiniz!">
+            <p>{linkifyText(welcome_message)}</p>
+          </Section>
+        )) || <RenderedStatus status={status} queue_pos={queue_pos} />}
+        <Section
+          title="Başvuru"
+          buttons={
+            <span>
+              <Button
+                onClick={() => act('submit')}
+                disabled={read_only || !allAnswered || !questions.length}
+                icon="envelope"
+                tooltip={
+                  !allAnswered &&
+                  `Lütfen bütün soruları cevapla.
+                     ${numAnswered} / ${questions.length}`
+                }
+              >
+                {read_only ? 'Gönderildi' : 'Gönder'}
+              </Button>
+              {!!is_admin && status === 'interview_pending' && (
+                <span>
+                  <Button disabled={!connected} onClick={() => act('adminpm')}>
+                    Admin PM
+                  </Button>
+                  <Button color="good" onClick={() => act('approve')}>
+                    Onayla
+                  </Button>
+                  <Button color="bad" onClick={() => act('deny')}>
+                    Reddet
+                  </Button>
+                  {!!centcom_connected && (
+                    <Button
+                      color={has_permabans ? 'bad' : 'average'}
+                      tooltip={
+                        has_permabans
+                          ? 'This user has permabans in their history!'
+                          : ''
+                      }
+                      onClick={() => act('check_centcom')}
+                    >
+                      Check Centcom
+                    </Button>
+                  )}
+                </span>
+              )}
+            </span>
+          }
+        >
+          {!read_only && (
+            <>
+              <Box as="p" color="label">
+                Lütfen soruları yanıtlayın.
+                <ul>
+                  <li>
+                    Enter ya da Gönder butonuna basarak formunu çevrimiçi
+                    adminlere gönderebilirsin.
+                  </li>
+                  <li>
+                    Gönder butonuna basmadığın sürece cevaplarını
+                    düzenleyebilirsin.
+                  </li>
+                  <li>Formu doldurduğunda GÖNDER tuşuna bas.</li>
+                </ul>
+              </Box>
+              <NoticeBox info align="center">
+                Formu gönderdikten sonra cevaplarını düzenleyemezsin
+              </NoticeBox>
+            </>
+          )}
+          {questions.map((question) => (
+            <QuestionArea key={question.qidx} {...question} />
+          ))}
+        </Section>
+      </Window.Content>
+    </Window>
+  );
+  // PSYCHONAUT EDIT CHANGE END
 };
 
 const RenderedStatus = (props: { status: string; queue_pos: number }) => {
   const { status, queue_pos } = props;
 
+  // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+  /*
   switch (status) {
     case STATUS.Approved:
       return <NoticeBox success>This interview was approved.</NoticeBox>;
@@ -175,6 +266,20 @@ const RenderedStatus = (props: { status: string; queue_pos: number }) => {
         </NoticeBox>
       );
   }
+  */
+  switch (status) {
+    case STATUS.Approved:
+      return <NoticeBox success>Başvurunuz onaylandı.</NoticeBox>;
+    case STATUS.Denied:
+      return <NoticeBox danger>Başvurunuz reddedildi.</NoticeBox>;
+    default:
+      return (
+        <NoticeBox info>
+          Başvurunuz aktif olan adminlere gönderildi. {queue_pos}. sıradasınız.
+        </NoticeBox>
+      );
+  }
+  // PSYCHONAUT EDIT CHANGE END
 };
 
 const QuestionArea = (props: Question) => {
@@ -197,6 +302,8 @@ const QuestionArea = (props: Question) => {
 
   const isSaved = !!response && !changedResponse;
 
+  // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+  /*
   return (
     <Section
       title={`Question ${qidx}`}
@@ -226,4 +333,35 @@ const QuestionArea = (props: Question) => {
       )}
     </Section>
   );
+  */
+  return (
+    <Section
+      title={`Soru ${qidx}`}
+      buttons={
+        <Button
+          disabled={!saveAvailable}
+          onClick={saveResponse}
+          icon={isSaved ? 'check' : 'save'}
+        >
+          {isSaved ? 'Kaydedildi' : 'kaydet'}
+        </Button>
+      }
+    >
+      <p>{linkifyText(question)}</p>
+      {read_only || is_admin ? (
+        <BlockQuote>{response || 'Cevap yok.'}</BlockQuote>
+      ) : (
+        <TextArea
+          fluid
+          height={10}
+          maxLength={500}
+          onChange={setUserInput}
+          onEnter={saveResponse}
+          placeholder="Cevabını buraya yaz. En fazla 500 karakter girebilirsin. Bittiğinde ENTER tuşuna bas."
+          value={response || undefined}
+        />
+      )}
+    </Section>
+  );
+  // PSYCHONAUT EDIT CHANGE END
 };

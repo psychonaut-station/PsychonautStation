@@ -115,6 +115,8 @@
 		))
 		offset_order -= offset_order[1]
 
+	// PSYCHONAUT EDIT REMOVAL START (Disables Forum)
+	/*
 	var/forumurl = CONFIG_GET(string/forumurl)
 	if(forumurl)
 		resource_panels += page_holder.give_screen_object(new /atom/movable/screen/escape_menu/lobby_button/small/collapsible(
@@ -128,6 +130,8 @@
 			/* end_point */ offset_order[1],
 		))
 		offset_order -= offset_order[1]
+	*/
+	// PSYCHONAUT EDIT REMOVAL END
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(rulesurl)

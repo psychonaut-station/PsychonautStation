@@ -663,12 +663,23 @@
 			COOLDOWN_START(src, send_care_package_at, send_care_package_time)
 			var/obj/machinery/nebula_shielding/emergency/rad_shield = /obj/machinery/nebula_shielding/emergency/radiation
 
+			// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+			/*
 			priority_announce(
 				{"Is everything okay there? We're getting high radiation readings from inside the station. \
 				We're sending an emergency shielding unit for now, it will last [initial(rad_shield.detonate_in) / (1 MINUTES)] minutes. \n\n\
 				Set up the nebula shielding. You can order construction kits at cargo if yours have been lost.
 				"}
 			)
+			*/
+			priority_announce(
+				{"Her şey yolunda mı? İstasyonunuzun içinden yüksek radyasyon değerleri alıyoruz. \
+				Şimdilik bir acil durum kalkanı gönderiyoruz, Etkisi [initial(rad_shield.detonate_in) / (1 MINUTES)] dakika sürecektir. \n\n\
+				Nebula kalkanını kurun. Gerekli yapım kitleri mühendislik departmanınızda bulunmaktadır. \
+				Eğer sizinkiler kaybolduysa kargodan yapım kitleri sipariş edebilirsiniz.
+				"}
+			)
+			// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 			addtimer(CALLBACK(src, PROC_REF(send_care_package)), 10 SECONDS)
 		return
@@ -685,13 +696,23 @@
 /datum/station_trait/nebula/hostile/radiation/send_instructions()
 	var/obj/machinery/nebula_shielding/shielder = /obj/machinery/nebula_shielding/radiation
 	var/obj/machinery/gravity_generator/main/innate_shielding = /obj/machinery/gravity_generator/main
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	//How long do we have until the first shielding unit needs to be up?
 	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] minute\s"
 	//For how long each shielding unit will protect for
 	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] minute\s"
+	*/
+	//How long do we have until the first shielding unit needs to be up?
+	var/deadline = "[(initial(innate_shielding.radioactive_nebula_shielding) * intensity_increment_time) / (1 MINUTES)] dakika"
+	//For how long each shielding unit will protect for
+	var/shielder_time = "[(initial(shielder.shielding_strength) * intensity_increment_time) / (1 MINUTES)] dakika"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	//Max shielders, excluding the grav-gen to avoid confusion when that goes down
 	var/max_shielders = ((maximum_nebula_intensity / intensity_increment_time)) / initial(shielder.shielding_strength)
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/announcement = {"Your station has been constructed inside a radioactive nebula. \
 		Standard spacesuits will not protect against the nebula and using them is strongly discouraged. \n\n\
 
@@ -701,6 +722,17 @@
 		You have [deadline] before the nebula enters the station. \
 		Every shielding unit will provide an additional [shielder_time] of protection, fully protecting the station with [max_shielders] shielding units.
 	"}
+	*/
+	var/announcement = {"İstasyonunuz radyoaktif bir nebulanın içinde inşa edilmiş durumda. \
+		Standart uzay giysileri nebulaya karşı koruma sağlamaz ve kullanılması kesinlikle önerilmez. \n\n\
+
+		SON DERECE ÖNEMLİ: İstasyon nebulanın derinliklerine doğru sürüklenmektedir ve yerçekimi jeneratörünün radyasyon kalkanı \
+		çok uzun süre dayanmayacaktır. Mühendislik departmanında nebulaya karşı koruma kalkanları kurmak için gerekli \
+		tüm malzemeler bulunuyor. Kargodan ilave malzeme sandıkları sipariş edebilirsiniz. \n\n\
+		Nebula istasyona girmeden önce [deadline] kadar zamanınız var. \
+		Her kalkan birimi ek bir [shielder_time] kadar koruma süresi sağlayarak istasyonu [max_shielders] koruma birimiyle tamamen koruyacaktır.
+	"}
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	priority_announce(announcement, sound = 'sound/announcer/notice/notice1.ogg')
 

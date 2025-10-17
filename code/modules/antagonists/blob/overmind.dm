@@ -160,7 +160,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
 		victory_in_progress = TRUE
-		priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
+		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonun kaybedilmesi an meselesi.", "Biyolojik Tehlike Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		max_blob_points = INFINITY
 		blob_points = INFINITY
@@ -173,7 +176,10 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 		max_count = blobs_legit.len
 
 	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
-		priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", "Biohazard Alert", ANNOUNCER_OUTBREAK5)
+		priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		has_announced = TRUE
 
 /// Create a blob spore and link it to us

@@ -1,7 +1,10 @@
 //Please use mob or src (not usr) in these procs. This way they can be called in the same fashion as procs.
 /client/verb/wiki()
 	set name = "wiki"
-	set desc = "Brings you to the Wiki"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Brings you to the Wiki"
+	set desc = "Wikiyi aç"
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 
 	var/wikiurl = CONFIG_GET(string/wikiurl)
@@ -21,6 +24,8 @@
 		output += "?title=Special%3ASearch&profile=default&search=[query]"
 	DIRECT_OUTPUT(src, link(output))
 
+// PSYCHONAUT EDIT REMOVAL START (Disables Forum)
+/*
 /client/verb/forum()
 	set name = "forum"
 	set desc = "Visit the forum."
@@ -31,10 +36,15 @@
 		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
 		return
 	DIRECT_OUTPUT(src, link(forumurl))
+*/
+// PSYCHONAUT EDIT REMOVAL END
 
 /client/verb/rules()
 	set name = "rules"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Show Server Rules."
 	set desc = "Sunucu kuralları"
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
@@ -45,7 +55,10 @@
 
 /client/verb/github()
 	set name = "github"
-	set desc = "Visit Github"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Visit Github"
+	set desc = "Github'u ziyaret et"
+	// PSYCHONAUT EDIT CHANGE END
 	set hidden = TRUE
 
 	var/githuburl = CONFIG_GET(string/githuburl)
@@ -56,7 +69,10 @@
 
 /client/verb/reportissue()
 	set name = "report-issue"
+	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
+	// set desc = "Report an issue"
 	set desc = "Hata bildir"
+	// PSYCHONAUT EDIT CHANGE END
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)

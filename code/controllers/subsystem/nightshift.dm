@@ -24,12 +24,22 @@ SUBSYSTEM_DEF(nightshift)
 	check_nightshift()
 
 /datum/controller/subsystem/nightshift/proc/announce(message)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = message,
 		sound = 'sound/announcer/notice/notice2.ogg',
 		sender_override = "Automated Lighting System Announcement",
 		color_override = "grey",
 	)
+	*/
+	priority_announce(
+		text = message,
+		sound = 'sound/announcer/notice/notice2.ogg',
+		sender_override = "Otomatik Işıklandırma Sistemi Duyurusu",
+		color_override = "grey",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/controller/subsystem/nightshift/proc/check_nightshift()
 	var/emergency = SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED
@@ -41,9 +51,15 @@ SUBSYSTEM_DEF(nightshift)
 		if(night_time)
 			announcing = FALSE
 			if(!emergency)
-				announce("Restoring night lighting configuration to normal operation.")
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+				// announce("Restoring night lighting configuration to normal operation.")
+				announce("Gece aydınlatmaları normal ayarlarına döndürülüyor.")
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 			else
-				announce("Disabling night lighting: Station is in a state of emergency.")
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+				// announce("Disabling night lighting: Station is in a state of emergency.")
+				announce("Gece aydınlatması devre dışı bırakılıyor: İstasyon acil durumda")
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	if(emergency)
 		night_time = FALSE
 	if(nightshift_active != night_time)
@@ -55,9 +71,15 @@ SUBSYSTEM_DEF(nightshift)
 		nightshift_active = active
 		if(announce)
 			if (active)
-				announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+				// announce("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
+				announce("İyi akşamlar, mürettebat. Güç tüketimini azaltmak ve bazı türlerin dinlenmelerini sağlamak amacıyla istasyonun ışıkları bu gece için karartılmıştır.")
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 			else
-				announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+				// announce("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+				announce("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyonun ışıkları eski parlaklığına döndürülmüştür.")
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	for(var/obj/machinery/power/apc/APC as anything in currentrun)
 		currentrun -= APC
 		if (APC.area && (APC.area.type in GLOB.the_station_areas))

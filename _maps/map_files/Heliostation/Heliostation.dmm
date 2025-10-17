@@ -10643,7 +10643,7 @@
 "baH" = (
 /obj/structure/closet/wardrobe/green,
 /obj/structure/sign/poster/official/random/directional/north,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "baI" = (
@@ -10656,12 +10656,12 @@
 	c_tag = "Dorms - Lockers";
 	name = "Dorms Camera"
 	},
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "baK" = (
 /obj/structure/closet/wardrobe/white,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -10672,7 +10672,7 @@
 /area/station/commons/dorms)
 "baM" = (
 /obj/structure/closet/wardrobe/mixed,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/machinery/light/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
@@ -10886,7 +10886,7 @@
 /area/station/service/chapel/office)
 "bbN" = (
 /obj/structure/closet/firecloset,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/machinery/requests_console/directional/west{
 	department = "Dormitories";
 	name = "Dorms RC"
@@ -11470,7 +11470,7 @@
 /area/station/commons/dorms)
 "bep" = (
 /obj/structure/closet/lasertag/blue,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "ber" = (
@@ -12174,7 +12174,6 @@
 	name = "Common Room Camera"
 	},
 /obj/structure/sign/poster/contraband/grey_tide/directional/north,
-/obj/machinery/bluespace_vendor/directional/east,
 /turf/open/floor/iron,
 /area/station/commons/lounge)
 "bhr" = (
@@ -16314,7 +16313,6 @@
 	dir = 1
 	},
 /obj/machinery/light/directional/south,
-/obj/machinery/bluespace_vendor/directional/south,
 /obj/effect/turf_decal/bot,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
@@ -28209,7 +28207,7 @@
 /obj/effect/turf_decal/siding/thinplating/light{
 	dir = 4
 	},
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "dxq" = (
@@ -28290,11 +28288,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"dzf" = (
-/obj/effect/landmark/start/hangover,
-/obj/machinery/bluespace_vendor/directional/south,
-/turf/open/floor/iron,
-/area/station/hallway/primary/central)
 "dzg" = (
 /obj/structure/broken_flooring/pile/directional/south,
 /obj/structure/cable,
@@ -30296,7 +30289,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/greater)
 "eti" = (
-/obj/machinery/bluespace_vendor/directional/east,
 /obj/structure/sign/departments/security/directional/north,
 /obj/machinery/computer/warrant{
 	dir = 8
@@ -43539,7 +43531,7 @@
 "jry" = (
 /obj/structure/closet/athletic_mixed,
 /obj/effect/turf_decal/bot_white,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/structure/sign/poster/contraband/random/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
@@ -48716,7 +48708,6 @@
 /turf/open/floor/plating,
 /area/station/maintenance/department/medical)
 "lqS" = (
-/obj/machinery/bluespace_vendor/directional/east,
 /obj/effect/spawner/random/vending/snackvend,
 /turf/open/floor/iron/dark,
 /area/station/hallway/secondary/command)
@@ -52051,7 +52042,7 @@
 "mDO" = (
 /obj/structure/closet/boxinggloves,
 /obj/effect/turf_decal/bot_white,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/machinery/airalarm/directional/north,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
@@ -55090,7 +55081,7 @@
 "nJV" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/firecloset,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
@@ -56287,7 +56278,7 @@
 "ogN" = (
 /obj/structure/closet/athletic_mixed,
 /obj/effect/turf_decal/bot_white,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "ohu" = (
@@ -59506,7 +59497,7 @@
 "poO" = (
 /obj/structure/closet/masks,
 /obj/effect/turf_decal/bot_white,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "poZ" = (
@@ -67402,7 +67393,7 @@
 /area/station/command/gateway)
 "ste" = (
 /obj/structure/closet/wardrobe/black,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/commons/dorms)
 "stk" = (
@@ -69101,7 +69092,7 @@
 "sXS" = (
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/emcloset,
-/obj/effect/landmark/start/hangover/closet,
+/obj/effect/landmark/start/hangover,
 /turf/open/floor/iron,
 /area/station/hallway/secondary/command)
 "sYm" = (
@@ -70327,7 +70318,6 @@
 "tup" = (
 /obj/structure/closet/lasertag/red,
 /obj/effect/turf_decal/bot_red,
-/obj/machinery/bluespace_vendor/directional/south,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "tuv" = (
@@ -82177,9 +82167,6 @@
 /turf/open/floor/carpet/red,
 /area/station/command/heads_quarters/hop)
 "xWc" = (
-/obj/machinery/atmospherics/components/unary/bluespace_sender{
-	dir = 8
-	},
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
@@ -111611,7 +111598,7 @@ bsZ
 bwl
 uTy
 bwl
-dzf
+caP
 bxa
 byL
 bAE

@@ -49,8 +49,13 @@
 /datum/computer_file/program/supermatter_monitor/ui_data(mob/user)
 	var/list/data = list()
 	data["sm_data"] = list()
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	data["anomaly_data"] = list()
+	data["all_data"] = list()
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	for (var/obj/machinery/power/supermatter_crystal/sm as anything in supermatters)
 		data["sm_data"] += list(sm.sm_ui_data())
+		data["all_data"] += list(sm.sm_ui_data()) // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 	data["focus_uid"] = focused_supermatter?.uid
 	return data
 

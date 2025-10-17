@@ -8,10 +8,13 @@ GLOBAL_LIST_EMPTY(map_incident_displays)
 #define DISPLAY_DELAM (1<<0)
 /// Display current number of tram hits on incident sign
 #define DISPLAY_TRAM (1<<1)
+/// Display days since the last singularity death on incident sign
+#define DISPLAY_SINGULARITY_DEATH (1<<2) // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 
 DEFINE_BITFIELD(sign_features, list(
 	"DISPLAY_DELAM" = DISPLAY_DELAM,
 	"DISPLAY_TRAM" = DISPLAY_TRAM,
+	"DISPLAY_SINGULARITY_DEATH" = DISPLAY_SINGULARITY_DEATH, // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 ))
 
 #define TREND_RISING "rising"
@@ -137,6 +140,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 	if(held_item?.tool_behaviour == TOOL_MULTITOOL && !living_user.combat_mode)
 		if(sign_features == DISPLAY_TRAM)
 			context[SCREENTIP_CONTEXT_LMB] = "change to delam mode"
+		// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+		else if(sign_features == DISPLAY_DELAM)
+			context[SCREENTIP_CONTEXT_LMB] = "change to singularity mode"
+		// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 		else
 			context[SCREENTIP_CONTEXT_LMB] = "change to tram mode"
 
@@ -198,9 +205,17 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 	if(prob(33))
 		last_delam = 0
 		delam_record = 0
+		// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+		last_singularity_death = 0
+		singularity_deaths_record = 0
+		// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	else
 		last_delam = rand(1,99)
 		delam_record = rand(1,99)
+		// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+		last_singularity_death = rand(1,99)
+		singularity_deaths_record = rand(1,99)
+		// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 
 	update_appearance()
 
@@ -371,7 +386,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 		. += span_notice("It can be repaired with a [EXAMINE_HINT("welder")].")
 
 	if(sign_features & DISPLAY_DELAM)
-		. += span_notice("It can be changed to display tram hits with a [EXAMINE_HINT("multitool")].")
+		// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+		// 	. += span_notice("It can be changed to display tram hits with a [EXAMINE_HINT("multitool")].")
+		. += span_notice("It can be changed to display shifts since the last singularity death with a [EXAMINE_HINT("multitool")].")
+		// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		if(last_delam >= 0)
 			. += span_info("It has been [last_delam] shift\s since the last delamination event at this Nanotrasen facility.")
 			switch(last_delam)
@@ -407,6 +425,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/tram, 32)
 
 #undef DISPLAY_DELAM
 #undef DISPLAY_TRAM
+#undef DISPLAY_SINGULARITY_DEATH
 
 #undef NAME_DELAM
 #undef NAME_TRAM

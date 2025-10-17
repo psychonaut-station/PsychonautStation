@@ -385,6 +385,13 @@
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
 		balloon_alert(user, "use both hands!")
 		return
+
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(fire_in && !do_after(user, fire_in, target = user))
+		balloon_alert(user, "interrupted!")
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
+
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0

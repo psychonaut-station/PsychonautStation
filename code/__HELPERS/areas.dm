@@ -7,8 +7,8 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 	/area/station/engineering/supermatter,
 	/area/station/engineering/atmospherics_engine,
 	/area/station/ai_monitored/turret_protected/ai,
-	/area/ruin/comms_agent //fixes icemoon comms station being affected
-
+	/area/ruin/comms_agent, //fixes icemoon comms station being affected
+	/area/station/engineering/singularity // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 )))
 
 // Gets an atmos isolated contained space

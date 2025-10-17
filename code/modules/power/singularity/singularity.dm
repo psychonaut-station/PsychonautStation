@@ -31,8 +31,11 @@
 	var/energy = 50
 	///Do we lose energy over time?
 	var/dissipate = TRUE
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	// var/dissipate_delay = 20
 	/// How long should it take for us to dissipate in seconds?
-	var/dissipate_delay = 20
+	var/dissipate_delay = 15
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 	/// How much energy do we lose every dissipate_delay?
 	var/dissipate_strength = 1
 	/// How long its been (in seconds) since the last dissipation
@@ -160,6 +163,8 @@
 	return TRUE
 
 /obj/singularity/process(seconds_per_tick)
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	/*
 	time_since_act += seconds_per_tick
 	if(time_since_act < 2)
 		return
@@ -168,6 +173,20 @@
 		if(prob(event_chance))
 			event()
 	dissipate(seconds_per_tick)
+	check_energy()
+	*/
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
+	time_since_act += seconds_per_tick
+	dissipate(seconds_per_tick)
+	if(time_since_act < 2)
+		return
+	time_since_act = 0
+	if(current_size >= STAGE_TWO)
+		if(SPT_PROB(event_chance, seconds_per_tick))
+			event()
+	radiation_pulse(src, 5, 0.1, intensity = (energy * intensity_multiplier * 2) + 500)
 	check_energy()
 
 /obj/singularity/proc/dissipate(seconds_per_tick)
@@ -197,9 +216,13 @@
 		//It cant go smaller due to e loss
 		dissipate = FALSE
 
-	var/new_grav_pull
-	var/new_consume_range
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	// var/new_grav_pull
+	// var/new_consume_range
+	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+	var/new_grav_pull = resolved_singularity?.grav_pull || 0
+	var/new_consume_range = resolved_singularity?.consume_range || 0
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 	switch(temp_allowed_size)
 		if(STAGE_ONE)
 			current_size = STAGE_ONE
@@ -209,7 +232,10 @@
 			pixel_y = 0
 			new_grav_pull = 4
 			new_consume_range = 0
-			dissipate_delay = 10
+			// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+			// dissipate_delay = 10
+			dissipate_delay = 15
+			// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 			time_since_last_dissipiation = 0
 			dissipate_strength = 1
 		if(STAGE_TWO)
@@ -221,7 +247,10 @@
 				pixel_y = -32
 				new_grav_pull = 6
 				new_consume_range = 1
-				dissipate_delay = 5
+				// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+				// dissipate_delay = 5
+				dissipate_delay = 10
+				// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 				time_since_last_dissipiation = 0
 				dissipate_strength = 5
 		if(STAGE_THREE)
@@ -233,9 +262,15 @@
 				pixel_y = -64
 				new_grav_pull = 8
 				new_consume_range = 2
-				dissipate_delay = 4
+				// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+				// dissipate_delay = 4
+				dissipate_delay = 6
+				// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 				time_since_last_dissipiation = 0
-				dissipate_strength = 20
+				// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+				// dissipate_strength = 20
+				dissipate_strength = 15
+				// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		if(STAGE_FOUR)
 			if(check_cardinals_range(3, TRUE))
 				current_size = STAGE_FOUR
@@ -245,9 +280,15 @@
 				pixel_y = -96
 				new_grav_pull = 10
 				new_consume_range = 3
-				dissipate_delay = 10
+				// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+				// dissipate_delay = 10
+				dissipate_delay = 4
+				// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 				time_since_last_dissipiation = 0
-				dissipate_strength = 10
+				// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+				// dissipate_strength = 10
+				dissipate_strength = 25
+				// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		if(STAGE_FIVE)//this one also lacks a check for gens because it eats everything
 			current_size = STAGE_FIVE
 			icon = 'icons/effects/288x288.dmi'
@@ -272,7 +313,9 @@
 	else
 		qdel(GetComponent(/datum/component/vision_hurting))
 
-	var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+	// PSYCHONAUT EDIT REMOVAL BEGIN - SINGULARITY_ENGINE - Original:
+	// var/datum/component/singularity/resolved_singularity = singularity_component.resolve()
+	// PSYCHONAUT EDIT REMOVAL END - SINGULARITY_ENGINE
 	if (!isnull(resolved_singularity))
 		resolved_singularity.consume_range = new_consume_range
 		resolved_singularity.grav_pull = new_grav_pull

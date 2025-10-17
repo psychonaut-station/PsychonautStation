@@ -32,7 +32,11 @@ type SMGasMetadata = {
 
 type SupermatterProps = {
   sectionButton?: ReactNode;
-  uid: number;
+  // PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+  // uid: number;
+  id: number;
+  uid: string;
+  // PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
   area_name: string;
   integrity: number;
   integrity_factors: { name: string; amount: number }[];
@@ -101,6 +105,7 @@ const SupermatterEntry = (props: SupermatterEntryProps) => {
 export const SupermatterContent = (props: SupermatterProps) => {
   const {
     sectionButton,
+    id, // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
     uid,
     area_name,
     integrity,
@@ -138,7 +143,10 @@ export const SupermatterContent = (props: SupermatterProps) => {
         <Section
           fill
           scrollable
-          title={`${uid}. ${area_name}`}
+          // PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+          // title={`${uid}. ${area_name}`}
+          title={`${id}. ${area_name}`}
+          // PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
           buttons={sectionButton}
         >
           <Stack vertical>

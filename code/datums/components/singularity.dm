@@ -134,6 +134,10 @@
 	))
 
 /datum/component/singularity/process(seconds_per_tick)
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(!(parent.datum_flags & DF_ISPROCESSING))
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	// We want to move and eat once a second, but want to process our turf consume queue the rest of the time
 	time_since_last_eat += seconds_per_tick
 	digest()
@@ -209,7 +213,10 @@
 
 		if(grav_pull < dist_to_tile) //If we've exited the singulo's range already, just skip us
 			continue
-
+		// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+		if(!isturf(tile))
+			continue
+		// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 		var/in_consume_range = (dist_to_tile <= consume_range)
 		if (in_consume_range)
 			consume(src, tile)
@@ -233,6 +240,10 @@
 	cached_index = 0
 
 /datum/component/singularity/proc/move()
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(HAS_TRAIT(parent, TRAIT_GRABBED_BY_KINESIS))
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	var/drifting_dir = pick(GLOB.alldirs - last_failed_movement)
 
 	if (!QDELETED(target) && prob(chance_to_move_to_target))
@@ -349,6 +360,10 @@
 
 /datum/component/singularity/bloodthirsty/move()
 	var/atom/atom_parent = parent
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(HAS_TRAIT(atom_parent, TRAIT_GRABBED_BY_KINESIS))
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	//handle current target
 	if(target && !QDELETED(target))
 		if(istype(target, /obj/machinery/power/singularity_beacon))

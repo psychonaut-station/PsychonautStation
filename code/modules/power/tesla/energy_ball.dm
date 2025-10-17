@@ -1,4 +1,6 @@
-#define TESLA_DEFAULT_ENERGY (695.304 MEGA JOULES)
+// PSYCHONAUT EDIT REMOVAL BEGIN - SINGULARITY_ENGINE - Original:
+// #define TESLA_DEFAULT_ENERGY (695.304 MEGA JOULES)
+// PSYCHONAUT EDIT REMOVAL END - SINGULARITY_ENGINE
 #define TESLA_MINI_ENERGY (347.652 MEGA JOULES) // Has a weird scaling thing so this is a lie for now (doesn't generate power anyways).
 //Zap constants, speeds up targeting
 #define BIKE (COIL + 1)
@@ -24,8 +26,10 @@
 	light_range = 6
 	move_resist = INFINITY
 	obj_flags = CAN_BE_HIT | DANGEROUS_POSSESSION
-	pixel_x = -ICON_SIZE_X
-	pixel_y = -ICON_SIZE_Y
+	// PSYCHONAUT EDIT REMOVAL BEGIN - SINGULARITY_ENGINE - Original:
+	// pixel_x = -ICON_SIZE_X
+	// pixel_y = -ICON_SIZE_Y
+	// PSYCHONAUT EDIT REMOVAL END - SINGULARITY_ENGINE
 	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF | FREEZE_PROOF | SHUTTLE_CRUSH_PROOF
 	flags_1 = SUPERMATTER_IGNORES_1
 
@@ -66,25 +70,43 @@
 	if(orbiting)
 		energy = 0 // ensure we dont have miniballs of miniballs
 	else
+		// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+		if(!(datum_flags & DF_ISPROCESSING))
+			return
+		if(energy <= 0)
+			investigate_log("collapsed.", INVESTIGATE_ENGINE)
+			qdel(src)
+			return FALSE
+		process_atmos()
+		// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		handle_energy()
 
 		move(4 + orbiting_balls.len * 1.5)
 
 		playsound(src.loc, 'sound/effects/magic/lightningbolt.ogg', 100, TRUE, extrarange = 30)
-
-		pixel_x = 0
-		pixel_y = 0
+		// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+		// pixel_x = 0
+		// pixel_y = 0
+		if(!HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+			pixel_x = 0
+			pixel_y = 0
+		// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		shocked_things.Cut(1, shocked_things.len / 1.3)
 		var/list/shocking_info = list()
-		tesla_zap(source = src, zap_range = 3, power = TESLA_DEFAULT_ENERGY, shocked_targets = shocking_info)
-
+		// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+		// tesla_zap(source = src, zap_range = 3, power = TESLA_DEFAULT_ENERGY, shocked_targets = shocking_info)
+		tesla_zap(source = src, zap_range = 3, power = max((zap_energy * min(energy/250, zap_transmission_rate)) + heat_power_generation - powerloss_inhibition, 1 MEGA JOULES), shocked_targets = shocking_info, zap_flags = ZAP_EBALL_FLAGS, callback = CALLBACK(src, PROC_REF(after_zap)), zap_icon = zap_icon_state)
+		// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 		pixel_x = -ICON_SIZE_X
 		pixel_y = -ICON_SIZE_Y
 		for (var/ball in orbiting_balls)
 			var/range = rand(1, clamp(orbiting_balls.len, 2, 3))
 			var/list/temp_shock = list()
 			//We zap off the main ball instead of ourselves to make things looks proper
-			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock)
+			// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+			// tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock)
+			tesla_zap(source = src, zap_range = range, power = TESLA_MINI_ENERGY / 7 * range, shocked_targets = temp_shock, zap_icon = zap_icon_state)
+			// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 			shocking_info += temp_shock
 		shocked_things += shocking_info
 
@@ -113,6 +135,11 @@
 /obj/energy_ball/proc/can_move(turf/to_move)
 	if (!to_move)
 		return FALSE
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return FALSE
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 
 	for (var/_thing in to_move)
 		var/atom/thing = _thing
@@ -151,6 +178,11 @@
 	var/orbitsize = (icon_dimensions["width"] + icon_dimensions["height"]) * pick(0.4, 0.5, 0.6, 0.7, 0.8)
 	orbitsize -= (orbitsize / ICON_SIZE_ALL) * (ICON_SIZE_ALL * 0.25)
 	miniball.orbit(src, orbitsize, pick(FALSE, TRUE), rand(10, 25), pick(3, 4, 5, 6, 36))
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(!isnull(color))
+		miniball.color = color
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 
 /obj/energy_ball/Bump(atom/A)
 	dust_mobs(A)
@@ -198,8 +230,10 @@
 	var/mob/living/carbon/C = A
 	C.investigate_log("has been dusted by an energy ball.", INVESTIGATE_DEATHS)
 	C.dust()
-
-/proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list())
+// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+// /proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list())
+/proc/tesla_zap(atom/source, zap_range = 3, power, cutoff = 4e5, zap_flags = ZAP_DEFAULT_FLAGS, list/shocked_targets = list(), zap_icon, datum/callback/callback)
+// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 	if(QDELETED(source))
 		return
 	if(!(zap_flags & ZAP_ALLOW_DUPLICATES))
@@ -236,6 +270,8 @@
 		/obj/structure/lattice = FALSE,
 		/obj/structure/grille = FALSE,
 		/obj/structure/frame/machine = FALSE,
+		/obj/machinery/particle_accelerator = FALSE, // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
+		/obj/structure/cable = FALSE // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 	))
 
 	//Ok so we are making an assumption here. We assume that view() still calculates from the center out.
@@ -321,7 +357,10 @@
 	if(!closest_atom)
 		return
 	//common stuff
-	source.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time = 5)
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	// source.Beam(closest_atom, icon_state="lightning[rand(1,12)]", time = 5)
+	source.Beam(closest_atom, icon_state= (zap_icon || "lightning[rand(1,12)]"), time = 5)
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 	var/zapdir = get_dir(source, closest_atom)
 	if(zapdir)
 		. = zapdir
@@ -348,6 +387,11 @@
 	else
 		power = closest_atom.zap_act(power, zap_flags)
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(callback)
+		callback.Invoke(closest_atom)
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
+
 	// Electrolysis.
 	var/turf/target_turf = get_turf(closest_atom)
 	if(target_turf?.return_air())
@@ -355,6 +399,8 @@
 		air_mixture.electrolyze(working_power = power / 200)
 		target_turf.air_update_turf()
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	/*
 	if(prob(20))//I know I know
 		var/list/shocked_copy = shocked_targets.Copy()
 		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_copy)
@@ -362,6 +408,15 @@
 		shocked_targets += shocked_copy
 	else
 		tesla_zap(source = closest_atom, zap_range = next_range, power = power, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets)
+	*/
+	if(prob(20))//I know I know
+		var/list/shocked_copy = shocked_targets.Copy()
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_copy, zap_icon = zap_icon, callback = callback)
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power * 0.5, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets, zap_icon = zap_icon, callback = callback)
+		shocked_targets += shocked_copy
+	else
+		tesla_zap(source = closest_atom, zap_range = next_range, power = power, cutoff = cutoff, zap_flags = zap_flags, shocked_targets = shocked_targets, zap_icon = zap_icon, callback = callback)
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 
 #undef BIKE
 #undef COIL
@@ -371,6 +426,7 @@
 #undef MACHINERY
 #undef BLOB
 #undef STRUCTURE
-
-#undef TESLA_DEFAULT_ENERGY
+// PSYCHONAUT EDIT REMOVAL BEGIN - SINGULARITY_ENGINE - Original:
+// #undef TESLA_DEFAULT_ENERGY
+// PSYCHONAUT EDIT REMOVAL END - SINGULARITY_ENGINE
 #undef TESLA_MINI_ENERGY

@@ -8,7 +8,13 @@
 /datum/glass_style/drinking_glass/tea
 	required_drink_type = /datum/reagent/consumable/tea
 	name = "glass of tea"
+	// PSYCHONAUT EDIT ADDITION BEGIN - REAGENTS - Original:
+	/*
 	desc = "Drinking it from here would not seem right."
+	*/
+	desc = "Tasty black tea, it has antioxidants, it's good for you!"
+	icon = 'modular_psychonaut/master_files/icons/obj/drinks/coffee.dmi'
+	// PSYCHONAUT EDIT ADDITION END - REAGENTS
 	icon_state = "teaglass"
 
 /datum/glass_style/drinking_glass/icecoffee

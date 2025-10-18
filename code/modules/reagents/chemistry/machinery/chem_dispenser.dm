@@ -615,6 +615,7 @@
 		/datum/reagent/consumable/ethanol/whiskey,
 		/datum/reagent/consumable/ethanol/wine,
 		/datum/reagent/consumable/ethanol/yuyake,
+		/datum/reagent/consumable/ethanol/raki, // PSYCHONAUT ADDITION - REAGENTS
 	)
 	upgrade_reagents = null
 	/// The default list of emagged reagents dispensable by the beer dispenser

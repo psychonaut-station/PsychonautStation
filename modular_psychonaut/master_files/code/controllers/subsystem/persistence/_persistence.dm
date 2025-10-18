@@ -9,3 +9,4 @@
 /datum/controller/subsystem/persistence/collect_data()
 	. = ..()
 	save_singularity_death_counter()
+	save_trading_cards()

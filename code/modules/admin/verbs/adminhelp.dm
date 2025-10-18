@@ -685,6 +685,8 @@ GLOBAL_DATUM_INIT(ahelp_tickets, /datum/admin_help_tickets, new)
 			Resolve()
 		if("reopen")
 			Reopen()
+		if("karaktermeselesi") // PSYCHONAUT ADDITION - ADMIN
+			KarakterMeselesi()
 
 /datum/admin_help/proc/player_ticket_panel()
 	var/list/dat = list("<html><head><meta http-equiv='Content-Type' content='text/html; charset=UTF-8'><title>Player Ticket</title></head>")

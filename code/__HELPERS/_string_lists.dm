@@ -9,7 +9,12 @@ GLOBAL_VAR(string_filename_current_key)
 
 /proc/strings_replacement(filepath, key)
 	filepath = sanitize_filepath(filepath)
-	load_strings_file(filepath)
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - STRINGS_OVERRIDES - Original:
+	// load_strings_file(filepath)
+	var/strings_directory = get_strings_directory(filepath)
+	load_strings_file(filepath, strings_directory)
+	// PSYCHONAUT EDIT ADDITION END - STRINGS_OVERRIDES
 
 	if((filepath in GLOB.string_cache) && (key in GLOB.string_cache[filepath]))
 		var/response = pick(GLOB.string_cache[filepath][key])
@@ -17,7 +22,10 @@ GLOBAL_VAR(string_filename_current_key)
 		response = needs_replacing.Replace(response, GLOBAL_PROC_REF(strings_subkey_lookup))
 		return response
 	else
-		CRASH("strings list not found: [STRING_DIRECTORY]/[filepath], index=[key]")
+		// PSYCHONAUT EDIT ADDITION BEGIN - STRINGS_OVERRIDES - Original:
+		// CRASH("strings list not found: [STRING_DIRECTORY]/[filepath], index=[key]")
+		CRASH("strings list not found: [strings_directory]/[filepath], index=[key]")
+		// PSYCHONAUT EDIT ADDITION END - STRINGS_OVERRIDES
 
 /proc/strings(filepath as text, key as text, directory = STRING_DIRECTORY)
 	if(IsAdminAdvancedProcCall())

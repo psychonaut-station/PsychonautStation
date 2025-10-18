@@ -54,6 +54,9 @@
 
 	// Get person to affect if radio hallucination
 	var/is_radio = force_radio || isnull(speaker)
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - SCHIZO - Original:
+	/*
 	if(is_radio)
 		for(var/datum/mind/crew_mind in shuffle(get_crewmember_minds()))
 			if(crew_mind == hallucinator.mind)
@@ -121,6 +124,100 @@
 	// And actually show them the message, for real.
 	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[FREQ_COMMON]" : null, is_radio ? RADIO_CHANNEL_COMMON : null, is_radio ? RADIO_COLOR_COMMON : null, spans, visible_name = TRUE)
 	to_chat(hallucinator, message)
+	*/
+	var/radio_channel = FREQ_COMMON
+	var/radio_channel_name = RADIO_CHANNEL_COMMON
+	var/list/target_dept = null
+
+	// Contents of our message
+	var/chosen = specific_message
+
+	if(is_radio)
+		if(prob(50))
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
+				radio_channel = FREQ_ENGINEERING
+				radio_channel_name = RADIO_CHANNEL_ENGINEERING
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_ENGINEERING)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "eng_radio")
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SECURITY))
+				radio_channel = FREQ_SECURITY
+				radio_channel_name = RADIO_CHANNEL_SECURITY
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SECURITY)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "sec_radio")
+			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_SCIENCE))
+				radio_channel = FREQ_SCIENCE
+				radio_channel_name = RADIO_CHANNEL_SCIENCE
+				target_dept = SSjob.get_department_crew(DEPARTMENT_BITFLAG_SCIENCE)
+				chosen = pick_list_replacements(HALLUCINATION_FILE, "sci_radio")
+
+		var/list/crewmembers = target_dept || get_crewmember_minds()
+		for(var/datum/mind/crew_mind in shuffle(crewmembers))
+			if(crew_mind == hallucinator.mind)
+				continue
+			var/list/shared_languages = get_hallucinating_spoken_languages(crew_mind.current) & understood_languages
+			if(!length(shared_languages))
+				continue
+			speaker = crew_mind.current
+			understood_language = pick(shared_languages)
+			break
+
+	if(isnull(speaker))
+		return
+
+	// Time to generate a message.
+	// Spans of our message
+	var/spans = list(speaker.speech_span)
+
+	// If we didn't have a preset one, let's make one up.
+	if(!chosen)
+		if(is_radio)
+			chosen = pick(list("Yardım!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "location")] yardım[prob(50)?"!":"!!"]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "people")] [pick_list_replacements(HALLUCINATION_FILE, "accusations")]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "location")] [pick_list_replacements(HALLUCINATION_FILE, "threat")] var[prob(50)?"!":"!!"]",
+				"[pick("[first_name(hallucinator.name)]'i gördün mü?", "[first_name(hallucinator.name)]'i arrestleyin")]",
+				"[pick("Shuttle çağır!","Ai, shuttle çağır!","Birisi shuttle çağırsın!","Shuttle'ı geri çağırın!")]",
+				"AI[pick(" MALF", "'İ ÖLDÜRMÜŞLER")]!!",
+				"BORGLAR MALF",
+			))
+		else
+			chosen = pick(list("[pick_list_replacements(HALLUCINATION_FILE, "suspicion")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "conversation")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "greetings")][first_name(hallucinator.name)]!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "getout")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "weird")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "didyouhearthat")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "doubt")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "aggressive")]",
+				"[pick_list_replacements(HALLUCINATION_FILE, "help")]!!",
+				"[pick_list_replacements(HALLUCINATION_FILE, "escape")]",
+				"Hasta oldum, [pick_list_replacements(HALLUCINATION_FILE, "infection_advice")]!",
+			))
+
+		chosen = capitalize(chosen)
+
+	chosen = replacetext(chosen, "%TARGETNAME%", first_name(hallucinator.name))
+	chosen = replacetext(chosen, "%TARGETNAME_CAP%", locale_uppertext(first_name(hallucinator.name)))
+
+	// Log the message
+	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [speaker.real_name], Message: [chosen]"
+
+	var/plus_runechat = hallucinator.client?.prefs.read_preference(/datum/preference/toggle/enable_runechat)
+
+	// Display the message
+	if(!is_radio && !plus_runechat)
+		var/image/speech_overlay = image('icons/mob/effects/talk.dmi', speaker, "default0", layer = ABOVE_MOB_LAYER)
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(flick_overlay_global), speech_overlay, list(hallucinator.client), 30)
+
+	if(plus_runechat)
+		hallucinator.create_chat_message(speaker, understood_language, chosen, spans)
+
+	// And actually show them the message, for real.
+	var/message = hallucinator.compose_message(speaker, understood_language, chosen, is_radio ? "[radio_channel]" : null, is_radio ? radio_channel_name : null, is_radio ? RADIO_COLOR_COMMON : null, spans, visible_name = TRUE)
+
+	to_chat(hallucinator, message)
+	hallucinator.log_message("Fake chatter [speaker]: '[chosen]'", LOG_HALLUCINATION)
+	// PSYCHONAUT EDIT ADDITION END - SCHIZO
 
 	// Then clean up.
 	qdel(src)

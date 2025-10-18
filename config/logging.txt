@@ -110,3 +110,6 @@ LOG_ZONE_SWITCH
 
 ## log e-jukebox
 LOG_JUKEBOX
+
+## log HALLUCINATION channel
+LOG_HALLUCINATION

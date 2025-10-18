@@ -5,3 +5,7 @@
 /// Logging for messages sent in LOOC
 /proc/log_looc(text, list/data)
 	logger.Log(LOG_CATEGORY_GAME_LOOC, text, data)
+
+/// Logging for hallucinations
+/proc/log_hallucination(text, list/data)
+	logger.Log(LOG_CATEGORY_GAME_HALLUCINATION, text, data)

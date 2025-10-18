@@ -128,8 +128,6 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_econ(log_text, data)
 		if(LOG_OOC)
 			log_ooc(log_text, data)
-		if(LOG_LOOC) // PSYCHONAUT ADDITION - LOOC
-			log_looc(log_text, data)
 		if(LOG_ADMIN)
 			log_admin(log_text, data)
 		if(LOG_ADMIN_PRIVATE)
@@ -146,6 +144,10 @@ GLOBAL_LIST_INIT(testing_global_profiler, list("_PROFILE_NAME" = "Global"))
 			log_shuttle(log_text, data)
 		if(LOG_SPEECH_INDICATORS)
 			log_speech_indicators(log_text, data)
+		if(LOG_LOOC) // PSYCHONAUT ADDITION - LOOC
+			log_looc(log_text, data)
+		if(LOG_HALLUCINATION) // PSYCHONAUT ADDITION - SCHIZO
+			log_hallucination(log_text, data)
 		else
 			stack_trace("Invalid individual logging type: [message_type]. Defaulting to [LOG_GAME] (LOG_GAME).")
 			log_game(log_text, data)

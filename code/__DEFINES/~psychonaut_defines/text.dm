@@ -1,3 +1,5 @@
+/// Folder directory for strings
+#define PSYCHONAUT_STRING_DIRECTORY "modular_psychonaut/master_files/strings"
 
 /// Simply removes the < and > characters, and limits the length of the message. Uses copytext_char instead of copytext.
 #define STRIP_HTML_LOCALE_SIMPLE(text, limit) (GLOB.angular_brackets.Replace(copytext_char(text, 1, limit), ""))

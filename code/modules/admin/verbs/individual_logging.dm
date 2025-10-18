@@ -24,6 +24,10 @@
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_CKEY, "LOOC Log", source, ntype)
 		// PSYCHONAUT ADDITION END - LOOC
+		// PSYCHONAUT ADDITION BEGIN - SCHIZO
+		dat += " | "
+		dat += individual_logging_panel_link(M, INDIVIDUAL_HALLUCINATION_LOG, LOGSRC_CKEY, "Hallucination Log", source, ntype)
+		// PSYCHONAUT ADDITION END - SCHIZO
 		dat += " | "
 		dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_CKEY, "Show All", source, ntype)
 		dat += "</center>"
@@ -49,6 +53,10 @@
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_LOOC_LOG, LOGSRC_MOB, "LOOC Log", source, ntype)
 	// PSYCHONAUT ADDITION END - LOOC
+	// PSYCHONAUT ADDITION BEGIN - SCHIZO
+	dat += " | "
+	dat += individual_logging_panel_link(M, INDIVIDUAL_HALLUCINATION_LOG, LOGSRC_CKEY, "Hallucination Log", source, ntype)
+	// PSYCHONAUT ADDITION END - SCHIZO
 	dat += " | "
 	dat += individual_logging_panel_link(M, INDIVIDUAL_SHOW_ALL_LOG, LOGSRC_MOB, "Show All", source, ntype)
 	dat += "</center>"

@@ -1,6 +1,9 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = PROC_REF(set_job_preference),
+		// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+		"set_job_title" = PROC_REF(set_job_title),
+		// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -54,6 +57,9 @@
 		jobs[job.title] = list(
 			"description" = job.description,
 			"department" = department_name,
+			// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+			"alt_titles" = job.alt_titles,
+			// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 		)
 
 	data["departments"] = departments
@@ -63,6 +69,13 @@
 
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
+
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	if(isnull(preferences.alt_job_titles))
+		preferences.alt_job_titles = list()
+
+	data["job_alt_titles"] = preferences.alt_job_titles
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	data["job_preferences"] = preferences.job_preferences
 

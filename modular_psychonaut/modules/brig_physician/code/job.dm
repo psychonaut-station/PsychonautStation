@@ -42,6 +42,14 @@
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
 	rpg_title = "Combat Medic"
 
+	alt_titles = list(
+		"Brig Physician",
+		"Jail Doctor",
+		"Brig Orderly",
+		"Prison Medic",
+		"Navy Corpsman",
+	)
+
 	roundstart_spawn_point = /obj/effect/landmark/start/security_officer
 
 /datum/outfit/job/brig_physician

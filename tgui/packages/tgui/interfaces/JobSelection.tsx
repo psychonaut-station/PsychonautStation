@@ -38,6 +38,9 @@ type Data = {
   disable_jobs_for_non_observers: BooleanLike;
   priority: BooleanLike;
   round_duration: string;
+  // PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+  job_alt_titles: Record<string, string>;
+  // PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 };
 
 type JobEntryProps = {
@@ -51,6 +54,12 @@ function JobEntry(props: JobEntryProps) {
   const { jobName, job, department, onClick } = props;
 
   const jobIcon = JOB2ICON[jobName] || null;
+
+  // PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+  const { data } = useBackend<Data>();
+  const { job_alt_titles } = data;
+  const seleectedName = job_alt_titles[jobName] || jobName;
+  // PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
   return (
     <Button
@@ -92,7 +101,12 @@ function JobEntry(props: JobEntryProps) {
             <Icon name={jobIcon} />
           </Stack.Item>
         )}
-        <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item>
+        {/* PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original: */}
+        {/* <Stack.Item grow>{job.command ? <b>{jobName}</b> : jobName}</Stack.Item> */}
+        <Stack.Item grow>
+          {job.command ? <b>{seleectedName}</b> : seleectedName}
+        </Stack.Item>
+        {/* PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES */}
         <Stack.Item>
           <span
             style={{

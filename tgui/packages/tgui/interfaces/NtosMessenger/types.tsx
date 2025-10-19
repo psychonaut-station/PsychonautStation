@@ -17,6 +17,9 @@ export type NtMessenger = {
   name: string;
   job: string;
   ref?: string;
+  // PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+  job_trim: string;
+  // PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 };
 
 export type NtChat = {

@@ -143,6 +143,8 @@ const ContactsScreen = (props: any) => {
   const sortByUnreads = (array: NtChat[]) =>
     sortBy(array, [(chat) => chat.unread_messages]);
 
+  // PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+  /*
   const searchChatByName = createSearch(
     searchUser,
     (chat: NtChat) => chat.recipient.name + chat.recipient.job,
@@ -151,6 +153,23 @@ const ContactsScreen = (props: any) => {
     searchUser,
     (messenger: NtMessenger) => messenger.name + messenger.job,
   );
+  */
+  const searchChatByName = createSearch(
+    searchUser,
+    (chat: NtChat) =>
+      chat.recipient.name +
+      chat.recipient.job +
+      (chat.recipient.job !== chat.recipient.job_trim &&
+        chat.recipient.job_trim),
+  );
+  const searchMessengerByName = createSearch(
+    searchUser,
+    (messenger: NtMessenger) =>
+      messenger.name +
+      messenger.job +
+      (messenger.job !== messenger.job_trim && messenger.job_trim),
+  );
+  // PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
   const chatToButton = (chat: NtChat) => {
     return (

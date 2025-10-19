@@ -339,6 +339,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	//Alt Job Titles
+	alt_job_titles = save_data?["alt_job_titles"]
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
+
 	//try to fix any outdated data if necessary
 	//preference updating will handle saving the updated data for us.
 	if(SHOULD_UPDATE_DATA(data_validity_integer))
@@ -348,6 +353,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
+
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	alt_job_titles = SANITIZE_LIST(alt_job_titles)
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -396,6 +405,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
+
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	//Alt Job Titles
+	save_data["alt_job_titles"] = alt_job_titles
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	return TRUE
 

@@ -103,7 +103,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 
 
 /// Injects a record into the manifest.
-/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy)
+// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+// /datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy)
+/datum/manifest/proc/inject(mob/living/carbon/human/person, atom/appearance_proxy, client/person_client)
+// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 	set waitfor = FALSE
 	if(!(person.mind?.assigned_role.job_flags & JOB_CREW_MANIFEST))
 		return
@@ -121,6 +124,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/datum/dna/stored/record_dna = new()
 	person.dna.copy_dna(record_dna)
 
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
+
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		blood_type = person.get_bloodtype()?.name || "UNKNOWN",
@@ -130,7 +137,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+		// rank = assignment,
+		rank = chosen_assignment,
+		// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 		species = record_dna.species.name,
 		trim = assignment,
 		// Locked specifics
@@ -147,7 +157,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		gender = person_gender,
 		initial_rank = assignment,
 		name = person.real_name,
-		rank = assignment,
+		// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+		// rank = assignment,
+		rank = chosen_assignment,
+		// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 		species = record_dna.species.name,
 		trim = assignment,
 		// Crew specific

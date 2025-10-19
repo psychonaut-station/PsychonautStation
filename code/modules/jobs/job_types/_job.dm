@@ -185,10 +185,16 @@
 
 /// Announce that this job as joined the round to all crew members.
 /// Note the joining mob has no client at this point.
+// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+/*
 /datum/job/proc/announce_job(mob/living/joining_mob)
 	if(head_announce)
 		announce_head(joining_mob, head_announce)
-
+*/
+/datum/job/proc/announce_job(mob/living/joining_mob, job_title)
+	if(head_announce)
+		announce_head(joining_mob, head_announce, job_title)
+// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 //Used for a special check of whether to allow a client to latejoin as this job.
 /datum/job/proc/special_check_latejoin(client/latejoin)
@@ -227,10 +233,16 @@
 	dna.species.pre_equip_species_outfit(equipping, src, visual_only)
 	equip_outfit_and_loadout(equipping.get_outfit(consistent), player_client?.prefs, visual_only)
 
-/datum/job/proc/announce_head(mob/living/carbon/human/human, channels) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+// /datum/job/proc/announce_head(mob/living/carbon/human/human, channels)
+/datum/job/proc/announce_head(mob/living/carbon/human/human, channels, job_title) //tells the given channel that the given mob is the new department head. See communications.dm for valid channels.
+// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 	if(human)
 		//timer because these should come after the captain announcement
-		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1))
+		// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+		// SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = human.job), null, channels, null, TRUE), 1))
+		SSticker.OnRoundstart(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(_addtimer), CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(aas_config_announce), /datum/aas_config_entry/newhead, list("PERSON" = human.real_name, "RANK" = job_title), null, channels, null, TRUE), 1))
+		// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 //If the configuration option is set to require players to be logged as old enough to play certain jobs, then this proc checks that they are, otherwise it just returns 1
 /datum/job/proc/player_old_enough(client/player)

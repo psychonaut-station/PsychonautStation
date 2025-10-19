@@ -80,6 +80,7 @@ export type Department = {
 export type Job = {
   description: string;
   department: string;
+  alt_titles?: string[]; // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
 };
 
 export type Quirk = {
@@ -184,6 +185,8 @@ export type PreferencesMenuData = {
   name_to_use: string;
 
   window: PrefsWindow;
+
+  job_alt_titles: Record<string, string>; // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
 };
 
 export type ServerData = {

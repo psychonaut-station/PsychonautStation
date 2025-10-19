@@ -595,19 +595,34 @@ SUBSYSTEM_DEF(job)
 
 //Gives the player the stuff he should have with his rank
 /datum/controller/subsystem/job/proc/equip_rank(mob/living/equipping, datum/job/job, client/player_client)
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	if(isnull(player_client?.prefs.alt_job_titles))
+		player_client.prefs.alt_job_titles = list()
+	var/chosen_title = player_client?.prefs.alt_job_titles[job.title] || job.title
+	var/default_title = job.title
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 	equipping.job = job.title
 
 	SEND_SIGNAL(equipping, COMSIG_JOB_RECEIVED, job)
 
 	equipping.mind?.set_assigned_role_with_greeting(job, player_client)
 	equipping.on_job_equipping(job, player_client)
-	job.announce_job(equipping)
+	// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+	// job.announce_job(equipping)
+	job.announce_job(equipping, chosen_title)
+	// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	if(player_client?.holder)
 		if(CONFIG_GET(flag/auto_deadmin_always) || (player_client.prefs?.toggles & DEADMIN_ALWAYS))
 			player_client.holder.auto_deadmin()
 		else
 			handle_auto_deadmin_roles(player_client, job.title)
+
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	if(player_client && chosen_title != default_title)
+		to_chat(player_client, span_infoplain(span_warning("Remember that alternate titles are purely for flavor and roleplay.")))
+		to_chat(player_client, span_infoplain(span_warning("Do not use your \"[chosen_title]\" alt title as an excuse to forego your duties as a [job.title].")))
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	job.after_spawn(equipping, player_client)
 

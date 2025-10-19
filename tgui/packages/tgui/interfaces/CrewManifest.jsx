@@ -52,7 +52,10 @@ export const CrewManifest = (props) => {
                     minWidth="40px"
                     width="40px"
                   >
-                    {positions[dept].exceptions.includes(crewMember.rank) && (
+                    {/* PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original: */}
+                    {/* {positions[dept].exceptions.includes(crewMember.rank) && ( */}
+                    {positions[dept].exceptions.includes(crewMember.trim) && (
+                      /* PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES */
                       <Tooltip content="No position limit" position="bottom">
                         <Icon className="CrewManifest__Icon" name="infinity" />
                       </Tooltip>

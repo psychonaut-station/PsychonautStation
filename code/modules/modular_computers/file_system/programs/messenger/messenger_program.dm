@@ -101,6 +101,9 @@
 		data["job"] = messenger.computer.saved_job
 		data["ref"] = REF(messenger)
 
+		// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+		data["job_trim"] = SSjob.all_alt_titles[messenger.computer.saved_job]
+		// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 		dictionary[data["ref"]] = data
 
 	return dictionary

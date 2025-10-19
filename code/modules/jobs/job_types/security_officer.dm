@@ -121,13 +121,25 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	if(dep_trim)
 		var/obj/item/card/id/worn_id = spawning.get_idcard(hand_first = FALSE)
 		SSid_access.apply_trim_to_card(worn_id, dep_trim)
+		// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+		var/chosen_title = player_client?.prefs.alt_job_titles[title] || title
+		var/assignment = "[chosen_title] ([department])"
+		worn_id.assignment = assignment
+		worn_id.update_label()
+		// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 		spawning.update_ID_card()
 
 		// Update PDA to match new trim.
 		var/obj/item/modular_computer/pda/pda = spawning.get_item_by_slot(ITEM_SLOT_BELT)
-		var/assignment = worn_id.get_trim_assignment()
+		// PSYCHONAUT EDIT REMOVAL BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+		// var/assignment = worn_id.get_trim_assignment()
+		// PSYCHONAUT EDIT REMOVAL END - ALTERNATIVE_JOB_TITLES
 		if(istype(pda) && !isnull(assignment))
 			pda.imprint_id(spawning.real_name, assignment)
+	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+	else
+		set_alt_title(spawning, player_client)
+	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
 	var/spawn_point = pick(LAZYACCESS(GLOB.department_security_spawns, department))
 

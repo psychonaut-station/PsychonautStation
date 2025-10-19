@@ -218,10 +218,19 @@
 		humanc = character //Let's retypecast the var to be human,
 
 	if(humanc) //These procs all expect humans
+		// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
+		var/chosen_rank = humanc.client?.prefs.alt_job_titles[rank] || rank
+		// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 		if(SSshuttle.arrivals)
-			SSshuttle.arrivals.QueueAnnounce(humanc, rank)
+			// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+			// SSshuttle.arrivals.QueueAnnounce(humanc, rank)
+			SSshuttle.arrivals.QueueAnnounce(humanc, chosen_rank)
+			// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 		else
-			announce_arrival(humanc, rank)
+			// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+			// announce_arrival(humanc, rank)
+			announce_arrival(humanc, chosen_rank)
+			// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 		AddEmploymentContract(humanc)
 
 		humanc.increment_scar_slot()
@@ -239,7 +248,10 @@
 		SSquirks.AssignQuirks(humanc, humanc.client)
 
 	if(humanc) // Quirks may change manifest datapoints, so inject only after assigning quirks
-		GLOB.manifest.inject(humanc)
+		// PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+		// GLOB.manifest.inject(humanc)
+		GLOB.manifest.inject(humanc, null, humanc.client)
+		// PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 		SEND_SIGNAL(humanc, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
 	var/area/station/arrivals = GLOB.areas_by_type[/area/station/hallway/secondary/entry]
 	if(humanc && arrivals && !arrivals.power_environ) //arrivals depowered

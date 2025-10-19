@@ -1,3 +1,6 @@
+/datum/controller/subsystem/job
+	var/list/all_alt_titles = list()
+
 /// Returns a list of minds of given department members
 /datum/controller/subsystem/job/proc/get_department_crew(bitflag)
 	. = list()

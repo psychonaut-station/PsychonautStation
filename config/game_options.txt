@@ -373,6 +373,7 @@ ROUNDSTART_RACES lizard
 ROUNDSTART_RACES moth
 ROUNDSTART_RACES plasmaman
 #ROUNDSTART_RACES shadow
+ROUNDSTART_RACES arachnid
 
 ## Races that are better than humans in some ways, but worse in others
 ROUNDSTART_RACES ethereal
@@ -385,6 +386,7 @@ ROUNDSTART_RACES ethereal
 #ROUNDSTART_RACES zombie
 #ROUNDSTART_RACES pod
 #ROUNDSTART_RACES ghost
+#ROUNDSTART_RACES cavespider
 
 ## Races that are radical departures to what a species is, so while they technically can be roundstart - it's probably not wise
 #ROUNDSTART_RACES android

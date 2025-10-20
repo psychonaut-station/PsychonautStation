@@ -15,7 +15,10 @@
 ///Time in seconds before anomaly is announced
 #define ANOMALY_ANNOUNCE_MEDIUM_TIME (2 EVENT_SECONDS)
 ///Let them know how far away the anomaly is
-#define ANOMALY_ANNOUNCE_MEDIUM_TEXT "long range scanners. Expected location:"
+// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+// #define ANOMALY_ANNOUNCE_MEDIUM_TEXT "long range scanners. Expected location:"
+#define ANOMALY_ANNOUNCE_MEDIUM_TEXT "Uzun menzilli tarayıcılarımız tahmini olarak"
+// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /**
  * Chaotic but not harmful anomalies. Give the station a chance to find it on their own.
@@ -26,7 +29,10 @@
 ///Time in seconds before anomaly is announced
 #define ANOMALY_ANNOUNCE_HARMFUL_TIME (30 EVENT_SECONDS)
 ///Let them know how far away the anomaly is
-#define ANOMALY_ANNOUNCE_HARMFUL_TEXT "localized scanners. Detected location:"
+// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+// #define ANOMALY_ANNOUNCE_HARMFUL_TEXT "localized scanners. Detected location:"
+#define ANOMALY_ANNOUNCE_HARMFUL_TEXT "Yerel tarayıcılarımız kesin olarak"
+// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /**
  * Anomalies that can fuck you up. Give them a bit of warning.
@@ -37,4 +43,7 @@
 ///Time in seconds before anomaly is announced
 #define ANOMALY_ANNOUNCE_DANGEROUS_TIME (30 EVENT_SECONDS)
 ///Let them know how far away the anomaly is
-#define ANOMALY_ANNOUNCE_DANGEROUS_TEXT "localized scanners. Detected location:"
+// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+// #define ANOMALY_ANNOUNCE_DANGEROUS_TEXT "localized scanners. Detected location:"
+#define ANOMALY_ANNOUNCE_DANGEROUS_TEXT "Yerel tarayıcılarımız kesin olarak"
+// PSYCHONAUT EDIT ADDITION END - LOCALIZATION

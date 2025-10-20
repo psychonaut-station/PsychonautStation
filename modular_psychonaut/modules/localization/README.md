@@ -6,10 +6,10 @@ MODULE ID: LOCALIZATION
 
 Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 
-<!-- priority_announce ve minor_announce ler yarım kaldı -->
-
 ### TG Değişiklikleri
 
+- `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
+- `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
 - `code/__HELPERS/priority_announce.dm`: `/proc/priority_announce()`, `/proc/print_command_report`, `/proc/minor_announce`, `/proc/level_announce`, `/proc/generate_unique_announcement_header`
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`
 - `code/datums/quirks/neutral_quirks/gamer.dm`: `/datum/quirk/gamer/proc/gamer_moment()`
@@ -33,7 +33,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/proc/announce_to_all_players()`, `/datum/anonymous_theme/proc/restore_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
-- `tgui/packages/tgui/interfaces/Interview.tsx`
+- `tgui/packages/tgui/interfaces/Interview.tsx`: `Interview`, `RenderedStatus`, `QuestionArea`
 
 ### Modüler Değişiklikler
 
@@ -41,7 +41,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 
 ### Definelar ve Helperlar
 
-- `code/__HELPERS/~psychonaut_helpers/text.dm`: `/proc/locale_uppertext()`, `/proc/locale_lowertext_()`, `/proc/delocale_text()`
+- N/A
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 

@@ -68,3 +68,6 @@
 
 /datum/log_category/cave_generation
 	category = LOG_CATEGORY_CAVE_GENERATION
+
+/datum/log_category/storyteller
+	category = LOG_CATEGORY_STORYTELLER

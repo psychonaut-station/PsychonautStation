@@ -189,6 +189,10 @@ SUBSYSTEM_DEF(dynamic)
 		var/low_end = range[LOW_END] || 0
 		var/high_end = range[HIGH_END] || 0
 
+		if(!isnull(SSstoryteller.current_storyteller))
+			low_end += SSstoryteller.current_storyteller.extra_settings[LOW_END] || 0
+			high_end += SSstoryteller.current_storyteller.extra_settings[HIGH_END] || 0
+
 		if(population <= (range[HALF_RANGE_POP_THRESHOLD] || 0))
 			high_end = max(low_end, ceil(high_end * 0.25))
 		else if(population <= (range[FULL_RANGE_POP_THRESHOLD] || 0))
@@ -549,6 +553,9 @@ SUBSYSTEM_DEF(dynamic)
 
 	var/low = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_LOW] || 0
 	var/high = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_HIGH] || 0
+	if(!isnull(SSstoryteller.current_storyteller))
+		low *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_LOW] || 1
+		high *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_HIGH] || 1
 	return rand(low, high)
 
 /**
@@ -734,8 +741,43 @@ SUBSYSTEM_DEF(dynamic)
 		data += "repeatable_weight_decrease = [ruleset.repeatable_weight_decrease]\n"
 		data += "repeatable = [ruleset.repeatable]\n"
 		data += "minimum_required_age = [ruleset.minimum_required_age]\n"
+		data += "track = \"[ruleset.track]\"\n"
+		if(length(ruleset.tags))
+			data += "tags = \[\n"
+			for(var/i in ruleset.tags)
+				data += "\t\"[i]\",\n"
+			data += "\]\n"
+		else
+			data += "tags = \[\]\n"
 		data += "\n"
 		qdel(ruleset)
+
+	for(var/storyteller_type in subtypesof(/datum/storyteller))
+		var/datum/storyteller/storyteller = new storyteller_type()
+		if(!storyteller.config_tag)
+			qdel(storyteller)
+			continue
+
+		data += "\[\"[storyteller.config_tag]\"\]\n"
+		data += "name = \"[storyteller.name]\"\n"
+		data += "desc = \"[storyteller.desc]\"\n"
+		data += "welcome_text = \"[storyteller.welcome_text]\"\n"
+		data += "event_repetition_multiplier = [storyteller.event_repetition_multiplier]\n"
+		data += "restricted = [storyteller.restricted]\n"
+		data += "weight = [storyteller.weight]\n"
+		data += "population_min = [storyteller.population_min || 0]\n"
+		data += "population_max = [storyteller.population_max || 0]\n"
+
+		for(var/i in storyteller.event_weight_multipliers)
+			data += "event_weight_multipliers.[i] = [storyteller.event_weight_multipliers[i]]\n"
+
+		for(var/i in storyteller.extra_settings)
+			data += "extra_settings.[i] = [storyteller.extra_settings[i]]\n"
+
+		for(var/i in storyteller.tag_multipliers)
+			data += "tag_multipliers.[i] = [storyteller.tag_multipliers[i]]\n"
+		data += "\n"
+		qdel(storyteller)
 
 	var/filepath = "[global.config.directory]/dynamic.toml"
 	fdel(file(filepath))

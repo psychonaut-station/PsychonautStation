@@ -14,6 +14,8 @@
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 	map_flags = EVENT_PLANETARY_ONLY
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_PLANETARY)
 
 /datum/round_event_control/earthquake/can_spawn_event(players_amt, allow_magic)
 	. = ..()

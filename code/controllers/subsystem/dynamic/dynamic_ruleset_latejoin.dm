@@ -31,6 +31,8 @@
 	blacklisted_roles = list(
 		JOB_HEAD_OF_PERSONNEL,
 	)
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/latejoin/traitor/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/traitor)
@@ -49,6 +51,8 @@
 	blacklisted_roles = list(
 		JOB_HEAD_OF_PERSONNEL,
 	)
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_ALIEN)
 
 /datum/dynamic_ruleset/latejoin/changeling/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/changeling)
@@ -63,6 +67,8 @@
 	weight = 1
 	min_pop = 30
 	repeatable = FALSE
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_TEAM_ANTAG)
 	/// How many heads of staff are required to be on the station for this to be selected
 	var/heads_necessary = 3
 

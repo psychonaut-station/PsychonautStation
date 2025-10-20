@@ -8,6 +8,7 @@
 	description = "If cargo accepts the offer, fills the shuttle with loot and/or enemies."
 	///The types of loan events already run (and to be excluded if the event triggers).
 	admin_setup = list(/datum/event_admin_setup/listed_options/shuttle_loan)
+	tags = list(TAG_COMMUNAL)
 	///A list of normally unavailable (or already run) situations datums
 	var/list/unavailable_situations = list(/datum/shuttle_loan_situation/mail_strike)
 

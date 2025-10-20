@@ -600,3 +600,15 @@ SPY_HARD_REWARD_TC_THRESHOLD 15
 
 #MODULAR_ROOM_WEIGHT meta_supermatter 10
 #MODULAR_ROOM_WEIGHT meta_singularity 10
+
+### Storyteller config
+## Is it enabled
+ENABLE_STORYTELLER
+## If enabled, everyone will know what's the storyteller is
+PUBLIC_STORYTELLER
+## Storyteller vote will start automatically when shuttle docks to the station
+AUTO_VOTE_STORYTELLER
+## If no storyteller is pre-selected, is will use the default storyteller. If it set to Random , a random storyteller will be chosen.
+DEFAULT_STORYTELLER Random
+## Players can start vote for changing next round's storyteller
+#ALLOW_STORYTELLER_VOTE

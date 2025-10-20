@@ -5,6 +5,8 @@
 	max_occurrences = 1
 	category = EVENT_CATEGORY_INVASION
 	description = "A single nuclear operative assaults the station."
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_DESTRUCTIVE, TAG_EXTERNAL)
 
 /datum/round_event_control/operative/can_spawn_event(players_amt, allow_magic)
 	return ..() && SSdynamic.antag_events_enabled

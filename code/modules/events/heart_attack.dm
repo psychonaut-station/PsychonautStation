@@ -9,6 +9,8 @@
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/heart_attack, /datum/event_admin_setup/input_number/heart_attack)
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_TARGETED)
 	///Candidates for receiving a healthy dose of heart disease
 	var/list/heart_attack_candidates = list()
 

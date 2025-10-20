@@ -80,6 +80,9 @@
 	/// Extra logging information can be set here, to be output into any admin messaging and dynamic logs.
 	VAR_FINAL/log_data
 
+	var/track = UNCATEGORIZED_EVENTS
+	var/tags = list()
+
 /datum/dynamic_ruleset/New(list/dynamic_config)
 	for(var/new_var in dynamic_config?[config_tag])
 		set_config_value(new_var, dynamic_config[config_tag][new_var])
@@ -194,7 +197,17 @@
 			continue
 		if(!repeatable)
 			return 0
-		final_weight -= repeatable_weight_decrease
+		if(isnull(SSstoryteller.current_storyteller) || !SSstoryteller.current_storyteller.event_repetition_multiplier)
+			final_weight -= repeatable_weight_decrease
+		else
+			final_weight *= SSstoryteller.current_storyteller.event_repetition_multiplier
+
+	if(!isnull(SSstoryteller.current_storyteller))
+		final_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[track] || 1
+		for(var/tag in tags)
+			if(!SSstoryteller.current_storyteller.tag_multipliers.Find(tag))
+				continue
+			final_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag]
 
 	return max(final_weight, 0)
 

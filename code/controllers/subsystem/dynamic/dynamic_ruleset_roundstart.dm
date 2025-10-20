@@ -39,6 +39,8 @@
 	weight = 10
 	min_pop = 3
 	max_antag_cap = list("denominator" = 24)
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/roundstart/traitor/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/traitor)
@@ -58,6 +60,8 @@
 	min_pop = 30
 	max_antag_cap = 1
 	repeatable = FALSE
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_CREW_ANTAG, TAG_DESTRUCTIVE)
 
 /datum/dynamic_ruleset/roundstart/malf_ai/get_always_blacklisted_roles()
 	return list()
@@ -82,6 +86,8 @@
 	weight = 5
 	max_antag_cap = list("denominator" = 29)
 	min_pop = 10
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_TEAM_ANTAG)
 
 /datum/dynamic_ruleset/roundstart/blood_brother/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/brother)
@@ -94,6 +100,8 @@
 	weight = 3
 	min_pop = 15
 	max_antag_cap = list("denominator" = 29)
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_ALIEN)
 
 /datum/dynamic_ruleset/roundstart/changeling/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/changeling)
@@ -106,6 +114,8 @@
 	weight = 3
 	max_antag_cap = list("denominator" = 24)
 	min_pop = 30 // Ensures good spread of sacrifice targets
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_MAGICAL)
 
 /datum/dynamic_ruleset/roundstart/heretic/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/heretic)
@@ -126,6 +136,8 @@
 	min_pop = 30
 	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_WIZARDDEN)
 	repeatable = FALSE
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_MAGICAL)
 
 /datum/dynamic_ruleset/roundstart/wizard/prepare_for_role(datum/mind/candidate)
 	LAZYSET(SSjob.forced_occupations, candidate, /datum/job/space_wizard)
@@ -161,6 +173,8 @@
 	repeatable = FALSE
 	/// Ratio of cultists getting on the shuttle to be considered a minor win
 	var/ratio_to_be_considered_escaped = 0.5
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_TEAM_ANTAG, TAG_MAGICAL)
 
 /datum/dynamic_ruleset/roundstart/blood_cult/get_always_blacklisted_roles()
 	return ..() | JOB_CHAPLAIN
@@ -218,6 +232,8 @@
 	min_antag_cap = list("denominator" = 18, "offset" = 1)
 	ruleset_lazy_templates = list(LAZY_TEMPLATE_KEY_NUKIEBASE)
 	repeatable = FALSE
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_TEAM_ANTAG, TAG_DESTRUCTIVE, TAG_EXTERNAL)
 
 /datum/dynamic_ruleset/roundstart/nukies/prepare_for_role(datum/mind/candidate)
 	LAZYSET(SSjob.forced_occupations, candidate, /datum/job/nuclear_operative)
@@ -302,6 +318,8 @@
 	min_antag_cap = 1
 	max_antag_cap = 3
 	repeatable = FALSE
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG, TAG_TEAM_ANTAG)
 	/// If we have fewer heads of staff than this 7 minutes into the round, we'll cancel the revolution
 	var/heads_necessary = 2
 
@@ -375,6 +393,8 @@
 	)
 	min_pop = 10
 	min_antag_cap = list("denominator" = 20, "offset" = 1)
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/roundstart/spies/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/spy)
@@ -398,6 +418,8 @@
 	weight = 0
 	min_antag_cap = 0
 	repeatable = FALSE
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMBAT, TAG_EXTERNAL)
 
 /datum/dynamic_ruleset/roundstart/meteor/execute()
 	GLOB.meteor_mode ||= new()

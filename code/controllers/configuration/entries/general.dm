@@ -834,3 +834,7 @@
 	default = FALSE
 
 /datum/config_entry/string/suspicious_log_discord_role_id
+
+/datum/config_entry/number/minimum_ascension_time
+	default = 0 // 1 minute
+	min_val = 0

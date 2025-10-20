@@ -113,6 +113,7 @@
 #define ORGAN_SLOT_TONGUE "tongue"
 #define ORGAN_SLOT_VOICE "vocal_cords"
 #define ORGAN_SLOT_ZOMBIE "zombie_infection"
+#define ORGAN_SLOT_VOLTPROTECT "voltage_protector" // PSYCHONAUT ADDITION - IPC - (Reason: It should be defined earlier because of GLOB.organ_process_order)
 
 /// Organ slot external
 #define ORGAN_SLOT_EXTERNAL_TAIL "tail"
@@ -169,6 +170,7 @@ GLOBAL_LIST_INIT(organ_process_order, list(
 	ORGAN_SLOT_LUNGS,
 	ORGAN_SLOT_HEART,
 	ORGAN_SLOT_ZOMBIE,
+	ORGAN_SLOT_VOLTPROTECT, // PSYCHONAUT ADDITION - IPC
 	ORGAN_SLOT_THRUSTERS,
 	ORGAN_SLOT_HUD,
 	ORGAN_SLOT_LIVER,

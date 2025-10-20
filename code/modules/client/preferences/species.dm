@@ -6,7 +6,10 @@
 	randomize_by_default = FALSE
 
 /datum/preference/choiced/species/deserialize(input, datum/preferences/preferences)
-	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(), SPECIES_HUMAN)]
+	return GLOB.species_list[sanitize_inlist(input, get_choices_serialized(preferences), SPECIES_HUMAN)]
+	// PSYCHONAUT EDIT ADDITION END - IPC
 
 /datum/preference/choiced/species/serialize(input)
 	var/datum/species/species = input

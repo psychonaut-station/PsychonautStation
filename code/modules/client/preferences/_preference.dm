@@ -190,15 +190,23 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Given a savefile, writes the inputted value.
 /// Returns TRUE for a successful application.
 /// Return FALSE if it is invalid.
-/datum/preference/proc/write(list/save_data, value)
+// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+// /datum/preference/proc/write(list/save_data, value)
+/datum/preference/proc/write(list/save_data, value, datum/preferences/preferences)
+// PSYCHONAUT EDIT ADDITION END - IPC
 	SHOULD_NOT_OVERRIDE(TRUE)
 
-	if (!is_valid(value))
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// if (!is_valid(value))
+	if (!is_valid(value, preferences))
+	// PSYCHONAUT EDIT ADDITION END - IPC
 		return FALSE
 
 	if (!isnull(save_data))
-		save_data[savefile_key] = serialize(value)
-
+		// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+		// save_data[savefile_key] = serialize(value)
+		save_data[savefile_key] = serialize(value, preferences)
+		// PSYCHONAUT EDIT ADDITION END - IPC
 	return TRUE
 
 /// Apply this preference onto the given client.
@@ -277,7 +285,10 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preferences/proc/write_preference(datum/preference/preference, preference_value)
 	var/save_data = get_save_data_for_savefile_identifier(preference.savefile_identifier)
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(save_data, new_value)
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// var/success = preference.write(save_data, new_value)
+	var/success = preference.write(save_data, new_value, src)
+	// PSYCHONAUT EDIT ADDITION END - IPC
 	if (success)
 		value_cache[preference.type] = new_value
 	return success
@@ -290,7 +301,10 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 		return FALSE
 
 	var/new_value = preference.deserialize(preference_value, src)
-	var/success = preference.write(null, new_value)
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// var/success = preference.write(null, new_value)
+	var/success = preference.write(null, new_value, src)
+	// PSYCHONAUT EDIT ADDITION END - IPC
 
 	if (!success)
 		return FALSE
@@ -316,9 +330,10 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /// Returns data to be sent to users in the menu
 /datum/preference/proc/compile_ui_data(mob/user, value)
 	SHOULD_NOT_SLEEP(TRUE)
-
-	return serialize(value)
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// return serialize(value)
+	return serialize(value, user.client?.prefs)
+	// PSYCHONAUT EDIT ADDITION END - IPC
 /// Returns data compiled into the preferences JSON asset
 /datum/preference/proc/compile_constant_data()
 	SHOULD_NOT_SLEEP(TRUE)
@@ -390,14 +405,20 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	return cached_values
 
 /// Returns a list of every possible value, serialized.
-/datum/preference/choiced/proc/get_choices_serialized()
+// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+// /datum/preference/choiced/proc/get_choices_serialized()
+/datum/preference/choiced/proc/get_choices_serialized(datum/preferences/preferences)
+// PSYCHONAUT EDIT ADDITION END - IPC
 	// Override `init_values()` instead.
 	SHOULD_NOT_OVERRIDE(TRUE)
 
 	var/list/serialized_choices = list()
 
 	for (var/choice in get_choices())
-		serialized_choices += serialize(choice)
+		// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+		// serialized_choices += serialize(choice)
+		serialized_choices += serialize(choice, preferences)
+		// PSYCHONAUT EDIT ADDITION END - IPC
 
 	return serialized_choices
 

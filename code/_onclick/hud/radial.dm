@@ -271,6 +271,15 @@ GLOBAL_LIST_EMPTY(radial_menus)
 			SET_PLANE_EXPLICIT(info_button, ABOVE_HUD_PLANE, anchor)
 			info_button.layer = RADIAL_CONTENT_LAYER
 			E.vis_contents += info_button
+		// PSYCHONAUT ADDITION BEGIN - IPC
+		if (choice_datum?.warning)
+			var/obj/effect/abstract/warning/warning_button = new(E, choice_datum.warning)
+			warning_button.name = "Warning: [E.name]"
+			warning_button.tooltip_theme = choice_datum.tooltip_theme
+			SET_PLANE_EXPLICIT(warning_button, ABOVE_HUD_PLANE, anchor)
+			warning_button.layer = RADIAL_CONTENT_LAYER
+			E.vis_contents += warning_button
+		// PSYCHONAUT ADDITION END - IPC
 
 /datum/radial_menu/New(display_close_button)
 	if(!display_close_button)

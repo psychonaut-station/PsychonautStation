@@ -170,9 +170,14 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 		return FALSE
 	if(!new_heart.useable)
 		return FALSE
-	if(new_heart.organ_flags & (ORGAN_ROBOTIC|ORGAN_FAILING))
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// if(new_heart.organ_flags & (ORGAN_ROBOTIC|ORGAN_FAILING))
+	// 	return FALSE
+	if(new_heart.organ_flags & ORGAN_FAILING)
 		return FALSE
-
+	if((new_heart.organ_flags & ORGAN_ROBOTIC) && !istype(new_heart, /obj/item/organ/heart/cybernetic/tier2/ipc))
+		return FALSE
+	// PSYCHONAUT EDIT ADDITION END - IPC
 	return TRUE
 
 /**

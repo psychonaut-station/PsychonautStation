@@ -3,6 +3,7 @@
 
 // Block tied
 #define FEATURE_ARACHNID_APPENDAGES "arachnid_appendages"
+#define FEATURE_IPC_CHASSIS "ipc_chassis"
 
 /// Organ slot external
 #define ORGAN_SLOT_EXTERNAL_APPENDAGES "appendages"

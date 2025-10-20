@@ -4,3 +4,6 @@
 
 /// Disables the movement beacuse we are grabbed by kinesis.(For energy ball and singularity)
 #define TRAIT_GRABBED_BY_KINESIS "grabbed_by_kinesis"
+
+/// Makes you immune to welding flashes
+#define TRAIT_NOTOOLFLASH "notoolflash"

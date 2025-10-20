@@ -307,6 +307,11 @@
 
 	//since these people will be dead M != usr
 
+	// PSYCHONAUT ADDITION BEGIN - IPC
+	if(isipc(C) && zone != BODY_ZONE_CHEST)
+		return
+	// PSYCHONAUT ADDITION END - IPC
+
 	if(!target_has_brain)
 		if(!C.get_bodypart(BODY_ZONE_HEAD) || !user.temporarilyRemoveItemFromInventory(src))
 			return

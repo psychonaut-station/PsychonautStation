@@ -93,6 +93,11 @@
 		if(user == target && !HAS_TRAIT(user, TRAIT_SELF_SURGERY) && !(surgery.surgery_flags & SURGERY_SELF_OPERABLE))
 			continue
 
+		// PSYCHONAUT ADDITION BEGIN - IPC - Original:
+		if(user == target && (surgery.surgery_flags & SURGERY_SELF_OPERABLE) && (affecting.bodytype & BODYTYPE_IPC))
+			continue
+		// PSYCHONAUT ADDITION END - IPC
+
 		if(isnull(affecting))
 			if(surgery.surgery_flags & SURGERY_REQUIRE_LIMB)
 				continue

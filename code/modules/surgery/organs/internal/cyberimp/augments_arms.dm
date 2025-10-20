@@ -97,7 +97,10 @@
 /obj/item/organ/cyberimp/arm/toolkit/on_limb_detached(obj/item/bodypart/source)
 	if(source != hand || QDELETED(hand))
 		return
-	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_ITEM_ATTACK_SELF))
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	// UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_ITEM_ATTACK_SELF))
+	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_QDELETING, COMSIG_ITEM_ATTACK_SELF))
+	// PSYCHONAUT EDIT ADDITION END - IPC
 	hand = null
 
 /obj/item/organ/cyberimp/arm/toolkit/proc/on_item_attack_self()

@@ -57,10 +57,14 @@
 	)
 
 /datum/preference/name/real_name/deserialize(input, datum/preferences/preferences)
-	input = ..(input)
+	// PSYCHONAUT EDIT REMOVAL BEGIN - IPC - Original:
+	// input = ..(input)
+	// PSYCHONAUT EDIT REMOVAL END - IPC
 	if (!input)
 		return input
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+	/*
 	if (CONFIG_GET(flag/humans_need_surnames) && preferences.read_preference(/datum/preference/choiced/species) == /datum/species/human)
 		var/first_space = findtext(input, " ")
 		if(!first_space) //we need a surname
@@ -69,6 +73,18 @@
 			input += "[pick(GLOB.last_names)]"
 
 	return reject_bad_name(input, allow_numbers)
+	*/
+	var/datum/species/race = preferences?.read_preference(/datum/preference/choiced/species) || /datum/species/human
+
+	if (CONFIG_GET(flag/humans_need_surnames) && race == /datum/species/human)
+		var/first_space = findtext(input, " ")
+		if(!first_space) //we need a surname
+			input += " [pick(GLOB.last_names)]"
+		else if(first_space == length(input))
+			input += "[pick(GLOB.last_names)]"
+
+	return reject_bad_name(input, race::allow_numbers_in_name || allow_numbers)
+	// PSYCHONAUT EDIT ADDITION END - IPC
 
 /// The name for a backup human, when nonhumans are made into head of staff
 /datum/preference/name/backup_human

@@ -127,9 +127,16 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features[FEATURE_TAIL_FISH] = get_consistent_feature_entry(SSaccessories.tails_list_fish)
 	target.dna.features[FEATURE_POD_HAIR] = get_consistent_feature_entry(SSaccessories.pod_hair_list)
 	target.dna.features[FEATURE_MUSH_CAP] = get_consistent_feature_entry(SSaccessories.caps_list)
+	// PSYCHONAUT ADDITION BEGIN - ARACHNID
+	target.dna.features[FEATURE_ARACHNID_APPENDAGES] = get_consistent_feature_entry(SSaccessories.arachnid_appendages_list)
+	// PSYCHONAUT ADDITION END - ARACHNID
+	// PSYCHONAUT ADDITION BEGIN - IPC
+	target.dna.features[FEATURE_IPC_CHASSIS] = get_consistent_feature_entry(SSaccessories.ipc_chassis_list)
+	// PSYCHONAUT ADDITION END - IPC
 	target.dna.initialize_dna(newblood_type = get_blood_type(BLOOD_TYPE_O_MINUS), create_mutation_blocks = FALSE, randomize_features = FALSE)
 	// UF and UI are nondeterministic, even though the features are the same some blocks will randomize slightly
 	// In practice this doesn't matter, but this is for the sake of 100%(ish) consistency
+
 	var/static/consistent_UF
 	var/static/consistent_UI
 	if(isnull(consistent_UF) || isnull(consistent_UI))

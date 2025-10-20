@@ -195,6 +195,16 @@
 			to_chat(user, span_warning("[target_organ] seems to have been chewed on, you can't use this!"))
 			return SURGERY_STEP_FAIL
 
+		// PSYCHONAUT ADDITION BEGIN - IPC
+		if(istype(target_organ, /obj/item/organ/brain))
+			if(istype(target_organ, /obj/item/organ/brain/cybernetic/ipc) && !isipc(target) && target_organ.zone != BODY_ZONE_HEAD)
+				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
+				return SURGERY_STEP_FAIL
+			else if(isipc(target) && target_organ.zone == BODY_ZONE_HEAD)
+				to_chat(user, span_warning("There is no room for [target_organ] in [target]'s [target.parse_zone_with_bodypart(target_zone)]!"))
+				return SURGERY_STEP_FAIL
+		// PSYCHONAUT ADDITION END - IPC
+
 		if(!can_use_organ(meatslab))
 			return SURGERY_STEP_FAIL
 

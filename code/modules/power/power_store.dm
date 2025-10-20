@@ -299,6 +299,11 @@
 
 	var/mob/living/carbon/human/human_user = user
 	var/obj/item/organ/stomach/ethereal/user_stomach = human_user.get_organ_slot(ORGAN_SLOT_STOMACH)
+	// PSYCHONAUT ADDITION BEGIN - IPC
+	if(istype(user_stomach, /obj/item/organ/stomach/ipc) && user_stomach.drain_time <= world.time)
+		ipc_drain(human_user, user_stomach)
+		return
+	// PSYCHONAUT ADDITION END - IPC
 	if(!istype(user_stomach))
 		return
 	if(user_stomach.drain_time > world.time)

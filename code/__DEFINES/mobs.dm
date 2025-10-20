@@ -150,6 +150,11 @@
 #define BODYTYPE_SHADOW (1<<7)
 //This limb is a ghost limb and can phase through walls.
 #define BODYTYPE_GHOST (1<<8)
+// PSYCHONAUT ADDITION BEGIN - IPC
+///IPC
+#define BODYTYPE_IPC (1<<9)
+// PSYCHONAUT ADDITION END - IPC
+
 
 // Bodyshape defines for how things can be worn, i.e., what "shape" the mob sprite is
 ///The limb fits the human mold. This is not meant to be literal, if the sprite "fits" on a human, it is "humanoid", regardless of origin.

@@ -15,10 +15,16 @@
 			choiced_preference.init_possible_values()
 
 		// Smoke-test is_valid
-		preference.is_valid(TRUE)
-		preference.is_valid("string")
-		preference.is_valid(100)
-		preference.is_valid(list(1, 2, 3))
+		// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
+		// preference.is_valid(TRUE)
+		// preference.is_valid("string")
+		// preference.is_valid(100)
+		// preference.is_valid(list(1, 2, 3))
+		preference.is_valid(TRUE, preferences)
+		preference.is_valid("string", preferences)
+		preference.is_valid(100, preferences)
+		preference.is_valid(list(1, 2, 3), preferences)
+		// PSYCHONAUT EDIT ADDITION END - IPC
 
 /// Requires all preferences to have a valid, unique savefile_identifier.
 /datum/unit_test/preferences_valid_savefile_key

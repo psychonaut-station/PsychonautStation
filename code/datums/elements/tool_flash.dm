@@ -33,5 +33,10 @@
 /datum/element/tool_flash/proc/flash(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 
+	// PSYCHONAUT ADDITION BEGIN - IPC
+	if(HAS_TRAIT(user, TRAIT_NOTOOLFLASH))
+		return
+	// PSYCHONAUT ADDITION END - IPC
+
 	if(user && get_dist(get_turf(source), get_turf(user)) <= 1)
 		user.flash_act(max(flash_strength,1))

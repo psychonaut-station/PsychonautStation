@@ -1,7 +1,7 @@
 /datum/loadout_item
 	var/donator_only = FALSE
 
-/datum/loadout_item/on_equip_item(obj/item/equipped_item, datum/preferences/preference_source, list/preference_list, mob/living/carbon/human/equipper, visuals_only)
+/datum/loadout_item/on_equip_item(obj/item/equipped_item, list/item_details, mob/living/carbon/human/equipper, datum/outfit/outfit, visuals_only = FALSE)
 	if(!isnull(equipped_item) && donator_only && equipper.client && !equipper.client.prefs.unlock_content)
 		qdel(equipped_item)
 		return NONE

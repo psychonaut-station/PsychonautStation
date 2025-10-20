@@ -79,18 +79,17 @@
 		return
 	return user.dna.species.get_scream_sound(user)
 
-/datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
+/datum/emote/living/carbon/human/screech // basically scream 2.0
 	key = "screech"
 	key_third_person = "screeches"
 	message = "screeches!"
 	message_mime = "screeches silently."
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
+	specific_emote_audio_cooldown = 10 SECONDS
 	vary = FALSE
 
-/datum/emote/living/carbon/human/scream/screech/should_play_sound(mob/user, intentional)
-	if(ismonkey(user))
-		return TRUE
-	return ..()
+/datum/emote/living/carbon/human/screech/get_sound(mob/living/carbon/human/user)
+	return user.dna.species.get_scream_sound(user)
 
 /datum/emote/living/carbon/human/pale
 	key = "pale"

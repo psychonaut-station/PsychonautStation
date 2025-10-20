@@ -9,6 +9,7 @@ Arachnid ırkını oyuna ekler
 ### TG Değişiklikleri
 
 - `code/_globalvars/phobias.dm`: `GLOB.phobia_species`
+- `code/modules/mob/living/carbon/human/dummy.dm`: `/proc/create_consistent_human_dna()`
 - `code/modules/surgery/organs/internal/eyes/_eyes.dm`: `/obj/item/organ/eyes/Initialize()`, `/obj/item/organ/eyes/on_mob_remove()`, `/obj/item/organ/eyes/proc/generate_body_overlay()`
 - `code/modules/unit_tests/screenshot_humanoids.dm`: `/datum/unit_test/screenshot_humanoids/Run()`
 
@@ -27,6 +28,7 @@ Arachnid ırkını oyuna ekler
 
 - `code/__DEFINES/~psychonaut_defines/DNA.dm`: `FEATURE_ARACHNID_APPENDAGES`, `ORGAN_SLOT_EXTERNAL_APPENDAGES`
 - `code/__DEFINES/~psychonaut_defines/mobs.dm`: `SPECIES_ARACHNID`, `SPECIES_CAVESPIDER`
+- `code/__HELPERS/~psychonaut_helpers/is_helpers.dm`: `isarachnid`
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 

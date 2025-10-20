@@ -105,3 +105,11 @@ export const split_admin_tabs: FeatureToggle = {
   description: "When enabled, will split the 'Admin' panel into several tabs.",
   component: CheckboxInput,
 };
+
+// PSYCHONAUT ADDITION BEGIN - LOOC
+export const chat_looc: FeatureToggle = {
+  name: 'Enable LOOC',
+  category: 'CHAT',
+  component: CheckboxInput,
+};
+// PSYCHONAUT ADDITION END - LOOC

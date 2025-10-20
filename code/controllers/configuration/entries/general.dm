@@ -833,10 +833,8 @@
 /datum/config_entry/flag/generate_assets_in_init
 	default = FALSE
 
-<<<<<<< HEAD
 /datum/config_entry/string/suspicious_log_discord_role_id
-=======
+
 /datum/config_entry/number/minimum_ascension_time
 	default = 0 // 1 minute
 	min_val = 0
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5

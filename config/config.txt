@@ -673,10 +673,8 @@ TGUI_MAX_CHUNK_COUNT 32
 ## It increases initialization time significantly so you'll want to disable this in live environments.
 GENERATE_ASSETS_IN_INIT
 
-<<<<<<< HEAD
 ## Etiketlenmesini istediğin discord rolünün id sini yaz.
 #SUSPICIOUS_LOG_DISCORD_ROLE_ID
-=======
+
 ## Minimum time before a heretic can ascend, in minutes
 # MINIMUM_ASCENSION_TIME 3
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5

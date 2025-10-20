@@ -347,35 +347,26 @@
   - refactor: The vorpal scythe now handles empowerment more cleanly.
   - refactor: The pipegun now hints at its deep lore.
 2025-10-11:
-<<<<<<< HEAD
-=======
   Fghj240:
   - rscadd: New T3 cybernetic ears, the volume-adjusted ears.
   - balance: The T1 and T2 ears are now slightly worse than and slightly better than
       normal ears, respectively.
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5
   Ghommie:
   - refactor: Refactored shared nullrod effects into an element.
   - bugfix: The carp-sie plushie is now an actual plushie.
   - balance: The toy cargo pack can no longer spawn ANY type of plushie. Instead it'll
       pull from the dedicated plushie spawner, which now contains the donk, rouny
       and whiny plushies as well.
-<<<<<<< HEAD
-=======
   - code_imp: Merged the human and living versions of the scream emote. Remember to
       reset your scream hotkey if it is ever unset.
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5
   Iajret:
   - bugfix: fixed not working MOD suit NVGs
   Iamgoofball:
   - bugfix: Fixes the clown/mime honorifics
-<<<<<<< HEAD
-=======
   Melbert:
   - bugfix: You can interact with soup pots on stoves again
   - balance: Death of artifical mobs (such as monkey cube monkeys) result in a 75%
       weaker, 80% shorter moodlet that does not compound with more deaths.
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5
   SmArtKar:
   - balance: Brimdust sacks no longer hit user's mount or allied mobs within lavaland
       pressure.
@@ -385,8 +376,6 @@
   - balance: Goliaths, raptors and goldgrubs are now affected by movespeed modifiers,
       such as rush glands, when mounted.
   - image: Brimdust sacks' effect have received a visual upgrade.
-<<<<<<< HEAD
-=======
   Sothanforax:
   - rscadd: Added chitter and squeak emotes for moths
   - sound: Added chitters and squeaks
@@ -555,4 +544,3 @@
   - bugfix: fixes implanter renaming not working
   - bugfix: fixes clownborg picket sign renaming not working
   - code_imp: brought most unique renaming implementations under UNIQUE_RENAME
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5

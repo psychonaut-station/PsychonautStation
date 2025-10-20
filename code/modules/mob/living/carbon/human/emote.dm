@@ -57,7 +57,6 @@
 	message_mime = "mumbles silently!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
-<<<<<<< HEAD
 /datum/emote/living/carbon/human/scream
 	key = "scream"
 	key_third_person = "screams"
@@ -80,10 +79,7 @@
 		return
 	return user.dna.species.get_scream_sound(user)
 
-/datum/emote/living/carbon/human/scream/screech //If a human tries to screech it'll just scream.
-=======
 /datum/emote/living/carbon/human/screech // basically scream 2.0
->>>>>>> ceff716c7bef4dfc7236f99c144f6986d81832c5
 	key = "screech"
 	key_third_person = "screeches"
 	message = "screeches!"

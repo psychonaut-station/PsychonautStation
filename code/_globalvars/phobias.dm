@@ -579,6 +579,11 @@ GLOBAL_LIST_INIT(phobia_species, list(
 		/datum/species/plasmaman,
 		/datum/species/skeleton,
 	)),
+	// PSYCHONAUT ADDITION BEGIN - ARACHNID
+	"spiders" = typecacheof(list(
+		/datum/species/arachnid,
+	)),
+	// PSYCHONAUT ADDITION END - ARACHNID
 ))
 
 /// Creates a regular expression to match against the given phobia

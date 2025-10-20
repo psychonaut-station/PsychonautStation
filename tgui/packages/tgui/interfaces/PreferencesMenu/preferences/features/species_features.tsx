@@ -123,3 +123,14 @@ export const heterochromatic: Feature<string> = {
   name: 'Heterochromatic (Right Eye) color',
   component: FeatureColorInput,
 };
+
+// PSYCHONAUT ADDITION BEGIN - ARACHNID
+export const feature_arachnid_appendages: FeatureChoiced = {
+  name: 'Arachnid Appendages',
+  component: (
+    props: FeatureValueProps<string, string, FeatureChoicedServerData>,
+  ) => {
+    return <FeatureDropdownInput buttons {...props} />;
+  },
+};
+// PSYCHONAUT ADDITION END - ARACHNID

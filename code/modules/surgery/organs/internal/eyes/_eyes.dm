@@ -72,8 +72,12 @@
 /obj/item/organ/eyes/Initialize(mapload)
 	. = ..()
 	if (blink_animation)
-		eyelid_left = new(src, "[eye_icon_state]_l")
-		eyelid_right = new(src, "[eye_icon_state]_r")
+		// PSYCHONAUT EDIT ADDITION BEGIN - ARACHNID - Original:
+		// eyelid_left = new(src, "[eye_icon_state]_l")
+		// eyelid_right = new(src, "[eye_icon_state]_r")
+		// PSYCHONAUT EDIT ADDITION END - ARACHNID
+		eyelid_left = new(src, eye_icon, "[eye_icon_state]_l")
+		eyelid_right = new(src, eye_icon, "[eye_icon_state]_r")
 
 /obj/item/organ/eyes/Destroy()
 	QDEL_NULL(eyelid_left)
@@ -133,6 +137,11 @@
 			organ_owner.remove_fov_trait(type)
 		if(!special)
 			human_owner.update_body()
+		// PSYCHONAUT ADDITION BEGIN - ARACHNID
+		if(human_owner.can_mutate() && no_glasses)
+			var/datum/species/rec_species = human_owner.dna.species
+			rec_species.update_no_equip_flags(organ_owner, initial(rec_species.no_equip_flags))
+		// PSYCHONAUT ADDITION END - ARACHNID
 
 	// Cure blindness from eye damage
 	organ_owner.cure_blind(EYE_DAMAGE)
@@ -260,11 +269,20 @@
 	if(!istype(parent) || parent.get_organ_by_type(/obj/item/organ/eyes) != src)
 		CRASH("Generating a body overlay for [src] targeting an invalid parent '[parent]'.")
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - ARACHNID - Original:
+	/*
 	if(isnull(eye_icon_state))
 		return list()
 
 	var/mutable_appearance/eye_left = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_l", -EYES_LAYER, parent)
 	var/mutable_appearance/eye_right = mutable_appearance('icons/mob/human/human_face.dmi', "[eye_icon_state]_r", -EYES_LAYER, parent)
+	*/
+	if(isnull(eye_icon_state) || isnull(eye_icon))
+		return list()
+
+	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -EYES_LAYER, parent)
+	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -EYES_LAYER, parent)
+	// PSYCHONAUT EDIT ADDITION END - ARACHNID
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(overlay_ignore_lighting && !(parent.obscured_slots & HIDEEYES))

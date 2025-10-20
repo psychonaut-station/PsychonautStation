@@ -32,6 +32,19 @@
 	test_screenshot("[/datum/species/moth]", get_flat_icon_for_all_directions(moth))
 	testable_species -= /datum/species/moth
 
+	// PSYCHONAUT ADDITION BEGIN - ARACHNID
+	for (var/datum/species/arachnid_type as anything in typesof(/datum/species/arachnid))
+		var/mob/living/carbon/human/arachnid = allocate(/mob/living/carbon/human/dummy/consistent)
+		arachnid.dna.features[FEATURE_MUTANT_COLOR] = "#382928"
+		arachnid.dna.features[FEATURE_ARACHNID_APPENDAGES] = "Long"
+		arachnid.eye_color_left = COLOR_SILVER
+		arachnid.eye_color_right = COLOR_SILVER
+		arachnid.set_species(arachnid_type)
+		arachnid.equipOutfit(/datum/outfit/job/scientist/consistent, visuals_only = TRUE)
+		test_screenshot("[arachnid_type]", get_flat_icon_for_all_directions(arachnid))
+		testable_species -= arachnid_type
+	// PSYCHONAUT ADDITION END - ARACHNID
+
 	// More in depth test for slimes since they have a lot going on
 	for (var/datum/species/slime_type as anything in typesof(/datum/species/jelly))
 		var/mob/living/carbon/human/slime = allocate(/mob/living/carbon/human/dummy/consistent)

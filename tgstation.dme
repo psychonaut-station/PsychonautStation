@@ -6856,6 +6856,7 @@
 #include "modular_psychonaut\modules\jukebox\code\proximity_monitor.dm"
 #include "modular_psychonaut\modules\jukebox\code\supply_pack.dm"
 #include "modular_psychonaut\modules\jukebox\code\web_sound_player.dm"
+#include "modular_psychonaut\modules\language\code\font.dm"
 #include "modular_psychonaut\modules\language\code\localization.dm"
 #include "modular_psychonaut\modules\looc\code\keybinding.dm"
 #include "modular_psychonaut\modules\looc\code\verbs.dm"

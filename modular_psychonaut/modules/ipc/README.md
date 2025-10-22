@@ -53,7 +53,7 @@ IPC ırkını oyuna ekler
 - `modular_psychonaut/master_files/code/modules/reagents/reagent_containers/blood_pack.dm`: `/obj/item/reagent_containers/blood/oil`
 - `modular_psychonaut/master_files/code/modules/research/designs/mechfabricator_designs.dm`: `/datum/design/ipc_chest`, `/datum/design/ipc_head`, `/datum/design/ipc_l_arm`, `/datum/design/ipc_r_arm`, `/datum/design/ipc_l_leg`, `/datum/design/ipc_r_leg`, `/datum/design/ipc_stomach`, `/datum/design/ipc_voltprotector`, `/datum/design/ipc_power_cord`
 - `modular_psychonaut/master_files/code/modules/research/techweb/nodes/robo_nodes.dm`: `/datum/techweb_node/ipc`
-- `modular_psychonaut/master_files/code/modules/surgery/organs/internal/cyberimp/augments_arms.dm`: `/obj/item/organ/cyberimp/arm/on_limb_attached()`, `/obj/item/organ/cyberimp/arm/on_limb_detached()`, `/obj/item/organ/cyberimp/arm/proc/on_limb_qdel()`, `/obj/item/organ/cyberimp/arm/toolkit/on_limb_qdel()`
+- `modular_psychonaut/master_files/code/modules/surgery/organs/internal/cyberimp/augments_arms.dm`: `/obj/item/organ/cyberimp/arm/on_mob_remove()`, `/obj/item/organ/cyberimp/arm/on_limb_attached()`, `/obj/item/organ/cyberimp/arm/on_limb_detached()`, `/obj/item/organ/cyberimp/arm/proc/on_limb_qdel()`, `/obj/item/organ/cyberimp/arm/toolkit/on_mob_remove()`, `/obj/item/organ/cyberimp/arm/toolkit/on_limb_qdel()`
 - `modular_psychonaut/master_files/code/modules/surgery/organs/internal/heart/_heart.dm`: `/obj/item/organ/heart/cybernetic/tier2/ipc`
 - `modular_psychonaut/master_files/code/modules/surgery/organs/internal/stomach/stomach_ipc.dm`: `/obj/item/organ/stomach/ipc`
 - `modular_psychonaut/master_files/icons/effects/effects.dmi`: `warning`, `warning_hovered`

@@ -10,6 +10,9 @@
  * and it will hurt the entire time
  */
 
+//No department
+#define JOB_ANIMAL "Animal"
 //Security
 #define JOB_BRIG_PHYSICIAN "Brig Physician"
+//Engineering
 #define JOB_WORKER "Worker"

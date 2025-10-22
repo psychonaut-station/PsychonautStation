@@ -3,6 +3,7 @@ export type AvailableJob = keyof typeof JOB2ICON;
 /** Icon map of jobs to their fontawesome5 (free) counterpart. */
 export const JOB2ICON = {
   AI: 'eye',
+  Animal: 'paw', // PSYCHONAUT EDIT ADDITION - ANIMAL
   Assistant: 'toolbox',
   'Atmospheric Technician': 'fan',
   Bartender: 'cocktail',
@@ -57,5 +58,5 @@ export const JOB2ICON = {
   'Veteran Security Advisor': 'ribbon',
   'Pun Pun': 'paw',
   Warden: 'handcuffs',
-  'Worker': 'screwdriver-wrench',
+  Worker: 'screwdriver-wrench', // PSYCHONAUT EDIT ADDITION - WORKER
 } as const;

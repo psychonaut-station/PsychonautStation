@@ -10,3 +10,12 @@
 
 /datum/preference/name/backup_human/deserialize(input, datum/preferences/preferences)
 	return reject_bad_name(input, allow_numbers)
+
+/datum/preference/name/animal
+	savefile_key = "animal_name"
+	explanation = "Animal name"
+	group = "fun"
+	relevant_job = /datum/job/animal
+
+/datum/preference/name/animal/create_default_value()
+	return pick(GLOB.animal_names)

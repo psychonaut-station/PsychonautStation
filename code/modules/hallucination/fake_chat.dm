@@ -197,7 +197,7 @@
 		chosen = capitalize(chosen)
 
 	chosen = replacetext(chosen, "%TARGETNAME%", first_name(hallucinator.name))
-	chosen = replacetext(chosen, "%TARGETNAME_CAP%", locale_uppertext(first_name(hallucinator.name)))
+	chosen = replacetext(chosen, "%TARGETNAME_CAP%", uppertext(first_name(hallucinator.name)))
 
 	// Log the message
 	feedback_details += "Type: [is_radio ? "Radio" : "Talk"], Source: [speaker.real_name], Message: [chosen]"

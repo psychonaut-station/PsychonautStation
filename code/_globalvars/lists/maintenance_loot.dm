@@ -228,6 +228,7 @@ GLOBAL_LIST_INIT(uncommon_loot, list(//uncommon: useful items
 			/obj/item/reagent_containers/cup/glass/bottle/vodka = 1,
 			/obj/item/reagent_containers/cup/glass/drinkingglass/filled/nuka_cola = 1,
 			/obj/item/reagent_containers/cup/soda_cans/grey_bull = 1,
+			/obj/item/reagent_containers/cup/glass/bottle/raki = 1, // PSYCHONAUT ADDITION - REAGENTS
 			) = 4,
 		list(//sprayers
 			/obj/item/reagent_containers/spray = 1,

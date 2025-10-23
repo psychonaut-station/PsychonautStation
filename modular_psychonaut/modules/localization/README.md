@@ -10,6 +10,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 
 - `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
 - `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
+- `code/__HELPERS/names.dm`: `/proc/new_station_name()`
 - `code/__HELPERS/priority_announce.dm`: `/proc/priority_announce()`, `/proc/print_command_report`, `/proc/minor_announce`, `/proc/level_announce`, `/proc/generate_unique_announcement_header`
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`
 - `code/datums/quirks/neutral_quirks/gamer.dm`: `/datum/quirk/gamer/proc/gamer_moment()`
@@ -33,15 +34,16 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/proc/announce_to_all_players()`, `/datum/anonymous_theme/proc/restore_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
+- `code/modules/holiday/holidays.dm`: `/datum/holiday/anz`, `/datum/holiday/atrakor_festival`, `/datum/holiday/friendship/greet()`, `/datum/holiday/indigenous`, `/datum/holiday/un_day`, `/datum/holiday/friday_thirteenth`, `/datum/holiday/islamic/ramadan/end`, `/datum/holiday/hebrew/passover`
 - `tgui/packages/tgui/interfaces/Interview.tsx`: `Interview`, `RenderedStatus`, `QuestionArea`
 
 ### Modüler Değişiklikler
 
-- N/A
+- `modular_psychonaut/master_files/code/modules/holiday/holidays.dm`: `/datum/holiday/greet()`, `/datum/holiday/fleet_day`, `/datum/holiday/fleet_day/greet()`, `/datum/holiday/groundhog`, `/datum/holiday/nz`, `/datum/holiday/nz/greet()`, `/datum/holiday/birthday`, `/datum/holiday/birthday/greet()`, `/datum/holiday/random_kindness`, `/datum/holiday/random_kindness/greet()`, `/datum/holiday/pi`, `/datum/holiday/pi/getStationPrefix()`, `/datum/holiday/no_this_is_patrick`, `/datum/holiday/no_this_is_patrick/getStationPrefix()`, `/datum/holiday/no_this_is_patrick/greet()`, `/datum/holiday/spess`, `/datum/holiday/spess/greet()`, `/datum/holiday/fourtwenty`, `/datum/holiday/tea`, `/datum/holiday/tea/getStationPrefix()`, `/datum/holiday/earth`, `/datum/holiday/cocuk_bayrami`, `/datum/holiday/labor`, `/datum/holiday/draconic_day`, `/datum/holiday/draconic_day/greet()`, `/datum/holiday/spor_bayrami`, `/datum/holiday/firefighter`, `/datum/holiday/firefighter/getStationPrefix()`, `/datum/holiday/bee`, `/datum/holiday/bee/getStationPrefix()`, `/datum/holiday/summersolstice`, `/datum/holiday/doctor`, `/datum/holiday/ufo`, `/datum/holiday/demokrasi_bayrami`, `/datum/holiday/usa`, `/datum/holiday/usa/getStationPrefix()`, `/datum/holiday/writer`, `/datum/holiday/france`, `/datum/holiday/france/getStationPrefix()`, `/datum/holiday/france/greet()`, `/datum/holiday/hotdogday/greet()`, `/datum/holiday/wizards_day`, `/datum/holiday/friendship`, `/datum/holiday/zafer_bayrami`, `/datum/holiday/tiziran_unification`, `/datum/holiday/tiziran_unification/greet()`, `/datum/holiday/tiziran_unification/getStationPrefix()`, `/datum/holiday/ianbirthday/greet()`, `/datum/holiday/pirate`, `/datum/holiday/pirate/greet()`, `/datum/holiday/questions`, `/datum/holiday/questions/greet()`, `/datum/holiday/animal`, `/datum/holiday/smile`, `/datum/holiday/boss`, `/datum/holiday/cumhuriyet_bayrami`, `/datum/holiday/vegan`, `/datum/holiday/october_revolution`, `/datum/holiday/remembrance_day`, `/datum/holiday/remembrance_day/greet()`, `/datum/holiday/remembrance_day/getStationPrefix()`, `/datum/holiday/lifeday`, `/datum/holiday/lifeday/getStationPrefix()`, `/datum/holiday/kindness`, `/datum/holiday/flowers`, `/datum/holiday/hello`, `/datum/holiday/hello/greet()`, `/datum/holiday/holy_lights`, `/datum/holiday/holy_lights/greet()`, `/datum/holiday/festive_season/greet()`, `/datum/holiday/human_rights`, `/datum/holiday/monkey/celebrate()`, `/datum/holiday/xmas/greet()`, `/datum/holiday/boxing`, `/datum/holiday/programmers`, `/datum/holiday/islamic/ramadan`, `/datum/holiday/islamic/ramadan/eve`, `/datum/holiday/hebrew/hanukkah`, `/datum/holiday/hebrew/hanukkah/greet()`, `/datum/holiday/easter/greet()`
 
 ### Definelar ve Helperlar
 
-- N/A
+- `code/__DEFINES/~psychonaut_defines/colors.dm`: `COLOR_TURKISH_RED`
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 

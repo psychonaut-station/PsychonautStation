@@ -130,10 +130,10 @@ GLOBAL_VAR(command_name)
 	var/holiday_name = length(GLOB.holidays) && pick(GLOB.holidays)
 	if(holiday_name)
 		var/datum/holiday/holiday = GLOB.holidays[holiday_name]
-		// PSYCHONAUT EDIT REMOVAL BEGIN - CHANGES - (Reason: Cultural Diff) - Original:
+		// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
 		// if(istype(holiday, /datum/holiday/friday_thirteenth))
 		// 	random = 13
-		// PSYCHONAUT EDIT REMOVAL END - CHANGES
+		// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 		name = holiday.getStationPrefix()
 		//get normal name
 	if(!name)

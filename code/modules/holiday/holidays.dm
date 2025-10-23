@@ -344,6 +344,9 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 22
 	begin_month = APRIL
 
+
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/anz
 	name = "ANZAC Day"
 	timezones = list(TIMEZONE_TKT, TIMEZONE_TOT, TIMEZONE_NZST, TIMEZONE_NFT, TIMEZONE_LHST, TIMEZONE_AEST, TIMEZONE_ACST, TIMEZONE_ACWST, TIMEZONE_AWST, TIMEZONE_CXT, TIMEZONE_CCT, TIMEZONE_CKT, TIMEZONE_NUT)
@@ -353,6 +356,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/anz/getStationPrefix()
 	return pick("Australian","New Zealand","Poppy", "Southern Cross")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 // MAY
 
@@ -418,6 +423,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 // JUNE
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 //The Festival of Atrakor's Might (Tizira's Moon) is celebrated on June 15th, the date on which the lizard visual revamp was merged (#9808)
 /datum/holiday/atrakor_festival
 	name = "Festival of Atrakor's Might"
@@ -429,6 +436,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/atrakor_festival/getStationPrefix()
 	return pick("Moon", "Night Sky", "Celebration")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 /// Garbage DAYYYYY
 /// Huh?.... NOOOO
@@ -577,11 +586,17 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_month = JULY
 	holiday_mail = list(/obj/item/food/grown/apple)
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/friendship/greet()
 	return "Have a magical [name]!"
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 // AUGUST
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/indigenous //Indigenous Peoples' Day from Earth!
 	name = "International Day of the World's Indigenous Peoples"
 	begin_month = AUGUST
@@ -589,6 +604,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/indigenous/getStationPrefix()
 	return pick("Endangered language", "Word", "Language", "Language revitalization", "Potato", "Corn")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 // AUGUST
 
@@ -683,6 +700,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_month = OCTOBER
 	holiday_hat = /obj/item/clothing/head/hats/tophat
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/un_day
 	name = "Anniversary of the Foundation of the United Nations"
 	begin_month = OCTOBER
@@ -693,6 +712,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/un_day/getStationPrefix()
 	return pick("United", "Cooperation", "Humanitarian")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 /datum/holiday/halloween
 	name = HALLOWEEN
@@ -901,6 +922,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 // MOVING DATES
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/friday_thirteenth
 	name = "Friday the 13th"
 
@@ -911,6 +934,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/friday_thirteenth/getStationPrefix()
 	return pick("Mike","Friday","Evil","Myers","Murder","Deathly","Stabby")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 /datum/holiday/programmers
 	name = "Programmers' Day"
@@ -944,6 +969,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 1
 	end_day = 3
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/islamic/ramadan/getStationPrefix()
 	return pick("Haram","Halaal","Jihad","Muslim", "Al", "Mohammad", "Rashidun", "Umayyad", "Abbasid", "Abdul", "Fatimid", "Ayyubid", "Almohad", "Abu")
 
@@ -952,6 +979,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	end_month = 10
 	begin_day = 28
 	end_day = 1
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 // HEBREW
 
@@ -975,6 +1004,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/hebrew/hanukkah/getStationPrefix()
 	return pick("Dreidel", "Menorah", "Latkes", "Gelt")
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+/*
 /datum/holiday/hebrew/passover
 	name = "Passover"
 	begin_day = 15
@@ -983,6 +1014,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 /datum/holiday/hebrew/passover/getStationPrefix()
 	return pick("Matzah", "Moses", "Red Sea")
+*/
+// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 // HOLIDAY ADDONS
 

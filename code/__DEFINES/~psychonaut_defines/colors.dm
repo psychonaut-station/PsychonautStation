@@ -1,0 +1,1 @@
+#define COLOR_TURKISH_RED "#E30A17"

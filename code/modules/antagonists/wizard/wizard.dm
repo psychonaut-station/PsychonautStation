@@ -231,6 +231,9 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 		newname = randomname
 
 	wiz_mob.fully_replace_character_name(wiz_mob.real_name, newname)
+	// PSYCHONAUT ADDITION BEGIN - CREDITS
+	return newname
+	// PSYCHONAUT ADDITION END - CREDITS
 
 /datum/antagonist/wizard/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/wizard_mob = mob_override || owner.current

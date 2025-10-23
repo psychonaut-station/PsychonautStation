@@ -16,7 +16,10 @@
 
 // Sanitize on load to ensure no invalid paths from older saves get in
 /datum/preference/loadout/deserialize(input, datum/preferences/preferences)
-	return sanitize_loadout_list(input, preferences.parent?.mob)
+	// PSYCHONAUT EDIT ADDITION BEGIN - CREDITS - Original:
+	// return sanitize_loadout_list(input, preferences.parent?.mob)
+	return sanitize_loadout_list(input, preferences?.parent?.mob)
+	// PSYCHONAUT EDIT ADDITION END - CREDITS
 
 // Default value is null - the loadout list is a lazylist
 /datum/preference/loadout/create_default_value(datum/preferences/preferences)

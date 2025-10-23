@@ -3,6 +3,8 @@
 #define POPCOUNT_SHUTTLE_ESCAPEES "shuttle_escapees" //Emergency shuttle only.
 #define PERSONAL_LAST_ROUND "personal last round"
 #define SERVER_LAST_ROUND "server last round"
+#define POPCOUNT_ESCAPEES_HUMANONLY "human_escapees"
+#define POPCOUNT_ESCAPEES_HUMANONLY_LIST "human_escapees_list"
 
 GLOBAL_LIST_INIT(achievements_unlocked, list())
 
@@ -15,6 +17,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/num_survivors = 0 //Count of non-brain non-eye mobs with mind that are alive
 	var/num_escapees = 0 //Above and on centcom z
 	var/num_shuttle_escapees = 0 //Above and on escape shuttle
+	var/num_human_escapees = 0 //Above but humans only
+	var/list/list_of_human_escapees = list() //References to all escaped humans
+
 	var/list/area/shuttle_areas
 	if(SSshuttle?.emergency)
 		shuttle_areas = SSshuttle.emergency.shuttle_areas
@@ -39,6 +44,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 					escape_status = "escapees"
 					if(shuttle_areas[get_area(M)])
 						num_shuttle_escapees++
+						if(ishuman(M))
+							num_human_escapees++
+							list_of_human_escapees += M
 			if(isliving(M))
 				var/mob/living/L = M
 				mob_data["location"] = get_area(L)
@@ -104,6 +112,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	.[POPCOUNT_ESCAPEES] = num_escapees
 	.[POPCOUNT_SHUTTLE_ESCAPEES] = num_shuttle_escapees
 	.["station_integrity"] = station_integrity
+	.[POPCOUNT_ESCAPEES_HUMANONLY_LIST] = list_of_human_escapees
+	.[POPCOUNT_ESCAPEES_HUMANONLY] = num_human_escapees
 
 /datum/controller/subsystem/ticker/proc/gather_antag_data()
 	var/team_gid = 1
@@ -220,6 +230,12 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	var/speed_round = (STATION_TIME_PASSED() <= 10 MINUTES)
 
+	// PSYCHONAUT ADDITION BEGIN - CREDITS
+	popcount = gather_roundend_feedback()
+	SScredits.draft()
+	SScredits.finalize()
+	// PSYCHONAUT ADDITION END - CREDITS
+
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
 			C?.RollCredits()
@@ -229,7 +245,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
 		HandleRandomHardcoreScore(C)
 
-	var/popcount = gather_roundend_feedback()
+	// PSYCHONAUT EDIT REMOVAL BEGIN - CREDITS - Original:
+	// var/popcount = gather_roundend_feedback()
+	// PSYCHONAUT EDIT REMOVAL END - CREDITS
 	display_report(popcount)
 
 	CHECK_TICK

@@ -15,6 +15,7 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `code/__HELPERS/radiation.dm`: `/proc/radiation_pulse()`, `/datum/radiation_pulse_information/var/intensity`
 - `code/datums/components/singularity.dm`: `/datum/component/singularity/process()`, `/datum/component/singularity/proc/digest()`, `/datum/component/singularity/proc/move()`, `/datum/component/singularity/bloodthirsty/move()`
 - `code/game/machinery/incident_display.dm`: `DISPLAY_SINGULARITY_DEATH`, `sign_features`, `/obj/machinery/incident_display/add_context()`, `/obj/machinery/incident_display/emp_act()`, `/obj/machinery/incident_display/examine()`
+- `code/modules/antagonists/wizard/grand_ritual/grand_ritual.dm`: `/datum/action/cooldown/grand_ritual/var/area_blacklist`
 - `code/modules/modular_computers/file_system/programs/sm_monitor.dm`: `/datum/computer_file/program/supermatter_monitor/ui_data()`
 - `code/modules/power/singularity/singularity.dm`: `/obj/singularity/var/dissipate_delay`, `/obj/singularity/process()`, `/obj/singularity/proc/expand()`
 - `code/modules/power/tesla/energy_ball.dm`: `TESLA_DEFAULT_ENERGY`, [`/obj/energy_ball`: `var/pixel_x`, `var/pixel_y`], `/obj/energy_ball/process()`, `/obj/energy_ball/proc/can_move()`, `/obj/energy_ball/proc/new_mini_ball()`, `/proc/tesla_zap()`

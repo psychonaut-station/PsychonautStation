@@ -80,6 +80,7 @@
 		/area/station/science/ordnance/freezerchamber,
 		/area/station/science/server,
 		/area/station/security/prison/safe,
+		/area/station/engineering/singularity, // PSYCHONAUT ADDITION - SINGULARITY_ENGINE
 	))
 
 /datum/action/cooldown/grand_ritual/IsAvailable(feedback)

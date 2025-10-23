@@ -934,7 +934,10 @@
 /obj/projectile/proc/process_movement(pixels_to_move, hitscan = FALSE, tile_limit = FALSE)
 	if (!isturf(loc) || !movement_vector)
 		return 0
-	var/total_move_distance = pixels_to_move
+	// PSYCHONAUT EDIT ADDITION BEGIN - CYBERNETICS - Original:
+	// var/total_move_distance = pixels_to_move
+	var/total_move_distance = pixels_to_move * speed_multiplier
+	// PSYCHONAUT EDIT ADDITION END - CYBERNETICS
 	var/movements_done = 0
 	last_projectile_move = world.time
 	while (pixels_to_move > 0 && isturf(loc) && !QDELETED(src) && !deletion_queued)

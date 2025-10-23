@@ -19,6 +19,7 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `code/modules/power/singularity/singularity.dm`: `/obj/singularity/var/dissipate_delay`, `/obj/singularity/process()`, `/obj/singularity/proc/expand()`
 - `code/modules/power/tesla/energy_ball.dm`: `TESLA_DEFAULT_ENERGY`, [`/obj/energy_ball`: `var/pixel_x`, `var/pixel_y`], `/obj/energy_ball/process()`, `/obj/energy_ball/proc/can_move()`, `/obj/energy_ball/proc/new_mini_ball()`, `/proc/tesla_zap()`
 - `code/modules/projectiles/gun.dm`: `/obj/item/gun/proc/fire_gun()`
+- `code/modules/research/techweb/nodes/engi_nodes.dm`: `/datum/techweb_node/energy_manipulation`
 - `tgui/packages/tgui/interfaces/NtosSupermatter.tsx`: `NtosSupermatterData`, `NtosSupermatter`, `MonitorContent`
 - `tgui/packages/tgui/interfaces/Supermatter.tsx`: `SupermatterProps`, `SupermatterContent`
 

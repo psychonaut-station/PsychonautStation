@@ -25,6 +25,7 @@ IPC ırkını oyuna ekler
 - `code/modules/mob/living/carbon/human/dummy.dm`: `/proc/create_consistent_human_dna()`
 - `code/modules/mob/living/carbon/human/human_defines.dm`: `/mob/living/carbon/human/var/hud_possible`
 - `code/modules/power/power_store.dm`: `/obj/item/stock_parts/power_store/attack_self()`
+- `code/modules/research/techweb/nodes/cyborg_nodes.dm`: `/datum/techweb_node/cyber/cyber_organs`
 - `code/modules/surgery/organ_manipulation.dm`: `/datum/surgery_step/manipulate_organs/preop()`
 - `code/modules/surgery/organs/internal/cyberimp/augments_arms.dm`: `/obj/item/organ/cyberimp/arm/toolkit/on_limb_detached()`
 - `code/modules/unit_tests/preferences.dm`: `/datum/unit_test/preferences_implement_everything/Run()`

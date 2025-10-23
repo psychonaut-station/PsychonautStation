@@ -182,6 +182,7 @@
 		"ci-reviver",
 		"ci-antidrop",
 		"ci-antistun",
+		"ci-ammo-counter", // PSYCHONAUT ADDITION - CYBERNETICS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)
@@ -195,6 +196,10 @@
 		"ci-nutrimentplus",
 		"ci-toolset",
 		"ci-surgery",
+		"ci-toolkit-janitor", // PSYCHONAUT ADDITION - CYBERNETICS
+		"ci-toolkit-paramedic", // PSYCHONAUT ADDITION - CYBERNETICS
+		"ci-toolkit-atmospherics", // PSYCHONAUT ADDITION - CYBERNETICS
+		"ci-toolkit-botanic", // PSYCHONAUT ADDITION - CYBERNETICS
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)
@@ -212,6 +217,7 @@
 		"cybernetic_stomach_tier2",
 		"cybernetic_liver_tier2",
 		"cybernetic_heart_tier2",
+		"robotic_voicebox", // PSYCHONAUT ADDITION - IPC
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

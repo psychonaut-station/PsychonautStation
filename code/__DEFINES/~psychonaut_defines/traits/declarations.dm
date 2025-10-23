@@ -7,3 +7,6 @@
 
 /// Makes you immune to welding flashes
 #define TRAIT_NOTOOLFLASH "notoolflash"
+
+///Mob cant attack to anything
+#define TRAIT_CANT_ATTACK "cant_attack"

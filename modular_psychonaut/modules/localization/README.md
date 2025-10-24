@@ -10,6 +10,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 
 - `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
 - `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
+- `code/__HELPERS/chat_filter.dm`: `/proc/is_ic_filtered()`, `/proc/is_soft_ic_filtered()`, `/proc/is_ooc_filtered()`, `/proc/is_soft_ooc_filtered()`, `/proc/is_ic_filtered_for_pdas()`, `/proc/is_soft_ic_filtered_for_pdas()`,
 - `code/__HELPERS/names.dm`: `/proc/new_station_name()`
 - `code/__HELPERS/priority_announce.dm`: `/proc/priority_announce()`, `/proc/print_command_report`, `/proc/minor_announce`, `/proc/level_announce`, `/proc/generate_unique_announcement_header`
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`

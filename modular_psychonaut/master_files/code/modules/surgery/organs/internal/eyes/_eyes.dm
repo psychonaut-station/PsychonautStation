@@ -21,7 +21,7 @@
 	desc = "So many eyes!"
 	eye_icon = 'modular_psychonaut/master_files/icons/mob/human/species/arachnid/bodyparts.dmi'
 	eye_icon_state = "arachnideyes"
-	overlay_ignore_lighting = TRUE
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
 	no_glasses = TRUE
 
 /obj/item/organ/eyes/night_vision/arachnid
@@ -29,7 +29,7 @@
 	desc = "So many eyes!"
 	eye_icon = 'modular_psychonaut/master_files/icons/mob/human/species/arachnid/bodyparts.dmi'
 	eye_icon_state = "arachnideyes"
-	overlay_ignore_lighting = TRUE
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
 	no_glasses = TRUE
 	low_light_cutoff = list(20, 15, 0)
 	medium_light_cutoff = list(35, 30, 0)

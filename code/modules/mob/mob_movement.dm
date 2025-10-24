@@ -101,6 +101,13 @@
 
 	//We are now going to move
 	var/add_delay = mob.cached_multiplicative_slowdown
+	// PSYCHONAUT ADDITION BEGIN - FACE_CURSOR
+	if(mob.face_mouse && mob.dir != direct && !(mob.movement_type & FLYING))
+		if((NSCOMPONENT(mob.dir) && NSDIRFLIP(mob.dir) == direct) || (EWCOMPONENT(mob.dir) && EWDIRFLIP(mob.dir) == direct)) // If we're waling backwards
+			add_delay += /datum/movespeed_modifier/backward_walk::multiplicative_slowdown
+		else //Otherwise
+			add_delay += /datum/movespeed_modifier/side_walk::multiplicative_slowdown
+	// PSYCHONAUT ADDITION END - FACE_CURSOR
 	var/glide_delay = add_delay
 	if(NSCOMPONENT(direct) && EWCOMPONENT(direct))
 		glide_delay = FLOOR(glide_delay * sqrt(2), world.tick_lag)

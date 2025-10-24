@@ -646,7 +646,10 @@
 	if(!direction)
 		direction = get_dir(src, newloc)
 
-	if(set_dir_on_move && dir != direction && update_dir)
+	// PSYCHONAUT EDIT ADDITION BEGIN - FACE_CURSOR - Original:
+	// if(set_dir_on_move && dir != direction && update_dir)
+	if(set_dir_on_move && dir != direction && update_dir && !face_mouse)
+	// PSYCHONAUT EDIT ADDITION END - FACE_CURSOR
 		setDir(direction)
 
 	var/is_multi_tile_object = is_multi_tile_object(src)
@@ -772,8 +775,11 @@
 						moving_diagonally = SECOND_DIAG_STEP
 						. = step(src, SOUTH)
 			if(moving_diagonally == SECOND_DIAG_STEP)
-				if(!. && set_dir_on_move && update_dir)
+				// PSYCHONAUT EDIT ADDITION BEGIN - FACE_CURSOR - Original:
+				// if(!. && set_dir_on_move && update_dir)
+				if(!. && set_dir_on_move && update_dir && !face_mouse)
 					setDir(first_step_dir)
+				// PSYCHONAUT EDIT ADDITION END - FACE_CURSOR
 				else if(!inertia_moving)
 					newtonian_move(dir2angle(direct))
 				if(client_mobs_in_contents)
@@ -819,8 +825,11 @@
 
 	last_move = direct
 
-	if(set_dir_on_move && dir != direct && update_dir)
+	// PSYCHONAUT EDIT ADDITION BEGIN - FACE_CURSOR - Original:
+	// if(set_dir_on_move && dir != direct && update_dir)
+	if(set_dir_on_move && dir != direct && update_dir && face_mouse)
 		setDir(direct)
+	// PSYCHONAUT EDIT ADDITION END - FACE_CURSOR
 	if(. && has_buckled_mobs() && !handle_buckled_mob_movement(loc, direct, glide_size_override)) //movement failed due to buckled mob(s)
 		. = FALSE
 

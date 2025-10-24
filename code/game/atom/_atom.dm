@@ -846,6 +846,12 @@
 
 	SEND_SIGNAL(user, COMSIG_ATOM_MOUSE_ENTERED, src)
 
+	// PSYCHONAUT ADDITION BEGIN - FACE_CURSOR
+	// Face directions on combat mode. No procs, no typechecks, just a var for speed
+	if(user.face_mouse)
+		user.face_atom(src)
+	// PSYCHONAUT ADDITION END - FACE_CURSOR
+
 	// Screentips
 	var/datum/hud/active_hud = user.hud_used
 	if(!active_hud)

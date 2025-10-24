@@ -11,9 +11,6 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 - `code/__DEFINES/logging.dm`: `LOG_CATEGORY_GAME_JUKEBOX`
 - `code/datums/proximity_monitor/proximity_monitor.dm`: `/datum/proximity_monitor/var/loc_connections`
 - `code/modules/admin/verbs/playsound.dm`: `/proc/web_sound()`
-- `code/modules/jobs/job_types/bartender.dm`: `/datum/job/bartender/after_spawn()`
-- `code/modules/jobs/job_types/clown.dm`: `/datum/job/clown/after_spawn()`
-- `code/modules/jobs/job_types/mime.dm`: `/datum/job/mime/after_spawn()`
 - `config/config.txt`: `REQUEST_INTERNET_ALLOWED`
 - `tgui/packages/tgui-panel/audio/middleware.js`
 - `tgui/packages/tgui-panel/audio/NowPlayingWidget.jsx`

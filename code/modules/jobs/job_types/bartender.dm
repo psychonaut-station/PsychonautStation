@@ -42,10 +42,6 @@
 		award_score -= award_status
 	winner.give_award(/datum/award/score/bartender_tourist_score, winner.mob, award_score)
 
-/datum/job/bartender/after_spawn(mob/living/spawned, client/player_client)
-	ADD_TRAIT(spawned, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT) // PSYCHONAUT ADDITION - JUKEBOX
-	return ..()
-
 /datum/outfit/job/bartender
 	name = "Bartender"
 	jobtype = /datum/job/bartender

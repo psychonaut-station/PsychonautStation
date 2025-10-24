@@ -476,6 +476,12 @@ repeatable = 1
 minimum_required_age = 0
 min_antag_cap = 2
 max_antag_cap = 3
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
 ["Paradox Clone"]
 weight = 5
@@ -583,6 +589,11 @@ repeatable = 1
 minimum_required_age = 0
 min_antag_cap = 2
 max_antag_cap = 4
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Midround Malfunctioning AI"]
 weight.1 = 0

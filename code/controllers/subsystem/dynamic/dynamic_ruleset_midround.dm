@@ -711,6 +711,7 @@
 		DYNAMIC_TIER_MEDIUMHIGH = 4,
 		DYNAMIC_TIER_HIGH = 5,
 	)
+	track = EVENT_TRACK_MAJOR
 
 /datum/dynamic_ruleset/midround/from_ghosts/paradox_clone
 	name = "Paradox Clone"
@@ -1150,6 +1151,7 @@
 		DYNAMIC_TIER_MEDIUMHIGH = 8,
 		DYNAMIC_TIER_HIGH = 10,
 	)
+	track = EVENT_TRACK_MAJOR
 
 /datum/dynamic_ruleset/midround/from_living/malf_ai
 	name = "Malfunctioning AI"

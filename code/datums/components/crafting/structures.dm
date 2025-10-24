@@ -106,7 +106,6 @@
 	)
 	category = CAT_STRUCTURE
 
-<<<<<<< HEAD
 /datum/crafting_recipe/noose
 	name = "Noose"
 	reqs = list(
@@ -125,7 +124,7 @@
 	if(isnull(locate(/obj/structure/chair) in user_turf))
 		return FALSE
 	return ..()
-=======
+
 /datum/crafting_recipe/secure_safe
 	name = "Secure safe"
 	result = /obj/item/wallframe/secure_safe
@@ -168,4 +167,3 @@
 	time = 90 SECONDS
 	category = CAT_STRUCTURE
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND
->>>>>>> c729c3690a8e121d99a735ee854c3f32dbccb0e0

@@ -1175,7 +1175,7 @@
 	desc = "So many eyes!"
 	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	eye_icon_state = "arachnideyes"
-	overlay_ignore_lighting = TRUE
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
 	no_glasses = TRUE
 
 /obj/item/organ/eyes/night_vision/maintenance_adapted
@@ -1208,24 +1208,17 @@
 		apply_organ_damage(-10) //heal quickly
 	. = ..()
 
-<<<<<<< HEAD
-/obj/item/organ/eyes/night_vision/maintenance_adapted/on_mob_remove(mob/living/carbon/unadapted, special = FALSE, movement_flags)
-	REMOVE_TRAIT(unadapted, TRAIT_UNNATURAL_RED_GLOWY_EYES, ORGAN_TRAIT)
-	return ..()
-
 /obj/item/organ/eyes/night_vision/arachnid
 	name = "arachnid eyes"
 	desc = "So many eyes!"
 	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
 	eye_icon_state = "arachnideyes"
-	overlay_ignore_lighting = TRUE
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
 	no_glasses = TRUE
 	low_light_cutoff = list(20, 15, 0)
 	medium_light_cutoff = list(35, 30, 0)
 	high_light_cutoff = list(50, 40, 0)
 
-=======
->>>>>>> c729c3690a8e121d99a735ee854c3f32dbccb0e0
 /obj/item/organ/eyes/pod
 	name = "pod eyes"
 	desc = "Strangest salad you've ever seen."

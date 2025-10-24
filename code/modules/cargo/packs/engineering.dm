@@ -345,7 +345,6 @@
 	crate_name = "portable gravity unit crate"
 	crate_type = /obj/structure/closet/crate/engineering
 
-<<<<<<< HEAD
 /datum/supply_pack/engine/particle_accelerator
 	name = "Particle Accelerator Parts"
 	desc = "A supermassive black hole or hyper-powered tesla ball are the perfect way to spice up any party! This \"My First Apocalypse\" kit contains everything you need to build your own Particle Accelerator! Ages 10 and up."
@@ -375,7 +374,7 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla = 1)
 	crate_name = "tesla generator crate"
 	dangerous = TRUE
-=======
+
 /datum/supply_pack/engineering/golfcart
 	name = "Golf Cart Parts Kit Crate"
 	desc = "Contains the parts to build a cart intended for moving heavy machinery and cargo across the station. \
@@ -385,4 +384,3 @@
 	contains = list(/obj/item/golfcart_kit = 1, /obj/item/key/golfcart = 2, /obj/item/stock_parts/power_store/cell/lead = 1)
 	crate_name = "golf cart parts kit"
 	crate_type = /obj/structure/closet/crate/engineering
->>>>>>> c729c3690a8e121d99a735ee854c3f32dbccb0e0

@@ -372,6 +372,7 @@
 		/obj/item/picket_sign/cyborg,
 		/obj/item/reagent_containers/borghypo/clown,
 		/obj/item/extinguisher/mini,
+		/obj/item/crowbar/cyborg, // PSYCHONAUT ADDITION - CHANGES - (Cyborg Crowbars)
 	)
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/clown/hacked,
@@ -736,7 +737,7 @@
 		/obj/item/borg/apparatus/organ_storage,
 		/obj/item/borg/lollipop,
 		/obj/item/storage/bag/chemistry,
-
+		/obj/item/crowbar/cyborg, // PSYCHONAUT ADDITION - CHANGES - (Cyborg Crowbars)
 	)
 	radio_channels = list(RADIO_CHANNEL_MEDICAL)
 	emag_modules = list(
@@ -805,6 +806,7 @@
 		/obj/item/borg/cyborghug/peacekeeper,
 		/obj/item/extinguisher,
 		/obj/item/borg/projectile_dampen,
+		/obj/item/crowbar/cyborg, // PSYCHONAUT ADDITION - CHANGES - (Cyborg Crowbars)
 	)
 	emag_modules = list(
 		/obj/item/reagent_containers/borghypo/peace/hacked,
@@ -828,6 +830,7 @@
 		/obj/item/gun/energy/disabler/cyborg,
 		/obj/item/clothing/mask/gas/sechailer/cyborg,
 		/obj/item/extinguisher/mini,
+		/obj/item/crowbar/cyborg, // PSYCHONAUT ADDITION - CHANGES - (Cyborg Crowbars)
 	)
 	radio_channels = list(RADIO_CHANNEL_SECURITY)
 	emag_modules = list(
@@ -879,6 +882,7 @@
 		/obj/item/chisel,
 		/obj/item/rag,
 		/obj/item/storage/bag/money,
+		/obj/item/crowbar/cyborg, // PSYCHONAUT ADDITION - CHANGES - (Cyborg Crowbars)
 	)
 	radio_channels = list(RADIO_CHANNEL_SERVICE)
 	emag_modules = list(

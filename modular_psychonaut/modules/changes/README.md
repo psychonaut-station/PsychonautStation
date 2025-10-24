@@ -5,11 +5,11 @@ MODULE ID: CHANGES
 ### Açıklama
 
 Tarafımızca yapılan gerekli gördüğümüz veya qol güncellemeleri.
-Değişikliği yaptıktan sonra modül yazısına reason yazmalısınız.
+Yaptığınız değişiklikleri [CHANGES.md](CHANGES.md) dosyasına _alfabetik olarak_ eklemelisiniz. Örnek olarak içerisindeki `Cyborg Crowbar` örnek verilebilir.
 
 ### TG Değişiklikleri
 
-- `code/__DEFINES/rust_g_overrides.dm`: `url_encode`, `url_decode`
+- N/A
 
 ### Modüler Değişiklikler
 
@@ -25,4 +25,6 @@ Değişikliği yaptıktan sonra modül yazısına reason yazmalısınız.
 
 ### Katkıda Bulunanlar
 
-loanselot, Seefaaa, Rengan
+Rengan
+
+<!-- Bir ekleme yaptıysan adını buraya yazma, sadece yaptığın eklemenin üzerine yazman yeterli -->

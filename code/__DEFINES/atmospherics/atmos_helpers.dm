@@ -101,12 +101,14 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
 #define TURF_SHARES(T) (LAZYLEN(T.atmos_adjacent_turfs))
 
 // PSYCHONAUT EDIT ADDITION BEGIN - CHANGES - Original:
+/*
 // #define LINDA_CYCLE_ARCHIVE(turf)\
 // 	turf.air.archive();\
 // 	turf.archived_cycle = SSair.times_fired;\
 // 	turf.temperature_archived = turf.temperature;
+*/
 #define LINDA_CYCLE_ARCHIVE(turf)\
-	İF(turf.air) turf.air.archive();\
+	if (turf.air) turf.air.archive();\
 	turf.archived_cycle = SSair.times_fired;\
 	turf.temperature_archived = turf.temperature;
 // PSYCHONAUT EDIT ADDITION END - CHANGES

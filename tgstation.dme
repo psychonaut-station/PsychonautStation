@@ -6910,6 +6910,8 @@
 #include "modular_psychonaut\modules\cargo_borg\code\robot_model.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_upgrades.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\screen_alert.dm"
+#include "modular_psychonaut\modules\clowning\code\clown.dm"
+#include "modular_psychonaut\modules\clowning\code\humans.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_arms.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_chests.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_eyes.dm"

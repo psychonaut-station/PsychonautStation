@@ -10,3 +10,6 @@
 
 ///Mob cant attack to anything
 #define TRAIT_CANT_ATTACK "cant_attack"
+
+/// Grants "hihihiha" sound on emote
+#define TRAIT_CLOWNING "clowning"

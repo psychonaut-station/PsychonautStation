@@ -6860,6 +6860,7 @@
 #include "modular_psychonaut\master_files\code\modules\mob\living\carbon\human\human.dm"
 #include "modular_psychonaut\master_files\code\modules\mob\living\carbon\human\human_helpers.dm"
 #include "modular_psychonaut\master_files\code\modules\mob\living\silicon\ai\freelook\eye.dm"
+#include "modular_psychonaut\master_files\code\modules\mob\living\silicon\robot\robot.dm"
 #include "modular_psychonaut\master_files\code\modules\modular_computers\file_system\programs\sm_monitor.dm"
 #include "modular_psychonaut\master_files\code\modules\movespeed\modifiers\mobs.dm"
 #include "modular_psychonaut\master_files\code\modules\movespeed\modifiers\status_effects.dm"

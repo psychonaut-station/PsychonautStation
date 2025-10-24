@@ -748,6 +748,7 @@
 	borg_skins = list(
 		"Machinified Doctor" = list(SKIN_ICON_STATE = "medical", SKIN_HAT_OFFSET = list("north" = list(0, 3), "south" = list(0, 3), "east" = list(-1, 3), "west" = list(1, 3))),
 		"Qualified Doctor" = list(SKIN_ICON_STATE = "qualified_doctor", SKIN_HAT_OFFSET = list("north" = list(0, 3), "south" = list(0, 3), "east" = list(1, 3), "west" = list(-1, 3))),
+		"uWu Doctor" = list(SKIN_ICON = 'modular_psychonaut/master_files/icons/mob/silicon/robots.dmi', SKIN_ICON_STATE = "uWu_borg", SKIN_HAT_OFFSET = list("north" = list(0, 3), "south" = list(0, 3), "east" = list(-1, 3), "west" = list(1, 3))), // PSYCHONAUT ADDITION - UWUBORG
 	)
 
 /obj/item/robot_model/miner

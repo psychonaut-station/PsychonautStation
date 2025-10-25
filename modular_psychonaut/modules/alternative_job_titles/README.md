@@ -24,6 +24,7 @@ Tarafımızca eklenen yiyecekler, yemek makinaları, yiyecek ve içecek tarifler
 - `tgui/packages/tgui/interfaces/NtosMessenger/types.tsx`: `NtMessenger`
 - `tgui/packages/tgui/interfaces/PreferencesMenu/types.ts`: `Job`, `PreferencesMenuData`
 - `tgui/packages/tgui/interfaces/PreferencesMenu/CharacterPreferences/JobsPage.tsx`: `PriorityButtons`, `JobRow`
+- `tgui/packages/tgui/interfaces/SecurityRecords/helpers.ts`: `isRecordMatch`
 - `tgui/packages/tgui/styles/interfaces/PreferencesMenu.scss`: `.PreferencesMenu`
 
 ### Modüler Değişiklikler

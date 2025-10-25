@@ -29,18 +29,23 @@ type GenericRecord = {
   rank: string;
   fingerprint?: string;
   dna?: string;
+  trim?: string; // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
 };
 
 /** Matches search by fingerprint, dna, job, or name */
 export const isRecordMatch = (record: GenericRecord, search: string) => {
   if (!search) return true;
-  const { name, rank, fingerprint, dna } = record;
+  // PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:
+  // const { name, rank, fingerprint, dna } = record;
+  const { name, rank, fingerprint, dna, trim } = record;
+  // PSYCHONAUT EDIT ADDITION END - ALTERNATIVE_JOB_TITLES
 
   switch (true) {
     case name?.toLowerCase().includes(search?.toLowerCase()):
     case rank?.toLowerCase().includes(search?.toLowerCase()):
     case fingerprint?.toLowerCase().includes(search?.toLowerCase()):
     case dna?.toLowerCase().includes(search?.toLowerCase()):
+    case trim?.toLowerCase().includes(search?.toLowerCase()): // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
       return true;
 
     default:

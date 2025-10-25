@@ -517,6 +517,8 @@ Example config:
 	if (isnull(banned_words) || banned_words.len == 0)
 		return null
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - CHAT_FILTER - Original:
+	/*
 	var/static/regex/should_join_on_word_bounds = regex(@"^\w+$")
 
 	// Stuff like emoticons needs another split, since there's no way to get ":)" on a word bound.
@@ -535,6 +537,10 @@ Example config:
 	var/word_bounds = @"(\b(" + jointext(to_join_on_word_bounds, "|") + @")\b)"
 	var/regex_filter = whitespace_split != "" ? "([whitespace_split]|[word_bounds])" : word_bounds
 	return regex(regex_filter, "i")
+	*/
+	var/word_bounds = @"(\b(" + jointext(banned_words, "|") + @")\b)"
+	return regex(word_bounds, "i")
+	// PSYCHONAUT EDIT ADDITION END - CHAT_FILTER
 
 /// Check to ensure that the jobconfig is valid/in-date.
 /datum/controller/configuration/proc/validate_job_config()

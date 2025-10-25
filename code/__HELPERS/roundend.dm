@@ -266,7 +266,6 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/website_url = CONFIG_GET(string/websiteurl)
 	var/round_end_msg = ""
 	if (website_url && GLOB.round_id)
-		var/texttime = time2text(world.realtime, "YYYY/MM/DD", 0)
 		round_end_msg = "Round \[#[GLOB.round_id]\]([website_url]/rounds/[GLOB.round_id]) sona erdi."
 	else
 		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."

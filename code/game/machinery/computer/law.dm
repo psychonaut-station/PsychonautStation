@@ -19,6 +19,11 @@
 		if(!current)
 			to_chat(user, span_alert("You haven't selected anything to transmit laws to!"))
 			return
+		// PSYCHONAUT ADDITION BEGIN - LAW_UPLOAD_KEY
+		if(is_locked && stripped_input(user, "Please enter the silicon decryption key.", "Secure Upload") != GLOB.upload_key)
+			to_chat(user, "<span class='caution'>Upload failed!</span> The upload key was incorrect!")
+			return
+		// PSYCHONAUT ADDITION END - LAW_UPLOAD_KEY
 		if(!can_upload_to(current))
 			to_chat(user, span_alert("Upload failed! Check to make sure [current.name] is functioning properly."))
 			current = null

@@ -76,6 +76,13 @@
 	qdel(tile_obj)
 	cost = design["tile_cost"]
 
+	// PSYCHONAUT ADDITION BEGIN - RTD_CARPET
+	if(ispath(turf_type, /turf/open/floor/carpet/neon))
+		var/turf/open/floor/carpet/neon/neon_carpet = turf_type
+		var/color_code = replacetext(initial(neon_carpet.neon_color), "#", "")
+		icon_css_class += color_code
+	// PSYCHONAUT ADDITION END - RTD_CARPET
+
 /// fill all information to be sent to the UI
 /datum/tile_info/proc/fill_ui_data(list/data, selected_direction)
 	data["selected_recipe"] = name

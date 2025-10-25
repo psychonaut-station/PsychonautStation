@@ -109,7 +109,47 @@ GLOBAL_LIST_INIT(floor_designs, list(
 			list("name" = "Checkered", "type" = /obj/item/stack/tile/iron/checker, "tile_cost" = 5),
 			list("name" = "Herringbone", "type" = /obj/item/stack/tile/iron/herringbone, "tile_cost" = 5),
 		)
+	),
+	// PSYCHONAUT ADDITION BEGIN - RTD_CARPET
+	// Carpets (uses cloth for matter)
+	"Carpet" = list(
+		// Standart boring carpets
+		"Standart" = list(
+			list("name" = "Carpet", "type" = /obj/item/stack/tile/carpet, "tile_cost" = 2),
+			list("name" = "Symbol Carpet", "type" = /obj/item/stack/tile/carpet/symbol, "tile_cost" = 2),
+			list("name" = "Star Carpet", "type" = /obj/item/stack/tile/carpet/star, "tile_cost" = 2),
+			list("name" = "Black Carpet", "type" = /obj/item/stack/tile/carpet/black, "tile_cost" = 2),
+			list("name" = "Blue Carpet", "type" = /obj/item/stack/tile/carpet/blue, "tile_cost" = 2),
+			list("name" = "Cyan Carpet", "type" = /obj/item/stack/tile/carpet/cyan, "tile_cost" = 2),
+			list("name" = "Green Carpet", "type" = /obj/item/stack/tile/carpet/green, "tile_cost" = 2),
+			list("name" = "Orange Carpet", "type" = /obj/item/stack/tile/carpet/orange, "tile_cost" = 2),
+			list("name" = "Purple Carpet", "type" = /obj/item/stack/tile/carpet/purple, "tile_cost" = 2),
+			list("name" = "Red Carpet", "type" = /obj/item/stack/tile/carpet/red, "tile_cost" = 2),
+			list("name" = "Royal Black Carpet", "type" = /obj/item/stack/tile/carpet/royalblack, "tile_cost" = 2),
+			list("name" = "Royal Blue Carpet", "type" = /obj/item/stack/tile/carpet/royalblue, "tile_cost" = 2),
+			list("name" = "Executive Carpet", "type" = /obj/item/stack/tile/carpet/executive, "tile_cost" = 2),
+			list("name" = "Stellar Carpet", "type" = /obj/item/stack/tile/carpet/stellar, "tile_cost" = 2),
+
+		),
+
+		// Neon carpets
+		"Neon" = list(
+			list("name" = "Simple White Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/white, "tile_cost" = 4),
+			list("name" = "Simple Black Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/black, "tile_cost" = 4),
+			list("name" = "Simple Red Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/red, "tile_cost" = 4),
+			list("name" = "Simple Orange Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/orange, "tile_cost" = 4),
+			list("name" = "Simple Yellow Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/yellow, "tile_cost" = 4),
+			list("name" = "Simple Lime Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/lime, "tile_cost" = 4),
+			list("name" = "Simple Green Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/green, "tile_cost" = 4),
+			list("name" = "Simple Teal Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/teal, "tile_cost" = 4),
+			list("name" = "Simple Cyan Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/cyan, "tile_cost" = 4),
+			list("name" = "Simple Blue Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/blue, "tile_cost" = 4),
+			list("name" = "Simple Purple Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/purple, "tile_cost" = 4),
+			list("name" = "Simple Violet Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/violet, "tile_cost" = 4),
+			list("name" = "Simple Pink Neon Carpet", "type" = /obj/item/stack/tile/carpet/neon/simple/pink, "tile_cost" = 4),
+		)
 	)
+	// PSYCHONAUT ADDITION END - RTD_CARPET
 ))
 
 /// Lazy-initialize the datum field on all the designs

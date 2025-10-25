@@ -82,6 +82,11 @@
 				log_access("Failed Login: [ckey] - Population cap reached")
 				return list("reason"="popcap", "desc"= "\nReason: [CONFIG_GET(string/extreme_popcap_message)]")
 
+	// PSYCHONAUT ADDITION BEGIN - QOL - (Prevent Player Login On World Reboot)
+	if(CONFIG_GET(flag/sql_enabled) && SSdbcore.Connect() && SSdbcore.shutting_down)
+		return list("reason" = "rebooting", "desc" = "\nWorld is rebooting, try again in a few seconds.")
+	// PSYCHONAUT ADDITION END - QOL
+
 	if(CONFIG_GET(flag/sql_enabled))
 		if(!SSdbcore.Connect())
 			var/msg = "Ban database connection failure. Key [ckey] not checked"
@@ -112,7 +117,11 @@
 				This ban (BanID #[i["id"]]) was applied by [i["admin_key"]] on [i["bantime"]] during round ID [i["round_id"]].
 				[expires]"}
 				log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])")
+				// PSYCHONAUT ADDITION BEGIN - DISCORD_SUSPICIOUS_LOGS
+				var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+				send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - Banned (#[i["id"]])[sus_role_id ? " <@&[sus_role_id]>" : ""]")
 				return list("reason"="Banned","desc"="[desc]")
+				// PSYCHONAUT ADDITION END - DISCORD_SUSPICIOUS_LOGS
 	if (admin)
 		if (GLOB.directory[ckey])
 			return
@@ -246,6 +255,33 @@
 		var/desc = "\nReason:(StickyBan) You, or another user of this computer or connection ([bannedckey]) is banned from playing here. The ban reason is:\n[ban["message"]]\nThis ban was applied by [ban["admin"]]\nThis is a BanEvasion Detection System ban, if you think this ban is a mistake, please wait EXACTLY 6 seconds, then try again before filing an appeal.\n"
 		. = list("reason" = "Stickyban", "desc" = desc)
 		log_suspicious_login("Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]]")
+		// PSYCHONAUT ADDITION BEGIN - DISCORD_SUSPICIOUS_LOGS
+		var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+		send2tgs_adminless_only("Suspicious Log | Failed Login: [ckey] [computer_id] [address] - StickyBanned [ban["message"]] Target Username: [bannedckey] Placed by [ban["admin"]][sus_role_id ? " <@&[sus_role_id]>" : ""]")
+		// PSYCHONAUT ADDITION END - DISCORD_SUSPICIOUS_LOGS
+
+	// PSYCHONAUT ADDITION BEGIN - ACCOUNT_LINK
+	if (!real_bans_only && !C && CONFIG_GET(flag/require_discord_linking))
+		if(!SSdbcore.Connect())
+			var/msg = "Discord database connection failure. Key [ckey] not checked"
+			log_world(msg)
+			if (message)
+				message_admins(msg)
+		else
+			if (!SSdiscord.lookup_id(ckey))
+				var/cached_token = SSdiscord.reverify_cache[ckey]
+				var/token = ""
+
+				if (cached_token)
+					token = cached_token
+				else
+					token = SSdiscord.get_or_generate_one_time_token_for_ckey(ckey)
+					SSdiscord.reverify_cache[ckey] = token
+
+				var/name_link = CONFIG_GET(string/discordurl)
+				var/desc = "\nSunucuya bağlanabilmen için Discord hesabını doğrulaman gerekiyor. [name_link] adresi üzerinden Discord sunucusuna girerek Discord kaydın yapıldıktan sonra bir kanala /verify yazınca çıkan komutun kod kısmına '[token]' (kesme işaretleri olmadan) yazarak hesabını doğrulayabilirsin. Bu kodu bir başkası ile paylaşmamalısın."
+				return list("reason" = "DiscordAccount", "desc" = desc)
+	// PSYCHONAUT ADDITION END - ACCOUNT_LINK
 
 	return .
 

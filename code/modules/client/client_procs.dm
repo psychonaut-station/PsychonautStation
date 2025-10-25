@@ -99,7 +99,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	// Admin PM
 	if(href_list["priv_msg"])
-		cmd_admin_pm(href_list["priv_msg"],null)
+		// PSYCHONAUT EDIT ADDITION BEGIN - MENTOR - Original:
+		// cmd_admin_pm(href_list["priv_msg"],null)
+		cmd_admin_pm(href_list["priv_msg"], null, FALSE)
+		// PSYCHONAUT EDIT ADDITION END - MENTOR
 		return
 	if (href_list["player_ticket_panel"])
 		view_latest_ticket()
@@ -161,7 +164,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 /client/proc/is_content_unlocked()
 	if(!prefs.unlock_content)
-		to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		// PSYCHONAUT EDIT ADDITION BEGIN - PATREON - Original:
+		// to_chat(src, "Become a BYOND member to access member-perks and features, as well as support the engine that makes this game possible. Only 10 bucks for 3 months! <a href=\"https://secure.byond.com/membership\">Click Here to find out more</a>.")
+		to_chat(src, "Bizi Patreon ile destekleyerek ayrıcalıklara erişebilir, sunucunun devamlılığına katkıda bulunabilirsin. <a href=\"[CONFIG_GET(string/patreonurl)]\">Daha fazlası için tıkla</a>.")
+		// PSYCHONAUT EDIT ADDITION END - PATREON
 		return FALSE
 	return TRUE
 
@@ -382,6 +388,10 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 			message_admins(span_adminnotice("[key_name(src)] has been detected as spoofing their byond version. Connection rejected."))
 			add_system_note("Spoofed-Byond-Version", "Detected as using a spoofed byond version.")
 			log_suspicious_login("Failed Login: [key] - Spoofed byond version")
+			// PSYCHONAUT ADDITION BEGIN - DISCORD_SUSPICIOUS_LOGS
+			var/sus_role_id = CONFIG_GET(string/suspicious_log_discord_role_id)
+			send2tgs_adminless_only("Suspicious Log | Failed Login: [key] - Spoofed byond version[sus_role_id ? " <@&[sus_role_id]>" : ""]")
+			// PSYCHONAUT ADDITION END - DISCORD_SUSPICIOUS_LOGS
 			qdel(src)
 
 		if (num2text(byond_build) in GLOB.blacklisted_builds)
@@ -498,17 +508,24 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	var/cached_player_age = set_client_age_from_db(tdata) //we have to cache this because other shit may change it and we need its current value now down below.
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		player_age = 0
+	var/new_account = FALSE // PSYCHONAUT ADDITION - CENTCOM_DB
 	var/nnpa = CONFIG_GET(number/notify_new_player_age)
 	if (isnum(cached_player_age) && cached_player_age == -1) //first connection
 		if (nnpa >= 0)
 			log_admin_private("New login: [key_name(key, FALSE, TRUE)] (IP: [address], ID: [computer_id]) logged onto the servers for the first time.")
 			message_admins("New user: [key_name_admin(src)] is connecting here for the first time.")
+			// PSYCHONAUT EDIT ADDITION BEGIN - CENTCOM_DB - Original:
+			/*
 			if (CONFIG_GET(flag/irc_first_connection_alert))
 				var/new_player_alert_role = CONFIG_GET(string/new_player_alert_role_id)
 				send2tgs_adminless_only(
 					"New-user",
 					"[key_name(src)] is connecting for the first time![new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
 				)
+			*/
+			send2tgs_adminless_only("New-user", "[key_name(src)] is connecting for the first time!")
+			new_account = TRUE
+			// PSYCHONAUT EDIT ADDITION END - CENTCOM_DB
 	else if (isnum(cached_player_age) && cached_player_age < nnpa)
 		message_admins("New user: [key_name_admin(src)] just connected with an age of [cached_player_age] day[(player_age == 1?"":"s")]")
 	if(CONFIG_GET(flag/use_account_age_for_jobs) && account_age >= 0)
@@ -522,6 +539,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 				"[key_name(src)] (IP: [address], ID: [computer_id]) is a new BYOND account [account_age] day[(account_age == 1?"":"s")] old, created on [account_join_date].[new_player_alert_role ? " <@&[new_player_alert_role]>" : ""]"
 			)
 	scream_about_watchlists(src)
+	check_centcom_db(new_account) // PSYCHONAUT ADDITION - CENTCOM_DB
 	validate_key_in_db()
 	// If we aren't already generating a ban cache, fire off a build request
 	// This way hopefully any users of request_ban_cache will never need to yield
@@ -552,6 +570,19 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 
 	update_ambience_pref(prefs.read_preference(/datum/preference/numeric/volume/sound_ambience_volume))
 	check_ip_intel()
+
+	// PSYCHONAUT ADDITION BEGIN - ACCOUNT_LINK
+	if(CONFIG_GET(flag/require_discord_linking))
+		var/discord_id = SSdiscord.lookup_id(ckey)
+		if(discord_id)
+			if(is_discord_member(discord_id) == FALSE)
+				if(fetch_discord(FALSE, discord_id) == FALSE)
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but their Discord account no longer exist.")
+				else
+					message_admins("[key_name_admin(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+					log_admin_private("[key_name(src)] has connected while require discord linking is on but they are no longer a member in our Discord server.")
+	// PSYCHONAUT ADDITION END - ACCOUNT_LINK
 
 	//This is down here because of the browse() calls in tooltip/New()
 	if(!tooltips)
@@ -1200,6 +1231,7 @@ GLOBAL_LIST_INIT(blacklisted_builds, list(
 	set desc = "Stop Current Sounds"
 	SEND_SOUND(usr, sound(null))
 	tgui_panel?.stop_music()
+	tgui_panel?.destroy_all_jukebox() // PSYCHONAUT ADDITION - JUKEBOX
 	SSblackbox.record_feedback("nested tally", "preferences_verb", 1, list("Stop Self Sounds"))
 
 /client/verb/toggle_fullscreen()

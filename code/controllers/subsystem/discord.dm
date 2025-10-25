@@ -64,7 +64,10 @@ SUBSYSTEM_DEF(discord)
 		pass() // The list can just stay as its default (blank). Pass() exists because it needs a catch
 	var/notifymsg = jointext(people_to_notify, ", ")
 	if(notifymsg)
-		notifymsg += ", a new round is starting!"
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// notifymsg += ", a new round is starting!"
+		notifymsg += ", yeni round başlamak üzere!"
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		for(var/channel_tag in CONFIG_GET(str_list/chat_new_game_notifications))
 			// Sends the message to the discord, using same config option as the roundstart notification
 			send2chat(new /datum/tgs_message_content(trim(notifymsg)), channel_tag)
@@ -154,7 +157,10 @@ SUBSYSTEM_DEF(discord)
 	// While there's a collision in the token, generate a new one (should rarely happen)
 	while(not_unique)
 		//Column is varchar 100, so we trim just in case someone does us the dirty later
-		one_time_token = trim("[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]", 100)
+		// PSYCHONAUT EDIT ADDITION BEGIN - ACCOUNT_LINK - Original:
+		// one_time_token = trim("[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]", 100)
+		one_time_token = "[random_code(3)]-[random_code(3)]"
+		// PSYCHONAUT EDIT ADDITION END - ACCOUNT_LINK
 
 		not_unique = find_discord_link_by_token(one_time_token, timebound = TRUE)
 

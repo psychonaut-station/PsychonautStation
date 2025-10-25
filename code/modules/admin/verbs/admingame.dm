@@ -32,6 +32,17 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(show_player_panel, R_ADMIN, "Show Player Panel", mo
 			body += "<a href='byond://?_src_=holder;[HrefToken()];centcomlookup=[player.client.ckey]'>Search</a>"
 		else
 			body += "<i>Disabled</i>"
+
+		// PSYCHONAUT ADDITION BEGIN - ACCOUNT_LINK
+		var/discord = player.client.fetch_discord()
+		if(discord)
+			body += "<br><br><b>Discord:</b> @[discord["global_name"]] \[[discord["username"]]\]([discord["id"]])"
+		else if(discord == FALSE)
+			body += "<br><br><b>Discord:</b> <i>Deleted account or left server</i>"
+		else
+			body += "<br><br><b>Discord:</b> <i>Not linked</i>"
+		// PSYCHONAUT ADDITION END - ACCOUNT_LINK
+
 		body += "<br><br><b>Show related accounts by:</b> "
 		body += "\[ <a href='byond://?_src_=holder;[HrefToken()];showrelatedacc=cid;client=[REF(player.client)]'>CID</a> | "
 		body += "<a href='byond://?_src_=holder;[HrefToken()];showrelatedacc=ip;client=[REF(player.client)]'>IP</a> \]"

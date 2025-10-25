@@ -1,5 +1,5 @@
 // RUSTG_OVERRIDE_BUILTINS is not used since the file APIs don't work well over Linux.
-// PSYCHONAUT EDIT REMOVAL BEGIN - CHANGES - (Reason: Byondun url procları daha performanslı) -  Original:
+// PSYCHONAUT EDIT REMOVAL BEGIN - QOL - (Reason: Byondun url procları daha performanslı) -  Original:
 // #define url_encode(text) rustg_url_encode("[text]")
 // #define url_decode(text) rustg_url_decode("[text]")
-// PSYCHONAUT EDIT REMOVAL END - CHANGES
+// PSYCHONAUT EDIT REMOVAL END - QOL

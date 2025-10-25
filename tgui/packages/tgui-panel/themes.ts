@@ -71,6 +71,8 @@ export const setClientTheme = (name) => {
     'wiki.text-color': themeColor.TEXT,
     'forum.background-color': themeColor.BUTTON,
     'forum.text-color': themeColor.TEXT,
+    'patreon.background-color': themeColor.BUTTON, // PSYCHONAUT ADDITION - PATREON
+    'patreon.text-color': themeColor.TEXT, // PSYCHONAUT ADDITION - PATREON
     'github.background-color': themeColor.BUTTON,
     'github.text-color': themeColor.TEXT,
     'report-issue.background-color': themeColor.BUTTON,

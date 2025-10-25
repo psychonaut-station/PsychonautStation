@@ -1,23 +1,25 @@
-|                      Changes                      |
-| :-----------------------------------------------: |
-|        [Cyborg Crowbars](#cyborg-crowbars)        |
-| [Remove Rustg Overrides](#remove-rustg-overrides) |
+|                                    Changes                                    |
+| :---------------------------------------------------------------------------: |
+| [Prevent Player Login On World Reboot](#prevent-player-login-on-world-reboot) |
+|               [Remove Rustg Overrides](#remove-rustg-overrides)               |
 
 # Changes
 
-## Cyborg Crowbars
+## Prevent Player Login On World Reboot
 
 ### Description:
 
-Tüm cyborg türlerine crowbar ekler
+Server rebootlanırken oyuncuların oyuna girmesini engeller.
 
 ### Related files:
 
-- `code/modules/mob/living/silicon/robot/robot_model.dm`
+- `code/modules/admin/IsBanned.dm`
 
 ### Credits:
 
-loanselot, Seefaaa
+Seefaaa
+
+<!----------------------------------------------------------------------------->
 
 ## Remove Rustg Overrides
 
@@ -32,3 +34,5 @@ Rust_g'nin url_encode ve url_decode overridelerini kaldırır. Sebebi ise daha y
 ### Credits:
 
 loanselot, Seefaaa
+
+<!----------------------------------------------------------------------------->

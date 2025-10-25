@@ -26,6 +26,7 @@ Mentor ticket ve rankını oyuna ekler
 - `code/modules/admin/verbs/secrets.dm`: `secrets`
 - `code/modules/admin/view_variables/view_variables.dm`: `debug_variables`
 - `code/modules/admin/admin_investigate.dm`: `investigate_show`
+- `code/modules/client/client_procs.dm`: `/client/Topic()`
 - `code/modules/interview/interview.dm`: `/datum/interview/ui_act()`
 - `code/modules/requests/request_manager.dm`: `/datum/request_manager`
 

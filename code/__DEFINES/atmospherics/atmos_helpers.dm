@@ -100,7 +100,7 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
 //Use this to see if a turf is fully blocked or not, think windows or firelocks. Fails with 1x1 non full tile windows, but it's not worth the cost.
 #define TURF_SHARES(T) (LAZYLEN(T.atmos_adjacent_turfs))
 
-// PSYCHONAUT EDIT ADDITION BEGIN - CHANGES - Original:
+// PSYCHONAUT EDIT ADDITION BEGIN - QOL - Original:
 /*
 // #define LINDA_CYCLE_ARCHIVE(turf)\
 // 	turf.air.archive();\
@@ -111,7 +111,7 @@ GLOBAL_LIST_INIT(atmos_adjacent_savings, list(0,0))
 	if (turf.air) turf.air.archive();\
 	turf.archived_cycle = SSair.times_fired;\
 	turf.temperature_archived = turf.temperature;
-// PSYCHONAUT EDIT ADDITION END - CHANGES
+// PSYCHONAUT EDIT ADDITION END - QOL
 
 
 /* Fetch the energy transferred when two gas mixtures' temperature equalize.

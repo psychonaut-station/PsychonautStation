@@ -1,11 +1,11 @@
-## Psychonaut Changes
+## QOL
 
-MODULE ID: CHANGES
+MODULE ID: QOL
 
 ### Açıklama
 
-Tarafımızca yapılan gerekli gördüğümüz veya qol güncellemeleri.
-Yaptığınız değişiklikleri [CHANGES.md](CHANGES.md) dosyasına _alfabetik olarak_ eklemelisiniz. Örnek olarak içerisindeki `Cyborg Crowbar` örnek verilebilir.
+Tarafımızca yapılan ve modül oluşturmaya gerek duyulmayan qol güncellemeleri.
+Yaptığınız değişiklikleri [CHANGES.md](CHANGES.md) dosyasına _alfabetik olarak_ eklemelisiniz. Örnek olarak içerisindeki `Remove Rustg Overrides` örnek verilebilir.
 
 ### TG Değişiklikleri
 
@@ -27,4 +27,4 @@ Yaptığınız değişiklikleri [CHANGES.md](CHANGES.md) dosyasına _alfabetik o
 
 Rengan
 
-<!-- Bir ekleme yaptıysan adını buraya yazma, sadece yaptığın eklemenin üzerine yazman yeterli -->
+<!-- Bir ekleme yaptıysan adını buraya yazma, sadece CHANGES.md dosyasına yazman yeterli -->

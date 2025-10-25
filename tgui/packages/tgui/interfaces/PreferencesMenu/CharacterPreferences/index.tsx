@@ -100,11 +100,20 @@ export function CharacterPreferenceWindow(props) {
           profiles={data.character_profiles}
         />
       </Stack.Item>
-      {!data.content_unlocked && (
+      {
+      // PSYCHONAUT EDIT ADDITION BEGIN - PATREON - Original:
+      /*
+      !data.content_unlocked && (
         <Stack.Item align="center">
           Buy BYOND premium for more slots!
         </Stack.Item>
-      )}
+      )
+      */
+      !data.content_unlocked && (
+        <Stack.Item align="center">Become a patron for more slots!</Stack.Item>
+      )
+      // PSYCHONAUT EDIT ADDITION END - PATREON
+      }
       <Stack.Divider />
       <Stack.Item>
         <Stack fill>

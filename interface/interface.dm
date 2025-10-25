@@ -39,6 +39,18 @@
 */
 // PSYCHONAUT EDIT REMOVAL END
 
+// PSYCHONAUT ADDITION BEGIN - PATREON
+/client/verb/patreon()
+	set name = "patreon"
+	set desc = "Destek ol"
+	set hidden = TRUE
+	var/weburl = CONFIG_GET(string/patreonurl)
+	if(!weburl)
+		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
+		return
+	DIRECT_OUTPUT(src, link(weburl))
+// PSYCHONAUT ADDITION END - PATREON
+
 /client/verb/rules()
 	set name = "rules"
 	// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:

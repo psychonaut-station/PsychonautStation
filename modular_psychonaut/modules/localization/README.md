@@ -16,6 +16,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`
 - `code/datums/quirks/neutral_quirks/gamer.dm`: `/datum/quirk/gamer/proc/gamer_moment()`
 - `interface/interface.dm`: [`/client`: `verb/wiki()`, `verb/rules()`, `verb/github()`, `verb/reportissue()`]
+- `code/controllers/subsystem/discord.dm`: `/datum/controller/subsystem/discord/Initialize()`
 - `code/controllers/subsystem/nightshift.dm`: `/datum/controller/subsystem/nightshift/proc/announce()`, `/datum/controller/subsystem/nightshift/proc/check_nightshift()`, `/datum/controller/subsystem/nightshift/proc/update_nightshift()`
 - `code/controllers/subsystem/shuttle.dm` `/datum/controller/subsystem/shuttle/proc/CheckAutoEvac()`, `/datum/controller/subsystem/shuttle/proc/block_recall()`, `/datum/controller/subsystem/shuttle/proc/unblock_recall()`, `/datum/controller/subsystem/shuttle/proc/call_evac_shuttle()`, `/datum/controller/subsystem/shuttle/proc/checkHostileEnvironment()`
 - `code/datums/communications.dm`: `/datum/communciations_controller/proc/make_announcement()`

@@ -328,10 +328,10 @@
 	default = "http://tgstation13.org/phpBB/index.php"
 
 /datum/config_entry/string/rulesurl
-	default = "http://tgstation13.org/wiki/Rules"
+	default = "https://wiki.ss13.tr/Kurallar" // PSYCHONAUT EDIT - Original: "http://tgstation13.org/wiki/Rules"
 
 /datum/config_entry/string/githuburl
-	default = "https://www.github.com/tgstation/tgstation"
+	default = "https://github.com/psychonaut-station/PsychonautStation" // PSYCHONAUT EDIT - Original: "https://www.github.com/tgstation/tgstation"
 
 /datum/config_entry/string/discordbotcommandprefix
 	default = "?"

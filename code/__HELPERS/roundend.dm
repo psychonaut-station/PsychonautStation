@@ -262,10 +262,23 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	//Set news report and mode result
 	SSdynamic.set_round_result()
 
+	// PSYCHONAUT ADDITION BEGIN - BETTER_ROUNDEND_MESSAGE
+	var/website_url = CONFIG_GET(string/websiteurl)
+	var/round_end_msg = ""
+	if (website_url && GLOB.round_id)
+		var/texttime = time2text(world.realtime, "YYYY/MM/DD", 0)
+		round_end_msg = "Round \[#[GLOB.round_id]\]([website_url]/rounds/[GLOB.round_id]) sona erdi."
+	else
+		round_end_msg = "Round[GLOB.round_id ? " [GLOB.round_id]" : ""] sona erdi."
+	// PSYCHONAUT ADDITION END - BETTER_ROUNDEND_MESSAGE
+
 	to_chat(world, span_infoplain(span_big(span_bold("<BR><BR><BR>The round has ended."))))
 	log_game("The round has ended.")
 	for(var/channel_tag in CONFIG_GET(str_list/channel_announce_end_game))
-		send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), channel_tag)
+		// PSYCHONAUT EDIT ADDITION BEGIN - BETTER_ROUNDEND_MESSAGE - Original:
+		// send2chat(new /datum/tgs_message_content("[GLOB.round_id ? "Round [GLOB.round_id]" : "The round has"] just ended."), channel_tag)
+		send2chat(new /datum/tgs_message_content(round_end_msg), channel_tag)
+		// PSYCHONAUT EDIT ADDITION END - BETTER_ROUNDEND_MESSAGE
 	send2adminchat("Server", "Round just ended.")
 
 	if(length(CONFIG_GET(keyed_list/cross_server)))

@@ -13,10 +13,14 @@ Tarafımızca eklenen yiyecekler, yemek makinaları, yiyecek ve içecek tarifler
 
 ### Modüler Değişiklikler
 
+- `modular_psychonaut/master_files/code/modules/cargo/packs/service.dm`: `/datum/supply_pack/service/doner_grill`
 - `modular_psychonaut/master_files/icons/obj/food/food.dmi`
 - `modular_psychonaut/master_files/icons/obj/food/frozen_treats.dmi`
 - `modular_psychonaut/master_files/icons/obj/food/turkish.dmi`
 - `modular_psychonaut/master_files/icons/obj/machines/kitchen.dmi`
+- `modular_psychonaut/master_files/icons/obj/service/kitchen.dmi`
+- `modular_psychonaut/master_files/icons/mob/inhands/equipments/kitchen_lefthand.dmi`
+- `modular_psychonaut/master_files/icons/mob/inhands/equipments/kitchen_righthand.dmi`
 
 ### Definelar ve Helperlar
 

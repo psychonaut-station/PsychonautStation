@@ -244,3 +244,12 @@
 
 /particles/smoke/steam/mild/center
 	position = list(0, 0, 0)
+
+/obj/item/knife/doner
+	name = "doner knife"
+	desc = "A long knife whose main purpose is to cut doner kebab."
+	icon = 'modular_psychonaut/master_files/icons/obj/service/kitchen.dmi'
+	icon_state = "doner_knife"
+	lefthand_file = 'modular_psychonaut/master_files/icons/mob/inhands/equipments/kitchen_lefthand.dmi'
+	righthand_file = 'modular_psychonaut/master_files/icons/mob/inhands/equipments/kitchen_righthand.dmi'
+	inhand_icon_state = "doner_knife"

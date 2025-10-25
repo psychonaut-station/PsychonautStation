@@ -66,10 +66,7 @@
 
 /// BYOND's string procs don't support being used on datum references (as in it doesn't look for a name for stringification)
 /// We just use this macro to ensure that we will only pass strings to this BYOND-level function without developers needing to really worry about it.
-// PSYCHONAUT EDIT REMOVAL BEGIN - LANGUAGE - Original:
-// #define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
-#define LOWER_TEXT(thing) locale_lowertext(UNLINT("[thing]"))
-// PSYCHONAUT EDIT REMOVAL END - LANGUAGE
+#define LOWER_TEXT(thing) lowertext(UNLINT("[thing]"))
 
 /// Folder directory for strings
 #define STRING_DIRECTORY "strings"

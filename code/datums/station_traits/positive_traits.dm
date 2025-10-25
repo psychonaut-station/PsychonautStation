@@ -293,6 +293,8 @@
 		/datum/job/shaft_miner = /obj/item/organ/monster_core/rush_gland,
 		/datum/job/station_engineer = /obj/item/organ/cyberimp/arm/toolkit/toolset,
 		/datum/job/warden = /obj/item/organ/cyberimp/eyes/hud/security,
+		/datum/job/brig_physician = /obj/item/organ/cyberimp/eyes/hud/medical, // PSYCHONAUT ADDITION - BRIG_PHYSICIAN
+		/datum/job/worker = /obj/item/organ/cyberimp/arm/toolkit/toolset, // PSYCHONAUT ADDITION - WORKER
 	)
 
 /datum/station_trait/cybernetic_revolution/New()

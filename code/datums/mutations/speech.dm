@@ -194,8 +194,10 @@
 
 /datum/mutation/chav/New(datum/mutation/copymut)
 	. = ..()
-	AddComponent(/datum/component/speechmod, replacements = strings("chav_replacement.json", "chav"), end_string = ", mate", end_string_chance = 30)
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// AddComponent(/datum/component/speechmod, replacements = strings("chav_replacement.json", "chav"), end_string = ", mate", end_string_chance = 30)
+	AddComponent(/datum/component/speechmod, replacements = strings("chav_replacement.json", "chav"), end_string = ", dostum", end_string_chance = 30)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 /datum/mutation/elvis
 	name = "Elvis"
 	desc = "A terrifying mutation named after its 'patient-zero'."

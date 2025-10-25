@@ -16,14 +16,20 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`
 - `code/datums/quirks/neutral_quirks/gamer.dm`: `/datum/quirk/gamer/proc/gamer_moment()`
 - `interface/interface.dm`: [`/client`: `verb/wiki()`, `verb/rules()`, `verb/github()`, `verb/reportissue()`]
+- `code/controllers/configuration/entries/game_options.dm`: `/datum/config_entry/string/alert_green`, `/datum/config_entry/string/alert_blue_upto`, `/datum/config_entry/string/alert_blue_downto`, `/datum/config_entry/string/alert_red_upto`, `/datum/config_entry/string/alert_red_downto`, `/datum/config_entry/string/alert_delta`
 - `code/controllers/subsystem/discord.dm`: `/datum/controller/subsystem/discord/Initialize()`
 - `code/controllers/subsystem/nightshift.dm`: `/datum/controller/subsystem/nightshift/proc/announce()`, `/datum/controller/subsystem/nightshift/proc/check_nightshift()`, `/datum/controller/subsystem/nightshift/proc/update_nightshift()`
 - `code/controllers/subsystem/shuttle.dm` `/datum/controller/subsystem/shuttle/proc/CheckAutoEvac()`, `/datum/controller/subsystem/shuttle/proc/block_recall()`, `/datum/controller/subsystem/shuttle/proc/unblock_recall()`, `/datum/controller/subsystem/shuttle/proc/call_evac_shuttle()`, `/datum/controller/subsystem/shuttle/proc/checkHostileEnvironment()`
+- `code/datums/ai_laws/laws_antagonistic.dm`: `/datum/ai_laws/antimov/var/inherent`, `/datum/ai_laws/balance/var/inherent`, `/datum/ai_laws/thermodynamic/var/inherent`, `/datum/ai_laws/syndicate_override/var/inherent`, `/datum/ai_laws/ninja_override/var/inherent`
+- `code/datums/ai_laws/laws_neutral.dm`: `/datum/ai_laws/united_nations/var/inherent`, `/datum/ai_laws/hulkamania/var/inherent`, `/datum/ai_laws/reporter/var/inherent`, `/datum/ai_laws/dungeon_master/var/inherent`, `/datum/ai_laws/painter/var/inherent`, `/datum/ai_laws/tyrant/var/inherent`, `/datum/ai_laws/overlord/var/inherent`
+- `code/datums/ai_laws/laws_station_sided.dm`: `/datum/ai_laws/default/asimov/var/inherent`, `/datum/ai_laws/asimovpp/var/inherent`, `/datum/ai_laws/nutimov/var/inherent`, `/datum/ai_laws/default/corporate/var/inherent`, `/datum/ai_laws/robocop/var/inherent`, `/datum/ai_laws/maintain/var/inherent`, `/datum/ai_laws/liveandletlive/var/inherent`, `/datum/ai_laws/peacekeeper/var/inherent`, `/datum/ai_laws/ten_commandments/var/inherent`, `/datum/ai_laws/default/paladin/var/inherent`, `/datum/ai_laws/paladin5/var/inherent`, `/datum/ai_laws/hippocratic/var/inherent`, `/datum/ai_laws/drone/var/inherent`
 - `code/datums/communications.dm`: `/datum/communciations_controller/proc/make_announcement()`
 - `code/datums/components/cult_ritual_item.dm`: `/datum/component/cult_ritual_item/proc/scribe_narsie_rune()`
 - `code/datums/station_traits/negative_traits.dm`: `/datum/station_trait/nebula/hostile/radiation/apply_nebula_effect()`, `/datum/station_trait/nebula/hostile/radiation/send_instructions()`
 - `code/datums/station_traits/neutral_traits.dm`: `/datum/station_trait/birthday/proc/announce_birthday()`
+- `code/datums/world_topic.dm`: `/datum/world_topic/comms_console/proc/receive_cross_comms_message()`, `/datum/world_topic/news_report/Run()`
 - `code/datums/weather/weather_types/radiation_storm.dm`: `/datum/weather/rad_storm/end()`
+- `code/datums/mutations/speech.dm`: `/datum/mutation/chav/New()`
 - `code/game/gamemodes/events.dm`: `/proc/power_failure()`, `/proc/power_restore()`, `/proc/power_restore_quick()`
 - `code/game/machinery/slotmachine.dm`: `/obj/machinery/computer/slot_machine/proc/give_prizes()`
 - `code/game/machinery/computer/communications.dm`: `/obj/machinery/computer/communications/ui_act()`, `/obj/machinery/computer/communications/proc/send_cross_comms_message()`, `/obj/machinery/computer/communications/proc/hack_console()`
@@ -37,6 +43,8 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
 - `code/modules/holiday/holidays.dm`: `/datum/holiday/anz`, `/datum/holiday/atrakor_festival`, `/datum/holiday/friendship/greet()`, `/datum/holiday/indigenous`, `/datum/holiday/un_day`, `/datum/holiday/friday_thirteenth`, `/datum/holiday/islamic/ramadan/end`, `/datum/holiday/hebrew/passover`
+- `config/game_options.txt`: `ALERT_GREEN`, `ALERT_BLUE_UPTO`, `ALERT_BLUE_DOWNTO`, `ALERT_RED_UPTO`, `ALERT_RED_DOWNTO`, `ALERT_DELTA`
+
 - `tgui/packages/tgui/interfaces/Interview.tsx`: `Interview`, `RenderedStatus`, `QuestionArea`
 
 ### Modüler Değişiklikler

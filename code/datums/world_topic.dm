@@ -159,7 +159,10 @@
 
 	LAZYREMOVE(timers, timer_id)
 
-	minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// minor_announce(input["message"], "Incoming message from [input["message_sender"]]")
+	minor_announce(input["message"], "[input["message_sender"]]'den Gönderilen Mesaj")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	message_admins("Receiving a message from [input["sender_ckey"]] at [input["source"]]")
 	for(var/obj/machinery/computer/communications/communications_console in GLOB.shuttle_caller_list)
 		communications_console.override_cooldown()
@@ -168,7 +171,10 @@
 	keyword = "News_Report"
 
 /datum/world_topic/news_report/Run(list/input)
-	minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// minor_announce(input["message"], "Breaking Update From [input["message_sender"]]")
+	minor_announce(input["message"], "[input["message_sender"]]'den Son Dakika Gelişmesi")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/world_topic/adminmsg
 	keyword = "adminmsg"

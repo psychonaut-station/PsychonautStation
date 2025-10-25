@@ -795,9 +795,13 @@
 				[SSticker.totalPlayersReady] players ready<br /> \
 				[SSticker.total_admins_ready] / [length(GLOB.admins)] admins ready</span>"
 		else
-			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining]</span><br /> \
-				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
-
+			// PSYCHONAUT EDIT ADDITION BEGIN - READIED_PLAYERS - Original:
+			// new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining]</span><br /> \
+			// 	<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
+			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 12px'>[time_remaining]</span><br />\
+				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s<br />\
+				[SSticker.totalPlayersReady] player\s ready</span>"
+			// PSYCHONAUT EDIT ADDITION END - READIED_PLAYERS
 	maptext = MAPTEXT(new_maptext)
 
 #undef OVERLAY_X_DIFF

@@ -374,6 +374,8 @@ GLOBAL_VAR(restart_counter)
 	if(LAZYACCESS(SSlag_switch.measures, DISABLE_NON_OBSJOBS))
 		features += "closed"
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	/*
 	var/new_status = ""
 	var/hostedby
 	if(config)
@@ -389,12 +391,31 @@ GLOBAL_VAR(restart_counter)
 	if (CONFIG_GET(flag/station_name_in_hub_entry))
 		new_status += " &#8212; <b>[station_name()]</b>"
 
+	*/
+	var/new_status = ""
+	if(config)
+		// If you have already HUB config open, we assume you set those config variables below correctly
+		var/server_name = CONFIG_GET(string/servername)
+		new_status += "<b>[server_name]</b>]<b> &#8212; Türkçe SS13</b>"
+
+	if (CONFIG_GET(flag/station_name_in_hub_entry))
+		new_status += " &#8212; <b>[station_name()]</b>"
+
+	var/name_link = CONFIG_GET(string/discordurl)
+	if (name_link)
+		new_status += " (<a href='[name_link]'>Discord</a>)"
+	// PSYCHONAUT EDIT ADDITION END
+
 	var/players = GLOB.clients.len
 
 	game_state = (CONFIG_GET(number/extreme_popcap) && players >= CONFIG_GET(number/extreme_popcap)) //tells the hub if we are full
 
+	// PSYCHONAUT EDIT REMOVAL BEGIN - MODULE - Original:
+	/*
 	if (!host && hostedby)
 		features += "hosted by <b>[hostedby]</b>"
+	*/
+	// PSYCHONAUT EDIT REMOVAL END - MODULE
 
 	if(length(features))
 		new_status += ": [jointext(features, ", ")]"

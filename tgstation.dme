@@ -6813,6 +6813,7 @@
 #include "modular_psychonaut\master_files\code\game\atom\atom_act.dm"
 #include "modular_psychonaut\master_files\code\game\machinery\dance_machine.dm"
 #include "modular_psychonaut\master_files\code\game\machinery\incident_display.dm"
+#include "modular_psychonaut\master_files\code\game\machinery\computer\_computer.dm"
 #include "modular_psychonaut\master_files\code\game\objects\effects\landmarks.dm"
 #include "modular_psychonaut\master_files\code\game\objects\effects\warning.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\anomaly_kinesis.dm"

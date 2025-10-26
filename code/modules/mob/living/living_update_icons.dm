@@ -74,7 +74,10 @@
  * * z_add: pixel_z offset
  * * animate: If TRUE, the mob will animate to the new position. If FALSE, it will instantly move.
  */
-/mob/living/proc/add_offsets(source, w_add, x_add, y_add, z_add, animate = TRUE)
+// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+// /mob/living/proc/add_offsets(source, w_add, x_add, y_add, z_add, animate = TRUE)
+/mob/living/proc/add_offsets(source, w_add, x_add, y_add, z_add, animate = TRUE, time = UPDATE_TRANSFORM_ANIMATION_TIME, easing)
+// PSYCHONAUT EDIT ADDITION END - NOOSE
 	LAZYINITLIST(offsets)
 	if(isnum(w_add))
 		LAZYSET(offsets[PIXEL_W_OFFSET], source, w_add)
@@ -84,7 +87,10 @@
 		LAZYSET(offsets[PIXEL_Y_OFFSET], source, y_add)
 	if(isnum(z_add))
 		LAZYSET(offsets[PIXEL_Z_OFFSET], source, z_add)
-	update_offsets(animate)
+	// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+	// update_offsets(animate)
+	update_offsets(animate, time, easing)
+	// PSYCHONAUT EDIT ADDITION END - NOOSE
 
 /**
  * Goes through all pixel adjustments and removes any tied to the passed source.
@@ -92,13 +98,18 @@
  * * source: The source of the offset to remove
  * * animate: If TRUE, the mob will animate to the position with any offsets removed. If FALSE, it will instantly move.
  */
-/mob/living/proc/remove_offsets(source, animate = TRUE)
+// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+// /mob/living/proc/remove_offsets(source, animate = TRUE)
+/mob/living/proc/remove_offsets(source, animate = TRUE, time = UPDATE_TRANSFORM_ANIMATION_TIME, easing)
+// PSYCHONAUT EDIT ADDITION END - NOOSE
 	for(var/offset in offsets)
 		LAZYREMOVE(offsets[offset], source)
 		ASSOC_UNSETEMPTY(offsets, offset)
 	UNSETEMPTY(offsets)
-	update_offsets(animate)
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+	// update_offsets(animate)
+	update_offsets(animate, time, easing)
+	// PSYCHONAUT EDIT ADDITION END - NOOSE
 /**
  * Updates the mob's pixel position according to the offsets.
  *
@@ -106,7 +117,10 @@
  *
  * Returns TRUE if the mob's position has changed, FALSE otherwise.
  */
-/mob/living/proc/update_offsets(animate = FALSE)
+// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+// /mob/living/proc/update_offsets(animate = FALSE)
+/mob/living/proc/update_offsets(animate = FALSE, time = UPDATE_TRANSFORM_ANIMATION_TIME, easing)
+// PSYCHONAUT EDIT ADDITION END - NOOSE
 	var/new_w = base_pixel_w
 	var/new_x = base_pixel_x
 	var/new_y = base_pixel_y
@@ -138,14 +152,25 @@
 		ADD_TRAIT(src, TRAIT_NO_FLOATING_ANIM, UPDATE_OFFSET_TRAIT)
 		addtimer(TRAIT_CALLBACK_REMOVE(src, TRAIT_NO_FLOATING_ANIM, UPDATE_OFFSET_TRAIT), 0.3 SECONDS, TIMER_UNIQUE|TIMER_OVERRIDE)
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - NOOSE - Original:
+	// animate(src,
+	// 	pixel_w = new_w,
+	// 	pixel_x = new_x,
+	// 	pixel_y = new_y,
+	// 	pixel_z = new_z,
+	// 	flags = ANIMATION_PARALLEL,
+	// 	time = UPDATE_TRANSFORM_ANIMATION_TIME,
+	// )
 	animate(src,
 		pixel_w = new_w,
 		pixel_x = new_x,
 		pixel_y = new_y,
 		pixel_z = new_z,
+		easing = easing,
 		flags = ANIMATION_PARALLEL,
-		time = UPDATE_TRANSFORM_ANIMATION_TIME,
+		time = time,
 	)
+	// PSYCHONAUT EDIT ADDITION END - NOOSE
 	return TRUE
 
 /**

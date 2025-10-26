@@ -431,6 +431,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 ////////////////////////////////
 
 #define CABLE_RESTRAINTS_COST 15
+#define NOOSE_COST 30 // PSYCHONAUT ADDITION - NOOSE
 
 /obj/item/stack/cable_coil
 	name = "cable coil"
@@ -529,6 +530,12 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	restraints_icon.maptext = MAPTEXT("<span [amount >= CABLE_RESTRAINTS_COST ? "" : "style='color: red'"]>[CABLE_RESTRAINTS_COST]</span>")
 	restraints_icon.color = color
 
+	// PSYCHONAUT ADDITION BEGIN - NOOSE
+	var/image/noose_icon = image(icon = 'modular_psychonaut/master_files/icons/obj/noose.dmi', icon_state = "noose")
+	noose_icon.overlays += image(icon = noose_icon.icon, icon_state = "noose_overlay")
+	noose_icon.maptext = MAPTEXT("<span [amount >= NOOSE_COST ? "" : "style='color: red'"]>[NOOSE_COST]</span>")
+	// PSYCHONAUT ADDITION END - NOOSE
+
 	var/list/radial_menu = list(
 	"Layer 1" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-red"),
 	"Layer 2" = image(icon = 'icons/hud/radial.dmi', icon_state = "coil-yellow"),
@@ -537,6 +544,12 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	"Multi Z layer cable hub" = image(icon = 'icons/obj/pipes_n_cables/structures.dmi', icon_state = "cablerelay-broken-cable"),
 	"Cable restraints" = restraints_icon
 	)
+
+	// PSYCHONAUT ADDITION BEGIN - NOOSE
+	var/turf/user_turf = get_turf(user)
+	if(!isnull(locate(/obj/structure/chair) in user_turf))
+		radial_menu["Noose"] = noose_icon
+	// PSYCHONAUT ADDITION END - NOOSE
 
 	var/layer_result = show_radial_menu(user, src, radial_menu, custom_check = CALLBACK(src, PROC_REF(check_menu), user), require_near = TRUE, tooltips = TRUE)
 	if(!check_menu(user))
@@ -583,6 +596,12 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 				if(use(CABLE_RESTRAINTS_COST))
 					var/obj/item/restraints/handcuffs/cable/restraints = new(null, cable_color)
 					user.put_in_hands(restraints)
+		// PSYCHONAUT ADDITION BEGIN - NOOSE
+		if("Noose")
+			if (amount >= NOOSE_COST)
+				if(do_after(user, 5 SECONDS, user_turf) && use(NOOSE_COST))
+					new /obj/structure/noose(user_turf)
+		// PSYCHONAUT ADDITION END - NOOSE
 	update_appearance()
 
 
@@ -696,6 +715,7 @@ GLOBAL_LIST_INIT(wire_node_generating_types, typecacheof(list(
 	pixel_y = base_pixel_y + rand(-2, 2)
 	update_appearance()
 
+#undef NOOSE_COST // PSYCHONAUT ADDITION - NOOSE
 #undef CABLE_RESTRAINTS_COST
 #undef UNDER_SMES
 #undef UNDER_TERMINAL

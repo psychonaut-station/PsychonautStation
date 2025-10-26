@@ -68,6 +68,7 @@ const RecordInfo = (props) => {
     species,
     wanted_status,
     voice,
+    security_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
   } = foundRecord;
 
   const [isValid, setIsValid] = useState(true);
@@ -198,6 +199,15 @@ const RecordInfo = (props) => {
                 text={note}
               />
             </LabeledList.Item>
+            {/*// PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION */}
+            <LabeledList.Item label="Security Records">
+              <EditableText
+                field="security_records"
+                target_ref={crew_ref}
+                text={security_records}
+              />
+            </LabeledList.Item>
+            {/*// PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION*/}
           </LabeledList>
         </Section>
       </Stack.Item>

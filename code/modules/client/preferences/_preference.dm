@@ -32,8 +32,14 @@
 /// Preferences that aren't names, but change the name changes set by PREFERENCE_PRIORITY_NAMES.
 #define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 9
 
+/// The priority at which names are decided, needed for proper randomization.
+#define PREFERENCE_PRIORITY_BACKGROUND_INFORMATION 10 // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+
+// PSYCHONAUT EDIT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION - Original:
+// #define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAME_MODIFICATIONS
 /// The maximum preference priority, keep this updated, but don't use it for `priority`.
-#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_NAME_MODIFICATIONS
+#define MAX_PREFERENCE_PRIORITY PREFERENCE_PRIORITY_BACKGROUND_INFORMATION
+// PSYCHONAUT EDIT ADDITION END - CHARACTER_BACKGROUND_INFORMATION
 
 /// For choiced preferences, this key will be used to set display names in constant data.
 #define CHOICED_PREFERENCE_DISPLAY_NAMES "display_names"

@@ -133,6 +133,13 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 	var/chosen_assignment = person_client?.prefs.alt_job_titles[assignment] || assignment
 	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
+	// PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION
+	var/medical_records = person.client?.prefs.read_preference(/datum/preference/background_data/medical_records)
+	var/security_records = person.client?.prefs.read_preference(/datum/preference/background_data/security_records)
+	var/employment_records = person.client?.prefs.read_preference(/datum/preference/background_data/employment_records)
+	var/exploit_records = person.client?.prefs.read_preference(/datum/preference/background_data/exploit_records)
+	// PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION
+
 	var/datum/record/locked/lockfile = new(
 		age = person.age,
 		blood_type = person.get_bloodtype()?.name || "UNKNOWN",
@@ -175,6 +182,10 @@ GLOBAL_DATUM_INIT(manifest, /datum/manifest, new)
 		minor_disabilities = person.get_quirk_string(FALSE, CAT_QUIRK_MINOR_DISABILITY, from_scan = TRUE),
 		minor_disabilities_desc = person.get_quirk_string(TRUE, CAT_QUIRK_MINOR_DISABILITY),
 		quirk_notes = person.get_quirk_string(TRUE, CAT_QUIRK_NOTES),
+		medical_records = medical_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+		security_records = security_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+		employment_records = employment_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+		exploit_records = exploit_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 	)
 
 /// Edits the rank and trim of the found record.

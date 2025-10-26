@@ -66,6 +66,7 @@
 			rank = target.rank,
 			species = target.species,
 			trim = target.trim,
+			medical_records = target.medical_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 		))
 
 	data["records"] = records
@@ -158,5 +159,6 @@
 	target.rank = "Unknown"
 	target.species = "Unknown"
 	target.trim = "Unknown"
+	target.medical_records = "" // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 
 	return TRUE

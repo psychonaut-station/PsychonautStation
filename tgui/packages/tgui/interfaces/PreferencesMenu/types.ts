@@ -202,6 +202,14 @@ export type PreferencesMenuData = {
   window: PrefsWindow;
 
   job_alt_titles: Record<string, string>; // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
+
+  character_desc: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+  medical_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+  security_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+  employment_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+  exploit_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+  max_background_charlength: number; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+
 };
 
 export type ServerData = {

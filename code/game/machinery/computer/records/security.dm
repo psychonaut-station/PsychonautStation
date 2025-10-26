@@ -130,6 +130,7 @@
 			species = target.species,
 			trim = target.trim,
 			wanted_status = target.wanted_status,
+			security_records = target.security_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 		))
 
 	data["records"] = records
@@ -269,6 +270,7 @@
 	target.crimes.Cut()
 	target.security_note = null
 	target.wanted_status = WANTED_NONE
+	target.security_records = "" // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 
 	return TRUE
 

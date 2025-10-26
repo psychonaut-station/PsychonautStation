@@ -26,6 +26,7 @@ export type SecurityRecord = {
   trim: string;
   wanted_status: string;
   voice: string;
+  security_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 };
 
 export type Crime = {

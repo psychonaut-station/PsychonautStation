@@ -12,25 +12,16 @@ import {
 import { useBackend } from '../../backend';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
-import {
-  MENTALSTATUS2COLOR,
-  MENTALSTATUS2DESC,
-  MENTALSTATUS2ICON,
-  PHYSICALSTATUS2COLOR,
-  PHYSICALSTATUS2DESC,
-  PHYSICALSTATUS2ICON,
-} from './constants';
-import { getMedicalRecord, getQuirkStrings } from './helpers';
-import { NoteKeeper } from './NoteKeeper';
-import type { MedicalRecordData } from './types';
+import { getCrewRecord, getQuirkStrings } from './helpers';
+import { CrewRecordData } from './types';
 
 /** Views a selected record. */
-export const MedicalRecordView = (props) => {
-  const foundRecord = getMedicalRecord();
+export const CrewRecordView = (props) => {
+  const foundRecord = getCrewRecord();
   if (!foundRecord) return <NoticeBox>No record selected.</NoticeBox>;
 
-  const { act, data } = useBackend<MedicalRecordData>();
-  const { assigned_view, physical_statuses, mental_statuses, station_z } = data;
+  const { act, data } = useBackend<CrewRecordData>();
+  const { assigned_view, station_z } = data;
 
   const { min_age, max_age } = data;
 
@@ -38,34 +29,29 @@ export const MedicalRecordView = (props) => {
     age,
     blood_type,
     crew_ref,
-    dna,
     gender,
     major_disabilities,
     minor_disabilities,
-    physical_status,
-    mental_status,
     name,
     quirk_notes,
     rank,
     species,
-    medical_records, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+    employment_records,
+    exploit_records,
   } = foundRecord;
+
+  const [isValid, setIsValid] = useState(true);
 
   const minor_disabilities_array = getQuirkStrings(minor_disabilities);
   const major_disabilities_array = getQuirkStrings(major_disabilities);
   const quirk_notes_array = getQuirkStrings(quirk_notes);
 
-  const [isValid, setIsValid] = useState(true);
-
   return (
     <Stack fill vertical>
-      <Stack.Item grow>
+      <Stack.Item grow align="center">
         <Stack fill>
           <Stack.Item>
             <CharacterPreview height="100%" id={assigned_view} />
-          </Stack.Item>
-          <Stack.Item grow>
-            <NoteKeeper />
           </Stack.Item>
         </Stack>
       </Stack.Item>
@@ -73,13 +59,12 @@ export const MedicalRecordView = (props) => {
         <Section
           buttons={
             <Button.Confirm
+              content="Delete"
               icon="trash"
               disabled={!station_z}
               onClick={() => act('expunge_record', { crew_ref: crew_ref })}
               tooltip="Expunge record data."
-            >
-              Delete
-            </Button.Confirm>
+            />
           }
           fill
           scrollable
@@ -99,8 +84,8 @@ export const MedicalRecordView = (props) => {
                 onEnter={(value) =>
                   isValid &&
                   act('edit_field', {
+                    crew_ref: crew_ref,
                     field: 'age',
-                    ref: crew_ref,
                     value: value,
                   })
                 }
@@ -122,80 +107,12 @@ export const MedicalRecordView = (props) => {
                 text={gender}
               />
             </LabeledList.Item>
-            <LabeledList.Item label="DNA">
-              <EditableText
-                color="good"
-                field="dna"
-                target_ref={crew_ref}
-                text={dna}
-              />
-            </LabeledList.Item>
             <LabeledList.Item color="bad" label="Blood Type">
               <EditableText
                 field="blood_type"
                 target_ref={crew_ref}
                 text={blood_type}
               />
-            </LabeledList.Item>
-            <LabeledList.Item
-              buttons={physical_statuses.map((button, index) => {
-                const isSelected = button === physical_status;
-                return (
-                  <Button
-                    color={isSelected ? PHYSICALSTATUS2COLOR[button] : 'grey'}
-                    height={'1.75rem'}
-                    icon={PHYSICALSTATUS2ICON[button]}
-                    key={index}
-                    onClick={() =>
-                      act('set_physical_status', {
-                        crew_ref: crew_ref,
-                        physical_status: button,
-                      })
-                    }
-                    textAlign="center"
-                    tooltip={PHYSICALSTATUS2DESC[button] || ''}
-                    tooltipPosition="bottom-start"
-                    width={!isSelected ? '3.0rem' : 3.0}
-                  >
-                    {button[0]}
-                  </Button>
-                );
-              })}
-              label="Physical Status"
-            >
-              <Box color={PHYSICALSTATUS2COLOR[physical_status]}>
-                {physical_status}
-              </Box>
-            </LabeledList.Item>
-            <LabeledList.Item
-              buttons={mental_statuses.map((button, index) => {
-                const isSelected = button === mental_status;
-                return (
-                  <Button
-                    color={isSelected ? MENTALSTATUS2COLOR[button] : 'grey'}
-                    height={'1.75rem'}
-                    icon={MENTALSTATUS2ICON[button]}
-                    key={index}
-                    onClick={() =>
-                      act('set_mental_status', {
-                        crew_ref: crew_ref,
-                        mental_status: button,
-                      })
-                    }
-                    textAlign="center"
-                    tooltip={MENTALSTATUS2DESC[button] || ''}
-                    tooltipPosition="bottom-start"
-                    width={!isSelected ? '3.0rem' : 3.0}
-                  >
-                    {button[0]}
-                  </Button>
-                );
-              })}
-              label="Mental Status"
-            >
-              <Box color={MENTALSTATUS2COLOR[mental_status]}>
-                {mental_status}
-              </Box>
             </LabeledList.Item>
             <LabeledList.Item label="Minor Disabilities">
               {minor_disabilities_array.map((disability, index) => (
@@ -212,15 +129,20 @@ export const MedicalRecordView = (props) => {
                 <Box key={index}>&#8226; {quirk}</Box>
               ))}
             </LabeledList.Item>
-            {/*// PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION */}
-            <LabeledList.Item label="Medical Records">
+            <LabeledList.Item label="Employment Records">
               <EditableText
-                field="medical_records"
+                field="employment_records"
                 target_ref={crew_ref}
-                text={medical_records}
+                text={employment_records}
               />
             </LabeledList.Item>
-            {/*// PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION*/}
+            <LabeledList.Item label="Exploit Records">
+              <EditableText
+                field="exploit_records"
+                target_ref={crew_ref}
+                text={exploit_records}
+              />
+            </LabeledList.Item>
           </LabeledList>
         </Section>
       </Stack.Item>

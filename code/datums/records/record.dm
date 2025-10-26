@@ -108,6 +108,10 @@
 	physical_status = PHYSICAL_ACTIVE,
 	mental_status = MENTAL_STABLE,
 	quirk_notes,
+	medical_records = "No further details.", // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+	security_records = "No further details.", // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+	employment_records = "No further details.", // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
+	exploit_records = "No further details.", // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 )
 	. = ..()
 	src.lock_ref = lock_ref
@@ -118,6 +122,13 @@
 	src.physical_status = physical_status
 	src.mental_status = mental_status
 	src.quirk_notes = quirk_notes
+
+	// PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION
+	src.medical_records = medical_records
+	src.security_records = security_records
+	src.employment_records = employment_records
+	src.exploit_records = exploit_records
+	// PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION
 
 	GLOB.manifest.general += src
 
@@ -298,6 +309,10 @@
 	final_paper_text += "<center>Important Notes:</center><br>"
 	if(security_note)
 		final_paper_text += "- [security_note]<br>"
+	// PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION
+	if(security_records)
+		final_paper_text += "- [security_records]<br>"
+	// PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION
 	if(description)
 		final_paper_text += "- [description]<br>"
 

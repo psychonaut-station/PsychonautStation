@@ -6,6 +6,7 @@ import { exhaustiveCheck } from 'tgui-core/exhaustive';
 import { PageButton } from '../components/PageButton';
 import type { PreferencesMenuData } from '../types';
 import { AntagsPage } from './AntagsPage';
+import { BackgroundPage } from './BackgroundPage'; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 import { JobsPage } from './JobsPage';
 import { LoadoutPage } from './loadout';
 import { MainPage } from './MainPage';
@@ -19,6 +20,7 @@ enum Page {
   Species,
   Quirks,
   Loadout,
+  Background, // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 }
 
 type ProfileProps = {
@@ -83,6 +85,12 @@ export function CharacterPreferenceWindow(props) {
       pageContents = <LoadoutPage />;
       break;
 
+    // PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION
+    case Page.Background:
+      pageContents = <BackgroundPage />;
+      break;
+    // PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION
+
     default:
       exhaustiveCheck(currentPage);
   }
@@ -127,6 +135,18 @@ export function CharacterPreferenceWindow(props) {
               Character
             </PageButton>
           </Stack.Item>
+
+          { /* PSYCHONAUT ADDITION BEGIN - CHARACTER_BACKGROUND_INFORMATION */}
+          <Stack.Item grow>
+            <PageButton
+              currentPage={currentPage}
+              page={Page.Background}
+              setPage={setCurrentPage}
+            >
+              Background
+            </PageButton>
+          </Stack.Item>
+          { /* PSYCHONAUT ADDITION END - CHARACTER_BACKGROUND_INFORMATION */}
 
           <Stack.Item grow>
             <PageButton

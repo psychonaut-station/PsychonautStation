@@ -158,7 +158,7 @@
 		new_frame.state = FRAME_COMPUTER_STATE_WIRED
 	else
 		new_frame.state = FRAME_COMPUTER_STATE_GLASSED
-	new_frame.update_appearance(UPDATE_ICON_STATE)
+	new_frame.update_appearance() // PSYCHONAUT EDIT ADDITION - CONNECTED_COMPUTERS - Original: new_frame.update_appearance(UPDATE_ICON_STATE)
 
 /obj/machinery/computer/ui_interact(mob/user, datum/tgui/ui)
 	SHOULD_CALL_PARENT(TRUE)

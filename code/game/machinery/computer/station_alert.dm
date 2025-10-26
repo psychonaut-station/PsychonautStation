@@ -38,7 +38,10 @@
 	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN))
 		return
-	if(length(alert_control.listener.alarms))
+	// PSYCHONAUT EDIT ADDITION BEGIN - CONNECTED_COMPUTERS - Original:
+	// if(length(alert_control.listener.alarms))
+	if(length(alert_control?.listener.alarms))
+	// PSYCHONAUT EDIT ADDITION END - CONNECTED_COMPUTERS
 		. += "alert:2"
 
 /**

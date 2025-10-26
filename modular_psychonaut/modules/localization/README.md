@@ -11,10 +11,13 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
 - `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
 - `code/__HELPERS/chat_filter.dm`: `/proc/is_ic_filtered()`, `/proc/is_soft_ic_filtered()`, `/proc/is_ooc_filtered()`, `/proc/is_soft_ooc_filtered()`, `/proc/is_ic_filtered_for_pdas()`, `/proc/is_soft_ic_filtered_for_pdas()`,
-- `code/__HELPERS/names.dm`: `/proc/new_station_name()`
+- `code/__HELPERS/names.dm`: `/proc/new_station_name()`, `/proc/generate_code_phrase()`
 - `code/__HELPERS/priority_announce.dm`: `/proc/priority_announce()`, `/proc/print_command_report`, `/proc/minor_announce`, `/proc/level_announce`, `/proc/generate_unique_announcement_header`
+- `code/__HELPERS/text.dm`: `/proc/reject_bad_name()`, `/proc/capitalize()`
 - `code/datums/mutations/body.dm`: `/datum/mutation/human/tourettes/on_life()`
 - `code/datums/quirks/neutral_quirks/gamer.dm`: `/datum/quirk/gamer/proc/gamer_moment()`
+- `code/datums/voice_of_god_command.dm`: `/proc/voice_of_god()`
+- `code/datums/status_effects/debuffs/speech_debuffs.dm`: `/datum/status_effect/speech/stutter/derpspeech/handle_message()`
 - `interface/interface.dm`: [`/client`: `verb/wiki()`, `verb/rules()`, `verb/github()`, `verb/reportissue()`]
 - `code/controllers/configuration/entries/game_options.dm`: `/datum/config_entry/string/alert_green`, `/datum/config_entry/string/alert_blue_upto`, `/datum/config_entry/string/alert_blue_downto`, `/datum/config_entry/string/alert_red_upto`, `/datum/config_entry/string/alert_red_downto`, `/datum/config_entry/string/alert_delta`
 - `code/controllers/subsystem/discord.dm`: `/datum/controller/subsystem/discord/Initialize()`
@@ -32,10 +35,12 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/datums/mutations/speech.dm`: `/datum/mutation/chav/New()`
 - `code/game/gamemodes/events.dm`: `/proc/power_failure()`, `/proc/power_restore()`, `/proc/power_restore_quick()`
 - `code/game/machinery/slotmachine.dm`: `/obj/machinery/computer/slot_machine/proc/give_prizes()`
+- ``code/game/machinery/status_display.dm`: `/obj/machinery/status_display/proc/set_messages()``
 - `code/game/machinery/computer/communications.dm`: `/obj/machinery/computer/communications/ui_act()`, `/obj/machinery/computer/communications/proc/send_cross_comms_message()`, `/obj/machinery/computer/communications/proc/hack_console()`
 - `code/game/objects/effects/anomalies/anomalies_bluespace.dm`: `/obj/effect/anomaly/bluespace/detonate()`
 - `code/game/objects/effects/anomalies/anomalies_dimensional.dm`: `/obj/effect/anomaly/dimensional/proc/relocate()`
 - `code/game/objects/effects/anomalies/anomalies_ectoplasm.dm`: `/obj/effect/anomaly/ectoplasm/detonate()`
+- `code/game/objects/effects/wanted_poster.dm`: `/obj/structure/sign/poster/wanted/proc/print_across_top()`
 - `code/game/objects/items/crab17.dm`: `/obj/structure/checkoutmachine/Destroy()`, `/obj/effect/dumpeet_target/proc/startLaunch()`
 - `code/game/objects/items/dna_probe.dm`: `/obj/item/dna_probe/carp_scanner/attack_self()`
 - `code/modules/admin/verbs/adminshuttle.dm`: `disable_shuttle`, `enable_shuttle`
@@ -43,6 +48,10 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
 - `code/modules/holiday/holidays.dm`: `/datum/holiday/anz`, `/datum/holiday/atrakor_festival`, `/datum/holiday/friendship/greet()`, `/datum/holiday/indigenous`, `/datum/holiday/un_day`, `/datum/holiday/friday_thirteenth`, `/datum/holiday/islamic/ramadan/end`, `/datum/holiday/hebrew/passover`
+- `code/modules/mining/lavaland/mining_loot/megafauna/colossus.dm`: `/obj/item/organ/vocal_cords/colossus/speak_with()`
+- `code/modules/mob/living/living_say.dm`: `/mob/living/say()`, `/mob/living/proc/treat_message()`
+- `code/modules/spells/spell_types/self/voice_of_god.dm`: `/datum/action/cooldown/spell/voice_of_god/cast()`
+- `code/modules/wiremod/components/string/textcase.dm`: `/obj/item/circuit_component/textcase/input_received()`
 - `config/game_options.txt`: `ALERT_GREEN`, `ALERT_BLUE_UPTO`, `ALERT_BLUE_DOWNTO`, `ALERT_RED_UPTO`, `ALERT_RED_DOWNTO`, `ALERT_DELTA`
 
 - `tgui/packages/tgui/interfaces/Interview.tsx`: `Interview`, `RenderedStatus`, `QuestionArea`

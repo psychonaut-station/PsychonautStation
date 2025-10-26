@@ -185,7 +185,7 @@
 			// a  .. z
 			if(97 to 122) //Lowercase Letters
 				if(last_char_group == NO_CHARS_DETECTED || last_char_group == SPACES_DETECTED || cap_after_symbols && last_char_group == SYMBOLS_DETECTED) //start of a word
-					char = uppertext(char)
+					char = locale_uppertext(char) // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: char = uppertext(char)
 				number_of_alphanumeric++
 				last_char_group = LETTERS_DETECTED
 
@@ -364,7 +364,7 @@
 	. = t
 	if(t)
 		. = t[1]
-		return uppertext(.) + copytext(t, 1 + length(.))
+		return locale_uppertext(.) + copytext(t, 1 + length(.)) // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: return uppertext(.) + copytext(t, 1 + length(.))
 
 ///Returns a string with the first letter of each word capitialized
 /proc/full_capitalize(input)

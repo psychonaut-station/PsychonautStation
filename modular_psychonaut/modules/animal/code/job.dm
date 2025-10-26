@@ -13,7 +13,7 @@
 
 	department_for_prefs = /datum/job_department/assistant
 
-	job_flags = JOB_NEW_PLAYER_JOINABLE
+	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_ANTAG_BLACKLISTED
 	config_tag = "ANIMAL"
 
 	alt_titles = list(

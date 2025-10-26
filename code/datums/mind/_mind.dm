@@ -121,7 +121,11 @@
 	.["key"] = key
 	.["name"] = name
 	.["ghostname"] = ghostname
-	.["memories"] = memories
+	// PSYCHONAUT EDIT ADDITION BEGIN - ANIMAL - Original:
+	// .["memories"] = memories
+	.["memories"] = memories.len > 0 ? memories : null
+	// PSYCHONAUT EDIT ADDITION END - ANIMAL
+
 	.["antag_datums"] = antag_datums
 	.["holy_role"] = holy_role
 	.["special_role"] = jointext(get_special_roles(), " | ")

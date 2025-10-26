@@ -74,8 +74,12 @@
 
 	// This lets screens ignore lighting and be visible even in the darkest room
 	if(icon_screen)
-		. += mutable_appearance(icon, icon_screen)
-		. += emissive_appearance(icon, icon_screen, src)
+		// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+		// . += mutable_appearance(icon, icon_screen)
+		// . += emissive_appearance(icon, icon_screen, src)
+		. += mutable_appearance(icon_file_screen || icon, icon_screen)
+		. += emissive_appearance(icon_file_screen || icon, icon_screen, src)
+		// PSYCHONAUT EDIT ADDITION END
 
 /obj/machinery/computer/power_change()
 	. = ..()

@@ -62,6 +62,10 @@
 			countdown.start()
 
 /obj/effect/anomaly/process(seconds_per_tick)
+	// PSYCHONAUT ADDITION BEGIN
+	if(!(datum_flags & DF_ISPROCESSING))
+		return
+	// PSYCHONAUT ADDITION END
 	anomalyEffect(seconds_per_tick)
 	if(death_time < world.time && !immortal)
 		if(loc)
@@ -82,6 +86,10 @@
 
 /// Move in a direction
 /obj/effect/anomaly/proc/move_anomaly()
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	step(src, pick(GLOB.alldirs))
 
 /obj/effect/anomaly/proc/detonate()

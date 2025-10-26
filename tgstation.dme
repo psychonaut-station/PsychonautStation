@@ -6922,7 +6922,7 @@
 #include "modular_psychonaut\modules\cargo_borg\code\designs.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\movespeed_modifier.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_defines.dm"
-#include "modular_psychonaut\modules\cargo_borg\code\robot_energy_Storage.dm"
+#include "modular_psychonaut\modules\cargo_borg\code\robot_energy_storage.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_items.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_model.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\robot_upgrades.dm"

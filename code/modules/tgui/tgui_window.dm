@@ -76,6 +76,7 @@
 	src.initial_inline_js = inline_js
 	src.initial_inline_css = inline_css
 	status = TGUI_WINDOW_LOADING
+	communication_locked = FALSE // PSYCHONAUT ADDITION - (Tgui Optimization)
 	fatally_errored = FALSE
 	// Build window options
 	var/options = "file=[id].html;can_minimize=0;auto_format=0;"
@@ -425,19 +426,3 @@
 
 /datum/tgui_window/proc/remove_oversized_payload(payload_id)
 	oversized_payloads -= payload_id
-
-// PSYCHONAUT ADDITION BEGIN - (Tgui Optimization)
-/**
- * public
- *
- * Blocks all communication with the server until the window is closed or reloaded by browse()
- */
-/datum/tgui_window/proc/lock_communication()
-	if(!client || isnull(id))
-		return
-	communication_locked = TRUE
-	client << output("", is_browser \
-		? "[id]:lock_communication" \
-		: "[id].browser:lock_communication")
-
-// PSYCHONAUT ADDITION END - (Tgui Optimization)

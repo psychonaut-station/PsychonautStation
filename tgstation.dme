@@ -6995,5 +6995,6 @@
 #include "modular_psychonaut\modules\tcg\code\collector_quirk.dm"
 #include "modular_psychonaut\modules\tcg\code\tcg.dm"
 #include "modular_psychonaut\modules\turkish_moustache\code\sprite_accessories.dm"
+#include "modular_psychonaut\modules\vada\code\vada.dm"
 #include "modular_psychonaut\modules\worker\code\job.dm"
 // END_INCLUDE

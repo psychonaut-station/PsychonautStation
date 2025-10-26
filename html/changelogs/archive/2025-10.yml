@@ -641,8 +641,6 @@
   tttruancy:
   - balance: Plastic flaps now resist heat better
 2025-10-21:
-  Rengan:
-  - rscadd: Storyteller sistemi eklendi.
   Aliceee2ch:
   - spellcheck: Minor grammar fix for extinguishers
   Melbert:
@@ -650,6 +648,8 @@
   - bugfix: Clowns have regained their innocence towards death
   - rscadd: Cursed / Unlucky players have an increased chance of drawing bad tarot
       cards
+  Rengan:
+  - rscadd: Storyteller sistemi eklendi.
   ell_good:
   - image: Resprites the voidwalker hud elements
   grungussuss:
@@ -793,3 +793,10 @@
   - code_imp: cleaned up wall mount code
   TheNobodyofimportance:
   - balance: Vomit drinking now checks for fly mouth instead of fly species
+2025-10-26:
+  MGOOOOOO:
+  - bugfix: Sterilizine will now correctly apply its 20% surgery speed bonus.
+  SmArtKar:
+  - bugfix: Fixed PKC mark effect being offset to the side when applied to some mobs.
+  grungussuss:
+  - sound: added handling sounds for various devices

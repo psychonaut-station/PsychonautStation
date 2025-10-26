@@ -6976,6 +6976,8 @@
 #include "modular_psychonaut\modules\modular_rooms\code\engine.dm"
 #include "modular_psychonaut\modules\noose\code\noose.dm"
 #include "modular_psychonaut\modules\noose\code\recipe.dm"
+#include "modular_psychonaut\modules\nyx_temple\code\area.dm"
+#include "modular_psychonaut\modules\nyx_temple\code\template.dm"
 #include "modular_psychonaut\modules\patreon\code\client_procs.dm"
 #include "modular_psychonaut\modules\patreon\code\loadout.dm"
 #include "modular_psychonaut\modules\pixel_shifting\code\keybinding.dm"

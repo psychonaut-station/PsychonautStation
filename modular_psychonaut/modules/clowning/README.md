@@ -4,7 +4,7 @@ MODULE ID: CLOWNING
 
 ### Açıklama
 
-Clownun gülüş sesini değiştirir.
+Clownua extra özellikler ekler, gülüş sesini değiştirir ve traitor uplinkine taeclowndo ekler.
 
 ### TG Değişiklikleri
 

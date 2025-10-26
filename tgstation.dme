@@ -6893,6 +6893,7 @@
 #include "modular_psychonaut\master_files\code\modules\surgery\organs\internal\heart\_heart.dm"
 #include "modular_psychonaut\master_files\code\modules\surgery\organs\internal\stomach\stomach_ipc.dm"
 #include "modular_psychonaut\master_files\code\modules\surgery\organs\internal\tongue\_tongue.dm"
+#include "modular_psychonaut\master_files\code\modules\tgui\tgui_window.dm"
 #include "modular_psychonaut\modules\account_link\code\client_defines.dm"
 #include "modular_psychonaut\modules\account_link\code\client_procs.dm"
 #include "modular_psychonaut\modules\admin\code\verbs\admin.dm"

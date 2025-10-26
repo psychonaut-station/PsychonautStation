@@ -6817,6 +6817,7 @@
 #include "modular_psychonaut\master_files\code\game\objects\effects\landmarks.dm"
 #include "modular_psychonaut\master_files\code\game\objects\effects\warning.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\anomaly_kinesis.dm"
+#include "modular_psychonaut\master_files\code\game\objects\items\cards_ids.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\devices\anomaly_catcher.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\stacks\wrap.dm"
 #include "modular_psychonaut\master_files\code\game\objects\items\stacks\sheets\sheet_types.dm"

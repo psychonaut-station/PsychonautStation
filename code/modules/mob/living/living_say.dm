@@ -196,7 +196,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	// Make sure the arglist is passed exactly - don't pass a copy of it. Say signal handlers will modify some of the parameters.
 	var/sigreturn = SEND_SIGNAL(src, COMSIG_MOB_SAY, args)
 	if(sigreturn & COMPONENT_UPPERCASE_SPEECH)
-		message = locale_uppertext(message) // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: message = uppertext(message)
+		message = locale_uppertext(message) // PSYCHONAUT EDIT ADDITION - LANGUAGE - Original: message = uppertext(message)
 
 	var/list/message_data = treat_message(message) // unfortunately we still need this
 	message = message_data["message"]
@@ -501,10 +501,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		message = capitalize(message)
 		tts_message = capitalize(tts_message)
 
-	// PSYCHONAUT ADDITION BEGIN - LOCALIZATION
+	// PSYCHONAUT ADDITION BEGIN - LANGUAGE
 	message = replacetext(message, "\uFFFD", null) // kekeleme falan olunca ı harfi bozuluyor � ortaya çıkıyor
 	tts_message = replacetext(tts_message, "\uFFFD", null) // bunu geçici olarak önlemek için basit bir yol
-	// PSYCHONAUT ADDITION END - LOCALIZATION
+	// PSYCHONAUT ADDITION END - LANGUAGE
 
 	///caps the length of individual letters to 3: ex: heeeeeeyy -> heeeyy
 	/// prevents TTS from choking on unrealistic text while keeping emphasis

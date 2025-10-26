@@ -62,10 +62,10 @@
 	return //voice of god speaks for us
 
 /obj/item/organ/vocal_cords/colossus/speak_with(message)
-	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// PSYCHONAUT EDIT ADDITION BEGIN - LANGUAGE - Original:
 	// var/cooldown = voice_of_god(uppertext(message), owner, spans, base_multiplier)
 	var/cooldown = voice_of_god(locale_uppertext(message), owner, spans, base_multiplier)
-	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
+	// PSYCHONAUT EDIT ADDITION END - LANGUAGE
 	next_command = world.time + (cooldown * cooldown_mod)
 
 // Anomalous crystal

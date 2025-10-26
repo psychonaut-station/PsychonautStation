@@ -1,3 +1,5 @@
+#define LUXURY_MESSAGE_COOLDOWN 100
+
 /obj/machinery/scanner_gate/cami_shuttle
 	name = "İman kontrol kapısı"
 	desc = "Temizlik imandan gelir."
@@ -43,3 +45,5 @@
 
 /obj/machinery/scanner_gate/cami_shuttle/emag_act(mob/user)
 	return
+
+#undef LUXURY_MESSAGE_COOLDOWN

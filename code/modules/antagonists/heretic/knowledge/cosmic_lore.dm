@@ -232,7 +232,10 @@
 		WITNESS MY ASCENSION!"
 
 	ascension_achievement = /datum/award/achievement/misc/cosmic_ascension
-	announcement_text = "%SPOOKY% A Star Gazer has arrived into the station, %NAME% has ascended! This station is the domain of the Cosmos! %SPOOKY%"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// announcement_text = "%SPOOKY% A Star Gazer has arrived into the station, %NAME% has ascended! This station is the domain of the Cosmos! %SPOOKY%"
+	announcement_text = "%SPOOKY% İstasyonada bir Star Gazer doğdu, %NAME% yükseldi! Bu istasyon artık Cosmos'a aittir! %SPOOKY%"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	announcement_sound = 'sound/music/antag/heretic/ascend_cosmic.ogg'
 	/// A static list of command we can use with our mob.
 	var/static/list/star_gazer_commands = list(

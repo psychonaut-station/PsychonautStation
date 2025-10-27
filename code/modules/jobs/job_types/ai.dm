@@ -78,7 +78,10 @@
 /datum/job/ai/announce_job(mob/living/joining_mob)
 	. = ..()
 	if(SSticker.HasRoundStarted())
-		minor_announce("[joining_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(joining_mob)].")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// minor_announce("[joining_mob] has been downloaded to an empty bluespace-networked AI core at [AREACOORD(joining_mob)].")
+		minor_announce("[joining_mob] [AREACOORD(joining_mob)] bölgesindeki boş bir bluespace-bağlantılı AI core'a indirildi.")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 
 /datum/job/ai/config_check()

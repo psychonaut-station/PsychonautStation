@@ -192,7 +192,11 @@
 		as the world is destroyed before our eyes. The void will return all to nothing, WITNESS MY ASCENSION!"
 
 	ascension_achievement = /datum/award/achievement/misc/void_ascension
-	announcement_text = "%SPOOKY% The nobleman of void %NAME% has arrived, stepping along the Waltz that ends worlds! %SPOOKY%"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// announcement_text = "%SPOOKY% The nobleman of void %NAME% has arrived, stepping along the Waltz that ends worlds! %SPOOKY%"
+	announcement_text = "%SPOOKY% Hiçliğin efendisi %NAME% yükseldi, dünyaları sona erdiren Vals adımlarını atıyor! %SPOOKY%"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
+
 	announcement_sound = 'sound/music/antag/heretic/ascend_void.ogg'
 	///soundloop for the void theme
 	var/datum/looping_sound/void_loop/sound_loop

@@ -78,6 +78,8 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 	war_was_declared(memo = war_declaration)
 
 /obj/item/nuclear_challenge/proc/war_was_declared(mob/living/user, memo)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = memo,
 		title = "Declaration of War",
@@ -86,6 +88,16 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		sender_override = "Nuclear Operative Outpost",
 		color_override = "red",
 	)
+	*/
+	priority_announce(
+		text = memo,
+		title = "Savaş İlanı",
+		sound = announcement_sound,
+		has_important_message = TRUE,
+		sender_override = "Nükleer Operasyon Merkezi",
+		color_override = "red",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	if(user)
 		to_chat(user, "You've attracted the attention of powerful forces within the syndicate. \
 			A bonus bundle of telecrystals has been granted to your team. Great things await you if you complete the mission.")
@@ -191,6 +203,8 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		return
 #endif
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = memo,
 		title = "Declaration of War",
@@ -199,6 +213,16 @@ GLOBAL_LIST_EMPTY(jam_on_wardec)
 		sender_override = "Nuclear Operative Outpost",
 		color_override = "red",
 	)
+	*/
+	priority_announce(
+		text = memo,
+		title = "Savaş İlanı",
+		sound = announcement_sound,
+		has_important_message = TRUE,
+		sender_override = "Nükleer Operasyon Merkezi",
+		color_override = "red",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /obj/item/nuclear_challenge/literally_just_does_the_message/distribute_tc()
 	return

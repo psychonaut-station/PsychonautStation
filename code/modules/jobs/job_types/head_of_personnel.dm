@@ -48,7 +48,10 @@
 
 
 /datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)
-	return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
+	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/job/head_of_personnel/generate_traitor_objective()
 	var/datum/objective/assassinate/captain_replacement/promotion = new()

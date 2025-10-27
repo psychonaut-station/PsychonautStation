@@ -24,6 +24,8 @@
 	var/datum/map_template/shuttle/new_shuttle
 
 /datum/round_event/shuttle_catastrophe/announce(fake)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/cause = pick("was attacked by [syndicate_name()] Operatives", "mysteriously teleported away", "had its refuelling crew mutiny",
 		"was found with its engines stolen", "\[REDACTED\]", "flew into the sunset, and melted", "learned something from a very wise cow, and left on its own",
 		"had cloning devices on it", "had its shuttle inspector put the shuttle in reverse instead of park, causing the shuttle to crash into the hangar")
@@ -36,6 +38,20 @@
 	else
 		message += "Your replacement shuttle will be the [new_shuttle.name] until further notice."
 	priority_announce(message, "[command_name()] Spacecraft Engineering")
+	*/
+	var/cause = pick("[syndicate_name()] çalışanları tarafından saldırıya uğradı", "gizemli bir şekilde ışınlanıp gitti",
+		"motorları çalınmış halde bulundu.", "gün batımına doğru uçtu ve eridi", "çok akıllı bir inekten bir şeyler öğrenmiş ve kendi başına basıp gitmiş.",
+		"pilotun mekiği park etmek yerine geri vitese takması ile birlikte hangara çarpmış")
+	var/message = "Acil durum mekiğiniz [cause]. "
+
+	if(SSshuttle.shuttle_insurance)
+		message += "Neyse ki, mekik sigortanız onarım masraflarını karşıladı!"
+		if(SSeconomy.get_dep_account(ACCOUNT_CAR))
+			message += " Akıllı harcama yaptığınız için [command_name()] size bir bonus verdi."
+	else
+		message += "Bir sonraki duyuruya kadar yedek mekiğiniz [new_shuttle.name] olacaktır."
+	priority_announce(message, "[command_name()] Uzay Mekiği Mühendisliği")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/shuttle_catastrophe/setup()
 	if(SSshuttle.shuttle_insurance || !isnull(new_shuttle)) //If an admin has overridden it don't re-roll it

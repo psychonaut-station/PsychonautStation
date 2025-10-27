@@ -606,11 +606,20 @@ GLOBAL_VAR(station_nuke_source)
 			drop_level = FALSE
 
 		if(DETONATION_HIT_SYNDIE_BASE)
+			// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+			/*
 			priority_announce(
 				"Long Range Scanners indicate that the nuclear device has detonated on a previously unknown base, we assume \
 				the base to be of Syndicate Origin. Good work crew.",
 				"Nuclear Operations Command",
 			)
+			*/
+			priority_announce(
+				"Uzun Menzilli Tarayıcılar, nükleer cihazın daha önce bilinmeyen bir üste patladığını ve \
+				üssün Sendika kökenli olduğunu gösteriyor. İyi işti ekip.",
+				"Nükleer Operasyon Merkezi",
+			)
+			// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 			var/datum/turf_reservation/syndicate_base = SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 			ASYNC
@@ -620,11 +629,20 @@ GLOBAL_VAR(station_nuke_source)
 					CHECK_TICK
 
 		else
+			// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+			/*
 			priority_announce(
 				"Long Range Scanners indicate that the nuclear device has detonated; however seismic activity on the station \
 				is minimal. We anticipate that the device has not detonated on the station itself.",
 				"Nuclear Operations Command",
 			)
+			*/
+			priority_announce(
+				"Uzun Menzilli Tarayıcılar nükleer aygıtın patladığını gösteriyor ancak istasyondaki sismik hareketlilik \
+				minimum düzeyde. Cihazın istasyonun kendisinde patlamadığını tahmin ediyoruz.",
+				"Nükleer Operasyon Merkezi",
+			)
+			// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	if(drop_level)
 		SSsecurity_level.set_level(SEC_LEVEL_RED)

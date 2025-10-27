@@ -72,7 +72,10 @@
 
 /// Alerts the crew about the siphon
 /obj/machinery/shuttle_scrambler/proc/send_notification()
-	priority_announce("Data theft signal detected; source registered on local GPS units.")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Data theft signal detected; source registered on local GPS units.")
+	priority_announce("Veri hırsızlığı sinyali tespit edildi; sinyalin kaynağı yerel GPS cihazlarına kaydedildi.")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /// Switches off the siphon
 /obj/machinery/shuttle_scrambler/proc/toggle_off(mob/user)

@@ -45,13 +45,19 @@
 		situation = new fake_situation
 	else
 		SSshuttle.shuttle_loan = src
-	priority_announce("Cargo: [situation.announcement_text]", situation.sender)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Cargo: [situation.announcement_text]", situation.sender)
+	priority_announce("Kargo: [situation.announcement_text]", situation.sender)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	if(fake)
 		qdel(situation)
 
 
 /datum/round_event/shuttle_loan/proc/loan_shuttle()
-	priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by [command_name()].")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce(situation.thanks_msg, "Cargo shuttle commandeered by [command_name()].")
+	priority_announce(situation.thanks_msg, "Kargo mekiğine [command_name()] kullanılmak üzere el konuldu.")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	dispatched = TRUE
 	var/datum/bank_account/dep_account = SSeconomy.get_dep_account(ACCOUNT_CAR)

@@ -38,20 +38,26 @@
 	var/start_side_text = "unknown"
 	switch(start_side)
 		if(NORTH)
-			start_side_text = "fore"
+			start_side_text = "ön" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: start_side_text = "fore"
 		if(SOUTH)
-			start_side_text = "aft"
+			start_side_text = "arka" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: start_side_text = "aft"
 		if(EAST)
-			start_side_text = "starboard"
+			start_side_text = "sancak" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: start_side_text = "starboard"
 		if(WEST)
-			start_side_text = "port"
+			start_side_text = "iskele" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: start_side_text = "port"
 		else
 			stack_trace("Sandstorm event given [start_side] as unrecognized direction. Cancelling event...")
 			kill()
 			return
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce("A large wave of space dust is approaching from the [start_side_text] side of the station. \
 		Impact is expected in the next two minutes. All employees are encouraged to assist in repairs and damage mitigation if possible.", "Collision Emergency Alert")
+	*/
+	priority_announce("Büyük bir uzay tozu dalgası istasyonun [start_side_text] tarafından yaklaşıyor. \
+		Etkinin önümüzdeki iki dakika içinde gerçekleşmesi beklenmektedir. Tüm çalışanlar mümkünse onarım ve hasar azaltma çalışmalarına yardımcı olmaya teşvik edilmelidir.", "Çarpışma Acil Durum Uyarısı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/sandstorm/tick()
 	spawn_meteors(15, GLOB.meteors_sandstorm, start_side)

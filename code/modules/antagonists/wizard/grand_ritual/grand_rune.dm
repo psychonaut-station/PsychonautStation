@@ -85,10 +85,16 @@
 /obj/effect/grand_rune/proc/announce_rune()
 	var/area/created_area = get_area(src)
 	if (potency >= GRAND_RITUAL_IMMINENT_FINALE_POTENCY)
-		priority_announce("Major anomalous fluctuations to local spacetime detected in: [created_area.name].", "Anomaly Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce("Major anomalous fluctuations to local spacetime detected in: [created_area.name].", "Anomaly Alert")
+		priority_announce("[created_area.name] bölgesinde alansal uzay-zamanda büyük anormal dalgalanmalar tespit edildi.", "Anomali Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		return
 	if (potency >= GRAND_RITUAL_RUNES_WARNING_POTENCY)
-		priority_announce("Unusual anomalous energy fluctuations detected in: [created_area.name].", "Anomaly Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce("Unusual anomalous energy fluctuations detected in: [created_area.name].", "Anomaly Alert")
+		priority_announce("[created_area.name] bölgesinde olağandışı anormal enerji dalgalanmaları tespit edildi", "Anomali Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		return
 
 /obj/effect/grand_rune/examine(mob/user)
@@ -293,6 +299,8 @@
 		return ..()
 	var/area/created_area = get_area(src)
 	var/announce = null
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	switch (dire_warnings_given)
 		if (0)
 			announce = "Large anomalous energy spike detected in: [created_area.name]."
@@ -302,6 +310,17 @@
 			announce = "Imminent local reality failure in: [created_area.name]. All crew please prepare to evacuate."
 	if (announce)
 		priority_announce(announce, "Anomaly Alert")
+	*/
+	switch (dire_warnings_given)
+		if (0)
+			announce = "[created_area.name] bölgesinde büyük bir anormal enerji artışı tespit edildi."
+		if (1)
+			announce = "[created_area.name] bölgesinde otomatik sebep sonuç ilişkisi dengelemesi başarısız oldu, acil müdahale öneriyoruz."
+		if (2)
+			announce = "[created_area.name] bölgesinde yerel gerçeklik sorunu yaşanıyor Tüm mürettebat lütfen tahliyeye hazırlansın."
+	if (announce)
+		priority_announce(announce, "Anomali Uyarısı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	dire_warnings_given++
 	return ..()
 

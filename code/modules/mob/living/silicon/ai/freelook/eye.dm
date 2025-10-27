@@ -118,7 +118,10 @@
 /mob/eye/camera/ai/examine(mob/user) //Displays a silicon's laws to ghosts
 	. = ..()
 	if(istype(ai) && ai.laws && isobserver(user))
-		. += "<b>[ai] has the following laws:</b>"
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// . += "<b>[ai] has the following laws:</b>"
+		. += "<b>[ai] aşağıdaki yasalara sahiptir:</b>"
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		for(var/law in ai.laws.get_law_list(include_zeroth = TRUE))
 			. += law
 

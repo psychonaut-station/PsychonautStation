@@ -10,6 +10,8 @@
 	var/maximum_mice = 15
 
 /datum/round_event/mice_migration/announce(fake)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/cause = pick("space-winter", "budget-cuts", "Ragnarok",
 		"space being cold", "\[REDACTED\]", "climate change",
 		"bad luck")
@@ -24,6 +26,17 @@
 	priority_announce("Due to [cause], [plural] [name] have [movement] \
 		into the [location].", "Migration Alert",
 		'sound/mobs/non-humanoids/mouse/mousesqueek.ogg')
+	*/
+	var/cause = pick("Uzay soğuğu", "Bütçe kesintileri", "Kıyamet", "İklim değişikliği")
+	var/plural = pick("birkaç", "bir sürü", "bir düzine", "yaklaşık [maximum_mice]")
+	var/name = pick("kemirgen", "fare", "enerji̇ tüketen parazi̇t")
+	var/movement = pick("göç ediyor.", "ilerliyor.", "izdiham ediyor.")
+	var/location = pick("maintenance tünellerine", "maintenance bölgesine", "tüm o lezzetli kabloların olduğu yere")
+
+	priority_announce("[cause] dolayısıyla, [plural] [name] [location] doğru \
+		[movement]", "Kemirgen uyarısı",
+		'sound/mobs/non-humanoids/mouse/mousesqueek.ogg')
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/mice_migration/start()
 	SSminor_mapping.trigger_migration(rand(minimum_mice, maximum_mice))

@@ -1,5 +1,8 @@
 #define DEFAULT_WHO_CELLS_PER_ROW 4
-#define NO_ADMINS_ONLINE_MESSAGE "Adminhelps are also sent through TGS to services like IRC and Discord. If no admins are available in game, sending an adminhelp might still be noticed and responded to."
+// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+// #define NO_ADMINS_ONLINE_MESSAGE "Adminhelps are also sent through TGS to services like IRC and Discord. If no admins are available in game, sending an adminhelp might still be noticed and responded to."
+#define NO_ADMINS_ONLINE_MESSAGE "Ticketlar TGS aracılığıyla Discord'a da gönderilir. Oyunda hiçbir yetkili yoksa, bir ticket gönderildiğinde yine de fark edilebilir ve yanıt verilebilir."
+// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /client/verb/who()
 	set name = "Who"
@@ -75,7 +78,10 @@
 
 	var/list/lines = list()
 	var/payload_string = generate_adminwho_string()
-	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "No Admins Currently Online" : "Current Admins"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "No Admins Currently Online" : "Current Admins"
+	var/header = (payload_string == NO_ADMINS_ONLINE_MESSAGE) ? "Şu Anda Çevrim İçi Bir Yetkili Yok" : "Çevrim İçi Yetkililer"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	lines += span_bold(header)
 	lines += payload_string

@@ -11,6 +11,8 @@
 	announce_when = 1
 
 /datum/round_event/communications_blackout/announce(fake)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/alert = pick( "Ionospheric anomalies detected. Temporary telecommunication failure imminent. Please contact you*%fj00)`5vc-BZZT",
 		"Ionospheric anomalies detected. Temporary telecommunication failu*3mga;b4;'1v¬-BZZZT",
 		"Ionospheric anomalies detected. Temporary telec#MCi46:5.;@63-BZZZZT",
@@ -18,13 +20,25 @@
 		"Ionospheri:%£ MCayj^j<.3-BZZZZZZT",
 		"#4nd%;f4y6,>£%-BZZZZZZZT",
 	)
+	*/
+	var/alert = pick( "İyonosferik anomaliler tespit edildi. Geçici telekomünikasyon arızası yaklaşıyor. Lütfen şefinizle irtib*%fj00)`5vc-BZZT",
+		"İyonosferik anomaliler tespit edildi. Geçici telekomünikasyon arıza*3mga;b4;'1v¬-BZZZT",
+		"İyonosferik anomaliler tespit edildi. Geçici telek#MCi46:5.;@63-BZZZZT",
+		"İyonosferik anomaliler tesp'fZ\\kg5_0-BZZZZZT",
+		"İyonosferi:%£ MCayj^j<.3-BZZZZZZT",
+		"#4nd%;f4y6,>£%-BZZZZZZZT",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	for(var/mob/living/silicon/ai/A in GLOB.ai_list) //AIs are always aware of communication blackouts.
 		to_chat(A, "<br>[span_warning("<b>[alert]</b>")]<br>")
 		to_chat(A, span_notice("Remember, you can transmit over holopads by right clicking on them, and can speak through them with \".[/datum/saymode/holopad::key]\"."))
 
 	if(prob(30) || fake) //most of the time, we don't want an announcement, so as to allow AIs to fake blackouts.
-		priority_announce(alert, "Anomaly Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce(alert, "Anomaly Alert")
+		priority_announce(alert, "Anomali Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 
 /datum/round_event/communications_blackout/start()

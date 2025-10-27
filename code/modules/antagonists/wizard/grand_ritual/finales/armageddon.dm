@@ -14,6 +14,8 @@
 	dire_warning = TRUE
 	glow_colour = "#be000048"
 	/// Things to yell before you die
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/static/list/possible_last_words = list(
 		"Flames and ruin!",
 		"Dooooooooom!!",
@@ -29,6 +31,22 @@
 		"Ruination is come!",
 		"All of creation, bend to my will!",
 	)
+	*/
+	var/static/list/possible_last_words = list(
+		"Alevler ve yıkım!",
+		"Kııııyyyyyyaaaammeeeettttt!!",
+		"HAHAHAHAHAHA!! AHAHAHAHAHAHAHAHAA!!",
+		"Hee hee hee!! Hoo hoo hoo!! Ha ha haaa!!",
+		"Ohohohohohoho!!",
+		"Korkudan sinmiş, cılız faniler!",
+		"Görkemim karşısında titre!",
+		"İşe yaramaz!",
+		"Eğer tanrılar senin yaşamanı isteseydi, beni yaratmazlardı!",
+		"Tanrı benim yarattığım şeyden korktuğu için cennette kalıyor!",
+		"Yıkım geliyor!",
+		"Tüm kainat, irademe boyun eğ!",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/grand_finale/armageddon/trigger(mob/living/carbon/human/invoker)
 	priority_announce(pick(possible_last_words), null, 'sound/effects/magic/voidblink.ogg', sender_override = "[invoker.real_name]", color_override = "purple")

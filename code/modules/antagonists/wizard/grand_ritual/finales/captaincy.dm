@@ -33,7 +33,10 @@
 
 	dress_candidate(invoker)
 	GLOB.manifest.modify(invoker.real_name, JOB_CAPTAIN, JOB_CAPTAIN)
-	minor_announce("Captain [invoker.real_name] on deck!")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// minor_announce("Captain [invoker.real_name] on deck!")
+	minor_announce("Kaptan [invoker.real_name] güvertede!")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	// Enlist some crew to try and restore the natural order
 	for (var/mob/living/carbon/human/former_captain as anything in former_captains)

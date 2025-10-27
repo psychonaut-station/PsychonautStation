@@ -10,6 +10,8 @@
 	announce_when = 1
 
 /datum/round_event/processor_overload/announce(fake)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/alert = pick("Exospheric bubble inbound. Processor overload is likely. Please contact you*%xp25)`6cq-BZZT",
 		"Exospheric bubble inbound. Processor overload is likel*1eta;c5;'1v¬-BZZZT",
 		"Exospheric bubble inbound. Processor ov#MCi46:5.;@63-BZZZZT",
@@ -17,6 +19,15 @@
 		"Exospheri:%£ QCbyj^j</.3-BZZZZZZT",
 		"!!hy%;f3l7e,<$^-BZZZZZZZT",
 	)
+	*/
+	var/alert = pick("Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yüklenmesi muhtemel. Lütfen şefinizle irtib*%xp25)`6cq-BZZT",
+		"Atmosferik hava kabarcığı geliyor. İşlemcinin aşırı yükle*1eta;c5;'1v¬-BZZZT",
+		"Atmosferik hava kabarcığı geliyor. İşlemcinin a#MCi46:5.;@63-BZZZZT",
+		"Atmosferik hava kabar'Fz\\k55_@-BZZZZZT",
+		"Atmosferi:%£ QCbyj^j</.3-BZZZZZZT",
+		"!!hy%;f3l7e,<$^-BZZZZZZZT",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	//AIs are always aware of processor overload
 	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
@@ -26,7 +37,10 @@
 	// whether it's, say, a tesla zapping tcomms, or some selective
 	// modification of the tcomms bus
 	if(prob(80) || fake)
-		priority_announce(alert, "Anomaly Alert")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// priority_announce(alert, "Anomaly Alert")
+		priority_announce(alert, "Anomali Uyarısı")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/processor_overload/start()
 	for(var/obj/machinery/telecomms/processor/spinny_thing in GLOB.telecomm_machines)

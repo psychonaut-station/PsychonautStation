@@ -18,9 +18,14 @@
 	end_when = 80
 
 /datum/round_event/aurora_caelus/announce(fake)
-	priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Nanotrasen has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("[station_name()]: A harmless cloud of ions is approaching your station, and will exhaust their energy battering the hull. Nanotrasen has approved a short break for all employees to relax and observe this very rare event. During this time, starlight will be bright but gentle, shifting between quiet green and blue colors. Any staff who would like to view these lights for themselves may proceed to the area nearest to them with viewing ports to open space. We hope you enjoy the lights.",
+	// sound = 'sound/announcer/notice/notice2.ogg',
+	// sender_override = "Nanotrasen Meteorology Division")
+	priority_announce("[station_name()]: Zararsız bir iyon bulutu istasyonunuza yaklaşıyor ve enerjisini geminin dış kısmına çarparak tüketecek. Nanotrasen tüm çalışanların dinlenmeleri ve bu çok nadir olayı gözlemlemeleri için kısa bir ara verilmesini onaylıyor. Bu süre zarfında yıldız ışığı kadar parlak ama sakin, yeşil ve mavi renkler arasında gidip gelen bir ışık gösterisi olacaktır. Bu ışıkları kendi gözleriyle görmek isteyen personeller, kendilerine en yakın olan ve uzaya bakan bir bölgeye gidebilirler. Bu ışık gösterisinden keyif alacağınızı umuyoruz.",
 	sound = 'sound/announcer/notice/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Nanotrasen Meteoroloji Departmanı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	if (fake)
 		return
 	for(var/V in GLOB.player_list)
@@ -66,9 +71,14 @@
 /datum/round_event/aurora_caelus/end()
 	fade_space()
 	fade_kitchen()
-	priority_announce("The aurora caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. Have a pleasant shift, [station_name()], and thank you for watching with us.",
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("The aurora caelus event is now ending. Starlight conditions will slowly return to normal. When this has concluded, please return to your workplace and continue work as normal. Have a pleasant shift, [station_name()], and thank you for watching with us.",
+	// sound = 'sound/announcer/notice/notice2.ogg',
+	// sender_override = "Nanotrasen Meteorology Division")
+	priority_announce("Aurora Caelus olayı artık sona eriyor. Yıldız ışığı koşulları yavaş yavaş normale dönecektir. Bu olay sona erdiğinde, lütfen işyerlerinize dönün ve normal şekilde çalışmaya devam edin. İyi mesailer, [station_name()] bizimle birlikte bu eşsiz ana tanıklık ettiğiniz teşekkür ederiz.",
 	sound = 'sound/announcer/notice/notice2.ogg',
-	sender_override = "Nanotrasen Meteorology Division")
+	sender_override = "Nanotrasen Meteoroloji Departmanı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/aurora_caelus/proc/fade_space(fade_in = FALSE)
 	set waitfor = FALSE

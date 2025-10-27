@@ -9,7 +9,10 @@
 	description = "Hides surprise filled easter eggs in maintenance."
 
 /datum/round_event/easter/announce(fake)
-	priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce(pick("Hip-hop into Easter!","Find some Bunny's stash!","Today is National 'Hunt a Wabbit' Day.","Be kind, give Chocolate Eggs!"))
+	priority_announce(pick("Bugün Ulusal 'Paskalya' Bayramı.","Nazik olun, Çikolatalı Yumurta verin!"))
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 
 /datum/round_event_control/rabbitrelease
@@ -22,7 +25,10 @@
 	description = "Summons a wave of cute rabbits."
 
 /datum/round_event/rabbitrelease/announce(fake)
-	priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Unidentified furry objects detected coming aboard [station_name()]. Beware of Adorable-ness.", "Fluffy Alert", ANNOUNCER_ALIENS)
+	priority_announce("[locale_suffix_dative(station_name())] doğru gelen tanımlanamayan tüylü nesneler tespit edildi. Sevimliliğe karşı dikkatli olun.", "Pofuduk Uyarısı", ANNOUNCER_ALIENS)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 
 /datum/round_event/rabbitrelease/start()

@@ -20,6 +20,8 @@
 	announce_when = 2
 
 /datum/round_event/market_crash/announce(fake)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/list/poss_reasons = list("the alignment of the moon and the sun",\
 		"some risky housing market outcomes",\
 		"the B.E.P.I.S. team's untimely downfall",\
@@ -32,8 +34,24 @@
 		"the \"Nanotrasen+\" social media network's unfortunate success",\
 		"uhh, bad luck, we guess"
 	)
+	*/
+	var/list/poss_reasons = list("Güneş tutulması",\
+		"Bazı riskli konut piyasası sonuçları",\
+		"Spekülatif Terragov hibelerinin geri tepmesi",\
+		"Nanotrasen muhasebe personelinin \"işten çıkarıldığına\" dair oldukça abartılı haberler",\
+		"Bir \"moron\" tarafından \"büyük bir yatırımın\" \"bir hiç\" haline getirilmesi",\
+		"Tiger Cooperative ajanlarının bir dizi baskını",\
+		"Tedarik zinciri eksiklikleri",\
+		"\"Nanotrasen+\" sosyal medya ağının zamansız çöküşü",\
+		"\"Nanotrasen+\" sosyal medya ağının talihsiz başarısı",\
+		"Ahh, kötü şans"
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	var/reason = pick(poss_reasons)
-	priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Due to [reason], prices for on-station vendors will be increased for a short period.", "Nanotrasen Accounting Division")
+	priority_announce("[reason] nedeniyle, istasyon içi otomatların fiyatları kısa bir süre için artırılacaktır.", "Nanotrasen Muhasebe Departmanı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/market_crash/start()
 	. = ..()
@@ -46,7 +64,10 @@
 	REMOVE_TRAIT(SSeconomy, TRAIT_MARKET_CRASHING, MARKET_CRASH_EVENT_TRAIT)
 	SSeconomy.price_update()
 	SSeconomy.update_vending_prices()
-	priority_announce("Prices for on-station vendors have now stabilized.", "Nanotrasen Accounting Division")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Prices for on-station vendors have now stabilized.", "Nanotrasen Accounting Division")
+	priority_announce("İstasyon içi otomatların fiyatları artık sabitlenmiştir.", "Nanotrasen Muhasebe Departmanı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/market_crash/tick()
 	. = ..()

@@ -6918,6 +6918,7 @@
 #include "modular_psychonaut\modules\cami_shuttle\code\emergency.dm"
 #include "modular_psychonaut\modules\cami_shuttle\code\machinery.dm"
 #include "modular_psychonaut\modules\cami_shuttle\code\turf.dm"
+#include "modular_psychonaut\modules\captain_sabre\code\belt.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\cyborg_nodes.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\designs.dm"
 #include "modular_psychonaut\modules\cargo_borg\code\movespeed_modifier.dm"

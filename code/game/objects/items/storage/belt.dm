@@ -626,9 +626,9 @@
 /obj/item/storage/belt/sheath/sabre
 	name = "sabre sheath"
 	desc = "An ornate sheath designed to hold an officer's blade."
-	icon_state = "sheath"
-	inhand_icon_state = "sheath"
-	worn_icon_state = "sheath"
+	icon_state = "sheath_red" // PSYCHONAUT EDIT ADDITION - CAPTAIN_SABRE - Original: icon_state = "sheath"
+	inhand_icon_state = "sheath_red" // PSYCHONAUT EDIT ADDITION - CAPTAIN_SABRE - Original: inhand_icon_state = "sheath"
+	worn_icon_state = "sheath_red" // PSYCHONAUT EDIT ADDITION - CAPTAIN_SABRE - Original: worn_icon_state = "sheath"
 	storage_type = /datum/storage/sabre_belt
 	stored_blade = /obj/item/melee/sabre
 

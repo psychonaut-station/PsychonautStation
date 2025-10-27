@@ -65,6 +65,10 @@
 /obj/item/borg/paperplane_crossbow/proc/charge_up(mob/living/user)
 	to_chat(user, span_warning("[src] silently charges up."))
 
+/obj/item/borg/apparatus/Initialize(mapload)
+	update_appearance()
+	return ..()
+
 /obj/item/borg/apparatus/paper_holder
 	name = "integrated paper holder"
 	desc = "A holder for holding papers."

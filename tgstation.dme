@@ -6999,6 +6999,7 @@
 #include "modular_psychonaut\modules\patreon\code\client_procs.dm"
 #include "modular_psychonaut\modules\patreon\code\loadout.dm"
 #include "modular_psychonaut\modules\pixel_shifting\code\keybinding.dm"
+#include "modular_psychonaut\modules\poker\code\circuitboard.dm"
 #include "modular_psychonaut\modules\poker\code\designs.dm"
 #include "modular_psychonaut\modules\poker\code\pokerchip.dm"
 #include "modular_psychonaut\modules\poker\code\pokerchip_exchanger.dm"

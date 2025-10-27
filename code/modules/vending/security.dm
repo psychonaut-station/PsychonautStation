@@ -32,6 +32,8 @@
 		/obj/item/grenade/stingbang = 1,
 		/obj/item/watertank/pepperspray = 2,
 		/obj/item/storage/belt/holster/energy = 4,
+		/obj/item/clothing/head/helmet/alt/tactical = 2, // PSYCHONAUT ADDITION - ITEMS - (Tactical Helmet-Armour)
+		/obj/item/clothing/suit/armor/vest/alt/tactical_armor = 2, // PSYCHONAUT ADDITION - ITEMS - (Tactical Helmet-Armour)
 	)
 	refill_canister = /obj/item/vending_refill/security
 	default_price = PAYCHECK_CREW

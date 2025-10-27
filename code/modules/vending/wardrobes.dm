@@ -63,6 +63,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/storage/backpack/satchel/sec = 3,
 		/obj/item/storage/backpack/duffelbag/sec = 3,
 		/obj/item/storage/backpack/messenger/sec = 3,
+		/obj/item/clothing/mask/gas/ghost_mask = 1, // PSYCHONAUT ADDITION - ITEMS - (Ghost Mask)
 	)
 	premium = list(
 		/obj/item/clothing/under/rank/security/officer/formal = 3,
@@ -570,6 +571,7 @@ GLOBAL_VAR_INIT(roaches_deployed, FALSE)
 		/obj/item/clothing/suit/chaplainsuit/habit = 1,
 		/obj/item/clothing/head/chaplain/habit_veil = 1,
 		/obj/item/storage/box/purity_seal_box = 2,
+		/obj/item/clothing/neck/necklace/jhon = 2, // PSYCHONAUT ADDITION - ITEMS - (Cross Necklace)
 	)
 	contraband = list(
 		/obj/item/toy/plush/ratplush = 1,

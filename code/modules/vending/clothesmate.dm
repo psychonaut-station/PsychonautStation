@@ -100,6 +100,7 @@
 				/obj/item/clothing/suit/toggle/jacket/trenchcoat = 4,
 				/obj/item/clothing/suit/jacket/oversized = 4,
 				/obj/item/clothing/suit/jacket/fancy = 4,
+				/obj/item/clothing/suit/jacket/dante = 4, // PSYCHONAUT ADDITION - ITEMS - (Manager Jacket)
 				/obj/item/clothing/suit/toggle/lawyer/greyscale = 4,
 				/obj/item/clothing/suit/hooded/wintercoat/custom = 3,
 				/obj/item/clothing/suit/hooded/wintercoat = 3,

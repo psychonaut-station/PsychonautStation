@@ -1,0 +1,5 @@
+/obj/item/storage/bag/garment/hos/PopulateContents()
+	. = ..()
+	new /obj/item/clothing/head/hats/hos/special(src)
+	new /obj/item/clothing/neck/cloak/hos/special(src)
+	new /obj/item/clothing/suit/armor/hos/special(src)

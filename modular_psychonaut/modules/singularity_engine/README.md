@@ -15,6 +15,7 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `code/__HELPERS/radiation.dm`: `/proc/radiation_pulse()`, `/datum/radiation_pulse_information/var/intensity`
 - `code/datums/components/singularity.dm`: `/datum/component/singularity/process()`, `/datum/component/singularity/proc/digest()`, `/datum/component/singularity/proc/move()`, `/datum/component/singularity/bloodthirsty/move()`
 - `code/game/machinery/incident_display.dm`: `DISPLAY_SINGULARITY_DEATH`, `sign_features`, `/obj/machinery/incident_display/add_context()`, `/obj/machinery/incident_display/emp_act()`, `/obj/machinery/incident_display/examine()`
+- `code/game/objects/effects/anomalies/anomalies_bioscrambler.dm`: `/obj/effect/anomaly/bioscrambler/move_anomaly()`
 - `code/modules/antagonists/wizard/grand_ritual/grand_ritual.dm`: `/datum/action/cooldown/grand_ritual/var/area_blacklist`
 - `code/modules/events/supermatter_surge.dm`: `/datum/round_event_control/supermatter_surge/can_spawn_event()`
 - `code/modules/modular_computers/file_system/programs/sm_monitor.dm`: `/datum/computer_file/program/supermatter_monitor/ui_data()`

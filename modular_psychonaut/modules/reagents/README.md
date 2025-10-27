@@ -10,6 +10,7 @@ Tarafımızca eklenen içecekler, sıvılar, sıvı kapları(bardak vs.).
 
 - `code/_globalvars/lists/maintenance_loot.dm`: `GLOB.uncommon_loot`
 - `code/datums/storage/subtypes/pockets.dm`: `/datum/storage/pockets/helmet/New()`
+- `code/game/objects/effects/spawners/random/food_or_drink.dm`: `/obj/effect/spawner/random/food_or_drink/booze/var/loot`
 - `code/game/objects/items/robot/items/hypo.dm`: `BASE_SERVICE_REAGENTS`
 - `code/modules/plumbing/plumbers/synthesizer.dm`: `/obj/machinery/plumbing/synthesizer/beer/var/beer_reagents`
 - `code/modules/reagents/chemistry/machinery/chem_dispenser.dm`: `/obj/machinery/chem_dispenser/drinks/beer/var/beer_dispensable_reagents`

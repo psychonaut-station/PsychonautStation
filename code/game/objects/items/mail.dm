@@ -223,15 +223,28 @@
 			/obj/effect/decal/cleanable/ash,
 		))
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/list/junk_names = list(
 		/obj/item/paper/pamphlet/gateway = "[initial(name)] for [pick(GLOB.adjectives)] adventurers",
 		/obj/item/paper/pamphlet/violent_video_games = "[initial(name)] for the truth about the arcade centcom doesn't want to hear",
 		/obj/item/paper/fluff/junkmail_redpill = "[initial(name)] for those feeling [pick(GLOB.adjectives)] working at Nanotrasen",
 		/obj/effect/decal/cleanable/ash = "[initial(name)] with INCREDIBLY IMPORTANT ARTIFACT- DELIVER TO SCIENCE DIVISION. HANDLE WITH CARE.",
 	)
+	*/
+	var/list/junk_names = list(
+		/obj/item/paper/pamphlet/gateway = "[pick(GLOB.adjectives)] maceralar için [initial(name)]",
+		/obj/item/paper/pamphlet/violent_video_games = "Centcom'un duymak istemeyeceği gerçekler için [initial(name)]",
+		/obj/item/paper/fluff/junkmail_redpill = "Nanotrasen'e [pick(GLOB.adjectives)] çalışmak isteyenler için [initial(name)]",
+		/obj/effect/decal/cleanable/ash = "SON DERECE ÖNEMLİ ESER İÇEREN [initial(name)] - BİLİM BÖLÜMÜNE TESLİM EDİN. DİKKATLİCE TAŞIYIN.",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	color = pick(department_colors) //eh, who gives a shit.
-	name = special_name ? junk_names[junk] : "important [initial(name)]"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// name = special_name ? junk_names[junk] : "important [initial(name)]"
+	name = special_name ? junk_names[junk] : "önemli [initial(name)]"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	junk = new junk(src)
 	return TRUE

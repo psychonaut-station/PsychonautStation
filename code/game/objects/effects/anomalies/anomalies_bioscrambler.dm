@@ -32,6 +32,10 @@
 		nearby.bioscramble(name)
 
 /obj/effect/anomaly/bioscrambler/move_anomaly()
+	// PSYCHONAUT ADDITION BEGIN - SINGULARITY_ENGINE
+	if(HAS_TRAIT(src, TRAIT_GRABBED_BY_KINESIS))
+		return
+	// PSYCHONAUT ADDITION END - SINGULARITY_ENGINE
 	update_target()
 	if (isnull(pursuit_target))
 		return ..()

@@ -320,18 +320,20 @@
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
 	//Uses of the device left
-	var/charges = 4
+	var/charges = 3 // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: var/charges = 4
 	//The maximum number of stored uses
-	var/max_charges = 4
+	var/max_charges = 3 // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: var/max_charges = 4
 	///Minimum distance to teleport user forward
 	var/minimum_teleport_distance = 4
 	///Maximum distance to teleport user forward
-	var/maximum_teleport_distance = 8
+	var/maximum_teleport_distance = 7 // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: var/maximum_teleport_distance = 8
 	//How far the emergency teleport checks for a safe position
-	var/parallel_teleport_distance = 3
+	var/parallel_teleport_distance = 2 // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: var/parallel_teleport_distance = 3
 	// How much blood lost per teleport (out of base 560 blood)
 	var/bleed_amount = 20
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+/*
 /obj/item/syndicate_teleporter/Initialize(mapload)
 	. = ..()
 	START_PROCESSING(SSobj, src)
@@ -339,10 +341,21 @@
 /obj/item/syndicate_teleporter/Destroy(force)
 	STOP_PROCESSING(SSobj, src)
 	return ..()
+*/
+// PSYCHONAUT EDIT REMOVAL END - NERF_SYNDIE_TELEPORTER
 
 /obj/item/syndicate_teleporter/examine(mob/user)
 	. = ..()
-	. += span_notice("[src] has <b>[charges]</b> out of [max_charges] charges left.")
+	// PSYCHONAUT EDIT ADDITION BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+	// . += span_notice("[src] has <b>[charges]</b> out of [max_charges] charges left.")
+	. += span_notice("It has [charges] charges remaining.")
+	if (length(charge_timers))
+		. += "[span_notice("<b>A small display on the back reads:")]</b>"
+	for (var/i in 1 to length(charge_timers))
+		var/timeleft = timeleft(charge_timers[i])
+		var/loadingbar = num2loadingbar(timeleft/charge_time)
+		. += span_notice("<b>CHARGE #[i]: [loadingbar] ([DisplayTimeText(timeleft)])</b>")
+	// PSYCHONAUT EDIT ADDITION END - NERF_SYNDIE_TELEPORTER
 
 /obj/item/syndicate_teleporter/attack_self(mob/user)
 	. = ..()
@@ -351,6 +364,8 @@
 	attempt_teleport(user = user, triggered_by_emp = FALSE)
 	return TRUE
 
+// PSYCHONAUT EDIT REMOVAL BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+/*
 /obj/item/syndicate_teleporter/process(seconds_per_tick, times_fired)
 	if(SPT_PROB(10, seconds_per_tick) && charges < max_charges)
 		charges++
@@ -358,6 +373,8 @@
 			var/mob/living/carbon/human/holder = loc
 			balloon_alert(holder, "teleporter beeps")
 		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+*/
+// PSYCHONAUT EDIT REMOVAL END - NERF_SYNDIE_TELEPORTER
 
 /obj/item/syndicate_teleporter/emp_act(severity)
 	. = ..()
@@ -403,7 +420,10 @@
 	var/bagholdingcheck = FALSE
 	if(iscarbon(user))
 		var/mob/living/carbon/teleporting_guy = user
-		if(locate(/obj/item/storage/backpack/holding) in teleporting_guy.get_all_gear(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT|INCLUDE_ACCESSORIES))
+		// PSYCHONAUT EDIT ADDITION BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+		// if(locate(/obj/item/storage/backpack/holding) in teleporting_guy.get_all_gear(INCLUDE_PROSTHETICS|INCLUDE_ABSTRACT|INCLUDE_ACCESSORIES))
+		if(locate(/obj/item/storage/backpack/holding) in teleporting_guy.get_all_gear())
+		// PSYCHONAUT EDIT ADDITION END - NERF_SYNDIE_TELEPORTER
 			bagholdingcheck = TRUE
 
 	if(isclosedturf(destination))
@@ -416,7 +436,7 @@
 	else
 		telefrag(destination, user)
 		do_teleport(user, destination, channel = TELEPORT_CHANNEL_FREE)
-		charges = max(charges - 1, 0)
+		use_charge(user) // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: charges = max(charges - 1, 0)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(current_location)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(destination)
 		if(make_bloods(current_location, destination, user))
@@ -453,7 +473,7 @@
 	if(emergency_destination)
 		telefrag(emergency_destination, user)
 		do_teleport(user, emergency_destination, channel = TELEPORT_CHANNEL_FREE)
-		charges = max(charges - 1, 0)
+		use_charge(user) // PSYCHONAUT EDIT ADDITION - NERF_SYNDIE_TELEPORTER - Original: charges = max(charges - 1, 0)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(mobloc)
 		new /obj/effect/temp_visual/teleport_abductor/syndi_teleporter(emergency_destination)
 		balloon_alert(user, "emergency teleport triggered!")
@@ -534,6 +554,8 @@
 
 /obj/item/paper/syndicate_teleporter
 	name = "Teleporter Guide"
+	// PSYCHONAUT EDIT ADDITION BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+	/*
 	default_raw_text = {"
 		<b>Instructions on your new prototype teleporter:</b><br>
 		<br>
@@ -547,6 +569,21 @@
 		<br>
 		Final word of caution: the technology involved is experimental in nature. Although many years of research have allowed us to prevent leaving your organs behind, it simply cannot account for all of the liquid in your body.
 		"}
+	*/
+	default_raw_text = {"
+		<b>Instructions on your new prototype teleporter:</b><br>
+		<br>
+		This teleporter will teleport the user 4-7 meters in the direction they are facing.<br>
+		<br>
+		It has 3 charges, and will recharge after 25 seconds. No, sticking the teleporter into an APC, microwave, or electrified airlock will not make it charge faster.<br>
+		<br>
+		<b>Warning:</b> Teleporting into walls will activate a failsafe teleport parallel up to 2 meters, but the user will be ripped apart if it fails to find a safe location.<br>
+		<br>
+		Do not expose the teleporter to electromagnetic pulses. Unwanted malfunctions may occur.
+		<br>
+		Final word of caution: the technology involved is experimental in nature. Although many years of research have allowed us to prevent leaving your organs behind, it simply cannot account for all of the liquid in your body.
+		"}
+	// PSYCHONAUT EDIT ADDITION END - NERF_SYNDIE_TELEPORTER
 
 /obj/effect/temp_visual/teleport_abductor/syndi_teleporter
 	duration = 5

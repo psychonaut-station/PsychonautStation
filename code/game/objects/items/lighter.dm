@@ -36,6 +36,7 @@
 		"dame",
 		"thirteen",
 		"snake",
+		"goldie", // PSYCHONAUT ADDITION - ITEMS - (Zippo)
 	)
 	/// Whether the lighter starts with fuel
 	var/spawns_with_reagent = TRUE

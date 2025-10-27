@@ -41,6 +41,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/game/objects/items/charter.dm`: `/obj/item/station_charter/proc/rename_station()`, `/obj/item/station_charter/banner/rename_station()`
 - `code/game/objects/items/crab17.dm`: `/obj/structure/checkoutmachine/Destroy()`, `/obj/effect/dumpeet_target/proc/startLaunch()`
 - `code/game/objects/items/dna_probe.dm`: `/obj/item/dna_probe/carp_scanner/attack_self()`
+- `code/game/objects/items/mail.dm`: `/obj/item/mail/proc/junk_mail()`
 - `code/modules/admin/verbs/adminshuttle.dm`: `disable_shuttle`, `enable_shuttle`
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/proc/announce_to_all_players()`, `/datum/anonymous_theme/proc/restore_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`

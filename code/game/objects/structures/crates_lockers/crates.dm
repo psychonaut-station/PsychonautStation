@@ -88,7 +88,8 @@
 	. = new_overlays
 	if(manifest)
 		. += "manifest"
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	/*
 	if(!opened)
 		if(broken)
 			. += "securecrateemag"
@@ -96,6 +97,14 @@
 			. += "securecrater"
 		else if(secure)
 			. += "securecrateg"
+	*/
+	if(broken)
+		. += "securecrateemag"
+	else if(locked)
+		. += "securecrater"
+	else if(secure)
+		. += "securecrateg"
+	// PSYCHONAUT EDIT ADDITION END
 
 	if(welded)
 		var/mutable_appearance/weld_overlay = mutable_appearance(icon, "welded")

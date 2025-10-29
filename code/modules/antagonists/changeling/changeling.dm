@@ -11,7 +11,10 @@
 	hijack_speed = 0.5
 	ui_name = "AntagInfoChangeling"
 	suicide_cry = "FOR THE HIVE!!"
-	can_assign_self_objectives = TRUE
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// can_assign_self_objectives = TRUE
+	can_assign_self_objectives = FALSE
+	// PSYCHONAUT EDIT ADDITION END
 	default_custom_objective = "Consume the station's most valuable genomes."
 	hardcore_random_bonus = TRUE
 	stinger_sound = 'sound/music/antag/ling_alert.ogg'

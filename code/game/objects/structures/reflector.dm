@@ -14,7 +14,10 @@
 	var/framebuildstackamount = 5
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 0
-	var/list/allowed_projectile_typecache = list(/obj/projectile/beam, /obj/projectile/energy/nuclear_particle)
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// var/list/allowed_projectile_typecache = list(/obj/projectile/beam, /obj/projectile/energy/nuclear_particle)
+	var/list/allowed_projectile_typecache = list(/obj/projectile/beam, /obj/projectile/energy/nuclear_particle, /obj/projectile/accelerated_particle)
+	// PSYCHONAUT EDIT ADDITION END
 	var/rotation_angle = -1
 
 /obj/structure/reflector/Initialize(mapload)

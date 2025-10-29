@@ -8,7 +8,7 @@
 #define CUSTOM_PRESET "Custom Command Name"
 #define CUSTOM_SOUND_PRESET "Custom Sound"
 
-ADMIN_VERB(change_command_name, R_ADMIN| R_MENTOR, "Change Command Name", "Change the name of Central Command.", ADMIN_CATEGORY_EVENTS) // PSYCHONAUT EDIT ADDITION - MENTOR - (Verb Permissions Changed) - Original: R_ADMIN
+ADMIN_VERB(change_command_name, R_ADMIN | R_MENTOR, "Change Command Name", "Change the name of Central Command.", ADMIN_CATEGORY_EVENTS) // PSYCHONAUT EDIT ADDITION - MENTOR - (Verb Permissions Changed) - Original: R_ADMIN
 	var/input = input(user, "Please input a new name for Central Command.", "What?", "") as text|null
 	if(!input)
 		return
@@ -17,7 +17,7 @@ ADMIN_VERB(change_command_name, R_ADMIN| R_MENTOR, "Change Command Name", "Chang
 	log_admin("[key_name(user)] has changed the Central Command name to: [input]")
 
 /// Verb to open the create command report window and send command reports.
-ADMIN_VERB(create_command_report, R_ADMIN| R_MENTOR, "Create Command Report", "Create a command report to be sent to the station.", ADMIN_CATEGORY_EVENTS) // PSYCHONAUT EDIT ADDITION - MENTOR - (Verb Permissions Changed) - Original: R_ADMIN
+ADMIN_VERB(create_command_report, R_ADMIN | R_MENTOR, "Create Command Report", "Create a command report to be sent to the station.", ADMIN_CATEGORY_EVENTS) // PSYCHONAUT EDIT ADDITION - MENTOR - (Verb Permissions Changed) - Original: R_ADMIN
 	BLACKBOX_LOG_ADMIN_VERB("Create Command Report")
 	var/datum/command_report_menu/tgui = new /datum/command_report_menu(user.mob)
 	tgui.ui_interact(user.mob)

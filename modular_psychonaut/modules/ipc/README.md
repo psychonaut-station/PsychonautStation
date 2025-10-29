@@ -15,6 +15,7 @@ IPC ırkını oyuna ekler
 - `code/_onclick/hud/radial.dm`: `/datum/radial_menu/proc/SetElement()`
 - `code/datums/components/surgery_initiator.dm`: `/datum/component/surgery_initiator/proc/get_available_surgeries()`
 - `code/datums/elements/tool_flash.dm`: `/datum/element/tool_flash/proc/flash()`
+- `code/modules/antagonists/heretic/heretic_living_heart.dm`: `/datum/component/living_heart/proc/on_organ_replaced()`
 - `code/modules/antagonists/heretic/knowledge/starting_lore.dm`: `/datum/heretic_knowledge/living_heart/proc/is_valid_heart()`
 - `code/modules/client/preferences_savefile.dm`: `/datum/preferences/proc/save_preferences()`, `/datum/preferences/proc/save_character()`
 - `code/modules/client/preferences/_preference.dm`: `/datum/preference/proc/write()`, `/datum/preferences/proc/write_preference()`, `/datum/preferences/proc/update_preference()`, `/datum/preference/proc/compile_ui_data()`, `/datum/preference/choiced/proc/get_choices_serialized()`

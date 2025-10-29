@@ -336,6 +336,10 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 /// If we don't retain this, we will get negative moles. Don't do it
 /// Returns: amount of gas exchanged (+ if sharer received)
 /datum/gas_mixture/proc/share(datum/gas_mixture/sharer, our_coeff, sharer_coeff)
+	// PSYCHONAUT ADDITION BEGIN
+	if(!sharer)
+		return
+	// PSYCHONAUT ADDITION END
 	var/list/cached_gases = gases
 	var/list/sharer_gases = sharer.gases
 
@@ -452,6 +456,10 @@ GLOBAL_LIST_INIT(gaslist_cache, init_gaslist_cache())
 ///Takes the gas index to read from as a second arg (either MOLES or ARCHIVE)
 ///Returns: a string indicating what check failed, or "" if check passes
 /datum/gas_mixture/proc/compare(datum/gas_mixture/sample, index)
+	// PSYCHONAUT ADDITION BEGIN
+	if(!sample)
+		return ""
+	// PSYCHONAUT ADDITION END
 	var/list/sample_gases = sample.gases //accessing datum vars is slower than proc vars
 	var/list/cached_gases = gases
 	var/moles_sum = 0

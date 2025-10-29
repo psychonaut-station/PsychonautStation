@@ -115,7 +115,10 @@
 			return
 		SSshuttle.emergency.setTimer(timer SECONDS)
 		log_admin("[key_name(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds.")
-		minor_announce("The emergency shuttle will reach its destination in [DisplayTimeText(timer SECONDS)].")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// minor_announce("The emergency shuttle will reach its destination in [DisplayTimeText(timer SECONDS)].")
+		minor_announce("Acil durum mekiği [locale_DisplayTimeText(timer SECONDS)] içerisinde varış noktasına ulaşacaktır.")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		message_admins(span_adminnotice("[key_name_admin(usr)] edited the Emergency Shuttle's timeleft to [timer] seconds."))
 	else if(href_list["trigger_centcom_recall"])
 		if(!check_rights(R_ADMIN | R_MENTOR)) // PSYCHONAUT EDIT ADDITION - MENTOR - Original: if(!check_rights(R_ADMIN))

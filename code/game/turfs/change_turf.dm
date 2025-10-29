@@ -267,7 +267,10 @@ GLOBAL_LIST_INIT(blacklisted_automated_baseturfs, typecacheof(list(
 	var/list/turf_list = atmos_adjacent_turfs + src
 	var/turflen = turf_list.len
 	var/energy = 0
-	var/heat_cap = 0
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// var/heat_cap = 0
+	var/heat_cap = 0.00000000001
+	// PSYCHONAUT EDIT ADDITION END
 
 	for(var/turf/open/turf in turf_list)
 		//Cache?

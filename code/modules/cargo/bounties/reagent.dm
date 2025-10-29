@@ -117,6 +117,7 @@
 		/datum/reagent/consumable/ethanol/ramos_gin_fizz,\
 		/datum/reagent/consumable/ethanol/sangria,\
 		/datum/reagent/consumable/ethanol/tizirian_sour,\
+		/datum/reagent/consumable/ethanol/raki,\ /* PSYCHONAUT ADDITION - REAGENTS */
 		/datum/chemical_reaction/drink/suffering_bastard)
 
 	var/reagent_type = pick(possible_reagents)

@@ -45,6 +45,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/adminshuttle.dm`: `disable_shuttle`, `enable_shuttle`
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/proc/announce_to_all_players()`, `/datum/anonymous_theme/proc/restore_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
+- `code/modules/admin/topic.dm`: `/datum/admins/Topic()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
 - `code/modules/antagonists/cult/cult_items.dm`: `/obj/item/shuttle_curse/attack_self()`
 - `code/modules/antagonists/heretic/knowledge/ash_lore.dm`: `/datum/heretic_knowledge/ultimate/ash_final/var/announcement_text`

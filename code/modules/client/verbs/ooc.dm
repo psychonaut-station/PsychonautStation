@@ -80,7 +80,10 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	var/keyname = key
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('icons/ui/chat/member_content.dmi', world, "blag")][keyname]</font>"
+			// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+			// keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[icon2html('icons/ui/chat/member_content.dmi', world, "blag")][keyname]</font>"
+			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
+			// PSYCHONAUT EDIT ADDITION END
 	if(prefs.hearted)
 		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
 		keyname = "[sheet.icon_tag("emoji-heart")][keyname]"
@@ -469,6 +472,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	to_chat(mob, SSmap_vote.tally_printout)
 
 
+/*
 /client/verb/linkforumaccount()
 	set category = "OOC"
 	set name = "Link Forum Account"
@@ -525,6 +529,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	entropychain = "[query_get_token.item[2]]"
 	return query_get_token.item[1]
 
+*/
 
 /client/proc/random_string()
 	return "SHA2(CONCAT(RAND(),UUID(),?,RAND(),UUID()), 512)"

@@ -161,7 +161,13 @@
 /obj/machinery/computer/records/security/proc/ninjadrain_charge(mob/living/carbon/human/ninja, obj/item/mod/module/hacker/hacking_module)
 	if(!do_after(ninja, 20 SECONDS, src, extra_checks = CALLBACK(src, PROC_REF(can_hack), ninja), hidden = TRUE))
 		return
+	var/random_crime_list = world.file2list("modular_psychonaut/master_files/strings/random_crimes.txt") // PSYCHONAUT ADDITION - (Random Crime On Ninja Sec Computer hack)
 	for(var/datum/record/crew/target in GLOB.manifest.general)
+		// PSYCHONAUT ADDITION BEGIN - (Random Crime On Ninja Sec Computer hack)
+		var/crimename = pick(random_crime_list)
+		var/datum/crime/newcrime = new(name = crimename)
+		target.crimes += newcrime
+		// PSYCHONAUT ADDITION END - (Random Crime On Ninja Sec Computer hack)
 		target.wanted_status = WANTED_ARREST
 	update_all_security_huds()
 

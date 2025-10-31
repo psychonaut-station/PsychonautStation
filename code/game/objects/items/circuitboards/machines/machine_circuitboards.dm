@@ -1445,6 +1445,7 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/rnd/production/techfab/department/service
 
+<<<<<<< HEAD
 /obj/item/circuitboard/machine/vendatray
 	name = "Vend-A-Tray"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
@@ -1459,6 +1460,8 @@
 	needs_anchored = FALSE
 	req_components = list()
 
+=======
+>>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 /obj/item/circuitboard/machine/fishing_portal_generator
 	name = "Fishing Portal Generator"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE

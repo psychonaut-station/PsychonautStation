@@ -5,6 +5,11 @@
 /// The female specific list that we get from init_sprite_accessory_subtypes()
 #define FEMALE_SPRITE_LIST "female_sprites"
 
+/// Use this to init a sprite accessory list for a feature where mobs are required to have one selected
+#define INIT_ACCESSORY(sprite_accessory) init_sprite_accessory_subtypes(sprite_accessory, add_blank = FALSE)[DEFAULT_SPRITE_LIST]
+/// Use this to init a sprite accessory list for a feature where mobs can opt to not have one selected
+#define INIT_OPTIONAL_ACCESSORY(sprite_accessory) init_sprite_accessory_subtypes(sprite_accessory, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
+
 /// subsystem that just holds lists of sprite accessories for accession in generating said sprites.
 /// A sprite accessory is something that we add to a human sprite to make them look different. This is hair, facial hair, underwear, mutant bits, etc.
 SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
@@ -36,6 +41,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	//Socks
 	var/list/socks_list //! stores /datum/sprite_accessory/socks indexed by name
 
+<<<<<<< HEAD
 	//Lizard Bits (all datum lists indexed by name)
 	var/list/lizard_markings_list
 	var/list/snouts_list
@@ -60,6 +66,10 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	var/list/pod_hair_list
 	var/list/arachnid_appendages_list
 	var/list/ipc_chassis_list
+=======
+	//All features, indexed by feature key, then name of the sprite accessory to the datum iteslf
+	var/list/list/feature_list
+>>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 
 /datum/controller/subsystem/accessories/PreInit() // this stuff NEEDS to be set up before GLOB for preferences and stuff to work so this must go here. sorry
 	setup_lists()
@@ -93,6 +103,7 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 
 	socks_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/socks)[DEFAULT_SPRITE_LIST]
 
+<<<<<<< HEAD
 	lizard_markings_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/lizard_markings, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_felinid = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/felinid, add_blank = TRUE)[DEFAULT_SPRITE_LIST]
 	tails_list_lizard = init_sprite_accessory_subtypes(/datum/sprite_accessory/tails/lizard)[DEFAULT_SPRITE_LIST]
@@ -115,6 +126,34 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 	pod_hair_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/pod_hair)[DEFAULT_SPRITE_LIST]
 	arachnid_appendages_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/arachnid_appendages)[DEFAULT_SPRITE_LIST]
 	ipc_chassis_list = init_sprite_accessory_subtypes(/datum/sprite_accessory/ipc_chassis)[DEFAULT_SPRITE_LIST]
+=======
+	feature_list = list()
+	// felinids
+	feature_list[FEATURE_TAIL_CAT] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/tails/felinid)
+	feature_list[FEATURE_EARS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/ears)
+	// lizards
+	feature_list[FEATURE_FRILLS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/frills)
+	feature_list[FEATURE_HORNS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/horns)
+	feature_list[FEATURE_LIZARD_MARKINGS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/lizard_markings)
+	feature_list[FEATURE_SNOUT] = INIT_ACCESSORY(/datum/sprite_accessory/snouts)
+	feature_list[FEATURE_SPINES] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/spines)
+	feature_list[FEATURE_TAILSPINES] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/tail_spines)
+	feature_list[FEATURE_TAIL_LIZARD] = INIT_ACCESSORY(/datum/sprite_accessory/tails/lizard)
+	// moths
+	feature_list[FEATURE_MOTH_WINGS] = INIT_ACCESSORY(/datum/sprite_accessory/moth_wings)
+	feature_list[FEATURE_MOTH_ANTENNAE] = INIT_ACCESSORY(/datum/sprite_accessory/moth_antennae)
+	feature_list[FEATURE_MOTH_MARKINGS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/moth_markings)
+	// generic wings
+	feature_list[FEATURE_WINGS] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/wings)
+	feature_list[FEATURE_WINGS_OPEN] = INIT_OPTIONAL_ACCESSORY(/datum/sprite_accessory/wings_open)
+	// generic features
+	feature_list[FEATURE_MUSH_CAP] = INIT_ACCESSORY(/datum/sprite_accessory/caps)
+	feature_list[FEATURE_POD_HAIR] = INIT_ACCESSORY(/datum/sprite_accessory/pod_hair)
+	feature_list[FEATURE_TAIL_FISH] = INIT_ACCESSORY(/datum/sprite_accessory/tails/fish)
+	feature_list[FEATURE_TAIL_MONKEY] = INIT_ACCESSORY(/datum/sprite_accessory/tails/monkey)
+	feature_list[FEATURE_TAIL_XENO] = INIT_ACCESSORY(/datum/sprite_accessory/tails/xeno)
+
+>>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 /// This proc just initializes all /datum/sprite_accessory/hair_gradient into an list indexed by gradient-style name
 /datum/controller/subsystem/accessories/proc/init_hair_gradients()
 	hair_gradients_list = list()
@@ -163,6 +202,9 @@ SUBSYSTEM_DEF(accessories) // just 'accessories' for brevity
 		returnable_list[DEFAULT_SPRITE_LIST][SPRITE_ACCESSORY_NONE] = new /datum/sprite_accessory/blank
 
 	return returnable_list
+
+#undef INIT_ACCESSORY
+#undef INIT_OPTIONAL_ACCESSORY
 
 #undef DEFAULT_SPRITE_LIST
 #undef MALE_SPRITE_LIST

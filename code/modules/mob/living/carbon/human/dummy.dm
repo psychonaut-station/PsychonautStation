@@ -113,6 +113,7 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 /proc/create_consistent_human_dna(mob/living/carbon/human/target)
 	target.dna.features[FEATURE_MUTANT_COLOR] = COLOR_VIBRANT_LIME
 	target.dna.features[FEATURE_ETHEREAL_COLOR] = COLOR_WHITE
+<<<<<<< HEAD
 	target.dna.features[FEATURE_LIZARD_MARKINGS] = get_consistent_feature_entry(SSaccessories.lizard_markings_list)
 	target.dna.features[FEATURE_EARS] = get_consistent_feature_entry(SSaccessories.ears_list)
 	target.dna.features[FEATURE_FRILLS] = get_consistent_feature_entry(SSaccessories.frills_list)
@@ -130,6 +131,10 @@ INITIALIZE_IMMEDIATE(/mob/living/carbon/human/dummy)
 	target.dna.features[FEATURE_MUSH_CAP] = get_consistent_feature_entry(SSaccessories.caps_list)
 	target.dna.features[FEATURE_ARACHNID_APPENDAGES] = get_consistent_feature_entry(SSaccessories.arachnid_appendages_list)
 	target.dna.features[FEATURE_IPC_CHASSIS] = get_consistent_feature_entry(SSaccessories.ipc_chassis_list)
+=======
+	for(var/feature_key in SSaccessories.feature_list)
+		target.dna.features[feature_key] = get_consistent_feature_entry(SSaccessories.feature_list[feature_key])
+>>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 	target.dna.initialize_dna(newblood_type = get_blood_type(BLOOD_TYPE_O_MINUS), create_mutation_blocks = FALSE, randomize_features = FALSE)
 	// UF and UI are nondeterministic, even though the features are the same some blocks will randomize slightly
 	// In practice this doesn't matter, but this is for the sake of 100%(ish) consistency

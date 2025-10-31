@@ -36,6 +36,15 @@
 
 
 /obj/item/toy/cards/cardhand/add_context(atom/source, list/context, obj/item/held_item, mob/living/user)
+	// PSYCHONAUT ADDITION BEGIN - CARD_CHANGES
+	if(src == held_item)
+		context[SCREENTIP_CONTEXT_LMB] = "Draw a card"
+		context[SCREENTIP_CONTEXT_RMB] = "Flip a card"
+		context[SCREENTIP_CONTEXT_ALT_RMB] = "Flip all cards"
+		return CONTEXTUAL_SCREENTIP_SET
+
+	// PSYCHONAUT ADDITION END - CARD_CHANGES
+
 	if(istype(held_item, /obj/item/toy/cards/deck))
 		var/obj/item/toy/cards/deck/dealer_deck = held_item
 		if(HAS_TRAIT(dealer_deck, TRAIT_WIELDED))
@@ -53,7 +62,10 @@
 	return NONE
 
 /obj/item/toy/cards/cardhand/attack_self(mob/living/user)
-	if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY| FORBID_TELEKINESIS_REACH))
+	// PSYCHONAUT EDIT ADDITION BEGIN - CARD_CHANGES - Original:
+	// if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY| FORBID_TELEKINESIS_REACH))
+	if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY | FORBID_TELEKINESIS_REACH))
+	// PSYCHONAUT EDIT ADDITION END - CARD_CHANGES
 		return
 
 	var/list/handradial = list()
@@ -128,8 +140,10 @@
 
 	var/starting_card_pos = max(0, cards.len - CARDS_MAX_DISPLAY_LIMIT) + 1 // only display the top cards in the cardhand, +1 because list indexes start at 1
 	var/cards_to_display = min(CARDS_MAX_DISPLAY_LIMIT, cards.len)
+	// PSYCHONAUT EDIT REMOVAL BEGIN - CARD_CHANGES - Original:
 	// 90 degrees from the 1st card to the last, so split the divider by total cards displayed
-	var/angle_divider = round(90/(cards_to_display - 1))
+	// var/angle_divider = round(90/(cards_to_display - 1))
+	// PSYCHONAUT EDIT REMOVAL END - CARD_CHANGES
 	// 10 pixels from the 1st card to the last, so split the divider by total cards displayed
 	var/pixel_divider = round(10/(cards_to_display - 1))
 
@@ -138,10 +152,12 @@
 	for(var/i in 0 to cards_to_display - 1)
 		var/obj/item/toy/singlecard/card = cards[starting_card_pos + i]
 		var/image/card_overlay = image(icon, icon_state = card.icon_state, pixel_x = CARDS_PIXEL_X_OFFSET + (i * pixel_divider))
-		var/rotation_angle = CARDS_ANGLE_OFFSET + (i * angle_divider)
-		var/matrix/M = matrix()
-		M.Turn(rotation_angle)
-		card_overlay.transform = M
+		// PSYCHONAUT EDIT REMOVAL BEGIN - CARD_CHANGES - Original:
+		// var/rotation_angle = CARDS_ANGLE_OFFSET + (i * angle_divider)
+		// var/matrix/M = matrix()
+		// M.Turn(rotation_angle)
+		// card_overlay.transform = M
+		// PSYCHONAUT EDIT REMOVAL END - CARD_CHANGES
 		add_overlay(card_overlay)
 
 #undef CARDS_MAX_DISPLAY_LIMIT

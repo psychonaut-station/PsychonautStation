@@ -6939,6 +6939,8 @@
 #include "modular_psychonaut\modules\clowning\code\clown.dm"
 #include "modular_psychonaut\modules\clowning\code\humans.dm"
 #include "modular_psychonaut\modules\clowning\code\taeclowndo.dm"
+#include "modular_psychonaut\modules\craftable_tinyfan\code\design.dm"
+#include "modular_psychonaut\modules\craftable_tinyfan\code\tinyfan.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_arms.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_chests.dm"
 #include "modular_psychonaut\modules\cybernetics\code\augments_eyes.dm"

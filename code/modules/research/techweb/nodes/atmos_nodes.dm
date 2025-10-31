@@ -20,6 +20,7 @@
 		"plasmaman_gas_filter",
 		"analyzer",
 		"pipe_painter",
+		"tinyfan_assembly", // PSYCHONAUT ADDITION - CRAFTABLE_TINYFAN
 	)
 
 /datum/techweb_node/gas_compression

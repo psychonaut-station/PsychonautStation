@@ -6968,6 +6968,8 @@
 #include "modular_psychonaut\modules\heliostation\code\cargo_shuttle.dm"
 #include "modular_psychonaut\modules\heliostation\code\emergency_shuttle.dm"
 #include "modular_psychonaut\modules\heliostation\code\mining_shuttle.dm"
+#include "modular_psychonaut\modules\holodeck_camping\code\map_template.dm"
+#include "modular_psychonaut\modules\holodeck_pool\code\map_template.dm"
 #include "modular_psychonaut\modules\hydroponics\chili.dm"
 #include "modular_psychonaut\modules\ipc\code\ipc.dm"
 #include "modular_psychonaut\modules\ipc\code\ipc_bodyparts.dm"

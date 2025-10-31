@@ -8,11 +8,11 @@ Oyuna poker çipleri, bu çipleri elde edebileceğiniz makine ekler.
 
 ### TG Değişiklikleri
 
-- N/A
+- `code/modules/research/techweb/nodes/service_nodes.dm`: `/datum/techweb_node/gaming/var/design_ids`
 
 ### Modüler Değişiklikler
 
-- N/A
+- `modular_psychonaut/master_files/code/game/objects/structures/crates_lockers/closets/secure/bar.dm`: `/obj/structure/closet/secure_closet/bar/PopulateContents()`
 
 ### Definelar ve Helperlar
 

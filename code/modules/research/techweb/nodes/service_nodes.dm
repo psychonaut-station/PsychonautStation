@@ -102,6 +102,7 @@
 		"arcade_battle",
 		"arcade_orion",
 		"slotmachine",
+		"pokerchip_exchanger", // PSYCHONAUT ADDITION - POKER
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	discount_experiments = list(/datum/experiment/physical/arcade_winner = TECHWEB_TIER_2_POINTS)

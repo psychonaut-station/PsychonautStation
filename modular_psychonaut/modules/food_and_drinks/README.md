@@ -33,3 +33,5 @@ Tarafımızca eklenen yiyecekler, yemek makinaları, yiyecek ve içecek tarifler
 ### Katkıda Bulunanlar
 
 Rengan
+Zade
+Tatartachanka

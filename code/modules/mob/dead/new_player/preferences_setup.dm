@@ -100,7 +100,14 @@
 	if(preview_job)
 		// Silicons only need a very basic preview since there is no customization for them.
 		if (istype(preview_job,/datum/job/ai))
-			return image('icons/mob/silicon/ai.dmi', icon_state = resolve_ai_icon(read_preference(/datum/preference/choiced/ai_core_display)), dir = SOUTH)
+			// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+			// return image('icons/mob/silicon/ai.dmi', icon_state = resolve_ai_icon(read_preference(/datum/preference/choiced/ai_core_display)), dir = SOUTH)
+			var/display_icon = 'icons/mob/silicon/ai.dmi'
+			var/selected_display = read_preference(/datum/preference/choiced/ai_core_display)
+			if(GLOB.ai_core_display_screen_icons.Find(selected_display))
+				display_icon = GLOB.ai_core_display_screen_icons[selected_display]
+			return image(display_icon, icon_state = resolve_ai_icon(selected_display), dir = SOUTH)
+			// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 		if (istype(preview_job,/datum/job/cyborg))
 			return image('icons/mob/silicon/robots.dmi', icon_state = "robot", dir = SOUTH)
 		// PSYCHONAUT EDIT ADDITION BEGIN - ANIMAL - Original:

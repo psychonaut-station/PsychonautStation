@@ -174,9 +174,16 @@
 		C = client
 	if(!input && !C?.prefs?.read_preference(/datum/preference/choiced/ai_core_display))
 		icon_state = initial(icon_state)
+		icon = initial(icon) // PSYCHONAUT ADDITION - AI_SCREENS
 	else
 		var/preferred_icon = input ? input : C.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 		icon_state = resolve_ai_icon(preferred_icon)
+		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+		if(GLOB.ai_core_display_screen_icons.Find(preferred_icon))
+			icon = GLOB.ai_core_display_screen_icons[preferred_icon]
+		else
+			icon = initial(icon)
+		// PSYCHONAUT ADDITION END - AI_SCREENS
 
 /// Apply an AI's hologram preference
 /mob/living/silicon/ai/proc/apply_pref_hologram_display(client/player_client)
@@ -221,6 +228,11 @@
 		if(option == "Portrait")
 			iconstates[option] = image(icon = src.icon, icon_state = "ai-portrait")
 			continue
+		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+		if(GLOB.ai_core_display_screen_icons.Find(option))
+			iconstates[option] = image(icon = GLOB.ai_core_display_screen_icons[option], icon_state = resolve_ai_icon_sync(option))
+			continue
+		// PSYCHONAUT ADDITION END - AI_SCREENS
 		iconstates[option] = image(icon = src.icon, icon_state = resolve_ai_icon(option))
 
 	view_core()

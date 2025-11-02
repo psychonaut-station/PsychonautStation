@@ -8,7 +8,6 @@ Oyun sonu tur ile ilgili bilgiler gösterecek credits ekranı.
 
 ### TG Değişiklikleri
 
-- N/A
 - `code/__HELPERS/roundend.dm`: `POPCOUNT_ESCAPEES_HUMANONLY`, `POPCOUNT_ESCAPEES_HUMANONLY_LIST`, `/datum/controller/subsystem/ticker/proc/gather_roundend_feedback()`, `/datum/controller/subsystem/ticker/proc/declare_completion()`
 - `code/_onclick/hud/credits.dm`: `CREDIT_ROLL_SPEED`, `CREDIT_SPAWN_SPEED`, `CREDIT_ANIMATE_HEIGHT`, `CREDIT_EASE_DURATION`, `/client/proc/RollCredits()`, `/atom/movable/screen/credit`, `/atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P)`, `/atom/movable/screen/credit/Destroy()`
 - `code/modules/loadout/loadout_preference.dm`: `/datum/preference/loadout/deserialize()`

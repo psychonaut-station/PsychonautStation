@@ -39,6 +39,8 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `modular_psychonaut/master_files/code/game/objects/items/devices/anomaly_catcher.dm`: `/obj/item/anomaly_catcher`
 - `modular_psychonaut/master_files/code/game/objects/items/storage/toolboxes/weapons.dm`: `/obj/item/storage/toolbox/guncase/anomaly_catcher`
 - `modular_psychonaut/master_files/code/game/objects/structures/crates_lockers/closets/secure/engineering.dm`: `/obj/structure/closet/secure_closet/engineering_chief/PopulateContents()`
+- `modular_psychonaut/master_files/code/modules/cargo/bounties/engineering.dm`: `/datum/bounty/item/engineering/energy_ball`
+- `modular_psychonaut/master_files/code/modules/cargo/exports/tools.dm`: `/datum/export/singulo`, `/datum/export/singulo/tesla`
 - `modular_psychonaut/master_files/code/modules/cargo/packs/engineering.dm`: `/datum/supply_pack/engine/particle_accelerator`, `/datum/supply_pack/engine/singulo_gen`, `/datum/supply_pack/engine/tesla_gen`
 - `modular_psychonaut/master_files/code/modules/modular_computers/file_system/programs/sm_monitor.dm`
 - `modular_psychonaut/master_files/code/modules/paperwork/paper_premade.dm`: `/obj/item/paper/guides/jobs/engineering/pa`, `/obj/item/paper/guides/jobs/engineering/singularity`

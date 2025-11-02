@@ -6838,6 +6838,8 @@
 #include "modular_psychonaut\master_files\code\modules\antagonists\revolution\revolution.dm"
 #include "modular_psychonaut\master_files\code\modules\antagonists\traitor\datum_traitor.dm"
 #include "modular_psychonaut\master_files\code\modules\antagonists\wizard\wizard.dm"
+#include "modular_psychonaut\master_files\code\modules\cargo\bounties\engineering.dm"
+#include "modular_psychonaut\master_files\code\modules\cargo\exports\tools.dm"
 #include "modular_psychonaut\master_files\code\modules\cargo\markets\market_items\weapons.dm"
 #include "modular_psychonaut\master_files\code\modules\cargo\packs\engineering.dm"
 #include "modular_psychonaut\master_files\code\modules\cargo\packs\medical.dm"

@@ -1445,13 +1445,6 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/rnd/production/techfab/department/service
 
-/obj/item/circuitboard/machine/vendatray
-	name = "Vend-A-Tray"
-	greyscale_colors = CIRCUIT_COLOR_SERVICE
-	build_path = /obj/structure/displaycase/forsale
-	req_components = list(
-		/datum/stock_part/card_reader = 1)
-
 /obj/item/circuitboard/machine/pokerchip_exchanger
 	name = "Poker Chip Exchanger"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE

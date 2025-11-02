@@ -88,7 +88,7 @@
 
 /datum/species/ipc/randomize_features()
 	var/list/features = ..()
-	features[FEATURE_IPC_CHASSIS] = SSaccessories.ipc_chassis_list[pick(SSaccessories.ipc_chassis_list)]
+	features[FEATURE_IPC_CHASSIS] = pick(SSaccessories.feature_list[FEATURE_IPC_CHASSIS])
 	return features
 
 /datum/species/ipc/get_features()
@@ -100,11 +100,11 @@
 
 /datum/species/ipc/replace_body(mob/living/carbon/target, datum/species/new_species)
 	. = ..()
-	var/datum/sprite_accessory/ipc_chassis/chassis_of_choice = SSaccessories.ipc_chassis_list[target.dna.features[FEATURE_IPC_CHASSIS]]
-	if(chassis_of_choice)
+	var/datum/sprite_accessory/ipc_chassis/chasis = SSaccessories.feature_list[FEATURE_IPC_CHASSIS][target.dna.features[FEATURE_IPC_CHASSIS]]
+	if(chasis)
 		for(var/obj/item/bodypart/bodypart as anything in target.bodyparts)
 			bodypart.icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
-			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chassis_of_choice.icon_state, (chassis_of_choice.color_src == MUTANT_COLOR), FALSE)
+			bodypart.change_appearance('icons/psychonaut/mob/human/species/ipc/bodyparts.dmi', chasis.icon_state, (chasis.color_src == MUTANT_COLOR), FALSE)
 			bodypart.update_limb()
 
 /datum/species/ipc/get_species_description()

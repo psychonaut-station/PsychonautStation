@@ -28,6 +28,7 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 	/// String key we use to index the second effect overlay displayed on us
 	var/message_key_2
 	var/current_picture = ""
+	var/current_picture_icon = 'icons/obj/machines/status_display.dmi'
 	var/current_mode = SD_BLANK
 	var/message1 = ""
 	var/message2 = ""
@@ -89,9 +90,11 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 		new /obj/item/wallframe/status_display(drop_location())
 
 /// Immediately change the display to the given picture.
-/obj/machinery/status_display/proc/set_picture(state)
+/obj/machinery/status_display/proc/set_picture(state, icon = null)
 	if(state != current_picture)
 		current_picture = state
+
+	current_picture_icon = icon || initial(current_picture_icon)
 
 	update_appearance()
 
@@ -200,7 +203,7 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 			return
 		if(SD_PICTURE)
 			clear_display()
-			. += mutable_appearance(icon, current_picture)
+			. += mutable_appearance(current_picture_icon, current_picture)
 			if(current_picture == AI_DISPLAY_DONT_GLOW) // If the thing's off, don't display the emissive yeah?
 				return
 		if(SD_GREENSCREEN)
@@ -592,7 +595,8 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 				LAZYOR(active_displays, new_display)
 			set_display_with_priority(SD_GREENSCREEN, DISPLAY_PRIORITY_MESSAGE, force_override = TRUE)
 		if("friendcomputer")
-			friendc = !friendc
+			// Friend Computer should only affect AI displays, not evac displays
+			return
 	update()
 
 /obj/machinery/status_display/evac/vv_edit_var(vname, vval)
@@ -733,31 +737,68 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/evac, 32)
 	desc = "A small screen which the AI can use to present itself."
 	current_mode = SD_PICTURE
 	var/emotion = AI_DISPLAY_DONT_GLOW
+	var/frequency = FREQ_STATUS_DISPLAYS
+	var/friendc = FALSE      // track if Friend Computer mode
+	var/last_picture  // For when Friend Computer mode is undone
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
+
+/obj/machinery/status_display/ai/Initialize(mapload)
+	. = ..()
+	// register for radio system to receive AI emote signals
+	SSradio.add_object(src, frequency)
+	find_and_hang_on_wall()
+
+/obj/machinery/status_display/ai/Destroy()
+	SSradio.remove_object(src, frequency)
+	return ..()
 
 /obj/machinery/status_display/ai/attack_ai(mob/living/silicon/ai/user)
 	if(!isAI(user))
 		return
-	var/list/choices = list()
-	for(var/emotion_const in GLOB.ai_status_display_emotes)
-		var/icon_state = GLOB.ai_status_display_emotes[emotion_const]
-		choices[emotion_const] = image(icon = 'icons/obj/machines/status_display.dmi', icon_state = icon_state)
 
-	var/emotion_result = show_radial_menu(user, src, choices, tooltips = TRUE)
-	for(var/_emote in typesof(/datum/emote/ai/emotion_display))
-		var/datum/emote/ai/emotion_display/emote = _emote
-		if(initial(emote.emotion) == emotion_result)
-			user.emote(initial(emote.key))
-			break
+	// Open the TGUI interface for selecting status display options
+	if(!user.status_display_picker)
+		user.status_display_picker = new(user, src)
+	user.status_display_picker.ui_interact(user)
 
 /obj/machinery/status_display/ai/process()
 	if(machine_stat & NOPOWER)
 		update_appearance()
 		return PROCESS_KILL
 
-	set_picture(GLOB.ai_status_display_emotes[emotion])
+	if(!length(GLOB.ai_status_display_all_options))
+		init_ai_status_display_options()
+
+	var/icon_state
+	// First try the combined list
+	if(emotion in GLOB.ai_status_display_all_options)
+		icon_state = GLOB.ai_status_display_all_options[emotion]
+	// Then try the original emotes list
+	else if(emotion in GLOB.ai_status_display_emotes)
+		icon_state = GLOB.ai_status_display_emotes[emotion]
+	// Default fallback
+	else
+		icon_state = "ai_neutral"
+
+	var/icon = GLOB.ai_status_display_screen_icons[emotion] || null
+
+	set_picture(icon_state, icon)
 	return PROCESS_KILL
+
+/obj/machinery/status_display/ai/receive_signal(datum/signal/signal)
+	switch(signal.data["command"])
+		if("friendcomputer")
+			friendc = !friendc
+			if(friendc)
+				last_picture = emotion  // Save current display
+				emotion = AI_EMOTION_FRIEND_COMPUTER
+			else
+				if(last_picture)
+					emotion = last_picture  // Restore previous display
+				else
+					emotion = AI_DISPLAY_DONT_GLOW
+			update_appearance()
 
 /obj/item/circuit_component/status_display
 	display_name = "Status Display"

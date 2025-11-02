@@ -6941,6 +6941,8 @@
 #include "modular_psychonaut\modules\character_background\code\record.dm"
 #include "modular_psychonaut\modules\character_background\code\machinery\crew_records.dm"
 #include "modular_psychonaut\modules\cleanlv624\code\cleanlv624.dm"
+#include "modular_psychonaut\modules\clock_head\code\clocky.dm"
+#include "modular_psychonaut\modules\clock_head\code\design.dm"
 #include "modular_psychonaut\modules\clowning\code\clown.dm"
 #include "modular_psychonaut\modules\clowning\code\humans.dm"
 #include "modular_psychonaut\modules\clowning\code\taeclowndo.dm"

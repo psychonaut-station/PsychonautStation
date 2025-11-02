@@ -1445,14 +1445,6 @@
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
 	build_path = /obj/machinery/rnd/production/techfab/department/service
 
-<<<<<<< HEAD
-/obj/item/circuitboard/machine/vendatray
-	name = "Vend-A-Tray"
-	greyscale_colors = CIRCUIT_COLOR_SERVICE
-	build_path = /obj/structure/displaycase/forsale
-	req_components = list(
-		/datum/stock_part/card_reader = 1)
-
 /obj/item/circuitboard/machine/pokerchip_exchanger
 	name = "Poker Chip Exchanger"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE
@@ -1460,8 +1452,6 @@
 	needs_anchored = FALSE
 	req_components = list()
 
-=======
->>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 /obj/item/circuitboard/machine/fishing_portal_generator
 	name = "Fishing Portal Generator"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE

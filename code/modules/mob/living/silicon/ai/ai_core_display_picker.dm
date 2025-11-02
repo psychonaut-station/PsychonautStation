@@ -43,10 +43,12 @@
 
 	data["current_display"] = current_display
 
+
 	// Get icon for current display
 	var/current_icon_state = resolve_ai_icon_sync(current_display)
+	var/current_icon = GLOB.ai_core_display_screen_icons[current_display] || 'icons/mob/silicon/ai.dmi'
 	data["current_icon"] = list(
-		"icon" = 'icons/mob/silicon/ai.dmi',
+		"icon" = current_icon,
 		"icon_state" = current_icon_state
 	)
 
@@ -54,10 +56,11 @@
 
 	for(var/option_name in GLOB.ai_core_display_screens)
 		var/icon_state = resolve_ai_icon_sync(option_name)
+		var/icon = GLOB.ai_core_display_screen_icons[option_name] || 'icons/mob/silicon/ai.dmi'
 		var/list/option_data = list(
 			"name" = option_name,
 			"icon_state" = icon_state,
-			"icon" = 'icons/mob/silicon/ai.dmi'
+			"icon" = icon
 		)
 		options += list(option_data)
 

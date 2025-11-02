@@ -21,7 +21,7 @@ GLOBAL_LIST_INIT(ai_status_display_emotes, list(
 
 // Mapping from AI core display options to new status display icon states
 // This allows AI status displays to show the same choice as AI core displays
-GLOBAL_LIST_INIT(ai_core_to_status_display_mapping, list(
+GLOBAL_LIST_INIT(ai_core_to_status_display_mapping, sort_list(list(
 	"Alien" = "ai_status_alien",
 	"Angel" = "ai_status_angel",
 	"Banned" = "ai_status_banned",
@@ -56,7 +56,9 @@ GLOBAL_LIST_INIT(ai_core_to_status_display_mapping, list(
 	"Too Deep" = "ai_status_too_deep",
 	"Triumvirate" = "ai_status_triumvirate",
 	"Weird" = "ai_status_weird",
-))
+
+	"Allied Mastercomputer" = "ai_status_allied_mastercomputer",
+)))
 
 // Combined list for AI status display preferences, including both emotion states and AI core display options
 GLOBAL_LIST_INIT(ai_status_display_all_options, list())
@@ -187,11 +189,16 @@ GLOBAL_LIST_INIT(ai_core_display_screens, sort_list(list(
 	"Triumvirate-M",
 	"Triumvirate",
 	"Weird",
+
 	"Allied Mastercomputer"
 )))
 
 GLOBAL_LIST_INIT(ai_core_display_screen_icons, list(
 	"Allied Mastercomputer" = 'icons/psychonaut/mob/silicon/ai.dmi',
+))
+
+GLOBAL_LIST_INIT(ai_status_display_screen_icons, list(
+	"Allied Mastercomputer" = 'icons/psychonaut/obj/machines/status_display.dmi',
 ))
 
 /// A form of resolve_ai_icon that is guaranteed to never sleep.

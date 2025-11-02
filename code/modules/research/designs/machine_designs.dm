@@ -1021,17 +1021,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-<<<<<<< HEAD
-/datum/design/board/vendatray
-	name = "Vend-a-Tray Board"
-	desc = "The circuit board for a Vend-a-Tray."
-	id = "vendatray"
-	build_path = /obj/item/circuitboard/machine/vendatray
-	category = list(
-		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_SERVICE
-	)
-	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
-
 /datum/design/board/pokerchip_exchanger
 	name = "Poker Chip Exchanger Board"
 	desc = "The circuit board for a Poker Chip Exchanger."
@@ -1042,8 +1031,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SERVICE
 
-=======
->>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 /datum/design/board/bountypad
 	name = "Civilian Bounty Pad Board"
 	desc = "The circuit board for a Civilian Bounty Pad."

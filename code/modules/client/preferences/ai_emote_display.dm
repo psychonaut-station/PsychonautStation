@@ -16,7 +16,8 @@
 	else
 		if(!length(GLOB.ai_status_display_all_options))
 			init_ai_status_display_options()
-		return uni_icon('icons/obj/machines/status_display.dmi', GLOB.ai_status_display_all_options[value])
+		var/icon = GLOB.ai_status_display_screen_icons[value] || 'icons/obj/machines/status_display.dmi'
+		return uni_icon(icon, GLOB.ai_status_display_all_options[value])
 
 /datum/preference/choiced/ai_emote_display/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))

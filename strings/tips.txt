@@ -1,23 +1,6 @@
 @You can <i>italicize</i>, <b>embolden</b> or <u>underline</u> portions of your messages by enclosing them with |, + or _ respectively. You can also avoid this by adding backslashes (they won't show in the message) before these characters.
 ♪ Hey, have you ever tried appending the % character before your messages when speaking in-game? ♫
 A Scientist will pay top dollar for your frogs!
-<<<<<<< HEAD
-Bir bardak su fırlatarak kaygan bir zemin oluşturabilirsiniz, sizi kovalayan kişilere karşı ufak bir engel.
-Sigara yakabileceğiniz herhangi bir şey ile kanamanızı da durdurabilirsiniz, teknik olarak SM de buna dahil olabilir.
-Bir Blob, Blobbernaut veya Blob Zombie iseniz söylediğiniz şeyler sadece diğer Blob ve Blob canlıları tarafından duyulabilir.
-Bir Blobbernaut iseniz, arayüzünüzde canınızı ve sizi yaratan Blob'un Core canını görebilirsiniz.
-Bir Botanist olarak, yetiştirdiğiniz bitkilerden alacağınız kimyasallar ile siz de ilaçlar yapabilirsiniz. Hydrogen (Grass) + Water (Watermelon) + Sugar (Sugarcane) eşittir Mannitol!
-Bir Botanist olarak siz de bir Chemist gibi, bitkilerinizden alacağınız kimyasallar ile kesinlikle güvenli deneyler yapabilirsiniz. Potassium (Banana) + Water (Watermelon) eşittir... bedava patlayıcı? Yan yana ekmemeye dikkat edin.
-Bir Botanist olarak, vendorlarınızı hackleyerek daha fazla tohuma, kimyasallara erişebilirsiniz. Alternatif olarak bu tohumları kargodan, kimyasalları da kimyacılardan isteyebilirsiniz.
-Yetiştirdiğiniz bitkileri mutasyona uğratmak için Left 4 Zed verebilirsiniz, bu kimyasalı NutriMax vendorundan veya Biogenerator yolu ile elde edebilirsiniz.
-Bir Botanist olarak, bitkilerinizin "Potency" değerini yüksek tutmak işinize yarayacaktır. Bu, bitkilerinizin boyutunu, sahip olduğu kimyasal miktarını ve Biogenerator'de üreteceği puan miktarını arttıracaktır.
-Bir Kargocu iseniz, maintlerdeki sandıkları, su ve yakıt tanklarını, madencilerin kullanmadığı Lavaland hazinelerini, elinizde bol bulunan madenleri ve daha birçok şeyi paraya çevirebilirsiniz!
-Kargo departmanındaki MULEbot'ları hackleyerek daha hızlı gitmelerini, yollarına çıkan kişileri ezmelerini ve hatta üzerlerine binilebilmesini sağlayabilirsiniz!
-Kargo sipariş konsolunun kartını bir multitool ile hackleyerek satın alabileceğiniz şeylere birkaç kaçak eşya ekleyebilirsiniz.
-Changeling olarak, başka birisinin kılığına girmek size o kişinin yaralarını da verir. Fleshmend yeteneğinizi kullanarak bu yaralardan kurtulabilirsiniz.
-Changelingler, DNA Extraction Sting ile "Absorb" görevlerini tamamlayabilirler ancak bu şekilde elde ettikleri DNA'lar yeteneklerini değiştirmelerini sağlamaz.
-Changeling iken birisini absorb'lamak için bir kişiye 4. seviye grab attıktan sonra üzerinde "Absorb" yeteneğinizi kullanmanız gereklidir. Bu size yeteneklerinizi değiştirme hakkı, kişinin DNA'sını, bu kişinin kılığına girme gücü, kişinin hafızasını ve söylediği birkaç şeyin örneğini verecektir.
-=======
 A thrown glass of water can make a slippery tile, allowing you to slow down your pursuers in a pinch.
 Anything you can light a cigarette with, you can use to cauterize a bleeding wound. Technically, that includes the Supermatter.
 As a Bitrunner, upgrading your quantum server will increase rewards and reduce downtime.
@@ -37,7 +20,6 @@ As a Changeling, taking on someone else's appearance will also give you all of t
 As a Changeling, the Extract DNA sting counts for your genome absorb objective, but does not let you respec your powers.
 As a Changeling, you can absorb someone by strangling them and using the Absorb verb; this gives you the ability to rechoose your powers, the DNA of whoever you absorbed, the memory of the absorbed, and some samples of things the absorbed said.
 As a Chemist, Holy Water and Potassium mixed together will create a HOLY explosion, with increased power scaling by amount used. If at least 75 units of both are used, the explosion will reveal, ignite, and paralyze any cultists, heretics, and revenants in sight. Do it!
->>>>>>> 7b3a20b00f1b07b6287776996ad2009658b37ed8
 As a Chemist, some chemicals can only be synthesized by heating up the contents with a chemical heater or manually with lighters and similar tools.
 As a Chemist, there are dozens of chemicals that can heal, and even more that can cause harm. Experiment!
 As a Chemist, Water and Potassium mixed together will create an explosion, with power scaling by amount used. Don't do it.

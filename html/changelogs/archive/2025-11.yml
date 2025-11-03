@@ -1,0 +1,11 @@
+2025-11-03:
+  FalloutFalcon:
+  - spellcheck: Lawyer and Coroner round tips now reflect how many job slots they
+      have.
+  Gboster-0:
+  - bugfix: the ore refineries now drop stacks of materials below them if they are
+      not linked to a silo instead of being sent to the shadow realm
+  Melber:
+  - bugfix: Vampires suck again, I mean, they can suck any bloodtype again
+  theselfish:
+  - spellcheck: Clown Op shoe description no longer starts with a lower case.

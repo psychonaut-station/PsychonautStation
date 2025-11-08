@@ -333,13 +333,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_WOUND_LICKER "wound_licker"
 /// Mobs with this trait are allowed to use silicon emotes
 #define TRAIT_SILICON_EMOTES_ALLOWED "silicon_emotes_allowed"
-<<<<<<< HEAD
 /// Makes you immune to welding flashes
 #define TRAIT_NOTOOLFLASH "notoolflash"
-=======
 /// Mobs with this trait can tell when other mobs whisper even if their mouth is covered. They still can't tell what was whispered though.
 #define TRAIT_SEE_MASK_WHISPER "see_mask_whisper"
->>>>>>> 1fa09aaf47091712d17c956ada3bf726600341fd
 
 /// This trait designate that the mob was originally a monkey
 #define TRAIT_BORN_MONKEY "born_as_a_monkey"

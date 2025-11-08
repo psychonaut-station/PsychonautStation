@@ -892,7 +892,6 @@
 	new /obj/item/slimepotion/slime/sentience/nuclear/dangerous_horse(src)
 	new /obj/item/food/grown/apple(src)
 
-<<<<<<< HEAD
 /obj/item/storage/box/syndicate/sandy
 	name = "Sandevistan Bundle"
 	desc = "This is a set containing a sandevistan autosurgeon, allowing you to outspeed targets!"
@@ -911,13 +910,12 @@
 /obj/item/storage/box/syndicate/mantis/PopulateContents()
 	new /obj/item/autosurgeon/syndicate/mantis(src)
 	new /obj/item/autosurgeon/syndicate/mantis(src)
-=======
+
 /obj/item/storage/box/syndicate/sleeping_carp/PopulateContents()
 	new /obj/item/book/granter/martial/carp(src)
 	new /obj/item/clothing/head/costume/snakeeater(src)
 	new /obj/item/clothing/under/costume/gi(src)
 	new /obj/item/clothing/shoes/sandal(src)
->>>>>>> 1fa09aaf47091712d17c956ada3bf726600341fd
 
 #undef KIT_RECON
 #undef KIT_BLOODY_SPAI

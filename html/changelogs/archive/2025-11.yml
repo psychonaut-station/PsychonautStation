@@ -1,25 +1,15 @@
-<<<<<<< HEAD
-2025-11-03:
-=======
 2025-11-01:
   Aliceee2ch:
   - spellcheck: Adds missing space in gullion description.
   ArcaneMusic:
   - rscadd: Leaving a can of soda exposed to the elements at low pressure will now
       burst.
->>>>>>> 1fa09aaf47091712d17c956ada3bf726600341fd
   FalloutFalcon:
   - spellcheck: Lawyer and Coroner round tips now reflect how many job slots they
       have.
   Gboster-0:
   - bugfix: the ore refineries now drop stacks of materials below them if they are
       not linked to a silo instead of being sent to the shadow realm
-<<<<<<< HEAD
-  Melber:
-  - bugfix: Vampires suck again, I mean, they can suck any bloodtype again
-  theselfish:
-  - spellcheck: Clown Op shoe description no longer starts with a lower case.
-=======
   Ghommie:
   - refactor: Refactored screen alerts a little. Most should now fit the player's
       hud style. Report any issue.
@@ -217,4 +207,3 @@
   - bugfix: you should experience less stutters every 10 seconds
   - server: server operators can now configure an alternative storage domain for clientside
       data storage, read the example configuration for more
->>>>>>> 1fa09aaf47091712d17c956ada3bf726600341fd

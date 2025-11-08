@@ -64,12 +64,9 @@ type ByondType = {
   strictMode: boolean;
 
   /**
-   * If `true`, all byond.topic and byond.send_message calls will silently fail.
-   * This is to deal with a byond bug where sending messages to the server while
-   * a client is reconnecting or the world is rebooting can cause the connection
-   * to die. Set on world reboot.
+   * The external URL for the IndexedDB IFrame to use as the origin
    */
-  communicationLocked: boolean;
+  storageCdn: string;
 
   /**
    * Makes a BYOND call.

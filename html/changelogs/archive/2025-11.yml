@@ -207,3 +207,22 @@
   - bugfix: you should experience less stutters every 10 seconds
   - server: server operators can now configure an alternative storage domain for clientside
       data storage, read the example configuration for more
+2025-11-09:
+  Aliceee2ch:
+  - image: Resprited every food in bowl (salads, soups, martian, moth, etc.).
+  Cat:
+  - bugfix: Plasmaman EVA suits from cargo can have their extinguisher refueled fully
+      now
+  LemonInTheDark:
+  - bugfix: Fixed a timing issue with SS_KEEP_TIMING subsystems, which impacts exactly
+      SSticker. TLDR is roundstart will now actually take the time it says it does,
+      instead of 75% of it.
+  - config: The roundstart delay config is now accurate, so you may want to decrease
+      it to not overlengthen lobby time. IDK you decide.
+  Melbert:
+  - bugfix: Fishing hooks will no longer hook even though the hook failed
+  lelandkemble:
+  - bugfix: prevents retrying making a fake wall from range
+  vinylspiders:
+  - bugfix: fixes an oversight where the wardrobe system tries to delete modsuit parts
+      when stashing the modsuit

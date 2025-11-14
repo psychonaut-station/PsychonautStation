@@ -547,6 +547,7 @@
 		final_block_chance = 0 //Don't bring a...mace to a gunfight, and also you aren't going to really block someone full body tackling you with a mace. Or a road roller, if one happened to hit you.
 	return ..()
 
+<<<<<<< HEAD
 /obj/item/mantis_blade
 	name = "C.H.R.O.M.A.T.A. mantis blade"
 	desc = "Powerful inbuilt blade, hidden just beneath the skin. Singular brain signals directly link to this bad boy, allowing it to spring into action in just seconds."
@@ -728,3 +729,5 @@
 /datum/movespeed_modifier/shield_blades
 	multiplicative_slowdown = 1.25
 
+=======
+>>>>>>> 6ad94a1e9308cf5684dd85c744f67eb50ed943cb

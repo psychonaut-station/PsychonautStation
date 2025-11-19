@@ -2,8 +2,12 @@
 	name = "Carp Migration"
 	typepath = /datum/round_event/carp_migration
 	weight = 15
-	min_players = 12
-	earliest_start = 10 MINUTES
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// min_players = 12
+	// earliest_start = 10 MINUTES
+	min_players = 20
+	earliest_start = 40 MINUTES
+	// PSYCHONAUT EDIT ADDITION END
 	max_occurrences = 6
 	category = EVENT_CATEGORY_ENTITIES
 	description = "Summons a school of space carp."
@@ -29,7 +33,7 @@
 	/// Rarer mob type to spawn, must also be a child of /mob/living/basic/carp. If one of these is created, it will take priority to show ghosts.
 	var/boss_type = /mob/living/basic/carp/mega
 	/// What to describe detecting near the station
-	var/fluff_signal = "Unknown biological entities"
+	var/fluff_signal = "bilinmeyen biyolojik varlıklar" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original:  var/fluff_signal = "Unknown biological entities"
 	/// Associated lists of z level to a list of points to travel to, so that grouped fish move to the same places
 	var/list/z_migration_paths = list()
 
@@ -37,7 +41,10 @@
 	start_when = rand(40, 60)
 
 /datum/round_event/carp_migration/announce(fake)
-	priority_announce("[fluff_signal] have been detected near [station_name()], please stand-by.", "Lifesign Alert")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("[fluff_signal] have been detected near [station_name()], please stand-by.", "Lifesign Alert")
+	priority_announce("[station_name()] yakınlarında [fluff_signal] tespit edildi, lütfen beklemede kalın.", "Yaşam Sinyali Uyarısı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/carp_migration/start()
 	// Stores the most recent fish we spawn

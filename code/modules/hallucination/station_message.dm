@@ -10,13 +10,21 @@
 /datum/hallucination/station_message/blob_alert
 
 /datum/hallucination/station_message/blob_alert/start()
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", \
 		"Biohazard Alert", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
+	*/
+	priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller tehditi kontrol altına almalıdır.", \
+		"Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return ..()
 
 /datum/hallucination/station_message/shuttle_dock
 
 /datum/hallucination/station_message/shuttle_dock/start()
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
 					title = "Emergency Shuttle Arrival",
@@ -25,6 +33,16 @@
 					players = list(hallucinator),
 					color_override = "orange",
 				)
+	*/
+	priority_announce(
+					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
+					title = "Acil Durum Mekiği Yanaştı",
+					sound = ANNOUNCER_SHUTTLEDOCK,
+					sender_override = "Acil Durum Mekiği Uyarısı",
+					players = list(hallucinator),
+					color_override = "orange",
+				)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return ..()
 
 /datum/hallucination/station_message/malf_ai
@@ -33,8 +51,14 @@
 	if(!(locate(/mob/living/silicon/ai) in GLOB.silicon_mobs))
 		return FALSE
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", \
 		"Anomaly Alert", ANNOUNCER_AIMALF, players = list(hallucinator))
+	*/
+	priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış modülüne gelebilecek olası hasarı önlemek için lütfen AI'ı devre dışı bırakın.", \
+		"Anomali Uyarısı", ANNOUNCER_AIMALF, players = list(hallucinator))
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return ..()
 
 /datum/hallucination/station_message/heretic
@@ -93,6 +117,8 @@
 	var/area/fake_summon_area_type = pick(GLOB.the_station_areas - hallucinator_area.type)
 	var/area/fake_summon_area = GLOB.areas_by_type[fake_summon_area_type]
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "Figments from an eldritch god are being summoned by [totally_real_cult_leader.real_name] into [fake_summon_area] from an unknown dimension. Disrupt the ritual at all costs!",
 		title = "[command_name()] Higher Dimensional Affairs",
@@ -100,13 +126,25 @@
 		has_important_message = TRUE,
 		players = list(hallucinator),
 	)
+	*/
+	priority_announce(
+		text = "Tanrı katından gelen yaratıklar, [totally_real_cult_leader.real_name] tarafından bilinmeyen bir boyuttan [fake_summon_area] içine çağrılıyor. Ne pahasına olursa olsun ayini bozun!",
+		title = "[command_name()] Üst Boyutlu İlişkiler",
+		sound = 'sound/music/antag/bloodcult/bloodcult_scribe.ogg',
+		has_important_message = TRUE,
+		players = list(hallucinator),
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return ..()
 
 /datum/hallucination/station_message/meteors
 	random_hallucination_weight = 2
 
 /datum/hallucination/station_message/meteors/start()
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS, players = list(hallucinator))
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS, players = list(hallucinator))
+	priority_announce("İstasyonla çarpışma rotasında olan meteorlar tespit edildi.", "Meteor Uyarısı", ANNOUNCER_METEORS, players = list(hallucinator))
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return ..()
 
 /datum/hallucination/station_message/supermatter_delam

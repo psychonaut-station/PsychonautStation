@@ -42,10 +42,10 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/game/objects/items/crab17.dm`: `/obj/structure/checkoutmachine/Destroy()`, `/obj/effect/dumpeet_target/proc/startLaunch()`
 - `code/game/objects/items/dna_probe.dm`: `/obj/item/dna_probe/carp_scanner/attack_self()`
 - `code/game/objects/items/mail.dm`: `/obj/item/mail/proc/junk_mail()`
+- `code/modules/admin/topic.dm`: `/datum/admins/Topic()`
 - `code/modules/admin/verbs/adminshuttle.dm`: `disable_shuttle`, `enable_shuttle`
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/proc/announce_to_all_players()`, `/datum/anonymous_theme/proc/restore_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
-- `code/modules/admin/topic.dm`: `/datum/admins/Topic()`
 - `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
 - `code/modules/antagonists/cult/cult_items.dm`: `/obj/item/shuttle_curse/attack_self()`
 - `code/modules/antagonists/heretic/knowledge/ash_lore.dm`: `/datum/heretic_knowledge/ultimate/ash_final/var/announcement_text`
@@ -102,18 +102,28 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/anomaly/anomaly_dimensional.dm`: `/datum/round_event/anomaly/anomaly_dimensional/announce()`
 - `code/modules/events/anomaly/anomaly_ectoplasm.dm`: `/datum/round_event/anomaly/anomaly_ectoplasm/announce()`
 - `code/modules/events/anomaly/anomaly_ectoplasm.dm`: `/datum/round_event/anomaly/anomaly_ectoplasm/announce()`
+- `code/modules/events/anomaly/anomaly_flux.dm`: `/datum/round_event/anomaly/anomaly_flux/announce()`
 - `code/modules/events/anomaly/anomaly_grav.dm`: `/datum/round_event/anomaly/anomaly_grav/announce()`
 - `code/modules/events/anomaly/anomaly_grav.dm`: `/datum/round_event/anomaly/anomaly_grav/announce()`
 - `code/modules/events/anomaly/anomaly_hallucination.dm`: `/datum/round_event/anomaly/anomaly_hallucination/announce()`
 - `code/modules/events/anomaly/anomaly_hallucination.dm`: `/datum/round_event/anomaly/anomaly_hallucination/announce()`
 - `code/modules/events/anomaly/anomaly_pyro.dm`: `/datum/round_event/anomaly/anomaly_pyro/announce()`
 - `code/modules/events/anomaly/anomaly_pyro.dm`: `/datum/round_event/anomaly/anomaly_pyro/announce()`
+- `code/modules/events/anomaly/anomaly_vortex.dm`: `/datum/round_event/anomaly/anomaly_vortex/announce()`
 - `code/modules/events/aurora_caelus.dm`: `/datum/round_event/aurora_caelus/announce()`, `/datum/round_event/aurora_caelus/end()`
 - `code/modules/events/aurora_caelus.dm`: `/datum/round_event/aurora_caelus/announce()`, `/datum/round_event/aurora_caelus/end()`
 - `code/modules/events/brand_intelligence.dm`: `/datum/round_event/brand_intelligence/announce()`
 - `code/modules/events/brand_intelligence.dm`: `/datum/round_event/brand_intelligence/announce()`
+- `code/modules/events/bureaucratic_error.dm`: `/datum/round_event/bureaucratic_error/announce()`
+- `code/modules/events/carp_migration.dm`: `/datum/round_event/carp_migration/var/fluff_signal`, `/datum/round_event/carp_migration/announce()`
 - `code/modules/events/communications_blackout.dm`: `/datum/round_event/communications_blackout/announce()`
 - `code/modules/events/communications_blackout.dm`: `/datum/round_event/communications_blackout/announce()`
+- `code/modules/events/disease_outbreak.dm`: `/datum/round_event/disease_outbreak/announce()`
+- `code/modules/events/earthquake.dm`: `/datum/round_event/earthquake/announce()`
+- `code/modules/events/electrical_storm.dm`: `/datum/round_event/electrical_storm/announce()`
+- `code/modules/events/ghost_role/sentience.dm`: `/datum/round_event/ghost_role/sentience`, `/datum/round_event/ghost_role/sentience/announce()`, `/datum/round_event/ghost_role/sentience/all`
+- `code/modules/events/gravity_generator_blackout.dm`: `/datum/round_event/gravity_generator_blackout/announce()`
+- `code/modules/events/grey_tide.dm`: `/datum/round_event/grey_tide/announce()`
 - `code/modules/events/grid_check.dm`: `/datum/round_event/grid_check/announce()`
 - `code/modules/events/grid_check.dm`: `/datum/round_event/grid_check/announce()`
 - `code/modules/events/holiday/easter.dm`: `/datum/round_event/easter/announce()`, `/datum/round_event/rabbitrelease/announce()`
@@ -126,14 +136,17 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/holiday/xmas.dm`: `/datum/round_event/ghost_role/santa/announce()`
 - `code/modules/events/immovable_rod/immovable_rod_event.dm`: `/datum/round_event/immovable_rod/announce()`
 - `code/modules/events/immovable_rod/immovable_rod_event.dm`: `/datum/round_event/immovable_rod/announce()`
+- `code/modules/events/ion_storm.dm`: `/datum/round_event/ion_storm/announce()`, `/proc/generate_ion_law()`
 - `code/modules/events/market_crash.dm`: `/datum/round_event/market_crash/announce()`, `/datum/round_event/market_crash/end()`
 - `code/modules/events/market_crash.dm`: `/datum/round_event/market_crash/announce()`, `/datum/round_event/market_crash/end()`
 - `code/modules/events/meteors/dark_matteor_event.dm`: `/datum/round_event/dark_matteor/announce()`
 - `code/modules/events/meteors/dark_matteor_event.dm`: `/datum/round_event/dark_matteor/announce()`
+- `code/modules/events/meteors/meteor_wave_events.dm`: `/datum/round_event/meteor_wave/announce()`, `/datum/round_event/meteor_wave/meaty/announce()`, `/datum/round_event/meteor_wave/dust_storm/announce()`
 - `code/modules/events/meteors/stray_meteor_event.dm`: `/datum/round_event/stray_meteor/announce()`
 - `code/modules/events/meteors/stray_meteor_event.dm`: `/datum/round_event/stray_meteor/announce()`
 - `code/modules/events/mice_migration.dm`: `/datum/round_event/mice_migration/announce()`
 - `code/modules/events/mice_migration.dm`: `/datum/round_event/mice_migration/announce()`
+- `code/modules/events/portal_storm.dm`: `/datum/round_event/portal_storm/announce()`
 - `code/modules/events/processor_overload.dm`: `/datum/round_event/processor_overload/announce()`
 - `code/modules/events/processor_overload.dm`: `/datum/round_event/processor_overload/announce()`
 - `code/modules/events/radiation_leak.dm`: `/datum/round_event/radiation_leak/announce()`
@@ -142,6 +155,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/radiation_storm.dm`: `/datum/round_event/radiation_storm/announce()`
 - `code/modules/events/sandstorm.dm`: `/datum/round_event/sandstorm/announce()`
 - `code/modules/events/sandstorm.dm`: `/datum/round_event/sandstorm/announce()`
+- `code/modules/events/scrubber_overflow.dm`: `/datum/round_event/scrubber_overflow/announce()`
 - `code/modules/events/shuttle_catastrophe.dm`: `/datum/round_event/shuttle_catastrophe/announce()`
 - `code/modules/events/shuttle_catastrophe.dm`: `/datum/round_event/shuttle_catastrophe/announce()`
 - `code/modules/events/shuttle_insurance.dm`: `/datum/round_event/shuttle_insurance/announce()`, `/datum/round_event/shuttle_insurance/proc/answered()`
@@ -158,6 +172,8 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/wisdomcow.dm`: `/datum/round_event/wisdomcow/announce()`
 - `code/modules/events/wormholes.dm`: `/datum/round_event/wormholes/announce()`
 - `code/modules/events/wormholes.dm`: `/datum/round_event/wormholes/announce()`
+- `code/modules/flufftext/dreaming.dm`: `/datum/dream/random/GenerateDream()`, `/datum/dream/hear_something/GenerateDream()`, `/datum/dream/hear_something/proc/PlayRandomSound()`
+- `code/modules/hallucination/station_message.dm`: `/datum/hallucination/station_message/blob_alert/start()`, `/datum/hallucination/station_message/shuttle_dock/start()`, `/datum/hallucination/station_message/malf_ai/start()`, `/datum/hallucination/station_message/cult_summon/start()`, `/datum/hallucination/station_message/meteors/start()`
 - `code/modules/holiday/holidays.dm`: `/datum/holiday/anz`, `/datum/holiday/atrakor_festival`, `/datum/holiday/friendship/greet()`, `/datum/holiday/indigenous`, `/datum/holiday/un_day`, `/datum/holiday/friday_thirteenth`, `/datum/holiday/islamic/ramadan/end`, `/datum/holiday/hebrew/passover`
 - `code/modules/jobs/job_types/ai.dm`: `/datum/job/ai/announce_job()`
 - `code/modules/jobs/job_types/ai.dm`: `/datum/job/ai/announce_job()`
@@ -202,7 +218,9 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 ### Modüler Değişiklikler
 
 - `modular_psychonaut/master_files/code/game/objects/structures/bedsheet_bin.dm`
+- `modular_psychonaut/master_files/code/modules/events/shuttle_loan/shuttle_loan_datum.dm`: `/datum/shuttle_loan_situation/antidote`, `/datum/shuttle_loan_situation/department_resupply`, `/datum/shuttle_loan_situation/syndiehijacking`, `/datum/shuttle_loan_situation/lots_of_bees`, `/datum/shuttle_loan_situation/jc_a_bomb`, `/datum/shuttle_loan_situation/papers_please`, `/datum/shuttle_loan_situation/pizza_delivery`, `/datum/shuttle_loan_situation/russian_party`, `/datum/shuttle_loan_situation/spider_gift`, `/datum/shuttle_loan_situation/mail_strike`
 - `modular_psychonaut/master_files/code/modules/holiday/holidays.dm`: `/datum/holiday/greet()`, `/datum/holiday/fleet_day`, `/datum/holiday/fleet_day/greet()`, `/datum/holiday/groundhog`, `/datum/holiday/nz`, `/datum/holiday/nz/greet()`, `/datum/holiday/birthday`, `/datum/holiday/birthday/greet()`, `/datum/holiday/random_kindness`, `/datum/holiday/random_kindness/greet()`, `/datum/holiday/pi`, `/datum/holiday/pi/getStationPrefix()`, `/datum/holiday/no_this_is_patrick`, `/datum/holiday/no_this_is_patrick/getStationPrefix()`, `/datum/holiday/no_this_is_patrick/greet()`, `/datum/holiday/spess`, `/datum/holiday/spess/greet()`, `/datum/holiday/fourtwenty`, `/datum/holiday/tea`, `/datum/holiday/tea/getStationPrefix()`, `/datum/holiday/earth`, `/datum/holiday/cocuk_bayrami`, `/datum/holiday/labor`, `/datum/holiday/draconic_day`, `/datum/holiday/draconic_day/greet()`, `/datum/holiday/spor_bayrami`, `/datum/holiday/firefighter`, `/datum/holiday/firefighter/getStationPrefix()`, `/datum/holiday/bee`, `/datum/holiday/bee/getStationPrefix()`, `/datum/holiday/summersolstice`, `/datum/holiday/doctor`, `/datum/holiday/ufo`, `/datum/holiday/demokrasi_bayrami`, `/datum/holiday/usa`, `/datum/holiday/usa/getStationPrefix()`, `/datum/holiday/writer`, `/datum/holiday/france`, `/datum/holiday/france/getStationPrefix()`, `/datum/holiday/france/greet()`, `/datum/holiday/hotdogday/greet()`, `/datum/holiday/wizards_day`, `/datum/holiday/friendship`, `/datum/holiday/zafer_bayrami`, `/datum/holiday/tiziran_unification`, `/datum/holiday/tiziran_unification/greet()`, `/datum/holiday/tiziran_unification/getStationPrefix()`, `/datum/holiday/ianbirthday/greet()`, `/datum/holiday/pirate`, `/datum/holiday/pirate/greet()`, `/datum/holiday/questions`, `/datum/holiday/questions/greet()`, `/datum/holiday/animal`, `/datum/holiday/smile`, `/datum/holiday/boss`, `/datum/holiday/cumhuriyet_bayrami`, `/datum/holiday/vegan`, `/datum/holiday/october_revolution`, `/datum/holiday/remembrance_day`, `/datum/holiday/remembrance_day/greet()`, `/datum/holiday/remembrance_day/getStationPrefix()`, `/datum/holiday/lifeday`, `/datum/holiday/lifeday/getStationPrefix()`, `/datum/holiday/kindness`, `/datum/holiday/flowers`, `/datum/holiday/hello`, `/datum/holiday/hello/greet()`, `/datum/holiday/holy_lights`, `/datum/holiday/holy_lights/greet()`, `/datum/holiday/festive_season/greet()`, `/datum/holiday/human_rights`, `/datum/holiday/monkey/celebrate()`, `/datum/holiday/xmas/greet()`, `/datum/holiday/boxing`, `/datum/holiday/programmers`, `/datum/holiday/islamic/ramadan`, `/datum/holiday/islamic/ramadan/eve`, `/datum/holiday/hebrew/hanukkah`, `/datum/holiday/hebrew/hanukkah/greet()`, `/datum/holiday/easter/greet()`
+- `modular_psychonaut/master_files/strings/ion_laws.json`
 
 ### Definelar ve Helperlar
 

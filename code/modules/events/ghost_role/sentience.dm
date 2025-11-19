@@ -36,12 +36,13 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	minimum_required = 1
 	role_name = "random animal"
 	var/animals = 1
-	var/one = "one"
+	var/one = "birinin" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: var/one = "one"
 	fakeable = TRUE
 
 /datum/round_event/ghost_role/sentience/announce(fake)
 	var/sentience_report = ""
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	var/data = pick("scans from our long-range sensors", "our sophisticated probabilistic models", "our omnipotence", "the communications traffic on your station", "energy emissions we detected", "\[REDACTED\]")
 	var/pets = pick("animals/bots", "bots/animals", "pets", "simple animals", "lesser lifeforms", "\[REDACTED\]")
 	var/strength = pick("human", "moderate", "lizard", "security", "command", "clown", "low", "very low", "\[REDACTED\]")
@@ -49,6 +50,15 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	sentience_report += "Based on [data], we believe that [one] of the station's [pets] has developed [strength] level intelligence, and the ability to communicate."
 
 	priority_announce(sentience_report,"[command_name()] Medium-Priority Update")
+	*/
+	var/data = pick("uzun menzilli sensörlerimizin", "gelişmiş olasılıksal modellerimizin", "istasyonunuzdaki iletişim trafiği", "tespit ettiğimiz enerji emisyonları")
+	var/pets = pick("hayvanlardan", "robotlardan", "evcil hayvanlardan", "basit canlılardan", "küçük yaşam formlarından")
+	var/strength = pick("insan düzeyinde", "orta düzeyde", "lizard düzeyinde", "komuta düzeyinde", "clown düzeyinde", "düşük düzeyde", "çok düşük düzeyde")
+
+	sentience_report += "Elimizdeki [data] verilerine dayanarak, istasyonunuzdaki [pets] [one] [strength] zeka ve iletişim yeteneği geliştirdiğine inanıyoruz."
+
+	priority_announce(sentience_report,"[command_name()] Orta Öncelikli Bildiri")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/ghost_role/sentience/spawn_role()
 	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, alert_pic = /obj/item/slimepotion/slime/sentience, role_name_text = role_name)
@@ -130,6 +140,6 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	description = "ALL animals and robots become sentient, provided there is enough ghosts."
 
 /datum/round_event/ghost_role/sentience/all
-	one = "all"
+	one = "her birinin" // PSYCHONAUT EDIT ADDITION - LOCALIZATION - Original: one = "all"
 	animals = INFINITY // as many as there are ghosts and animals
 	// cockroach pride, station wide

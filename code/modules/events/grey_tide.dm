@@ -2,7 +2,7 @@
 	name = "Grey Tide"
 	typepath = /datum/round_event/grey_tide
 	max_occurrences = 2
-	min_players = 5
+	min_players = 10
 	category = EVENT_CATEGORY_ENGINEERING
 	description = "Bolts open all doors in one or more departments."
 	min_wizard_trigger_potency = 0
@@ -35,7 +35,10 @@
 /datum/round_event/grey_tide/announce(fake)
 	if(fake)
 		severity = rand(1,3)
-	priority_announce("Gr3y.T1d3 virus detected in [station_name()] secure locking encryption subroutines. Severity level of [severity]. Recommend station AI involvement.", "Security Alert")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Gr3y.T1d3 virus detected in [station_name()] secure locking encryption subroutines. Severity level of [severity]. Recommend station AI involvement.", "Security Alert")
+	priority_announce("[locale_suffix_genitive(station_name())] güvenli kilitleme ve şifreleme alt programlarında Gr3y.T1d3 virüsü tespit edildi. Önem derecesi [severity] olarak belirlendi.", "Güvenlik Uyarısı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/grey_tide/start()
 	if(!length(grey_tide_areas))

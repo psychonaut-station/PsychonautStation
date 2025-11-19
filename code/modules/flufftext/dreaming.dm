@@ -112,7 +112,9 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		custom_dream_nouns += sheet.dream_messages
 
 	. = list()
-	. += "you see"
+	// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+	// . += "you see"
+	// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 	//Subject
 	if(custom_dream_nouns.len && prob(90))
@@ -124,11 +126,15 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		fragment = replacetext(fragment, "%ADJECTIVE%", pick(GLOB.adjectives))
 	else
 		fragment = replacetext(fragment, "%ADJECTIVE% ", "")
-	if(findtext(fragment, "%A% "))
-		fragment = "\a [replacetext(fragment, "%A% ", "")]"
+		// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+	// if(findtext(fragment, "%A% "))
+	// 	fragment = "\a [replacetext(fragment, "%A% ", "")]"
+		// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 	. += fragment
 
 	//Verb
+	// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+	/*
 	fragment = ""
 	if(prob(50))
 		if(prob(35))
@@ -138,6 +144,8 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		fragment += "will "
 		fragment += pick(GLOB.verbs)
 	. += fragment
+	*/
+	// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 
 	if(prob(25))
 		return
@@ -149,9 +157,15 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 		fragment = replacetext(fragment, "%ADJECTIVE%", pick(GLOB.adjectives))
 	else
 		fragment = replacetext(fragment, "%ADJECTIVE% ", "")
-	if(findtext(fragment, "%A% "))
-		fragment = "\a [replacetext(fragment, "%A% ", "")]"
+	// PSYCHONAUT EDIT REMOVAL BEGIN - LOCALIZATION - Original:
+	// if(findtext(fragment, "%A% "))
+	// 	fragment = "\a [replacetext(fragment, "%A% ", "")]"
+	// PSYCHONAUT EDIT REMOVAL END - LOCALIZATION
 	. += fragment
+
+	// PSYCHONAUT ADDITION BEGIN - LOCALIZATION
+	. += "görüyorsun"
+	// PSYCHONAUT ADDITION END - LOCALIZATION
 
 /// Dream plays a random sound at you, chosen from all sounds in the folder
 /datum/dream/hear_something
@@ -165,9 +179,16 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 
 /datum/dream/hear_something/GenerateDream(mob/living/carbon/dreamer)
 	. = ..()
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	. += pick("you wind up a toy", "you hear something strange", "you pick out a record to play", "you hit shuffle on your music player")
 	. += CALLBACK(src, PROC_REF(PlayRandomSound))
 	. += "it reminds you of something"
+	*/
+	. += pick("bir oyuncak ile oynuyorsun", "garip bir şey duyuyorsun", "kasedi alıyorsun ve oynata basıyorsun")
+	. += CALLBACK(src, PROC_REF(PlayRandomSound))
+	. += "sana bir şeyi anımsatıyor"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/dream/hear_something/OnDreamEnd(mob/living/carbon/dreamer)
 	. = ..()
@@ -182,7 +203,10 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	var/sound/random_sound = sound(pick(SSsounds.all_sounds), channel=reserved_sound_channel)
 	random_sound.status = SOUND_STREAM
 	SEND_SOUND(dreamer, random_sound)
-	return "you hear something you weren't expecting!"
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// return "you hear something you weren't expecting!"
+	return "beklemediğin anda bir ses duyuyorsun"
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/dream/hear_something/proc/StopSound(mob/living/carbon/dreamer)
 	SEND_SOUND(dreamer, sound(channel=reserved_sound_channel))

@@ -4,7 +4,7 @@
 	name = "Meteor Wave: Normal"
 	typepath = /datum/round_event/meteor_wave
 	weight = 4
-	min_players = 15
+	min_players = 35
 	max_occurrences = 3
 	earliest_start = 25 MINUTES
 	category = EVENT_CATEGORY_SPACE
@@ -28,7 +28,7 @@
 		wave_name = pick_weight(list(
 			"normal" = 50,
 			"threatening" = 40,
-			"catastrophic" = 10))
+			"catastrophic" = 0))
 	switch(wave_name)
 		if("normal")
 			wave_type = GLOB.meteors_normal
@@ -50,7 +50,10 @@
 			kill()
 
 /datum/round_event/meteor_wave/announce(fake)
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS)
+	priority_announce("İstasyonla çarpışma rotasında olan meteorlar tespit edildi.", "Meteor Uyarısı", ANNOUNCER_METEORS)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/meteor_wave/tick()
 	if(ISMULTIPLE(activeFor, 3))
@@ -60,7 +63,7 @@
 	name = "Meteor Wave: Threatening"
 	typepath = /datum/round_event/meteor_wave/threatening
 	weight = 5
-	min_players = 20
+	min_players = 40
 	max_occurrences = 3
 	earliest_start = 35 MINUTES
 	description = "A meteor wave with higher chance of big meteors."
@@ -72,7 +75,7 @@
 	name = "Meteor Wave: Catastrophic"
 	typepath = /datum/round_event/meteor_wave/catastrophic
 	weight = 7
-	min_players = 25
+	min_players = 45
 	max_occurrences = 3
 	earliest_start = 45 MINUTES
 	description = "A meteor wave that might summon a tunguska class meteor."
@@ -91,8 +94,10 @@
 	wave_name = "meaty"
 
 /datum/round_event/meteor_wave/meaty/announce(fake)
-	priority_announce("Meaty ores have been detected on collision course with the station.", "Oh crap, get the mop.", ANNOUNCER_METEORS)
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Meaty ores have been detected on collision course with the station.", "Oh crap, get the mop.", ANNOUNCER_METEORS)
+	priority_announce("Etli bir meteorun istasyonla çarpışma rotasında olduğu tespit edildi.", "Kahretsin, paspası getir.", ANNOUNCER_METEORS)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 /datum/round_event_control/meteor_wave/dust_storm
 	name = "Major Space Dust"
 	typepath = /datum/round_event/meteor_wave/dust_storm
@@ -109,6 +114,8 @@
 /datum/round_event/meteor_wave/dust_storm/announce(fake)
 	var/list/reasons = list()
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	reasons += "[station_name()] is passing through a debris cloud, expect minor damage \
 		to external fittings and fixtures."
 
@@ -130,3 +137,21 @@
 		Please mind any turbulence or damage from debris."
 
 	priority_announce(pick(reasons), "Collision Alert")
+	*/
+	reasons += "[station_name()] bir enkaz bulutunun içinden geçmektedir \
+		dış donanım ve eşyalarda küçük çaplı hasar beklenmektedir."
+
+	reasons += "Nanotrasen Süper Silahlar Departmanı yeni bir [pick("saha","koruma","nova")] [pick("topu","silahı","tankı","gemisi")] \
+		prototipi deniyorlar. Bazı küçük çaplı hasarlar beklenmektedir."
+
+	reasons += "Komşu istasyonlarınızdan biri size taş atıyor. (Belki de \
+		mesajlarınızdan bıkmışlardır.)"
+
+	reasons += "[station_name()] yörüngesi bir asteroit madenciliğinden arta kalan bir \
+		bulutun içinden geçiyor. İstasyon gövdesinde küçük çaplı hasar beklenmektedir."
+
+	reasons += "[station_name()] ile kesişme rotasında olan büyük bir meteoroid parçalandı.  \
+		Enkaz kalıntıları istasyonun dış cephesini etkileyebilir."
+
+	priority_announce(pick(reasons), "Çarpışma Uyarısı")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION

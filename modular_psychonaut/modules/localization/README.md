@@ -175,6 +175,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/flufftext/dreaming.dm`: `/datum/dream/random/GenerateDream()`, `/datum/dream/hear_something/GenerateDream()`, `/datum/dream/hear_something/proc/PlayRandomSound()`
 - `code/modules/hallucination/station_message.dm`: `/datum/hallucination/station_message/blob_alert/start()`, `/datum/hallucination/station_message/shuttle_dock/start()`, `/datum/hallucination/station_message/malf_ai/start()`, `/datum/hallucination/station_message/cult_summon/start()`, `/datum/hallucination/station_message/meteors/start()`
 - `code/modules/holiday/holidays.dm`: `/datum/holiday/anz`, `/datum/holiday/atrakor_festival`, `/datum/holiday/friendship/greet()`, `/datum/holiday/indigenous`, `/datum/holiday/un_day`, `/datum/holiday/friday_thirteenth`, `/datum/holiday/islamic/ramadan/end`, `/datum/holiday/hebrew/passover`
+- `code/modules/jobs/job_types/_job.dm`: `/datum/job/proc/get_captaincy_announcement()`
 - `code/modules/jobs/job_types/ai.dm`: `/datum/job/ai/announce_job()`
 - `code/modules/jobs/job_types/ai.dm`: `/datum/job/ai/announce_job()`
 - `code/modules/jobs/job_types/captain.dm`: `/datum/job/captain/get_captaincy_announcement()`

@@ -537,7 +537,10 @@
 
 
 /mob/living/carbon/human/apply_prefs_job(client/player_client, datum/job/job)
-	var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	// PSYCHONAUT EDIT ADDITION BEGIN - (Force Random Appereance) - Original:
+	// var/fully_randomize = GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	var/fully_randomize = CONFIG_GET(flag/force_random_names) || GLOB.current_anonymous_theme || player_client.prefs.should_be_random_hardcore(job, player_client.mob.mind) || is_banned_from(player_client.ckey, "Appearance")
+	// PSYCHONAUT EDIT ADDITION END - (Force Random Appereance)
 	if(!player_client)
 		return // Disconnected while checking for the appearance ban.
 
@@ -569,10 +572,15 @@
 	if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
 
+		// PSYCHONAUT EDIT ADDITION BEGIN - (Force Random Appereance) - Original:
+		/*
 		if(require_human)
 			randomize_human_appearance(~RANDOMIZE_SPECIES)
 		else
 			randomize_human_appearance()
+		*/
+		randomize_human_appearance(~RANDOMIZE_SPECIES)
+		// PSYCHONAUT EDIT ADDITION END - (Force Random Appereance)
 
 		if (require_human)
 			set_species(/datum/species/human)

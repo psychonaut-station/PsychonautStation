@@ -207,19 +207,12 @@
   - bugfix: you should experience less stutters every 10 seconds
   - server: server operators can now configure an alternative storage domain for clientside
       data storage, read the example configuration for more
-<<<<<<< HEAD
-2025-11-09:
-=======
 2025-11-08:
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
   Aliceee2ch:
   - image: Resprited every food in bowl (salads, soups, martian, moth, etc.).
   Cat:
   - bugfix: Plasmaman EVA suits from cargo can have their extinguisher refueled fully
       now
-<<<<<<< HEAD
-  LemonInTheDark:
-=======
   L0pz:
   - qol: Messages in drone comms appear with their own color in chat
   - rscadd: Roman skeletons now have Roman swords.
@@ -228,7 +221,6 @@
   LemonInTheDark:
   - bugfix: Changing your species from vampire to not vampire will no longer brick
       your plane masters/rendering after 3 minutes or so.
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
   - bugfix: Fixed a timing issue with SS_KEEP_TIMING subsystems, which impacts exactly
       SSticker. TLDR is roundstart will now actually take the time it says it does,
       instead of 75% of it.
@@ -236,13 +228,6 @@
       it to not overlengthen lobby time. IDK you decide.
   Melbert:
   - bugfix: Fishing hooks will no longer hook even though the hook failed
-<<<<<<< HEAD
-  lelandkemble:
-  - bugfix: prevents retrying making a fake wall from range
-  vinylspiders:
-  - bugfix: fixes an oversight where the wardrobe system tries to delete modsuit parts
-      when stashing the modsuit
-=======
   RikuTheKiller:
   - bugfix: Status effects now tick consistently, with Fleshmend and such giving a
       consistent total healing amount. Report any oddities.
@@ -627,4 +612,3 @@
   UwUMacaroniTime:
   - balance: Nerfed cyborg hypospray across the board, notably refilling chems 20%
       slower.
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77

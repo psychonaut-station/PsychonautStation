@@ -78,6 +78,8 @@
 
 	implants = list(/obj/item/implant/mindshield)
 
+	pda_slot = ITEM_SLOT_LPOCKET
+
 /datum/outfit/job/brig_physician/mod
 	name = "Brig Physician (MODsuit)"
 

@@ -145,8 +145,8 @@
 	ammo_x_offset = 1
 
 /obj/item/gun/energy/laser/captain
-<<<<<<< HEAD
 	name = "\improper antique laser gun"
+	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
 	icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
@@ -154,13 +154,6 @@
 	righthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_righthand.dmi'
 	inhand_icon_state = "caplaser"
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
-=======
-	name = "antique laser gun"
-	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
-	icon_state = "caplaser"
-	w_class = WEIGHT_CLASS_NORMAL
-	inhand_icon_state = null
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
 	force = 10
 	ammo_x_offset = 3
 	selfcharge = 1
@@ -186,27 +179,20 @@
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
-<<<<<<< HEAD
+	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theoretically infinite use."
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-=======
-	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theoretically infinite use."
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
 	icon_state = "lasercannon"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "laser"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	shaded_charge = FALSE
-<<<<<<< HEAD
 	unique_reskin = null
-=======
 	ammo_x_offset = 1
-
 
 /obj/item/gun/energy/laser/captain/scattershot/add_deep_lore()
 	return
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
 
 /obj/item/gun/energy/laser/cyborg
 	can_charge = FALSE

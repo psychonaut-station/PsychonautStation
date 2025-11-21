@@ -33,12 +33,8 @@
 /datum/element/tool_flash/proc/flash(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 
-<<<<<<< HEAD
 	if(HAS_TRAIT(user, TRAIT_NOTOOLFLASH))
 		return
 
-	if(user && get_dist(get_turf(source), get_turf(user)) <= 1)
-=======
 	if(user && flash_strength > 0 && get_dist(get_turf(source), get_turf(user)) <= 1)
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
 		user.flash_act(max(flash_strength,1))

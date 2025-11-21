@@ -154,11 +154,7 @@ SUBSYSTEM_DEF(discord)
 	// While there's a collision in the token, generate a new one (should rarely happen)
 	while(not_unique)
 		//Column is varchar 100, so we trim just in case someone does us the dirty later
-<<<<<<< HEAD
 		one_time_token = "[random_code(3)]-[random_code(3)]"
-=======
-		one_time_token = trim("[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]", 100)
->>>>>>> be31aa5400c66f2ae5414f70a4da9c4bfd973d77
 
 		not_unique = find_discord_link_by_token(one_time_token, timebound = TRUE)
 

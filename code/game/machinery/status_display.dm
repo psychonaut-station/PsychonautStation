@@ -780,7 +780,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		icon_state = GLOB.ai_status_display_emotes[emotion]
 	// Default fallback
 	else
-		icon_state = "ai_neutral"
+		icon_state = "ai_download"
 
 	var/icon = GLOB.ai_status_display_screen_icons[emotion] || null
 

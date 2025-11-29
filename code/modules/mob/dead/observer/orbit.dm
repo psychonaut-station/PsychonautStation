@@ -288,8 +288,13 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 		var/obj/singularity/singulo = atom_poi
 		misc["extra"] = "Energy: [round(singulo.energy)]"
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - SINGULARITY_ENGINE - Original:
+	/*
 		if(singulo.current_size > 2)
 			critical = TRUE
+	*/
+		critical = singulo.is_dangerous()
+	// PSYCHONAUT EDIT ADDITION END - SINGULARITY_ENGINE
 
 		return list(misc, critical)
 

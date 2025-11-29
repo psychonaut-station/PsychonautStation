@@ -8,7 +8,7 @@ Limbus Company referansı olarak Clock Head adlı bir anomaly kaskını oyuna ek
 
 ### TG Değişiklikleri
 
-- N/A
+- `code/modules/mining/lavaland/mining_loot/equipment.dm`: `/obj/item/rod_of_asclepius/attack_self()`
 
 ### Modüler Değişiklikler
 

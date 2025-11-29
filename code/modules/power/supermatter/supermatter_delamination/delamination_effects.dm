@@ -140,6 +140,8 @@
 
 	// say goodbye to that shuttle of yours
 	if(SSshuttle.emergency.mode != SHUTTLE_ESCAPE)
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		/*
 		priority_announce(
 			text = "Fatal error occurred in emergency shuttle uplink during transit. Unable to reestablish connection.",
 			title = "Shuttle Failure",
@@ -147,11 +149,27 @@
 			sender_override = "Emergency Shuttle Uplink Alert",
 			color_override = "grey",
 		)
+		*/
+		priority_announce(
+			text = "Taşıma sırasında acil durum mekik bağlantısında ölümcül hata oluştu. Bağlantı yeniden kurulamıyor.",
+			title = "Mekik Arızası",
+			sound =  'sound/announcer/announcement/announce_dig.ogg',
+			sender_override = "Acil Durum Mekiği Uyarısı",
+			color_override = "grey",
+		)
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	else
 	// except if you are on it already, then you are safe c:
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		/*
 		minor_announce("ERROR: Corruption detected in navigation protocols. Connection with Transponder #XCC-P5831-ES13 lost. \
 				Backup exit route protocol decrypted. Calibrating route...",
 			"Emergency Shuttle", TRUE) // wait out until the rift on the station gets destroyed and the final message plays
+		*/
+		minor_announce("HATA: Navigasyon protokollerinde bozulma tespit edildi. #XCC-P5831-ES13 vericisi ile bağlantı kesildi. \
+				Yedek kaçış rotası protokolünün şifresi çözüldü. Rota yeniden ayarlanıyor...",
+			"Acil Durum Mekiği", TRUE) // wait out until the rift on the station gets destroyed and the final message plays
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		var/list/mobs = mobs_in_area_type(list(/area/shuttle/escape))
 		for(var/mob/living/mob as anything in mobs) // emulate mob/living/lateShuttleMove() behaviour
 			if(mob.buckled)
@@ -181,24 +199,43 @@
 /// Spawn an evacuation rift for people to go through.
 /datum/sm_delam/proc/effect_evac_rift_start()
 	var/obj/cascade_portal/rift = new /obj/cascade_portal(get_turf(pick(GLOB.generic_event_spawns)))
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce("We have been hit by a sector-wide electromagnetic pulse. All of our systems are heavily damaged, including those \
 		required for shuttle navigation. We can only reasonably conclude that a supermatter cascade is occurring on or near your station.\n\n\
 		Evacuation is no longer possible by conventional means; however, we managed to open a rift near the [get_area_name(rift)]. \
 		All personnel are hereby required to enter the rift by any means available.\n\n\
 		[Gibberish("Retrieval of survivors will be conducted upon recovery of necessary facilities.", FALSE, 5)] \
 		[Gibberish("Good luck--", FALSE, 25)]")
+	*/
+	priority_announce("Sektör çapında bir elektromanyetik darbe aldık. Mekik navigasyonu için gerekenler de dahil olmak üzere \
+		tüm sistemlerimiz ağır hasar gördü. İstasyonunuzda ya da yakınında bir supermatter dalgası meydana geldiği sonucuna varabiliriz.\n\n\
+		Tahliye artık normal yöntemlerle mümkün değil; ancak [get_area_name(rift)] yakınlarında bir yarık açmayı başardık. \
+		Tüm personelin ne olursa olsun yarığa girmesi gerekmektedir.\n\n\
+		[Gibberish("Hayatta kalanların kurtarılması, gerekli imkanların sağlanmasının ardından gerçekleştirilecektir.", FALSE, 5)] \
+		[Gibberish("Bol şans--", FALSE, 25)]")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	return rift
 
 /// Announce the destruction of the rift and end the round.
 /datum/sm_delam/proc/effect_evac_rift_end()
-	priority_announce("[Gibberish("The rift has been destroyed, we can no longer help you.", FALSE, 5)]")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("[Gibberish("The rift has been destroyed, we can no longer help you.", FALSE, 5)]")
+	priority_announce("[Gibberish("Yarık yok edildi, artık size yardım edemeyiz.", FALSE, 5)]")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	sleep(25 SECONDS)
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce("Reports indicate formation of crystalline seeds following resonance shift event. \
 		Rapid expansion of crystal mass proportional to rising gravitational force. \
 		Matter collapse due to gravitational pull foreseeable.",
 		"Nanotrasen Star Observation Association")
+	*/
+	priority_announce("[Gibberish("Tüm tahliye girişimleri sona ermiş ve sektörünüzdeki tüm kaynaklar geri çekilmiştir.\n \
+		[locale_suffix_genitive(station_name())] hayatta kalanlarına elveda.", FALSE, 5)]")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	sleep(25 SECONDS)
 
@@ -207,12 +244,21 @@
 
 	if(SSshuttle.emergency.mode == SHUTTLE_ESCAPE)
 		// special message for hijacks
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		/*
 		var/shuttle_msg = "Navigation protocol set to [SSshuttle.emergency.is_hijacked() ? "\[ERROR\]" : "backup route"]. \
 			Reorienting bluespace vessel to exit vector. ETA 15 seconds."
+		*/
+		var/shuttle_msg = "Navigasyon protokolleri [SSshuttle.emergency.is_hijacked() ? "\[HATA!\]" : "yedek rota"] olarak ayarlandı. \
+			Bluespace gemisi çıkış vektörüne yönlendiriliyor. Tahmini süre 15 saniye."
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		// garble the special message
 		if(SSshuttle.emergency.is_hijacked())
 			shuttle_msg = Gibberish(shuttle_msg, TRUE, 15)
-		minor_announce(shuttle_msg, "Emergency Shuttle", TRUE)
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// minor_announce(shuttle_msg, "Emergency Shuttle", TRUE)
+		minor_announce(shuttle_msg, "Acil Durum Mekiği", TRUE)
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		SSshuttle.emergency.setTimer(15 SECONDS)
 		return
 

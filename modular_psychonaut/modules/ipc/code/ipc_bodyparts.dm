@@ -10,6 +10,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_head"
 	disabled_wound_penalty = 10
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("slapped", "punched")
@@ -79,6 +80,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_chest"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("slapped", "punched")
 	is_dimorphic = FALSE
@@ -114,6 +116,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_l_arm"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -137,6 +140,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_r_arm"
 	limb_id = SPECIES_IPC
 	attack_verb_simple = list("kicked", "stomped")
 	is_dimorphic = FALSE
@@ -160,6 +164,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_l_leg"
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
@@ -194,6 +199,7 @@
 	icon = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
 	icon_greyscale = 'modular_psychonaut/master_files/icons/mob/human/species/ipc/bodyparts.dmi'
+	icon_state = "ipc_r_leg"
 	limb_id = SPECIES_IPC
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE

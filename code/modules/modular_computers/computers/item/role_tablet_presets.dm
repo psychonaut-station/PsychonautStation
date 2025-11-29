@@ -427,6 +427,7 @@
 	greyscale_colors = "#374f7e#a92323"
 	starting_programs = list(
 		/datum/computer_file/program/status,
+		/datum/computer_file/program/crew_manifest, // PSYCHONAUT ADDITION
 	)
 
 /obj/item/modular_computer/pda/veteran_advisor

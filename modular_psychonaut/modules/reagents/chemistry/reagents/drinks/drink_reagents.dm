@@ -1,3 +1,6 @@
+/datum/reagent/consumable/tea
+	color = "#771a09"
+
 /datum/reagent/consumable/ayran
 	name = "Ayran"
 	description = "Yoğurt, su ve tuzun karıştırılmasıyla elde edilen, serinletici ve ferahlatıcı geleneksel bir Türk içeceği."

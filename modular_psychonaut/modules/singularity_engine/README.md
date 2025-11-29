@@ -19,6 +19,7 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `code/modules/admin/verbs/debug.dm`: `cmd_admin_areatest`
 - `code/modules/antagonists/wizard/grand_ritual/grand_ritual.dm`: `/datum/action/cooldown/grand_ritual/var/area_blacklist`
 - `code/modules/events/supermatter_surge.dm`: `/datum/round_event_control/supermatter_surge/can_spawn_event()`
+- `code/modules/mob/dead/observer/orbit.dm`: `/datum/orbit_menu/proc/get_misc_data()`
 - `code/modules/modular_computers/file_system/programs/sm_monitor.dm`: `/datum/computer_file/program/supermatter_monitor/ui_data()`
 - `code/modules/power/singularity/singularity.dm`: `/obj/singularity/var/dissipate_delay`, `/obj/singularity/process()`, `/obj/singularity/proc/expand()`
 - `code/modules/power/tesla/energy_ball.dm`: `TESLA_DEFAULT_ENERGY`, [`/obj/energy_ball`: `var/pixel_x`, `var/pixel_y`], `/obj/energy_ball/process()`, `/obj/energy_ball/proc/can_move()`, `/obj/energy_ball/proc/new_mini_ball()`, `/proc/tesla_zap()`

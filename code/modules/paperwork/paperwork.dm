@@ -100,7 +100,10 @@
  * Handled as a proc so that an object may be marked as "stamped" even when a stamp isn't present (like the photocopier)
  */
 /obj/item/paperwork/proc/add_stamp()
-	stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', stamp_icon)
+	// PSYCHONAUT EDIT ADDITION BEGIN - STAMPS - Original:
+	// stamp_overlay = mutable_appearance('icons/obj/service/bureaucracy.dmi', stamp_icon)
+	stamp_overlay = mutable_appearance(icon, stamp_icon)
+	// PSYCHONAUT EDIT ADDITION END - STAMPS
 	add_overlay(stamp_overlay)
 	stamped = TRUE
 

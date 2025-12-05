@@ -178,4 +178,7 @@
 					source = spawner,
 				)
 
-	priority_announce("Unidentified armed ship detected near the station.")
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Unidentified armed ship detected near the station.")
+	priority_announce("İstasyon yakınlarında tanımlanamayan silahlı bir gemi tespit edildi.")
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION

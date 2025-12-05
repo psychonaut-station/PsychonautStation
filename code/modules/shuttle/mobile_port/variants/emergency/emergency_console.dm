@@ -134,10 +134,18 @@
 		var/alert = (authorized.len > old_len)
 		var/repeal = (authorized.len < old_len)
 		var/remaining = max(0, auth_need - authorized.len)
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		/*
 		if(authorized.len && remaining)
 			minor_announce("[remaining] authorizations needed until shuttle is launched early", null, alert)
 		if(repeal)
 			minor_announce("Early launch authorization revoked, [remaining] authorizations needed")
+		*/
+		if(authorized.len && remaining)
+			minor_announce("Mekik erken fırlatılana kadar [remaining] kişinin daha onayına ihtiyaç var", null, alert)
+		if(repeal)
+			minor_announce("Erken fırlatma izni iptal edildi, [remaining] kişinin daha onayına ihtiyaç var")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	acted_recently += user
 	SStgui.update_user_uis(user, src)
@@ -184,8 +192,14 @@
 		// shuttle timers use 1/10th seconds internally
 		SSshuttle.emergency.setTimer(ENGINE_START_TIME)
 		var/system_error = obj_flags & EMAGGED ? "SYSTEM ERROR:" : null
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		/*
 		minor_announce("The emergency shuttle will launch in \
 			[TIME_LEFT] seconds", system_error, alert=TRUE)
+		*/
+		minor_announce("Acil durum mekiği [TIME_LEFT] saniye \
+			içerisinde kalkacak", system_error, alert=TRUE)
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		. = TRUE
 
 /obj/machinery/computer/emergency_shuttle/proc/increase_hijack_stage()
@@ -259,6 +273,8 @@
 
 /obj/machinery/computer/emergency_shuttle/proc/announce_hijack_stage()
 	var/msg
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	switch(SSshuttle.emergency.hijack_status)
 		if(HIJACK_NOT_BEGUN)
 			return
@@ -277,6 +293,26 @@
 			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Diverting from existing route - Bluespace exit in \
 			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] seconds." : ""]"
 	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Emergency Shuttle", TRUE)
+	*/
+	switch(SSshuttle.emergency.hijack_status)
+		if(HIJACK_NOT_BEGUN)
+			return
+		if(HIJACK_STAGE_1)
+			msg = "GİRİŞ DENEMESİ - BAŞARISIZ. GİRİŞ DENEMESİ - BAŞARISIZ. GİRİŞ DENEMESİ - BAŞA###### Hoşgeldin, teknisyen JOHN DOE."
+		if(HIJACK_STAGE_2)
+			msg = "Hata: Navigasyon rotası başarısız. Lütfen tekrar deneyiNN[scramble_message_replace_chars("deneyindeneyindeneyin", 70)]."
+		if(HIJACK_STAGE_3)
+			msg = "Hesaplanan rota değerlerinde ~h~ değeri uyuşmazlığı. FTL_NAVIGATION_SERVICES servisi için yeniden başlatma protokolleri uygulanıyor. Otomatik onarım için bellek şifresi çözüldü."
+		if(HIJACK_STAGE_4)
+			msg = "~ACS_direktifi module_load(cyberdyne.exploit.nanotrasen.shuttlenav)... NT anahtar uyuşmazlığı. Yüklemeyi onaylıyor musunuz? E...###Yeniden başlatma tamamlandı. $SET transponder_state = 0; Sistem bağlantısı tekrardan başlatıldı..."
+		if(HIJACK_COMPLETED)
+			msg = "SİSTEM GEÇERSİZ KILINDI - Rota sıfırlanıyor \[[scramble_message_replace_chars("###########", 100)]\] \
+			([scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]/[scramble_message_replace_chars("#######", 100)]) \
+			{GİRİŞ - ROOT (uid: 0)}.</font>\
+			[SSshuttle.emergency.mode == SHUTTLE_ESCAPE ? "Mevcut rotadan sapıldı - Bluespace çıkışına kalan süre \
+			[hijack_completion_flight_time_set >= INFINITY ? "[scramble_message_replace_chars("\[ERROR\]")]" : hijack_completion_flight_time_set/10] saniye." : ""]"
+	minor_announce(scramble_message_replace_chars(msg, replaceprob = 10), "Acil Durum Mekiği", TRUE)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /obj/machinery/computer/emergency_shuttle/emag_act(mob/user, obj/item/card/emag/emag_card)
 	// How did you even get on the shuttle before it go to the station?

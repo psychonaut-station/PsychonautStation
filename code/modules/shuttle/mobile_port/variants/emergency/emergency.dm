@@ -47,6 +47,8 @@
 		SSshuttle.emergency_last_call_loc = signal_origin
 	else
 		SSshuttle.emergency_last_call_loc = null
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "The emergency shuttle has been called. [red_alert ? "Red Alert state confirmed: Dispatching priority shuttle. " : "" ]It will arrive in [timeLeft(60 SECONDS)] minute\s.[reason][SSshuttle.emergency_last_call_loc ? "\n\nCall signal traced. Results can be viewed on any communications console." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nWarning: Shuttle recall subroutines disabled; Recall not possible." : ""]",
 		title = "Emergency Shuttle Dispatched",
@@ -54,6 +56,15 @@
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "orange",
 		)
+	*/
+	priority_announce(
+		text = "Acil durum mekiği çağrıldı. [red_alert ? "Kırmızı Alarm durumu onaylandı: Öncelikli mekik gönderiliyor. " : "" ][(timeLeft(60 SECONDS))] dakika içinde ulaşacaktır.[reason][SSshuttle.emergency_last_call_loc ? "\n\nÇağrı sinyali izlenmektedir. Sonuçları herhangi bir iletişim konsolunda görüntülenebilir." : "" ][SSshuttle.admin_emergency_no_recall ? "\n\nUyarı: Mekik geri çağırma alt prosedürleri devre dışı; Geri çağırma mümkün değil." : ""]",
+		title = "Acil Durum Mekiği Gönderildi",
+		sound = ANNOUNCER_SHUTTLECALLED,
+		sender_override = "Acil Durum Mekiği Uyarısı",
+		color_override = "orange",
+		)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /obj/docking_port/mobile/emergency/cancel(area/signalOrigin)
 	if(mode != SHUTTLE_CALL)
@@ -68,6 +79,8 @@
 		SSshuttle.emergency_last_call_loc = signalOrigin
 	else
 		SSshuttle.emergency_last_call_loc = null
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "The emergency shuttle has been recalled.[SSshuttle.emergency_last_call_loc ? " Recall signal traced. Results can be viewed on any communications console." : "" ]",
 		title = "Emergency Shuttle Recalled",
@@ -75,6 +88,15 @@
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "orange",
 		)
+	*/
+	priority_announce(
+		text = "Acil durum mekiği geri çağrıldı.[SSshuttle.emergency_last_call_loc ? " Geri çağırma sinyali izlenmektedir. Sonuçlar herhangi bir iletişim konsolunda görüntülenebilir." : "" ]",
+		title = "Acil Durum Mekiği Geri Çağrıldı",
+		sound = ANNOUNCER_SHUTTLERECALLED,
+		sender_override = "Acil Durum Mekiği Uyarısı",
+		color_override = "orange",
+		)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 	SSticker.emergency_reason = null
 
@@ -163,6 +185,8 @@
 				mode = SHUTTLE_DOCKED
 				setTimer(SSshuttle.emergency_dock_time)
 				send2adminchat("Server", "The Emergency Shuttle has docked with the station.")
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+				/*
 				priority_announce(
 					text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
 					title = "Emergency Shuttle Arrival",
@@ -170,6 +194,15 @@
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				*/
+				priority_announce(
+					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [locale_DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
+					title = "Acil Durum Mekiği Geldi",
+					sound = ANNOUNCER_SHUTTLEDOCK,
+					sender_override = "Acil Durum Mekiği Uyarısı",
+					color_override = "orange",
+				)
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
 
@@ -226,12 +259,20 @@
 				mode = SHUTTLE_ESCAPE
 				launch_status = ENDGAME_LAUNCHED
 				setTimer(SSshuttle.emergency_escape_time * engine_coeff)
+				// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
 				priority_announce(
 					text = "The emergency shuttle has left the station. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
 					title = "Emergency Shuttle Departure",
 					sender_override = "Emergency Shuttle Uplink Alert",
 					color_override = "orange",
 				)
+				priority_announce(
+					text = "Acil durum mekiği istasyondan ayrıldı. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] dakika var.",
+					title = "Acil Durum Mekiği Kalkışı",
+					sender_override = "Acil Durum Mekiği Uyarısı",
+					color_override = "orange",
+				)
+				// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 				INVOKE_ASYNC(SSticker, TYPE_PROC_REF(/datum/controller/subsystem/ticker, poll_hearts))
 				INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/map_vote, vote_initiator_name = "Map Rotation", forced = TRUE)
 
@@ -277,9 +318,16 @@
 					// just double check
 					SSmapping.lazy_load_template(LAZY_TEMPLATE_KEY_NUKIEBASE)
 					destination_dock = "emergency_syndicate"
+					// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+					/*
 					minor_announce("Corruption detected in \
 						shuttle navigation protocols. Please contact your \
 						supervisor.", "SYSTEM ERROR:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
+					*/
+					minor_announce("Mekiğin navigasyon protokollerinde \
+						bozulma tespit edildi. Lütfen şefinizle iletişime \
+						geçin.", "SİSTEM HATASI:", sound_override = 'sound/announcer/announcement/announce_syndi.ogg')
+					// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 				dock_id(destination_dock)
 				mode = SHUTTLE_ENDGAME
@@ -292,12 +340,22 @@
 	mode = SHUTTLE_ESCAPE
 	launch_status = ENDGAME_LAUNCHED
 	setTimer(SSshuttle.emergency_escape_time)
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	/*
 	priority_announce(
 		text = "The emergency shuttle is preparing for direct jump. Estimate [timeLeft(60 SECONDS)] minutes until the shuttle docks at [command_name()].",
 		title = "Emergency Shuttle Transit Failure",
 		sender_override = "Emergency Shuttle Uplink Alert",
 		color_override = "orange",
 	)
+	*/
+	priority_announce(
+		text = "Acil durum mekiği doğrudan sıçrama için hazırlanıyor. Mekiğin [command_name()] bölgesine yanaşmasına [timeLeft(60 SECONDS)] dakika var.",
+		title = "Acil Durum Mekiği Transit Arızası",
+		sender_override = "Acil Durum Mekiği Uyarısı",
+		color_override = "orange",
+	)
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 ///Generate a list of events to run during the departure
 /obj/docking_port/mobile/emergency/proc/setup_shuttle_events()

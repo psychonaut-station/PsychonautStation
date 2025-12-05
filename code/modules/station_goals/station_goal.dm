@@ -7,7 +7,10 @@
 	var/report_message = "Complete this goal."
 
 /datum/station_goal/proc/send_report()
-	priority_announce("Priority Nanotrasen directive received. Project \"[name]\" details inbound.", "Incoming Priority Message", SSstation.announcer.get_rand_report_sound())
+	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+	// priority_announce("Priority Nanotrasen directive received. Project \"[name]\" details inbound.", "Incoming Priority Message", SSstation.announcer.get_rand_report_sound())
+	priority_announce("Öncelikli Nanotrasen direktifi alındı. \"[name]\" projesinin ayrıntıları gönderiliyor.", "Gelen Öncelikli Mesaj", SSstation.announcer.get_rand_report_sound())
+	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	print_command_report(get_report(),"Nanotrasen Directive [pick(GLOB.phonetic_alphabet)] \Roman[rand(1,50)]", announce=FALSE)
 	on_report()
 

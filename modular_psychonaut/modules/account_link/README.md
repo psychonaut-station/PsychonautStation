@@ -28,3 +28,5 @@ Byond hesabınızı discord hesabınıza linkleyebilmenizi sağlar, geliştirir.
 - `tgui/packages/tgui/interfaces/DiscordVerification.tsx`
 
 ### Katkıda Bulunanlar
+
+Seefaaa, loanselot, Rengan

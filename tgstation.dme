@@ -6918,6 +6918,8 @@
 #include "modular_psychonaut\modules\arachnid\code\arachnid.dm"
 #include "modular_psychonaut\modules\arachnid\code\arachnid_parts.dm"
 #include "modular_psychonaut\modules\barsigns\code\barsign.dm"
+#include "modular_psychonaut\modules\bluespace_tap\code\bluespace_tap.dm"
+#include "modular_psychonaut\modules\bluespace_tap\code\packs.dm"
 #include "modular_psychonaut\modules\brig_physician\code\clothing.dm"
 #include "modular_psychonaut\modules\brig_physician\code\job.dm"
 #include "modular_psychonaut\modules\brig_physician\code\role_tablet_presets.dm"

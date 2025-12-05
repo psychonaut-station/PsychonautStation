@@ -7,6 +7,7 @@
 	custom_materials = list(/datum/material/iron=SHEET_MATERIAL_AMOUNT)
 	ammo_type = list(/obj/item/ammo_casing/energy/lasergun)
 	shaded_charge = TRUE
+	light_color = COLOR_SOFT_RED
 
 /obj/item/gun/energy/laser/Initialize(mapload)
 	. = ..()
@@ -141,8 +142,10 @@
 	name = "\improper Type 2 'hellfire' laser gun"
 	desc = "The Type 2 Heat Delivery System, developed by Nanotrasen. Technically speaking, it is an improvement. Legally speaking, possession of this weapon is restricted in most occupied sectors of space. \
 		The Type 2 is notorious for its ability to render victims a carbonized husk with ease, melting flesh and bone as easily as butter. A painful, gruesome death awaits anyone on the wrong ends of this gun."
+	icon_state = "hellgun"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
 	ammo_x_offset = 1
+	light_color = COLOR_AMMO_HELLFIRE
 
 /obj/item/gun/energy/laser/captain
 	name = "\improper antique laser gun"
@@ -161,6 +164,7 @@
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	obj_flags = UNIQUE_RENAME
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
+<<<<<<< HEAD
 	unique_reskin = list(
 		"Default" = "caplaser",
 		"Supas_12" = "cap_moislaser",
@@ -176,6 +180,9 @@
 		return
 	inhand_icon_state = icon_state
 
+=======
+	light_color = COLOR_AMMO_HELLFIRE
+>>>>>>> 93af662e960ec674c262546c7aa6b2f06fe1cb09
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
@@ -254,7 +261,15 @@
 	inhand_icon_state = null
 	ammo_type = list(/obj/item/ammo_casing/energy/xray)
 	ammo_x_offset = 3
+	custom_materials = list(
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3.5,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 2.5,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT,
+		/datum/material/bluespace = SHEET_MATERIAL_AMOUNT,
+	)
 	shaded_charge = FALSE
+	light_color = LIGHT_COLOR_GREEN
 
 ////////Laser Tag////////////////////
 

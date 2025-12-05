@@ -11,11 +11,8 @@
 	/// Innate skill levels unlocked at roundstart. Based on config.jobs_have_minimal_access config setting, for example with a full crew. Format is list(/datum/skill/foo = SKILL_EXP_NOVICE) with exp as an integer or as per code/_DEFINES/skills.dm
 	var/list/minimal_skills
 
-	/// Determines who can demote this position
-	var/department_head = list()
-
 	/// Tells the given channels that the given mob is the new department head. See communications.dm for valid channels.
-	var/list/head_announce = null
+	var/head_announce
 
 	/// Bitflags for the job
 	var/auto_deadmin_role_flags = NONE
@@ -197,7 +194,11 @@
 /// Note the joining mob has no client at this point.
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title)
 	if(head_announce)
+<<<<<<< HEAD
 		announce_head(joining_mob, head_announce, job_title)
+=======
+		announce_head(joining_mob, list(head_announce))
+>>>>>>> 93af662e960ec674c262546c7aa6b2f06fe1cb09
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.

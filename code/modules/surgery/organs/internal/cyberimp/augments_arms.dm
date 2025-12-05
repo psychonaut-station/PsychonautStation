@@ -257,7 +257,7 @@
 		to_chat(owner, span_userdanger("You feel an explosion erupt inside your [parse_zone(zone)] as your implant breaks!"))
 		owner.adjust_fire_stacks(20)
 		owner.ignite_mob()
-		owner.adjustFireLoss(25)
+		owner.adjust_fire_loss(25)
 		organ_flags |= ORGAN_FAILING
 
 /obj/item/organ/cyberimp/arm/toolkit/gun/laser
@@ -300,7 +300,7 @@
 		/obj/item/taperecorder,
 		/obj/item/lighter,
 		/obj/item/laser_pointer,
-		/obj/item/stamp,
+		/obj/item/stamp/granted,
 		/obj/item/stamp/denied,
 	)
 

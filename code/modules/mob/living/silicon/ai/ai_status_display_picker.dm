@@ -81,9 +81,9 @@
 			if(current_emotion in GLOB.ai_status_display_screen_icons)
 				current_icon = GLOB.ai_status_display_screen_icons[current_emotion]
 		else
-			current_icon_state = "ai_neutral"
+			current_icon_state = "ai_download"
 	else
-		current_icon_state = "ai_neutral"
+		current_icon_state = "ai_download"
 
 	data["current_emotion"] = current_emotion
 	data["current_icon"] = list(

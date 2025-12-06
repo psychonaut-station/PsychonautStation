@@ -327,9 +327,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/iron/dark,
 /area/station/engineering/singularity/room)
-"ul" = (
-/turf/open/space/basic,
-/area/template_noop)
 "ut" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -669,7 +666,7 @@
 /area/station/engineering/singularity/room)
 "KS" = (
 /turf/open/space/basic,
-/area/space/nearstation)
+/area/space)
 "KZ" = (
 /turf/closed/wall,
 /area/station/maintenance/department/engine)
@@ -1146,8 +1143,8 @@ dx
 mC
 hn
 kO
-ul
-ul
+KS
+KS
 je
 je
 je
@@ -1173,18 +1170,18 @@ dx
 zC
 hn
 kO
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (12,1,1) = {"
 je
 je
 je
-ul
+KS
 kO
 me
 oz
@@ -1200,11 +1197,11 @@ dx
 zC
 hn
 kO
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (13,1,1) = {"
@@ -1227,11 +1224,11 @@ kO
 BH
 kO
 MT
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (14,1,1) = {"
@@ -1254,11 +1251,11 @@ SS
 SS
 cP
 MT
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (15,1,1) = {"
@@ -1281,11 +1278,11 @@ kO
 xA
 kO
 MT
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (16,1,1) = {"
@@ -1308,11 +1305,11 @@ An
 An
 nM
 eH
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (17,1,1) = {"
@@ -1335,11 +1332,11 @@ nM
 An
 An
 Bc
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (18,1,1) = {"
@@ -1362,11 +1359,11 @@ An
 An
 KS
 bM
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (19,1,1) = {"
@@ -1389,11 +1386,11 @@ EM
 EM
 An
 An
-ul
-ul
-ul
-ul
-ul
+KS
+KS
+KS
+KS
+KS
 je
 "}
 (20,1,1) = {"

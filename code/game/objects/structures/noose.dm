@@ -8,6 +8,10 @@
 	buckle_lying = 0
 	anchored = TRUE
 	density = FALSE
+	custom_materials = list(
+		/datum/material/iron = 3 * SMALL_MATERIAL_AMOUNT,
+		/datum/material/glass = 3 * SMALL_MATERIAL_AMOUNT,
+	)
 	/// our noose overlay
 	var/mutable_appearance/overlay
 
@@ -30,7 +34,7 @@
 		var/mob/living/buckled_mob = buckled_mobs[1] // we can only hold one person anyway
 		if(buckled_mob.has_gravity())
 			buckled_mob.visible_message(span_danger("[buckled_mob] falls over and hits the ground!"), span_userdanger("You fall over and hit the ground!"))
-			buckled_mob.adjustBruteLoss(10)
+			buckled_mob.adjust_brute_loss(10)
 
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
@@ -122,7 +126,7 @@
 	to_chat(user, span_warning("You fail to tie \the [src] over [victim]'s neck!"))
 	return FALSE
 
-/obj/structure/noose/process()
+/obj/structure/noose/process(seconds_per_tick)
 	if(!has_buckled_mobs())
 		return PROCESS_KILL
 
@@ -149,7 +153,7 @@
 	if(buckled_mob.stat == DEAD || HAS_TRAIT(buckled_mob, TRAIT_NOBREATH))
 		return
 
-	buckled_mob.adjustOxyLoss(5)
+	buckled_mob.adjust_oxy_loss(5 * seconds_per_tick)
 
 	if(prob(30))
 		buckled_mob.emote("gasp")

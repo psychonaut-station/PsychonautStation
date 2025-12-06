@@ -57,15 +57,9 @@
 	var/facial_hair_hidden = FALSE
 
 	/// Gradient styles, if any
-	var/list/gradient_styles = list(
-		"None",	//Hair gradient style
-		"None",	//Facial hair gradient style
-	)
+	var/list/gradient_styles
 	/// Gradient colors, if any
-	var/list/gradient_colors = list(
-		COLOR_BLACK,	//Hair gradient color
-		COLOR_BLACK,	//Facial hair gradient color
-	)
+	var/list/gradient_colors
 
 	/// An override color that can be cleared later, affects both hair and facial hair
 	var/override_hair_color = null
@@ -182,7 +176,7 @@
 	if(!eyes)
 		if (!(head_flags & HEAD_EYEHOLES))
 			return
-		var/image/no_eyes = image('icons/mob/human/human_face.dmi', "eyes_missing", -EYES_LAYER, SOUTH)
+		var/image/no_eyes = image('icons/mob/human/human_eyes.dmi', "eyes_missing", -EYES_LAYER, SOUTH)
 		worn_face_offset?.apply_offset(no_eyes)
 		. += no_eyes
 		return

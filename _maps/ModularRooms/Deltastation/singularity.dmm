@@ -286,7 +286,7 @@
 	name = "Singularity Engine Room"
 	},
 /turf/open/floor/iron,
-/area/template_noop)
+/area/station/engineering/main)
 "mI" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 8
@@ -570,7 +570,7 @@
 	name = "Singularity Engine Room"
 	},
 /turf/open/floor/iron,
-/area/template_noop)
+/area/station/engineering/main)
 "zt" = (
 /obj/machinery/newscaster/directional/east,
 /obj/effect/spawner/structure/window/reinforced/plasma,
@@ -642,8 +642,8 @@
 /area/station/engineering/singularity/room)
 "CE" = (
 /obj/item/toy/spinningtoy/dark_matter,
-/turf/template_noop,
-/area/template_noop)
+/turf/open/floor/plating,
+/area/station/maintenance/port)
 "CR" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4
@@ -919,7 +919,7 @@
 	name = "Singularity Engine Room"
 	},
 /turf/open/floor/iron,
-/area/template_noop)
+/area/station/engineering/main)
 "Sl" = (
 /obj/machinery/door/firedoor,
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
@@ -1029,7 +1029,7 @@
 	name = "Singularity Engine Room"
 	},
 /turf/open/floor/iron,
-/area/template_noop)
+/area/station/engineering/main)
 "Xp" = (
 /obj/machinery/light/directional/north,
 /turf/open/floor/plating,

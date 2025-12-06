@@ -41,7 +41,6 @@
 	var/eye_icon = 'icons/mob/human/human_eyes.dmi'
 	/// The icon state of that eyes as its applied to the mob
 	var/eye_icon_state = "eyes"
-	var/eye_icon = 'icons/mob/human/human_face.dmi'
 	/// Do these eyes have blinking animations
 	var/blink_animation = TRUE
 	/// Icon state for iris overlays
@@ -308,10 +307,6 @@
 
 	var/mutable_appearance/eye_left = mutable_appearance(eye_icon, "[eye_icon_state]_l", -EYES_LAYER, parent)
 	var/mutable_appearance/eye_right = mutable_appearance(eye_icon, "[eye_icon_state]_r", -EYES_LAYER, parent)
-<<<<<<< HEAD
-
-=======
->>>>>>> 93af662e960ec674c262546c7aa6b2f06fe1cb09
 	var/list/overlays = list(eye_left, eye_right)
 
 	if(!(parent.obscured_slots & HIDEEYES))

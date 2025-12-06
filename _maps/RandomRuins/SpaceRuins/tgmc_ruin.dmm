@@ -247,7 +247,7 @@
 /turf/open/floor/iron/dark,
 /area/ruin/space)
 "uc" = (
-/turf/open/space/basic,
+/turf/template_noop,
 /area/template_noop)
 "ug" = (
 /obj/structure/rack,

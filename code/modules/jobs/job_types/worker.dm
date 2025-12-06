@@ -1,7 +1,6 @@
 /datum/job/worker
 	title = JOB_WORKER
 	description = "Amelelik yap, murettebatin istedigi yapi islerini yap, adiyaman tutun sarma ic, muhendislere racon kes."
-	department_head = list(JOB_CHIEF_ENGINEER)
 	faction = FACTION_STATION
 	total_positions = 3
 	spawn_positions = 3

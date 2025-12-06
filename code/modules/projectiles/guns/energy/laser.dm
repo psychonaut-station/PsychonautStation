@@ -150,9 +150,9 @@
 /obj/item/gun/energy/laser/captain
 	name = "\improper antique laser gun"
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
-	icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_righthand.dmi'
 	inhand_icon_state = "caplaser"
@@ -164,25 +164,40 @@
 	flags_1 = PREVENT_CONTENTS_EXPLOSION_1
 	obj_flags = UNIQUE_RENAME
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/hellfire)
-<<<<<<< HEAD
-	unique_reskin = list(
-		"Default" = "caplaser",
-		"Supas_12" = "cap_moislaser",
-		"KAFA_1500" = "cap_laserpistol",
-		"Cadwell_Pax" = "cap_smolaser",
-		"Hot_Iron" = "cap_laserrev",
-	)
-
-/obj/item/gun/energy/laser/captain/reskin_obj(mob/M)
-	. = ..()
-	update_appearance()
-	if(icon_state == "caplaser")
-		return
-	inhand_icon_state = icon_state
-
-=======
 	light_color = COLOR_AMMO_HELLFIRE
->>>>>>> 93af662e960ec674c262546c7aa6b2f06fe1cb09
+
+/obj/item/gun/energy/laser/captain/Initialize(mapload)
+	. = ..()
+	if(src.type == /obj/item/gun/energy/laser/captain)
+		AddComponent(/datum/component/reskinable_item, /datum/atom_skin/captain_laser, infinite = FALSE)
+
+/datum/atom_skin/captain_laser
+	abstract_type = /datum/atom_skin/captain_laser
+	change_inhand_icon_state = TRUE
+
+/datum/atom_skin/captain_laser/default
+	preview_name = "Default"
+	new_icon_state = "caplaser"
+
+/datum/atom_skin/captain_laser/supas_12
+	preview_name = "Supas 12"
+	new_icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
+	new_icon_state = "cap_moislaser"
+
+/datum/atom_skin/captain_laser/kafa_1500
+	preview_name = "KAFA 1500"
+	new_icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
+	new_icon_state = "cap_laserpistol"
+
+/datum/atom_skin/captain_laser/cadwell_pax
+	preview_name = "Cadwell Pax"
+	new_icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
+	new_icon_state = "cap_smolaser"
+
+/datum/atom_skin/captain_laser/hot_iron
+	preview_name = "Hot Iron"
+	new_icon = 'icons/psychonaut/obj/weapons/guns/energy.dmi'
+	new_icon_state = "cap_laserrev"
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
@@ -195,7 +210,6 @@
 	inhand_icon_state = "laser"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/scatter, /obj/item/ammo_casing/energy/laser)
 	shaded_charge = FALSE
-	unique_reskin = null
 	ammo_x_offset = 1
 
 /obj/item/gun/energy/laser/captain/scattershot/add_deep_lore()

@@ -194,11 +194,7 @@
 /// Note the joining mob has no client at this point.
 /datum/job/proc/announce_job(mob/living/joining_mob, job_title)
 	if(head_announce)
-<<<<<<< HEAD
-		announce_head(joining_mob, head_announce, job_title)
-=======
-		announce_head(joining_mob, list(head_announce))
->>>>>>> 93af662e960ec674c262546c7aa6b2f06fe1cb09
+		announce_head(joining_mob, list(head_announce), job_title)
 
 
 //Used for a special check of whether to allow a client to latejoin as this job.

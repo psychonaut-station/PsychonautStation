@@ -15565,10 +15565,7 @@
 /area/station/ai/satellite/chamber)
 "ejc" = (
 /obj/structure/cable,
-/obj/structure/sign/nanotrasen{
-	pixel_y = 32;
-	dir = 1
-	},
+/obj/structure/sign/nanotrasen/directional/north,
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 1
 	},
@@ -29514,10 +29511,7 @@
 "hWN" = (
 /obj/structure/cable,
 /obj/effect/landmark/start/hangover,
-/obj/structure/sign/nanotrasen{
-	pixel_y = 32;
-	dir = 1
-	},
+/obj/structure/sign/nanotrasen/directional/north,
 /obj/effect/turf_decal/stripes/white/corner{
 	dir = 4
 	},

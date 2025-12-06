@@ -638,7 +638,7 @@
 	COOLDOWN_START(other, lunge, 10 SECONDS)
 	if(isliving(user))
 		var/mob/living/living = user
-		living.adjustStaminaLoss(-30)
+		living.adjust_stamina_loss(-30)
 
 	attack(target, user)
 

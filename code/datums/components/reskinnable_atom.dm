@@ -128,7 +128,8 @@
 
 	if(input_name)
 		var/datum/atom_skin/reskin_to_apply = GLOB.atom_skins[reskin_options[input_name]]
-		reskin_to_apply.apply(parent)
+		if(reskin_to_apply.apply(parent) == FALSE)
+			return FALSE
 
 	current_skin = input_name
 
@@ -182,7 +183,9 @@
 	if(!pick || !items[pick])
 		return
 
-	set_skin_by_name(pick)
+	if(set_skin_by_name(pick) == FALSE)
+		return
+
 	to_chat(user, span_info("[parent] is now skinned as '[pick].'"))
 
 	if(!infinite_reskin)

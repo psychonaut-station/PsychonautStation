@@ -781,7 +781,7 @@
 	need_mob_update = affected_mob.SetSleeping(0)
 	affected_mob.adjust_bodytemperature(5 * REM * TEMPERATURE_DAMAGE_COEFFICIENT * seconds_per_tick, 0, affected_mob.get_body_temp_normal())
 	affected_mob.set_jitter_if_lower(10 SECONDS * REM * seconds_per_tick)
-	if(affected_mob.getBruteLoss() && SPT_PROB(10, seconds_per_tick))
+	if(affected_mob.get_brute_loss() && SPT_PROB(10, seconds_per_tick))
 		need_mob_update += affected_mob.heal_bodypart_damage(brute = 1 * REM * seconds_per_tick, burn = 0, updating_health = FALSE)
 	if(need_mob_update)
 		return UPDATE_MOB_HEALTH
@@ -1342,7 +1342,7 @@
 
 /datum/reagent/consumable/ayran/on_mob_life(mob/living/carbon/affected_mob, seconds_per_tick, times_fired)
 	. = ..()
-	if(affected_mob.getFireLoss() && SPT_PROB(10, seconds_per_tick))
+	if(affected_mob.get_fire_loss() && SPT_PROB(10, seconds_per_tick))
 		if(affected_mob.heal_bodypart_damage(brute = 0, burn = 1 * REM * seconds_per_tick, updating_health = FALSE))
 			return UPDATE_MOB_HEALTH
 

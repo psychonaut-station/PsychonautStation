@@ -208,3 +208,22 @@
   necromanceranne:
   - bugfix: Sleeping carp now actually lets you dodge melee attacks without filling
       your hands with stuff.
+2025-12-07:
+  Fghj240:
+  - bugfix: inhalers no longer have infinite reach
+  - bugfix: using an inhaler no longer results in whacking the target with it afterwards
+  - qol: You can see whether you just locked or unlocked a cyborg
+  Melbert:
+  - rscadd: Readds Sent from my PDA Sent from my PDA
+  - bugfix: Fix detached storage (modsuit storage)
+  - rscadd: '[Catwalk] Entirely new Dorms & Holodeck'
+  - rscadd: '[Catwalk] Modified Atmos, Gravity Generator, Engineering and Tech Storage
+      a fair bit'
+  - rscadd: '[Catwalk] Event locations were updated, meaning several random events
+      now trigger in more appropriate places'
+  - rscdel: '[Catwalk] Removed duplicate First Aid stations in a few places'
+  - qol: '[Catwalk] Changed around maint areas (not the actual layouts but the area
+      designations) to be a bit less monolithic'
+  - bugfix: '[Catwalk] Xenobio kill room uses a passive vent'
+  - bugfix: '[Catwalk] Fixes a few erroneous space tiles around sec'
+  - bugfix: Bolas don't slow while in hand

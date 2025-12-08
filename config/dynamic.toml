@@ -970,7 +970,7 @@ extra_settings.execution_multiplier_high = 1
 event_repetition_multipliers.mundane = -2
 event_repetition_multipliers.moderate = -2
 event_repetition_multipliers.major = -1.3
-event_repetition_multipliers.roleset = -2
+event_repetition_multipliers.roleset = -1.4
 tag_multipliers.external = 0.2
 tag_multipliers.away_antag = 0.8
 

@@ -18,10 +18,10 @@
 	)
 
 	var/alist/extra_settings = list(
-		LOW_END = 0, // min antag sayısına ekleme yapar
-		HIGH_END = 0, // max antag sayısına ekleme yapar
-		EXECUTION_MULTIPLIER_LOW = 1, // ruleseti executeleme zamanının min inin carpanı
-		EXECUTION_MULTIPLIER_HIGH = 1, // ruleseti executeleme zamanının maxzının carpanı
+		LOW_END = 0,
+		HIGH_END = 0,
+		EXECUTION_MULTIPLIER_LOW = 1,
+		EXECUTION_MULTIPLIER_HIGH = 1,
 	)
 
 	/// Multipliers of weight to apply for each tag of an event.

@@ -10,14 +10,14 @@
 
 	var/config_tag
 
-	var/list/event_weight_multipliers = list(
+	var/alist/event_weight_multipliers = list(
 		EVENT_TRACK_MUNDANE = 1,
 		EVENT_TRACK_MODERATE = 1,
 		EVENT_TRACK_MAJOR = 1,
 		EVENT_TRACK_ROLESET = 1,
 	)
 
-	var/list/extra_settings = list(
+	var/alist/extra_settings = list(
 		LOW_END = 0,
 		HIGH_END = 0,
 		EXECUTION_MULTIPLIER_LOW = 1,
@@ -27,7 +27,13 @@
 	/// Multipliers of weight to apply for each tag of an event.
 	var/list/tag_multipliers = list()
 
-	var/event_repetition_multiplier = 0
+	var/alist/event_repetition_multipliers = list(
+		EVENT_TRACK_MUNDANE = 1,
+		EVENT_TRACK_MODERATE = 1,
+		EVENT_TRACK_MAJOR = 1,
+		EVENT_TRACK_ROLESET = 1,
+	)
+
 	/// Whether a storyteller is pickable/can be voted for
 	var/restricted = FALSE
 	/// If defined, will need a minimum of population to be votable

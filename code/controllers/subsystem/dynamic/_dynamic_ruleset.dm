@@ -187,10 +187,12 @@
 			continue
 		if(!repeatable)
 			return 0
-		if(isnull(SSstoryteller.current_storyteller) || !SSstoryteller.current_storyteller.event_repetition_multiplier)
-			final_weight -= repeatable_weight_decrease
-		else
-			final_weight *= SSstoryteller.current_storyteller.event_repetition_multiplier
+
+		var/weight_decrease = repeatable_weight_decrease
+		if(!isnull(SSstoryteller.current_storyteller))
+			weight_decrease *= SSstoryteller.current_storyteller.event_repetition_multipliers[track] || 1
+
+		final_weight -= weight_decrease
 
 	if(!isnull(SSstoryteller.current_storyteller))
 		final_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[track] || 1

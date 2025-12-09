@@ -227,3 +227,6 @@
   - bugfix: '[Catwalk] Xenobio kill room uses a passive vent'
   - bugfix: '[Catwalk] Fixes a few erroneous space tiles around sec'
   - bugfix: Bolas don't slow while in hand
+2025-12-09:
+  Rengan:
+  - balance: "Storyteller tekrarlama katsay\u0131s\u0131 dengelendi"

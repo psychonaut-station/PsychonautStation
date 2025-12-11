@@ -137,6 +137,9 @@
 	if(!isarea(location) || istype(location, /area/shuttle))
 		return FALSE
 
+	if(SSmapping.machines_delete_after.Find(src))
+		return FALSE
+
 	var/msg
 	if(PERFORM_ALL_TESTS(focus_only/atom_mounted) && !mark_for_late_init)
 		msg = "[type] Could not find attachable object at [location.type] "

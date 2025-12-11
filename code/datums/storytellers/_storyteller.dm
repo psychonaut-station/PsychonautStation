@@ -10,28 +10,94 @@
 
 	var/config_tag
 
-	var/alist/event_weight_multipliers = list(
-		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
-	)
-
-	var/alist/extra_settings = list(
-		LOW_END = 0,
-		HIGH_END = 0,
+	// Default Settings
+	var/list/settings = list(
+		STORYTELLER_EVENT_WEIGHT_MULTIPLIERS = list(
+			EVENT_TRACK_MUNDANE = 1,
+			EVENT_TRACK_MODERATE = 1,
+			EVENT_TRACK_MAJOR = 1,
+			EVENT_TRACK_ROLESET = 1,
+		),
+		STORYTELLER_TAG_MULTIPLIERS = list(),
+		STORYTELLER_EVENT_REPETITION_MULTIPLIERS = list(
+			EVENT_TRACK_MUNDANE = 1,
+			EVENT_TRACK_MODERATE = 1,
+			EVENT_TRACK_MAJOR = 1,
+			EVENT_TRACK_ROLESET = 1,
+		),
+		STORYTELLER_GENERAL_MULTIPLIERS = 1,
 		EXECUTION_MULTIPLIER_LOW = 1,
 		EXECUTION_MULTIPLIER_HIGH = 1,
+		LOW_END = list(
+			ROUNDSTART = 0,
+			LIGHT_MIDROUND = 0,
+			HEAVY_MIDROUND = 0,
+			LATEJOIN = 0,
+		),
+		HIGH_END = list(
+			ROUNDSTART = 0,
+			LIGHT_MIDROUND = 0,
+			HEAVY_MIDROUND = 0,
+			LATEJOIN = 0,
+		),
 	)
 
-	/// Multipliers of weight to apply for each tag of an event.
-	var/list/tag_multipliers = list()
+	// Roundstart Special Settings
+	var/list/roundstart_settings = list(
+		STORYTELLER_EVENT_WEIGHT_MULTIPLIERS = list(
+			EVENT_TRACK_MUNDANE = 1,
+			EVENT_TRACK_MODERATE = 1,
+			EVENT_TRACK_MAJOR = 1,
+			EVENT_TRACK_ROLESET = 1,
+		),
+		STORYTELLER_TAG_MULTIPLIERS = list(),
+		STORYTELLER_EVENT_REPETITION_MULTIPLIERS = list(
+			EVENT_TRACK_MUNDANE = 1,
+			EVENT_TRACK_MODERATE = 1,
+			EVENT_TRACK_MAJOR = 1,
+			EVENT_TRACK_ROLESET = 1,
+		),
+		STORYTELLER_GENERAL_MULTIPLIERS = 1,
+	)
 
-	var/alist/event_repetition_multipliers = list(
-		EVENT_TRACK_MUNDANE = 1,
-		EVENT_TRACK_MODERATE = 1,
-		EVENT_TRACK_MAJOR = 1,
-		EVENT_TRACK_ROLESET = 1,
+	// Latejoin Special Settings
+	var/list/latejoin_settings = list(
+		list(
+			STORYTELLER_EVENT_WEIGHT_MULTIPLIERS = list(
+				EVENT_TRACK_MUNDANE = 1,
+				EVENT_TRACK_MODERATE = 1,
+				EVENT_TRACK_MAJOR = 1,
+				EVENT_TRACK_ROLESET = 1,
+			),
+			STORYTELLER_TAG_MULTIPLIERS = list(),
+			STORYTELLER_GENERAL_MULTIPLIERS = 1,
+			TIME_THRESHOLD = 10 MINUTES,
+			EXECUTION_MULTIPLIER_LOW = 1,
+			EXECUTION_MULTIPLIER_HIGH = 1,
+		)
+	)
+
+	// Midround Special Settings
+	var/list/midround_settings = list(
+		list(
+			STORYTELLER_EVENT_WEIGHT_MULTIPLIERS = list(
+				EVENT_TRACK_MUNDANE = 1,
+				EVENT_TRACK_MODERATE = 1,
+				EVENT_TRACK_MAJOR = 1,
+				EVENT_TRACK_ROLESET = 1,
+			),
+			STORYTELLER_TAG_MULTIPLIERS = list(),
+			STORYTELLER_EVENT_REPETITION_MULTIPLIERS = list(
+				EVENT_TRACK_MUNDANE = 1,
+				EVENT_TRACK_MODERATE = 1,
+				EVENT_TRACK_MAJOR = 1,
+				EVENT_TRACK_ROLESET = 1,
+			),
+			STORYTELLER_GENERAL_MULTIPLIERS = 1,
+			TIME_THRESHOLD = 10 MINUTES,
+			EXECUTION_MULTIPLIER_LOW = 1,
+			EXECUTION_MULTIPLIER_HIGH = 1,
+		)
 	)
 
 	/// Whether a storyteller is pickable/can be voted for
@@ -49,10 +115,36 @@
 			continue
 		set_config_value(new_var, dynamic_config[config_tag][new_var])
 
+/datum/storyteller/proc/initialize()
+	SHOULD_CALL_PARENT(TRUE)
+
+/datum/storyteller/proc/fire(seconds_per_tick)
+	return
+
+/datum/storyteller/proc/ruleset_execute(datum/dynamic_ruleset/ruleset, list/selected_minds)
+	SHOULD_CALL_PARENT(TRUE)
+	return
+
+/datum/storyteller/proc/set_tier(list/ruleset_to_spawn)
+	return ruleset_to_spawn
+
 /// Used for parsing config entries to validate them
 /datum/storyteller/proc/set_config_value(new_var, new_val)
 	switch(new_var)
 		if(NAMEOF(src, config_tag), NAMEOF(src, vars))
 			return FALSE
+	if(islist(new_val) && (new_var == NAMEOF(src, latejoin_settings) || new_var == NAMEOF(src, midround_settings)))
+		new_val = load_tier_list(new_val)
 	vars[new_var] = new_val
 	return TRUE
+
+/// Used to create tier alists
+/datum/storyteller/proc/load_tier_list(list/incoming_list)
+	PRIVATE_PROC(TRUE)
+
+	var/alist/tier_list = alist()
+	// loads a list of list("2" = 1, "3" = 3) into an alist(2 = 1, 3 = 3)
+	for(var/tier in incoming_list)
+		tier_list[text2num(tier)] = incoming_list[tier]
+
+	return tier_list

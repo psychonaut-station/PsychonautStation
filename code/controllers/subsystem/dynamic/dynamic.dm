@@ -209,7 +209,8 @@ SUBSYSTEM_DEF(dynamic)
 		rulesets_to_spawn[category] = rand(low_end, high_end)
 		base_rulesets_to_spawn[category] = rulesets_to_spawn[category]
 
-	rulesets_to_spawn = SSstoryteller.current_storyteller.set_tier(rulesets_to_spawn)
+	if(!isnull(SSstoryteller.current_storyteller))
+		rulesets_to_spawn = SSstoryteller.current_storyteller.set_tier(rulesets_to_spawn)
 
 /// Picks what tier we are going to use for this round and sets up all the corresponding variables and ranges
 /datum/controller/subsystem/dynamic/proc/pick_tier(roundstart_population = 0)

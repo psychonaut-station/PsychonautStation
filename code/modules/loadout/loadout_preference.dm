@@ -53,11 +53,16 @@
 			continue
 
 		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+<<<<<<< HEAD
 		if(loadout_item.donator_only && optional_loadout_owner?.client && !optional_loadout_owner.client.prefs.unlock_content)
 			to_chat(optional_loadout_owner, span_boldnotice("The following donator-only item was found \
 				in your character loadout: [real_path || "null"]. \
 				It has been removed, as you are not a patron."))
 			continue
+=======
+		if(loadout_item.is_disabled())
+			continue // this just falls off silently
+>>>>>>> adda3bb9e352219e0d0e1a2a714c92f43b648a40
 
 		// Set into sanitize list using converted path key
 		var/list/data = passed_list[path]

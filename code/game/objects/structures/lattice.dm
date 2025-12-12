@@ -55,7 +55,9 @@
 	for(var/obj/structure/lattice/lattice in turfloc.contents)
 		if(lattice == src)
 			continue
-		turf_lattices += src
+		if(QDELETED(lattice))
+			continue
+		turf_lattices += lattice
 	var/area/turf_area = get_area(turfloc)
 	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !length(turf_lattices))
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])

@@ -46,7 +46,9 @@
 	. = ..()
 	var/list/turf_lattices = list()
 	if(isturf(turfloc))
-		for(var/obj/structure/lattice/lattice in turfloc)
+		for(var/obj/structure/lattice_or_grill in turfloc)
+			if(!istype(lattice_or_grill, /obj/structure/lattice) && !istype(lattice_or_grill, /obj/structure/grille))
+				continue
 			turf_lattices += lattice
 		for(var/thing_that_falls in turfloc)
 			turfloc.zFall(thing_that_falls)

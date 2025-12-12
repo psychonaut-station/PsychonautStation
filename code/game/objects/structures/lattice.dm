@@ -43,6 +43,15 @@
 
 /obj/structure/lattice/Destroy(force) // so items on the lattice fall when the lattice is destroyed
 	var/turf/turfloc = loc
+
+	var/list/turf_lattices = list()
+	for(var/obj/structure/lattice/lattice as anything in turfloc.contents)
+		if(lattice == src)
+			continue
+		if(QDELETED(lattice))
+			continue
+		turf_lattices += lattice
+
 	. = ..()
 	if(isturf(turfloc))
 		for(var/thing_that_falls in turfloc)
@@ -51,13 +60,6 @@
 	if(!isturf(turfloc))
 		return .
 
-	var/list/turf_lattices = list()
-	for(var/obj/structure/lattice/lattice in turfloc.contents)
-		if(lattice == src)
-			continue
-		if(QDELETED(lattice))
-			continue
-		turf_lattices += lattice
 	var/area/turf_area = get_area(turfloc)
 	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !length(turf_lattices))
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])

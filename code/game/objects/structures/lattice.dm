@@ -49,7 +49,7 @@
 			turfloc.zFall(thing_that_falls)
 
 	var/area/turf_area = get_area(turfloc)
-	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !(locate(/obj/structure/lattice) in turfloc) && !(locate(/obj/structure/grille) in turfloc)))
+	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !(locate(/obj/structure/lattice) in turfloc) && !(locate(/obj/structure/grille) in turfloc))
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)

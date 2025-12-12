@@ -46,8 +46,6 @@
 
 	var/list/turf_lattices = list()
 	for(var/obj/structure/lattice/lattice as anything in turfloc.contents)
-		if(lattice == src)
-			continue
 		if(QDELETED(lattice))
 			continue
 		turf_lattices += lattice

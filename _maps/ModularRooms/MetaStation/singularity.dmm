@@ -372,6 +372,9 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"vT" = (
+/turf/open/space/basic,
+/area/space/nearstation)
 "vU" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
 	dir = 1
@@ -1143,12 +1146,12 @@ dx
 mC
 hn
 kO
-KS
-KS
-je
-je
-je
-je
+vT
+nM
+AS
+AS
+Lg
+Lg
 "}
 (11,1,1) = {"
 MT
@@ -1170,11 +1173,11 @@ dx
 zC
 hn
 kO
-KS
-KS
-KS
-KS
-KS
+vT
+nM
+vT
+nM
+An
 je
 "}
 (12,1,1) = {"
@@ -1197,11 +1200,11 @@ dx
 zC
 hn
 kO
-KS
-KS
-KS
-KS
-KS
+An
+An
+An
+An
+An
 je
 "}
 (13,1,1) = {"
@@ -1224,11 +1227,11 @@ kO
 BH
 kO
 MT
-KS
-KS
-KS
-KS
-KS
+vT
+nM
+vT
+nM
+An
 je
 "}
 (14,1,1) = {"
@@ -1251,11 +1254,11 @@ SS
 SS
 cP
 MT
-KS
-KS
-KS
-KS
-KS
+vT
+nM
+vT
+nM
+An
 je
 "}
 (15,1,1) = {"
@@ -1278,11 +1281,11 @@ kO
 xA
 kO
 MT
-KS
-KS
-KS
-KS
-KS
+An
+An
+An
+An
+An
 je
 "}
 (16,1,1) = {"
@@ -1299,17 +1302,17 @@ nM
 nM
 An
 nM
-KS
+vT
 Bc
 An
 An
 nM
 eH
-KS
-KS
-KS
-KS
-KS
+vT
+nM
+vT
+nM
+An
 je
 "}
 (17,1,1) = {"
@@ -1332,11 +1335,11 @@ nM
 An
 An
 Bc
-KS
-KS
-KS
-KS
-KS
+nM
+nM
+nM
+nM
+An
 je
 "}
 (18,1,1) = {"
@@ -1357,13 +1360,13 @@ nM
 nM
 An
 An
-KS
+vT
 bM
-KS
-KS
-KS
-KS
-KS
+vT
+nM
+vT
+nM
+An
 je
 "}
 (19,1,1) = {"
@@ -1386,11 +1389,11 @@ EM
 EM
 An
 An
-KS
-KS
-KS
-KS
-KS
+An
+An
+An
+An
+An
 je
 "}
 (20,1,1) = {"
@@ -1406,7 +1409,7 @@ xy
 An
 wm
 wm
-KS
+vT
 An
 xy
 An
@@ -1681,7 +1684,7 @@ Bc
 Bc
 An
 bM
-KS
+vT
 bM
 je
 je

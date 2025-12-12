@@ -133,6 +133,9 @@
 	else if(late_init)
 		return TRUE
 
+	if(SSmapping.machines_delete_after.Find(src))
+		return FALSE
+
 	var/area/location = get_area(src)
 	if(!isarea(location) || istype(location, /area/shuttle))
 		return FALSE

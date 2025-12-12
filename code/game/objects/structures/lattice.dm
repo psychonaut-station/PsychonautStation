@@ -44,17 +44,12 @@
 /obj/structure/lattice/Destroy(force) // so items on the lattice fall when the lattice is destroyed
 	var/turf/turfloc = loc
 	. = ..()
-	var/list/turf_lattices = list()
 	if(isturf(turfloc))
-		for(var/obj/structure/lattice_or_grill in turfloc)
-			if(!istype(lattice_or_grill, /obj/structure/lattice) && !istype(lattice_or_grill, /obj/structure/grille))
-				continue
-			turf_lattices += lattice_or_grill
 		for(var/thing_that_falls in turfloc)
 			turfloc.zFall(thing_that_falls)
 
 	var/area/turf_area = get_area(turfloc)
-	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !length(turf_lattices))
+	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !(locate(/obj/structure/lattice) in turfloc) && !(locate(/obj/structure/grille) in turfloc)))
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)

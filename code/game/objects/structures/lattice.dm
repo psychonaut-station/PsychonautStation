@@ -49,7 +49,7 @@
 		for(var/obj/structure/lattice_or_grill in turfloc)
 			if(!istype(lattice_or_grill, /obj/structure/lattice) && !istype(lattice_or_grill, /obj/structure/grille))
 				continue
-			turf_lattices += lattice
+			turf_lattices += lattice_or_grill
 		for(var/thing_that_falls in turfloc)
 			turfloc.zFall(thing_that_falls)
 

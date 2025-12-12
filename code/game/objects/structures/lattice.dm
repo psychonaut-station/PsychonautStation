@@ -48,8 +48,16 @@
 		for(var/thing_that_falls in turfloc)
 			turfloc.zFall(thing_that_falls)
 
+	if(!isturf(turfloc))
+		return .
+
+	var/list/turf_lattices = list()
+	for(var/obj/structure/lattice/lattice in turfloc.contents)
+		if(lattice == src)
+			continue
+		turf_lattices += src
 	var/area/turf_area = get_area(turfloc)
-	if(!force && isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation))
+	if(isspaceturf(turfloc) && istype(turf_area, /area/space/nearstation) && !length(turf_lattices))
 		set_turf_to_area(turfloc, GLOB.areas_by_type[/area/space])
 
 /obj/structure/lattice/proc/deconstruction_hints(mob/user)

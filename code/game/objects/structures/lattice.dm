@@ -47,8 +47,6 @@
 	var/list/turf_lattices = list()
 	if(isturf(turfloc))
 		for(var/obj/structure/lattice/lattice in turfloc)
-			if(QDELETED(lattice))
-				continue
 			turf_lattices += lattice
 		for(var/thing_that_falls in turfloc)
 			turfloc.zFall(thing_that_falls)

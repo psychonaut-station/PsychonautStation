@@ -6,8 +6,10 @@
 // test Islamic holiday
 /datum/unit_test/ramadan_2165/Run()
 	var/datum/holiday/islamic/ramadan/ramadan = new
-	TEST_ASSERT(ramadan.shouldCelebrate(6, NOVEMBER, 2165, WEDNESDAY), "November 6, 2165 was not Ramadan.")
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// TEST_ASSERT(ramadan.shouldCelebrate(6, NOVEMBER, 2165, WEDNESDAY), "November 6, 2165 was not Ramadan.")
+	TEST_ASSERT(ramadan.shouldCelebrate(6, DECEMBER, 2165, FRIDAY), "Wednesday 10, 2024 was not Ramadan.")
+	// PSYCHONAUT EDIT ADDITION END
 // nth day of week
 /datum/unit_test/thanksgiving_2020/Run()
 	var/datum/holiday/nth_week/thanksgiving/thanksgiving = new

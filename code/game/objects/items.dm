@@ -573,6 +573,9 @@
 	. = ..()
 	if(. || !user || anchored)
 		return
+	// PSYCHONAUT ADDITION BEGIN - EXAMINE_TUTORIAL
+	SStutorials.suggest_tutorial(user, /datum/tutorial/examine)
+	// PSYCHONAUT ADDITION END - EXAMINE_TUTORIAL
 	return attempt_pickup(user)
 
 /obj/item/proc/attempt_pickup(mob/living/user, skip_grav = FALSE)

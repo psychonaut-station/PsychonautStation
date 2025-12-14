@@ -6961,6 +6961,7 @@
 #include "modular_psychonaut\modules\emotes\code\emotes\carbon.dm"
 #include "modular_psychonaut\modules\emotes\code\emotes\living.dm"
 #include "modular_psychonaut\modules\emotes\code\mood_events\generic_positive_events.dm"
+#include "modular_psychonaut\modules\examine_tutorial\code\tutorial.dm"
 #include "modular_psychonaut\modules\face_cursor\code\keybinding.dm"
 #include "modular_psychonaut\modules\food_and_drinks\food\frozen.dm"
 #include "modular_psychonaut\modules\food_and_drinks\food\pastries.dm"

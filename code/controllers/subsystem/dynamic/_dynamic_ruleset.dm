@@ -191,6 +191,8 @@
 			var/total_cycle = 0
 			for(var/alist/entry in storyteller_settings)
 				total_cycle += entry[TIME_THRESHOLD]
+			if(!total_cycle)
+				total_cycle = INFINITY
 			var/loop_time = STATION_TIME_PASSED() % total_cycle
 			var/current_checkpoint = 0
 			for(var/alist/entry in storyteller_settings)
@@ -375,7 +377,8 @@
  * Prefer to override assign_role() instead of this proc
  */
 /datum/dynamic_ruleset/proc/execute()
-	SSstoryteller.current_storyteller.ruleset_execute(src, selected_minds)
+	if(!isnull(SSstoryteller.current_storyteller))
+		SSstoryteller.current_storyteller.ruleset_execute(src, selected_minds)
 	var/list/execute_args = create_execute_args()
 	for(var/datum/mind/mind as anything in selected_minds)
 		assign_role(arglist(list(mind) + execute_args))

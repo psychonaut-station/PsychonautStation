@@ -99,20 +99,26 @@ SUBSYSTEM_DEF(events)
 	var/lower_multiplier
 	var/higher_multiplier
 	if(!isnull(SSstoryteller.current_storyteller))
-		resetFrequency()
 		var/list/storyteller_settings
 		var/alist/storyteller_setting
 		storyteller_settings = SSstoryteller.current_storyteller.midround_settings
-		var/alist/last_setting = storyteller_settings[storyteller_settings.len]
-		var/loop_time = STATION_TIME_PASSED() % last_setting[TIME_THRESHOLD]
+
+		var/total_cycle = 0
 		for(var/alist/entry in storyteller_settings)
-			if(entry[TIME_THRESHOLD] > loop_time)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
 				storyteller_setting = entry
 				break
 
 		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
 		lower_multiplier = storyteller_setting[EXECUTION_MULTIPLIER_LOW]
-		lower_multiplier = storyteller_setting[EXECUTION_MULTIPLIER_HIGH]
+		higher_multiplier = storyteller_setting[EXECUTION_MULTIPLIER_HIGH]
 	scheduled = world.time + rand(frequency_lower * lower_multiplier, max(frequency_lower * lower_multiplier, frequency_upper * higher_multiplier))
 
 /**
@@ -136,10 +142,16 @@ SUBSYSTEM_DEF(events)
 	if(!isnull(SSstoryteller.current_storyteller))
 		storyteller_settings = SSstoryteller.current_storyteller.midround_settings
 
-		var/alist/last_setting = storyteller_settings[storyteller_settings.len]
-		var/loop_time = STATION_TIME_PASSED() % last_setting[TIME_THRESHOLD]
+		var/total_cycle = 0
 		for(var/alist/entry in storyteller_settings)
-			if(entry[TIME_THRESHOLD] > loop_time)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
 				storyteller_setting = entry
 				break
 

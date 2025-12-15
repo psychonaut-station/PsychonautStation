@@ -28,6 +28,7 @@
 		STORYTELLER_GENERAL_MULTIPLIERS = 1,
 		EXECUTION_MULTIPLIER_LOW = 1,
 		EXECUTION_MULTIPLIER_HIGH = 1,
+		TIME_THRESHOLD = INFINITY,
 		LOW_END = list(
 			ROUNDSTART = 0,
 			LIGHT_MIDROUND = 0,
@@ -122,6 +123,10 @@
 	return
 
 /datum/storyteller/proc/ruleset_execute(datum/dynamic_ruleset/ruleset, list/selected_minds)
+	SHOULD_CALL_PARENT(TRUE)
+	return
+
+/datum/storyteller/proc/event_execute(datum/round_event_control/round_event_control)
 	SHOULD_CALL_PARENT(TRUE)
 	return
 

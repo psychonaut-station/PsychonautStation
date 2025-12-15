@@ -9,7 +9,14 @@
 
 /datum/storyteller/primeordial/ruleset_execute()
 	. = ..()
-	settings[EXECUTION_MULTIPLIER_LOW] = clamp(settings[EXECUTION_MULTIPLIER_LOW] * rand(0.1, 2), 0.1, 2)
-	settings[EXECUTION_MULTIPLIER_HIGH] = clamp(settings[EXECUTION_MULTIPLIER_HIGH] * rand(0.1, 2), 0.1, 2)
+	after_event()
+
+/datum/storyteller/primeordial/event_execute()
+	. = ..()
+	after_event()
+
+/datum/storyteller/primeordial/proc/after_event()
+	settings[EXECUTION_MULTIPLIER_LOW] = clamp(settings[EXECUTION_MULTIPLIER_LOW] * rand(0.4, 2), 0.4, 2)
+	settings[EXECUTION_MULTIPLIER_HIGH] = clamp(settings[EXECUTION_MULTIPLIER_HIGH] * rand(0.4, 2), 0.4, 2)
 	log_storyteller("\[[name]\] set lower execution multiplier to [settings[EXECUTION_MULTIPLIER_LOW]]")
 	log_storyteller("\[[name]\] set higher execution multiplier to [settings[EXECUTION_MULTIPLIER_HIGH]]")

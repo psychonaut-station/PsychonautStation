@@ -578,18 +578,22 @@ SUBSYSTEM_DEF(dynamic)
 
 	if(!isnull(SSstoryteller.current_storyteller))
 		var/list/storyteller_settings
+		var/alist/storyteller_setting
 		if(range == LATEJOIN)
 			storyteller_settings = SSstoryteller.current_storyteller.latejoin_settings
 		else
 			storyteller_settings = SSstoryteller.current_storyteller.midround_settings
 
-		var/alist/last_setting = storyteller_settings[storyteller_settings.len]
-		var/loop_time = STATION_TIME_PASSED() % last_setting[TIME_THRESHOLD]
-
-		var/alist/storyteller_setting
-
+		var/total_cycle = 0
 		for(var/alist/entry in storyteller_settings)
-			if(entry[TIME_THRESHOLD] > loop_time)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
 				storyteller_setting = entry
 				break
 

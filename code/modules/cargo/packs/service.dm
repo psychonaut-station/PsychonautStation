@@ -328,6 +328,20 @@
 	)
 	crate_name = "doner grill crate"
 
+/datum/supply_pack/service/toast_machine
+	name = "Toast Machine Crate"
+	desc = "A compact press for Turkish toast. Comes with bread, cheese, sujuk, and butter to get you started."
+	cost = CARGO_CRATE_VALUE * 6
+	contains = list(
+		/obj/machinery/toast_machine = 1,
+		/obj/item/food/turkish_bread = 2,
+		/obj/item/food/toast_sujuk = 1,
+		/obj/item/food/toast_sujuk/slice = 4,
+		/obj/item/food/cheese/wedge = 2,
+		/obj/item/food/butterslice = 4,
+	)
+	crate_name = "toast machine crate"
+
 /datum/supply_pack/service/mousetraps
 	name = "Pest-B-Gon Mousetraps"
 	desc = "Three boxes of handy little spring-loaded traps for catching pesty rodents. Keep out of reach of children!"

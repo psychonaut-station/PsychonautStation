@@ -5,6 +5,7 @@
 	icon_state = "toast_machine"
 	base_icon_state = "toast_machine"
 	density = TRUE
+	pass_flags = PASSTABLE
 	pass_flags_self = PASSMACHINE | PASSTABLE | LETPASSTHROW
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION
@@ -13,6 +14,7 @@
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
 	anchored_tabletop_offset = 11
+	anchored = FALSE
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
 	///Looping sound for the grill
@@ -34,6 +36,12 @@
 /obj/machinery/toast_machine/crowbar_act(mob/living/user, obj/item/I)
 	. = ..()
 	default_deconstruction_crowbar(I, ignore_panel = TRUE)
+
+/obj/machinery/toast_machine/can_be_unfasten_wrench(mob/user, silent)
+	. = ..()
+	if(anchored && (on || toasting_objects.len))
+		to_chat(user, span_warning("You cannot unsecure [src] while it's running or loaded!"))
+		return CANT_UNFASTEN
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
 	return ..() || (contained in toasting_objects)

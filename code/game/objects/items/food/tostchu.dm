@@ -1,5 +1,5 @@
-/obj/item/food/toast_bread
-	name = "toast bread"
+/obj/item/food/turkish_bread
+	name = "turkish bread"
 	desc = "Soft bread made for pressing into a toast."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "bread"
@@ -12,12 +12,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 
-/obj/item/food/toast_bread/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_bread/half, 2, 3 SECONDS, table_required = TRUE, screentip_verb = "Halve", sound_to_play = SFX_KNIFE_SLICE)
+/obj/item/food/turkish_bread/make_processable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/turkish_bread/half, 2, 3 SECONDS, table_required = TRUE, screentip_verb = "Halve", sound_to_play = SFX_KNIFE_SLICE)
 
-/obj/item/food/toast_bread/half
-	name = "half toast bread"
-	desc = "Half of a toast loaf, ready to be packed with fillings."
+/obj/item/food/turkish_bread/half
+	name = "half turkish bread"
+	desc = "Half of a Turkish loaf, ready to be packed with fillings."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "half_bread"
 	food_reagents = list(

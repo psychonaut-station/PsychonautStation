@@ -35,7 +35,6 @@
 	. = ..()
 	on = TRUE // arrives in the on state
 	grill_loop = new(src, FALSE)
-	grill_loop.sound = 'sound/machines/toast/toast_machine_running.ogg'
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
 	update_appearance()
@@ -213,6 +212,7 @@
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(on && toasting_objects.len)
 		grill_loop.start()
+		grill_loop.sound = 'sound/machines/toast/toast_machine_running.ogg'
 	else
 		grill_loop.stop()
 	update_content_visibility()

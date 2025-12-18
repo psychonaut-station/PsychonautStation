@@ -57,7 +57,7 @@
 	AddComponent(/datum/component/grillable, /obj/item/food/toast_sujuk/grilled, rand(20 SECONDS, 30 SECONDS), TRUE, TRUE)
 
 /obj/item/food/toast_sujuk/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_sujuk/slice, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
+	return
 
 /obj/item/food/toast_sujuk/grilled
 	name = "grilled sujuk"
@@ -74,7 +74,7 @@
 	crafting_complexity = FOOD_COMPLEXITY_2
 
 /obj/item/food/toast_sujuk/grilled/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_sujuk/slice/grilled, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
+	return
 
 /obj/item/food/toast_sujuk/slice
 	name = "raw sujuk slice"

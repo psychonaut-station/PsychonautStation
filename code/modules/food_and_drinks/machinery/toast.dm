@@ -51,8 +51,6 @@
 	if(anchored && (on || toasting_objects.len))
 		to_chat(user, span_warning("You cannot unsecure [src] while it's running or loaded!"))
 		return CANT_UNFASTEN
-	if(!anchored)
-		return CANT_UNFASTEN // needs to be secured once placed
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
 	return ..() || (contained in toasting_objects)
@@ -62,6 +60,9 @@
 	return NONE
 
 /obj/machinery/toast_machine/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
+	if(I.tool_behaviour == TOOL_WRENCH || I.tool_behaviour == TOOL_CROWBAR)
+		return ..()
+
 	var/slot_cost = get_item_slot_cost(I)
 	if(!slot_cost)
 		to_chat(user, span_warning("[src] only fits toast bread, toast sandwiches, and sujuk."))

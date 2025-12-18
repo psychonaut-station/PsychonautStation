@@ -197,7 +197,8 @@
 	vis_contents -= unpress
 	UnregisterSignal(unpress, list(COMSIG_ITEM_GRILLED, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 	update_toast_audio()
-	addtimer(CALLBACK(grill_loop, TYPE_PROC_REF(/datum/looping_sound/grill, stop)), 1 SECONDS)
+	if(!toasting_objects.len || !on)
+		addtimer(CALLBACK(src, PROC_REF(stop_running_sound)), 1 SECONDS)
 
 /obj/machinery/toast_machine/proc/ItemMoved(obj/item/I, atom/OldLoc, Dir, Forced)
 	SIGNAL_HANDLER
@@ -222,6 +223,10 @@
 		grill_loop.stop()
 	update_content_visibility()
 	update_appearance()
+
+/obj/machinery/toast_machine/proc/stop_running_sound()
+	if(grill_loop)
+		grill_loop.stop()
 
 /obj/machinery/toast_machine/proc/update_content_visibility()
 	for(var/obj/item/pressed as anything in toasting_objects)

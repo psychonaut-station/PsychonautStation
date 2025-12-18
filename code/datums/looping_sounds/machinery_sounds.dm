@@ -67,6 +67,13 @@
 	mid_length = 18
 	volume = 50
 
+/datum/looping_sound/toast
+	mid_sounds = list('sound/machines/toast/toast_machine_running.ogg')
+	mid_length = 1 SECONDS
+	volume = 30
+	falloff_distance = 1
+	falloff_exponent = 3
+
 /datum/looping_sound/oven
 	start_sound = 'sound/machines/oven/oven_loop_start.ogg' //my immersions
 	start_length = 1.2 SECONDS

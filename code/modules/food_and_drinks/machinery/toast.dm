@@ -20,8 +20,8 @@
 	pixel_y = 5
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
-	///Looping sound for the grill
-	var/datum/looping_sound/grill/grill_loop
+	///Looping sound for the toaster
+	var/datum/looping_sound/toast/toast_loop
 	///Whether or not the machine is turned on right now
 	var/on = FALSE
 	///How many toast slots fit in the press?
@@ -34,18 +34,13 @@
 /obj/machinery/toast_machine/Initialize(mapload)
 	. = ..()
 	on = TRUE // arrives in the on state
-	grill_loop = new(src, FALSE)
-	grill_loop.mid_sounds = list('sound/machines/toast/toast_machine_running.ogg')
-	grill_loop.mid_length = 2 SECONDS
-	grill_loop.volume = 30
-	grill_loop.falloff_distance = 1
-	grill_loop.falloff_exponent = 3
+	toast_loop = new(src, FALSE)
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
 	update_appearance()
 
 /obj/machinery/toast_machine/Destroy()
-	QDEL_NULL(grill_loop)
+	QDEL_NULL(toast_loop)
 	QDEL_NULL(cooking_particles)
 	return ..()
 
@@ -223,15 +218,15 @@
 
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(on && toasting_objects.len)
-		grill_loop.start()
+		toast_loop.start()
 	else
-		grill_loop.stop()
+		toast_loop.stop()
 	update_content_visibility()
 	update_appearance()
 
 /obj/machinery/toast_machine/proc/stop_running_sound()
-	if(grill_loop)
-		grill_loop.stop()
+	if(toast_loop)
+		toast_loop.stop()
 
 /obj/machinery/toast_machine/proc/update_content_visibility()
 	for(var/obj/item/pressed as anything in toasting_objects)

@@ -15,9 +15,9 @@
 	circuit = /obj/item/circuitboard/machine/griddle
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
-	anchored_tabletop_offset = 14
+	anchored_tabletop_offset = 16
 	anchored = FALSE
-	pixel_y = 4
+	pixel_y = 8
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
 	///Looping sound for the grill

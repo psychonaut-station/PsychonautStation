@@ -173,5 +173,8 @@
 		machine_loc.hotspot_expose(600, 60)
 
 /obj/machinery/toast_machine/update_icon_state()
-	icon_state = "[base_icon_state][on ? \"-on\" : \"\"]"
+	if(on)
+		icon_state = "[base_icon_state]-on"
+	else
+		icon_state = base_icon_state
 	return ..()

@@ -1,6 +1,6 @@
-/obj/item/food/tost_bread
-	name = "tost bread"
-	desc = "Soft bread made for pressing into a tosta."
+/obj/item/food/toast_bread
+	name = "toast bread"
+	desc = "Soft bread made for pressing into a toast."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "bread"
 	food_reagents = list(
@@ -12,12 +12,12 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
 
-/obj/item/food/tost_bread/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/tost_bread/half, 2, 3 SECONDS, table_required = TRUE, screentip_verb = "Halve", sound_to_play = SFX_KNIFE_SLICE)
+/obj/item/food/toast_bread/make_processable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_bread/half, 2, 3 SECONDS, table_required = TRUE, screentip_verb = "Halve", sound_to_play = SFX_KNIFE_SLICE)
 
-/obj/item/food/tost_bread/half
-	name = "half tost bread"
-	desc = "Half of a tosta loaf, ready to be packed with fillings."
+/obj/item/food/toast_bread/half
+	name = "half toast bread"
+	desc = "Half of a toast loaf, ready to be packed with fillings."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "half_bread"
 	food_reagents = list(
@@ -29,7 +29,7 @@
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
 
-/obj/item/food/sujuk
+/obj/item/food/toast_sujuk
 	name = "raw sujuk"
 	desc = "A garlicky cured sausage that tastes best hot off the grill."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
@@ -44,13 +44,13 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/sujuk/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/sujuk/grilled, rand(20 SECONDS, 30 SECONDS), TRUE, TRUE)
+/obj/item/food/toast_sujuk/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast_sujuk/grilled, rand(20 SECONDS, 30 SECONDS), TRUE, TRUE)
 
-/obj/item/food/sujuk/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/sujuk/slice, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
+/obj/item/food/toast_sujuk/make_processable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_sujuk/slice, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
 
-/obj/item/food/sujuk/grilled
+/obj/item/food/toast_sujuk/grilled
 	name = "grilled sujuk"
 	desc = "A sujuk sausage, sizzling and crispy."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
@@ -64,10 +64,10 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/sujuk/grilled/make_processable()
-	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/sujuk/slice/grilled, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
+/obj/item/food/toast_sujuk/grilled/make_processable()
+	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_sujuk/slice/grilled, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
 
-/obj/item/food/sujuk/slice
+/obj/item/food/toast_sujuk/slice
 	name = "raw sujuk slice"
 	desc = "A thick slice of raw sujuk."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
@@ -81,10 +81,10 @@
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
 
-/obj/item/food/sujuk/slice/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/sujuk/slice/grilled, rand(6 SECONDS, 10 SECONDS), TRUE, TRUE)
+/obj/item/food/toast_sujuk/slice/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast_sujuk/slice/grilled, rand(6 SECONDS, 10 SECONDS), TRUE, TRUE)
 
-/obj/item/food/sujuk/slice/grilled
+/obj/item/food/toast_sujuk/slice/grilled
 	name = "grilled sujuk slice"
 	desc = "A sizzling slice of sujuk."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
@@ -98,13 +98,13 @@
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
 
-/obj/item/food/tost
+/obj/item/food/toast
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
 
-/obj/item/food/tost/cheese/raw
-	name = "raw cheese tost"
+/obj/item/food/toast/cheese/raw
+	name = "raw cheese toast"
 	desc = "Bread packed with cheese, waiting to be pressed."
 	icon_state = "ungrilled_cheese_toast"
 	food_reagents = list(
@@ -114,12 +114,12 @@
 	tastes = list("cheese" = 2, "bread" = 1)
 	foodtypes = GRAIN | DAIRY | RAW
 
-/obj/item/food/tost/cheese/raw/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/tost/cheese, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
+/obj/item/food/toast/cheese/raw/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast/cheese, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
-/obj/item/food/tost/cheese
-	name = "cheese tost"
-	desc = "Golden, melty kaşarlı tost."
+/obj/item/food/toast/cheese
+	name = "cheese toast"
+	desc = "Golden, melty kaşarlı toast."
 	icon_state = "grilled_cheese_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -128,9 +128,9 @@
 	tastes = list("cheese" = 2, "bread" = 2, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
 
-/obj/item/food/tost/cheese/half/raw
-	name = "raw half cheese tost"
-	desc = "A half portion of cheese tost ready to grill."
+/obj/item/food/toast/cheese/half/raw
+	name = "raw half cheese toast"
+	desc = "A half portion of cheese toast ready to grill."
 	icon_state = "ungrilled_halfbread_cheese_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -139,12 +139,12 @@
 	tastes = list("cheese" = 2, "bread" = 1)
 	foodtypes = GRAIN | DAIRY | RAW
 
-/obj/item/food/tost/cheese/half/raw/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/tost/cheese/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)
+/obj/item/food/toast/cheese/half/raw/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast/cheese/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)
 
-/obj/item/food/tost/cheese/half
-	name = "half cheese tost"
-	desc = "A half-portion of grilled cheese tost."
+/obj/item/food/toast/cheese/half
+	name = "half cheese toast"
+	desc = "A half-portion of grilled cheese toast."
 	icon_state = "grilled_halfbread_cheese_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -153,8 +153,8 @@
 	tastes = list("cheese" = 2, "bread" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
 
-/obj/item/food/tost/sujuk/raw
-	name = "raw sujuk tost"
+/obj/item/food/toast/sujuk/raw
+	name = "raw sujuk toast"
 	desc = "Bread stuffed with sujuk slices that still needs grilling."
 	icon_state = "ungrilled_sujuk_toast"
 	food_reagents = list(
@@ -164,12 +164,12 @@
 	tastes = list("meat" = 2, "bread" = 1, "spice" = 1)
 	foodtypes = GRAIN | MEAT | RAW
 
-/obj/item/food/tost/sujuk/raw/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/tost/sujuk, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
+/obj/item/food/toast/sujuk/raw/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast/sujuk, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
 
-/obj/item/food/tost/sujuk
-	name = "sujuk tost"
-	desc = "A pressed tost packed with sujuk."
+/obj/item/food/toast/sujuk
+	name = "sujuk toast"
+	desc = "A pressed toast packed with sujuk."
 	icon_state = "grilled_sujuk_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
@@ -178,9 +178,9 @@
 	tastes = list("meat" = 2, "bread" = 2, "spice" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | MEAT
 
-/obj/item/food/tost/sujuk/half/raw
-	name = "raw half sujuk tost"
-	desc = "Half a sujuk tost, ready to go into the press."
+/obj/item/food/toast/sujuk/half/raw
+	name = "raw half sujuk toast"
+	desc = "Half a sujuk toast, ready to go into the press."
 	icon_state = "ungrilled_halfbread_sujuk_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
@@ -189,12 +189,12 @@
 	tastes = list("meat" = 1, "bread" = 1, "spice" = 1)
 	foodtypes = GRAIN | MEAT | RAW
 
-/obj/item/food/tost/sujuk/half/raw/make_grillable()
-	AddComponent(/datum/component/grillable, /obj/item/food/tost/sujuk/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)
+/obj/item/food/toast/sujuk/half/raw/make_grillable()
+	AddComponent(/datum/component/grillable, /obj/item/food/toast/sujuk/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)
 
-/obj/item/food/tost/sujuk/half
-	name = "half sujuk tost"
-	desc = "A half-portion sujuk tost hot from the press."
+/obj/item/food/toast/sujuk/half
+	name = "half sujuk toast"
+	desc = "A half-portion sujuk toast hot from the press."
 	icon_state = "grilled_halfbread_sujuk_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,

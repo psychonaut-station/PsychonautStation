@@ -19,7 +19,7 @@
 	var/datum/looping_sound/grill/grill_loop
 	///Whether or not the machine is turned on right now
 	var/on = FALSE
-	///How many things fit in the press?
+	///How many toast slots fit in the press?
 	var/max_items = 2
 
 /obj/machinery/toast_machine/Initialize(mapload)
@@ -43,9 +43,13 @@
 	return NONE
 
 /obj/machinery/toast_machine/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
-	if(toasting_objects.len >= max_items)
-		to_chat(user, span_notice("[src] can't fit more items!"))
-		return
+	var/slot_cost = get_item_slot_cost(I)
+	if(!slot_cost)
+		to_chat(user, span_warning("[src] only fits toast bread, toast sandwiches, and sujuk."))
+		return TRUE
+	if(get_current_slots() + slot_cost > max_items)
+		to_chat(user, span_notice("[src] can't fit more toast."))
+		return TRUE
 	if(!LAZYACCESS(modifiers, ICON_X) || !LAZYACCESS(modifiers, ICON_Y))
 		return
 	if(user.transferItemToLoc(I, src, silent = FALSE))
@@ -68,7 +72,7 @@
 	if(isnull(item.atom_storage))
 		return NONE
 
-	if(length(contents) >= max_items)
+	if(get_current_slots() >= max_items)
 		balloon_alert(user, "it's full!")
 		return ITEM_INTERACT_BLOCKING
 
@@ -79,10 +83,13 @@
 
 	var/loaded = 0
 	for(var/obj/tray_item in item)
+		var/slot_cost = get_item_slot_cost(tray_item)
+		if(!slot_cost)
+			continue
+		if(get_current_slots() + slot_cost > max_items)
+			break
 		if(!IS_EDIBLE(tray_item))
 			continue
-		if(length(contents) >= max_items)
-			break
 		if(item.atom_storage.attempt_remove(tray_item, src))
 			loaded++
 			AddToPress(tray_item, user)
@@ -107,6 +114,7 @@
 	else
 		end_processing()
 	update_appearance()
+	update_content_visibility()
 	update_toast_audio()
 
 /obj/machinery/toast_machine/begin_processing()
@@ -120,9 +128,8 @@
 		SEND_SIGNAL(item_to_toast, COMSIG_ITEM_GRILL_TURNED_OFF)
 
 /obj/machinery/toast_machine/proc/AddToPress(obj/item/item_to_toast, mob/user)
-	vis_contents += item_to_toast
 	toasting_objects += item_to_toast
-	item_to_toast.vis_flags |= VIS_INHERIT_PLANE
+	set_item_visibility(item_to_toast, on)
 
 	SEND_SIGNAL(item_to_toast, COMSIG_ITEM_GRILL_PLACED, user)
 	if(on)
@@ -155,6 +162,18 @@
 	else
 		grill_loop.stop()
 
+/obj/machinery/toast_machine/proc/update_content_visibility()
+	for(var/obj/item/pressed as anything in toasting_objects)
+		set_item_visibility(pressed, on)
+
+/obj/machinery/toast_machine/proc/set_item_visibility(obj/item/target, visible)
+	if(visible)
+		target.vis_flags |= VIS_INHERIT_PLANE
+		vis_contents |= target
+	else
+		target.vis_flags &= ~VIS_INHERIT_PLANE
+		vis_contents -= target
+
 /obj/machinery/toast_machine/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool, time = 2 SECONDS)
@@ -178,3 +197,28 @@
 	else
 		icon_state = base_icon_state
 	return ..()
+
+/obj/machinery/toast_machine/proc/get_current_slots()
+	var/slots = 0
+	for(var/obj/item/toasted as anything in toasting_objects)
+		slots += get_item_slot_cost(toasted)
+	return slots
+
+/obj/machinery/toast_machine/proc/get_item_slot_cost(obj/item/I)
+	if(istype(I, /obj/item/food/toast_bread/half))
+		return 1
+	if(istype(I, /obj/item/food/toast_bread))
+		return 2
+	if(istype(I, /obj/item/food/toast/cheese/half))
+		return 1
+	if(istype(I, /obj/item/food/toast/cheese))
+		return 2
+	if(istype(I, /obj/item/food/toast/sujuk/half))
+		return 1
+	if(istype(I, /obj/item/food/toast/sujuk))
+		return 2
+	if(istype(I, /obj/item/food/toast_sujuk/slice))
+		return 1
+	if(istype(I, /obj/item/food/toast_sujuk))
+		return 1
+	return 0

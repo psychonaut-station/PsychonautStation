@@ -15,7 +15,7 @@
 		/datum/reagent/consumable/nutriment/fat/oil/olive = 2,
 	)
 	result = /obj/item/food/toast_sujuk
-	category = CAT_TOASTCHU
+	category = CAT_TOSTCHU
 
 /datum/crafting_recipe/food/toast_cheese
 	name = "Kaşarlı Toast"
@@ -25,7 +25,7 @@
 		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/toast/cheese/raw
-	category = CAT_TOASTCHU
+	category = CAT_TOSTCHU
 
 /datum/crafting_recipe/food/toast_cheese_half
 	name = "Yarım Kaşarlı Toast"
@@ -35,7 +35,7 @@
 		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/toast/cheese/half/raw
-	category = CAT_TOASTCHU
+	category = CAT_TOSTCHU
 
 /datum/crafting_recipe/food/toast_sujuk
 	name = "Sucuklu Toast"
@@ -46,7 +46,7 @@
 		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/toast/sujuk/raw
-	category = CAT_TOASTCHU
+	category = CAT_TOSTCHU
 
 /datum/crafting_recipe/food/toast_sujuk_half
 	name = "Yarım Sucuklu Toast"
@@ -57,4 +57,4 @@
 		/obj/item/food/butterslice = 1,
 	)
 	result = /obj/item/food/toast/sujuk/half/raw
-	category = CAT_TOASTCHU
+	category = CAT_TOSTCHU

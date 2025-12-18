@@ -153,9 +153,11 @@
 	if(on)
 		begin_processing()
 		update_use_power(ACTIVE_POWER_USE)
+		playsound(src, 'sound/machines/toast/toast_machine_closing.ogg', 50, FALSE)
 	else
 		end_processing()
 		update_use_power(IDLE_POWER_USE)
+		playsound(src, 'sound/machines/toast/toast_machine_opening.ogg', 50, FALSE)
 	update_appearance()
 	update_content_visibility()
 	update_toast_audio()
@@ -210,6 +212,7 @@
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(on && toasting_objects.len)
 		grill_loop.start()
+		grill_loop.sound = 'sound/machines/toast/toast_machine_running.ogg'
 	else
 		grill_loop.stop()
 	update_content_visibility()

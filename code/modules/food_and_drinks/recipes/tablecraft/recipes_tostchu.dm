@@ -11,7 +11,6 @@
 	name = "Sucuk"
 	reqs = list(
 		/obj/item/food/raw_patty = 2,
-		/obj/item/food/grown/chili = 1,
 		/datum/reagent/consumable/nutriment/fat/oil/olive = 2,
 	)
 	result = /obj/item/food/toast_sujuk

@@ -7,6 +7,8 @@
 	density = TRUE
 	pass_flags = PASSTABLE
 	pass_flags_self = PASSMACHINE | PASSTABLE | LETPASSTHROW
+	use_power = IDLE_POWER_USE
+	power_channel = AREA_USAGE_EQUIP
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION
 	layer = BELOW_OBJ_LAYER
@@ -125,11 +127,21 @@
 	toggle_mode()
 
 /obj/machinery/toast_machine/proc/toggle_mode()
+	if(!anchored)
+		to_chat(usr, span_warning("[src] needs to be secured and wired into the grid first!"))
+		balloon_alert(usr, "secure first!")
+		return
+	if(stat & NOPOWER)
+		to_chat(usr, span_warning("[src] has no power!"))
+		balloon_alert(usr, "no power!")
+		return
 	on = !on
 	if(on)
 		begin_processing()
+		update_use_power(ACTIVE_POWER_USE)
 	else
 		end_processing()
+		update_use_power(IDLE_POWER_USE)
 	update_appearance()
 	update_content_visibility()
 	update_toast_audio()
@@ -200,6 +212,8 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/toast_machine/process(seconds_per_tick)
+	if(stat & (NOPOWER|BROKEN))
+		return PROCESS_KILL
 	for(var/obj/item/toasting_item as anything in toasting_objects)
 		if(SEND_SIGNAL(toasting_item, COMSIG_ITEM_GRILL_PROCESS, src, seconds_per_tick) & COMPONENT_HANDLED_GRILLING)
 			continue
@@ -227,6 +241,16 @@
 	if(!on && toasting_objects.len)
 		overlays |= done_overlay
 	return ..()
+
+/obj/machinery/toast_machine/power_change()
+	. = ..()
+	if(stat & NOPOWER)
+		on = FALSE
+		end_processing()
+		update_use_power(IDLE_POWER_USE)
+		if(cooking_particles)
+			QDEL_NULL(cooking_particles)
+	update_appearance()
 
 /obj/machinery/toast_machine/proc/get_current_slots()
 	var/slots = 0

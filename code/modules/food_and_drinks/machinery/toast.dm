@@ -131,7 +131,7 @@
 		to_chat(usr, span_warning("[src] needs to be secured and wired into the grid first!"))
 		balloon_alert(usr, "secure first!")
 		return
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		to_chat(usr, span_warning("[src] has no power!"))
 		balloon_alert(usr, "no power!")
 		return

@@ -15,9 +15,9 @@
 	circuit = /obj/item/circuitboard/machine/griddle
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
-	anchored_tabletop_offset = 13
+	anchored_tabletop_offset = 12
 	anchored = FALSE
-	pixel_y = 6
+	pixel_y = 5
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
 	///Looping sound for the grill
@@ -198,7 +198,14 @@
 /obj/machinery/toast_machine/proc/ToastCompleted(obj/item/source, atom/toasted_result)
 	SIGNAL_HANDLER
 	AddToPress(toasted_result)
+	if(cooking_particles)
+		QDEL_NULL(cooking_particles)
+	playsound(src, 'sound/machines/ding.ogg', 50, FALSE)
+	on = FALSE
+	update_use_power(IDLE_POWER_USE)
 	update_appearance()
+	update_content_visibility()
+	update_toast_audio()
 
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(on && toasting_objects.len)
@@ -210,7 +217,7 @@
 
 /obj/machinery/toast_machine/proc/update_content_visibility()
 	for(var/obj/item/pressed as anything in toasting_objects)
-		set_item_visibility(pressed, on)
+		set_item_visibility(pressed, !on)
 
 /obj/machinery/toast_machine/proc/set_item_visibility(obj/item/target, visible)
 	if(visible)

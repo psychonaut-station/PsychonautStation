@@ -21,8 +21,8 @@
 	name = "Kaşarlı Toast"
 	reqs = list(
 		/obj/item/food/turkish_bread = 1,
-		/obj/item/food/cheese/wedge = 1,
-		/obj/item/food/butterslice = 1,
+		/obj/item/food/cheese/wedge = 2,
+		/obj/item/food/butterslice = 2,
 	)
 	result = /obj/item/food/toast/cheese/raw
 	category = CAT_TOSTCHU
@@ -41,9 +41,9 @@
 	name = "Sucuklu Toast"
 	reqs = list(
 		/obj/item/food/turkish_bread = 1,
-		/obj/item/food/toast_sujuk/slice = 3,
-		/obj/item/food/cheese/wedge = 1,
-		/obj/item/food/butterslice = 1,
+		/obj/item/food/toast_sujuk/slice = 4,
+		/obj/item/food/cheese/wedge = 2,
+		/obj/item/food/butterslice = 2,
 	)
 	result = /obj/item/food/toast/sujuk/raw
 	category = CAT_TOSTCHU

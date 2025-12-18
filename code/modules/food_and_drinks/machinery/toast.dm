@@ -13,8 +13,9 @@
 	circuit = /obj/item/circuitboard/machine/griddle
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
-	anchored_tabletop_offset = 11
+	anchored_tabletop_offset = 14
 	anchored = FALSE
+	pixel_y = 4
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
 	///Looping sound for the grill
@@ -23,14 +24,20 @@
 	var/on = FALSE
 	///How many toast slots fit in the press?
 	var/max_items = 2
+	/// Particle effect while cooking
+	var/particles/cooking_particles
+	/// Overlay key to signal done toast
+	var/datum/appearance/done_overlay
 
 /obj/machinery/toast_machine/Initialize(mapload)
 	. = ..()
 	grill_loop = new(src, FALSE)
+	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
 
 /obj/machinery/toast_machine/Destroy()
 	QDEL_NULL(grill_loop)
+	QDEL_NULL(cooking_particles)
 	return ..()
 
 /obj/machinery/toast_machine/crowbar_act(mob/living/user, obj/item/I)
@@ -42,6 +49,8 @@
 	if(anchored && (on || toasting_objects.len))
 		to_chat(user, span_warning("You cannot unsecure [src] while it's running or loaded!"))
 		return CANT_UNFASTEN
+	if(!anchored)
+		return CANT_UNFASTEN // needs to be secured once placed
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
 	return ..() || (contained in toasting_objects)
@@ -163,12 +172,15 @@
 /obj/machinery/toast_machine/proc/ToastCompleted(obj/item/source, atom/toasted_result)
 	SIGNAL_HANDLER
 	AddToPress(toasted_result)
+	update_appearance()
 
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(on && toasting_objects.len)
 		grill_loop.start()
 	else
 		grill_loop.stop()
+	update_content_visibility()
+	update_appearance()
 
 /obj/machinery/toast_machine/proc/update_content_visibility()
 	for(var/obj/item/pressed as anything in toasting_objects)
@@ -194,6 +206,10 @@
 		toasting_item.fire_act(600)
 		if(prob(5))
 			visible_message(span_danger("[toasting_item] hisses inside [src]!"))
+	if(on && toasting_objects.len && isnull(cooking_particles))
+		cooking_particles = new /particles/smoke/steam/mild/center(src)
+	if((!on || !toasting_objects.len) && cooking_particles)
+		QDEL_NULL(cooking_particles)
 
 	var/turf/machine_loc = loc
 	if(isturf(machine_loc))
@@ -204,6 +220,12 @@
 		icon_state = "[base_icon_state]-on"
 	else
 		icon_state = base_icon_state
+	if(!on && cooking_particles)
+		QDEL_NULL(cooking_particles)
+	if(on && cooking_particles)
+		overlays -= done_overlay
+	if(!on && toasting_objects.len)
+		overlays |= done_overlay
 	return ..()
 
 /obj/machinery/toast_machine/proc/get_current_slots()

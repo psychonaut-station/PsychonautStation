@@ -11,6 +11,9 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
+/obj/item/food/turkish_bread/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
 
 /obj/item/food/turkish_bread/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/turkish_bread/half, 2, 3 SECONDS, table_required = TRUE, screentip_verb = "Halve", sound_to_play = SFX_KNIFE_SLICE)
@@ -28,6 +31,9 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
+/obj/item/food/turkish_bread/half/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
 
 /obj/item/food/toast_sujuk
 	name = "raw sujuk"
@@ -43,6 +49,9 @@
 	foodtypes = MEAT | RAW
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+/obj/item/food/toast_sujuk/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
 
 /obj/item/food/toast_sujuk/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast_sujuk/grilled, rand(20 SECONDS, 30 SECONDS), TRUE, TRUE)
@@ -102,6 +111,9 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
+/obj/item/food/toast/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
 
 /obj/item/food/toast/cheese/raw
 	name = "raw cheese toast"

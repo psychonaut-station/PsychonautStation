@@ -15,9 +15,9 @@
 	circuit = /obj/item/circuitboard/machine/griddle
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
-	anchored_tabletop_offset = 14
+	anchored_tabletop_offset = 13
 	anchored = FALSE
-	pixel_y = 4
+	pixel_y = 6
 	///Things that are being pressed right now
 	var/list/toasting_objects = list()
 	///Looping sound for the grill
@@ -33,9 +33,11 @@
 
 /obj/machinery/toast_machine/Initialize(mapload)
 	. = ..()
+	on = TRUE // arrives in the on state
 	grill_loop = new(src, FALSE)
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
+	update_appearance()
 
 /obj/machinery/toast_machine/Destroy()
 	QDEL_NULL(grill_loop)
@@ -51,6 +53,7 @@
 	if(anchored && (on || toasting_objects.len))
 		to_chat(user, span_warning("You cannot unsecure [src] while it's running or loaded!"))
 		return CANT_UNFASTEN
+	return ..()
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
 	return ..() || (contained in toasting_objects)

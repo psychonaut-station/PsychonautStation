@@ -158,7 +158,7 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	if(!check_rights(R_SOUND))
 		return
 	if(href_list[VV_HK_PLAY_URL])
-		var/url = input(usr, "Enter content URL (soundcloud only)", "Play URL") as text|null
+		var/url = input(usr, "Enter content URL (youtube, soundcloud)", "Play URL") as text|null
 		if(length(url) && play_url(url))
 			var/atom/atom_parent = parent
 			var/area_name = get_area_name(atom_parent, TRUE)

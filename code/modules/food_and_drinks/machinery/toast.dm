@@ -159,6 +159,7 @@
 	else
 		end_processing()
 		update_use_power(IDLE_POWER_USE)
+		stop_running_sound()
 		addtimer(CALLBACK(src, PROC_REF(play_transitionsound), 'sound/machines/toast/toast_machine_opening.ogg'), 0.1 SECONDS)
 	update_appearance()
 	update_content_visibility()
@@ -198,7 +199,7 @@
 	UnregisterSignal(unpress, list(COMSIG_ITEM_GRILLED, COMSIG_MOVABLE_MOVED, COMSIG_QDELETING))
 	update_toast_audio()
 	if(!toasting_objects.len || !on)
-		addtimer(CALLBACK(src, PROC_REF(stop_running_sound)), 1 SECONDS)
+		stop_running_sound()
 
 /obj/machinery/toast_machine/proc/ItemMoved(obj/item/I, atom/OldLoc, Dir, Forced)
 	SIGNAL_HANDLER
@@ -212,6 +213,7 @@
 	playsound(src, 'sound/machines/ding.ogg', 50, FALSE)
 	on = FALSE
 	update_use_power(IDLE_POWER_USE)
+	stop_running_sound()
 	update_appearance()
 	update_content_visibility()
 	update_toast_audio()

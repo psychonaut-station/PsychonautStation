@@ -29,7 +29,7 @@
 	/// Particle effect while cooking
 	var/particles/cooking_particles
 	/// Overlay key to signal done toast
-	var/datum/appearance/done_overlay
+	var/mutable_appearance/done_overlay
 
 /obj/machinery/toast_machine/Initialize(mapload)
 	. = ..()
@@ -212,7 +212,9 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/toast_machine/process(seconds_per_tick)
-	if(stat & (NOPOWER|BROKEN))
+	if(machine_stat & (NOPOWER|BROKEN))
+		return PROCESS_KILL
+	if(!anchored)
 		return PROCESS_KILL
 	for(var/obj/item/toasting_item as anything in toasting_objects)
 		if(SEND_SIGNAL(toasting_item, COMSIG_ITEM_GRILL_PROCESS, src, seconds_per_tick) & COMPONENT_HANDLED_GRILLING)
@@ -244,7 +246,7 @@
 
 /obj/machinery/toast_machine/power_change()
 	. = ..()
-	if(stat & NOPOWER)
+	if(machine_stat & NOPOWER)
 		on = FALSE
 		end_processing()
 		update_use_power(IDLE_POWER_USE)

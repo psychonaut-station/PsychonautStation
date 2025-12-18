@@ -63,6 +63,11 @@
 	if(I.tool_behaviour == TOOL_WRENCH || I.tool_behaviour == TOOL_CROWBAR)
 		return ..()
 
+	if(on)
+		to_chat(user, span_warning("[src] is closed and running; wait for it to finish."))
+		balloon_alert(user, "busy!")
+		return TRUE
+
 	var/slot_cost = get_item_slot_cost(I)
 	if(!slot_cost)
 		to_chat(user, span_warning("[src] only fits toast bread, toast sandwiches, and sujuk."))
@@ -91,6 +96,11 @@
 /obj/machinery/toast_machine/item_interaction(mob/living/user, obj/item/item, list/modifiers)
 	if(isnull(item.atom_storage))
 		return NONE
+
+	if(on)
+		balloon_alert(user, "busy!")
+		to_chat(user, span_warning("[src] is closed and running; wait for it to finish."))
+		return ITEM_INTERACT_BLOCKING
 
 	if(get_current_slots() >= max_items)
 		balloon_alert(user, "it's full!")

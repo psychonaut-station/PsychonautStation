@@ -37,6 +37,9 @@
 	grill_loop = new(src, FALSE)
 	grill_loop.mid_sounds = list('sound/machines/toast/toast_machine_running.ogg')
 	grill_loop.mid_length = 2 SECONDS
+	grill_loop.volume = 30
+	grill_loop.falloff_distance = 1
+	grill_loop.falloff_exponent = 3
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
 	update_appearance()

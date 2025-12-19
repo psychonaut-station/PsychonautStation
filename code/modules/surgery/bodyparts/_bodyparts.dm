@@ -282,6 +282,7 @@
 
 	owner = null
 
+	QDEL_NULL(current_gauze)
 	QDEL_LAZYLIST(scars)
 
 	for(var/atom/movable/movable in contents)

@@ -241,14 +241,13 @@
 	new /obj/item/clothing/gloves/divine_archer(src)
 	new /obj/item/clothing/shoes/divine_archer(src)
 
-<<<<<<< HEAD
 /obj/item/storage/box/holy/tech
 	name = "Tech Priest Kit"
 	typepath_for_preview = /obj/item/clothing/suit/hooded/chaplain_hoodie/tech
 
 /obj/item/storage/box/holy/tech/PopulateContents()
 	new /obj/item/clothing/suit/hooded/chaplain_hoodie/tech(src)
-=======
+
 /obj/item/storage/box/holy/heretic
 	name = "Occult Practitioner Kit"
 	typepath_for_preview = /obj/item/clothing/suit/chaplainsuit/armor/heretic
@@ -256,7 +255,6 @@
 /obj/item/storage/box/holy/heretic/PopulateContents()
 	new /obj/item/clothing/suit/chaplainsuit/armor/heretic(src)
 	new /obj/item/clothing/head/helmet/chaplain/heretic(src)
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 
 /obj/item/storage/box/floor_camo
 	name = "floor tile camo box"

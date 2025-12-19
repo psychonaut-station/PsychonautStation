@@ -1,15 +1,7 @@
-<<<<<<< HEAD
 #define CREDIT_ROLL_SPEED 9 SECONDS
 #define CREDIT_SPAWN_SPEED 1 SECONDS
 #define CREDIT_ANIMATE_HEIGHT (16 * world.icon_size)
 #define CREDIT_EASE_DURATION 2.2 SECONDS
-=======
-#define CREDIT_ROLL_SPEED (12.5 SECONDS)
-#define CREDIT_SPAWN_SPEED (1 SECONDS)
-#define CREDIT_ANIMATE_HEIGHT (14 * ICON_SIZE_Y)
-#define CREDIT_EASE_DURATION (2.2 SECONDS)
-#define CREDITS_PATH "[global.config.directory]/contributors.dmi"
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 
 /client/proc/RollCredits()
 	set waitfor = FALSE
@@ -64,7 +56,6 @@
 /atom/movable/screen/credit/Initialize(mapload, datum/hud/hud_owner, credited, client/P)
 	. = ..()
 	parent = P
-<<<<<<< HEAD
 	var/view = P?.view
 	var/list/offsets = screen_loc_to_offset("3,1", view)
 
@@ -105,13 +96,6 @@
 		maptext_width = world.icon_size * 12
 		maptext_height = world.icon_size * 3
 
-=======
-	icon_state = credited
-	maptext = MAPTEXT_PIXELLARI(credited)
-	maptext_x = ICON_SIZE_X + 8
-	maptext_y = (ICON_SIZE_Y / 2) - 4
-	maptext_width = ICON_SIZE_X * 6
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 	var/matrix/M = matrix(transform)
 	M.Translate(0, CREDIT_ANIMATE_HEIGHT)
 	animate(src, transform = M, time = CREDIT_ROLL_SPEED)

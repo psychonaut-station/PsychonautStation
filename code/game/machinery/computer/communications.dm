@@ -281,13 +281,8 @@
 			SSshuttle.action_load(shuttle, replace = TRUE)
 			bank_account.adjust_money(-shuttle.credit_cost)
 
-<<<<<<< HEAD
 			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("KİMLİK HATASI: CVE-2018-17107", 60) : user.real_name
-			minor_announce("[purchaser_name] [shuttle.credit_cost] krediye [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alımı")
-=======
-			var/purchaser_name = (obj_flags & EMAGGED) ? scramble_message_replace_chars("AUTHENTICATION FAILURE: CVE-2018-17107", 60) : user.real_name
-			minor_announce("[purchaser_name] has purchased [shuttle.name] for [shuttle.credit_cost] [MONEY_NAME].[shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Shuttle Purchase")
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
+			minor_announce("[purchaser_name] [shuttle.credit_cost] [MONEY_NAME] karşılığında [shuttle.name] satın aldı. [shuttle.extra_desc ? " [shuttle.extra_desc]" : ""]" , "Mekik Satın Alımı")
 
 			message_admins("[ADMIN_LOOKUPFLW(user)] purchased [shuttle.name].")
 			log_shuttle("[key_name(user)] has purchased [shuttle.name].")

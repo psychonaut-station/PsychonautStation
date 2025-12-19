@@ -309,13 +309,8 @@
 
 	else if(check_jackpot(JACKPOT_SEVENS))
 		var/prize = money + JACKPOT
-<<<<<<< HEAD
-		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] credits!'")
-		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
-=======
 		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] [MONEY_NAME]!'")
-		priority_announce("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!")
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
+		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
 		if(isliving(user) && (user in viewers(src)))
 			var/mob/living/living_user = user
 			living_user.add_mood_event("slots", /datum/mood_event/slots/win/jackpot)

@@ -414,15 +414,11 @@
 	var/obj/item/bodypart/other_hand = user.has_hand_for_held_index(user.get_inactive_hand_index()) //returns non-disabled inactive hands
 	if(weapon_weight == WEAPON_HEAVY && (user.get_inactive_held_item() || !other_hand))
 		balloon_alert(user, "use both hands!")
-<<<<<<< HEAD
-		return
+		return ITEM_INTERACT_BLOCKING
 
 	if(fire_in && !do_after(user, fire_in, target = user))
 		balloon_alert(user, "interrupted!")
-		return
-=======
 		return ITEM_INTERACT_BLOCKING
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 	//DUAL (or more!) WIELDING
 	var/bonus_spread = 0
 	var/loop_counter = 0

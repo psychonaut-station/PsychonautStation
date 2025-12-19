@@ -153,15 +153,10 @@
 	light_color = COLOR_AMMO_HELLFIRE
 
 /obj/item/gun/energy/laser/captain
-<<<<<<< HEAD
-	name = "\improper antique laser gun"
-	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
-	icon = 'icons/obj/weapons/guns/energy.dmi'
-=======
 	name = "antique laser gun"
 	desc = "This is an antique laser gun. All craftsmanship is of the highest quality. It is decorated with assistant leather and chrome. \
 		The object menaces with spikes of energy. On the item is an image of Space Station 13. The station is exploding."
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
+	icon = 'icons/obj/weapons/guns/energy.dmi'
 	icon_state = "caplaser"
 	w_class = WEIGHT_CLASS_NORMAL
 	lefthand_file = 'icons/psychonaut/mob/inhands/weapons/guns_lefthand.dmi'
@@ -212,15 +207,11 @@
 
 /obj/item/gun/energy/laser/captain/scattershot
 	name = "scatter shot laser rifle"
-<<<<<<< HEAD
-	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. The inner-core can self-charge for theoretically infinite use."
+	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. \
+		The inner-core can self-charge for theoretically infinite use."
 	icon = 'icons/obj/weapons/guns/energy.dmi'
 	lefthand_file = 'icons/mob/inhands/weapons/guns_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/guns_righthand.dmi'
-=======
-	desc = "An industrial-grade heavy-duty laser rifle with a modified laser lens to scatter its shot into multiple smaller lasers. \
-		The inner-core can self-charge for theoretically infinite use."
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 	icon_state = "lasercannon"
 	w_class = WEIGHT_CLASS_BULKY
 	inhand_icon_state = "laser"

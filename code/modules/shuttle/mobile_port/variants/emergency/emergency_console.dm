@@ -129,24 +129,14 @@
 				authorized.Cut()
 				. = TRUE
 
-<<<<<<< HEAD
-	if((old_len != authorized.len) && !ENGINES_STARTED)
-		var/alert = (authorized.len > old_len)
-		var/repeal = (authorized.len < old_len)
-		var/remaining = max(0, auth_need - authorized.len)
-		if(authorized.len && remaining)
-			minor_announce("Mekik erken fırlatılana kadar [remaining] kişinin daha onayına ihtiyaç var", null, alert)
-		if(repeal)
-			minor_announce("Erken fırlatma izni iptal edildi, [remaining] kişinin daha onayına ihtiyaç var")
-=======
 	var/new_len = length(authorized)
 	if((old_len != new_len) && !ENGINES_STARTED)
 		var/repeal = (new_len < old_len)
 		var/remaining = max(0, auth_need - new_len)
 		if(new_len && remaining)
 			priority_announce(
-				"[remaining] authorization\s needed until shuttle is launched early.",
-				"Emergency Shuttle Status",
+				"Mekiğin erken fırlatılması için [remaining] kişinin daha onayına ihtiyaç var.",
+				"Acil Durum Mekiği Durumu",
 				sound = 'sound/announcer/notice/notice1.ogg',
 				type = ANNOUNCEMENT_TYPE_PRIORITY,
 				has_important_message = TRUE,
@@ -154,13 +144,12 @@
 			)
 		if(repeal)
 			priority_announce(
-				"Early launch authorization revoked, [remaining] authorization\s needed.",
-				"Emergency Shuttle Status",
+				"Erken fırlatma izni iptal edildi, [remaining] kişinin daha onayına ihtiyaç var.",
+				"Acil Durum Mekiği Durumu",
 				sound = 'sound/announcer/notice/notice2.ogg',
 				type = ANNOUNCEMENT_TYPE_PRIORITY,
 				color_override = "blue",
 			)
->>>>>>> f09f71a12a16f012a085d852573af7cd1c289263
 
 	acted_recently += user
 	SStgui.update_user_uis(user, src)

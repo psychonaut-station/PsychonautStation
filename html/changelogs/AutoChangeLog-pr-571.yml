@@ -1,0 +1,4 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - config: "Yanlış orbit bildirisi gelme ihtimali config ile düzenlenebiliyor."

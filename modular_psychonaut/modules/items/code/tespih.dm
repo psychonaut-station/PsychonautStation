@@ -4,6 +4,7 @@
  * Description:
  * 	Tesbih ekler
  * Related files:
+ *  `code/modules/vending/autodrobe.dm`
  * 	`modular_psychonaut/master_files/icons/obj/tespih.dmi`
  *  `modular_psychonaut/master_files/icons/mob/inhands/equipments/tespih_lefthand.dmi`
  *  `modular_psychonaut/master_files/icons/mob/inhands/equipments/tespih_righthand.dmi`

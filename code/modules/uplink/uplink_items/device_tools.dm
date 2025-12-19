@@ -94,10 +94,18 @@
 
 /datum/uplink_item/device_tools/syndicate_teleporter
 	name = "Experimental Syndicate Teleporter"
+	// PSYCHONAUT EDIT ADDITION BEGIN - NERF_SYNDIE_TELEPORTER - Original:
+	/*
 	desc = "A handheld device that teleports the user 4-8 meters forward. \
 			Beware, teleporting into a wall will trigger a parallel emergency teleport; \
 			however if that fails, you may need to be stitched back together. \
 			Comes with 4 charges, recharges randomly. Warranty null and void if exposed to an electromagnetic pulse."
+	*/
+	desc = "A handheld device that teleports the user 4-7 meters forward. \
+			Beware, teleporting into a wall will trigger a parallel emergency teleport; \
+			however if that fails, you may need to be stitched back together. \
+			Comes with 3 charges, recharges after 25 seconds. Warranty null and void if exposed to an electromagnetic pulse."
+	// PSYCHONAUT EDIT ADDITION END - NERF_SYNDIE_TELEPORTER
 	item = /obj/item/storage/box/syndie_kit/syndicate_teleporter
 	cost = 8
 
@@ -216,6 +224,7 @@
 	name = "Cryptographic Sequencer"
 	desc = "The cryptographic sequencer, electromagnetic card, or emag, is a small card that unlocks hidden functions \
 			in electronic devices, subverts intended functions, and easily breaks security mechanisms. Cannot be used to open airlocks."
+	progression_minimum = 20 MINUTES // PSYCHONAUT ADDITION
 	item = /obj/item/card/emag
 	cost = 4
 

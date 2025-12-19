@@ -186,6 +186,14 @@
 /obj/item/mecha_parts/mecha_equipment/drill/proc/move_ores()
 	chassis.collect_ore()
 
+// PSYCHONAUT ADDITION BEGIN
+/obj/item/mecha_parts/mecha_equipment/drill/can_attach(obj/vehicle/sealed/mecha/M, attach_right = FALSE)
+	if(..())
+		if(istype(M, /obj/vehicle/sealed/mecha))
+			return TRUE
+	return FALSE
+// PSYCHONAUT ADDITION END
+
 /obj/item/mecha_parts/mecha_equipment/drill/proc/drill_mob(mob/living/target, mob/living/user)
 	target.visible_message(span_danger("[chassis] is drilling [target] with [src]!"), \
 						span_userdanger("[chassis] is drilling you with [src]!"))

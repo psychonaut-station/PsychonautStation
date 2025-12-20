@@ -482,6 +482,9 @@
   - admin: Removed ability to enable Rock The Vote because RTV is no longer a thing
   Melbert:
   - qol: Stop drop and roll now has a progress bar
+  Seefaaa:
+  - spellcheck: "jukebox'da \"soundcloud only\" yerine \"youtube, soundcloud\" yaz\u0131\
+      yor"
   SmArtKar:
   - bugfix: Fixed the brimdust status alert sprite
   Thunder12345:
@@ -502,9 +505,6 @@
   - config: If you publicly host a copy of your server's config, you may now link
       to the public URL in the 'CONFIGURL' setting in the server config. It will show
       to players in the Escape Menu's Resources Carousel.
-  Seefaaa:
-  - spellcheck: "jukebox'da \"soundcloud only\" yerine \"youtube, soundcloud\" yaz\u0131\
-      yor"
   timothymtorres:
   - bugfix: Fix map reader ignoring valid variable names. If a variable had a number
       inside the name anywhere the map reader would ignore this value when a map was
@@ -577,3 +577,21 @@
       gun to add and remove traits to/from fish, and a bluespace fishing reel.'
   leaKsi:
   - bugfix: Fixed 2 infinite credit exploits.
+2025-12-20:
+  Aliceee2ch:
+  - bugfix: Mapped missing security spawners in science outpost on TramStation to
+      prevent spawning in walls.
+  - rscadd: Engineering cyborg can now hold conveyor belts and place plastic signs
+      using screwdriver.
+  Fghj240:
+  - balance: Expanded storage modules are now unlocked much earlier
+  - balance: Regular storage modules require 1 complexity instead of 3
+  - spellcheck: Regular storage modules are now called compact storage modules and
+      the expanded ones are just called storage modules.
+  Rengan:
+  - config: "Yanl\u0131\u015F orbit bildirisi gelme ihtimali config ile d\xFCzenlenebiliyor."
+  Ureus:
+  - image: "Crozius Null Rodunun suit storage ve inhand spritelar\u0131n\u0131 d\xFC\
+      zeltir."
+  lelandkemble:
+  - bugfix: Departmental security officers will not spawn in walls

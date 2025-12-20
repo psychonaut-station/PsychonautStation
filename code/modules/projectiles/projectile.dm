@@ -18,7 +18,7 @@
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	layer = MOB_LAYER
 	/// The sound this plays on impact.
-	var/hitsound = 'sound/items/weapons/pierce.ogg'
+	var/hitsound
 	/// Sound played when the projectile hits a wall
 	var/hitsound_wall
 
@@ -371,6 +371,15 @@
 		impact_x = entry_x + movement_vector?.pixel_x * rand(0, ICON_SIZE_X / 2)
 		impact_y = entry_y + movement_vector?.pixel_y * rand(0, ICON_SIZE_Y / 2)
 
+	// Psychonaut, SFX impact sound logic
+	var/impact_sound
+	if(hitsound)
+		impact_sound = hitsound
+	else
+		impact_sound = target.impact_sound
+
+	playsound(src, get_sfx(impact_sound), vol_by_damage(), TRUE, -1)
+	//
 	if(isturf(target) && hitsound_wall)
 		playsound(src, hitsound_wall, clamp(vol_by_damage() + (suppressed ? 0 : 20), 0, 100), TRUE, -1)
 

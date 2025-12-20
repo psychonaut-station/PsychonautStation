@@ -214,9 +214,195 @@
 /proc/get_rand_frequency_low_range()
 	return rand(38000, 45000)
 
-///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it
+///convert a SFX define into a .ogg
 /proc/get_sfx(soundin)
-	if(!istext(soundin))
-		return soundin
-	var/datum/sound_effect/sfx = GLOB.sfx_datum_by_key[soundin]
-	return sfx?.return_sfx() || soundin
+	if(istext(soundin))
+		switch(soundin)
+			if(SFX_BULLET_IMPACT_METAL)
+				soundin = pick(
+					'code/game/sound/impact/impact_metal_01.ogg',
+					'code/game/sound/impact/impact_metal_02.ogg',
+					'code/game/sound/impact/impact_metal_03.ogg',
+					'code/game/sound/impact/impact_metal_04.ogg',
+					'code/game/sound/impact/impact_metal_05.ogg',
+					'code/game/sound/impact/impact_metal_06.ogg',
+					'code/game/sound/impact/impact_metal_07.ogg',
+					'code/game/sound/impact/impact_metal_08.ogg',
+					'code/game/sound/impact/impact_metal_09.ogg',
+					'code/game/sound/impact/impact_metal_10.ogg',
+					'code/game/sound/impact/impact_metal_11.ogg',
+					'code/game/sound/impact/impact_metal_12.ogg',
+					'code/game/sound/impact/impact_metal_13.ogg',
+					'code/game/sound/impact/impact_metal_14.ogg',
+					'code/game/sound/impact/impact_metal_15.ogg',
+					'code/game/sound/impact/impact_metal_16.ogg',
+					'code/game/sound/impact/impact_metal_17.ogg',
+				)
+			if(SFX_BULLET_IMPACT_FLESH)
+				soundin = pick(
+					'code/game/sound/impact/impact_flesh_01.ogg',
+					'code/game/sound/impact/impact_flesh_02.ogg',
+					'code/game/sound/impact/impact_flesh_03.ogg',
+					'code/game/sound/impact/impact_flesh_04.ogg',
+					'code/game/sound/impact/impact_flesh_05.ogg',
+					'code/game/sound/impact/impact_flesh_06.ogg',
+					'code/game/sound/impact/impact_flesh_07.ogg',
+					'code/game/sound/impact/impact_flesh_08.ogg',
+					'code/game/sound/impact/impact_flesh_09.ogg',
+				)
+			if(SFX_BULLET_IMPACT_ICE)
+				soundin = pick(
+					'code/game/sound/impact/impact_ice_01.ogg',
+					'code/game/sound/impact/impact_ice_02.ogg',
+					'code/game/sound/impact/impact_ice_03.ogg',
+					'code/game/sound/impact/impact_ice_04.ogg',
+					'code/game/sound/impact/impact_ice_05.ogg',
+					'code/game/sound/impact/impact_ice_06.ogg',
+					'code/game/sound/impact/impact_ice_07.ogg',
+					'code/game/sound/impact/impact_ice_08.ogg',
+					'code/game/sound/impact/impact_ice_09.ogg',
+					'code/game/sound/impact/impact_ice_10.ogg',
+				)
+			if(SFX_BULLET_IMPACT_WOOD)
+				soundin = pick(
+					'code/game/sound/impact/impact_wood_01.ogg',
+					'code/game/sound/impact/impact_wood_02.ogg',
+					'code/game/sound/impact/impact_wood_03.ogg',
+					'code/game/sound/impact/impact_wood_04.ogg',
+					'code/game/sound/impact/impact_wood_05.ogg',
+					'code/game/sound/impact/impact_wood_06.ogg',
+					'code/game/sound/impact/impact_wood_07.ogg',
+					'code/game/sound/impact/impact_wood_08.ogg',
+					'code/game/sound/impact/impact_wood_09.ogg',
+					'code/game/sound/impact/impact_wood_10.ogg',
+				)
+			if(SFX_BULLET_IMPACT_CONCRETE)
+				soundin = pick(
+					'code/game/sound/impact/impact_masonry_01.ogg',
+					'code/game/sound/impact/impact_masonry_02.ogg',
+					'code/game/sound/impact/impact_masonry_03.ogg',
+					'code/game/sound/impact/impact_masonry_04.ogg',
+					'code/game/sound/impact/impact_masonry_05.ogg',
+					'code/game/sound/impact/impact_masonry_06.ogg',
+					'code/game/sound/impact/impact_masonry_07.ogg',
+					'code/game/sound/impact/impact_masonry_08.ogg',
+					'code/game/sound/impact/impact_masonry_09.ogg',
+					'code/game/sound/impact/impact_masonry_10.ogg',
+				)
+			if(SFX_BULLET_IMPACT_GLASS)
+				soundin = pick(
+					'code/game/sound/impact/impact_glass_01.ogg',
+					'code/game/sound/impact/impact_glass_02.ogg',
+					'code/game/sound/impact/impact_glass_03.ogg',
+					'code/game/sound/impact/impact_glass_04.ogg',
+					'code/game/sound/impact/impact_glass_05.ogg',
+					'code/game/sound/impact/impact_glass_06.ogg',
+					'code/game/sound/impact/impact_glass_07.ogg',
+					'code/game/sound/impact/impact_glass_08.ogg',
+					'code/game/sound/impact/impact_glass_09.ogg',
+					'code/game/sound/impact/impact_glass_10.ogg',
+				)
+	return soundin
+
+// This is an atom level variable to prevent extensive typechecking for impacts.
+/atom
+	// The sound we make if hit.
+	var/impact_sound = SFX_BULLET_IMPACT_METAL
+
+
+// TURFS
+/turf/closed/wall/ice
+	impact_sound = SFX_BULLET_IMPACT_ICE
+
+/turf/closed/wall/mineral/snow
+	impact_sound = SFX_BULLET_IMPACT_ICE
+
+/turf/closed/wall/mineral/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/turf/closed/wall/mineral/bamboo
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/turf/closed/wall/mineral/sandstone
+	impact_sound = SFX_BULLET_IMPACT_CONCRETE
+
+/turf/closed/wall/vault/rock
+	impact_sound = SFX_BULLET_IMPACT_CONCRETE
+
+/turf/closed/wall/vault/sandstone
+	impact_sound = SFX_BULLET_IMPACT_CONCRETE
+
+/turf/closed/wall/rock
+	impact_sound = SFX_BULLET_IMPACT_CONCRETE
+
+/turf/closed/wall/mineral/diamond
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/turf/closed/wall/mineral/plasma
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+// MOBS
+/mob/living
+	impact_sound = SFX_BULLET_IMPACT_FLESH
+
+// STRUCTURES
+/obj/structure/window
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/glass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/reinforced/rglass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/reinforced/plasmarglass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/reinforced/plastitaniumglass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/reinforced/titaniumglass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/structure/table/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/barricade/wooden
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/chair/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/closet/crate/wooden
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/door_assembly/door_assembly_wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/falsewall/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/table_frame/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/deployable_barricade/wooden
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/structure/statue/snow
+	impact_sound = SFX_BULLET_IMPACT_ICE
+
+/obj/structure/deployable_barricade/snow
+	impact_sound = SFX_BULLET_IMPACT_ICE
+
+// MACHINERY
+/obj/machinery/door/window
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/machinery/computer
+	impact_sound = SFX_BULLET_IMPACT_GLASS
+
+/obj/machinery/door/airlock/wood
+	impact_sound = SFX_BULLET_IMPACT_WOOD
+
+/obj/machinery/computer/security/wooden_tv
+	impact_sound = SFX_BULLET_IMPACT_WOOD

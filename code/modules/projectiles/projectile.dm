@@ -371,15 +371,6 @@
 		impact_x = entry_x + movement_vector?.pixel_x * rand(0, ICON_SIZE_X / 2)
 		impact_y = entry_y + movement_vector?.pixel_y * rand(0, ICON_SIZE_Y / 2)
 
-	// Psychonaut, SFX impact sound logic
-	var/impact_sound
-	if(hitsound)
-		impact_sound = hitsound
-	else
-		impact_sound = target.impact_sound
-
-	playsound(src, get_sfx(impact_sound), vol_by_damage(), TRUE, -1)
-	//
 	if(isturf(target) && hitsound_wall)
 		playsound(src, hitsound_wall, clamp(vol_by_damage() + (suppressed ? 0 : 20), 0, 100), TRUE, -1)
 
@@ -393,6 +384,10 @@
 
 	if (hitsound)
 		playsound(src, hitsound, vol_by_damage(), TRUE, -1)
+
+	if(!hitsound)
+		var/impact_sound = target?.impact_sound || SFX_BULLET_IMPACT_METAL
+		playsound(src, get_bullet_impact_sfx(impact_sound), vol_by_damage(), TRUE, -1)
 
 	if (!isliving(target))
 		if(impact_effect_type && !hitscan)

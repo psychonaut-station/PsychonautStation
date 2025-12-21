@@ -214,102 +214,107 @@
 /proc/get_rand_frequency_low_range()
 	return rand(38000, 45000)
 
-///convert a SFX define into a .ogg
+///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it.
 /proc/get_sfx(soundin)
-	if(istext(soundin))
-		switch(soundin)
-			if(SFX_BULLET_IMPACT_METAL)
-				soundin = pick(
-					'code/game/sound/impact/impact_metal_01.ogg',
-					'code/game/sound/impact/impact_metal_02.ogg',
-					'code/game/sound/impact/impact_metal_03.ogg',
-					'code/game/sound/impact/impact_metal_04.ogg',
-					'code/game/sound/impact/impact_metal_05.ogg',
-					'code/game/sound/impact/impact_metal_06.ogg',
-					'code/game/sound/impact/impact_metal_07.ogg',
-					'code/game/sound/impact/impact_metal_08.ogg',
-					'code/game/sound/impact/impact_metal_09.ogg',
-					'code/game/sound/impact/impact_metal_10.ogg',
-					'code/game/sound/impact/impact_metal_11.ogg',
-					'code/game/sound/impact/impact_metal_12.ogg',
-					'code/game/sound/impact/impact_metal_13.ogg',
-					'code/game/sound/impact/impact_metal_14.ogg',
-					'code/game/sound/impact/impact_metal_15.ogg',
-					'code/game/sound/impact/impact_metal_16.ogg',
-					'code/game/sound/impact/impact_metal_17.ogg',
-				)
-			if(SFX_BULLET_IMPACT_FLESH)
-				soundin = pick(
-					'code/game/sound/impact/impact_flesh_01.ogg',
-					'code/game/sound/impact/impact_flesh_02.ogg',
-					'code/game/sound/impact/impact_flesh_03.ogg',
-					'code/game/sound/impact/impact_flesh_04.ogg',
-					'code/game/sound/impact/impact_flesh_05.ogg',
-					'code/game/sound/impact/impact_flesh_06.ogg',
-					'code/game/sound/impact/impact_flesh_07.ogg',
-					'code/game/sound/impact/impact_flesh_08.ogg',
-					'code/game/sound/impact/impact_flesh_09.ogg',
-				)
-			if(SFX_BULLET_IMPACT_ICE)
-				soundin = pick(
-					'code/game/sound/impact/impact_ice_01.ogg',
-					'code/game/sound/impact/impact_ice_02.ogg',
-					'code/game/sound/impact/impact_ice_03.ogg',
-					'code/game/sound/impact/impact_ice_04.ogg',
-					'code/game/sound/impact/impact_ice_05.ogg',
-					'code/game/sound/impact/impact_ice_06.ogg',
-					'code/game/sound/impact/impact_ice_07.ogg',
-					'code/game/sound/impact/impact_ice_08.ogg',
-					'code/game/sound/impact/impact_ice_09.ogg',
-					'code/game/sound/impact/impact_ice_10.ogg',
-				)
-			if(SFX_BULLET_IMPACT_WOOD)
-				soundin = pick(
-					'code/game/sound/impact/impact_wood_01.ogg',
-					'code/game/sound/impact/impact_wood_02.ogg',
-					'code/game/sound/impact/impact_wood_03.ogg',
-					'code/game/sound/impact/impact_wood_04.ogg',
-					'code/game/sound/impact/impact_wood_05.ogg',
-					'code/game/sound/impact/impact_wood_06.ogg',
-					'code/game/sound/impact/impact_wood_07.ogg',
-					'code/game/sound/impact/impact_wood_08.ogg',
-					'code/game/sound/impact/impact_wood_09.ogg',
-					'code/game/sound/impact/impact_wood_10.ogg',
-				)
-			if(SFX_BULLET_IMPACT_CONCRETE)
-				soundin = pick(
-					'code/game/sound/impact/impact_masonry_01.ogg',
-					'code/game/sound/impact/impact_masonry_02.ogg',
-					'code/game/sound/impact/impact_masonry_03.ogg',
-					'code/game/sound/impact/impact_masonry_04.ogg',
-					'code/game/sound/impact/impact_masonry_05.ogg',
-					'code/game/sound/impact/impact_masonry_06.ogg',
-					'code/game/sound/impact/impact_masonry_07.ogg',
-					'code/game/sound/impact/impact_masonry_08.ogg',
-					'code/game/sound/impact/impact_masonry_09.ogg',
-					'code/game/sound/impact/impact_masonry_10.ogg',
-				)
-			if(SFX_BULLET_IMPACT_GLASS)
-				soundin = pick(
-					'code/game/sound/impact/impact_glass_01.ogg',
-					'code/game/sound/impact/impact_glass_02.ogg',
-					'code/game/sound/impact/impact_glass_03.ogg',
-					'code/game/sound/impact/impact_glass_04.ogg',
-					'code/game/sound/impact/impact_glass_05.ogg',
-					'code/game/sound/impact/impact_glass_06.ogg',
-					'code/game/sound/impact/impact_glass_07.ogg',
-					'code/game/sound/impact/impact_glass_08.ogg',
-					'code/game/sound/impact/impact_glass_09.ogg',
-					'code/game/sound/impact/impact_glass_10.ogg',
-				)
+	if(!istext(soundin))
+		return soundin
+	var/datum/sound_effect/sfx = GLOB.sfx_datum_by_key[soundin]
+	return sfx?.return_sfx() || soundin
+///Bullet impact variants without get_sfx()
+/proc/get_bullet_impact_sfx(soundin)
+	if(!istext(soundin))
+		return soundin
+	switch(soundin)
+		if(SFX_BULLET_IMPACT_METAL)
+			return pick(
+				'sound/_psychonaut/impact_metal_01.ogg',
+				'sound/_psychonaut/impact_metal_02.ogg',
+				'sound/_psychonaut/impact_metal_03.ogg',
+				'sound/_psychonaut/impact_metal_04.ogg',
+				'sound/_psychonaut/impact_metal_05.ogg',
+				'sound/_psychonaut/impact_metal_06.ogg',
+				'sound/_psychonaut/impact_metal_07.ogg',
+				'sound/_psychonaut/impact_metal_08.ogg',
+				'sound/_psychonaut/impact_metal_09.ogg',
+				'sound/_psychonaut/impact_metal_10.ogg',
+				'sound/_psychonaut/impact_metal_11.ogg',
+				'sound/_psychonaut/impact_metal_12.ogg',
+				'sound/_psychonaut/impact_metal_13.ogg',
+				'sound/_psychonaut/impact_metal_14.ogg',
+				'sound/_psychonaut/impact_metal_15.ogg',
+				'sound/_psychonaut/impact_metal_16.ogg',
+				'sound/_psychonaut/impact_metal_17.ogg',
+			)
+		if(SFX_BULLET_IMPACT_FLESH)
+			return pick(
+				'sound/_psychonaut/impact_flesh_01.ogg',
+				'sound/_psychonaut/impact_flesh_02.ogg',
+				'sound/_psychonaut/impact_flesh_03.ogg',
+				'sound/_psychonaut/impact_flesh_04.ogg',
+				'sound/_psychonaut/impact_flesh_05.ogg',
+				'sound/_psychonaut/impact_flesh_06.ogg',
+				'sound/_psychonaut/impact_flesh_07.ogg',
+				'sound/_psychonaut/impact_flesh_08.ogg',
+				'sound/_psychonaut/impact_flesh_09.ogg',
+			)
+		if(SFX_BULLET_IMPACT_ICE)
+			return pick(
+				'sound/_psychonaut/impact_ice_01.ogg',
+				'sound/_psychonaut/impact_ice_02.ogg',
+				'sound/_psychonaut/impact_ice_03.ogg',
+				'sound/_psychonaut/impact_ice_04.ogg',
+				'sound/_psychonaut/impact_ice_05.ogg',
+				'sound/_psychonaut/impact_ice_06.ogg',
+				'sound/_psychonaut/impact_ice_07.ogg',
+				'sound/_psychonaut/impact_ice_08.ogg',
+				'sound/_psychonaut/impact_ice_09.ogg',
+				'sound/_psychonaut/impact_ice_10.ogg',
+			)
+		if(SFX_BULLET_IMPACT_WOOD)
+			return pick(
+				'sound/_psychonaut/impact_wood_01.ogg',
+				'sound/_psychonaut/impact_wood_02.ogg',
+				'sound/_psychonaut/impact_wood_03.ogg',
+				'sound/_psychonaut/impact_wood_04.ogg',
+				'sound/_psychonaut/impact_wood_05.ogg',
+				'sound/_psychonaut/impact_wood_06.ogg',
+				'sound/_psychonaut/impact_wood_07.ogg',
+				'sound/_psychonaut/impact_wood_08.ogg',
+				'sound/_psychonaut/impact_wood_09.ogg',
+				'sound/_psychonaut/impact_wood_10.ogg',
+			)
+		if(SFX_BULLET_IMPACT_CONCRETE)
+			return pick(
+				'sound/_psychonaut/impact_masonry_01.ogg',
+				'sound/_psychonaut/impact_masonry_02.ogg',
+				'sound/_psychonaut/impact_masonry_03.ogg',
+				'sound/_psychonaut/impact_masonry_04.ogg',
+				'sound/_psychonaut/impact_masonry_05.ogg',
+				'sound/_psychonaut/impact_masonry_06.ogg',
+				'sound/_psychonaut/impact_masonry_07.ogg',
+				'sound/_psychonaut/impact_masonry_08.ogg',
+				'sound/_psychonaut/impact_masonry_09.ogg',
+				'sound/_psychonaut/impact_masonry_10.ogg',
+			)
+		if(SFX_BULLET_IMPACT_GLASS)
+			return pick(
+				'sound/_psychonaut/impact_glass_01.ogg',
+				'sound/_psychonaut/impact_glass_02.ogg',
+				'sound/_psychonaut/impact_glass_03.ogg',
+				'sound/_psychonaut/impact_glass_04.ogg',
+				'sound/_psychonaut/impact_glass_05.ogg',
+				'sound/_psychonaut/impact_glass_06.ogg',
+				'sound/_psychonaut/impact_glass_07.ogg',
+				'sound/_psychonaut/impact_glass_08.ogg',
+				'sound/_psychonaut/impact_glass_09.ogg',
+				'sound/_psychonaut/impact_glass_10.ogg',
+			)
 	return soundin
 
 // This is an atom level variable to prevent extensive typechecking for impacts.
 /atom
-	// The sound we make if hit.
+// The sound we make if hit.
 	var/impact_sound = SFX_BULLET_IMPACT_METAL
-
-
 // TURFS
 /turf/closed/wall/ice
 	impact_sound = SFX_BULLET_IMPACT_ICE

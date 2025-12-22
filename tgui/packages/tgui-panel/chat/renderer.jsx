@@ -79,6 +79,11 @@ const createReconnectedNode = () => {
   return node;
 };
 
+const stripColoredNames = (inputHtml) => {
+  const spanRegex = /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
+  return inputHtml.replace(spanRegex, '$1$2');
+};
+
 const handleImageError = (e) => {
   setTimeout(() => {
     /** @type {HTMLImageElement} */
@@ -130,6 +135,7 @@ class ChatRenderer {
     this.visibleMessages = [];
     this.page = null;
     this.events = new EventEmitter();
+    this.coloredNames = true;
     // Scroll handler
     /** @type {HTMLElement} */
     this.scrollNode = null;
@@ -291,6 +297,14 @@ class ChatRenderer {
     });
   }
 
+  setColoredNames(newValue) {
+    if (newValue === this.coloredNames) {
+      return;
+    }
+    this.coloredNames = newValue;
+    this.rebuildChat();
+  }
+
   scrollToBottom() {
     // scrollHeight is always bigger than scrollTop and is
     // automatically clamped to the valid range.
@@ -391,7 +405,9 @@ class ChatRenderer {
         }
         // Payload is HTML
         else if (message.html) {
-          node.innerHTML = message.html;
+          node.innerHTML = this.coloredNames
+            ? message.html
+            : stripColoredNames(message.html);
         } else {
           logger.error('Error: message is missing text payload', message);
         }

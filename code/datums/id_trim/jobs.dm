@@ -257,6 +257,9 @@
 	honorifics = list("Underling", "Assistant", "Mate")
 	honorific_positions = HONORIFIC_POSITION_FIRST | HONORIFIC_POSITION_LAST | HONORIFIC_POSITION_FIRST_FULL | HONORIFIC_POSITION_NONE
 
+/datum/id_trim/job/bridge_assistant/chat_span()
+	return "job__bridgeassistant"
+
 /datum/id_trim/job/captain
 	assignment = JOB_CAPTAIN
 	intern_alt_name = "Captain-in-Training"

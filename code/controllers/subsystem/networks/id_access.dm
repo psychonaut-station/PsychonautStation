@@ -454,6 +454,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = trim.department_color
 	id_card.department_state_override = trim.department_state
 	id_card.subdepartment_color_override = trim.subdepartment_color
+	id_card.trim_chat_span_override = trim.chat_span()
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
 
@@ -482,6 +483,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = null
 	id_card.department_state_override = null
 	id_card.subdepartment_color_override = null
+	id_card.trim_chat_span_override = null
 	id_card.big_pointer = id_card.trim.big_pointer
 	id_card.pointer_color = id_card.trim.pointer_color
 

@@ -42,6 +42,14 @@
   - code_imp: You can now shoot projectiles with the shuttle events!
   - bugfix: Fixes projectiles bugging out when fired in shuttle transit space
   - bugfix: Fixes admin forced shuttle events not activating when added mid transit
+  Zade, Rengan, TatarTachanka:
+  - rscadd: "D\xF6ner Makinesi eklendi."
+  - rscadd: "Et D\xF6ner ve Tavuk d\xF6ner eklendi."
+  - rscadd: "K\u0131s\u0131r eklendi."
+  - rscadd: "Ton bal\u0131kl\u0131 tavuklu pilav eklendi."
+  - rscadd: Menemen eklendi.
+  - rscadd: "\u0130skender eklendi."
+  - rscadd: Dolma eklendi.
   carlarctg:
   - bugfix: fixed chappies being able to buy an unintended nullrod type
   grungussuss:
@@ -550,6 +558,8 @@
   - bugfix: Lionhunter rifle can no longer be used to teleport to the debug room
   - bugfix: Fixed electrified chair overlay layering
 2024-10-20:
+  Seefaaa:
+  - bugfix: "Cami shuttle\u0131n\u0131n kap\u0131s\u0131 d\xFCzg\xFCn g\xF6r\xFCnecek"
   SmArtKar:
   - rscadd: Getting stabbed or shot in the eyes has a chance of giving you a new wound
       and a semi-permanent scar, blinding you on one side
@@ -848,6 +858,9 @@
   Pepsilawn:
   - bugfix: You will now receive the advertised amount of credits for selling spacecash
       bills through cargo
+  Seefaaa:
+  - bugfix: "Brig Physician k\u0131l\u0131\u011F\u0131nda ka\xE7ak yolcu olmad\u0131\
+      \u011F\u0131 daha dikkatli kontrol edilecek."
   SmArtKar:
   - bugfix: Fixed deathsquad commandos not getting their berets
   - bugfix: Changelings no longer have a soul when examined if their brain is missing

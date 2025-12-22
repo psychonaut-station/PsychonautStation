@@ -29,6 +29,8 @@ export async function processTestMerges({ github, context }) {
       process.exit(1);
     });
 
+  // PSYCHONAUT EDIT ADDITION BEGIN - Original:
+  /*
   // PR # -> server name -> test merge struct
   const testMergesPerPr = {};
 
@@ -47,8 +49,27 @@ export async function processTestMerges({ github, context }) {
       testMergesPerPr[testMerge][server].push(round);
     }
   }
+  */
+  // PR # -> test merge struct
+  const testMergesPerPr = {};
 
-  for (const [prNumber, servers] of Object.entries(testMergesPerPr)) {
+  for (const round of rounds) {
+    const { test_merges } = round;
+
+    for (const testMerge of test_merges) {
+      if (!testMergesPerPr[testMerge]) {
+        testMergesPerPr[testMerge] = [];
+      }
+
+      testMergesPerPr[testMerge].push(round);
+    }
+  }
+  // PSYCHONAUT EDIT ADDITION END
+
+  // PSYCHONAUT EDIT ADDITION BEGIN - Original:
+  // for (const [prNumber, servers] of Object.entries(testMergesPerPr)) {
+  for (const [prNumber, rounds] of Object.entries(testMergesPerPr)) {
+  // PSYCHONAUT EDIT ADDITION END
     const comments = await github.graphql(
       `
 		query($owner:String!, $repo:String!, $prNumber:Int!) {
@@ -78,8 +99,11 @@ export async function processTestMerges({ github, context }) {
         comment.author?.login === "github-actions" &&
         comment.body.startsWith(TEST_MERGE_COMMENT_HEADER),
     );
+    // PSYCHONAUT EDIT ADDITION BEGIN - Original:
+    // const newBody = createComment(servers, existingComment?.body);
+    const newBody = createComment(rounds, existingComment?.body);
+    // PSYCHONAUT EDIT ADDITION END
 
-    const newBody = createComment(servers, existingComment?.body);
     if (!newBody) {
       console.log(`No changes for PR #${prNumber}`);
       continue;

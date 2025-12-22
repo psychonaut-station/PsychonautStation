@@ -46,10 +46,6 @@
   - rscdel: An easter egg plushie that was spawning where it shouldn't has been brought
       back home.
   - rscadd: The secure closet can now spawn live gibtonite, enjoy your free bomb.
-  san7890:
-  - refactor: Supermatter Spiders have been refactored into basic mobs, on the extremely
-      off chance you spot one and also notice any weird bugs regarding it, please
-      report it.
 2023-10-02:
   Ghommie:
   - rscadd: Expanded the fishing portal generator. It now comes with several portal
@@ -213,6 +209,9 @@
   - bugfix: fixed a PDA's messenger TGUI issue with handling of destroyed recipients.
   Sealed101:
   - bugfix: fixed bad food not having bad food reagents
+  Seefaaa:
+  - bugfix: "Kald\u0131r\u0131lan Sentient Disease antag tercihlerinde g\xF6z\xFC\
+      kmeyecek."
   necromanceranne:
   - balance: Despite earlier reports suggesting that the famous lethality of the Regal
       Condor was largely a myth, there has been rumors that the gun has once again
@@ -251,6 +250,9 @@
   carlarctg:
   - qol: Added slapcrafting to unloaded tech shells, click on them with ingredients
       to quickly craft your shell.
+  exdal:
+  - admin: Set OOC Color artik butun yetkililer icin gecerli.
+  - admin: Ticketlara butun yetkililer erisebilecek.
   san7890:
   - refactor: Sloths are now basic mobs, however their overall sluggish behavior shouldn't
       have changed much- let us know if anything is broken.
@@ -543,6 +545,10 @@
   - bugfix: Fixes holy water exiting your system at double the rate on metabolism
   - bugfix: Holy Water no longer spams cultists with big text every time, it's much
       more tame now
+  RengaN02:
+  - rscadd: "Roundstart se\xE7ebilece\u011Finiz IPC \u0131rk\u0131 eklendi."
+  - qol: "Robotic limbinizde hasar yoksa onu tamir etme giri\u015Fiminde bulunmayacaks\u0131\
+      n\u0131z."
   Rhials:
   - qol: You can now return to your old body after being summoned by a manifest rune.
   - qol: You can now return to your old body after dying in CTF.
@@ -561,6 +567,9 @@
   - admin: VV on images now displays the image in the header
   - admin: VV can now display filters and includes their type
   san7890:
+  - refactor: Supermatter Spiders have been refactored into basic mobs, on the extremely
+      off chance you spot one and also notice any weird bugs regarding it, please
+      report it.
   - bugfix: Space Dragons can now, once again, tear down walls and eat corpses. They
       also have regained their special damage modifier when attacking mechs.
 2023-10-15:
@@ -932,6 +941,9 @@
   - bugfix: Skeleton Keys now fit in the Explorer's Webbing.
   ZephyrTFA:
   - qol: signalers now tell you their cooldown and also use balloon alerts
+  beetlejuicetr:
+  - rscadd: "Arrival shuttle g\xFCncellendi. (by winstonbey)"
+  - bugfix: "SM odas\u0131ndaki \xFCst \xFCste binen emitterler d\xFCzeltildi."
   jlsnow301:
   - rscadd: Adds a subtle ghost poll. This pings in dead chat and gives a screen alert,
       but no TGUI popup. Orbit the point of interest to be selected for the role.
@@ -1047,21 +1059,9 @@
   - bugfix: The nanites inside of thermal pistols are once again angry, and aggressively
       want to burn/puncture people.
 2023-10-26:
-  Cruix:
-  - bugfix: fixed hair gradients not applying correctly to huge afros
-  - bugfix: fixed hair gradients not applying properly on dismembered heads.
-  Xackii:
-  - bugfix: Fixed gorilla attack cooldown. Now attacking speed to mobs is the same
-      as attacking speed to objects.
-  carlarctg:
-  - refactor: Adds charges to omens and omen smiting rather than only being permanent
-      or one-use. Mirrors now grant seven bad luckers.
-  - qol: Reduces omen bad luck if nobody's nearby to witness the funny. (Ghosts are
-      included in the check!)
-  - bugfix: Fixed an issue where a monkey check in doorcrushing was never actually
-      able to pass. Also they screech now.
-  timothymtorres:
-  - qol: Add smoke particles to burning fireplace
+  exdal:
+  - qol: Turkce TGUI butonlari
+  - balance: wt550 artik emagsiz kargo konsolunda yok
 2023-10-27:
   FlufflesTheDog:
   - bugfix: Wigs now properly follow your head when you're any non-standard height
@@ -1146,6 +1146,21 @@
       Please report buggy behavior.
   - bugfix: Removed rare hard delete involving telecomms machines.
 2023-10-31:
+  Cruix:
+  - bugfix: fixed hair gradients not applying correctly to huge afros
+  - bugfix: fixed hair gradients not applying properly on dismembered heads.
+  Xackii:
+  - bugfix: Fixed gorilla attack cooldown. Now attacking speed to mobs is the same
+      as attacking speed to objects.
+  carlarctg:
+  - refactor: Adds charges to omens and omen smiting rather than only being permanent
+      or one-use. Mirrors now grant seven bad luckers.
+  - qol: Reduces omen bad luck if nobody's nearby to witness the funny. (Ghosts are
+      included in the check!)
+  - bugfix: Fixed an issue where a monkey check in doorcrushing was never actually
+      able to pass. Also they screech now.
+  timothymtorres:
+  - qol: Add smoke particles to burning fireplace
   CRITAWAKETS:
   - rscadd: Corn oil is now produced from corn instead of regular vegetable oil.
   - balance: Glycerol now uses corn oil instead of vegetable oil in it's recipe.

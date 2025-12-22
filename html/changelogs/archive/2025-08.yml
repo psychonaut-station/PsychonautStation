@@ -6,6 +6,9 @@
   Maximal08:
   - qol: Right-clicking with a sheet of metal on a tile puts a computer or machine
       if you have a board of the appropriate type in your other hand.
+  Rengan:
+  - rscadd: IPCye power cord tekrar eklendi.
+  - bugfix: "IPCnin apcye \u015Farj verememe sorunu d\xFCzeltildi."
   SmArtKar:
   - rscdel: Removes forced tint from NVGs
   - bugfix: Fixed eyes not being affected by human height
@@ -43,6 +46,9 @@
   Aliceee2ch:
   - bugfix: Fixed the nukies outpost chemical locker not having beakers inside of
       a beaker box
+  Rengan:
+  - rscadd: "Noose geri eklendi, alt\u0131n\u0131zda sandalye varken 30 cable coil\
+      \ ile craft edebilirsiniz"
   SmArtKar:
   - bugfix: Fixed fire arrow ritual not being accessible
   - bugfix: Fixed certain nullrod types not being usable for certain holy and unholy
@@ -345,6 +351,11 @@
   - bugfix: looping sounds now stop playing sounds when commaned to do so.
   Melbert:
   - bugfix: Bashing vendors works good again
+  Rengan:
+  - bugfix: "Kaptan\u0131n k\u0131l\u0131c\u0131n\u0131n g\xF6r\xFCnmez olmas\u0131\
+      \ d\xFCzeltildi."
+  Seefaaa:
+  - admin: "Admin library console d\xFCzeltildi"
   SyncIt21:
   - bugfix: product category vendors start out correctly filled & can be refilled
       with cargo ordered vending canisters again
@@ -426,6 +437,9 @@
       characters (e.g., Settler); paint no longer disappears on the mob sprite.
   - code_imp: Worn overlay coloration now uses named filters and recurses to child
       overlays, making it resilient to later filter changes (like height displacement).
+  Seefaaa:
+  - bugfix: "Jukebox'da yaln\u0131zca youtube oynatabildi\u011Fi de\u011Fil soundcloud\
+      \ oynatabildi\u011Fi yazacak"
   Time-Green:
   - rscadd: Icebox surface is now a 1x3 z-level grid! Rejoice, explorers!
   panvxv:
@@ -440,6 +454,9 @@
   - balance: Any item of size "tiny" can now also be worn in suit storage.
   - qol: The suit storage change gives some small amount of sanity to wearing things
       on suit storage, such as emergency oxygen tanks or a pack of smokes.
+  exdal:
+  - balance: prefactor a/b tepkime alani 5'ten 2'te dusuruldu
+  - balance: prefactor a/b tepkime hacmi daha da arttilildi
   throwawayuseless:
   - bugfix: Diode Disks are no longer improperly /improper.
 2025-08-18:
@@ -541,6 +558,10 @@
   tontyGH:
   - bugfix: New player tutorials will no longer look extremely broken
 2025-08-25:
+  Auraden, Ragnarok0:
+  - rscadd: "Clock Head adl\u0131 bioscrambler anomali e\u015Fyas\u0131n\u0131 oyuna\
+      \ ekler."
+  - rscadd: "Manager jacket adl\u0131 ceketi oyuna ekler."
   Hatterhat:
   - bugfix: Stamina and projectile speed multipliers on pellet-cloud projectiles (e.g.
       buckshot, rubber shot, flechettes) now respect appropriate multipliers when
@@ -568,6 +589,11 @@
   Melbert:
   - rscadd: 'Adds 5 rewards to the Spy item pool: Penbang, Camera Flash, Dagger-Boot,
       Monster Cube Box, and the Spider Bite martial art'
+  Ragnarok0:
+  - balance: " Clock Head anomali kask\u0131 art\u0131k kendi kullan\u0131c\u0131\
+      s\u0131n\u0131 heallayabilir."
+  - bugfix: "Clock Head anomali kask\u0131 kesilen kafalardan d\xFC\u015F\xFCnce cursed\
+      \ kalmayacak."
   Yobrocharlie:
   - bugfix: fixed caves.dmm's runtimes for a downstream
 2025-08-27:

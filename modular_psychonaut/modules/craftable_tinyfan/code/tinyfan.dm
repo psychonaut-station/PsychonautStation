@@ -48,7 +48,7 @@
 /obj/item/tinyfan_assembly
 	name = "tiny fan assembly"
 	desc = "A tiny fan, releasing a thin gust of air."
-	icon = 'icons/obj/mining_zones/survival_pod.dmi'
+	icon = 'modular_psychonaut/master_files/icons/obj/mining_zones/survival_pod.dmi'
 	icon_state = "fan_tiny_assembly"
 
 /obj/item/tinyfan_assembly/wrench_act(mob/living/user, obj/item/tool)

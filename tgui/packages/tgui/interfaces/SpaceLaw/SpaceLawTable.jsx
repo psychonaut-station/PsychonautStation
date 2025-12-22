@@ -1,5 +1,3 @@
-// @Genku
-
 // Türkçeleştirmeye açıktır.
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.

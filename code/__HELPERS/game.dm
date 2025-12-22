@@ -329,7 +329,10 @@
 	if(selected_tip)
 		message = selected_tip
 	else
-		var/list/randomtips = world.file2list("strings/tips.txt")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// var/list/randomtips = world.file2list("strings/tips.txt")
+		var/list/randomtips = world.file2list("modular_psychonaut/master_files/strings/tips.txt")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 		var/list/memetips = world.file2list("strings/sillytips.txt")
 		if(randomtips.len && prob(95))
 			message = pick(randomtips)

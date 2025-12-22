@@ -37,11 +37,20 @@ async function main() {
 
   const bot = new MWBot();
 
+  // PSYCHONAUT EDIT ADDITION BEGIN - Original:
+  /*
   await bot.loginGetEditToken({
     apiUrl: "https://tgstation13.org/wiki/api.php",
     username: USERNAME,
     password: PASSWORD,
   });
+  */
+  await bot.loginGetEditToken({
+    apiUrl: "https://wiki.ss13.tr/api.php",
+    username: USERNAME,
+    password: PASSWORD,
+  });
+  // PSYCHONAUT EDIT ADDITION END
 
   console.log("Logged in");
 

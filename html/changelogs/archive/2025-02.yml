@@ -20,6 +20,9 @@
       of the inventory room.
   MTandi:
   - bugfix: Fixed medbot emag VFX
+  RengaN02:
+  - bugfix: "Background informationda yaz\u0131 uzunlugunu d\xFCzelttikten sonra border\
+      \ colorun d\xFCzelmemesi d\xFCzeltildi."
   SmArtKar:
   - bugfix: Large fish should not render behind their wall mounts now
   - rscadd: Added fishing bags, found in fun vendors or made from carpskin.
@@ -180,6 +183,8 @@
   Rengan:
   - bugfix: When you cast examine to the disguised detective, its assignment will
       now display correctly.
+  - rscadd: "Character Setup'a boy se\xE7imi eklendi."
+  - rscadd: "Arachnid \u0131rk\u0131 roundstarta eklendi."
   grungussuss:
   - sound: new sounds for cloth items
 2025-02-13:
@@ -199,6 +204,9 @@
   - refactor: Refactored pixel offsets of mobs. Report any oddities
   RusselNotSCP:
   - qol: Andromeda Bitters bottle now only dispenses in 1-5u increments
+  SadSeal:
+  - spellcheck: "Zero Point Energy Field Manipulator'un a\xE7\u0131klamas\u0131ndaki\
+      \ yaz\u0131m yanl\u0131\u015F\u0131 d\xFCzeltildi"
   SmArtKar:
   - admin: Admins can now make vendors free without too much hassle
   - bugfix: Fixed duplicated comsigs/text and HARS head deletion from prosthetic replacement
@@ -505,6 +513,14 @@
       you (rather than waiting to exit and enter the mirror's view)
   - admin: Adds the Policy Panel verb, which shows you all the policy the server has
       set.
+  Rengan:
+  - rscadd: "Round Ende Credits eklendi, e\u011Fer g\xF6rmek istesemezseniz Game Preferences\
+      \ > UI > Show Roundend Credits tikini kapatabilirsiniz."
+  - rscadd: "Oyuna Bas\u0131l\u0131 tutuluyken karakterinizin mousenize baktigi bir\
+      \ keybind eklendi. Keybinds -> Face Cursor"
+  - rscadd: "Bas\u0131nca etraf\u0131m\u0131zdaki canl\u0131lar\u0131n isimlerini\
+      \ g\xF6rebilmemizi sa\u011Flayan bir keybind eklendi, Varsay\u0131lan tu\u015F\
+      : Shift"
   SmArtKar:
   - bugfix: Added a flatpacker flatpack to birdshot
   - bugfix: Fixed scar overlays on eyes going out of sprite bounds

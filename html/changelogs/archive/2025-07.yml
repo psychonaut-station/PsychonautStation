@@ -1,4 +1,7 @@
 2025-07-01:
+  Seefaaa:
+  - bugfix: "Jukebox ve admin m\xFCzikleri yeniden YouTube ile \xE7al\u0131\u015F\u0131\
+      yor"
   Twaticus:
   - image: resprites the maid uniform and headband using GAGs
   - rscdel: removes standalone maid neckpiece, gloves, and corset
@@ -90,6 +93,8 @@
       years where they haven't. There is a probability for whether or not the beacon
       is destroyed from an EMP.
   - bugfix: ' You cannot stack multiple of the same beacon onto a single mech.'
+  skewnoss:
+  - bugfix: Removed duplicate Captain''s Spare ID Safe from HelioStation
   twilightwanderer:
   - bugfix: Fixing print request issues
 2025-07-05:
@@ -493,7 +498,6 @@
   - balance: armor on the Magnate,Safegaurd and sec modsuits has been considerably
       increased.
   - balance: 'Sec MOD plates have been transferred from RnD to Cargo.
-
       balance The Infiltrator MOD now comes with the shock absorption module pre-installed.'
   - balance: Nukie MODsuits hav a bit more complexity.
   - bugfix: Nukie MODs now have the same flash protection as the other suits with
@@ -523,7 +527,6 @@
   - balance: Drugs vendor now includes 3 sterilizine medigels instead of 1
   - balance: 'Tactical lite medkit added to traitor uplink for 4 tc, this includes
       medicated suture/mesh, atropine pen, gauze, advanced health analyzer
-
       map:Adds more wall med vendors to the map atleast 1 every department.'
   Melbert:
   - rscdel: Removes the Flagellant's Robes from Cult
@@ -680,6 +683,13 @@
       of -100 iron, 0.25 used in a craft instead of -25 iron)
   Ezel:
   - qol: Both chefs can now spawn roundstart
+  Rengan:
+  - rscadd: "\u015Earj\u0131 azal\u0131nca alert veren containtment field generator\
+      \ t\xFCr\xFC eklendi."
+  - rscdel: "Tesla art\u0131k s\u0131cak havada patlam\u0131yor"
+  - admin: "Change map template butonu d\xFCzeltildi"
+  - config: "Modular roomlar\u0131n weightleri art\u0131k game config \xFCzerinden\
+      \ ayarlanabiliyor."
   SmArtKar:
   - bugfix: Fixed mannequines runtiming when you try to pull them two times in a row
   - bugfix: Fixed tables allowing people standing on them to climb over things freely

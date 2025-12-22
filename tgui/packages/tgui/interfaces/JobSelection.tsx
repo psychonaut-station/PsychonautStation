@@ -41,6 +41,9 @@ type Data = {
   // PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
   job_alt_titles: Record<string, string>;
   // PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
+  // PSYCHONAUT ADDITION BEGIN - LATEJOIN_ALERT_LEVEL
+  security_level: number;
+  // PSYCHONAUT ADDITION END - LATEJOIN_ALERT_LEVEL
 };
 
 type JobEntryProps = {
@@ -185,6 +188,23 @@ function DepartmentEntry(props: DepartmentEntryProps) {
   );
 }
 
+// PSYCHONAUT ADDITION BEGIN - LATEJOIN_ALERT_LEVEL
+const securityLevel = (level: number) => {
+  switch (level) {
+    case 0:
+      return <NoticeBox success>The current alert level is: Green</NoticeBox>;
+    case 1:
+      return <NoticeBox info>The current alert level is: Blue</NoticeBox>;
+    case 2:
+      return <NoticeBox danger>The current alert level is: Red</NoticeBox>;
+    case 3:
+      return (
+        <NoticeBox color="black">The current alert level is: Delta</NoticeBox>
+      );
+  }
+};
+// PSYCHONAUT ADDITION END - LATEJOIN_ALERT_LEVEL
+
 export function JobSelection(props) {
   const { act, data } = useBackend<Data>();
   if (!data?.departments_static) {
@@ -214,6 +234,7 @@ export function JobSelection(props) {
           scrollable
           title={
             <>
+              {securityLevel(data.security_level)} {/* PSYCHONAUT ADDITION - LATEJOIN_ALERT_LEVEL */}
               {shuttle_status && <NoticeBox info>{shuttle_status}</NoticeBox>}
               <Box as="span" color="label">
                 It is currently {round_duration} into the shift.

@@ -217,7 +217,7 @@ IPINTEL_REJECT_BAD
 # GITHUBURL https://www.github.com/psychonaut-station/PsychonautStation
 
 ## Discord bot command prefix, if the discord bot is used
-# DISCORDBOTCOMMANDPREFIX ?
+# DISCORDBOTCOMMANDPREFIX /
 
 ## https://github.com/psychonaut-station/api
 # APITOKEN

@@ -148,12 +148,22 @@
   Y0SH1M4S73R:
   - admin: The "Suppress Runtime Logging" toggle in the lua editor actually does what
       it says
+2024-08-04:
+  Jaimex:
+  - rscadd: "Beyti, lahmacun, cac\u0131k ve \xE7i\u011F k\xF6fte eklendi."
+  - rscadd: "T\xFCrk yemekleri i\xE7in yemek \xFCretim b\xF6l\xFCm\xFCne \xF6zel kategori\
+      \ eklendi."
+  - rscadd: "Ayran art\u0131k \xFCretilebilir."
 2024-08-05:
   Ben10Omintrix:
   - bugfix: juvenile lobstrosities will now look for food
   OrionTheFox:
   - image: added and updated belt/suit/mask storage sprites for several knives missing
       them
+  Seefaaa:
+  - bugfix: "Discord hesab\u0131n\u0131z\u0131 ba\u011Flad\u0131\u011F\u0131n\u0131\
+      zda Patreon \xFCyesiyseniz ayr\u0131cal\u0131klar\u0131n uygulanmas\u0131 i\xE7\
+      in sonraki roundu beklemeniz gerekmeyecek."
   SmArtKar:
   - bugfix: Lizards no longer die from cold on icebox despite wearing insulation
   - bugfix: Fixed handyman assistants spawning without a PDA
@@ -197,6 +207,8 @@
   - bugfix: Fixed Charlie MOD installer not installing MODsuit unless you have a backpack
       to drop
 2024-08-10:
+  Seefaaa:
+  - bugfix: "Nt Secretary kumandas\u0131n\u0131 herkes kullanamayacak"
   FlufflesTheDog:
   - bugfix: tadpoles can actually be scooped from ponds
 2024-08-11:
@@ -211,6 +223,8 @@
   grungussuss and kayozz:
   - sound: white noise from some ambience sounds has been pruned
 2024-08-13:
+  FlufflesTheDog:
+  - bugfix: tadpoles can actually be scooped from ponds
   Majkl-J:
   - bugfix: Felinids no longer phase through diagonal gaps upon seeing a laser
 2024-08-15:
@@ -455,6 +469,8 @@
   - sound: added new sounds for RCD, RPD and Plumbing Constructor.
   tralezab:
   - bugfix: bedsheets are laid on beds properly now
+  Seefaaa:
+  - bugfix: "Midround changeling antagonist tercihlerinde g\xF6z\xFCkecek."
 2024-08-17:
   Ghommie:
   - rscadd: Added a treasure chest you can rarely fish from the ocean/beach, with
@@ -828,3 +844,7 @@
       free.
   - balance: Plexagon Crew Manifest no longer provides Detomatix resistance, but security
       records and status display control now do.
+2024-08-31:
+  RengaN02:
+  - bugfix: "Tactical helmete seclite tak\u0131nca esyan\u0131n gozukmeme olay\u0131\
+      \ fixlendi."

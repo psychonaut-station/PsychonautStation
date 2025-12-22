@@ -183,6 +183,8 @@ export class Changelog extends Component {
     );
 
     const header = (
+      // PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+      /*
       <Section>
         <h1>Traditional Games Space Station 13</h1>
         <p>
@@ -207,6 +209,33 @@ export class Changelog extends Component {
         </p>
         {dateDropdown}
       </Section>
+      */
+      <Section>
+        <h1>Psychonaut Station</h1>
+        <p>
+          <b>Thanks to: </b>
+          Traditional Games Space Station 13, Baystation 12, /vg/station,
+          NTstation, CDK Station devs, FacepunchStation, GoonStation devs, the
+          original Space Station 13 developers, Invisty for the title image and
+          the countless others who have contributed to the game, issue tracker
+          or wiki over the years.
+        </p>
+        <p>
+          {'Current organization members can be found '}
+          <a href="https://github.com/orgs/psychonaut-station/people">here</a>
+          {', recent GitHub contributors can be found '}
+          <a href="https://github.com/psychonaut-station/PsychonautStation/pulse/monthly">
+            here
+          </a>
+          .
+        </p>
+        <p>
+          {'You can also join our discord '}
+          <a href="https://ss13.tr/discord">here</a>.
+        </p>
+        {dateDropdown}
+      </Section>
+      // PSYCHONAUT EDIT ADDITION END - LOCALIZATION
     );
 
     const footer = (
@@ -239,6 +268,12 @@ export class Changelog extends Component {
           {' only.'}
         </p>
         <h3>Traditional Games Space Station 13 License</h3>
+        {/* PSYCHONAUT ADDITION BEGIN */}
+        <p>
+          Disclaimer: Psychonaut Station is a downstream and mirror of
+          Traditional Games Space Station 13.
+        </p>
+        {/* PSYCHONAUT ADDITION END */}
         <p>
           {'All code after '}
           <a

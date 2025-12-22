@@ -1,3 +1,10 @@
+2024-09-01:
+  RengaN02:
+  - rscadd: "T\xFCrk B\u0131y\u0131\u011F\u0131 eklendi."
+2024-09-03:
+  Seefaaa:
+  - bugfix: "Changelog'da bir de\u011Fi\u015Fiklik olmad\u0131k\xE7a oyuna her girdi\u011F\
+      inizde changelog'u g\xF6rmeyeceksiniz."
 2024-09-04:
   00-Steven:
   - balance: Fax machines with hacked input servos can now send chap slices and cookies.
@@ -248,6 +255,8 @@
   SmArtKar:
   - code_imp: Fixed multiple minor logic issues with code found by OpenDream's new
       pragma
+  exdal:
+  - rscadd: Github App eklendi (test)
   lbnesquik:
   - rscadd: Add a capacity upgrade for janitorial cyborg light replacers
 2024-09-11:
@@ -279,6 +288,8 @@
   - bugfix: Mimes french kisses now activate the sm
   DaCoolBoss:
   - bugfix: Added missing entries to server config file iceruinblacklist.txt
+  Emre1212, tatartachanka:
+  - rscadd: "K\u0131ymal\u0131 Pide eklendi."
   EnterTheJake:
   - rscadd: New Heretic Side Knowledge, Void Prison.
   - rscadd: New Void Spell Void Conduit has now replaced Void Blast.
@@ -396,6 +407,8 @@
   - bugfix: Job selection is now a little bit more random. Fixes an unintentional
       bias in random job assignment that could lead to feast-or-famine for roles where
       everyone is assigned one job and nobody is assigned another job.
+  Ureus:
+  - rscadd: "Chaplain'a Warhammer temal\u0131 Chapter Chaplain k\u0131yafet kiti ekler"
   Vect0r2:
   - qol: Adds an additional cable from birdshot SMES units
   - qol: Adds two air pumps to birdshot science
@@ -470,6 +483,9 @@
   - balance: The detective camera is now silent and doesn't flash.
   Jewelry-x:
   - spellcheck: fixed typos on heretic's "Lionhunter's Rifle"
+  Ureus:
+  - rscadd: "Chapter Chaplain kit'te bulunan Chaplain costume'leri de\u011Fi\u015F\
+      tirildi."
   vinylspiders:
   - bugfix: fixes being able to use chuunibyou shouts while mute
   - bugfix: fixed crafted donuts not getting any sprinkles, ever
@@ -502,6 +518,8 @@
   - bugfix: Dismantling walls with plasma cutters works once more
   Time-Green:
   - bugfix: Fixes plasmamen having all external organ species preferences
+  carmingenium:
+  - rscadd: "T\xFCrk\xFC Bar temas\u0131nda barsign ekler"
   vinylspiders:
   - bugfix: smartfridges and drying racks will now display their examine text information
       mutlilined
@@ -524,6 +542,8 @@
   - bugfix: Fixed veteran advisor not spawning on security officer landmarks
   SyncIt21:
   - bugfix: borgs can perform organ manipulation surgery again
+  Ureus:
+  - rscadd: "Yeni nullrod ve warhammer temal\u0131 chaplain k\u0131yafeti"
   deathrobotpunch:
   - rscadd: Added new fishing category to games vendor
 2024-09-19:
@@ -640,6 +660,8 @@
   Rhials:
   - bugfix: You can no longer backdoor security records using the Metastation Central
       bitrunner domain.
+  Seefaaa:
+  - admin: "Jukebox'\u0131n logu admin log yerine game log'da olucak"
   SmArtKar:
   - bugfix: Fixed wallmounts not being mountable by using a screwdriver on them
   - bugfix: Fixed robotic revival surgery showing up for simplemobs
@@ -657,6 +679,10 @@
 2024-09-22:
   Ben10Omintrix:
   - bugfix: botkeeper now displays bot's correct states!
+  exdal:
+  - rscadd: Bridge Assistant Station Trait'i geri eklendi
+  - rscdel: Nt Secretary kaldirildi
+  - balance: 'Paramedigin: Engineering, Science ve Cargo accessleri kaldirildi'
   Goat:
   - bugfix: Virtual pirates were yelled at by the virtual syndicate and no longer
       have virtual syndicate headsets.
@@ -737,6 +763,10 @@
       a cybernetic heart.
   - qol: The Living Heart ritual, when putting a new heart into your chest, will now
       heal the heart enough to be just under the "severe damage" threshold, if needed.
+  Reveyni:
+  - bugfix: "Blue Alert a\xE7\u0131klamas\u0131ndan \"rastgele aramalara izin verilmektedir\"\
+      \ ifadesini kald\u0131r\u0131r,\" aramalara ge\xE7erli bir sebebi olmas\u0131\
+      \ dahilinde izin verilmektedir \" ifadesini ekler."
   theselfish:
   - bugfix: The Beer Sixpack no longer magically turns into bottles.
 2024-09-25:
@@ -800,6 +830,8 @@
       lag in xenobio
   Jewelry-x:
   - bugfix: fixed hydroponics tray not updating new crop sprite properly
+  RengaN02:
+  - qol: "Research Director art\u0131k law upload \u015Fifresini ezbere biliyor."
   SmArtKar:
   - rscadd: You can now craft tether anchors, which can be secured with a wrench and
       attached to with right click. They won't let you drift into space and you can

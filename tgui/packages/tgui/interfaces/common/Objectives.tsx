@@ -42,6 +42,8 @@ export const ObjectivePrintout = (props: ObjectivePrintoutProps) => {
 
   return (
     <Stack fill={fill} vertical>
+      {/* PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:  */}
+      {/*
       <Stack.Item bold>{titleMessage || `Your current objectives`}:</Stack.Item>
       <Stack.Item>
         {(objectives.length === 0 && 'None!') ||
@@ -52,6 +54,18 @@ export const ObjectivePrintout = (props: ObjectivePrintoutProps) => {
             </Stack.Item>
           ))}
       </Stack.Item>
+      */}
+      <Stack.Item bold>{titleMessage || `Görevlerin`}:</Stack.Item>
+      <Stack.Item>
+        {(objectives.length === 0 && 'Yok!') ||
+          objectives.map((objective) => (
+            <Stack.Item fontSize={objectiveTextSize} key={objective.count}>
+              {objectivePrefix || '#'}
+              {objective.count}: {objective.explanation}
+            </Stack.Item>
+          ))}
+      </Stack.Item>
+      {/* PSYCHONAUT EDIT ADDITION END - LOCALIZATION */}
       {!!objectiveFollowup && <Stack.Item>{objectiveFollowup}</Stack.Item>}
     </Stack>
   );

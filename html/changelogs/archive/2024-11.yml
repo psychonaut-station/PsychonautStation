@@ -42,6 +42,9 @@
   - code_imp: removed two one letter variables
   - admin: clearing the pod bay will not remove the light emitters.
   - admin: doing a latejoin injection no longer causes a midround one as well
+  Rengan:
+  - rscadd: "IPC \u0131rk\u0131 oyuna eklendi"
+  - code_imp: "Clown ve mimeler art\u0131k isimlerinde say\u0131 kullanabilir."
   Sealed101:
   - bugfix: fixed pure inacusiate not giving you ungarbled whisper hearing at full
       range
@@ -135,6 +138,8 @@
   - code_imp: Moved the reagent deletion signal below updating the total volume of
       containers. If any bugs seem related please report them!
   - bugfix: BVAK injectors have their middleground icon state once more
+  exdal:
+  - rscadd: Milli bayramlarimiz eklendi
   grungussuss:
   - sound: emote pitch shifting has been fixed
   - sound: bike horn sound volume has been reduced
@@ -991,6 +996,9 @@
   - bugfix: fixes some runtimes when emagged repairbots try to deconstruct things
   - bugfix: fixes sentient repairbots not being able to see or remove their material
       counts
+  Emre1212, Tatar Tachanka:
+  - rscadd: "5 adet yeni muffin ekler (\xFCz\xFCml\xFC, muzlu, karpuzlu, havu\xE7\
+      lu, ananasl\u0131)"
   Melbert:
   - bugfix: Frozen slimes can't latch on to you (but they can still attack you technically)
   - bugfix: Maybe fixes some organ manipulation bugs
@@ -1009,6 +1017,8 @@
   ValuedEmployee:
   - rscadd: New purr and meow emotes for players with felinid tongues
 2024-11-29:
+  Emre1212:
+  - rscadd: "Eskilerin klasi\u011Fi panda dondurmas\u0131n\u0131 oyuna ekler"
   Ghommie:
   - bugfix: Player-controlled lobstrosities, space dragons, space carps and penguins
       can fish again.

@@ -3,3 +3,4 @@
 		user.client.prefs?.alt_job_titles = list()
 	. = ..()
 	.["job_alt_titles"] = user.client.prefs?.alt_job_titles
+	.["security_level"] = SSsecurity_level.get_current_level_as_number()

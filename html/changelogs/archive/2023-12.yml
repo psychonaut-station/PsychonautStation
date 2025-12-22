@@ -170,9 +170,7 @@
       \ generally represent how a player might be affected by the changes rather than\
       \ a summary of the PR's contents. -->"
   san7890:
-  - bugfix: 'Janitors rejoice (or lament): Floors should now be dirty shift-start.
-
-      / \:cl:'
+  - bugfix: 'Janitors rejoice (or lament): Floors should now be dirty shift-start.'
 2023-12-06:
   Ghommie:
   - bugfix: Fixed the AI painting manager showing invalid choices.
@@ -187,6 +185,9 @@
       crews are still working on it, but it is operable and available for those who
       have the money to rent it.
 2023-12-07:
+  beetlejuicetr:
+  - rscadd: Eski Delta Station'a sec mechbay eklendi.
+  - rscadd: "Bitrunner i\xE7in TGMC'den LV-624 mapi eklendi."
   Chimpston, atlasle and aBlimpfox:
   - image: "added Cult Cove, Neon Flamingo and Slowdive bar signs\n/\U0001F191"
   Higgin:

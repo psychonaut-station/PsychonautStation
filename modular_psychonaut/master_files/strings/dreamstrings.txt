@@ -1,0 +1,101 @@
+%ADJECTIVE% bir amiral
+%ADJECTIVE% bir ordu 
+%ADJECTIVE% bir airlock
+%ADJECTIVE% bir uzaylı
+%ADJECTIVE% bir müttefik
+%ADJECTIVE% bir melek
+%ADJECTIVE% bir armblade
+%ADJECTIVE% bir ayı
+%ADJECTIVE% bir arı
+%ADJECTIVE% bir blob
+%ADJECTIVE% bir şişe
+%ADJECTIVE% bir chemist
+%ADJECTIVE% bir müttefik
+%ADJECTIVE% bir kalabalık
+%ADJECTIVE% bir cyborg
+%ADJECTIVE% bir şeytan
+%ADJECTIVE% bir doktor
+%ADJECTIVE% bir son
+%ADJECTIVE% bir düşman
+%ADJECTIVE% bir mühendis
+%ADJECTIVE% bir patlama
+%ADJECTIVE% bir felinid
+%ADJECTIVE% bir dost
+%ADJECTIVE% bir hayalet
+%ADJECTIVE% bir silah
+%ADJECTIVE% bir şapka
+%ADJECTIVE% bir heretic
+%ADJECTIVE% bir ID
+%ADJECTIVE% bir müfettiş
+%ADJECTIVE% bir laboratuvar
+%ADJECTIVE% bir lizard
+%ADJECTIVE% gibi sevdiğin birini
+%ADJECTIVE% bir hafıza
+%ADJECTIVE% bir meteor
+%ADJECTIVE% bir madenci
+%ADJECTIVE% bir maymun
+%ADJECTIVE% bir canavar
+%ADJECTIVE% bir moth
+%ADJECTIVE% bir kabus
+%ADJECTIVE% bir ninja
+%ADJECTIVE% bir okyanus
+%ADJECTIVE% bir kap
+%ADJECTIVE% bir gezegen
+%ADJECTIVE% bir plasmaman
+%ADJECTIVE% bir havuz
+%ADJECTIVE% bir fare
+%ADJECTIVE% bir scientist
+%ADJECTIVE% bir security officer
+%ADJECTIVE% bir shuttle
+%ADJECTIVE% bir singularity
+%ADJECTIVE% bir slime
+%ADJECTIVE% bir görev
+%ADJECTIVE% bir toolbox
+%ADJECTIVE% bir hain
+%ADJECTIVE% bir evren
+%ADJECTIVE% bir virologist
+%ADJECTIVE% bir virus
+%ADJECTIVE% bir ses
+%ADJECTIVE% bir tekerlekli sandalye
+%ADJECTIVE% bir karanlık
+%ADJECTIVE% bir ölüm
+%ADJECTIVE% bir kanıt
+%ADJECTIVE% bir olay
+%ADJECTIVE% bir kelepçe
+%ADJECTIVE% bir ışık
+%ADJECTIVE% evrak işerini
+%ADJECTIVE% bir plasma
+%ADJECTIVE% bir gücü
+%ADJECTIVE% dalgaları
+%ADJECTIVE% rüzgarı
+sigaraları
+Ian'ı
+Nanotrasen'i
+Poly'i
+Runtime'ı
+bazı %ADJECTIVE% cultistleri
+bazı %ADJECTIVE% aşıkları
+bazı %ADJECTIVE% yabancıları
+bazı %ADJECTIVE% uzaylıları
+%ADJECTIVE% barmeni
+%ADJECTIVE% brig'i
+%ADJECTIVE% kaptanı
+%ADJECTIVE% clown'u
+%ADJECTIVE% derinlikleri
+%ADJECTIVE% tanrıları
+%ADJECTIVE% güneşi
+%ADJECTIVE% uzay boşluğunu
+barı
+bir uçurumun dibini
+chapel'i
+curator'un gizli odasını
+süper maddeyi
+emergency shuttle'ı
+kütüphaneyi
+medbay'i
+istasyonu
+güneşi
+Syndicate'ı
+tram'ı
+zamanı
+su

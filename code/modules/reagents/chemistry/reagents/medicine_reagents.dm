@@ -1200,6 +1200,10 @@
 	var/list/tips
 	if(SPT_PROB(50, seconds_per_tick))
 		tips = world.file2list("strings/tips.txt")
+		// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
+		// tips = world.file2list("strings/tips.txt")
+		tips = world.file2list("modular_psychonaut/master_files/strings/tips.txt")
+		// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	if(SPT_PROB(50, seconds_per_tick))
 		tips = world.file2list("strings/sillytips.txt")
 	else

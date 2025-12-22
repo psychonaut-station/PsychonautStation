@@ -160,6 +160,8 @@
   - qol: Ghosts can now view Wanted Status and Sec Records by examining people
   Melbert:
   - bugfix: Strong arm implant users can shove more correctly.
+  Seefaaa:
+  - bugfix: "RTD UI'\u0131nda neon carpetlar d\xFCzg\xFCn g\xF6z\xFCkecek"
   Sightld2:
   - bugfix: Cyborgs no longer think they're hitting themselves when stunned with a
       stun baton
@@ -239,68 +241,9 @@
   - bugfix: '"The sister and He Who Wept" Heretic painting will no longer cause big
       lag'
 2024-01-10:
-  13spacemen:
-  - qol: If you can't heal a body part, you won't get a healing time delay. No more
-      spending 5 seconds healing a body part only to get a "can't heal that" message.
-  Absolucy:
-  - bugfix: Fixed the Codex Cicatrix always requiring a dead body, despite the description
-      saying leather or a hide would work too.
   Chubbygummibear:
   - bugfix: popup screen locs will work on clients >1614. Security cameras and Spyglass
       will work
-  FlufflesTheDog:
-  - bugfix: Certain areas are now properly protected against grid check. Namely the
-      supermatter should consistently be protected.
-  Ghommie:
-  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
-  IndieanaJones:
-  - bugfix: Dynamic midround rolls will properly consider roundstart players as part
-      of the living population again, allowing antagonists with a minimum population
-      value to spawn when they should be able to.
-  - bugfix: Players who observe before roundstart can be considered for midround ghost
-      roles again.
-  - bugfix: Some antagonists which had elements that scale with living station population
-      now function properly again.
-  JohnFulpWillard:
-  - bugfix: Refried beans and Spanish rice now lets you take the bowl back after eating
-      it.
-  - bugfix: Eldritch reagent (the one that heals heretics) now heal heretic monsters
-      rather than kill them.
-  - bugfix: The HoP's cartridge vending machine now sells regular PDAs instead of
-      base command ones.
-  LT3:
-  - bugfix: Unencoded server admin announcements will now actually broadcast
-  Melbert:
-  - admin: Several types are now more accessible via the "spawn" verb (and friends),
-      meaning you can type 'Spawn" Modsuit' or 'Spawn "Jumpsuit' in the command bar
-      and it'll just give you a list of modsuits or jumpsuits to pick from.
-  - bugfix: Lionhunter Rifle is now available at the same point as Mawed Crucible,
-      making it available to all paths again.
-  - bugfix: Lock knowledge now goes the correct order. Mark -> Ritual -> Unique item,
-      rather than backwards.
-  - balance: Blood cultists can now convert a Null Rod into a cult weapon on an offer
-      rune. The strength of the weapon it is converted into depends on how many cultists
-      the Chaplain crit / killed with it. At five or more, it will turn into a Bastard
-      Sword. Note, sacrificing someone holding a Null Rod will automatically convert
-      it after they are gibbed.
-  - balance: Heretics no longer produce a Bastard Sword upon cult conversion. They
-      are still immune to cult stun and cannot be converted by blood cultists.
-  - bugfix: Carps now migrate slightly better, probably.
-  - bugfix: And Poly now talks better, probably.
-  OrionTheFox:
-  - image: Resprited a majority of undershirts
-  SyncIt21:
-  - bugfix: ejecting cells from microwaves via ctrl click now requires player proximity.
-  - code_imp: smart fridge content overlay now uses `base_icon_state` instead of a
-      separate var
-  jlsnow301:
-  - bugfix: Medical records console should be useable again
-  - admin: Fixed the bluescreen in the centcom pod launcher.
-  zxaber:
-  - bugfix: Ripley MK-Is and Paddys now correctly make incoming projectiles hit the
-      pilot again.
-  - bugfix: The various borg apparatuses can no longer pick up other internal borg
-      tools.
 2024-01-11:
   Thunder12345:
   - bugfix: Pipeguns no longer have floating bayonets
@@ -510,6 +453,11 @@
   JohnFulpWillard:
   - refactor: Implant pads now use TGUI
   - refactor: Ice cream vats now use a radial menu instead of an HTML one.
+  Seefaaa:
+  - rscadd: "Oyun kartlar\u0131n\u0131 sonraki rounda saklaman\u0131z\u0131 sa\u011F\
+      layan yeni quirk Koleksiyoncu."
+  exdal:
+  - bugfix: Antag objektifleri duzeltildi
   intercepti0n:
   - refactor: Refactored Ore Silo Ui.
   mc-oofert:
@@ -521,12 +469,75 @@
   Ben10Omintrix:
   - bugfix: fix a runtime when loading ghosts to a mulebot
 2024-01-20:
+  13spacemen:
+  - qol: If you can't heal a body part, you won't get a healing time delay. No more
+      spending 5 seconds healing a body part only to get a "can't heal that" message.
+  Absolucy:
+  - bugfix: Fixed the Codex Cicatrix always requiring a dead body, despite the description
+      saying leather or a hide would work too.
+  Chubbygummibear:
+  - bugfix: popup screen locs will work on clients >1614. Security cameras and Spyglass
+      will work
   Diamond-74:
   - bugfix: Monkeys don't get stuck on obstacles as often.
+  FlufflesTheDog:
+  - bugfix: Certain areas are now properly protected against grid check. Namely the
+      supermatter should consistently be protected.
   Ghommie:
   - image: The "One Lean, Mean, Cleaning Machine" achievement now has its own icon.
+  - bugfix: Fixed misfiring for firearms like tinkered detective revolvers.
+  IndieanaJones:
+  - bugfix: Dynamic midround rolls will properly consider roundstart players as part
+      of the living population again, allowing antagonists with a minimum population
+      value to spawn when they should be able to.
+  - bugfix: Players who observe before roundstart can be considered for midround ghost
+      roles again.
+  - bugfix: Some antagonists which had elements that scale with living station population
+      now function properly again.
+  JohnFulpWillard:
+  - bugfix: Refried beans and Spanish rice now lets you take the bowl back after eating
+      it.
+  - bugfix: Eldritch reagent (the one that heals heretics) now heal heretic monsters
+      rather than kill them.
+  - bugfix: The HoP's cartridge vending machine now sells regular PDAs instead of
+      base command ones.
+  LT3:
+  - bugfix: Unencoded server admin announcements will now actually broadcast
+  Melbert:
+  - admin: Several types are now more accessible via the "spawn" verb (and friends),
+      meaning you can type 'Spawn" Modsuit' or 'Spawn "Jumpsuit' in the command bar
+      and it'll just give you a list of modsuits or jumpsuits to pick from.
+  - bugfix: Lionhunter Rifle is now available at the same point as Mawed Crucible,
+      making it available to all paths again.
+  - bugfix: Lock knowledge now goes the correct order. Mark -> Ritual -> Unique item,
+      rather than backwards.
+  - balance: Blood cultists can now convert a Null Rod into a cult weapon on an offer
+      rune. The strength of the weapon it is converted into depends on how many cultists
+      the Chaplain crit / killed with it. At five or more, it will turn into a Bastard
+      Sword. Note, sacrificing someone holding a Null Rod will automatically convert
+      it after they are gibbed.
+  - balance: Heretics no longer produce a Bastard Sword upon cult conversion. They
+      are still immune to cult stun and cannot be converted by blood cultists.
+  - bugfix: Carps now migrate slightly better, probably.
+  - bugfix: And Poly now talks better, probably.
   Momo8289, Pepsilawn, Sinsinins, JohnFulpWillard:
   - bugfix: Clown ops now get a code set for their nuke.
+  OrionTheFox:
+  - image: Resprited a majority of undershirts
+  Seefaaa:
+  - bugfix: "Jukebox \u015Fark\u0131 bitti\u011Finde tak\u0131l\u0131 kalmayacak."
+  SyncIt21:
+  - bugfix: ejecting cells from microwaves via ctrl click now requires player proximity.
+  - code_imp: smart fridge content overlay now uses `base_icon_state` instead of a
+      separate var
+  jlsnow301:
+  - bugfix: Medical records console should be useable again
+  - admin: Fixed the bluescreen in the centcom pod launcher.
+  zxaber:
+  - bugfix: Ripley MK-Is and Paddys now correctly make incoming projectiles hit the
+      pilot again.
+  - bugfix: The various borg apparatuses can no longer pick up other internal borg
+      tools.
 2024-01-21:
   Ben10Omintrix:
   - bugfix: fixes megafauna AI getting stuck attacking some corpses
@@ -561,10 +572,12 @@
   Rhials:
   - spellcheck: Modifies some existing Emergency Shuttle prerequisite messages, and
       adds some missing ones.
-  YehnBeep:
-  - bugfix: Icebox perma's cytology lab is now useable without outside repairs.
   Zergspower:
   - bugfix: fixes whispering formatting
+  exdal:
+  - admin: Interviewlar artik tgs araciligi ile loglaniyor
+  YehnBeep:
+  - bugfix: Icebox perma's cytology lab is now useable without outside repairs.
   lizardqueenlexi:
   - bugfix: Filled trash bags show up properly when worn.
   mc-oofert:
@@ -592,6 +605,17 @@
   scriptis:
   - spellcheck: iron sheets's what?
 2024-01-24:
+  Seefaaa:
+  - qol: "jukebox'a examine atarsan\u0131z kime ait oldu\u011Funu g\xF6rebileceksiniz."
+  - qol: "jukebox art\u0131k bank account ile ba\u011Fl\u0131 ve jukebox'\u0131n sahibinden\
+      \ id'sini isterseniz jukebox'\u0131 kullanabileceksiniz."
+  - bugfix: "admin m\xFCzik sonland\u0131\u011F\u0131nda chatin \xFCst\xFCnde g\xF6\
+      r\xFCn\xFCr kalmayacak."
+  - config: "request_internet_allowed jukebox i\xE7in de kullan\u0131lacak"
+  exdal:
+  - rscadd: Players Ready artik normal oyunculara gorunur
+  - bugfix: Hub zamani ve log zamanlari duzeltildi
+  - balance: assembly bombalar artik bulky
   JohnFulpWillard:
   - bugfix: pAIs downloaded while in a PDA now gets the action button to control said
       PDA.

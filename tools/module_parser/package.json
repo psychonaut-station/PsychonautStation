@@ -1,0 +1,8 @@
+{
+	"name": "module_parser",
+	"version": "1.0.0",
+	"main": "index",
+	"author": "psychonaut-station",
+	"license": "AGPL",
+	"description": "Module Parser for moduler codebases"
+}

@@ -11,8 +11,10 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
 - `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
 - `code/__HELPERS/chat_filter.dm`: `/proc/is_ic_filtered()`, `/proc/is_soft_ic_filtered()`, `/proc/is_ooc_filtered()`, `/proc/is_soft_ooc_filtered()`, `/proc/is_ic_filtered_for_pdas()`, `/proc/is_soft_ic_filtered_for_pdas()`,
+- `code/__HELPERS/game.dm`: `/proc/send_tip_of_the_round()`
 - `code/__HELPERS/names.dm`: `/proc/new_station_name()`
 - `code/__HELPERS/priority_announce.dm`: `/proc/priority_announce()`, `/proc/print_command_report`, `/proc/minor_announce`, `/proc/level_announce`, `/proc/generate_unique_announcement_header`
+- `code/_globalvars/lists/strings.dm`: `GLOB.adjectives`, `GLOB.adverbs`, `GLOB.dream_strings`, `GLOB.junkmail_messages`, `GLOB.verbs`
 - `code/controllers/configuration/entries/game_options.dm`: `/datum/config_entry/string/alert_green`, `/datum/config_entry/string/alert_blue_upto`, `/datum/config_entry/string/alert_blue_downto`, `/datum/config_entry/string/alert_red_upto`, `/datum/config_entry/string/alert_red_downto`, `/datum/config_entry/string/alert_delta`
 - `code/controllers/subsystem/discord.dm`: `/datum/controller/subsystem/discord/Initialize()`
 - `code/controllers/subsystem/nightshift.dm`: `/datum/controller/subsystem/nightshift/proc/announce()`, `/datum/controller/subsystem/nightshift/proc/check_nightshift()`, `/datum/controller/subsystem/nightshift/proc/update_nightshift()`
@@ -214,6 +216,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/power/singularity/narsie.dm`: `/proc/narsie_end_begin_check()`, `/proc/narsie_end_second_check()`, `/proc/narsie_apocalypse()`
 - `code/modules/power/supermatter/supermatter_delamination/cascade_delam.dm`: `/datum/sm_delam/cascade/delaminate()`, `/datum/sm_delam/cascade/proc/announce_cascade()`
 - `code/modules/power/supermatter/supermatter_delamination/delamination_effects.dm`: `/datum/sm_delam/proc/effect_strand_shuttle()`, `/datum/sm_delam/proc/effect_evac_rift_start()`, `/datum/sm_delam/proc/effect_evac_rift_end()`
+- `code/modules/reagents/chemistry/reagents/medicine_reagents.dm`: `/datum/reagent/medicine/mannitol/overdose_process()`
 - `code/modules/security_levels/keycard_authentication.dm`: `/proc/make_maint_all_access()`, `/proc/revoke_maint_all_access()`, `/proc/toggle_bluespace_artillery()`
 - `code/modules/shuttle/mobile_port/variants/battlecruiser_starfury.dm`: `/proc/summon_battlecruiser()`
 - `code/modules/shuttle/mobile_port/variants/emergency/emergency.dm`: `/obj/docking_port/mobile/emergency/request()`, `/obj/docking_port/mobile/emergency/cancel()`, `/obj/docking_port/mobile/emergency/check()`, `/obj/docking_port/mobile/emergency/transit_failure()`
@@ -225,7 +228,10 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/station_goals/station_goal.dm`: `/datum/station_goal/proc/send_report()`
 - `config/game_options.txt`: `ALERT_GREEN`, `ALERT_BLUE_UPTO`, `ALERT_BLUE_DOWNTO`, `ALERT_RED_UPTO`, `ALERT_RED_DOWNTO`, `ALERT_DELTA`
 - `interface/interface.dm`: [`/client`: `verb/wiki()`, `verb/rules()`, `verb/github()`, `verb/reportissue()`]
+- `tgui/packages/tgui/interfaces/AntagInfoTraitor.tsx`: `EmployerSection()`, `UplinkSection()`, `CodewordsSection()`
+- `tgui/packages/tgui/interfaces/Changelog.jsx`: `Changelog`
 - `tgui/packages/tgui/interfaces/Interview.tsx`: `Interview`, `RenderedStatus`, `QuestionArea`
+- `tgui/packages/tgui/interfaces/common/Objectives.tsx`: `ObjectivePrintout()`
 
 ### Modüler Değişiklikler
 
@@ -233,7 +239,14 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `modular_psychonaut/master_files/code/modules/events/shuttle_loan/shuttle_loan_datum.dm`: `/datum/shuttle_loan_situation/antidote`, `/datum/shuttle_loan_situation/department_resupply`, `/datum/shuttle_loan_situation/syndiehijacking`, `/datum/shuttle_loan_situation/lots_of_bees`, `/datum/shuttle_loan_situation/jc_a_bomb`, `/datum/shuttle_loan_situation/papers_please`, `/datum/shuttle_loan_situation/pizza_delivery`, `/datum/shuttle_loan_situation/russian_party`, `/datum/shuttle_loan_situation/spider_gift`, `/datum/shuttle_loan_situation/mail_strike`
 - `modular_psychonaut/master_files/code/modules/holiday/holidays.dm`: `/datum/holiday/greet()`, `/datum/holiday/fleet_day`, `/datum/holiday/fleet_day/greet()`, `/datum/holiday/groundhog`, `/datum/holiday/nz`, `/datum/holiday/nz/greet()`, `/datum/holiday/birthday`, `/datum/holiday/birthday/greet()`, `/datum/holiday/random_kindness`, `/datum/holiday/random_kindness/greet()`, `/datum/holiday/pi`, `/datum/holiday/pi/getStationPrefix()`, `/datum/holiday/no_this_is_patrick`, `/datum/holiday/no_this_is_patrick/getStationPrefix()`, `/datum/holiday/no_this_is_patrick/greet()`, `/datum/holiday/spess`, `/datum/holiday/spess/greet()`, `/datum/holiday/fourtwenty`, `/datum/holiday/tea`, `/datum/holiday/tea/getStationPrefix()`, `/datum/holiday/earth`, `/datum/holiday/cocuk_bayrami`, `/datum/holiday/labor`, `/datum/holiday/draconic_day`, `/datum/holiday/draconic_day/greet()`, `/datum/holiday/spor_bayrami`, `/datum/holiday/firefighter`, `/datum/holiday/firefighter/getStationPrefix()`, `/datum/holiday/bee`, `/datum/holiday/bee/getStationPrefix()`, `/datum/holiday/summersolstice`, `/datum/holiday/doctor`, `/datum/holiday/ufo`, `/datum/holiday/demokrasi_bayrami`, `/datum/holiday/usa`, `/datum/holiday/usa/getStationPrefix()`, `/datum/holiday/writer`, `/datum/holiday/france`, `/datum/holiday/france/getStationPrefix()`, `/datum/holiday/france/greet()`, `/datum/holiday/hotdogday/greet()`, `/datum/holiday/wizards_day`, `/datum/holiday/friendship`, `/datum/holiday/zafer_bayrami`, `/datum/holiday/tiziran_unification`, `/datum/holiday/tiziran_unification/greet()`, `/datum/holiday/tiziran_unification/getStationPrefix()`, `/datum/holiday/ianbirthday/greet()`, `/datum/holiday/pirate`, `/datum/holiday/pirate/greet()`, `/datum/holiday/questions`, `/datum/holiday/questions/greet()`, `/datum/holiday/animal`, `/datum/holiday/smile`, `/datum/holiday/boss`, `/datum/holiday/cumhuriyet_bayrami`, `/datum/holiday/vegan`, `/datum/holiday/october_revolution`, `/datum/holiday/remembrance_day`, `/datum/holiday/remembrance_day/greet()`, `/datum/holiday/remembrance_day/getStationPrefix()`, `/datum/holiday/lifeday`, `/datum/holiday/lifeday/getStationPrefix()`, `/datum/holiday/kindness`, `/datum/holiday/flowers`, `/datum/holiday/hello`, `/datum/holiday/hello/greet()`, `/datum/holiday/holy_lights`, `/datum/holiday/holy_lights/greet()`, `/datum/holiday/festive_season/greet()`, `/datum/holiday/human_rights`, `/datum/holiday/monkey/celebrate()`, `/datum/holiday/xmas/greet()`, `/datum/holiday/boxing`, `/datum/holiday/programmers`, `/datum/holiday/islamic/ramadan`, `/datum/holiday/islamic/ramadan/eve`, `/datum/holiday/hebrew/hanukkah`, `/datum/holiday/hebrew/hanukkah/greet()`, `/datum/holiday/easter/greet()`
 - `modular_psychonaut/master_files/code/modules/meteors/meteor_types.dm`: `/obj/effect/meteor`, `/obj/effect/meteor/flaming`, `/obj/effect/meteor/irradiated`, `/obj/effect/meteor/cluster`, `/obj/effect/meteor/carp`, `/obj/effect/meteor/bluespace`, `/obj/effect/meteor/banana`, `/obj/effect/meteor/emp`, `/obj/effect/meteor/meaty`, `/obj/effect/meteor/meaty/xeno`, `/obj/effect/meteor/tunguska`
+- `modular_psychonaut/master_files/strings/cult_shuttle_curse.json`
+- `modular_psychonaut/master_files/strings/dreamstrings.txt`
 - `modular_psychonaut/master_files/strings/ion_laws.json`
+- `modular_psychonaut/master_files/strings/junkmail.txt`
+- `modular_psychonaut/master_files/strings/names/adjectives.txt`
+- `modular_psychonaut/master_files/strings/names/adverbs.txt`
+- `modular_psychonaut/master_files/strings/names/verbs.txt`
+- `modular_psychonaut/master_files/strings/tips.txt`
 
 ### Definelar ve Helperlar
 

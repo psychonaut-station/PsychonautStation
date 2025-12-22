@@ -1,4 +1,5 @@
 GLOBAL_LIST_INIT(psychonaut_strings, list(
+	CULT_SHUTTLE_CURSE,
 	HALLUCINATION_FILE,
 	ION_FILE,
 ))

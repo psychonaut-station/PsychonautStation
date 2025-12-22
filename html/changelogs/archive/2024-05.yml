@@ -62,6 +62,8 @@
   - admin: Admins can now end votes instantly, rather than cancelling them
   - admin: Admins can now reset the vote cooldown
   - bugfix: Vote cooldown actually applies now
+  MrEmre12:
+  - rscadd: "Chaplain i\xE7in ha\xE7 \u015Feklinde bir kolye."
   Pickle-Coding:
   - bugfix: Fixes hypercharged slime core cells and circuit guns having 1,000 times
       less energy than intended.
@@ -76,13 +78,20 @@
   - bugfix: Jousting no longer bypasses pacifism
 2024-05-03:
   Echriser:
-  - qol: conveyors now use left and right click controls
-  - qol: add screentips for conveyor switches
-  - rscdel: removes circuit conveyor circuit default trigger behavior in favor in
-      favor of the three state triggers
+  - qol: conveyor switches now have direction-specific input signals
   Gaxeer:
   - bugfix: fix runtime when no events were drafted to be picked from
   - config: make events frequency configurable
+  JohnFulpWillard:
+  - bugfix: Monkey changelings that are disguised as someone can now take off their
+      flesh clothes.
+  - bugfix: You can now re-construct pod doors that had deconstruction started.
+  - qol: You can now make pod door assemblies using plasteel in-hand.
+  - bugfix: Monkeys can no longer be knocked over by walking into a windoor on combat
+      mode while they're behind it.
+  - admin: Debug uplinks now shows all categories and won't lock upon buying items
+      like his grace and the syndicate balloon.
+  - bugfix: AIs can now track Silicon as long as their built-in camera is online.
   StrangeWeirdKitten:
   - qol: You can now quickly stamp papers with a right click
   Zenog400:
@@ -136,10 +145,22 @@
       namelists now automatically generate names based on their primary language(s).
   - qol: More non-human names can be generated in codewords (and other misc. areas)
       than just lizard names.
+  MrEmre12:
+  - rscadd: "Orman temal\u0131 Holodeck map."
+  RengaN02:
+  - bugfix: "NT Secretary'nin remote'unun sprite'\u0131 art\u0131k g\xF6r\xFCnecek."
   larentoun:
   - bugfix: Materials are now correctly applied to crafted items (chairs, toilets,
       etc)
 2024-05-06:
+  MrEmre12:
+  - qol: "T\xFCrk\xE7e Ai Yasas\u0131 Eklendi"
+  - bugfix: "Eski Delta'daki Aft Surgery/Surgery Theatre odalar\u0131na surgery tray\
+      \ ekler."
+  exdal:
+  - rscadd: Clown icin ozel *cry sesi
+  genku:
+  - spellcheck: Priority Announcelardaki eksiklikler ve hatalar giderildi.
   improvedname:
   - bugfix: fixes traditional equipment crate name
   paganiy:
@@ -147,6 +168,8 @@
 2024-05-07:
   CandleJaxx:
   - rscadd: '''puppy'' ''kitten'' and ''spider'' pai skins'
+  MrEmre12:
+  - rscadd: "Yeni Havuz temal\u0131 holodeck map."
 2024-05-08:
   '@MrEmre12, @Majkl-J':
   - rscadd: Fishing pool introduced to metastation garden
@@ -294,6 +317,8 @@
   - rscadd: People who spend time improving their bodies are able to evaluate the
       relative physical strength of those they examine as a kind of "power level".
   - rscadd: Changeling transformation copies the target's athletics skill level.
+  Makaru:
+  - image: Yeni bir zippo spritesi eklendi
   Time-Green:
   - bugfix: Deleting someones brain kills them again
   jlsnow301:
@@ -444,16 +469,6 @@
   improvedname:
   - bugfix: fixes metastation science scrubber pipeline
   jlsnow301:
-  - bugfix: Fixed an issue preventing space ninjas from having a hud icon
-  - rscadd: 'ORBIT UI CHANGES:'
-  - rscadd: AFK players are greyed out.
-  - rscadd: Living NPCs now display health.
-  - rscadd: Icons displayed are now based on hud icons, which includes icons for player-visible
-      antagonists
-  - rscadd: You can now sort by job department (click health icon)
-  - rscadd: Round ending "critical" items will be listed at the top.
-  - rscadd: Click the settings button to expand for more info
-  - rscadd: Your current orbit target is highlighted.
   - bugfix: Simplebot UI won't display '0' anymore when locked
   mc-oofert:
   - rscadd: mobile defibrillator mount
@@ -499,12 +514,18 @@
   - bugfix: Malf AI can now override/overload closed turrets.
   - bugfix: Fixed a scenario in which a turret would have its covers closed while
       still firing.
+  agalargaming:
+  - image: Kaptan sabresine ve sheathine yeni gorunumler eklendi.
   grungussuss:
   - qol: suit sensors can now be maxed by ctrl clicking your jumpsuit
   improvedname:
   - balance: Nukies ordnance now include more gasses and stock parts
   sheets, spacemenart, ben10omintrix, goofball, infrared baron, aofie:
   - rscadd: adds lavaland raptors and the raptor ranch
+2024-05-20:
+  MrEmre12:
+  - bugfix: "Eski Delta'daki request consolelar d\xFCzg\xFCnce \xE7al\u0131\u015F\
+      acak."
 2024-05-21:
   ArcaneMusic:
   - balance: Ore vents, if blocked off from all four sides while being defended, now
@@ -589,6 +610,9 @@
   - spellcheck: Correctly spells "received."
   Iamgoofball:
   - spellcheck: Removes a shit clown name and adds a better clown name instead
+  MrEmre12:
+  - bugfix: "Eski Delta'daki Ai Sat i\xE7erisindeki SMES'e ba\u011Fl\u0131 olan terminal\
+      \ sorunu \xE7\xF6z\xFCld\xFC."
   SyncIt21:
   - bugfix: Crafting menu loads long lists faster
   - bugfix: Monkey power reactions are instant and won't occur when exact reagent

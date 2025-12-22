@@ -251,18 +251,6 @@
   L1nd:
   - balance: spiders can't wrap megafauna
   - bugfix: nonhuman spider cocoons looks accordingly
-  Maximal08:
-  - bugfix: Fixing the arrow display when using the multitool
-  SmArtKar:
-  - bugfix: Fixed explorer masks going invisible when you put on a goliath hood
-  - qol: Improved
-  rageguy505:
-  - bugfix: carpenter and claw hammer can now test for brain health.
-  throwawayuseless:
-  - rscadd: Robotic voiceboxes now grant Encoded Audio Language. Techpriests and circuit
-      nerds, rejoice!
-  - rscadd: Revolutionaries are now weakened by grenadine. Because the pomegranate
-      antioxidants stop free radicals.
 2025-05-11:
   Jacquerel:
   - balance: Most biological mobs are now slowed by taking stamina damage, and can
@@ -369,12 +357,16 @@
       play any more.
   LT3:
   - bugfix: You can put sterilizine back in the surgery tray after removing it
+  Maximal08:
+  - bugfix: Fixing the arrow display when using the multitool
   NeonNik2245:
   - balance: Plumbers will now give back matter you use for assemble machinery.
   SmArtKar:
   - refactor: Refactored how backpack and belt contents are handled in mob inventory
       code, report any issues with lingering item effects or inability to equip things
       into them!
+  - bugfix: Fixed explorer masks going invisible when you put on a goliath hood
+  - qol: Improved
   TealSeer:
   - bugfix: fixed cross-server newscaster functionality
 2025-05-17:
@@ -605,6 +597,8 @@
   NamelessFairy:
   - qol: Inspecting a hand of cards now tells you what cards you can see in it.
   - bugfix: Adding cards to a hand no longer automatically flips them.
+  Rengan:
+  - bugfix: "IPC'nin \u015Farj olamamas\u0131 d\xFCzeltildi."
   Retrino:
   - qol: moved some xenobiology equipment downstairs on icebox
   Sothanforax:
@@ -612,8 +606,15 @@
   jlsnow301:
   - bugfix: The produce console's layout has been adjusted a bit for an improved ordering
       experience.
+  rageguy505:
+  - bugfix: carpenter and claw hammer can now test for brain health.
   sqnztb:
   - rscadd: 'New holiday for May 22: Goth Day.'
+  throwawayuseless:
+  - rscadd: Robotic voiceboxes now grant Encoded Audio Language. Techpriests and circuit
+      nerds, rejoice!
+  - rscadd: Revolutionaries are now weakened by grenadine. Because the pomegranate
+      antioxidants stop free radicals.
 2025-05-24:
   Ezel:
   - bugfix: Adds missing dragnet beacon to catwalk

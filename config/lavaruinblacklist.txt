@@ -24,6 +24,7 @@
 
 ##MISC
 #_maps/RandomRuins/AnywhereRuins/fountain_hall.dmm
+#_maps/RandomRuins/LavaRuins/lavaland_nyx_temple.dmm
 #_maps/RandomRuins/LavaRuins/lavaland_surface_automated_trade_outpost.dmm
 #_maps/RandomRuins/LavaRuins/lavaland_surface_cultaltar.dmm
 #_maps/RandomRuins/LavaRuins/lavaland_surface_elephant_graveyard.dmm

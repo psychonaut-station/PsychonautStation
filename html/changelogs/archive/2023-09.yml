@@ -63,6 +63,12 @@
   - image: Resprited geraniums, poppies, and lilys, along with changing their worn
       icon.
 2023-09-02:
+  AhmetEfeAkgoz:
+  - rscadd: Holy arrow tarifi 10u holy water 5 wood 2 iron
+  Guillaume Prata:
+  - qol: The "You can't move while buckled to X" is now a balloon alert instead of
+      a to_chat message. Hopefully we all get buckle stuck processing why our inputs
+      are not working less often for now on.
   Jacquerel:
   - bugfix: Prevents admins from accidentally gibbing people by closing a confirmation
       window.
@@ -76,6 +82,12 @@
       the malfunctioning tram event should now only fire on maps with a tram!
   Thebleh:
   - bugfix: fixed access on a couple of Engineering and Atmos airlocks on DeltaStation
+  nikothedude:
+  - balance: Prosthetics and slimepeople can now have limbs dismembered
+  - balance: Slimepeople can now receive slash wounds, but cannot bleed
+  - balance: Most limbs can now be dislocated
+  - refactor: Scar backend reworked, scars will be wiped as they update to the new
+      format
 2023-09-03:
   Ben10Omintrix:
   - bugfix: basic ranged mobs will now chase victims
@@ -203,6 +215,9 @@
   Sealed101:
   - bugfix: fixed bileworm evolution deleting anything they devoured; they will now
       eject their contents upon evolution to vileworms
+  Seefaaa:
+  - rscadd: "Pug'\u0131n yerini alacak ve size bir \xE7ok hayvan t\xFCr\xFC sunacak\
+      \ olan Animal mesle\u011Fi."
   mc-oofert:
   - bugfix: emissive appearances on glowy eyes and such now properly rotate
 2023-09-06:
@@ -253,83 +268,30 @@
   - bugfix: leash unit test will time out less often and increases the timer until
       it is considered 'timed out', to reduce false CI failures
 2023-09-08:
-  Deadgebert:
-  - balance: gas mixer output now accurate to set ratio regardless of input temperatures
   Ghommie:
-  - image: The glow shoes from the ClothesMate now actually glow and can be recolored,
-      even with a spraycan.
   - spellcheck: Corrected the name of the telescopic fishing rod to "telescopic fishing
       rod" from the more generic "fishing rod"
-  Jacquerel:
-  - rscadd: Traitors, Changelings, Heretics, Wizards, Malfunctioning AIs, and Ninjas
-      can now all reject their original objectives and provide one of their own in
-      its place. A Heretic doing this will no longer be able to ascend.
-  - rscadd: '"Custom" objectives which aren''t mechanically tracked will no longer
-      report success or failure upon round end.'
-  - qol: Space Ninja spider charges will now display where they can be detonated when
-      examined, if you are a ninja.
-  JohnFulpWillard:
-  - bugfix: Getting a node researched now properly makes it no longer hidden.
-  - bugfix: Ninjas draining RD servers now drains it from the connected techweb, rather
-      than sniping Science.
-  - balance: Machines will first try to connect to a techweb with servers on their
-      z-level, with the Science techweb remaining as fallback.
-  - rscadd: Oldstation RND, comes with their own Techweb and special surgery to gain
-      research points through dissecting Xenomorphs.
   LT3:
   - bugfix: Meteors no longer take damage from crossing certain unoccupied turfs
   Sealed101:
   - balance: colossus' near-death attack now starts after a 0.5 seconds delay
-  carlarctg:
-  - bugfix: Cauteries now have 'heat', like lighters, welders, etc.
-  - qol: You can smoke with a space helmet as long as you have internals on.
+  WinstonBeYY:
+  - rscadd: MiniStation eklendi.
   cnleth:
   - bugfix: Megafauna now correctly prints the victim's name after a kill
   san7890:
   - refactor: If you transform into another mob and notice bugs with interacting with
       the game world, please create a bug report as this framework was recently refactored.
-  vinylspiders:
-  - bugfix: fixes creamatorium not producing any suspicious ice cream, and fixes a
-      dead mouse related harrdel
 2023-09-09:
-  CoiledLamb:
-  - image: updates medigel sprites
-  Jacquerel:
-  - balance: Traitors who are activated as sleeper agents or arrive late on the arrivals
-      shuttle will begin with more reputation and likely be able to immediately access
-      most of the uplink catalogue.
-  LT3:
-  - qol: Supermatter common channel alerts are less frequent if the crystal's integrity
-      is rising rapidly
-  Majkl-J:
-  - bugfix: The messenger app can now be used when laying down.
-  san7890:
-  - rscadd: Ever see a robot yawn? Don't worry, it makes sense now.
+  Seefaaa:
+  - bugfix: "Art\u0131k \"\u0131\" harfi y\xFCz\xFCnden \uFFFD ortaya \xE7\u0131kmayacak."
+  WinstonBeYY:
+  - rscadd: Mech Removal Tool eklendi
+  - rscadd: R&D Console eklendi
+  - bugfix: Toxin burn chamber duzeltildi
 2023-09-10:
-  Jacquerel:
-  - bugfix: It is now possible to smoke cigarettes even if you aren't wearing a safety
-      helmet
-  - bugfix: Golems can eat
-  - bugfix: Cooked and crafted food should be edible
-  - bugfix: Medborgs can now spawn vanilla ice cream instead of nothing ice cream
-  - bugfix: Ghosts can examine food
-  - admin: Admins can add/remove the spawner component from arbitrary items again.
-  Rhials:
-  - qol: adds some more traitor objective brainwashing default objectives.
-  - spellcheck: fixes the double-punctuation on traitor objective brainwashing broadcasts.
-  - spellcheck: brainwashing deadchat broadcasts will now auto-punctuate.
-  carshalash:
-  - bugfix: ' Corrects various food types from the martian food expansion'
-  distributivgesetz:
-  - admin: The "Create Command Report" verb now has the option to not print report
-      papers at communications consoles.
-  leaKsi:
-  - bugfix: Exploration drones can't be used to reach Centcom anymore.
-  nikothedude:
-  - refactor: Refactored wounds yet again
-  - bugfix: Wounds are now picked from the most severe down again, meaning eswords
-      can jump to avulsions
-  - bugfix: Scar descs are now properly applied
+  WinstonBeYY:
+  - rscadd: TGMC Shuttle ruini eklendi
 2023-09-11:
   Jacquerel:
   - image: Hivelords have a new sprite.
@@ -905,6 +867,19 @@
   - bugfix: Fixes grounding rods lying about potential power you can generate.
   - code_imp: Convert supermatter_zap() and tesla_zap() zap_str argument unit to be
       in joules, and scales everything that uses that argument.
+  Seefaaa:
+  - bugfix: "Baz\u0131 durumlarda jukebox susmas\u0131 gerekmesine ra\u011Fmen susmuyordu"
+  - bugfix: "Bir \u015Feyin i\xE7ine girildi\u011Finde (locker vb.) jukebox durmak\
+      \ yerine \xE7almaya devam edecek"
+  - balance: "Barmenler her jukebox'\u0131 kullanabilirken art\u0131k sonradan \xE7\
+      a\u011F\u0131r\u0131lanlar\u0131 sadece \xE7a\u011F\u0131ran kullanabilecek"
+  - refactor: "Jukebox'\u0131n s\u0131k\u0131\u015F\u0131k kodu 'web_sound_player'\
+      \ componenti olarak ayr\u0131ld\u0131"
+  - admin: "Jukebox admin logu daha az rahats\u0131z edicek."
+  - balance: "Cami shuttle\u0131n\u0131n duvarlar\u0131 art\u0131k k\u0131r\u0131\
+      lamaz olucak."
+  - bugfix: "Tgmc ruinindeki duplicate apcler d\xFCzeltildi ve ceset remain ile de\u011F\
+      i\u015Ftirildi."
   Singul0:
   - bugfix: Syndicate Modsuit AI's now downloads the current codespeak book upon being
       downloaded.
@@ -981,6 +956,9 @@
   - bugfix: Fixed Pride Mirror teleporting you into the space on the first use. Now
       it waits until you officially cancel and say 'I am Done' so you can customize
       yourself to your liking.
+  cko1:
+  - bugfix: "Mesaj balonlar\u0131ndaki T\xFCrk\xE7e karakterler bulan\u0131k g\xF6\
+      z\xFCkmeyecek."
   jlsnow301:
   - rscadd: Netpods and quantum servers now have more examination info
   - bugfix: You no longer lose antag status if you receive it in the vdom.
@@ -1010,6 +988,9 @@
       They should work the same, but please report any issues.
   Sealed101:
   - bugfix: fixed Strong Stone ruin generation
+  Seefaaa:
+  - bugfix: "Brig Physician, Worker, Nt Secretary id trimleri d\xFCzg\xFCn g\xF6z\xFC\
+      kecek."
   Vekter:
   - rscadd: Added a holodeck to Birdshot Station. It can be reached via the Crew Facilities
       hallway.
@@ -1169,6 +1150,9 @@
   Sealed101:
   - bugfix: fixed lobstrosities becoming unmovable when killed during their charge
       windup
+  Seefaaa:
+  - rscdel: "Heretic, Changeling, Traitor, Wizard, Space Ninja, Malf AI iken kendi\
+      \ g\xF6revinizi se\xE7emeyeceksiniz."
   SyncIt21:
   - bugfix: removes incorrect stack traces when using some admin secrets
   Vekter:

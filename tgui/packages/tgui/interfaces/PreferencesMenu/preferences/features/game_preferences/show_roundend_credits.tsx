@@ -1,3 +1,4 @@
+// THIS IS A PSYCHONAUT UI FILE
 import { CheckboxInput, type FeatureToggle } from '../base';
 
 export const show_roundend_credits: FeatureToggle = {

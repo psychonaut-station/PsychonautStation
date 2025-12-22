@@ -1,5 +1,6 @@
 # Tools for working with modern DreamMaker icon files (PNGs + metadata)
 
+import os
 import math
 from PIL import Image
 from PIL.PngImagePlugin import PngInfo
@@ -217,6 +218,20 @@ class State:
     def get_frame(self, *args, **kwargs):
         return self.frames[self._frame_index(*args, **kwargs)]
 
+    # PSYCHONAUT ADDITION BEGIN
+    def to_file(self, path, palette = False):
+        filename = self.name if self.name else "none"
+
+        filepath = os.path.join(path, filename + ".png")
+
+        output = self.frames[0]
+        if palette:
+            output = output.convert('P')
+
+        print(f"{filepath}")
+
+        output.save(filepath, 'png', optimize=True)
+    # PSYCHONAUT ADDITION END
 
 def escape(text):
     text = text.replace('\\', '\\\\')

@@ -69,5 +69,5 @@ export const CATEGORY_ICONS_COOKING = {
   Seafood: 'fish',
   Soups: 'mug-hot',
   Spaghettis: 'wheat-awn',
-  'Turkish Food': 'shapes',
+  'Turkish Food': 'shapes', // PSYCHONAUT ADDITION - FOOD_AND_DRINKS
 } as const;

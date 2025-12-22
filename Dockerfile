@@ -58,6 +58,7 @@ RUN apt-get install -y --no-install-recommends \
         pkg-config:i386 \
         libssl-dev:i386 \
         gcc-multilib \
+        g++-multilib \
         git \
     && git init \
     && git remote add origin https://github.com/tgstation/rust-g

@@ -12,7 +12,7 @@ Engineering fabricatorüne tinyfan ekler
 
 ### Modüler Değişiklikler
 
-- N/A
+- `modular_psychonaut/master_files/icons/obj/mining_zones/survival_pod.dmi`: `fan_tiny_assembly`
 
 ### Definelar ve Helperlar
 

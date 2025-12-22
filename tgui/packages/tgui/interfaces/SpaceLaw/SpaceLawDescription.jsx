@@ -1,5 +1,3 @@
-// @genku
-
 // Title kısmındaki isimler ile Table dosyasındaki
 // isimlerin aynı olmasına dikkat edin.
 

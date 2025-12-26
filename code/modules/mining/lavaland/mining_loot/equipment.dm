@@ -40,9 +40,13 @@
 		to_chat(user, span_warning("The snake carving seems to come alive, if only for a moment, before returning to its dormant state, almost as if it finds you incapable of holding its oath."))
 		return
 	var/mob/living/carbon/itemUser = user
+<<<<<<< HEAD
 	var/usedHand = itemUser.get_held_index_of_item(src)
 	// having both aura heals might be unbalanced so only one can be used at a time by one player
 	if(itemUser.has_status_effect(/datum/status_effect/hippocratic_oath) || itemUser.has_status_effect(/datum/status_effect/clock_rewind))
+=======
+	if(itemUser.has_status_effect(/datum/status_effect/hippocratic_oath))
+>>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 		to_chat(user, span_warning("You can't possibly handle the responsibility of more than one rod!"))
 		return
 
@@ -57,9 +61,12 @@
 		to_chat(itemUser, failText)
 		return
 
-	to_chat(itemUser, span_notice("The snake, satisfied with your oath, attaches itself and the rod to your forearm with an inseparable grip. Your thoughts seem to only revolve around the core idea of helping others, and harm is nothing more than a distant, wicked memory..."))
-	var/datum/status_effect/hippocratic_oath/effect = itemUser.apply_status_effect(/datum/status_effect/hippocratic_oath)
-	effect.hand = usedHand
+	apply_oath(itemUser)
+
+/obj/item/rod_of_asclepius/proc/apply_oath(mob/living/carbon/user)
+	to_chat(user, span_notice("The snake, satisfied with your oath, attaches itself and the rod to your forearm with an inseparable grip. Your thoughts seem to only revolve around the core idea of helping others, and harm is nothing more than a distant, wicked memory..."))
+	var/datum/status_effect/hippocratic_oath/effect = user.apply_status_effect(/datum/status_effect/hippocratic_oath)
+	effect.hand = user.get_held_index_of_item(src)
 	activated()
 
 /obj/item/rod_of_asclepius/proc/activated()

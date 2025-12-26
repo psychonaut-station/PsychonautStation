@@ -168,11 +168,15 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 /datum/heretic_knowledge/living_heart/proc/is_valid_heart(obj/item/organ/new_heart)
 	if(QDELETED(new_heart))
 		return FALSE
+<<<<<<< HEAD
 	if(!new_heart.useable)
 		return FALSE
 	if(new_heart.organ_flags & ORGAN_FAILING)
 		return FALSE
 	if((new_heart.organ_flags & ORGAN_ROBOTIC) && !istype(new_heart, /obj/item/organ/heart/cybernetic/tier2/ipc))
+=======
+	if(new_heart.organ_flags & (ORGAN_UNUSABLE|ORGAN_ROBOTIC|ORGAN_FAILING))
+>>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 		return FALSE
 	return TRUE
 

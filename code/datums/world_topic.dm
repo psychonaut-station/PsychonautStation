@@ -310,3 +310,22 @@
 
 	message_admins(span_adminnotice("Incoming cross-sector newscaster article by [author_key] in channel [channel_name]."))
 	GLOB.news_network.submit_article(msg, author, channel_name)
+
+/datum/world_topic/ckey_character
+	keyword = "ckey_character"
+
+/datum/world_topic/ckey_character/Run(list/input)
+	var/player_ckey = input["player_ckey"]
+	var/character_name = input["character_name"]
+	var/save_path = "data/player_saves/[player_ckey[1]]/[player_ckey]/character_images.json"
+	if(!fexists(save_path))
+		return
+	var/filedata = file2text(save_path)
+	var/list/json = safe_json_decode(filedata)
+	if(isnull(json))
+		return
+
+	if(!json.Find(character_name))
+		return
+
+	return json[character_name]

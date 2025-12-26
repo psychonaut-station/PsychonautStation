@@ -433,6 +433,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Alt Job Titles
 	save_data["alt_job_titles"] = alt_job_titles
 
+	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(save_player_character_icon), parent.ckey, save_data["real_name"], default_slot)
+
 	return TRUE
 
 /datum/preferences/proc/switch_to_slot(new_slot)

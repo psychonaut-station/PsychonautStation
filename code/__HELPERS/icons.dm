@@ -1343,16 +1343,16 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	return appearance
 
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, default_slot = null)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
 	if(!fexists(save_path))
 		return FALSE
 	var/list/tree = json_decode(rustg_file_read(save_path))	// Reading savefile
-	if(isnull(default_slot))
-		default_slot = tree["default_slot"] || 1
-	var/selected_char = tree["character[default_slot]"] || tree["character1"]
+	if(isnull(character_slot))
+		character_slot = tree["default_slot"] || 1
+	var/selected_char = tree["character[character_slot]"] || tree["character1"]
 	if(!selected_char)
 		return FALSE
 

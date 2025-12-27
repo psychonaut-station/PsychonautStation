@@ -18,7 +18,7 @@
 	blocks_emissive = EMISSIVE_BLOCK_GENERIC
 	layer = MOB_LAYER
 	/// The sound this plays on impact.
-	var/hitsound = 'sound/items/weapons/pierce.ogg'
+	var/hitsound
 	/// Sound played when the projectile hits a wall
 	var/hitsound_wall
 
@@ -384,6 +384,10 @@
 
 	if (hitsound)
 		playsound(src, hitsound, vol_by_damage(), TRUE, -1)
+
+	if(!hitsound)
+		var/impact_sound = target?.impact_sound || SFX_BULLET_IMPACT_METAL
+		playsound(src, get_bullet_impact_sfx(impact_sound), vol_by_damage(), TRUE, -1)
 
 	if (!isliving(target))
 		if(impact_effect_type && !hitscan)

@@ -5,10 +5,9 @@
 /mob/living/carbon/get_bodypart(zone)
 	RETURN_TYPE(/obj/item/bodypart)
 
-	if(!zone)
-		zone = BODY_ZONE_CHEST
+	var/target_zone = zone || BODY_ZONE_CHEST
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-		if(bodypart.body_zone == zone)
+		if(bodypart.body_zone == target_zone)
 			return bodypart
 
 ///Returns TRUE/FALSE on whether the mob should have a limb in a given zone, used for species-restrictions.

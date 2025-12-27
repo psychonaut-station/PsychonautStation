@@ -209,15 +209,12 @@
 	design_ids = list(
 		"ci-nutrimentplus",
 		"ci-surgery",
-<<<<<<< HEAD
 		"ci-toolkit-janitor",
 		"ci-toolkit-paramedic",
 		"ci-toolkit-atmospherics",
 		"ci-toolkit-botanic",
-=======
 		"ci-surgery-brain",
 		"ci-toolset",
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

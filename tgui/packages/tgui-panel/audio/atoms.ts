@@ -20,3 +20,17 @@ export const audioAtom = atom((get) => ({
   visible: get(visibleAtom),
   meta: get(metaAtom),
 }));
+
+// ------ Jukebox ----------------------------------------------------------------//
+
+export type JukeboxMeta = Meta & {
+  sourceName: string;
+};
+
+export const jukeboxMetaAtom = atom<Record<string, JukeboxMeta>>({});
+export const jukeboxMutedAtom = atom<string[]>([]);
+
+export const jukeboxAtom = atom((get) => ({
+  meta: get(jukeboxMetaAtom),
+  muted: get(jukeboxMutedAtom),
+}));

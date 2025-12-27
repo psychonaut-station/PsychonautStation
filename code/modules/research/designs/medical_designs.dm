@@ -795,7 +795,6 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 
-<<<<<<< HEAD
 /datum/design/cyberimp_ammo_counter
 	name = "Ammo Counter Implant"
 	desc = "Special inhand implant that transmits the current ammo and energy data straight to the user's arm screen."
@@ -811,7 +810,9 @@
 	build_path = /obj/item/organ/cyberimp/arm/ammo_counter
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_COMBAT
-=======
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
+
 /datum/design/cyberimp_surgery_brain
 	name = "Surgical Processor Implant"
 	desc = "A cybernetic brain implant that provides access to advanced surgeries."
@@ -826,7 +827,6 @@
 	build_path = /obj/item/organ/cyberimp/brain/surgical_processor
 	category = list(
 		RND_CATEGORY_CYBERNETICS + RND_SUBCATEGORY_CYBERNETICS_IMPLANTS_UTILITY
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_MEDICAL
 

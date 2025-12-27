@@ -599,26 +599,6 @@
   - admin: Added a warning for invalid dynamic config weights
   leaKsi:
   - bugfix: Fixed 2 infinite credit exploits.
-<<<<<<< HEAD
-2025-12-20:
-  Aliceee2ch:
-  - bugfix: Mapped missing security spawners in science outpost on TramStation to
-      prevent spawning in walls.
-  - rscadd: Engineering cyborg can now hold conveyor belts and place plastic signs
-      using screwdriver.
-  Fghj240:
-  - balance: Expanded storage modules are now unlocked much earlier
-  - balance: Regular storage modules require 1 complexity instead of 3
-  - spellcheck: Regular storage modules are now called compact storage modules and
-      the expanded ones are just called storage modules.
-  Rengan:
-  - config: "Yanl\u0131\u015F orbit bildirisi gelme ihtimali config ile d\xFCzenlenebiliyor."
-  Ureus:
-  - image: "Crozius Null Rodunun suit storage ve inhand spritelar\u0131n\u0131 d\xFC\
-      zeltir."
-  lelandkemble:
-  - bugfix: Departmental security officers will not spawn in walls
-=======
   lelandkemble:
   - spellcheck: Resolved grammar issues with headwear
   - rscadd: You can soak a rag in a sink
@@ -703,6 +683,11 @@
       attacks deal more damage but slashing or piercing deal less damage
   - balance: Skeletons and Golems are also affected by weapon demolition modifier,
       as well as any mineral type mobs (of which none currently exist)
+  Rengan:
+  - config: "Yanl\u0131\u015F orbit bildirisi gelme ihtimali config ile d\xFCzenlenebiliyor."
+  Ureus:
+  - image: "Crozius Null Rodunun suit storage ve inhand spritelar\u0131n\u0131 d\xFC\
+      zeltir."
 2025-12-21:
   Melbert:
   - rscadd: 'Weather anomalies, in four variants: Rain, snow, sand, and the rare lightning
@@ -809,4 +794,3 @@
   vinylspiders:
   - refactor: simple rotation component has been refactored into an element Please
       report any bugs to github.
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace

@@ -1,6 +1,14 @@
 import { loadStyleSheet } from 'common/assets';
 import { EventBus } from 'tgui-core/eventbus';
-import { playMusic, stopMusic } from '../audio/handlers';
+import {
+  jukeboxDestroy,
+  jukeboxDestroyAll,
+  jukeboxPlayMusic,
+  jukeboxSetVolume,
+  jukeboxStopMusic,
+  playMusic,
+  stopMusic,
+} from '../audio/handlers';
 import { chatMessage } from '../chat/handlers';
 import { pingReply, pingSoft } from '../ping/handlers';
 import {
@@ -16,6 +24,11 @@ const listeners = {
   'asset/mappings': handleLoadAssets,
   'audio/playMusic': playMusic,
   'audio/stopMusic': stopMusic,
+  'audio/jukebox/playMusic': jukeboxPlayMusic,
+  'audio/jukebox/stopMusic': jukeboxStopMusic,
+  'audio/jukebox/setVolume': jukeboxSetVolume,
+  'audio/jukebox/destroy': jukeboxDestroy,
+  'audio/jukebox/destroyAll': jukeboxDestroyAll,
   'chat/message': chatMessage,
   'ping/reply': pingReply,
   'ping/soft': pingSoft,

@@ -5,6 +5,9 @@
  */
 
 import { createLogger } from 'tgui/logging';
+import { store } from '../events/store';
+import { jukeboxMutedAtom } from './atoms';
+import { settingsAtom } from '../settings/atoms';
 
 const logger = createLogger('AudioPlayer');
 
@@ -36,6 +39,7 @@ export class AudioPlayer {
   constructor() {
     this.element = null;
 
+    this.volume = store.get(settingsAtom).adminMusicVolume;
     this.localVolume = 1;
     this.muted = false;
 
@@ -145,6 +149,101 @@ export class AudioPlayer {
   }
 
   onStop(subscriber: () => void): void {
+    this.onStopSubscribers.push(subscriber);
+  }
+}
+
+export class JukeboxPlayer {
+  players: Map<string, AudioPlayer>;
+
+  onPlaySubscribers: (() => void)[];
+  onStopSubscribers: ((jukeboxId: string) => void)[];
+
+  constructor() {
+    this.players = new Map();
+    this.onPlaySubscribers = [];
+    this.onStopSubscribers = [];
+  }
+
+  play(
+    jukeboxId: string,
+    url: string,
+    options: AudioOptions = {},
+    volume: number = 1,
+  ): void {
+    let player = this.players.get(jukeboxId);
+    if (player) {
+      player.play(url, options, volume);
+    } else {
+      player = new AudioPlayer();
+      this.players.set(jukeboxId, player);
+      player.muted = store.get(jukeboxMutedAtom).includes(jukeboxId);
+      player.onPlay(() => {
+        this.onPlaySubscribers.forEach((subscriber) => {
+          subscriber();
+        });
+      });
+      player.onStop(() => {
+        this.onStopSubscribers.forEach((subscriber) => {
+          subscriber(jukeboxId);
+        });
+      });
+      player.play(url, options, volume);
+    }
+  }
+
+  stop(jukeboxId: string): void {
+    this.players.get(jukeboxId)?.stop();
+  }
+
+  setVolume(volume: number): void {
+    this.players.forEach((player) => {
+      player.setVolume(volume);
+    });
+  }
+
+  setLocalVolume(jukeboxId: string, volume: number): void {
+    this.players.get(jukeboxId)?.setLocalVolume(volume);
+  }
+
+  toggleMute(jukeboxId: string): void {
+    this.players.get(jukeboxId)?.toggleMute();
+    store.set(jukeboxMutedAtom, (prev) => {
+      const isMuted = this.isMuted(jukeboxId);
+      if (isMuted) {
+        return [...prev, jukeboxId];
+      } else {
+        return prev.filter((id) => id !== jukeboxId);
+      }
+    });
+  }
+
+  isMuted(jukeboxId: string): boolean {
+    return this.players.get(jukeboxId)?.muted || false;
+  }
+
+  destroy(jukeboxId: string): void {
+    const player = this.players.get(jukeboxId);
+    if (player) {
+      player.stop();
+      player.destroy();
+    }
+    this.players.delete(jukeboxId);
+  }
+
+  destroyAll(): void {
+    this.players.forEach((player) => {
+      player.stop();
+      player.destroy();
+    });
+    this.players.clear();
+  }
+
+  onPlay(subscriber: () => void): void {
+    this.onPlaySubscribers.push(subscriber);
+  }
+
+  onStop(subscriber: (jukeboxId: string) => void): void {
     this.onStopSubscribers.push(subscriber);
   }
 }

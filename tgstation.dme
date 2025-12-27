@@ -6440,9 +6440,7 @@
 #include "code\modules\surgery\bodyparts\species_parts\misc_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\moth_bodyparts.dm"
 #include "code\modules\surgery\bodyparts\species_parts\plasmaman_bodyparts.dm"
-<<<<<<< HEAD
 #include "code\modules\surgery\bodyparts\species_parts\synth_bodyparts.dm"
-=======
 #include "code\modules\surgery\operations\_basic_surgery_state.dm"
 #include "code\modules\surgery\operations\_operation.dm"
 #include "code\modules\surgery\operations\operation_add_limb.dm"
@@ -6476,7 +6474,6 @@
 #include "code\modules\surgery\operations\operation_virus.dm"
 #include "code\modules\surgery\operations\operation_wing_repair.dm"
 #include "code\modules\surgery\operations\operation_zombie.dm"
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 #include "code\modules\surgery\organs\_organ.dm"
 #include "code\modules\surgery\organs\autosurgeon.dm"
 #include "code\modules\surgery\organs\helpers.dm"

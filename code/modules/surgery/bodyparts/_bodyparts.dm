@@ -222,14 +222,10 @@
 	var/list/bodypart_effects
 	/// The cached info about the blood this organ belongs to, set during on_removal()
 	var/list/blood_dna_info
-
-<<<<<<< HEAD
 	/// If this not null name will be adjusted accordingly
 	var/examine_bodypart_id
-=======
 	/// What state is the bodypart in for determining surgery availability
 	VAR_FINAL/surgery_state = NONE
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
 
 /obj/item/bodypart/apply_fantasy_bonuses(bonus)
 	. = ..()
@@ -262,12 +258,6 @@
 	if(IS_ORGANIC_LIMB(src))
 		blood_dna_info = list("Unknown DNA" = get_blood_type(BLOOD_TYPE_O_PLUS))
 
-<<<<<<< HEAD
-	if(examine_bodypart_id)
-		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
-	else
-		name = "[limb_id] [parse_zone(body_zone)]"
-=======
 	var/innate_state = NONE
 	if(!LIMB_HAS_SKIN(src))
 		innate_state |= SKINLESS_SURGERY_STATES
@@ -278,8 +268,11 @@
 	if(innate_state)
 		add_surgical_state(innate_state)
 
-	name = "[limb_id] [parse_zone(body_zone)]"
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
+	if(examine_bodypart_id)
+		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
+	else
+		name = "[limb_id] [parse_zone(body_zone)]"
+
 	update_icon_dropped()
 	refresh_bleed_rate()
 

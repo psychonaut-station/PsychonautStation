@@ -38,11 +38,7 @@ async function main() {
   const bot = new MWBot();
 
   await bot.loginGetEditToken({
-<<<<<<< HEAD
     apiUrl: "https://wiki.ss13.tr/api.php",
-=======
-    apiUrl: "https://wiki.tgstation13.org/api.php",
->>>>>>> 8b5cb8f2ddc13bbc07035fb450816cda59c67ace
     username: USERNAME,
     password: PASSWORD,
   });

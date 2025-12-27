@@ -472,6 +472,10 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	if(!(operation_flags & OPERATION_SELF_OPERABLE) && patient == surgeon && !HAS_TRAIT(surgeon, TRAIT_SELF_SURGERY))
 		return FALSE
 
+	var/obj/item/bodypart/bodypart = patient.get_bodypart(check_zone(operated_zone))
+	if(!isnull(bodypart) && (operation_flags & OPERATION_SELF_OPERABLE) && (bodypart.bodytype & BODYTYPE_IPC))
+		return FALSE
+
 	if(get_tool_quality(tool) <= 0)
 		return FALSE
 

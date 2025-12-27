@@ -1501,17 +1501,11 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 /proc/save_player_character_icon(ckey, character_name, char_index)
 	if(!ckey || is_guest_key(ckey) || !character_name)
 		return FALSE
-	var/list/json
-	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/character_images.json"
-	var/json_file = file(save_path)
-	if(fexists(save_path))
-		var/filedata = file2text(save_path)
-		json = safe_json_decode(filedata)
-	if(isnull(json))
-		json = list()
+	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"
+	var/png_file = file(icon_path)
+	if(fexists(character_name))
+		fdel(png_file)
 
 	var/mutable_appearance/MA = render_offline_appearance(ckey, null, char_index)
 	var/icon/flaticon = get_flat_icon_for_all_directions(MA)
-	json["[character_name]"] = "data:image/png;base64,[icon2base64(flaticon)]"
-	fdel(json_file)
-	WRITE_FILE(json_file, json_encode(json))
+	fcopy(flaticon, icon_path)

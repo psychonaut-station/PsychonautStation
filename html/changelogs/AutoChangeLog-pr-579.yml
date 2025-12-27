@@ -1,0 +1,4 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - rscadd: "Produce Orders Console'ye Green Bell Pepper eklendi."

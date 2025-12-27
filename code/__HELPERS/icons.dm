@@ -1502,10 +1502,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(!ckey || is_guest_key(ckey) || !character_name)
 		return FALSE
 	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"
-	var/png_file = file(icon_path)
-	if(fexists(character_name))
-		fdel(png_file)
 
-	var/mutable_appearance/MA = render_offline_appearance(ckey, null, char_index)
-	var/icon/flaticon = get_flat_icon_for_all_directions(MA)
-	fcopy(flaticon, icon_path)
+	var/mutable_appearance/appearance = render_offline_appearance(ckey, null, char_index)
+	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
+	fcopy(flat_icon, icon_path)

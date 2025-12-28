@@ -1,3 +1,5 @@
+#define TIME_THRESHOLD "time_threshold"
+
 SUBSYSTEM_DEF(events)
 	name = "Events"
 	dependencies = list(
@@ -94,7 +96,30 @@ SUBSYSTEM_DEF(events)
 
 //decides which world.time we should select another random event at.
 /datum/controller/subsystem/events/proc/reschedule()
-	scheduled = world.time + rand(frequency_lower, max(frequency_lower,frequency_upper))
+	var/lower_multiplier
+	var/higher_multiplier
+	if(!isnull(SSstoryteller.current_storyteller))
+		var/list/storyteller_settings
+		var/alist/storyteller_setting
+		storyteller_settings = SSstoryteller.current_storyteller.midround_settings
+
+		var/total_cycle = 0
+		for(var/alist/entry in storyteller_settings)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
+				storyteller_setting = entry
+				break
+
+		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+		lower_multiplier = storyteller_setting[EXECUTION_MULTIPLIER_LOW]
+		higher_multiplier = storyteller_setting[EXECUTION_MULTIPLIER_HIGH]
+	scheduled = world.time + rand(frequency_lower * lower_multiplier, max(frequency_lower * lower_multiplier, frequency_upper * higher_multiplier))
 
 /**
  * Selects a random event based on whether it can occur and its 'weight'(probability)
@@ -112,6 +137,26 @@ SUBSYSTEM_DEF(events)
 
 	var/list/event_roster = list()
 
+	var/list/storyteller_settings
+	var/alist/storyteller_setting
+	if(!isnull(SSstoryteller.current_storyteller))
+		storyteller_settings = SSstoryteller.current_storyteller.midround_settings
+
+		var/total_cycle = 0
+		for(var/alist/entry in storyteller_settings)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
+				storyteller_setting = entry
+				break
+
+		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+
 	for(var/datum/round_event_control/event_to_check in control)
 		if(excluded_event && event_to_check.typepath == excluded_event.typepath) //If an event has been rerolled we won't just roll the same one again.
 			continue
@@ -125,12 +170,18 @@ SUBSYSTEM_DEF(events)
 				return
 		else
 			var/event_weight = event_to_check.weight
-			if(!isnull(SSstoryteller.current_storyteller))
-				event_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[event_to_check.track] || 1
+
+			if(length(storyteller_setting))
+				if(!isnull(storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][event_to_check.track]))
+					event_weight *= storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][event_to_check.track] || 1
+				if(!isnull(storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]))
+					event_weight *= storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]
 				for(var/tag in event_to_check.tags)
-					if(!SSstoryteller.current_storyteller.tag_multipliers.Find(tag))
+					if(!storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]?.Find(tag))
 						continue
-					event_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag]
+					if(!isnull(storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]))
+						event_weight *= storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]
+
 			event_roster[event_to_check] = event_weight
 
 	var/datum/round_event_control/event_to_run = pick_weight(event_roster)
@@ -221,3 +272,5 @@ GLOBAL_LIST(holidays)
 		world.update_status()
 
 	return TRUE
+
+#undef TIME_THRESHOLD

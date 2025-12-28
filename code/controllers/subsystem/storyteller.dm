@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(storyteller)
 	name = "Storyteller"
-	flags = SS_NO_FIRE
+	wait = 30 SECONDS
 	init_stage = INITSTAGE_EARLY
 
 	var/datum/storyteller/current_storyteller
@@ -18,9 +18,16 @@ SUBSYSTEM_DEF(storyteller)
 		load_storyteller(dynamic_config)
 	return SS_INIT_SUCCESS
 
+/datum/controller/subsystem/storyteller/fire(resumed)
+	if(isnull(current_storyteller))
+		return
+	current_storyteller.fire(wait * 0.1)
+
 /datum/controller/subsystem/storyteller/proc/init_storyteller_prototypes(list/dynamic_config)
 	. = list()
 	for(var/datum/storyteller/storyteller_type as anything in subtypesof(/datum/storyteller))
+		if(isnull(storyteller_type::config_tag))
+			continue
 		var/datum/storyteller/storyteller = new storyteller_type(dynamic_config)
 		. += storyteller
 
@@ -67,6 +74,8 @@ SUBSYSTEM_DEF(storyteller)
 	return json_decode(file2text(json_file))
 
 /datum/controller/subsystem/storyteller/proc/post_load_storyteller(selected_by)
+	log_storyteller("Storyteller loading: [current_storyteller.name]")
+	current_storyteller.initialize()
 	log_game("Storyteller loaded: [current_storyteller.name]")
 	log_storyteller("Storyteller loaded: [current_storyteller.name]")
 	log_storyteller("- Selected by: [selected_by]")

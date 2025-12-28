@@ -372,6 +372,9 @@
 /obj/item/radio/intercom/directional/north,
 /turf/open/floor/iron,
 /area/station/engineering/singularity/room)
+"vT" = (
+/turf/open/space/basic,
+/area/space/nearstation)
 "vU" = (
 /obj/machinery/atmospherics/pipe/smart/simple/orange/hidden{
 	dir = 1
@@ -1145,10 +1148,10 @@ hn
 kO
 KS
 KS
-je
-je
-je
-je
+AS
+AS
+Lg
+Lg
 "}
 (11,1,1) = {"
 MT
@@ -1299,7 +1302,7 @@ nM
 nM
 An
 nM
-KS
+vT
 Bc
 An
 An
@@ -1357,7 +1360,7 @@ nM
 nM
 An
 An
-KS
+vT
 bM
 KS
 KS
@@ -1406,7 +1409,7 @@ xy
 An
 wm
 wm
-KS
+vT
 An
 xy
 An
@@ -1681,7 +1684,7 @@ Bc
 Bc
 An
 bM
-KS
+vT
 bM
 je
 je

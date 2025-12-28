@@ -595,3 +595,6 @@
       zeltir."
   lelandkemble:
   - bugfix: Departmental security officers will not spawn in walls
+2025-12-28:
+  Rengan:
+  - rscadd: Produce Orders Console'ye Green Bell Pepper eklendi.

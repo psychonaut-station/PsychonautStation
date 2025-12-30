@@ -222,7 +222,7 @@
 	return sfx?.return_sfx() || soundin
 // This is an atom level variable to prevent extensive typechecking for impacts.
 /atom
-// The sound we make if hit.
+	// The sound we make if hit.
 	var/impact_sound = null
 
 // MOBS

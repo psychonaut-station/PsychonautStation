@@ -382,9 +382,7 @@
 		target_wall.add_dent(WALL_DENT_SHOT, impact_x, impact_y)
 		return BULLET_ACT_HIT
 
-	var/impact_sound = target?.impact_sound
-	if(isnull(impact_sound))
-		impact_sound = hitsound
+	var/impact_sound = target.impact_sound || hitsound
 	if(impact_sound && (isliving(target) || !(isturf(target) && hitsound_wall)))
 		playsound(src, impact_sound, vol_by_damage(), TRUE, -1)
 

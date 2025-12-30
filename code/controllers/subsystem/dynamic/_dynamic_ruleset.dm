@@ -187,6 +187,32 @@
 	if(final_minpop > population_size)
 		return 0
 
+	var/list/storyteller_settings
+	var/alist/storyteller_setting
+	if(!isnull(SSstoryteller.current_storyteller))
+		if(istype(src, /datum/dynamic_ruleset/roundstart))
+			storyteller_setting = SSstoryteller.current_storyteller.roundstart_settings
+		else if (istype(src, /datum/dynamic_ruleset/midround))
+			storyteller_settings = SSstoryteller.current_storyteller.midround_settings
+		else if (istype(src, /datum/dynamic_ruleset/latejoin))
+			storyteller_settings = SSstoryteller.current_storyteller.latejoin_settings
+
+		if(!length(storyteller_setting))
+			var/total_cycle = 0
+			for(var/alist/entry in storyteller_settings)
+				total_cycle += entry[TIME_THRESHOLD]
+			if(!total_cycle)
+				total_cycle = INFINITY
+			var/loop_time = STATION_TIME_PASSED() % total_cycle
+			var/current_checkpoint = 0
+			for(var/alist/entry in storyteller_settings)
+				current_checkpoint += entry[TIME_THRESHOLD]
+				if(loop_time < current_checkpoint)
+					storyteller_setting = entry
+					break
+
+		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+
 	var/final_weight = islist(weight) ? get_tier_specific_value(weight, tier) : weight
 	for(var/datum/dynamic_ruleset/other_ruleset as anything in SSdynamic.executed_rulesets)
 		if(other_ruleset == src)
@@ -199,17 +225,24 @@
 			return 0
 
 		var/weight_decrease = repeatable_weight_decrease
-		if(!isnull(SSstoryteller.current_storyteller))
-			weight_decrease *= SSstoryteller.current_storyteller.event_repetition_multipliers[track] || 1
+		if(length(storyteller_setting))
+			if(islist(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]) && !isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][track]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][track]
+			else if(!isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
 
 		final_weight -= weight_decrease
 
-	if(!isnull(SSstoryteller.current_storyteller))
-		final_weight *= SSstoryteller.current_storyteller.event_weight_multipliers[track] || 1
+	if(length(storyteller_setting))
+		if(!isnull(storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][track]))
+			final_weight *= storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][track]
+		if(!isnull(storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]))
+			final_weight *= storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]
 		for(var/tag in tags)
-			if(!SSstoryteller.current_storyteller.tag_multipliers.Find(tag))
+			if(!storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]?.Find(tag))
 				continue
-			final_weight *= SSstoryteller.current_storyteller.tag_multipliers[tag]
+			if(!isnull(storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]))
+				final_weight *= storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]
 
 	return max(final_weight, 0)
 
@@ -354,6 +387,8 @@
  * Prefer to override assign_role() instead of this proc
  */
 /datum/dynamic_ruleset/proc/execute()
+	if(!isnull(SSstoryteller.current_storyteller))
+		SSstoryteller.current_storyteller.ruleset_execute(src, selected_minds)
 	var/list/execute_args = create_execute_args()
 	for(var/datum/mind/mind as anything in selected_minds)
 		assign_role(arglist(list(mind) + execute_args))

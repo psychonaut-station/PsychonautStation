@@ -190,8 +190,16 @@ SUBSYSTEM_DEF(dynamic)
 		var/high_end = range[HIGH_END] || 0
 
 		if(!isnull(SSstoryteller.current_storyteller))
-			low_end += SSstoryteller.current_storyteller.extra_settings[LOW_END] || 0
-			high_end += SSstoryteller.current_storyteller.extra_settings[HIGH_END] || 0
+			if(islist(SSstoryteller.current_storyteller.settings[LOW_END]))
+				low_end += SSstoryteller.current_storyteller.settings[LOW_END][category] || 0
+			else
+				low_end += SSstoryteller.current_storyteller.settings[LOW_END] || 0
+			if(islist(SSstoryteller.current_storyteller.settings[HIGH_END]))
+				high_end += SSstoryteller.current_storyteller.settings[HIGH_END][category] || 0
+			else
+				high_end += SSstoryteller.current_storyteller.settings[HIGH_END] || 0
+			low_end = max(0, low_end)
+			high_end = max(0, high_end)
 
 		if(population <= (range[HALF_RANGE_POP_THRESHOLD] || 0))
 			high_end = max(low_end, ceil(high_end * 0.25))
@@ -200,6 +208,9 @@ SUBSYSTEM_DEF(dynamic)
 
 		rulesets_to_spawn[category] = rand(low_end, high_end)
 		base_rulesets_to_spawn[category] = rulesets_to_spawn[category]
+
+	if(!isnull(SSstoryteller.current_storyteller))
+		rulesets_to_spawn = SSstoryteller.current_storyteller.set_tier(rulesets_to_spawn)
 
 /// Picks what tier we are going to use for this round and sets up all the corresponding variables and ranges
 /datum/controller/subsystem/dynamic/proc/pick_tier(roundstart_population = 0)
@@ -263,6 +274,10 @@ SUBSYSTEM_DEF(dynamic)
 	if(rulesets_to_spawn[ROUNDSTART] <= 0)
 		return list()
 
+	var/alist/storyteller_setting = alist()
+	if(!isnull(SSstoryteller.current_storyteller))
+		storyteller_setting = SSstoryteller.current_storyteller.roundstart_settings | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+
 	var/list/rulesets_weighted = get_roundstart_rulesets(antag_candidates)
 	var/total_weight = 0
 	for(var/ruleset in rulesets_weighted)
@@ -297,8 +312,11 @@ SUBSYSTEM_DEF(dynamic)
 			continue
 
 		var/weight_decrease = picked_ruleset.repeatable_weight_decrease
-		if(!isnull(SSstoryteller.current_storyteller))
-			weight_decrease *= SSstoryteller.current_storyteller.event_repetition_multipliers[picked_ruleset.track] || 1
+		if(length(storyteller_setting) && storyteller_setting.Find(STORYTELLER_EVENT_REPETITION_MULTIPLIERS))
+			if(islist(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]) && !isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][picked_ruleset.track]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][picked_ruleset.track]
+			else if(!isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
 
 		rulesets_weighted[picked_ruleset] -= weight_decrease
 		total_weight -= weight_decrease
@@ -557,9 +575,33 @@ SUBSYSTEM_DEF(dynamic)
 
 	var/low = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_LOW] || 0
 	var/high = current_tier.ruleset_type_settings[range][EXECUTION_COOLDOWN_HIGH] || 0
+
 	if(!isnull(SSstoryteller.current_storyteller))
-		low *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_LOW] || 1
-		high *= SSstoryteller.current_storyteller.extra_settings[EXECUTION_MULTIPLIER_HIGH] || 1
+		var/list/storyteller_settings
+		var/alist/storyteller_setting
+		if(range == LATEJOIN)
+			storyteller_settings = SSstoryteller.current_storyteller.latejoin_settings
+		else
+			storyteller_settings = SSstoryteller.current_storyteller.midround_settings
+
+		var/total_cycle = 0
+		for(var/alist/entry in storyteller_settings)
+			total_cycle += entry[TIME_THRESHOLD]
+		if(!total_cycle)
+			total_cycle = INFINITY
+		var/loop_time = STATION_TIME_PASSED() % total_cycle
+		var/current_checkpoint = 0
+		for(var/alist/entry in storyteller_settings)
+			current_checkpoint += entry[TIME_THRESHOLD]
+			if(loop_time < current_checkpoint)
+				storyteller_setting = entry
+				break
+
+		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+
+		low *= storyteller_setting[EXECUTION_MULTIPLIER_LOW] || 1
+		high *= storyteller_setting[EXECUTION_MULTIPLIER_HIGH] || 1
+
 	return rand(low, high)
 
 /**
@@ -768,20 +810,109 @@ SUBSYSTEM_DEF(dynamic)
 		data += "welcome_text = \"[storyteller.welcome_text]\"\n"
 		data += "restricted = [storyteller.restricted]\n"
 		data += "weight = [storyteller.weight]\n"
-		data += "population_min = [storyteller.population_min || 0]\n"
-		data += "population_max = [storyteller.population_max || 0]\n"
+		data += "population_min = [storyteller.population_min]\n"
+		data += "population_max = [storyteller.population_max]\n"
 
-		for(var/i in storyteller.event_weight_multipliers)
-			data += "event_weight_multipliers.[i] = [storyteller.event_weight_multipliers[i]]\n"
+		var/list/settings = storyteller.settings
+		if(settings)
+			data += "settings.general_multipliers = [!isnull(settings[STORYTELLER_GENERAL_MULTIPLIERS]) ? settings[STORYTELLER_GENERAL_MULTIPLIERS] : 1]\n"
+			data += "settings.time_threshold = [settings[TIME_THRESHOLD] || 0]\n"
+			data += "settings.execution_multiplier_low = [!isnull(settings[EXECUTION_MULTIPLIER_LOW]) ? settings[EXECUTION_MULTIPLIER_LOW] : 1]\n"
+			data += "settings.execution_multiplier_high = [!isnull(settings[EXECUTION_MULTIPLIER_HIGH]) ? settings[EXECUTION_MULTIPLIER_HIGH] : 1]\n"
 
-		for(var/i in storyteller.extra_settings)
-			data += "extra_settings.[i] = [storyteller.extra_settings[i]]\n"
+			var/list/weight_mults = settings[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS]
+			if(weight_mults)
+				for(var/track in weight_mults)
+					data += "settings.event_weight_multipliers.[track] = [!isnull(weight_mults[track]) ? weight_mults[track] : 1]\n"
 
-		for(var/i in storyteller.event_repetition_multipliers)
-			data += "event_repetition_multipliers.[i] = [storyteller.event_repetition_multipliers[i]]\n"
+			var/list/tag_mults = settings[STORYTELLER_TAG_MULTIPLIERS]
+			if(tag_mults)
+				for(var/tag in tag_mults)
+					data += "settings.tag_multipliers.[tag] = [!isnull(tag_mults[tag]) ? tag_mults[tag] : 1]\n"
 
-		for(var/i in storyteller.tag_multipliers)
-			data += "tag_multipliers.[i] = [storyteller.tag_multipliers[i]]\n"
+			var/list/rep_mults = settings[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
+			if(rep_mults)
+				for(var/track in rep_mults)
+					data += "settings.event_repetition_multipliers.[track] = [!isnull(rep_mults[track]) ? rep_mults[track] : 1]\n"
+
+			var/list/low_ends = settings[LOW_END]
+			if(low_ends)
+				for(var/phase in low_ends)
+					data += "settings.low_end.[phase] = [low_ends[phase] || 0]\n"
+
+			var/list/high_ends = settings[HIGH_END]
+			if(high_ends)
+				for(var/phase in high_ends)
+					data += "settings.high_end.[phase] = [high_ends[phase] || 0]\n"
+
+		var/list/roundstart = storyteller.roundstart_settings
+		if(roundstart)
+			data += "roundstart_settings.general_multipliers = [!isnull(roundstart[STORYTELLER_GENERAL_MULTIPLIERS]) ? roundstart[STORYTELLER_GENERAL_MULTIPLIERS] : 1]\n"
+
+			var/list/roundstart_weights = roundstart[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS]
+			if(roundstart_weights)
+				for(var/track in roundstart_weights)
+					data += "roundstart_settings.event_weight_multipliers.[track] = [!isnull(roundstart_weights[track]) ? roundstart_weights[track] : 1]\n"
+
+			var/list/roundstart_tags = roundstart[STORYTELLER_TAG_MULTIPLIERS]
+			if(roundstart_tags)
+				for(var/tag in roundstart_tags)
+					data += "roundstart_settings.tag_multipliers.[tag] = [!isnull(roundstart_tags[tag]) ? roundstart_tags[tag] : 1]\n"
+
+			var/list/roundstart_reps = roundstart[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
+			if(roundstart_reps)
+				for(var/track in roundstart_reps)
+					data += "roundstart_settings.event_repetition_multipliers.[track] = [!isnull(roundstart_reps[track]) ? roundstart_reps[track] : 1]\n"
+
+		var/list/midround_container = storyteller.midround_settings
+		if(midround_container && midround_container.len)
+			for(var/i in 1 to midround_container.len)
+				var/list/midround = midround_container[i]
+
+				data += "midround_settings.[i].general_multipliers = [!isnull(midround[STORYTELLER_GENERAL_MULTIPLIERS]) ? midround[STORYTELLER_GENERAL_MULTIPLIERS] : 1]\n"
+				data += "midround_settings.[i].time_threshold = [midround[TIME_THRESHOLD] || 0]\n"
+				data += "midround_settings.[i].execution_multiplier_low = [!isnull(midround[EXECUTION_MULTIPLIER_LOW]) ? midround[EXECUTION_MULTIPLIER_LOW] : 1]\n"
+				data += "midround_settings.[i].execution_multiplier_high = [!isnull(midround[EXECUTION_MULTIPLIER_HIGH]) ? midround[EXECUTION_MULTIPLIER_HIGH] : 1]\n"
+
+				var/list/midround_weights = midround[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS]
+				if(midround_weights)
+					for(var/track in midround_weights)
+						data += "midround_settings.[i].event_weight_multipliers.[track] = [!isnull(midround_weights[track]) ? midround_weights[track] : 1]\n"
+
+				var/list/midround_tags = midround[STORYTELLER_TAG_MULTIPLIERS]
+				if(midround_tags)
+					for(var/tag in midround_tags)
+						data += "midround_settings.[i].tag_multipliers.[tag] = [!isnull(midround_tags[tag]) ? midround_tags[tag] : 1]\n"
+
+				var/list/midround_reps = midround[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
+				if(midround_reps)
+					for(var/track in midround_reps)
+						data += "midround_settings.[i].event_repetition_multipliers.[track] = [!isnull(midround_reps[track]) ? midround_reps[track] : 1]\n"
+
+		var/list/latejoin_container = storyteller.latejoin_settings
+		if(latejoin_container && latejoin_container.len)
+			for(var/i in 1 to latejoin_container.len)
+				var/list/latejoin = latejoin_container[i]
+
+				data += "latejoin_settings.[i].general_multipliers = [!isnull(latejoin[STORYTELLER_GENERAL_MULTIPLIERS]) ? latejoin[STORYTELLER_GENERAL_MULTIPLIERS] : 1]\n"
+				data += "latejoin_settings.[i].time_threshold = [latejoin[TIME_THRESHOLD] || 0]\n"
+				data += "latejoin_settings.[i].execution_multiplier_low = [!isnull(latejoin[EXECUTION_MULTIPLIER_LOW]) ? latejoin[EXECUTION_MULTIPLIER_LOW] : 1]\n"
+				data += "latejoin_settings.[i].execution_multiplier_high = [!isnull(latejoin[EXECUTION_MULTIPLIER_HIGH]) ? latejoin[EXECUTION_MULTIPLIER_HIGH] : 1]\n"
+
+				var/list/latejoin_weights = latejoin[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS]
+				if(latejoin_weights)
+					for(var/track in latejoin_weights)
+						data += "latejoin_settings.[i].event_weight_multipliers.[track] = [!isnull(latejoin_weights[track]) ? latejoin_weights[track] : 1]\n"
+
+				var/list/latejoin_tags = latejoin[STORYTELLER_TAG_MULTIPLIERS]
+				if(latejoin_tags)
+					for(var/tag in latejoin_tags)
+						data += "latejoin_settings.[i].tag_multipliers.[tag] = [!isnull(latejoin_tags[tag]) ? latejoin_tags[tag] : 1]\n"
+
+				var/list/latejoin_reps = latejoin[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
+				if(latejoin_reps)
+					for(var/track in latejoin_reps)
+						data += "latejoin_settings.[i].event_repetition_multipliers.[track] = [!isnull(latejoin_reps[track]) ? latejoin_reps[track] : 1]\n"
 		data += "\n"
 		qdel(storyteller)
 

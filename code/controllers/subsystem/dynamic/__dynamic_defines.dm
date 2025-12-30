@@ -22,10 +22,6 @@
 #define EXECUTION_COOLDOWN_LOW "execution_cooldown_low"
 /// Upper end for cooldown duration for a ruleset type
 #define EXECUTION_COOLDOWN_HIGH "execution_cooldown_high"
-/// Lower end for cooldown duration multiplier for storyteller
-#define EXECUTION_MULTIPLIER_LOW "execution_multiplier_low"
-/// Upper end for cooldown duration multiplier for storyteller
-#define EXECUTION_MULTIPLIER_HIGH "execution_multiplier_high"
 
 // Tiers, don't change these randomly
 /// Tier 0, no antags at all

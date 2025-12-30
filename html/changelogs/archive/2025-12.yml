@@ -798,3 +798,18 @@
 2025-12-28:
   Rengan:
   - rscadd: Produce Orders Console'ye Green Bell Pepper eklendi.
+2025-12-30:
+  Ezel:
+  - balance: All protolathes can now print out a expiri science scanner
+  PlasmaRay10:
+  - spellcheck: fixed asthma.dm typo
+  Rengan:
+  - bugfix: "Singularity engine y\xFCklenince supermatterin so\u011Futma blo\u011F\
+      unun silinmemesi d\xFCzeltildi"
+  Sapphoqueer, Seijan_Etroix:
+  - rscadd: Added 4 new bar signs, Pun Pun's Pub, Doctor's Orders, Wrong Turn, and
+      Cold Ones.
+  san7890:
+  - admin: It should now be far easier (as well as be a better experience) for an
+      admin to recall the shuttle regardless of game state (up until the shuttle actually
+      docks, that is).

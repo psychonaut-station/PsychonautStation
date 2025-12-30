@@ -14,8 +14,8 @@
 	Nanotrasen Science Directorate"}
 
 /datum/station_goal/bluespace_tap/on_report()
-	var/datum/supply_pack/engineering/bluespace_tap/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bluespace_tap]
-	P.special_enabled = TRUE
+	var/datum/supply_pack/engineering/bluespace_tap/pack = SSshuttle.supply_packs[/datum/supply_pack/engineering/bluespace_tap]
+	pack.order_flags |= ORDER_SPECIAL_ENABLED
 
 /datum/station_goal/bluespace_tap/check_completion()
 	if(..())

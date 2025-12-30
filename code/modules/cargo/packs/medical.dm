@@ -176,7 +176,7 @@
 				)
 	crate_name = "virus crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS
 
 /datum/supply_pack/medical/cmoturtlenecks
 	name = "Chief Medical Officer Turtlenecks"
@@ -201,7 +201,7 @@
 	cost = CARGO_CRATE_VALUE * 40
 	contains = list(/obj/item/organ/cyberimp/arm/toolkit/mantis = 2)
 	crate_name = "C.H.R.O.M.A.T.A. Mantis Blade implant crate"
-	contraband = TRUE
+	order_flags = ORDER_CONTRABAND
 
 /datum/supply_pack/medical/arm_implants/mantis_shield
 	name = "S.A.Y.A Arm Defense Implant Set"

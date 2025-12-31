@@ -12,6 +12,7 @@
 	custom_materials = list(/datum/material/iron =SHEET_MATERIAL_AMOUNT)
 	layer = OBJ_LAYER
 	interaction_flags_mouse_drop = ALLOW_RESTING
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 	var/buildstacktype = /obj/item/stack/sheet/iron
 	var/buildstackamount = 1
@@ -189,6 +190,7 @@
 	item_chair = /obj/item/chair/wood
 	fishing_modifier = -6
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 3)
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/structure/chair/wood/narsie_act()
 	return

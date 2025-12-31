@@ -15,6 +15,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	interaction_flags_machine = INTERACT_MACHINE_OPEN | INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
 	obj_flags = CAN_BE_HIT
 	use_power = NO_POWER_USE
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 	/// The internal air reservoir of the disposal
 	var/datum/gas_mixture/air_contents

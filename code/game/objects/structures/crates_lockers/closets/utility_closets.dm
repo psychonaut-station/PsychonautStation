@@ -16,6 +16,7 @@
 	name = "emergency closet"
 	desc = "It's a storage unit for emergency breath masks and O2 tanks."
 	icon_state = "emergency"
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 /obj/structure/closet/emcloset/anchored
 	anchored = TRUE
@@ -67,6 +68,7 @@
 	name = "fire-safety closet"
 	desc = "It's a storage unit for fire-fighting supplies."
 	icon_state = "fire"
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 /obj/structure/closet/firecloset/PopulateContents()
 	..()

@@ -13,6 +13,7 @@
 	paint_jobs = null
 	cutting_tool = /obj/item/crowbar
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 6)
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/structure/closet/crate/wooden/toy
 	name = "toy box"

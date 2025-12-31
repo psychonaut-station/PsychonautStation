@@ -29,6 +29,7 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_TABLES
 	canSmoothWith = SMOOTH_GROUP_TABLES
+	impact_sound = SFX_BULLET_IMPACT_METAL
 	var/static/list/turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_TURF_IGNORE_SLIPPERY, TRAIT_IMMERSE_STOPPED)
 	///a bit fucky, I know. but this is needed to get sorted on init smoothing groups stored
 	var/list/on_init_smoothed_vars
@@ -541,6 +542,7 @@
 	max_integrity = 70
 	resistance_flags = ACID_PROOF
 	armor_type = /datum/armor/table_glass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 /datum/armor/table_glass
 	fire = 80
@@ -632,6 +634,7 @@
 	smoothing_groups = SMOOTH_GROUP_WOOD_TABLES //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = SMOOTH_GROUP_WOOD_TABLES
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT)
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/structure/table/wood/after_smash(mob/living/smashed)
 	if(QDELETED(src) || prob(66))
@@ -854,6 +857,7 @@
 	smoothing_groups = SMOOTH_GROUP_BRONZE_TABLES //Don't smooth with SMOOTH_GROUP_TABLES
 	canSmoothWith = SMOOTH_GROUP_BRONZE_TABLES
 	can_flip = FALSE
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 /obj/structure/table/bronze/after_smash(mob/living/pushed_mob)
 	playsound(src, 'sound/effects/magic/clockwork/fellowship_armory.ogg', 50, TRUE)
@@ -867,6 +871,7 @@
 	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT, /datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	buildstack = /obj/item/stack/sheet/rglass
 	max_integrity = 150
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 /obj/structure/table/reinforced/plasmarglass
 	name = "reinforced plasma glass table"
@@ -876,6 +881,7 @@
 	base_icon_state = "rplasmaglass_table"
 	custom_materials = list(/datum/material/alloy/plasmaglass = SHEET_MATERIAL_AMOUNT, /datum/material/iron = SHEET_MATERIAL_AMOUNT)
 	buildstack = /obj/item/stack/sheet/plasmarglass
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 /obj/structure/table/reinforced/titaniumglass
 	name = "titanium glass table"
@@ -886,6 +892,7 @@
 	custom_materials = list(/datum/material/alloy/titaniumglass = SHEET_MATERIAL_AMOUNT)
 	buildstack = /obj/item/stack/sheet/titaniumglass
 	max_integrity = 250
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 /obj/structure/table/reinforced/plastitaniumglass
 	name = "plastitanium glass table"
@@ -896,6 +903,7 @@
 	custom_materials = list(/datum/material/alloy/plastitaniumglass = SHEET_MATERIAL_AMOUNT)
 	buildstack = /obj/item/stack/sheet/plastitaniumglass
 	max_integrity = 300
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 /*
  * Surgery Tables
@@ -915,6 +923,7 @@
 	custom_materials = list(/datum/material/silver = SHEET_MATERIAL_AMOUNT)
 	can_flip = FALSE
 	slam_gently = TRUE
+	impact_sound = SFX_BULLET_IMPACT_METAL
 	/// Mob currently lying on the table
 	var/mob/living/carbon/patient = null
 	/// Operating computer we're linked to, to sync operations from

@@ -214,7 +214,7 @@
 /proc/get_rand_frequency_low_range()
 	return rand(38000, 45000)
 
-///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it
+///Used to convert a SFX define into a .ogg so we can add some variance to sounds. If soundin is already a .ogg, we simply return it.
 /proc/get_sfx(soundin)
 	if(!istext(soundin))
 		return soundin

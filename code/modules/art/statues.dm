@@ -250,6 +250,7 @@
 	max_integrity = 50
 	custom_materials = list(/datum/material/snow=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/snow
+	impact_sound = SFX_BULLET_IMPACT_ICE
 
 /obj/structure/statue/snow/snowman
 	name = "snowman"

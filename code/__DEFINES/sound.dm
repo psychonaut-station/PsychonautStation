@@ -320,6 +320,14 @@ GLOBAL_LIST_EMPTY(sfx_datum_by_key)
 #define SFX_HARD_HAT_PICKUP "hard_hat_pickup"
 #define SFX_HARD_HAT_DROP "hard_hat_drop"
 #define SFX_HARD_HAT_EQUIP "hard_hat_equip"
+#define SFX_BULLET_IMPACT_ICE "bullet_impact_ice"
+#define SFX_BULLET_IMPACT_WOOD "bullet_impact_wood"
+#define SFX_BULLET_IMPACT_METAL "bullet_impact_metal"
+#define SFX_BULLET_IMPACT_GLASS "bullet_impact_glass"
+#define SFX_BULLET_IMPACT_CONCRETE "bullet_impact_concrete"
+#define SFX_BULLET_IMPACT_FLESH "bullet_impact_flesh"
+#define SFX_BULLET_IMPACT_STONE "bullet_impact_stone"
+#define SFX_BULLET_IMPACT_WATER "bullet_impact_water"
 
 // Standard is 44.1khz
 #define MIN_EMOTE_PITCH 40000

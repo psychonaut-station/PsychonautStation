@@ -34,6 +34,7 @@
 	light_range = 6
 	generic_canpass = FALSE
 	hud_possible = list(DIAG_STAT_HUD, DIAG_BATT_HUD, DIAG_MECH_HUD, DIAG_TRACK_HUD, DIAG_CAMERA_HUD)
+	impact_sound = SFX_BULLET_IMPACT_METAL
 	mouse_pointer = 'icons/effects/mouse_pointers/mecha_mouse.dmi'
 	/// Significantly heavier than humans
 	inertia_force_weight = 5

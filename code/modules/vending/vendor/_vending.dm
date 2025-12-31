@@ -52,6 +52,7 @@
 	light_power = 0.7
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 	///Next world time to send a purchase message
 	var/purchase_message_cooldown

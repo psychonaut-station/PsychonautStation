@@ -1532,10 +1532,10 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		return FALSE
 
 	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE)
-	var/character_name = character_data["name"]
-	var/mutable_appearance/appearance = character_data["appearance"]
-	var/job = character_data["job"]
-	if(job == JOB_AI || job == JOB_CYBORG)
+	var/character_name = character_data?["name"]
+	var/mutable_appearance/appearance = character_data?["appearance"]
+	var/job = character_data?["job"]
+	if(isnull(character_name) || isnull(appearance) || job == JOB_AI || job == JOB_CYBORG)
 		return FALSE
 
 	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"

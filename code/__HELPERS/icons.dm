@@ -1531,7 +1531,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(!ckey || is_guest_key(ckey))
 		return FALSE
 
-	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE)
+	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE) || list()
 	var/character_name = character_data?["name"]
 	var/mutable_appearance/appearance = character_data?["appearance"]
 	var/job = character_data?["job"]

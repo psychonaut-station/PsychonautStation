@@ -1343,15 +1343,18 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	return appearance
 
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
 	if(!fexists(save_path))
 		return FALSE
 	var/list/tree = json_decode(rustg_file_read(save_path))	// Reading savefile
-	var/default_slot = tree["default_slot"] || 1
-	var/selected_char = tree["character[default_slot]"] || tree["character1"]
+	if(isnull(character_slot))
+		character_slot = tree["default_slot"] || 1
+	var/selected_char = tree["character[character_slot]"] || tree["character1"]
+	if(!selected_char)
+		return FALSE
 
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
@@ -1485,3 +1488,21 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		icon_cache[job_type] = sechud_icon
 
 	return icon(icon_cache[job_type])
+
+/proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
+	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(thing, defdir = direction, no_anim = no_anim)
+		output.Insert(partial, dir = direction)
+
+	return output
+
+/proc/save_player_character_icon(ckey, character_name, char_index)
+	if(!ckey || is_guest_key(ckey) || !character_name)
+		return FALSE
+	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"
+
+	var/mutable_appearance/appearance = render_offline_appearance(ckey, null, char_index)
+	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
+	fcopy(flat_icon, icon_path)

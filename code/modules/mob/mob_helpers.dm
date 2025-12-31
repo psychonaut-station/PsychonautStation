@@ -13,19 +13,19 @@
 		return BODY_ZONE_CHEST
 	switch(zone)
 		if(BODY_ZONE_PRECISE_EYES)
-			zone = BODY_ZONE_HEAD
+			return BODY_ZONE_HEAD
 		if(BODY_ZONE_PRECISE_MOUTH)
-			zone = BODY_ZONE_HEAD
+			return BODY_ZONE_HEAD
 		if(BODY_ZONE_PRECISE_L_HAND)
-			zone = BODY_ZONE_L_ARM
+			return BODY_ZONE_L_ARM
 		if(BODY_ZONE_PRECISE_R_HAND)
-			zone = BODY_ZONE_R_ARM
+			return BODY_ZONE_R_ARM
 		if(BODY_ZONE_PRECISE_L_FOOT)
-			zone = BODY_ZONE_L_LEG
+			return BODY_ZONE_L_LEG
 		if(BODY_ZONE_PRECISE_R_FOOT)
-			zone = BODY_ZONE_R_LEG
+			return BODY_ZONE_R_LEG
 		if(BODY_ZONE_PRECISE_GROIN)
-			zone = BODY_ZONE_CHEST
+			return BODY_ZONE_CHEST
 	return zone
 
 /**

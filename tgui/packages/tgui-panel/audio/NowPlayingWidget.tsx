@@ -4,35 +4,42 @@
  * @license MIT
  */
 
-import { useDispatch, useSelector } from 'tgui/backend';
+import { useAtomValue } from 'jotai';
 import { Button, Collapsible, Flex, Knob, Section } from 'tgui-core/components';
 import { toFixed } from 'tgui-core/math';
 import { useSettings } from '../settings/use-settings';
-import { selectAudio } from './selectors';
+import { jukeboxAtom, metaAtom, playingAtom } from './atoms';
+import { player, jukeboxPlayer } from './handlers';
 
-export const NowPlayingWidget = (props) => {
+export function NowPlayingWidget(props) {
   const { settings, updateSettings } = useSettings();
-  const audio = useSelector(selectAudio),
-    dispatch = useDispatch(),
-    title = audio.meta?.title,
-    URL = audio.meta?.link,
-    Artist = audio.meta?.artist || 'Unknown Artist',
-    upload_date = audio.meta?.upload_date || 'Unknown Date',
-    album = audio.meta?.album || 'Unknown Album',
-    duration = audio.meta?.duration,
-    date = !Number.isNaN(upload_date)
-      ? upload_date?.substring(0, 4) +
-        '-' +
-        upload_date?.substring(4, 6) +
-        '-' +
-        upload_date?.substring(6, 8)
-      : upload_date;
+  const meta = useAtomValue(metaAtom);
+  const {
+    album = 'Unknown Album',
+    artist = 'Unknown Artist',
+    duration,
+    link,
+    title,
+    upload_date = 'Unknown Data',
+  } = meta || {};
+
+  const playing = useAtomValue(playingAtom);
+
+  const date = !Number.isNaN(upload_date)
+    ? upload_date?.substring(0, 4) +
+      '-' +
+      upload_date?.substring(4, 6) +
+      '-' +
+      upload_date?.substring(6, 8)
+    : upload_date;
+
+  const jukebox = useAtomValue(jukeboxAtom);
 
   return (
     <Flex>
       <Flex.Item grow={1}>
         <Flex direction="column">
-          {audio.playing && (
+          {playing && (
             <Flex.Item>
               <Flex align="center">
                 <Flex.Item
@@ -44,20 +51,20 @@ export const NowPlayingWidget = (props) => {
                     textOverflow: 'ellipsis',
                   }}
                 >
-                  <Collapsible title={title || 'Unknown Track'} color={'blue'}>
+                  <Collapsible title={title || 'Unknown Track'} color="blue">
                     <Section>
-                      {URL !== 'Song Link Hidden' && (
+                      {link !== 'Song Link Hidden' && (
                         <Flex.Item grow={1} color="label">
-                          URL: <a href={URL}>{URL}</a>
+                          URL: <a href={link}>{link}</a>
                         </Flex.Item>
                       )}
                       <Flex.Item grow={1} color="label">
                         Duration: {duration}
                       </Flex.Item>
-                      {Artist !== 'Song Artist Hidden' &&
-                        Artist !== 'Unknown Artist' && (
+                      {artist !== 'Song Artist Hidden' &&
+                        artist !== 'Unknown Artist' && (
                           <Flex.Item grow={1} color="label">
-                            Artist: {Artist}
+                            Artist: {artist}
                           </Flex.Item>
                         )}
                       {album !== 'Song Album Hidden' &&
@@ -79,29 +86,27 @@ export const NowPlayingWidget = (props) => {
                   <Button
                     tooltip="Stop"
                     icon="stop"
-                    onClick={() =>
-                      dispatch({
-                        type: 'audio/stopMusic',
-                      })
-                    }
+                    onClick={() => player.stop()}
                   />
                 </Flex.Item>
               </Flex>
             </Flex.Item>
           )}
-          {Object.keys(audio.jukebox).map((jukeboxId) => {
-            const title = audio.jukebox[jukeboxId]?.title,
-              url = audio.jukebox[jukeboxId]?.link,
-              artist = audio.jukebox[jukeboxId]?.artist,
-              album = audio.jukebox[jukeboxId]?.album,
-              duration = audio.jukebox[jukeboxId]?.duration,
-              source = audio.jukebox[jukeboxId]?.sourceName,
-              muted = audio.muted.includes(jukeboxId);
+          {Object.keys(jukebox.meta).map((jukeboxId) => {
+            const {
+              title,
+              link,
+              artist,
+              album,
+              duration,
+              sourceName: source,
+            } = jukebox.meta[jukeboxId];
+            const muted = jukebox.muted.includes(jukeboxId);
 
             return (
               <Flex.Item key={jukeboxId}>
                 <Flex align="center">
-                  {!!audio.jukebox[jukeboxId] && (
+                  {!!jukebox.meta[jukeboxId] && (
                     <>
                       <Flex.Item
                         mx={0.5}
@@ -115,7 +120,7 @@ export const NowPlayingWidget = (props) => {
                         <Collapsible title={title} color={'blue'}>
                           <Section>
                             <Flex.Item grow={1} color="label">
-                              URL: {url}
+                              URL: {link}
                             </Flex.Item>
                             <Flex.Item grow={1} color="label">
                               Duration: {duration}
@@ -140,24 +145,14 @@ export const NowPlayingWidget = (props) => {
                         <Button
                           tooltip="Stop"
                           icon="stop"
-                          onClick={() =>
-                            dispatch({
-                              type: 'audio/jukebox/stopMusic',
-                              payload: { jukeboxId },
-                            })
-                          }
+                          onClick={() => jukeboxPlayer.stop(jukeboxId)}
                         />
                       </Flex.Item>
                       <Flex.Item mx={0.5} fontSize="0.9em">
                         <Button
                           tooltip={muted ? 'Unmute' : 'Mute'}
                           icon={muted ? 'volume-off' : 'volume-up'}
-                          onClick={() =>
-                            dispatch({
-                              type: 'audio/jukebox/toggleMute',
-                              payload: { jukeboxId },
-                            })
-                          }
+                          onClick={() => jukeboxPlayer.toggleMute(jukeboxId)}
                         />
                       </Flex.Item>
                     </>
@@ -166,8 +161,8 @@ export const NowPlayingWidget = (props) => {
               </Flex.Item>
             );
           })}
-          {!audio.playing &&
-            Object.values(audio.jukebox).filter((i) => !!i).length === 0 && (
+          {!playing &&
+            Object.values(jukebox.meta).filter((i) => !!i).length === 0 && (
               <Flex.Item grow={1} color="label" my={0.5}>
                 Nothing to play.
               </Flex.Item>
@@ -182,13 +177,15 @@ export const NowPlayingWidget = (props) => {
           step={0.0025}
           stepPixelSize={1}
           format={(value) => `${toFixed(value * 100)}%`}
-          onChange={(e, value) =>
+          onChange={(e, value) => {
             updateSettings({
               adminMusicVolume: value,
-            })
-          }
+            });
+            player.setVolume(value);
+            jukeboxPlayer.setVolume(value);
+          }}
         />
       </Flex.Item>
     </Flex>
   );
-};
+}

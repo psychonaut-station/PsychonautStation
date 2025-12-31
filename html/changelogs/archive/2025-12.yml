@@ -813,3 +813,7 @@
   - admin: It should now be far easier (as well as be a better experience) for an
       admin to recall the shuttle regardless of game state (up until the shuttle actually
       docks, that is).
+2025-12-31:
+  Rengan:
+  - refactor: Storyteller reworklandi.
+  - rscadd: "Karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."

@@ -384,3 +384,10 @@
 	contains = list(/obj/item/golfcart_kit = 1, /obj/item/key/golfcart = 2, /obj/item/stock_parts/power_store/cell/lead = 1)
 	crate_name = "golf cart parts kit"
 	crate_type = /obj/structure/closet/crate/engineering
+
+/datum/supply_pack/engineering/anomaly_catcher
+	name = "Anomaly Catcher Crate"
+	desc = "Contains some tools for containing anomalies"
+	cost = CARGO_CRATE_VALUE * 30
+	contains = list(/obj/item/storage/toolbox/guncase/anomaly_catcher = 1)
+	crate_name = "anomaly catcher crate"

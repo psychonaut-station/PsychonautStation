@@ -1,3 +1,5 @@
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
 /atom/movable/warp_effect/singularity
 	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
 	pixel_x = -277
@@ -630,8 +632,6 @@ GLOBAL_LIST_EMPTY(all_singularities)
 /obj/singularity/shuttle_event/no_escape
 	energy = STAGE_SIX_ENERGY
 	consumed_supermatter = TRUE // so we can get to the final stage
-
-#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
 
 /// Singularity spawned by a singularity generator
 /obj/singularity/stationary

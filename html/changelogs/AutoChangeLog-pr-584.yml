@@ -1,0 +1,4 @@
+author: "Rengan"
+delete-after: True
+changes:
+  - bugfix: "Singularity Engine odasında yeri delince uzaya boşluk açılması fixlendi."

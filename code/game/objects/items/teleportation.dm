@@ -365,6 +365,17 @@
 	attempt_teleport(user = user, triggered_by_emp = FALSE)
 	return TRUE
 
+<<<<<<< HEAD
+=======
+/obj/item/syndicate_teleporter/process(seconds_per_tick)
+	if(SPT_PROB(10, seconds_per_tick) && charges < max_charges)
+		charges++
+		if(ishuman(loc))
+			var/mob/living/carbon/human/holder = loc
+			balloon_alert(holder, "teleporter beeps")
+		playsound(src, 'sound/machines/beep/twobeep.ogg', 10, TRUE, extrarange = SILENCED_SOUND_EXTRARANGE, falloff_distance = 0)
+
+>>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 /obj/item/syndicate_teleporter/emp_act(severity)
 	. = ..()
 	if(!prob(50/severity))

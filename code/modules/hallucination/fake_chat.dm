@@ -62,6 +62,7 @@
 	var/chosen = specific_message
 
 	if(is_radio)
+<<<<<<< HEAD
 		if(prob(50))
 			if(SSjob.is_occupation_of(hallucinator.job, DEPARTMENT_BITFLAG_ENGINEERING))
 				radio_channel = FREQ_ENGINEERING
@@ -82,6 +83,10 @@
 		var/list/crewmembers = target_dept || get_crewmember_minds()
 		for(var/datum/mind/crew_mind in shuffle(crewmembers))
 			if(crew_mind == hallucinator.mind)
+=======
+		for(var/datum/mind/crew_mind in shuffle(get_crewmember_minds()))
+			if(crew_mind == hallucinator.mind || !crew_mind.current)
+>>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 				continue
 			var/list/shared_languages = get_hallucinating_spoken_languages(crew_mind.current) & understood_languages
 			if(!length(shared_languages))

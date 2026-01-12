@@ -84,7 +84,7 @@
 		return
 	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
 		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_PHASE)
-		chassis.balloon_alert(owner, "on cooldown...")
+		chassis.balloon_alert(owner, "on cooldown, [DisplayTimeText(time_left, 1)]...")
 		return
 
 	// enable phasing

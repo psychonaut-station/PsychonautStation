@@ -48,15 +48,12 @@
 		return
 	var/new_damtype
 	switch(chassis.damtype)
-		if(TOX)
-			new_damtype = BRUTE
-			chassis.balloon_alert(owner, "your punches will now deal brute damage")
 		if(BRUTE)
 			new_damtype = BURN
 			chassis.balloon_alert(owner, "your punches will now deal burn damage")
 		if(BURN)
-			new_damtype = TOX
-			chassis.balloon_alert(owner,"your punches will now deal toxin damage")
+			new_damtype = BRUTE
+			chassis.balloon_alert(owner, "your punches will now deal brute damage")
 	chassis.damtype = new_damtype
 	button_icon_state = "mech_damtype_[new_damtype]"
 	playsound(chassis, 'sound/vehicles/mecha/mechmove01.ogg', 50, TRUE)
@@ -65,13 +62,34 @@
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing
 	name = "Toggle Phasing"
 	button_icon_state = "mech_phasing_off"
+	var/phase_time = 2 SECONDS
+	var/phase_cooldown_time = 15 SECONDS
+
+// Force stop the phasing ability
+/datum/action/vehicle/sealed/mecha/mech_toggle_phasing/proc/stop_phasing()
+	chassis.phasing = ""
+	button_icon_state = "mech_phasing_off"
+	chassis.balloon_alert(owner, "disabled phasing")
+	build_all_button_icons()
+	if(!TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
+		S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_PHASE, phase_cooldown_time)
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/Trigger(mob/clicker, trigger_flags)
 	if(!..())
 		return
 	if(!chassis || !(owner in chassis.occupants))
 		return
-	chassis.phasing = chassis.phasing ? "" : "phasing"
-	button_icon_state = "mech_phasing_[chassis.phasing ? "on" : "off"]"
-	chassis.balloon_alert(owner, "[chassis.phasing ? "enabled" : "disabled"] phasing")
+	if (chassis.phasing == "phasing")
+		stop_phasing()
+		return
+	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
+		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_PHASE)
+		chassis.balloon_alert(owner, "on cooldown...")
+		return
+
+	// enable phasing
+	chassis.phasing = "phasing"
+	button_icon_state = "mech_phasing_on"
+	chassis.balloon_alert(owner, "enabled phasing")
 	build_all_button_icons()
+	addtimer(CALLBACK(src, PROC_REF(stop_phasing)), phase_time)

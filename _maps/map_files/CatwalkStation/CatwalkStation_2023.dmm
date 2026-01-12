@@ -15646,16 +15646,6 @@
 /obj/item/pen,
 /turf/open/floor/iron/dark/textured_large,
 /area/station/ai/satellite/chamber)
-<<<<<<< HEAD
-"ejc" = (
-/obj/structure/cable,
-/obj/structure/sign/nanotrasen/directional/north,
-/obj/effect/turf_decal/stripes/white/corner{
-	dir = 1
-	},
-/turf/open/floor/iron,
-/area/station/commons/fitness/recreation)
-=======
 "ejb" = (
 /obj/machinery/door/airlock{
 	name = "Abandoned Chapel"
@@ -15664,7 +15654,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/wood,
 /area/station/maintenance/starboard)
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 "ejh" = (
 /obj/effect/turf_decal/stripes/asteroid/corner,
 /obj/effect/spawner/random/engineering/atmospherics_portable,
@@ -29580,29 +29569,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/plating,
 /area/station/maintenance/aft)
-<<<<<<< HEAD
-"hWN" = (
-/obj/structure/cable,
-/obj/effect/landmark/start/hangover,
-/obj/structure/sign/nanotrasen/directional/north,
-/obj/effect/turf_decal/stripes/white/corner{
-	dir = 4
-	},
-/turf/open/floor/iron,
-/area/station/commons/fitness/recreation)
-"hWU" = (
-/obj/effect/decal/cleanable/glitter{
-	color = "ff8080"
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/structure/cable,
-/obj/structure/disposalpipe/segment{
-	dir = 2
-	},
-/turf/open/floor/plating,
-/area/station/maintenance/starboard/aft)
-=======
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 "hXc" = (
 /obj/effect/turf_decal/plaque{
 	icon_state = "L4"

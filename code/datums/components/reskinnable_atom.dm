@@ -207,14 +207,9 @@
 		previous_skin.clear_skin(parent, user)
 
 	if(input_name)
-<<<<<<< HEAD
-		var/datum/atom_skin/reskin_to_apply = GLOB.atom_skins[reskin_options[input_name]]
+		var/datum/atom_skin/reskin_to_apply = atom_skins[reskin_options[input_name]]
 		if(reskin_to_apply.apply(parent) == FALSE)
 			return FALSE
-=======
-		var/datum/atom_skin/reskin_to_apply = atom_skins[reskin_options[input_name]]
-		reskin_to_apply.apply(parent, user)
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 
 	current_skin = input_name
 
@@ -269,13 +264,9 @@
 	if(!pick || !items[pick])
 		return
 
-<<<<<<< HEAD
-	if(set_skin_by_name(pick) == FALSE)
+	if(set_skin_by_name(pick, usr) == FALSE)
 		return
 
-=======
-	set_skin_by_name(pick, user)
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 	to_chat(user, span_info("[parent] is now skinned as '[pick].'"))
 
 	if(!infinite_reskin)

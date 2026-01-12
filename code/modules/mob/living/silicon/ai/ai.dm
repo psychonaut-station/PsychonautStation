@@ -176,17 +176,6 @@
 	var/selected_display_name
 
 /mob/living/silicon/ai/proc/set_core_display_icon(input, client/C)
-<<<<<<< HEAD
-	if(client && !C)
-		C = client
-	if(!input && !C?.prefs?.read_preference(/datum/preference/choiced/ai_core_display))
-		icon_state = initial(icon_state)
-		icon = initial(icon)
-	else
-		var/preferred_icon = input ? input : C.prefs.read_preference(/datum/preference/choiced/ai_core_display)
-		icon_state = resolve_ai_icon(preferred_icon)
-		icon = GLOB.ai_core_display_screen_icons[preferred_icon] || initial(icon)
-=======
 	var/preferred_choice
 	if(input)
 		preferred_choice = input
@@ -202,7 +191,6 @@
 	if(istype(loc, /obj/item/aicard))
 		var/obj/item/aicard/card = loc
 		card.update_appearance()
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 
 /// Apply an AI's hologram preference
 /mob/living/silicon/ai/proc/apply_pref_hologram_display(client/player_client)

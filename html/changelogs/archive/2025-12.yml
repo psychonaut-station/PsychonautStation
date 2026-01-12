@@ -794,27 +794,11 @@
   vinylspiders:
   - refactor: simple rotation component has been refactored into an element Please
       report any bugs to github.
-<<<<<<< HEAD
-  - bugfix: Departmental security officers will not spawn in walls
-2025-12-28:
-  Rengan:
-  - rscadd: Produce Orders Console'ye Green Bell Pepper eklendi.
-2025-12-30:
-=======
 2025-12-27:
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
   Ezel:
   - balance: All protolathes can now print out a expiri science scanner
   PlasmaRay10:
   - spellcheck: fixed asthma.dm typo
-<<<<<<< HEAD
-  Rengan:
-  - bugfix: "Singularity engine y\xFCklenince supermatterin so\u011Futma blo\u011F\
-      unun silinmemesi d\xFCzeltildi"
-  Sapphoqueer, Seijan_Etroix:
-  - rscadd: Added 4 new bar signs, Pun Pun's Pub, Doctor's Orders, Wrong Turn, and
-      Cold Ones.
-=======
   Sapphoqueer, Seijan_Etroix:
   - rscadd: Added 4 new bar signs, Pun Pun's Pub, Doctor's Orders, Wrong Turn, and
       Cold Ones.
@@ -823,22 +807,17 @@
       them function slightly faster
   lelandkemble:
   - balance: The BSA now always requires its full power cost paid in order to fire
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
   san7890:
   - admin: It should now be far easier (as well as be a better experience) for an
       admin to recall the shuttle regardless of game state (up until the shuttle actually
       docks, that is).
-<<<<<<< HEAD
-2025-12-31:
-  Rengan:
-  - refactor: Storyteller reworklandi.
-  - rscadd: "Karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."
-=======
 2025-12-28:
   Jacquerel:
   - rscadd: Escaped bitrunning glitches will visually distort when interacted with
   - bugfix: Escaped bitrunning glitches will not stick around as holographic corpses
       after they die
+  Rengan:
+  - rscadd: Produce Orders Console'ye Green Bell Pepper eklendi.
 2025-12-29:
   Aliceee2ch:
   - map: Moved bar sign on Catwalk's kitchen.
@@ -900,6 +879,9 @@
   - bugfix: fixes a pushed crate not removing on_climbable trait properly off the
       mob standing atop it
   - bugfix: fixes tablesmashing onto platforms
+  Rengan:
+  - bugfix: "Singularity engine y\xFCklenince supermatterin so\u011Futma blo\u011F\
+      unun silinmemesi d\xFCzeltildi"
 2025-12-31:
   ElGitificador:
   - spellcheck: fixed typo in syndol description.
@@ -918,4 +900,6 @@
       fish price evaluation system.
   necromanceranne:
   - bugfix: Batons respect chest armor specifically once again.
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
+  Rengan:
+  - refactor: Storyteller reworklandi.
+  - rscadd: "Karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."

@@ -222,10 +222,8 @@
 	var/list/bodypart_effects
 	/// The cached info about the blood this organ belongs to, set during on_removal()
 	var/list/blood_dna_info
-<<<<<<< HEAD
 	/// If this not null name will be adjusted accordingly
 	var/examine_bodypart_id
-=======
 	/// What items we drop whenever we're butchered
 	/// If unset, the bodyparot cannot be butchered
 	var/list/butcher_drops = null
@@ -235,7 +233,6 @@
 	var/base_meat_amount = 1
 	/// Init cache for our butcher drops for sanic speed
 	var/static/list/butcher_drop_cache = list()
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 	/// What state is the bodypart in for determining surgery availability
 	VAR_FINAL/surgery_state = NONE
 
@@ -280,20 +277,16 @@
 	if(innate_state)
 		add_surgical_state(innate_state)
 
-<<<<<<< HEAD
 	if(examine_bodypart_id)
 		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
 	else
 		name = "[limb_id] [parse_zone(body_zone)]"
 
-=======
-	name = "[limb_id] [parse_zone(body_zone)]"
 	// There's a lot of bodyparts in the world, and we don't need to have separate drops on each and every one of them
 	var/list/drop_results = get_butcher_drops()
 	if (length(drop_results))
 		butcher_drops = string_list(drop_results)
 		butcher_drop_cache[type] = butcher_drops
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 	update_icon_dropped()
 	refresh_bleed_rate()
 

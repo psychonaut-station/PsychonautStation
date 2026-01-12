@@ -197,9 +197,7 @@ function JobRow(props: JobRowProps) {
   const alt_titles = [...(job.alt_titles || [])];
   if (!alt_titles.includes(name)) alt_titles.push(name);
 
-  let selectedAltTitle = data.job_alt_titles[name]
-    ? data.job_alt_titles[name]
-    : name;
+  const selectedAltTitle = data.job_alt_titles[name] || name;
 
   let rightSide: ReactNode;
 

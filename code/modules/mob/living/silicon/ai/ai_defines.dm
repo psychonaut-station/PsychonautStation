@@ -42,6 +42,7 @@
 	VAR_FINAL/last_announcement = ""
 	/// AI core icon_state selected by the AI through [verb/pick_icon]
 	var/display_icon_override
+	var/display_icon_icon_override
 
 
 	/* ROBOTS */

@@ -409,6 +409,7 @@
 		exit_the_zone()
 
 /obj/item/organ/cyberimp/chest/sandevistan/on_life(seconds_per_tick)
+	. = ..()
 	if(!active)
 		return
 	active_for += seconds_per_tick
@@ -530,7 +531,8 @@
 
 
 /obj/item/organ/cyberimp/chest/chemvat/on_life()
-		//Cost of refilling is a little bit of nutrition, some blood and getting jittery
+	. = ..()
+	//Cost of refilling is a little bit of nutrition, some blood and getting jittery
 	if(owner.nutrition > NUTRITION_LEVEL_STARVING && owner.blood_volume > BLOOD_VOLUME_SURVIVE && current_ticks_cooldown > 0)
 
 		owner.nutrition -= 5

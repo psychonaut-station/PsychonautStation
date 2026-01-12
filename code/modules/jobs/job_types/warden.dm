@@ -71,13 +71,7 @@
 	id_trim = /datum/id_trim/job/warden
 	uniform = /obj/item/clothing/under/rank/security/warden
 	suit = /obj/item/clothing/suit/armor/vest/warden/alt
-<<<<<<< HEAD
-	backpack_contents = list(
-		/obj/item/evidencebag = 1,
-		)
-=======
 	suit_store = /obj/item/gun/energy/disabler
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1
 	belt = /obj/item/modular_computer/pda/warden
 	ears = /obj/item/radio/headset/headset_sec/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses

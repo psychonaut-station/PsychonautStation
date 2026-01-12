@@ -1,10 +1,3 @@
-<<<<<<< HEAD
-2026-01-07:
-  Rengan:
-  - bugfix: "Singularity Engine odas\u0131nda yeri delince uzaya bo\u015Fluk a\xE7\
-      \u0131lmas\u0131 fixlendi."
-  - rscdel: "Singularity engine odas\u0131 kald\u0131r\u0131ld\u0131."
-=======
 2026-01-01:
   Jacquerel:
   - bugfix: AI shell deployment verb no longer requires you to select yourself from
@@ -234,6 +227,10 @@
   loganuk:
   - map: CATWALK - Mega list of tweaks and changes, review the Pull Request for all
       of them
+  Rengan:
+  - bugfix: "Singularity Engine odas\u0131nda yeri delince uzaya bo\u015Fluk a\xE7\
+      \u0131lmas\u0131 fixlendi."
+  - rscdel: "Singularity engine odas\u0131 kald\u0131r\u0131ld\u0131."
 2026-01-08:
   Arceniu:
   - bugfix: ert commander card properly appear in game, no longer overriding basetype
@@ -266,4 +263,3 @@
   - bugfix: Fixed airlock responses while carrying another mob
   - bugfix: Airlock checks for all possible permits before delaying
   - bugfix: Throwing items at unrestricted airlocks opens them
->>>>>>> ed4914831275c5b12e5ea20b9697d3d8f6dd67b1

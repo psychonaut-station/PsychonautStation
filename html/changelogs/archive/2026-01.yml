@@ -3,3 +3,6 @@
   - bugfix: "Singularity Engine odas\u0131nda yeri delince uzaya bo\u015Fluk a\xE7\
       \u0131lmas\u0131 fixlendi."
   - rscdel: "Singularity engine odas\u0131 kald\u0131r\u0131ld\u0131."
+2026-01-13:
+  exdal:
+  - bugfix: LOOC ozelligini artik sadece conscious olanlar kullanabilecek

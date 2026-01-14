@@ -263,3 +263,9 @@
   - bugfix: Fixed airlock responses while carrying another mob
   - bugfix: Airlock checks for all possible permits before delaying
   - bugfix: Throwing items at unrestricted airlocks opens them
+2026-01-13:
+  exdal:
+  - bugfix: LOOC ozelligini artik sadece conscious olanlar kullanabilecek
+2026-01-14:
+  carmingenium:
+  - image: modified righthand tespih animation

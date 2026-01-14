@@ -2,7 +2,7 @@
 	name = "AI"
 	real_name = "AI"
 	icon = 'icons/mob/silicon/ai.dmi'
-	icon_state = "ai"
+	icon_state = "ai-core"
 	move_resist = MOVE_FORCE_OVERPOWERING
 	density = TRUE
 	status_flags = CANSTUN|CANPUSH
@@ -42,6 +42,7 @@
 	VAR_FINAL/last_announcement = ""
 	/// AI core icon_state selected by the AI through [verb/pick_icon]
 	var/display_icon_override
+	var/display_icon_icon_override
 
 
 	/* ROBOTS */

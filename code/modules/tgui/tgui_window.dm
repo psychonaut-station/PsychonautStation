@@ -385,7 +385,7 @@
 		if("payloadChunk")
 			var/payload_id = payload["id"]
 			append_payload_chunk(payload_id, payload["chunk"])
-			send_message("acknowlegePayloadChunk", list("id" = payload_id))
+			send_message("acknowledgePayloadChunk", list("id" = payload_id))
 
 /**
  * public

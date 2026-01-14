@@ -1,6 +1,6 @@
 import { sortBy } from 'es-toolkit';
 import { filter } from 'es-toolkit/compat';
-import { ReactNode, useState } from 'react';
+import { type ReactNode, useState } from 'react';
 import {
   Box,
   Button,
@@ -10,7 +10,7 @@ import {
   Stack,
 } from 'tgui-core/components';
 import { toFixed } from 'tgui-core/math';
-import { BooleanLike } from 'tgui-core/react';
+import type { BooleanLike } from 'tgui-core/react';
 import { capitalizeAll } from 'tgui-core/string';
 
 import { getGasFromPath } from '../constants';
@@ -77,7 +77,7 @@ const EntryData = (props: EntryProps) => {
       <Stack.Item>
         <Stack align="center">
           <Stack.Item color="grey" width="125px">
-            {title + ':'}
+            {`${title}:`}
           </Stack.Item>
           <Stack.Item grow>{content}</Stack.Item>
         </Stack>
@@ -92,7 +92,7 @@ const EntryData = (props: EntryProps) => {
       <Stack.Item>
         <Stack align="center">
           <Stack.Item color="grey" width="125px">
-            {title + ':'}
+            {`${title}:`}
           </Stack.Item>
           <Stack.Item grow>{content}</Stack.Item>
           <Stack.Item>
@@ -137,7 +137,7 @@ export const SingularityContent = (props: SingularityProps) => {
         <Section
           fill
           scrollable
-          title={id + '. ' + capitalizeAll(name)}
+          title={`${id}. ${capitalizeAll(name)}`}
           buttons={sectionButton}
         >
           <Stack vertical>
@@ -184,7 +184,7 @@ export const SingularityContent = (props: SingularityProps) => {
             />
             <EntryData
               title="Radiation Pulse"
-              content={radiation_pulse + ' R'}
+              content={`${radiation_pulse} R`}
             />
           </Stack>
         </Section>
@@ -226,7 +226,7 @@ export const TeslaContent = (props: TeslaProps) => {
         <Section
           fill
           scrollable
-          title={id + '. ' + capitalizeAll(name)}
+          title={`${id}. ${capitalizeAll(name)}`}
           buttons={sectionButton}
         >
           <Stack vertical>
@@ -287,7 +287,7 @@ export const TeslaContent = (props: TeslaProps) => {
                     bad: [1800, Infinity],
                   }}
                 >
-                  {toFixed(gas_total_moles, 2) + ' Moles'}
+                  {`${toFixed(gas_total_moles, 2)} Moles`}
                 </ProgressBar>
               }
             />
@@ -299,13 +299,13 @@ export const TeslaContent = (props: TeslaProps) => {
                   minValue={0}
                   maxValue={logScale(10000)}
                 >
-                  {toFixed(gas_temperature, 2) + ' K'}
+                  {`${toFixed(gas_temperature, 2)} K`}
                 </ProgressBar>
               }
             />
             <EntryData
               title="Absorption Ratio"
-              content={absorbed_ratio * 100 + '%'}
+              content={`${absorbed_ratio * 100}%`}
             />
           </Stack>
         </Section>
@@ -336,7 +336,7 @@ export const TeslaContent = (props: TeslaProps) => {
                     minValue={0}
                     maxValue={1}
                   >
-                    {toFixed(amount * 100, 2) + '%'}
+                    {`${toFixed(amount * 100, 2)}%`}
                   </ProgressBar>
                 }
                 detail={
@@ -366,7 +366,7 @@ export const TeslaContent = (props: TeslaProps) => {
                                     }
                                   >
                                     {effect.amount > 0
-                                      ? '+' + effect.amount + effect.unit
+                                      ? `+${effect.amount}${effect.unit}`
                                       : effect.amount + effect.unit}
                                   </LabeledList.Item>
                                 ),

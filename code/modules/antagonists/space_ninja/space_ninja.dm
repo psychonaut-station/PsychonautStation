@@ -9,7 +9,7 @@
 	antag_moodlet = /datum/mood_event/focused
 	suicide_cry = "FOR THE SPIDER CLAN!!"
 	preview_outfit = /datum/outfit/ninja_preview
-	can_assign_self_objectives = FALSE
+	can_assign_self_objectives = TRUE
 	ui_name = "AntagInfoNinja"
 	default_custom_objective = "Destroy vital station infrastructure, without being seen."
 	///Whether or not this ninja will obtain objectives

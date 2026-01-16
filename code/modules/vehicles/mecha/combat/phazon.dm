@@ -67,9 +67,11 @@
 
 // Force stop the phasing ability
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/proc/stop_phasing()
+	if(chassis.phasing == "phasing")
+		chassis.balloon_alert(owner, "disabled phasing")
+
 	chassis.phasing = ""
 	button_icon_state = "mech_phasing_off"
-	chassis.balloon_alert(owner, "disabled phasing")
 	build_all_button_icons()
 	if(!TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
 		S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_PHASE, phase_cooldown_time)

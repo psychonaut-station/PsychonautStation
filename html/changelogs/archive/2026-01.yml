@@ -279,3 +279,6 @@
   lelandkemble:
   - bugfix: Disposal pipe previews within the RPD ui will now be correct
   - map: Icebox science now requires science access to enter
+2026-01-16:
+  exdal:
+  - bugfix: heretic artik ascend olabilecek

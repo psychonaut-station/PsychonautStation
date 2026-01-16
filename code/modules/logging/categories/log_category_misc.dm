@@ -69,5 +69,11 @@
 /datum/log_category/cave_generation
 	category = LOG_CATEGORY_CAVE_GENERATION
 
+<<<<<<< HEAD
 /datum/log_category/storyteller
 	category = LOG_CATEGORY_STORYTELLER
+=======
+/datum/log_category/fishing
+	category = LOG_CATEGORY_FISHING
+	config_flag = /datum/config_entry/flag/fishing
+>>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8

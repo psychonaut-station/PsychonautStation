@@ -50,7 +50,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	if (soft_filter_result)
 		if(tgui_alert(usr,"Your message contains \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\". \"[soft_filter_result[CHAT_FILTER_INDEX_REASON]]\", Are you sure you want to say it?", "Soft Blocked Word", list("Yes", "No")) != "Yes")
 			return
-		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
+		message_admins("[ADMIN_LOOKUPFLW(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[html_encode(msg)]\"")
 		log_admin_private("[key_name(usr)] has passed the soft filter for \"[soft_filter_result[CHAT_FILTER_INDEX_WORD]]\" they may be using a disallowed term. Message: \"[msg]\"")
 
 	if(!msg)
@@ -192,8 +192,8 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 		return
 
 	var/admin = check_rights(R_ADMIN, FALSE)
-	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use LOOC."))
+	if(mob.stat != CONSCIOUS && !admin)
+		to_chat(src, span_warning("You must be concious to use LOOC."))
 		return
 
 	msg = trim(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))

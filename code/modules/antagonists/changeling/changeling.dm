@@ -11,7 +11,7 @@
 	hijack_speed = 0.5
 	ui_name = "AntagInfoChangeling"
 	suicide_cry = "FOR THE HIVE!!"
-	can_assign_self_objectives = FALSE
+	can_assign_self_objectives = TRUE
 	default_custom_objective = "Consume the station's most valuable genomes."
 	hardcore_random_bonus = TRUE
 	stinger_sound = 'sound/music/antag/ling_alert.ogg'
@@ -264,7 +264,7 @@
  * Signal proc for [COMSIG_LIVING_LIFE].
  * Handles regenerating chemicals on life ticks.
  */
-/datum/antagonist/changeling/proc/on_life(datum/source, seconds_per_tick, times_fired)
+/datum/antagonist/changeling/proc/on_life(datum/source, seconds_per_tick)
 	SIGNAL_HANDLER
 
 	var/delta_time = DELTA_WORLD_TIME(SSmobs)

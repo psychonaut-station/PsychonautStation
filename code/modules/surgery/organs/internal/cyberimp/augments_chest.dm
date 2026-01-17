@@ -14,7 +14,9 @@
 	var/poison_amount = 5
 	slot = ORGAN_SLOT_STOMACH_AID
 
-/obj/item/organ/cyberimp/chest/nutriment/on_life(seconds_per_tick, times_fired)
+/obj/item/organ/cyberimp/chest/nutriment/on_life(seconds_per_tick)
+	. = ..()
+
 	if(synthesizing)
 		return
 
@@ -55,12 +57,14 @@
 	COOLDOWN_DECLARE(reviver_cooldown)
 	COOLDOWN_DECLARE(defib_cooldown)
 
-/obj/item/organ/cyberimp/chest/reviver/on_death(seconds_per_tick, times_fired)
+/obj/item/organ/cyberimp/chest/reviver/on_death(seconds_per_tick)
 	if(isnull(owner)) // owner can be null, on_death() gets called by /obj/item/organ/process() for decay
 		return
 	try_heal() // Allows implant to work even on dead people
 
-/obj/item/organ/cyberimp/chest/reviver/on_life(seconds_per_tick, times_fired)
+/obj/item/organ/cyberimp/chest/reviver/on_life(seconds_per_tick)
+	. = ..()
+
 	try_heal()
 
 /obj/item/organ/cyberimp/chest/reviver/proc/try_heal()
@@ -405,6 +409,7 @@
 		exit_the_zone()
 
 /obj/item/organ/cyberimp/chest/sandevistan/on_life(seconds_per_tick)
+	. = ..()
 	if(!active)
 		return
 	active_for += seconds_per_tick
@@ -526,7 +531,8 @@
 
 
 /obj/item/organ/cyberimp/chest/chemvat/on_life()
-		//Cost of refilling is a little bit of nutrition, some blood and getting jittery
+	. = ..()
+	//Cost of refilling is a little bit of nutrition, some blood and getting jittery
 	if(owner.nutrition > NUTRITION_LEVEL_STARVING && owner.blood_volume > BLOOD_VOLUME_SURVIVE && current_ticks_cooldown > 0)
 
 		owner.nutrition -= 5

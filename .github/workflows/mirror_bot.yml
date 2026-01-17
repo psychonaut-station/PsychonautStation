@@ -3,14 +3,14 @@ name: Mirror bot
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 14 * * 5'
+    - cron: "0 14 * * 5"
 
 permissions:
   contents: write
   pull-requests: write
 
 env:
-  pr_title: '[MDB IGNORE] [IDB IGNORE] Upstream mirror'
+  pr_title: "[MDB IGNORE] [IDB IGNORE] Upstream mirror"
   pr_body: This is an automated pull request to merge the latest changes from the upstream repository.
   pr_branch: mirror
   pr_label: mirror
@@ -18,7 +18,14 @@ env:
   upstream_branch: master
   commiter_name: psychonaut-ci[bot]
   commiter_email: 181007896+psychonaut-ci[bot]@users.noreply.github.com
-  tracked_files: SQL/database_changelog.md,config/,tools/tgs_scripts/,tools/autowiki/,tools/test_merge_bot/,tools/UpdatePaths,dependencies.sh
+  tracked_files: |-
+    SQL/database_changelog.md
+    dependencies.sh
+    config/
+    tools/tgs_scripts/
+    tools/autowiki/
+    tools/test_merge_bot/
+    tools/UpdatePaths/
 
 jobs:
   mirror:
@@ -37,7 +44,7 @@ jobs:
         run: |
           $files = [System.Collections.ArrayList]@()
 
-          foreach ($_ in $Env:tracked_files -split ",") {
+          foreach ($_ in $Env:tracked_files -split "`r?`n|`r") {
             if ($_.EndsWith("/")) {
               if ((git rev-list --count HEAD..FETCH_HEAD -- $_) -ne 0) {
                 foreach ($_ in (git diff --name-only FETCH_HEAD -- $_)) {

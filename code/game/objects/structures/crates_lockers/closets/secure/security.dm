@@ -54,6 +54,7 @@
 /obj/structure/closet/secure_closet/hos/PopulateContents()
 	..()
 
+	new /obj/item/melee/baton/security/stunsword/loaded(src)
 	new /obj/item/disk/computer/command/hos(src)
 	new /obj/item/radio/headset/heads/hos(src)
 	new /obj/item/radio/headset/heads/hos/alt(src)

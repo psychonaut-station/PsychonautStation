@@ -801,7 +801,8 @@
 	return
 
 /obj/item/melee/baton/security/stunsword/loaded
-	preload_cell_type = /obj/item/stock_parts/power_store/cell/bluespace // 40% stun_armour_penetration
+	preload_cell_type = /obj/item/stock_parts/power_store/cell/high
+	force = 20
 
 //Makeshift stun baton. Replacement for stun gloves.
 /obj/item/melee/baton/security/cattleprod

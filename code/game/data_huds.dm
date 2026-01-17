@@ -514,7 +514,6 @@ Diagnostic HUDs!
 	SET_PLANE(holder,ABOVE_LIGHTING_PLANE,src)
 	set_hud_image_active(MALF_APC_HUD)
 
-<<<<<<< HEAD
 /*~~~~~~~~~~~~~~~~~~~
 	HUMAN SPECIES!
 ~~~~~~~~~~~~~~~~~~~~~*/
@@ -533,7 +532,7 @@ Diagnostic HUDs!
 	holder.pixel_y = I.Height() - world.icon_size
 	if(holder.pixel_x != 23)
 		holder.pixel_x = 23
-=======
+
 /*~~~~~~~~~~~~
 	BLOOD FOR THE BLOOD GOD!!!
 ~~~~~~~~~~~~~*/
@@ -541,7 +540,6 @@ Diagnostic HUDs!
 /mob/living/proc/blood_hud_set_status()
 	if (CAN_HAVE_BLOOD(src))
 		set_hud_image_state(BLOOD_HUD, round_blood_for_hud(src))
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 
 #define CACHED_WIDTH_INDEX "width"
 #define CACHED_HEIGHT_INDEX "height"

@@ -263,17 +263,7 @@
   - bugfix: Fixed airlock responses while carrying another mob
   - bugfix: Airlock checks for all possible permits before delaying
   - bugfix: Throwing items at unrestricted airlocks opens them
-<<<<<<< HEAD
-2026-01-13:
-  exdal:
-  - bugfix: LOOC ozelligini artik sadece conscious olanlar kullanabilecek
-2026-01-14:
-  carmingenium:
-  - image: modified righthand tespih animation
-2026-01-15:
-=======
 2026-01-10:
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
   Jacquerel:
   - rscadd: If you kill yourself with a spear you will impale your head on that spear.
   Melbert:
@@ -283,11 +273,6 @@
   lelandkemble:
   - bugfix: Disposal pipe previews within the RPD ui will now be correct
   - map: Icebox science now requires science access to enter
-<<<<<<< HEAD
-2026-01-16:
-  exdal:
-  - bugfix: heretic artik ascend olabilecek
-=======
 2026-01-11:
   Cirrial:
   - map: Fixed the access requirements of the telecomms door in Catwalk.
@@ -349,6 +334,8 @@
   SmArtKar:
   - rscadd: Made lizard skin and lizardskin items inherit their "donor's" skin color
 2026-01-13:
+  carmingenium:
+  - image: modified righthand tespih animation
   KingkumaArt:
   - bugfix: Giantslayer spear now does intended damage to mining mobs.
   Melbert:
@@ -392,6 +379,8 @@
   san7890:
   - bugfix: Killing Blood Drunk Miner normally should no longer give you a crusher
       achievement.
+  exdal:
+  - bugfix: LOOC ozelligini artik sadece conscious olanlar kullanabilecek
 2026-01-15:
   ElGitificador:
   - bugfix: fixed bear suit not hiding hands
@@ -417,6 +406,8 @@
       and require access to place the order.
   - rscadd: Departmental Order may explicitly bypass access restrictions if placed
       using an agent ID.
+  exdal:
+  - bugfix: heretic artik ascend olabilecek
   Jacquerel:
   - rscadd: You can now also load stunprods into ballistas, make sure you turn them
       on first though
@@ -457,4 +448,3 @@
   - map: CATWALK - Security expanded
   - map: CATWALK - AI Sat fortified similar to Meta and other maps
   - map: CATWALK - See full change log in PR
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8

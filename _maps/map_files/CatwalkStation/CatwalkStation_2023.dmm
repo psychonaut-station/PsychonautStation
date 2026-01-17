@@ -38649,13 +38649,6 @@
 /obj/machinery/light/floor,
 /turf/open/floor/iron/dark/smooth_large,
 /area/station/hallway/secondary/entry)
-<<<<<<< HEAD
-"kqI" = (
-/obj/machinery/photocopier/prebuilt,
-/turf/open/floor/glass,
-/area/station/security/brig)
-=======
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 "kqR" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/cable,

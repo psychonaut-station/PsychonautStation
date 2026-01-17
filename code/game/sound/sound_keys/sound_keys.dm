@@ -1137,7 +1137,6 @@
 		'sound/items/hard_hat/hard_hat_equip3.ogg',
 	)
 
-<<<<<<< HEAD
 /datum/sound_effect/bullet_impact_metal
 	key = SFX_BULLET_IMPACT_METAL
 	file_paths = list(
@@ -1232,11 +1231,11 @@
 		'sound/_psychonaut/impact_glass_08.ogg',
 		'sound/_psychonaut/impact_glass_09.ogg',
 		'sound/_psychonaut/impact_glass_10.ogg',
-=======
+	)
+
 /datum/sound_effect/alien_spit_acid
 	key = SFX_ALIEN_SPIT_ACID
 	file_paths = list(
 		'sound/effects/alien/alien_spitacid.ogg',
 		'sound/effects/alien/alien_spitacid2.ogg'
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 	)

@@ -2630,12 +2630,7 @@
 #include "code\game\objects\items\pinpointer.dm"
 #include "code\game\objects\items\pitchfork.dm"
 #include "code\game\objects\items\plushes.dm"
-<<<<<<< HEAD
-#include "code\game\objects\items\pneumatic_cannon.dm"
 #include "code\game\objects\items\pokerchip.dm"
-#include "code\game\objects\items\powerfist.dm"
-=======
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 #include "code\game\objects\items\puzzle_pieces.dm"
 #include "code\game\objects\items\religion.dm"
 #include "code\game\objects\items\rollertable_dock.dm"
@@ -2652,12 +2647,7 @@
 #include "code\game\objects\items\tail_pin.dm"
 #include "code\game\objects\items\taster.dm"
 #include "code\game\objects\items\teleportation.dm"
-<<<<<<< HEAD
 #include "code\game\objects\items\tespih.dm"
-#include "code\game\objects\items\theft_tools.dm"
-#include "code\game\objects\items\tongs.dm"
-=======
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 #include "code\game\objects\items\toy_mechs.dm"
 #include "code\game\objects\items\toys.dm"
 #include "code\game\objects\items\trash.dm"

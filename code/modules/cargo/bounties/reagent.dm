@@ -98,33 +98,6 @@
 
 /datum/bounty/reagent/complex_drink/New()
 	// Don't worry about making this comprehensive. It doesn't matter if some drinks are skipped.
-<<<<<<< HEAD
-	var/static/list/possible_reagents = list(\
-		/datum/reagent/consumable/ethanol/atomicbomb,\
-		/datum/reagent/consumable/ethanol/bacchus_blessing,\
-		/datum/reagent/consumable/ethanol/bastion_bourbon,\
-		/datum/reagent/consumable/ethanol/booger,\
-		/datum/reagent/consumable/ethanol/hippies_delight,\
-		/datum/reagent/consumable/ethanol/drunkenblumpkin,\
-		/datum/reagent/consumable/ethanol/fetching_fizz,\
-		/datum/reagent/consumable/ethanol/goldschlager,\
-		/datum/reagent/consumable/ethanol/raki,\
-		/datum/reagent/consumable/ethanol/manhattan_proj,\
-		/datum/reagent/consumable/ethanol/narsour,\
-		/datum/reagent/consumable/ethanol/neurotoxin,\
-		/datum/reagent/consumable/ethanol/patron,\
-		/datum/reagent/consumable/ethanol/quadruple_sec,\
-		/datum/reagent/consumable/bluecherryshake,\
-		/datum/reagent/consumable/doctor_delight,\
-		/datum/reagent/consumable/ethanol/silencer,\
-		/datum/reagent/consumable/ethanol/peppermint_patty,\
-		/datum/reagent/consumable/ethanol/aloe,\
-		/datum/reagent/consumable/pumpkin_latte,\
-		/datum/reagent/consumable/ethanol/ramos_gin_fizz,\
-		/datum/reagent/consumable/ethanol/sangria,\
-		/datum/reagent/consumable/ethanol/tizirian_sour,\
-		/datum/chemical_reaction/drink/suffering_bastard)
-=======
 	var/list/possible_reagents = list(
 		/datum/reagent/consumable/ethanol/atomicbomb,
 		/datum/reagent/consumable/ethanol/bacchus_blessing,
@@ -134,6 +107,7 @@
 		/datum/reagent/consumable/ethanol/drunkenblumpkin,
 		/datum/reagent/consumable/ethanol/fetching_fizz,
 		/datum/reagent/consumable/ethanol/goldschlager,
+		/datum/reagent/consumable/ethanol/raki,
 		/datum/reagent/consumable/ethanol/manhattan_proj,
 		/datum/reagent/consumable/ethanol/narsour,
 		/datum/reagent/consumable/ethanol/neurotoxin,
@@ -150,7 +124,6 @@
 		/datum/reagent/consumable/ethanol/tizirian_sour,
 		/datum/chemical_reaction/drink/suffering_bastard,
 	)
->>>>>>> 876530476a071dd2a54bd2ad0d6b2398f6df5cd8
 
 	var/reagent_type = pick(possible_reagents)
 	wanted_reagent = new reagent_type

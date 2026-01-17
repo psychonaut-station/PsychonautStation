@@ -71,3 +71,7 @@
 
 /datum/log_category/storyteller
 	category = LOG_CATEGORY_STORYTELLER
+
+/datum/log_category/fishing
+	category = LOG_CATEGORY_FISHING
+	config_flag = /datum/config_entry/flag/fishing

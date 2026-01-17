@@ -1232,3 +1232,10 @@
 		'sound/_psychonaut/impact_glass_09.ogg',
 		'sound/_psychonaut/impact_glass_10.ogg',
 	)
+
+/datum/sound_effect/alien_spit_acid
+	key = SFX_ALIEN_SPIT_ACID
+	file_paths = list(
+		'sound/effects/alien/alien_spitacid.ogg',
+		'sound/effects/alien/alien_spitacid2.ogg'
+	)

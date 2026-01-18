@@ -1,5 +1,0 @@
-author: "exdal"
-delete-after: True
-changes:
-  - balance: "phazonun phase ozelliginde artik cooldown var (2 saniye aktif, 15 saniye cooldown)"
-  - balance: "phazonun zirhina vurmak artik toxin vurmayacak"

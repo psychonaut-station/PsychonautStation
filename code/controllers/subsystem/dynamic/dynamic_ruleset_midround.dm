@@ -488,6 +488,8 @@
 	min_antag_cap = 1
 	max_antag_cap = 2
 	signup_atom_appearance = /mob/living/basic/blood_worm/juvenile
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_TEAM_ANTAG, TAG_ALIEN)
 
 /datum/dynamic_ruleset/midround/from_ghosts/blood_worms/can_be_selected()
 	return ..() && length(find_vent_spawns()) > 0

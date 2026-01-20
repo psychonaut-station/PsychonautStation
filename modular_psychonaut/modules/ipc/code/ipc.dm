@@ -63,7 +63,7 @@
 	SIGNAL_HANDLER
 	to_chat(source, span_notice("You have no mouth!"))
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
-	return COMSIG_CARBON_BLOCK_EAT
+	return BLOCK_EAT_ATTEMPT
 
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()

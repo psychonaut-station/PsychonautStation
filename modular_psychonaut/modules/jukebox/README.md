@@ -13,10 +13,11 @@ Oyuna youtube'dan müzik oynatabilen bir jukebox ekler.
 - `code/modules/admin/verbs/playsound.dm`: `/proc/web_sound()`
 - `code/modules/client/client_procs.dm`: `/client/verb/stop_client_sounds()`
 - `config/config.txt`: `REQUEST_INTERNET_ALLOWED`, `YTDL_COOKIES`
-- `tgui/packages/tgui-panel/audio/middleware.js`
-- `tgui/packages/tgui-panel/audio/NowPlayingWidget.jsx`
-- `tgui/packages/tgui-panel/audio/player.js`
-- `tgui/packages/tgui-panel/audio/reducer.ts`
+- `tgui/packages/tgui-panel/audio/atoms.ts`
+- `tgui/packages/tgui-panel/audio/handlers.ts`
+- `tgui/packages/tgui-panel/audio/NowPlayingWidget.tsx`
+- `tgui/packages/tgui-panel/audio/player.ts`
+- `tgui/packages/tgui-panel/events/listeners.ts`
 
 ### Modüler Değişiklikler
 

@@ -168,16 +168,10 @@ GLOBAL_LIST_INIT(heretic_start_knowledge, initialize_starting_knowledge())
 /datum/heretic_knowledge/living_heart/proc/is_valid_heart(obj/item/organ/new_heart)
 	if(QDELETED(new_heart))
 		return FALSE
-	if(!new_heart.useable)
-		return FALSE
-	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
-	// if(new_heart.organ_flags & (ORGAN_ROBOTIC|ORGAN_FAILING))
-	// 	return FALSE
-	if(new_heart.organ_flags & ORGAN_FAILING)
+	if(new_heart.organ_flags & (ORGAN_UNUSABLE|ORGAN_FAILING))
 		return FALSE
 	if((new_heart.organ_flags & ORGAN_ROBOTIC) && !istype(new_heart, /obj/item/organ/heart/cybernetic/tier2/ipc))
 		return FALSE
-	// PSYCHONAUT EDIT ADDITION END - IPC
 	return TRUE
 
 /**

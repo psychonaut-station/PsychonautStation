@@ -12,7 +12,7 @@
 
 /obj/machinery/pokerchip_exchanger/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 
 /obj/machinery/pokerchip_exchanger/on_set_is_operational(old_value)
 	. = ..()

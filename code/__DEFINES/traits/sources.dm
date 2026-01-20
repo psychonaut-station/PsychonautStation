@@ -30,6 +30,8 @@
 #define PERSONALITY_TRAIT "personality_trait"
 /// (B)admins only.
 #define ADMIN_TRAIT "admin"
+/// Traits that were granted via modify_traits in vv or the mass_modify_traits verb
+#define TRAIT_ADMIN_GRANTED "adminabuse"
 /// Any traits given through a smite.
 #define SMITE_TRAIT "smite"
 #define CHANGELING_TRAIT "changeling"
@@ -327,3 +329,18 @@
 
 /// Permanent trait from an overdose effect
 #define OVERDOSE_TRAIT "overdose"
+
+/// Trait from a blood worm being in a host
+#define BLOOD_WORM_HOST_TRAIT "blood_worm_host_trait"
+
+/// Trait from being under a door via [/datum/component/slide_under_doors]
+#define UNDER_DOOR_TRAIT "under_door_trait"
+
+/// Trait gained from bioware surgeries
+#define BIOWARE_TRAIT "bioware"
+
+/// Trait gained from skeleton "limbs", such as husking from a butchered chest
+#define SKELETON_TRAIT "skeleton"
+
+/// Trait gained by a guardian who is recalled
+#define GUARDIAN_RECALLED "guardian_recalled"

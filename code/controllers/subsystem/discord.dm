@@ -158,7 +158,7 @@ SUBSYSTEM_DEF(discord)
 	while(not_unique)
 		//Column is varchar 100, so we trim just in case someone does us the dirty later
 		// PSYCHONAUT EDIT ADDITION BEGIN - ACCOUNT_LINK - Original:
-		// one_time_token = trim("[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]-[pick(GLOB.most_common_words)]", 100)
+		// one_time_token = trim("[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]-[pick(GLOB.most_common_words_alphabetical)]", 100)
 		one_time_token = "[random_code(3)]-[random_code(3)]"
 		// PSYCHONAUT EDIT ADDITION END - ACCOUNT_LINK
 

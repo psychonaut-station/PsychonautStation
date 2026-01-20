@@ -4,12 +4,19 @@
 
 /mob/living/carbon/get_bodypart(zone)
 	RETURN_TYPE(/obj/item/bodypart)
-
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	/*
 	if(!zone)
 		zone = BODY_ZONE_CHEST
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(bodypart.body_zone == zone)
 			return bodypart
+	*/
+	var/target_zone = zone || BODY_ZONE_CHEST
+	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
+		if(bodypart.body_zone == target_zone)
+			return bodypart
+	// PSYCHONAUT EDIT ADDITION END
 
 ///Returns TRUE/FALSE on whether the mob should have a limb in a given zone, used for species-restrictions.
 /mob/living/carbon/proc/should_have_limb(zone)

@@ -3,8 +3,7 @@
 	description = "Coordinate security personnel, ensure they are not corrupt, \
 		make sure every department is protected."
 	auto_deadmin_role_flags = DEADMIN_POSITION_HEAD|DEADMIN_POSITION_SECURITY
-	department_head = list(JOB_CAPTAIN)
-	head_announce = list(RADIO_CHANNEL_SECURITY)
+	head_announce = RADIO_CHANNEL_SECURITY
 	faction = FACTION_STATION
 	total_positions = 1
 	spawn_positions = 1
@@ -41,13 +40,26 @@
 
 	voice_of_god_power = 1.4 //Command staff has authority
 
-
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
 	// PSYCHONAUT EDIT ADDITION BEGIN - LOCALIZATION - Original:
 	// return "Due to staffing shortages, newly promoted Acting Captain [captain.real_name] on deck!"
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
+/datum/job/head_of_security/after_spawn(mob/living/spawned, client/player_client)
+	. = ..()
+	if(!ishuman(spawned) || !prob(PIG_COP_PROBABILITY))
+		return
+	var/mob/living/carbon/human/piggy = spawned
+	for (var/obj/item/bodypart/ham as anything in piggy.bodyparts)
+		// These are string lists
+		ham.butcher_drops = ham.butcher_drops.Copy()
+		for (var/meat_type in ham.butcher_drops)
+			if (!ispath(meat_type, /obj/item/food/meat/slab))
+				continue
+			ham.butcher_drops[/obj/item/food/meat/slab/pig] = ham.butcher_drops[meat_type]
+			ham.butcher_drops -= meat_type
+		ham.butcher_drops = string_list(ham.butcher_drops)
 
 /datum/outfit/job/hos
 	name = "Head of Security"

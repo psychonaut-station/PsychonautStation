@@ -62,7 +62,11 @@
 				in your character loadout: [real_path || "null"]. \
 				It has been removed, as you are not a patron."))
 			continue
+
 		// PSYCHONAUT ADDITION END - PATREON
+		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+		if(loadout_item.is_disabled())
+			continue // this just falls off silently
 
 		// Set into sanitize list using converted path key
 		var/list/data = passed_list[path]

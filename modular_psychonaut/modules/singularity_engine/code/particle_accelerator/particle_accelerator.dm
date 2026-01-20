@@ -173,7 +173,7 @@
 
 /obj/machinery/particle_accelerator/end_cap/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 
 /obj/machinery/particle_accelerator/power_box
 	name = "Particle Focusing EM Lens"
@@ -184,7 +184,7 @@
 
 /obj/machinery/particle_accelerator/power_box/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 
 /obj/machinery/particle_accelerator/fuel_chamber
 	name = "EM Acceleration Chamber"
@@ -195,7 +195,7 @@
 
 /obj/machinery/particle_accelerator/fuel_chamber/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 
 #define CENTER "center"
 #define RIGHT "right"
@@ -211,7 +211,7 @@
 
 /obj/machinery/particle_accelerator/particle_emitter/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 
 /obj/machinery/particle_accelerator/particle_emitter/multitool_act(mob/living/user, obj/item/tool)
 	if(construction_state != PA_CONSTRUCTION_UNSECURED)

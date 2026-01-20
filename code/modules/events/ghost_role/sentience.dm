@@ -61,7 +61,7 @@ GLOBAL_LIST_INIT(high_priority_sentience, typecacheof(list(
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
 /datum/round_event/ghost_role/sentience/spawn_role()
-	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, alert_pic = /obj/item/slimepotion/slime/sentience, role_name_text = role_name)
+	var/list/mob/dead/observer/candidates = SSpolling.poll_ghost_candidates(check_jobban = ROLE_SENTIENCE, role = ROLE_SENTIENCE, alert_pic = /obj/item/slimepotion/sentience, role_name_text = role_name)
 	if(!length(candidates))
 		return NOT_ENOUGH_PLAYERS
 

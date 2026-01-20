@@ -6,8 +6,8 @@
 	icon_state = "human_basic"
 	appearance_flags = KEEP_TOGETHER|TILE_BOUND|PIXEL_SCALE|LONG_GLIDE
 	// PSYCHONAUT EDIT ADDITION BEGIN - IPC - Original:
-	// hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,FAN_HUD)
-	hud_possible = list(HEALTH_HUD,STATUS_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,FAN_HUD,DIAG_BATT_HUD)
+	// hud_possible = list(HEALTH_HUD,STATUS_HUD,BLOOD_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,FAN_HUD)
+	hud_possible = list(HEALTH_HUD,STATUS_HUD,BLOOD_HUD,ID_HUD,WANTED_HUD,IMPLOYAL_HUD,IMPSEC_FIRST_HUD,IMPSEC_SECOND_HUD,ANTAG_HUD,GLAND_HUD,FAN_HUD,DIAG_BATT_HUD)
 	// PSYCHONAUT EDIT ADDITION END - IPC
 	hud_type = /datum/hud/human
 	pressure_resistance = 25
@@ -24,15 +24,9 @@
 	var/hairstyle = "Bald"
 
 	///Colours used for hair and facial hair gradients.
-	var/list/grad_color = list(
-		COLOR_BLACK,	//Hair Gradient Color
-		COLOR_BLACK,	//Facial Hair Gradient Color
-	)
+	var/list/grad_color
 	///Styles used for hair and facial hair gradients.
-	var/list/grad_style = list(
-		"None",	//Hair Gradient Style
-		"None",	//Facial Hair Gradient Style
-	)
+	var/list/grad_style
 
 	//Facial hair colour and style
 	var/facial_hair_color = COLOR_BLACK

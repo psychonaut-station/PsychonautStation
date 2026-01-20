@@ -216,7 +216,7 @@ GLOBAL_LIST_INIT(any_suit_storage, typecacheof(list(
 	/obj/item/radio,
 	/obj/item/storage/bag/books,
 	/obj/item/storage/fancy/cigarettes,
-	/obj/item/tank/jetpack/oxygen/captain,
+	/obj/item/tank/jetpack/captain,
 	/obj/item/stack/spacecash,
 	/obj/item/storage/wallet,
 	/obj/item/folder,
@@ -224,7 +224,8 @@ GLOBAL_LIST_INIT(any_suit_storage, typecacheof(list(
 	/obj/item/cigarette,
 	/obj/item/gun/energy/laser/bluetag,
 	/obj/item/gun/energy/laser/redtag,
-	/obj/item/storage/belt/holster
+	/obj/item/storage/belt/holster,
+	/obj/item/storage/belt/sheath
 )))
 
 //Allowed equipment lists for security vests.

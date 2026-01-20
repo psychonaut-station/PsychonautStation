@@ -38,5 +38,5 @@
 		return
 	// PSYCHONAUT ADDITION END - IPC
 
-	if(user && get_dist(get_turf(source), get_turf(user)) <= 1)
+	if(user && flash_strength > 0 && get_dist(get_turf(source), get_turf(user)) <= 1)
 		user.flash_act(max(flash_strength,1))

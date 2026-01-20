@@ -41,7 +41,7 @@
 
 	register_item_context()
 	update_appearance()
-	AddComponent(/datum/component/adjust_fishing_difficulty, -3, ITEM_SLOT_HANDS)
+	AddElement(/datum/element/adjust_fishing_difficulty, -3, ITEM_SLOT_HANDS)
 
 /obj/item/fish_analyzer/Destroy()
 	scanned_object = null
@@ -72,37 +72,30 @@
 	if(target != scanned_object)
 		unregister_scanned()
 		register_scanned(target)
-	update_static_data_for_all_viewers()
 	ui_interact(user)
 	return ITEM_INTERACT_SUCCESS
 
 /obj/item/fish_analyzer/proc/register_scanned(atom/target)
 	scanned_object = target
 	RegisterSignal(target, COMSIG_QDELETING, PROC_REF(on_target_deleted))
-	if(HAS_TRAIT(target, TRAIT_IS_AQUARIUM))
-		RegisterSignals(target, list(COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_EXITED), PROC_REF(aquarium_update))
 
 /obj/item/fish_analyzer/proc/unregister_scanned()
 	if(!scanned_object)
 		return
-	UnregisterSignal(scanned_object, list(COMSIG_QDELETING, COMSIG_ATOM_ENTERED, COMSIG_ATOM_AFTER_SUCCESSFUL_INITIALIZED_ON, COMSIG_ATOM_EXITED))
+	UnregisterSignal(scanned_object, COMSIG_QDELETING)
 	scanned_object = null
 
 /obj/item/fish_analyzer/proc/on_target_deleted()
 	SIGNAL_HANDLER
 	unregister_scanned()
 
-/obj/item/fish_analyzer/proc/aquarium_update()
-	SIGNAL_HANDLER
-	//update static data on the next tick. to give time to offsprings to properly inherit the parents' traits and all.
-	addtimer(CALLBACK(src, TYPE_PROC_REF(/datum, update_static_data_for_all_viewers)), 0)
-
-/obj/item/fish_analyzer/ui_interact(mob/user, datum/tgui/ui)
+/obj/item/fish_analyzer/ui_interact(mob/living/user, datum/tgui/ui)
 	if(isnull(scanned_object))
 		balloon_alert(user, "no specimen data!")
 		return TRUE
-	if(!(scanned_object in view(7, get_turf(src))))
+	if(istype(user) && !(scanned_object in (view(7, get_turf(src)) | user.get_equipped_items(INCLUDE_HELD))))
 		balloon_alert(user, "specimen data lost!")
+		unregister_scanned()
 		return TRUE
 
 	ui = SStgui.try_update_ui(user, src, ui)
@@ -110,32 +103,22 @@
 		ui = new(user, src, "FishAnalyzer")
 		ui.open()
 
-/obj/item/fish_analyzer/ui_status(mob/user, datum/ui_state/state)
-	if(!scanned_object || !(scanned_object in view(7, get_turf(src))))
+/obj/item/fish_analyzer/ui_status(mob/living/user, datum/ui_state/state)
+	if(!istype(user)) //observers shouldn't disrupt things.
+		return ..()
+	if(!scanned_object || !(scanned_object in (view(7, get_turf(src)) | user.get_equipped_items(INCLUDE_HELD))))
 		balloon_alert(user, "specimen data lost!")
 		unregister_scanned()
 		return UI_CLOSE
 	return ..()
 
-/obj/item/fish_analyzer/ui_static_data(mob/user)
+/obj/item/fish_analyzer/ui_data(mob/user)
 	var/list/data = list()
 	data["fish_list"] = list()
 	data["fish_scanned"] = FALSE
 
 	if(isfish(scanned_object))
 		data["fish_scanned"] = TRUE
-		return extract_static_fish_info(data, scanned_object)
-
-	for(var/obj/item/fish/fishie in scanned_object)
-		extract_static_fish_info(data, fishie)
-
-	return data
-
-/obj/item/fish_analyzer/ui_data(mob/user)
-	var/list/data = list()
-	data["fish_list"] = list()
-
-	if(isfish(scanned_object))
 		return extract_fish_info(data, scanned_object)
 
 	for(var/obj/item/fish/fishie in scanned_object)
@@ -143,7 +126,7 @@
 
 	return data
 
-/obj/item/fish_analyzer/proc/extract_static_fish_info(list/data, obj/item/fish/fishie)
+/obj/item/fish_analyzer/proc/extract_fish_info(list/data, obj/item/fish/fishie)
 	var/list/fish_traits = list()
 	var/list/fish_evolutions = list()
 
@@ -175,12 +158,6 @@
 		"fish_traits" = fish_traits,
 		"fish_evolutions" = fish_evolutions,
 		"fish_suitable_temp" = fishie.fish_flags & FISH_FLAG_SAFE_TEMPERATURE,
-	))
-
-	return data
-
-/obj/item/fish_analyzer/proc/extract_fish_info(list/data, obj/item/fish/fishie)
-	data["fish_list"] += list(list(
 		"fish_health" = fishie.status == FISH_DEAD ? 0 : PERCENT(fishie.get_health_percentage()),
 		"fish_size" = fishie.size,
 		"fish_weight" = fishie.weight,

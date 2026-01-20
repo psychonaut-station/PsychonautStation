@@ -5,6 +5,9 @@
  */
 
 import { createLogger } from 'tgui/logging';
+import { store } from '../events/store';
+import { jukeboxMutedAtom } from './atoms';
+import { settingsAtom } from '../settings/atoms';
 
 const logger = createLogger('AudioPlayer');
 
@@ -27,8 +30,8 @@ export class AudioPlayer {
   element: HTMLAudioElement | null;
   options: AudioOptions;
   volume: number;
-  localVolume: number; // PSYCHONAUT ADDITION - JUKEBOX
-  muted: boolean; // PSYCHONAUT ADDITION - JUKEBOX
+  localVolume: number;
+  muted: boolean;
 
   onPlaySubscribers: (() => void)[];
   onStopSubscribers: (() => void)[];
@@ -36,8 +39,9 @@ export class AudioPlayer {
   constructor() {
     this.element = null;
 
-    this.localVolume = 1; // PSYCHONAUT ADDITION - JUKEBOX
-    this.muted = false; // PSYCHONAUT ADDITION - JUKEBOX
+    this.volume = store.get(settingsAtom).adminMusicVolume;
+    this.localVolume = 1;
+    this.muted = false;
 
     this.onPlaySubscribers = [];
     this.onStopSubscribers = [];
@@ -46,16 +50,14 @@ export class AudioPlayer {
   destroy(): void {
     this.element = null;
   }
-  // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
-  // play(url: string, options: AudioOptions = {}): void {
+
   play(url: string, options: AudioOptions = {}, volume: number = 1): void {
-  // PSYCHONAUT EDIT ADDITION END - JUKEBOX
     if (this.element) {
       this.stop();
     }
 
     this.options = options;
-    this.localVolume = volume; // PSYCHONAUT ADDITION - JUKEBOX
+    this.localVolume = volume;
 
     const audio = new Audio(url);
     if (!audio) {
@@ -63,12 +65,10 @@ export class AudioPlayer {
       return;
     }
     this.element = audio;
-    // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
-    //audio.volume = this.volume;
+
     audio.volume = this.muted ? 0 : this.volume * this.localVolume;
-    // PSYCHONAUT EDIT ADDITION END - JUKEBOX
     audio.playbackRate = this.options.pitch || 1;
-    audio.currentTime = this.options.start || 0; // PSYCHONAUT EDIT ADDITION - JUKEBOX
+    audio.currentTime = this.options.start || 0;
 
     logger.log('playing', url, options);
 
@@ -102,7 +102,9 @@ export class AudioPlayer {
       logger.log('playback failed');
     });
 
-    this.onPlaySubscribers.forEach((subscriber) => subscriber());
+    this.onPlaySubscribers.forEach((subscriber) => {
+      subscriber();
+    });
   }
 
   stop(): void {
@@ -113,20 +115,19 @@ export class AudioPlayer {
     this.element.pause();
     this.destroy();
 
-    this.onStopSubscribers.forEach((subscriber) => subscriber());
+    this.onStopSubscribers.forEach((subscriber) => {
+      subscriber();
+    });
   }
 
   setVolume(volume: number): void {
     this.volume = volume;
 
     if (!this.element) return;
-    // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX
-    // this.element.volume = volume;
+
     if (!this.muted) this.element.volume = volume * this.localVolume;
-    // PSYCHONAUT EDIT ADDITION END - JUKEBOX
   }
 
-  // PSYCHONAUT ADDITION BEGIN - JUKEBOX
   setLocalVolume(volume: number): void {
     this.localVolume = volume;
 
@@ -142,7 +143,7 @@ export class AudioPlayer {
 
     this.element.volume = this.muted ? 0 : this.volume * this.localVolume;
   }
-  // PSYCHONAUT ADDITION END - JUKEBOX
+
   onPlay(subscriber: () => void): void {
     this.onPlaySubscribers.push(subscriber);
   }
@@ -151,3 +152,99 @@ export class AudioPlayer {
     this.onStopSubscribers.push(subscriber);
   }
 }
+// PSYCHONAUT ADDITION BEGIN - ELECTRICAL_JUKEBOX
+export class JukeboxPlayer {
+  players: Map<string, AudioPlayer>;
+
+  onPlaySubscribers: (() => void)[];
+  onStopSubscribers: ((jukeboxId: string) => void)[];
+
+  constructor() {
+    this.players = new Map();
+    this.onPlaySubscribers = [];
+    this.onStopSubscribers = [];
+  }
+
+  play(
+    jukeboxId: string,
+    url: string,
+    options: AudioOptions = {},
+    volume: number = 1,
+  ): void {
+    let player = this.players.get(jukeboxId);
+    if (player) {
+      player.play(url, options, volume);
+    } else {
+      player = new AudioPlayer();
+      this.players.set(jukeboxId, player);
+      player.muted = store.get(jukeboxMutedAtom).includes(jukeboxId);
+      player.onPlay(() => {
+        this.onPlaySubscribers.forEach((subscriber) => {
+          subscriber();
+        });
+      });
+      player.onStop(() => {
+        this.onStopSubscribers.forEach((subscriber) => {
+          subscriber(jukeboxId);
+        });
+      });
+      player.play(url, options, volume);
+    }
+  }
+
+  stop(jukeboxId: string): void {
+    this.players.get(jukeboxId)?.stop();
+  }
+
+  setVolume(volume: number): void {
+    this.players.forEach((player) => {
+      player.setVolume(volume);
+    });
+  }
+
+  setLocalVolume(jukeboxId: string, volume: number): void {
+    this.players.get(jukeboxId)?.setLocalVolume(volume);
+  }
+
+  toggleMute(jukeboxId: string): void {
+    this.players.get(jukeboxId)?.toggleMute();
+    store.set(jukeboxMutedAtom, (prev) => {
+      const isMuted = this.isMuted(jukeboxId);
+      if (isMuted) {
+        return [...prev, jukeboxId];
+      } else {
+        return prev.filter((id) => id !== jukeboxId);
+      }
+    });
+  }
+
+  isMuted(jukeboxId: string): boolean {
+    return this.players.get(jukeboxId)?.muted || false;
+  }
+
+  destroy(jukeboxId: string): void {
+    const player = this.players.get(jukeboxId);
+    if (player) {
+      player.stop();
+      player.destroy();
+    }
+    this.players.delete(jukeboxId);
+  }
+
+  destroyAll(): void {
+    this.players.forEach((player) => {
+      player.stop();
+      player.destroy();
+    });
+    this.players.clear();
+  }
+
+  onPlay(subscriber: () => void): void {
+    this.onPlaySubscribers.push(subscriber);
+  }
+
+  onStop(subscriber: (jukeboxId: string) => void): void {
+    this.onStopSubscribers.push(subscriber);
+  }
+}
+// PSYCHONAUT ADDITION END - ELECTRICAL_JUKEBOX

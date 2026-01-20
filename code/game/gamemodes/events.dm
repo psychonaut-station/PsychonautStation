@@ -13,7 +13,7 @@
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 	var/list/all_smes = SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/smes)
 	for(var/obj/machinery/power/smes/smes as anything in all_smes)
-		if(istype(get_area(smes), /area/station/ai_monitored/turret_protected) || !is_station_level(smes.z))
+		if(istype(get_area(smes), /area/station/ai) || !is_station_level(smes.z))
 			continue
 		smes.charge = 0
 		smes.output_level = 0

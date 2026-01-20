@@ -16,8 +16,8 @@ Eklediğimiz çeşitli cyberneticler.
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/\_onclick/hud/cybernetics.dm`: `/atom/movable/screen/cybernetics/ammo_counter`
-- `modular_psychonaut/master_files/code/\_onclick/hud/hud.dm`: `/datum/hud/var/cybernetics_ammo`, `/datum/hud/Destroy()`
+- `modular_psychonaut/master_files/code/_onclick/hud/cybernetics.dm`: `/atom/movable/screen/cybernetics/ammo_counter`
+- `modular_psychonaut/master_files/code/_onclick/hud/hud.dm`: `/datum/hud/var/cybernetics_ammo`, `/datum/hud/Destroy()`
 - `modular_psychonaut/master_files/code/datums/components/after_image.dm`: `/datum/component/after_image`
 - `modular_psychonaut/master_files/code/datums/components/slowing_field.dm`: `/datum/component/slowing_field`
 - `modular_psychonaut/master_files/code/game/objects/items/storage/uplink_kits.dm`: `/obj/item/storage/box/syndicate/sandy`, `/obj/item/storage/box/syndicate/mantis`

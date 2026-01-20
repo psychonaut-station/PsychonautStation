@@ -118,6 +118,8 @@
 	min_pop = 10 // Resource limited, spawning on lowpop is fine.
 	max_antag_cap = list("denominator" = 29) // +1 blood worm per 30 pop.
 	repeatable = FALSE // Yeah no.
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_TEAM_ANTAG, TAG_ALIEN)
 
 /datum/dynamic_ruleset/roundstart/blood_worm/is_valid_candidate(mob/living/candidate, client/candidate_client)
 	if (!..())

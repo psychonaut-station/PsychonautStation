@@ -1263,3 +1263,78 @@ $border-width-px: $border-width * 1px;
     );
   }
 }
+
+$job-colors: (
+  // Command
+  'rawcommand': #99afe9,
+  'bridgeassistant': #99afe9,
+  'captain': #e6c45a,
+  'actingcaptain': #e6c45a,
+  // Service
+  'rawservice': #b9dfb2,
+  'assistant': #d3d3d3,
+  'headofpersonnel': #5f78ea,
+  'bartender': #bdd9b8,
+  'botanist': #a5e29a,
+  'cook': #b4f2c6,
+  'chef': #b4f2c6,
+  'chaplain': #97bea0,
+  'curator': #9fd3ab,
+  'janitor': #9ae0d6,
+  'lawyer': #c98b8b,
+  'mime': #c6dcc8,
+  'clown': #ff95dd,
+  // Cargo
+  'rawcargo': #d8bc8a,
+  'quartermaster': #c79c52,
+  'cargotechnician': #d3a372,
+  'shaftminer': #ce957e,
+  'bitrunner': #c99d72,
+  // Engineering
+  'rawengineering': #e6c98f,
+  'chiefengineer': #cfbb72,
+  'stationengineer': #e3b86a,
+  'atmospherictechnician': #d6a06f,
+  'worker': #e6c98f,
+  // Medical
+  'rawmedical': #99ccda,
+  'chiefmedicalofficer': #41defa,
+  'medicaldoctor': #6cb1c5,
+  'paramedic': #8fbeb4,
+  'virologist': #5ac5b0,
+  'chemist': #82bdce,
+  'psychiatrist': #88bac9,
+  'coroner': #88bac6,
+  // R&D
+  'rawscience': #e0c2ea,
+  'researchdirector': #974ea9,
+  'scientist': #cd85d2,
+  'roboticist': #b281c6,
+  'geneticist': #8fc4c6,
+  // Security
+  'rawsecurity': #e2baba,
+  'headofsecurity': #d12a44,
+  'warden': #dd3d4a,
+  'securityofficer': #e8b0b0,
+  'detective': #d39a9a,
+  'brigphysician': #b77a92,
+  'veteranadvisor': #d13a45,
+  // CentCom
+  'rawcentcom': #8fd88a,
+  'centcom': #4fc13f,
+  'ert': #3fa7ff,
+  // MISC - job
+  'vip': #ead77a,
+  'king': #ead77a,
+  'prisoner': #d99b6f,
+  'syndicate': #b17070,
+  'notcentcom': #9a99f0,
+  'unassigned': #e9ded4,
+  'unknown': #d3cfca
+);
+
+@each $job-name, $job-color in $job-colors {
+  .job__#{$job-name} {
+    color: $job-color;
+  }
+}

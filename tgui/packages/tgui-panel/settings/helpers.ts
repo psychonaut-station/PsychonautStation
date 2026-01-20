@@ -5,6 +5,7 @@
  */
 
 import { FONTS_DISABLED } from './constants';
+import { chatRenderer } from '../chat/renderer';
 import { setClientTheme } from './themes';
 import type { SettingsState } from './types';
 
@@ -78,8 +79,9 @@ export function generalSettingsHandler(update: SettingsState): void {
   // Update stat panel settings
   setStatTabsStyle(update.statTabsStyle);
 
-  // Update global UI font size
+  // Update global UI font size and name color
   setGlobalFontSize(update.fontSize, update.statFontSize, update.statLinked);
   setGlobalFontFamily(update.fontFamily);
   updateGlobalOverrideRule();
+  chatRenderer.setColoredNames(update.coloredNames);
 }

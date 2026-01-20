@@ -356,6 +356,12 @@ max_antag_cap = 2
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"alien",
+]
 
 ["Nightmare"]
 weight = 5
@@ -711,6 +717,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"alien",
+]
 
 ["Roundstart Heretics"]
 weight = 3

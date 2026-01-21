@@ -168,6 +168,12 @@ Runs the event
 		round_event.announce_deadchat(random, event_cause)
 
 	SSblackbox.record_feedback("tally", "event_ran", 1, "[round_event]")
+
+	// PSYCHONAUT ADDITION BEGIN - STORYTELLERS
+	if(!isnull(SSstoryteller.current_storyteller))
+		SSstoryteller.current_storyteller.event_execute(src)
+	// PSYCHONAUT ADDITION END - STORYTELLERS
+
 	return round_event
 
 //Returns the component for the listener

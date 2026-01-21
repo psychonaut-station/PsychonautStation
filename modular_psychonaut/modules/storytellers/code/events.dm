@@ -1,0 +1,167 @@
+/datum/round_event_control
+	var/track = UNCATEGORIZED_EVENTS
+	var/tags = list()
+
+/datum/round_event_control/anomaly
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_MAGICAL)
+
+/datum/round_event_control/aurora_caelus
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_POSITIVE, TAG_SPACE)
+
+/datum/round_event_control/bitrunning_glitch
+	tags = list(TAG_OUTSIDER_ANTAG, TAG_TARGETED, TAG_COMBAT)
+
+/datum/round_event_control/brain_trauma
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_TARGETED)
+
+/datum/round_event_control/brand_intelligence
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_COMMUNAL)
+
+/datum/round_event_control/bureaucratic_error
+	track = EVENT_TRACK_MAJOR // if you've ever dealt with 10 mimes you understand why.
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/camera_failure
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_SPOOKY)
+
+/datum/round_event_control/carp_migration
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_COMBAT, TAG_SPACE, TAG_EXTERNAL, TAG_ALIEN)
+
+/datum/round_event_control/disease_outbreak
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_TARGETED, TAG_COMMUNAL, TAG_EXTERNAL, TAG_ALIEN)
+
+/datum/round_event_control/earthquake
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_PLANETARY)
+
+/datum/round_event_control/electrical_storm
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_SPOOKY)
+
+/datum/round_event_control/fake_virus
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_TARGETED)
+
+/datum/round_event_control/falsealarm
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/gravity_generator_blackout
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL, TAG_SPACE)
+
+/datum/round_event_control/grey_tide
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_SPOOKY)
+
+/datum/round_event_control/grid_check
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL, TAG_SPOOKY)
+
+/datum/round_event_control/heart_attack
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_TARGETED)
+
+/datum/round_event_control/immovable_rod
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_EXTERNAL, TAG_MAGICAL)
+
+/datum/round_event_control/ion_storm
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_TARGETED)
+
+/datum/round_event_control/market_crash
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/mass_hallucination
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_MAGICAL)
+
+/datum/round_event_control/meteor_wave
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMMUNAL, TAG_SPACE, TAG_DESTRUCTIVE, TAG_EXTERNAL)
+
+/datum/round_event_control/mice_migration
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_DESTRUCTIVE, TAG_ALIEN) //not really alien but rat lords kind of are
+
+/datum/round_event_control/operative
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_OUTSIDER_ANTAG, TAG_DESTRUCTIVE, TAG_EXTERNAL)
+
+/datum/round_event_control/portal_storm_syndicate
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_EXTERNAL, TAG_COMMUNAL)
+
+/datum/round_event_control/processor_overload
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/radiation_leak
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/radiation_storm
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/scrubber_overflow
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/shuttle_catastrophe
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/shuttle_insurance
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/shuttle_loan
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/space_dust
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_EXTERNAL)
+
+/datum/round_event_control/spacevine
+	track = EVENT_TRACK_MAJOR
+	tags = list(TAG_COMBAT, TAG_DESTRUCTIVE, TAG_ALIEN)
+
+/datum/round_event_control/stray_cargo
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_POSITIVE)
+
+/datum/round_event_control/stray_meteor
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_SPACE, TAG_EXTERNAL)
+
+/datum/round_event_control/supermatter_surge
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_DESTRUCTIVE, TAG_COMMUNAL)
+
+/datum/round_event_control/tram_malfunction
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/vent_clog
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL)
+
+/datum/round_event_control/wisdomcow
+	track = EVENT_TRACK_MUNDANE
+	tags = list(TAG_COMMUNAL, TAG_POSITIVE, TAG_MAGICAL)
+
+/datum/round_event_control/wormholes
+	track = EVENT_TRACK_MODERATE
+	tags = list(TAG_COMMUNAL, TAG_MAGICAL)
+
+

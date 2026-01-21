@@ -9,3 +9,7 @@
 /// Logging for hallucinations
 /proc/log_hallucination(text, list/data)
 	logger.Log(LOG_CATEGORY_GAME_HALLUCINATION, text, data)
+
+/// Logging for storyteller procs
+/proc/log_storyteller(text, list/data)
+	logger.Log(LOG_CATEGORY_STORYTELLER, text, data)

@@ -299,6 +299,12 @@ SUBSYSTEM_DEF(ticker)
 	to_chat(world, span_notice(span_bold("Welcome to [station_name()], enjoy your stay!")))
 	SEND_SOUND(world, sound(SSstation.announcer.get_rand_welcome_sound()))
 
+	// PSYCHONAUT ADDITION BEGIN - STORYTELLER
+	if(CONFIG_GET(flag/public_storyteller) && !isnull(SSstoryteller.current_storyteller))
+		send_to_playing_players(span_notice("<b>Storyteller is [SSstoryteller.current_storyteller.name]!</b>"))
+		send_to_playing_players(span_notice("[SSstoryteller.current_storyteller.welcome_text]"))
+	// PSYCHONAUT ADDITION END - STORYTELLER
+
 	current_state = GAME_STATE_PLAYING
 	Master.SetRunLevel(RUNLEVEL_GAME)
 

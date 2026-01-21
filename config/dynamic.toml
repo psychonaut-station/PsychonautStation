@@ -162,16 +162,11 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
-
-["Latejoin Heretic"]
-weight = 3
-min_pop = 30
-blacklisted_roles = [
-	"Head of Personnel",
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
 ]
-repeatable_weight_decrease = 2
-repeatable = 1
-minimum_required_age = 0
 
 ["Latejoin Changeling"]
 weight = 3
@@ -182,6 +177,12 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"alien",
+]
 
 ["Latejoin Revolution"]
 weight = 1
@@ -190,6 +191,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Spiders"]
 weight.1 = 0
@@ -203,6 +210,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Light Pirates"]
 weight = 3
@@ -213,6 +226,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Heavy Pirates"]
 weight = 3
@@ -223,6 +242,12 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"away_antag",
+]
 
 ["Midround Wizard"]
 weight.1 = 0
@@ -236,6 +261,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"magical",
+]
 
 ["Midround Nukeops"]
 weight.1 = 0
@@ -250,6 +281,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Midround Clownops"]
 weight = 0
@@ -261,6 +300,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Blob"]
 weight.1 = 0
@@ -274,6 +321,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"destructive",
+]
 
 ["Xenomorph"]
 weight.1 = 0
@@ -283,10 +336,16 @@ weight.4 = 5
 min_pop = 30
 blacklisted_roles = []
 min_antag_cap = 1
-max_antag_cap = 2
+max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
 ["Midround Blood Worm"]
 weight = 2
@@ -297,6 +356,12 @@ max_antag_cap = 2
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"alien",
+]
 
 ["Nightmare"]
 weight = 5
@@ -307,6 +372,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"spooky",
+]
 
 ["Space Dragon"]
 weight.1 = 0
@@ -320,6 +391,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"destructive",
+]
 
 ["Abductors"]
 weight = 5
@@ -330,6 +407,12 @@ min_antag_cap = 2
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "major"
+tags = [
+	"away_antag",
+	"alien",
+	"team_antag",
+]
 
 ["Space Ninja"]
 weight.1 = 0
@@ -343,6 +426,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"away_antag",
+	"external",
+]
 
 ["Revenant"]
 weight = 5
@@ -353,6 +442,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"away_antag",
+	"spooky",
+]
 
 ["Midround Changeling"]
 weight = 5
@@ -363,19 +457,31 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
-["Midround Mass Changelings"]
+["Mass Changelings"]
 weight.1 = 0
 weight.2 = 3
 weight.3 = 4
 weight.4 = 5
 min_pop = 25
 blacklisted_roles = []
+min_antag_cap = 2
+max_antag_cap = 3
 repeatable_weight_decrease = 4
 repeatable = 1
 minimum_required_age = 0
-min_antag_cap = 2
-max_antag_cap = 3
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"alien",
+]
 
 ["Paradox Clone"]
 weight = 5
@@ -386,16 +492,29 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"targeted",
+]
 
 ["Voidwalker"]
 weight = 5
-min_pop = 30
+min_pop = 40
 blacklisted_roles = []
 min_antag_cap = 1
 max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"away_antag",
+	"spooky",
+	"magical",
+]
 
 ["Fugitives"]
 weight = 3
@@ -406,6 +525,11 @@ max_antag_cap = 4
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"away_antag",
+]
 
 ["Morph"]
 weight = 0
@@ -416,6 +540,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"away_antag",
+	"magical",
+]
 
 ["Slaughter Demon"]
 weight = 0
@@ -426,6 +555,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"away_antag",
+	"magical",
+	"spooky",
+]
 
 ["Midround Traitor"]
 weight = 10
@@ -436,19 +571,27 @@ blacklisted_roles = [
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
-["Midround Mass Traitors"]
+["Mass Traitors"]
 weight.1 = 0
 weight.2 = 3
 weight.3 = 8
 weight.4 = 10
 min_pop = 15
 blacklisted_roles = []
-repeatable_weight_decrease = 7
+repeatable_weight_decrease = 8
 repeatable = 1
 minimum_required_age = 0
-min_antag_cap = 2
-max_antag_cap = 4
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Midround Malfunctioning AI"]
 weight.1 = 0
@@ -460,6 +603,11 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Blob Infection"]
 weight.1 = 0
@@ -471,6 +619,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 3
 repeatable = 1
 minimum_required_age = 0
+track = "roleset"
+tags = [
+	"combat",
+	"crew_antag",
+	"destructive",
+]
 
 ["Midround Obsessed"]
 weight.1 = 5
@@ -482,6 +636,12 @@ blacklisted_roles = []
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+	"targeted",
+]
 
 ["Roundstart Traitor"]
 weight = 10
@@ -492,6 +652,11 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Roundstart Malfunctioning AI"]
 weight.1 = 0
@@ -505,6 +670,11 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"crew_antag",
+	"destructive",
+]
 
 ["Roundstart Blood Brothers"]
 weight = 5
@@ -515,6 +685,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Roundstart Changeling"]
 weight = 3
@@ -525,6 +701,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"alien",
+]
 
 ["Roundstart Blood Worm"]
 weight = 1
@@ -535,6 +717,12 @@ max_antag_cap.denominator = 29
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"team_antag",
+	"alien",
+]
 
 ["Roundstart Heretics"]
 weight = 3
@@ -545,6 +733,12 @@ max_antag_cap.denominator = 24
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+	"magical",
+]
 
 ["Roundstart Wizard"]
 weight.1 = 0
@@ -558,6 +752,12 @@ max_antag_cap = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"magical",
+]
 
 ["Roundstart Blood Cult"]
 weight.1 = 0
@@ -574,6 +774,13 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+	"magical",
+]
 
 ["Roundstart Nukeops"]
 weight.1 = 0
@@ -588,6 +795,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Roundstart Clownops"]
 weight = 0
@@ -599,6 +814,14 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"away_antag",
+	"team_antag",
+	"destructive",
+	"external",
+]
 
 ["Roundstart Revolution"]
 weight.1 = 0
@@ -612,6 +835,12 @@ max_antag_cap = 3
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "major"
+tags = [
+	"combat",
+	"crew_antag",
+	"team_antag",
+]
 
 ["Roundstart Spies"]
 weight.1 = 0
@@ -626,6 +855,11 @@ min_antag_cap.offset = 1
 repeatable_weight_decrease = 2
 repeatable = 1
 minimum_required_age = 0
+track = "mundane"
+tags = [
+	"combat",
+	"crew_antag",
+]
 
 ["Extended"]
 weight = 0
@@ -636,6 +870,8 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "Uncategorized"
+tags = []
 
 ["Meteor"]
 weight = 0
@@ -646,6 +882,11 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"external",
+]
 
 ["Nations"]
 weight = 0
@@ -656,3 +897,1163 @@ min_antag_cap = 0
 repeatable_weight_decrease = 2
 repeatable = 0
 minimum_required_age = 0
+track = "Uncategorized"
+tags = []
+
+["The Betrayer"]
+name = "The Betrayer"
+desc = "The Betrayer lulls the crew into a false sense of security with a peaceful start, only to violently switch to maximum hostility halfway through the shift."
+welcome_text = "Everything looks perfect. Too perfect. Enjoy the peace while it lasts."
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 18000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 10
+midround_settings.1.event_weight_multipliers.moderate = 2
+midround_settings.1.event_weight_multipliers.major = 0
+midround_settings.1.event_weight_multipliers.roleset = 0
+midround_settings.1.tag_multipliers.positive = 100
+midround_settings.2.general_multipliers = 1
+midround_settings.2.time_threshold = 1e+31
+midround_settings.2.execution_multiplier_low = 1
+midround_settings.2.execution_multiplier_high = 1
+midround_settings.2.event_weight_multipliers.mundane = 0
+midround_settings.2.event_weight_multipliers.moderate = 1
+midround_settings.2.event_weight_multipliers.major = 100
+midround_settings.2.event_weight_multipliers.roleset = 100
+midround_settings.2.tag_multipliers.positive = 0
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Brute"]
+name = "The Brute"
+desc = "While the brute will hit hard, it tires quickly."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 0.5
+settings.execution_multiplier_high = 0.5
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1.2
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Cataclysm"]
+name = "The Cataclysm"
+desc = "The Cataclysm inverts the difficulty curve, front-loading major disasters at the start of the shift."
+welcome_text = "Immediate emergency protocols active. The worst is not coming; it is already here."
+restricted = 0
+weight = 1
+population_min = 55
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 9000
+midround_settings.1.execution_multiplier_low = 0.2
+midround_settings.1.execution_multiplier_high = 0.2
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.2.general_multipliers = 1
+midround_settings.2.time_threshold = 144000
+midround_settings.2.execution_multiplier_low = 1.3
+midround_settings.2.execution_multiplier_high = 1.3
+midround_settings.2.event_weight_multipliers.mundane = 2
+midround_settings.2.event_weight_multipliers.moderate = 1
+midround_settings.2.event_weight_multipliers.major = 0
+midround_settings.2.event_weight_multipliers.roleset = 0
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 9000
+latejoin_settings.1.execution_multiplier_low = 0.2
+latejoin_settings.1.execution_multiplier_high = 0.2
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+latejoin_settings.2.general_multipliers = 1
+latejoin_settings.2.time_threshold = 144000
+latejoin_settings.2.execution_multiplier_low = 1.3
+latejoin_settings.2.execution_multiplier_high = 1.3
+latejoin_settings.2.event_weight_multipliers.mundane = 2
+latejoin_settings.2.event_weight_multipliers.moderate = 1
+latejoin_settings.2.event_weight_multipliers.major = 0
+latejoin_settings.2.event_weight_multipliers.roleset = 0
+
+["The Clown"]
+name = "The Clown"
+desc = "The clown creates mostly harmless events, its all fun and games with this one!"
+welcome_text = "HONKHONKHONKHONKHONK!"
+restricted = 1
+weight = 0
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 5
+settings.event_weight_multipliers.moderate = 4
+settings.event_weight_multipliers.major = 0.3
+settings.event_weight_multipliers.roleset = 1
+settings.tag_multipliers.communal = 1.1
+settings.tag_multipliers.spooky = 1.2
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Descent"]
+name = "The Descent"
+desc = "The Descent starts slowly, but gradually lowers the cooldown between events as the shift progresses. By the end, it creates a non-stop barrage of chaos."
+welcome_text = "Gravity is increasing. The slide into chaos has begun. Pace yourselves."
+restricted = 0
+weight = 1
+population_min = 30
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Drought"]
+name = "The Drought"
+desc = "The Drought begins with a heavy storm of events but slowly runs out of energy. The challenge is to survive the initial hour; the aftermath is for survival."
+welcome_text = "The storm is at our door. Survive the first wave, and you might just live."
+restricted = 0
+weight = 1
+population_min = 30
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 0.3
+settings.execution_multiplier_high = 0.3
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Exhaust"]
+name = "The Exhaust"
+desc = "The Exhaust removes every event from the pool as it occurs, forcing increasingly obscure threats to appear."
+welcome_text = "History will not repeat itself today. Once a crisis is solved, it is gone forever."
+restricted = 0
+weight = 1
+population_min = 30
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Guide"]
+name = "The Guide"
+desc = "The Guide will provide a balanced and varied experience. Consider this the default experience."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 1
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Hermit"]
+name = "The Hermit"
+desc = "The Hermit will create mostly internal conflict around the station, and rarely any external threats."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 3
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1.2
+settings.event_weight_multipliers.moderate = 1.1
+settings.event_weight_multipliers.major = 0.9
+settings.event_weight_multipliers.roleset = 0.9
+settings.tag_multipliers.external = 0.2
+settings.tag_multipliers.away_antag = 0.8
+settings.event_repetition_multipliers.mundane = -2
+settings.event_repetition_multipliers.moderate = -2
+settings.event_repetition_multipliers.major = -1.3
+settings.event_repetition_multipliers.roleset = -1.4
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Jester"]
+name = "The Jester"
+desc = "The Jester will create much more events, with higher possibilities of them repeating."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 2
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1.2
+settings.event_weight_multipliers.moderate = 1.3
+settings.event_weight_multipliers.major = 1.3
+settings.event_weight_multipliers.roleset = 1
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Mystic"]
+name = "The Mystic"
+desc = "The Mystic gives events from beyond the veil, some of which may even be magic in nature."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 2
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.tag_multipliers.spooky = 1.2
+settings.tag_multipliers.magical = 1.5
+settings.tag_multipliers.space = 1.1
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Nobleman"]
+name = "The Nobleman"
+desc = "The Nobleman enjoys a good fight but abhors senseless destruction. Prefers heavy hits on single targets."
+welcome_text = "Set your eyes on the horizon."
+restricted = 0
+weight = 3
+population_min = 25
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1.2
+settings.event_weight_multipliers.major = 1.15
+settings.event_weight_multipliers.roleset = 1
+settings.tag_multipliers.combat = 1.4
+settings.tag_multipliers.destructive = 0.4
+settings.tag_multipliers.targeted = 1.2
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Operative"]
+name = "The Operative"
+desc = "The Operative tries to create more direct confrontation with human threats."
+welcome_text = "The eyes of multiple organizations have been set on the station."
+restricted = 1
+weight = 1
+population_min = 45
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1.1
+settings.tag_multipliers.alien = 0.4
+settings.tag_multipliers.crew_antag = 1.5
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Primeordial"]
+name = "The Primeordial"
+desc = "The Primordial follows no clock. Events may occur in rapid succession or be spaced apart by hours. Prediction is impossible; constant vigilance is required."
+welcome_text = "Time has no meaning here. Expect the unexpected, whenever it chooses to arrive."
+restricted = 0
+weight = 1
+population_min = 30
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Pulse"]
+name = "The Pulse"
+desc = "The Pulse alternates between bursts of rapid-fire chaos and periods of dead silence."
+welcome_text = "Local probability sensors are oscillating violently. The chaos will hit in waves."
+restricted = 0
+weight = 2
+population_min = 35
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 9000
+midround_settings.1.execution_multiplier_low = 0.5
+midround_settings.1.execution_multiplier_high = 0.5
+midround_settings.2.general_multipliers = 0
+midround_settings.2.time_threshold = 9000
+midround_settings.2.execution_multiplier_low = 1
+midround_settings.2.execution_multiplier_high = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Regulator"]
+name = "The Regulator"
+desc = "The Regulator aims to maintain a constant level of entropy. It acts as a stress-test algorithm, adjusting parameters in real-time based on station integrity."
+welcome_text = "Calibration in progress. Maintaining optimal stress levels."
+restricted = 0
+weight = 1
+population_min = 50
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 1e+31
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.event_repetition_multipliers.mundane = 1
+settings.event_repetition_multipliers.moderate = 1
+settings.event_repetition_multipliers.major = 1
+settings.event_repetition_multipliers.roleset = 1
+settings.low_end.roundstart = 0
+settings.low_end.light_midround = 0
+settings.low_end.heavy_midround = 0
+settings.low_end.latejoin = 0
+settings.high_end.roundstart = 0
+settings.high_end.light_midround = 0
+settings.high_end.heavy_midround = 0
+settings.high_end.latejoin = 0
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Sleeper"]
+name = "The Sleeper"
+desc = "The Sleeper will create less impactful events, especially ones involving combat or destruction. The chill experience."
+welcome_text = "The day is going slowly."
+restricted = 0
+weight = 2
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 2
+settings.event_weight_multipliers.moderate = 1.2
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 0.1
+settings.tag_multipliers.combat = 0.6
+settings.tag_multipliers.destructive = 0.7
+settings.tag_multipliers.positive = 1.2
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Sniper"]
+name = "The Sniper"
+desc = "The Sniper rarely acts, but never misses. Expect very long periods of silence broken by sudden, high-intensity targeted strikes designed to eliminate specific key personnel."
+welcome_text = "Keep your heads down. I am waiting for the perfect shot."
+restricted = 0
+weight = 1
+population_min = 50
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 3
+settings.execution_multiplier_high = 3
+settings.event_weight_multipliers.mundane = 0
+settings.event_weight_multipliers.moderate = 0
+settings.event_weight_multipliers.major = 1
+settings.event_weight_multipliers.roleset = 1
+settings.low_end.roundstart = -5
+settings.low_end.latejoin = -5
+settings.low_end.light_midround = 2
+settings.low_end.heavy_midround = 3
+settings.high_end.roundstart = -5
+settings.high_end.latejoin = -5
+settings.high_end.light_midround = 2
+settings.high_end.heavy_midround = 3
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Specialist"]
+name = "The Specialist"
+desc = "The Specialist selects a specific pair of event themes for the shift, virtually ignoring all other threat types."
+welcome_text = "Operational parameters have been narrowed. Expect a highly specific threat profile."
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Vanguard"]
+name = "The Vanguard"
+desc = "The Vanguard doesn't believe in buildup. It front-loads all major threats at the very beginning of the shift. Survive the first 15 minutes, and you might just survive the whole shift."
+welcome_text = "Strike hard, strike fast. The worst is already upon you."
+restricted = 1
+weight = 0
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 0.7
+settings.execution_multiplier_high = 0.7
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Gatekeeper"]
+name = "The Gatekeeper"
+desc = "The Gatekeeper ignores the initial crew. Instead, it targets the arrivals shuttle. Every new crewmember is a potential threat, and every docking procedure brings a new disaster."
+welcome_text = "Station population is stable. Monitoring incoming traffic for... anomalies."
+restricted = 1
+weight = 0
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 0.7
+settings.execution_multiplier_high = 0.7
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Ambush"]
+name = "The Ambush"
+desc = "The Ambush grants you a peaceful start to set up defenses, and a quiet end to evacuate. But the middle of the shift? That belongs to chaos."
+welcome_text = "Get comfortable. You will need your strength for what comes next."
+restricted = 1
+weight = 0
+population_min = 0
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 0.7
+settings.execution_multiplier_high = 0.7
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+["The Warrior"]
+name = "The Warrior"
+desc = "The Warrior will create more impactful events, often focused on combat."
+welcome_text = "You feel like a fight is brewing."
+restricted = 0
+weight = 1
+population_min = 40
+population_max = 0
+settings.general_multipliers = 1
+settings.time_threshold = 0
+settings.execution_multiplier_low = 1
+settings.execution_multiplier_high = 1
+settings.event_weight_multipliers.mundane = 1
+settings.event_weight_multipliers.moderate = 1.3
+settings.event_weight_multipliers.major = 1.3
+settings.event_weight_multipliers.roleset = 1
+settings.tag_multipliers.combat = 1.5
+roundstart_settings.general_multipliers = 1
+roundstart_settings.event_weight_multipliers.mundane = 1
+roundstart_settings.event_weight_multipliers.moderate = 1
+roundstart_settings.event_weight_multipliers.major = 1
+roundstart_settings.event_weight_multipliers.roleset = 1
+roundstart_settings.event_repetition_multipliers.mundane = 1
+roundstart_settings.event_repetition_multipliers.moderate = 1
+roundstart_settings.event_repetition_multipliers.major = 1
+roundstart_settings.event_repetition_multipliers.roleset = 1
+midround_settings.1.general_multipliers = 1
+midround_settings.1.time_threshold = 6000
+midround_settings.1.execution_multiplier_low = 1
+midround_settings.1.execution_multiplier_high = 1
+midround_settings.1.event_weight_multipliers.mundane = 1
+midround_settings.1.event_weight_multipliers.moderate = 1
+midround_settings.1.event_weight_multipliers.major = 1
+midround_settings.1.event_weight_multipliers.roleset = 1
+midround_settings.1.event_repetition_multipliers.mundane = 1
+midround_settings.1.event_repetition_multipliers.moderate = 1
+midround_settings.1.event_repetition_multipliers.major = 1
+midround_settings.1.event_repetition_multipliers.roleset = 1
+latejoin_settings.1.general_multipliers = 1
+latejoin_settings.1.time_threshold = 6000
+latejoin_settings.1.execution_multiplier_low = 1
+latejoin_settings.1.execution_multiplier_high = 1
+latejoin_settings.1.event_weight_multipliers.mundane = 1
+latejoin_settings.1.event_weight_multipliers.moderate = 1
+latejoin_settings.1.event_weight_multipliers.major = 1
+latejoin_settings.1.event_weight_multipliers.roleset = 1
+
+

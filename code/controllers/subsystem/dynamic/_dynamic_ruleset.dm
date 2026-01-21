@@ -184,6 +184,34 @@
 	if(final_minpop > population_size)
 		return 0
 
+	// PSYCHONAUT ADDITION BEGIN - STORYTELLERS
+	var/list/storyteller_settings
+	var/alist/storyteller_setting
+	if(!isnull(SSstoryteller.current_storyteller))
+		if(istype(src, /datum/dynamic_ruleset/roundstart))
+			storyteller_setting = SSstoryteller.current_storyteller.roundstart_settings
+		else if (istype(src, /datum/dynamic_ruleset/midround))
+			storyteller_settings = SSstoryteller.current_storyteller.midround_settings
+		else if (istype(src, /datum/dynamic_ruleset/latejoin))
+			storyteller_settings = SSstoryteller.current_storyteller.latejoin_settings
+
+		if(!length(storyteller_setting))
+			var/total_cycle = 0
+			for(var/alist/entry in storyteller_settings)
+				total_cycle += entry[TIME_THRESHOLD]
+			if(!total_cycle)
+				total_cycle = INFINITY
+			var/loop_time = STATION_TIME_PASSED() % total_cycle
+			var/current_checkpoint = 0
+			for(var/alist/entry in storyteller_settings)
+				current_checkpoint += entry[TIME_THRESHOLD]
+				if(loop_time < current_checkpoint)
+					storyteller_setting = entry
+					break
+
+		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+	// PSYCHONAUT ADDITION END - STORYTELLERS
+
 	var/final_weight = islist(weight) ? get_tier_specific_value(weight, tier) : weight
 	for(var/datum/dynamic_ruleset/other_ruleset as anything in SSdynamic.executed_rulesets)
 		if(other_ruleset == src)
@@ -194,7 +222,29 @@
 			continue
 		if(!repeatable)
 			return 0
-		final_weight -= repeatable_weight_decrease
+
+	// PSYCHONAUT EDIT ADDITION BEGIN - STORYTELLERS - Original:
+	// final_weight -= repeatable_weight_decrease
+		var/weight_decrease = repeatable_weight_decrease
+		if(length(storyteller_setting))
+			if(islist(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]) && !isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][track]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][track]
+			else if(!isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]))
+				weight_decrease *= storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]
+
+		final_weight -= weight_decrease
+
+	if(length(storyteller_setting))
+		if(!isnull(storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][track]))
+			final_weight *= storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][track]
+		if(!isnull(storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]))
+			final_weight *= storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]
+		for(var/tag in tags)
+			if(!storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]?.Find(tag))
+				continue
+			if(!isnull(storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]))
+				final_weight *= storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]
+	// PSYCHONAUT EDIT ADDITION END - STORYTELLERS
 
 	return max(final_weight, 0)
 
@@ -339,6 +389,10 @@
  * Prefer to override assign_role() instead of this proc
  */
 /datum/dynamic_ruleset/proc/execute()
+	// PSYCHONAUT ADDITION BEGIN - STORYTELLERS
+	if(!isnull(SSstoryteller.current_storyteller))
+		SSstoryteller.current_storyteller.ruleset_execute(src, selected_minds)
+	// PSYCHONAUT ADDITION END - STORYTELLERS
 	var/list/execute_args = create_execute_args()
 	for(var/datum/mind/mind as anything in selected_minds)
 		assign_role(arglist(list(mind) + execute_args))

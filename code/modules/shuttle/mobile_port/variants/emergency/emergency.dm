@@ -207,6 +207,11 @@
 				ShuttleDBStuff()
 				addtimer(CALLBACK(src, PROC_REF(announce_shuttle_events)), 20 SECONDS)
 
+				// PSYCHONAUT ADDITION BEGIN - STORYTELLERS
+				if(CONFIG_GET(flag/enable_storyteller) && CONFIG_GET(flag/auto_vote_storyteller) && isnull(SSstoryteller.next_storyteller))
+					INVOKE_ASYNC(SSvote, TYPE_PROC_REF(/datum/controller/subsystem/vote, initiate_vote), /datum/vote/storyteller_vote, vote_initiator_name = "Storyteller Selection", forced = TRUE)
+				// PSYCHONAUT ADDITION END - STORYTELLERS
+
 
 		if(SHUTTLE_DOCKED)
 			if(time_left <= ENGINE_START_TIME)

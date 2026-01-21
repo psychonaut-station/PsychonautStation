@@ -380,8 +380,15 @@
 		target_wall.add_dent(WALL_DENT_SHOT, impact_x, impact_y)
 		return BULLET_ACT_HIT
 
+	// PSYCHONAUT EDIT ADDITION BEGIN - IMPACT_SOUND - Original:
+	/*
 	if (hitsound)
 		playsound(src, hitsound, vol_by_damage(), TRUE, -1)
+	*/
+	var/impact_sound = target.impact_sound || hitsound
+	if(impact_sound && (isliving(target) || !(isturf(target) && hitsound_wall)))
+		playsound(src, impact_sound, vol_by_damage(), TRUE, -1)
+	// PSYCHONAUT EDIT ADDITION END - IMPACT_SOUND
 
 	if (!isliving(target))
 		if(impact_effect_type && !hitscan)

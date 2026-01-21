@@ -152,7 +152,7 @@ export class AudioPlayer {
     this.onStopSubscribers.push(subscriber);
   }
 }
-// PSYCHONAUT ADDITION BEGIN - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION BEGIN - JUKEBOX
 export class JukeboxPlayer {
   players: Map<string, AudioPlayer>;
 
@@ -247,4 +247,4 @@ export class JukeboxPlayer {
     this.onStopSubscribers.push(subscriber);
   }
 }
-// PSYCHONAUT ADDITION END - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION END - JUKEBOX

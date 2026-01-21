@@ -42,9 +42,9 @@ export function stopMusic(): void {
 // settings/update and settings/load
 export function setMusicVolume(volume: number): void {
   player.setVolume(volume);
-  jukeboxPlayer.setVolume(volume); // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
+  jukeboxPlayer.setVolume(volume); // PSYCHONAUT ADDITION - JUKEBOX
 }
-// PSYCHONAUT ADDITION BEGIN - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION BEGIN - JUKEBOX
 // jukebox
 
 export const jukeboxPlayer = new JukeboxPlayer();
@@ -119,4 +119,4 @@ const visible = (): boolean => {
   }
   return playing;
 }
-// PSYCHONAUT ADDITION END - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION END - JUKEBOX

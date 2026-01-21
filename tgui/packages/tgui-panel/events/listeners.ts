@@ -24,11 +24,11 @@ const listeners = {
   'asset/mappings': handleLoadAssets,
   'audio/playMusic': playMusic,
   'audio/stopMusic': stopMusic,
-  'audio/jukebox/playMusic': jukeboxPlayMusic, // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
-  'audio/jukebox/stopMusic': jukeboxStopMusic, // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
-  'audio/jukebox/setVolume': jukeboxSetVolume, // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
-  'audio/jukebox/destroy': jukeboxDestroy, // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
-  'audio/jukebox/destroyAll': jukeboxDestroyAll, // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
+  'audio/jukebox/playMusic': jukeboxPlayMusic, // PSYCHONAUT ADDITION - JUKEBOX
+  'audio/jukebox/stopMusic': jukeboxStopMusic, // PSYCHONAUT ADDITION - JUKEBOX
+  'audio/jukebox/setVolume': jukeboxSetVolume, // PSYCHONAUT ADDITION - JUKEBOX
+  'audio/jukebox/destroy': jukeboxDestroy, // PSYCHONAUT ADDITION - JUKEBOX
+  'audio/jukebox/destroyAll': jukeboxDestroyAll, // PSYCHONAUT ADDITION - JUKEBOX
   'chat/message': chatMessage,
   'ping/reply': pingReply,
   'ping/soft': pingSoft,

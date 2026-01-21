@@ -22,7 +22,7 @@ export const audioAtom = atom((get) => ({
 }));
 
 // ------ Jukebox ----------------------------------------------------------------//
-// PSYCHONAUT ADDITION BEGIN - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION BEGIN - JUKEBOX
 
 export type JukeboxMeta = Meta & {
   sourceName: string;
@@ -35,4 +35,4 @@ export const jukeboxAtom = atom((get) => ({
   meta: get(jukeboxMetaAtom),
   muted: get(jukeboxMutedAtom),
 }));
-// PSYCHONAUT ADDITION END - ELECTRICAL_JUKEBOX
+// PSYCHONAUT ADDITION END - JUKEBOX

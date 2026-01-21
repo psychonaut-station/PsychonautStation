@@ -33,10 +33,10 @@ export function NowPlayingWidget(props) {
       upload_date?.substring(6, 8)
     : upload_date;
 
-  const jukebox = useAtomValue(jukeboxAtom); // PSYCHONAUT ADDITION - ELECTRICAL_JUKEBOX
+  const jukebox = useAtomValue(jukeboxAtom); // PSYCHONAUT ADDITION - JUKEBOX
 
   return (
-    // PSYCHONAUT EDIT ADDITION BEGIN - ELECTRICAL_JUKEBOX - Original:
+    // PSYCHONAUT EDIT ADDITION BEGIN - JUKEBOX - Original:
     /*
     <Flex align="center">
       {playing ? (
@@ -259,6 +259,6 @@ export function NowPlayingWidget(props) {
         />
       </Flex.Item>
     </Flex>
-    // PSYCHONAUT EDIT ADDITION END - ELECTRICAL_JUKEBOX
+    // PSYCHONAUT EDIT ADDITION END - JUKEBOX
   );
 }

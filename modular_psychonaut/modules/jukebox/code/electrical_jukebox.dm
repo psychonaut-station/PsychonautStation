@@ -248,7 +248,7 @@
 	return TRUE
 
 /obj/machinery/electrical_jukebox/proc/tgui_music_input(title)
-	var/input = tgui_input_text(usr, "Enter content URL (soundcloud only)", title)
+	var/input = tgui_input_text(usr, "Enter content URL (youtube, soundcloud)", title)
 	if(input && usr.can_perform_action(src, FORBID_TELEKINESIS_REACH))
 		if(!findtext(input, regex(replacetext(CONFIG_GET(string/request_internet_allowed), ",", "|"), "i")))
 			return tgui_music_input(title)

@@ -342,10 +342,10 @@ SUBSYSTEM_DEF(dynamic)
 
 /datum/controller/subsystem/dynamic/proc/get_advisory_report()
 	var/shown_tier = current_tier.tier
-	if(prob(10))
+	if(prob(CONFIG_GET(number/false_advisory_random_prob))) // PSYCHONAUT EDIT ADDITION - FALSE_ADVISORY_PROB - Original: if(prob(10))
 		shown_tier = pick(list(DYNAMIC_TIER_LOW, DYNAMIC_TIER_LOWMEDIUM, DYNAMIC_TIER_MEDIUMHIGH, DYNAMIC_TIER_HIGH) - current_tier.tier)
 
-	else if(prob(15))
+	else if(prob(CONFIG_GET(number/false_advisory_knn_prob))) // PSYCHONAUT EDIT ADDITION - FALSE_ADVISORY_PROB - Original: else if(prob(15))
 		shown_tier = clamp(current_tier.tier + pick(-1, 1), DYNAMIC_TIER_LOW, DYNAMIC_TIER_HIGH)
 
 	for(var/datum/dynamic_tier/tier_datum as anything in subtypesof(/datum/dynamic_tier))

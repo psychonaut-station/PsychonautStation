@@ -68,7 +68,7 @@
 /datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
 	. = ..()
 	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
-		H.adjustBruteLoss(1.5 * seconds_per_tick)
+		H.adjust_brute_loss(1.5 * seconds_per_tick)
 
 /datum/species/ipc/wash(mob/living/carbon/human/H)
 	. = FALSE
@@ -84,9 +84,9 @@
 	if(!chest_covered || !head_covered)
 		var/obj/item/organ/heart/heart = H.get_organ_slot(ORGAN_SLOT_HEART)
 		if(heart && istype(heart, /obj/item/organ/heart/cybernetic))
-			H.adjustFireLoss(rand(1,3))
+			H.adjust_fire_loss(rand(1,3))
 		else
-			H.adjustFireLoss(rand(5,15))
+			H.adjust_fire_loss(rand(5,15))
 		return TRUE
 
 /datum/species/ipc/randomize_features()
@@ -160,9 +160,9 @@
 	var/adjusted_pressure = H.calculate_affecting_pressure(pressure)
 
 	if(adjusted_pressure >= HAZARD_HIGH_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
-		H.adjustBruteLoss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+		H.adjust_brute_loss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 	else if(adjusted_pressure < HAZARD_LOW_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
-		H.adjustBruteLoss(LOW_PRESSURE_DAMAGE * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+		H.adjust_brute_loss(LOW_PRESSURE_DAMAGE * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 
 ////////////////////////////////////// ORGANS //////////////////////////////////////
 // Voltage Protector Organ

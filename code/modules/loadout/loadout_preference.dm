@@ -55,16 +55,16 @@
 					You may want to check your loadout settings."))
 			continue
 
-		// PSYCHONAUT ADDITION BEGIN - PATREON
 		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+
+		// PSYCHONAUT ADDITION BEGIN - PATREON
 		if(loadout_item.donator_only && optional_loadout_owner?.client && !optional_loadout_owner.client.prefs.unlock_content)
 			to_chat(optional_loadout_owner, span_boldnotice("The following donator-only item was found \
 				in your character loadout: [real_path || "null"]. \
 				It has been removed, as you are not a patron."))
 			continue
-
 		// PSYCHONAUT ADDITION END - PATREON
-		var/datum/loadout_item/loadout_item = GLOB.all_loadout_datums[real_path]
+
 		if(loadout_item.is_disabled())
 			continue // this just falls off silently
 

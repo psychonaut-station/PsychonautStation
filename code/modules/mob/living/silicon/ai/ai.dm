@@ -1252,8 +1252,8 @@
 	else
 		screen_state = display_icon_override || "ai"
 		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
-		if(GLOB.ai_core_display_screen_icons.Find(preferred_icon))
-			screen_icon = GLOB.ai_core_display_screen_icons[preferred_icon]
+		if(GLOB.ai_core_display_screen_icons.Find(screen_state))
+			screen_icon = GLOB.ai_core_display_screen_icons[screen_state]
 		// PSYCHONAUT ADDITION END - AI_SCREENS
 
 		lights_state = "lights_active"

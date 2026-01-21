@@ -4,4 +4,4 @@
 	cost = CARGO_CRATE_VALUE * 4
 	contains = list(/obj/item/electrical_jukebox_beacon)
 	crate_name =  "electrical jukebox crate"
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS

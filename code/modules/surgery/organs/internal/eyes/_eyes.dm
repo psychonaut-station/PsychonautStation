@@ -71,10 +71,6 @@
 /obj/item/organ/eyes/Initialize(mapload)
 	. = ..()
 	if (blink_animation)
-		// PSYCHONAUT EDIT ADDITION BEGIN - ARACHNID - Original:
-		// eyelid_left = new(src, "[eye_icon_state]_l")
-		// eyelid_right = new(src, "[eye_icon_state]_r")
-		// PSYCHONAUT EDIT ADDITION END - ARACHNID
 		eyelid_left = new(src, eye_icon, "[eye_icon_state]_l")
 		eyelid_right = new(src, eye_icon, "[eye_icon_state]_r")
 

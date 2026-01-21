@@ -10,7 +10,7 @@
 		/obj/item/circuitboard/machine/pa/fuel_chamber = 1,
 		/obj/item/circuitboard/machine/pa/particle_emitter = 3)
 	crate_name = "particle accelerator parts crate"
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS
 
 /datum/supply_pack/engine/singulo_gen
 	name = "Singularity Generator Crate"
@@ -18,7 +18,7 @@
 	cost = 5000
 	contains = list(/obj/machinery/the_singularitygen = 1)
 	crate_name = "singularity generator crate"
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS
 
 /datum/supply_pack/engine/tesla_gen
 	name = "Tesla Generator Crate"
@@ -26,4 +26,4 @@
 	cost = 5000
 	contains = list(/obj/machinery/the_singularitygen/tesla = 1)
 	crate_name = "tesla generator crate"
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS

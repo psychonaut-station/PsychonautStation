@@ -286,7 +286,7 @@
 	var/humans = LAZYLEN(carrying_humans)
 	if(humans)
 		var/mob/living/silicon/robot/owner = get_host()
-		owner?.adjustBruteLoss(0.4 * seconds_per_tick * humans)
+		owner?.adjust_brute_loss(0.4 * seconds_per_tick * humans)
 		if(!owner.cell?.use(5 * seconds_per_tick))
 			owner.logevent("ERROR: NO POWER")
 			drop_all_crates()

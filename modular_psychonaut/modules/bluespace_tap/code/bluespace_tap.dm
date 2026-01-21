@@ -15,7 +15,7 @@
 
 /datum/station_goal/bluespace_tap/on_report()
 	var/datum/supply_pack/engineering/bluespace_tap/P = SSshuttle.supply_packs[/datum/supply_pack/engineering/bluespace_tap]
-	P.special_enabled = TRUE
+	P.order_flags |= ORDER_SPECIAL_ENABLED
 
 /datum/station_goal/bluespace_tap/check_completion()
 	if(..())
@@ -126,7 +126,7 @@
 		/mob/living/basic/pet/dog/bullterrier = 5,
 		/mob/living/basic/pet/penguin = 5,
 		/mob/living/basic/parrot = 5,
-		/obj/item/slimepotion/slime/sentience = 5,
+		/obj/item/slimepotion/sentience = 5,
 		/obj/item/cigarette/cigar/havana = 3,
 		/obj/item/stack/sheet/mineral/bananium/five = 10,	//bananas are organic, clearly.
 		/obj/item/storage/box/monkeycubes = 5,

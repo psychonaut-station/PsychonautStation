@@ -30,7 +30,7 @@
 		var/mob/living/buckled_mob = buckled_mobs[1] // we can only hold one person anyway
 		if(buckled_mob.has_gravity())
 			buckled_mob.visible_message(span_danger("[buckled_mob] falls over and hits the ground!"), span_userdanger("You fall over and hit the ground!"))
-			buckled_mob.adjustBruteLoss(10)
+			buckled_mob.adjust_brute_loss(10)
 
 	deconstruct()
 	return ITEM_INTERACT_SUCCESS
@@ -149,7 +149,7 @@
 	if(buckled_mob.stat == DEAD || HAS_TRAIT(buckled_mob, TRAIT_NOBREATH))
 		return
 
-	buckled_mob.adjustOxyLoss(5)
+	buckled_mob.adjust_oxy_loss(5)
 
 	if(prob(30))
 		buckled_mob.emote("gasp")

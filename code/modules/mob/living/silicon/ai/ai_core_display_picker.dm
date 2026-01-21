@@ -44,8 +44,8 @@
 					break
 
 	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
-	if(GLOB.ai_core_display_screen_icons.Find(preferred_icon))
-		screen_icon = GLOB.ai_core_display_screen_icons[preferred_icon]
+	if(GLOB.ai_core_display_screen_icons.Find(current_display))
+		current_icon = GLOB.ai_core_display_screen_icons[current_display]
 	// PSYCHONAUT ADDITION END - AI_SCREENS
 
 	data["current_display"] = current_display
@@ -53,7 +53,7 @@
 	// Get icon for current display
 	var/current_icon_state = resolve_ai_icon_sync(current_display)
 	data["current_icon"] = list(
-		"icon" = screen_icon, // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi',
+		"icon" = current_icon, // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi',
 		"icon_state" = current_icon_state
 	)
 
@@ -64,7 +64,7 @@
 		var/list/option_data = list(
 			"name" = option_name,
 			"icon_state" = icon_state,
-			"icon" = screen_icon // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi'
+			"icon" = current_icon // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi'
 		)
 		options += list(option_data)
 

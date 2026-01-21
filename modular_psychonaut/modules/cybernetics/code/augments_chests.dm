@@ -51,6 +51,7 @@
 		exit_the_zone()
 
 /obj/item/organ/cyberimp/chest/sandevistan/on_life(seconds_per_tick)
+	. = ..()
 	if(!active)
 		return
 	active_for += seconds_per_tick
@@ -108,14 +109,14 @@
 	if(prob(45))
 		if(iscarbon(user))
 			var/mob/living/carbon/carbon = user
-			carbon.adjustOrganLoss(ORGAN_SLOT_BRAIN, 10)
+			carbon.adjust_organ_loss(ORGAN_SLOT_BRAIN, 10)
 			to_chat(user, span_warning("You are overloaded with information and suffer some backlash."))
 	. = ..()
 
 /obj/item/organ/cyberimp/chest/sandevistan/hasty/exit_the_zone(mob/living/exiter)
 	. = ..()
 	if(prob(45))
-		exiter.adjustBruteLoss(10)
+		exiter.adjust_brute_loss(10)
 		to_chat(exiter, span_warning("Your body was not able to handle the strain of [src] causing you to experience some minor bruising."))
 
 /obj/item/organ/cyberimp/chest/chemvat
@@ -172,7 +173,7 @@
 
 
 /obj/item/organ/cyberimp/chest/chemvat/on_life()
-		//Cost of refilling is a little bit of nutrition, some blood and getting jittery
+	. = ..()
 	if(owner.nutrition > NUTRITION_LEVEL_STARVING && owner.blood_volume > BLOOD_VOLUME_SURVIVE && current_ticks_cooldown > 0)
 
 		owner.nutrition -= 5

@@ -1,6 +1,3 @@
-/obj/item/organ/eyes
-	var/eye_icon = 'icons/mob/human/human_face.dmi'
-
 /obj/item/organ/eyes/on_mob_insert(mob/living/carbon/receiver, special, movement_flags)
 	. = ..()
 	if(!no_glasses)

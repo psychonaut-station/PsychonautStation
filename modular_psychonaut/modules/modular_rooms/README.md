@@ -9,7 +9,9 @@ MODULE ID: MODULAR_ROOMS
 ### TG Değişiklikleri
 
 - `code/controllers/subsystem/mapping.dm`: `/datum/controller/subsystem/mapping/Initialize()`, `/datum/controller/subsystem/mapping/proc/LoadGroup()`, `/datum/controller/subsystem/mapping/proc/loadWorld()`
+- `code/datums/components/atom_mounted.dm`: `/obj/find_and_mount_on_atom()`
 - `code/datums/map_config.dm`: `/datum/map_config/var/picked_rooms`, `/datum/map_config/proc/LoadConfig()`
+- `code/game/objects/structures/lattice.dm`: `/obj/structure/lattice/Destroy()`
 - `code/modules/mapping/reader.dm`: `/datum/parsed_map/proc/load()`, `/datum/parsed_map/proc/_load_impl()`, `/datum/parsed_map/proc/_tgm_load()`, `/datum/parsed_map/proc/_dmm_load()`, `/datum/parsed_map/proc/build_coordinate()`
 - `config/game_options.txt`: `ALLOW_RANDOMIZED_ROOMS`, `MODULAR_ROOM_WEIGHT`
 

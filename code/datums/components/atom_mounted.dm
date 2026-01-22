@@ -146,6 +146,11 @@
 	if(!isarea(location))
 		return FALSE
 
+	// PSYCHONAUT ADDITION BEGIN - MODULAR_ROOMS
+	if(SSmapping.machines_delete_after.Find(src))
+		return FALSE
+	// PSYCHONAUT ADDITION END - MODULAR_ROOMS
+
 	var/msg
 	if(PERFORM_ALL_TESTS(maptest_log_mapping) && !mark_for_late_init)
 		msg = "[type] Could not find attachable object at [location.type] "

@@ -7066,6 +7066,7 @@
 #include "modular_psychonaut\modules\holodeck_camping\code\map_template.dm"
 #include "modular_psychonaut\modules\holodeck_pool\code\map_template.dm"
 #include "modular_psychonaut\modules\hydroponics\chili.dm"
+#include "modular_psychonaut\modules\hydroponics\order_veggies.dm"
 #include "modular_psychonaut\modules\impact_sound\code\impact_sounds.dm"
 #include "modular_psychonaut\modules\impact_sound\code\sound_keys.dm"
 #include "modular_psychonaut\modules\ipc\code\ipc.dm"

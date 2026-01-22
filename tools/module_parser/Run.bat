@@ -1,3 +1,3 @@
 @echo off
-node "%~dp0index.js" %*
+"%~dp0\..\bootstrap\javascript.bat" "%~dp0\sort.js" %*
 pause

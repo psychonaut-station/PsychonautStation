@@ -8,10 +8,7 @@
 	pref_flag = ROLE_MALF
 	antag_hud_name = "traitor"
 	ui_name = "AntagInfoMalf"
-	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
-	// can_assign_self_objectives = TRUE
-	can_assign_self_objectives = FALSE
-	// PSYCHONAUT EDIT ADDITION END
+	can_assign_self_objectives = TRUE
 	default_custom_objective = "Make sure your precious crew are incapable of ever, ever leaving you."
 	///the name of the antag flavor this traitor has.
 	var/employer

@@ -25,10 +25,7 @@
 	hijack_speed = 0.5
 	suicide_cry = "THE MANSUS SMILES UPON ME!!"
 	preview_outfit = /datum/outfit/heretic
-	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
-	// can_assign_self_objectives = TRUE
-	can_assign_self_objectives = FALSE
-	// PSYCHONAUT EDIT ADDITION END
+	can_assign_self_objectives = TRUE
 	default_custom_objective = "Turn a department into a testament for your dark knowledge."
 	hardcore_random_bonus = TRUE
 	stinger_sound = 'sound/music/antag/heretic/heretic_gain.ogg'

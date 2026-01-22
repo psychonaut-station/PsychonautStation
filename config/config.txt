@@ -681,3 +681,6 @@ DISCORD_ROUND_ALERT_ROLE_ID
 
 ## Etiketlenmesini istediğin discord rolünün id sini yaz.
 #SUSPICIOUS_LOG_DISCORD_ROLE_ID
+
+## Uncomment to save the player character icons
+# ENABLE_SAVE_CHARICONS

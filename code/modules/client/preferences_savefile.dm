@@ -445,6 +445,11 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	save_data["alt_job_titles"] = alt_job_titles
 	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
+	// PSYCHONAUT ADDITION BEGIN - CHAR_ICONS
+	if(CONFIG_GET(flag/enable_save_charicons))
+		INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(save_player_character_icon), parent.ckey, default_slot)
+	// PSYCHONAUT ADDITION END - CHAR_ICONS
+
 	return TRUE
 
 /datum/preferences/proc/switch_to_slot(new_slot)

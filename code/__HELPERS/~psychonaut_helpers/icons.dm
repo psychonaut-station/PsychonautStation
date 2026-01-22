@@ -1,13 +1,17 @@
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
 	if(!fexists(save_path))
 		return FALSE
 	var/list/tree = json_decode(rustg_file_read(save_path))	// Reading savefile
-	var/default_slot = tree["default_slot"] || 1
-	var/selected_char = tree["character[default_slot]"] || tree["character1"]
+
+	if(isnull(character_slot))
+		character_slot = tree["default_slot"] || 1
+	var/selected_char = tree["character[character_slot]"] || tree["character1"]
+	if(!selected_char)
+		return FALSE
 
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
@@ -19,6 +23,19 @@
 			selected_job = SSjob.get_job(job)
 			highest_pref = job_preferences[job]
 
+	var/mob_name = null
+
+	for (var/preference_type in GLOB.preference_entries)
+		var/datum/preference/name/name_preference = GLOB.preference_entries[preference_type]
+		if (!istype(name_preference))
+			continue
+
+		if (isnull(name_preference.relevant_job))
+			continue
+
+		if (istype(selected_job, name_preference.relevant_job))
+			mob_name = selected_char?[name_preference.savefile_key]
+
 	if(selected_job && !ispath(selected_job::spawn_type, /mob/living/carbon/human)) // If the selected job's spawn_type isnt human (AI, cyborg etc.) we just returning mutable_appearance
 		var/mob/living/spawn_type = selected_job::spawn_type
 		var/mutable_appearance/appearance = mutable_appearance(spawn_type::icon, spawn_type::icon_state)
@@ -28,6 +45,12 @@
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
 			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
 				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
+		if(!only_appearance)
+			return list(
+				"name" = mob_name,
+				"appearance" = appearance,
+				"job" = selected_job::title
+			)
 		return appearance
 
 	var/we_created = FALSE
@@ -49,6 +72,9 @@
 		var/new_value = preference.deserialize(saved_data)
 
 		preference.apply_to_human(our_human, new_value)
+
+	if(!mob_name)
+		mob_name = our_human.real_name
 
 	var/datum/outfit/equipped_outfit
 
@@ -88,4 +114,36 @@
 	if(we_created)
 		qdel(our_human)
 
+	if(!only_appearance)
+		return list(
+			"name" = mob_name,
+			"appearance" = appearance,
+			"job" = selected_job::title
+		)
+
 	return appearance
+
+/proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
+	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(thing, defdir = direction, no_anim = no_anim)
+		output.Insert(partial, dir = direction)
+
+	return output
+
+/proc/save_player_character_icon(ckey, char_index)
+	if(!ckey || is_guest_key(ckey))
+		return FALSE
+
+	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE) || list()
+	var/character_name = character_data?["name"]
+	var/mutable_appearance/appearance = character_data?["appearance"]
+	var/job = character_data?["job"]
+	if(isnull(character_name) || isnull(appearance) || job == JOB_AI || job == JOB_CYBORG)
+		return FALSE
+
+	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"
+
+	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
+	fcopy(flat_icon, icon_path)

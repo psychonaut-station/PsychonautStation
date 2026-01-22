@@ -7097,7 +7097,6 @@
 #include "modular_psychonaut\modules\mentor\code\admin_verb.dm"
 #include "modular_psychonaut\modules\mentor\code\adminhelp.dm"
 #include "modular_psychonaut\modules\modular_rooms\code\_modular_rooms.dm"
-#include "modular_psychonaut\modules\modular_rooms\code\engine.dm"
 #include "modular_psychonaut\modules\napoleon_rifle\code\beams.dm"
 #include "modular_psychonaut\modules\napoleon_rifle\code\crank_guns.dm"
 #include "modular_psychonaut\modules\napoleon_rifle\code\laser.dm"

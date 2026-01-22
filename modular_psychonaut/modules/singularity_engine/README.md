@@ -39,10 +39,9 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 - `modular_psychonaut/master_files/code/game/objects/items/anomaly_kinesis.dm`: `/obj/item/gun/energy/kinesis`
 - `modular_psychonaut/master_files/code/game/objects/items/devices/anomaly_catcher.dm`: `/obj/item/anomaly_catcher`
 - `modular_psychonaut/master_files/code/game/objects/items/storage/toolboxes/weapons.dm`: `/obj/item/storage/toolbox/guncase/anomaly_catcher`
-- `modular_psychonaut/master_files/code/game/objects/structures/crates_lockers/closets/secure/engineering.dm`: `/obj/structure/closet/secure_closet/engineering_chief/PopulateContents()`
 - `modular_psychonaut/master_files/code/modules/cargo/bounties/engineering.dm`: `/datum/bounty/item/engineering/energy_ball`
 - `modular_psychonaut/master_files/code/modules/cargo/exports/tools.dm`: `/datum/export/singulo`, `/datum/export/singulo/tesla`
-- `modular_psychonaut/master_files/code/modules/cargo/packs/engineering.dm`: `/datum/supply_pack/engine/particle_accelerator`, `/datum/supply_pack/engine/singulo_gen`, `/datum/supply_pack/engine/tesla_gen`
+- `modular_psychonaut/master_files/code/modules/cargo/packs/engineering.dm`: `/datum/supply_pack/engine/particle_accelerator`, `/datum/supply_pack/engine/singulo_gen`, `/datum/supply_pack/engine/tesla_gen`, `/datum/supply_pack/engineering/anomaly_catcher`
 - `modular_psychonaut/master_files/code/modules/mod/modules/module_kinesis.dm`: `/obj/item/mod/module/anomaly_locked/kinesis/grab_atom()`, `/obj/item/mod/module/anomaly_locked/kinesis/clear_grab()`
 - `modular_psychonaut/master_files/code/modules/modular_computers/file_system/programs/sm_monitor.dm`
 - `modular_psychonaut/master_files/code/modules/paperwork/paper_premade.dm`: `/obj/item/paper/guides/jobs/engineering/pa`, `/obj/item/paper/guides/jobs/engineering/singularity`
@@ -74,7 +73,6 @@ Baseturfu olan istasyonlarda kullanılmamalıdır. Bknz [`/turf/singularity_act(
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 
-`modular_psychonaut/modules/modular_rooms/code/engine.dm`: `/datum/map_template/modular_room/random_engine`, `/datum/map_template/modular_room/random_engine/meta_supermatter`, `/datum/map_template/modular_room/random_engine/meta_singularity`, `/datum/map_template/modular_room/random_engine/delta_supermatter`, `/datum/map_template/modular_room/random_engine/delta_singularity`
 `_maps/ModularRooms/Deltastation/singularity.dmm`
 `_maps/ModularRooms/MetaStation/singularity.dmm`
 `tgui/packages/tgui/interfaces/SingularityTesla.tsx`

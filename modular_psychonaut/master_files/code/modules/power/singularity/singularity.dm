@@ -77,15 +77,7 @@ GLOBAL_LIST_EMPTY(all_singularities)
 
 #define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
 
-/// Singularity spawned by a singularity generator
-/obj/singularity/stationary
-	intensity_multiplier = 1
-
-/obj/singularity/stationary/Initialize(mapload, starting_energy)
-	. = ..()
-	add_to_cims()
-
-/obj/singularity/stationary/consume(atom/thing)
+/obj/singularity/consume(atom/thing)
 	. = ..()
 	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
 		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
@@ -95,3 +87,10 @@ GLOBAL_LIST_EMPTY(all_singularities)
 			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
 
 #undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+/// Singularity spawned by a singularity generator
+/obj/singularity/stationary
+	intensity_multiplier = 1
+
+/obj/singularity/stationary/Initialize(mapload, starting_energy)
+	. = ..()
+	add_to_cims()

@@ -36,15 +36,6 @@
 
 MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/incident_display/singularity_death, 32)
 
-/obj/machinery/incident_display/Initialize(mapload)
-	. = ..()
-	if(mapload && sign_features == DISPLAY_DELAM && SSmapping.picked_rooms["engine"])
-		var/datum/map_template/modular_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
-		if(engine_template.engine_type == "singularity")
-			name = NAME_SINGULARITY
-			desc = DESC_SINGULARITY
-			sign_features = DISPLAY_SINGULARITY_DEATH
-
 /obj/machinery/incident_display/post_machine_initialize()
 	update_last_singularity_death(SSpersistence.rounds_since_singularity_death, SSpersistence.singularity_death_record)
 	return ..()

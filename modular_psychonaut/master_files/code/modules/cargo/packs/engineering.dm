@@ -27,3 +27,10 @@
 	contains = list(/obj/machinery/the_singularitygen/tesla = 1)
 	crate_name = "tesla generator crate"
 	order_flags = ORDER_DANGEROUS
+
+/datum/supply_pack/engineering/anomaly_catcher
+	name = "Anomaly Catcher Crate"
+	desc = "Contains some tools for containing anomalies"
+	cost = CARGO_CRATE_VALUE * 30
+	contains = list(/obj/item/storage/toolbox/guncase/anomaly_catcher = 1)
+	crate_name = "anomaly catcher crate"

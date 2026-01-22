@@ -31,3 +31,5 @@ Destekçilere özel içerikler vs. ekler.
 - N/A
 
 ### Katkıda Bulunanlar
+
+Seefaaa, loanselot

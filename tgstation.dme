@@ -425,6 +425,7 @@
 #include "code\__DEFINES\~psychonaut_defines\atom_hud.dm"
 #include "code\__DEFINES\~psychonaut_defines\chat.dm"
 #include "code\__DEFINES\~psychonaut_defines\colors.dm"
+#include "code\__DEFINES\~psychonaut_defines\cooldowns.dm"
 #include "code\__DEFINES\~psychonaut_defines\crafting.dm"
 #include "code\__DEFINES\~psychonaut_defines\DNA.dm"
 #include "code\__DEFINES\~psychonaut_defines\jobs.dm"

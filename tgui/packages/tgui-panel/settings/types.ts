@@ -8,6 +8,7 @@ const viewSchema = z.object({
 
 export const settingsSchema = z.object({
   adminMusicVolume: z.number(),
+  coloredNames: z.boolean(),
   fontFamily: z.string(),
   fontSize: z.number(),
   initialized: z.boolean(),

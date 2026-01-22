@@ -456,6 +456,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.subdepartment_color_override = trim.subdepartment_color
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
+	id_card.trim_chat_span_override = trim.chat_span()
 
 	var/obj/item/card/id/advanced/chameleon/cham_id = id_card
 	if (istype(cham_id) && (!check_forged || !cham_id.forged))
@@ -482,6 +483,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = null
 	id_card.department_state_override = null
 	id_card.subdepartment_color_override = null
+	id_card.trim_chat_span_override = null
 	id_card.big_pointer = id_card.trim.big_pointer
 	id_card.pointer_color = id_card.trim.pointer_color
 

@@ -45,6 +45,11 @@ export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
   content: 'content',
 };
 
+const stripColoredNames = (inputHtml) => {
+  const spanRegex = /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
+  return inputHtml.replace(spanRegex, '$1$2');
+};
+
 function createHighlightNode(text, color) {
   const node = document.createElement('span');
   node.className = 'Chat__highlight';
@@ -117,6 +122,7 @@ class ChatRenderer {
   scrollTracking: boolean;
   lastScrollHeight: number;
   highlightParsers: Array<any> | null;
+  coloredNames: boolean;
   handleScroll: (type: any) => void;
 
   constructor() {
@@ -127,6 +133,7 @@ class ChatRenderer {
     this.visibleMessages = [];
     this.page = null;
     this.events = new EventEmitter();
+    this.coloredNames = true;
     // Scroll handler
 
     this.scrollNode = null;
@@ -289,6 +296,14 @@ class ChatRenderer {
     this.scrollNode!.scrollTop = this.scrollNode!.scrollHeight;
   }
 
+  setColoredNames(newValue: boolean) {
+    if (newValue === this.coloredNames) {
+      return;
+    }
+    this.coloredNames = newValue;
+    this.rebuildChat();
+  }
+
   changePage(page) {
     if (!this.isReady()) {
       this.page = page;
@@ -386,7 +401,9 @@ class ChatRenderer {
         }
         // Payload is HTML
         else if (message.html) {
-          node.innerHTML = message.html;
+          node.innerHTML = this.coloredNames
+            ? message.html
+            : stripColoredNames(message.html);
         } else {
           logger.error('Error: message is missing text payload', message);
         }

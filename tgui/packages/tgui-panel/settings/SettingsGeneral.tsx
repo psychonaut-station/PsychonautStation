@@ -124,6 +124,16 @@ export function SettingsGeneral(props) {
             )}
           </Stack.Item>
         </LabeledList.Item>
+        <LabeledList.Item label="Colored Names">
+          <Button.Checkbox
+            checked={settings.coloredNames}
+            onClick={() =>
+              updateSettings({
+                coloredNames: !settings.coloredNames,
+              })
+            }
+          />
+        </LabeledList.Item>
         <LabeledList.Item label="Font size" verticalAlign="middle">
           <Stack textAlign="center">
             <Stack.Item grow>

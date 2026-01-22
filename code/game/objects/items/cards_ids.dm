@@ -937,6 +937,9 @@
 /obj/item/card/id/remove_id()
 	return src
 
+/obj/item/card/id/proc/chat_span()
+	return trim?.chat_span()
+
 /// Called on COMSIG_ATOM_UPDATED_ICON. Updates the visuals of the wallet this card is in.
 /obj/item/card/id/proc/update_in_wallet()
 	SIGNAL_HANDLER
@@ -1122,6 +1125,9 @@
 	SSeconomy.dep_cards -= src
 	return ..()
 
+/obj/item/card/id/advanced/chat_span()
+	return trim_chat_span_override || ..()
+
 /obj/item/card/id/departmental_budget/update_label()
 	return
 
@@ -1160,6 +1166,8 @@
 	var/trim_assignment_override
 	/// If this is set, will manually override the trim shown for SecHUDs. Intended for admins to VV edit and chameleon ID cards.
 	var/sechud_icon_state_override = null
+	/// If this is set, will manually override the chat span used for the wearer's name, normally set by the trim. Intended for admins to VV edit and chameleon ID cards.
+	var/trim_chat_span_override
 
 /obj/item/card/id/advanced/Initialize(mapload)
 	. = ..()

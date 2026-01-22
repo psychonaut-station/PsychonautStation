@@ -37,8 +37,7 @@ IPC ırkını oyuna ekler
 
 - `modular_psychonaut/master_files/code/_onclick/hud/radial.dm`: `/datum/radial_menu_choice/var/warning`
 - `modular_psychonaut/master_files/code/controllers/subsystem/sprite_accessories.dm`: `/datum/controller/subsystem/accessories/var/ipc_chassis_list`, `/datum/controller/subsystem/accessories/setup_lists()`
-- `modular_psychonaut/master_files/code/datums/sprite_accessories.dm`: `/datum/sprite_accessory/ipc_chassis`, `/datum/sprite_accessory/ipc_chassis/black`, `/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics`, `/datum/sprite_accessory/ipc_chassis/bishopcyberkinetics2`, `/datum/sprite_accessory/ipc_chassis/hephaestussindustries`, `/datum/sprite_accessory/ipc_chassis/shellguardmunitions`, `/datum/sprite_accessory/ipc_chassis/zenghupharmaceuticals`, `/datum/sprite_accessory/ipc_chassis/star_industrial`, `/datum/sprite_accessory/ipc_chassis/mcgreyscale`
-- `modular_psychonaut/master_files/code/datums/bodypart_overlays/markings_bodypart_overlay.dm`: `/datum/bodypart_overlay/simple/body_marking/proc/get_aux_image()`, `/datum/bodypart_overlay/simple/body_marking/ipc`
+- `modular_psychonaut/master_files/code/datums/bodypart_overlays/markings_bodypart_overlay.dm`: `/datum/bodypart_overlay/simple/body_marking/proc/get_aux_image()`
 - `modular_psychonaut/master_files/code/game/data_huds.dm`: `/mob/living/carbon/human/proc/diag_hud_set_humancell()`
 - `modular_psychonaut/master_files/code/game/objects/effects/warning.dm`: `/obj/effect/abstract/warning`
 - `modular_psychonaut/master_files/code/game/objects/items/storage/boxes/job_boxes.dm`: `/obj/item/storage/box/survival/wardrobe_removal()`

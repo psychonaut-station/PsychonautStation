@@ -15,7 +15,6 @@ Brigde çalışan, Security'e dahil, doktor mesleği.
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/datums/id_trim/jobs.dm`: `/datum/id_trim/job/brig_physician`
 - `modular_psychonaut/master_files/icons/mob/clothing/head/helmet.dmi`: `helmet_bp`
 - `modular_psychonaut/master_files/icons/mob/clothing/suits/armor.dmi`: `armor_bp`
 - `modular_psychonaut/master_files/icons/mob/huds/hud.dmi`: `hudbrigphysician`

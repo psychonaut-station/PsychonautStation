@@ -22,7 +22,7 @@ Bulunduğumuz tile içerisinde kısayol ile kaykılabilmemize yarayan pixel shif
 
 ### Bu Klasörde Bulunmayan Modüle Dahil Dosyalar
 
-- `modular_psychonaut/master_files/code/datums/components/pixel_shift.dm`
+- N/A
 
 ### Katkıda Bulunanlar
 

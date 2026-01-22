@@ -15,7 +15,6 @@ Daha az sorumlulukları olan Station Engineer alternatifi.
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/datums/id_trim/jobs.dm`: `/datum/id_trim/job/worker`
 - `modular_psychonaut/master_files/code/game/objects/items/stacks/sheets/sheet_types.dm`: `/obj/item/stack/sheet/mineral/wood/thirty`,`/obj/item/stack/sheet/cloth/thirty`
 - `modular_psychonaut/master_files/code/game/objects/items/storage/boxes/job_boxes.dm`: `/obj/item/storage/box/survival/worker`
 - `modular_psychonaut/master_files/icons/mob/huds/hud.dmi`: `hudworker`

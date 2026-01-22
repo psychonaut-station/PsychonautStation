@@ -18,8 +18,8 @@
 		return
 
 	var/admin = check_rights(R_ADMIN, FALSE)
-	if(mob.stat == DEAD && !admin)
-		to_chat(src, span_warning("You must be alive to use LOOC."))
+	if(mob.stat != CONSCIOUS && !admin)
+		to_chat(src, span_warning("You must be concious to use LOOC."))
 		return
 
 	msg = trim(copytext_char(sanitize(msg), 1, MAX_MESSAGE_LEN))

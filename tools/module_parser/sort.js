@@ -8,20 +8,12 @@ async function main() {
   if (Bun.argv.length < 3) return console.error("No arguments");
 
   const filePath = Bun.argv[2];
-  const formattedDate = `${Date.now()}-`;
 
   console.log("File:", filePath);
 
   const file = Bun.file(filePath);
 
   if (!(await file.exists())) return console.error("File doesnt exist");
-
-  const dir = path.dirname(filePath);
-  const base = path.basename(filePath);
-  const backupPath = path.join(dir, `${formattedDate}${base}.old`);
-
-  // Yedekle
-  await Bun.write(backupPath, file);
 
   const data = await file.text();
   const lines = data.split(/\r?\n/);

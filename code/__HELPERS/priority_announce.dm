@@ -61,7 +61,7 @@
 			// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 			// header = MAJOR_ANNOUNCEMENT_TITLE("Priority Announcement")
 			header = MAJOR_ANNOUNCEMENT_TITLE("Öncelikli Duyuru")
-			// PSYCHONAUT EDIT CHANGE END
+			// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 			if(length(title) > 0)
 				header += SUBHEADER_ANNOUNCEMENT_TITLE(title)
 		if(ANNOUNCEMENT_TYPE_CAPTAIN)
@@ -70,12 +70,12 @@
 			// GLOB.news_network.submit_article(text, "Captain's Announcement", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 			header = MAJOR_ANNOUNCEMENT_TITLE("Kaptan Duyurusu")
 			GLOB.news_network.submit_article(text, "Kaptan Duyurusu", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
-			// PSYCHONAUT EDIT CHANGE END
+			// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 		if(ANNOUNCEMENT_TYPE_SYNDICATE)
 			// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 			// header = MAJOR_ANNOUNCEMENT_TITLE("Syndicate Captain's Announcement")
 			header = MAJOR_ANNOUNCEMENT_TITLE("Sendika Kaptanı Duyurusu")
-			// PSYCHONAUT EDIT CHANGE END
+			// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 		else
 			header += generate_unique_announcement_header(title, sender_override)
 
@@ -102,14 +102,14 @@
 			// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 			// GLOB.news_network.submit_article(text, "[command_name()] Update", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
 			GLOB.news_network.submit_article(text, "[command_name()] Bildirisi", NEWSCASTER_STATION_ANNOUNCEMENTS, null)
-			// PSYCHONAUT EDIT CHANGE END
+			// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 
 /proc/print_command_report(text = "", title = null, announce=TRUE)
 	if(!title)
 		// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 		// title = "Classified [command_name()] Update"
 		title = "Gizli [command_name()] Bildirisi"
-		// PSYCHONAUT EDIT CHANGE END
+		// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 	if(announce)
 		// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 		/*
@@ -126,7 +126,7 @@
 			sound = SSstation.announcer.get_rand_report_sound(),
 			has_important_message = TRUE,
 		)
-		// PSYCHONAUT EDIT CHANGE END
+		// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 	var/datum/comm_message/message = new
 	message.title = title
 	message.content = text
@@ -150,7 +150,7 @@
 // PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 // /proc/minor_announce(message, title = "Attention:", alert = FALSE, html_encode = TRUE, list/players, sound_override, should_play_sound = TRUE, color_override)
 /proc/minor_announce(message, title = "Dikkat:", alert = FALSE, html_encode = TRUE, list/players, sound_override, should_play_sound = TRUE, color_override)
-// PSYCHONAUT EDIT CHANGE END
+// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 	if(!message)
 		return
 
@@ -198,13 +198,13 @@
 		// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 		// title = "Attention! Security level elevated to [current_level_name]:"
 		title = "Dikkat! Güvenlik seviyesi [current_level_name] yükseltildi."
-		// PSYCHONAUT EDIT CHANGE END
+		// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 		message = selected_level.elevating_to_announcement
 	else
 		// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 		// title = "Attention! Security level lowered to [current_level_name]:"
 		title = "Dikkat! Güvenlik seviyesi [current_level_name] düşürüldü."
-		// PSYCHONAUT EDIT CHANGE END
+		// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 		message = selected_level.lowering_to_announcement
 
 	var/list/level_announcement_strings = list()
@@ -223,7 +223,7 @@
 		// PSYCHONAUT EDIT CHANGE START - LOCALIZATION - ORIGINAL:
 		// returnable_strings += MAJOR_ANNOUNCEMENT_TITLE("[command_name()] Update")
 		returnable_strings += MAJOR_ANNOUNCEMENT_TITLE("[command_name()] Bildirisi")
-		// PSYCHONAUT EDIT CHANGE END
+		// PSYCHONAUT EDIT CHANGE END - LOCALIZATION
 	else
 		returnable_strings += MAJOR_ANNOUNCEMENT_TITLE(sender_override)
 

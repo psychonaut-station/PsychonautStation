@@ -459,3 +459,7 @@
   - balance: phazonun phase ozelliginde artik cooldown var (2 saniye aktif, 15 saniye
       cooldown)
   - balance: phazonun zirhina vurmak artik toxin vurmayacak
+2026-01-23:
+  homek13:
+  - rscadd: "mesleklere ayr\u0131lm\u0131\u015F chat renkleri ve ilgili a\xE7\u0131\
+      p/kapatma se\xE7ene\u011Fi"

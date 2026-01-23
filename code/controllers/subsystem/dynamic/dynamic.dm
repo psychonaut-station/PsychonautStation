@@ -140,8 +140,8 @@ SUBSYSTEM_DEF(dynamic)
 	// put rulesets in the queue (if admins didn't)
 	// this will even handle the case in which the tier wants 0 roundstart rulesets
 	if(!length(queued_rulesets))
-		for(var/ruleset_typepath in pick_roundstart_rulesets(antag_candidates))
-			queue_ruleset(ruleset_typepath)
+		for(var/ruleset in pick_roundstart_rulesets(antag_candidates))
+			queue_ruleset(ruleset)
 	// we got what we needed, reset so we can do real job selection later
 	// reset only happens AFTER roundstart selection so we can verify stuff like "can we get 3 heads of staff for revs?"
 	SSjob.reset_occupations()
@@ -312,6 +312,7 @@ SUBSYSTEM_DEF(dynamic)
 			picked_rulesets += picked_ruleset
 			continue
 
+<<<<<<< HEAD
 		var/weight_decrease = picked_ruleset.repeatable_weight_decrease
 		if(length(storyteller_setting) && storyteller_setting.Find(STORYTELLER_EVENT_REPETITION_MULTIPLIERS))
 			if(islist(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]) && !isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][picked_ruleset.track]))
@@ -323,6 +324,12 @@ SUBSYSTEM_DEF(dynamic)
 		total_weight -= weight_decrease
 		// Rulesets are not singletons. We need to to make a new one
 		picked_rulesets += new picked_ruleset.type(dynamic_config)
+=======
+		rulesets_weighted[picked_ruleset] -= picked_ruleset.repeatable_weight_decrease
+		total_weight -= picked_ruleset.repeatable_weight_decrease
+		picked_rulesets += picked_ruleset.type
+		// Rulesets are not singletons. Queue_ruleset() will make them one.
+>>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
 
 	// clean up unused rulesets
 	QDEL_LIST(rulesets_weighted)

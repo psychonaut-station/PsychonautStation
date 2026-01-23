@@ -331,14 +331,16 @@
 
 	playsound(src, 'sound/items/tools/drill_use.ogg', 80, TRUE, -1)
 	var/obj/machinery/porta_turret/syndicate/toolbox/turret = new(get_turf(loc))
-	set_faction(turret, user)
+	set_toolbox_faction(turret, user)
 	turret.toolbox = src
 	forceMove(turret)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/item/storage/toolbox/emergency/turret/proc/set_faction(obj/machinery/porta_turret/turret, mob/user)
-	turret.faction = list("[REF(user)]")
+/obj/item/storage/toolbox/emergency/turret/proc/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
+	turret.set_allies(list("[REF(user)]"))
+	turret.set_faction(null)
 
+<<<<<<< HEAD
 /obj/item/storage/toolbox/emergency/turret/nukie/set_faction(obj/machinery/porta_turret/turret, mob/user)
 	turret.faction = list(ROLE_SYNDICATE)
 
@@ -356,3 +358,7 @@
 	for(var/i in 1 to 2)
 		new extra_to_spawn(src)
 	new /obj/item/gun/energy/kinesis(src)
+=======
+/obj/item/storage/toolbox/emergency/turret/nukie/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
+	turret.set_faction(list(ROLE_SYNDICATE))
+>>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d

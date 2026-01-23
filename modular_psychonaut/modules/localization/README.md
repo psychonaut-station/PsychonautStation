@@ -25,7 +25,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/datums/weather/weather_types/radiation_storm.dm`: `/datum/weather/rad_storm/end()`
 - `code/datums/world_topic.dm`: `/datum/world_topic/comms_console/receive_cross_comms_message()`, `/datum/world_topic/news_report/Run()`
 - `code/game/gamemodes/events.dm`: `/proc/power_failure()`, `/proc/power_restore()`, `/proc/power_restore_quick()`
-- `code/game/machinery/computer/communications.dm`: `/obj/machinery/computer/communications/ui_act()`, `/obj/machinery/computer/communications/send_cross_comms_message()`, `/datum/dynamic_ruleset/midround/pirates/heavy,`
+- `code/game/machinery/computer/communications.dm`: `/obj/machinery/computer/communications/ui_act()`, `/obj/machinery/computer/communications/send_cross_comms_message()`, `/obj/machinery/computer/communications/hack_console()`
 - `code/game/machinery/requests_console.dm`: `/obj/machinery/requests_console/ui_act()`
 - `code/game/machinery/slotmachine.dm`: `/obj/machinery/computer/slot_machine/give_prizes()`
 - `code/game/objects/effects/anomalies/anomalies_bluespace.dm`: `/obj/effect/anomaly/bluespace/detonate()`
@@ -34,7 +34,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/game/objects/items/charter.dm`: `/obj/item/station_charter/rename_station()`, `/obj/item/station_charter/banner/rename_station()`
 - `code/game/objects/items/crab17.dm`: `/obj/structure/checkoutmachine/Destroy()`, `/obj/effect/dumpeet_target/startLaunch()`
 - `code/game/objects/items/dna_probe.dm`: `/obj/item/dna_probe/carp_scanner/attack_self()`
-- `code/game/objects/items/mail.dm`: `/obj/effect/decal/cleanable/ash,/var/junk_names`, `/obj/effect/decal/cleanable/ash,/var/name`
+- `code/game/objects/items/mail.dm`: `/obj/item/mail/junk_mail()`
 - `code/modules/admin/topic.dm`: `/datum/admins/Topic()`
 - `code/modules/admin/verbs/adminshuttle.dm`: `GLOBAL/var/text`, `GLOBAL/var/title`, `GLOBAL/var/sound`, `GLOBAL/var/sender_override`, `GLOBAL/var/color_override`
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/announce_to_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
@@ -78,7 +78,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/bureaucratic_error.dm`: `/datum/round_event/bureaucratic_error/announce()`
 - `code/modules/events/carp_migration.dm`: `/datum/round_event/carp_migration/var/fluff_signal`, `/datum/round_event/carp_migration/announce()`
 - `code/modules/events/communications_blackout.dm`: `/datum/round_event/communications_blackout/announce()`
-- `code/modules/events/disease_outbreak.dm`: `/datum/disease/rhumba_beat,`
+- `code/modules/events/disease_outbreak.dm`: `/datum/round_event/disease_outbreak/announce()`
 - `code/modules/events/earthquake.dm`: `/datum/round_event/earthquake/announce()`
 - `code/modules/events/electrical_storm.dm`: `/datum/round_event/electrical_storm/announce()`
 - `code/modules/events/ghost_role/sentience.dm`: `/datum/round_event/ghost_role/sentience/var/one`, `/datum/round_event/ghost_role/sentience/announce()`, `/datum/round_event/ghost_role/sentience/all/var/one`

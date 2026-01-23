@@ -119,7 +119,6 @@ async function readAllFiles(data) {
     ];
 
     const glob = new Glob("**/*.dm");
-
     const dosyaRaporu = {};
 
     let a = 0;
@@ -132,44 +131,32 @@ async function readAllFiles(data) {
             const lines = data.split(/\r?\n/);
 
             a += 1;
-
             const thisFileFound = new Set();
 
-            // Dosya genelinde takibimiz
             let lastContext = "GLOBAL";
             let contextType = "DATUM";
 
-            // Blok içi takiplerimiz
             let insideBlock = false;
-
             let blockBeginContext = "";
             let insideBlockContext = "";
             let insideBlockType = "";
-
             let insideBlockFound = new Set();
-
             let multiLineCommentMode = false;
 
             for (let i = 0; i < lines.length; i++) {
                 const line = lines[i];
                 let trimLine = line.trim();
 
-                if (!trimLine) continue;
-
-                if (trimLine.startsWith("///")) continue;
+                if (!trimLine || trimLine.startsWith("///")) continue;
 
                 // --- YORUM TEMİZLEME ---
                 let analyzableCode = trimLine;
-
                 if (multiLineCommentMode) {
                     if (analyzableCode.includes("*/")) {
                         analyzableCode = analyzableCode.split("*/")[1] || "";
                         multiLineCommentMode = false;
-                    } else {
-                        analyzableCode = "";
-                    }
+                    } else { analyzableCode = ""; }
                 }
-
                 if (!multiLineCommentMode) {
                     analyzableCode = analyzableCode.split("//")[0];
                     analyzableCode = analyzableCode.replace(/\/\*.*?\*\//g, "");
@@ -178,7 +165,6 @@ async function readAllFiles(data) {
                         multiLineCommentMode = true;
                     }
                 }
-
                 analyzableCode = analyzableCode.trim();
 
                 // --- DOSYA GENELİ CONTEXT GÜNCELLEME ---
@@ -188,7 +174,7 @@ async function readAllFiles(data) {
                         lastContext = formatProcPath(rawPath);
                         contextType = "PROC";
                     } else {
-                        if (!analyzableCode.includes("=")) {
+                        if (!analyzableCode.includes("=") && !analyzableCode.endsWith(",")) {
                              let rawContext = analyzableCode.split("{")[0].trim();
                              lastContext = rawContext;
                              contextType = "DATUM";
@@ -199,12 +185,19 @@ async function readAllFiles(data) {
                 // --- BLOCK BEGIN ---
                 if ((line.includes("BEGIN") || line.includes("START")) && line.includes(foundModuleID)) {
                     if(insideBlock) {
-                        console.error(`${foundModuleID} block is already open. Skipping ${i} in ${'code\\' + file}`)
+                        console.error(`${foundModuleID} block is already open. Skipping ${i} in ${file}`);
                     }
                     insideBlock = true;
                     blockBeginContext = lastContext;
                     insideBlockContext = lastContext;
-                    insideBlockType = contextType;
+
+                    // REMOVAL bloklarında eğer PROC içindeysek bile DATUM gibi davranması daha güvenlidir
+                    if (line.includes("REMOVAL") && contextType !== "PROC") {
+                        insideBlockType = "DATUM";
+                    } else {
+                        insideBlockType = contextType;
+                    }
+
                     insideBlockFound = new Set();
                     b += 1;
                     continue;
@@ -214,7 +207,6 @@ async function readAllFiles(data) {
                 if ((line.includes("END") || line.includes("STOP")) && line.includes(foundModuleID)) {
                     insideBlock = false;
                     b += 1;
-
                     if (insideBlockFound.size > 0) {
                         insideBlockFound.forEach(item => thisFileFound.add(item));
                     } else {
@@ -224,9 +216,7 @@ async function readAllFiles(data) {
                 }
 
                 if (insideBlock) {
-                    let ghostCode = trimLine;
-                    ghostCode = ghostCode.replace(/\/\//g, "").replace(/\/\*/g, "").replace(/\*\//g, "").trim();
-
+                    let ghostCode = trimLine.replace(/\/\//g, "").replace(/\/\*/g, "").replace(/\*\//g, "").trim();
                     if (!ghostCode) continue;
 
                     // 1. Define
@@ -236,10 +226,8 @@ async function readAllFiles(data) {
                     // 2. Variable (var/x)
                     else if (ghostCode.startsWith("var/") || ghostCode.startsWith("/var")) {
                          const varName = extractVarName(ghostCode);
-
                          if (ghostCode.startsWith("/")) {
-                            let fullPathVar = ghostCode.split("=")[0].trim();
-                            insideBlockFound.add(fullPathVar);
+                            insideBlockFound.add(ghostCode.split("=")[0].trim());
                          }
                          else if (insideBlockType === "DATUM") {
                             insideBlockFound.add(`${insideBlockContext}/var/${varName}`);
@@ -253,21 +241,26 @@ async function readAllFiles(data) {
                             insideBlockFound.add(`GLOB.${globName}`);
                         }
                     }
-                    // 4. Path (/datum/...) & Context Switch
+                    // 4. Path (/datum/...) & Context Switch (DÜZELTİLDİ)
                     else if (ghostCode.startsWith("/") && !ghostCode.startsWith("/var")) {
-                         if (!ghostCode.includes("=")) {
-                            let potentialPath = ghostCode.split("{")[0].trim();
-                            let formattedPath = potentialPath;
+                         // KRİTİK DÜZELTME: Eğer satır /datum veya /obj ile başlıyorsa, PROC modunda olsak bile context değiştir!
+                         const isExplicitPath = ghostCode.startsWith("/datum") || ghostCode.startsWith("/obj") || ghostCode.startsWith("/mob");
 
-                            if (potentialPath.endsWith(")")) {
-                                formattedPath = formatProcPath(potentialPath);
-                                insideBlockType = "PROC";
-                            } else {
-                                insideBlockType = "DATUM";
-                            }
+                         if (insideBlockType !== "PROC" || isExplicitPath) {
+                             if (!ghostCode.includes("=") && !ghostCode.endsWith(",")) {
+                                 let potentialPath = ghostCode.split("{")[0].trim();
+                                 let formattedPath = potentialPath;
 
-                            insideBlockFound.add(formattedPath);
-                            insideBlockContext = formattedPath;
+                                 if (potentialPath.endsWith(")")) {
+                                     formattedPath = formatProcPath(potentialPath);
+                                     insideBlockType = "PROC";
+                                 } else {
+                                     insideBlockType = "DATUM";
+                                 }
+
+                                 insideBlockFound.add(formattedPath);
+                                 insideBlockContext = formattedPath;
+                             }
                          }
                     }
                     // 5. Override (name = "X")
@@ -275,28 +268,25 @@ async function readAllFiles(data) {
                         let varName = ghostCode.split("=")[0].trim();
                         insideBlockFound.add(`${insideBlockContext}/var/${varName}`);
                     }
-
                     continue;
                 }
 
+                // Tek satır analizi kısmı (Aynı kaldı)
                 if (line.includes(foundModuleID) && line.includes("//")) {
                     const parts = line.split("//");
                     const commentPart = parts[parts.length - 1];
                     let codePart = parts.slice(0, -1).join("//").trim();
-
                     const isCodeCommentedOut = (codePart.length > 0 && analyzableCode.length === 0);
 
                     if (commentPart.includes(foundModuleID)) {
-
                         if (!codePart || isCodeCommentedOut) {
-                            if (commentPart.includes("START") || commentPart.includes("BEGIN") || commentPart.includes("END") || commentPart.includes("STOP")) {
-                                thisFileFound.add(lastContext);
-                                b += 1;
+                            if (/START|BEGIN|END|STOP/.test(commentPart)) {
+                                 thisFileFound.add(lastContext);
+                                 b += 1;
                             }
                         }
                         else if (codePart.startsWith("#define")) {
-                            const defineName = extractDefineName(codePart);
-                            thisFileFound.add(`${defineName}`);
+                            thisFileFound.add(`${extractDefineName(codePart)}`);
                             b += 1;
                         }
                         else if (codePart.startsWith("GLOBAL")) {
@@ -312,20 +302,19 @@ async function readAllFiles(data) {
                             b += 1;
                         }
                         else if (codePart.startsWith("var/") || codePart.startsWith("/var")) {
-                            if (contextType === "DATUM") {
-                               const varName = extractVarName(codePart);
-                               thisFileFound.add(`${lastContext}/var/${varName}`);
-                            } else {
-                               thisFileFound.add(lastContext);
-                            }
-                            b += 1;
+                             if (contextType === "DATUM") {
+                                 thisFileFound.add(`${lastContext}/var/${extractVarName(codePart)}`);
+                             } else {
+                                 thisFileFound.add(lastContext);
+                             }
+                             b += 1;
                         }
                         else {
                             if (contextType === "DATUM" && /^[a-zA-Z0-9_]+\s*=/.test(codePart)) {
-                                let varName = codePart.split("=")[0].trim();
-                                thisFileFound.add(`${lastContext}/var/${varName}`);
+                                 let varName = codePart.split("=")[0].trim();
+                                 thisFileFound.add(`${lastContext}/var/${varName}`);
                             } else {
-                                thisFileFound.add(lastContext);
+                                 thisFileFound.add(lastContext);
                             }
                             b += 1;
                         }
@@ -338,9 +327,7 @@ async function readAllFiles(data) {
                 for (const item of thisFileFound) {
                     if (item.includes("/var/")) {
                         const parentPath = item.split("/var/")[0];
-                        if (thisFileFound.has(parentPath)) {
-                            continue;
-                        }
+                        if (thisFileFound.has(parentPath)) continue;
                     }
                     finalBulgular.add(item);
                 }
@@ -349,8 +336,7 @@ async function readAllFiles(data) {
             }
         }
     }
-
-    return dosyaRaporu
+    return dosyaRaporu;
 }
 
 function extractVarName(codePart) {

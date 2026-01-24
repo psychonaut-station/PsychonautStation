@@ -1,0 +1,4 @@
+author: "Amorak"
+delete-after: True
+changes:
+  - refactor: "Admin popup mesajını Türkçe'ye çevirir."

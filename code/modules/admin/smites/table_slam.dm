@@ -19,13 +19,13 @@
 		to_chat(user, "No tables found to slam the target on!", confidential = TRUE)
 		return
 
-	for(var/obj/structure/table/Table as anything in tables_to_slam)
+	for(var/obj/structure/table/table as anything in tables_to_slam)
 		if (!target || QDELETED(target))
 			break
-		if(QDELETED(Table))
+		if(QDELETED(table))
 			continue
 
-		target.forceMove(Table.loc)
+		target.forceMove(table.loc)
 		target.set_resting(TRUE)
 
 		//Had trouble calling the tablepush() proc directly, so we are replicating its effects here. This has the advantage of not breaking glass tables in the process.

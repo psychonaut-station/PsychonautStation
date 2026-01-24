@@ -26,6 +26,7 @@ env:
     tools/autowiki/
     tools/test_merge_bot/
     tools/UpdatePaths/
+    tgui/public/
 
 jobs:
   mirror:

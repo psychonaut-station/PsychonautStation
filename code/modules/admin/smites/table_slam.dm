@@ -15,7 +15,7 @@
 				tables_to_slam += table
 			CHECK_TICK
 
-	if(!tables_to_slam.len)
+	if(!length(tables_to_slam))
 		to_chat(user, "No tables found to slam the target on!", confidential = TRUE)
 		return
 

@@ -33,5 +33,6 @@
 		target.apply_damage(10, BRUTE)
 		target.apply_damage(40, STAMINA)
 		playsound(target, 'sound/effects/tableslam.ogg', 90, TRUE)
-		sleep(1)
+		sleep(0.1 SECONDS)
+
 	to_chat(target, span_userdanger("You have been slammed across every table on CentCom! Nanotrasen wishes you a pleasent day."), confidential = TRUE)

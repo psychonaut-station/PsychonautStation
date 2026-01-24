@@ -17,7 +17,7 @@
         to_chat(user, "No tables found to slam the target on!", confidential = TRUE)
         return
 
-    for(var/obj/structure/table/T in tables_to_slam)
+    for(var/obj/structure/table/T as anything in tables_to_slam)
         if (!target || QDELETED(target))
             break
         if(QDELETED(T))

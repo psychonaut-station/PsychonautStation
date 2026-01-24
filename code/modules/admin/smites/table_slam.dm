@@ -7,11 +7,17 @@
 
     var/list/tables_to_slam = list()
 
-	//Iteration to locate all tables on CentCom (z=1), using this because "in world" is too costly.
-    for(var/turf/turf as anything in block(locate(1, 1, 1), locate(world.maxx, world.maxy, 1)))
-        for(var/obj/structure/table/T in turf)
-            tables_to_slam += T
-        CHECK_TICK
+	// Get all areas and iterate through their z-level turfs
+    for(var/area/area as anything in GLOB.areas)
+        for(var/list/zlevel_turfs as anything in area.get_zlevel_turf_lists())
+            var/turf/first_turf = zlevel_turfs[1]
+            if(first_turf.z != 1)
+                continue
+
+            for(var/turf/area_turf as anything in zlevel_turfs)
+                for(var/obj/structure/table/T as anything in area_turf)
+                    tables_to_slam += T
+            CHECK_TICK
 
     if(!tables_to_slam.len)
         to_chat(user, "No tables found to slam the target on!", confidential = TRUE)

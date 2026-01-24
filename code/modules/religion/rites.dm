@@ -739,7 +739,7 @@
 	user.visible_message("<span class'notice'>A tear in reality begins forms above the altar!</span>")
 	for(var/i in 1 to 8)
 		var/mob/living/simple_animal/S = create_random_mob(altar_turf, FRIENDLY_SPAWN)
-		S.faction |= "neutral"
+		S.add_faction("neutral")
 	playsound(altar_turf, 'sound/ambience/ruin/servicebell.ogg', 25, TRUE)
 	if(prob(0.1))
 		playsound(altar_turf, 'sound/effects/bamf.ogg', 100, TRUE)

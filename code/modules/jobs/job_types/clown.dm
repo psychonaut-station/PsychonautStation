@@ -113,4 +113,4 @@
 	ADD_TRAIT(H, TRAIT_CLOWN_ENJOYER, INNATE_TRAIT)
 	var/datum/atom_hud/fan = GLOB.huds[DATA_HUD_FAN]
 	fan.show_to(H)
-	H.faction |= FACTION_CLOWN
+	H.add_faction(FACTION_CLOWN)

@@ -111,10 +111,6 @@
 	ADD_TRAIT(H, TRAIT_CLOWNING, JOB_TRAIT)
 	ADD_TRAIT(H, TRAIT_CAN_USE_JUKEBOX, JOB_TRAIT)
 	ADD_TRAIT(H, TRAIT_CLOWN_ENJOYER, INNATE_TRAIT)
-<<<<<<< HEAD
 	var/datum/atom_hud/fan = GLOB.huds[DATA_HUD_FAN]
 	fan.show_to(H)
-	H.faction |= FACTION_CLOWN
-=======
 	H.add_faction(FACTION_CLOWN)
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d

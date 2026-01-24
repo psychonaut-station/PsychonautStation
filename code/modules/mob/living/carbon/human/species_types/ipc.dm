@@ -175,7 +175,7 @@
 	if(adjusted_pressure >= HAZARD_HIGH_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
 		H.adjust_brute_loss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 	else if(adjusted_pressure < HAZARD_LOW_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
-		H.adjust_brute_loss(LOW_PRESSURE_DAMAGE * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+		H.adjust_brute_loss(BASE_LOW_PRESSURE_DAMAGE * 3 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 
 ////////////////////////////////////// ORGANS //////////////////////////////////////
 // Voltage Protector Organ

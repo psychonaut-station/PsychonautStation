@@ -19,42 +19,24 @@
 /datum/hallucination/station_message/proc/do_fake_alert()
 	return CANCEL_FAKE_ALERT
 
-<<<<<<< HEAD
-/datum/hallucination/station_message/blob_alert/start()
-	priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller tehditi kontrol altına almalıdır.", \
-		"Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
-	return ..()
-=======
 /datum/hallucination/station_message/blob_alert
 	require_hearing = TRUE
 
 /datum/hallucination/station_message/blob_alert/do_fake_alert()
-	priority_announce("Confirmed outbreak of level 5 biohazard aboard [station_name()]. All personnel must contain the outbreak.", \
-		"Biohazard Alert", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
+	priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller tehditi kontrol altına almalıdır.", \
+		"Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5, players = list(hallucinator))
 
 /datum/hallucination/station_message/shuttle_dock
 
 /datum/hallucination/station_message/shuttle_dock/do_fake_alert()
 	priority_announce(
-<<<<<<< HEAD
-					text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
-					title = "Acil Durum Mekiği Yanaştı",
-					sound = ANNOUNCER_SHUTTLEDOCK,
-					sender_override = "Acil Durum Mekiği Uyarısı",
-					players = list(hallucinator),
-					color_override = "orange",
-				)
-	return ..()
-=======
-		text = "[SSshuttle.emergency] has docked with the station. You have [DisplayTimeText(SSshuttle.emergency_dock_time)] to board the emergency shuttle.",
-		title = "Emergency Shuttle Arrival",
+		text = "[SSshuttle.emergency] istasyona yanaştı. Acil durum mekiğine binmek için [DisplayTimeText(SSshuttle.emergency_dock_time)] kadar vaktiniz var.",
+		title = "Acil Durum Mekiği Yanaştı",
 		sound = ANNOUNCER_SHUTTLEDOCK,
-		sender_override = "Emergency Shuttle Uplink Alert",
+		sender_override = "Acil Durum Mekiği Uyarısı",
 		players = list(hallucinator),
 		color_override = "orange",
 	)
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
 
 /datum/hallucination/station_message/malf_ai
 	require_hearing = TRUE
@@ -63,14 +45,8 @@
 	if(!(locate(/mob/living/silicon/ai) in GLOB.silicon_mobs))
 		return CANCEL_FAKE_ALERT
 
-<<<<<<< HEAD
 	priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış modülüne gelebilecek olası hasarı önlemek için lütfen AI'ı devre dışı bırakın.", \
 		"Anomali Uyarısı", ANNOUNCER_AIMALF, players = list(hallucinator))
-	return ..()
-=======
-	priority_announce("Hostile runtimes detected in all station systems, please deactivate your AI to prevent possible damage to its morality core.", \
-		"Anomaly Alert", ANNOUNCER_AIMALF, players = list(hallucinator))
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
 
 /datum/hallucination/station_message/heretic
 	require_hearing = TRUE
@@ -141,14 +117,8 @@
 	random_hallucination_weight = 2
 	require_hearing = TRUE
 
-<<<<<<< HEAD
-/datum/hallucination/station_message/meteors/start()
-	priority_announce("İstasyonla çarpışma rotasında olan meteorlar tespit edildi.", "Meteor Uyarısı", ANNOUNCER_METEORS, players = list(hallucinator))
-	return ..()
-=======
 /datum/hallucination/station_message/meteors/do_fake_alert()
-	priority_announce("Meteors have been detected on collision course with the station.", "Meteor Alert", ANNOUNCER_METEORS, players = list(hallucinator))
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
+	priority_announce("İstasyonla çarpışma rotasında olan meteorlar tespit edildi.", "Meteor Uyarısı", ANNOUNCER_METEORS, players = list(hallucinator))
 
 /datum/hallucination/station_message/supermatter_delam
 

@@ -168,7 +168,6 @@
 	purchasable_from = ~(UPLINK_ALL_SYNDIE_OPS | UPLINK_SPY)
 	stock_key = UPLINK_SHARED_STOCK_SURPLUS
 
-<<<<<<< HEAD
 /datum/uplink_item/bundles_tc/sandevistan
 	name = "Sandevistan Bundle"
 	desc = "A box containing an autosurgeon for a sandevistan, allowing you to outspeed targets."
@@ -182,6 +181,5 @@
 	item = /obj/item/storage/box/syndicate/mantis
 	cost = 10
 	purchasable_from = UPLINK_TRAITORS
-=======
+
 #undef TC_VALUE_SURPLUS
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d

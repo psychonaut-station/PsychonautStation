@@ -312,7 +312,6 @@ SUBSYSTEM_DEF(dynamic)
 			picked_rulesets += picked_ruleset
 			continue
 
-<<<<<<< HEAD
 		var/weight_decrease = picked_ruleset.repeatable_weight_decrease
 		if(length(storyteller_setting) && storyteller_setting.Find(STORYTELLER_EVENT_REPETITION_MULTIPLIERS))
 			if(islist(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS]) && !isnull(storyteller_setting[STORYTELLER_EVENT_REPETITION_MULTIPLIERS][picked_ruleset.track]))
@@ -322,14 +321,8 @@ SUBSYSTEM_DEF(dynamic)
 
 		rulesets_weighted[picked_ruleset] -= weight_decrease
 		total_weight -= weight_decrease
-		// Rulesets are not singletons. We need to to make a new one
-		picked_rulesets += new picked_ruleset.type(dynamic_config)
-=======
-		rulesets_weighted[picked_ruleset] -= picked_ruleset.repeatable_weight_decrease
-		total_weight -= picked_ruleset.repeatable_weight_decrease
 		picked_rulesets += picked_ruleset.type
 		// Rulesets are not singletons. Queue_ruleset() will make them one.
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
 
 	// clean up unused rulesets
 	QDEL_LIST(rulesets_weighted)

@@ -483,22 +483,10 @@
   - map: CATWALK - AI Sat fortified similar to Meta and other maps
   - map: CATWALK - See full change log in PR
 2026-01-18:
-<<<<<<< HEAD
-  Melbert:
-  - balance: 'Thermal vision mutation: Active duration 10s -> 30s  (with power, 30s->45s)'
-  - balance: 'Thermal vision mutation: Cooldown 25s -> 60s (with energy, 60s -> 30s)'
-  - balance: 'Thermal vision mutation: Eye damage 10 -> 7.5 (with sync, 7.5 -> 3.75)'
-  - balance: 'Thermal vision mutation: Eye damage is now affected by power chromosome
-      (with power, 7.5 -> 11.25)'
   exdal:
   - balance: phazonun phase ozelliginde artik cooldown var (2 saniye aktif, 15 saniye
       cooldown)
   - balance: phazonun zirhina vurmak artik toxin vurmayacak
-2026-01-23:
-  homek13:
-  - rscadd: "mesleklere ayr\u0131lm\u0131\u015F chat renkleri ve ilgili a\xE7\u0131\
-      p/kapatma se\xE7ene\u011Fi"
-=======
   Arturlang:
   - bugfix: fixes star touch's cosmic bean making the victim forever unable to teleport
       and leave trails
@@ -624,4 +612,7 @@
   - bugfix: Killing yourself in various other ways that gib or dust you will no longer
       delete the items you were wearing, consistent with most of the other ways of
       killing yourself that gib or dust you.
->>>>>>> 37199d7f7fead421df1352f3d2ed876949db1c4d
+2026-01-23:
+  homek13:
+  - rscadd: "mesleklere ayr\u0131lm\u0131\u015F chat renkleri ve ilgili a\xE7\u0131\
+      p/kapatma se\xE7ene\u011Fi"

@@ -69,7 +69,7 @@
 
 /datum/looping_sound/toast
 	mid_sounds = list('sound/machines/toast/toast_machine_running.ogg')
-	mid_length = 1 SECONDS
+	mid_length = 14 SECONDS
 	volume = 30
 	falloff_distance = 1
 	falloff_exponent = 3

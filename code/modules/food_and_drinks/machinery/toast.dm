@@ -220,7 +220,7 @@
 	if(on && toasting_objects.len)
 		toast_loop.start()
 	else
-		toast_loop.stop()
+		stop_running_sound()
 	update_content_visibility()
 	update_appearance()
 

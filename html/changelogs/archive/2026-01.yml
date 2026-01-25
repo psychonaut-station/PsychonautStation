@@ -483,10 +483,6 @@
   - map: CATWALK - AI Sat fortified similar to Meta and other maps
   - map: CATWALK - See full change log in PR
 2026-01-18:
-  exdal:
-  - balance: phazonun phase ozelliginde artik cooldown var (2 saniye aktif, 15 saniye
-      cooldown)
-  - balance: phazonun zirhina vurmak artik toxin vurmayacak
   Arturlang:
   - bugfix: fixes star touch's cosmic bean making the victim forever unable to teleport
       and leave trails
@@ -507,6 +503,10 @@
   - qol: Screentips for radios.
   SmArtKar:
   - bugfix: Fixed ID cards sometimes not functioning within wallets/PDAs
+  exdal:
+  - balance: phazonun phase ozelliginde artik cooldown var (2 saniye aktif, 15 saniye
+      cooldown)
+  - balance: phazonun zirhina vurmak artik toxin vurmayacak
   tontyGH:
   - bugfix: As the AI, possessing an empty shell will no longer break your de-synchronization
       protocols, which would trap your Nanotrasen-brand Silica-Soul(TM) inside of
@@ -616,3 +616,10 @@
   homek13:
   - rscadd: "mesleklere ayr\u0131lm\u0131\u015F chat renkleri ve ilgili a\xE7\u0131\
       p/kapatma se\xE7ene\u011Fi"
+2026-01-25:
+  Amor4k:
+  - admin: Yeni admin smite Table Slam ekler.
+  Amorak:
+  - refactor: "Admin popup mesaj\u0131n\u0131 T\xFCrk\xE7e'ye \xE7evirir."
+  lelandkemble:
+  - map: The last full wooden barricades on top of dense objects have been excised

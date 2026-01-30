@@ -348,6 +348,7 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 					airlock.req_access = list()
 					airlock.req_one_access = list()
 			message_admins("[key_name_admin(holder)] activated Egalitarian Station mode")
+<<<<<<< HEAD
 			priority_announce("CentCom hava kilidi kontrolünü geçersiz kılma etkinleştirildi. Lütfen bu zamanı iş arkadaşlarınızla tanışmaya ayırın.", null, SSstation.announcer.get_rand_report_sound())
 		if("ancap")
 			if(!is_funmin)
@@ -359,6 +360,9 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 				priority_announce("NAP şu anda tam olarak yürürlüktedir.", null, SSstation.announcer.get_rand_report_sound())
 			else
 				priority_announce("NAP iptal edilmiştir.", null, SSstation.announcer.get_rand_report_sound())
+=======
+			priority_announce("CentCom airlock control override activated. Please take this time to get acquainted with your coworkers.", null, SSstation.announcer.get_rand_report_sound())
+>>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614
 		if("send_shuttle_back")
 			if (!is_funmin)
 				return
@@ -686,6 +690,20 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 			sound_to_playing_players('sound/effects/pray_chaplain.ogg')
 			message_admins("[key_name_admin(holder)] healed everyone.")
 			log_admin("[key_name(holder)] healed everyone.")
+
+		if("cascade")
+			if(!is_funmin)
+				return
+			message_admins("[key_name_admin(holder)] started a resonance cascade! You're supposed to be a scientist! Use your common sense!")
+			for(var/obj/machinery/power/supermatter_crystal/S in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/power/supermatter_crystal))
+				if(!S.is_main_engine)
+					continue
+				S.explosion_point = 0
+				S.set_delam(SM_DELAM_PRIO_IN_GAME, /datum/sm_delam/cascade)
+				S.external_damage_immediate += 200
+				S.count_down()
+				return
+			return
 
 	if(holder)
 		log_admin("[key_name(holder)] used secret: [action].")

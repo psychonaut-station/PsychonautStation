@@ -9,7 +9,11 @@
 	hijack_speed = 2 //If you can't take out the station, take the shuttle instead.
 	suicide_cry = "FOR THE SYNDICATE!!"
 	stinger_sound = 'sound/music/antag/ops.ogg'
+<<<<<<< HEAD
 	credits_icon = "nukeops"
+=======
+	desensitized_modifier = DESENSITIZED_THRESHOLD * 0.5
+>>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614
 
 	/// Which nukie team are we on?
 	var/datum/team/nuclear/nuke_team
@@ -133,7 +137,6 @@
 
 	var/mob/living/carbon/human/operative = owner.current
 	ADD_TRAIT(operative, TRAIT_NOFEAR_HOLDUPS, INNATE_TRAIT)
-	ADD_TRAIT(operative, TRAIT_DESENSITIZED, INNATE_TRAIT)
 
 	if(!nukeop_outfit) // this variable is null in instances where an antagonist datum is granted via enslaving the mind (/datum/mind/proc/enslave_mind_to_creator), like in golems.
 		return

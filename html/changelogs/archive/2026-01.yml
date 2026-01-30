@@ -613,18 +613,9 @@
       delete the items you were wearing, consistent with most of the other ways of
       killing yourself that gib or dust you.
 2026-01-23:
-<<<<<<< HEAD
   homek13:
   - rscadd: "mesleklere ayr\u0131lm\u0131\u015F chat renkleri ve ilgili a\xE7\u0131\
       p/kapatma se\xE7ene\u011Fi"
-2026-01-25:
-  Amor4k:
-  - admin: Yeni admin smite Table Slam ekler.
-  Amorak:
-  - refactor: "Admin popup mesaj\u0131n\u0131 T\xFCrk\xE7e'ye \xE7evirir."
-  lelandkemble:
-  - map: The last full wooden barricades on top of dense objects have been excised
-=======
   ArcaneMusic:
   - spellcheck: The slime management console no longer reads a variable name out incorrectly.
   JohnFulpWillard:
@@ -650,6 +641,10 @@
   - bugfix: Fixed lights breaking forever if they lose power
   vinylspiders:
   - bugfix: fixes the sql schema revision being wrong in the code
+  Amor4k:
+  - admin: Yeni admin smite Table Slam ekler.
+  Amorak:
+  - refactor: "Admin popup mesaj\u0131n\u0131 T\xFCrk\xE7e'ye \xE7evirir."
 2026-01-26:
   Cirrial:
   - bugfix: Fixed right-click menu pick up of items not working in rare cases.
@@ -818,4 +813,3 @@
   - bugfix: RLD created lights now fall off when floor/wall is destroyed
   Y0SH1M4S73R:
   - bugfix: wire bundle circuit components work once again
->>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614

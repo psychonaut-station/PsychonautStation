@@ -135,13 +135,10 @@
 	/// If set, look for a policy with this instead of the job title
 	var/policy_override
 
-<<<<<<< HEAD
 	/// The list of alternative job titles people can pick from
 	var/list/alt_titles
-=======
 	/// How desensitized this job is to seeing death as a base - applied with the job
 	var/desensitized_base = 1.0
->>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614
 
 /datum/job/New()
 	. = ..()

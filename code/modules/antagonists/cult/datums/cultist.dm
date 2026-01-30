@@ -8,11 +8,8 @@
 	pref_flag = ROLE_CULTIST
 	antag_hud_name = "cult"
 	stinger_sound = 'sound/music/antag/bloodcult/bloodcult_gain.ogg'
-<<<<<<< HEAD
 	credits_icon = "cult"
-=======
 	desensitized_modifier = DESENSITIZED_THRESHOLD
->>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614
 
 	///Boolean on whether the starting equipment should be given to their inventory.
 	var/give_equipment = FALSE

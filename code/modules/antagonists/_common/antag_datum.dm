@@ -57,13 +57,10 @@ GLOBAL_LIST_EMPTY(antagonists)
 	var/hardcore_random_bonus = FALSE
 	/// A path to the audio stinger that plays upon gaining this datum.
 	var/stinger_sound
-<<<<<<< HEAD
 	/// The icon state for the credits major event icons
 	var/credits_icon
-=======
 	/// Multiplicative modifier to the mind's desensitized level when this antagonist is applied. Minimum is 0.1.
 	var/desensitized_modifier = 1.0
->>>>>>> 4ee471b30f4b7f162e2160e794c3e70c1229e614
 
 	//ANTAG UI
 

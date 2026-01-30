@@ -962,7 +962,6 @@
 /obj/item/storage/belt/sheath/sabre/gunpowered
 	name = "modified sabre sheath"
 	desc = "An imitation of a design made by the infamous Cold Space Wind. Has a trigger mechanism to more forcefully draw the blade."
-	icon_state = "gunsheath"
 	actions_types = list(/datum/action/innate/blade_counter/gunpowered)
 	stored_blade = null
 

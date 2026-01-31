@@ -87,6 +87,9 @@
 	savefile_key = "sound_lobby_volume"
 	savefile_identifier = PREFERENCE_PLAYER
 
+/datum/preference/numeric/volume/sound_lobby_volume/create_default_value()
+	return 50
+
 /datum/preference/numeric/volume/sound_lobby_volume/apply_to_client_updated(client/client, value)
 	if (value && isnewplayer(client.mob))
 		client.playtitlemusic()

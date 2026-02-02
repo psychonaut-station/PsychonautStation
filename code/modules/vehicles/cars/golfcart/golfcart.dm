@@ -37,9 +37,8 @@
 	var/engine_state = null
 	///An invisible sprite that exists as a hitbox
 	var/obj/golfcart_rear/child = null
-	///A chem grenade installed under the hood (if any)
+	///A ttv or chem grenade can be installed under the hood
 	var/obj/item/grenade/chem_grenade/grenade = null
-	///A tank transfer valve (TTV) installed under the hood (if any)
 	var/obj/item/transfer_valve/transfer_valve = null
 	///Objects that can be buckled to the cargo hitch
 	var/static/list/allowed_cargo = typecacheof(list(
@@ -233,7 +232,7 @@
 		cell = attacking_item
 		balloon_alert(user, "installed \the [cell]")
 		return ITEM_INTERACT_SUCCESS
-	// Allow installing a chemistry grenade under the hood
+	// Allow installing a ttv or chem grenade under the hood
 	if (istype(attacking_item, /obj/item/grenade/chem_grenade))
 		if (grenade)
 			balloon_alert(user, "there's already something installed under the hood!")
@@ -245,7 +244,6 @@
 		grenade = attacking_item
 		balloon_alert(user, "installed \the [grenade]")
 		return ITEM_INTERACT_SUCCESS
-	// Allow installing a transfer valve (TTV) under the hood
 	if (istype(attacking_item, /obj/item/transfer_valve))
 		if (transfer_valve)
 			balloon_alert(user, "there's already something installed under the hood!")
@@ -402,7 +400,7 @@
 	if (tool.tool_behaviour != TOOL_WIRECUTTER)
 		return ..()
 	tool.play_tool_sound(src)
-	// Remove grenade (if present)
+	// Remove ttv or grenade (if present)
 	if (grenade)
 		var/obj/item/grenade/chem_grenade/grenade_to_take = grenade
 		grenade = null
@@ -411,7 +409,6 @@
 			return
 		grenade_to_take.forceMove(drop_location())
 		return ITEM_INTERACT_SUCCESS
-	// Remove TTV (if present)
 	if (transfer_valve)
 		var/obj/item/transfer_valve/ttv_to_take = transfer_valve
 		transfer_valve = null

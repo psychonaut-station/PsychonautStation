@@ -475,7 +475,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	if(isnull(operating_on))
 		return FALSE
 
-	var/obj/item/bodypart/bodypart = patient.get_bodypart(check_zone(operated_zone))
+	var/obj/item/bodypart/bodypart = patient?.get_bodypart(check_zone(operated_zone))
 	if(!isnull(bodypart) && (operation_flags & OPERATION_SELF_OPERABLE) && (bodypart.bodytype & BODYTYPE_IPC))
 		return FALSE
 

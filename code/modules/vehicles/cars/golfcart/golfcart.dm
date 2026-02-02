@@ -239,7 +239,7 @@
 			balloon_alert(user, "there's already something installed under the hood!")
 			return ITEM_INTERACT_BLOCKING
 		if (transfer_valve)
-			balloon_alert(user, "Trapping the same car twice is a waste of time.")
+			balloon_alert(user, "trapping the same car twice is a waste of time.")
 			return ITEM_INTERACT_BLOCKING
 		user.transferItemToLoc(attacking_item, src)
 		grenade = attacking_item
@@ -251,7 +251,7 @@
 			balloon_alert(user, "there's already something installed under the hood!")
 			return ITEM_INTERACT_BLOCKING
 		if (grenade)
-			balloon_alert(user, "Trapping the same car twice is a waste of time.")
+			balloon_alert(user, "trapping the same car twice is a waste of time.")
 			return ITEM_INTERACT_BLOCKING
 		user.transferItemToLoc(attacking_item, src)
 		transfer_valve = attacking_item

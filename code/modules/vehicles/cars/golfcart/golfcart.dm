@@ -38,8 +38,7 @@
 	///An invisible sprite that exists as a hitbox
 	var/obj/golfcart_rear/child = null
 	///A ttv or chem grenade can be installed under the hood
-	var/obj/item/grenade/chem_grenade/grenade = null
-	var/obj/item/transfer_valve/transfer_valve = null
+	var/obj/item/carbomb = null
 	///Objects that can be buckled to the cargo hitch
 	var/static/list/allowed_cargo = typecacheof(list(
 		/obj/structure/closet/crate,
@@ -233,27 +232,13 @@
 		balloon_alert(user, "installed \the [cell]")
 		return ITEM_INTERACT_SUCCESS
 	// Allow installing a ttv or chem grenade under the hood
-	if (istype(attacking_item, /obj/item/grenade/chem_grenade))
-		if (grenade)
+	if (istype(attacking_item, /obj/item/grenade/chem_grenade) || istype(attacking_item, /obj/item/transfer_valve))
+		if (carbomb)
 			balloon_alert(user, "there's already something installed under the hood!")
 			return ITEM_INTERACT_BLOCKING
-		if (transfer_valve)
-			balloon_alert(user, "trapping the same car twice is a waste of time.")
-			return ITEM_INTERACT_BLOCKING
 		user.transferItemToLoc(attacking_item, src)
-		grenade = attacking_item
-		balloon_alert(user, "installed \the [grenade]")
-		return ITEM_INTERACT_SUCCESS
-	if (istype(attacking_item, /obj/item/transfer_valve))
-		if (transfer_valve)
-			balloon_alert(user, "there's already something installed under the hood!")
-			return ITEM_INTERACT_BLOCKING
-		if (grenade)
-			balloon_alert(user, "trapping the same car twice is a waste of time.")
-			return ITEM_INTERACT_BLOCKING
-		user.transferItemToLoc(attacking_item, src)
-		transfer_valve = attacking_item
-		balloon_alert(user, "installed \the [transfer_valve]")
+		carbomb = attacking_item
+		balloon_alert(user, "installed explosive device under the hood.")
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 
@@ -385,12 +370,9 @@
 			. += span_smallnotice("If you remove the cell you could probably install another power source...")
 		else
 			. += span_info("There is no power cell installed.")
-		if (grenade)
-			. += span_info("You can see \the [grenade] inside.")
-			. += span_smallnotice("You can remove the [grenade] with a wirecutter.")
-		if (transfer_valve)
-			. += span_info("You can see \the [transfer_valve] inside.")
-			. += span_smallnotice("You can remove the [transfer_valve] with a wirecutter.")
+		if (carbomb)
+			. += span_info("You can see \the [carbomb] inside.")
+			. += span_smallnotice("You can remove the [carbomb] with a wirecutter.")
 
 // Grenades and transfer valves must be removed with a wirecutter, not by hand.
 /obj/vehicle/ridden/golfcart/wirecutter_act(mob/living/user, obj/item/tool)
@@ -401,21 +383,13 @@
 		return ..()
 	tool.play_tool_sound(src)
 	// Remove ttv or grenade (if present)
-	if (grenade)
-		var/obj/item/grenade/chem_grenade/grenade_to_take = grenade
-		grenade = null
-		to_chat(user, span_notice("You remove the [grenade] from under the hood."))
-		if (user.put_in_hands(grenade_to_take))
+	if (carbomb)
+		var/obj/item/carbomb_to_take = carbomb
+		carbomb = null
+		to_chat(user, span_notice("You remove the [carbomb] from under the hood."))
+		if (user.put_in_hands(carbomb_to_take))
 			return
-		grenade_to_take.forceMove(drop_location())
-		return ITEM_INTERACT_SUCCESS
-	if (transfer_valve)
-		var/obj/item/transfer_valve/ttv_to_take = transfer_valve
-		transfer_valve = null
-		to_chat(user, span_notice("You remove the [ttv_to_take] from under the hood."))
-		if (user.put_in_hands(ttv_to_take))
-			return
-		ttv_to_take.forceMove(drop_location())
+		carbomb_to_take.forceMove(drop_location())
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 

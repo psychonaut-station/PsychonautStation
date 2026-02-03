@@ -387,9 +387,8 @@
 		var/obj/item/carbomb_to_take = carbomb
 		carbomb = null
 		to_chat(user, span_notice("You remove the [carbomb] from under the hood."))
-		if (user.put_in_hands(carbomb_to_take))
-			return
-		carbomb_to_take.forceMove(drop_location())
+		if(!user.put_in_hands(carbomb_to_take))
+			carbomb_to_take.forceMove(drop_location())
 		return ITEM_INTERACT_SUCCESS
 	return ..()
 

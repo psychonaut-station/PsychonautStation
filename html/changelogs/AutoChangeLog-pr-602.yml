@@ -1,0 +1,4 @@
+author: "Ureus"
+delete-after: True
+changes:
+  - rscadd: "Golf aracının kaputuna bomba koyulmasını sağlar."

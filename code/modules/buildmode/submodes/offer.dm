@@ -2,10 +2,7 @@
 	key = "offer"
 
 /datum/buildmode_mode/offer/show_help(client/builder)
-	to_chat(
-		builder,
-		span_purple(boxed_message("[span_bold("Offer a mob to ghosts")] -> Left Click on a mob"))
-	)
+	to_chat(builder, span_purple(boxed_message("[span_bold("Offer a mob to ghosts")] -> Left Click on a mob")))
 
 /datum/buildmode_mode/offer/handle_click(client/user, params, object)
 	if (!ismob(object))

@@ -3,6 +3,7 @@
 /datum/surgery_operation/limb/plastic_surgery
 	name = "plastic surgery"
 	desc = "Reshape or reconstruct a patient's face for cosmetic or functional purposes."
+	localizated_desc = "Kozmetik veya fonksiyonel amaçlarla hastanın yüzünü yeniden şekillendirin veya yapılandırın."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/knife = 2,
@@ -120,6 +121,7 @@
 /datum/surgery_operation/limb/add_plastic
 	name = "apply plastic"
 	desc = "Apply plastic to a patient's face to to allow for greater customization in following plastic surgery."
+	localizated_desc = "İlerleyen plastik cerrahi işlemlerinde daha fazla özelleştirme sağlamak için hastanın yüzüne plastik uygulayın."
 	implements = list(
 		/obj/item/stack/sheet/plastic = 1,
 	)

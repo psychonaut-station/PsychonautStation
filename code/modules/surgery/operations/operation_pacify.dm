@@ -3,6 +3,7 @@
 	rnd_name = "Paxopsy (Pacification)"
 	desc = "Remove aggressive tendencies from a patient's brain."
 	rnd_desc = "A surgical procedure which permanently inhibits the aggression center of the brain, making the patient unwilling to cause direct harm."
+	localizated_desc = "Beyindeki saldırganlık merkezini kalıcı olarak engelleyerek hastanın çevresine doğrudan zarar vermesini engelleyen cerrahi bir prosedür."
 	operation_flags = OPERATION_MORBID | OPERATION_LOCKED | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -57,6 +58,7 @@
 	name = "delete aggression programming"
 	rnd_name = "Aggression Suppression Programming (Pacification)"
 	rnd_desc = "Install malware which permanently inhibits the aggression programming of the patient's neural network, making the patient unwilling to cause direct harm."
+	localizated_desc = "Robotik hastanın sinir ağındaki saldırganlık programlamasını kalıcı olarak engelleyerek hastanın doğrudan zarar vermesini engelleyen bir zararlı yazılım yükleyin."
 	implements = list(
 		TOOL_MULTITOOL = 1,
 		TOOL_HEMOSTAT = 2.85,

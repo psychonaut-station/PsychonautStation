@@ -2,6 +2,7 @@
 	name = "debride infected flesh"
 	rnd_name = "Debridement"
 	desc = "Remove infected or necrotic flesh from a patient's wound to promote healing."
+	localizated_desc = "İyileşmeyi hızlandırmak için hastanın yarasındaki enfekte veya nekrotik dokuları temizleyin."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCALPEL = 1.25,

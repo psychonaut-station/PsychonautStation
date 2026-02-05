@@ -2,6 +2,7 @@
 	name = "excise excess fat"
 	rnd_name = "Lipoplasty (Excise Fat)"
 	desc = "Remove excess fat from a patient's body."
+	localizated_desc = "Hastanın vücudundaki fazla yağları alın."
 	operation_flags = OPERATION_NOTABLE | OPERATION_AFFECTS_MOOD
 	implements = list(
 		TOOL_SAW = 1,

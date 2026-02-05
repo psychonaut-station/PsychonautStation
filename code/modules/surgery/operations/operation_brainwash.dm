@@ -6,6 +6,7 @@
 	rnd_name = "Neural Brainwashing (Brainwash)"
 	rnd_desc = "A surgical procedure which directly implants a directive into the patient's brain, \
 		making it their absolute priority. It can be cleared using a mindshield implant."
+	localizated_desc = "Hastanın beynine doğrudan bir talimat implant eden ve bunu mutlak önceliği haline getiren cerrahi bir prosedür. Mindshield implantı kullanılarak temizlenebilir."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_WIRECUTTER = 2,
@@ -80,6 +81,7 @@
 	rnd_name = "Neural Reprogramming (Brainwash)"
 	rnd_desc = "Install malware which directly implants a directive into the robotic patient's operating system, \
 		making it their absolute priority. It can be cleared using a mindshield implant."
+	localizated_desc = "Robotik hastanın işletim sistemine doğrudan bir talimat yükleyen ve bunu mutlak önceliği haline getiren bir zararlı yazılım. Mindshield implantı kullanılarak temizlenebilir."
 	implements = list(
 		TOOL_MULTITOOL = 1.15,
 		TOOL_HEMOSTAT = 2,

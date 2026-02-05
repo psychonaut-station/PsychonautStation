@@ -403,6 +403,8 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	/// Use "the patient" instead of "a patient" to keep it specific.
 	var/rnd_desc
 
+	var/localizated_desc
+
 	/**
 	 * What tool(s) can be used to perform this operation?
 	 *

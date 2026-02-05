@@ -3,6 +3,7 @@
 	abstract_type = /datum/surgery_operation/organ/repair
 	name = "repair organ"
 	desc = "Repair a patient's damaged organ."
+	localizated_desc = "Hastanın hasarlı bir organını düzeltin."
 	required_organ_flag = ORGAN_TYPE_FLAGS & ~ORGAN_ROBOTIC
 	operation_flags = OPERATION_AFFECTS_MOOD | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_ORGANS_CUT|SURGERY_BONE_SAWED
@@ -20,6 +21,7 @@
 		repeatable = TRUE // if it's looping it would necessitate being repeatable
 	if(!repeatable)
 		desc += " This procedure can only be performed once per organ."
+		localizated_desc += " Bu prosedür her organ için yalnızca bir kez uygulanabilir."
 
 /datum/surgery_operation/organ/repair/state_check(obj/item/organ/organ)
 	if(organ.damage < (organ.maxHealth * heal_to_percent) || (!repeatable && HAS_TRAIT(organ, TRAIT_ORGAN_OPERATED_ON)))
@@ -48,6 +50,7 @@
 	name = "excise damaged lung lobe"
 	rnd_name = "Lobectomy (Lung Surgery)"
 	desc = "Perform repairs to a patient's damaged lung by excising the most damaged lobe."
+	localizated_desc = "En çok hasar görmüş lobu çıkararak hastanın hasarlı akciğerini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,
@@ -112,6 +115,7 @@
 	name = "remove damaged liver section"
 	rnd_name = "Hepatectomy (Liver Surgery)"
 	desc = "Perform repairs to a patient's damaged liver by removing the most damaged section."
+	localizated_desc = "En çok hasar görmüş bölümü çıkararak hastanın hasarlı karaciğerini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,
@@ -177,6 +181,7 @@
 	name = "graft coronary bypass"
 	rnd_name = "Coronary Artery Bypass Graft (Heart Surgery)"
 	desc = "Graft a bypass onto a patient's damaged heart to restore proper blood flow."
+	localizated_desc = "Düzgün kan akışını sağlamak için hastanın hasarlı kalbine bir bypass grefti yerleştirin."
 	implements = list(
 		TOOL_HEMOSTAT = 1.05,
 		TOOL_WIRECUTTER = 2.85,
@@ -242,6 +247,7 @@
 	name = "remove damaged stomach section"
 	rnd_name = "Gastrectomy (Stomach Surgery)"
 	desc = "Perform repairs to a patient's stomach by removing a damaged section."
+	localizated_desc = "Hasarlı bir bölümü çıkararak hastanın midesini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,
@@ -316,6 +322,7 @@
 	name = "ear surgery"
 	rnd_name = "Ototomy (Ear surgery)" // source: i made it up
 	desc = "Repair a patient's damaged ears to restore hearing."
+	localizated_desc = "İşitmeyi geri kazandırmak için hastanın hasarlı kulaklarını onarın."
 	operation_flags = parent_type::operation_flags & ~OPERATION_AFFECTS_MOOD
 	implements = list(
 		TOOL_HEMOSTAT = 1.05,
@@ -387,6 +394,7 @@
 	name = "eye surgery"
 	rnd_name = "Vitrectomy (Eye Surgery)"
 	desc = "Repair a patient's damaged eyes to restore vision."
+	localizated_desc = "Görme yetisini geri kazandırmak için hastanın hasarlı gözlerini onarın."
 	operation_flags = parent_type::operation_flags & ~OPERATION_AFFECTS_MOOD
 	implements = list(
 		TOOL_HEMOSTAT = 1.05,
@@ -461,6 +469,7 @@
 	name = "brain surgery"
 	rnd_name = "Neurosurgery (Brain Surgery)"
 	desc = "Repair a patient's damaged brain tissue to restore cognitive function."
+	localizated_desc = "Bilişsel işlevleri geri kazandırmak için hastanın hasarlı beyin dokusunu onarın."
 	implements = list(
 		TOOL_HEMOSTAT = 1.05,
 		TOOL_SCREWDRIVER = 2.85,

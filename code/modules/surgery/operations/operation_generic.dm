@@ -5,6 +5,7 @@
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
 	desc = "Make an incision in the patient's skin to access internal organs. \
 		Causes \"cut skin\" surgical state."
+	localizated_desc = "İç organlara erişmek için hastanın derisinde bir kesi yapın. \"cut skin\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/incise_skin/abductor
 	implements = list(
@@ -101,6 +102,7 @@
 	name = "retract skin"
 	desc = "Retract the patient's skin to access their internal organs. \
 		Causes \"skin open\" surgical state."
+	localizated_desc = "İç organlara erişmek için hastanın derisini geriye çekin. \"skin open\" cerrahi durumuna neden olur."
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	replaced_by = /datum/surgery_operation/limb/retract_skin/abductor
@@ -145,6 +147,7 @@
 	name = "mend skin incision"
 	desc = "Mend the incision in the patient's skin, closing it up. \
 		Clears most surgical states."
+	localizated_desc = "Hastanın derisindeki kesiyi onararak kapatın. Çoğu cerrahi durumu temizler."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/close_skin/abductor
@@ -213,6 +216,7 @@
 	name = "clamp bleeders"
 	desc = "Clamp bleeding blood vessels in the patient's body to prevent blood loss. \
 		Causes \"vessels clamped\" surgical state."
+	localizated_desc = "Kan kaybını önlemek için hastanın vücudundaki kanayan damarları klempleyin. \"vessels clamped\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/clamp_bleeders/abductor
@@ -256,6 +260,7 @@
 	name = "unclamp bleeders"
 	desc = "Unclamp blood vessels in the patient's body to allow blood flow again. \
 		Clears \"vessels clamped\" surgical state."
+	localizated_desc = "Kan akışına tekrar izin vermek için hastanın vücudundaki kan damarlarının klempini açın. \"vessels clamped\" cerrahi durumunu temizler."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/unclamp_bleeders/abductor
@@ -302,6 +307,7 @@
 	name = "saw limb bone"
 	desc = "Saw through the patient's bones to access their internal organs. \
 		Causes \"bone sawed\" surgical state."
+	localizated_desc = "İç organlara erişmek için hastanın kemiklerini testereyle kesin. \"bone sawed\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_SAW = 1,
@@ -364,6 +370,7 @@
 	name = "fix limb bone"
 	desc = "Repair a patient's cut or broken bones. \
 		Clears \"bone sawed\" and \"bone drilled\" surgical states."
+	localizated_desc = "Hastanın kesilmiş veya kırılmış kemiklerini onarın. \"bone sawed\" ve \"bone drilled\" cerrahi durumlarını temizler."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -410,6 +417,7 @@
 	name = "drill limb bone"
 	desc = "Drill through a patient's bones. \
 		Causes \"bone drilled\" surgical state."
+	localizated_desc = "Hastanın kemiklerini delin. \"bone drilled\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
@@ -461,6 +469,7 @@
 	name = "incise organs"
 	desc = "Make an incision in patient's internal organ tissue to allow for manipulation or repair. \
 		Causes \"organs cut\" surgical state."
+	localizated_desc = "Müdahale veya onarım için hastanın iç organ dokusunda bir kesi yapın. \"organs cut\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/incise_organs/abductor

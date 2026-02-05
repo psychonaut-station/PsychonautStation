@@ -3965,6 +3965,7 @@
 #include "code\modules\buildmode\submodes\fill.dm"
 #include "code\modules\buildmode\submodes\map_export.dm"
 #include "code\modules\buildmode\submodes\mapgen.dm"
+#include "code\modules\buildmode\submodes\offer.dm"
 #include "code\modules\buildmode\submodes\outfit.dm"
 #include "code\modules\buildmode\submodes\proccall.dm"
 #include "code\modules\buildmode\submodes\smite.dm"

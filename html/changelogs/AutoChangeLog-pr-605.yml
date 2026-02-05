@@ -1,0 +1,4 @@
+author: "homek13"
+delete-after: True
+changes:
+  - admin: "buildmode ghost offer"

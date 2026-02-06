@@ -190,7 +190,7 @@
 				return
 
 			if(emote_name in client.prefs.custom_emote_panel)
-				to_chat(client, span_warning("Emote “[emote_name]” already exists!"))
+				to_chat(client, span_warning("Emote \"[emote_name]\" already exists!"))
 				return
 
 			client.prefs.custom_emote_panel[emote_name] = emote
@@ -263,7 +263,7 @@
 		to_chat(client, span_notice("Rename cancelled"))
 		return FALSE
 	if(new_emote_name in client.prefs.custom_emote_panel)
-		to_chat(client, span_warning("Emote “[new_emote_name]” already exists!"))
+		to_chat(client, span_warning("Emote \"[new_emote_name]\" already exists!"))
 		return FALSE
 
 	var/list/emote = client.prefs.custom_emote_panel[emote_name]
@@ -320,8 +320,38 @@
 
 	return TRUE
 
+/datum/tgui_panel/proc/check_emote_usability(emote_key)
+	if(!client?.mob)
+		return FALSE
+
+	if(!(emote_key in GLOB.emote_list))
+		return FALSE
+
+	var/list/emote_list = GLOB.emote_list[emote_key]
+
+	for(var/datum/emote/emote in emote_list)
+		if(emote.key != emote_key)
+			continue
+		if(emote.can_run_emote(client.mob, status_check = TRUE, intentional = TRUE))
+			return TRUE
+
+	return FALSE
+
 /datum/tgui_panel/proc/emotes_send_list()
-	var/list/payload = client.prefs.custom_emote_panel
+	var/list/payload = list()
+
+	for(var/emote_name in client.prefs.custom_emote_panel)
+		var/list/emote_data = client.prefs.custom_emote_panel[emote_name].Copy()
+
+		var/emote_type = emote_data["type"]
+		if(emote_type == TGUI_PANEL_EMOTE_TYPE_DEFAULT || emote_type == TGUI_PANEL_EMOTE_TYPE_CUSTOM)
+			var/emote_key = emote_data["key"]
+			emote_data["usable"] = check_emote_usability(emote_key)
+		else
+			emote_data["usable"] = TRUE
+
+		payload[emote_name] = emote_data
+
 	window.send_message("emotes/setList", payload)
 
 #undef TGUI_PANEL_MAX_EMOTES

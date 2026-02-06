@@ -11,9 +11,16 @@ export const EmotePanel = (props, context) => {
   const emoteList = [];
   for (const name in emotes.list) {
     const type = emotes.list[name]?.type;
+    const usable = emotes.list[name]?.usable ?? true;
+
     switch (type) {
       case TGUI_PANEL_EMOTE_TYPE_DEFAULT:
-        emoteList.push({ type, name, key: emotes.list[name].key });
+        emoteList.push({
+          type,
+          name,
+          key: emotes.list[name].key,
+          usable
+        });
         break;
       case TGUI_PANEL_EMOTE_TYPE_CUSTOM:
         emoteList.push({
@@ -21,10 +28,16 @@ export const EmotePanel = (props, context) => {
           name,
           key: emotes.list[name].key,
           message_override: emotes.list[name].message_override,
+          usable
         });
         break;
       case TGUI_PANEL_EMOTE_TYPE_ME:
-        emoteList.push({ type, name, message: emotes.list[name].message });
+        emoteList.push({
+          type,
+          name,
+          message: emotes.list[name].message,
+          usable
+        });
         break;
       default:
         continue;
@@ -46,21 +59,27 @@ export const EmotePanel = (props, context) => {
           .map((emote) => {
             let color = 'blue';
             let tooltip = '';
-            switch (emote.type) {
-              case TGUI_PANEL_EMOTE_TYPE_DEFAULT:
-                tooltip = `*${emote.key}`;
-                break;
-              case TGUI_PANEL_EMOTE_TYPE_CUSTOM:
-                color = 'purple';
-                tooltip = `*${emote.key} | "${emote.message_override}"`;
-                break;
-              case TGUI_PANEL_EMOTE_TYPE_ME:
-                color = 'orange';
-                tooltip = `"${emote.message}"`;
-                break;
-              default:
-                tooltip = 'ОШИБКА: НЕИЗВЕСТНЫЙ ТИП ЭМОЦИИ';
-                break;
+
+            if (!emote.usable) {
+              color = 'grey';
+            } else {
+              switch (emote.type) {
+                case TGUI_PANEL_EMOTE_TYPE_DEFAULT:
+                  color = 'blue';
+                  tooltip = `*${emote.key}`;
+                  break;
+                case TGUI_PANEL_EMOTE_TYPE_CUSTOM:
+                  color = 'purple';
+                  tooltip = `*${emote.key} | "${emote.message_override}"`;
+                  break;
+                case TGUI_PANEL_EMOTE_TYPE_ME:
+                  color = 'orange';
+                  tooltip = `"${emote.message}"`;
+                  break;
+                default:
+                  tooltip = 'UNKNOWN EMOTE';
+                  break;
+              }
             }
             return (
               <Stack.Item key={emote.name}>

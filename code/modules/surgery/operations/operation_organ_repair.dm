@@ -50,7 +50,7 @@
 	name = "excise damaged lung lobe"
 	rnd_name = "Lobectomy (Lung Surgery)"
 	desc = "Perform repairs to a patient's damaged lung by excising the most damaged lobe."
-	localizated_desc = "En çok hasar görmüş lobu çıkararak hastanın hasarlı akciğerini onarın."
+	localizated_desc = "En çok hasar görmüş lobu keserek hastanın hasarlı akciğerini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,
@@ -115,7 +115,7 @@
 	name = "remove damaged liver section"
 	rnd_name = "Hepatectomy (Liver Surgery)"
 	desc = "Perform repairs to a patient's damaged liver by removing the most damaged section."
-	localizated_desc = "En çok hasar görmüş bölümü çıkararak hastanın hasarlı karaciğerini onarın."
+	localizated_desc = "En çok hasar görmüş bölümü keserek hastanın hasarlı karaciğerini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,
@@ -181,7 +181,7 @@
 	name = "graft coronary bypass"
 	rnd_name = "Coronary Artery Bypass Graft (Heart Surgery)"
 	desc = "Graft a bypass onto a patient's damaged heart to restore proper blood flow."
-	localizated_desc = "Düzgün kan akışını sağlamak için hastanın hasarlı kalbine bir bypass grefti yerleştirin."
+	localizated_desc = "Kan akışını düzeltmek için hastanın hasarlı kalbine baypas yapın."
 	implements = list(
 		TOOL_HEMOSTAT = 1.05,
 		TOOL_WIRECUTTER = 2.85,
@@ -247,7 +247,7 @@
 	name = "remove damaged stomach section"
 	rnd_name = "Gastrectomy (Stomach Surgery)"
 	desc = "Perform repairs to a patient's stomach by removing a damaged section."
-	localizated_desc = "Hasarlı bir bölümü çıkararak hastanın midesini onarın."
+	localizated_desc = "Hasarlı bir bölümü keserek hastanın midesini onarın."
 	implements = list(
 		TOOL_SCALPEL = 1.05,
 		/obj/item/melee/energy/sword = 1.5,

@@ -403,6 +403,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 	/// Use "the patient" instead of "a patient" to keep it specific.
 	var/rnd_desc
 
+	/// Used for autowiki
 	var/localizated_desc
 
 	/**

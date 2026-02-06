@@ -264,7 +264,7 @@
 
 /proc/locale_surgery_sentence(rawtext)
 	var/static/bioware_pushed = FALSE
-	var/static/list/static_locale_list = list(
+	var/static/list/locale_list = list(
 		"the skin must be cut" = "deri kesik olmalı",
 		"the skin must be open" = "deri açık olmalı",
 		"the blood vessels must be unclamped" = "kan damarları klemplenmemiş olmalı",
@@ -378,11 +378,12 @@
 					continue
 				incompatible_surgeries += (other_bioware.rnd_name || other_bioware.name)
 			var/english_biware_text = "the patient must not have undergone [english_list(incompatible_surgeries, and_text = " OR ")] prior"
-			static_locale_list[english_biware_text] = "hasta daha önce [turkish_list(incompatible_surgeries, "hiçbir operasyon", " VEYA ")] geçirmemiş olmalı"
+			locale_list[english_biware_text] = "hasta daha önce [turkish_list(incompatible_surgeries, "hiçbir operasyon", " VEYA ")] geçirmemiş olmalı"
 		bioware_pushed = TRUE
 
-	if(static_locale_list.Find(rawtext))
-		return static_locale_list[rawtext]
+	var/locale_text = locale_list[rawtext]
+	if(locale_text)
+		return locale_text
 
 	stack_trace("\"[rawtext]\" not found in /proc/locale_surgery_sentence")
 	return rawtext

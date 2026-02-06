@@ -1,7 +1,7 @@
 /datum/surgery_operation/limb/add_dental_implant
 	name = "add dental implant"
 	desc = "Implant a pill into a patient's teeth."
-	localizated_desc = "Hastanın dişine hap implante edin"
+	localizated_desc = "Hastanın dişlerine bir hap yerleştirin"
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/reagent_containers/applicator/pill = 1,

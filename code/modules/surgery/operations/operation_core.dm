@@ -2,7 +2,7 @@
 	name = "extract core"
 	rnd_name = "Corectomy (Extract Core)" // source: i made it up
 	desc = "Remove the core from a slime."
-	localizated_desc = "Bir slime'ın çekirdeğini (core) çıkarın."
+	localizated_desc = "Bir slime'ın çekirdeğini çıkarın."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_CROWBAR = 1,

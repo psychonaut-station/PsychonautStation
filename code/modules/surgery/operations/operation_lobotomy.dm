@@ -3,7 +3,7 @@
 	rnd_name = "Lobotomy (Lobotomy)"
 	desc = "Repair most of a patient's brain traumas, with the risk of causing new permanent traumas."
 	rnd_desc = "An invasive surgical procedure which guarantees removal of almost all brain traumas, but might cause another permanent trauma in return."
-	localizated_desc = "Neredeyse tüm beyin travmalarının giderilmesini garanti eden ancak karşılığında başka bir kalıcı travmaya neden olabilen invaziv bir cerrahi prosedür."
+	localizated_desc = "Neredeyse tüm beyin travmalarının giderilmesini garanti eden ancak karşılığında başka bir kalıcı travmaya neden olabilen tehlikeli bir cerrahi prosedür."
 	operation_flags = OPERATION_MORBID | OPERATION_AFFECTS_MOOD | OPERATION_LOCKED | OPERATION_NOTABLE | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_SCALPEL = 1.15,

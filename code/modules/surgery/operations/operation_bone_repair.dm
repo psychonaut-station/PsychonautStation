@@ -123,7 +123,7 @@
 /datum/surgery_operation/limb/reset_compound
 	name = "reset compound fracture"
 	desc = "Reset a compound fracture in a patient's bone, preparing it for proper healing."
-	localizated_desc = "Hastanın kemiğindeki açık kırığı yerine oturtarak düzgün iyileşmeye hazırlayın."
+	localizated_desc = "Hastanın kemiğindeki açık kırığı yerine oturtarak düzgünce iyileşmesine hazırlayın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -277,7 +277,7 @@
 /datum/surgery_operation/limb/repair_cranium
 	name = "repair cranium"
 	desc = "Mend a cranial fissure in a patient's skull."
-	localizated_desc = "Hastanın kafatasındaki bir çatlağı onarın."
+	localizated_desc = "Hastanın kafatasındaki çatlağı onarın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,

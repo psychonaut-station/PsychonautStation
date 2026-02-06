@@ -188,7 +188,7 @@
 	name = "reshape ligaments"
 	rnd_name = "Arthroplasty (Ligament Hooks)" // "joint reshaping"
 	desc = "Reshape a patient's ligaments to allow limbs to be manually reattached if severed - at the cost of making them easier to detach."
-	localizated_desc = "Uzvun kopması durumunda manuel olarak tekrar takılabilmesini sağlamak için hastanın bağlarını yeniden şekillendirin - bu işlemin maliyeti uzvun daha kolay kopmasıdır."
+	localizated_desc = "Uzvun kopması durumunda manuel olarak tekrar takılabilmesini sağlamak için hastanın bağlarını yeniden şekillendirin; karşılığında uzuv daha kolay kopacaktır."
 	status_effect_gained = /datum/status_effect/bioware/ligaments/hooked
 
 /datum/surgery_operation/limb/bioware/ligament_hook/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
@@ -216,7 +216,7 @@
 	rnd_name = "Anchor Point Snaplocks (Ligament Hooks)"
 	desc = "Refactor a robotic patient's limb joints to allow for rapid deatchment, allowing limbs to be manually reattached if severed - \
 		at the cost of making them easier to detach as well."
-	localizated_desc = "Robotik hastanın eklemlerini, kopması durumunda manuel olarak tekrar takılabilmesi için hızlı sökülebilir şekilde yeniden yapılandırın - bu işlemin maliyeti eklemlerin daha kolay ayrılmasıdır."
+	localizated_desc = "Robotik hastanın eklemlerini, kopması durumunda manuel olarak tekrar takılabilmesi için hızlı sökülebilir şekilde yeniden yapılandırın; karşılığında eklemler daha kolay ayrılacaktır."
 	required_bodytype = BODYTYPE_ROBOTIC
 	operation_flags = parent_type::operation_flags | OPERATION_MECHANIC
 
@@ -224,7 +224,7 @@
 	name = "strengthen ligaments"
 	rnd_name = "Arthrorrhaphy (Ligament Reinforcement)" // "joint strengthening" / "joint stitching"
 	desc = "Strengthen a patient's ligaments to make dismemberment more difficult, at the cost of making nerve connections easier to interrupt."
-	localizated_desc = "Uzvun kopmasını zorlaştırmak için hastanın bağlarını güçlendirin; bunun maliyeti sinir bağlantılarının daha kolay kesilmesidir."
+	localizated_desc = "Uzvun kopmasını zorlaştırmak için hastanın bağlarını güçlendirin; karşılığında sinir bağlantıları daha kolay kesilecektir."
 	status_effect_gained = /datum/status_effect/bioware/ligaments/reinforced
 
 /datum/surgery_operation/limb/bioware/ligament_reinforcement/on_preop(obj/item/bodypart/limb, mob/living/surgeon, tool)
@@ -251,7 +251,7 @@
 /datum/surgery_operation/limb/bioware/ligament_reinforcement/mechanic
 	rnd_name = "Anchor Point Reinforcement (Ligament Reinforcement)"
 	desc = "Reinforce a robotic patient's limb joints to prevent dismemberment, at the cost of making nerve connections easier to interrupt."
-	localizated_desc = "Uzvun kopmasını önlemek için robotik hastanın eklemlerini güçlendirin; bunun maliyeti sinir bağlantılarının daha kolay kesilmesidir."
+	localizated_desc = "Uzvun kopmasını önlemek için robotik hastanın eklemlerini güçlendirin; karşılığında sinir bağlantıları daha kolay kesilecektir."
 	required_bodytype = BODYTYPE_ROBOTIC
 	operation_flags = parent_type::operation_flags | OPERATION_MECHANIC
 

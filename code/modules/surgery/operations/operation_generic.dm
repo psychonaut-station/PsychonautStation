@@ -216,7 +216,7 @@
 	name = "clamp bleeders"
 	desc = "Clamp bleeding blood vessels in the patient's body to prevent blood loss. \
 		Causes \"vessels clamped\" surgical state."
-	localizated_desc = "Kan kaybını önlemek için hastanın vücudundaki kanayan damarları klempleyin. \"vessels clamped\" cerrahi durumuna neden olur."
+	localizated_desc = "Kan kaybını önlemek için hastanın vücudundaki kanayan damarları sıkın. \"vessels clamped\" cerrahi durumuna neden olur."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/clamp_bleeders/abductor
@@ -260,7 +260,7 @@
 	name = "unclamp bleeders"
 	desc = "Unclamp blood vessels in the patient's body to allow blood flow again. \
 		Clears \"vessels clamped\" surgical state."
-	localizated_desc = "Kan akışına tekrar izin vermek için hastanın vücudundaki kan damarlarının klempini açın. \"vessels clamped\" cerrahi durumunu temizler."
+	localizated_desc = "Kan akışına tekrar izin vermek için hastanın vücudundaki kan damarlarını gevşetin. \"vessels clamped\" cerrahi durumunu temizler."
 	required_bodytype = ~BODYTYPE_ROBOTIC
 	operation_flags = OPERATION_NO_PATIENT_REQUIRED
 	replaced_by = /datum/surgery_operation/limb/unclamp_bleeders/abductor

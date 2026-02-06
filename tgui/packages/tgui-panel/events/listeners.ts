@@ -18,6 +18,7 @@ import {
 } from '../telemetry/handlers';
 import { handleLoadAssets } from './handlers/assets';
 import { roundrestart } from './handlers/roundrestart';
+import { setEmotesList } from '../emotes/handlers';
 
 const listeners = {
   'asset/stylesheet': loadStyleSheet,
@@ -32,6 +33,7 @@ const listeners = {
   'chat/message': chatMessage,
   'ping/reply': pingReply,
   'ping/soft': pingSoft,
+  'emotes/setList': setEmotesList,
   roundrestart,
   'telemetry/request': telemetryRequest,
   testTelemetryCommand,

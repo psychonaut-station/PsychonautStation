@@ -12,6 +12,8 @@ import { NowPlayingWidget } from './audio/NowPlayingWidget';
 import { ChatPanel } from './chat/ChatPanel';
 import { ChatTabs } from './chat/ChatTabs';
 import { useChatPersistence } from './chat/use-chat-persistence';
+import { emotesAtom } from './emotes/atom';
+import { EmotePanel } from './emotes/EmotePanel';
 import { gameAtom } from './game/atoms';
 import { useKeepAlive } from './game/use-keep-alive';
 import { Notifications } from './Notifications';
@@ -20,8 +22,10 @@ import { ReconnectButton } from './reconnect';
 import { settingsVisibleAtom } from './settings/atoms';
 import { SettingsPanel } from './settings/SettingsPanel';
 import { useSettings } from './settings/use-settings';
+import { toggleEmotes } from './emotes/handlers';
 
 export function Panel(props) {
+  const [emotes, setEmotes] = useAtom(emotesAtom);
   const [audioVisible, setAudioVisible] = useAtom(visibleAtom);
   const game = useAtomValue(gameAtom);
   const { settings } = useSettings();
@@ -41,6 +45,18 @@ export function Panel(props) {
               <Stack.Item>
                 <PingIndicator />
               </Stack.Item>
+              {/* Emote Panel */}
+              <Stack.Item>
+                <Button
+                  color="grey"
+                  selected={emotes.visible}
+                  icon="face-grin-beam"
+                  tooltip="Emote Panel"
+                  tooltipPosition="bottom-start"
+                  onClick={toggleEmotes}
+                />
+              </Stack.Item>
+              {/* Emote Panel */}
               <Stack.Item>
                 <Button
                   color="grey"
@@ -63,6 +79,15 @@ export function Panel(props) {
             </Stack>
           </Section>
         </Stack.Item>
+        {/* Emote Panel */}
+        {emotes.visible && (
+          <Stack.Item>
+            <Section>
+              <EmotePanel />
+            </Section>
+          </Stack.Item>
+        )}
+        {/* Emote Panel */}
         {audioVisible && (
           <Stack.Item>
             <Section>

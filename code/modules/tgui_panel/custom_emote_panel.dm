@@ -344,7 +344,7 @@
 		var/list/emote_data = client.prefs.custom_emote_panel[emote_name]
 
 		var/emote_type = emote_data["type"]
-		if(emote_type == TGUI_PANEL_EMOTE_TYPE_DEFAULT || emote_type == TGUI_PANEL_EMOTE_TYPE_CUSTOM)
+		if(emote_type == TGUI_PANEL_EMOTE_TYPE_DEFAULT)
 			var/emote_key = emote_data["key"]
 			emote_data["usable"] = check_emote_usability(emote_key)
 		else

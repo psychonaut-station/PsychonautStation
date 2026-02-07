@@ -3,6 +3,7 @@
 	rnd_name = "Bionecroplasty (Necrotic Revival)"
 	desc = "Inject reagents that stimulate the growth of a Romerol tumor inside the patient's brain."
 	rnd_desc = "An experimental procedure which induces the growth of a Romerol tumor inside the patient's brain."
+	localizated_desc = "Hastanın beyninde bir Romerol tümörünün büyümesini tetikleyen deneysel bir prosedür."
 	implements = list(
 		/obj/item/reagent_containers/syringe = 1,
 		/obj/item/pen = 3.33,

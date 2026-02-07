@@ -3,6 +3,7 @@
 	rnd_name = "Experimental Androtomy (Experimental Dissection and Autopsy)"
 	desc = "Perform an experimental dissection on a patient to obtain research points."
 	rnd_desc = "An experimental surgical procedure that dissects bodies in exchange for research points at ancient R&D consoles."
+	localizated_desc = "Antik R&D konsollarında araştırma puanı karşılığında vücutları diseksiyon (parçalara ayırma) yöntemiyle inceleyen deneysel bir cerrahi prosedür."
 	implements = list(
 		/obj/item/autopsy_scanner = 1,
 		TOOL_SCALPEL = 1.66,

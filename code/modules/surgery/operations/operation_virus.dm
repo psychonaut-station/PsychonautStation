@@ -4,6 +4,7 @@
 	desc = "Force a symbiotic relationship between a patient and a virus it is infected with."
 	rnd_desc = "A surgical procedure that forces a symbiotic relationship between a virus and its host. \
 		The patient will be completely immune to the effects of the virus, but will carry and spread it to others."
+	localizated_desc = "Bir virüs ile konakçısı arasında simbiyotik bir ilişki kurmaya zorlayan cerrahi bir prosedür. Hasta virüsün etkilerine tamamen bağışıklık kazanacaktır ancak virüsü taşımaya ve başkalarına yaymaya devam edecektir."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		TOOL_WELDER = 2,

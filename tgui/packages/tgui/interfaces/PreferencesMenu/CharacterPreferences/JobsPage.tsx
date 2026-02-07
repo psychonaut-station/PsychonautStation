@@ -12,6 +12,7 @@ import {
   type PreferencesMenuData,
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
+import { JobSlotDropdown } from './JobSlotDropdown'; // Pref Job Slots
 
 function sortJobs(entries: [string, Job][], head?: string) {
   return sortBy(entries, [
@@ -238,11 +239,18 @@ function JobRow(props: JobRowProps) {
     );
   } else {
     rightSide = (
-      <PriorityButtons
-        createSetPriority={createSetPriority}
-        isOverflow={isOverflow}
-        priority={priority}
-      />
+      <Stack align="center" height="100%" g={0.5}>
+        <Stack.Item>
+          <JobSlotDropdown name={name} />
+        </Stack.Item>
+        <Stack.Item>
+          <PriorityButtons
+            createSetPriority={createSetPriority}
+            isOverflow={isOverflow}
+            priority={priority}
+          />
+        </Stack.Item>
+      </Stack>
     );
   }
 

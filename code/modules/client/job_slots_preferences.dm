@@ -1,5 +1,3 @@
-#define JOB_SLOT_RANDOMISED_SLOT -1
-#define JOB_SLOT_CURRENT_SLOT 0
 #define JOB_SLOT_RANDOMISED_TEXT "Random name and appearance"
 #define JOB_SLOT_CURRENT_TEXT "Current slot"
 

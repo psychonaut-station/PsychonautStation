@@ -36,6 +36,3 @@
 /datum/preference_middleware/pref_job_slots/proc/reset_job_slots(list/params, mob/user)
 	preferences.reset_job_slots()
 	return TRUE
-
-#undef JOB_SLOT_RANDOMISED_SLOT
-#undef JOB_SLOT_CURRENT_SLOT

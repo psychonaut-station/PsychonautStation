@@ -341,7 +341,7 @@
 	var/list/payload = list()
 
 	for(var/emote_name in client.prefs.custom_emote_panel)
-		var/list/emote_data = client.prefs.custom_emote_panel[emote_name].Copy()
+		var/list/emote_data = client.prefs.custom_emote_panel[emote_name]
 
 		var/emote_type = emote_data["type"]
 		if(emote_type == TGUI_PANEL_EMOTE_TYPE_DEFAULT || emote_type == TGUI_PANEL_EMOTE_TYPE_CUSTOM)

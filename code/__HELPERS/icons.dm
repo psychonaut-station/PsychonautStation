@@ -1416,6 +1416,9 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 		preference.apply_to_human(our_human, new_value)
 
+	our_human.icon_render_keys = list()
+	our_human.update_body(is_creating = TRUE)
+
 	if(!mob_name)
 		mob_name = our_human.real_name
 

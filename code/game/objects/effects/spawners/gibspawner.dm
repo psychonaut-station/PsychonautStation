@@ -129,13 +129,7 @@
 		gibdirections = list(list(NORTH, NORTHEAST, NORTHWEST), list(SOUTH, SOUTHEAST, SOUTHWEST), list(WEST, NORTHWEST, SOUTHWEST), list(EAST, NORTHEAST, SOUTHEAST), GLOB.alldirs, GLOB.alldirs)
 	gibtypes[/obj/effect/decal/cleanable/blood/gibs/robot_debris/limb] = pick(0, 1, 2)
 	. = ..()
-<<<<<<< HEAD
-	var/datum/effect_system/spark_spread/sparks = new /datum/effect_system/spark_spread
-	sparks.set_up(2, 1, drop_location())
-	sparks.start()
+	do_sparks(2, TRUE, drop_location())
 
 /obj/effect/gibspawner/robot/android
 	gib_mob_type = /mob/living/carbon/human/species/android
-=======
-	do_sparks(2, TRUE, drop_location())
->>>>>>> d04564a94e2c3c5600b2d98ee8582232a5b74726

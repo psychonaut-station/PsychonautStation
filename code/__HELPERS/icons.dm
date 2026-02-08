@@ -1518,7 +1518,6 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	return icon(icon_cache[job_type])
 
-<<<<<<< HEAD
 /proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
 	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
 
@@ -1543,7 +1542,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
 	fcopy(flat_icon, icon_path)
-=======
+
 /**
  * Copies the pixel colors from the passed in icon `I` to the 2d list `grid`
  */
@@ -1589,5 +1588,3 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/zero_alpha_regex = regex(@@#(?:(?!a0a0a0)([0-9]|[a-f]){6}00)@, "gi")
 	linear_pixels = replacetext(linear_pixels, zero_alpha_regex, COLOR_DMI_MASK)
 	return linear_pixels
-
->>>>>>> d04564a94e2c3c5600b2d98ee8582232a5b74726

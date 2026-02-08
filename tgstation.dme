@@ -6479,12 +6479,9 @@
 #include "code\modules\spells\spell_types\touch\flesh_to_stone.dm"
 #include "code\modules\spells\spell_types\touch\scream_for_me.dm"
 #include "code\modules\spells\spell_types\touch\smite.dm"
-<<<<<<< HEAD
-#include "code\modules\station_goals\bluespace_tap.dm"
-=======
 #include "code\modules\sprite_editing\flood_fill.dm"
 #include "code\modules\sprite_editing\workspace.dm"
->>>>>>> d04564a94e2c3c5600b2d98ee8582232a5b74726
+#include "code\modules\station_goals\bluespace_tap.dm"
 #include "code\modules\station_goals\bsa.dm"
 #include "code\modules\station_goals\dna_vault.dm"
 #include "code\modules\station_goals\generate_goals.dm"

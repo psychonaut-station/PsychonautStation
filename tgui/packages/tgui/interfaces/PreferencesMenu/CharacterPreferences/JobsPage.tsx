@@ -123,6 +123,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
         paddingRight: '0.3em',
+        minWidth: '100px',
       }}
     >
       {isOverflow ? (
@@ -239,17 +240,13 @@ function JobRow(props: JobRowProps) {
     );
   } else {
     rightSide = (
-      <Stack align="center" height="100%" g={0.5}>
-        <Stack.Item>
-          <JobSlotDropdown name={name} />
-        </Stack.Item>
-        <Stack.Item>
-          <PriorityButtons
-            createSetPriority={createSetPriority}
-            isOverflow={isOverflow}
-            priority={priority}
-          />
-        </Stack.Item>
+      <Stack align="center" justify="flex-end" height="100%" pr={1}>
+        <JobSlotDropdown name={name} />
+        <PriorityButtons
+          createSetPriority={createSetPriority}
+          isOverflow={isOverflow}
+          priority={priority}
+        />
       </Stack>
     );
   }

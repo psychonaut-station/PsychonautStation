@@ -427,7 +427,6 @@
 		. = check_step(used_atom, user)
 	return .
 
-//gygax mech core
 /datum/component/construction/mecha/gygax/get_outer_plating_steps()
 	return list(
 		list(
@@ -452,17 +451,29 @@
 			"desc" = "Inner plating is wrenched, and can be <b>welded</b>.",
 			"forward_message" = "welded internal armor layer",
 			"backward_message" = "unfastened internal armor layer",
-		),
+		)
+	)
+
+/datum/component/construction/mecha/gygax/get_stockpart_steps()
+	return list(
 		list(
 			"key" = /obj/item/mecha_parts/core,
 			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>mech power core</b> socket is open.",
-			"icon_state" = "gygax23",
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
 			"forward_message" = "inserted mech power core",
-			"backward_message" = "cut off external armor"
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
 		)
-	)
+	) + ..()
 
 //CLARKE
 /datum/component/construction/unordered/mecha_chassis/clarke
@@ -683,7 +694,6 @@
 	outer_plating = /obj/item/mecha_parts/part/durand_armor
 	outer_plating_amount = 1
 
-//durand mech core
 /datum/component/construction/mecha/durand/get_outer_plating_steps()
 	return list(
 		list(
@@ -708,17 +718,29 @@
 			"desc" = "External armor is wrenched, and can be <b>welded</b>.",
 			"forward_message" = "welded external armor",
 			"backward_message" = "unfastened external armor layer"
-		),
+		)
+	)
+
+/datum/component/construction/mecha/durand/get_stockpart_steps()
+	return list(
 		list(
 			"key" = /obj/item/mecha_parts/core,
 			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>mech power core</b> socket is open.",
-			"icon_state" = "durand23",
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
 			"forward_message" = "inserted mech power core",
-			"backward_message" = "cut off external armor"
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
 		)
-	)
+	) + ..()
 
 //PHAZON
 /datum/component/construction/unordered/mecha_chassis/phazon
@@ -850,29 +872,38 @@
 	)
 
 /datum/component/construction/mecha/phazon/get_outer_plating_steps()
-	return ..() + list(
+	return ..()
 
-		//phazon mech core
+/datum/component/construction/mecha/phazon/get_stockpart_steps()
+	return list(
 		list(
 			"key" = /obj/item/mecha_parts/core,
 			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>mech power core</b> socket is open.",
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
 			"forward_message" = "inserted mech power core",
-			"backward_message" = "cut off external armor",
-			"icon_state" = "phazon25",
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
 		),
-
 		list(
 			"key" = required_core,
 			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>[initial(required_core.name)]</b> socket is open.",
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The mech power core is installed, and the <b>[initial(required_core.name)]</b> socket is open.",
 			"forward_message" = "inserted [initial(required_core.name)]",
-			"backward_message" = "cut off external armor",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
 			"skip_state" = TRUE,
 		)
-	)
+	) + ..()
+
 
 //SAVANNAH-IVANOV
 /datum/component/construction/unordered/mecha_chassis/savannah_ivanov
@@ -924,17 +955,29 @@
 			"desc" = "External armor is wrenched, and can be <b>welded</b>.",
 			"forward_message" = "welded external armor",
 			"backward_message" = "unfastened external armor layer"
-		),
+		)
+	)
+
+/datum/component/construction/mecha/savannah_ivanov/get_stockpart_steps()
+	return list(
 		list(
 			"key" = /obj/item/mecha_parts/core,
 			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>mech power core</b> socket is open.",
-			"icon_state" = "savannah_ivanov23",
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
 			"forward_message" = "inserted mech power core",
-			"backward_message" = "cut off external armor"
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
 		)
-	)
+	) + ..()
 
 //ODYSSEUS
 /datum/component/construction/unordered/mecha_chassis/odysseus

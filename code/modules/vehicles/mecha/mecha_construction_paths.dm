@@ -872,7 +872,17 @@
 	)
 
 /datum/component/construction/mecha/phazon/get_outer_plating_steps()
-	return ..()
+	return ..() + list(
+		list(
+			"key" = required_core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_WELDER,
+			"desc" = "The external armor is welded, and the <b>[initial(required_core.name)]</b> socket is open.",
+			"forward_message" = "inserted [initial(required_core.name)]",
+			"backward_message" = "cut off external armor",
+			"skip_state" = TRUE,
+		)
+	)
 
 /datum/component/construction/mecha/phazon/get_stockpart_steps()
 	return list(
@@ -883,15 +893,6 @@
 			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
 			"forward_message" = "inserted mech power core",
 			"backward_message" = "deactivated the hydraulic systems",
-			"skip_state" = TRUE,
-		),
-		list(
-			"key" = required_core,
-			"action" = ITEM_DELETE,
-			"back_key" = TOOL_SCREWDRIVER,
-			"desc" = "The mech power core is installed, and the <b>[initial(required_core.name)]</b> socket is open.",
-			"forward_message" = "inserted [initial(required_core.name)]",
-			"backward_message" = "removed mech power core",
 			"skip_state" = TRUE,
 		),
 		list(

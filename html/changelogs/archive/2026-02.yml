@@ -82,3 +82,12 @@
   lelandkemble:
   - bugfix: the Space Furnace is now usable in rooms that have previously been breached,
       provided they have recovered enough air.
+2026-02-09:
+  Rengan:
+  - bugfix: "Creditsdeki ve sitedeki karakter iconlar\u0131nda ten renkleri art\u0131\
+      k d\xFCzg\xFCn g\xF6z\xFCk\xFCyor."
+  Ureus:
+  - rscadd: "Golf arac\u0131n\u0131n kaputuna bomba koyulmas\u0131n\u0131 sa\u011F\
+      lar."
+  homek13:
+  - admin: buildmode ghost offer

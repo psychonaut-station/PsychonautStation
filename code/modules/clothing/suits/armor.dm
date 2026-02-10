@@ -268,6 +268,28 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	dog_fashion = null
 
+/obj/item/clothing/suit/armor/captain_heraldry
+	name = "Captain's Knight Armor"
+	desc = "A piece of armor worn over the uniform, indicating rank and symbolizing loyalty, bearing the NanoTrasen emblem. It's surprising that such armor is still used."
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
+	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
+	icon_state = "captain_heraldry"
+	inhand_icon_state = "armor"
+	body_parts_covered = CHEST|GROIN|ARMS|LEGS
+	cold_protection = CHEST|GROIN|LEGS|ARMS
+	heat_protection = CHEST|GROIN|LEGS|ARMS
+	armor_type = /datum/armor/captain_heraldry
+
+/datum/armor/captain_heraldry
+	melee = 50
+	bullet = 40
+	laser = 50
+	energy = 50
+	bomb = 25
+	fire = 100
+	acid = 90
+
+
 /obj/item/clothing/suit/armor/vest/capcarapace
 	name = "captain's carapace"
 	desc = "A fireproof armored chestpiece reinforced with ceramic plates and plasteel pauldrons to provide additional protection whilst still offering maximum mobility and flexibility. Issued only to the station's finest, although it does chafe your nipples."

@@ -201,6 +201,28 @@
 	. = ..()
 	AddComponent(/datum/component/seclite_attachable, starting_light = new /obj/item/flashlight/seclite(src), light_icon_state = "flight")
 
+obj/item/clothing/head/helmet/captain_heraldryhelmet
+	name = "Captain's Knight Helmet"
+	desc = "A piece of helmet, indicating rank and symbolizing loyalty.It's surprising that such armor is still used."
+	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'
+	icon = 'icons/psychonaut/obj/clothing/head/helmet.dmi'
+	icon_state = "captain_heraldryhelmet"
+	inhand_icon_state = "helmet"
+	clothing_flags = SNUG_FIT | STACKABLE_HELMET_EXEMPT
+	flags_cover = HEADCOVERSEYES | HEADCOVERSMOUTH | PEPPERPROOF | EARS_COVERED
+	flags_inv = HIDEMASK|HIDEEARS|HIDEEYES|HIDEFACE|HIDEHAIR|HIDESNOUT
+	armor_type = /datum/armor/captain_heraldryhelmet
+
+
+/datum/armor/captain_heraldryhelmet
+	melee = 50
+	bullet = 40
+	laser = 50
+	energy = 50
+	bomb = 25
+	fire = 100
+	acid = 90
+
 /obj/item/clothing/head/helmet/marine/security
 	name = "marine heavy helmet"
 	icon_state = "marine_security"

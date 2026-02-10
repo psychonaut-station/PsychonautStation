@@ -9,6 +9,7 @@
 	name = "tend wounds"
 	rnd_name = "Tend Wounds"
 	desc = "Perform superficial wound care on a patient's bruises and burns."
+	localizated_desc = "Hastanın morlukları ve yanıkları üzerinde yüzeysel yara bakımı uygulayın."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCREWDRIVER = 1.5,

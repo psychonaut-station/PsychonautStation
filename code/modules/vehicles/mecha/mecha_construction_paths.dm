@@ -427,33 +427,6 @@
 		. = check_step(used_atom, user)
 	return .
 
-/datum/component/construction/mecha/gygax/get_outer_plating_steps()
-	return list(
-		list(
-			"key" = outer_plating,
-			"amount" = 1,
-			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "Inner plating is welded, [initial(outer_plating.name)] can be used as external armor.",
-			"forward_message" = "installed external armor layer",
-			"backward_message" = "cut off internal armor layer",
-		),
-		list(
-			"key" = TOOL_WRENCH,
-			"back_key" = TOOL_CROWBAR,
-			"desc" = "External armor is installed, and can be <b>wrenched</b> into place.",
-			"forward_message" = "secured external armor layer",
-			"backward_message" = "pried off external armor layer",
-		),
-		list(
-			"key" = TOOL_WELDER,
-			"back_key" = TOOL_WRENCH,
-			"desc" = "Inner plating is wrenched, and can be <b>welded</b>.",
-			"forward_message" = "welded internal armor layer",
-			"backward_message" = "unfastened internal armor layer",
-		)
-	)
-
 /datum/component/construction/mecha/gygax/get_stockpart_steps()
 	return list(
 		list(
@@ -694,33 +667,6 @@
 	outer_plating = /obj/item/mecha_parts/part/durand_armor
 	outer_plating_amount = 1
 
-/datum/component/construction/mecha/durand/get_outer_plating_steps()
-	return list(
-		list(
-			"key" = outer_plating,
-			"amount" = 1,
-			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "Inner plating is welded, [initial(outer_plating.name)] can be used as external armor.",
-			"forward_message" = "installed external armor layer",
-			"backward_message" = "cut off internal armor layer",
-		),
-		list(
-			"key" = TOOL_WRENCH,
-			"back_key" = TOOL_CROWBAR,
-			"desc" = "External armor is installed, and can be <b>wrenched</b> into place.",
-			"forward_message" = "secured external armor layer",
-			"backward_message" = "pried off external armor layer",
-		),
-		list(
-			"key" = TOOL_WELDER,
-			"back_key" = TOOL_WRENCH,
-			"desc" = "External armor is wrenched, and can be <b>welded</b>.",
-			"forward_message" = "welded external armor",
-			"backward_message" = "unfastened external armor layer"
-		)
-	)
-
 /datum/component/construction/mecha/durand/get_stockpart_steps()
 	return list(
 		list(
@@ -871,19 +817,6 @@
 		)
 	)
 
-/datum/component/construction/mecha/phazon/get_outer_plating_steps()
-	return ..() + list(
-		list(
-			"key" = required_core,
-			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "The external armor is welded, and the <b>[initial(required_core.name)]</b> socket is open.",
-			"forward_message" = "inserted [initial(required_core.name)]",
-			"backward_message" = "cut off external armor",
-			"skip_state" = TRUE,
-		)
-	)
-
 /datum/component/construction/mecha/phazon/get_stockpart_steps()
 	return list(
 		list(
@@ -905,6 +838,18 @@
 		)
 	) + ..()
 
+/datum/component/construction/mecha/phazon/get_outer_plating_steps()
+	return ..() + list(
+		list(
+			"key" = required_core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_WELDER,
+			"desc" = "The external armor is welded, and the <b>[initial(required_core.name)]</b> socket is open.",
+			"forward_message" = "inserted [initial(required_core.name)]",
+			"backward_message" = "cut off external armor",
+			"skip_state" = TRUE,
+		)
+	)
 
 //SAVANNAH-IVANOV
 /datum/component/construction/unordered/mecha_chassis/savannah_ivanov
@@ -931,33 +876,6 @@
 
 	outer_plating = /obj/item/mecha_parts/part/savannah_ivanov_armor
 	outer_plating_amount = 1
-
-/datum/component/construction/mecha/savannah_ivanov/get_outer_plating_steps()
-	return list(
-		list(
-			"key" = outer_plating,
-			"amount" = 1,
-			"action" = ITEM_DELETE,
-			"back_key" = TOOL_WELDER,
-			"desc" = "Internal armor is welded, [initial(outer_plating.name)] can be used as external armor.",
-			"forward_message" = "added external armor layer",
-			"backward_message" = "cut off internal armor layer"
-		),
-		list(
-			"key" = TOOL_WRENCH,
-			"back_key" = TOOL_CROWBAR,
-			"desc" = "External armor is installed, and can be <b>wrenched</b> into place.",
-			"forward_message" = "secured external armor layer",
-			"backward_message" = "pried off external armor"
-		),
-		list(
-			"key" = TOOL_WELDER,
-			"back_key" = TOOL_WRENCH,
-			"desc" = "External armor is wrenched, and can be <b>welded</b>.",
-			"forward_message" = "welded external armor",
-			"backward_message" = "unfastened external armor layer"
-		)
-	)
 
 /datum/component/construction/mecha/savannah_ivanov/get_stockpart_steps()
 	return list(

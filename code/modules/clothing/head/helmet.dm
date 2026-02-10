@@ -201,7 +201,7 @@
 	. = ..()
 	AddComponent(/datum/component/seclite_attachable, starting_light = new /obj/item/flashlight/seclite(src), light_icon_state = "flight")
 
-obj/item/clothing/head/helmet/captain_heraldryhelmet
+/obj/item/clothing/head/helmet/captain_heraldryhelmet
 	name = "Captain's Knight Helmet"
 	desc = "A piece of helmet, indicating rank and symbolizing loyalty.It's surprising that such armor is still used."
 	worn_icon = 'icons/psychonaut/mob/clothing/head/helmet.dmi'

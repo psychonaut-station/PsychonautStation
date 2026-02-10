@@ -339,16 +339,17 @@
 
 /datum/tgui_panel/proc/emotes_send_list()
 	var/list/payload = list()
+	var/has_mob = isliving(client.mob)
 
 	for(var/emote_name in client.prefs.custom_emote_panel)
 		var/list/emote_data = client.prefs.custom_emote_panel[emote_name]
 
 		var/emote_type = emote_data["type"]
-		if(emote_type == TGUI_PANEL_EMOTE_TYPE_DEFAULT || emote_type == TGUI_PANEL_EMOTE_TYPE_CUSTOM)
+		if(emote_type in list(TGUI_PANEL_EMOTE_TYPE_DEFAULT, TGUI_PANEL_EMOTE_TYPE_CUSTOM, TGUI_PANEL_EMOTE_TYPE_ME))
 			var/emote_key = emote_data["key"]
-			emote_data["usable"] = check_emote_usability(emote_key)
+			emote_data["usable"] = has_mob && check_emote_usability(emote_key)
 		else
-			emote_data["usable"] = TRUE
+			emote_data["usable"] = FALSE
 
 		payload[emote_name] = emote_data
 

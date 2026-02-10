@@ -86,6 +86,7 @@ export const EmotePanel = (props: any, context: any) => {
                 <Button
                   color={color}
                   tooltip={tooltip}
+                  disabled={!emote.usable}
                   onClick={() => emoteExecute(emote.name)}
                   onContextMenu={(e) => {
                     e.preventDefault();

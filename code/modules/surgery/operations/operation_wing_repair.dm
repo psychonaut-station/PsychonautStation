@@ -3,6 +3,7 @@
 	rnd_name = "Pteroplasty (Wing Repair)"
 	desc = "Repair a patient's damaged wings to restore flight capability."
 	rnd_desc = "A surgical procedure that repairs damaged wings using Synthflesh."
+	localizated_desc = "Hasarlı kanatları Synthflesh kullanarak onaran cerrahi bir prosedür."
 	implements = list(
 		TOOL_HEMOSTAT = 1.15,
 		TOOL_SCREWDRIVER = 2.85,

@@ -5,6 +5,7 @@
 	// rnd_name = "Laparotomy / Craniotomy / Myotomy (Make Incision)" // Maybe we keep this one simple
 	desc = "Make an incision in the patient's skin to access internals. \
 		Causes \"cut skin\" surgical state."
+	localizated_desc = "İç kısımlara erişmek için hastanın derisinde bir kesi yapın. \"cut skin\" cerrahi durumuna neden olur."
 	implements = list(
 		TOOL_SCALPEL = 1,
 		/obj/item/melee/energy/sword = 1.33,
@@ -60,6 +61,7 @@
 	name = "saw bone"
 	desc = "Saw through the patient's bones to access their internal organs. \
 		Causes \"bone sawed\" surgical state."
+	localizated_desc = "İç organlara erişmek için hastanın kemiklerini testereyle kesin. \"bone sawed\" cerrahi durumuna neden olur."
 	implements = list(
 		TOOL_SAW = 1,
 		/obj/item/shovel/serrated = 1.33,
@@ -128,6 +130,7 @@
 	name = "mend incision"
 	desc = "Mend the incision in the patient's skin, closing it up. \
 		Clears most surgical states."
+	localizated_desc = "Hastanın derisindeki kesiyi onararak kapatın. Çoğu cerrahi durumu temizler."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		/obj/item/stack/medical/suture = 1,

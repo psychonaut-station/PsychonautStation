@@ -25,7 +25,7 @@
 		var/locked = (operation in locked_operations_alpha)
 
 		operation_data["name"] = escape_value(capitalize(replacetext(operation.rnd_name || operation.name, "\"", "&quot;")))
-		operation_data["description"] = escape_value(replacetext(operation.rnd_desc || operation.desc, "\"", "&quot;"))
+		operation_data["description"] = escape_value(replacetext(operation.localizated_desc || operation.rnd_desc || operation.desc, "\"", "&quot;"))
 
 		var/list/raw_reqs = operation.get_requirements()
 		if(length(raw_reqs[2]) == 1)
@@ -66,7 +66,8 @@
 /datum/autowiki/surgery/proc/format_requirement_list(list/requirements)
 	var/output
 	for(var/requirement in requirements)
-		output += "<li>[escape_value(capitalize(requirement))]</li>"
+		var/localizated_requirement = locale_surgery_sentence(requirement) || requirement // Just in case
+		output += "<li>[escape_value(capitalize(localizated_requirement))]</li>"
 
 	return output ? "<ul>[output]</ul>" : ""
 
@@ -106,7 +107,9 @@
 	if(istext(tool))
 		return capitalize(tool)
 	if(tool == /obj/item)
-		return operation.get_any_tool()
+		var/any_tool = operation.get_any_tool()
+		var/localizated_any_tool = locale_surgery_sentence(any_tool) || any_tool
+		return localizated_any_tool
 	return capitalize(format_text(tool::name))
 
 /datum/autowiki/surgery/proc/get_tool_icon(obj/item/tool)

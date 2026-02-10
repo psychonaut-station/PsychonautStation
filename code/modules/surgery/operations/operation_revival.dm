@@ -2,6 +2,7 @@
 	name = "shock brain"
 	rnd_name = "Brain Defibrillation (Revival)"
 	desc = "Use a defibrillator to shock a patient's brain back to life."
+	localizated_desc = "Hastanın beynini hayata döndürmek için bir defibrilatör ile şok uygulayın."
 	implements = list(
 		/obj/item/shockpaddles = 1,
 		/obj/item/melee/touch_attack/shock = 1,

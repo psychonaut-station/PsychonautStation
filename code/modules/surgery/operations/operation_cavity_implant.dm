@@ -1,6 +1,7 @@
 /datum/surgery_operation/limb/prepare_cavity
 	name = "widen chest cavity"
 	desc = "Widen a patient's chest cavity to allow for implanting of larger items."
+	localizated_desc = "Daha büyük eşyaların yerleştirilmesine izin vermek için hastanın göğüs boşluğunu genişletin."
 	implements = list(
 		TOOL_RETRACTOR = 1,
 		TOOL_CROWBAR = 1.5,
@@ -37,6 +38,7 @@
 /datum/surgery_operation/limb/cavity_implant
 	name = "cavity implant"
 	desc = "Implant an item into a patient's body cavity."
+	localizated_desc = "Hastanın vücut boşluğuna bir eşya yerleştirin."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		/obj/item = 1,
@@ -122,6 +124,7 @@
 /datum/surgery_operation/limb/undo_cavity_implant
 	name = "remove cavity implant"
 	desc = "Remove an item from a body cavity."
+	localizated_desc = "Vücut boşluğundan bir eşyayı çıkarın."
 	implements = list(
 		IMPLEMENT_HAND = 1,
 		TOOL_HEMOSTAT = 2,

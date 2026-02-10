@@ -1,6 +1,7 @@
 /datum/surgery_operation/limb/repair_puncture
 	name = "realign blood vessels"
 	desc = "Realign a patient's torn blood vessels to prepare for sealing."
+	localizated_desc = "Kapatma işlemine hazırlık için hastanın yırtılmış kan damarlarını yeniden hizalayın."
 	implements = list(
 		TOOL_HEMOSTAT = 1,
 		TOOL_SCALPEL = 1.15,
@@ -77,6 +78,7 @@
 	name = "seal blood vessels"
 	// rnd_name = "Anastomosis (Seal Blood Vessels)" // doctor says this is the term to use but it fits awkwardly
 	desc = "Seal a patient's now-realigned blood vessels."
+	localizated_desc = "Hastanın yeniden hizalanmış kan damarlarını mühürleyin."
 	implements = list(
 		TOOL_CAUTERY = 1,
 		/obj/item/gun/energy/laser = 1.12,

@@ -1,7 +1,7 @@
 import { Button, Section, Stack } from 'tgui-core/components';
 import { useEmotes } from './hooks';
 
-export const EmotePanel = (props: any, context: any) => {
+export const EmotePanel = (props: any) => {
   const TGUI_PANEL_EMOTE_TYPE_DEFAULT = 1;
   const TGUI_PANEL_EMOTE_TYPE_CUSTOM = 2;
   const TGUI_PANEL_EMOTE_TYPE_ME = 3;
@@ -18,7 +18,7 @@ export const EmotePanel = (props: any, context: any) => {
         emoteList.push({
           type,
           name,
-          key: emotes.list[name].key,
+          key: emotes.list[name]?.key,
           usable
         });
         break;
@@ -26,8 +26,8 @@ export const EmotePanel = (props: any, context: any) => {
         emoteList.push({
           type,
           name,
-          key: emotes.list[name].key,
-          message_override: emotes.list[name].message_override,
+          key: emotes.list[name]?.key,
+          message_override: emotes.list[name]?.message_override,
           usable
         });
         break;
@@ -35,7 +35,7 @@ export const EmotePanel = (props: any, context: any) => {
         emoteList.push({
           type,
           name,
-          message: emotes.list[name].message,
+          message: emotes.list[name]?.message,
           usable
         });
         break;

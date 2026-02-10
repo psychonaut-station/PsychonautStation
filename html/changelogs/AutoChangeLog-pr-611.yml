@@ -1,0 +1,4 @@
+author: "Seefaaa"
+delete-after: True
+changes:
+  - bugfix: "/me atarkenki türkçe karakterler bulanık gözükmekyecek"

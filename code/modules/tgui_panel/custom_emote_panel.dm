@@ -345,11 +345,16 @@
 		var/list/emote_data = client.prefs.custom_emote_panel[emote_name]
 
 		var/emote_type = emote_data["type"]
-		if(emote_type in list(TGUI_PANEL_EMOTE_TYPE_DEFAULT, TGUI_PANEL_EMOTE_TYPE_CUSTOM, TGUI_PANEL_EMOTE_TYPE_ME))
-			var/emote_key = emote_data["key"]
-			emote_data["usable"] = has_mob && check_emote_usability(emote_key)
-		else
-			emote_data["usable"] = FALSE
+		var/usable = FALSE
+
+		if(has_mob)
+			switch(emote_type)
+				if(TGUI_PANEL_EMOTE_TYPE_DEFAULT, TGUI_PANEL_EMOTE_TYPE_CUSTOM)
+					usable = check_emote_usability(emote_data["key"])
+				if(TGUI_PANEL_EMOTE_TYPE_ME)
+					usable = TRUE
+
+		emote_data["usable"] = usable
 
 		payload[emote_name] = emote_data
 

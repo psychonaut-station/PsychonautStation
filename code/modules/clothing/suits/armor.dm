@@ -270,7 +270,7 @@
 
 /obj/item/clothing/suit/armor/captain_heraldry
 	name = "Captain's Knight Armor"
-	desc = "A piece of armor worn over the uniform, indicating rank and symbolizing loyalty, bearing the NanoTrasen emblem. It's surprising that such armor is still used."
+	desc = "A piece of armor worn over the uniform, indicating rank and symbolizing loyalty, bearing the Nanotrasen emblem. It's surprising that such armor is still used."
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
 	icon = 'icons/psychonaut/obj/clothing/suits/armor.dmi'
 	icon_state = "captain_heraldry"

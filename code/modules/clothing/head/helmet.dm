@@ -214,14 +214,15 @@
 	armor_type = /datum/armor/captain_heraldryhelmet
 
 
-/datum/armor/captain_heraldryhelmet
-	melee = 50
-	bullet = 40
-	laser = 50
-	energy = 50
+datum/armor/captain_heraldryhelmet
+	melee = 35
+	bullet = 30
+	laser = 30
+	energy = 40
 	bomb = 25
-	fire = 100
-	acid = 90
+	fire = 50
+	acid = 50
+	wound = 10
 
 /obj/item/clothing/head/helmet/marine/security
 	name = "marine heavy helmet"

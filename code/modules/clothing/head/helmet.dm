@@ -214,7 +214,7 @@
 	armor_type = /datum/armor/captain_heraldryhelmet
 
 
-datum/armor/captain_heraldryhelmet
+/datum/armor/captain_heraldryhelmet
 	melee = 35
 	bullet = 30
 	laser = 30

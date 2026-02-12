@@ -268,7 +268,7 @@
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	dog_fashion = null
 
-/obj/item/clothing/suit/armor/captain_heraldry
+/obj/item/clothing/suit/hooded/captain_heraldry
 	name = "Captain's Knight Armor"
 	desc = "A piece of armor worn over the uniform, indicating rank and symbolizing loyalty, bearing the Nanotrasen emblem. It's surprising that such armor is still used."
 	worn_icon = 'icons/psychonaut/mob/clothing/suits/armor.dmi'
@@ -279,6 +279,8 @@
 	cold_protection = CHEST|GROIN|LEGS|ARMS
 	heat_protection = CHEST|GROIN|LEGS|ARMS
 	armor_type = /datum/armor/captain_heraldry
+	hoodtype = /obj/item/clothing/head/hooded/captain_heraldryhelmet
+	hood_up_affix = ""
 
 /datum/armor/captain_heraldry
 	melee = 50

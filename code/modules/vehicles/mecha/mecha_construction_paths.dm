@@ -427,6 +427,27 @@
 		. = check_step(used_atom, user)
 	return .
 
+/datum/component/construction/mecha/gygax/get_stockpart_steps()
+	return list(
+		list(
+			"key" = /obj/item/mecha_parts/core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
+			"forward_message" = "inserted mech power core",
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
+		)
+	) + ..()
+
 //CLARKE
 /datum/component/construction/unordered/mecha_chassis/clarke
 	result = /datum/component/construction/mecha/clarke
@@ -646,6 +667,27 @@
 	outer_plating = /obj/item/mecha_parts/part/durand_armor
 	outer_plating_amount = 1
 
+/datum/component/construction/mecha/durand/get_stockpart_steps()
+	return list(
+		list(
+			"key" = /obj/item/mecha_parts/core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
+			"forward_message" = "inserted mech power core",
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
+		)
+	) + ..()
+
 //PHAZON
 /datum/component/construction/unordered/mecha_chassis/phazon
 	result = /datum/component/construction/mecha/phazon
@@ -775,6 +817,27 @@
 		)
 	)
 
+/datum/component/construction/mecha/phazon/get_stockpart_steps()
+	return list(
+		list(
+			"key" = /obj/item/mecha_parts/core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
+			"forward_message" = "inserted mech power core",
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
+		)
+	) + ..()
+
 /datum/component/construction/mecha/phazon/get_outer_plating_steps()
 	return ..() + list(
 		list(
@@ -813,6 +876,27 @@
 
 	outer_plating = /obj/item/mecha_parts/part/savannah_ivanov_armor
 	outer_plating_amount = 1
+
+/datum/component/construction/mecha/savannah_ivanov/get_stockpart_steps()
+	return list(
+		list(
+			"key" = /obj/item/mecha_parts/core,
+			"action" = ITEM_DELETE,
+			"back_key" = TOOL_SCREWDRIVER,
+			"desc" = "The hydraulic systems are active, and the <b>mech power core</b> socket is open.",
+			"forward_message" = "inserted mech power core",
+			"backward_message" = "deactivated the hydraulic systems",
+			"skip_state" = TRUE,
+		),
+		list(
+			"key" = TOOL_WRENCH,
+			"back_key" = TOOL_CROWBAR,
+			"desc" = "The mech power core is installed, and can be <b>wrenched</b> into place.",
+			"forward_message" = "secured mech power core",
+			"backward_message" = "removed mech power core",
+			"skip_state" = TRUE,
+		)
+	) + ..()
 
 //ODYSSEUS
 /datum/component/construction/unordered/mecha_chassis/odysseus

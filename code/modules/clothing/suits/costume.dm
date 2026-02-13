@@ -740,3 +740,24 @@
 	UnregisterSignal(source, COMSIG_ITEM_DROPPED)
 	full_suit = FALSE
 	user.remove_faction(FACTION_BEAR)
+
+/obj/item/clothing/suit/costume/warrior
+	name = "chainmail armor"
+	desc = "A suit of chainmail armor, perfect for medieval reenactments or just looking like a knight."
+	icon_state = "chainarmor"
+	icon = 'icons/psychonaut/obj/clothing/suits/costume.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/costume.dmi'
+
+/obj/item/clothing/suit/costume/paladin
+	name = "paladin armor"
+	desc = "A suit of shining paladin armor, perfect for medieval reenactments or just looking like a holy knight."
+	icon_state = "paladin"
+	icon = 'icons/psychonaut/obj/clothing/suits/costume.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/costume.dmi'
+
+/obj/item/clothing/suit/costume/warlock
+	name = "warlock robes"
+	desc = "A suit of warlock robes, unlike others, you came from the 40th millennium. "
+	icon_state = "warlock"
+	icon = 'icons/psychonaut/obj/clothing/suits/costume.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/suits/costume.dmi'

@@ -317,3 +317,21 @@
 	parcel.drag_slowdown = crate.drag_slowdown
 	crate.forceMove(parcel)
 	parcel.name = "christmas gifts"
+
+/datum/supply_pack/costumes_toys/roleplay
+	name = "Roleplay Kit"
+	desc = "This crate contains a selection of roleplay costumes for those who want to get into character."
+	cost = CARGO_CRATE_VALUE * 35
+	contains = list(
+		/obj/item/clothing/suit/costume/paladin,
+		/obj/item/clothing/head/costume/paladin,
+		/obj/item/clothing/suit/costume/warlock,
+		/obj/item/clothing/suit/costume/warrior,
+		/obj/item/clothing/head/costume/warrior,
+		/obj/item/clothing/head/costume/thief,
+		/obj/item/clothing/suit/wizrobe/fake,
+		/obj/item/clothing/head/wizard/fake,
+	)
+	crate_name = "roleplay costume kit"
+	crate_type = /obj/structure/closet/crate/wooden
+

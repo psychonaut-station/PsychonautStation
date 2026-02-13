@@ -404,3 +404,28 @@
 	worn_icon_state = "paper"
 	dog_fashion = /datum/dog_fashion/head
 	custom_materials = list(/datum/material/paper = HALF_SHEET_MATERIAL_AMOUNT / 2)
+
+/obj/item/clothing/head/costume/thief
+	name = "thief cloak"
+	desc = "The cloak doesn't seem to hide your face very well."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
+	icon_state = "thief"
+	flags_inv = HIDEEARS|HIDEHAIR
+
+/obj/item/clothing/head/costume/warrior
+	name = "chainmail coif"
+	desc = "A helmet made of interlocking metal rings, providing excellent head protection. Of course, it would be great if the one you're wearing right now were real."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
+	icon_state = "chainhelm"
+	flags_inv = HIDEEARS|HIDEHAIR
+
+/obj/item/clothing/head/costume/paladin
+	name = "paladin's hood"
+	desc = "Cool armor and strong faith."
+	icon = 'icons/psychonaut/obj/clothing/head/hats.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/head/hats.dmi'
+	icon_state = "paladinhelm"
+	flags_inv = HIDEEARS|HIDEHAIR|HIDEFACE|HIDESNOUT
+

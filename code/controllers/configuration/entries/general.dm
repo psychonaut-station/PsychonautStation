@@ -197,11 +197,6 @@
 /// allow votes to change map
 /datum/config_entry/flag/allow_vote_map
 
-/// the number of times we allow players to rock the vote
-/datum/config_entry/number/max_rocking_votes
-	default = 1
-	min_val = 1
-
 /// minimum time between voting sessions (deciseconds, 10 minute default)
 /datum/config_entry/number/vote_delay
 	default = 10 MINUTES
@@ -813,8 +808,16 @@
 	min_val = 0
 	max_val = 100
 
+<<<<<<< HEAD
 /datum/config_entry/flag/allow_randomized_rooms
 	default = TRUE
+=======
+/// Pop requirement to exclude recently played maps from votes.
+/datum/config_entry/number/map_vote_minimum_pop_to_remember_maps
+	default = 0 //0 means disabled
+	integer = TRUE
+	min_val = 0
+>>>>>>> c75984f87eaba15fe6d66d8ae57da2201afe6d99
 
 /// If admins with +DEBUG can initialize byond-tracy midround.
 /datum/config_entry/flag/allow_tracy_start

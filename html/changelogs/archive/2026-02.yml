@@ -82,17 +82,6 @@
   lelandkemble:
   - bugfix: the Space Furnace is now usable in rooms that have previously been breached,
       provided they have recovered enough air.
-<<<<<<< HEAD
-2026-02-09:
-  Rengan:
-  - bugfix: "Creditsdeki ve sitedeki karakter iconlar\u0131nda ten renkleri art\u0131\
-      k d\xFCzg\xFCn g\xF6z\xFCk\xFCyor."
-  Ureus:
-  - rscadd: "Golf arac\u0131n\u0131n kaputuna bomba koyulmas\u0131n\u0131 sa\u011F\
-      lar."
-  homek13:
-  - admin: buildmode ghost offer
-=======
 2026-02-07:
   ArcaneMusic:
   - rscadd: Stations can now spawn with Structural weakpoints. If they're subject
@@ -127,6 +116,14 @@
   - map: Catwalks vault is now restricted access
   vinylspiders:
   - code_imp: sinks can be mounted to floors
+  Rengan:
+  - bugfix: "Creditsdeki ve sitedeki karakter iconlar\u0131nda ten renkleri art\u0131\
+      k d\xFCzg\xFCn g\xF6z\xFCk\xFCyor."
+  Ureus:
+  - rscadd: "Golf arac\u0131n\u0131n kaputuna bomba koyulmas\u0131n\u0131 sa\u011F\
+      lar."
+  homek13:
+  - admin: buildmode ghost offer
 2026-02-10:
   Melbert:
   - qol: You are always notified if your paycheck amount changes
@@ -163,4 +160,3 @@
   - code_imp: Removed unused rock the vote config entry
   TealSeer:
   - balance: The CE spawns with upgraded tools again
->>>>>>> c75984f87eaba15fe6d66d8ae57da2201afe6d99

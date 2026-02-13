@@ -66,12 +66,10 @@
 	/// Boolean that tells SSmapping to load all away missions in the codebase.
 	var/load_all_away_missions = FALSE
 
-<<<<<<< HEAD
 	var/list/picked_rooms = list()
-=======
+
 	/// Number of additional weakpoints to spawn for SSminor_mapping
 	var/bonus_weakpoints = 0
->>>>>>> c75984f87eaba15fe6d66d8ae57da2201afe6d99
 
 /**
  * Proc that simply loads the default map config, which should always be functional.

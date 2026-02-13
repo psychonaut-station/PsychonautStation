@@ -808,16 +808,14 @@
 	min_val = 0
 	max_val = 100
 
-<<<<<<< HEAD
 /datum/config_entry/flag/allow_randomized_rooms
 	default = TRUE
-=======
+
 /// Pop requirement to exclude recently played maps from votes.
 /datum/config_entry/number/map_vote_minimum_pop_to_remember_maps
 	default = 0 //0 means disabled
 	integer = TRUE
 	min_val = 0
->>>>>>> c75984f87eaba15fe6d66d8ae57da2201afe6d99
 
 /// If admins with +DEBUG can initialize byond-tracy midround.
 /datum/config_entry/flag/allow_tracy_start

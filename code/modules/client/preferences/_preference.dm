@@ -202,7 +202,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	if (!isnull(save_data))
 		save_data[savefile_key] = serialize(value, preferences)
 
+	post_write(value, preferences)
+
 	return TRUE
+
+/// Called after a preference has been updated
+/datum/preference/proc/post_write(value, datum/preferences/preferences)
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /// Apply this preference onto the given client.
 /// Called when the savefile_identifier == PREFERENCE_PLAYER.
@@ -418,7 +425,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	SHOULD_NOT_SLEEP(TRUE)
 	CRASH("`icon_for()` was not implemented for [type], even though should_generate_icons = TRUE!")
 
-/datum/preference/choiced/is_valid(value)
+/datum/preference/choiced/is_valid(value, datum/preferences/preferences)
 	return value in get_choices()
 
 /datum/preference/choiced/deserialize(input, datum/preferences/preferences)
@@ -500,7 +507,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/color/serialize(input)
 	return sanitize_hexcolor(input)
 
-/datum/preference/color/is_valid(value)
+/datum/preference/color/is_valid(value, datum/preferences/preferences)
 	return findtext(value, GLOB.is_color)
 
 /// A numeric preference with a minimum and maximum value
@@ -527,7 +534,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/numeric/create_default_value()
 	return rand(minimum, maximum)
 
-/datum/preference/numeric/is_valid(value)
+/datum/preference/numeric/is_valid(value, datum/preferences/preferences)
 	return isnum(value) && value >= round(minimum, step) && value <= round(maximum, step)
 
 /datum/preference/numeric/compile_constant_data()
@@ -550,7 +557,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/toggle/deserialize(input, datum/preferences/preferences)
 	return !!input
 
-/datum/preference/toggle/is_valid(value)
+/datum/preference/toggle/is_valid(value, datum/preferences/preferences)
 	return value == TRUE || value == FALSE
 
 
@@ -571,7 +578,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/text/create_default_value()
 	return ""
 
-/datum/preference/text/is_valid(value)
+/datum/preference/text/is_valid(value, datum/preferences/preferences)
 	return istext(value) && length(value) < maximum_value_length
 
 /datum/preference/text/compile_constant_data()

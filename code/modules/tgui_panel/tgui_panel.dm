@@ -19,6 +19,7 @@
 	src.client = client
 	window = new(client, id)
 	window.subscribe(src, PROC_REF(on_message))
+	RegisterSignal(client, COMSIG_CLIENT_MOB_LOGIN, PROC_REF(on_client_mob_login))
 
 /datum/tgui_panel/Del()
 	window.unsubscribe(src)
@@ -65,6 +66,16 @@
 /datum/tgui_panel/proc/on_initialize_timed_out()
 	// Currently does nothing but sending a message to old chat.
 	SEND_TEXT(client, span_userdanger("Failed to load fancy chat, click <a href='byond://?src=[REF(src)];reload_tguipanel=1'>HERE</a> to attempt to reload it."))
+
+/**
+ * private
+ *
+ * Called when the client's mob changes (character selection).
+ */
+/datum/tgui_panel/proc/on_client_mob_login()
+	// Update emotes list when a character is selected
+	if(is_ready())
+		emotes_send_list()
 
 /**
  * private

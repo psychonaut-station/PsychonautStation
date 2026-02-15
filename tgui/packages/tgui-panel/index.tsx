@@ -56,7 +56,7 @@ function setupApp() {
   if (import.meta.webpackHot) {
     setupHotReloading();
 
-    import.meta.webpackHot.accept(['./app'], () => {
+    import.meta.webpackHot.accept(['./app', './emotes'], () => {
       render(<App />);
     });
   }

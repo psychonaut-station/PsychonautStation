@@ -88,6 +88,8 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	/// If set to TRUE, will update character_profiles on the next ui_data tick.
 	var/tainted_character_profiles = FALSE
 
+	var/list/custom_emote_panel = list()
+
 	///Alternative job titles stored in preferences. Assoc list, ie. alt_job_titles["Scientist"] = "Cytologist"
 	var/list/alt_job_titles = list()
 
@@ -217,6 +219,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 			save_character()
 			// SAFETY: `switch_to_slot` performs sanitization on the slot number
 			switch_to_slot(params["slot"])
+			parent.tgui_panel?.window.send_message("emotes/setList", custom_emote_panel)
 			return TRUE
 		if ("remove_current_slot")
 			remove_current_slot()

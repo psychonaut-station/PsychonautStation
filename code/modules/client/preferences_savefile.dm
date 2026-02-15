@@ -368,6 +368,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Load prefs
 	job_preferences = save_data?["job_preferences"]
 
+	//Custom emote panel
+	custom_emote_panel = save_data?["custom_emote_panel"]
+
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
@@ -384,6 +387,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
 	alt_job_titles = SANITIZE_LIST(alt_job_titles)
+	custom_emote_panel = SANITIZE_LIST(custom_emote_panel)
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -429,6 +433,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Write prefs
 	save_data["job_preferences"] = job_preferences
+
+	//Emote panel
+	save_data["custom_emote_panel"] = custom_emote_panel
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks

@@ -53,7 +53,7 @@ GLOBAL_LIST_EMPTY_TYPED(persistent_clients, /datum/persistent_client)
 /datum/persistent_client/proc/set_client(client/new_client)
 	if(client == new_client)
 		return
-	
+
 	if(client)
 		client.persistent_client = null
 	client = new_client
@@ -72,6 +72,7 @@ GLOBAL_LIST_EMPTY_TYPED(persistent_clients, /datum/persistent_client)
 
 	mob = new_mob
 	new_mob?.persistent_client = src
+	client?.tgui_panel?.emotes_send_list()
 
 /// Writes all of the `played_names` into an HTML-escaped string.
 /datum/persistent_client/proc/get_played_names()

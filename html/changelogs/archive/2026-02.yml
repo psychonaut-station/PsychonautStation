@@ -107,8 +107,16 @@
   Cyberboss:
   - bugfix: Fixed right clicking a closet with an ID in hand toggling locks twice
       in one tick
+  Rengan:
+  - bugfix: "Creditsdeki ve sitedeki karakter iconlar\u0131nda ten renkleri art\u0131\
+      k d\xFCzg\xFCn g\xF6z\xFCk\xFCyor."
   SmArtKar:
   - image: Husk visuals now inherit their mob's blood color
+  Ureus:
+  - rscadd: "Golf arac\u0131n\u0131n kaputuna bomba koyulmas\u0131n\u0131 sa\u011F\
+      lar."
+  homek13:
+  - admin: buildmode ghost offer
   lelandkemble:
   - rscadd: You can now put a deconstructed nuclear bomb back together again
   - bugfix: Nuclear bombs with exposed cores will again irradiate their surrounding
@@ -116,14 +124,6 @@
   - map: Catwalks vault is now restricted access
   vinylspiders:
   - code_imp: sinks can be mounted to floors
-  Rengan:
-  - bugfix: "Creditsdeki ve sitedeki karakter iconlar\u0131nda ten renkleri art\u0131\
-      k d\xFCzg\xFCn g\xF6z\xFCk\xFCyor."
-  Ureus:
-  - rscadd: "Golf arac\u0131n\u0131n kaputuna bomba koyulmas\u0131n\u0131 sa\u011F\
-      lar."
-  homek13:
-  - admin: buildmode ghost offer
 2026-02-10:
   Melbert:
   - qol: You are always notified if your paycheck amount changes
@@ -160,3 +160,19 @@
   - code_imp: Removed unused rock the vote config entry
   TealSeer:
   - balance: The CE spawns with upgraded tools again
+2026-02-16:
+  Seefaaa:
+  - bugfix: "/me atarkenki t\xFCrk\xE7e karakterler bulan\u0131k g\xF6z\xFCkmekyecek"
+  SyncIt21:
+  - refactor: plumbing automatic buffer has been refactored for better performance
+      & interactions. report bugs on github
+  - refactor: plumbing accmilator code has been improved. Report bugs on github
+  - bugfix: power monitors report accurate readings for plumbing machinery
+  - refactor: code for plumbing splitter & filter have been improved. plumbing splitter
+      is now a 3 way component. Report bugs on github
+  - code_imp: mob metabolization code has better cpu performance
+  homek13:
+  - rscadd: "Sava\u015F mechlerinin \xFCretimi i\xE7in zorunlu mech power core isimli\
+      \ e\u015Fya eklendi"
+  - balance: "Durand, gygax, ivanov, phazon \xFCretmek i\xE7in art\u0131k kargodan\
+      \ mech power core sipari\u015F etmek gerekiyor."

@@ -288,6 +288,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	job_slots = SANITIZE_LIST(job_slots)
 	job_preferences = SANITIZE_LIST(job_preferences)
 
+	for(var/job_title in job_slots)
+		var/slot = job_slots[job_title]
+		if(
+			!SSjob.get_job(job_title) ||
+			!isnum(slot) ||
+			slot < JOB_SLOT_RANDOMISED_SLOT ||
+			slot > max_save_slots ||
+			slot == JOB_SLOT_CURRENT_SLOT
+		)
+			job_slots -= job_title
+
 	for(var/j in job_preferences)
 		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
 			job_preferences -= j

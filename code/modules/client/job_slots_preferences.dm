@@ -5,7 +5,7 @@
 	/// Assoc list of [job title] = [slot number]. Stores which character slot to use for each job.
 	var/alist/job_slots = list()
 
-/**
+/*
  * Generates available slot selection options
  *
  * Returns associative list of slot IDs to display names, including:
@@ -28,9 +28,9 @@
 
 	return slot_options
 
-/// Resets pref_job_slots to empty list and saves preferences
+/// Resets job_slots to empty list and saves preferences
 /datum/preferences/proc/reset_job_slots()
-	pref_job_slots = list()
+	job_slots = list()
 	save_preferences()
 
 /**
@@ -47,7 +47,7 @@
 /datum/preferences/proc/set_assigned_slot(job_title, is_late_join = FALSE)
 	if(is_late_join ? read_preference(/datum/preference/toggle/late_join_always_current_slot) : read_preference(/datum/preference/toggle/round_start_always_join_current_slot))
 		return
-	var/slot = pref_job_slots[job_title] || JOB_SLOT_CURRENT_SLOT
+	var/slot = job_slots[job_title] || JOB_SLOT_CURRENT_SLOT
 	switch(slot)
 		if(JOB_SLOT_RANDOMISED_SLOT)
 			return TRUE

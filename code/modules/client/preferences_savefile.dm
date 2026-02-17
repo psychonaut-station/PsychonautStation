@@ -285,7 +285,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
 	//Pref Job Slots
-	pref_job_slots = SANITIZE_LIST(pref_job_slots)
+	job_slots = SANITIZE_LIST(job_slots)
 	job_preferences = SANITIZE_LIST(job_preferences)
 
 	for(var/j in job_preferences)
@@ -345,6 +345,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("key_bindings", key_bindings)
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
+	savefile.set_entry("job_slots", job_slots)
 	savefile.save()
 	return TRUE
 

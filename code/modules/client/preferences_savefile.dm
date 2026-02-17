@@ -377,7 +377,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = save_data?["randomise"]
 
 	//Load prefs
-	//job_preferences = save_data?["job_preferences"] //Pref Job Slots
 
 	//Quirks
 	all_quirks = save_data?["all_quirks"]

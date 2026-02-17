@@ -12,7 +12,7 @@ import {
   type PreferencesMenuData,
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
-import { JobSlotDropdown } from './JobSlotDropdown'; // Pref Job Slots
+import { JobSlotDropdown } from './JobSlotDropdown';
 
 function sortJobs(entries: [string, Job][], head?: string) {
   return sortBy(entries, [

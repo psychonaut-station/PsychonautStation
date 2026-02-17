@@ -243,8 +243,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	chat_toggles = savefile.get_entry("chat_toggles", chat_toggles)
 	toggles = savefile.get_entry("toggles", toggles)
 	ignoring = savefile.get_entry("ignoring", ignoring)
-	//Pref Job Slots
-	pref_job_slots = savefile.get_entry("pref_job_slots", pref_job_slots)
+	// Pref Job Slots
+	job_slots = savefile.get_entry("job_slots", pref_job_slots)
 	job_preferences = savefile.get_entry("job_preferences", job_preferences)
 
 	// OOC commendations

@@ -3,7 +3,7 @@
 
 /datum/preferences
 	/// Assoc list of [job title] = [slot number]. Stores which character slot to use for each job.
-	var/list/pref_job_slots = list()
+	var/alist/job_slots = list()
 
 /**
  * Generates available slot selection options
@@ -16,17 +16,17 @@
  * Format: list("[slot_id]" = "[display_name]")
  */
 /datum/preferences/proc/get_slot_options()
-	var/list/slot_options = list(num2text(JOB_SLOT_CURRENT_SLOT) = JOB_SLOT_CURRENT_TEXT)
+	var/list/slot_options = alist(JOB_SLOT_CURRENT_SLOT = JOB_SLOT_CURRENT_TEXT)
 	var/real_name = read_preference(/datum/preference/name/real_name)
 	for(var/index in 1 to max_save_slots)
-		var/slot_name = (index == default_slot) \
-			? real_name \
-			: savefile.get_entry("character[index]")?["real_name"]
+		var/slot_name = (index == default_slot) ? real_name : savefile.get_entry("character[index]")?["real_name"]
 
 		if(slot_name)
-			slot_options[num2text(index)] = slot_name
+			slot_options[index] = slot_name
 
-	return slot_options += list(num2text(JOB_SLOT_RANDOMISED_SLOT) = JOB_SLOT_RANDOMISED_TEXT)
+	slot_options[JOB_SLOT_RANDOMISED_SLOT] = JOB_SLOT_RANDOMISED_TEXT
+
+	return slot_options
 
 /// Resets pref_job_slots to empty list and saves preferences
 /datum/preferences/proc/reset_job_slots()

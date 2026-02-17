@@ -13,8 +13,8 @@
 	return data
 
 /datum/preference_middleware/pref_job_slots/proc/set_job_slot(list/params, mob/user)
-	if(!params["job"] || isnull(params["slot"]))
-		CRASH("Missing parameter in job slot update request")
+	if(isnull(params["slot"]))
+		return
 
 	var/job_title = params["job"]
 	var/slot_index = params["slot"]

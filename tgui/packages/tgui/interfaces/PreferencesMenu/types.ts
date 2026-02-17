@@ -208,8 +208,8 @@ export type PreferencesMenuData = {
   name_to_use: string;
 
   window: PrefsWindow;
-  //Pref Job Slots
-  pref_job_slots?: Record<string, number>;
+
+  job_slots?: Record<string, number>;
   profile_index?: Record<string, string>;
 };
 

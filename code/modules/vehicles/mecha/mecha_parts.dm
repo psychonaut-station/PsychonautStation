@@ -331,6 +331,14 @@
 	desc="Savannah-Ivanov armor plates. They are uniquely shaped and reinforced to deal with the stresses of two pilots, grandiose leaps, and missiles."
 	icon_state = "savannah_ivanov_armor"
 
+/////// Core
+/obj/item/mecha_parts/core
+	name = "mech power core"
+	icon = 'icons/psychonaut/obj/devices/mech_core.dmi'
+	icon_state = "mech_core"
+	desc = "A power core designed to fit into a mech chassis, providing the necessary energy to operate the exosuit."
+	w_class = WEIGHT_CLASS_SMALL
+
 ///////// Circuitboards
 
 /obj/item/circuitboard/mecha

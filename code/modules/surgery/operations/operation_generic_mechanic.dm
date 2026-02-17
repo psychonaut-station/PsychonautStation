@@ -4,6 +4,7 @@
 	name = "unscrew shell"
 	desc = "Unscrew the shell of a mechanical patient to access its internals. \
 		Causes \"cut skin\" surgical state."
+	localizated_desc = "İç kısımlara erişmek için mekanik bir hastanın dış kabuğunun vidalarını sökün. \"cut skin\" cerrahi durumuna neden olur."
 	implements = list(
 		TOOL_SCREWDRIVER = 1,
 		TOOL_SCALPEL = 1.33,
@@ -46,6 +47,7 @@
 	name = "open hatch"
 	desc = "Open the hatch of a mechanical patient to access its internals. \
 		Causes \"skin open\" and \"vessels clamped\" surgical states."
+	localizated_desc = "Mekanik bir hastanın iç kısımlarına erişmek için kapağını açın. \"skin open\" ve \"vessels clamped\" cerrahi durumlarına neden olur."
 	required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		IMPLEMENT_HAND = 1,
@@ -81,6 +83,7 @@
 	name = "screw shell"
 	desc = "Screw the shell of a mechanical patient back into place. \
 		Clears most surgical states."
+	localizated_desc = "Mekanik bir hastanın dış kabuğunu yerine vidalayın. Çoğu cerrahi durumu temizler."
 	required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_SCREWDRIVER = 1,
@@ -126,6 +129,7 @@
 	name = "prepare electronics"
 	desc = "Prepare the internal electronics of a mechanical patient for surgery. \
 		Causes \"organs cut\" surgical state."
+	localizated_desc = "Mekanik bir hastanın dahili elektroniklerini ameliyat için hazırlayın. \"organs cut\" cerrahi durumuna neden olur."
 	required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_MULTITOOL = 1,
@@ -160,6 +164,7 @@
 	name = "unwrench endoskeleton"
 	desc = "Unwrench a mechanical patient's endoskeleton to access its internals. \
 		Clears \"bone sawed\" surgical state."
+	localizated_desc = "İç kısımlara erişmek için mekanik bir hastanın endoskeletonunu somun anahtarıyla gevşetin. \"bone sawed\" cerrahi durumunu temizler."
 	required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_WRENCH = 1,
@@ -193,6 +198,7 @@
 	name = "wrench endoskeleton"
 	desc = "Wrench a mechanical patient's endoskeleton back into place. \
 		Clears \"bone sawed\" surgical state."
+	localizated_desc = "Mekanik bir hastanın endoskeletonunu yerine sabitleyin. \"bone sawed\" cerrahi durumunu temizler."
 	required_bodytype = BODYTYPE_ROBOTIC
 	implements = list(
 		TOOL_WRENCH = 1,

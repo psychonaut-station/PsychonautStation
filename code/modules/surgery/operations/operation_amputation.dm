@@ -2,6 +2,7 @@
 	name = "amputate limb"
 	rnd_name = "Disarticulation (Amputation)"
 	desc = "Sever a limb from a patient's body."
+	localizated_desc = "Hastanın vücudundan bir uzvu kesin."
 	operation_flags = OPERATION_MORBID | OPERATION_AFFECTS_MOOD | OPERATION_NOTABLE
 	required_bodytype = ~(BODYTYPE_ROBOTIC|BODYTYPE_PEG)
 	implements = list(

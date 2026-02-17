@@ -2,6 +2,7 @@
 	name = "autopsy"
 	rnd_name = "Androtomy (Dissection and Autopsy)"
 	desc = "Perform a detailed analysis of a deceased patient's body."
+	localizated_desc = "Ölmüş bir hastanın vücudunda detaylı otopsi analizi yapın."
 	implements = list(/obj/item/autopsy_scanner = 1)
 	time = 10 SECONDS
 	success_sound = 'sound/machines/printer.ogg'
@@ -52,5 +53,6 @@
 	name = "system failure analysis"
 	rnd_name = "System Failure Analysis (Dissection and Autopsy)"
 	desc = "Perform a detailed analysis of a robotic patient's deactivated systems."
+	localizated_desc = "Robotik bir hastanın devre dışı kalmış sistemleri üzerinde detaylı analiz yapın."
 	required_bodytype = BODYTYPE_ROBOTIC
 	operation_flags = parent_type::operation_flags | OPERATION_MECHANIC

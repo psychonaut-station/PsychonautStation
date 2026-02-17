@@ -1403,8 +1403,6 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	else
 		our_human.wipe_state() // We're wiping the dummys overlays and outfit
 		our_human.set_species(/datum/species/human) // We're setting it to human beacuse if the savefile doesnt have species entry, it doesnt use previous icon's species
-		our_human.icon_render_keys = list()
-		our_human.update_body(is_creating = TRUE) // We're recreating bodyparts etc.
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order()) // Apply the preferences in priority order
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
@@ -1415,6 +1413,9 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		var/new_value = preference.deserialize(saved_data)
 
 		preference.apply_to_human(our_human, new_value)
+
+	our_human.icon_render_keys = list()
+	our_human.update_body(is_creating = TRUE)
 
 	if(!mob_name)
 		mob_name = our_human.real_name
@@ -1542,3 +1543,49 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
 	fcopy(flat_icon, icon_path)
+
+/**
+ * Copies the pixel colors from the passed in icon `I` to the 2d list `grid`
+ */
+/proc/fill_grid_from_icon(list/grid, icon/I)
+	var/width = I.Width()
+	var/height = I.Height()
+	for(var/x in 1 to width)
+		for(var/y in 1 to height)
+			grid[y][x] = I.GetPixel(x,height+1-y)
+
+// Given a number of frames for an icon state, and the dimensions of the icon, returns the ideal dimensions for a DMI file
+/proc/calculate_optimal_icon_grid_dimensions(width, height, count)
+	var/grid_width = 1
+	var/grid_height = 1
+	while(grid_width * grid_height < count)
+		if(height*grid_height < width*grid_width)
+			grid_height++
+		else
+			grid_width++
+	return list(grid_height, grid_width)
+
+// Reorder the 2d pixel data of the passed in frames into a data string that can be passed to rustg_dmi_create_png
+/proc/reorder_pixels(icon_width, icon_height, grid_width, grid_height, list/frames)
+	var/file_height = icon_height * grid_height
+
+	// This little trick right here reduces the total iteration of repeat_string from the product of the arguments to their sum.
+	// Can't be applied to the general case without a complex partitioning algorithm,
+	// since the count could either be a large prime or have large primes as factors
+	var/linear_pixels = COLOR_DMI_MASK
+	for(var/count in list(icon_width, icon_height, grid_width, grid_height))
+		if(count == 1)
+			continue
+		linear_pixels = repeat_string(count, linear_pixels)
+
+	for(var/i in 1 to length(frames))
+		var/list/frame = frames[i]
+		var/row_index = floor((i-1)/grid_width)
+		var/column = (i-1)%grid_width
+		for(var/y in 1 to length(frame))
+			var/list/row = jointext(frame[y], "")
+			var/splice_start = (row_index+y-1)*file_height + column*icon_width + 1
+			linear_pixels = splicetext(splice_start*9, (splice_start+icon_width)*9, row)
+	var/zero_alpha_regex = regex(@@#(?:(?!a0a0a0)([0-9]|[a-f]){6}00)@, "gi")
+	linear_pixels = replacetext(linear_pixels, zero_alpha_regex, COLOR_DMI_MASK)
+	return linear_pixels

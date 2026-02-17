@@ -4,6 +4,7 @@
 /datum/surgery_operation/prosthetic_replacement
 	name = "prosthetic replacement"
 	desc = "Replace a missing limb with a prosthetic (or arbitrary) item."
+	localizated_desc = "Eksik bir uzvu protez (veya herhangi bir) eşya ile değiştirin."
 	implements = list(
 		/obj/item/bodypart = 1,
 		/obj/item = 1,
@@ -167,6 +168,7 @@
 /datum/surgery_operation/limb/secure_arbitrary_prosthetic
 	name = "secure prosthetic"
 	desc = "Ensure that an arbitrary prosthetic is properly attached to a patient's body."
+	localizated_desc = "Herhangi bir protezin hastanın vücuduna düzgün bir şekilde bağlandığından emin olun."
 	implements = list(
 		/obj/item/stack/medical/suture = 1,
 		/obj/item/stack/sticky_tape/surgical = 1.25,

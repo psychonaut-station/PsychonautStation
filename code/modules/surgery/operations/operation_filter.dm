@@ -2,6 +2,7 @@
 	name = "blood filtration"
 	rnd_name = "Hemodialysis (Blood Filtration)"
 	desc = "Remove unwanted chemicals from a patient's bloodstream."
+	localizated_desc = "Hastanın kan dolaşımından istenmeyen kimyasalları temizleyin."
 	implements = list(/obj/item/blood_filter = 1)
 	time = 2.5 SECONDS
 	operation_flags = OPERATION_LOOPING

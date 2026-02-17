@@ -290,13 +290,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	for(var/job_title in job_slots)
 		var/slot = job_slots[job_title]
-		if(
-			!SSjob.get_job(job_title) ||
-			!isnum(slot) ||
-			slot < JOB_SLOT_RANDOMISED_SLOT ||
-			slot > max_save_slots ||
-			slot == JOB_SLOT_CURRENT_SLOT
-		)
+		if(!SSjob.get_job(job_title) || !isnum(slot) || slot < JOB_SLOT_RANDOMISED_SLOT || slot > max_save_slots || slot == JOB_SLOT_CURRENT_SLOT)
 			job_slots -= job_title
 
 	for(var/j in job_preferences)

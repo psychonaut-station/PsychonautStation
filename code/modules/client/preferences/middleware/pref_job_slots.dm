@@ -19,7 +19,7 @@
 	var/job_title = params["job"]
 	var/slot_index = params["slot"]
 
-	if(JOB_SLOT_RANDOMISED_SLOT > slot_index > preferences.max_save_slots)
+	if(slot_index < JOB_SLOT_RANDOMISED_SLOT || slot_index > preferences.max_save_slots)
 		return
 
 	if(!SSjob.get_job(job_title))

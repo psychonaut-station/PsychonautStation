@@ -7,7 +7,7 @@
 /datum/preference_middleware/job_slots/get_ui_data(mob/user)
 	var/list/data = list()
 
-	data["pref_job_slots"] = preferences.job_slots
+	data["job_slots"] = preferences.job_slots
 	data["profile_index"] = preferences.get_slot_options()
 
 	return data

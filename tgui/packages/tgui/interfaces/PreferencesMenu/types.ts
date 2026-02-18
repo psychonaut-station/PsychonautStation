@@ -211,8 +211,8 @@ export type PreferencesMenuData = {
 
   window: PrefsWindow;
 
-  job_slots?: Record<string, number>;
-  profile_index?: Record<string, string>;
+  job_slots: Record<string, number>;
+  profile_index: Record<number, string>;
 };
 
 export type ServerData = {

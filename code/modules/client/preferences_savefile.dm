@@ -246,7 +246,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	chat_toggles = savefile.get_entry("chat_toggles", chat_toggles)
 	toggles = savefile.get_entry("toggles", toggles)
 	ignoring = savefile.get_entry("ignoring", ignoring)
-	// Pref Job Slots
 	job_slots = savefile.get_entry("job_slots", job_slots)
 	job_preferences = savefile.get_entry("job_preferences", job_preferences)
 
@@ -284,13 +283,12 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
-	//Pref Job Slots
 	job_slots = SANITIZE_LIST(job_slots)
 	job_preferences = SANITIZE_LIST(job_preferences)
 
 	for(var/job_title in job_slots)
 		var/slot = job_slots[job_title]
-		if(!SSjob.get_job(job_title) || !isnum(slot) || slot < JOB_SLOT_RANDOMISED_SLOT || slot > max_save_slots || slot == JOB_SLOT_CURRENT_SLOT)
+		if(!isnum(slot) || slot < JOB_SLOT_RANDOMISED_SLOT || slot > max_save_slots || slot == JOB_SLOT_CURRENT_SLOT || !SSjob.get_job(job_title))
 			job_slots -= job_title
 
 	for(var/j in job_preferences)
@@ -351,6 +349,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
 	savefile.set_entry("job_slots", job_slots)
+	savefile.set_entry("job_preferences", job_slots)
 	savefile.save()
 	return TRUE
 
@@ -398,11 +397,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = SANITIZE_LIST(randomise)
 	all_quirks = SANITIZE_LIST(all_quirks)
 	alt_job_titles = SANITIZE_LIST(alt_job_titles)
-
-	//Validate job prefs //Pref Job Slots
-	//for(var/j in job_preferences)
-	//	if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
-	//		job_preferences -= j
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
 	validate_quirks()
 

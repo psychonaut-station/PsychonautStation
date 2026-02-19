@@ -274,6 +274,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	CHECK_TICK
 
+	save_round_characters()
 	handle_hearts()
 	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
 
@@ -771,3 +772,26 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/winner_key
 	///The name of the area we earned this cheevo in
 	var/award_location
+
+/datum/controller/subsystem/ticker/proc/save_round_characters()
+	var/icons_json = json_encode(SScharacter_icons.round_character_icons)
+
+	var/data_out = rustg_iconforge_generate("[GLOB.log_directory]/", "character_icons", icons_json, FALSE, FALSE, TRUE)
+	if (data_out == RUSTG_JOB_ERROR)
+		CRASH("ROUND_CHAR_ICONS JOB PANIC")
+	else if(!findtext(data_out, "{", 1, 2))
+		CRASH("ROUND_CHAR_ICONS UNKNOWN ERROR: [data_out]")
+
+	var/list/icon_data = list()
+	var/data = json_decode(data_out)
+
+	var/list/sprites = data["sprites"]
+
+	for(var/sprite_id in sprites)
+		var/sprite = sprites[sprite_id]
+		var/idx = sprite["position"]
+
+		icon_data += list("[sprite_id]" = idx)
+
+	var/icon_data_json = json_encode(icon_data)
+	rustg_file_write(icon_data_json, "[GLOB.log_directory]/character_icons_metadata.json")

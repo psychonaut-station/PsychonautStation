@@ -573,6 +573,7 @@ SUBSYSTEM_DEF(ticker)
 
 		if(ishuman(new_player_living))
 			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
+		INVOKE_ASYNC(new_player_living, TYPE_PROC_REF(/mob/living, save_character_icon), new_player_mob.ckey)
 		CHECK_TICK
 
 	if(captainless)

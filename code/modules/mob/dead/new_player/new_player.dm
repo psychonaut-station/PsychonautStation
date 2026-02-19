@@ -254,6 +254,8 @@
 		else // clear any personalities the prefs added since our job clearly does not want them
 			humanc.clear_personalities()
 
+	INVOKE_ASYNC(character, TYPE_PROC_REF(/mob/living, save_character_icon))
+
 	if(humanc) // Quirks may change manifest datapoints, so inject only after assigning quirks
 		GLOB.manifest.inject(humanc, null, humanc.client)
 		SEND_SIGNAL(humanc, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)

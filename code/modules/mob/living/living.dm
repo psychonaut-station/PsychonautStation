@@ -3038,3 +3038,12 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(HAS_TRAIT(src, TRAIT_ANALGESIA) && !force)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
+
+/mob/living/proc/save_character_icon(ckey)
+	if(!ckey && src.ckey)
+		ckey = src.ckey
+	if(!ckey)
+		return
+	var/mutable_appearance/our_appearance = new (get_mob_appearance())
+	our_appearance.setDir(SOUTH)
+	SScharacter_icons.add_to_queue("[real_name]_[ckey]", our_appearance)

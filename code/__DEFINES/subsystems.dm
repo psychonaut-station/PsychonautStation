@@ -127,6 +127,7 @@
 
 // Subsystem fire priority, from lowest to highest priority
 // If the subsystem isn't listed here it's either DEFAULT or PROCESS (if it's a processing subsystem child)
+#define FIRE_PRIORITY_CHARACTER_ICONS 3
 #define FIRE_PRIORITY_UNPLANNED_NPC 3
 #define FIRE_PRIORITY_IDLE_NPC 5
 #define FIRE_PRIORITY_PING 10

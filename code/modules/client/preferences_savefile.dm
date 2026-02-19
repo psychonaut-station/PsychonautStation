@@ -349,7 +349,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
 	savefile.set_entry("job_slots", job_slots)
-	savefile.set_entry("job_preferences", job_slots)
+	savefile.set_entry("job_preferences", job_preferences)
 	savefile.save()
 	return TRUE
 

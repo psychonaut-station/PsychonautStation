@@ -7,19 +7,19 @@
 	population_min = 50
 	weight = 1
 
-	COOLDOWN_DECLARE(regulate_cooldown)
+	COOLDOWN_DECLARE(regulator_cooldown)
 
 	var/cooldown_duration = 5 MINUTES
 
 /datum/storyteller/regulator/initialize()
 	. = ..()
-	COOLDOWN_START(src, regulate_cooldown, cooldown_duration)
+	COOLDOWN_START(src, regulator_cooldown, cooldown_duration)
 
 /datum/storyteller/regulator/fire(seconds_per_tick)
-	if(!COOLDOWN_FINISHED(src, regulate_cooldown))
+	if(!COOLDOWN_FINISHED(src, regulator_cooldown))
 		return
 
-	COOLDOWN_START(src, regulate_cooldown, cooldown_duration)
+	COOLDOWN_START(src, regulator_cooldown, cooldown_duration)
 	var/score = 0
 
 	var/total_chaos_points = 0

@@ -12,18 +12,19 @@
 	population_min = 30
 	weight = 1
 
-	var/drought_cooldown = 5 MINUTES
-	var/last_drought = 0
+	COOLDOWN_DECLARE(drought_cooldown)
+
+	var/cooldown_duration = 5 MINUTES
 
 /datum/storyteller/drought/initialize()
 	. = ..()
-	last_drought = world.time
+	COOLDOWN_START(src, drought_cooldown, cooldown_duration)
 
 /datum/storyteller/drought/fire(seconds_per_tick)
-	last_drought = seconds_per_tick * 10
-	if(last_drought < drought_cooldown)
+	if(!COOLDOWN_FINISHED(src, drought_cooldown))
 		return
-	last_drought = 0
+
+	COOLDOWN_START(src, drought_cooldown, cooldown_duration)
 	var/execution_multiplier = settings[EXECUTION_MULTIPLIER_LOW]
 	execution_multiplier *= 1.3
 	settings[EXECUTION_MULTIPLIER_LOW] = execution_multiplier

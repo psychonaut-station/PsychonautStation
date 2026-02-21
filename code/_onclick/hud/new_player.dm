@@ -800,14 +800,9 @@
 				[SSticker.totalPlayersReady] player\s ready<br /> \
 				[SSticker.total_admins_ready] / [length(GLOB.admins)] admins ready</span>"
 		else
-<<<<<<< HEAD
-			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 12px'>[time_remaining]</span><br />\
+			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 12px'>[time_remaining_str()]</span><br />\
 				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s<br />\
 				[SSticker.totalPlayersReady] player\s ready</span>"
-=======
-			new_maptext = "<span style='text-align: center; vertical-align: middle; font-size: 18px'>[time_remaining_str()]</span><br /> \
-				<span style='text-align: center; vertical-align: middle'>[LAZYLEN(GLOB.clients)] player\s</span>"
->>>>>>> a2af8930399a73e2b668ff8689c7288e9cc28bc3
 
 	maptext = MAPTEXT(new_maptext)
 

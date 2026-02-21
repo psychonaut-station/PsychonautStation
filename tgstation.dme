@@ -2656,11 +2656,8 @@
 #include "code\game\objects\items\tail_pin.dm"
 #include "code\game\objects\items\taster.dm"
 #include "code\game\objects\items\teleportation.dm"
-<<<<<<< HEAD
 #include "code\game\objects\items\tespih.dm"
-=======
 #include "code\game\objects\items\tourniquet.dm"
->>>>>>> a2af8930399a73e2b668ff8689c7288e9cc28bc3
 #include "code\game\objects\items\toy_mechs.dm"
 #include "code\game\objects\items\toys.dm"
 #include "code\game\objects\items\trash.dm"

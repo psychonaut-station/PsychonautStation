@@ -168,24 +168,6 @@
   - code_imp: mob metabolization code has better cpu performance
   TealSeer:
   - balance: The CE spawns with upgraded tools again
-<<<<<<< HEAD
-2026-02-16:
-  Seefaaa:
-  - bugfix: "/me atarkenki t\xFCrk\xE7e karakterler bulan\u0131k g\xF6z\xFCkmekyecek"
-  SyncIt21:
-  - refactor: plumbing automatic buffer has been refactored for better performance
-      & interactions. report bugs on github
-  - refactor: plumbing accmilator code has been improved. Report bugs on github
-  - bugfix: power monitors report accurate readings for plumbing machinery
-  - refactor: code for plumbing splitter & filter have been improved. plumbing splitter
-      is now a 3 way component. Report bugs on github
-  - code_imp: mob metabolization code has better cpu performance
-  homek13:
-  - rscadd: "Sava\u015F mechlerinin \xFCretimi i\xE7in zorunlu mech power core isimli\
-      \ e\u015Fya eklendi"
-  - balance: "Durand, gygax, ivanov, phazon \xFCretmek i\xE7in art\u0131k kargodan\
-      \ mech power core sipari\u015F etmek gerekiyor."
-=======
 2026-02-14:
   Co0kie-GG:
   - bugfix: AI portraits are now displayed correctly
@@ -242,6 +224,11 @@
   - bugfix: fix moon heretic's empathy runtiming on when they gain their initial knowledge
   Exester509:
   - rscadd: Pigs and goats can now be grown in a cytology vat
+  homek13:
+  - rscadd: "Sava\u015F mechlerinin \xFCretimi i\xE7in zorunlu mech power core isimli\
+      \ e\u015Fya eklendi"
+  - balance: "Durand, gygax, ivanov, phazon \xFCretmek i\xE7in art\u0131k kargodan\
+      \ mech power core sipari\u015F etmek gerekiyor."
   LT3:
   - bugfix: Admins can now actually adjust the speed of the tram
   - bugfix: Fixed tram doors repeating multiple varied copies of their audio
@@ -255,6 +242,8 @@
   lelandkemble:
   - bugfix: Holopads no longer runtime or delete their disks when being destroyed
   - bugfix: You can no longer make any vending machine free
+  Seefaaa:
+  - bugfix: "/me atarkenki t\xFCrk\xE7e karakterler bulan\u0131k g\xF6z\xFCkmekyecek"
 2026-02-18:
   00-Steven:
   - bugfix: Trying to insert an item into a vendor that has reached its maximum capacity
@@ -293,4 +282,3 @@
   mcbalaam:
   - rscadd: E.X.P.E.R.I-MENTOR now has proper wires
   - refactor: Refactored the E.X.P.E.R.I-MENTOR and it's E.X.P.E.R.I-ment system
->>>>>>> a2af8930399a73e2b668ff8689c7288e9cc28bc3

@@ -1,7 +1,6 @@
-import { useAtom } from 'jotai';
-import { emotesAtom } from './atom';
+import { useAtomValue } from 'jotai';
+import { emotesListAtom } from './atom';
 
 export const useEmotes = () => {
-  const [emotes] = useAtom(emotesAtom);
-  return emotes;
+  return useAtomValue(emotesListAtom);
 };

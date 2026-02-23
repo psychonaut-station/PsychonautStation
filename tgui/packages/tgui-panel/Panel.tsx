@@ -12,7 +12,7 @@ import { NowPlayingWidget } from './audio/NowPlayingWidget';
 import { ChatPanel } from './chat/ChatPanel';
 import { ChatTabs } from './chat/ChatTabs';
 import { useChatPersistence } from './chat/use-chat-persistence';
-import { emotesAtom } from './emotes/atom';
+import { emotesVisibleAtom } from './emotes/atom';
 import { EmotePanel } from './emotes/EmotePanel';
 import { gameAtom } from './game/atoms';
 import { useKeepAlive } from './game/use-keep-alive';
@@ -25,7 +25,7 @@ import { useSettings } from './settings/use-settings';
 import { toggleEmotes } from './emotes/handlers';
 
 export function Panel(props) {
-  const [emotes, setEmotes] = useAtom(emotesAtom);
+  const emotesVisible = useAtomValue(emotesVisibleAtom);
   const [audioVisible, setAudioVisible] = useAtom(visibleAtom);
   const game = useAtomValue(gameAtom);
   const { settings } = useSettings();
@@ -49,7 +49,7 @@ export function Panel(props) {
               <Stack.Item>
                 <Button
                   color="grey"
-                  selected={emotes.visible}
+                  selected={emotesVisible}
                   icon="face-grin-beam"
                   tooltip="Emote Panel"
                   tooltipPosition="bottom-start"
@@ -80,7 +80,7 @@ export function Panel(props) {
           </Section>
         </Stack.Item>
         {/* Emote Panel */}
-        {emotes.visible && (
+        {emotesVisible && (
           <Stack.Item>
             <Section>
               <EmotePanel />

@@ -1,16 +1,11 @@
 import { store } from '../events/store';
-import { emotesAtom } from './atom';
+import { emotesListAtom, emotesVisibleAtom } from './atom';
+import type { Emote } from './atom';
 
-export function setEmotesList(payload) {
-  store.set(emotesAtom, (state) => ({
-    ...state,
-    list: payload,
-  }));
+export function setEmotesList(payload: Record<string, Emote>) {
+  store.set(emotesListAtom, payload);
 }
 
 export function toggleEmotes() {
-  store.set(emotesAtom, (state) => ({
-    ...state,
-    visible: !state.visible,
-  }));
+  store.set(emotesVisibleAtom, (state) => !state);
 }

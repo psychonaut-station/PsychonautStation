@@ -254,6 +254,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//favorite outfits
 	favorite_outfits = savefile.get_entry("favorite_outfits", favorite_outfits)
 
+	//Custom emote panel
+	custom_emote_panel = savefile.get_entry("custom_emote_panel", custom_emote_panel)
+
 	var/list/parsed_favs = list()
 	for(var/typetext in favorite_outfits)
 		var/datum/outfit/path = text2path(typetext)
@@ -281,6 +284,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	custom_emote_panel = SANITIZE_LIST(custom_emote_panel)
 
 	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
@@ -335,6 +339,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("key_bindings", key_bindings)
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
+	savefile.set_entry("custom_emote_panel", custom_emote_panel)
 	savefile.save()
 	return TRUE
 
@@ -368,9 +373,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Load prefs
 	job_preferences = save_data?["job_preferences"]
 
-	//Custom emote panel
-	custom_emote_panel = save_data?["custom_emote_panel"]
-
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
 
@@ -387,7 +389,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
 	alt_job_titles = SANITIZE_LIST(alt_job_titles)
-	custom_emote_panel = SANITIZE_LIST(custom_emote_panel)
 
 	//Validate job prefs
 	for(var/j in job_preferences)
@@ -433,9 +434,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Write prefs
 	save_data["job_preferences"] = job_preferences
-
-	//Emote panel
-	save_data["custom_emote_panel"] = custom_emote_panel
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks

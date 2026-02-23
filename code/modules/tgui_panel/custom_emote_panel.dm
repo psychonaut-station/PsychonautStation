@@ -15,15 +15,13 @@
 	var/next_sound_emote
 
 /datum/tgui_panel
-	var/static/list/all_emotes = list()
-	var/list/blacklisted_emote_types = list(
+	var/static/list/datum/emote/all_emotes = list()
+	var/static/list/blacklisted_emote_types = list(
 		/datum/emote/help,
 		/datum/emote/living/custom,
 		/datum/emote/imaginary_friend,
-		)
+	)
 
-
-// GLOB.emote_list
 /datum/tgui_panel/proc/populate_all_emotes_list()
 	if(length(all_emotes))
 		return
@@ -39,8 +37,7 @@
 			all_emotes += emote
 
 /datum/tgui_panel/proc/get_cached_all_emotes()
-	if(!length(all_emotes))
-		populate_all_emotes_list()
+	populate_all_emotes_list()
 	return all_emotes
 
 /datum/tgui_panel/New(client/client, id)

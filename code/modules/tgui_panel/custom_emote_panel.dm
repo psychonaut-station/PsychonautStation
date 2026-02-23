@@ -36,10 +36,6 @@
 
 			all_emotes += emote
 
-/datum/tgui_panel/proc/get_cached_all_emotes()
-	populate_all_emotes_list()
-	return all_emotes
-
 /datum/tgui_panel/New(client/client, id)
 	. = ..()
 	populate_all_emotes_list()

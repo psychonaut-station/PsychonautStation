@@ -1,0 +1,4 @@
+author: "homek13"
+delete-after: True
+changes:
+  - rscadd: "Character Setup menüsünden farklı meslekler için farklı karakter atamaları yapmamıza olanak sağlayan yeni menu eklendi."

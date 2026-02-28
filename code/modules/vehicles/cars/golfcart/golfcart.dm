@@ -37,6 +37,8 @@
 	var/engine_state = null
 	///An invisible sprite that exists as a hitbox
 	var/obj/golfcart_rear/child = null
+	///A ttv or chem grenade can be installed under the hood
+	var/obj/item/carbomb = null
 	///Objects that can be buckled to the cargo hitch
 	var/static/list/allowed_cargo = typecacheof(list(
 		/obj/structure/closet/crate,
@@ -229,6 +231,15 @@
 		cell = attacking_item
 		balloon_alert(user, "installed \the [cell]")
 		return ITEM_INTERACT_SUCCESS
+	// Allow installing a ttv or chem grenade under the hood
+	if (istype(attacking_item, /obj/item/grenade/chem_grenade) || istype(attacking_item, /obj/item/transfer_valve))
+		if (carbomb)
+			balloon_alert(user, "there's already something installed under the hood!")
+			return ITEM_INTERACT_BLOCKING
+		user.transferItemToLoc(attacking_item, src)
+		carbomb = attacking_item
+		balloon_alert(user, "installed explosive device under the hood.")
+		return ITEM_INTERACT_SUCCESS
 	return ..()
 
 /obj/vehicle/ridden/golfcart/attack_hand(mob/living/user, list/modifiers)
@@ -251,6 +262,7 @@
 	if (user.put_in_hands(cell_to_take))
 		return
 	cell_to_take.forceMove(drop_location())
+
 
 /obj/vehicle/ridden/golfcart/proc/can_wrench_engine()
 	return hood_open && engine && (engine_state == ENGINE_UNWRENCHED || engine_state == ENGINE_WRENCHED)
@@ -358,6 +370,27 @@
 			. += span_smallnotice("If you remove the cell you could probably install another power source...")
 		else
 			. += span_info("There is no power cell installed.")
+		if (carbomb)
+			. += span_info("You can see \the [carbomb] inside.")
+			. += span_smallnotice("You can remove the [carbomb] with a wirecutter.")
+
+// Grenades and transfer valves must be removed with a wirecutter, not by hand.
+/obj/vehicle/ridden/golfcart/wirecutter_act(mob/living/user, obj/item/tool)
+	// Requires hood open
+	if (!hood_open)
+		return ..()
+	if (tool.tool_behaviour != TOOL_WIRECUTTER)
+		return ..()
+	tool.play_tool_sound(src)
+	// Remove ttv or grenade (if present)
+	if (carbomb)
+		var/obj/item/carbomb_to_take = carbomb
+		carbomb = null
+		to_chat(user, span_notice("You remove the [carbomb] from under the hood."))
+		if(!user.put_in_hands(carbomb_to_take))
+			carbomb_to_take.forceMove(drop_location())
+		return ITEM_INTERACT_SUCCESS
+	return ..()
 
 ///Called when something tries to pass us. Returns TRUE if it is trying to crawl past us.
 /obj/vehicle/ridden/golfcart/proc/allow_crawler_through(atom/crawler)

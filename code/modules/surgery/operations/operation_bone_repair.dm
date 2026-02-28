@@ -3,6 +3,7 @@
 	name = "reset dislocation"
 	desc = "Reset a dislocated bone in a patient's limb. \
 		Similar to the field procedure, but quicker and safer due to being performed in a controlled environment."
+	localizated_desc = "Hastanın uzvundaki çıkık kemiği yerine oturtun. Sahadaki müdahaleye benzer ancak kontrollü bir ortamda yapıldığı için daha hızlı ve güvenlidir."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED
 	implements = list(
 		TOOL_BONESET = 1,
@@ -68,13 +69,14 @@
 /datum/surgery_operation/limb/repair_hairline
 	name = "repair hairline fracture"
 	desc = "Mend a hairline fracture in a patient's bone."
+	localizated_desc = "Hastanın kemiğindeki kılcal çatlağı (hairline fracture) onarın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
 		/obj/item/stack/medical/bone_gel = 1,
-		/obj/item/stack/sticky_tape/surgical = 1,
-		/obj/item/stack/sticky_tape/super = 2,
-		/obj/item/stack/sticky_tape = 3.33,
+		/obj/item/stack/medical/wrap/sticky_tape/surgical = 1,
+		/obj/item/stack/medical/wrap/sticky_tape/super = 2,
+		/obj/item/stack/medical/wrap/sticky_tape = 3.33,
 	)
 	time = 4 SECONDS
 	any_surgery_states_required = ALL_SURGERY_SKIN_STATES
@@ -121,12 +123,13 @@
 /datum/surgery_operation/limb/reset_compound
 	name = "reset compound fracture"
 	desc = "Reset a compound fracture in a patient's bone, preparing it for proper healing."
+	localizated_desc = "Hastanın kemiğindeki açık kırığı yerine oturtarak düzgünce iyileşmesine hazırlayın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_BONESET = 1,
-		/obj/item/stack/sticky_tape/surgical = 1.66,
-		/obj/item/stack/sticky_tape/super = 2.5,
-		/obj/item/stack/sticky_tape = 5,
+		/obj/item/stack/medical/wrap/sticky_tape/surgical = 1.66,
+		/obj/item/stack/medical/wrap/sticky_tape/super = 2.5,
+		/obj/item/stack/medical/wrap/sticky_tape = 5,
 	)
 	time = 6 SECONDS
 	all_surgery_states_required = SURGERY_SKIN_OPEN
@@ -175,12 +178,13 @@
 /datum/surgery_operation/limb/repair_compound
 	name = "repair compound fracture"
 	desc = "Mend a compound fracture in a patient's bone."
+	localizated_desc = "Hastanın kemiğindeki açık kırığı (compound fracture) onarın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
-		/obj/item/stack/sticky_tape/surgical = 1,
-		/obj/item/stack/sticky_tape/super = 2,
-		/obj/item/stack/sticky_tape = 3.33,
+		/obj/item/stack/medical/wrap/sticky_tape/surgical = 1,
+		/obj/item/stack/medical/wrap/sticky_tape/super = 2,
+		/obj/item/stack/medical/wrap/sticky_tape = 3.33,
 	)
 	time = 4 SECONDS
 	any_surgery_states_required = ALL_SURGERY_SKIN_STATES
@@ -227,6 +231,7 @@
 /datum/surgery_operation/limb/prepare_cranium_repair
 	name = "discard skull debris"
 	desc = "Clear away bone fragments and debris from a patient's cranial fissure in preparation for repair."
+	localizated_desc = "Onarıma hazırlık için hastanın kafatası çatlağındaki kemik parçalarını ve kalıntıları temizleyin."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		TOOL_HEMOSTAT = 1,
@@ -272,12 +277,13 @@
 /datum/surgery_operation/limb/repair_cranium
 	name = "repair cranium"
 	desc = "Mend a cranial fissure in a patient's skull."
+	localizated_desc = "Hastanın kafatasındaki çatlağı onarın."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED
 	implements = list(
 		/obj/item/stack/medical/bone_gel = 1,
-		/obj/item/stack/sticky_tape/surgical = 1,
-		/obj/item/stack/sticky_tape/super = 2,
-		/obj/item/stack/sticky_tape = 3.33,
+		/obj/item/stack/medical/wrap/sticky_tape/surgical = 1,
+		/obj/item/stack/medical/wrap/sticky_tape/super = 2,
+		/obj/item/stack/medical/wrap/sticky_tape = 3.33,
 	)
 	time = 4 SECONDS
 

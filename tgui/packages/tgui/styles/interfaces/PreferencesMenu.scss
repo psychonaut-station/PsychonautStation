@@ -149,6 +149,33 @@ $department_map: (
             margin-right: var(--space-xxs);
             background: hsla(0, 0%, 0%, 0.2);
             height: 100%;
+
+            .PreferencesMenu__JobSlotDropdown {
+              .Dropdown {
+                .Dropdown__control {
+                  background: transparent !important;
+                  border: none !important;
+                  box-shadow: none !important;
+                  padding: 0 2px;
+
+                  i {
+                    color: #ffffff !important;
+                    opacity: 0.8;
+                    text-shadow: none !important;
+                    transition: opacity 0.2s ease-in-out;
+                  }
+
+                  &:hover i {
+                    opacity: 1 !important;
+                  }
+
+                  &:before,
+                  &:after {
+                    display: none !important;
+                  }
+                }
+              }
+            }
           }
         }
 

@@ -2,6 +2,7 @@
 	name = "augment limb"
 	rnd_name = "Augmentation"
 	desc = "Replace a patient's limb with a robotic or prosthetic one."
+	localizated_desc = "Hastanın uzvunu robotik veya protez bir uzuvla değiştirin."
 	operation_flags = OPERATION_NOTABLE
 	implements = list(
 		/obj/item/bodypart = 1,

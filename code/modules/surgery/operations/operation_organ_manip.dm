@@ -219,6 +219,7 @@
 /datum/surgery_operation/limb/organ_manipulation/internal
 	name = "internal organ manipulation"
 	desc = "Manipulate a patient's internal organs."
+	localizated_desc = "Hastanın iç organlarına müdahale edin."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/internal/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_ORGANS_CUT
 
@@ -263,6 +264,7 @@
 /datum/surgery_operation/limb/organ_manipulation/external
 	name = "feature manipulation"
 	desc = "Manipulate features of the patient, such as a moth's wings or a lizard's tail."
+	localizated_desc = "Güve kanatları veya kertenkele kuyruğu gibi hastanın dış özelliklerine müdahale edin."
 	replaced_by = /datum/surgery_operation/limb/organ_manipulation/external/abductor
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_BONE_SAWED
 	any_surgery_states_blocked = SURGERY_VESSELS_UNCLAMPED

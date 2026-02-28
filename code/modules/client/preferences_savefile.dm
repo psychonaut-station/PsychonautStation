@@ -13,7 +13,7 @@
 /// You do not need to raise this if you are adding new values that have sane defaults.
 /// Only raise this value when changing the meaning/format/name/layout of an existing value
 /// where you would want the updater procs below to run
-#define SAVEFILE_VERSION_MAX 51
+#define SAVEFILE_VERSION_MAX 52
 
 #define IS_DATA_OBSOLETE(version) (version == SAVE_DATA_OBSOLETE)
 #define SHOULD_UPDATE_DATA(version) (version >= SAVE_DATA_NO_ERROR && version < SAVEFILE_VERSION_MAX)
@@ -165,6 +165,9 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	if(current_version < 51)
 		migrate_felinid_feature_keys(save_data)
 
+	if(current_version < 52)
+		migrate_gendered_nonbinary_physique(save_data)
+
 /// checks through keybindings for outdated unbound keys and updates them
 /datum/preferences/proc/check_keybindings()
 	if(!parent)
@@ -243,6 +246,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	chat_toggles = savefile.get_entry("chat_toggles", chat_toggles)
 	toggles = savefile.get_entry("toggles", toggles)
 	ignoring = savefile.get_entry("ignoring", ignoring)
+	job_slots = savefile.get_entry("job_slots", job_slots)
+	job_preferences = savefile.get_entry("job_preferences", job_preferences)
 
 	// OOC commendations
 	hearted_until = savefile.get_entry("hearted_until", hearted_until)
@@ -278,6 +283,17 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	job_slots = SANITIZE_LIST(job_slots)
+	job_preferences = SANITIZE_LIST(job_preferences)
+
+	for(var/job_title in job_slots)
+		var/slot = job_slots[job_title]
+		if(!isnum(slot) || slot < JOB_SLOT_RANDOMISED_SLOT || slot > max_save_slots || slot == JOB_SLOT_CURRENT_SLOT || !SSjob.get_job(job_title))
+			job_slots -= job_title
+
+	for(var/j in job_preferences)
+		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
+			job_preferences -= j
 
 	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
@@ -332,6 +348,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("key_bindings", key_bindings)
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
+	savefile.set_entry("job_slots", job_slots)
+	savefile.set_entry("job_preferences", job_preferences)
 	savefile.save()
 	return TRUE
 
@@ -363,7 +381,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	randomise = save_data?["randomise"]
 
 	//Load prefs
-	job_preferences = save_data?["job_preferences"]
 
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
@@ -378,15 +395,8 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Sanitize
 	randomise = SANITIZE_LIST(randomise)
-	job_preferences = SANITIZE_LIST(job_preferences)
 	all_quirks = SANITIZE_LIST(all_quirks)
 	alt_job_titles = SANITIZE_LIST(alt_job_titles)
-
-	//Validate job prefs
-	for(var/j in job_preferences)
-		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
-			job_preferences -= j
-
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
 	validate_quirks()
 
@@ -424,9 +434,6 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Character
 	save_data["randomise"] = randomise
 
-	//Write prefs
-	save_data["job_preferences"] = job_preferences
-
 	//Quirks
 	save_data["all_quirks"] = all_quirks
 
@@ -449,7 +456,7 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.on_new_character(usr)
 
-	character_preview_view.update_body()
+	character_preview_view?.update_body()
 
 /datum/preferences/proc/remove_current_slot()
 	PRIVATE_PROC(TRUE)

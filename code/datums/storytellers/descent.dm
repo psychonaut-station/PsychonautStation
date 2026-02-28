@@ -7,18 +7,19 @@
 	population_min = 30
 	weight = 1
 
-	var/descent_cooldown = 10 MINUTES
-	var/last_descent = 0
+	COOLDOWN_DECLARE(descent_cooldown)
+
+	var/cooldown_duration = 10 MINUTES
 
 /datum/storyteller/descent/initialize()
 	. = ..()
-	last_descent = world.time
+	COOLDOWN_START(src, descent_cooldown, cooldown_duration)
 
 /datum/storyteller/descent/fire(seconds_per_tick)
-	last_descent = seconds_per_tick * 10
-	if(last_descent < descent_cooldown)
+	if(!COOLDOWN_FINISHED(src, descent_cooldown))
 		return
-	last_descent = 0
+
+	COOLDOWN_START(src, descent_cooldown, cooldown_duration)
 	var/execution_multiplier = settings[EXECUTION_MULTIPLIER_LOW]
 	execution_multiplier *= 0.9
 	settings[EXECUTION_MULTIPLIER_LOW] = execution_multiplier

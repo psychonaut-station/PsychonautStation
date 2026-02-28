@@ -774,6 +774,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/award_location
 
 /datum/controller/subsystem/ticker/proc/save_round_characters()
+	if(!SScharacter_icons.round_character_icons.len)
+		return
+
 	var/icons_json = json_encode(SScharacter_icons.round_character_icons)
 
 	var/data_out = rustg_iconforge_generate("[GLOB.log_directory]/", "character_icons", icons_json, FALSE, FALSE, TRUE)

@@ -111,23 +111,6 @@ SUBSYSTEM_DEF(character_icons)
 		return
 	return processing_icons[weakref]
 
-/datum/controller/subsystem/character_icons/proc/get_flat_uni_icon_for_all_directions(atom/thing) // Çok kastırırsa sadece southa çeviririz
-	var/datum/universal_icon/output = uni_icon('icons/effects/effects.dmi', "nothing")
-	output.scale(64,64)
-	for(var/direction in GLOB.cardinals)
-		var/datum/universal_icon/partial = get_flat_uni_icon(thing, defdir = direction)
-		switch(direction)
-			if(SOUTH)
-				output.blend_icon(partial, ICON_OVERLAY, 1, 33)
-			if(NORTH)
-				output.blend_icon(partial, ICON_OVERLAY, 33, 33)
-			if(EAST)
-				output.blend_icon(partial, ICON_OVERLAY)
-			if(WEST)
-				output.blend_icon(partial, ICON_OVERLAY, 33, 1)
-		CHECK_TICK
-	return output
-
 /datum/controller/subsystem/character_icons/proc/debug_to_adminlog(text, character_length) // JUST FOR TM
 	message_admins(text)
 	if(character_length)

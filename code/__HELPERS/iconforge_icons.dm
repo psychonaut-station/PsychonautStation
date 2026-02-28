@@ -129,7 +129,7 @@
 			var/list/color_transform = iconforge_get_color_transform(layer_image.color)
 			icon_transform += list(color_transform)
 
-		var/alist/layer_icon_data_directions = get_iconforge_sprites_data(layer_image, image_icon, image_icon_state, curblend, defdir, start = FALSE) // döngüdeki layerin layerlerini işle
+		var/alist/layer_icon_data_directions = iconforge_get_spritesheet_data(layer_image, image_icon, image_icon_state, curblend, defdir, start = FALSE) // döngüdeki layerin layerlerini işle
 
 		for(var/direction in processing_directions)
 			var/list/layer_icon_data = layer_icon_data_directions[direction] || list()

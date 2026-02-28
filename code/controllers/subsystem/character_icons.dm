@@ -61,7 +61,7 @@ SUBSYSTEM_DEF(character_icons)
 		CHECK_TICK
 
 /datum/controller/subsystem/character_icons/proc/save_character(id, mutable_appearance/appearance)
-	round_character_icons["[id]"] = get_iconforge_sprites_data(appearance)
+	round_character_icons["[id]"] = iconforge_get_spritesheet_data(appearance)
 
 /datum/controller/subsystem/character_icons/proc/update_character_icon(datum/weakref/mind_weakref, datum/mind/character_mind, mutable_appearance/appearance)
 	if(!character_mind)

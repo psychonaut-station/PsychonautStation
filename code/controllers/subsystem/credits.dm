@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(credits)
 	name = "Roundend Credits"
-	wait = 10 MINUTES
+	flags = SS_NO_FIRE
 	init_stage = INITSTAGE_LAST
 
 	var/list/disclaimers = list()
@@ -18,9 +18,6 @@ SUBSYSTEM_DEF(credits)
 	var/list/admin_appearances = list()
 	var/list/antag_appearances = list()
 
-	var/list/processing_icons = list()
-	var/list/currentrun  = list()
-
 	var/list/credit_order_for_this_round = list()
 
 /datum/controller/subsystem/credits/Initialize()
@@ -31,37 +28,7 @@ SUBSYSTEM_DEF(credits)
 	return SS_INIT_SUCCESS
 #endif
 
-/datum/controller/subsystem/credits/fire(resumed = 0)
-	if (!resumed)
-		src.currentrun = processing_icons.Copy()
-
-	//cache for sanic speed
-	var/list/currentrun = src.currentrun
-
-	while(currentrun.len)
-		var/datum/weakref/weakref = currentrun[currentrun.len]
-		var/mutable_appearance/appearance = currentrun[weakref]
-		currentrun.len--
-		var/datum/mind/antag_mind = weakref.resolve()
-		var/mob/living/living_mob = antag_mind?.current
-		if(!isnull(living_mob) && living_mob.stat != DEAD)
-			if(isliving(living_mob) && !isbrain(living_mob))
-				appearance.copy_overlays(living_mob, TRUE)
-			else
-				appearance.appearance = living_mob.get_mob_appearance()
-			appearance.transform = matrix()
-			appearance.setDir(SOUTH)
-			var/bound_width = living_mob.bound_width || world.icon_size
-			appearance.maptext_width = 88
-			appearance.maptext_height = world.icon_size * 1.5
-			appearance.maptext_x = ((88 - bound_width) * -0.5) - living_mob.base_pixel_x
-			appearance.maptext_y = -16
-			appearance.maptext = "<center>[antag_mind.name]</center>"
-		if (MC_TICK_CHECK)
-			return
-
 /datum/controller/subsystem/credits/Recover()
-	processing_icons = SScredits.processing_icons
 	antag_appearances = SScredits.antag_appearances
 	customized_name = SScredits.customized_name
 	patron_appearances = SScredits.patron_appearances
@@ -533,25 +500,8 @@ SUBSYSTEM_DEF(credits)
 	if(!client || !living_mob || !living_mob.mind || !passed_icon_state)
 		return
 	var/obj/effect/title_card_object/MA = get_title_card(passed_icon_state)
-	var/mutable_appearance/appearance
-	if(processing_icons[WEAKREF(living_mob.mind)])
-		appearance = processing_icons[WEAKREF(living_mob.mind)]
-	else
-		appearance = new (living_mob.get_mob_appearance())
-		appearance.transform = matrix()
-		appearance.setDir(SOUTH)
-		appearance.maptext_width = 88
-		appearance.maptext_height = world.icon_size * 1.5
-		appearance.maptext_x = ((88 - world.icon_size) * -0.5) - living_mob.base_pixel_x
-		appearance.maptext_y = -16
-		appearance.maptext = "<center>[living_mob.mind.name]</center>"
+	var/mutable_appearance/appearance = SScharacter_icons.add_to_queue(WEAKREF(living_mob.mind))
 	antag_appearances[MA] += appearance
-	processing_icons[WEAKREF(living_mob.mind)] = appearance
-
-/datum/controller/subsystem/credits/proc/get_antagonist_icon(datum/weakref/weakref)
-	if(isnull(weakref))
-		return
-	return processing_icons[weakref]
 
 /datum/controller/subsystem/credits/proc/blackbox_feedback_num(key)
 	if(SSblackbox.feedback_list[key])

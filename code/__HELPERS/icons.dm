@@ -1343,7 +1343,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	return appearance
 
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE, outfit_job_override = null)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
@@ -1421,12 +1421,17 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/datum/outfit/equipped_outfit
 
-	if(selected_job) // Selecting and creating outfit datum
+	var/datum/job/outfit_job = selected_job
+
+	if(outfit_job_override)
+		outfit_job = SSjob.get_job(outfit_job_override)
+
+	if(outfit_job) // Selecting and creating outfit datum
 		var/datum/outfit/outfit_type
-		if(selected_job::outfit)
-			outfit_type = selected_job::outfit
-		if(selected_char?["species"] == SPECIES_PLASMAMAN && selected_job::plasmaman_outfit) // If they are plasmaman, give them plasmaman outfit
-			outfit_type = selected_job::outfit
+		if(outfit_job::outfit)
+			outfit_type = outfit_job::outfit
+		if(selected_char?["species"] == SPECIES_PLASMAMAN && outfit_job::plasmaman_outfit) // If they are plasmaman, give them plasmaman outfit
+			outfit_type = outfit_job::plasmaman_outfit
 		if(outfit_type)
 			equipped_outfit = new outfit_type()
 	else
@@ -1531,7 +1536,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(!ckey || is_guest_key(ckey))
 		return FALSE
 
-	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE) || list()
+	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE, JOB_ASSISTANT) || list()
 	var/character_name = character_data?["name"]
 	var/mutable_appearance/appearance = character_data?["appearance"]
 	var/job = character_data?["job"]

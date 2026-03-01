@@ -1323,11 +1323,8 @@
 #include "code\datums\components\slide_under_doors.dm"
 #include "code\datums\components\slime_friends.dm"
 #include "code\datums\components\slippery.dm"
-<<<<<<< HEAD
-#include "code\datums\components\slowing_field.dm"
-=======
 #include "code\datums\components\slippery_item.dm"
->>>>>>> bf6a7a8f64ee3cd023a66cfc4ec70905a652d4a2
+#include "code\datums\components\slowing_field.dm"
 #include "code\datums\components\smooth_tunes.dm"
 #include "code\datums\components\soapbox.dm"
 #include "code\datums\components\soul_stealer.dm"

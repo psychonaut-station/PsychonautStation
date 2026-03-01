@@ -110,12 +110,9 @@
 
 	var/pb_knockback = 0
 
-<<<<<<< HEAD
 	var/fire_in = 0
-=======
 	/// What this gun says when it's gonna shoot inside mail.
 	var/about_to_shoot_inside_mail_text = "Its trigger is already pulled!"
->>>>>>> bf6a7a8f64ee3cd023a66cfc4ec70905a652d4a2
 
 	/// Cooldown for the visible message sent from gun flipping.
 	COOLDOWN_DECLARE(flip_cooldown)

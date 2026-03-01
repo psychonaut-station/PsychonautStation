@@ -220,7 +220,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 				// If someone swiped their ID before
 				else if (message_verified_by)
-					caller_info = "(En son ki kimlik bilgisi: [message_verified_by])"
+					caller_info = "(Son erişim: [message_verified_by])"
 					message_stamped_by = ""
 					message_verified_by = ""
 
@@ -573,11 +573,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 			"Security" = "%LOCATION KONUMUNDA GÜVENLİK ACİL DURUMU %CALLER %RETA!!!",
 			"Engineering" = "%LOCATION KONUMUNDA MÜHENDİSLİK ACİL DURUMU %CALLER %RETA!!!",
 			"Medical" = "%LOCATION KONUMUNDA TIBBİ ACİL DURUM %CALLER, %RETA!!!",
-			"Science" = "%LOCATION konumuna Bilim personeli istendi %CALLER %RETA.",
-			"Service" = "%LOCATION konumuna Servis personeli istendi %CALLER %RETA.",
-			"Command" = "%LOCATION konumuna Komuta personeli istendi %CALLER %RETA.",
-			"Cargo" = "%LOCATION konumuna Kargo personeli istendi %CALLER %RETA.",
-			"Mining" = "%LOCATION konumuna Madenci personeli istendi %CALLER %RETA.",
+			"Science" = "%LOCATION konumuna Science personeli istendi %CALLER %RETA.",
+			"Service" = "%LOCATION konumuna Service personeli istendi %CALLER %RETA.",
+			"Command" = "%LOCATION konumuna Command personeli istendi %CALLER %RETA.",
+			"Cargo" = "%LOCATION konumuna Cargo personeli istendi %CALLER %RETA.",
+			"Mining" = "%LOCATION konumuna Mining personeli istendi %CALLER %RETA.",
 		)
 		vars_and_tooltips_map = list(
 			"LOCATION" = "will be replaced with the department name",

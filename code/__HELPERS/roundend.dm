@@ -777,9 +777,14 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	if(!SScharacter_icons.round_character_icons.len)
 		return
 
-	var/icons_json = json_encode(SScharacter_icons.round_character_icons)
+	var/metadata_file = "[GLOB.character_log_directory]/metadata.json"
+	if(!fexists(metadata_file)) // Rustg iconforge cannot create files in non-existent folders.
+		rustg_file_write(list(), metadata_file)
 
-	var/data_out = rustg_iconforge_generate("[GLOB.log_directory]/", "character_icons", icons_json, FALSE, FALSE, TRUE)
+	var/icons_json = json_encode(SScharacter_icons.round_character_icons)
+	SSasset_loading.assets_generating++ // SSasset_loading sometimes cleanup cached icons, we dont want to be get deleted while generating
+	var/data_out = rustg_iconforge_generate("[GLOB.character_log_directory]/", "character_icons", icons_json, FALSE, FALSE, TRUE)
+	SSasset_loading.assets_generating--
 	if (data_out == RUSTG_JOB_ERROR)
 		CRASH("ROUND_CHAR_ICONS JOB PANIC")
 	else if(!findtext(data_out, "{", 1, 2))
@@ -797,4 +802,4 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		icon_data += list("[sprite_id]" = idx)
 
 	var/icon_data_json = json_encode(icon_data)
-	rustg_file_write(icon_data_json, "[GLOB.log_directory]/character_icons_metadata.json")
+	rustg_file_write(icon_data_json, metadata_file)

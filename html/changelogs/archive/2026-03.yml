@@ -1,0 +1,14 @@
+2026-03-02:
+  Rengan:
+  - bugfix: "Descent, Drought ve Regulator storytellerlerinin \xE7al\u0131\u015Fmamas\u0131\
+      \ d\xFCzeltildi."
+  exdal:
+  - rscadd: "RETA mesajlar\u0131 T\xFCrk\xE7e yap\u0131ld\u0131"
+  - qol: "RETA duyurusu yaz\u0131lar\u0131 b\xFCy\xFCk yap\u0131ld\u0131"
+  homek13:
+  - qol: "\u0130ngilizce kalm\u0131\u015F iki yasa T\xFCrk\xE7ele\u015Ftirildi; yasalarda\
+      \ g\xF6zden ka\xE7abilecek ko\u015Fullar c\xFCmle sonu yerine sat\u0131r ba\u015F\
+      \u0131na ta\u015F\u0131nd\u0131; baz\u0131 kelimeler anlam\u0131 bozmayacak\
+      \ \u015Fekilde de\u011Fi\u015Ftirildi, d\xFCzenlendi."
+  - rscadd: "Character Setup men\xFCs\xFCnden farkl\u0131 meslekler i\xE7in farkl\u0131\
+      \ karakter atamalar\u0131 yapmam\u0131za olanak sa\u011Flayan yeni menu eklendi."

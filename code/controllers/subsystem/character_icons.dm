@@ -30,18 +30,13 @@ SUBSYSTEM_DEF(character_icons)
 
 /datum/controller/subsystem/character_icons/proc/add_to_queue(datum/weakref/mind_weakref)
 	var/datum/mind/character_mind = mind_weakref?.resolve()
-	var/mob/living/living_mob = character_mind?.current
 
 	var/mutable_appearance/appearance = update_character_icon(mind_weakref, character_mind)
 
 	if(isnull(appearance)) return
 
-	var/character_name = character_mind.name || living_mob.real_name
-
-	var/id = "[character_name]_[ckey(character_mind.key)]"
-
 	if(SSticker.current_state == GAME_STATE_PLAYING && !processing_icons[mind_weakref])
-		save_character(id, appearance) // If the character icon doesnt exist and game is started, save it now
+		save_character(mind_weakref, appearance) // If the character icon doesnt exist and game is started, save it now
 
 	CHECK_TICK
 
@@ -52,16 +47,11 @@ SUBSYSTEM_DEF(character_icons)
 	debug_to_adminlog("DEBUG: SScharacter_icons saving [processing_icons.len] icons", processing_icons.len)
 	for(var/datum/weakref/weakref in processing_icons)
 		var/mutable_appearance/appearance = processing_icons[weakref]
-		var/datum/mind/character_mind = weakref?.resolve()
-		var/mob/living/living_mob = character_mind?.current
-
-		var/character_name = character_mind.name || living_mob.real_name
-		var/id = "[character_name]_[ckey(character_mind.key)]"
-		save_character(id, appearance)
+		save_character(weakref, appearance)
 		CHECK_TICK
 
-/datum/controller/subsystem/character_icons/proc/save_character(id, mutable_appearance/appearance)
-	round_character_icons["[id]"] = iconforge_get_spritesheet_data(appearance)
+/datum/controller/subsystem/character_icons/proc/save_character(datum/weakref/weakref, mutable_appearance/appearance)
+	round_character_icons[weakref] = iconforge_get_spritesheet_data(appearance)
 
 /datum/controller/subsystem/character_icons/proc/update_character_icon(datum/weakref/mind_weakref, datum/mind/character_mind, mutable_appearance/appearance)
 	if(!character_mind)

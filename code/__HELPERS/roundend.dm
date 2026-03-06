@@ -274,7 +274,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	CHECK_TICK
 
-	save_round_characters()
+	INVOKE_ASYNC(src, PROC_REF(save_round_characters))
 	handle_hearts()
 	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
 
@@ -774,32 +774,58 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/award_location
 
 /datum/controller/subsystem/ticker/proc/save_round_characters()
-	if(!SScharacter_icons.round_character_icons.len)
+	var/list/round_character_icons = SScharacter_icons.round_character_icons
+	if(!round_character_icons.len)
 		return
 
 	var/metadata_file = "[GLOB.character_log_directory]/metadata.json"
-	if(!fexists(metadata_file)) // Rustg iconforge cannot create files in non-existent folders.
-		rustg_file_write(list(), metadata_file)
+	var/list/metadata = list()
 
-	var/icons_json = json_encode(SScharacter_icons.round_character_icons)
-	SSasset_loading.assets_generating++ // SSasset_loading sometimes cleanup cached icons, we dont want to be get deleted while generating
-	var/data_out = rustg_iconforge_generate("[GLOB.character_log_directory]/", "character_icons", icons_json, FALSE, FALSE, TRUE)
-	SSasset_loading.assets_generating--
-	if (data_out == RUSTG_JOB_ERROR)
-		CRASH("ROUND_CHAR_ICONS JOB PANIC")
-	else if(!findtext(data_out, "{", 1, 2))
-		CRASH("ROUND_CHAR_ICONS UNKNOWN ERROR: [data_out]")
+	for(var/datum/weakref/weakref in round_character_icons)
+		var/list/spritesheet_data = round_character_icons[weakref]
+		var/datum/mind/character_mind = weakref?.resolve()
+		if(isnull(character_mind) || !character_mind.key)
+			continue
+		var/mob/living/living_mob = character_mind.current
 
-	var/list/icon_data = list()
-	var/data = json_decode(data_out)
+		var/ckey = ckey(character_mind.key)
+		var/character_name = character_mind.name || living_mob.real_name
+		var/id = "[character_name]_[ckey]"
 
-	var/list/sprites = data["sprites"]
+		var/list/spritesheet = list("[id]" = spritesheet_data)
 
-	for(var/sprite_id in sprites)
-		var/sprite = sprites[sprite_id]
-		var/idx = sprite["position"]
+		var/spritesheet_json = json_encode(spritesheet)
 
-		icon_data += list("[sprite_id]" = idx)
+		var/file_name_tmp = "char-icon-tmp-[SANITIZE_FILENAME(character_name)]-[rand(1, 999)]"
 
-	var/icon_data_json = json_encode(icon_data)
-	rustg_file_write(icon_data_json, metadata_file)
+		var/data_out = rustg_iconforge_generate("tmp/", file_name_tmp, spritesheet_json, FALSE, FALSE, TRUE)
+
+		if (data_out == RUSTG_JOB_ERROR)
+			stack_trace("ROUND_CHAR_ICONS - Mind Key: [ckey] - JOB PANIC")
+			continue
+		else if(!findtext(data_out, "{", 1, 2))
+			stack_trace("ROUND_CHAR_ICONS - Mind Ckey: [ckey] - UNKNOWN ERROR: [data_out] ")
+			continue
+
+		var/data = json_decode(data_out)
+		var/list/sizes = data["sizes"]
+
+		var/file_path_tmp = "tmp/[file_name_tmp]_[sizes[1]].png"
+		var/file_hash = rustg_hash_file(RUSTG_HASH_MD5, file_path_tmp)
+
+		var/file_name = "[file_hash].png"
+		var/file_path = "data/character_logs/characters/[file_name]"
+
+		if(!fexists(file_path))
+			fcopy(file_path_tmp, file_path)
+
+		metadata["[id]"] = list(
+			"name" = character_name,
+			"ckey" = ckey,
+			"icon" = file_name
+		)
+		CHECK_TICK
+
+	var/metadata_json = json_encode(metadata)
+	rustg_file_write(metadata_json, metadata_file)
+

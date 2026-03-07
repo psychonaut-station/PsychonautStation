@@ -152,7 +152,7 @@
 	icon_state = "yaprakdoner_tavuk"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 1,
-		/datum/reagent/consumable/nutriment/protein = 1,
+		/datum/reagent/consumable/nutriment/protein = 2,
 	)
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_SMALL
@@ -164,7 +164,7 @@
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "etdoner"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
@@ -179,7 +179,7 @@
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "etdoner_sade"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment = 2,
 		/datum/reagent/consumable/nutriment/protein = 2
 	)
 	tastes = list("meat" = 1)
@@ -194,7 +194,7 @@
 	icon_state = "tavukdoner"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/protein = 1,
+		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("chicken" = 2, "tomato" = 1, , "onions" = 1, "lettuce" = 1)
@@ -209,7 +209,7 @@
 	icon_state = "tavukdoner_sade"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/protein = 1
+		/datum/reagent/consumable/nutriment/protein = 2
 	)
 	tastes = list("chicken" = 1)
 	foodtypes = MEAT | GRAIN
@@ -362,7 +362,7 @@
 	icon_state = "tavukdoner_pilav"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 4,
-		/datum/reagent/consumable/nutriment/protein = 1,
+		/datum/reagent/consumable/nutriment/protein = 2,
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "chicken" = 1)

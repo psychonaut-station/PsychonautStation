@@ -5,7 +5,7 @@
 	icon_state = "cig_kofte"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
-		/datum/reagent/consumable/nutriment/vitamin = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("tomato" = 1, "onion" = 1, "wheat" = 1, "pepper" = 1)
 	foodtypes = VEGETABLES | GRAIN
@@ -18,8 +18,8 @@
 	icon = 'icons/psychonaut/obj/food/turkish.dmi'
 	icon_state = "cacik"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 3,
-		/datum/reagent/consumable/nutriment/vitamin = 3
+		/datum/reagent/consumable/nutriment = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 2
 	)
 	tastes = list("yoghurt" = 2, "salt" = 1, "cucumber" = 1)
 	foodtypes = VEGETABLES
@@ -54,7 +54,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 3,
-		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES | GRAIN
@@ -89,7 +89,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 4,
-		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("meat" = 1, "onion" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES | GRAIN
@@ -124,7 +124,7 @@
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 5,
 		/datum/reagent/consumable/nutriment/protein = 5,
-		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment/vitamin = 3,
 	)
 	tastes = list("meat" = 1, "pepper" = 1, "tomato" = 1)
 	foodtypes = MEAT | VEGETABLES | GRAIN
@@ -315,7 +315,7 @@
 	icon_state = "raw_dolma"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "onion" = 1)
 	foodtypes = VEGETABLES | RAW | GRAIN
@@ -332,7 +332,7 @@
 	icon_state = "dolma"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("rice" = 1, "tomato" = 1, "pepper" = 1, "onion" = 1)
 	foodtypes = VEGETABLES

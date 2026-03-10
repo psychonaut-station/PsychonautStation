@@ -3053,3 +3053,6 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 	if(HAS_TRAIT(src, TRAIT_ANALGESIA) && !force)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
+
+/mob/living/proc/save_character_icon()
+	SScharacter_icons.add_to_queue(WEAKREF(mind))

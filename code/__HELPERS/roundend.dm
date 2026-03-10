@@ -274,6 +274,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	CHECK_TICK
 
+	INVOKE_ASYNC(src, PROC_REF(save_round_characters))
 	handle_hearts()
 	set_observer_default_invisibility(0, span_warning("The round is over! You are now visible to the living."))
 
@@ -771,3 +772,60 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/winner_key
 	///The name of the area we earned this cheevo in
 	var/award_location
+
+/datum/controller/subsystem/ticker/proc/save_round_characters()
+	var/list/round_character_icons = SScharacter_icons.round_character_icons
+	if(!round_character_icons.len)
+		return
+
+	var/metadata_file = "[GLOB.character_log_directory]/metadata.json"
+	var/list/metadata = list()
+
+	for(var/datum/weakref/weakref in round_character_icons)
+		var/list/spritesheet_data = round_character_icons[weakref]
+		var/datum/mind/character_mind = weakref?.resolve()
+		if(isnull(character_mind) || !character_mind.key)
+			continue
+		var/mob/living/living_mob = character_mind.current
+
+		var/ckey = ckey(character_mind.key)
+		var/character_name = character_mind.name || living_mob.real_name
+		var/id = "[character_name]_[ckey]"
+
+		var/list/spritesheet = list("[id]" = spritesheet_data)
+
+		var/spritesheet_json = json_encode(spritesheet)
+
+		var/file_name_tmp = "char-icon-tmp-[SANITIZE_FILENAME(character_name)]-[rand(1, 999)]"
+
+		var/data_out = rustg_iconforge_generate("tmp/", file_name_tmp, spritesheet_json, FALSE, FALSE, TRUE)
+
+		if (data_out == RUSTG_JOB_ERROR)
+			stack_trace("ROUND_CHAR_ICONS - Mind Key: [ckey] - JOB PANIC")
+			continue
+		else if(!findtext(data_out, "{", 1, 2))
+			stack_trace("ROUND_CHAR_ICONS - Mind Ckey: [ckey] - UNKNOWN ERROR: [data_out] ")
+			continue
+
+		var/data = json_decode(data_out)
+		var/list/sizes = data["sizes"]
+
+		var/file_path_tmp = "tmp/[file_name_tmp]_[sizes[1]].png"
+		var/file_hash = rustg_hash_file(RUSTG_HASH_MD5, file_path_tmp)
+
+		var/file_name = "[file_hash].png"
+		var/file_path = "data/character_logs/characters/[file_name]"
+
+		if(!fexists(file_path))
+			fcopy(file_path_tmp, file_path)
+
+		metadata["[id]"] = list(
+			"name" = character_name,
+			"ckey" = ckey,
+			"icon" = file_name
+		)
+		CHECK_TICK
+
+	var/metadata_json = json_encode(metadata)
+	rustg_file_write(metadata_json, metadata_file)
+

@@ -111,5 +111,10 @@ LOG_WORLD_TOPIC
 ## log manual target zone switching
 LOG_ZONE_SWITCH
 
+<<<<<<< HEAD
 ## log e-jukebox
 LOG_JUKEBOX
+=======
+## log player image creation
+LOG_IMAGE
+>>>>>>> 0611aa129ac67fb2bb2262c187b3d74482dd7045

@@ -11,11 +11,11 @@
   Absolucy:
   - code_imp: Minor code optimizations for APC processing.
   - bugfix: Healium crystals now properly update turf atmos.
-  TealSeer:
-  - image: the HFR glows in the dark now
   Rengan:
   - bugfix: "Descent, Drought ve Regulator storytellerlerinin \xE7al\u0131\u015Fmamas\u0131\
       \ d\xFCzeltildi."
+  TealSeer:
+  - image: the HFR glows in the dark now
   exdal:
   - rscadd: "RETA mesajlar\u0131 T\xFCrk\xE7e yap\u0131ld\u0131"
   - qol: "RETA duyurusu yaz\u0131lar\u0131 b\xFCy\xFCk yap\u0131ld\u0131"
@@ -77,3 +77,6 @@
       of
   maximal08, levels0:
   - bugfix: experimentor wires should now work properly
+2026-03-16:
+  Rengan:
+  - balance: "T\xFCrk mutfa\u011F\u0131 yemeklerinin doyuruculu\u011Fu dengelendi."

@@ -185,13 +185,8 @@
 
 			// a  .. z
 			if(97 to 122) //Lowercase Letters
-<<<<<<< HEAD
-				if(last_char_group == NO_CHARS_DETECTED || last_char_group == SPACES_DETECTED || cap_after_symbols && last_char_group == SYMBOLS_DETECTED) //start of a word
-					char = locale_uppertext(char)
-=======
 				if(((last_char_group == NO_CHARS_DETECTED || last_char_group == SPACES_DETECTED) && cap_at_start) || (cap_after_symbols && last_char_group == SYMBOLS_DETECTED)) //start of a word
-					char = uppertext(char)
->>>>>>> b9ad9343e56bcba6b50bc247e5c88d1c52c7b85e
+					char = locale_uppertext(char)
 				number_of_alphanumeric++
 				last_char_group = LETTERS_DETECTED
 

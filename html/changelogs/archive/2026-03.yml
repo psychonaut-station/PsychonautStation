@@ -78,11 +78,6 @@
   - bugfix: Fixed rogue "ING IN" on lobby screen
   maximal08, levels0:
   - bugfix: experimentor wires should now work properly
-<<<<<<< HEAD
-2026-03-16:
-  Rengan:
-  - balance: "T\xFCrk mutfa\u011F\u0131 yemeklerinin doyuruculu\u011Fu dengelendi."
-=======
 2026-03-07:
   Melbert:
   - balance: Fish can be scanned for the dna vault.
@@ -256,4 +251,5 @@
       and worm meat and can only be tamed when they are spiderlings or young.
   - code_imp: Refactored tameable code to use TRAIT_TAMED instead of setting individual
       variables on each mob.
->>>>>>> b9ad9343e56bcba6b50bc247e5c88d1c52c7b85e
+  Rengan:
+  - balance: "T\xFCrk mutfa\u011F\u0131 yemeklerinin doyuruculu\u011Fu dengelendi."

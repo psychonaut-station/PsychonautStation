@@ -7,7 +7,13 @@
 	var/category = CATEGORY_MISC
 	var/weight = WEIGHT_LOWEST
 	var/keybind_signal
+<<<<<<< HEAD
 	var/can_reuse_keybind = FALSE
+=======
+	///Boolean on whether players are able to edit this keybinding. Used for BYOND built-in binds we wish to
+	///tell the player of its existence, but don't want it being edited because BYOND doesn't let us.
+	var/can_edit = TRUE
+>>>>>>> b9ad9343e56bcba6b50bc247e5c88d1c52c7b85e
 
 /datum/keybinding/New()
 	if(!keybind_signal)

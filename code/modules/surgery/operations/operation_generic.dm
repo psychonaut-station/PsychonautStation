@@ -22,6 +22,7 @@
 	success_sound = 'sound/items/handling/surgery/scalpel2.ogg'
 	operation_flags = OPERATION_AFFECTS_MOOD | OPERATION_NO_PATIENT_REQUIRED
 	any_surgery_states_blocked = ALL_SURGERY_SKIN_STATES
+	allow_stumps = TRUE
 	/// We can't cut mobs with this biostate
 	var/biostate_blacklist = BIO_CHITIN
 
@@ -117,6 +118,7 @@
 	preop_sound = 'sound/items/handling/surgery/retractor1.ogg'
 	success_sound = 'sound/items/handling/surgery/retractor2.ogg'
 	all_surgery_states_required = SURGERY_SKIN_CUT
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/retract_skin/get_default_radial_image()
 	return image(/obj/item/retractor)
@@ -168,6 +170,7 @@
 		/obj/item = 'sound/items/handling/surgery/cautery2.ogg',
 	)
 	any_surgery_states_required = ALL_SURGERY_SKIN_STATES
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/close_skin/get_any_tool()
 	return "Any heat source"
@@ -229,6 +232,7 @@
 	time = 2.4 SECONDS
 	preop_sound = 'sound/items/handling/surgery/hemostat1.ogg'
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_VESSELS_UNCLAMPED
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/clamp_bleeders/get_default_radial_image()
 	return image(/obj/item/hemostat)
@@ -273,6 +277,7 @@
 	time = 2.4 SECONDS
 	preop_sound = 'sound/items/handling/surgery/hemostat1.ogg'
 	all_surgery_states_required = SURGERY_SKIN_OPEN|SURGERY_VESSELS_CLAMPED
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/unclamp_bleeders/get_default_radial_image()
 	return image(/obj/item/hemostat)
@@ -331,6 +336,7 @@
 	operation_flags = OPERATION_AFFECTS_MOOD | OPERATION_NO_PATIENT_REQUIRED
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_blocked = SURGERY_BONE_SAWED|SURGERY_BONE_DRILLED
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/saw_bones/get_any_tool()
 	return "Any sharp edged item with decent force"
@@ -388,6 +394,7 @@
 	time = 4 SECONDS
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_required = SURGERY_BONE_SAWED|SURGERY_BONE_DRILLED
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/fix_bones/get_default_radial_image()
 	return image(/obj/item/stack/medical/bone_gel)
@@ -433,6 +440,7 @@
 	success_sound = 'sound/items/handling/surgery/organ2.ogg'
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_blocked = SURGERY_BONE_SAWED|SURGERY_BONE_DRILLED
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/drill_bones/get_any_tool()
 	return "Any sharp pointed item with decent force"
@@ -486,6 +494,7 @@
 	success_sound = 'sound/items/handling/surgery/organ1.ogg'
 	all_surgery_states_required = SURGERY_SKIN_OPEN
 	any_surgery_states_blocked = SURGERY_ORGANS_CUT
+	allow_stumps = TRUE
 
 /datum/surgery_operation/limb/incise_organs/get_any_tool()
 	return "Any sharp edged item"

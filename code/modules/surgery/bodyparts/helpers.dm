@@ -14,16 +14,11 @@
 /mob/living/carbon/get_bodypart(zone = BODY_ZONE_CHEST, include_stumps = FALSE)
 	RETURN_TYPE(/obj/item/bodypart)
 
-<<<<<<< HEAD
 	var/target_zone = zone || BODY_ZONE_CHEST
-	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-		if(bodypart.body_zone == target_zone)
-			return bodypart
-=======
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
 		if(!include_stumps && IS_STUMP(bodypart))
 			continue
-		if(bodypart.body_zone != zone)
+		if(bodypart.body_zone != target_zone)
 			continue
 		return bodypart
 
@@ -56,7 +51,6 @@
 	for(var/zone in get_all_limbs())
 		parts[zone] = get_bodypart(zone)
 	return parts
->>>>>>> 8d78ca910ae85ce292b18e3ba0fd20e3d28f64c4
 
 ///Returns TRUE/FALSE on whether the mob should have a limb in a given zone, used for species-restrictions.
 /mob/living/carbon/proc/should_have_limb(zone)

@@ -251,10 +251,8 @@
       and worm meat and can only be tamed when they are spiderlings or young.
   - code_imp: Refactored tameable code to use TRAIT_TAMED instead of setting individual
       variables on each mob.
-<<<<<<< HEAD
   Rengan:
   - balance: "T\xFCrk mutfa\u011F\u0131 yemeklerinin doyuruculu\u011Fu dengelendi."
-=======
 2026-03-17:
   Melbert:
   - qol: If your pay gets docked by Central Command, it is noted in audit and transaction
@@ -344,4 +342,3 @@
       turf
   levels0:
   - bugfix: webbing production webs no longer harm their maker
->>>>>>> 8d78ca910ae85ce292b18e3ba0fd20e3d28f64c4

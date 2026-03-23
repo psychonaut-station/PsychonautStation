@@ -363,7 +363,8 @@
 		"the patient or tool must contain >1u [/datum/reagent/toxin/zombiepowder::name]" = "hastada veya alette 1 birimden fazla  [/datum/reagent/toxin/zombiepowder::name] bulunmalı",
 		"the limb must not already have a Romerol tumor" = "uzuvda Romerol tümörü bulunmamalı",
 		"the limb must not be cybernetic" = "uzuv sibernetik olmamalı",
-		"the limb must not be organic" = "uzuv organik olmamalı"
+		"the limb must not be organic" = "uzuv organik olmamalı",
+		"the limb must be missing / a stump" = "uzuv eksik veya güdük olmalı"
 	)
 
 	if(!bioware_pushed)

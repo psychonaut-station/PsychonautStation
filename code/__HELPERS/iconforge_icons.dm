@@ -79,7 +79,7 @@
 	for(var/direction in processing_directions)
 		directions[direction] = list()
 
-	if(start && !isnull(appearance.color) && uppertext(appearance.color) != "#FFFFFF") // eğer proc ilk defa çalışıyorsa (layerler için tekrar calıstırılır) ve rengi varsa rengi ekle, layerlerde döngü içerisinde hallediliyo renkler.
+	if(start && !isnull(appearance.color) && uppertext(appearance.color) != "#FFFFFF")
 		var/list/color_data = iconforge_get_color_transform(appearance.color)
 		for(var/direction in processing_directions)
 			directions[direction] += list(color_data)
@@ -125,7 +125,7 @@
 		transform_data["y"] = layer_image.pixel_y + layer_image.pixel_z + 2 - flatY1
 
 
-		if(!isnull(layer_image.color) && uppertext(layer_image.color) != "#FFFFFF") // layerin rengi varsa rengi ekle
+		if(!isnull(layer_image.color) && uppertext(layer_image.color) != "#FFFFFF")
 			var/list/color_transform = iconforge_get_color_transform(layer_image.color)
 			icon_transform += list(color_transform)
 
@@ -142,12 +142,12 @@
 
 			directions[direction] += list(direction_transform_data)
 
-	if (appearance.alpha < 255) // alpha değerini ekle
+	if (appearance.alpha < 255)
 		var/list/alpha_color_data = iconforge_get_color_transform(rgb(255,255,255, appearance.alpha))
 		for(var/direction in processing_directions)
 			directions[direction] += list(alpha_color_data)
 
-	if(!start) // eğer layer için çağrılan bi procsa transform verilerini vermesi yeter
+	if(!start)
 		var/alist/output_data = alist()
 		for (var/direction in processing_directions)
 			var/list/partial = directions[direction]
@@ -170,7 +170,7 @@
 			"height" = 64
 		))
 
-	for(var/direction in processing_directions) // wrapper icon için transform verisini hazırla
+	for(var/direction in processing_directions)
 		var/list/partial = directions[direction]
 		var/x = 1
 		var/y = 1

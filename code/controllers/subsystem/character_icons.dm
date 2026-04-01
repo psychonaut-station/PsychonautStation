@@ -44,7 +44,6 @@ SUBSYSTEM_DEF(character_icons)
 	return appearance
 
 /datum/controller/subsystem/character_icons/proc/handle_roundstart()
-	debug_to_adminlog("DEBUG: SScharacter_icons saving [processing_icons.len] icons", processing_icons.len)
 	for(var/datum/weakref/weakref in processing_icons)
 		var/mutable_appearance/appearance = processing_icons[weakref]
 		save_character(weakref, appearance)
@@ -61,15 +60,15 @@ SUBSYSTEM_DEF(character_icons)
 
 	CHECK_TICK
 
-	var/mutable_appearance/old_appearance = appearance || processing_icons[mind_weakref] // appearance overridesi varsa onu kullan yoksa eskiden processlendiyse onu getir
+	var/mutable_appearance/old_appearance = appearance || processing_icons[mind_weakref]
 
-	if(!appearance) // Appearance yoksa
-		if(old_appearance) // Weakref önceden processlendiyse onu getir
+	if(!appearance)
+		if(old_appearance)
 			appearance = old_appearance
-		else if(living_mob) // Yoksa ve living_mob gerçekce sıfırdan olustur
+		else if(living_mob)
 			appearance = new (living_mob.get_mob_appearance())
 
-	if(character_mind && living_mob && old_appearance && living_mob.stat != DEAD) // Appearance eskiden processlendiyse güncelle
+	if(character_mind && living_mob && old_appearance && living_mob.stat != DEAD)
 		if(istype(living_mob) && !isbrain(living_mob))
 			appearance.copy_overlays(living_mob, TRUE)
 		else
@@ -79,8 +78,8 @@ SUBSYSTEM_DEF(character_icons)
 
 	CHECK_TICK
 
-	appearance.transform = matrix() // Eğer ikon yatıyor durumda ise vs düzgün durmasını sağla
-	appearance.setDir(SOUTH) // Güneye (bize) bakmasını sağla
+	appearance.transform = matrix()
+	appearance.setDir(SOUTH)
 
 	CHECK_TICK
 
@@ -100,8 +99,3 @@ SUBSYSTEM_DEF(character_icons)
 	if(isnull(weakref))
 		return
 	return processing_icons[weakref]
-
-/datum/controller/subsystem/character_icons/proc/debug_to_adminlog(text, character_length) // JUST FOR TM
-	message_admins(text)
-	if(character_length)
-		SSblackbox.record_feedback("nested tally", "generate_character_icons", list("generated" = character_length))

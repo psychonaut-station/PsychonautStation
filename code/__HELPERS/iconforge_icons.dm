@@ -41,7 +41,7 @@
 
 	var/string_curicon = "[curicon]"
 
-	if(!isfile(curicon) || !length(string_curicon)) // Eğer curicon bir dosya değilse (runtimede olusturulduysa) iconu dosyaya kaydet ve cachele.
+	if(!isfile(curicon) || !length(string_curicon))
 		var/file_path_tmp = "tmp/uni_icon-tmp-[rand(1, 999)].dmi"
 		fcopy(curicon, file_path_tmp)
 		var/file_hash = rustg_hash_file(RUSTG_HASH_MD5, file_path_tmp)
@@ -129,7 +129,7 @@
 			var/list/color_transform = iconforge_get_color_transform(layer_image.color)
 			icon_transform += list(color_transform)
 
-		var/alist/layer_icon_data_directions = iconforge_get_spritesheet_data(layer_image, image_icon, image_icon_state, curblend, defdir, start = FALSE) // döngüdeki layerin layerlerini işle
+		var/alist/layer_icon_data_directions = iconforge_get_spritesheet_data(layer_image, image_icon, image_icon_state, curblend, defdir, start = FALSE)
 
 		for(var/direction in processing_directions)
 			var/list/layer_icon_data = layer_icon_data_directions[direction] || list()

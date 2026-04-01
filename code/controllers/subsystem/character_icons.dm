@@ -5,10 +5,9 @@ SUBSYSTEM_DEF(character_icons)
 	wait = 10 MINUTES
 
 	var/list/processing_icons = list()
+	var/list/round_character_icons = list()
 
 	var/list/currentrun = list()
-
-	var/list/round_character_icons = list()
 
 /datum/controller/subsystem/character_icons/fire(resumed)
 	if(!resumed)
@@ -85,7 +84,7 @@ SUBSYSTEM_DEF(character_icons)
 
 	var/character_name = character_mind.name || living_mob.real_name
 
-	if(character_mind && living_mob) // Credits shit
+	if(character_mind && living_mob) // Credits stuff
 		var/bound_width = living_mob.bound_width || world.icon_size
 		appearance.maptext_width = 88
 		appearance.maptext_height = world.icon_size * 1.5

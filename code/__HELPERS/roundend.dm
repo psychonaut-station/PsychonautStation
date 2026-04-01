@@ -233,6 +233,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	SScredits.draft()
 	SScredits.finalize()
 
+	if(isnull(reboot_hud))
+		reboot_hud = new()
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
 			C?.RollCredits()
@@ -240,6 +242,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			C?.playtitlemusic(volume_multiplier = 0.5)
 		if(speed_round && was_forced != ADMIN_FORCE_END_ROUND)
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
+		C?.screen += reboot_hud
 		HandleRandomHardcoreScore(C)
 
 	display_report(popcount)
@@ -773,6 +776,14 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	///The name of the area we earned this cheevo in
 	var/award_location
 
+/atom/movable/screen/reboot_timer
+	screen_loc = "CENTER:-140,TOP:-42"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	maptext_width = 340
+	maptext_height = 64
+	maptext = ""
+	layer = SCREENTIP_LAYER //This is basically an extra screentip
+
 /datum/controller/subsystem/ticker/proc/save_round_characters()
 	var/list/round_character_icons = SScharacter_icons.round_character_icons
 	if(!round_character_icons.len)
@@ -828,4 +839,3 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 
 	var/metadata_json = json_encode(metadata)
 	rustg_file_write(metadata_json, metadata_file)
-

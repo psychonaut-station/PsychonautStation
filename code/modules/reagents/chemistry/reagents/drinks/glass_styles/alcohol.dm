@@ -202,14 +202,13 @@
 	icon = 'icons/obj/drinks/drinks.dmi'
 	icon_state = "rice_beer"
 
-<<<<<<< HEAD
 /datum/glass_style/drinking_glass/raki
 	required_drink_type = /datum/reagent/consumable/ethanol/raki
 	name = "glass of rakia"
 	desc = "Kalbim seni unutacak kadar adiyse ellerim onu parçalayacak kadar asildir."
 	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
 	icon_state = "raki_glass"
-=======
+
 /datum/glass_style/drinking_glass/aperitivo
 	required_drink_type = /datum/reagent/consumable/ethanol/aperitivo
 	name = "a glass of aperitivo liqueur"
@@ -230,7 +229,6 @@
 	desc = "If mixing sugar and alcohol really does contribute to hangovers, drinking this straight is certainly one way to find out."
 	icon = 'icons/obj/drinks/drinks.dmi'
 	icon_state = "maraschino"
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 
 // Shot glasses
 

@@ -66,8 +66,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 	var/datum/action_group/listed/listed_actions = null
 	var/list/floating_actions = null
 
-	var/list/atom/movable/screen/cybernetics/ammo_counter/cybernetics_ammo = list()
-
 	/// Subtypes can override this to force a specific UI style
 	var/ui_style = null
 	/// Assoc list of all screen objects we hold by their key
@@ -258,57 +256,6 @@ GLOBAL_LIST_INIT(available_ui_styles, list(
 		var/datum/plane_master_group/group = master_groups[group_key]
 		group.build_planes_offset(src, new_offset)
 
-<<<<<<< HEAD
-/datum/hud/Destroy()
-	if(mymob.hud_used == src)
-		mymob.hud_used = null
-
-	QDEL_NULL(toggle_palette)
-	QDEL_NULL(palette_down)
-	QDEL_NULL(palette_up)
-	QDEL_NULL(palette_actions)
-	QDEL_NULL(listed_actions)
-	QDEL_LIST(floating_actions)
-
-	QDEL_LIST(static_inventory)
-
-	// all already deleted by static inventory clear
-	inv_slots.Cut()
-	action_intent = null
-	zone_select = null
-	pull_icon = null
-	rest_icon = null
-	sleep_icon = null
-	floor_change = null
-	hand_slots.Cut()
-
-	QDEL_LIST(toggleable_inventory)
-	QDEL_LIST(hotkeybuttons)
-	throw_icon = null
-	resist_icon = null
-	QDEL_LIST(infodisplay)
-	open_containers = null
-
-	healths = null
-	stamina = null
-	healthdoll = null
-	spacesuit = null
-	hunger = null
-	cybernetics_ammo = null
-	alien_plasma_display = null
-	alien_queen_finder = null
-
-	QDEL_LIST_ASSOC_VAL(master_groups)
-	QDEL_LIST_ASSOC_VAL(plane_master_controllers)
-	QDEL_LIST(always_visible_inventory)
-	mymob = null
-
-	QDEL_NULL(screentip_text)
-
-	return ..()
-
-=======
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 /datum/hud/proc/on_plane_increase(datum/source, old_max_offset, new_max_offset)
 	SIGNAL_HANDLER
 	for(var/i in old_max_offset + 1 to new_max_offset)

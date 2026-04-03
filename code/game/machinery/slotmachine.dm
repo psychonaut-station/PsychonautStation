@@ -423,15 +423,8 @@
 		winning = WINNING_JACKPOT
 		var/prize = money + PRIZE_JACKPOT
 		visible_message("<b>[src]</b> says, 'JACKPOT! You win [prize] [MONEY_NAME]!'")
-<<<<<<< HEAD
 		priority_announce("[user ? user.real_name : usrname] adlı kişiyi [get_area(src)] alanındaki slot makinesinde büyük ikramiyeyi kazandığı için tebrik ederiz!")
-		if(isliving(user) && (user in viewers(src)))
-			var/mob/living/living_user = user
-			living_user.add_mood_event("slots", /datum/mood_event/slots/win/jackpot)
-=======
-		priority_announce("Congratulations to [user ? user.real_name : usrname] for winning the jackpot at the slot machine in [get_area(src)]!")
 		user.add_mood_event("slots", /datum/mood_event/slots/win/jackpot)
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 		jackpots += 1
 		money = 0
 		if(paymode == HOLOCHIP)

@@ -632,11 +632,6 @@
 #include "code\_onclick\hud\alien.dm"
 #include "code\_onclick\hud\alien_larva.dm"
 #include "code\_onclick\hud\blob_overmind.dm"
-<<<<<<< HEAD
-#include "code\_onclick\hud\credits.dm"
-#include "code\_onclick\hud\cybernetics.dm"
-=======
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 #include "code\_onclick\hud\drones.dm"
 #include "code\_onclick\hud\generic_dextrous.dm"
 #include "code\_onclick\hud\ghost.dm"

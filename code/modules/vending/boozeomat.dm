@@ -35,12 +35,9 @@
 				/obj/item/reagent_containers/cup/glass/bottle/coconut_rum = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/yuyake = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/shochu = 5,
-<<<<<<< HEAD
 				/obj/item/reagent_containers/cup/glass/bottle/raki = 5,
-=======
 				/obj/item/reagent_containers/cup/glass/bottle/aperitivo = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/maraschino = 5,
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 				/obj/item/reagent_containers/cup/soda_cans/beer = 10,
 				/obj/item/reagent_containers/cup/soda_cans/beer/rice = 10,
 			),

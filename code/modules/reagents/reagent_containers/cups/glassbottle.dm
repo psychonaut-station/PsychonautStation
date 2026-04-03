@@ -874,14 +874,13 @@
 	list_reagents = list(/datum/reagent/consumable/ethanol/coconut_rum = 100)
 	drink_type = ALCOHOL
 
-<<<<<<< HEAD
 /obj/item/reagent_containers/cup/glass/bottle/raki
 	name = "rakia bottle"
 	desc = "Discover the Turkish rakia in the unique flavour of space."
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "raki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
-=======
+
 /obj/item/reagent_containers/cup/glass/bottle/aperitivo
 	name = "Camillo Aperitivo Rosso"
 	desc = "The bottle that led to the creation of the modern Camillo Group beverage conglomerate. Despite what you might expect, there's a good chance that whoever makes your favorite liquor is at least in part owned by Camillo."
@@ -902,7 +901,6 @@
 	icon_state = "maraschino_bottle"
 	list_reagents = list(/datum/reagent/consumable/ethanol/maraschino = 100)
 	drink_type = ALCOHOL
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/cup/glass/bottle/molotov

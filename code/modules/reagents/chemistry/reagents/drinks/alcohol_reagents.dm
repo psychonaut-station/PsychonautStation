@@ -3249,7 +3249,6 @@
 	if(prob(10))
 		drinker.emote("flip")
 
-<<<<<<< HEAD
 /datum/reagent/consumable/ethanol/raki
 	name = "Rakia"
 	description = "A potent mixture of distilled grapes and strong alcohol."
@@ -3266,7 +3265,7 @@
 
 	if(SPT_PROB(3.5, seconds_per_tick))
 		drinker.add_mood_event("toxic_food", /datum/mood_event/efkar, name)
-=======
+
 /datum/reagent/consumable/ethanol/aperitivo
 	name = "Aperitivo Liqueur"
 	description = "An aggressively bittersweet liqueur flavored with cinchona bark and other botanicals. Perfect for stimulating one's appetite or fighting off malaria."
@@ -3507,7 +3506,6 @@
 	taste_description = "Creole hospitality"
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED
->>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 
 #undef ALCOHOL_EXPONENT
 #undef ALCOHOL_THRESHOLD_MODIFIER

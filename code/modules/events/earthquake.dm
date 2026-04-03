@@ -14,8 +14,12 @@
 	min_wizard_trigger_potency = 3
 	max_wizard_trigger_potency = 7
 	map_flags = EVENT_PLANETARY_ONLY
+<<<<<<< HEAD
 	track = EVENT_TRACK_MUNDANE
 	tags = list(TAG_COMMUNAL, TAG_PLANETARY)
+=======
+	admin_setup = list(/datum/event_admin_setup/set_location/earthquake)
+>>>>>>> b306de49c2ec87711800eb11ea84ad923732aa14
 
 /datum/round_event_control/earthquake/can_spawn_event(players_amt, allow_magic)
 	. = ..()
@@ -32,6 +36,8 @@
 	announce_chance = 25
 	///The chosen location and center of our earthquake.
 	var/turf/epicenter
+	///The location explicitly chosen by an admin forcing the event
+	var/turf/special_spot
 	///A list of turfs that will be damaged by this event.
 	var/list/turfs_to_shred
 	///A list of turfs directly under turfs_to_shred, for creating a proper chasm to the floor below.
@@ -40,13 +46,15 @@
 	var/list/edges = list()
 
 /datum/round_event/earthquake/setup()
-	epicenter = get_turf(pick(GLOB.generic_event_spawns))
+	if(special_spot)
+		epicenter = special_spot
+	else
+		epicenter = get_turf(pick(GLOB.generic_event_spawns))
+		// Give a bit of variance so our epicenter isn't always on the landmark.
+		epicenter = locate(epicenter.x + rand(-10, 10), epicenter.y + rand(-10, 10), epicenter.z)
 	if(!epicenter)
 		message_admins("Earthquake event failed to find a turf! generic_event_spawn landmarks may be absent or bugged. Aborting...")
 		return
-
-	// Give a bit of variance so our epicenter isn't always on the landmark.
-	epicenter = locate(epicenter.x + rand(-10, 10), epicenter.y + rand(-10, 10), epicenter.z)
 
 	message_admins("An earthquake event is about to strike the [get_area_name(epicenter)][ADMIN_JMP(epicenter)].")
 
@@ -182,3 +190,13 @@
 			SSexplosions.medturf += edge_to_damage
 		else
 			SSexplosions.lowturf += edge_to_damage
+
+/// Admins can also pick the epicenter of the earthquake
+/datum/event_admin_setup/set_location/earthquake
+	input_text = "Have the epicenter be at the current location?"
+
+/datum/event_admin_setup/set_location/earthquake/apply_to_event(datum/round_event/earthquake/event)
+	event.special_spot = chosen_turf
+	var/log_message = "[key_name_admin(usr)] triggered an earthquake at [event.special_spot ? AREACOORD(event.special_spot) : "a random location"]."
+	message_admins(log_message)
+	log_admin(log_message)

@@ -6,7 +6,7 @@ import {
   Stack,
   Table,
 } from 'tgui-core/components';
-import { BooleanLike } from 'tgui-core/react';
+import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
@@ -286,9 +286,7 @@ const RequestRow = (props: { track: TrackData }) => {
           tooltipPosition="left"
           tooltip={can_use && !banned ? 'Deny' : 'Discard'}
           textAlign="center"
-          disabled={
-            track.mob_key_name === user_key_name || can_use ? false : true
-          }
+          disabled={track.mob_key_name === user_key_name || !can_use}
           onClick={() => {
             act('discard_request', {
               track_id: track.track_id,

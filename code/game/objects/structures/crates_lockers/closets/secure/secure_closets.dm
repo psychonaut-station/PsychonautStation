@@ -9,6 +9,7 @@
 	damage_deflection = 20
 	material_drop_amount = 5
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/glass = SMALL_MATERIAL_AMOUNT * 0.5)
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 /datum/armor/closet_secure_closet
 	melee = 30

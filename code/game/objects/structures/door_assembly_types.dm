@@ -249,6 +249,7 @@
 	airlock_type = /obj/machinery/door/airlock/wood
 	mineral = "wood"
 	glass_type = /obj/machinery/door/airlock/wood/glass
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/structure/door_assembly/door_assembly_bronze
 	name = "bronze airlock assembly"

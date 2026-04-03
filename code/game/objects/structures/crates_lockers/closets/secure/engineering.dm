@@ -7,7 +7,7 @@
 	..()
 
 	new /obj/item/storage/bag/garment/engineering_chief (src)
-	new /obj/item/computer_disk/command/ce(src)
+	new /obj/item/disk/computer/command/ce(src)
 	new /obj/item/radio/headset/heads/ce(src)
 	new /obj/item/megaphone/command(src)
 	new /obj/item/holosign_creator/atmos(src)
@@ -19,10 +19,6 @@
 	new /obj/item/storage/photo_album/ce(src)
 	new /obj/item/storage/box/skillchips/engineering(src)
 	new /obj/item/storage/box/stickers/chief_engineer(src)
-	if(SSmapping.picked_rooms["engine"])
-		var/datum/map_template/modular_room/random_engine/engine_template = SSmapping.picked_rooms["engine"]
-		if(engine_template.engine_type == "singularity")
-			new /obj/item/storage/toolbox/guncase/anomaly_catcher(src)
 
 /obj/structure/closet/secure_closet/engineering_chief/populate_contents_immediate()
 	. = ..()
@@ -39,7 +35,7 @@
 
 /obj/structure/closet/secure_closet/engineering_electrical/PopulateContents()
 	..()
-	var/static/items_inside = list(
+	var/list/items_inside = list(
 		/obj/item/inducer = 2,
 		/obj/item/storage/toolbox/electrical = 3,
 		/obj/item/electronics/apc = 3,

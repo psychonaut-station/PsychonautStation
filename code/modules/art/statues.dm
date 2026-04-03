@@ -27,7 +27,7 @@
 	. = ..()
 	AddElement(art_type, impressiveness)
 	AddElement(/datum/element/beauty, impressiveness * 75)
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 	AddComponent(/datum/component/marionette)
 
 /obj/structure/statue/wrench_act(mob/living/user, obj/item/tool)
@@ -50,7 +50,7 @@
 /obj/structure/statue/atom_deconstruct(disassembled = TRUE)
 	var/amount_mod = disassembled ? 0 : -2
 	for(var/mat in custom_materials)
-		var/datum/material/custom_material = GET_MATERIAL_REF(mat)
+		var/datum/material/custom_material = SSmaterials.get_material(mat)
 		var/amount = max(0,round(custom_materials[mat]/SHEET_MATERIAL_AMOUNT) + amount_mod)
 		if(amount > 0)
 			new custom_material.sheet_type(drop_location(), amount)
@@ -250,6 +250,7 @@
 	max_integrity = 50
 	custom_materials = list(/datum/material/snow=SHEET_MATERIAL_AMOUNT*5)
 	abstract_type = /obj/structure/statue/snow
+	impact_sound = SFX_BULLET_IMPACT_ICE
 
 /obj/structure/statue/snow/snowman
 	name = "snowman"

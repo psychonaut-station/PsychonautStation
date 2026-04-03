@@ -293,12 +293,12 @@
 	priority_announce("Spacecoin balonu patladı! [get_area(src)] konumundaki para yatırma makinesine gidin ve tüm paranızı kaybetmeden önce nakite çevirin!", sender_override = "CRAB-17 Protokolü")
 	animate(DF, pixel_z = -8, time = 5, , easing = LINEAR_EASING)
 	playsound(src,  'sound/items/weapons/mortar_whistle.ogg', 70, TRUE, 6)
-	addtimer(CALLBACK(src, PROC_REF(endLaunch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation
+	addtimer(CALLBACK(src, PROC_REF(end_launch)), 5, TIMER_CLIENT_TIME) //Go onto the last step after a very short falling animation
 
 /**
  * Cleans up after the falling animation.
  */
-/obj/effect/dumpeet_target/proc/endLaunch()
+/obj/effect/dumpeet_target/proc/end_launch()
 	QDEL_NULL(DF) //Delete the falling machine effect, because at this point its animation is over. We dont use temp_visual because we want to manually delete it as soon as the pod appears
 	playsound(src, SFX_EXPLOSION, 80, TRUE)
 	dump.forceMove(get_turf(src))

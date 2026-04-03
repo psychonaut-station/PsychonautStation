@@ -8,6 +8,7 @@
 	circuit = /obj/item/circuitboard/computer/security
 	light_color = COLOR_SOFT_RED
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_SIGHT
+	impact_sound = SFX_BULLET_IMPACT_GLASS
 
 	var/list/network = list(CAMERANET_NETWORK_SS13)
 	var/obj/machinery/camera/active_camera
@@ -194,6 +195,7 @@
 	icon_keyboard = null
 	icon_screen = "detective_tv"
 	pass_flags = PASSTABLE
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/machinery/computer/security/mining
 	name = "outpost camera console"

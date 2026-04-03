@@ -1343,15 +1343,18 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	return appearance
 
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
 	if(!fexists(save_path))
 		return FALSE
 	var/list/tree = json_decode(rustg_file_read(save_path))	// Reading savefile
-	var/default_slot = tree["default_slot"] || 1
-	var/selected_char = tree["character[default_slot]"] || tree["character1"]
+	if(isnull(character_slot))
+		character_slot = tree["default_slot"] || 1
+	var/selected_char = tree["character[character_slot]"] || tree["character1"]
+	if(!selected_char)
+		return FALSE
 
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
@@ -1363,6 +1366,19 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 			selected_job = SSjob.get_job(job)
 			highest_pref = job_preferences[job]
 
+	var/mob_name = null
+
+	for (var/preference_type in GLOB.preference_entries)
+		var/datum/preference/name/name_preference = GLOB.preference_entries[preference_type]
+		if (!istype(name_preference))
+			continue
+
+		if (isnull(name_preference.relevant_job))
+			continue
+
+		if (istype(selected_job, name_preference.relevant_job))
+			mob_name = selected_char?[name_preference.savefile_key]
+
 	if(selected_job && !ispath(selected_job::spawn_type, /mob/living/carbon/human)) // If the selected job's spawn_type isnt human (AI, cyborg etc.) we just returning mutable_appearance
 		var/mob/living/spawn_type = selected_job::spawn_type
 		var/mutable_appearance/appearance = mutable_appearance(spawn_type::icon, spawn_type::icon_state)
@@ -1372,6 +1388,12 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
 			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
 				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
+		if(!only_appearance)
+			return list(
+				"name" = mob_name,
+				"appearance" = appearance,
+				"job" = selected_job::title
+			)
 		return appearance
 
 	var/we_created = FALSE
@@ -1381,8 +1403,6 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	else
 		our_human.wipe_state() // We're wiping the dummys overlays and outfit
 		our_human.set_species(/datum/species/human) // We're setting it to human beacuse if the savefile doesnt have species entry, it doesnt use previous icon's species
-		our_human.icon_render_keys = list()
-		our_human.update_body(is_creating = TRUE) // We're recreating bodyparts etc.
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order()) // Apply the preferences in priority order
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
@@ -1393,6 +1413,12 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		var/new_value = preference.deserialize(saved_data)
 
 		preference.apply_to_human(our_human, new_value)
+
+	our_human.icon_render_keys = list()
+	our_human.update_body(is_creating = TRUE)
+
+	if(!mob_name)
+		mob_name = our_human.real_name
 
 	var/datum/outfit/equipped_outfit
 
@@ -1431,6 +1457,13 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	appearance.name = ckey
 	if(we_created)
 		qdel(our_human)
+
+	if(!only_appearance)
+		return list(
+			"name" = mob_name,
+			"appearance" = appearance,
+			"job" = selected_job::title
+		)
 
 	return appearance
 
@@ -1485,3 +1518,77 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		icon_cache[job_type] = sechud_icon
 
 	return icon(icon_cache[job_type])
+
+/proc/get_flat_icon_for_all_directions(atom/thing, no_anim = TRUE)
+	var/icon/output = icon('icons/effects/effects.dmi', "nothing")
+
+	for (var/direction in GLOB.cardinals)
+		var/icon/partial = getFlatIcon(thing, defdir = direction, no_anim = no_anim)
+		output.Insert(partial, dir = direction)
+
+	return output
+
+/proc/save_player_character_icon(ckey, char_index)
+	if(!ckey || is_guest_key(ckey))
+		return FALSE
+
+	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE) || list()
+	var/character_name = character_data?["name"]
+	var/mutable_appearance/appearance = character_data?["appearance"]
+	var/job = character_data?["job"]
+	if(isnull(character_name) || isnull(appearance) || job == JOB_AI || job == JOB_CYBORG)
+		return FALSE
+
+	var/icon_path = "data/player_saves/[ckey[1]]/[ckey]/character_images/[SANITIZE_FILENAME(character_name)].png"
+
+	var/icon/flat_icon = get_flat_icon_for_all_directions(appearance)
+	fcopy(flat_icon, icon_path)
+
+/**
+ * Copies the pixel colors from the passed in icon `I` to the 2d list `grid`
+ */
+/proc/fill_grid_from_icon(list/grid, icon/I)
+	var/width = I.Width()
+	var/height = I.Height()
+	for(var/x in 1 to width)
+		for(var/y in 1 to height)
+			var/pixel = I.GetPixel(x,height+1-y)
+			if(length(pixel) == 7)
+				pixel += "ff"
+			grid[y][x] = pixel
+
+// Given a number of frames for an icon state, and the dimensions of the icon, returns the ideal dimensions for a DMI file
+/proc/calculate_optimal_icon_grid_dimensions(width, height, count)
+	var/grid_width = 1
+	var/grid_height = 1
+	while(grid_width * grid_height < count)
+		if(height*grid_height < width*grid_width)
+			grid_height++
+		else
+			grid_width++
+	return list(grid_height, grid_width)
+
+// Reorder the 2d pixel data of the passed in frames into a data string that can be passed to rustg_dmi_create_png
+/proc/reorder_pixels(icon_width, icon_height, grid_width, grid_height, list/frames)
+	var/file_height = icon_height * grid_height
+
+	// This little trick right here reduces the total iteration of repeat_string from the product of the arguments to their sum.
+	// Can't be applied to the general case without a complex partitioning algorithm,
+	// since the count could either be a large prime or have large primes as factors
+	var/linear_pixels = COLOR_DMI_MASK
+	for(var/count in list(icon_width, icon_height, grid_width, grid_height))
+		if(count == 1)
+			continue
+		linear_pixels = repeat_string(count, linear_pixels)
+
+	for(var/i in 1 to length(frames))
+		var/list/frame = frames[i]
+		var/row_index = floor((i-1)/grid_width)
+		var/column = (i-1)%grid_width
+		for(var/y in 1 to length(frame))
+			var/list/row = jointext(frame[y], "")
+			var/splice_start = (row_index+y-1)*file_height + column*icon_width + 1
+			linear_pixels = splicetext(linear_pixels, (splice_start-1)*9+1, (splice_start+icon_width-1)*9+1, row)
+	var/zero_alpha_regex = regex(@@#(?:(?!a0a0a0)([0-9]|[a-f]){6}00)@, "gi")
+	linear_pixels = replacetext(linear_pixels, zero_alpha_regex, COLOR_DMI_MASK)
+	return linear_pixels

@@ -1,5 +1,3 @@
-import React from 'react';
-
 import { Box, Button, Section, Stack, Table } from 'tgui-core/components';
 import { Window } from '../../layouts';
 import { spaceLawDescriptions } from './SpaceLawDescription';
@@ -16,7 +14,7 @@ export const SpaceLaw = () => {
 };
 
 const scrollHandler = (e, value) => {
-  let element = document.getElementById(value);
+  const element = document.getElementById(value);
   if (element) {
     element.scrollIntoView();
   }

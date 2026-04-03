@@ -36,6 +36,15 @@
 /datum/id_trim/proc/find_job()
 	return null
 
+/datum/id_trim/proc/chat_span()
+	if(sechud_icon_state == SECHUD_UNKNOWN)
+		return "job__unassigned"
+	var/trimmed_hud_state = copytext(sechud_icon_state, 4)
+	if(trimmed_hud_state)
+		return "job__[trimmed_hud_state]"
+	else
+		return "job__unknown"
+
 /// Returns the SecHUD job icon state for whatever this object's ID card is, if it has one.
 /obj/item/proc/get_sechud_job_icon_state()
 	var/obj/item/card/id/id_card = GetID()

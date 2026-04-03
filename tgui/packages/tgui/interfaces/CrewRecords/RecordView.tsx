@@ -13,7 +13,7 @@ import { useBackend } from '../../backend';
 import { CharacterPreview } from '../common/CharacterPreview';
 import { EditableText } from '../common/EditableText';
 import { getCrewRecord, getQuirkStrings } from './helpers';
-import { CrewRecordData } from './types';
+import type { CrewRecordData } from './types';
 
 /** Views a selected record. */
 export const CrewRecordView = (props) => {

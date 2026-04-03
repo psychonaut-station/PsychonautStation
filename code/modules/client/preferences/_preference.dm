@@ -2,35 +2,38 @@
 /// The default priority level
 #define PREFERENCE_PRIORITY_DEFAULT 1
 
+/// For things that should be applied after the default prio, but before species to apply properly.
+#define PREFERENCE_PRIORITY_PRE_SPECIES 2
+
 /// The priority at which species runs, needed for external organs to apply properly.
-#define PREFERENCE_PRIORITY_SPECIES 2
+#define PREFERENCE_PRIORITY_SPECIES 3
 
 /**
  * Some preferences get applied directly to bodyparts (anything head_flags related right now).
  * These must apply after species, as species gaining might replace the bodyparts of the human.
  */
-#define PREFERENCE_PRIORITY_BODYPARTS 3
+#define PREFERENCE_PRIORITY_BODYPARTS 4
 
 /// The priority at which gender is determined, needed for proper randomization.
-#define PREFERENCE_PRIORITY_GENDER 4
+#define PREFERENCE_PRIORITY_GENDER 5
 
 /// The priority at which body type is decided, applied after gender so we can
 /// support the "use gender" option.
-#define PREFERENCE_PRIORITY_BODY_TYPE 5
+#define PREFERENCE_PRIORITY_BODY_TYPE 6
 
 /// Used for preferences that rely on body setup being finalized.
-#define PREFERENCE_PRORITY_LATE_BODY_TYPE 6
+#define PREFERENCE_PRORITY_LATE_BODY_TYPE 7
 
 /// Equpping items based on preferences.
 /// Should happen after species and body type to make sure it looks right.
 /// Mostly redundant, but a safety net for saving/loading.
-#define PREFERENCE_PRIORITY_LOADOUT 7
+#define PREFERENCE_PRIORITY_LOADOUT 8
 
 /// The priority at which names are decided, needed for proper randomization.
-#define PREFERENCE_PRIORITY_NAMES 8
+#define PREFERENCE_PRIORITY_NAMES 9
 
 /// Preferences that aren't names, but change the name changes set by PREFERENCE_PRIORITY_NAMES.
-#define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 9
+#define PREFERENCE_PRIORITY_NAME_MODIFICATIONS 10
 
 /// The priority at which names are decided, needed for proper randomization.
 #define PREFERENCE_PRIORITY_BACKGROUND_INFORMATION 10
@@ -73,7 +76,8 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 	var/list/flattened = list()
 	for (var/index in 1 to MAX_PREFERENCE_PRIORITY)
-		flattened += preferences[index]
+		if(preferences[index])
+			flattened += preferences[index]
 	return flattened
 
 /// Represents an individual preference.
@@ -125,6 +129,10 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	/// If the selected species has this head_flag by default,
 	/// will show the feature as selectable.
 	var/relevant_head_flag = null
+
+	/// If this is a character preference, should we update the character preview
+	/// when this preference is updated?
+	var/should_update_preview = TRUE
 
 /// Called on the saved input when retrieving.
 /// Also called by the value sent from the user through UI. Do not trust it.
@@ -198,7 +206,14 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	if (!isnull(save_data))
 		save_data[savefile_key] = serialize(value, preferences)
 
+	post_write(value, preferences)
+
 	return TRUE
+
+/// Called after a preference has been updated
+/datum/preference/proc/post_write(value, datum/preferences/preferences)
+	SHOULD_CALL_PARENT(TRUE)
+	return
 
 /// Apply this preference onto the given client.
 /// Called when the savefile_identifier == PREFERENCE_PLAYER.
@@ -299,7 +314,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 
 	if (preference.savefile_identifier == PREFERENCE_PLAYER)
 		preference.apply_to_client_updated(parent, read_preference(preference.type))
-	else
+	else if (preference.should_update_preview)
 		character_preview_view?.update_body()
 
 	return TRUE
@@ -414,7 +429,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 	SHOULD_NOT_SLEEP(TRUE)
 	CRASH("`icon_for()` was not implemented for [type], even though should_generate_icons = TRUE!")
 
-/datum/preference/choiced/is_valid(value)
+/datum/preference/choiced/is_valid(value, datum/preferences/preferences)
 	return value in get_choices()
 
 /datum/preference/choiced/deserialize(input, datum/preferences/preferences)
@@ -496,7 +511,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/color/serialize(input)
 	return sanitize_hexcolor(input)
 
-/datum/preference/color/is_valid(value)
+/datum/preference/color/is_valid(value, datum/preferences/preferences)
 	return findtext(value, GLOB.is_color)
 
 /// A numeric preference with a minimum and maximum value
@@ -523,7 +538,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/numeric/create_default_value()
 	return rand(minimum, maximum)
 
-/datum/preference/numeric/is_valid(value)
+/datum/preference/numeric/is_valid(value, datum/preferences/preferences)
 	return isnum(value) && value >= round(minimum, step) && value <= round(maximum, step)
 
 /datum/preference/numeric/compile_constant_data()
@@ -546,7 +561,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/toggle/deserialize(input, datum/preferences/preferences)
 	return !!input
 
-/datum/preference/toggle/is_valid(value)
+/datum/preference/toggle/is_valid(value, datum/preferences/preferences)
 	return value == TRUE || value == FALSE
 
 
@@ -567,7 +582,7 @@ GLOBAL_LIST_INIT(preference_entries_by_key, init_preference_entries_by_key())
 /datum/preference/text/create_default_value()
 	return ""
 
-/datum/preference/text/is_valid(value)
+/datum/preference/text/is_valid(value, datum/preferences/preferences)
 	return istext(value) && length(value) < maximum_value_length
 
 /datum/preference/text/compile_constant_data()

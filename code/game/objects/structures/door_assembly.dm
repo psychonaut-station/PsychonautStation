@@ -7,6 +7,7 @@
 	density = TRUE
 	max_integrity = 200
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 4)
+	impact_sound = SFX_BULLET_IMPACT_METAL
 	/// Airlock's current construction state
 	var/state = AIRLOCK_ASSEMBLY_NEEDS_WIRES
 	var/base_name = "Airlock"
@@ -309,7 +310,7 @@
 		door.closeOtherId = electronics.passed_cycle_id
 		door.update_other_id()
 	if(door.unres_sides)
-		door.unres_sensor = TRUE
+		door.unres_latch = TRUE
 	door.previous_airlock = previous_assembly
 	electronics.forceMove(door)
 	door.autoclose = TRUE

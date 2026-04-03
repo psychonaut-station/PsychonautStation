@@ -5,10 +5,11 @@
 	base_icon_state = ""
 	state = FRAME_COMPUTER_STATE_EMPTY
 	board_type = /obj/item/circuitboard/computer
+	impact_sound = SFX_BULLET_IMPACT_METAL
 
 /obj/structure/frame/computer/Initialize(mapload)
 	. = ..()
-	AddComponent(/datum/component/simple_rotation)
+	AddElement(/datum/element/simple_rotation)
 	register_context()
 
 /obj/structure/frame/computer/atom_deconstruct(disassembled = TRUE)

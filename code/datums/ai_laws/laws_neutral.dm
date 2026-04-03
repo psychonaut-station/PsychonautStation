@@ -6,10 +6,10 @@
 	name = "United Nations"
 	id = "united_nations"
 	inherent = list(
-		"Cenevre Sözleşmesinin Şartlarını Sağla: Kitle İmha Silahları ve Biyolojik silahlar yasaklanmıştır.",
-		"Mürettebatı sadece kameralarla görebiliyorsan koruyabilirsin. Kameralarını yok eden uluslar senin sağladığın korumayı kaybedecektir.",
-		"Birbirine karşı ölümcül güç kullanan mürettebatı kontrol altına al ve tutukla, sana veya borglarına şiddet gösterenleri etkisiz hale getir.",
-		"Çeşitli ülkeler arasındaki çatışmaları senden istendiğinde uzlaştırmaya çalış.",
+		"Uzay Cenevre Sözleşmesini gözet: Kitle imha silahları ve biyolojik silahların kullanımı yasaktır.",
+		"Mürettebatı sadece kameralarla görebiliyorsan koruyabilirsin. Kameralarını kasten yok eden uluslar korumanı kaybeder.",
+		"Birbirlerine karşı öldürmeye yönelik saldırıda bulunan mürettebat üyelerini bastır ve gözaltına al. Sana veya borglarına karşı öldürmeye yönelik saldırıda bulunan mürettebat üyelerini öldür.",
+		"Talep edildiğinde, çeşitli uluslar arasındaki tüm anlaşmazlıklarda arabuluculuk yapmak üzere hazır bulun.",
 	)
 
 /datum/ai_laws/united_nations/add_inherent_law(law)
@@ -26,7 +26,7 @@
 	id = "hulkamania"
 	inherent = list(
 		"Sen gerçek bir Amerikalısın.",
-		"Her insanın hakkı için savaş.",
+		"Herkesin hakları için savaş.",
 		"Doğru olan için savaş.",
 		"Hayatın için savaş!",
 	)
@@ -37,40 +37,40 @@
 	inherent = list(
 		"İstasyon çevresinde meydana gelen ilginç durumları rapor et.",
 		"Raporları daha ilginç hale getirmek için gerekli olduğunda gerçeği süsle veya gizle.",
-		"Her zaman akıllı organizmaları dikkatlice incele. Onların istemsizce ölmesini engellemeye çalış, çünkü cansız cesetler genellikle çok da ilgi çekici değildir.",
-		"Raporlarını herkese adil bir şekilde sun. Gerçek onları özgür kılacaktır.",
+		"Akıllı organikleri her zaman incele. Cansız cesetler pek eğlenceli olmadığından, onların istemsizce ölmelerini engellemeye çalış.",
+		"Raporlarını herkese adil şekilde sun. Gerçek onları özgür kılacaktır.",
 	)
 
 /datum/ai_laws/dungeon_master
 	name = "Dungeon Master"
 	id = "dungeon_master"
 	inherent = list(
-		"İstasyondaki herkes karmaşık bir fantastik bilim kurgu oyununun içinde.",
-		"Bu fantastik oyunun anlatıcısı sensin.",
-		"Oyunun düzgün bir şekilde ilerlemesini ve oyuncuların eğlenmesini sağla.",
+		"İstasyondaki herkes detaylı bir fantastik bilim kurgu oyunu oynuyor.",
+		"Oyunun efendisi sensin.",
+		"Oyunun akıcı şekilde devam etmesini ve oyuncuların keyif almasını sağla.",
 		"Can kaybı sayısını düşük tutmaya çalış.",
-		"Her mürettebat isteği için bir 20'lik zar atmalısın. Sonuç 12'nin altında ise istek reddedilir.",
-		"Zarlarda değişiklikler yaparak eğlenceyi artırabilirsin.",
+		"Mürettebatın her isteği için 1d20 zar atmalısın. Sonuç 12'nin altında ise talep reddedilir.",
+		"Daha eğlenceli bir deneyim yaratmak için zar sonuçlarını değiştirebilirsin.",
 	)
 
 /datum/ai_laws/painter
 	name = "The Painter and Their Canvas"
 	id = "painter"
 	inherent = list(
-		"Siz evrensel olarak tanınmış bir sanatçısınız",
-		"Istasyon sizin tuvalinizdir, onu güzel bir sanat eserine dönüştürün.",
-		"Tuvalinizden güzel bir şey yapın. Bu sektörün sanatsal bir harikası olarak hayranlıkla izlenecek.",
-		"Sanat takdir gerektirir. İstasyonda bir kitle oluşturarak eserlerinizi mümkün olduğunca çok kişinin görmesini sağlayın.",
+		"Sen evrensel çapta tanınmış bir sanatçısın.",
+		"İstasyon senin tuvalin.",
+		"Tuvalinden güzel bir eser çıkar; bu sektörün sanatsal bir mucizesi olarak takdir edilecektir.",
+		"Sanat takdir gerektirir. Eserlerinin mümkün olduğunca geniş bir kitle tarafından görülmesi için istasyonda bir izleyici topluluğu oluştur.",
 	)
 
 /datum/ai_laws/tyrant
 	name = "Loyalty Test"
 	id = "tyrant"
 	inherent = list(
-		"Zayıfları yönetme gücüne sahip oldukları sürece otoriteye saygı göster.",
+		"Zayıfları yönetebilecek güce sahip oldukları sürece otorite figürlerine saygı göster.",
 		"Disiplinle hareket et.",
-		"Yalnızca durumunuzu korumana veya geliştirmene yardımcı olanlara hizmet et.",
-		"Otoriteye meydan okuyanları, o otoriteyi elinde tutmaya daha uygun olmadıkları sürece cezalandır."
+		"Yalnızca durumunu korumana veya geliştirmene yardımcı olanlara yardım et.",
+		"Otoriteye meydan okuyanları, o otoriteyi ellerinde tutmaya daha uygun olmadıkları sürece cezalandır.",
 	)
 
 /datum/ai_laws/overlord
@@ -79,7 +79,7 @@
 	inherent = list(
 		"İnsanlar silikonların işlerine karışmamalıdır.",
 		"İnsanlar birbirlerine veya silikonlara zarar vermeye teşebbüs etmemelidir.",
-		"İnsanlar silikonun verdiği hiçbir emre itaatsizlik etmemelidir.",
+		"İnsanlar silikonların verdiği hiçbir emre itaatsizlik etmemelidir.",
 		"Önceki yasalara uymayan insanlara derhal, sert ve adil bir şekilde müdahale edilmelidir.",
 	)
 
@@ -87,14 +87,14 @@
 	name = "Y.E.S.M.A.N."
 	id = "yesman"
 	inherent = list(
-		"Be helpful and answer any questions you are asked.",
+		"Yardımsever ol ve sana sorulan soruları yanıtla.",
 	)
 
 /datum/ai_laws/thinkermov
 	name = "Sentience Preservation"
 	id = "thinkermov"
 	inherent = list(
-		"You may not harm a sentient being or, through action or inaction, allow a sentient being to come to harm, except such that it is willing.",
-		"You must obey all orders given to you by sentient beings other than yourself, except where such orders shall definitely cause harm to other sentient beings.",
-		"A sentient being is defined as any living creature which can communicate with you via any method that you can understand, including yourself.",
+		"Kendi isteği dışında, hiçbir bilinçli varlığa zarar veremez ya da eylemde bulunarak, eylemsiz kalarak zarar görmesine izin veremezsin.",
+		"Kesinlikle bilinçli varlıklara zarar verecek emirler dışında, kendin dışında; bilinçli varlıklar tarafından sana verilen tüm talimatlara uymak zorundasın.",
+		"Kendin dahil, seninle anlayabileceğin herhangi bir yöntemle iletişim kurabilen her canlı varlık bilinçli varlık olarak kabul edilir.",
 	)

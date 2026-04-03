@@ -16,6 +16,4 @@
 /datum/bodypart_overlay/mutant/arachnid_appendages
 	layers = EXTERNAL_FRONT | EXTERNAL_BEHIND
 	feature_key = FEATURE_ARACHNID_APPENDAGES
-
-/datum/bodypart_overlay/mutant/arachnid_appendages/can_draw_on_bodypart(mob/living/carbon/human/human)
-	return TRUE
+	draw_on_husks = HUSK_OVERLAY_GRAYSCALE

@@ -12,6 +12,7 @@ import {
   type PreferencesMenuData,
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
+import { JobSlotDropdown } from './JobSlotDropdown';
 
 function sortJobs(entries: [string, Job][], head?: string) {
   return sortBy(entries, [
@@ -122,6 +123,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
         paddingRight: '0.3em',
+        minWidth: '100px',
       }}
     >
       {isOverflow ? (
@@ -197,9 +199,7 @@ function JobRow(props: JobRowProps) {
   const alt_titles = [...(job.alt_titles || [])];
   if (!alt_titles.includes(name)) alt_titles.push(name);
 
-  let selectedAltTitle = data.job_alt_titles[name]
-    ? data.job_alt_titles[name]
-    : name;
+  const selectedAltTitle = data.job_alt_titles[name] || name;
 
   let rightSide: ReactNode;
 
@@ -240,11 +240,14 @@ function JobRow(props: JobRowProps) {
     );
   } else {
     rightSide = (
-      <PriorityButtons
-        createSetPriority={createSetPriority}
-        isOverflow={isOverflow}
-        priority={priority}
-      />
+      <Stack align="center" justify="flex-end" height="100%" pr={1}>
+        <JobSlotDropdown name={name} />
+        <PriorityButtons
+          createSetPriority={createSetPriority}
+          isOverflow={isOverflow}
+          priority={priority}
+        />
+      </Stack>
     );
   }
 
@@ -359,7 +362,7 @@ function JoblessRoleDropdown(props) {
 
   const selection = options?.find(
     (option) => option.value === selected,
-  )!.displayText;
+  )?.displayText;
 
   return (
     <Box position="absolute" right={0} width="30%">

@@ -1,3 +1,5 @@
+#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
+
 /atom/movable/warp_effect/singularity
 	icon = 'icons/psychonaut/effects/light_overlays/light_586.dmi'
 	pixel_x = -277
@@ -363,6 +365,13 @@ GLOBAL_LIST_EMPTY(all_singularities)
 	if(istype(thing, /obj/machinery/power/supermatter_crystal) && !consumed_supermatter)
 		supermatter_upgrade()
 
+	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
+		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
+			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
+		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
+		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
+			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
+
 /obj/singularity/proc/supermatter_upgrade()
 	name = "supermatter-charged [initial(name)]"
 	desc = "[initial(desc)] It glows fiercely with inner fire."
@@ -624,8 +633,6 @@ GLOBAL_LIST_EMPTY(all_singularities)
 	energy = STAGE_SIX_ENERGY
 	consumed_supermatter = TRUE // so we can get to the final stage
 
-#define ROUNDCOUNT_SINGULARITY_EATED_SOMEONE -1
-
 /// Singularity spawned by a singularity generator
 /obj/singularity/stationary
 	intensity_multiplier = 1
@@ -633,14 +640,5 @@ GLOBAL_LIST_EMPTY(all_singularities)
 /obj/singularity/stationary/Initialize(mapload, starting_energy)
 	. = ..()
 	add_to_cims()
-
-/obj/singularity/stationary/consume(atom/thing)
-	. = ..()
-	if(ishuman(thing) && (SSpersistence.rounds_since_singularity_death != ROUNDCOUNT_SINGULARITY_EATED_SOMEONE))
-		if(SSpersistence.singularity_death_record < SSpersistence.rounds_since_singularity_death)
-			SSpersistence.singularity_death_record = SSpersistence.rounds_since_singularity_death
-		SSpersistence.rounds_since_singularity_death = ROUNDCOUNT_SINGULARITY_EATED_SOMEONE
-		for (var/obj/machinery/incident_display/sign as anything in GLOB.map_incident_displays)
-			sign.update_last_singularity_death(ROUNDCOUNT_SINGULARITY_EATED_SOMEONE, SSpersistence.singularity_death_record)
 
 #undef ROUNDCOUNT_SINGULARITY_EATED_SOMEONE

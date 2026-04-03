@@ -273,6 +273,7 @@ SUBSYSTEM_DEF(id_access)
 	desc_by_access[ACCESS_AI_UPLOAD] = "AI Chambers"
 	desc_by_access[ACCESS_TELEPORTER] = "Teleporter"
 	desc_by_access[ACCESS_EVA] = "EVA"
+	desc_by_access[ACCESS_BUDGET] = "Department Budget"
 	desc_by_access[ACCESS_COMMAND] = "Command"
 	desc_by_access[ACCESS_CAPTAIN] = "Captain"
 	desc_by_access[ACCESS_ALL_PERSONAL_LOCKERS] = "Personal Lockers"
@@ -455,6 +456,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.subdepartment_color_override = trim.subdepartment_color
 	id_card.big_pointer = trim.big_pointer
 	id_card.pointer_color = trim.pointer_color
+	id_card.trim_chat_span_override = trim.chat_span()
 
 	var/obj/item/card/id/advanced/chameleon/cham_id = id_card
 	if (istype(cham_id) && (!check_forged || !cham_id.forged))
@@ -481,6 +483,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.department_color_override = null
 	id_card.department_state_override = null
 	id_card.subdepartment_color_override = null
+	id_card.trim_chat_span_override = null
 	id_card.big_pointer = id_card.trim.big_pointer
 	id_card.pointer_color = id_card.trim.pointer_color
 
@@ -507,7 +510,7 @@ SUBSYSTEM_DEF(id_access)
 	id_card.add_wildcards(trim.wildcard_access, mode = TRY_ADD_ALL)
 	if(istype(trim, /datum/id_trim/job))
 		var/datum/id_trim/job/job_trim = trim // Here is where we update a player's paycheck department for the purposes of discounts/paychecks.
-		id_card.registered_account.account_job.paycheck_department = job_trim.job.paycheck_department
+		id_card.registered_account.account_job = job_trim.job
 
 	// Apply any currently active RETA grants to this card with updated trim access
 	apply_active_reta_grants_to_card(id_card)

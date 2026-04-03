@@ -37,6 +37,7 @@
 #define COOLDOWN_MECHA_SKYFALL "mecha_skyfall"
 #define COOLDOWN_MECHA_MISSILE_STRIKE "mecha_missile_strike"
 #define COOLDOWN_MECHA_CABIN_SEAL "mecha_cabin_seal"
+#define COOLDOWN_MECHA_PHASE "mecha_phase"
 
 //skybulge cooldown
 #define COOLDOWN_SKYBULGE_JUMP "skybulge_jump"

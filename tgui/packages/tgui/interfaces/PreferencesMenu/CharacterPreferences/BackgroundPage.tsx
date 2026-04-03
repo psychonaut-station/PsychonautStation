@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useBackend } from 'tgui/backend';
 import { Box, Button, Section, Stack, TextArea } from 'tgui-core/components';
 
-import { PreferencesMenuData } from '../types';
+import type { PreferencesMenuData } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
 
 export const BackgroundPage = () => {

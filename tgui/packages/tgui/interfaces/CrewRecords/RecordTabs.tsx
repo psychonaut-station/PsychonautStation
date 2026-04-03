@@ -15,7 +15,7 @@ import {
 
 import { JOB2ICON } from '../common/JobToIcon';
 import { isRecordMatch } from '../SecurityRecords/helpers';
-import { CrewRecord, CrewRecordData } from './types';
+import type { CrewRecord, CrewRecordData } from './types';
 
 /** Displays all found records. */
 export const CrewRecordTabs = (props) => {

@@ -12,7 +12,7 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 	ui_name = "AntagInfoWizard"
 	suicide_cry = "FOR THE FEDERATION!!"
 	preview_outfit = /datum/outfit/wizard
-	can_assign_self_objectives = FALSE
+	can_assign_self_objectives = TRUE
 	default_custom_objective = "Demonstrate your incredible and destructive magical powers."
 	hardcore_random_bonus = TRUE
 	credits_icon = "wizard"
@@ -50,12 +50,12 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 
 /datum/antagonist/wizard_minion/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/current_mob = mob_override || owner.current
-	current_mob.faction |= ROLE_WIZARD
+	current_mob.add_faction(ROLE_WIZARD)
 	add_team_hud(current_mob)
 
 /datum/antagonist/wizard_minion/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/last_mob = mob_override || owner.current
-	last_mob.faction -= ROLE_WIZARD
+	last_mob.remove_faction(ROLE_WIZARD)
 
 /datum/antagonist/wizard_minion/on_gain()
 	create_objectives()
@@ -241,13 +241,13 @@ GLOBAL_LIST_EMPTY(wizard_spellbook_purchases_by_key)
 
 /datum/antagonist/wizard/apply_innate_effects(mob/living/mob_override)
 	var/mob/living/wizard_mob = mob_override || owner.current
-	wizard_mob.faction |= ROLE_WIZARD
+	wizard_mob.add_faction(ROLE_WIZARD)
 	add_team_hud(wizard_mob)
 	ritual?.Grant(owner.current)
 
 /datum/antagonist/wizard/remove_innate_effects(mob/living/mob_override)
 	var/mob/living/wizard_mob = mob_override || owner.current
-	wizard_mob.faction -= ROLE_WIZARD
+	wizard_mob.remove_faction(ROLE_WIZARD)
 	if (ritual)
 		ritual.Remove(wizard_mob)
 		UnregisterSignal(ritual, COMSIG_GRAND_RITUAL_FINAL_COMPLETE)

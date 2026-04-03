@@ -206,21 +206,21 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 			var/caller_info = ""
 			// Aghosts have no IDs, but they hold authorithy so instead calling them Unknowns just drop caller info completely
 			if(usr && isliving(usr))
-				caller_info = "(Identification not provided)"
+				caller_info = "(Kimliği belirsiz şahıs)"
 				var/mob/living/caller_mob = usr
 				var/obj/item/card/id/ID = caller_mob.get_idcard()
 				if(ID)
-					caller_info = "(Called by [ID.registered_name], [ID.assignment])"
+					caller_info = "([ID.assignment] [ID.registered_name] tarafından çağırıldı)"
 				// Centcom still refuses to provide IDs to their silicons
 				else if (issilicon(caller_mob))
-					caller_info = "(Called by [caller_mob.name], [caller_mob.job])"
+					caller_info = "([caller_mob.job] [caller_mob.name] tarafından çağırıldı)"
 					// Cyborgs do not have their job var set, and this is wrong
 					if(iscyborg(caller_mob) && caller_mob?.mind?.assigned_role)
-						caller_info = "(Called by [caller_mob.name], [caller_mob.mind.assigned_role.title])"
+						caller_info = "([caller_mob.mind.assigned_role.title] [caller_mob.name] tarafından çağırıldı)"
 
 				// If someone swiped their ID before
 				else if (message_verified_by)
-					caller_info = "(Last authentication: [message_verified_by])"
+					caller_info = "(Son erişim: [message_verified_by])"
 					message_stamped_by = ""
 					message_verified_by = ""
 
@@ -239,11 +239,11 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 				switch(emergency_type)
 					if(REQ_EMERGENCY_SECURITY)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_SECURITY), "Security")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_SECURITY), "Security", command_span = TRUE)
 					if(REQ_EMERGENCY_ENGINEERING)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_ENGINEERING), "Engineering")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_ENGINEERING), "Engineering", command_span = TRUE)
 					if(REQ_EMERGENCY_MEDICAL)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_MEDICAL), "Medical")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info, "RETARESPONDERS" = granted_count), src, list(RADIO_CHANNEL_MEDICAL), "Medical", command_span = TRUE)
 
 				// Send confirmation to the calling department about the RETA activation
 				var/list/target_channels = list()
@@ -267,7 +267,7 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 
 				// Do not announce if RETA failed to activate
 				if (granted_count)
-					aas_config_announce(/datum/aas_config_entry/rc_reta_announcement, list("GRANTEE" = target_dept, "CALLER" = caller_info), src, target_channels)
+					aas_config_announce(/datum/aas_config_entry/rc_reta_announcement, list("GRANTEE" = target_dept, "CALLER" = caller_info), src, target_channels, command_span = TRUE)
 				// Log RETA activity
 				log_game("RETA: [origin_dept] called [target_dept] emergency, granted access to [granted_count] responder IDs for [duration_ds/10] seconds")
 
@@ -279,11 +279,11 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 				// Normal emergency call without RETA
 				switch(emergency_type)
 					if(REQ_EMERGENCY_SECURITY)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_SECURITY), "Security")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_SECURITY), "Security", command_span = TRUE)
 					if(REQ_EMERGENCY_ENGINEERING)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_ENGINEERING), "Engineering")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_ENGINEERING), "Engineering", command_span = TRUE)
 					if(REQ_EMERGENCY_MEDICAL)
-						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_MEDICAL), "Medical")
+						aas_config_announce(/datum/aas_config_entry/rc_emergency, list("LOCATION" = department, "CALLER" = caller_info), null, list(RADIO_CHANNEL_MEDICAL), "Medical", command_span = TRUE)
 				addtimer(CALLBACK(src, PROC_REF(clear_emergency)), 5 MINUTES)
 
 			update_appearance()
@@ -550,11 +550,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 7)
 
 /datum/aas_config_entry/rc_emergency
-	name = "RC Alert: Emergency Request"
+	name = "RETA Acil Durum Sistemi"
 	announcement_lines_map = list(
-		REQ_EMERGENCY_SECURITY = "SECURITY EMERGENCY in %LOCATION %CALLER!!!",
-		REQ_EMERGENCY_ENGINEERING = "ENGINEERING EMERGENCY in %LOCATION %CALLER!!!",
-		REQ_EMERGENCY_MEDICAL = "MEDICAL EMERGENCY in %LOCATION %CALLER!!!",
+		REQ_EMERGENCY_SECURITY = "%LOCATION KONUMUNDA GÜVENLİK ACİL DURUMU %CALLER!!!",
+		REQ_EMERGENCY_ENGINEERING = "%LOCATION KONUMUNDA MÜHENDİSLİK ACİL DURUMU %CALLER!!!",
+		REQ_EMERGENCY_MEDICAL = "%LOCATION KONUMUNDA TIBBİ ACİL DURUM %CALLER!!!",
 	)
 
 	vars_and_tooltips_map = list(
@@ -568,16 +568,16 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 	if(CONFIG_GET(flag/reta_enabled))
 		// Non sec/engi/med personnel may be called by CC or AI (I hope) for anomaly removal and etc. Mostly admin triggered calls
 		announcement_lines_map = list(
-			"RETA Granted" = "- RETA door access granted to responders",
-			"RETA Failed" = "- no RETA access provided",
-			"Security" = "SECURITY EMERGENCY in %LOCATION %CALLER %RETA!!!",
-			"Engineering" = "ENGINEERING EMERGENCY in %LOCATION %CALLER %RETA!!!",
-			"Medical" = "MEDICAL EMERGENCY in %LOCATION %CALLER, %RETA!!!",
-			"Science" = "Science personnel was requested in %LOCATION %CALLER %RETA.",
-			"Service" = "Service personnel was requested in %LOCATION %CALLER %RETA.",
-			"Command" = "Command personnel was requested in %LOCATION %CALLER %RETA.",
-			"Cargo" = "Cargo personnel was requested in %LOCATION %CALLER %RETA.",
-			"Mining" = "Miners were requested in %LOCATION %CALLER %RETA.",
+			"RETA Granted" = "- Müdahele ekiplerine RETA girişi izni verildi",
+			"RETA Failed" = "- RETA girişi izni verilmedi",
+			"Security" = "%LOCATION KONUMUNDA GÜVENLİK ACİL DURUMU %CALLER %RETA!!!",
+			"Engineering" = "%LOCATION KONUMUNDA MÜHENDİSLİK ACİL DURUMU %CALLER %RETA!!!",
+			"Medical" = "%LOCATION KONUMUNDA TIBBİ ACİL DURUM %CALLER, %RETA!!!",
+			"Science" = "%LOCATION konumuna Science personeli istendi %CALLER %RETA.",
+			"Service" = "%LOCATION konumuna Service personeli istendi %CALLER %RETA.",
+			"Command" = "%LOCATION konumuna Command personeli istendi %CALLER %RETA.",
+			"Cargo" = "%LOCATION konumuna Cargo personeli istendi %CALLER %RETA.",
+			"Mining" = "%LOCATION konumuna Mining personeli istendi %CALLER %RETA.",
 		)
 		vars_and_tooltips_map = list(
 			"LOCATION" = "will be replaced with the department name",
@@ -605,9 +605,9 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 	. = trimed_message.Join(" ")
 
 /datum/aas_config_entry/rc_reta_announcement
-	name = "RC Alert: RETA Granted"
+	name = "RETA Acil Durum Sistemi"
 	announcement_lines_map = list(
-		"Message" = "RETA activated %CALLER. %GRANTEE personnel now have temporary access to your areas."
+		"Message" = "RETA giriş izni verildi %CALLER. %GRANTEE personelleri geçici olarak departmanınıza erişim sağlayabilirler."
 	)
 
 	vars_and_tooltips_map = list(
@@ -619,7 +619,7 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/requests_console/auto_name, 30)
 	. = ..()
 	// If RETA disabled - we should be down
 	if(!CONFIG_GET(flag/reta_enabled))
-		announcement_lines_map["Message"] = "RETA system is disabled."
+		announcement_lines_map["Message"] = "RETA Acil Durum Sistemi devre dışı."
 		enabled = FALSE
 		modifiable = FALSE
 

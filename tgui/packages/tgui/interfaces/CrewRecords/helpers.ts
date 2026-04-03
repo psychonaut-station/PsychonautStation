@@ -1,6 +1,6 @@
 import { useBackend, useLocalState } from 'tgui/backend';
 
-import { CrewRecord, CrewRecordData } from './types';
+import type { CrewRecord, CrewRecordData } from './types';
 
 /** Splits a medical string on <br> into a string array */
 export const getQuirkStrings = (string: string) => {

@@ -21,7 +21,7 @@
 	overlay = image(icon, "noose_overlay")
 	overlay.layer = FLY_LAYER
 	add_overlay(overlay)
-	AddComponent(/datum/component/simple_rotation, ROTATION_IGNORE_ANCHORED)
+	AddElement(/datum/element/simple_rotation, ROTATION_IGNORE_ANCHORED)
 
 /obj/structure/noose/examine(mob/user)
 	. = ..()

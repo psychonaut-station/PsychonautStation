@@ -726,7 +726,7 @@
 	pixel_y = 1;
 	pixel_x = 18
 	},
-/obj/item/stack/medical/gauze{
+/obj/item/stack/medical/wrap/gauze{
 	pixel_x = -15;
 	pixel_y = 10
 	},
@@ -1250,7 +1250,7 @@
 /obj/machinery/door/airlock/security/glass{
 	name = "Temporary Holding Cell"
 	},
-/obj/effect/mapping_helpers/airlock/unres{
+/obj/effect/mapping_helpers/airlock/unres/delayed{
 	dir = 8
 	},
 /obj/effect/mapping_helpers/airlock/access/all/security/entrance,

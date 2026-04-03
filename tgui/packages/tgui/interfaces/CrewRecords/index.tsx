@@ -4,7 +4,7 @@ import { Box, Button, Icon, NoticeBox, Stack } from 'tgui-core/components';
 
 import { CrewRecordTabs } from './RecordTabs';
 import { CrewRecordView } from './RecordView';
-import { CrewRecordData } from './types';
+import type { CrewRecordData } from './types';
 
 export const CrewRecords = (props) => {
   const { data } = useBackend<CrewRecordData>();

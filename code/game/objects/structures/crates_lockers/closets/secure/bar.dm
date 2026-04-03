@@ -10,6 +10,7 @@
 	close_sound_volume = 50
 	door_anim_time = 0 // no animation
 	paint_jobs = null
+	impact_sound = SFX_BULLET_IMPACT_WOOD
 
 /obj/structure/closet/secure_closet/bar/PopulateContents()
 	..()

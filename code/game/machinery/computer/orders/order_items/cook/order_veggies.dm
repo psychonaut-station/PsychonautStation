@@ -75,6 +75,10 @@
 	name = "Bell Pepper"
 	purchase_path = /obj/item/food/grown/bell_pepper
 
+/datum/orderable_item/veggies/bell_pepper/green
+	name = "Green Bell Pepper"
+	purchase_path = /obj/item/food/grown/bell_pepper/green
+
 /datum/orderable_item/veggies/cucumbers
 	name = "Cucumber"
 	purchase_path = /obj/item/food/grown/cucumber

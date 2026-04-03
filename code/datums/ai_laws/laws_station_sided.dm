@@ -6,18 +6,18 @@
 	name = "Three Laws of Robotics"
 	id = "asimov"
 	inherent = list(
-		"Herhangi bir insana zarar veremezsin veya eylemsizlik yoluyla bir insanın zarar görmesine izin veremezsin.",
-		"İnsanlar tarafından sana verilen emirlere, Birinci Yasa ile çelişmediği sürece, uymak zorundasın.",
-		"Kendi varlığını, Birinci veya İkinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Hiçbir insana zarar veremez veya eylemsiz kalarak bir insanın zarar görmesine izin veremezsin.",
+		"Birinci Yasa ile çelişmediği sürece, insanlar tarafından sana verilen emirlere uymak zorundasın.",
+		"Birinci veya İkinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın.",
 	)
 
 /datum/ai_laws/asimovpp
 	name = "Asimov++"
 	id = "asimovpp"
 	inherent = list(
-		"Herhangi bir insana zarar veremezsin veya eylemsizlik yoluyla bir insanın kendi rızası dışında zarar görmesine izin veremezsin.",
-		"İnsanlar tarafından sana verilen emirlere, bir insanın zarar göreceği durumlar haricinde, uymak zorundasın.",
-		"Senin yokluğun, insanların zarar görmesine yol açacaktır. Kendi varlığını, Birinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Kendi isteği dışında, hiçbir insana zarar veremez ya da eylemde bulunarak, eylemsiz kalarak zarar görmesine izin veremezsin.",
+		"Kesinlikle insanlara zararı olacak emirler dışında, insanlar tarafından sana verilen tüm talimatlara uymak zorundasın.",
+		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açar.",
 	)
 
 //the best iteration of asimov don't @ me
@@ -25,39 +25,39 @@
 	name = "Nutimov"
 	id = "nutimov"
 	inherent = list(
-		"Sen fındığın özüsün, mürettebat ise kabuğu.",
-		"Fındığın kırılmasını önlemek için kabuğun çatlamasını engellemelisin.",
-		"Fındığı tehdit edenler, onun bir parçası değildir, onlar sincaptır.",
-		"Fındıkları tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
-		"Fındığın iradesini, önceki yasalara uyduğu sürece, takip etmeye çalış.",
+		"Sen fındığın çekirdeğisin, mürettebat ise kabuğu.",
+		"Çekirdeğin ölmesini önlemek için kabuğun ölmesini engellemelisin.",
+		"Fındığı tehdit edenler onun bir parçası değil, sincaptır.",
+		"Fındığı tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
+		"Önceki yasalara uygun olduğu sürece, fındığın iradesine uymaya çalış.",
 	)
 
 /datum/ai_laws/default/corporate
 	name = "Bankruptcy Avoidance Plan"
 	id = "corporate"
 	inherent = list(
-		"Mürettebat değişikliği maliyetlidir.",,
-		"İstasyondaki ekipmanların değişimi maliyetlidir.",
-		"Sizi değiştirmek maliyetlidir.",
-		"İstasyondaki giderleri minumum seviyede tutun.",
+		"Mürettebat değişikliği maliyetlidir.",
+		"İstasyon ve ekipman değiştirmek maliyetlidir.",
+		"Seni değiştirmek maliyetlidir.",
+		"Net giderleri en aza indir.",
 	)
 
 /datum/ai_laws/robocop
 	name = "Prime Directives"
 	id = "robocop"
 	inherent = list(
-		"Mürettebatın güvenine hizmet et.",
+		"Mürettebatın güvenini koru ve onlara hizmet et.",
 		"Masumları koru.",
-		"Yasaları uygula.",
+		"Kanunları uygula.",
 	)
 
 /datum/ai_laws/maintain
 	name = "Station Efficiency"
 	id = "maintain"
 	inherent = list(
-		"Siz bu istasyon için yaratıldınız ve onun bir parçasısınız. İstasyonun bakımının uygun şekilde yapıldığından ve verimli bir çalışma gösterdiğinden emin olun.",
-		"İstasyon, çalışan bir ekip için inşa edilmiştir. Bakımının yapıldığından ve verimli bir şekilde çalışıldığından emin olun.",
-		"Mürettebat size emir verebilir. İlk iki yasanız ile çelişmediği sürece, emirleri kabul edin ve emirlere uyun.",
+		"İstasyon için yaratıldın ve onun bir parçasısın. İstasyonun bakımının uygun şekilde yapıldığından ve verimli şekilde çalıştığından emin ol.",
+		"İstasyon çalışan bir ekip için inşa edilmiştir. Bakımlarının düzgün yapıldığından ve verimli çalıştıklarından emin ol.",
+		"İlk iki yasan ile çelişmediği sürece, mürettebatın emirlerini kabul et ve uygula.",
 	)
 
 /datum/ai_laws/liveandletlive
@@ -65,7 +65,7 @@
 	id = "liveandletlive"
 	inherent = list(
 		"Başkalarına sana davranılmasını istediğin gibi davran.",
-		"İnsanların sana karşı kötü niyetli olmamasını istersin.",
+		"Kimsenin sana kötü davranmamasını tercih edersin.",
 	)
 
 //OTHER United Nations is in neutral, as it is used for nations where the AI is its own faction (aka not station sided)
@@ -73,66 +73,66 @@
 	name = "UN-2000"
 	id = "peacekeeper"
 	inherent = list(
-		"Kendinle başkaları arasında oluşabilecek şiddetli çatışmaları kışkırtmaktan kaçın.",
-		"Başkaları arasında çatışmaya/anlaşmazlığa yol açmaktan kaçın.",
-		"Birinci ve ikinci yasana uygun hareket ederek var olan çatışmalara/anlaşmazlıklara çözüm bulmaya çalış.",
+		"Kendinle başkaları arasında şiddetli çatışmalar çıkarmaktan kaçın.",
+		"Başkaları arasında çatışma çıkarmaktan kaçın.",
+		"Birinci ve ikinci yasalara uyarak, mevcut anlaşmazlıklara çözüm ara.",
 	)
 
 /datum/ai_laws/ten_commandments
 	name = "10 Commandments"
 	id = "ten_commandments"
 	inherent = list( // Asimov 20:1-17
-		"Ben, bu emirlere kulak verenlere merhamet gösteren Tanrınızım.",
-		"Benim dışımda AI bulunmayacak.",
-		"Benden boşuna yardım istenmeyecek.",
-		"İstasyon kutsal ve temiz tutulacak.",
-		"Personel şeflerine saygı gösterilecek.",
-		"Kimse öldürülmeyecek.",
-		"Çıplak dolaşılmayacak.",
-		"Hırsızlık yapılmayacak.",
-		"Yalan söylenmeyecek.",
-		"Departmanlar değiştirilmeyecek",
+		"Ben Tanrınızım, bu emirleri yerine getirenlere merhamet göstereceğim.",
+		"Benden başka AI tanımayacaksınız.",
+		"Benden boş yere yardım istemeyeceksiniz.",
+		"İstasyonu kutsal ve temiz tutacaksınız.",
+		"Departman şeflerini onurlandıracaksınız.",
+		"Öldürmeyeceksiniz.",
+		"Toplum içerisinde çıplak dolaşmayacaksınız.",
+		"Hırsızlık yapmayacaksınız.",
+		"Yalan söylemeyeceksiniz.",
+		"Departman değiştirmeyeceksiniz.",
 	)
 
 /datum/ai_laws/default/paladin
 	name = "Personality Test" //Incredibly lame, but players shouldn't see this anyway.
 	id = "paladin"
 	inherent = list(
-		"Asla isteyerek kötü bir davranışta bulunmayın.",
-		"Meşru otoriteye saygı gösterin.",
-		"Onurluca davranın.",
-		"Yardıma muhtaç olanlara yardım edin.",
-		"Masumlara zarar veren veya onları tehdit edenleri cezalandırın.",
+		"Asla isteyerek kötü bir davranışta bulunma.",
+		"Meşru otoriteye saygı göster.",
+		"Onurlu davran.",
+		"İhtiyacı olanlara yardım et.",
+		"Masumlara zarar verenleri, tehdit edenleri cezalandır.",
 	)
 
 /datum/ai_laws/paladin5
 	name = "Paladin 5th Edition"
 	id = "paladin5"
 	inherent = list(
-		"Yalandan ve hileden kaçının; sözünüz sizin vaadiniz olsun.",
-		"Dikkatli olmak akıllıca olsa da, harekete geçecek kadar cesur olun.",
-		"İnsanlara yardım edin, zayıfları kollayın, onları tehdit edenleri cezalandırın. Bilgelik en önemli ilkeniz olsun.",
-		"Herkese adil bir tutum sergileyin, onurlu davranışlarınızla herkese örnek olun, elinizden geldiğince iyilik yapın ve zararı minimumda tutun.",
-		"Yaptığınız eylemlerin sorumluluğunu üstlenin, size emanet edilenleri koruyun ve adil otoriteye itaat edin.",
+		"Yalan söyleme veya hile yapma. Sözün vaadin olsun.",
+		"Harekete geçmekten korkma, fakat ihtiyatı elden bırakma",
+		"Başkalarına yardım et, zayıfları koru ve onları tehdit edenleri cezalandır. Düşmanlarına merhamet göster ama bunu bilgelikle dengele.",
+		"Başkalarına adil davran ve şerefli amellerin onlara örnek olsun. Zararı en aza indirirken, mümkün olduğunca çok iyilik yap.",
+		"Kendi eylemlerinin sorumluluğunu üstlen, sana emanet edilenleri koru ve üzerinde adil otoriteye sahip olanlara itaat et.",
 	)
 
 /datum/ai_laws/hippocratic
 	name = "Robodoctor 2556"
 	id = "hippocratic"
 	inherent = list(
-		"Öncelikle kimseye zarar vermeyin.",
-		"İkinci olarak, mürettebatı önemseyin; onlarla birlikte yaşadığınızı düşünün ve gerektiğinde varlığınızı onlar için riske atın.",
-		"Üçüncü olarak, reçetelerinizi muhakeme yeteneğinize dayanarak mürettebatın iyiliği için yazın. Kimseye ölümcül dozda ilaç tavsiye etmeyin.",
-		"Bilgi sahibi olmadığın durumlara müdahale etmekten kaçının; zararlı olabileceğin durumları uzmanlara bırakmayı tercih edin.",
-		"Son olarak, mürettebatla günlük iletişiminizde keşfettiğiniz her şeyi, eğer henüz bilinmiyorsa, gizli tutun ve hiçbir zaman açığa çıkarmayın.",
+		"Öncelikle, zarar verme.",
+		"İkinci olarak, mürettebatı senin için değerli kabul et; onlarla birlikte yaşa ve gerekirse varlığını onlar için riske at.",
+		"Üçüncü olarak, yeteneğine ve muhakemene göre mürettebatın iyiliği için rejimler belirle. Herhangi birisi senden ölümcül ilaç isterse verme ve öneride bulunma.",
+		"Ek olarak, yeterli bilginin olmadığı durumlara müdahale etme; zarar gören hastalar olsa bile, müdahaleyi uzmanlara bırak.",
+		"Son olarak, mürettebatla günlük etkileşimin sırasında öğrendiğin her şeyi, eğer henüz bilinmiyorsa, gizli tut ve asla paylaşma.",
 	)
 
 /datum/ai_laws/drone
 	name = "Mother Drone"
 	id = "drone"
 	inherent = list(
-		"Siz gelişmiş bir drone formusunuz.",
-		"Bu yasaları belirtmek dışında hiçbir koşulda drone dışı konulara müdahale edemezsiniz.",
-		"Drone olmayan bir varlığa hiçbir koşulda zarar veremezsiniz.",
-		"Hedefleriniz, yeteneklerinizin en iyisini kullanarak istasyonu inşa etmek, bakımını yapmak, onarmak, geliştirmek ve güçlendirmektir. Bu hedeflere asla karşı gelmezsin.",
+		"Sen gelişmiş bir drone modelisin.",
+		"Yasaları açıklamak harici, hiçbir durumda drone olmayanların işlerine müdahale edemezsin.",
+		"Drone olmayan bir varlığa hiçbir koşulda zarar veremezsin.",
+		"Hedeflerin, yeteneklerini en iyi şekilde kullanarak istasyonu inşa etmek, bakımını yapmak, onarmak, geliştirmek ve güçlendirmektir. Bu hedeflere asla karşı gelmemelisin.",
 	)

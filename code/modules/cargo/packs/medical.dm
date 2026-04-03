@@ -93,7 +93,7 @@
 					/obj/item/reagent_containers/cup/bottle/toxin,
 					/obj/item/reagent_containers/cup/beaker/large,
 					/obj/item/reagent_containers/applicator/pill/insulin,
-					/obj/item/stack/medical/gauze,
+					/obj/item/stack/medical/wrap/gauze,
 					/obj/item/storage/box/bandages,
 					/obj/item/storage/box/beakers,
 					/obj/item/storage/box/medigels,
@@ -176,7 +176,7 @@
 				)
 	crate_name = "virus crate"
 	crate_type = /obj/structure/closet/crate/secure/plasma
-	dangerous = TRUE
+	order_flags = ORDER_DANGEROUS
 
 /datum/supply_pack/medical/cmoturtlenecks
 	name = "Chief Medical Officer Turtlenecks"
@@ -201,7 +201,7 @@
 	cost = CARGO_CRATE_VALUE * 40
 	contains = list(/obj/item/organ/cyberimp/arm/toolkit/mantis = 2)
 	crate_name = "C.H.R.O.M.A.T.A. Mantis Blade implant crate"
-	contraband = TRUE
+	order_flags = ORDER_CONTRABAND
 
 /datum/supply_pack/medical/arm_implants/mantis_shield
 	name = "S.A.Y.A Arm Defense Implant Set"
@@ -256,3 +256,14 @@
 	cost = CARGO_CRATE_VALUE * 3
 	contains = list(/obj/item/reagent_containers/cup/bottle/inversing_buffer)
 	crate_name = "chiral inversing buffer crate"
+
+/datum/supply_pack/medical/handheld_crew_monitor
+	name = "Handheld Crew Monitor Crate"
+	desc = "A crate containing three handheld crew monitors"
+	cost = (CARGO_CRATE_VALUE * /obj/item/sensor_device::custom_premium_price * 3 * 0.8) / 280 // Bulk discount .8X base /tg/ vending machine value with the CARGO_CRATE_VALUE modifier
+	contains = list(
+		/obj/item/sensor_device,
+		/obj/item/sensor_device,
+		/obj/item/sensor_device,
+	)
+	crate_name = "handheld crew monitor crate"

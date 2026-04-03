@@ -34,6 +34,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/count_only = TRUE //Count by name only or full info
 
 		mob_data["name"] = M.name
+		mob_data["real_name"] = M.real_name
 		if(M.mind)
 			count_only = FALSE
 			mob_data["ckey"] = M.mind.key

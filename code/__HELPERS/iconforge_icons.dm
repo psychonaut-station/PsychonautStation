@@ -211,7 +211,6 @@
 	)
 	#undef PROCESS_OVERLAYS_OR_UNDERLAYS
 
-// Iconforge needs fixed direction for generation, you cant give EAST direction to which icon have 1 dir
 /proc/get_valid_direction(icon_file, icon_state, direction)
 	var/static/alist/direction_cache = alist()
 	var/hash = md5("[icon_file]&[icon_state]")

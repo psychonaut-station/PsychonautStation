@@ -1,3 +1,11 @@
+#define iconforge_rgb2hex(part, text) var/r_##part = hex2num(copytext(text, 2, 4)) / 255; \
+var/g_##part = hex2num(copytext(text, 4, 6)) / 255; \
+var/b_##part = hex2num(copytext(text, 6, 8)) / 255
+#define iconforge_rgba2hex(part, text) var/r_##part = hex2num(copytext(text, 2, 4)) / 255; \
+var/g_##part = hex2num(copytext(text, 4, 6)) / 255; \
+var/b_##part = hex2num(copytext(text, 6, 8)) / 255; \
+var/a_##part = hex2num(copytext(text, 8, 10)) / 255
+
 /proc/iconforge_get_spritesheet_data(image/appearance, deficon, defstate, defblend, defdir = ALL, start = TRUE)
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
 		for (var/i in 1 to process.len) { \
@@ -249,88 +257,73 @@
 	var/list/color_args = color
 
 	var/num_args = length(color_args)
-	var/rr = 0
-	var/rg = 0
-	var/rb = 0
-	var/ra = 0
-	var/gr = 0
-	var/gg = 0
-	var/gb = 0
-	var/ga = 0
-	var/br = 0
-	var/bg = 0
-	var/bb = 0
-	var/ba = 0
-	var/ar = 0
-	var/ag = 0
-	var/ab = 0
-	var/aa = 0
-	var/r0 = 0
-	var/g0 = 0
-	var/b0 = 0
-	var/a0 = 0
+	var/r_r = 0
+	var/r_g = 0
+	var/r_b = 0
+	var/r_a = 0
+	var/g_r = 0
+	var/g_g = 0
+	var/g_b = 0
+	var/g_a = 0
+	var/b_r = 0
+	var/b_g = 0
+	var/b_b = 0
+	var/b_a = 0
+	var/a_r = 0
+	var/a_g = 0
+	var/a_b = 0
+	var/a_a = 0
+	var/r_0 = 0
+	var/g_0 = 0
+	var/b_0 = 0
+	var/a_0 = 0
 
 	if(num_args <= 20 || num_args >= 16)
-		rr = color_args[1]
-		rg = color_args[2]
-		rb = color_args[3]
-		ra = color_args[4]
-		gr = color_args[5]
-		gg = color_args[6]
-		gb = color_args[7]
-		ga = color_args[8]
-		br = color_args[9]
-		bg = color_args[10]
-		bb = color_args[11]
-		ba = color_args[12]
-		ar = color_args[13]
-		ag = color_args[14]
-		ab = color_args[15]
-		aa = color_args[16]
-		r0 = color_args[17] || 0
-		g0 = color_args[18] || 0
-		b0 = color_args[19] || 0
-		a0 = color_args[20] || 0
+		r_r = color_args[1]
+		r_g = color_args[2]
+		r_b = color_args[3]
+		r_a = color_args[4]
+		g_r = color_args[5]
+		g_g = color_args[6]
+		g_b = color_args[7]
+		g_a = color_args[8]
+		b_r = color_args[9]
+		b_g = color_args[10]
+		b_b = color_args[11]
+		b_a = color_args[12]
+		a_r = color_args[13]
+		a_g = color_args[14]
+		a_b = color_args[15]
+		a_a = color_args[16]
+		r_0 = color_args[17] || 0
+		g_0 = color_args[18] || 0
+		b_0 = color_args[19] || 0
+		a_0 = color_args[20] || 0
 	else if(num_args <= 12 || num_args >= 9)
 		// skip ra, ga, ba, ar, ag, ab, aa, a0
-		rr = color_args[1]
-		rg = color_args[2]
-		rb = color_args[3]
-		gr = color_args[4]
-		gg = color_args[5]
-		gb = color_args[6]
-		br = color_args[7]
-		bg = color_args[8]
-		bb = color_args[9]
-		r0 = color_args[10]
-		g0 = color_args[11]
-		b0 = color_args[12]
+		r_r = color_args[1]
+		r_g = color_args[2]
+		r_b = color_args[3]
+		g_r = color_args[4]
+		g_g = color_args[5]
+		g_b = color_args[6]
+		b_r = color_args[7]
+		b_g = color_args[8]
+		b_b = color_args[9]
+		r_0 = color_args[10]
+		g_0 = color_args[11]
+		b_0 = color_args[12]
 	else if(num_args == 5)
 		var/r_rgba = color_args[1]
 		var/g_rgba = color_args[2]
 		var/b_rgba = color_args[3]
 		var/a_rgba = color_args[4]
 		var/rgba0 = color_args[5] || "#00000000"
-		rr = hex2num(copytext(r_rgba, 2, 4)) / 255
-		rg = hex2num(copytext(r_rgba, 4, 6)) / 255
-		rb = hex2num(copytext(r_rgba, 6, 8)) / 255
-		ra = hex2num(copytext(r_rgba, 8, 10)) / 255
-		gr = hex2num(copytext(g_rgba, 2, 4)) / 255
-		gg = hex2num(copytext(g_rgba, 4, 6)) / 255
-		gb = hex2num(copytext(g_rgba, 6, 8)) / 255
-		ga = hex2num(copytext(g_rgba, 8, 10)) / 255
-		br = hex2num(copytext(b_rgba, 2, 4)) / 255
-		bg = hex2num(copytext(b_rgba, 4, 6)) / 255
-		bb = hex2num(copytext(b_rgba, 6, 8)) / 255
-		ba = hex2num(copytext(b_rgba, 8, 10)) / 255
-		ar = hex2num(copytext(a_rgba, 2, 4)) / 255
-		ag = hex2num(copytext(a_rgba, 4, 6)) / 255
-		ab = hex2num(copytext(a_rgba, 6, 8)) / 255
-		aa = hex2num(copytext(a_rgba, 8, 10)) / 255
-		r0 = hex2num(copytext(rgba0, 2, 4)) / 255
-		b0 = hex2num(copytext(rgba0, 4, 6)) / 255
-		g0 = hex2num(copytext(rgba0, 6, 8)) / 255
-		a0 = hex2num(copytext(rgba0, 8, 10)) / 255
+		iconforge_rgba2hex(r, r_rgba)
+		iconforge_rgba2hex(g, g_rgba)
+		iconforge_rgba2hex(b, b_rgba)
+		iconforge_rgba2hex(a, a_rgba)
+		iconforge_rgba2hex(z, rgba0)
 	else if(num_args == 4)
 		// is there alpha in the hex?
 		if(length(color_args[3]) == 7 || length(color_args[3]) == 4)
@@ -338,67 +331,39 @@
 			var/g_rgb = color_args[2]
 			var/b_rgb = color_args[3]
 			var/rgb0 = color_args[4] || rgb(0,0,0)
-			rr = hex2num(copytext(r_rgb, 2, 4)) / 255
-			rg = hex2num(copytext(r_rgb, 4, 6)) / 255
-			rb = hex2num(copytext(r_rgb, 6, 8)) / 255
-			gr = hex2num(copytext(g_rgb, 2, 4)) / 255
-			gg = hex2num(copytext(g_rgb, 4, 6)) / 255
-			gb = hex2num(copytext(g_rgb, 6, 8)) / 255
-			br = hex2num(copytext(b_rgb, 2, 4)) / 255
-			bg = hex2num(copytext(b_rgb, 4, 6)) / 255
-			bb = hex2num(copytext(b_rgb, 6, 8)) / 255
-			r0 = hex2num(copytext(rgb0, 2, 4)) / 255
-			b0 = hex2num(copytext(rgb0, 4, 6)) / 255
-			g0 = hex2num(copytext(rgb0, 6, 8)) / 255
+			iconforge_rgb2hex(r, r_rgb)
+			iconforge_rgb2hex(g, g_rgb)
+			iconforge_rgb2hex(b, b_rgb)
+			iconforge_rgb2hex(z, rgb0)
 		else
 			var/r_rgba = color_args[1]
 			var/g_rgba = color_args[2]
 			var/b_rgba = color_args[3]
 			var/a_rgba = color_args[4]
 			var/rgba0 = "#00000000"
-			rr = hex2num(copytext(r_rgba, 2, 4)) / 255
-			rg = hex2num(copytext(r_rgba, 4, 6)) / 255
-			rb = hex2num(copytext(r_rgba, 6, 8)) / 255
-			ra = hex2num(copytext(r_rgba, 8, 10)) / 255
-			gr = hex2num(copytext(g_rgba, 2, 4)) / 255
-			gg = hex2num(copytext(g_rgba, 4, 6)) / 255
-			gb = hex2num(copytext(g_rgba, 6, 8)) / 255
-			ga = hex2num(copytext(g_rgba, 8, 10)) / 255
-			br = hex2num(copytext(b_rgba, 2, 4)) / 255
-			bg = hex2num(copytext(b_rgba, 4, 6)) / 255
-			bb = hex2num(copytext(b_rgba, 6, 8)) / 255
-			ba = hex2num(copytext(b_rgba, 8, 10)) / 255
-			ar = hex2num(copytext(a_rgba, 2, 4)) / 255
-			ag = hex2num(copytext(a_rgba, 4, 6)) / 255
-			ab = hex2num(copytext(a_rgba, 6, 8)) / 255
-			aa = hex2num(copytext(a_rgba, 8, 10)) / 255
-			r0 = hex2num(copytext(rgba0, 2, 4)) / 255
-			b0 = hex2num(copytext(rgba0, 4, 6)) / 255
-			g0 = hex2num(copytext(rgba0, 6, 8)) / 255
-			a0 = hex2num(copytext(rgba0, 8, 10)) / 255
+			iconforge_rgba2hex(r, r_rgba)
+			iconforge_rgba2hex(g, g_rgba)
+			iconforge_rgba2hex(b, b_rgba)
+			iconforge_rgba2hex(a, a_rgba)
+			iconforge_rgba2hex(z, rgba0)
 	else if(num_args == 3)
 		var/r_rgb = color_args[1]
 		var/g_rgb = color_args[2]
 		var/b_rgb = color_args[3]
 		var/rgb0 = rgb(0,0,0)
-		rr = hex2num(copytext(r_rgb, 2, 4)) / 255
-		rg = hex2num(copytext(r_rgb, 4, 6)) / 255
-		rb = hex2num(copytext(r_rgb, 6, 8)) / 255
-		gr = hex2num(copytext(g_rgb, 2, 4)) / 255
-		gg = hex2num(copytext(g_rgb, 4, 6)) / 255
-		gb = hex2num(copytext(g_rgb, 6, 8)) / 255
-		br = hex2num(copytext(b_rgb, 2, 4)) / 255
-		bg = hex2num(copytext(b_rgb, 4, 6)) / 255
-		bb = hex2num(copytext(b_rgb, 6, 8)) / 255
-		r0 = hex2num(copytext(rgb0, 2, 4)) / 255
-		b0 = hex2num(copytext(rgb0, 4, 6)) / 255
-		g0 = hex2num(copytext(rgb0, 6, 8)) / 255
+		iconforge_rgb2hex(r, r_rgb)
+		iconforge_rgb2hex(g, g_rgb)
+		iconforge_rgb2hex(b, b_rgb)
+		iconforge_rgb2hex(z, rgb0)
 
 	return list(
 		"type" = RUSTG_ICONFORGE_MAP_COLORS,
-		"rr" = rr, "rg" = rg, "rb" = rb, "ra" = ra,
-		"gr" = gr, "gg" = gg, "gb" = gb, "ga" = ga,
-		"br" = br, "bg" = bg, "bb" = bb, "ba" = ba,
-		"ar" = ar, "ag" = ag, "ab" = ab, "aa" = aa,
-		"r0" = r0, "g0" = g0, "b0" = b0, "a0" = a0,
+		"rr" = r_r, "rg" = r_g, "rb" = r_b, "ra" = r_a,
+		"gr" = g_r, "gg" = g_g, "gb" = g_b, "ga" = g_a,
+		"br" = b_r, "bg" = b_g, "bb" = b_b, "ba" = b_a,
+		"ar" = a_r, "ag" = a_g, "ab" = a_b, "aa" = a_a,
+		"r0" = r_0, "g0" = g_0, "b0" = b_0, "a0" = a_0,
 	)
+
+#undef iconforge_rgb2hex
+#undef iconforge_rgba2hex

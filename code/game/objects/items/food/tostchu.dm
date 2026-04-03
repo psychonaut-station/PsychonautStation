@@ -4,7 +4,7 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "bread"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4,
+		/datum/reagent/consumable/nutriment = 6,
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("bread" = 2)
@@ -24,8 +24,8 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "half_bread"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 2,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("bread" = 2)
 	foodtypes = GRAIN
@@ -41,9 +41,8 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "ungrilled_sujuk"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 6,
+		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/fat = 2,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("meat" = 2, "spice" = 1, "garlic" = 1)
 	foodtypes = MEAT | RAW
@@ -65,7 +64,7 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "grilled_sujuk"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 6,
+		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/fat = 2,
 	)
 	tastes = list("meat" = 2, "spice" = 1, "smoke" = 1)
@@ -82,8 +81,8 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "ungrilled_sujuk_slice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 1,
-		/datum/reagent/consumable/nutriment/fat = 1,
+		/datum/reagent/consumable/nutriment/protein = 0.67,
+		/datum/reagent/consumable/nutriment/fat = 0.33,
 	)
 	tastes = list("meat" = 1, "garlic" = 1)
 	foodtypes = MEAT | RAW
@@ -99,8 +98,8 @@
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "grilled_sujuk_slice"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment/protein = 1,
-		/datum/reagent/consumable/nutriment/fat = 1,
+		/datum/reagent/consumable/nutriment/protein = 0.67,
+		/datum/reagent/consumable/nutriment/fat = 0.33,
 	)
 	tastes = list("meat" = 1, "spice" = 1, "smoke" = 1)
 	foodtypes = MEAT
@@ -120,8 +119,9 @@
 	desc = "Bread packed with cheese, waiting to be pressed."
 	icon_state = "ungrilled_cheese_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment = 7,
+		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("cheese" = 2, "bread" = 1)
 	foodtypes = GRAIN | DAIRY | RAW
@@ -135,7 +135,8 @@
 	icon_state = "grilled_cheese_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/nutriment/vitamin = 2,
+		/datum/reagent/consumable/nutriment/protein = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("cheese" = 2, "bread" = 2, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
@@ -145,8 +146,9 @@
 	desc = "A half portion of cheese toast ready to grill."
 	icon_state = "ungrilled_halfbread_cheese_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment = 3.5,
+		/datum/reagent/consumable/nutriment/protein = 1.5,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("cheese" = 2, "bread" = 1)
 	foodtypes = GRAIN | DAIRY | RAW
@@ -159,8 +161,9 @@
 	desc = "A half-portion of grilled cheese toast."
 	icon_state = "grilled_halfbread_cheese_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4,
-		/datum/reagent/consumable/nutriment/vitamin = 1,
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 2.5,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("cheese" = 2, "bread" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
@@ -170,8 +173,9 @@
 	desc = "Bread stuffed with sujuk slices that still needs grilling."
 	icon_state = "ungrilled_sujuk_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment = 7,
+		/datum/reagent/consumable/nutriment/protein = 5,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("meat" = 2, "bread" = 1, "spice" = 1)
 	foodtypes = GRAIN | MEAT | RAW
@@ -185,7 +189,8 @@
 	icon_state = "grilled_sujuk_toast"
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 6,
-		/datum/reagent/consumable/nutriment/protein = 3,
+		/datum/reagent/consumable/nutriment/protein = 7,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("meat" = 2, "bread" = 2, "spice" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | MEAT
@@ -195,8 +200,9 @@
 	desc = "Half a sujuk toast, ready to go into the press."
 	icon_state = "ungrilled_halfbread_sujuk_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4,
-		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment = 3.5,
+		/datum/reagent/consumable/nutriment/protein = 2.5,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("meat" = 1, "bread" = 1, "spice" = 1)
 	foodtypes = GRAIN | MEAT | RAW
@@ -209,8 +215,9 @@
 	desc = "A half-portion sujuk toast hot from the press."
 	icon_state = "grilled_halfbread_sujuk_toast"
 	food_reagents = list(
-		/datum/reagent/consumable/nutriment = 4,
-		/datum/reagent/consumable/nutriment/protein = 2,
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/protein = 3.5,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("meat" = 1, "bread" = 2, "spice" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | MEAT

@@ -1,10 +1,10 @@
-#define iconforge_rgb2hex(part, text) var/r_##part = hex2num(copytext(text, 2, 4)) / 255; \
-var/g_##part = hex2num(copytext(text, 4, 6)) / 255; \
-var/b_##part = hex2num(copytext(text, 6, 8)) / 255
-#define iconforge_rgba2hex(part, text) var/r_##part = hex2num(copytext(text, 2, 4)) / 255; \
-var/g_##part = hex2num(copytext(text, 4, 6)) / 255; \
-var/b_##part = hex2num(copytext(text, 6, 8)) / 255; \
-var/a_##part = hex2num(copytext(text, 8, 10)) / 255
+#define iconforge_rgb2hex(part, text) r_##part = hex2num(copytext(text, 2, 4)) / 255; \
+g_##part = hex2num(copytext(text, 4, 6)) / 255; \
+b_##part = hex2num(copytext(text, 6, 8)) / 255
+#define iconforge_rgba2hex(part, text) r_##part = hex2num(copytext(text, 2, 4)) / 255; \
+g_##part = hex2num(copytext(text, 4, 6)) / 255; \
+b_##part = hex2num(copytext(text, 6, 8)) / 255; \
+a_##part = hex2num(copytext(text, 8, 10)) / 255
 
 /proc/iconforge_get_spritesheet_data(image/appearance, deficon, defstate, defblend, defdir = ALL, start = TRUE)
 	#define PROCESS_OVERLAYS_OR_UNDERLAYS(flat, process, base_layer) \
@@ -273,10 +273,10 @@ var/a_##part = hex2num(copytext(text, 8, 10)) / 255
 	var/a_g = 0
 	var/a_b = 0
 	var/a_a = 0
-	var/r_0 = 0
-	var/g_0 = 0
-	var/b_0 = 0
-	var/a_0 = 0
+	var/r_z = 0
+	var/g_z = 0
+	var/b_z = 0
+	var/a_z = 0
 
 	if(num_args <= 20 || num_args >= 16)
 		r_r = color_args[1]
@@ -295,10 +295,10 @@ var/a_##part = hex2num(copytext(text, 8, 10)) / 255
 		a_g = color_args[14]
 		a_b = color_args[15]
 		a_a = color_args[16]
-		r_0 = color_args[17] || 0
-		g_0 = color_args[18] || 0
-		b_0 = color_args[19] || 0
-		a_0 = color_args[20] || 0
+		r_z = color_args[17] || 0
+		g_z = color_args[18] || 0
+		b_z = color_args[19] || 0
+		a_z = color_args[20] || 0
 	else if(num_args <= 12 || num_args >= 9)
 		// skip ra, ga, ba, ar, ag, ab, aa, a0
 		r_r = color_args[1]
@@ -310,9 +310,9 @@ var/a_##part = hex2num(copytext(text, 8, 10)) / 255
 		b_r = color_args[7]
 		b_g = color_args[8]
 		b_b = color_args[9]
-		r_0 = color_args[10]
-		g_0 = color_args[11]
-		b_0 = color_args[12]
+		r_z = color_args[10]
+		g_z = color_args[11]
+		b_z = color_args[12]
 	else if(num_args == 5)
 		var/r_rgba = color_args[1]
 		var/g_rgba = color_args[2]
@@ -362,7 +362,7 @@ var/a_##part = hex2num(copytext(text, 8, 10)) / 255
 		"gr" = g_r, "gg" = g_g, "gb" = g_b, "ga" = g_a,
 		"br" = b_r, "bg" = b_g, "bb" = b_b, "ba" = b_a,
 		"ar" = a_r, "ag" = a_g, "ab" = a_b, "aa" = a_a,
-		"r0" = r_0, "g0" = g_0, "b0" = b_0, "a0" = a_0,
+		"r0" = r_z, "g0" = g_z, "b0" = b_z, "a0" = a_z,
 	)
 
 #undef iconforge_rgb2hex

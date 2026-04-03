@@ -28,31 +28,19 @@
 	anchored_tabletop_offset = 6
 	anchored = FALSE
 	pixel_y = 1
-	/// Things that are being pressed right now.
 	var/list/toasting_objects = list()
-	/// Compatibility mirror for existing visuals.
 	var/on = FALSE
 	/// How many toast slots fit in the press?
 	var/max_items = 2
-	/// Particle effect while cooking.
 	var/particles/cooking_particles
-	/// Overlay key to signal done toast.
 	var/mutable_appearance/done_overlay
-	/// Explicit machine state for all logic decisions.
 	var/toast_state = TOAST_IDLE
-	/// Whether the lid is currently open.
 	var/lid_open = FALSE
-	/// Prevents re-entrant state changes.
 	var/state_transition_in_progress = FALSE
-	/// Same-tick and double-click interaction guard.
 	var/next_interaction_time = 0
-	/// Persistent running sound object for the active toast loop.
 	var/sound/active_running_sound
-	/// Machine-owned loop channel for this instance only.
 	var/current_toast_loop_channel
-	/// Hearers currently receiving the running sound on the owned channel.
 	var/list/current_toast_loop_listeners = list()
-	/// Hearers waiting to regain a client before the running loop can resume for them.
 	var/list/current_toast_pending_login_listeners = list()
 
 /obj/machinery/toast_machine/Initialize(mapload)

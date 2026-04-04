@@ -358,10 +358,10 @@ a_##part = hex2num(copytext(text, 8, 10)) / 255
 
 	return list(
 		"type" = RUSTG_ICONFORGE_MAP_COLORS,
-		"rr" = r_r, "rg" = r_g, "rb" = r_b, "ra" = r_a,
-		"gr" = g_r, "gg" = g_g, "gb" = g_b, "ga" = g_a,
-		"br" = b_r, "bg" = b_g, "bb" = b_b, "ba" = b_a,
-		"ar" = a_r, "ag" = a_g, "ab" = a_b, "aa" = a_a,
+		"rr" = r_r, "rg" = g_r, "rb" = b_r, "ra" = a_r,
+		"gr" = r_g, "gg" = g_g, "gb" = b_g, "ga" = a_g,
+		"br" = r_b, "bg" = g_b, "bb" = b_b, "ba" = a_b,
+		"ar" = r_a, "ag" = g_a, "ab" = b_a, "aa" = a_a,
 		"r0" = r_z, "g0" = g_z, "b0" = b_z, "a0" = a_z,
 	)
 

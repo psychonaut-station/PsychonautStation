@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(credits)
 	name = "Roundend Credits"
-	flags = SS_NO_FIRE
+	ss_flags = SS_NO_FIRE
 	init_stage = INITSTAGE_LAST
 
 	var/list/disclaimers = list()

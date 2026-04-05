@@ -1,6 +1,6 @@
 SUBSYSTEM_DEF(character_icons)
 	name = "Character Icons"
-	flags = SS_NO_INIT
+	ss_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_CHARACTER_ICONS
 	wait = 10 MINUTES
 

@@ -238,19 +238,23 @@ GLOBAL_VAR(restart_counter)
 	if(!override_dir)
 		var/realtime = world.realtime
 		var/texttime = time2text(realtime, "YYYY/MM/DD", NO_TIMEZONE)
+		GLOB.character_log_directory = "data/character_logs/rounds/[texttime]/round-"
 		GLOB.log_directory = "data/logs/[texttime]/round-"
 		GLOB.picture_logging_prefix = "L_[time2text(realtime, "YYYYMMDD", NO_TIMEZONE)]_"
 		GLOB.picture_log_directory = "data/picture_logs/[texttime]/round-"
 		if(GLOB.round_id)
+			GLOB.character_log_directory += "[GLOB.round_id]"
 			GLOB.log_directory += "[GLOB.round_id]"
 			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
 			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
 			var/timestamp = replacetext(time_stamp(), ":", ".")
+			GLOB.character_log_directory += "[timestamp]"
 			GLOB.log_directory += "[timestamp]"
 			GLOB.picture_log_directory += "[timestamp]"
 			GLOB.picture_logging_prefix += "T_[timestamp]_"
 	else
+		GLOB.character_log_directory = "data/character_logs/rounds/[override_dir]"
 		GLOB.log_directory = "data/logs/[override_dir]"
 		GLOB.picture_logging_prefix = "O_[override_dir]_"
 		GLOB.picture_log_directory = "data/picture_logs/[override_dir]"

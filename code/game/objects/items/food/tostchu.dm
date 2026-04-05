@@ -74,6 +74,9 @@
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 
+/obj/item/food/toast_sujuk/grilled/make_grillable()
+	return
+
 /obj/item/food/toast_sujuk/grilled/make_processable()
 	AddElement(/datum/element/processable, TOOL_KNIFE, /obj/item/food/toast_sujuk/slice/grilled, 6, 2 SECONDS, table_required = TRUE, screentip_verb = "Slice", sound_to_play = SFX_KNIFE_SLICE)
 
@@ -109,6 +112,9 @@
 	foodtypes = MEAT
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
+
+/obj/item/food/toast_sujuk/slice/grilled/make_grillable()
+	return
 
 /obj/item/food/toast
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'

@@ -1,6 +1,6 @@
 /datum/action/item_action/bodycam_toggle
 	name = "Toggle Bodycam"
-	button_icon = 'icons/obj/clothing/bodycam_accessories.dmi'
+	button_icon = 'icons/psychonaut/obj/clothing/bodycam_accessories.dmi'
 	button_icon_state = "bodycamera"
 	desc = "Turn your bodycam on or off."
 
@@ -8,8 +8,8 @@
 /obj/item/clothing/accessory/bodycam
 	name = "bodycam"
 	desc = "A compact body camera linked to the station security network. It only transmits while someone is actively viewing it."
-	icon = 'icons/obj/clothing/bodycam_accessories.dmi'
-	worn_icon = 'icons/mob/clothing/bodycam_accessories.dmi'
+	icon = 'icons/psychonaut/obj/clothing/bodycam_accessories.dmi'
+	worn_icon = 'icons/psychonaut/mob/clothing/bodycam_accessories.dmi'
 	icon_state = "bodycamera"
 	attachment_slot = CHEST
 	var/broken = FALSE

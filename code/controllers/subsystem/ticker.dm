@@ -4,7 +4,7 @@
 SUBSYSTEM_DEF(ticker)
 	name = "Ticker"
 	priority = FIRE_PRIORITY_TICKER
-	flags = SS_KEEP_TIMING
+	ss_flags = SS_KEEP_TIMING
 	runlevels = RUNLEVEL_LOBBY | RUNLEVEL_SETUP | RUNLEVEL_GAME | RUNLEVEL_POSTGAME
 
 	/// state of current round (used by process()) Use the defines GAME_STATE_* !
@@ -295,6 +295,8 @@ SUBSYSTEM_DEF(ticker)
 
 	transfer_characters() //transfer keys to the new mobs
 
+	SScharacter_icons.handle_roundstart()
+
 	for(var/I in round_start_events)
 		var/datum/callback/cb = I
 		cb.InvokeAsync()
@@ -582,6 +584,7 @@ SUBSYSTEM_DEF(ticker)
 
 		if(ishuman(new_player_living))
 			SEND_SIGNAL(new_player_living, COMSIG_HUMAN_CHARACTER_SETUP_FINISHED)
+		INVOKE_ASYNC(new_player_living, TYPE_PROC_REF(/mob/living, save_character_icon))
 		CHECK_TICK
 
 	if(captainless)

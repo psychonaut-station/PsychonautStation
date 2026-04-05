@@ -44,6 +44,10 @@ DECLARE_LOG_NAMED(test_log, "tests", START_LOG)
 DECLARE_LOG_NAMED(reta_log, "reta", START_LOG)
 
 
+/// Character logging
+GLOBAL_VAR(character_log_directory)
+GLOBAL_PROTECT(character_log_directory)
+
 /// Picture logging
 GLOBAL_VAR(picture_log_directory)
 GLOBAL_PROTECT(picture_log_directory)

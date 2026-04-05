@@ -40,6 +40,7 @@
 	desc = "A garlicky cured sausage that tastes best hot off the grill."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "ungrilled_sujuk"
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 2.65)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/fat = 2,
@@ -63,6 +64,7 @@
 	desc = "A sujuk sausage, sizzling and crispy."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "grilled_sujuk"
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 2.65)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 4,
 		/datum/reagent/consumable/nutriment/fat = 2,
@@ -80,6 +82,7 @@
 	desc = "A thick slice of raw sujuk."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "ungrilled_sujuk_slice"
+	custom_materials = list(/datum/material/meat = (SHEET_MATERIAL_AMOUNT * 2.65) / 6)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 0.67,
 		/datum/reagent/consumable/nutriment/fat = 0.33,
@@ -97,6 +100,7 @@
 	desc = "A sizzling slice of sujuk."
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	icon_state = "grilled_sujuk_slice"
+	custom_materials = list(/datum/material/meat = (SHEET_MATERIAL_AMOUNT * 2.65) / 6)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment/protein = 0.67,
 		/datum/reagent/consumable/nutriment/fat = 0.33,

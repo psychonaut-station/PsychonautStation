@@ -410,3 +410,13 @@
 
 /obj/item/crowbar/mechremoval/proc/extra_checks(obj/vehicle/sealed/mecha/mech, mech_dir, obj/item/mecha_parts/mecha_equipment/sleeper/mech_sleeper)
 	return HAS_TRAIT(src, TRAIT_WIELDED) && (LAZYLEN(mech.occupants) || mech_sleeper?.patient) && (mech.dir == mech_dir)
+
+// Admin Crowbar, for adminbus use only. It's a crowbar, but it's also a super crowbar.
+/obj/item/crowbar/silver
+	name = "silver crowbar"
+	desc = "A crowbar forged from silver. It looks sharp and sturdy, but it's still just a crowbar."
+	icon = 'icons/psychonaut/obj/tools.dmi'
+	icon_state = "crowbar_silver"
+	custom_materials = list(/datum/material/silver=SMALL_MATERIAL_AMOUNT*0.7)
+	force = 10
+	toolspeed = 1.5

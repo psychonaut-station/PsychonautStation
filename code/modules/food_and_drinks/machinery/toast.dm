@@ -75,7 +75,7 @@
 	return .
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
-	return ..() || (lid_open && toast_state != TOAST_RUNNING && contained in toasting_objects)
+	return ..() || (lid_open && toast_state != TOAST_RUNNING && (contained in toasting_objects))
 
 /obj/machinery/toast_machine/proc/on_expose_reagent(atom/parent_atom, datum/reagent/exposing_reagent, reac_volume, methods)
 	SIGNAL_HANDLER
@@ -492,7 +492,7 @@
 		hearer.stop_sound_channel(current_toast_loop_channel)
 
 /obj/machinery/toast_machine/proc/register_pending_running_sound_listener(mob/hearer)
-	if(QDELETED(hearer) || hearer in current_toast_pending_login_listeners)
+	if(QDELETED(hearer) || (hearer in current_toast_pending_login_listeners))
 		return
 	current_toast_pending_login_listeners += hearer
 	RegisterSignal(hearer, COMSIG_QDELETING, PROC_REF(running_sound_listener_deleted))

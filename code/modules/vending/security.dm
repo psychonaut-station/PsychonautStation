@@ -14,6 +14,7 @@
 		/obj/item/food/donut/plain = 12,
 		/obj/item/storage/box/evidence = 6,
 		/obj/item/flashlight/seclite = 4,
+		/obj/item/clothing/accessory/bodycam = 4,
 		/obj/item/restraints/legcuffs/bola/energy = 7,
 		/obj/item/clothing/gloves/tackler = 5,
 		/obj/item/holosign_creator/security = 2,

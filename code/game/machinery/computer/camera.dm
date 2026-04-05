@@ -111,6 +111,15 @@
 
 		return TRUE
 
+/obj/machinery/computer/security/proc/on_camera_disabled(obj/machinery/camera/camera)
+	if(active_camera != camera)
+		return
+	active_camera.on_stop_watching(src)
+	active_camera = null
+	last_camera_turf = null
+	update_active_camera_screen()
+	SStgui.update_uis(src)
+
 /obj/machinery/computer/security/proc/update_active_camera_screen()
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())

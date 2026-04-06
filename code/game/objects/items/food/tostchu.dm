@@ -201,6 +201,7 @@
 	name = "raw sujuk toast"
 	desc = "Bread stuffed with sujuk slices that still needs grilling."
 	icon_state = "ungrilled_sujuk_toast"
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 1.75)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 7,
 		/datum/reagent/consumable/nutriment/protein = 5,
@@ -231,6 +232,7 @@
 	name = "raw half sujuk toast"
 	desc = "Half a sujuk toast, ready to go into the press."
 	icon_state = "ungrilled_halfbread_sujuk_toast"
+	custom_materials = list(/datum/material/meat = SHEET_MATERIAL_AMOUNT * 0.88)
 	food_reagents = list(
 		/datum/reagent/consumable/nutriment = 3.5,
 		/datum/reagent/consumable/nutriment/protein = 2.5,

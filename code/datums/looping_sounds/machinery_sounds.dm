@@ -76,6 +76,19 @@
 	volume = 100
 	falloff_exponent = 4
 
+/datum/looping_sound/toaster
+	start_sound = 'sound/machines/toast/toast_machine_closing.ogg'
+	start_length = 0.5 SECONDS
+	mid_sounds = list('sound/machines/toast/toast_machine_running.ogg')
+	mid_length = 18
+	end_sound = 'sound/machines/toast/toast_machine_opening.ogg'
+	volume = 75
+	start_volume = 50
+	end_volume = 50
+	extra_range = -8
+	falloff_distance = 1
+	falloff_exponent = 5
+
 /datum/looping_sound/deep_fryer
 	mid_length = 0.2 SECONDS
 	mid_sounds = list(

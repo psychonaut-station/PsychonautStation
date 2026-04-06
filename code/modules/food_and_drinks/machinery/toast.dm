@@ -2,11 +2,6 @@
 #define TOAST_RUNNING 2
 #define TOAST_INTERRUPTED 3
 #define TOAST_NOPOWER 4
-#define TOAST_RUNNING_SOUND 'sound/machines/toast/toast_machine_running.ogg'
-#define TOAST_RUNNING_SOUND_VOLUME 18
-#define TOAST_RUNNING_SOUND_EXTRA_RANGE -8
-#define TOAST_RUNNING_SOUND_FALLOFF_DISTANCE 1
-#define TOAST_RUNNING_SOUND_FALLOFF_EXPONENT 5
 
 /obj/machinery/toast_machine
 	name = "toast machine"
@@ -38,13 +33,11 @@
 	var/lid_open = FALSE
 	var/state_transition_in_progress = FALSE
 	var/next_interaction_time = 0
-	var/sound/active_running_sound
-	var/current_toast_loop_channel
-	var/list/current_toast_loop_listeners = list()
-	var/list/current_toast_pending_login_listeners = list()
+	var/datum/looping_sound/toaster/toaster_sound
 
 /obj/machinery/toast_machine/Initialize(mapload)
 	. = ..()
+	toaster_sound = new(src, FALSE)
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	done_overlay.pixel_y = -1
 	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
@@ -53,7 +46,7 @@
 	refresh_machine_state()
 
 /obj/machinery/toast_machine/Destroy()
-	stop_running_sound_immediately()
+	QDEL_NULL(toaster_sound)
 	end_processing()
 	QDEL_NULL(cooking_particles)
 	return ..()
@@ -269,15 +262,13 @@
 		sync_on_state()
 		update_use_power(ACTIVE_POWER_USE)
 		begin_processing()
-		if(play_transition_sound && !was_running)
-			addtimer(CALLBACK(src, PROC_REF(play_transitionsound), 'sound/machines/toast/toast_machine_closing.ogg'), 0.1 SECONDS)
 		refresh_machine_state()
 		state_transition_in_progress = FALSE
 		return TRUE
 
 	if(was_running)
 		end_processing()
-		stop_running_sound_immediately()
+		toaster_sound.stop()
 
 	if(new_state == TOAST_INTERRUPTED)
 		toast_state = TOAST_INTERRUPTED
@@ -286,10 +277,6 @@
 		else
 			final_state = TOAST_IDLE
 		lid_open = TRUE
-		if(play_transition_sound && was_running)
-			addtimer(CALLBACK(src, PROC_REF(play_transitionsound), 'sound/machines/toast/toast_machine_opening.ogg'), 0.1 SECONDS)
-	else if(play_transition_sound && was_running)
-		addtimer(CALLBACK(src, PROC_REF(play_transitionsound), 'sound/machines/toast/toast_machine_opening.ogg'), 0.1 SECONDS)
 
 	toast_state = final_state
 	if(final_state != TOAST_RUNNING && (reason == "manual_stop" || reason == "power_lost" || reason == "completed" || reason == "interrupted" || reason == "item_removed" || reason == "broken"))
@@ -314,9 +301,6 @@
 			visible_message(span_notice("[src] finishes toasting with a ding."))
 		if("interrupted", "item_removed", "broken")
 			visible_message(span_notice("[src] pops open and stops toasting."))
-
-/obj/machinery/toast_machine/proc/play_transitionsound(soundfile)
-	playsound(src, soundfile, 50, FALSE)
 
 /obj/machinery/toast_machine/begin_processing()
 	. = ..()
@@ -401,208 +385,9 @@
 
 /obj/machinery/toast_machine/proc/update_toast_audio()
 	if(toast_state == TOAST_RUNNING && has_cookable_contents())
-		ensure_running_sound_active()
-		reconcile_running_sound_listeners()
+		toaster_sound.start()
 	else
-		stop_running_sound()
-
-/obj/machinery/toast_machine/proc/is_toast_loop_active()
-	return active_running_sound && current_toast_loop_channel
-
-/obj/machinery/toast_machine/proc/stop_running_sound()
-	stop_running_sound_immediately()
-
-/obj/machinery/toast_machine/proc/stop_running_sound_immediately()
-	var/current_channel = current_toast_loop_channel
-	var/list/listeners_to_stop = current_toast_loop_listeners.Copy()
-	var/list/pending_listeners_to_clear = current_toast_pending_login_listeners.Copy()
-	active_running_sound = null
-	current_toast_loop_channel = null
-	current_toast_loop_listeners.Cut()
-	current_toast_pending_login_listeners.Cut()
-	if(current_channel)
-		for(var/mob/hearer as anything in listeners_to_stop)
-			unregister_running_sound_listener_signals(hearer)
-			if(QDELETED(hearer) || !hearer.client)
-				continue
-			hearer.stop_sound_channel(current_channel)
-		SSsounds.free_sound_channel(current_channel)
-	for(var/mob/hearer as anything in pending_listeners_to_clear)
-		unregister_running_sound_listener_signals(hearer)
-
-/obj/machinery/toast_machine/proc/ensure_running_sound_active()
-	if(active_running_sound && current_toast_loop_channel)
-		return TRUE
-	if(!current_toast_loop_channel)
-		current_toast_loop_channel = SSsounds.reserve_sound_channel_datumless()
-		if(!current_toast_loop_channel)
-			return FALSE
-	for(var/mob/hearer as anything in current_toast_loop_listeners.Copy())
-		deregister_running_sound_listener(hearer)
-	for(var/mob/hearer as anything in current_toast_pending_login_listeners.Copy())
-		deregister_running_sound_listener(hearer)
-	active_running_sound = sound(TOAST_RUNNING_SOUND)
-	active_running_sound.channel = current_toast_loop_channel
-	active_running_sound.repeat = TRUE
-	active_running_sound.wait = 0
-	active_running_sound.volume = TOAST_RUNNING_SOUND_VOLUME
-	active_running_sound.falloff = get_running_sound_max_distance()
-	var/area/machine_area = get_area(src)
-	active_running_sound.environment = machine_area ? machine_area.sound_environment : SOUND_ENVIRONMENT_NONE
-	return TRUE
-
-/obj/machinery/toast_machine/proc/reconcile_running_sound_listeners()
-	if(!active_running_sound || !current_toast_loop_channel)
-		return
-
-	var/list/hearers = get_running_sound_hearers()
-	for(var/mob/old_hearer as anything in current_toast_loop_listeners.Copy())
-		if(!(old_hearer in hearers))
-			deregister_running_sound_listener(old_hearer)
-
-	for(var/mob/hearer as anything in hearers)
-		if(!(hearer in current_toast_loop_listeners))
-			register_running_sound_listener(hearer)
-		else
-			update_running_sound_listener(hearer)
-
-/obj/machinery/toast_machine/proc/register_running_sound_listener(mob/hearer)
-	if(QDELETED(hearer) || !active_running_sound || !current_toast_loop_channel)
-		return
-	if(hearer in current_toast_loop_listeners)
-		update_running_sound_listener(hearer)
-		return
-	if(hearer in current_toast_pending_login_listeners)
-		current_toast_pending_login_listeners -= hearer
-	if(!hearer.client)
-		register_pending_running_sound_listener(hearer)
-		return
-
-	current_toast_loop_listeners += hearer
-	register_active_running_sound_listener_signals(hearer)
-	send_running_sound_to_listener(hearer, FALSE)
-
-/obj/machinery/toast_machine/proc/deregister_running_sound_listener(mob/hearer)
-	if(!(hearer in current_toast_loop_listeners) && !(hearer in current_toast_pending_login_listeners))
-		return
-	current_toast_loop_listeners -= hearer
-	current_toast_pending_login_listeners -= hearer
-	unregister_running_sound_listener_signals(hearer)
-	if(current_toast_loop_channel && hearer && hearer.client)
-		hearer.stop_sound_channel(current_toast_loop_channel)
-
-/obj/machinery/toast_machine/proc/register_pending_running_sound_listener(mob/hearer)
-	if(QDELETED(hearer) || (hearer in current_toast_pending_login_listeners))
-		return
-	current_toast_pending_login_listeners += hearer
-	RegisterSignal(hearer, COMSIG_QDELETING, PROC_REF(running_sound_listener_deleted))
-	RegisterSignal(hearer, COMSIG_MOB_LOGIN, PROC_REF(running_sound_listener_login))
-
-/obj/machinery/toast_machine/proc/register_active_running_sound_listener_signals(mob/hearer)
-	RegisterSignal(hearer, COMSIG_QDELETING, PROC_REF(running_sound_listener_deleted))
-	RegisterSignal(hearer, COMSIG_MOVABLE_MOVED, PROC_REF(running_sound_listener_moved))
-	RegisterSignal(hearer, COMSIG_MOB_LOGOUT, PROC_REF(running_sound_listener_logout))
-	RegisterSignals(hearer, list(SIGNAL_ADDTRAIT(TRAIT_DEAF), SIGNAL_REMOVETRAIT(TRAIT_DEAF)), PROC_REF(running_sound_listener_deafness_changed))
-
-/obj/machinery/toast_machine/proc/unregister_running_sound_listener_signals(mob/hearer)
-	UnregisterSignal(hearer, list(
-		COMSIG_QDELETING,
-		COMSIG_MOVABLE_MOVED,
-		COMSIG_MOB_LOGIN,
-		COMSIG_MOB_LOGOUT,
-		SIGNAL_ADDTRAIT(TRAIT_DEAF),
-		SIGNAL_REMOVETRAIT(TRAIT_DEAF),
-	))
-
-/obj/machinery/toast_machine/proc/update_running_sound_listener(mob/hearer)
-	if(!(hearer in current_toast_loop_listeners))
-		return
-	if(!can_listener_hear_running_sound(hearer))
-		deregister_running_sound_listener(hearer)
-		return
-	send_running_sound_to_listener(hearer, TRUE)
-
-/obj/machinery/toast_machine/proc/running_sound_listener_deleted(mob/source)
-	SIGNAL_HANDLER
-	deregister_running_sound_listener(source)
-
-/obj/machinery/toast_machine/proc/running_sound_listener_login(mob/source)
-	SIGNAL_HANDLER
-	current_toast_pending_login_listeners -= source
-	UnregisterSignal(source, COMSIG_MOB_LOGIN)
-	if(toast_state != TOAST_RUNNING || !active_running_sound || !current_toast_loop_channel || !can_listener_hear_running_sound(source))
-		deregister_running_sound_listener(source)
-		return
-	register_running_sound_listener(source)
-
-/obj/machinery/toast_machine/proc/running_sound_listener_logout(mob/source)
-	SIGNAL_HANDLER
-	if(source in current_toast_loop_listeners)
-		current_toast_loop_listeners -= source
-	if(current_toast_loop_channel)
-		source.stop_sound_channel(current_toast_loop_channel)
-	unregister_running_sound_listener_signals(source)
-	register_pending_running_sound_listener(source)
-
-/obj/machinery/toast_machine/proc/running_sound_listener_deafness_changed(mob/source)
-	SIGNAL_HANDLER
-	if(!(source in current_toast_loop_listeners))
-		return
-	if(HAS_TRAIT(source, TRAIT_DEAF))
-		if(current_toast_loop_channel && source.client)
-			source.stop_sound_channel(current_toast_loop_channel)
-		return
-	if(toast_state == TOAST_RUNNING && can_listener_hear_running_sound(source))
-		send_running_sound_to_listener(source, FALSE)
-
-/obj/machinery/toast_machine/proc/running_sound_listener_moved(mob/source)
-	SIGNAL_HANDLER
-	if(toast_state != TOAST_RUNNING || !active_running_sound || !current_toast_loop_channel)
-		deregister_running_sound_listener(source)
-		return
-	update_running_sound_listener(source)
-
-/obj/machinery/toast_machine/proc/get_running_sound_hearers()
-	var/max_distance = get_running_sound_max_distance()
-	var/audible_distance = CALCULATE_MAX_SOUND_AUDIBLE_DISTANCE(TOAST_RUNNING_SOUND_VOLUME, max_distance, TOAST_RUNNING_SOUND_FALLOFF_DISTANCE, TOAST_RUNNING_SOUND_FALLOFF_EXPONENT)
-	var/list/hearers = get_hearers_in_view(audible_distance, src, RECURSIVE_CONTENTS_CLIENT_MOBS)
-	for(var/mob/listening_ghost as anything in SSmobs.dead_players_by_zlevel[z])
-		if(get_dist(listening_ghost, src) <= audible_distance)
-			hearers += listening_ghost
-	return hearers
-
-/obj/machinery/toast_machine/proc/can_listener_hear_running_sound(mob/hearer)
-	if(QDELETED(hearer) || !hearer.client || !active_running_sound || !current_toast_loop_channel)
-		return FALSE
-	if(HAS_TRAIT(hearer, TRAIT_DEAF))
-		return FALSE
-	return hearer in get_running_sound_hearers()
-
-/obj/machinery/toast_machine/proc/send_running_sound_to_listener(mob/hearer, use_update = TRUE)
-	if(QDELETED(hearer) || !hearer.client || !active_running_sound || !current_toast_loop_channel)
-		return
-
-	var/turf/sound_turf = get_turf(src)
-	var/turf/listener_turf = get_turf(hearer)
-	if(isnull(sound_turf) || isnull(listener_turf))
-		return
-
-	var/new_x = sound_turf.x - listener_turf.x
-	var/new_z = sound_turf.y - listener_turf.y
-
-	active_running_sound.status = use_update ? SOUND_UPDATE : NONE
-	active_running_sound.x = new_x
-	active_running_sound.z = new_z
-	active_running_sound.y = (sound_turf.z - listener_turf.z) * 5
-	active_running_sound.falloff = get_running_sound_max_distance()
-	active_running_sound.volume = TOAST_RUNNING_SOUND_VOLUME
-	var/area/machine_area = get_area(src)
-	active_running_sound.environment = machine_area ? machine_area.sound_environment : SOUND_ENVIRONMENT_NONE
-
-	SEND_SOUND(hearer, active_running_sound)
-
-/obj/machinery/toast_machine/proc/get_running_sound_max_distance()
-	return SOUND_RANGE + TOAST_RUNNING_SOUND_EXTRA_RANGE
+		toaster_sound.stop()
 
 /obj/machinery/toast_machine/proc/update_content_visibility()
 	for(var/obj/item/pressed as anything in toasting_objects)
@@ -657,8 +442,6 @@
 	var/turf/machine_loc = loc
 	if(isturf(machine_loc))
 		machine_loc.hotspot_expose(600, 60)
-
-	reconcile_running_sound_listeners()
 
 /obj/machinery/toast_machine/update_icon_state()
 	icon_state = lid_open ? "[base_icon_state]-on" : base_icon_state
@@ -725,9 +508,3 @@
 #undef TOAST_RUNNING
 #undef TOAST_INTERRUPTED
 #undef TOAST_NOPOWER
-#undef TOAST_RUNNING_SOUND
-#undef TOAST_RUNNING_SOUND_VOLUME
-#undef TOAST_RUNNING_SOUND_EXTRA_RANGE
-#undef TOAST_RUNNING_SOUND_FALLOFF_DISTANCE
-#undef TOAST_RUNNING_SOUND_FALLOFF_EXPONENT
-___BEGIN___COMMAND_DONE_MARKER___0

@@ -134,7 +134,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("cheese" = 2, "bread" = 1)
-	foodtypes = GRAIN | DAIRY | RAW
+	foodtypes = GRAIN | DAIRY
 
 /obj/item/food/toast/cheese/raw/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast/cheese, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
@@ -161,7 +161,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("cheese" = 2, "bread" = 1)
-	foodtypes = GRAIN | DAIRY | RAW
+	foodtypes = GRAIN | DAIRY
 
 /obj/item/food/toast/cheese/half/raw/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast/cheese/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)
@@ -188,7 +188,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 1,
 	)
 	tastes = list("meat" = 2, "bread" = 1, "spice" = 1)
-	foodtypes = GRAIN | MEAT | RAW
+	foodtypes = GRAIN | MEAT | RAW | DAIRY
 
 /obj/item/food/toast/sujuk/raw/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast/sujuk, rand(15 SECONDS, 25 SECONDS), TRUE, TRUE)
@@ -215,7 +215,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 0.5,
 	)
 	tastes = list("meat" = 1, "bread" = 1, "spice" = 1)
-	foodtypes = GRAIN | MEAT | RAW
+	foodtypes = GRAIN | MEAT | RAW | DAIRY
 
 /obj/item/food/toast/sujuk/half/raw/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast/sujuk/half, rand(12 SECONDS, 18 SECONDS), TRUE, TRUE)

@@ -11,6 +11,7 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_1
+
 /obj/item/food/turkish_bread/Initialize(mapload)
 	. = ..()
 	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
@@ -31,9 +32,13 @@
 	foodtypes = GRAIN
 	w_class = WEIGHT_CLASS_TINY
 	crafting_complexity = FOOD_COMPLEXITY_1
+
 /obj/item/food/turkish_bread/half/Initialize(mapload)
 	. = ..()
 	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
+
+/obj/item/food/turkish_bread/half/make_processable()
+	return
 
 /obj/item/food/toast_sujuk
 	name = "raw sujuk"
@@ -49,6 +54,7 @@
 	foodtypes = MEAT | RAW
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
+
 /obj/item/food/toast_sujuk/Initialize(mapload)
 	. = ..()
 	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
@@ -98,6 +104,9 @@
 /obj/item/food/toast_sujuk/slice/make_grillable()
 	AddComponent(/datum/component/grillable, /obj/item/food/toast_sujuk/slice/grilled, rand(6 SECONDS, 10 SECONDS), TRUE, TRUE)
 
+/obj/item/food/toast_sujuk/slice/make_processable()
+	return
+
 /obj/item/food/toast_sujuk/slice/grilled
 	name = "grilled sujuk slice"
 	desc = "A sizzling slice of sujuk."
@@ -116,10 +125,14 @@
 /obj/item/food/toast_sujuk/slice/grilled/make_grillable()
 	return
 
+/obj/item/food/toast_sujuk/slice/grilled/make_processable()
+	return
+
 /obj/item/food/toast
 	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
 	foodtypes = GRAIN
 	crafting_complexity = FOOD_COMPLEXITY_2
+
 /obj/item/food/toast/Initialize(mapload)
 	. = ..()
 	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
@@ -151,6 +164,9 @@
 	tastes = list("cheese" = 2, "bread" = 2, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
 
+/obj/item/food/toast/cheese/make_grillable()
+	return
+
 /obj/item/food/toast/cheese/half/raw
 	name = "raw half cheese toast"
 	desc = "A half portion of cheese toast ready to grill."
@@ -177,6 +193,9 @@
 	)
 	tastes = list("cheese" = 2, "bread" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | DAIRY
+
+/obj/item/food/toast/cheese/half/make_grillable()
+	return
 
 /obj/item/food/toast/sujuk/raw
 	name = "raw sujuk toast"
@@ -205,6 +224,9 @@
 	tastes = list("meat" = 2, "bread" = 2, "spice" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | MEAT
 
+/obj/item/food/toast/sujuk/make_grillable()
+	return
+
 /obj/item/food/toast/sujuk/half/raw
 	name = "raw half sujuk toast"
 	desc = "Half a sujuk toast, ready to go into the press."
@@ -231,3 +253,6 @@
 	)
 	tastes = list("meat" = 1, "bread" = 2, "spice" = 1, "toasted butter" = 1)
 	foodtypes = GRAIN | MEAT
+
+/obj/item/food/toast/sujuk/half/make_grillable()
+	return

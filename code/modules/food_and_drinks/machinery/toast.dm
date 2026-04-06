@@ -22,7 +22,7 @@
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.05
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION
 	layer = BELOW_OBJ_LAYER
-	circuit = /obj/item/circuitboard/machine/griddle
+	circuit = /obj/item/circuitboard/machine/toast_machine
 	processing_flags = START_PROCESSING_MANUALLY
 	resistance_flags = FIRE_PROOF
 	anchored_tabletop_offset = 6
@@ -730,3 +730,4 @@
 #undef TOAST_RUNNING_SOUND_EXTRA_RANGE
 #undef TOAST_RUNNING_SOUND_FALLOFF_DISTANCE
 #undef TOAST_RUNNING_SOUND_FALLOFF_EXPONENT
+___BEGIN___COMMAND_DONE_MARKER___0

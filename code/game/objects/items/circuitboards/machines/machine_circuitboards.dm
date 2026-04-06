@@ -1314,6 +1314,13 @@
 	req_components = list(/datum/stock_part/micro_laser = 1)
 	needs_anchored = FALSE
 
+/obj/item/circuitboard/machine/toast_machine
+	name = "Toast Machine"
+	greyscale_colors = CIRCUIT_COLOR_SERVICE
+	build_path = /obj/machinery/toast_machine
+	req_components = list(/datum/stock_part/micro_laser = 1)
+	needs_anchored = FALSE
+
 /obj/item/circuitboard/machine/oven
 	name = "Oven"
 	greyscale_colors = CIRCUIT_COLOR_SERVICE

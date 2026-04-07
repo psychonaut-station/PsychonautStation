@@ -32,7 +32,6 @@
 	var/toast_state = TOAST_IDLE
 	var/lid_open = FALSE
 	var/state_transition_in_progress = FALSE
-	var/next_interaction_time = 0
 	var/datum/looping_sound/toaster/toaster_sound
 
 /obj/machinery/toast_machine/Initialize(mapload)
@@ -148,7 +147,7 @@
 	toggle_lid(user)
 
 /obj/machinery/toast_machine/proc/toggle_lid(mob/user)
-	if(!can_interact_now(user))
+	if(state_transition_in_progress)
 		return
 
 	if(toast_state == TOAST_RUNNING)
@@ -171,48 +170,29 @@
 
 	set_toast_state(TOAST_RUNNING, user, "manual_start")
 
-/obj/machinery/toast_machine/proc/can_interact_now(mob/user, show_feedback = TRUE)
-	if(state_transition_in_progress)
-		apply_interaction_cooldown()
-		if(show_feedback && user)
-			balloon_alert(user, "busy!")
-		return FALSE
-	if(world.time < next_interaction_time)
-		apply_interaction_cooldown()
-		if(show_feedback && user)
-			balloon_alert(user, "wait!")
-		return FALSE
-	return TRUE
-
 /obj/machinery/toast_machine/proc/can_start_toasting(mob/user, show_feedback = TRUE)
 	if(state_transition_in_progress)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			balloon_alert(user, "busy!")
 		return FALSE
 	if(toast_state == TOAST_RUNNING)
-		apply_interaction_cooldown()
 		return FALSE
 	if(!anchored)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("You need to secure [src] before you can use it."))
 			balloon_alert(user, "secure first!")
 		return FALSE
 	if(machine_stat & BROKEN)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("[src] is broken down."))
 			balloon_alert(user, "broken!")
 		return FALSE
 	if(machine_stat & NOPOWER)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("[src] doesn't have any power."))
 			balloon_alert(user, "no power!")
 		return FALSE
 	if(!has_cookable_contents())
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("There's nothing in [src] that can be toasted."))
 			balloon_alert(user, "nothing to toast!")
@@ -221,21 +201,16 @@
 
 /obj/machinery/toast_machine/proc/can_access_press(mob/user, show_feedback = TRUE)
 	if(toast_state == TOAST_RUNNING)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("[src] is closed and running."))
 			balloon_alert(user, "busy!")
 		return FALSE
 	if(!lid_open)
-		apply_interaction_cooldown()
 		if(show_feedback && user)
 			to_chat(user, span_warning("You need to open [src] first."))
 			balloon_alert(user, "open lid!")
 		return FALSE
 	return TRUE
-
-/obj/machinery/toast_machine/proc/apply_interaction_cooldown(delay = 1)
-	next_interaction_time = max(next_interaction_time, world.time + delay)
 
 /obj/machinery/toast_machine/proc/set_toast_state(new_state, mob/user = null, reason = null, play_transition_sound = TRUE)
 	if(state_transition_in_progress)
@@ -244,7 +219,6 @@
 		return FALSE
 
 	state_transition_in_progress = TRUE
-	apply_interaction_cooldown()
 
 	var/old_state = toast_state
 	var/was_running = old_state == TOAST_RUNNING

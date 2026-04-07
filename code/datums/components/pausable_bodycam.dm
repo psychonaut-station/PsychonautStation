@@ -37,7 +37,7 @@
 	return ..()
 
 /datum/component/pausable_bodycam/proc/on_watch_start(datum/source)
-	LAZYADD(sources_watching, source)
+	LAZYADD(sources_watching, WEAKREF(source))
 	if(LAZYLEN(sources_watching) != 1)
 		return
 	if(!bodycam?.camera_enabled)
@@ -47,7 +47,7 @@
 	do_update_cam(null)
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
-	LAZYREMOVE(sources_watching, source)
+	LAZYREMOVE(sources_watching, WEAKREF(source))
 	if(LAZYLEN(sources_watching) > 0)
 		return
 	UnregisterSignal(parent, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
@@ -95,7 +95,10 @@
 	if(!bodycam || QDELETED(bodycam))
 		return
 	var/list/to_notify = length(sources_watching) ? sources_watching.Copy() : list()
-	for(var/datum/source as anything in to_notify)
+	for(var/datum/weakref/weak_source as anything in to_notify)
+		var/datum/source = weak_source?.resolve()
+		if(!source)
+			continue
 		if(istype(source, /obj/machinery/computer/security))
 			var/obj/machinery/computer/security/console = source
 			console.on_camera_disabled(bodycam)
@@ -104,7 +107,10 @@
 			program.on_camera_disabled(bodycam)
 
 /datum/component/pausable_bodycam/proc/notify_watchers_refresh()
-	for(var/datum/source as anything in sources_watching)
+	for(var/datum/weakref/weak_source as anything in sources_watching)
+		var/datum/source = weak_source?.resolve()
+		if(!source)
+			continue
 		if(istype(source, /obj/machinery/computer/security))
 			var/obj/machinery/computer/security/console = source
 			console.update_active_camera_screen()

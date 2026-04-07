@@ -21,9 +21,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	for(var/obj/item/clothing/accessory/bodycam/other_bodycam as anything in attach_to.attached_accessories)
-		if(other_bodycam == src)
-			continue
+	for(var/obj/item/clothing/accessory/bodycam/other_bodycam in attach_to.attached_accessories)
 		if(user)
 			attach_to.balloon_alert(user, "already has a bodycam!")
 		return FALSE

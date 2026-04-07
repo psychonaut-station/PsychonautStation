@@ -40,7 +40,6 @@
 	toaster_sound = new(src, FALSE)
 	done_overlay = mutable_appearance('icons/effects/effects.dmi', "sparkles", ABOVE_OBJ_LAYER)
 	done_overlay.pixel_y = -1
-	RegisterSignal(src, COMSIG_ATOM_EXPOSE_REAGENT, PROC_REF(on_expose_reagent))
 	lid_open = FALSE
 	toast_state = TOAST_IDLE
 	refresh_machine_state()
@@ -69,11 +68,6 @@
 
 /obj/machinery/toast_machine/IsContainedAtomAccessible(atom/contained, atom/movable/user)
 	return ..() || (lid_open && toast_state != TOAST_RUNNING && (contained in toasting_objects))
-
-/obj/machinery/toast_machine/proc/on_expose_reagent(atom/parent_atom, datum/reagent/exposing_reagent, reac_volume, methods)
-	SIGNAL_HANDLER
-	// Reserved for future reagent interactions; the press is currently inert to splashes.
-	return NONE
 
 /obj/machinery/toast_machine/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	if(I.tool_behaviour == TOOL_WRENCH || I.tool_behaviour == TOOL_CROWBAR)

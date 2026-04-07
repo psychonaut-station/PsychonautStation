@@ -6,6 +6,7 @@
 
 import { FONTS_DISABLED } from './constants';
 import { setClientTheme } from './themes';
+import { chatRenderer } from '../chat/renderer'; // PSYCHONAUT ADDITION - ID_BASED_NAME_COLOR
 import type { SettingsState } from './types';
 
 let statFontTimer: NodeJS.Timeout;
@@ -82,4 +83,9 @@ export function generalSettingsHandler(update: SettingsState): void {
   setGlobalFontSize(update.fontSize, update.statFontSize, update.statLinked);
   setGlobalFontFamily(update.fontFamily);
   updateGlobalOverrideRule();
+
+  // PSYCHONAUT ADDITION BEGIN - ID_BASED_NAME_COLOR
+  // Update name color
+  chatRenderer.setColoredNames(update.coloredNames);
+  // PSYCHONAUT ADDITION END - ID_BASED_NAME_COLOR
 }

@@ -45,6 +45,13 @@ export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
   content: 'content',
 };
 
+// PSYCHONAUT ADDITION BEGIN - ID_BASED_NAME_COLOR
+const stripColoredNames = (inputHtml) => {
+  const spanRegex = /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
+  return inputHtml.replace(spanRegex, '$1$2');
+};
+// PSYCHONAUT ADDITION END - ID_BASED_NAME_COLOR
+
 function createHighlightNode(text, color) {
   const node = document.createElement('span');
   node.className = 'Chat__highlight';
@@ -118,6 +125,7 @@ class ChatRenderer {
   lastScrollHeight: number;
   highlightParsers: Array<any> | null;
   handleScroll: (type: any) => void;
+  coloredNames: boolean; // PSYCHONAUT ADDITION - ID_BASED_NAME_COLOR;
 
   constructor() {
     this.loaded = false;
@@ -127,6 +135,7 @@ class ChatRenderer {
     this.visibleMessages = [];
     this.page = null;
     this.events = new EventEmitter();
+    this.coloredNames = true; // PSYCHONAUT ADDITION - ID_BASED_NAME_COLOR
     // Scroll handler
 
     this.scrollNode = null;
@@ -289,6 +298,16 @@ class ChatRenderer {
     this.scrollNode!.scrollTop = this.scrollNode!.scrollHeight;
   }
 
+  // PSYCHONAUT ADDITION BEGIN - ID_BASED_NAME_COLOR
+  setColoredNames(newValue: boolean) {
+    if (newValue === this.coloredNames) {
+      return;
+    }
+    this.coloredNames = newValue;
+    this.rebuildChat();
+  }
+  // PSYCHONAUT ADDITION END - ID_BASED_NAME_COLOR
+
   changePage(page) {
     if (!this.isReady()) {
       this.page = page;
@@ -386,7 +405,12 @@ class ChatRenderer {
         }
         // Payload is HTML
         else if (message.html) {
-          node.innerHTML = message.html;
+          // PSYCHONAUT EDIT ADDITION BEGIN - ID_BASED_NAME_COLOR - Original:
+          // node.innerHTML = message.html;
+          node.innerHTML = this.coloredNames
+            ? message.html
+            : stripColoredNames(message.html);
+          // PSYCHONAUT EDIT ADDITION END - ID_BASED_NAME_COLOR
         } else {
           logger.error('Error: message is missing text payload', message);
         }

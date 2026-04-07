@@ -124,6 +124,18 @@ export function SettingsGeneral(props) {
             )}
           </Stack.Item>
         </LabeledList.Item>
+        {/* PSYCHONAUT ADDITION BEGIN - ID_BASED_NAME_COLOR */}
+        <LabeledList.Item label="Colored Names">
+          <Button.Checkbox
+            checked={settings.coloredNames}
+            onClick={() =>
+              updateSettings({
+                coloredNames: !settings.coloredNames,
+              })
+            }
+          />
+        </LabeledList.Item>
+        {/* PSYCHONAUT ADDITION END - ID_BASED_NAME_COLOR */}
         <LabeledList.Item label="Font size" verticalAlign="middle">
           <Stack textAlign="center">
             <Stack.Item grow>

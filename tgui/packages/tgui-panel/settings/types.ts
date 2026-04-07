@@ -8,6 +8,7 @@ const viewSchema = z.object({
 
 export const settingsSchema = z.object({
   adminMusicVolume: z.number(),
+  coloredNames: z.boolean(), // PSYCHONAUT ADDITION - ID_BASED_NAME_COLOR
   fontFamily: z.string(),
   fontSize: z.number(),
   initialized: z.boolean(),

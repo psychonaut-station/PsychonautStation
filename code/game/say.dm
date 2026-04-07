@@ -154,6 +154,14 @@ GLOBAL_LIST_INIT(freqtospan, list(
 	//End name span.
 	var/endspanpart = "</span>"
 
+	// PSYCHONAUT ADDITION BEGIN - ID_BASED_NAME_COLOR
+	if(ishuman(speaker) && !radio_freq)
+		var/mob/living/carbon/human/human_speaker = speaker
+		if(!HAS_TRAIT(human_speaker, TRAIT_UNKNOWN_APPEARANCE) && !HAS_TRAIT(human_speaker, TRAIT_UNKNOWN_VOICE))
+			var/id_span = astype(human_speaker.wear_id?.GetID(), /obj/item/card/id)?.chat_span()
+			spanpart2 = "<span class='name [id_span || "job__unknown"]'>"
+	// PSYCHONAUT ADDITION END - ID_BASED_NAME_COLOR
+
 	// Language icon.
 	var/languageicon = ""
 	if(!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])

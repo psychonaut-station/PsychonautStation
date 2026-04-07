@@ -25,19 +25,22 @@
 /obj/machinery/camera/bodycam/on_start_watching(datum/source)
 	if(can_use())
 		var/mob/living/host = loc
-		host?.throw_alert(ALERT_BODYCAM_VIEWED, /atom/movable/screen/alert/bodycam_viewed)
+		if(isliving(host))
+			host.throw_alert(ALERT_BODYCAM_VIEWED, /atom/movable/screen/alert/bodycam_viewed)
 	bodycam_component?.on_watch_start(source)
 
 /obj/machinery/camera/bodycam/on_stop_watching(datum/no_longer_watching)
 	bodycam_component?.on_watch_stop(no_longer_watching)
 	if(!bodycam_component || QDELETED(bodycam_component) || !LAZYLEN(bodycam_component.sources_watching))
 		var/mob/living/host = loc
-		if(host?.has_alert(ALERT_BODYCAM_VIEWED))
+		if(isliving(host) && host.has_alert(ALERT_BODYCAM_VIEWED))
 			host.clear_alert(ALERT_BODYCAM_VIEWED)
 
 /obj/machinery/camera/bodycam/proc/clear_watchers()
 	var/mob/living/host = loc
-	if(host?.has_alert(ALERT_BODYCAM_VIEWED))
+	if(!isliving(host))
+		return
+	if(host.has_alert(ALERT_BODYCAM_VIEWED))
 		host.clear_alert(ALERT_BODYCAM_VIEWED)
 
 /atom/movable/screen/alert/bodycam_viewed

@@ -32,8 +32,10 @@
 /datum/component/pausable_bodycam/Destroy()
 	force_pause()
 	if(bodycam && !QDELETED(bodycam))
+		UnregisterSignal(bodycam, list(COMSIG_QDELETING, COMSIG_MOVABLE_MOVED))
 		bodycam.bodycam_component = null
 		QDEL_NULL(bodycam)
+	bodycam = null
 	return ..()
 
 /datum/component/pausable_bodycam/proc/on_watch_start(datum/source)

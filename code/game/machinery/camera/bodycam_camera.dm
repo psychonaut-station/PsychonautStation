@@ -30,7 +30,7 @@
 
 /obj/machinery/camera/bodycam/on_stop_watching(datum/no_longer_watching)
 	bodycam_component?.on_watch_stop(no_longer_watching)
-	if(!bodycam_component || !LAZYLEN(bodycam_component.sources_watching))
+	if(!bodycam_component || QDELETED(bodycam_component) || !LAZYLEN(bodycam_component.sources_watching))
 		var/mob/living/host = loc
 		if(host?.has_alert(ALERT_BODYCAM_VIEWED))
 			host.clear_alert(ALERT_BODYCAM_VIEWED)

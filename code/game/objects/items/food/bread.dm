@@ -338,6 +338,44 @@
 	. = ..()
 	AddComponent(/datum/component/ingredients_holder, null, CUSTOM_INGREDIENT_ICON_FILL, max_ingredients = 8)
 
+/obj/item/food/bread/turkish
+	name = "turkish bread"
+	desc = "Soft bread made for pressing into a toast."
+	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
+	icon_state = "bread"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 6,
+		/datum/reagent/consumable/nutriment/vitamin = 1,
+	)
+	tastes = list("bread" = 2)
+	foodtypes = GRAIN
+	w_class = WEIGHT_CLASS_SMALL
+	slice_type = /obj/item/food/breadslice/turkish
+	yield = 2
+	crafting_complexity = FOOD_COMPLEXITY_1
+
+/obj/item/food/bread/turkish/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
+
+/obj/item/food/breadslice/turkish
+	name = "half turkish bread"
+	desc = "Half of a Turkish loaf, ready to be packed with fillings."
+	icon = 'icons/psychonaut/obj/food/tostchu.dmi'
+	icon_state = "half_bread"
+	food_reagents = list(
+		/datum/reagent/consumable/nutriment = 3,
+		/datum/reagent/consumable/nutriment/vitamin = 0.5,
+	)
+	tastes = list("bread" = 2)
+	foodtypes = GRAIN
+	w_class = WEIGHT_CLASS_TINY
+	crafting_complexity = FOOD_COMPLEXITY_1
+
+/obj/item/food/breadslice/turkish/Initialize(mapload)
+	. = ..()
+	transform = matrix(0.9, 0, 0, 0, 0.9, 0)
+
 /obj/item/food/baguette
 	name = "baguette"
 	desc = "Bon appetit!"

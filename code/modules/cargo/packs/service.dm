@@ -334,7 +334,7 @@
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(
 		/obj/machinery/toast_machine = 1,
-		/obj/item/food/turkish_bread = 2,
+		/obj/item/food/bread/turkish = 2,
 		/obj/item/food/toast_sujuk = 1,
 		/obj/item/food/toast_sujuk/slice = 4,
 		/obj/item/food/cheese/wedge = 2,

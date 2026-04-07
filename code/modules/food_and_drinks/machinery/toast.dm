@@ -478,9 +478,9 @@
 	return slots
 
 /obj/machinery/toast_machine/proc/get_item_slot_cost(obj/item/I)
-	if(istype(I, /obj/item/food/turkish_bread/half))
+	if(istype(I, /obj/item/food/breadslice/turkish))
 		return 1
-	if(istype(I, /obj/item/food/turkish_bread))
+	if(istype(I, /obj/item/food/bread/turkish))
 		return 2
 	if(istype(I, /obj/item/food/toast/cheese/half/raw))
 		return 1

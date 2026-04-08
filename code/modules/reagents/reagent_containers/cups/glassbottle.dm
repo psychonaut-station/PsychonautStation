@@ -883,7 +883,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek
 	name = "Beylerbeyi Gobek"
-	desc = "A bottle of BeylerBeyiGobek. The aroma promises anise, grapes, and questionable confidence."
+	desc = "Gobek kismindan alinan distilasyonuyla daha yumusak ve aromatik bir rakidir."
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "beylerbeyigobek"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek = 100)
@@ -891,7 +891,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/efegold
 	name = "Efe Gold"
-	desc = "A bottle of Efe Gold. Crisp anise fumes slip out the moment you even think about opening it."
+	desc = "Yuzde 100 maltla uretilen, dolgun tadiyla bilinen ve adini Ege efelerinden alan klasik bir Turk rakisidir."
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "efegold"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki/efegold = 100)
@@ -899,7 +899,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/tekirdag
 	name = "Tekirdag"
-	desc = "A bottle of Tekirdag. It looks ready for a long dinner and several regrettable toasts."
+	desc = "Uzum kalitesi ve dengeli anason tadiyla bilinen klasik bir rakidir."
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "tekirdag"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki/tekirdag = 100)
@@ -907,7 +907,7 @@
 
 /obj/item/reagent_containers/cup/glass/bottle/yeniraki
 	name = "Yeni Raki"
-	desc = "A bottle of Yeni Raki. The label practically demands a proper meze spread."
+	desc = "Turkiye'nin en yaygin rakisi olup dengeli ve geleneksel bir icime sahiptir."
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "yeniraki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki/yeniraki = 100)

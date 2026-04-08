@@ -880,6 +880,7 @@
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "raki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
+	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek
 	name = "Beylerbeyi Gobek"

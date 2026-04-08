@@ -295,3 +295,51 @@
 	required_drink_type = /datum/reagent/consumable/ethanol/raki
 	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/beylerbeyi_gobek
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek
+	name = "glass of BeylerBeyiGobek"
+	desc = "Cloudy, sharp, and carrying the same confident bite as a proper anise spirit."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/beylerbeyi_gobek
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/efegold
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/efegold
+	name = "glass of Efe Gold"
+	desc = "A cloudy glass of anise spirit that looks just right next to a plate of meze."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/efegold
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/efegold
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/tekirdag
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/tekirdag
+	name = "glass of Tekirdag"
+	desc = "A cloudy glass of anise spirit with the same familiar rakia haze."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/tekirdag
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/tekirdag
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/yeniraki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/yeniraki
+	name = "glass of Yeni Raki"
+	desc = "A cloudy glass of anise spirit that settles into the same classic rakia look."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/yeniraki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/yeniraki
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"

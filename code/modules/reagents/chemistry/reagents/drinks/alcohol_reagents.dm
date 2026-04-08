@@ -3266,6 +3266,34 @@
 	if(SPT_PROB(3.5, seconds_per_tick))
 		drinker.add_mood_event("toxic_food", /datum/mood_event/efkar, name)
 
+/datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek
+	name = "Beylerbeyi Gobek"
+	description = "A strong anise-flavored spirit bottled with enough confidence to make the label feel overdressed."
+	color = "#f2f4ef"
+	taste_description = "sharp anise and grape spirit"
+	ph = 7.4
+
+/datum/reagent/consumable/ethanol/raki/efegold
+	name = "Efe Gold"
+	description = "A bright anise spirit with a polished presentation and a familiar rakia bite."
+	color = "#f2f4ef"
+	taste_description = "sharp anise and grape spirit"
+	ph = 7.4
+
+/datum/reagent/consumable/ethanol/raki/tekirdag
+	name = "Tekirdag"
+	description = "A classic anise spirit bottled for people who like their confidence loud and their finish clean."
+	color = "#f2f4ef"
+	taste_description = "sharp anise and grape spirit"
+	ph = 7.4
+
+/datum/reagent/consumable/ethanol/raki/yeniraki
+	name = "Yeni Raki"
+	description = "A staple anise spirit that tastes like long tables, cold water, and bad decisions made gracefully."
+	color = "#f2f4ef"
+	taste_description = "sharp anise and grape spirit"
+	ph = 7.4
+
 /datum/reagent/consumable/ethanol/aperitivo
 	name = "Aperitivo Liqueur"
 	description = "An aggressively bittersweet liqueur flavored with cinchona bark and other botanicals. Perfect for stimulating one's appetite or fighting off malaria."

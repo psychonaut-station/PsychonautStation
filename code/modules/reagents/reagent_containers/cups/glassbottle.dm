@@ -881,6 +881,38 @@
 	icon_state = "raki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
 
+/obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek
+	name = "Beylerbeyi Gobek"
+	desc = "A bottle of BeylerBeyiGobek. The aroma promises anise, grapes, and questionable confidence."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "beylerbeyigobek"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/efegold
+	name = "Efe Gold"
+	desc = "A bottle of Efe Gold. Crisp anise fumes slip out the moment you even think about opening it."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "efegold"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/efegold = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/tekirdag
+	name = "Tekirdag"
+	desc = "A bottle of Tekirdag. It looks ready for a long dinner and several regrettable toasts."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "tekirdag"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/tekirdag = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/yeniraki
+	name = "Yeni Raki"
+	desc = "A bottle of Yeni Raki. The label practically demands a proper meze spread."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "yeniraki"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/yeniraki = 100)
+	drink_type = ALCOHOL
+
 /obj/item/reagent_containers/cup/glass/bottle/aperitivo
 	name = "Camillo Aperitivo Rosso"
 	desc = "The bottle that led to the creation of the modern Camillo Group beverage conglomerate. Despite what you might expect, there's a good chance that whoever makes your favorite liquor is at least in part owned by Camillo."

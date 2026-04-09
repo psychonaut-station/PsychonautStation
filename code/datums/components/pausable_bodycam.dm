@@ -44,14 +44,13 @@
 	if(!bodycam?.camera_enabled)
 		return
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update_cam))
-	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(rotate_cam))
 	do_update_cam()
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
 	LAZYREMOVE(sources_watching, WEAKREF(source))
 	if(LAZYLEN(sources_watching) > 0)
 		return
-	UnregisterSignal(parent, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
+	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	if(bodycam && !QDELETED(bodycam))
 		SScameras.remove_camera_from_chunk(bodycam)
 
@@ -67,11 +66,6 @@
 		return
 	SScameras.camera_moved(bodycam, get_turf(old_loc), get_turf(bodycam), camera_update_time)
 	notify_watchers_refresh()
-
-/datum/component/pausable_bodycam/proc/rotate_cam(datum/source, old_dir, new_dir)
-	SIGNAL_HANDLER
-	if(bodycam && !QDELETED(bodycam))
-		bodycam.setDir(new_dir)
 
 /datum/component/pausable_bodycam/proc/camera_gone(datum/source)
 	SIGNAL_HANDLER
@@ -122,7 +116,7 @@
 /datum/component/pausable_bodycam/proc/force_pause()
 	notify_watchers_disconnect()
 	LAZYCLEARLIST(sources_watching)
-	UnregisterSignal(parent, list(COMSIG_MOVABLE_MOVED, COMSIG_ATOM_DIR_CHANGE))
+	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	if(bodycam && !QDELETED(bodycam))
 		bodycam.clear_watchers()
 		SScameras.remove_camera_from_chunk(bodycam)

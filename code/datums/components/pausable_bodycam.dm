@@ -45,7 +45,7 @@
 		return
 	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update_cam))
 	RegisterSignal(parent, COMSIG_ATOM_DIR_CHANGE, PROC_REF(rotate_cam))
-	do_update_cam(null)
+	do_update_cam()
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
 	LAZYREMOVE(sources_watching, WEAKREF(source))

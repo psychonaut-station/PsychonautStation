@@ -597,6 +597,7 @@ SPY_EASY_REWARD_TC_THRESHOLD 5
 ## Also functions as the upper end for medium bounties.
 SPY_HARD_REWARD_TC_THRESHOLD 15
 
+<<<<<<< HEAD
 ## Modular Room Weight Config
 ## See modules\mapping\modular_rooms for the full modular room list
 ## Make sure there is one space between the room_id and the weight value.
@@ -615,3 +616,7 @@ AUTO_VOTE_STORYTELLER
 DEFAULT_STORYTELLER Random
 ## Players can start vote for changing next round's storyteller
 #ALLOW_STORYTELLER_VOTE
+=======
+## Minimum time before a heretic can ascend, in minutes
+# MINIMUM_ASCENSION_TIME 3
+>>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef

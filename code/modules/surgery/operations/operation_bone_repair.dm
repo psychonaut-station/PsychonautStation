@@ -3,8 +3,12 @@
 	name = "reset dislocation"
 	desc = "Reset a dislocated bone in a patient's limb. \
 		Similar to the field procedure, but quicker and safer due to being performed in a controlled environment."
+<<<<<<< HEAD
 	localizated_desc = "Hastanın uzvundaki çıkık kemiği yerine oturtun. Sahadaki müdahaleye benzer ancak kontrollü bir ortamda yapıldığı için daha hızlı ve güvenlidir."
 	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED
+=======
+	operation_flags = OPERATION_PRIORITY_NEXT_STEP | OPERATION_NO_PATIENT_REQUIRED | OPERATION_AFFECTS_MOOD | OPERATION_STANDING_ALLOWED | OPERATION_IGNORE_CLOTHES
+>>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef
 	implements = list(
 		TOOL_BONESET = 1,
 		TOOL_CROWBAR = 2,

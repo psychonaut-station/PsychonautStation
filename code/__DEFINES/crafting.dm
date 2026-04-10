@@ -47,8 +47,8 @@
 #define NEVER_BLACKLIST_RESULT FALSE
 
 //food/drink crafting defines
-//When adding new defines, please make sure to also add them to the encompassing list
 #define CAT_FOOD "Foods"
+<<<<<<< HEAD
 #define CAT_BREAD "Breads"
 #define CAT_BURGER "Burgers"
 #define CAT_CAKE "Cakes"
@@ -69,6 +69,46 @@
 #define CAT_SOUP "Soups"
 #define CAT_SPAGHETTI "Spaghettis"
 #define CAT_ICE "Frozen"
+=======
+	// cuisine categories
+	#define CUISINE_ITALIAN "Italian"
+	#define CUISINE_JAPANESE "Japanese"
+	#define CUISINE_LIZARD "Lizard"
+	#define CUISINE_MARTIAN "Martian"
+	#define CUISINE_MEXICAN "Mexican"
+	#define CUISINE_MOTHIC "Mothic"
+	#define CUISINE_TERRAN "Terran" // catch-all for earth food that we don't have a more specific category for
+	// dish categories
+	#define DISH_BREAD "Bread"
+	#define DISH_BURGER "Burger"
+	#define DISH_BURRITO "Burrito" // also includes wraps/enchilada
+	#define DISH_CAKE "Cake"
+	#define DISH_CANDY "Candy"
+	#define DISH_CONDIMENT "Condiment" // catch-all for sauces, dressings, sides, etc
+	#define DISH_COOKIE "Cookie"
+	#define DISH_FROZEN "Frozen" // catch-all for ice cream, popsicles, etc
+	#define DISH_MEAT "Meat" // anything often served on its own as a "meat dish" (like steak), though it may include tofu
+	#define DISH_NOODLES "Noodles"
+	#define DISH_PASTRY "Pastry"
+	#define DISH_PIE "Pie"
+	#define DISH_PIZZA "Pizza"
+	#define DISH_RICE "Rice" // practically anything with rice in it
+	#define DISH_SALAD "Salad" // often includes salad adjacent (ie: coleslaw, stir fry)
+	#define DISH_SANDWICH "Sandwich" // divorced from burger for better filtering. also, yes, includes hotdogs.
+	#define DISH_SOUP "Soup"
+	#define DISH_SUSHI "Sushi"
+	#define DISH_TACO "Taco"
+	#define DISH_UNCATEGORIZED "Uncategorized"
+	// meal categories
+	#define MEAL_APPETIZER "Appetizer"
+	#define MEAL_BREAKFAST "Breakfast"
+	#define MEAL_COMPONENT "Component" // stuff you're not intended to eat
+	#define MEAL_DESSERT "Dessert"
+	#define MEAL_MAIN_COURSE "Main Course"
+	#define MEAL_SNACK "Snack"
+	#define MEAL_UNCATEGORIZED "Uncategorized"
+
+>>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef
 #define CAT_DRINK "Drinks"
 
 //crafting defines

@@ -524,6 +524,7 @@
 /datum/config_entry/number/max_shuttle_size
 	default = 250
 
+<<<<<<< HEAD
 /datum/config_entry/keyed_list/modular_room_weight
 	key_mode = KEY_MODE_TEXT
 	value_mode = VALUE_MODE_NUM
@@ -544,3 +545,8 @@
 
 /datum/config_entry/number/false_advisory_knn_prob
 	default = 15
+=======
+/datum/config_entry/number/minimum_ascension_time
+	default = 0 // 1 minute
+	min_val = 0
+>>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef

@@ -48,28 +48,6 @@
 
 //food/drink crafting defines
 #define CAT_FOOD "Foods"
-<<<<<<< HEAD
-#define CAT_BREAD "Breads"
-#define CAT_BURGER "Burgers"
-#define CAT_CAKE "Cakes"
-#define CAT_EGG "Egg-Based Food"
-#define CAT_LIZARD "Lizard Food"
-#define CAT_MEAT "Meats"
-#define CAT_SEAFOOD "Seafood"
-#define CAT_MARTIAN "Martian Food"
-#define CAT_MISCFOOD "Misc. Food"
-#define CAT_MEXICAN "Mexican Food"
-#define CAT_TURKISH "Turkish Food"
-#define CAT_MOTH "Mothic Food"
-#define CAT_PASTRY "Pastries"
-#define CAT_PIE "Pies"
-#define CAT_PIZZA "Pizzas"
-#define CAT_SALAD "Salads"
-#define CAT_SANDWICH "Sandwiches"
-#define CAT_SOUP "Soups"
-#define CAT_SPAGHETTI "Spaghettis"
-#define CAT_ICE "Frozen"
-=======
 	// cuisine categories
 	#define CUISINE_ITALIAN "Italian"
 	#define CUISINE_JAPANESE "Japanese"
@@ -78,6 +56,7 @@
 	#define CUISINE_MEXICAN "Mexican"
 	#define CUISINE_MOTHIC "Mothic"
 	#define CUISINE_TERRAN "Terran" // catch-all for earth food that we don't have a more specific category for
+	#define CUISINE_TURKISH "Turkish"
 	// dish categories
 	#define DISH_BREAD "Bread"
 	#define DISH_BURGER "Burger"
@@ -108,7 +87,6 @@
 	#define MEAL_SNACK "Snack"
 	#define MEAL_UNCATEGORIZED "Uncategorized"
 
->>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef
 #define CAT_DRINK "Drinks"
 
 //crafting defines

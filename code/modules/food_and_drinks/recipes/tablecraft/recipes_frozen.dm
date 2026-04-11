@@ -319,8 +319,8 @@
 	)
 	result = /obj/item/food/popsicle/meatsicle
 	added_foodtypes = SUGAR
-<<<<<<< HEAD
-	category = CAT_ICE
+	dish_category = DISH_FROZEN
+	meal_category = MEAL_DESSERT
 
 /datum/crafting_recipe/food/panda
 	name = "Panda Ice Cream"
@@ -333,8 +333,5 @@
 	)
 	result = /obj/item/food/popsicle/panda
 	added_foodtypes = DAIRY
-	category = CAT_ICE
-=======
 	dish_category = DISH_FROZEN
 	meal_category = MEAL_DESSERT
->>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef

@@ -258,7 +258,7 @@
 		/datum/reagent/consumable/nutriment/vitamin = 2,
 	)
 	tastes = list("tomato" = 1, "egg" = 1, "pepper" = 1)
-	foodtypes = MEAT | VEGETABLES | RAW | BREAKFAST
+	foodtypes = MEAT | VEGETABLES | RAW | BREAKFAST | EGG
 	w_class = WEIGHT_CLASS_SMALL
 	crafting_complexity = FOOD_COMPLEXITY_2
 	trash_type = /obj/item/plate

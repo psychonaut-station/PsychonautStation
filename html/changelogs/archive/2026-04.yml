@@ -44,39 +44,8 @@
       their HUD instead of just the stat panel
   - refactor: Refactored the entirety of HUD management code, report if anything breaks!
   - bugfix: FOV blockers no longer harddel
-<<<<<<< HEAD
-2026-04-06:
-  Absolucy:
-  - bugfix: Ascended Void heretics now properly play the deflect sound when deflecting
-      projectiles.
-  - admin: View Variables can now properly view alists, altho it cannot edit them.
-  ArcaneMusic:
-  - qol: The pneumatic cannon's examine will now show the contents of the cannon loaded.
-  - bugfix: You may now place a pneumatic cannon (and the clown's pie cannon!) onto
-      tables.
-  JohnFulpWillard:
-  - bugfix: The Combat indicator will now properly move back to its original location
-      when using F12.
-  - bugfix: Sleep icon now appears again & rest icon now respects "Toggle Hotkeys
-      button" mode.
-  Melbert:
-  - rscadd: Walking in snow or sand leaves behind prints. You can examine the turf
-      to see what left the prints, like with bloodprints.
-  - rscadd: Snowstorms or sandstorms clear away any footprints left behind in the
-      snow or sand.
-  - rscadd: Some equipment or effects, like skis or snowshoes, prevent you from leaving
-      prints in the snow.
-  - rscadd: You can fill in snowprints with snow.
-  - rscdel: Zero-gravity drifting is no longer affected by inertia, ie it has been
-      reverted to what it once was.
-  Rengan:
-  - rscadd: "Round feedbackde art\u0131k real name kaydediliyor."
-  - rscadd: "Rounddaki karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."
-  lelandkemble:
-=======
   lelandkemble:
   - bugfix: Wheelys dont turn you when you kick them out
->>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef
   - bugfix: Three cult abilities no longer runtime
   - bugfix: HUDs are now visible when looking up a floor, as well as by AIS and camera
       consoles on lower floors.
@@ -87,8 +56,6 @@
       profit to payout major jackpots and bonus spins. Please gamble responsibly.
   - map: Replaced all slot machines with slot machine random spawners. Added syndicate
       slot machines to Syndicate bases and nuke outposts.
-<<<<<<< HEAD
-=======
 2026-04-04:
   Melbert:
   - qol: Recovered crew/Thanatorenasia bodies in morgue trays change the indicator
@@ -142,6 +109,9 @@
       by 50/33% respectively.
   rageguy505:
   - bugfix: Metastations mining and QM disposal bins are no longer Jim Norton branded.
+  Rengan:
+  - rscadd: "Round feedbackde art\u0131k real name kaydediliyor."
+  - rscadd: "Rounddaki karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."
 2026-04-07:
   Aliceee2ch:
   - bugfix: Fixed empty message when ejecting an ID card from PDA.
@@ -233,4 +203,3 @@
       rather than as a second report (usually) following the roundstart report.
   lelandkemble:
   - bugfix: Neurine works in the dead again
->>>>>>> b2d8ee3fccfda9244ca3d33890b0f0ae15c623ef

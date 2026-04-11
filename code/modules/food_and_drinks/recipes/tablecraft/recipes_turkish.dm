@@ -8,7 +8,7 @@
 		/datum/reagent/consumable/nutriment/fat/oil/olive = 2,
 	)
 	result = /obj/item/food/cig_kofte
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/cacik
 	name = "Cacık"
@@ -18,7 +18,7 @@
 		/obj/item/reagent_containers/cup/bowl = 1
 	)
 	result = /obj/item/food/cacik
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/lahmacun
 	name = "Lahmacun"
@@ -29,7 +29,7 @@
 		/obj/item/food/raw_patty = 1,
 	)
 	result = /obj/item/food/raw_lahmacun
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/raw_beyti
 	name = "Beyti"
@@ -41,11 +41,11 @@
 		/obj/item/food/raw_patty = 1,
 	)
 	result = /obj/item/food/raw_beyti
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/reaction/ayran
 	reaction = /datum/chemical_reaction/drink/ayran
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/kiymali_pide
 	name = "Kıymalı Pide"
@@ -56,7 +56,7 @@
 		/obj/item/food/raw_patty = 1,
 	)
 	result = /obj/item/food/raw_kiymali_pide
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/etdoner
 	name = "Et Döner"
@@ -67,7 +67,7 @@
 		/obj/item/food/grown/onion = 1,
 	)
 	result = /obj/item/food/doner/et
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/etdoner_sade
 	name = "Sade Et Döner"
@@ -76,7 +76,7 @@
 		/obj/item/food/doner/yaprak/et = 1
 	)
 	result = /obj/item/food/doner/et/sade
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/tavukdoner
 	name = "Tavuk Döner"
@@ -87,7 +87,7 @@
 		/obj/item/food/grown/onion = 1,
 	)
 	result = /obj/item/food/doner/tavuk
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/tavukdoner_sade
 	name = "Sade Tavuk Döner"
@@ -96,7 +96,7 @@
 		/obj/item/food/doner/yaprak/tavuk = 1
 	)
 	result = /obj/item/food/doner/tavuk/sade
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/kisir
 	name = "Kısır"
@@ -108,7 +108,7 @@
 		/obj/item/reagent_containers/cup/bowl = 1
 	)
 	result = /obj/item/food/kisir
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/tavton
 	name = "Tavuk Tonbalığı Pilav"
@@ -120,7 +120,7 @@
 	)
 	result = /obj/item/food/tavton
 	removed_foodtypes = BREAKFAST
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/menemen
 	name = "Menemen"
@@ -132,7 +132,7 @@
 	)
 	result = /obj/item/food/raw_menemen
 	added_foodtypes = BREAKFAST
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/menemen/onion
 	name = "Soğanlı Menemen"
@@ -145,7 +145,7 @@
 	)
 	result = /obj/item/food/raw_menemen/onion
 	added_foodtypes = BREAKFAST
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/iskender
 	name = "İskender"
@@ -157,7 +157,7 @@
 		/obj/item/plate = 1,
 	)
 	result = /obj/item/food/iskender
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/dolma
 	name = "Dolma"
@@ -170,7 +170,7 @@
 	result = /obj/item/food/raw_dolma
 	removed_foodtypes = BREAKFAST
 	added_foodtypes = RAW
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/etdoner_pilav
 	name = "Pilav Üstü Et Döner"
@@ -183,7 +183,7 @@
 	)
 	result = /obj/item/food/etdoner_pilav
 	removed_foodtypes = BREAKFAST
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH
 
 /datum/crafting_recipe/food/tavukdoner_pilav
 	name = "Pilav Üstü Tavuk Döner"
@@ -196,4 +196,4 @@
 	)
 	result = /obj/item/food/tavukdoner_pilav
 	removed_foodtypes = BREAKFAST
-	category = CAT_TURKISH
+	cuisine_category = CUISINE_TURKISH

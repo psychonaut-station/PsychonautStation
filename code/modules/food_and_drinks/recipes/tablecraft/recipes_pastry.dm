@@ -501,7 +501,7 @@
 	)
 	result = /obj/item/food/muffin/banana
 	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
-	category = CAT_PASTRY
+	dish_category = DISH_PASTRY
 
 /datum/crafting_recipe/food/watermelonmuffin
 	name = "Watermelon muffin"
@@ -512,7 +512,7 @@
 	)
 	result = /obj/item/food/muffin/watermelon
 	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
-	category = CAT_PASTRY
+	dish_category = DISH_PASTRY
 
 /datum/crafting_recipe/food/pineapplemuffin
 	name = "Pineapple muffin"
@@ -523,7 +523,7 @@
 	)
 	result = /obj/item/food/muffin/pineapple
 	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
-	category = CAT_PASTRY
+	dish_category = DISH_PASTRY
 
 /datum/crafting_recipe/food/grapesmuffin
 	name = "Grapes muffin"
@@ -534,7 +534,7 @@
 	)
 	result = /obj/item/food/muffin/grapes
 	added_foodtypes = BREAKFAST|SUGAR|FRUIT|DAIRY
-	category = CAT_PASTRY
+	dish_category = DISH_PASTRY
 
 /datum/crafting_recipe/food/carrotmuffin
 	name = "Carrot muffin"
@@ -545,7 +545,7 @@
 	)
 	result = /obj/item/food/muffin/carrot
 	added_foodtypes = BREAKFAST|SUGAR|VEGETABLES|DAIRY
-	category = CAT_PASTRY
+	dish_category = DISH_PASTRY
 
 ////////////////////////////////////////////OTHER////////////////////////////////////////////
 

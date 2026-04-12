@@ -615,3 +615,6 @@ AUTO_VOTE_STORYTELLER
 DEFAULT_STORYTELLER Random
 ## Players can start vote for changing next round's storyteller
 #ALLOW_STORYTELLER_VOTE
+
+## Minimum time before a heretic can ascend, in minutes
+# MINIMUM_ASCENSION_TIME 3

@@ -98,6 +98,9 @@
   - config: Added a config option for the path to policy.json
   Melbert:
   - bugfix: Reset Dislocation operation ignores clothing
+  Rengan:
+  - rscadd: "Round feedbackde art\u0131k real name kaydediliyor."
+  - rscadd: "Rounddaki karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."
   Rhials:
   - bugfix: The shuttle loan event will now properly clear itself if not accepted
       within the time limit, allowing for different loan opportunities to roll.
@@ -109,9 +112,6 @@
       by 50/33% respectively.
   rageguy505:
   - bugfix: Metastations mining and QM disposal bins are no longer Jim Norton branded.
-  Rengan:
-  - rscadd: "Round feedbackde art\u0131k real name kaydediliyor."
-  - rscadd: "Rounddaki karakterlerin g\xF6r\xFCn\xFCmleri art\u0131k kaydediliyor."
 2026-04-07:
   Aliceee2ch:
   - bugfix: Fixed empty message when ejecting an ID card from PDA.
@@ -203,3 +203,6 @@
       rather than as a second report (usually) following the roundstart report.
   lelandkemble:
   - bugfix: Neurine works in the dead again
+2026-04-13:
+  Nukkun-01:
+  - rscadd: "Yeni rak\u0131lar eklendi."

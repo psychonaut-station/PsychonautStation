@@ -85,7 +85,11 @@
 /mob/eye/camera/ai/setLoc(destination, force_update = FALSE)
 	if(!ai)
 		return
-	if(!isturf(ai.loc))
+	if(!isvalidAIloc(ai.loc))
+		return
+	if(!isturf(destination))
+		destination = get_turf(destination)
+	if(!destination)
 		return
 
 	. = ..()
@@ -143,7 +147,6 @@
 // This will move the AIEye. It will also cause lights near the eye to light up, if toggled.
 // This is handled in the proc below this one.
 #define SPRINT_PER_TICK 0.5
-#define MAX_SPRINT 50
 #define SPRINT_PER_STEP 20
 /mob/living/silicon/ai/proc/AIMove(direction)
 	if(last_moved && last_moved + 1 < world.timeofday)
@@ -165,13 +168,12 @@
 
 	last_moved = world.timeofday
 	if(acceleration)
-		sprint = min(sprint + SPRINT_PER_TICK, MAX_SPRINT)
+		sprint = min(sprint + SPRINT_PER_TICK, max(initial(sprint), max_camera_sprint))
 	else
 		sprint = initial(sprint)
 
 	ai_tracking_tool.reset_tracking()
 #undef SPRINT_PER_STEP
-#undef MAX_SPRINT
 #undef SPRINT_PER_TICK
 
 // Return to the Core.
@@ -184,13 +186,13 @@
 	if(ai_tracking_tool)
 		ai_tracking_tool.reset_tracking()
 
-	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
+	if(isvalidAIloc(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
 		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")
 		stack_trace("AI eye object wasn't found! Location: [loc] / Eyeobj: [eyeobj] / QDELETED: [QDELETED(eyeobj)] / Eye loc: [eyeobj?.loc]")
 		QDEL_NULL(eyeobj)
 		create_eye()
 
-	eyeobj?.setLoc(loc)
+	eyeobj?.setLoc(get_turf(loc))
 
 /mob/living/silicon/ai/proc/create_eye()
 	if(eyeobj)
@@ -199,7 +201,7 @@
 	all_eyes += eyeobj
 	eyeobj.ai = src
 	eyeobj.name = "[name] (AI Eye)"
-	eyeobj.setLoc(loc, TRUE)
+	eyeobj.setLoc(get_turf(loc), TRUE)
 	set_eyeobj_visible(TRUE)
 
 /mob/living/silicon/ai/proc/set_eyeobj_visible(state = TRUE)

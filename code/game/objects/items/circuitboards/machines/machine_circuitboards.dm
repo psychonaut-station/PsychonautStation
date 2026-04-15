@@ -1140,6 +1140,67 @@
 	name = "Ancient R&D Server"
 	build_path = /obj/machinery/rnd/server/oldstation
 
+/obj/item/circuitboard/machine/server_cabinet
+	name = "Server Cabinet"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/ai/server_cabinet
+	req_components = list(
+		/datum/stock_part/matter_bin = 2,
+		/datum/stock_part/capacitor = 2,
+		/obj/item/stack/sheet/glass = 2,
+		/obj/item/stack/cable_coil = 1,
+	)
+
+/obj/item/circuitboard/machine/networking_machine
+	name = "Networking Machine"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/ai/networking
+	req_components = list(
+		/datum/stock_part/matter_bin = 4,
+		/datum/stock_part/capacitor = 2,
+		/datum/stock_part/scanning_module = 4,
+		/obj/item/stack/sheet/glass = 4,
+		/obj/item/stack/cable_coil = 1,
+	)
+
+/obj/item/circuitboard/machine/subcontroller
+	name = "Subcontroller"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/ai/master_subcontroller
+	req_components = list(
+		/datum/stock_part/capacitor = 4,
+		/datum/stock_part/scanning_module = 4,
+		/obj/item/stack/sheet/glass = 2,
+		/obj/item/stack/cable_coil = 1,
+	)
+
+/obj/item/circuitboard/machine/ai_data_core
+	name = "AI Data Core"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/ai/data_core
+	req_components = list(
+		/datum/stock_part/capacitor = 4,
+		/datum/stock_part/matter_bin = 2,
+		/obj/item/stack/sheet/glass = 2,
+		/obj/item/stack/cable_coil = 2,
+		/obj/item/stock_parts/power_store/cell = 1,
+	)
+	def_components = list(/obj/item/stock_parts/power_store/cell = /obj/item/stock_parts/power_store/cell/high)
+
+/obj/item/circuitboard/machine/ai_core_display
+	name = "AI Core Display"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/status_display/ai_core
+
+/obj/item/circuitboard/machine/rack_creator
+	name = "Rack Creator"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/rack_creator
+	req_components = list(
+		/datum/stock_part/servo = 2,
+		/obj/item/reagent_containers/cup/beaker = 2,
+	)
+
 /obj/item/circuitboard/machine/techfab/department/science
 	name = "\improper Departmental Techfab - Science"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE

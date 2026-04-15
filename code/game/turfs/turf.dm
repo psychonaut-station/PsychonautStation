@@ -403,6 +403,14 @@ GLOBAL_LIST_EMPTY(station_turfs)
 		var/obj/item/stack/cable_coil/coil = C
 		coil.place_turf(src, user)
 		return TRUE
+	else if(can_lay_cable() && istype(C, /obj/item/stack/ethernet_coil))
+		var/obj/item/stack/ethernet_coil/coil = C
+		for(var/obj/structure/ethernet_cable/ethernet in src)
+			if(!ethernet.d1 || !ethernet.d2)
+				ethernet.attackby(C, user)
+				return TRUE
+		coil.place_turf(src, user)
+		return TRUE
 	else if(can_have_cabling() && istype(C, /obj/item/stack/pipe_cleaner_coil))
 		var/obj/item/stack/pipe_cleaner_coil/coil = C
 		for(var/obj/structure/pipe_cleaner/LC in src)

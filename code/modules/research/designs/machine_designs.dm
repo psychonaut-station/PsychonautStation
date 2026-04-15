@@ -470,6 +470,66 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/datum/design/board/server_cabinet
+	name = "Server Cabinet Board"
+	desc = "The circuit board for a decentralized AI server cabinet."
+	id = "server_cabinet"
+	build_path = /obj/item/circuitboard/machine/server_cabinet
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/networking_machine
+	name = "Networking Machine Board"
+	desc = "The circuit board for a remote AI networking machine."
+	id = "networking_machine"
+	build_path = /obj/item/circuitboard/machine/networking_machine
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/subcontroller
+	name = "Subcontroller Board"
+	desc = "The circuit board for a decentralized AI subcontroller mainframe."
+	id = "subcontroller"
+	build_path = /obj/item/circuitboard/machine/subcontroller
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/ai_data_core
+	name = "AI Data Core Board"
+	desc = "The circuit board for a decentralized AI data core."
+	id = "ai_data_core"
+	build_path = /obj/item/circuitboard/machine/ai_data_core
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/ai_core_display
+	name = "AI Core Display Board"
+	desc = "The circuit board for a decentralized AI core display."
+	id = "ai_core_display"
+	build_path = /obj/item/circuitboard/machine/ai_core_display
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/rack_creator
+	name = "Rack Creator Board"
+	desc = "The circuit board for a rack creator."
+	id = "rack_creator"
+	build_path = /obj/item/circuitboard/machine/rack_creator
+	category = list(
+		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_RESEARCH
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
 /datum/design/board/mechfab
 	name = "Exosuit Fabricator Board"
 	desc = "The circuit board for an Exosuit Fabricator."

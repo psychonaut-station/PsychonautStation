@@ -28,9 +28,12 @@ SUBSYSTEM_DEF(machines)
 		)
 	///List of all powernets on the server.
 	var/list/datum/powernet/powernets = list()
+	/// List of all AI ethernet networks on the server.
+	var/list/datum/ai_network/ainets = list()
 
 /datum/controller/subsystem/machines/Initialize()
 	makepowernets()
+	makeainets()
 	fire()
 	return SS_INIT_SUCCESS
 
@@ -85,8 +88,19 @@ SUBSYSTEM_DEF(machines)
 			new_powernet.add_cable(power_cable)
 			propagate_network(power_cable, power_cable.powernet)
 
+/datum/controller/subsystem/machines/proc/makeainets()
+	for(var/datum/ai_network/ai_network as anything in ainets)
+		qdel(ai_network)
+	ainets.Cut()
+
+	for(var/obj/structure/ethernet_cable/ethernet_cable as anything in GLOB.ethernet_cable_list)
+		if(!ethernet_cable.network)
+			var/datum/ai_network/new_ai_network = new()
+			new_ai_network.add_cable(ethernet_cable)
+			propagate_ai_network(ethernet_cable, ethernet_cable.network)
+
 /datum/controller/subsystem/machines/stat_entry(msg)
-	msg = "\n  M:[length(all_machines)]|MT:[length(machines_by_type)]|PM:[length(processing)]|PN:[length(powernets)]"
+	msg = "\n  M:[length(all_machines)]|MT:[length(machines_by_type)]|PM:[length(processing)]|PN:[length(powernets)]|AN:[length(ainets)]"
 	return ..()
 
 /datum/controller/subsystem/machines/fire(resumed = FALSE)
@@ -167,6 +181,16 @@ SUBSYSTEM_DEF(machines)
 			if (MC_TICK_CHECK)
 				return
 
+		var/list/current_ainets = ainets.Copy()
+		while(current_ainets.len)
+			var/datum/ai_network/ai_network = current_ainets[current_ainets.len]
+			current_ainets.len--
+			if(QDELETED(ai_network))
+				continue
+			ai_network.process_local_activities(wait * 0.1)
+			if(MC_TICK_CHECK)
+				return
+
 /datum/controller/subsystem/machines/proc/setup_template_powernets(list/cables)
 	var/obj/structure/cable/PC
 	for(var/A in 1 to cables.len)
@@ -176,11 +200,22 @@ SUBSYSTEM_DEF(machines)
 			NewPN.add_cable(PC)
 			propagate_network(PC,PC.powernet)
 
+/datum/controller/subsystem/machines/proc/setup_template_ainets(list/cables)
+	var/obj/structure/ethernet_cable/ethernet_cable
+	for(var/A in 1 to cables.len)
+		ethernet_cable = cables[A]
+		if(!ethernet_cable.network)
+			var/datum/ai_network/new_ai_network = new()
+			new_ai_network.add_cable(ethernet_cable)
+			propagate_ai_network(ethernet_cable, ethernet_cable.network)
+
 /datum/controller/subsystem/machines/Recover()
 	if(islist(SSmachines.processing))
 		processing = SSmachines.processing
 	if(islist(SSmachines.powernets))
 		powernets = SSmachines.powernets
+	if(islist(SSmachines.ainets))
+		ainets = SSmachines.ainets
 	if(islist(SSmachines.all_machines))
 		all_machines = SSmachines.all_machines
 	if(islist(SSmachines.machines_by_type))

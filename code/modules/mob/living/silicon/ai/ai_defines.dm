@@ -83,6 +83,20 @@
 	VAR_FINAL/datum/trackable/ai_tracking_tool
 	/// The current movement speed of the camera, it's definition being the base speed. Moves 1 more tile for every 10 sprint.
 	var/sprint = 10
+	/// The maximum camera sprint value AI acceleration can build up to.
+	var/max_camera_sprint = 50
+	/// Whether consoles are allowed to download this AI.
+	var/can_download = TRUE
+	/// Modifier applied to Yog-style AI download rate.
+	var/downloadSpeedModifier = 1
+	/// If TRUE, the AI can examine humans through camera interaction.
+	var/canExamineHumans = FALSE
+	/// If TRUE, the AI can set a camera-memory target through shift-click.
+	var/canCameraMemoryTrack = FALSE
+	/// Name of the currently selected camera-memory target.
+	var/cameraMemoryTarget
+	/// Tick counter for the camera-memory tracker.
+	var/cameraMemoryTickCount = 0
 	/// Time since the AI [proc/AIMove][last moved their camera eye], uses world.timeofday
 	VAR_FINAL/last_moved = 0
 	/// If the camera eye [proc/AIMove][moves progressively faster] when looking around

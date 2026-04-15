@@ -167,9 +167,32 @@
 /atom/proc/AICtrlShiftClick(mob/living/silicon/ai/user)
 	return
 
+/mob/living/carbon/human/AIShiftClick(mob/living/silicon/ai/user)
+	if(!user.client || (user.client.eye != user.eyeobj && user.client.eye != user.loc))
+		return FALSE
+
+	var/handled = FALSE
+	if(user.canExamineHumans)
+		user.examinate(src)
+		handled = TRUE
+
+	if(user.canCameraMemoryTrack)
+		handled = TRUE
+		if(name == "Unknown")
+			to_chat(user, span_warning("Unable to track unknown individuals. Their name must be visible first."))
+			return TRUE
+		if(name == user.cameraMemoryTarget)
+			to_chat(user, span_warning("Stop tracking this individual? <a href='byond://?src=[REF(user)];stopTrackHuman=1'>UNTRACK</a>"))
+		else
+			to_chat(user, span_warning("Track this individual? <a href='byond://?src=[REF(user)];trackHuman=[url_encode(name)]'>TRACK</a>"))
+
+	return handled
+
 /* Airlocks */
 /obj/machinery/door/airlock/AICtrlClick(mob/living/silicon/ai/user) // Bolts doors
 	if(obj_flags & EMAGGED)
+		return
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Priming servos..."))
 		return
 
 	toggle_bolt(user)
@@ -178,6 +201,8 @@
 /obj/machinery/door/airlock/ai_click_alt(mob/living/silicon/ai/user)
 	if(obj_flags & EMAGGED)
 		return NONE
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Priming servos..."))
+		return CLICK_ACTION_BLOCKING
 
 	if(!secondsElectrified)
 		shock_perm(user)
@@ -188,6 +213,8 @@
 /obj/machinery/door/airlock/AIShiftClick(mob/living/silicon/ai/user)  // Opens and closes doors!
 	if(obj_flags & EMAGGED)
 		return FALSE
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Priming servos..."))
+		return TRUE
 
 	user_toggle_open(user)
 	add_hiddenprint(user)
@@ -195,6 +222,8 @@
 
 /obj/machinery/door/airlock/AICtrlShiftClick(mob/living/silicon/ai/user)  // Sets/Unsets Emergency Access Override
 	if(obj_flags & EMAGGED)
+		return
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Priming servos..."))
 		return
 
 	toggle_emergency(user)
@@ -208,12 +237,16 @@
 /obj/machinery/power/apc/AICtrlClick(mob/living/silicon/ai/user)
 	if(!can_use(user, loud = TRUE))
 		return
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Polling APC..."))
+		return
 
 	toggle_breaker(user)
 
 /// Toggle APC environment settings (atmos)
 /obj/machinery/power/apc/AICtrlShiftClick(mob/living/silicon/ai/user)
 	if(!can_use(user, loud = TRUE))
+		return
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Polling APC..."))
 		return
 
 	if(!is_operational || failure_timer)
@@ -232,6 +265,8 @@
 /obj/machinery/power/apc/AIShiftClick(mob/living/silicon/ai/user)
 	if(!can_use(user, loud = TRUE))
 		return FALSE
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Polling APC..."))
+		return TRUE
 
 	if(!is_operational || failure_timer)
 		return FALSE
@@ -250,6 +285,8 @@
 /obj/machinery/power/apc/ai_click_alt(mob/living/silicon/ai/user)
 	if(!can_use(user, loud = TRUE))
 		return NONE
+	if(!user.wait_for_subcontroller(src, "No connection to subcontroller detected. Polling APC..."))
+		return CLICK_ACTION_BLOCKING
 
 	if(!is_operational || failure_timer)
 		return CLICK_ACTION_BLOCKING

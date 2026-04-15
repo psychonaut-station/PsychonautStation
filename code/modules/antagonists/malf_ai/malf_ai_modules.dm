@@ -65,6 +65,10 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	var/mob/living/silicon/ai/owner_AI
 	/// Amount of uses for this action. Defining this as 0 will make this infinite-use
 	var/uses = FALSE
+	/// Maximum charges this action can be recharged to. 0 means the action is not charge-based.
+	var/max_uses = 0
+	/// If FALSE, this action stays on the AI even when it reaches 0 uses.
+	var/delete_on_empty = TRUE
 	/// If we automatically use up uses on each activation
 	var/auto_use_uses = TRUE
 	/// If applicable, the time in deciseconds we have to wait before using any more modules
@@ -77,8 +81,12 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		qdel(src)
 	else
 		owner_AI = owner
+		if(!max_uses && initial(uses) > 0)
+			max_uses = initial(uses)
 
 /datum/action/innate/ai/IsAvailable(feedback = FALSE)
+	if(max_uses && uses <= 0)
+		return FALSE
 	if(owner_AI && !COOLDOWN_FINISHED(owner_AI, malf_cooldown))
 		return FALSE
 	. = ..()
@@ -90,14 +98,23 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	if(cooldown_period)
 		COOLDOWN_START(owner_AI, malf_cooldown, cooldown_period)
 
+/datum/action/innate/ai/proc/handle_empty_uses(silent)
+	uses = 0
+	if(!silent && initial(uses) > 1)
+		to_chat(owner, span_warning("[name] has run out of uses!"))
+	if(delete_on_empty)
+		qdel(src)
+		return
+	if(owner?.click_intercept == src)
+		unset_ranged_ability(owner)
+	build_all_button_icons()
+
 /datum/action/innate/ai/proc/adjust_uses(amt, silent)
 	uses += amt
-	if(!silent && uses)
+	if(!silent && uses > 0)
 		to_chat(owner, span_notice("[name] now has <b>[uses]</b> use[uses > 1 ? "s" : ""] remaining."))
 	if(uses <= 0)
-		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, span_warning("[name] has run out of uses!"))
-		qdel(src)
+		handle_empty_uses(silent)
 
 /// Framework for ranged abilities that can have different effects by left-clicking stuff.
 /datum/action/innate/ai/ranged
@@ -107,13 +124,16 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 /datum/action/innate/ai/ranged/adjust_uses(amt, silent)
 	uses += amt
-	if(!silent && uses)
+	if(!silent && uses > 0)
 		to_chat(owner, span_notice("[name] now has <b>[uses]</b> use\s remaining."))
-	if(!uses)
-		if(initial(uses) > 1) //no need to tell 'em if it was one-use anyway!
-			to_chat(owner, span_warning("[name] has run out of uses!"))
-		Remove(owner)
-		QDEL_IN(src, 10 SECONDS) //let any active timers on us finish up
+	if(uses <= 0)
+		if(delete_on_empty)
+			if(initial(uses) > 1 && !silent)
+				to_chat(owner, span_warning("[name] has run out of uses!"))
+			Remove(owner)
+			QDEL_IN(src, 10 SECONDS) //let any active timers on us finish up
+			return
+		handle_empty_uses(silent)
 
 /// The base module type, which holds info about each ability.
 /datum/ai_module

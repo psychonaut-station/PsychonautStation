@@ -56,6 +56,22 @@
 			return ITEM_INTERACT_SUCCESS
 	return NONE
 
+/obj/item/aicard/attack_ghost(mob/dead/observer/user)
+	if(AI && user?.can_reenter_corpse && user.mind && AI.mind && user.mind == AI.mind)
+		if(AI.key && !IS_FAKE_KEY(AI.key))
+			to_chat(user, span_warning("Another consciousness is in your AI shell... It is resisting you."))
+			return TRUE
+		if(user.mind.current == AI)
+			user.reenter_corpse()
+			return TRUE
+		user.client?.view_size.resetToDefault()
+		SStgui.on_transfer(user, AI)
+		AI.PossessByPlayer(user.key)
+		AI.client?.init_verbs()
+		AI.view_core()
+		return TRUE
+	return ..()
+
 /// Tries to get an AI from the atom clicked
 /obj/item/aicard/proc/capture_ai(atom/from_what, mob/living/user)
 	from_what.transfer_ai(AI_TRANS_TO_CARD, user, null, src)

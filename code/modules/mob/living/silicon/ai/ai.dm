@@ -36,6 +36,7 @@
 	to_chat(src, span_bold("You are playing the station's AI. The AI cannot move, but can interact with many objects while viewing them (through cameras)."))
 	to_chat(src, span_bold("To look at other parts of the station, click on yourself to get a camera menu."))
 	to_chat(src, span_bold("While observing through a camera, you can use most (networked) devices which you can see, such as computers, APCs, intercoms, doors, etc."))
+	to_chat(src, span_bold("Use the Processing Dashboard button on your HUD to manage decentralized projects, CPU, and RAM."))
 	to_chat(src, "To use something, simply click on it.")
 	to_chat(src, "For department channels, use the following say commands:")
 	to_chat(src, ":o - AI Private, :c - Command, :s - Security, :e - Engineering, :u - Supply, :v - Service, :m - Medical, :n - Science, :h - Holopad.")
@@ -47,6 +48,7 @@
 	job = "AI"
 
 	INVOKE_ASYNC(src, PROC_REF(create_modularInterface))
+	dashboard = new(src)
 
 	// /mob/living/silicon/ai/apply_prefs_job() uses these to set these procs at mapload
 	// this is used when a person is being inserted into an AI core during a round
@@ -67,10 +69,12 @@
 
 	deploy_action.Grant(src)
 
-	if(isturf(loc))
+	if(isvalidAIloc(loc))
 		add_verb(src, list(
+			/mob/living/silicon/ai/proc/access_ai_dashboard,
 			/mob/living/silicon/ai/proc/ai_network_change,
 			/mob/living/silicon/ai/proc/ai_hologram_change,
+			/mob/living/silicon/ai/verb/pick_status_display,
 			/mob/living/silicon/ai/proc/botcall,
 			/mob/living/silicon/ai/proc/control_integrated_radio,
 			/mob/living/silicon/ai/proc/set_automatic_say_channel,
@@ -149,6 +153,7 @@
 	QDEL_NULL(aiMulti)
 	QDEL_NULL(alert_control)
 	QDEL_NULL(ai_tracking_tool)
+	QDEL_NULL(dashboard)
 	malfhack = null
 	current = null
 	bot_ref = null
@@ -186,6 +191,7 @@
 	else if(client && client.prefs)
 		preferred_choice = client.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 
+	selected_display_name = preferred_choice
 	display_icon_override = resolve_ai_icon(preferred_choice)
 
 	update_appearance()
@@ -193,6 +199,9 @@
 	if(istype(loc, /obj/item/aicard))
 		var/obj/item/aicard/card = loc
 		card.update_appearance()
+
+	for(var/obj/machinery/status_display/ai_core/core_display as anything in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/status_display/ai_core))
+		core_display.refresh_from_network_ai(src)
 
 /// Apply an AI's hologram preference
 /mob/living/silicon/ai/proc/apply_pref_hologram_display(client/player_client)
@@ -242,8 +251,8 @@
 
 /mob/living/silicon/ai/verb/pick_status_display()
 	set category = "AI Commands"
-	set name = "Set AI Status Display"
-	set desc = "Choose what appears on status displays around the station"
+	set name = "AI Status"
+	set desc = "Choose what appears on status displays around the station."
 
 	if(incapacitated)
 		to_chat(src, span_warning("You cannot access the status display controls in your current state."))
@@ -253,13 +262,26 @@
 		status_display_picker = new(src)
 	status_display_picker.ui_interact(src)
 
+/mob/living/silicon/ai/proc/access_ai_dashboard()
+	set category = "AI Commands"
+	set name = "Access AI Dashboard"
+	set desc = "Open the decentralized AI dashboard."
+
+	if(incapacitated)
+		to_chat(src, span_warning("You cannot access the AI dashboard in your current state."))
+		return
+
+	if(!dashboard)
+		dashboard = new(src)
+	dashboard.ui_interact(src)
+
 /mob/living/silicon/ai/get_status_tab_items()
 	. = ..()
 	if(stat != CONSCIOUS)
 		. += "Systems nonfunctional"
 		return
 	. += "System integrity: [(health + 100) * 0.5]%"
-	if(isturf(loc)) //only show if we're "in" a core
+	if(isvalidAIloc(loc)) //only show if we're "in" a core
 		. += "Backup Power: [battery * 0.5]%"
 	. += "Connected cyborgs: [length(connected_robots)]"
 	for(var/r in connected_robots)
@@ -437,6 +459,27 @@
 			to_chat(src, span_notice("APC backdoor is no longer available."))
 			return
 		apc_override.ui_interact(src)
+		return
+
+	if(href_list["stopTrackHuman"])
+		if(!cameraMemoryTarget)
+			return
+		to_chat(src, span_notice("Target no longer being tracked."))
+		cameraMemoryTarget = null
+		cameraMemoryTickCount = 0
+		return
+
+	if(href_list["trackHuman"])
+		var/track_name = href_list["trackHuman"]
+		if(!track_name)
+			to_chat(src, span_warning("Unable to track target."))
+			return
+		if(cameraMemoryTarget)
+			to_chat(src, span_warning("Old target discarded. Exclusively tracking new target."))
+		else
+			to_chat(src, span_notice("Now tracking new target, [track_name]."))
+		cameraMemoryTarget = track_name
+		cameraMemoryTickCount = 0
 		return
 
 	if(incapacitated)
@@ -806,13 +849,17 @@
 		balloon_alert(user, "no intelligence detected!") // average tg coder am i right
 		return
 	ShutOffDoomsdayDevice()
-	var/obj/structure/ai_core/new_core = new /obj/structure/ai_core(loc, CORE_STATE_FINISHED, make_mmi())
-	new_core.circuit.battery = battery
+	if(istype(loc, /obj/machinery/ai/data_core))
+		ai_network?.remove_ai(src)
+	else
+		var/obj/structure/ai_core/new_core = new /obj/structure/ai_core(loc, CORE_STATE_FINISHED, make_mmi())
+		new_core.circuit.battery = battery
 	ai_restore_power()//So the AI initially has power.
 	set_control_disabled(TRUE) //Can't control things remotely if you're stuck in a card!
 	radio_enabled = FALSE //No talking on the built-in radio for you either!
 	forceMove(card)
 	card.AI = src
+	card.update_appearance()
 	to_chat(src, "You have been downloaded to a mobile storage device. Remote device connection severed.")
 	to_chat(user, "[span_boldnotice("Transfer successful")]: [name] ([rand(1000,9999)].exe) removed from host terminal and stored within local memory.")
 
@@ -823,7 +870,7 @@
 	return can_see(target) && ..() //stop AIs from leaving windows open and using then after they lose vision
 
 /mob/living/silicon/ai/proc/can_see(atom/A)
-	if(isturf(loc)) //AI in core, check if on cameras
+	if(isvalidAIloc(loc)) //AI in core, check if on cameras
 		//get_turf_pixel() is because APCs in maint aren't actually in view of the inner camera
 		//apc_override is needed here because AIs use their own APC when depowered
 		return (SScameras.is_visible_by_cameras(get_turf_pixel(A)) || (A == apc_override))
@@ -919,7 +966,7 @@
 		client.set_eye(new_eye)
 	else
 		end_multicam()
-		if(isturf(loc))
+		if(isvalidAIloc(loc))
 			if(eyeobj)
 				client.set_eye(eyeobj)
 				client.perspective = EYE_PERSPECTIVE

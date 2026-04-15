@@ -1,5 +1,15 @@
 /// List of all cables, so that powernets don't have to look through the entire world all the time
 GLOBAL_LIST_EMPTY(cable_list)
+/// List of all ethernet cables, used by the Yog AI network port.
+GLOBAL_LIST_EMPTY(ethernet_cable_list)
+/// All decentralized AI data cores currently in the world.
+GLOBAL_LIST_EMPTY(data_cores)
+/// All decentralized AI server cabinets currently in the world.
+GLOBAL_LIST_EMPTY(server_cabinets)
+/// All AI networking machines currently in the world.
+GLOBAL_LIST_EMPTY(ai_networking_machines)
+/// Preferred fallback core for Yog-style AI relocation.
+GLOBAL_VAR_INIT(primary_data_core, null)
 
 /// List of all portals
 GLOBAL_LIST_EMPTY(portals)

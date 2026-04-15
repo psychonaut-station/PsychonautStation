@@ -1,14 +1,13 @@
 /datum/hud/ai
-	ui_style = 'icons/hud/screen_ai.dmi'
+	ui_style = 'icons/mob/screen_ai.dmi'
 
 /datum/hud/ai/initialize_screen_objects()
 	. = ..()
-	add_screen_object(/atom/movable/screen/language_menu, HUD_MOB_LANGUAGE_MENU, HUD_GROUP_STATIC, ui_style, ui_ai_language_menu)
-	add_screen_object(/atom/movable/screen/memories, HUD_MOB_MEMORIES, HUD_GROUP_STATIC, ui_style, ui_ai_memories_menu)
-	add_screen_object(/atom/movable/screen/ai/floor_indicator, HUD_AI_FLOOR_INDICATOR)
-	add_screen_object(/atom/movable/screen/ai/go_up, HUD_AI_GO_UP)
-	add_screen_object(/atom/movable/screen/ai/go_up/down, HUD_AI_GO_DOWN)
+	var/widescreen = mymob?.client?.prefs?.read_preference(/datum/preference/toggle/widescreen)
+
+	add_screen_object(/atom/movable/screen/language_menu, HUD_MOB_LANGUAGE_MENU, HUD_GROUP_STATIC, ui_loc = widescreen ? ui_ai_language_menu_widescreen : ui_ai_language_menu)
 	add_screen_object(/atom/movable/screen/ai/aicore, HUD_AI_AICORE)
+	add_screen_object(/atom/movable/screen/ai/dashboard, HUD_AI_DASHBOARD, ui_loc = widescreen ? ui_ai_dashboard_widescreen : ui_ai_dashboard)
 	add_screen_object(/atom/movable/screen/ai/camera_list, HUD_AI_CAMERA_LIST)
 	add_screen_object(/atom/movable/screen/ai/camera_track, HUD_AI_CAMERA_TRACK)
 	add_screen_object(/atom/movable/screen/ai/camera_light, HUD_AI_CAMERA_LIGHT)
@@ -18,9 +17,9 @@
 	add_screen_object(/atom/movable/screen/ai/announcement, HUD_AI_ANNOUNCEMENT)
 	add_screen_object(/atom/movable/screen/ai/call_shuttle, HUD_AI_CALL_SHUTTLE)
 	add_screen_object(/atom/movable/screen/ai/state_laws, HUD_AI_STATE_LAWS)
+	add_screen_object(/atom/movable/screen/ai/modpc, HUD_SILICON_TABLET)
 	add_screen_object(/atom/movable/screen/ai/image_take, HUD_AI_TAKE_IMAGE)
 	add_screen_object(/atom/movable/screen/ai/image_view, HUD_AI_IMAGE_VIEW)
 	add_screen_object(/atom/movable/screen/ai/sensors, HUD_AI_SENSORS)
-	add_screen_object(/atom/movable/screen/ai/multicam, HUD_AI_MULTICAM)
-	add_screen_object(/atom/movable/screen/ai/add_multicam, HUD_AI_ADD_MULTICAM)
-	add_screen_object(/atom/movable/screen/ai/modpc, HUD_SILICON_TABLET)
+	add_screen_object(/atom/movable/screen/ai/multicam, HUD_AI_MULTICAM, ui_loc = widescreen ? ui_ai_multicam_widescreen : ui_ai_multicam)
+	add_screen_object(/atom/movable/screen/ai/add_multicam, HUD_AI_ADD_MULTICAM, ui_loc = widescreen ? ui_ai_add_multicam_widescreen : ui_ai_add_multicam)

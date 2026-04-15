@@ -1,5 +1,5 @@
 /atom/movable/screen/ai
-	icon = 'icons/hud/screen_ai.dmi'
+	icon = 'icons/mob/screen_ai.dmi'
 	mouse_over_pointer = MOUSE_HAND_POINTER
 
 /atom/movable/screen/ai/Click()
@@ -17,6 +17,17 @@
 
 	var/mob/living/silicon/ai/AI = usr
 	AI.view_core()
+
+/atom/movable/screen/ai/dashboard
+	name = "Processing Dashboard"
+	icon_state = "dashboard"
+	screen_loc = ui_ai_dashboard
+
+/atom/movable/screen/ai/dashboard/Click()
+	if(..())
+		return
+	var/mob/living/silicon/ai/AI = usr
+	AI.access_ai_dashboard()
 
 /atom/movable/screen/ai/camera_list
 	name = "Show Camera List"
@@ -52,9 +63,9 @@
 	AI.toggle_camera_light()
 
 /atom/movable/screen/ai/modpc
-	name = "Messenger"
+	name = "Modular Interface"
 	icon_state = "pda_send"
-	screen_loc = ui_ai_mod_int
+	screen_loc = ui_ai_pda_send
 
 /atom/movable/screen/ai/modpc/Click()
 	if(..())
@@ -118,7 +129,7 @@
 	AI.ai_call_shuttle()
 
 /atom/movable/screen/ai/state_laws
-	name = "State Laws"
+	name = "Law Manager"
 	icon_state = "state_laws"
 	screen_loc = ui_ai_state_laws
 

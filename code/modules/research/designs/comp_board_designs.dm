@@ -323,6 +323,26 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/datum/design/board/ai_server_overview
+	name = "AI Server Overview Console Board"
+	desc = "Allows for the construction of circuit boards used to build an AI server overview console."
+	id = "ai_server_overview"
+	build_path = /obj/item/circuitboard/computer/ai_server_overview
+	category = list(
+		RND_CATEGORY_COMPUTER + RND_SUBCATEGORY_COMPUTER_ROBOTICS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/ai_overclocking
+	name = "AI Overclocking Workstation Board"
+	desc = "Allows for the construction of circuit boards used to build an AI overclocking workstation."
+	id = "ai_overclocking"
+	build_path = /obj/item/circuitboard/computer/ai_overclocking
+	category = list(
+		RND_CATEGORY_COMPUTER + RND_SUBCATEGORY_COMPUTER_ROBOTICS
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
 /datum/design/board/libraryconsole
 	name = "Library Console Board"
 	desc = "Allows for the construction of circuit boards used to build a new library console."

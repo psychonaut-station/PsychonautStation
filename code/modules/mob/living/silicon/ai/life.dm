@@ -9,7 +9,10 @@
 		// messenging the client
 		malfhacked(malfhack)
 
-	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
+	if(dashboard)
+		dashboard.tick(seconds_per_tick)
+
+	if(isvalidAIloc(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
 		view_core()
 
 	// Handle power damage (oxy)
@@ -36,6 +39,15 @@
 
 	else if(!aiRestorePowerRoutine)
 		ai_lose_power()
+
+	if(cameraMemoryTarget)
+		if(cameraMemoryTickCount >= AI_CAMERA_MEMORY_TICKS)
+			cameraMemoryTickCount = 0
+			var/list/trackable_targets = ai_tracking_tool?.find_trackable_mobs()
+			if(trackable_targets && (cameraMemoryTarget in trackable_targets))
+				to_chat(src, span_userdanger("Tracked target [cameraMemoryTarget] is now visible on cameras. Tracking disabled."))
+				cameraMemoryTarget = null
+		cameraMemoryTickCount++
 
 /mob/living/silicon/ai/proc/lacks_power()
 	var/turf/T = get_turf(src)

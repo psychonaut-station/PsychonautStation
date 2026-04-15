@@ -45,6 +45,7 @@
 
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
+	var/list/obj/structure/ethernet_cable/ethernet_cables = list()
 	var/list/atom/atoms = list()
 
 	require_area_resort()
@@ -60,11 +61,15 @@
 			if(istype(atom, /obj/structure/cable))
 				cables += atom
 				continue
+			if(istype(atom, /obj/structure/ethernet_cable))
+				ethernet_cables += atom
+				continue
 			if(istype(atom, /obj/machinery/atmospherics))
 				atmos_machines += atom
 
 	SSatoms.InitializeAtoms(atoms)
 	SSmachines.setup_template_powernets(cables)
+	SSmachines.setup_template_ainets(ethernet_cables)
 	SSair.setup_template_machinery(atmos_machines)
 	GLOB.reloading_map = FALSE
 

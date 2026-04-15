@@ -56,6 +56,7 @@
 
 	var/list/obj/machinery/atmospherics/atmos_machines = list()
 	var/list/obj/structure/cable/cables = list()
+	var/list/obj/structure/ethernet_cable/ethernet_cables = list()
 	var/list/atom/movable/movables = list()
 	var/list/obj/docking_port/stationary/ports = list()
 	var/list/area/areas = list()
@@ -76,6 +77,9 @@
 			movables += movable_in_turf
 			if(istype(movable_in_turf, /obj/structure/cable))
 				cables += movable_in_turf
+				continue
+			if(istype(movable_in_turf, /obj/structure/ethernet_cable))
+				ethernet_cables += movable_in_turf
 				continue
 			if(istype(movable_in_turf, /obj/machinery/atmospherics))
 				atmos_machines += movable_in_turf
@@ -102,6 +106,7 @@
 	// NOTE, now that Initialize and LateInitialize run correctly, do we really
 	// need these two below?
 	SSmachines.setup_template_powernets(cables)
+	SSmachines.setup_template_ainets(ethernet_cables)
 	SSair.setup_template_machinery(atmos_machines)
 
 	//calculate all turfs inside the border

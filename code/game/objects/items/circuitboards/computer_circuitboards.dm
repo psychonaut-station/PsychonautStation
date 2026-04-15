@@ -459,6 +459,16 @@
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE
 	build_path = /obj/machinery/computer/aifixer
 
+/obj/item/circuitboard/computer/ai_server_overview
+	name = "AI Server Overview Console"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/computer/ai_server_console
+
+/obj/item/circuitboard/computer/ai_overclocking
+	name = "AI Overclocking Workstation"
+	greyscale_colors = CIRCUIT_COLOR_SCIENCE
+	build_path = /obj/machinery/computer/ai_overclocking
+
 /obj/item/circuitboard/computer/launchpad_console
 	name = "Launchpad Control Console"
 	greyscale_colors = CIRCUIT_COLOR_SCIENCE

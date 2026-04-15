@@ -85,38 +85,46 @@
 	return ..()
 
 /mob/proc/AIize(client/preference_source, move = TRUE)
-	var/list/turf/landmark_loc = list()
+	var/list/spawn_targets = list()
 
-	if(!move)
-		landmark_loc += loc
-	else
-		for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
-			if(locate(/mob/living/silicon/ai) in sloc.loc)
-				continue
-			if(sloc.primary_ai)
-				LAZYCLEARLIST(landmark_loc)
-				landmark_loc += sloc.loc
-				break
-			landmark_loc += sloc.loc
-		if(!length(landmark_loc))
+	if(move)
+		for(var/obj/machinery/ai/data_core/core in GLOB.data_cores)
+			if(core.valid_data_core())
+				spawn_targets += core
+
+	if(!length(spawn_targets))
+		if(!move)
+			spawn_targets += loc
+		else
+			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
+				if(locate(/mob/living/silicon/ai) in sloc.loc)
+					continue
+				if(sloc.primary_ai)
+					LAZYCLEARLIST(spawn_targets)
+					spawn_targets += sloc.loc
+					break
+				spawn_targets += sloc.loc
+		if(!length(spawn_targets))
 			to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
 			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
-				landmark_loc += sloc.loc
+				spawn_targets += sloc.loc
 
-	if(!length(landmark_loc))
+	if(!length(spawn_targets))
 		message_admins("Could not find ai landmark for [src]. Yell at a mapper! We are spawning them at their current location.")
-		landmark_loc += loc
+		spawn_targets += loc
 
 	if(client)
 		stop_sound_channel(CHANNEL_LOBBYMUSIC)
 
-	var/mob/living/silicon/ai/our_AI = new /mob/living/silicon/ai(pick(landmark_loc), null, src)
+	var/mob/living/silicon/ai/our_AI = new /mob/living/silicon/ai(pick(spawn_targets), null, src)
 	. = our_AI
 
 	if(preference_source)
 		apply_pref_name(/datum/preference/name/ai, preference_source)
 		our_AI.apply_pref_hologram_display(preference_source)
+		our_AI.apply_pref_emote_display(preference_source)
 		our_AI.set_core_display_icon(null, preference_source)
+	our_AI.claim_default_network_resources()
 
 	qdel(src)
 

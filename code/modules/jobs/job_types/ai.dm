@@ -17,28 +17,54 @@
 	allow_bureaucratic_error = FALSE
 	departments_list = list(
 		/datum/job_department/silicon,
-		)
+	)
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 	config_tag = "AI"
 	alt_titles = list(
 		"AI",
 		"Station Intelligence",
-		"Automated Overseer"
+		"Automated Overseer",
 	)
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
-	//we may have been created after our borg
-	if(SSticker.current_state == GAME_STATE_SETTING_UP)
-		for(var/mob/living/silicon/robot/R in GLOB.silicon_mobs)
-			if(!R.connected_ai)
-				R.TryConnectToAI()
 	var/mob/living/silicon/ai/ai_spawn = spawned
+	if(!istype(ai_spawn))
+		return
+
+	var/obj/machinery/ai/data_core/start_core = ai_spawn.available_ai_cores(TRUE)
+	if(!start_core)
+		for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+			ai_landmark.bootstrap_decentralized_ai_hardware()
+		start_core = ai_spawn.available_ai_cores(TRUE)
+
+	if(!start_core)
+		start_core = GLOB.primary_data_core
+	if(!start_core)
+		for(var/obj/machinery/ai/data_core/fallback_core as anything in GLOB.data_cores)
+			start_core = fallback_core
+			break
+
+	if(start_core && !QDELETED(start_core))
+		start_core.transfer_ai_mob(ai_spawn)
+		if(start_core.can_transfer_ai())
+			ai_spawn.claim_default_network_resources()
+			ai_spawn.pending_roundstart_link = FALSE
+		else
+			ai_spawn.pending_roundstart_link = TRUE
+	else
+		ai_spawn.complete_roundstart_relocation()
+
+	if(SSticker.current_state == GAME_STATE_SETTING_UP)
+		for(var/mob/living/silicon/robot/robot in GLOB.silicon_mobs)
+			if(!robot.connected_ai)
+				robot.TryConnectToAI()
+
 	if(player_client)
 		ai_spawn.set_gender(player_client)
-	ai_spawn.log_current_laws()
 
+	ai_spawn.log_current_laws()
 
 /datum/job/ai/get_roundstart_spawn_point()
 	return get_latejoin_spawn_point()
@@ -52,16 +78,18 @@
 		var/turf/core_turf = get_turf(inactive_core)
 		qdel(inactive_core)
 		return core_turf
-	var/list/primary_spawn_points = list() // Ideal locations.
-	var/list/secondary_spawn_points = list() // Fallback locations.
+
+	var/list/primary_spawn_points = list()
+	var/list/secondary_spawn_points = list()
 	for(var/obj/effect/landmark/start/ai/spawn_point in GLOB.landmarks_list)
 		if(spawn_point.used)
 			secondary_spawn_points += list(spawn_point)
 			continue
 		if(spawn_point.primary_ai)
 			primary_spawn_points = list(spawn_point)
-			break // Bingo.
+			break
 		primary_spawn_points += spawn_point
+
 	var/obj/effect/landmark/start/ai/chosen_spawn_point
 	if(length(primary_spawn_points))
 		chosen_spawn_point = pick(primary_spawn_points)
@@ -69,21 +97,20 @@
 		chosen_spawn_point = pick(secondary_spawn_points)
 	else
 		CRASH("Failed to find any AI spawn points.")
+
 	chosen_spawn_point.used = TRUE
 	return chosen_spawn_point
 
 /datum/job/ai/special_check_latejoin(client/C)
-	for(var/obj/structure/ai_core/latejoin_inactive/latejoin_core as anything in GLOB.latejoin_ai_cores)
-		if(latejoin_core.is_available())
+	for(var/obj/machinery/ai/data_core/latejoin_core as anything in GLOB.data_cores)
+		if(latejoin_core.valid_data_core())
 			return TRUE
 	return FALSE
-
 
 /datum/job/ai/announce_job(mob/living/joining_mob)
 	. = ..()
 	if(SSticker.HasRoundStarted())
-		minor_announce("[joining_mob] [AREACOORD(joining_mob)] bölgesindeki boş bir bluespace-bağlantılı AI core'a indirildi.")
-
+		minor_announce("[joining_mob] has been downloaded to the central AI network.")
 
 /datum/job/ai/config_check()
 	return CONFIG_GET(flag/allow_ai)

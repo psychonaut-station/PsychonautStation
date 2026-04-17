@@ -1048,6 +1048,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SETTLER "settler"
 #define TRAIT_STRONG_STOMACH "strong_stomach"
 #define TRAIT_VEGETARIAN "trait_vegetarian"
+#define TRAIT_KEEN_NOSE "keen_nose"
 
 /// This mob always lands on their feet when they fall, for better or for worse.
 #define TRAIT_CATLIKE_GRACE "catlike_grace"
@@ -1306,7 +1307,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 // Radiation defines
 
 /// Marks that this object is irradiated
-#define TRAIT_IRRADIATED "iraddiated"
+#define TRAIT_IRRADIATED "irradiated"
 
 /// Immune to being irradiated
 #define TRAIT_RADIMMUNE "rad_immunity"
@@ -1535,7 +1536,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
  * (This may be changed later but I chose to do it this way to avoid messing up interactions which require combat mode)
  */
 #define TRAIT_COMBAT_MODE_SKIP_INTERACTION "combat_mode_skip_interaction"
-// bars change of combat mode
+///Prevents the user from swapping combat intent.
 #define TRAIT_COMBAT_MODE_LOCK "combat_mode_lock"
 
 ///A "fake" effect that should not be subject to normal effect removal methods (like the effect remover component)

@@ -111,3 +111,22 @@
 	desc = "A pair of highly reflective eyes with slit pupils, like those of a cat."
 	pupils_name = "slit pupils"
 	penlight_message = "shine under the pearly light"
+
+/obj/item/organ/eyes/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
+	no_glasses = TRUE
+
+/obj/item/organ/eyes/night_vision/arachnid
+	name = "arachnid eyes"
+	desc = "So many eyes!"
+	eye_icon = 'icons/psychonaut/mob/human/species/arachnid/bodyparts.dmi'
+	eye_icon_state = "arachnideyes"
+	organ_traits = list(TRAIT_LUMINESCENT_EYES)
+	no_glasses = TRUE
+	low_light_cutoff = list(20, 15, 0)
+	medium_light_cutoff = list(35, 30, 0)
+	high_light_cutoff = list(50, 40, 0)

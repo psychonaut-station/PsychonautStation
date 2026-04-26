@@ -255,13 +255,8 @@
 	// Is the rift now fully charged?
 	if(time_charged >= max_charge)
 		charge_state = CHARGE_COMPLETED
-<<<<<<< HEAD
-		var/area/A = get_area(src)
-		priority_announce("Uzaysal nesne [initial(A.name)] bölgesindeki en yüksek enerji düzeyine ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
-=======
 		var/area/location = get_area(src)
-		priority_announce("Spatial object has reached peak energy charge in [initial(location.name)], please stand-by.", "[command_name()] Wildlife Observations", has_important_message = TRUE)
->>>>>>> 2c9bb6235925cd09c3b7d78f74ce19906591c2a7
+		priority_announce("Uzaysal nesne [initial(location.name)] bölgesindeki en yüksek enerji düzeyine ulaştı, lütfen beklemede kalın.", "[command_name()] Vahşi Yaşam Gözlemleme", has_important_message = TRUE)
 		atom_integrity = INFINITY
 		icon_state = "carp_rift_charged"
 		set_light_color(LIGHT_COLOR_DIM_YELLOW)

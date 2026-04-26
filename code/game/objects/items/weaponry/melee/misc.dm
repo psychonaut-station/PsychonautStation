@@ -270,7 +270,6 @@
 		final_block_chance = 0
 	return ..()
 
-<<<<<<< HEAD
 /obj/item/mantis_blade
 	name = "C.H.R.O.M.A.T.A. mantis blade"
 	desc = "Powerful inbuilt blade, hidden just beneath the skin. Singular brain signals directly link to this bad boy, allowing it to spring into action in just seconds."
@@ -451,11 +450,10 @@
 //blocking with blades slow you down
 /datum/movespeed_modifier/shield_blades
 	multiplicative_slowdown = 1.25
-=======
+
 /datum/material_slot/weapon_head/mace
 	name = "mace head"
 	material_amount = 3
->>>>>>> 2c9bb6235925cd09c3b7d78f74ce19906591c2a7
 
 /obj/item/sord
 	name = "\improper SORD"

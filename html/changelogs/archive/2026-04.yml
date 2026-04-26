@@ -203,11 +203,6 @@
       rather than as a second report (usually) following the roundstart report.
   lelandkemble:
   - bugfix: Neurine works in the dead again
-<<<<<<< HEAD
-2026-04-13:
-  Nukkun-01:
-  - rscadd: "Yeni rak\u0131lar eklendi."
-=======
   - bugfix: Escape pod storage wall safes will now be unlocked when they're unlocked
       and appear locked when they're locked
 2026-04-11:
@@ -270,6 +265,8 @@
   Iamgoofball:
   - qol: Restores keybindings to their original pre-August 2025 defaults, moves the
       new per-hand bind options to Unbound by default.
+  Nukkun-01:
+  - rscadd: "Yeni rak\u0131lar eklendi."
   Rhials:
   - bugfix: Donk Trading Post cameras no longer show up on the station cameranet
   SmArtKar:
@@ -554,4 +551,3 @@
   - bugfix: metalgen and secret sauce recipes are now loaded properly
   timothymtorres:
   - map: Add Shoe Factory to lava/ice ruins.
->>>>>>> 2c9bb6235925cd09c3b7d78f74ce19906591c2a7

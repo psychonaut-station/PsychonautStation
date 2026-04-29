@@ -427,7 +427,10 @@
 	departmental_flags = DEPARTMENT_BITFLAG_COMMAND
 
 /datum/design/board/shuttle
-	category = list("Computer Boards", "Shuttle Machinery")
+	build_type = IMPRINTER
+	category = list(
+		RND_CATEGORY_COMPUTER + RND_SUBCATEGORY_COMPUTER_ENGINEERING
+	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE | DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_CARGO
 
 /datum/design/board/shuttle/flight_control

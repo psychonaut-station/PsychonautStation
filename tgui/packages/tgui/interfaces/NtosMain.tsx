@@ -27,6 +27,15 @@ export const NtosMain = (props) => {
     proposed_login,
     pai,
   } = data;
+  const usesDarkAlert = alert_color === 'black';
+  const alertIndicatorClassName = [
+    'alertIndicator',
+    alert_style === alert_relevancies.ALERT_RELEVANCY_PERTINENT &&
+      'alertBlink',
+    usesDarkAlert && 'alertIndicator--roboticBlack',
+  ]
+    .filter(Boolean)
+    .join(' ');
   const filtered_programs = programs.filter(
     (program) => program.header_program,
   );
@@ -62,24 +71,24 @@ export const NtosMain = (props) => {
                 </Stack.Item>
               ))}
               <Stack.Item right={0}>
-                <Button
-                  className={
-                    alert_style === alert_relevancies.ALERT_RELEVANCY_PERTINENT
-                      ? 'alertIndicator alertBlink'
-                      : 'alertIndicator'
-                  }
-                  textColor={
-                    alert_style === alert_relevancies.ALERT_RELEVANCY_SAFE
-                      ? alert_color
-                      : '#000000'
-                  }
-                  backgroundColor={
-                    alert_style === alert_relevancies.ALERT_RELEVANCY_SAFE
-                      ? '#0000000'
+                  <Button
+                    className={alertIndicatorClassName}
+                    textColor={
+                      alert_style === alert_relevancies.ALERT_RELEVANCY_SAFE
+                        ? alert_color
+                      : usesDarkAlert
+                        ? '#7fe3ff'
+                        : '#000000'
+                    }
+                    backgroundColor={
+                      alert_style === alert_relevancies.ALERT_RELEVANCY_SAFE
+                        ? '#0000000'
+                      : usesDarkAlert
+                        ? '#020508'
                       : alert_color
-                  }
-                  tooltip="The current alert level. Indicator becomes more intense when there is a threat, moreso if your department is responsible for handling it."
-                >
+                    }
+                    tooltip="The current alert level. Indicator becomes more intense when there is a threat, moreso if your department is responsible for handling it."
+                  >
                   {alert_name}
                 </Button>
               </Stack.Item>

@@ -539,7 +539,8 @@ GLOBAL_VAR(station_nuke_source)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_NUKE_DEVICE_ARMED, src)
 
 	countdown.start()
-	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_DELTA)
+		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	notify_ghosts(
 		"A nuclear device has been armed in [get_area_name(src)]!",
 		source = src,
@@ -555,7 +556,8 @@ GLOBAL_VAR(station_nuke_source)
 		disarmer.log_message("disarmed [src].", LOG_GAME)
 
 	detonation_timer = null
-	SSsecurity_level.set_level(previous_level)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
+		SSsecurity_level.set_level(previous_level)
 
 	for(var/obj/item/pinpointer/nuke/syndicate/nuke_pointer in GLOB.pinpointer_list)
 		nuke_pointer.switch_mode_to(initial(nuke_pointer.mode))
@@ -686,7 +688,7 @@ GLOBAL_VAR(station_nuke_source)
 				"Nükleer Operasyon Merkezi",
 			)
 
-	if(drop_level)
+	if(drop_level && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
 		SSsecurity_level.set_level(SEC_LEVEL_RED)
 	qdel(src)
 	return TRUE

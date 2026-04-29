@@ -21,7 +21,7 @@
 	///since the module purchasing is built into the antag info, we need to keep track of its compact mode here
 	var/module_picker_compactmode = FALSE
 	///malf on_gain sound effect. Set here so Infected AI can override
-	var/malf_sound = 'sound/music/antag/malf.ogg'
+	var/malf_sound = 'sound/music/antag/newmalf.mp3'
 
 /datum/antagonist/malf_ai/New(give_objectives = TRUE)
 	. = ..()
@@ -41,7 +41,7 @@
 
 	add_law_zero()
 	if(malf_sound)
-		owner.current.playsound_local(get_turf(owner.current), malf_sound, 100, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
+		owner.current.playsound_local(get_turf(owner.current), malf_sound, 255, FALSE, pressure_affected = FALSE, use_reverb = FALSE)
 	owner.current.grant_language(/datum/language/codespeak, source = LANGUAGE_MALF)
 
 	var/datum/atom_hud/data/hackyhud = GLOB.huds[DATA_HUD_MALF_APC]

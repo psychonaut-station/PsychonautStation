@@ -1,8 +1,8 @@
 /obj/machinery/status_display/ai_core
 	name = "\improper AI core display"
 	desc = "A large display that mirrors the decentralized AI's selected core avatar."
-	icon = 'icons/mob/ai.dmi'
-	icon_state = "ai-empty"
+	icon = 'icons/mob/silicon/ai.dmi'
+	icon_state = "ai-core"
 	current_mode = SD_PICTURE
 	circuit = /obj/item/circuitboard/machine/ai_core_display
 	density = TRUE
@@ -17,15 +17,30 @@
 
 /obj/machinery/status_display/ai_core/process()
 	if(machine_stat & NOPOWER)
-		set_picture(initial(icon_state), initial(icon))
+		set_picture("ai-empty", initial(icon))
 		return PROCESS_KILL
 
 	refresh_from_network_ai()
 	return PROCESS_KILL
 
+/obj/machinery/status_display/ai_core/update_overlays(updates)
+	. = list()
+
+	if(machine_stat & (NOPOWER|BROKEN))
+		clear_display()
+		return
+
+	clear_display()
+	if(current_mode != SD_PICTURE)
+		return
+
+	var/mutable_appearance/picture_overlay = mutable_appearance(current_picture_icon, current_picture)
+	picture_overlay.appearance_flags |= KEEP_APART
+	. += picture_overlay
+
 /obj/machinery/status_display/ai_core/proc/refresh_from_network_ai(mob/living/silicon/ai/target_ai)
 	if(machine_stat & NOPOWER)
-		set_picture(initial(icon_state), initial(icon))
+		set_picture("ai-empty", initial(icon))
 		return
 
 	if(!target_ai)
@@ -36,7 +51,7 @@
 			break
 
 	if(!target_ai)
-		set_picture(initial(icon_state), initial(icon))
+		set_picture("ai-empty", initial(icon))
 		return
 
 	if(target_ai.portrait_appearance?.icon && target_ai.portrait_appearance?.icon_state)
@@ -45,11 +60,11 @@
 
 	var/display_name = target_ai.selected_display_name
 	if(!display_name && target_ai.display_icon_override)
-		for(var/option_name in GLOB.ai_core_display_screens)
-			if(resolve_ai_icon_sync(option_name) == target_ai.display_icon_override)
+		for(var/option_name in get_all_ai_core_display_options())
+			if(get_ai_display_state(option_name) == target_ai.display_icon_override)
 				display_name = option_name
 				break
 
 	display_name ||= "Blue"
-	var/selected_icon = GLOB.ai_core_display_screen_icons[display_name] || initial(icon)
-	set_picture(resolve_ai_icon_sync(display_name), selected_icon)
+	var/selected_icon = get_ai_display_icon(display_name, initial(icon))
+	set_picture(get_ai_display_state(display_name), selected_icon)

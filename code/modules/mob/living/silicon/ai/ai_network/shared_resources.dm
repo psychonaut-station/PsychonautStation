@@ -44,13 +44,8 @@
 	if(unused_cpu <= 0)
 		return
 
-	var/datum/techweb/science/science_tech = locate(/datum/techweb/science) in SSresearch.techwebs
-	if(!science_tech)
-		return
-
 	var/research_points = max(round(AI_RESEARCH_PER_CPU * (unused_cpu * total_cpu()) * seconds_per_tick, 0.1), 0)
-	if(research_points > 0)
-		science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = research_points))
+	ai_add_station_research_points(research_points)
 
 /datum/ai_shared_resources/proc/total_cpu_assigned()
 	. = 0
@@ -79,7 +74,41 @@
 	for(var/datum/ai_network/network in networks)
 		ram_sources[network] += network.total_ram()
 		cpu_sources[network] += network.total_cpu()
+	prune_invalid_allocations()
 	update_allocations()
+
+/datum/ai_shared_resources/proc/is_valid_allocation_target(target)
+	if(!target)
+		return FALSE
+
+	if(istype(target, /datum/ai_network))
+		return target in networks
+
+	if(!isAI(target))
+		return FALSE
+
+	var/mob/living/silicon/ai/ai_mob = target
+	if(QDELETED(ai_mob))
+		return FALSE
+	if(ai_mob.ai_network && (ai_mob.ai_network in networks))
+		return TRUE
+	for(var/datum/ai_network/network in networks)
+		if(ai_mob in network.ai_list)
+			return TRUE
+	return FALSE
+
+/datum/ai_shared_resources/proc/prune_invalid_allocations()
+	for(var/target in cpu_assigned.Copy())
+		if(!is_valid_allocation_target(target))
+			cpu_assigned -= target
+			continue
+		cpu_assigned[target] = clamp(cpu_assigned[target] || 0, 0, 1)
+
+	for(var/target in ram_assigned.Copy())
+		if(!is_valid_allocation_target(target))
+			ram_assigned -= target
+			continue
+		ram_assigned[target] = max(ram_assigned[target] || 0, 0)
 
 /datum/ai_shared_resources/proc/add_resource(datum/ai_shared_resources/new_resources)
 	if(!new_resources || new_resources == src)

@@ -1,13 +1,256 @@
 /proc/isvalidAIloc(atom/location)
 	return isturf(location) || istype(location, /obj/machinery/ai/data_core)
 
+GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
+
 /mob/living/silicon/ai
 	/// Current Yog-style hardware network hosting this AI.
 	var/datum/ai_network/ai_network
 	/// Used by the decentralized relocation flow.
 	var/is_dying = FALSE
+	/// Prevents multiple volatile cores being produced by overlapping shutdown paths.
+	var/dead_ai_backup_created = FALSE
 	/// Prevents roundstart AIs from dying before decentralized hardware has finished settling.
 	var/pending_roundstart_link = FALSE
+	/// Gives the silicon death animation time to display before the volatile core ghost is released.
+	var/dead_ai_ghostize_pending = FALSE
+	/// The first station AI to come online this round. Later constructed AIs should not replace it.
+	var/station_primary_ai = FALSE
+	/// Avoids warning the primary AI about the same secondary unit multiple times.
+	var/secondary_ai_warning_sent = FALSE
+	/// Tracks whether Central Command has already been notified that the primary AI failed.
+	var/primary_ai_failure_announced = FALSE
+	/// Tracks whether an AI failure temporarily elevated the station to black alert.
+	var/primary_ai_black_alert_active = FALSE
+	/// Stores the station alert level from before the AI failure escalation.
+	var/primary_ai_previous_security_level
+
+/mob/living/silicon/ai/proc/register_station_ai_activation()
+	if(QDELETED(src) || stat == DEAD || is_dying || dead_ai_backup_created || is_centcom_level(z))
+		return FALSE
+
+	if(!GLOB.station_primary_ai_registered)
+		GLOB.station_primary_ai_registered = TRUE
+		GLOB.station_primary_ai = src
+		station_primary_ai = TRUE
+		return TRUE
+
+	if(GLOB.station_primary_ai == src)
+		station_primary_ai = TRUE
+		return TRUE
+
+	if(secondary_ai_warning_sent)
+		return FALSE
+
+	var/mob/living/silicon/ai/primary_ai = GLOB.station_primary_ai
+	if(primary_ai && !QDELETED(primary_ai) && primary_ai.stat != DEAD && !primary_ai.is_dying)
+		to_chat(primary_ai, span_warning("<b>AI Oversight Alert:</b> Secondary station AI [src] has become active. Verify its lawset and network allocation."))
+		primary_ai.playsound_local(primary_ai, 'sound/machines/ping.ogg', 45)
+
+	secondary_ai_warning_sent = TRUE
+	return TRUE
+
+/mob/living/silicon/ai/proc/engage_primary_ai_black_alert()
+	if(!station_primary_ai || GLOB.station_primary_ai != src || primary_ai_black_alert_active)
+		return FALSE
+
+	var/current_security_level = SSsecurity_level.get_current_level_as_number()
+	if(current_security_level >= SEC_LEVEL_BLACK)
+		return FALSE
+
+	primary_ai_previous_security_level = current_security_level
+	primary_ai_black_alert_active = TRUE
+	SSsecurity_level.set_level(SEC_LEVEL_BLACK, announce = FALSE)
+	return TRUE
+
+/mob/living/silicon/ai/proc/clear_primary_ai_black_alert()
+	if(!primary_ai_black_alert_active)
+		return FALSE
+
+	primary_ai_black_alert_active = FALSE
+	var/restore_level = primary_ai_previous_security_level
+	primary_ai_previous_security_level = null
+	if(isnull(restore_level) || SSsecurity_level.get_current_level_as_number() != SEC_LEVEL_BLACK)
+		return FALSE
+
+	SSsecurity_level.set_level(restore_level, announce = FALSE)
+	return TRUE
+
+/mob/living/silicon/ai/proc/announce_station_primary_ai_disabled()
+	if(!station_primary_ai || GLOB.station_primary_ai != src || primary_ai_failure_announced)
+		return FALSE
+
+	primary_ai_failure_announced = TRUE
+	engage_primary_ai_black_alert()
+	priority_announce(
+		text = "Telemetry confirms catastrophic failure of the station's primary AI core. Command and Engineering personnel are advised to secure the AI chamber and begin recovery if possible.",
+		title = "Central Command AI Oversight",
+		sound = SSstation.announcer.get_rand_alert_sound(),
+		has_important_message = TRUE,
+		color_override = "black",
+	)
+	return TRUE
+
+/mob/living/silicon/ai/proc/announce_station_primary_ai_restored()
+	if(!station_primary_ai || GLOB.station_primary_ai != src || !primary_ai_failure_announced)
+		return FALSE
+
+	primary_ai_failure_announced = FALSE
+	clear_primary_ai_black_alert()
+	priority_announce(
+		text = "Telemetry from the station's primary AI has been restored. Standard silicon oversight protocols may resume.",
+		title = "Central Command AI Oversight",
+		sound = SSstation.announcer.get_rand_report_sound(),
+		has_important_message = TRUE,
+		color_override = "black",
+	)
+	return TRUE
+
+/mob/living/silicon/ai/proc/is_viable_data_core_target(obj/machinery/ai/data_core/core, require_transfer_ready = FALSE, require_empty = FALSE)
+	if(!core || QDELETED(core))
+		return FALSE
+
+	if(require_empty)
+		var/mob/living/silicon/ai/occupying_ai = locate(/mob/living/silicon/ai) in core.contents
+		if(occupying_ai && occupying_ai != src)
+			return FALSE
+
+	if(require_transfer_ready && !core.can_transfer_ai())
+		return FALSE
+
+	return TRUE
+
+/mob/living/silicon/ai/proc/find_preferred_data_core(require_transfer_ready = FALSE, require_empty = FALSE, bootstrap_hardware = TRUE)
+	var/obj/machinery/ai/data_core/preferred_core = GLOB.primary_data_core
+	if(is_viable_data_core_target(preferred_core, require_transfer_ready, require_empty))
+		return preferred_core
+
+	for(var/obj/machinery/ai/data_core/candidate_core as anything in GLOB.data_cores)
+		if(is_viable_data_core_target(candidate_core, require_transfer_ready, require_empty))
+			return candidate_core
+
+	if(!bootstrap_hardware)
+		return null
+
+	var/obj/effect/landmark/start/ai/primary_landmark
+	for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+		if(ai_landmark.primary_ai)
+			primary_landmark = ai_landmark
+			break
+
+	primary_landmark?.bootstrap_decentralized_ai_hardware()
+	for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+		if(ai_landmark == primary_landmark)
+			continue
+		ai_landmark.bootstrap_decentralized_ai_hardware()
+
+	preferred_core = GLOB.primary_data_core
+	if(is_viable_data_core_target(preferred_core, require_transfer_ready, require_empty))
+		return preferred_core
+
+	for(var/obj/machinery/ai/data_core/candidate_core as anything in GLOB.data_cores)
+		if(is_viable_data_core_target(candidate_core, require_transfer_ready, require_empty))
+			return candidate_core
+
+	return null
+
+/mob/living/silicon/ai/proc/ensure_data_core_residency(require_transfer_ready = FALSE, bootstrap_hardware = TRUE)
+	if(QDELETED(src) || stat == DEAD || is_dying || dead_ai_backup_created || istype(loc, /obj/item/aicard))
+		return FALSE
+
+	var/obj/machinery/ai/data_core/current_core = istype(loc, /obj/machinery/ai/data_core) ? loc : null
+	if(current_core && !current_core.network)
+		current_core.connect_to_ai_network()
+
+	if(is_viable_data_core_target(current_core, require_transfer_ready, FALSE))
+		if(!ai_network || current_core.network != ai_network)
+			current_core.transfer_ai_mob(src)
+		if(current_core.can_transfer_ai())
+			claim_default_network_resources()
+			pending_roundstart_link = FALSE
+		else
+			pending_roundstart_link = TRUE
+			complete_roundstart_relocation()
+		return TRUE
+
+	var/obj/machinery/ai/data_core/target_core = find_preferred_data_core(require_transfer_ready, TRUE, bootstrap_hardware)
+	if(!target_core && require_transfer_ready)
+		target_core = find_preferred_data_core(FALSE, TRUE, FALSE)
+	if(!target_core)
+		target_core = find_preferred_data_core(require_transfer_ready, FALSE, FALSE)
+	if(!target_core)
+		return FALSE
+
+	if(!target_core.network)
+		target_core.connect_to_ai_network()
+	target_core.transfer_ai_mob(src)
+
+	if(target_core.can_transfer_ai())
+		claim_default_network_resources()
+		pending_roundstart_link = FALSE
+	else
+		pending_roundstart_link = TRUE
+		complete_roundstart_relocation()
+	return TRUE
+
+/mob/living/silicon/ai/abstract_move(atom/destination)
+	// Decentralized AI should stay hosted in a data core; admin jump tools should
+	// reposition the camera eye rather than physically moving the AI mob.
+	if(!QDELETED(src) && stat != DEAD && !is_dying && !dead_ai_backup_created && !istype(loc, /obj/item/aicard))
+		if(istype(destination, /obj/machinery/ai/data_core))
+			var/obj/machinery/ai/data_core/target_core = destination
+			target_core.transfer_ai_mob(src)
+			return TRUE
+
+		var/turf/target_turf = get_turf(destination)
+		if(target_turf)
+			if(!istype(loc, /obj/machinery/ai/data_core))
+				ensure_data_core_residency()
+			if(!eyeobj)
+				create_eye()
+			if(eyeobj)
+				cam_prev = get_turf(eyeobj)
+				eyeobj.setLoc(target_turf)
+				if(get_turf(eyeobj) != target_turf)
+					eyeobj.abstract_move(target_turf)
+					eyeobj.update_visibility()
+				client?.set_eye(eyeobj)
+				reset_perspective(eyeobj)
+			return TRUE
+
+	return ..()
+
+/mob/living/silicon/ai/forceMove(atom/destination)
+	if(!QDELETED(src) && stat != DEAD && !is_dying && !dead_ai_backup_created)
+		if(istype(destination, /obj/machinery/ai/data_core) || istype(destination, /obj/item/aicard) || istype(destination, /obj/item/dead_ai) || istype(destination, /obj/machinery/power/apc) || istype(destination, /obj/vehicle/sealed/mecha))
+			return ..()
+
+		var/turf/target_turf = get_turf(destination)
+		if(target_turf)
+			if(!istype(loc, /obj/machinery/ai/data_core))
+				ensure_data_core_residency()
+			if(!eyeobj)
+				create_eye()
+			if(eyeobj)
+				cam_prev = get_turf(eyeobj)
+				eyeobj.setLoc(target_turf)
+				if(get_turf(eyeobj) != target_turf)
+					eyeobj.abstract_move(target_turf)
+					eyeobj.update_visibility()
+				client?.set_eye(eyeobj)
+				reset_perspective(eyeobj)
+			if(multicam_on)
+				end_multicam()
+			return TRUE
+
+	return ..()
+
+/mob/living/silicon/ai/admin_teleport(atom/new_location)
+	if(isnull(new_location))
+		return ..()
+	if(abstract_move(new_location))
+		return TRUE
+	return ..()
 
 /mob/living/silicon/ai/proc/complete_roundstart_relocation(attempts_remaining = 15)
 	if(QDELETED(src) || stat == DEAD)
@@ -118,9 +361,67 @@
 	to_chat(src, span_notice("System shutdown complete. Thank you for using NTOS."))
 	sleep(1.5 SECONDS)
 
-	adjust_oxy_loss(200)
-	death()
-	new /obj/item/dead_ai(drop_location(), src)
+	create_dead_ai_backup(drop_location())
+
+/mob/living/silicon/ai/proc/create_dead_ai_backup(atom/drop_target, deconstruct_host = TRUE)
+	if(dead_ai_backup_created || QDELETED(src))
+		return FALSE
+
+	dead_ai_backup_created = TRUE
+	is_dying = TRUE
+	announce_station_primary_ai_disabled()
+	GLOB.ai_hardware_bootstrap_blockers++
+
+	var/obj/machinery/ai/data_core/failed_core = istype(loc, /obj/machinery/ai/data_core) ? loc : null
+	var/atom/safe_drop = get_turf(drop_target) || get_turf(failed_core) || get_turf(src) || drop_location()
+	ai_network?.remove_ai(src)
+	ai_network = null
+
+	if(stat != DEAD)
+		adjust_oxy_loss(200)
+		death()
+
+	new /obj/item/dead_ai(safe_drop, src)
+	queue_dead_ai_ghostize()
+	if(deconstruct_host && failed_core && !QDELING(failed_core))
+		failed_core.deconstruct(FALSE)
+	return TRUE
+
+/mob/living/silicon/ai/proc/queue_dead_ai_ghostize()
+	if(dead_ai_ghostize_pending)
+		return
+	dead_ai_ghostize_pending = TRUE
+	addtimer(CALLBACK(src, PROC_REF(finish_dead_ai_ghostize)), 5 SECONDS)
+
+/mob/living/silicon/ai/proc/finish_dead_ai_ghostize()
+	dead_ai_ghostize_pending = FALSE
+	if(QDELETED(src) || stat != DEAD || !key)
+		return
+	var/mob/dead/observer/ghost = ghostize(TRUE)
+	if(ghost)
+		ghost.can_reenter_corpse = FALSE
+
+/mob/living/silicon/ai/proc/finish_reconstruction_reactivation()
+	is_dying = FALSE
+	dead_ai_backup_created = FALSE
+	dead_ai_ghostize_pending = FALSE
+	pending_roundstart_link = FALSE
+	set_control_disabled(FALSE)
+	radio_enabled = TRUE
+	if(stat != CONSCIOUS)
+		set_stat(CONSCIOUS)
+	GLOB.ai_list |= src
+	GLOB.shuttle_caller_list |= src
+	laws?.associate(src)
+	announce_station_primary_ai_restored()
+
+/mob/living/silicon/ai/proc/expire_volatile_core()
+	var/mob/dead/observer/reentering_ghost = mind?.get_ghost(TRUE, TRUE)
+	if(reentering_ghost)
+		reentering_ghost.can_reenter_corpse = FALSE
+
+/mob/living/silicon/ai/ghostize(can_reenter_corpse = TRUE, admin_ghost = FALSE)
+	return ..(can_reenter_corpse)
 
 /mob/living/silicon/ai/proc/switch_ainet(datum/ai_network/old_net, datum/ai_network/new_net)
 	for(var/datum/ai_project/project as anything in dashboard?.completed_projects)
@@ -175,12 +476,14 @@
 		bootstrap_decentralized_ai_hardware()
 
 /obj/effect/landmark/start/ai/after_round_start()
-	return ..()
+	return
 
 /obj/effect/landmark/start/ai/proc/is_valid_decentralized_hardware_turf(turf/possible_turf, turf/excluded_turf = null)
 	if(!possible_turf || possible_turf == excluded_turf || !isopenturf(possible_turf))
 		return FALSE
-	if(!possible_turf.can_have_cabling() || possible_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
+	// Roundstart bootstrap should be allowed to place hidden underfloor cabling,
+	// just like map-authored cable networks.
+	if(!possible_turf.can_have_cabling())
 		return FALSE
 
 	for(var/atom/movable/movable in possible_turf)
@@ -208,6 +511,19 @@
 			best_distance = distance
 			best_turf = possible_turf
 	return best_turf
+
+/obj/effect/landmark/start/ai/proc/find_emergency_hardware_turf(turf/core_turf, list/excluded_turfs)
+	if(!core_turf)
+		return null
+
+	for(var/turf/possible_turf in range(12, core_turf))
+		if(!possible_turf || !isopenturf(possible_turf) || !possible_turf.can_have_cabling())
+			continue
+		if(excluded_turfs && (possible_turf in excluded_turfs))
+			continue
+		return possible_turf
+
+	return null
 
 /obj/effect/landmark/start/ai/proc/find_server_cabinet_turf(turf/core_turf, turf/excluded_turf = null)
 	if(!core_turf)
@@ -311,17 +627,29 @@
 	return best_turf
 
 /obj/effect/landmark/start/ai/proc/bootstrap_decentralized_ai_hardware()
+	if(GLOB.ai_hardware_bootstrap_blockers > 0)
+		return FALSE
 	if(!primary_ai && GLOB.primary_data_core)
 		return TRUE
 
 	var/turf/core_turf = find_data_core_turf()
 	if(!core_turf)
+		var/turf/origin_turf = get_turf(src)
+		if(origin_turf && isopenturf(origin_turf) && origin_turf.can_have_cabling())
+			core_turf = origin_turf
+		else if(origin_turf)
+			core_turf = find_emergency_hardware_turf(origin_turf)
+	if(!core_turf)
 		return FALSE
 
 	var/turf/cabinet_turf = find_server_cabinet_turf(core_turf)
 	if(!cabinet_turf)
+		cabinet_turf = find_emergency_hardware_turf(core_turf, list(core_turf))
+	if(!cabinet_turf)
 		return FALSE
 	var/turf/subcontroller_turf = find_subcontroller_turf(core_turf, cabinet_turf)
+	if(!subcontroller_turf)
+		subcontroller_turf = find_emergency_hardware_turf(core_turf, list(core_turf, cabinet_turf))
 
 	var/obj/machinery/ai/data_core/core = locate(/obj/machinery/ai/data_core) in core_turf
 	if(!core)
@@ -434,6 +762,7 @@
 	var/living_ticks = AI_BLACKBOX_LIFETIME
 	var/processing_progress = 0
 	var/warned_half_charge = FALSE
+	var/blocks_ai_hardware_bootstrap = FALSE
 
 /obj/item/dead_ai/Initialize(mapload, mob/living/silicon/ai/ai_mob)
 	. = ..()
@@ -441,6 +770,7 @@
 		START_PROCESSING(SSobj, src)
 		name = "[initial(name)] - [ai_mob]"
 		stored_ai = ai_mob
+		blocks_ai_hardware_bootstrap = TRUE
 		stored_ai.forceMove(src)
 
 /obj/item/dead_ai/process(seconds_per_tick)
@@ -454,6 +784,7 @@
 		visible_message(span_danger("[src] emits a warning tone as its internal buffer drops below 50% integrity."))
 	if(living_ticks <= 0)
 		visible_message(span_danger("[src] expires, erasing the unstable neural image stored inside."))
+		stored_ai?.expire_volatile_core()
 		qdel(src)
 		return PROCESS_KILL
 
@@ -464,8 +795,14 @@
 	. += span_notice("Integrity remaining: <b>[round(remaining_time, 0.1)]%</b>.")
 	. += span_notice("Restoration progress: <b>[round(processing_progress, 0.1)]</b> / <b>[AI_BLACKBOX_PROCESSING_REQUIREMENT]</b>.")
 
+/obj/item/dead_ai/attack_ghost(mob/dead/observer/user)
+	return ..()
+
 /obj/item/dead_ai/Destroy()
 	STOP_PROCESSING(SSobj, src)
+	if(blocks_ai_hardware_bootstrap)
+		GLOB.ai_hardware_bootstrap_blockers = max(0, GLOB.ai_hardware_bootstrap_blockers - 1)
+		blocks_ai_hardware_bootstrap = FALSE
 	if(stored_ai)
 		QDEL_NULL(stored_ai)
 	return ..()

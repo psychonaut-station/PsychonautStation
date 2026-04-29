@@ -38,6 +38,7 @@
 
 	var/list/data = list()
 	var/list/options = list()
+	var/list/available_core_options = ai_user.get_available_status_display_core_options()
 
 	for(var/option_name in GLOB.ai_status_display_emotes)
 		var/icon_state = GLOB.ai_status_display_emotes[option_name]
@@ -49,7 +50,7 @@
 		)
 		options += list(option_data)
 
-	for(var/option_name in GLOB.ai_core_to_status_display_mapping)
+	for(var/option_name in available_core_options)
 		var/icon_state = GLOB.ai_core_to_status_display_mapping[option_name]
 		var/icon = GLOB.ai_status_display_screen_icons[option_name] || 'icons/obj/machines/status_display.dmi'
 		var/list/option_data = list(
@@ -104,7 +105,10 @@
 	switch(action)
 		if("select_option")
 			var/selected_option = params["option"]
-			if(!selected_option || !(selected_option in GLOB.ai_status_display_all_options))
+			var/list/available_core_options = ai_user.get_available_status_display_core_options()
+			var/is_emote_option = (selected_option in GLOB.ai_status_display_emotes)
+			var/is_unlocked_core_option = (selected_option in available_core_options)
+			if(!selected_option || (!is_emote_option && !is_unlocked_core_option))
 				return FALSE
 
 			// Check if this is an original AI emotion (has a corresponding emote)

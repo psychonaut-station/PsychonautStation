@@ -27,8 +27,9 @@
 		turf_loc.add_blueprints_preround(src)
 
 	update_icon()
-	if(!mapload)
-		addtimer(CALLBACK(src, PROC_REF(post_spawn_autoconfigure)), 0.2 SECONDS)
+	// Map-placed ethernet cables often use default state and need a post-init pass
+	// to orient themselves like normal cable placement.
+	addtimer(CALLBACK(src, PROC_REF(post_spawn_autoconfigure)), mapload ? 1 SECONDS : 0.2 SECONDS)
 
 /obj/structure/ethernet_cable/Destroy()
 	if(network)
@@ -52,6 +53,15 @@
 		return
 	auto_configure_from_neighbors()
 
+	if(!network)
+		var/datum/ai_network/new_ai_network = new()
+		new_ai_network.add_cable(src)
+	if(d1)
+		mergeConnectedNetworks(d1)
+	if(d2)
+		mergeConnectedNetworks(d2)
+	mergeConnectedNetworksOnTurf()
+
 	var/turf/source_turf = get_turf(src)
 	if(!source_turf)
 		return
@@ -63,8 +73,10 @@
 		for(var/obj/structure/ethernet_cable/adjacent_cable in adjacent_turf)
 			adjacent_cable.auto_configure_from_neighbors()
 
-/obj/structure/ethernet_cable/proc/auto_configure_from_neighbors()
-	if(QDELETED(src) || d1 != 0 || d2 != initial(d2))
+/obj/structure/ethernet_cable/proc/auto_configure_from_neighbors(force = FALSE)
+	if(QDELETED(src))
+		return
+	if(!force && (d1 != 0 || d2 != initial(d2)))
 		return
 
 	var/turf/source_turf = get_turf(src)
@@ -72,11 +84,24 @@
 		return
 
 	var/list/adjacent_dirs = list()
+	var/list/local_dirs = list()
 	var/has_ai_machine = FALSE
 
 	for(var/obj/machinery/ai/machine in source_turf)
 		has_ai_machine = TRUE
 		break
+
+	for(var/obj/structure/ethernet_cable/local_cable in source_turf)
+		if(local_cable == src)
+			continue
+
+		var/local_d1 = local_cable.d1
+		var/local_d2 = local_cable.d2
+
+		if(local_d1 in GLOB.cardinals)
+			local_dirs |= local_d1
+		if(local_d2 in GLOB.cardinals)
+			local_dirs |= local_d2
 
 	for(var/direction in GLOB.cardinals)
 		var/turf/adjacent_turf = get_step(source_turf, direction)
@@ -92,25 +117,40 @@
 				found_connection = TRUE
 				break
 		if(found_connection)
-			adjacent_dirs += direction
+			adjacent_dirs |= direction
 
-	if(!length(adjacent_dirs))
+	var/list/candidate_dirs = adjacent_dirs.Copy()
+	candidate_dirs |= local_dirs
+
+	if(!length(candidate_dirs))
 		return
 
 	// If this turf is acting as a bridge between opposite sides, prefer a through-cable.
 	// AI machines on the same turf can still connect because they now accept any cable on their tile.
-	if((NORTH in adjacent_dirs) && (SOUTH in adjacent_dirs))
+	if((NORTH in candidate_dirs) && (SOUTH in candidate_dirs))
 		d1 = NORTH
 		d2 = SOUTH
-	else if((EAST in adjacent_dirs) && (WEST in adjacent_dirs))
+	else if((EAST in candidate_dirs) && (WEST in candidate_dirs))
 		d1 = EAST
 		d2 = WEST
-	else if(has_ai_machine || length(adjacent_dirs) == 1)
+	else if(has_ai_machine || length(candidate_dirs) == 1)
 		d1 = 0
-		d2 = adjacent_dirs[1]
+		d2 = candidate_dirs[1]
 	else
-		d1 = 0
-		d2 = adjacent_dirs[1]
+		// Prefer an elbow when two non-opposite neighbors are present.
+		var/first_dir = candidate_dirs[1]
+		var/second_dir
+		for(var/candidate_dir in candidate_dirs)
+			if(candidate_dir == first_dir)
+				continue
+			second_dir = candidate_dir
+			break
+		if(!second_dir)
+			d1 = 0
+			d2 = first_dir
+		else
+			d1 = min(first_dir, second_dir)
+			d2 = max(first_dir, second_dir)
 
 	update_icon()
 
@@ -214,13 +254,12 @@
 	for(var/atom/movable/thing as anything in loc)
 		if(istype(thing, /obj/structure/ethernet_cable))
 			var/obj/structure/ethernet_cable/cable = thing
-			if(cable.d1 == d1 || cable.d2 == d1 || cable.d1 == d2 || cable.d2 == d2)
-				if(cable.network == network)
-					continue
-				if(cable.network)
-					merge_ainets(network, cable.network)
-				else
-					network.add_cable(cable)
+			if(cable.network == network)
+				continue
+			if(cable.network)
+				merge_ainets(network, cable.network)
+			else
+				network.add_cable(cable)
 			continue
 
 		if(istype(thing, /obj/machinery/ai))
@@ -229,42 +268,32 @@
 				continue
 			to_connect += machine
 
+	// Treat cardinally adjacent ethernet segments as connected, matching
+	// expected "easy cable" behavior for mapping and in-game placement.
+	for(var/direction in GLOB.cardinals)
+		var/turf/adjacent_turf = get_step(src, direction)
+		if(!adjacent_turf)
+			continue
+		for(var/obj/structure/ethernet_cable/adjacent_cable in adjacent_turf)
+			if(adjacent_cable.network == network)
+				continue
+			if(adjacent_cable.network)
+				merge_ainets(network, adjacent_cable.network)
+			else
+				network.add_cable(adjacent_cable)
+
 	for(var/obj/machinery/ai/machine as anything in to_connect)
 		if(!machine.connect_to_ai_network())
 			machine.disconnect_from_ai_network()
 
 /obj/structure/ethernet_cable/proc/get_connections(ai_networkless_only = FALSE)
 	. = list()
-	var/turf/target_turf
-
-	if(d1)
-		target_turf = get_step(src, d1)
-		if(target_turf)
-			. += ai_list(target_turf, src, turn(d1, 180), ai_networkless_only)
-
-	if(d1 & (d1 - 1))
-		target_turf = get_step(src, d1 & 3)
-		if(target_turf)
-			. += ai_list(target_turf, src, d1 ^ 3, ai_networkless_only)
-		target_turf = get_step(src, d1 & 12)
-		if(target_turf)
-			. += ai_list(target_turf, src, d1 ^ 12, ai_networkless_only)
-
-	. += ai_list(loc, src, d1, ai_networkless_only)
-
-	target_turf = get_step(src, d2)
-	if(target_turf)
-		. += ai_list(target_turf, src, turn(d2, 180), ai_networkless_only)
-
-	if(d2 & (d2 - 1))
-		target_turf = get_step(src, d2 & 3)
-		if(target_turf)
-			. += ai_list(target_turf, src, d2 ^ 3, ai_networkless_only)
-		target_turf = get_step(src, d2 & 12)
-		if(target_turf)
-			. += ai_list(target_turf, src, d2 ^ 12, ai_networkless_only)
-
-	. += ai_list(loc, src, d2, ai_networkless_only)
+	. += ai_list(loc, src, 0, ai_networkless_only)
+	for(var/direction in GLOB.cardinals)
+		var/turf/adjacent_turf = get_step(src, direction)
+		if(!adjacent_turf)
+			continue
+		. += ai_list(adjacent_turf, src, 0, ai_networkless_only)
 
 /obj/structure/ethernet_cable/proc/denode()
 	var/turf/source_turf = loc
@@ -382,6 +411,23 @@
 		cable_join(target_cable, user)
 		return ITEM_INTERACT_SUCCESS
 
+	if(istype(interacting_with, /obj/machinery/ai))
+		var/obj/machinery/ai/target_machine = interacting_with
+		var/turf/machine_turf = get_turf(target_machine)
+		if(machine_turf?.can_have_cabling())
+			var/obj/structure/ethernet_cable/first_cable_on_turf
+			for(var/obj/structure/ethernet_cable/existing_cable in machine_turf)
+				if(!first_cable_on_turf)
+					first_cable_on_turf = existing_cable
+				if(!existing_cable.d1 || !existing_cable.d2)
+					cable_join(existing_cable, user)
+					return ITEM_INTERACT_SUCCESS
+			if(first_cable_on_turf)
+				place_turf(machine_turf, user)
+			else
+				place_turf(machine_turf, user)
+			return ITEM_INTERACT_SUCCESS
+
 	if(isturf(interacting_with))
 		var/turf/target_turf = interacting_with
 		if(target_turf.can_lay_cable())
@@ -408,7 +454,13 @@
 	if(!isturf(user.loc))
 		return
 
-	if(!isturf(target_turf) || target_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE || !target_turf.can_have_cabling())
+	var/has_ai_machine = FALSE
+	if(isturf(target_turf))
+		for(var/obj/machinery/ai/machine in target_turf)
+			has_ai_machine = TRUE
+			break
+
+	if(!isturf(target_turf) || !target_turf.can_have_cabling() || (target_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE && !has_ai_machine))
 		to_chat(user, span_warning("You can only lay cables on top of exterior catwalks and plating!"))
 		return
 
@@ -428,6 +480,38 @@
 			dirn = get_dir(target_turf, user)
 	else
 		dirn = dirnew
+
+	if(!dirnew)
+		var/list/candidate_dirs = list()
+		for(var/obj/structure/ethernet_cable/existing_cable in target_turf)
+			if(existing_cable.d1 in GLOB.cardinals)
+				candidate_dirs |= existing_cable.d1
+			if(existing_cable.d2 in GLOB.cardinals)
+				candidate_dirs |= existing_cable.d2
+
+		if(!length(candidate_dirs))
+			for(var/direction in GLOB.cardinals)
+				var/turf/adjacent_turf = get_step(target_turf, direction)
+				if(!adjacent_turf)
+					continue
+
+				var/found_connection = FALSE
+				for(var/obj/structure/ethernet_cable/adjacent_cable in adjacent_turf)
+					found_connection = TRUE
+					break
+				if(!found_connection)
+					for(var/obj/machinery/ai/adjacent_machine in adjacent_turf)
+						found_connection = TRUE
+						break
+				if(found_connection)
+					candidate_dirs |= direction
+
+		if(length(candidate_dirs) && !(dirn in candidate_dirs))
+			var/user_preferred_dir = get_dir(target_turf, user)
+			if(user_preferred_dir in candidate_dirs)
+				dirn = user_preferred_dir
+			else
+				dirn = candidate_dirs[1]
 
 	for(var/obj/structure/ethernet_cable/cable in target_turf)
 		if(cable.d2 == dirn && cable.d1 == 0)
@@ -449,6 +533,10 @@
 	if(new_cable.d2 & (new_cable.d2 - 1))
 		new_cable.mergeDiagonalsNetworks(new_cable.d2)
 
+	// Make manual placement as forgiving as normal cable coils by
+	// snapping to nearby valid neighbors after creation.
+	new_cable.auto_configure_from_neighbors(TRUE)
+
 	use(1)
 	return new_cable
 
@@ -458,7 +546,12 @@
 		return
 
 	var/turf/cable_turf = cable.loc
-	if(!isturf(cable_turf) || cable_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
+	var/cable_turf_has_ai_machine = FALSE
+	if(isturf(cable_turf))
+		for(var/obj/machinery/ai/machine in cable_turf)
+			cable_turf_has_ai_machine = TRUE
+			break
+	if(!isturf(cable_turf) || (cable_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE && !cable_turf_has_ai_machine))
 		return
 
 	if(get_dist(cable, user) > 1)
@@ -475,7 +568,7 @@
 			if(showerror)
 				to_chat(user, span_warning("You can only lay cables on catwalks and plating!"))
 			return
-		if(cable_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE)
+		if(cable_turf.underfloor_accessibility < UNDERFLOOR_INTERACTABLE && !cable_turf_has_ai_machine)
 			to_chat(user, span_warning("You can't lay cable there unless the floor tiles are removed!"))
 			return
 
@@ -500,6 +593,8 @@
 
 		if(new_cable.d2 & (new_cable.d2 - 1))
 			new_cable.mergeDiagonalsNetworks(new_cable.d2)
+
+		new_cable.auto_configure_from_neighbors(TRUE)
 
 		use(1)
 		return

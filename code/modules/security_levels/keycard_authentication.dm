@@ -1,6 +1,7 @@
 GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 #define KEYCARD_RED_ALERT "Red Alert"
+#define KEYCARD_BLACK_ALERT "Black Alert"
 #define KEYCARD_EMERGENCY_MAINTENANCE_ACCESS "Emergency Maintenance Access"
 #define KEYCARD_BSA_UNLOCK "Bluespace Artillery Unlock"
 
@@ -45,9 +46,12 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 
 /obj/machinery/keycard_auth/ui_data()
 	var/list/data = list()
+	var/current_alert_level = SSsecurity_level.get_current_level_as_number()
 	data["waiting"] = waiting
 	data["auth_required"] = event_source ? event_source.event : 0
-	data["red_alert"] = (SSsecurity_level.get_current_level_as_number() >= SEC_LEVEL_RED) ? 1 : 0
+	data["current_alert_level"] = current_alert_level
+	data["red_alert"] = (current_alert_level >= SEC_LEVEL_RED) ? 1 : 0
+	data["black_alert"] = (current_alert_level >= SEC_LEVEL_BLACK) ? 1 : 0
 	data["emergency_maint"] = GLOB.emergency_access
 	data["bsa_unlock"] = GLOB.bsa_unlock
 	return data
@@ -71,6 +75,10 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 		if("red_alert")
 			if(!event_source)
 				sendEvent(KEYCARD_RED_ALERT)
+				. = TRUE
+		if("black_alert")
+			if(!event_source)
+				sendEvent(KEYCARD_BLACK_ALERT)
 				. = TRUE
 		if("emergency_maint")
 			if(!event_source)
@@ -152,7 +160,11 @@ GLOBAL_DATUM_INIT(keycard_events, /datum/events, new)
 	deadchat_broadcast(" confirmed [event] at [span_name("[A2.name]")].", span_name("[confirmer]"), confirmer, message_type=DEADCHAT_ANNOUNCEMENT)
 	switch(event)
 		if(KEYCARD_RED_ALERT)
-			SSsecurity_level.set_level(SEC_LEVEL_RED)
+			if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_RED)
+				SSsecurity_level.set_level(SEC_LEVEL_RED)
+		if(KEYCARD_BLACK_ALERT)
+			if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
+				SSsecurity_level.set_level(SEC_LEVEL_BLACK)
 		if(KEYCARD_EMERGENCY_MAINTENANCE_ACCESS)
 			make_maint_all_access()
 		if(KEYCARD_BSA_UNLOCK)
@@ -196,5 +208,6 @@ GLOBAL_VAR_INIT(emergency_access, FALSE)
 
 #undef ACCESS_GRANTING_COOLDOWN
 #undef KEYCARD_RED_ALERT
+#undef KEYCARD_BLACK_ALERT
 #undef KEYCARD_EMERGENCY_MAINTENANCE_ACCESS
 #undef KEYCARD_BSA_UNLOCK

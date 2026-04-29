@@ -919,8 +919,17 @@
 	if(istype(tool, /obj/item/photo))
 		return photo_act(user, tool)
 
-	// Check if any Applications need our item
+	// Give the foreground program first dibs, so shared slots (like intelliCards)
+	// go to the interface the user is actively operating.
+	if(active_program)
+		var/app_return = active_program.application_item_interaction(user, tool, modifiers)
+		if(app_return)
+			return app_return
+
+	// Check if any background Applications need our item
 	for(var/datum/computer_file/item_holding_app as anything in stored_files)
+		if(item_holding_app == active_program)
+			continue
 		var/app_return = item_holding_app.application_item_interaction(user, tool, modifiers)
 		if(app_return)
 			return app_return
@@ -1077,6 +1086,8 @@
 #define ALERT_RELEVANCY_PERTINENT 2/// * 2: Danger is around and the user is responsible for handling it.
 /obj/item/modular_computer/proc/get_security_level_relevancy()
 	switch(SSsecurity_level.get_current_level_as_number())
+		if(SEC_LEVEL_BLACK)
+			return ALERT_RELEVANCY_PERTINENT
 		if(SEC_LEVEL_DELTA)
 			return ALERT_RELEVANCY_PERTINENT
 		if(SEC_LEVEL_RED) // all-hands-on-deck situations, everyone is responsible for combatting a threat

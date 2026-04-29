@@ -45,6 +45,16 @@
 /obj/machinery/rack_creator/proc/get_science_techweb()
 	return locate(/datum/techweb/science) in SSresearch.techwebs
 
+/obj/machinery/rack_creator/proc/is_design_unlocked(datum/design/design_ref, datum/techweb/science/science_tech)
+	if(!design_ref || !science_tech)
+		return FALSE
+	if(science_tech.isDesignResearchedID(design_ref.id))
+		return TRUE
+	for(var/datum/techweb_node/unlocking_node as anything in design_ref.unlocked_by)
+		if(science_tech.isNodeResearchedID(unlocking_node.id))
+			return TRUE
+	return FALSE
+
 /obj/machinery/rack_creator/proc/slot_unlocked_cpu(slot_number)
 	var/datum/techweb/science/science_tech = get_science_techweb()
 	switch(slot_number)
@@ -85,18 +95,60 @@
 
 	return material_data
 
-/obj/machinery/rack_creator/proc/check_resources()
-	var/list/total_cost = list()
-	for(var/list/ram_data as anything in ram_expansions)
-		for(var/datum/material/material_ref as anything in ram_data["cost"])
-			total_cost[material_ref] += ram_data["cost"][material_ref] / efficiency_coeff
+/obj/machinery/rack_creator/proc/add_material_cost(list/total_cost, list/cost_to_add, multiplier = 1)
+	if(!islist(total_cost) || !islist(cost_to_add))
+		return total_cost
 
-	if(!total_cost.len)
-		return -1
+	for(var/material_entry in cost_to_add)
+		var/datum/material/material_ref = SSmaterials.get_material(material_entry)
+		if(!material_ref)
+			continue
+		total_cost[material_ref] += cost_to_add[material_entry] * multiplier
+
+	return total_cost
+
+/obj/machinery/rack_creator/proc/get_rack_shell_cost()
+	var/list/rack_shell_cost = list()
+	var/obj/item/server_rack/rack_path = /obj/item/server_rack
+	add_material_cost(rack_shell_cost, initial(rack_path.custom_materials), 1 / efficiency_coeff)
+	return rack_shell_cost
+
+/obj/machinery/rack_creator/proc/get_total_material_cost()
+	var/list/total_cost = get_rack_shell_cost()
+	for(var/list/ram_data as anything in ram_expansions)
+		add_material_cost(total_cost, ram_data["cost"], 1 / efficiency_coeff)
+	return total_cost
+
+/obj/machinery/rack_creator/proc/format_material_cost(list/material_cost)
+	var/list/cost_parts = list()
+	for(var/datum/material/material_ref as anything in material_cost)
+		cost_parts += "[material_ref.name]: [round(material_cost[material_ref], 1)]"
+	return english_list(cost_parts)
+
+/obj/machinery/rack_creator/proc/check_resources()
+	var/list/total_cost = get_total_material_cost()
 
 	if(materials?.mat_container?.has_materials(total_cost))
 		return total_cost
 	return FALSE
+
+/obj/machinery/rack_creator/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+	if(isstack(tool))
+		var/amount_inserted = materials?.insert_item(tool, user_data = ID_DATA(user))
+		if(amount_inserted > 0)
+			to_chat(user, span_notice("[tool] worth [round(amount_inserted / SHEET_MATERIAL_AMOUNT, 0.1)] sheets of material was consumed by [src]."))
+			return ITEM_INTERACT_SUCCESS
+
+		to_chat(user, span_warning("[tool] was rejected by [src]."))
+		return ITEM_INTERACT_FAILURE
+
+	return ..()
+
+/obj/machinery/rack_creator/multitool_act(mob/living/user, obj/item/multitool/tool)
+	var/link_result = materials?.OnMultitool(src, user, tool)
+	if(link_result)
+		return link_result
+	return ..()
 
 /obj/machinery/rack_creator/attackby(obj/item/item, mob/living/user, params)
 	if(istype(item, /obj/item/ai_cpu))
@@ -134,9 +186,12 @@
 /obj/machinery/rack_creator/ui_data(mob/user)
 	var/list/data = list()
 	var/datum/techweb/science/science_tech = get_science_techweb()
+	var/list/total_material_cost = get_total_material_cost()
 
 	data["materials"] = output_available_resources()
 	data["can_finalize"] = (check_resources() != FALSE) && (inserted_cpus.len || ram_expansions.len)
+	data["rack_shell_cost"] = format_material_cost(get_rack_shell_cost())
+	data["total_material_cost"] = format_material_cost(total_material_cost)
 
 	var/list/cpus = list()
 	var/total_cpu = 0
@@ -162,13 +217,10 @@
 	var/list/installed_ram = list()
 	var/total_ram = 0
 	for(var/list/ram_data as anything in ram_expansions)
-		var/list/cost_parts = list()
-		for(var/datum/material/material_ref as anything in ram_data["cost"])
-			cost_parts += "[material_ref.name]: [round((ram_data["cost"][material_ref] / efficiency_coeff), 1)]"
 		installed_ram += list(list(
 			"name" = ram_data["name"],
 			"capacity" = ram_data["capacity"],
-			"cost" = english_list(cost_parts),
+			"cost" = format_material_cost(add_material_cost(list(), ram_data["cost"], 1 / efficiency_coeff)),
 		))
 		total_ram += ram_data["capacity"]
 
@@ -185,15 +237,12 @@
 		ram_design = SSresearch.techweb_design_by_id(initial(ram_design.id))
 		if(!ram_design)
 			continue
-		var/list/cost_parts = list()
-		for(var/datum/material/material_ref as anything in ram_design.materials)
-			cost_parts += "[material_ref.name]: [round((ram_design.materials[material_ref] / efficiency_coeff), 1)]"
 		possible_ram += list(list(
 			"id" = ram_design.id,
 			"name" = ram_design.name,
 			"capacity" = ram_design.capacity,
-			"cost" = english_list(cost_parts),
-			"unlocked" = !!science_tech?.isDesignResearchedID(ram_design.id),
+			"cost" = format_material_cost(add_material_cost(list(), ram_design.materials, 1 / efficiency_coeff)),
+			"unlocked" = is_design_unlocked(ram_design, science_tech),
 		))
 
 	data["possible_ram"] = possible_ram
@@ -249,8 +298,8 @@
 			var/ram_id = params["ram_type"]
 			if(!ram_id)
 				return TRUE
-			var/datum/design/ram/ram_design = science_tech?.isDesignResearchedID(ram_id)
-			if(!ram_design)
+			var/datum/design/ram/ram_design = SSresearch.techweb_design_by_id(ram_id)
+			if(!istype(ram_design) || !is_design_unlocked(ram_design, science_tech))
 				return TRUE
 			ram_expansions += list(list(
 				"name" = ram_design.name,

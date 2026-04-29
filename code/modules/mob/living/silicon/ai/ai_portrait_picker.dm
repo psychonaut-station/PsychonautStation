@@ -95,7 +95,9 @@
 
 			ai.portrait_appearance = MA
 
+			ai.selected_display_name = "Portrait"
 			ai.display_icon_override = "ai-portrait"//for AI cards
+			ai.display_icon_icon_override = null
 
 			ai.update_appearance()
 

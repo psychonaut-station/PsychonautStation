@@ -111,3 +111,21 @@
 	elevating_to_configuration_key = /datum/config_entry/string/alert_delta
 	shuttle_call_time_mod = ALERT_COEFF_DELTA
 	disables_mail = TRUE
+
+/**
+ * BLACK
+ *
+ * Total station mobilization
+ */
+/datum/security_level/black
+	name = "black"
+	name_shortform = "BLK"
+	announcement_color = "black"
+	sound = 'sound/announcer/alarm/airraid.ogg'
+	number_level = SEC_LEVEL_BLACK
+	status_display_icon_state = "deltaalert"
+	fire_alarm_light_color = LIGHT_COLOR_INTENSE_RED
+	lowering_to_announcement = "Black alert has been lifted. Delta-level emergency procedures remain in effect."
+	elevating_to_announcement = "Black alert is now in effect. Total station mobilization is authorized. All personnel are to follow emergency command directives immediately."
+	shuttle_call_time_mod = ALERT_COEFF_DELTA
+	disables_mail = TRUE

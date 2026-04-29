@@ -27,33 +27,44 @@
 		"Automated Overseer",
 	)
 
+/datum/job/ai/proc/is_viable_data_core(obj/machinery/ai/data_core/core, require_transfer_ready = FALSE, require_empty = TRUE)
+	if(!core || QDELETED(core))
+		return FALSE
+	if(require_empty && (locate(/mob/living/silicon/ai) in core.contents))
+		return FALSE
+	if(require_transfer_ready && !core.can_transfer_ai())
+		return FALSE
+	return TRUE
+
+/datum/job/ai/proc/get_preferred_data_core(require_transfer_ready = FALSE, require_empty = TRUE)
+	var/obj/machinery/ai/data_core/preferred_core = GLOB.primary_data_core
+	if(is_viable_data_core(preferred_core, require_transfer_ready, require_empty))
+		return preferred_core
+
+	for(var/obj/machinery/ai/data_core/candidate_core as anything in GLOB.data_cores)
+		if(is_viable_data_core(candidate_core, require_transfer_ready, require_empty))
+			return candidate_core
+
+	for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+		ai_landmark.bootstrap_decentralized_ai_hardware()
+
+	preferred_core = GLOB.primary_data_core
+	if(is_viable_data_core(preferred_core, require_transfer_ready, require_empty))
+		return preferred_core
+	for(var/obj/machinery/ai/data_core/candidate_core as anything in GLOB.data_cores)
+		if(is_viable_data_core(candidate_core, require_transfer_ready, require_empty))
+			return candidate_core
+
+	return null
+
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()
 	var/mob/living/silicon/ai/ai_spawn = spawned
 	if(!istype(ai_spawn))
 		return
 
-	var/obj/machinery/ai/data_core/start_core = ai_spawn.available_ai_cores(TRUE)
-	if(!start_core)
-		for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
-			ai_landmark.bootstrap_decentralized_ai_hardware()
-		start_core = ai_spawn.available_ai_cores(TRUE)
-
-	if(!start_core)
-		start_core = GLOB.primary_data_core
-	if(!start_core)
-		for(var/obj/machinery/ai/data_core/fallback_core as anything in GLOB.data_cores)
-			start_core = fallback_core
-			break
-
-	if(start_core && !QDELETED(start_core))
-		start_core.transfer_ai_mob(ai_spawn)
-		if(start_core.can_transfer_ai())
-			ai_spawn.claim_default_network_resources()
-			ai_spawn.pending_roundstart_link = FALSE
-		else
-			ai_spawn.pending_roundstart_link = TRUE
-	else
+	if(!ai_spawn.ensure_data_core_residency(TRUE))
+		ai_spawn.pending_roundstart_link = TRUE
 		ai_spawn.complete_roundstart_relocation()
 
 	if(SSticker.current_state == GAME_STATE_SETTING_UP)
@@ -67,17 +78,21 @@
 	ai_spawn.log_current_laws()
 
 /datum/job/ai/get_roundstart_spawn_point()
+	var/obj/machinery/ai/data_core/roundstart_core = get_preferred_data_core(TRUE)
+	if(roundstart_core)
+		return roundstart_core
+	roundstart_core = get_preferred_data_core()
+	if(roundstart_core)
+		return roundstart_core
 	return get_latejoin_spawn_point()
 
 /datum/job/ai/get_latejoin_spawn_point()
-	for(var/obj/structure/ai_core/latejoin_inactive/inactive_core as anything in GLOB.latejoin_ai_cores)
-		if(!inactive_core.is_available())
-			continue
-		GLOB.latejoin_ai_cores -= inactive_core
-		inactive_core.available = FALSE
-		var/turf/core_turf = get_turf(inactive_core)
-		qdel(inactive_core)
-		return core_turf
+	var/obj/machinery/ai/data_core/latejoin_core = get_preferred_data_core(TRUE)
+	if(latejoin_core)
+		return latejoin_core
+	latejoin_core = get_preferred_data_core()
+	if(latejoin_core)
+		return latejoin_core
 
 	var/list/primary_spawn_points = list()
 	var/list/secondary_spawn_points = list()
@@ -98,14 +113,16 @@
 	else
 		CRASH("Failed to find any AI spawn points.")
 
+	chosen_spawn_point.bootstrap_decentralized_ai_hardware()
+	latejoin_core = get_preferred_data_core()
+	if(latejoin_core)
+		return latejoin_core
+
 	chosen_spawn_point.used = TRUE
 	return chosen_spawn_point
 
 /datum/job/ai/special_check_latejoin(client/C)
-	for(var/obj/machinery/ai/data_core/latejoin_core as anything in GLOB.data_cores)
-		if(latejoin_core.valid_data_core())
-			return TRUE
-	return FALSE
+	return !!get_preferred_data_core(TRUE) || !!get_preferred_data_core()
 
 /datum/job/ai/announce_job(mob/living/joining_mob)
 	. = ..()

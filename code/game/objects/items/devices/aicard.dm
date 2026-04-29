@@ -132,19 +132,22 @@
 	if(!AI)
 		return
 
+	var/card_icon = AI.display_icon_icon_override || icon
 	var/card_display = AI.display_icon_override || "ai"
 
 	if(AI.stat == DEAD)
-		card_display = "[card_display]_dead"
+		card_display = get_ai_display_dead_state(AI.selected_display_name, AI.display_icon_override, card_icon)
 
-	if(!(card_display in icon_states(icon)))
+	if(!icon_exists(card_icon, card_display))
 		if(AI.stat == DEAD)
+			card_icon = icon
 			card_display = "ai_dead"
 		else
+			card_icon = icon
 			card_display = "ai"
 
-	. += mutable_appearance(icon, card_display)
-	. += emissive_appearance(icon, card_display, src, alpha = src.alpha)
+	. += mutable_appearance(card_icon, card_display)
+	. += emissive_appearance(card_icon, card_display, src, alpha = src.alpha)
 
 	if(AI.control_disabled)
 		var/indicator_state = "[base_icon_state]-off"

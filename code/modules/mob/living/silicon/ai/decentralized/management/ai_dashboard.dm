@@ -29,9 +29,61 @@
 	running_projects = list()
 	cpu_usage = list()
 	ram_usage = list()
+	rebuild_projects(TRUE)
+
+/datum/ai_dashboard/proc/rebuild_projects(force = FALSE)
+	if(!owner || QDELETED(owner))
+		return
+
+	available_projects = islist(available_projects) ? available_projects : list()
+	completed_projects = islist(completed_projects) ? completed_projects : list()
+	running_projects = islist(running_projects) ? running_projects : list()
+	cpu_usage = islist(cpu_usage) ? cpu_usage : list()
+	ram_usage = islist(ram_usage) ? ram_usage : list()
+
+	var/list/seen_project_types = list()
+	var/list/sanitized_completed = list()
+	for(var/datum/ai_project/project as anything in completed_projects)
+		if(!project || QDELETED(project))
+			continue
+		if(project.dashboard != src || project.ai != owner)
+			continue
+		if(project.type in seen_project_types)
+			continue
+		seen_project_types += project.type
+		sanitized_completed += project
+
+	var/list/sanitized_available = list()
+	for(var/datum/ai_project/project as anything in available_projects)
+		if(!project || QDELETED(project))
+			continue
+		if(project.dashboard != src || project.ai != owner)
+			continue
+		if(project.type in seen_project_types)
+			continue
+		seen_project_types += project.type
+		sanitized_available += project
+
+	completed_projects = sanitized_completed
+	available_projects = sanitized_available
+
+	for(var/project_name in cpu_usage.Copy())
+		if(!get_project_by_name(project_name))
+			cpu_usage -= project_name
+	for(var/project_name in ram_usage.Copy())
+		if(!get_project_by_name(project_name))
+			ram_usage -= project_name
 
 	for(var/path in subtypesof(/datum/ai_project))
-		available_projects += new path(owner, src)
+		if(path == /datum/ai_project)
+			continue
+		if(path in seen_project_types)
+			continue
+		var/datum/ai_project/new_project = new path(owner, src)
+		if(!new_project || QDELETED(new_project))
+			continue
+		available_projects += new_project
+		seen_project_types += path
 
 /datum/ai_dashboard/proc/is_interactable(mob/user)
 	if(user?.client?.holder)
@@ -58,8 +110,47 @@
 		ui.open()
 
 /datum/ai_dashboard/ui_data(mob/user)
+	if(owner && !QDELETED(owner) && !owner.ai_network)
+		var/obj/machinery/ai/data_core/linked_core = istype(owner.loc, /obj/machinery/ai/data_core) ? owner.loc : null
+		if(!linked_core)
+			for(var/obj/machinery/ai/data_core/core as anything in GLOB.data_cores)
+				if(owner in core.contents)
+					linked_core = core
+					break
+		if(!linked_core)
+			linked_core = GLOB.primary_data_core
+		if(linked_core?.network)
+			owner.ai_network = linked_core.network
+			if(!(owner in owner.ai_network.ai_list))
+				owner.ai_network.ai_list += owner
+
+	if(owner?.ai_network && !(owner in owner.ai_network.ai_list))
+		owner.ai_network.ai_list += owner
+
+	if(owner && !QDELETED(owner) && !istype(owner.loc, /obj/item/aicard))
+		// Prefer a fully operational core when possible so dashboard data reflects
+		// active network hardware instead of a stale/non-transfer-ready host.
+		owner.ensure_data_core_residency(TRUE, FALSE)
+	owner.ai_network?.update_resources()
+	rebuild_projects()
+
 	var/list/data = list()
 	var/datum/ai_shared_resources/resources = owner.ai_network?.resources
+	if(resources)
+		var/current_cpu_assigned = resources.cpu_assigned[owner] || 0
+		var/current_ram_assigned = resources.ram_assigned[owner] || 0
+		if((current_cpu_assigned <= 0 && resources.total_cpu() > 0) || (current_ram_assigned <= 0 && resources.total_ram() > 0))
+			owner.claim_default_network_resources()
+			resources = owner.ai_network?.resources
+	else
+		owner.ensure_data_core_residency(FALSE, TRUE)
+		owner.ai_network?.update_resources()
+		resources = owner.ai_network?.resources
+
+	if(resources && (resources.cpu_assigned[owner] || 0) <= 0 && resources.total_cpu() > 0)
+		owner.claim_default_network_resources()
+		resources = owner.ai_network?.resources
+
 	var/assigned_cpu_share = resources?.cpu_assigned[owner] || 0
 	var/assigned_ram = resources?.ram_assigned[owner] || 0
 	var/total_cpu_used = 0
@@ -67,9 +158,15 @@
 	var/turf/current_turf = get_turf(owner)
 	var/temperature = 0
 
-	if(istype(owner.loc, /obj/machinery/ai))
-		var/obj/machinery/ai/current_machine = owner.loc
-		temperature = current_machine.core_temp ? current_machine.core_temp : 0
+	var/obj/machinery/ai/current_machine = istype(owner.loc, /obj/machinery/ai) ? owner.loc : null
+	if(!current_machine && owner.ai_network)
+		for(var/obj/machinery/ai/data_core/core as anything in owner.ai_network.get_all_nodes())
+			if(owner in core.contents)
+				current_machine = core
+				break
+	if(!current_machine)
+		current_machine = owner.ai_network?.find_data_core()
+	temperature = current_machine?.core_temp || 0
 
 	for(var/project_name in cpu_usage)
 		total_cpu_used += cpu_usage[project_name]
@@ -82,12 +179,24 @@
 	data["used_cpu"] = total_cpu_used
 	data["used_ram"] = total_ram_used
 	data["total_cpu_used"] = resources?.total_cpu_assigned() || 0
-	data["max_cpu"] = resources?.total_cpu() || 0
-	data["max_ram"] = resources?.total_ram() || 0
+	data["max_cpu"] = resources?.total_cpu() || owner.ai_network?.total_cpu() || 0
+	data["max_ram"] = resources?.total_ram() || owner.ai_network?.total_ram() || 0
 	data["human_lock"] = resources?.human_lock || FALSE
 	data["human_only"] = data["human_lock"]
 	data["is_ai"] = TRUE
-	data["categories"] = GLOB.ai_project_categories
+	var/list/dashboard_categories = islist(GLOB.ai_project_categories) ? GLOB.ai_project_categories.Copy() : list()
+	if(!length(dashboard_categories))
+		for(var/datum/ai_project/project as anything in available_projects)
+			if(!project?.category || (project.category in dashboard_categories))
+				continue
+			dashboard_categories += project.category
+		for(var/datum/ai_project/project as anything in completed_projects)
+			if(!project?.category || (project.category in dashboard_categories))
+				continue
+			dashboard_categories += project.category
+	if(!length(dashboard_categories))
+		dashboard_categories += AI_PROJECT_MISC
+	data["categories"] = dashboard_categories
 	data["integrity"] = owner.health
 	data["location_name"] = current_turf ? "[get_area(current_turf)]" : "Unknown"
 	data["location_coords"] = current_turf ? "[current_turf.x], [current_turf.y], [current_turf.z]" : "N/A"
@@ -132,8 +241,13 @@
 			"name" = ability.name,
 			"project_name" = project.name,
 			"uses" = ability.uses,
-			"max_uses" = ability.max_uses,
-		))
+				"max_uses" = ability.max_uses,
+			))
+
+	data["available_project_count"] = length(data["available_projects"])
+	data["completed_project_count"] = length(data["completed_projects"])
+	data["project_type_count"] = length(subtypesof(/datum/ai_project))
+	data["loaded_project_count"] = length(available_projects) + length(completed_projects)
 
 	return data
 
@@ -295,7 +409,8 @@
 	if(current_ram - total_ram_used < project.ram_required || !project.canRun())
 		return FALSE
 
-	project.run_project()
+	if(!project.run_project())
+		return FALSE
 	ram_usage[project.name] += project.ram_required
 	return TRUE
 
@@ -351,7 +466,6 @@
 		return
 
 	var/current_cpu = resources.cpu_assigned[owner] ? resources.total_cpu() * resources.cpu_assigned[owner] : 0
-	var/datum/techweb/science/science_tech = locate(/datum/techweb/science) in SSresearch.techwebs
 	var/current_ram = (resources.ram_assigned[owner] || 0) + free_ram
 	var/total_ram_used = 0
 
@@ -374,10 +488,9 @@
 	for(var/project_name in cpu_usage)
 		remaining_cpu -= cpu_usage[project_name]
 
-	if(remaining_cpu > 0 && science_tech)
+	if(remaining_cpu > 0)
 		var/research_points = round(AI_RESEARCH_PER_CPU * (remaining_cpu * current_cpu) * seconds, 0.1)
-		if(research_points > 0)
-			science_tech.add_point_list(list(TECHWEB_POINT_TYPE_GENERIC = research_points))
+		ai_add_station_research_points(research_points)
 
 	for(var/project_name in cpu_usage)
 		if(!cpu_usage[project_name])

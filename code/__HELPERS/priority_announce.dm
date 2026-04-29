@@ -13,7 +13,7 @@
 #define CHAT_ALERT_DEFAULT_SPAN(string) ("<div class='chat_alert_default'>" + string + "</div>")
 #define CHAT_ALERT_COLORED_SPAN(color, string) ("<div class='chat_alert_" + color + "'>" + string + "</div>")
 
-#define ANNOUNCEMENT_COLORS list("default", "green", "blue", "pink", "yellow", "orange", "red", "purple")
+#define ANNOUNCEMENT_COLORS list("default", "green", "blue", "pink", "yellow", "orange", "red", "purple", "black")
 
 /**
  * Make a big red text announcement to
@@ -177,6 +177,8 @@
 			current_level_name = "Kırmızı'ya"
 		if("delta")
 			current_level_name = "Delta'ya"
+		if("black")
+			current_level_name = "Siyah'a"
 
 
 	if(current_level_number > previous_level_number)

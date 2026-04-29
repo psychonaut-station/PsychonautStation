@@ -43,7 +43,9 @@
 			for(var/V in GLOB.ai_list)
 				var/mob/living/silicon/ai/A = V
 				if(A.nuking)
-					if(A.linked_core)
+					if(istype(A.loc, /obj/machinery/ai/data_core))
+						target = A.loc
+					else if(A.linked_core)
 						target = A.linked_core
 					else
 						target = A

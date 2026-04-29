@@ -220,7 +220,7 @@
 	var/confirmation = tgui_alert(user, "Connect to [shell]?", buttons = list("Yes", "No"))
 	if(confirmation != "Yes")
 		return
-	if(QDELETED(src) || QDELETED(user) || QDELETED(shell) || !parent?.shell || !user.can_interact_with(shell) || !boris)
+	if(QDELETED(src) || QDELETED(user) || QDELETED(shell) || !parent?.shell || !boris)
 		return
 	do_ai_connect(user, shell)
 
@@ -270,7 +270,7 @@
 	var/mob/living/silicon/ai/ai = occupant
 	if(!istype(ai))
 		return
-	if(!ai.can_interact_with(parent.shell))
+	if(QDELETED(parent?.shell) || ai.stat != CONSCIOUS || ai.control_disabled)
 		remove_occupant()
 
 /obj/item/circuit_component/mmi/proc/on_control_toggled(datum/_source, control_disabled)

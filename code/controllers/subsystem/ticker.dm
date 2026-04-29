@@ -500,9 +500,17 @@ SUBSYSTEM_DEF(ticker)
 		LAZYADD(round_end_events, cb)
 
 /datum/controller/subsystem/ticker/proc/create_characters()
+	var/datum/job/human_ai_job = HAS_TRAIT(SSstation, STATION_TRAIT_HUMAN_AI) ? SSjob.get_job_type(/datum/job/human_ai) : null
+	var/datum/station_trait/job/human_ai/human_ai_trait
+	if(human_ai_job)
+		for(var/datum/station_trait/job/human_ai/trait as anything in SSstation.station_traits)
+			human_ai_trait = trait
+			break
 	for(var/i in GLOB.new_player_list)
 		var/mob/dead/new_player/player = i
 		if(player.ready == PLAYER_READY_TO_PLAY && player.mind)
+			if(human_ai_job && human_ai_trait?.should_force_human_ai(player) && player.mind.assigned_role != human_ai_job)
+				player.mind.set_assigned_role(human_ai_job)
 			GLOB.joined_player_list += player.ckey
 			var/atom/destination = player.mind.assigned_role.get_roundstart_spawn_point()
 			if(!destination) // Failed to fetch a proper roundstart location, won't be going anywhere.

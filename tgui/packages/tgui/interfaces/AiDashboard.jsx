@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import {
   Box,
   Button,
@@ -15,9 +17,19 @@ import {
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
 
+const percentInputProps = {
+  animated: true,
+  tickWhileDragging: true,
+  step: 1,
+  stepPixelSize: 2,
+};
+
 export const AiDashboard = (props, context) => {
   const { data } = useBackend(context);
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
+  const [storedTab, setStoredTab] = useLocalState(context, 'tab', 1);
+  const normalizedTab = Number(storedTab);
+  const tab = [1, 2, 3, 4].includes(normalizedTab) ? normalizedTab : 1;
+  const setTab = (nextTab) => setStoredTab(nextTab);
   const amountOfCpu = (data.current_cpu || 0) * (data.max_cpu || 0);
 
   return (
@@ -77,6 +89,9 @@ export const AiDashboard = (props, context) => {
               Utilized CPU Power
             </LabeledControls.Item>
             <LabeledControls.Item>
+              <Box minHeight="1.65em" />
+            </LabeledControls.Item>
+            <LabeledControls.Item>
               <ProgressBar
                 ranges={{
                   good: [(data.current_ram || 0) * 0.7, Infinity],
@@ -117,39 +132,60 @@ export const AiDashboard = (props, context) => {
 
 const AvailableProjects = (props, context) => {
   const { act, data } = useBackend(context);
-  const [search, setSearch] = useLocalState(context, 'search', null);
-  const [selectedCategory, setCategory] = useLocalState(
-    context,
-    'selectedCategory',
-    data.categories?.[0]
+  const [search, setSearch] = useState('');
+  const fallbackCategories = Array.from(
+    new Set((data.available_projects || []).map((project) => project.category).filter(Boolean))
   );
-  const remainingCpu = (1 - (data.used_cpu || 0)) * 100;
+  const categories = (data.categories && data.categories.length) ? data.categories : fallbackCategories;
+  const defaultCategory = fallbackCategories[0] || categories?.[0];
+  const [selectedCategory, setCategory] = useState(defaultCategory);
+  const activeCategory = (selectedCategory && (categories || []).includes(selectedCategory))
+    ? selectedCategory
+    : defaultCategory;
+  const hasActiveCategoryProjects = !!(data.available_projects || []).some(
+    (project) => project.category === activeCategory
+  );
+  const remainingCpu = Math.max(0, (1 - (data.used_cpu || 0)) * 100);
+  const filteredProjects = (data.available_projects || []).filter((project) => {
+    if (search) {
+      const searchableString = String(project.name).toLowerCase();
+      return searchableString.includes(search.toLowerCase());
+    }
+    if (!activeCategory || !hasActiveCategoryProjects) {
+      return true;
+    }
+    return project.category === activeCategory;
+  });
 
   return (
     <Section title="Available Projects" buttons={(
       <Input
         value={search}
         placeholder="Search.."
-        onInput={(e, value) => setSearch(value)}
+        onChange={(value) => setSearch(typeof value === 'string' ? value : '')}
       />
     )}>
       <Tabs>
-        {(data.categories || []).map((category, index) => (
+        {(categories || []).map((category, index) => (
           <Tabs.Tab
             key={index}
-            selected={!search ? selectedCategory === category : null}
+            selected={!search ? activeCategory === category : null}
             onClick={() => setCategory(category)}>
             {category}
           </Tabs.Tab>
         ))}
       </Tabs>
-      {(data.available_projects || []).filter((project) => {
-        if (search) {
-          const searchableString = String(project.name).toLowerCase();
-          return searchableString.match(new RegExp(search, 'i'));
-        }
-        return project.category === selectedCategory;
-      }).map((project, index) => (
+      {!filteredProjects.length && (
+        <Box color="average" bold>
+          No upgrades found for the current filter.
+        </Box>
+      )}
+      {!filteredProjects.length && (data.project_type_count || 0) > 0 && (data.loaded_project_count || 0) === 0 && (
+        <Box color="bad" bold>
+          Upgrade registry failed to load project definitions.
+        </Box>
+      )}
+      {filteredProjects.map((project, index) => (
         <Section
           key={index}
           title={(
@@ -161,11 +197,12 @@ const AvailableProjects = (props, context) => {
             <>
               <Box inline bold>Assigned CPU:&nbsp;</Box>
               <NumberInput
+                {...percentInputProps}
                 unit="%"
                 value={(project.assigned_cpu || 0) * 100}
                 minValue={0}
                 maxValue={remainingCpu + ((project.assigned_cpu || 0) * 100)}
-                onChange={(e, value) => act('allocate_cpu', {
+                onChange={(value) => act('allocate_cpu', {
                   project_name: project.name,
                   amount: Math.round((value / 100) * 100) / 100,
                 })}
@@ -205,13 +242,33 @@ const AvailableProjects = (props, context) => {
 
 const CompletedProjects = (props, context) => {
   const { act, data } = useBackend(context);
-  const [searchCompleted, setSearchCompleted] = useLocalState(context, 'searchCompleted', null);
-  const [activeProjectsOnly, setActiveProjectsOnly] = useLocalState(context, 'activeProjectsOnly', true);
-  const [selectedCategory, setCategory] = useLocalState(
-    context,
-    'selectedCategory',
-    data.categories?.[0]
+  const [searchCompleted, setSearchCompleted] = useState('');
+  const [activeProjectsOnly, setActiveProjectsOnly] = useState(false);
+  const fallbackCategories = Array.from(
+    new Set((data.completed_projects || []).map((project) => project.category).filter(Boolean))
   );
+  const categories = (data.categories && data.categories.length) ? data.categories : fallbackCategories;
+  const defaultCategory = fallbackCategories[0] || categories?.[0];
+  const [selectedCategory, setCategory] = useState(defaultCategory);
+  const activeCategory = (selectedCategory && (categories || []).includes(selectedCategory))
+    ? selectedCategory
+    : defaultCategory;
+  const hasActiveCategoryProjects = !!(data.completed_projects || []).some(
+    (project) => project.category === activeCategory
+  );
+  const filteredCompletedProjects = (data.completed_projects || []).filter((project) => {
+    if (searchCompleted) {
+      const searchableString = String(project.name).toLowerCase();
+      return searchableString.includes(searchCompleted.toLowerCase());
+    }
+    if (activeProjectsOnly && !project.can_be_run) {
+      return false;
+    }
+    if (!activeCategory || !hasActiveCategoryProjects) {
+      return true;
+    }
+    return project.category === activeCategory;
+  });
 
   return (
     <Section title="Completed Projects" buttons={(
@@ -224,30 +281,26 @@ const CompletedProjects = (props, context) => {
         <Input
           value={searchCompleted}
           placeholder="Search.."
-          onInput={(e, value) => setSearchCompleted(value)}
+          onChange={(value) => setSearchCompleted(typeof value === 'string' ? value : '')}
         />
       </>
     )}>
       <Tabs>
-        {(data.categories || []).map((category, index) => (
+        {(categories || []).map((category, index) => (
           <Tabs.Tab
             key={index}
-            selected={!searchCompleted ? selectedCategory === category : null}
+            selected={!searchCompleted ? activeCategory === category : null}
             onClick={() => setCategory(category)}>
             {category}
           </Tabs.Tab>
         ))}
       </Tabs>
-      {(data.completed_projects || []).filter((project) => {
-        if (searchCompleted) {
-          const searchableString = String(project.name).toLowerCase();
-          return searchableString.match(new RegExp(searchCompleted, 'i'));
-        }
-        if (activeProjectsOnly && !project.can_be_run) {
-          return false;
-        }
-        return project.category === selectedCategory;
-      }).map((project, index) => (
+      {!filteredCompletedProjects.length && (
+        <Box color="average" bold>
+          No completed upgrades found for the current filter.
+        </Box>
+      )}
+      {filteredCompletedProjects.map((project, index) => (
         <Section
           key={index}
           title={(
@@ -279,7 +332,7 @@ const CompletedProjects = (props, context) => {
 
 const AbilityCharging = (props, context) => {
   const { act, data } = useBackend(context);
-  const remainingCpu = (1 - (data.used_cpu || 0)) * 100;
+  const remainingCpu = Math.max(0, (1 - (data.used_cpu || 0)) * 100);
 
   return (
     <Section title="Ability Charging">
@@ -295,11 +348,12 @@ const AbilityCharging = (props, context) => {
             <>
               <Box inline bold>Assigned CPU:&nbsp;</Box>
               <NumberInput
+                {...percentInputProps}
                 unit="%"
                 value={(ability.assigned_cpu || 0) * 100}
                 minValue={0}
                 maxValue={remainingCpu + ((ability.assigned_cpu || 0) * 100)}
-                onChange={(e, value) => act('allocate_recharge_cpu', {
+                onChange={(value) => act('allocate_recharge_cpu', {
                   project_name: ability.project_name,
                   amount: Math.round((value / 100) * 100) / 100,
                 })}
@@ -345,12 +399,13 @@ const NetworkingResources = (props, context) => {
               {amountOfCpu.toFixed(1)} THz
             </ProgressBar>
             <NumberInput
+              {...percentInputProps}
               width="60px"
               unit="%"
               value={(data.current_cpu || 0) * 100}
               minValue={0}
               maxValue={100}
-              onChange={(e, value) => act('set_cpu', {
+              onChange={(value) => act('set_cpu', {
                 amount_cpu: Math.round((value / 100) * 100) / 100,
               })}
               disabled={data.human_only}

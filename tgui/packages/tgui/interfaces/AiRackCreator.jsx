@@ -181,6 +181,12 @@ export const AiRackCreator = (props, context) => {
               <LabeledList.Item label="Weighted Efficiency">
                 {data.efficiency}%
               </LabeledList.Item>
+              <LabeledList.Item label="Rack Shell Cost">
+                {data.rack_shell_cost || 'None'}
+              </LabeledList.Item>
+              <LabeledList.Item label="Finalize Cost">
+                {data.total_material_cost || 'None'}
+              </LabeledList.Item>
             </LabeledList>
           </Section>
         </Section>

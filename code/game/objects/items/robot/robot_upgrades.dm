@@ -578,6 +578,7 @@
 		return FALSE
 
 	borg.make_shell(src)
+	borg.notify_ai(AI_NOTIFICATION_AI_SHELL)
 
 /obj/item/borg/upgrade/ai/deactivate(mob/living/silicon/robot/borg, mob/living/user = usr)
 	. = ..()

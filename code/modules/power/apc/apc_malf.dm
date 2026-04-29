@@ -44,9 +44,8 @@
 		return
 	malf.ShutOffDoomsdayDevice()
 	occupier = malf
-	if (isturf(malf.loc)) // create a deactivated AI core if the AI isn't coming from an emergency mech shunt
-		malf.create_core_link(new /obj/structure/ai_core(malf.loc, CORE_STATE_FINISHED, malf.make_mmi()))
 	malf.forceMove(src) // move INTO the APC, not to its tile
+	malf.set_control_disabled(TRUE)
 	if(!findtext(occupier.name, "APC Copy"))
 		occupier.name = "[malf.name] APC Copy"
 	malf.shunted = TRUE
@@ -63,22 +62,23 @@
 /obj/machinery/power/apc/proc/malfvacate(forced)
 	if(!occupier)
 		return
+	var/mob/living/silicon/ai/vacating_ai = occupier
 	SEND_SIGNAL(occupier, COMSIG_SILICON_AI_VACATE_APC, occupier)
 	SEND_SIGNAL(src, COMSIG_SILICON_AI_VACATE_APC, occupier)
 	if(forced)
-		occupier.forceMove(drop_location())
-		INVOKE_ASYNC(occupier, TYPE_PROC_REF(/mob/living, death))
-		occupier.gib(DROP_ALL_REMAINS)
+		vacating_ai.forceMove(drop_location())
+		INVOKE_ASYNC(vacating_ai, TYPE_PROC_REF(/mob/living, death))
+		vacating_ai.gib(DROP_ALL_REMAINS)
 		occupier = null
 		return
-	if(occupier.linked_core)
-		occupier.shunted = FALSE
-		occupier.resolve_core_link()
+	if(vacating_ai.ensure_data_core_residency(FALSE, TRUE))
+		vacating_ai.shunted = FALSE
+		vacating_ai.set_control_disabled(FALSE)
 		occupier = null
 	else
-		stack_trace("An AI: [occupier] has vacated an APC with no linked core and without being gibbed.")
+		stack_trace("An AI: [vacating_ai] has vacated an APC without a reachable AI data core and without being gibbed.")
 
-	if(!occupier.nuking) //Pinpointers go back to tracking the nuke disk, as long as the AI (somehow) isn't mid-nuking.
+	if(!vacating_ai?.nuking) //Pinpointers go back to tracking the nuke disk, as long as the AI (somehow) isn't mid-nuking.
 		for(var/obj/item/pinpointer/nuke/disk_pinpointers in GLOB.pinpointer_list)
 			disk_pinpointers.switch_mode_to(TRACK_NUKE_DISK)
 			disk_pinpointers.alert = FALSE
@@ -95,9 +95,6 @@
 		return FALSE
 	if(!occupier.mind || !occupier.client)
 		to_chat(user, span_warning("[occupier] is either inactive or destroyed!"))
-		return FALSE
-	if(occupier.linked_core) //if they have an active linked_core, they can't be transferred from an APC
-		to_chat(user, span_warning("[occupier] is refusing all attempts at transfer!") )
 		return FALSE
 	if(transfer_in_progress)
 		to_chat(user, span_warning("There's already a transfer in progress!"))

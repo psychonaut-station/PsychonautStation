@@ -1,6 +1,9 @@
 /mob/living/silicon/ai/death(gibbed, drop_mmi = TRUE)
 	if(stat == DEAD)
 		return
+	if(!dead_ai_backup_created && !istype(loc, /obj/item/dead_ai) && !istype(loc, /obj/item/aicard))
+		create_dead_ai_backup(drop_location())
+		return TRUE
 
 	if(!gibbed)
 		INVOKE_ASYNC(src, PROC_REF(emote), "dead")
@@ -12,15 +15,16 @@
 
 	cut_overlays()
 
-	var/base = display_icon_override || "ai"
-	var/dead_state = "[base]_dead"
+	var/screen_icon = display_icon_icon_override || icon
+	var/dead_state = get_ai_display_dead_state(selected_display_name, display_icon_override, screen_icon)
 	var/screen_state
 	var/lights_state = "lights_dead"
 
-	if(icon_exists(icon, dead_state))
+	if(icon_exists(screen_icon, dead_state))
 		screen_state = dead_state
 	else
 		screen_state = "ai_dead"
+		screen_icon = icon
 
 	if(!icon_exists(icon, lights_state))
 		lights_state = "lights_active"
@@ -35,13 +39,13 @@
 
 		add_overlay(emissive_appearance(icon, lights_state, src))
 
-	if(icon_exists(icon, screen_state))
-		var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+	if(icon_exists(screen_icon, screen_state))
+		var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
 		screen_overlay.layer = FLOAT_LAYER + 0.1
 		screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
 		add_overlay(screen_overlay)
 
-		add_overlay(emissive_appearance(icon, screen_state, src))
+		add_overlay(emissive_appearance(screen_icon, screen_state, src))
 
 	if(is_anchored)
 		flip_anchored()

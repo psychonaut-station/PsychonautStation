@@ -291,7 +291,8 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		return
 	if (owner_AI.stat != DEAD)
 		priority_announce("Tüm istasyon sistemlerinde saldırgan program hataları tespit edildi. Davranış modülüne gelebilecek olası hasarı önlemek için AI devre dışı bırakılmalıdır.", "Anomali Uyarısı", ANNOUNCER_AIMALF)
-		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_DELTA)
+			SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 		var/obj/machinery/doomsday_device/DOOM = new(owner_AI)
 		owner_AI.nuking = TRUE
 		owner_AI.doomsday_device = DOOM
@@ -335,7 +336,8 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 	STOP_PROCESSING(SSfastprocess, src)
 	SSshuttle.clearHostileEnvironment(src)
 	SSmapping.remove_nuke_threat(src)
-	SSsecurity_level.set_level(SEC_LEVEL_RED)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
+		SSsecurity_level.set_level(SEC_LEVEL_RED)
 	for(var/mob/living/silicon/robot/borg in owner?.connected_robots)
 		borg.lamp_doom = FALSE
 		borg.toggle_headlamp(FALSE, TRUE) //forces borg lamp to update
@@ -1215,25 +1217,30 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 		return FALSE
 	var/mob/living/silicon/ai/ai_clicker = clicker
 
-	if (ai_clicker.incapacitated || !isturf(ai_clicker.loc))
+	var/atom/movable/rolling_atom = ai_clicker
+	if(istype(ai_clicker.loc, /obj/machinery/ai/data_core))
+		rolling_atom = ai_clicker.loc
+
+	if (ai_clicker.incapacitated || (!isturf(ai_clicker.loc) && !istype(rolling_atom, /obj/machinery/ai/data_core)))
 		return FALSE
 
 	var/turf/target = get_turf(clicked_on)
 	if (isnull(target))
 		return FALSE
 
-	if (target == ai_clicker.loc)
+	var/turf/source_turf = get_turf(rolling_atom)
+	if (target == source_turf)
 		target.balloon_alert(ai_clicker, "can't roll on yourself!")
 		return FALSE
 
-	var/picked_dir = get_dir(ai_clicker, target)
+	var/picked_dir = get_dir(source_turf, target)
 	if (!picked_dir)
 		return FALSE
-	var/turf/temp_target = get_step(ai_clicker, picked_dir) // we can move during the timer so we cant just pass the ref
+	var/turf/temp_target = get_step(source_turf, picked_dir) // we can move during the timer so we cant just pass the ref
 
 	new /obj/effect/temp_visual/telegraphing/vending_machine_tilt(temp_target, roll_over_time)
 	ai_clicker.balloon_alert_to_viewers("rolling...")
-	addtimer(CALLBACK(src, PROC_REF(do_roll_over), ai_clicker, picked_dir), roll_over_time)
+	addtimer(CALLBACK(src, PROC_REF(do_roll_over), ai_clicker, rolling_atom, picked_dir), roll_over_time)
 
 	adjust_uses(-1)
 	if(uses)
@@ -1242,18 +1249,26 @@ GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))
 
 	COOLDOWN_START(src, time_til_next_tilt, roll_over_cooldown)
 
-/datum/action/innate/ai/ranged/core_tilt/proc/do_roll_over(mob/living/silicon/ai/ai_clicker, picked_dir)
-	if (ai_clicker.incapacitated || !isturf(ai_clicker.loc)) // prevents bugs where the ai is carded and rolls
+/datum/action/innate/ai/ranged/core_tilt/proc/do_roll_over(mob/living/silicon/ai/ai_clicker, atom/movable/rolling_atom, picked_dir)
+	if (ai_clicker.incapacitated || QDELETED(rolling_atom))
 		return
 
-	var/turf/target = get_step(ai_clicker, picked_dir) // in case we moved we pass the dir not the target turf
+	if(istype(rolling_atom, /obj/machinery/ai/data_core))
+		if(ai_clicker.loc != rolling_atom)
+			return
+	else if(!isturf(ai_clicker.loc)) // prevents bugs where the ai is carded and rolls
+		return
+
+	var/turf/target = get_step(get_turf(rolling_atom), picked_dir) // in case we moved we pass the dir not the target turf
 
 	if (isnull(target))
 		return
 
 	var/paralyze_time = clamp(6 SECONDS, 0 SECONDS, (roll_over_cooldown * 0.9)) //the clamp prevents stunlocking as the max is always a little less than the cooldown between rolls
 
-	return ai_clicker.fall_and_crush(target, MALF_AI_ROLL_DAMAGE, MALF_AI_ROLL_CRIT_CHANCE, null, paralyze_time, picked_dir, rotation = get_rotation_from_dir(picked_dir))
+	. = rolling_atom.fall_and_crush(target, MALF_AI_ROLL_DAMAGE, MALF_AI_ROLL_CRIT_CHANCE, null, paralyze_time, picked_dir, rotation = get_rotation_from_dir(picked_dir))
+	if(istype(rolling_atom, /obj/machinery/ai/data_core))
+		ai_clicker.view_core()
 
 /// Used in our radial menu, state-checking proc after the radial menu sleeps
 /datum/action/innate/ai/ranged/core_tilt/proc/radial_check(mob/living/silicon/ai/clicker)

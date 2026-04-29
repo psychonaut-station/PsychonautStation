@@ -1,9 +1,15 @@
 /// Thermals for Yog-style AI server hardware.
 #define AI_TEMPERATURE_MULTIPLIER 5
-#define AI_TEMP_LIMIT 288.15
+#define AI_TEMP_LIMIT 333.15
 
 #define AI_HEATSINK_CAPACITY 5000
 #define AI_HEATSINK_COEFF 1
+#define AI_POWERED_DOWN_COOLING_RATE 8
+#define AI_SERVER_CABINET_HEAT_SCALE 0.5
+#define AI_REVIVAL_HEAT_MULTIPLIER 0.35
+#define AI_DATA_CORE_ACTIVE_HEAT_SCALE 0.35
+#define AI_DATA_CORE_REVIVAL_HEAT_SCALE 0.15
+#define AI_DATA_CORE_IDLE_HEAT_SCALE 0.05
 #define AI_CPU_BASE_POWER_USAGE 1250
 #define AI_RAM_POWER_USAGE 500
 #define AI_MAX_CPUS_PER_RACK 4
@@ -16,8 +22,8 @@
 #define AI_DATA_CORE_POWER_USAGE 7500
 #define MAX_AI_SERVER_CABINET_TICKS 150
 
-#define MAX_AI_BITCOIN_MINED_PER_TICK 10
-#define AI_BITCOIN_PRICE 10
+#define MAX_AI_BITCOIN_MINED_PER_TICK 1
+#define AI_BITCOIN_PRICE 2
 #define MAX_AI_REGULAR_RESEARCH_PER_TICK 10
 #define AI_REGULAR_RESEARCH_POINT_MULTIPLIER 1
 #define AI_BLACKBOX_LIFETIME 300
@@ -48,13 +54,13 @@ GLOBAL_LIST_INIT(possible_ainet_activities, list(
 ))
 
 GLOBAL_LIST_INIT(ainet_activity_tagline, list(
-	AI_CRYPTO = "Use spare network CPU to mine credits.",
+	AI_CRYPTO = "Use spare network CPU to fund cargo.",
 	AI_RESEARCH = "Convert local compute into science point income.",
 	AI_REVIVAL = "Divert cluster compute into recovering dead AI blackboxes.",
 ))
 
 GLOBAL_LIST_INIT(ainet_activity_description, list(
-	AI_CRYPTO = "Spare cluster compute is diverted into NTCoin mining and can be withdrawn as holochips from an AI network terminal.",
+	AI_CRYPTO = "Spare cluster compute is diverted into NTCoin mining and automatically deposited into the Cargo Budget.",
 	AI_RESEARCH = "Allocates spare cluster compute to standard station science research, separate from the AI's own dashboard research queue.",
 	AI_REVIVAL = "When a volatile neural core is inserted into an active AI data core, this project feeds compute into reconstructing the stored AI.",
 ))

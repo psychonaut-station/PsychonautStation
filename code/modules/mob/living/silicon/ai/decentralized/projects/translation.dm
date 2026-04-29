@@ -1,8 +1,9 @@
-#define HEARD_MESSAGES_TO_TRANSLATE 8
+#define HEARD_MESSAGES_TO_UNDERSTAND 8
+#define HEARD_MESSAGES_TO_SPEAK 16
 
 /datum/ai_project/translation
 	name = "Heuristic Language Translation"
-	description = "While running, analyzes unknown languages you hear and eventually learns them permanently. Requires 10% free CPU."
+	description = "While running, analyzes unknown languages you hear. After 8 messages you can understand the language, and after 16 you can speak it. Requires 10% free CPU."
 	research_cost = 1500
 	ram_required = 2
 	research_requirements_text = "None"
@@ -19,7 +20,8 @@
 
 /datum/ai_project/translation/proc/heard_message(datum/source, list/hearing_args)
 	SIGNAL_HANDLER
-	if(ai.has_language(hearing_args[HEARING_LANGUAGE]))
+	var/datum/language/heard_language = hearing_args[HEARING_LANGUAGE]
+	if(ai.has_language(heard_language, SPOKEN_LANGUAGE))
 		return
 
 	var/list/blacklisted_languages = list(
@@ -27,12 +29,17 @@
 		/datum/language/codespeak,
 		/datum/language/xenocommon,
 	)
-	if(is_type_in_list(hearing_args[HEARING_LANGUAGE], blacklisted_languages))
+	if(is_type_in_list(heard_language, blacklisted_languages))
 		return
 
-	heard_languages[hearing_args[HEARING_LANGUAGE]]++
-	if(heard_languages[hearing_args[HEARING_LANGUAGE]] >= HEARD_MESSAGES_TO_TRANSLATE)
-		ai.grant_language(hearing_args[HEARING_LANGUAGE], spoken = FALSE)
+	var/heard_count = (heard_languages[heard_language] || 0) + 1
+	heard_languages[heard_language] = heard_count
+
+	if(heard_count >= HEARD_MESSAGES_TO_UNDERSTAND && !ai.has_language(heard_language, UNDERSTOOD_LANGUAGE))
+		ai.grant_language(heard_language, UNDERSTOOD_LANGUAGE)
+
+	if(heard_count >= HEARD_MESSAGES_TO_SPEAK && !ai.has_language(heard_language, SPOKEN_LANGUAGE))
+		ai.grant_language(heard_language, UNDERSTOOD_LANGUAGE | SPOKEN_LANGUAGE)
 
 /datum/ai_project/translation/stop()
 	UnregisterSignal(ai, COMSIG_MOVABLE_HEAR)
@@ -54,4 +61,5 @@
 	to_chat(ai, span_warning("Unable to run this program. You require 10% free CPU."))
 	return FALSE
 
-#undef HEARD_MESSAGES_TO_TRANSLATE
+#undef HEARD_MESSAGES_TO_UNDERSTAND
+#undef HEARD_MESSAGES_TO_SPEAK

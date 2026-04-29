@@ -279,7 +279,8 @@
 
 ///security level and shuttle lockdowns for [/proc/begin_the_end()]
 /proc/narsie_start_destroy_station()
-	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_DELTA)
+		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 	SSshuttle.registerHostileEnvironment(GLOB.cult_narsie)
 	SSshuttle.lockdown = TRUE
 	addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(narsie_apocalypse)), 1 MINUTES)
@@ -299,7 +300,8 @@
 
 ///Called only if the crew managed to destroy narsie at the very last second for [/proc/begin_the_end()]
 /proc/narsie_last_second_win()
-	SSsecurity_level.set_level(SEC_LEVEL_RED)
+	if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
+		SSsecurity_level.set_level(SEC_LEVEL_RED)
 	SSshuttle.lockdown = FALSE
 	INVOKE_ASYNC(GLOBAL_PROC, GLOBAL_PROC_REF(cult_ending_helper), CULT_FAILURE_NARSIE_KILLED)
 

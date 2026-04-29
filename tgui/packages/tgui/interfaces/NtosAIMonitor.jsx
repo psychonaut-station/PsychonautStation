@@ -2,7 +2,6 @@ import { useBackend, useLocalState } from '../backend';
 import {
   Box,
   Button,
-  Divider,
   Flex,
   LabeledList,
   NoticeBox,
@@ -13,10 +12,24 @@ import {
 } from 'tgui-core/components';
 import { NtosWindow } from '../layouts';
 
+const percentInputProps = {
+  animated: true,
+  tickWhileDragging: true,
+  step: 1,
+  stepPixelSize: 2,
+};
+
 export const NtosAIMonitor = (props, context) => {
   const { act, data } = useBackend(context);
-  const [tab, setTab] = useLocalState(context, 'tab', 1);
-  const [clusterTab, setClusterTab] = useLocalState(context, 'clustertab', 1);
+  const [storedTab, setTab] = useLocalState(
+    context,
+    'aiNetworkInterfaceTabV2',
+    1,
+  );
+  const parsedTab = Number(storedTab);
+  const tab = Number.isFinite(parsedTab) && parsedTab >= 1 && parsedTab <= 6
+    ? parsedTab
+    : 1;
 
   if (!data.has_ai_net) {
     return (
@@ -55,61 +68,44 @@ export const NtosAIMonitor = (props, context) => {
             Cluster Control
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 2} onClick={() => setTab(2)}>
-            Resource Allocation
+            Local Computing
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 3} onClick={() => setTab(3)}>
-            Networking
+            Resource Allocation
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 4} onClick={() => setTab(4)}>
-            AI Upload
+            Networking
           </Tabs.Tab>
           <Tabs.Tab selected={tab === 5} onClick={() => setTab(5)}>
+            AI Upload
+          </Tabs.Tab>
+          <Tabs.Tab selected={tab === 6} onClick={() => setTab(6)}>
             AI Download
           </Tabs.Tab>
         </Tabs>
-        {tab === 1 && (
-          <>
-            <Divider />
-            <Tabs>
-              <Tabs.Tab selected={clusterTab === 1} onClick={() => setClusterTab(1)}>
-                Dashboard
-              </Tabs.Tab>
-              <Tabs.Tab selected={clusterTab === 2} onClick={() => setClusterTab(2)}>
-                Local Computing
-              </Tabs.Tab>
-            </Tabs>
-          </>
-        )}
-        {tab === 1 && clusterTab === 1 && <LocalDashboardSection />}
-        {tab === 1 && clusterTab === 2 && <LocalComputeSection />}
-        {tab === 2 && <ResourceAllocationSection />}
-        {tab === 3 && <NetworkingSection />}
-        {tab === 4 && <UploadSection />}
-        {tab === 5 && <DownloadSection />}
+        {tab === 1 && <LocalDashboardSection />}
+        {tab === 2 && <LocalComputeSection />}
+        {tab === 3 && <ResourceAllocationSection />}
+        {tab === 4 && <NetworkingSection />}
+        {tab === 5 && <UploadSection />}
+        {tab === 6 && <DownloadSection />}
       </NtosWindow.Content>
     </NtosWindow>
   );
 };
 
 const LocalDashboardSection = (props, context) => {
-  const { act, data } = useBackend(context);
+  const { data } = useBackend(context);
   const remainingNetworkCpu = Math.max(0, (data.remaining_network_cpu || 0) * 100);
 
   return (
     <Section title="Local Dashboard">
       <LabeledList>
-        <LabeledList.Item
-          label="Mined Cryptocurrency"
-          buttons={(
-            <Button
-              color="good"
-              icon="money-bill-wave"
-              disabled={!data.bitcoin_amount}
-              onClick={() => act('bitcoin_payout')}>
-              Withdraw
-            </Button>
-          )}>
+        <LabeledList.Item label="Crypto Routed To Cargo">
           {data.bitcoin_amount} cr
+        </LabeledList.Item>
+        <LabeledList.Item label="Cargo Budget">
+          {data.cargo_budget} cr
         </LabeledList.Item>
         <LabeledList.Item label="Unassigned Local CPU">
           {remainingNetworkCpu.toFixed(1)}%
@@ -152,6 +148,7 @@ const LocalComputeSection = (props, context) => {
             buttons={(
               <Flex>
                 <NumberInput
+                  {...percentInputProps}
                   width="70px"
                   unit="%"
                   disabled={isDisabled}
@@ -159,7 +156,7 @@ const LocalComputeSection = (props, context) => {
                   value={(project.assigned || 0) * 100}
                   minValue={0}
                   maxValue={remainingNetworkCpu + ((project.assigned || 0) * 100)}
-                  onChange={(e, value) => act('allocate_network_cpu', {
+                  onChange={(value) => act('allocate_network_cpu', {
                     project_name: project.name,
                     amount: Math.round((value / 100) * 100) / 100,
                   })}
@@ -237,6 +234,7 @@ const ResourceAllocationSection = (props, context) => {
                 {(data.total_cpu * data.network_assigned_cpu).toFixed(1)} THz
               </ProgressBar>
               <NumberInput
+                {...percentInputProps}
                 width="70px"
                 unit="%"
                 disabled={isDisabled}
@@ -244,7 +242,7 @@ const ResourceAllocationSection = (props, context) => {
                 value={data.network_assigned_cpu * 100}
                 minValue={0}
                 maxValue={remainingCpu + (data.network_assigned_cpu * 100)}
-                onChange={(e, value) => act('set_cpu', {
+                onChange={(value) => act('set_cpu', {
                   target_ai: data.network_ref,
                   amount_cpu: Math.round((value / 100) * 100) / 100,
                 })}
@@ -309,6 +307,7 @@ const ResourceAllocationSection = (props, context) => {
                     {(data.total_cpu * ai.assigned_cpu).toFixed(1)} THz
                   </ProgressBar>
                   <NumberInput
+                    {...percentInputProps}
                     width="70px"
                     unit="%"
                     disabled={isDisabled}
@@ -316,7 +315,7 @@ const ResourceAllocationSection = (props, context) => {
                     value={ai.assigned_cpu * 100}
                     minValue={0}
                     maxValue={remainingCpu + (ai.assigned_cpu * 100)}
-                    onChange={(e, value) => act('set_cpu', {
+                    onChange={(value) => act('set_cpu', {
                       target_ai: ai.ref,
                       amount_cpu: Math.round((value / 100) * 100) / 100,
                     })}

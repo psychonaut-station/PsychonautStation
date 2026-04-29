@@ -3,6 +3,7 @@
 	real_name = "AI"
 	icon = 'icons/mob/silicon/ai.dmi'
 	icon_state = "ai-core"
+	death_sound = null
 	move_resist = MOVE_FORCE_OVERPOWERING
 	density = TRUE
 	status_flags = CANSTUN|CANPUSH
@@ -43,6 +44,14 @@
 	/// AI core icon_state selected by the AI through [verb/pick_icon]
 	var/display_icon_override
 	var/display_icon_icon_override
+	/// Selected Goon core casing state for decentralized data cores.
+	var/goon_core_skin = "default"
+	/// Selected Goon screen background state for decentralized data cores.
+	var/goon_core_background = "ai_blue"
+	/// Selected Goon core light mode for decentralized data cores.
+	var/goon_core_light_mode = "auto"
+	/// Selected Goon face state for decentralized data cores.
+	var/goon_core_face = "ai_happy-dol"
 
 
 	/* ROBOTS */
@@ -182,6 +191,8 @@
 	VAR_FINAL/datum/ai_status_display_picker/status_display_picker
 	/// UI for AI core display picker
 	VAR_FINAL/datum/ai_core_display_picker/core_display_picker
+	/// UI for Goon core configuration
+	VAR_FINAL/datum/ai_goon_core_customizer/goon_core_customizer
 
 	/* I'M DUMB AND CAN'T SORT */
 	/// Used as a fake multitool in tcomms machinery

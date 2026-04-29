@@ -514,11 +514,21 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 //Returns a list of AI's
 /proc/active_ais(check_mind = FALSE, z = null, skip_syndicate = FALSE, only_syndicate = FALSE)
 	. = list()
-	for(var/mob/living/silicon/ai/ai as anything in GLOB.ai_list)
+	var/list/candidate_ais = GLOB.ai_list.Copy()
+	for(var/obj/machinery/ai/data_core/core as anything in GLOB.data_cores)
+		for(var/mob/living/silicon/ai/hosted_ai as anything in core.contents)
+			candidate_ais |= hosted_ai
+
+	for(var/mob/living/silicon/ai/ai as anything in candidate_ais)
 		if(ai.stat == DEAD)
 			continue
 		if(ai.control_disabled)
 			continue
+		var/obj/machinery/ai/data_core/host_core = istype(ai.loc, /obj/machinery/ai/data_core) ? ai.loc : null
+		if(host_core?.network)
+			ai.ai_network = host_core.network
+			host_core.network.ai_list |= ai
+		GLOB.ai_list |= ai
 		var/syndie_ai = istype(ai, /mob/living/silicon/ai/weak_syndie)
 		if(skip_syndicate && syndie_ai)
 			continue
@@ -526,7 +536,9 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 			continue
 		if(check_mind && !ai.mind)
 			continue
-		if(!isnull(z) && z != ai.z && (!is_station_level(z) || !is_station_level(ai.z))) //if a Z level was specified, AND the AI is not on the same level, AND either is off the station...
+		var/turf/ai_turf = get_turf(ai)
+		var/ai_z = ai_turf?.z || ai.z
+		if(!isnull(z) && z != ai_z && (!is_station_level(z) || !is_station_level(ai_z))) //if a Z level was specified, AND the AI is not on the same level, AND either is off the station...
 			continue
 		. += ai
 

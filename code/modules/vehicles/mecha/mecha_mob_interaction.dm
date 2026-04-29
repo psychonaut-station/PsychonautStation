@@ -130,8 +130,9 @@
 		AI.eyeobj?.forceMove(newloc) //kick the eye out as well
 		AI.controlled_equipment = null
 		AI.remote_control = null
+		var/returned_to_data_core = AI.ensure_data_core_residency(FALSE, TRUE)
 		if(forced)
-			if(!AI.linked_core) //if the victim AI has no core
+			if(!returned_to_data_core)
 				if (!AI.can_shunt || !length(AI.hacked_apcs))
 					AI.investigate_log("has been gibbed by being forced out of their mech.", INVESTIGATE_DEATHS)
 					/// If an AI with no core (and no shunting abilities) gets forced out of their mech
@@ -150,7 +151,8 @@
 		if(!forced && !silent)
 			to_chat(AI, span_notice("Returning to core..."))
 		mecha_flags &= ~SILICON_PILOT
-		AI.resolve_core_link()
+		if(!returned_to_data_core)
+			AI.resolve_core_link()
 		if(forced)
 			to_chat(AI, span_danger("ZZUZULU.ERR--ERRR-NEUROLOG-- PERCEP--- DIST-B**@"))
 			for(var/count in 1 to 5)
@@ -204,7 +206,7 @@
 /obj/vehicle/sealed/mecha/container_resist_act(mob/living/user)
 	if(isAI(user))
 		var/mob/living/silicon/ai/AI = user
-		if(!AI.linked_core)
+		if(!AI.find_preferred_data_core(FALSE, FALSE, FALSE))
 			to_chat(AI, span_userdanger("Inactive core destroyed. Unable to return."))
 			if(!AI.can_shunt || !AI.hacked_apcs.len)
 				to_chat(AI, span_warning("[AI.can_shunt ? "No hacked APCs available." : "No shunting capabilities."]"))

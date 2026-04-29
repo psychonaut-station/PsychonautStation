@@ -44,6 +44,24 @@
 	. = ..()
 	cpu.device_theme = PDA_THEME_RETRO
 
+// ===== AI NETWORK INTERFACE CONSOLE =====
+/obj/machinery/modular_computer/preset/ai_network_interface
+	name = "\improper AI network interface console"
+	desc = "A stationary computer preloaded with software for decentralized AI resource allocation, networking, and transfer operations."
+	starting_programs = list(
+		/datum/computer_file/program/ai_network_base/interface,
+	)
+
+/obj/machinery/modular_computer/preset/ai_network_interface/Initialize(mapload)
+	. = ..()
+	if(!cpu)
+		return
+	cpu.name = name
+	var/datum/computer_file/program/ai_network_base/interface/interface_program = cpu.find_file_by_name("aiinterface")
+	if(interface_program)
+		cpu.active_program = interface_program
+		update_appearance(UPDATE_ICON)
+
 // ===== COMMAND CONSOLE =====
 /obj/machinery/modular_computer/preset/command
 	name = "command console"

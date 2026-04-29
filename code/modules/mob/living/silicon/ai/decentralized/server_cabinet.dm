@@ -28,6 +28,7 @@
 	GLOB.server_cabinets += src
 	update_appearance(UPDATE_ICON)
 	RefreshParts()
+	sync_rack_inventory()
 
 /obj/machinery/ai/server_cabinet/Destroy()
 	installed_racks = list()
@@ -35,6 +36,32 @@
 	vis_contents -= smoke
 	QDEL_NULL(smoke)
 	return ..()
+
+/obj/machinery/ai/server_cabinet/process_atmos(seconds_per_tick)
+	if(!length(installed_racks) || cached_power_usage <= 0)
+		var/tick_scale = max(seconds_per_tick || 2, 0.1)
+		var/idle_temperature = initial(core_temp)
+		if(core_temp > idle_temperature)
+			core_temp = max(idle_temperature, core_temp - (AI_POWERED_DOWN_COOLING_RATE * tick_scale))
+		else
+			core_temp = idle_temperature
+		return
+
+	. = ..()
+	var/turf/source_turf = get_turf(src)
+	if(!source_turf || isspaceturf(source_turf))
+		return
+
+	var/datum/gas_mixture/environment = source_turf.return_air()
+	if(!environment)
+		return
+
+	var/ambient_temperature = environment.return_temperature()
+	var/active_usage = get_active_usage_scale()
+	if(core_temp > ambient_temperature && active_usage < 1)
+		var/tick_scale = max(seconds_per_tick || 2, 0.1)
+		var/passive_cooling = AI_POWERED_DOWN_COOLING_RATE * (1 - active_usage) * tick_scale
+		core_temp = max(ambient_temperature, core_temp - passive_cooling)
 
 /obj/machinery/ai/server_cabinet/RefreshParts()
 	var/new_heat_mod = 1
@@ -47,14 +74,25 @@
 	power_modifier = new_power_mod
 	idle_power_usage = initial(idle_power_usage) * power_modifier
 
-/obj/machinery/ai/server_cabinet/process()
+/obj/machinery/ai/server_cabinet/process(seconds_per_tick)
+	var/tick_scale = max((seconds_per_tick || 2) / 2, 0.1)
+	var/hardware_changed = sync_rack_inventory()
+	if(hardware_changed)
+		network?.update_resources()
+		update_appearance(UPDATE_ICON)
+	if(!length(installed_racks) || cached_power_usage <= 0)
+		if(smoke)
+			vis_contents -= smoke
+			QDEL_NULL(smoke)
+
 	valid_ticks = clamp(valid_ticks, 0, MAX_AI_SERVER_CABINET_TICKS)
 	if(valid_holder())
 		roundstart = FALSE
-		var/total_usage = cached_power_usage * power_modifier
+		var/total_usage = cached_power_usage * power_modifier * get_active_usage_scale()
 		if(total_usage > 0)
-			use_energy(total_usage)
-		core_temp += ((total_usage / AI_HEATSINK_CAPACITY) * heat_modifier) * AI_TEMPERATURE_MULTIPLIER
+			use_energy(total_usage * tick_scale)
+			// Empty or unused cabinets should not become heaters just because they are networked.
+			core_temp += ((total_usage / AI_HEATSINK_CAPACITY) * heat_modifier) * AI_TEMPERATURE_MULTIPLIER * tick_scale
 		valid_ticks++
 		if(smoke)
 			vis_contents -= smoke
@@ -67,14 +105,63 @@
 			hardware_synced = TRUE
 	else
 		valid_ticks--
-		if(!smoke && get_holder_status() == AI_MACHINE_TOO_HOT)
-			smoke = new()
-			vis_contents += smoke
+		if(core_temp > get_temp_limit())
+			if(!smoke)
+				smoke = new()
+				vis_contents += smoke
+		else if(smoke)
+			vis_contents -= smoke
+			QDEL_NULL(smoke)
 		if(was_valid_holder && valid_ticks <= 0)
 			was_valid_holder = FALSE
 			update_appearance(UPDATE_ICON)
 			hardware_synced = FALSE
 			network?.update_resources()
+
+/obj/machinery/ai/server_cabinet/proc/sync_rack_inventory()
+	var/list/new_racks = list()
+	var/new_total_cpu = 0
+	var/new_total_ram = 0
+	var/new_cached_power_usage = 0
+
+	for(var/obj/item/server_rack/rack in contents)
+		new_racks += rack
+		new_total_cpu += rack.get_cpu()
+		new_total_ram += rack.get_ram()
+		new_cached_power_usage += rack.get_power_usage()
+
+	var/changed = FALSE
+	if(length(new_racks) != length(installed_racks))
+		changed = TRUE
+	else
+		for(var/obj/item/server_rack/rack in new_racks)
+			if(!(rack in installed_racks))
+				changed = TRUE
+				break
+
+	if(total_cpu != new_total_cpu || total_ram != new_total_ram || cached_power_usage != new_cached_power_usage)
+		changed = TRUE
+
+	installed_racks = new_racks
+	total_cpu = new_total_cpu
+	total_ram = new_total_ram
+	cached_power_usage = new_cached_power_usage
+	use_power = cached_power_usage > 0 ? ACTIVE_POWER_USE : IDLE_POWER_USE
+
+	return changed
+
+/obj/machinery/ai/server_cabinet/proc/get_active_usage_scale()
+	if(!length(installed_racks) || cached_power_usage <= 0)
+		return 0
+	var/datum/ai_shared_resources/resources = network?.resources
+	if(!resources)
+		return 0
+	var/cpu_scale = clamp(resources.total_cpu_assigned(), 0, 1)
+	var/revival_cpu_scale = network ? network.revival_cpu_assigned() : 0
+	cpu_scale = max(0, cpu_scale - revival_cpu_scale) + (revival_cpu_scale * AI_REVIVAL_HEAT_MULTIPLIER)
+	var/ram_total = max(resources.total_ram(), 0)
+	var/ram_scale = ram_total > 0 ? clamp(resources.total_ram_assigned() / ram_total, 0, 1) : 0
+	return max(cpu_scale, ram_scale) * AI_SERVER_CABINET_HEAT_SCALE
 
 /obj/machinery/ai/server_cabinet/update_overlays()
 	. = ..()
@@ -104,13 +191,8 @@
 			return ..()
 		to_chat(user, span_notice("You install [tool] into [src]."))
 		tool.forceMove(src)
-		installed_racks += tool
-		var/obj/item/server_rack/rack = tool
-		total_cpu += rack.get_cpu()
-		total_ram += rack.get_ram()
-		cached_power_usage += rack.get_power_usage()
+		sync_rack_inventory()
 		network?.update_resources()
-		use_power = ACTIVE_POWER_USE
 		update_appearance(UPDATE_ICON)
 		return FALSE
 
@@ -119,13 +201,9 @@
 			var/turf/source_turf = get_turf(src)
 			for(var/obj/item/item in installed_racks)
 				item.forceMove(source_turf)
-			installed_racks.len = 0
-			total_cpu = 0
-			total_ram = 0
-			cached_power_usage = 0
+			sync_rack_inventory()
 			network?.update_resources()
 			to_chat(user, span_notice("You remove all the racks from [src]."))
-			use_power = IDLE_POWER_USE
 			update_appearance(UPDATE_ICON)
 			return FALSE
 		if(default_deconstruction_crowbar(tool))
@@ -152,11 +230,9 @@
 
 /obj/machinery/ai/server_cabinet/prefilled/Initialize(mapload)
 	. = ..()
-	var/obj/item/server_rack/roundstart/rack = new(src)
-	total_cpu += rack.get_cpu()
-	total_ram += rack.get_ram()
-	cached_power_usage += rack.get_power_usage()
-	installed_racks += rack
+	new /obj/item/server_rack/roundstart(src)
+	sync_rack_inventory()
+	network?.update_resources()
 
 /obj/machinery/ai/server_cabinet/connect_to_ai_network()
 	. = ..()

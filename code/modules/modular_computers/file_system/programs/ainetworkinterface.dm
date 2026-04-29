@@ -36,6 +36,8 @@
 	if(!local_network || !stored_card)
 		stop_download(TRUE)
 		return TRUE
+	local_network.rebuild_remote()
+	local_network.update_resources()
 
 	if(!downloading)
 		return TRUE
@@ -90,6 +92,7 @@
 	data["network_assigned_cpu"] = net.resources?.cpu_assigned[net] || 0
 	data["network_assigned_ram"] = net.resources?.ram_assigned[net] || 0
 	data["bitcoin_amount"] = round(net.bitcoin_payout, 0.1)
+	data["cargo_budget"] = round(SSeconomy.get_dep_account(ACCOUNT_CAR)?.account_balance || 0, 0.1)
 
 	var/remaining_network_cpu = 1
 	data["network_cpu_assignments"] = list()
@@ -242,12 +245,7 @@
 			return TRUE
 
 		if("bitcoin_payout")
-			var/payout_amount = round(net.bitcoin_payout, 0.1)
-			if(payout_amount <= 0)
-				return TRUE
-			var/obj/item/holochip/holochip = new(computer.physical.drop_location(), payout_amount)
-			user.put_in_hands(holochip)
-			net.bitcoin_payout = 0
+			to_chat(user, span_notice("Mined cryptocurrency is automatically routed to the Cargo Budget."))
 			return TRUE
 
 		if("apply_object")

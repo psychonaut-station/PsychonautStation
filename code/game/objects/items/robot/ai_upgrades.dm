@@ -10,6 +10,9 @@
 /obj/item/aiupgrade/pre_attack(atom/target, mob/living/user, list/modifiers, list/attack_modifiers)
 	if(!isAI(target))
 		return ..()
+	if(type == /obj/item/aiupgrade || to_gift == /datum/ai_module)
+		to_chat(user, span_warning("[src] does not contain a usable AI upgrade package."))
+		return TRUE
 	var/mob/living/silicon/ai/AI = target
 	var/datum/action/innate/ai/action = locate(to_gift.power_type) in AI.actions
 	var/datum/ai_module/gifted_ability = new to_gift

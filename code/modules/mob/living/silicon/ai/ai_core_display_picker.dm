@@ -28,25 +28,19 @@
 
 /datum/ai_core_display_picker/ui_data(mob/user)
 	var/list/data = list()
+	var/list/available_options = ai_user.get_available_core_display_options()
+	var/list/all_options = ai_user.get_available_core_display_options(TRUE)
 
-	// If no override is set, find the actual current display from the AI's icon state
-	var/current_display = ai_user.display_icon_override
-	if(!current_display)
-		// Default to "Blue" if no override
+	var/current_display = ai_user.selected_display_name
+	if(!current_display || !(current_display in all_options))
 		current_display = "Blue"
-
-	// Try to identify current display
-	for(var/display_name in GLOB.ai_core_display_screens)
-		if(resolve_ai_icon_sync(display_name) == current_display)
-			current_display = display_name
-			break
 
 	data["current_display"] = current_display
 
 
 	// Get icon for current display
-	var/current_icon_state = resolve_ai_icon_sync(current_display)
-	var/current_icon = GLOB.ai_core_display_screen_icons[current_display] || 'icons/mob/silicon/ai.dmi'
+	var/current_icon_state = get_ai_display_state(current_display)
+	var/current_icon = get_ai_display_icon(current_display)
 	data["current_icon"] = list(
 		"icon" = current_icon,
 		"icon_state" = current_icon_state
@@ -54,9 +48,9 @@
 
 	var/list/options = list()
 
-	for(var/option_name in GLOB.ai_core_display_screens)
-		var/icon_state = resolve_ai_icon_sync(option_name)
-		var/icon = GLOB.ai_core_display_screen_icons[option_name] || 'icons/mob/silicon/ai.dmi'
+	for(var/option_name in available_options)
+		var/icon_state = get_ai_display_state(option_name)
+		var/icon = get_ai_display_icon(option_name)
 		var/list/option_data = list(
 			"name" = option_name,
 			"icon_state" = icon_state,
@@ -76,7 +70,7 @@
 	switch(action)
 		if("select_option")
 			var/chosen_option = params["option"]
-			if(chosen_option in GLOB.ai_core_display_screens)
-				ai_user.display_icon_override = chosen_option
+			var/list/available_options = ai_user.get_available_core_display_options()
+			if(chosen_option in available_options)
 				ai_user.set_core_display_icon(chosen_option)
 				return TRUE

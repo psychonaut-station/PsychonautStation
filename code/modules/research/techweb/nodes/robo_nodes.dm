@@ -83,6 +83,7 @@
 	description = "Delving into sophisticated AI directives, with hopes that they won't lead to humanity's extinction."
 	prereq_ids = list(TECHWEB_NODE_AI)
 	design_ids = list(
+		"ai_cam_upgrade",
 		"ai_power_upgrade",
 		"antimov_module",
 		"asimovpp_module",
@@ -119,6 +120,7 @@
 	)
 	prereq_ids = list(TECHWEB_NODE_AI, TECHWEB_NODE_PARTS_ADV)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_cpu_experimental
 	id = "ai_cpu_experimental"
@@ -129,6 +131,7 @@
 	)
 	prereq_ids = list("ai_cpu_advanced")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_cpu_bluespace
 	id = "ai_cpu_bluespace"
@@ -139,6 +142,7 @@
 	)
 	prereq_ids = list("ai_cpu_advanced", TECHWEB_NODE_APPLIED_BLUESPACE)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_high_cap
 	id = "ai_ram_high_cap"
@@ -149,6 +153,7 @@
 	)
 	prereq_ids = list(TECHWEB_NODE_AI, TECHWEB_NODE_PARTS_ADV)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_hyper
 	id = "ai_ram_hyper"
@@ -159,6 +164,7 @@
 	)
 	prereq_ids = list("ai_ram_high_cap")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_bluespace
 	id = "ai_ram_bluespace"
@@ -169,6 +175,7 @@
 	)
 	prereq_ids = list("ai_ram_hyper", TECHWEB_NODE_APPLIED_BLUESPACE)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_cpu_1
 	id = "ai_cpu_2"
@@ -176,6 +183,7 @@
 	description = "Allows an extra CPU core to be mounted in each AI server rack."
 	prereq_ids = list(TECHWEB_NODE_AI)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_1
 	id = "ai_ram_2"
@@ -183,6 +191,7 @@
 	description = "Allows an additional memory stick to be mounted in each AI server rack."
 	prereq_ids = list(TECHWEB_NODE_AI)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_architecture_256
 	id = "ai_arch_256"
@@ -190,6 +199,7 @@
 	description = "Broader rack data paths unlock the next tier of decentralized AI hardware."
 	prereq_ids = list("ai_ram_2", "ai_cpu_2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_architecture_bluespace
 	id = "ai_arch_bluespace"
@@ -197,6 +207,7 @@
 	description = "Bluespace data transport removes the final bottlenecks from AI server racks."
 	prereq_ids = list("ai_arch_256", TECHWEB_NODE_APPLIED_BLUESPACE)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_cpu_2
 	id = "ai_cpu_3"
@@ -204,6 +215,7 @@
 	description = "Allows a third CPU core to be installed in decentralized AI server racks."
 	prereq_ids = list("ai_arch_256", "ai_cpu_2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_cpu_3
 	id = "ai_cpu_4"
@@ -211,6 +223,7 @@
 	description = "Allows a fourth CPU core to be installed in decentralized AI server racks."
 	prereq_ids = list("ai_arch_bluespace", "ai_cpu_3")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_2
 	id = "ai_ram_3"
@@ -218,6 +231,7 @@
 	description = "Allows a third memory module to be installed in decentralized AI server racks."
 	prereq_ids = list("ai_arch_256", "ai_ram_2")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ai_ram_3
 	id = "ai_ram_4"
@@ -225,6 +239,7 @@
 	description = "Allows a fourth memory module to be installed in decentralized AI server racks."
 	prereq_ids = list("ai_ram_3", "ai_arch_bluespace")
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
+	announce_channels = list(RADIO_CHANNEL_SCIENCE)
 
 /datum/techweb_node/ipc
 	id = TECHWEB_NODE_IPC

@@ -5,7 +5,7 @@
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
 	. = ..()
 	if(!target_ai) //If there is no player/brain inside.
-		new/obj/structure/ai_core(loc, CORE_STATE_FINISHED) //New empty terminal.
+		// Decentralized AI no longer spawns legacy AI core structures.
 		return INITIALIZE_HINT_QDEL //Delete AI.
 
 	ADD_TRAIT(src, TRAIT_NO_TELEPORT, AI_ANCHOR_TRAIT)
@@ -69,9 +69,11 @@
 
 	deploy_action.Grant(src)
 
+	if(!istype(loc, /obj/item/aicard))
+		ensure_data_core_residency(TRUE)
+
 	if(isvalidAIloc(loc))
 		add_verb(src, list(
-			/mob/living/silicon/ai/proc/access_ai_dashboard,
 			/mob/living/silicon/ai/proc/ai_network_change,
 			/mob/living/silicon/ai/proc/ai_hologram_change,
 			/mob/living/silicon/ai/verb/pick_status_display,
@@ -141,6 +143,9 @@
 	return ..()
 
 /mob/living/silicon/ai/Destroy()
+	ai_network?.remove_ai(src)
+	if(GLOB.station_primary_ai == src)
+		GLOB.station_primary_ai = null
 	GLOB.ai_list -= src
 	GLOB.shuttle_caller_list -= src
 	SSshuttle.autoEvac()
@@ -150,6 +155,7 @@
 	QDEL_NULL(doomsday_device)
 	QDEL_NULL(robot_control)
 	QDEL_NULL(status_display_picker)
+	QDEL_NULL(goon_core_customizer)
 	QDEL_NULL(aiMulti)
 	QDEL_NULL(alert_control)
 	QDEL_NULL(ai_tracking_tool)
@@ -180,6 +186,102 @@
 	var/selected_display_name
 	var/mutable_appearance/portrait_appearance
 
+/mob/living/silicon/ai/proc/has_completed_ai_project(project_type)
+	return dashboard?.has_completed_project(project_type)
+
+/mob/living/silicon/ai/proc/has_visual_screen_archive()
+	return has_completed_ai_project(/datum/ai_project/visual_archive)
+
+/mob/living/silicon/ai/proc/has_goon_core_refit()
+	return has_completed_ai_project(/datum/ai_project/goon_core_refit)
+
+/mob/living/silicon/ai/proc/get_available_core_display_options(include_locked = FALSE)
+	var/list/options = GLOB.ai_core_display_screens.Copy()
+	if(include_locked || has_visual_screen_archive())
+		options |= GLOB.additional_ai_core_display_screens
+	return sort_list(options)
+
+/mob/living/silicon/ai/proc/get_available_status_display_core_options(include_locked = FALSE)
+	var/list/options = list()
+	for(var/display_name in get_available_core_display_options(include_locked))
+		if(!(display_name in GLOB.ai_core_to_status_display_mapping))
+			continue
+		options += display_name
+	return sort_list(options)
+
+/mob/living/silicon/ai/proc/normalize_core_display_choice(choice, list/allowed_options = null)
+	if(!choice)
+		return null
+
+	allowed_options ||= get_available_core_display_options(TRUE)
+	if(choice in allowed_options)
+		return choice
+
+	var/normalized_choice = LOWER_TEXT("[choice]")
+	for(var/display_name in allowed_options)
+		if(LOWER_TEXT(display_name) == normalized_choice)
+			return display_name
+		if(get_ai_display_state(display_name) == choice)
+			return display_name
+	return null
+
+/mob/living/silicon/ai/proc/get_linked_data_cores()
+	var/list/obj/machinery/ai/data_core/linked_cores = list()
+	if(istype(loc, /obj/machinery/ai/data_core))
+		linked_cores |= loc
+	for(var/obj/machinery/ai/machine as anything in ai_network?.get_all_nodes())
+		if(!istype(machine, /obj/machinery/ai/data_core))
+			continue
+		var/obj/machinery/ai/data_core/core = machine
+		linked_cores |= core
+	return linked_cores
+
+/mob/living/silicon/ai/proc/sync_goon_core_customization(force_enable = FALSE, crackle = FALSE)
+	if(!force_enable && !has_goon_core_refit())
+		return
+
+	for(var/obj/machinery/ai/data_core/core as anything in get_linked_data_cores())
+		if(!istype(core, /obj/machinery/ai/data_core))
+			continue
+		core.goon_core_enabled = TRUE
+		core.goon_core_skin = goon_core_skin
+		core.goon_background_state = goon_core_background
+		core.goon_light_mode = goon_core_light_mode
+		core.goon_face_state = goon_core_face
+		core.update_appearance()
+		if(crackle)
+			do_sparks(2, FALSE, core)
+
+/mob/living/silicon/ai/proc/set_goon_core_visuals(new_skin = null, new_face = null, crackle = FALSE, new_background = null, force_unlock = FALSE)
+	if(!force_unlock && !has_goon_core_refit())
+		return FALSE
+	if(new_skin && !is_ai_goon_core_skin_state(new_skin))
+		return FALSE
+	if(new_face && !is_ai_goon_face_state(new_face))
+		return FALSE
+	if(new_background && !is_ai_goon_background_state(new_background))
+		return FALSE
+
+	if(new_skin)
+		goon_core_skin = new_skin
+	if(new_face)
+		goon_core_face = new_face
+	if(new_background)
+		goon_core_background = new_background
+
+	sync_goon_core_customization(force_unlock, crackle)
+	return TRUE
+
+/mob/living/silicon/ai/proc/set_goon_core_light_mode(new_light_mode, crackle = FALSE, force_unlock = FALSE)
+	if(!force_unlock && !has_goon_core_refit())
+		return FALSE
+	if(!is_ai_goon_light_mode(new_light_mode))
+		return FALSE
+
+	goon_core_light_mode = new_light_mode
+	sync_goon_core_customization(force_unlock, crackle)
+	return TRUE
+
 /mob/living/silicon/ai/proc/set_core_display_icon(input, client/C)
 	portrait_appearance = null
 
@@ -191,8 +293,20 @@
 	else if(client && client.prefs)
 		preferred_choice = client.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 
+	var/list/all_options = get_available_core_display_options(TRUE)
+	preferred_choice = normalize_core_display_choice(preferred_choice, all_options)
+	var/list/available_options = get_available_core_display_options()
+	if(preferred_choice == "Random")
+		var/list/random_pool = available_options.Copy()
+		random_pool -= "Random"
+		if(length(random_pool))
+			preferred_choice = pick(random_pool)
+	if(!preferred_choice || !(preferred_choice in available_options) || preferred_choice == "Portrait")
+		preferred_choice = "Blue"
+
 	selected_display_name = preferred_choice
-	display_icon_override = resolve_ai_icon(preferred_choice)
+	display_icon_override = get_ai_display_state(preferred_choice)
+	display_icon_icon_override = (preferred_choice in GLOB.ai_core_display_screen_icons) ? get_ai_display_icon(preferred_choice) : null
 
 	update_appearance()
 
@@ -274,6 +388,119 @@
 	if(!dashboard)
 		dashboard = new(src)
 	dashboard.ui_interact(src)
+
+/mob/living/silicon/ai/proc/open_goon_core_customizer_fallback()
+	var/list/main_options = list(
+		"Change Core Frame",
+		"Change Background",
+		"Change Lights",
+		"Change Face",
+		"Reset to Basic",
+		"Done"
+	)
+
+	while(!QDELETED(src))
+		var/current_core_name = get_ai_goon_core_label(goon_core_skin)
+		var/current_background_name = get_ai_goon_background_label(goon_core_background)
+		var/current_light_mode_name = get_ai_goon_light_mode_label(goon_core_light_mode)
+		var/current_face_name = get_ai_goon_face_label(goon_core_face)
+		var/selected_action = input(
+			src,
+			"Current frame: [current_core_name]\nCurrent background: [current_background_name]\nCurrent lights: [current_light_mode_name]\nCurrent face: [current_face_name]",
+			"Configure Goon Core"
+		) as null|anything in main_options
+
+		if(isnull(selected_action) || selected_action == "Done" || incapacitated)
+			return
+
+		switch(selected_action)
+			if("Change Core Frame")
+				var/list/core_names = list()
+				for(var/core_name in GLOB.ai_goon_core_skin_options)
+					core_names += core_name
+				core_names = sort_list(core_names)
+
+				var/selected_core_name = input(src, "Choose a new Goon core frame.", "Core Frame") as null|anything in core_names
+				if(isnull(selected_core_name) || incapacitated)
+					continue
+
+				var/selected_core_state = GLOB.ai_goon_core_skin_options[selected_core_name]
+				if(!selected_core_state)
+					continue
+
+				set_goon_core_visuals(selected_core_state, null, TRUE)
+
+			if("Change Background")
+				var/list/background_names = list()
+				for(var/background_name in GLOB.ai_goon_background_options)
+					background_names += background_name
+				background_names = sort_list(background_names)
+
+				var/selected_background_name = input(src, "Choose a new screen background.", "Screen Background") as null|anything in background_names
+				if(isnull(selected_background_name) || incapacitated)
+					continue
+
+				var/selected_background_state = GLOB.ai_goon_background_options[selected_background_name]
+				if(!selected_background_state)
+					continue
+
+				set_goon_core_visuals(null, null, TRUE, selected_background_state)
+
+			if("Change Lights")
+				var/list/light_mode_names = list()
+				for(var/light_mode_name in GLOB.ai_goon_light_mode_options)
+					light_mode_names += light_mode_name
+				light_mode_names = sort_list(light_mode_names)
+
+				var/selected_light_mode_name = input(src, "Choose a light mode.", "Light Mode") as null|anything in light_mode_names
+				if(isnull(selected_light_mode_name) || incapacitated)
+					continue
+
+				var/selected_light_mode = GLOB.ai_goon_light_mode_options[selected_light_mode_name]
+				if(!selected_light_mode)
+					continue
+
+				set_goon_core_light_mode(selected_light_mode, TRUE)
+
+			if("Change Face")
+				var/list/face_names = list()
+				for(var/face_name in GLOB.ai_goon_face_options)
+					face_names += face_name
+				face_names = sort_list(face_names)
+
+				var/selected_face_name = input(src, "Choose a new face display.", "Face Screen") as null|anything in face_names
+				if(isnull(selected_face_name) || incapacitated)
+					continue
+
+				var/selected_face_state = GLOB.ai_goon_face_options[selected_face_name]
+				if(!selected_face_state)
+					continue
+
+				set_goon_core_visuals(null, selected_face_state, TRUE)
+
+			if("Reset to Basic")
+				set_goon_core_light_mode("auto", FALSE)
+				set_goon_core_visuals("default", "ai_happy-dol", TRUE, "ai_blue")
+
+/mob/living/silicon/ai/verb/open_goon_core_customizer()
+	set category = "AI Commands"
+	set name = "Configure Goon Core"
+	set desc = "Configure the nanoweave Goon-style data core casing, screen background, and face."
+
+	if(incapacitated)
+		to_chat(src, span_warning("You cannot access the Goon core controls in your current state."))
+		return
+	if(!has_goon_core_refit())
+		to_chat(src, span_warning("You need to complete the Nanoweave Core Refit project before these controls unlock."))
+		return
+
+	if(!client)
+		open_goon_core_customizer_fallback()
+		return
+
+	if(!goon_core_customizer)
+		goon_core_customizer = new(src)
+	goon_core_customizer.ui_interact(src)
 
 /mob/living/silicon/ai/get_status_tab_items()
 	. = ..()
@@ -379,8 +606,6 @@
 /mob/living/silicon/ai/verb/toggle_anchor()
 	set category = "AI Commands"
 	set name = "Toggle Floor Bolts"
-	if(!isturf(loc)) // if their location isn't a turf
-		return // stop
 	if(stat == DEAD)
 		return
 	if(incapacitated)
@@ -389,6 +614,12 @@
 			return
 		battery = battery - 50
 		to_chat(src, span_notice("You route power from your backup battery to move the bolts."))
+	if(istype(loc, /obj/machinery/ai/data_core))
+		var/obj/machinery/ai/data_core/host_core = loc
+		host_core.toggle_floor_bolts(src)
+		return
+	if(!isturf(loc)) // if their location isn't a turf
+		return // stop
 	flip_anchored()
 	to_chat(src, "<b>You are now [is_anchored ? "" : "un"]anchored.</b>")
 
@@ -438,10 +669,18 @@
 /mob/living/silicon/ai/proc/ai_mob_to_structure()
 	disconnect_shell()
 	ShutOffDoomsdayDevice()
-	var/obj/structure/ai_core/ai_core = new(get_turf(src), CORE_STATE_FINISHED, make_mmi())
-	mind?.transfer_to(ai_core.core_mmi.brainmob)
-	qdel(src)
-	return ai_core
+	if(stat == DEAD || is_dying || dead_ai_backup_created)
+		return src
+	// Decentralized AI does not materialize into a legacy /obj/structure/ai_core.
+	if(ensure_data_core_residency())
+		return loc
+
+	var/obj/machinery/ai/data_core/fallback_core = find_preferred_data_core(FALSE, FALSE, TRUE)
+	if(fallback_core)
+		fallback_core.transfer_ai_mob(src)
+		return fallback_core
+
+	return src
 
 /mob/living/silicon/ai/Topic(href, href_list)
 	..()
@@ -532,7 +771,7 @@
 		if(!SScameras.is_visible_by_cameras(M))
 			to_chat(src, span_warning("Exosuit is no longer near active cameras."))
 			return
-		if(!isturf(loc))
+		if(!isvalidAIloc(loc))
 			to_chat(src, span_warning("You aren't in your core!"))
 			return
 		if(M)
@@ -756,10 +995,9 @@
 	if(!istype(apc))
 		to_chat(owner, span_notice("You are already in your Main Core."))
 		return
-	if(astype(owner, /mob/living/silicon/ai)?.linked_core)
-		apc.malfvacate()
-	else
-		to_chat(owner, span_danger("Linked core not detected!"))
+	apc.malfvacate()
+	if(istype(owner.loc, /obj/machinery/power/apc))
+		to_chat(owner, span_danger("No active AI data core connection detected!"))
 		return
 	qdel(src)
 
@@ -849,11 +1087,9 @@
 		balloon_alert(user, "no intelligence detected!") // average tg coder am i right
 		return
 	ShutOffDoomsdayDevice()
-	if(istype(loc, /obj/machinery/ai/data_core))
-		ai_network?.remove_ai(src)
-	else
-		var/obj/structure/ai_core/new_core = new /obj/structure/ai_core(loc, CORE_STATE_FINISHED, make_mmi())
-		new_core.circuit.battery = battery
+	if(!istype(loc, /obj/machinery/ai/data_core))
+		ensure_data_core_residency(TRUE)
+	ai_network?.remove_ai(src)
 	ai_restore_power()//So the AI initially has power.
 	set_control_disabled(TRUE) //Can't control things remotely if you're stuck in a card!
 	radio_enabled = FALSE //No talking on the built-in radio for you either!
@@ -880,6 +1116,7 @@
 	return get_dist(src, A) <= max(viewscale[1]*0.5,viewscale[2]*0.5)
 
 /mob/living/silicon/ai/proc/relay_speech(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, list/spans, list/message_mods = list())
+	SEND_SIGNAL(src, COMSIG_MOVABLE_HEAR, speaker, message_language, raw_message, radio_freq, null, null, spans, message_mods, INFINITY)
 	var/raw_translation = translate_language(speaker, message_language, raw_message, spans, message_mods)
 	var/atom/movable/source = speaker.GetSource() || speaker // is the speaker virtual/radio
 	var/treated_message = source.generate_messagepart(raw_translation, spans, message_mods)
@@ -1187,32 +1424,22 @@
 /// This will register multiple signals and give the AI a strong reference to it.
 /// See [proc/resolve_core_link] or [proc/break_core_link] for ways to end the connection.
 /mob/living/silicon/ai/proc/create_core_link(obj/structure/ai_core/core)
-	if(linked_core) //uh oh
-		break_core_link(linked_core)
-	linked_core = core
-
-	//this block is kind of sketchy, but I don't think this should cause any problems
-	qdel(core.core_mmi)
-	core.core_mmi = make_mmi(core)
-
-	RegisterSignals(linked_core, list(COMSIG_ATOM_DESTRUCTION, COMSIG_QDELETING), PROC_REF(on_core_destroyed))
-	RegisterSignals(linked_core, list(
-		COMSIG_ATOM_ITEM_INTERACTION,
-		COMSIG_ATOM_TOOL_ACT(TOOL_CROWBAR),
-		COMSIG_ATOM_TOOL_ACT(TOOL_WRENCH),
-		COMSIG_ATOM_TOOL_ACT(TOOL_WELDER),
-		COMSIG_ATOM_TOOL_ACT(TOOL_WIRECUTTER),
-		COMSIG_ATOM_TOOL_ACT(TOOL_SCREWDRIVER),
-	), PROC_REF(on_core_item_interaction))
-	RegisterSignal(linked_core, COMSIG_ATOM_TAKE_DAMAGE, PROC_REF(on_core_take_damage))
-	RegisterSignal(linked_core, COMSIG_ATOM_EXITED, PROC_REF(on_core_exited))
+	// Legacy linked AI core flow is disabled in decentralized mode.
+	break_core_link()
+	if(core)
+		qdel(core)
+	return FALSE
 
 /// Elegantly closes the AI's link to a core structure,
 /// moving them to its location and cleaning it up. This is generally what you want to call.
 /// Prefer calling [proc/break_core_link] directly if the connection is meant to be suddenly severed.
 /mob/living/silicon/ai/proc/resolve_core_link()
-	if(!linked_core) //oh no bro
-		CRASH("tried to resolve a core link with no core!!!!")
+	if(ensure_data_core_residency())
+		cancel_camera()
+		return
+
+	if(!linked_core)
+		return
 
 	forceMove(linked_core.loc)
 	var/obj/structure/ai_core/unlinked_core = linked_core
@@ -1294,15 +1521,16 @@
 		set_light(0.2, 0.2, LIGHT_COLOR_FAINT_CYAN)
 
 	else if(stat == DEAD)
-		var/base = display_icon_override || "ai"
-		var/dead_state = "[base]_dead"
+		var/screen_icon = display_icon_icon_override || icon
+		var/dead_state = get_ai_display_dead_state(selected_display_name, display_icon_override, screen_icon)
 
-		if(icon_exists(icon, dead_state))
+		if(icon_exists(screen_icon, dead_state))
 			screen_state = dead_state
 		else
 			screen_state = "ai_dead"
+			screen_icon = icon
 
-		var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+		var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
 		screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
 		. += screen_overlay
 
@@ -1316,12 +1544,13 @@
 		if(portrait_appearance)
 			. += portrait_appearance
 		else
+			var/screen_icon = display_icon_icon_override || icon
 			screen_state = display_icon_override || "ai"
-			var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+			var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
 			screen_overlay.layer = FLOAT_LAYER + 0.1
 			screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
 			. += screen_overlay
-			. += emissive_appearance(icon, screen_state, src)
+			. += emissive_appearance(screen_icon, screen_state, src)
 
 
 	// Lights

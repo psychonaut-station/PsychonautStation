@@ -71,7 +71,7 @@
 	if(!source_in_choices)
 		choices[source] = source
 	var/atom/movable/choice = show_radial_menu(user, source, choices, user_space = TRUE)
-	if(QDELETED(choice) || QDELETED(user) || !user.can_interact_with(choice))
+	if(QDELETED(choice) || QDELETED(user))
 		return
 	if(choice == source && !source_in_choices)
 		choice.attack_ai(user)

@@ -32,6 +32,18 @@
   animation: alertBlinkAnimation 1s infinite;
 }
 
+.alertIndicator--roboticBlack {
+  color: #7fe3ff;
+  text-shadow: 0 0 6px rgb(127 227 255 / 65%);
+  box-shadow:
+    inset 0 0 0 1px rgb(127 227 255 / 45%),
+    0 0 8px rgb(79 205 255 / 25%);
+}
+
+.alertIndicator--roboticBlack.alertBlink {
+  animation: alertBlinkRobotic 1s infinite;
+}
+
 @keyframes alertBlinkAnimation {
   0% {
     color: #dddddd;
@@ -44,5 +56,24 @@
   }
   100% {
     color: #333333;
+  }
+}
+
+@keyframes alertBlinkRobotic {
+  0% {
+    color: #b8f3ff;
+    text-shadow: 0 0 10px rgb(184 243 255 / 75%);
+  }
+  49% {
+    color: #b8f3ff;
+    text-shadow: 0 0 10px rgb(184 243 255 / 75%);
+  }
+  50% {
+    color: #4fb7d6;
+    text-shadow: 0 0 6px rgb(79 183 214 / 45%);
+  }
+  100% {
+    color: #4fb7d6;
+    text-shadow: 0 0 6px rgb(79 183 214 / 45%);
   }
 }

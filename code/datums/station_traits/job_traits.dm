@@ -168,13 +168,16 @@
 
 /datum/station_trait/job/human_ai
 	name = "Human AI"
+	sign_up_button = TRUE
 	button_desc = "Sign up to become the \"AI\"."
-	weight = 1
+	weight = 0 // Unrollable by default, only intended to be enabled manually by admins.
 	trait_flags = parent_type::trait_flags | STATION_TRAIT_REQUIRES_AI
 	report_message = "Our recent technological advancements in machine Artificial Intelligence has proven futile. In the meantime, we're sending an Intern to help out."
 	show_in_report = TRUE
 	job_to_add = /datum/job/human_ai
 	trait_to_give = STATION_TRAIT_HUMAN_AI
+	/// Roundstartta Human AI olarak zorlanacak oyuncular.
+	var/list/forced_roundstart_players = list()
 
 /datum/station_trait/job/human_ai/New()
 	. = ..()
@@ -189,6 +192,83 @@
 /datum/station_trait/job/human_ai/on_lobby_button_update_overlays(atom/movable/screen/lobby/button/sign_up/lobby_button, list/overlays)
 	. = ..()
 	overlays += LAZYFIND(lobby_candidates, lobby_button.get_mob()) ? "human_ai_on" : "human_ai_off"
+
+/datum/station_trait/job/human_ai/proc/should_force_human_ai(mob/dead/new_player/player)
+	return LAZYFIND(forced_roundstart_players, player) || LAZYFIND(lobby_candidates, player)
+
+/datum/station_trait/job/human_ai/pre_jobs_assigned()
+	SIGNAL_HANDLER
+	sign_up_button = FALSE
+	var/list/selected_candidates = islist(lobby_candidates) ? lobby_candidates.Copy() : list()
+	forced_roundstart_players = list()
+	destroy_lobby_buttons()
+
+	var/datum/job/our_job = SSjob.get_job_type(job_to_add)
+	if(!our_job)
+		lobby_candidates = null
+		return
+
+	our_job.total_positions = position_amount
+	our_job.spawn_positions = position_amount
+
+	var/list/eligible_candidates = list()
+	for(var/mob/dead/new_player/signee as anything in selected_candidates)
+		if(isnull(signee) || !signee.client || !signee.mind || signee.ready != PLAYER_READY_TO_PLAY)
+			continue
+		eligible_candidates += signee
+
+	var/list/high_priority_candidates = list()
+	var/list/medium_priority_candidates = list()
+	var/list/low_priority_candidates = list()
+	if(length(eligible_candidates) < position_amount)
+		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
+			if(isnull(player) || !player.client || !player.mind || player.ready != PLAYER_READY_TO_PLAY)
+				continue
+			if(!is_unassigned_job(player.mind.assigned_role))
+				continue
+			if(player in eligible_candidates)
+				continue
+
+			var/ai_priority = player.client?.prefs.job_preferences[JOB_AI]
+			if(isnull(ai_priority))
+				continue
+			if(SSjob.check_job_eligibility(player, our_job, "HUMAN_AI", add_job_to_log = TRUE) != JOB_AVAILABLE)
+				continue
+
+			switch(ai_priority)
+				if(JP_HIGH)
+					high_priority_candidates += player
+				if(JP_MEDIUM)
+					medium_priority_candidates += player
+				if(JP_LOW)
+					low_priority_candidates += player
+
+	var/remaining_positions = position_amount
+	while(length(eligible_candidates) && remaining_positions > 0)
+		var/mob/dead/new_player/picked_player = pick_n_take(eligible_candidates)
+		if(SSjob.assign_role(picked_player, our_job, do_eligibility_checks = FALSE))
+			forced_roundstart_players += picked_player
+			remaining_positions--
+
+	while(length(high_priority_candidates) && remaining_positions > 0)
+		var/mob/dead/new_player/picked_high = pick_n_take(high_priority_candidates)
+		if(SSjob.assign_role(picked_high, our_job, do_eligibility_checks = FALSE))
+			forced_roundstart_players += picked_high
+			remaining_positions--
+
+	while(length(medium_priority_candidates) && remaining_positions > 0)
+		var/mob/dead/new_player/picked_medium = pick_n_take(medium_priority_candidates)
+		if(SSjob.assign_role(picked_medium, our_job, do_eligibility_checks = FALSE))
+			forced_roundstart_players += picked_medium
+			remaining_positions--
+
+	while(length(low_priority_candidates) && remaining_positions > 0)
+		var/mob/dead/new_player/picked_low = pick_n_take(low_priority_candidates)
+		if(SSjob.assign_role(picked_low, our_job, do_eligibility_checks = FALSE))
+			forced_roundstart_players += picked_low
+			remaining_positions--
+
+	lobby_candidates = null
 
 /datum/station_trait/job/human_ai/proc/remove_ai_job(datum/source)
 	SIGNAL_HANDLER

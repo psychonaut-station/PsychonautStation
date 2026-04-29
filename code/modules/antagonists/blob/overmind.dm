@@ -162,7 +162,8 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
 		victory_in_progress = TRUE
 		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonun kaybedilmesi an meselesi.", "Biyolojik Tehlike Uyarısı")
-		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
+		if(SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_DELTA)
+			SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 
 		// Set status displays to biohazard alert - critical level
 		send_status_display_biohazard_alert()

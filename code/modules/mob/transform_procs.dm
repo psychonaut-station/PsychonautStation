@@ -89,21 +89,45 @@
 
 	if(move)
 		for(var/obj/machinery/ai/data_core/core in GLOB.data_cores)
-			if(core.valid_data_core())
+			if(core.can_transfer_ai() && !(locate(/mob/living/silicon/ai) in core.contents))
 				spawn_targets += core
+		if(!length(spawn_targets))
+			for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+				ai_landmark.bootstrap_decentralized_ai_hardware()
+			for(var/obj/machinery/ai/data_core/core in GLOB.data_cores)
+				if(core.can_transfer_ai() && !(locate(/mob/living/silicon/ai) in core.contents))
+					spawn_targets += core
+		if(!length(spawn_targets))
+			var/obj/machinery/ai/data_core/primary_core = GLOB.primary_data_core
+			if(primary_core && !QDELETED(primary_core) && !(locate(/mob/living/silicon/ai) in primary_core.contents))
+				spawn_targets += primary_core
+			if(!length(spawn_targets))
+				for(var/obj/machinery/ai/data_core/core in GLOB.data_cores)
+					if(!QDELETED(core) && !(locate(/mob/living/silicon/ai) in core.contents))
+						spawn_targets += core
 
 	if(!length(spawn_targets))
 		if(!move)
 			spawn_targets += loc
 		else
-			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
-				if(locate(/mob/living/silicon/ai) in sloc.loc)
-					continue
-				if(sloc.primary_ai)
-					LAZYCLEARLIST(spawn_targets)
-					spawn_targets += sloc.loc
+			var/obj/effect/landmark/start/ai/primary_landmark
+			for(var/obj/effect/landmark/start/ai/ai_landmark in GLOB.landmarks_list)
+				if(ai_landmark.primary_ai)
+					primary_landmark = ai_landmark
 					break
-				spawn_targets += sloc.loc
+			primary_landmark?.bootstrap_decentralized_ai_hardware()
+			for(var/obj/machinery/ai/data_core/core in GLOB.data_cores)
+				if(!QDELETED(core) && !(locate(/mob/living/silicon/ai) in core.contents))
+					spawn_targets += core
+			if(!length(spawn_targets))
+				for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
+					if(locate(/mob/living/silicon/ai) in sloc.loc)
+						continue
+					if(sloc.primary_ai)
+						LAZYCLEARLIST(spawn_targets)
+						spawn_targets += sloc.loc
+						break
+					spawn_targets += sloc.loc
 		if(!length(spawn_targets))
 			to_chat(src, "Oh god sorry we can't find an unoccupied AI spawn location, so we're spawning you on top of someone.")
 			for(var/obj/effect/landmark/start/ai/sloc in GLOB.landmarks_list)
@@ -120,11 +144,16 @@
 	. = our_AI
 
 	if(preference_source)
-		apply_pref_name(/datum/preference/name/ai, preference_source)
+		our_AI.apply_pref_name(/datum/preference/name/ai, preference_source)
 		our_AI.apply_pref_hologram_display(preference_source)
 		our_AI.apply_pref_emote_display(preference_source)
 		our_AI.set_core_display_icon(null, preference_source)
-	our_AI.claim_default_network_resources()
+	if(move)
+		if(!our_AI.ensure_data_core_residency())
+			our_AI.pending_roundstart_link = TRUE
+			our_AI.complete_roundstart_relocation()
+	else
+		our_AI.claim_default_network_resources()
 
 	qdel(src)
 

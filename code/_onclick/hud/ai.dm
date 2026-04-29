@@ -23,3 +23,5 @@
 	add_screen_object(/atom/movable/screen/ai/sensors, HUD_AI_SENSORS)
 	add_screen_object(/atom/movable/screen/ai/multicam, HUD_AI_MULTICAM, ui_loc = widescreen ? ui_ai_multicam_widescreen : ui_ai_multicam)
 	add_screen_object(/atom/movable/screen/ai/add_multicam, HUD_AI_ADD_MULTICAM, ui_loc = widescreen ? ui_ai_add_multicam_widescreen : ui_ai_add_multicam)
+	add_screen_object(/atom/movable/screen/ai/floor_indicator, HUD_AI_FLOOR_INDICATOR)
+	add_screen_object(/atom/movable/screen/floor_changer/vertical, HUD_MOB_FLOOR_CHANGER, ui_loc = ui_ai_godownup)

@@ -61,6 +61,6 @@
 
 /obj/effect/meteor/dark_matteor/moved_off_z()
 	. = ..()
-	if(previous_security_level && SSsecurity_level.get_current_level_as_number() != SEC_LEVEL_DELTA)
+	if(previous_security_level && SSsecurity_level.get_current_level_as_number() != SEC_LEVEL_DELTA && SSsecurity_level.get_current_level_as_number() < SEC_LEVEL_BLACK)
 		SSsecurity_level.set_level(previous_security_level)
 	priority_announce("Vay canına. Karanlık Matt-eor istasyonunuzu gerçekten ıskaladı. Görünürdeki ilahi müdahalesi için papazınıza teşekkür etmeyi unutmayın.", "Meteor Bildirisi")

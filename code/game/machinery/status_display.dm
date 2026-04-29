@@ -203,7 +203,11 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 			return
 		if(SD_PICTURE)
 			clear_display()
-			. += mutable_appearance(current_picture_icon, current_picture)
+			var/static/icon/picture_mask = icon('icons/obj/machines/status_display.dmi', "outline")
+			var/mutable_appearance/picture_overlay = mutable_appearance(current_picture_icon, current_picture)
+			picture_overlay.appearance_flags |= KEEP_APART
+			picture_overlay.filters = list(alpha_mask_filter(icon = picture_mask))
+			. += picture_overlay
 			if(current_picture == AI_DISPLAY_DONT_GLOW) // If the thing's off, don't display the emissive yeah?
 				return
 		if(SD_GREENSCREEN)
@@ -770,12 +774,12 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 		init_ai_status_display_options()
 
 	var/icon_state
-	// First try the combined list
-	if(emotion in GLOB.ai_status_display_all_options)
-		icon_state = GLOB.ai_status_display_all_options[emotion]
-	// Then try the original emotes list
-	else if(emotion in GLOB.ai_status_display_emotes)
+	if(emotion in GLOB.ai_status_display_emotes)
 		icon_state = GLOB.ai_status_display_emotes[emotion]
+	else if(emotion in GLOB.ai_core_to_status_display_mapping)
+		icon_state = GLOB.ai_core_to_status_display_mapping[emotion]
+	else if(emotion in GLOB.ai_status_display_all_options)
+		icon_state = GLOB.ai_status_display_all_options[emotion]
 	// Default fallback
 	else
 		icon_state = "ai_download"

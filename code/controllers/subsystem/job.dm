@@ -396,6 +396,8 @@ SUBSYSTEM_DEF(job)
 	var/datum/job/ai_job = get_job(JOB_AI)
 	if(!ai_job)
 		return
+	if(ai_job.total_positions <= 0 || ai_job.current_positions >= ai_job.total_positions)
+		return
 	// In byond for(in to) loops, the iteration is inclusive so we need to stop at ai_job.total_positions - 1
 	for(var/i in ai_job.current_positions to ai_job.total_positions - 1)
 		for(var/level in level_order)

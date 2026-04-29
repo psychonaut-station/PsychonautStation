@@ -76,9 +76,13 @@
 /datum/computer_file/program/ai_network_base/proc/get_ainet(mob/user)
 	var/datum/ai_network/network = get_local_ainet()
 	if(network)
+		network.rebuild_remote()
+		network.update_resources()
 		return network
 	if(isAI(user))
 		var/mob/living/silicon/ai/ai_user = user
+		ai_user.ai_network?.rebuild_remote()
+		ai_user.ai_network?.update_resources()
 		return ai_user.ai_network
 	return null
 

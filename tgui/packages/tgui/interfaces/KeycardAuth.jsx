@@ -5,8 +5,11 @@ import { Window } from '../layouts';
 
 export const KeycardAuth = (props) => {
   const { act, data } = useBackend();
+  const currentAlertLevel = Number(data.current_alert_level || 0);
+  const redAlertActive = currentAlertLevel >= 2;
+  const blackAlertActive = currentAlertLevel >= 4;
   return (
-    <Window width={375} height={145}>
+    <Window width={375} height={185}>
       <Window.Content>
         <Section>
           <Box>
@@ -33,10 +36,22 @@ export const KeycardAuth = (props) => {
                     <Button
                       icon="exclamation-triangle"
                       fluid
+                      disabled={redAlertActive}
+                      selected={currentAlertLevel === 2}
                       onClick={() => {
                         return act('red_alert');
                       }}
                       content="Red Alert"
+                    />
+                    <Button
+                      icon="exclamation-triangle"
+                      fluid
+                      color="black"
+                      textColor={blackAlertActive ? '#7fe3ff' : '#9beaff'}
+                      disabled={blackAlertActive}
+                      selected={blackAlertActive}
+                      onClick={() => act('black_alert')}
+                      content="Black Alert"
                     />
                     <Button
                       icon="wrench"

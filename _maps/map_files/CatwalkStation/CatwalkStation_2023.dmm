@@ -10475,9 +10475,8 @@
 /turf/open/floor/iron/textured_large,
 /area/station/medical/virology)
 "cIF" = (
-/obj/structure/transport/linear,
-/obj/machinery/ai/data_core/primary,
 /obj/structure/ethernet_cable,
+/obj/machinery/ai/data_core/primary,
 /turf/open/floor/catwalk_floor/iron_dark/telecomms,
 /area/station/ai/satellite/chamber)
 "cIO" = (
@@ -83304,6 +83303,7 @@
 /area/station/hallway/primary/port)
 "wau" = (
 /obj/machinery/airalarm/directional/west,
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/iron/white/smooth_large,
 /area/station/ai/satellite/interior)
 "waz" = (

@@ -3352,6 +3352,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/command/ai_upload,
 /obj/structure/cable/layer3,
+/obj/structure/plasticflaps/kitchen,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/interior)
 "bhf" = (
@@ -4413,7 +4414,6 @@
 	req_access = list("rd")
 	},
 /obj/machinery/light/small/directional/north,
-/obj/structure/ethernet_cable,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/rd)
 "byQ" = (
@@ -12289,11 +12289,6 @@
 	},
 /obj/effect/turf_decal/tile/neutral/opposingcorners{
 	dir = 1
-	},
-/obj/structure/ethernet_cable,
-/obj/machinery/ai/networking{
-	label = AI-SAT-A;
-	roundstart_connection = REMOTE-A
 	},
 /turf/open/floor/iron/dark,
 /area/station/command/heads_quarters/rd)
@@ -47475,6 +47470,7 @@
 	dir = 8
 	},
 /mob/living/basic/bot/repairbot,
+/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/interior)
 "qiY" = (
@@ -56039,7 +56035,6 @@
 	pixel_x = 8;
 	req_access = list("rd")
 	},
-/obj/structure/ethernet_cable,
 /turf/open/floor/iron/white,
 /area/station/command/heads_quarters/rd)
 "tcC" = (
@@ -58627,8 +58622,11 @@
 /area/station/science/xenobiology)
 "tXl" = (
 /obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/frame/machine,
 /obj/structure/ethernet_cable,
+/obj/machinery/ai/networking{
+	label = AI-SAT-A;
+	roundstart_connection = REMOTE-A
+	},
 /turf/open/floor/circuit/off,
 /area/station/command/heads_quarters/rd)
 "tXq" = (

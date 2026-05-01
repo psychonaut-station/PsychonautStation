@@ -14,7 +14,11 @@ describe('ChannelIterator', () => {
     expect(channelIterator.next()).toBe('Radio');
     expect(channelIterator.next()).toBe('Me');
     expect(channelIterator.next()).toBe('OOC');
+<<<<<<< HEAD
     expect(channelIterator.next()).toBe('LOOC');
+=======
+    expect(channelIterator.next()).toBe('Pray');
+>>>>>>> 168e9463aedbd4246a693b77b37ba54743613b78
     expect(channelIterator.next()).toBe('Say'); // Admin is blacklisted so it should be skipped
   });
 

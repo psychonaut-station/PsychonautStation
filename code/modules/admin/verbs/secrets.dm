@@ -162,6 +162,7 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 			set_station_name(new_name)
 			log_admin("[key_name(holder)] reset the station name.")
 			message_admins(span_adminnotice("[key_name_admin(holder)] reset the station name."))
+<<<<<<< HEAD
 			priority_announce("[command_name()] istasyonun adını \"[new_name]\" olarak değiştirdi.")
 		if("night_shift_set")
 			var/val = tgui_alert(holder, "What do you want to set night shift to? This will override the automatic system until set to automatic again.", "Night Shift", list("On", "Off", "Automatic"))
@@ -178,6 +179,9 @@ ADMIN_VERB(secrets, R_ADMIN, "Secrets", "Abuse harder than you ever have before 
 				if("Off")
 					SSnightshift.can_fire = FALSE
 					SSnightshift.update_nightshift(active = FALSE, announce = TRUE, forced = TRUE)
+=======
+			priority_announce("[command_name()] has renamed the station to \"[new_name]\".")
+>>>>>>> 168e9463aedbd4246a693b77b37ba54743613b78
 		if("moveferry")
 			SSblackbox.record_feedback("nested tally", "admin_secrets_fun_used", 1, list("Send CentCom Ferry"))
 			if(!SSshuttle.toggleShuttle("ferry","ferry_home","ferry_away"))

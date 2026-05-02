@@ -25691,8 +25691,8 @@
 /area/station/commons/locker)
 "iUb" = (
 /obj/machinery/ai/networking{
-	label = AI-SAT-A;
-	roundstart_connection = REMOTE-A
+	label = "AI-SAT-A";
+	roundstart_connection = "REMOTE-A"
 	},
 /obj/structure/ethernet_cable,
 /turf/open/floor/circuit/off,
@@ -70116,7 +70116,7 @@
 	},
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = REMOTE-A
+	label = "REMOTE-A"
 	},
 /turf/open/floor/circuit/green,
 /area/station/ai/satellite/chamber)

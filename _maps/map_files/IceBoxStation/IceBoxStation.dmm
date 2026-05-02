@@ -24132,8 +24132,8 @@
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = AI-SAT-A;
-	roundstart_connection = REMOTE-A
+	label = "AI-SAT-A";
+	roundstart_connection = "REMOTE-A"
 	},
 /turf/open/floor/iron/white/side{
 	dir = 10
@@ -52574,7 +52574,7 @@
 /obj/structure/ethernet_cable,
 /obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /obj/machinery/ai/networking{
-	label = REMOTE-A
+	label = "REMOTE-A"
 	},
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)

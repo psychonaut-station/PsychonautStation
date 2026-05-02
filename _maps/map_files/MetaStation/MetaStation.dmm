@@ -2748,7 +2748,7 @@
 	uses = 10
 	},
 /obj/machinery/ai/networking{
-	label = REMOTE-A
+	label = "REMOTE-A"
 	},
 /obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms/mainframe,
@@ -58683,8 +58683,8 @@
 /obj/structure/window/reinforced/spawner/directional/north,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = AI-SAT-A;
-	roundstart_connection = REMOTE-A
+	label = "AI-SAT-A";
+	roundstart_connection = "REMOTE-A"
 	},
 /turf/open/floor/circuit/off,
 /area/station/command/heads_quarters/rd)

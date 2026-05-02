@@ -11783,7 +11783,7 @@
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/lattice/catwalk,
 /obj/machinery/ai/networking{
-	label = SERVER-ROOM
+	label = "SERVER-ROOM"
 	},
 /obj/structure/ethernet_cable,
 /turf/open/floor/catwalk_floor/iron_dark/telecomms,
@@ -19970,7 +19970,7 @@
 /obj/structure/cable,
 /obj/machinery/keycard_auth/wall_mounted/directional/south,
 /obj/machinery/ai/networking{
-	label = CONTROL-ROOM
+	label = "CONTROL-ROOM"
 	},
 /obj/structure/ethernet_cable,
 /turf/open/floor/wood,
@@ -28607,8 +28607,8 @@
 /obj/structure/cable,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = AI-SAT-CONTROL;
-	roundstart_connection = CONTROL-ROOM
+	label = "AI-SAT-CONTROL";
+	roundstart_connection = "CONTROL-ROOM"
 	},
 /obj/structure/window/reinforced/spawner/directional/west{
 	dir = 2
@@ -37266,8 +37266,8 @@
 /obj/structure/cable,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = AI-SAT-SERVER;
-	roundstart_connection = SERVER-ROOM
+	label = "AI-SAT-SERVER";
+	roundstart_connection = "SERVER-ROOM"
 	},
 /obj/structure/window/reinforced/spawner/directional/west{
 	dir = 1

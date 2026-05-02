@@ -524,11 +524,6 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 			continue
 		if(ai.control_disabled)
 			continue
-		var/obj/machinery/ai/data_core/host_core = istype(ai.loc, /obj/machinery/ai/data_core) ? ai.loc : null
-		if(host_core?.network)
-			ai.ai_network = host_core.network
-			host_core.network.ai_list |= ai
-		GLOB.ai_list |= ai
 		var/syndie_ai = istype(ai, /mob/living/silicon/ai/weak_syndie)
 		if(skip_syndicate && syndie_ai)
 			continue

@@ -136,7 +136,7 @@ const AvailableProjects = (props, context) => {
   const fallbackCategories = Array.from(
     new Set((data.available_projects || []).map((project) => project.category).filter(Boolean))
   );
-  const categories = (data.categories && data.categories.length) ? data.categories : fallbackCategories;
+  const categories = data.categories?.length ? data.categories : fallbackCategories;
   const defaultCategory = fallbackCategories[0] || categories?.[0];
   const [selectedCategory, setCategory] = useState(defaultCategory);
   const activeCategory = (selectedCategory && (categories || []).includes(selectedCategory))
@@ -247,7 +247,7 @@ const CompletedProjects = (props, context) => {
   const fallbackCategories = Array.from(
     new Set((data.completed_projects || []).map((project) => project.category).filter(Boolean))
   );
-  const categories = (data.categories && data.categories.length) ? data.categories : fallbackCategories;
+  const categories = data.categories?.length ? data.categories : fallbackCategories;
   const defaultCategory = fallbackCategories[0] || categories?.[0];
   const [selectedCategory, setCategory] = useState(defaultCategory);
   const activeCategory = (selectedCategory && (categories || []).includes(selectedCategory))

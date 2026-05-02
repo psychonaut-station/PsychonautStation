@@ -82,7 +82,7 @@ const optionCardStyle = (selected: boolean) => ({
 
 export const AiGoonCoreCustomizer = () => {
   return (
-    <Window width={1380} height={900} resizable title="Goon Core Matrix">
+    <Window width={1380} height={900} title="Goon Core Matrix">
       <Window.Content scrollable>
         <AiGoonCoreCustomizerContent />
       </Window.Content>

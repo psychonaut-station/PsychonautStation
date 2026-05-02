@@ -400,6 +400,7 @@ GLOBAL_LIST_INIT(ai_status_display_screen_icons, list(
 ))
 
 GLOBAL_LIST_INIT(ai_core_display_screen_states, list(
+	"Allied Mastercomputer" = "ai-allied_mastercomputer",
 	"Angry Face" = "ai-angryface",
 	"Anon" = "ai-anon",
 	"Anima" = "ai-anima",
@@ -447,6 +448,7 @@ GLOBAL_LIST_INIT(ai_core_display_screen_states, list(
 ))
 
 GLOBAL_LIST_INIT(ai_core_display_dead_states, list(
+	"Allied Mastercomputer" = "ai-allied_mastercomputer_dead",
 	"Atlantiscze" = "ai-atlantiscze_dead",
 	"Carrion" = "carrion-dead",
 	"Flukie" = "flukiedead",

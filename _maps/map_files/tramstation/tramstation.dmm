@@ -52518,7 +52518,7 @@
 /obj/structure/cable,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = SERVER-ROOM
+	label = "SERVER-ROOM"
 	},
 /turf/open/floor/circuit/red/telecomms,
 /area/station/ai/satellite/maintenance)
@@ -59467,8 +59467,8 @@
 /obj/structure/cable,
 /obj/structure/ethernet_cable,
 /obj/machinery/ai/networking{
-	label = AI-SAT-A;
-	roundstart_connection = REMOTE-A
+	label = "AI-SAT-A";
+	roundstart_connection = "REMOTE-A"
 	},
 /turf/open/floor/iron/cafeteria,
 /area/station/command/heads_quarters/rd)

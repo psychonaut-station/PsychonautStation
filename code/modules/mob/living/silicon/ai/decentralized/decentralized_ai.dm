@@ -424,7 +424,8 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	return ..(can_reenter_corpse)
 
 /mob/living/silicon/ai/proc/switch_ainet(datum/ai_network/old_net, datum/ai_network/new_net)
-	for(var/datum/ai_project/project as anything in dashboard?.completed_projects)
+	var/list/completed_projects = dashboard?.completed_projects
+	for(var/datum/ai_project/project as anything in completed_projects)
 		project.switch_network(old_net, new_net)
 
 /mob/living/silicon/ai/verb/toggle_download()

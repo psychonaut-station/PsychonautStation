@@ -199,7 +199,10 @@
 			return controller
 
 /datum/ai_network/proc/remove_ai(mob/living/silicon/ai/ai_mob)
-	for(var/datum/ai_network/network in resources?.networks || list())
+	var/list/connected_networks = resources?.networks
+	if(isnull(connected_networks))
+		connected_networks = list()
+	for(var/datum/ai_network/network in connected_networks)
 		network.ai_list -= ai_mob
 	resources?.clear_ai_resources(ai_mob)
 	ai_list -= ai_mob

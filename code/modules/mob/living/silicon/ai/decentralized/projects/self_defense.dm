@@ -26,7 +26,8 @@
 		return
 
 	var/mob/living/silicon/ai/ai_owner = owner
-	for(var/obj/machinery/ai/data_core/core in ai_owner.ai_network?.get_all_nodes())
+	var/list/network_nodes = ai_owner.ai_network?.get_all_nodes()
+	for(var/obj/machinery/ai/data_core/core in network_nodes)
 		tesla_zap(core, 2, 15000, ZAP_MOB_DAMAGE | ZAP_MOB_STUN)
 		core.use_energy(5000)
 

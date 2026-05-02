@@ -227,9 +227,10 @@
 
 /mob/living/silicon/ai/proc/get_linked_data_cores()
 	var/list/obj/machinery/ai/data_core/linked_cores = list()
+	var/list/ai_network_nodes = ai_network?.get_all_nodes()
 	if(istype(loc, /obj/machinery/ai/data_core))
 		linked_cores |= loc
-	for(var/obj/machinery/ai/machine as anything in ai_network?.get_all_nodes())
+	for(var/obj/machinery/ai/machine as anything in ai_network_nodes)
 		if(!istype(machine, /obj/machinery/ai/data_core))
 			continue
 		var/obj/machinery/ai/data_core/core = machine

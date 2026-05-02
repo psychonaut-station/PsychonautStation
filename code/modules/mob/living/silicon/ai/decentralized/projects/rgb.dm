@@ -10,10 +10,12 @@
 	. = ..(force_run)
 	if(!.)
 		return .
-	for(var/obj/machinery/ai/data_core/core in ai.ai_network?.get_all_nodes())
+	var/list/network_nodes = ai.ai_network?.get_all_nodes()
+	for(var/obj/machinery/ai/data_core/core in network_nodes)
 		core.partytime()
 
 /datum/ai_project/rgb/stop()
-	for(var/obj/machinery/ai/data_core/core in ai.ai_network?.get_all_nodes())
+	var/list/network_nodes = ai.ai_network?.get_all_nodes()
+	for(var/obj/machinery/ai/data_core/core in network_nodes)
 		core.stoptheparty()
 	return ..()

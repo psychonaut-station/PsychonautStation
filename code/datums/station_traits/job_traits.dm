@@ -196,6 +196,22 @@
 /datum/station_trait/job/human_ai/proc/should_force_human_ai(mob/dead/new_player/player)
 	return LAZYFIND(forced_roundstart_players, player) || LAZYFIND(lobby_candidates, player)
 
+/datum/station_trait/job/human_ai/proc/is_non_sleeping_human_ai_candidate(mob/dead/new_player/player, datum/job/our_job)
+	if(isnull(player) || !player.client || !player.mind || player.ready != PLAYER_READY_TO_PLAY)
+		return FALSE
+	if(!is_unassigned_job(player.mind.assigned_role))
+		return FALSE
+	if(our_job.title in LAZYACCESS(SSjob.prevented_occupations, player.mind))
+		return FALSE
+
+	var/client/player_client = player.client
+	if(isnum(our_job.required_character_age) && our_job.required_character_age > player_client.prefs.read_preference(/datum/preference/numeric/age))
+		return FALSE
+	if(our_job.whitelisted && !check_job_whitelist(player.ckey))
+		return FALSE
+
+	return TRUE
+
 /datum/station_trait/job/human_ai/pre_jobs_assigned()
 	SIGNAL_HANDLER
 	sign_up_button = FALSE
@@ -222,17 +238,13 @@
 	var/list/low_priority_candidates = list()
 	if(length(eligible_candidates) < position_amount)
 		for(var/mob/dead/new_player/player as anything in GLOB.new_player_list)
-			if(isnull(player) || !player.client || !player.mind || player.ready != PLAYER_READY_TO_PLAY)
-				continue
-			if(!is_unassigned_job(player.mind.assigned_role))
+			if(!is_non_sleeping_human_ai_candidate(player, our_job))
 				continue
 			if(player in eligible_candidates)
 				continue
 
 			var/ai_priority = player.client?.prefs.job_preferences[JOB_AI]
 			if(isnull(ai_priority))
-				continue
-			if(SSjob.check_job_eligibility(player, our_job, "HUMAN_AI", add_job_to_log = TRUE) != JOB_AVAILABLE)
 				continue
 
 			switch(ai_priority)

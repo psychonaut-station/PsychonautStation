@@ -246,27 +246,31 @@
 	var/remaining_positions = position_amount
 	while(length(eligible_candidates) && remaining_positions > 0)
 		var/mob/dead/new_player/picked_player = pick_n_take(eligible_candidates)
-		if(SSjob.assign_role(picked_player, our_job, do_eligibility_checks = FALSE))
-			forced_roundstart_players += picked_player
-			remaining_positions--
+		picked_player.mind.set_assigned_role(our_job)
+		our_job.current_positions++
+		forced_roundstart_players += picked_player
+		remaining_positions--
 
 	while(length(high_priority_candidates) && remaining_positions > 0)
 		var/mob/dead/new_player/picked_high = pick_n_take(high_priority_candidates)
-		if(SSjob.assign_role(picked_high, our_job, do_eligibility_checks = FALSE))
-			forced_roundstart_players += picked_high
-			remaining_positions--
+		picked_high.mind.set_assigned_role(our_job)
+		our_job.current_positions++
+		forced_roundstart_players += picked_high
+		remaining_positions--
 
 	while(length(medium_priority_candidates) && remaining_positions > 0)
 		var/mob/dead/new_player/picked_medium = pick_n_take(medium_priority_candidates)
-		if(SSjob.assign_role(picked_medium, our_job, do_eligibility_checks = FALSE))
-			forced_roundstart_players += picked_medium
-			remaining_positions--
+		picked_medium.mind.set_assigned_role(our_job)
+		our_job.current_positions++
+		forced_roundstart_players += picked_medium
+		remaining_positions--
 
 	while(length(low_priority_candidates) && remaining_positions > 0)
 		var/mob/dead/new_player/picked_low = pick_n_take(low_priority_candidates)
-		if(SSjob.assign_role(picked_low, our_job, do_eligibility_checks = FALSE))
-			forced_roundstart_players += picked_low
-			remaining_positions--
+		picked_low.mind.set_assigned_role(our_job)
+		our_job.current_positions++
+		forced_roundstart_players += picked_low
+		remaining_positions--
 
 	lobby_candidates = null
 

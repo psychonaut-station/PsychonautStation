@@ -461,16 +461,16 @@ GLOBAL_LIST_INIT(ai_core_display_dead_states, list(
 ))
 
 GLOBAL_LIST_INIT(ai_goon_core_skin_options, list(
-	"NanoTrasen Standard" = "default",
+	"Nanotrasen Standard" = "default",
 	"Science" = "science",
 	"Medical" = "medical",
-	"Legacy NanoTrasen" = "ntold",
+	"Legacy Nanotrasen" = "ntold",
 	"Bee" = "bee",
 	"Shock" = "shock",
 	"Gold" = "gold",
 	"Engineering" = "engineering",
 	"Soviet" = "soviet",
-	"Modern NanoTrasen" = "nt",
+	"Modern Nanotrasen" = "nt",
 	"Industrial" = "industrial",
 	"Toy Pink" = "lgun",
 	"DWAINE" = "dwaine",
@@ -493,21 +493,21 @@ GLOBAL_LIST_INIT(ai_goon_core_skin_options, list(
 ))
 
 GLOBAL_LIST_INIT(ai_goon_core_skin_descriptions, list(
-	"NanoTrasen Standard" = "The casing appears to be a standard NanoTrasen AI core.",
+	"Nanotrasen Standard" = "The casing appears to be a standard Nanotrasen AI core.",
 	"Science" = "The casing is made out of a white plastic and has a prominent purple stripe painted down the front.",
 	"Medical" = "The casing is made out of a white plastic and has a prominent red stripe painted down the front.",
-	"Legacy NanoTrasen" = "A much older model of NanoTrasen AI core. The stark white has faded to eggshell with time.",
+	"Legacy Nanotrasen" = "A much older model of Nanotrasen AI core. The stark white has faded to eggshell with time.",
 	"Bee" = "The casing has been painted and given little plastic antennae to make it resemble a bee!",
 	"Shock" = "The casing is painted a luminescent blue and has what looks to be neon light tubes built into it!",
 	"Gold" = "The casing seems to be made out of gold. No, wait. Looking closer, you think that's actually pyrite.",
 	"Engineering" = "The casing is made out of a buffed metal and has a prominent orange stripe painted down the front.",
 	"Soviet" = "The latest in Soviet artificial intelligence technology. And by latest, you mean this thing looks like it's been collecting dust for decades.",
-	"Modern NanoTrasen" = "A newer model of NanoTrasen AI core. It's been painted a greyish-blue, and proudly displays the NT logo below the screen.",
+	"Modern Nanotrasen" = "A newer model of Nanotrasen AI core. It's been painted a greyish-blue, and proudly displays the NT logo below the screen.",
 	"Industrial" = "The casing is made out of a sleek and polished alloy. It looks heavily reinforced- wait, no. No, that's just a really impressive paint job.",
 	"Toy Pink" = "The casing is made out of pieces of colourful pink plastic clipped together. It looks like a toy.",
 	"DWAINE" = "The casing has a label saying \"Thinktronic Data Systems, LLC\". Jeez, how old is this?",
 	"AILES" = "A bulky computational powerhouse- or, at least, it would have been twenty-odd years ago. The logo below the screen has been scratched off with something sharp.",
-	"Salvage" = "A significantly worse-for-wear NanoTrasen AI core, haphazardly repaired back to working order with what looks to be scrap metal and spare parts.",
+	"Salvage" = "A significantly worse-for-wear Nanotrasen AI core, haphazardly repaired back to working order with what looks to be scrap metal and spare parts.",
 	"GardenGear" = "\"Product of GardenGear\" is etched into the side of the casing.",
 	"Toy Blue" = "The casing is made out of pieces of colourful blue plastic clipped together. It looks like a toy.",
 	"Kingsway" = "'Kingsway Systems 29A' is etched into the aged plastic casing beneath the screen.",
@@ -785,7 +785,7 @@ GLOBAL_LIST_INIT(ai_goon_animated_face_options, list(
 	for(var/skin_name in GLOB.ai_goon_core_skin_options)
 		if(GLOB.ai_goon_core_skin_options[skin_name] == core_skin)
 			return skin_name
-	return "NanoTrasen Standard"
+	return "Nanotrasen Standard"
 
 /proc/get_ai_goon_face_label(face_state)
 	init_ai_goon_face_options()

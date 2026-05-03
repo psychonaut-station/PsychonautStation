@@ -11,6 +11,7 @@
 	desc = "Used for allocating local AI network compute and restoring volatile neural cores."
 
 /obj/machinery/computer/ai_server_console/network_interface/Initialize(mapload)
+	. = ..()
 	var/turf/source_turf = get_turf(src)
 	if(source_turf)
 		var/obj/machinery/modular_computer/preset/ai_network_interface/interface_console = new(source_turf)
@@ -20,6 +21,7 @@
 	return INITIALIZE_HINT_QDEL
 
 /obj/machinery/computer/ai_server_console/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AiServerConsole", name)

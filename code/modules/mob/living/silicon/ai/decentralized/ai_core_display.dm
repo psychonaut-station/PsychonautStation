@@ -24,19 +24,13 @@
 	return PROCESS_KILL
 
 /obj/machinery/status_display/ai_core/update_overlays(updates)
-	. = list()
-
-	if(machine_stat & (NOPOWER|BROKEN))
-		clear_display()
-		return
-
-	clear_display()
-	if(current_mode != SD_PICTURE)
+	. = ..()
+	if(machine_stat & (NOPOWER|BROKEN) || current_mode != SD_PICTURE)
 		return
 
 	var/mutable_appearance/picture_overlay = mutable_appearance(current_picture_icon, current_picture)
 	picture_overlay.appearance_flags |= KEEP_APART
-	. += picture_overlay
+	. = list(picture_overlay)
 
 /obj/machinery/status_display/ai_core/proc/refresh_from_network_ai(mob/living/silicon/ai/target_ai)
 	if(machine_stat & NOPOWER)

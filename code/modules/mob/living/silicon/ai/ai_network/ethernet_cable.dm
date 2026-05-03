@@ -37,12 +37,11 @@
 	GLOB.ethernet_cable_list -= src
 	return ..()
 
-/obj/structure/ethernet_cable/deconstruct(disassembled = TRUE)
+/obj/structure/ethernet_cable/handle_deconstruct(disassembled = TRUE)
 	var/turf/source_turf = loc
 	var/cable_amount = (d1 && d2) ? 2 : 1
 	var/obj/item/stack/ethernet_coil/new_coil = new(source_turf, cable_amount)
 	TransferComponents(new_coil)
-	qdel(src)
 
 /obj/structure/ethernet_cable/update_icon_state()
 	. = ..()
@@ -352,7 +351,9 @@
 	gender = NEUTER
 	icon = 'icons/obj/stack_objects.dmi'
 	icon_state = "wire"
-	inhand_icon_state = "coil"
+	inhand_icon_state = "coil_yellow"
+	worn_icon_state = "coil"
+	base_icon_state = "wire"
 	novariants = FALSE
 	lefthand_file = 'icons/mob/inhands/equipment/tools_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/equipment/tools_righthand.dmi'
@@ -393,8 +394,8 @@
 
 /obj/item/stack/ethernet_coil/update_icon_state()
 	. = ..()
-	icon_state = "[initial(icon_state)][amount < 3 ? amount : ""]"
-	inhand_icon_state = "coil"
+	icon_state = "[base_icon_state][amount < 3 ? amount : ""]"
+	inhand_icon_state = "coil_yellow"
 	name = "ethernet cable [amount < 3 ? "piece" : "coil"]"
 
 /obj/item/stack/ethernet_coil/attack_hand(mob/user)

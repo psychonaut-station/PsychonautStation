@@ -19,7 +19,12 @@
 	to_chat(ai, span_notice("Nanoweave refit complete. Use 'Configure Goon Core' under AI Commands to tune the new casing."))
 
 /datum/ai_project/goon_core_refit/run_project(force_run = FALSE)
+	. = ..(force_run)
+	if(!.)
+		return FALSE
 	if(!ai?.has_goon_core_refit())
+		stop()
 		return FALSE
 	ai.open_goon_core_customizer()
+	stop()
 	return TRUE

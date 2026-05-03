@@ -302,7 +302,7 @@
 		random_pool -= "Random"
 		if(length(random_pool))
 			preferred_choice = pick(random_pool)
-	if(!preferred_choice || !(preferred_choice in available_options) || preferred_choice == "Portrait")
+	if((!preferred_choice) || (!(preferred_choice in available_options)) || preferred_choice == "Portrait")
 		preferred_choice = "Blue"
 
 	selected_display_name = preferred_choice
@@ -1296,7 +1296,7 @@
 		to_chat(src, "No usable AI shell beacons detected.")
 		return
 
-	if(!target || !(target in possible)) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
+	if((!target) || (!(target in possible))) //If the AI is looking for a new shell, or its pre-selected shell is no longer valid
 		target = tgui_input_list(src, "Which body to control?", "Direct Control", sort_names(possible))
 
 	if(isnull(target))

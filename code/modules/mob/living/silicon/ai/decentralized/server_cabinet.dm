@@ -64,12 +64,13 @@
 		core_temp = max(ambient_temperature, core_temp - passive_cooling)
 
 /obj/machinery/ai/server_cabinet/RefreshParts()
+	. = ..()
 	var/new_heat_mod = 1
 	var/new_power_mod = 1
-	for(var/obj/item/stock_parts/capacitor/capacitor in component_parts)
-		new_power_mod -= (capacitor.rating - 1) / 40
-	for(var/obj/item/stock_parts/matter_bin/matter_bin in component_parts)
-		new_heat_mod -= (matter_bin.rating - 1) / 30
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		new_power_mod -= (capacitor.tier - 1) / 40
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		new_heat_mod -= (matter_bin.tier - 1) / 30
 	heat_modifier = new_heat_mod
 	power_modifier = new_power_mod
 	idle_power_usage = initial(idle_power_usage) * power_modifier

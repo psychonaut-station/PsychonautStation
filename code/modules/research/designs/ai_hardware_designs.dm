@@ -1,7 +1,7 @@
 /datum/design/ram
 	name = "RAM design"
 	desc = "A hidden RAM design used by decentralized AI hardware."
-	id = "default_ram"
+	id = DESIGN_ID_IGNORE
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_MISC,
 	)

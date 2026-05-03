@@ -139,7 +139,7 @@
 	var/split_network_cpu = 0
 
 	for(var/target in cpu_assigned.Copy())
-		if(target == split_network || target in network_ais)
+		if((target == split_network) || (target in network_ais))
 			network_cpu_assign[target] = cpu_assigned[target]
 			split_network_cpu += cpu_assigned[target]
 			cpu_assigned[target] = 0
@@ -158,7 +158,7 @@
 			cpu_assigned[target] = round(split_usage, 0.01)
 
 	for(var/target in ram_assigned.Copy())
-		if(target == split_network || target in network_ais)
+		if((target == split_network) || (target in network_ais))
 			network_ram_assign[target] = ram_assigned[target]
 			ram_assigned[target] = 0
 

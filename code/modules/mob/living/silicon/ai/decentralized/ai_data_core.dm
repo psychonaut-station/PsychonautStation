@@ -93,14 +93,15 @@
 	return
 
 /obj/machinery/ai/data_core/RefreshParts()
+	. = ..()
 	var/new_heat_mod = 1
 	var/new_power_mod = 1
 	for(var/obj/item/stock_parts/power_store/cell/cell in component_parts)
 		integrated_battery = cell
-	for(var/obj/item/stock_parts/capacitor/capacitor in component_parts)
-		new_power_mod -= (capacitor.rating - 1) / 50
-	for(var/obj/item/stock_parts/matter_bin/matter_bin in component_parts)
-		new_heat_mod -= (matter_bin.rating - 1) / 15
+	for(var/datum/stock_part/capacitor/capacitor in component_parts)
+		new_power_mod -= (capacitor.tier - 1) / 50
+	for(var/datum/stock_part/matter_bin/matter_bin in component_parts)
+		new_heat_mod -= (matter_bin.tier - 1) / 15
 	heat_modifier = new_heat_mod
 	power_modifier = new_power_mod
 	active_power_usage = AI_DATA_CORE_POWER_USAGE * power_modifier
@@ -250,7 +251,7 @@
 	for(var/mob/living/silicon/ai/ai_mob in contents)
 		ai_mob.disconnect_shell()
 
-/obj/machinery/ai/data_core/handle_deconstruct(disassembled = TRUE)
+/obj/machinery/ai/data_core/on_deconstruction(disassembled)
 	var/list/mob/living/silicon/ai/affected_ais = network?.resources?.get_all_ais() || list()
 	for(var/mob/living/silicon/ai/ai_mob in contents)
 		affected_ais |= ai_mob
@@ -259,7 +260,6 @@
 		if(ai_mob.stat == DEAD || ai_mob.dead_ai_backup_created)
 			continue
 		ai_mob.create_dead_ai_backup(drop_location(), FALSE)
-	return ..()
 
 /obj/machinery/ai/data_core/attackby(obj/item/item, mob/living/user, params)
 	if(istype(item, /obj/item/dead_ai))

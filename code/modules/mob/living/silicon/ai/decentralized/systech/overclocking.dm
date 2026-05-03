@@ -79,6 +79,7 @@
 	inserted_cpu.power_multiplier = initial(inserted_cpu.power_multiplier)
 
 /obj/machinery/computer/ai_overclocking/ui_interact(mob/user, datum/tgui/ui)
+	. = ..()
 	ui = SStgui.try_update_ui(user, src, ui)
 	if(!ui)
 		ui = new(user, src, "AiOverclocking", name)

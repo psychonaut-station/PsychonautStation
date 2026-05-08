@@ -365,7 +365,7 @@
 	new /obj/item/paper/syndicate_forensics_spoofer(src)
 
 /obj/item/storage/box/syndie_kit/machine_sabotage_devices
-    name = "machinery sabotage kit"
+	name = "machinery sabotage kit"
 
 /obj/item/storage/box/syndie_kit/machine_sabotage_devices/PopulateContents()
 	for(var/i in 1 to 3)

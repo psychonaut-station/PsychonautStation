@@ -154,7 +154,6 @@
 		chill_out(L)
 	update_appearance()
 	L.AddComponentFrom(type, /datum/component/free_operation)
-	SEND_SIGNAL(src, COMSIG_STASIS_OCCUPANT_ENTERED, L)
 
 /obj/machinery/stasis/post_unbuckle_mob(mob/living/L)
 	thaw_them(L)
@@ -162,7 +161,6 @@
 		set_occupant(null)
 	update_appearance()
 	L.RemoveComponentSource(type, /datum/component/free_operation)
-	SEND_SIGNAL(src, COMSIG_STASIS_OCCUPANT_LEFT, L)
 /obj/machinery/stasis/process()
 	if(!isliving(occupant))
 		update_use_power(IDLE_POWER_USE)

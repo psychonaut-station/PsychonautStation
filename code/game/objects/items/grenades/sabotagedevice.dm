@@ -32,9 +32,7 @@
 	deployed_by = user
 	target.AddComponent(\
 		/datum/component/interaction_booby_trap,\
-		additional_triggers = list(COMSIG_STASIS_OCCUPANT_ENTERED,
-                                   COMSIG_STASIS_OCCUPANT_LEFT,
-								   COMSIG_CARBON_BUMPED_AIRLOCK_OPEN),\
+		additional_triggers = list(COMSIG_MACHINERY_SET_OCCUPANT),\
 		on_triggered_callback = CALLBACK(src, PROC_REF(on_triggered)),\
 		on_defused_callback = CALLBACK(src, PROC_REF(on_defused)),\
 	)

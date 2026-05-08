@@ -10,8 +10,5 @@
 /// For when someone is injected with the EHMS virus from /datum/traitor_objective_category/infect
 #define COMSIG_EHMS_INJECTOR_INJECTED "after_ehms_inject"
 
-/// Called when a machine a traitor has booby trapped triggers its payload
-#define COMSIG_TRAITOR_MACHINE_TRAP_TRIGGERED "traitor_machine_trap_triggered"
-
 /// Called by an battle royale implanter when successfully implanting someone. Passes the implanted mob.
 #define COMSIG_ROYALE_IMPLANTED "royale_implanted"

@@ -44,9 +44,9 @@
 	message_admins("[key_name_admin(user)] planted a machine trap on [M] at [ADMIN_COORDJMP(deploy_turf)].")
 	return TRUE
 /obj/item/mes_device/proc/on_triggered(atom/machine)
-	var/logmsg = "a machine trap  triggered at [COORD(deploy_turf)]."
+	var/logmsg = "A machine trap  triggered at [COORD(deploy_turf)]."
 	log_message(logmsg, LOG_GAME)
-	message_admins("a machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
+	message_admins("A machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
 	qdel(src)
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
 	UnregisterSignal(machine, COMSIG_QDELETING)

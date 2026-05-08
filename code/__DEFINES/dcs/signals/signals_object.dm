@@ -40,7 +40,10 @@
 #define COMSIG_MACHINERY_REFRESH_PARTS "machine_refresh_parts"
 ///from /obj/machinery/default_change_direction_wrench: (mob/user, obj/item/wrench)
 #define COMSIG_MACHINERY_DEFAULT_ROTATE_WRENCH "machinery_default_rotate_wrench"
-
+/// from /obj/machinery/stasis_chamber/occupant_entered when something enters the stasis chamber
+#define COMSIG_STASIS_OCCUPANT_ENTERED "stasis_occupant_entered"
+/// from /obj/machinery/stasis_chamber/occupant_left when something leaves the stasis chamber
+#define COMSIG_STASIS_OCCUPANT_LEFT "stasis_occupant_left"
 ///from /obj/machinery/can_interact(mob/user): Called on user when attempting to interact with a machine (obj/machinery/machine)
 #define COMSIG_TRY_USE_MACHINE "try_use_machine"
 	/// Can't interact with the machine

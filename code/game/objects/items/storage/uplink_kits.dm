@@ -364,6 +364,13 @@
 	new /obj/item/forensics_spoofer(src)
 	new /obj/item/paper/syndicate_forensics_spoofer(src)
 
+/obj/item/storage/box/syndie_kit/machine_sabotage_devices
+    name = "machinery sabotage kit"
+
+/obj/item/storage/box/syndie_kit/machine_sabotage_devices/PopulateContents()
+	for(var/i in 1 to 3)
+		new /obj/item/traitor_machine_trapper(src)
+
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"
 	desc = "A box full of a number of rather masterfully engineered paper planes and a manual on \"The Art of Origami\"."

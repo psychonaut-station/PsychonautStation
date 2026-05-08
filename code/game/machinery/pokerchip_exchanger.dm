@@ -10,6 +10,8 @@
 	anchored_tabletop_offset = 1
 	pass_flags = PASSTABLE
 
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 /obj/machinery/pokerchip_exchanger/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/simple_rotation)

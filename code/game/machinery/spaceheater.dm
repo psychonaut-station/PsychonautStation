@@ -41,7 +41,8 @@
 	var/settable_temperature_range = 30
 	/// The icon_state of the emissive, because improvised heaters are special and don't follow along with the modes
 	var/emissive_state
-
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 /datum/armor/machinery_space_heater
 	fire = 80
 	acid = 10

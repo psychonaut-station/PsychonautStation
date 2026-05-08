@@ -139,7 +139,8 @@
 	var/overlays_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
 	/// Used for papers and photos pinned to the airlock
 	var/note_overlay_file = 'icons/obj/doors/airlocks/station/overlays.dmi'
-
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 	/// Airlock pump that overrides airlock controlls when set up for cycling
 	var/obj/machinery/atmospherics/components/unary/airlock_pump/cycle_pump
 

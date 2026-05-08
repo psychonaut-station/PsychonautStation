@@ -112,6 +112,12 @@
 	item = /obj/item/storage/box/syndie_kit/forensics_spoofer
 	cost = 5
 
+/datum/uplink_item/stealthy_tools/machine_sabotage_devices
+    name = "MI13 Machinery Sabotage Kit"
+    desc = "A box that contains MI13 Sabotage Devices. By placing the devices included in the box into the machines, you can set traps for your targets."
+    item = /obj/item/storage/box/syndie_kit/machine_sabotage_devices
+    cost = 4
+
 /datum/uplink_item/stealthy_tools/telecomm_blackout
 	name = "Disable Telecomms"
 	desc = "When purchased, a virus will be uploaded to the telecommunication processing servers to temporarily disable themselves."

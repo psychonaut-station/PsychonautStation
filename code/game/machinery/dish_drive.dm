@@ -37,7 +37,8 @@
 	var/list/dish_drive_contents
 	/// Distance this is capable of sucking dishes up over. (2 + servo tier)
 	var/suck_distance = 0
-
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 	COOLDOWN_DECLARE(time_since_dishes)
 
 /obj/machinery/dish_drive/examine(mob/user)

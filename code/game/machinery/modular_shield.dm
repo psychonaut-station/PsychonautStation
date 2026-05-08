@@ -76,6 +76,9 @@
 	///The name modular shield console tgui's see us as
 	var/display_name = "Shield Generator"
 
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
+
 /obj/machinery/modular_shield_generator/power_change()
 	. = ..()
 	if(!(machine_stat & NOPOWER))

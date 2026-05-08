@@ -38,7 +38,8 @@
 	var/jackpots = 0
 	var/paymode = HOLOCHIP // toggles between HOLOCHIP/COIN, defined above
 	var/cointype = /obj/item/coin/iron //default cointype
-
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 	/// The optional bank account used as the machine's bank. Player losses are deposited here, while payouts and jackpots are deducted from its balance
 	var/datum/bank_account/house_bank_account
 

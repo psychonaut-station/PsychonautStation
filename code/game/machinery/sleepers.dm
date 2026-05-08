@@ -23,6 +23,8 @@
 	var/deconstructable = FALSE
 	///Message sent when a user enters the machine.
 	var/enter_message = span_boldnotice("You feel cool air surround you. You go numb as your senses turn inward.")
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 
 	///List of currently available chems.
 	var/list/available_chems = list()

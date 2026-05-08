@@ -23,6 +23,9 @@
 
 	var/static/list/client/jukebox_ban = list()
 
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
+
 /obj/machinery/electrical_jukebox/Initialize(mapload)
 	. = ..()
 

@@ -20,6 +20,8 @@
 		/obj/item/modular_computer,
 		/obj/item/gun/ballistic/automatic/battle_rifle,
 	))
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 
 /obj/machinery/recharger/RefreshParts()
 	. = ..()

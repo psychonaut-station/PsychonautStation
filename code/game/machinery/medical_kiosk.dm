@@ -36,6 +36,9 @@
 	/// Who's getting scanned?
 	var/datum/weakref/patient_ref //If scanning someone else, this will be the target.
 
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
+
 /obj/machinery/medical_kiosk/Initialize(mapload) //loaded subtype for mapping use
 	. = ..()
 	AddComponent(/datum/component/payment, get_cost(), SSeconomy.get_dep_account(ACCOUNT_MED), PAYMENT_FRIENDLY)

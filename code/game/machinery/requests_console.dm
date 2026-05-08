@@ -49,6 +49,8 @@ GLOBAL_LIST_EMPTY(req_console_ckey_departments)
 	var/receive_ore_updates = FALSE
 	/// Did we error in the last mail?
 	var/has_mail_send_error = FALSE
+	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
+	machine_sabotage = TRUE
 	/// Cooldown to prevent announcement spam
 	COOLDOWN_DECLARE(announcement_cooldown)
 

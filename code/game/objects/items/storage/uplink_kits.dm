@@ -364,12 +364,12 @@
 	new /obj/item/forensics_spoofer(src)
 	new /obj/item/paper/syndicate_forensics_spoofer(src)
 
-/obj/item/storage/box/syndie_kit/machine_sabotage_devices
-	name = "machinery sabotage kit"
+/obj/item/storage/box/syndie_kit/mes_device
+	name = "MES Device kit"
 
-/obj/item/storage/box/syndie_kit/machine_sabotage_devices/PopulateContents()
+/obj/item/storage/box/syndie_kit/mes_device/PopulateContents()
 	for(var/i in 1 to 3)
-		new /obj/item/traitor_machine_trapper(src)
+		new /obj/item/mes_device(src)
 
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"

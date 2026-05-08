@@ -112,10 +112,10 @@
 	item = /obj/item/storage/box/syndie_kit/forensics_spoofer
 	cost = 5
 
-/datum/uplink_item/stealthy_tools/machine_sabotage_devices
-	name = "MI13 Machinery Sabotage Kit"
+/datum/uplink_item/stealthy_tools/mes_device
+	name = "MI13 M-E-S Device Kit"
 	desc = "A box that contains MI13 Sabotage Devices. By placing the devices included in the box into the machines, you can set traps for your targets."
-	item = /obj/item/storage/box/syndie_kit/machine_sabotage_devices
+	item = /obj/item/storage/box/syndie_kit/mes_device
 	cost = 4
 
 /datum/uplink_item/stealthy_tools/telecomm_blackout

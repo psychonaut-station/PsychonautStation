@@ -1,20 +1,14 @@
 ///number of deciseconds in a day
 #define MIDNIGHT_ROLLOVER 864000
 
-///displays the current time into the round, with a lot of extra code just there for ensuring it looks okay after an entire day passes
-#define ROUND_TIME(...) ( "[STATION_TIME_PASSED() > MIDNIGHT_ROLLOVER ? "[round(STATION_TIME_PASSED()/MIDNIGHT_ROLLOVER)]:[gameTimestamp(wtime = STATION_TIME_PASSED())]" : gameTimestamp(wtime = STATION_TIME_PASSED())]" )
+/// In-universe, SS13 is set 540 years in the future from the real-world day, hence this number for determining the year-offset for the in-game year.
+#define STATION_YEAR_OFFSET 540
 
 ///Returns the time that has passed since the game started
 #define STATION_TIME_PASSED(...) (world.time - SSticker.round_start_time)
 
 /// Define that just has the current in-universe year for use in whatever context you might want to display that in. (For example, 2022 -> 2562 given a 540 year offset)
 #define CURRENT_STATION_YEAR (GLOB.year_integer + STATION_YEAR_OFFSET)
-
-/// Used in the GLOB year and tgui PreInit
-#define UTC_YEAR time2text(world.realtime,"YYYY",NO_TIMEZONE)
-
-/// In-universe, SS13 is set 540 years in the future from the real-world day, hence this number for determining the year-offset for the in-game year.
-#define STATION_YEAR_OFFSET 540
 
 #define JANUARY 1
 #define FEBRUARY 2
@@ -30,6 +24,7 @@
 #define DECEMBER 12
 
 //Select holiday names -- If you test for a holiday in the code, make the holiday's name a define and test for that instead
+<<<<<<< HEAD
 #define NEW_YEAR "Yılbaşı"
 #define VALENTINES "Sevgililer Günü"
 #define APRIL_FOOLS "1 Nisan"
@@ -44,6 +39,23 @@
 #define IAN_HOLIDAY "Ian'ın Doğum Günü"
 #define HOTDOG_DAY "Ulusal Sosisli Günü"
 #define ICE_CREAM_DAY "Ulusal Dondurma Günü"
+=======
+#define NEW_YEAR "New Year"
+#define VALENTINES "Valentine's Day"
+#define APRIL_FOOLS "April Fool's Day"
+#define EASTER "Easter"
+#define HALLOWEEN "Halloween"
+#define CHRISTMAS "Christmas"
+#define FESTIVE_SEASON "Festive Season"
+#define GARBAGEDAY "Garbage Day"
+#define MONKEYDAY "Monkey Day"
+#define PRIDE_WEEK "Pride Week"
+#define MOTH_WEEK "Moth Week"
+#define IAN_HOLIDAY "Ian's Birthday"
+#define HOTDOG_DAY "National Hot Dog Day"
+#define ICE_CREAM_DAY "National Ice Cream Day"
+#define CHERNOBYL_ANNIVERSARY "Chernobyl Disaster Remembrance Day"
+>>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 /*
 
 Days of the week to make it easier to reference them.

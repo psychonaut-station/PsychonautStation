@@ -126,7 +126,11 @@ GLOBAL_VAR(restart_counter)
  * All atoms in both compiled and uncompiled maps are initialized()
  */
 /world/New()
+<<<<<<< HEAD
 	log_world("World loaded at [time_stamp()]!")
+=======
+	log_world("World loaded at [server_timestamp()]!")
+>>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 
 	// First possible sleep()
 	InitTgs()
@@ -248,8 +252,12 @@ GLOBAL_VAR(restart_counter)
 			GLOB.picture_logging_prefix += "R_[GLOB.round_id]_"
 			GLOB.picture_log_directory += "[GLOB.round_id]"
 		else
+<<<<<<< HEAD
 			var/timestamp = replacetext(time_stamp(), ":", ".")
 			GLOB.character_log_directory += "[timestamp]"
+=======
+			var/timestamp = replacetext(server_timestamp(), ":", ".")
+>>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 			GLOB.log_directory += "[timestamp]"
 			GLOB.picture_log_directory += "[timestamp]"
 			GLOB.picture_logging_prefix += "T_[timestamp]_"
@@ -379,14 +387,14 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 	return
 	#else
 	if(check_hard_reboot())
-		log_world("World hard rebooted at [time_stamp()]")
+		log_world("World hard rebooted at [server_timestamp()]")
 		shutdown_logging() // See comment below.
 		QDEL_NULL(Tracy)
 		QDEL_NULL(Debugger)
 		TgsEndProcess()
 		return ..()
 
-	log_world("World rebooted at [time_stamp()]")
+	log_world("World rebooted at [server_timestamp()]")
 
 	shutdown_logging() // Past this point, no logging procs can be used, at risk of data loss.
 	QDEL_NULL(Tracy)
@@ -437,7 +445,7 @@ GLOBAL_VAR_INIT(last_maptick_time, 0)
 		else if(SSticker.current_state == GAME_STATE_SETTING_UP)
 			new_status += "<br>Starting: <b>Now</b>"
 		else if(SSticker.IsRoundInProgress())
-			new_status += "<br>Time: <b>[time2text(STATION_TIME_PASSED(), "hh:mm", NO_TIMEZONE)]</b>"
+			new_status += "<br>Time: <b>[round_timestamp("hh:mm")]</b>"
 			if(SSshuttle?.emergency && SSshuttle?.emergency?.mode != (SHUTTLE_IDLE || SHUTTLE_ENDGAME))
 				new_status += " | Shuttle: <b>[SSshuttle.emergency.getModeStr()] [SSshuttle.emergency.getTimerStr()]</b>"
 		else if(SSticker.current_state == GAME_STATE_FINISHED)

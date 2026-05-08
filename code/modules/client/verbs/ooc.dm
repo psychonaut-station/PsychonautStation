@@ -3,8 +3,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 ///talking in OOC uses this
 /client/verb/ooc(msg as text)
-	set name = "OOC" //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
-	set category = "OOC"
+	set name = VERB_OOC
 
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
@@ -133,6 +132,7 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	else
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
+<<<<<<< HEAD
 /proc/toggle_looc(toggle = null)
 	if(toggle != null)
 		if(toggle != GLOB.looc_allowed)
@@ -143,6 +143,8 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 		GLOB.looc_allowed = !GLOB.looc_allowed
 
 
+=======
+>>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 /client/proc/set_ooc()
 	set name = "Set Player OOC Color"
 	set desc = "Modifies player OOC Color"

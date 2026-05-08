@@ -11,6 +11,7 @@
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.2
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_master
+	machine_sabotage = TRUE
 
 	/// Inserted reagent container
 	var/obj/item/reagent_containers/beaker

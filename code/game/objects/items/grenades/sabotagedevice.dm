@@ -5,7 +5,7 @@
 	icon_state = "boobytrap"
 	w_class = WEIGHT_CLASS_SMALL
 
-	var/explosion_range = 3
+	var/explosion_range = 6
 	var/deploy_time = 10 SECONDS
 	var/deployed_by = null
 	var/turf/deploy_turf = null

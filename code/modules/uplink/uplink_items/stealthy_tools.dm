@@ -113,10 +113,16 @@
 	cost = 5
 
 /datum/uplink_item/stealthy_tools/mes_device
+	name = "MI13 M-E-S Device"
+	desc = "A small device that can be placed on machines to set traps for your targets. By placing the device into the machines, you can set trap for your targets."
+	item = /obj/item/mes_device
+	cost = 1
+
+/datum/uplink_item/stealthy_tools/mes_device_kit
 	name = "MI13 M-E-S Device Kit"
 	desc = "A box that contains MI13 Sabotage Devices. By placing the devices included in the box into the machines, you can set traps for your targets."
-	item = /obj/item/storage/box/syndie_kit/mes_device
-	cost = 4
+	item = /obj/item/storage/box/syndie_kit/mes_device_kit
+	cost = 5
 
 /datum/uplink_item/stealthy_tools/telecomm_blackout
 	name = "Disable Telecomms"

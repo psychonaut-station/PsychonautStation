@@ -364,11 +364,11 @@
 	new /obj/item/forensics_spoofer(src)
 	new /obj/item/paper/syndicate_forensics_spoofer(src)
 
-/obj/item/storage/box/syndie_kit/mes_device
+/obj/item/storage/box/syndie_kit/mes_device_kit
 	name = "MES Device kit"
 
-/obj/item/storage/box/syndie_kit/mes_device/PopulateContents()
-	for(var/i in 1 to 3)
+/obj/item/storage/box/syndie_kit/mes_device_kit/PopulateContents()
+	for(var/i in 1 to 5)
 		new /obj/item/mes_device(src)
 
 /obj/item/storage/box/syndie_kit/origami_bundle

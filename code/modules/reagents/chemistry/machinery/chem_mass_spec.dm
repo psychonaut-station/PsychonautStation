@@ -10,6 +10,7 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	processing_flags = START_PROCESSING_MANUALLY
 	circuit = /obj/item/circuitboard/machine/chem_mass_spec
+	machine_sabotage = TRUE
 
 	///If we're processing reagents or not
 	var/processing_reagents = FALSE

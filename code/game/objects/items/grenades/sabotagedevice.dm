@@ -41,8 +41,6 @@
 	RegisterSignal(target, COMSIG_QDELETING, GLOBAL_PROC_REF(qdel), src)
 	moveToNullspace()
 	return TRUE
-
-
 /obj/item/traitor_machine_trapper/proc/on_triggered(atom/machine)
 	qdel(src)
 

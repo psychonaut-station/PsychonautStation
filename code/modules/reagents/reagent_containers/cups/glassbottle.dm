@@ -880,6 +880,39 @@
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "raki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek
+	name = "Beylerbeyi Gobek"
+	desc = "Gobek kismindan alinan distilasyonuyla daha yumusak ve aromatik bir rakidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "beylerbeyigobek"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/efegold
+	name = "Efe Gold"
+	desc = "Yuzde 100 maltla uretilen, dolgun tadiyla bilinen ve adini Ege efelerinden alan klasik bir Turk rakisidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "efegold"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/efegold = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/tekirdag
+	name = "Tekirdag"
+	desc = "Uzum kalitesi ve dengeli anason tadiyla bilinen klasik bir rakidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "tekirdag"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/tekirdag = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/yeniraki
+	name = "Yeni Raki"
+	desc = "Turkiye'nin en yaygin rakisi olup dengeli ve geleneksel bir icime sahiptir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "yeniraki"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/yeniraki = 100)
+	drink_type = ALCOHOL
 
 /obj/item/reagent_containers/cup/glass/bottle/aperitivo
 	name = "Camillo Aperitivo Rosso"

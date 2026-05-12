@@ -38,8 +38,10 @@
 	return ..()
 
 /datum/component/pausable_bodycam/proc/on_watch_start(datum/source)
+	prune_sources_watching()
+	var/had_live_watchers = has_live_watchers()
 	LAZYADD(sources_watching, WEAKREF(source))
-	if(LAZYLEN(sources_watching) != 1)
+	if(had_live_watchers)
 		return
 	if(!bodycam?.camera_enabled)
 		return
@@ -47,12 +49,26 @@
 	do_update_cam()
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
-	LAZYREMOVE(sources_watching, WEAKREF(source))
-	if(LAZYLEN(sources_watching) > 0)
+	prune_sources_watching(source)
+	if(has_live_watchers())
 		return
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	if(bodycam && !QDELETED(bodycam))
 		SScameras.remove_camera_from_chunk(bodycam)
+
+/datum/component/pausable_bodycam/proc/prune_sources_watching(datum/source_to_remove)
+	if(!LAZYLEN(sources_watching))
+		return
+	for(var/datum/weakref/weak_source as anything in sources_watching.Copy())
+		var/datum/resolved_source = weak_source?.resolve()
+		if(!resolved_source || resolved_source == source_to_remove)
+			LAZYREMOVE(sources_watching, weak_source)
+
+/datum/component/pausable_bodycam/proc/has_live_watchers()
+	for(var/datum/weakref/weak_source as anything in sources_watching)
+		if(weak_source?.resolve())
+			return TRUE
+	return FALSE
 
 /datum/component/pausable_bodycam/proc/update_cam(datum/source, atom/old_loc, ...)
 	SIGNAL_HANDLER

@@ -34,6 +34,9 @@
 	cam_screen.generate_view(map_name)
 
 /obj/machinery/computer/security/Destroy()
+	active_camera?.on_stop_watching(src)
+	active_camera = null
+	last_camera_turf = null
 	QDEL_NULL(cam_screen)
 	return ..()
 

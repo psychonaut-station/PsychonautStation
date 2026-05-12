@@ -83,6 +83,10 @@
 	cam_screen.generate_view(map_name)
 
 /datum/computer_file/program/secureye/Destroy()
+	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
+	if(!spying && active_camera)
+		active_camera.on_stop_watching(src)
+	camera_ref = null
 	QDEL_NULL(cam_screen)
 	QDEL_NULL(internal_tracker)
 	last_camera_turf = null

@@ -55,9 +55,10 @@
 	log_message("[key_name(user)] planted a machine trap on [machine] at [COORD(deploy_turf)].")
 	message_admins("[key_name_admin(user)] planted a machine trap on [machine] at [ADMIN_COORDJMP(deploy_turf)].")
 	return TRUE
+	return TRUE
 
 /obj/item/mes_device/proc/on_triggered(atom/machine)
-	log_message("A machine trap  triggered at [COORD(deploy_turf)].")
+	log_game("A machine trap triggered at [COORD(deploy_turf)].")
 	message_admins("A machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
 	qdel(src)
 

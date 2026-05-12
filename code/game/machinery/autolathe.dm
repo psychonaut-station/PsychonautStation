@@ -20,8 +20,6 @@
 	var/shocked = FALSE
 	///Are we currently printing something
 	var/busy = FALSE
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 	///Coefficient applied to consumed materials. Lower values result in lower material consumption.
 	var/creation_efficiency = 1.6
 	///Designs related to the autolathe

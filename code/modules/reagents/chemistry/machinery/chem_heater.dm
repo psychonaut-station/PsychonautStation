@@ -8,7 +8,6 @@
 	idle_power_usage = BASE_MACHINE_IDLE_CONSUMPTION * 0.4
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_heater
-	machine_sabotage = TRUE
 
 	/// The beaker inside this machine
 	var/obj/item/reagent_containers/beaker = null

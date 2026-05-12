@@ -123,8 +123,6 @@
 	var/panel_open = FALSE
 	///Is the machine open or closed
 	var/state_open = FALSE
-	///If this machine can be trapped with a sabotage device or similar item.
-	var/machine_sabotage = FALSE
 	///If this machine is critical to station operation and should have the area be excempted from power failures.
 	var/critical_machine = FALSE
 	///if set, turned into typecache in Initialize, other wise, defaults to mob/living typecache

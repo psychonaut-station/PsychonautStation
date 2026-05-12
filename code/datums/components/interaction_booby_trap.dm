@@ -24,8 +24,8 @@
 	var/explode_timer
 
 /datum/component/interaction_booby_trap/Initialize(
-	explosion_light_range = 4,
-	explosion_heavy_range = 2, // So we destroy some machine components
+	explosion_light_range = 3,
+	explosion_heavy_range = 1, // So we destroy some machine components
 	triggered_sound = 'sound/machines/beep/triple_beep.ogg',
 	trigger_delay = 0.5 SECONDS,
 	sound_loop_type = /datum/looping_sound/trapped_machine_beep,

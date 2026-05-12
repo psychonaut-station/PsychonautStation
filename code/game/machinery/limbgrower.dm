@@ -26,8 +26,7 @@
 	var/list/categories = list(SPECIES_HUMAN, SPECIES_LIZARD, SPECIES_MOTH, SPECIES_PLASMAMAN, SPECIES_ETHEREAL, RND_CATEGORY_LIMBS_OTHER, RND_CATEGORY_LIMBS_DIGITIGRADE)
 	///Designs imported from technology disks that we can print.
 	var/list/imported_designs = list()
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 /obj/machinery/limbgrower/Initialize(mapload)
 	create_reagents(100, OPENCONTAINER)
 	if(!GLOB.autounlock_techwebs[/datum/techweb/autounlocking/limbgrower])

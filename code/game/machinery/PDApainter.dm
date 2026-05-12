@@ -25,8 +25,7 @@
 	var/list/card_trims = list()
 	/// Set to a region define (REGION_SECURITY for example) to create a departmental variant, limited to departmental options. If null, this is unrestricted.
 	var/target_dept
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 /obj/machinery/pdapainter/update_icon_state()
 	if(machine_stat & BROKEN)
 		icon_state = "[base_icon_state]-broken"

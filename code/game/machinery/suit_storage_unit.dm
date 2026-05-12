@@ -33,8 +33,7 @@
 	var/mod_type = null
 	/// What type of additional item the unit starts with when spawned.
 	var/storage_type = null
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 
 	/// If the SSU's doors are locked closed. Can be toggled manually via the UI, but is also locked automatically when the UV decontamination sequence is running.
 	var/locked = FALSE

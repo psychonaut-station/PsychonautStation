@@ -29,8 +29,6 @@
 	var/max_part_tier = 1
 	/// time needed to produce a flatpacked machine
 	var/flatpack_time = 4.5 SECONDS
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 /obj/machinery/flatpacker/Initialize(mapload)
 	register_context()

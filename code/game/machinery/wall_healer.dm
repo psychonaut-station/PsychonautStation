@@ -10,7 +10,6 @@
 	payment_department = ACCOUNT_MED
 	max_integrity = 150
 	armor_type = /datum/armor/obj_machinery/wall_healer
-	machine_sabotage = TRUE
 
 	/// Cost per bandage dispensed. Note, always disregarded on red alert.
 	var/per_bandage_cost = (/obj/item/stack/medical/wrap/gauze::custom_price) / (/obj/item/stack/medical/wrap/gauze::amount)

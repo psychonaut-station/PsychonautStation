@@ -27,8 +27,6 @@
 	"Unsaturated fat, that is monounsaturated fats, polyunsaturated fats and omega-3 fatty acids, is found in plant foods and fish." \
 	)
 
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 /obj/machinery/fat_sucker/Initialize(mapload)
 	. = ..()
 	soundloop = new(src,  FALSE)

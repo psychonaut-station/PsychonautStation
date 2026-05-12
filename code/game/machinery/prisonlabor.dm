@@ -8,8 +8,7 @@
 	active_power_usage = BASE_MACHINE_ACTIVE_CONSUMPTION * 0.05
 	var/obj/item/stack/license_plates/empty/current_plate
 	var/pressing = FALSE
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 /obj/machinery/plate_press/update_icon_state()
 	if(!is_operational)
 		icon_state = "offline"

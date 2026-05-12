@@ -9,7 +9,6 @@
 	resistance_flags = FIRE_PROOF | ACID_PROOF
 	circuit = /obj/item/circuitboard/machine/chem_dispenser
 	processing_flags = NONE
-	machine_sabotage = TRUE
 
 	/// The cell used to dispense reagents
 	var/obj/item/stock_parts/power_store/cell

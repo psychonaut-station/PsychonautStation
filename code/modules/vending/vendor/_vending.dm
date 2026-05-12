@@ -53,7 +53,7 @@
 	light_range = MINIMUM_USEFUL_LIGHT_RANGE
 	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
 	impact_sound = SFX_BULLET_IMPACT_METAL
-	machine_sabotage = TRUE
+
 	///Next world time to send a purchase message
 	var/purchase_message_cooldown
 	///The ref of the last mob to shop with us
@@ -74,6 +74,7 @@
 	var/panel_type = "panel1"
 	///Whether this vendor can be selected when building a custom vending machine
 	var/allow_custom = TRUE
+
 	/**
 	  * List of products this machine sells
 	  *

@@ -9,7 +9,18 @@
 	var/deploy_time = 10 SECONDS
 	var/deployed_by = null
 	var/turf/deploy_turf = null
-
+	var/static/list/blacklist = typecacheof(list(
+	/obj/machinery/power,
+	/obj/machinery/door,
+	/obj/machinery/atmospherics,
+	/obj/machinery/gravity_generator,
+	/obj/machinery/transformer,
+	/obj/machinery/status_display,
+	/obj/machinery/light,
+	/obj/machinery/airalarm,
+	/obj/machinery/camera,
+	/obj/machinery/meter
+	))
 
 /obj/item/mes_device/examine(mob/user)
 	. = ..()
@@ -22,9 +33,9 @@
 	. = ..()
 	if (. || !istype(target, /obj/machinery))
 		return
-	var/obj/machinery/M = target
-	if(!M.machine_sabotage)
-		balloon_alert(user, "can't trap this machine!")
+	var/obj/machinery/machine = target
+	if(is_type_in_typecache(machine, blacklist))
+		balloon_alert(user, "device incompatible!")
 		return
 	balloon_alert(user, "planting device...")
 	if(!do_after(user, delay = deploy_time, target = src, interaction_key = DOAFTER_SOURCE_PLANTING_DEVICE))
@@ -33,21 +44,23 @@
 	deploy_turf = get_turf(target)
 	target.AddComponent(\
 		/datum/component/interaction_booby_trap,\
+		explosion_light_range = 4,\
+		explosion_heavy_range = 2,\
 		additional_triggers = list(COMSIG_MACHINERY_SET_OCCUPANT),\
 		on_triggered_callback = CALLBACK(src, PROC_REF(on_triggered)),\
 		on_defused_callback = CALLBACK(src, PROC_REF(on_defused)),\
 	)
 	RegisterSignal(target, COMSIG_QDELETING, GLOBAL_PROC_REF(qdel), src)
-	moveToNullspace()
-	var/logmsg = "[key_name(user)] planted a machine trap on [M] at [COORD(deploy_turf)]."
-	log_message(logmsg, LOG_GAME)
-	message_admins("[key_name_admin(user)] planted a machine trap on [M] at [ADMIN_COORDJMP(deploy_turf)].")
+	forceMove(target)
+	log_message("[key_name(user)] planted a machine trap on [machine] at [COORD(deploy_turf)].")
+	message_admins("[key_name_admin(user)] planted a machine trap on [machine] at [ADMIN_COORDJMP(deploy_turf)].")
 	return TRUE
+
 /obj/item/mes_device/proc/on_triggered(atom/machine)
-	var/logmsg = "A machine trap  triggered at [COORD(deploy_turf)]."
-	log_message(logmsg, LOG_GAME)
+	log_message("A machine trap  triggered at [COORD(deploy_turf)].")
 	message_admins("A machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
 	qdel(src)
+
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
 	UnregisterSignal(machine, COMSIG_QDELETING)
 	playsound(machine, 'sound/effects/structure_stress/pop3.ogg', 100, vary = TRUE)

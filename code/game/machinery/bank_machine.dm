@@ -15,8 +15,7 @@
 	var/next_warning = 0
 	///The amount of time we have between warnings
 	var/minimum_time_between_warnings = 40 SECONDS
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 	///The machine's internal radio, used to broadcast alerts.
 	var/obj/item/radio/radio
 	///The channel we announce a siphon over.

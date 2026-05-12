@@ -191,8 +191,7 @@ GLOBAL_LIST_INIT(dye_registry, list(
 	var/time_to_wash
 	/// The current number of items inserted
 	var/total_load = 0
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 /obj/machinery/washing_machine/examine(mob/user)
 	. = ..()
 	if(!busy)

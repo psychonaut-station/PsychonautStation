@@ -10,8 +10,6 @@
 	var/obj/machinery/gulag_teleporter/linked_teleporter = null
 	///Icon of the current screen status
 	var/screen_icon = "gulag_on"
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 /obj/machinery/gulag_item_reclaimer/Exited(atom/movable/gone, direction)
 	. = ..()

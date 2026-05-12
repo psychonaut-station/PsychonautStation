@@ -54,8 +54,7 @@
 	var/comment_text
 	///Timer ID for creation of cross-sector channels
 	var/channel_approval_timer
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
+
 	///The station request datum being affected by UI actions.
 	var/datum/station_request/active_request
 	///Value of the currently bounty input

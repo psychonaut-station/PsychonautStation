@@ -22,8 +22,6 @@
 	var/stasis_can_toggle = 0
 	var/mattress_state = "stasis_on"
 	var/obj/effect/overlay/vis/mattress_on
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 /obj/machinery/stasis/Initialize(mapload)
 	. = ..()
@@ -161,6 +159,7 @@
 		set_occupant(null)
 	update_appearance()
 	L.RemoveComponentSource(type, /datum/component/free_operation)
+
 /obj/machinery/stasis/process()
 	if(!isliving(occupant))
 		update_use_power(IDLE_POWER_USE)

@@ -4,7 +4,6 @@
 	/// Energy cost per full stack of materials spent. Material insertion is 40% of this.
 	active_power_usage = 0.05 * STANDARD_CELL_RATE
 	interaction_flags_atom = parent_type::interaction_flags_atom | INTERACT_ATOM_MOUSEDROP_IGNORE_CHECKS
-	machine_sabotage = TRUE
 
 	/// The efficiency coefficient. Material costs and print times are multiplied by this number;
 	var/efficiency_coeff = 1

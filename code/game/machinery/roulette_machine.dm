@@ -45,8 +45,6 @@
 	var/datum/looping_sound/jackpot/jackpot_loop
 	var/on = TRUE
 	var/last_spin = 13
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 /datum/armor/machinery_roulette
 	melee = 45

@@ -18,8 +18,6 @@
 	///Whether we're sending iron and glass to a cyborg. Requires Silo connection.
 	var/sendmats = FALSE
 	var/datum/remote_materials/materials
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 
 /obj/machinery/recharge_station/Initialize(mapload)

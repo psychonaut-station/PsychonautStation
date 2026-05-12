@@ -16,8 +16,6 @@
 	var/output_dir = SOUTH //Direction to drop the limbs in
 	var/allow_clothing = FALSE
 	var/allow_living = FALSE
-	///Machine sabotage means machine can be sabotaged by traitor items like the machine trapper.
-	machine_sabotage = TRUE
 
 /obj/machinery/harvester/Initialize(mapload)
 	. = ..()

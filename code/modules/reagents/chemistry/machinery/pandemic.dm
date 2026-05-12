@@ -10,7 +10,7 @@
 	base_icon_state = "pandemic"
 	resistance_flags = ACID_PROOF
 	circuit = /obj/item/circuitboard/computer/pandemic
-	machine_sabotage = TRUE
+
 	/// Whether the pandemic is ready to make another culture/vaccine
 	var/wait = FALSE
 	///The currently selected symptom

@@ -20,7 +20,6 @@
 	var/setting = 1
 	///Max setting acheived from upgraded capacitors
 	var/max_range = 3
-	machine_sabotage = TRUE
 
 /// A factory which produces clouds of smoke for the smoke machine.
 /datum/effect_system/fluid_spread/smoke/chem/smoke_machine

@@ -1774,6 +1774,7 @@
 		/obj/item/assembly/igniter/condenser = 1,
 		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
+		/obj/item/reagent_containers/cup/beaker = 1,
 	)
 
 /obj/item/circuitboard/machine/smelter
@@ -1784,6 +1785,7 @@
 		/obj/item/assembly/igniter = 1,
 		/datum/stock_part/servo = 2,
 		/datum/stock_part/matter_bin = 2,
+		/obj/item/reagent_containers/cup/beaker = 1,
 	)
 
 /obj/item/circuitboard/machine/shieldwallgen

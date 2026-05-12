@@ -848,3 +848,6 @@
 	min_val = 0
 
 /datum/config_entry/flag/fishing
+
+/datum/config_entry/string/policy_json_path
+	default = "policy.json"

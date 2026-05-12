@@ -59,7 +59,6 @@
 /obj/item/mes_device/proc/on_triggered(atom/machine)
 	log_game("A machine trap triggered at [COORD(deploy_turf)].")
 	message_admins("A machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
-	qdel(src)
 
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
 	UnregisterSignal(machine, COMSIG_QDELETING)

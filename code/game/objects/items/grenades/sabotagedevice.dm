@@ -5,21 +5,17 @@
 	icon_state = "boobytrap"
 	w_class = WEIGHT_CLASS_SMALL
 
-	var/explosion_range = 6
-	var/deploy_time = 10 SECONDS
-	var/deployed_by = null
-	var/turf/deploy_turf = null
 	var/static/list/blacklist = typecacheof(list(
-	/obj/machinery/power,
-	/obj/machinery/door,
-	/obj/machinery/atmospherics,
-	/obj/machinery/gravity_generator,
-	/obj/machinery/transformer,
-	/obj/machinery/status_display,
-	/obj/machinery/light,
-	/obj/machinery/airalarm,
-	/obj/machinery/camera,
-	/obj/machinery/meter
+		/obj/machinery/power,
+		/obj/machinery/door,
+		/obj/machinery/atmospherics,
+		/obj/machinery/gravity_generator,
+		/obj/machinery/transformer,
+		/obj/machinery/status_display,
+		/obj/machinery/light,
+		/obj/machinery/airalarm,
+		/obj/machinery/camera,
+		/obj/machinery/meter,
 	))
 
 /obj/item/mes_device/examine(mob/user)

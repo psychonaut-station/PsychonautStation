@@ -34,10 +34,9 @@
 		balloon_alert(user, "device incompatible!")
 		return
 	balloon_alert(user, "planting device...")
-	if(!do_after(user, delay = deploy_time, target = src, interaction_key = DOAFTER_SOURCE_PLANTING_DEVICE))
+	if(!do_after(user, delay = 10 SECONDS, target = src, interaction_key = DOAFTER_SOURCE_PLANTING_DEVICE))
 		return TRUE
-	deployed_by = user
-	deploy_turf = get_turf(target)
+	var/turf/source_turf = get_turf(target)
 	target.AddComponent(\
 		/datum/component/interaction_booby_trap,\
 		explosion_light_range = 4,\
@@ -47,17 +46,19 @@
 		on_defused_callback = CALLBACK(src, PROC_REF(on_defused)),\
 	)
 	RegisterSignal(target, COMSIG_QDELETING, GLOBAL_PROC_REF(qdel), src)
-	qdel(src)
-	log_message("[key_name(user)] planted a machine trap on [machine] at [COORD(deploy_turf)].")
-	message_admins("[key_name_admin(user)] planted a machine trap on [machine] at [ADMIN_COORDJMP(deploy_turf)].")
+	forceMove(target)
+	log_message("[key_name(user)] planted a machine trap on [machine] at [COORD(source_turf)].")
+	message_admins("[key_name_admin(user)] planted a machine trap on [machine] at [ADMIN_COORDJMP(source_turf)].")
 	return TRUE
 
 /obj/item/mes_device/proc/on_triggered(atom/machine)
-	log_game("A machine trap triggered at [COORD(deploy_turf)].")
-	message_admins("A machine trap triggered at [ADMIN_COORDJMP(deploy_turf)].")
+	var/turf/explosion_turf = get_turf(src)
+	log_game("A machine trap triggered at [COORD(explosion_turf)].")
+	message_admins("A machine trap triggered at [ADMIN_COORDJMP(explosion_turf)].")
+	qdel(src)
 
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
 	UnregisterSignal(machine, COMSIG_QDELETING)
 	playsound(machine, 'sound/effects/structure_stress/pop3.ogg', 100, vary = TRUE)
-	new /obj/item/mes_device(get_turf(machine))
+	forceMove(get_turf(machine))
 	visible_message(span_warning("A [src] falls out from the [machine]!"))

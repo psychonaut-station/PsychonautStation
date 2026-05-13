@@ -57,5 +57,5 @@
 
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
 	playsound(machine, 'sound/effects/structure_stress/pop3.ogg', 100, vary = TRUE)
-	forceMove(get_turf(machine))
+	forceMove(drop_location())
 	visible_message(span_warning("A [src] falls out from the [machine]!"))

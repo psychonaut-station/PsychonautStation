@@ -45,7 +45,6 @@
 		on_triggered_callback = CALLBACK(src, PROC_REF(on_triggered)),\
 		on_defused_callback = CALLBACK(src, PROC_REF(on_defused)),\
 	)
-	RegisterSignal(target, COMSIG_QDELETING, GLOBAL_PROC_REF(qdel), src)
 	forceMove(target)
 	log_message("[key_name(user)] planted a machine trap on [machine] at [COORD(source_turf)].")
 	message_admins("[key_name_admin(user)] planted a machine trap on [machine] at [ADMIN_COORDJMP(source_turf)].")
@@ -55,10 +54,8 @@
 	var/turf/explosion_turf = get_turf(src)
 	log_game("A machine trap triggered at [COORD(explosion_turf)].")
 	message_admins("A machine trap triggered at [ADMIN_COORDJMP(explosion_turf)].")
-	qdel(src)
 
 /obj/item/mes_device/proc/on_defused(atom/machine, mob/defuser, obj/item/tool)
-	UnregisterSignal(machine, COMSIG_QDELETING)
 	playsound(machine, 'sound/effects/structure_stress/pop3.ogg', 100, vary = TRUE)
 	forceMove(get_turf(machine))
 	visible_message(span_warning("A [src] falls out from the [machine]!"))

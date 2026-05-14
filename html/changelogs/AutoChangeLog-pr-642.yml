@@ -1,0 +1,4 @@
+author: "Ureus"
+delete-after: True
+changes:
+  - rscadd: "Traitorlara makinelere gizli bombalar yerleştirmelerini sağlayan \"MI13 Sabotage Kit\" eklendi."

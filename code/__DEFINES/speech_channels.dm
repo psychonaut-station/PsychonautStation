@@ -5,3 +5,4 @@
 #define OOC_CHANNEL "OOC"
 #define LOOC_CHANNEL "LOOC"
 #define ADMIN_CHANNEL "Admin"
+#define PRAY_CHANNEL "Pray"

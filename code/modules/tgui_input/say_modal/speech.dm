@@ -136,11 +136,7 @@
 		return TRUE
 	if(type == "force")
 		var/target_channel = payload["channel"]
-<<<<<<< HEAD
-		if(target_channel == ME_CHANNEL || target_channel == OOC_CHANNEL || target_channel == LOOC_CHANNEL)
-=======
-		if(target_channel == ME_CHANNEL || target_channel == OOC_CHANNEL || target_channel == PRAY_CHANNEL)
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
+		if(target_channel == ME_CHANNEL || target_channel == OOC_CHANNEL || target_channel == LOOC_CHANNEL || target_channel == PRAY_CHANNEL)
 			target_channel = SAY_CHANNEL // No ooc leaks
 		delegate_speech(alter_entry(payload), target_channel)
 		return TRUE

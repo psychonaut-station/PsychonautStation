@@ -533,7 +533,6 @@
 	. = ..()
 	new /obj/item/choice_beacon/music(get_turf(chap))
 
-<<<<<<< HEAD
 /datum/religion_sect/necro_sect
 	name = "Necromancy"
 	desc = "A sect dedicated to the revival and summoning of the dead. Sacrificing living animals grants you favor."
@@ -543,7 +542,8 @@
 	max_favor = 1500
 	desired_items = list(/obj/item/organ/)
 	rites_list = list(/datum/religion_rites/living_sacrifice, /datum/religion_rites/raise_undead)
-	altar_icon_state = "convertaltar_necro"
+	altar_icon = 'icons/psychonaut/obj/service/hand_of_god_structures.dmi'
+	altar_icon_state = "convertaltar-necro"
 
 //Necro bibles don't heal or do anything special apart from the standard holy water blessings
 /datum/religion_sect/necro_sect/sect_bless(mob/living/blessed, mob/living/user)
@@ -568,7 +568,8 @@
 	max_favor = 10000
 	desired_items = list(/obj/item/food/meat)
 	rites_list = list(/datum/religion_rites/summon_carp, /datum/religion_rites/flood_area)
-	altar_icon_state = "convertaltar_carp"
+	altar_icon = 'icons/psychonaut/obj/service/hand_of_god_structures.dmi'
+	altar_icon_state = "convertaltar-carp"
 
 //Carp bibles give people the carp faction!
 /datum/religion_sect/carp_sect/sect_bless(mob/living/L, mob/living/user)
@@ -591,7 +592,8 @@
 	max_favor = 10000
 	desired_items = list(/obj/item/seeds)
 	rites_list = list(/datum/religion_rites/create_podperson,/datum/religion_rites/summon_animals)
-	altar_icon_state = "convertaltar_nature"
+	altar_icon = 'icons/psychonaut/obj/service/hand_of_god_structures.dmi'
+	altar_icon_state = "convertaltar-nature"
 
 //plant bibles don't heal or do anything special apart from the standard holy water blessings
 /datum/religion_sect/plant_sect/sect_bless(mob/living/blessed, mob/living/user)
@@ -605,7 +607,6 @@
 	qdel(N)
 	return TRUE
 
-=======
 /datum/religion_sect/dreams
 	name = "Dream God"
 	quote = "The dream is a window into the soul."
@@ -740,4 +741,3 @@
 					chap.apply_status_effect(/datum/status_effect/dream_protection)
 				else
 					chap.remove_status_effect(/datum/status_effect/dream_protection)
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe

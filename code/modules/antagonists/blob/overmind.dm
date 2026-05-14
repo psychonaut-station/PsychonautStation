@@ -163,13 +163,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 			qdel(src)
 	else if(!victory_in_progress && (blobs_legit.len >= blobwincount))
-<<<<<<< HEAD
-		victory_in_progress = TRUE
-		priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonun kaybedilmesi an meselesi.", "Biyolojik Tehlike Uyarısı")
-		SSsecurity_level.set_level(SEC_LEVEL_DELTA)
-=======
 		begin_victory()
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 
 	else if(!free_strain_rerolls && (last_reroll_time + BLOB_POWER_REROLL_FREE_TIME<world.time))
 		to_chat(src, span_boldnotice("You have gained another free strain re-roll."))
@@ -203,7 +197,7 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 /// Announce the blob's victory! Tell everyone that they're about to explode and/or turn into biomass soup and give the overmind a victory lap.
 /mob/eye/blob/proc/begin_victory()
 	victory_in_progress = TRUE
-	priority_announce("Biohazard has reached critical mass. Station loss is imminent.", "Biohazard Alert")
+	priority_announce("Biyolojik tehlikenin kütlesi kritik seviyelere ulaştı. İstasyonun kaybedilmesi an meselesi.", "Biyolojik Tehlike Uyarısı")
 	SSsecurity_level.set_level(SEC_LEVEL_DELTA)
 
 	// Set status displays to biohazard alert - critical level

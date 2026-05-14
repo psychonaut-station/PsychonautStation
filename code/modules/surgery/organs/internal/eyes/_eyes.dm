@@ -156,14 +156,10 @@
 		if(native_fov)
 			organ_owner.remove_fov_trait(type)
 		if(!special)
-<<<<<<< HEAD
-			human_owner.update_body()
+			human_owner.update_eyes(refresh = FALSE)
 		if(human_owner.can_mutate() && no_glasses)
 			var/datum/species/rec_species = human_owner.dna.species
 			rec_species.update_no_equip_flags(organ_owner, initial(rec_species.no_equip_flags))
-=======
-			human_owner.update_eyes(refresh = FALSE)
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 
 	// become blind (if not special)
 	if(!special)
@@ -318,15 +314,9 @@
 	// Always show if we have an appendix
 	return ..() || (owner.stat != DEAD && !HAS_TRAIT(owner, TRAIT_KNOCKEDOUT) && (owner.is_blind() || owner.is_nearsighted()))
 
-<<<<<<< HEAD
 /// This proc generates a list of overlays that the eye should be displayed using for the given parent
-/obj/item/organ/eyes/proc/generate_body_overlay(mob/living/carbon/human/parent, obj/item/bodypart/limb)
-	if(isnull(eye_icon_state) || isnull(eye_icon))
-=======
-/// This proc generates a list of overlays that the eye displays on the given head
 /obj/item/organ/eyes/proc/generate_body_overlay(obj/item/bodypart/head/my_head)
-	if(!eye_icon_state || isnull(my_head))
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
+	if(isnull(eye_icon_state) || isnull(eye_icon) || isnull(my_head))
 		return list()
 
 	var/eye_dir = my_head.owner ? null : SOUTH

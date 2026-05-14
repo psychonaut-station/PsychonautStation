@@ -149,16 +149,13 @@ GLOBAL_LIST_INIT(dreams, populate_dream_list())
 	else
 		fragment = replacetext(fragment, "%ADJECTIVE% ", "")
 	. += fragment
-
-<<<<<<< HEAD
 	. += "görüyorsun"
-=======
+
 /datum/dream/random/proc/get_dream_nouns(mob/living/carbon/dreamer)
 	var/list/custom_dream_nouns = list()
 	for(var/obj/item/bedsheet/sheet in dreamer.loc)
 		custom_dream_nouns += sheet.dream_messages
 	return custom_dream_nouns
->>>>>>> 7579ccc8c274f5d69b27bc3f912c1ae636a1a1fe
 
 /// Dream plays a random sound at you, chosen from all sounds in the folder
 /datum/dream/hear_something

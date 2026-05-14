@@ -47,15 +47,15 @@
 
 	if(announce)
 		if(active)
-			send_announcement("Good evening, crew. To reduce power consumption and stimulate the circadian rhythms of some species, all of the lights aboard the station have been dimmed for the night.")
+			send_announcement("İyi akşamlar, mürettebat. Güç tüketimini azaltmak ve bazı türlerin dinlenmelerini sağlamak amacıyla istasyonun ışıkları bu gece için karartılmıştır.")
 		else
-			send_announcement("Good morning, crew. As it is now day time, all of the lights aboard the station have been restored to their former brightness.")
+			send_announcement("Günaydın, mürettebat. Şu anda gündüz olduğu için istasyonun ışıkları eski parlaklığına döndürülmüştür.")
 
 	if(resume)
 		if(active)
-			send_announcement("Restoring night lighting configuration to normal operation.")
+			send_announcement("Gece aydınlatmaları normal ayarlarına döndürülüyor.")
 		else
-			send_announcement("Disabling night lighting: Station is in a state of emergency.")
+			send_announcement("Gece aydınlatması devre dışı bırakılıyor: İstasyon acil durumda")
 
 	update_machines()
 
@@ -73,6 +73,6 @@
 	priority_announce(
 		text = message,
 		sound = 'sound/announcer/notice/notice2.ogg',
-		sender_override = "Automated Lighting System Announcement",
+		sender_override = "Otomatik Işıklandırma Sistemi Duyurusu",
 		color_override = "grey",
 	)

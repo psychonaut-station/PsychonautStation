@@ -8,41 +8,6 @@ macro "default"
 		name = "SHIFT+UP"
 		command = ".winset :map.right-click=true"
 
-<<<<<<< HEAD
-
-menu "menu"
-	elem
-		name = "&File"
-		command = ""
-		saved-params = "is-checked"
-	elem "reconnectbutton"
-		name = "&Reconnect"
-		command = ".reconnect"
-		category = "&File"
-		saved-params = "is-checked"
-	elem
-		name = "&Quit\tAlt-F4"
-		command = ".quit"
-		category = "&File"
-		saved-params = "is-checked"
-	elem "help-menu"
-		name = "&Help"
-		command = ""
-		saved-params = "is-checked"
-	elem
-		name = "&Admin Help\tF1"
-		command = "tickethelper"
-		category = "&Help"
-		saved-params = "is-checked"
-	elem
-		name = "&Hotkeys"
-		command = "Hotkeys-Help"
-		category = "&Help"
-		saved-params = "is-checked"
-
-
-=======
->>>>>>> 2b9286bc9dafebf446f28d013a8726e98ea04e49
 window "mainwindow"
 	elem "mainwindow"
 		type = MAIN

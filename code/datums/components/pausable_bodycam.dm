@@ -103,10 +103,9 @@
 		force_pause()
 
 /datum/component/pausable_bodycam/proc/notify_watchers_disconnect()
-	if(!bodycam || QDELETED(bodycam))
+	if(QDELETED(bodycam))
 		return
-	var/list/to_notify = length(sources_watching) ? sources_watching.Copy() : list()
-	for(var/datum/weakref/weak_source as anything in to_notify)
+	for(var/datum/weakref/weak_source as anything in sources_watching)
 		var/datum/source = weak_source?.resolve()
 		if(!source)
 			continue

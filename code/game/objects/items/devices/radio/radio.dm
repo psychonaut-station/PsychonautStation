@@ -94,7 +94,7 @@
 	/// If TRUE, will set the icon in initializations.
 	VAR_PRIVATE/should_update_icon = FALSE
 
-	var/can_music = TRUE
+	var/can_music = FALSE
 	var/is_music = FALSE
 	var/datum/component/shared_sound_player/player
 

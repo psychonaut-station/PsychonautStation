@@ -76,7 +76,7 @@
 	broken = TRUE
 	icon_state = "bodycamera_broken"
 	update_appearance(UPDATE_ICON_STATE)
-	astype(loc, /obj/item/clothing/under/uniform)?.update_accessory_overlay()
+	astype(loc, /obj/item/clothing/under)?.update_accessory_overlay()
 	visible_message(span_warning("[src] sparks and powers down!"))
 
 /obj/item/clothing/accessory/bodycam/proc/update_component()
@@ -100,7 +100,7 @@
 	broken = FALSE
 	icon_state = "bodycamera"
 	update_appearance(UPDATE_ICON_STATE)
-	astype(loc, /obj/item/clothing/under/uniform)?.update_accessory_overlay()
+	astype(loc, /obj/item/clothing/under)?.update_accessory_overlay()
 	update_component()
 	if(user)
 		balloon_alert(user, "repaired")

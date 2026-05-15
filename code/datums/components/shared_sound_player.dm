@@ -49,7 +49,7 @@
 
 	volume -= CALCULATE_SOUND_VOLUME(100, distance, range, falloff_distance, falloff_exponent)
 
-	if(pressure_affected)
+	if(pressure_affected && !isnull(listener_turf) && !isnull(player_turf))
 		var/pressure_factor = 1
 		var/datum/gas_mixture/hearer_env = listener_turf.return_air()
 		var/datum/gas_mixture/source_env = player_turf.return_air()

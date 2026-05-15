@@ -45,8 +45,8 @@
 		return
 	if(!bodycam?.camera_enabled)
 		return
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(update_cam))
-	do_update_cam()
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	update_camera()
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
 	prune_sources_watching(source)

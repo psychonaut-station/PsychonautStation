@@ -46,6 +46,7 @@ export function setClientTheme(name): void | Promise<void> {
     'mainwindow.background-color': themeColor.BG_BASE,
     'split.background-color': themeColor.BG_BASE,
     // Buttons
+<<<<<<< HEAD
     'changelog.background-color': themeColor.BUTTON,
     'changelog.text-color': themeColor.TEXT,
     'rules.background-color': themeColor.BUTTON,
@@ -58,8 +59,20 @@ export function setClientTheme(name): void | Promise<void> {
     'github.text-color': themeColor.TEXT,
     'report-issue.background-color': themeColor.BUTTON,
     'report-issue.text-color': themeColor.TEXT,
+=======
+    'options.background-color': themeColor.BUTTON,
+    'options.text-color': themeColor.TEXT,
+    'hotkeys.background-color': themeColor.BUTTON,
+    'hotkeys.text-color': themeColor.TEXT,
+    'emotes.background-color': themeColor.BUTTON,
+    'emotes.text-color': themeColor.TEXT,
+>>>>>>> 2b9286bc9dafebf446f28d013a8726e98ea04e49
     'fullscreen-toggle.background-color': themeColor.BUTTON,
     'fullscreen-toggle.text-color': themeColor.TEXT,
+    'reconnect.background-color': themeColor.BG_IMPORTANT,
+    'reconnect.text-color': themeColor.TEXT_IMPORTANT,
+    'chat.background-color': themeColor.BUTTON,
+    'chat.text-color': themeColor.TEXT,
     // Status and verb tabs
     'output.background-color': themeColor.BG_BASE,
     'output.text-color': themeColor.TEXT,

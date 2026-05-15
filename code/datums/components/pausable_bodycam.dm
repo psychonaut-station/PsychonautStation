@@ -70,10 +70,10 @@
 			return TRUE
 	return FALSE
 
-/datum/component/pausable_bodycam/proc/update_cam(datum/source, atom/old_loc, ...)
+/datum/component/pausable_bodycam/proc/on_moved(datum/source, atom/old_loc, ...)
 	SIGNAL_HANDLER
 	if(get_turf(old_loc) != get_turf(parent))
-		do_update_cam(old_loc)
+		update_camera(old_loc)
 
 /datum/component/pausable_bodycam/proc/update_camera(atom/old_loc)
 	if(QDELETED(bodycam))

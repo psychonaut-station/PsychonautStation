@@ -131,8 +131,8 @@
 /obj/item/clothing/under/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stack/cable_coil))
 		for(var/obj/item/clothing/accessory/bodycam/bodycam in attached_accessories)
-			if(bodycam.broken && bodycam.repair_with_cable(user, tool))
-				return ITEM_INTERACT_SUCCESS
+			if(bodycam.broken)
+				return bodycam.repair_with_cable(user, tool) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 		if(!repair_sensors(user))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/cabling = tool

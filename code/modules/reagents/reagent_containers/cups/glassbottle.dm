@@ -880,6 +880,60 @@
 	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
 	icon_state = "raki"
 	list_reagents = list(/datum/reagent/consumable/ethanol/raki = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek
+	name = "Beylerbeyi Gobek"
+	desc = "Gobek kismindan alinan distilasyonuyla daha yumusak ve aromatik bir rakidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "beylerbeyigobek"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/efegold
+	name = "Efe Gold"
+	desc = "Yuzde 100 maltla uretilen, dolgun tadiyla bilinen ve adini Ege efelerinden alan klasik bir Turk rakisidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "efegold"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/efegold = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/tekirdag
+	name = "Tekirdag"
+	desc = "Uzum kalitesi ve dengeli anason tadiyla bilinen klasik bir rakidir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "tekirdag"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/tekirdag = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/yeniraki
+	name = "Yeni Raki"
+	desc = "Turkiye'nin en yaygin rakisi olup dengeli ve geleneksel bir icime sahiptir."
+	icon = 'icons/psychonaut/obj/drinks/bottles.dmi'
+	icon_state = "yeniraki"
+	list_reagents = list(/datum/reagent/consumable/ethanol/raki/yeniraki = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/aperitivo
+	name = "Camillo Aperitivo Rosso"
+	desc = "The bottle that led to the creation of the modern Camillo Group beverage conglomerate. Despite what you might expect, there's a good chance that whoever makes your favorite liquor is at least in part owned by Camillo."
+	icon_state = "aperitivo_bottle"
+	list_reagents = list(/datum/reagent/consumable/ethanol/aperitivo = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/herbal_liqueur
+	name = "Bellarmine D.O.P Herbal Liqueur"
+	desc = "An almost millenia old herbal liqueur made from a secret recipe passed down over generations of monks. It's not great to know that the herbs and spices used in this are a better-kept secret than the codes to Nanotrasen's nuclear arsenal."
+	icon_state = "herbal_liqueur_bottle"
+	list_reagents = list(/datum/reagent/consumable/ethanol/herbal_liqueur = 100)
+	drink_type = ALCOHOL
+
+/obj/item/reagent_containers/cup/glass/bottle/maraschino
+	name = "Dalmazia Originale Maraschino Liqueur"
+	desc = "A small note on the back of the bottle instructs all customers who complain about a lack of cherry flavor to direct their concerns to what appears to be a defunct phone number."
+	icon_state = "maraschino_bottle"
+	list_reagents = list(/datum/reagent/consumable/ethanol/maraschino = 100)
+	drink_type = ALCOHOL
 
 ////////////////////////// MOLOTOV ///////////////////////
 /obj/item/reagent_containers/cup/glass/bottle/molotov

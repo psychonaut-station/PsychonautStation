@@ -209,6 +209,27 @@
 	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
 	icon_state = "raki_glass"
 
+/datum/glass_style/drinking_glass/aperitivo
+	required_drink_type = /datum/reagent/consumable/ethanol/aperitivo
+	name = "a glass of aperitivo liqueur"
+	desc = "The bright red coloring is stimulating your appetite, but you probably should mix this with something first."
+	icon = 'icons/obj/drinks/drinks.dmi'
+	icon_state = "aperitivo"
+
+/datum/glass_style/drinking_glass/herbal_liqueur
+	required_drink_type = /datum/reagent/consumable/ethanol/herbal_liqueur
+	name = "glass of herbal liqueur"
+	desc = "You wonder just how many herbs were needed to make this glass."
+	icon = 'icons/obj/drinks/drinks.dmi'
+	icon_state = "herbal_liqueur"
+
+/datum/glass_style/drinking_glass/maraschino
+	required_drink_type = /datum/reagent/consumable/ethanol/maraschino
+	name = "a glass of maraschino liqueur"
+	desc = "If mixing sugar and alcohol really does contribute to hangovers, drinking this straight is certainly one way to find out."
+	icon = 'icons/obj/drinks/drinks.dmi'
+	icon_state = "maraschino"
+
 // Shot glasses
 
 /datum/glass_style/shot_glass/kahlua
@@ -272,5 +293,53 @@
 
 /datum/glass_style/shot_glass/raki
 	required_drink_type = /datum/reagent/consumable/ethanol/raki
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/beylerbeyi_gobek
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek
+	name = "glass of BeylerBeyiGobek"
+	desc = "Cloudy, sharp, and carrying the same confident bite as a proper anise spirit."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/beylerbeyi_gobek
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/beylerbeyi_gobek
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/efegold
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/efegold
+	name = "glass of Efe Gold"
+	desc = "A cloudy glass of anise spirit that looks just right next to a plate of meze."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/efegold
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/efegold
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/tekirdag
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/tekirdag
+	name = "glass of Tekirdag"
+	desc = "A cloudy glass of anise spirit with the same familiar rakia haze."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/tekirdag
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/tekirdag
+	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
+	icon_state = "shotglassraki"
+
+/datum/glass_style/drinking_glass/yeniraki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/yeniraki
+	name = "glass of Yeni Raki"
+	desc = "A cloudy glass of anise spirit that settles into the same classic rakia look."
+	icon = 'icons/psychonaut/obj/drinks/drinks.dmi'
+	icon_state = "raki_glass"
+
+/datum/glass_style/shot_glass/yeniraki
+	required_drink_type = /datum/reagent/consumable/ethanol/raki/yeniraki
 	icon = 'icons/psychonaut/obj/drinks/shot_glasses.dmi'
 	icon_state = "shotglassraki"

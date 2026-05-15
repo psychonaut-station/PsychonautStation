@@ -487,6 +487,8 @@
 /obj/machinery/door/airlock/shock(mob/living/shocking, chance, shock_source, siemens_coeff)
 	if(!hasPower()) // unpowered, no shock
 		return FALSE
+	if(!isliving(shocking))
+		return FALSE
 	if(HAS_TRAIT(shocking, TRAIT_AIRLOCK_SHOCKIMMUNE)) // Be a bit more clever man come on
 		return FALSE
 	if(!COOLDOWN_FINISHED(src, shockCooldown))
@@ -1574,7 +1576,7 @@
 		bolt() //Bolt it!
 		set_electrified(MACHINE_ELECTRIFIED_PERMANENT)  //Shock it!
 		if(origin)
-			LAZYADD(shockedby, "\[[time_stamp()]\] [key_name(origin)]")
+			LAZYADD(shockedby, "\[[server_timestamp()]\] [key_name(origin)]")
 
 
 /obj/machinery/door/airlock/disable_lockdown()
@@ -1598,7 +1600,7 @@
 		return
 	if(prob(severity*10 - 20) && (secondsElectrified < 30) && (secondsElectrified != MACHINE_ELECTRIFIED_PERMANENT))
 		set_electrified(30)
-		LAZYADD(shockedby, "\[[time_stamp()]\]EM Pulse")
+		LAZYADD(shockedby, "\[[server_timestamp()]\]EM Pulse")
 
 /obj/machinery/door/airlock/proc/set_electrified(seconds, mob/user)
 	secondsElectrified = seconds
@@ -1615,7 +1617,7 @@
 				message = "unshocked"
 			else
 				message = "temp shocked for [secondsElectrified] seconds"
-		LAZYADD(shockedby, "\[[time_stamp()]\] [key_name(user)] - ([uppertext(message)])")
+		LAZYADD(shockedby, "\[[server_timestamp()]\] [key_name(user)] - ([uppertext(message)])")
 		log_combat(user, src, message)
 		add_hiddenprint(user)
 
@@ -2399,6 +2401,10 @@
 	normal_integrity = 500
 	security_level = 1
 	damage_deflection = 30
+
+/obj/machinery/door/airlock/highsecurity/syndicate
+	icon = 'icons/obj/doors/airlocks/syndicate/highsec.dmi'
+	overlays_file = null
 
 // Shuttle Airlocks
 

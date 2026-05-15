@@ -178,6 +178,9 @@
 /// log shuttle related actions, ie shuttle computers, shuttle manipulator, emergency console
 /datum/config_entry/flag/log_shuttle
 
+/// log image authoring, such as using the modular computer paint app
+/datum/config_entry/flag/log_image
+
 /// logs all timers in buckets on automatic bucket reset (Useful for timer debugging)
 /datum/config_entry/flag/log_timers_on_bucket_reset
 
@@ -776,11 +779,6 @@
 	default = 5242880
 	min_val = 0
 
-/datum/config_entry/number/timezone_offset
-	default = 36000
-	min_val = 1
-	integer = TRUE
-
 /datum/config_entry/flag/require_discord_linking
 	default = FALSE
 
@@ -845,3 +843,6 @@
 	min_val = 0
 
 /datum/config_entry/flag/fishing
+
+/datum/config_entry/string/policy_json_path
+	default = "policy.json"

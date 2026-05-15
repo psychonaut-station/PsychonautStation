@@ -1335,15 +1335,17 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 /// Strips all underlays on a different plane from an appearance.
 /// Returns the stripped appearance.
-/proc/strip_appearance_underlays(mutable_appearance/appearance)
+/proc/strip_appearance_underlays(mutable_appearance/appearance) as /mutable_appearance
 	var/base_plane = PLANE_TO_TRUE(appearance.plane)
 	for(var/mutable_appearance/underlay as anything in appearance.underlays)
+		if(isnull(underlay))
+			continue
 		if(PLANE_TO_TRUE(underlay.plane) != base_plane)
 			appearance.underlays -= underlay
 	return appearance
 
 /// Renders a ckey's preferences appearance from their savefile
-/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE)
+/proc/render_offline_appearance(ckey, mob/living/carbon/human/dummy/our_human, character_slot = null, only_appearance = TRUE, outfit_job_override = null)
 	if(!ckey || is_guest_key(ckey) || (!isnull(our_human) && !istype(our_human)))
 		return FALSE
 	var/save_path = "data/player_saves/[ckey[1]]/[ckey]/preferences.json"
@@ -1422,12 +1424,17 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/datum/outfit/equipped_outfit
 
-	if(selected_job) // Selecting and creating outfit datum
+	var/datum/job/outfit_job = selected_job
+
+	if(outfit_job_override)
+		outfit_job = SSjob.get_job(outfit_job_override)
+
+	if(outfit_job) // Selecting and creating outfit datum
 		var/datum/outfit/outfit_type
-		if(selected_job::outfit)
-			outfit_type = selected_job::outfit
-		if(selected_char?["species"] == SPECIES_PLASMAMAN && selected_job::plasmaman_outfit) // If they are plasmaman, give them plasmaman outfit
-			outfit_type = selected_job::outfit
+		if(outfit_job::outfit)
+			outfit_type = outfit_job::outfit
+		if(selected_char?["species"] == SPECIES_PLASMAMAN && outfit_job::plasmaman_outfit) // If they are plasmaman, give them plasmaman outfit
+			outfit_type = outfit_job::plasmaman_outfit
 		if(outfit_type)
 			equipped_outfit = new outfit_type()
 	else
@@ -1473,13 +1480,15 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
  * Filters out certain overlays from the copy, depending on their planes
  * Prevents stuff like lighting from being copied to the new appearance
  */
-/proc/copy_appearance_filter_overlays(appearance_to_copy)
+/proc/copy_appearance_filter_overlays(appearance_to_copy) as /mutable_appearance
 	var/mutable_appearance/copy = new(appearance_to_copy)
 	var/static/list/plane_whitelist = list(FLOAT_PLANE, GAME_PLANE, FLOOR_PLANE)
 
 	/// Ideally we'd have knowledge what we're removing but i'd have to be done on target appearance retrieval
 	var/list/overlays_to_keep = list()
 	for(var/mutable_appearance/special_overlay as anything in copy.overlays)
+		if(isnull(special_overlay))
+			continue
 		var/mutable_appearance/real = new()
 		real.appearance = special_overlay
 		if(PLANE_TO_TRUE(real.plane) in plane_whitelist)
@@ -1488,6 +1497,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/list/underlays_to_keep = list()
 	for(var/mutable_appearance/special_underlay as anything in copy.underlays)
+		if(isnull(special_underlay))
+			continue
 		var/mutable_appearance/real = new()
 		real.appearance = special_underlay
 		if(PLANE_TO_TRUE(real.plane) in plane_whitelist)
@@ -1532,7 +1543,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	if(!ckey || is_guest_key(ckey))
 		return FALSE
 
-	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE) || list()
+	var/list/character_data = render_offline_appearance(ckey, null, char_index, FALSE, JOB_ASSISTANT) || list()
 	var/character_name = character_data?["name"]
 	var/mutable_appearance/appearance = character_data?["appearance"]
 	var/job = character_data?["job"]
@@ -1552,7 +1563,10 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/height = I.Height()
 	for(var/x in 1 to width)
 		for(var/y in 1 to height)
-			grid[y][x] = I.GetPixel(x,height+1-y)
+			var/pixel = I.GetPixel(x,height+1-y)
+			if(length(pixel) == 7)
+				pixel += "ff"
+			grid[y][x] = pixel
 
 // Given a number of frames for an icon state, and the dimensions of the icon, returns the ideal dimensions for a DMI file
 /proc/calculate_optimal_icon_grid_dimensions(width, height, count)
@@ -1585,7 +1599,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		for(var/y in 1 to length(frame))
 			var/list/row = jointext(frame[y], "")
 			var/splice_start = (row_index+y-1)*file_height + column*icon_width + 1
-			linear_pixels = splicetext(splice_start*9, (splice_start+icon_width)*9, row)
+			linear_pixels = splicetext(linear_pixels, (splice_start-1)*9+1, (splice_start+icon_width-1)*9+1, row)
 	var/zero_alpha_regex = regex(@@#(?:(?!a0a0a0)([0-9]|[a-f]){6}00)@, "gi")
 	linear_pixels = replacetext(linear_pixels, zero_alpha_regex, COLOR_DMI_MASK)
 	return linear_pixels

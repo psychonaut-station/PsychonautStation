@@ -52,23 +52,32 @@
 	prune_sources_watching(source)
 	if(has_live_watchers())
 		return
-	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
-	if(!QDELETED(bodycam))
-		SScameras.remove_camera_from_chunk(bodycam)
+	pause_camera()
 
 /datum/component/pausable_bodycam/proc/prune_sources_watching(datum/source_to_remove)
 	if(!LAZYLEN(sources_watching))
 		return
 	for(var/datum/weakref/weak_source as anything in sources_watching.Copy())
 		var/datum/resolved_source = weak_source?.resolve()
-		if(!resolved_source || resolved_source == source_to_remove)
+		if(!resolved_source || resolved_source == source_to_remove || !source_is_live(resolved_source))
 			LAZYREMOVE(sources_watching, weak_source)
+	if(!LAZYLEN(sources_watching))
+		pause_camera()
 
 /datum/component/pausable_bodycam/proc/has_live_watchers()
+	prune_sources_watching()
 	for(var/datum/weakref/weak_source as anything in sources_watching)
 		if(weak_source?.resolve())
 			return TRUE
 	return FALSE
+
+/datum/component/pausable_bodycam/proc/source_is_live(datum/source)
+	if(QDELETED(source))
+		return FALSE
+	if(istype(source, /obj/machinery/computer/security))
+		var/obj/machinery/computer/security/console = source
+		return console.active_camera == bodycam && LAZYLEN(console.open_uis)
+	return TRUE
 
 /datum/component/pausable_bodycam/proc/on_moved(datum/source, atom/old_loc, ...)
 	SIGNAL_HANDLER
@@ -131,6 +140,9 @@
 /datum/component/pausable_bodycam/proc/force_pause()
 	notify_watchers_disconnect()
 	LAZYNULL(sources_watching)
+	pause_camera()
+
+/datum/component/pausable_bodycam/proc/pause_camera()
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	if(!QDELETED(bodycam))
 		bodycam.clear_alert()

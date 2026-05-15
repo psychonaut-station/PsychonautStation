@@ -79,9 +79,9 @@
 	astype(loc, /obj/item/clothing/under/uniform)?.update_accessory_overlay()
 	visible_message(span_warning("[src] sparks and powers down!"))
 
-/obj/item/clothing/accessory/bodycam/proc/sync_component_state()
-	var/obj/item/clothing/under/uniform = loc
-	var/mob/living/wearer = istype(uniform) ? uniform.loc : null
+/obj/item/clothing/accessory/bodycam/proc/update_component()
+	var/obj/item/clothing/under/uniform = astype(loc)
+	var/mob/living/wearer = uniform?.loc
 	if(!istype(wearer))
 		return
 	var/datum/component/pausable_bodycam/component = wearer.GetComponent(/datum/component/pausable_bodycam)

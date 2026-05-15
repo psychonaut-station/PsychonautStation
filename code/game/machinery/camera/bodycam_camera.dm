@@ -24,9 +24,7 @@
 
 /obj/machinery/camera/bodycam/on_start_watching(datum/source)
 	if(can_use())
-		var/mob/living/host = loc
-		if(isliving(host))
-			host.throw_alert(ALERT_BODYCAM_VIEWED, /atom/movable/screen/alert/bodycam_viewed)
+		astype(loc, /mob/living)?.throw_alert(ALERT_BODYCAM_VIEWED, /atom/movable/screen/alert/bodycam_viewed)
 	bodycam_component?.on_watch_start(source)
 
 /obj/machinery/camera/bodycam/on_stop_watching(datum/no_longer_watching)

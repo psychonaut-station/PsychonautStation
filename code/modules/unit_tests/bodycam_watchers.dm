@@ -81,6 +81,52 @@
 	TEST_ASSERT(!component.has_live_watchers(), "Destroying the active security console should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Destroying the active security console should clear the watched alert.")
 
+/datum/unit_test/bodycam_watchers_console_close/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/obj/machinery/computer/security/console = EASY_ALLOCATE()
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+
+	console.concurrent_users += REF(viewer)
+	console.active_camera = camera
+	camera.on_start_watching(console)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a security console is watching.")
+
+	console.ui_close(viewer)
+
+	TEST_ASSERT(!component.has_live_watchers(), "Closing the security console should remove the live watcher.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing the security console should clear the watched alert.")
+
+/datum/unit_test/bodycam_watchers_console_walk_away/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/obj/machinery/computer/security/console = allocate(/obj/machinery/computer/security, run_loc_floor_bottom_left)
+	var/mob/living/carbon/human/consistent/viewer = allocate(/mob/living/carbon/human/consistent, get_step(run_loc_floor_bottom_left, EAST))
+	viewer.mock_client = new /datum/client_interface()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+
+	console.concurrent_users += REF(viewer)
+	console.active_camera = camera
+	camera.on_start_watching(console)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a security console is watching.")
+
+	viewer.forceMove(locate(run_loc_floor_bottom_left.x + 2, run_loc_floor_bottom_left.y, run_loc_floor_bottom_left.z))
+	TEST_ASSERT_EQUAL(console.ui_status(viewer, console.ui_state(viewer)), UI_UPDATE, "Security console should become view-only when the viewer walks away.")
+
+	TEST_ASSERT(!component.has_live_watchers(), "Walking away from the security console should remove the live watcher.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Walking away from the security console should clear the watched alert.")
+
 /datum/unit_test/bodycam_watchers_secureye_destroy/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
 	host.mock_client = new /datum/client_interface()

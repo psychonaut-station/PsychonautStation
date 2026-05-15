@@ -74,6 +74,10 @@
 
 /obj/machinery/computer/security/ui_status(mob/user, datum/ui_state/state)
 	. = ..()
+	if(. < UI_INTERACTIVE)
+		active_camera?.on_stop_watching(src)
+		active_camera = null
+		last_camera_turf = null
 	if(. == UI_DISABLED)
 		return UI_CLOSE
 	return .

@@ -32,12 +32,8 @@
 		clear_alert()
 	bodycam_component?.on_watch_stop(no_longer_watching)
 
-/obj/machinery/camera/bodycam/proc/clear_watchers()
-	var/mob/living/host = loc
-	if(!isliving(host))
-		return
-	if(host.has_alert(ALERT_BODYCAM_VIEWED))
-		host.clear_alert(ALERT_BODYCAM_VIEWED)
+/obj/machinery/camera/bodycam/proc/clear_alert()
+	astype(loc, /mob/living)?.clear_alert(ALERT_BODYCAM_VIEWED)
 
 /atom/movable/screen/alert/bodycam_viewed
 	name = "Bodycam Viewed"

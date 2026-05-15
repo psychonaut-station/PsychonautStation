@@ -53,7 +53,7 @@
 	if(has_live_watchers())
 		return
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
-	if(bodycam && !QDELETED(bodycam))
+	if(!QDELETED(bodycam))
 		SScameras.remove_camera_from_chunk(bodycam)
 
 /datum/component/pausable_bodycam/proc/prune_sources_watching(datum/source_to_remove)

@@ -99,11 +99,9 @@
 		return FALSE
 	broken = FALSE
 	icon_state = "bodycamera"
-	update_appearance()
-	var/obj/item/clothing/under/uniform = loc
-	if(istype(uniform))
-		uniform.update_accessory_overlay()
-	sync_component_state()
+	update_appearance(UPDATE_ICON_STATE)
+	astype(loc, /obj/item/clothing/under/uniform)?.update_accessory_overlay()
+	update_component()
 	if(user)
 		balloon_alert(user, "repaired")
 	return TRUE

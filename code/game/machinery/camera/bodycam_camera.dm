@@ -28,12 +28,9 @@
 	bodycam_component?.on_watch_start(source)
 
 /obj/machinery/camera/bodycam/on_stop_watching(datum/no_longer_watching)
+	if(!bodycam_component?.has_live_watchers())
+		clear_alert()
 	bodycam_component?.on_watch_stop(no_longer_watching)
-	var/has_live_watcher = bodycam_component && !QDELETED(bodycam_component) && bodycam_component.has_live_watchers()
-	if(!has_live_watcher)
-		var/mob/living/host = loc
-		if(isliving(host) && host.has_alert(ALERT_BODYCAM_VIEWED))
-			host.clear_alert(ALERT_BODYCAM_VIEWED)
 
 /obj/machinery/camera/bodycam/proc/clear_watchers()
 	var/mob/living/host = loc

@@ -18,7 +18,7 @@
 		myarea = null
 
 /obj/machinery/camera/bodycam/Destroy()
-	clear_watchers()
+	clear_alert()
 	bodycam_component = null
 	return ..()
 

@@ -169,7 +169,7 @@
 	if(player)
 		player.set_frequency(old_frequency, frequency)
 
-	else if(listening && on)
+	if(listening && on)
 		add_radio(src, new_frequency)
 
 /obj/item/radio/proc/recalculateChannels()

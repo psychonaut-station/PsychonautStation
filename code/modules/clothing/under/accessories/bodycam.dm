@@ -108,9 +108,8 @@
 
 /obj/item/clothing/accessory/bodycam/attackby(obj/item/item, mob/user, list/modifiers)
 	if(broken && istype(item, /obj/item/stack/cable_coil))
-		var/obj/item/stack/cable_coil/cabling = item
-		if(repair_with_cable(user, cabling))
-			return TRUE
+		repair_with_cable(user, item)
+		return TRUE
 	return ..()
 
 /obj/item/clothing/accessory/bodycam/examine(mob/user)

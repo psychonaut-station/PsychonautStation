@@ -62,23 +62,21 @@
 	. = ..()
 	if(. & EMP_PROTECT_SELF || broken)
 		return
-	do_break()
-	sync_component_state()
+	emp_break()
+	update_component()
 
 /obj/item/clothing/accessory/bodycam/proc/on_emp(datum/source, severity, protection)
 	SIGNAL_HANDLER
 	if(protection & EMP_PROTECT_SELF || broken)
 		return
-	do_break()
-	sync_component_state()
+	emp_break()
+	update_component()
 
-/obj/item/clothing/accessory/bodycam/proc/do_break()
+/obj/item/clothing/accessory/bodycam/proc/emp_break()
 	broken = TRUE
 	icon_state = "bodycamera_broken"
-	update_appearance()
-	var/obj/item/clothing/under/uniform = loc
-	if(istype(uniform))
-		uniform.update_accessory_overlay()
+	update_appearance(UPDATE_ICON_STATE)
+	astype(loc, /obj/item/clothing/under/uniform)?.update_accessory_overlay()
 	visible_message(span_warning("[src] sparks and powers down!"))
 
 /obj/item/clothing/accessory/bodycam/proc/sync_component_state()

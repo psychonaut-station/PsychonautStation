@@ -92,6 +92,12 @@
 	/// If TRUE, will set the icon in initializations.
 	VAR_PRIVATE/should_update_icon = FALSE
 
+	var/can_music = TRUE
+	var/is_music = FALSE
+	var/datum/component/shared_sound_player/player
+
+	var/stored_freq = MIN_MUSIC_FREQ
+
 	/// A very brief cooldown to prevent regular radio sounds from overlapping.
 	COOLDOWN_DECLARE(audio_cooldown)
 	/// A very brief cooldown to prevent "important" radio sounds from overlapping.
@@ -105,10 +111,13 @@
 		keyslot = new keyslot(src)
 		recalculateChannels()
 
+	if(can_music)
+		player = AddComponent(/datum/component/shared_sound_player)
+
 	perform_update_icon = FALSE
 	set_listening(listening)
 	set_broadcasting(broadcasting)
-	set_frequency(sanitize_frequency(frequency, freerange, (special_channels & RADIO_SPECIAL_SYNDIE)))
+	set_frequency(sanitize_frequency(frequency, freerange, (special_channels & RADIO_SPECIAL_SYNDIE), is_music))
 	set_on(on)
 	perform_update_icon = TRUE
 
@@ -117,6 +126,7 @@
 
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
 	register_context()
+
 	// No subtypes
 	if(type != /obj/item/radio)
 		return
@@ -149,10 +159,15 @@
 /obj/item/radio/proc/set_frequency(new_frequency)
 	SEND_SIGNAL(src, COMSIG_RADIO_NEW_FREQUENCY, args)
 	remove_radio(src, frequency)
+
+	var/old_frequency = frequency
 	if(new_frequency)
 		frequency = new_frequency
 
-	if(listening && on)
+	if(player)
+		player.set_frequency(old_frequency, frequency)
+
+	else if(listening && on)
 		add_radio(src, new_frequency)
 
 /obj/item/radio/proc/recalculateChannels()
@@ -482,8 +497,8 @@
 	data["broadcasting"] = broadcasting
 	data["listening"] = listening
 	data["frequency"] = frequency
-	data["minFrequency"] = freerange ? MIN_FREE_FREQ : MIN_FREQ
-	data["maxFrequency"] = freerange ? MAX_FREE_FREQ : MAX_FREQ
+	data["minFrequency"] = get_min_frequency()
+	data["maxFrequency"] = get_max_frequency()
 	data["freqlock"] = freqlock != RADIO_FREQENCY_UNLOCKED
 	data["channels"] = list()
 	for(var/channel in channels)
@@ -494,6 +509,8 @@
 	data["subspaceSwitchable"] = subspace_switchable
 	data["headset"] = FALSE
 	data["radio_noises"] = (user.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise))
+	data["can_music"] = can_music
+	data["is_music"] = is_music
 
 	return data
 
@@ -514,7 +531,7 @@
 			else if(tune)
 				tune *= 10
 			if(tune)
-				set_frequency(sanitize_frequency(tune, freerange, (special_channels & RADIO_SPECIAL_SYNDIE)))
+				set_frequency(sanitize_frequency(tune, freerange, (special_channels & RADIO_SPECIAL_SYNDIE), is_music))
 			. = TRUE
 
 		if("tune_to_channel")
@@ -562,6 +579,8 @@
 			//there's no href exploits.
 			var/volume_modifier = (user.client.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise))
 			SEND_SOUND(user, sound('sound/items/radio/radio_receive.ogg', volume = volume_modifier))
+		if("music_radio")
+			. = toggle_music_radio()
 
 /obj/item/radio/examine(mob/user)
 	. = ..()
@@ -677,6 +696,35 @@
 	overlay_speaker_active = null
 	overlay_mic_idle = null
 	overlay_mic_active = null
+
+/obj/item/radio/proc/toggle_music_radio()
+	if(!player)
+		is_music = FALSE
+		return
+	if(!can_music)
+		is_music = FALSE
+		return FALSE
+	is_music = !is_music
+	var/old_freq = stored_freq
+	stored_freq = frequency
+	var/new_frequency = old_freq
+
+	set_frequency(new_frequency)
+
+	var/datum/proximity_monitor/advanced/mob_collector/monitor = player.proximity_monitor
+	monitor.recalculate_field()
+
+	return TRUE
+
+/obj/item/radio/proc/get_min_frequency()
+	if(is_music)
+		return MIN_MUSIC_FREQ
+	return freerange ? MIN_FREE_FREQ : MIN_FREQ
+
+/obj/item/radio/proc/get_max_frequency()
+	if(is_music)
+		return MAX_MUSIC_FREQ
+	return freerange ? MAX_FREE_FREQ : MAX_FREQ
 
 ///////////////////////////////
 //////////Borg Radios//////////

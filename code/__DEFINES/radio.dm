@@ -78,8 +78,11 @@
 #define RADIO_COLOR_YELLOW "#d1ba22"
 
 
-#define MIN_FREE_FREQ 1201 // -------------------------------------------------
-// Frequencies are always odd numbers and range from 1201 to 1599.
+#define MIN_FREE_FREQ 881 // -------------------------------------------------
+// Frequencies are always odd numbers and range from 881 to 1599.
+
+#define MIN_MUSIC_FREQ 881
+#define MAX_MUSIC_FREQ 1079
 
 #define FREQ_UPLINK 1211	// Dummy loopback frequency, used for radio uplink. Not seen in game.
 #define FREQ_SYNDICATE 1213 // Nuke op comms frequency, dark brown

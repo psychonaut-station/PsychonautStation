@@ -254,7 +254,7 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	SIGNAL_HANDLER
 	var/pref_volume = client?.prefs.read_preference(/datum/preference/numeric/volume/sound_instruments)
 	if(pref_volume)
-		if(LAZYFIND(listeners, source))
+		if(!LAZYFIND(listeners, source))
 			LAZYADD(listeners, source)
 		if(is_playing(src))
 			var/list/options = track.as_list.Copy()

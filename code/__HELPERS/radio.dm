@@ -1,8 +1,10 @@
 /// Ensure the frequency is within bounds of what it should be sending/receiving at
-/proc/sanitize_frequency(frequency, free = FALSE, syndie = FALSE)
+/proc/sanitize_frequency(frequency, free = FALSE, syndie = FALSE, music = FALSE)
 	frequency = round(frequency)
 	if(free)
 		. = clamp(frequency, MIN_FREE_FREQ, MAX_FREE_FREQ)
+	else if(music)
+		. = clamp(frequency, MIN_MUSIC_FREQ, MAX_MUSIC_FREQ)
 	else
 		. = clamp(frequency, MIN_FREQ, MAX_FREQ)
 	if(!(. % 2)) // Ensure the last digit is an odd number

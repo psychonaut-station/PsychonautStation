@@ -71,6 +71,8 @@
 /datum/component/shared_sound_player/proc/on_mob_entered(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	RegisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
+	if(isnull(mob.client))
+		return FALSE
 	var/volume = get_volume(mob) ** 2
 	LAZYSET(listeners, mob, volume)
 	SSradio_stations.add_listener(mob, freq, WEAKREF(src), volume)
@@ -78,6 +80,8 @@
 /datum/component/shared_sound_player/proc/on_mob_left(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	UnregisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN)
+	if(isnull(mob.client))
+		return FALSE
 	var/old_volume = LAZYACCESS(listeners, mob)
 	SSradio_stations.remove_listener(mob, freq, WEAKREF(src), old_volume)
 	if(LAZYFIND(listeners, mob))
@@ -85,6 +89,8 @@
 
 /datum/component/shared_sound_player/proc/on_mob_moved(datum/source, mob/mob)
 	SIGNAL_HANDLER
+	if(isnull(mob.client))
+		return FALSE
 	var/old_volume = LAZYACCESS(listeners, mob)
 	var/volume = get_volume(mob) ** 2
 	LAZYSET(listeners, mob, volume)

@@ -32,9 +32,9 @@
 	bodycam_component?.on_watch_start(source)
 
 /obj/machinery/camera/bodycam/on_stop_watching(datum/no_longer_watching)
+	bodycam_component?.on_watch_stop(no_longer_watching)
 	if(!bodycam_component?.has_live_watchers())
 		clear_alert()
-	bodycam_component?.on_watch_stop(no_longer_watching)
 
 /obj/machinery/camera/bodycam/proc/clear_alert()
 	living_host?.clear_alert(ALERT_BODYCAM_VIEWED)

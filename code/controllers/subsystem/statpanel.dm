@@ -38,9 +38,8 @@ SUBSYSTEM_DEF(statpanels)
 		global_data += list(
 			"Storyteller: [(CONFIG_GET(flag/public_storyteller) && !isnull(SSstoryteller.current_storyteller)) ? SSstoryteller.current_storyteller.name : "Secret"]",
 			"Round ID: [GLOB.round_id ? GLOB.round_id : "NULL"]",
-			"Server Time: [time2text(world.timeofday, "YYYY-MM-DD hh:mm:ss", world.timezone)]",
-			"Round Time: [ROUND_TIME()]",
-			"Station Time: [station_time_timestamp()]",
+			"Server Time/NST: [server_timestamp(format = "YYYY-MM-DD hh:mm:ss")]",
+			"Shift Time/PT: [(SSticker.round_start_time == 0) ? "Pre-Game" : round_timestamp()]",
 			"Time Dilation: [round(SStime_track.time_dilation_current,1)]% AVG:([round(SStime_track.time_dilation_avg_fast,1)]%, [round(SStime_track.time_dilation_avg,1)]%, [round(SStime_track.time_dilation_avg_slow,1)]%)",
 		)
 

@@ -779,11 +779,6 @@
 	default = 5242880
 	min_val = 0
 
-/datum/config_entry/number/timezone_offset
-	default = 36000
-	min_val = 1
-	integer = TRUE
-
 /datum/config_entry/flag/require_discord_linking
 	default = FALSE
 

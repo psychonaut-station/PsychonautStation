@@ -130,8 +130,8 @@
 
 /datum/component/pausable_bodycam/proc/force_pause()
 	notify_watchers_disconnect()
-	LAZYCLEARLIST(sources_watching)
+	LAZYNULL(sources_watching)
 	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
-	if(bodycam && !QDELETED(bodycam))
-		bodycam.clear_watchers()
+	if(!QDELETED(bodycam))
+		bodycam.clear_alert()
 		SScameras.remove_camera_from_chunk(bodycam)

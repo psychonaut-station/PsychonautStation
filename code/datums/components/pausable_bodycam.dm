@@ -75,8 +75,8 @@
 	if(get_turf(old_loc) != get_turf(parent))
 		do_update_cam(old_loc)
 
-/datum/component/pausable_bodycam/proc/do_update_cam(atom/old_loc)
-	if(!bodycam || QDELETED(bodycam))
+/datum/component/pausable_bodycam/proc/update_camera(atom/old_loc)
+	if(QDELETED(bodycam))
 		return
 	if(!bodycam.can_use())
 		return

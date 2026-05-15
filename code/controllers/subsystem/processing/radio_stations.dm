@@ -1,7 +1,7 @@
 PROCESSING_SUBSYSTEM_DEF(radio_stations)
 	name = "Radio Stations"
 	runlevels = RUNLEVEL_GAME
-	flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
+	ss_flags = SS_BACKGROUND|SS_POST_FIRE_TIMING
 	wait = 5 SECONDS
 
 	var/list/datum/radio_station/radio_stations = list()

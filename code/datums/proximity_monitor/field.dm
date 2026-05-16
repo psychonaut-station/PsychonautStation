@@ -125,12 +125,10 @@
 	var/list/local_field_turfs = list()
 	var/list/local_edge_turfs = list()
 	var/turf/center = get_turf(host)
-
 	if(center && current_range > 0)
 		local_field_turfs += RANGE_TURFS(current_range - 1, center)
 	if(center && current_range > 1)
 		local_edge_turfs = RANGE_TURFS(current_range, center) - local_field_turfs
-
 	return list(FIELD_TURFS_KEY = local_field_turfs, EDGE_TURFS_KEY = local_edge_turfs)
 
 //Gets edge direction/corner, only works with square radius/WDH fields!

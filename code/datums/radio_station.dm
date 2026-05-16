@@ -18,7 +18,7 @@
 	src.name = name
 	src.freq = freq
 	src.musics = shuffle(musics)
-	src.id = "radio_station_[freq]"
+	src.id = "rs_[REF(src)]"
 	START_PROCESSING(SSradio_stations, src)
 
 /datum/radio_station/process(seconds_per_tick)

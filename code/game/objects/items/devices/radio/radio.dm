@@ -416,7 +416,7 @@
 
 /obj/item/radio/Hear(atom/movable/speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), message_range)
 	. = ..()
-	if(radio_freq || !broadcasting || get_dist(src, speaker) > canhear_range || message_mods[MODE_RELAY])
+	if(radio_freq || !broadcasting || is_music || get_dist(src, speaker) > canhear_range || message_mods[MODE_RELAY])
 		return
 	var/list/filtered_mods = list()
 

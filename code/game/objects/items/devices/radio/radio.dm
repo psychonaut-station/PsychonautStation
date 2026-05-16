@@ -119,7 +119,6 @@
 
 	AddElement(/datum/element/empprotection, EMP_PROTECT_WIRES)
 	register_context()
-
 	// No subtypes
 	if(type != /obj/item/radio)
 		return
@@ -152,7 +151,6 @@
 /obj/item/radio/proc/set_frequency(new_frequency)
 	SEND_SIGNAL(src, COMSIG_RADIO_NEW_FREQUENCY, args)
 	remove_radio(src, frequency)
-
 	if(new_frequency)
 		frequency = new_frequency
 

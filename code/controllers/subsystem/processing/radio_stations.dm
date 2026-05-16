@@ -48,10 +48,6 @@ PROCESSING_SUBSYSTEM_DEF(radio_stations)
 		return
 	station.update_listener(listener, weakref, old_volume, volume)
 
-/datum/controller/subsystem/processing/radio_stations/proc/tune_radio(datum/component/radio_sound_player/player, old_freq, freq)
-	tune_out_radio(player, old_freq)
-	tune_in_radio(player, freq)
-
 /datum/controller/subsystem/processing/radio_stations/proc/tune_in_radio(datum/component/radio_sound_player/player, freq)
 	var/datum/radio_station/station = radio_stations_by_freq["[freq]"]
 	if(!station)

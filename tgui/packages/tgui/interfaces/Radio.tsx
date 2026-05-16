@@ -28,8 +28,6 @@ type RadioData = {
   subspaceSwitchable: BooleanLike;
   channels: Record<string, BooleanLike>;
   radio_noises: number;
-  can_music: BooleanLike;
-  is_music: BooleanLike;
 };
 
 export const Radio = (props) => {
@@ -46,8 +44,6 @@ export const Radio = (props) => {
     subspace,
     subspaceSwitchable,
     radio_noises,
-    can_music,
-    is_music,
   } = data;
   const tunedChannel = RADIO_CHANNELS.find(
     (channel) => channel.freq === frequency,
@@ -112,15 +108,6 @@ export const Radio = (props) => {
                 selected={broadcasting}
                 onClick={() => act('broadcast')}
               />
-              {!!can_music && (
-                <Button
-                  textAlign="center"
-                  width="37px"
-                  icon={is_music ? 'music' : 'ban'}
-                  selected={is_music}
-                  onClick={() => act('music_radio')}
-                />
-              )}
               {!!command && (
                 <Button
                   ml={1}

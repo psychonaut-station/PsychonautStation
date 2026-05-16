@@ -16,8 +16,6 @@
 	overlay_mic_idle = "intercom_m"
 	overlay_mic_active = null
 
-	can_music = TRUE
-
 	///The icon of intercom while its turned off
 	var/icon_off = "intercom-p"
 

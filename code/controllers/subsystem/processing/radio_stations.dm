@@ -7,7 +7,7 @@ PROCESSING_SUBSYSTEM_DEF(radio_stations)
 	var/list/datum/radio_station/radio_stations = list()
 	var/list/radio_stations_by_freq = list()
 
-	var/list/datum/component/shared_sound_player/all_players = list() // For VV
+	var/list/datum/component/radio_sound_player/all_players = list() // For VV
 
 /datum/controller/subsystem/processing/radio_stations/Initialize()
 	initialize_music_stations()
@@ -48,18 +48,24 @@ PROCESSING_SUBSYSTEM_DEF(radio_stations)
 		return
 	station.update_listener(listener, weakref, old_volume, volume)
 
-/datum/controller/subsystem/processing/radio_stations/proc/tune_radio(datum/component/shared_sound_player/player, old_freq, freq)
-	var/datum/radio_station/old_station = radio_stations_by_freq["[old_freq]"]
-	if(old_station)
-		old_station.tune_out_radio(player)
+/datum/controller/subsystem/processing/radio_stations/proc/tune_radio(datum/component/radio_sound_player/player, old_freq, freq)
+	tune_out_radio(player, old_freq)
+	tune_in_radio(player, freq)
 
+/datum/controller/subsystem/processing/radio_stations/proc/tune_in_radio(datum/component/radio_sound_player/player, freq)
 	var/datum/radio_station/station = radio_stations_by_freq["[freq]"]
 	if(!station)
 		return
 	station.tune_in_radio(player)
 
-/datum/controller/subsystem/processing/radio_stations/proc/add_player(datum/component/shared_sound_player/player)
+/datum/controller/subsystem/processing/radio_stations/proc/tune_out_radio(datum/component/radio_sound_player/player, freq)
+	var/datum/radio_station/station = radio_stations_by_freq["[freq]"]
+	if(!station)
+		return
+	station.tune_out_radio(player)
+
+/datum/controller/subsystem/processing/radio_stations/proc/add_player(datum/component/radio_sound_player/player)
 	LAZYADD(all_players, player)
 
-/datum/controller/subsystem/processing/radio_stations/proc/remove_player(datum/component/shared_sound_player/player)
+/datum/controller/subsystem/processing/radio_stations/proc/remove_player(datum/component/radio_sound_player/player)
 	LAZYREMOVE(all_players, player)

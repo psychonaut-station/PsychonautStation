@@ -1,19 +1,17 @@
 // status effect eklencek
 
-/datum/component/shared_sound_player
+/datum/component/radio_sound_player
 	dupe_mode = COMPONENT_DUPE_ALLOWED
 
 	var/datum/proximity_monitor/advanced/mob_collector/proximity_monitor
 	var/list/listeners
 
 	var/freq
-
-	var/track_started_at = 0
 	var/range
 
 	var/distance_multiplier = 1
 
-/datum/component/shared_sound_player/Initialize(_range = 8, _frequency, ...)
+/datum/component/radio_sound_player/Initialize(_range = 8, _frequency, ...)
 	if(!isatom(parent))
 		return COMPONENT_INCOMPATIBLE
 
@@ -35,13 +33,13 @@
 
 	SSradio_stations.add_player(src)
 
-/datum/component/shared_sound_player/Destroy(force, silent)
+/datum/component/radio_sound_player/Destroy(force, silent)
 	SSradio_stations.remove_player(src)
 	QDEL_NULL(proximity_monitor)
 	UnregisterSignal(parent, list(COMSIG_PROXIMITY_MOB_ENTERED, COMSIG_PROXIMITY_MOB_LEFT, COMSIG_PROXIMITY_MOB_MOVED, COMSIG_MOVABLE_MOVED))
 	return ..()
 
-/datum/component/shared_sound_player/proc/get_volume(atom/listener, pressure_affected = TRUE, falloff_exponent = 3, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE)
+/datum/component/radio_sound_player/proc/get_volume(atom/listener, pressure_affected = TRUE, falloff_exponent = 3, falloff_distance = SOUND_DEFAULT_FALLOFF_DISTANCE)
 	var/turf/player_turf = get_turf(parent)
 	var/turf/listener_turf = get_turf(listener)
 	var/volume = 100
@@ -68,7 +66,7 @@
 
 	return volume
 
-/datum/component/shared_sound_player/proc/on_mob_entered(datum/source, mob/mob)
+/datum/component/radio_sound_player/proc/on_mob_entered(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	RegisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(on_mob_login))
 	if(isnull(mob.client))
@@ -77,7 +75,7 @@
 	LAZYSET(listeners, mob, volume)
 	SSradio_stations.add_listener(mob, freq, WEAKREF(src), volume)
 
-/datum/component/shared_sound_player/proc/on_mob_left(datum/source, mob/mob)
+/datum/component/radio_sound_player/proc/on_mob_left(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	UnregisterSignal(mob, COMSIG_MOB_CLIENT_LOGIN)
 	if(isnull(mob.client))
@@ -87,7 +85,7 @@
 	if(LAZYFIND(listeners, mob))
 		LAZYREMOVE(listeners, mob)
 
-/datum/component/shared_sound_player/proc/on_mob_moved(datum/source, mob/mob)
+/datum/component/radio_sound_player/proc/on_mob_moved(datum/source, mob/mob)
 	SIGNAL_HANDLER
 	if(isnull(mob.client))
 		return FALSE
@@ -96,16 +94,16 @@
 	LAZYSET(listeners, mob, volume)
 	SSradio_stations.update_listener(mob, freq, WEAKREF(src), old_volume, volume)
 
-/datum/component/shared_sound_player/proc/on_mob_login(mob/source, client/client)
+/datum/component/radio_sound_player/proc/on_mob_login(mob/source, client/client)
 	SIGNAL_HANDLER
 	var/volume = get_volume(source) ** 2
 	LAZYSET(listeners, source, volume)
 	SSradio_stations.add_listener(source, freq, WEAKREF(src), volume)
 
-/datum/component/shared_sound_player/proc/on_parent_moved(datum/source, old_loc, movement_dir, forced, old_locs, momentum_change)
+/datum/component/radio_sound_player/proc/on_parent_moved(datum/source, old_loc, movement_dir, forced, old_locs, momentum_change)
 	SIGNAL_HANDLER
 	proximity_monitor.recalculate_field()
 
-/datum/component/shared_sound_player/proc/set_frequency(old_frequency, frequency)
+/datum/component/radio_sound_player/proc/set_frequency(old_frequency, frequency)
 	SSradio_stations.tune_radio(src, old_frequency, frequency)
 	freq = frequency

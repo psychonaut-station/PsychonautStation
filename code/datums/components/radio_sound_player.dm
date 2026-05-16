@@ -105,6 +105,6 @@
 	proximity_monitor.recalculate_field()
 
 /datum/component/radio_sound_player/proc/set_frequency(old_frequency, frequency)
-	SSradio_stations.tune_out_radio(player, old_freq)
-	SSradio_stations.tune_in_radio(player, freq)
+	SSradio_stations.tune_out_radio(player, old_frequency)
+	SSradio_stations.tune_in_radio(player, frequency)
 	freq = frequency

@@ -257,3 +257,7 @@
   - bugfix: People who re-enter their body can now exit again by moving.
   lelandkemble:
   - spellcheck: The Moon path armor knowledge's description has been made more clear
+2026-05-18:
+  Ureus:
+  - rscadd: "Traitorlara makinelere gizli bombalar yerle\u015Ftirmelerini sa\u011F\
+      layan \"MI13 Sabotage Kit\" eklendi."

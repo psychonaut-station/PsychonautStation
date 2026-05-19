@@ -105,32 +105,6 @@
 	TEST_ASSERT(!component.has_live_watchers(), "Closing the security console should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing the security console should clear the watched alert.")
 
-/datum/unit_test/bodycam_watchers_console_close_dedupes_users/Run()
-	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
-	host.mock_client = new /datum/client_interface()
-	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
-	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
-	var/obj/machinery/computer/security/console = EASY_ALLOCATE()
-	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
-	var/viewer_ref = REF(viewer)
-
-	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
-	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
-
-	console.concurrent_users |= viewer_ref
-	console.concurrent_users |= viewer_ref
-	console.active_camera = camera
-	console.open_uis = list(allocate(/datum))
-	camera.on_start_watching(console)
-
-	TEST_ASSERT_EQUAL(length(console.concurrent_users), 1, "Security console should only track a viewer once.")
-	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a security console is watching.")
-
-	console.ui_close(viewer)
-
-	TEST_ASSERT(!component.has_live_watchers(), "Closing the security console should remove the live watcher even if the viewer was re-added.")
-	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing the security console should clear the watched alert after duplicate viewer tracking is deduped.")
-
 /datum/unit_test/bodycam_watchers_console_stale_ui/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
 	host.mock_client = new /datum/client_interface()

@@ -19,11 +19,6 @@
 	// Stuff needed to render the map
 	var/atom/movable/screen/map_view/camera/cam_screen
 
-/obj/machinery/computer/security/proc/release_active_camera()
-	active_camera?.on_stop_watching(src)
-	active_camera = null
-	last_camera_turf = null
-
 /obj/machinery/computer/security/Initialize(mapload)
 	. = ..()
 	// Map name has to start and end with an A-Z character,
@@ -169,6 +164,11 @@
 	if(length(concurrent_users) == 0 && is_living)
 		release_active_camera()
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
+
+/obj/machinery/computer/security/proc/release_active_camera()
+	active_camera?.on_stop_watching(src)
+	active_camera = null
+	last_camera_turf = null
 
 /atom/movable/screen/map_view/camera
 	/// All the plane masters that need to be applied.

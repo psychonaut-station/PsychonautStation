@@ -16,7 +16,7 @@ Arachnid ırkını oyuna ekler
 
 ### Modüler Değişiklikler
 
-- `modular_psychonaut/master_files/code/controllers/subsystem/sprite_accessories.dm`: `/datum/controller/subsystem/accessories/var/arachnid_appendages_list`, `/datum/controller/subsystem/accessories/setup_lists()`
+- `modular_psychonaut/master_files/code/controllers/subsystem/sprite_accessories.dm`: `/datum/controller/subsystem/accessories/setup_lists()`
 - `modular_psychonaut/master_files/code/modules/client/preferences/species_features/arachnid.dm`: `/datum/preference/choiced/arachnid_appendages`
 - `modular_psychonaut/master_files/code/modules/mob/living/carbon/human/human.dm`: `/mob/living/carbon/human/species/arachnid`
 - `modular_psychonaut/master_files/code/modules/surgery/organs/internal/eyes/_eyes.dm`: `/obj/item/organ/eyes/var/eye_icon`, `/obj/item/organ/eyes/on_mob_insert()`, `/obj/effect/abstract/eyelid_effect/Initialize()`, `/obj/item/organ/eyes/arachnid`, `/obj/item/organ/eyes/night_vision/arachnid`

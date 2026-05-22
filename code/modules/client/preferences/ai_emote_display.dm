@@ -4,6 +4,7 @@
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "preferred_ai_emote_display"
 	should_generate_icons = TRUE
+	should_update_preview = FALSE
 
 /datum/preference/choiced/ai_emote_display/init_possible_values()
 	if(!length(GLOB.ai_status_display_all_options))
@@ -16,8 +17,11 @@
 	else
 		if(!length(GLOB.ai_status_display_all_options))
 			init_ai_status_display_options()
-		return uni_icon('icons/obj/machines/status_display.dmi', GLOB.ai_status_display_all_options[value])
-
+		// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+		// return uni_icon('icons/obj/machines/status_display.dmi', GLOB.ai_status_display_all_options[value])
+		var/icon = GLOB.ai_status_display_screen_icons[value] || 'icons/obj/machines/status_display.dmi'
+		return uni_icon(icon, GLOB.ai_status_display_all_options[value])
+		// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 /datum/preference/choiced/ai_emote_display/is_accessible(datum/preferences/preferences)
 	if (!..(preferences))
 		return FALSE

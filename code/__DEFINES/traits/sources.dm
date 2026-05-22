@@ -111,9 +111,6 @@
 /// Trait given to you by shapeshifting
 #define SHAPESHIFT_TRAIT "shapeshift_trait"
 
-///From the cuffed_item status effect
-#define CUFFED_ITEM_TRAIT "cuffed_item_trait"
-
 // unique trait sources, still defines
 #define EMP_TRAIT "emp_trait"
 #define STATUE_MUTE "statue"
@@ -123,6 +120,7 @@
 #define GENETICS_SPELL "genetics_spell"
 #define EYES_COVERED "eyes_covered"
 #define NO_EYES "no_eyes"
+#define NO_EARS "no_ears"
 #define HYPNOCHAIR_TRAIT "hypnochair"
 #define FLASHLIGHT_EYES "flashlight_eyes"
 #define IMPURE_OCULINE "impure_oculine"
@@ -344,3 +342,6 @@
 
 /// Trait gained by a guardian who is recalled
 #define GUARDIAN_RECALLED "guardian_recalled"
+
+/// Trait granted as a result of a mob being husked
+#define HUSK_TRAIT "husk"

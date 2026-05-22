@@ -18,7 +18,7 @@ IPC ırkını oyuna ekler
 - `code/modules/antagonists/heretic/heretic_living_heart.dm`: `/datum/component/living_heart/proc/on_organ_replaced()`
 - `code/modules/antagonists/heretic/knowledge/starting_lore.dm`: `/datum/heretic_knowledge/living_heart/proc/is_valid_heart()`
 - `code/modules/client/preferences_savefile.dm`: `/datum/preferences/proc/save_preferences()`, `/datum/preferences/proc/save_character()`
-- `code/modules/client/preferences/_preference.dm`: `/datum/preference/proc/write()`, `/datum/preferences/proc/write_preference()`, `/datum/preferences/proc/update_preference()`, `/datum/preference/proc/compile_ui_data()`, `/datum/preference/choiced/proc/get_choices_serialized()`
+- `code/modules/client/preferences/_preference.dm`: `/datum/preference/proc/write()`, `/datum/preference/proc/compile_ui_data()`, `/datum/preference/choiced/proc/get_choices_serialized()`
 - `code/modules/client/preferences/names.dm`: `/datum/preference/name/real_name/deserialize()`
 - `code/modules/client/preferences/species.dm`: `/datum/preference/choiced/species/deserialize()`
 - `code/modules/deathmatch/deathmatch_maps.dm`: `/datum/lazy_template/deathmatch/species_warfare`
@@ -36,7 +36,7 @@ IPC ırkını oyuna ekler
 ### Modüler Değişiklikler
 
 - `modular_psychonaut/master_files/code/_onclick/hud/radial.dm`: `/datum/radial_menu_choice/var/warning`
-- `modular_psychonaut/master_files/code/controllers/subsystem/sprite_accessories.dm`: `/datum/controller/subsystem/accessories/var/ipc_chassis_list`, `/datum/controller/subsystem/accessories/setup_lists()`
+- `modular_psychonaut/master_files/code/controllers/subsystem/sprite_accessories.dm`: `/datum/controller/subsystem/accessories/setup_lists()`
 - `modular_psychonaut/master_files/code/datums/bodypart_overlays/markings_bodypart_overlay.dm`: `/datum/bodypart_overlay/simple/body_marking/proc/get_aux_image()`
 - `modular_psychonaut/master_files/code/game/data_huds.dm`: `/mob/living/carbon/human/proc/diag_hud_set_humancell()`
 - `modular_psychonaut/master_files/code/game/objects/effects/warning.dm`: `/obj/effect/abstract/warning`

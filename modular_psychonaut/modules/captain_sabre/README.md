@@ -9,7 +9,7 @@ Kaptanın kılıcına yeni skinler ekler
 ### TG Değişiklikleri
 
 - `code/game/objects/items/weaponry/melee/sabre.dm`: [`/obj/item/melee/sabre`: `var/icon`, `var/icon_state`, `var/inhand_icon_state`, `var/lefthand_file`, `var/righthand_file`]
-- `code/game/objects/items/storage/belt.dm`: [`/obj/item/storage/belt/sheath/sabre`: `var/icon_state`, `var/inhand_icon_state`, `var/worn_icon_state`]
+- `code/game/objects/items/storage/belt.dm`: [`/obj/item/storage/belt/sheath/sabre`: `var/icon_state`, `var/inhand_icon_state`, `var/worn_icon_state`], [`/obj/item/storage/belt/sheath/sabre/gunpowered`: `var/icon_state`]
 
 ### Modüler Değişiklikler
 

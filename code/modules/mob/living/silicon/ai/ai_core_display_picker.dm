@@ -31,27 +31,24 @@
 
 	// If no override is set, find the actual current display from the AI's icon state
 	var/current_display = ai_user.display_icon_override
-	var/current_icon = ai_user.icon // PSYCHONAUT ADDITION - AI_SCREENS
 	if(!current_display)
 		// Default to "Blue" if no override
 		current_display = "Blue"
-		current_icon = initial(ai_user.icon)
-		// Try to identify current display
-		if(ai_user.icon_state)
-			for(var/display_name in GLOB.ai_core_display_screens)
-				if("ai-[LOWER_TEXT(display_name)]" == ai_user.icon_state)
-					current_display = display_name
-					break
 
-	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
-	if(GLOB.ai_core_display_screen_icons.Find(current_display))
-		current_icon = GLOB.ai_core_display_screen_icons[current_display]
-	// PSYCHONAUT ADDITION END - AI_SCREENS
+	// Try to identify current display
+	for(var/display_name in GLOB.ai_core_display_screens)
+		if(resolve_ai_icon_sync(display_name) == current_display)
+			current_display = display_name
+			break
+
 
 	data["current_display"] = current_display
 
 	// Get icon for current display
 	var/current_icon_state = resolve_ai_icon_sync(current_display)
+	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+	var/current_icon = GLOB.ai_core_display_screen_icons[current_display] || 'icons/mob/silicon/ai.dmi'
+	// PSYCHONAUT ADDITION END - AI_SCREENS
 	data["current_icon"] = list(
 		"icon" = current_icon, // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi',
 		"icon_state" = current_icon_state
@@ -61,10 +58,13 @@
 
 	for(var/option_name in GLOB.ai_core_display_screens)
 		var/icon_state = resolve_ai_icon_sync(option_name)
+		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+		var/icon = GLOB.ai_core_display_screen_icons[option_name] || 'icons/mob/silicon/ai.dmi'
+		// PSYCHONAUT ADDITION END - AI_SCREENS
 		var/list/option_data = list(
 			"name" = option_name,
 			"icon_state" = icon_state,
-			"icon" = current_icon // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi'
+			"icon" = icon // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/mob/silicon/ai.dmi'
 		)
 		options += list(option_data)
 

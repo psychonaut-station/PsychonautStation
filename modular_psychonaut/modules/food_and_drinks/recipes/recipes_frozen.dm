@@ -9,4 +9,5 @@
 	)
 	result = /obj/item/food/popsicle/panda
 	added_foodtypes = DAIRY
-	category = CAT_ICE
+	dish_category = DISH_FROZEN
+	meal_category = MEAL_DESSERT

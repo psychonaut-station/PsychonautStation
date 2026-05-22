@@ -50,12 +50,15 @@
 		options += list(option_data)
 
 	for(var/option_name in GLOB.ai_core_to_status_display_mapping)
+		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+		var/icon = GLOB.ai_status_display_screen_icons[option_name] || 'icons/obj/machines/status_display.dmi'
+		// PSYCHONAUT ADDITION END - AI_SCREENS
 		var/icon_state = GLOB.ai_core_to_status_display_mapping[option_name]
 		var/list/option_data = list(
 			"name" = option_name,
 			"icon_state" = icon_state,
 			"is_original" = FALSE,
-			"icon" = 'icons/obj/machines/status_display.dmi'
+			"icon" = icon // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/obj/machines/status_display.dmi'
 		)
 		options += list(option_data)
 
@@ -68,6 +71,9 @@
 
 	// Find current display emotion from first available AI status display
 	var/current_emotion = "None"
+	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+	var/current_icon = 'icons/obj/machines/status_display.dmi'
+	// PSYCHONAUT ADDITION END - AI_SCREENS
 	var/current_icon_state
 	var/obj/machinery/status_display/ai/first_display = locate() in SSmachines.get_machines_by_type_and_subtypes(/obj/machinery/status_display/ai)
 	if(first_display?.emotion)
@@ -76,6 +82,10 @@
 			current_icon_state = GLOB.ai_status_display_emotes[current_emotion]
 		else if(current_emotion in GLOB.ai_core_to_status_display_mapping)
 			current_icon_state = GLOB.ai_core_to_status_display_mapping[current_emotion]
+			// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+			if(current_emotion in GLOB.ai_status_display_screen_icons)
+				current_icon = GLOB.ai_status_display_screen_icons[current_emotion]
+			// PSYCHONAUT ADDITION END - AI_SCREENS
 		else
 			current_icon_state = "ai_download"
 	else
@@ -83,7 +93,7 @@
 
 	data["current_emotion"] = current_emotion
 	data["current_icon"] = list(
-		"icon" = 'icons/obj/machines/status_display.dmi',
+		"icon" = current_icon, // PSYCHONAUT EDIT ADDITION - AI_SCREENS - Original: "icon" = 'icons/obj/machines/status_display.dmi',
 		"icon_state" = current_icon_state
 	)
 

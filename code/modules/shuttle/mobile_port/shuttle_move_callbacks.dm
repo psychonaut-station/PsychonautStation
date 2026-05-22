@@ -77,7 +77,14 @@ All ShuttleMove procs go here
 		oldT.ScrapeAway(shuttle_depth)
 
 	if(rotation)
-		shuttleRotate(rotation) //see shuttle_rotate.dm
+		shuttleRotate(rotation, params = ALL) //see shuttle_rotate.dm
+
+	// if we have a lighting object that needs to be updated
+	if(lighting_object?.needs_update)
+		lighting_object.update()
+		lighting_object.needs_update = FALSE
+		SSlighting.objects_queue -= lighting_object
+
 	SEND_SIGNAL(src, COMSIG_TURF_AFTER_SHUTTLE_MOVE, oldT)
 
 	return TRUE
@@ -122,7 +129,7 @@ All ShuttleMove procs go here
 	if(light)
 		update_light()
 	if(rotation)
-		shuttleRotate(rotation)
+		shuttleRotate(rotation, params = ALL)
 
 	update_parallax_contents()
 
@@ -401,6 +408,9 @@ All ShuttleMove procs go here
 	return ..()
 
 /************************************Misc move procs************************************/
+
+/atom/movable/lighting_object/onShuttleMove()
+	return FALSE
 
 /obj/docking_port/mobile/hypotheticalShuttleMove(rotation, move_mode, obj/docking_port/mobile/moving_dock)
 	. = ..()

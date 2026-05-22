@@ -11,7 +11,6 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/_globalvars/lists/strings.dm`: `GLOB.adjectives`, `GLOB.adverbs`, `GLOB.dream_strings`, `GLOB.junkmail_messages`, `GLOB.verbs`
 - `code/controllers/configuration/entries/game_options.dm`: `/datum/config_entry/string/alert_green/var/default`, `/datum/config_entry/string/alert_blue_upto/var/default`, `/datum/config_entry/string/alert_blue_downto/var/default`, `/datum/config_entry/string/alert_red_upto/var/default`, `/datum/config_entry/string/alert_red_downto/var/default`, `/datum/config_entry/string/alert_delta/var/default`
 - `code/controllers/subsystem/discord.dm`: `/datum/controller/subsystem/discord/Initialize()`
-- `code/controllers/subsystem/nightshift.dm`: `/datum/controller/subsystem/nightshift/announce()`, `/datum/controller/subsystem/nightshift/check_nightshift()`, `/datum/controller/subsystem/nightshift/update_nightshift()`
 - `code/controllers/subsystem/shuttle.dm`: `/datum/controller/subsystem/shuttle/CheckAutoEvac()`, `/datum/controller/subsystem/shuttle/block_recall()`, `/datum/controller/subsystem/shuttle/unblock_recall()`, `/datum/controller/subsystem/shuttle/call_evac_shuttle()`, `/datum/controller/subsystem/shuttle/checkHostileEnvironment()`
 - `code/datums/ai_laws/laws_antagonistic.dm`: `/datum/ai_laws/antimov/var/inherent`, `/datum/ai_laws/balance/var/inherent`, `/datum/ai_laws/thermodynamic/var/inherent`, `/datum/ai_laws/syndicate_override/var/inherent`, `/datum/ai_laws/ninja_override/var/inherent`
 - `code/datums/ai_laws/laws_neutral.dm`: `/datum/ai_laws/united_nations/var/inherent`, `/datum/ai_laws/hulkamania/var/inherent`, `/datum/ai_laws/reporter/var/inherent`, `/datum/ai_laws/dungeon_master/var/inherent`, `/datum/ai_laws/painter/var/inherent`, `/datum/ai_laws/tyrant/var/inherent`, `/datum/ai_laws/overlord/var/inherent`
@@ -39,7 +38,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/admin/verbs/adminshuttle.dm`: `GLOBAL/var/text`, `GLOBAL/var/title`, `GLOBAL/var/sound`, `GLOBAL/var/sender_override`, `GLOBAL/var/color_override`
 - `code/modules/admin/verbs/anonymousnames.dm`: `/datum/anonymous_theme/announce_to_all_players()`, `/datum/anonymous_theme/employees/announce_to_all_players()`, `/datum/anonymous_theme/wizards/announce_to_all_players()`, `/datum/anonymous_theme/spider_clan/announce_to_all_players()`, `/datum/anonymous_theme/station/announce_to_all_players()`
 - `code/modules/admin/verbs/secrets.dm`: `/datum/secrets_menu/ui_act()`
-- `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`
+- `code/modules/antagonists/blob/overmind.dm`: `/mob/eye/blob/process()`, `/mob/eye/blob/begin_victory()`
 - `code/modules/antagonists/cult/cult_items.dm`: `/obj/item/shuttle_curse/attack_self()`
 - `code/modules/antagonists/heretic/knowledge/ash_lore.dm`: `/datum/heretic_knowledge/ultimate/ash_final/var/announcement_text`
 - `code/modules/antagonists/heretic/knowledge/blade_lore.dm`: `/datum/heretic_knowledge/ultimate/blade_final/var/announcement_text`
@@ -96,6 +95,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/events/meteors/meteor_wave_events.dm`: `/datum/round_event/meteor_wave/announce()`, `/datum/round_event/meteor_wave/meaty/announce()`, `/datum/round_event/meteor_wave/dust_storm/announce()`
 - `code/modules/events/meteors/stray_meteor_event.dm`: `/datum/round_event/stray_meteor/announce()`
 - `code/modules/events/mice_migration.dm`: `/datum/round_event/mice_migration/announce()`
+- `code/modules/events/nightshift.dm`: `/datum/round_event/nightshift/update_nightshift()`, `/datum/round_event/nightshift/send_announcement()`
 - `code/modules/events/portal_storm.dm`: `/datum/round_event/portal_storm/announce()`
 - `code/modules/events/processor_overload.dm`: `/datum/round_event/processor_overload/announce()`
 - `code/modules/events/radiation_leak.dm`: `/datum/round_event/radiation_leak/announce()`
@@ -169,7 +169,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 ### Definelar ve Helperlar
 
 - `code/__DEFINES/anomaly.dm`: `ANOMALY_ANNOUNCE_MEDIUM_TEXT`, `ANOMALY_ANNOUNCE_HARMFUL_TEXT`, `ANOMALY_ANNOUNCE_DANGEROUS_TEXT`
-- `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`
+- `code/__DEFINES/time.dm`: `NEW_YEAR`, `VALENTINES`, `APRIL_FOOLS`, `EASTER`, `HALLOWEEN`, `CHRISTMAS`, `FESTIVE_SEASON`, `GARBAGEDAY`, `MONKEYDAY`, `PRIDE_WEEK`, `MOTH_WEEK`, `IAN_HOLIDAY`, `HOTDOG_DAY`, `ICE_CREAM_DAY`, `CHERNOBYL_ANNIVERSARY`
 - `code/__DEFINES/~psychonaut_defines/colors.dm`: `COLOR_TURKISH_RED`
 - `code/__HELPERS/chat_filter.dm`: `/proc/is_ic_filtered()`, `/proc/is_soft_ic_filtered()`, `/proc/is_ooc_filtered()`, `/proc/is_soft_ooc_filtered()`, `/proc/is_ic_filtered_for_pdas()`, `/proc/is_soft_ic_filtered_for_pdas()`
 - `code/__HELPERS/game.dm`: `/proc/send_tip_of_the_round()`

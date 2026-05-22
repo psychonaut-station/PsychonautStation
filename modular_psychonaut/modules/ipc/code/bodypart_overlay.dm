@@ -1,9 +1,6 @@
 /datum/bodypart_overlay/simple/body_marking/ipc
 	dna_feature_key = FEATURE_IPC_CHASSIS
 
-/datum/bodypart_overlay/simple/body_marking/ipc/get_accessory(name)
-	return SSaccessories.ipc_chassis_list[name]
-
 /datum/bodypart_overlay/simple/body_marking/ipc/get_overlay(layer, obj/item/bodypart/limb)
 	layer = bitflag_to_layer(layer)
 	var/image/main_image = get_image(layer, limb)

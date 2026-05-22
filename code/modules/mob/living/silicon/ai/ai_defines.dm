@@ -42,6 +42,7 @@
 	VAR_FINAL/last_announcement = ""
 	/// AI core icon_state selected by the AI through [verb/pick_icon]
 	var/display_icon_override
+	var/display_icon_file_override = 'icons/mob/silicon/ai.dmi' // PSYCHONAUT ADDITION - AI_SCREENS
 
 
 	/* ROBOTS */
@@ -172,4 +173,4 @@
 	/// Used as a fake multitool in tcomms machinery
 	VAR_FINAL/obj/item/multitool/aiMulti
 	/// Helper effect that creates sparks when the AI is damaged
-	VAR_FINAL/datum/effect_system/spark_spread/spark_system
+	VAR_FINAL/datum/effect_system/basic/spark_spread/spark_system

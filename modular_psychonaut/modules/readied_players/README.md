@@ -8,7 +8,7 @@ Readylemiş oyuncu sayısını new player info ekranında gösterir
 
 ### TG Değişiklikleri
 
-- `code/_onclick/hud/new_player.dm`: `/atom/movable/screen/lobby/new_player_info/proc/update_text()`
+- `code/_onclick/hud/screen_objects/new_player.dm`: `/atom/movable/screen/lobby/new_player_info/proc/update_text()`
 
 ### Modüler Değişiklikler
 

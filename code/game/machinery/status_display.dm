@@ -28,6 +28,7 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 	/// String key we use to index the second effect overlay displayed on us
 	var/message_key_2
 	var/current_picture = ""
+	var/current_picture_icon = 'icons/obj/machines/status_display.dmi' // PSYCHONAUT ADDITION - AI_SCREENS
 	var/current_mode = SD_BLANK
 	var/message1 = ""
 	var/message2 = ""
@@ -89,9 +90,16 @@ GLOBAL_DATUM_INIT(status_font, /datum/font, new /datum/font/tiny_unicode/size_12
 		new /obj/item/wallframe/status_display(drop_location())
 
 /// Immediately change the display to the given picture.
-/obj/machinery/status_display/proc/set_picture(state)
+// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+// /obj/machinery/status_display/proc/set_picture(state)
+/obj/machinery/status_display/proc/set_picture(state, icon = null)
+// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 	if(state != current_picture)
 		current_picture = state
+
+	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+	current_picture_icon = icon || initial(current_picture_icon)
+	// PSYCHONAUT ADDITION END - AI_SCREENS
 
 	update_appearance()
 
@@ -200,7 +208,10 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 			return
 		if(SD_PICTURE)
 			clear_display()
-			. += mutable_appearance(icon, current_picture)
+			// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+			// . += mutable_appearance(icon, current_picture)
+			. += mutable_appearance(current_picture_icon, current_picture)
+			// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 			if(current_picture == AI_DISPLAY_DONT_GLOW) // If the thing's off, don't display the emissive yeah?
 				return
 		if(SD_GREENSCREEN)
@@ -777,7 +788,11 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/status_display/ai, 32)
 	else
 		icon_state = "ai_download"
 
-	set_picture(icon_state)
+	// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+	// set_picture(icon_state)
+	var/icon = GLOB.ai_status_display_screen_icons[emotion] || null
+	set_picture(icon_state, icon)
+	// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 	return PROCESS_KILL
 
 /obj/machinery/status_display/ai/receive_signal(datum/signal/signal)

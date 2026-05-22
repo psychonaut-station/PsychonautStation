@@ -29,6 +29,7 @@ export default defineConfig({
     tgui: './packages/tgui',
     'tgui-panel': './packages/tgui-panel',
     'tgui-say': './packages/tgui-say',
+    'tgui-chat-dark': './packages/tgui-chat-dark',
   },
   mode: 'production',
   module: {
@@ -120,6 +121,10 @@ export default defineConfig({
     new rspack.CircularDependencyRspackPlugin({
       failOnError: true,
       exclude: /node_modules/,
+    }),
+    new rspack.IgnorePlugin({
+      resourceRegExp: /\.test\.tsx?$/,
+      contextRegExp: /__mocks__/,
     }),
   ],
   resolve: {

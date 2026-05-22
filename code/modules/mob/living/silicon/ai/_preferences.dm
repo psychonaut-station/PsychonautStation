@@ -24,6 +24,7 @@ GLOBAL_LIST_INIT(ai_status_display_emotes, list(
 // This allows AI status displays to show the same choice as AI core displays
 GLOBAL_LIST_INIT(ai_core_to_status_display_mapping, list(
 	"Alien" = "ai_status_alien",
+	"Allied Mastercomputer" = "ai_status_allied_mastercomputer",
 	"Angel" = "ai_status_angel",
 	"Banned" = "ai_status_banned",
 	"Bliss" = "ai_status_bliss",

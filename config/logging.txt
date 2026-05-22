@@ -116,3 +116,6 @@ LOG_JUKEBOX
 
 ## log HALLUCINATION channel
 LOG_HALLUCINATION
+
+## log player image creation
+LOG_IMAGE

@@ -12,12 +12,19 @@
 
 	cut_overlays()
 
+	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+	var/screen_icon = display_icon_file_override || icon
+	// PSYCHONAUT ADDITION END - AI_SCREENS
+
 	var/base = display_icon_override || "ai"
 	var/dead_state = "[base]_dead"
 	var/screen_state
 	var/lights_state = "lights_dead"
 
-	if(icon_exists(icon, dead_state))
+	// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+	// if(icon_exists(icon, dead_state))
+	if(icon_exists(screen_icon, dead_state))
+	// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 		screen_state = dead_state
 	else
 		screen_state = "ai_dead"
@@ -35,13 +42,20 @@
 
 		add_overlay(emissive_appearance(icon, lights_state, src))
 
-	if(icon_exists(icon, screen_state))
-		var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+	// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+	// if(icon_exists(icon, screen_state))
+	//	var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+	if(icon_exists(screen_icon, screen_state))
+		var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
+	// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 		screen_overlay.layer = FLOAT_LAYER + 0.1
 		screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
 		add_overlay(screen_overlay)
 
-		add_overlay(emissive_appearance(icon, screen_state, src))
+		// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+		// add_overlay(emissive_appearance(icon, screen_state, src))
+		add_overlay(emissive_appearance(screen_icon, screen_state, src))
+		// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 
 	if(is_anchored)
 		flip_anchored()

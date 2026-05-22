@@ -25,6 +25,13 @@
 	if(drop_bitflags & DROP_BODYPARTS)
 		spread_bodyparts(drop_bitflags)
 
+	// failsafe for if we fuck up and leave our brain behind. (other organs are replaceable so we can ignore them.)
+	var/obj/item/organ/brain/brain = get_organ_slot(ORGAN_SLOT_BRAIN)
+	if((drop_bitflags & DROP_BRAIN) && !isnull(brain))
+		stack_trace("gib invoked with drop_brain() had their brain after spilling organs and bodyparts, meaning both failed!")
+		brain.Remove(src)
+		brain.forceMove(drop_location())
+
 	SEND_SIGNAL(src, COMSIG_LIVING_GIBBED, drop_bitflags)
 	qdel(src)
 
@@ -180,9 +187,13 @@
 		return
 
 	for(var/mob/living/nearby in viewers(src))
-		if(nearby.stat >= UNCONSCIOUS || nearby.is_blind())
+		if(nearby == src || nearby.stat >= UNCONSCIOUS || nearby.is_blind())
 			continue
 		nearby.add_mood_event("saw_death", /datum/mood_event/conditional/see_death, src, dusted, gibbed)
+		nearby.mind?.witnessed_death(src)
+
+	if(!gibbed && !dusted)
+		mind?.experienced_death()
 
 /mob/living/silicon/send_death_moodlets(dusted = FALSE, gibbed = FALSE)
 	return // You are a machine (Future todo, roboticists feel sad though)
@@ -221,7 +232,7 @@
 
 	set_stat(DEAD)
 	timeofdeath = world.time
-	station_timestamp_timeofdeath = station_time_timestamp()
+	station_timestamp_timeofdeath = round_timestamp()
 	var/turf/death_turf = get_turf(src)
 	var/area/death_area = get_area(src)
 	// Display a death message if the mob is a player mob (has an active mind)

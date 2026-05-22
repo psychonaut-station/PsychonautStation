@@ -57,8 +57,7 @@
 
 	INVOKE_ASYNC(src, PROC_REF(set_core_display_icon), null, client)
 
-	spark_system = new /datum/effect_system/spark_spread()
-	spark_system.set_up(5, 0, src)
+	spark_system = new /datum/effect_system/basic/spark_spread(src, 5, FALSE)
 	spark_system.attach(src)
 
 	add_verb(src, /mob/living/silicon/ai/proc/show_laws_verb)
@@ -174,8 +173,11 @@
 
 /mob/living/silicon/ai
 	var/selected_display_name
+	var/mutable_appearance/portrait_appearance
 
 /mob/living/silicon/ai/proc/set_core_display_icon(input, client/C)
+	portrait_appearance = null
+
 	var/preferred_choice
 	if(input)
 		preferred_choice = input
@@ -185,6 +187,9 @@
 		preferred_choice = client.prefs.read_preference(/datum/preference/choiced/ai_core_display)
 
 	display_icon_override = resolve_ai_icon(preferred_choice)
+	// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+	display_icon_file_override = GLOB.ai_core_display_screen_icons[preferred_choice] || 'icons/mob/silicon/ai.dmi'
+	// PSYCHONAUT ADDITION END - AI_SCREENS
 
 	update_appearance()
 
@@ -734,6 +739,15 @@
 
 	to_chat(src, "Camera lights activated.")
 
+// Allows AIs to turn their hologram instead on alt-move
+/mob/living/silicon/ai/keybind_face_direction(direction)
+	var/obj/machinery/holopad/active_pad = current
+	if(istype(active_pad) && active_pad.masters[src])
+		var/obj/effect/overlay/holo_pad_hologram/ai_holo = active_pad.masters[src]
+		ai_holo.setDir(direction)
+		return
+	return ..()
+
 //AI_CAMERA_LUMINOSITY
 
 /mob/living/silicon/ai/proc/light_cameras()
@@ -1023,6 +1037,8 @@
 	button_icon_state = "ai_shell"
 
 /datum/action/innate/deploy_shell/Trigger(mob/clicker, trigger_flags)
+	if(!..())
+		return
 	var/mob/living/silicon/ai/AI = owner
 	if(!AI)
 		return
@@ -1036,6 +1052,8 @@
 	var/mob/living/silicon/robot/last_used_shell
 
 /datum/action/innate/deploy_last_shell/Trigger(mob/clicker, trigger_flags)
+	if(!..())
+		return
 	if(!owner)
 		return
 	if(last_used_shell)
@@ -1225,12 +1243,15 @@
 /mob/living/silicon/ai/update_overlays()
 	. = ..()
 
-	var/screen_state
-	var/screen_icon = icon // PSYCHONAUT ADDITION - AI_SCREENS
+	var/screen_state // Display
+	var/screen_icon = display_icon_file_override || icon // PSYCHONAUT ADDITION - AI_SCREENS
 	var/lights_state // Lights
 
 	if(!client && !mind)
 		screen_state = "ai-empty"
+		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+		screen_icon = icon
+		// PSYCHONAUT ADDITION END - AI_SCREENS
 
 		lights_state = "lights_active"
 
@@ -1240,26 +1261,48 @@
 		var/base = display_icon_override || "ai"
 		var/dead_state = "[base]_dead"
 
-		if(icon_exists(icon, dead_state))
+		// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+		// if(icon_exists(icon, dead_state))
+		if(icon_exists(screen_icon, dead_state))
+		// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 			screen_state = dead_state
 		else
 			screen_state = "ai_dead"
+			// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
+			screen_icon = icon
+			// PSYCHONAUT ADDITION END - AI_SCREENS
+
+		// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+		// var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+		var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
+		// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
+		screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
+		. += screen_overlay
 
 		lights_state = "lights_dead"
-
 		set_light(0.2, 0.2, LIGHT_COLOR_FAINT_CYAN)
 
 	else
-		screen_state = display_icon_override || "ai"
-		// PSYCHONAUT ADDITION BEGIN - AI_SCREENS
-		if(GLOB.ai_core_display_screen_icons.Find(screen_state))
-			screen_icon = GLOB.ai_core_display_screen_icons[screen_state]
-		// PSYCHONAUT ADDITION END - AI_SCREENS
-
 		lights_state = "lights_active"
-
 		set_light(0.3, 0.3, LIGHT_COLOR_CYAN)
 
+		if(portrait_appearance)
+			. += portrait_appearance
+		else
+			screen_state = display_icon_override || "ai"
+
+			// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+			// var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
+			var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
+			// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
+			screen_overlay.layer = FLOAT_LAYER + 0.1
+			screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
+			. += screen_overlay
+
+			// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
+			// . += emissive_appearance(icon, screen_state, src)
+			. += emissive_appearance(screen_icon, screen_state, src)
+			// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
 
 	// Lights
 	var/mutable_appearance/lights_overlay = mutable_appearance(icon, lights_state)
@@ -1268,23 +1311,6 @@
 	. += lights_overlay
 
 	. += emissive_appearance(icon, lights_state, src)
-
-
-	// Display
-	// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
-	// var/mutable_appearance/screen_overlay = mutable_appearance(icon, screen_state)
-	var/mutable_appearance/screen_overlay = mutable_appearance(screen_icon, screen_state)
-	// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
-
-	screen_overlay.layer = FLOAT_LAYER + 0.1
-	screen_overlay.appearance_flags = RESET_COLOR | KEEP_APART
-	. += screen_overlay
-
-	// PSYCHONAUT EDIT ADDITION BEGIN - AI_SCREENS - Original:
-	// . += emissive_appearance(icon, screen_state, src)//AI glow!
-	. += emissive_appearance(screen_icon, screen_state, src) //AI glow!
-	// PSYCHONAUT EDIT ADDITION END - AI_SCREENS
-
 
 #undef HOLOGRAM_CHOICE_CHARACTER
 #undef CHARACTER_TYPE_SELF

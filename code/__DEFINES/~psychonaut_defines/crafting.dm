@@ -1,1 +1,1 @@
-#define CAT_TURKISH "Turkish Food"
+#define CUISINE_TURKISH "Turkish"

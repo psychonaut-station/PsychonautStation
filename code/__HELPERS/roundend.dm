@@ -236,6 +236,8 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	SScredits.finalize()
 	// PSYCHONAUT ADDITION END - CREDITS
 
+	if(isnull(reboot_hud))
+		reboot_hud = new()
 	for(var/client/C in GLOB.clients)
 		if(!C?.credits)
 			C?.RollCredits()
@@ -243,6 +245,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 			C?.playtitlemusic(volume_multiplier = 0.5)
 		if(speed_round && was_forced != ADMIN_FORCE_END_ROUND)
 			C?.give_award(/datum/award/achievement/misc/speed_round, C?.mob)
+		C?.screen += reboot_hud
 		HandleRandomHardcoreScore(C)
 
 	// PSYCHONAUT EDIT REMOVAL BEGIN - CREDITS - Original:
@@ -706,7 +709,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	show_to_observers = FALSE
 
 /datum/action/report/Trigger(mob/clicker, trigger_flags)
-	if(owner && GLOB.common_report && SSticker.current_state == GAME_STATE_FINISHED)
+	. = ..()
+	if(!.)
+		return
+	if(GLOB.common_report && SSticker.current_state == GAME_STATE_FINISHED)
 		SSticker.show_roundend_report(owner.client)
 
 /datum/action/report/IsAvailable(feedback = FALSE)
@@ -782,3 +788,11 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 	var/winner_key
 	///The name of the area we earned this cheevo in
 	var/award_location
+
+/atom/movable/screen/reboot_timer
+	screen_loc = "CENTER:-140,TOP:-42"
+	mouse_opacity = MOUSE_OPACITY_TRANSPARENT
+	maptext_width = 340
+	maptext_height = 64
+	maptext = ""
+	layer = SCREENTIP_LAYER //This is basically an extra screentip

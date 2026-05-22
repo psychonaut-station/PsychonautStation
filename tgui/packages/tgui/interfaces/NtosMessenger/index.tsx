@@ -220,7 +220,7 @@ const ContactsScreen = (props: any) => {
           <Stack vertical textAlign="center">
             <Box bold>
               <Icon name="address-card" mr={1} />
-              SpaceMessenger V6.5.3
+              SpaceMessenger V6.5.4
             </Box>
             <Box italic opacity={0.3} mt={1}>
               Bringing you spy-proof communications since 2467.
@@ -387,6 +387,7 @@ const SendToAllSection = (props) => {
       <Section>
         <TextArea
           height={6}
+          width="100%"
           value={message}
           placeholder="Send message to everyone..."
           onChange={setMessage}

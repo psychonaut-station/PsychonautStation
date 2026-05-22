@@ -114,32 +114,20 @@
 
 	var/datum/hud/H = owner.hud_used
 
-	if(!our_gun)
-		if(!H.cybernetics_ammo[zone])
-			return
-		H.cybernetics_ammo[zone] = null
+	var/hud_key = zone == BODY_ZONE_L_ARM ? HUD_MOB_AMMO_COUNTER_L : HUD_MOB_AMMO_COUNTER_R
 
-		H.infodisplay -= counter_ref
-		H.mymob.client.screen -= counter_ref
-		QDEL_NULL(counter_ref)
+	if(!our_gun)
+		if(!H.screen_objects[hud_key])
+			return
+		H.remove_screen_object(counter_ref)
+		counter_ref = null
 		return
 
-	if(!H.cybernetics_ammo[zone])
-		counter_ref = new(null, H)
-		counter_ref.screen_loc =  zone == BODY_ZONE_L_ARM ? ui_hand_position_y(1,1,9) : ui_hand_position_y(2,1,9)
-		H.cybernetics_ammo[zone] = counter_ref
-		H.infodisplay += counter_ref
-		H.mymob.client.screen += counter_ref
+	if(!H.screen_objects[hud_key])
+		var/ui_loc = zone == BODY_ZONE_L_ARM ? ui_hand_position_y(1,1,9) : ui_hand_position_y(2,1,9)
+		counter_ref = H.add_screen_object(/atom/movable/screen/cybernetics/ammo_counter, hud_key, HUD_GROUP_STATIC, null, ui_loc, TRUE)
 
-	var/display
-	if(istype(our_gun,/obj/item/gun/ballistic))
-		var/obj/item/gun/ballistic/balgun = our_gun
-		display = balgun.magazine ? balgun.magazine.ammo_count(FALSE) : 0
-	else
-		var/obj/item/gun/energy/egun = our_gun
-		var/obj/item/ammo_casing/energy/shot = egun.ammo_type[egun.select]
-		display = FLOOR(egun.cell.charge / shot.e_cost,1)
-	counter_ref.maptext = MAPTEXT("<div align='center' valign='middle' style='position:relative; top:0px; left:6px'><font color='white'>[display]</font></div>")
+	counter_ref?.update_counter(our_gun)
 
 /obj/item/organ/cyberimp/arm/ammo_counter/proc/add_to_hand(datum/source, obj/item/maybegun)
 	SIGNAL_HANDLER

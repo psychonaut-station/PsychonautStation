@@ -60,8 +60,6 @@
 	else
 		our_human.wipe_state() // We're wiping the dummys overlays and outfit
 		our_human.set_species(/datum/species/human) // We're setting it to human beacuse if the savefile doesnt have species entry, it doesnt use previous icon's species
-		our_human.icon_render_keys = list()
-		our_human.update_body(is_creating = TRUE) // We're recreating bodyparts etc.
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order()) // Apply the preferences in priority order
 		if (preference.savefile_identifier != PREFERENCE_CHARACTER)
@@ -72,6 +70,9 @@
 		var/new_value = preference.deserialize(saved_data)
 
 		preference.apply_to_human(our_human, new_value)
+
+	our_human.icon_render_keys = list()
+	our_human.update_body(is_creating = TRUE)
 
 	if(!mob_name)
 		mob_name = our_human.real_name

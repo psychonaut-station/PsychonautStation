@@ -42,8 +42,6 @@ async function main() {
             title_tg.lines.push(`- \`${key}\`: ${newvalue}`)
         }
     });
-    title_defnhelpers.lines = title_defnhelpers.lines.filter(item => item !== "- N/A")
-
     var all_titles = [
         title_module,
         title_desc,
@@ -53,6 +51,17 @@ async function main() {
         title_notincludedmodular,
         title_credits
     ]
+
+    // Remove '- N/A' placeholders from any title that also has real entries.
+    // Keep '- N/A' only if the title would otherwise be empty.
+    all_titles.forEach(t => {
+        if (!t || !Array.isArray(t.lines)) return;
+        const hasReal = t.lines.some(l => l && l.trim() !== "- N/A");
+        if (hasReal) {
+            t.lines = t.lines.filter(l => l && l.trim() !== "- N/A");
+        }
+        if (t.lines.length === 0) t.lines = ['- N/A'];
+    });
 
     const file_lines = [];
     all_titles.forEach((title) => {

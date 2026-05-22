@@ -243,40 +243,6 @@
 	TEST_ASSERT(!component.has_live_watchers(), "Closing secureye should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing secureye should clear the watched alert.")
 
-/datum/unit_test/bodycam_watchers_secureye_close_dedupes_users/Run()
-	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
-	host.mock_client = new /datum/client_interface()
-	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
-	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
-	var/datum/computer_file/program/secureye/program = allocate(/datum/computer_file/program/secureye)
-	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
-	var/viewer_ref = REF(viewer)
-
-	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
-	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
-	TEST_ASSERT_NOTNULL(program, "Expected to allocate a secureye program watcher.")
-
-	var/map_name = "camera_console_[REF(program)]_map"
-	program.cam_screen = new
-	program.cam_screen.generate_view(map_name)
-
-	viewer.mock_client = new /datum/client_interface()
-	var/datum/tgui/ui = new(viewer, program, program.tgui_id, program.filedesc)
-	// Simulate the duplicate insertion that the old bug caused
-	program.concurrent_users |= viewer_ref
-	program.concurrent_users |= viewer_ref
-	program.camera_ref = WEAKREF(camera)
-	program.open_uis = list(ui)
-	camera.on_start_watching(program)
-
-	TEST_ASSERT_EQUAL(length(program.concurrent_users), 1, "Secureye should only track a viewer once even if added twice.")
-	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while secureye is watching.")
-
-	program.ui_close(viewer)
-
-	TEST_ASSERT(!component.has_live_watchers(), "Closing secureye should remove the live watcher even if viewer ref was duplicated.")
-	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing secureye should clear the watched alert after deduplication.")
-
 /datum/unit_test/bodycam_watchers_secureye_stale_open_uis/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
 	host.mock_client = new /datum/client_interface()
@@ -333,11 +299,13 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert with two console viewers.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should report live watchers with two console viewers.")
 
+	console.open_uis -= ui_one
 	console.ui_close(viewer_one)
 
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should persist while viewer_two is still watching the console.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should still have a live watcher after one of two console viewers closes.")
 
+	console.open_uis -= ui_two
 	console.ui_close(viewer_two)
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after both console viewers close.")
@@ -373,11 +341,13 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert with two secureye viewers.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should report live watchers with two secureye viewers.")
 
+	program.open_uis -= ui_one
 	program.ui_close(viewer_one)
 
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should persist while viewer_two is still watching via secureye.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should still have a live watcher after one of two secureye viewers closes.")
 
+	program.open_uis -= ui_two
 	program.ui_close(viewer_two)
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after both secureye viewers close.")

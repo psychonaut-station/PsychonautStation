@@ -7175,6 +7175,7 @@
 #include "modular_psychonaut\modules\food_vendor\code\trash.dm"
 #include "modular_psychonaut\modules\food_vendor\code\vendor.dm"
 #include "modular_psychonaut\modules\GAGS\code\greyscale_configs.dm"
+#include "modular_psychonaut\modules\golfcartplus\code\golfcart.dm"
 #include "modular_psychonaut\modules\holodeck_camping\code\map_template.dm"
 #include "modular_psychonaut\modules\holodeck_pool\code\map_template.dm"
 #include "modular_psychonaut\modules\hydroponics\chili.dm"

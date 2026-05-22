@@ -7120,6 +7120,8 @@
 #include "modular_psychonaut\modules\brig_physician\code\job.dm"
 #include "modular_psychonaut\modules\brig_physician\code\role_tablet_presets.dm"
 #include "modular_psychonaut\modules\brig_physician\code\trim.dm"
+#include "modular_psychonaut\modules\buildmode\code\globals.dm"
+#include "modular_psychonaut\modules\buildmode\code\submodes\offer.dm"
 #include "modular_psychonaut\modules\cami_shuttle\code\emergency.dm"
 #include "modular_psychonaut\modules\cami_shuttle\code\machinery.dm"
 #include "modular_psychonaut\modules\cami_shuttle\code\turf.dm"

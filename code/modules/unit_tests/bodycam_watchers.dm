@@ -70,8 +70,11 @@
 	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
 	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
 
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, console, "CameraConsole", console.name)
 	console.active_camera = camera
-	console.open_uis = list(allocate(/datum))
+	console.open_uis = list(ui)
 	camera.on_start_watching(console)
 
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a security console is watching.")
@@ -93,9 +96,11 @@
 	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
 	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
 
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, console, "CameraConsole", console.name)
 	console.concurrent_users += REF(viewer)
 	console.active_camera = camera
-	console.open_uis = list(allocate(/datum))
+	console.open_uis = list(ui)
 	camera.on_start_watching(console)
 
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a security console is watching.")
@@ -115,8 +120,11 @@
 	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
 	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
 
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, console, "CameraConsole", console.name)
 	console.active_camera = camera
-	console.open_uis = list(allocate(/datum))
+	console.open_uis = list(ui)
 	camera.on_start_watching(console)
 
 	TEST_ASSERT(component.has_live_watchers(), "Component should treat a console with an open UI as a live watcher.")
@@ -163,6 +171,10 @@
 	program.cam_screen = new
 	program.cam_screen.generate_view(map_name)
 
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, program, program.tgui_id, program.filedesc)
+	program.open_uis = list(ui)
 	program.camera_ref = WEAKREF(camera)
 	camera.on_start_watching(program)
 
@@ -248,11 +260,13 @@
 	program.cam_screen = new
 	program.cam_screen.generate_view(map_name)
 
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, program, program.tgui_id, program.filedesc)
 	// Simulate the duplicate insertion that the old bug caused
 	program.concurrent_users |= viewer_ref
 	program.concurrent_users |= viewer_ref
 	program.camera_ref = WEAKREF(camera)
-	program.open_uis = list(allocate(/datum))
+	program.open_uis = list(ui)
 	camera.on_start_watching(program)
 
 	TEST_ASSERT_EQUAL(length(program.concurrent_users), 1, "Secureye should only track a viewer once even if added twice.")
@@ -278,8 +292,11 @@
 	program.cam_screen = new
 	program.cam_screen.generate_view(map_name)
 
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+	var/datum/tgui/ui = new(viewer, program, program.tgui_id, program.filedesc)
 	program.camera_ref = WEAKREF(camera)
-	program.open_uis = list(allocate(/datum))
+	program.open_uis = list(ui)
 	camera.on_start_watching(program)
 
 	TEST_ASSERT(component.has_live_watchers(), "Component should treat a secureye with an open UI as a live watcher.")

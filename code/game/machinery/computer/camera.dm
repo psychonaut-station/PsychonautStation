@@ -183,10 +183,12 @@
 	if(!LAZYLEN(open_uis))
 		return FALSE
 	for(var/datum/tgui/ui as anything in open_uis)
-		var/mob/user = ui?.user
+		if(!istype(ui, /datum/tgui))
+			continue
+		var/mob/user = ui.user
 		if(user == excluding_user)
 			continue
-		if(user && user.client && isliving(user))
+		if(user && GET_CLIENT(user) && isliving(user))
 			return TRUE
 	return FALSE
 

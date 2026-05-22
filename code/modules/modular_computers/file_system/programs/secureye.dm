@@ -199,14 +199,37 @@
 	// Unregister map objects
 	cam_screen.hide_from(user)
 	// Turn off the console
+	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
+	if(istype(active_camera, /obj/machinery/camera/bodycam))
+		if(!has_living_viewers(user))
+			if(!spying && active_camera)
+				active_camera.on_stop_watching(src)
+			camera_ref = null
+			last_camera_turf = null
+			if(!spying && is_living)
+				playsound(computer, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
+		return
 	if(length(concurrent_users) == 0 && is_living)
-		var/obj/machinery/camera/active_camera = camera_ref?.resolve()
 		if(!spying && active_camera)
 			active_camera.on_stop_watching(src)
 		camera_ref = null
 		last_camera_turf = null
 		if(!spying)
 			playsound(computer, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
+
+/datum/computer_file/program/secureye/proc/has_living_viewers(mob/excluding_user)
+	var/list/viewer_uis = computer?.open_uis
+	if(!LAZYLEN(viewer_uis))
+		viewer_uis = open_uis
+	if(!LAZYLEN(viewer_uis))
+		return FALSE
+	for(var/datum/tgui/ui as anything in viewer_uis)
+		var/mob/user = ui?.user
+		if(user == excluding_user)
+			continue
+		if(user && user.client && isliving(user))
+			return TRUE
+	return FALSE
 
 /datum/computer_file/program/secureye/proc/on_camera_disabled(obj/machinery/camera/camera)
 	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
@@ -221,6 +244,13 @@
 
 /datum/computer_file/program/secureye/proc/update_active_camera_screen()
 	var/obj/machinery/camera/active_camera = camera_ref?.resolve()
+	if(istype(active_camera, /obj/machinery/camera/bodycam) && !has_living_viewers())
+		if(!spying && active_camera)
+			active_camera.on_stop_watching(src)
+		camera_ref = null
+		last_camera_turf = null
+		cam_screen.show_camera_static()
+		return
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		cam_screen.show_camera_static()

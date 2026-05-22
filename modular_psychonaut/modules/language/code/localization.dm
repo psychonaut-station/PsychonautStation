@@ -219,6 +219,49 @@
 				if("ü","ö")
 					return "[rawtext]'nün"
 
+/proc/locale_suffix_perfective(rawtext, is_positive = FALSE)
+	var/text = replacetext(rawtext, " ", "")
+	var/list/charlist = vowelcatcher(text)
+	var/last_vowel = charlist[2]
+
+	if(is_positive)
+		// Olumlu (-mış / -miş / -muş / -müş)
+		switch(last_vowel)
+			if("a", "ı")
+				return "[rawtext]mış"
+			if("e", "i")
+				return "[rawtext]miş"
+			if("o", "u")
+				return "[rawtext]muş"
+			if("ö", "ü")
+				return "[rawtext]müş"
+	else
+		// Olumsuzluk (-mamış / -memiş)
+		if(last_vowel in list("a", "ı", "o", "u"))
+			return "[rawtext]mamış"
+		else
+			return "[rawtext]memiş"
+
+	return "[rawtext]mış" // Fallback
+
+/proc/turkish_list(list/input, nothing_text = "hiçbir şey", and_text = " ve ", comma_text = ", ")
+	var/total = length(input)
+	switch(total)
+		if (0)
+			return "[nothing_text]"
+		if (1)
+			return "[input[1]]"
+		if (2)
+			return "[input[1]][and_text][input[2]]"
+		else
+			var/output = ""
+			var/index = 1
+			while (index < total - 1)
+				output += "[input[index]][comma_text]"
+				index++
+
+			return "[output][input[index]][and_text][input[total]]"
+
 #undef VOWEL
 #undef CONSONANT
 #undef NUMBER

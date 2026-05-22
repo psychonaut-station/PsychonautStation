@@ -62,6 +62,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/modules/antagonists/wizard/grand_ritual/finales/cheese.dm`: `/datum/grand_finale/cheese/trigger()`
 - `code/modules/antagonists/wizard/grand_ritual/grand_rune.dm`: `/obj/effect/grand_rune/announce_rune()`, `/obj/effect/grand_rune/finale/invoke_rune()`
 - `code/modules/atmospherics/machinery/components/fusion/hfr_procs.dm`: `/obj/machinery/atmospherics/components/unary/hypertorus/core/countdown()`
+- `code/modules/autowiki/pages/surgery.dm`: `/datum/autowiki/surgery/generate()`, `/datum/autowiki/surgery/format_requirement_list()`, `/datum/autowiki/surgery/get_tool_name()`
 - `code/modules/client/verbs/who.dm`: `NO_ADMINS_ONLINE_MESSAGE`, `/client/adminwho()`
 - `code/modules/events/anomaly/_anomaly.dm`: `/datum/round_event/anomaly/announce()`
 - `code/modules/events/anomaly/anomaly_bioscrambler.dm`: `/datum/round_event/anomaly/anomaly_bioscrambler/announce()`

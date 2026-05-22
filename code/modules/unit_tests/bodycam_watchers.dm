@@ -365,3 +365,138 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after both secureye viewers close.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last secureye viewer closes.")
+
+/datum/unit_test/bodycam_watchers_console_ghost_and_living/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/obj/machinery/computer/security/console = EASY_ALLOCATE()
+	var/mob/living/carbon/human/consistent/living_viewer = EASY_ALLOCATE()
+	living_viewer.mock_client = new /datum/client_interface()
+	var/mob/dead/observer/ghost = EASY_ALLOCATE()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+
+	var/datum/tgui/ui_living = new(living_viewer, console, "CameraConsole", console.name)
+	var/datum/tgui/ui_ghost = new(ghost, console, "CameraConsole", console.name)
+	console.concurrent_users += REF(living_viewer)
+	console.active_camera = camera
+	console.open_uis = list(ui_living, ui_ghost)
+	camera.on_start_watching(console)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should be active with a living viewer and a ghost on the console.")
+
+	console.open_uis -= ui_ghost
+	console.ui_close(ghost)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should persist after ghost closes while a living viewer remains.")
+	TEST_ASSERT(component.has_live_watchers(), "Component should still have a live watcher after the ghost closes.")
+
+	console.open_uis -= ui_living
+	console.ui_close(living_viewer)
+
+	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after the living viewer also closes.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last living viewer closes.")
+
+/datum/unit_test/bodycam_watchers_secureye_ghost_and_living/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/datum/computer_file/program/secureye/program = allocate(/datum/computer_file/program/secureye)
+	var/mob/living/carbon/human/consistent/living_viewer = EASY_ALLOCATE()
+	living_viewer.mock_client = new /datum/client_interface()
+	var/mob/dead/observer/ghost = EASY_ALLOCATE()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+	TEST_ASSERT_NOTNULL(program, "Expected to allocate a secureye program watcher.")
+
+	var/map_name = "camera_console_[REF(program)]_map"
+	program.cam_screen = new
+	program.cam_screen.generate_view(map_name)
+
+	var/datum/tgui/ui_living = new(living_viewer, program, program.tgui_id, program.filedesc)
+	var/datum/tgui/ui_ghost = new(ghost, program, program.tgui_id, program.filedesc)
+	program.concurrent_users += REF(living_viewer)
+	program.camera_ref = WEAKREF(camera)
+	// open_uis must be set before on_start_watching so has_living_viewers() can find the living viewer
+	program.open_uis = list(ui_living, ui_ghost)
+	camera.on_start_watching(program)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should be active with a living viewer and a ghost on secureye.")
+
+	// Ghost closes — living viewer remains, alert must stay
+	program.open_uis -= ui_ghost
+	program.ui_close(ghost)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should persist after ghost closes while a living viewer remains on secureye.")
+	TEST_ASSERT(component.has_live_watchers(), "Component should still have a live watcher after the ghost closes on secureye.")
+
+	// Living viewer closes — alert must clear
+	program.open_uis -= ui_living
+	program.ui_close(living_viewer)
+
+	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after the living viewer also closes on secureye.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last living viewer closes on secureye.")
+
+/datum/unit_test/bodycam_watchers_console_camera_disabled/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/obj/machinery/computer/security/console = EASY_ALLOCATE()
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+
+	var/datum/tgui/ui = new(viewer, console, "CameraConsole", console.name)
+	console.concurrent_users += REF(viewer)
+	console.active_camera = camera
+	console.open_uis = list(ui)
+	camera.on_start_watching(console)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should have the viewed alert while a console is watching.")
+	TEST_ASSERT(component.has_live_watchers(), "Component should report a live watcher while the console is watching.")
+
+	// Simulate bodycam being disabled (e.g. EMP, cover removed)
+	console.on_camera_disabled(camera)
+
+	TEST_ASSERT(!component.has_live_watchers(), "Disabling the bodycam should remove the live watcher.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert.")
+
+/datum/unit_test/bodycam_watchers_secureye_camera_disabled/Run()
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
+	host.mock_client = new /datum/client_interface()
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+	var/obj/machinery/camera/bodycam/camera = locate(/obj/machinery/camera/bodycam) in host.contents
+	var/datum/computer_file/program/secureye/program = allocate(/datum/computer_file/program/secureye)
+	var/mob/living/carbon/human/consistent/viewer = EASY_ALLOCATE()
+	viewer.mock_client = new /datum/client_interface()
+
+	TEST_ASSERT_NOTNULL(component, "Expected the host to receive a pausable bodycam component.")
+	TEST_ASSERT_NOTNULL(camera, "Expected the host to receive a bodycam camera.")
+	TEST_ASSERT_NOTNULL(program, "Expected to allocate a secureye program watcher.")
+
+	var/map_name = "camera_console_[REF(program)]_map"
+	program.cam_screen = new
+	program.cam_screen.generate_view(map_name)
+
+	var/datum/tgui/ui = new(viewer, program, program.tgui_id, program.filedesc)
+	program.concurrent_users += REF(viewer)
+	program.camera_ref = WEAKREF(camera)
+	program.open_uis = list(ui)
+	camera.on_start_watching(program)
+
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should have the viewed alert while secureye is watching.")
+	TEST_ASSERT(component.has_live_watchers(), "Component should report a live watcher while secureye is watching.")
+
+	program.on_camera_disabled(camera)
+
+	TEST_ASSERT(!component.has_live_watchers(), "Disabling the bodycam should remove the live watcher from secureye.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert on secureye.")
+

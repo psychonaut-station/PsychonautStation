@@ -24,4 +24,4 @@ Eklediğimiz, değiştirdiğimiz admin özellikleri
 
 ### Katkıda Bulunanlar
 
-Rengan, loanselot, Seefaaa
+Rengan, loanselot, Seefaaa, Amor4k

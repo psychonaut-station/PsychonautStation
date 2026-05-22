@@ -257,12 +257,6 @@
   - bugfix: People who re-enter their body can now exit again by moving.
   lelandkemble:
   - spellcheck: The Moon path armor knowledge's description has been made more clear
-<<<<<<< HEAD
-2026-05-18:
-  Ureus:
-  - rscadd: "Traitorlara makinelere gizli bombalar yerle\u015Ftirmelerini sa\u011F\
-      layan \"MI13 Sabotage Kit\" eklendi."
-=======
 2026-05-16:
   Aliceee2ch:
   - map: Genetics Lab was made less secure and more public on every map, try it out!
@@ -321,6 +315,9 @@
   - rscadd: '[Icebox] Security saw a minor remapping, with most notably the removal
       of the labor shuttle and the integration of the labor camp into the bottom floor
       of the perma-brig.'
+  Ureus:
+  - rscadd: "Traitorlara makinelere gizli bombalar yerle\u015Ftirmelerini sa\u011F\
+      layan \"MI13 Sabotage Kit\" eklendi."
   SmArtKar:
   - bugfix: Stumps no longer give a reattachment moodlet to mobs
   SyncIt21:
@@ -396,4 +393,3 @@
   - bugfix: about a billion runtimes per round have been fixed, & you'll no longer
       repeat what you said last when you're forced to speak
   - bugfix: The dead can't drive
->>>>>>> 05cd67b1654bd1b62165de30f6edde58633d90b5

@@ -16,6 +16,7 @@ Adından anlaşılacağı gibi oyunu Türkçeleştirme.
 - `code/datums/ai_laws/laws_neutral.dm`: `/datum/ai_laws/united_nations/var/inherent`, `/datum/ai_laws/hulkamania/var/inherent`, `/datum/ai_laws/reporter/var/inherent`, `/datum/ai_laws/dungeon_master/var/inherent`, `/datum/ai_laws/painter/var/inherent`, `/datum/ai_laws/tyrant/var/inherent`, `/datum/ai_laws/overlord/var/inherent`
 - `code/datums/ai_laws/laws_station_sided.dm`: `/datum/ai_laws/default/asimov/var/inherent`, `/datum/ai_laws/asimovpp/var/inherent`, `/datum/ai_laws/nutimov/var/inherent`, `/datum/ai_laws/default/corporate/var/inherent`, `/datum/ai_laws/robocop/var/inherent`, `/datum/ai_laws/maintain/var/inherent`, `/datum/ai_laws/liveandletlive/var/inherent`, `/datum/ai_laws/peacekeeper/var/inherent`, `/datum/ai_laws/ten_commandments/var/inherent`, `/datum/ai_laws/default/paladin/var/inherent`, `/datum/ai_laws/paladin5/var/inherent`, `/datum/ai_laws/hippocratic/var/inherent`, `/datum/ai_laws/drone/var/inherent`
 - `code/datums/communications.dm`: `/datum/communciations_controller/make_announcement()`
+- `code/datums/components/admin_popup.dm`: `/atom/movable/screen/admin_popup/update_text()`
 - `code/datums/components/cult_ritual_item.dm`: `/datum/component/cult_ritual_item/scribe_narsie_rune()`
 - `code/datums/mutations/body.dm`: `/datum/mutation/tourettes/on_life()`
 - `code/datums/mutations/speech.dm`: `/datum/mutation/chav/New()`

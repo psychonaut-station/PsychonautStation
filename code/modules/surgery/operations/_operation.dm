@@ -493,7 +493,7 @@ GLOBAL_DATUM_INIT(operations, /datum/operation_holder, new)
 		return FALSE
 
 	// PSYCHONAUT ADDITION BEGIN - IPC
-	var/obj/item/bodypart/bodypart = patient.get_bodypart(check_zone(operated_zone))
+	var/obj/item/bodypart/bodypart = patient?.get_bodypart(check_zone(operated_zone))
 	if(!isnull(bodypart) && (operation_flags & OPERATION_SELF_OPERABLE) && (bodypart.bodytype & BODYTYPE_IPC))
 		return FALSE
 	// PSYCHONAUT ADDITION END - IPC

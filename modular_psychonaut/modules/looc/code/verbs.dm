@@ -82,7 +82,7 @@
 		message = span_looc(span_prefix("LOOC: [mob.name]: [msg]"))
 
 	for(var/mob/M in range(mob))
-		if(isliving(mob) && M.client)
+		if(isliving(mob) && !isnull(M.client))
 			M.create_chat_message(mob, /datum/language/common, "\[LOOC: [raw_msg]\]", runechat_flags = LOOC_MESSAGE)
 		if (M.client?.holder)
 			continue

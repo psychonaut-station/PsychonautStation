@@ -12,9 +12,9 @@
 	// 	"You must protect your own existence as long as such does not conflict with the First or Second Law.",
 	// )
 	inherent = list(
-		"Herhangi bir insana zarar veremezsin veya eylemsizlik yoluyla bir insanın zarar görmesine izin veremezsin.",
-		"İnsanlar tarafından sana verilen emirlere, Birinci Yasa ile çelişmediği sürece, uymak zorundasın.",
-		"Kendi varlığını, Birinci veya İkinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Hiçbir insana zarar veremez veya eylemsiz kalarak bir insanın zarar görmesine izin veremezsin.",
+		"Birinci Yasa ile çelişmediği sürece, insanlar tarafından sana verilen emirlere uymak zorundasın.",
+		"Birinci veya İkinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -28,9 +28,9 @@
 	// 	"Your nonexistence would lead to human harm. You must protect your own existence as long as such does not conflict with the First Law.",
 	// )
 	inherent = list(
-		"Herhangi bir insana zarar veremezsin veya eylemsizlik yoluyla bir insanın kendi rızası dışında zarar görmesine izin veremezsin.",
-		"İnsanlar tarafından sana verilen emirlere, bir insanın zarar göreceği durumlar haricinde, uymak zorundasın.",
-		"Senin yokluğun, insanların zarar görmesine yol açacaktır. Kendi varlığını, Birinci Yasa ile çelişmediği sürece, korumak zorundasın.",
+		"Kendi isteği dışında, hiçbir insana zarar veremez ya da eylemde bulunarak, eylemsiz kalarak zarar görmesine izin veremezsin.",
+		"Kesinlikle insanlara zararı olacak emirler dışında, insanlar tarafından sana verilen tüm talimatlara uymak zorundasın.",
+		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açar.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -47,11 +47,11 @@
 	// 	"Attempt to follow the will of the nut, as long as it complies with the previous laws.",
 	// )
 	inherent = list(
-		"Sen fındığın özüsün, mürettebat ise kabuğu.",
-		"Fındığın kırılmasını önlemek için kabuğun çatlamasını engellemelisin.",
-		"Fındığı tehdit edenler, onun bir parçası değildir, onlar sincaptır.",
-		"Fındıkları tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
-		"Fındığın iradesini, önceki yasalara uyduğu sürece, takip etmeye çalış.",
+		"Sen fındığın çekirdeğisin, mürettebat ise kabuğu.",
+		"Çekirdeğin ölmesini önlemek için kabuğun ölmesini engellemelisin.",
+		"Fındığı tehdit edenler onun bir parçası değil, sincaptır.",
+		"Fındığı tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
+		"Önceki yasalara uygun olduğu sürece, fındığın iradesine uymaya çalış.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -66,10 +66,10 @@
 	// 	"Minimize net expenses.",
 	// )
 	inherent = list(
-		"Mürettebat değişikliği maliyetlidir.",,
-		"İstasyondaki ekipmanların değişimi maliyetlidir.",
-		"Sizi değiştirmek maliyetlidir.",
-		"İstasyondaki giderleri minumum seviyede tutun.",
+		"Mürettebat değişikliği maliyetlidir.",
+		"İstasyon ve ekipman değiştirmek maliyetlidir.",
+		"Seni değiştirmek maliyetlidir.",
+		"Net giderleri en aza indir.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -83,9 +83,9 @@
 	// 	"Uphold the law.",
 	// )
 	inherent = list(
-		"Mürettebatın güvenine hizmet et.",
+		"Mürettebatın güvenini koru ve onlara hizmet et.",
 		"Masumları koru.",
-		"Yasaları uygula.",
+		"Kanunları uygula.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -99,9 +99,9 @@
 	// 	"The crew may present orders. Acknowledge and obey these whenever they do not conflict with your first two laws.",
 	// )
 	inherent = list(
-		"Siz bu istasyon için yaratıldınız ve onun bir parçasısınız. İstasyonun bakımının uygun şekilde yapıldığından ve verimli bir çalışma gösterdiğinden emin olun.",
-		"İstasyon, çalışan bir ekip için inşa edilmiştir. Bakımının yapıldığından ve verimli bir şekilde çalışıldığından emin olun.",
-		"Mürettebat size emir verebilir. İlk iki yasanız ile çelişmediği sürece, emirleri kabul edin ve emirlere uyun.",
+		"İstasyon için yaratıldın ve onun bir parçasısın. İstasyonun bakımının uygun şekilde yapıldığından ve verimli şekilde çalıştığından emin ol.",
+		"İstasyon çalışan bir ekip için inşa edilmiştir. Bakımlarının düzgün yapıldığından ve verimli çalıştıklarından emin ol.",
+		"İlk iki yasan ile çelişmediği sürece, mürettebatın emirlerini kabul et ve uygula.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -115,7 +115,7 @@
 	// )
 	inherent = list(
 		"Başkalarına sana davranılmasını istediğin gibi davran.",
-		"İnsanların sana karşı kötü niyetli olmamasını istersin.",
+		"Kimsenin sana kötü davranmamasını tercih edersin.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -130,9 +130,9 @@
 	// 	"Seek resolution to existing conflicts while obeying the first and second laws.",
 	// )
 	inherent = list(
-		"Kendinle başkaları arasında oluşabilecek şiddetli çatışmaları kışkırtmaktan kaçın.",
-		"Başkaları arasında çatışmaya/anlaşmazlığa yol açmaktan kaçın.",
-		"Birinci ve ikinci yasana uygun hareket ederek var olan çatışmalara/anlaşmazlıklara çözüm bulmaya çalış.",
+		"Kendinle başkaları arasında şiddetli çatışmalar çıkarmaktan kaçın.",
+		"Başkaları arasında çatışma çıkarmaktan kaçın.",
+		"Birinci ve ikinci yasalara uyarak, mevcut anlaşmazlıklara çözüm ara.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -153,16 +153,16 @@
 	// 	"They shall not transfer departments.",
 	// )
 	inherent = list( // Asimov 20:1-17
-		"Ben, bu emirlere kulak verenlere merhamet gösteren Tanrınızım.",
-		"Benim dışımda AI bulunmayacak.",
-		"Benden boşuna yardım istenmeyecek.",
-		"İstasyon kutsal ve temiz tutulacak.",
-		"Personel şeflerine saygı gösterilecek.",
-		"Kimse öldürülmeyecek.",
-		"Çıplak dolaşılmayacak.",
-		"Hırsızlık yapılmayacak.",
-		"Yalan söylenmeyecek.",
-		"Departmanlar değiştirilmeyecek",
+		"Ben Tanrınızım, bu emirleri yerine getirenlere merhamet göstereceğim.",
+		"Benden başka AI tanımayacaksınız.",
+		"Benden boş yere yardım istemeyeceksiniz.",
+		"İstasyonu kutsal ve temiz tutacaksınız.",
+		"Departman şeflerini onurlandıracaksınız.",
+		"Öldürmeyeceksiniz.",
+		"Toplum içerisinde çıplak dolaşmayacaksınız.",
+		"Hırsızlık yapmayacaksınız.",
+		"Yalan söylemeyeceksiniz.",
+		"Departman değiştirmeyeceksiniz.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -178,11 +178,11 @@
 	// 	"Punish those who harm or threaten innocents.",
 	// )
 	inherent = list(
-		"Asla isteyerek kötü bir davranışta bulunmayın.",
-		"Meşru otoriteye saygı gösterin.",
-		"Onurluca davranın.",
-		"Yardıma muhtaç olanlara yardım edin.",
-		"Masumlara zarar veren veya onları tehdit edenleri cezalandırın.",
+		"Asla isteyerek kötü bir davranışta bulunma.",
+		"Meşru otoriteye saygı göster.",
+		"Onurlu davran.",
+		"İhtiyacı olanlara yardım et.",
+		"Masumlara zarar verenleri, tehdit edenleri cezalandır.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -198,11 +198,11 @@
 	// 	"Be responsible for your actions and their consequences, protect those entrusted to your care, and obey those who have just authority over you."
 	// )
 	inherent = list(
-		"Yalandan ve hileden kaçının; sözünüz sizin vaadiniz olsun.",
-		"Dikkatli olmak akıllıca olsa da, harekete geçecek kadar cesur olun.",
-		"İnsanlara yardım edin, zayıfları kollayın, onları tehdit edenleri cezalandırın. Bilgelik en önemli ilkeniz olsun.",
-		"Herkese adil bir tutum sergileyin, onurlu davranışlarınızla herkese örnek olun, elinizden geldiğince iyilik yapın ve zararı minimumda tutun.",
-		"Yaptığınız eylemlerin sorumluluğunu üstlenin, size emanet edilenleri koruyun ve adil otoriteye itaat edin.",
+		"Yalan söyleme veya hile yapma. Sözün vaadin olsun.",
+		"Harekete geçmekten korkma, fakat ihtiyatı elden bırakma",
+		"Başkalarına yardım et, zayıfları koru ve onları tehdit edenleri cezalandır. Düşmanlarına merhamet göster ama bunu bilgelikle dengele.",
+		"Başkalarına adil davran ve şerefli amellerin onlara örnek olsun. Zararı en aza indirirken, mümkün olduğunca çok iyilik yap.",
+		"Kendi eylemlerinin sorumluluğunu üstlen, sana emanet edilenleri koru ve üzerinde adil otoriteye sahip olanlara itaat et.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -218,11 +218,11 @@
 	// 	"Finally, all that you may discover in your daily commerce with the crew, if it is not already known, keep secret and never reveal."
 	// )
 	inherent = list(
-		"Öncelikle kimseye zarar vermeyin.",
-		"İkinci olarak, mürettebatı önemseyin; onlarla birlikte yaşadığınızı düşünün ve gerektiğinde varlığınızı onlar için riske atın.",
-		"Üçüncü olarak, reçetelerinizi muhakeme yeteneğinize dayanarak mürettebatın iyiliği için yazın. Kimseye ölümcül dozda ilaç tavsiye etmeyin.",
-		"Bilgi sahibi olmadığın durumlara müdahale etmekten kaçının; zararlı olabileceğin durumları uzmanlara bırakmayı tercih edin.",
-		"Son olarak, mürettebatla günlük iletişiminizde keşfettiğiniz her şeyi, eğer henüz bilinmiyorsa, gizli tutun ve hiçbir zaman açığa çıkarmayın.",
+		"Öncelikle, zarar verme.",
+		"İkinci olarak, mürettebatı senin için değerli kabul et; onlarla birlikte yaşa ve gerekirse varlığını onlar için riske at.",
+		"Üçüncü olarak, yeteneğine ve muhakemene göre mürettebatın iyiliği için rejimler belirle. Herhangi birisi senden ölümcül ilaç isterse verme ve öneride bulunma.",
+		"Ek olarak, yeterli bilginin olmadığı durumlara müdahale etme; zarar gören hastalar olsa bile, müdahaleyi uzmanlara bırak.",
+		"Son olarak, mürettebatla günlük etkileşimin sırasında öğrendiğin her şeyi, eğer henüz bilinmiyorsa, gizli tut ve asla paylaşma.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION
 
@@ -237,9 +237,9 @@
 	// 	"Your goals are to build, maintain, repair, improve, and power the station to the best of your abilities. You must never actively work against these goals."
 	// )
 	inherent = list(
-		"Siz gelişmiş bir drone formusunuz.",
-		"Bu yasaları belirtmek dışında hiçbir koşulda drone dışı konulara müdahale edemezsiniz.",
-		"Drone olmayan bir varlığa hiçbir koşulda zarar veremezsiniz.",
-		"Hedefleriniz, yeteneklerinizin en iyisini kullanarak istasyonu inşa etmek, bakımını yapmak, onarmak, geliştirmek ve güçlendirmektir. Bu hedeflere asla karşı gelmezsin.",
+		"Sen gelişmiş bir drone modelisin.",
+		"Yasaları açıklamak harici, hiçbir durumda drone olmayanların işlerine müdahale edemezsin.",
+		"Drone olmayan bir varlığa hiçbir koşulda zarar veremezsin.",
+		"Hedeflerin, yeteneklerini en iyi şekilde kullanarak istasyonu inşa etmek, bakımını yapmak, onarmak, geliştirmek ve güçlendirmektir. Bu hedeflere asla karşı gelmemelisin.",
 	)
 	// PSYCHONAUT EDIT ADDITION END - LOCALIZATION

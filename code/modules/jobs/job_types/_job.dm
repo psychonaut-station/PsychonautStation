@@ -577,7 +577,11 @@
 
 	src.job = job.title
 
-	if(fully_randomize)
+	// PSYCHONAUT EDIT ADDITION BEGIN - JOB_SLOTS - Original:
+	//if(fully_randomize)
+	var/randomise_job_slot = player_client.prefs.set_assigned_slot(job.title, player_client.mob?.mind?.late_joiner) //Pref Job Slots
+	if(fully_randomize || randomise_job_slot)
+	// PSYCHONAUT EDIT ADDITION END - JOB_SLOTS
 		player_client.prefs.apply_prefs_to(src)
 
 		// PSYCHONAUT EDIT ADDITION BEGIN - (Force Random Appereance) - Original:

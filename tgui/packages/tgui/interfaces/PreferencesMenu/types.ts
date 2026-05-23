@@ -213,6 +213,9 @@ export type PreferencesMenuData = {
   exploit_records: string; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
   max_background_charlength: number; // PSYCHONAUT ADDITION - CHARACTER_BACKGROUND_INFORMATION
 
+  job_slots: Record<string, number>; // PSYCHONAUT ADDITION - JOB_SLOTS
+  profile_index: Record<string, string>; // PSYCHONAUT ADDITION - JOB_SLOTS
+
 };
 
 export type ServerData = {

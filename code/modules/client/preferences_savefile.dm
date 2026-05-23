@@ -245,6 +245,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	chat_toggles = savefile.get_entry("chat_toggles", chat_toggles)
 	toggles = savefile.get_entry("toggles", toggles)
 	ignoring = savefile.get_entry("ignoring", ignoring)
+	// PSYCHONAUT ADDITION BEGIN - JOB_SLOTS
+	job_slots = savefile.get_entry("job_slots", job_slots)
+	job_preferences = savefile.get_entry("job_preferences", job_preferences)
+	// PSYCHONAUT ADDITION END - JOB_SLOTS
 
 	// OOC commendations
 	hearted_until = savefile.get_entry("hearted_until", hearted_until)
@@ -280,6 +284,18 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	be_special = sanitize_be_special(SANITIZE_LIST(be_special))
 	key_bindings = sanitize_keybindings(key_bindings)
 	favorite_outfits = SANITIZE_LIST(favorite_outfits)
+	// PSYCHONAUT ADDITION BEGIN - JOB_SLOTS
+	job_slots = SANITIZE_LIST(job_slots)
+	job_preferences = SANITIZE_LIST(job_preferences)
+	for(var/job_title in job_slots)
+		var/slot = job_slots[job_title]
+		if(!isnum(slot) || slot < JOB_SLOT_RANDOMISED_SLOT || slot > max_save_slots || slot == JOB_SLOT_CURRENT_SLOT || !SSjob.get_job(job_title))
+			job_slots -= job_title
+
+	for(var/j in job_preferences)
+		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
+			job_preferences -= j
+	// PSYCHONAUT ADDITION END - JOB_SLOTS
 
 	key_bindings_by_key = get_key_bindings_by_key(key_bindings)
 
@@ -337,6 +353,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	savefile.set_entry("key_bindings", key_bindings)
 	savefile.set_entry("hearted_until", (hearted_until > world.realtime ? hearted_until : null))
 	savefile.set_entry("favorite_outfits", favorite_outfits)
+	// PSYCHONAUT ADDITION BEGIN - JOB_SLOTS
+	savefile.set_entry("job_slots", job_slots)
+	savefile.set_entry("job_preferences", job_preferences)
+	// PSYCHONAUT ADDITION END - JOB_SLOTS
 	savefile.save()
 	return TRUE
 
@@ -367,8 +387,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Character
 	randomise = save_data?["randomise"]
 
+	// PSYCHONAUT EDIT REMOVAL BEGIN - JOB_SLOTS - Original:
 	//Load prefs
-	job_preferences = save_data?["job_preferences"]
+	//job_preferences = save_data?["job_preferences"]
+	// PSYCHONAUT EDIT REMOVAL END - JOB_SLOTS
 
 	//Quirks
 	all_quirks = save_data?["all_quirks"]
@@ -385,17 +407,21 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 
 	//Sanitize
 	randomise = SANITIZE_LIST(randomise)
-	job_preferences = SANITIZE_LIST(job_preferences)
+	// PSYCHONAUT EDIT REMOVAL BEGIN - JOB_SLOTS - Original:
+	//job_preferences = SANITIZE_LIST(job_preferences)
+	// PSYCHONAUT EDIT REMOVAL END - JOB_SLOTS
 	all_quirks = SANITIZE_LIST(all_quirks)
 
 	// PSYCHONAUT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES
 	alt_job_titles = SANITIZE_LIST(alt_job_titles)
 	// PSYCHONAUT ADDITION END - ALTERNATIVE_JOB_TITLES
 
+	// PSYCHONAUT EDIT REMOVAL BEGIN - JOB_SLOTS - Original:
 	//Validate job prefs
-	for(var/j in job_preferences)
-		if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
-			job_preferences -= j
+	//for(var/j in job_preferences)
+	//	if(job_preferences[j] != JP_LOW && job_preferences[j] != JP_MEDIUM && job_preferences[j] != JP_HIGH)
+	//		job_preferences -= j
+	// PSYCHONAUT EDIT REMOVAL END - JOB_SLOTS
 
 	all_quirks = SSquirks.filter_invalid_quirks(SANITIZE_LIST(all_quirks))
 	validate_quirks()
@@ -437,8 +463,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	//Character
 	save_data["randomise"] = randomise
 
+	// PSYCHONAUT EDIT REMOVAL BEGIN - JOB_SLOTS - Original:
 	//Write prefs
-	save_data["job_preferences"] = job_preferences
+	//save_data["job_preferences"] = job_preferences
+	// PSYCHONAUT EDIT REMOVAL END - JOB_SLOTS
 
 	//Quirks
 	save_data["all_quirks"] = all_quirks
@@ -467,7 +495,10 @@ SAVEFILE UPDATING/VERSIONING - 'Simplified', or rather, more coder-friendly ~Car
 	for (var/datum/preference_middleware/preference_middleware as anything in middleware)
 		preference_middleware.on_new_character(usr)
 
-	character_preview_view.update_body()
+	// PSYCHONAUT EDIT ADDITION BEGIN - Original:
+	// character_preview_view.update_body()
+	character_preview_view?.update_body()
+	// PSYCHONAUT EDIT ADDITION END
 
 /datum/preferences/proc/remove_current_slot()
 	PRIVATE_PROC(TRUE)

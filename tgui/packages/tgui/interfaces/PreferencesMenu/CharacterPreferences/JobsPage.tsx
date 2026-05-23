@@ -13,6 +13,10 @@ import {
 } from '../types';
 import { useServerPrefs } from '../useServerPrefs';
 
+// PSYCHONAUT ADDITION BEGIN - JOB_SLOTS
+import { JobSlotDropdown } from './JobSlotDropdown';
+// PSYCHONAUT ADDITION END - JOB_SLOTS
+
 function sortJobs(entries: [string, Job][], head?: string) {
   return sortBy(entries, [
     ([key, _]) => (key === head ? -1 : 1),
@@ -122,6 +126,7 @@ function PriorityButtons(props: PriorityButtonsProps) {
         justifyContent: 'flex-end',
         paddingLeft: '0.3em',
         paddingRight: '0.3em', // PSYCHONAUT ADDITION - ALTERNATIVE_JOB_TITLES
+        minWidth: '100px', // PSYCHONAUT ADDITION - JOB_SLOTS
       }}
     >
       {isOverflow ? (
@@ -228,13 +233,26 @@ function JobRow(props: JobRowProps) {
       </Stack>
     );
   } else {
+    // PSYCHONAUT EDIT ADDITION BEGIN - JOB_SLOTS - Original:
+    //rightSide = (
+    //  <PriorityButtons
+    //    createSetPriority={createSetPriority}
+    //    isOverflow={isOverflow}
+    //    priority={priority}
+    //  />
+    //);
     rightSide = (
-      <PriorityButtons
-        createSetPriority={createSetPriority}
-        isOverflow={isOverflow}
-        priority={priority}
-      />
-    );
+      <Stack align="center" justify="flex-end" height="100%" pr={1}>
+        <JobSlotDropdown name={name} />
+        <PriorityButtons
+          createSetPriority={createSetPriority}
+          isOverflow={isOverflow}
+          priority={priority}
+        />
+      </Stack>
+    )
+    // PSYCHONAUT EDIT ADDITION END - JOB_SLOTS
+
   }
 
   // PSYCHONAUT EDIT ADDITION BEGIN - ALTERNATIVE_JOB_TITLES - Original:

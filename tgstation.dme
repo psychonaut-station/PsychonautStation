@@ -7196,6 +7196,8 @@
 #include "modular_psychonaut\modules\items\code\lighter.dm"
 #include "modular_psychonaut\modules\items\code\tespih.dm"
 #include "modular_psychonaut\modules\items\code\wiki_manuals.dm"
+#include "modular_psychonaut\modules\job_slots\code\job_slots.dm"
+#include "modular_psychonaut\modules\job_slots\code\job_slots_middleware.dm"
 #include "modular_psychonaut\modules\jukebox\code\audio.dm"
 #include "modular_psychonaut\modules\jukebox\code\electrical_jukebox.dm"
 #include "modular_psychonaut\modules\jukebox\code\jobs.dm"

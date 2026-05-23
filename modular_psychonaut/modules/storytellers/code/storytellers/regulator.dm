@@ -6,18 +6,20 @@
 
 	population_min = 50
 	weight = 1
-	var/control_cooldown = 5 MINUTES
-	var/last_control = 0
+
+	COOLDOWN_DECLARE(regulator_cooldown)
+
+	var/cooldown_duration = 5 MINUTES
 
 /datum/storyteller/regulator/initialize()
 	. = ..()
-	last_control = world.time
+	COOLDOWN_START(src, regulator_cooldown, cooldown_duration)
 
 /datum/storyteller/regulator/fire(seconds_per_tick)
-	last_control = seconds_per_tick * 10
-	if(last_control < control_cooldown)
+	if(!COOLDOWN_FINISHED(src, regulator_cooldown))
 		return
-	last_control = 0
+
+	COOLDOWN_START(src, regulator_cooldown, cooldown_duration)
 	var/score = 0
 
 	var/total_chaos_points = 0

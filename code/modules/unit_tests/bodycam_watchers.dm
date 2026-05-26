@@ -299,6 +299,7 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert with two console viewers.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should report live watchers with two console viewers.")
 
+	// Manually clean up open_uis here to simulate how TGUI closes windows in-game.
 	console.open_uis -= ui_one
 	console.ui_close(viewer_one)
 

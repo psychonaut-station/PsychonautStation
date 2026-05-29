@@ -112,6 +112,10 @@
 	area_flags = BLOBS_ALLOWED | UNIQUE_AREA | CULT_PERMITTED
 	sound_environment = SOUND_AREA_SMALL_ENCLOSED
 
+/area/station/engineering/singularity/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/block_area_power_fail)
+
 /area/station/engineering/singularity/room
 	name = "\improper Singularity Engine Room"
 	icon_state = "engine_singularity_room"

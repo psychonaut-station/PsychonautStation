@@ -2,6 +2,7 @@
 #define EXTRA_ROOM_CHECK_SKIP 1
 #define EXTRA_ROOM_CHECK_FAIL 2
 
+<<<<<<< HEAD
 GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 	/area/station/engineering/main,
 	/area/station/engineering/supermatter,
@@ -11,6 +12,8 @@ GLOBAL_LIST_INIT(typecache_powerfailure_safe_areas, typecacheof(list(
 	/area/station/engineering/singularity,
 )))
 
+=======
+>>>>>>> af6d8bc211bcb7de6e54519b358f805850b4f67f
 // Gets an atmos isolated contained space
 // Returns an associative list of turf|dirs pairs
 // The dirs are connected turfs in the same space

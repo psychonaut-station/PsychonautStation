@@ -1,0 +1,4 @@
+2026-06-01:
+  lelandkemble:
+  - bugfix: Bitrunners no longer take double damage in-domain, and do take damage
+      to their real bodies

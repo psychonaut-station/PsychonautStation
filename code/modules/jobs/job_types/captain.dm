@@ -54,6 +54,8 @@
 		"Station Commander",
 		"Commanding Officer",
 		"Site Manager",
+		"Overseer",
+		"Outpost Commander"
 	)
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)

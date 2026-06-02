@@ -49,6 +49,7 @@
 		"Imam",
 		"Rabbi",
 		"Monk",
+		"Missionary"
 	)
 
 /datum/job/chaplain/after_spawn(mob/living/spawned, client/player_client)

@@ -46,6 +46,8 @@
 		"Chief Constable",
 		"Chief of Security",
 		"Sheriff",
+		"Commissar",
+		"Station Defense Chief"
 	)
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)

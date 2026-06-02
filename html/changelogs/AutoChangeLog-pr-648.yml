@@ -1,0 +1,4 @@
+author: "Ureus"
+delete-after: True
+changes:
+  - rscadd: "Mesleklere yeni Alternatif İsimler ekler."

@@ -32,6 +32,7 @@
 /obj/structure/grille/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/atmos_sensitive, mapload)
+	register_context()
 
 /obj/structure/grille/Destroy()
 	update_cable_icons_on_turf(get_turf(src))
@@ -60,9 +61,19 @@
 	if(resistance_flags & INDESTRUCTIBLE)
 		return
 	if(anchored)
-		. += span_notice("It's secured in place with <b>screws</b>. The rods look like they could be <b>cut</b> through.")
+		. += span_notice("It's secured in place with [EXAMINE_HINT("screws")]. The rods look like they could be [EXAMINE_HINT("cut")] through.")
 	else
-		. += span_notice("The anchoring screws are <i>unscrewed</i>. The rods look like they could be <b>cut</b> through.")
+		. += span_notice("The anchoring screws are [EXAMINE_HINT("unscrewed")]. The rods look like they could be [EXAMINE_HINT("cut")] through.")
+
+/obj/structure/grille/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(held_item?.tool_behaviour == TOOL_WIRECUTTER)
+		context[SCREENTIP_CONTEXT_RMB] = "Deconstruct"
+		return CONTEXTUAL_SCREENTIP_SET
+	if(held_item?.tool_behaviour == TOOL_SCREWDRIVER)
+		context[SCREENTIP_CONTEXT_LMB] = "[anchored ? "Unanchor" : "Anchor"]"
+		return CONTEXTUAL_SCREENTIP_SET
+	return .
 
 /obj/structure/grille/rcd_vals(mob/user, obj/item/construction/rcd/the_rcd)
 	switch(the_rcd.mode)
@@ -200,7 +211,7 @@
 		return TRUE
 	return FALSE
 
-/obj/structure/grille/wirecutter_act(mob/living/user, obj/item/tool)
+/obj/structure/grille/wirecutter_act_secondary(mob/living/user, obj/item/tool)
 	add_fingerprint(user)
 	if(shock(user, 100))
 		return

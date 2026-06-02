@@ -364,6 +364,13 @@
 	new /obj/item/forensics_spoofer(src)
 	new /obj/item/paper/syndicate_forensics_spoofer(src)
 
+/obj/item/storage/box/syndie_kit/mes_device_kit
+	name = "MES Device kit"
+
+/obj/item/storage/box/syndie_kit/mes_device_kit/PopulateContents()
+	for(var/i in 1 to 5)
+		new /obj/item/mes_device(src)
+
 /obj/item/storage/box/syndie_kit/origami_bundle
 	name = "origami kit"
 	desc = "A box full of a number of rather masterfully engineered paper planes and a manual on \"The Art of Origami\"."
@@ -490,6 +497,11 @@
 	new /obj/item/reagent_containers/cup/bottle/curare(src)
 	new /obj/item/reagent_containers/cup/bottle/amanitin(src)
 	new /obj/item/reagent_containers/syringe(src)
+
+/obj/item/storage/box/syndie_kit/carnivorous_blood/PopulateContents()
+	new /obj/item/reagent_containers/cup/bottle/carnivorous_blood(src)
+	new /obj/item/reagent_containers/syringe(src)
+	new /obj/item/food/meat/slab/human(src)
 
 /obj/item/storage/box/syndie_kit/nuke
 	name = "nuke core extraction kit"

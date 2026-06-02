@@ -45,6 +45,7 @@
 		"Herbalist",
 		"Florist",
 		"Rancher",
+		"Agricultural Scientist"
 	)
 
 /datum/outfit/job/botanist

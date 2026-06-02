@@ -47,6 +47,7 @@
 		"Dispatch Officer",
 		"Brig Governor",
 		"Jailer",
+		"Corrections Officer"
 	)
 
 /datum/job/warden/after_spawn(mob/living/spawned, client/player_client)

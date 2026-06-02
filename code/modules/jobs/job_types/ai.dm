@@ -24,7 +24,8 @@
 	alt_titles = list(
 		"AI",
 		"Station Intelligence",
-		"Automated Overseer"
+		"Automated Overseer",
+		"Machine Spirit"
 	)
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)

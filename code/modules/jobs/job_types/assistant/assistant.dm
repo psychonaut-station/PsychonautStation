@@ -48,6 +48,8 @@ Assistant
 		"Artist",
 		"Off-Duty Staff",
 		"Off-Duty Crew",
+		"Intern",
+		"Support Staff"
 	)
 
 /datum/job/assistant/get_outfit(consistent)

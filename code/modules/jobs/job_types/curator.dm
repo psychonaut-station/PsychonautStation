@@ -39,7 +39,8 @@
 		"Librarian",
 		"Journalist",
 		"Archivist",
-		"Television Presenter"
+		"Television Presenter",
+		"Remembrancer"
 	)
 
 /datum/outfit/job/curator

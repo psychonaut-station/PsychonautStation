@@ -38,6 +38,7 @@
 		"Mixologist",
 		"Barkeeper",
 		"Barista",
+		"Bar Steward"
 	)
 
 /datum/job/bartender/award_service(client/winner, award)

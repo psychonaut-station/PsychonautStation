@@ -182,9 +182,7 @@
 /obj/machinery/computer/security/proc/has_living_viewers(mob/excluding_user)
 	if(!LAZYLEN(open_uis))
 		return FALSE
-	for(var/datum/tgui/ui as anything in open_uis)
-		if(!istype(ui, /datum/tgui))
-			continue
+	for(var/datum/tgui/ui in open_uis)
 		var/mob/user = ui.user
 		if(user == excluding_user)
 			continue

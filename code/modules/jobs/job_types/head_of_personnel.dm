@@ -49,6 +49,8 @@
 		"Executive Officer",
 		"Employment Officer",
 		"Crew Supervisor",
+		"Human Resources Chief",
+		"Seneschal"
 	)
 
 /datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)

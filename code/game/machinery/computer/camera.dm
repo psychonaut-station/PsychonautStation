@@ -58,7 +58,7 @@
 		var/is_living = isliving(user)
 		// Ghosts shouldn't count towards concurrent users, which produces
 		// an audible terminal_on click.
-		if(is_living && !(user_ref in concurrent_users))
+		if(is_living)
 			concurrent_users |= user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)

@@ -223,9 +223,7 @@
 		viewer_uis = open_uis
 	if(!LAZYLEN(viewer_uis))
 		return FALSE
-	for(var/datum/tgui/ui as anything in viewer_uis)
-		if(!istype(ui, /datum/tgui))
-			continue
+	for(var/datum/tgui/ui in viewer_uis)
 		var/mob/user = ui.user
 		if(user == excluding_user)
 			continue

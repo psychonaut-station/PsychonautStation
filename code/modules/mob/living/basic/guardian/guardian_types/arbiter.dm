@@ -2,9 +2,10 @@
 	guardian_type = GUARDIAN_ARBITER
 	speed = 0
 	damage_coeff = list(BRUTE=0.7, BURN=0.7, TOX=0.7, STAMINA=0, OXY=0.7)
-	melee_damage_lower = 0
-	melee_damage_upper = 0
-	melee_damage_type = STAMINA
+	melee_damage_lower = 1
+	melee_damage_upper = 1
+	attack_verb_continuous = "shocks"
+	attack_verb_simple = "shock"
 	playstyle_string = span_holoparasite("The Arbiter Guardian cannot deal damage. It specializes in stunning and cuffing targets.")
 	creator_name = "Arbiter"
 	creator_desc = "Does no damage but can stun and cuff targets."
@@ -13,7 +14,6 @@
 
 /mob/living/basic/guardian/arbiter/Initialize(mapload, datum/guardian_fluff/theme)
 	. = ..()
-	AddComponent(/datum/component/stun_n_cuff, stun_timer = 5 SECONDS, handcuff_timer = 5 SECONDS, stun_cooldown_timer = 8 SECONDS, handcuff_type = /obj/item/restraints/handcuffs/cult)
 	var/datum/action/cooldown/guardian_energy_net/net_action = new(src)
 	net_action.Grant(src)
 	ADD_TRAIT(src, TRAIT_SECURITY_HUD, INNATE_TRAIT)
@@ -23,19 +23,38 @@
 		return BASIC_MOB_END_ATTACK_CHAIN
 	return ..()
 
+/mob/living/basic/guardian/arbiter/melee_attack(atom/target, list/modifiers)
+	. = ..()
+	if(!isliving(target))
+		return
+
+	if(!istype(target, /mob/living/carbon))
+		return
+
+	if(target == summoner || target == src)
+		return
+
+	var/mob/living/staminahedef = target
+	staminahedef.adjust_stamina_loss(30)
+	return .
+
 /mob/living/basic/guardian/arbiter/resolve_right_click_attack(atom/target, list/modifiers)
-	if(!ismob(target))
+	if(!istype(target, /mob/living/carbon/human))
 		return ..()
 
-	if(target == src || target == summoner)
+	var/mob/living/carbon/human/hedef = target
+
+	if(hedef.handcuffed)
 		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
-	var/datum/component/stun_n_cuff/stun_comp = src.GetComponent(/datum/component/stun_n_cuff)
-	if(stun_comp && istype(target, /mob/living/carbon/human))
-		stun_comp.cuff_target(target)
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	hedef.set_handcuffed(new /obj/item/restraints/handcuffs/cult(hedef))
+	hedef.update_handcuffed()
 
-	return ..()
+	visible_message(
+		span_warning("[src] cuffs [hedef]!"),
+		span_notice("You cuff [hedef].")
+	)
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/projectile/guardian_energy_net
 	name = "energy net"
@@ -53,7 +72,7 @@
 	desc = "Throw a hardlight energy net at a target."
 	button_icon = 'icons/hud/guardian.dmi'
 	button_icon_state = "net"
-	cooldown_time = 8 SECONDS
+	cooldown_time = 30 SECONDS
 	click_to_activate = TRUE
 
 /obj/projectile/guardian_energy_net/fire(setAngle)

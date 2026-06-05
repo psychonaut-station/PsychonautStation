@@ -55,6 +55,8 @@ GLOBAL_LIST_INIT(guardian_radial_images, setup_guardian_radial())
 		/mob/living/basic/guardian/ranged,
 		/mob/living/basic/guardian/standard,
 		/mob/living/basic/guardian/support,
+		/mob/living/basic/guardian/arbiter,
+		/mob/living/basic/guardian/engineer,
 	)
 	/// Have we been refunded? Used to prevent guardians from being created after we've been refunded
 	/// while avoiding scamming people if they use and then destroy us
@@ -171,6 +173,8 @@ GLOBAL_LIST_INIT(guardian_radial_images, setup_guardian_radial())
 		/mob/living/basic/guardian/protector,
 		/mob/living/basic/guardian/ranged,
 		/mob/living/basic/guardian/standard,
+		/mob/living/basic/guardian/arbiter,
+		/mob/living/basic/guardian/engineer,
 	)
 
 /obj/item/guardian_creator/wizard/spawn_guardian(mob/living/user, mob/dead/candidate)
@@ -240,6 +244,8 @@ GLOBAL_LIST_INIT(guardian_radial_images, setup_guardian_radial())
 		/mob/living/basic/guardian/ranged, // Shoots the bad guys
 		/mob/living/basic/guardian/standard, // Can mine walls
 		/mob/living/basic/guardian/support, // Heals and teleports you
+		/mob/living/basic/guardian/arbiter, // Stuns and Cuffs
+		/mob/living/basic/guardian/engineer, // Shoots junk projectiles and can turret up
 	)
 
 /obj/item/guardian_creator/miner/spawn_guardian(mob/living/user, mob/dead/candidate, guardian_path)

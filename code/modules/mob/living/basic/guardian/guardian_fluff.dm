@@ -38,6 +38,8 @@
 		GUARDIAN_RANGED = "...And draw the Watcher, impaling its prey from afar.",
 		GUARDIAN_STANDARD = "...And draw the Assistant, faceless but never to be underestimated.",
 		GUARDIAN_SUPPORT = "...And draw the Paramedic, arbiter of life and death.",
+		GUARDIAN_ARBITER = "...And draw the Security, a security officer that subdues its foes with stunning precision.",
+		GUARDIAN_ENGINEER = "...And draw the Engineer, a tinkerer that uses the environment to its advantage.",
 	)
 
 /// Applies relevant visual properties to our guardian
@@ -79,6 +81,8 @@
 		GUARDIAN_RANGED = "Boot sequence complete. Flechette launchers operational. Holoparasite swarm online.",
 		GUARDIAN_STANDARD = "Boot sequence complete. CQC suite engaged. Holoparasite swarm online.",
 		GUARDIAN_SUPPORT = "Boot sequence complete. Medical suite active. Holoparasite swarm online.",
+		GUARDIAN_ARBITER = "Boot sequence complete. Stun and restraint weapons active. Holoparasite swarm online.",
+		GUARDIAN_ENGINEER = "Boot sequence complete. Turret targeting systems calibrated. Holoparasite swarm online.",
 	)
 
 /// Used by powerminers found in necropolis chests
@@ -98,6 +102,8 @@
 		GUARDIAN_RANGED = "The shard reveals... Diamond, projecting a million sharp edges.",
 		GUARDIAN_STANDARD = "The shard reveals... Plastitanium, a powerful fighter.",
 		GUARDIAN_SUPPORT = "The shard reveals... Bluespace, master of relocation.",
+		GUARDIAN_ARBITER = "The shard reveals... Silver, a stolid subduer of threats.",
+		GUARDIAN_ENGINEER = "The shard reveals... Plasteel, a heavy-duty construction material.",
 	)
 
 /// Used by holocarp spawned by admins
@@ -121,4 +127,6 @@
 		GUARDIAN_RANGED = "CARP CARP CARP! You caught one! It's a ranged carp! It has been collecting glass shards in preparation for this moment.",
 		GUARDIAN_STANDARD = "CARP CARP CARP! You caught one! This one is a little generic and disappointing... Better punch through some walls to ease the tension.",
 		GUARDIAN_SUPPORT = "CARP CARP CARP! You caught a support carp! Now it's here, now you're over there!",
+		GUARDIAN_ARBITER = "CARP CARP CARP! You caught an arbiter carp! It's here to maintain order and subdue any threats!",
+		GUARDIAN_ENGINEER = "CARP CARP CARP! You caught an engineer carp! It has been collecting junk in preparation for this moment.",
 	)

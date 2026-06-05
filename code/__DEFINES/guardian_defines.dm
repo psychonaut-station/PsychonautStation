@@ -7,9 +7,11 @@
 #define GUARDIAN_TECH "tech"
 
 #define GUARDIAN_ASSASSIN "assassin"
+#define GUARDIAN_ARBITER "arbiter"
 #define GUARDIAN_CHARGER "charger"
 #define GUARDIAN_DEXTROUS "dextrous"
 #define GUARDIAN_EXPLOSIVE "explosive"
+#define GUARDIAN_ENGINEER "engineer"
 #define GUARDIAN_GASEOUS "gaseous"
 #define GUARDIAN_GRAVITOKINETIC "gravitokinetic"
 #define GUARDIAN_LIGHTNING "lightning"

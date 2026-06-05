@@ -245,7 +245,7 @@ GLOBAL_LIST_INIT(guardian_radial_images, setup_guardian_radial())
 		/mob/living/basic/guardian/standard, // Can mine walls
 		/mob/living/basic/guardian/support, // Heals and teleports you
 		/mob/living/basic/guardian/arbiter, // Stuns and Cuffs
-		/mob/living/basic/guardian/engineer, // Shoots junk projectiles and can turret up
+		/mob/living/basic/guardian/engineer, // Can enter turret mode and shoot junk projectiles
 	)
 
 /obj/item/guardian_creator/miner/spawn_guardian(mob/living/user, mob/dead/candidate, guardian_path)

@@ -10,7 +10,7 @@
 	creator_name = "Arbiter"
 	creator_desc = "Does no damage but can stun and cuff targets."
 	creator_icon = "arbiter"
-
+	var/cuff_delay = 6 SECONDS
 
 /mob/living/basic/guardian/arbiter/Initialize(mapload, datum/guardian_fluff/theme)
 	. = ..()
@@ -23,7 +23,7 @@
 		return BASIC_MOB_END_ATTACK_CHAIN
 	return ..()
 
-/mob/living/basic/guardian/arbiter/melee_attack(atom/target, list/modifiers)
+/mob/living/basic/guardian/arbiter/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
 	if(!isliving(target))
 		return
@@ -38,23 +38,29 @@
 	staminahedef.adjust_stamina_loss(30)
 	return .
 
-/mob/living/basic/guardian/arbiter/resolve_right_click_attack(atom/target, list/modifiers)
-	if(!istype(target, /mob/living/carbon/human))
+/mob/living/basic/guardian/arbiter/resolve_right_click_attack(atom/target)
+	if(!istype(target, /mob/living/carbon))
 		return ..()
 
-	var/mob/living/carbon/human/hedef = target
+	var/mob/living/carbon/hedef = target
+
+	if(hedef == src || hedef == summoner)
+		return
 
 	if(hedef.handcuffed)
-		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
-
-	hedef.set_handcuffed(new /obj/item/restraints/handcuffs/cult(hedef))
-	hedef.update_handcuffed()
+		return
 
 	visible_message(
-		span_warning("[src] cuffs [hedef]!"),
-		span_notice("You cuff [hedef].")
+		span_warning("[src] begins restraining [hedef]!"),
+		span_notice("You start cuffing [hedef]...")
 	)
-	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	if(!do_after(src, cuff_delay, hedef, timed_action_flags = IGNORE_SLOWDOWNS))
+		return
+
+	var/obj/item/restraints/handcuffs/cuffs = new /obj/item/restraints/handcuffs/cult()
+	cuffs.apply_cuffs(hedef, src)
+	return .
+
 
 /obj/projectile/guardian_energy_net
 	name = "energy net"

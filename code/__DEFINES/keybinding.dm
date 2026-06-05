@@ -64,10 +64,14 @@
 #define COMSIG_KB_LIVING_HOLDTHROWMODE_DOWN "keybinding_living_holdthrowmode_down"
 #define COMSIG_KB_LIVING_GIVEITEM_DOWN "keybinding_living_giveitem_down"
 #define COMSIG_KB_LIVING_VIEW_PET_COMMANDS "keybinding_living_view_pet_commands"
+<<<<<<< HEAD
 #define COMSIG_KB_LIVING_FACECURSOR_DOWN "keybinding_living_facecursor_down"
 
 #define COMSIG_KB_LIVING_ITEM_PIXEL_SHIFT_DOWN "keybinding_living_item_pixelshift_down"
 #define COMSIG_KB_LIVING_PIXEL_SHIFT_DOWN "keybinding_living_pixelshift_down"
+=======
+#define COMSIG_KB_LIVING_STOP_INTERACTIONS_DOWN "keybinding_living_stop_interactions_down"
+>>>>>>> 17cdff6fe36417c565dc8679952a9a8629faa99c
 
 //Mob
 #define COMSIG_KB_MOB_FACENORTH_DOWN "keybinding_mob_facenorth_down"

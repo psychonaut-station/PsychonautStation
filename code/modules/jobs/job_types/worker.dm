@@ -39,7 +39,8 @@
 		"Worker",
 		"Amele",
 		"Workman",
-		"Prole"
+		"Prole",
+		"Deckhand"
 	)
 
 /datum/outfit/job/worker

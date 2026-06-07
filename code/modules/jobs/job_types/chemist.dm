@@ -40,6 +40,8 @@
 		"Pharmacist",
 		"Pharmacologist",
 		"Trainee Pharmacist",
+		"Pharmaceutical Technician",
+		"Clinical Pharmacist"
 	)
 
 /datum/outfit/job/chemist

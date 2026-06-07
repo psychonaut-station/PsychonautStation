@@ -807,6 +807,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/character_name = character_mind.name || living_mob.real_name
 		var/id = "[character_name]_[ckey]"
 
+		var/job = character_mind.assigned_role?.title
+		var/special_roles = json_encode(character_mind.special_roles?.Copy() || list())
+
 		var/list/spritesheet = list("[id]" = spritesheet_data)
 
 		var/spritesheet_json = json_encode(spritesheet)
@@ -837,7 +840,10 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		metadata["[id]"] = list(
 			"name" = character_name,
 			"ckey" = ckey,
-			"icon" = file_name
+			"icon" = file_name,
+			"job" = job,
+			"special_roles" = special_roles,
+			"version" = SScharacter_icons.version,
 		)
 		CHECK_TICK
 

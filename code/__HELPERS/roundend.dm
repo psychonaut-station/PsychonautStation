@@ -841,16 +841,23 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		if(!fexists(file_path))
 			fcopy(file_path_tmp, file_path)
 
-		var/indice = length(metadata["characters"])
 
-		metadata["characters"] += list(list(
+		var/list/character_data = list(
 			"name" = character_name,
 			"ckey" = ckey,
 			"icon" = file_name,
 			"job" = job,
 			"special_roles" = special_roles,
-		))
-		metadata["indices"]["[id]"] = indice
+		)
+
+
+		if(metadata["indices"]["[id]"])
+			var/indice = metadata["indices"]["[id]"] + 1
+			metadata["characters"][indice] = character_data
+		else
+			var/indice = length(metadata["characters"])
+			metadata["characters"] += list(character_data)
+			metadata["indices"]["[id]"] = indice
 
 		CHECK_TICK
 

@@ -1,5 +1,5 @@
 // Bump this up when you made changes in SScharacter_icons (especially in saving round characters changes)
-#define VERSION_CHARICONS 1.1
+#define VERSION_CHARICONS 2
 
 SUBSYSTEM_DEF(character_icons)
 	name = "Character Icons"

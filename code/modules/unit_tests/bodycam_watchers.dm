@@ -84,6 +84,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Destroying the active security console should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Destroying the active security console should clear the watched alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_console_close/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -109,6 +110,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Closing the security console should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing the security console should clear the watched alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_console_stale_ui/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -134,6 +136,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "A console with no open UI should be pruned as a stale watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Pruning a stale console watcher should clear the viewed alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_console_ghost/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -155,6 +158,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Ghost viewers should not keep bodycam watchers active.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Ghost viewers should clear the viewed alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_secureye_destroy/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -181,6 +185,7 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while secureye is watching.")
 	TEST_ASSERT(component.has_live_watchers(), "Component should report a live watcher while secureye exists.")
 
+	qdel(ui)
 	qdel(program)
 
 	TEST_ASSERT(!component.has_live_watchers(), "Destroying the active secureye watcher should remove the live watcher.")
@@ -211,6 +216,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Ghost viewers should not keep secureye bodycam watchers active.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Ghost viewers should clear the viewed alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_secureye_close/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -242,6 +248,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Closing secureye should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Closing secureye should clear the watched alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_secureye_stale_open_uis/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -273,6 +280,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "A secureye with no open UI should be pruned as a stale watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Pruning a stale secureye watcher should clear the viewed alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_console_multiple_viewers/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -311,6 +319,8 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after both console viewers close.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last console viewer closes.")
+	qdel(ui_one)
+	qdel(ui_two)
 
 /datum/unit_test/bodycam_watchers_secureye_multiple_viewers/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -353,6 +363,8 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after both secureye viewers close.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last secureye viewer closes.")
+	qdel(ui_one)
+	qdel(ui_two)
 
 /datum/unit_test/bodycam_watchers_console_ghost_and_living/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -387,6 +399,8 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after the living viewer also closes.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last living viewer closes.")
+	qdel(ui_living)
+	qdel(ui_ghost)
 
 /datum/unit_test/bodycam_watchers_secureye_ghost_and_living/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -429,6 +443,8 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Component should have no live watchers after the living viewer also closes on secureye.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Alert should clear after the last living viewer closes on secureye.")
+	qdel(ui_living)
+	qdel(ui_ghost)
 
 /datum/unit_test/bodycam_watchers_console_camera_disabled/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -456,6 +472,7 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Disabling the bodycam should remove the live watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert.")
+	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_secureye_camera_disabled/Run()
 	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
@@ -487,4 +504,5 @@
 
 	TEST_ASSERT(!component.has_live_watchers(), "Disabling the bodycam should remove the live watcher from secureye.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert on secureye.")
+	qdel(ui)
 

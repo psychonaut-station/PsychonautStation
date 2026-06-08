@@ -2,3 +2,6 @@
   lelandkemble:
   - bugfix: Bitrunners no longer take double damage in-domain, and do take damage
       to their real bodies
+2026-06-08:
+  Ureus:
+  - rscadd: "Mesleklere yeni Alternatif \u0130simler ekler."

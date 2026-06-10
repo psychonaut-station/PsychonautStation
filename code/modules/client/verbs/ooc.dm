@@ -77,12 +77,33 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	mob.log_talk(raw_msg, LOG_OOC)
 
 	var/keyname = key
+<<<<<<< HEAD
 	if(prefs.unlock_content)
 		if(prefs.toggles & MEMBER_PUBLIC)
 			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
+=======
+	var/list/key_tags
+	var/key_prefix = ""
+	var/visible_unlock = prefs.unlock_content && (prefs.toggles & MEMBER_PUBLIC)
+
+	// heart first lol
+>>>>>>> 408ded23854c4b0cbeb62d199e92e66ff52f2337
 	if(prefs.hearted)
-		var/datum/asset/spritesheet_batched/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
-		keyname = "[sheet.icon_tag("emoji-heart")][keyname]"
+		LAZYADD(key_tags, "emoji-heart")
+	if(visible_unlock)
+		LAZYADD(key_tags, "byond_member")
+
+	if(LAZYLEN(key_tags))
+		var/datum/asset/spritesheet_batched/chat/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)
+		for(var/icon_name in key_tags)
+			key_prefix = "[key_prefix][sheet.icon_tag(icon_name)]"
+		key_prefix = "<span style='vertical-align: text-top; padding-right: 0.2em'>[key_prefix]</span>"
+
+	keyname = "[key_prefix][keyname]"
+
+	if(visible_unlock)
+		keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
+
 	//The linkify span classes and linkify=TRUE below make ooc text get clickable chat href links if you pass in something resembling a url
 	for(var/client/receiver as anything in GLOB.clients)
 		if(!receiver.prefs) // Client being created or deleted. Despite all, this can be null.

@@ -1,12 +1,25 @@
-import { strict as assert } from "assert";
-import { createComment } from "./comment.js";
+import { strict as assert } from 'node:assert';
+import { createComment } from './comment.js';
 
+<<<<<<< HEAD
 const baseRounds = [
   {
     round_id: 1,
     datetime: "2020-01-01 00:00:00",
   },
 ];
+=======
+const baseServers = {
+  bagil: [
+    {
+      round_id: 1,
+      datetime: '2020-01-01 00:00:00',
+      server: 'bagil',
+      url: 'https://tgstation13.org/round/1',
+    },
+  ],
+};
+>>>>>>> 408ded23854c4b0cbeb62d199e92e66ff52f2337
 
 const baseComment = createComment(baseRounds, null);
 
@@ -27,6 +40,7 @@ assert.equal(createComment(baseRounds, baseComment), null);
 
 assert.equal(
   createComment(
+<<<<<<< HEAD
     [
       {
         round_id: 2,
@@ -34,6 +48,19 @@ assert.equal(
       },
     ],
     baseComment
+=======
+    {
+      bagil: [
+        {
+          round_id: 2,
+          datetime: '2020-01-01 01:00:00',
+          server: 'bagil',
+          url: 'https://tgstation13.org/round/2',
+        },
+      ],
+    },
+    baseComment,
+>>>>>>> 408ded23854c4b0cbeb62d199e92e66ff52f2337
   ),
   `<!-- test_merge_bot: 1, 2 -->
 This pull request was test merged in 2 round(s).

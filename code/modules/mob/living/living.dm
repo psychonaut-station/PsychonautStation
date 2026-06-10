@@ -1134,7 +1134,9 @@
 		return
 	changeNext_move(CLICK_CD_RESIST)
 
-	SEND_SIGNAL(src, COMSIG_LIVING_RESIST, src)
+	if(SEND_SIGNAL(src, COMSIG_LIVING_RESIST) & COMPONENT_BLOCK_RESIST)
+		return
+
 	//resisting grabs (as if it helps anyone...)
 	if(!HAS_TRAIT(src, TRAIT_RESTRAINED) && pulledby)
 		log_combat(src, pulledby, "resisted grab")
@@ -2093,10 +2095,7 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 			update_transform(var_value/current_size)
 			. = TRUE
 		if(NAMEOF(src, pull_force))
-			if(var_value == 0) //no more pulling
-				remove_verb(src, /mob/living/verb/pulled)
-			else
-				add_verb(src, /mob/living/verb/pulled)
+			set_pull_force(var_value)
 			. = TRUE
 
 
@@ -3041,5 +3040,19 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
 
+<<<<<<< HEAD
 /mob/living/proc/save_character_icon()
 	SScharacter_icons.add_to_queue(WEAKREF(mind))
+=======
+/mob/living/proc/set_pull_force(new_pull_force)
+	if(pull_force == new_pull_force)
+		return
+	pull_force = new_pull_force
+	pull_force_change()
+
+/mob/living/proc/pull_force_change()
+	if(!pull_force || HAS_TRAIT(src, TRAIT_PULL_BLOCKED))
+		remove_verb(src, /mob/living/verb/pulled)
+	else
+		add_verb(src, /mob/living/verb/pulled)
+>>>>>>> 408ded23854c4b0cbeb62d199e92e66ff52f2337

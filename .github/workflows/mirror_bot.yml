@@ -196,6 +196,7 @@ jobs:
         shell: pwsh
 
       - name: Run UpdatePaths scripts
+        if: steps.tracking.outputs.update_path_scripts != ''
         run: |
           if [ -n "$scripts" ]; then
             tools/bootstrap/python -m UpdatePaths $scripts

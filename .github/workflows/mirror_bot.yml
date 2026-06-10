@@ -36,10 +36,12 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: Fetch upstream remote
         run: |
           git remote add upstream "https://github.com/$upstream_repo.git"
           git fetch upstream $upstream_branch
+
       - name: Check tracked files
         id: tracking
         run: |
@@ -91,6 +93,7 @@ jobs:
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
         shell: pwsh
+
       - name: Merge upstream branch
         run: |
           git config user.name "$commiter_name"
@@ -98,6 +101,7 @@ jobs:
 
           git merge FETCH_HEAD --no-commit --no-ff
         continue-on-error: true
+
       - name: Commit with conflicts
         id: commit
         run: |
@@ -190,6 +194,7 @@ jobs:
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
         shell: pwsh
+
       - name: Run UpdatePaths scripts
         run: |
           if [ -n "$scripts" ]; then
@@ -203,6 +208,7 @@ jobs:
           fi
         env:
           scripts: ${{ steps.tracking.outputs.update_path_scripts }}
+
       - name: Generate App Token
         id: app-token-generation
         uses: actions/create-github-app-token@v1
@@ -213,6 +219,7 @@ jobs:
         env:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
           APP_ID: ${{ secrets.APP_ID }}
+
       - name: Create new pull request
         uses: peter-evans/create-pull-request@v3
         id: create-pull-request
@@ -224,6 +231,7 @@ jobs:
           title: ${{ env.pr_title }}
           body: ${{ env.pr_body }}${{ steps.commit.outputs.conflicts }}${{ steps.commit.outputs.tracked_files }}
           labels: ${{ env.pr_label }}
+
       - name: Close previous pull request(s)
         run: |
           $query = "repo:$Env:GITHUB_REPOSITORY is:pr is:open label:$Env:pr_label"

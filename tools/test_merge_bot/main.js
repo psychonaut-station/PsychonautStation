@@ -1,12 +1,12 @@
-import fetch from "node-fetch";
-import { createComment } from "./comment.js";
+import fetch from 'node-fetch';
+import { createComment } from './comment.js';
 
-const TEST_MERGE_COMMENT_HEADER = "<!-- test_merge_bot:";
+const TEST_MERGE_COMMENT_HEADER = '<!-- test_merge_bot:';
 
 const { GET_TEST_MERGES_URL } = process.env;
 
 if (!GET_TEST_MERGES_URL) {
-  console.error("GET_TEST_MERGES_URL was not set.");
+  console.error('GET_TEST_MERGES_URL was not set.');
   process.exit(1);
 }
 
@@ -71,8 +71,13 @@ export async function processTestMerges({ github, context }) {
 
     const existingComment = comments.repository.pullRequest.comments.nodes.find(
       (comment) =>
+<<<<<<< HEAD
         comment.author?.login === "github-actions" &&
         comment.body.startsWith(TEST_MERGE_COMMENT_HEADER)
+=======
+        comment.author?.login === 'github-actions' &&
+        comment.body.startsWith(TEST_MERGE_COMMENT_HEADER),
+>>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
     );
 
     const newBody = createComment(rounds, existingComment?.body);
@@ -93,7 +98,6 @@ export async function processTestMerges({ github, context }) {
         if (error.status) {
           console.error(`Failed to create comment for #{prNumber}`);
           console.error(error);
-          continue;
         } else {
           throw error;
         }
@@ -110,7 +114,6 @@ export async function processTestMerges({ github, context }) {
         if (error.status) {
           console.error(`Failed to update comment for #{prNumber}`);
           console.error(error);
-          continue;
         } else {
           throw error;
         }

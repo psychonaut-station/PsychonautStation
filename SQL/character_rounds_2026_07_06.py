@@ -95,7 +95,7 @@ def convert_single_json(file_path, cursor, table_name, round_id):
         output_data["characters"].append(character_obj)
 
     with open(file_path, 'w', encoding='utf-8') as f:
-        json.dump(output_data, f, ensure_ascii=False, indent=4)
+        json.dump(output_data, f, ensure_ascii=False, indent=None)
 
 def main():
     parser = argparse.ArgumentParser()

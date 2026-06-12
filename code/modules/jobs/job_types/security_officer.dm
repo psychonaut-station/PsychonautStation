@@ -50,6 +50,9 @@
 		"Security Operative",
 		"Peacekeeper",
 		"Security Cadet",
+		"Security Guard",
+		"Arbiter",
+		"Enforcer"
 	)
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))

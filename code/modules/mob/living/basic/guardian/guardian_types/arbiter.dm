@@ -74,7 +74,6 @@
 	range = 9
 	hitsound = 'sound/items/fulton/fultext_deploy.ogg'
 	hitsound_wall = 'sound/items/fulton/fultext_deploy.ogg'
-
 	var/line
 	var/datum/weakref/net_module
 	var/guardian_colour
@@ -82,13 +81,9 @@
 
 /obj/projectile/guardian_energy_net/fire(setAngle)
 	if(firer)
-		var/mob/living/basic/guardian/guardianrenk = firer
+		var/mob/living/basic/guardian/guardianbeam = firer
 
-		line = firer.Beam(src, "net_beam", 'icons/obj/clothing/modsuit/mod_modules.dmi')
-
-		if(line && istype(line, /atom))
-			var/atom/renk = line
-			renk.color = guardianrenk.guardian_colour
+		line = firer.Beam(src, "net_beam", 'icons/obj/clothing/modsuit/mod_modules.dmi', beam_color = guardianbeam.guardian_colour)
 
 	return ..()
 

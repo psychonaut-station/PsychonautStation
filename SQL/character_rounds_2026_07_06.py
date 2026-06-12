@@ -6,7 +6,7 @@ import argparse
 import sys
 
 def parse_special_roles(special_str):
-    if not special_str or special_str.strip() == "NOTHING":
+    if not special_str or special_str.strip() == "NONE":
         return []
 
     roles = []

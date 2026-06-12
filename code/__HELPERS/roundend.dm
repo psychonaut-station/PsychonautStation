@@ -812,7 +812,7 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/id = "[character_name]_[ckey]"
 
 		var/job = character_mind.assigned_role?.title
-		var/special_roles = json_encode(character_mind.special_roles?.Copy() || list())
+		var/special_roles = character_mind.special_roles?.Copy() || list()
 
 		var/list/spritesheet = list("[id]" = spritesheet_data)
 

@@ -30,7 +30,7 @@
 	if(target == summoner || target == src)
 		return
 	var/mob/living/living_target = astype(target)
-	living_target?.adjust_stamina_loss(30)
+	living_target?.adjust_stamina_loss(20)
 
 /mob/living/basic/guardian/arbiter/resolve_right_click_attack(atom/target)
 	if(target == src || target == summoner)
@@ -38,18 +38,33 @@
 	if(!iscarbon(target))
 		return ..()
 
-	var/mob/living/carbon/target = target
+	var/mob/living/carbon/hedef = target
 
-	if(target.handcuffed)
+	if(hedef.handcuffed)
 		return
 
-	visible_message(span_warning("[src] begins restraining [target]!"), span_notice("You start cuffing [target]..."))
+	visible_message(span_warning("[src] begins restraining [hedef]!"), span_notice("You start cuffing [hedef]..."))
 
-	if(!do_after(src, cuff_delay, target, timed_action_flags = IGNORE_SLOWDOWNS))
+	if(!do_after(src, cuff_delay, hedef, timed_action_flags = IGNORE_SLOWDOWNS))
 		return
 
 	var/obj/item/restraints/handcuffs/cuffs = new /obj/item/restraints/handcuffs/cult()
-	cuffs.apply_cuffs(target, src)
+	cuffs.apply_cuffs(hedef, src)
+
+/datum/action/cooldown/guardian_energy_net
+	name = "Energy Net"
+	desc = "Throw a hardlight energy net at a target."
+	button_icon = 'icons/psychonaut/hud/guardian.dmi'
+	button_icon_state = "net"
+	cooldown_time = 30 SECONDS
+	click_to_activate = TRUE
+
+
+/obj/structure/energy_net/arbiter
+	name = "Arbiter energy net"
+	icon = 'icons/psychonaut/effects/effects.dmi'
+	icon_state = "arbiter_net"
+
 
 /obj/projectile/guardian_energy_net
 	name = "energy net"
@@ -59,21 +74,24 @@
 	range = 9
 	hitsound = 'sound/items/fulton/fultext_deploy.ogg'
 	hitsound_wall = 'sound/items/fulton/fultext_deploy.ogg'
+
 	var/line
 	var/datum/weakref/net_module
+	var/guardian_colour
 
-/datum/action/cooldown/guardian_energy_net
-	name = "Energy Net"
-	desc = "Throw a hardlight energy net at a target."
-	button_icon = 'icons/hud/guardian.dmi'
-	button_icon_state = "net"
-	cooldown_time = 30 SECONDS
-	click_to_activate = TRUE
 
 /obj/projectile/guardian_energy_net/fire(setAngle)
 	if(firer)
+		var/mob/living/basic/guardian/guardianrenk = firer
+
 		line = firer.Beam(src, "net_beam", 'icons/obj/clothing/modsuit/mod_modules.dmi')
+
+		if(line && istype(line, /atom))
+			var/atom/renk = line
+			renk.color = guardianrenk.guardian_colour
+
 	return ..()
+
 
 /datum/action/cooldown/guardian_energy_net/Activate(atom/target)
 	var/mob/living/user = owner
@@ -81,27 +99,28 @@
 	if(!istype(user))
 		return FALSE
 
-	var/atom/aim_target = target
-
-	if(!aim_target)
-		return FALSE
-
-	if(!isliving(aim_target))
-		return FALSE
-
-	var/mob/living/target_mob = aim_target
+	var/mob/living/target_mob = target
 
 	if(!IN_GIVEN_RANGE(user, target_mob, 6))
 		target_mob.balloon_alert(user, "too far!")
 		return FALSE
+
 	var/obj/projectile/guardian_energy_net/net_projectile = new(get_turf(user))
+
 	net_projectile.firer = user
 	net_projectile.original = target_mob
+
+	var/mob/living/basic/guardian/guardianrenk = user
+	if(guardianrenk)
+		net_projectile.guardian_colour = guardianrenk.guardian_colour
+		net_projectile.add_atom_colour(guardianrenk.guardian_colour, FIXED_COLOUR_PRIORITY)
+
 	net_projectile.set_angle(get_angle(user, target_mob))
 	INVOKE_ASYNC(net_projectile, TYPE_PROC_REF(/obj/projectile, fire))
 
 	StartCooldown()
 	return TRUE
+
 
 /obj/projectile/guardian_energy_net/on_hit(atom/target, blocked = 0, pierce_hit)
 	. = ..()
@@ -122,7 +141,10 @@
 	if(locate(/obj/structure/energy_net) in get_turf(hit_mob))
 		return
 
-	var/obj/structure/energy_net/net = new /obj/structure/energy_net(hit_mob.drop_location())
+	var/obj/structure/energy_net/arbiter/net = new(hit_mob.drop_location())
+
+	if(guardian_firer)
+		net.add_atom_colour(guardian_firer.guardian_colour, FIXED_COLOUR_PRIORITY)
 
 	firer?.visible_message(
 		span_danger("[firer] traps [hit_mob] in an energy net!"),

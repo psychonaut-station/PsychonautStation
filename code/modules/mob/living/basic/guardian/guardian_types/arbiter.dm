@@ -25,42 +25,31 @@
 
 /mob/living/basic/guardian/arbiter/melee_attack(atom/target, list/modifiers, ignore_cooldown)
 	. = ..()
-	if(!isliving(target))
+	if(!.)
 		return
-
-	if(!istype(target, /mob/living/carbon))
-		return
-
 	if(target == summoner || target == src)
 		return
-
-	var/mob/living/staminahedef = target
-	staminahedef.adjust_stamina_loss(30)
-	return .
+	var/mob/living/living_target = astype(target)
+	living_target?.adjust_stamina_loss(30)
 
 /mob/living/basic/guardian/arbiter/resolve_right_click_attack(atom/target)
-	if(!istype(target, /mob/living/carbon))
+	if(target == src || target == summoner)
+		return
+	if(!iscarbon(target))
 		return ..()
 
-	var/mob/living/carbon/hedef = target
+	var/mob/living/carbon/target = target
 
-	if(hedef == src || hedef == summoner)
+	if(target.handcuffed)
 		return
 
-	if(hedef.handcuffed)
-		return
+	visible_message(span_warning("[src] begins restraining [target]!"), span_notice("You start cuffing [target]..."))
 
-	visible_message(
-		span_warning("[src] begins restraining [hedef]!"),
-		span_notice("You start cuffing [hedef]...")
-	)
-	if(!do_after(src, cuff_delay, hedef, timed_action_flags = IGNORE_SLOWDOWNS))
+	if(!do_after(src, cuff_delay, target, timed_action_flags = IGNORE_SLOWDOWNS))
 		return
 
 	var/obj/item/restraints/handcuffs/cuffs = new /obj/item/restraints/handcuffs/cult()
-	cuffs.apply_cuffs(hedef, src)
-	return .
-
+	cuffs.apply_cuffs(target, src)
 
 /obj/projectile/guardian_energy_net
 	name = "energy net"
@@ -121,8 +110,6 @@
 		return
 
 	var/mob/living/hit_mob = target
-
-
 	var/mob/living/basic/guardian/guardian_firer = firer
 
 	if(istype(guardian_firer))

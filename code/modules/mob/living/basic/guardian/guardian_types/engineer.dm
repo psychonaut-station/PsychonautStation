@@ -45,7 +45,7 @@
 	density = FALSE
 	layer = MOB_LAYER
 
-	damage_coeff = list(BRUTE=0.7, BURN=0.7, TOX=0.7, STAMINA=0, OXY=0.7)
+	damage_coeff = initial(damage_coeff)
 
 	qdel(GetComponent(/datum/component/ranged_attacks))
 
@@ -120,7 +120,6 @@
 /obj/projectile/bullet/engineer_junk
 	name = "junk bullet"
 	damage = 15
-	var/stamina_damage = 10
 
 /obj/projectile/bullet/incendiary/fire/engineer_junk
 	name = "burning oil projectile"

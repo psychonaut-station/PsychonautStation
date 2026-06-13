@@ -3,21 +3,8 @@ const ENTRY_PATTERN = /- (?<round_id>[0-9]+) @ (?<datetime>.+?)$/;
 
 export const createComment = (rounds, existingComment) => {
   if (existingComment) {
-<<<<<<< HEAD
     for (const [, entries] of existingComment.matchAll(FIND_EXISTING_ENTRIES)) {
-      for (const line of entries.split("\n")) {
-=======
-    for (const [, serverName, entries] of existingComment.matchAll(
-      FIND_EXISTING_ENTRIES,
-    )) {
-      let server = servers[serverName];
-      if (!server) {
-        server = [];
-        servers[serverName] = server;
-      }
-
       for (const line of entries.split('\n')) {
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
         const match = line.match(ENTRY_PATTERN);
         if (!match) {
           continue;
@@ -49,35 +36,16 @@ export const createComment = (rounds, existingComment) => {
     return null;
   }
 
-<<<<<<< HEAD
-  let totalRounds = rounds.length;
-  let listOfRounds = "";
-=======
-  let totalRounds = 0;
+  const totalRounds = rounds.length;
   let listOfRounds = '';
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
 
   for (const { datetime, round_id } of rounds.sort(
-    (a, b) => b.round_id - a.round_id
+    (a, b) => b.round_id - a.round_id,
   )) {
-<<<<<<< HEAD
-    listOfRounds += `${"\n"}- ${round_id} @ ${datetime}`;
-=======
-    totalRounds += rounds.length;
-
-    listOfRounds += `${'\n'}### ${server}`;
-
-    for (const { datetime, round_id, url } of rounds.sort(
-      (a, b) => b.round_id - a.round_id,
-    )) {
-      listOfRounds += `${'\n'}- [${round_id} @ ${datetime}](${url})`;
-    }
-
-    listOfRounds += '\n';
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
+    listOfRounds += `${'\n'}- ${round_id} @ ${datetime}`;
   }
 
-  listOfRounds += "\n";
+  listOfRounds += '\n';
 
   return (
     newHeader +

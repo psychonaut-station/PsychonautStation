@@ -18,11 +18,8 @@
 	flags_ricochet = RICOCHET_HARD
 	receive_ricochet_chance_mod = 0.5
 	custom_materials = list(/datum/material/glass = SHEET_MATERIAL_AMOUNT)
-<<<<<<< HEAD
 	impact_sound = SFX_BULLET_IMPACT_GLASS
-=======
 	tacmap_color = TACMAP_WINDOW
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
 	var/state = WINDOW_OUT_OF_FRAME
 	var/reinf = FALSE
 	var/heat_resistance = 800

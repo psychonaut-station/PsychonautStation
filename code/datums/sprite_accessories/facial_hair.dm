@@ -159,3 +159,8 @@
 	name = "Shaved"
 	icon_state = SPRITE_ACCESSORY_NONE
 	gender = NEUTER
+
+/datum/sprite_accessory/facial_hair/turkish
+	name = "Moustache (Turkish)"
+	icon = 'icons/psychonaut/mob/human/human_face.dmi'
+	icon_state = "facial_turk"

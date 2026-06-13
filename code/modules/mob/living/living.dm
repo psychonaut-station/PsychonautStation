@@ -3041,10 +3041,9 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		return
 	INVOKE_ASYNC(src, PROC_REF(emote), "scream")
 
-<<<<<<< HEAD
 /mob/living/proc/save_character_icon()
 	SScharacter_icons.add_to_queue(WEAKREF(mind))
-=======
+
 /mob/living/proc/set_pull_force(new_pull_force)
 	if(pull_force == new_pull_force)
 		return
@@ -3056,4 +3055,3 @@ GLOBAL_LIST_EMPTY(fire_appearances)
 		remove_verb(src, /mob/living/verb/pulled)
 	else
 		add_verb(src, /mob/living/verb/pulled)
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c

@@ -17,7 +17,7 @@ export async function processTestMerges({ github, context }) {
         return Promise.reject(
           `Failed to fetch test merges: ${
             response.status
-          } ${await response.text()}`
+          } ${await response.text()}`,
         );
       }
 
@@ -66,18 +66,13 @@ export async function processTestMerges({ github, context }) {
         owner: context.repo.owner,
         repo: context.repo.repo,
         prNumber: parseInt(prNumber, 10),
-      }
+      },
     );
 
     const existingComment = comments.repository.pullRequest.comments.nodes.find(
       (comment) =>
-<<<<<<< HEAD
-        comment.author?.login === "github-actions" &&
-        comment.body.startsWith(TEST_MERGE_COMMENT_HEADER)
-=======
         comment.author?.login === 'github-actions' &&
         comment.body.startsWith(TEST_MERGE_COMMENT_HEADER),
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
     );
 
     const newBody = createComment(rounds, existingComment?.body);

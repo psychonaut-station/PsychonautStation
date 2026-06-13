@@ -38,11 +38,7 @@ async function main() {
   const bot = new MWBot();
 
   await bot.loginGetEditToken({
-<<<<<<< HEAD
-    apiUrl: "https://wiki.ss13.tr/api.php",
-=======
-    apiUrl: 'https://wiki.tgstation13.org/api.php',
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
+    apiUrl: 'https://wiki.ss13.tr/api.php',
     username: USERNAME,
     password: PASSWORD,
   });
@@ -74,7 +70,7 @@ async function main() {
       .upload(
         assetName,
         assetPath,
-        `Autowiki upload @ ${new Date().toISOString()}`
+        `Autowiki upload @ ${new Date().toISOString()}`,
       )
       .catch((error) => {
         if (error.code === 'fileexists-no-change') {

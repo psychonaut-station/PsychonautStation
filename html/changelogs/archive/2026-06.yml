@@ -1,12 +1,4 @@
 2026-06-01:
-<<<<<<< HEAD
-  lelandkemble:
-  - bugfix: Bitrunners no longer take double damage in-domain, and do take damage
-      to their real bodies
-2026-06-08:
-  Ureus:
-  - rscadd: "Mesleklere yeni Alternatif \u0130simler ekler."
-=======
   Glamyrio:
   - bugfix: Renamed 2 cameras on MetaStation; first cam was with wrong name and second
       one was a badnamed
@@ -227,6 +219,8 @@
   - balance: Objects with the walking aid reduce limbless slowdown by 40%, while dedicated
       medical crutches reduce it by 60%.
   - refactor: Refactor cane and crutch code logic into a modular walking aid component
+  Ureus:
+  - rscadd: "Mesleklere yeni Alternatif \u0130simler ekler."
 2026-06-09:
   EnterTheJake:
   - rscadd: Tactical Maps have been added to the game!
@@ -325,4 +319,3 @@
       last item in the stack
   timothymtorres:
   - sound: Add on/off sound to light switches in rooms
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c

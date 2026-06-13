@@ -50,13 +50,11 @@ LOG_MECHA
 ## log OOC channel
 LOG_OOC
 
-<<<<<<< HEAD
 ## log LOOC channel
 LOG_LOOC
-=======
+
 ## log minimap drawing
 LOG_MINIMAP_DRAWING
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
 
 ## log pda messages
 LOG_PDA

@@ -77,21 +77,15 @@ GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 	mob.log_talk(raw_msg, LOG_OOC)
 
 	var/keyname = key
-<<<<<<< HEAD
-	if(prefs.unlock_content)
-		if(prefs.toggles & MEMBER_PUBLIC)
-			keyname = "<font color='[prefs.read_preference(/datum/preference/color/ooc_color) || GLOB.normal_ooc_colour]'>[keyname]</font>"
-=======
 	var/list/key_tags
 	var/key_prefix = ""
 	var/visible_unlock = prefs.unlock_content && (prefs.toggles & MEMBER_PUBLIC)
 
 	// heart first lol
->>>>>>> d9e687b5d3521b675bf81e714292794d25e5270c
 	if(prefs.hearted)
 		LAZYADD(key_tags, "emoji-heart")
-	if(visible_unlock)
-		LAZYADD(key_tags, "byond_member")
+	// if(visible_unlock) // patreon icon maybe?
+	// 	LAZYADD(key_tags, "byond_member")
 
 	if(LAZYLEN(key_tags))
 		var/datum/asset/spritesheet_batched/chat/sheet = get_asset_datum(/datum/asset/spritesheet_batched/chat)

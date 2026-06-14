@@ -342,7 +342,6 @@
 		/obj/item/shovel/spade/cyborg,
 	)
 
-<<<<<<< HEAD
 /obj/item/borg/cyborg_clamp
 	name = "hydraulic clamp"
 	desc = "Equipment for cyborgs. Lifts objects and loads them into cargo."
@@ -520,7 +519,5 @@
 			owner.logevent("ERROR: NO POWER")
 			drop_all_crates()
 
-=======
->>>>>>> 233640060b124a4d9ddfc52cdeb064f043d32fc9
 #undef PKBORG_DAMPEN_CYCLE_DELAY
 #undef POWER_RECHARGE_CYBORG_DRAIN_MULTIPLIER

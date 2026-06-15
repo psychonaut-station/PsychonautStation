@@ -1,6 +1,0 @@
-author: "Jaimex"
-delete-after: True
-changes:
-  - rscadd: "SecTech’e üniformalara aksesuar olarak takılabilen bodycam eklendi."
-  - qol: "Bodycam izlenirken kullanıcıya izlendiğini gösteren bir uyarı eklendi."
-  - image: "Bodycam için yeni item ve worn iconları eklendi."

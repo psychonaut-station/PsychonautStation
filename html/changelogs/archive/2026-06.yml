@@ -204,6 +204,8 @@
       applied in certain contexts
   - balance: Blood worms are no longer fully immune to extreme pressures and cold,
       such as the vacuum of space
+  Ureus:
+  - rscadd: "Mesleklere yeni Alternatif \u0130simler ekler."
   mcbalaam:
   - rscadd: Added fake plastic plants to be used for decoration
   - rscadd: 'RDD: Rapid Decoration Device is now available for the service department'
@@ -219,8 +221,6 @@
   - balance: Objects with the walking aid reduce limbless slowdown by 40%, while dedicated
       medical crutches reduce it by 60%.
   - refactor: Refactor cane and crutch code logic into a modular walking aid component
-  Ureus:
-  - rscadd: "Mesleklere yeni Alternatif \u0130simler ekler."
 2026-06-09:
   EnterTheJake:
   - rscadd: Tactical Maps have been added to the game!
@@ -365,3 +365,14 @@
   - bugfix: fixed a runtime when breaking a moneybot without money
   remove32:
   - bugfix: statpanel uses year offset
+2026-06-15:
+  Jaimex:
+  - rscadd: "SecTech\u2019e \xFCniformalara aksesuar olarak tak\u0131labilen bodycam\
+      \ eklendi."
+  - qol: "Bodycam izlenirken kullan\u0131c\u0131ya izlendi\u011Fini g\xF6steren bir\
+      \ uyar\u0131 eklendi."
+  - image: "Bodycam i\xE7in yeni item ve worn iconlar\u0131 eklendi."
+  Rengan:
+  - code_imp: "Round Character Icons art\u0131k i\u015F ve \xF6zel rolleride kaydediyor."
+  lelandkemble:
+  - bugfix: '"fixed" a runtime with gas mask filters'

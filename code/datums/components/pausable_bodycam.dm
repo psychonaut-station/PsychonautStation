@@ -74,7 +74,7 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	if(!my_turf)
 		return FALSE
 	for(var/mob/living/silicon/ai/AI in GLOB.ai_list)
-		if(AI.stat == DEAD || !AI.client)
+		if(AI.stat == DEAD || !GET_CLIENT(AI))
 			continue
 		if(AI.viewing_camera) // watching a camera, not freelooking
 			continue

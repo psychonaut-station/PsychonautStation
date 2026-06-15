@@ -133,6 +133,7 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a valid console watcher exists.")
 
 	console.open_uis = null
+	component.check_proximity_state()
 
 	TEST_ASSERT(!component.has_live_watchers(), "A console with no open UI should be pruned as a stale watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Pruning a stale console watcher should clear the viewed alert.")
@@ -525,11 +526,20 @@
 	test_ai.create_eye()
 	test_ai.eyeobj.setLoc(start_turf)
 
+	host.forceMove(locate(10, 11, 1))
+
 	TEST_ASSERT(component.camera_is_awake, "Camera should wake up when AI is nearby.")
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert when AI is nearby in freelook.")
 
 	// AI moves eye far away
 	test_ai.eyeobj.setLoc(locate(50, 50, 1))
 
+	host.forceMove(locate(10, 10, 1))
+
 	TEST_ASSERT(!component.camera_is_awake, "Camera should sleep when AI moves away.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host alert should clear when AI moves away.")
+
+	if(test_ai.eyeobj)
+		qdel(test_ai.eyeobj)
+		test_ai.eyeobj = null
+	qdel(test_ai)

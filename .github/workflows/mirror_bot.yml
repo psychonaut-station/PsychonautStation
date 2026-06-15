@@ -205,6 +205,9 @@ jobs:
 
             if ! git diff --cached --quiet; then
               git commit -m "Run UpdatePaths scripts"
+              echo "UpdatePaths scripts made changes and were committed."
+            else
+              echo "No changes from UpdatePaths scripts"
             fi
           fi
         env:

@@ -1,8 +1,13 @@
+// Bump this up when you made changes in SScharacter_icons (especially in saving round characters changes)
+#define VERSION_CHARICONS 2
+
 SUBSYSTEM_DEF(character_icons)
 	name = "Character Icons"
 	ss_flags = SS_NO_INIT
 	priority = FIRE_PRIORITY_CHARACTER_ICONS
 	wait = 10 MINUTES
+
+	var/version = VERSION_CHARICONS
 
 	var/list/processing_icons = list()
 	var/list/round_character_icons = list()
@@ -98,3 +103,5 @@ SUBSYSTEM_DEF(character_icons)
 	if(isnull(weakref))
 		return
 	return processing_icons[weakref]
+
+#undef VERSION_CHARICONS

@@ -516,7 +516,7 @@
 
 	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
 
-	var/mob/living/silicon/ai/test_ai = allocate(/mob/living/silicon/ai)
+	var/mob/living/silicon/ai/spawned/test_ai = allocate(/mob/living/silicon/ai/spawned)
 	test_ai.mock_client = new /datum/client_interface()
 
 	TEST_ASSERT(!component.camera_is_awake, "Camera should start asleep.")

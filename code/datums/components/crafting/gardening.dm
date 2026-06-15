@@ -1,13 +1,13 @@
 /datum/crafting_recipe/gardening_outdoor
-    tool_paths = list(/obj/item/secateurs, /obj/item/shovel/spade)
-    time = 2 SECONDS
-    category = CAT_GARDENING
-    crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF
+	tool_paths = list(/obj/item/secateurs, /obj/item/shovel/spade)
+	time = 2 SECONDS
+	category = CAT_GARDENING
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ONE_PER_TURF
 
 /datum/crafting_recipe/gardening_outdoor/check_requirements(mob/user, list/collected_requirements)
-    if(!istype(get_turf(user), /turf/open/floor/grass))
-        return FALSE
-    return ..()
+	if(!istype(get_turf(user), /turf/open/floor/grass))
+		return FALSE
+	return ..()
 
 /datum/crafting_recipe/ppflowers
 	parent_type = /datum/crafting_recipe/gardening_outdoor

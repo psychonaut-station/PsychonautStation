@@ -511,10 +511,15 @@
 		view_core()
 		return
 
+	if(viewing_camera)
+		viewing_camera.on_stop_watching(src)
+
 	ai_tracking_tool.reset_tracking()
 
 	// ok, we're alive, camera is good and in our network...
 	eyeobj.setLoc(get_turf(C))
+	viewing_camera = C
+	viewing_camera.on_start_watching(src)
 	return TRUE
 
 /mob/living/silicon/ai/proc/botcall()

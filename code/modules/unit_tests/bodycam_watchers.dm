@@ -506,3 +506,30 @@
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert on secureye.")
 	qdel(ui)
 
+/datum/unit_test/bodycam_watchers_ai_proximity/Run()
+	var/mob/living/carbon/human/consistent/host = allocate(/mob/living/carbon/human/consistent)
+	host.mock_client = new /datum/client_interface()
+
+	var/turf/start_turf = locate(10, 10, 1)
+	host.forceMove(start_turf)
+
+	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
+
+	var/mob/living/silicon/ai/test_ai = allocate(/mob/living/silicon/ai)
+	test_ai.mock_client = new /datum/client_interface()
+
+	TEST_ASSERT(!component.camera_is_awake, "Camera should start asleep.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host should not start with viewed alert.")
+
+	// AI moves eye nearby (freelook)
+	test_ai.create_eye()
+	test_ai.eyeobj.setLoc(start_turf)
+
+	TEST_ASSERT(component.camera_is_awake, "Camera should wake up when AI is nearby.")
+	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert when AI is nearby in freelook.")
+
+	// AI moves eye far away
+	test_ai.eyeobj.setLoc(locate(50, 50, 1))
+
+	TEST_ASSERT(!component.camera_is_awake, "Camera should sleep when AI moves away.")
+	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host alert should clear when AI moves away.")

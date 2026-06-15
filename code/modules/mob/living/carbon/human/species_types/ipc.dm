@@ -51,10 +51,11 @@
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
 	. = ..()
 	RegisterSignal(ipc, COMSIG_CARBON_ATTEMPT_EAT, PROC_REF(try_eating))
+	RegisterSignal(ipc, COMSIG_LIVING_LIFE, PROC_REF(on_life))
 
 /datum/species/ipc/on_species_loss(mob/living/carbon/human/old_ipc, datum/species/new_species, pref_load)
 	. = ..()
-	UnregisterSignal(old_ipc, COMSIG_CARBON_ATTEMPT_EAT)
+	UnregisterSignal(old_ipc, list(COMSIG_CARBON_ATTEMPT_EAT, COMSIG_LIVING_LIFE))
 
 /datum/species/ipc/proc/try_eating(mob/living/carbon/source, atom/eating)
 	SIGNAL_HANDLER
@@ -62,10 +63,10 @@
 	INVOKE_ASYNC(source, TYPE_PROC_REF(/mob, emote), "scream")
 	return BLOCK_EAT_ATTEMPT
 
-/datum/species/ipc/spec_life(mob/living/carbon/human/H, seconds_per_tick, times_fired)
-	. = ..()
-	if(H.health < H.crit_threshold && !HAS_TRAIT(H, TRAIT_NOCRITDAMAGE))
-		H.adjust_brute_loss(1.5 * seconds_per_tick)
+/datum/species/ipc/proc/on_life(mob/living/carbon/human/source, seconds_per_tick)
+	SIGNAL_HANDLER
+	if(source.health < source.crit_threshold && !HAS_TRAIT(source, TRAIT_NOCRITDAMAGE))
+		source.adjust_brute_loss(1.5 * seconds_per_tick)
 
 /datum/species/ipc/wash(mob/living/carbon/human/H)
 	. = FALSE

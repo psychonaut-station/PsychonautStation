@@ -794,7 +794,11 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		return
 
 	var/metadata_file = "[GLOB.character_log_directory]/metadata.json"
-	var/list/metadata = list()
+	var/list/metadata = list(
+		"version" = SScharacter_icons.version,
+		"indices" = alist(),
+		"characters" = list(),
+	)
 
 	for(var/datum/weakref/weakref in round_character_icons)
 		var/list/spritesheet_data = round_character_icons[weakref]
@@ -806,6 +810,9 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		var/ckey = ckey(character_mind.key)
 		var/character_name = character_mind.name || living_mob.real_name
 		var/id = "[character_name]_[ckey]"
+
+		var/job = character_mind.assigned_role?.title
+		var/special_roles = character_mind.special_roles?.Copy() || list()
 
 		var/list/spritesheet = list("[id]" = spritesheet_data)
 
@@ -834,11 +841,24 @@ GLOBAL_LIST_INIT(achievements_unlocked, list())
 		if(!fexists(file_path))
 			fcopy(file_path_tmp, file_path)
 
-		metadata["[id]"] = list(
+
+		var/list/character_data = list(
 			"name" = character_name,
 			"ckey" = ckey,
-			"icon" = file_name
+			"icon" = file_name,
+			"job" = job,
+			"special_roles" = special_roles,
 		)
+
+
+		if(metadata["indices"]["[id]"])
+			var/indice = metadata["indices"]["[id]"] + 1
+			metadata["characters"][indice] = character_data
+		else
+			var/indice = length(metadata["characters"])
+			metadata["characters"] += list(character_data)
+			metadata["indices"]["[id]"] = indice
+
 		CHECK_TICK
 
 	var/metadata_json = json_encode(metadata)

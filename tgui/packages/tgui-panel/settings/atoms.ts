@@ -18,6 +18,8 @@ export const defaultSettings: SettingsState = {
     visible: false,
     activeTab: SETTINGS_TABS[0].id,
   },
+  websocketEnabled: false,
+  websocketServer: '',
 };
 
 export const defaultHighlightSetting: HighlightSetting = {

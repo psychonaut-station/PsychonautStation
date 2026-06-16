@@ -236,6 +236,7 @@
 				return CLICK_ACTION_BLOCKING
 
 			user.visible_message(span_notice("[user] takes a deep drag..."), span_notice("You take a deep drag..."))
+			playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
 			if(!do_after(user, 5 SECONDS, src))
 				return CLICK_ACTION_BLOCKING
 
@@ -333,6 +334,7 @@
 	var/datum/beam/beam
 	var/atom/attached_to
 	COOLDOWN_DECLARE(inhale_cooldown)
+	var/currently_inhaling = FALSE
 
 /obj/item/hookah_mouthpiece/Initialize(mapload, obj/item/hookah/hookah)
 	. = ..()
@@ -402,10 +404,21 @@
 	return ..()
 
 /obj/item/hookah_mouthpiece/proc/start_inhale(mob/living/carbon/human/living_user)
+
+	if(currently_inhaling)
+		return
+
+	if(!source_hookah || !source_hookah.reagents.total_volume)
+		to_chat(living_user, span_warning("There is no liquid in [src.name]!"))
+		return
+
+	currently_inhaling = TRUE
 	living_user.visible_message(span_notice("[living_user] inhales from [src.name]."), span_notice("You inhale..."))
+	playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
 	if(!do_after(living_user, 2 SECONDS, src))
 		return
 	inhale_smoke(living_user, BASE_INHALE_VOLUME)
+	currently_inhaling = FALSE
 
 /obj/item/hookah_mouthpiece/proc/inhale_smoke(target_mob, amount, skip_calculations = FALSE)
 	var/mob/living/living_user = target_mob
@@ -427,16 +440,10 @@
 			source_hookah.food_items -= some_food_item
 			qdel(some_food_item)
 
-	if(!source_hookah || !source_hookah.reagents.total_volume)
-		to_chat(living_user, span_warning("There is no liquid in [src.name]!"))
-		return
-
 	var/smoke_efficiency = min(source_hookah.smoke_amount, 100) / 100
 	var/amount_to_transfer = skip_calculations ? amount : amount * smoke_efficiency
 	var/amount_to_waste = amount - amount_to_transfer
 	var/transferred = these_reagents.trans_to(living_user, amount_to_transfer, methods = INHALE)
-
-	playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
 
 	if(transferred)
 		to_chat(living_user, span_notice("You inhale smoke from [src.name]."))
@@ -460,7 +467,7 @@
 
 		COOLDOWN_START(src, inhale_cooldown, INHALE_COOLDOWN)
 		source_hookah.smoke_amount = min(source_hookah.smoke_amount + rand(amount * 2, amount), 100)
-		addtimer(CALLBACK(src, PROC_REF(delayed_puff), living_user, amount_to_waste), 2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(delayed_puff), living_user, amount_to_waste), 1 SECONDS)
 
 /obj/item/hookah_mouthpiece/proc/delayed_puff(mob/user, amount)
 	if(!source_hookah || QDELETED(source_hookah))

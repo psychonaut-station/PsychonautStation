@@ -389,6 +389,7 @@
 
 /obj/item/hookah_mouthpiece/dropped(mob/user)
 	. = ..()
+	currently_inhaling = FALSE
 	if(source_hookah)
 		source_hookah.return_mouthpiece(src)
 
@@ -404,7 +405,6 @@
 	return ..()
 
 /obj/item/hookah_mouthpiece/proc/start_inhale(mob/living/carbon/human/living_user)
-
 	if(currently_inhaling)
 		return
 
@@ -415,7 +415,8 @@
 	currently_inhaling = TRUE
 	living_user.visible_message(span_notice("[living_user] inhales from [src.name]."), span_notice("You inhale..."))
 	playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
-	if(do_after(living_user, 2 SECONDS, src))
+	if(!do_after(living_user, 2 SECONDS, src))
+		currently_inhaling = FALSE
 		return
 	inhale_smoke(living_user, BASE_INHALE_VOLUME)
 	currently_inhaling = FALSE

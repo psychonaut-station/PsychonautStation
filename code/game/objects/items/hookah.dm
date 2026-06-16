@@ -416,7 +416,7 @@
 	living_user.visible_message(span_notice("[living_user] inhales from [src.name]."), span_notice("You inhale..."))
 	playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
 	if(do_after(living_user, 2 SECONDS, src))
-  		inhale_smoke(...)
+		inhale_smoke(living_user, BASE_INHALE_VOLUME)
 	currently_inhaling = FALSE
 
 /obj/item/hookah_mouthpiece/proc/inhale_smoke(target_mob, amount, skip_calculations = FALSE)

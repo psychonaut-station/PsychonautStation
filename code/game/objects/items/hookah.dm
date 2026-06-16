@@ -460,7 +460,7 @@
 
 		COOLDOWN_START(src, inhale_cooldown, INHALE_COOLDOWN)
 		source_hookah.smoke_amount = min(source_hookah.smoke_amount + rand(amount * 2, amount), 100)
-		addtimer(CALLBACK(src, PROC_REF(delayed_puff), living_user, amount_to_waste), 1 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(delayed_puff), living_user, amount_to_waste), 2 SECONDS)
 
 /obj/item/hookah_mouthpiece/proc/delayed_puff(mob/user, amount)
 	if(!source_hookah || QDELETED(source_hookah))

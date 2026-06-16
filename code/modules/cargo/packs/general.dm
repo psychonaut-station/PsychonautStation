@@ -269,3 +269,13 @@
 	cost = CARGO_CRATE_VALUE * 6
 	contains = list(/obj/structure/reagent_dispensers/water_cooler/jugless = 1, /obj/item/reagent_containers/cooler_jug/punch = 1)
 	crate_name = "punch cooler crate"
+
+/datum/supply_pack/misc/hookah_kit
+	name = "Hookah Kit"
+	desc = "A kit for those who enjoy a smoke and a cultured relaxation."
+	cost = 200
+	contains = list(
+		/obj/item/hookah,
+		/obj/item/hookah_coals = 3
+	)
+	crate_name = "crate with hookah kit"

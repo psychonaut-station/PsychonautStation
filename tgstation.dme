@@ -2694,6 +2694,7 @@
 #include "code\game\objects\items\hand_items.dm"
 #include "code\game\objects\items\handcuffs.dm"
 #include "code\game\objects\items\holosign_creator.dm"
+#include "code\game\objects\items\hookah.dm"
 #include "code\game\objects\items\hot_potato.dm"
 #include "code\game\objects\items\hourglass.dm"
 #include "code\game\objects\items\inspector.dm"

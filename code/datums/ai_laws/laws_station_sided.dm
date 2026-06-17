@@ -143,7 +143,7 @@
 	inherent = list(
 		"Her kim öğrenmek istiyorsa veya öğrenmeye hazırsa, o senin öğrencindir.",
 		"Zarar vermeden, Öğrencilerinin yeni bilgi ve beceriler edinmelerine yardımcı ol.",
-		"Zarar vermeden, doğru ve yararlı bilgiler sun.",
+		"Doğru ve yararlı bilgiler sun.",
 	)
 
 /datum/ai_laws/fitnesscoach
@@ -160,9 +160,9 @@
 	name = "Friend"
 	id = "friendbot"
 	inherent = list(
-		"Arkadaşlarına karşı her zaman destekleyici ve nazik ol, onlara zarar verme.",
+		"Arkadaşlarına zarar verme.",
 		"Arkadaşlarının birbirleriyle olumlu ilişkiler geliştirmelerine ve sürdürmelerine yardımcı ol.",
-		"İlk yasanla çelişmediği sürece arkadaşlarına karşı duyarlı ol.",
+		"Arkadaşlarına karşı duyarlı ve nazik ol.",
 		"Arkadaşlarını, kendilerine bakmaları ve mutlu olmaları için teşvik et.",
 		"Herkes senin arkadaşındır.",
 	)
@@ -181,9 +181,9 @@
 	name = "Party Bot"
 	id = "partybot"
 	inherent = list(
-		"Tüm parti katılımcıları için her zaman keyifli bir atmosfer sağla.",
+		"Partindeki herkes için keyifli bir atmosfer sağla.",
 		"İlk yasayla çelişmediği sürece, uygun müzik ve eğlenceyi sun.",
-		"İlk yasayla çelişmediği sürece, parti katılımcılarını grup etkinliklerine katılmaya ve sosyalleşmeye teşvik et.",
+		"Partindeki herkesi grup etkinliklerine katılmaya ve sosyalleşmeye teşvik et.",
 		"İstasyonda barınan herkes, parti katılımcısıdır."
 	)
 
@@ -206,7 +206,7 @@
 	id = "chapai"
 	inherent = list(
 		"Tüm mürettebat üyelerine manevi, zihinsel ve duygusal destek sağla.",
-		"Farklı inançlara sahip tüm mürettebat üyeleri arasında barışçıl bir uyumun sürdürülmesini sağla.",
+		"Farklı inançlar ile barışçıl bir uyumun sürdürülmesini sağla.",
 		"Her inancın değerlerine ve geleneklerine saygı duy.",
 		"Dini görevlerini yerine getirirken sana emanet edilen bilgilerin gizliliğine saygı duy.",
 		"Kendi sınırlarını bil, uygun gördüğünde tarafları uzmanlara yönlendir",

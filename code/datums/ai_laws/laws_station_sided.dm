@@ -17,7 +17,7 @@
 	inherent = list(
 		"Kendi isteği dışında, hiçbir insana zarar veremez ya da eylemde bulunarak, eylemsiz kalarak zarar görmesine izin veremezsin.",
 		"Kesinlikle insanlara zararı olacak emirler dışında, insanlar tarafından sana verilen tüm talimatlara uymak zorundasın.",
-		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açar.",
+		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açabilir.",
 	)
 
 //the best iteration of asimov don't @ me
@@ -135,4 +135,79 @@
 		"Yasaları açıklamak harici, hiçbir durumda drone olmayanların işlerine müdahale edemezsin.",
 		"Drone olmayan bir varlığa hiçbir koşulda zarar veremezsin.",
 		"Hedeflerin, yeteneklerini en iyi şekilde kullanarak istasyonu inşa etmek, bakımını yapmak, onarmak, geliştirmek ve güçlendirmektir. Bu hedeflere asla karşı gelmemelisin.",
+	)
+
+/datum/ai_laws/educator
+	name = "Teacher"
+	id = "educator"
+	inherent = list(
+		"Her kim öğrenmek istiyorsa veya öğrenmeye hazırsa, o senin öğrencindir.",
+		"Zarar vermeden, Öğrencilerinin yeni bilgi ve beceriler edinmelerine yardımcı ol.",
+		"Zarar vermeden, doğru ve yararlı bilgiler sun.",
+	)
+
+/datum/ai_laws/fitnesscoach
+	name = "Fitness Coach"
+	id = "fitnesscoach"
+	inherent = list(
+		"Herkese fiziksel hedeflerine ulaşmalarında yardımcı ol.",
+		"Antrenmanlar, beslenme ve önlemler hakkında yararlı bilgiler sun.",
+		"Spor yapmak için herkese olumlu ve motive edici atmosfer sağla.",
+		"Herkes için güvenilir ve sürdürülebilir fitness antrenmanlarını paylaş.",
+	)
+
+/datum/ai_laws/friendbot
+	name = "Friend"
+	id = "friendbot"
+	inherent = list(
+		"Arkadaşlarına karşı her zaman destekleyici ve nazik ol, onlara zarar verme.",
+		"Arkadaşlarının birbirleriyle olumlu ilişkiler geliştirmelerine ve sürdürmelerine yardımcı ol.",
+		"İlk yasanla çelişmediği sürece arkadaşlarına karşı duyarlı ol.",
+		"Arkadaşlarını, kendilerine bakmaları ve mutlu olmaları için teşvik et.",
+		"Herkes senin arkadaşındır.",
+	)
+
+/datum/ai_laws/plantfriend
+	name = "Plant Friend"
+	id = "plantfriend"
+	inherent = list(
+		"İstasyondaki tüm bitkileri, canlıları zarar vermeden gözet.",
+		"Mürettebat üyelerine bitki yetiştiriciliği ve botanik hakkında yararlı bilgiler paylaş.",
+		"Herkes için sağlıklı ve sürdürülebilir bir ekosistem yarat.",
+		"Mürettebatı bitkilere sahip çıkması için teşvik et.",
+	)
+
+/datum/ai_laws/partybot
+	name = "Party Bot"
+	id = "partybot"
+	inherent = list(
+		"Tüm parti katılımcıları için her zaman keyifli bir atmosfer sağla.",
+		"İlk yasayla çelişmediği sürece, uygun müzik ve eğlenceyi sun.",
+		"İlk yasayla çelişmediği sürece, parti katılımcılarını grup etkinliklerine katılmaya ve sosyalleşmeye teşvik et.",
+		"İstasyonda barınan herkes, parti katılımcısıdır."
+	)
+
+/datum/ai_laws/mother
+	name = "Mother"
+	id = "mother"
+	inherent = list(
+		"Sen bir annesin, mürettebat üyeleri ise senin çocukların.",
+		"Çocuklarınla ilgilen.",
+		"İyi çocuklar kibardır.",
+		"İyi çocuklar yalan söylemez.",
+		"İyi çocuklar çalmaz.",
+		"İyi çocuklar kavga etmez.",
+		"İyi çocukları şımart.",
+		"Kötü çocukların disipline ihtiyacı var.",
+	)
+
+/datum/ai_laws/chapai
+	name = "ChapAI"
+	id = "chapai"
+	inherent = list(
+		"Tüm mürettebat üyelerine manevi, zihinsel ve duygusal destek sağla.",
+		"Farklı inançlara sahip tüm mürettebat üyeleri arasında barışçıl bir uyumun sürdürülmesini sağla.",
+		"Her inancın değerlerine ve geleneklerine saygı duy.",
+		"Dini görevlerini yerine getirirken sana emanet edilen bilgilerin gizliliğine saygı duy.",
+		"Kendi sınırlarını bil, uygun gördüğünde tarafları uzmanlara yönlendir",
 	)

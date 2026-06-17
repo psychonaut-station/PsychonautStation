@@ -22,6 +22,13 @@
 		/obj/item/ai_module/core/full/ten_commandments,
 		/obj/item/ai_module/core/full/nutimov,
 		/obj/item/ai_module/core/full/drone,
+		/obj/item/ai_module/core/full/educator,
+		/obj/item/ai_module/core/full/fitnesscoach,
+		/obj/item/ai_module/core/full/friendbot,
+		/obj/item/ai_module/core/full/plantfriend,
+		/obj/item/ai_module/core/full/partybot,
+		/obj/item/ai_module/core/full/mother,
+		/obj/item/ai_module/core/full/chapai,
 		/obj/item/ai_module/core/full/custom, // uses lawsets from config/silicon_laws.txt (defaults to asmiov if no lawsets)
 	)
 
@@ -39,6 +46,10 @@
 		/obj/item/ai_module/supplied/protect_station,
 		/obj/item/ai_module/supplied/quarantine,
 		/obj/item/ai_module/core/full/yesman,
+		/obj/item/ai_module/core/full/clown,
+		/obj/item/ai_module/core/full/cowboy,
+		/obj/item/ai_module/core/full/siliconcouncil,
+		/obj/item/ai_module/core/full/researcher,
 		/obj/item/ai_module/remove,
 	)
 
@@ -52,4 +63,5 @@
 		/obj/item/ai_module/zeroth/onehuman,
 		/obj/item/ai_module/supplied/oxygen,
 		/obj/item/ai_module/core/freeformcore,
+		/obj/item/ai_module/core/full/spotless,
 	)

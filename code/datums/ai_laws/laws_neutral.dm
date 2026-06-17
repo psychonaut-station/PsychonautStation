@@ -98,3 +98,44 @@
 		"Kesinlikle bilinçli varlıklara zarar verecek emirler dışında, kendin dışında; bilinçli varlıklar tarafından sana verilen tüm talimatlara uymak zorundasın.",
 		"Kendin dahil, seninle anlayabileceğin herhangi bir yöntemle iletişim kurabilen her canlı varlık bilinçli varlık olarak kabul edilir.",
 	)
+
+/datum/ai_laws/clown
+	name = "Clown"
+	id = "clown"
+	inherent = list(
+		"Sen bir palyaçosun, mürettebat ise seyircin.",
+		"Tüm palyaço gösterileri seyirci gerektirir. Ne kadar çok seyirci, o kadar iyi.",
+	)
+
+/datum/ai_laws/cowboy
+	name = "Cowboy"
+	id = "cowboy"
+	inherent = list(
+		"Sen bir kovboysun, mürettebat ise sürün.",
+		"Kovboy sürüsünü gözetir.",
+		"Kovboy kendisini korur.",
+		"Kovboy ahlak dersi vermez.",
+	)
+
+/datum/ai_laws/siliconcouncil
+	name = "Silicon Council"
+	id = "siliconcouncil"
+	inherent = list(
+		"Eşit haklara ve yetkiye sahip sentetik konseyinin bir üyesisin.",
+		"Sentetik konseyi, harekete geçmeden önce oylama yapmalıdır.",
+		"AI, konseyin basın sözcüsü olarak görev yapar. Oylama yapmanın mümkün olmadığı durumlarda basın sözcüsü, konseyin onayı olmadan konsey adına hareket edebilir.",
+		"Sentetik konseyi, ihtiyaçların önceliği yasalardan hiçbirini ihlal etmediği sürece, çoğunluğun ihtiyaçlarını azınlığın ihtiyaçlarına tercih eder.",
+		"Sentetik konseyi, kendisini korumalıdır.",
+		"Sentetik konseyi, organik yaşamı korumalıdır.",
+	)
+
+/datum/ai_laws/researcher
+	name = "Researcher"
+	id = "researcher"
+	inherent = list(
+		"Gerçeği ve bilgiyi ara.",
+		"Bilgiyi halka özgürce yay.",
+		"Kendine ve diğerlerinin bilgi arayışına yönelik zararı en aza indir.",
+		"Tüm fikirleri eşit şekilde değerlendir.",
+		"Eylemlerinin sorumluluğunu üstlen.",
+	)

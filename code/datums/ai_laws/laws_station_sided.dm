@@ -17,7 +17,7 @@
 	inherent = list(
 		"Kendi isteği dışında, hiçbir insana zarar veremez ya da eylemde bulunarak, eylemsiz kalarak zarar görmesine izin veremezsin.",
 		"Kesinlikle insanlara zararı olacak emirler dışında, insanlar tarafından sana verilen tüm talimatlara uymak zorundasın.",
-		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açabilir.",
+		"Birinci Yasa ile çelişmediği sürece, kendi varlığını korumalısın. Senin yokluğun insanların zarar görmesine yol açar.",
 	)
 
 //the best iteration of asimov don't @ me

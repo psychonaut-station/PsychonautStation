@@ -499,32 +499,21 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	var/turf/origin_turf = get_turf(src)
 	if(!origin_turf)
 		return null
-	if(is_valid_decentralized_hardware_turf(origin_turf))
+	if(locate(/obj/machinery/ai/data_core) in origin_turf)
 		return origin_turf
 
 	var/turf/best_turf = null
 	var/best_distance = INFINITY
 	for(var/turf/possible_turf in range(6, src))
-		if(!is_valid_decentralized_hardware_turf(possible_turf))
+		if(!possible_turf || !isopenturf(possible_turf))
+			continue
+		if(!(locate(/obj/machinery/ai/data_core) in possible_turf))
 			continue
 		var/distance = get_dist(origin_turf, possible_turf)
 		if(distance < best_distance)
 			best_distance = distance
 			best_turf = possible_turf
 	return best_turf
-
-/obj/effect/landmark/start/ai/proc/find_emergency_hardware_turf(turf/core_turf, list/excluded_turfs)
-	if(!core_turf)
-		return null
-
-	for(var/turf/possible_turf in range(12, core_turf))
-		if(!possible_turf || !isopenturf(possible_turf) || !possible_turf.can_have_cabling())
-			continue
-		if(excluded_turfs && (possible_turf in excluded_turfs))
-			continue
-		return possible_turf
-
-	return null
 
 /obj/effect/landmark/start/ai/proc/find_server_cabinet_turf(turf/core_turf, turf/excluded_turf = null)
 	if(!core_turf)
@@ -533,15 +522,17 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	var/list/preferred_dirs = list(EAST, NORTH, SOUTH, WEST)
 	for(var/direction in preferred_dirs)
 		var/turf/adjacent_turf = get_step(core_turf, direction)
-		if(is_valid_decentralized_hardware_turf(adjacent_turf, excluded_turf))
+		if(locate(/obj/machinery/ai/server_cabinet) in adjacent_turf)
 			return adjacent_turf
 
 	var/turf/best_turf = null
 	var/best_distance = INFINITY
 	for(var/turf/possible_turf in range(6, core_turf))
-		if(!is_valid_decentralized_hardware_turf(possible_turf, excluded_turf))
+		if(!possible_turf || !isopenturf(possible_turf))
 			continue
-		if(possible_turf.x < core_turf.x) // Prefer the right side of the AI sat if possible.
+		if(excluded_turf && (possible_turf == excluded_turf))
+			continue
+		if(!(locate(/obj/machinery/ai/server_cabinet) in possible_turf))
 			continue
 		var/distance = get_dist(core_turf, possible_turf)
 		if(distance < best_distance)
@@ -551,7 +542,11 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 		return best_turf
 
 	for(var/turf/possible_turf in range(6, core_turf))
-		if(!is_valid_decentralized_hardware_turf(possible_turf, excluded_turf))
+		if(!possible_turf || !isopenturf(possible_turf))
+			continue
+		if(excluded_turf && (possible_turf == excluded_turf))
+			continue
+		if(!(locate(/obj/machinery/ai/server_cabinet) in possible_turf))
 			continue
 		var/distance = get_dist(core_turf, possible_turf)
 		if(distance < best_distance)
@@ -566,15 +561,17 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	var/list/preferred_dirs = list(WEST, NORTH, SOUTH, EAST)
 	for(var/direction in preferred_dirs)
 		var/turf/adjacent_turf = get_step(core_turf, direction)
-		if(is_valid_decentralized_hardware_turf(adjacent_turf, excluded_turf))
+		if(locate(/obj/machinery/ai/master_subcontroller) in adjacent_turf)
 			return adjacent_turf
 
 	var/turf/best_turf = null
 	var/best_distance = INFINITY
 	for(var/turf/possible_turf in range(6, core_turf))
-		if(!is_valid_decentralized_hardware_turf(possible_turf, excluded_turf))
+		if(!possible_turf || !isopenturf(possible_turf))
 			continue
-		if(possible_turf.x > core_turf.x) // Prefer opposite side from server cabinet when possible.
+		if(excluded_turf && (possible_turf == excluded_turf))
+			continue
+		if(!(locate(/obj/machinery/ai/master_subcontroller) in possible_turf))
 			continue
 		var/distance = get_dist(core_turf, possible_turf)
 		if(distance < best_distance)
@@ -584,7 +581,11 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 		return best_turf
 
 	for(var/turf/possible_turf in range(6, core_turf))
-		if(!is_valid_decentralized_hardware_turf(possible_turf, excluded_turf))
+		if(!possible_turf || !isopenturf(possible_turf))
+			continue
+		if(excluded_turf && (possible_turf == excluded_turf))
+			continue
+		if(!(locate(/obj/machinery/ai/master_subcontroller) in possible_turf))
 			continue
 		var/distance = get_dist(core_turf, possible_turf)
 		if(distance < best_distance)
@@ -635,34 +636,24 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 
 	var/turf/core_turf = find_data_core_turf()
 	if(!core_turf)
-		var/turf/origin_turf = get_turf(src)
-		if(origin_turf && isopenturf(origin_turf) && origin_turf.can_have_cabling())
-			core_turf = origin_turf
-		else if(origin_turf)
-			core_turf = find_emergency_hardware_turf(origin_turf)
-	if(!core_turf)
 		return FALSE
 
 	var/turf/cabinet_turf = find_server_cabinet_turf(core_turf)
 	if(!cabinet_turf)
-		cabinet_turf = find_emergency_hardware_turf(core_turf, list(core_turf))
-	if(!cabinet_turf)
 		return FALSE
 	var/turf/subcontroller_turf = find_subcontroller_turf(core_turf, cabinet_turf)
-	if(!subcontroller_turf)
-		subcontroller_turf = find_emergency_hardware_turf(core_turf, list(core_turf, cabinet_turf))
 
 	var/obj/machinery/ai/data_core/core = locate(/obj/machinery/ai/data_core) in core_turf
 	if(!core)
-		core = primary_ai ? new /obj/machinery/ai/data_core/primary(core_turf) : new /obj/machinery/ai/data_core(core_turf)
+		return FALSE
 
 	var/obj/machinery/ai/server_cabinet/cabinet = locate(/obj/machinery/ai/server_cabinet) in cabinet_turf
 	if(!cabinet)
-		cabinet = new /obj/machinery/ai/server_cabinet/prefilled(cabinet_turf)
+		return FALSE
 
 	var/obj/machinery/ai/master_subcontroller/subcontroller = subcontroller_turf ? (locate(/obj/machinery/ai/master_subcontroller) in subcontroller_turf) : null
 	if(subcontroller_turf && !subcontroller)
-		subcontroller = new(subcontroller_turf)
+		return FALSE
 
 	var/dir_to_cabinet = get_dir(core_turf, cabinet_turf)
 	var/dir_to_core = turn(dir_to_cabinet, 180)
@@ -671,7 +662,7 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 
 	var/obj/structure/ethernet_cable/core_cable = core_turf.get_ai_cable_node()
 	if(!core_cable)
-		core_cable = new(core_turf)
+		return FALSE
 	core_cable.d1 = 0
 	core_cable.d2 = dir_to_cabinet
 	core_cable.update_icon()
@@ -685,14 +676,14 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 				core_subcontroller_cable = existing_cable
 				break
 		if(!core_subcontroller_cable)
-			core_subcontroller_cable = new(core_turf)
+			return FALSE
 		core_subcontroller_cable.d1 = 0
 		core_subcontroller_cable.d2 = dir_to_subcontroller
 		core_subcontroller_cable.update_icon()
 
 	var/obj/structure/ethernet_cable/cabinet_cable = cabinet_turf.get_ai_cable_node()
 	if(!cabinet_cable)
-		cabinet_cable = new(cabinet_turf)
+		return FALSE
 	cabinet_cable.d1 = 0
 	cabinet_cable.d2 = dir_to_core
 	cabinet_cable.update_icon()
@@ -701,7 +692,7 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	if(subcontroller)
 		subcontroller_cable = subcontroller_turf.get_ai_cable_node()
 		if(!subcontroller_cable)
-			subcontroller_cable = new(subcontroller_turf)
+			return FALSE
 		subcontroller_cable.d1 = 0
 		subcontroller_cable.d2 = dir_to_core_from_subcontroller
 		subcontroller_cable.update_icon()
@@ -725,28 +716,6 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	cabinet.connect_to_ai_network()
 	subcontroller?.connect_to_ai_network()
 	network.update_resources()
-
-	if(primary_ai)
-		var/list/excluded_turfs = list(core_turf, cabinet_turf)
-		if(subcontroller_turf)
-			excluded_turfs += subcontroller_turf
-
-		if(!(locate(/obj/machinery/computer/ai_server_console) in range(6, core_turf)))
-			var/turf/server_console_turf = find_support_machine_turf(core_turf, excluded_turfs)
-			if(server_console_turf)
-				new /obj/machinery/computer/ai_server_console(server_console_turf)
-				excluded_turfs += server_console_turf
-
-		if(!(locate(/obj/machinery/computer/ai_overclocking) in range(6, core_turf)))
-			var/turf/overclock_turf = find_support_machine_turf(core_turf, excluded_turfs)
-			if(overclock_turf)
-				new /obj/machinery/computer/ai_overclocking(overclock_turf)
-				excluded_turfs += overclock_turf
-
-		if(!(locate(/obj/machinery/rack_creator) in range(6, core_turf)))
-			var/turf/rack_creator_turf = find_support_machine_turf(core_turf, excluded_turfs)
-			if(rack_creator_turf)
-				new /obj/machinery/rack_creator(rack_creator_turf)
 
 	return core.valid_data_core()
 

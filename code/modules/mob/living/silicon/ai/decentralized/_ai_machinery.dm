@@ -79,28 +79,6 @@
 		for(var/obj/structure/ethernet_cable/any_cable in source_turf)
 			cable = any_cable
 			break
-	if(!cable)
-		for(var/direction in GLOB.cardinals)
-			var/turf/adjacent_turf = get_step(source_turf, direction)
-			if(!adjacent_turf)
-				continue
-			for(var/obj/structure/ethernet_cable/adjacent_cable in adjacent_turf)
-				var/obj/structure/ethernet_cable/new_node = new(source_turf)
-				new_node.d1 = 0
-				new_node.d2 = direction
-				new_node.update_icon()
-				if(!adjacent_cable.network)
-					var/datum/ai_network/adjacent_network = new()
-					adjacent_network.add_cable(adjacent_cable)
-				if(!new_node.network)
-					var/datum/ai_network/node_network = new()
-					node_network.add_cable(new_node)
-				new_node.mergeConnectedNetworks(new_node.d2)
-				new_node.mergeConnectedNetworksOnTurf()
-				cable = new_node
-				break
-			if(cable)
-				break
 	if(cable && !cable.network)
 		var/datum/ai_network/new_ai_network = new()
 		new_ai_network.add_cable(cable)

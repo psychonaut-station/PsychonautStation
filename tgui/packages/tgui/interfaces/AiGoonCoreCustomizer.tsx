@@ -56,33 +56,30 @@ type Data = {
 };
 
 const previewFrameStyle = {
-  background:
-    'linear-gradient(180deg, rgba(14,24,39,0.98) 0%, rgba(7,12,20,0.98) 100%)',
-  border: '1px solid rgba(115, 173, 255, 0.35)',
+  background: 'rgba(12, 16, 22, 0.95)',
+  border: '1px solid rgba(90, 120, 155, 0.38)',
   borderRadius: '8px',
-  boxShadow: 'inset 0 0 18px rgba(90, 170, 255, 0.08)',
-  padding: '10px',
+  boxShadow: 'none',
+  padding: '8px',
 };
 
 const optionCardStyle = (selected: boolean) => ({
-  background: selected
-    ? 'linear-gradient(180deg, rgba(41,74,122,0.92) 0%, rgba(21,38,64,0.92) 100%)'
-    : 'linear-gradient(180deg, rgba(16,24,35,0.95) 0%, rgba(9,14,21,0.95) 100%)',
+  background: selected ? 'rgba(31, 52, 78, 0.95)' : 'rgba(14, 18, 24, 0.95)',
   border: selected
-    ? '1px solid rgba(124, 198, 255, 0.95)'
-    : '1px solid rgba(80, 104, 133, 0.35)',
+    ? '1px solid rgba(124, 198, 255, 0.75)'
+    : '1px solid rgba(80, 104, 133, 0.28)',
   borderRadius: '8px',
   display: 'inline-block',
-  margin: '0 6px 6px 0',
-  minHeight: '122px',
-  padding: '6px',
+  margin: '0 4px 4px 0',
+  minHeight: '104px',
+  padding: '5px',
   verticalAlign: 'top',
-  width: '132px',
+  width: '122px',
 });
 
 export const AiGoonCoreCustomizer = () => {
   return (
-    <Window width={1380} height={900} title="Goon Core Matrix">
+    <Window width={1220} height={760} title="Goon Core Matrix">
       <Window.Content scrollable>
         <AiGoonCoreCustomizerContent />
       </Window.Content>
@@ -141,34 +138,34 @@ const AiGoonCoreCustomizerContent = () => {
               <Box style={previewFrameStyle}>
                 <Flex align="center" justify="space-between">
                   <Flex.Item>
-                    <Box color="label" mb={1}>
+                    <Box color="label" mb={0.5} fontSize="0.9em">
                       Active core shell
                     </Box>
-                    <Box bold color="good" fontSize="1.15em">
+                    <Box bold color="good" fontSize="1.05em">
                       {current_core_name}
                     </Box>
-                    <Box color="label" mt={1}>
+                    <Box color="label" mt={0.5} fontSize="0.9em">
                       {current_core_description}
                     </Box>
-                    <Box color="label" mt={2}>
+                    <Box color="label" mt={1} fontSize="0.9em">
                       Active screen background
                     </Box>
-                    <Box bold color="average">
+                    <Box bold color="average" fontSize="0.95em">
                       {current_background_name}
                     </Box>
-                    <Box color="label" mt={2}>
+                    <Box color="label" mt={1} fontSize="0.9em">
                       Active light mode
                     </Box>
-                    <Box bold color="average">
+                    <Box bold color="average" fontSize="0.95em">
                       {current_light_mode_name}
                     </Box>
-                    <Box color="label" mt={2}>
+                    <Box color="label" mt={1} fontSize="0.9em">
                       Active face
                     </Box>
-                    <Box bold color="average">
+                    <Box bold color="average" fontSize="0.95em">
                       {current_face_name}
                     </Box>
-                    <Box color="label" mt={2}>
+                    <Box color="label" mt={1} fontSize="0.85em">
                       {core_count} core shells, {background_count} backgrounds, {light_mode_count} light modes, and {face_count} face screens available.
                     </Box>
                   </Flex.Item>
@@ -179,7 +176,7 @@ const AiGoonCoreCustomizerContent = () => {
                       backgroundState={current_background_state}
                       faceState={current_face_state}
                       lightState={current_light_state}
-                      size={144}
+                      size={112}
                     />
                   </Flex.Item>
                 </Flex>
@@ -354,13 +351,15 @@ const PreviewPanel = ({
   state?: string;
 }) => (
   <Box style={previewFrameStyle}>
-    <Box bold mb={1}>
+    <Box bold mb={0.5} fontSize="0.9em">
       {title}
     </Box>
     {!!state ? (
-      <DmIcon icon={icon} icon_state={state} width="96px" height="96px" />
+      <DmIcon icon={icon} icon_state={state} width="72px" height="72px" />
     ) : (
-      <Box color="label">No active layer</Box>
+      <Box color="label" fontSize="0.85em">
+        No active layer
+      </Box>
     )}
   </Box>
 );
@@ -382,8 +381,7 @@ const CompositePreview = ({
 }) => (
   <Box
     style={{
-      background:
-        'radial-gradient(circle at 50% 35%, rgba(74, 130, 220, 0.22) 0%, rgba(10, 16, 24, 0) 68%)',
+      background: 'rgba(8, 10, 14, 0.65)',
       height: `${size}px`,
       margin: '0 auto',
       position: 'relative',
@@ -440,19 +438,19 @@ const OptionGrid = ({
           <ImageButton
             dmIcon={icon}
             dmIconState={previewState}
-            imageSize={72}
+            imageSize={58}
             onClick={() => onSelect(option.state)}
             tooltip={option.name}
           >
             {option.name}
           </ImageButton>
           {'description' in option && !!option.description && (
-            <Box color="label" fontSize="0.8em" mt={1}>
+            <Box color="label" fontSize="0.75em" mt={0.5}>
               {option.description}
             </Box>
           )}
           {selected && (
-            <Box color="good" fontSize="0.8em" mt={1}>
+            <Box color="good" fontSize="0.75em" mt={0.5}>
               {activeLabel}
             </Box>
           )}

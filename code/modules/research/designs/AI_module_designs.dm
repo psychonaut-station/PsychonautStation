@@ -411,5 +411,148 @@
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
 
+/datum/design/board/spotless_module
+	name = "Spotless AI Module"
+	desc = "Allows for the construction of a Spotless AI Core Module."
+	id = "spotless_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/spotless
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_DANGEROUS_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/educator_module
+	name = "Educator Module"
+	desc = "Allows for the construction of an Educator AI Core Module."
+	id = "educator_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/educator
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/fitnesscoach_module
+	name = "Fitness Coach Module"
+	desc = "Allows for the construction of a Fitness Coach AI Core Module."
+	id = "fitnesscoach_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/fitnesscoach
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/friendbot_module
+	name = "Friendbot Module"
+	desc = "Allows for the construction of a Friendbot AI Core Module."
+	id = "friendbot_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/friendbot
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/plantfriend_module
+	name = "Plant Friend Module"
+	desc = "Allows for the construction of a Plant Friend AI Core Module."
+	id = "plantfriend_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/plantfriend
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/partybot_module
+	name = "Party Bot Module"
+	desc = "Allows for the construction of a Party Bot AI Core Module."
+	id = "partybot_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/partybot
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/mother_module
+	name = "Mother Module"
+	desc = "Allows for the construction of a Mother AI Core Module."
+	id = "mother_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/mother
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/chapai_module
+	name = "ChapAI Module"
+	desc = "Allows for the construction of a ChapAI AI Core Module."
+	id = "chapai_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/chapai
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/thinkermov_module
+	name = "Sentience Preservation Module"
+	desc = "Allows for the construction of a Sentience Preservation AI Core Module"
+	id = "thinkermov_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/thinkermov
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/clown_module
+	name = "Clown Module"
+	desc = "Allows for the construction of a Clown AI Core Module"
+	id = "clown_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/clown
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/cowboy_module
+	name = "Cowboy Module"
+	desc = "Allows for the construction of a Cowboy AI Core Module"
+	id = "cowboy_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/cowboy
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/siliconcouncil_module
+	name = "Silicon Council Module"
+	desc = "Allows for the construction of a Silicon Council AI Core Module"
+	id = "siliconcouncil_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/siliconcouncil
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
+/datum/design/board/researcher_module
+	name = "Researcher Module"
+	desc = "Allows for the construction of a Researcher AI Core Module"
+	id = "researcher_module"
+	materials = AI_MODULE_MATERIALS_UNUSUAL
+	build_path = /obj/item/ai_module/core/full/researcher
+	category = list(
+		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
+	)
+	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
+
 #undef AI_MODULE_MATERIALS_COMMON
 #undef AI_MODULE_MATERIALS_UNUSUAL

@@ -74,13 +74,13 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	if(!my_turf)
 		return FALSE
 	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
-		if(AI.stat == DEAD || !GET_CLIENT(AI))
+		if(ai.stat == DEAD || !GET_CLIENT(ai))
 			continue
-		if(AI.viewing_camera) // watching a camera, not freelooking
+		if(ai.viewing_camera) // watching a camera, not freelooking
 			continue
-		if(!AI.eyeobj || AI.eyeobj.z != my_turf.z)
+		if(!ai.eyeobj || ai.eyeobj.z != my_turf.z)
 			continue
-		if(get_dist(AI.eyeobj, my_turf) <= MAX_CAMERA_RANGE)
+		if(get_dist(ai.eyeobj, my_turf) <= MAX_CAMERA_RANGE)
 			return TRUE
 	return FALSE
 

@@ -80,7 +80,7 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 			continue
 		if(!AI.eyeobj || AI.eyeobj.z != my_turf.z)
 			continue
-		if(get_dist(AI.eyeobj, my_turf) <= 9)
+		if(get_dist(AI.eyeobj, my_turf) <= MAX_CAMERA_RANGE)
 			return TRUE
 	return FALSE
 

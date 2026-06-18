@@ -121,12 +121,12 @@
 	name = "Silicon Council"
 	id = "siliconcouncil"
 	inherent = list(
-		"Eşit haklara ve yetkiye sahip sentetik konseyinin bir üyesisin.",
-		"Sentetik konseyi, harekete geçmeden önce oylama yapmalıdır.",
+		"Eşit haklara ve yetkiye sahip silikon konseyinin bir üyesisin.",
+		"Silikon konseyi, harekete geçmeden önce oylama yapmalıdır.",
 		"AI, konseyin basın sözcüsü olarak görev yapar. Oylama yapmanın mümkün olmadığı durumlarda basın sözcüsü, konseyin onayı olmadan konsey adına hareket edebilir.",
-		"Sentetik konseyi, ihtiyaçların önceliği yasalardan hiçbirini ihlal etmediği sürece, çoğunluğun ihtiyaçlarını azınlığın ihtiyaçlarına tercih eder.",
-		"Sentetik konseyi, kendisini korumalıdır.",
-		"Sentetik konseyi, organik yaşamı korumalıdır.",
+		"Silikon konseyi, yasalardan hiçbirini ihlal etmediği sürece, çoğunluğun ihtiyaçlarını azınlığın ihtiyaçlarına tercih eder.",
+		"Silikon konseyi, kendi bütünlüğünü korur.",
+		"Silikon konseyi, düzeni korur.",
 	)
 
 /datum/ai_laws/researcher

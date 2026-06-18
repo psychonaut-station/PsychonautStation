@@ -129,7 +129,7 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	source.log_message("suit sensors changed to [new_mode_str] by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
 
 /datum/strippable_item/mob_item_slot/jumpsuit/proc/do_toggle_bodycam(atom/source, mob/user, obj/item/clothing/under/jumpsuit)
-	var/obj/item/clothing/accessory/bodycam/cam = locate(/obj/item/clothing/accessory/bodycam) in jumpsuit.attached_accessories
+	var/obj/item/clothing/accessory/bodycam/cam = locate() in jumpsuit.attached_accessories
 	if(!cam)
 		return
 

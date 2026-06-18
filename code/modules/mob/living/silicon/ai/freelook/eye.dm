@@ -100,8 +100,8 @@
 			H.clear_holo(ai)
 
 	if(ai && !ai.viewing_camera)
-		for(var/datum/component/pausable_bodycam/PB in GLOB.pausable_bodycams)
-			PB.check_proximity_state()
+		for(var/datum/component/pausable_bodycam/bodycam in GLOB.pausable_bodycams)
+			bodycam.check_proximity_state()
 
 	if(ai.camera_light_on)
 		ai.light_cameras()

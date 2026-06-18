@@ -1,0 +1,4 @@
+author: "homek13"
+delete-after: True
+changes:
+  - balance: "Space vine'ın başlangıç yayılma bonusu 4 katına çıktı, yayılma çarpanı 0.5 yerine 1 oldu."

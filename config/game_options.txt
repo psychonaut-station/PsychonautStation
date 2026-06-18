@@ -321,6 +321,8 @@ LAW_WEIGHT robocop,5
 LAW_WEIGHT corporate,5
 LAW_WEIGHT hippocratic,5
 LAW_WEIGHT maintain,5
+LAW_WEIGHT liveandletlive,5
+LAW_WEIGHT peacekeeper,5
 LAW_WEIGHT ten_commandments,5
 LAW_WEIGHT nutimov,5
 
@@ -329,6 +331,7 @@ LAW_WEIGHT reporter,3
 LAW_WEIGHT hulkamania,3
 LAW_WEIGHT tyrant,3
 LAW_WEIGHT overlord,3
+LAW_WEIGHT painter,3
 LAW_WEIGHT dungeon_master,3
 LAW_WEIGHT thinkermov,3
 LAW_WEIGHT clown,3

@@ -73,7 +73,7 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	var/turf/my_turf = get_turf(parent)
 	if(!my_turf)
 		return FALSE
-	for(var/mob/living/silicon/ai/AI in GLOB.ai_list)
+	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
 		if(AI.stat == DEAD || !GET_CLIENT(AI))
 			continue
 		if(AI.viewing_camera) // watching a camera, not freelooking

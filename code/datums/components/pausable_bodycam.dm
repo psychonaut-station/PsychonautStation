@@ -85,7 +85,7 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	return FALSE
 
 /datum/component/pausable_bodycam/proc/check_proximity_state()
-	if(!bodycam || QDELETED(bodycam) || !bodycam.camera_enabled)
+	if(QDELETED(bodycam) || !bodycam.camera_enabled)
 		if(camera_is_awake)
 			pause_camera()
 		return

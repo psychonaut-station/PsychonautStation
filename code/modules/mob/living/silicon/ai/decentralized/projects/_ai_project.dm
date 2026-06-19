@@ -31,6 +31,17 @@
 		return
 	..()
 
+/datum/ai_project/Destroy(force)
+	if(dashboard)
+		dashboard.available_projects -= src
+		dashboard.completed_projects -= src
+		dashboard.running_projects -= src
+		dashboard.cpu_usage -= name
+		dashboard.ram_usage -= name
+	ai = null
+	dashboard = null
+	return ..()
+
 /datum/ai_project/proc/canResearch()
 	if(!research_requirements)
 		return TRUE

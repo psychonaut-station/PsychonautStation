@@ -1356,6 +1356,10 @@
 	return
 
 /mob/living/silicon/ai/spawned/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
+#ifdef UNIT_TESTS
+	if(GLOB.running_create_and_destroy && !target_ai)
+		return INITIALIZE_HINT_QDEL
+#endif
 	if(!target_ai)
 		target_ai = src //cheat! just give... ourselves as the spawned AI, because that's technically correct
 	. = ..()

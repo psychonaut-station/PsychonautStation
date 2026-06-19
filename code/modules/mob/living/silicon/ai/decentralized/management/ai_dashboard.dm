@@ -31,6 +31,27 @@
 	ram_usage = list()
 	rebuild_projects(TRUE)
 
+/datum/ai_dashboard/Destroy(force)
+	var/list/all_projects = list()
+	all_projects |= available_projects
+	all_projects |= completed_projects
+	all_projects |= running_projects
+
+	for(var/datum/ai_project/project as anything in all_projects)
+		if(!QDELETED(project))
+			qdel(project)
+
+	available_projects = null
+	completed_projects = null
+	running_projects = null
+	cpu_usage = null
+	ram_usage = null
+
+	if(owner?.dashboard == src)
+		owner.dashboard = null
+	owner = null
+	return ..()
+
 /datum/ai_dashboard/proc/rebuild_projects(force = FALSE)
 	if(!owner || QDELETED(owner))
 		return

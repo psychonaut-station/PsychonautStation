@@ -724,8 +724,6 @@ GLOBAL_LIST_INIT(ai_goon_animated_face_options, list(
 	GLOB.ai_goon_face_options += GLOB.ai_goon_animated_face_options
 	GLOB.ai_goon_face_options_initialized = TRUE
 
-/// A form of resolve_ai_icon that is guaranteed to never sleep.
-/// Not always accurate, but always synchronous.
 /proc/get_all_ai_core_display_options()
 	var/static/list/all_ai_core_display_options
 	if(!all_ai_core_display_options)
@@ -817,7 +815,10 @@ GLOBAL_LIST_INIT(ai_goon_animated_face_options, list(
 		return light_state
 	return null
 
+/// A form of resolve_ai_icon that is guaranteed to never sleep.
+/// Not always accurate, but always synchronous.
 /proc/resolve_ai_icon_sync(input)
+	SHOULD_NOT_SLEEP(TRUE)
 	if(!input || !(input in get_all_ai_core_display_options()))
 		return "ai"
 	else

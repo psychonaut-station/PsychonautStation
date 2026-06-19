@@ -525,7 +525,7 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 	. = list()
 	var/list/candidate_ais = GLOB.ai_list.Copy()
 	for(var/obj/machinery/ai/data_core/core as anything in GLOB.data_cores)
-		for(var/mob/living/silicon/ai/hosted_ai as anything in core.contents)
+		for(var/mob/living/silicon/ai/hosted_ai in core.contents)
 			candidate_ais |= hosted_ai
 
 	for(var/mob/living/silicon/ai/ai as anything in candidate_ais)

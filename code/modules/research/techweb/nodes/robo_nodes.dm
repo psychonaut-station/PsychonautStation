@@ -96,6 +96,18 @@
 		"thinkermov_module",
 		"tyrant_module",
 		"yesman_module",
+		"spotless_module",
+		"clown_module",
+		"cowboy_module",
+		"siliconcouncil_module",
+		"researcher_module",
+		"educator_module",
+		"fitnesscoach_module",
+		"friendbot_module",
+		"plantfriend_module",
+		"partybot_module",
+		"mother_module",
+		"chapai_module",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_COMMAND)

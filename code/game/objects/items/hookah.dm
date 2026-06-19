@@ -359,12 +359,15 @@
 	)
 
 	RegisterSignal(living_mob, COMSIG_MOVABLE_MOVED, PROC_REF(check_distance))
+	RegisterSignal(source_hookah, COMSIG_MOVABLE_MOVED, PROC_REF(check_distance))
 	return TRUE
 
 /obj/item/hookah_mouthpiece/proc/disconnect()
 	if(attached_to)
 		UnregisterSignal(attached_to, COMSIG_MOVABLE_MOVED)
 		attached_to = null
+	if(source_hookah)
+		UnregisterSignal(source_hookah, COMSIG_MOVABLE_MOVED)
 	QDEL_NULL(beam)
 
 /obj/item/hookah_mouthpiece/proc/check_distance()

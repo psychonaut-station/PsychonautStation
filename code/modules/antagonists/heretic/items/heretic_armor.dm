@@ -46,7 +46,7 @@
 
 /// Applies a punishment to the user when the robes are equipped
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/proc/robes_side_effect(mob/living/user)
-	SHOULD_NOT_SLEEP(TRUE) // sleep here would fuck over the timing
+	return
 
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/proc/is_equipped(mob/wearer)
 	return wearer.get_slot_by_item(src) & slot_flags

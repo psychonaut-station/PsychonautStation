@@ -420,8 +420,8 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 	if(reentering_ghost)
 		reentering_ghost.can_reenter_corpse = FALSE
 
-/mob/living/silicon/ai/ghostize(can_reenter_corpse = TRUE, admin_ghost = FALSE)
-	return ..(can_reenter_corpse)
+/mob/living/silicon/ai/ghostize(can_reenter_corpse = TRUE, forced = FALSE)
+	return ..(can_reenter_corpse, forced)
 
 /mob/living/silicon/ai/proc/switch_ainet(datum/ai_network/old_net, datum/ai_network/new_net)
 	var/list/completed_projects = dashboard?.completed_projects

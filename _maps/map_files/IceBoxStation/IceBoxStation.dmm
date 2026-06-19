@@ -3592,7 +3592,7 @@
 /area/station/maintenance/starboard/fore)
 "aXq" = (
 /obj/item/bedsheet/red,
-/mob/living/simple_animal/bot/secbot/beepsky,
+/mob/living/basic/bot/secbot/beepsky,
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "aXG" = (
@@ -24118,7 +24118,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "gJI" = (
-/mob/living/simple_animal/bot/secbot/beepsky/armsky,
+/mob/living/basic/bot/secbot/beepsky/armsky,
 /obj/machinery/airalarm/directional/east,
 /turf/open/floor/iron/dark/textured,
 /area/station/security/armory)
@@ -46124,7 +46124,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/mob/living/simple_animal/bot/secbot/pingsky,
+/mob/living/basic/bot/secbot/pingsky,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/interior)
 "mXj" = (
@@ -63125,7 +63125,7 @@
 /obj/effect/turf_decal/tile/red{
 	dir = 1
 	},
-/mob/living/simple_animal/bot/secbot/beepsky{
+/mob/living/basic/bot/secbot/beepsky{
 	desc = "Powered by the tears and sweat of laborers.";
 	name = "Prison Ofitser"
 	},
@@ -64416,7 +64416,7 @@
 	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/light/small/directional/east,
-/mob/living/simple_animal/bot/mulebot,
+/mob/living/basic/bot/mulebot,
 /obj/machinery/status_display/supply{
 	pixel_x = 32
 	},
@@ -82001,7 +82001,7 @@
 	location = "QM #1"
 	},
 /obj/effect/turf_decal/bot,
-/mob/living/simple_animal/bot/mulebot,
+/mob/living/basic/bot/mulebot,
 /turf/open/floor/iron,
 /area/station/cargo/storage)
 "xaH" = (
@@ -283037,3 +283037,4 @@ bln
 bln
 bln
 "}
+

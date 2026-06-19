@@ -20891,7 +20891,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/mob/living/simple_animal/bot/secbot/beepsky/officer,
+/mob/living/basic/bot/secbot/beepsky/officer,
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "fgq" = (
@@ -22806,7 +22806,7 @@
 	name = "warehouse shutters control"
 	},
 /obj/structure/window/reinforced/spawner/directional/north,
-/mob/living/simple_animal/bot/mulebot,
+/mob/living/basic/bot/mulebot,
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=4";
 	location = "QM #1"
@@ -32218,7 +32218,7 @@
 /obj/effect/turf_decal/stripes/corner{
 	dir = 4
 	},
-/mob/living/simple_animal/bot/secbot/beepsky/armsky,
+/mob/living/basic/bot/secbot/beepsky/armsky,
 /turf/open/floor/iron/dark,
 /area/station/security/armory)
 "hTv" = (
@@ -48657,7 +48657,7 @@
 /turf/open/floor/iron,
 /area/station/maintenance/port/aft)
 "lUm" = (
-/mob/living/simple_animal/bot/mulebot,
+/mob/living/basic/bot/mulebot,
 /obj/machinery/navbeacon{
 	codes_txt = "delivery;dir=4";
 	location = "QM #4"
@@ -96441,7 +96441,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/mob/living/simple_animal/bot/secbot/pingsky,
+/mob/living/basic/bot/secbot/pingsky,
 /turf/open/floor/iron/grimy,
 /area/station/ai/satellite/interior)
 "xNe" = (
@@ -163863,3 +163863,4 @@ aaa
 aaa
 aaa
 "}
+

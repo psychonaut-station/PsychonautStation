@@ -21368,7 +21368,7 @@
 	codes_txt = "delivery;dir=4";
 	location = "Cargo Storage4"
 	},
-/mob/living/simple_animal/bot/mulebot{
+/mob/living/basic/bot/mulebot{
 	name = "Old Yeller"
 	},
 /turf/open/floor/iron/recharge_floor,
@@ -34009,7 +34009,7 @@
 	codes_txt = "delivery;dir=4";
 	location = "Cargo Storage-2"
 	},
-/mob/living/simple_animal/bot/mulebot{
+/mob/living/basic/bot/mulebot{
 	name = "Parcel Pete"
 	},
 /obj/item/radio/intercom/directional/west,
@@ -66145,7 +66145,7 @@
 /obj/effect/turf_decal/siding/dark{
 	dir = 8
 	},
-/mob/living/simple_animal/bot/secbot/pingsky,
+/mob/living/basic/bot/secbot/pingsky,
 /obj/structure/cable/layer3,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -89972,7 +89972,7 @@
 /obj/machinery/holopad/secure{
 	pixel_y = -1
 	},
-/mob/living/simple_animal/bot/secbot/beepsky/armsky,
+/mob/living/basic/bot/secbot/beepsky/armsky,
 /obj/effect/turf_decal/trimline/red/warning{
 	dir = 4
 	},
@@ -91063,7 +91063,7 @@
 /obj/effect/mapping_helpers/mail_sorting/service/library,
 /obj/effect/mapping_helpers/mail_sorting/service/chapel,
 /obj/effect/mapping_helpers/mail_sorting/service/dormitories,
-/mob/living/simple_animal/bot/secbot/beepsky/officer,
+/mob/living/basic/bot/secbot/beepsky/officer,
 /obj/machinery/navbeacon{
 	codes_txt = "patrol;next_patrol=10-Vault";
 	location = "9-Bridge"
@@ -223190,3 +223190,4 @@ nlm
 nlm
 nlm
 "}
+

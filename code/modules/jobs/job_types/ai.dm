@@ -25,6 +25,7 @@
 		"AI",
 		"Station Intelligence",
 		"Automated Overseer",
+		"Machine Spirit",
 	)
 
 /datum/job/ai/proc/is_viable_data_core(obj/machinery/ai/data_core/core, require_transfer_ready = FALSE, require_empty = TRUE)

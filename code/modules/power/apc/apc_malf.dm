@@ -55,8 +55,6 @@
 		disk_pinpointers.switch_mode_to(TRACK_MALF_AI) //Pinpointer will track the shunted AI
 	var/datum/action/innate/core_return/return_action = new
 	return_action.Grant(occupier)
-	SEND_SIGNAL(src, COMSIG_SILICON_AI_OCCUPY_APC, occupier)
-	SEND_SIGNAL(occupier, COMSIG_SILICON_AI_OCCUPY_APC, occupier)
 	occupier.cancel_camera()
 
 /obj/machinery/power/apc/proc/malfvacate(forced)

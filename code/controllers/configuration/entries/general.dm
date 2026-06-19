@@ -113,6 +113,9 @@
 /// log game events
 /datum/config_entry/flag/log_game
 
+/// log minimap drawing events
+/datum/config_entry/flag/log_minimap_drawing
+
 /// log mech data
 /datum/config_entry/flag/log_mecha
 
@@ -778,11 +781,6 @@
 /datum/config_entry/number/upload_limit_admin
 	default = 5242880
 	min_val = 0
-
-/datum/config_entry/number/timezone_offset
-	default = 36000
-	min_val = 1
-	integer = TRUE
 
 /datum/config_entry/flag/require_discord_linking
 	default = FALSE

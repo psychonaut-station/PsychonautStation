@@ -41,6 +41,8 @@
 		"Paramedic",
 		"Emergency Medical Technician",
 		"Search and Rescue Technician",
+		"Trauma Technician",
+		"Rescue Specialist"
 	)
 
 /datum/outfit/job/paramedic

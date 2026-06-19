@@ -141,5 +141,53 @@
 	law_id = "yesman"
 
 /obj/item/ai_module/core/full/thinkermov
-	name = "Sentience Preservation Core AI Module"
+	name = "'Thinkermov' Core AI Module"
 	law_id = "thinkermov"
+
+/obj/item/ai_module/core/full/clown
+	name = "'Clown' Core AI Module"
+	law_id = "clown"
+
+/obj/item/ai_module/core/full/cowboy
+	name = "'Cowboy' Core AI Module"
+	law_id = "cowboy"
+
+/obj/item/ai_module/core/full/siliconcouncil
+	name = "'Silicon Council' Core AI Module"
+	law_id = "siliconcouncil"
+
+/obj/item/ai_module/core/full/researcher
+	name = "'Researcher' Core AI Module"
+	law_id = "researcher"
+
+/obj/item/ai_module/core/full/educator
+	name = "'Educator' Core AI Module"
+	law_id = "educator"
+
+/obj/item/ai_module/core/full/fitnesscoach
+	name = "'Fitness Coach' Core AI Module"
+	law_id = "fitnesscoach"
+
+/obj/item/ai_module/core/full/friendbot
+	name = "'Friendbot' Core AI Module"
+	law_id = "friendbot"
+
+/obj/item/ai_module/core/full/plantfriend
+	name = "'Plant Friend' Core AI Module"
+	law_id = "plantfriend"
+
+/obj/item/ai_module/core/full/partybot
+	name = "'Partybot' Core AI Module"
+	law_id = "partybot"
+
+/obj/item/ai_module/core/full/mother
+	name = "'Mother' Core AI Module"
+	law_id = "mother"
+
+/obj/item/ai_module/core/full/chapai
+	name = "'Chapai' Core AI Module"
+	law_id = "chapai"
+
+/obj/item/ai_module/core/full/spotless
+	name = "'Spotless' Core AI Module"
+	law_id = "spotless"

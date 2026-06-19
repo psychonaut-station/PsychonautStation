@@ -53,6 +53,9 @@ LOG_OOC
 ## log LOOC channel
 LOG_LOOC
 
+## log minimap drawing
+LOG_MINIMAP_DRAWING
+
 ## log pda messages
 LOG_PDA
 

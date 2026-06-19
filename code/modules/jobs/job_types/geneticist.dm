@@ -32,6 +32,7 @@
 	alt_titles = list(
 		"Geneticist",
 		"Mutation Researcher",
+		"Bioengineer"
 	)
 
 /datum/outfit/job/geneticist

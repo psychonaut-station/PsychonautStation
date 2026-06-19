@@ -1,0 +1,5 @@
+author: "Jaimex"
+delete-after: True
+changes:
+  - rscadd: "Artık strip menüden bodycam togglanabiliyor."
+  - bugfix: "AI, bodycami görmeme problemi düzeltildi."

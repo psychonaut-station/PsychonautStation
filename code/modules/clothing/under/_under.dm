@@ -130,6 +130,9 @@
 
 /obj/item/clothing/under/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stack/cable_coil))
+		for(var/obj/item/clothing/accessory/bodycam/bodycam in attached_accessories)
+			if(bodycam.broken)
+				return bodycam.repair_with_cable(user, tool) ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_BLOCKING
 		if(!repair_sensors(user))
 			return ITEM_INTERACT_BLOCKING
 		var/obj/item/stack/cable_coil/cabling = tool
@@ -351,14 +354,11 @@
 		return
 	if(user && !user.temporarilyRemoveItemFromInventory(accessory))
 		return
-	if(!accessory.attach(src, user))
+	if(!accessory.try_attach(src, user))
 		return
 
-	LAZYADD(attached_accessories, accessory)
-	accessory.forceMove(src)
-
 	// Allow for accessories to react to the acccessory list now
-	accessory.successful_attach(src)
+	accessory.attach(src)
 
 	if(user && attach_message)
 		balloon_alert(user, "accessory attached")

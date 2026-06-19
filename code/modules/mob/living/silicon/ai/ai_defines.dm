@@ -86,6 +86,8 @@
 	/* CAMERA EYE */
 	/// The AI's **main** eye
 	VAR_FINAL/mob/eye/camera/ai/eyeobj
+	/// The camera the AI is currently viewing, if any
+	var/obj/machinery/camera/viewing_camera
 	/// List of [mob/eye/camera/ai][camera eyes] that the AI has created, including the [var/eyeobj][main eye]
 	VAR_FINAL/list/mob/eye/camera/ai/all_eyes = list()
 	/// The internal tool used to track players visible through cameras

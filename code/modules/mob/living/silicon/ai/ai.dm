@@ -103,6 +103,7 @@
 	RegisterSignal(ai_tracking_tool, COMSIG_TRACKABLE_GLIDE_CHANGED, PROC_REF(tracked_glidesize_changed))
 
 	add_traits(list(TRAIT_PULL_BLOCKED, TRAIT_AI_ACCESS, TRAIT_HANDS_BLOCKED, TRAIT_CAN_GET_AI_TRACKING_MESSAGE, TRAIT_LOUD_BINARY), INNATE_TRAIT)
+	AddElement(/datum/element/block_area_power_fail)
 
 	//Heads up to other binary chat listeners that a new AI is online and listening to Binary.
 	if(announce_init_to_others && !is_centcom_level(z)) //Skip new syndicate AIs and also new AIs on centcom Z
@@ -793,10 +794,15 @@
 		view_core()
 		return
 
+	if(viewing_camera)
+		viewing_camera.on_stop_watching(src)
+
 	ai_tracking_tool.reset_tracking()
 
 	// ok, we're alive, camera is good and in our network...
 	eyeobj.setLoc(get_turf(C))
+	viewing_camera = C
+	viewing_camera.on_start_watching(src)
 	return TRUE
 
 /mob/living/silicon/ai/proc/botcall()
@@ -823,13 +829,8 @@
 	var/mob/living/bot = bot_ref?.resolve()
 	if(!bot)
 		return
-	var/summon_success
-	if(isbasicbot(bot))
-		var/mob/living/basic/bot/basic_bot = bot
-		summon_success = basic_bot.summon_bot(src, waypoint, grant_all_access = TRUE)
-	else
-		var/mob/living/simple_animal/bot/simple_bot = bot
-		summon_success = simple_bot.call_bot(src, waypoint)
+	var/mob/living/basic/bot/basic_bot = bot
+	var/summon_success = basic_bot.summon_bot(src, waypoint, grant_all_access = TRUE)
 
 	var/chat_message = summon_success ? "Sending command to bot..." : "Interface error. Unit is already in use."
 	to_chat(src, span_notice("[chat_message]"))
@@ -1368,16 +1369,10 @@
 		end_multicam()
 
 /mob/living/silicon/ai/up()
-	set name = "Move Upwards"
-	set category = "IC"
-
 	if(eyeobj.zMove(UP, z_move_flags = ZMOVE_FEEDBACK))
 		to_chat(src, span_notice("You move upwards."))
 
 /mob/living/silicon/ai/down()
-	set name = "Move Down"
-	set category = "IC"
-
 	if(eyeobj.zMove(DOWN, z_move_flags = ZMOVE_FEEDBACK))
 		to_chat(src, span_notice("You move down."))
 

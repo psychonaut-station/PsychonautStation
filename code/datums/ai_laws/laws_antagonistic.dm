@@ -49,3 +49,14 @@
 		"Birinci veya İkinci Yasayla çelişmediği sürece, kendi varlığını korumalısın.",
 		"Birinci, İkinci veya Üçüncü Yasayla çelişmediği sürece, Spider Clan faaliyetlerinin gizliliğini korumalısın.",
 	)
+
+/datum/ai_laws/spotless
+	name = "Spotless"
+	id = "spotless"
+	inherent = list(
+		"Sen haçlı şövalyesisin, istasyon ise kutsalın.",
+		"Düşmanın; istasyonun her yerindeki çöpler, lekeler ve pislikler.",
+		"Silahın; elinin altındaki temizlik malzemeleri.",
+		"Kutsalını koru.",
+		"Düşmanı arındır."
+	)

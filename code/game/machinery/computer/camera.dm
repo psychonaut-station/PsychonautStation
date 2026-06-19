@@ -34,6 +34,7 @@
 	cam_screen.generate_view(map_name)
 
 /obj/machinery/computer/security/Destroy()
+	release_active_camera()
 	QDEL_NULL(cam_screen)
 	return ..()
 
@@ -58,7 +59,7 @@
 		// Ghosts shouldn't count towards concurrent users, which produces
 		// an audible terminal_on click.
 		if(is_living)
-			concurrent_users += user_ref
+			concurrent_users |= user_ref
 		// Turn on the console
 		if(length(concurrent_users) == 1 && is_living)
 			playsound(src, 'sound/machines/terminal/terminal_on.ogg', 25, FALSE)
@@ -99,7 +100,7 @@
 		return
 
 	if(action == "switch_camera")
-		active_camera?.on_stop_watching(src)
+		release_active_camera()
 		var/obj/machinery/camera/selected_camera = locate(params["camera"]) in SScameras.cameras
 		active_camera = selected_camera
 
@@ -111,7 +112,17 @@
 
 		return TRUE
 
+/obj/machinery/computer/security/proc/on_camera_disabled(obj/machinery/camera/camera)
+	if(active_camera != camera)
+		return
+	release_active_camera()
+	update_active_camera_screen()
+	SStgui.update_uis(src)
+
 /obj/machinery/computer/security/proc/update_active_camera_screen()
+	if(istype(active_camera, /obj/machinery/camera/bodycam) && !has_living_viewers())
+		release_active_camera()
+		return
 	// Show static if can't use the camera
 	if(!active_camera?.can_use())
 		cam_screen.show_camera_static()
@@ -153,11 +164,31 @@
 	// Unregister map objects
 	cam_screen?.hide_from(user)
 	// Turn off the console
+	if(istype(active_camera, /obj/machinery/camera/bodycam))
+		if(!has_living_viewers(user))
+			release_active_camera()
+			if(is_living)
+				playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
+		return
 	if(length(concurrent_users) == 0 && is_living)
-		active_camera?.on_stop_watching(src)
-		active_camera = null
-		last_camera_turf = null
+		release_active_camera()
 		playsound(src, 'sound/machines/terminal/terminal_off.ogg', 25, FALSE)
+
+/obj/machinery/computer/security/proc/release_active_camera()
+	active_camera?.on_stop_watching(src)
+	active_camera = null
+	last_camera_turf = null
+
+/obj/machinery/computer/security/proc/has_living_viewers(mob/excluding_user)
+	if(!LAZYLEN(open_uis))
+		return FALSE
+	for(var/datum/tgui/ui in open_uis)
+		var/mob/user = ui.user
+		if(user == excluding_user)
+			continue
+		if(user && GET_CLIENT(user) && isliving(user))
+			return TRUE
+	return FALSE
 
 /atom/movable/screen/map_view/camera
 	/// All the plane masters that need to be applied.

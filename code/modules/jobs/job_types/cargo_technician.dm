@@ -40,6 +40,7 @@
 		"Mailman",
 		"Union Associate",
 		"Inventory Associate",
+		"Cargo Operator"
 	)
 
 /datum/outfit/job/cargo_tech

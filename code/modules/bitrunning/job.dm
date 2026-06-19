@@ -32,7 +32,9 @@
 	alt_titles = list(
 		"Bitrunner",
 		"Cyberspace Specialist",
-		"Hacker"
+		"Hacker",
+		"Cyberspace Explorer",
+		"Netrunner"
 	)
 
 /datum/outfit/job/bitrunner

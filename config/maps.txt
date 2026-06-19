@@ -24,6 +24,11 @@ map deltastation
 	votable
 endmap
 
+map ancientdeltastation
+	minplayer 0
+	votable
+endmap
+
 map icebox
 	minplayers 0
 	votable

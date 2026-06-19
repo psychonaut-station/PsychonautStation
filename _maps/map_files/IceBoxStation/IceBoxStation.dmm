@@ -17926,7 +17926,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/surgery/aft)
 "eUO" = (
-/mob/living/simple_animal/hostile/asteroid/polarbear{
+/mob/living/basic/mining/polarbear{
 	move_force = 999;
 	name = "Dewey"
 	},
@@ -23986,7 +23986,7 @@
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "gHA" = (
-/mob/living/simple_animal/hostile/asteroid/polarbear{
+/mob/living/basic/mining/polarbear{
 	move_force = 999;
 	name = "Louie"
 	},
@@ -57582,7 +57582,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
 "pZY" = (
-/mob/living/simple_animal/hostile/asteroid/polarbear{
+/mob/living/basic/mining/polarbear{
 	move_force = 999;
 	name = "Huey"
 	},
@@ -283037,4 +283037,5 @@ bln
 bln
 bln
 "}
+
 

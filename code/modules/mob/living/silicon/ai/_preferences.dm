@@ -818,8 +818,6 @@ GLOBAL_LIST_INIT(ai_goon_animated_face_options, list(
 	return null
 
 /proc/resolve_ai_icon_sync(input)
-	SHOULD_NOT_SLEEP(TRUE)
-
 	if(!input || !(input in get_all_ai_core_display_options()))
 		return "ai"
 	else

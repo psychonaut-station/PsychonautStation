@@ -78,9 +78,10 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 			continue
 		if(ai.viewing_camera) // watching a camera, not freelooking
 			continue
-		if(!ai.eyeobj || ai.eyeobj.z != my_turf.z)
+		var/turf/ai_eye_turf = get_turf(ai.eyeobj)
+		if(!ai_eye_turf || ai_eye_turf.z != my_turf.z)
 			continue
-		if(get_dist(ai.eyeobj, my_turf) <= MAX_CAMERA_RANGE)
+		if(get_dist(ai_eye_turf, my_turf) <= MAX_CAMERA_RANGE)
 			return TRUE
 	return FALSE
 

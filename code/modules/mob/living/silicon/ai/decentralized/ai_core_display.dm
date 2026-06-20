@@ -30,7 +30,7 @@
 
 	var/mutable_appearance/picture_overlay = mutable_appearance(current_picture_icon, current_picture)
 	picture_overlay.appearance_flags |= KEEP_APART
-	. = list(picture_overlay)
+	. += picture_overlay
 
 /obj/machinery/status_display/ai_core/proc/refresh_from_network_ai(mob/living/silicon/ai/target_ai)
 	if(machine_stat & NOPOWER)

@@ -2636,9 +2636,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
-/obj/structure/window/reinforced/spawner/directional/west{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "aVv" = (
@@ -2873,7 +2871,6 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "aYz" = (
-/obj/structure/ethernet_cable,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 1;
@@ -15220,6 +15217,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "fiX" = (
@@ -20250,6 +20248,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "gXW" = (
@@ -31753,6 +31752,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "kLh" = (
@@ -47272,6 +47272,7 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/ai/satellite/chamber)
 "qeT" = (
@@ -50409,6 +50410,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "rhn" = (
@@ -52927,6 +52929,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "rZz" = (
@@ -55257,6 +55260,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/ai/satellite/chamber)
 "sOU" = (
@@ -57746,6 +57750,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/ai/satellite/chamber)
 "tHZ" = (
@@ -58575,6 +58580,7 @@
 /obj/machinery/flasher/directional/south{
 	id = "AI"
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms/mainframe,
 /area/station/ai/satellite/chamber)
 "tUH" = (
@@ -61546,6 +61552,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "uVd" = (

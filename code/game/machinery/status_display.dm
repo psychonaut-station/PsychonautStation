@@ -231,7 +231,8 @@ GLOBAL_LIST_EMPTY(key_to_status_display)
 			if(message1 == "" && message2 == "")
 				return
 
-	. += emissive_appearance(icon, "outline", src, alpha = src.alpha)
+	if(icon_exists(icon, "outline"))
+		. += emissive_appearance(icon, "outline", src, alpha = src.alpha)
 
 // Timed process - performs nothing in the base class
 /obj/machinery/status_display/process()

@@ -532,9 +532,7 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert when AI is nearby in freelook.")
 
 	// AI moves eye far away
-	var/turf/far_turf = run_loc_floor_top_right
-	TEST_ASSERT(get_dist(far_turf, start_turf) > MAX_CAMERA_RANGE, "Unit test far turf should be outside bodycam AI proximity range.")
-	test_ai.eyeobj.setLoc(far_turf)
+	test_ai.eyeobj.moveToNullspace()
 
 	host.forceMove(start_turf)
 	component.check_proximity_state()

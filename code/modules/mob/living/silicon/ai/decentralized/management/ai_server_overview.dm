@@ -11,6 +11,7 @@
 	desc = "Used for allocating local AI network compute and restoring volatile neural cores."
 
 /obj/machinery/computer/ai_server_console/network_interface/Initialize(mapload)
+	. = ..()
 	var/turf/source_turf = get_turf(src)
 	if(source_turf)
 		var/obj/machinery/modular_computer/preset/ai_network_interface/interface_console = new(source_turf)

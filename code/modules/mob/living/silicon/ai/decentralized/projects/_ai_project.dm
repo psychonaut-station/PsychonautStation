@@ -32,7 +32,7 @@
 	..()
 
 /datum/ai_project/Destroy(force)
-	if(dashboard)
+	if(dashboard && !QDELETED(dashboard))
 		dashboard.available_projects -= src
 		dashboard.completed_projects -= src
 		dashboard.running_projects -= src

@@ -38,18 +38,20 @@
 	all_projects |= running_projects
 
 	for(var/datum/ai_project/project as anything in all_projects)
-		if(!QDELETED(project))
-			qdel(project)
+		if(QDELETED(project))
+			continue
+		project.dashboard = null
+		project.ai = null
+		qdel(project, force = TRUE)
 
+	if(owner?.dashboard == src)
+		owner.dashboard = null
+	owner = null
 	available_projects = null
 	completed_projects = null
 	running_projects = null
 	cpu_usage = null
 	ram_usage = null
-
-	if(owner?.dashboard == src)
-		owner.dashboard = null
-	owner = null
 	return ..()
 
 /datum/ai_dashboard/proc/rebuild_projects(force = FALSE)

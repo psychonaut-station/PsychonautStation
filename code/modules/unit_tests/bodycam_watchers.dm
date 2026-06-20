@@ -522,6 +522,10 @@
 	TEST_ASSERT(!component.camera_is_awake, "Camera should start asleep.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host should not start with viewed alert.")
 
+	// The AI eye only moves when its owner is sitting in a valid AI location.
+	// Give the spawned AI a real turf first so the proximity test reflects gameplay.
+	test_ai.forceMove(start_turf)
+
 	// AI moves eye nearby (freelook)
 	test_ai.create_eye()
 	test_ai.eyeobj.setLoc(start_turf)

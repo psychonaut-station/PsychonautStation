@@ -5,8 +5,9 @@
 /mob/living/silicon/ai/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
 	. = ..()
 	if(!target_ai) //If there is no player/brain inside.
-		// Decentralized AI no longer spawns legacy AI core structures.
-		return INITIALIZE_HINT_QDEL //Delete AI.
+		// Unit tests and fallback construction paths may instantiate an AI without a target yet.
+		// Let the object finish construction normally instead of hard-deleting it during init.
+		target_ai = src
 
 	ADD_TRAIT(src, TRAIT_NO_TELEPORT, AI_ANCHOR_TRAIT)
 	status_flags &= ~CANPUSH //AI starts anchored, so dont push it
@@ -1356,10 +1357,6 @@
 	return
 
 /mob/living/silicon/ai/spawned/Initialize(mapload, datum/ai_laws/L, mob/target_ai)
-#ifdef UNIT_TESTS
-	if(GLOB.running_create_and_destroy && !target_ai)
-		return INITIALIZE_HINT_QDEL
-#endif
 	if(!target_ai)
 		target_ai = src //cheat! just give... ourselves as the spawned AI, because that's technically correct
 	. = ..()

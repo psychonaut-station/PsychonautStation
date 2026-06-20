@@ -61092,7 +61092,6 @@
 	network = list("minisat")
 	},
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/structure/cable/multilayer/connected,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/exterior)
 "uLE" = (

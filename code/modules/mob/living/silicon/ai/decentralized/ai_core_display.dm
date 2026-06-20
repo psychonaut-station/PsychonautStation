@@ -24,7 +24,6 @@
 	return PROCESS_KILL
 
 /obj/machinery/status_display/ai_core/update_overlays(updates)
-	. = ..()
 	if(machine_stat & (NOPOWER|BROKEN) || current_mode != SD_PICTURE)
 		return
 

@@ -213,7 +213,6 @@
 	return TRUE
 
 /datum/station_trait/job/human_ai/pre_jobs_assigned()
-	SIGNAL_HANDLER
 	sign_up_button = FALSE
 	var/list/selected_candidates = islist(lobby_candidates) ? lobby_candidates.Copy() : list()
 	forced_roundstart_players = list()

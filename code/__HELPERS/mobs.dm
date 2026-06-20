@@ -528,7 +528,10 @@ GLOBAL_LIST_INIT(skin_tone_names, list(
 		for(var/mob/living/silicon/ai/hosted_ai in core.contents)
 			candidate_ais |= hosted_ai
 
-	for(var/mob/living/silicon/ai/ai as anything in candidate_ais)
+	for(var/atom/movable/ai_candidate as anything in candidate_ais)
+		if(!isAI(ai_candidate))
+			continue
+		var/mob/living/silicon/ai/ai = ai_candidate
 		if(ai.stat == DEAD)
 			continue
 		if(ai.control_disabled)

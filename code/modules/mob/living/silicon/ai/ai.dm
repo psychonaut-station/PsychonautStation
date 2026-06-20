@@ -152,8 +152,7 @@
 	GLOB.shuttle_caller_list -= src
 	SSshuttle.autoEvac()
 	if(eyeobj)
-		qdel(eyeobj, force = TRUE) // No AI, no Eye
-	eyeobj = null
+		QDEL_NULL(eyeobj) // No AI, no Eye
 	QDEL_NULL(spark_system)
 	QDEL_NULL(malf_picker)
 	QDEL_NULL(doomsday_device)
@@ -164,8 +163,7 @@
 	QDEL_NULL(alert_control)
 	QDEL_NULL(ai_tracking_tool)
 	if(dashboard)
-		qdel(dashboard, force = TRUE)
-	dashboard = null
+		QDEL_NULL(dashboard)
 	malfhack = null
 	current = null
 	bot_ref = null

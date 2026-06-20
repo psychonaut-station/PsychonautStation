@@ -42,7 +42,7 @@
 			continue
 		project.dashboard = null
 		project.ai = null
-		qdel(project, force = TRUE)
+		qdel(project)
 
 	if(owner?.dashboard == src)
 		owner.dashboard = null

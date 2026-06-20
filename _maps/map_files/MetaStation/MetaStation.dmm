@@ -1068,11 +1068,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/hallway/secondary/entry)
-"auQ" = (
-/obj/structure/ethernet_cable,
-/obj/machinery/ai/server_cabinet/prefilled,
-/turf/open/floor/circuit/telecomms/mainframe,
-/area/station/ai/satellite/chamber)
 "ava" = (
 /obj/effect/spawner/random/structure/closet_maintenance,
 /obj/item/storage/box/lights/mixed,
@@ -1086,13 +1081,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/iron,
 /area/station/command/gateway)
-"avf" = (
-/obj/structure/ethernet_cable,
-/obj/machinery/computer/ai_server_console/network_interface{
-	dir = 1
-	},
-/turf/open/floor/circuit/off,
-/area/station/command/heads_quarters/rd)
 "avq" = (
 /obj/machinery/door/firedoor,
 /obj/structure/disposalpipe/segment,
@@ -1265,9 +1253,9 @@
 /turf/open/floor/plating/airless,
 /area/space/nearstation)
 "azv" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "azz" = (
 /obj/structure/disposalpipe/segment{
@@ -2012,14 +2000,6 @@
 /obj/effect/turf_decal/tile/bar/opposingcorners,
 /turf/open/floor/iron,
 /area/station/service/bar)
-"aLp" = (
-/obj/structure/cable/layer3,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "aLr" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/siphon/monitored/nitrous_output{
 	dir = 1
@@ -2623,33 +2603,26 @@
 /turf/open/floor/carpet,
 /area/station/command/heads_quarters/hop)
 "aVl" = (
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 8
+/obj/machinery/porta_turret/ai{
+	dir = 4
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/obj/structure/window/reinforced/spawner/directional/west,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "aVn" = (
+/obj/structure/showcase/cyborg/old{
+	pixel_y = 20
+	},
 /obj/machinery/power/terminal{
 	dir = 4
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
-	on = 1;
-	target_temperature = 90
-	},
-/obj/machinery/status_display/ai/directional/west,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "aVr" = (
 /obj/machinery/porta_turret/ai{
 	dir = 8
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "aVv" = (
 /obj/machinery/suit_storage_unit/atmos,
@@ -2740,21 +2713,13 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "aWN" = (
-/obj/effect/turf_decal/tile/blue,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "aWO" = (
 /obj/machinery/ai_slipper{
 	uses = 10
 	},
-/obj/machinery/ai/networking{
-	label = "REMOTE-A"
-	},
-/obj/structure/ethernet_cable,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "aWS" = (
 /obj/structure/table/reinforced,
@@ -2880,14 +2845,13 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "aYz" = (
-/obj/structure/ethernet_cable,
 /obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/door/poddoor/shutters/preopen{
 	dir = 1;
 	id = "AI Core shutters";
 	name = "AI Core Shutters"
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/plating,
 /area/station/ai/satellite/chamber)
 "aYJ" = (
 /obj/machinery/disposal/bin,
@@ -3364,7 +3328,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/access/all/command/ai_upload,
 /obj/structure/cable/layer3,
-/obj/structure/plasticflaps/kitchen,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/interior)
 "bhf" = (
@@ -3435,8 +3398,14 @@
 /turf/open/floor/plating,
 /area/station/maintenance/starboard/fore)
 "bio" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/camera/directional/south{
+	c_tag = "AI Chamber - Aft";
+	network = list("aicore")
+	},
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "biq" = (
 /obj/effect/turf_decal/trimline/red/filled/line{
@@ -3760,10 +3729,16 @@
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "bnG" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
+	dir = 1
 	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/item/radio/intercom/directional/south{
+	broadcasting = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel"
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "bnM" = (
 /obj/machinery/door/firedoor,
@@ -9106,10 +9081,6 @@
 	},
 /turf/open/space/basic,
 /area/space/nearstation)
-"dgC" = (
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "dgD" = (
 /turf/closed/wall,
 /area/station/security/range)
@@ -10683,10 +10654,11 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "dKG" = (
+/obj/structure/chair/office{
+	dir = 8
+	},
 /obj/machinery/status_display/ai/directional/south,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/machinery/camera/autoname/directional/south,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "dKY" = (
 /obj/effect/decal/cleanable/dirt,
@@ -13295,24 +13267,13 @@
 /turf/open/floor/iron/grimy,
 /area/station/tcommsat/computer)
 "eBW" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
+/obj/structure/table/reinforced,
+/obj/item/paper_bin{
+	pixel_x = -3;
+	pixel_y = 7
 	},
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1;
-	scrubbing = 0
-	},
-/obj/machinery/camera/autoname/directional/west,
-/obj/structure/table/reinforced/rglass,
-/obj/item/server_rack{
-	pixel_x = -4;
-	pixel_y = 9
-	},
-/obj/item/server_rack{
-	pixel_x = -1;
-	pixel_y = 3
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/firealarm/directional/west,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "eBY" = (
 /obj/effect/turf_decal/tile/bar,
@@ -14408,11 +14369,6 @@
 /obj/effect/turf_decal/stripes/line,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
-"eVY" = (
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "eWn" = (
 /obj/effect/landmark/generic_maintenance_landmark,
 /turf/open/floor/plating,
@@ -14679,8 +14635,8 @@
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
 "eZR" = (
-/obj/structure/chair/office/light,
-/turf/open/floor/iron/dark,
+/obj/structure/displaycase/labcage,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "fac" = (
 /obj/structure/fireaxecabinet/jawsofrecovery/directional/east,
@@ -16176,16 +16132,6 @@
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
-"fBj" = (
-/obj/structure/cable/layer3,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 4
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "fBo" = (
 /obj/machinery/door/window/left/directional/west{
 	name = "Magboot Storage";
@@ -19827,10 +19773,6 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/station/hallway/primary/aft)
-"gPV" = (
-/obj/machinery/status_display/ai/directional/west,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "gQa" = (
 /obj/effect/turf_decal/siding/thinplating_new/corner,
 /obj/effect/turf_decal/trimline/brown/filled/corner,
@@ -21829,13 +21771,13 @@
 /area/station/service/bar)
 "hyZ" = (
 /obj/machinery/holopad/secure,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/door/window/brigdoor/right/directional/east{
+	name = "Tertiary AI Core Access";
+	req_access = list("ai_upload");
+	pixel_x = 4
 	},
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "hza" = (
 /obj/vehicle/sealed/mecha/ripley/paddy/preset,
@@ -21918,11 +21860,7 @@
 	c_tag = "Research Director's Office - Observation Cage";
 	network = list("ss13","rd")
 	},
-/obj/machinery/computer/ai_server_console{
-	dir = 1
-	},
-/obj/structure/ethernet_cable,
-/turf/open/floor/circuit/off,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "hBm" = (
 /obj/structure/window/reinforced/spawner/directional/east,
@@ -25034,11 +24972,8 @@
 /turf/open/floor/engine,
 /area/station/engineering/atmospherics_engine)
 "iCV" = (
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "iDe" = (
 /obj/structure/table,
@@ -28214,13 +28149,13 @@
 /area/space/nearstation)
 "jEr" = (
 /obj/machinery/holopad/secure,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Secondary AI Core Access";
+	req_access = list("ai_upload");
+	pixel_x = -4
 	},
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "jED" = (
 /obj/structure/cable,
@@ -31697,13 +31632,8 @@
 /area/station/security/prison/mess)
 "kLg" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "kLh" = (
 /obj/structure/disposalpipe/segment{
@@ -32204,8 +32134,10 @@
 /obj/machinery/ai_slipper{
 	uses = 10
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "kUo" = (
 /obj/structure/closet/crate/engineering/electrical,
@@ -33448,16 +33380,14 @@
 /turf/open/floor/iron,
 /area/station/security/prison)
 "lro" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 4
-	},
 /obj/structure/showcase/cyborg/old{
-	dir = 8;
-	pixel_x = 9;
+	dir = 4;
+	pixel_x = -9;
 	pixel_y = 2
 	},
-/obj/machinery/camera/autoname/directional/east,
-/turf/open/floor/iron/dark/telecomms,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/flasher/directional/west,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "lrp" = (
 /obj/structure/disposalpipe/segment{
@@ -33647,8 +33577,8 @@
 	uses = 10
 	},
 /obj/structure/cable,
-/obj/structure/ethernet_cable,
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "lus" = (
 /obj/structure/closet/athletic_mixed,
@@ -33902,11 +33832,7 @@
 /area/station/cargo/storage)
 "lAe" = (
 /obj/machinery/light/small/directional/south,
-/obj/machinery/computer/ai_overclocking{
-	dir = 1
-	},
-/obj/structure/ethernet_cable,
-/turf/open/floor/circuit/off,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "lAh" = (
 /obj/effect/spawner/structure/window/reinforced,
@@ -33936,7 +33862,7 @@
 	name = "Research Director Observation";
 	req_access = list("rd")
 	},
-/turf/open/floor/circuit/off,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "lAM" = (
 /turf/closed/wall/r_wall,
@@ -35350,11 +35276,8 @@
 /turf/open/floor/iron,
 /area/station/hallway/primary/starboard)
 "mbS" = (
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/closed/wall/r_wall,
 /area/station/ai/satellite/chamber)
 "mbV" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
@@ -36156,13 +36079,6 @@
 	},
 /turf/open/floor/plating,
 /area/station/maintenance/aft/lesser)
-"mrm" = (
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue{
-	dir = 1
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "mrq" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -36838,7 +36754,8 @@
 /turf/open/floor/iron,
 /area/station/security/brig)
 "mCL" = (
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "mCM" = (
 /obj/structure/cable,
@@ -38550,8 +38467,7 @@
 /turf/open/floor/iron,
 /area/station/security/holding_cell)
 "nfs" = (
-/obj/structure/ethernet_cable,
-/turf/open/floor/iron/dark,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "nfy" = (
 /obj/structure/table,
@@ -39229,10 +39145,6 @@
 /obj/structure/sign/warning/pods/directional/north,
 /turf/open/floor/iron/dark,
 /area/station/commons/fitness/recreation)
-"nqX" = (
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "nra" = (
 /obj/machinery/newscaster/directional/north,
 /obj/machinery/camera/directional/north{
@@ -40183,8 +40095,10 @@
 /area/station/maintenance/aft/lesser)
 "nFe" = (
 /obj/machinery/holopad/secure,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "nFn" = (
 /obj/effect/decal/cleanable/dirt,
@@ -40443,11 +40357,6 @@
 /obj/effect/turf_decal/trimline/red/filled/corner,
 /turf/open/floor/iron,
 /area/station/security/brig)
-"nKd" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/structure/ethernet_cable,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "nKh" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 1
@@ -42704,9 +42613,16 @@
 /turf/closed/wall/r_wall,
 /area/station/science/xenobiology/hallway)
 "oDc" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/turf/open/floor/iron/dark/telecomms,
+/obj/structure/showcase/cyborg/old{
+	dir = 8;
+	pixel_x = 9;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/flasher/directional/east{
+	pixel_y = -5
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "oDl" = (
 /obj/machinery/door/airlock/maintenance,
@@ -44021,11 +43937,9 @@
 /turf/open/floor/iron/dark,
 /area/station/engineering/storage/tcomms)
 "pan" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/closed/wall/r_wall,
+/area/station/ai/satellite/exterior)
 "pav" = (
 /obj/structure/chair/stool/directional/west,
 /obj/machinery/camera/directional/north{
@@ -44423,11 +44337,17 @@
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
 "phN" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
+/obj/machinery/camera/directional/west{
+	c_tag = "AI Chamber - Port";
+	network = list("aicore")
 	},
-/obj/machinery/atmospherics/components/unary/vent_pump/on/layer2,
-/turf/open/floor/iron/dark/telecomms,
+/obj/structure/showcase/cyborg/old{
+	dir = 4;
+	pixel_x = -9;
+	pixel_y = 2
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "phR" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -46002,9 +45922,11 @@
 /turf/open/floor/iron,
 /area/station/commons/storage/primary)
 "pIE" = (
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/machinery/camera/autoname/directional/south,
-/turf/open/floor/iron/dark/telecomms,
+/obj/structure/chair/office{
+	dir = 4
+	},
+/obj/machinery/status_display/evac/directional/south,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "pIF" = (
 /obj/effect/turf_decal/stripes/white/line,
@@ -46962,14 +46884,6 @@
 /obj/machinery/status_display/supply,
 /turf/closed/wall,
 /area/station/cargo/storage)
-"pZa" = (
-/obj/structure/cable/layer3,
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "pZc" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -47228,7 +47142,12 @@
 	},
 /obj/structure/cable,
 /obj/machinery/power/apc/auto_name/directional/north,
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/obj/machinery/door/window/brigdoor/left/directional/west{
+	name = "Primary AI Core Access";
+	req_access = list("ai_upload")
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "qeT" = (
 /obj/effect/spawner/random/gizmo,
@@ -47402,18 +47321,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/white,
 /area/station/security/prison)
-"qgT" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 8
-	},
-/obj/structure/showcase/cyborg/old{
-	dir = 4;
-	pixel_x = -9;
-	pixel_y = 2
-	},
-/obj/machinery/camera/autoname/directional/west,
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "qhb" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on/layer4{
 	dir = 4
@@ -47534,15 +47441,6 @@
 /obj/structure/reagent_dispensers/watertank,
 /turf/open/floor/plating,
 /area/station/maintenance/port/fore)
-"qiF" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 8
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "qiH" = (
 /obj/machinery/light/small/directional/west,
 /obj/machinery/airalarm/directional/west,
@@ -48085,28 +47983,22 @@
 /turf/open/floor/iron/dark,
 /area/station/command/bridge)
 "qsV" = (
+/obj/structure/table/reinforced,
+/obj/item/phone{
+	pixel_x = -3;
+	pixel_y = 3
+	},
+/obj/item/cigbutt/cigarbutt{
+	pixel_x = 5;
+	pixel_y = -1
+	},
 /obj/item/radio/intercom/directional/east{
 	broadcasting = 1;
 	frequency = 1447;
 	listening = 0;
 	name = "Private Channel"
 	},
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
-/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
-	dir = 1;
-	scrubbing = 0
-	},
-/obj/machinery/camera/autoname/directional/east,
-/obj/structure/table/reinforced/rglass,
-/obj/item/folder,
-/obj/item/folder/yellow{
-	pixel_x = -7
-	},
-/obj/item/folder/blue{
-	pixel_x = 10;
-	pixel_y = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "qsW" = (
 /obj/structure/cable,
@@ -48630,14 +48522,8 @@
 /turf/open/floor/iron/cafeteria,
 /area/station/security/prison)
 "qDi" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 1
-	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue/half,
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/status_display/ai/directional/east,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "qDy" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
@@ -52555,9 +52441,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/station/service/library)
-"rSD" = (
-/turf/open/floor/iron/dark,
-/area/station/command/heads_quarters/rd)
 "rSW" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -52837,7 +52720,8 @@
 /obj/machinery/flasher/directional/north{
 	id = "AI"
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "rYH" = (
 /obj/structure/rack,
@@ -52882,17 +52766,17 @@
 /turf/open/floor/iron,
 /area/station/engineering/atmos)
 "rZy" = (
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 4
+/obj/machinery/camera/directional/east{
+	c_tag = "AI Chamber - Starboard";
+	network = list("aicore")
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
+/obj/structure/showcase/cyborg/old{
+	dir = 8;
+	pixel_x = 9;
+	pixel_y = 2
 	},
-/obj/structure/window/reinforced/spawner/directional/west{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "rZz" = (
 /obj/effect/turf_decal/siding/wood{
@@ -54993,14 +54877,26 @@
 	},
 /area/station/science/lab)
 "sLN" = (
-/obj/structure/cable,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 1
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = 8
 	},
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
+/obj/item/radio/intercom/directional/east{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
 	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = 8
+	},
+/turf/open/floor/circuit/green,
 /area/station/ai/satellite/chamber)
 "sLO" = (
 /obj/machinery/dna_infuser,
@@ -55223,10 +55119,8 @@
 	uses = 10
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "sOU" = (
 /obj/machinery/door/firedoor,
@@ -56201,14 +56095,7 @@
 /area/station/engineering/atmos)
 "tfz" = (
 /obj/machinery/airalarm/directional/north,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 1
-	},
-/obj/effect/turf_decal/tile/blue{
-	dir = 8
-	},
-/obj/effect/mapping_helpers/airalarm/tlv_no_checks,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "tfD" = (
 /obj/structure/table/wood/poker,
@@ -56255,15 +56142,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
-"tgs" = (
-/obj/structure/window/reinforced/spawner/directional/north,
-/obj/structure/ethernet_cable,
-/obj/machinery/ai/networking{
-	label = "AI-SAT-A";
-	roundstart_connection = "REMOTE-A"
-	},
-/turf/open/floor/circuit/off,
-/area/station/command/heads_quarters/rd)
 "tgC" = (
 /obj/structure/noticeboard/directional/south,
 /obj/structure/table/wood,
@@ -57460,12 +57338,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"tBD" = (
-/obj/item/radio/intercom/directional/east,
-/obj/item/radio/intercom/directional/east,
-/obj/machinery/flasher/directional/west,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "tBJ" = (
 /turf/closed/wall,
 /area/station/medical/abandoned)
@@ -57722,11 +57594,9 @@
 /obj/machinery/ai_slipper{
 	uses = 10
 	},
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "tHZ" = (
 /obj/effect/turf_decal/stripes/line{
@@ -57738,10 +57608,8 @@
 /turf/open/floor/iron,
 /area/station/hallway/secondary/entry)
 "tIa" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/structure/cable/multilayer/connected,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "tIb" = (
 /obj/effect/decal/cleanable/dirt,
@@ -58551,11 +58419,20 @@
 /turf/open/floor/iron/dark/telecomms,
 /area/station/tcommsat/server)
 "tUF" = (
+/obj/machinery/door/window/brigdoor/right/directional/east{
+	name = "Primary AI Core Access";
+	req_access = list("ai_upload")
+	},
+/obj/machinery/camera/directional/north{
+	c_tag = "AI Chamber - Core";
+	network = list("aicore")
+	},
 /obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners,
 /obj/machinery/flasher/directional/south{
 	id = "AI"
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "tUH" = (
 /obj/item/clothing/mask/gas,
@@ -58624,7 +58501,8 @@
 	id = "AI";
 	pixel_x = -22
 	},
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/machinery/light/small/directional/north,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "tVG" = (
 /obj/machinery/atmospherics/components/unary/portables_connector/visible,
@@ -58990,12 +58868,14 @@
 /turf/open/space/basic,
 /area/space/nearstation)
 "ubB" = (
-/obj/machinery/newscaster/directional/east,
-/obj/machinery/porta_turret/ai{
-	dir = 8
+/obj/structure/table/reinforced,
+/obj/item/folder/blue{
+	pixel_y = 2
 	},
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark/telecomms,
+/obj/item/pen,
+/obj/machinery/light/small/directional/east,
+/obj/machinery/newscaster/directional/east,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "ubF" = (
 /obj/structure/table,
@@ -60146,13 +60026,6 @@
 	},
 /turf/open/floor/iron,
 /area/station/engineering/break_room)
-"uwA" = (
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "uwK" = (
 /obj/effect/landmark/start/roboticist,
 /turf/open/floor/iron,
@@ -61055,15 +60928,17 @@
 /turf/open/floor/iron/dark,
 /area/station/medical/storage)
 "uLv" = (
+/obj/structure/table/reinforced,
+/obj/item/folder/blue{
+	pixel_y = 2
+	},
+/obj/item/pen,
+/obj/machinery/light/small/directional/west,
 /obj/machinery/requests_console/directional/west{
 	department = "AI Chamber";
 	name = "AI Chamber Requests Console"
 	},
-/obj/machinery/porta_turret/ai{
-	dir = 8
-	},
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "uLz" = (
 /obj/machinery/light/small/directional/east,
@@ -61072,7 +60947,6 @@
 	network = list("minisat")
 	},
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/structure/cable/multilayer/connected,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/exterior)
 "uLE" = (
@@ -61520,12 +61394,9 @@
 /turf/open/floor/iron/dark/corner,
 /area/station/engineering/storage_shared)
 "uUX" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/structure/cable/layer3,
-/obj/effect/turf_decal/tile/blue/half/contrasted,
-/obj/effect/turf_decal/tile/blue{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "uVd" = (
 /obj/structure/chair{
@@ -61605,12 +61476,6 @@
 /obj/structure/girder,
 /turf/open/floor/plating,
 /area/station/maintenance/port/aft)
-"uVN" = (
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "uVQ" = (
 /obj/effect/turf_decal/tile/neutral/half/contrasted{
 	dir = 8
@@ -62570,11 +62435,7 @@
 /area/station/maintenance/solars/starboard/aft)
 "vmk" = (
 /obj/machinery/status_display/ai/directional/west,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 1
-	},
-/obj/machinery/camera/autoname/directional/west,
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/circuit,
 /area/station/ai/satellite/chamber)
 "vmp" = (
 /obj/structure/cable,
@@ -62614,11 +62475,14 @@
 /area/station/security/execution/education)
 "vnm" = (
 /obj/structure/cable,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
-	target_temperature = 90;
-	on = 1
+/obj/structure/showcase/cyborg/old{
+	pixel_y = 20
 	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/machinery/camera/directional/north{
+	c_tag = "AI Chamber - Fore";
+	network = list("aicore")
+	},
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "vnp" = (
 /obj/effect/turf_decal/stripes/line{
@@ -63129,19 +62993,6 @@
 /obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/iron,
 /area/station/science/xenobiology)
-"vvh" = (
-/obj/structure/ethernet_cable,
-/obj/machinery/ai/server_cabinet,
-/turf/open/floor/circuit/telecomms/mainframe,
-/area/station/ai/satellite/chamber)
-"vvj" = (
-/obj/structure/cable/layer3,
-/obj/structure/ethernet_cable,
-/obj/effect/turf_decal/tile/blue/half/contrasted{
-	dir = 4
-	},
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "vvw" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -63874,10 +63725,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/engineering/general,
 /turf/open/floor/iron,
 /area/station/engineering/main)
-"vHC" = (
-/obj/machinery/flasher/directional/east,
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "vHM" = (
 /obj/effect/turf_decal/trimline/red/filled/line,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -64864,12 +64711,6 @@
 	dir = 1
 	},
 /area/station/engineering/atmos)
-"vXB" = (
-/obj/machinery/porta_turret/ai{
-	dir = 4
-	},
-/turf/open/floor/circuit/telecomms/mainframe,
-/area/station/ai/satellite/chamber)
 "vXC" = (
 /obj/machinery/door/airlock/maintenance{
 	name = "Storage Room"
@@ -65838,8 +65679,7 @@
 /area/station/medical/morgue)
 "wnY" = (
 /obj/structure/window/reinforced/spawner/directional/north,
-/obj/machinery/rack_creator,
-/turf/open/floor/circuit/off,
+/turf/open/floor/engine,
 /area/station/command/heads_quarters/rd)
 "wov" = (
 /obj/effect/decal/cleanable/dirt,
@@ -67366,6 +67206,7 @@
 	name = "Custom Channel";
 	pixel_y = -8
 	},
+/obj/effect/landmark/start/ai,
 /obj/machinery/button/door/directional/south{
 	id = "AI Chamber entrance shutters";
 	name = "AI Chamber Entrance Shutters Control";
@@ -67378,9 +67219,7 @@
 	pixel_x = 24;
 	req_access = list("ai_upload")
 	},
-/obj/machinery/ai/data_core/primary,
-/obj/structure/ethernet_cable,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/circuit/green,
 /area/station/ai/satellite/chamber)
 "wPB" = (
 /obj/machinery/light/small/directional/south,
@@ -67831,14 +67670,6 @@
 "wXF" = (
 /turf/closed/wall/r_wall,
 /area/station/maintenance/starboard/lesser)
-"wXG" = (
-/obj/machinery/status_display/ai/directional/east,
-/obj/effect/turf_decal/tile/blue/anticorner/contrasted{
-	dir = 4
-	},
-/obj/machinery/camera/autoname/directional/east,
-/turf/open/floor/iron/dark/telecomms,
-/area/station/ai/satellite/chamber)
 "wXP" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -68405,14 +68236,26 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "xjb" = (
-/obj/effect/turf_decal/tile/blue/half,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
+/obj/effect/landmark/start/ai/secondary,
+/obj/item/radio/intercom/directional/north{
+	freerange = 1;
+	listening = 0;
+	name = "Custom Channel";
+	pixel_x = -8
 	},
-/obj/effect/turf_decal/tile/blue/half{
-	dir = 1
+/obj/item/radio/intercom/directional/west{
+	freerange = 1;
+	listening = 0;
+	name = "Common Channel"
 	},
-/turf/open/floor/iron/dark/telecomms,
+/obj/item/radio/intercom/directional/south{
+	freerange = 1;
+	frequency = 1447;
+	listening = 0;
+	name = "Private Channel";
+	pixel_x = -8
+	},
+/turf/open/floor/circuit/green,
 /area/station/ai/satellite/chamber)
 "xje" = (
 /obj/machinery/duct,
@@ -69309,8 +69152,10 @@
 /turf/open/floor/iron/dark,
 /area/station/security/evidence)
 "xyp" = (
+/obj/machinery/status_display/evac/directional/north,
 /obj/structure/cable,
-/turf/open/floor/circuit/telecomms/mainframe,
+/obj/machinery/atmospherics/components/unary/vent_pump/on/layer4,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "xyq" = (
 /obj/effect/spawner/structure/window,
@@ -69827,11 +69672,9 @@
 /turf/open/floor/iron,
 /area/station/science/research)
 "xGF" = (
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 8
-	},
-/turf/open/floor/iron/dark/telecomms,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "xGT" = (
 /obj/structure/disposalpipe/segment,
@@ -70317,8 +70160,10 @@
 /turf/open/floor/iron,
 /area/station/engineering/main)
 "xQJ" = (
+/obj/machinery/status_display/evac/directional/north,
+/obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2,
 /obj/structure/cable/layer3,
-/turf/open/floor/circuit/telecomms/mainframe,
+/turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "xQO" = (
 /obj/structure/table/glass,
@@ -105645,7 +105490,7 @@ tcx
 nhr
 vYE
 wnY
-rSD
+nfs
 hAW
 tAg
 moH
@@ -106158,9 +106003,9 @@ tAg
 vEv
 pkx
 hBB
-tgs
+wnY
 nfs
-avf
+nfs
 tAg
 sWB
 gwf
@@ -124615,8 +124460,8 @@ aaa
 aaa
 aaa
 aaa
-gfU
-gfU
+aaa
+aaa
 gfU
 aaa
 aaa
@@ -125128,10 +124973,10 @@ gfU
 gfU
 gfU
 aTV
-vHC
-vvh
-qgT
-vvh
+aTV
+aTV
+gfU
+gfU
 gfU
 gfU
 bjP
@@ -125384,13 +125229,13 @@ gfU
 gfU
 aTV
 aTV
-mCL
 aTV
-vvh
-pan
-vvh
+xjb
 aTV
-dgC
+aTV
+aTV
+aTV
+aTV
 bjP
 tri
 bny
@@ -125639,12 +125484,12 @@ aaa
 aaa
 gfU
 aTV
-vXB
+aVl
 vmk
 phN
 jEr
-aVl
-xjb
+lro
+aWN
 aVl
 eBW
 uLv
@@ -125897,12 +125742,12 @@ gfU
 gfU
 aTV
 xQJ
-fBj
-aLp
+uUX
+uUX
 tHT
-vvj
-vvj
-pZa
+uUX
+uUX
+uUX
 azv
 dKG
 bjQ
@@ -126154,10 +125999,10 @@ gfU
 aTV
 aVn
 tIa
-qiF
+aWN
 aTV
 qeQ
-eVY
+aTV
 aTV
 aWN
 uUX
@@ -126407,8 +126252,8 @@ ddc
 gOv
 qyc
 jZC
-gfU
-aTV
+pan
+mbS
 tVC
 mCL
 aWO
@@ -126668,13 +126513,13 @@ gfU
 aTV
 vnm
 xGF
-uwA
+iCV
 aTV
 tUF
-nKd
+aTV
 aTV
 tfz
-mbS
+iCV
 bnG
 bjQ
 nSs
@@ -126925,13 +126770,13 @@ gfU
 gfU
 aTV
 xyp
-sLN
+kLg
 kLg
 sOS
 iCV
 iCV
-mrm
-nqX
+iCV
+mCL
 pIE
 bjQ
 dqy
@@ -127180,14 +127025,14 @@ hBH
 aaa
 aaa
 gfU
-gPV
+aTV
 aVr
-wXG
+qDi
 oDc
 hyZ
 rZy
 qDi
-rZy
+aVr
 qsV
 ubB
 bjQ
@@ -127440,11 +127285,11 @@ gfU
 gfU
 aTV
 aTV
-mCL
 aTV
-vvh
-uVN
-vvh
+sLN
+aTV
+aTV
+aTV
 aTV
 aTV
 ldP
@@ -127698,10 +127543,10 @@ gfU
 gfU
 gfU
 aTV
-tBD
-auQ
-lro
-vvh
+aTV
+aTV
+gfU
+gfU
 gfU
 gfU
 ldP
@@ -128213,8 +128058,8 @@ aaa
 aaa
 aaa
 aaa
-gfU
-gfU
+aaa
+aaa
 gfU
 aaa
 aaa

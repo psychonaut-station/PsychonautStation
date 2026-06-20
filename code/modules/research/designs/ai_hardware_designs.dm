@@ -10,6 +10,7 @@
 	research_icon_state = "server_rack"
 	var/capacity = 0
 	materials = list(/datum/material/glass = 1000)
+	build_path = /obj/item/ai_ram
 
 /datum/design/ram/ram1
 	name = "standard memory"
@@ -17,6 +18,7 @@
 	id = "ram1"
 	capacity = 1
 	materials = list(/datum/material/glass = 1000, /datum/material/iron = 1000)
+	build_path = /obj/item/ai_ram/ram1
 
 /datum/design/ram/ram2
 	name = "high-capacity memory"
@@ -24,6 +26,7 @@
 	id = "ram2"
 	capacity = 2
 	materials = list(/datum/material/glass = 2000, /datum/material/iron = 2000, /datum/material/silver = 1000)
+	build_path = /obj/item/ai_ram/ram2
 
 /datum/design/ram/ram3
 	name = "hyper-capacity memory"
@@ -31,6 +34,7 @@
 	id = "ram3"
 	capacity = 3
 	materials = list(/datum/material/glass = 4000, /datum/material/iron = 4000, /datum/material/silver = 2000, /datum/material/gold = 1000)
+	build_path = /obj/item/ai_ram/ram3
 
 /datum/design/ram/ram4
 	name = "bluespace memory"
@@ -38,6 +42,38 @@
 	id = "ram4"
 	capacity = 4
 	materials = list(/datum/material/glass = 8000, /datum/material/iron = 8000, /datum/material/silver = 4000, /datum/material/gold = 2000, /datum/material/bluespace = 1000)
+	build_path = /obj/item/ai_ram/ram4
+
+/obj/item/ai_ram
+	name = "RAM module"
+	desc = "A modular memory stick used by decentralized AI hardware."
+	icon = 'icons/obj/module.dmi'
+	icon_state = "server_rack"
+	inhand_icon_state = "electronic"
+	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'
+	righthand_file = 'icons/mob/inhands/items/devices_righthand.dmi'
+	w_class = WEIGHT_CLASS_SMALL
+	var/capacity = 0
+
+/obj/item/ai_ram/ram1
+	name = "standard memory"
+	desc = "A basic memory module suitable for decentralized AI racks."
+	capacity = 1
+
+/obj/item/ai_ram/ram2
+	name = "high-capacity memory"
+	desc = "A denser memory module with improved capacity at standard performance."
+	capacity = 2
+
+/obj/item/ai_ram/ram3
+	name = "hyper-capacity memory"
+	desc = "A tightly packed memory module built for heavier AI workloads."
+	capacity = 3
+
+/obj/item/ai_ram/ram4
+	name = "bluespace memory"
+	desc = "A bleeding-edge memory module that leverages bluespace compression."
+	capacity = 4
 
 /datum/design/cpu_basic
 	name = "neural processing unit"

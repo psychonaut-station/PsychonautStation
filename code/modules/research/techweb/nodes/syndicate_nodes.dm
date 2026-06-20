@@ -5,7 +5,6 @@
 	prereq_ids = list(TECHWEB_NODE_EXP_TOOLS, TECHWEB_NODE_EXOTIC_AMMO)
 	design_ids = list(
 		"advanced_camera",
-		"ai_cam_upgrade",
 		"borg_syndicate_module",
 		"donksoft_refill",
 		"largecrossbow",

@@ -22205,9 +22205,7 @@
 /area/station/science/ordnance)
 "dHp" = (
 /obj/effect/turf_decal/tile/neutral/fourcorners,
-/obj/machinery/atmospherics/components/unary/thermomachine/freezer{
-	piping_layer = 2
-	},
+/obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2,
 /obj/effect/turf_decal/bot_red,
 /turf/open/floor/iron/dark,
 /area/station/science/ordnance)
@@ -81872,8 +81870,6 @@
 /obj/machinery/atmospherics/pipe/smart/simple/cyan/hidden,
 /obj/machinery/disposal/bin,
 /obj/machinery/light/directional/west,
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/yellow{
 	dir = 8
 	},
@@ -98331,7 +98327,6 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
-
 "ygV" = (
 /obj/effect/turf_decal/tile/brown{
 	dir = 1
@@ -98765,6 +98760,7 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
+
 (1,1,1) = {"
 aaa
 aaa

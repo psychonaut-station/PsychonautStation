@@ -30,3 +30,6 @@ endmap
 
 map runtimestation_minimal
 endmap
+
+map ancientdeltastation
+endmap

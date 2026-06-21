@@ -1,7 +1,7 @@
 /obj/machinery/ai/server_cabinet
 	name = "server cabinet"
 	desc = "A simple cabinet of bPCIe slots for installing server racks."
-	icon = 'icons/obj/machines/telecomms_yogai.dmi'
+	icon = 'icons/psychonaut/obj/machines/telecomms_yogai.dmi'
 	icon_state = "expansion_bus"
 	circuit = /obj/item/circuitboard/machine/server_cabinet
 	appearance_flags = KEEP_TOGETHER

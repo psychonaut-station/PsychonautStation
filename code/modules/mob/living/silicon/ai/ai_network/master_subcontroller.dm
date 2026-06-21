@@ -1,7 +1,7 @@
 /obj/machinery/ai/master_subcontroller
 	name = "master subcontroller"
 	desc = "A companion mainframe that handles low-level polling and fast remote control tasks for a decentralized AI."
-	icon = 'icons/obj/machines/telecomms_yogai.dmi'
+	icon = 'icons/psychonaut/obj/machines/telecomms_yogai.dmi'
 	icon_state = "hub"
 	use_power = ACTIVE_POWER_USE
 	idle_power_usage = 100

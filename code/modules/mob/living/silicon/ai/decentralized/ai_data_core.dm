@@ -1,7 +1,7 @@
 /obj/machinery/ai/data_core
 	name = "AI data core"
 	desc = "A computer system capable of hosting a decentralized artificial intelligence."
-	icon = 'icons/obj/machines/ai_core.dmi'
+	icon = 'icons/psychonaut/obj/machines/ai_core.dmi'
 	icon_state = "core-offline"
 	circuit = /obj/item/circuitboard/machine/ai_data_core
 	max_integrity = 500

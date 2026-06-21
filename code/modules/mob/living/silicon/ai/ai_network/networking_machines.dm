@@ -1,7 +1,7 @@
 /obj/machinery/ai/networking
 	name = "networking machine"
 	desc = "A high-powered transmitter and receiver for bridging remote AI networks."
-	icon = 'icons/obj/networking_machine.dmi'
+	icon = 'icons/psychonaut/obj/networking_machine.dmi'
 	icon_state = "base"
 	circuit = /obj/item/circuitboard/machine/networking_machine
 	density = TRUE

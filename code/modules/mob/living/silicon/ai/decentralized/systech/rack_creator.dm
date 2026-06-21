@@ -1,7 +1,7 @@
 /obj/machinery/rack_creator
 	name = "rack creator"
 	desc = "Combines RAM modules and CPUs to create stand-alone racks for decentralized AI systems."
-	icon = 'icons/obj/machines/lithography.dmi'
+	icon = 'icons/psychonaut/obj/machines/lithography.dmi'
 	icon_state = "lithography"
 	layer = BELOW_OBJ_LAYER
 	density = TRUE

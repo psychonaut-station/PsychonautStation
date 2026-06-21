@@ -722,7 +722,7 @@ GLOBAL_VAR_INIT(ai_hardware_bootstrap_blockers, 0)
 /obj/item/dead_ai
 	name = "volatile neural core"
 	desc = "As an emergency precaution any advanced neural networks will save onto this device upon destruction of the host server. The storage medium is volatile and for that reason expires rapidly."
-	icon = 'icons/obj/device.dmi'
+	icon = 'icons/psychonaut/obj/dead_ai.dmi'
 	icon_state = "blackcube"
 	lefthand_file = 'icons/mob/inhands/items_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/items_righthand.dmi'

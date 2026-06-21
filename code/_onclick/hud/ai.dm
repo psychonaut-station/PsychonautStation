@@ -1,5 +1,5 @@
 /datum/hud/ai
-	ui_style = 'icons/mob/screen_ai.dmi'
+	ui_style = 'icons/psychonaut/hud/screen_ai.dmi'
 
 /datum/hud/ai/initialize_screen_objects()
 	. = ..()

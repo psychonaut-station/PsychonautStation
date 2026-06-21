@@ -1,7 +1,7 @@
 /obj/structure/ethernet_cable
 	name = "ethernet cable"
 	desc = "A rigid, shielded cable used by advanced AI hardware."
-	icon = 'icons/obj/power_cond/power_local.dmi'
+	icon = 'icons/psychonaut/obj/power_cond/power_local.dmi'
 	icon_state = "0-1"
 	plane = FLOOR_PLANE
 	layer = WIRE_LAYER + 0.001

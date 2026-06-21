@@ -6,7 +6,7 @@
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_MISC,
 	)
 	departmental_flags = DEPARTMENT_BITFLAG_SCIENCE
-	research_icon = 'icons/obj/module.dmi'
+	research_icon = 'icons/psychonaut/obj/module.dmi'
 	research_icon_state = "server_rack"
 	var/capacity = 0
 	materials = list(/datum/material/glass = 1000)
@@ -47,7 +47,7 @@
 /obj/item/ai_ram
 	name = "RAM module"
 	desc = "A modular memory stick used by decentralized AI hardware."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/psychonaut/obj/module.dmi'
 	icon_state = "server_rack"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'

@@ -8,7 +8,7 @@
 /obj/item/ai_cpu
 	name = "neural processing unit"
 	desc = "A processor specialized for advanced neural-network workloads."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/psychonaut/obj/module.dmi'
 	icon_state = "cpuboard"
 	w_class = WEIGHT_CLASS_SMALL
 	var/speed = 1

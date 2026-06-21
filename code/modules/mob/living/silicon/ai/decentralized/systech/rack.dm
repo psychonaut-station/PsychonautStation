@@ -1,7 +1,7 @@
 /obj/item/server_rack
 	name = "server rack"
 	desc = "A self-contained rack built for decentralized AI hardware."
-	icon = 'icons/obj/module.dmi'
+	icon = 'icons/psychonaut/obj/module.dmi'
 	icon_state = "server_rack"
 	inhand_icon_state = "electronic"
 	lefthand_file = 'icons/mob/inhands/items/devices_lefthand.dmi'

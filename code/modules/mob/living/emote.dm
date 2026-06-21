@@ -835,7 +835,7 @@
 	message = "farts."
 	message_mime = "farts silently!"
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
-	specific_emote_audio_cooldown = 25 SECONDS
+	manual_specific_emote_audio_cooldown = 25 SECONDS
 	vary = TRUE
 
 /datum/emote/living/fart/can_run_emote(mob/living/user, status_check = TRUE , intentional)

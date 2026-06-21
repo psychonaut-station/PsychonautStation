@@ -514,25 +514,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 		message = capitalize(message)
 		tts_message = capitalize(tts_message)
 
-<<<<<<< HEAD
 	message = replacetext(message, "\uFFFD", null) // kekeleme falan olunca ı harfi bozuluyor � ortaya çıkıyor
 	tts_message = replacetext(tts_message, "\uFFFD", null) // bunu geçici olarak önlemek için basit bir yol
 
-	///caps the length of individual letters to 3: ex: heeeeeeyy -> heeeyy
-	/// prevents TTS from choking on unrealistic text while keeping emphasis
-	var/static/regex/length_regex = regex(@"(.+)\1\1\1", "gi")
-	while(length_regex.Find(tts_message))
-		var/replacement = tts_message[length_regex.index]+tts_message[length_regex.index]+tts_message[length_regex.index]
-		tts_message = replacetext(tts_message, length_regex.match, replacement, length_regex.index)
-
-	// removes repeated consonants at the start of a word: ex: sss
-	var/static/regex/word_start_regex = regex(@"\b([^aeiou\L])\1", "gi")
-	while(word_start_regex.Find(tts_message))
-		var/replacement = tts_message[word_start_regex.index]
-		tts_message = replacetext(tts_message, word_start_regex.match, replacement, word_start_regex.index)
-
-=======
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 	return list("message" = message, "tts_message" = tts_message, "tts_filter" = tts_filter)
 
 /mob/living/proc/radio(message, list/message_mods = list(), list/spans, language)

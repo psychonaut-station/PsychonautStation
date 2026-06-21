@@ -35,20 +35,12 @@
 				/obj/item/reagent_containers/cup/glass/bottle/beer = 6,
 				/obj/item/reagent_containers/cup/glass/bottle/vodka = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/whiskey = 5,
-<<<<<<< HEAD
-				/obj/item/reagent_containers/cup/glass/bottle/coconut_rum = 5,
-				/obj/item/reagent_containers/cup/glass/bottle/yuyake = 5,
-				/obj/item/reagent_containers/cup/glass/bottle/shochu = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/raki = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/beylerbeyi_gobek = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/efegold = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/tekirdag = 5,
 				/obj/item/reagent_containers/cup/glass/bottle/yeniraki = 5,
-				/obj/item/reagent_containers/cup/glass/bottle/aperitivo = 5,
-				/obj/item/reagent_containers/cup/glass/bottle/maraschino = 5,
-=======
 				/obj/item/reagent_containers/cup/glass/bottle/wine_voltaic = 5,
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 				/obj/item/reagent_containers/cup/soda_cans/beer = 10,
 				/obj/item/reagent_containers/cup/soda_cans/beer/rice = 10,
 			),
@@ -72,12 +64,7 @@
 				/obj/item/reagent_containers/cup/soda_cans/sol_dry = 8,
 				/obj/item/reagent_containers/cup/soda_cans/cola = 8,
 				/obj/item/reagent_containers/cup/soda_cans/tonic = 8,
-<<<<<<< HEAD
-				/obj/item/reagent_containers/cup/glass/bottle/hakka_mate = 5,
-				/obj/item/reagent_containers/cup/soda_cans/melon_soda = 5,
 				/obj/item/reagent_containers/condiment/ayran = 10,
-=======
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 			),
 		),
 

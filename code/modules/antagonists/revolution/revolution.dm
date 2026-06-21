@@ -7,12 +7,8 @@
 	antag_hud_name = "rev"
 	suicide_cry = "VIVA LA REVOLUTION!!"
 	stinger_sound = 'sound/music/antag/revolutionary_tide.ogg'
-<<<<<<< HEAD
 	credits_icon = "revolution"
-	var/datum/team/revolution/rev_team
-=======
 	ui_name = "AntagInfoRevolution"
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 
 	var/datum/team/revolution/rev_team
 	/// When this antagonist is being de-antagged, this is the source. Can be a mob (for mindshield/blunt force trauma) or a #define string.

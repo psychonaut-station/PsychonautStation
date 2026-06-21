@@ -7,11 +7,8 @@
 	integrity_failure = 0.5
 	armor_type = /datum/armor/machinery_computer
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_LITERACY
-<<<<<<< HEAD
 	impact_sound = SFX_BULLET_IMPACT_METAL
-=======
 	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 	/// How bright we are when turned on.
 	var/brightness_on = 1
 	/// Icon_state of the keyboard overlay.
@@ -36,22 +33,20 @@
 	. = ..()
 	power_change()
 
-<<<<<<< HEAD
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
+
+/obj/machinery/computer/post_machine_initialize()
+	. = ..()
+	if(SStts.tts_enabled)
+		voice = SStts.computer_voice
 
 /obj/machinery/computer/Destroy()
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
 	return ..()
-=======
-/obj/machinery/computer/post_machine_initialize()
-	. = ..()
-	if(SStts.tts_enabled)
-		voice = SStts.computer_voice
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5
 
 /obj/machinery/computer/mouse_drop_receive(mob/living/dropping, mob/user, params)
 	. = ..()

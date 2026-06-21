@@ -370,18 +370,6 @@
   remove32:
   - bugfix: statpanel uses year offset
 2026-06-15:
-<<<<<<< HEAD
-  Jaimex:
-  - rscadd: "SecTech\u2019e \xFCniformalara aksesuar olarak tak\u0131labilen bodycam\
-      \ eklendi."
-  - qol: "Bodycam izlenirken kullan\u0131c\u0131ya izlendi\u011Fini g\xF6steren bir\
-      \ uyar\u0131 eklendi."
-  - image: "Bodycam i\xE7in yeni item ve worn iconlar\u0131 eklendi."
-  Rengan:
-  - code_imp: "Round Character Icons art\u0131k i\u015F ve \xF6zel rolleride kaydediyor."
-  lelandkemble:
-  - bugfix: '"fixed" a runtime with gas mask filters'
-=======
   Ben10Omintrix:
   - bugfix: baby stoats can now become adults
   - rscadd: baby stoats are added to the spawn pool of maints, (the overall chance
@@ -418,6 +406,14 @@
   - bugfix: Fixed recovered crew showing up as uncategorized antags
   lelandkemble:
   - bugfix: fixed a runtime when fishing up no fish
+  Jaimex:
+  - rscadd: "SecTech\u2019e \xFCniformalara aksesuar olarak tak\u0131labilen bodycam\
+      \ eklendi."
+  - qol: "Bodycam izlenirken kullan\u0131c\u0131ya izlendi\u011Fini g\xF6steren bir\
+      \ uyar\u0131 eklendi."
+  - image: "Bodycam i\xE7in yeni item ve worn iconlar\u0131 eklendi."
+  Rengan:
+  - code_imp: "Round Character Icons art\u0131k i\u015F ve \xF6zel rolleride kaydediyor."
 2026-06-16:
   Aliceee2ch:
   - balance: Gender changing potion has a 5 seconds do_after now.
@@ -493,4 +489,3 @@
   - bugfix: fixed connecting a tank to a TTV the other way around
   timothymtorres:
   - code_imp: Add immunity checks for atmos traits for simple/basic mobs
->>>>>>> 67651779279febdbad3d2a021d89bfe93a0993a5

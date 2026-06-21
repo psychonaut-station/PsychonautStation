@@ -63,7 +63,7 @@
 	message = "screams!"
 	message_mime = "acts out a scream!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	specific_emote_audio_cooldown = 10 SECONDS
+	manual_specific_emote_audio_cooldown = 10 SECONDS
 	vary = TRUE
 #if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
 	only_forced_audio = TRUE

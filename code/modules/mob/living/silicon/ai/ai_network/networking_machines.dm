@@ -32,6 +32,9 @@
 /obj/machinery/ai/networking/Destroy()
 	GLOB.ai_networking_machines -= src
 	disconnect()
+	cached_old_network = null
+	remote_connection_attempt = null
+	remote_control = null
 	return ..()
 
 /obj/machinery/ai/networking/update_overlays()

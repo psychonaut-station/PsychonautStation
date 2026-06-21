@@ -57,6 +57,15 @@
 	local_cpu_usage[AI_PUZZLE] = 0
 
 /datum/ai_network/Destroy()
+	for(var/obj/machinery/ai/networking/networking_machine as anything in GLOB.ai_networking_machines)
+		if(networking_machine.cached_old_network == src)
+			networking_machine.cached_old_network = null
+		if(networking_machine.remote_connection_attempt?.network == src)
+			networking_machine.remote_connection_attempt = null
+		if(networking_machine.partner?.network == src)
+			networking_machine.partner = null
+			networking_machine.rotation_to_partner = 0
+
 	for(var/obj/structure/ethernet_cable/cable as anything in cables)
 		cable.network = null
 	cables.Cut()
@@ -65,7 +74,19 @@
 		machine.network = null
 	nodes.Cut()
 
+	for(var/mob/living/silicon/ai/ai_mob as anything in ai_list)
+		if(ai_mob.ai_network == src)
+			ai_mob.ai_network = null
+	ai_list.Cut()
+	reviving_ais.Cut()
+	local_cpu_usage.Cut()
+	cached_subcontroller = null
+
 	if(resources)
+		resources.cpu_sources -= src
+		resources.ram_sources -= src
+		resources.cpu_assigned -= src
+		resources.ram_assigned -= src
 		resources.networks -= src
 		if(!length(resources.networks))
 			qdel(resources)

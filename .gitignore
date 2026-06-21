@@ -28,6 +28,7 @@
 /*.so
 
 #Ignore compiled files and other files generated during compilation.
+tgstation.dme
 *.mdme
 *.mdme.*
 *.dmb

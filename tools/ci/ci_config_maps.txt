@@ -1,6 +1,9 @@
 map deltastation
 endmap
 
+map ancientdeltastation
+endmap
+
 map icebox
 endmap
 
@@ -29,7 +32,4 @@ map runtimestation
 endmap
 
 map runtimestation_minimal
-endmap
-
-map ancientdeltastation
 endmap

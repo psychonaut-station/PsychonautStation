@@ -40283,7 +40283,7 @@
 	name = "Chamber to Cooling"
 	},
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "hdj" = (
 /obj/machinery/photocopier,
 /obj/machinery/light/directional/east,
@@ -41301,7 +41301,7 @@
 	},
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "hrI" = (
 /obj/structure/cable,
 /obj/effect/turf_decal/loading_area,
@@ -43388,7 +43388,7 @@
 "hWu" = (
 /obj/effect/spawner/structure/window/reinforced/plasma,
 /turf/open/floor/plating,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "hWv" = (
 /obj/effect/turf_decal/tile/red,
 /obj/effect/turf_decal/tile/red{
@@ -44644,7 +44644,7 @@
 /obj/item/wrench,
 /obj/structure/cable,
 /turf/open/floor/plating,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "inK" = (
 /obj/machinery/door/window/right/directional/north,
 /obj/effect/decal/cleanable/dirt,
@@ -55301,7 +55301,7 @@
 "lBd" = (
 /obj/machinery/light/small/directional/west,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "lBf" = (
 /obj/effect/turf_decal/tile/red{
 	dir = 4
@@ -56909,7 +56909,7 @@
 	name = "engineering camera"
 	},
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "lYX" = (
 /obj/machinery/camera/directional/east{
 	c_tag = "Security - Brig Aft"
@@ -56927,7 +56927,7 @@
 	},
 /obj/item/crowbar,
 /turf/open/floor/plating,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "lZe" = (
 /obj/structure/table/wood,
 /obj/item/storage/crayons,
@@ -56991,7 +56991,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "lZt" = (
 /obj/machinery/status_display/evac/directional/north,
 /obj/machinery/light/small/directional/north,
@@ -66149,6 +66149,7 @@
 	dir = 4;
 	location = "Kitchen"
 	},
+/obj/effect/landmark/firealarm_sanity,
 /turf/open/floor/iron,
 /area/station/service/kitchen/coldroom)
 "oGN" = (
@@ -72238,7 +72239,7 @@
 /area/station/service/bar/backroom)
 "qzf" = (
 /turf/closed/wall/r_wall,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "qzr" = (
 /obj/structure/table/reinforced,
 /obj/machinery/recharger,
@@ -72256,7 +72257,7 @@
 /area/station/command/bridge)
 "qzE" = (
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "qzS" = (
 /obj/docking_port/stationary/mining_home/common,
 /turf/open/space/basic,
@@ -74525,7 +74526,7 @@
 "rgQ" = (
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer4,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "rgR" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -75901,7 +75902,7 @@
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "rFW" = (
 /obj/machinery/door/window/left/directional/east{
 	name = "Jetpack Storage";
@@ -81093,7 +81094,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "tim" = (
 /obj/structure/window/reinforced/spawner/directional/east,
 /obj/structure/window/reinforced/spawner/directional/west,
@@ -82866,7 +82867,7 @@
 	name = "Radiation Chamber Shutters"
 	},
 /turf/open/floor/plating,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "tKD" = (
 /obj/structure/cable,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -83364,7 +83365,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "tSS" = (
 /obj/machinery/light/directional/north,
 /obj/structure/tank_holder/extinguisher,
@@ -84812,7 +84813,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible/layer2,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible/layer4,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "uqc" = (
 /obj/structure/chair/office{
 	dir = 8
@@ -86996,9 +86997,8 @@
 "uWq" = (
 /obj/machinery/airalarm/directional/north,
 /obj/effect/mapping_helpers/airalarm/engine_access,
-/obj/effect/landmark/atmospheric_sanity/goal_area,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "uWy" = (
 /obj/machinery/computer/mech_bay_power_console,
 /obj/effect/turf_decal/delivery,
@@ -88519,7 +88519,7 @@
 /obj/machinery/power/energy_accumulator/grounding_rod/anchored,
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "vuZ" = (
 /obj/structure/closet/firecloset,
 /obj/effect/turf_decal/delivery,
@@ -88741,7 +88741,7 @@
 "vyP" = (
 /obj/structure/cable,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "vyQ" = (
 /obj/item/kirbyplants/random,
 /obj/effect/turf_decal/bot,
@@ -89027,7 +89027,7 @@
 "vDy" = (
 /obj/structure/sign/warning/radiation,
 /turf/closed/wall/r_wall,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "vDG" = (
 /obj/machinery/atmospherics/pipe/smart/simple/purple/visible,
 /obj/machinery/meter,
@@ -91497,7 +91497,7 @@
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /obj/structure/window/reinforced/plasma/spawner/directional/east,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "wqK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/green/visible,
 /obj/effect/turf_decal/tile/yellow{
@@ -91551,7 +91551,7 @@
 	dir = 1
 	},
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "wrN" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/closet,
@@ -92100,7 +92100,7 @@
 /obj/machinery/power/energy_accumulator/tesla_coil/anchored,
 /obj/structure/window/reinforced/plasma/spawner/directional/north,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "wAf" = (
 /obj/effect/turf_decal/tile/neutral{
 	dir = 8
@@ -94218,7 +94218,7 @@
 "xeU" = (
 /obj/machinery/light/small/directional/south,
 /turf/open/floor/engine,
-/area/station/engineering/supermatter)
+/area/station/engineering/supermatter/engine)
 "xfl" = (
 /obj/effect/turf_decal/trimline/yellow/line{
 	dir = 1

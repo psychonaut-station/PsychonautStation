@@ -3026,15 +3026,10 @@
 /obj/machinery/porta_turret/ai{
 	dir = 4
 	},
-/obj/item/radio/intercom/directional/south{
-	freerange = 1;
-	frequency = 1447;
-	listening = 0;
-	name = "Private Channel"
-	},
 /obj/effect/turf_decal/tile/blue{
 	dir = 8
 	},
+/obj/structure/sign/warning/cold_temp/directional/south,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/interior)
 "aRR" = (
@@ -6387,6 +6382,9 @@
 /obj/structure/cable,
 /obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/hallway)
 "bLA" = (
@@ -8976,11 +8974,7 @@
 /turf/open/floor/plating,
 /area/station/maintenance/fore)
 "cwW" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/structure/ethernet_cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/hallway)
 "cxd" = (
@@ -11310,6 +11304,7 @@
 "deg" = (
 /obj/structure/cable/layer3,
 /obj/effect/turf_decal/tile/blue/half,
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "dei" = (
@@ -11384,6 +11379,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 1
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "dfw" = (
@@ -12989,6 +12985,7 @@
 	network = list("aicore")
 	},
 /obj/effect/turf_decal/tile/blue/half,
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "dBX" = (
@@ -15289,10 +15286,8 @@
 /turf/open/lava/plasma/ice_moon,
 /area/icemoon/underground/explored)
 "eng" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
-/turf/closed/wall/r_wall,
+/obj/structure/ethernet_cable,
+/turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "enq" = (
 /obj/machinery/doppler_array{
@@ -15805,9 +15800,7 @@
 /turf/open/floor/iron,
 /area/station/commons/locker)
 "euc" = (
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "eud" = (
@@ -16190,6 +16183,7 @@
 /area/icemoon/surface/outdoors/nospawn)
 "eAx" = (
 /obj/machinery/firealarm/directional/south,
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "eAQ" = (
@@ -17828,7 +17822,6 @@
 "eYH" = (
 /obj/machinery/power/smes/super/full,
 /obj/structure/cable,
-/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "eYK" = (
@@ -19519,6 +19512,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "fyr" = (
@@ -19534,6 +19528,9 @@
 /obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
 /obj/structure/plasticflaps/kitchen,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 4
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "fyw" = (
@@ -28898,6 +28895,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 1
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "iih" = (
@@ -31764,6 +31762,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "jai" = (
@@ -34029,7 +34028,6 @@
 	uses = 10
 	},
 /obj/structure/cable/multilayer/connected,
-/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "jJa" = (
@@ -35291,6 +35289,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "kaW" = (
@@ -41481,7 +41480,7 @@
 	},
 /obj/machinery/light/small/directional/north,
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
+	dir = 8
 	},
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
@@ -41525,6 +41524,7 @@
 /obj/structure/cable,
 /obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2,
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "lNG" = (
@@ -41890,6 +41890,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "lRD" = (
@@ -42057,8 +42058,11 @@
 /turf/closed/wall,
 /area/station/maintenance/department/electrical)
 "lUE" = (
+/obj/structure/cable,
+/obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
-/turf/closed/wall/r_wall,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2,
+/turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "lUN" = (
 /obj/structure/grille/broken,
@@ -44247,6 +44251,9 @@
 /obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
 /obj/structure/plasticflaps/kitchen,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/chamber)
 "mCx" = (
@@ -45205,8 +45212,6 @@
 	name = "MiniSat Chamber Hallway"
 	},
 /obj/structure/cable,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
-/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /obj/effect/mapping_helpers/airlock/cyclelink_helper_multi{
 	cycle_id = "ai-passthrough"
 	},
@@ -50063,6 +50068,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 4
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "oha" = (
@@ -51900,6 +51906,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "oEr" = (
@@ -52022,11 +52029,11 @@
 "oFx" = (
 /obj/machinery/airalarm/directional/south,
 /obj/machinery/holopad/secure,
-/obj/structure/ethernet_cable,
 /obj/effect/mapping_helpers/airalarm/tlv_no_checks,
 /obj/machinery/ai/networking{
 	label = "REMOTE-A"
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/chamber)
 "oFD" = (
@@ -59012,6 +59019,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "qEj" = (
@@ -62283,6 +62291,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "rvA" = (
@@ -62415,6 +62424,9 @@
 /obj/structure/cable,
 /obj/structure/cable/layer3,
 /obj/structure/ethernet_cable,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 1
+	},
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "ryh" = (
@@ -66503,8 +66515,12 @@
 /turf/open/floor/iron,
 /area/station/science/explab)
 "sFk" = (
-/obj/effect/spawner/structure/window/reinforced,
-/turf/open/floor/circuit/red,
+/obj/structure/cable,
+/obj/structure/cable/layer3,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 1
+	},
+/turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/hallway)
 "sFA" = (
 /obj/machinery/sparker/directional/west{
@@ -66957,11 +66973,12 @@
 /turf/open/misc/asteroid/snow/icemoon,
 /area/icemoon/surface/outdoors/less_spawns)
 "sML" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/structure/cable,
+/obj/structure/cable/layer3,
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
+	dir = 8
 	},
-/turf/open/floor/circuit/telecomms,
+/turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/hallway)
 "sMS" = (
 /obj/structure/sign/nanotrasen/directional/west,
@@ -69884,6 +69901,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "tFe" = (
@@ -72626,12 +72644,8 @@
 /turf/open/floor/iron,
 /area/station/service/hydroponics)
 "urS" = (
-/obj/effect/spawner/structure/window/reinforced,
 /obj/machinery/firealarm/directional/south,
 /obj/structure/ethernet_cable,
-/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
-	},
 /turf/open/floor/circuit/telecomms,
 /area/station/ai/satellite/hallway)
 "urV" = (
@@ -73967,9 +73981,11 @@
 /turf/open/floor/iron/white,
 /area/station/medical/treatment_center)
 "uNE" = (
-/obj/effect/spawner/structure/window/reinforced,
+/obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
+	dir = 8
+	},
 /turf/open/floor/circuit/telecomms,
-/area/station/ai/satellite/hallway)
+/area/station/ai/satellite/chamber)
 "uNI" = (
 /obj/machinery/camera/directional/south{
 	c_tag = "Security - Visitation South";
@@ -80464,13 +80480,11 @@
 /turf/open/floor/iron,
 /area/station/command/bridge)
 "wKP" = (
-/obj/effect/spawner/structure/window/reinforced,
-/obj/structure/sign/departments/rndserver,
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
-	dir = 4
+	dir = 8
 	},
-/turf/open/floor/plating,
-/area/station/ai/satellite/chamber)
+/turf/open/floor/circuit/telecomms,
+/area/station/ai/satellite/hallway)
 "wLc" = (
 /obj/structure/table,
 /obj/machinery/button/flasher{
@@ -85945,6 +85959,7 @@
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 8
 	},
+/obj/structure/ethernet_cable,
 /turf/open/floor/iron/dark/telecomms,
 /area/station/ai/satellite/chamber)
 "yhM" = (
@@ -255496,20 +255511,20 @@ uza
 iAk
 aRD
 hHb
-uNE
-uNE
-uNE
+pza
+pza
+pza
 pza
 kjH
-pqA
-sML
-sML
+wKP
+pza
+pza
 urS
-eng
+iHp
 lNc
 euc
 icz
-mYh
+uNE
 ogF
 hfy
 iHp
@@ -255758,19 +255773,19 @@ rfh
 rfh
 rfh
 mEg
-rfh
-rfh
-rfh
+sFk
+sML
+sML
 bLz
 mCw
-ryf
+lUE
 ryf
 fyr
 lNC
 mlp
 lEg
 cvh
-lUE
+iHp
 eYH
 jIZ
 oFx
@@ -256010,19 +256025,19 @@ uxG
 iAk
 mWw
 hHb
-sFk
-uNE
-uNE
+oyW
+pza
+pza
 pza
 eJd
 pqA
-sML
-sML
+pza
+pza
 cwW
-eng
+iHp
 cFM
 euc
-wKP
+icz
 mYh
 yhI
 kfP
@@ -256030,7 +256045,7 @@ iHp
 iHp
 iHp
 deg
-iJO
+eng
 iHp
 iHp
 iHp

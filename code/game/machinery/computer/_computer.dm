@@ -8,6 +8,7 @@
 	armor_type = /datum/armor/machinery_computer
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_LITERACY
 	impact_sound = SFX_BULLET_IMPACT_METAL
+	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
 	/// How bright we are when turned on.
 	var/brightness_on = 1
 	/// Icon_state of the keyboard overlay.
@@ -35,6 +36,11 @@
 	for(var/obj/machinery/computer/computer in range(1, src))
 		if(computer.icon_state == "computer")
 			computer.update_appearance()
+
+/obj/machinery/computer/post_machine_initialize()
+	. = ..()
+	if(SStts.tts_enabled)
+		voice = SStts.computer_voice
 
 /obj/machinery/computer/Destroy()
 	for(var/obj/machinery/computer/computer in range(1, src))

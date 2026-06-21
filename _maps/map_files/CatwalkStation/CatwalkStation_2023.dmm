@@ -8139,9 +8139,6 @@
 /area/station/maintenance/port/aft)
 "cdm" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced/spawner/directional/east{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 8;
 	scrubbing = 0
@@ -11837,9 +11834,6 @@
 "cZl" = (
 /obj/structure/lattice/catwalk,
 /obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/east{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer/layer2{
 	target_temperature = 90;
 	on = 1
@@ -16174,9 +16168,6 @@
 /area/station/commons/dorms)
 "ekx" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced/spawner/directional/east{
-	dir = 1
-	},
 /obj/machinery/atmospherics/components/unary/vent_scrubber/on/layer2{
 	dir = 4;
 	scrubbing = 0
@@ -47056,10 +47047,6 @@
 /obj/structure/ethernet_cable,
 /turf/open/floor/catwalk_floor/iron_dark/telecomms,
 /area/station/command/heads_quarters/rd)
-"mvE" = (
-/obj/structure/lattice/catwalk,
-/turf/open/openspace,
-/area/station/command/heads_quarters/rd)
 "mvH" = (
 /obj/machinery/holopad,
 /turf/open/floor/wood/large,
@@ -64859,11 +64846,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/command/general,
 /turf/open/floor/plating,
 /area/station/maintenance/central)
-"rlf" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/plasticflaps/kitchen,
-/turf/open/openspace,
-/area/station/command/heads_quarters/rd)
 "rls" = (
 /obj/effect/turf_decal/siding/brown{
 	dir = 4
@@ -68059,9 +68041,6 @@
 /area/station/tcommsat/server)
 "sei" = (
 /obj/structure/lattice/catwalk,
-/obj/structure/window/reinforced/spawner/directional/east{
-	dir = 1
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold/dark/hidden/layer2{
 	dir = 1
 	},
@@ -190872,8 +190851,8 @@ dUb
 dUb
 dfn
 jzM
-mvE
-bgX
+dZd
+dZd
 uDm
 mZG
 hjn
@@ -191129,7 +191108,7 @@ dUb
 dUb
 dfn
 jzM
-mvE
+dZd
 ekx
 wGL
 bUA
@@ -191386,7 +191365,7 @@ dUb
 dUb
 dfn
 jzM
-mvE
+dZd
 sei
 eRE
 dZd
@@ -191643,7 +191622,7 @@ mJl
 mJl
 mJl
 iHy
-mvE
+dZd
 cdm
 wGL
 bUA
@@ -191900,7 +191879,7 @@ dfn
 dUb
 dUb
 jzM
-rlf
+bgX
 cZl
 grU
 iPK

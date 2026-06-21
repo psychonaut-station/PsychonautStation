@@ -45218,6 +45218,8 @@
 /obj/effect/mapping_helpers/airlock/access/all/command/ai_upload,
 /obj/structure/cable/layer3,
 /obj/structure/plasticflaps/kitchen,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron/dark,
 /area/station/ai/satellite/hallway)
 "mRU" = (
@@ -84683,10 +84685,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/station/medical/medbay/aft)
-"xPH" = (
-/obj/structure/displaycase/labcage,
-/turf/open/genturf,
-/area/icemoon/underground/unexplored/rivers/deep)
 "xPI" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -137825,7 +137823,7 @@ oSU
 oSU
 oSU
 oSU
-xPH
+oSU
 oSU
 oSU
 oSU

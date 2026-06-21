@@ -34251,6 +34251,7 @@
 "lMA" = (
 /obj/structure/lattice/catwalk,
 /obj/machinery/ai/server_cabinet,
+/obj/structure/ethernet_cable,
 /turf/open/openspace/telecomms,
 /area/station/ai/satellite/chamber)
 "lMC" = (
@@ -41186,13 +41187,6 @@
 /obj/machinery/atmospherics/pipe/smart/manifold4w/scrubbers/hidden/layer2,
 /turf/open/floor/iron,
 /area/station/hallway/primary/central)
-"olA" = (
-/obj/structure/lattice/catwalk,
-/obj/structure/ethernet_cable,
-/obj/machinery/ai/server_cabinet,
-/obj/machinery/ai/server_cabinet,
-/turf/open/openspace/telecomms,
-/area/station/ai/satellite/chamber)
 "olC" = (
 /obj/effect/spawner/random/entertainment/slot_machine,
 /obj/effect/decal/cleanable/dirt/dust,
@@ -173343,7 +173337,7 @@ lEj
 kWb
 kWb
 kWb
-olA
+qFs
 vAB
 qHi
 kWb

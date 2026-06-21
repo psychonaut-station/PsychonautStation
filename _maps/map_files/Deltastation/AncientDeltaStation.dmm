@@ -98325,7 +98325,6 @@
 /obj/machinery/power/apc/auto_name/directional/west,
 /turf/open/floor/iron,
 /area/station/commons/fitness/recreation)
-
 "aaC" = (
 /obj/structure/lattice,
 /obj/structure/transit_tube/curved{
@@ -98833,6 +98832,7 @@
 /obj/effect/turf_decal/tile/neutral/fourcorners,
 /turf/open/floor/iron/dark,
 /area/station/engineering/atmos)
+
 (1,1,1) = {"
 aaa
 aaa

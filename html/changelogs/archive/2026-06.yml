@@ -516,6 +516,9 @@
       exclusively to rainbow-hued decals for a week straight (or should I say "for
       a week gay"?).
   - bugfix: Fixed the order of floor decal palettes for a couple holidays.
+  Jaimex:
+  - rscadd: "Art\u0131k strip men\xFCden bodycam togglanabiliyor."
+  - bugfix: "AI, bodycami g\xF6rmeme problemi d\xFCzeltildi."
   Melbert:
   - code_imp: Reorganized human layering, report any oddities with sprites, such as
       mislayered equipment.
@@ -527,9 +530,6 @@
       with hulk.
   SmArtKar:
   - bugfix: Projectile lighting is no longer shown in the right click menu
-  Jaimex:
-  - rscadd: "Art\u0131k strip men\xFCden bodycam togglanabiliyor."
-  - bugfix: "AI, bodycami g\xF6rmeme problemi d\xFCzeltildi."
   homek13:
   - rscadd: "Silikon oyuncular\u0131 i\xE7in yeni yasalar eklendi."
   - rscadd: "Oyun i\xE7i crafting men\xFCs\xFCne \xE7im, kaya, \xE7i\xE7ek t\xFCrlerini\

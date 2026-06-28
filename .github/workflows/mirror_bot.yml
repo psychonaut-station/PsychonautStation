@@ -62,7 +62,7 @@ jobs:
           }
 
           if ($files.Count -ne 0) {
-            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            $EOF = "TF$([guid]::NewGuid())"
             echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
 
             echo "`n`nThe following tracked files have changed:" >> $Env:GITHUB_OUTPUT
@@ -83,13 +83,18 @@ jobs:
           $update_path_scripts = @(git diff --name-only --diff-filter=AM HEAD..FETCH_HEAD -- "tools/UpdatePaths/*.txt")
 
           if ($update_path_scripts.Length -ne 0) {
-            $EOF = "UP$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            $EOF = "UP$([guid]::NewGuid())"
             echo "update_path_scripts<<$EOF" >> $Env:GITHUB_OUTPUT
+            $update_path_scripts | ForEach { echo "$_" >> $Env:GITHUB_OUTPUT }
+            echo "$EOF" >> $Env:GITHUB_OUTPUT
+          }
 
-            foreach ($_ in $update_path_scripts) {
-              echo "$_" >> $Env:GITHUB_OUTPUT
-            }
+          $changelogs = @(git diff --name-only --diff-filter=U HEAD..FETCH_HEAD -- "html/changelogs/archive/*.yml")
 
+          if ($changelogs.Length -ne 0) {
+            $EOF = "CL$([guid]::NewGuid())"
+            echo "changelogs<<$EOF" >> $Env:GITHUB_OUTPUT
+            $changelogs | ForEach { echo "$_" >> $Env:GITHUB_OUTPUT }
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
         shell: pwsh
@@ -107,7 +112,7 @@ jobs:
         run: |
           $files = (git diff --name-only --diff-filter=U)
 
-          $EOF = "C$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+          $EOF = "C$([guid]::NewGuid())"
           echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
 
           if ($files.Length -ne 0) {
@@ -182,7 +187,7 @@ jobs:
           $tracked_files = "${{ steps.tracking.outputs.tracked_files }}"
 
           if ($tracked_files.Length -ne 0) {
-            $EOF = "TF$(-join (1..15 | ForEach { [char]((48..57) + (65..90) + (97..122) | Get-Random) }))"
+            $EOF = "TF$([guid]::NewGuid())"
             echo "tracked_files<<$EOF" >> $Env:GITHUB_OUTPUT
 
             $tracked_files = $tracked_files.replace("\short-hash", $short_hash)
@@ -194,6 +199,24 @@ jobs:
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
         shell: pwsh
+
+      - name: Merge changelogs
+        if: steps.tracking.outputs.changelogs != ''
+        run: |
+          if [ -n "$changelogs" ]; then
+            tools/bootstrap/python -m mirror_bot.changelog $changelogs
+
+            git add html/changelogs/archive
+
+            if ! git diff --cached --quiet; then
+              git commit -m "Merge changelogs"
+              echo "Changelogs merged and committed."
+            else
+              echo "No changes to commit."
+            fi
+          fi
+        env:
+          changelogs: ${{ steps.tracking.outputs.changelogs }}
 
       - name: Run UpdatePaths scripts
         if: steps.tracking.outputs.update_path_scripts != ''
@@ -207,7 +230,7 @@ jobs:
               git commit -m "Run UpdatePaths scripts"
               echo "UpdatePaths scripts made changes and were committed."
             else
-              echo "No changes from UpdatePaths scripts"
+              echo "No changes to commit."
             fi
           fi
         env:

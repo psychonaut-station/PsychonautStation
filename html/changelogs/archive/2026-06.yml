@@ -502,18 +502,6 @@
   - bugfix: fixed connecting a tank to a TTV the other way around
   timothymtorres:
   - code_imp: Add immunity checks for atmos traits for simple/basic mobs
-<<<<<<< HEAD
-2026-06-22:
-  Jaimex:
-  - rscadd: "Art\u0131k strip men\xFCden bodycam togglanabiliyor."
-  - bugfix: "AI, bodycami g\xF6rmeme problemi d\xFCzeltildi."
-  homek13:
-  - rscadd: "Silikon oyuncular\u0131 i\xE7in yeni yasalar eklendi."
-  - rscadd: "Oyun i\xE7i crafting men\xFCs\xFCne \xE7im, kaya, \xE7i\xE7ek t\xFCrlerini\
-      \ kapsayan \"Gardening\" kategorisi ekler."
-  - balance: "Space vine'\u0131n ba\u015Flang\u0131\xE7 yay\u0131lma bonusu 4 kat\u0131\
-      na \xE7\u0131kt\u0131, yay\u0131lma \xE7arpan\u0131 0.5 yerine 1 oldu."
-=======
 2026-06-20:
   lelandkemble:
   - bugfix: fixed a runtime when an exodrone rolls the shrubbery crate cargo crate
@@ -539,6 +527,15 @@
       with hulk.
   SmArtKar:
   - bugfix: Projectile lighting is no longer shown in the right click menu
+  Jaimex:
+  - rscadd: "Art\u0131k strip men\xFCden bodycam togglanabiliyor."
+  - bugfix: "AI, bodycami g\xF6rmeme problemi d\xFCzeltildi."
+  homek13:
+  - rscadd: "Silikon oyuncular\u0131 i\xE7in yeni yasalar eklendi."
+  - rscadd: "Oyun i\xE7i crafting men\xFCs\xFCne \xE7im, kaya, \xE7i\xE7ek t\xFCrlerini\
+      \ kapsayan \"Gardening\" kategorisi ekler."
+  - balance: "Space vine'\u0131n ba\u015Flang\u0131\xE7 yay\u0131lma bonusu 4 kat\u0131\
+      na \xE7\u0131kt\u0131, yay\u0131lma \xE7arpan\u0131 0.5 yerine 1 oldu."
 2026-06-26:
   Hatterhat:
   - qol: ChemMasters now have on-the-fly custom transfer amount support. Set it with
@@ -565,4 +562,3 @@
       with mindswaps. Report any oddities.
   - refactor: Grab strength has been refactored a bit, primarily affects martial arts
       and drunken brawling. Report any oddities.
->>>>>>> e33d3f563e0fccfead56cca869d9f9c8662acd07

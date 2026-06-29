@@ -391,6 +391,12 @@
       preview button by clicking the leaf icon.
   - rscdel: The configuration to disable TTS on whispering has been removed, as it
       is no longer needed and also interferes with radio TTS functioning properly.
+  Jaimex:
+  - rscadd: "SecTech\u2019e \xFCniformalara aksesuar olarak tak\u0131labilen bodycam\
+      \ eklendi."
+  - qol: "Bodycam izlenirken kullan\u0131c\u0131ya izlendi\u011Fini g\xF6steren bir\
+      \ uyar\u0131 eklendi."
+  - image: "Bodycam i\xE7in yeni item ve worn iconlar\u0131 eklendi."
   LemonInTheDark:
   - bugfix: End of round mapvotes will now properly default to the only option if
       only one map is votable.
@@ -399,6 +405,8 @@
   - qol: 'If your gun is empty, and you are on combat mode, and you are adjacent to
       someone, and you click on them: you will perform a gun bash rather than just
       dry firing.'
+  Rengan:
+  - code_imp: "Round Character Icons art\u0131k i\u015F ve \xF6zel rolleride kaydediyor."
   SmArtKar:
   - bugfix: Fixed weather on multi-z maps
   - qol: Particle weather can now be disabled in favor of old weather. !!! AMD GPU
@@ -406,14 +414,6 @@
   - bugfix: Fixed recovered crew showing up as uncategorized antags
   lelandkemble:
   - bugfix: fixed a runtime when fishing up no fish
-  Jaimex:
-  - rscadd: "SecTech\u2019e \xFCniformalara aksesuar olarak tak\u0131labilen bodycam\
-      \ eklendi."
-  - qol: "Bodycam izlenirken kullan\u0131c\u0131ya izlendi\u011Fini g\xF6steren bir\
-      \ uyar\u0131 eklendi."
-  - image: "Bodycam i\xE7in yeni item ve worn iconlar\u0131 eklendi."
-  Rengan:
-  - code_imp: "Round Character Icons art\u0131k i\u015F ve \xF6zel rolleride kaydediyor."
 2026-06-16:
   Aliceee2ch:
   - balance: Gender changing potion has a 5 seconds do_after now.
@@ -474,9 +474,20 @@
   timothymtorres:
   - bugfix: Fix deep fryer to be refillable
 2026-06-19:
+  Ghommie:
+  - refactor: Refactored a couple things around food/recipe complexity (what food
+      buffs depend on). Technically, you can now kiss that pizza toilet, which you
+      crafted (right?), with the chef kiss skillchip enabled to add "love" to its
+      reagents.
   Hatterhat:
   - bugfix: Alien welding tools no longer have mixed directions when held in the right
       hand.
+  - bugfix: Inactive transforming weapons should now use their base throwspeeds properly
+      when turned off.
+  Macaroni:
+  - rscadd: Alt + Right Click now toggles shoe layers above or below uniforms.
+  Melbert:
+  - balance: Muzzles prevent verbal spellcasting
   RusselNotSCP:
   - qol: Bottles in the booze-o-mat vending machine have been re-alphabetized.
   - bugfix: Jester's Grenadine has been moved to the non-alcoholic section of the
@@ -484,8 +495,70 @@
   SmArtKar:
   - qol: TGUI list selectors and Spawn verb now use smooth scrolling with arrow keys
   - bugfix: Removed DNA infuser sprite from gizmo icon pool
+  - bugfix: Fixed bioscrambler runtiming when the target is missing bodyparts
+  - bugfix: Made fire overlay properly mask when using mining sphere MODule
   lelandkemble:
   - bugfix: fixed a runtime with bluespace meteors
   - bugfix: fixed connecting a tank to a TTV the other way around
   timothymtorres:
   - code_imp: Add immunity checks for atmos traits for simple/basic mobs
+2026-06-20:
+  lelandkemble:
+  - bugfix: fixed a runtime when an exodrone rolls the shrubbery crate cargo crate
+      chip from the abandoned cargo ship
+2026-06-21:
+  UvvU:
+  - qol: made deploying and undeploying a modsuit no longer ALWAYS drop your suit
+      storage item, instead keeping it if it's valid
+2026-06-22:
+  Ghommie:
+  - qol: More diverse floor decal colors during pride week so you aren't subjected
+      exclusively to rainbow-hued decals for a week straight (or should I say "for
+      a week gay"?).
+  - bugfix: Fixed the order of floor decal palettes for a couple holidays.
+  Jaimex:
+  - rscadd: "Art\u0131k strip men\xFCden bodycam togglanabiliyor."
+  - bugfix: "AI, bodycami g\xF6rmeme problemi d\xFCzeltildi."
+  Melbert:
+  - code_imp: Reorganized human layering, report any oddities with sprites, such as
+      mislayered equipment.
+  - refactor: Refactored cult halos, report any oddities like them not appearing when
+      they should.
+  - refactor: Refactored mutation visuals, they're now affected by height! Report
+      any oddities like them disappearing.
+  - refactor: Refactored mutation species handling, report any oddities like lizards
+      with hulk.
+  SmArtKar:
+  - bugfix: Projectile lighting is no longer shown in the right click menu
+  homek13:
+  - rscadd: "Silikon oyuncular\u0131 i\xE7in yeni yasalar eklendi."
+  - rscadd: "Oyun i\xE7i crafting men\xFCs\xFCne \xE7im, kaya, \xE7i\xE7ek t\xFCrlerini\
+      \ kapsayan \"Gardening\" kategorisi ekler."
+  - balance: "Space vine'\u0131n ba\u015Flang\u0131\xE7 yay\u0131lma bonusu 4 kat\u0131\
+      na \xE7\u0131kt\u0131, yay\u0131lma \xE7arpan\u0131 0.5 yerine 1 oldu."
+2026-06-26:
+  Hatterhat:
+  - qol: ChemMasters now have on-the-fly custom transfer amount support. Set it with
+      the number input by the eject button. One-time custom transfer amounts remain
+      usable with the horizontal ellipsis button.
+  Melbert:
+  - balance: Obsessions get moderately stronger grabs against their objective targets
+      (this includes their obsession and any other kill/theft targets they may have).
+  - balance: While standing near their obsession (for 20 seconds or if they are incapacitated),
+      Obsessions get slightly stronger grabs against anyone, rather than just their
+      objective targets.
+  - balance: While standing near their obsession (for 20 seconds or if they are incapacitated),
+      Obsessions get slight stamina damage resistance.
+  - balance: Obsession stammering has been reduced in severity a bit, and also becomes
+      less likely the longer you stand around your obsession.
+  - balance: Obsession emotes have been made a bit less obvious, and also become less
+      likely the longer you stand around your obsession.
+  - balance: Taking Psicodine or drinking alcohol will prevent Obsessions from stammering
+      or emoting around their obsession, but also disables their stamina resistance
+      and stronger grabs.
+  - balance: Obsessions get a "permanent" mood bonus for killing their obsession (until
+      they are revived).
+  - refactor: Obsessed has been refactored significantly. It will now play a lot nicer
+      with mindswaps. Report any oddities.
+  - refactor: Grab strength has been refactored a bit, primarily affects martial arts
+      and drunken brawling. Report any oddities.

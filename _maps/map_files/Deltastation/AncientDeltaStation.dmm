@@ -39782,18 +39782,10 @@
 /turf/open/floor/iron/white,
 /area/station/medical/chemistry)
 "gVL" = (
-/obj/effect/turf_decal/tile/neutral{
-	dir = 1
+/obj/machinery/turretid{
+	pixel_y = 7
 	},
-/obj/effect/turf_decal/tile/neutral,
-/obj/effect/turf_decal/tile/neutral{
-	dir = 4
-	},
-/obj/effect/turf_decal/tile/neutral{
-	dir = 8
-	},
-/obj/machinery/turretid,
-/turf/open/floor/iron/dark,
+/turf/closed/wall/r_wall,
 /area/station/ai/satellite/chamber)
 "gVP" = (
 /obj/structure/disposalpipe/segment{
@@ -62958,12 +62950,6 @@
 /obj/effect/mapping_helpers/broken_floor,
 /turf/open/floor/wood,
 /area/station/service/abandoned_gambling_den/gaming)
-"nNy" = (
-/obj/machinery/turretid{
-	pixel_y = 7
-	},
-/turf/closed/wall/r_wall,
-/area/station/ai/satellite/chamber)
 "nND" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -105351,7 +105337,7 @@ byT
 bAz
 bCq
 bEg
-gVL
+bCq
 bCq
 bJF
 bCq
@@ -106122,7 +106108,7 @@ bCu
 huc
 btH
 aby
-nNy
+gVL
 btH
 bkm
 abJ

@@ -311,6 +311,7 @@
 	color = "#E0E8EF" // rgb: 224, 232, 239
 	self_consuming = TRUE //divine intervention won't be limited by the lack of a liver
 	ph = 7.5 //God is alkaline
+	overdose_threshold = 40 // iman kalpten geçer
 	chemical_flags = REAGENT_CAN_BE_SYNTHESIZED|REAGENT_CLEANS|REAGENT_UNAFFECTED_BY_METABOLISM // Operates at fixed metabolism for balancing memes.
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
 	default_container = /obj/item/reagent_containers/cup/glass/bottle/holywater
@@ -349,6 +350,14 @@
 
 	affected_mob.adjust_jitter_up_to(2 SECONDS * metabolization_ratio * seconds_per_tick, 20 SECONDS)
 	var/need_mob_update = FALSE
+
+	var/is_roundstart_chaplain = affected_mob.mind && !affected_mob.mind.late_joiner && is_chaplain_job(affected_mob.mind.assigned_role)
+	if(is_roundstart_chaplain)
+		var/amount = pick(0.5, 1.2)
+		if(pick(1, 2) == 1)
+			need_mob_update += affected_mob.adjust_brute_loss(-amount, updating_health = FALSE)
+		else
+			need_mob_update += affected_mob.adjust_fire_loss(-amount, updating_health = FALSE)
 
 	if(IS_CULTIST(affected_mob))
 		for(var/datum/action/innate/cult/blood_magic/BM in affected_mob.actions)
@@ -397,6 +406,13 @@
 		for(var/obj/effect/rune/R in exposed_turf)
 			qdel(R)
 	exposed_turf.Bless()
+
+/datum/reagent/water/holywater/overdose_process(mob/living/affected_mob, seconds_per_tick, metabolization_ratio)
+	. = ..()
+	var/need_mob_update = FALSE
+	need_mob_update += affected_mob.adjust_organ_loss(ORGAN_SLOT_HEART, 0.5 * metabolization_ratio * seconds_per_tick)
+	if(need_mob_update)
+		return UPDATE_MOB_HEALTH
 
 /datum/reagent/water/hollowwater
 	name = "Hollow Water"

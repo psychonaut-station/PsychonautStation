@@ -2058,10 +2058,9 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	return null
 
-<<<<<<< HEAD
 /datum/species/proc/wash(mob/living/carbon/human/H)
 	return FALSE
-=======
+
 /**
  * Returns what type of gas this species breathes
  */
@@ -2080,4 +2079,3 @@ GLOBAL_LIST_EMPTY(features_by_species)
 
 	stack_trace("Unsupported breath type for species with [mutantlungs]")
 	return null
->>>>>>> b30e585603429480eabbc2a2cf88ed2f77711174

@@ -124,17 +124,6 @@ GLOBAL_VAR(command_name)
 		random = 999999999 //ridiculously long name in written numbers
 
 	// Prefix
-<<<<<<< HEAD
-	var/holiday_name = length(GLOB.holidays) && pick(GLOB.holidays)
-	if(holiday_name)
-		var/datum/holiday/holiday = GLOB.holidays[holiday_name]
-		name = holiday.getStationPrefix()
-		//get normal name
-	if(!name)
-		name = pick(GLOB.station_names)
-	if(name)
-		new_station_name += name + " "
-=======
 	var/picked_holiday = length(GLOB.holidays) && pick(GLOB.holidays)
 	if(picked_holiday)
 		var/datum/holiday/holiday = GLOB.holidays[picked_holiday]
@@ -155,7 +144,6 @@ GLOBAL_VAR(command_name)
 
 	// Normal name
 	new_station_name += "[main || pick(GLOB.station_names)] "
->>>>>>> b30e585603429480eabbc2a2cf88ed2f77711174
 
 	// Suffix
 	new_station_name += "[pick(GLOB.station_suffixes)] "

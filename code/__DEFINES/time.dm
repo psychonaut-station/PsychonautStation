@@ -39,6 +39,13 @@
 #define HOTDOG_DAY "Ulusal Sosisli Günü"
 #define ICE_CREAM_DAY "Ulusal Dondurma Günü"
 #define CHERNOBYL_ANNIVERSARY "Çernobil Felaketi Anma Günü"
+#define LIZARD_ATRAKOR_DAY "Atrakor'un Gücü Festivali"
+#define MOTH_FLEET_DAY "Filo Günü"
+#define BEE_DAY "Arı Günü"
+#define BEER_DAY "Bira Günü"
+#define VEGAN_DAY "Vegan Günü"
+#define TALK_LIKE_A_PIRATE_DAY "Korsan Gibi Konuşma Günü"
+#define ST_PATRICK_DAY "Aziz Patrick Günü"
 /*
 
 Days of the week to make it easier to reference them.

@@ -537,6 +537,12 @@
   - balance: "Space vine'\u0131n ba\u015Flang\u0131\xE7 yay\u0131lma bonusu 4 kat\u0131\
       na \xE7\u0131kt\u0131, yay\u0131lma \xE7arpan\u0131 0.5 yerine 1 oldu."
 2026-06-26:
+  EnterTheJake:
+  - balance: The AI Upload Console now requires AI Uplaod access for laws to be uploaded
+      (Captain,HoP,RD), emag also works.
+  - balance: The hacked AI upload board can bypass the access requirement and has
+      had its time requirement removed.
+  - image: added 2 new overlays for the AI upload console.
   Hatterhat:
   - qol: ChemMasters now have on-the-fly custom transfer amount support. Set it with
       the number input by the eject button. One-time custom transfer amounts remain
@@ -562,3 +568,55 @@
       with mindswaps. Report any oddities.
   - refactor: Grab strength has been refactored a bit, primarily affects martial arts
       and drunken brawling. Report any oddities.
+2026-06-27:
+  CabinetOnFire:
+  - qol: DNA console now automatically matches genetic data with any held genetic
+      sequence scanner, for more efficient geneticist shenanigans!
+  Ghommie:
+  - balance: Wearing a hard hat or any helmet as a station drone will actually improve
+      your armor values now!
+  Melbert:
+  - bugfix: Icebox gulag console doesn't vanish from reality
+  - bugfix: Cybernetic reskinning should break less.
+  - bugfix: Horns and cat ears should be cut off less by height.
+  - bugfix: Bodypart textures should apply more consistently.
+  - refactor: Mutant parts like moth wings, lizard tails, cat eats, etc. have been
+      refactored a tiny bit, report any oddities.
+  - refactor: Bodypart textures were refactored a tiny bit, report any oddities.
+  - refactor: Refactored the way height works, report anything weird looking things
+      involving that.
+  StrangeWeirdKitten:
+  - bugfix: ''' and " works again'
+  vinylspiders:
+  - bugfix: fixed an issue where you could exceed the smartfridge's capacity by using
+      a plant bag
+2026-06-28:
+  Ghommie:
+  - map: Made it a bit harder to get stuck on away missions if you willingly or unwillingly
+      use teleportation techniques. You still definitely can, but usually only on
+      sections of the map that can be reached one way or another, including rock walls
+      that can be mined, just not those that cannot.
+  - image: Updated the visuals for indestructible rock walls to match the destructible
+      ones.
+  - balance: RNG teleportation should work marginally better around areas and turfs
+      where teleportation is restricted by skipping them instead of having a chance
+      to fumble because of that.
+2026-06-29:
+  CabinetOnFire:
+  - bugfix: Crafting shivs no longer inverts the do_after check
+  Melbert:
+  - bugfix: Obsession don't obsess with themselves
+  - code_imp: Cleaned up station name generation, report any weird looking auto-generated
+      station names
+  - rscadd: Pride holiday now has unique station prefixes
+  SmArtKar:
+  - bugfix: Fixed chem implant injections not counting as such
+  - bugfix: Goliath tentacles now detach when the goliath dies
+  timothymtorres:
+  - bugfix: Fix `/datum/component/listen_prayers` not removing action button from
+      UI when component deleted from mob
+2026-06-30:
+  Melbert:
+  - qol: You can rename/redesc gizmos with a pen
+  Pumpkinoe:
+  - bugfix: Fixed some weird turf decals on walls for the Ex-Interdyne Pirate Ship

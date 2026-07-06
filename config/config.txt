@@ -229,7 +229,7 @@ IPINTEL_REJECT_BAD
 # CONFIGURL https://github.com/tgstation-operations/server-config
 
 ## HTTP URL for the yt-dlp wrapper service used by Play Internet Sound.
-## Run the service from tools/ytdlp_wrapper and point this at its address.
+## Run the service from tools/ytdlp_service and point this at its address.
 # INVOKE_YOUTUBEDL http://localhost:8080
 
 ## Comment this out to disable users ability to use the request internet sounds to be played.

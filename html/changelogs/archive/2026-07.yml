@@ -152,3 +152,7 @@
       use.
   vinylspiders:
   - code_imp: tgui-core bumped to v6.1, please report any tgui-related issues
+2026-07-06:
+  Seefaaa:
+  - bugfix: "cami shuttle tekrardan sat\u0131n al\u0131nabilir"
+  - rscdel: "AI yasalar\u0131n\u0131 de\u011Fi\u015Ftirmek i\xE7in kod gerekmeyecek"

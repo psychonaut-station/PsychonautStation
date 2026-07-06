@@ -16,6 +16,12 @@ RUN pip install --no-cache-dir --break-system-packages \
 
 COPY app.py /app/app.py
 
+RUN groupadd appuser && \
+    useradd -g appuser -d /app -s /bin/bash appuser && \
+    chown -R appuser:appuser /app
+
+USER appuser
+
 EXPOSE 8080
 
 CMD ["python", "/app/app.py"]

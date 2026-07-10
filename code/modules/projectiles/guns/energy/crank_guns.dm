@@ -8,7 +8,7 @@
 	slot_flags = ITEM_SLOT_BACK
 	obj_flags = UNIQUE_RENAME
 	weapon_weight = WEAPON_HEAVY
-	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.2, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.2)
+	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8, /datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.35, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.3, /datum/material/plastic = SMALL_MATERIAL_AMOUNT)
 	light_color = COLOR_PURPLE
 
 /obj/item/gun/energy/laser/musket/add_bayonet_point()
@@ -40,11 +40,12 @@
 	custom_materials = list(
 		/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8,
 		/datum/material/silver = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.4,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.35,
-		/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 2,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.55,
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.45,
+		/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 3,
 	)
 
+<<<<<<< HEAD
 /obj/item/gun/energy/laser/musket/napoleon
 	name = "napoleon laser musket"
 	desc = "A hand-crafted laser weapon, it has a hand crank on the side to charge it up. \
@@ -54,6 +55,8 @@
 	worn_icon_state = "las_musket"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/musket/napoeleon)
 
+=======
+>>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 /obj/item/gun/energy/disabler/smoothbore
 	name = "smoothbore disabler"
 	desc = "A hand-crafted disabler, using a hard knock on an energy cell to fire the stunner laser. A lack of proper focusing means it has no accuracy whatsoever."
@@ -65,9 +68,10 @@
 	obj_flags = UNIQUE_RENAME
 	custom_materials = list(
 		/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8,
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.25,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.35,
 		/datum/material/cardboard = SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 1.2,
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 1.5,
+		/datum/material/plastic = SMALL_MATERIAL_AMOUNT,
 	)
 
 /obj/item/gun/energy/disabler/smoothbore/Initialize(mapload)
@@ -100,10 +104,13 @@
 	spread = 0 //could be like 5, but having just very tiny spread kinda feels like bullshit
 	custom_materials = list(
 		/datum/material/wood = SHEET_MATERIAL_AMOUNT * 8,
-		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2.25,
+		/datum/material/gold = SHEET_MATERIAL_AMOUNT * 5.15,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3,
 		/datum/material/cardboard = SHEET_MATERIAL_AMOUNT,
-		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 5.2)
+		/datum/material/glass = SMALL_MATERIAL_AMOUNT * 2.3,
+		/datum/material/silver = SMALL_MATERIAL_AMOUNT * 1.5,
+		/datum/material/plastic = SMALL_MATERIAL_AMOUNT,
+	)
 
 //Inferno and Cryo Pistols
 
@@ -174,9 +181,9 @@
 	charge_sections = 1
 	item_flags = SLOWS_WHILE_IN_HAND | IMMUTABLE_SLOW
 	custom_materials = list(
-		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5.25,
+		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5.55,
 		/datum/material/bronze = SHEET_MATERIAL_AMOUNT * 5,
-		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.29
+		/datum/material/glass = SHEET_MATERIAL_AMOUNT * 1.45,
 	)
 
 /obj/item/gun/energy/laser/musket/repeater/Initialize(mapload)

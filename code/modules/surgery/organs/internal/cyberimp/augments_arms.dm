@@ -458,6 +458,7 @@
 		/obj/item/reagent_containers/cup/beaker/large,
 		/obj/item/reagent_containers/spray/cleaner
 	)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/janitor/emag_act()
 	if(obj_flags & EMAGGED)
@@ -481,6 +482,7 @@
 		/obj/item/sensor_device,
 		/obj/item/pinpointer/crew,
 	)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/atmospherics
 	name = "atmospherics toolset implant"
@@ -495,6 +497,7 @@
 		/obj/item/holosign_creator/atmos,
 		/obj/item/pipe_dispenser,
 	)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/botany
 	name = "botany arm implant"
@@ -511,6 +514,7 @@
 		/obj/item/storage/bag/plants,
 		/obj/item/storage/bag/plants/portaseeder
 	)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis
 	name = "C.H.R.O.M.A.T.A. mantis blade implants"
@@ -746,6 +750,7 @@
 	desc = "Special inhand implant that transmits the current ammo and energy data straight to the user's arm screen."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "hand_implant"
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 2, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 2, /datum/material/silver = HALF_SHEET_MATERIAL_AMOUNT, /datum/material/diamond = HALF_SHEET_MATERIAL_AMOUNT)
 
 	var/atom/movable/screen/cybernetics/ammo_counter/counter_ref
 	var/obj/item/gun/our_gun

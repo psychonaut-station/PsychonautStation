@@ -867,13 +867,14 @@
 	items_to_add = list(/obj/item/storage/bag/plants/cyborg, /obj/item/borg/cyborg_omnitool/botany, /obj/item/plant_analyzer)
 
 /obj/item/borg/upgrade/uclamp
-	name = "cargo cyborg clamp upgrade"
+	name = "Cargo Cyborg Clamp Upgrade"
 	desc = "A upgraded hydraulic clamp replacement for the cargo model's standard clamp."
 	icon = 'icons/psychonaut/obj/devices/circuitry_n_data.dmi'
 	icon_state = "cyborg_upgrade5"
 	require_model = TRUE
 	model_type = list(/obj/item/robot_model/cargo)
 	model_flags = BORG_MODEL_CARGO
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 10, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 7.5)
 	var/one_time_use = FALSE
 
 /obj/item/borg/upgrade/uclamp/action(mob/living/silicon/robot/R)
@@ -898,7 +899,7 @@
 				C.icon_state = "clamp"
 
 /obj/item/borg/upgrade/uclamp/cap
-	name = "clamp capacity upgrade"
+	name = "Clamp Capacity Upgrade"
 	desc = "A upgrade for increase clamp's capacity."
 
 /obj/item/borg/upgrade/uclamp/cap/action(mob/living/silicon/robot/R)
@@ -914,7 +915,7 @@
 			C.max_capacity -= 2
 
 /obj/item/borg/upgrade/uclamp/charge
-	name = "clamp charge upgrade"
+	name = "Clamp Charge Upgrade"
 	desc = "A upgrade for decrease clamp's use charge."
 
 /obj/item/borg/upgrade/uclamp/charge/action(mob/living/silicon/robot/R)
@@ -930,7 +931,7 @@
 			C.cell_usage *= 2
 
 /obj/item/borg/upgrade/uclamp/time
-	name = "clamp time upgrade"
+	name = "Clamp Time Upgrade"
 	desc = "A upgrade for decrease clamp's use time."
 
 /obj/item/borg/upgrade/uclamp/time/action(mob/living/silicon/robot/R)
@@ -946,7 +947,7 @@
 			C.load_time *= 1.5
 
 /obj/item/borg/upgrade/uclamp/carry //unique bi isim bulamadıms
-	name = "clamp carry upgrade"
+	name = "Clamp Carry Upgrade"
 	desc = "A upgrade for increase what that clamp can carry."
 	one_time_use = TRUE
 

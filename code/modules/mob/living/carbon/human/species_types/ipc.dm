@@ -187,6 +187,7 @@
 	slot = ORGAN_SLOT_VOLTPROTECT
 	organ_flags = ORGAN_ROBOTIC
 	zone = BODY_ZONE_CHEST
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/item/organ/voltage_protector/on_mob_insert(mob/living/carbon/owner)
 	. = ..()
@@ -206,6 +207,7 @@
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
 	items_to_create = list(/obj/item/apc_powercord)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 
 ////////////////////////////////////// ITEMS //////////////////////////////////////
 

@@ -88,3 +88,4 @@
 	icon_state = "eye_implant_science"
 	HUD_traits = list(TRAIT_REAGENT_SCANNER, TRAIT_RESEARCH_SCANNER)
 	hud_color = "#ab2dc4"
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 0.6, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.6, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.6, /datum/material/gold = SHEET_MATERIAL_AMOUNT * 0.6)

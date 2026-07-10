@@ -27,6 +27,15 @@
 	drop_sound = 'sound/items/handling/helmet/helmet_drop1.ogg'
 	armor_type = /datum/armor/head_helmet_clocky
 
+	custom_materials = list(
+		/datum/material/plasma = SHEET_MATERIAL_AMOUNT * 3,
+		/datum/material/titanium = SHEET_MATERIAL_AMOUNT * 2,
+		/datum/material/silver = SHEET_MATERIAL_AMOUNT,
+		/datum/material/uranium = SHEET_MATERIAL_AMOUNT,
+		/datum/material/gold = HALF_SHEET_MATERIAL_AMOUNT,
+		/datum/material/bluespace = HALF_SHEET_MATERIAL_AMOUNT
+	)
+
 	var/modifies_speech = TRUE // enables speech modification
 	var/list/clock_sounds = list("Tick Tock!!","Tick Tick","Tick Tock?","Tick Tack","Tick Tick Tock...") // phrases to be said when the player attempts to talk when speech modification is enabled
 

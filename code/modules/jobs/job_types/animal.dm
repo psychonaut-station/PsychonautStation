@@ -9,7 +9,7 @@
 
 	spawn_type = /mob/living/basic/pet/fox
 
-	display_order = JOB_DISPLAY_ORDER_CAPTAIN
+	display_order = JOB_DISPLAY_ORDER_ANIMAL
 
 	department_for_prefs = /datum/job_department/assistant
 

@@ -238,17 +238,17 @@ jobs:
 
       - name: Generate App Token
         id: app-token-generation
-        uses: actions/create-github-app-token@v1
+        uses: actions/create-github-app-token@v3
         if: env.APP_PRIVATE_KEY != '' && env.APP_ID != ''
         with:
-          app-id: ${{ secrets.APP_ID }}
+          client-id: ${{ secrets.APP_ID }}
           private-key: ${{ secrets.APP_PRIVATE_KEY }}
         env:
           APP_PRIVATE_KEY: ${{ secrets.APP_PRIVATE_KEY }}
           APP_ID: ${{ secrets.APP_ID }}
 
       - name: Create new pull request
-        uses: peter-evans/create-pull-request@v3
+        uses: peter-evans/create-pull-request@v8
         id: create-pull-request
         with:
           token: ${{ steps.app-token-generation.outputs.token || secrets.GITHUB_TOKEN }}

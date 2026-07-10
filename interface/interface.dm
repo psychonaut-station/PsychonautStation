@@ -18,31 +18,15 @@ GAME_VERB_HIDDEN(/client, wiki, "wiki")
 		output += "?title=Special%3ASearch&profile=default&search=[query]"
 	DIRECT_OUTPUT(src, link(output))
 
-<<<<<<< HEAD
-/client/verb/patreon()
-	set name = "patreon"
-	set desc = "Destek ol"
-	set hidden = TRUE
-	var/weburl = CONFIG_GET(string/patreonurl)
-	if(!weburl)
-=======
-GAME_VERB_HIDDEN(/client, forum, "forum")
+GAME_VERB_HIDDEN(/client, patreon, "patreon")
 
-	var/forumurl = CONFIG_GET(string/forumurl)
-	if(!forumurl)
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
-		to_chat(src, span_danger("The forum URL is not set in the server configuration."))
+	var/patreonurl = CONFIG_GET(string/patreonurl)
+	if(!patreonurl)
+		to_chat(src, span_danger("The patreon URL is not set in the server configuration."))
 		return
-	DIRECT_OUTPUT(src, link(weburl))
+	DIRECT_OUTPUT(src, link(patreonurl))
 
-<<<<<<< HEAD
-/client/verb/rules()
-	set name = "rules"
-	set desc = "Sunucu kuralları"
-	set hidden = TRUE
-=======
 GAME_VERB_HIDDEN(/client, rules, "rules")
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 
 	var/rulesurl = CONFIG_GET(string/rulesurl)
 	if(!rulesurl)
@@ -66,13 +50,7 @@ GAME_VERB_HIDDEN(/client, config, "config")
 		return
 	DIRECT_OUTPUT(src, link(configurl))
 
-<<<<<<< HEAD
-/client/verb/reportissue()
-	set name = "report-issue"
-	set desc = "Hata bildir"
-=======
 GAME_VERB_DESC(/client, reportissue, "report-issue", "Report an issue", null)
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 
 	var/githuburl = CONFIG_GET(string/githuburl)
 	if(!githuburl)

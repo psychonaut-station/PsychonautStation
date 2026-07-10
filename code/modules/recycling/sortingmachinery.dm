@@ -187,27 +187,15 @@
 		update_appearance()
 		return ITEM_INTERACT_SUCCESS
 
-<<<<<<< HEAD
-	else if(istype(item, /obj/item/boxcutter))
-		var/obj/item/boxcutter/boxcutter_item = item
-		if(HAS_TRAIT(boxcutter_item, TRAIT_TRANSFORM_ACTIVE))
-			if(!attempt_pre_unwrap_contents(user, time = 0.5 SECONDS))
-				return
-			unwrap_contents()
-			balloon_alert(user, "cutting open package...")
-			post_unwrap_contents(rip_open = FALSE)
-		else
-=======
 	if(istype(tool, /obj/item/boxcutter))
 		var/obj/item/boxcutter/boxcutter_item = tool
 		if(!HAS_TRAIT(boxcutter_item, TRAIT_TRANSFORM_ACTIVE))
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 			balloon_alert(user, "prime the boxcutter!")
 			return ITEM_INTERACT_BLOCKING
 		if(!attempt_pre_unwrap_contents(user, time = 0.5 SECONDS))
 			return ITEM_INTERACT_BLOCKING
 		unwrap_contents()
-		post_unwrap_contents(user, rip_open = FALSE)
+		post_unwrap_contents(rip_open = FALSE)
 		return ITEM_INTERACT_SUCCESS
 
 	return NONE

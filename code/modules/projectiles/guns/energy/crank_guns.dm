@@ -45,7 +45,6 @@
 		/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 3,
 	)
 
-<<<<<<< HEAD
 /obj/item/gun/energy/laser/musket/napoleon
 	name = "napoleon laser musket"
 	desc = "A hand-crafted laser weapon, it has a hand crank on the side to charge it up. \
@@ -55,8 +54,6 @@
 	worn_icon_state = "las_musket"
 	ammo_type = list(/obj/item/ammo_casing/energy/laser/musket/napoeleon)
 
-=======
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 /obj/item/gun/energy/disabler/smoothbore
 	name = "smoothbore disabler"
 	desc = "A hand-crafted disabler, using a hard knock on an energy cell to fire the stunner laser. A lack of proper focusing means it has no accuracy whatsoever."

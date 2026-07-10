@@ -9,17 +9,10 @@
 		return
 	LAZYINITLIST(credits)
 	var/list/_credits = credits
-<<<<<<< HEAD
-	add_verb(src, /client/proc/ClearCredits)
+	ASSIGN_GAME_VERB(src, /client, ClearCredits)
 	var/list/credit_order_for_this_round = SScredits.credit_order_for_this_round
 
 	var/count = 0
-=======
-	ASSIGN_GAME_VERB(src, /client, ClearCredits)
-	var/static/list/credit_order_for_this_round
-	if(isnull(credit_order_for_this_round))
-		credit_order_for_this_round = list("Thanks for playing!") + (shuffle(icon_states(credits_icon)) - "Thanks for playing!")
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 	for(var/I in credit_order_for_this_round)
 		if(!credits)
 			return
@@ -44,12 +37,7 @@
 			sleep(CREDIT_SPAWN_SPEED)
 			count = 0
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
-<<<<<<< HEAD
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/client, ClearCredits))
-=======
-	UNASSIGN_GAME_VERB(src, /client, ClearCredits)
-	qdel(credits_icon)
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 
 GAME_VERB_PROC(/client, ClearCredits, "Hide Credits", "OOC")
 	UNASSIGN_GAME_VERB(src, /client, ClearCredits)

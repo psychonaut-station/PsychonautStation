@@ -155,12 +155,6 @@
       use.
   vinylspiders:
   - code_imp: tgui-core bumped to v6.1, please report any tgui-related issues
-<<<<<<< HEAD
-2026-07-06:
-  Seefaaa:
-  - bugfix: "cami shuttle tekrardan sat\u0131n al\u0131nabilir"
-  - rscdel: "AI yasalar\u0131n\u0131 de\u011Fi\u015Ftirmek i\xE7in kod gerekmeyecek"
-=======
 2026-07-04:
   Fghj240:
   - bugfix: nutriment pump implant plus plus plus now has a sideways sprite
@@ -235,6 +229,9 @@
   - balance: Blood worms are now breathless again.
   - balance: Blood worms take damage from low pressures now (increases with growth
       stage).
+  Seefaaa:
+  - bugfix: "cami shuttle tekrardan sat\u0131n al\u0131nabilir"
+  - rscdel: "AI yasalar\u0131n\u0131 de\u011Fi\u015Ftirmek i\xE7in kod gerekmeyecek"
   SmArtKar:
   - rscadd: Added a magmawing variant of watcher wreaths
   - rscadd: Magmawing and icewing watchers now drop unique sinew that can be crafted
@@ -362,4 +359,3 @@
       crates in general.
   lelandkemble:
   - bugfix: Vorpal scythe damage multiplier remains after the first hit
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d

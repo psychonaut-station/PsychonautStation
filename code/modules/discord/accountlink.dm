@@ -1,12 +1,5 @@
-<<<<<<< HEAD
-/client/verb/verify_in_discord()
-	set category = "OOC"
-	set name = "Verify Discord Account"
-	set desc = "Verify your discord account with your BYOND account"
-=======
 // IF you have linked your account, this will trigger a verify of the user
 GAME_VERB_DESC(/client, verify_in_discord, "Verify Discord Account", "Verify your discord account with your BYOND account", "OOC")
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 
 	if(!CONFIG_GET(flag/sql_enabled))
 		to_chat(src, span_warning("This feature requires the SQL backend to be running."))

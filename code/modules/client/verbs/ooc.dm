@@ -145,7 +145,6 @@ GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
 	else
 		GLOB.dooc_allowed = !GLOB.dooc_allowed
 
-<<<<<<< HEAD
 /proc/toggle_looc(toggle = null)
 	if(toggle != null)
 		if(toggle != GLOB.looc_allowed)
@@ -155,15 +154,6 @@ GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
 	else //otherwise just toggle it
 		GLOB.looc_allowed = !GLOB.looc_allowed
 
-/client/proc/set_ooc()
-	set name = "Set Player OOC Color"
-	set desc = "Modifies player OOC Color"
-	set category = "Server"
-	if(IsAdminAdvancedProcCall())
-		return
-
-=======
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 ADMIN_VERB(set_ooc_color, R_FUN, "Set Player OOC Color", "Modifies the global OOC color.", ADMIN_CATEGORY_SERVER)
 	var/newColor = tgui_color_picker(user, "Please select the new player OOC color.", "OOC color")
 	if(isnull(newColor))
@@ -181,10 +171,7 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	GLOB.OOC_COLOR = null
 
 
-/client/verb/looc(msg as text)
-	set name = "LOOC"
-	set category = "OOC"
-
+GAME_VERB(/client, looc, VERB_LOOC, null, msg as text)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
@@ -536,8 +523,6 @@ GAME_VERB_PROC_DESC(/client, export_preferences, "Export Preferences", "Export y
 GAME_VERB_DESC(/client, map_vote_tally_count, "Show Map Vote Tallies", "View the current map vote tally counts.", "OOC")
 	to_chat(mob, SSmap_vote.tally_printout)
 
-<<<<<<< HEAD
-=======
 
 GAME_VERB_DESC(/client, linkforumaccount, "Link Forum Account", "Validates your byond account to your forum account. Required to post on the forums.", "OOC")
 	var/uri = CONFIG_GET(string/forum_link_uri)
@@ -592,7 +577,6 @@ GAME_VERB_DESC(/client, linkforumaccount, "Link Forum Account", "Validates your 
 	return query_get_token.item[1]
 
 
->>>>>>> 386d83f5f90b4180b0fcea3e38193fd87bf8055d
 /client/proc/random_string()
 	return "SHA2(CONCAT(RAND(),UUID(),?,RAND(),UUID()), 512)"
 

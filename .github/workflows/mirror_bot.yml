@@ -88,15 +88,6 @@ jobs:
             $update_path_scripts | ForEach { echo "$_" >> $Env:GITHUB_OUTPUT }
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
-
-          $changelogs = @(git diff --name-only --diff-filter=U HEAD..FETCH_HEAD -- "html/changelogs/archive/*.yml")
-
-          if ($changelogs.Length -ne 0) {
-            $EOF = "CL$([guid]::NewGuid())"
-            echo "changelogs<<$EOF" >> $Env:GITHUB_OUTPUT
-            $changelogs | ForEach { echo "$_" >> $Env:GITHUB_OUTPUT }
-            echo "$EOF" >> $Env:GITHUB_OUTPUT
-          }
         shell: pwsh
 
       - name: Merge upstream branch
@@ -111,6 +102,7 @@ jobs:
         id: commit
         run: |
           $files = (git diff --name-only --diff-filter=U)
+          $changelogs = (git diff --name-only --diff-filter=U -- "html/changelogs/archive/*.yml")
 
           $EOF = "C$([guid]::NewGuid())"
           echo "conflicts<<$EOF" >> $Env:GITHUB_OUTPUT
@@ -198,10 +190,17 @@ jobs:
 
             echo "$EOF" >> $Env:GITHUB_OUTPUT
           }
+
+          if ($changelogs.Length -ne 0) {
+            $EOF = "CL$([guid]::NewGuid())"
+            echo "changelogs<<$EOF" >> $Env:GITHUB_OUTPUT
+            $changelogs | ForEach { echo "$_" >> $Env:GITHUB_OUTPUT }
+            echo "$EOF" >> $Env:GITHUB_OUTPUT
+          }
         shell: pwsh
 
       - name: Merge changelogs
-        if: steps.tracking.outputs.changelogs != ''
+        if: steps.commit.outputs.changelogs != ''
         run: |
           if [ -n "$changelogs" ]; then
             tools/bootstrap/python -m mirror_bot.changelog $changelogs
@@ -216,7 +215,7 @@ jobs:
             fi
           fi
         env:
-          changelogs: ${{ steps.tracking.outputs.changelogs }}
+          changelogs: ${{ steps.commit.outputs.changelogs }}
 
       - name: Run UpdatePaths scripts
         if: steps.tracking.outputs.update_path_scripts != ''

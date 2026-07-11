@@ -113,74 +113,71 @@
     }
 
     &__departments {
-          &.head {
-            background: colors.bg(var(--department-color));
+      &.head {
+        background: colors.bg(var(--department-color));
 
-            .job-name {
-              font-weight: bold;
-            }
-          }
+        .job-name {
+          font-weight: bold;
+        }
+      }
 
-          background: var(--department-color);
-          border: var(--border-thickness-small) outset var(--department-color);
-          color: black;
+      background: var(--department-color);
+      border: var(--border-thickness-small) outset var(--department-color);
+      color: black;
 
-          > * {
-            height: calc(100% + 0.2em);
-            padding-bottom: 0.2em;
-          }
+      > * {
+        height: calc(100% + 0.2em);
+        padding-bottom: 0.2em;
+      }
 
-          .options {
-            margin-right: var(--space-xxs);
-            background: hsla(0, 0%, 0%, 0.2);
-            height: 100%;
+      .options {
+        margin-right: var(--space-xxs);
+        background: hsla(0, 0%, 0%, 0.2);
+        height: 100%;
 
-            .PreferencesMenu__JobSlotDropdown {
-              .Dropdown {
-                .Dropdown__control {
-                  background: transparent !important;
-                  border: none !important;
-                  box-shadow: none !important;
-                  padding: 0 2px;
+        .PreferencesMenu__JobSlotDropdown {
+          .Dropdown {
+            .Dropdown__control {
+              background: transparent !important;
+              border: none !important;
+              box-shadow: none !important;
+              padding: 0 2px;
 
-                  i {
-                    color: #ffffff !important;
-                    opacity: 0.8;
-                    text-shadow: none !important;
-                    transition: opacity 0.2s ease-in-out;
-                  }
+              i {
+                color: #ffffff !important;
+                opacity: 0.8;
+                text-shadow: none !important;
+                transition: opacity 0.2s ease-in-out;
+              }
 
-                  &:hover i {
-                    opacity: 1 !important;
-                  }
+              &:hover i {
+                opacity: 1 !important;
+              }
 
-                  &:before,
-                  &:after {
-                    display: none !important;
-                  }
-                }
+              &:before,
+              &:after {
+                display: none !important;
               }
             }
           }
+        }
+      }
 
-        &--Captain {
-          border: var(--border-thickness-medium)
-            outset
+      &--Captain {
+        border: var(--border-thickness-medium) outset hsla(60, 100%, 39.2%, 1);
+
+        &:first-child {
+          border-top: var(--border-thickness-medium) outset
             hsla(60, 100%, 39.2%, 1);
+        }
 
-          &:first-child {
-            border-top: var(--border-thickness-medium)
-              outset
-              hsla(60, 100%, 39.2%, 1);
-          }
-
-          .job-name {
-            font-size: 17px;
-            & .Dropdown__arrow-button {
-              margin-left: 5px;
-            }
+        .job-name {
+          font-size: 17px;
+          & .Dropdown__arrow-button {
+            margin-left: 5px;
           }
         }
+      }
 
       &__priority {
         border: var(--border-thickness-tiny) solid hsla(0, 0%, 0%, 0.3);
@@ -215,6 +212,7 @@
       display: inline-flex;
       align-items: center;
       justify-content: space-around;
+      color: var(--color-black);
 
       & .Dropdown__arrow-button {
         margin-right: 1px;

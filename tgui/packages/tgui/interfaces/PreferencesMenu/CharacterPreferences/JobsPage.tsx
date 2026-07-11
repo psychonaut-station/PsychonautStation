@@ -277,7 +277,7 @@ function JobRow(props: JobRowProps) {
               onSelected={(value) => {
                 act('set_job_title', { job: name, new_title: value });
               }}
-              color=""
+              color="transparent"
               className="PreferencesMenu__Jobs__AltTitleDropdown"
             />
           </Stack.Item>

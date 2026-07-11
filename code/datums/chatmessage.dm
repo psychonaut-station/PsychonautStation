@@ -335,7 +335,7 @@
 	if(HAS_TRAIT(speaker, TRAIT_RUNECHAT_HIDDEN))
 		return
 	// Ensure the list we are using, if present, is a copy so we don't modify the list provided to us
-	var/list/classes = (runechat_flags & EMOTE_MESSAGE) ? list("emote", "italics") : LAZYCOPY(spans)
+	var/list/classes = (runechat_flags & EMOTE_MESSAGE) ? list("emote", "italics") : (runechat_flags & LOOC_MESSAGE) ? list("looc", "italics") : LAZYCOPY(spans)
 
 	// Check for virtual speakers (aka hearing a message through a radio)
 	var/atom/movable/original_speaker = speaker
@@ -349,14 +349,6 @@
 		return
 
 	// Display visual above source
-<<<<<<< HEAD
-	if(runechat_flags & EMOTE_MESSAGE)
-		new /datum/chatmessage(raw_message, speaker, src, message_language, list("emote", "italics"))
-	else if(runechat_flags & LOOC_MESSAGE)
-		new /datum/chatmessage(raw_message, speaker, src, message_language, list("looc", "italics"))
-	else
-		new /datum/chatmessage(raw_message, speaker, src, message_language, spans)
-=======
 	new /datum/chatmessage(
 		text = raw_message,
 		target = speaker,
@@ -365,7 +357,6 @@
 		extra_classes = classes,
 		message_mods = message_mods,
 	)
->>>>>>> 50f9132078940f7b8bd24d952b430dc05ff01c82
 
 #undef CHAT_LAYER_MAX_Z
 #undef CHAT_LAYER_Z_STEP

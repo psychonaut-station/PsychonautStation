@@ -75,23 +75,16 @@ GLOBAL_VAR_INIT(web_sound_cooldown, 0)
 	var/list/music_extra_data = list()
 	var/duration = 0
 	if(istext(input))
-		var/cookies = CONFIG_GET(string/ytdl_cookies)
-		var/shell_scrubbed_input = shell_url_scrub(input)
-		var/list/output = world.shelleo("[ytdl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist [cookies ? "--cookies [cookies]" : ""] -- \"[shell_scrubbed_input]\"")
-		var/errorlevel = output[SHELLEO_ERRORLEVEL]
-		var/stdout = output[SHELLEO_STDOUT]
-		var/stderr = output[SHELLEO_STDERR]
-		if(errorlevel)
-			to_chat(user, span_boldwarning("yt-dlp URL retrieval FAILED:"), confidential = TRUE)
-			to_chat(user, span_warning("[stderr]"), confidential = TRUE)
+		var/list/ytdlp_result = ytdlp_resolve(input)
+		if(ytdlp_result["error"])
+			if(ytdlp_result["error"] == WEB_SOUND_ERR_JSON_PARSING)
+				to_chat(user, span_boldwarning("yt-dlp JSON parsing FAILED:"), confidential = TRUE)
+			else
+				to_chat(user, span_boldwarning("yt-dlp URL retrieval FAILED:"), confidential = TRUE)
+			if(ytdlp_result["detail"])
+				to_chat(user, span_warning("[ytdlp_result["detail"]]"), confidential = TRUE)
 			return
-		var/list/data
-		try
-			data = json_decode(stdout)
-		catch(var/exception/e)
-			to_chat(user, span_boldwarning("yt-dlp JSON parsing FAILED:"), confidential = TRUE)
-			to_chat(user, span_warning("[e]: [stdout]"), confidential = TRUE)
-			return
+		var/list/data = ytdlp_result["data"]
 		if (data["url"])
 			web_sound_url = data["url"]
 		var/title = "[data["title"]]"

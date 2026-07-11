@@ -63,13 +63,16 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 	..()
 
 //For alien evolution/promotion/queen finder procs. Checks for an active alien of that type
-/proc/get_alien_type(alien_path, mob/ignored)
+/proc/get_alien_type(alien_path, mob/ignored, hive_id = null)
 	for(var/mob/living/carbon/alien/alien in GLOB.carbon_list)
 		if(alien == ignored)
 			continue
 		if(!istype(alien, alien_path))
 			continue
 		if(!alien.key || alien.stat == DEAD) //Only living aliens with a ckey are valid.
+			continue
+		var/obj/item/organ/alien/hivenode/node = alien.get_organ_by_type(/obj/item/organ/alien/hivenode)
+		if(isnull(node) || isnull(hive_id) || node.hive_id == hive_id)
 			continue
 		return alien
 	return null

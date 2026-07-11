@@ -20,6 +20,9 @@
 	var/leaping = FALSE
 	///The speed this alien should move at.
 	var/alien_speed = 0
+
+	var/alien_health_multiplier = 1
+
 	unique_name = TRUE
 
 	var/static/regex/alien_name_regex = new("alien (larva|sentinel|drone|hunter|praetorian|princess|queen)( \\(\\d+\\))?")
@@ -164,6 +167,8 @@ Des: Removes all infected images from the alien.
 				new_organ.Remove(new_xeno, special = TRUE)
 				qdel(new_organ)
 
+	new_xeno.multiply_alien_health(alien_health_multiplier)
+
 	var/obj/item/organ/stomach/alien/melting_pot = get_organ_slot(ORGAN_SLOT_STOMACH)
 	var/obj/item/organ/stomach/alien/frying_pan = new_xeno.get_organ_slot(ORGAN_SLOT_STOMACH)
 	if(istype(melting_pot) && istype(frying_pan))
@@ -203,3 +208,9 @@ Des: Removes all infected images from the alien.
 
 /mob/living/carbon/alien/get_fire_overlay(stacks, on_fire)
 	return make_generic_fire_overlay()
+
+// Some aliens can be more strong or more weak, etc: XenoVsMarine minigame
+/mob/living/carbon/alien/proc/multiply_alien_health(alien_health_multiplier)
+	maxHealth *= alien_health_multiplier
+	health *= alien_health_multiplier
+	src.alien_health_multiplier = alien_health_multiplier

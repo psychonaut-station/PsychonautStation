@@ -198,3 +198,20 @@
 
 /datum/id_trim/away/director
 	assignment = "Director"
+
+// Minigames
+/datum/id_trim/away/teammatch/marine
+	assignment = "Marine"
+
+/datum/id_trim/away/teammatch/marine/fc
+	assignment = "Field Commander"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_COMMAND, ACCESS_AWAY_ENGINEERING, ACCESS_AWAY_MEDICAL)
+
+/datum/id_trim/away/teammatch/marine/medic
+	assignment = "Marine Medic"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MEDICAL)
+
+/datum/id_trim/away/teammatch/marine/engineer
+	assignment = "Marine Engineer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINEERING)
+

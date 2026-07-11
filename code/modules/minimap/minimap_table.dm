@@ -17,6 +17,11 @@
 	var/hologram_icon_file = 'icons/obj/machines/minimap_table_hologram.dmi'
 	/// Z-trait used to resolve the minimap level this table displays.
 	var/target_z_trait = ZTRAIT_STATION
+	/// Optional z-level used to respşve the minimap level
+	var/target_z_level
+	/// Optional fixed map id
+	var/fixed_id
+	var/team_id
 	/// Cached minimap datum currently displayed by this table.
 	var/datum/minimap/minimap
 	/// Users currently viewing the table-projected minimap HUD.
@@ -47,6 +52,8 @@
 		HUD_TAC_MINIMAP_Z_INDICATOR_UP = /atom/movable/screen/minimap_z_up,
 		HUD_TAC_MINIMAP_Z_INDICATOR_DOWN = /atom/movable/screen/minimap_z_down,
 	)
+	/// Optional annotation sharing tag for minimap drawings/labels.
+	var/annotation_share_tag = MINIMAP_ANNOTATION_TAG_NUCLEAR
 
 /obj/machinery/minimap_table/Initialize(mapload)
 	. = ..()
@@ -163,7 +170,7 @@
 	var/allow_draw = can_user_draw(hud?.mymob)
 	for(var/element in table_huds)
 		var/hud_element_type = table_huds[element]
-		var/instanced = new hud_element_type(null, hud, minimap, null, target_z, MINIMAP_ANNOTATION_TAG_NUCLEAR, allow_draw)
+		var/instanced = new hud_element_type(null, hud, minimap, null, target_z, annotation_share_tag, allow_draw, fixed_id, team_id)
 		hud.add_screen_object(instanced, element, HUD_GROUP_STATIC, update_screen = TRUE)
 
 /obj/machinery/minimap_table/proc/can_user_draw(mob/user)
@@ -174,6 +181,8 @@
 		hud.remove_screen_object(element)
 
 /obj/machinery/minimap_table/proc/resolve_target_z()
+	if(!isnull(target_z_level))
+		return target_z_level
 	if(isnull(target_z_trait))
 		return null
 	var/list/trait_levels = SSmapping.levels_by_trait(target_z_trait)
@@ -187,7 +196,7 @@
 
 /obj/machinery/minimap_table/proc/set_minimap()
 	var/target_z = resolve_target_z()
-	minimap = get_minimap_for_z(target_z)
+	minimap = get_minimap_for_z(target_z, fixed_id)
 
 /obj/machinery/minimap_table/on_set_is_operational()
 	update_appearance()
@@ -223,3 +232,16 @@
 		return
 	if(mob_gone in viewers)
 		hide_minimap(gone)
+
+/obj/machinery/minimap_table/small
+	icon = 'icons/psychonaut/obj/machines/minimap_table.dmi'
+	animation_x = -31
+	bound_width = 32
+	SET_BASE_PIXEL(0, 0)
+
+/obj/machinery/minimap_table/small/marines
+	annotation_share_tag = null
+	table_huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/marine
+	)

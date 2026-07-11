@@ -1129,6 +1129,13 @@
 	name = "Film Studio ID"
 	desc = "An ID card that allows access to the variety of airlocks present in the film studio"
 
+/obj/item/card/id/away/dogtag
+	name = "Military Dog tag"
+	desc = "A dog tag."
+	icon = 'icons/psychonaut/obj/card.dmi'
+	icon_state = "dogtag"
+	trim = /datum/id_trim/away/teammatch/marine
+
 /obj/item/card/id/departmental_budget
 	name = "departmental card (ERROR)"
 	desc = "Provides access to the departmental budget."

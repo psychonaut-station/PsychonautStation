@@ -396,6 +396,11 @@ GLOBAL_LIST_INIT(all_precise_body_zones, list(BODY_ZONE_PRECISE_EYES, BODY_ZONE_
 #define DEATHMATCH_PRE_PLAYING 1
 #define DEATHMATCH_PLAYING 2
 
+///Teammatch lobby current status
+#define TEAMMATCH_NOT_PLAYING 0
+#define TEAMMATCH_PRE_PLAYING 1
+#define TEAMMATCH_PLAYING 2
+
 /// The amount of energy needed to increase the burn force by 1 damage during electrocution.
 #define JOULES_PER_DAMAGE (25 KILO JOULES)
 /// Calculates the amount of burn force when applying this much energy to a mob via electrocution from an energy source.

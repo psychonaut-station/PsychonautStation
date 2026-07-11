@@ -54,6 +54,7 @@
 	icon_state = "sand"
 	base_icon_state = "sand"
 	baseturfs = /turf/open/misc/beach/sand
+	tacmap_color = TACMAP_SAND
 
 /turf/open/misc/beach/sand/Initialize(mapload)
 	. = ..()

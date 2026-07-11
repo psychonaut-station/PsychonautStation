@@ -28,8 +28,16 @@
 ##path/fourcorners {\
 	icon_state = "tile_fourcorners";\
 }\
+##path/fourcorners/includeoutlines {\
+	icon = 'icons/psychonaut/turf/decals.dmi';\
+	icon_state = "tile_fourcorners_u";\
+}\
 ##path/full {\
 	icon_state = "tile_full";\
+}\
+##path/full/include_outlines {\
+	icon = 'icons/psychonaut/turf/decals.dmi';\
+	icon_state = "tile_full_u";\
 }\
 ##path/diagonal_centre {\
 	icon_state = "diagonal_centre";\

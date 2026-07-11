@@ -25,6 +25,8 @@
 	var/openSound = 'sound/effects/stonedoor_openclose.ogg'
 	var/closeSound = 'sound/effects/stonedoor_openclose.ogg'
 
+	var/closetimer
+
 	var/sheetType = /obj/item/stack/sheet/iron //what we're made of
 	var/sheetAmount = 10 //how much it takes to construct us.
 
@@ -99,6 +101,8 @@
 		Close()
 	else
 		Open()
+		deltimer(closetimer)
+		closetimer = null
 
 /obj/structure/mineral_door/proc/Open()
 	isSwitchingStates = TRUE
@@ -114,13 +118,15 @@
 	isSwitchingStates = FALSE
 
 	if(close_delay != -1)
-		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+		closetimer = addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /obj/structure/mineral_door/proc/Close()
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in T)
+		if(close_delay != -1)
+			closetimer = addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 		return
 	isSwitchingStates = TRUE
 	playsound(src, closeSound, 100, TRUE)
@@ -336,3 +342,99 @@
 	if(smoothing_flags & USES_SMOOTHING)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
+
+/obj/structure/mineral_door/resin
+	name = "resin door"
+	icon_state = "resin"
+	close_delay = 10 SECONDS
+
+/obj/structure/mineral_door/resin/Initialize(mapload)
+	. = ..()
+	if(!locate(/obj/structure/alien/weeds/node) in loc)
+		new /obj/structure/alien/weeds/node(loc)
+
+/obj/structure/mineral_door/resin/Cross(atom/movable/mover, turf/target)
+	. = ..()
+	if(!. && isalien(mover) && !door_opened)
+		SwitchState()
+		return TRUE
+
+/obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/alien/larva/M)
+	var/turf/cur_loc = M.loc
+	if(!istype(cur_loc))
+		return FALSE
+	TryToSwitchState(M)
+	return TRUE
+
+//clicking on resin doors attacks them, or opens them without harm intent
+/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/alien/xeno_attacker, list/modifiers)
+	var/turf/cur_loc = xeno_attacker.loc
+	if(!istype(cur_loc))
+		return FALSE //Some basic logic here
+	if(!xeno_attacker.combat_mode)
+		TryToSwitchState(xeno_attacker)
+		return TRUE
+
+	src.balloon_alert(xeno_attacker, "destroying...")
+	playsound(src, 'sound/effects/blob/attackblob.ogg', 25)
+	if(do_after(xeno_attacker, 1 SECONDS, src))
+		src.balloon_alert(xeno_attacker, "destroyed")
+		qdel(src)
+
+/obj/structure/mineral_door/resin/take_damage(damage_amount, damage_type, armor_type, effects, attack_dir, armour_penetration, mob/living/blame_mob)
+	if(damage_type != BRUTE && damage_type != BURN)
+		return
+	return ..()
+
+/obj/structure/mineral_door/resin/fire_act(burn_level)
+	take_damage(burn_level * 2, BURN, FIRE)
+
+/obj/structure/mineral_door/resin/ex_act(severity)
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			qdel()
+		if(EXPLODE_HEAVY)
+			qdel()
+		if(EXPLODE_LIGHT)
+			take_damage((rand(40, 60)), BRUTE, BOMB)
+
+/obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
+	if(isalien(user))
+		return ..()
+
+/obj/structure/mineral_door/resin/Destroy()
+	var/turf/T
+	for(var/i in GLOB.cardinals)
+		T = get_step(loc, i)
+		if(!istype(T))
+			continue
+		for(var/obj/structure/mineral_door/resin/R in T)
+			addtimer(CALLBACK(R, PROC_REF(check_resin_support)), 1)
+	return ..()
+
+
+//do we still have something next to us to support us?
+/obj/structure/mineral_door/resin/proc/check_resin_support()
+	var/turf/T
+	for(var/i in GLOB.cardinals)
+		T = get_step(src, i)
+		if(T.density)
+			. = TRUE
+			break
+		if(locate(/obj/structure/mineral_door/resin) in T)
+			. = TRUE
+			break
+	if(!.)
+		src.balloon_alert_to_viewers("collapsed")
+		qdel(src)
+
+/obj/structure/mineral_door/resin/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(loc, 'sound/effects/blob/attackblob.ogg', 100, TRUE)
+			else
+				playsound(src, 'sound/items/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			if(damage_amount)
+				playsound(loc, 'sound/items/tools/welder.ogg', 100, TRUE)

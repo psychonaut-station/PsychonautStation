@@ -213,3 +213,17 @@
 	projectile_type = /obj/projectile/bullet/paperball
 	newtonian_force = 0.5
 	custom_materials = list(/datum/material/paper = HALF_SHEET_MATERIAL_AMOUNT / 2)
+
+/obj/item/ammo_casing/a25mm
+	name = "25mm HE shell"
+	desc = "A cased flare that can only be activated once fired out of a ballistic flare launcher."
+	caliber = CALIBER_25MM
+	icon = 'icons/psychonaut/obj/weapons/guns/ammo.dmi'
+	icon_state = "flare"
+	w_class = WEIGHT_CLASS_SMALL
+	projectile_type = /obj/projectile/bullet/a25mm
+	newtonian_force = 1.25
+
+/obj/item/ammo_casing/a25mm/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/caseless)

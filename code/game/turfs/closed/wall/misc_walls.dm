@@ -137,3 +137,22 @@
 	turf_flags = NO_RUST
 	explosive_resistance = 50
 	baseturfs = /turf/open/misc/asteroid/basalt/airless
+
+// Tgmc jungle wall
+/turf/closed/wall/jungle_wall
+	name = "thick jungle wall"
+	icon = 'icons/psychonaut/turf/walls/jungle.dmi'
+	icon_state = "junglewall-0"
+	desc = "Some thick jungle."
+	resistance_flags = UNACIDABLE
+	smoothing_flags = SMOOTH_BITMASK
+	smoothing_groups = SMOOTH_GROUP_FLORA_WALLS
+	canSmoothWith = SMOOTH_GROUP_FLORA_WALLS
+	base_icon_state = "junglewall"
+	baseturfs = /turf/open/floor/grass
+	tacmap_color = TACMAP_FOREST
+
+/turf/closed/wall/jungle_wall/dense
+	name = "dense jungle wall"
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF
+	icon_state = "wall-dense"

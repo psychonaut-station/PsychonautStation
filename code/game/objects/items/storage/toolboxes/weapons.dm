@@ -354,6 +354,13 @@
 /obj/item/storage/toolbox/emergency/turret/nukie/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
 	turret.set_faction(list(ROLE_SYNDICATE))
 
+/obj/item/storage/toolbox/emergency/turret/marine
+	icon = 'icons/obj/storage/case.dmi'
+	icon_state = "scibox"
+
+/obj/item/storage/toolbox/emergency/turret/marine/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
+	turret.set_faction(list(FACTION_MARINE))
+
 /obj/item/storage/toolbox/guncase/anomaly_catcher
 	name = "anti singularity case"
 	desc = "A weapon's case. Has a singularity amblem on the cover."

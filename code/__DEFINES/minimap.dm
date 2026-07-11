@@ -24,6 +24,9 @@
 #define TACMAP_MARS_DIRT "#aa5f44d0"
 #define TACMAP_ICE "#93cae0d0"
 #define TACMAP_WATER "#94b0d59c" //lower opacity as its really bright
+#define TACMAP_GRASS "#6aca7f9c"
+#define TACMAP_FOREST "#428f539c"
+#define TACMAP_SAND "#c5b88fd0"
 
 //Area colours
 //Departments
@@ -60,3 +63,4 @@
 #define MINIMAP_LADDER_BLIP "ladder"
 #define MINIMAP_STAIR_BLIP "stair"
 #define MINIMAP_ANNOTATION_TAG_NUCLEAR "nuclear_ops"
+#define MINIMAP_ANNOTATION_TAG_MARINE "marine"

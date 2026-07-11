@@ -10,11 +10,14 @@
 	var/atom/track_target
 	/// Weak reference to connect_containers so container movement updates this blip.
 	var/datum/weakref/connect_ref
+	/// Optional map id
+	var/fixed_map_id
 
-/atom/movable/screen/minimap_element/blip/Initialize(mapload, datum/hud/hud_owner, atom/track_target, icon_state, icon, large = FALSE, blip_tag)
+/atom/movable/screen/minimap_element/blip/Initialize(mapload, datum/hud/hud_owner, atom/track_target, icon_state, icon, large = FALSE, blip_tag, map_id)
 	. = ..()
 	src.icon_state = icon_state
 	src.large = large
+	src.fixed_map_id = map_id
 	if(icon)
 		src.icon = icon
 	if(track_target)
@@ -61,7 +64,7 @@
 
 /atom/movable/screen/minimap_element/blip/proc/update_minimap()
 	var/turf/target_turf = get_turf(track_target)
-	minimap = get_minimap_for_z(target_turf.z)
+	minimap = get_minimap_for_z(target_turf.z, fixed_map_id)
 	update_blip()
 
 /atom/movable/screen/minimap_element/blip/proc/on_target_z_changed(atom/movable/source, turf/old_turf, turf/new_turf, same_z_layer)

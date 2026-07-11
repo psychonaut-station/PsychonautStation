@@ -27,3 +27,9 @@
 
 /obj/item/ammo_box/magazine/internal/rocketlauncher/anomaly_catcher/empty
 	start_empty = TRUE
+
+/obj/item/ammo_box/magazine/internal/flarelauncher
+	name = "flare launcher internal magazine"
+	ammo_type = /obj/item/ammo_casing/a25mm
+	caliber = CALIBER_25MM
+	max_ammo = 8

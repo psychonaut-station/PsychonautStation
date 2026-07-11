@@ -87,7 +87,8 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/royal/queen/set_name()
-	if(get_alien_type(/mob/living/carbon/alien/adult/royal/queen, ignored = src))
+	var/obj/item/organ/alien/hivenode/node = get_organ_by_type(/obj/item/organ/alien/hivenode)
+	if(get_alien_type(/mob/living/carbon/alien/adult/royal/queen, ignored = src, hive_id = node?.hive_id))
 		name = "alien princess"
 	return ..()
 
@@ -126,7 +127,9 @@
 	if(carbon_owner.getPlasma() < promotion_plasma_cost)
 		return FALSE
 
-	if(get_alien_type(/mob/living/carbon/alien/adult/royal/praetorian))
+	var/obj/item/organ/alien/hivenode/node = carbon_owner.get_organ_by_type(/obj/item/organ/alien/hivenode)
+
+	if(get_alien_type(/mob/living/carbon/alien/adult/royal/praetorian, hive_id = node?.hive_id))
 		return FALSE
 
 	return TRUE

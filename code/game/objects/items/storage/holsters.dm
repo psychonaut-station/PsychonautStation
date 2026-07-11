@@ -106,3 +106,45 @@
 		/obj/item/ammo_box/speedloader/c357 = 2,
 		/obj/item/gun/ballistic/revolver/cowboy/nuclear = 1,
 	), src)
+
+/obj/item/storage/belt/holster/flarepouch
+	name = "flare pouch"
+	desc = "A pouch designed to hold flares and a single flaregun. Refillable with a M94 flare pack."
+	icon = 'icons/psychonaut/obj/clothing/belts.dmi'
+	icon_state = "flare"
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
+	storage_type = /datum/storage/holster/flarepouch
+
+/obj/item/storage/belt/holster/flarepouch/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_casing/a25mm = 14,
+		/obj/item/gun/ballistic/flarelauncher = 1,
+	), src)
+
+/obj/item/storage/belt/holster/flarepouch/update_icon_state()
+	. = ..()
+	var/obj/item/gun/ballistic/flarelauncher/launcher = locate() in contents
+	icon_state = "[initial(icon_state)][launcher ? "_full" : null]"
+
+/obj/item/storage/belt/holster/flarepouch/base_item_interaction(mob/user, obj/item/weapon, list/modifiers)
+	if(!istype(weapon, /obj/item/gun/ballistic/flarelauncher))
+		return ..()
+
+	var/obj/item/gun/ballistic/flarelauncher/flare_gun = weapon
+
+	if(flare_gun.chambered)
+		return ITEM_INTERACT_BLOCKING
+
+	var/to_load = flare_gun.magazine.max_ammo - LAZYLEN(flare_gun.magazine.stored_ammo)
+
+	for(var/i in 1 to to_load)
+
+		var/obj/item/ammo_casing/a25mm/flare = locate() in contents
+		if(!flare)
+			break
+
+		atom_storage.remove_single(user, flare, get_turf(user))
+		user.put_in_hands(flare)
+		flare_gun.load_gun(flare, user)
+
+	return ITEM_INTERACT_BLOCKING

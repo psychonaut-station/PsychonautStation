@@ -31,6 +31,16 @@ export const MinigamesMenu = (props) => {
                 onClick={() => act('mafia')}
               />
             </Stack.Item>
+            <Stack.Item grow>
+              <Button
+                content="Teammatch"
+                fluid
+                fontSize={3}
+                textAlign="center"
+                lineHeight="3"
+                onClick={() => act('teammatch')}
+              />
+            </Stack.Item>
           </Stack>
           <Divider />
           <Stack>

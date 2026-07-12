@@ -1508,10 +1508,6 @@
 	},
 /turf/open/floor/engine,
 /area/teammatch/xm/atmos)
-"ni" = (
-/turf/closed/wall/mineral/iron,
-/turf/open/misc/beach/sand,
-/area/teammatch/xm/sand4)
 "nj" = (
 /obj/item/pickaxe,
 /turf/open/misc/beach/sand,
@@ -4335,10 +4331,6 @@
 "Oe" = (
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/northwest)
-"Of" = (
-/turf/closed/wall/mineral/iron,
-/turf/open/floor/iron/white,
-/area/teammatch/xm/sand4)
 "Og" = (
 /obj/structure/rack,
 /obj/item/storage/belt/holster/flarepouch,
@@ -23928,13 +23920,13 @@ al
 FR
 fG
 fG
-ni
 Yh
-Of
 Yh
-Of
-ni
-ni
+Yh
+Yh
+Yh
+Yh
+Yh
 fG
 Fy
 fG
@@ -24110,13 +24102,13 @@ al
 al
 Fy
 fG
-ni
+Yh
 UV
 Hh
 bl
 bl
 UV
-ni
+Yh
 fG
 fG
 fG
@@ -24292,13 +24284,13 @@ aY
 fG
 fG
 fG
-Of
+Yh
 VT
 bl
 bl
 bl
 bl
-Of
+Yh
 fG
 fG
 fG
@@ -24656,13 +24648,13 @@ fG
 fG
 fG
 fG
-Of
+Yh
 bl
 bl
 bl
 bl
 bl
-Of
+Yh
 fG
 vd
 fG
@@ -24838,13 +24830,13 @@ Fy
 fG
 fG
 fG
-ni
+Yh
 UV
 bl
 bl
 bl
 UV
-ni
+Yh
 fG
 Fy
 fG
@@ -25020,13 +25012,13 @@ fG
 fG
 fG
 Fy
-ni
-ni
-Of
-Of
-Of
-ni
-ni
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
+Yh
 fG
 fG
 fG

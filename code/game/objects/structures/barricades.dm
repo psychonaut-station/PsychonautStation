@@ -9,6 +9,7 @@
 	layer = BELOW_OBJ_LAYER
 	flags_1 = ON_BORDER_1
 	obj_flags = CAN_BE_HIT | IGNORE_DENSITY | BLOCKS_CONSTRUCTION_DIR
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 11)
 
 	pass_flags_self = LETPASSTHROW
 	max_integrity = 200

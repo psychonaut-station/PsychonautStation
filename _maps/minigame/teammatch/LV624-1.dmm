@@ -135,6 +135,10 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/plating,
 /area/teammatch/xm/bridge)
+"bD" = (
+/obj/structure/spacevine,
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/bridge)
 "bG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -956,10 +960,8 @@
 	},
 /area/teammatch/xm/river1)
 "hY" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
+/obj/machinery/door/window/left/directional/west,
 /turf/open/floor/iron/grimy,
 /area/teammatch/xm/bar)
 "hZ" = (
@@ -1289,7 +1291,6 @@
 /obj/item/ammo_casing/a25mm,
 /obj/item/ammo_casing/a25mm,
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "ld" = (
@@ -1609,9 +1610,6 @@
 /obj/item/ammo_casing,
 /turf/open/floor/plating,
 /area/teammatch/xm/tablefort)
-"oc" = (
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/bridge)
 "of" = (
 /obj/structure/spacevine,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -2013,6 +2011,7 @@
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/shaker,
 /obj/item/storage/box/cups,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/grimy,
 /area/teammatch/xm/bar)
 "rL" = (
@@ -2833,6 +2832,9 @@
 /obj/effect/mapping_helpers/airlock/access/all/away/command,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/minigame/canterbury)
+"zD" = (
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/sand7)
 "zE" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
@@ -3782,10 +3784,6 @@
 /obj/structure/flora/tree/jungle/small,
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/southwest)
-"HW" = (
-/obj/structure/spacevine,
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/bridge)
 "Ie" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
@@ -4062,6 +4060,9 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
+"Lq" = (
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/bridge)
 "Lr" = (
 /obj/effect/landmark/xeno_tunnel_spawn,
 /turf/open/floor/engine/cult{
@@ -5449,8 +5450,8 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "Yh" = (
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/sand7)
+/turf/closed/wall/mineral/iron,
+/area/teammatch/xm/sand4)
 "Yl" = (
 /turf/open/misc/beach/coast/corner,
 /area/teammatch/xm/sand1)
@@ -8309,7 +8310,7 @@ Yq
 ky
 kF
 kW
-Yh
+zD
 qF
 FT
 FT
@@ -8673,7 +8674,7 @@ ky
 ky
 kF
 LO
-Yh
+zD
 pg
 kK
 pg
@@ -8855,7 +8856,7 @@ ky
 kF
 kF
 LP
-Yh
+zD
 pg
 Rw
 qF
@@ -12857,7 +12858,7 @@ kF
 mr
 kF
 pY
-oc
+Lq
 qF
 qF
 FT
@@ -13040,13 +13041,13 @@ kF
 kF
 PT
 hC
-oc
+Lq
 hC
 hC
 jI
 xq
 hC
-oc
+Lq
 hC
 Sv
 ee
@@ -13222,14 +13223,14 @@ kF
 kF
 CU
 Sv
-oc
-oc
-oc
+Lq
+Lq
+Lq
 bf
 jV
-HW
-oc
-oc
+bD
+Lq
+Lq
 jV
 oS
 iH
@@ -13768,14 +13769,14 @@ kF
 kF
 nJ
 xq
-HW
-oc
-oc
+bD
+Lq
+Lq
 ib
 xq
-oc
-oc
-oc
+Lq
+Lq
+Lq
 xq
 kh
 iH
@@ -13957,7 +13958,7 @@ hC
 hC
 hC
 hC
-oc
+Lq
 xq
 vq
 LU
@@ -14131,7 +14132,7 @@ kF
 mr
 kF
 pY
-oc
+Lq
 qF
 qF
 FT
@@ -23928,9 +23929,9 @@ FR
 fG
 fG
 ni
-ni
+Yh
 Of
-Of
+Yh
 Of
 ni
 ni

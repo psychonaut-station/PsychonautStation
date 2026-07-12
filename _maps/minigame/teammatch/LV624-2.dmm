@@ -132,9 +132,11 @@
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/kitchen)
 "aE" = (
-/obj/machinery/power/floodlight,
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/sand8)
+/obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/plating,
+/area/teammatch/xm/caves/central1)
 "aH" = (
 /turf/open/floor/plating,
 /area/teammatch/xm/research)
@@ -302,6 +304,7 @@
 	},
 /obj/structure/alien/weeds/node,
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/left/directional/east,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "bw" = (
@@ -405,6 +408,8 @@
 /obj/structure/toilet{
 	dir = 4
 	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/left/directional/east,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "bU" = (
@@ -785,6 +790,13 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
+"dA" = (
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/window/left/directional/east,
+/turf/open/floor/plating,
+/area/teammatch/xm/filtration)
 "dB" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/mapping_helpers/damaged_window,
@@ -1722,6 +1734,10 @@
 	},
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sandtemple)
+"hC" = (
+/obj/structure/disposalpipe/segment,
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/bridge/west)
 "hD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -2028,10 +2044,8 @@
 /turf/open/floor/catwalk_floor,
 /area/teammatch/xm/sand8)
 "iW" = (
-/obj/machinery/shower{
-	dir = 8
-	},
 /obj/structure/glowshroom,
+/obj/machinery/shower/directional/west,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "iY" = (
@@ -2241,10 +2255,6 @@
 /obj/structure/chair/wood,
 /turf/open/floor/wood,
 /area/teammatch/xm/jungle/northeast)
-"kb" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/bridge/west)
 "kc" = (
 /turf/open/floor/plating,
 /area/teammatch/xm/quartstorage/dome)
@@ -2449,10 +2459,6 @@
 	},
 /turf/open/floor/iron,
 /area/teammatch/xm/hydroponics)
-"la" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/jungle/central)
 "ld" = (
 /obj/structure/closet,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
@@ -3405,14 +3411,11 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "px" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
 /obj/structure/toilet{
 	dir = 8
 	},
 /obj/structure/window/reinforced/spawner/directional/south,
-/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/left/directional/west,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "pz" = (
@@ -4008,7 +4011,6 @@
 "sr" = (
 /obj/machinery/power/floodlight,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/sand8)
 "st" = (
 /turf/open/misc/beach/coast/corner,
@@ -4160,13 +4162,6 @@
 /obj/structure/spacevine,
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/central)
-"ta" = (
-/obj/machinery/shower{
-	dir = 8
-	},
-/obj/structure/alien/weeds/node,
-/turf/open/floor/iron/freezer,
-/area/teammatch/xm/toilet)
 "tb" = (
 /obj/machinery/power/floodlight{
 	dir = 1
@@ -4807,12 +4802,6 @@
 "vE" = (
 /turf/closed/mineral/random/jungle,
 /area/teammatch/xm/sandtemple)
-"vF" = (
-/obj/effect/turf_decal/bot,
-/obj/structure/window/reinforced/spawner/directional/east,
-/obj/structure/window/reinforced/spawner/directional/north,
-/turf/open/floor/plating,
-/area/teammatch/xm/caves/central1)
 "vI" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood,
@@ -5466,13 +5455,10 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/medbay)
 "yn" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
 /obj/structure/toilet{
-	dir = 8
+	dir = 4
 	},
-/obj/structure/window/reinforced/spawner/directional/south,
+/obj/machinery/door/window/left/directional/east,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "yp" = (
@@ -5704,11 +5690,6 @@
 "zr" = (
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/caves/central1)
-"zs" = (
-/obj/structure/disposalpipe/segment,
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/bridge/west)
 "zu" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 5
@@ -6046,7 +6027,6 @@
 /area/teammatch/xm/river2)
 "AV" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/grass,
 /area/teammatch/xm/jungle/central)
 "AW" = (
 /turf/closed/wall,
@@ -6320,10 +6300,8 @@
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/east)
 "Cy" = (
-/obj/machinery/shower{
-	dir = 8
-	},
 /obj/effect/decal/cleanable/blood/splatter,
+/obj/machinery/shower/directional/west,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "CA" = (
@@ -6700,7 +6678,6 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/engineering)
 "Eh" = (
-/obj/structure/grille,
 /obj/machinery/door/poddoor/indestructible,
 /obj/effect/mapping_helpers/damaged_window,
 /obj/effect/spawner/structure/window/reinforced,
@@ -7405,10 +7382,14 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/landing1)
 "Hl" = (
-/obj/machinery/door/window/right/directional/east,
+/obj/structure/toilet{
+	dir = 8
+	},
 /obj/structure/window/reinforced/spawner/directional/south,
-/turf/open/floor/plating,
-/area/teammatch/xm/filtration)
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/door/window/left/directional/west,
+/turf/open/floor/iron/freezer,
+/area/teammatch/xm/toilet)
 "Hn" = (
 /obj/machinery/door/airlock/medical/glass{
 	dir = 1;
@@ -7918,7 +7899,6 @@
 /area/teammatch/xm/hydroponics)
 "JT" = (
 /obj/structure/glowshroom,
-/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "JU" = (
@@ -8103,9 +8083,6 @@
 /obj/structure/spacevine,
 /turf/closed/mineral/random/jungle,
 /area/teammatch/xm/caves/rock)
-"KL" = (
-/turf/open/floor/catwalk_floor,
-/area/teammatch/xm/bridge/west)
 "KM" = (
 /obj/structure/table/wood,
 /obj/item/megaphone,
@@ -8973,9 +8950,7 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/main_hall)
 "OL" = (
-/obj/machinery/door/window{
-	dir = 8
-	},
+/obj/machinery/door/window/right/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -9163,7 +9138,6 @@
 "PC" = (
 /obj/structure/grille/broken,
 /obj/item/shard,
-/obj/structure/grille,
 /obj/machinery/door/poddoor/preopen,
 /turf/open/floor/plating,
 /area/teammatch/xm/main_hall)
@@ -10267,9 +10241,7 @@
 	},
 /area/teammatch/xm/sandtemple)
 "UK" = (
-/obj/machinery/shower{
-	dir = 4
-	},
+/obj/machinery/shower/directional/east,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "UM" = (
@@ -10326,10 +10298,8 @@
 /turf/open/floor/iron,
 /area/teammatch/xm/sand9)
 "Vb" = (
-/obj/machinery/shower{
-	dir = 4
-	},
 /obj/structure/glowshroom,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "Vc" = (
@@ -10354,11 +10324,9 @@
 /area/teammatch/xm/sandtemple)
 "Vk" = (
 /obj/structure/table,
-/obj/machinery/door/window{
-	dir = 8
-	},
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
+/obj/machinery/door/window/left/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -10939,12 +10907,8 @@
 /turf/closed/wall/r_wall,
 /area/teammatch/xm/caves/rock)
 "XJ" = (
-/obj/structure/toilet{
-	dir = 4
-	},
-/obj/structure/window/reinforced/spawner/directional/north,
-/turf/open/floor/iron/freezer,
-/area/teammatch/xm/toilet)
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/bridge/west)
 "XK" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -11009,10 +10973,8 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/jungle/east)
 "Yd" = (
-/obj/effect/turf_decal/stripes/line{
-	dir = 1
-	},
-/obj/machinery/door/window/left/directional/east,
+/obj/machinery/door/window/right/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "Yg" = (
@@ -11723,14 +11685,14 @@ Af
 GC
 GC
 BN
-kb
-kb
-KL
-kb
-kb
-KL
-kb
-KL
+hC
+hC
+XJ
+hC
+hC
+XJ
+hC
+XJ
 cj
 gr
 oW
@@ -12087,14 +12049,14 @@ ex
 JI
 JI
 yJ
-KL
-KL
-KL
+XJ
+XJ
+XJ
 yJ
 yJ
-KL
-KL
-KL
+XJ
+XJ
+XJ
 yJ
 wx
 yh
@@ -12269,14 +12231,14 @@ ex
 JI
 gm
 yJ
-KL
-KL
+XJ
+XJ
 cJ
 yJ
 yJ
-KL
+XJ
 cJ
-KL
+XJ
 yJ
 Gd
 SJ
@@ -12630,16 +12592,16 @@ Jb
 Yj
 Jb
 vP
-KL
-kb
-zs
-kb
-kb
-KL
-kb
-kb
+XJ
+hC
+hC
+hC
+hC
+XJ
+hC
+hC
 Lg
-kb
+hC
 yg
 Qb
 oW
@@ -12806,7 +12768,7 @@ Af
 nf
 TD
 TD
-aE
+sr
 Dz
 EE
 Yj
@@ -13898,7 +13860,7 @@ Af
 nf
 TD
 TD
-aE
+sr
 Jb
 Jb
 NP
@@ -15067,7 +15029,7 @@ cQ
 tD
 tD
 tD
-la
+AV
 tD
 tD
 tD
@@ -15249,7 +15211,7 @@ cQ
 tD
 mC
 VA
-la
+AV
 Xl
 tD
 tD
@@ -15610,13 +15572,13 @@ fh
 vz
 cQ
 AV
-la
-la
+AV
+AV
 mC
 ay
 mC
-la
-la
+AV
+AV
 AV
 vz
 rr
@@ -15977,7 +15939,7 @@ cQ
 tD
 tD
 Fk
-la
+AV
 eT
 om
 tD
@@ -16159,7 +16121,7 @@ cQ
 tD
 tD
 tD
-la
+AV
 tD
 tD
 tD
@@ -17967,7 +17929,7 @@ Qa
 SD
 SD
 SD
-XJ
+bR
 bv
 Qx
 VP
@@ -18147,9 +18109,9 @@ Qa
 Qa
 SD
 SD
+yn
 bR
-XJ
-JT
+Vb
 YI
 Qx
 Qx
@@ -18511,9 +18473,9 @@ tF
 rC
 Qx
 YI
+Hl
 px
-yn
-yn
+px
 YA
 oc
 Qx
@@ -18874,7 +18836,7 @@ hI
 eZ
 fd
 nb
-Vb
+JT
 UK
 UK
 Xp
@@ -19057,7 +19019,7 @@ eZ
 tK
 nb
 Cy
-ta
+yi
 iW
 Qv
 hl
@@ -20048,7 +20010,7 @@ ec
 ec
 ec
 Pa
-vF
+aE
 ne
 TC
 BO
@@ -20594,7 +20556,7 @@ ec
 ec
 ec
 Pa
-vF
+aE
 BO
 DF
 My
@@ -21543,8 +21505,8 @@ Af
 Af
 yF
 Hp
+dA
 Yd
-Hl
 np
 bE
 Hp

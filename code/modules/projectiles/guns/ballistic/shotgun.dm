@@ -117,7 +117,7 @@
 		overlay_y = 11)
 
 /obj/item/gun/ballistic/shotgun/automatic/combat/deadly
-	accepted_magazine_type = /obj/item/ammo_casing/shotgun
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/shot/tube
 
 
 //Dual Feed Shotgun

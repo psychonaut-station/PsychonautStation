@@ -4,7 +4,6 @@ import {
   Divider,
   Dropdown,
   Icon,
-  LabeledList,
   NoticeBox,
   Section,
   Stack,
@@ -54,7 +53,7 @@ type Team = {
   is_active: BooleanLike;
 }
 
-const enum PlayingStatus {
+enum PlayingStatus {
   NonPlaying,
   PrePlaying,
   Playing
@@ -212,7 +211,7 @@ function TeamColumn(props: TeamColumnProps) {
 
   return (
     <Section
-      title={`${team.name} (${players.length}${team.max_players != -1 ? `/${team.max_players}` : ''})`}
+      title={`${team.name} (${players.length}${team.max_players !== -1 ? `/${team.max_players}` : ''})`}
       fill
       scrollable={players.length > 20}
     >
@@ -318,7 +317,7 @@ function TeamColumn(props: TeamColumnProps) {
         </Table>
       )}
 
-      {((!isMyTeam) || isObserver) && playing != PlayingStatus.PrePlaying && (
+      {((!isMyTeam) || isObserver) && playing !== PlayingStatus.PrePlaying && (
         <>
           <Divider />
           <Button
@@ -423,7 +422,7 @@ function HostControls(props) {
   return (
     <Section title="Game Info">
       <MapInfo />
-      {playing == PlayingStatus.PrePlaying && (
+      {playing === PlayingStatus.PrePlaying && (
         <>
           <Divider />
           <NoticeBox align="center" color="blue">

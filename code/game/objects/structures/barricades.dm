@@ -38,11 +38,6 @@
 	AddElement(/datum/element/connect_loc, loc_connections)
 	update_appearance()
 
-/obj/structure/foldable_barricade/wrench_act(mob/living/user, obj/item/tool)
-	. = ..()
-	default_unfasten_wrench(user, tool)
-	return ITEM_INTERACT_SUCCESS
-
 /obj/structure/foldable_barricade/proc/on_exit(datum/source, atom/movable/leaving, direction)
 	SIGNAL_HANDLER
 	if(is_open)
@@ -141,27 +136,19 @@
 /obj/structure/foldable_barricade/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stack/cable_coil))
 		return wire(user, tool)
+	return ..()
 
-/obj/structure/foldable_barricade/proc/wire(atom/user, obj/item/stack/cable_coil/coil)
-	if(!can_wire)
-		balloon_alert(user, "cannot wire this barrier!")
-		return ITEM_INTERACT_BLOCKING
-	if(is_wired)
-		balloon_alert(user, "already wired!")
-		return ITEM_INTERACT_BLOCKING
-	if(!coil.use(1))
-		balloon_alert(user, "not enough cable!")
-		return ITEM_INTERACT_BLOCKING
-
-	balloon_alert_to_viewers("setting up wire...")
-	if(!do_after(user, 2 SECONDS, src))
-		return
-
-	is_wired = TRUE
-	playsound(loc, 'sound/_psychonaut/grate.ogg', 25)
-	RemoveElement(/datum/element/climbable)
-	modify_max_integrity(max_integrity + 50)
-	update_appearance()
+/obj/structure/window/welder_act(mob/living/user, obj/item/tool)
+	if(atom_integrity >= max_integrity)
+		to_chat(user, span_warning("[src] is already in good condition!"))
+		return ITEM_INTERACT_SUCCESS
+	if(!tool.tool_start_check(user, amount = 0))
+		return FALSE
+	to_chat(user, span_notice("You begin repairing [src]..."))
+	if(tool.use_tool(src, user, 4 SECONDS, volume = 50))
+		repair_damage(max_integrity)
+		to_chat(user, span_notice("You repair [src]."))
+	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/foldable_barricade/wirecutter_act(mob/living/user, obj/item/I)
 	if(!is_wired)
@@ -179,6 +166,32 @@
 	AddElement(/datum/element/climbable)
 	update_appearance()
 	new /obj/item/stack/cable_coil(loc)
+
+/obj/structure/foldable_barricade/wrench_act(mob/living/user, obj/item/tool)
+	. = ..()
+	default_unfasten_wrench(user, tool)
+	return ITEM_INTERACT_SUCCESS
+
+/obj/structure/foldable_barricade/proc/wire(atom/user, obj/item/stack/cable_coil/coil)
+	if(!can_wire)
+		balloon_alert(user, "cannot wire barrier!")
+		return ITEM_INTERACT_BLOCKING
+	if(is_wired)
+		balloon_alert(user, "already wired!")
+		return ITEM_INTERACT_BLOCKING
+	if(!coil.use(1))
+		balloon_alert(user, "not enough cable!")
+		return ITEM_INTERACT_BLOCKING
+
+	balloon_alert_to_viewers("setting up wire...")
+	if(!do_after(user, 2 SECONDS, src))
+		return
+
+	is_wired = TRUE
+	playsound(loc, 'sound/_psychonaut/grate.ogg', 25)
+	RemoveElement(/datum/element/climbable)
+	modify_max_integrity(max_integrity + 50)
+	update_appearance()
 
 /obj/structure/foldable_barricade/setDir(newdir)
 	. = ..()
@@ -238,7 +251,7 @@
 	if(stack_type)
 		var/stack_amt = destroyed_stack_amount
 		if(disassembled)
-			stack_amt = round(stack_amount * (get_integrity()/max_integrity)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
+			stack_amt = round(stack_amount * (atom_integrity/max_integrity)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
 		if(stack_amt)
 			new stack_type (loc, stack_amt)
 	return ..()

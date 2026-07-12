@@ -195,28 +195,6 @@
 
 	update_appearance()
 
-/obj/structure/foldable_barricade/verb/rotate()
-	set name = "Rotate Barricade Counter-Clockwise"
-	set category = "IC.Object"
-	set src in oview(1)
-
-	if(anchored)
-		balloon_alert(usr, "fastened to the floor")
-		return FALSE
-
-	setDir(turn(dir, 90))
-
-/obj/structure/foldable_barricade/verb/revrotate()
-	set name = "Rotate Barricade Clockwise"
-	set category = "IC.Object"
-	set src in oview(1)
-
-	if(anchored)
-		balloon_alert(usr, "fastened to the floor")
-		return FALSE
-
-	setDir(turn(dir, 270))
-
 /obj/structure/foldable_barricade/attack_hand_secondary(mob/user, list/modifiers)
 	. = ..()
 	if(anchored)

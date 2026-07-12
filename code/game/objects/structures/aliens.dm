@@ -476,10 +476,6 @@
 	icon_state = "egg_growing"
 	layer = LOW_ITEM_LAYER
 
-/obj/structure/alien/tunnel
-
-
-
 #undef FAKE
 #undef BURSTING
 #undef BURST

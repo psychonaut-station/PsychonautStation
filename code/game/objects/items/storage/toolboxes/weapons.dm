@@ -357,6 +357,7 @@
 /obj/item/storage/toolbox/emergency/turret/marine
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "scibox"
+	has_latches = FALSE
 
 /obj/item/storage/toolbox/emergency/turret/marine/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
 	turret.set_faction(list(FACTION_MARINE))

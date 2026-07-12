@@ -31,7 +31,6 @@
 	dir = 9
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/bridge/east)
 "aj" = (
 /obj/effect/decal/cleanable/blood/gibs,
@@ -133,12 +132,9 @@
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/kitchen)
 "aE" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/effect/turf_decal/bot,
-/turf/open/floor/plating,
-/area/teammatch/xm/caves/central1)
+/obj/machinery/power/floodlight,
+/turf/open/floor/catwalk_floor,
+/area/teammatch/xm/sand8)
 "aH" = (
 /turf/open/floor/plating,
 /area/teammatch/xm/research)
@@ -301,12 +297,11 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/research)
 "bv" = (
-/obj/structure/window/reinforced/tinted,
-/obj/machinery/door/window,
 /obj/structure/toilet{
 	dir = 4
 	},
 /obj/structure/alien/weeds/node,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "bw" = (
@@ -367,7 +362,6 @@
 	dir = 6
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "bG" = (
 /obj/machinery/power/floodlight{
@@ -395,12 +389,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "bQ" = (
@@ -412,8 +402,6 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/security)
 "bR" = (
-/obj/structure/window/reinforced/tinted,
-/obj/machinery/door/window,
 /obj/structure/toilet{
 	dir = 4
 	},
@@ -530,12 +518,8 @@
 	name = "Lurker Hide"
 	},
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -589,7 +573,6 @@
 "cJ" = (
 /obj/structure/alien/weeds/node,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/west)
 "cK" = (
 /obj/structure/table,
@@ -627,12 +610,10 @@
 /turf/open/floor/iron,
 /area/teammatch/xm/jungle/north)
 "cS" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/structure/frame/computer{
 	anchored = 1
 	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -664,7 +645,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/river2)
 "cX" = (
 /obj/structure/foamedmetal,
@@ -805,10 +785,6 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
-"dA" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/misc/beach/sand,
-/area/teammatch/xm/sand8)
 "dB" = (
 /obj/effect/spawner/structure/window/reinforced,
 /obj/effect/mapping_helpers/damaged_window,
@@ -1021,7 +997,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/grass,
 /area/teammatch/xm/jungle/north)
 "eu" = (
 /turf/open/water/beach,
@@ -1123,7 +1098,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/river2)
 "eV" = (
 /obj/structure/alien/weeds/node,
@@ -1230,7 +1204,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/sand9)
 "fs" = (
 /obj/structure/cable,
@@ -1250,12 +1223,8 @@
 "fx" = (
 /obj/structure/table,
 /obj/item/restraints/handcuffs,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -1609,10 +1578,8 @@
 	},
 /area/teammatch/xm/kitchen)
 "gV" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/sand5)
 "gW" = (
@@ -1748,7 +1715,6 @@
 "hz" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/east)
 "hA" = (
 /obj/structure/fake_stairs{
@@ -1756,11 +1722,6 @@
 	},
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sandtemple)
-"hC" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/bridge/west)
 "hD" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 9
@@ -2048,12 +2009,8 @@
 	name = "Warrior hide"
 	},
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -2069,7 +2026,6 @@
 "iU" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/sand8)
 "iW" = (
 /obj/machinery/shower{
@@ -2288,7 +2244,6 @@
 "kb" = (
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge/west)
 "kc" = (
 /turf/open/floor/plating,
@@ -2698,10 +2653,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/teammatch/xm/research)
-"lZ" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/river2)
 "mb" = (
 /obj/structure/chair/stool,
 /obj/structure/cable,
@@ -2809,12 +2760,10 @@
 "my" = (
 /obj/structure/bed,
 /obj/item/bedsheet/blue,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -3456,13 +3405,14 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "px" = (
-/obj/structure/window/reinforced/tinted,
 /obj/machinery/door/window{
 	dir = 8
 	},
 /obj/structure/toilet{
 	dir = 8
 	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "pz" = (
@@ -3602,11 +3552,6 @@
 "qj" = (
 /turf/open/floor/vault,
 /area/teammatch/xm/crashed_ship)
-"qn" = (
-/obj/structure/disposalpipe/segment,
-/turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
-/area/teammatch/xm/bridge/east)
 "qo" = (
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/south)
@@ -3673,7 +3618,6 @@
 	dir = 2
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "qF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
@@ -3851,12 +3795,10 @@
 /area/teammatch/xm/spaceport)
 "ry" = (
 /obj/structure/bed,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -3988,10 +3930,8 @@
 /area/teammatch/xm/spaceport)
 "rY" = (
 /obj/item/flashlight,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "rZ" = (
@@ -4052,10 +3992,6 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/teammatch/xm/cpt_quarters)
-"sn" = (
-/obj/structure/window/reinforced/tinted,
-/turf/open/floor/iron/freezer,
-/area/teammatch/xm/toilet)
 "so" = (
 /obj/effect/turf_decal/siding/yellow{
 	dir = 1
@@ -4261,11 +4197,9 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/sand8)
 "tf" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/item/shard,
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/caves/central1)
 "tg" = (
@@ -4559,7 +4493,6 @@
 	dir = 5
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/bridge/east)
 "um" = (
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
@@ -4671,9 +4604,7 @@
 /area/teammatch/xm/sand2)
 "uS" = (
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -4690,9 +4621,6 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/main_hall)
 "uV" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/table,
 /obj/effect/spawner/random/armory/laser_pistol{
 	spawn_loot_count = 1
@@ -4700,12 +4628,11 @@
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 4
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/security)
 "uW" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
 /area/teammatch/xm/caves/central1)
 "uX" = (
@@ -4836,7 +4763,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/sand9)
 "vx" = (
 /turf/closed/wall,
@@ -4864,7 +4790,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/west)
 "vC" = (
 /obj/effect/turf_decal/siding/yellow{
@@ -4883,31 +4808,15 @@
 /turf/closed/mineral/random/jungle,
 /area/teammatch/xm/sandtemple)
 "vF" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/caves/central1)
 "vI" = (
 /obj/structure/bookcase,
 /turf/open/floor/wood,
 /area/teammatch/xm/cpt_quarters)
-"vJ" = (
-/obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/turf/open/floor/iron/white{
-	color = "#fff5ad"
-	},
-/area/teammatch/xm/sandtemple)
 "vK" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /obj/structure/cable,
@@ -4926,7 +4835,6 @@
 /area/teammatch/xm/medbay)
 "vO" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge)
 "vP" = (
 /turf/closed/wall,
@@ -5094,12 +5002,8 @@
 	name = "hunter hide"
 	},
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -5187,10 +5091,8 @@
 /area/teammatch/xm/sand6)
 "wR" = (
 /obj/structure/closet,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "wS" = (
@@ -5328,7 +5230,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge)
 "xy" = (
 /obj/effect/spawner/structure/flipped_table{
@@ -5357,9 +5258,7 @@
 /area/teammatch/xm/quartstorage/dome)
 "xB" = (
 /obj/machinery/recharge_station,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -5524,7 +5423,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/bridge/west)
 "yh" = (
 /obj/effect/turf_decal/siding/yellow{
@@ -5568,9 +5466,15 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/medbay)
 "yn" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/bridge/east)
+/obj/machinery/door/window{
+	dir = 8
+	},
+/obj/structure/toilet{
+	dir = 8
+	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/turf/open/floor/iron/freezer,
+/area/teammatch/xm/toilet)
 "yp" = (
 /obj/structure/table/reinforced,
 /obj/item/analyzer,
@@ -5596,9 +5500,7 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "yx" = (
@@ -5806,7 +5708,6 @@
 /obj/structure/disposalpipe/segment,
 /obj/structure/disposalpipe/segment,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/west)
 "zu" = (
 /obj/effect/turf_decal/stripes/line{
@@ -5944,7 +5845,6 @@
 	dir = 2
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/river3)
 "zY" = (
 /obj/effect/turf_decal/siding/yellow{
@@ -6001,11 +5901,9 @@
 "Ai" = (
 /obj/structure/closet,
 /obj/item/healthanalyzer,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/structure/alien/weeds/node,
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "Aj" = (
@@ -6145,7 +6043,6 @@
 /area/teammatch/xm/quartstorage/dome)
 "AU" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/river2)
 "AV" = (
 /turf/open/floor/catwalk_floor,
@@ -6302,9 +6199,7 @@
 /turf/open/floor/iron,
 /area/teammatch/xm/sand5)
 "BP" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -6547,12 +6442,8 @@
 /area/teammatch/xm/medbay)
 "CY" = (
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sandtemple)
 "CZ" = (
@@ -6576,12 +6467,10 @@
 /area/teammatch/xm/quartstorage)
 "Dd" = (
 /obj/effect/decal/cleanable/blood,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -6910,7 +6799,6 @@
 /area/teammatch/xm/cpt_quarters)
 "EE" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/sand8)
 "EF" = (
 /obj/machinery/door/poddoor/indestructible,
@@ -7084,16 +6972,11 @@
 "Fs" = (
 /obj/structure/closet,
 /obj/item/crowbar,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/item/crowbar,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -7138,7 +7021,6 @@
 	dir = 2
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "FA" = (
 /turf/closed/wall/r_wall,
@@ -7164,7 +7046,6 @@
 	dir = 6
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "FM" = (
 /obj/structure/spacevine,
@@ -7178,7 +7059,7 @@
 /area/teammatch/xm/internal_affairs)
 "FQ" = (
 /obj/structure/showcase,
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/wood,
 /area/teammatch/xm/cpt_quarters)
 "FR" = (
@@ -7203,7 +7084,6 @@
 	dir = 10
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "FV" = (
 /obj/structure/fence{
@@ -7272,12 +7152,10 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/engineering)
 "Gk" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -7298,11 +7176,6 @@
 /obj/item/trash/candy,
 /turf/open/floor/plating,
 /area/teammatch/xm/engineering)
-"Go" = (
-/obj/structure/alien/weeds/node,
-/turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
-/area/teammatch/xm/bridge/west)
 "Gp" = (
 /obj/structure/spacevine,
 /turf/open/floor/circuit/red/off,
@@ -7396,16 +7269,10 @@
 /turf/open/water/deep_beach,
 /area/teammatch/xm/river2)
 "GI" = (
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/grass,
 /area/teammatch/xm/internal_affairs)
 "GJ" = (
@@ -7538,9 +7405,10 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/landing1)
 "Hl" = (
-/turf/open/floor/catwalk_floor,
+/obj/machinery/door/window/right/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
-/area/teammatch/xm/bridge/east)
+/area/teammatch/xm/filtration)
 "Hn" = (
 /obj/machinery/door/airlock/medical/glass{
 	dir = 1;
@@ -8050,6 +7918,7 @@
 /area/teammatch/xm/hydroponics)
 "JT" = (
 /obj/structure/glowshroom,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/iron/freezer,
 /area/teammatch/xm/toilet)
 "JU" = (
@@ -8236,7 +8105,6 @@
 /area/teammatch/xm/caves/rock)
 "KL" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/west)
 "KM" = (
 /obj/structure/table/wood,
@@ -8307,10 +8175,6 @@
 /obj/structure/closet/gmcloset,
 /turf/open/floor/wood,
 /area/teammatch/xm/internal_affairs)
-"Le" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/bridge)
 "Lf" = (
 /obj/structure/table,
 /obj/item/reagent_containers/spray/plantbgone{
@@ -8327,7 +8191,6 @@
 	dir = 1
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/west)
 "Li" = (
 /turf/closed/wall/r_wall,
@@ -8342,10 +8205,8 @@
 "Lm" = (
 /obj/structure/bed,
 /obj/item/bedsheet/purple,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "Lo" = (
@@ -8387,9 +8248,8 @@
 /area/teammatch/xm/chapel)
 "Lz" = (
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/white{
 	color = "#fff5ad"
 	},
@@ -8415,7 +8275,6 @@
 	dir = 2
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "LJ" = (
 /turf/open/floor/grass,
@@ -8532,12 +8391,10 @@
 /area/teammatch/xm/fitness)
 "Mf" = (
 /obj/structure/closet,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -8667,7 +8524,6 @@
 	dir = 4
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/bridge/east)
 "MF" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -8861,6 +8717,8 @@
 "NB" = (
 /obj/item/shard,
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/caves/central1)
 "NC" = (
@@ -8996,9 +8854,8 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sand5)
 "Oe" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/caves/central1)
 "Of" = (
@@ -9263,9 +9120,6 @@
 /turf/open/floor/vault,
 /area/teammatch/xm/crashed_ship)
 "Pv" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/structure/table,
 /obj/effect/spawner/random/armory/laser_pistol{
 	spawn_loot_count = 1
@@ -9273,6 +9127,7 @@
 /obj/effect/turf_decal/tile/red/anticorner/contrasted{
 	dir = 1
 	},
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/security)
 "Pw" = (
@@ -9288,15 +9143,11 @@
 /turf/open/floor/grass,
 /area/teammatch/xm/compound/northeast)
 "Pz" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
 /area/teammatch/xm/spaceport)
 "PA" = (
@@ -9351,9 +9202,7 @@
 /area/teammatch/xm/medbay)
 "PO" = (
 /obj/structure/table,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sandtemple)
 "PP" = (
@@ -9535,12 +9384,8 @@
 /obj/structure/disposalpipe/segment{
 	dir = 4
 	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "QE" = (
@@ -9695,10 +9540,8 @@
 "Rr" = (
 /obj/structure/bed,
 /obj/machinery/light,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "Rs" = (
@@ -9734,7 +9577,6 @@
 	dir = 2
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "Rw" = (
 /obj/structure/table,
@@ -9774,10 +9616,6 @@
 /obj/structure/cable,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/main_hall)
-"RE" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
-/area/teammatch/xm/sand8)
 "RF" = (
 /obj/structure/safe,
 /turf/open/floor/wood,
@@ -9849,7 +9687,6 @@
 /area/teammatch/xm/jungle/east)
 "RQ" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/plating,
 /area/teammatch/xm/sand9)
 "RS" = (
 /obj/effect/turf_decal/stripes/line{
@@ -10054,10 +9891,8 @@
 "SM" = (
 /obj/structure/bed,
 /obj/item/bedsheet/mime,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "SN" = (
@@ -10499,7 +10334,6 @@
 /area/teammatch/xm/toilet)
 "Vc" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge/east)
 "Vf" = (
 /obj/structure/spacevine,
@@ -10608,12 +10442,10 @@
 /area/teammatch/xm/main_hall)
 "VK" = (
 /obj/structure/bed/medical/emergency,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -10645,7 +10477,6 @@
 	dir = 8
 	},
 /turf/open/floor/catwalk_floor,
-/turf/open/floor/grass,
 /area/teammatch/xm/jungle/north)
 "VP" = (
 /turf/open/floor/iron/white,
@@ -10689,12 +10520,10 @@
 /area/teammatch/xm/security)
 "VX" = (
 /obj/item/trash/cheesie,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/dark_blue{
 	dir = 2
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white{
 	color = "#a79f93"
 	},
@@ -10843,9 +10672,8 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/quartstorage/dome)
 "WD" = (
-/obj/structure/extinguisher_cabinet/directional/south,
-/obj/machinery/door/window,
 /obj/effect/turf_decal/bot,
+/obj/structure/extinguisher_cabinet/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "WE" = (
@@ -10940,10 +10768,8 @@
 "Xb" = (
 /obj/structure/bed,
 /obj/item/bedsheet/hos,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/tile/purple/opposingcorners,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sleep_female)
 "Xc" = (
@@ -10978,9 +10804,8 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sandtemple)
 "Xj" = (
-/obj/machinery/door/window,
-/obj/structure/window/reinforced,
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "Xk" = (
@@ -11114,9 +10939,12 @@
 /turf/closed/wall/r_wall,
 /area/teammatch/xm/caves/rock)
 "XJ" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
-/area/teammatch/xm/bridge/west)
+/obj/structure/toilet{
+	dir = 4
+	},
+/obj/structure/window/reinforced/spawner/directional/north,
+/turf/open/floor/iron/freezer,
+/area/teammatch/xm/toilet)
 "XK" = (
 /obj/effect/turf_decal/tile/yellow{
 	dir = 4
@@ -11181,8 +11009,10 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/jungle/east)
 "Yd" = (
-/obj/structure/window/reinforced,
-/obj/effect/turf_decal/bot,
+/obj/effect/turf_decal/stripes/line{
+	dir = 1
+	},
+/obj/machinery/door/window/left/directional/east,
 /turf/open/floor/plating,
 /area/teammatch/xm/filtration)
 "Yg" = (
@@ -11893,13 +11723,13 @@ Af
 GC
 GC
 BN
-hC
-hC
+kb
+kb
 KL
 kb
 kb
-XJ
-hC
+KL
+kb
 KL
 cj
 gr
@@ -12258,11 +12088,11 @@ JI
 JI
 yJ
 KL
-XJ
-XJ
+KL
+KL
 yJ
 yJ
-XJ
+KL
 KL
 KL
 yJ
@@ -12440,11 +12270,11 @@ JI
 gm
 yJ
 KL
-XJ
-Go
+KL
+cJ
 yJ
 yJ
-XJ
+KL
 cJ
 KL
 yJ
@@ -12801,15 +12631,15 @@ Yj
 Jb
 vP
 KL
-hC
-zs
-hC
-hC
-XJ
 kb
-hC
+zs
+kb
+kb
+KL
+kb
+kb
 Lg
-hC
+kb
 yg
 Qb
 oW
@@ -12976,11 +12806,11 @@ Af
 nf
 TD
 TD
-sr
+aE
 Dz
 EE
 Yj
-dA
+EE
 Ri
 vA
 sQ
@@ -13531,7 +13361,7 @@ TD
 MT
 sQ
 sQ
-lZ
+AU
 sQ
 fK
 sQ
@@ -13890,7 +13720,7 @@ TD
 TD
 EE
 Yj
-dA
+EE
 Ri
 eU
 sQ
@@ -14068,12 +13898,12 @@ Af
 nf
 TD
 TD
-sr
+aE
 Jb
 Jb
 NP
 Jb
-RE
+EE
 cW
 sQ
 sQ
@@ -14250,7 +14080,7 @@ mQ
 ct
 Xa
 Xa
-dA
+EE
 vP
 yF
 KF
@@ -15531,15 +15361,15 @@ Ib
 DL
 yC
 xv
-Le
-Le
-Le
 vO
 vO
 vO
-Le
-Le
-Le
+vO
+vO
+vO
+vO
+vO
+vO
 et
 Vy
 Qa
@@ -16805,15 +16635,15 @@ KF
 ex
 yC
 xv
-Le
-Le
 vO
 vO
 vO
 vO
-Le
-Le
-Le
+vO
+vO
+vO
+vO
+vO
 VO
 Vy
 Vy
@@ -18137,7 +17967,7 @@ Qa
 SD
 SD
 SD
-bR
+XJ
 bv
 Qx
 VP
@@ -18318,7 +18148,7 @@ Qa
 SD
 SD
 bR
-bR
+XJ
 JT
 YI
 Qx
@@ -18680,10 +18510,10 @@ zj
 tF
 rC
 Qx
-sn
+YI
 px
-px
-px
+yn
+yn
 YA
 oc
 Qx
@@ -19352,14 +19182,14 @@ Jb
 Ib
 DL
 Ri
-Hl
+Vc
 ai
 hz
 hz
 Vc
-qn
+hz
 fK
-yn
+Vc
 hz
 hz
 lq
@@ -19715,17 +19545,17 @@ vP
 yF
 KF
 DL
-RE
+EE
 aP
 lq
-yn
-yn
-yn
+Vc
+Vc
+Vc
 Vc
 lq
 lq
-yn
-yn
+Vc
+Vc
 lq
 tR
 AA
@@ -19897,7 +19727,7 @@ EQ
 US
 KF
 DL
-RE
+EE
 aP
 lq
 lq
@@ -20039,7 +19869,7 @@ Pa
 Pa
 tf
 Hf
-NB
+tf
 gV
 BO
 Ed
@@ -20079,17 +19909,17 @@ ex
 ex
 Ib
 DL
-RE
+EE
 aP
 lq
-yn
-yn
-yn
 Vc
 Vc
-yn
-yn
-yn
+Vc
+Vc
+Vc
+Vc
+Vc
+Vc
 lq
 lh
 pc
@@ -20261,7 +20091,7 @@ ex
 ex
 KF
 ex
-RE
+EE
 Ec
 fw
 fw
@@ -20444,10 +20274,10 @@ jv
 AD
 aA
 iU
-Hl
+Vc
 ul
-qn
-qn
+hz
+hz
 Vc
 wJ
 fK
@@ -20764,7 +20594,7 @@ ec
 ec
 ec
 Pa
-aE
+vF
 BO
 DF
 My
@@ -20804,7 +20634,7 @@ Af
 yF
 Hp
 wb
-Yd
+Xj
 Lc
 FU
 Hp
@@ -20986,7 +20816,7 @@ Af
 yF
 GK
 wb
-Yd
+Xj
 np
 Fz
 GK
@@ -21168,7 +20998,7 @@ NS
 yF
 GK
 wb
-Yd
+Xj
 nD
 qE
 pt
@@ -21350,7 +21180,7 @@ Af
 yF
 GK
 wb
-Yd
+Xj
 nD
 qE
 pt
@@ -21713,8 +21543,8 @@ Af
 Af
 yF
 Hp
-lD
-zE
+Yd
+Hl
 np
 bE
 Hp
@@ -29158,7 +28988,7 @@ Xh
 Vi
 Ff
 Vi
-UJ
+Lz
 IN
 ec
 ec
@@ -30068,7 +29898,7 @@ Vi
 Vi
 Vi
 Vi
-vJ
+Lz
 IN
 ec
 ec

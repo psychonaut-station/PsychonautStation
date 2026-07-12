@@ -83,7 +83,6 @@
 /area/teammatch/xm/caves/central5)
 "bc" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge/east)
 "be" = (
 /obj/effect/turf_decal/siding/yellow{
@@ -135,11 +134,6 @@
 "bs" = (
 /obj/structure/alien/weeds/node,
 /turf/open/floor/plating,
-/area/teammatch/xm/bridge)
-"bD" = (
-/obj/structure/spacevine,
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
 /area/teammatch/xm/bridge)
 "bG" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
@@ -224,14 +218,12 @@
 /turf/open/floor/wood,
 /area/teammatch/xm/corporate_affairs)
 "cn" = (
-/obj/structure/window/reinforced,
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/turf_decal/bot,
 /obj/machinery/power/port_gen/pacman{
 	anchored = 1
 	},
+/obj/structure/window/reinforced/spawner/directional/east,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "cq" = (
@@ -330,9 +322,6 @@
 /area/teammatch/xm/corporate_affairs)
 "cN" = (
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/machinery/light{
 	dir = 1
 	},
@@ -346,6 +335,7 @@
 	spawn_loot_count = 1
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "cP" = (
@@ -442,13 +432,11 @@
 /area/teammatch/xm/robotics)
 "dN" = (
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/machinery/light{
 	dir = 8
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "dS" = (
@@ -578,7 +566,6 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "eM" = (
-/obj/structure/window/reinforced,
 /obj/structure/rack,
 /obj/effect/spawner/random/armory/shotgun{
 	spawn_loot_count = 1
@@ -587,6 +574,8 @@
 	spawn_loot_count = 1
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "eO" = (
@@ -1290,7 +1279,6 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/hydroponics/aux)
 "la" = (
-/obj/structure/window/reinforced,
 /obj/structure/closet/crate/wooden,
 /obj/machinery/light,
 /obj/effect/turf_decal/bot,
@@ -1300,6 +1288,8 @@
 /obj/item/ammo_casing/a25mm,
 /obj/item/ammo_casing/a25mm,
 /obj/item/ammo_casing/a25mm,
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "ld" = (
@@ -1621,7 +1611,6 @@
 /area/teammatch/xm/tablefort)
 "oc" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge)
 "of" = (
 /obj/structure/spacevine,
@@ -1719,7 +1708,6 @@
 /area/teammatch/xm/jungle/west)
 "pg" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge/west)
 "pi" = (
 /obj/machinery/light{
@@ -1802,16 +1790,12 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/jungle/central)
 "pT" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
-/obj/structure/window/reinforced,
 /obj/effect/turf_decal/stripes/line{
 	dir = 1
 	},
+/obj/structure/window/reinforced/spawner/directional/south,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/iron,
 /area/teammatch/xm/spaceport2)
 "pU" = (
@@ -2849,10 +2833,6 @@
 /obj/effect/mapping_helpers/airlock/access/all/away/command,
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/minigame/canterbury)
-"zD" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/sand7)
 "zE" = (
 /obj/machinery/light/directional/east,
 /turf/open/floor/iron/white,
@@ -3122,13 +3102,9 @@
 /area/teammatch/xm/spaceport2)
 "BX" = (
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced{
-	dir = 1
-	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/north,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "Ch" = (
@@ -3255,10 +3231,6 @@
 	},
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
-"Dn" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
-/area/teammatch/xm/bridge/east)
 "Dp" = (
 /obj/effect/turf_decal/tile/brown/half/contrasted{
 	dir = 8
@@ -3326,12 +3298,10 @@
 	},
 /area/teammatch/xm/river1)
 "DR" = (
-/obj/structure/window/reinforced{
-	dir = 8
-	},
-/obj/structure/window/reinforced,
 /obj/effect/turf_decal/bot,
 /obj/structure/closet/crate/wooden,
+/obj/structure/window/reinforced/spawner/directional/west,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "DT" = (
@@ -3815,7 +3785,6 @@
 "HW" = (
 /obj/structure/spacevine,
 /turf/open/floor/catwalk_floor,
-/turf/open/water/deep_beach,
 /area/teammatch/xm/bridge)
 "Ie" = (
 /obj/effect/turf_decal/stripes/line{
@@ -4093,10 +4062,6 @@
 /obj/machinery/vending/cigarette,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
-"Lq" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/bridge)
 "Lr" = (
 /obj/effect/landmark/xeno_tunnel_spawn,
 /turf/open/floor/engine/cult{
@@ -4223,10 +4188,8 @@
 /turf/closed/wall/r_wall,
 /area/teammatch/xm/corporate_affairs)
 "MG" = (
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/south,
 /turf/open/floor/grass,
 /area/teammatch/xm/corporate_affairs)
 "MI" = (
@@ -4443,12 +4406,6 @@
 /area/teammatch/xm/overgrown)
 "OS" = (
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 4
-	},
 /obj/effect/spawner/random/armory/laser_pistol{
 	spawn_loot_count = 1
 	},
@@ -4459,6 +4416,8 @@
 	spawn_loot_count = 1
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/east,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "Pa" = (
@@ -4512,12 +4471,6 @@
 /area/teammatch/xm/secure_storage)
 "PA" = (
 /obj/structure/rack,
-/obj/structure/window/reinforced{
-	dir = 1
-	},
-/obj/structure/window/reinforced{
-	dir = 8
-	},
 /obj/effect/spawner/random/armory/laser_pistol{
 	spawn_loot_count = 1
 	},
@@ -4528,6 +4481,8 @@
 	spawn_loot_count = 1
 	},
 /obj/effect/turf_decal/bot,
+/obj/structure/window/reinforced/spawner/directional/north,
+/obj/structure/window/reinforced/spawner/directional/west,
 /turf/open/floor/plating,
 /area/teammatch/xm/secure_storage)
 "PD" = (
@@ -4679,10 +4634,6 @@
 /obj/structure/alien/weeds/node,
 /turf/open/floor/carpet/lone,
 /area/teammatch/xm/bar)
-"Ra" = (
-/turf/open/floor/catwalk_floor,
-/turf/open/water/beach,
-/area/teammatch/xm/bridge/west)
 "Rg" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden/layer4,
 /turf/open/floor/cult,
@@ -5499,7 +5450,6 @@
 /area/teammatch/xm/secure_storage)
 "Yh" = (
 /turf/open/floor/catwalk_floor,
-/turf/open/misc/beach/sand,
 /area/teammatch/xm/sand7)
 "Yl" = (
 /turf/open/misc/beach/coast/corner,
@@ -8723,11 +8673,11 @@ ky
 ky
 kF
 LO
-zD
-Ra
+Yh
+pg
 kK
-Ra
-Ra
+pg
+pg
 Cx
 Cx
 Cx
@@ -8905,11 +8855,11 @@ ky
 kF
 kF
 LP
-LO
-Ra
+Yh
+pg
 Rw
 qF
-Ra
+pg
 Rw
 Cx
 Cx
@@ -9270,10 +9220,10 @@ kF
 kF
 de
 qF
-Ra
 pg
-Ra
-Ra
+pg
+pg
+pg
 vS
 Cx
 Cx
@@ -12907,7 +12857,7 @@ kF
 mr
 kF
 pY
-Lq
+oc
 qF
 qF
 FT
@@ -13090,13 +13040,13 @@ kF
 kF
 PT
 hC
-Lq
+oc
 hC
 hC
 jI
 xq
 hC
-Lq
+oc
 hC
 Sv
 ee
@@ -13272,14 +13222,14 @@ kF
 kF
 CU
 Sv
-Lq
-Lq
+oc
+oc
 oc
 bf
 jV
 HW
-Lq
-Lq
+oc
+oc
 jV
 oS
 iH
@@ -13818,14 +13768,14 @@ kF
 kF
 nJ
 xq
-bD
-Lq
+HW
+oc
 oc
 ib
 xq
 oc
 oc
-Lq
+oc
 xq
 kh
 iH
@@ -14007,7 +13957,7 @@ hC
 hC
 hC
 hC
-Lq
+oc
 xq
 vq
 LU
@@ -14181,7 +14131,7 @@ kF
 mr
 kF
 pY
-Lq
+oc
 qF
 qF
 FT
@@ -24004,7 +23954,7 @@ qF
 bc
 FT
 FT
-Dn
+bc
 bc
 mx
 iH

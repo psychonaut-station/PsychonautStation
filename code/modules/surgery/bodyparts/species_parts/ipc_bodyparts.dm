@@ -31,6 +31,7 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 3.5, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 3.5)
 	var/datum/action/innate/change_monitor/change_monitor
 
 /obj/item/bodypart/head/ipc/apply_ownership(mob/living/carbon/new_owner)
@@ -102,6 +103,7 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	wing_types = list(/obj/item/organ/wings/functional/robotic)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 20)
 
 /obj/item/bodypart/chest/ipc/emp_act(severity)
 	. = ..()
@@ -141,6 +143,8 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 5)
+
 /obj/item/bodypart/arm/right/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -165,6 +169,8 @@
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 5)
+
 /obj/item/bodypart/leg/left/ipc
 	icon = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
 	icon_static = 'icons/psychonaut/mob/human/species/ipc/bodyparts.dmi'
@@ -187,6 +193,7 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/item/bodypart/leg/left/ipc/emp_act(severity)
 	. = ..()
@@ -225,6 +232,8 @@
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
+
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 5)
 
 /obj/item/bodypart/leg/right/ipc/emp_act(severity)
 	. = ..()

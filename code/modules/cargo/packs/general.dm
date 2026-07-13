@@ -273,9 +273,9 @@
 /datum/supply_pack/misc/hookah_kit
 	name = "Hookah Kit"
 	desc = "A kit for those who enjoy a smoke and a cultured relaxation."
-	cost = 200
+	cost = CARGO_CRATE_VALUE * 2
 	contains = list(
 		/obj/item/hookah,
 		/obj/item/hookah_coals = 3
 	)
-	crate_name = "crate with hookah kit"
+	crate_name = "hookah crate"

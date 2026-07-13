@@ -336,7 +336,7 @@
 	if(!hookah || !attached_to)
 		return
 
-	if((get_dist(hookah, attached_to) <= 1))
+	if((get_dist(hookah, attached_to) <= 1) && isturf(attached_to.loc))
 		return
 
 	if(ismob(attached_to))
@@ -373,7 +373,7 @@
 	if(currently_inhaling)
 		return
 
-	if(!hookah || !hookah.reagents.total_volume)
+	if(!hookah || (!hookah.reagents.total_volume && !length(hookah.food_items)))
 		to_chat(user, span_warning("There is no liquid inside [hookah]!"))
 		return
 

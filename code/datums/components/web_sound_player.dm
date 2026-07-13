@@ -1,7 +1,3 @@
-#define SHELLEO_ERRORLEVEL 1
-#define SHELLEO_STDOUT 2
-#define SHELLEO_STDERR 3
-
 #define VV_HK_PLAY_URL "play_url"
 #define VV_HK_STOP "stop"
 #define VV_HK_SET_LOOP "set_loop"
@@ -274,21 +270,12 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 	var/list/cached_track_data = GLOB.web_track_cache[url]
 
 	if(isnull(cached_track_data) || !check_timestamp_list(cached_track_data))
-		var/cookies = CONFIG_GET(string/ytdl_cookies)
-		var/list/output = world.shelleo("[invoke_youtubedl] --geo-bypass --format \"bestaudio\[ext=mp3]/best\[ext=mp4]\[height <= 360]/bestaudio\[ext=m4a]/bestaudio\[ext=aac]\" --dump-single-json --no-playlist [cookies ? "--cookies [cookies]" : ""] -- \"[shell_url_scrub(url)]\"")
+		var/list/ytdlp_result = ytdlp_resolve(url)
+		if(ytdlp_result["error"])
+			GLOB.web_track_cache[url] = ytdlp_result["error"]
+			return ytdlp_result["error"]
 
-		var/errorlevel = output[SHELLEO_ERRORLEVEL]
-		var/stdout = output[SHELLEO_STDOUT]
-
-		if(errorlevel)
-			GLOB.web_track_cache[url] = WEB_SOUND_ERR_JSON_RETRIEVAL
-			return WEB_SOUND_ERR_JSON_RETRIEVAL
-
-		try
-			track_data = json_decode(stdout)
-		catch
-			GLOB.web_track_cache[url] = WEB_SOUND_ERR_JSON_PARSING
-			return WEB_SOUND_ERR_JSON_PARSING
+		track_data = ytdlp_result["data"]
 
 		if(!findtext(track_data["url"], GLOB.is_http_protocol))
 			GLOB.web_track_cache[url] = WEB_SOUND_ERR_NOT_HTTPS
@@ -334,6 +321,41 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 		else
 			addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(remove_web_track_cache), key), WEB_SOUND_CACHE_DURATION - world.time - track_data["timestamp"])
 
+/// Resolves a YouTube URL using the ytdlp wrapper server
+///
+/// Returns a list with the following keys:
+/// - error: 0 if successful, otherwise an error code
+/// - detail: a string describing the error if one occurred, otherwise null
+/// - data: the parsed JSON data from yt-dlp if successful, otherwise null
+/proc/ytdlp_resolve(url)
+	var/service_url = CONFIG_GET(string/invoke_youtubedl)
+	if(!service_url)
+		return list("error" = WEB_SOUND_ERR_YTDL_NOT_CONFIGURED)
+
+	var/datum/http_request/request = new()
+	request.prepare(RUSTG_HTTP_METHOD_GET, "[service_url]?url=[url_encode(url)]", "", "", timeout_seconds = 30)
+	request.begin_async()
+
+	UNTIL(request.is_complete())
+
+	var/datum/http_response/response = request.into_response()
+
+	if(response.errored)
+		return list("error" = WEB_SOUND_ERR_JSON_RETRIEVAL, "detail" = response.error)
+	if(response.status_code != 200)
+		return list("error" = WEB_SOUND_ERR_JSON_RETRIEVAL, "detail" = response.body)
+
+	var/list/data
+	try
+		data = json_decode(response.body)
+	catch(var/exception/e)
+		return list("error" = WEB_SOUND_ERR_JSON_PARSING, "detail" = "[e]: [response.body]")
+
+	if(!islist(data))
+		return list("error" = WEB_SOUND_ERR_JSON_PARSING, "detail" = response.body)
+
+	return list("error" = 0, "data" = data)
+
 #undef get_volume
 #undef check_timestamp
 #undef check_timestamp_list
@@ -345,7 +367,3 @@ GLOBAL_LIST_EMPTY(web_track_cache)
 #undef VV_HK_STOP
 #undef VV_HK_SET_LOOP
 #undef VV_HK_SET_RANGE
-
-#undef SHELLEO_ERRORLEVEL
-#undef SHELLEO_STDOUT
-#undef SHELLEO_STDERR

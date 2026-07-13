@@ -55,12 +55,6 @@
 		"Chief Science Officer"
 	)
 
-/datum/job/research_director/after_spawn(mob/living/spawned, client/player_client)
-	. = ..()
-	if (!GLOB.upload_key)
-		GLOB.upload_key = random_code(4)
-	spawned.add_mob_memory(/datum/memory/key/silicon_decrypt_key, upload_key = GLOB.upload_key)
-
 /datum/job/research_director/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
 

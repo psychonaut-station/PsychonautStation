@@ -277,7 +277,7 @@ function JobRow(props: JobRowProps) {
               onSelected={(value) => {
                 act('set_job_title', { job: name, new_title: value });
               }}
-              color=""
+              color="transparent"
               className="PreferencesMenu__Jobs__AltTitleDropdown"
             />
           </Stack.Item>
@@ -319,12 +319,15 @@ function Department(props: DepartmentProps) {
   );
 
   return (
-    <Box>
+    <Box
+      style={{ '--department-color': department.color } as React.CSSProperties}
+    >
       <Stack fill vertical g={0}>
         {jobsForDepartment.map(([name, job]) => {
           return (
             <JobRow
               className={classes([
+                'PreferencesMenu__Jobs__departments',
                 className,
                 name === department.head && 'head',
               ])}

@@ -3,19 +3,6 @@
 @use '../colors.scss';
 @use '../base.scss';
 
-$department_map: (
-  'Assistant': var(--color-gray),
-  'Captain': colors.fg(var(--color-blue)),
-  'Cargo': var(--color-brown),
-  'Command': var(--color-yellow),
-  'Security': var(--color-red),
-  'Engineering': hsl(from var(--color-orange) h s calc(l + 7.5)),
-  'Medical': var(--color-teal),
-  'Science': colors.fg(var(--color-purple)),
-  'Service': var(--color-green),
-  'Silicon': var(--color-pink),
-);
-
 .ChoicedSelection {
   padding: var(--space-m);
   background-color: var(--color-base);
@@ -126,76 +113,40 @@ $department_map: (
     }
 
     &__departments {
-      @each $department-name, $color-value in $department_map {
-        &--#{$department-name} {
-          &.head {
-            background: $color-value;
+      &.head {
+        background: colors.bg(var(--department-color));
 
-            .job-name {
-              font-weight: bold;
-            }
-          }
+        .job-name {
+          font-weight: bold;
+        }
+      }
 
-          background: colors.fg($color-value);
-          border: var(--border-thickness-small) outset colors.fg($color-value);
-          color: black;
+      background: colors.fg(var(--department-color));
+      border: var(--border-thickness-small) outset
+        colors.fg(var(--department-color));
+      color: black;
 
-          > * {
-            height: calc(100% + 0.2em);
-            padding-bottom: 0.2em;
-          }
+      > * {
+        height: calc(100% + 0.2em);
+        padding-bottom: 0.2em;
+      }
 
-          .options {
-            margin-right: var(--space-xxs);
-            background: hsla(0, 0%, 0%, 0.2);
-            height: 100%;
+      .options {
+        margin-right: var(--space-xxs);
+        background: hsla(0, 0%, 0%, 0.2);
+        height: 100%;
+      }
 
-            .PreferencesMenu__JobSlotDropdown {
-              .Dropdown {
-                .Dropdown__control {
-                  background: transparent !important;
-                  border: none !important;
-                  box-shadow: none !important;
-                  padding: 0 2px;
+      &--Captain {
+        border: var(--border-thickness-medium) outset hsla(60, 100%, 39.2%, 1);
 
-                  i {
-                    color: #ffffff !important;
-                    opacity: 0.8;
-                    text-shadow: none !important;
-                    transition: opacity 0.2s ease-in-out;
-                  }
-
-                  &:hover i {
-                    opacity: 1 !important;
-                  }
-
-                  &:before,
-                  &:after {
-                    display: none !important;
-                  }
-                }
-              }
-            }
-          }
+        &:first-child {
+          border-top: var(--border-thickness-medium) outset
+            hsla(60, 100%, 39.2%, 1);
         }
 
-        &--Captain {
-          border: var(--border-thickness-medium)
-            outset
-            hsla(60, 100%, 39.2%, 1);
-
-          &:first-child {
-            border-top: var(--border-thickness-medium)
-              outset
-              hsla(60, 100%, 39.2%, 1);
-          }
-
-          .job-name {
-            font-size: 17px;
-            & .Dropdown__arrow-button {
-              margin-left: 5px;
-            }
-          }
+        .job-name {
+          font-size: 17px;
         }
       }
 
@@ -232,6 +183,11 @@ $department_map: (
       display: inline-flex;
       align-items: center;
       justify-content: space-around;
+      color: var(--color-black);
+
+      &:hover {
+        color: var(--color-black);
+      }
 
       & .Dropdown__arrow-button {
         margin-right: 1px;
@@ -244,6 +200,34 @@ $department_map: (
         vertical-align: middle;
       }
     }
+
+    .PreferencesMenu__JobSlotDropdown {
+      .Dropdown {
+        .Dropdown__control {
+          background: transparent !important;
+          border: none !important;
+          box-shadow: none !important;
+          padding: 0 2px;
+
+          i {
+            color: #ffffff !important;
+            opacity: 0.8;
+            text-shadow: none !important;
+            transition: opacity 0.2s ease-in-out;
+          }
+
+          &:hover i {
+            opacity: 1 !important;
+          }
+
+          &:before,
+          &:after {
+            display: none !important;
+          }
+        }
+      }
+    }
+
     & .Dropdown__menuentry {
       font-weight: normal;
       font-size: 12px;

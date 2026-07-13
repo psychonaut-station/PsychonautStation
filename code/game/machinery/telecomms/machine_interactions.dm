@@ -13,7 +13,7 @@
 		FREQ_CTF_YELLOW,
 		FREQ_CTF_GREEN,
 		FREQ_CTF_BLUE,
-		FREQ_CTF_YELLOW,
+		FREQ_XM_MARINE,
 	)
 
 /obj/machinery/telecomms/screwdriver_act(mob/living/user, obj/item/tool)

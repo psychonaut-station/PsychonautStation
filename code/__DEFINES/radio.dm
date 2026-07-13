@@ -77,7 +77,7 @@
 #define RADIO_CHANNEL_CTF_YELLOW "Yellow Team"
 #define RADIO_COLOR_YELLOW "#d1ba22"
 
-#define RADIO_CHANNEL_XM_MARINE "Marines"
+#define RADIO_CHANNEL_XM_MARINE "Marine Squad"
 
 #define MIN_FREE_FREQ 1201 // -------------------------------------------------
 // Frequencies are always odd numbers and range from 1201 to 1599.

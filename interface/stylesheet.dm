@@ -50,6 +50,7 @@ em						{font-style: normal;	font-weight: bold;}
 .greenteamradio			{color: #00ff00;}
 .yellowteamradio		{color: #d1ba22;}
 .captaincast			{color: #00ff99;}
+.marinesquad            {color: #006fc9;}
 
 .yell					{					font-weight: bold;}
 

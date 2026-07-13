@@ -941,7 +941,7 @@ generate/load female uniform sprites matching all previously decided variables
 	// Kinda gross but because many humans overlays do not use KEEP_TOGETHER we need to manually propogate the filter
 	// Otherwise overlays, such as worn overlays on icons, won't have the filter "applied", and the effect kinda breaks
 	if(!(appearance.appearance_flags & KEEP_TOGETHER))
-		for(var/mutable_appearance/child_overlay as anything in appearance.underlays + appearance.overlays)
+		for(var/mutable_appearance/child_overlay in appearance.underlays + appearance.overlays)
 			apply_height_filter(child_overlay)
 
 	return appearance

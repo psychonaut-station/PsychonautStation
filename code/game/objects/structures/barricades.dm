@@ -138,7 +138,7 @@
 		return wire(user, tool)
 	return ..()
 
-/obj/structure/window/welder_act(mob/living/user, obj/item/tool)
+/obj/structure/foldable_barricade/welder_act(mob/living/user, obj/item/tool)
 	if(atom_integrity >= max_integrity)
 		to_chat(user, span_warning("[src] is already in good condition!"))
 		return ITEM_INTERACT_SUCCESS

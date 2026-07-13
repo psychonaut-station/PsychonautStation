@@ -120,14 +120,13 @@
 	max_specific_storage = WEIGHT_CLASS_NORMAL
 
 /datum/storage/holster/flarepouch
-	max_slots = 15
+	max_slots = 27
 	max_specific_storage = WEIGHT_CLASS_BULKY
-	max_total_storage = WEIGHT_CLASS_GIGANTIC * 5
+	max_total_storage = WEIGHT_CLASS_GIGANTIC * 9
 
 /datum/storage/holster/flarepouch/New(atom/parent, max_slots, max_specific_storage, max_total_storage, rustle_sound, remove_rustle_sound, list/holdables)
 	holdables = list(
 		/obj/item/gun/ballistic/flarelauncher,
 		/obj/item/ammo_casing/a25mm,
 	)
-
 	return ..()

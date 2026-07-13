@@ -87,7 +87,7 @@
 
 /datum/teammatch_team/marines/after_spawn(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/L, datum/outfit/teammatch_loadout/loadout)
 	L.set_faction(list(FACTION_MARINE))
-	L.mind.teach_crafting_recipe(/datum/crafting_recipe/foldable_barricade)
+	L?.mind?.teach_crafting_recipe(/datum/crafting_recipe/foldable_barricade)
 
 /datum/teammatch_team/xenomorphs
 	id = "xenomorphs"

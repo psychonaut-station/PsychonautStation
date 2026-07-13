@@ -31,8 +31,8 @@
 	has_radio = FALSE
 
 /datum/outfit/teammatch_loadout/marine
-	name = "Teammatch: Marine"
-	display_name = "Marine"
+	name = "Teammatch: Squad Marine"
+	display_name = "Squad Marine"
 
 	uniform = /obj/item/clothing/under/color/black
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
@@ -44,8 +44,8 @@
 	team_radio_freq = FREQ_XM_MARINE
 
 /datum/outfit/teammatch_loadout/marine/engineer
-	name = "Teammatch: Marine Engineer"
-	display_name = "Engineer"
+	name = "Teammatch: Squad Engineer"
+	display_name = "Squad Engineer"
 
 	uniform = /obj/item/clothing/under/rank/engineering/engineer/hazard
 	gloves = /obj/item/clothing/gloves/color/yellow
@@ -53,8 +53,8 @@
 	id_trim = /datum/id_trim/away/teammatch/marine/engineer
 
 /datum/outfit/teammatch_loadout/marine/medic
-	name = "Teammatch: Marine Medic"
-	display_name = "Medic"
+	name = "Teammatch: Squad Corpsman"
+	display_name = "Squad Corpsman"
 
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated

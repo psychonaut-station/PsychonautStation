@@ -325,11 +325,13 @@
 	if(LAZYLEN(team.players) == 0)
 		team_lost(team_type)
 
-/datum/teammatch_lobby/proc/team_lost(datum/teammatch_team/team)
+/datum/teammatch_lobby/proc/team_lost(datum/teammatch_team/team_type)
 	if(playing != TEAMMATCH_PLAYING)
 		CRASH("Team lost but game is not started yet!")
-	if(!(team in teams))
+	if(!(team_type in teams))
 		CRASH("Team lost but not found in teams list")
+
+	var/datum/teammatch_team/team = get_team(team_type)
 
 	team.active = FALSE
 

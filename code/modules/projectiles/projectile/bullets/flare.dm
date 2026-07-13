@@ -10,13 +10,16 @@
 	ricochets_max = 0
 	can_hit_turfs = TRUE
 
-/obj/projectile/bullet/a25mm/impact(atom/target)
-	var/obj/item/flashlight/flare/flare = new (get_turf(target))
+/obj/projectile/bullet/a25mm/on_hit(atom/target, blocked, pierce_hit)
+	. = ..()
+	var/obj/item/flashlight/flare/flare = new (get_turf(src))
 	flare.toggle_light()
+
 	if(isliving(target))
 		var/mob/living/living_target = target
-		if(flare.get_temperature())
-			living_target.ignite_mob()
+		living_target.ignite_mob()
+
+	if(istype(target, /obj/structure/alien/weeds))
+		qdel(target)
 
 	deletion_queued = PROJECTILE_IMPACT_DELETE
-	return

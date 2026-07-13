@@ -1132,7 +1132,7 @@
 	desc = "An ID card that allows access to the variety of airlocks present in the film studio"
 
 /obj/item/card/id/away/dogtag
-	name = "Military Dog tag"
+	name = "military dog tag"
 	desc = "A dog tag."
 	icon = 'icons/psychonaut/obj/card.dmi'
 	icon_state = "dogtag"

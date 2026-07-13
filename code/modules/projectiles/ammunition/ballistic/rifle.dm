@@ -232,3 +232,11 @@
 /obj/item/ammo_casing/a25mm/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/caseless)
+
+/obj/item/ammo_casing/a25mm/attack_self(mob/user, modifiers)
+	. = ..()
+
+	var/obj/item/flashlight/flare/flare = new (user)
+	flare.attack_self(user, modifiers)
+	user.put_in_hands(flare, FALSE, TRUE, TRUE)
+	qdel(src)

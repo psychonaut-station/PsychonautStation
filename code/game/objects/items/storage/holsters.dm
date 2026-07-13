@@ -117,7 +117,7 @@
 
 /obj/item/storage/belt/holster/flarepouch/PopulateContents()
 	generate_items_inside(list(
-		/obj/item/ammo_casing/a25mm = 14,
+		/obj/item/ammo_casing/a25mm = 26,
 		/obj/item/gun/ballistic/flarelauncher = 1,
 	), src)
 
@@ -126,25 +126,37 @@
 	var/obj/item/gun/ballistic/flarelauncher/launcher = locate() in contents
 	icon_state = "[initial(icon_state)][launcher ? "_full" : null]"
 
-/obj/item/storage/belt/holster/flarepouch/base_item_interaction(mob/user, obj/item/weapon, list/modifiers)
+/obj/item/storage/belt/holster/flarepouch/item_interaction_secondary(mob/user, obj/item/weapon, list/modifiers)
 	if(!istype(weapon, /obj/item/gun/ballistic/flarelauncher))
 		return ..()
 
 	var/obj/item/gun/ballistic/flarelauncher/flare_gun = weapon
 
-	if(flare_gun.chambered)
+	if(flare_gun.chambered || LAZYLEN(flare_gun.magazine.stored_ammo) == flare_gun.magazine.max_ammo)
 		return ITEM_INTERACT_BLOCKING
 
-	var/to_load = flare_gun.magazine.max_ammo - LAZYLEN(flare_gun.magazine.stored_ammo)
+	var/obj/item/ammo_casing/a25mm/flare = locate() in contents
+	if(!flare)
+		return ITEM_INTERACT_BLOCKING
 
-	for(var/i in 1 to to_load)
+	atom_storage.remove_single(user, flare, get_turf(user))
+	user.put_in_hands(flare)
+	flare_gun.load_gun(flare, user)
 
-		var/obj/item/ammo_casing/a25mm/flare = locate() in contents
-		if(!flare)
-			break
+	return ITEM_INTERACT_SUCCESS
 
-		atom_storage.remove_single(user, flare, get_turf(user))
-		user.put_in_hands(flare)
-		flare_gun.load_gun(flare, user)
+/obj/item/storage/belt/holster/flarepouch/attack_hand(mob/user, list/modifiers)
+	if(loc != user)
+		return ..()
 
-	return ITEM_INTERACT_BLOCKING
+	var/obj/item/flare = locate(/obj/item/gun/ballistic/flarelauncher) in contents
+
+	if(!flare)
+		flare = locate(/obj/item/ammo_casing/a25mm) in contents
+
+	if(!flare)
+		return ..()
+
+	atom_storage.remove_single(user, flare, get_turf(user))
+	user.put_in_hands(flare)
+	return TRUE

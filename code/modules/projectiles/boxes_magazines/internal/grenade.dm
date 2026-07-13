@@ -32,4 +32,4 @@
 	name = "flare launcher internal magazine"
 	ammo_type = /obj/item/ammo_casing/a25mm
 	caliber = CALIBER_25MM
-	max_ammo = 8
+	max_ammo = 1

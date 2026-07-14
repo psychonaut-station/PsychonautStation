@@ -842,7 +842,6 @@
 
 /datum/emote/living/fart/get_sound(mob/living/user)
 	if(ishuman(user))
-		user.add_mood_event("farted", /datum/mood_event/farted)
 		return pick('sound/misc/fart1.ogg', 'sound/misc/fart2.ogg', 'sound/misc/fart3.ogg',
 					'sound/misc/fart4.ogg', 'sound/misc/fart5.ogg', 'sound/misc/fart6.ogg')
 

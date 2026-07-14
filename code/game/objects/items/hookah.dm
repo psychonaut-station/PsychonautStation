@@ -16,7 +16,7 @@
 
 #define OPTION_CLEAR "Clear the bowl"
 #define OPTION_EXTINGUISH "Extinguish coals"
-#define OPTION_BLOW "Light up"
+#define OPTION_BLOW "Take a drag"
 
 /obj/item/hookah
 	name = "hookah"
@@ -41,18 +41,29 @@
 
 /obj/item/hookah/add_context(atom/source, list/context, atom/target, mob/user)
 	. = ..()
-	context[SCREENTIP_CONTEXT_RMB] = "Take mouthpiece"
-	context[SCREENTIP_CONTEXT_ALT_RMB] = "More actions"
+	context[SCREENTIP_CONTEXT_LMB] = "Take mouthpiece"
+	context[SCREENTIP_CONTEXT_RMB] = "More actions"
 	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/item/hookah/examine()
 	. = ..()
-	. += span_notice("Bowl's contents: [english_list(food_items, nothing_text = "empty")].")
+	var/list/food_groups = list()
+	for(var/obj/item/food/food as anything in food_items)
+		food_groups[food.name] += list(food)
+
+	var/list/food_names = list()
+	for(var/food_name in food_groups)
+		var/list/foods = food_groups[food_name]
+		food_names += (length(foods) == 1) ? "\a [foods[1]]" : "[length(foods)] [food_name]s"
+
+	. += span_notice("Bowl's contents: [length(food_names) ? english_list(food_names) : "empty"].")
 	if(lit)
 		. += span_notice("[src] is lit.")
 
 /obj/item/hookah/Initialize(mapload)
 	. = ..()
+	interaction_flags_item &= ~INTERACT_ITEM_ATTACK_HAND_PICKUP
+	AddElement(/datum/element/drag_pickup)
 	mouthpiece = new(src)
 	update_appearance(UPDATE_OVERLAYS)
 	create_reagents(INTERNAL_VOLUME, TRANSPARENT)
@@ -75,8 +86,7 @@
 	mouthpiece.forceMove(src)
 	update_appearance(UPDATE_OVERLAYS)
 
-/obj/item/hookah/attack_hand_secondary(mob/user, list/modifiers)
-	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+/obj/item/hookah/attack_hand(mob/user, list/modifiers)
 	if(ismob(loc))
 		return
 	if(isnull(mouthpiece))
@@ -108,6 +118,9 @@
 
 /obj/item/hookah/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(!isnull(mouthpiece) && tool == mouthpiece)
+		if(LAZYACCESS(modifiers, RIGHT_CLICK))
+			open_action_menu(user)
+			return ITEM_INTERACT_SUCCESS
 		return_mouthpiece()
 		return ITEM_INTERACT_SUCCESS
 	if(istype(tool, /obj/item/hookah_coals))
@@ -120,7 +133,7 @@
 		add_reagents(user, tool)
 		return ITEM_INTERACT_SUCCESS
 	if(try_light(tool, user))
-		return
+		return ITEM_INTERACT_SUCCESS
 	return NONE
 
 /obj/item/hookah/proc/add_coals(mob/user, obj/item/hookah_coals/coal)
@@ -166,9 +179,13 @@
 		if(smoke_amount > 0)
 			COOLDOWN_START(src, smoke_decrease_cooldown, SMOKE_CONSUME_INTERVAL)
 
-/obj/item/hookah/click_alt_secondary(mob/user)
+/obj/item/hookah/attack_hand_secondary(mob/user, list/modifiers)
+	. = SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
+	open_action_menu(user)
+
+/obj/item/hookah/proc/open_action_menu(mob/user)
 	if(!ishuman(user))
-		return CLICK_ACTION_BLOCKING
+		return
 	var/list/choices = list()
 
 	if(lit)
@@ -177,6 +194,10 @@
 		if(lit)
 			choices[OPTION_BLOW] = image(icon = 'icons/psychonaut/obj/radial.dmi', icon_state = "blow")
 		choices[OPTION_CLEAR] = image(icon = 'icons/psychonaut/obj/radial.dmi', icon_state = "eject")
+
+	if(!length(choices))
+		balloon_alert(user, "no actions available!")
+		return
 
 	var/choice = show_radial_menu(user, src, choices, require_near = TRUE)
 
@@ -204,7 +225,7 @@
 				to_chat(user, span_warning("You need to hold the mouthpiece to inhale from [src]!"))
 				return CLICK_ACTION_BLOCKING
 			user.visible_message(span_notice("[user] takes a deep drag..."), span_notice("You take a deep drag..."))
-			playsound(src, 'sound/_psychonaut/hookah_bubble.ogg', 40)
+			playsound(user, 'sound/_psychonaut/hookah_bubble.ogg', 40)
 			if(!do_after(user, 5 SECONDS, src))
 				return CLICK_ACTION_BLOCKING
 			mouthpiece?.inhale_smoke(user, BASE_INHALE_VOLUME * 2, TRUE)

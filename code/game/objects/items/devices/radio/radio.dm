@@ -32,8 +32,6 @@
 	/// Whether the radio is currently receiving radio messages from its radio frequencies.
 	VAR_PRIVATE/listening = TRUE
 
-	var/id = null
-
 	//the below three vars are used to track listening and broadcasting should they be forced off for whatever reason but "supposed" to be active
 	//eg player sets the radio to listening, but an emp or whatever turns it off, its still supposed to be activated but was forced off,
 	//when it wears off it sets listening to should_be_listening
@@ -426,8 +424,6 @@
 				return
 	if (message_mods[MODE_TTS_IDENTIFIER])
 		filtered_mods[MODE_TTS_IDENTIFIER] = message_mods[MODE_TTS_IDENTIFIER]
-	if(!isnull(id))
-		filtered_mods[MODE_RADIO_ID] = "[id]"
 
 	talk_into(speaker, raw_message, spans=spans, language=message_language, message_mods=filtered_mods)
 
@@ -440,10 +436,6 @@
 			return FALSE
 
 	if (input_frequency == FREQ_SYNDICATE && !(special_channels & RADIO_SPECIAL_SYNDIE))
-		return FALSE
-
-	var/possible_radio_id = LAZYACCESS(message_mods, MODE_RADIO_ID)
-	if(!isnull(possible_radio_id) && !isnull(id) && possible_radio_id != id)
 		return FALSE
 
 	// allow checks: are we listening on that frequency?

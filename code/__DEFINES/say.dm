@@ -80,8 +80,6 @@
 #define MODE_TTS_IDENTIFIER "tts_identifier"
 /// Override the mob's name
 #define MODE_SPEAKER_NAME_OVERRIDE "speaker_name_override"
-/// Has a special id that only hearable from radios with same id
-#define MODE_RADIO_ID "radio_id"
 
 //Spans. Robot speech, italics, etc. Applied in compose_message().
 #define SPAN_ROBOT "robot"

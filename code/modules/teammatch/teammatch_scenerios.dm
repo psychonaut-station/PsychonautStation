@@ -39,12 +39,6 @@
 		new_implant.minimap_fixed_z_level = C.z
 		new_implant.implant(C, null, silent = TRUE)
 
-	if(iscarbon(C))
-		var/obj/item/radio/headset = C.ears
-		if(headset && istype(headset, /obj/item/radio/headset/teammatch))
-			var/obj/item/radio/headset/teammatch/teammatch_headset = headset
-			teammatch_headset.id = "[scenerio_key]_[lobby.uid]"
-
 /datum/teammatch_scenerio/xenomarine
 	name = "Xenomorph vs Marine"
 	desc = "Xenomorph versus Marine Corps"

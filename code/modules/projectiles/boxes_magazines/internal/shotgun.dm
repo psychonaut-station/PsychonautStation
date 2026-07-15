@@ -32,9 +32,6 @@
 	name = "compact shotgun internal magazine"
 	max_ammo = 5
 
-/obj/item/ammo_box/magazine/internal/shot/com/lethal
-	ammo_type = /obj/item/ammo_casing/shotgun/rubbershot
-
 /obj/item/ammo_box/magazine/internal/shot/dual
 	name = "double-barrel shotgun internal magazine"
 	max_ammo = 2

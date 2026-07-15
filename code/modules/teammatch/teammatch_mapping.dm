@@ -1,6 +1,6 @@
 /area/teammatch
 	name = "Teammatch Arena"
-	icon = 'icons/area/area_teammatch.dmi'
+	icon = 'icons/psychonaut/area/area_teammatch.dmi'
 	requires_power = FALSE
 	default_gravity = STANDARD_GRAVITY
 	area_flags = LOCAL_TELEPORT | EVENT_PROTECTED | QUIET_LOGS | NO_DEATH_MESSAGE | BINARY_JAMMING

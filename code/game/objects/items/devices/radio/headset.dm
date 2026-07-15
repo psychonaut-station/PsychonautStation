@@ -490,5 +490,3 @@ GLOBAL_LIST_INIT(channel_tokens, list(
 	use_command = !use_command
 	to_chat(user, span_notice("You toggle high-volume mode [use_command ? "on" : "off"]."))
 	return CLICK_ACTION_SUCCESS
-
-/obj/item/radio/headset/teammatch

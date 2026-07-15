@@ -1,6 +1,6 @@
 /datum/outfit/teammatch_loadout //remember that fun > balance
 	name = ""
-	ears = /obj/item/radio/headset/teammatch
+	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/sneakers/black // im not doing this on all of them
 	/// Name shown in the UI
 	var/display_name = ""

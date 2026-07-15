@@ -33,7 +33,7 @@
 		stack_trace("Attempted to create a teammatch lobby without a host.")
 		return qdel(src)
 	host = player.ckey
-	set_scenerio(pick(GLOB.teammatch_game.scenerios))
+	set_scenerio(pick(GLOB.teammatch_game.get_allowed_scenerios()))
 	if(isnull(scenerio))
 		stack_trace("Attempted to create a teammatch lobby without any scenerio")
 		return qdel(src)
@@ -83,6 +83,7 @@
 	map.template_in_use = TRUE
 	RegisterSignal(map, COMSIG_LAZY_TEMPLATE_LOADED, PROC_REF(map_loaded))
 	location = map.lazy_load()
+	GLOB.teammatch_game.active_scenerios |= scenerio
 	if (!location)
 		map.template_in_use = FALSE
 		UnregisterSignal(map, COMSIG_LAZY_TEMPLATE_LOADED)
@@ -473,11 +474,11 @@
 	return team_players
 
 /datum/teammatch_lobby/proc/set_scenerio(new_scenerio)
-	if (playing || !new_scenerio || !GLOB.teammatch_game.scenerios[new_scenerio])
-		return
+	var/datum/teammatch_scenerio/scenerio_prefab = GLOB.teammatch_game.get_allowed_scenerios()[new_scenerio]
+	if (playing || !new_scenerio || !scenerio_prefab)
+		return FALSE
 	if(!isnull(scenerio))
 		qdel(scenerio)
-	var/datum/teammatch_scenerio/scenerio_prefab = GLOB.teammatch_game.scenerios[new_scenerio]
 	scenerio = new scenerio_prefab.type (src)
 	for (var/player_key in players)
 		var/team_type = players[player_key]["team"]
@@ -486,6 +487,7 @@
 		if (players[player_key]["loadout"] in loadouts)
 			continue
 		players[player_key]["loadout"] = loadouts[1]
+	return TRUE
 
 /datum/teammatch_lobby/proc/change_map(new_map)
 	if (!new_map || !GLOB.teammatch_game.maps[new_map])
@@ -495,6 +497,8 @@
 /datum/teammatch_lobby/proc/clear_reservation(datum/turf_reservation/location)
 	if(!location || isnull(map))
 		return
+
+	GLOB.teammatch_game.active_scenerios -= scenerio
 
 	var/static/list/ignored_atoms = typecacheof(list(/mob/dead, /obj/effect/landmark, /obj/docking_port))
 	var/list/all_atoms_by_turf = list()
@@ -552,12 +556,7 @@
 	data["admin"] = is_admin
 	data["host"] = is_host
 
-	var/list/scenerios = list()
-	for (var/scenerio_name in GLOB.teammatch_game.scenerios)
-		scenerios += scenerio_name
-	scenerios = sort_list(scenerios)
-
-	data["scenerios"] = scenerios
+	data["scenerios"] = get_scenerios()
 
 	data["scenerio"] = list()
 	data["scenerio"]["name"] = scenerio.name
@@ -569,7 +568,7 @@
 	data["map"]["name"] = map.name
 	data["map"]["desc"] = map.desc
 
-	data["teams"] = get_teams_information()
+	data["teams"] = get_teams()
 
 	data["players"] = get_player_list()
 	data["observers"] = get_observer_list()
@@ -695,8 +694,7 @@
 						return FALSE
 					if (!(params["scenerio"] in GLOB.teammatch_game.scenerios))
 						return FALSE
-					set_scenerio(params["scenerio"])
-					return TRUE
+					return set_scenerio(params["scenerio"])
 				if ("change_map")
 					if (playing)
 						return FALSE
@@ -767,7 +765,7 @@
 /datum/teammatch_lobby/proc/get_team(team_type)
 	return (playing == TEAMMATCH_PLAYING) ? teams[team_type] : GLOB.teammatch_game.teams[team_type]
 
-/datum/teammatch_lobby/proc/get_teams_information()
+/datum/teammatch_lobby/proc/get_teams()
 	var/list/all_teams = alist()
 	for(var/datum/teammatch_team/team_type as anything in scenerio.teams)
 		var/datum/teammatch_team/team = get_team(team_type)
@@ -790,3 +788,10 @@
 		LAZYSET(all_teams, team_type, team_info)
 
 	return all_teams
+
+/datum/teammatch_lobby/proc/get_scenerios()
+	var/list/scenerios = list()
+	for (var/scenerio_name in GLOB.teammatch_game.get_allowed_scenerios())
+		scenerios += scenerio_name
+	scenerios = sort_list(scenerios)
+	return scenerios

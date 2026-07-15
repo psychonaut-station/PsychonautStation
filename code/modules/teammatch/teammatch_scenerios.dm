@@ -14,6 +14,7 @@
 	var/minimap_table_type = /obj/machinery/minimap_table/small
 
 	var/list/teams = list()
+	var/is_singular = FALSE
 
 /datum/teammatch_scenerio/New()
 	. = ..()
@@ -53,6 +54,7 @@
 	)
 
 	minimap_table_type = /obj/machinery/minimap_table/small/marines
+	is_singular = TRUE
 	var/list/poddoors = list()
 
 /datum/teammatch_scenerio/xenomarine/post_start(datum/teammatch_lobby/lobby)

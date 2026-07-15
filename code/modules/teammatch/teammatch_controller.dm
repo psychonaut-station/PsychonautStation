@@ -7,6 +7,8 @@
 	var/list/datum/teammatch_lobby/lobbies = list()
 	/// Assoc list of all teams (path = team)
 	var/list/datum/teammatch_team/teams = list()
+	/// Used scenerios
+	var/list/datum/teammatch_scenerio/active_scenerios = list()
 
 /datum/teammatch_controller/New()
 	. = ..()
@@ -40,6 +42,15 @@
 	lobbies[new_host] = lobbies[host]
 	lobbies[host] = null
 	lobbies.Remove(host)
+
+/datum/teammatch_controller/proc/get_allowed_scenerios() as /list
+	var/list/all_scenerios = scenerios.Copy()
+	for(var/datum/teammatch_scenerio/scenerio in active_scenerios)
+		if(!scenerio.is_singular)
+			continue
+		all_scenerios -= scenerio.name
+
+	return all_scenerios
 
 /datum/teammatch_controller/ui_state(mob/user)
 	return GLOB.observer_state

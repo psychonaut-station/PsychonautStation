@@ -53,9 +53,8 @@ export const NukeDiskGenerator = (props) => {
                     <Box>
                       Time left: {time_left} s
                       <ProgressBar
-                        minValue={0}
-                        maxValue={segment_time}
-                        value={(time_left / segment_time) * 10}
+
+                        value={(segment_time - time_left * 10) / segment_time}
                       />
                     </Box>
                     <Box>{message}</Box>

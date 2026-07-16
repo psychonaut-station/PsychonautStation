@@ -1,5 +1,5 @@
 /obj/structure/foldable_barricade
-	name = "Foldable barricade"
+	name = "foldable barricade"
 	desc = "A folding barricade made out of metal, making it slightly stronger than a normal metal barricade. Use a blowtorch to repair. Can be flipped down to create a path."
 	icon = 'icons/psychonaut/obj/barricade.dmi'
 	icon_state = "folding_metal_0"
@@ -30,6 +30,8 @@
 /obj/structure/foldable_barricade/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/climbable)
+	AddElement(/datum/element/simple_rotation)
+	register_context()
 
 	var/static/list/loc_connections = list(
 		COMSIG_ATOM_EXIT = PROC_REF(on_exit),
@@ -64,7 +66,6 @@
 	if(is_open)
 		return FALSE
 
-
 	if(isprojectile(mover))
 		var/obj/projectile/proj = mover
 		//Lets through bullets shot from behind the cover of the table
@@ -76,16 +77,27 @@
 
 	return TRUE
 
+/obj/structure/foldable_barricade/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	context[SCREENTIP_CONTEXT_LMB] = is_open ? "Close" : "Open"
+
+	if(istype(held_item, /obj/item/stack/rods) && !is_wired)
+		context[SCREENTIP_CONTEXT_LMB] = "Wire"
+	else if(held_item?.tool_behaviour == TOOL_WIRECUTTER && is_wired)
+		context[SCREENTIP_CONTEXT_LMB] = "Remove wires"
+	else if(held_item?.tool_behaviour == TOOL_WELDER)
+		context[SCREENTIP_CONTEXT_LMB] = "Repair"
+	else if(held_item?.tool_behaviour == TOOL_WRENCH)
+		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unanchor" : "Anchor"
+
 /obj/structure/foldable_barricade/attack_hand(mob/living/user)
 	. = ..()
 	if(.)
 		return
 
-	toggle_open(null, user)
+	toggle_open(user)
 
-/obj/structure/foldable_barricade/proc/toggle_open(state, atom/user)
-	if(state == is_open)
-		return
+/obj/structure/foldable_barricade/proc/toggle_open(atom/user)
 	playsound(loc, 'sound/items/tools/ratchet.ogg', 25, 1)
 	is_open = !is_open
 	density = !density
@@ -117,8 +129,6 @@
 
 	if(is_open)
 		layer = OBJ_LAYER
-	else if(!anchored)
-		layer = initial(layer)
 	else
 		switch(dir)
 			if(SOUTH)
@@ -134,7 +144,7 @@
 		. += mutable_appearance(icon, "[base_icon_state]_[barricade_type][is_open ? "_open" : ""]_wire", layer = dir == NORTH ? layer : ABOVE_MOB_LAYER)
 
 /obj/structure/foldable_barricade/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/stack/cable_coil))
+	if(istype(tool, /obj/item/stack/rods))
 		return wire(user, tool)
 	return ..()
 
@@ -161,26 +171,26 @@
 
 	playsound(loc, 'sound/items/tools/wirecutter.ogg', 25, TRUE)
 	balloon_alert_to_viewers("removed")
-	modify_max_integrity(max_integrity - 50)
+	modify_max_integrity(initial(max_integrity) - 50)
 	is_wired = FALSE
 	AddElement(/datum/element/climbable)
 	update_appearance()
-	new /obj/item/stack/cable_coil(loc)
+	new /obj/item/stack/rods(loc)
 
 /obj/structure/foldable_barricade/wrench_act(mob/living/user, obj/item/tool)
 	. = ..()
 	default_unfasten_wrench(user, tool)
 	return ITEM_INTERACT_SUCCESS
 
-/obj/structure/foldable_barricade/proc/wire(atom/user, obj/item/stack/cable_coil/coil)
+/obj/structure/foldable_barricade/proc/wire(atom/user, obj/item/stack/rods/rod)
 	if(!can_wire)
 		balloon_alert(user, "cannot wire barrier!")
 		return ITEM_INTERACT_BLOCKING
 	if(is_wired)
 		balloon_alert(user, "already wired!")
 		return ITEM_INTERACT_BLOCKING
-	if(!coil.use(1))
-		balloon_alert(user, "not enough cable!")
+	if(!rod.use(1))
+		balloon_alert(user, "not enough iron rod!")
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert_to_viewers("setting up wire...")
@@ -190,7 +200,7 @@
 	is_wired = TRUE
 	playsound(loc, 'sound/_psychonaut/grate.ogg', 25)
 	RemoveElement(/datum/element/climbable)
-	modify_max_integrity(max_integrity + 50)
+	modify_max_integrity(initial(max_integrity) + 50)
 	update_appearance()
 
 /obj/structure/foldable_barricade/setDir(newdir)
@@ -209,25 +219,10 @@
 
 	update_appearance()
 
-/obj/structure/foldable_barricade/attack_hand_secondary(mob/user, list/modifiers)
-	. = ..()
-	if(anchored)
-		balloon_alert(usr, "fastened to the floor")
-		return FALSE
-
-	setDir(turn(dir, 270))
-
 /obj/structure/foldable_barricade/attack_alien(mob/living/carbon/alien/attacker, list/modifiers)
 	if(is_wired)
 		balloon_alert(attacker, "barbed wire slicing into you!")
 		attacker.apply_damage(20, blocked = MELEE , sharpness = SHARP_EDGED)
-
-	return ..()
-
-/obj/structure/foldable_barricade/CanAllowThrough(atom/movable/mover, turf/target)
-	if(get_dir(loc, target) & dir)
-		if(is_wired && density && ismob(mover))
-			return FALSE
 
 	return ..()
 
@@ -247,7 +242,7 @@
 
 /obj/structure/foldable_barricade/handle_deconstruct(disassembled = TRUE, mob/living/blame_mob)
 	if(disassembled && is_wired)
-		new /obj/item/stack/cable_coil(loc)
+		new /obj/item/stack/rods(loc)
 	if(stack_type)
 		var/stack_amt = destroyed_stack_amount
 		if(disassembled)

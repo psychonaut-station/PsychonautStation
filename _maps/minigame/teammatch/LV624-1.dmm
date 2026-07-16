@@ -29,11 +29,12 @@
 	},
 /area/teammatch/xm/jungle/northwest)
 "aw" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/machinery/vending/tool,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
-/obj/machinery/vending/tool,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
 "aC" = (
@@ -292,13 +293,14 @@
 /obj/machinery/power/terminal{
 	dir = 4
 	},
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	color = "#ffa600";
-	alpha = 125
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/light/directional/south,
 /obj/machinery/computer/monitor{
 	dir = 1
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#ffa600";
+	alpha = 125
 	},
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
@@ -361,11 +363,12 @@
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/southwest)
 "db" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "dc" = (
@@ -379,9 +382,10 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/sand7)
 "dj" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
@@ -643,7 +647,8 @@
 "fs" = (
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/machinery/vending/engivend,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -761,12 +766,13 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/tablefort)
 "gy" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/atmospherics/components/unary/thermomachine/freezer{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
@@ -843,10 +849,7 @@
 /area/teammatch/xm/robotics)
 "hd" = (
 /obj/structure/window/reinforced/spawner/directional/west,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	color = "#ffa600";
-	alpha = 125
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/structure/closet/crate/wooden,
 /obj/item/stack/sheet/plasteel/fifty,
 /obj/item/stack/sheet/plasteel/fifty,
@@ -860,6 +863,10 @@
 /obj/item/stack/sheet/mineral/plasma/fifty,
 /obj/item/stack/sheet/mineral/plasma/fifty,
 /obj/item/stack/sheet/mineral/plasma/fifty,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#ffa600";
+	alpha = 125
+	},
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
 "he" = (
@@ -921,7 +928,8 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/robotics)
 "hH" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -1468,11 +1476,12 @@
 /area/teammatch/xm/corporate_affairs)
 "mI" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/machinery/power/smes/ship,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
-/obj/machinery/power/smes/ship,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
 "mL" = (
@@ -1537,20 +1546,21 @@
 /area/teammatch/xm/jungle/northwest)
 "nx" = (
 /obj/structure/closet/crate/wooden,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/item/storage/toolbox/emergency/turret/marine,
+/obj/item/storage/toolbox/emergency/turret/marine,
+/obj/item/storage/toolbox/emergency/turret/marine,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/iron/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/item/stack/sheet/glass/fifty,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
-/obj/item/storage/toolbox/emergency/turret/marine,
-/obj/item/storage/toolbox/emergency/turret/marine,
-/obj/item/storage/toolbox/emergency/turret/marine,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/iron/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/glass/fifty,
-/obj/item/stack/sheet/glass/fifty,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
 "ny" = (
@@ -1665,13 +1675,14 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/robotics)
 "oK" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/structure/table/reinforced,
 /obj/machinery/reagentgrinder{
 	pixel_y = 15
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
@@ -1843,11 +1854,12 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
 "qu" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/chem_master,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "qv" = (
@@ -2282,12 +2294,13 @@
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/robotics)
 "um" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/atmospherics/pipe/smart/manifold4w/cyan/visible,
 /obj/structure/sink/directional/north,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "uo" = (
@@ -2395,7 +2408,8 @@
 /obj/structure/cable,
 /obj/machinery/door/airlock/engineering/glass,
 /obj/effect/mapping_helpers/airlock/access/all/away/engineering,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -3036,7 +3050,8 @@
 /area/teammatch/xm/hydroponics/aux)
 "Bn" = (
 /obj/structure/reagent_dispensers/fueltank,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -3351,10 +3366,7 @@
 /turf/open/water/beach,
 /area/teammatch/xm/caves/central3)
 "Ei" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/structure/table/reinforced,
 /obj/item/reagent_containers/cup/beaker/cryoxadone{
 	pixel_x = 6;
@@ -3371,6 +3383,10 @@
 /obj/item/reagent_containers/cup/beaker/cryoxadone{
 	pixel_x = -6;
 	pixel_y = 10
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
@@ -4041,7 +4057,8 @@
 /area/teammatch/xm/river1)
 "Li" = (
 /obj/structure/cable,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -4591,7 +4608,8 @@
 /area/teammatch/xm/jungle/northwest)
 "QM" = (
 /obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -4775,14 +4793,15 @@
 /turf/open/floor/grass,
 /area/teammatch/xm/jungle/central)
 "Sp" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/cryo_cell{
 	dir = 4
 	},
 /obj/machinery/light/directional/west,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Sq" = (
@@ -5049,12 +5068,13 @@
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Uw" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/atmospherics/components/unary/portables_connector/visible{
 	dir = 4
+	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
 	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
@@ -5223,7 +5243,8 @@
 /area/teammatch/xm/corporate_affairs)
 "Wo" = (
 /obj/machinery/autolathe/hacked,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
@@ -5334,11 +5355,12 @@
 /area/teammatch/xm/jungle/northwest)
 "XC" = (
 /obj/machinery/power/rtg/canterbury,
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/structure/cable,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
 	color = "#ffa600";
 	alpha = 125
 	},
-/obj/structure/cable,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
 "XE" = (
@@ -5350,11 +5372,12 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
 "XF" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/machinery/chem_dispenser,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "XJ" = (
@@ -5551,15 +5574,16 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
 "Zs" = (
-/obj/effect/turf_decal/tile/neutral/fourcorners/includeoutlines{
-	alpha = 195;
-	color = "#458250"
-	},
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
 /obj/structure/table/reinforced,
 /obj/item/stack/sheet/plastic/five,
 /obj/item/stack/sheet/plastic/five,
 /obj/item/stack/sheet/plastic/five,
 /obj/item/stack/sheet/plastic/five,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Zt" = (

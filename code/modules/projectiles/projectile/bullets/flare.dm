@@ -20,6 +20,7 @@
 		living_target.ignite_mob()
 
 	if(istype(target, /obj/structure/alien/weeds))
+		. = BULLET_ACT_BLOCK
 		qdel(target)
 
 	deletion_queued = PROJECTILE_IMPACT_DELETE

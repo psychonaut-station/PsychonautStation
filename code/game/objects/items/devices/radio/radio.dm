@@ -424,11 +424,10 @@
 				return
 	if (message_mods[MODE_TTS_IDENTIFIER])
 		filtered_mods[MODE_TTS_IDENTIFIER] = message_mods[MODE_TTS_IDENTIFIER]
-
 	talk_into(speaker, raw_message, spans=spans, language=message_language, message_mods=filtered_mods)
 
 /// Checks if this radio can receive on the given frequency.
-/obj/item/radio/proc/can_receive(input_frequency, list/levels, list/message_mods)
+/obj/item/radio/proc/can_receive(input_frequency, list/levels)
 	// deny checks
 	if (levels != RADIO_NO_Z_LEVEL_RESTRICTION)
 		var/turf/position = get_turf(src)

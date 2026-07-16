@@ -127,8 +127,6 @@
 	if(0 in levels)
 		signal_reaches_every_z_level = RADIO_NO_Z_LEVEL_RESTRICTION
 
-	var/list/message_mods = data["mods"]
-
 	// Assemble the list of radios
 	var/list/radios = list()
 	switch (transmission_method)
@@ -139,30 +137,31 @@
 				radios = all_radios_of_our_frequency.Copy()
 
 			for(var/obj/item/radio/subspace_radio in radios)
-				if(!subspace_radio.can_receive(frequency, signal_reaches_every_z_level, message_mods))
+				if(!subspace_radio.can_receive(frequency, signal_reaches_every_z_level))
 					radios -= subspace_radio
 
 			// Syndicate radios can hear all well-known radio channels
 			for(var/channel in GLOB.default_radio_channels)
 				if (GLOB.default_radio_channels[channel] == frequency)
 					for(var/obj/item/radio/syndicate_radios in GLOB.all_radios["[FREQ_SYNDICATE]"])
-						if(syndicate_radios.can_receive(FREQ_SYNDICATE, RADIO_NO_Z_LEVEL_RESTRICTION, message_mods))
+						if(syndicate_radios.can_receive(FREQ_SYNDICATE, RADIO_NO_Z_LEVEL_RESTRICTION))
 							radios |= syndicate_radios
 
 		if (TRANSMISSION_RADIO)
 			// Only radios not currently in subspace mode
 			for(var/obj/item/radio/non_subspace_radio in GLOB.all_radios["[frequency]"])
-				if(!non_subspace_radio.subspace_transmission && non_subspace_radio.can_receive(frequency, signal_reaches_every_z_level, message_mods))
+				if(!non_subspace_radio.subspace_transmission && non_subspace_radio.can_receive(frequency, signal_reaches_every_z_level))
 					radios += non_subspace_radio
 
 		if (TRANSMISSION_SUPERSPACE)
 			// Only radios which are independent
 			for(var/obj/item/radio/independent_radio in GLOB.all_radios["[frequency]"])
-				if((independent_radio.special_channels & RADIO_SPECIAL_CENTCOM) && independent_radio.can_receive(frequency, signal_reaches_every_z_level, message_mods))
+				if((independent_radio.special_channels & RADIO_SPECIAL_CENTCOM) && independent_radio.can_receive(frequency, signal_reaches_every_z_level))
 					radios += independent_radio
 
 	for(var/obj/item/radio/called_radio as anything in radios)
 		called_radio.on_receive_message(data)
+	var/list/message_mods = data["mods"]
 	// From the list of radios, find all mobs who can hear those.
 	var/list/receive = get_hearers_in_radio_ranges(radios)
 	var/list/receive_radios = null

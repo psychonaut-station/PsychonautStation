@@ -375,10 +375,10 @@
 		TryToSwitchState(xeno_attacker)
 		return TRUE
 
-	src.balloon_alert(xeno_attacker, "destroying...")
+	balloon_alert(xeno_attacker, "destroying...")
 	playsound(src, 'sound/effects/blob/attackblob.ogg', 25)
 	if(do_after(xeno_attacker, 1 SECONDS, src))
-		src.balloon_alert(xeno_attacker, "destroyed")
+		balloon_alert(xeno_attacker, "destroyed")
 		qdel(src)
 
 /obj/structure/mineral_door/resin/take_damage(damage_amount, damage_type, armor_type, effects, attack_dir, armour_penetration, mob/living/blame_mob)
@@ -392,9 +392,9 @@
 /obj/structure/mineral_door/resin/ex_act(severity)
 	switch(severity)
 		if(EXPLODE_DEVASTATE)
-			qdel()
+			qdel(src)
 		if(EXPLODE_HEAVY)
-			qdel()
+			qdel(src)
 		if(EXPLODE_LIGHT)
 			take_damage((rand(40, 60)), BRUTE, BOMB)
 
@@ -415,17 +415,16 @@
 
 //do we still have something next to us to support us?
 /obj/structure/mineral_door/resin/proc/check_resin_support()
-	var/turf/T
 	for(var/i in GLOB.cardinals)
-		T = get_step(src, i)
-		if(T.density)
+		var/turf/support = get_step(src, i)
+		if(support.density)
 			. = TRUE
 			break
-		if(locate(/obj/structure/mineral_door/resin) in T)
+		if(locate(/obj/structure/mineral_door/resin) in support)
 			. = TRUE
 			break
 	if(!.)
-		src.balloon_alert_to_viewers("collapsed")
+		balloon_alert_to_viewers("collapsed")
 		qdel(src)
 
 /obj/structure/mineral_door/resin/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)

@@ -115,6 +115,31 @@
 	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
 	storage_type = /datum/storage/holster/flarepouch
 
+/obj/item/storage/belt/holster/flarepouch/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/item/storage/belt/holster/flarepouch/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+
+	if(loc != user || held_item == src)
+		return
+
+	var/obj/item/ammo_casing/a25mm/flare = locate() in contents
+
+	if(flare && held_item && istype(held_item, /obj/item/gun/ballistic/flarelauncher))
+		context[SCREENTIP_CONTEXT_RMB] = "Reload flare launcher"
+		return TRUE
+
+	var/obj/item/gun/ballistic/flarelauncher/flarelauncher = locate() in contents
+
+	if(flarelauncher)
+		context[SCREENTIP_CONTEXT_LMB] = "Take flare launcher"
+	else if(flare)
+		context[SCREENTIP_CONTEXT_LMB] = "Take flare"
+
+	return TRUE
+
 /obj/item/storage/belt/holster/flarepouch/PopulateContents()
 	generate_items_inside(list(
 		/obj/item/ammo_casing/a25mm = 26,

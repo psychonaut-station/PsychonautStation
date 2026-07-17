@@ -55,8 +55,6 @@ GLOBAL_VAR(station_nuke_source)
 	var/obj/effect/countdown/nuclearbomb/countdown
 	/// is this nuke on the MINIMAP_BOMB_BLIP tag minimap?
 	var/is_on_minimap = TRUE
-	/// The nuclear bomb has unique panel then others
-	var/has_unique_panel = FALSE
 	/// Minimap ID for minimap blip
 	var/minimap_id
 
@@ -420,7 +418,7 @@ GLOBAL_VAR(station_nuke_source)
 	if(.)
 		return
 	playsound(src, SFX_TERMINAL_TYPE, 20, FALSE)
-	if(has_unique_panel)
+	if(istype(src, /obj/machinery/nuclearbomb/three_disked))
 		return FALSE
 	switch(action)
 		if("eject_disk")

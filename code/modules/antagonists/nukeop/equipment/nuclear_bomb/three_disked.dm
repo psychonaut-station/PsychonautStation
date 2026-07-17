@@ -1,5 +1,4 @@
 /obj/machinery/nuclearbomb/three_disked
-	has_unique_panel = TRUE
 	var/obj/item/disk/nuclear/fake/three_disked/red/r_auth
 	var/obj/item/disk/nuclear/fake/three_disked/blue/b_auth
 

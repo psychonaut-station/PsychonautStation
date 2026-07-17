@@ -72,7 +72,7 @@ GLOBAL_LIST_INIT(strippable_alien_humanoid_items, create_strippable_list(list(
 		if(!alien.key || alien.stat == DEAD) //Only living aliens with a ckey are valid.
 			continue
 		var/obj/item/organ/alien/hivenode/node = alien.get_organ_by_type(/obj/item/organ/alien/hivenode)
-		if(isnull(node) || isnull(hive_id) || node.hive_id == hive_id)
+		if(!isnull(hive_id) && (node?.hive_id != hive_id))
 			continue
 		return alien
 	return null

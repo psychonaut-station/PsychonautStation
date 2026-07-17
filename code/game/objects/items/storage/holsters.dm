@@ -121,22 +121,21 @@
 
 /obj/item/storage/belt/holster/flarepouch/add_context(atom/source, list/context, obj/item/held_item, mob/user)
 	. = ..()
-
 	if(loc != user || held_item == src)
 		return
 
-	var/obj/item/ammo_casing/a25mm/flare = locate() in contents
+	if(istype(held_item, /obj/item/gun/ballistic/flarelauncher))
+		if(locate(/obj/item/ammo_casing/a25mm/) in contents)
+			context[SCREENTIP_CONTEXT_RMB] = "Reload flare launcher"
+			. = CONTEXTUAL_SCREENTIP_SET
 
-	if(flare && held_item && istype(held_item, /obj/item/gun/ballistic/flarelauncher))
-		context[SCREENTIP_CONTEXT_RMB] = "Reload flare launcher"
-		return TRUE
-
-	var/obj/item/gun/ballistic/flarelauncher/flarelauncher = locate() in contents
-
-	if(flarelauncher)
-		context[SCREENTIP_CONTEXT_LMB] = "Take flare launcher"
-	else if(flare)
-		context[SCREENTIP_CONTEXT_LMB] = "Take flare"
+	else if(isnull(held_item))
+		if(locate(/obj/item/gun/ballistic/flarelauncher) in contents)
+			context[SCREENTIP_CONTEXT_LMB] = "Take flare launcher"
+			. = CONTEXTUAL_SCREENTIP_SET
+		else if(locate(/obj/item/ammo_casing/a25mm) in contents)
+			context[SCREENTIP_CONTEXT_LMB] = "Take flare"
+			. = CONTEXTUAL_SCREENTIP_SET
 
 	return TRUE
 

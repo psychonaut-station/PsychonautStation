@@ -58,7 +58,7 @@
 	players = null
 	observers = null
 	QDEL_NULL(scenerio)
-	QDEL_NULL(teams)
+	QDEL_LIST(teams)
 	living_players = null
 	loadout_amounts = null
 	map?.template_in_use = FALSE //just incase
@@ -278,10 +278,10 @@
 
 /datum/teammatch_lobby/proc/register_player_signals(new_player)
 	RegisterSignals(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED), PROC_REF(player_died))
-	RegisterSignal(new_player, COMSIG_LIVING_ON_WABBAJACKED, PROC_REF(player_wabbajacked))
+	RegisterSignal(new_player, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF, PROC_REF(mind_transfered))
 
 /datum/teammatch_lobby/proc/unregister_player_signals(new_player)
-	UnregisterSignal(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_LIVING_ON_WABBAJACKED))
+	UnregisterSignal(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF))
 
 /datum/teammatch_lobby/proc/lobby_afk_probably()
 	if (QDELING(src) || playing)
@@ -289,11 +289,11 @@
 	announce(span_warning("Lobby ([host]) was closed due to not starting after 5 minutes, being potentially AFK. Please be faster next time."))
 	GLOB.teammatch_game.remove_lobby(host)
 
-/datum/teammatch_lobby/proc/player_wabbajacked(mob/living/player, mob/living/new_mob)
+/datum/teammatch_lobby/proc/mind_transfered(mob/living/old_body, mob/living/new_body, datum/mind/swapping)
 	SIGNAL_HANDLER
-	unregister_player_signals(player)
-	players[player.ckey]["mob"] = new_mob
-	register_player_signals(new_mob)
+	unregister_player_signals(old_body)
+	players[new_body.ckey]["mob"] = new_body
+	register_player_signals(new_body)
 
 /datum/teammatch_lobby/proc/player_died(mob/living/player, gibbed)
 	SIGNAL_HANDLER

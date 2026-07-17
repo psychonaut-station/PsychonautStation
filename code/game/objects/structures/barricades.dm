@@ -4,7 +4,7 @@
 	icon = 'icons/psychonaut/obj/barricade.dmi'
 	icon_state = "folding_metal_0"
 	base_icon_state = "folding"
-	anchored = FALSE
+	anchored = TRUE
 	density = FALSE
 	layer = BELOW_OBJ_LAYER
 	flags_1 = ON_BORDER_1
@@ -13,17 +13,12 @@
 
 	pass_flags_self = LETPASSTHROW
 	max_integrity = 200
-	///The type of stack the barricade dropped when disassembled if any.
-	var/stack_type = /obj/item/stack/sheet/iron
 	///The amount of stack dropped when disassembled at full health
 	var/stack_amount = 5
 	///to specify a non-zero amount of stack to drop when destroyed
 	var/destroyed_stack_amount = 1
-	var/barricade_type = "metal"
 	///Whether this is open
 	var/is_open = TRUE
-	///Can this barricade type be wired
-	var/can_wire = TRUE
 	///Is this barricade wired?
 	var/is_wired = FALSE
 
@@ -81,28 +76,29 @@
 	. = ..()
 	context[SCREENTIP_CONTEXT_LMB] = is_open ? "Close" : "Open"
 
-	if(istype(held_item, /obj/item/stack/rods) && !is_wired)
-		context[SCREENTIP_CONTEXT_LMB] = "Wire"
-	else if(held_item?.tool_behaviour == TOOL_WIRECUTTER && is_wired)
-		context[SCREENTIP_CONTEXT_LMB] = "Remove wires"
-	else if(held_item?.tool_behaviour == TOOL_WELDER)
-		context[SCREENTIP_CONTEXT_LMB] = "Repair"
-	else if(held_item?.tool_behaviour == TOOL_WRENCH)
-		context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unanchor" : "Anchor"
+	if(!isnull(held_item))
+		if(!is_wired && istype(held_item, /obj/item/stack/rods))
+			context[SCREENTIP_CONTEXT_LMB] = "Wire"
+		else if(is_wired && held_item.tool_behaviour == TOOL_WIRECUTTER)
+			context[SCREENTIP_CONTEXT_LMB] = "Remove wires"
+		else if(held_item.tool_behaviour == TOOL_WELDER)
+			context[SCREENTIP_CONTEXT_LMB] = "Repair"
+		else if(held_item.tool_behaviour == TOOL_WRENCH)
+			context[SCREENTIP_CONTEXT_LMB] = anchored ? "Unanchor" : "Anchor"
+
+	return CONTEXTUAL_SCREENTIP_SET
 
 /obj/structure/foldable_barricade/attack_hand(mob/living/user)
 	. = ..()
-	if(.)
-		return
+	if(!.)
+		toggle_open(user)
 
-	toggle_open(user)
-
-/obj/structure/foldable_barricade/proc/toggle_open(atom/user)
+/obj/structure/foldable_barricade/proc/toggle_open(mob/living/user)
 	playsound(loc, 'sound/items/tools/ratchet.ogg', 25, 1)
 	is_open = !is_open
 	density = !density
 
-	user?.visible_message(span_notice("[user] flips [src] [is_open ? "open" :"closed"]."),
+	user.visible_message(span_notice("[user] flips [src] [is_open ? "open" :"closed"]."),
 		span_notice("You flip [src] [is_open ? "open" :"closed"]."))
 
 	update_appearance()
@@ -121,7 +117,7 @@
 		if(0.75 to 1)
 			damage_state = 0
 
-	icon_state = "[base_icon_state]_[barricade_type]"
+	icon_state = "[base_icon_state]__metal"
 	if(is_open)
 		icon_state += "_open"
 
@@ -141,7 +137,7 @@
 /obj/structure/foldable_barricade/update_overlays()
 	. = ..()
 	if(is_wired)
-		. += mutable_appearance(icon, "[base_icon_state]_[barricade_type][is_open ? "_open" : ""]_wire", layer = dir == NORTH ? layer : ABOVE_MOB_LAYER)
+		. += mutable_appearance(icon, "[base_icon_state]_metal[is_open ? "_open" : ""]_wire", layer = dir == NORTH ? layer : ABOVE_MOB_LAYER)
 
 /obj/structure/foldable_barricade/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
 	if(istype(tool, /obj/item/stack/rods))
@@ -166,13 +162,13 @@
 
 	balloon_alert_to_viewers("removing wire...")
 
-	if(!do_after(user, 2 SECONDS, src, NONE))
+	if(!do_after(user, 2 SECONDS, src, NONE) || !is_wired)
 		return TRUE
 
+	is_wired = FALSE
 	playsound(loc, 'sound/items/tools/wirecutter.ogg', 25, TRUE)
 	balloon_alert_to_viewers("removed")
 	modify_max_integrity(initial(max_integrity) - 50)
-	is_wired = FALSE
 	AddElement(/datum/element/climbable)
 	update_appearance()
 	new /obj/item/stack/rods(loc)
@@ -183,9 +179,6 @@
 	return ITEM_INTERACT_SUCCESS
 
 /obj/structure/foldable_barricade/proc/wire(atom/user, obj/item/stack/rods/rod)
-	if(!can_wire)
-		balloon_alert(user, "cannot wire barrier!")
-		return ITEM_INTERACT_BLOCKING
 	if(is_wired)
 		balloon_alert(user, "already wired!")
 		return ITEM_INTERACT_BLOCKING
@@ -194,7 +187,7 @@
 		return ITEM_INTERACT_BLOCKING
 
 	balloon_alert_to_viewers("setting up wire...")
-	if(!do_after(user, 2 SECONDS, src))
+	if(!do_after(user, 2 SECONDS, src) || is_wired)
 		return
 
 	is_wired = TRUE
@@ -240,13 +233,8 @@
 		if(0 to 0.25)
 			. += span_warning("It's crumbling apart, just a few more blows will tear it apart.")
 
-/obj/structure/foldable_barricade/handle_deconstruct(disassembled = TRUE, mob/living/blame_mob)
+/obj/structure/foldable_barricade/atom_deconstruct(disassembled = TRUE)
 	if(disassembled && is_wired)
 		new /obj/item/stack/rods(loc)
-	if(stack_type)
-		var/stack_amt = destroyed_stack_amount
-		if(disassembled)
-			stack_amt = round(stack_amount * (atom_integrity/max_integrity)) //Get an amount of sheets back equivalent to remaining health. Obviously, fully destroyed means 0
-		if(stack_amt)
-			new stack_type (loc, stack_amt)
+	drop_custom_materials(max(atom_integrity / max_integrity, 1))
 	return ..()

@@ -198,4 +198,4 @@
 	)
 	time = 5 SECONDS
 	category = CAT_STRUCTURE
-	crafting_flags = CRAFT_MUST_BE_LEARNED
+	crafting_flags = CRAFT_MUST_BE_LEARNED | CRAFT_CHECK_DIRECTION

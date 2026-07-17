@@ -261,11 +261,11 @@
 		var/mob/living/carbon/human/human_player = new_player
 		human_player.equipOutfit(loadout)
 
+	new_player.PossessByPlayer(ckey)
+
 	scenerio.player_spawned(src, new_player, loadout, team)
 
 	team.after_spawn(src, scenerio, new_player, loadout)
-
-	new_player.PossessByPlayer(ckey)
 
 	living_players |= ckey
 

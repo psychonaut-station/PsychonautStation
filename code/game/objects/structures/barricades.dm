@@ -117,7 +117,7 @@
 		if(0.75 to 1)
 			damage_state = 0
 
-	icon_state = "[base_icon_state]__metal"
+	icon_state = "[base_icon_state]_metal"
 	if(is_open)
 		icon_state += "_open"
 

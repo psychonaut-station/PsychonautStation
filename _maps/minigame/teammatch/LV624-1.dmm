@@ -1594,8 +1594,10 @@
 /turf/open/floor/iron/grimy,
 /area/teammatch/xm/bar)
 "nR" = (
-/obj/machinery/iv_drip,
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/computer/operating{
+	dir = 8
+	},
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "nU" = (
@@ -2805,6 +2807,15 @@
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/corporate_affairs)
+"yU" = (
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined,
+/obj/effect/turf_decal/tile/neutral/fourcorners/outlined{
+	color = "#458250";
+	alpha = 195
+	},
+/obj/machinery/vending/medical,
+/turf/open/floor/iron/white,
+/area/shuttle/minigame/canterbury)
 "yV" = (
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/sand1)
@@ -4783,9 +4794,9 @@
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Sf" = (
-/obj/machinery/vending/medical,
 /obj/structure/window/reinforced/spawner/directional/west,
 /obj/structure/window/reinforced/spawner/directional/north,
+/obj/machinery/iv_drip,
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Si" = (
@@ -5064,7 +5075,7 @@
 /obj/item/storage/box/monkeycubes,
 /obj/item/storage/box/monkeycubes,
 /obj/machinery/door/window/left/directional/west,
-/obj/effect/mapping_helpers/airlock/access/all/away/medical,
+/obj/effect/mapping_helpers/airlock/access/any/away/medical,
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Uw" = (
@@ -5076,6 +5087,7 @@
 	color = "#458250";
 	alpha = 195
 	},
+/obj/machinery/portable_atmospherics/canister/anesthetic_mix,
 /turf/open/floor/iron/white,
 /area/shuttle/minigame/canterbury)
 "Uz" = (
@@ -19071,7 +19083,7 @@ BK
 GI
 yj
 dj
-dj
+yU
 Zs
 oK
 Ei

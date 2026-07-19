@@ -98,3 +98,9 @@ GLOBAL_ALIST_EMPTY(minimaps)
 		GLOB.minimaps[key] = minimap
 		. = minimap
 	generating_minimap = FALSE
+
+/proc/delete_minimap(datum/minimap/minimap)
+	if(isnull(minimap))
+		return
+	GLOB.minimaps -= "[minimap.z]_[minimap.id]"
+	qdel(minimap)

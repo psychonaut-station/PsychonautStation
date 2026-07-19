@@ -13,10 +13,6 @@
 
 	pass_flags_self = LETPASSTHROW
 	max_integrity = 200
-	///The amount of stack dropped when disassembled at full health
-	var/stack_amount = 5
-	///to specify a non-zero amount of stack to drop when destroyed
-	var/destroyed_stack_amount = 1
 	///Whether this is open
 	var/is_open = TRUE
 	///Is this barricade wired?

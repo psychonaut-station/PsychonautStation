@@ -40,6 +40,7 @@
 	head = /obj/item/clothing/head/helmet
 	id = /obj/item/card/id/away/dogtag
 	back = /obj/item/storage/backpack
+	box = /obj/item/storage/box/survival
 	backpack_contents = list()
 	team_radio_freq = FREQ_XM_MARINE
 

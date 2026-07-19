@@ -1,6 +1,6 @@
 /datum/teammatch_lobby
 	var/uid = 0
-	///The amount of supermatters that have been created this round
+	///The amount of teammatch games that have been created this round
 	var/static/gl_uid = 1
 
 	/// Ckey of the host
@@ -20,7 +20,7 @@
 	var/playing = TEAMMATCH_NOT_PLAYING
 	/// Number of total ready players
 	var/ready_count = 0
-	var/alist/team_spawn_turfs = alist()
+	var/alist/team_spawns = alist()
 	/// artificial time padding when we start loading to give lighting a breather (admin starts will set this to 0)
 	var/start_time = 5 SECONDS
 	var/start_timer
@@ -58,7 +58,9 @@
 	players = null
 	observers = null
 	QDEL_NULL(scenerio)
-	QDEL_LIST(teams)
+	QDEL_LIST_ASSOC_VAL(teams)
+	QDEL_LIST(team_spawns)
+	teams = null
 	living_players = null
 	loadout_amounts = null
 	map?.template_in_use = FALSE //just incase
@@ -66,8 +68,8 @@
 	location = null
 	deltimer(start_timer)
 	start_timer = null
+	delete_minimap(minimap)
 	minimap = null
-	location = null
 
 /datum/teammatch_lobby/proc/start_game()
 	if (playing)
@@ -100,7 +102,7 @@
 	for(var/thing in atoms)
 		if(istype(thing, /obj/effect/landmark/teammatch_player_spawn))
 			var/obj/effect/landmark/teammatch_player_spawn/spawner = thing
-			LAZYORASSOCLIST(team_spawn_turfs, spawner.team_type, get_turf(thing))
+			LAZYORASSOCLIST(team_spawns, spawner.team_type, thing)
 		else if(istype(thing, /obj/effect/landmark/minimap_spawner))
 			var/obj/effect/landmark/minimap_spawner/spawner = thing
 			tables["[spawner.id]"] = new scenerio.minimap_table_type (get_turf(spawner))
@@ -127,14 +129,14 @@
 		table.minimap = minimap
 
 /datum/teammatch_lobby/proc/start_game_after_delay()
-	if (!length(team_spawn_turfs))
+	if (!length(team_spawns))
 		stack_trace("Failed to get enough team spawns when loading teammatch map [map.name] for lobby [host].")
 		clear_reservation(location)
 		playing = FALSE
 		return FALSE
 
 	for (var/team_type in scenerio.teams)
-		teams[team_type] = new team_type()
+		teams[team_type] = new team_type(FALSE)
 
 	var/list/candidates_by_loadout = list()
 	var/list/final_loadouts = list()
@@ -187,7 +189,8 @@
 			candidates_by_loadout -= loadout_type
 
 	for (var/key in players)
-		var/mob/dead/observer/observer = players[key]["mob"]
+		var/datum/weakref/observer_ref = players[key]["mob"]
+		var/mob/dead/observer/observer = observer_ref?.resolve()
 		if (isnull(observer) || !observer.client)
 			log_game("Removed player [key] from teammatch lobby [host], as they couldn't be found.")
 			remove_ckey_from_play(key)
@@ -196,11 +199,13 @@
 		var/datum/outfit/teammatch_loadout/loadout = final_loadouts[key]
 
 		var/player_team = players[key]["team"]
-		var/turf/spawn_turf = pick(LAZYACCESS(team_spawn_turfs, player_team))
+		var/picked_spawn = pick(LAZYACCESS(team_spawns, player_team))
+		var/turf/spawn_turf = get_turf(picked_spawn)
 		spawn_observer_as_player(key, spawn_turf, loadout)
 
 	for (var/observer_key in observers)
-		var/mob/observer = observers[observer_key]["mob"]
+		var/datum/weakref/observer_ref = observers[observer_key]["mob"]
+		var/mob/observer = observer_ref?.resolve()
 		observer.forceMove(pick(location.reserved_turfs))
 
 	playing = TEAMMATCH_PLAYING
@@ -211,16 +216,20 @@
 
 	return TRUE
 
-/datum/teammatch_lobby/proc/spawn_observer_as_player(ckey, loc, datum/outfit/teammatch_loadout/loadout, is_respawn = FALSE)
+/datum/teammatch_lobby/proc/spawn_observer_as_player(ckey, turf/loc, datum/outfit/teammatch_loadout/loadout, is_respawn = FALSE)
+	if(isnull(loc))
+		return FALSE
 	var/list/players_info = players[ckey]
 
 	var/team_type = players_info["team"]
-	var/datum/teammatch_team/team = get_team(team_type)
+	var/datum/teammatch_team/team = teams[team_type]
 
 	if(is_respawn && !team.can_respawn())
 		return FALSE
 
-	var/mob/dead/observer/observer = players_info["mob"]
+	var/datum/weakref/observer_ref = players_info["mob"]
+	var/mob/dead/observer/observer = observer_ref?.resolve()
+
 	if (isnull(observer) || !observer.client)
 		remove_ckey_from_play(ckey)
 		return FALSE
@@ -271,17 +280,21 @@
 
 	team.add_player(ckey)
 
-	players_info["mob"] = new_player
+	players_info["mob"] = WEAKREF(new_player)
 
 	register_player_signals(new_player)
 	return TRUE
 
-/datum/teammatch_lobby/proc/register_player_signals(new_player)
-	RegisterSignals(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED), PROC_REF(player_died))
+/datum/teammatch_lobby/proc/register_player_signals(new_player, from_revive = FALSE)
+	RegisterSignals(new_player, list(COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_LIVING_DEATH), PROC_REF(player_died))
 	RegisterSignal(new_player, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF, PROC_REF(mind_transfered))
+	if(!from_revive)
+		RegisterSignal(new_player, COMSIG_LIVING_REVIVE, PROC_REF(player_revived))
 
-/datum/teammatch_lobby/proc/unregister_player_signals(new_player)
+/datum/teammatch_lobby/proc/unregister_player_signals(new_player, can_revive = FALSE)
 	UnregisterSignal(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF))
+	if(!can_revive)
+		UnregisterSignal(new_player, COMSIG_LIVING_REVIVE)
 
 /datum/teammatch_lobby/proc/lobby_afk_probably()
 	if (QDELING(src) || playing)
@@ -292,10 +305,10 @@
 /datum/teammatch_lobby/proc/mind_transfered(mob/living/old_body, mob/living/new_body, datum/mind/swapping)
 	SIGNAL_HANDLER
 	unregister_player_signals(old_body)
-	players[new_body.ckey]["mob"] = new_body
+	players[new_body.ckey]["mob"] = WEAKREF(new_body)
 	register_player_signals(new_body)
 
-/datum/teammatch_lobby/proc/player_died(mob/living/player, gibbed)
+/datum/teammatch_lobby/proc/player_died(mob/living/player)
 	SIGNAL_HANDLER
 	if(isnull(player) || QDELING(src) || HAS_TRAIT_FROM(player, TRAIT_NO_TRANSFORM, MAGIC_TRAIT))
 		return
@@ -304,7 +317,8 @@
 	if(!islist(players[ckey]))
 		for(var/potential_ckey in players)
 			var/list/player_info = players[potential_ckey]
-			if(player_info["mob"] && player_info["mob"] == player)
+			var/datum/weakref/mob_weakref = player_info["mob"]
+			if(mob_weakref && mob_weakref == WEAKREF(player))
 				ckey = potential_ckey
 				break
 
@@ -313,18 +327,49 @@
 
 	var/mob/dead/observer/ghost = !player.client ? player.get_ghost() : player.ghostize()
 
+	var/can_reenter_corpse = ghost?.can_reenter_corpse || FALSE
+
 	var/team_type = players[ckey]["team"]
 	var/datum/teammatch_team/team = get_team(team_type)
 	if(!isnull(ghost))
-		players[ckey]["mob"] = ghost
+		if(can_reenter_corpse)
+			players[ckey]["dead_mob"] = players[ckey]["dead_mob"] || players[ckey]["mob"]
+		players[ckey]["mob"] = WEAKREF(ghost)
 
 	living_players -= ckey
 	team.remove_player(ckey)
 
-	unregister_player_signals(player)
+	unregister_player_signals(player, can_reenter_corpse)
 
 	if(LAZYLEN(team.players) == 0)
 		team_lost(team_type)
+
+/datum/teammatch_lobby/proc/player_revived(mob/living/player, revive_flags)
+	SIGNAL_HANDLER
+	if(isnull(player) || QDELING(src))
+		return
+	var/ckey = player.ckey ? player.ckey : player.mind?.key
+	if(!islist(players[ckey]))
+		for(var/potential_ckey in players)
+			var/list/player_info = players[potential_ckey]
+			var/datum/weakref/mob_weakref = player_info["dead_mob"]
+			if(mob_weakref && mob_weakref == WEAKREF(player))
+				ckey = potential_ckey
+				break
+
+	if(!islist(players[ckey]))
+		return
+
+	var/team_type = players[ckey]["team"]
+	var/datum/teammatch_team/team = get_team(team_type)
+
+	players[ckey]["dead_mob"] = null
+	players[ckey]["mob"] = player
+
+	living_players |= ckey
+	team.add_player(ckey)
+
+	register_player_signals(player, TRUE)
 
 /datum/teammatch_lobby/proc/team_lost(datum/teammatch_team/team_type)
 	if(playing != TEAMMATCH_PLAYING)
@@ -351,7 +396,8 @@
 	announce(span_reallybig("GAME ENDED. [wintext ? "<BR>[wintext]" : ""]"))
 
 	for(var/ckey in players)
-		var/mob/loser = players[ckey]["mob"]
+		var/datum/weakref/mob_weakref = players[ckey]["mob"]
+		var/mob/loser = mob_weakref.resolve()
 		if(isliving(loser))
 			unregister_player_signals(loser)
 			loser.ghostize(can_reenter_corpse = FALSE)
@@ -364,14 +410,14 @@
 /datum/teammatch_lobby/proc/add_player(mob/mob, loadout, team, host = FALSE, ready = FALSE)
 	if (observers[mob.ckey])
 		CRASH("Tried to add [mob.ckey] as a player while being an observer.")
-	var/list/player_data = list("mob" = mob, "host" = host, "ready" = ready, "team" = team, "loadout" = loadout)
+	var/list/player_data = list("mob" = WEAKREF(mob), "dead_mob" = null, "host" = host, "ready" = ready, "team" = team, "loadout" = loadout)
 	players[mob.ckey] = player_data
 	ready_count += ready
 
 /datum/teammatch_lobby/proc/add_observer(mob/mob, host = FALSE)
 	if(players[mob.ckey])
 		CRASH("Tried to add [mob.ckey] as an observer while being a player.")
-	var/list/observer_data = list("mob" = mob, "host" = host)
+	var/list/observer_data = list("mob" = WEAKREF(mob), "host" = host)
 	observers[mob.ckey] = observer_data
 
 /datum/teammatch_lobby/proc/remove_ckey_from_play(ckey)
@@ -396,7 +442,8 @@
 	if(islist(info))
 		is_readied = info["ready"]
 		if(isnull(mob))
-			mob = info["mob"]
+			var/datum/weakref/mob_weakref = info["mob"]
+			mob = mob_weakref?.resolve()
 	var/datum/outfit/teammatch_loadout/default_loadout = team.default_loadout
 	remove_ckey_from_play(ckey)
 	add_player(mob, default_loadout, new_team, host == ckey, is_readied)
@@ -532,7 +579,7 @@
 	for(var/i = 1 to count)
 		var/datum/teammatch_team/picked_team = pick(scenerio.teams)
 
-		players["[rand(1,999)]"] = list("mob" = usr, "host" = FALSE, "ready" = FALSE, "team" = "[picked_team]", "loadout" = "[picked_team::default_loadout]")
+		players["[rand(1,999)]"] = list("mob" = WEAKREF(usr), "host" = FALSE, "ready" = FALSE, "team" = "[picked_team]", "loadout" = "[picked_team::default_loadout]")
 
 /datum/teammatch_lobby/ui_interact(mob/user, datum/tgui/ui)
 	ui = SStgui.try_update_ui(user, src, null)
@@ -605,7 +652,8 @@
 				if(!team.can_respawn())
 					return FALSE
 
-				var/turf/spawn_turf = pick(LAZYACCESS(team_spawn_turfs, player_team))
+				var/picked_spawn = pick(LAZYACCESS(team_spawns, player_team))
+				var/turf/spawn_turf = get_turf(picked_spawn)
 
 				var/leftover_amount = loadout_amounts[player_team][player_loadout]
 
@@ -725,7 +773,8 @@
 	var/list/player_list = list()
 	for (var/player_key in players)
 		var/list/player_info = players[player_key]
-		var/mob/player_mob = player_info["mob"]
+		var/datum/weakref/mob_weakref = player_info["mob"]
+		var/mob/player_mob = mob_weakref?.resolve()
 		if (isnull(player_mob) || !player_mob.client)
 			leave(player_key)
 			continue
@@ -749,7 +798,8 @@
 
 	for (var/observer_key in observers)
 		var/list/observer_info = observers[observer_key]
-		var/mob/observer_mob = observer_info["mob"]
+		var/datum/weakref/observer_weakref = observer_info["mob"]
+		var/mob/observer_mob = observer_weakref?.resolve()
 
 		if (isnull(observer_mob) || !observer_mob.client)
 			leave(observer_key)

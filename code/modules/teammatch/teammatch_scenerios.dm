@@ -57,6 +57,10 @@
 	is_singular = TRUE
 	var/list/poddoors = list()
 
+/datum/teammatch_scenerio/xenomarine/Destroy(force)
+	. = ..()
+	poddoors = null
+
 /datum/teammatch_scenerio/xenomarine/post_start(datum/teammatch_lobby/lobby)
 	addtimer(CALLBACK(src, PROC_REF(open_doors), lobby), 3 MINUTES)
 
@@ -80,6 +84,7 @@
 		if(istype(thing, /obj/effect/landmark/nuke_bomb_spawner))
 			nuclear_locations |= get_turf(thing)
 			qdel(thing)
+		CHECK_TICK
 
 	var/turf/nuclear_turf = pick(nuclear_locations)
 	if(nuclear_turf)
@@ -100,3 +105,4 @@
 	for(var/i in 1 to length(poddoors))
 		var/obj/machinery/door/poddoor/door = poddoors[i]
 		INVOKE_ASYNC(door, TYPE_PROC_REF(/obj/machinery/door/poddoor, open))
+	poddoors = null

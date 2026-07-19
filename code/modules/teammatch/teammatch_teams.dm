@@ -14,7 +14,7 @@
 	/// Default loadout of the team
 	var/datum/outfit/teammatch_loadout/default_loadout
 
-	/// Is this team is important on the teammatch
+	/// Is this team is important on the teammatch. Game ends when only 1 important team is left standing, ignoring others.
 	var/important_team = TRUE
 
 	/// Minimum players for this team
@@ -39,16 +39,22 @@
 	. = ..()
 	src.is_prototype = is_prototype
 
+/datum/teammatch_team/Destroy(force)
+	. = ..()
+	players = null
+
 /datum/teammatch_team/proc/add_player(ckey)
+	log_storyteller("1111")
 	if(is_prototype || !active)
+		log_storyteller("AAAAAAAAAAA 1:[is_prototype] 2:[active]")
 		return FALSE
-	LAZYOR(players, ckey)
+	players |= ckey
 	return TRUE
 
 /datum/teammatch_team/proc/remove_player(ckey)
 	if(is_prototype)
 		return FALSE
-	LAZYREMOVE(players, ckey)
+	players -= ckey
 	return TRUE
 
 /datum/teammatch_team/proc/can_respawn()

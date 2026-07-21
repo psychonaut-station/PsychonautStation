@@ -159,6 +159,18 @@
 	category = CAT_EQUIPMENT
 	crafting_flags = parent_type::crafting_flags | CRAFT_SKIP_MATERIALS_PARITY
 
+/datum/crafting_recipe/hudpatch
+	name = "Security Eye Patch"
+	result = /obj/item/clothing/glasses/hud/security/sunglasses/eyepatch
+	reqs = list(
+		/obj/item/clothing/glasses/eyepatch = 1,
+		/obj/item/clothing/glasses/hud/security/sunglasses = 1,
+		/obj/item/stack/cable_coil = 5
+	)
+	time = 5 SECONDS
+	category = CAT_EQUIPMENT
+	tool_behaviors = list (TOOL_SCREWDRIVER, TOOL_WIRECUTTER)
+
 /datum/crafting_recipe/hudsunsec
 	name = "Security HUDsunglasses"
 	result = /obj/item/clothing/glasses/hud/security/sunglasses

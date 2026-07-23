@@ -363,6 +363,8 @@
 		if(!istype(turf))
 			continue
 		for(var/obj/structure/mineral_door/resin/door in turf)
+			if(QDELETED(door))
+				continue
 			addtimer(CALLBACK(door, PROC_REF(check_resin_support)), 1)
 	return ..()
 

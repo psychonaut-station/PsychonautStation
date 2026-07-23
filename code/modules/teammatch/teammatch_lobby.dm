@@ -59,7 +59,7 @@
 	observers = null
 	QDEL_NULL(scenerio)
 	QDEL_LIST_ASSOC_VAL(teams)
-	QDEL_LIST(team_spawns)
+	QDEL_LAZYASSOCLIST(team_spawns)
 	teams = null
 	living_players = null
 	loadout_amounts = null
@@ -322,22 +322,24 @@
 				ckey = potential_ckey
 				break
 
-	if(!islist(players[ckey]))
+	if(!islist(players[ckey]) || !(ckey in living_players))
 		return
+
+	living_players -= ckey
+
+	var/team_type = players[ckey]["team"]
+	var/datum/teammatch_team/team = get_team(team_type)
+
+	team.remove_player(ckey)
 
 	var/mob/dead/observer/ghost = !player.client ? player.get_ghost() : player.ghostize()
 
 	var/can_reenter_corpse = ghost?.can_reenter_corpse || FALSE
 
-	var/team_type = players[ckey]["team"]
-	var/datum/teammatch_team/team = get_team(team_type)
 	if(!isnull(ghost))
 		if(can_reenter_corpse)
 			players[ckey]["dead_mob"] = players[ckey]["dead_mob"] || players[ckey]["mob"]
 		players[ckey]["mob"] = WEAKREF(ghost)
-
-	living_players -= ckey
-	team.remove_player(ckey)
 
 	unregister_player_signals(player, can_reenter_corpse)
 
@@ -562,7 +564,7 @@
 		victimized_turf.empty()
 		CHECK_TICK
 
-	map.reservations -= location
+	map?.reservations -= location
 	qdel(location)
 
 /datum/teammatch_lobby/Topic(href, href_list)

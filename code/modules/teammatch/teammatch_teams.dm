@@ -44,9 +44,7 @@
 	players = null
 
 /datum/teammatch_team/proc/add_player(ckey)
-	log_storyteller("1111")
 	if(is_prototype || !active)
-		log_storyteller("AAAAAAAAAAA 1:[is_prototype] 2:[active]")
 		return FALSE
 	players |= ckey
 	return TRUE

@@ -171,6 +171,11 @@ Des: Removes all infected images from the alien.
 		implant.removed(src)
 		implant.implant(new_xeno, force = TRUE)
 
+	var/datum/component/temporary_body/temporary_body = GetComponent(/datum/component/temporary_body)
+	if(!isnull(temporary_body))
+		new_xeno.AddComponent(/datum/component/temporary_body, temporary_body.old_mind, temporary_body.return_on_death, temporary_body.return_on_revive)
+		qdel(temporary_body)
+
 	new_xeno.multiply_alien_health(alien_health_multiplier)
 
 	var/obj/item/organ/stomach/alien/melting_pot = get_organ_slot(ORGAN_SLOT_STOMACH)

@@ -100,6 +100,8 @@
 	return TRUE
 
 /obj/machinery/minimap_table/proc/play_animation(icon_state = "startup", duration = animation_duration)
+	if(!hologram_icon_file)
+		return
 	var/image/img = image(hologram_icon_file, src, icon_state, ABOVE_MOB_LAYER, dir, animation_x, animation_y)
 	var/image/emissive_img = image(hologram_icon_file, src, icon_state, ABOVE_MOB_LAYER, dir, animation_x, animation_y)
 	emissive_img.plane = EMISSIVE_PLANE
@@ -211,7 +213,7 @@
 		return
 	. += mutable_appearance(icon, "idle")
 	. += emissive_appearance(icon, "idle", src)
-	if(active)
+	if(active && hologram_icon_file)
 		var/holo_state = "idle"
 		var/mutable_appearance/idle = mutable_appearance(hologram_icon_file, holo_state, ABOVE_MOB_LAYER)
 		idle.pixel_x = animation_x
@@ -241,6 +243,7 @@
 
 /obj/machinery/minimap_table/small/marines
 	annotation_share_tag = null
+	hologram_icon_file = null
 	table_huds = list(
 		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
 		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/marine

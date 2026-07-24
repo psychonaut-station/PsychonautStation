@@ -1999,6 +1999,7 @@
 	if(affected_mob.losebreath >= 1)
 		affected_mob.losebreath -= 1 * metabolization_ratio * seconds_per_tick
 		return UPDATE_MOB_HEALTH
+<<<<<<< HEAD
 
 /datum/reagent/medicine/brain_healer
 	name = "Brain Healer"
@@ -2022,3 +2023,5 @@
 	color = "#C8A5DC"
 	taste_description = "plastic"
 	randomized_spawns = REAGENT_SPAWN_ALL_RANDOM_SPAWNS
+=======
+>>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6

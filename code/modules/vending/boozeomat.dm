@@ -50,21 +50,26 @@
 			"name" = "Non-Alcoholic",
 			"icon" = "bottle-water",
 			"products" = list(
-				/obj/item/reagent_containers/cup/glass/bottle/hakka_mate = 5,
 				/obj/item/reagent_containers/cup/glass/ice = 10,
-				/obj/item/reagent_containers/cup/glass/bottle/grenadine = 4,
-				/obj/item/reagent_containers/cup/soda_cans/melon_soda = 5,
+				/obj/item/reagent_containers/cup/glass/waterbottle = 8,
+				/obj/item/reagent_containers/cup/glass/waterbottle/large = 4,
 				/obj/item/reagent_containers/cup/glass/bottle/juice/lemonjuice = 4,
 				/obj/item/reagent_containers/cup/glass/bottle/juice/limejuice = 4,
 				/obj/item/reagent_containers/cup/glass/bottle/juice/orangejuice = 4,
-				/obj/item/reagent_containers/cup/glass/bottle/juice/menthol = 4,
 				/obj/item/reagent_containers/cup/glass/bottle/juice/cream = 4,
 				/obj/item/reagent_containers/cup/glass/bottle/juice/tomatojuice = 4,
+				/obj/item/reagent_containers/cup/glass/bottle/grenadine = 4,
+				/obj/item/reagent_containers/cup/glass/bottle/juice/menthol = 4,
+				/obj/item/reagent_containers/cup/glass/bottle/hakka_mate = 5,
 				/obj/item/reagent_containers/cup/soda_cans/sodawater = 15,
 				/obj/item/reagent_containers/cup/soda_cans/sol_dry = 8,
 				/obj/item/reagent_containers/cup/soda_cans/cola = 8,
 				/obj/item/reagent_containers/cup/soda_cans/tonic = 8,
+<<<<<<< HEAD
 				/obj/item/reagent_containers/condiment/ayran = 10,
+=======
+				/obj/item/reagent_containers/cup/soda_cans/melon_soda = 5,
+>>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 			),
 		),
 

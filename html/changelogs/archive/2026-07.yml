@@ -387,12 +387,6 @@
   - balance: The pipegun types now deal more damage. Good luck.
   - balance: 'New Junk Round: Sometimes, your pipegun will fire an entire ant colony
       into your enemies bloodstream. Die, asshole. Ants.'
-<<<<<<< HEAD
-2026-07-20:
-  homek13:
-  - balance: "osurmak art\u0131k mood buff sa\u011Flam\u0131yor."
-  - rscadd: "Kargodan sipari\u015F verilebilir nargile ve k\xF6m\xFCr ekler."
-=======
 2026-07-12:
   Hatterhat:
   - bugfix: Nanotrasen Wave (tm) support on standard, non-portable microwaves has
@@ -627,6 +621,9 @@
   SmArtKar:
   - bugfix: Fixed the Four Hands wizard perk
   - bugfix: Fixed quick tile replacement
+  homek13:
+  - balance: "osurmak art\u0131k mood buff sa\u011Flam\u0131yor."
+  - rscadd: "Kargodan sipari\u015F verilebilir nargile ve k\xF6m\xFCr ekler."
 2026-07-21:
   CabinetOnFire:
   - bugfix: Fixes cats getting permanent zoomies after being chased away by a superior
@@ -717,4 +714,3 @@
       injectors, blood bags all lose their identity (name/desc/icon_state). Gas canisters
       lose their identity (name/desc/icon_state). Lockboxes and crates all lose their
       identity (name). Locked closets no longer open.'
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6

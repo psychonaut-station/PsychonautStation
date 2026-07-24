@@ -5729,7 +5729,6 @@
 #include "code\modules\mob\living\basic\space_fauna\roro.dm"
 #include "code\modules\mob\living\basic\space_fauna\spaceman.dm"
 #include "code\modules\mob\living\basic\space_fauna\supermatter_spider.dm"
-#include "code\modules\mob\living\basic\space_fauna\vada.dm"
 #include "code\modules\mob\living\basic\space_fauna\bear\_bear.dm"
 #include "code\modules\mob\living\basic\space_fauna\bear\bear_ai_behavior.dm"
 #include "code\modules\mob\living\basic\space_fauna\bear\bear_ai_subtree.dm"

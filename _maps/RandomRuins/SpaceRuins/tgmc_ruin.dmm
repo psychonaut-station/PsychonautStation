@@ -26,7 +26,7 @@
 /obj/machinery/light/dim/directional/west{
 	dir = 4
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "dx" = (
 /turf/closed/wall/mineral/titanium,
@@ -38,12 +38,12 @@
 /area/ruin/space)
 "eF" = (
 /obj/item/food/canned/chap,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "eQ" = (
 /obj/structure/cable,
 /obj/effect/decal/cleanable/blood/splatter/xeno,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "fa" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -65,11 +65,11 @@
 	pixel_x = 2;
 	pixel_y = -6
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "gV" = (
 /obj/item/food/canned/peaches/maint,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "hg" = (
 /obj/machinery/power/terminal,
@@ -103,13 +103,13 @@
 	pixel_x = -9;
 	pixel_y = -1
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "iO" = (
 /obj/structure/chair/comfy/shuttle{
 	dir = 8
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "ji" = (
 /obj/structure/cable,
@@ -216,12 +216,12 @@
 /turf/open/floor/plating,
 /area/ruin/space)
 "qW" = (
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "rh" = (
 /obj/machinery/power/apc/auto_name/directional/south,
 /obj/structure/cable,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "rW" = (
 /turf/closed/wall/mineral/titanium/nodiagonal,
@@ -282,7 +282,7 @@
 /area/ruin/space)
 "yG" = (
 /obj/effect/decal/cleanable/blood/gibs/xeno/larva/body,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "yQ" = (
 /obj/structure/closet/crate/secure/weapon,
@@ -301,7 +301,7 @@
 	pixel_x = 4;
 	pixel_y = 4
 	},
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "Ay" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -310,7 +310,7 @@
 /area/ruin/space)
 "AL" = (
 /obj/structure/guncase,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "CU" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -324,7 +324,7 @@
 /area/ruin/space)
 "EA" = (
 /obj/item/stack/sheet/mineral/wood,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "Fc" = (
 /obj/structure/alien/weeds/node{
@@ -445,7 +445,7 @@
 /area/ruin/space)
 "Me" = (
 /obj/structure/cable,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "MA" = (
 /obj/structure/rack,
@@ -493,7 +493,7 @@
 "PJ" = (
 /obj/machinery/door/airlock/hatch,
 /obj/structure/barricade/wooden/crude,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "Qe" = (
 /obj/machinery/door/airlock/external/ruin,
@@ -539,7 +539,7 @@
 /obj/machinery/door/airlock/hatch,
 /obj/structure/cable,
 /obj/structure/barricade/wooden/crude,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "Ut" = (
 /obj/machinery/atmospherics/pipe/smart/manifold4w/supply/hidden,
@@ -561,7 +561,7 @@
 /area/ruin/space)
 "WP" = (
 /obj/machinery/atmospherics/components/unary/vent_pump/on,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 "XM" = (
 /obj/item/stack/sheet/mineral/wood,
@@ -572,7 +572,7 @@
 "Yb" = (
 /obj/machinery/airalarm/directional/south,
 /obj/effect/mapping_helpers/airalarm/all_access,
-/turf/open/floor/pod/dark,
+/turf/open/floor/mineral/plastitanium/pod/dark,
 /area/ruin/space)
 
 (1,1,1) = {"

@@ -1,11 +1,8 @@
 /datum/preference_middleware/jobs
 	action_delegations = list(
 		"set_job_preference" = PROC_REF(set_job_preference),
-<<<<<<< HEAD
 		"set_job_title" = PROC_REF(set_job_title),
-=======
 		"set_job_to_profile" = PROC_REF(set_job_to_profile),
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -30,17 +27,17 @@
 
 	return TRUE
 
-<<<<<<< HEAD
 /datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
-	var/default_job_title = params["job"]
+	var/actual_job = params["job"]
 	var/new_job_title = params["new_title"]
-	var/datum/job/job = SSjob.get_job(default_job_title)
+	var/datum/job/job = SSjob.get_job(actual_job)
 
 	if(isnull(job) || !job.alt_titles.Find(new_job_title))
 		return FALSE
 
-	preferences.alt_job_titles[default_job_title] = new_job_title
-=======
+	preferences.alt_job_titles[actual_job] = new_job_title
+	return TRUE
+
 /datum/preference_middleware/jobs/proc/set_job_to_profile(list/params, mob/user)
 	var/job_title = params["job"]
 	var/profile_slot = params["profile"]
@@ -50,7 +47,6 @@
 		return TRUE
 
 	LAZYSET(preferences.job_assigned_profiles, job_title, profile_slot)
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 	return TRUE
 
 /datum/preference_middleware/jobs/get_constant_data()
@@ -99,12 +95,6 @@
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 
-<<<<<<< HEAD
-	if(isnull(preferences.alt_job_titles))
-		preferences.alt_job_titles = list()
-
-	data["job_preferences"] = preferences.job_preferences
-=======
 	data["job_preferences"] = list()
 	for(var/job, priority in preferences.job_preferences)
 		data["job_preferences"] += list(list(
@@ -119,8 +109,9 @@
 			"priority" = null,
 			"assigned_profile_slot" = slot,
 		))
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
+	if(isnull(preferences.alt_job_titles))
+		preferences.alt_job_titles = list()
 	data["job_alt_titles"] = preferences.alt_job_titles
 
 	var/list/job_whitelist = is_whitelisted(user)

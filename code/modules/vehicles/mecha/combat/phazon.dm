@@ -110,14 +110,15 @@
 
 // Force stop the phasing ability
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/proc/stop_phasing()
-	if(chassis.phasing == "phasing")
-		chassis.balloon_alert(owner, "disabled phasing")
+	var/obj/vehicle/sealed/mecha/phazon/phazon = chassis
+	if(phazon.phasing)
+		phazon.balloon_alert(owner, "disabled phasing")
 
-	chassis.phasing = ""
+	phazon.phasing = FALSE
 	button_icon_state = "mech_phasing_off"
 	build_all_button_icons()
-	if(!TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
-		S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_PHASE, phase_cooldown_time)
+	if(!TIMER_COOLDOWN_RUNNING(phazon, COOLDOWN_MECHA_PHASE))
+		S_TIMER_COOLDOWN_START(phazon, COOLDOWN_MECHA_PHASE, phase_cooldown_time)
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/Trigger(mob/clicker, trigger_flags)
 	. = ..()
@@ -125,24 +126,19 @@
 		return
 	if(!chassis || !(owner in chassis.occupants))
 		return
-<<<<<<< HEAD
-	if (chassis.phasing == "phasing")
+
+	var/obj/vehicle/sealed/mecha/phazon/phazon = chassis
+	if (phazon.phasing == "phasing")
 		stop_phasing()
 		return
-	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
-		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_PHASE)
-		chassis.balloon_alert(owner, "on cooldown, [DisplayTimeText(time_left, 1)]...")
+	if(TIMER_COOLDOWN_RUNNING(phazon, COOLDOWN_MECHA_PHASE))
+		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(phazon, COOLDOWN_MECHA_PHASE)
+		phazon.balloon_alert(owner, "on cooldown, [DisplayTimeText(time_left, 1)]...")
 		return
 
 	// enable phasing
-	chassis.phasing = "phasing"
+	phazon.phasing = TRUE
 	button_icon_state = "mech_phasing_on"
-	chassis.balloon_alert(owner, "enabled phasing")
-=======
-	var/obj/vehicle/sealed/mecha/phazon/phazon = chassis
-	phazon.phasing = !phazon.phasing
-	button_icon_state = "mech_phasing_[phazon.phasing ? "on" : "off"]"
-	phazon.balloon_alert(owner, "[phazon.phasing ? "enabled" : "disabled"] phasing")
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
+	phazon.balloon_alert(owner, "enabled phasing")
 	build_all_button_icons()
 	addtimer(CALLBACK(src, PROC_REF(stop_phasing)), phase_time)

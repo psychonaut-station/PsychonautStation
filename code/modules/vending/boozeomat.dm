@@ -65,11 +65,8 @@
 				/obj/item/reagent_containers/cup/soda_cans/sol_dry = 8,
 				/obj/item/reagent_containers/cup/soda_cans/cola = 8,
 				/obj/item/reagent_containers/cup/soda_cans/tonic = 8,
-<<<<<<< HEAD
 				/obj/item/reagent_containers/condiment/ayran = 10,
-=======
 				/obj/item/reagent_containers/cup/soda_cans/melon_soda = 5,
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 			),
 		),
 

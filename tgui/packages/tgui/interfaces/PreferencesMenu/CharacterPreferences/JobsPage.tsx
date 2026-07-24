@@ -117,21 +117,11 @@ function PriorityButtons(props: PriorityButtonsProps) {
 
   return (
     <Stack
-<<<<<<< HEAD
-      style={{
-        alignItems: 'center',
-        height: '100%',
-        justifyContent: 'flex-end',
-        paddingLeft: '0.3em',
-        paddingRight: '0.3em',
-      }}
-=======
       className="options"
       pl={'0.3em'}
       pt={'0.2em'}
       justify="flex-end"
       height="stretch"
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
     >
       {isOverflow ? (
         <>
@@ -200,9 +190,6 @@ type JobRowProps = {
 
 function JobRow(props: JobRowProps) {
   const { act, data } = useBackend<PreferencesMenuData>();
-<<<<<<< HEAD
-  const { className, job, name } = props;
-=======
   const {
     className,
     job,
@@ -221,7 +208,6 @@ function JobRow(props: JobRowProps) {
     job_required_experience,
     job_days_left,
   } = data;
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
   const isOverflow = overflow_role === name;
   const job_preference = job_preferences.find((pref) => pref.job === name);
@@ -230,17 +216,13 @@ function JobRow(props: JobRowProps) {
 
   const createSetPriority = createCreateSetPriorityFromName(name);
 
-<<<<<<< HEAD
-  const experienceNeeded = data.job_required_experience?.[name];
-  const daysLeft = data.job_days_left ? data.job_days_left[name] : 0;
+  const experienceNeeded = job_required_experience?.[name];
+  const daysLeft = job_days_left ? job_days_left[name] : 0;
+
   const alt_titles = [...(job.alt_titles || [])];
   if (!alt_titles.includes(name)) alt_titles.push(name);
 
   const selectedAltTitle = data.job_alt_titles[name] || name;
-=======
-  const experienceNeeded = job_required_experience?.[name];
-  const daysLeft = job_days_left ? job_days_left[name] : 0;
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
   let rightSide: ReactNode;
 
@@ -290,40 +272,6 @@ function JobRow(props: JobRowProps) {
   }
 
   return (
-<<<<<<< HEAD
-    <Box
-      className={className}
-      style={{
-        marginTop: 0,
-      }}
-    >
-      <Stack>
-        <Tooltip
-          content={
-            <Box>
-              <b>{selectedAltTitle}</b>
-              <br />
-              {job.description}
-            </Box>
-          }
-          position="right"
-        >
-          <Stack.Item align="center" className="job-name" width="60%">
-            <Dropdown
-              width="100%"
-              options={alt_titles}
-              selected={selectedAltTitle}
-              onSelected={(value) => {
-                act('set_job_title', { job: name, new_title: value });
-              }}
-              color="transparent"
-              className="PreferencesMenu__Jobs__AltTitleDropdown"
-            />
-          </Stack.Item>
-        </Tooltip>
-
-        <Stack.Item grow className="options">
-=======
     <Stack.Item
       className={className}
       mt={0}
@@ -332,7 +280,7 @@ function JobRow(props: JobRowProps) {
       }}
     >
       <Stack align="top" g={0}>
-        <Stack.Item grow={1.5}>
+        <Stack.Item grow={1.5} overflowX="hidden">
           <Stack vertical g={0} fill>
             <Stack.Item
               className={`job-name${hoveringOver === name ? ' hovered' : ''}`}
@@ -358,8 +306,28 @@ function JobRow(props: JobRowProps) {
                 setHoveringOver('');
               }}
             >
-              <Tooltip content={job.description} position="bottom-start">
-                {name}
+              <Tooltip
+                content={
+                  <Box>
+                    <b>{selectedAltTitle}</b>
+                    <br />
+                    {job.description}
+                  </Box>
+                }
+                position="bottom-start"
+              >
+                <Stack.Item align="center" className="job-name">
+                  <Dropdown
+                    width="100%"
+                    options={alt_titles}
+                    selected={selectedAltTitle}
+                    onSelected={(value) => {
+                      act('set_job_title', { job: name, new_title: value });
+                    }}
+                    color="transparent"
+                    className="PreferencesMenu__Jobs__AltTitleDropdown"
+                  />
+                </Stack.Item>
               </Tooltip>
             </Stack.Item>
             {assignedProfileSlot !== null && (
@@ -390,11 +358,10 @@ function JobRow(props: JobRowProps) {
           </Stack>
         </Stack.Item>
         <Stack.Item grow height="stretch">
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
           {rightSide}
         </Stack.Item>
       </Stack>
-    </Box>
+    </Stack.Item>
   );
 }
 
@@ -429,11 +396,7 @@ function Department(props: DepartmentProps) {
     .filter(([, job]) => job.department === name);
 
   return (
-<<<<<<< HEAD
-    <Box
-=======
     <Stack.Item
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
       style={{ '--department-color': department.color } as React.CSSProperties}
     >
       <Stack fill vertical g={0}>

@@ -29,12 +29,8 @@
 	smoothing_flags = SMOOTH_BITMASK
 	smoothing_groups = SMOOTH_GROUP_TABLES
 	canSmoothWith = SMOOTH_GROUP_TABLES
-<<<<<<< HEAD
 	impact_sound = SFX_BULLET_IMPACT_METAL
-	var/static/list/turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_TURF_IGNORE_SLIPPERY, TRAIT_IMMERSE_STOPPED)
-=======
 	var/static/list/turf_traits = list(TRAIT_TURF_IGNORE_SLOWDOWN, TRAIT_TURF_IGNORE_SLIPPERY, TRAIT_IMMERSE_STOPPED, TRAIT_TURF_PROJECTS_WHISPERS)
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 	///a bit fucky, I know. but this is needed to get sorted on init smoothing groups stored
 	var/list/on_init_smoothed_vars
 	var/frame = /obj/structure/table_frame

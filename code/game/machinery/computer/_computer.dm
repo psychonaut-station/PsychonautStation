@@ -102,7 +102,7 @@
 			if(WEST)
 				left_turf = get_step(src, SOUTH)
 				right_turf = get_step(src, NORTH)
-		for(var/obj/machinery/computer/computer in left_turf.contents)
+		for(var/obj/machinery/computer/computer in left_turf?.contents)
 			if(QDELETED(computer))
 				continue
 			if(computer.dir != dir)
@@ -111,7 +111,7 @@
 				continue
 			left_comp = computer
 			break
-		for(var/obj/machinery/computer/computer in right_turf.contents)
+		for(var/obj/machinery/computer/computer in right_turf?.contents)
 			if(QDELETED(computer))
 				continue
 			if(computer.dir != dir)

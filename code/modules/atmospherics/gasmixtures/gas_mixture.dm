@@ -360,48 +360,6 @@ GLOBAL_LIST_INIT(meta_gas_info, meta_gas_list()) //see ATMOSPHERICS/gas_types.dm
 /// If we don't retain this, we will get negative moles. Don't do it
 /// Returns: amount of gas exchanged (+ if sharer received)
 /datum/gas_mixture/proc/share(datum/gas_mixture/sharer, our_coeff, sharer_coeff)
-<<<<<<< HEAD
-	if (sharer)
-		var/list/cached_gases = gases
-		var/list/sharer_gases = sharer.gases
-
-		var/list/only_in_sharer = sharer_gases - cached_gases
-		var/list/only_in_cached = cached_gases - sharer_gases
-
-		var/temperature_delta = temperature_archived - sharer.temperature_archived
-		var/abs_temperature_delta = abs(temperature_delta)
-
-		var/old_self_heat_capacity = 0
-		var/old_sharer_heat_capacity = 0
-		if(abs_temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
-			old_self_heat_capacity = heat_capacity()
-			old_sharer_heat_capacity = sharer.heat_capacity()
-
-		var/heat_capacity_self_to_sharer = 0 //heat capacity of the moles transferred from us to the sharer
-		var/heat_capacity_sharer_to_self = 0 //heat capacity of the moles transferred from the sharer to us
-
-		var/moved_moles = 0
-		var/abs_moved_moles = 0
-
-		//GAS TRANSFER
-
-		//Prep
-		for(var/id in only_in_sharer) //create gases not in our cache
-			ADD_GAS(id, cached_gases)
-		for(var/id in only_in_cached) //create gases not in the sharing mix
-			ADD_GAS(id, sharer_gases)
-
-		for(var/id in cached_gases) //transfer gases
-			var/gas = cached_gases[id]
-			var/sharergas = sharer_gases[id]
-			var/delta = QUANTIZE(gas[ARCHIVE] - sharergas[ARCHIVE]) //the amount of gas that gets moved between the mixtures
-
-			if(!delta)
-				continue
-
-			// If we have more gas then they do, gas is moving from us to them
-			// This means we want to scale it by our coeff. Vis versa for their case
-=======
 	var/list/cached_moles = moles
 	var/list/cached_moles_archive = moles_archive
 	var/list/sharer_cached_moles = sharer.moles
@@ -451,76 +409,45 @@ GLOBAL_LIST_INIT(meta_gas_info, meta_gas_list()) //see ATMOSPHERICS/gas_types.dm
 
 		if(temp_delta_threshold)
 			var/gas_heat_capacity = delta * cached_specific_heat[gas_id]
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 			if(delta > 0)
-				delta = delta * our_coeff
+				heat_capacity_self_to_sharer += gas_heat_capacity
 			else
-				delta = delta * sharer_coeff
+				heat_capacity_sharer_to_self -= gas_heat_capacity //subtract here instead of adding the absolute value because we know that delta is negative.
 
-<<<<<<< HEAD
-			if(abs_temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
-				var/gas_heat_capacity = delta * gas[GAS_META][META_GAS_SPECIFIC_HEAT]
-				if(delta > 0)
-					heat_capacity_self_to_sharer += gas_heat_capacity
-				else
-					heat_capacity_sharer_to_self -= gas_heat_capacity //subtract here instead of adding the absolute value because we know that delta is negative.
-=======
 		cached_moles[gas_id] -= delta
 		sharer_cached_moles[gas_id] += delta
 		moved_moles += delta
 		abs_moved_moles += abs(delta)
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
-			gas[MOLES] -= delta
-			sharergas[MOLES] += delta
-			moved_moles += delta
-			abs_moved_moles += abs(delta)
+	last_share = abs_moved_moles
 
-<<<<<<< HEAD
-		last_share = abs_moved_moles
-=======
 	//THERMAL ENERGY TRANSFER
 	if(temp_delta_threshold)
 		var/new_self_heat_capacity = old_self_heat_capacity + heat_capacity_sharer_to_self - heat_capacity_self_to_sharer
 		var/new_sharer_heat_capacity = old_sharer_heat_capacity + heat_capacity_self_to_sharer - heat_capacity_sharer_to_self
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
-		//THERMAL ENERGY TRANSFER
-		if(abs_temperature_delta > MINIMUM_TEMPERATURE_DELTA_TO_CONSIDER)
-			var/new_self_heat_capacity = old_self_heat_capacity + heat_capacity_sharer_to_self - heat_capacity_self_to_sharer
-			var/new_sharer_heat_capacity = old_sharer_heat_capacity + heat_capacity_self_to_sharer - heat_capacity_sharer_to_self
+		//transfer of thermal energy (via changed heat capacity) between self and sharer
+		if(new_self_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			temperature = (old_self_heat_capacity*temperature - heat_capacity_self_to_sharer*temperature_archived + heat_capacity_sharer_to_self*sharer.temperature_archived)/new_self_heat_capacity
 
-			//transfer of thermal energy (via changed heat capacity) between self and sharer
-			if(new_self_heat_capacity > MINIMUM_HEAT_CAPACITY)
-				temperature = (old_self_heat_capacity*temperature - heat_capacity_self_to_sharer*temperature_archived + heat_capacity_sharer_to_self*sharer.temperature_archived)/new_self_heat_capacity
+		if(new_sharer_heat_capacity > MINIMUM_HEAT_CAPACITY)
+			sharer.temperature = (old_sharer_heat_capacity*sharer.temperature-heat_capacity_sharer_to_self*sharer.temperature_archived + heat_capacity_self_to_sharer*temperature_archived)/new_sharer_heat_capacity
+		//thermal energy of the system (self and sharer) is unchanged
 
-			if(new_sharer_heat_capacity > MINIMUM_HEAT_CAPACITY)
-				sharer.temperature = (old_sharer_heat_capacity*sharer.temperature-heat_capacity_sharer_to_self*sharer.temperature_archived + heat_capacity_self_to_sharer*temperature_archived)/new_sharer_heat_capacity
-			//thermal energy of the system (self and sharer) is unchanged
+			if(abs(old_sharer_heat_capacity) > MINIMUM_HEAT_CAPACITY)
+				if(abs(new_sharer_heat_capacity/old_sharer_heat_capacity - 1) < 0.1) // <10% change in sharer heat capacity
+					temperature_share(sharer, OPEN_HEAT_TRANSFER_COEFFICIENT)
 
-				if(abs(old_sharer_heat_capacity) > MINIMUM_HEAT_CAPACITY)
-					if(abs(new_sharer_heat_capacity/old_sharer_heat_capacity - 1) < 0.1) // <10% change in sharer heat capacity
-						temperature_share(sharer, OPEN_HEAT_TRANSFER_COEFFICIENT)
+	if(length(only_in_sharer + only_in_cached)) //if all gases were present in both mixtures, we know that no gases are 0
+		garbage_collect(only_in_cached) //any gases the sharer had, we are guaranteed to have. gases that it didn't have we are not.
+		sharer.garbage_collect(only_in_sharer) //the reverse is equally true
+	else if (initial(sharer.gc_share))
+		sharer.garbage_collect()
 
-<<<<<<< HEAD
-		if(length(only_in_sharer + only_in_cached)) //if all gases were present in both mixtures, we know that no gases are 0
-			garbage_collect(only_in_cached) //any gases the sharer had, we are guaranteed to have. gases that it didn't have we are not.
-			sharer.garbage_collect(only_in_sharer) //the reverse is equally true
-		else if (initial(sharer.gc_share))
-			sharer.garbage_collect()
-
-		if(temperature_delta > MINIMUM_TEMPERATURE_TO_MOVE || abs(moved_moles) > MINIMUM_MOLES_DELTA_TO_MOVE)
-			var/our_moles
-			TOTAL_MOLES(cached_gases,our_moles)
-			var/their_moles
-			TOTAL_MOLES(sharer_gases,their_moles)
-			return (temperature_archived*(our_moles + moved_moles) - sharer.temperature_archived*(their_moles - moved_moles)) * R_IDEAL_GAS_EQUATION / volume
-=======
 	if(temperature_delta > MINIMUM_TEMPERATURE_TO_MOVE || abs(moved_moles) > MINIMUM_MOLES_DELTA_TO_MOVE)
 		var/our_moles = values_sum(cached_moles)
 		var/their_moles = values_sum(sharer_cached_moles)
 		return (temperature_archived*(our_moles + moved_moles) - sharer.temperature_archived*(their_moles - moved_moles)) * R_IDEAL_GAS_EQUATION / volume
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
 ///Performs temperature sharing calculations (via conduction) between two gas_mixtures assuming only 1 boundary length
 ///Returns: new temperature of the sharer
@@ -549,19 +476,9 @@ GLOBAL_LIST_INIT(meta_gas_info, meta_gas_list()) //see ATMOSPHERICS/gas_types.dm
 ///Compares sample to self to see if within acceptable ranges that group processing may be enabled
 ///Takes the bool as a second arg to read to read archived values for moles and temperature
 ///Returns: a string indicating what check failed, or "" if check passes
-<<<<<<< HEAD
-/datum/gas_mixture/proc/compare(datum/gas_mixture/sample, index)
-	if(!sample)
-		return ""
-
-	var/list/sample_gases = sample.gases //accessing datum vars is slower than proc vars
-	var/list/cached_gases = gases
-	var/moles_sum = 0
-=======
 /datum/gas_mixture/proc/compare(datum/gas_mixture/sample, cmp_archive)
 	var/list/cached_moles = (cmp_archive) ? moles_archive : moles
 	var/list/sample_cached_moles = (cmp_archive) ? sample.moles_archive : sample.moles  //accessing datum vars is slower than proc vars
->>>>>>> d5b35827c5ee63a46e4588d8293d7083804a7aa6
 
 	for(var/gas_id in cached_moles | sample_cached_moles) // compare gases from either mixture
 		var/gas_moles = cached_moles[gas_id] // it can be null, but everything coerce to 0 after, so we save JMP and Tst

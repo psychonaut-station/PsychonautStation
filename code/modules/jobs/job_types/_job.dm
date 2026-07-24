@@ -586,8 +586,7 @@
 
 	src.job = job.title
 
-	var/randomise_job_slot = player_client.prefs.set_assigned_slot(job.title, player_client.mob?.mind?.late_joiner) //Pref Job Slots
-	if(fully_randomize || randomise_job_slot)
+	if(fully_randomize)
 		player_client.prefs.apply_prefs_to(src)
 
 		randomize_human_appearance(~RANDOMIZE_SPECIES)

@@ -286,10 +286,10 @@
 	return TRUE
 
 /datum/teammatch_lobby/proc/register_player_signals(new_player, from_revive = FALSE)
-	RegisterSignals(new_player, list(COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_LIVING_DEATH), PROC_REF(player_died))
-	RegisterSignal(new_player, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF, PROC_REF(mind_transfered))
+	RegisterSignals(new_player, list(COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_LIVING_DEATH), PROC_REF(player_died), TRUE)
+	RegisterSignal(new_player, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF, PROC_REF(mind_transfered), TRUE)
 	if(!from_revive)
-		RegisterSignal(new_player, COMSIG_LIVING_REVIVE, PROC_REF(player_revived))
+		RegisterSignal(new_player, COMSIG_LIVING_REVIVE, PROC_REF(player_revived), TRUE)
 
 /datum/teammatch_lobby/proc/unregister_player_signals(new_player, can_revive = FALSE)
 	UnregisterSignal(new_player, list(COMSIG_LIVING_DEATH, COMSIG_QDELETING, COMSIG_MOB_GHOSTIZED, COMSIG_MOB_MIND_TRANSFERRED_OUT_OF))

@@ -29,8 +29,12 @@
 		teams[team_type] = new team_type(TRUE)
 
 /datum/teammatch_controller/proc/create_new_lobby(mob/host)
+	if(!length(get_allowed_scenerios()))
+		to_chat(host, span_warning("Cannot create a new lobby, there is no allowed scenerios to open"))
+		return FALSE
 	lobbies[host.ckey] = new /datum/teammatch_lobby(host)
 	deadchat_broadcast(" has opened a new teammatch lobby. <a href=byond://?src=[REF(lobbies[host.ckey])];join=1>(Join)</a>", "<B>[host]</B>")
+	return TRUE
 
 /datum/teammatch_controller/proc/remove_lobby(ckey)
 	var/lobby = lobbies[ckey]
@@ -101,8 +105,7 @@
 				tgui_alert(usr, "The round hasn't started yet!")
 				return FALSE
 			ui.close()
-			create_new_lobby(usr)
-			return TRUE
+			return create_new_lobby(usr)
 		if ("view")
 			if(!(GLOB.ghost_role_flags & GHOSTROLE_MINIGAME))
 				tgui_alert(usr, "Teammatch has been temporarily disabled by admins.")

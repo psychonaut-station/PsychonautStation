@@ -246,5 +246,5 @@
 	hologram_icon_file = null
 	table_huds = list(
 		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
-		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/marine
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/marine
 	)

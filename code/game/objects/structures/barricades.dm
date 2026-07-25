@@ -210,8 +210,9 @@
 
 /obj/structure/foldable_barricade/attack_alien(mob/living/carbon/alien/attacker, list/modifiers)
 	if(is_wired)
-		balloon_alert(attacker, "barbed wire slicing into you!")
-		attacker.apply_damage(20, blocked = MELEE , sharpness = SHARP_EDGED)
+		if(!QDELETED(src))
+			balloon_alert(attacker, "barbed wire slicing into you!")
+		attacker.apply_damage(20, damagetype = MELEE , sharpness = SHARP_EDGED)
 
 	return ..()
 

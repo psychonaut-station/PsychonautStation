@@ -29,6 +29,7 @@
 	ears = null
 	mob_override = /mob/living/carbon/alien/larva
 	has_radio = FALSE
+	minimap_implant_type = /obj/item/implant/tacmap/teammatch/xenomorph
 
 /datum/outfit/teammatch_loadout/marine
 	name = "Teammatch: Squad Marine"
@@ -43,6 +44,7 @@
 	box = /obj/item/storage/box/survival
 	backpack_contents = list()
 	team_radio_freq = FREQ_XM_MARINE
+	minimap_implant_type = /obj/item/implant/tacmap/teammatch/marine
 
 /datum/outfit/teammatch_loadout/marine/engineer
 	name = "Teammatch: Squad Engineer"
@@ -68,5 +70,5 @@
 	uniform = /obj/item/clothing/under/syndicate
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id_trim = /datum/id_trim/away/teammatch/marine/fc
-	minimap_implant_type = /obj/item/implant/tacmap/teammatch/leader
+	minimap_implant_type = /obj/item/implant/tacmap/teammatch/marine/leader
 

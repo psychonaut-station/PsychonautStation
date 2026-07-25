@@ -147,7 +147,7 @@
 /datum/action/minimap/teammatch
 	huds = list(
 		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
-		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/marine
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch
 	)
 
 /datum/action/minimap/teammatch/is_forbidden_minimap_z(z_level)
@@ -156,3 +156,15 @@
 	if(is_reserved_level(z_level))
 		return FALSE
 	return ..()
+
+/datum/action/minimap/teammatch/marine
+	huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/marine
+	)
+
+/datum/action/minimap/teammatch/xenomorph
+	huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/xenomorph
+	)

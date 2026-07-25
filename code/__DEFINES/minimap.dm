@@ -62,5 +62,8 @@
 #define MINIMAP_SYNDIE_TURRET_BLIP "syndie_turret"
 #define MINIMAP_LADDER_BLIP "ladder"
 #define MINIMAP_STAIR_BLIP "stair"
+#define MINIMAP_NUKEOP_MARINE "marine"
+#define MINIMAP_NUKEOP_XENOMORPH "xenomorph"
 #define MINIMAP_ANNOTATION_TAG_NUCLEAR "nuclear_ops"
 #define MINIMAP_ANNOTATION_TAG_MARINE "marine"
+#define MINIMAP_ANNOTATION_TAG_XENOMORPH "xenomorphs"

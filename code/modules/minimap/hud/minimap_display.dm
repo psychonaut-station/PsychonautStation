@@ -587,8 +587,16 @@
 	annotation_share_tag = MINIMAP_ANNOTATION_TAG_NUCLEAR
 	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_BLIP, MINIMAP_NUKEOP_BORG_BLIP, MINIMAP_SYNDICATE_MECH_BLIP, MINIMAP_SYNDIE_TURRET_BLIP, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
 
-/atom/movable/screen/minimap_display/marine
+/atom/movable/screen/minimap_display/teammatch
 	annotation_share_tag = MINIMAP_ANNOTATION_TAG_MARINE
-	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+	valid_minimap_blip_tags = list(MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+
+/atom/movable/screen/minimap_display/teammatch/marine
+	annotation_share_tag = MINIMAP_ANNOTATION_TAG_MARINE
+	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_MARINE, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+
+/atom/movable/screen/minimap_display/teammatch/xenomorph
+	annotation_share_tag = MINIMAP_ANNOTATION_TAG_XENOMORPH
+	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_XENOMORPH, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
 
 #undef MINIMAP_LABEL_REMOVE_PIXEL_RANGE

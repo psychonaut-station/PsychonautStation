@@ -45,6 +45,8 @@
 		ORGAN_SLOT_EARS = /obj/item/organ/ears,
 	)
 
+	var/non_antagonist = FALSE
+
 /mob/living/carbon/alien/Initialize(mapload)
 	ASSIGN_GAME_VERB(src, /mob/living, mob_sleep)
 	add_verb(src, /mob/living/proc/toggle_resting)
@@ -144,6 +146,8 @@ Des: Removes all infected images from the alien.
 
 	new_xeno.setDir(dir)
 	new_xeno.change_name(name, real_name, identifier)
+
+	new_xeno.non_antagonist = non_antagonist
 
 	if(mind)
 		mind.name = new_xeno.real_name

@@ -16,6 +16,7 @@
 
 	var/minimap_map_id
 	var/minimap_team_id
+	var/blip_id = MINIMAP_NUKEOP_BLIP
 
 /obj/item/implant/tacmap/implant(mob/living/target, mob/user, silent, force)
 	. = ..()
@@ -31,7 +32,7 @@
 
 ///Remove all action of type minimap from the wearer, and make him disappear from the minimap
 /obj/item/implant/tacmap/proc/remove_minimap(mob/user)
-	remove_minimap_blip(MINIMAP_NUKEOP_BLIP, user)
+	remove_minimap_blip(blip_id, user)
 
 /obj/item/implant/tacmap/proc/refresh_minimap_icon()
 	SIGNAL_HANDLER
@@ -62,8 +63,8 @@
 ///Updates the wearer's minimap icon
 /obj/item/implant/tacmap/proc/update_minimap_icon(mob/wearer)
 	SIGNAL_HANDLER
-	remove_minimap_blip(MINIMAP_NUKEOP_BLIP, wearer)
-	add_minimap_blip(wearer, MINIMAP_NUKEOP_BLIP, get_minimap_icon_state(wearer), map_id = minimap_map_id)
+	remove_minimap_blip(blip_id, wearer)
+	add_minimap_blip(wearer, blip_id, get_minimap_icon_state(wearer), map_id = minimap_map_id)
 
 /obj/item/implant/tacmap/nuclear // Nukie subtype, map shows you nuke disk, operatives, cayenne and the nuke
 	actions_types = list(/datum/action/minimap/nuclear)
@@ -131,14 +132,22 @@
 	actions_types = list(/datum/action/minimap/teammatch)
 	wearer_icon_state = "sentry_passive"
 
-/obj/item/implant/tacmap/teammatch/leader
+/obj/item/implant/tacmap/teammatch/xenomorph
+	actions_types = list(/datum/action/minimap/teammatch/xenomorph)
+	blip_id = MINIMAP_NUKEOP_XENOMORPH
+
+/obj/item/implant/tacmap/teammatch/marine
+	actions_types = list(/datum/action/minimap/teammatch/marine)
+	blip_id = MINIMAP_NUKEOP_MARINE
+
+/obj/item/implant/tacmap/teammatch/marine/leader
 	can_draw_on_personal_minimap = TRUE
 
-/obj/item/implant/tacmap/teammatch/leader/implant(mob/living/target, mob/user, silent, force)
+/obj/item/implant/tacmap/teammatch/marine/leader/implant(mob/living/target, mob/user, silent, force)
 	. = ..()
 	if(.)
 		ADD_TRAIT(target, TRAIT_MINIMAP_TABLE_DRAW, REF(src))
 
-/obj/item/implant/tacmap/teammatch/leader/removed(mob/living/source, silent, special)
+/obj/item/implant/tacmap/teammatch/marine/leader/removed(mob/living/source, silent, special)
 	REMOVE_TRAIT(source, TRAIT_MINIMAP_TABLE_DRAW, REF(src))
 	return ..()

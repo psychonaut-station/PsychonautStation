@@ -72,6 +72,9 @@
 	COOLDOWN_START(src, respawn_cooldown, respawn_time)
 	return TRUE
 
+/datum/teammatch_team/proc/pre_mind_init(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/L, datum/outfit/teammatch_loadout/loadout)
+	return
+
 /datum/teammatch_team/proc/after_spawn(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/L, datum/outfit/teammatch_loadout/loadout)
 	return
 
@@ -101,6 +104,10 @@
 	default_loadout = /datum/outfit/teammatch_loadout/xenomorph
 	min_players = 1
 	respawn_time = 30 SECONDS
+
+/datum/teammatch_team/xenomorphs/pre_mind_init(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/carbon/alien/alien, datum/outfit/teammatch_loadout/loadout)
+	if(istype(alien))
+		alien.non_antagonist = TRUE
 
 /datum/teammatch_team/xenomorphs/after_spawn(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/L, datum/outfit/teammatch_loadout/loadout)
 	var/mob/living/carbon/alien/A = L

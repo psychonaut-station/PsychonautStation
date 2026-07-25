@@ -22,7 +22,7 @@
 	var/ready_count = 0
 	var/alist/team_spawns = alist()
 	/// artificial time padding when we start loading to give lighting a breather (admin starts will set this to 0)
-	var/start_time = 5 SECONDS
+	var/start_time = 1 SECONDS
 	var/start_timer
 	var/datum/minimap/minimap
 	var/alist/loadout_amounts = alist()
@@ -270,6 +270,8 @@
 		var/mob/living/carbon/human/human_player = new_player
 		human_player.equipOutfit(loadout)
 
+	team.pre_mind_init(src, scenerio, new_player, loadout)
+
 	new_player.PossessByPlayer(ckey)
 
 	scenerio.player_spawned(src, new_player, loadout, team)
@@ -366,7 +368,7 @@
 	var/datum/teammatch_team/team = get_team(team_type)
 
 	players[ckey]["dead_mob"] = null
-	players[ckey]["mob"] = player
+	players[ckey]["mob"] = WEAKREF(player)
 
 	living_players |= ckey
 	team.add_player(ckey)
@@ -598,7 +600,7 @@
 /datum/teammatch_lobby/ui_data(mob/user)
 	var/list/data = list()
 
-	var/is_player = LAZYFIND(players, user.ckey)
+	var/is_player = LAZYFIND(players, user.ckey) && islist(players[user.ckey])
 	var/is_host = (user.ckey == host)
 	var/is_admin = check_rights_for(user.client, R_ADMIN)
 

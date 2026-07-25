@@ -345,12 +345,14 @@
 	var/obj/item/clothing/mask/facehugger/child
 	///Proximity monitor associated with this atom, needed for proximity checks.
 	var/datum/proximity_monitor/proximity_monitor
+	var/non_antagonist = FALSE
 
 /obj/structure/alien/egg/Initialize(mapload)
 	. = ..()
 	update_appearance()
 	if(status == GROWING || status == GROWN)
 		child = new(src)
+		child.non_antagonist = non_antagonist
 	if(status == GROWING)
 		addtimer(CALLBACK(src, PROC_REF(Grow)), rand(MIN_GROWTH_TIME, MAX_GROWTH_TIME))
 	proximity_monitor = new(src, status == GROWN ? 1 : 0)

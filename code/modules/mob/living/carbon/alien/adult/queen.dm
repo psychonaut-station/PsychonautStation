@@ -104,6 +104,11 @@
 	. = ..()
 	owner.visible_message(span_alertalien("[owner] lays an egg!"))
 
+/datum/action/cooldown/alien/make_structure/lay_egg/after_make(obj/structure/alien/egg/egg)
+	if(isalien(owner))
+		var/mob/living/carbon/alien/alien = owner
+		egg.non_antagonist = alien.non_antagonist
+
 //Button to let queen choose her praetorian.
 /datum/action/cooldown/alien/promote
 	name = "Create Royal Parasite"

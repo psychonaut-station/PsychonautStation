@@ -47,9 +47,9 @@
 	if(isnull(loaded_tank))
 		return
 	loaded_tank.air_contents.assert_gases(/datum/gas/plasma, /datum/gas/tritium, /datum/gas/oxygen)
-	var/totalplasma = loaded_tank.air_contents.gases[/datum/gas/plasma][MOLES]
-	var/totaltrit = loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES]
-	var/totalo2 = loaded_tank.air_contents.gases[/datum/gas/oxygen][MOLES]
+	var/totalplasma = loaded_tank.air_contents.moles[/datum/gas/plasma]
+	var/totaltrit = loaded_tank.air_contents.moles[/datum/gas/tritium]
+	var/totalo2 = loaded_tank.air_contents.moles[/datum/gas/oxygen]
 	if(!bitcoinmining)
 		if(totalplasma < 0.0001)
 			investigate_log("<font color='red'>out of fuel</font>.", INVESTIGATE_ENGINE)
@@ -61,7 +61,7 @@
 			var/gasdrained = min(power_production_drain * drain_ratio * seconds_per_tick , totalplasma)
 			loaded_tank.air_contents.remove_specific(/datum/gas/plasma, gasdrained)
 			loaded_tank.air_contents.assert_gases(/datum/gas/tritium)
-			loaded_tank.air_contents.gases[/datum/gas/tritium][MOLES] += gasdrained
+			loaded_tank.air_contents.adjust_gas(/datum/gas/tritium, gasdrained)
 			return ..(seconds_per_tick)
 	else if(is_station_level(z) && sciweb)
 		if(!totaltrit || !totalo2)
@@ -72,7 +72,7 @@
 			loaded_tank.air_contents.remove_specific(/datum/gas/tritium, gasdrained)
 			loaded_tank.air_contents.remove_specific(/datum/gas/oxygen, gasdrained)
 			loaded_tank.air_contents.assert_gases(/datum/gas/carbon_dioxide)
-			loaded_tank.air_contents.gases[/datum/gas/carbon_dioxide][MOLES] += gasdrained * 2
+			loaded_tank.air_contents.adjust_gas(/datum/gas/carbon_dioxide, gasdrained * 2)
 
 			var/bitcoins_mined = min(stored_energy, (stored_energy*0.04)+1000)
 			var/datum/bank_account/department/D = SSeconomy.get_dep_account(ACCOUNT_CAR)
@@ -92,13 +92,8 @@
 	user.visible_message(span_notice("[user.name] turns the [src.name] [active? "on":"off"]."), \
 	span_notice("You turn the [src.name] [active? "on":"off"]."))
 	var/datum/gas_mixture/tank_mix = loaded_tank?.return_air()
-	var/fuel
-	if(bitcoinmining)
-		if(loaded_tank)
-			fuel = tank_mix.gases[/datum/gas/plasma][MOLES]
-	else
-		if(loaded_tank)
-			fuel = tank_mix.gases[/datum/gas/tritium][MOLES] + tank_mix.gases[/datum/gas/oxygen][MOLES]
+	tank_mix.assert_gases(/datum/gas/plasma, /datum/gas/tritium, /datum/gas/oxygen)
+	var/fuel = loaded_tank ? bitcoinmining ? (tank_mix.moles[/datum/gas/tritium] + tank_mix.moles[/datum/gas/oxygen]) : tank_mix.moles[/datum/gas/plasma] : 0
 	investigate_log("turned [active?"<font color='green'>on</font>":"<font color='red'>off</font>"] by [key_name(user)]. [loaded_tank?"Fuel: [round(fuel/0.29)]%":"<font color='red'>It is empty</font>"].", INVESTIGATE_ENGINE)
 
 /obj/machinery/power/energy_accumulator/rad_collector/can_be_unfasten_wrench(mob/user, silent)

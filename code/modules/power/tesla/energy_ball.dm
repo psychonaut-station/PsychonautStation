@@ -293,7 +293,7 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	calculate_gases()
 	calculate_internal_energy()
 
-	for (var/gas_path in absorbed_gasmix.gases)
+	for (var/gas_path in absorbed_gasmix.moles)
 		var/datum/eball_gas/eball_gas = current_gas_behavior[gas_path]
 		eball_gas?.extra_effects(src)
 
@@ -307,8 +307,10 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	merged_gasmix.temperature += device_energy * waste_multiplier / THERMAL_RELEASE_MODIFIER
 	merged_gasmix.temperature = clamp(merged_gasmix.temperature, TCMB, 2500 * waste_multiplier)
 	merged_gasmix.assert_gases(/datum/gas/plasma, /datum/gas/oxygen)
-	merged_gasmix.gases[/datum/gas/plasma][MOLES] += max(device_energy * waste_multiplier / PLASMA_RELEASE_MODIFIER, 0)
-	merged_gasmix.gases[/datum/gas/oxygen][MOLES] += max(((device_energy + merged_gasmix.temperature * waste_multiplier) - T0C) / OXYGEN_RELEASE_MODIFIER, 0)
+	merged_gasmix.adjust_multiple_gases(list(
+		/datum/gas/plasma = max(device_energy * waste_multiplier / PLASMA_RELEASE_MODIFIER, 0),
+		/datum/gas/oxygen = max(((device_energy + merged_gasmix.temperature * waste_multiplier) - T0C) / OXYGEN_RELEASE_MODIFIER, 0),
+	))
 	merged_gasmix.garbage_collect()
 	env.merge(merged_gasmix)
 	air_update_turf(FALSE, FALSE)
@@ -363,8 +365,8 @@ GLOBAL_LIST_EMPTY(all_energy_balls)
 	var/total_moles = absorbed_gasmix.total_moles()
 	if(total_moles < MINIMUM_MOLE_COUNT) //it's not worth processing small amounts like these, total_moles can also be 0 in vacuume
 		return
-	for (var/gas_path in absorbed_gasmix.gases)
-		var/mole_count = absorbed_gasmix.gases[gas_path][MOLES]
+	for (var/gas_path in absorbed_gasmix.moles)
+		var/mole_count = absorbed_gasmix.moles[gas_path]
 		if(mole_count < MINIMUM_MOLE_COUNT) //save processing power from small amounts like these
 			continue
 		gas_percentage[gas_path] = mole_count / total_moles

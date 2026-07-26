@@ -417,7 +417,10 @@ MAPPING_DIRECTIONAL_HELPERS(/obj/machinery/camera/xray, 0)
 /obj/machinery/camera/proc/can_see()
 	var/alist/see = alist()
 	var/turf/pos = get_turf(src)
-	var/turf/directly_above = GET_TURF_ABOVE(pos)
+
+	var/turf/T = pos
+	var/turf/directly_above = GET_TURF_ABOVE(T)
+
 	var/check_lower = pos != get_lowest_turf(pos)
 	var/check_higher = directly_above && istransparentturf(directly_above) && (pos != get_highest_turf(pos))
 

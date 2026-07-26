@@ -1,6 +1,6 @@
 /obj/machinery/computer
 	name = "computer"
-	icon = 'icons/obj/machines/computer.dmi'
+	icon = MAP_SWITCH('icons/obj/machines/computer.dmi', 'icons/obj/fluff/map_previews.dmi')
 	icon_state = "computer"
 	density = TRUE
 	max_integrity = 200
@@ -24,6 +24,7 @@
 	var/authenticated = FALSE
 	/// Will projectiles be able to pass over this computer?
 	var/projectiles_pass_chance = 65
+	generate_map_preview = TRUE
 
 /datum/armor/machinery_computer
 	fire = 40
@@ -101,7 +102,7 @@
 			if(WEST)
 				left_turf = get_step(src, SOUTH)
 				right_turf = get_step(src, NORTH)
-		for(var/obj/machinery/computer/computer in left_turf.contents)
+		for(var/obj/machinery/computer/computer in left_turf?.contents)
 			if(QDELETED(computer))
 				continue
 			if(computer.dir != dir)
@@ -110,7 +111,7 @@
 				continue
 			left_comp = computer
 			break
-		for(var/obj/machinery/computer/computer in right_turf.contents)
+		for(var/obj/machinery/computer/computer in right_turf?.contents)
 			if(QDELETED(computer))
 				continue
 			if(computer.dir != dir)

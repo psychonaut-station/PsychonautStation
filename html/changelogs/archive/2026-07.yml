@@ -714,3 +714,7 @@
       injectors, blood bags all lose their identity (name/desc/icon_state). Gas canisters
       lose their identity (name/desc/icon_state). Lockboxes and crates all lose their
       identity (name). Locked closets no longer open.'
+2026-07-27:
+  Seefaaa:
+  - rscdel: "Mesle\u011Fe g\xF6re karakter slotu yenisi gelece\u011Finden kald\u0131\
+      r\u0131ld\u0131"

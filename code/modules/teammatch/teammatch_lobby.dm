@@ -44,7 +44,7 @@
 	add_player(player, first_team::default_loadout, first_team, TRUE)
 
 	ui_interact(player)
-	addtimer(CALLBACK(src, PROC_REF(lobby_afk_probably)), 5 MINUTES) // being generous here
+	addtimer(CALLBACK(src, PROC_REF(lobby_afk_probably)), 10 MINUTES) // being generous here
 	uid = "teammatch_[gl_uid++]"
 
 /datum/teammatch_lobby/Destroy(force, ...)
@@ -436,7 +436,8 @@
 	if((ckey in living_players) || isnull(new_team))
 		return FALSE
 	var/datum/teammatch_team/team = get_team(new_team)
-	if(!team.active || (team.max_players != -1 && team.max_players <= get_team_players(new_team)))
+	var/max_players = get_max_players(new_team)
+	if(!team || !team.active || (max_players <= length(get_team_players(new_team))))
 		return FALSE
 
 	var/is_likely_player = (ckey in players)
@@ -581,8 +582,7 @@
 
 /datum/teammatch_lobby/proc/fakefill(count)
 	for(var/i = 1 to count)
-		var/datum/teammatch_team/picked_team = pick(scenerio.teams)
-
+		var/datum/teammatch_team/picked_team = pick_available_team()
 		players["[rand(1,999)]"] = list("mob" = WEAKREF(usr), "host" = FALSE, "ready" = FALSE, "team" = "[picked_team]", "loadout" = "[picked_team::default_loadout]")
 
 /datum/teammatch_lobby/ui_interact(mob/user, datum/tgui/ui)
@@ -835,7 +835,7 @@
 			"default_loadout" = team.default_loadout,
 			"loadouts" = loadouts,
 			"min_players" = team.min_players,
-			"max_players" = team.max_players,
+			"max_players" = get_max_players(team_type),
 			"is_active" = team.active
 		)
 
@@ -849,3 +849,63 @@
 		scenerios += scenerio_name
 	scenerios = sort_list(scenerios)
 	return scenerios
+
+/datum/teammatch_lobby/proc/get_max_players(team_type)
+	var/total_players = length(players)
+	var/total_weight = 0
+	var/team_count = length(scenerio.teams)
+
+	for(var/iter_team_type in scenerio.teams)
+		var/datum/teammatch_team/team = get_team(iter_team_type)
+		if(team)
+			total_weight += team.max_player_weight
+
+	if(total_weight <= 0)
+		return 0
+
+	var/adjusted_players = max(0, total_players - team_count)
+	var/current_step = round(adjusted_players / total_weight) + 1
+
+	var/target_total_players = current_step * total_weight
+
+	var/assigned_players = 0
+	var/list/capacities = list()
+
+	for(var/iter_team_type in scenerio.teams)
+		var/datum/teammatch_team/team = get_team(iter_team_type)
+		if(!team) continue
+
+		var/cap = round(target_total_players * (team.max_player_weight / total_weight))
+		capacities[iter_team_type] = cap
+		assigned_players += cap
+
+	var/remaining = target_total_players - assigned_players
+	if(remaining > 0)
+		for(var/iter_team_type in scenerio.teams)
+			capacities[iter_team_type] += 1
+			remaining--
+			if(remaining <= 0)
+				break
+
+	var/calculated_cap = capacities[team_type] || 0
+
+	return calculated_cap + 1
+
+/datum/teammatch_lobby/proc/pick_available_team()
+	var/list/available_teams = list()
+
+	for(var/team_type in scenerio.teams)
+		var/datum/teammatch_team/team = get_team(team_type)
+		if(!team || !team.active)
+			continue
+
+		var/list/players_in_team = get_team_players(team_type)
+		var/current_count = length(players_in_team)
+
+		var/max_capacity = get_max_players(team_type)
+		var/empty_slots = max_capacity - current_count
+
+		if(empty_slots > 0)
+			available_teams[team_type] = empty_slots
+
+	return pick_weight(available_teams)

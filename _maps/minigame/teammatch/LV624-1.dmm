@@ -416,6 +416,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/teammatch/xm/corporate_affairs)
+"dC" = (
+/obj/effect/baseturf_helper/beach/sand,
+/turf/closed/indestructible/rock,
+/area/teammatch/xm/testroom)
 "dF" = (
 /obj/structure/alien/resin,
 /turf/open/misc/beach/coast,
@@ -545,6 +549,11 @@
 	},
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/secure_storage)
+"eB" = (
+/obj/structure/alien/weeds/node,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/sand7)
 "eC" = (
 /obj/effect/turf_decal/stripes/corner{
 	dir = 8
@@ -701,6 +710,14 @@
 "fT" = (
 /turf/closed/indestructible/rock,
 /area/teammatch/xm/caves/rock)
+"fU" = (
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/compound/central)
+"fV" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/indestructible/rock,
+/area/teammatch/xm)
 "fW" = (
 /obj/structure/chair/comfy/shuttle/tactical{
 	dir = 4
@@ -789,6 +806,11 @@
 /obj/effect/turf_decal/bot,
 /turf/open/floor/iron,
 /area/teammatch/xm/spaceport2)
+"gK" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/r_wall,
+/area/teammatch/xm/corporate_affairs)
 "gL" = (
 /obj/machinery/atmospherics/pipe/smart/manifold/supply/hidden/layer4,
 /turf/open/floor/cult,
@@ -905,6 +927,10 @@
 /obj/effect/turf_decal/tile/dark_blue/half/contrasted,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/corporate_affairs)
+"hx" = (
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/central)
 "hy" = (
 /turf/open/misc/beach/coast/corner{
 	dir = 8
@@ -1101,6 +1127,7 @@
 /obj/effect/turf_decal/stripes/line{
 	dir = 10
 	},
+/obj/effect/baseturf_helper/beach/sand,
 /turf/open/floor/plating,
 /area/teammatch/xm/tablefort)
 "jk" = (
@@ -1137,7 +1164,7 @@
 "jN" = (
 /obj/structure/spacevine,
 /turf/closed/wall/r_wall,
-/area/teammatch/xm/jungle/south)
+/area/teammatch/xm/jungle/west)
 "jS" = (
 /obj/item/mecha_parts/chassis/gygax,
 /obj/effect/turf_decal/bot_white,
@@ -1190,8 +1217,10 @@
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/jungle/west)
 "kn" = (
-/turf/closed/wall/r_wall,
-/area/teammatch/xm/jungle/south)
+/obj/structure/alien/resin,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/caves/central4)
 "kr" = (
 /obj/structure/fake_stairs{
 	dir = 4
@@ -1251,6 +1280,10 @@
 "kP" = (
 /turf/open/misc/beach/coast/corner,
 /area/teammatch/xm/jungle/west/central)
+"kQ" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/r_wall,
+/area/teammatch/xm/hydroponics/aux)
 "kS" = (
 /obj/effect/decal/cleanable/dirt,
 /obj/structure/alien/weeds/node,
@@ -1406,6 +1439,10 @@
 /obj/structure/alien/resin,
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/caves/central3)
+"mi" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/jungle_wall,
+/area/teammatch/xm/caves/rock)
 "mj" = (
 /obj/structure/closet/crate/freezer/surplus_limbs,
 /obj/structure/window/reinforced/spawner/directional/north,
@@ -1630,7 +1667,7 @@
 /area/teammatch/xm/hydroponics/aux)
 "ol" = (
 /turf/closed/wall/r_wall,
-/area/teammatch/xm/jungle/southwest)
+/area/teammatch/xm/jungle/west)
 "oo" = (
 /obj/structure/chair/comfy/shuttle/tactical{
 	dir = 1
@@ -1851,6 +1888,11 @@
 /obj/item/clothing/glasses/regular,
 /turf/open/floor/wood,
 /area/teammatch/xm/corporate_affairs)
+"qh" = (
+/obj/structure/alien/resin,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/caves/west1)
 "qp" = (
 /obj/effect/turf_decal/tile/dark_green/half/contrasted,
 /turf/open/floor/iron/white,
@@ -2012,6 +2054,10 @@
 "rx" = (
 /turf/closed/wall,
 /area/teammatch/xm/mining_base)
+"rz" = (
+/obj/effect/baseturf_helper/beach/sand,
+/turf/closed/indestructible/syndicate,
+/area/shuttle/minigame/canterbury)
 "rD" = (
 /obj/effect/decal/cleanable/blood,
 /obj/item/ammo_casing,
@@ -2473,6 +2519,10 @@
 "vP" = (
 /turf/closed/wall/mineral/wood,
 /area/teammatch/xm/bar)
+"vQ" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/r_wall,
+/area/teammatch/xm/secure_storage)
 "vS" = (
 /obj/effect/turf_decal/stripes/line{
 	dir = 6
@@ -2505,6 +2555,11 @@
 /obj/structure/cable,
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/compound/southwest)
+"wf" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/jungle_wall,
+/area/teammatch/xm/spaceport2)
 "wl" = (
 /obj/structure/tank_dispenser/oxygen,
 /turf/open/floor/iron/dark,
@@ -2519,11 +2574,21 @@
 "wo" = (
 /turf/closed/indestructible/rock,
 /area/teammatch/xm)
+"wq" = (
+/obj/structure/alien/resin,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/caves/central2)
 "wu" = (
 /turf/open/misc/beach/coast{
 	dir = 10
 	},
 /area/teammatch/xm/river1)
+"wy" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/mineral/sandstone,
+/area/teammatch/xm/ruin)
 "wz" = (
 /obj/machinery/light/directional/north,
 /obj/structure/table/reinforced,
@@ -2605,6 +2670,11 @@
 /obj/structure/grille,
 /turf/open/floor/plating,
 /area/teammatch/xm/bridge/west)
+"xd" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach/water,
+/turf/open/floor/plating,
+/area/teammatch/xm/bridge)
 "xf" = (
 /obj/machinery/door/airlock/engineering{
 	dir = 1;
@@ -2828,6 +2898,10 @@
 	},
 /turf/open/floor/iron/white,
 /area/teammatch/xm/corporate_affairs)
+"zb" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/mineral/wood,
+/area/teammatch/xm/bar)
 "zg" = (
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
@@ -2956,6 +3030,10 @@
 /obj/effect/turf_decal/tile/dark_green/half/contrasted,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
+"Ap" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall,
+/area/teammatch/xm/overgrown)
 "At" = (
 /obj/structure/table/wood,
 /obj/item/mecha_parts/part/gygax_head,
@@ -3045,6 +3123,11 @@
 	dir = 8
 	},
 /area/teammatch/xm/jungle/northwest)
+"Bh" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/southwest)
 "Bj" = (
 /obj/structure/girder,
 /turf/open/misc/beach/sand,
@@ -3463,6 +3546,10 @@
 	},
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/secure_storage)
+"EL" = (
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/south)
 "EM" = (
 /obj/structure/flora/tree/jungle,
 /turf/open/floor/grass,
@@ -3728,10 +3815,9 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sand4)
 "Hi" = (
-/obj/effect/spawner/structure/window/reinforced/plasma/plastitanium,
-/obj/machinery/door/poddoor/indestructible,
-/turf/open/floor/plating,
-/area/teammatch/xm/mining_base)
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/compound/southwest)
 "Hk" = (
 /turf/closed/mineral/random/jungle,
 /area/teammatch/xm/caves/central3)
@@ -3824,6 +3910,11 @@
 /obj/structure/cable,
 /turf/open/floor/wood,
 /area/teammatch/xm/bar)
+"Im" = (
+/obj/structure/spacevine,
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/west)
 "Io" = (
 /turf/open/misc/beach/coast{
 	dir = 9
@@ -3894,6 +3985,7 @@
 /turf/open/floor/iron/white,
 /area/teammatch/xm/sand4)
 "Jp" = (
+/obj/effect/baseturf_helper/beach/sand,
 /turf/open/misc/beach/coast/corner{
 	dir = 1
 	},
@@ -4028,6 +4120,10 @@
 /obj/structure/spacevine,
 /turf/closed/wall/r_wall,
 /area/teammatch/xm/corporate_affairs)
+"KN" = (
+/obj/effect/baseturf_helper/beach/sand,
+/turf/closed/wall,
+/area/teammatch/xm/mining_base)
 "KQ" = (
 /obj/structure/ore_box,
 /turf/open/water/beach,
@@ -4275,6 +4371,10 @@
 /obj/effect/turf_decal/bot_white,
 /turf/open/floor/iron/dark,
 /area/teammatch/xm/robotics)
+"Nf" = (
+/obj/effect/baseturf_helper/beach/water,
+/turf/open/floor/plating,
+/area/teammatch/xm/bridge/west)
 "Ng" = (
 /obj/effect/spawner/random/structure/shipping_container,
 /obj/effect/turf_decal/bot,
@@ -4352,6 +4452,10 @@
 /obj/item/pen,
 /turf/open/floor/iron/smooth,
 /area/shuttle/minigame/canterbury)
+"Oa" = (
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/west/central)
 "Oc" = (
 /obj/machinery/power/apc/worn_out/directional/north,
 /turf/open/floor/grass,
@@ -4391,6 +4495,11 @@
 /obj/machinery/power/floodlight,
 /turf/open/misc/beach/sand,
 /area/teammatch/xm/jungle/west)
+"Ou" = (
+/obj/structure/alien/weeds/node,
+/obj/effect/baseturf_helper/beach/water,
+/turf/open/floor/plating,
+/area/teammatch/xm/bridge/east)
 "Ow" = (
 /obj/structure/table/reinforced,
 /turf/open/floor/iron/smooth,
@@ -4729,9 +4838,9 @@
 /turf/open/floor/plating,
 /area/teammatch/xm/robotics)
 "RF" = (
-/obj/structure/spacevine,
-/turf/closed/wall/r_wall,
-/area/teammatch/xm/jungle/southwest)
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/grass,
+/area/teammatch/xm/jungle/northwest)
 "RH" = (
 /obj/structure/table/wood,
 /obj/item/reagent_containers/cup/glass/drinkingglass{
@@ -4742,6 +4851,10 @@
 "RJ" = (
 /turf/open/misc/beach/coast,
 /area/teammatch/xm/jungle/northwest)
+"RK" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall/r_wall,
+/area/teammatch/xm/atmos)
 "RO" = (
 /obj/item/ammo_casing{
 	pixel_x = 2;
@@ -4834,6 +4947,10 @@
 /obj/structure/spacevine,
 /turf/open/floor/plating,
 /area/teammatch/xm/bridge)
+"Sx" = (
+/obj/effect/baseturf_helper/beach,
+/turf/closed/wall,
+/area/teammatch/xm/robotics)
 "SB" = (
 /obj/effect/decal/remains/human,
 /turf/open/floor/plating,
@@ -5122,6 +5239,11 @@
 "UP" = (
 /turf/open/floor/iron/white,
 /area/teammatch/xm/hydroponics/aux)
+"UQ" = (
+/obj/structure/mineral_door/resin,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/caves/central3)
 "UR" = (
 /obj/effect/spawner/structure/window,
 /turf/open/floor/plating,
@@ -5187,6 +5309,11 @@
 	},
 /turf/open/floor/iron/smooth_large,
 /area/shuttle/minigame/canterbury)
+"Vx" = (
+/obj/structure/alien/resin,
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/caves/central5)
 "VB" = (
 /obj/structure/girder/displaced,
 /turf/open/misc/beach/sand,
@@ -5201,6 +5328,10 @@
 /obj/structure/cable,
 /turf/open/floor/plating,
 /area/teammatch/xm/corporate_affairs)
+"VG" = (
+/obj/effect/baseturf_helper/beach/sand,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/sand4)
 "VN" = (
 /obj/structure/reagent_dispensers/watertank,
 /obj/effect/turf_decal/tile/brown,
@@ -5232,6 +5363,10 @@
 /obj/structure/spacevine,
 /turf/closed/wall,
 /area/teammatch/xm/overgrown)
+"VX" = (
+/obj/effect/baseturf_helper/beach,
+/turf/open/misc/beach/sand,
+/area/teammatch/xm/jungle/central)
 "VZ" = (
 /obj/effect/landmark/xeno_tunnel_spawn,
 /turf/open/misc/beach/sand,
@@ -5527,6 +5662,12 @@
 /obj/effect/turf_decal/tile/dark_blue/fourcorners,
 /turf/open/floor/iron/white,
 /area/teammatch/xm/corporate_affairs)
+"YO" = (
+/obj/machinery/power/floodlight,
+/obj/effect/turf_decal/stripes/box,
+/obj/effect/baseturf_helper/beach,
+/turf/open/floor/iron/recharge_floor,
+/area/teammatch/xm/landing2)
 "YP" = (
 /obj/structure/spacevine,
 /turf/open/water/beach,
@@ -5859,7 +6000,7 @@ wo
 wo
 wo
 wo
-wo
+fV
 "}
 (2,1,1) = {"
 wo
@@ -5870,7 +6011,7 @@ Pp
 Pp
 SG
 SG
-SG
+dC
 Pp
 Pp
 Pp
@@ -6040,7 +6181,7 @@ oO
 oO
 oO
 oO
-oO
+mi
 wo
 "}
 (3,1,1) = {"
@@ -6190,7 +6331,7 @@ vt
 vt
 VV
 VV
-vt
+Ap
 oO
 oO
 oO
@@ -6748,7 +6889,7 @@ Pl
 Pl
 sz
 sz
-Pl
+vQ
 ol
 SV
 SV
@@ -6935,7 +7076,7 @@ Pl
 ol
 SV
 SV
-SV
+Im
 oO
 oO
 oO
@@ -7061,7 +7202,7 @@ ky
 ky
 ky
 Yq
-Yq
+kn
 Pp
 Pp
 oO
@@ -7298,7 +7439,7 @@ gU
 vp
 yz
 Pl
-RF
+jN
 SV
 oO
 oO
@@ -7676,7 +7817,7 @@ Ma
 Ma
 Ma
 Ma
-tI
+Bh
 oO
 xW
 wo
@@ -7972,7 +8113,7 @@ ky
 br
 ky
 ky
-mr
+eB
 Pp
 Lh
 qF
@@ -8026,7 +8167,7 @@ pn
 zL
 gU
 cn
-kn
+ol
 SV
 Ma
 Ma
@@ -8038,7 +8179,7 @@ sm
 sm
 XP
 Br
-XP
+wy
 oO
 Ma
 oO
@@ -8208,7 +8349,7 @@ aC
 Ps
 ez
 Pl
-kn
+ol
 SV
 Ma
 Ma
@@ -8525,7 +8666,7 @@ UU
 xa
 UU
 UU
-kK
+Nf
 Cx
 Cx
 Cx
@@ -8541,7 +8682,7 @@ vP
 Ex
 Ex
 Ex
-vP
+zb
 Cx
 td
 Cx
@@ -8571,7 +8712,7 @@ kr
 gU
 PI
 Pl
-kn
+ol
 SV
 SV
 Ma
@@ -8752,7 +8893,7 @@ rs
 sp
 tU
 Pl
-kn
+ol
 SV
 SV
 SV
@@ -8933,7 +9074,7 @@ pn
 Nb
 pn
 pn
-kn
+ol
 SV
 SV
 SV
@@ -9114,7 +9255,7 @@ Pl
 Np
 mp
 sp
-kn
+ol
 jN
 SV
 SV
@@ -12729,7 +12870,7 @@ oO
 oO
 oO
 Oe
-Oe
+RF
 GV
 GV
 oO
@@ -12751,7 +12892,7 @@ GV
 GV
 GV
 GV
-GV
+Oa
 tO
 fv
 fv
@@ -12849,7 +12990,7 @@ Pp
 Pp
 Pp
 Pp
-Jn
+qh
 Pp
 Pp
 Pp
@@ -13077,7 +13218,7 @@ xq
 hC
 Lq
 hC
-Sv
+xd
 ee
 DZ
 iH
@@ -13306,7 +13447,7 @@ gd
 UM
 UM
 UM
-gd
+kQ
 Ma
 Ma
 Nj
@@ -15955,7 +16096,7 @@ Pp
 Pp
 ny
 ny
-ny
+Vx
 Pp
 QN
 Pp
@@ -16352,8 +16493,8 @@ Pc
 Pc
 Pc
 Pc
-Hi
-lr
+Pc
+rz
 iH
 iH
 iH
@@ -16938,7 +17079,7 @@ yb
 Fk
 Fk
 Fk
-ij
+wf
 tI
 Ma
 oO
@@ -17662,7 +17803,7 @@ gP
 gP
 gP
 gP
-Rr
+YO
 JW
 JW
 EU
@@ -19028,7 +19169,7 @@ Fx
 Fx
 Fx
 Fx
-eO
+UQ
 aZ
 aZ
 aZ
@@ -19505,7 +19646,7 @@ zi
 uD
 uD
 uD
-zi
+RK
 Ma
 Ma
 LA
@@ -21471,7 +21612,7 @@ iH
 iH
 iH
 Oe
-Oe
+RF
 Fk
 aP
 UJ
@@ -22197,7 +22338,7 @@ iU
 mV
 mV
 mV
-iU
+Sx
 Oe
 wE
 TH
@@ -22401,7 +22542,7 @@ MF
 Di
 Di
 Di
-KI
+gK
 tI
 EB
 Ma
@@ -23059,7 +23200,7 @@ fG
 fG
 fG
 fG
-fG
+VG
 yV
 yV
 yV
@@ -23257,7 +23398,7 @@ qO
 st
 jw
 jw
-LI
+Ou
 iH
 iH
 iH
@@ -23329,7 +23470,7 @@ ik
 NS
 ik
 oO
-ik
+EL
 oO
 wo
 "}
@@ -24042,7 +24183,7 @@ BH
 Di
 TH
 TH
-TH
+hx
 mv
 Fq
 Fq
@@ -24488,7 +24629,7 @@ UR
 rx
 rx
 rx
-rx
+KN
 Pp
 Pp
 Pp
@@ -24944,8 +25085,8 @@ TH
 TH
 pD
 pD
-pD
-bn
+VX
+Hi
 TH
 oO
 oO
@@ -25291,7 +25432,7 @@ uz
 uz
 uz
 uz
-uz
+fU
 oO
 oO
 Si
@@ -25371,7 +25512,7 @@ eF
 eF
 eF
 pQ
-wX
+wq
 Pp
 fT
 fT

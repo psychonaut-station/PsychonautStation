@@ -312,6 +312,7 @@
 
 /obj/item/storage/toolbox/emergency/turret
 	desc = "You feel a strange urge to hit this with a wrench."
+	var/turret_type = /obj/machinery/porta_turret/syndicate/toolbox
 
 /obj/item/storage/toolbox/emergency/turret/PopulateContents()
 	new /obj/item/screwdriver(src)
@@ -341,7 +342,7 @@
 	)
 
 	playsound(src, 'sound/items/tools/drill_use.ogg', 80, TRUE, -1)
-	var/obj/machinery/porta_turret/syndicate/toolbox/turret = new(get_turf(loc))
+	var/obj/machinery/porta_turret/syndicate/toolbox/turret = new turret_type(get_turf(loc))
 	set_toolbox_faction(turret, user)
 	turret.toolbox = src
 	forceMove(turret)
@@ -358,6 +359,7 @@
 	icon = 'icons/obj/storage/case.dmi'
 	icon_state = "scibox"
 	has_latches = FALSE
+	turret_type = /obj/machinery/porta_turret/syndicate/toolbox/marine
 
 /obj/item/storage/toolbox/emergency/turret/marine/set_toolbox_faction(obj/machinery/porta_turret/turret, mob/user)
 	turret.set_faction(list(FACTION_MARINE))

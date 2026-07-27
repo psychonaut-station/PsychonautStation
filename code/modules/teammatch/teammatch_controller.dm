@@ -19,11 +19,11 @@
 
 	for (var/datum/lazy_template/teammatch/template as anything in subtypesof(/datum/lazy_template/teammatch))
 		var/map_name = initial(template.name)
-		maps[map_name] = new template
+		maps[map_name] = new template()
 
 	for (var/datum/teammatch_scenerio/scenerio as anything in subtypesof(/datum/teammatch_scenerio))
 		var/scenerio_name = initial(scenerio.name)
-		scenerios[scenerio_name] = new scenerio
+		scenerios[scenerio_name] = new scenerio()
 
 	for (var/team_type in subtypesof(/datum/teammatch_team))
 		teams[team_type] = new team_type(TRUE)

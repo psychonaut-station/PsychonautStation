@@ -1,7 +1,7 @@
 /datum/outfit/teammatch_loadout //remember that fun > balance
 	name = ""
 	ears = /obj/item/radio/headset
-	shoes = /obj/item/clothing/shoes/sneakers/black // im not doing this on all of them
+	shoes = /obj/item/clothing/shoes/combat // im not doing this on all of them
 	/// Name shown in the UI
 	var/display_name = ""
 	/// Description shown in the UI
@@ -42,9 +42,11 @@
 	id = /obj/item/card/id/away/dogtag
 	back = /obj/item/storage/backpack
 	box = /obj/item/storage/box/survival
+	glasses = /obj/item/clothing/glasses/hud/security
 	backpack_contents = list()
 	team_radio_freq = FREQ_XM_MARINE
 	minimap_implant_type = /obj/item/implant/tacmap/teammatch/marine
+	implants = list(/obj/item/organ/cyberimp/arm/ammo_counter, /obj/item/organ/cyberimp/arm/ammo_counter/left_handed)
 
 /datum/outfit/teammatch_loadout/marine/engineer
 	name = "Teammatch: Squad Engineer"

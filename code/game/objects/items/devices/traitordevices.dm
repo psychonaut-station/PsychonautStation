@@ -503,6 +503,9 @@ effective or pretty fucking useless.
 
 	return UI_CLOSE
 
+/obj/machinery/porta_turret/syndicate/toolbox/marine
+	shot_delay = 1 SECONDS
+
 /obj/projectile/bullet/toolbox_turret
 	damage = 10
 	speed = 1.6

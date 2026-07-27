@@ -19,8 +19,7 @@
 
 	/// Minimum players for this team
 	var/min_players = 0
-	/// Maximum players for this team, -1 is infinity
-	var/max_players = -1
+	var/max_player_weight = 1
 
 	var/is_prototype = FALSE
 
@@ -91,6 +90,7 @@
 
 	default_loadout = /datum/outfit/teammatch_loadout/marine
 	min_players = 1
+	max_player_weight = 3
 
 /datum/teammatch_team/marines/after_spawn(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/L, datum/outfit/teammatch_loadout/loadout)
 	L.set_faction(list(FACTION_MARINE))
@@ -103,6 +103,7 @@
 	loadouts = list(/datum/outfit/teammatch_loadout/xenomorph = -1)
 	default_loadout = /datum/outfit/teammatch_loadout/xenomorph
 	min_players = 1
+	max_player_weight = 1
 	respawn_time = 30 SECONDS
 
 /datum/teammatch_team/xenomorphs/pre_mind_init(datum/teammatch_lobby/lobby, datum/teammatch_scenerio/scenerio, mob/living/carbon/alien/alien, datum/outfit/teammatch_loadout/loadout)

@@ -122,6 +122,7 @@
 			"products" = list(
 				/obj/item/storage/belt/holster/flarepouch = 100,
 				/obj/item/flashlight/flare = 100,
+				/obj/item/flashlight/seclite = 100,
 			)
 		)
 	)

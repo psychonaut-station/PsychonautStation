@@ -248,3 +248,4 @@
 		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
 		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/marine
 	)
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

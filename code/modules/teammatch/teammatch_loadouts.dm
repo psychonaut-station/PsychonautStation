@@ -2,6 +2,7 @@
 	name = ""
 	ears = /obj/item/radio/headset
 	shoes = /obj/item/clothing/shoes/combat // im not doing this on all of them
+	implants = list(/obj/item/implant/tacmap/teammatch)
 	/// Name shown in the UI
 	var/display_name = ""
 	/// Description shown in the UI
@@ -12,16 +13,22 @@
 	var/has_radio = TRUE
 	var/team_radio_freq = FREQ_COMMON
 
-	var/minimap_implant_type = /obj/item/implant/tacmap/teammatch
+	/// Organs to insert
+	var/list/organs = list()
 
-/datum/outfit/teammatch_loadout/post_equip(mob/living/carbon/human/human_to_equip, visuals_only=FALSE)
+/datum/outfit/teammatch_loadout/post_equip(mob/living/carbon/user, visuals_only=FALSE)
 	if(visuals_only)
 		return
 	if(has_radio)
-		var/obj/item/radio/headset = human_to_equip.ears
+		var/obj/item/radio/headset = user.ears
 		headset.set_frequency(team_radio_freq)
 		headset.freqlock = RADIO_FREQENCY_LOCKED
 		headset.special_channels |= RADIO_SPECIAL_CENTCOM
+
+	if(organs)
+		for(var/organ_type in organs)
+			var/obj/item/organ/organ = SSwardrobe.provide_type(organ_type, user)
+			organ.Insert(user)
 
 /datum/outfit/teammatch_loadout/xenomorph
 	name = "Teammatch: Xenomorph"
@@ -29,7 +36,7 @@
 	ears = null
 	mob_override = /mob/living/carbon/alien/larva
 	has_radio = FALSE
-	minimap_implant_type = /obj/item/implant/tacmap/teammatch/xenomorph
+	implants = list(/obj/item/implant/tacmap/teammatch/xenomorph)
 
 /datum/outfit/teammatch_loadout/marine
 	name = "Teammatch: Squad Marine"
@@ -45,8 +52,8 @@
 	glasses = /obj/item/clothing/glasses/hud/security
 	backpack_contents = list()
 	team_radio_freq = FREQ_XM_MARINE
-	minimap_implant_type = /obj/item/implant/tacmap/teammatch/marine
-	implants = list(/obj/item/organ/cyberimp/arm/ammo_counter, /obj/item/organ/cyberimp/arm/ammo_counter/left_handed)
+	implants = list(/obj/item/implant/tacmap/teammatch/marine)
+	organs = list(/obj/item/organ/cyberimp/arm/ammo_counter, /obj/item/organ/cyberimp/arm/ammo_counter/left_handed)
 
 /datum/outfit/teammatch_loadout/marine/engineer
 	name = "Teammatch: Squad Engineer"
@@ -72,5 +79,5 @@
 	uniform = /obj/item/clothing/under/syndicate
 	gloves = /obj/item/clothing/gloves/tackler/combat/insulated
 	id_trim = /datum/id_trim/away/teammatch/marine/fc
-	minimap_implant_type = /obj/item/implant/tacmap/teammatch/marine/leader
+	implants = list(/obj/item/implant/tacmap/teammatch/marine/leader)
 

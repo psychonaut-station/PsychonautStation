@@ -30,15 +30,15 @@
 /datum/teammatch_scenerio/proc/process_atoms(datum/teammatch_lobby/lobby, datum/lazy_template/teammatch/source, list/atoms)
 	return
 
-/datum/teammatch_scenerio/proc/player_spawned(datum/teammatch_lobby/lobby, mob/living/carbon/C, datum/outfit/teammatch_loadout/loadout, datum/teammatch_team/team)
+/datum/teammatch_scenerio/proc/player_spawned(datum/teammatch_lobby/lobby, mob/living/L, datum/outfit/teammatch_loadout/loadout, datum/teammatch_team/team)
 	SHOULD_CALL_PARENT(TRUE)
 
-	if(has_minimap)
-		var/obj/item/implant/tacmap/teammatch/new_implant = new loadout.minimap_implant_type (C)
-		new_implant.minimap_map_id = "[lobby.uid]"
-		new_implant.minimap_team_id = "[team.id]"
-		new_implant.minimap_fixed_z_level = C.z
-		new_implant.implant(C, null, silent = TRUE)
+	var/obj/item/implant/tacmap/tacmap_implant = locate() in L.implants
+	if(has_minimap && tacmap_implant)
+		tacmap_implant.minimap_map_id = "[lobby.uid]"
+		tacmap_implant.minimap_team_id = "[team.id]"
+		tacmap_implant.minimap_fixed_z_level = L.z
+		tacmap_implant.update_minimap_icon(L)
 
 /datum/teammatch_scenerio/xenomarine
 	name = "Xenomorph vs Marine"

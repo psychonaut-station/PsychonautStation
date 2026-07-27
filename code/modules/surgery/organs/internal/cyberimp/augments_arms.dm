@@ -818,6 +818,7 @@
 
 /obj/item/organ/cyberimp/arm/ammo_counter/left_handed
 	zone = BODY_ZONE_L_ARM
+	slot = ORGAN_SLOT_LEFT_ARM_AUG
 
 /obj/item/organ/cyberimp/arm/ammo_counter/syndicate
 	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN

@@ -201,8 +201,7 @@
 	if(!istype(knife))
 		return breakouttime
 
-	visible_message(span_warning("[src] is trying to work [p_their()] way free with [knife] in [p_their()] mouth!"))
-	to_chat(src, span_notice("You try to work your way free with [knife] in your mouth..."))
+	visible_message(span_warning("[src] is trying to work [p_their()] way free with [knife] in [p_their()] mouth!"), span_notice("You try to work your way free with [knife] in your mouth..."))
 	return handcuffs_item.mouth_knife_breakout_time
 
 /**

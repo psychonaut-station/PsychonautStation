@@ -190,7 +190,7 @@
 
 
 /mob/living/carbon/proc/get_mouth_knife_breakout_time(obj/item/cuffs, breakouttime)
-	if(!ishuman(src) || !handcuffed || !istype(cuffs, /obj/item/restraints/handcuffs))
+	if(!ishuman(src) || !handcuffed || !istype(cuffs, /obj/item/restraints/handcuffs/cuffs))
 		return breakouttime
 
 	var/obj/item/restraints/handcuffs/handcuffs_item = cuffs

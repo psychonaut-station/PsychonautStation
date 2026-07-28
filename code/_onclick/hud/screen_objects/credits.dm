@@ -9,7 +9,7 @@
 		return
 	LAZYINITLIST(credits)
 	var/list/_credits = credits
-	add_verb(src, /client/proc/ClearCredits)
+	ASSIGN_GAME_VERB(src, /client, ClearCredits)
 	var/list/credit_order_for_this_round = SScredits.credit_order_for_this_round
 
 	var/count = 0
@@ -39,10 +39,8 @@
 	sleep(CREDIT_ROLL_SPEED - CREDIT_SPAWN_SPEED)
 	INVOKE_ASYNC(src, TYPE_PROC_REF(/client, ClearCredits))
 
-/client/proc/ClearCredits()
-	set name = "Hide Credits"
-	set category = "OOC"
-	remove_verb(src, /client/proc/ClearCredits)
+GAME_VERB_PROC(/client, ClearCredits, "Hide Credits", "OOC")
+	UNASSIGN_GAME_VERB(src, /client, ClearCredits)
 	QDEL_LIST(credits)
 	credits = null
 

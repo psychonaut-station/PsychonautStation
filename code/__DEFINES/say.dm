@@ -109,7 +109,7 @@
 /// Range to hear whispers normally
 #define WHISPER_RANGE 1
 /// Additional range to partially hear whispers
-#define EAVESDROP_EXTRA_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
+#define EAVESDROP_RANGE 1 //how much past the specified message_range does the message get starred, whispering only
 
 /// How close intercoms can be for radio code use
 #define MODE_RANGE_INTERCOM 1
@@ -161,4 +161,5 @@
 #define VERB_ME "Me"
 //Gave this shit a shorter name so you only have to time out "ooc" rather than "ooc message" to use it --NeoFite
 #define VERB_OOC "OOC"
+#define VERB_LOOC "LOOC"
 #define VERB_PRAY "Pray"

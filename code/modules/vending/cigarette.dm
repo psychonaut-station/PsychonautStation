@@ -28,6 +28,7 @@
 		/obj/item/storage/fancy/cigarettes/cigars = 1,
 		/obj/item/storage/fancy/cigarettes/cigars/havana = 1,
 		/obj/item/storage/fancy/cigarettes/cigars/cohiba = 1,
+		/obj/item/hookah_coals = 3,
 	)
 
 	refill_canister = /obj/item/vending_refill/cigarette

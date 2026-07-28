@@ -5,6 +5,7 @@
 	desc = "A holder, can hold cells for ipc's power source."
 	organ_flags = ORGAN_ROBOTIC
 	organ_traits = list(TRAIT_NOHUNGER)
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
 	var/mob/living/carbon/human/humanowner
 	var/obj/item/stock_parts/power_store/cell/cell
 	var/obj/item/stock_parts/power_store/cell/initcell = /obj/item/stock_parts/power_store/cell/high

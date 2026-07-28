@@ -47,11 +47,16 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/proc/greet()
 	return "[name] kutlu olsun!"
 
-// Returns special prefixes for the station name on certain days. You wind up with names like "Christmas Object Epsilon". See new_station_name()
-/datum/holiday/proc/getStationPrefix()
-	//get the first word of the Holiday and use that
-	var/i = findtext(name, " ")
-	return copytext(name, 1, i)
+/// Returns special prefix station name on certain days. (See new_station_name())
+/// Turns "Experimental Research City" into "Christmas Research City"
+/datum/holiday/proc/get_station_prefix()
+	return ""
+
+/// Returns special names for the station name on certain days. (See new_station_name())
+/// Turns "Experimental Research City" into "Experimental Christmas City"
+/datum/holiday/proc/get_station_name()
+	// By default get the first word of the Holiday and use that
+	return copytext(name, 1, findtext(name, " "))
 
 // Return 1 if this holidy should be celebrated today
 /datum/holiday/proc/shouldCelebrate(dd, mm, yyyy, ddd)
@@ -86,30 +91,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 	return FALSE
 
-/// Procs to return holiday themed colors for recoloring atoms
-/datum/holiday/proc/get_holiday_colors(atom/thing_to_color, pattern = holiday_pattern)
-	if(!holiday_colors)
-		return
-	switch(pattern)
-		if(PATTERN_DEFAULT)
-			return holiday_colors[(thing_to_color.y % holiday_colors.len) + 1]
-		if(PATTERN_VERTICAL_STRIPE)
-			return holiday_colors[(thing_to_color.x % holiday_colors.len) + 1]
-
-/proc/request_holiday_colors(atom/thing_to_color, pattern)
-	switch(pattern)
-		if(PATTERN_RANDOM)
-			return "#[random_short_color()]"
-		if(PATTERN_RAINBOW)
-			var/datum/holiday/pride_week/rainbow_datum = new()
-			return rainbow_datum.get_holiday_colors(thing_to_color, PATTERN_DEFAULT)
-	if(!length(GLOB.holidays))
-		return
-	for(var/holiday_key in GLOB.holidays)
-		var/datum/holiday/holiday_real = GLOB.holidays[holiday_key]
-		if(!holiday_real.holiday_colors)
-			continue
-		return holiday_real.get_holiday_colors(thing_to_color, pattern || holiday_real.holiday_pattern)
+/datum/holiday/proc/get_holiday_colors(atom/thing_to_color, pattern)
+	return get_decoration_color_from_pattern(thing_to_color, pattern || holiday_pattern, holiday_colors)
 
 // The actual holidays
 
@@ -117,15 +100,20 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 //Fleet Day is celebrated on Jan 19th, the date on which moths were merged (#34498)
 /datum/holiday/fleet_day
-	name = "Filo Günü"
+	name = MOTH_FLEET_DAY
 	begin_month = JANUARY
 	begin_day = 19
 	holiday_hat = /obj/item/clothing/head/mothcap
+	holiday_mail = list(
+		/obj/item/toy/plush/moth = 2,
+		/obj/item/clothing/shoes/clown_shoes/moffers = 1,
+		/obj/item/instrument/musicalmoth = 1,
+	)
 
 /datum/holiday/fleet_day/greet()
-	return "Bu gün, Mothic Grand Nomad Filosu'nda başarılı bir şekilde hayatta kalmanın bir yılını daha anıyor. Galaksi genelindeki Moth'ların yemek yemesi, içmesi ve eğlenmesi teşvik edilir."
+	return "Bugün, Mothic Büyük Göçebe Filosu'nda başarıyla hayatta kalınan bir yılı daha anıyoruz. Galaksi genelindeki Moth'ların yemek yemesi, içmesi ve eğlenmesi teşvik edilir."
 
-/datum/holiday/fleet_day/getStationPrefix()
+/datum/holiday/fleet_day/get_station_name()
 	return pick("Moth", "Fleet", "Nomadic")
 
 // FEBRUARY
@@ -135,7 +123,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 2
 	begin_month = FEBRUARY
 
-/datum/holiday/groundhog/getStationPrefix()
+/datum/holiday/groundhog/get_station_name()
 	return pick("Deja Vu") //I have been to this place before
 
 /datum/holiday/nz
@@ -150,7 +138,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		COLOR_WHITE,
 	)
 
-/datum/holiday/nz/getStationPrefix()
+/datum/holiday/nz/get_station_name()
 	return pick("Aotearoa","Kiwi","Fish 'n' Chips","Kākāpō","Southern Cross")
 
 /datum/holiday/nz/greet()
@@ -162,8 +150,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 13
 	end_day = 15
 	begin_month = FEBRUARY
-	poster_name = "lovey poster"
-	poster_desc = "A poster celebrating all the relationships built today. Of course, you probably don't have one."
+	poster_name = "sevgi dolu afiş"
+	poster_desc = "Bugün kurulan tüm ilişkileri kutlayan bir afiş. Tabii, muhtemelen sizde yok."
 	poster_icon = "holiday_love"
 	holiday_mail = list(
 		/obj/item/food/bonbon/chocolate_truffle,
@@ -171,16 +159,17 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/food/grown/rose,
 		)
 
-/datum/holiday/valentines/getStationPrefix()
-	return pick("Love","Amore","Single","Smootch","Hug")
+/datum/holiday/valentines/get_station_name()
+	return pick("Aşk", "Amor", "Bekar", "Öpücük", "Sarılma")
+
 
 /datum/holiday/birthday
 	name = "Space Station 13'ün doğum günü"
 	begin_day = 16
 	begin_month = FEBRUARY
 	holiday_hat = /obj/item/clothing/head/costume/festive
-	poster_name = "station birthday poster"
-	poster_desc = "A poster celebrating another year of the station's operation. Why anyone would be happy to be here is byond you."
+	poster_name = "istasyon doğum günü afişi"
+	poster_desc = "İstasyonun bir yılını daha kutlayan bir afiş. Burada olmaktan neden birinin mutlu olduğu ise sizi aşar."
 	poster_icon = "holiday_cake" // is a lie
 	holiday_mail = list(
 		/obj/item/clothing/mask/party_horn,
@@ -194,30 +183,31 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	var/Fact
 	switch(game_age)
 		if(16)
-			Fact = " SS13 artık ehliyet alabilir!"
+			Fact = " SS13 artık ehliyet alacak yaşta!"
 		if(18)
-			Fact = " SS13 artık yetişkin!"
+			Fact = " SS13 artık reşit!"
 		if(21)
 			Fact = " SS13 artık alkol içebilir!"
 		if(26)
-			Fact = " SS13 artık araba alabilir!"
+			Fact = " SS13 artık araba alacak yaşta!"
 		if(30)
 			Fact = " SS13 artık bir yuva kurabilir!"
 		if(40)
-			Fact = " SS13 artık cumhurbaşkanlığı için aday olabilir!"
+			Fact = " SS13 artık cumhurbaşkanlığına aday olabilir!"
 		if(60)
 			Fact = " SS13 artık emekli olabilir!"
 	if(!Fact)
 		Fact = " SS13 [game_age] yaşında!"
 
-	return "Space Station 13'e doğum günü dileklerini ilet, Şubat'ın 16. günü, 2003'te herkes tarafından oynanabilir hale geldi![Fact]"
+	return "Space Station 13'e doğum günü dileklerini ilet; Şubat'ın 16. günü 2003'te herkes tarafından oynanabilir hale geldi![Fact]"
+
 
 /datum/holiday/random_kindness
 	name = "Rastgele İyilik ve Teşekkür Haftası"
 	begin_day = 17
 	begin_month = FEBRUARY
-	poster_name = "act of kindness poster"
-	poster_desc = "A poster notifying the reader today is 'Act of Kindness' day. What a nice thing to do."
+	poster_name = "iyilik afişi"
+	poster_desc = "Okuyucuya bugün 'İyilik Yapma' günü olduğunu bildiren bir afiş. Ne hoş bir şey."
 	poster_icon = "holiday_kind"
 
 /datum/holiday/random_kindness/greet()
@@ -229,8 +219,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	name = "Pi Günü"
 	begin_day = 14
 	begin_month = MARCH
-	poster_name = "pi day poster"
-	poster_desc = "A poster celebrating the 3.141529th day of the year. At least theres free pie."
+	poster_name = "pi günü afişi"
+	poster_desc = "Yılın 3,141529. gününü kutlayan bir afiş. En azından bedava turta var."
 	poster_icon = "holiday_pi"
 	holiday_mail = list(
 		/obj/item/food/pieslice/apple,
@@ -246,11 +236,11 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/food/pieslice/xemeatpie,
 	)
 
-/datum/holiday/pi/getStationPrefix()
+/datum/holiday/pi/get_station_name()
 	return pick("Sinüs","Cosinüs","Tanjant","Sekant", "Kosekant", "Kotanjant")
 
 /datum/holiday/no_this_is_patrick
-	name = "Aziz Patrick Günü"
+	name = ST_PATRICK_DAY
 	begin_day = 17
 	begin_month = MARCH
 	holiday_hat = /obj/item/clothing/head/soft/green
@@ -266,7 +256,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/reagent_containers/cup/glass/drinkingglass/filled/irish_cream,
 	)
 
-/datum/holiday/no_this_is_patrick/getStationPrefix()
+/datum/holiday/no_this_is_patrick/get_station_name()
 	return pick("Blarney","Yeşil","Leprikon","İçki")
 
 /datum/holiday/no_this_is_patrick/greet()
@@ -308,13 +298,13 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_month = APRIL
 	holiday_hat = /obj/item/clothing/head/rasta
 	holiday_colors = list(
-		COLOR_ETHIOPIA_GREEN,
-		COLOR_ETHIOPIA_YELLOW,
 		COLOR_ETHIOPIA_RED,
+		COLOR_ETHIOPIA_YELLOW,
+		COLOR_ETHIOPIA_GREEN,
 	)
 	holiday_mail = list(/obj/item/cigarette/rollie/cannabis)
 
-/datum/holiday/fourtwenty/getStationPrefix()
+/datum/holiday/fourtwenty/get_station_name()
 	return pick("Snoop","Blunt","Toke","Dank","Cheech","Chong")
 
 /datum/holiday/tea
@@ -323,7 +313,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_month = APRIL
 	holiday_mail = list(/obj/item/reagent_containers/cup/glass/mug/tea)
 
-/datum/holiday/tea/getStationPrefix()
+/datum/holiday/tea/get_station_name()
 	return pick("Crumpet","Assam","Oolong","Pu-erh","Tatlı Çay","Yeşil","Siyah")
 
 /datum/holiday/earth
@@ -340,20 +330,31 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		COLOR_WHITE,
 	)
 
+/datum/holiday/anz
+	name = "ANZAC Günü"
+	timezones = list(TIMEZONE_TKT, TIMEZONE_TOT, TIMEZONE_NZST, TIMEZONE_NFT, TIMEZONE_LHST, TIMEZONE_AEST, TIMEZONE_ACST, TIMEZONE_ACWST, TIMEZONE_AWST, TIMEZONE_CXT, TIMEZONE_CCT, TIMEZONE_CKT, TIMEZONE_NUT)
+	begin_day = 25
+	begin_month = APRIL
+	holiday_hat = /obj/item/food/grown/poppy
+
+/datum/holiday/anz/get_station_name()
+	return pick("Avustralyalı","Yeni Zelanda","Gelincik","Güney Haçı")
+
 /datum/holiday/chernobyl
 	name = CHERNOBYL_ANNIVERSARY
 	begin_day = 26
 	begin_month = APRIL
+	holiday_mail = list(/obj/item/geiger_counter)
 
-/datum/holiday/chernobyl/getStationPrefix()
+/datum/holiday/chernobyl/get_station_name()
 	if(prob(3))
-		return "Not Great, Not Terrible"
+		return "İyi Değil, Kötü de Değil"
 
-	return pick("Atomic", "Nuclear", "Radiation", "Plutonium", "Uranium", "Corium", "Zirconium", "Graphite", "Scram", "Explosion")
+	return pick("Atomik", "Nükleer", "Radyasyon", "Plütonyum", "Uranyum", "Koriyum", "Zirkonyum", "Grafit", "Acil Durdurma", "Patlama")
 
 /datum/holiday/chernobyl/greet()
-	return "On this day in 1986, the Chernobyl nuclear power plant melted down, causing one of the worst nuclear disasters in human history. \
-		Today serves as a reminder to the lives lost and to the rigorous safety standards our engineers must adhere to when providing power to the station."
+	return "1986'da bugün, Çernobil nükleer santrali eriyerek insanlık tarihinin en kötü nükleer felaketlerinden birine yol açtı. \
+		Bugün, yitirilen hayatları ve mühendislerimizin istasyona güç sağlarken uyması gereken sıkı güvenlik standartlarını hatırlatır."
 
 // MAY
 
@@ -369,11 +370,15 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	name = "Draconic Dili Günü"
 	begin_month = MAY
 	begin_day = 3
+	holiday_mail = list(
+		/obj/item/toy/plush/lizard_plushie/space = 3,
+		/obj/item/language_manual/roundstart_species/draconic = 1,
+	)
 
 /datum/holiday/draconic_day/greet()
 	return "Bu gün; Lizard türleri, edebiyat ve diğer kültürel eserlerle dillerini kutlar."
 
-/datum/holiday/draconic_day/getStationPrefix()
+/datum/holiday/draconic_day/get_station_name()
 	return pick("Draconic", "Literature", "Reading")
 
 /datum/holiday/spor_bayrami
@@ -392,11 +397,11 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	holiday_hat = /obj/item/clothing/head/utility/hardhat/red
 	holiday_mail = list(/obj/item/extinguisher/mini)
 
-/datum/holiday/firefighter/getStationPrefix()
+/datum/holiday/firefighter/get_station_name()
 	return pick("Yanan","Alevli","Plazma","Ateş")
 
 /datum/holiday/bee
-	name = "Dünya Arı Günü"
+	name = BEE_DAY
 	begin_day = 20
 	begin_month = MAY
 	holiday_mail = list(
@@ -406,11 +411,11 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/toy/plush/beeplushie,
 	)
 
-/datum/holiday/bee/getStationPrefix()
+/datum/holiday/bee/get_station_name()
 	return pick("Arı","Bal","Kovan","Afrikalılaştırılmış","Ballı","Vızz")
 
 /datum/holiday/goth
-	name = "Goth Day"
+	name = "Gotik Günü"
 	begin_day = 22
 	begin_month = MAY
 	holiday_mail = list(
@@ -423,10 +428,27 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		COLOR_BLACK,
 	)
 
-/datum/holiday/goth/getStationPrefix()
+/datum/holiday/goth/get_station_name()
 	return pick("Goth", "Sanguine", "Tenebris", "Lacrimosa", "Umbra", "Noctis")
 
 // JUNE
+
+//The Festival of Atrakor's Might (Tizira's Moon) is celebrated on June 15th, the date on which the lizard visual revamp was merged (#9808)
+/datum/holiday/atrakor_festival
+	name = LIZARD_ATRAKOR_DAY
+	begin_month = JUNE
+	begin_day = 15
+	holiday_mail = list(
+		/obj/item/food/tiziran_sausage,
+		/obj/item/food/honey_roll,
+		/obj/item/food/lizard_dumplings,
+	)
+
+/datum/holiday/atrakor_festival/greet()
+	return "Bu gün, Kertenkeller geleneksel olarak Atrakor'un Gücü Festivali'ni kutlar; ay tanrısını süslü kıyafetler, bol miktarda yiyecek ve geceye uzanan büyük bir şölenle onurlandırırlar."
+
+/datum/holiday/atrakor_festival/get_station_name()
+	return pick("Moon", "Night Sky", "Celebration")
 
 /// Garbage DAYYYYY
 /// Huh?.... NOOOO
@@ -454,14 +476,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	// Stonewall was June 28th, this captures its week.
 	begin_day = 23
 	end_day = 29
-	holiday_colors = list(
-		COLOR_PRIDE_PURPLE,
-		COLOR_PRIDE_BLUE,
-		COLOR_PRIDE_GREEN,
-		COLOR_PRIDE_YELLOW,
-		COLOR_PRIDE_ORANGE,
-		COLOR_PRIDE_RED,
-	)
+	holiday_colors = PRIDE_FLAG_COLORS
 	holiday_mail = list(
 		/obj/item/bedsheet/rainbow,
 		/obj/item/clothing/accessory/pride,
@@ -476,6 +491,20 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/food/snowcones/rainbow,
 		/obj/item/toy/crayon/rainbow,
 	)
+
+/datum/holiday/pride_week/New()
+	. = ..()
+	if(prob(30))
+		return
+	holiday_colors = pick(LESBIAN_FLAG_COLORS, GAY_MAN_FLAG_COLORS, TRANS_FLAG_COLORS, BI_FLAG_COLORS, ACE_FLAG_COLORS, PAN_FLAG_COLORS)
+
+/datum/holiday/pride_week/get_station_prefix()
+	if(prob(10))
+		return pick("Eşcinsel", "Trans", "Bi", "Lezbiyen", "Pan", "Aseksüel", "Aromantik", "İkili olmayan", "Enbi", "Aseksüel", "Aromantik", "Cinsiyetsiz", "Interseks")
+	return pick("Gökkuşağı", "Onur", "Kuir")
+
+/datum/holiday/pride_week/get_station_name()
+	return ""
 
 // JULY
 
@@ -502,8 +531,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		/obj/item/toy/toy_xeno,
 	)
 
-/datum/holiday/ufo/getStationPrefix() //Is such a thing even possible?
-	return pick("Ayy","Truth","Tsoukalos","Mulder","Scully") //Yes it is!
+/datum/holiday/ufo/get_station_name() //Is such a thing even possible?
+	return pick("Ayy", "Gerçek", "Tsoukalos", "Mulder", "Scully") //Yes it is!
 
 /datum/holiday/demokrasi_bayrami
 	name = "Milli Birlik ve Demokrasi Günü"
@@ -522,14 +551,15 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	no_mail_holiday = TRUE
 	holiday_hat = /obj/item/clothing/head/cowboy/brown
 	holiday_colors = list(
+		COLOR_WHITE,
+		COLOR_OLD_GLORY_RED,
+		COLOR_WHITE,
+		COLOR_OLD_GLORY_RED,
 		COLOR_OLD_GLORY_BLUE,
-		COLOR_OLD_GLORY_RED,
-		COLOR_WHITE,
-		COLOR_OLD_GLORY_RED,
-		COLOR_WHITE,
 	)
 
-/datum/holiday/usa/getStationPrefix()
+
+/datum/holiday/usa/get_station_name()
 	return pick("Bağımsız","Amerikan","Burger","Kel Kartal","Yıldızlarla Süslü", "Havai Fişekler")
 
 /datum/holiday/writer
@@ -552,7 +582,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	)
 	holiday_pattern = PATTERN_VERTICAL_STRIPE
 
-/datum/holiday/france/getStationPrefix()
+/datum/holiday/france/get_station_name()
 	return pick("Fransız", "Fromaj", "Zut", "Merde", "Sacrebleu")
 
 /datum/holiday/france/greet()
@@ -569,12 +599,12 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 
 //Gary Gygax's birthday, a fitting day for Wizard's Day
 /datum/holiday/wizards_day
-	name = "Wizard'ın Günü"  // ozel isim gibi
+	name = "Wizard'ın Günü"  // özel isim gibi
 	begin_month = JULY
 	begin_day = 27
 	holiday_hat = /obj/item/clothing/head/wizard
 
-/datum/holiday/wizards_day/getStationPrefix()
+/datum/holiday/wizards_day/get_station_name()
 	return pick("Dungeon", "Elf", "Magic", "D20", "Edition")
 
 /datum/holiday/friendship
@@ -584,6 +614,23 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	holiday_mail = list(/obj/item/food/grown/apple)
 
 // AUGUST
+
+/datum/holiday/indigenous //Indigenous Peoples' Day from Earth!
+	name = "Dünya Yerli Halkları Uluslararası Günü"
+	begin_month = AUGUST
+	begin_day = 9
+
+/datum/holiday/indigenous/get_station_name()
+	return pick("Tehlike altındaki dil", "Sözcük", "Dil", "Dil canlandırma", "Patates", "Mısır")
+
+/datum/holiday/ukraine
+	name = "Ukrayna Bağımsızlık Günü"
+	begin_month = AUGUST
+	begin_day = 24
+	holiday_colors = list(COLOR_TRUE_BLUE, COLOR_TANGERINE_YELLOW)
+
+/datum/holiday/ukraine/get_station_name()
+	return pick("Kiev", "Ukrayna")
 
 /datum/holiday/zafer_bayrami
 	name = "Zafer Bayramı"
@@ -607,8 +654,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/tiziran_unification/greet()
 	return "400 yılı aşkın bir süre önce bugün, Kertenkele halkı ilk kez tek bir bayrak altında birleşti ve tek bir halk olarak yıldızlarla yüzleşmeye hazır oldu."
 
-/datum/holiday/tiziran_unification/getStationPrefix()
-	return pick("Tizira", "Lizard")
+/datum/holiday/tiziran_unification/get_station_name()
+	return pick("Tizira", "Kertenkele", "İmparatorluk")
 
 /datum/holiday/ianbirthday
 	name = IAN_HOLIDAY //github.com/tgstation/tgstation/commit/de7e4f0de0d568cd6e1f0d7bcc3fd34700598acb
@@ -629,20 +676,23 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/ianbirthday/greet()
 	return "Doğum günün kutlu olsun, Ian!"
 
-/datum/holiday/ianbirthday/getStationPrefix()
+/datum/holiday/ianbirthday/get_station_name()
 	return pick("Ian", "Corgi", "Erro")
 
 /datum/holiday/pirate
-	name = "Korsan Gibi Konuşma Günü"
+	name = TALK_LIKE_A_PIRATE_DAY
 	begin_day = 19
 	begin_month = SEPTEMBER
 	holiday_hat = /obj/item/clothing/head/costume/pirate
-	holiday_mail = list(/obj/item/clothing/head/costume/pirate)
+	holiday_mail = list(
+		/obj/item/clothing/head/costume/pirate = 3,
+		/obj/item/language_manual/piratespeak = 1,
+	)
 
 /datum/holiday/pirate/greet()
 	return "Bugün bir korsan gibi konuşmalısın yoksa tahtada yürürsün, dostum!"
 
-/datum/holiday/pirate/getStationPrefix()
+/datum/holiday/pirate/get_station_name()
 	return pick("Yarr","Scurvy","Yo-ho-ho")
 
 /datum/holiday/questions
@@ -660,8 +710,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 4
 	begin_month = OCTOBER
 
-/datum/holiday/animal/getStationPrefix()
-	return pick("Parrot","Corgi","Cat","Pug","Goat","Fox")
+/datum/holiday/animal/get_station_name()
+	return pick("Papağan", "Corgi", "Kedi", "Mops", "Keçi", "Tilki")
 
 /datum/holiday/smile
 	name = "Dünya Gülümseme Günü"
@@ -675,6 +725,17 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 16
 	begin_month = OCTOBER
 	holiday_hat = /obj/item/clothing/head/hats/tophat
+
+/datum/holiday/un_day
+	name = "Birleşmiş Milletler'in Kuruluş Yıldönümü"
+	begin_month = OCTOBER
+	begin_day = 24
+
+/datum/holiday/un_day/greet()
+	return "1945'te bugün, Birleşmiş Milletler kuruldu ve insanlığın birleşik yönetimi için temel atıldı!"
+
+/datum/holiday/un_day/get_station_name()
+	return pick("Birleşik", "İşbirliği", "İnsani")
 
 /datum/holiday/cumhuriyet_bayrami
 	name = "Cumhuriyet Bayramı"
@@ -698,21 +759,21 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		)
 
 /datum/holiday/halloween/greet()
-	return "Have a spooky Halloween!"
+	return "Korkunç bir Cadılar Bayramı geçir!"
 
-/datum/holiday/halloween/getStationPrefix()
+/datum/holiday/halloween/get_station_name()
 	return pick("Bone-Rattling","Mr. Bones' Own","2SPOOKY","Spooky","Scary","Skeletons")
 
 // NOVEMBER
 
 /datum/holiday/vegan
-	name = "Veganlar Günü"
+	name = VEGAN_DAY
 	begin_day = 1
 	begin_month = NOVEMBER
 	holiday_mail = list(/obj/item/food/tofu)
 
-/datum/holiday/vegan/getStationPrefix()
-	return pick("Tofu", "Tempeh", "Seitan", "Tofurkey")
+/datum/holiday/vegan/get_station_name()
+	return pick("Tofu", "Tempe", "Seitan", "Tofuhindi")
 
 /datum/holiday/october_revolution
 	name = "Ekim Devrimi Günü"
@@ -725,8 +786,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		COLOR_MEDIUM_DARK_RED,
 	)
 
-/datum/holiday/october_revolution/getStationPrefix()
-	return pick("Communist", "Soviet", "Bolshevik", "Socialist", "Red", "Workers'")
+/datum/holiday/october_revolution/get_station_name()
+	return pick("Komünist", "Sovyet", "Bolşevik", "Sosyalist", "Kızıl", "İşçiler")
 
 /datum/holiday/remembrance_day
 	name = "Anma Günü"
@@ -742,7 +803,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/remembrance_day/greet()
 	return "Unutmayalım."
 
-/datum/holiday/remembrance_day/getStationPrefix()
+/datum/holiday/remembrance_day/get_station_name()
 	return pick("Barış", "Ateşkes", "Gelincik")
 
 /datum/holiday/lifeday
@@ -750,7 +811,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 17
 	begin_month = NOVEMBER
 
-/datum/holiday/lifeday/getStationPrefix()
+/datum/holiday/lifeday/get_station_name()
 	return pick("Kaşıntılı", "Yumrulu", "Malla", "Kazook") //he really pronounced it "Kazook", I wish I was making shit up
 
 /datum/holiday/kindness
@@ -798,7 +859,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/holy_lights/greet()
 	return "Kutsal Işıklar Festivali, Ethereal takviminin son günüdür. Genellikle yılın şık bir şekilde kapanmasını sağlayan bir kutlamanın ardından dua günüdür."
 
-/datum/holiday/holy_lights/getStationPrefix()
+/datum/holiday/holy_lights/get_station_name()
 	return pick("Ethereal", "Lantern", "Holy")
 
 // DECEMBER
@@ -822,6 +883,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	name = MONKEYDAY
 	begin_day = 14
 	begin_month = DECEMBER
+	holiday_mail = list(/obj/item/toy/plush/monkey)
 
 /datum/holiday/monkey/celebrate()
 	. = ..()
@@ -849,7 +911,7 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 		COLOR_CHRISTMAS_RED,
 	)
 
-/datum/holiday/xmas/getStationPrefix()
+/datum/holiday/xmas/get_station_name()
 	return pick(
 		"Bible",
 		"Birthday",
@@ -913,10 +975,21 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	holiday_hat = /obj/item/clothing/head/costume/festive
 	no_mail_holiday = TRUE
 
-/datum/holiday/new_year/getStationPrefix()
-	return pick("Party","New","Hangover","Resolution", "Auld")
+/datum/holiday/new_year/get_station_name()
+	return pick("Parti", "Yeni", "Akşamdan Kalma", "Karar", "Eski")
 
 // MOVING DATES
+
+/datum/holiday/friday_thirteenth
+	name = "13. Cuma"
+
+/datum/holiday/friday_thirteenth/shouldCelebrate(dd, mm, yyyy, ddd)
+	if(dd == 13 && ddd == FRIDAY)
+		return TRUE
+	return FALSE
+
+/datum/holiday/friday_thirteenth/get_station_name()
+	return pick("Mike", "Cuma", "Kötü", "Myers", "Cinayet", "Ölümcül", "Bıçakçı")
 
 /datum/holiday/programmers
 	name = "Yazılımcılar Günü"
@@ -932,8 +1005,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 				return TRUE
 	return FALSE
 
-/datum/holiday/programmers/getStationPrefix()
-	return pick("span>","DEBUG: ","null","/list","EVENT PREFIX NOT FOUND") //Portability
+/datum/holiday/programmers/get_station_name()
+	return pick("span>", "HATA AYIKLAMA: ", "null", "/list", "ETKİNLİK ÖNEKİ BULUNAMADI") //Portability
 
 // ISLAMIC
 
@@ -956,6 +1029,15 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 	begin_day = 1
 	end_day = 3
 
+/datum/holiday/islamic/ramadan/get_station_name()
+	return pick("Haram", "Helal", "Cihat", "Müslüman", "Al", "Muhammed", "Raşidun", "Emevî", "Abbâsî", "Abdül", "Fâtımî", "Eyyubî", "Muvahhid", "Ebu")
+
+/datum/holiday/islamic/ramadan/end
+	name = "Ramazan Sonu"
+	end_month = 10
+	begin_day = 28
+	end_day = 1
+
 // HEBREW
 
 /datum/holiday/hebrew
@@ -975,17 +1057,17 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/hebrew/hanukkah/greet()
 	return "Hanuka gününüz kutlu olsun!"
 
-/datum/holiday/hebrew/hanukkah/getStationPrefix()
-	return pick("Dreidel", "Menorah", "Latkes", "Gelt")
+/datum/holiday/hebrew/hanukkah/get_station_name()
+	return pick("Dreidel", "Menora", "Latkes", "Gelt")
 
 /datum/holiday/hebrew/passover
-	name = "Passover"
+	name = "Pesah"
 	begin_day = 15
 	begin_month = 1
 	end_day = 22
 
-/datum/holiday/hebrew/passover/getStationPrefix()
-	return pick("Matzah", "Moses", "Red Sea")
+/datum/holiday/hebrew/passover/get_station_name()
+	return pick("Matsa", "Musa", "Kızıldeniz")
 
 // EASTER (this having its own spot should be understandable)
 
@@ -1044,8 +1126,8 @@ GLOBAL_LIST_INIT(holiday_mail, list())
 /datum/holiday/easter/greet()
 	return "Selamlar! Mutlu Paskalyalar ve Paskalya Tavşanlarına dikkat edin!"
 
-/datum/holiday/easter/getStationPrefix()
-	return pick("Fluffy","Bunny","Easter","Egg")
+/datum/holiday/easter/get_station_name()
+	return pick("Tüylü", "Tavşan", "Paskalya", "Yumurta")
 
 /// Takes a holiday datum, a starting month, ending month, max amount of days to test in, and min/max year as input
 /// Returns a list in the form list("yyyy/m/d", ...) representing all days the holiday runs on in the tested range

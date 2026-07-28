@@ -416,7 +416,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_IGNORING_GRAVITY "ignores_gravity"
 /// We have some form of forced gravity acting on us
 #define TRAIT_FORCED_GRAVITY "forced_gravity"
-/// Makes whispers clearly heard from seven tiles away, the full hearing range
+/// Allows the mob to hear whispers as if it were normal speech
 #define TRAIT_GOOD_HEARING "good_hearing"
 /// Allows you to hear speech through walls
 #define TRAIT_XRAY_HEARING "xray_hearing"
@@ -628,7 +628,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Trait which allows you to gain bonuses from consuming rocks
 #define TRAIT_ROCK_METAMORPHIC "rock_metamorphic"
 
-/// `do_teleport` will not allow this atom to teleport
+/// `do_teleport` won't allow this atom to teleport, or if applied to a turf, other atoms to teleport on this turf.
 #define TRAIT_NO_TELEPORT "no-teleport"
 /// This atom is a secluded location, which is counted as out of bounds.
 /// Anything that enters this atom's contents should react if it wants to stay in bounds.
@@ -909,8 +909,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_FOOD_BBQ_GRILLED "food_bbq_grilled"
 /// This is a silver slime created item
 #define TRAIT_FOOD_SILVER "food_silver"
-/// If this item's been made by a chef instead of being map-spawned or admin-spawned or such
-#define TRAIT_FOOD_CHEF_MADE "food_made_by_chef"
+/// This object (mainly items) has been made by a player (cooked, crafted etc...) instead of being map-spawned or admin-spawned, printed with a lathe, ordered etc...
+#define TRAIT_HANDMADE "food_made_by_chef"
 /// This atom has a quality_food_ingredient element attached
 #define TRAIT_QUALITY_FOOD_INGREDIENT "quality_food_ingredient"
 /// This (edible) atom won't inherit the item of the item it was processed from in the form "a slice of [name]"
@@ -919,6 +919,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NEEDS_TWO_HANDS "needstwohands"
 /// Can't be catched when thrown
 #define TRAIT_UNCATCHABLE "uncatchable"
+///Items with this trait will be ignored when redeeming materials from inserting it in a material container
+#define TRAIT_IGNORED_BY_MAT_REDEMPTION "ignored_by_mat_redemption"
 /// You won't catch duds while fishing with this rod.
 #define TRAIT_ROD_REMOVE_FISHING_DUD "rod_remove_fishing_dud"
 /// This rod ignores environmental conditions for fishing (like low light for nocturnal fish)
@@ -997,6 +999,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_SKIP_BASIC_REACH_CHECK "skip_basic_reach_check"
 /// Increases chance of this brain getting special traumas, makes them harder to cure
 #define TRAIT_SPECIAL_TRAUMA_BOOST "special_trauma_boost"
+/// If this item is offered when something is pulled.
+#define TRAIT_OFFERED_WHEN_PULLED "offered_when_pulled"
+/// If the item has a special mob/living/give() interaction.
+#define TRAIT_BORG_GIVE "give_borg_item"
 
 //---- Heretic Traits
 /// Hides the heretic overlay that outs them as the heretic
@@ -1415,6 +1421,10 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_NO_MINDSWAP "no_mindswap"
 ///trait given to food that can be baked by /datum/component/bakeable
 #define TRAIT_BAKEABLE "bakeable"
+///trait given to food that can be microwaved by /datum/component/microwable
+#define TRAIT_MICROWAVABLE "microwavable"
+///trait given to food that can be cooked on a grilled by /datum/component/grillable
+#define TRAIT_GRILLABLE "grillable"
 
 /// Trait given to foam darts that have an insert in them
 #define TRAIT_DART_HAS_INSERT "dart_has_insert"
@@ -1684,5 +1694,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 
 /// Mobs with this trait will always have be a priority target for mining mobs
 #define TRAIT_MINING_AGGRO "mining_aggro"
+
+/// Turfs with this trait allow whispers to be projected over it when the whisperer is facing it
+#define TRAIT_TURF_PROJECTS_WHISPERS  "turf_projects_whispers"
 
 // END TRAIT DEFINES

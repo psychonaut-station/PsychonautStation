@@ -2,6 +2,7 @@
 	action_delegations = list(
 		"set_job_preference" = PROC_REF(set_job_preference),
 		"set_job_title" = PROC_REF(set_job_title),
+		"set_job_to_profile" = PROC_REF(set_job_to_profile),
 	)
 
 /datum/preference_middleware/jobs/proc/set_job_preference(list/params, mob/user)
@@ -27,14 +28,25 @@
 	return TRUE
 
 /datum/preference_middleware/jobs/proc/set_job_title(list/params, mob/user)
-	var/default_job_title = params["job"]
+	var/actual_job = params["job"]
 	var/new_job_title = params["new_title"]
-	var/datum/job/job = SSjob.get_job(default_job_title)
+	var/datum/job/job = SSjob.get_job(actual_job)
 
 	if(isnull(job) || !job.alt_titles.Find(new_job_title))
 		return FALSE
 
-	preferences.alt_job_titles[default_job_title] = new_job_title
+	preferences.alt_job_titles[actual_job] = new_job_title
+	return TRUE
+
+/datum/preference_middleware/jobs/proc/set_job_to_profile(list/params, mob/user)
+	var/job_title = params["job"]
+	var/profile_slot = params["profile"]
+
+	if (!isnum(profile_slot) || profile_slot == -1)
+		LAZYREMOVE(preferences.job_assigned_profiles, job_title)
+		return TRUE
+
+	LAZYSET(preferences.job_assigned_profiles, job_title, profile_slot)
 	return TRUE
 
 /datum/preference_middleware/jobs/get_constant_data()
@@ -42,6 +54,7 @@
 
 	var/list/departments = list()
 	var/list/jobs = list()
+	var/list/jobs_sorted = list()
 
 	for (var/datum/job/job as anything in SSjob.joinable_occupations)
 		if (job.job_flags & JOB_LATEJOIN_ONLY)
@@ -64,6 +77,9 @@
 				"color" = department_type.ui_color, // Prob shouldnt be here.
 			)
 
+		// Use the built in sorting of the main occupation list to keep it sorted how we want instead of asc
+		jobs_sorted += job.title
+
 		jobs[job.title] = list(
 			"description" = job.description,
 			"department" = department_name,
@@ -72,17 +88,30 @@
 
 	data["departments"] = departments
 	data["jobs"] = jobs
+	data["jobs_sorted"] = jobs_sorted
 
 	return data
 
 /datum/preference_middleware/jobs/get_ui_data(mob/user)
 	var/list/data = list()
 
+	data["job_preferences"] = list()
+	for(var/job, priority in preferences.job_preferences)
+		data["job_preferences"] += list(list(
+			"job" = job,
+			"priority" = priority,
+			"assigned_profile_slot" = LAZYACCESS(preferences.job_assigned_profiles, job),
+		))
+
+	for(var/job, slot in SANITIZE_LIST(preferences.job_assigned_profiles) - SANITIZE_LIST(preferences.job_preferences))
+		data["job_preferences"] += list(list(
+			"job" = job,
+			"priority" = null,
+			"assigned_profile_slot" = slot,
+		))
+
 	if(isnull(preferences.alt_job_titles))
 		preferences.alt_job_titles = list()
-
-	data["job_preferences"] = preferences.job_preferences
-
 	data["job_alt_titles"] = preferences.alt_job_titles
 
 	var/list/job_whitelist = is_whitelisted(user)

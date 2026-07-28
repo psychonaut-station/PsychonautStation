@@ -287,7 +287,7 @@
 
 	if(environment.temperature >= FIRE_MINIMUM_TEMPERATURE_TO_EXIST)
 		return FIRELOCK_ALARM_TYPE_HOT
-	if(environment.gases[/datum/gas/antinoblium] && environment.gases[/datum/gas/antinoblium][MOLES] > MINIMUM_MOLE_COUNT)
+	if(environment.moles[/datum/gas/antinoblium] > MINIMUM_MOLE_COUNT)
 		return FIRELOCK_ALARM_TYPE_HOT
 	if(environment.temperature <= BODYTEMP_COLD_DAMAGE_LIMIT)
 		return FIRELOCK_ALARM_TYPE_COLD
@@ -378,8 +378,8 @@
 	active = TRUE
 	alarm_type = code
 	add_as_source()
-	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 	correct_state()
+	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 
 /// Adds this fire door as a source of trouble to all of its areas
 /obj/machinery/door/firedoor/proc/add_as_source()
@@ -405,8 +405,8 @@
 	remove_as_source()
 	soundloop.stop()
 	is_playing_alarm = FALSE
-	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 	correct_state()
+	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 
 /**
  * Open the firedoor without resetting existing alarms
@@ -423,8 +423,8 @@
 	soundloop.stop()
 	is_playing_alarm = FALSE
 	remove_as_source()
-	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 	correct_state()
+	update_appearance(UPDATE_ICON) //Sets the door lights even if the door doesn't move.
 
 	/// Please be called 3 seconds after the LAST open, rather then 3 seconds after the first
 	addtimer(CALLBACK(src, PROC_REF(release_constraints)), 3 SECONDS, TIMER_UNIQUE | TIMER_OVERRIDE)

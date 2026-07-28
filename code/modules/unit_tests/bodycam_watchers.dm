@@ -508,15 +508,13 @@
 	qdel(ui)
 
 /datum/unit_test/bodycam_watchers_ai_proximity/Run()
-	var/mob/living/carbon/human/consistent/host = allocate(/mob/living/carbon/human/consistent)
+	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
 	host.mock_client = new /datum/client_interface()
-
-	var/turf/start_turf = run_loc_floor_bottom_left
-	host.forceMove(start_turf)
 
 	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
 
-	var/mob/living/silicon/ai/spawned/test_ai = allocate(/mob/living/silicon/ai/spawned)
+	var/mob/dead/observer/fake_ghost = EASY_ALLOCATE() // ai must be passed a mob in /new, cringe
+	var/mob/living/silicon/ai/test_ai = allocate(__IMPLIED_TYPE__, run_loc_floor_top_right, null, fake_ghost)
 	test_ai.mock_client = new /datum/client_interface()
 
 	TEST_ASSERT(!component.camera_is_awake, "Camera should start asleep.")
@@ -524,9 +522,9 @@
 
 	// AI moves eye nearby (freelook)
 	test_ai.create_eye()
-	test_ai.eyeobj.setLoc(start_turf)
+	test_ai.eyeobj.setLoc(run_loc_floor_bottom_left)
 
-	host.forceMove(get_step(start_turf, NORTH))
+	host.forceMove(get_step(run_loc_floor_bottom_left, NORTH))
 
 	TEST_ASSERT(component.camera_is_awake, "Camera should wake up when AI is nearby.")
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert when AI is nearby in freelook.")
@@ -534,12 +532,11 @@
 	// AI moves eye far away
 	test_ai.eyeobj.setLoc(locate(run_loc_floor_top_right.x, run_loc_floor_top_right.y, run_loc_floor_top_right.z + 1))
 
-	host.forceMove(start_turf)
+	host.forceMove(run_loc_floor_bottom_left)
 
 	TEST_ASSERT(!component.camera_is_awake, "Camera should sleep when AI moves away.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host alert should clear when AI moves away.")
 
 	if(test_ai.eyeobj)
-		qdel(test_ai.eyeobj)
-		test_ai.eyeobj = null
+		QDEL_NULL(test_ai.eyeobj)
 	qdel(test_ai)

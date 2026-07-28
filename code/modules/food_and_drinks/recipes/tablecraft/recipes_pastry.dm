@@ -541,7 +541,7 @@
 	reqs = list(
 		/datum/reagent/consumable/milk = 5,
 		/obj/item/food/pastrybase = 1,
-		/obj/item/food/grown/carrot = 1,
+		/obj/item/food/grown/carrotlike/carrot = 1,
 	)
 	result = /obj/item/food/muffin/carrot
 	added_foodtypes = BREAKFAST|SUGAR|VEGETABLES|DAIRY

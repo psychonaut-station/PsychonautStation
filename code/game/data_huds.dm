@@ -575,6 +575,7 @@ Diagnostic HUDs!
 	if (!istype(holder)) // Can contain lists for HUD_LIST_LIST hinted HUDs, if someone fucks up and passes this here we wanna know about it
 		CRASH("[src] ([type]) had a HUD_LIST_LIST hud_type [hud_type] passed into set_hud_image_state!")
 	holder.icon_state = hud_state
+	holder.icon = GLOB.hud_icon_overrides[hud_state] || 'icons/mob/huds/hud.dmi'
 	adjust_hud_position(holder)
 	if (x_offset || y_offset)
 		holder.pixel_w += x_offset

@@ -1,6 +1,6 @@
 /obj/vehicle/sealed/mecha/phazon
-	desc = "This is a Phazon exosuit. The pinnacle of scientific research and pride of Nanotrasen, it uses cutting edge anomalous technology and expensive materials."
 	name = "\improper Phazon"
+	desc = "This is a Phazon exosuit. The pinnacle of scientific research and pride of Nanotrasen, it uses cutting edge anomalous technology and expensive materials."
 	icon_state = "phazon"
 	base_icon_state = "phazon"
 	movedelay = 2
@@ -21,7 +21,13 @@
 		MECHA_POWER = 1,
 		MECHA_ARMOR = 2,
 	)
-	phase_state = "phazon-phase"
+
+	/// Are we currently phasing through walls?
+	var/phasing = FALSE
+	/// Power we use every time we phaze through something
+	var/phasing_energy_drain = 0.2 * STANDARD_CELL_CHARGE
+	/// Icon_state for flick() when phasing
+	var/phase_state = "phazon-phase"
 
 /datum/armor/mecha_phazon
 	melee = 30
@@ -36,6 +42,42 @@
 	. = ..()
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_toggle_phasing)
 	initialize_passenger_action_type(/datum/action/vehicle/sealed/mecha/mech_switch_damtype)
+
+/obj/vehicle/sealed/mecha/phazon/CanPassThrough(atom/blocker, movement_dir, blocker_opinion)
+	if(!phasing || get_charge() <= phasing_energy_drain || throwing)
+		return ..()
+	if(phase_state)
+		flick(phase_state, src)
+	var/turf/destination_turf = get_step(loc, movement_dir)
+	if(!check_teleport_valid(src, destination_turf) || SSmapping.level_trait(destination_turf.z, ZTRAIT_NOPHASE))
+		return FALSE
+	return TRUE
+
+/obj/vehicle/sealed/mecha/phazon/vehicle_move(direction, forcerotate)
+	. = ..()
+	if(. && phasing)
+		use_energy(phasing_energy_drain)
+
+/obj/vehicle/sealed/mecha/phazon/try_bumpsmash(atom/obstacle)
+	if(phasing) // Theres only one cause for phasing canpass fails
+		to_chat(occupants, "[icon2html(src, occupants)][span_warning("A dull, universal force is preventing you from phasing here!")]")
+		spark_system.start()
+		return
+	return ..()
+
+/obj/vehicle/sealed/mecha/phazon/update_energy_drain()
+	. = ..()
+	if(capacitor)
+		phasing_energy_drain = initial(phasing_energy_drain) / capacitor.rating
+	else
+		phasing_energy_drain = initial(phasing_energy_drain)
+
+/obj/vehicle/sealed/mecha/phazon/can_interact_with(atom/target, mob/user, list/modifiers)
+	. = ..()
+	if (!. || !phasing)
+		return
+	balloon_alert(user, "not while phasing!")
+	return FALSE
 
 /datum/action/vehicle/sealed/mecha/mech_switch_damtype
 	name = "Reconfigure arm microtool arrays"
@@ -68,14 +110,15 @@
 
 // Force stop the phasing ability
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/proc/stop_phasing()
-	if(chassis.phasing == "phasing")
-		chassis.balloon_alert(owner, "disabled phasing")
+	var/obj/vehicle/sealed/mecha/phazon/phazon = chassis
+	if(phazon.phasing)
+		phazon.balloon_alert(owner, "disabled phasing")
 
-	chassis.phasing = ""
+	phazon.phasing = FALSE
 	button_icon_state = "mech_phasing_off"
 	build_all_button_icons()
-	if(!TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
-		S_TIMER_COOLDOWN_START(chassis, COOLDOWN_MECHA_PHASE, phase_cooldown_time)
+	if(!TIMER_COOLDOWN_RUNNING(phazon, COOLDOWN_MECHA_PHASE))
+		S_TIMER_COOLDOWN_START(phazon, COOLDOWN_MECHA_PHASE, phase_cooldown_time)
 
 /datum/action/vehicle/sealed/mecha/mech_toggle_phasing/Trigger(mob/clicker, trigger_flags)
 	. = ..()
@@ -83,17 +126,19 @@
 		return
 	if(!chassis || !(owner in chassis.occupants))
 		return
-	if (chassis.phasing == "phasing")
+
+	var/obj/vehicle/sealed/mecha/phazon/phazon = chassis
+	if (phazon.phasing == "phasing")
 		stop_phasing()
 		return
-	if(TIMER_COOLDOWN_RUNNING(chassis, COOLDOWN_MECHA_PHASE))
-		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(chassis, COOLDOWN_MECHA_PHASE)
-		chassis.balloon_alert(owner, "on cooldown, [DisplayTimeText(time_left, 1)]...")
+	if(TIMER_COOLDOWN_RUNNING(phazon, COOLDOWN_MECHA_PHASE))
+		var/time_left = S_TIMER_COOLDOWN_TIMELEFT(phazon, COOLDOWN_MECHA_PHASE)
+		phazon.balloon_alert(owner, "on cooldown, [DisplayTimeText(time_left, 1)]...")
 		return
 
 	// enable phasing
-	chassis.phasing = "phasing"
+	phazon.phasing = TRUE
 	button_icon_state = "mech_phasing_on"
-	chassis.balloon_alert(owner, "enabled phasing")
+	phazon.balloon_alert(owner, "enabled phasing")
 	build_all_button_icons()
 	addtimer(CALLBACK(src, PROC_REF(stop_phasing)), phase_time)

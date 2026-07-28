@@ -526,26 +526,33 @@
 
 /obj/item/organ/cyberimp/chest/chemvat/on_mob_insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
+	var/mob/living/carbon/human/human = receiver
+	if(!istype(human))
+		return
 
 	forced = new
 	forced_tank = new
 
-	if(receiver.wear_mask && !istype(receiver.wear_mask,/obj/item/clothing/mask/chemvat))
-		receiver.dropItemToGround(receiver.wear_mask, TRUE)
-		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
-	if(!receiver.wear_mask)
-		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
+	if(human.wear_mask && !istype(human.wear_mask,/obj/item/clothing/mask/chemvat))
+		human.dropItemToGround(human.wear_mask, TRUE)
+		human.equip_to_slot(forced, ITEM_SLOT_MASK)
+	if(!human.wear_mask)
+		human.equip_to_slot(forced, ITEM_SLOT_MASK)
 
-	if(receiver.back && !istype(receiver.back,/obj/item/chemvat_tank))
-		receiver.dropItemToGround(receiver.back, TRUE)
-		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
-	if(!receiver.back)
-		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+	if(human.back && !istype(human.back,/obj/item/chemvat_tank))
+		human.dropItemToGround(human.back, TRUE)
+		human.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+	if(!human.back)
+		human.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
 
 /obj/item/organ/cyberimp/chest/chemvat/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
-	organ_owner.dropItemToGround(organ_owner.wear_mask, TRUE)
-	organ_owner.dropItemToGround(organ_owner.back, TRUE)
+	var/mob/living/carbon/human/human = organ_owner
+	if(!istype(human))
+		return
+
+	human.dropItemToGround(human.wear_mask, TRUE)
+	human.dropItemToGround(human.back, TRUE)
 	QDEL_NULL(forced)
 	QDEL_NULL(forced_tank)
 

@@ -36,7 +36,7 @@
 /datum/id_trim/proc/find_job()
 	return null
 
-/datum/id_trim/proc/chat_span()
+/datum/id_trim/proc/chat_span() //
 	if(sechud_icon_state == SECHUD_UNKNOWN)
 		return "job__unassigned"
 	var/trimmed_hud_state = copytext(sechud_icon_state, 4)

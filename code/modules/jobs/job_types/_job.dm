@@ -702,4 +702,6 @@
 	if(!icon_state || icon_state == SECHUD_UNKNOWN)
 		CRASH("[src.type] has no job icon state.")
 
-	return icon('icons/mob/huds/hud.dmi', icon_state)
+	var/icon_file = GLOB.hud_icon_overrides[icon_state] || 'icons/mob/huds/hud.dmi'
+
+	return icon(icon_file, icon_state)

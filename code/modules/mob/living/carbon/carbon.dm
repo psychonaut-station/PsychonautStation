@@ -189,8 +189,8 @@
 		cuff_resist(I)
 
 
-/mob/living/carbon/proc/break_out_time_multiplier(obj/item/cuffs, breakouttime)
-	if(!handcuffed || !istype(cuffs, /obj/item/restraints/handcuffs))
+/mob/living/carbon/proc/break_out_time_multiplier(obj/item/restraints/handcuffs/cuffs, breakouttime)
+	if(!handcuffed)
 		return breakouttime
 
 	var/obj/item/restraints/handcuffs/handcuffs_item = cuffs

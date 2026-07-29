@@ -198,7 +198,7 @@
 		return breakouttime
 
 	var/obj/item/held_item = get_item_by_slot(ITEM_SLOT_MASK)
-	if(!held_item || held_item.tool_behaviour != TOOL_KNIFE)
+	if(held_item?.tool_behaviour != TOOL_KNIFE)
 		return breakouttime
 
 	visible_message(span_warning("[src] is trying to work [p_their()] way free with [held_item] in [p_their()] mouth!"), span_notice("You try to work your way free with [held_item] in your mouth..."))

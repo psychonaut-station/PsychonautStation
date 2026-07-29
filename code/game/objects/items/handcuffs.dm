@@ -61,8 +61,8 @@
 	var/cuffsuccesssound = 'sound/items/handcuff_finish.ogg'
 	/// How strong the cuffs are. Weak cuffs can be broken with wirecutters or boxcutters.
 	var/restraint_strength = HANDCUFFS_TYPE_STRONG
-	/// If set, a human can use a sharp thing such as knifes to break out of the cuffs on some rambo style.
-	var/mouth_knife_breakout_time = 1
+	/// Multiplier for how long it takes to break the cuffs. Normal is 1
+	var/break_out_time_multiplier = 1
 
 	/// Is this pair of cuff being actually used?
 	var/used = FALSE
@@ -216,7 +216,7 @@
 	pickup_sound = null
 	drop_sound = null
 	restraint_strength = HANDCUFFS_TYPE_WEAK
-	mouth_knife_breakout_time = 0.20
+	break_out_time_multiplier = 0.20
 
 /obj/item/restraints/handcuffs/cable/Initialize(mapload, new_color)
 	. = ..()
@@ -357,7 +357,7 @@
 	color = null
 	cable_color = null
 	custom_materials = list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 2.5)
-	mouth_knife_breakout_time = 0.30
+	break_out_time_multiplier = 0.30
 
 /obj/item/restraints/handcuffs/cable/zipties/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()

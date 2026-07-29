@@ -189,20 +189,20 @@
 		cuff_resist(I)
 
 
-/mob/living/carbon/proc/get_mouth_knife_breakout_time(obj/item/cuffs, breakouttime)
-	if(!ishuman(src) || !handcuffed || !istype(cuffs, /obj/item/restraints/handcuffs/cuffs))
+/mob/living/carbon/proc/break_out_time_multiplier(obj/item/cuffs, breakouttime)
+	if(!handcuffed || !istype(cuffs, /obj/item/restraints/handcuffs))
 		return breakouttime
 
 	var/obj/item/restraints/handcuffs/handcuffs_item = cuffs
-	if(isnull(handcuffs_item.mouth_knife_breakout_time))
+	if(isnull(handcuffs_item.break_out_time_multiplier))
 		return breakouttime
 
-	var/obj/item/knife/knife = get_item_by_slot(ITEM_SLOT_MASK)
-	if(!istype(knife))
+	var/obj/item/held_item = get_item_by_slot(ITEM_SLOT_MASK)
+	if(!held_item || held_item.tool_behaviour != TOOL_KNIFE)
 		return breakouttime
 
-	visible_message(span_warning("[src] is trying to work [p_their()] way free with [knife] in [p_their()] mouth!"), span_notice("You try to work your way free with [knife] in your mouth..."))
-	return handcuffs_item.mouth_knife_breakout_time
+	visible_message(span_warning("[src] is trying to work [p_their()] way free with [held_item] in [p_their()] mouth!"), span_notice("You try to work your way free with [held_item] in your mouth..."))
+	return handcuffs_item.break_out_time_multiplier * breakouttime
 
 /**
  * Helper to break the cuffs from hands
@@ -220,12 +220,11 @@
 	if (isnull(breakouttime))
 		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
-		var/adjusted_breakouttime = breakouttime
 		if(istype(cuffs, /obj/item/restraints/handcuffs))
-			adjusted_breakouttime = get_mouth_knife_breakout_time(cuffs, breakouttime)
+			breakouttime = break_out_time_multiplier(cuffs, breakouttime)
 		visible_message(span_warning("[src] attempts to remove [cuffs]!"))
-		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(adjusted_breakouttime)] and you need to stand still.)"))
-		if(do_after(src, adjusted_breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, hidden = TRUE))
+		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)"))
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, hidden = TRUE))
 			. = clear_cuffs(cuffs, cuff_break)
 		else
 			to_chat(src, span_warning("You fail to remove [cuffs]!"))

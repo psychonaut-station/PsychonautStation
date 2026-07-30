@@ -189,6 +189,12 @@
 		cuff_resist(I)
 
 
+/mob/living/carbon/proc/knife_breakout(obj/item/restraints/handcuffs/cuffs, breakouttime)
+	. = breakouttime
+	var/obj/item/held_item = get_item_by_slot(ITEM_SLOT_MASK)
+	if(held_item?.tool_behaviour == TOOL_KNIFE)
+		. *= cuffs.knife_breakout
+		visible_message(span_warning("[src] is trying to work [p_their()] way free with [held_item] in [p_their()] mouth!"), span_notice("You try to work your way free with [held_item] in your mouth..."))
 /**
  * Helper to break the cuffs from hands
  * @param {obj/item} cuffs - The cuffs to break
@@ -205,6 +211,8 @@
 	if (isnull(breakouttime))
 		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
+		if(istype(cuffs, /obj/item/restraints/handcuffs))
+			breakouttime = knife_breakout(cuffs, breakouttime)
 		visible_message(span_warning("[src] attempts to remove [cuffs]!"))
 		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)"))
 		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, hidden = TRUE))

@@ -188,7 +188,7 @@ GAME_VERB(/client, looc, VERB_LOOC, null, msg as text)
 		return
 
 	var/admin = check_rights(R_ADMIN, FALSE)
-	if(mob.stat != CONSCIOUS && !admin)
+	if(mob.stat != STABLE && !admin)
 		to_chat(src, span_warning("You must be concious to use LOOC."))
 		return
 

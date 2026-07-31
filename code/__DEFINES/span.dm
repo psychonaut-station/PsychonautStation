@@ -91,12 +91,8 @@
 #define span_medradio(str) ("<span class='medradio'>" + str + "</span>")
 #define span_memo(str) ("<span class='memo'>" + str + "</span>")
 #define span_memoedit(str) ("<span class='memoedit'>" + str + "</span>")
-<<<<<<< HEAD
 #define span_mentorsay(str) ("<span class='mentorsay'>" + str + "</span>")
 #define span_mentorsaytext(str) ("<span class='mentorsaytext'>" + str + "</span>")
-#define span_policy(str) ("<span class='policy'>" + str + "</span>")
-=======
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
 #define span_message(str) ("<span class='message'>" + str + "</span>")
 #define span_mind_control(str) ("<span class='mind_control'>" + str + "</span>")
 #define span_minoralert(str) ("<span class='minoralert'>" + str + "</span>")

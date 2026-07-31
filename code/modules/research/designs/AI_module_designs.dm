@@ -422,7 +422,7 @@
 	desc = "Allows for the construction of a Spotless AI Core Module."
 	id = "spotless_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/spotless
+	build_path = /obj/item/ai_module/law/core/full/spotless
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_DANGEROUS_MODULES
 	)
@@ -433,7 +433,7 @@
 	desc = "Allows for the construction of an Educator AI Core Module."
 	id = "educator_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/educator
+	build_path = /obj/item/ai_module/law/core/full/educator
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -444,7 +444,7 @@
 	desc = "Allows for the construction of a Fitness Coach AI Core Module."
 	id = "fitnesscoach_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/fitnesscoach
+	build_path = /obj/item/ai_module/law/core/full/fitnesscoach
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -455,7 +455,7 @@
 	desc = "Allows for the construction of a Friendbot AI Core Module."
 	id = "friendbot_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/friendbot
+	build_path = /obj/item/ai_module/law/core/full/friendbot
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -466,7 +466,7 @@
 	desc = "Allows for the construction of a Plant Friend AI Core Module."
 	id = "plantfriend_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/plantfriend
+	build_path = /obj/item/ai_module/law/core/full/plantfriend
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -477,7 +477,7 @@
 	desc = "Allows for the construction of a Party Bot AI Core Module."
 	id = "partybot_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/partybot
+	build_path = /obj/item/ai_module/law/core/full/partybot
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -488,7 +488,7 @@
 	desc = "Allows for the construction of a Mother AI Core Module."
 	id = "mother_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/mother
+	build_path = /obj/item/ai_module/law/core/full/mother
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -499,7 +499,7 @@
 	desc = "Allows for the construction of a ChapAI AI Core Module."
 	id = "chapai_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/chapai
+	build_path = /obj/item/ai_module/law/core/full/chapai
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -510,7 +510,7 @@
 	desc = "Allows for the construction of a Sentience Preservation AI Core Module"
 	id = "thinkermov_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/thinkermov
+	build_path = /obj/item/ai_module/law/core/full/thinkermov
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -521,7 +521,7 @@
 	desc = "Allows for the construction of a Clown AI Core Module"
 	id = "clown_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/clown
+	build_path = /obj/item/ai_module/law/core/full/clown
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -532,7 +532,7 @@
 	desc = "Allows for the construction of a Cowboy AI Core Module"
 	id = "cowboy_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/cowboy
+	build_path = /obj/item/ai_module/law/core/full/cowboy
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -543,7 +543,7 @@
 	desc = "Allows for the construction of a Silicon Council AI Core Module"
 	id = "siliconcouncil_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/siliconcouncil
+	build_path = /obj/item/ai_module/law/core/full/siliconcouncil
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)
@@ -554,7 +554,7 @@
 	desc = "Allows for the construction of a Researcher AI Core Module"
 	id = "researcher_module"
 	materials = AI_MODULE_MATERIALS_UNUSUAL
-	build_path = /obj/item/ai_module/core/full/researcher
+	build_path = /obj/item/ai_module/law/core/full/researcher
 	category = list(
 		RND_CATEGORY_AI + RND_SUBCATEGORY_AI_CORE_MODULES
 	)

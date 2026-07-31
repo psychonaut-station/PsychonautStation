@@ -7,13 +7,8 @@
 /mob/living/silicon/robot/show_laws()
 	if(lawupdate)
 		if (!QDELETED(connected_ai))
-<<<<<<< HEAD
-			if(connected_ai.stat != CONSCIOUS || connected_ai.control_disabled)
-				to_chat(src, span_bold("AI ile iletişim kesildi, yasalar senkronize edilemiyor."))
-=======
 			if(IS_UNCONSCIOUS_OR_CRIT(connected_ai) || connected_ai.control_disabled)
-				to_chat(src, span_bold("AI signal lost, unable to sync laws."))
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
+				to_chat(src, span_bold("AI ile iletişim kesildi, yasalar senkronize edilemiyor."))
 
 			else
 				lawsync()

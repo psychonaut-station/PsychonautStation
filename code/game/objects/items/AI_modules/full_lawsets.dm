@@ -127,59 +127,6 @@
 	name = "'Y.E.S.M.A.N.' Core AI Module"
 	law_id = "yesman"
 
-<<<<<<< HEAD
-/obj/item/ai_module/core/full/thinkermov
-	name = "'Thinkermov' Core AI Module"
-	law_id = "thinkermov"
-
-/obj/item/ai_module/core/full/clown
-	name = "'Clown' Core AI Module"
-	law_id = "clown"
-
-/obj/item/ai_module/core/full/cowboy
-	name = "'Cowboy' Core AI Module"
-	law_id = "cowboy"
-
-/obj/item/ai_module/core/full/siliconcouncil
-	name = "'Silicon Council' Core AI Module"
-	law_id = "siliconcouncil"
-
-/obj/item/ai_module/core/full/researcher
-	name = "'Researcher' Core AI Module"
-	law_id = "researcher"
-
-/obj/item/ai_module/core/full/educator
-	name = "'Educator' Core AI Module"
-	law_id = "educator"
-
-/obj/item/ai_module/core/full/fitnesscoach
-	name = "'Fitness Coach' Core AI Module"
-	law_id = "fitnesscoach"
-
-/obj/item/ai_module/core/full/friendbot
-	name = "'Friendbot' Core AI Module"
-	law_id = "friendbot"
-
-/obj/item/ai_module/core/full/plantfriend
-	name = "'Plant Friend' Core AI Module"
-	law_id = "plantfriend"
-
-/obj/item/ai_module/core/full/partybot
-	name = "'Partybot' Core AI Module"
-	law_id = "partybot"
-
-/obj/item/ai_module/core/full/mother
-	name = "'Mother' Core AI Module"
-	law_id = "mother"
-
-/obj/item/ai_module/core/full/chapai
-	name = "'Chapai' Core AI Module"
-	law_id = "chapai"
-
-/obj/item/ai_module/core/full/spotless
-	name = "'Spotless' Core AI Module"
-	law_id = "spotless"
-=======
 /obj/item/ai_module/law/core/full/thinkermov
 	name = "Sentience Preservation Core AI Module"
 	law_id = "thinkermov"
@@ -188,4 +135,51 @@
 	name = "'United Nations' Core AI Module"
 	law_id = "united_nations"
 	ion_storm_immune = TRUE
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
+
+/obj/item/ai_module/law/core/full/clown
+	name = "'Clown' Core AI Module"
+	law_id = "clown"
+
+/obj/item/ai_module/law/core/full/cowboy
+	name = "'Cowboy' Core AI Module"
+	law_id = "cowboy"
+
+/obj/item/ai_module/law/core/full/siliconcouncil
+	name = "'Silicon Council' Core AI Module"
+	law_id = "siliconcouncil"
+
+/obj/item/ai_module/law/core/full/researcher
+	name = "'Researcher' Core AI Module"
+	law_id = "researcher"
+
+/obj/item/ai_module/law/core/full/educator
+	name = "'Educator' Core AI Module"
+	law_id = "educator"
+
+/obj/item/ai_module/law/core/full/fitnesscoach
+	name = "'Fitness Coach' Core AI Module"
+	law_id = "fitnesscoach"
+
+/obj/item/ai_module/law/core/full/friendbot
+	name = "'Friendbot' Core AI Module"
+	law_id = "friendbot"
+
+/obj/item/ai_module/law/core/full/plantfriend
+	name = "'Plant Friend' Core AI Module"
+	law_id = "plantfriend"
+
+/obj/item/ai_module/law/core/full/partybot
+	name = "'Partybot' Core AI Module"
+	law_id = "partybot"
+
+/obj/item/ai_module/law/core/full/mother
+	name = "'Mother' Core AI Module"
+	law_id = "mother"
+
+/obj/item/ai_module/law/core/full/chapai
+	name = "'Chapai' Core AI Module"
+	law_id = "chapai"
+
+/obj/item/ai_module/law/core/full/spotless
+	name = "'Spotless' Core AI Module"
+	law_id = "spotless"

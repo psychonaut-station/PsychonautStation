@@ -112,8 +112,5 @@
 #define CAT_ENTERTAINMENT "Entertainment"
 #define CAT_TOOLS "Tools"
 #define CAT_CULT "Blood Cult"
-<<<<<<< HEAD
-#define CAT_GARDENING "Gardening"
-=======
 #define CAT_CONSTRUCTION "Construction"
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
+#define CAT_GARDENING "Gardening"

@@ -16,18 +16,9 @@
 	if (!include_stumps)
 		return real_bodypart_cache[zone]
 
-	var/target_zone = zone || BODY_ZONE_CHEST
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-<<<<<<< HEAD
-		if(!include_stumps && IS_STUMP(bodypart))
-			continue
-		if(bodypart.body_zone != target_zone)
-			continue
-		return bodypart
-=======
 		if(bodypart.body_zone == zone)
 			return bodypart
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
 
 /**
  * Returns all bodyparts this mob has, optionally including stumps.

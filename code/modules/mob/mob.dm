@@ -1175,13 +1175,8 @@ GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = 
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
-<<<<<<< HEAD
-
-	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
-=======
 	else if(log_new_name)
 		log_message("[src] name set to [newname]", LOG_OWNERSHIP)
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
 
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 	SEND_SIGNAL(src, COMSIG_MOB_FULLY_RENAMED, oldname, newname)

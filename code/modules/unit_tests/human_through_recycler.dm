@@ -44,7 +44,3 @@
 	TEST_ASSERT_NULL(assistant.r_store, "Assistant still has an item in their right pocket after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.s_store, "Assistant still has an item in their suit storage slot after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.glasses, "Assistant still has glasses on after being put through an emagged recycler!")
-<<<<<<< HEAD
-
-=======
->>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6

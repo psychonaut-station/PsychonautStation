@@ -1,7 +1,11 @@
 #define ICON_STATE_CHECKED 1 /// this dmi is checked. We don't check this one anymore.
 #define ICON_STATE_NULL 2 /// this dmi has null-named icon_state, allowing it to show a sprite on vv editor.
 
+<<<<<<< HEAD
 ADMIN_VERB_ONLY_CONTEXT_MENU(debug_variables, R_ADMIN, "View Variables", datum/thing in world)
+=======
+ADMIN_VERB_ONLY_CONTEXT_MENU(debug_variables, R_NONE, "View Variables", datum/thing as anything)
+>>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
 	user.debug_variables(thing)
 // This is kept as a separate proc because admins are able to show VV to non-admins
 

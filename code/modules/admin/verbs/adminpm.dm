@@ -13,7 +13,11 @@
 // We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
 // If you "refactor" this to make it "cleaner" I will send you to hell
 
+<<<<<<< HEAD
 ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_ADMIN, "Admin PM Mob", mob/target in world)
+=======
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", mob/target)
+>>>>>>> 5f093a8cfbbe269b15bc73535f230909218e38d6
 	if(!ismob(target))
 		to_chat(
 			src,

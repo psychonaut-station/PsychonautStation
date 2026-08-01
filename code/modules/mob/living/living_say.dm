@@ -466,6 +466,14 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	//speech bubble
 	var/list/speech_bubble_recipients = list()
 	var/talk_icon_state = say_test(message_raw)
+
+	if (!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
+		if(!HAS_TRAIT(src, TRAIT_SIGN_LANG))
+			get_voice().start_barking(message_raw, listening, message_range, talk_icon_state, is_speaker_whispering, src)
+		else if (!is_speaker_whispering)
+			var/sound/sound = sound(pick('sound/misc/fingersnap1.ogg', 'sound/misc/fingersnap2.ogg'))
+			get_voice().short_bark(listening, message_range + 1, 100, 0, src, sound_override=sound)
+
 	for(var/mob/M in listening)
 		if(M.client)
 			if(!M.client.prefs.read_preference(/datum/preference/toggle/enable_runechat) || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES)))

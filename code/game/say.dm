@@ -131,7 +131,7 @@ GLOBAL_LIST_INIT(freqtospan, list(
 
 /atom/movable/proc/send_speech(message, range = 7, obj/source = src, bubble_type, list/spans, datum/language/message_language, list/message_mods = list(), forced = FALSE, tts_message, list/tts_filter)
 	var/list/listeners = get_hearers_in_view(range, source)
-	get_voice().start_barking(message, listeners, range, say_test(message), FALSE, src)
+	get_bark_voice().start_barking(message, listeners, range, say_test(message), FALSE, src)
 	var/list/listened = list()
 
 	var/tts_message_to_use = tts_message

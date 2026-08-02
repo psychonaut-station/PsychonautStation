@@ -91,10 +91,6 @@
 	var/vocal_pitch = pitch + (rand(pitch_range * -50, pitch_range * 50) / 100)
 	vocal_pitch = clamp(vocal_pitch, voicepack.min_pitch, voicepack.max_pitch)
 
-	if(HAS_TRAIT(speaker, TRAIT_HELIUM))
-		vocal_pitch *= 2
-		volume *= 0.9
-
 	var/falloff_exponent = distance / 7
 	var/turf/turf = get_turf(speaker)
 

@@ -38,7 +38,7 @@ export const bark_speech_speed: FeatureNumeric = {
 };
 
 export const voice_pack: FeatureChoiced = {
-  name: 'Voices (disabled in settings)',
+  name: 'Voices',
   component: FeatureBarkVoiceDropdownInput,
 };
 

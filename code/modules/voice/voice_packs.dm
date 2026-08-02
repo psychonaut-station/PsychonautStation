@@ -83,7 +83,7 @@
 
 	for (var/voice_pack_id in voice_pack_list)
 		var/datum/voice_pack/voice_pack = voice_pack_list[voice_pack_id]
-		if (!voice_pack.is_simple)
+		if (!voice_pack.is_simple && length(GLOB.random_voice_packs))
 			voice_pack.simple_equiv = voice_pack_list[pick(GLOB.random_voice_packs)]
 
 	return voice_pack_list

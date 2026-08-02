@@ -113,7 +113,7 @@
 		hearer.playsound_local(turf, vol = volume, vary = TRUE,
 			max_distance = distance, falloff_distance = 0, use_reverb = FALSE,
 			falloff_exponent = falloff_exponent,
-			distance_multiplier = 1, mixer_channel = CHANNEL_VOICES,
+			distance_multiplier = 1, channel = CHANNEL_VOICES,
 			sound_to_use = sound_to_use,
 			frequency = pitch_to_use,
 			)

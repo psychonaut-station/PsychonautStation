@@ -27,5 +27,11 @@
 /mob/living/initial_voice_pack_id()
 	return pick(GLOB.random_voice_packs)
 
+/mob/living/silicon/robot/initial_voice_pack_id()
+	return "talk.cyborg"
+
+/mob/living/silicon/ai/initial_voice_pack_id()
+	return "talk.bottalk_1"
+
 /mob/can_long_bark()
 	return !isnull(client)

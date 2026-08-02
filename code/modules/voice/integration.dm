@@ -6,8 +6,7 @@
 
 /mob/living/silicon/Login()
 	if (!bark_voice)
-		bark_voice = new()
-	bark_voice.set_from_prefs(client?.prefs)
+		get_bark_voice()
 	. = ..()
 
 /mob/living/basic/cow/initial_voice_pack_id()

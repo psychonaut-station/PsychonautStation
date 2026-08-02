@@ -87,6 +87,8 @@ volume = 0.4
 [talk.bottalk_1]
 name = "Bottalk 1"
 path = "bottalk_1.ogg"
+ask_path = "bottalk_3.ogg"
+exclaim_path = "bottalk_2.ogg"
 min_speed = 3
 max_speed = 9
 min_pitch = 0.5

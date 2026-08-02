@@ -74,7 +74,7 @@ volume = 0.05
 
 [talk]
 name = "Talk"
-path = "sound/_psychonaut/talk"
+path = "Goon/sound/talk"
 
 [talk.blub]
 name = "Blub"

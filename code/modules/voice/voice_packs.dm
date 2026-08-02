@@ -45,8 +45,8 @@
 
 			voice_pack.sounds = list(
 				get_voice_pack_sound(voice_pack_obj, group_path, "path"),
-				get_voice_pack_sound(voice_pack_obj, group_path, "ask"),
-				get_voice_pack_sound(voice_pack_obj, group_path, "exclaim"),
+				get_voice_pack_sound(voice_pack_obj, group_path, "ask_path") || get_voice_pack_sound(voice_pack_obj, group_path, "ask"),
+				get_voice_pack_sound(voice_pack_obj, group_path, "exclaim_path") || get_voice_pack_sound(voice_pack_obj, group_path, "exclaim"),
 			)
 			if (!voice_pack.sounds[1])
 				continue

@@ -104,6 +104,10 @@
 	var/falloff_exponent = distance / 7
 	var/turf/turf = get_turf(speaker)
 
+	var/mob/speaker_mob = ismob(speaker) ? speaker : null
+	var/client/speaker_client = speaker_mob?.client
+	var/speaker_wants_simple = speaker_client?.prefs?.read_preference(/datum/preference/toggle/voice_sounds_only_simple)
+
 	for(var/mob/hearer in hearers)
 		var/client/hearer_client = hearer.client
 		if(!hearer_client?.prefs)
@@ -114,7 +118,7 @@
 		if (sound_override)
 			sound_to_use = sound_override
 		else
-			if (hearer_client.prefs.read_preference(/datum/preference/toggle/voice_sounds_only_simple) && !voicepack.is_simple && voicepack.simple_equiv)
+			if (speaker_wants_simple && !voicepack.is_simple && voicepack.simple_equiv)
 				if(length(voicepack.simple_equiv.sounds))
 					sound_to_use = voicepack.simple_equiv.sounds[clamp(sound_idx, 1, length(voicepack.simple_equiv.sounds))]
 				volume_to_use *= voicepack.simple_equiv.volume

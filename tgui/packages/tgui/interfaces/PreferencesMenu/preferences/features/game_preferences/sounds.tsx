@@ -173,6 +173,6 @@ export const voice_sounds_limited_pitch: FeatureToggle = {
 export const voice_sounds_only_simple: FeatureToggle = {
   name: 'Play simple vocal barks only',
   category: 'SOUND',
-  description: 'When enabled, only simple/generic vocal barks will be played for other players.',
+  description: 'When enabled, your character will use simple/generic vocal barks when speaking.',
   component: CheckboxInput,
 };

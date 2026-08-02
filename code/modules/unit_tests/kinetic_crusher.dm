@@ -11,4 +11,3 @@
 	click_wrapper(attacker, run_loc_floor_top_right, list(RIGHT_CLICK = TRUE, BUTTON = RIGHT_CLICK))
 
 	TEST_ASSERT(!crusher.charged, "Attacker failed to fire the kinetic crusher on right clicking a distant target")
-

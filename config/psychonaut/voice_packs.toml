@@ -22,6 +22,27 @@ min_pitch = 1
 max_pitch = 1.3
 volume = 0.3
 
+[animal.chitter]
+name = "Chitter"
+path = "chitter.ogg"
+min_pitch = 1
+max_pitch = 1.3
+volume = 0.3
+
+[animal.meow]
+name = "Meow"
+path = "meow1.ogg"
+min_pitch = 0.8
+max_pitch = 1.2
+volume = 0.3
+
+[animal.mothsqueak]
+name = "Mothsqueak"
+path = "mothsqueak.ogg"
+min_pitch = 0.9
+max_pitch = 1.3
+volume = 0.3
+
 [dont_starve]
 name = "Don't Starve"
 path = "sound/_psychonaut/dont_starve"
@@ -30,6 +51,11 @@ path = "sound/_psychonaut/dont_starve"
 name = "Wilson"
 path = "wilson.ogg"
 volume = 0.2
+
+[dont_starve.wolfgang]
+name = "Wolfgang"
+path = "wolfgang.ogg"
+volume = 0.15
 
 [dont_starve.woodie]
 name = "Woodie"

@@ -195,6 +195,26 @@
 	// Always call this on the virtualspeaker to avoid issues.
 	var/spans = data["spans"]
 
+	if(GLOB.voices_enabled)
+		var/datum/voice_pack/radio_vp
+		if(isAI(virt.source))
+			radio_vp = GLOB.voice_pack_list["talk.radio_ai"]
+		else
+			var/end_char = copytext(message, -1)
+			if(end_char == "!")
+				radio_vp = GLOB.voice_pack_list["talk.radio2"]
+			else
+				radio_vp = GLOB.voice_pack_list["talk.radio"]
+
+		if(radio_vp)
+			var/sound/radio_sound = radio_vp.sounds[1]
+			if(radio_sound)
+				for(var/atom/movable/hearer as anything in receive)
+					if(ismob(hearer))
+						var/mob/mob_hearer = hearer
+						if(mob_hearer.client && !mob_hearer.client.prefs.read_preference(/datum/preference/toggle/voice_sounds_only_simple))
+							mob_hearer.playsound_local(get_turf(mob_hearer), vol = 300 * radio_vp.volume, vary = TRUE, channel = CHANNEL_VOICES, sound_to_use = radio_sound)
+
 	for(var/atom/movable/hearer as anything in receive)
 		if(!hearer)
 			stack_trace("null found in the hearers list returned by the spatial grid. this is bad")

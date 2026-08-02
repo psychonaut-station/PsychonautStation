@@ -42,7 +42,12 @@
 	return voicepack.group_name + ": " + voicepack.name
 
 /datum/preference/choiced/voice_pack/init_possible_values()
-	return assoc_to_keys(GLOB.voice_pack_list)
+	var/list/possible = list()
+	for(var/key in GLOB.voice_pack_list)
+		var/datum/voice_pack/VP = GLOB.voice_pack_list[key]
+		if(!VP.hidden)
+			possible += key
+	return possible
 
 /datum/preference/choiced/voice_pack/is_valid(value)
 	if (!istext(value))

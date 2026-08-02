@@ -1224,13 +1224,13 @@
 		return
 	var/list/tips
 	if(SPT_PROB(50, seconds_per_tick))
-		tips = world.file2list("strings/tips.txt")
+		tips = world.file2list("strings/tips_tr.txt")
 	if(SPT_PROB(50, seconds_per_tick))
-		tips = world.file2list("strings/sillytips.txt")
+		tips = world.file2list("strings/sillytips_tr.txt")
 	else
 		tips = world.file2list("strings/chemistrytips.txt")
 	var/message = pick(tips)
-	send_tip_of_the_round(affected_mob, message, source = "Chemical-induced wisdom")
+	send_tip_of_the_round(affected_mob, message, source = "Kimyasal kaynaklı bilgelik")
 
 /datum/reagent/medicine/neurine
 	name = "Neurine"

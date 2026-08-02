@@ -33,21 +33,21 @@ function FeatureBarkVoiceDropdownInput(
 }
 
 export const bark_speech_speed: FeatureNumeric = {
-  name: 'Bark Speed',
+  name: 'Voice Duration',
   component: FeatureSliderInput,
 };
 
 export const voice_pack: FeatureChoiced = {
-  name: 'Bark Voice Pack',
+  name: 'Voices (disabled in settings)',
   component: FeatureBarkVoiceDropdownInput,
 };
 
 export const bark_speech_pitch: FeatureNumeric = {
-  name: 'Bark Pitch',
+  name: 'Voice Pitch',
   component: FeatureSliderInput,
 };
 
 export const bark_pitch_range: FeatureNumeric = {
-  name: 'Bark Pitch Variance',
+  name: 'Voice Pitch Range',
   component: FeatureSliderInput,
 };

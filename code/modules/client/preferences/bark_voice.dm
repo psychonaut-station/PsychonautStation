@@ -105,6 +105,12 @@
 /datum/preference/numeric/bark_pitch_range/create_default_value()
 	return 0.2
 
+/datum/preference/toggle/barks_enabled
+	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
+	savefile_key = "voice_sounds_enabled"
+	savefile_identifier = PREFERENCE_PLAYER
+	default_value = TRUE
+
 /datum/preference/toggle/barks_short
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "voice_sounds_short"

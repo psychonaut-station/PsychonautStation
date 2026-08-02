@@ -75,9 +75,9 @@ PROCESSING_SUBSYSTEM_DEF(personalities)
 		if(!length(personality_pool))
 			break
 		var/picked_type = pick(personality_pool)
+		personality_pool -= picked_type
 		if(is_incompatible(selected_personalities, picked_type))
 			continue
 		selected_personalities += picked_type
-		personality_pool -= picked_type
 		i += 1
 	return selected_personalities

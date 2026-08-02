@@ -20,16 +20,10 @@
 /datum/preference_middleware/bark/proc/play_bark(list/params, mob/user)
 	if(!COOLDOWN_FINISHED(src, bark_cooldown) || !user)
 		return TRUE
-	if (!barker)
-		barker = new()
-		barker.bark_voice = new()
-	barker.bark_voice.set_from_prefs(preferences)
-	if(!barker.bark_voice.voicepack)
-		return TRUE
-	var/turf/user_turf = get_turf(user)
-	if (user_turf)
-		barker.forceMove(user_turf)
-	barker.bark_voice.long_bark(list(user), 7, 300, FALSE, 32, barker)
+	var/datum/atom_voice/temp_voice = new()
+	temp_voice.set_from_prefs(preferences)
+	if(temp_voice.voicepack)
+		temp_voice.long_bark(list(user), 7, 300, FALSE, 32, user)
 	COOLDOWN_START(src, bark_cooldown, 2 SECONDS)
 	return TRUE
 
@@ -80,7 +74,7 @@
 	step = 0.01
 
 /datum/preference/numeric/bark_speech_speed/apply_to_human(mob/living/carbon/human/target, value)
-	target.bark_voice.speed = value
+	target.get_bark_voice().speed = value
 
 /datum/preference/numeric/bark_speech_speed/create_default_value()
 	return 6
@@ -94,7 +88,7 @@
 	step = 0.01
 
 /datum/preference/numeric/bark_speech_pitch/apply_to_human(mob/living/carbon/human/target, value)
-	target.bark_voice.pitch = value
+	target.get_bark_voice().pitch = value
 
 /datum/preference/numeric/bark_speech_pitch/create_default_value()
 	return 1
@@ -108,7 +102,7 @@
 	step = 0.01
 
 /datum/preference/numeric/bark_pitch_range/apply_to_human(mob/living/carbon/human/target, value)
-	target.bark_voice.pitch_range = value
+	target.get_bark_voice().pitch_range = value
 
 /datum/preference/numeric/bark_pitch_range/create_default_value()
 	return 0.2

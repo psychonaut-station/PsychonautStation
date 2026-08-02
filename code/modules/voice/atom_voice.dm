@@ -109,6 +109,8 @@
 	var/speaker_wants_simple = speaker_client?.prefs?.read_preference(/datum/preference/toggle/voice_sounds_only_simple)
 
 	for(var/mob/hearer in hearers)
+		if(QDELETED(hearer))
+			continue
 		var/client/hearer_client = hearer.client
 		if(!hearer_client?.prefs)
 			continue
@@ -118,11 +120,11 @@
 		if (sound_override)
 			sound_to_use = sound_override
 		else
-			if (speaker_wants_simple && !voicepack.is_simple && voicepack.simple_equiv)
+			if (speaker_wants_simple && voicepack && !voicepack.is_simple && voicepack.simple_equiv)
 				if(length(voicepack.simple_equiv.sounds))
 					sound_to_use = voicepack.simple_equiv.sounds[clamp(sound_idx, 1, length(voicepack.simple_equiv.sounds))]
 				volume_to_use *= voicepack.simple_equiv.volume
-			else
+			else if (voicepack)
 				volume_to_use *= voicepack.volume
 				if(length(voicepack.sounds))
 					sound_to_use = voicepack.sounds[clamp(sound_idx, 1, length(voicepack.sounds))]
@@ -133,7 +135,7 @@
 		hearer.playsound_local(turf, vol = volume_to_use, vary = TRUE,
 			max_distance = distance, falloff_distance = 0, use_reverb = FALSE,
 			falloff_exponent = falloff_exponent,
-			distance_multiplier = 1, channel = CHANNEL_VOICES,
+			distance_multiplier = 1, channel = 0,
 			sound_to_use = sound_to_use,
 			frequency = pitch_to_use,
 			)

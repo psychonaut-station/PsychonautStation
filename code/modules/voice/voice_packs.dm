@@ -19,6 +19,9 @@
 		return list(voicepack.id = voicepack)
 
 	var/output = rustg_read_toml_file(VOICE_PACKS_FILE)
+	if(!islist(output))
+		log_config("Failed to parse TOML voice pack file: [output]")
+		output = list()
 	var/list/voice_pack_list = list()
 
 	for (var/group_id in output)
@@ -64,13 +67,15 @@
 			if (voice_pack_obj["allow_random"])
 				GLOB.random_voice_packs += voice_pack.id
 
-			if (voice_pack_obj["hidden"] && !all_voice_packs)
-				all_voice_packs = visible_voice_packs.Copy()
-			if (!voice_pack_obj["hidden"])
+			if (voice_pack_obj["hidden"])
+				if(!all_voice_packs)
+					all_voice_packs = visible_voice_packs.Copy()
+				all_voice_packs += voice_pack
+			else
 				visible_voice_packs += voice_pack
 				voice_pack.hidden = FALSE
-			if (all_voice_packs)
-				all_voice_packs += voice_pack
+				if (all_voice_packs)
+					all_voice_packs += voice_pack
 
 			voice_pack.is_simple = voice_pack_obj["allow_random"]
 

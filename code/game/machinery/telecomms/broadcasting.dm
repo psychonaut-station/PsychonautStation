@@ -197,7 +197,7 @@
 
 	if(GLOB.voices_enabled)
 		var/datum/voice_pack/radio_vp
-		if(isAI(virt.source))
+		if(virt && isAI(virt.source))
 			radio_vp = GLOB.voice_pack_list["talk.radio_ai"]
 		else
 			var/end_char = copytext_char(message, length_char(message))
@@ -207,7 +207,7 @@
 				radio_vp = GLOB.voice_pack_list["talk.radio"]
 
 		if(radio_vp)
-			var/sound/radio_sound = radio_vp.sounds[1]
+			var/sound/radio_sound = length(radio_vp.sounds) ? radio_vp.sounds[1] : null
 			if(radio_sound)
 				var/list/radio_listeners = receive
 				if(!length(radio_listeners))
@@ -217,7 +217,7 @@
 						var/mob/mob_hearer = hearer
 						var/client/hearer_client = mob_hearer.client
 						if(hearer_client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
-							mob_hearer.playsound_local(get_turf(mob_hearer), vol = 300 * radio_vp.volume, vary = TRUE, channel = CHANNEL_VOICES, sound_to_use = radio_sound)
+							mob_hearer.playsound_local(get_turf(mob_hearer), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
 
 	for(var/atom/movable/hearer as anything in receive)
 		if(!hearer)

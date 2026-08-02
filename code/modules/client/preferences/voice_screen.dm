@@ -37,7 +37,9 @@
 			return TRUE
 
 		if("play")
-			usr.playsound_local(get_turf(usr), voicepack.sounds[1], 300 * voicepack.volume, FALSE, 1, 7, pressure_affected = FALSE, use_reverb = FALSE, channel = CHANNEL_VOICES)
+			var/mob/user = ui.user
+			if(user && length(voicepack.sounds))
+				user.playsound_local(get_turf(user), voicepack.sounds[1], 300 * voicepack.volume, FALSE, 1, 7, pressure_affected = FALSE, use_reverb = FALSE, channel = 0)
 
 /datum/voice_screen/ui_data(mob/user)
 	var/list/data = list()

@@ -81,6 +81,13 @@
 		else if (length(visible_voice_packs))
 			GLOB.voice_pack_groups_all[group_name] = visible_voice_packs
 
+	if (!length(GLOB.random_voice_packs))
+		var/datum/voice_pack/fallback/fallback_pack = new()
+		voice_pack_list[fallback_pack.id] = fallback_pack
+		GLOB.random_voice_packs += fallback_pack.id
+		GLOB.voice_pack_groups_visible[fallback_pack.group_name] = list(fallback_pack)
+		GLOB.voice_pack_groups_all[fallback_pack.group_name] = list(fallback_pack)
+
 	for (var/voice_pack_id in voice_pack_list)
 		var/datum/voice_pack/voice_pack = voice_pack_list[voice_pack_id]
 		if (!voice_pack.is_simple && length(GLOB.random_voice_packs))

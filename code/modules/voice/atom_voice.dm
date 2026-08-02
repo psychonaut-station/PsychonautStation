@@ -31,9 +31,9 @@
 	base_volume = 300
 
 /datum/atom_voice/proc/start_barking(message, list/hearers, message_range, talk_icon_state, is_speaker_whispering, atom/movable/speaker)
-	if (!voicepack || !GLOB.voices_enabled)
+	if (!voicepack || !GLOB.voices_enabled || QDELETED(speaker))
 		return
-	var/len = LAZYLEN(message)
+	var/len = length_char(message)
 	if (!len)
 		return
 
@@ -51,32 +51,35 @@
 	else if (talk_icon_state == "1")
 		sound_idx = 2
 
-	var/list/short_hearers = null
-	var/list/long_hearers = null
+	var/list/short_hearers = list()
+	var/list/long_hearers = list()
 	var/cant_long_bark = !speaker.can_long_bark()
 
 	for(var/mob/hearer in hearers)
-		if(!hearer.client)
+		var/client/hearer_client = hearer.client
+		if(!hearer_client?.prefs)
 			continue
-		if(!hearer.client.prefs.read_preference(/datum/preference/toggle/barks_enabled))
+		if(!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_enabled))
 			continue
-		if(cant_long_bark || hearer.client.prefs.read_preference(/datum/preference/toggle/barks_short))
-			LAZYADD(short_hearers, hearer)
+		if(cant_long_bark || hearer_client.prefs.read_preference(/datum/preference/toggle/barks_short))
+			short_hearers += hearer
 		else
-			LAZYADD(long_hearers, hearer)
+			long_hearers += hearer
 
-	if (LAZYLEN(short_hearers))
+	if (length(short_hearers))
 		short_bark(short_hearers, sound_range, volume, 0, speaker, sound_idx)
 
-	if (LAZYLEN(long_hearers))
+	if (length(long_hearers))
 		long_bark(long_hearers, sound_range, volume, is_yell, len, speaker, sound_idx)
 
 /datum/atom_voice/proc/long_bark(list/hearers, sound_range, volume, is_yell, message_len, atom/movable/speaker, sound_idx = 1)
+	if(!voicepack || QDELETED(speaker))
+		return 0
 	var/vocal_speed = clamp(speed, voicepack.min_speed, voicepack.max_speed)
 	var/bark_speed_baseline = 4
 	var/base_duration = vocal_speed / bark_speed_baseline
 
-	var/num_barks = min(round((message_len / vocal_speed)), 24)
+	var/num_barks = min(round(message_len / vocal_speed), 24)
 	var/total_delay = 0
 	speaker.long_bark_start_time = world.time
 
@@ -84,21 +87,26 @@
 		if (total_delay > (1.5 SECONDS))
 			break
 		addtimer(CALLBACK(src, PROC_REF(short_bark), hearers, sound_range, volume, speaker.long_bark_start_time, speaker, sound_idx), total_delay)
-		total_delay += (DS2TICKS(base_duration) + rand(DS2TICKS(base_duration * (is_yell ? 0.5 : 1)))) TICKS
+		total_delay += base_duration + (rand(0, round(base_duration * (is_yell ? 5 : 10))) / 10)
 	return total_delay
 
 /datum/atom_voice/proc/short_bark(list/hearers, distance, volume, queue_time, atom/movable/speaker, sound_idx=1, sound/sound_override=null)
+	if(QDELETED(speaker))
+		return
 	if(queue_time && speaker.long_bark_start_time != queue_time)
+		return
+	if(!voicepack && !sound_override)
 		return
 
 	var/vocal_pitch = pitch + (rand(pitch_range * -50, pitch_range * 50) / 100)
-	vocal_pitch = clamp(vocal_pitch, voicepack.min_pitch, voicepack.max_pitch)
+	vocal_pitch = clamp(vocal_pitch, voicepack ? voicepack.min_pitch : VOICE_DEFAULT_MINPITCH, voicepack ? voicepack.max_pitch : VOICE_DEFAULT_MAXPITCH)
 
 	var/falloff_exponent = distance / 7
 	var/turf/turf = get_turf(speaker)
 
 	for(var/mob/hearer in hearers)
-		if(!hearer.client)
+		var/client/hearer_client = hearer.client
+		if(!hearer_client?.prefs)
 			continue
 		var/pitch_to_use = 0
 		var/sound/sound_to_use
@@ -106,14 +114,18 @@
 		if (sound_override)
 			sound_to_use = sound_override
 		else
-			if (hearer.client.prefs.read_preference(/datum/preference/toggle/voice_sounds_only_simple) && !voicepack.is_simple && voicepack.simple_equiv)
-				sound_to_use = voicepack.simple_equiv.sounds[sound_idx]
+			if (hearer_client.prefs.read_preference(/datum/preference/toggle/voice_sounds_only_simple) && !voicepack.is_simple && voicepack.simple_equiv)
+				if(length(voicepack.simple_equiv.sounds))
+					sound_to_use = voicepack.simple_equiv.sounds[clamp(sound_idx, 1, length(voicepack.simple_equiv.sounds))]
 				volume_to_use *= voicepack.simple_equiv.volume
 			else
 				volume_to_use *= voicepack.volume
-				sound_to_use = voicepack.sounds[sound_idx]
-			if (!hearer.client.prefs.read_preference(/datum/preference/toggle/barks_limited_pitch))
+				if(length(voicepack.sounds))
+					sound_to_use = voicepack.sounds[clamp(sound_idx, 1, length(voicepack.sounds))]
+			if (!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_limited_pitch))
 				pitch_to_use = vocal_pitch
+		if(!sound_to_use)
+			continue
 		hearer.playsound_local(turf, vol = volume_to_use, vary = TRUE,
 			max_distance = distance, falloff_distance = 0, use_reverb = FALSE,
 			falloff_exponent = falloff_exponent,
@@ -121,3 +133,4 @@
 			sound_to_use = sound_to_use,
 			frequency = pitch_to_use,
 			)
+

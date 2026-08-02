@@ -4,11 +4,6 @@
 		bark_voice = new()
 		bark_voice.randomise(src)
 
-/mob/living/silicon/Login()
-	if (!bark_voice)
-		get_bark_voice()
-	. = ..()
-
 /mob/living/basic/cow/initial_voice_pack_id()
 	return "talk.cow"
 

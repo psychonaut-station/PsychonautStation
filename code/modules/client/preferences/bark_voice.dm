@@ -18,18 +18,24 @@
 		return FALSE
 
 /datum/preference_middleware/bark/proc/play_bark(list/params, mob/user)
-	if(!COOLDOWN_FINISHED(src, bark_cooldown))
+	if(!COOLDOWN_FINISHED(src, bark_cooldown) || !user)
 		return TRUE
 	if (!barker)
 		barker = new()
 		barker.bark_voice = new()
 	barker.bark_voice.set_from_prefs(preferences)
+	if(!barker.bark_voice.voicepack)
+		return TRUE
+	var/turf/user_turf = get_turf(user)
+	if (user_turf)
+		barker.forceMove(user_turf)
 	barker.bark_voice.long_bark(list(user), 7, 300, FALSE, 32, barker)
 	COOLDOWN_START(src, bark_cooldown, 2 SECONDS)
 	return TRUE
 
 /datum/preference_middleware/bark/Destroy()
 	QDEL_NULL(barker)
+	QDEL_NULL(voice_screen)
 	return ..()
 
 /datum/preference/choiced/voice_pack
@@ -39,6 +45,8 @@
 
 /datum/preference/choiced/voice_pack/compile_ui_data(mob/user, value)
 	var/datum/voice_pack/voicepack = GLOB.voice_pack_list[value]
+	if(!voicepack)
+		return "Default"
 	return voicepack.group_name + ": " + voicepack.name
 
 /datum/preference/choiced/voice_pack/init_possible_values()
@@ -61,7 +69,7 @@
 	target.set_voice_pack(value)
 
 /datum/preference/choiced/voice_pack/create_default_value()
-	return pick(GLOB.random_voice_packs)
+	return length(GLOB.random_voice_packs) ? pick(GLOB.random_voice_packs) : "fallback.fallback"
 
 /datum/preference/numeric/bark_speech_speed
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

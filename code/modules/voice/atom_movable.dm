@@ -25,7 +25,7 @@
 	return FALSE
 
 /mob/living/initial_voice_pack_id()
-	return pick(GLOB.random_voice_packs)
+	return length(GLOB.random_voice_packs) ? pick(GLOB.random_voice_packs) : "fallback.fallback"
 
 /mob/living/silicon/robot/initial_voice_pack_id()
 	return "talk.cyborg"

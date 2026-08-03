@@ -3,19 +3,7 @@
 
 	action_delegations = list(
 		"play_bark" = PROC_REF(play_bark),
-		"open_voice_screen" = PROC_REF(open_voice_screen),
 	)
-	var/datum/voice_screen/voice_screen
-	var/atom/movable/barker
-
-/datum/preference_middleware/bark/proc/open_voice_screen(list/params, mob/user)
-	if(voice_screen)
-		voice_screen.ui_interact(user)
-		return TRUE
-	else
-		voice_screen = new(src)
-		voice_screen.ui_interact(user)
-		return FALSE
 
 /datum/preference_middleware/bark/proc/play_bark(list/params, mob/user)
 	if(!COOLDOWN_FINISHED(src, bark_cooldown) || !user)
@@ -24,13 +12,9 @@
 	temp_voice.set_from_prefs(preferences)
 	if(temp_voice.voicepack)
 		temp_voice.long_bark(list(user), 7, 300, FALSE, 32, user)
+	qdel(temp_voice)
 	COOLDOWN_START(src, bark_cooldown, 2 SECONDS)
 	return TRUE
-
-/datum/preference_middleware/bark/Destroy()
-	QDEL_NULL(barker)
-	QDEL_NULL(voice_screen)
-	return ..()
 
 /datum/preference/choiced/voice_pack
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
@@ -46,8 +30,8 @@
 /datum/preference/choiced/voice_pack/init_possible_values()
 	var/list/possible = list()
 	for(var/key in GLOB.voice_pack_list)
-		var/datum/voice_pack/VP = GLOB.voice_pack_list[key]
-		if(!VP.hidden)
+		var/datum/voice_pack/vp = GLOB.voice_pack_list[key]
+		if(!vp.hidden)
 			possible += key
 	return possible
 

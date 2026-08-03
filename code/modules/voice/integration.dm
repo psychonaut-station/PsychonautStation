@@ -4,9 +4,6 @@
 		bark_voice = new()
 		bark_voice.randomise(src)
 
-/mob/living/basic/cow/initial_voice_pack_id()
-	return "talk.cow"
-
 /datum/changeling_profile
 	var/datum/atom_voice/bark_voice
 

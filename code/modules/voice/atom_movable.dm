@@ -36,5 +36,8 @@
 /mob/living/silicon/pai/initial_voice_pack_id()
 	return "talk.bottalk_1"
 
+/mob/living/basic/cow/initial_voice_pack_id()
+	return "talk.cow"
+
 /mob/can_long_bark()
 	return !isnull(client)

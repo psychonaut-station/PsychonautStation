@@ -209,15 +209,17 @@
 		if(radio_vp)
 			var/sound/radio_sound = length(radio_vp.sounds) ? radio_vp.sounds[1] : null
 			if(radio_sound)
-				var/list/radio_listeners = receive
-				if(!length(radio_listeners))
-					radio_listeners = get_hearers_in_radio_ranges(radios)
-				for(var/atom/movable/hearer as anything in radio_listeners)
-					if(ismob(hearer))
-						var/mob/mob_hearer = hearer
-						var/client/hearer_client = mob_hearer.client
-						if(hearer_client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
-							mob_hearer.playsound_local(get_turf(mob_hearer), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
+				var/list/tracked_radios = get_hearers_in_radio_ranges_track_radios(radios)
+				for(var/obj/item/radio/radio as anything in tracked_radios)
+					var/is_headset = istype(radio, /obj/item/radio/headset)
+					var/turf/radio_turf = get_turf(radio)
+					for(var/atom/movable/hearer as anything in tracked_radios[radio])
+						if(ismob(hearer))
+							var/mob/mob_hearer = hearer
+							var/client/hearer_client = mob_hearer.client
+							if(hearer_client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
+								var/turf/sound_loc = is_headset ? get_turf(mob_hearer) : radio_turf
+								mob_hearer.playsound_local(sound_loc, vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
 
 	for(var/atom/movable/hearer as anything in receive)
 		if(!hearer)

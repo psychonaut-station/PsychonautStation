@@ -4,6 +4,16 @@
 	action_delegations = list(
 		"play_bark" = PROC_REF(play_bark),
 	)
+	var/datum/voice_screen/voice_screen
+
+/datum/preference_middleware/bark/proc/open_voice_screen(list/params, mob/user)
+	if(voice_screen)
+		voice_screen.ui_interact(user)
+		return TRUE
+	else
+		voice_screen = new(src)
+		voice_screen.ui_interact(user)
+		return FALSE
 
 /datum/preference_middleware/bark/proc/play_bark(list/params, mob/user)
 	if(!COOLDOWN_FINISHED(src, bark_cooldown) || !user)
@@ -11,10 +21,16 @@
 	var/datum/atom_voice/temp_voice = new()
 	temp_voice.set_from_prefs(preferences)
 	if(temp_voice.voicepack)
-		temp_voice.long_bark(list(user), 7, 300, FALSE, 32, user)
-	qdel(temp_voice)
+		var/duration = temp_voice.long_bark(list(user), 7, 300, FALSE, 32, user)
+		QDEL_IN(temp_voice, duration)
+	else
+		qdel(temp_voice)
 	COOLDOWN_START(src, bark_cooldown, 2 SECONDS)
 	return TRUE
+
+/datum/preference_middleware/bark/Destroy()
+	QDEL_NULL(voice_screen)
+	return ..()
 
 /datum/preference/choiced/voice_pack
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES

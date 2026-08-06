@@ -4,16 +4,6 @@
 	action_delegations = list(
 		"play_bark" = PROC_REF(play_bark),
 	)
-	var/datum/voice_screen/voice_screen
-
-/datum/preference_middleware/bark/proc/open_voice_screen(list/params, mob/user)
-	if(voice_screen)
-		voice_screen.ui_interact(user)
-		return TRUE
-	else
-		voice_screen = new(src)
-		voice_screen.ui_interact(user)
-		return FALSE
 
 /datum/preference_middleware/bark/proc/play_bark(list/params, mob/user)
 	if(!COOLDOWN_FINISHED(src, bark_cooldown) || !user)
@@ -28,20 +18,27 @@
 	COOLDOWN_START(src, bark_cooldown, 2 SECONDS)
 	return TRUE
 
-/datum/preference_middleware/bark/Destroy()
-	QDEL_NULL(voice_screen)
-	return ..()
-
 /datum/preference/choiced/voice_pack
 	category = PREFERENCE_CATEGORY_SECONDARY_FEATURES
 	savefile_identifier = PREFERENCE_CHARACTER
 	savefile_key = "voice_pack"
 
-/datum/preference/choiced/voice_pack/compile_ui_data(mob/user, value)
+/datum/preference/choiced/voice_pack/proc/display_name(value)
 	var/datum/voice_pack/voicepack = GLOB.voice_pack_list[value]
-	if(!voicepack)
-		return "Default"
-	return voicepack.group_name + ": " + voicepack.name
+	if(voicepack?.name)
+		return voicepack.name
+	return value
+
+/datum/preference/choiced/voice_pack/compile_constant_data()
+	var/list/data = ..()
+	var/list/display_names = list()
+	for(var/key in get_choices())
+		display_names[key] = display_name(key)
+	data[CHOICED_PREFERENCE_DISPLAY_NAMES] = display_names
+	return data
+
+/datum/preference/choiced/voice_pack/compile_ui_data(mob/user, value)
+	return display_name(value)
 
 /datum/preference/choiced/voice_pack/init_possible_values()
 	var/list/possible = list()
@@ -71,7 +68,7 @@
 	savefile_key = "bark_speech_speed"
 	minimum = VOICE_DEFAULT_MINSPEED
 	maximum = VOICE_DEFAULT_MAXSPEED
-	step = 0.01
+	step = 1
 
 /datum/preference/numeric/bark_speech_speed/apply_to_human(mob/living/carbon/human/target, value)
 	target.get_bark_voice().speed = value
@@ -85,7 +82,7 @@
 	savefile_key = "bark_speech_pitch"
 	minimum = VOICE_DEFAULT_MINPITCH
 	maximum = VOICE_DEFAULT_MAXPITCH
-	step = 0.01
+	step = 0.1
 
 /datum/preference/numeric/bark_speech_pitch/apply_to_human(mob/living/carbon/human/target, value)
 	target.get_bark_voice().pitch = value
@@ -99,7 +96,7 @@
 	savefile_key = "bark_pitch_range"
 	minimum = VOICE_DEFAULT_MINVARY
 	maximum = VOICE_DEFAULT_MAXVARY
-	step = 0.01
+	step = 0.1
 
 /datum/preference/numeric/bark_pitch_range/apply_to_human(mob/living/carbon/human/target, value)
 	target.get_bark_voice().pitch_range = value

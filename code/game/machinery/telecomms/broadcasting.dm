@@ -209,8 +209,6 @@
 	if(GLOB.voices_enabled)
 		if(virt && isAI(virt.source))
 			radio_vp = GLOB.voice_pack_list["talk.radio_ai"]
-		else if(virt && iscyborg(virt.source))
-			radio_vp = GLOB.voice_pack_list["talk.radio2"]
 		else
 			var/end_char = copytext_char(message, length_char(message))
 			if(end_char == "!" || end_char == "?")

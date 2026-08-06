@@ -210,11 +210,7 @@
 		if(virt && isAI(virt.source))
 			radio_vp = GLOB.voice_pack_list["talk.radio_ai"]
 		else
-			var/end_char = copytext_char(message, length_char(message))
-			if(end_char == "!" || end_char == "?")
-				radio_vp = GLOB.voice_pack_list["talk.radio2"]
-			else
-				radio_vp = GLOB.voice_pack_list["talk.radio"]
+			radio_vp = GLOB.voice_pack_list["talk.radio2"]
 	if(radio_vp)
 		var/sound/radio_sound = length(radio_vp.sounds) ? radio_vp.sounds[1] : null
 		if(radio_sound)

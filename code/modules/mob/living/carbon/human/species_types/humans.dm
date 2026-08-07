@@ -12,6 +12,7 @@
 	human.set_haircolor("#bb9966", update = FALSE) // brown
 	human.set_hairstyle("Business Hair", update = TRUE)
 
+<<<<<<< HEAD
 /datum/species/human/get_scream_sound(mob/living/carbon/human/human)
 	if(human.physique == MALE)
 		if(prob(1))
@@ -102,6 +103,8 @@
 /datum/species/human/get_hiss_sound(mob/living/carbon/human/human)
 	return 'sound/mobs/humanoids/human/hiss/human_hiss.ogg'
 
+=======
+>>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 /datum/species/human/get_species_description()
 	return "Humans are the dominant species in the known galaxy. \
 		Their kind extend from old Earth to the edges of known space."

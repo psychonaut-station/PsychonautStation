@@ -10,7 +10,7 @@
 
 	// okay, let's first test the basics of how an emagged recycler should operate
 	TEST_ASSERT_NULL(QDELETED(assistant), "Assistant was deleted by the emagged recycler!") // The assistant should not be deleted by the recycler.
-	if(assistant.stat < UNCONSCIOUS)
+	if(!IS_UNCONSCIOUS(assistant))
 		TEST_FAIL("Assistant was not made unconscious by the emagged recycler!") // crush_living() on the recycler should have made the assistant unconscious or worse.
 	// crush_living() on the recycler should have applied the crush_damage to the assistant.
 	var/damage_incurred = assistant.get_brute_loss()
@@ -44,4 +44,7 @@
 	TEST_ASSERT_NULL(assistant.r_store, "Assistant still has an item in their right pocket after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.s_store, "Assistant still has an item in their suit storage slot after being put through an emagged recycler!")
 	TEST_ASSERT_NULL(assistant.glasses, "Assistant still has glasses on after being put through an emagged recycler!")
+<<<<<<< HEAD
 
+=======
+>>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

@@ -22,5 +22,9 @@ GLOBAL_LIST_INIT(crafting_category, list(
 	CAT_ENTERTAINMENT,
 	CAT_TOOLS,
 	CAT_CULT,
+<<<<<<< HEAD
 	CAT_GARDENING,
+=======
+	CAT_CONSTRUCTION,
+>>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 ))

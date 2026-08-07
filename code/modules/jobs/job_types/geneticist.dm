@@ -52,3 +52,5 @@
 	satchel = /obj/item/storage/backpack/satchel/gen
 	duffelbag = /obj/item/storage/backpack/duffelbag/genetics
 	messenger = /obj/item/storage/backpack/messenger/gen
+
+	wintercoat = /obj/item/clothing/suit/hooded/wintercoat/science/genetics

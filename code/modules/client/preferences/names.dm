@@ -17,7 +17,12 @@
 	/// If the highest priority job matches this, will prioritize this name in the UI
 	var/relevant_job
 
+<<<<<<< HEAD
 /datum/preference/name/apply_to_human(mob/living/carbon/human/target, value)
+=======
+
+/datum/preference/name/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+>>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 	// Only real_name applies directly, everything else is applied by something else
 	return
 
@@ -39,7 +44,7 @@
 	group = "_real_name"
 	savefile_key = "real_name"
 
-/datum/preference/name/real_name/apply_to_human(mob/living/carbon/human/target, value)
+/datum/preference/name/real_name/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
 	target.real_name = value
 	target.name = value
 	target.log_mob_tag("TAG: [target.tag] RENAMED: [key_name(target)]")

@@ -1,12 +1,3 @@
-<<<<<<< HEAD
-2026-08-03:
-  TheGentleman:
-  - rscadd: "A\u011Fz\u0131n\u0131zda herhangi bir b\u0131\xE7ak tutarken zipties\
-      \ tarz\u0131 kelep\xE7eler ile tutuklan\u0131rsan\u0131z kelep\xE7elerinizi\
-      \ daha h\u0131zl\u0131 \xE7\xF6zebilmenizi ekler"
-  exdal:
-  - rscadd: Tip of the round artik Turkce
-=======
 2026-08-01:
   Fghj240:
   - balance: robotic limbs, organs, and cybernetic implants have their emp effects
@@ -77,6 +68,12 @@
   Swan:
   - code_imp: Made it so the round start timer starts precisely at the value specified
       in configs
+  TheGentleman:
+  - rscadd: "A\u011Fz\u0131n\u0131zda herhangi bir b\u0131\xE7ak tutarken zipties\
+      \ tarz\u0131 kelep\xE7eler ile tutuklan\u0131rsan\u0131z kelep\xE7elerinizi\
+      \ daha h\u0131zl\u0131 \xE7\xF6zebilmenizi ekler"
+  exdal:
+  - rscadd: Tip of the round artik Turkce
   lelandkemble:
   - balance: Malf AI hacked APCs no longer fully drain their own cells, instead draining
       from the powernet
@@ -227,4 +224,3 @@
   vinylspiders:
   - bugfix: birdboat will no longer try to eat everything in sight at all times, in
       exchange their range for noticing food has been increased...
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

@@ -305,6 +305,7 @@ GLOBAL_LIST_EMPTY(sfx_datum_by_key)
 #define SFX_BULLET_IMPACT_STONE "bullet_impact_stone"
 #define SFX_BULLET_IMPACT_WATER "bullet_impact_water"
 #define SFX_ALIEN_SPIT_ACID "alien_split_acid"
+#define SFX_HEAVY_DROP "heavy_drop"
 
 // Standard is 44.1khz
 #define MIN_EMOTE_PITCH 40000

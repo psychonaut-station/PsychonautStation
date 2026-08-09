@@ -64,6 +64,11 @@
 		),
 	)
 
+/datum/emote/living/carbon/cry/get_sound(mob/living/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_CLOWNING))
+		return 'sound/voice/human/clown_cry1.ogg'
+
 /datum/emote/living/carbon/cry/run_emote(mob/user, params, type_override, intentional)
 	. = ..()
 	if(!ishuman(user))
@@ -238,15 +243,10 @@
 	message = "hisses!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	vary = TRUE
-<<<<<<< HEAD
-
-/datum/emote/living/carbon/hiss/get_sound(mob/living/carbon/user)
-	. = ..()
-	if(!istype(user))
-		return
-	if(isalien(user))
-		return SFX_HISS
-	return user.dna.species.get_hiss_sound()
+	sounds_by_mobtype = list(
+		/mob/living/carbon/human = 'sound/mobs/humanoids/human/hiss/human_hiss.ogg',
+		/mob/living/carbon/alien = SFX_HISS,
+	)
 
 /datum/emote/living/carbon/sweatdrop
 	key = "sweatdrop"
@@ -274,9 +274,3 @@
 	flick_overlay_global(emote_animation, GLOB.clients, 5 SECONDS)
 	// as this emote has no message, it won't play a sound due to the parent proc, so we play it manually here
 	playsound(user,'sound/effects/annoyed.ogg',50,TRUE)
-=======
-	sounds_by_mobtype = list(
-		/mob/living/carbon/human = 'sound/mobs/humanoids/human/hiss/human_hiss.ogg',
-		/mob/living/carbon/alien = SFX_HISS,
-	)
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

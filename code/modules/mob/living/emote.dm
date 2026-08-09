@@ -317,6 +317,11 @@
 /datum/emote/living/laugh/can_run_emote(mob/living/user, status_check = TRUE , intentional, params)
 	return ..() && user.can_speak(allow_mimes = TRUE)
 
+/datum/emote/living/laugh/get_sound(mob/living/user)
+	. = ..()
+	if(HAS_TRAIT(user, TRAIT_CLOWNING))
+		return 'sound/voice/human/clown_laugh1.ogg'
+
 /datum/emote/living/look
 	key = "look"
 	key_third_person = "looks"
@@ -865,7 +870,6 @@
 	abstract_type = /datum/emote/living/cat
 	trait_required = TRAIT_CAT_EMOTES_ALLOWED
 
-<<<<<<< HEAD
 /datum/emote/living/carbon/whistle/get_sound(mob/living/user)
 	return 'sound/mobs/humanoids/human/whistle/whistle1.ogg'
 
@@ -877,14 +881,19 @@
 	emote_type = EMOTE_VISIBLE | EMOTE_AUDIBLE
 	manual_specific_emote_audio_cooldown = 25 SECONDS
 	vary = TRUE
+	sounds_by_mobtype = list(
+		/mob/living/carbon/human = list(
+			'sound/misc/fart1.ogg',
+			'sound/misc/fart2.ogg',
+			'sound/misc/fart3.ogg',
+			'sound/misc/fart4.ogg',
+			'sound/misc/fart5.ogg',
+			'sound/misc/fart6.ogg',
+		),
+	)
 
 /datum/emote/living/fart/can_run_emote(mob/living/user, status_check = TRUE , intentional)
 	return ..() && user.can_speak(allow_mimes = TRUE)
-
-/datum/emote/living/fart/get_sound(mob/living/user)
-	if(ishuman(user))
-		return pick('sound/misc/fart1.ogg', 'sound/misc/fart2.ogg', 'sound/misc/fart3.ogg',
-					'sound/misc/fart4.ogg', 'sound/misc/fart5.ogg', 'sound/misc/fart6.ogg')
 
 /datum/emote/living/pose
 	key = "pose"
@@ -907,7 +916,7 @@
 	if(istype(user, /mob/living/basic/guardian) ||length(user.get_all_linked_holoparasites()))
 		return TRUE
 	return FALSE
-=======
+
 /datum/emote/living/cat/meow
 	key = "meow"
 	key_third_person = "meows"
@@ -945,4 +954,3 @@
 	message_mime = "squeaks silently?"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 	sound = 'sound/mobs/humanoids/moth/moth_squeak.ogg'
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

@@ -1,16 +1,10 @@
-<<<<<<< HEAD
-/mob/living/silicon/proc/show_laws()
-	laws_sanity_check()
-	var/list/law_box = list(span_bold("Uymak zorunda olduğun yasalar:"))
-=======
 /**
  * Shows the silicon's current laws in chat.
  *
  * You can optionally pass a mob to show to instead of the silicon itself.
  */
 /mob/living/silicon/proc/show_laws(mob/show_to)
-	var/list/law_box = list(span_bold("Obey these laws:"))
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
+	var/list/law_box = list(span_bold("Uymak zorunda olduğun yasalar:"))
 	law_box += laws.get_law_list(include_zeroth = TRUE)
 	to_chat(show_to || src, boxed_message(jointext(law_box, "\n")))
 

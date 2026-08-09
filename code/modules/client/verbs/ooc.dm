@@ -171,8 +171,9 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	log_admin("[key_name_admin(user)] has reset player ooc color.")
 	GLOB.OOC_COLOR = null
 
+GAME_VERB(/client, looc, VERB_LOOC, null)
+	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 
-GAME_VERB(/client, looc, VERB_LOOC, null, msg as text)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
@@ -189,7 +190,7 @@ GAME_VERB(/client, looc, VERB_LOOC, null, msg as text)
 		return
 
 	var/admin = check_rights(R_ADMIN, FALSE)
-	if(mob.stat != CONSCIOUS && !admin)
+	if(mob.stat != STABLE && !admin)
 		to_chat(src, span_warning("You must be concious to use LOOC."))
 		return
 

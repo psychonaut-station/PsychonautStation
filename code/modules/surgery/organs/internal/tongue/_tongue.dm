@@ -796,7 +796,6 @@
 	toxic_foodtypes = NONE //you can eat fucking uranium
 	languages_native = list(/datum/language/terrum)
 
-<<<<<<< HEAD
 /obj/item/organ/tongue/arachnid
 	name = "arachnid tongue"
 	desc = "A spider organ used for speaking and eating."
@@ -804,7 +803,7 @@
 	disliked_foodtypes = VEGETABLES | FRUIT
 	say_mod = "chitters"
 	languages_native = list(/datum/language/buzzwords)
-=======
+
 /obj/item/organ/tongue/shadow
 	name = "shadow tongue"
 	color = COLOR_ALMOST_BLACK
@@ -813,4 +812,3 @@
 	emote_sounds = list(
 		/datum/emote/living/scream::key = 'sound/mobs/humanoids/shadow/shadow_wail.ogg',
 	)
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

@@ -231,61 +231,6 @@
 /mob/living/silicon/proc/statelaws(force = FALSE)
 	law_ui.state_laws(force)
 
-<<<<<<< HEAD
-	var/list/lawcache_lawcheck = lawcheck.Copy()
-	var/list/lawcache_ioncheck = ioncheck.Copy()
-	var/list/lawcache_hackedcheck = hackedcheck.Copy()
-	var/forced_log_message = "stating laws[force ? ", forced" : ""]"
-	//"radiomod" is inserted before a hardcoded message to change if and how it is handled by an internal radio.
-	say("[radiomod] Aktif yasalar:", forced = forced_log_message)
-	sleep(1 SECONDS)
-
-	if (lawcache_zeroth)
-		if (force || (lawcache_zeroth in lawcache_lawcheck))
-			say("[radiomod] 0. [lawcache_zeroth]", forced = forced_log_message, message_mods = list(MODE_SEQUENTIAL = TRUE))
-			sleep(1 SECONDS)
-
-	for (var/index in 1 to length(lawcache_hacked))
-		var/law = lawcache_hacked[index]
-		var/num = ion_num()
-		if (length(law) <= 0)
-			continue
-		if (force || (law in lawcache_hackedcheck))
-			say("[radiomod] [num]. [law]", forced = forced_log_message, message_mods = list(MODE_SEQUENTIAL = TRUE))
-			sleep(1 SECONDS)
-
-	for (var/index in 1 to length(lawcache_ion))
-		var/law = lawcache_ion[index]
-		var/num = ion_num()
-		if (length(law) <= 0)
-			return
-		if (force || (law in lawcache_ioncheck))
-			say("[radiomod] [num]. [law]", forced = forced_log_message, message_mods = list(MODE_SEQUENTIAL = TRUE))
-			sleep(1 SECONDS)
-
-	var/number = 1
-	for (var/index in 1 to length(lawcache_inherent))
-		var/law = lawcache_inherent[index]
-		if (length(law) <= 0)
-			continue
-		if (force || (law in lawcache_lawcheck))
-			say("[radiomod] [number]. [law]", forced = forced_log_message, message_mods = list(MODE_SEQUENTIAL = TRUE))
-			number++
-			sleep(1 SECONDS)
-
-	for (var/index in 1 to length(lawcache_supplied))
-		var/law = lawcache_supplied[index]
-
-		if (length(law) <= 0)
-			continue
-		if (force || (law in lawcache_lawcheck))
-			say("[radiomod] [number]. [law]", forced = forced_log_message, message_mods = list(MODE_SEQUENTIAL = TRUE))
-			number++
-			sleep(1 SECONDS)
-
-///Gives you a link-driven interface for deciding what laws the statelaws() proc will share with the crew.
-=======
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 /mob/living/silicon/proc/checklaws()
 	law_ui.ui_interact(src)
 

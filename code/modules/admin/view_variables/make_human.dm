@@ -1,4 +1,6 @@
-ADMIN_VERB_ONLY_CONTEXT_MENU(make_human_mapview, R_NONE, "Make Human", mob/target in view())
+ADMIN_VERB_ONLY_CONTEXT_MENU(make_human_mapview, R_NONE, "Make Human", /mob)
+	VERB_ARG_TYPED(target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
+
 	var/selected_outfit = target.client?.robust_dress_shop()
 	if (!selected_outfit)
 		return
@@ -9,7 +11,9 @@ ADMIN_VERB_ONLY_CONTEXT_MENU(make_human_mapview, R_NONE, "Make Human", mob/targe
 		message_admins("[key_name_admin(user)] has transformed [target] into [selected_outfit]")
 		log_admin("[key_name(user)] has transformed [target] into [selected_outfit]")
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(delete_mob_mapview, R_NONE, "Delete Mob", mob/target in view())
+ADMIN_VERB_ONLY_CONTEXT_MENU(delete_mob_mapview, R_NONE, "Delete Mob", /mob)
+	VERB_ARG_TYPED(target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
+
 	if(user && tgui_alert(user, "Are you sure?", "Delete Mob", list("I'm Sure", "Abort")) == "I'm Sure")
 		QDEL_IN(target, 1)
 		message_admins("[key_name_admin(user)] has deleted [target]")

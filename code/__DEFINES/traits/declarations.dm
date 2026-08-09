@@ -338,13 +338,8 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 #define TRAIT_EXAMINE_FITNESS "reveal_power_level"
 /// These mobs have particularly hygienic tongues
 #define TRAIT_WOUND_LICKER "wound_licker"
-<<<<<<< HEAD
-/// Mobs with this trait are allowed to use silicon emotes
-#define TRAIT_SILICON_EMOTES_ALLOWED "silicon_emotes_allowed"
 /// Makes you immune to welding flashes
 #define TRAIT_NOTOOLFLASH "notoolflash"
-=======
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 /// Mobs with this trait can tell when other mobs whisper even if their mouth is covered. They still can't tell what was whispered though.
 #define TRAIT_SEE_MASK_WHISPER "see_mask_whisper"
 

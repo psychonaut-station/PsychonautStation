@@ -229,17 +229,11 @@
 	var/list/bodypart_effects
 	/// The cached info about the blood this organ belongs to, set during on_removal()
 	var/list/blood_dna_info
-<<<<<<< HEAD
 	/// If this not null name will be adjusted accordingly
 	var/examine_bodypart_id
-	/// What items we drop whenever we're butchered
-	/// If unset, the bodyparot cannot be butchered
-	var/list/butcher_drops = null
-=======
 	/// Lazy assoc list of [item type] = [amount] that we drop when butchered.
 	/// Overrides whatever we would drop normally based on our species datum.
 	var/list/butcher_drops_override
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 	/// What skeleton limb, if any, we replace ourselves with when butchered?
 	var/obj/item/bodypart/butcher_replacement = null
 	/// How much meat do we add to butcher_drops when automatically generating them from our species datum?
@@ -294,20 +288,7 @@
 	if(innate_state)
 		add_surgical_state(innate_state)
 
-<<<<<<< HEAD
-	if(examine_bodypart_id)
-		name = "[examine_bodypart_id] [parse_zone(body_zone)]"
-	else
-		name = "[limb_id] [parse_zone(body_zone)]"
-
-	// There's a lot of bodyparts in the world, and we don't need to have separate drops on each and every one of them
-	var/list/drop_results = get_butcher_drops()
-	if (length(drop_results))
-		butcher_drops = string_list(drop_results)
-		butcher_drop_cache[type] = butcher_drops
-=======
-	name = "[limb_id] [parse_zone(body_zone)]"
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
+	name = "[examine_bodypart_id || limb_id] [parse_zone(body_zone)]"
 	update_limb(TRUE)
 	update_icon_dropped()
 	refresh_bleed_rate()

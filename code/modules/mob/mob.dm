@@ -1172,11 +1172,8 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
-<<<<<<< HEAD
-=======
 	else if(log_new_name)
 		log_message("[src] name set to [newname]", LOG_OWNERSHIP)
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
 	SEND_SIGNAL(src, COMSIG_MOB_FULLY_RENAMED, oldname, newname)

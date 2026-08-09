@@ -13,12 +13,8 @@
 // We also make SURE to fail loud, IE: if something stops the message from reaching the recipient, the sender HAS to know
 // If you "refactor" this to make it "cleaner" I will send you to hell
 
-<<<<<<< HEAD
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_ADMIN, "Admin PM Mob", mob/target in world)
-=======
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_NONE, "Admin PM Mob", /mob)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_admin_pm_context, R_ADMIN, "Admin PM Mob", /mob)
 	VERB_ARG_TYPED(target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 	if(!ismob(target))
 		to_chat(
 			src,
@@ -782,7 +778,8 @@ ADMIN_VERB(cmd_admin_pm_panel, R_ADMIN, "Admin PM", "Show a list of clients to P
 
 /// MENTOR PRIVATE MESSAGE ///
 
-ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_mentor_pm_context, R_NONE, "Mentor PM Mob", mob/target in world)
+ADMIN_VERB_ONLY_CONTEXT_MENU(cmd_mentor_pm_context, R_NONE, "Mentor PM Mob", /mob)
+	VERB_ARG_TYPED(target, VERB_ARG_TYPE_MOB, VERB_ARG_SOURCE_WORLD, /mob)
 	if(!ismob(target))
 		to_chat(
 			src,

@@ -57,28 +57,6 @@
 	message_mime = "mumbles silently!"
 	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
 
-/datum/emote/living/carbon/human/scream
-	key = "scream"
-	key_third_person = "screams"
-	message = "screams!"
-	message_mime = "acts out a scream!"
-	emote_type = EMOTE_AUDIBLE | EMOTE_VISIBLE
-	manual_specific_emote_audio_cooldown = 10 SECONDS
-	vary = TRUE
-#if defined(UNIT_TESTS) || defined(SPACEMAN_DMM)
-	only_forced_audio = TRUE
-#endif
-
-/datum/emote/living/carbon/human/scream/can_run_emote(mob/user, status_check = TRUE , intentional, params)
-	if(!intentional && HAS_TRAIT(user, TRAIT_ANALGESIA))
-		return FALSE
-	return ..()
-
-/datum/emote/living/carbon/human/scream/get_sound(mob/living/carbon/human/user)
-	if(!istype(user))
-		return
-	return user.dna.species.get_scream_sound(user)
-
 /datum/emote/living/carbon/human/screech // basically scream 2.0
 	key = "screech"
 	key_third_person = "screeches"

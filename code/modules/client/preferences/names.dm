@@ -17,12 +17,8 @@
 	/// If the highest priority job matches this, will prioritize this name in the UI
 	var/relevant_job
 
-<<<<<<< HEAD
-/datum/preference/name/apply_to_human(mob/living/carbon/human/target, value)
-=======
 
 /datum/preference/name/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 	// Only real_name applies directly, everything else is applied by something else
 	return
 
@@ -228,4 +224,3 @@
 
 /datum/preference/name/hacker_alias/serialize(input)
 	return permissive_sanitize_name(input)
-

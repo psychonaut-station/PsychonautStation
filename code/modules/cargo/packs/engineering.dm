@@ -385,14 +385,13 @@
 	crate_name = "golf cart parts kit"
 	crate_type = /obj/structure/closet/crate/engineering
 
-<<<<<<< HEAD
 /datum/supply_pack/engineering/anomaly_catcher
 	name = "Anomaly Catcher Crate"
 	desc = "Contains some tools for containing anomalies"
 	cost = CARGO_CRATE_VALUE * 30
 	contains = list(/obj/item/storage/toolbox/guncase/anomaly_catcher = 1)
 	crate_name = "anomaly catcher crate"
-=======
+
 /datum/supply_pack/engineering/concrete_mix
 	name = "Concrete Mix"
 	desc = "Feeling lazy? Need a structure and quick? Use near-instant concrete mix! Just add water."
@@ -404,4 +403,3 @@
 	)
 	crate_name = "concrete mix crate"
 	crate_type = /obj/structure/closet/crate/engineering
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00

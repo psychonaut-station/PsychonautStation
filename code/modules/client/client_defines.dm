@@ -246,12 +246,10 @@
 	/// Loot panel for the client
 	var/datum/lootpanel/loot_panel
 
-<<<<<<< HEAD
 	/// Discord verification ui
 	var/datum/verification_menu/verification_menu
-=======
+
 	var/datum/admin_verb_panel/admin_verb_panel
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
 
 	///Which ambient sound this client is currently being provided.
 	var/current_ambient_sound

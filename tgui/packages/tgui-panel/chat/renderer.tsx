@@ -46,7 +46,8 @@ export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
 };
 
 const stripColoredNames = (inputHtml) => {
-  const spanRegex = /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
+  const spanRegex =
+    /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
   return inputHtml.replace(spanRegex, '$1$2');
 };
 
@@ -122,12 +123,9 @@ class ChatRenderer {
   scrollTracking: boolean;
   lastScrollHeight: number;
   highlightParsers: Array<any> | null;
-<<<<<<< HEAD
   coloredNames: boolean;
-=======
   currentJob: string | null;
   currentCharacter: string | null;
->>>>>>> fa76f9ea0245c755604c1d30b8450bc762d40d00
   handleScroll: (type: any) => void;
 
   constructor() {

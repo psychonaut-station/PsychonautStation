@@ -50,13 +50,13 @@
 
 /obj/item/clothing/accessory/bodycam/ui_action_click(mob/user, datum/action/source)
 	if(broken)
-		if(user)
-			balloon_alert(user, "is broken!")
+		balloon_alert(user, "is broken!")
 		return
 	camera_on = !camera_on
-	update_component()
-	if(user)
-		balloon_alert(user, camera_on ? "camera on" : "camera off")
+	var/datum/component/pausable_bodycam/component = user?.GetComponent(/datum/component/pausable_bodycam)
+	if(component)
+		component.set_camera_enabled(camera_on)
+	balloon_alert(user, camera_on ? "camera on" : "camera off")
 
 /obj/item/clothing/accessory/bodycam/emp_act(severity)
 	. = ..()

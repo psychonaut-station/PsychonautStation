@@ -1,12 +1,9 @@
-GLOBAL_LIST_EMPTY(pausable_bodycams)
-
-/// Component used by wearable bodycams that should only update while actively viewed or near an AI.
+/// Component used by wearable bodycams that should only update while actively viewed.
 /datum/component/pausable_bodycam
 	dupe_mode = COMPONENT_DUPE_UNIQUE
 	VAR_PRIVATE/obj/machinery/camera/bodycam/bodycam
 	var/camera_update_time = 0.5 SECONDS
 	var/list/sources_watching
-	var/camera_is_awake = FALSE
 
 /datum/component/pausable_bodycam/Initialize(
 	camera_name = "bodycam",
@@ -30,13 +27,10 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	if(emp_proof)
 		bodycam.AddElement(/datum/element/empprotection, EMP_PROTECT_ALL)
 
-	GLOB.pausable_bodycams += src
 	RegisterSignals(bodycam, list(COMSIG_QDELETING, COMSIG_MOVABLE_MOVED), PROC_REF(camera_gone))
-	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
 
 /datum/component/pausable_bodycam/Destroy()
 	force_pause()
-	GLOB.pausable_bodycams -= src
 	if(!QDELETED(bodycam))
 		UnregisterSignal(bodycam, list(COMSIG_QDELETING, COMSIG_MOVABLE_MOVED))
 		bodycam.bodycam_component = null
@@ -45,12 +39,20 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 
 /datum/component/pausable_bodycam/proc/on_watch_start(datum/source)
 	prune_sources_watching()
+	var/had_live_watchers = has_live_watchers()
 	LAZYADD(sources_watching, WEAKREF(source))
-	check_proximity_state()
+	if(had_live_watchers)
+		return
+	if(!bodycam?.camera_enabled)
+		return
+	RegisterSignal(parent, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved))
+	update_camera()
 
 /datum/component/pausable_bodycam/proc/on_watch_stop(datum/source)
 	prune_sources_watching(source)
-	check_proximity_state()
+	if(has_live_watchers())
+		return
+	pause_camera()
 
 /datum/component/pausable_bodycam/proc/prune_sources_watching(datum/source_to_remove)
 	if(!LAZYLEN(sources_watching))
@@ -59,6 +61,8 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 		var/datum/resolved_source = weak_source?.resolve()
 		if(!resolved_source || resolved_source == source_to_remove || !source_is_live(resolved_source))
 			LAZYREMOVE(sources_watching, weak_source)
+	if(!LAZYLEN(sources_watching))
+		pause_camera()
 
 /datum/component/pausable_bodycam/proc/has_live_watchers()
 	prune_sources_watching()
@@ -67,53 +71,17 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 			return TRUE
 	return FALSE
 
-/datum/component/pausable_bodycam/proc/should_be_awake()
-	if(has_live_watchers())
-		return TRUE
-	var/turf/my_turf = get_turf(parent)
-	if(!my_turf)
-		return FALSE
-	for(var/mob/living/silicon/ai/ai in GLOB.ai_list)
-		if(ai.stat == DEAD || !GET_CLIENT(ai))
-			continue
-		if(ai.viewing_camera) // watching a camera, not freelooking
-			continue
-		if(!ai.eyeobj || ai.eyeobj.z != my_turf.z)
-			continue
-		if(get_dist(ai.eyeobj, my_turf) <= MAX_CAMERA_RANGE)
-			return TRUE
-	return FALSE
-
-/datum/component/pausable_bodycam/proc/check_proximity_state()
-	if(QDELETED(bodycam) || !bodycam.camera_enabled)
-		if(camera_is_awake)
-			pause_camera()
-		return
-
-	var/should_wake = should_be_awake()
-	if(should_wake && !camera_is_awake)
-		wake_up()
-	else if(!should_wake && camera_is_awake)
-		pause_camera()
-
 /datum/component/pausable_bodycam/proc/source_is_live(datum/source)
 	if(QDELETED(source))
 		return FALSE
 	if(istype(source, /obj/machinery/computer/security))
 		var/obj/machinery/computer/security/console = source
 		return console.active_camera == bodycam && LAZYLEN(console.open_uis)
-	if(istype(source, /mob/living/silicon/ai))
-		var/mob/living/silicon/ai/ai_user = source
-		return ai_user.viewing_camera == bodycam
 	return TRUE
 
 /datum/component/pausable_bodycam/proc/on_moved(datum/source, atom/old_loc, ...)
 	SIGNAL_HANDLER
-	if(get_turf(old_loc) == get_turf(parent))
-		return
-	var/was_awake = camera_is_awake
-	check_proximity_state()
-	if(camera_is_awake && was_awake)
+	if(get_turf(old_loc) != get_turf(parent))
 		update_camera(old_loc)
 
 /datum/component/pausable_bodycam/proc/update_camera(atom/old_loc)
@@ -133,13 +101,15 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	if(!bodycam || QDELETED(bodycam))
 		return
 	bodycam.camera_enabled = enabled
-	check_proximity_state()
+	if(!enabled)
+		force_pause()
 
 /datum/component/pausable_bodycam/proc/set_broken(broken, camera_on = TRUE)
 	if(!bodycam || QDELETED(bodycam))
 		return
 	bodycam.camera_enabled = !broken && camera_on
-	check_proximity_state()
+	if(broken || !bodycam.camera_enabled)
+		force_pause()
 
 /datum/component/pausable_bodycam/proc/notify_watchers_disconnect()
 	if(QDELETED(bodycam))
@@ -172,23 +142,8 @@ GLOBAL_LIST_EMPTY(pausable_bodycams)
 	LAZYNULL(sources_watching)
 	pause_camera()
 
-/datum/component/pausable_bodycam/proc/wake_up()
-	if(camera_is_awake)
-		return
-	camera_is_awake = TRUE
-	var/mob/living/host = parent
-	if(istype(host))
-		host.throw_alert(ALERT_BODYCAM_VIEWED, /atom/movable/screen/alert/bodycam_viewed)
-	if(!QDELETED(bodycam))
-		SScameras.add_camera_to_chunk(bodycam)
-		update_camera(get_turf(bodycam))
-
 /datum/component/pausable_bodycam/proc/pause_camera()
-	if(!camera_is_awake)
-		return
-	camera_is_awake = FALSE
-	var/mob/living/host = parent
-	if(istype(host))
-		host.clear_alert(ALERT_BODYCAM_VIEWED)
+	UnregisterSignal(parent, COMSIG_MOVABLE_MOVED)
 	if(!QDELETED(bodycam))
+		bodycam.clear_alert()
 		SScameras.remove_camera_from_chunk(bodycam)

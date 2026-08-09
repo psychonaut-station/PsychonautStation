@@ -133,7 +133,6 @@
 	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert while a valid console watcher exists.")
 
 	console.open_uis = null
-	component.check_proximity_state()
 
 	TEST_ASSERT(!component.has_live_watchers(), "A console with no open UI should be pruned as a stale watcher.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Pruning a stale console watcher should clear the viewed alert.")
@@ -506,37 +505,3 @@
 	TEST_ASSERT(!component.has_live_watchers(), "Disabling the bodycam should remove the live watcher from secureye.")
 	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Disabling the bodycam should clear the watched alert on secureye.")
 	qdel(ui)
-
-/datum/unit_test/bodycam_watchers_ai_proximity/Run()
-	var/mob/living/carbon/human/consistent/host = EASY_ALLOCATE()
-	host.mock_client = new /datum/client_interface()
-
-	var/datum/component/pausable_bodycam/component = host.AddComponent(/datum/component/pausable_bodycam)
-
-	var/mob/dead/observer/fake_ghost = EASY_ALLOCATE() // ai must be passed a mob in /new, cringe
-	var/mob/living/silicon/ai/test_ai = allocate(__IMPLIED_TYPE__, run_loc_floor_top_right, null, fake_ghost)
-	test_ai.mock_client = new /datum/client_interface()
-
-	TEST_ASSERT(!component.camera_is_awake, "Camera should start asleep.")
-	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host should not start with viewed alert.")
-
-	// AI moves eye nearby (freelook)
-	test_ai.create_eye()
-	test_ai.eyeobj.setLoc(run_loc_floor_bottom_left)
-
-	host.forceMove(get_step(run_loc_floor_bottom_left, NORTH))
-
-	TEST_ASSERT(component.camera_is_awake, "Camera should wake up when AI is nearby.")
-	TEST_ASSERT(host.has_alert(ALERT_BODYCAM_VIEWED), "Host should gain the viewed alert when AI is nearby in freelook.")
-
-	// AI moves eye far away
-	test_ai.eyeobj.setLoc(locate(run_loc_floor_top_right.x, run_loc_floor_top_right.y, run_loc_floor_top_right.z + 1))
-
-	host.forceMove(run_loc_floor_bottom_left)
-
-	TEST_ASSERT(!component.camera_is_awake, "Camera should sleep when AI moves away.")
-	TEST_ASSERT(!host.has_alert(ALERT_BODYCAM_VIEWED), "Host alert should clear when AI moves away.")
-
-	if(test_ai.eyeobj)
-		QDEL_NULL(test_ai.eyeobj)
-	qdel(test_ai)

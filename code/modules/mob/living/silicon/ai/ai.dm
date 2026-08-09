@@ -528,15 +528,10 @@ GAME_VERB(/mob/living/silicon/ai, toggle_anchor, "Toggle Floor Bolts", "AI Comma
 		view_core()
 		return
 
-	if(viewing_camera)
-		viewing_camera.on_stop_watching(src)
-
 	ai_tracking_tool.reset_tracking()
 
 	// ok, we're alive, camera is good and in our network...
 	eyeobj.setLoc(get_turf(C))
-	viewing_camera = C
-	viewing_camera.on_start_watching(src)
 	return TRUE
 
 GAME_VERB_PROC_DESC(/mob/living/silicon/ai, botcall, "Access Robot Control", "Wirelessly control various automatic robots.", "AI Commands")

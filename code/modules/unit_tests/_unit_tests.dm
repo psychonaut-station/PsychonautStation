@@ -126,7 +126,6 @@
 #include "blindness.dm"
 #include "blood_volume_procs.dm"
 #include "bloody_footprints.dm"
-#include "bodycam_watchers.dm"
 #include "borg_tools.dm"
 #include "bot_access.dm"
 #include "boulder_processing.dm"

@@ -445,7 +445,7 @@
 
 /datum/status_effect/shield_mantis_defense/tick() //could be a better way to do it?
 	. = ..()
-	if (owner.stat >= HARD_CRIT || HAS_TRAIT_FROM(owner, TRAIT_INCAPACITATED, STAMINA))
+	if (owner.stat >= HARD_CRIT || owner.stat == UNCONSCIOUS || HAS_TRAIT_FROM(owner, TRAIT_INCAPACITATED, STAMINA))
 		owner.remove_status_effect(/datum/status_effect/shield_mantis_defense)
 
 /atom/movable/screen/alert/status_effect/shield_mantis_defense

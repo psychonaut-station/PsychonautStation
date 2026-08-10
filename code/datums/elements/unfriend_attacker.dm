@@ -30,7 +30,7 @@
 /datum/element/unfriend_attacker/proc/on_hurt(mob/living/owner, atom/attacker)
 	SIGNAL_HANDLER
 
-	if (IS_UNCONSCIOUS(owner))
+	if (owner.stat != CONSCIOUS)
 		return
 	if (!isliving(attacker))
 		return

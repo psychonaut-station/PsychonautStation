@@ -26,5 +26,5 @@
 
 	return istype(preferences.get_highest_priority_job(), /datum/job/ai)
 
-/datum/preference/choiced/ai_emote_display/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/choiced/ai_emote_display/apply_to_human(mob/living/carbon/human/target, value)
 	return

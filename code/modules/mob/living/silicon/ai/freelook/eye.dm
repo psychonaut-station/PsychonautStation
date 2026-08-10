@@ -99,6 +99,10 @@
 		if(!H.move_hologram(ai, destination))
 			H.clear_holo(ai)
 
+	if(ai && !ai.viewing_camera)
+		for(var/datum/component/pausable_bodycam/bodycam in GLOB.pausable_bodycams)
+			bodycam.check_proximity_state()
+
 	if(ai.camera_light_on)
 		ai.light_cameras()
 	if(ai.master_multicam)
@@ -137,6 +141,9 @@
 	var/mob/living/silicon/ai/AI = usr
 	if(AI.eyeobj && (AI.multicam_on || (AI.client.eye == AI.eyeobj)) && (AI.eyeobj.z == z))
 		AI.ai_tracking_tool.reset_tracking()
+		if(AI.viewing_camera)
+			AI.viewing_camera.on_stop_watching(AI)
+			AI.viewing_camera = null
 		if (isturf(loc) || isturf(src))
 			AI.eyeobj.setLoc(src)
 
@@ -170,6 +177,9 @@
 		sprint = initial(sprint)
 
 	ai_tracking_tool.reset_tracking()
+	if(viewing_camera)
+		viewing_camera.on_stop_watching(src)
+		viewing_camera = null
 #undef SPRINT_PER_STEP
 #undef MAX_SPRINT
 #undef SPRINT_PER_TICK
@@ -183,6 +193,10 @@
 		current = null
 	if(ai_tracking_tool)
 		ai_tracking_tool.reset_tracking()
+
+	if(viewing_camera)
+		viewing_camera.on_stop_watching(src)
+		viewing_camera = null
 
 	if(isturf(loc) && (QDELETED(eyeobj) || !eyeobj.loc))
 		to_chat(src, "ERROR: Eyeobj not found. Creating new eye...")

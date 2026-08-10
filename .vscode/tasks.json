@@ -2,6 +2,16 @@
 	"version": "2.0.0",
 	"tasks": [
 		{
+			"type": "shell",
+			"command": "tools/bootstrap/python tools/build_bt.py",
+			"windows": {
+				"command": ".\\tools\\bootstrap\\python.bat tools/build_bt.py"
+			},
+			"group": "build",
+			"presentation": { "reveal": "silent", "panel": "shared" },
+			"label": "Compile BT Trees"
+		},
+		{
 			"type": "process",
 			"command": "tools/build/build.sh",
 			"windows": {
@@ -17,24 +27,16 @@
 				"kind": "build",
 				"isDefault": true
 			},
-			"dependsOn": "dm: reparse",
+			"dependsOn": ["dm: reparse", "Compile BT Trees"],
 			"label": "Build All"
 		},
 		{
 			"type": "process",
 			"command": "tools/build/build.sh",
-			"args": [
-				"-DSKIP_LAVALAND",
-				"-DSKIP_SPACE_LEVELS",
-				"-DFORCE_MAP=\"runtimestation\""
-			],
+			"args": ["-DLOWMEMORYMODE"],
 			"windows": {
 				"command": ".\\tools\\build\\build.bat",
-				"args": [
-					"-DSKIP_LAVALAND",
-					"-DSKIP_SPACE_LEVELS",
-					"-DFORCE_MAP=\"runtimestation\""
-				]
+				"args": ["-DLOWMEMORYMODE"]
 			},
 			"options": {
 				"env": {
@@ -51,22 +53,10 @@
 		{
 			"type": "process",
 			"command": "tools/build/build.sh",
-			"args": [
-				"-DSKIP_LAVALAND",
-				"-DSKIP_SPACE_LEVELS",
-				"-DAUTOSTART_GAME",
-				"-DMINIMAL_CENTCOM",
-				"-DFORCE_MAP=\"runtimestation_minimal\""
-			],
+			"args": ["-DLOWMEMORYMODE", "-DABSOLUTE_MINIMUM"],
 			"windows": {
 				"command": ".\\tools\\build\\build.bat",
-				"args": [
-					"-DSKIP_LAVALAND",
-					"-DSKIP_SPACE_LEVELS",
-					"-DAUTOSTART_GAME",
-					"-DMINIMAL_CENTCOM",
-					"-DFORCE_MAP=\"runtimestation_minimal\""
-				]
+				"args": ["-DLOWMEMORYMODE", "-DABSOLUTE_MINIMUM"]
 			},
 			"options": {
 				"env": {
@@ -114,24 +104,20 @@
 			"type": "process",
 			"command": "tools/build/build.sh",
 			"args": [
-				"-DSKIP_LAVALAND",
-				"-DSKIP_SPACE_LEVELS",
+				"-DLOWMEMORYMODE",
 				"-DTESTING",
 				"-DREAGENTS_TESTING",
 				"-DTIMER_DEBUG",
-				"-DREFERENCE_DOING_IT_LIVE",
-				"-DFORCE_MAP=\"runtimestation\""
+				"-DREFERENCE_DOING_IT_LIVE"
 			],
 			"windows": {
 				"command": ".\\tools\\build\\build.bat",
 				"args": [
-					"-DSKIP_LAVALAND",
-					"-DSKIP_SPACE_LEVELS",
+					"-DLOWMEMORYMODE",
 					"-DTESTING",
 					"-DREAGENTS_TESTING",
 					"-DTIMER_DEBUG",
-					"-DREFERENCE_DOING_IT_LIVE",
-					"-DFORCE_MAP=\"runtimestation\""
+					"-DREFERENCE_DOING_IT_LIVE"
 				]
 			},
 			"options": {

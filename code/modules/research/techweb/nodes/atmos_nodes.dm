@@ -109,7 +109,6 @@
 		"rcd_ammo",
 		"weldingmask",
 		"magboots",
-		"diode_disk_stamina",
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_4_POINTS)
 	discount_experiments = list(/datum/experiment/ordnance/gaseous/bz = TECHWEB_TIER_4_POINTS)

@@ -61,7 +61,6 @@
 	is_dimorphic = FALSE
 	should_draw_greyscale = FALSE
 	wing_types = null
-	bodypart_traits = list(TRAIT_ABDUCTOR_QUICK_SCAN)
 
 /obj/item/bodypart/chest/abductor/get_butt_sprite()
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_GREY)
@@ -86,7 +85,7 @@
 
 ///JELLY
 /obj/item/bodypart/head/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
@@ -95,7 +94,7 @@
 	butcher_replacement = null
 
 /obj/item/bodypart/chest/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	is_dimorphic = TRUE
 	dmg_overlay_type = null
@@ -107,28 +106,28 @@
 	return icon('icons/mob/butts.dmi', BUTT_SPRITE_SLIME)
 
 /obj/item/bodypart/arm/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 	butcher_replacement = null
 
 /obj/item/bodypart/arm/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 	butcher_replacement = null
 
 /obj/item/bodypart/leg/left/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
 	butcher_replacement = null
 
 /obj/item/bodypart/leg/right/jelly
-	biological_state = (BIO_FLESH|BIO_BLOODED|BIO_JELLY)
+	biological_state = (BIO_FLESH|BIO_BLOODED)
 	limb_id = SPECIES_JELLYPERSON
 	dmg_overlay_type = null
 	burn_modifier = 0.5 // = 1/2x generic burn damage
@@ -173,6 +172,46 @@
 
 /obj/item/bodypart/leg/right/jelly/luminescent
 	limb_id = SPECIES_LUMINESCENT
+
+///ZOMBIE
+/obj/item/bodypart/head/zombie
+	limb_id = SPECIES_ZOMBIE
+	is_dimorphic = FALSE
+	should_draw_greyscale = FALSE
+	head_flags = HEAD_EYESPRITES|HEAD_DEBRAIN
+	can_dismember = TRUE
+
+/obj/item/bodypart/chest/zombie
+	limb_id = SPECIES_ZOMBIE
+	is_dimorphic = FALSE
+	should_draw_greyscale = FALSE
+	wing_types = null
+
+/obj/item/bodypart/arm/left/zombie
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/arm/right/zombie
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/left/zombie
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/right/zombie
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+
+/obj/item/bodypart/leg/left/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.5 //braaaaains
+
+/obj/item/bodypart/leg/right/zombie/infectious
+	limb_id = SPECIES_ZOMBIE
+	should_draw_greyscale = FALSE
+	speed_modifier = 0.5 //braaaaains
 
 ///PODPEOPLE
 /obj/item/bodypart/head/pod
@@ -526,7 +565,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_head"
-	biological_state = BIO_BONE|BIO_STONE
+	biological_state = BIO_BONE
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
 	limb_id = SPECIES_GOLEM
@@ -569,7 +608,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_chest"
-	biological_state = BIO_BONE|BIO_STONE
+	biological_state = BIO_BONE
 	acceptable_bodytype = BODYTYPE_GOLEM
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
@@ -595,7 +634,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_l_arm"
-	biological_state = (BIO_BONE|BIO_JOINTED|BIO_STONE)
+	biological_state = (BIO_BONE|BIO_JOINTED)
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
 	limb_id = SPECIES_GOLEM
@@ -632,7 +671,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_r_arm"
-	biological_state = (BIO_BONE|BIO_JOINTED|BIO_STONE)
+	biological_state = (BIO_BONE|BIO_JOINTED)
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
 	limb_id = SPECIES_GOLEM
@@ -669,7 +708,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_l_leg"
-	biological_state = (BIO_BONE|BIO_JOINTED|BIO_STONE)
+	biological_state = (BIO_BONE|BIO_JOINTED)
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
 	limb_id = SPECIES_GOLEM
@@ -686,7 +725,7 @@
 	icon = 'icons/mob/human/species/golems.dmi'
 	icon_static = 'icons/mob/human/species/golems.dmi'
 	icon_state = "golem_r_leg"
-	biological_state = (BIO_BONE|BIO_JOINTED|BIO_STONE)
+	biological_state = (BIO_BONE|BIO_JOINTED)
 	bodytype = BODYTYPE_GOLEM | BODYTYPE_ORGANIC
 	bodyshape = BODYSHAPE_GOLEM
 	limb_id = SPECIES_GOLEM

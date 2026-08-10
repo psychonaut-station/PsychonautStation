@@ -70,7 +70,7 @@
 	var/mob_flags = NONE
 
 	/// Whether a mob is alive or dead. TODO: Move this to living - Nodrak (2019, still here)
-	var/stat = STABLE
+	var/stat = CONSCIOUS
 
 	/**
 	 * Whether and how a mob is incapacitated

@@ -31,19 +31,15 @@
 /mob/living/proc/getarmor(def_zone, type)
 	return 0
 
-/// This returns the mob's protection against eye damage (number between -1 and 2) from bright lights
+//this returns the mob's protection against eye damage (number between -1 and 2) from bright lights
 /mob/living/proc/get_eye_protection()
 	return 0
 
-/// This returns a number is subtracted from the severity of incoming emps against this mob.
-/mob/living/proc/get_emp_protection()
-	return emp_protection
-
-/// An easy to use proc to apply both organ damage and temporary deafness at once, so you don't have to get the ears everytime.
+///A easy to use proc to apply both organ damage and temporary deafness at once, so you don't have to get the ears everytime.
 /mob/living/proc/sound_damage(damage, deafen)
 	return
 
-/// This returns the mob's protection against ear damage (0:no protection; 1: some ear protection; 2: has no ears)
+//this returns the mob's protection against ear damage (0:no protection; 1: some ear protection; 2: has no ears)
 /mob/living/proc/get_ear_protection(ignore_deafness = FALSE)
 	if(!ignore_deafness && HAS_TRAIT(src, TRAIT_DEAF))
 		return INFINITY //For all my homies that can not hear in the world
@@ -219,9 +215,8 @@
 		return clamp(w_class * 8, 20, 100) // Multiply the item's weight class by 8, then clamp the value between 20 and 100
 	return 0 // plays no sound
 
-/mob/living/proc/set_combat_mode(new_mode, silent = TRUE, force = FALSE)
-
-	if(HAS_TRAIT(src, TRAIT_COMBAT_MODE_LOCK) && !force)
+/mob/living/proc/set_combat_mode(new_mode, silent = TRUE)
+	if(HAS_TRAIT(src, TRAIT_COMBAT_MODE_LOCK))
 		return
 
 	if(istype(src, /mob/living/silicon/robot))
@@ -622,7 +617,6 @@
 	. = ..()
 	if(. & EMP_PROTECT_CONTENTS)
 		return
-	severity += get_emp_protection()
 	for(var/obj/inside in contents)
 		inside.emp_act(severity)
 
@@ -895,10 +889,9 @@
 		return FALSE
 	if(has_status_effect(/datum/status_effect/hallucination) || has_status_effect(/datum/status_effect/drugginess))
 		return TRUE
-	if(IS_UNCONSCIOUS(src))
+	if(IsSleeping() || IsUnconscious())
 		return TRUE
 	if(HAS_TRAIT(src, TRAIT_DUMB))
 		return TRUE
-	if(mob_mood?.sanity < SANITY_UNSTABLE)
+	if(mob_mood && mob_mood.sanity < SANITY_UNSTABLE)
 		return TRUE
-	return FALSE

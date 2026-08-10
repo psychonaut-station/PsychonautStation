@@ -238,7 +238,7 @@
 
 	if(iscarbon(victim))
 		var/mob/living/carbon/carbon_victim = victim
-		if(IS_DEAD_OR_FAKING(carbon_victim))
+		if(!carbon_victim.appears_alive())
 			victim.balloon_alert(aggressor, "too late...")
 			return FALSE
 

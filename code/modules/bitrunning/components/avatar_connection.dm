@@ -193,7 +193,7 @@
 
 	old_body.apply_damage(damage, damage_type, zone, blocked, wound_bonus = CANT_WOUND)
 
-	if(IS_UNCONSCIOUS(old_body)) // KO!
+	if(old_body.stat > SOFT_CRIT) // KO!
 		full_avatar_disconnect(cause_damage = TRUE)
 
 	nohit = FALSE

@@ -50,7 +50,6 @@ GLOBAL_LIST_INIT(blacklisted_malf_machines, typecacheof(list(
 		/obj/machinery/computer/shuttle,
 		/obj/machinery/computer/emergency_shuttle,
 		/obj/machinery/computer/gateway_control,
-		/obj/machinery/ai_law_rack,
 	)))
 
 GLOBAL_LIST_INIT(malf_modules, subtypesof(/datum/ai_module/malf))

@@ -2,8 +2,7 @@ GLOBAL_VAR_INIT(OOC_COLOR, null)//If this is null, use the CSS for OOC. Otherwis
 GLOBAL_VAR_INIT(normal_ooc_colour, "#002eb8")
 
 ///talking in OOC uses this
-GAME_VERB(/client, ooc, VERB_OOC, null)
-	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
+GAME_VERB(/client, ooc, VERB_OOC, null, msg as text)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
@@ -171,9 +170,8 @@ ADMIN_VERB(reset_ooc_color, R_FUN, "Reset Player OOC Color", "Returns player OOC
 	log_admin("[key_name_admin(user)] has reset player ooc color.")
 	GLOB.OOC_COLOR = null
 
-GAME_VERB(/client, looc, VERB_LOOC, null)
-	VERB_ARG(msg, VERB_ARG_TYPE_TEXT, VERB_ARG_SOURCE_INPUT)
 
+GAME_VERB(/client, looc, VERB_LOOC, null, msg as text)
 	if(GLOB.say_disabled) //This is here to try to identify lag problems
 		to_chat(usr, span_danger("Speech is currently admin-disabled."))
 		return
@@ -190,7 +188,7 @@ GAME_VERB(/client, looc, VERB_LOOC, null)
 		return
 
 	var/admin = check_rights(R_ADMIN, FALSE)
-	if(mob.stat != STABLE && !admin)
+	if(mob.stat != CONSCIOUS && !admin)
 		to_chat(src, span_warning("You must be concious to use LOOC."))
 		return
 

@@ -250,7 +250,7 @@ GAME_VERB_PROC(/mob, Cell, "Cell", "Admin")
 				if(type & MSG_VISUAL && is_blind())
 					return FALSE
 	// voice muffling
-	if(IS_UNCONSCIOUS(src))
+	if(stat == UNCONSCIOUS || stat == HARD_CRIT)
 		if(type & MSG_AUDIBLE) //audio
 			to_chat(src, "<I>... You can almost hear something ...</I>")
 		return FALSE
@@ -547,8 +547,7 @@ GAME_VERB_PROC(/mob, Cell, "Cell", "Admin")
  * [this byond forum post](https://secure.byond.com/forum/?post=1326139&page=2#comment8198716)
  * for why this isn't atom/verb/examine()
  */
-GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
-	VERB_ARG_TYPED(examinify, VERB_ARG_TYPE_MOB | VERB_ARG_TYPE_OBJ | VERB_ARG_TYPE_TURF, VERB_ARG_SOURCE_VIEW, /atom)
+GAME_VERB(/mob, examinate, "Examine", null, atom/examinify as mob|obj|turf in view()) //It used to be oview(12), but I can't really say why
 
 	DEFAULT_QUEUE_OR_CALL_VERB(VERB_CALLBACK(src, PROC_REF(run_examinate), examinify))
 
@@ -564,7 +563,7 @@ GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
 	if(is_blind()) //blind people see things differently (through touch)
 		if(!blind_examine_check(examinify))
 			return
-	else if(examine_turf && !(examine_turf.luminosity || examine_turf.get_dynamic_lumcount()) && \
+	else if(examine_turf && !(examine_turf.luminosity || examine_turf.dynamic_lumcount) && \
 		get_dist(src, examine_turf) > 1 && \
 		!has_nightvision()) // If you aren't blind, it's in darkness (that you can't see) and farther then next to you
 		return
@@ -693,7 +692,7 @@ GAME_VERB_CONTEXT(/mob, examinate, "Examine", "", null, /atom)
 	return
 
 /mob/living/handle_eye_contact(mob/living/examined_mob)
-	if(!istype(examined_mob) || src == examined_mob || IS_UNCONSCIOUS(examined_mob) || !client || is_blind())
+	if(!istype(examined_mob) || src == examined_mob || examined_mob.stat >= UNCONSCIOUS || !client || is_blind())
 		return
 
 	var/imagined_eye_contact = FALSE
@@ -887,10 +886,10 @@ GAME_VERB(/mob, reset_ui_positions_for_mob, "Reset UI Positions", "OOC")
 	SStgui.reset_ui_position(src)
 
 //suppress the .click/dblclick macros so people can't use them to identify the location of items or aimbot
-GAME_VERB_NATIVE(/mob, DisClick, ".click", null, argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
+GAME_VERB_HIDDEN(/mob, DisClick, ".click", argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
 	return
 
-GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, sec = "" as text, number1 = 0 as num, number2 = 0 as num)
+GAME_VERB_HIDDEN(/mob, DisDblClick, ".dblclick", argu = null as anything, sec = "" as text, number1 = 0 as num  , number2 = 0 as num)
 	return
 
 /// Adds this list to the output to the stat browser
@@ -1130,13 +1129,18 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
  *
  * Calling this proc without an oldname will only update the mob and skip updating the pda, id and records ~Carn
  */
-/mob/proc/fully_replace_character_name(oldname, newname, log_new_name = FALSE)
+/mob/proc/fully_replace_character_name(oldname, newname)
 	if(!newname)
+		log_message("[src] failed name change from [oldname] as no new name was specified", LOG_OWNERSHIP)
 		return FALSE
 	if(oldname == newname)
+		log_message("[src] failed name change as the new name was the same as the old one: [oldname]", LOG_OWNERSHIP)
 		return FALSE
 	if(!istext(newname) && !isnull(newname))
+		stack_trace("[src] attempted to change its name from [oldname] to the non string value [newname]")
 		return FALSE
+
+	log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
 
 	log_played_names(
 		ckey,
@@ -1158,8 +1162,6 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 			) //Just in case the mind is unsynced at the moment.
 
 	if(oldname)
-		log_message("[src] name changed from [oldname] to [newname]", LOG_OWNERSHIP)
-
 		//update the datacore records! This is goig to be a bit costly.
 		replace_records_name(oldname,newname)
 
@@ -1172,11 +1174,8 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 				if(obj.target && obj.target.current && obj.target.current.real_name == name)
 					obj.update_explanation_text()
 
-	else if(log_new_name)
-		log_message("[src] name set to [newname]", LOG_OWNERSHIP)
 
 	log_mob_tag("TAG: [tag] RENAMED: [key_name(src)]")
-	SEND_SIGNAL(src, COMSIG_MOB_FULLY_RENAMED, oldname, newname)
 
 	return TRUE
 
@@ -1213,7 +1212,6 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 				search_pda = 0
 
 /mob/proc/update_stat()
-	SIGNAL_HANDLER
 	return
 
 /mob/proc/update_health_hud()
@@ -1225,7 +1223,6 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 
 ///Update the lighting plane and sight of this mob (sends COMSIG_MOB_UPDATE_SIGHT)
 /mob/proc/update_sight()
-	SIGNAL_HANDLER
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_SIGNAL(src, COMSIG_MOB_UPDATE_SIGHT)
 	sync_lighting_plane_cutoff()
@@ -1313,7 +1310,7 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 	var/turf/mob_location = get_turf(src)
 	var/area/mob_area = get_area(src)
 
-	if(mob_location.check_lumcount_above(light_amount))
+	if(mob_location.get_lumcount() > light_amount)
 		return TRUE
 	else if(!mob_area.static_lighting)
 		return TRUE

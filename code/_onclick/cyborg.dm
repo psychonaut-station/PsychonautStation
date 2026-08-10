@@ -14,7 +14,7 @@
 	if(check_click_intercept(params,A))
 		return
 
-	if(IS_UNCONSCIOUS_OR_CRIT(src) || (lockcharge) || IsParalyzed() || IsStun())
+	if(stat || (lockcharge) || IsParalyzed() || IsStun())
 		return
 
 	var/list/modifiers = params2list(params)

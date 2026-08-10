@@ -237,7 +237,6 @@
 		qdel(creature)
 
 	generated_domain.secondary_loot_generated = 0
-	generated_domain.main_crate_points = 0
 
 	avatar_connection_refs.Cut()
 	exit_turfs = list()

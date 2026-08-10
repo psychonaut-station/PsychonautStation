@@ -120,42 +120,42 @@
 		return
 	. = ..()
 
-/obj/item/assembly/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(isassembly(tool))
-		var/obj/item/assembly/new_assembly = tool
+/obj/item/assembly/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
+	if(isassembly(attacking_item))
+		var/obj/item/assembly/new_assembly = attacking_item
 		// Check both our's and their's assembly flags to see if either should not duplicate
 		// If so, and we match types, don't create a holder - block it
 		if(((new_assembly.assembly_flags|assembly_flags) & ASSEMBLY_NO_DUPLICATES) && istype(new_assembly, type))
 			balloon_alert(user, "can't attach another [new_assembly.name]!")
-			return ITEM_INTERACT_BLOCKING
-
+			return
 		if(new_assembly.secured)
 			balloon_alert(user, "[new_assembly.name] is not attachable!")
-			return ITEM_INTERACT_BLOCKING
-
+			return
 		if(secured)
 			balloon_alert(user, "[name] is not attachable!")
-			return ITEM_INTERACT_BLOCKING
+			return
 
 		holder = new /obj/item/assembly_holder(drop_location())
 		holder.assemble(src, new_assembly, user)
 		holder.balloon_alert(user, "parts combined")
-		return ITEM_INTERACT_SUCCESS
+		return
 
-	if(istype(tool, /obj/item/assembly_holder))
-		var/obj/item/assembly_holder/added_to_holder = tool
+	if(istype(attacking_item, /obj/item/assembly_holder))
+		var/obj/item/assembly_holder/added_to_holder = attacking_item
 		added_to_holder.try_add_assembly(src, user)
-		return ITEM_INTERACT_BLOCKING
+		return
 
-	return NONE
+	return ..()
 
-/obj/item/assembly/screwdriver_act(mob/living/user, obj/item/tool)
+/obj/item/assembly/screwdriver_act(mob/living/user, obj/item/I)
+	if(..())
+		return TRUE
 	if(toggle_secure())
 		to_chat(user, span_notice("\The [src] is ready!"))
 	else
 		to_chat(user, span_notice("\The [src] can now be attached!"))
 	add_fingerprint(user)
-	return ITEM_INTERACT_SUCCESS
+	return TRUE
 
 /obj/item/assembly/examine(mob/user)
 	. = ..()

@@ -55,6 +55,8 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 		. += "adjust_sensor"
 	if(jumpsuit.can_adjust)
 		. += "adjust_jumpsuit"
+	if(locate(/obj/item/clothing/accessory/bodycam) in jumpsuit.attached_accessories)
+		. += "toggle_bodycam"
 	if(length(jumpsuit.attached_accessories))
 		. += "strip_accessory"
 
@@ -70,6 +72,8 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 			do_adjust_jumpsuit(source, user, jumpsuit)
 		if("adjust_sensor")
 			do_adjust_sensor(source, user, jumpsuit)
+		if("toggle_bodycam")
+			do_toggle_bodycam(source, user, jumpsuit)
 		if("strip_accessory")
 			do_strip_accessory(source, user, jumpsuit)
 		else
@@ -123,6 +127,26 @@ GLOBAL_LIST_INIT(strippable_human_items, create_strippable_list(list(
 	to_chat(source, span_notice("[user] successfully adjusted your [jumpsuit.name]'s sensor."))
 	user.log_message("changed suit sensors of [key_name(source)] to [new_mode_str]", LOG_ATTACK, color="red")
 	source.log_message("suit sensors changed to [new_mode_str] by [key_name(user)]", LOG_VICTIM, color="orange", log_globally=FALSE)
+
+/datum/strippable_item/mob_item_slot/jumpsuit/proc/do_toggle_bodycam(atom/source, mob/user, obj/item/clothing/under/jumpsuit)
+	var/obj/item/clothing/accessory/bodycam/cam = locate() in jumpsuit.attached_accessories
+	if(!cam)
+		return
+
+	if(!user.Adjacent(source))
+		source.balloon_alert(user, "can't reach!")
+		return
+
+	if(cam.broken)
+		source.balloon_alert(user, "bodycam broken!")
+		return
+
+	to_chat(source, span_notice("[user] is trying to toggle your bodycam."))
+	if(!do_after(user, jumpsuit.strip_delay * 0.5, source))
+		source.balloon_alert(user, "failed!")
+		return
+
+	cam.ui_action_click(user)
 
 /datum/strippable_item/mob_item_slot/jumpsuit/proc/do_strip_accessory(atom/source, mob/user, obj/item/clothing/under/jumpsuit)
 	var/list/accessory_choices = list()

@@ -23,5 +23,4 @@ GLOBAL_LIST_INIT(crafting_category, list(
 	CAT_TOOLS,
 	CAT_CULT,
 	CAT_GARDENING,
-	CAT_CONSTRUCTION,
 ))

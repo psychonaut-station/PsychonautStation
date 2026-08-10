@@ -89,14 +89,13 @@
 		return air_temporary.remove(amount)
 	return parent.air.remove(amount)
 
-/obj/machinery/atmospherics/pipe/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!istype(tool, /obj/item/pipe_meter))
+/obj/machinery/atmospherics/pipe/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
+	if(istype(item, /obj/item/pipe_meter))
+		var/obj/item/pipe_meter/meter = item
+		user.dropItemToGround(meter)
+		meter.setAttachLayer(piping_layer)
+	else
 		return ..()
-
-	var/obj/item/pipe_meter/meter = tool
-	user.dropItemToGround(meter)
-	meter.setAttachLayer(piping_layer)
-	return ITEM_INTERACT_SUCCESS
 
 /obj/machinery/atmospherics/pipe/return_pipenet()
 	return parent

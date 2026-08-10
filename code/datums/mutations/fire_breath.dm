@@ -1,6 +1,6 @@
 /datum/mutation/firebreath
 	name = "Fire Breath"
-	desc = "The subject can breathe fire at will."
+	desc = "An ancient mutation that gives lizards breath of fire."
 	quality = POSITIVE
 	difficulty = 12
 	locked = TRUE

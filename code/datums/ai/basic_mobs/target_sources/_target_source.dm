@@ -98,6 +98,7 @@
 /datum/target_source/oview_items
 
 /datum/target_source/oview_items/collect_candidates(mob/living/pawn, datum/ai_controller/controller, range)
+	. = ..()
 	var/list/candidates = list()
 	for(var/obj/item/item_candidate in oview(range, pawn))
 		candidates += item_candidate

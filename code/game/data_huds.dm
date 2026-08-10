@@ -105,7 +105,7 @@ Medical HUD! Basic mode needs suit sensors on.
 
 //helper for getting the appropriate health status
 /proc/RoundHealth(mob/living/M)
-	if(IS_DEAD_OR_FAKING(M))
+	if(M.stat == DEAD || (HAS_TRAIT(M, TRAIT_FAKEDEATH)))
 		return "health-100" //what's our health? it doesn't matter, we're dead, or faking
 	var/maxi_health = M.maxHealth
 	if(iscarbon(M) && M.health < 0)
@@ -177,7 +177,7 @@ Medical HUD! Basic mode needs suit sensors on.
 // Called when a carbon changes stat, virus or XENO_HOST
 // Returns TRUE if the mob is considered "perfectly healthy", FALSE otherwise
 /mob/living/proc/med_hud_set_status()
-	if(IS_DEAD_OR_FAKING(src))
+	if(stat == DEAD || (HAS_TRAIT(src, TRAIT_FAKEDEATH)))
 		set_hud_image_state(STATUS_HUD, "huddead")
 		return FALSE
 
@@ -189,7 +189,7 @@ Medical HUD! Basic mode needs suit sensors on.
 		set_hud_image_state(STATUS_HUD, "hudxeno")
 		return FALSE
 
-	if(IS_DEAD_OR_FAKING(src))
+	if(!appears_alive())
 		if(can_defib_client())
 			set_hud_image_state(STATUS_HUD, "huddefib")
 		else if(HAS_TRAIT(src, TRAIT_GHOSTROLE_ON_REVIVE))
@@ -375,13 +375,13 @@ Diagnostic HUDs!
 		set_hud_image_state(DIAG_HUD, "huddiag[RoundDiagBar(health/maxHealth)]")
 
 /mob/living/silicon/proc/diag_hud_set_status()
-	if(IS_UNCONSCIOUS(src))
-		set_hud_image_state(DIAG_STAT_HUD, "hudoffline")
-		return
-	if(stat == DEAD)
-		set_hud_image_state(DIAG_STAT_HUD, "huddead2")
-		return
-	set_hud_image_state(DIAG_STAT_HUD, "hudstat")
+	switch(stat)
+		if(CONSCIOUS)
+			set_hud_image_state(DIAG_STAT_HUD, "hudstat")
+		if(UNCONSCIOUS, HARD_CRIT)
+			set_hud_image_state(DIAG_STAT_HUD, "hudoffline")
+		else
+			set_hud_image_state(DIAG_STAT_HUD, "huddead2")
 
 //Borgie battery tracking!
 /mob/living/silicon/robot/proc/diag_hud_set_borgcell()

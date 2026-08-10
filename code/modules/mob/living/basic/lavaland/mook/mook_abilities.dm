@@ -51,14 +51,10 @@
 	return TRUE
 
 /datum/action/cooldown/mob_cooldown/mook_ability/mook_leap/proc/launch_towards_target(atom/target)
-	if(QDELETED(owner) || QDELETED(target))
-		return
-	var/turf/target_turf = get_turf(target)
-	if(isnull(target_turf))
-		return
 	new /obj/effect/temp_visual/mook_dust(get_turf(owner))
-	playsound(owner, 'sound/items/weapons/thudswoosh.ogg', 25, TRUE)
+	playsound(get_turf(owner), 'sound/items/weapons/thudswoosh.ogg', 25, TRUE)
 	playsound(owner, 'sound/mobs/non-humanoids/mook/mook_leap_yell.ogg', 100, TRUE)
+	var/turf/target_turf = get_turf(target)
 
 	if(!target_turf.is_blocked_turf())
 		owner.throw_at(target = target_turf, range = 7, speed = 1, spin = FALSE, callback = CALLBACK(src, PROC_REF(attack_combo), target))

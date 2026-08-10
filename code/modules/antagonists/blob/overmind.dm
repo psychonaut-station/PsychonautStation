@@ -174,7 +174,6 @@ GLOBAL_LIST_EMPTY(blob_nodes)
 
 	if(announcement_time && (world.time >= announcement_time || blobs_legit.len >= announcement_size) && !has_announced)
 		priority_announce("[locale_suffix_locative(station_name())] 5. seviye biyolojik tehdit olduğu doğrulandı. Tüm personeller salgını kontrol altına almalıdır.", "Biyolojik Tehlike Uyarısı", ANNOUNCER_OUTBREAK5)
-		SSshuttle.shuttle_purchase_requirements_met[SHUTTLE_UNLOCK_TOMBSTONE] = TRUE
 
 		// Set status displays to biohazard alert
 		send_status_display_biohazard_alert()

@@ -58,9 +58,12 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 				original_baseturf_count = length(original_baseturfs)
 		else
 			var/atom/creation = new type_path(spawn_at)
-			if(!QDELETED(creation))
-				//Go all in
-				qdel(creation, force = TRUE)
+			if(QDELETED(creation))
+				// Same as below
+				creation = null
+				continue
+			//Go all in
+			qdel(creation, force = TRUE)
 			//This will hold a ref to the last thing we process unless we set it to null
 			//Yes byond is fucking sinful
 			creation = null
@@ -69,7 +72,7 @@ GLOBAL_VAR_INIT(running_create_and_destroy, FALSE)
 		var/list/to_del = spawn_at.contents - cached_contents
 		if(length(to_del))
 			for(var/atom/to_kill in to_del)
-				qdel(to_kill, force = TRUE)
+				qdel(to_kill)
 
 	GLOB.running_create_and_destroy = FALSE
 

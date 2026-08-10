@@ -11,7 +11,6 @@ type Disease = {
   spread_by: string; // used by diseases - how the disease is spread, like "Airborne" or "Contact"
   cured_by: string | null; // used by symptoms and diseases - how the disease or symptom is cured, like a medicine name or "Unknown"
   illness: string; // used by symptoms - the common illness associated with the symptom, like "Flu" for "Fever"
-  level: string; // used by symptoms - determines how to obtain the symptom
   id: string;
 };
 
@@ -100,15 +99,13 @@ function estimateHeight(entry: BookEntry<Disease>) {
     const desc_height = Math.ceil(entry.desc.length / 50) * 14;
     const illness_height = entry.illness !== 'Unidentified' ? 10 : 0;
     const cured_by_height = 10;
-    const level_height = 10;
 
     return (
       title_height +
       desc_height +
       illness_height +
       cured_by_height +
-      extra_spacing +
-      level_height
+      extra_spacing
     );
   }
 
@@ -151,12 +148,6 @@ function renderDSMEntry(entry: BookEntry<Disease>) {
                 Description:
               </Box>{' '}
               {entry.desc}
-            </Stack.Item>
-            <Stack.Item>
-              <Box inline color="label">
-                Level:
-              </Box>{' '}
-              {entry.level}
             </Stack.Item>
             {entry.illness !== 'Unidentified' && (
               <Stack.Item>
@@ -247,7 +238,6 @@ export const IDCBook = () => {
       spread_by: disease.spread_by,
       cured_by: disease.cured_by,
       illness: disease.illness,
-      level: disease.level,
     }))
     .sort((a, b) =>
       a.form > b.form ? 1 : a.form < b.form ? -1 : a.name > b.name ? 1 : -1,

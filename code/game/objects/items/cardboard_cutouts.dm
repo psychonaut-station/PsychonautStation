@@ -215,8 +215,7 @@
 		applied_appearance = image(fcopy_rsc(getFlatIcon(preview_appearance, no_anim = TRUE)))
 	applied_appearance.plane = cutouts.plane
 	applied_appearance.layer = cutouts.layer
-	var/mutable_appearance/mirror = new(applied_appearance)
-	cutouts.appearance = mirror
+	cutouts.appearance = applied_appearance
 	cutouts.name = get_name()
 	cutouts.desc = applied_desc
 	cutouts.update_appearance() //forces an update on the tactical comp's appearance.

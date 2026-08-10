@@ -838,8 +838,7 @@ GLOBAL_DATUM_INIT(admin_help_ui_handler, /datum/admin_help_ui_handler, new)
 
 	new /datum/admin_help(message, user_client, FALSE, urgent)
 
-GAME_VERB_HIDDEN(/client, no_tgui_adminhelp, "NoTguiAdminhelp")
-	VERB_ARG(message, VERB_ARG_TYPE_MESSAGE, VERB_ARG_SOURCE_INPUT)
+GAME_VERB_HIDDEN(/client, no_tgui_adminhelp, "NoTguiAdminhelp", message as message)
 	if(adminhelptimerid)
 		return
 

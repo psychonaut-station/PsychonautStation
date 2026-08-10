@@ -48,7 +48,7 @@
 /obj/item/lighter/Initialize(mapload)
 	. = ..()
 	if(IS_OVERLAY_LIGHT_SYSTEM(light_system))
-		middleman = new(src, "lighter")
+		middleman = new(src, "flashlight")
 		RegisterSignal(middleman, COMSIG_LIGHT_MIDDLEMAN_UPDATED, PROC_REF(light_updated))
 		middleman.being_overriding_light()
 	create_reagents(maximum_fuel, REFILLABLE | DRAINABLE)

@@ -18,7 +18,8 @@
 	level = 6
 	severity = 4
 	base_message_chance = 50
-	symptom_delay = 45
+	symptom_delay_min = 30
+	symptom_delay_max = 60
 	symptom_cure = /datum/reagent/acetaldehyde
 	cure_color = "orange"
 	var/excludemuts = NONE
@@ -38,7 +39,8 @@
 	if(A.totalStealth() >= 5) //only give them bad mutations
 		excludemuts = POSITIVE
 	if(A.totalStageSpeed() >= 10) //activate dormant mutations more often at around 1.5x the pace
-		symptom_delay = 30
+		symptom_delay_min = 20
+		symptom_delay_max = 40
 	if(A.totalResistance() >= 8) //mutadone won't save you now
 		mutadone_proof = (NEGATIVE | MINOR_NEGATIVE)
 	if(A.totalResistance() >= 14) //one does not simply escape Nurgle's grasp

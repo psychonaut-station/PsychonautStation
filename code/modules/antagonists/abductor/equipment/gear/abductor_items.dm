@@ -79,7 +79,7 @@
 	if(marked == target)
 		to_chat(user, span_warning("This specimen is already marked!"))
 		return
-	if(HAS_TRAIT(target, TRAIT_ABDUCTOR_QUICK_SCAN))
+	if(isabductor(target) || iscow(target))
 		marked_target_weakref = WEAKREF(target)
 		to_chat(user, span_notice("You mark [target] for future retrieval."))
 	else
@@ -241,7 +241,7 @@
 	fail_message = span_abductor("Firing error, please contact Command.")
 
 /obj/item/firing_pin/abductor/pin_auth(mob/living/user)
-	return HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_KNOWLEDGE)
+	. = isabductor(user)
 
 /obj/item/gun/energy/alien
 	name = "alien pistol"

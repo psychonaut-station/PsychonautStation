@@ -441,33 +441,30 @@ GLOBAL_LIST_INIT(command_strings, list(
 	heal_overall_damage(10)
 	user.visible_message(span_notice("[user] repairs [src]!"),span_notice("You repair [src]."))
 
-/mob/living/basic/bot/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(tool.GetID())
+/mob/living/basic/bot/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
+	if(attacking_item.GetID())
 		unlock_with_id(user)
-		return ITEM_INTERACT_SUCCESS
+		return
 
-	if(istype(tool, /obj/item/pai_card))
-		insertpai(user, tool)
-		return ITEM_INTERACT_SUCCESS
+	if(istype(attacking_item, /obj/item/pai_card))
+		insertpai(user, attacking_item)
+		return
 
-	if(tool.tool_behaviour != TOOL_HEMOSTAT || !paicard)
+	if(attacking_item.tool_behaviour != TOOL_HEMOSTAT || !paicard)
 		return ..()
 
 	if(bot_access_flags & BOT_COVER_MAINTS_OPEN)
 		balloon_alert(user, "open the access panel!")
-		return ITEM_INTERACT_BLOCKING
+		return
 
 	balloon_alert(user, "removing pAI...")
 	if(!do_after(user, 3 SECONDS, target = src) || !paicard)
-		return ITEM_INTERACT_BLOCKING
+		return
 
-	user.visible_message(
-		span_notice("[user] uses [tool] to pull [paicard] out of [initial(src.name)]!"),
-		span_notice("You pull [paicard] out of [initial(src.name)] with [tool]."),
-	)
+	user.visible_message(span_notice("[user] uses [attacking_item] to pull [paicard] out of [initial(src.name)]!"), \
+		span_notice("You pull [paicard] out of [initial(src.name)] with [attacking_item]."))
 
 	ejectpai(user)
-	return ITEM_INTERACT_SUCCESS
 
 /mob/living/basic/bot/attack_effects(damage_done, hit_zone, armor_block, obj/item/attacking_item, mob/living/attacker)
 	if(damage_done > 0 && attacking_item.damtype != STAMINA && stat != DEAD)
@@ -791,7 +788,6 @@ GLOBAL_LIST_INIT(command_strings, list(
 
 /mob/living/basic/bot/rust_heretic_act()
 	adjust_brute_loss(400)
-	return TRUE
 
 /mob/living/basic/bot/proc/retrieve_access(mob/bot, list/player_access)
 	SIGNAL_HANDLER

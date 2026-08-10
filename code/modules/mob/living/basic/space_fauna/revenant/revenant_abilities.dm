@@ -117,10 +117,9 @@
 	var/turf_was_defiled = FALSE
 
 	// dispel
-	if (HAS_TRAIT(target_turf, TRAIT_TURF_BLESSED))
+	for(var/obj/effect/blessing/blessing in target_turf)
 		turf_was_defiled = TRUE
-		target_turf.RemoveElement(/datum/element/blessed_turf)
-
+		qdel(blessing)
 	for(var/obj/effect/decal/cleanable/food/salt/salt in target_turf)
 		turf_was_defiled = TRUE
 		qdel(salt)

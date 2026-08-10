@@ -86,41 +86,24 @@
 
 	// Saline can prevent you from cannibalizing yourself.
 	if(slime.get_blood_volume(apply_modifiers = TRUE) < BLOOD_VOLUME_BAD)
-		cannibalize_body(slime)
+		Cannibalize_Body(slime)
 
 	regenerate_limbs?.build_all_button_icons(UPDATE_BUTTON_STATUS)
 	return HANDLE_BLOOD_NO_NUTRITION_DRAIN|HANDLE_BLOOD_NO_OXYLOSS
 
-/datum/species/jelly/proc/cannibalize_body(mob/living/carbon/human/target)
-	var/list/limbs_to_consume = list()
-
-	for(var/body_zone, untyped_limb in target.get_bodyparts_by_zones())
-		var/obj/item/bodypart/limb = untyped_limb
-		if(isnull(limb))
-			continue
-
-		var/limb_zone = limb.body_zone
-
-		if(IS_STUMP(limb) || limb_zone == BODY_ZONE_CHEST || limb_zone == BODY_ZONE_HEAD)
-			continue
-
-		if(limb.biological_state & BIO_JELLY) // can only cannibalize limbs that are comprised of jelly (this is a last gasp to keep going, let's assume we can't digest out non-jelly limbs)
-			limbs_to_consume += limb_zone
-
+/datum/species/jelly/proc/Cannibalize_Body(mob/living/carbon/human/H)
+	var/list/limbs_to_consume = list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM, BODY_ZONE_R_LEG, BODY_ZONE_L_LEG) - H.get_missing_limbs()
+	var/obj/item/bodypart/consumed_limb
 	if(!length(limbs_to_consume))
-		target.losebreath++
+		H.losebreath++
 		return
-
-	if(target.num_legs > 0) //Legs go before arms
+	if(H.num_legs) //Legs go before arms
 		limbs_to_consume -= list(BODY_ZONE_R_ARM, BODY_ZONE_L_ARM)
-
-	var/obj/item/bodypart/consumed_limb = target.get_bodypart(pick(limbs_to_consume))
+	consumed_limb = H.get_bodypart(pick(limbs_to_consume))
 	consumed_limb.drop_limb()
-
-	to_chat(target, span_userdanger("Your [consumed_limb.name] is drawn back into your body, unable to maintain its shape!"))
+	to_chat(H, span_userdanger("Your [consumed_limb] is drawn back into your body, unable to maintain its shape!"))
 	qdel(consumed_limb)
-
-	target.adjust_blood_volume(20 * target.physiology.blood_regen_mod)
+	H.adjust_blood_volume(20 * H.physiology.blood_regen_mod)
 
 /datum/species/jelly/get_species_description()
 	return "Jellypeople are a strange and alien species with three eyes, made entirely out of gel."
@@ -405,10 +388,10 @@
 		L["area"] = get_area_name(body, TRUE)
 		var/stat = "error"
 		switch(body.stat)
-			if(STABLE)
-				stat = "Stable"
-			if(SOFT_CRIT, HARD_CRIT)
-				stat = "Critical"
+			if(CONSCIOUS)
+				stat = "Conscious"
+			if(SOFT_CRIT to HARD_CRIT) // Also includes UNCONSCIOUS
+				stat = "Unconscious"
 			if(DEAD)
 				stat = "Dead"
 		var/occupied
@@ -476,7 +459,7 @@
 	if(dupe.stat == DEAD) //Is it alive?
 		return FALSE
 
-	if(IS_UNCONSCIOUS_OR_CRIT(dupe)) //Is it awake?
+	if(dupe.stat != CONSCIOUS) //Is it awake?
 		return FALSE
 
 	if(dupe.mind && dupe.mind.active) //Is it unoccupied?
@@ -490,7 +473,7 @@
 /datum/action/innate/swap_body/proc/swap_to_dupe(datum/mind/M, mob/living/carbon/human/dupe)
 	if(!can_swap(dupe)) //sanity check
 		return
-	if(!IS_UNCONSCIOUS_OR_CRIT(M.current))
+	if(M.current.stat == CONSCIOUS)
 		M.current.visible_message(span_notice("[M.current] stops moving and starts staring vacantly into space."),
 			span_notice("You stop moving this body..."))
 	else

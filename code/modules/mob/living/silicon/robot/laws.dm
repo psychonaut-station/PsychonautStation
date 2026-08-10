@@ -7,7 +7,7 @@
 /mob/living/silicon/robot/show_laws()
 	if(lawupdate)
 		if (!QDELETED(connected_ai))
-			if(IS_UNCONSCIOUS_OR_CRIT(connected_ai) || connected_ai.control_disabled)
+			if(connected_ai.stat != CONSCIOUS || connected_ai.control_disabled)
 				to_chat(src, span_bold("AI ile iletişim kesildi, yasalar senkronize edilemiyor."))
 
 			else
@@ -28,38 +28,57 @@
 	else
 		to_chat(src, span_bold("Unutma, herhangi bir AI'a bağlı ve itaat etmek zorunda değilsin."))
 
-/**
- * For AIs, iterates over connected cyborg and calls try_sync_laws
- * For cyborgs, checks if we have a master AI and, if lawupdate is set, syncs law and misc. with it
- */
-/mob/living/silicon/proc/try_sync_laws()
-	return
-
 /mob/living/silicon/robot/try_sync_laws()
 	if(QDELETED(connected_ai) || !lawupdate)
 		return FALSE
 
-	sync_to_ai()
+	lawsync()
+	law_change_counter++
 	return TRUE
 
-/mob/living/silicon/robot/proc/sync_to_ai()
-	picturesync()
-	lawsync()
-
-/mob/living/silicon/robot/proc/picturesync()
-	if(isnull(connected_ai?.aicamera) || isnull(aicamera))
-		return
-	for(var/i in aicamera.stored)
-		connected_ai.aicamera.stored[i] = TRUE
-	for(var/i in connected_ai.aicamera.stored)
-		aicamera.stored[i] = TRUE
-
 /mob/living/silicon/robot/proc/lawsync()
-	connected_ai?.laws?.ai_to_cyborg(laws)
+	laws_sanity_check()
+	var/datum/ai_laws/master = connected_ai?.laws
+	var/temp
+	if (master)
+		laws.ion.len = master.ion.len
+		for (var/index in 1 to master.ion.len)
+			temp = master.ion[index]
+			if (length(temp) > 0)
+				laws.ion[index] = temp
 
-	var/datum/computer_file/program/robotact/program = modularInterface.get_robotact()
-	program?.computer?.update_static_data_for_all_viewers()
+		laws.hacked.len = master.hacked.len
+		for (var/index in 1 to master.hacked.len)
+			temp = master.hacked[index]
+			if (length(temp) > 0)
+				laws.hacked[index] = temp
 
-/mob/living/silicon/robot/announce_law_change()
+		if(master.zeroth_borg) //If the AI has a defined law zero specifically for its borgs, give it that one, otherwise give it the same one. --NEO
+			temp = master.zeroth_borg
+		else
+			temp = master.zeroth
+		laws.zeroth = temp
+
+		laws.inherent.len = master.inherent.len
+		for (var/index in 1 to master.inherent.len)
+			temp = master.inherent[index]
+			if (length(temp) > 0)
+				laws.inherent[index] = temp
+
+		laws.supplied.len = master.supplied.len
+		for (var/index in 1 to master.supplied.len)
+			temp = master.supplied[index]
+			if (length(temp) > 0)
+				laws.supplied[index] = temp
+
+		var/datum/computer_file/program/robotact/program = modularInterface.get_robotact()
+		if(program)
+			var/datum/tgui/active_ui = SStgui.get_open_ui(src, program.computer)
+			if(active_ui)
+				active_ui.send_full_update()
+
+	picturesync()
+
+/mob/living/silicon/robot/post_lawchange(announce = TRUE)
 	. = ..()
 	addtimer(CALLBACK(src, PROC_REF(logevent),"Yasa güncellemesi tamamlandı."), 0, TIMER_UNIQUE | TIMER_OVERRIDE) //Post_Lawchange gets spammed by some law boards, so let's wait it out

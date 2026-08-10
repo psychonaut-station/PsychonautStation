@@ -67,5 +67,3 @@
 	box = /obj/item/storage/box/survival/medical
 	chameleon_extras = /obj/item/gun/syringe
 	skillchips = list(/obj/item/skillchip/entrails_reader)
-
-	wintercoat = /obj/item/clothing/suit/hooded/wintercoat/medical

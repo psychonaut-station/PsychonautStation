@@ -1,11 +1,3 @@
-//Flower - base type
-/obj/item/food/grown/flower
-	name = "Flower"
-	desc = "By any other name...? This doesn't look right, you should tell someone about this."
-	icon_state = "rose"
-	abstract_type = /obj/item/food/grown/flower
-	foodtypes = VEGETABLES
-
 // Poppy
 /obj/item/seeds/poppy
 	name = "poppy seed pack"
@@ -13,7 +5,7 @@
 	icon_state = "seed-poppy"
 	species = "poppy"
 	plantname = "Poppy Plants"
-	product = /obj/item/food/grown/flower/poppy
+	product = /obj/item/food/grown/poppy
 	endurance = 10
 	maturation = 8
 	yield = 6
@@ -27,7 +19,7 @@
 	mutatelist = list(/obj/item/seeds/poppy/geranium, /obj/item/seeds/poppy/lily)
 	reagents_add = list(/datum/reagent/medicine/c2/libital = 0.2, /datum/reagent/consumable/nutriment = 0.05)
 
-/obj/item/food/grown/flower/poppy
+/obj/item/food/grown/poppy
 	seed = /obj/item/seeds/poppy
 	name = "poppy"
 	desc = "Long-used as a symbol of rest, peace, and death."
@@ -45,7 +37,7 @@
 	icon_state = "seed-lily"
 	species = "lily"
 	plantname = "Lily Plants"
-	product = /obj/item/food/grown/flower/poppy/lily
+	product = /obj/item/food/grown/poppy/lily
 	growthstages = 3
 	growing_icon = 'icons/obj/service/hydroponics/growing_flowers.dmi'
 	icon_grow = "lily-grow"
@@ -53,7 +45,7 @@
 	genes = list(/datum/plant_gene/trait/preserved)
 	mutatelist = list(/obj/item/seeds/poppy/lily/trumpet)
 
-/obj/item/food/grown/flower/poppy/lily
+/obj/item/food/grown/poppy/lily
 	seed = /obj/item/seeds/poppy/lily
 	name = "lily"
 	desc = "A beautiful white flower."
@@ -66,7 +58,7 @@
 	icon_state = "seed-trumpet"
 	species = "spacemanstrumpet"
 	plantname = "Spaceman's Trumpet Plant"
-	product = /obj/item/food/grown/flower/trumpet
+	product = /obj/item/food/grown/trumpet
 	lifespan = 80
 	production = 5
 	endurance = 10
@@ -85,12 +77,13 @@
 	rarity = 30
 	graft_gene = /datum/plant_gene/reagent/preset/polypyr
 
-/obj/item/food/grown/flower/trumpet
+/obj/item/food/grown/trumpet
 	seed = /obj/item/seeds/poppy/lily/trumpet
 	name = "spaceman's trumpet"
 	desc = "A vivid flower that smells faintly of freshly cut grass. Touching the flower seems to stain the skin some time after contact, yet most other surfaces seem to be unaffected by this phenomenon."
 	icon_state = "spacemanstrumpet"
 	bite_consumption_mod = 2
+	foodtypes = VEGETABLES
 
 // Geranium
 /obj/item/seeds/poppy/geranium
@@ -99,7 +92,7 @@
 	icon_state = "seed-geranium"
 	species = "geranium"
 	plantname = "Geranium Plants"
-	product = /obj/item/food/grown/flower/poppy/geranium
+	product = /obj/item/food/grown/poppy/geranium
 	growthstages = 3
 	growing_icon = 'icons/obj/service/hydroponics/growing_flowers.dmi'
 	icon_grow = "geranium-grow"
@@ -107,7 +100,7 @@
 	genes = list(/datum/plant_gene/trait/preserved)
 	mutatelist = list(/obj/item/seeds/poppy/geranium/fraxinella)
 
-/obj/item/food/grown/flower/poppy/geranium
+/obj/item/food/grown/poppy/geranium
 	seed = /obj/item/seeds/poppy/geranium
 	name = "geranium"
 	desc = "A beautiful blue flower."
@@ -120,14 +113,14 @@
 	icon_state = "seed-fraxinella"
 	species = "fraxinella"
 	plantname = "Fraxinella Plants"
-	product = /obj/item/food/grown/flower/poppy/geranium/fraxinella
+	product = /obj/item/food/grown/poppy/geranium/fraxinella
 	mutatelist = null
 	rarity = 15
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05, /datum/reagent/fuel/oil = 0.05)
 	graft_gene = /datum/plant_gene/trait/preserved
 
 ///Fraxinella Flowers.
-/obj/item/food/grown/flower/poppy/geranium/fraxinella
+/obj/item/food/grown/poppy/geranium/fraxinella
 	seed = /obj/item/seeds/poppy/geranium/fraxinella
 	name = "fraxinella"
 	desc = "A beautiful light pink flower."
@@ -142,7 +135,7 @@
 	plant_icon_offset = 1
 	species = "harebell"
 	plantname = "Harebells"
-	product = /obj/item/food/grown/flower/harebell
+	product = /obj/item/food/grown/harebell
 	lifespan = 100
 	endurance = 20
 	maturation = 7
@@ -156,7 +149,7 @@
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.04)
 	graft_gene = /datum/plant_gene/trait/plant_type/weed_hardy
 
-/obj/item/food/grown/flower/harebell
+/obj/item/food/grown/harebell
 	seed = /obj/item/seeds/harebell
 	name = "harebell"
 	desc = "\"I'll sweeten thy sad grave: thou shalt not lack the flower that's like thy face, pale primrose, nor the azured hare-bell, like thy veins; no, nor the leaf of eglantine, whom not to slander, out-sweeten'd not thy breath.\""
@@ -173,7 +166,7 @@
 	icon_state = "seed-sunflower"
 	species = "sunflower"
 	plantname = "Sunflowers"
-	product = /obj/item/food/grown/flower/sunflower
+	product = /obj/item/food/grown/sunflower
 	genes = list(/datum/plant_gene/trait/attack/sunflower_attack, /datum/plant_gene/trait/preserved)
 	endurance = 20
 	production = 2
@@ -186,7 +179,7 @@
 	mutatelist = list(/obj/item/seeds/sunflower/moonflower, /obj/item/seeds/sunflower/novaflower)
 	reagents_add = list(/datum/reagent/consumable/nutriment/fat/oil = 0.08, /datum/reagent/consumable/nutriment = 0.04)
 
-/obj/item/food/grown/flower/sunflower // FLOWER POWER!
+/obj/item/food/grown/sunflower // FLOWER POWER!
 	seed = /obj/item/seeds/sunflower
 	name = "sunflower"
 	desc = "It's beautiful! A certain person might beat you to death if you trample these."
@@ -194,6 +187,7 @@
 	inhand_icon_state = "sunflower"
 	lefthand_file = 'icons/mob/inhands/weapons/plants_lefthand.dmi'
 	righthand_file = 'icons/mob/inhands/weapons/plants_righthand.dmi'
+	foodtypes = VEGETABLES
 	damtype = BURN
 	force = 0
 	slot_flags = ITEM_SLOT_HEAD
@@ -203,7 +197,7 @@
 	throw_speed = 1
 	throw_range = 3
 
-/obj/item/food/grown/flower/sunflower/make_dryable()
+/obj/item/food/grown/sunflower/make_dryable()
 	AddElement(/datum/element/dryable, /obj/item/food/semki/healthy) //yum
 
 // Moonflower
@@ -217,14 +211,14 @@
 	plantname = "Moonflowers"
 	icon_grow = "moonflower-grow"
 	icon_dead = "sunflower-dead"
-	product = /obj/item/food/grown/flower/moonflower
+	product = /obj/item/food/grown/moonflower
 	genes = list(/datum/plant_gene/trait/glow/purple, /datum/plant_gene/trait/preserved)
 	mutatelist = null
 	reagents_add = list(/datum/reagent/consumable/ethanol/moonshine = 0.2, /datum/reagent/consumable/nutriment/vitamin = 0.02, /datum/reagent/consumable/nutriment = 0.02)
 	rarity = 15
 	graft_gene = /datum/plant_gene/trait/glow/purple
 
-/obj/item/food/grown/flower/moonflower
+/obj/item/food/grown/moonflower
 	seed = /obj/item/seeds/sunflower/moonflower
 	name = "moonflower"
 	desc = "Store in a location at least 50 yards away from werewolves."
@@ -278,7 +272,7 @@
 	icon_state = "seed-rose"
 	species = "rose"
 	plantname = "Rose Bush"
-	product = /obj/item/food/grown/flower/rose
+	product = /obj/item/food/grown/rose
 	endurance = 12
 	yield = 6
 	potency = 15
@@ -292,7 +286,7 @@
 	//Roses are commonly used as herbal medicines (diarrhodons) and for their 'rose oil'.
 	reagents_add = list(/datum/reagent/consumable/nutriment = 0.05, /datum/reagent/medicine/granibitaluri = 0.1, /datum/reagent/fuel/oil = 0.05)
 
-/obj/item/food/grown/flower/rose
+/obj/item/food/grown/rose
 	seed = /obj/item/seeds/rose
 	name = "\improper rose"
 	desc = "The classic fleur d'amour - flower of love. Watch for its thorns!"
@@ -307,7 +301,7 @@
 	bite_consumption_mod = 2
 	foodtypes = VEGETABLES | GROSS
 
-/obj/item/food/grown/flower/rose/equipped(mob/user, slot, initial)
+/obj/item/food/grown/rose/equipped(mob/user, slot, initial)
 	. = ..()
 	if(slot & ITEM_SLOT_MASK)
 		worn_icon_state = "[base_icon_state]_mouth"

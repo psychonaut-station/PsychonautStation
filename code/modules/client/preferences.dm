@@ -536,7 +536,7 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 		if (preference.type in do_not_apply)
 			continue
 
-		preference.apply_to_human(character, read_preference(preference.type), src)
+		preference.apply_to_human(character, read_preference(preference.type))
 
 	character.dna.real_name = character.real_name
 

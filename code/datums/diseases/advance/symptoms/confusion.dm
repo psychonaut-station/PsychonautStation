@@ -17,7 +17,8 @@
 	level = 4
 	severity = 2
 	base_message_chance = 25
-	symptom_delay = 20
+	symptom_delay_min = 10
+	symptom_delay_max = 30
 	symptom_cure = /datum/reagent/medicine/synaptizine
 	threshold_descs = list(
 		"Resistance 6" = "Causes brain damage over time.",

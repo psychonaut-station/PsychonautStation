@@ -7,13 +7,9 @@
 	if(!isliving(meal)) //sanity check
 		return FALSE
 
-	if(IS_UNCONSCIOUS_OR_CRIT(src))
-		if(stat == DEAD)
-			balloon_alert(src, "dead!")
-		else if(IS_UNCONSCIOUS(src))
+	if(stat != CONSCIOUS)
+		if(!silent)
 			balloon_alert(src, "unconscious!")
-		else
-			balloon_alert(src, "in critical!")
 		return FALSE
 
 	if(hunger_disabled)

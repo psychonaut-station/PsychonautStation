@@ -23,23 +23,23 @@
 
 	defender_slime.discipline_slime()
 
-/mob/living/basic/slime/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/mob/living/basic/slime/attackby(obj/item/attacking_item, mob/living/user, list/modifiers, list/attack_modifiers)
+
 	//Lets you feed slimes plasma. Checks before the passthrough force check
-	if(istype(tool, /obj/item/stack/sheet/mineral/plasma) && !IS_UNCONSCIOUS_OR_CRIT(src))
-		use_sheet(tool, user)
-		return ITEM_INTERACT_SUCCESS
+	if(istype(attacking_item, /obj/item/stack/sheet/mineral/plasma) && stat == CONSCIOUS)
+		use_sheet(attacking_item, user)
+		return
 
 	//Checks if the item passes through the slime first. Safe items can be used simply
-	if(check_item_passthrough(tool, user))
-		return ITEM_INTERACT_SUCCESS
+	if(check_item_passthrough(attacking_item, user))
+		return
 
-	try_discipline_slime(tool)
+	try_discipline_slime(attacking_item)
 
-	if(!istype(tool, /obj/item/storage/bag/xeno))
+	if(!istype(attacking_item, /obj/item/storage/bag/xeno))
 		return ..()
 
-	use_xeno_bag(tool, user)
-	return ITEM_INTERACT_SUCCESS
+	use_xeno_bag(attacking_item, user)
 
 
 ///Checks if an item harmlessly passes through the slime

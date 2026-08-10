@@ -30,17 +30,15 @@
 /obj/machinery/hydroponics/soil/update_status_light_overlays()
 	return // Has no lights
 
-/obj/machinery/hydroponics/soil/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
-	if(tool.tool_behaviour != TOOL_SHOVEL) //Spades can still uproot plants on left click
-		return ..()
-
+/obj/machinery/hydroponics/soil/attackby_secondary(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
+	if(weapon.tool_behaviour != TOOL_SHOVEL) //Spades can still uproot plants on left click
+		return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 	balloon_alert(user, "digging up soil...")
-	if(!tool.use_tool(src, user, 3 SECONDS, volume = 50))
-		return ITEM_INTERACT_BLOCKING
+	if(weapon.use_tool(src, user, 3 SECONDS, volume=50))
+		balloon_alert(user, "bagged")
+		new sack_type(loc, src) //The bag handles sucking up the soil, stopping processing and setting relevants stats.
 
-	balloon_alert(user, "bagged")
-	new sack_type(loc, src) //The bag handles sucking up the soil, stopping processing and setting relevants stats.
-	return ITEM_INTERACT_SUCCESS
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/hydroponics/soil/click_ctrl(mob/user)
 	return CLICK_ACTION_BLOCKING //Soil has no electricity.

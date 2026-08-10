@@ -59,10 +59,7 @@
 				current_record["physical_status"] = person.physical_status
 				current_record["mental_status"] = person.mental_status
 				current_record["name"] = person.name
-				var/list/notes = list()
-				for(var/datum/medical_note/note as anything in person.medical_notes)
-					notes += note.content
-				current_record["notes"] = notes.Join(" ")
+				current_record["notes"] = person.medical_notes
 
 				all_records += list(current_record)
 

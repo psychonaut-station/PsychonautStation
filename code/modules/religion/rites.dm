@@ -530,7 +530,7 @@
 		if(!movable_reltool.can_buckle) //yes, if you have somehow managed to have someone buckled to something that now cannot buckle, we will still let you perform the rite!
 			to_chat(user, span_warning("This rite requires a religious device that individuals can be buckled to."))
 			return FALSE
-		if(user.has_status_effect(/datum/status_effect/zombie))
+		if(iszombie(user))
 			to_chat(user, span_warning("You've already converted yourself. To convert others, they must be buckled to [movable_reltool]."))
 			return FALSE
 		to_chat(user, span_warning("You're going to convert yourself with this ritual."))
@@ -551,7 +551,7 @@
 				break
 	if(!rite_target)
 		return FALSE
-	rite_target.apply_status_effect(/datum/status_effect/zombie)
+	rite_target.set_species(/datum/species/zombie)
 	rite_target.visible_message(span_notice("[rite_target] has been converted by the rite of [name]!"))
 	return TRUE
 

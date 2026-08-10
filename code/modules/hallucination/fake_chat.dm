@@ -24,7 +24,7 @@
 	return what_they_speak?.spoken_languages?.Copy() || list()
 
 /datum/hallucination/chat/start()
-	if(IS_UNCONSCIOUS(hallucinator))
+	if(hallucinator.stat >= UNCONSCIOUS)
 		return FALSE
 
 	var/mob/living/carbon/human/speaker

@@ -16,7 +16,8 @@
 	transmittable = 1
 	level = 1
 	severity = 1
-	symptom_delay = 15
+	symptom_delay_min = 5
+	symptom_delay_max = 25
 	var/scratch = FALSE
 	threshold_descs = list(
 		"Transmission 6" = "Increases frequency of itching.",
@@ -32,7 +33,8 @@
 	if(!.)
 		return
 	if(active_disease.totalTransmittable() >= 6) //itch more often
-		symptom_delay = 2.5
+		symptom_delay_min = 1
+		symptom_delay_max = 4
 	if(active_disease.totalStageSpeed() >= 7) //scratch
 		scratch = TRUE
 

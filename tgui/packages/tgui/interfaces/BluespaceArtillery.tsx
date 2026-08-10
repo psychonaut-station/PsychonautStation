@@ -14,13 +14,12 @@ type Data = {
   connected: BooleanLike;
   notice: string;
   unlocked: BooleanLike;
-  visualizing: BooleanLike;
   target: string;
 };
 
 export const BluespaceArtillery = (props) => {
   const { act, data } = useBackend<Data>();
-  const { connected, notice, unlocked, visualizing, target } = data;
+  const { notice, connected, unlocked, target } = data;
 
   return (
     <Window width={400} height={220}>
@@ -73,20 +72,11 @@ export const BluespaceArtillery = (props) => {
           <Section>
             <LabeledList>
               <LabeledList.Item label="Maintenance">
-                {(visualizing) ? (
-                  <>
-                    <Button color="good" onClick={() => act('build')}>
-                      Confirm Position
-                    </Button>
-                    <Button color="bad" onClick={() => act('unvisualize')}>
-                      Cancel
-                    </Button>
-                  </>
-                ) : (
-                  <Button icon="wrench" onClick={() => act('visualize')}>
-                    Begin Deployment
-                  </Button>
-                )}
+                <Button
+                  icon="wrench"
+                  content="Complete Deployment"
+                  onClick={() => act('build')}
+                />
               </LabeledList.Item>
             </LabeledList>
           </Section>

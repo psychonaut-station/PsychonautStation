@@ -299,8 +299,8 @@
 	departmental_flags = DEPARTMENT_BITFLAG_ENGINEERING | DEPARTMENT_BITFLAG_MEDICAL
 
 /datum/design/board/chem_dispenser
-	name = "Chem Dispenser Board"
-	desc = "The circuit board for a chem dispenser."
+	name = "Portable Chem Dispenser Board"
+	desc = "The circuit board for a portable chem dispenser."
 	id = "chem_dispenser"
 	build_path = /obj/item/circuitboard/machine/chem_dispenser
 	category = list(

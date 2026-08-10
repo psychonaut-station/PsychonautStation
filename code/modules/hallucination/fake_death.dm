@@ -15,7 +15,7 @@
 	return ..()
 
 /datum/hallucination/death/start()
-	if(IS_UNCONSCIOUS(hallucinator)) // on your way there already
+	if(hallucinator.stat >= UNCONSCIOUS) // on your way there already
 		return FALSE
 
 	if(floor_them)

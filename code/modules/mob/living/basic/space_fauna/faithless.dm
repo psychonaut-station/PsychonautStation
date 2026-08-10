@@ -58,8 +58,7 @@
 	behavior_tree_json = "code/modules/mob/living/basic/space_fauna/faithless.bt.json"
 	blackboard = list(
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic,
-		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
-		BB_TREAT_UNCONSCIOUS_AS_HARDCRIT = TRUE,
+		BB_TARGET_MINIMUM_STAT = UNCONSCIOUS,
 	)
 
 	ai_movement = /datum/ai_movement/basic_avoidance

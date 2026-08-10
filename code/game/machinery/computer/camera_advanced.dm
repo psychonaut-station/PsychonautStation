@@ -148,7 +148,7 @@
 	return can_interact(user)
 
 /obj/machinery/computer/camera_advanced/abductor/can_use(mob/user)
-	if(!HAS_MIND_TRAIT(user, TRAIT_ABDUCTOR_KNOWLEDGE))
+	if(!isabductor(user))
 		return FALSE
 	return ..()
 

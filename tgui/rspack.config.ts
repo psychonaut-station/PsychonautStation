@@ -6,7 +6,7 @@ import rspack, { type StatsOptions } from '@rspack/core';
 export function createStats(verbose: boolean): StatsOptions {
   return {
     assets: verbose,
-    builtAt: false,
+    builtAt: verbose,
     cached: false,
     children: false,
     chunks: false,
@@ -30,7 +30,6 @@ export default defineConfig({
     'tgui-panel': './packages/tgui-panel',
     'tgui-say': './packages/tgui-say',
     'tgui-chat-dark': './packages/tgui-chat-dark',
-    'tgui-escape-menu': './packages/tgui-escape-menu',
   },
   mode: 'production',
   module: {
@@ -134,7 +133,6 @@ export default defineConfig({
       tgui: path.resolve(dirname, './packages/tgui'),
       'tgui-panel': path.resolve(dirname, './packages/tgui-panel'),
       'tgui-say': path.resolve(dirname, './packages/tgui-say'),
-      'tgui-escape-menu': path.resolve(dirname, './packages/tgui-escape-menu'),
       'tgui-dev-server': path.resolve(dirname, './packages/tgui-dev-server'),
     },
   },

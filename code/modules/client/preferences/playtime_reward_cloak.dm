@@ -12,7 +12,7 @@
 
 	return preferences.parent?.is_veteran()
 
-/datum/preference/toggle/playtime_reward_cloak/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/toggle/playtime_reward_cloak/apply_to_human(mob/living/carbon/human/target, value)
 	return
 
 /// Returns whether the client should receive the gamer cloak

@@ -11,7 +11,6 @@
 	var/datum/brain_trauma/mild/phobia/conspiracies/paranoia
 	var/warped = FALSE
 	interaction_flags_mouse_drop = NEED_HANDS
-	emp_protection = EMP_PROTECTION_MODERATE
 
 /datum/armor/costume_foilhat
 	laser = -5
@@ -75,7 +74,7 @@
 	if(target.get_item_by_slot(ITEM_SLOT_HEAD) != src)
 		return
 	QDEL_NULL(paranoia)
-	if(!IS_UNCONSCIOUS(target))
+	if(target.stat < UNCONSCIOUS)
 		to_chat(target, span_warning("Your zealous conspirationism rapidly dissipates as the donned hat warps up into a ruined mess. All those theories starting to sound like nothing but a ridicolous fanfare."))
 
 /obj/item/clothing/head/costume/foilhat/attack_hand(mob/user, list/modifiers)

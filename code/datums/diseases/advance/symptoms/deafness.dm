@@ -17,7 +17,8 @@
 	level = 4
 	severity = 4
 	base_message_chance = 100
-	symptom_delay = 52.5
+	symptom_delay_min = 25
+	symptom_delay_max = 80
 	required_organ = ORGAN_SLOT_EARS
 	symptom_cure = /datum/reagent/medicine/psicodine
 	threshold_descs = list(

@@ -69,7 +69,8 @@
 				ritual_item_path = pick(ritual_item_path)
 			for(var/i in 1 to amount_to_create)
 				var/obj/item/item = new ritual_item_path(get_turf(our_heretic))
-				knowledge.prepare_atom_for_ritual_test(item)
+				if(isitem(item))
+					item.item_flags &= ~ABSTRACT
 				created_atoms += item
 
 		// Now, we can ACTUALLY run the ritual. Let's do it.

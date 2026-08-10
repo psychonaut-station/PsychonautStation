@@ -95,10 +95,11 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 			var/mob/wearer = loc
 			wearer.update_worn_mask()
 
-/obj/item/clothing/mask/gas/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/obj/item/clothing/mask/gas/attackby(obj/item/tool, mob/user)
 	var/valid_wearer = ismob(loc)
 	var/mob/wearer = loc
 	if(istype(tool, /obj/item/cigarette))
+
 		if(max_filters <= 0 || cig)
 			balloon_alert(user, "can't hold that!")
 			return ..()
@@ -114,26 +115,22 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 		cig.forceMove(src)
 		if(valid_wearer)
 			wearer.update_worn_mask()
-		return ITEM_INTERACT_SUCCESS
+		return TRUE
 
 	if(cig)
-		var/cig_interaction = cig.item_interaction(user, tool)
+		var/cig_attackby = cig.attackby(tool, user)
 		if(valid_wearer)
 			wearer.update_worn_mask()
-		return cig_interaction
-
+		return cig_attackby
 	if(!istype(tool, /obj/item/gas_filter))
 		return ..()
-
 	if(LAZYLEN(gas_filters) >= max_filters)
 		return ..()
-
 	if(!user.transferItemToLoc(tool, src))
 		return ..()
-
 	LAZYADD(gas_filters, tool)
 	has_filter = TRUE
-	return ITEM_INTERACT_SUCCESS
+	return TRUE
 
 /obj/item/clothing/mask/gas/attack_hand_secondary(mob/user, list/modifiers)
 	if(cig)
@@ -426,9 +423,6 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	flags_cover = MASKCOVERSEYES
 	resistance_flags = FLAMMABLE
 	fishing_modifier = 0
-	emote_sounds = list(
-		/datum/emote/living/scream::key = SFX_SCREECH,
-	)
 
 /obj/item/clothing/mask/gas/sexymime
 	name = "sexy mime mask"
@@ -503,7 +497,7 @@ GLOBAL_LIST_INIT(clown_mask_options, list(
 	if(!choice)
 		return FALSE
 
-	if(src && choice && !IS_UNCONSCIOUS_OR_CRIT(M) && in_range(M,src))
+	if(src && choice && !M.stat && in_range(M,src))
 		icon_state = options[choice]
 		user.update_worn_mask()
 		update_item_action_buttons()

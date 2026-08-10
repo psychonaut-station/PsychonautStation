@@ -16,7 +16,8 @@
 	level = 3
 	severity = 3
 	base_message_chance = 100
-	symptom_delay = 30
+	symptom_delay_min = 15
+	symptom_delay_max = 45
 	required_organ = ORGAN_SLOT_STOMACH
 	symptom_cure = /datum/reagent/medicine/diphenhydramine // It's good with terrible stats, it should be harder to cure
 	cure_color = "orange"

@@ -105,10 +105,6 @@
 	} else { \
 		lazylist.Insert(index, value); \
 	}
-/// Returns the smallest element in the lazy list, or default if the list is null
-#define LAZYMAX(lazylist, default) (isnull(lazylist) ? default : max(lazylist))
-/// Returns the largest element in the lazy list, or default if the list is null
-#define LAZYMIN(lazylist, default) (isnull(lazylist) ? default : min(lazylist))
 
 ///Ensures the length of a list is at least I, prefilling it with V if needed. if V is a proc call, it is repeated for each new index so that list() can just make a new list for each item.
 #define LISTASSERTLEN(L, I, V...) \
@@ -279,24 +275,15 @@
  * Arguments:
  * - [type_to_check][/datum]: An instance to check.
  * - [list_to_check][/list]: A list of typepaths to check the type_to_check against.
- * - zebra: Whether to use the value of the matching type (closest to our type) in the list instead of just returning true when a match is found.
- * - return_first_match: If zebra is true, this will return the first match found, instead of the value of closest type
+ * - zebra: Whether to use the value of the matching type in the list instead of just returning true when a match is found.
  */
-/proc/is_type_in_list(datum/type_to_check, list/list_to_check, zebra = FALSE, return_first_match = FALSE)
+/proc/is_type_in_list(datum/type_to_check, list/list_to_check, zebra = FALSE)
 	if(!LAZYLEN(list_to_check) || !type_to_check)
 		return FALSE
-	. = FALSE
-	var/highest_matched_type
 	for(var/type in list_to_check)
-		if(!istype(type_to_check, type))
-			continue
-		if(!zebra)
-			return TRUE
-		if(return_first_match || type == type_to_check.type)
-			return list_to_check[type]
-		if(!highest_matched_type || ispath(type, highest_matched_type))
-			. = list_to_check[type]
-			highest_matched_type = type
+		if(istype(type_to_check, type))
+			return !zebra || list_to_check[type] // Subtypes must come first in zebra lists.
+	return FALSE
 
 /**
  * Checks for specific paths in a list.

@@ -95,7 +95,7 @@
 		begin_processing()
 
 /obj/machinery/recharge_station/relaymove(mob/living/user, direction)
-	if(IS_UNCONSCIOUS_OR_CRIT(user))
+	if(user.stat)
 		return
 	open_machine()
 

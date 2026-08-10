@@ -3,6 +3,7 @@
 	crate_type = /obj/structure/closet/crate/critter
 
 /datum/supply_pack/critter/stasis
+	group = "Livestock (Stasis)"
 	crate_type = /obj/structure/closet/crate/critter/stasis
 
 /datum/supply_pack/critter/stasis/fill(obj/container)

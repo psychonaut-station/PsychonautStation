@@ -359,7 +359,6 @@
 	var/satchel = /obj/item/storage/backpack/satchel
 	var/duffelbag = /obj/item/storage/backpack/duffelbag
 	var/messenger = /obj/item/storage/backpack/messenger
-	var/wintercoat = /obj/item/clothing/suit/hooded/wintercoat
 
 	var/pda_slot = ITEM_SLOT_BELT
 
@@ -544,7 +543,7 @@
 	var/mob/living/spawn_instance
 	if(ispath(spawn_type, /mob/living/silicon/ai))
 		// This is unfortunately necessary because of snowflake AI init code. To be refactored.
-		spawn_instance = new spawn_type(get_turf(spawn_point), player_client.mob, null, null, TRUE)
+		spawn_instance = new spawn_type(get_turf(spawn_point), null, player_client.mob, TRUE)
 	else
 		spawn_instance = spawn_point.JoinPlayerHere(spawn_type, TRUE)
 	spawn_instance.apply_prefs_job(player_client, src)
@@ -597,7 +596,7 @@
 			dna.species.roundstart_changed = TRUE
 
 		if(GLOB.current_anonymous_theme)
-			fully_replace_character_name(null, GLOB.current_anonymous_theme.anonymous_name(src), log_new_name = TRUE)
+			fully_replace_character_name(null, GLOB.current_anonymous_theme.anonymous_name(src))
 	else
 		var/is_antag = (player_client.mob.mind in GLOB.pre_setup_antags)
 		if(require_human)
@@ -671,7 +670,6 @@
 /datum/job/proc/after_latejoin_spawn(mob/living/spawning)
 	SHOULD_CALL_PARENT(TRUE)
 	SEND_GLOBAL_SIGNAL(COMSIG_GLOB_JOB_AFTER_LATEJOIN_SPAWN, src, spawning)
-	spawning.client.show_spawn_text_overlay()
 
 /datum/job/proc/set_alt_title(mob/living/carbon/human/H, client/player_client)
 	var/chosen_title = player_client?.prefs.alt_job_titles[title] || title

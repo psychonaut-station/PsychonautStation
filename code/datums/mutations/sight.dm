@@ -1,7 +1,7 @@
 //Nearsightedness restricts your vision by several tiles.
 /datum/mutation/nearsight
 	name = "Near Sightness"
-	desc = "The subject has poor eyesight, and cannot see distant objects."
+	desc = "The holder of this mutation has poor eyesight."
 	instability = NEGATIVE_STABILITY_MODERATE
 	quality = MINOR_NEGATIVE
 	text_gain_indication = span_danger("You can't see very well.")
@@ -20,7 +20,7 @@
 ///Blind makes you blind. Who knew?
 /datum/mutation/blind
 	name = "Blindness"
-	desc = "The subject is completely blind and cannot see anything."
+	desc = "Renders the subject completely blind."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You can't seem to see anything.")
@@ -39,8 +39,7 @@
 ///Thermal Vision lets you see mobs through walls
 /datum/mutation/thermal
 	name = "Thermal Vision"
-	desc = "The subject gains the ability to temporarily focus their eyes, allowing them to perceive human thermal signatures. \
-		However, the process is known to cause eye damage on repeat use."
+	desc = "The user of this genome can visually perceive the unique human thermal signature."
 	quality = POSITIVE
 	difficulty = 18
 	text_gain_indication = span_notice("You can see the heat rising off of your skin...")
@@ -56,7 +55,9 @@
 		return
 
 	// Something went wront and we still have the thermal vision from our power, no cheating.
-	REMOVE_TRAIT(owner, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
+	if(HAS_TRAIT_FROM(owner, TRAIT_THERMAL_VISION, GENETIC_MUTATION))
+		REMOVE_TRAIT(owner, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
+		owner.update_sight()
 
 /datum/mutation/thermal/setup()
 	. = ..()
@@ -83,6 +84,7 @@
 
 /datum/action/cooldown/spell/thermal_vision/Remove(mob/living/remove_from)
 	REMOVE_TRAIT(remove_from, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
+	remove_from.update_sight()
 	return ..()
 
 /datum/action/cooldown/spell/thermal_vision/is_valid_target(atom/cast_on)
@@ -91,6 +93,7 @@
 /datum/action/cooldown/spell/thermal_vision/cast(mob/living/cast_on)
 	. = ..()
 	ADD_TRAIT(cast_on, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
+	cast_on.update_sight()
 	to_chat(cast_on, span_info("You focus your eyes intensely, as your vision becomes filled with heat signatures."))
 	addtimer(CALLBACK(src, PROC_REF(deactivate), cast_on), thermal_duration)
 
@@ -99,6 +102,7 @@
 		return
 
 	REMOVE_TRAIT(cast_on, TRAIT_THERMAL_VISION, GENETIC_MUTATION)
+	cast_on.update_sight()
 	to_chat(cast_on, span_info("You blink a few times, your vision returning to normal as a dull pain settles in your eyes."))
 
 	if(iscarbon(cast_on))
@@ -108,7 +112,7 @@
 ///X-ray Vision lets you see through walls.
 /datum/mutation/xray
 	name = "X Ray Vision"
-	desc = "The subject gains the ability to see between the spaces of walls." //actual x-ray would mean you'd constantly be blasting rads, which might be fun for later //hmb
+	desc = "A strange genome that allows the user to see between the spaces of walls." //actual x-ray would mean you'd constantly be blasting rads, which might be fun for later //hmb
 	text_gain_indication = span_notice("The walls suddenly disappear!")
 	instability = POSITIVE_INSTABILITY_MAJOR
 	locked = TRUE
@@ -118,17 +122,19 @@
 	if(!.)
 		return
 	ADD_TRAIT(owner, TRAIT_XRAY_VISION, GENETIC_MUTATION)
+	owner.update_sight()
 
 /datum/mutation/xray/on_losing(mob/living/carbon/human/owner)
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_XRAY_VISION, GENETIC_MUTATION)
+	owner.update_sight()
 
 
 ///Laser Eyes lets you shoot lasers from your eyes!
 /datum/mutation/laser_eyes
 	name = "Laser Eyes"
-	desc = "The subject gains the ability to reflect concentrated light back from the eyes."
+	desc = "Reflects concentrated light back from the eyes."
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
@@ -173,7 +179,7 @@
 
 /datum/mutation/illiterate
 	name = "Illiterate"
-	desc = "The subject loses the ability to read or write."
+	desc = "Causes a severe case of Aphasia that prevents reading or writing."
 	instability = NEGATIVE_STABILITY_MAJOR
 	quality = NEGATIVE
 	text_gain_indication = span_danger("You feel unable to read or write.")
@@ -189,22 +195,3 @@
 	if(..())
 		return
 	REMOVE_TRAIT(owner, TRAIT_ILLITERATE, GENETIC_MUTATION)
-
-/datum/mutation/night_vision
-	name = "Night Vision"
-	desc = "The subject can see in the dark."
-	quality = POSITIVE
-	instability = POSITIVE_INSTABILITY_MAJOR
-	text_gain_indication = span_notice("The darkness of the corners of the room fades away.")
-	text_lose_indication = span_notice("The darkness of the corners of the room returns.")
-
-/datum/mutation/night_vision/on_acquiring(mob/living/carbon/human/owner)
-	. = ..()
-	if(!.)
-		return
-	ADD_TRAIT(owner, TRAIT_NIGHT_VISION, GENETIC_MUTATION)
-
-/datum/mutation/night_vision/on_losing(mob/living/carbon/human/owner)
-	if(..())
-		return
-	REMOVE_TRAIT(owner, TRAIT_NIGHT_VISION, GENETIC_MUTATION)

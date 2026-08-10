@@ -41,7 +41,7 @@
 	var/mob/living/user = null
 	if(isliving(parent))
 		user = parent
-		if(IS_UNCONSCIOUS_OR_CRIT(user))
+		if(user.stat != CONSCIOUS)
 			return
 
 	var/turf/closed/mineral/mineral_wall = target

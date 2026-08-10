@@ -65,7 +65,9 @@
 	for(var/mob/living/carbon/target in GLOB.player_list)
 		if (target.z != z)
 			continue
-		if (HAS_TRAIT(target, TRAIT_GODMODE) || IS_UNCONSCIOUS(target))
+		if (HAS_TRAIT(target, TRAIT_GODMODE))
+			continue
+		if (target.stat >= UNCONSCIOUS)
 			continue // Don't just haunt a corpse
 		var/distance_from_target = get_dist(src, target)
 		if(distance_from_target >= closest_distance)

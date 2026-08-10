@@ -23,20 +23,14 @@ const TASK_TYPE_LABELS: Record<string, string> = {
   throw: 'Throw...',
   use: 'Use held...',
   interact: 'Interact...',
-  move: 'Move...',
   wait: 'Wait...',
-  stop: 'Stop...',
 };
 
 const TASK_TYPE_ICONS: Record<string, string> = {
   pickup: 'hand',
   drop: 'box-open',
-  throw: 'paper-plane',
-  use: 'mouse-pointer',
   interact: 'bolt',
-  move: 'arrows-alt',
   wait: 'hourglass-half',
-  stop: 'stop-circle',
 };
 
 const TASKING_STRATEGY_ICONS: Record<string, string> = {
@@ -156,6 +150,15 @@ const getPointButtonNumber = (offset: string): number | null => {
   return yIndex * 3 + xIndex + 1;
 };
 
+const getFilteringModeText = (mode: number) => {
+  switch (mode) {
+    case 1: return 'Items';
+    case 2: return 'Closets';
+    case 3: return 'Humans';
+    default: return 'Unknown';
+  }
+};
+
 type TaskEditModalProps = {
   task: ManipulatorTask;
   onClose: () => void;
@@ -172,7 +175,6 @@ function TaskEditModal(props: TaskEditModalProps) {
   const isPickup = task.task_type.includes('pickup');
   const isDropoff = task.task_type === 'drop' || task.task_type === 'throw' || task.task_type === 'use';
   const isInteract = task.task_type.includes('interact');
-  const isMove = task.task_type === 'move';
 
   const currentButton = task.turf
     ? getPointButtonNumber(task.turf)
@@ -206,7 +208,7 @@ function TaskEditModal(props: TaskEditModalProps) {
             </Table.Row>
           </Table>
         )}
-      {isCargo && (
+        {isCargo && (
           <Stack>
             <Stack.Item>
               <Box
@@ -234,14 +236,22 @@ function TaskEditModal(props: TaskEditModalProps) {
             </Stack.Item>
             <Stack.Item grow>
               <Table>
-                {!isMove && (
+                {(task.task_type === 'pickup' ||
+                  task.task_type === 'drop' ||
+                  task.task_type === 'throw') && (
                   <ConfigRow
-                    label="Use Filters"
-                    content={task.filters_status ? 'TRUE' : 'FALSE'}
-                    onClick={() => adjust('toggle_filter_skip')}
-                    tooltip="Toggle filter usage"
+                    label="Object Type"
+                    content={getFilteringModeText(task.filtering_mode ?? 1)}
+                    onClick={() => adjust('cycle_filtering_mode')}
+                    tooltip="Cycle object category"
                   />
                 )}
+                <ConfigRow
+                  label="Use Filters"
+                  content={task.filters_status ? 'TRUE' : 'FALSE'}
+                  onClick={() => adjust('toggle_filter_skip')}
+                  tooltip="Toggle filter usage"
+                />
                 {isPickup && (
                   <ConfigRow
                     label="Eagerness"
@@ -273,6 +283,12 @@ function TaskEditModal(props: TaskEditModalProps) {
                 {(task.task_type === 'use' || isInteract) && (
                   <>
                     <ConfigRow
+                      label="Worker Action"
+                      content={task.worker_interaction ?? '—'}
+                      onClick={() => adjust('cycle_worker_interaction')}
+                      tooltip="Normal / Single use / Empty hand"
+                    />
+                    <ConfigRow
                       label="Alt Click"
                       content={task.worker_use_rmb ? 'TRUE' : 'FALSE'}
                       onClick={() => adjust('toggle_worker_rmb')}
@@ -290,6 +306,12 @@ function TaskEditModal(props: TaskEditModalProps) {
                       onClick={() => adjust('toggle_skip_anchored')}
                       tooltip="Skip anchored objects when looking for interaction targets"
                     />
+                    <ConfigRow
+                      label="No Uses Left"
+                      content={task.use_post_interaction ?? '—'}
+                      onClick={() => adjust('cycle_post_interaction')}
+                      tooltip="What to do when nothing left to interact with"
+                    />
                   </>
                 )}
               </Table>
@@ -298,7 +320,7 @@ function TaskEditModal(props: TaskEditModalProps) {
         )}
       </Section>
 
-      {isCargo && !isMove && (
+      {isCargo && (
         <>
           <Section
             title="Item Filters"
@@ -481,9 +503,8 @@ const TaskList = () => {
                                 '...'}
                             </Box>
                           )}
-                          {task.turf && <Box>...{task.task_type === 'move' ? 'to' : 'at'} [{task.turf}]...</Box>}
+                          {task.turf && <Box>...at [{task.turf}]...</Box>}
                           {task.time && <Box>...for {task.time} second{task.time > 1 && "s"}...</Box>}
-                          {task.sub_name && <Box>...{task.sub_name}</Box>}
                         </Box>
                       </Box>
                   </Stack.Item>

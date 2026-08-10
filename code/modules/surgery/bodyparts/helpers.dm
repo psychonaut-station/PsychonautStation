@@ -13,12 +13,14 @@
 
 /mob/living/carbon/get_bodypart(zone = BODY_ZONE_CHEST, include_stumps = FALSE)
 	RETURN_TYPE(/obj/item/bodypart)
-	if (!include_stumps)
-		return real_bodypart_cache[zone]
 
+	var/target_zone = zone || BODY_ZONE_CHEST
 	for(var/obj/item/bodypart/bodypart as anything in bodyparts)
-		if(bodypart.body_zone == zone)
-			return bodypart
+		if(!include_stumps && IS_STUMP(bodypart))
+			continue
+		if(bodypart.body_zone != target_zone)
+			continue
+		return bodypart
 
 /**
  * Returns all bodyparts this mob has, optionally including stumps.
@@ -34,14 +36,7 @@
 		var/obj/item/bodypart/bodypart = get_bodypart(zone, include_stumps)
 		if(bodypart)
 			parts += bodypart
-	return parts
 
-/mob/living/carbon/get_bodyparts(include_stumps = FALSE)
-	if (include_stumps)
-		return bodyparts.Copy()
-	var/list/parts = list()
-	for (var/key, limb in real_bodypart_cache)
-		parts += limb
 	return parts
 
 /**
@@ -56,6 +51,15 @@
 	for(var/zone in get_all_limbs())
 		parts[zone] = get_bodypart(zone)
 	return parts
+
+///Returns TRUE/FALSE on whether the mob should have a limb in a given zone, used for species-restrictions.
+/mob/living/carbon/proc/should_have_limb(zone)
+	if(!zone || !dna)
+		return TRUE
+	var/datum/species/carbon_species = dna.species
+	if(zone in carbon_species.bodypart_overrides)
+		return TRUE
+	return FALSE
 
 /// Replaces a single limb and deletes the old one if there was one
 /mob/living/carbon/proc/del_and_replace_bodypart(obj/item/bodypart/new_limb, special)
@@ -103,7 +107,8 @@
 
 
 ///Get the bodypart for whatever hand we have active, Only relevant for carbons
-/mob/proc/get_active_hand() as /obj/item/bodypart
+/mob/proc/get_active_hand()
+	RETURN_TYPE(/obj/item/bodypart)
 	return FALSE
 
 /mob/living/carbon/get_active_hand()

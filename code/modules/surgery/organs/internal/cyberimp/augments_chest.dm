@@ -88,7 +88,7 @@
 
 /obj/item/organ/cyberimp/chest/reviver/proc/try_heal()
 	if(reviving)
-		if(!IS_UNCONSCIOUS_OR_CRIT(owner))
+		if(owner.stat == CONSCIOUS)
 			COOLDOWN_START(src, reviver_cooldown, revive_cost)
 			reviving = FALSE
 			to_chat(owner, span_notice("Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)]."))
@@ -99,7 +99,7 @@
 	if(!COOLDOWN_FINISHED(src, reviver_cooldown) || HAS_TRAIT(owner, TRAIT_SUICIDED))
 		return
 
-	if(IS_UNCONSCIOUS_OR_CRIT(owner))
+	if(owner.stat != CONSCIOUS)
 		revive_cost = 0
 		reviving = TRUE
 		to_chat(owner, span_notice("You feel a faint buzzing as your reviver implant starts patching your wounds..."))
@@ -160,23 +160,23 @@
 		return
 
 	if(reviving)
-		revive_cost += 200 / severity
+		revive_cost += 200
 	else
-		reviver_cooldown += 20 SECONDS / severity
+		reviver_cooldown += 20 SECONDS
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.stat != DEAD && prob(50 / severity) && human_owner.can_heartattack())
 			human_owner.set_heartattack(TRUE)
 			to_chat(human_owner, span_userdanger("You feel a horrible agony in your chest!"))
-			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 50 SECONDS / severity)
+			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 600 / severity)
 
 /obj/item/organ/cyberimp/chest/reviver/proc/undo_heart_attack()
 	var/mob/living/carbon/human/human_owner = owner
 	if(!istype(human_owner))
 		return
 	human_owner.set_heartattack(FALSE)
-	if(!IS_UNCONSCIOUS_OR_CRIT(human_owner))
+	if(human_owner.stat == CONSCIOUS)
 		to_chat(human_owner, span_notice("You feel your heart beating again!"))
 
 

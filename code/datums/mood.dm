@@ -386,7 +386,7 @@
 
 	if(user != mob_parent)
 		return
-	if(IS_UNCONSCIOUS(user))
+	if(user.stat >= UNCONSCIOUS)
 		return
 	print_mood(user)
 

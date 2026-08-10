@@ -33,7 +33,7 @@
 	if(!typing_indicators)
 		return FALSE
 	/// Special exemptions
-	if(HAS_MIND_TRAIT(mob, TRAIT_HIDE_THINKING_INDICATOR))
+	if(isabductor(mob))
 		return FALSE
 	ADD_TRAIT(mob, TRAIT_THINKING_IN_CHARACTER, CURRENTLY_TYPING_TRAIT)
 	mob.create_thinking_indicator()

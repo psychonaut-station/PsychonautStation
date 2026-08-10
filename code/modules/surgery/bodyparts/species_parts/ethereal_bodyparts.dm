@@ -8,7 +8,13 @@
 	unarmed_miss_sound = 'sound/items/weapons/etherealmiss.ogg'
 	brute_modifier = 1.25 //ethereal are weak to brute damage
 	head_flags = HEAD_HAIR|HEAD_FACIAL_HAIR|HEAD_EYESPRITES|HEAD_EYEHOLES|HEAD_DEBRAIN
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/head/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/chest/ethereal
 	icon_greyscale = 'icons/mob/human/species/ethereal/bodyparts.dmi'
@@ -18,7 +24,13 @@
 	brute_modifier = 1.25 //ethereal are weak to brute damages
 	wing_types = null
 	bodypart_traits = list(TRAIT_NO_UNDERWEAR)
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/chest/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/arm/left/ethereal
 	icon_greyscale = 'icons/mob/human/species/ethereal/bodyparts.dmi'
@@ -32,7 +44,13 @@
 	unarmed_attack_sound = 'sound/items/weapons/etherealhit.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/etherealmiss.ogg'
 	brute_modifier = 1.25 //ethereal are weak to brute damage
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/arm/left/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/arm/right/ethereal
 	icon_greyscale = 'icons/mob/human/species/ethereal/bodyparts.dmi'
@@ -46,7 +64,13 @@
 	unarmed_attack_sound = 'sound/items/weapons/etherealhit.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/etherealmiss.ogg'
 	brute_modifier = 1.25 //ethereal are weak to brute damage
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/arm/right/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/leg/left/ethereal
 	icon_greyscale = 'icons/mob/human/species/ethereal/bodyparts.dmi'
@@ -56,7 +80,13 @@
 	unarmed_attack_sound = 'sound/items/weapons/etherealhit.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/etherealmiss.ogg'
 	brute_modifier = 1.25 //ethereal are weak to brute damage
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/leg/left/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/leg/right/ethereal
 	icon_greyscale = 'icons/mob/human/species/ethereal/bodyparts.dmi'
@@ -66,7 +96,13 @@
 	unarmed_attack_sound = 'sound/items/weapons/etherealhit.ogg'
 	unarmed_miss_sound = 'sound/items/weapons/etherealmiss.ogg'
 	brute_modifier = 1.25 //ethereal are weak to brute damage
-	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/ethereal_glow)
+
+/obj/item/bodypart/leg/right/ethereal/update_limb(dropping_limb, is_creating)
+	. = ..()
+	if(isethereal(owner))
+		var/mob/living/carbon/human/potato_oc = owner
+		var/datum/species/ethereal/eth_holder = potato_oc.dna.species
+		species_color = eth_holder.current_color
 
 /obj/item/bodypart/head/ethereal/lustrous
 	limb_id = SPECIES_ETHEREAL_LUSTROUS

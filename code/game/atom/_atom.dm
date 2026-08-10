@@ -398,8 +398,11 @@
 	return null
 
 ///Return the current air environment in this atom
-/atom/proc/return_air() as /datum/gas_mixture
-	return loc?.return_air()
+/atom/proc/return_air()
+	if(loc)
+		return loc.return_air()
+	else
+		return null
 
 ///Return the air if we can analyze it
 /atom/proc/return_analyzable_air()

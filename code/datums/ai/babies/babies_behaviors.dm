@@ -39,7 +39,7 @@
 		if(!HAS_TRAIT(other, TRAIT_MOB_BREEDER) || other.ckey)
 			continue
 
-		if(IS_UNCONSCIOUS_OR_CRIT(other)) //Check if it's conscious FIRST.
+		if(other.stat != CONSCIOUS)
 			continue
 
 		if(other.gender != living_pawn.gender && !(other.flags_1 & HOLOGRAM_1))
@@ -58,11 +58,11 @@
 
 /datum/bt_node/ai_behavior/make_babies/setup(datum/ai_controller/controller)
 	var/mob/target = controller.blackboard[target_key]
-	return !QDELETED(target) && !IS_UNCONSCIOUS_OR_CRIT(target)
+	return !QDELETED(target) && target.stat == CONSCIOUS
 
 /datum/bt_node/ai_behavior/make_babies/perform(seconds_per_tick, datum/ai_controller/controller)
 	var/mob/target = controller.blackboard[target_key]
-	if(QDELETED(target) || IS_UNCONSCIOUS_OR_CRIT(target))
+	if(QDELETED(target) || target.stat != CONSCIOUS)
 		return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_FAILED
 	INVOKE_ASYNC(controller, TYPE_PROC_REF(/datum/ai_controller, ai_interact), target, FALSE)
 	return AI_BEHAVIOR_DELAY | AI_BEHAVIOR_SUCCEEDED

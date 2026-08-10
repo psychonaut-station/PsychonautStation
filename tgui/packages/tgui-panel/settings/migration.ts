@@ -60,20 +60,14 @@ function migrateHighlights(next: HighlightState): HighlightState {
       draft.highlightText ?? defaultHighlightSetting.highlightText;
   }
 
-  // Backfill vars added after highlights were first stored.
+  // Ensure that all highlights have the "enabled" var,
+  // setting it to true if it doesn't exist.
   for (const id in draft.highlightSettingById) {
-    const setting = draft.highlightSettingById[id];
-    if (!setting) {
-      continue;
-    }
-    if (setting.enabled === undefined) {
-      setting.enabled = true;
-    }
-    if (setting.jobFilter === undefined) {
-      setting.jobFilter = '';
-    }
-    if (!Array.isArray(setting.characterFilter)) {
-      setting.characterFilter = [];
+    if (
+      draft.highlightSettingById[id] &&
+      draft.highlightSettingById[id].enabled === undefined
+    ) {
+      draft.highlightSettingById[id].enabled = true;
     }
   }
 

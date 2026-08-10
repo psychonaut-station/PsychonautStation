@@ -38,7 +38,7 @@
 		if(!ishuman(target_mob))
 			continue
 		var/mob/living/carbon/human/target_human = target_mob
-		if(IS_UNCONSCIOUS_OR_CRIT(target_human))
+		if(target_human.stat)
 			continue
 
 		if(HAS_MIND_TRAIT(target_human, TRAIT_UNCONVERTABLE))

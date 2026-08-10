@@ -49,7 +49,7 @@ GLOBAL_LIST_INIT(battle_royale_regions, list(
 		balloon_alert(user, "busy!")
 		return ITEM_INTERACT_BLOCKING
 	var/mob/living/potential_winner = interacting_with
-	if (IS_UNCONSCIOUS_OR_CRIT(potential_winner))
+	if (potential_winner.stat != CONSCIOUS)
 		balloon_alert(user, "target unconscious!")
 		return ITEM_INTERACT_BLOCKING
 	if (!potential_winner.mind)

@@ -114,50 +114,50 @@
 	. = ..()
 	. += "You can use a [EXAMINE_HINT("spoon")] or [EXAMINE_HINT("soup ladle")] to spill reagents."
 
-/obj/machinery/icecream_vat/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(istype(tool, /obj/item/kitchen/spoon) || istype(tool, /obj/item/kitchen/spoon/soup_ladle))
-		spill_reagents(user)
-		return ITEM_INTERACT_SUCCESS
+/obj/machinery/icecream_vat/attackby(obj/item/weapon, mob/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	if(.)
+		return
 
-	var/obj/item/reagent_containers/beaker = tool
+	if(istype(weapon, /obj/item/kitchen/spoon) || istype(weapon, /obj/item/kitchen/spoon/soup_ladle))
+		spill_reagents(user)
+		return TRUE
+
+	var/obj/item/reagent_containers/beaker = weapon
 	if(!istype(beaker) || !beaker.reagents || (beaker.item_flags & ABSTRACT) || !beaker.is_open_container())
-		return NONE
+		return
 
 	if(custom_ice_cream_beaker)
-		if(!user.transferItemToLoc(beaker, src))
+		if(user.transferItemToLoc(beaker, src))
+			try_put_in_hand(custom_ice_cream_beaker, user)
+			balloon_alert(user, "beakers swapped")
+			custom_ice_cream_beaker = beaker
+		else
 			balloon_alert(user, "beaker slot full!")
-			return ITEM_INTERACT_BLOCKING
-
-		try_put_in_hand(custom_ice_cream_beaker, user)
-		balloon_alert(user, "beakers swapped")
-		custom_ice_cream_beaker = beaker
-		return ITEM_INTERACT_SUCCESS
-
+		return
 	if(!user.transferItemToLoc(beaker, src))
-		return ITEM_INTERACT_BLOCKING
-
+		return
 	balloon_alert(user, "beaker inserted")
 	custom_ice_cream_beaker = beaker
-	return ITEM_INTERACT_SUCCESS
 
-/obj/machinery/icecream_vat/item_interaction_secondary(mob/living/user, obj/item/tool, list/modifiers)
-	var/obj/item/reagent_containers/beaker = tool
+/obj/machinery/icecream_vat/attackby_secondary(obj/item/reagent_containers/beaker, mob/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	if(. == SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN)
+		return
 	if(!istype(beaker) || !beaker.reagents || (beaker.item_flags & ABSTRACT) || !beaker.is_open_container())
-		return NONE
-
+		return SECONDARY_ATTACK_CONTINUE_CHAIN
 	var/added_reagents = FALSE
 	for(var/datum/reagent/beaker_reagents in beaker.reagents.reagent_list)
 		if(beaker_reagents.type in icecream_vat_reagents)
 			added_reagents = TRUE
 			beaker.reagents.trans_to(src, beaker_reagents.volume, target_id = beaker_reagents.type)
 
-	if(!added_reagents)
+	if(added_reagents)
+		balloon_alert(user, "refilling reagents")
+		playsound(src, 'sound/items/drink.ogg', 25, TRUE)
+	else
 		balloon_alert(user, "no reagents to transfer!")
-		return ITEM_INTERACT_BLOCKING
-
-	balloon_alert(user, "refilling reagents")
-	playsound(src, 'sound/items/drink.ogg', 25, TRUE)
-	return ITEM_INTERACT_SUCCESS
+	return SECONDARY_ATTACK_CANCEL_ATTACK_CHAIN
 
 /obj/machinery/icecream_vat/attack_hand_secondary(mob/user, list/modifiers)
 	if(swap_modes(user))

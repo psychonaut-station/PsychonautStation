@@ -854,12 +854,7 @@
 		pre_fail()
 		return
 
-	if(cell_powered && (isnull(cell) || !cell.charge))
-		playsound(src, 'sound/machines/buzz/buzz-sigh.ogg', 50, FALSE)
-		balloon_alert(cooker, "no power draw!")
-		return
-
-	if(!vampire_charge_amount || !length(ingredients) || vampire_charge_amount < 25)
+	if(!vampire_charge_amount || !length(ingredients) || vampire_charge_amount < 25 || (cell_powered && (isnull(cell) || !cell.charge)))
 		vampire_cell = null
 		charge_loop_finish(cooker)
 		return

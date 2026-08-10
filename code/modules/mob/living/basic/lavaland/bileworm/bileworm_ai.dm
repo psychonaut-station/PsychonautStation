@@ -4,8 +4,7 @@
 		BB_TARGETING_STRATEGY = /datum/targeting_strategy/basic/bileworm,
 		BB_TARGET_PRIORITY_STRATEGY = /datum/target_priority_strategy/mining,
 		BB_BILEWORM_FLEE_DISTANCE = 3,
-		BB_TARGET_MINIMUM_STAT = HARD_CRIT,
-		BB_TREAT_UNCONSCIOUS_AS_HARDCRIT = TRUE,
+		BB_TARGET_MINIMUM_STAT = UNCONSCIOUS,
 	)
 
 /datum/targeting_strategy/basic/bileworm

@@ -134,7 +134,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 			brainmob.stored_dna = new /datum/dna/stored(brainmob)
 		transferred_user.dna.copy_dna(brainmob.stored_dna)
 	brainmob.timeofdeath = transferred_user.timeofdeath
-	brainmob.set_stat(STABLE)
+	brainmob.set_stat(CONSCIOUS)
 	if(brainmob.mind)
 		brainmob.mind.set_assigned_role(SSjob.get_job_type(posibrain_job_path))
 	if(transferred_user.mind)
@@ -160,7 +160,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	if(policy)
 		to_chat(brainmob, policy)
 	brainmob.mind.set_assigned_role(SSjob.get_job_type(posibrain_job_path))
-	brainmob.set_stat(STABLE)
+	brainmob.set_stat(CONSCIOUS)
 	brainmob.grant_language(/datum/language/machine, source = LANGUAGE_ATOM)
 
 	visible_message(new_mob_message)
@@ -173,7 +173,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	. = ..()
 	if(brainmob?.key)
 		switch(brainmob.stat)
-			if(STABLE)
+			if(CONSCIOUS)
 				if(!brainmob.client)
 					. += "It appears to be in stand-by mode." //afk
 			if(DEAD)
@@ -210,10 +210,7 @@ GLOBAL_VAR(posibrain_notify_cooldown)
 	icon_state = "[base_icon_state]"
 	return
 
-/obj/item/mmi/posibrain/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	return ITEM_INTERACT_BLOCKING
-
-/obj/item/mmi/posibrain/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
+/obj/item/mmi/posibrain/attackby(obj/item/O, mob/user, list/modifiers, list/attack_modifiers)
 	return
 
 /obj/item/mmi/posibrain/add_mmi_overlay()

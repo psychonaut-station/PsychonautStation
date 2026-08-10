@@ -70,11 +70,7 @@
 	if (flashed.stat == DEAD || issilicon(flashed) || isdrone(flashed))
 		return
 
-	if (flashed.stat != STABLE)
-		flashed.balloon_alert(source, "in critical!")
-		return
-
-	if (IS_UNCONSCIOUS(flashed))
+	if (flashed.stat != CONSCIOUS)
 		flashed.balloon_alert(source, "unconscious!")
 		return
 
@@ -137,7 +133,7 @@
 	var/mob/living/carbon/human/dummy/consistent/brother1 = new
 	var/mob/living/carbon/human/dummy/consistent/brother2 = new
 
-	brother1.dna.features[FEATURE_MUTANT_COLOR] = GLOB.color_list_ethereal["Faint Red"]
+	brother1.dna.features[FEATURE_ETHEREAL_COLOR] = GLOB.color_list_ethereal["Faint Red"]
 	brother1.set_species(/datum/species/ethereal)
 
 	brother2.dna.features[FEATURE_MOTH_ANTENNAE] = "Plain"

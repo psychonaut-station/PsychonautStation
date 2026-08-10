@@ -193,9 +193,6 @@
 /area/shuttle/escape/engine
 	name = "Escape Shuttle Engine"
 
-/area/shuttle/escape/tombstone
-	ambience_index = AMBIENCE_SPOOKY
-
 /area/shuttle/transport
 	name = "Transport Shuttle"
 

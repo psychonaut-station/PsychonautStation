@@ -63,8 +63,6 @@
 	box = /obj/item/storage/box/survival/engineer
 	pda_slot = ITEM_SLOT_LPOCKET
 
-	wintercoat = /obj/item/clothing/suit/hooded/wintercoat/engineering/atmos
-
 /datum/outfit/job/atmos/mod
 	name = "Atmospheric Technician (MODsuit)"
 

@@ -49,7 +49,8 @@ function setupApp() {
     left: 'output_browser',
   });
 
-  Byond.winget('output_browser').then((output: { size: string }) => {
+  // Resize the panel to match the non-browser output
+  Byond.winget('output').then((output: { size: string }) => {
     Byond.winset('browseroutput', {
       size: output.size,
     });

@@ -160,27 +160,24 @@
 /obj/machinery/electrolyzer/crowbar_act(mob/living/user, obj/item/tool)
 	return default_deconstruction_crowbar(user, tool)
 
-/obj/machinery/electrolyzer/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/obj/machinery/electrolyzer/attackby(obj/item/I, mob/user, list/modifiers, list/attack_modifiers)
 	add_fingerprint(user)
-	if(!istype(tool, /obj/item/stock_parts/power_store/cell))
-		return NONE
+	if(istype(I, /obj/item/stock_parts/power_store/cell))
+		if(!panel_open)
+			balloon_alert(user, "open panel!")
+			return
+		if(cell)
+			balloon_alert(user, "cell inside!")
+			return
+		if(!user.transferItemToLoc(I, src))
+			return
+		cell = I
+		I.add_fingerprint(usr)
+		balloon_alert(user, "inserted cell")
+		SStgui.update_uis(src)
 
-	if(!panel_open)
-		balloon_alert(user, "open panel!")
-		return ITEM_INTERACT_BLOCKING
-
-	if(cell)
-		balloon_alert(user, "cell inside!")
-		return ITEM_INTERACT_BLOCKING
-
-	if(!user.transferItemToLoc(tool, src))
-		return ITEM_INTERACT_BLOCKING
-
-	cell = tool
-	tool.add_fingerprint(usr)
-	balloon_alert(user, "inserted cell")
-	SStgui.update_uis(src)
-	return ITEM_INTERACT_SUCCESS
+		return
+	return ..()
 
 /obj/machinery/electrolyzer/click_alt(mob/user)
 	if(panel_open)

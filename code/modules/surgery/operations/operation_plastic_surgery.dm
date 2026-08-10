@@ -30,7 +30,7 @@
 		return TRUE //skip name selection if fixing disfigurement
 
 	var/list/names = list()
-	if(HAS_MIND_TRAIT(surgeon, TRAIT_ABDUCTOR_KNOWLEDGE))
+	if(isabductor(surgeon))
 		for(var/j in 1 to 9)
 			names += "Subject [limb.owner.gender == MALE ? "i" : "o"]-[pick("a", "b", "c", "d", "e")]-[rand(10000, 99999)]"
 

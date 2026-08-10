@@ -1,8 +1,7 @@
 //Hulk turns your skin green, makes you strong, and allows you to shrug off stun effect.
 /datum/mutation/hulk
 	name = "Hulk"
-	desc = "The subject's muscles expand drastically, granting superhuman strength and resilience, but inhibit speech in the process. \
-		This heightened muscle density is more vulnerable to the cold, and cannot be maintained if critically injured."
+	desc = "A poorly understood genome that causes the holder's muscles to expand, inhibit speech and gives the person a bad skin condition."
 	quality = POSITIVE
 	locked = TRUE
 	difficulty = 16
@@ -243,7 +242,7 @@
 	var/turf/T = get_edge_target_turf(the_hulk, the_hulk.dir)
 	if(!isturf(T))
 		return
-	if(!IS_UNCONSCIOUS_OR_CRIT(yeeted_person))
+	if(!yeeted_person.stat)
 		yeeted_person.emote("scream")
 	yeeted_person.throw_at(T, 10, 6, the_hulk, TRUE, TRUE)
 	log_combat(the_hulk, yeeted_person, "has thrown by tail")
@@ -252,7 +251,7 @@
 	name = "Hulk (Magical)"
 	species_allowed = null //yes skeleton/lizard hulk - note that species that dont have skintone changing (like skellies) get custom handling
 	health_req = 0
-	instability = NEGATIVE_STABILITY_NONE
+	instability = 0
 	scream_delay = 2.5 SECONDS // halved to be more annoying (spell doesn't last long anyways)
 	no_recoil = FALSE
 	mutation_traits = list(
@@ -264,7 +263,7 @@
 /datum/mutation/hulk/superhuman
 	name = "Hulk (Super)"
 	health_req = 0
-	instability = NEGATIVE_STABILITY_NONE
+	instability = 0
 	no_recoil = FALSE
 	mutation_traits = list(
 		TRAIT_CHUNKYFINGERS,
@@ -282,7 +281,7 @@
 
 /datum/mutation/hulk/ork
 	name = "Ork"
-	desc = "A variant of the hulk mutation that is also known to inhibit the subject's brain functions."
+	desc = "A mutation caused by a mixup of hulk genes which severely impacts speech centers in owners' brains."
 	text_gain_indication = span_notice("You feel significantly dumber!")
 	bodypart_color = COLOR_ASSISTANT_OLIVE
 	conflicts = list(/datum/mutation/hulk)

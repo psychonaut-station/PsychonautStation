@@ -112,37 +112,28 @@
 			armorval += inventory_back.get_armor_rating(type)
 	return armorval * 0.5
 
-/mob/living/basic/pet/dog/corgi/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!istype(tool, /obj/item/razor))
-		return ..()
+/mob/living/basic/pet/dog/corgi/attackby(obj/item/attacking_item, mob/user, list/modifiers, list/attack_modifiers)
+	if(istype(attacking_item, /obj/item/razor))
+		if(shaved)
+			to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_have()] already been shaved!"))
+			return
+		if(!can_be_shaved)
+			to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_do()]n't have a fur coat!"))
+			return
+		user.visible_message(span_notice("[user] starts to shave [src] using \the [attacking_item]."), span_notice("You start to shave [src] using \the [attacking_item]..."))
+		if(do_after(user, 5 SECONDS, target = src))
+			user.visible_message(span_notice("[user] shaves [src]'s hair using \the [attacking_item]."))
+			playsound(get_turf(src), 'sound/items/hair-clippers.ogg', 20, TRUE)
+			shaved = TRUE
+			icon_living = "[icon_living]_shaved"
+			icon_dead = "[icon_living]_shaved_dead"
+			if(stat == CONSCIOUS)
+				icon_state = icon_living
+			else
+				icon_state = icon_dead
+		return TRUE
 
-	if(shaved)
-		to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_have()] already been shaved!"))
-		return ITEM_INTERACT_BLOCKING
-
-	if(!can_be_shaved)
-		to_chat(user, span_warning("You can't shave this corgi, [p_they()] [p_do()]n't have a fur coat!"))
-		return ITEM_INTERACT_BLOCKING
-
-	user.visible_message(
-		span_notice("[user] starts to shave [src] using \the [tool]."),
-		span_notice("You start to shave [src] using \the [tool]..."),
-		span_hear("You hear electric buzzing."),
-	)
-
-	if(!do_after(user, 5 SECONDS, target = src))
-		return ITEM_INTERACT_BLOCKING
-
-	user.visible_message(span_notice("[user] shaves [src]'s hair using \the [tool]."))
-	playsound(get_turf(src), 'sound/items/hair-clippers.ogg', 20, TRUE)
-	shaved = TRUE
-	icon_living = "[icon_living]_shaved"
-	icon_dead = "[icon_living]_shaved_dead"
-	if(!IS_UNCONSCIOUS_OR_CRIT(src))
-		icon_state = icon_living
-	else
-		icon_state = icon_dead
-	return ITEM_INTERACT_SUCCESS
+	return  ..()
 
 /mob/living/basic/pet/dog/corgi/update_dog_speech(list/speech_data)
 	. = ..()
@@ -188,7 +179,7 @@
 		if(!equipped_head_fashion_item.obj_color)
 			equipped_head_fashion_item.obj_color = inventory_head.color
 
-		if(IS_DEAD_OR_FAKING(src))
+		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 			head_icon = equipped_head_fashion_item.get_overlay(dir = EAST)
 			head_icon.pixel_z = -8
 			head_icon.transform = head_icon.transform.Turn(180)
@@ -208,7 +199,7 @@
 		if(!equipped_back_fashion_item.obj_color)
 			equipped_back_fashion_item.obj_color = inventory_back.color
 
-		if(IS_DEAD_OR_FAKING(src))
+		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 			back_icon = equipped_back_fashion_item.get_overlay(dir = EAST)
 			back_icon.pixel_z = -11
 			back_icon.transform = back_icon.transform.Turn(180)
@@ -254,15 +245,12 @@
 		return FALSE
 
 	if (user)
-		if(IS_DEAD_OR_FAKING(src))
+		if(stat == DEAD || HAS_TRAIT(src, TRAIT_FAKEDEATH))
 			to_chat(user, span_notice("There is merely a dull, lifeless look in [real_name]'s eyes as you put \the [item_to_add] on [p_them()]."))
 		else
-			user.visible_message(
-				span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
+			user.visible_message(span_notice("[user] puts [item_to_add] on [real_name]'s head. [src] looks at [user] and barks once."),
 				span_notice("You put [item_to_add] on [real_name]'s head. [src] gives you a peculiar look, then wags [p_their()] tail once and barks."),
-				span_hear("You hear a friendly-sounding bark."),
-			)
-
+				span_hear("You hear a friendly-sounding bark."))
 	item_to_add.forceMove(src)
 	inventory_head = item_to_add
 	update_corgi_fluff()
@@ -481,7 +469,7 @@
 
 ///Checks whether Ian has survived the round or not
 /mob/living/basic/pet/dog/corgi/ian/proc/check_ian_survival()
-	if(!IS_UNCONSCIOUS_OR_CRIT(src) && !memory_saved)
+	if(!stat && !memory_saved)
 		Write_Memory(FALSE)
 
 //NARS-IAN! SQ-Q-QooEglor-r'EEn-nl-luEEEf-f-fth-h

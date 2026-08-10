@@ -53,7 +53,10 @@
 /datum/quirk/photophobia/proc/on_holder_moved(mob/living/source, atom/old_loc, dir, forced)
 	SIGNAL_HANDLER
 
-	if(IS_UNCONSCIOUS(quirk_holder) || HAS_TRAIT(quirk_holder, TRAIT_FEARLESS))
+	if(quirk_holder.stat != CONSCIOUS || quirk_holder.IsSleeping() || quirk_holder.IsUnconscious())
+		return
+
+	if(HAS_TRAIT(quirk_holder, TRAIT_FEARLESS))
 		return
 
 	var/mob/living/carbon/human/human_holder = quirk_holder
@@ -62,8 +65,11 @@
 		return
 
 	var/turf/holder_turf = get_turf(quirk_holder)
+
+	var/lums = holder_turf.get_lumcount()
+
 	var/eye_protection = quirk_holder.get_eye_protection()
-	if(holder_turf.check_lumcount_below(LIGHTING_TILE_IS_DARK) || eye_protection >= FLASH_PROTECTION_NONE)
+	if(lums < LIGHTING_TILE_IS_DARK || eye_protection >= FLASH_PROTECTION_NONE)
 		quirk_holder.clear_mood_event(MOOD_CATEGORY_PHOTOPHOBIA)
 		return
 	quirk_holder.add_mood_event(MOOD_CATEGORY_PHOTOPHOBIA, /datum/mood_event/photophobia)

@@ -6,6 +6,6 @@
 	if(!.)
 		return FALSE
 	var/mob/living/candidate = target
-	if(!isliving(candidate) || candidate.incapacitated)
+	if(!isliving(candidate) || IS_DEAD_OR_INCAP(candidate))
 		return FALSE
 	return can_see(living_mob, candidate, vision_range)

@@ -26,5 +26,5 @@
 
 	return data
 
-/datum/preference/choiced/skin_tone/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/choiced/skin_tone/apply_to_human(mob/living/carbon/human/target, value)
 	target.skin_tone = value

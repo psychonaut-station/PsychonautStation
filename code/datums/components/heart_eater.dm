@@ -126,7 +126,7 @@
 	SIGNAL_HANDLER
 	if(!istype(target))
 		return
-	if(!target.incapacitated)
+	if(!IS_DEAD_OR_INCAP(target))
 		return
 	if(!source.combat_mode)
 		return
@@ -141,7 +141,7 @@
 	return COMPONENT_CANCEL_ATTACK_CHAIN
 
 /datum/component/heart_eater/proc/can_rip_heart(mob/living/user, mob/living/carbon/target, hand_index)
-	if(!target.incapacitated)
+	if(!IS_DEAD_OR_INCAP(target))
 		return FALSE
 	if(!user.has_hand_for_held_index(hand_index))
 		return FALSE

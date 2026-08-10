@@ -3,7 +3,7 @@
 	race = /datum/species/monkey
 	ai_controller = /datum/ai_controller/monkey
 
-/mob/living/carbon/human/species/monkey/Initialize(mapload, datum/species/species, cubespawned = FALSE)
+/mob/living/carbon/human/species/monkey/Initialize(mapload, cubespawned = FALSE)
 	ADD_TRAIT(src, TRAIT_BORN_MONKEY, INNATE_TRAIT)
 	if (cubespawned)
 		SSmobs.cubemonkeys += src
@@ -16,7 +16,7 @@
 /mob/living/carbon/human/species/monkey/angry
 	ai_controller = /datum/ai_controller/monkey/angry
 
-/mob/living/carbon/human/species/monkey/angry/Initialize(mapload, datum/species/species, cubespawned = FALSE)
+/mob/living/carbon/human/species/monkey/angry/Initialize(mapload, cubespawned = FALSE)
 	. = ..()
 	if(prob(10))
 		INVOKE_ASYNC(src, PROC_REF(give_ape_escape_helmet))
@@ -27,8 +27,7 @@
 	equip_to_slot_or_del(helmet, ITEM_SLOT_HEAD)
 	helmet.attack_self(src) // todo encapsulate toggle
 
-/// The one true Pun Pun. Either the bar's monkey mob, or the bar gorilla when the Big Pun Pun trait is active.
-GLOBAL_DATUM(the_one_and_only_punpun, /mob/living)
+GLOBAL_DATUM(the_one_and_only_punpun, /mob/living/carbon/human/species/monkey/punpun)
 
 /mob/living/carbon/human/species/monkey/punpun
 	name = "Pun Pun" //C A N O N
@@ -43,16 +42,12 @@ GLOBAL_DATUM(the_one_and_only_punpun, /mob/living)
 	var/relic_mask
 	var/memory_saved = FALSE
 
-/mob/living/carbon/human/species/monkey/punpun/Initialize(mapload, datum/species/species)
+/mob/living/carbon/human/species/monkey/punpun/Initialize(mapload)
 	. = ..()
 
 	REGISTER_REQUIRED_MAP_ITEM(1, 1) // pun pun is required on maps.
 	if(mapload && (locate(/datum/station_trait/job/pun_pun) in SSstation.station_traits))
 		new /obj/effect/landmark/start/pun_pun(loc) //Pun Pun is a crewmember, and may late-join.
-		return INITIALIZE_HINT_QDEL
-
-	if(mapload && HAS_TRAIT(SSstation, STATION_TRAIT_PUN_PUN_GYM_DAY))
-		new /mob/living/basic/gorilla/bar(loc) //gym day get buff get swole
 		return INITIALIZE_HINT_QDEL
 
 	equip_to_slot_or_del(new /obj/item/clothing/under/suit/waiter(src), ITEM_SLOT_ICLOTHING)
@@ -76,7 +71,7 @@ GLOBAL_DATUM(the_one_and_only_punpun, /mob/living)
 	return ..()
 
 /mob/living/carbon/human/species/monkey/punpun/Life(seconds_per_tick = SSMOBS_DT)
-	if(!IS_UNCONSCIOUS_OR_CRIT(src) && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
+	if(!stat && SSticker.current_state == GAME_STATE_FINISHED && !memory_saved)
 		Write_Memory(FALSE, FALSE)
 		memory_saved = TRUE
 

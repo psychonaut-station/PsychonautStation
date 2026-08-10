@@ -232,7 +232,7 @@
 
 	if(accessory)
 		var/obj/item/clothing/under/U = user.w_uniform
-		if(istype(U))
+		if(U)
 			U.attach_accessory(SSwardrobe.provide_type(accessory, user))
 		else if(!visuals_only)
 			WARNING("Unable to equip accessory [accessory] in outfit [name]. No uniform present!")

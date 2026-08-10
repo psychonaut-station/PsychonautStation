@@ -17,8 +17,7 @@
 	/// If the highest priority job matches this, will prioritize this name in the UI
 	var/relevant_job
 
-
-/datum/preference/name/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/name/apply_to_human(mob/living/carbon/human/target, value)
 	// Only real_name applies directly, everything else is applied by something else
 	return
 
@@ -40,7 +39,7 @@
 	group = "_real_name"
 	savefile_key = "real_name"
 
-/datum/preference/name/real_name/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/name/real_name/apply_to_human(mob/living/carbon/human/target, value)
 	target.real_name = value
 	target.name = value
 	target.log_mob_tag("TAG: [target.tag] RENAMED: [key_name(target)]")
@@ -224,3 +223,4 @@
 
 /datum/preference/name/hacker_alias/serialize(input)
 	return permissive_sanitize_name(input)
+

@@ -30,8 +30,6 @@ export const defaultHighlightSetting: HighlightSetting = {
   matchWord: false,
   matchCase: false,
   enabled: true,
-  jobFilter: '',
-  characterFilter: [],
 };
 
 export const defaultHighlights: HighlightState = {

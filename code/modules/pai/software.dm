@@ -16,7 +16,7 @@
 /mob/living/silicon/pai/ui_static_data(mob/user)
 	var/list/data = list()
 	data["available"] = available_software
-	data["directives"] = laws.inherent
+	data["directives"] = laws.supplied
 	data["emagged"] = emagged
 	data["languages"] = languages_granted
 	data["master_name"] = master_name

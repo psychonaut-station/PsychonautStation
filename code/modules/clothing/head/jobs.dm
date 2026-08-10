@@ -327,31 +327,28 @@
 
 	return .
 
-/obj/item/clothing/head/fedora/inspector_hat/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
+/obj/item/clothing/head/fedora/inspector_hat/attackby(obj/item/item, mob/user, list/modifiers, list/attack_modifiers)
 	. = ..()
-	if(ITEM_INTERACT_ANY_BLOCKER & .)
-		return .
 
 	if(LAZYLEN(contents) >= max_items)
 		balloon_alert(user, "full!")
-		return ITEM_INTERACT_BLOCKING
-
-	if(tool.w_class > max_weight)
+		return
+	if(item.w_class > max_weight)
 		balloon_alert(user, "too big!")
-		return ITEM_INTERACT_BLOCKING
+		return
 
 	var/desired_phrase = tgui_input_text(user, "What is the activation phrase?", "Activation phrase", "gadget", max_length = 26)
 	if(!desired_phrase || !user.can_perform_action(src, FORBID_TELEKINESIS_REACH))
-		return ITEM_INTERACT_BLOCKING
+		return
 
-	if(tool.loc != user || !user.transferItemToLoc(tool, src))
-		return ITEM_INTERACT_BLOCKING
+	if(item.loc != user || !user.transferItemToLoc(item, src))
+		return
 
-	to_chat(user, span_notice("You install [tool] into the [thtotext(contents.len)] slot of [src]."))
+	to_chat(user, span_notice("You install [item] into the [thtotext(contents.len)] slot of [src]."))
 	playsound(src, 'sound/machines/click.ogg', 30, TRUE)
-	set_phrase(desired_phrase, tool)
+	set_phrase(desired_phrase,item)
 
-	return ITEM_INTERACT_SUCCESS
+	return TRUE
 
 /obj/item/clothing/head/fedora/inspector_hat/attack_self(mob/user)
 	. = ..()

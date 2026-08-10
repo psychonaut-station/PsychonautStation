@@ -65,8 +65,12 @@
 /mob/living/silicon/ai/update_stat()
 	if(HAS_TRAIT(src, TRAIT_GODMODE))
 		return
-	if(stat != DEAD && health <= HEALTH_THRESHOLD_DEAD)
-		death()
+	if(stat != DEAD)
+		if(health <= HEALTH_THRESHOLD_DEAD)
+			death()
+			return
+		else if(stat >= UNCONSCIOUS)
+			set_stat(CONSCIOUS)
 	diag_hud_set_status()
 
 /mob/living/silicon/ai/update_sight()

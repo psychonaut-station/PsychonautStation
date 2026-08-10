@@ -33,7 +33,7 @@
 /obj/structure/life_candle/Initialize(mapload)
 	. = ..()
 	if(IS_OVERLAY_LIGHT_SYSTEM(light_system))
-		middleman = new(src, "life_candle")
+		middleman = new(src, "flashlight")
 		RegisterSignal(middleman, COMSIG_LIGHT_MIDDLEMAN_UPDATED, PROC_REF(light_updated))
 		middleman.being_overriding_light()
 	AddElement(/datum/element/movetype_handler)

@@ -15,7 +15,7 @@
 	transparent_protection = HIDEGLOVES | HIDESUITSTORAGE | HIDEJUMPSUIT | HIDESHOES | HIDENECK
 	cold_protection = FULL_BODY
 	min_cold_protection_temperature = FIRE_SUIT_MIN_TEMP_PROTECT
-	allowed = list(/obj/item/melee/sickly_blade, /obj/item/gun/ballistic/rifle/lionhunter, /obj/item/flashlight/lantern/heretic)
+	allowed = list(/obj/item/melee/sickly_blade, /obj/item/gun/ballistic/rifle/lionhunter)
 	hoodtype = /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	armor_type = /datum/armor/eldritch_armor
 	clothing_traits = list(TRAIT_HERETIC_AURA_HIDDEN)
@@ -57,6 +57,16 @@
 /obj/item/clothing/suit/hooded/cultrobes/eldritch/on_hood_down(obj/item/clothing/head/hooded/hood)
 	hood_up = FALSE
 
+/obj/item/clothing/suit/hooded/cultrobes/eldritch/examine(mob/user)
+	. = ..()
+	if(!IS_HERETIC(user))
+		return
+	if(hood_up)
+		return
+
+	// Our hood gains the heretic_focus element.
+	. += span_notice("Allows you to cast heretic spells while the hood is up.")
+
 /obj/item/clothing/head/hooded/cult_hoodie/eldritch
 	name = "ominous hood"
 	icon = 'icons/obj/clothing/head/helmet.dmi'
@@ -69,6 +79,10 @@
 	resistance_flags = FIRE_PROOF | UNACIDABLE | ACID_PROOF
 	clothing_flags = THICKMATERIAL | PLASMAMAN_PREVENT_IGNITION | SNUG_FIT
 	armor_type = /datum/armor/eldritch_armor
+
+/obj/item/clothing/head/hooded/cult_hoodie/eldritch/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/heretic_focus)
 
 /datum/armor/eldritch_armor
 	melee = 50
@@ -1206,6 +1220,7 @@
 /// Makes our cloak "invisible". Not the wearer, the cloak itself.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_invisible()
 	add_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
+	RemoveElement(/datum/element/heretic_focus)
 	flags_cover |= ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))
@@ -1217,6 +1232,7 @@
 /// Makes our cloak "visible" again.
 /obj/item/clothing/suit/hooded/cultrobes/void/proc/make_visible()
 	remove_traits(list(TRAIT_NO_STRIP, TRAIT_EXAMINE_SKIP), REF(src))
+	AddElement(/datum/element/heretic_focus)
 	flags_cover &= ~ALLOW_SURGERY_THROUGH
 
 	if(isliving(loc))

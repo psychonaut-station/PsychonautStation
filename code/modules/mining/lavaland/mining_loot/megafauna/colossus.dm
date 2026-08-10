@@ -31,15 +31,11 @@
 			if (feedback)
 				owner.balloon_alert(owner, "can't speak!")
 			return FALSE
-	if((check_flags & AB_CHECK_CONSCIOUS) && IS_UNCONSCIOUS_OR_CRIT(owner))
-		if (feedback)
-			if(owner.stat == DEAD)
-				owner.balloon_alert(owner, "dead!")
-			else if(IS_UNCONSCIOUS(owner))
+	if(check_flags & AB_CHECK_CONSCIOUS)
+		if(owner.stat)
+			if (feedback)
 				owner.balloon_alert(owner, "unconscious!")
-			else
-				owner.balloon_alert(owner, "in critical!")
-		return FALSE
+			return FALSE
 	return TRUE
 
 /datum/action/item_action/organ_action/colossus/do_effect(trigger_flags)

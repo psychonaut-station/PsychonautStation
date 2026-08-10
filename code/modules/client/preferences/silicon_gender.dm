@@ -29,7 +29,7 @@
 /datum/preference/choiced/silicon_gender/create_default_value()
 	return SILICON_NEUTER
 
-/datum/preference/choiced/silicon_gender/apply_to_human(mob/living/carbon/human/target, value, datum/preferences/preferences)
+/datum/preference/choiced/silicon_gender/apply_to_human(mob/living/carbon/human/target, value)
 	return
 
 #undef SILICON_MALE

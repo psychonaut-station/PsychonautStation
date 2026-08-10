@@ -1,6 +1,5 @@
 import argparse
 import glob
-import os
 import pathlib
 import traceback
 import yaml
@@ -77,8 +76,6 @@ def main(args):
             any_failed = True
 
     for map_filename in (args.maps or glob.glob("_maps/**/*.dmm", recursive = True)):
-        if not os.path.isfile(map_filename) or not map_filename.endswith('.dmm'):
-            continue
         print(map_filename, end = " ")
 
         success = True

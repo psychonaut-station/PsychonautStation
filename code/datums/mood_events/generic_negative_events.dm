@@ -12,13 +12,6 @@
 	mood_change = -12
 	event_flags = MOOD_EVENT_FEAR
 
-/datum/mood_event/on_fire/add_effects(...)
-	if(owner.has_quirk(/datum/quirk/pyromania))
-		mood_change *= 0.25
-		description = "This might be a bit too much fire."
-	else if(owner.has_quirk(/datum/quirk/pyrophobia))
-		mood_change *= 1.5
-
 /datum/mood_event/suffocation
 	description = "CAN'T... BREATHE..."
 	mood_change = -12
@@ -113,7 +106,7 @@
 	timeout = 2 MINUTES
 
 /datum/mood_event/table/add_effects()
-	if(HAS_TRAIT(owner, TRAIT_CATLIKE_INSTINCT)) //Holy snowflake batman!
+	if(isfelinid(owner)) //Holy snowflake batman!
 		var/mob/living/carbon/human/feline = owner
 		feline.wag_tail(3 SECONDS)
 		description = "They want to play on the table!"
@@ -312,7 +305,7 @@
 /datum/mood_event/too_slow/add_effects(param)
 	var/people_laughing_at_you = 1 // start with 1 in case they're on the same tile or something
 	for(var/mob/living/carbon/iter_carbon in oview(owner, 7))
-		if(!IS_UNCONSCIOUS_OR_CRIT(iter_carbon))
+		if(iter_carbon.stat == CONSCIOUS)
 			people_laughing_at_you++
 			if(people_laughing_at_you > 7)
 				break
@@ -533,7 +526,7 @@
 
 /datum/mood_event/bapped/add_effects()
 	// Felinids apparently hate being hit over the head with cardboard
-	if(HAS_TRAIT(owner, TRAIT_CATLIKE_INSTINCT))
+	if(isfelinid(owner))
 		mood_change = -2
 
 /datum/mood_event/encountered_evil
@@ -630,12 +623,18 @@
 	mood_change = -4
 	timeout = 4 MINUTES
 
+/datum/mood_event/splattered_with_blood/can_effect_mob(datum/mood/home, mob/living/who, ...)
+	if(isvampire(who))
+		return FALSE
+
+	return ..()
+
 /datum/mood_event/splattered_with_blood/add_effects(...)
 	if(HAS_TRAIT(owner, TRAIT_CULT_HALO))
 		mood_change = 2
 		description = "Blood, blood! The Geometer will be pleased."
 		return
-	if(HAS_TRAIT(owner, TRAIT_MORBID) || HAS_TRAIT(owner, TRAIT_EVIL) || HAS_TRAIT(owner, TRAIT_DRINKS_BLOOD))
+	if(HAS_TRAIT(owner, TRAIT_MORBID) || HAS_TRAIT(owner, TRAIT_EVIL))
 		mood_change = 0
 		description = "I just got coated in blood. Fascinating!"
 		return
@@ -661,8 +660,3 @@
 	description = "I hear a voice whispering, and I don't like what it says."
 	mood_change = -3
 	timeout = 30 SECONDS
-
-/datum/mood_event/cement
-	description = span_warning("I was forced to eat cement...")
-	mood_change = -6
-	timeout = 4 MINUTES

@@ -89,6 +89,11 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
     text: 'Strip accessory',
   },
 
+  toggle_bodycam: {
+    icon: 'video',
+    text: 'Toggle bodycam',
+  },
+
   deploy: {
     icon: 'plus',
     text: 'Deploy MOD',

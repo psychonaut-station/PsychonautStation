@@ -128,7 +128,7 @@
 	// Handle "sudden" heart attack
 	if(!beating || (organ_flags & ORGAN_FAILING))
 		if(owner.can_heartattack() && Stop())
-			if(!IS_UNCONSCIOUS_OR_CRIT(owner))
+			if(owner.stat == CONSCIOUS)
 				owner.visible_message(span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"))
 			to_chat(owner, span_userdanger("You feel a terrible pain in your chest, as if your heart has stopped!"))
 		return
@@ -231,14 +231,14 @@
 	var/owner_needs_us = owner?.needs_heart()
 
 	if(owner_needs_us && !COOLDOWN_FINISHED(src, severe_cooldown)) //So we cant just spam emp to kill people.
-		owner.set_dizzy_if_lower(15 SECONDS / severity)
+		owner.set_dizzy_if_lower(20 SECONDS)
 		owner.losebreath += 10
-		COOLDOWN_START(src, severe_cooldown, 15 SECONDS)
+		COOLDOWN_START(src, severe_cooldown, 20 SECONDS)
 
 	if(prob(emp_vulnerability/severity)) //Chance of permanent effects
 		organ_flags |= ORGAN_EMP //Starts organ faliure - gonna need replacing soon.
 		Stop()
-		addtimer(CALLBACK(src, PROC_REF(Restart)), 10 SECONDS / severity)
+		addtimer(CALLBACK(src, PROC_REF(Restart)), 10 SECONDS)
 		if(owner_needs_us)
 			owner.visible_message(
 				span_danger("[owner] clutches at [owner.p_their()] chest as if [owner.p_their()] heart is stopping!"),

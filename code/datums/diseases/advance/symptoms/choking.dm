@@ -18,7 +18,8 @@
 	level = 3
 	severity = 3
 	base_message_chance = 15
-	symptom_delay = 20
+	symptom_delay_min = 10
+	symptom_delay_max = 30
 	required_organ = ORGAN_SLOT_LUNGS
 	symptom_cure = /datum/reagent/medicine/c2/tirimol
 	cure_color = "orange"
@@ -32,7 +33,8 @@
 	if(!.)
 		return
 	if(A.totalStageSpeed() >= 8)
-		symptom_delay = 15.5
+		symptom_delay_min = 7
+		symptom_delay_max = 24
 	if(A.totalStealth() >= 4)
 		suppress_warning = TRUE
 
@@ -95,7 +97,8 @@ Bonus
 	level = 7
 	severity = 6
 	base_message_chance = 15
-	symptom_delay = 22
+	symptom_delay_min = 14
+	symptom_delay_max = 30
 	required_organ = ORGAN_SLOT_LUNGS
 	symptom_cure = /datum/reagent/toxin/bonehurtingjuice // It'll be funny I swear
 	cure_color = "orange" // The only level 7 symptom without a red color

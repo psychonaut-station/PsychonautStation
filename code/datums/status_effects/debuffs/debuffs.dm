@@ -133,6 +133,7 @@
 //UNCONSCIOUS
 /datum/status_effect/incapacitating/unconscious
 	id = "unconscious"
+	needs_update_stat = TRUE
 	force_say_chance = 100
 
 /datum/status_effect/incapacitating/unconscious/on_apply()
@@ -145,60 +146,10 @@
 	REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
 	return ..()
 
-/// Handles the effects of being knocked out - don't apply directly, all you should be doing is using [TRAIT_KNOCKEDOUT]
-/datum/status_effect/knocked_out
-	id = "is_knocked_out"
-	alert_type = null
+/datum/status_effect/incapacitating/unconscious/tick(seconds_between_ticks)
+	if(owner.get_stamina_loss())
+		owner.adjust_stamina_loss(-0.3) //reduce stamina loss by 0.3 per tick, 6 per 2 seconds
 
-/datum/status_effect/knocked_out/on_apply()
-	owner.become_blind(TRAIT_STATUS_EFFECT(id))
-	owner.apply_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
-	owner.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_BLOCK_SECHUD, TRAIT_BLOCK_MEDHUD, TRAIT_INCAPACITATED, TRAIT_FLOORED), TRAIT_STATUS_EFFECT(id))
-	owner.update_eyes() // updates eyelids
-	RegisterSignal(owner, COMSIG_MOB_STATCHANGE, PROC_REF(on_mob_statchange))
-	RegisterSignal(owner, COMSIG_MOB_CLIENT_LOGIN, PROC_REF(show_unconscious_hud))
-	if(GET_CLIENT(owner)) // let's not waste time giving the hud to non-player characters
-		show_unconscious_hud(owner)
-	return TRUE
-
-/datum/status_effect/knocked_out/on_creation(mob/living/new_owner, ...)
-	. = ..()
-	if(!.)
-		return
-	if(owner.stat == DEAD)
-		stop_ticking()
-
-/datum/status_effect/knocked_out/on_remove()
-	owner.cure_blind(TRAIT_STATUS_EFFECT(id))
-	owner.remove_status_effect(/datum/status_effect/grouped/see_no_names, TRAIT_STATUS_EFFECT(id))
-	owner.remove_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_BLOCK_SECHUD, TRAIT_BLOCK_MEDHUD, TRAIT_INCAPACITATED, TRAIT_FLOORED), TRAIT_STATUS_EFFECT(id))
-	owner.update_eyes() // updates eyelids
-	UnregisterSignal(owner, list(COMSIG_MOB_CLIENT_LOGIN, COMSIG_MOB_STATCHANGE))
-	if(GET_CLIENT(owner))
-		hide_unconscious_hud(owner)
-
-/datum/status_effect/knocked_out/tick(seconds_between_ticks)
-	owner.adjust_stamina_loss(-3 * seconds_between_ticks)
-
-/// Global list of images that correspond to a mob's unconscious appearance
-GLOBAL_LIST_EMPTY(unconscious_appearances)
-
-/datum/status_effect/knocked_out/proc/show_unconscious_hud(mob/living/source)
-	SIGNAL_HANDLER
-
-	source.client?.images += (GLOB.unconscious_appearances - source.unconscious_appearance)
-
-/datum/status_effect/knocked_out/proc/hide_unconscious_hud(mob/living/source)
-	SIGNAL_HANDLER
-
-	source.client?.images -= GLOB.unconscious_appearances
-
-/datum/status_effect/knocked_out/proc/on_mob_statchange(mob/living/source, ...)
-	SIGNAL_HANDLER
-	if(owner.stat == DEAD)
-		stop_ticking()
-	else
-		start_ticking()
 
 //SLEEPING
 /datum/status_effect/incapacitating/sleeping
@@ -213,21 +164,18 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	. = ..()
 	if(!.)
 		return
-	if(!HAS_TRAIT(owner, TRAIT_SLEEPIMMUNE))
+	if(HAS_TRAIT(owner, TRAIT_SLEEPIMMUNE))
+		tick_interval = STATUS_EFFECT_NO_TICK
+	else
 		ADD_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
 	RegisterSignal(owner, SIGNAL_ADDTRAIT(TRAIT_SLEEPIMMUNE), PROC_REF(on_owner_insomniac))
 	RegisterSignal(owner, SIGNAL_REMOVETRAIT(TRAIT_SLEEPIMMUNE), PROC_REF(on_owner_sleepy))
 
-/datum/status_effect/incapacitating/sleeping/on_creation(mob/living/new_owner, set_duration)
-	. = ..()
-	if(!.)
-		return
-	if(HAS_TRAIT(owner, TRAIT_SLEEPIMMUNE))
-		stop_ticking()
-
 /datum/status_effect/incapacitating/sleeping/on_remove()
 	UnregisterSignal(owner, list(SIGNAL_ADDTRAIT(TRAIT_SLEEPIMMUNE), SIGNAL_REMOVETRAIT(TRAIT_SLEEPIMMUNE)))
-	REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
+	if(!HAS_TRAIT(owner, TRAIT_SLEEPIMMUNE))
+		REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
+		tick_interval = initial(tick_interval)
 	return ..()
 
 /datum/status_effect/incapacitating/sleeping/try_force_say()
@@ -238,13 +186,13 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 /datum/status_effect/incapacitating/sleeping/proc/on_owner_insomniac(mob/living/source)
 	SIGNAL_HANDLER
 	REMOVE_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
-	stop_ticking()
+	tick_interval = STATUS_EFFECT_NO_TICK
 
 ///If the mob has the TRAIT_SLEEPIMMUNE but somehow looses it we make him sleep and restart the tick()
 /datum/status_effect/incapacitating/sleeping/proc/on_owner_sleepy(mob/living/source)
 	SIGNAL_HANDLER
 	ADD_TRAIT(owner, TRAIT_KNOCKEDOUT, TRAIT_STATUS_EFFECT(id))
-	start_ticking()
+	tick_interval = initial(tick_interval)
 
 /datum/status_effect/incapacitating/sleeping/tick(seconds_between_ticks)
 	if(owner.maxHealth)
@@ -268,7 +216,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 					sleep_quality = -0.2
 
 		var/turf/rest_turf = get_turf(owner)
-		var/is_sleeping_in_darkness = !rest_turf.check_lumcount_above(LIGHTING_TILE_IS_DARK)
+		var/is_sleeping_in_darkness = rest_turf.get_lumcount() <= LIGHTING_TILE_IS_DARK
 
 		// sleeping with a blindfold or in the dark helps us rest
 		if(owner.is_blind_from(EYES_COVERED) || is_sleeping_in_darkness)
@@ -749,7 +697,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 	alert_type = null
 
 /datum/status_effect/spasms/tick(seconds_between_ticks)
-	if(owner.incapacitated || IS_UNCONSCIOUS(owner) || HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
+	if(owner.stat >= UNCONSCIOUS || owner.incapacitated || HAS_TRAIT(owner, TRAIT_HANDS_BLOCKED) || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
 		return
 	if(!prob(15))
 		return
@@ -915,7 +863,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 /datum/status_effect/fake_virus/on_apply()
 	if(HAS_TRAIT(owner, TRAIT_VIRUSIMMUNE))
 		return FALSE
-	if(IS_UNCONSCIOUS_OR_CRIT(owner))
+	if(owner.stat != CONSCIOUS)
 		return FALSE
 	return TRUE
 
@@ -983,7 +931,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 
 /datum/status_effect/ants/on_creation(mob/living/new_owner, amount_left)
 	if(isnum(amount_left) && new_owner.stat < HARD_CRIT)
-		if(!IS_UNCONSCIOUS(new_owner)) // Unconscious people won't get messages
+		if(new_owner.stat < UNCONSCIOUS) // Unconscious people won't get messages
 			to_chat(new_owner, span_userdanger("You're covered in ants!"))
 		ants_remaining += amount_left
 		RegisterSignal(new_owner, COMSIG_COMPONENT_CLEAN_ACT, PROC_REF(ants_washed))
@@ -992,10 +940,10 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 /datum/status_effect/ants/refresh(effect, amount_left)
 	var/mob/living/carbon/human/victim = owner
 	if(isnum(amount_left) && ants_remaining >= 1 && victim.stat < HARD_CRIT)
-		if(!IS_UNCONSCIOUS(victim)) // Unconscious people won't get messages
-			if(prob(99))
+		if(victim.stat < UNCONSCIOUS) // Unconscious people won't get messages
+			if(!prob(1)) // 99%
 				to_chat(victim, span_userdanger("You're covered in MORE ants!"))
-			else
+			else // 1%
 				INVOKE_ASYNC(victim, TYPE_PROC_REF(/atom/movable, say), "AAHH! THIS SITUATION HAS ONLY BEEN MADE WORSE WITH THE ADDITION OF YET MORE ANTS!!", forced = /datum/status_effect/ants)
 		ants_remaining += amount_left
 	. = ..()
@@ -1020,7 +968,7 @@ GLOBAL_LIST_EMPTY(unconscious_appearances)
 /datum/status_effect/ants/tick(seconds_between_ticks)
 	var/mob/living/carbon/human/victim = owner
 	victim.apply_damage(max(0.1, round((ants_remaining * damage_per_ant), 0.1)) * seconds_between_ticks, BRUTE, spread_damage = TRUE) //Scales with # of ants (lowers with time). Roughly 10 brute over 50 seconds.
-	if(!IS_UNCONSCIOUS_OR_CRIT(victim)) //Makes sure people don't scratch at themselves while they're in a critical condition
+	if(victim.stat <= SOFT_CRIT) //Makes sure people don't scratch at themselves while they're in a critical condition
 		if(prob(15))
 			switch(rand(1,2))
 				if(1)

@@ -41,30 +41,26 @@
 	/// Type of shell to create
 	var/shell_type = /obj/effect/mob_spawn/ghost_role/human/golem
 
-/obj/item/golem_shell/item_interaction(mob/living/user, obj/item/tool, list/modifiers)
-	if(!isstack(tool))
-		return NONE
-
-	var/obj/item/stack/stack_food = tool
+/obj/item/golem_shell/attackby(obj/item/potential_food, mob/user, list/modifiers, list/attack_modifiers)
+	. = ..()
+	if(!isstack(potential_food))
+		balloon_alert(user, "not a mineral!")
+		return
+	var/obj/item/stack/stack_food = potential_food
 	var/stack_type = stack_food.merge_type
 	if (!is_path_in_list(stack_type, GLOB.golem_stack_food_directory))
 		balloon_alert(user, "incompatible mineral!")
-		return ITEM_INTERACT_BLOCKING
-
+		return
 	if(stack_food.amount < required_stacks)
 		balloon_alert(user, "not enough minerals!")
-		return ITEM_INTERACT_BLOCKING
-
+		return
 	if(!do_after(user, delay = 4 SECONDS, target = src))
-		return ITEM_INTERACT_BLOCKING
-
+		return
 	if(!stack_food.use(required_stacks))
 		balloon_alert(user, "not enough minerals!")
-		return ITEM_INTERACT_BLOCKING
-
+		return
 	new shell_type(get_turf(src), /* creator = */ user, /* made_of = */ stack_type)
 	qdel(src)
-	return ITEM_INTERACT_SUCCESS
 
 /obj/item/golem_shell/crowbar_act(mob/living/user, obj/item/tool)
 	. = ..()

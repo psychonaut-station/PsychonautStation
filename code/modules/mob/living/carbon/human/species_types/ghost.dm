@@ -13,7 +13,6 @@
 		TRAIT_UNHUSKABLE,
 		TRAIT_NO_FLOATING_ANIM,
 		TRAIT_MOVE_FLYING,
-		TRAIT_GHOSTLY_MOB,
 	)
 	inherent_biotypes = MOB_SPIRIT | MOB_UNDEAD
 	no_equip_flags = ITEM_SLOT_FEET
@@ -191,8 +190,7 @@
 		return FALSE
 	//technically you can trap a ghost by blessing them as theyre phasing,
 	//but they can still be dragged out.
-	var/turf/owner_turf = get_turf(owner)
-	if(HAS_TRAIT(owner_turf, TRAIT_TURF_BLESSED))
+	if(locate(/obj/effect/blessing) in get_turf(owner))
 		return FALSE
 	var/obj/item/bodypart/chest/their_chest = living_owner.get_bodypart(BODY_ZONE_CHEST)
 	if(!their_chest || !(their_chest.bodytype & BODYTYPE_GHOST))
@@ -251,9 +249,8 @@
 		UnregisterSignal(carbon_owner, COMSIG_MOB_CLIENT_PRE_LIVING_MOVE)
 
 ///Called when attempting to move to a new tile while the action is active, returns to cancel moving.
-/datum/action/innate/toggle_passthrough/proc/attempt_move(mob/source, atom/new_loc, direct)
+/datum/action/innate/toggle_passthrough/proc/attempt_move(mob/source, new_loc, direct)
 	SIGNAL_HANDLER
-
-	if(new_loc && HAS_TRAIT(new_loc, TRAIT_TURF_BLESSED))
+	if(locate(/obj/effect/blessing) in new_loc)
 		to_chat(source, span_warning("Holy energies block your path!"))
 		return COMSIG_MOB_CLIENT_BLOCK_PRE_LIVING_MOVE

@@ -116,7 +116,7 @@
 	. = ..()
 	if(!.) //dead or deleted
 		return
-	if(IS_UNCONSCIOUS_OR_CRIT(src)) // consciousness check
+	if(stat) // consciousness check
 		return
 
 	if(health < maxHealth)

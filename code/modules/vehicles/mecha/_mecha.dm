@@ -442,8 +442,7 @@
 	return cell
 
 /obj/vehicle/sealed/mecha/rust_heretic_act()
-	take_damage(500, BRUTE)
-	return TRUE
+	take_damage(500,  BRUTE)
 
 /obj/vehicle/sealed/mecha/proc/restore_equipment()
 	equipment_disabled = FALSE

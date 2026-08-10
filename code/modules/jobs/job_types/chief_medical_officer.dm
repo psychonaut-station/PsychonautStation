@@ -89,6 +89,8 @@
 		)
 	skillchips = list(/obj/item/skillchip/entrails_reader)
 
+	wintercoat = /obj/item/clothing/suit/hooded/wintercoat/medical/cmo
+
 /datum/outfit/job/cmo/mod
 	name = "Chief Medical Officer (MODsuit)"
 

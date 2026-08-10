@@ -61,6 +61,8 @@
 	var/cuffsuccesssound = 'sound/items/handcuff_finish.ogg'
 	/// How strong the cuffs are. Weak cuffs can be broken with wirecutters or boxcutters.
 	var/restraint_strength = HANDCUFFS_TYPE_STRONG
+	/// Multiplier for how long it takes to break the cuffs. Normal is 1
+	var/knife_breakout = 1
 
 	/// Is this pair of cuff being actually used?
 	var/used = FALSE
@@ -214,6 +216,7 @@
 	pickup_sound = null
 	drop_sound = null
 	restraint_strength = HANDCUFFS_TYPE_WEAK
+	knife_breakout = 0.4
 
 /obj/item/restraints/handcuffs/cable/Initialize(mapload, new_color)
 	. = ..()
@@ -354,6 +357,7 @@
 	color = null
 	cable_color = null
 	custom_materials = list(/datum/material/plastic = SMALL_MATERIAL_AMOUNT * 2.5)
+	knife_breakout = 0.5
 
 /obj/item/restraints/handcuffs/cable/zipties/on_uncuffed(datum/source, mob/living/wearer)
 	. = ..()
@@ -462,7 +466,7 @@
 
 /obj/item/restraints/legcuffs/beartrap/attack_self(mob/living/user)
 	. = ..()
-	if(!ishuman(user) || user.stat != CONSCIOUS || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
+	if(!ishuman(user) || IS_UNCONSCIOUS_OR_CRIT(user) || HAS_TRAIT(user, TRAIT_HANDS_BLOCKED))
 		return
 
 	playsound(loc, 'sound/items/weapons/handcuffs.ogg', 30, TRUE, -3)

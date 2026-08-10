@@ -33,6 +33,8 @@ export type Observable = {
   health: number;
   icon: string;
   mind_icon: string;
+  icon_file: string;
+  mind_icon_file: string;
   job: string;
   mind_job: string;
   name: string;

@@ -49,7 +49,6 @@
 #define ALERT_LOCKED "locked"
 #define ALERT_HACKED "hacked"
 #define ALERT_HACKING_APC "hackingapc"
-#define ALERT_BODYCAM_VIEWED "bodycam_viewed"
 
 /** MODsuit/Mech related */
 #define ALERT_MECH_DAMAGE "mech_damage"

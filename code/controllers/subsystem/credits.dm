@@ -339,7 +339,7 @@ SUBSYSTEM_DEF(credits)
 	if(human_escapees == 1)
 		var/mob/living/carbon/human/H = SSticker.popcount[POPCOUNT_ESCAPEES_HUMANONLY_LIST][1]
 
-		if(H.stat == CONSCIOUS && H.mind && H.mind.assigned_role.title)
+		if(H.stat == STABLE && H.mind && H.mind.assigned_role.title)
 			switch(H.mind.assigned_role.title)
 				if("Chef")
 					var/chance = 250

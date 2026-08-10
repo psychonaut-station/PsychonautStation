@@ -27,15 +27,16 @@ export function JobIcon(props: Props) {
   const { item, realNameDisplay } = props;
 
   // We don't need to cast here but typescript isn't smart enough to know that
-  const { icon = '', job = '', mind_icon = '', mind_job = '' } = item;
-  let usedIcon = realNameDisplay ? mind_icon || icon : icon;
+  const { icon = '', job = '', mind_icon = '', mind_job = '', icon_file = '', mind_icon_file = '' } = item;
+  let usedIconState = realNameDisplay ? mind_icon || icon : icon;
+  let usedIcon = realNameDisplay ? mind_icon_file || icon_file : icon_file;
   let usedJob = realNameDisplay ? mind_job || job : job;
 
   let iconSettings: IconSettings;
   if ('antag' in item && !realNameDisplay) {
     iconSettings = antagIcon;
     usedJob = item.antag;
-    usedIcon = item.antag_icon;
+    usedIconState = item.antag_icon;
   } else {
     iconSettings = normalIcon;
   }
@@ -46,8 +47,8 @@ export function JobIcon(props: Props) {
         <Icon color="lightblue" name={JOB2ICON[usedJob]} ml={0.3} mt={0.4} />
       ) : (
         <DmIcon
-          icon={iconSettings.dmi}
-          icon_state={usedIcon}
+          icon={usedIcon || iconSettings.dmi}
+          icon_state={usedIconState}
           style={{
             transform: iconSettings.transform,
           }}

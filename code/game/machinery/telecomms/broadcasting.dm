@@ -207,10 +207,7 @@
 
 	var/datum/voice_pack/radio_vp
 	if(GLOB.voices_enabled)
-		if(virt && isAI(virt.source))
-			radio_vp = GLOB.voice_pack_list["talk.radio_ai"]
-		else
-			radio_vp = GLOB.voice_pack_list["talk.radio2"]
+		radio_vp = GLOB.voice_pack_list["talk.radio"]
 	if(radio_vp)
 		var/sound/radio_sound = length(radio_vp.sounds) ? radio_vp.sounds[1] : null
 		if(radio_sound)

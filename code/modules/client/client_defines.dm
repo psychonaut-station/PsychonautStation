@@ -249,6 +249,8 @@
 	/// Discord verification ui
 	var/datum/verification_menu/verification_menu
 
+	var/datum/admin_verb_panel/admin_verb_panel
+
 	///Which ambient sound this client is currently being provided.
 	var/current_ambient_sound
 

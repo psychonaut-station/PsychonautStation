@@ -88,7 +88,7 @@
 
 /obj/item/organ/cyberimp/chest/reviver/proc/try_heal()
 	if(reviving)
-		if(owner.stat == CONSCIOUS)
+		if(!IS_UNCONSCIOUS_OR_CRIT(owner))
 			COOLDOWN_START(src, reviver_cooldown, revive_cost)
 			reviving = FALSE
 			to_chat(owner, span_notice("Your reviver implant shuts down and starts recharging. It will be ready again in [DisplayTimeText(revive_cost)]."))
@@ -99,7 +99,7 @@
 	if(!COOLDOWN_FINISHED(src, reviver_cooldown) || HAS_TRAIT(owner, TRAIT_SUICIDED))
 		return
 
-	if(owner.stat != CONSCIOUS)
+	if(IS_UNCONSCIOUS_OR_CRIT(owner))
 		revive_cost = 0
 		reviving = TRUE
 		to_chat(owner, span_notice("You feel a faint buzzing as your reviver implant starts patching your wounds..."))
@@ -160,23 +160,23 @@
 		return
 
 	if(reviving)
-		revive_cost += 200
+		revive_cost += 200 / severity
 	else
-		reviver_cooldown += 20 SECONDS
+		reviver_cooldown += 20 SECONDS / severity
 
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		if(human_owner.stat != DEAD && prob(50 / severity) && human_owner.can_heartattack())
 			human_owner.set_heartattack(TRUE)
 			to_chat(human_owner, span_userdanger("You feel a horrible agony in your chest!"))
-			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 600 / severity)
+			addtimer(CALLBACK(src, PROC_REF(undo_heart_attack)), 50 SECONDS / severity)
 
 /obj/item/organ/cyberimp/chest/reviver/proc/undo_heart_attack()
 	var/mob/living/carbon/human/human_owner = owner
 	if(!istype(human_owner))
 		return
 	human_owner.set_heartattack(FALSE)
-	if(human_owner.stat == CONSCIOUS)
+	if(!IS_UNCONSCIOUS_OR_CRIT(human_owner))
 		to_chat(human_owner, span_notice("You feel your heart beating again!"))
 
 
@@ -526,26 +526,33 @@
 
 /obj/item/organ/cyberimp/chest/chemvat/on_mob_insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
+	var/mob/living/carbon/human/human = receiver
+	if(!istype(human))
+		return
 
 	forced = new
 	forced_tank = new
 
-	if(receiver.wear_mask && !istype(receiver.wear_mask,/obj/item/clothing/mask/chemvat))
-		receiver.dropItemToGround(receiver.wear_mask, TRUE)
-		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
-	if(!receiver.wear_mask)
-		receiver.equip_to_slot(forced, ITEM_SLOT_MASK)
+	if(human.wear_mask && !istype(human.wear_mask,/obj/item/clothing/mask/chemvat))
+		human.dropItemToGround(human.wear_mask, TRUE)
+		human.equip_to_slot(forced, ITEM_SLOT_MASK)
+	if(!human.wear_mask)
+		human.equip_to_slot(forced, ITEM_SLOT_MASK)
 
-	if(receiver.back && !istype(receiver.back,/obj/item/chemvat_tank))
-		receiver.dropItemToGround(receiver.back, TRUE)
-		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
-	if(!receiver.back)
-		receiver.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+	if(human.back && !istype(human.back,/obj/item/chemvat_tank))
+		human.dropItemToGround(human.back, TRUE)
+		human.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
+	if(!human.back)
+		human.equip_to_slot(forced_tank, ITEM_SLOT_BACK)
 
 /obj/item/organ/cyberimp/chest/chemvat/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
 	. = ..()
-	organ_owner.dropItemToGround(organ_owner.wear_mask, TRUE)
-	organ_owner.dropItemToGround(organ_owner.back, TRUE)
+	var/mob/living/carbon/human/human = organ_owner
+	if(!istype(human))
+		return
+
+	human.dropItemToGround(human.wear_mask, TRUE)
+	human.dropItemToGround(human.back, TRUE)
 	QDEL_NULL(forced)
 	QDEL_NULL(forced_tank)
 

@@ -196,6 +196,15 @@
 	if(smoothing_flags & SMOOTH_QUEUED)
 		SSicon_smooth.remove_from_queues(src)
 
+#ifndef DISABLE_DREAMLUAU
+	// These lists cease existing when src does, so we need to clear any lua refs to them that exist.
+	if(!(datum_flags & DF_STATIC_OBJECT))
+		DREAMLUAU_CLEAR_REF_USERDATA(contents)
+		DREAMLUAU_CLEAR_REF_USERDATA(filters)
+		DREAMLUAU_CLEAR_REF_USERDATA(overlays)
+		DREAMLUAU_CLEAR_REF_USERDATA(underlays)
+#endif
+
 	return ..()
 
 /atom/proc/handle_ricochet(obj/projectile/ricocheting_projectile)
@@ -389,11 +398,8 @@
 	return null
 
 ///Return the current air environment in this atom
-/atom/proc/return_air()
-	if(loc)
-		return loc.return_air()
-	else
-		return null
+/atom/proc/return_air() as /datum/gas_mixture
+	return loc?.return_air()
 
 ///Return the air if we can analyze it
 /atom/proc/return_analyzable_air()

@@ -157,7 +157,7 @@
 	if(affected_mob.bodytemperature >= T0C)
 		return
 	var/power = -0.00003 * (affected_mob.bodytemperature ** 2) + 3
-	if(HAS_TRAIT(affected_mob, TRAIT_KNOCKEDOUT)) //Significantly more effective when unconscious
+	if(IS_UNCONSCIOUS(affected_mob)) //Significantly more effective when unconscious
 		power *= 2
 	var/need_mob_update
 	need_mob_update = affected_mob.adjust_oxy_loss(-1.5 * power * metabolization_ratio * seconds_per_tick, updating_health = FALSE, required_biotype = affected_biotype)
@@ -1224,13 +1224,13 @@
 		return
 	var/list/tips
 	if(SPT_PROB(50, seconds_per_tick))
-		tips = world.file2list("strings/tips.txt")
+		tips = world.file2list("strings/tips_tr.txt")
 	if(SPT_PROB(50, seconds_per_tick))
-		tips = world.file2list("strings/sillytips.txt")
+		tips = world.file2list("strings/sillytips_tr.txt")
 	else
 		tips = world.file2list("strings/chemistrytips.txt")
 	var/message = pick(tips)
-	send_tip_of_the_round(affected_mob, message, source = "Chemical-induced wisdom")
+	send_tip_of_the_round(affected_mob, message, source = "Kimyasal kaynaklı bilgelik")
 
 /datum/reagent/medicine/neurine
 	name = "Neurine"

@@ -1,0 +1,332 @@
+@Mesajlarınızın bir kısmını |, +, ^ veya _ karakterleriyle çevreleyerek sırasıyla <i>italik</i>, <b>kalın</b>, <small>küçük</small> veya <u>altı çizili</u> yapabilirsiniz. Bu karakterlerin önüne backslash ekleyerek bu efekti devre dışı bırakabilirsiniz (backslash mesajda görünmez).
+♪ Hey, oyun içi konuşurken mesajlarınızın başına % karakteri eklemeyi hiç denediniz mi? ♫
+Bir Scientist, kurbağalarınıza iyi para öder!
+Fırlatılan bir bardak su, zemini kaygan hale getirir ve peşinizdekileri sıkışık bir anda yavaşlatmanıza yarar.
+Sigara yakmak için kullanabileceğiniz her şeyle kanayan bir yarayı dağlayabilirsiniz. Teknik olarak buna Supermatter de dahildir.
+Bir Bitrunner olarak, quantum server'ınızı yükseltmek ödülleri artırır ve boşta kalma sürenizi azaltır.
+Bir Bitrunner olarak, avatarınızın virtual domain'leri tamamlamanıza yardımcı olacak ipuçları veren bir domain info yeteneği vardır.
+Bir Blobbernaut olarak, :b komutuyla overmind'lar ve diğer Blobbernaut'larla iletişim kurabilirsiniz.
+Bir Blobbernaut olarak, HUD'ınız kendi canınızı ve sizi yaratan overmind'ın çekirdek canını gösterir.
+Bir Botanist olarak, tıpkı bir Chemist gibi üretim özelliği taşıyan kimyasalları birleştirebilirsiniz. Hydrogen(grass) + water(peas) + sugar(grapes) = mannitol!
+Bir Botanist olarak, tıpkı bir Chemist gibi üretim özelliği taşıyan kimyasalları birleştirebilirsiniz. Potassium(bananas) + water(watermelons) = ... EĞLENCE!
+Bir Botanist olarak, daha egzotik tohumlara erişmek için MegaSeed Vendor'ı hackleyebilirsiniz. Bu tohumlar alternatif olarak cargo'dan da sipariş edilebilir.
+Bir Botanist olarak, NutriMax vendor'ınızdan alacağınız Left 4 Zed ile hydroponics tepsilerinizde yetişen bitkileri mutasyona uğratabilirsiniz. Birkaç bitkiyi biogenerator'da öğüttükten sonra, biogenerator da Left 4 Zed üretebilir hale gelir. Bilim harika değil mi?
+Bir Botanist olarak, bitkilerinizin potency değerini artırmayı düşünmelisiniz. Bu, bitkinin boyutunu, içerdiği kimyasal miktarını, biogenerator'da öğütüldüğünde kazandırdığı puanı artırır ve insanlara yetenekli bir botanist olduğunuzu gösterir.
+Bir Cargo Technician olarak, maintenance'tan gelen crate'leri, sıvı kaplarını, plasma sheet'lerini, hydroponics'ten nadir tohumları ve daha fazlasını geri göndererek daha fazla cargo puanı kazanabilirsiniz!
+Bir Cargo Technician olarak, MULEbot'ları hackleyerek onları hızlandırabilir, önlerine çıkanları ezmelerini sağlayabilir hatta onlara binebilirsiniz!
+Bir Cargo Technician olarak, supply shuttle konsolunu söküp devre kartına multitool kullanıp geri takarak kaçak (contraband) eşyalar sipariş edebilirsiniz.
+Bir Changeling olarak, Repurposed Glands bolaları kırar, stunları etkisiz kılar ve kollarınızı kullanma yeteneğinizi kaybetmeniz pahasına ciddi bir hız artışı verir - buna kısıtlı airlock'ları açabilme yeteneği de dahildir.
+Bir Changeling olarak, başka birinin görünümüne bürünmek onun tüm izlerini (scar) de size verir. Tüm izlerden kurtulmak için Fleshmend kullanabilirsiniz.
+Bir Changeling olarak, Extract DNA stingi genom absorbe etme hedefiniz için sayılır, ancak güçlerinizi yeniden seçmenize (respec) izin vermez.
+Bir Changeling olarak, birini boğup Absorb verb'ünü kullanarak absorbe edebilirsiniz; bu size güçlerinizi yeniden seçme imkânı, absorbe ettiğiniz kişinin DNA'sını, hafızasını ve söylediği bazı şeylerin örneklerini verir.
+Bir Chemist olarak, Holy Water ile Potassium karıştırıldığında kullanılan miktara göre gücü artan bir HOLY patlama yaratır. Her ikisinden de en az 75 unit kullanılırsa, patlama görüş alanındaki tüm cultist, heretic ve revenant'ları açığa çıkarır, tutuşturur ve felç eder. Yapın gitsin!
+Bir Chemist olarak, bazı kimyasallar yalnızca içeriği bir chemical heater ile ya da elle çakmak ve benzeri araçlarla ısıtarak sentezlenebilir.
+Bir Chemist olarak, iyileştirebilen düzinelerce kimyasal ve zarar verebilen daha da fazlası vardır. Deney yapın!
+Bir Chemist olarak, Water ile Potassium karıştırıldığında kullanılan miktara göre gücü artan bir patlama yaratır. Bunu yapmayın.
+Bir Chemist olarak, plastic sheet'lerden doğrudan 100u'luk plastic bottle'lar üretebilir, ayrıca lathe'de 120u'luk plastic beaker'lar yapabilirsiniz. ChemMaster sonsuz sayıda 30u'luk glass bottle üretebilir; araştırması yapılırsa medical techfab da 120u ile 300u arası kapasiteli beaker'lar üretebilir.
+Bir Chemist olarak, chemical dispenser'ınızı bir inducer ile veya hücresini (cell) değiştirerek şarj edebilirsiniz.
+Bir Chemist olarak, mürettebata belirli kimyasallar sağlamanız beklenir. Örneğin: cryo tüpleri için Cryoxadone ve Mannitol, botany için Diethylamine ve Saltpetre, ayrıca ön masa için iyileştirici hap ve yama (patch).
+Bir Cook olarak, yaptığınız yemekler vendor'lardaki hazır yiyeceklerden çok daha sağlıklıdır. Mürettebatın düzenli olarak sizden yemesi küçük buff'lar sağlar.
+Bir Cook olarak, mutfakta bulunmak size Close Quarters Cooking'in temellerini hatırlatır. Assistant'ları işyerinizden uzaklaştırmakta oldukça etkilidir.
+Bir Cook olarak, özel yapım olmayan yemeklerin çoğunun ikincil bir etkisi vardır; sizi iyileştirmekten ışık hızında hareket ettirmeye kadar. Deney yapın!
+Bir Cook olarak, crafting menüsü ile çok çeşitli yemekler yapabilirsiniz. Menüyü combat mode göstergenizin yanındaki çekiç ikonundan bulabilirsiniz.
+Bir Cook olarak, yemeklerinizi smartfridge'lere ve özel vending makinelerine yükleyebilirsiniz.
+Bir Cook olarak, kendi yaptığınız yemeği bir kalemle yeniden adlandırabilirsiniz.
+Bir Cultist olarak, ekranınızın sağ üst köşesindeki alert'e bakarak kültünüzün mevcut durumu ve hedefi hakkındaki tüm detayları görebilirsiniz.
+Bir Cultist olarak, hedefiniz tamamlanmadan önce fazla kaos yaratmayın. Shuttle çok erken çağrılırsa, kazanmak için yeterli zamanınız olmayabilir.
+Bir Cultist olarak, bir Heretic'i kurban etmeyi başarırsanız, kültünüzün her forge, archive ya da altar'ında üretilebilecek üç güçlü ve eşsiz eşyadan birinin kilidini açarsınız.
+Bir Cultist olarak, Blood Boil rune'u yakınındaki cultist olmayanlara büyük miktarda brute hasarı, Nar'Sie'ye bağlı diğer cultist'lere de biraz hasar verir; ancak kullanıldığında rune'un bulunduğu yerde bir yangın çıkarır.
+Bir Cultist olarak, bir Heretic'i kurban ettiğinizde, o kişi güçlü, musallat olunmuş bir longsword'un içine bağlanır. Herkes bu kılıcın bağını çözüp güçlerinin ve yeteneklerinin kilidini açabilir, ama bu kılıcın kendi iradesiyle hareket etmesine de izin verir.
+Bir Cultist olarak, ekibiniz çok zayıf başlar, ancak gerektiğinde ellerindeki her şeyi hızla ham güce dönüştürebilir. Açığa çıkmadan önce yeterli sayı ve ekipmana sahip olduğunuzdan emin olun, yoksa kült yüzüstü kalır.
+Bir Curator olarak, painting patronage'lara harcanan tüm kredilerin %22'sini (curator sayısına bölünerek) kazanırsınız. Başkalarının sabrını ve sanat becerisini kendi gelirinize dönüştürün!
+Bir Cyborg olarak, model seçiminizi dikkatli yapın; çünkü yalnızca reset kablonuzu kesip birleştirerek yeniden seçim yapabilirsiniz. Mümkünse, gerçekten bir modele ihtiyaç duyulan bir durum ortaya çıkana kadar model seçmemeyi tercih edin.
+Bir Cyborg olarak, EMP'lere karşı son derece savunmasızsınızdır çünkü EMP'ler sizi hem stunlar hem de hasar verir. Armory'deki ion rifle veya EMP kitine sahip bir traitor sizi saniyeler içinde öldürebilir.
+Bir Cyborg olarak, çoğu stun türüne karşı bağışıksınızdır ve neredeyse her konuda insanlardan çok daha üstünsünüzdür. Ancak flashlar sizi kolayca stunlock'layabilir ve elleriniz olmadığı için hiçbir hassas işi yapamazsınız.
+Bir Cyborg olarak, yangınlara ve ısıya karşı bağışıksınızdır. Rogue durumdaysanız, her yeri plasma yangınlarına boğup içlerinde hiç dert etmeden yürüyebilirsiniz!
+Bir Drone olarak, istasyondaki onarım gerektiren alanları bildirmek için diğer drone'lara ping atabilirsiniz.
+Bir Geneticist olarak, hulk olmak size yüksek melee hasarı verme, insanları stun-lock'lama ve duvarları yumruklama yeteneği kazandırır. Ancak silah ateşleyemezsiniz, critical duruma düşerseniz hulk statünüzü kaybedersiniz ve hulk iken AI tarafından insan sayılmazsınız.
+Bir Geneticist olarak, T, A'ya; G ise C'ye gider.
+Bir Geneticist olarak, kilidini açtığınız tüm mutasyonları genellikle saklamalısınız. Negatif mutasyonlar genetic stability'nizi artırır, bu da daha fazla pozitif mutasyonu tutmanızı sağlar.
+Bir Ghost olarak, minigame menüsü üzerinden ya da orbit menüsünün "Misc" bölümündeki takım spawner'larından birine tıklayarak capture the flag oyunlarını hem başlatabilir hem de katılabilirsiniz.
+Bir Ghost olarak, hemen hemen her şeye çift tıklayarak onu takip edebilirsiniz. Ya da sadece etrafta warp'layın!
+Bir Ghost olarak, yerdeki bir konteynerin içini üzerine tıklayarak görebilirsiniz.
+Bir Heretic olarak, Path of Ash gizlilik ve şaşırtmaya odaklanır, ancak ilerledikçe bu tarzı bırakıp daha agresif, ateşli bir final'e evrilir.
+Bir Heretic olarak, Path of Blade dövüş yeteneğinizi ödüllendirir, sizi bu konuda gitgide daha iyi yapar. Ascension ile nihai bir düello canavarına dönüşebilirsiniz.
+Bir Heretic olarak, Path of Cosmos mürettebatın üzerinde yürüdüğü uzaya haklı bir sahiplik kurmanızı sağlar. Statünüze saygı göstermezlerse, ötelerden bir dost çağırmak onlara göstermeye yeter.
+Bir Heretic olarak, Path of Flesh ötelerden ghoul'lar ve canavarlar çağırarak bir ordu kurmanızı sağlar. Ascension ile kendiniz tek başınıza bir ordu haline gelirsiniz.
+Bir Heretic olarak, Path of Lock bir Assistant'ın en iyi dostudur ve birçok yolu açabilir. Ötelerin ötesine giden yollar dahil...
+Bir Heretic olarak, Path of Moon etrafınızdaki insanları kelimenin tam anlamıyla çıldırtır - başarılı olursanız belki de sizin müttefikiniz olacak kadar çıldırtır.
+Bir Heretic olarak, Path of Rust oldukça göze batar, ama etrafınızdaki her şey yavaşça çürüyüp pas tutarken çok fazla hasarı savuşturmanızı sağlar.
+Bir Heretic olarak, Path of Void insanların uzayın derin boşluğunda çığlık atabilmeyi ya da sizden kaçabilmeyi dilemesine sebep olur. Sonunda fırtına her şeyi alır.
+Bir Heretic olarak, cultist'leri de kurban edebilirsiniz; bu size bir knowledge point ve üç eşsiz, güçlü ödülden birini kazandırır.
+Bir Heretic olarak, uyurken rastgele objeler hakkında rüya görerek bir influence'ın yerini bulabilirsiniz.
+Bir Janitor Cyborg olarak, tüm slaughter demon'ların ve hatta Bubblegum'ın bile başına beladırsınız. Kan lekelerini temizlemek onları ciddi şekilde zayıflatır.
+Bir Janitor olarak, biri janicart'ınızı çalarsa, bunun yerine space cleaner spray'inizi, grenade'lerinizi, water sprayer'ınızı kullanabilir, kanlı bir intikam alabilir ya da Cargo'dan bir tane daha sipariş edebilirsiniz.
+Bir Janitor olarak, mousetrap'ler bomba yapmak veya konteynerleri tuzaklamak için kullanılabilir.
+Bir Janitor olarak, bir tile'a işaret edip mop/clean diyerek cleanbot'lara komut verebilirsiniz.
+Bir Lawyer olarak, cezalar suça göre fazla ağır görünüyorsa Warden ile pazarlık etmeyi deneyin.
+Bir Lawyer olarak, mahkumlar için Captain ve Head of Security'yi courtroom'da duruşma yapmaya ikna etmeyi deneyebilirsiniz.
+Bir Medical Cyborg olarak, ameliyatları eksiksiz gerçekleştirebilir, hatta insanları augment edebilirsiniz.
+Bir Medical Doctor olarak, Saline-Glucose bir hastanın kan seviyesine geçici bir artış sağlamakla kalmaz, kan yenilenmesini de hızlandırır! Kan kaybetmiş hastalar için mükemmeldir!
+Bir Medical Doctor olarak, bir duş uyku, bilinç kaybı, kafa karışıklığı, uyku hali, titreme, baş dönmesi ve sarhoşluktan toparlanmaya yardımcı olabilir.
+Bir Medical Doctor olarak, hemen her tür yara en azından geçici olarak gauze ile tedavi edilebilir. Şüphedeyseniz, sarın gitsin!
+Bir Medical Doctor olarak, daha iyi ortamlar daha hızlı ameliyat demektir. Bir operating computer üzerinde ameliyat yapmak ve hastaya Sterilizine kullanmak süreci hızlandırır.
+Bir Medical Doctor olarak, bir freezer veya morgue tray'e yerleştirilen cesetlerin organları donarak çürümesi engellenir. Birden fazla ölüyü canlandıracak vaktiniz yoksa, onları geçici olarak morgue'a taşıyın!
+Bir Medical Doctor olarak, "...and their soul has departed" açıklaması olan cesetlere artık bağlı bir ghost yoktur - onları canlandırabilirsiniz ama hiçbir oyuncu kontrolü almayacağı için bunun bir anlamı kalmaz.
+Bir Medical Doctor olarak, kritik slash yaraları bir kişinin sahip olabileceği en tehlikeli durumlardan biridir. Elinizdeki gauze, epipen, sütür, cauteri her ne varsa mümkün olan en kısa sürede uygulayın!
+Bir Medical Doctor olarak, Plasmaman veya Jellypeople gibi bazı türlerin et veya kemiği olmadığını unutmayın. Bu, onlar üzerinde ameliyat yapış şeklinizi değiştirir; kesik açma veya kemik kesme gibi adımları atlamanıza izin verir.
+Bir Medical Doctor olarak, operating computer'lar hayal edebileceğiniz her ameliyatın nasıl tamamlanacağına dair talimatlar içerir. Kafanız karışırsa, süreç boyunca size rehberlik etmesi için bir tane kullanın.
+Bir Medical Doctor olarak, Plasmaman'lara tedavi uygulamak imkansız değildir! Stasis machine'ler gerekli ameliyatları yaparken onların yanmasını ve boğulmasını engeller. Böyle bir lüksünüz yoksa, boğulmayı önlemek için Salbutamol kullanıp onları çalışan bir duşun altında tutarak yangını engelleyebilirsiniz.
+Bir Medical Doctor olarak, bazen Virology laboratuvarıyla uğraşmayı deneyin! Virüsler, kritik durumdan bile iyileştirebilecek kadar güçlü iyileştirici etkilerden, tüm mürettebatı havadan bulaşan kendiliğinden tutuşmayla öldürebilecek kadar tehlikeli hastalıklara kadar çeşitlilik gösterebilir. Deney yapın!
+Bir Medical Doctor olarak, hastanız stasis'te değilse ameliyat sırasında kan kaybeder - özellikle kanamaları klemplemeden önce. Kan seviyelerini takip edin, hızlı çalışın ve en önemlisi işiniz bitince onları cauterize veya sütüre etmeyi unutmayın!
+Bir Medical Doctor olarak, virüslerle uğraşırken robotik organların hastalık etkilerine ve bulaşıcılığa karşı bağışıklık sağlayabileceğini unutmayın. Bu korumayı aşmak için inorganic biology semptomunu kullanın.
+Bir Medical Doctor olarak, bir salgın sırasında hasta bir kişiyi iyileştirmek için yalnızca az miktarda aşı gerekir. Tedavilerinizi daha verimli dağıtmak için Chemist ile çalışın.
+Bir Medical Doctor olarak, bir husk'tan sebep tespiti için şırınga ile kan çekmeyi deneyebilirsiniz. Kan çekebiliyorsanız sebep aşırı sıcaklık veya laserdir; çekecek kan yoksa changeling varlığı doğrulanmış demektir.
+Bir Medical Doctor olarak, kurbanı bir defibrillator ile tekrar tekrar şoklayarak kalp krizini tedavi edebilirsiniz!
+Bir Medical Doctor olarak, çok sayıda yarası olan hastalarla cryo'ya koyarak başa çıkabilirsiniz. Bu tüm yaralarını yavaşça aynı anda tedavi eder, ama doğrudan tedaviden çok daha yavaştır.
+Bir Medical Doctor olarak, çıkarma adımını yaparken boş bir implant case'i diğer elinizde tutarak implant çıkarabilirsiniz.
+Bir Medical Doctor olarak, penlight'ınızı insanlara doğrultarak bir medical hologram oluşturabilirsiniz. Bu onlara tedavi etmeye geldiğinizi bildirir.
+Bir Medical Doctor olarak, insanların göğsüne cerrahi olarak bir şeyler yerleştirebilir veya çıkarabilirsiniz. Bu bir bomba yerleştirmekten alien larva çıkarmaya kadar çeşitlilik gösterebilir.
+Bir Medical Doctor olarak, surgical drape yalnızca saha ameliyatı yaparken gereklidir. Stasis bed'e veya operating table'a kayıtlı hastalarda ameliyat için drape gerekmez.
+Bir Medical Doctor olarak, ameliyat yaparken doğru uzvu hedeflemeli ve combat mode'da olmamalısınız. Hastanıza sağ tıklamak ameliyat adımını kasıtlı olarak başarısız kılar.
+Bir Monkey olarak, hava veya scrubber vent'lerine alt+sol tıklayarak içlerinden geçebilirsiniz. Ancak bunu yapmak için üzerinizdeki ve elinizdeki her şeyi bırakmanız gerekir.
+Bir Monkey olarak, backpack, gas mask ve şapka gibi bazı insan eşyalarını hâlâ giyebilir ve yine de iki eliniz boş kalabilir.
+Bir Nuclear Operative olarak, iletişim çok önemlidir! Diğer operative'lerinizle konuşmak ve saldırı planı koordine etmek için ; kullanın.
+Bir Nuclear Operative olarak, birlikte hareket edin! Ekipmanınız güçlü olsa da, diğer operative'leriniz hayatınızı kurtarmakta çok daha iyidir: stunlanmışken sizi tehlikeden çekebilir ve baskı ateşi sağlayabilirler.
+Bir Nuclear Operative olarak, bazen AI'ın sizi bir odaya bolt'ladığı durumlarla karşılaşabilirsiniz. Cebinizde yedek C4 bulundurmak hayatınızı kurtarabilir.
+Bir Nuclear Operative olarak, bir syndicate cyborg satın almayı düşünmelisiniz; çünkü ağır ateş desteği sağlayabilir, tam erişime sahiptir, geleneksel stunlara karşı bağışıktır ve AI'ı kolayca alt edebilir.
+Bir Paramedic olarak, hastadaki gömülü nesneler ilgili uzva hedeflenip bir hemostat kullanılarak güvenle çıkarılabilir.
+Bir Paramedic olarak, mümkün olduğunda taze cesetleri stasis bed'lere koymanız çok önemlidir. CMO'nuz size teşekkür edecektir.
+Bir Paramedic olarak, UV penlight'ınız yanık yaralarındaki enfeksiyonları durdurmak için kullanılabilir! Sadece enfekte uzvu hedefleyip hastada kullanın.
+Bir Revenant olarak, Chaplain en büyük düşmanınızdır; çünkü null rod ile size ciddi hasar verebilir ve holy water ile istasyonun büyük bölümlerini sizin için geçilmez hale getirebilir.
+Bir Revenant olarak, Blight'ın insanlara verdiği hastalık yatarak ya da holy water ile kolayca iyileştirilebilir; bu yüzden en iyi yatmaya vakti olmayan hedeflerde, örneğin çatışma halindeki insanlarda kullanılır.
+Bir Revenant olarak, Defile yeteneğiniz küçük bir yarıçaptaki tile'lardan holy water'ı ve tuzu kaldırır; bu da chaplain istasyonu holy water'a boğduysa istasyonu geri kazanmanızı sağlar. Ayrıca morgue tray'lerini açmak için de kullanılabilir!
+Bir Revenant olarak, canınız aynı zamanda essence'ınızdır; bu yüzden kötü korunan cesetlerden essence biriktirdikten sonra kendinizi insanların önünde göstererek yaşayanların essence'ını toplamak çok daha güvenlidir.
+Bir Revenant olarak, Malfunction yeteneğiniz genel olarak makinelere ve mekanik nesnelere hasar verir, hatta bazı nesneleri emag'leyebilir. Deney yapın!
+Bir Revenant olarak, Overload Lights yeteneğiniz yalnızca kısa bir gecikmeden sonra hâlâ açık olan ışıklarla insanları şoklar.
+Bir Revolutionary olarak, cargo en iyi dostunuz ya da en kötü kabusunuz olabilir. En iyi senaryoda sınırsız miktarda silah ve zırh sipariş edebilirsiniz; en kötü senaryoda security cargo'yu ele geçirip diğer revolutionary'lerinizi size karşı çevirmek için sınırsız sayıda mindshield implant sipariş eder.
+Bir Revolutionary olarak, security officer gibi bir head of staff'ı veya mindshield implantlı birini dönüştüremezsiniz. Implant'lar genellikle Quartermaster tarafından satın alınır, ancak cerrahi olarak çıkarılabilir. Dönüşümlerin kontrolünü elinde tutmak için cargo'nun kontrolünü ele geçirin!
+Bir Revolutionary olarak, asıl gücünüz kimi dönüştürdüğünüzden gelir; turu kazanmak için dönüştüreceklerinizi akıllıca seçin.
+Bir Roboticist olarak, anomaly duyurularına kulak kabartın. Elinize bir bluespace anomaly core geçerse, bir Phazon mech inşa edebilirsiniz!
+Bir Roboticist olarak, insanları cyborg uzuvlarıyla augment edebilirsiniz. Augment edilmiş uzuvlar cable ve welder ile kolayca onarılabilir.
+Bir Roboticist olarak, hydraulic clamp ve plasma cutter takılı bir Clarke inşa ederek Shaft Miner'lara büyük yardımda bulunabilirsiniz. Bu mech kül fırtınasına dayanıklıdır ve hatta lav üzerinde yürüyebilir!
+Bir Roboticist olarak, cyborg'larınızı bir welding tool ile onarabilirsiniz. Yanık hasarı almışlarsa, batarya'larını çıkarıp screwdriver ile kablolarını açığa çıkararak cable coil ile değiştirebilirsiniz.
+Bir Roboticist olarak, reset kablosunu bir wire cutter ile kesip birleştirerek bir cyborg'un modelini sıfırlayabilirsiniz.
+Bir Scientist olarak, araştırılabilir stock part'lar istasyondaki makinelerin verimliliğini ve hızını ciddi şekilde artırabilir. Bazı durumlarda yeni işlevlerin kilidini bile açabilir.
+Bir Scientist olarak, bir analyzer ile tarayıp size verdiği frekansta bir remote signaling device ile sinyal göndererek, ya da araştırıldıysa bir anomaly analyzer ile vurarak anomaly'leri devre dışı bırakabilirsiniz. Bu, bir Phazon mech, reactive armor ya da çeşitli eşsiz ve güçlü silahlar yapımında kullanılabilecek bir anomaly core bırakır!
+Bir Scientist olarak, tachyon-doppler array'in giderek büyüyen patlamalar kaydetmesine izin vererek Science için para üretebilir ve deneyleri tamamlayabilirsiniz.
+Bir Scientist olarak, purple slime'lardan üretilen slime steroid'i canlıyken bir slime'a besleterek ondan elde edeceğiniz extract sayısını en üst düzeye çıkarabilirsiniz. Ardından cerulean slime'lardan üretilen extract enhancer'ı her extract'a uygulayabilirsiniz.
+Bir Scientist olarak, green slime'lardan elde edilen mutation toxin'i kullanarak kendinizi bir jelly mutant'a dönüştürebilirsiniz. Her alt tür kendine özgü özelliklere sahiptir - örneğin telepatik güçler, vücut çoğaltma veya slime extract'larını içine alma!
+Bir Security Officer olarak, kafa karışıklığını önlemek için diğer officer'larınızla security kanalını (:s) kullanarak iletişim kurun ve koordine olun.
+Bir Security Officer olarak, sechuds veya HUDsunglasses takarken birine bakmak arrest level'ını ayarlamanızı sağlar; bu da Beepsky ve diğer security bot'ların onu kovalamasına neden olur.
+Bir Security Officer olarak, mindshield implant'ların yalnızca birinin cultist'e dönüştürülmesini engelleyebileceğini unutmayın: revolutionary'lerin aksine, kişi zaten dönüştürülmüşse onu geri çevirmez.
+Bir Security Officer olarak, korelasyonun nedensellik anlamına gelmediğini unutmayın. Biri sadece yanlış zamanda yanlış yerde olmuş olabilir!
+Bir Security Officer olarak, disabler'ınıza veya kaskınıza bir sec-lite takabileceğinizi unutmayın!
+Bir Security Officer olarak, bir stunbaton'la tekrar tekrar vurarak kalp krizini tedavi edebilir, hatta iyileştirebilirsiniz. Vurgu *tekrar tekrar*'da.
+Bir Security Officer olarak, PDA'nızda insanları teslim olmaya davet etmek için kullanabileceğiniz özel bir kalem vardır. Bu, baton kullanmaya gerek kalmadan onları stunlar!
+Bir Security Officer olarak, sechuds veya HUDsunglasses'ınız yalnızca mürettebatın görev atamalarını ve suç durumunu değil, mindshield implantlı olup olmadıklarını da gösterir. Görev ikonlarının etrafındaki yanıp sönen mavi çerçeveden anlayabilirsiniz. Bir devrimde kimin sizin tarafınızda olduğunu kesin olarak anlamak için bunu avantajınıza kullanın!
+Bir Service Cyborg olarak, spray can'ınız insanları yere serer. Ancak mask ve gözlükler tarafından engellenir.
+Bir Shaft Miner olarak, her zaman üzerinizde bir GPS bulundurun; böylece ölürseniz başka bir miner veya cyborg sizi kurtarmaya gelebilir.
+Bir Shaft Miner olarak, Lavaland'daki her canavarın, karşılaşmalardan alacağınız hasarı en aza indirmenizi sağlayacak bir saldırı deseni vardır.
+Bir Shaft Miner olarak, Lavaland'ın kuzey tarafında güneyden çok daha fazla nadir mineral bulunur.
+Bir Shaft Miner olarak, yerel faunadan çeşitli ekipman craftlayabilirsiniz. Bone axe, lava boat ve ash drake armour bunlardan sadece birkaçı!
+Bir Shaft Miner olarak, goliath'lardan goliath plate toplayarak explorer's suit'inizi yükseltebilir, gelen melee hasarını ciddi şekilde azaltabilirsiniz.
+Bir Syndicate Monkey olarak, tür dönüşümlerine karşı patlayıcı derecede alerjiksinizdir ve bunlardan kaçınmalısınız.
+Bir Traitor olarak, plasma birçok şeyi sabote etmek için enjekte edilebilir. Power cell'ler, ampuller, welding tool'lar, puro ve e-sigaralar kullanıldığında patlar.
+Bir Traitor olarak, AI'ı size hizmet etmesi için ele geçirmek son derece güçlü bir müttefik yaratabilir. Ancak ona verdiğiniz kanunların ifadesine dikkat edin, kötü yazılmış kanunlarınızı size karşı kullanabilir!
+Bir Traitor olarak, Captain ve Head of Security istasyondaki öldürülmesi en zor iki hedeftir. Hedefinizden biri buysa, dikkatli planlayın.
+Bir Traitor olarak, cryptographic sequencer (emag) yalnızca locker, crate, APC ve daha fazlasını açmakla kalmaz. Ayrıca cyborg'ları hackleyebilir, hatta bot'ları çıldırtabilir. Doğru makinelerde kullanırsanız Syndicate ile bile iletişime geçebilirsiniz. Deney yapın!
+Bir Traitor olarak, syndicate encryption key diğer traitor'larınızla plan koordine etmek için çok kullanışlıdır -- ya da tabii ki, onlara ihanet etmek için.
+Bir Traitor olarak, hacklenmiş bir autolathe'de revolver mermisi üretebilir ve geri dönüştürebilirsiniz; bu da revolver'ı son derece güçlü bir araç haline getirir.
+Bir Traitor olarak, bazen diğer traitor'ları avlamakla görevlendirilebilirsiniz, aynı şekilde başkaları tarafından da avlanabilirsiniz.
+Bir Wizard olarak, robe, hat ve sandals'ınızı giymiyorsanız çoğu büyü kullanılamaz hale gelir.
+Bir Wizard olarak, summoning guns mürettebatın büyük bir kısmını birbirine düşürür, ama herkese floral somatoray'dan pulse rifle'a kadar bir şey verir. Kendi riskinizle kullanın!
+Bir Wizard olarak, fireball büyüsü yakın mesafede çok kötü performans gösterir, çünkü patlamaya kendiniz de yakalanabilirsiniz. Uzun koridorlarda bir tür topçu ateşi olarak kullanmak en iyisidir.
+Bir Wizard olarak, staff of chaos magic wand'lardan her türlü bolt'u ateşleyebilir. Bu, anlık ölüm bolt'larından birini iyileştirmeye veya canlandırmaya kadar çeşitlilik gösterebilir.
+Bir Wizard olarak, insanları taşa çevirip ortaya çıkan heykeli bir staff of animation ile canlandırarak, en azından 5 dakikalığına son derece güçlü bir minion yaratabilirsiniz.
+Bir Abductor Agent olarak, combat mode vest'iniz her tür silaha karşı çok daha yüksek dirence sahiptir ve kaskınız AI'ın sizi takip etmesini engeller.
+Bir Abductor olarak, baton dört mod arasında geçiş yapabilir: stun, sleep, cuff ve probe.
+Bir Abductor olarak, kurbanlarınızın gemi kontrol konsolunda nereye gönderileceğini seçebilirsiniz.
+Bir Alien olarak, resin zeminler sadece plasma stokunuzu yenilemekle kalmaz, pasif olarak da sizi iyileştirir. Ev sahibi avantajı kazanmak için resin zeminlerde savaşın!
+Bir Alien olarak, facehugger anlık olarak bir dövüşü kazanma yeteneği sayesinde en güçlü silahınızdır. Ancak biohood veya space helmet gibi bazı kaskların facehugger saldırılarını tamamen engelleyebileceğini unutmayın.
+Bir Alien olarak, hiçbir insan eşyasını veya makinesini alamaz ya da kullanamazsınız. Bunun yerine, APC'leri, bilgisayarları, kameraları sabote etmeye ve bulduğunuz silahları saklamaya, uzaya atmaya veya eritmeye odaklanmalısınız.
+Bir Alien olarak, laser, welding tool ve yangın gibi tüm burn saldırılarından iki kat hasar alırsınız. Ayrıca ateş resin'inizi ve yumurtalarınızı yok edebilir. Alevli silah yangınları hasar vermeden önce bölgeleri uzaya açarak söndürün!
+Bir Alien olarak, melee ustalığınız eşsizdir, ama menzilli yetenekleriniz oldukça zayıftır. Bir melee çatışmasına zorlamak için köşelerden faydalanın!
+Bir Atmospheric Technician olarak, incinerator içinde plasma/oxygen karışımı yakmak sadece güç üretmekle kalmaz, tritium, su buharı ve karbondioksit gibi gazlar da üretir.
+Bir Atmospheric Technician olarak, gas pump'larınızı volumetric gas pump'larla değiştirmeyi düşünün; çünkü bunlar havayı iz gazları bırakan yüzdeler yerine sabit sayısal miktarlarda taşır.
+Bir Atmospheric Technician olarak, gas pipe metrelerine dikkat edin. Metre sıcaklığa tepki olarak renk değiştirir, çubuk ise yüksek basınca tepki olarak büyür ve kalınlaşır.
+Bir Atmospheric Technician olarak, yangınlarla mücadelede herkesten daha donanımlısınız. Bu yüzden daha iyi firesuit'lere veya backpack firefighter tank'lerine erişiminiz vardır.
+Bir Atmospheric Technician olarak, wrench'lenmiş bir pipe veya diğer atmos bileşeninin üzerine istediğiniz katmandan bir pipe ile tıklayarak bir pipe'ın katmanını değiştirebilirsiniz.
+Bir Atmospheric Technician olarak, içindeki gazların basıncına bakılmaksızın bir pipe'ı unwrench edebilirsiniz, ama basınç çok yüksekse dışarı fışkırıp sizi yaralayabilir!
+Bir Atmospheric Technician olarak, ATMOS holofan projector'ınız nesnelerin geçmesine izin verirken gazları engeller. Bununla gaz sızıntılarını, yangınları ve hull breach'lerini hızlıca sınırlayabilirsiniz.
+Bir Atmospheric Technician olarak, backpack firefighter tank'iniz resin fırlatabilir. Bu resin yangınları söndürür ve gazları güvenli, oda sıcaklığında bir hava karışımıyla değiştirir.
+Bir Engineer olarak, motoru ve SMES hücrelerini kontrol etmek için ara sıra Engineering'e geri dönün. Supermatter'ın delaminasyona uğramadığından emin olmak her zaman iyi bir fikirdir.
+Bir Engineer olarak, modular computer'lardaki Supermatter Monitoring Program size Supermatter'ın durumu ve chamber içindeki havanın içeriği hakkında detaylı bir rapor verir; bu da uzaktan hem teşhis koymanıza hem de izlemenize olanak tanır!
+Bir Engineer olarak, Supermatter shard son derece tehlikeli bir ekipmandır: ona dokunmak sizi toza çevirir. Telekinezi ile dokunmak da öyle.
+Bir Engineer olarak, üzerine bir fire extinguisher sıkarak Supermatter kristalini soğutabilirsiniz. Sadece cesurlar için!
+Bir Engineer olarak, altlarına powered cable yerleştirerek grille'leri elektriklendirebilirsiniz.
+Bir Engineer olarak, başkalarının devre dışı bırakmasını engellemek için ID kartınızı kullanarak APC'leri ve emitter'ları kilitleyebilirsiniz.
+Bir Engineer olarak, engine room APC'sinin main breaker'ını devre dışı bırakarak secure storage blast door'larını zorla açabilirsiniz. Motor çalışıyorsa bu açıkça kötü bir fikirdir.
+Bir Engineer olarak, combat mode'da değilken üzerlerinde bir welding tool kullanarak pencereleri onarabilirsiniz.
+Bir Engineer olarak, istasyonu geçici olarak yalnızca solar array'lerle güçlendirebilirsiniz. Bir süre boyunca istasyonu güçlendirmeye yetecek kadar elektrik sağlarlar, ancak çıktıları istasyonu sürekli güçlendirmek için gerçekten gerekenin biraz altındadır.
+Bir Engineer olarak, departman protolathe'iniz ve circuit printer'ınız hemen her şeyi inşa etmek için gerekli devre kartlarını ve bileşenleri üretebilir. Her yere ekstra medical makine yapın! Security için bir gibber inşa edin! Koridor boyunca bir emitter dizisi kurun! Olasılıklar sonsuzdur!
+Bir Engineer olarak, RCD'niz sadece compressed matter cartridge yerine iron, glass veya plasteel sheet ile de doldurulabilir.
+Bir Engineering Cyborg olarak, air alarm/fire alarm/APC frame'lerini yere koyup üzerlerinde screwdriver kullanarak duvarlara takabilirsiniz.
+AI olarak, kameraların görebildiği yerlerde, agent ID takmıyorlarsa ve changeling gibi dijital kamuflaj kullanmıyorlarsa, insanların isimlerine tıklayarak onlara bakabilirsiniz.
+AI olarak, çekirdeğinizin yanındaki status display'leri değiştirmek için emote yapabilirsiniz. Bazı emote'lar hatta tüm istasyondaki status display'leri değiştirmek için de kullanılabilir.
+AI olarak, shift tuşuna basılı tutarak kapılara tıklayıp hızlıca açıp kapatabilir, ctrl basılı tutarak bolt'layabilir, hatta alt basılı tutarak şoklayabilirsiniz.
+AI olarak, kameranızla fotoğraf çekip newscaster'lara yükleyebilirsiniz.
+AI olarak, kameranız için bir konum kısayolu ayarlamak üzere CTRL + 1-9 kullanabilir, böylece konumu kaydedip istediğiniz zaman oraya atlayabilirsiniz. Tilde ve sıfır sizi atladığınız son noktaya geri götürür, numpad rakamları ise normal rakam tuşlarına takma ad (alias) olarak çalışır.
+Bartender olarak, bar tabelasını yanına gidip tıklayarak kurmayı unutmayın!
+Bartender olarak, başlangıçta sahip olduğunuz içecekler yalnızca temelleri verir. Daha gelişmiş karışımlar istiyorsanız chemistry, hydroponics ile çalışmayı ya da öğütüp karıştırmak için maden kazmayı düşünün!
+Bartender olarak, shotgun'ınızı daha kolay saklamak için üzerinde bir circular saw kullanabilirsiniz.
+Blob olarak, factory üretimini ihmal etmeyin. Bunlar reagent'ınızı taşıyan ve mürettebatı sizden çok daha uzağa kadar kovalayabilen sporlar üretir. Sporlar mürettebatı sarıp panik yaratmak için toplanabilir, hatta cesetleri ele geçirip çok daha tehlikeli blob zombie'lere dönüştürebilir!
+Blob olarak, çekirdeğinizi uzaydan biraz uzak tutun; çünkü uzaya genişlemek hem pahalıdır, hem saldırıya açıktır, hem de kazanma koşulunuza sayılmaz. Uzayda kurulan emitter platformları özellikle tehlikelidir.
+Blob olarak, güçlü blob'ları, resource node'ları, factory'leri ve node'ları kaldırmak size sırasıyla 4, 15, 25 ve 25 resource kazandırır.
+Blob olarak, konuşmak diğer tüm overmind'lara ve tüm Blobbernaut'lara bir mesaj gönderir, böylece saldırıları yönlendirip koordine edebilirsiniz.
+Blob olarak, bir blob tile'ının yanındaki her şeye saldırabilirsiniz, ama yalnızca ana yönlerde genişleyebilirsiniz ve çapraz saldırılar biraz daha zayıftır.
+Blob olarak, tıklayarak genişleyebilir, ctrl-click ile güçlü blob'lar oluşturabilir, orta tık ile sporları toplayabilir ve alt-click ile blob'ları kaldırabilirsiniz. Bunu yapmak için kameranızın tile'ın üzerinde olması gerekmez.
+Blob olarak, çekirdeğinizi 3 dakika geçtikten sonra ulaşabildiğiniz, açık ve gözlemlenmeyen herhangi bir noktaya yerleştirebilirsiniz. Çok uzun beklerseniz otomatik olarak rastgele bir konuma yerleştirilirsiniz. Bu bekleme süresini diğer overmind'larla koordine olmak için kullanın.
+Blob olarak, mürettebat mevcut reagent türünüze karşı adapte olup korunduysa, altı rastgele seçenek arasından reagent türünüzü yeniden seçebilirsiniz.
+Blob olarak, bir yıpratma savaşı yürütürsünüz: medbay'i etkisiz hale getirin ve sürekli saldırıları ve koordineli patlama hasarı ataklarını önlemek için darboğazlarda savaşın!
+Captain olarak, her vardiyada nuclear disk ve pinpointer'ı yanınıza almayı unutmayın. Bunlardan birini güvende tutacağına güvendiğiniz başka bir head'e vermek iyi bir fikirdir.
+Captain olarak, istasyondaki en yüksek öncelikli hedeflerden birisiniz. Devrimlerden nuclear operative'lere, sizi eşsiz lasgun'unuzdan ya da hayatınızdan mahrum etmek isteyen traitor'lara kadar endişelenmeniz gereken pek çok şey vardır.
+Captain olarak, bir communications console kullanarak yeni bir emergency shuttle satın alabilirsiniz. Bazıları nakit gerektirirken bazıları size karşılığında nakit verir. Tehlikeli shuttle'lar satın almanın mürettebatınızın öfkesini kışkırtabileceğini unutmayın.
+Captain olarak, istasyon üzerinde mutlak erişim ve kontrole sahipsiniz, ama bu berbat bir insan olmanın isyan ve ban ile sonuçlanmayacağı anlamına gelmez.
+Captain olarak, sabreniz Assistant'lara (orijinal karaciğerlerine sahip oldukları sürece) ekstra hasar verir.
+Chaplain olarak, çoğu insandan daha yüksek ihtimalle tanrılara dua ederek bir yanıt alırsınız. Şansınızı artırmak için renkli crayon rune'ları, yanan mumlar ve wire art ile altar'lar yapın.
+Chaplain olarak, bible'ınız aynı zamanda küçük eşyalar saklayabilen bir konteynerdir. Tanrınıza bağlı olarak, başlangıç bible'ınız bir sürpriz içerebilir!
+Chaplain olarak, null rod'unuzun büyü karşıtı işlevleri vardır: vurarak cultist rune'larını yok edebilir, ayrıca sizi wizard büyülerine ve cult büyüsüne karşı bağışık kılar.
+Chief Engineer olarak, ofisinizdeki power flow control console size APC bilgilerini gösterir ve onları uzaktan kontrol etmenizi sağlar.
+Chief Engineer olarak, station blueprint'lerinizi kullanarak alanları yeniden adlandırabilir veya tamamen yeni alanlar yaratabilirsiniz.
+Chief Engineer olarak, message monitor console ile PDA iletişimlerini casusluk edebilir, hatta sahte mesajlar oluşturabilirsiniz! Anahtarı ofisinizdedir.
+Chief Medical Officer olarak, bir nükleer acil durum, blob istilası veya başka bir kriz sırasında insanları hayatta ve savaşır halde tutmak için doctor'larınız, chemist'leriniz ve paramedic'lerinizle koordine olup iletişim kurun.
+Chief Medical Officer olarak, hypospray'iniz standart 15 unit yerine 30 unit tutabilen, doldurulabilir, anlık bir enjeksiyon şırıngası gibidir.
+Clown olarak, elinizde uzun bir balon varken bir başka balona tıklayarak bir balon hayvanı oluşturun! Her renk kombinasyonunun kendine özgü bir sonucu vardır.
+Clown olarak, muz yemek sizi hafifçe iyileştirir. Honk!
+Clown olarak, muz kabuğunuzu kaybederseniz, yine de PDA'nızla insanları kaydırabilirsiniz! Honk!
+Clown olarak, bir Traitor iseniz ve indirimde bir emag alırsanız (ya da başka bir traitor'ı ikna ederseniz), Clown Car'ınızı emagleyerek Siege Mode dahil bir dizi yeni işlevin kilidini açabilirsiniz; bu, yolcularınızı tercihen doğrudan Supermatter'a fırlatmanızı sağlar! Ya da uzaya.
+Clown olarak, gimmick'lerinizi çeşitlendirin! Kimse tek numaralı bir midilliyi sevmez.
+Clown olarak, bir stampınızı bir kartondan sheet üzerinde kullanarak bir honkbot yapımının ilk adımını atabilirsiniz. Tüm mürettebat için eğlenceli!
+Clown olarak, Grail'iniz herkesin sevdiği eğlenceli ve sağlam bir mech yapması için Roboticist'e verilebilecek bananium mineralidir.
+Coroner olarak, bir cesette otopsi tamamlamanın sonraki ameliyatları hızlandıracağını unutmayın. Aynı anda birden fazla kişi bir ceset üzerinde çalışabildiğinden, cesetleri daha hızlı canlandırmak için Medical Doctor'larınızla ekip kurmayı düşünün!
+Coroner olarak, autopsy scanner'ınızın sağ tıklamada yalnızca cesetler için gelişmiş bir health analyzer olarak da çalıştığını unutmayın.
+Coroner olarak, cesetlerle çalışmakta daha rahatsınız. Otopsi yapmayı veya cesetlerden organ toplamayı Medical Doctor meslektaşlarınızdan çok daha hızlı yapabilirsiniz. Cesetleri canlanmaya hazırlamalarına yardım ederek onlarla iş birliği yapın.
+Coroner olarak, elinizdeki handheld autopsy scanner ile garip koşullarda kurtarılan cesetler üzerinde otopsi yaparak nasıl öldüklerini keşfedebilirsiniz. Bir Detective ile ekip kurarak birlikte birçok davayı çözebilirsiniz!
+Coroner olarak, eşsiz cerrahi aletleriniz 'cruel implements' olarak sınıflandırılır; bu cesetlerde ameliyatı hızlandırır - henüz ceset olmayanlarda ise yavaşlatır. Birkaç başka eşya da bu sınıflandırmaya sahiptir.
+Curator olarak, rafları dolu ve kütüphaneyi mürettebat için temiz tutmaya özen gösterin.
+Curator olarak, tamamen savunmasız değilsiniz. Kırbacınız insanları kolayca silahsızlandırır, laser pointer'ınız insanları ve cyborg'ları kör edebilir, ayrıca eşyaları wirecut kitaplarda saklayabilirsiniz.
+Detective olarak, insanlar her yere ve her şeye parmak izi bırakır. Beyaz latex hariç, eldivenler bunları gizler. Ama her şey kaybolmuş değildir; eldivenler siyah veya nitrile gibi kendi türlerine özgü lifler bırakır ve bu genel bir departmana işaret eder.
+Detective olarak, forensics scanner'ınızı uzaktan da kullanabilirsiniz. Bunu kutuları veya diğer depolama konteynerlerini taramak için kullanın.
+Detective olarak, revolver'ınıza hacklenmiş bir autolathe'den elde edilen .357 mermisi doldurulabilir. Ateşlemek revolver'ınızın patlamasına iyi bir ihtimalle yol açabilir.
+Head of Personnel olarak, Captain kaybolursa yerini ilk sizin almanız beklense de, diğer head of staff'lardan daha üst rütbeli değilsinizdir. Durum sizin için fazla zorlu görünüyorsa, başka bir head'in geçici Captain olmasına izin vermeyi düşünün.
+Head of Security olarak, gücün başınızı döndürmesine izin vermeyin. Yüksek erişiminiz, harika ekipmanınız ve yanınızda küçük bir orduya sahip olabilirsiniz, ama iyi bir sebep olmadan berbat bir insan olmak banlanma sebebidir.
+Head of Security olarak, istasyona gelen her tehditle başa çıkmak için security gücünüzü koordine etmeniz beklenir. Bazen bu bir blob ile başa çıkmak için armory'yi kullanmak, bazen bir devrim ya da kült sırasında acımasız olmak anlamına gelir.
+Head of Security olarak, idam veya zorla cyborgizasyon isteyebilirsiniz, ama bu Captain'ın onayını gerektirebilir.
+Malfunctioning AI olarak, mürettebatın büyük bölümünü öldürmek için istasyonu plasma yangınlarına boğmayı ve kaçmayı başaran birkaç kişiyi space suit'lerle tek tek avlamayı düşünün.
+Malfunctioning AI olarak, durum kötüleşirse bir APC'ye kaçabilirsiniz (shunt). Bu, aktifse doomsday device'ınızı devre dışı bırakır.
+Malfunctioning AI olarak, cyborg'larınızı korumak için ya robotics console'u sökmelerini emretmeli ya da kendiniz havaya uçurmalısınız.
+Mime olarak, hangi elinizde tuttuğunuza bağlı olarak bir ventriloquist dummy üzerinden konuşmak için :R / .R veya :L / .L kullanabilirsiniz.
+Mime olarak, görünmez duvar gücünüz insanları ve mermileri de engeller. Sıkışık bir anda peşinizdekini geciktirmek için kullanabilirsiniz.
+Mime olarak, sessizlik yemininiz gücünüzün kaynağıdır. Onu bozmak sizi hem gücünüzden hem de onurunuzdan mahrum eder.
+Quartermaster olarak, aldığınız crate'lerdeki manifest'leri kontrol ettiğinizden emin olun. Bir hata varsa, manifest'i DENIED diye damgalayıp iade için eşyalara dokunmadan bir crate içinde geri gönderin!
+Quartermaster olarak, crate'leri drop pod ile anında teslim eden bir express supply console inşa edebilirsiniz. Çarpma ayrıca küçük bir patlamaya da yol açar.
+Research Director olarak, cyborg'ları havaya uçurmak yerine kilitleyebilirsiniz. Ardından kanunlarını sıfırlatabilir, olmazsa güvenle söktürebilirsiniz.
+Research Director olarak, AI'ları bir intelliCard'a yükleyerek çekirdeklerinden çıkarabilirsiniz; bu size ion/syndicate kanunları dahil kanunlarını görme imkânı verir. Ardından bir AI system integrity restorer bilgisayarına yerleştirerek onları canlandırabilir veya onarabilirsiniz.
+Warden olarak, bir mahkumun suçları yeterince ağırsa onu permabrig'e veya gulag'a koyabilirsiniz. Ara sıra kontrol etmeyi unutmayın!
+Warden olarak, her zaman armory'ye yakından göz kulak olun; çünkü burası nuclear operative'lerin ve küstah traitor'ların gözde hedefidir.
+Warden olarak, tekrar suç işleyebileceğinden şüphelendiğiniz suçluları, konumlarını takip eden ve uzaktan onlara etkisiz hale getirici kimyasal enjekte etmenizi sağlayan cihazlarla implante edebilirsiniz.
+Warden olarak, turuncu prisoner shoes'a kelepçe kullanarak onları cuffed shoes'a çevirebilir, mahkumları yürümeye zorlayarak olası bir kaçışı engelleyebilirsiniz.
+Warden olarak, göreviniz fazla bir şey olmadığında brig'in bekçisi ve mahkumların bakıcısı olmak, bir kriz patlak verdiğinde ise security officer'lara ekipman ve silah dağıtmaktır.
+Basketbol odaklanma gerektirir. Hedefinize (oyuncu veya potaya) tıklamazsanız, ıskalama ihtimaliniz artar.
+Basketbol beceri gerektirir. Dönmek stamina tüketir, isabeti azaltır ama disarm'a karşı direnç kazandırır. Smaç için kullanın!
+Basketbol stamina gerektirir. Ne kadar çok stamina'nız varsa, topunuzun çalınma ihtimali o kadar azalır ve başka bir oyuncudan top çalma ihtimaliniz o kadar artar.
+Basketbol strateji gerektirir. İki oyuncunun baktığı yön disarm'ları etkiler, bu yüzden top çalmaya çalışan birine sırtınızı dönmek idealdir.
+Basketbol takım çalışması gerektirir. LMB ile pas atmak anlıktır ve stamina harcamaz.
+Bir zombinin bulaştırıcı saldırısına karşı biyolojik zırh, uzvunuz zırh değerinden daha fazla hasarlı değilse uzvunuzu korur. Firesuit ve EVA suit gibi kalın malzemeli zırhlar da kısmen korur; en azından ilk bulaşma saldırısını engeller.
+Bir windoor'a çarpmak yerine üzerine tıklamak onu açık tutar, tekrar tıklayarak kapatabilirsiniz.
+Farklı silahların farklı güçlü yönleri vardır. Mızrak, zemin karosu ve throwing star gibi bazı silahlar normal saldırıya kıyasla fırlatıldığında daha fazla hasar verir.
+Yardım istemekten çekinmeyin; ister akranlarınızdan ister adminlerden.
+Çıktıyı en üst düzeye çıkarmak için Supermatter engine'in farklı kurulumlarını deneyin, ama bunu yaparken mürettebatın güvenliğini riske atmayın!
+Felinid'ler laser pointer'lar tarafından geçici olarak dikkati dağıtılır. Biri tarafından kovalanırken bunu avantajınıza kullanın.
+Firesuit ve winter coat soğuğa karşı hafif koruma sağlar, hiçbir şey giymemeye kıyasla breach'lerin ve uzayın yakınında daha uzun süre kalmanıza olanak tanır.
+First-aid analyzer'lar yaralarda tedavi hızını iki katına çıkarır, ayrıca normal ve rastgele hazırlanmış (improvised) tedavi talimatları verir.
+Glass shard'lar kaynaklanarak glass yapılabilir, iron rod'lar da kaynaklanarak iron yapılabilir. Ore'lar da kaynaklanabilir, ama bu çok fazla yakıt gerektirir.
+Alt tuşunu basılı tutup bir tile'a sol tıklamak, içeriğini sağ üstteki pencere panelinde göstermenizi sağlar; bu shift basılı tutup sağ tıklamaktan çok daha hızlıdır.
+Başka bir departmandan ihtiyacınız olan bir şey varsa, sormayı deneyin! Bu oyun tek kişilik değil ve birlikte neler başarabileceğinize şaşırabilirsiniz!
+Başka bir oyuncuyla yumruk yumruğa kalırsanız, saldırgan kalmak genelde akıllıca bir harekettir. Kaçmak çoğu zaman pek işe yaramaz.
+Bir skateboard üzerinde çılgın bir grind yaparken birine çarparsanız, o kişi iki kat süre yerde kalır. Radikal!
+Birden fazla kişiyi güvenliğe veya uzaya sürüklemeniz gerekiyorsa, onları taşımadan önce hepsini içine tıkmak için bir locker veya crate getirin.
+Kanıyorsanız, kanayan uzva hedefleyerek kendinizi kavrayıp basınç uygulayabilirsiniz. Bu sizi yavaşlatır ve bir elinizi meşgul eder, ama kan kaybetme hızınızı yavaşlatır. Bunun kanamanın daha hızlı pıhtılaşmasına yardımcı olmadığını unutmayın.
+Hotkey modunu kullanıyorsanız, H tuşuyla bir şeyi çekmeyi durdurabilirsiniz.
+Bir ameliyattan çıktınız ve doktorunuz sizi cauterize veya sütüre etmeyi unuttuysa, bunu kendiniz yapabilirsiniz - hatta bir çakmakla bile.
+Sıkışık bir anda çıplak soyunmak, tackle'lanmaya karşı ciddi bir direnç kazandırır. Neye daha çok değer veriyorsunuz, özgürlüğünüze mi yoksa onurunuza mı?
+Sıkışık bir anda, birkaç sıradan reagent ile kanamayı veya yanık enfeksiyonunu azaltabilirsiniz - un, tuz, tuzlu su zaman kazanmak için yaraya dökülebilir, çay ise vücudunuzun savunmasına destek olması için içilebilir.
+Yere yatmak kan kaybını yavaşlatmaya yardımcı olur. Ölüm ise tamamen durdurur.
+Maintenance her turda rastgele değişen ekipmanla doludur. Etrafa bakın, işe yarar bir şey var mı görün.
+Modular computer'lar entegre devrelerle uyumludur, ama program bağımlı devrelerin çoğunun çalışması için açık/arka planda olmaları gerekir. Devreleri sabit konsollara kurmak için önce sağ tıkla frame ile etkileşimi açmanız gerekir.
+Görevle ilgili çoğu suit slotu kıyafeti görevle ilgili eşyaları içine alabilir; örneğin atmospheric technician'ın winter coat'u bir RPD taşıyabilir ya da labcoat'lar çoğu ilacı taşıyabilir.
+Çoğu türün diş implantları için kullanılabilecek yalnızca 32 dişi vardır. Moth'ların hiç dişi yoktur. Lizard'ların ise yetmiş beş.
+Çoğu şeyin sağ, alt, shift ve control tık ile özel etkileşimleri vardır. Deney yapın!
+Suit slotuna giren çoğu kıyafette, suit storage'ınıza spraycan, emergency oxygen tank veya flashlight gibi bazı küçük eşyaları koyabilirsiniz.
+Uzaktan kumanda edilen cihazlar kameralar üzerinden kullanıldığında da çalışır. Örneğin: Bluespace RPED'ler ve door remote'lar.
+Uyumak küçük yaralanmalardan ve organ hasarından iyileşmek için kullanılabilir. Sanity, karanlık, göz bantları, kulaklık, masalar, yataklar ve çarşaflar iyileşme hızını etkiler.
+İstasyonun bazı bölgeleri konumlarını belirtmek için basit denizcilik yönleri kullanır: Fore (geminin önü), Aft (arkası), Port (sol taraf), Starboard (sağ), Quarter ve Bow (sırasıyla Aft ve Fore'un iki yanı). Bu terimleri PDA'nızın Notepad uygulamasında inceleyebilirsiniz.
+Bazı eşyalar incelendiğinde 'crafting components' olarak etiketlenir; bu, onları başka bir eşyayla vurarak doğrudan bir tarif inşa edebileceğiniz anlamına gelir. Bir rod üzerinde igniter kullanmayı deneyin!
+Bazı roller varsayılan olarak antagonist olamaz, ama antag seçimi önce yapılır. Örneğin, Security Officer'ı High'a ayarlayabilirsiniz, bu antag olma şansınızı etkilemez -- oyun sadece başka bir rol seçer.
+Bazı silahlar robotları ve yapıları yıkmakta diğerlerinden daha iyidir. Bir pencereyi scalpel ile kırmaya çalışmayın, bir toolbox deneyin.
+Mızraklar melee'de vurarak secure locker'ları kırabilir!
+Standart epipen'ler yalnızca kan kaybını yavaşlatmakla kalmayan, en çok kanayan yaranızın pıhtılaşmasına da yardımcı olan güçlü bir pıhtılaştırıcı içerir! Birden fazla kötü kanayan yaranız varsa, mümkün olan en kısa sürede ek tedavi arayın!
+Suit storage üniteleri kıyafetlerden yalnızca kan ve kiri değil, radyasyonu da temizler!
+Ameliyat, Medbay'de bulunmayan çok çeşitli aletlerle de yapılabilir, ama bu süreyi ve başarısızlık riskini ciddi şekilde artırır. Ancak alkol gibi sterilize edici maddeler kullanarak veya bir masa ya da yatak üzerinde yaparak bu cezayı dengeleyebilirsiniz.
+Syndicate Duffelbag'ler açılıp kapanması çok daha hızlıdır, çok daha az yavaşlatır ve fire axe, silah veya gibtonite gibi çeşitli hacimli, hedefle ilgili eşyalardan ikisine kadar taşıyabilir. Tüm olasılıkları görmek için yakından inceleyin.
+Chaplain, bible'ıyla vurarak herhangi bir konteyneri suyla kutsayabilir. Holy water'ın hem kültlere karşı sayısız kullanımı vardır hem de büyük miktarları onlara karşı başarıya önemli bir katkıdır.
+Tablet bilgisayarlarda bulunan P2P chat fonksiyonu, insanlarla gizlice iletişim kurmanın bir yolunu sunar.
+Resist butonu, kelepçelerden, bir sandalyeye veya yatağa bağlıyken, kilitli locker'lardan ve daha fazlasından kurtulmanızı sağlar. Ne zaman sıkışırsanız, resist'i deneyin!
+İstasyonun self-destruct terminali yok edilemez. Onu yok etmeye çalışmak yerine gidip disk'i bulun.
+İstasyonun etrafında kaçak eşya saklamak için birçok yer vardır. Birkaç başlangıç noktası: linen box'lar, tuvalet rezervuarları, body bag'ler. Daha fazlasını bulmak için deneyin!
+Vault'taki kasayı kırmak için bir stethoscope veya üç plastic explosive kullanın.
+Eşyalara sticky tape kullanmak onları insanlara ve duvarlara yapıştırabilir! Dikkatli olun, kritik anda grenade'ler elinize yapışabilir!
+Hepimiz bir zamanlar yeniydik, sabırlı olun ve yeni oyunculara doğru yönü gösterin.
+Riot armor giymek tackle takedown'ları gerçekleştirmede sizi çok daha etkili yapar, ama her sıçrayışta ekstra stamina harcatır! Ayrıca sizi başka tackle'lara karşı ciddi şekilde korur!
+Çoğu eşyayı craftlarken, parçaları elle birleştirebilir veya crafting menüsünü kullanabilirsiniz.
+Security ile uğraşırken, iş birliği ve aldatma yoluyla cezanızı çoğu zaman tamamen sıfırlatabilirsiniz.
+Blob ile savaşırken, kimyasal etkilerini ve analiz edilen blob türünü kontrol etmek için ona bir analyzer ile vurabilirsiniz. Aktif bir research scanner veya medical hud ile incelemek de bu bilgiyi ortaya çıkarır.
+Kapıları hacklerken, bir "test light wire"ı kesip birleştirmek kapıya gücü geri getirir.
+Teknik sorunlardan şüphelendiğinizde cache'inizi temizleyin (byond launcher > dişli çark > preferences > game prefs), BYOND'unuzu güncelleyin ve yeniden bağlanın.
+Uzayda floor tile yerleştirirken, yakında bir plating parçası varsa lattice yerleştirmenize gerek yoktur.
+Space map seviyelerinin nerede birbirine bağlandığı her turda rastgele belirlenir, ama tur içinde tutarlı kalır. Bunların mutlaka çift yönlü olmadığını unutmayın!
+Floor changer butonları dikey açık uzayda hareket etmenizi sağlarken, hareket etmeden açık uzaya ve hatta cam zeminlere bakmak için sağ tıklayabilirsiniz!
+Egzersiz yapmak fitness seviyenizi artırır; bu da boyutunuzu ve fireman carry hızınızı iyileştirir. Kaliteli beslenme ve uyku da şart olduğunu unutmayın!
+Tank transfer valve'lardan bir tank çıkarmak için alt-click kullanabilirsiniz.
+Boş elinizi 'aktive ederek' kol implantlarınızı otomatik olarak çıkarabilir ve geri takabilirsiniz. Buna integrated toolset'ler, cursed katana'lar ve vorpal scythe'lar da dahildir.
+Bir doğum günü pastası pişirip mikrodalgaya atarak efsanevi bir cake hat yapabilirsiniz. Ardından bunu bir energy sword ile birleştirerek bir energy cake oluşturabilirsiniz.
+Boş elinizi aktif ederek throw mode'unuzu açıp fırlatılan eşyaları yakalayabilirsiniz.
+Carpet reagent'ını Oil ve Cyanide gibi çeşitli farklı reagent'larla birleştirerek eşsiz carpet türleri oluşturabilirsiniz.
+Kendinizi bir masaya sürükleyerek üzerine tırmanabilirsiniz. Bu zaman alır ve elinizdeki eşyaları masaya düşürür. Birinin tırmanmakta olduğu bir masaya tıklamak onu yere devirir.
+Tab tuşuna basarak kontrol şemasını değiştirebilirsiniz. Biri WASD, diğeri ok tuşlarıdır. Hotkey'lerin de bununla değiştiğini unutmayın.
+Zarları mikrodalgada pişirerek hileli hale getirip oyunlarda hile yapabilirsiniz. Kartlar x-ray görüşle görülebilir veya bir kalem ya da crayon ile işaretlenerek avantaj elde edilebilir.
+Kendinizi sürükleyerek bir masaya tırmanabilirsiniz. Bu zaman alır ve elinizdeki eşyaları masaya bırakır. Tırmanmakta olan birine tıklamak onu yere devirir.
+Carpet reagent'ını Oil ve Cyanide gibi farklı reagent'larla birleştirerek eşsiz carpet türleri yaratabilirsiniz.
+Odun kullanarak zor durumlar için peg limb ve crutch craftlayabilirsiniz. Bu ikincisi medical vendor'larda da bulunabilir.
+Nar'Sie Cultist'lerini büyük miktarda holy water besleyerek dönüşümden çıkarabilirsiniz. Revolutionary'lerin aksine, onlara mindshield implant takmak işe yaramaz!
+Diğer oyuncuları üzerinize sürükleyerek strip menüsünü açabilir, ekipmanlarını çıkarabilir veya onları bir şey giymeye zorlayabilirsiniz. Suit veya kaskların altındaki kıyafetlere erişiminizi engelleyebileceğini ve bazı eşyaların soyulmasının veya giydirilmesinin diğerlerinden daha uzun sürebileceğini unutmayın.
+İki yetişkin pelüşü birbiriyle oynatarak yaşam döngüsünü sürdürebilir, daha küçük bir junior pelüş yavrusu yaratabilirsiniz.
+Ctrl basılı tutup birine tıklayarak onu kavrayabilir, ardından tekrar ctrl-click yaparak grab'ı yükseltebilirsiniz. Aggressive bir grab birini anlık olarak stunlar, tıklayarak bir masaya yerleştirmenize veya throwing'i açarak fırlatmanıza olanak tanır.
+Bir puroyu bir supermatter kristali üzerinde yakabilirsiniz.
+Boş bir elle sürükleyip bitişik bir tile'a tıklayarak bir eşyayı yolun dışına çıkarabilirsiniz.
+MODsuit modül butonlarınızı suit UI'sinde action bar'ınıza sabitleyebilirsiniz.
+Odadaki eşyalardan (giyilen eşyalar dahil) radyasyonu hızlıca temizlemek için etraflarına su buharı bırakabilirsiniz.
+Bir kişiye wire cutter, jaws of life veya box cutter ile sağ tıklayarak cablecuff'ları veya zipty'leri anında kesebilirsiniz. Jaws of life kelepçeleri bile anında kırabilir!
+Herhangi bir kimyasal olmayan grenade'e screwdriver kullanarak fitilini 5 saniyeden 3 saniyeye, oradan da anlık patlamaya kısaltabilirsiniz. Bunu kimse beklemez.
+Uzayda süzülürken bir fire extinguisher sıkarak, eşya fırlatarak veya silah ateşleyerek yönünüzü değiştirebilirsiniz. Sadece gitmek istediğiniz yönün tersine ateş edin.
+Bir elinizde crowbar, diğerinde bir tile yığını tutarak floor tile'ları değiştirebilirsiniz.
+Kol mesafenizdeki herhangi bir intercom üzerinden konuşmak için :I / .I kullanabilirsiniz. Bu, mikrofonunu manuel olarak açmadan içine konuşmanıza olanak tanır ve hatta kritik durumdayken bile çalışır (ama bilinçsizken çalışmaz)!
+Sol veya sağ elinizde tuttuğunuz bir eşya üzerinden konuşmak için :L / .L veya :R / .R kullanabilirsiniz. Bu, mikrofonunu manuel olarak açmadan bir station-bounced radio'ya konuşmanıza, hatta bir oyuncak taklidi yapmanıza olanak tanır!
+Vault'taki bir makineyi kullanarak nakit yatırabilir veya Cargo'nun departman fonlarını soyabilirsiniz.
+Elinizde bir multitool kullanarak bölgenin yerel APC'sini takip edebilirsiniz.
+Bir ethereal üzerinde multitool kullanarak şarjlarını kontrol edebilirsiniz!
+Bir radio headset'ten encryption key çıkarmak için screwdriver kullanabilirsiniz. Anahtar daha sonra kendi headset'inize, bir intercom'a, hatta bir station-bounced radio'ya takılarak güvenli iletişimleri dinlemenizi sağlar.
+PDA'nızı şarj etmek için yükseltilmiş bir mikrodalga kullanabilirsiniz!
+Fonlarınızın akmasını durdurmak için bir Spacecoin makinesini yok etmenize gerek yoktur. ID'nizi üzerinde okutmak para çekimini durdurur.
+Oynamaktan zevk almak yerine sadece kazanmak ve öldürmek için oynarsanız oyuna olan ilginizi hızla kaybedersiniz. Kendinizi bunu yaparken bulursanız, bir adım geri çekilip insanlarla konuşun - çok daha iyi bir deneyim olur!

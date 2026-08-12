@@ -46,7 +46,8 @@ export const TGUI_CHAT_ATTRIBUTES_TO_PROPS = {
 };
 
 const stripColoredNames = (inputHtml) => {
-  const spanRegex = /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
+  const spanRegex =
+    /(<span[^>]*\bclass=['"][^'"]*)\bjob__[\w-]+\b([^'"]*['"][^>]*>)/gi;
   return inputHtml.replace(spanRegex, '$1$2');
 };
 
@@ -123,6 +124,8 @@ class ChatRenderer {
   lastScrollHeight: number;
   highlightParsers: Array<any> | null;
   coloredNames: boolean;
+  currentJob: string | null;
+  currentCharacter: string | null;
   handleScroll: (type: any) => void;
 
   constructor() {
@@ -137,6 +140,8 @@ class ChatRenderer {
     // Scroll handler
 
     this.scrollNode = null;
+    this.currentJob = null;
+    this.currentCharacter = null;
     this.scrollTracking = true;
     this.lastScrollHeight = 0;
     this.handleScroll = (evt) => {
@@ -200,6 +205,35 @@ class ChatRenderer {
     }
   }
 
+  setJob(title) {
+    this.currentJob =
+      typeof title === 'string' && title ? title.trim().toLowerCase() : null;
+  }
+
+  setCharacter(name) {
+    this.currentCharacter =
+      typeof name === 'string' && name ? name.trim().toLowerCase() : null;
+  }
+
+  matchesFilters(parser) {
+    if (
+      parser.jobs?.length &&
+      !(this.currentJob && parser.jobs.includes(this.currentJob))
+    ) {
+      return false;
+    }
+    if (
+      parser.characters?.length &&
+      !(
+        this.currentCharacter &&
+        parser.characters.includes(this.currentCharacter)
+      )
+    ) {
+      return false;
+    }
+    return true;
+  }
+
   setHighlight(highlightSettings, highlightSettingById) {
     this.highlightParsers = null;
     if (!highlightSettings) {
@@ -213,6 +247,13 @@ class ChatRenderer {
       const matchWord = setting.matchWord;
       const matchCase = setting.matchCase;
       const enabled = setting.enabled;
+      const jobs = String(setting.jobFilter || '')
+        .split(',')
+        .map((str) => str.trim().toLowerCase())
+        .filter(Boolean);
+      const characters = (
+        Array.isArray(setting.characterFilter) ? setting.characterFilter : []
+      ).map((str) => String(str).trim().toLowerCase());
       const allowedRegex = /^[a-zа-яё0-9_\-$/^[\s\]\\]+$/gi;
       const regexEscapeCharacters = /[!#$%^&*)(+=.<>{}[\]:;'"|~`_\-\\/]/g;
       const lines = String(text)
@@ -288,6 +329,8 @@ class ChatRenderer {
         highlightRegex,
         highlightColor,
         highlightWholeMessage,
+        jobs,
+        characters,
       });
     });
   }
@@ -465,7 +508,7 @@ class ChatRenderer {
         // Highlight text
         if (!message.avoidHighlighting && this.highlightParsers) {
           this.highlightParsers
-            .filter((parser) => parser.enabled)
+            .filter((parser) => parser.enabled && this.matchesFilters(parser))
             .forEach((parser) => {
               const highlighted = highlightNode(
                 node,

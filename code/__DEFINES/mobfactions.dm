@@ -93,6 +93,9 @@
 #define FACTION_HOLY "holy"
 /// Marine factions
 #define FACTION_MARINE "marine"
+/// Creatures that are spawned on the escape shuttle
+#define FACTION_SHUTTLE "shuttle"
+
 // Antagonist factions
 
 /// Cultists and their constructs

@@ -43,9 +43,7 @@
 
 			if(player_mob.stat == DEAD)
 				return FALSE
-			if(issilicon(player_mob) || isbrain(player_mob))
-				return FALSE
-			if(istype(player_mob) && (player_mob.dna?.species?.id == SPECIES_ZOMBIE_INFECTIOUS))
+			if(HAS_TRAIT(player_mob, TRAIT_NEVER_CONSIDERED_ALIVE))
 				return FALSE
 			return TRUE
 
@@ -339,13 +337,13 @@
  * Tips that starts with the @ character won't be html encoded. That's necessary for any tip containing markup tags,
  * just make sure they don't also have html characters like <, > and ' which will be garbled.
  */
-/proc/send_tip_of_the_round(target, selected_tip, source = "Tip of the round")
+/proc/send_tip_of_the_round(target, selected_tip, source = "İpucu")
 	var/message
 	if(selected_tip)
 		message = selected_tip
 	else
-		var/list/randomtips = world.file2list("strings/tips.txt")
-		var/list/memetips = world.file2list("strings/sillytips.txt")
+		var/list/randomtips = world.file2list("strings/tips_tr.txt")
+		var/list/memetips = world.file2list("strings/sillytips_tr.txt")
 		if(randomtips.len && prob(95))
 			message = pick(randomtips)
 		else if(memetips.len)

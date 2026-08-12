@@ -250,6 +250,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(radio_return & NOPASS)
 		return TRUE
 
+	if(radio_return)
+		message_mods[MODE_IS_RADIO] = TRUE
+
 	if(radio_return & ITALICS)
 		spans |= SPAN_ITALICS
 	if(radio_return & REDUCE_RANGE)
@@ -467,7 +470,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/list/speech_bubble_recipients = list()
 	var/talk_icon_state = say_test(message_raw)
 
-	if (!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT])
+	if (!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT] && !message_mods[MODE_IS_RADIO])
 		if(!HAS_TRAIT(src, TRAIT_SIGN_LANG))
 			get_bark_voice().start_barking(message_raw, listening, message_range, talk_icon_state, is_speaker_whispering, src)
 

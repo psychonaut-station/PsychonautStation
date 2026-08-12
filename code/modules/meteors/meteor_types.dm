@@ -258,13 +258,8 @@
 	heavy = TRUE
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
-<<<<<<< HEAD
-	threat = 20
-	signature = "Termal"
-=======
 	threat = SEVERITY_FLAMING_METEOR
-	signature = "thermal"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Termal"
 
 /obj/effect/meteor/flaming/meteor_effect()
 	..()
@@ -278,13 +273,8 @@
 	heavy = TRUE
 	hits = 9
 	meteordrop = list(/obj/item/stack/ore/uranium)
-<<<<<<< HEAD
-	threat = 35
-	signature = "Radyasyon"
-=======
 	threat = SEVERITY_IRRADIATED_METEOR
-	signature = "radiation"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Radyasyon"
 
 /obj/effect/meteor/irradiated/meteor_effect()
 	..()
@@ -301,13 +291,9 @@
 	hits = 9
 	heavy = TRUE
 	meteorsound = 'sound/effects/break_stone.ogg'
-<<<<<<< HEAD
-	threat = 25
-	signature = "Mühimmat"
-=======
 	threat = SEVERITY_CLUSTER_METEOR
-	signature = "ordnance"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Mühimmat"
+
 	///Number of fragmentation meteors to be spawned
 	var/cluster_count = 8
 
@@ -338,13 +324,8 @@
 	meteorsound = 'sound/mobs/humanoids/ethereal/ethereal_revive_fail.ogg'
 	meteordrop = list(/mob/living/basic/carp)
 	dropamt = 1
-<<<<<<< HEAD
-	threat = 5
-	signature = "Balıkçılık"
-=======
 	threat = SEVERITY_FROZEN_CARP
-	signature = "fishing and trawling"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Balıkçılık"
 
 /obj/effect/meteor/carp/Initialize(mapload)
 	if(prob(2))
@@ -359,13 +340,8 @@
 	dropamt = 3
 	hits = 12
 	meteordrop = list(/obj/item/stack/ore/bluespace_crystal)
-<<<<<<< HEAD
-	threat = 15
-	signature = "Bluespace Akışı"
-=======
 	threat = SEVERITY_BLUESPACE_METEOR
-	signature = "bluespace flux"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Bluespace Akışı"
 
 /obj/effect/meteor/bluespace/Bump(atom/bumped_atom)
 	..()
@@ -402,13 +378,8 @@
 	desc = "It radiates with captive energy, ready to be let loose upon the world."
 	icon_state = "bluespace"
 	hits = 6
-<<<<<<< HEAD
-	threat = 10
-	signature = "Elektromanyetik Parazit"
-=======
 	threat = SEVERITY_EMP_METEOR
-	signature = "electromagnetic interference"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Elektromanyetik Parazit"
 
 /obj/effect/meteor/emp/Move()
 	. = ..()
@@ -430,13 +401,8 @@
 	meteorsound = 'sound/effects/blob/blobattack.ogg'
 	meteordrop = list(/obj/item/food/meat/slab/human, /obj/item/organ/heart, /obj/item/organ/lungs, /obj/item/organ/appendix)
 	var/meteorgibs = /obj/effect/gibspawner/generic
-<<<<<<< HEAD
-	threat = 2
-	signature = "Mutfak Malzemeleri"
-=======
 	threat = SEVERITY_MEATY_ORE
-	signature = "culinary material"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Mutfak Malzemeleri"
 
 /obj/effect/meteor/meaty/setup_extra_drops()
 	meteordrop += pick(subtypesof(/obj/item/food/meat/slab/human/mutant))
@@ -478,13 +444,8 @@
 	heavy = TRUE
 	meteorsound = 'sound/effects/bamf.ogg'
 	meteordrop = list(/obj/item/stack/ore/plasma)
-<<<<<<< HEAD
-	threat = 50
-	signature = "Kıyamet"
-=======
 	threat = SEVERITY_TUNGSKA_METEOR
-	signature = "armageddon"
->>>>>>> 3fc77df3b2b9adce91fd01d73a6b223dcfdbf4e5
+	signature = "Kıyamet"
 
 /obj/effect/meteor/tunguska/Move()
 	. = ..()

@@ -5,20 +5,13 @@
 	cooldown_time = 10 SECONDS
 
 /datum/action/cooldown/spell/list_target/telepathy/killer_snail/cast(mob/living/cast_on)
-	log_directed_talk(owner, cast_on, message, LOG_SAY, name)
+	var/original_message = message
+	message = "<font size='10' color='#00FF00'><b>[original_message]</b></font>"
 
-	var/formatted_message = "<font size='10' color='#00FF00'><b>[message]</b></font>"
+	. = ..()
 
-	to_chat(owner, "<font size='10' color='#00FF00'><b>You whisper to [cast_on]:</b></font> [formatted_message]")
-
-	if(!cast_on.can_block_magic(antimagic_flags, charge_cost = 0))
-		cast_on.balloon_alert(cast_on, "you hear a voice")
-		to_chat(cast_on, "<font size='10' color='#00FF00'><b>You hear a strange voice in your head...</b></font> [formatted_message]")
-	else
-		owner.balloon_alert(owner, "transmission blocked!")
-		to_chat(owner, span_warning("Something has blocked your transmission!"))
-
-	return TRUE
+	message = original_message
+	return .
 
 /// The unassuming, unkillable, unstoppable snail. Player-controlled.
 /mob/living/basic/snail/angry/killer

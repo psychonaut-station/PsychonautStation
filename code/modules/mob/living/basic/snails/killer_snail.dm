@@ -54,7 +54,8 @@
 /mob/living/basic/snail/angry/killer/death(gibbed)
 	return
 
-/mob/living/basic/snail/angry/killer/bullet_act(obj/item/projectile/hitting_projectile)
+/mob/living/basic/snail/angry/killer/bullet_act(obj/projectile/hitting_projectile)
+	. = ..()
 	return BULLET_ACT_BLOCK
 
 /mob/living/basic/snail/angry/killer/fire_act()

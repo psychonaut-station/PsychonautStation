@@ -87,6 +87,7 @@
 			),
 		))
 		send_player_info()
+		send_hotkey_mode()
 		return TRUE
 
 	if(type == "audio/setAdminMusicVolume")
@@ -185,26 +186,18 @@
 /datum/tgui_panel/proc/resolve_invoke_args(list/raw_args, list/arg_metadata)
 	if(!islist(raw_args))
 		raw_args = list()
-	var/list/resolved = list()
-	for(var/key in raw_args)
-		var/value = raw_args[key]
-		var/datum/verb_arg_metadata/meta
-		for(var/datum/verb_arg_metadata/m in arg_metadata)
-			if(m.name == key)
-				meta = m
-				break
-		if(meta)
-			if(meta.arg_type & VERB_ARG_TYPE_NUM)
-				value = text2num(value)
-			else if(!(meta.arg_type & VERB_ARG_TYPE_TYPEPATH) && istext(value))
-				var/located = locate(value)
-				if(located)
-					value = located
-		else if(istext(value))
+	var/alist/resolved = alist()
+	for(var/datum/verb_arg_metadata/meta in arg_metadata)
+		if(!(meta.name in raw_args))
+			continue
+		var/value = raw_args[meta.name]
+		if(meta.arg_type & VERB_ARG_TYPE_NUM)
+			value = text2num(value)
+		else if(!(meta.arg_type & VERB_ARG_TYPE_TYPEPATH) && istext(value))
 			var/located = locate(value)
 			if(located)
 				value = located
-		resolved[key] = value
+		resolved[meta.name] = value
 	return resolved
 
 /datum/tgui_panel/proc/resolve_verb_target(verb_path)
@@ -263,3 +256,6 @@
 			"assets" = webroot_asset_urls,
 		)
 	window.send_message("metadata", metadata)
+
+/datum/tgui_panel/proc/send_hotkey_mode()
+	window.send_message("verbs/hotkey_mode", list("hotkeys" = client.hotkeys))

@@ -229,14 +229,6 @@
   vinylspiders:
   - bugfix: birdboat will no longer try to eat everything in sight at all times, in
       exchange their range for noticing food has been increased...
-<<<<<<< HEAD
-2026-08-10:
-  hry-gh:
-  - refactor: the backend for verbs has been changed ... again, please report any
-      issues on the bug tracker
-  - qol: the command bar is now a bit prettier, and also autocompletes things like
-      typepaths and mob targets (primarily useful for admins)
-=======
 2026-08-08:
   Gboster-0:
   - code_imp: fixed chasms ignoring lattices on top of them in some scenario's, creating
@@ -333,6 +325,10 @@
   PapaMichael:
   - config: Maintenance Drone laws and flavortext can be modified by the server config
   hry-gh:
+  - refactor: the backend for verbs has been changed ... again, please report any
+      issues on the bug tracker
+  - qol: the command bar is now a bit prettier, and also autocompletes things like
+      typepaths and mob targets (primarily useful for admins)
   - bugfix: classic hotkey mode will work when focused on the input bar
   - bugfix: you can navigate recently input commands with ctrl+up/down again
   - bugfix: pressing space in the input autocompletes to the next shared verb name
@@ -437,4 +433,3 @@
       because their rendering was broken
   timothymtorres:
   - bugfix: Fix helmets being flammable when armor is not
->>>>>>> 759503b8580db27f86e28eb5aeed6939431caf48

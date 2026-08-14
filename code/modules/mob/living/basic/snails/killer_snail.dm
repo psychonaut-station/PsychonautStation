@@ -27,6 +27,8 @@
 	melee_damage_upper = 1000
 	obj_damage = 1000
 
+	var/next_sound = 0
+
 /mob/living/basic/snail/angry/killer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/wall_tearer, allow_reinforced = TRUE, tear_time = 8 SECONDS)
@@ -36,8 +38,6 @@
 		/datum/action/cooldown/spell/list_target/telepathy/killer_snail,
 	)
 	grant_actions_by_list(innate_actions)
-
-/mob/living/basic/snail/angry/killer/var/next_sound = 0
 
 /mob/living/basic/snail/angry/killer/proc/send_horror_prompt(mob/living/target)
 	var/static/list/horror_prompts = list(
@@ -61,7 +61,6 @@
 	)
 
 	to_chat(target, "<font size='8' color='#FF0000'><b>[pick(horror_prompts)]</b></font>")
-
 
 /mob/living/basic/snail/angry/killer/Life(seconds_per_tick = SSMOBS_DT)
 	. = ..()
@@ -120,7 +119,7 @@
 			horror_prompt_trigger = TRUE
 
 		if(prob(10))
-			nearby_mob.adjust_temp_blindness(8 SECONDS)
+			nearby_mob.adjust_temp_blindness(4 SECONDS)
 			horror_prompt_trigger = TRUE
 
 		if(prob(50) && horror_prompt_trigger)

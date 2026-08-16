@@ -16,7 +16,7 @@
 /// The unassuming, unkillable, unstoppable snail. Player-controlled.
 /mob/living/basic/snail/angry/killer
 	name = "Just a Super Ordinary Snnnnnnail"
-	desc = "İstasyondaki bir gerizekalı ölümsüz ve çok zengin olmayı dilediği için bir zamanlar tanrı ona ceza olarak bu salyangozu verdi, tebrikler artık bu salyangoz sizinde sorununuz!!"
+	desc = "İstasyondaki bir gerizekalı ölümsüz ve çok zengin olmayı dilediği için, bir zamanlar tanrı ona ceza olarak bu salyangozu verdi. Tebrikler, artık bu salyangoz sizin de sorununuz!!"
 
 	health = 1
 	maxHealth = 1
@@ -32,7 +32,7 @@
 /mob/living/basic/snail/angry/killer/Initialize(mapload)
 	. = ..()
 	AddElement(/datum/element/wall_tearer, allow_reinforced = TRUE, tear_time = 8 SECONDS)
-	add_traits(list(TRAIT_GODMODE), type)
+	ADD_TRAIT(src, TRAIT_GODMODE, INNATE_TRAIT)
 
 	var/static/list/innate_actions = list(
 		/datum/action/cooldown/spell/list_target/telepathy/killer_snail,
@@ -85,7 +85,6 @@
 		'sound/ambience/icemoon/ambiicesting4.ogg',
 		'sound/ambience/maintenance/ambimaint.ogg',
 		'sound/ambience/misc/ticking_clock.ogg',
-		'sound/effects/hallucinations/over_here1.ogg',
 		'sound/music/antag/hypnotized.ogg'
 	))
 
@@ -132,33 +131,33 @@
 		return
 	return ..()
 
-/mob/living/basic/snail/angry/killer/proc/kill_victim(mob/living/carbon/human/H)
-	if(QDELETED(H) || H.undergoing_cardiac_arrest())
+/mob/living/basic/snail/angry/killer/proc/kill_victim(mob/living/carbon/human/target)
+	if(QDELETED(target) || target.undergoing_cardiac_arrest())
 		return
 
-	H.set_heartattack(TRUE)
+	target.set_heartattack(TRUE)
 
 /mob/living/basic/snail/angry/killer/UnarmedAttack(atom/attack_target, proximity_flag, list/modifiers)
 	if(!proximity_flag)
 		return
 
 	if(ishuman(attack_target))
-		var/mob/living/carbon/human/H = attack_target
+		var/mob/living/carbon/human/target = attack_target
 
-		if(H.undergoing_cardiac_arrest())
+		if(target.undergoing_cardiac_arrest())
 			return TRUE
 
-		do_attack_animation(H)
+		do_attack_animation(target)
 
-		H.visible_message(
-			span_danger("[H] suddenly clutches at [H.p_their()] chest!"),
+		target.visible_message(
+			span_danger("[target] suddenly clutches at [target.p_their()] chest!"),
 			span_userdanger("You feel a terrible pain in your chest. You can't breathe properly...")
 		)
 
-		H.losebreath += 4
-		H.adjust_eye_blur(4 SECONDS)
+		target.losebreath += 4
+		target.adjust_eye_blur(4 SECONDS)
 
-		addtimer(CALLBACK(src, PROC_REF(kill_victim), H), 2 SECONDS)
+		addtimer(CALLBACK(src, PROC_REF(kill_victim), target), 2 SECONDS)
 
 		return TRUE
 

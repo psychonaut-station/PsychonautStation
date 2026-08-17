@@ -328,3 +328,11 @@
   - bugfix: you can navigate recently input commands with ctrl+up/down again
   - bugfix: pressing space in the input autocompletes to the next shared verb name
       prefix
+2026-08-17:
+  Aliceee2ch:
+  - bugfix: Fixed private orders (goodies).
+  Gboster-0:
+  - bugfix: if a headset starts with a 2nd key in it, it will have that key inside
+      of itself instead of in nullspace (this has no gameplay effect)
+  Hatowo:
+  - rscadd: "Event s\u0131ras\u0131nda kullan\u0131labilecek  bir snail mobu ekler."

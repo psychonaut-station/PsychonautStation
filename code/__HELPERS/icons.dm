@@ -1422,9 +1422,9 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		var/saved_data = selected_char?[preference.savefile_key]
 		if(!saved_data)
 			continue
-		var/new_value = preference.deserialize(saved_data)
+		var/new_value = preference.deserialize(saved_data, preferences)
 
-		preference.apply_to_human(our_human, new_value)
+		preference.apply_to_human(our_human, new_value, preferences)
 
 	our_human.icon_render_keys = list()
 	our_human.update_body(is_creating = TRUE)

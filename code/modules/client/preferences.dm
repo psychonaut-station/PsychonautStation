@@ -107,8 +107,9 @@ GLOBAL_LIST_EMPTY(preferences_datums)
 	value_cache = null
 	return ..()
 
-/datum/preferences/New(client/parent)
+/datum/preferences/New(client/parent, load_and_save = TRUE)
 	src.parent = parent
+	src.load_and_save = load_and_save
 
 	for (var/middleware_type in subtypesof(/datum/preference_middleware))
 		middleware += new middleware_type(src)

@@ -1361,7 +1361,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
 	var/datum/client_interface/mock_client = new /datum/client_interface
-	var/datum/preferences/preferences = new(mock_client)
+	var/datum/preferences/preferences = new(mock_client, FALSE)
 
 	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
 		var/saved_data = selected_char?[preference.savefile_key]

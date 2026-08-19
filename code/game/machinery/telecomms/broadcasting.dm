@@ -214,9 +214,12 @@
 			hearers_in_radio_ranges ||= get_hearers_in_radio_ranges_track_radios(radios)
 			for(var/obj/item/radio/radio as anything in hearers_in_radio_ranges)
 				var/turf/radio_turf
-				for(var/mob/hearer as anything in hearers_in_radio_ranges[radio])
-					if(hearer.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
-						hearer.playsound_local(radio_turf ||= get_turf(radio), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
+				for(var/atom/movable/hearer as anything in hearers_in_radio_ranges[radio])
+					if(!ismob(hearer))
+						continue
+					var/mob/mob_hearer = hearer
+					if(mob_hearer.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
+						mob_hearer.playsound_local(radio_turf ||= get_turf(radio), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
 
 	// This following recording is intended for research and feedback in the use of department radio channels
 	if(length(receive))

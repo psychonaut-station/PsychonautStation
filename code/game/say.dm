@@ -153,8 +153,6 @@ GLOBAL_LIST_INIT(freqtospan, list(
 		if(hearing_movable.Hear(src, message_language, message, null, null, null, spans, message_mods, range) & HEAR_HEARD)
 			listened += hearing_movable
 
-	if(!message_mods[MODE_IS_RADIO])
-		get_bark_voice().start_barking(message, listened, range, say_test(message), FALSE, src)
 	do_tts_message(tts_message_to_use, message_language, message_mods, tts_filter, listened)
 
 /atom/movable/proc/compose_message(atom/movable/speaker, datum/language/message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, list/spans, list/message_mods = list(), visible_name = FALSE)

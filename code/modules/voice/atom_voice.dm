@@ -30,11 +30,17 @@
 	speed = 6
 	base_volume = 300
 
-/datum/atom_voice/proc/start_barking(message, list/hearers, message_range, talk_icon_state, is_speaker_whispering, atom/movable/speaker)
-	if (!voicepack || !GLOB.voices_enabled || QDELETED(speaker))
+/// Plays a bark sound to an individual listener mob, respecting their preferences and speaker properties
+/datum/atom_voice/proc/play_bark_to(mob/hearer, atom/movable/speaker, talk_icon_state, is_speaker_whispering, message_len, message_range)
+	if (!voicepack || !GLOB.voices_enabled || QDELETED(speaker) || QDELETED(hearer))
 		return
-	var/len = length_char(message)
-	if (!len)
+	if (!message_len)
+		return
+
+	var/client/hearer_client = hearer.client
+	if (!hearer_client?.prefs)
+		return
+	if (!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_enabled))
 		return
 
 	var/is_yell = talk_icon_state == "2"
@@ -51,29 +57,14 @@
 	else if (talk_icon_state == "1")
 		sound_idx = 2
 
-	var/list/short_hearers = list()
-	var/list/long_hearers = list()
 	var/cant_long_bark = !speaker.can_long_bark()
+	if (cant_long_bark || hearer_client.prefs.read_preference(/datum/preference/toggle/barks_short))
+		play_single_bark(hearer, sound_range, volume, 0, speaker, sound_idx)
+	else
+		play_long_bark(hearer, sound_range, volume, is_yell, message_len, speaker, sound_idx)
 
-	for(var/mob/hearer in hearers)
-		var/client/hearer_client = hearer.client
-		if(!hearer_client?.prefs)
-			continue
-		if(!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_enabled))
-			continue
-		if(cant_long_bark || hearer_client.prefs.read_preference(/datum/preference/toggle/barks_short))
-			short_hearers += hearer
-		else
-			long_hearers += hearer
-
-	if (length(short_hearers))
-		short_bark(short_hearers, sound_range, volume, 0, speaker, sound_idx)
-
-	if (length(long_hearers))
-		long_bark(long_hearers, sound_range, volume, is_yell, len, speaker, sound_idx)
-
-/datum/atom_voice/proc/long_bark(list/hearers, sound_range, volume, is_yell, message_len, atom/movable/speaker, sound_idx = 1)
-	if(!voicepack || QDELETED(speaker))
+/datum/atom_voice/proc/play_long_bark(mob/hearer, sound_range, volume, is_yell, message_len, atom/movable/speaker, sound_idx = 1)
+	if(!voicepack || QDELETED(speaker) || QDELETED(hearer))
 		return 0
 	var/vocal_speed = clamp(speed, voicepack.min_speed, voicepack.max_speed)
 	var/bark_speed_baseline = 4
@@ -81,21 +72,30 @@
 
 	var/num_barks = min(round(message_len / vocal_speed), 24)
 	var/total_delay = 0
-	speaker.long_bark_start_time = world.time
+
+	if (speaker.long_bark_start_time < world.time)
+		speaker.long_bark_start_time = world.time
 
 	for (var/i in 0 to num_barks)
 		if (total_delay > (1.5 SECONDS))
 			break
-		addtimer(CALLBACK(src, PROC_REF(short_bark), hearers, sound_range, volume, speaker.long_bark_start_time, speaker, sound_idx), total_delay)
+		if (total_delay == 0)
+			play_single_bark(hearer, sound_range, volume, speaker.long_bark_start_time, speaker, sound_idx)
+		else
+			addtimer(CALLBACK(src, PROC_REF(play_single_bark), hearer, sound_range, volume, speaker.long_bark_start_time, speaker, sound_idx), total_delay)
 		total_delay += base_duration + (rand(0, round(base_duration * (is_yell ? 5 : 10))) / 10)
 	return total_delay
 
-/datum/atom_voice/proc/short_bark(list/hearers, distance, volume, queue_time, atom/movable/speaker, sound_idx=1, sound/sound_override=null)
-	if(QDELETED(speaker))
+/datum/atom_voice/proc/play_single_bark(mob/hearer, distance, volume, queue_time, atom/movable/speaker, sound_idx = 1, sound/sound_override = null)
+	if(QDELETED(speaker) || QDELETED(hearer))
 		return
 	if(queue_time && speaker.long_bark_start_time != queue_time)
 		return
 	if(!voicepack && !sound_override)
+		return
+
+	var/client/hearer_client = hearer.client
+	if(!hearer_client?.prefs)
 		return
 
 	var/vocal_pitch = pitch + (rand(pitch_range * -50, pitch_range * 50) / 100)
@@ -108,35 +108,31 @@
 	var/client/speaker_client = speaker_mob?.client
 	var/speaker_wants_simple = speaker_client?.prefs?.read_preference(/datum/preference/toggle/voice_sounds_only_simple)
 
-	for(var/mob/hearer in hearers)
-		if(QDELETED(hearer))
-			continue
-		var/client/hearer_client = hearer.client
-		if(!hearer_client?.prefs)
-			continue
-		var/pitch_to_use = 0
-		var/sound/sound_to_use
-		var/volume_to_use = volume
-		if (sound_override)
-			sound_to_use = sound_override
-		else
-			if (speaker_wants_simple && voicepack && !voicepack.is_simple && voicepack.simple_equiv)
-				if(length(voicepack.simple_equiv.sounds))
-					sound_to_use = voicepack.simple_equiv.sounds[clamp(sound_idx, 1, length(voicepack.simple_equiv.sounds))]
-				volume_to_use *= voicepack.simple_equiv.volume
-			else if (voicepack)
-				volume_to_use *= voicepack.volume
-				if(length(voicepack.sounds))
-					sound_to_use = voicepack.sounds[clamp(sound_idx, 1, length(voicepack.sounds))]
-			if (!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_limited_pitch))
-				pitch_to_use = vocal_pitch
-		if(!sound_to_use)
-			continue
-		hearer.playsound_local(turf, vol = volume_to_use, vary = TRUE,
-			max_distance = distance, falloff_distance = 0, use_reverb = FALSE,
-			falloff_exponent = falloff_exponent,
-			distance_multiplier = 1, channel = 0,
-			sound_to_use = sound_to_use,
-			frequency = pitch_to_use,
-			)
+	var/pitch_to_use = 0
+	var/sound/sound_to_use
+	var/volume_to_use = volume
+	if (sound_override)
+		sound_to_use = sound_override
+	else
+		if (speaker_wants_simple && voicepack && !voicepack.is_simple && voicepack.simple_equiv)
+			if(length(voicepack.simple_equiv.sounds))
+				sound_to_use = voicepack.simple_equiv.sounds[clamp(sound_idx, 1, length(voicepack.simple_equiv.sounds))]
+			volume_to_use *= voicepack.simple_equiv.volume
+		else if (voicepack)
+			volume_to_use *= voicepack.volume
+			if(length(voicepack.sounds))
+				sound_to_use = voicepack.sounds[clamp(sound_idx, 1, length(voicepack.sounds))]
+		if (!hearer_client.prefs.read_preference(/datum/preference/toggle/barks_limited_pitch))
+			pitch_to_use = vocal_pitch
+
+	if(!sound_to_use)
+		return
+
+	hearer.playsound_local(turf, vol = volume_to_use, vary = TRUE,
+		max_distance = distance, falloff_distance = 0, use_reverb = FALSE,
+		falloff_exponent = falloff_exponent,
+		distance_multiplier = 1, channel = 0,
+		sound_to_use = sound_to_use,
+		frequency = pitch_to_use,
+	)
 

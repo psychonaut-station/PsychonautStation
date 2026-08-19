@@ -11,7 +11,7 @@
 	var/datum/atom_voice/temp_voice = new()
 	temp_voice.set_from_prefs(preferences)
 	if(temp_voice.voicepack)
-		var/duration = temp_voice.long_bark(list(user), 7, 300, FALSE, 32, user)
+		var/duration = temp_voice.play_long_bark(user, 7, 300, FALSE, 32, user)
 		QDEL_IN(temp_voice, duration)
 	else
 		qdel(temp_voice)

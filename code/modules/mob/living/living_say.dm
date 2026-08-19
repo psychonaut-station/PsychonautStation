@@ -404,8 +404,12 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	message = compose_message(speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, spans, message_mods)
 
 	var/hearflags = NONE
-	if(show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight))
+	var/heard_audibly = show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight)
+	if(heard_audibly)
 		hearflags |= HEAR_HEARD
+		if(!radio_freq && !speaker_is_signing && !is_custom_emote)
+			var/datum/atom_voice/speaker_voice = speaker.bark_voice || speaker.get_bark_voice()
+			speaker_voice?.play_bark_to(src, speaker, say_test(raw_message), message_mods[WHISPER_MODE], length_char(raw_message), message_range)
 	if(understood)
 		hearflags |= HEAR_UNDERSTOOD
 	return hearflags
@@ -468,15 +472,12 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/list/speech_bubble_recipients = list()
 	var/talk_icon_state = say_test(message_raw)
 
-	if (!message_mods[MODE_CUSTOM_SAY_ERASE_INPUT] && !message_mods[MODE_IS_RADIO])
-		if(!HAS_TRAIT(src, TRAIT_SIGN_LANG))
-			get_bark_voice().start_barking(message_raw, listening, message_range, talk_icon_state, is_speaker_whispering, src)
-
 	for(var/mob/M in listening)
 		if(M.client)
 			if(!M.client.prefs.read_preference(/datum/preference/toggle/enable_runechat) || (SSlag_switch.measures[DISABLE_RUNECHAT] && !HAS_TRAIT(src, TRAIT_BYPASS_MEASURES)))
 				speech_bubble_recipients.Add(M.client)
 	do_tts_message(tts_message_to_use, message_language, message_mods, tts_filter, listened)
+
 	var/image/say_popup = image('icons/mob/effects/talk.dmi', src, "[bubble_type][talk_icon_state]", FLY_LAYER)
 	SET_PLANE_EXPLICIT(say_popup, ABOVE_GAME_PLANE, src)
 	say_popup.appearance_flags = APPEARANCE_UI_IGNORE_ALPHA

@@ -82,4 +82,9 @@
 	to_chat(src,
 		html = "[link] [message]",
 		avoid_highlighting = speaker == src)
+
+	if(!radio_freq && !HAS_TRAIT(speaker, TRAIT_SIGN_LANG) && !is_custom_emote)
+		var/datum/atom_voice/speaker_voice = speaker.bark_voice || speaker.get_bark_voice()
+		speaker_voice?.play_bark_to(src, speaker, say_test(raw_message), message_mods[WHISPER_MODE], length_char(raw_message), message_range)
+
 	return HEAR_HEARD | HEAR_UNDERSTOOD

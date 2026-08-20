@@ -250,6 +250,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	if(radio_return & ITALICS)
 		spans |= SPAN_ITALICS
 	if(radio_return & REDUCE_RANGE)
+		message_mods[MODE_IS_RADIO] = TRUE
 		message_range = 1
 		if(!message_mods[WHISPER_MODE])
 			message_mods[WHISPER_MODE] = MODE_WHISPER
@@ -403,7 +404,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/heard_audibly = show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight)
 	if(heard_audibly)
 		hearflags |= HEAR_HEARD
-		if(!radio_freq && !speaker_is_signing && !is_custom_emote)
+		if(!radio_freq && !message_mods[MODE_IS_RADIO] && !speaker_is_signing && !is_custom_emote)
 			var/datum/atom_voice/speaker_voice = speaker.bark_voice || speaker.get_bark_voice()
 			speaker_voice?.play_bark_to(src, speaker, say_test(raw_message), message_mods[WHISPER_MODE], length_char(raw_message), message_range)
 	if(understood)

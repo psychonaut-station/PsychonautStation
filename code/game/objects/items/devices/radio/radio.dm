@@ -92,8 +92,6 @@
 	/// If TRUE, will set the icon in initializations.
 	VAR_PRIVATE/should_update_icon = FALSE
 
-	/// A very brief cooldown to prevent regular radio sounds from overlapping.
-	COOLDOWN_DECLARE(audio_cooldown)
 	/// A very brief cooldown to prevent "important" radio sounds from overlapping.
 	COOLDOWN_DECLARE(important_audio_cooldown)
 
@@ -369,9 +367,9 @@
 	if(isliving(talking_movable))
 		var/mob/living/talking_living = talking_movable
 		var/volume_modifier = (talking_living.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise))
-		if(radio_noise && !HAS_TRAIT(talking_living, TRAIT_DEAF) && volume_modifier && signal.frequency != FREQ_COMMON && !LAZYACCESS(message_mods, MODE_SEQUENTIAL) && COOLDOWN_FINISHED(src, audio_cooldown) && !talking_living.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
-			COOLDOWN_START(src, audio_cooldown, 0.5 SECONDS)
+		if(radio_noise && !HAS_TRAIT(talking_living, TRAIT_DEAF) && volume_modifier && signal.frequency != FREQ_COMMON && !LAZYACCESS(message_mods, MODE_SEQUENTIAL) && !(GLOB.voices_enabled && talking_living.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled)))
 			var/sound/radio_noise = sound('sound/items/radio/radio_talk.ogg', volume = volume_modifier)
+			radio_noise.channel = SSsounds.random_available_channel()
 			radio_noise.frequency = get_rand_frequency_low_range()
 			SEND_SOUND(talking_living, radio_noise)
 
@@ -452,14 +450,13 @@
 	var/mob/living/holder = loc
 	var/volume_modifier = (holder.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise))
 
-	if(!radio_noise || HAS_TRAIT(holder, TRAIT_DEAF) || !holder.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise) || holder.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
+	if(!radio_noise || HAS_TRAIT(holder, TRAIT_DEAF) || !holder.client?.prefs.read_preference(/datum/preference/numeric/volume/sound_radio_noise) || (GLOB.voices_enabled && holder.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled)))
 		return
 	var/list/spans = data["spans"]
-	if(COOLDOWN_FINISHED(src, audio_cooldown))
-		COOLDOWN_START(src, audio_cooldown, 0.5 SECONDS)
-		var/sound/radio_receive = sound('sound/items/radio/radio_receive.ogg', volume = volume_modifier)
-		radio_receive.frequency = get_rand_frequency_low_range()
-		SEND_SOUND(holder, radio_receive)
+	var/sound/radio_receive = sound('sound/items/radio/radio_receive.ogg', volume = volume_modifier)
+	radio_receive.channel = SSsounds.random_available_channel()
+	radio_receive.frequency = get_rand_frequency_low_range()
+	SEND_SOUND(holder, radio_receive)
 	if((SPAN_COMMAND in spans) && COOLDOWN_FINISHED(src, important_audio_cooldown))
 		COOLDOWN_START(src, important_audio_cooldown, 0.5 SECONDS)
 		var/sound/radio_important = sound('sound/items/radio/radio_important.ogg', volume = volume_modifier)

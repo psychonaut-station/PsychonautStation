@@ -401,8 +401,7 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	message = compose_message(speaker, message_language, raw_message, radio_freq, radio_freq_name, radio_freq_color, spans, message_mods)
 
 	var/hearflags = NONE
-	var/heard_audibly = show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight)
-	if(heard_audibly)
+	if(show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight))
 		hearflags |= HEAR_HEARD
 		if(!radio_freq && !message_mods[MODE_IS_RADIO] && !speaker_is_signing && !is_custom_emote)
 			var/datum/atom_voice/speaker_voice = speaker.bark_voice || speaker.get_bark_voice()

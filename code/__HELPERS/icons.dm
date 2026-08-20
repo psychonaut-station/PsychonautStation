@@ -1400,6 +1400,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
 			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
 				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
+		qdel(mock_client)
+		qdel(preferences)
 		if(!only_appearance)
 			return list(
 				"name" = mob_name,
@@ -1472,8 +1474,12 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/mutable_appearance/appearance = new
 	appearance.appearance = our_human.appearance
 	appearance.name = ckey
+
 	if(we_created)
 		qdel(our_human)
+
+	qdel(mock_client)
+	qdel(preferences)
 
 	if(!only_appearance)
 		return list(

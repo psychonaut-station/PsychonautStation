@@ -80,8 +80,6 @@
 #define MODE_TTS_IDENTIFIER "tts_identifier"
 /// Override the mob's name
 #define MODE_SPEAKER_NAME_OVERRIDE "speaker_name_override"
-/// Message is being sent via radio
-#define MODE_IS_RADIO "is_radio"
 
 //Spans. Robot speech, italics, etc. Applied in compose_message().
 #define SPAN_ROBOT "robot"

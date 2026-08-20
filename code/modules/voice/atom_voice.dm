@@ -106,7 +106,7 @@
 
 	var/mob/speaker_mob = ismob(speaker) ? speaker : null
 	var/client/speaker_client = speaker_mob?.client
-	var/speaker_wants_simple = speaker_client?.prefs?.read_preference(/datum/preference/toggle/voice_sounds_only_simple)
+	var/speaker_wants_simple = speaker_client?.prefs?.read_preference(/datum/preference/toggle/barks_only_simple)
 
 	var/pitch_to_use = 0
 	var/sound/sound_to_use

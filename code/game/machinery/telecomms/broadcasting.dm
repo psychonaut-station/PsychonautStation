@@ -164,20 +164,35 @@
 	var/list/receive
 	// Assoc list of weakref to a radio to list of weakrefs to mobs who can hear the message
 	var/list/receive_radios
-	// Above but with the radio as a strong reference
-	var/list/hearers_in_radio_ranges
+	var/datum/voice_pack/radio_vp
+	var/sound/radio_sound
+	if(GLOB.voices_enabled)
+		radio_vp = GLOB.voice_pack_list["talk.radio"]
+		if(radio_vp && length(radio_vp.sounds))
+			radio_sound = radio_vp.sounds[1]
 
-	if(tts_radio_id) // only do this if we have a TTS identifier to save on perf
+	if(tts_radio_id || radio_sound)
 		receive = list()
 		receive_radios = list()
-		hearers_in_radio_ranges = get_hearers_in_radio_ranges_track_radios(radios)
-		for(var/radio, radio_hearers in hearers_in_radio_ranges)
+		var/list/hearers_in_radio_ranges = get_hearers_in_radio_ranges_track_radios(radios)
+		for(var/obj/item/radio/radio as anything in hearers_in_radio_ranges)
+			var/list/radio_hearers = hearers_in_radio_ranges[radio]
 			receive |= radio_hearers
-			var/datum/weakref/radio_ref = WEAKREF(radio)
-			for(var/mob/possible_hearer in radio_hearers)
-				if(!isnull(possible_hearer.client) && can_hear_radio_tts(possible_hearer, frequency))
-					receive_radios[radio_ref] ||= list()
-					receive_radios[radio_ref] += WEAKREF(possible_hearer)
+			if(tts_radio_id)
+				var/datum/weakref/radio_ref = WEAKREF(radio)
+				for(var/mob/possible_hearer in radio_hearers)
+					if(!isnull(possible_hearer.client) && can_hear_radio_tts(possible_hearer, frequency))
+						receive_radios[radio_ref] ||= list()
+						receive_radios[radio_ref] += WEAKREF(possible_hearer)
+
+			if(radio_sound)
+				var/turf/radio_turf
+				for(var/atom/movable/hearer as anything in radio_hearers)
+					if(!ismob(hearer))
+						continue
+					var/mob/mob_hearer = hearer
+					if(mob_hearer.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
+						mob_hearer.playsound_local(radio_turf ||= get_turf(radio), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
 
 	else
 		receive = get_hearers_in_radio_ranges(radios)
@@ -205,21 +220,6 @@
 		spans -= blacklisted_spans
 		hearer.Hear(virt, language, message, frequency, data["frequency_name"], data["frequency_color"], spans, message_mods, message_range = INFINITY)
 
-	var/datum/voice_pack/radio_vp
-	if(GLOB.voices_enabled)
-		radio_vp = GLOB.voice_pack_list["talk.radio"]
-	if(radio_vp)
-		var/sound/radio_sound = length(radio_vp.sounds) ? radio_vp.sounds[1] : null
-		if(radio_sound)
-			hearers_in_radio_ranges ||= get_hearers_in_radio_ranges_track_radios(radios)
-			for(var/obj/item/radio/radio as anything in hearers_in_radio_ranges)
-				var/turf/radio_turf
-				for(var/atom/movable/hearer as anything in hearers_in_radio_ranges[radio])
-					if(!ismob(hearer))
-						continue
-					var/mob/mob_hearer = hearer
-					if(mob_hearer.client?.prefs?.read_preference(/datum/preference/toggle/barks_enabled))
-						mob_hearer.playsound_local(radio_turf ||= get_turf(radio), vol = 300 * radio_vp.volume, vary = TRUE, channel = 0, sound_to_use = radio_sound)
 
 	// This following recording is intended for research and feedback in the use of department radio channels
 	if(length(receive))

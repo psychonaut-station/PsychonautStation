@@ -122,7 +122,7 @@
 	savefile_identifier = PREFERENCE_PLAYER
 	default_value = FALSE
 
-/datum/preference/toggle/voice_sounds_only_simple
+/datum/preference/toggle/barks_only_simple
 	category = PREFERENCE_CATEGORY_GAME_PREFERENCES
 	savefile_key = "voice_sounds_only_simple"
 	savefile_identifier = PREFERENCE_PLAYER

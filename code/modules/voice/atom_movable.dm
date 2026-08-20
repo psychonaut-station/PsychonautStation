@@ -15,11 +15,7 @@
 
 /// Sets the voicepack for the atom, using the voicepack's ID
 /atom/movable/proc/set_voice_pack(id)
-	if (bark_voice)
-		bark_voice.set_voice_pack(id)
-	else
-		bark_voice = new()
-		bark_voice.set_voice_pack(id)
+	get_bark_voice().set_voice_pack(id)
 
 /atom/movable/proc/can_long_bark()
 	return FALSE

@@ -39,6 +39,10 @@
 	ADD_TRAIT(src, TRAIT_CAN_MOUNT_HUMANS, INNATE_TRAIT)
 	ADD_TRAIT(src, TRAIT_CAN_MOUNT_CYBORGS, INNATE_TRAIT)
 
+	if(!client && !bark_voice)
+		bark_voice = new()
+		bark_voice.randomise(src)
+
 /mob/living/carbon/human/proc/setup_physiology()
 	physiology = new()
 

@@ -297,6 +297,7 @@
 #include "reagent_recipe_collisions.dm"
 #include "reagent_transfer.dm"
 #include "recycle_recycling.dm"
+#include "render_offline_appearance.dm"
 #include "required_map_items.dm"
 #include "resist.dm"
 #include "reskin_validation.dm"

@@ -333,16 +333,6 @@
   - bugfix: you can navigate recently input commands with ctrl+up/down again
   - bugfix: pressing space in the input autocompletes to the next shared verb name
       prefix
-<<<<<<< HEAD
-2026-08-17:
-  Aliceee2ch:
-  - bugfix: Fixed private orders (goodies).
-  Gboster-0:
-  - bugfix: if a headset starts with a 2nd key in it, it will have that key inside
-      of itself instead of in nullspace (this has no gameplay effect)
-  Hatowo:
-  - rscadd: "Event s\u0131ras\u0131nda kullan\u0131labilecek  bir snail mobu ekler."
-=======
 2026-08-11:
   JohnFulpWillard:
   - qol: Borgs can now unlock their cover in their self-examine text.
@@ -482,8 +472,15 @@
       unconscious and tricks anyone examining you into believing you've succumbed
       to your injuries for a short time.
 2026-08-17:
+  Aliceee2ch:
+  - bugfix: Fixed private orders (goodies).
   FalloutFalcon:
   - code_imp: Adds support for a key of a language to be unset
+  Gboster-0:
+  - bugfix: if a headset starts with a 2nd key in it, it will have that key inside
+      of itself instead of in nullspace (this has no gameplay effect)
+  Hatowo:
+  - rscadd: "Event s\u0131ras\u0131nda kullan\u0131labilecek  bir snail mobu ekler."
   JohnFulpWillard:
   - qol: Deleted Bloodworm's stat panel entry and instead moved it to their action
       button & a new screen alert.
@@ -662,4 +659,3 @@
   - bugfix: ore vents now reset properly on losses.
   uaioy:
   - rscadd: The double-ended chainsaw  spear
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae

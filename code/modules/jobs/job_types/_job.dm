@@ -700,12 +700,20 @@
 	if(!job_outfit || !job_outfit::id_trim)
 		CRASH("[src.type] has no job outfit but isn't overwriting get_lobby_icon().")
 	var/datum/id_trim/job_trim = job_outfit::id_trim
+	var/icon = job_trim::sechud_icon
 	var/icon_state = job_trim::sechud_icon_state
+<<<<<<< HEAD
 	if(!icon_state || icon_state == SECHUD_UNKNOWN)
 		CRASH("[src.type] has no job icon state.")
 	var/icon_file = GLOB.hud_icon_overrides[icon_state] || 'icons/mob/huds/hud.dmi'
 
 	return icon(icon_file, icon_state)
+=======
+	if(!icon || !icon_state || icon_state == SECHUD_UNKNOWN)
+		CRASH("[src.type] has no job icon or icon state.")
+
+	return icon(icon, icon_state)
+>>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
 
 /datum/job/proc/display_order_with_department()
 	var/datum/job_department/main_department = departments_list?[1]

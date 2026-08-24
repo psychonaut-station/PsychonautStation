@@ -101,7 +101,7 @@
 	heavy_burn_msg = ROBOTIC_HEAVY_BURN_MSG
 	examine_bodypart_id = SPECIES_IPC
 	damage_examines = list(BRUTE = ROBOTIC_BRUTE_EXAMINE_TEXT, BURN = ROBOTIC_BURN_EXAMINE_TEXT)
-	wing_types = list(/obj/item/organ/wings/functional/robotic)
+	wing_types = list(/obj/item/organ/wings/robotic)
 	biological_state = (BIO_ROBOTIC|BIO_JOINTED)
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 20, /datum/material/plasma = SHEET_MATERIAL_AMOUNT * 20)
 

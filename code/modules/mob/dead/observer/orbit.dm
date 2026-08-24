@@ -222,14 +222,8 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 	var/obj/item/card/id/id_card = player.get_idcard(hand_first = FALSE)
 	serialized["job"] = id_card?.get_trim_assignment()
-<<<<<<< HEAD
-	var/icon_state = id_card?.get_trim_sechud_icon_state()
-	serialized["icon"] = icon_state
-	serialized["icon_file"] = GLOB.hud_icon_overrides[icon_state]
-=======
 	serialized["icon"] = id_card?.get_trim_sechud_icon()
 	serialized["icon_state"] = id_card?.get_trim_sechud_icon_state()
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
 
 	var/datum/job/job = player.mind?.assigned_role
 	if (isnull(job))
@@ -242,13 +236,8 @@ GLOBAL_DATUM_INIT(orbit_menu, /datum/orbit_menu, new)
 
 	var/datum/id_trim/trim = outfit.id_trim
 	if (!isnull(trim))
-<<<<<<< HEAD
-		serialized["mind_icon"] = trim::sechud_icon_state
-		serialized["mind_icon_file"] = GLOB.hud_icon_overrides[trim::sechud_icon_state]
-=======
 		serialized["mind_icon"] = trim::sechud_icon
 		serialized["mind_icon_state"] = trim::sechud_icon_state
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
 	return serialized
 
 /// Gets a list: Misc data and whether it's critical. Handles all snowflakey type cases

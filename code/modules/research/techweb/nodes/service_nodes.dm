@@ -62,36 +62,6 @@
 /datum/techweb_node/consoles
 	display_name = "Civilian Consoles"
 	description = "User-friendly consoles for non-technical crew members, enhancing communication and access to essential station information."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_OFFICE_EQUIP)
-	design_ids = list(
-		"comconsole",
-		"automated_announcement",
-		"cargo",
-		"cargorequest",
-		"med_data",
-		"crewconsole",
-		"bankmachine",
-		"account_console",
-		"idcard",
-		"c-reader",
-		"libraryconsole",
-		"libraryscanner",
-		"bookbinder",
-		"barcode_scanner",
-		"vendor",
-		"custom_vendor_refill",
-		"bounty_pad_control",
-		"bounty_pad",
-		"crewdata",
-		"digital_clock_frame",
-		"telescreen_research",
-		"telescreen_ordnance",
-		"telescreen_interrogation",
-		"telescreen_prison",
-		"telescreen_bar",
-		"telescreen_entertainment",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/office_equip)
 	unlocked_designs = list(
 		/datum/design/board/comconsole,
@@ -119,7 +89,7 @@
 		/datum/design/telescreen_prison,
 		/datum/design/telescreen_bar,
 		/datum/design/telescreen_entertainment,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/board/crewdata,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SERVICE)
@@ -133,20 +103,12 @@
 /datum/techweb_node/gaming
 	display_name = "Gaming"
 	description = "For the slackers on the station."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_CONSOLES)
-	design_ids = list(
-		"arcade_battle",
-		"arcade_orion",
-		"slotmachine",
-		"pokerchip_exchanger",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/consoles)
 	unlocked_designs = list(
 		/datum/design/board/arcade_battle,
 		/datum/design/board/orion_trail,
 		/datum/design/board/slot_machine,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/board/pokerchip_exchanger,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_2_POINTS)
 	discount_experiments = list(/datum/experiment/physical/arcade_winner = TECHWEB_TIER_2_POINTS)

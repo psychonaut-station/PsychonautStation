@@ -221,7 +221,6 @@
 
 /datum/design/tinyfan
 	name = "Tiny Fan Assembly"
-	id = "tinyfan_assembly"
 	build_type = PROTOLATHE | AWAY_LATHE
 	materials = list(
 		/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5,

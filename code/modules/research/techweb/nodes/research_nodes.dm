@@ -83,18 +83,6 @@
 /datum/techweb_node/anomaly_shells
 	display_name = "Advanced Anomaly Shells"
 	description = "New shells designed to utilize anomaly cores, maximizing their potential in innovative ways."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_ANOMALY_RESEARCH)
-	design_ids = list(
-		"bag_holding",
-		"cybernetic_heart_anomalock",
-		"mod_storage_holding",
-		"wormholeprojector",
-		"gravitygun",
-		"polymorph_belt",
-		"perceptomatrix",
-		"clocky",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/anomaly_research)
 	unlocked_designs = list(
 		/datum/design/bag_holding,
@@ -104,7 +92,7 @@
 		/datum/design/gravitygun,
 		/datum/design/polymorph_belt,
 		/datum/design/perceptomatrix,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/clocky,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_5_POINTS)
 	discount_experiments = list(/datum/experiment/scanning/points/anomalies = TECHWEB_TIER_5_POINTS)

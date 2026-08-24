@@ -69,12 +69,9 @@
 #define HUD_MOB_MOOD "mob_mood"
 #define HUD_MOB_HEALTHDOLL "mob_healthdoll"
 #define HUD_MOB_MEMORIES "mob_memories"
-<<<<<<< HEAD
 #define HUD_MOB_AMMO_COUNTER_L "mob_ammo_counter_l"
 #define HUD_MOB_AMMO_COUNTER_R "mob_ammo_counter_r"
-=======
 #define HUD_MOB_SLIME_POWER "mob_slime_power"
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
 
 #define HUD_OOZE_NUTRITION_DISPLAY "ooze_nutrition_display"
 

@@ -517,7 +517,6 @@
 /datum/design/board/rad_collector
 	name = "Particle Capture Array"
 	desc = "The circuit board for a particle capture array."
-	id = "rad_collector"
 	build_path = /obj/item/circuitboard/machine/rad_collector
 	category = list(
 		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_ENGINEERING
@@ -924,7 +923,6 @@
 /datum/design/board/pokerchip_exchanger
 	name = "Poker Chip Exchanger Board"
 	desc = "The circuit board for a Poker Chip Exchanger."
-	id = "pokerchip_exchanger"
 	build_path = /obj/item/circuitboard/machine/pokerchip_exchanger
 	category = list(
 		RND_CATEGORY_MACHINE + RND_SUBCATEGORY_MACHINE_SERVICE

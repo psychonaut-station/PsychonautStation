@@ -155,26 +155,6 @@
 /datum/techweb_node/energy_manipulation
 	display_name = "Energy Manipulation"
 	description = "Harnessing the raw power of lightning arcs through sophisticated energy control methods."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_CONSTRUCTION)
-	design_ids = list(
-		"apc_control",
-		"powermonitor",
-		"smes",
-		"portable_smes",
-		"power_connector",
-		"emitter",
-		"grounding_rod",
-		"tesla_coil",
-		"cell_charger",
-		"recharger",
-		"inducer",
-		"inducerengi",
-		"welding_goggles",
-		"tray_goggles",
-		"rad_collector",
-		"geigercounter",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/construction)
 	unlocked_designs = list(
 		/datum/design/board/apc_control,
@@ -187,12 +167,12 @@
 		/datum/design/board/tesla_coil,
 		/datum/design/board/cell_charger,
 		/datum/design/board/recharger,
+		/datum/design/board/rad_collector,
 		/datum/design/inducer,
 		/datum/design/inducerengi,
 		/datum/design/welding_goggles,
 		/datum/design/tray_goggles,
 		/datum/design/geiger,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_1_POINTS)
 	announce_channels = list(RADIO_CHANNEL_ENGINEERING)
@@ -245,20 +225,6 @@
 /datum/techweb_node/hud
 	display_name = "Integrated HUDs"
 	description = "Initially developed for assistants to learn the nuances of different professions through augmented reality."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_HOLOGRAPHICS, TECHWEB_NODE_CYBER_IMPLANTS)
-	design_ids = list(
-		"health_hud",
-		"diagnostic_hud",
-		"security_hud",
-		"mod_visor_medhud",
-		"mod_visor_diaghud",
-		"mod_visor_sechud",
-		"ci-medhud",
-		"ci-diaghud",
-		"ci-sechud",
-		"ci-scihud",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/holographics, /datum/techweb_node/cyber/cyber_implants)
 	unlocked_designs = list(
 		/datum/design/health_hud,
@@ -270,7 +236,7 @@
 		/datum/design/cyberimp_medical_hud,
 		/datum/design/cyberimp_diagnostic_hud,
 		/datum/design/cyberimp_security_hud,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/cyberimp_science_hud
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_ENGINEERING, RADIO_CHANNEL_SECURITY, RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_MEDICAL)

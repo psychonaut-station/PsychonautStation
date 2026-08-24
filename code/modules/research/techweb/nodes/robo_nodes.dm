@@ -66,44 +66,6 @@
 /datum/techweb_node/ai_laws
 	display_name = "Advanced AI Upgrades"
 	description = "Delving into sophisticated AI directives, with hopes that they won't lead to humanity's extinction."
-<<<<<<< HEAD
-	prereq_ids = list(TECHWEB_NODE_AI)
-	design_ids = list(
-		"ai_power_upgrade",
-		"antimov_module",
-		"asimovpp_module",
-		"balance_module",
-		"damaged_module",
-		"dungeon_master_module",
-		"freeformcore_module",
-		"hippocratic_module",
-		"hulkamania_module",
-		"liveandletlive_module",
-		"maintain_module",
-		"onehuman_module",
-		"overlord_module",
-		"painter_module",
-		"paladin_devotion_module",
-		"peacekeeper_module",
-		"reporter_module",
-		"ten_commandments_module",
-		"thermurderdynamic_module",
-		"thinkermov_module",
-		"tyrant_module",
-		"yesman_module",
-		"spotless_module",
-		"clown_module",
-		"cowboy_module",
-		"siliconcouncil_module",
-		"researcher_module",
-		"educator_module",
-		"fitnesscoach_module",
-		"friendbot_module",
-		"plantfriend_module",
-		"partybot_module",
-		"mother_module",
-		"chapai_module",
-=======
 	prerequisite_nodes = list(/datum/techweb_node/ai)
 	unlocked_designs = list(
 		/datum/design/ai_power_transfer,
@@ -128,26 +90,37 @@
 		/datum/design/board/thinkermov_module,
 		/datum/design/board/tyrant_module,
 		/datum/design/board/yesman_module,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/board/spotless_module,
+		/datum/design/board/educator_module,
+		/datum/design/board/fitnesscoach_module,
+		/datum/design/board/friendbot_module,
+		/datum/design/board/plantfriend_module,
+		/datum/design/board/partybot_module,
+		/datum/design/board/mother_module,
+		/datum/design/board/chapai_module,
+		/datum/design/board/thinkermov_module,
+		/datum/design/board/clown_module,
+		/datum/design/board/cowboy_module,
+		/datum/design/board/siliconcouncil_module,
+		/datum/design/board/researcher_module,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE, RADIO_CHANNEL_COMMAND)
 
 /datum/techweb_node/ipc
-	id = TECHWEB_NODE_IPC
 	display_name = "IPC Construction"
 	description = "Humanoid robotic creatures with monitors in their heads."
-	prereq_ids = list(TECHWEB_NODE_ROBOTICS)
-	design_ids = list(
-		"ipc_head",
-		"ipc_chest",
-		"ipc_l_arm",
-		"ipc_r_arm",
-		"ipc_l_leg",
-		"ipc_r_leg",
-		"ipc_stomach",
-		"ipc_voltprotector",
-		"ipc_power_cord",
+	prerequisite_nodes = list(/datum/techweb_node/robotics)
+	unlocked_designs = list(
+		/datum/design/ipc_chest,
+		/datum/design/ipc_head,
+		/datum/design/ipc_l_arm,
+		/datum/design/ipc_r_arm,
+		/datum/design/ipc_l_leg,
+		/datum/design/ipc_r_leg,
+		/datum/design/ipc_stomach,
+		/datum/design/ipc_voltprotector,
+		/datum/design/ipc_power_cord,
 	)
 	research_costs = list(TECHWEB_POINT_TYPE_GENERIC = TECHWEB_TIER_3_POINTS)
 	announce_channels = list(RADIO_CHANNEL_SCIENCE)

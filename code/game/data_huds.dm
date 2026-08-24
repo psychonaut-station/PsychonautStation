@@ -578,7 +578,6 @@ Diagnostic HUDs!
 		CRASH("[src] ([type]) had a HUD_LIST_LIST hud_type [hud_type] passed into set_hud_image_state!")
 	holder.icon = hud_icon
 	holder.icon_state = hud_state
-	holder.icon = GLOB.hud_icon_overrides[hud_state] || 'icons/mob/huds/hud.dmi'
 	adjust_hud_position(holder)
 	if (x_offset || y_offset)
 		holder.pixel_w += x_offset

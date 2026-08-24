@@ -1,26 +1,6 @@
 /datum/techweb_node/atmos
 	display_name = "Atmospherics"
 	description = "Maintaining station air and related life support systems."
-<<<<<<< HEAD
-	design_ids = list(
-		"atmos_control",
-		"atmosalerts",
-		"thermomachine",
-		"space_heater",
-		"scrubber",
-		"generic_tank",
-		"oxygen_tank",
-		"plasma_tank",
-		"plasmaman_tank_belt",
-		"plasmarefiller",
-		"extinguisher",
-		"pocketfireextinguisher",
-		"gas_filter",
-		"plasmaman_gas_filter",
-		"analyzer",
-		"pipe_painter",
-		"tinyfan_assembly",
-=======
 	node_flags = parent_type::node_flags | TECHWEB_NODE_STARTER
 	unlocked_designs = list(
 		/datum/design/board/atmos_control,
@@ -39,7 +19,7 @@
 		/datum/design/plasmaman_gas_filter,
 		/datum/design/analyzer,
 		/datum/design/pipe_painter,
->>>>>>> c40e5f1f6e8247937e91ad9469d6552a3db0a9ae
+		/datum/design/tinyfan,
 	)
 
 /datum/techweb_node/gas_compression

@@ -1107,7 +1107,6 @@
 
 /datum/design/clocky
 	name = "Clock Head"
-	id = "clocky"
 	desc = "An anomaly clock created by bioscrambler anomaly."
 	build_type = PROTOLATHE | AWAY_LATHE
 	build_path = /obj/item/clothing/head/helmet/clocky

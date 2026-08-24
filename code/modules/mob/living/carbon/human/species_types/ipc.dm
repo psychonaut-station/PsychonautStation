@@ -22,7 +22,7 @@
 		TRAIT_MUTANT_COLORS,
 	)
 	meat = null
-	exotic_bloodtype = BLOOD_TYPE_OIL
+	exotic_bloodtype = /datum/blood_type/oil
 	siemens_coeff = 0.8
 	no_equip_flags = ITEM_SLOT_MASK
 	mutant_organs = list(

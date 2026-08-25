@@ -137,3 +137,8 @@
 #define SECHUD_RELIGIOUS_RESPONSE_OFFICER "hudreligiousresponseofficer"
 #define SECHUD_JANITORIAL_RESPONSE_OFFICER "hudjanitorialresponseofficer"
 #define SECHUD_ENTERTAINMENT_RESPONSE_OFFICER "hudentertainmentresponseofficer"
+
+#define SECHUD_MARINE "hudmarine"
+#define SECHUD_MARINE_FC "hudmarine_fc"
+#define SECHUD_MARINE_ENGINEER "hudmarine_engineer"
+#define SECHUD_MARINE_CORPSMAN "hudmarine_corpsman"

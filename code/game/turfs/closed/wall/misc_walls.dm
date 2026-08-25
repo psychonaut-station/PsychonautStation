@@ -145,9 +145,6 @@
 	icon_state = "junglewall-0"
 	desc = "Some thick jungle."
 	resistance_flags = UNACIDABLE
-	smoothing_flags = SMOOTH_BITMASK
-	smoothing_groups = SMOOTH_GROUP_FLORA_WALLS
-	canSmoothWith = SMOOTH_GROUP_FLORA_WALLS
 	base_icon_state = "junglewall"
 	baseturfs = /turf/open/floor/grass
 	tacmap_color = TACMAP_FOREST

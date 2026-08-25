@@ -16,10 +16,10 @@
 	/// Organs to insert
 	var/list/organs = list()
 
-/datum/outfit/teammatch_loadout/post_equip(mob/living/carbon/user, visuals_only=FALSE)
+/datum/outfit/teammatch_loadout/post_equip(mob/living/carbon/human/user, visuals_only=FALSE)
 	if(visuals_only)
 		return
-	if(has_radio)
+	if(ishuman(user) && has_radio)
 		var/obj/item/radio/headset = user.ears
 		headset.set_frequency(team_radio_freq)
 		headset.freqlock = RADIO_FREQENCY_LOCKED
@@ -47,6 +47,7 @@
 	suit = /obj/item/clothing/suit/armor/vest
 	head = /obj/item/clothing/head/helmet
 	id = /obj/item/card/id/away/dogtag
+	id_trim = /datum/id_trim/away/teammatch/marine
 	back = /obj/item/storage/backpack
 	box = /obj/item/storage/box/survival
 	glasses = /obj/item/clothing/glasses/hud/security

@@ -97,9 +97,14 @@
 
 /datum/teammatch_scenerio/xenomarine/player_spawned(datum/teammatch_lobby/lobby, mob/living/carbon/C)
 	. = ..()
+	C.add_movespeed_modifier(/datum/movespeed_modifier/slow_runner)
 	var/obj/item/organ/alien/hivenode/hivenode = C.get_organ_by_type(/obj/item/organ/alien/hivenode)
 	if(!isnull(hivenode))
 		hivenode.hive_id = "[scenerio_key]_hive_[lobby.uid]"
+
+	var/obj/item/organ/alien/plasmavessel/vessel = C.get_organ_by_type(/obj/item/organ/alien/plasmavessel)
+	if(!isnull(vessel))
+		vessel.heal_rate *= 0.8
 
 /datum/teammatch_scenerio/xenomarine/proc/open_doors(datum/teammatch_lobby/lobby)
 	for(var/i in 1 to length(poddoors))

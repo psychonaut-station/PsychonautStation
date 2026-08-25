@@ -174,9 +174,8 @@
 	if(tts_radio_id || radio_sound)
 		receive = list()
 		receive_radios = list()
-		var/list/hearers_in_radio_ranges = get_hearers_in_radio_ranges_track_radios(radios)
-		for(var/obj/item/radio/radio as anything in hearers_in_radio_ranges)
-			var/list/radio_hearers = hearers_in_radio_ranges[radio]
+		for(var/radio_key, radio_hearers in get_hearers_in_radio_ranges_track_radios(radios))
+			var/obj/item/radio/radio = radio_key
 			receive |= radio_hearers
 			if(tts_radio_id)
 				var/datum/weakref/radio_ref = WEAKREF(radio)
@@ -185,7 +184,8 @@
 						receive_radios[radio_ref] ||= list()
 						receive_radios[radio_ref] += WEAKREF(possible_hearer)
 
-			if(radio_sound)
+			if(radio_sound && COOLDOWN_FINISHED(radio, bark_audio_cooldown))
+				COOLDOWN_START(radio, bark_audio_cooldown, 0.5 SECONDS)
 				var/turf/radio_turf
 				for(var/atom/movable/hearer as anything in radio_hearers)
 					if(!ismob(hearer))

@@ -41,6 +41,10 @@
 		return
 	window.send_message("audio/stopMusic")
 
+// Dummy reference so BYOND includes the chat highlight sounds in the client resource pack, if it isn't included in any `.DM` file.
+/datum/tgui_panel
+	var/static/list/_chat_highlight_sounds = list('sound/misc/highlight_sounds/Beep.ogg')
+
 /datum/tgui_panel/proc/destroy_jukebox_player(jukebox_id)
 	if(!is_ready())
 		return

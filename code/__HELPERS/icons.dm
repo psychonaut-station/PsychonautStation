@@ -1235,7 +1235,7 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		return TRUE
 
 	var/static/list/screams = list()
-	if(!isnull(screams[file]))
+	if(isnull(screams[file]))
 		screams[file] = TRUE
 		stack_trace("State [state] in file [file] does not exist.")
 
@@ -1360,6 +1360,16 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 
 	var/list/job_preferences = SANITIZE_LIST(selected_char?["job_preferences"])
 
+	var/datum/client_interface/mock_client = new /datum/client_interface
+	var/datum/preferences/preferences = new(mock_client, TRUE)
+
+	for (var/datum/preference/preference as anything in get_preferences_in_priority_order())
+		var/saved_data = selected_char?[preference.savefile_key]
+		if(!saved_data)
+			continue
+		var/new_value = preference.deserialize(saved_data, preferences)
+		preferences.value_cache[preference.type] = new_value
+
 	var/datum/job/selected_job
 	var/highest_pref = 0
 
@@ -1390,6 +1400,8 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 			appearance.icon_state = resolve_ai_icon_sync(ai_core_value)
 			if(GLOB.ai_core_display_screen_icons.Find(ai_core_value))
 				appearance.icon = GLOB.ai_core_display_screen_icons[ai_core_value]
+		qdel(mock_client)
+		qdel(preferences)
 		if(!only_appearance)
 			return list(
 				"name" = mob_name,
@@ -1412,9 +1424,9 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 		var/saved_data = selected_char?[preference.savefile_key]
 		if(!saved_data)
 			continue
-		var/new_value = preference.deserialize(saved_data)
+		var/new_value = preference.deserialize(saved_data, preferences)
 
-		preference.apply_to_human(our_human, new_value)
+		preference.apply_to_human(our_human, new_value, preferences)
 
 	our_human.icon_render_keys = list()
 	our_human.update_body(is_creating = TRUE)
@@ -1462,8 +1474,12 @@ GLOBAL_LIST_EMPTY(transformation_animation_objects)
 	var/mutable_appearance/appearance = new
 	appearance.appearance = our_human.appearance
 	appearance.name = ckey
+
 	if(we_created)
 		qdel(our_human)
+
+	qdel(mock_client)
+	qdel(preferences)
 
 	if(!only_appearance)
 		return list(

@@ -94,6 +94,10 @@
 	name = "Plush (Horse)"
 	item_path = /obj/item/toy/plush/horse
 
+/datum/loadout_item/pocket_items/plush/shark
+	name = "Plush (Shark)"
+	item_path = /obj/item/toy/plush/shark
+
 /datum/loadout_item/pocket_items/dice
 	group = "Dice"
 	abstract_type = /datum/loadout_item/pocket_items/dice

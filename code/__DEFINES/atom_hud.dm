@@ -72,6 +72,9 @@
 
 // Security HUD icon_state defines
 
+#define DEFAULT_HUDS_DMI 'icons/mob/huds/hud.dmi'
+#define PSYCHONAUT_HUDS_DMI 'icons/psychonaut/mob/huds/hud.dmi'
+
 #define SECHUD_NO_ID "hudno_id"
 #define SECHUD_UNKNOWN "hudunknown"
 #define SECHUD_CENTCOM "hudcentcom"

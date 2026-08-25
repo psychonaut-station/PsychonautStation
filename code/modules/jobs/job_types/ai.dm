@@ -103,4 +103,4 @@
 	new_character.AIize()
 
 /datum/job/ai/get_lobby_icon()
-	return icon('icons/mob/huds/hud.dmi', "hudai")
+	return icon(DEFAULT_HUDS_DMI, "hudai")

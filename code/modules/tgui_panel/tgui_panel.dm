@@ -87,6 +87,7 @@
 			),
 		))
 		send_player_info()
+		send_hotkey_mode()
 		return TRUE
 
 	if(type == "audio/setAdminMusicVolume")
@@ -106,25 +107,10 @@
 
 	if(type == "verbs/request_verbs")
 		client.init_verbs()
-		return TRUE
+		if(!client?.holder)
+			return TRUE
 
-	if(type == "verbs/request_typepaths")
-		var/parent_text = payload["parent"]
-		var/browse_type = text2path(parent_text)
-		if(isnull(browse_type))
-			browse_type = /datum
-		var/list/children = list()
-		for(var/child_type in typesof(browse_type))
-			if(child_type == browse_type)
-				continue
-			// Only include direct children (one level deeper)
-			var/child_text = "[child_type]"
-			var/parent_len = length(parent_text || "/datum")
-			var/remainder = copytext(child_text, parent_len + 1)
-			if(findtext(remainder, "/", 2))
-				continue
-			children += child_text
-		window.send_message("verbs/typepaths", list("parent" = parent_text, "paths" = children))
+		window.send_asset(get_asset_datum(/datum/asset/json/spawn_menu))
 		return TRUE
 
 	if(type == "verbs/request_targets")
@@ -174,6 +160,8 @@
 		var/target = resolve_verb_target(verb_path)
 		if(!target)
 			return TRUE
+		if(!(verb_path in client.verbs) && !(client.mob && (verb_path in client.mob.verbs)))
+			return TRUE
 		var/list/resolved_args = resolve_invoke_args(payload["args"], meta.arguments)
 		call(target, meta.body_path)(resolved_args)
 		return TRUE
@@ -185,26 +173,22 @@
 /datum/tgui_panel/proc/resolve_invoke_args(list/raw_args, list/arg_metadata)
 	if(!islist(raw_args))
 		raw_args = list()
-	var/list/resolved = list()
-	for(var/key in raw_args)
-		var/value = raw_args[key]
-		var/datum/verb_arg_metadata/meta
-		for(var/datum/verb_arg_metadata/m in arg_metadata)
-			if(m.name == key)
-				meta = m
-				break
-		if(meta)
-			if(meta.arg_type & VERB_ARG_TYPE_NUM)
-				value = text2num(value)
-			else if(!(meta.arg_type & VERB_ARG_TYPE_TYPEPATH) && istext(value))
-				var/located = locate(value)
-				if(located)
-					value = located
-		else if(istext(value))
+	var/alist/resolved = alist()
+	for(var/datum/verb_arg_metadata/meta in arg_metadata)
+		if(!(meta.name in raw_args))
+			continue
+		var/value = raw_args[meta.name]
+		if(meta.arg_type & VERB_ARG_TYPE_NUM)
+			value = text2num(value)
+		else if(meta.arg_type & VERB_ARG_TYPE_ENTITY && istext(value))
 			var/located = locate(value)
-			if(located)
-				value = located
-		resolved[key] = value
+			if(!located)
+				continue
+			var/list/valid_targets = meta.get_targets(client)
+			if(length(valid_targets) && !(located in valid_targets))
+				continue
+			value = located
+		resolved[meta.name] = value
 	return resolved
 
 /datum/tgui_panel/proc/resolve_verb_target(verb_path)
@@ -263,3 +247,6 @@
 			"assets" = webroot_asset_urls,
 		)
 	window.send_message("metadata", metadata)
+
+/datum/tgui_panel/proc/send_hotkey_mode()
+	window.send_message("verbs/hotkey_mode", list("hotkeys" = client.hotkeys))

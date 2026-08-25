@@ -1112,6 +1112,7 @@
 	trim_state = "trim_brig_physician"
 	department_color = COLOR_SECURITY_RED
 	subdepartment_color = COLOR_SECURITY_RED
+	sechud_icon = PSYCHONAUT_HUDS_DMI
 	sechud_icon_state = SECHUD_BRIG_PHYSICIAN
 	extra_access = list(ACCESS_DETECTIVE, ACCESS_MAINT_TUNNELS, ACCESS_MORGUE)
 	minimal_access = list(
@@ -1341,6 +1342,7 @@
 	trim_state = "trim_worker"
 	department_color = COLOR_ENGINEERING_ORANGE
 	subdepartment_color = COLOR_ENGINEERING_ORANGE
+	sechud_icon = PSYCHONAUT_HUDS_DMI
 	sechud_icon_state = SECHUD_WORKER
 	minimal_access = list(
 		ACCESS_AUX_BASE,

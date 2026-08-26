@@ -55,6 +55,8 @@ GLOBAL_VAR(station_nuke_source)
 	var/obj/effect/countdown/nuclearbomb/countdown
 	/// is this nuke on the MINIMAP_BOMB_BLIP tag minimap?
 	var/is_on_minimap = TRUE
+	/// Minimap ID for minimap blip
+	var/minimap_id
 
 /obj/machinery/nuclearbomb/Initialize(mapload)
 	. = ..()
@@ -444,6 +446,8 @@ GLOBAL_VAR(station_nuke_source)
 	if(.)
 		return
 	playsound(src, SFX_TERMINAL_TYPE, 20, FALSE)
+	if(istype(src, /obj/machinery/nuclearbomb/three_disked))
+		return FALSE
 	switch(action)
 		if("eject_disk")
 			if(auth && auth.loc == src)
@@ -601,7 +605,7 @@ GLOBAL_VAR(station_nuke_source)
 	if(!is_on_minimap)
 		return
 	var/blip_icon =  'icons/ui_icons/minimap/map_blips_large.dmi'
-	add_minimap_blip(src, MINIMAP_BOMB_BLIP, "nuke_[timing ? "on" : "off"]", blip_icon, TRUE)
+	add_minimap_blip(src, MINIMAP_BOMB_BLIP, "nuke_[timing ? "on" : "off"]", blip_icon, TRUE, map_id = minimap_id)
 
 /// If the nuke is active, gets how much time is left until it detonates, in seconds.
 /// If the nuke is not active, gets how much time the nuke is set for, in seconds.

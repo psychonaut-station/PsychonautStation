@@ -25,6 +25,8 @@
 	var/openSound = 'sound/effects/stonedoor_openclose.ogg'
 	var/closeSound = 'sound/effects/stonedoor_openclose.ogg'
 
+	var/closetimer
+
 	var/sheetType = /obj/item/stack/sheet/iron //what we're made of
 	var/sheetAmount = 10 //how much it takes to construct us.
 
@@ -37,9 +39,10 @@
 
 /obj/structure/mineral_door/Initialize(mapload)
 	. = ..()
-	var/obj/item/stack/initialized_mineral = new sheetType // Okay this kinda sucks.
-	set_custom_materials(initialized_mineral.mats_per_unit, sheetAmount)
-	qdel(initialized_mineral)
+	if(sheetType)
+		var/obj/item/stack/initialized_mineral = new sheetType // Okay this kinda sucks.
+		set_custom_materials(initialized_mineral.mats_per_unit, sheetAmount)
+		qdel(initialized_mineral)
 	air_update_turf(TRUE, TRUE)
 
 /obj/structure/mineral_door/Destroy()
@@ -96,6 +99,8 @@
 
 /obj/structure/mineral_door/proc/SwitchState()
 	if(door_opened)
+		deltimer(closetimer)
+		closetimer = null
 		Close()
 	else
 		Open()
@@ -114,13 +119,15 @@
 	isSwitchingStates = FALSE
 
 	if(close_delay != -1)
-		addtimer(CALLBACK(src, PROC_REF(Close)), close_delay)
+		closetimer = addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 
 /obj/structure/mineral_door/proc/Close()
 	if(isSwitchingStates || !door_opened)
 		return
 	var/turf/T = get_turf(src)
 	for(var/mob/living/L in T)
+		if(close_delay != -1)
+			closetimer = addtimer(CALLBACK(src, PROC_REF(Close)), close_delay, TIMER_UNIQUE | TIMER_OVERRIDE | TIMER_STOPPABLE)
 		return
 	isSwitchingStates = TRUE
 	playsound(src, closeSound, 100, TRUE)
@@ -207,6 +214,8 @@
 
 /obj/structure/mineral_door/atom_deconstruct(disassembled = TRUE)
 	var/turf/T = get_turf(src)
+	if(!sheetType)
+		return
 	if(disassembled)
 		new sheetType(T, sheetAmount)
 	else
@@ -338,3 +347,91 @@
 	if(smoothing_flags & USES_SMOOTHING)
 		QUEUE_SMOOTH_NEIGHBORS(src)
 	return ..()
+
+/obj/structure/mineral_door/resin
+	name = "resin door"
+	icon_state = "resin"
+	close_delay = 10 SECONDS
+	sheetType = null
+
+/obj/structure/mineral_door/resin/Initialize(mapload)
+	. = ..()
+	if(!locate(/obj/structure/alien/weeds) in loc)
+		new /obj/structure/alien/weeds(loc)
+
+/obj/structure/mineral_door/resin/Destroy()
+	for(var/i in GLOB.cardinals)
+		var/turf/turf = get_step(loc, i)
+		if(!istype(turf))
+			continue
+		for(var/obj/structure/mineral_door/resin/door in turf)
+			if(QDELETED(door))
+				continue
+			addtimer(CALLBACK(door, PROC_REF(check_resin_support)), 1)
+	return ..()
+
+/obj/structure/mineral_door/resin/attack_larva(mob/living/carbon/alien/larva/user)
+	if(!isturf(user.loc))
+		return FALSE
+	TryToSwitchState(user)
+	return TRUE
+
+//clicking on resin doors attacks them, or opens them without harm intent
+/obj/structure/mineral_door/resin/attack_alien(mob/living/carbon/alien/adult/user, list/modifiers)
+	if(!isturf(user.loc))
+		return FALSE //Some basic logic here
+	if(!user.combat_mode)
+		TryToSwitchState(user)
+		return TRUE
+
+	balloon_alert(user, "deconstructing...")
+	playsound(src, 'sound/effects/blob/attackblob.ogg', 25)
+	if(do_after(user, 1 SECONDS, src))
+		balloon_alert(user, "deconstructed!")
+		deconstruct(TRUE)
+
+/obj/structure/mineral_door/resin/take_damage(damage_amount, damage_type, armor_type, effects, attack_dir, armour_penetration, mob/living/blame_mob)
+	if(damage_type != BRUTE && damage_type != BURN)
+		return
+	return ..()
+
+/obj/structure/mineral_door/resin/fire_act(burn_level)
+	take_damage(burn_level * 2, BURN, FIRE)
+
+/obj/structure/mineral_door/resin/ex_act(severity)
+	switch(severity)
+		if(EXPLODE_DEVASTATE)
+			deconstruct(FALSE)
+		if(EXPLODE_HEAVY)
+			deconstruct(FALSE)
+		if(EXPLODE_LIGHT)
+			take_damage((rand(40, 60)), BRUTE, BOMB)
+
+/obj/structure/mineral_door/resin/TryToSwitchState(atom/user)
+	if(isalien(user))
+		return ..()
+
+/obj/structure/mineral_door/resin/play_attack_sound(damage_amount, damage_type = BRUTE, damage_flag = 0)
+	switch(damage_type)
+		if(BRUTE)
+			if(damage_amount)
+				playsound(loc, 'sound/effects/blob/attackblob.ogg', 100, TRUE)
+			else
+				playsound(src, 'sound/items/weapons/tap.ogg', 50, TRUE)
+		if(BURN)
+			if(damage_amount)
+				playsound(loc, 'sound/items/tools/welder.ogg', 100, TRUE)
+
+//do we still have something next to us to support us?
+/obj/structure/mineral_door/resin/proc/check_resin_support()
+	for(var/i in GLOB.cardinals)
+		var/turf/support = get_step(src, i)
+		if(support.density)
+			. = TRUE
+			break
+		if(locate(/obj/structure/mineral_door/resin) in support)
+			. = TRUE
+			break
+	if(!.)
+		balloon_alert_to_viewers("collapsed")
+		deconstruct(FALSE)

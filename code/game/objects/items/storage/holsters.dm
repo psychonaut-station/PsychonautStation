@@ -106,3 +106,81 @@
 		/obj/item/ammo_box/speedloader/c357 = 2,
 		/obj/item/gun/ballistic/revolver/cowboy/nuclear = 1,
 	), src)
+
+/obj/item/storage/belt/holster/flarepouch
+	name = "flare pouch"
+	desc = "A pouch designed to hold flares and a single flaregun. Refillable with a M94 flare pack."
+	icon = 'icons/psychonaut/obj/clothing/belts.dmi'
+	icon_state = "flare"
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
+	storage_type = /datum/storage/holster/flarepouch
+
+/obj/item/storage/belt/holster/flarepouch/Initialize(mapload)
+	. = ..()
+	register_context()
+
+/obj/item/storage/belt/holster/flarepouch/add_context(atom/source, list/context, obj/item/held_item, mob/user)
+	. = ..()
+	if(loc != user || held_item == src)
+		return
+
+	if(istype(held_item, /obj/item/gun/ballistic/flarelauncher))
+		if(locate(/obj/item/ammo_casing/a25mm/) in contents)
+			context[SCREENTIP_CONTEXT_RMB] = "Reload flare launcher"
+			. = CONTEXTUAL_SCREENTIP_SET
+
+	else if(isnull(held_item))
+		if(locate(/obj/item/gun/ballistic/flarelauncher) in contents)
+			context[SCREENTIP_CONTEXT_LMB] = "Take flare launcher"
+			. = CONTEXTUAL_SCREENTIP_SET
+		else if(locate(/obj/item/ammo_casing/a25mm) in contents)
+			context[SCREENTIP_CONTEXT_LMB] = "Take flare"
+			. = CONTEXTUAL_SCREENTIP_SET
+
+	return TRUE
+
+/obj/item/storage/belt/holster/flarepouch/PopulateContents()
+	generate_items_inside(list(
+		/obj/item/ammo_casing/a25mm = 26,
+		/obj/item/gun/ballistic/flarelauncher = 1,
+	), src)
+
+/obj/item/storage/belt/holster/flarepouch/update_icon_state()
+	. = ..()
+	var/obj/item/gun/ballistic/flarelauncher/launcher = locate() in contents
+	icon_state = "[initial(icon_state)][launcher ? "_full" : null]"
+
+/obj/item/storage/belt/holster/flarepouch/item_interaction_secondary(mob/user, obj/item/weapon, list/modifiers)
+	if(!istype(weapon, /obj/item/gun/ballistic/flarelauncher))
+		return ..()
+
+	var/obj/item/gun/ballistic/flarelauncher/flare_gun = weapon
+
+	if(flare_gun.chambered || LAZYLEN(flare_gun.magazine.stored_ammo) == flare_gun.magazine.max_ammo)
+		return ITEM_INTERACT_BLOCKING
+
+	var/obj/item/ammo_casing/a25mm/flare = locate() in contents
+	if(!flare)
+		return ITEM_INTERACT_BLOCKING
+
+	atom_storage.remove_single(user, flare, get_turf(user))
+	user.put_in_hands(flare)
+	flare_gun.load_gun(flare, user)
+
+	return ITEM_INTERACT_SUCCESS
+
+/obj/item/storage/belt/holster/flarepouch/attack_hand(mob/user, list/modifiers)
+	if(loc != user)
+		return ..()
+
+	var/obj/item/flare = locate(/obj/item/gun/ballistic/flarelauncher) in contents
+
+	if(!flare)
+		flare = locate(/obj/item/ammo_casing/a25mm) in contents
+
+	if(!flare)
+		return ..()
+
+	atom_storage.remove_single(user, flare, get_turf(user))
+	user.put_in_hands(flare)
+	return TRUE

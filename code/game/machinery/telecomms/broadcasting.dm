@@ -174,8 +174,7 @@
 	if(tts_radio_id || radio_sound)
 		receive = list()
 		receive_radios = list()
-		for(var/radio_key, radio_hearers in get_hearers_in_radio_ranges_track_radios(radios))
-			var/obj/item/radio/radio = radio_key
+		for(var/obj/item/radio/radio, radio_hearers in get_hearers_in_radio_ranges_track_radios(radios))
 			receive |= radio_hearers
 			if(tts_radio_id)
 				var/datum/weakref/radio_ref = WEAKREF(radio)

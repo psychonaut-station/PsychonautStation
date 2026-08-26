@@ -1,5 +1,4 @@
 /datum/unit_test/render_offline_appearance
-	test_flags = UNIT_TEST_FOCUS
 
 /datum/unit_test/render_offline_appearance/Run()
 	var/datum/client_interface/our_client = new /datum/client_interface

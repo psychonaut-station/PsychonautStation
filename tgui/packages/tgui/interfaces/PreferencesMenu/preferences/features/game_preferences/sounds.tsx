@@ -148,3 +148,31 @@ export const sound_ai_vox: Feature<number> = {
   description: 'Volume of vocal AI announcements (also known as "VOX").',
   component: FeatureSliderInput,
 };
+
+export const voice_sounds_enabled: FeatureToggle = {
+  name: 'Enable vocal barks',
+  category: 'SOUND',
+  description: 'When enabled, hear character vocal barks when text messages are spoken.',
+  component: CheckboxInput,
+};
+
+export const voice_sounds_short: FeatureToggle = {
+  name: 'Play short vocal barks',
+  category: 'SOUND',
+  description: 'When enabled, vocal barks will only play a single sound effect per message.',
+  component: CheckboxInput,
+};
+
+export const voice_sounds_limited_pitch: FeatureToggle = {
+  name: 'Limit vocal bark pitch range',
+  category: 'SOUND',
+  description: 'When enabled, vocal barks from other players will play without pitch variance.',
+  component: CheckboxInput,
+};
+
+export const voice_sounds_only_simple: FeatureToggle = {
+  name: 'Play simple vocal barks only',
+  category: 'SOUND',
+  description: 'When enabled, your character will use simple/generic vocal barks when speaking.',
+  component: CheckboxInput,
+};

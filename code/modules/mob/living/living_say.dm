@@ -247,10 +247,10 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/radio_return = radio(message, message_mods, spans, language)//roughly 27% of living/say()'s total cost
 	if(radio_return & NOPASS)
 		return TRUE
-
 	if(radio_return & ITALICS)
 		spans |= SPAN_ITALICS
 	if(radio_return & REDUCE_RANGE)
+		message_mods[MODE_IS_RADIO] = TRUE
 		message_range = 1
 		if(!message_mods[WHISPER_MODE])
 			message_mods[WHISPER_MODE] = MODE_WHISPER
@@ -403,6 +403,9 @@ GLOBAL_LIST_INIT(message_modes_stat_limits, list(
 	var/hearflags = NONE
 	if(show_message(message, MSG_AUDIBLE, deaf_message, deaf_type, avoid_highlight))
 		hearflags |= HEAR_HEARD
+		if(!radio_freq && !message_mods[MODE_IS_RADIO] && !speaker_is_signing && !is_custom_emote)
+			var/datum/atom_voice/speaker_voice = speaker.bark_voice || speaker.get_bark_voice()
+			speaker_voice?.play_bark_to(src, speaker, say_test(raw_message), message_mods[WHISPER_MODE], length_char(raw_message), message_range)
 	if(understood)
 		hearflags |= HEAR_UNDERSTOOD
 	return hearflags

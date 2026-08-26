@@ -590,6 +590,8 @@
 
 	new_profile.voice = target.voice
 	new_profile.voice_filter = target.voice_filter
+	new_profile.bark_voice = new()
+	new_profile.bark_voice.copy_from(target.get_bark_voice())
 
 	return new_profile
 
@@ -781,6 +783,8 @@
 	user.mind?.set_level(/datum/skill/athletics, chosen_profile.athletics_level, silent = TRUE)
 	user.voice = chosen_profile.voice
 	user.voice_filter = chosen_profile.voice_filter
+	if(chosen_profile.bark_voice)
+		user.get_bark_voice().copy_from(chosen_profile.bark_voice)
 
 	chosen_dna.copy_dna(user.dna, COPY_DNA_SE|COPY_DNA_SPECIES)
 
@@ -935,9 +939,12 @@
 	var/voice
 	/// The TTS filter of the profile filter
 	var/voice_filter = ""
+	/// The vocal bark voice of the profile source
+	var/datum/atom_voice/bark_voice
 
 /datum/changeling_profile/Destroy()
 	qdel(dna)
+	qdel(bark_voice)
 	LAZYCLEARLIST(stored_scars)
 	QDEL_LAZYLIST(quirks)
 	return ..()
@@ -974,6 +981,9 @@
 	new_profile.quirks = quirks.Copy()
 	new_profile.voice = voice
 	new_profile.voice_filter = voice_filter
+	if(bark_voice)
+		new_profile.bark_voice = new()
+		new_profile.bark_voice.copy_from(bark_voice)
 
 /datum/antagonist/changeling/roundend_report()
 	var/list/parts = list()

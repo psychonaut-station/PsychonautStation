@@ -4,6 +4,8 @@
 */
 #define RADIO_EXTENSION "department specific"
 #define RADIO_KEY "department specific key"
+/// Message is being sent via radio
+#define MODE_IS_RADIO "is_radio"
 #define LANGUAGE_EXTENSION "language specific"
 ///This is a mob that is forcing us to say something, so we can use the mob typing the text for bans rather than the one speaking.
 #define MANNEQUIN_CONTROLLED "mannequin controlled"

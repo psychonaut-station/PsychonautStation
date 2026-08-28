@@ -659,11 +659,6 @@
   - bugfix: ore vents now reset properly on losses.
   uaioy:
   - rscadd: The double-ended chainsaw  spear
-<<<<<<< HEAD
-2026-08-24:
-  Lapaodasi:
-  - rscadd: Loadouta shark plushie ekler.
-=======
 2026-08-22:
   JohnFulpWillard:
   - qol: Pressing backspace while unfocused now clears your command bar.
@@ -685,6 +680,8 @@
   levels0:
   - rscadd: certain cursed mirrors might now talk
 2026-08-24:
+  Lapaodasi:
+  - rscadd: Loadouta shark plushie ekler.
   SmArtKar:
   - admin: Improved OverFlayer previews by allowing to edit preview plane/backdrop
       color
@@ -754,4 +751,3 @@
   timothymtorres:
   - rscadd: Add reworked vending shortage negative station trait. All station snack,
       soda, and coffee vending machines start empty.
->>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae

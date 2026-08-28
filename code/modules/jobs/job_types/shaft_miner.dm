@@ -26,6 +26,7 @@
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
 	rpg_title = "Adventurer"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Shaft Miner",
 		"Union Miner",
@@ -34,6 +35,10 @@
 		"Drill Technician",
 		"Prospector",
 	)
+=======
+	tgui_icon = FA_ICON_DIGGING
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"
@@ -46,7 +51,7 @@
 		/obj/item/flashlight/seclite = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
-		/obj/item/stack/marker_beacon/ten = 1,
+		/obj/item/stack/candela_beacon/thirty = 1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser = 1,
 	)
 	belt = /obj/item/modular_computer/pda/shaftminer
@@ -76,7 +81,7 @@
 		/obj/item/gun/energy/recharge/kinetic_accelerator = 1,
 		/obj/item/knife/combat/survival = 1,
 		/obj/item/mining_voucher = 1,
-		/obj/item/stack/marker_beacon/ten = 1,
+		/obj/item/stack/candela_beacon/thirty = 1,
 		/obj/item/t_scanner/adv_mining_scanner/lesser = 1,
 	)
 	glasses = /obj/item/clothing/glasses/meson

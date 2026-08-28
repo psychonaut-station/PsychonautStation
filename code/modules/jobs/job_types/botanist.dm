@@ -37,6 +37,7 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Gardener"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Botanist",
 		"Hydroponicist",
@@ -47,6 +48,9 @@
 		"Rancher",
 		"Agricultural Scientist"
 	)
+=======
+	tgui_icon = FA_ICON_SEEDLING
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/botanist
 	name = "Botanist"

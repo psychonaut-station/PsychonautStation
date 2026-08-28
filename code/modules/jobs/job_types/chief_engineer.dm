@@ -48,11 +48,16 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+<<<<<<< HEAD
 	alt_titles = list(
 		"Chief Engineer",
 		"Engineering Foreman",
 		"Head of Engineering",
 	)
+=======
+	tgui_icon = FA_ICON_USER_ASTRONAUT
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/job/chief_engineer/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

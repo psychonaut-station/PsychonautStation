@@ -29,6 +29,7 @@
 	)
 	rpg_title = "Recluse"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Bitrunner",
 		"Cyberspace Specialist",
@@ -36,6 +37,9 @@
 		"Cyberspace Explorer",
 		"Netrunner"
 	)
+=======
+	tgui_icon = FA_ICON_GAMEPAD
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/bitrunner
 	name = "Bitrunner"
@@ -48,3 +52,4 @@
 
 /datum/job/bit_avatar
 	title = "Bit Avatar"
+	tgui_icon = FA_ICON_CODE

@@ -27,6 +27,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "objection"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Lawyer",
 		"Internal Affairs Agent",
@@ -37,6 +38,9 @@
 		"Prosecutor",
 		"Legal Clerk",
 	)
+=======
+	tgui_icon = FA_ICON_GAVEL
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/lawyer
 	name = "Lawyer"

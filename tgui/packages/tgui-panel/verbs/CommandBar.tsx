@@ -14,6 +14,7 @@ import {
   clearCommandBarAtom,
   focusCommandBarAtom,
   hotkeysAtom,
+  initializeCommandBarAtom,
   typepathsAtom,
   type Verb,
   type VerbArg,
@@ -177,11 +178,12 @@ export function CommandBar() {
   const focusSignal = useAtomValue(focusCommandBarAtom);
   const clearSignal = useAtomValue(clearCommandBarAtom);
   const hotkeys = useAtomValue(hotkeysAtom);
+  const initializeSignal = useAtomValue(initializeCommandBarAtom);
   const [input, setInput] = useState('');
   const [selectedIndex, setSelectedIndex] = useState(0);
   const [selectedVerb, setSelectedVerb] = useState<Verb | null>(null);
   const [filledArgs, setFilledArgs] = useState<string[]>([]);
-  const [mode, setMode] = useState<Mode>('Command');
+  const [mode, setMode] = useState<Mode>('Say');
   const inputRef = useRef<HTMLInputElement>(null);
   const historyRef = useRef<string[]>([]);
   const [historyIndex, setHistoryIndex] = useState(-1);
@@ -217,6 +219,12 @@ export function CommandBar() {
   }, []);
 
   useEffect(() => {
+    if (mode !== 'Command') {
+      enterChatMode(mode);
+    }
+  }, [initializeSignal]);
+
+  useEffect(() => {
     if (focusSignal > 0) {
       inputRef.current?.focus();
     }
@@ -230,11 +238,7 @@ export function CommandBar() {
 
   useEffect(() => {
     if (clearSignal > 0) {
-      if (mode !== 'Command') {
-        enterChatMode(mode);
-      } else {
-        resetState();
-      }
+      resetState();
     }
   }, [clearSignal]);
 
@@ -550,7 +554,6 @@ export function CommandBar() {
         }
       }
     }
-
   };
 
   const placeholder = selectedVerb

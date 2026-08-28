@@ -34,6 +34,7 @@
 	voice_of_god_silence_power = 3
 
 	job_tone = "silence"
+	tgui_icon = FA_ICON_COMMENT_SLASH
 
 	alt_titles = list(
 		"Mime",

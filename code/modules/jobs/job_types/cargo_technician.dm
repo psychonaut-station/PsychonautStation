@@ -33,6 +33,7 @@
 	)
 	rpg_title = "Merchantman"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Cargo Technician",
 		"Warehouse Technician",
@@ -42,6 +43,10 @@
 		"Inventory Associate",
 		"Cargo Operator"
 	)
+=======
+	tgui_icon = FA_ICON_BOX
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/cargo_tech
 	name = "Cargo Technician"

@@ -36,6 +36,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "honk"
+	tgui_icon = FA_ICON_FACE_GRIN_TEARS
 
 	alt_titles = list(
 		"Clown",

@@ -37,6 +37,7 @@
 	voice_of_god_power = 2 //Chaplains are very good at speaking with the voice of god
 
 	job_tone = "holy"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Chaplain",
 		"Priest",
@@ -51,6 +52,10 @@
 		"Monk",
 		"Missionary"
 	)
+=======
+	tgui_icon = FA_ICON_CROSS
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/job/chaplain/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

@@ -188,6 +188,7 @@
 			last_special = world.time + CLICK_CD_RANGE
 		cuff_resist(I)
 
+<<<<<<< HEAD
 
 /mob/living/carbon/proc/knife_breakout(obj/item/restraints/handcuffs/cuffs, breakouttime)
 	. = breakouttime
@@ -195,6 +196,8 @@
 	if(held_item?.tool_behaviour == TOOL_KNIFE)
 		. *= cuffs.knife_breakout
 		visible_message(span_warning("[src] is trying to work [p_their()] way free with [held_item] in [p_their()] mouth!"), span_notice("You try to work your way free with [held_item] in your mouth..."))
+=======
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 /**
  * Helper to break the cuffs from hands
  * @param {obj/item} cuffs - The cuffs to break
@@ -204,10 +207,10 @@
 /mob/living/carbon/proc/cuff_resist(obj/item/cuffs, breakouttime = null, cuff_break = 0)
 	if((cuff_break != INSTANT_CUFFBREAK) && (SEND_SIGNAL(src, COMSIG_MOB_REMOVING_CUFFS, cuffs) & COMSIG_MOB_BLOCK_CUFF_REMOVAL))
 		return //The blocking object should sent a fluff-appropriate to_chat about cuff removal being blocked
-	if(cuffs.item_flags & BEING_REMOVED)
+	if(DOING_INTERACTION(src, REF(cuffs) ))
 		to_chat(src, span_warning("You're already attempting to remove [cuffs]!"))
 		return
-	cuffs.item_flags |= BEING_REMOVED
+
 	if (isnull(breakouttime))
 		breakouttime = cuffs.breakouttime
 	if(!cuff_break)
@@ -215,7 +218,7 @@
 			breakouttime = knife_breakout(cuffs, breakouttime)
 		visible_message(span_warning("[src] attempts to remove [cuffs]!"))
 		to_chat(src, span_notice("You attempt to remove [cuffs]... (This will take around [DisplayTimeText(breakouttime)] and you need to stand still.)"))
-		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null))
+		if(do_after(src, breakouttime, target = src, timed_action_flags = IGNORE_HELD_ITEM, cog_icon = null, interaction_key = REF(cuffs) ))
 			. = clear_cuffs(cuffs, cuff_break)
 		else
 			to_chat(src, span_warning("You fail to remove [cuffs]!"))
@@ -231,7 +234,6 @@
 
 	else if(cuff_break == INSTANT_CUFFBREAK)
 		. = clear_cuffs(cuffs, cuff_break)
-	cuffs.item_flags &= ~BEING_REMOVED
 
 /mob/living/carbon/proc/uncuff()
 	if (handcuffed)

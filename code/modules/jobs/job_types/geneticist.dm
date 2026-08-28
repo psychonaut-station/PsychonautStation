@@ -29,11 +29,16 @@
 	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
 	rpg_title = "Genemancer"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Geneticist",
 		"Mutation Researcher",
 		"Bioengineer"
 	)
+=======
+	tgui_icon = FA_ICON_DNA
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"

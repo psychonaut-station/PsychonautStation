@@ -43,6 +43,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	rpg_title = "Undertaker"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Coroner",
 		"Forensic Pathologist",
@@ -50,6 +51,9 @@
 		"Autopsy Technician",
 		"Morgue Supervisor",
 	)
+=======
+	tgui_icon = FA_ICON_SKULL
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/coroner
 	name = "Coroner"

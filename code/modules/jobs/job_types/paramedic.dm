@@ -37,6 +37,7 @@
 	)
 	rpg_title = "Corpse Runner"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Paramedic",
 		"Emergency Medical Technician",
@@ -44,6 +45,10 @@
 		"Trauma Technician",
 		"Rescue Specialist"
 	)
+=======
+	tgui_icon = FA_ICON_TRUCK_MEDICAL
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/paramedic
 	name = "Paramedic"

@@ -25,7 +25,14 @@
 		/datum/job_department/engineering,
 		)
 
-	family_heirlooms = list(/obj/item/clothing/head/utility/hardhat, /obj/item/screwdriver, /obj/item/wrench, /obj/item/weldingtool, /obj/item/crowbar, /obj/item/wirecutters)
+	family_heirlooms = list(
+		/obj/item/clothing/head/utility/hardhat,
+		/obj/item/screwdriver,
+		/obj/item/wrench,
+		/obj/item/weldingtool,
+		/obj/item/crowbar,
+		/obj/item/wirecutters,
+	)
 
 	mail_goodies = list(
 		/obj/item/storage/box/lights/mixed = 20,
@@ -37,6 +44,7 @@
 	)
 	rpg_title = "Crystallomancer"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Station Engineer",
 		"Emergency Damage Control Technician",
@@ -47,6 +55,10 @@
 		"Apprentice Engineer",
 		"Engineering Trainee",
 	)
+=======
+	tgui_icon = FA_ICON_GEARS
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"

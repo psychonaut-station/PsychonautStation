@@ -40,6 +40,7 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+<<<<<<< HEAD
 	alt_titles = list(
 		"Head of Security",
 		"Security Commander",
@@ -49,6 +50,9 @@
 		"Commissar",
 		"Station Defense Chief"
 	)
+=======
+	tgui_icon = FA_ICON_USER_SHIELD
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"

@@ -37,6 +37,7 @@
 	)
 	rpg_title = "Cleric"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Medical Doctor",
 		"Surgeon",
@@ -45,6 +46,10 @@
 		"Medical Resident",
 		"Physician",
 	)
+=======
+	tgui_icon = FA_ICON_STAFF_SNAKE
+
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
 /datum/outfit/job/doctor
 	name = "Medical Doctor"

@@ -13,7 +13,6 @@ import type { BooleanLike } from 'tgui-core/react';
 
 import { useBackend } from '../backend';
 import { Window } from '../layouts';
-import { JOB2ICON } from './common/JobToIcon';
 
 type Job = {
   unavailable_reason: string | null;
@@ -22,6 +21,7 @@ type Job = {
   used_slots: number;
   prioritized: BooleanLike;
   description: string;
+  jobIcon: string;
 };
 
 type Department = {
@@ -46,16 +46,21 @@ type JobEntryProps = {
   jobName: string;
   job: Job;
   department: Department;
+  jobIcon: string;
   onClick: () => void;
 };
 
 function JobEntry(props: JobEntryProps) {
+<<<<<<< HEAD
   const { jobName, job, department, onClick } = props;
   const { data } = useBackend<Data>();
   const { job_alt_titles } = data;
 
   const jobIcon = JOB2ICON[jobName] || null;
   const seleectedName = job_alt_titles[jobName] || jobName;
+=======
+  const { jobName, job, department, jobIcon, onClick } = props;
+>>>>>>> 86a2320a07af4b44694486b7a36996543c3727ae
 
   return (
     <Button
@@ -165,6 +170,7 @@ function DepartmentEntry(props: DepartmentEntryProps) {
                 key={name}
                 jobName={name}
                 job={job}
+                jobIcon={job.jobIcon}
                 department={department}
                 onClick={() => {
                   act('select_job', { job: name });

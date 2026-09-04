@@ -45,6 +45,7 @@
 		JOB_SECURITY_OFFICER_SCIENCE,
 	)
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
+<<<<<<< HEAD
 	alt_titles = list(
 		"Security Officer",
 		"Security Operative",
@@ -54,6 +55,10 @@
 		"Arbiter",
 		"Enforcer"
 	)
+=======
+	tgui_icon = FA_ICON_SHIELD_HALVED
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 
@@ -243,7 +248,7 @@ GLOBAL_LIST_EMPTY(security_officer_distribution)
 	backpack_contents = list(
 		/obj/item/evidencebag = 1,
 		)
-	belt = /obj/item/modular_computer/pda/security
+	belt = /obj/item/modular_computer/pda/crew/security
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/color/black/security
 	head = /obj/item/clothing/head/helmet/sec

@@ -46,6 +46,7 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+<<<<<<< HEAD
 	alt_titles = list(
 		"Chief Medical Officer",
 		"Medical Director",
@@ -53,6 +54,10 @@
 		"Chief Physician",
 		"Head Physician",
 	)
+=======
+	tgui_icon = FA_ICON_USER_MD
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/job/chief_medical_officer/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
@@ -70,7 +75,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic/silver = 1,
 		)
-	belt = /obj/item/modular_computer/pda/heads/cmo
+	belt = /obj/item/modular_computer/pda/crew/heads/cmo
 	ears = /obj/item/radio/headset/heads/cmo
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_pocket = /obj/item/laser_pointer/blue

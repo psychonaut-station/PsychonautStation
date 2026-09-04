@@ -44,6 +44,7 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+<<<<<<< HEAD
 	alt_titles = list(
 		"Head of Personnel",
 		"Executive Officer",
@@ -52,6 +53,10 @@
 		"Human Resources Chief",
 		"Seneschal"
 	)
+=======
+	tgui_icon = FA_ICON_DOG
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/job/head_of_personnel/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
@@ -106,7 +111,7 @@
 	backpack_contents = list(
 		/obj/item/melee/baton/telescopic/silver = 1,
 		)
-	belt = /obj/item/modular_computer/pda/heads/hop
+	belt = /obj/item/modular_computer/pda/crew/heads/hop
 	ears = /obj/item/radio/headset/heads/hop
 	head = /obj/item/clothing/head/hats/hopcap
 	shoes = /obj/item/clothing/shoes/laceup

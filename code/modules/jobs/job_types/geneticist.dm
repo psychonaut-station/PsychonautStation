@@ -29,11 +29,16 @@
 	family_heirlooms = list(/obj/item/clothing/under/shorts/purple)
 	rpg_title = "Genemancer"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Geneticist",
 		"Mutation Researcher",
 		"Bioengineer"
 	)
+=======
+	tgui_icon = FA_ICON_DNA
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/geneticist
 	name = "Geneticist"
@@ -43,7 +48,7 @@
 	uniform = /obj/item/clothing/under/rank/rnd/geneticist
 	suit = /obj/item/clothing/suit/toggle/labcoat/genetics
 	suit_store = /obj/item/flashlight/pen
-	belt = /obj/item/modular_computer/pda/geneticist
+	belt = /obj/item/modular_computer/pda/crew/geneticist
 	ears = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_pocket = /obj/item/sequence_scanner

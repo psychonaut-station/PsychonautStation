@@ -27,6 +27,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "objection"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Lawyer",
 		"Internal Affairs Agent",
@@ -37,6 +38,9 @@
 		"Prosecutor",
 		"Legal Clerk",
 	)
+=======
+	tgui_icon = FA_ICON_GAVEL
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/lawyer
 	name = "Lawyer"
@@ -45,7 +49,7 @@
 	id_trim = /datum/id_trim/job/lawyer
 	uniform = /obj/item/clothing/under/rank/civilian/lawyer/bluesuit
 	suit = /obj/item/clothing/suit/toggle/lawyer
-	belt = /obj/item/modular_computer/pda/lawyer
+	belt = /obj/item/modular_computer/pda/crew/lawyer
 	ears = /obj/item/radio/headset/headset_srvsec
 	shoes = /obj/item/clothing/shoes/laceup
 	neck = /obj/item/clothing/neck/tie/red/tied

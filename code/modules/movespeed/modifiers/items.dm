@@ -38,5 +38,13 @@
 /datum/movespeed_modifier/binocs_wielded
 	multiplicative_slowdown = 1.5
 
+<<<<<<< HEAD
 /datum/movespeed_modifier/cyborgclamp
 	multiplicative_slowdown = 0.5
+=======
+/datum/movespeed_modifier/pillow_fortify
+	multiplicative_slowdown = 1.2
+
+/datum/movespeed_modifier/lance_charge
+	multiplicative_slowdown = -0.5
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb

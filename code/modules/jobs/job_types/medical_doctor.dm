@@ -37,6 +37,7 @@
 	)
 	rpg_title = "Cleric"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Medical Doctor",
 		"Surgeon",
@@ -45,6 +46,10 @@
 		"Medical Resident",
 		"Physician",
 	)
+=======
+	tgui_icon = FA_ICON_STAFF_SNAKE
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/doctor
 	name = "Medical Doctor"
@@ -54,7 +59,7 @@
 	uniform = /obj/item/clothing/under/rank/medical/doctor
 	suit = /obj/item/clothing/suit/toggle/labcoat
 	suit_store = /obj/item/flashlight/pen
-	belt = /obj/item/modular_computer/pda/medical
+	belt = /obj/item/modular_computer/pda/crew/medical
 	ears = /obj/item/radio/headset/headset_med
 	shoes = /obj/item/clothing/shoes/sneakers/white
 	l_hand = /obj/item/storage/medkit/surgery

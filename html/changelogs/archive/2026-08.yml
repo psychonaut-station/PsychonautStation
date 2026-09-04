@@ -659,11 +659,6 @@
   - bugfix: ore vents now reset properly on losses.
   uaioy:
   - rscadd: The double-ended chainsaw  spear
-<<<<<<< HEAD
-2026-08-24:
-  Lapaodasi:
-  - rscadd: Loadouta shark plushie ekler.
-=======
 2026-08-22:
   JohnFulpWillard:
   - qol: Pressing backspace while unfocused now clears your command bar.
@@ -685,6 +680,8 @@
   levels0:
   - rscadd: certain cursed mirrors might now talk
 2026-08-24:
+  Lapaodasi:
+  - rscadd: Loadouta shark plushie ekler.
   SmArtKar:
   - admin: Improved OverFlayer previews by allowing to edit preview plane/backdrop
       color
@@ -808,4 +805,3 @@
   san7890:
   - bugfix: The pizza reward from the Bitrunning Pizzeria is now "edible", but it
       is a fool's errand to try and eat it.
->>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb

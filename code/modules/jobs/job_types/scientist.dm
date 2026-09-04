@@ -34,6 +34,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "boom"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Scientist",
 		"Circuitry Designer",
@@ -48,6 +49,10 @@
 		"Graduate Student",
 		"Cryptozoologist",
 	)
+=======
+	tgui_icon = FA_ICON_FLASK
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/scientist
 	name = "Scientist"
@@ -56,7 +61,7 @@
 	id_trim = /datum/id_trim/job/scientist
 	uniform = /obj/item/clothing/under/rank/rnd/scientist
 	suit = /obj/item/clothing/suit/toggle/labcoat/science
-	belt = /obj/item/modular_computer/pda/science
+	belt = /obj/item/modular_computer/pda/crew/science
 	ears = /obj/item/radio/headset/headset_sci
 	shoes = /obj/item/clothing/shoes/sneakers/white
 

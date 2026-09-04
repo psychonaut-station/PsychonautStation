@@ -49,6 +49,7 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
+<<<<<<< HEAD
 	alt_titles = list(
 		"Captain",
 		"Station Commander",
@@ -57,6 +58,10 @@
 		"Overseer",
 		"Outpost Commander"
 	)
+=======
+	tgui_icon = FA_ICON_CROWN
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)
 	return "Kaptan [captain.real_name] güvertede!"
@@ -77,7 +82,7 @@
 		/obj/item/melee/baton/telescopic/gold = 1,
 		/obj/item/station_charter = 1,
 		)
-	belt = /obj/item/modular_computer/pda/heads/captain
+	belt = /obj/item/modular_computer/pda/crew/heads/captain
 	ears = /obj/item/radio/headset/heads/captain/alt
 	glasses = /obj/item/clothing/glasses/sunglasses
 	gloves = /obj/item/clothing/gloves/captain

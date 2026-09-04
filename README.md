@@ -7,6 +7,7 @@
 
 [![resentment](.github/images/badges/built-with-resentment.svg)](.github/images/comics/131-bug-free.png) [![technical debt](.github/images/badges/contains-technical-debt.svg)](.github/images/comics/106-tech-debt-modified.png) [![forinfinityandbyond](.github/images/badges/made-in-byond.gif)](https://www.reddit.com/r/SS13/comments/5oplxp/what_is_the_main_problem_with_byond_as_an_engine/dclbu1a)
 
+<<<<<<< HEAD
 | Website                    | Link                                                                                                               |
 | -------------------------- | ------------------------------------------------------------------------------------------------------------------ |
 | Website                    | [https://ss13.tr](https://ss13.tr)                                                                                 |
@@ -15,6 +16,22 @@
 | Codedocs                   | [https://codedocs.tgstation13.org/](https://codedocs.tgstation13.org/)                                             |
 | Psychonaut Station Discord | [https://ss13.tr/discord](https://ss13.tr/discord)                                                                 |
 | Coderbus Discord           | [https://discord.gg/Vh8TJp9](https://discord.gg/Vh8TJp9)                                                           |
+=======
+| Website             | Link                                                  |
+| ------------------- | ----------------------------------------------------- |
+| Website             | https://tgstation13.org                               |
+| Code                | https://github.com/tgstation/tgstation                |
+| Server Config       | https://github.com/tgstation-operations/server-config |
+| Wiki                | https://tgstation13.org/wiki/Main_Page                |
+| Codedocs            | https://codedocs.tgstation13.org/                     |
+| /tg/station Discord | https://tgstation13.org/phpBB/viewforum.php?f=60      |
+| Coderbus Discord    | https://discord.gg/Vh8TJp9                            |
+| Contribution Guide  | https://github.com/tgstation/tgstation/blob/master/.github/CONTRIBUTING.md |
+| Getting Started With Development | https://hackmd.io/@tgstation/HJ8OdjNBc#tgstation-Development-Guide |
+| Maintainer-Approved Design Docs | https://hackmd.io/@tgstation |
+| Common Core Lore | https://github.com/tgstation/common_core |
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 This is the codebase for the Psychonaut Station flavoured fork of /tg/station which is another fork of SpaceStation 13.
 

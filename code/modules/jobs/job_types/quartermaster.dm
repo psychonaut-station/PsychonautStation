@@ -36,6 +36,7 @@
 	job_flags = STATION_JOB_FLAGS | HEAD_OF_STAFF_JOB_FLAGS
 	voice_of_god_power = 1.4 //Command staff has authority
 	human_authority = JOB_AUTHORITY_NON_HUMANS_ALLOWED
+<<<<<<< HEAD
 	alt_titles = list(
 		"Quartermaster",
 		"Union Requisitions Officer",
@@ -46,6 +47,9 @@
 		"Logistics Coordinator",
 		"Cargyptian Overseer",
 	)
+=======
+	tgui_icon = FA_ICON_SACK_DOLLAR
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/quartermaster
 	name = "Quartermaster"
@@ -56,7 +60,7 @@
 	id_trim = /datum/id_trim/job/quartermaster
 	id = /obj/item/card/id/advanced/silver
 	uniform = /obj/item/clothing/under/rank/cargo/qm
-	belt = /obj/item/modular_computer/pda/heads/quartermaster
+	belt = /obj/item/modular_computer/pda/crew/heads/quartermaster
 	suit = /obj/item/clothing/suit/jacket/quartermaster
 	ears = /obj/item/radio/headset/heads/qm
 	glasses = /obj/item/clothing/glasses/sunglasses

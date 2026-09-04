@@ -42,8 +42,8 @@
 	family_heirlooms = list(/obj/item/reagent_containers/cup/glass/bottle/whiskey)
 	rpg_title = "Thiefcatcher" //I guess they caught them all rip thief...
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
-
 	job_tone = "objection"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Detective",
 		"Forensic Technician",
@@ -51,6 +51,10 @@
 		"Forensic Scientist",
 		"Paranormal Investigator",
 	)
+=======
+	tgui_icon = FA_ICON_USER_SECRET
+
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/detective
 	name = "Detective"
@@ -66,7 +70,7 @@
 		/obj/item/melee/baton = 1,
 		/obj/item/storage/box/evidence = 1,
 		)
-	belt = /obj/item/modular_computer/pda/detective
+	belt = /obj/item/modular_computer/pda/crew/detective
 	ears = /obj/item/radio/headset/headset_sec/alt
 	gloves = /obj/item/clothing/gloves/color/black
 	head = /obj/item/clothing/head/fedora/det_hat

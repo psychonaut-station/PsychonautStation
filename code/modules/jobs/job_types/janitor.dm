@@ -30,6 +30,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "slip"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Janitor",
 		"Custodian",
@@ -39,6 +40,9 @@
 		"Concierge",
 		"Maid",
 	)
+=======
+	tgui_icon = FA_ICON_SOAP
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/janitor
 	name = "Janitor"
@@ -46,7 +50,7 @@
 
 	id_trim = /datum/id_trim/job/janitor
 	uniform = /obj/item/clothing/under/rank/civilian/janitor
-	belt = /obj/item/modular_computer/pda/janitor
+	belt = /obj/item/modular_computer/pda/crew/janitor
 	ears = /obj/item/radio/headset/headset_srv
 	skillchips = list(/obj/item/skillchip/job/janitor, /obj/item/skillchip/disposals)
 	backpack_contents = list(/obj/item/access_key)

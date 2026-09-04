@@ -43,6 +43,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	rpg_title = "Undertaker"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Coroner",
 		"Forensic Pathologist",
@@ -50,6 +51,9 @@
 		"Autopsy Technician",
 		"Morgue Supervisor",
 	)
+=======
+	tgui_icon = FA_ICON_SKULL
+>>>>>>> 933eb7e9d83458a091c103485f0e0475bf8819fb
 
 /datum/outfit/job/coroner
 	name = "Coroner"
@@ -63,7 +67,7 @@
 		/obj/item/storage/medkit/coroner = 1,
 	)
 
-	belt = /obj/item/modular_computer/pda/coroner
+	belt = /obj/item/modular_computer/pda/crew/coroner
 	ears = /obj/item/radio/headset/headset_srvmed
 	gloves = /obj/item/clothing/gloves/latex/coroner
 	head = /obj/item/clothing/head/utility/surgerycap/black

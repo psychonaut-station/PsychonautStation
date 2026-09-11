@@ -34,6 +34,7 @@
 
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Curator",
 		"Librarian",
@@ -42,6 +43,9 @@
 		"Television Presenter",
 		"Remembrancer"
 	)
+=======
+	tgui_icon = FA_ICON_BOOK
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/outfit/job/curator
 	name = "Curator"
@@ -54,7 +58,7 @@
 		/obj/item/choice_beacon/hero = 1,
 		/obj/item/announcementbeacon = 1,
 	)
-	belt = /obj/item/modular_computer/pda/curator
+	belt = /obj/item/modular_computer/pda/crew/curator
 	ears = /obj/item/radio/headset/headset_srvent
 	shoes = /obj/item/clothing/shoes/laceup
 	l_pocket = /obj/item/laser_pointer/green

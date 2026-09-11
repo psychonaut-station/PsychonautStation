@@ -20,12 +20,17 @@
 		)
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_CANNOT_OPEN_SLOTS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Cyborg",
 		"Robot",
 		"Android",
 		"Servitor"
 	)
+=======
+	tgui_icon = FA_ICON_ROBOT
+
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/job/cyborg/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

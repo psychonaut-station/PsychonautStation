@@ -29,6 +29,7 @@
 	)
 	rpg_title = "Recluse"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Bitrunner",
 		"Cyberspace Specialist",
@@ -36,6 +37,9 @@
 		"Cyberspace Explorer",
 		"Netrunner"
 	)
+=======
+	tgui_icon = FA_ICON_GAMEPAD
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/outfit/job/bitrunner
 	name = "Bitrunner"
@@ -43,8 +47,9 @@
 
 	id_trim = /datum/id_trim/job/bitrunner
 	uniform = /obj/item/clothing/under/rank/cargo/bitrunner
-	belt = /obj/item/modular_computer/pda/bitrunner
+	belt = /obj/item/modular_computer/pda/crew/bitrunner
 	ears = /obj/item/radio/headset/headset_cargo
 
 /datum/job/bit_avatar
 	title = "Bit Avatar"
+	tgui_icon = FA_ICON_CODE

@@ -35,6 +35,7 @@
 	)
 	rpg_title = "Alchemist"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Chemist",
 		"Pharmacist",
@@ -43,6 +44,10 @@
 		"Pharmaceutical Technician",
 		"Clinical Pharmacist"
 	)
+=======
+	tgui_icon = FA_ICON_PRESCRIPTION_BOTTLE
+
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/outfit/job/chemist
 	name = "Chemist"
@@ -51,7 +56,7 @@
 	id_trim = /datum/id_trim/job/chemist
 	uniform = /obj/item/clothing/under/rank/medical/chemist
 	suit = /obj/item/clothing/suit/toggle/labcoat/chemist
-	belt = /obj/item/modular_computer/pda/chemist
+	belt = /obj/item/modular_computer/pda/crew/chemist
 	ears = /obj/item/radio/headset/headset_med
 	glasses = /obj/item/clothing/glasses/science
 	shoes = /obj/item/clothing/shoes/sneakers/white

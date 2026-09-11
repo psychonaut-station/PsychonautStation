@@ -36,6 +36,7 @@ Assistant
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Lout"
 	config_tag = "ASSISTANT"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Assistant",
 		"Civilian",
@@ -51,6 +52,9 @@ Assistant
 		"Intern",
 		"Support Staff"
 	)
+=======
+	tgui_icon = FA_ICON_TOOLBOX
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/job/assistant/get_outfit(consistent)
 	if(consistent)
@@ -69,7 +73,7 @@ Assistant
 	name = JOB_ASSISTANT
 	jobtype = /datum/job/assistant
 	id_trim = /datum/id_trim/job/assistant
-	belt = /obj/item/modular_computer/pda/assistant
+	belt = /obj/item/modular_computer/pda/crew/assistant
 
 /datum/outfit/job/assistant/pre_equip(mob/living/carbon/human/target)
 	..()

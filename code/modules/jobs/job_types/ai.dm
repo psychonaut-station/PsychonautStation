@@ -21,12 +21,16 @@
 	random_spawns_possible = FALSE
 	job_flags = JOB_NEW_PLAYER_JOINABLE | JOB_EQUIP_RANK | JOB_BOLD_SELECT_TEXT | JOB_CANNOT_OPEN_SLOTS
 	config_tag = "AI"
+<<<<<<< HEAD
 	alt_titles = list(
 		"AI",
 		"Station Intelligence",
 		"Automated Overseer",
 		"Machine Spirit"
 	)
+=======
+	tgui_icon = FA_ICON_EYE
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

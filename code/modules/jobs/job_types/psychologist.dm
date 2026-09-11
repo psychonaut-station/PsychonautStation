@@ -31,12 +31,17 @@
 	)
 	rpg_title = "Snake Oil Salesman"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Psychologist",
 		"Psychiatrist",
 		"Therapist",
 		"Counsellor",
 	)
+=======
+	tgui_icon = FA_ICON_BRAIN
+
+>>>>>>> e7bc2fec00cb80b46430a38abca984960aa0da68
 
 /datum/outfit/job/psychologist
 	name = "Psychologist"
@@ -52,7 +57,7 @@
 		/obj/item/storage/pill_bottle/paxpsych,
 		/obj/item/storage/pill_bottle/psicodine,
 		)
-	belt = /obj/item/modular_computer/pda/psychologist
+	belt = /obj/item/modular_computer/pda/crew/psychologist
 	ears = /obj/item/radio/headset/headset_srvmed
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/clipboard

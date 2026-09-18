@@ -34,6 +34,7 @@
 	voice_of_god_silence_power = 3
 
 	job_tone = "silence"
+	tgui_icon = FA_ICON_COMMENT_SLASH
 
 	alt_titles = list(
 		"Mime",
@@ -57,7 +58,7 @@
 		/obj/item/reagent_containers/cup/glass/bottle/bottleofnothing = 1,
 		/obj/item/stamp/mime = 1,
 		)
-	belt = /obj/item/modular_computer/pda/mime
+	belt = /obj/item/modular_computer/pda/crew/mime
 	ears = /obj/item/radio/headset/headset_srv
 	gloves = /obj/item/clothing/gloves/color/white
 	head = /obj/item/clothing/head/beret/frenchberet

@@ -26,12 +26,13 @@
 		/obj/item/storage/box/flashes = 20,
 		/obj/item/stack/sheet/iron/twenty = 15,
 		/obj/item/modular_computer/laptop = 5,
-		/obj/item/mmi/posibrain/sphere = 5,
+		/obj/item/brain_processor/positronic/sphere = 5,
 	)
 
 	family_heirlooms = list(/obj/item/toy/plush/pkplush)
 	rpg_title = "Necromancer"
 	job_flags = STATION_JOB_FLAGS
+<<<<<<< HEAD
 	alt_titles = list(
 		"Roboticist",
 		"Biomechanical Engineer",
@@ -39,6 +40,10 @@
 		"Apprentice Roboticist",
 		"Ripperdoc",
 	)
+=======
+	tgui_icon = FA_ICON_BATTERY_HALF
+
+>>>>>>> 3c981e55db9d787051a41e7737dba7b5f7e17419
 
 /datum/job/roboticist/New()
 	. = ..()
@@ -53,7 +58,7 @@
 	suit = /obj/item/clothing/suit/toggle/labcoat/roboticist
 	belt = /obj/item/storage/belt/utility/full
 	ears = /obj/item/radio/headset/headset_sci
-	l_pocket = /obj/item/modular_computer/pda/roboticist
+	l_pocket = /obj/item/modular_computer/pda/crew/roboticist
 
 	backpack = /obj/item/storage/backpack/science
 	satchel = /obj/item/storage/backpack/satchel/science

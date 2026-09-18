@@ -80,7 +80,8 @@
 	return ..()
 
 /datum/weather/rad_storm/end()
-	if(..())
+	. = ..()
+	if(!.)
 		return
 	priority_announce("Radyasyon tehdidi geçmiştir. Lütfen çalışma alanlarınıza geri dönün.", "Anomali Uyarısı")
 	status_alarm(FALSE)

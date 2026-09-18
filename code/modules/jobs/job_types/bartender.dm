@@ -33,6 +33,7 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Tavernkeeper"
+<<<<<<< HEAD
 	alt_titles = list(
 		"Bartender",
 		"Mixologist",
@@ -40,6 +41,9 @@
 		"Barista",
 		"Bar Steward"
 	)
+=======
+	tgui_icon = FA_ICON_COCKTAIL
+>>>>>>> 3c981e55db9d787051a41e7737dba7b5f7e17419
 
 /datum/job/bartender/award_service(client/winner, award)
 	winner.give_award(award, winner.mob)
@@ -63,7 +67,7 @@
 	backpack_contents = list(
 		/obj/item/storage/box/beanbag = 1,
 		)
-	belt = /obj/item/modular_computer/pda/bar
+	belt = /obj/item/modular_computer/pda/crew/bar
 	ears = /obj/item/radio/headset/headset_srv
 	glasses = /obj/item/clothing/glasses/sunglasses/reagent
 	shoes = /obj/item/clothing/shoes/laceup

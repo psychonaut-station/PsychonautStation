@@ -44,6 +44,8 @@
 #define CALIBER_40MM "40mm"
 /// The caliber used by rocket launchers.
 #define CALIBER_84MM "84mm"
+/// The caliber used by flare launchers.
+#define CALIBER_25MM "25mm"
 /// The caliber used by laser guns.
 #define CALIBER_LASER "laser"
 /// The caliber used by most energy guns.

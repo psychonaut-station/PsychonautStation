@@ -7,6 +7,10 @@
 	var/mob/tracked_owner
 	/// Optional fixed z-level that anchors this action's minimap stack and permission checks.
 	var/fixed_z_level
+	/// Optional fixed map id
+	var/fixed_map_id
+	/// Optional fixed team id
+	var/fixed_team_id
 	/// Optional minimap blip tags to render on the rewrite minimap display.
 	var/list/minimap_blip_tags = list()
 	/// Optional annotation sharing tag for minimap drawings/labels.
@@ -41,11 +45,11 @@
 		return
 	var/display_z = get_opening_display_z_level(anchor_z, clicker?.z)
 
-	var/datum/minimap/minimap = get_minimap_for_z(display_z)
+	var/datum/minimap/minimap = get_minimap_for_z(display_z, fixed_map_id)
 	if(isnull(minimap))
 		clicker.balloon_alert(clicker, "no minimap generated")
 		return
-	add_huds(hud, minimap, isnull(fixed_z_level) ? null : display_z)
+	add_huds(hud, minimap, isnull(fixed_z_level) ? null : display_z, fixed_map_id, fixed_team_id)
 	to_chat(clicker, span_notice("Minimap shown."))
 
 /datum/action/minimap/Grant(mob/grant_to)
@@ -67,10 +71,10 @@
 		return null
 	return hud.screen_objects[HUD_TAC_MINIMAP]
 
-/datum/action/minimap/proc/add_huds(datum/hud/hud, datum/minimap/minimap, initial_display_z_level)
+/datum/action/minimap/proc/add_huds(datum/hud/hud, datum/minimap/minimap, initial_display_z_level, map_id, team_id)
 	for(var/element in huds)
 		var/hud_element_type = huds[element]
-		var/instanced = new hud_element_type(null, hud, minimap, minimap_blip_tags, initial_display_z_level, annotation_share_tag, can_draw)
+		var/instanced = new hud_element_type(null, hud, minimap, minimap_blip_tags, initial_display_z_level, annotation_share_tag, can_draw, map_id, team_id)
 		hud.add_screen_object(instanced, element, HUD_GROUP_STATIC, update_screen = TRUE)
 
 /datum/action/minimap/proc/set_tracked_owner(mob/new_owner)
@@ -118,7 +122,7 @@
 	var/atom/movable/screen/minimap_display/display = get_open_minimap_display(owner_hud)
 	if(isnull(display) || display.get_viewed_z_level() == display_z)
 		return
-	var/datum/minimap/minimap = get_minimap_for_z(display_z)
+	var/datum/minimap/minimap = get_minimap_for_z(display_z, fixed_map_id)
 	if(QDELETED(src) || isnull(minimap))
 		return
 	display = get_open_minimap_display(owner_hud)
@@ -139,3 +143,28 @@
 /datum/action/minimap/proc/remove_huds(datum/hud/hud)
 	for(var/element in huds)
 		hud.remove_screen_object(element)
+
+/datum/action/minimap/teammatch
+	huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch
+	)
+
+/datum/action/minimap/teammatch/is_forbidden_minimap_z(z_level)
+	if(isnull(z_level))
+		return FALSE
+	if(is_reserved_level(z_level))
+		return FALSE
+	return ..()
+
+/datum/action/minimap/teammatch/marine
+	huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/marine
+	)
+
+/datum/action/minimap/teammatch/xenomorph
+	huds = list(
+		HUD_TAC_MINIMAP_DIMMER = /atom/movable/screen/fullscreen/dimmer/minimap,
+		HUD_TAC_MINIMAP = /atom/movable/screen/minimap_display/teammatch/xenomorph
+	)

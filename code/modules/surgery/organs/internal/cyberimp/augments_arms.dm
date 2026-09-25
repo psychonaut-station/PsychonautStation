@@ -770,7 +770,6 @@
 	if(!owner || !owner?.hud_used)
 		return
 
-
 	var/datum/hud/H = owner.hud_used
 
 	var/hud_key = zone == BODY_ZONE_L_ARM ? HUD_MOB_AMMO_COUNTER_L : HUD_MOB_AMMO_COUNTER_R
@@ -781,7 +780,6 @@
 		H.remove_screen_object(counter_ref)
 		counter_ref = null
 		return
-
 
 	if(!H.screen_objects[hud_key])
 		var/ui_loc = zone == BODY_ZONE_L_ARM ? ui_hand_position_y(1,1,9) : ui_hand_position_y(2,1,9)
@@ -817,6 +815,10 @@
 
 	our_gun = null
 	update_hud_elements()
+
+/obj/item/organ/cyberimp/arm/ammo_counter/left_handed
+	zone = BODY_ZONE_L_ARM
+	slot = ORGAN_SLOT_LEFT_ARM_AUG
 
 /obj/item/organ/cyberimp/arm/ammo_counter/syndicate
 	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN

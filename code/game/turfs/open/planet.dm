@@ -43,6 +43,9 @@
 	slowdown = 0.5
 	initial_gas_mix = OPENTURF_DEFAULT_ATMOS
 
+/turf/open/misc/dirt/dark/jungle/double // Doubled dirt layer
+	baseturfs = /turf/open/misc/dirt/dark/jungle
+
 /turf/open/misc/dirt/jungle/dark
 	icon_state = "greenerdirt"
 	base_icon_state = "greenerdirt"
@@ -98,3 +101,6 @@
 
 /turf/closed/mineral/random/jungle/space_safe
 	baseturfs = /turf/open/misc/dirt/dark/station/airless
+
+/turf/closed/mineral/random/jungle/double_layer
+	baseturfs = /turf/open/misc/dirt/dark/jungle/double

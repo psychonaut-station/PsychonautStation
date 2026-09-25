@@ -34,6 +34,10 @@
 	desc = "A .50 caliber marksman round casing."
 	projectile_type = /obj/projectile/bullet/p50/marksman
 
+/obj/item/ammo_casing/p50/marine
+	name = ".50 BMG marine round bullet casing"
+	projectile_type = /obj/projectile/bullet/p50/marine
+
 // Lahti 20x138mm rifle ammo //
 
 /obj/item/ammo_casing/mm20x138

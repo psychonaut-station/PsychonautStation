@@ -189,3 +189,7 @@
 
 /datum/movespeed_modifier/tail_dragger
 	multiplicative_slowdown = 4
+
+/datum/movespeed_modifier/slow_runner
+	multiplicative_slowdown = 1.5
+	flags = TRANSFER_ON_EVOLVE

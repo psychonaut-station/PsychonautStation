@@ -37,6 +37,7 @@
 		"Therapist",
 		"Counsellor",
 	)
+	tgui_icon = FA_ICON_BRAIN
 
 /datum/outfit/job/psychologist
 	name = "Psychologist"
@@ -52,7 +53,7 @@
 		/obj/item/storage/pill_bottle/paxpsych,
 		/obj/item/storage/pill_bottle/psicodine,
 		)
-	belt = /obj/item/modular_computer/pda/psychologist
+	belt = /obj/item/modular_computer/pda/crew/psychologist
 	ears = /obj/item/radio/headset/headset_srvmed
 	shoes = /obj/item/clothing/shoes/laceup
 	l_hand = /obj/item/clipboard

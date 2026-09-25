@@ -27,6 +27,7 @@
 		"Automated Overseer",
 		"Machine Spirit"
 	)
+	tgui_icon = FA_ICON_EYE
 
 /datum/job/ai/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

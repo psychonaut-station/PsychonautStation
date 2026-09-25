@@ -51,7 +51,7 @@
 	if(cell && cell.charge > 0)
 		if(backup_charge < 100)
 			adjust_backup_charge(1 * seconds_per_tick)
-		adjust_charge(-IPC_DISCHARGE_FACTOR * seconds_per_tick * (humanowner ? humanowner.physiology.hunger_mod : 1))
+		adjust_charge(-IPC_DISCHARGE_FACTOR * seconds_per_tick * (humanowner ? GET_PHYSIOLOGY(humanowner, PHYS_COEFF_HUNGER_MOD) : 1))
 	handle_charge(owner, seconds_per_tick, times_fired)
 
 	if(cell && cell.charge == 0)

@@ -15,6 +15,7 @@
 
 	job_flags = JOB_NEW_PLAYER_JOINABLE
 	config_tag = "ANIMAL"
+	tgui_icon = FA_ICON_PAW
 
 	alt_titles = list(
 		"Animal",

@@ -43,7 +43,6 @@
 	rpg_title = "Thiefcatcher" //I guess they caught them all rip thief...
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
 	job_tone = "objection"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Detective",
 		"Forensic Technician",
@@ -51,10 +50,7 @@
 		"Forensic Scientist",
 		"Paranormal Investigator",
 	)
-=======
 	tgui_icon = FA_ICON_USER_SECRET
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/detective
 	name = "Detective"

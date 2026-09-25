@@ -34,7 +34,6 @@
 
 	voice_of_god_silence_power = 3
 	rpg_title = "Veteran Adventurer"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Curator",
 		"Librarian",
@@ -43,9 +42,7 @@
 		"Television Presenter",
 		"Remembrancer"
 	)
-=======
 	tgui_icon = FA_ICON_BOOK
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/curator
 	name = "Curator"

@@ -44,7 +44,6 @@
 	)
 	rpg_title = "Crystallomancer"
 	job_flags = STATION_JOB_FLAGS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Station Engineer",
 		"Emergency Damage Control Technician",
@@ -55,10 +54,7 @@
 		"Apprentice Engineer",
 		"Engineering Trainee",
 	)
-=======
 	tgui_icon = FA_ICON_GEARS
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/engineer
 	name = "Station Engineer"

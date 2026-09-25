@@ -51,16 +51,11 @@ type JobEntryProps = {
 };
 
 function JobEntry(props: JobEntryProps) {
-<<<<<<< HEAD
-  const { jobName, job, department, onClick } = props;
+  const { jobName, job, department, jobIcon, onClick } = props;
   const { data } = useBackend<Data>();
   const { job_alt_titles } = data;
 
-  const jobIcon = JOB2ICON[jobName] || null;
   const seleectedName = job_alt_titles[jobName] || jobName;
-=======
-  const { jobName, job, department, jobIcon, onClick } = props;
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
   return (
     <Button

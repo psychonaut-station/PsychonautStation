@@ -33,7 +33,6 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Tavernkeeper"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Bartender",
 		"Mixologist",
@@ -41,9 +40,7 @@
 		"Barista",
 		"Bar Steward"
 	)
-=======
 	tgui_icon = FA_ICON_COCKTAIL
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/job/bartender/award_service(client/winner, award)
 	winner.give_award(award, winner.mob)

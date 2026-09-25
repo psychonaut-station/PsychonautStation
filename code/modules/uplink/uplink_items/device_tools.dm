@@ -209,7 +209,6 @@
 	name = "Cryptographic Sequencer"
 	desc = "The cryptographic sequencer, electromagnetic card, or emag, is a small card that unlocks hidden functions \
 			in electronic devices, subverts intended functions, and easily breaks security mechanisms. Cannot be used to open airlocks."
-	progression_minimum = 20 MINUTES
 	item = /obj/item/card/emag
 	cost = 4
 

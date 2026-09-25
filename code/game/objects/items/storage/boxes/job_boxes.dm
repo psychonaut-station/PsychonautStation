@@ -54,21 +54,6 @@
 	..() // we want the survival stuff too.
 	new /obj/item/radio/off(src)
 
-<<<<<<< HEAD
-/obj/item/storage/box/survival/proc/wardrobe_removal()
-	var/obj/item/mask = locate(mask_type) in src
-	var/obj/item/internals = locate(internal_type) in src
-	if(isplasmaman(loc)) //We need to specially fill the box with plasmaman gear, since it's intended for one
-		new /obj/item/tank/internals/plasmaman/belt(src)
-		qdel(mask) // Get rid of the items that shouldn't be
-		qdel(internals)
-	else if(isipc(loc))
-		new /obj/item/stock_parts/power_store/cell/high(src)
-		qdel(mask)
-		qdel(internals)
-	else
-		return
-=======
 /obj/item/storage/box/survival/proc/apply_overrides()
 	if(!ishuman(loc) || QDELING(src))
 		return
@@ -85,7 +70,6 @@
 	for(var/survival_types in survival_box_overrides)
 		var/item_to_add = survival_box_overrides[survival_types]
 		new item_to_add(src)
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 // Prisoners don't get an escape hook
 /obj/item/storage/box/survival/prisoner

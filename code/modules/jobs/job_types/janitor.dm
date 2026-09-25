@@ -30,7 +30,6 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "slip"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Janitor",
 		"Custodian",
@@ -40,9 +39,7 @@
 		"Concierge",
 		"Maid",
 	)
-=======
 	tgui_icon = FA_ICON_SOAP
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/janitor
 	name = "Janitor"

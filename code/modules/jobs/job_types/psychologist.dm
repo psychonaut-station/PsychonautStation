@@ -31,17 +31,13 @@
 	)
 	rpg_title = "Snake Oil Salesman"
 	job_flags = STATION_JOB_FLAGS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Psychologist",
 		"Psychiatrist",
 		"Therapist",
 		"Counsellor",
 	)
-=======
 	tgui_icon = FA_ICON_BRAIN
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/psychologist
 	name = "Psychologist"

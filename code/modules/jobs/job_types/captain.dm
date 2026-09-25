@@ -49,7 +49,6 @@
 	human_authority = JOB_AUTHORITY_HUMANS_ONLY
 
 	voice_of_god_power = 1.4 //Command staff has authority
-<<<<<<< HEAD
 	alt_titles = list(
 		"Captain",
 		"Station Commander",
@@ -58,10 +57,7 @@
 		"Overseer",
 		"Outpost Commander"
 	)
-=======
 	tgui_icon = FA_ICON_CROWN
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/job/captain/get_captaincy_announcement(mob/living/captain)
 	return "Kaptan [captain.real_name] güvertede!"

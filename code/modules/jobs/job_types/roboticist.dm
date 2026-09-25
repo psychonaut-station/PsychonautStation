@@ -32,7 +32,6 @@
 	family_heirlooms = list(/obj/item/toy/plush/pkplush)
 	rpg_title = "Necromancer"
 	job_flags = STATION_JOB_FLAGS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Roboticist",
 		"Biomechanical Engineer",
@@ -40,10 +39,7 @@
 		"Apprentice Roboticist",
 		"Ripperdoc",
 	)
-=======
 	tgui_icon = FA_ICON_BATTERY_HALF
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/job/roboticist/New()
 	. = ..()

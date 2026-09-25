@@ -26,7 +26,6 @@
 	family_heirlooms = list(/obj/item/pickaxe/mini, /obj/item/shovel)
 	rpg_title = "Adventurer"
 	job_flags = STATION_JOB_FLAGS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Shaft Miner",
 		"Union Miner",
@@ -35,10 +34,7 @@
 		"Drill Technician",
 		"Prospector",
 	)
-=======
 	tgui_icon = FA_ICON_DIGGING
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/miner
 	name = "Shaft Miner"

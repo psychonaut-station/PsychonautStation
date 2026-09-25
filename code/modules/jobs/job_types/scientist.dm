@@ -34,7 +34,6 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "boom"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Scientist",
 		"Circuitry Designer",
@@ -49,10 +48,7 @@
 		"Graduate Student",
 		"Cryptozoologist",
 	)
-=======
 	tgui_icon = FA_ICON_FLASK
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/scientist
 	name = "Scientist"

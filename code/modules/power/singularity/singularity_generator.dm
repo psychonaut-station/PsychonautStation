@@ -47,5 +47,5 @@
 /obj/machinery/the_singularitygen/tesla
 	name = "energy ball generator"
 	desc = "An odd device which produces a Energy Ball when set up."
-	icon = 'icons/obj/machines/engine/tesla_generator.dmi'
+	icon = 'icons/psychonaut/obj/machines/engine/tesla_generator.dmi'
 	creation_type = /obj/energy_ball/stationary

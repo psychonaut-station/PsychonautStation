@@ -53,13 +53,11 @@
 	/// Flags dictating whether this event should be run on certain kinds of map
 	var/map_flags = NONE
 
-<<<<<<< HEAD
 	var/track = UNCATEGORIZED_EVENTS
 	var/tags = list()
-=======
+
 	/// If TRUE, the event won't run naturally/randomly. Toggled by admins.
 	VAR_FINAL/admin_disabled = FALSE
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/round_event_control/New()
 	if(!length(admin_setup))

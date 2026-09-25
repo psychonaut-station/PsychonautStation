@@ -13,7 +13,6 @@ import {
   Tabs,
 } from 'tgui-core/components';
 
-import { JOB2ICON } from '../common/JobToIcon';
 import { isRecordMatch } from '../SecurityRecords/helpers';
 import type { CrewRecord, CrewRecordData } from './types';
 
@@ -110,7 +109,7 @@ const CrewTab = (props: { record: CrewRecord }) => {
       selected={selectedRecord?.crew_ref === crew_ref}
     >
       <Box>
-        <Icon name={JOB2ICON[trim] || 'question'} /> {name}
+        <Icon name={trim || 'question'} /> {name}
       </Box>
     </Tabs.Tab>
   );

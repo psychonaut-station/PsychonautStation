@@ -36,16 +36,13 @@
 
 	job_flags = STATION_JOB_FLAGS
 	rpg_title = "Aeromancer"
-<<<<<<< HEAD
 	alt_titles = list(
 		"Atmospheric Technician",
 		"Life Support Technician",
 		"Emergency Fire Technician",
 		"Firefighter",
 	)
-=======
 	tgui_icon = FA_ICON_FAN
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/outfit/job/atmos
 	name = "Atmospheric Technician"

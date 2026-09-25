@@ -23,7 +23,6 @@
 	family_heirlooms = list(/obj/item/pen/blue)
 	rpg_title = "Defeated Miniboss"
 	job_flags = STATION_JOB_FLAGS | JOB_CANNOT_OPEN_SLOTS | JOB_ANTAG_PROTECTED & ~JOB_REOPEN_ON_ROUNDSTART_LOSS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Prisoner",
 		"Minimum Security Prisoner",
@@ -35,9 +34,7 @@
 		"Inmate",
 		//"Gamer",
 	)
-=======
 	tgui_icon = FA_ICON_LOCK
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/job/prisoner/New()
 	. = ..()

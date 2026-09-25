@@ -45,7 +45,6 @@
 		JOB_SECURITY_OFFICER_SCIENCE,
 	)
 	job_flags = STATION_JOB_FLAGS | JOB_ANTAG_PROTECTED
-<<<<<<< HEAD
 	alt_titles = list(
 		"Security Officer",
 		"Security Operative",
@@ -55,10 +54,7 @@
 		"Arbiter",
 		"Enforcer"
 	)
-=======
 	tgui_icon = FA_ICON_SHIELD_HALVED
-
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 GLOBAL_LIST_INIT(available_depts, list(SEC_DEPT_ENGINEERING, SEC_DEPT_MEDICAL, SEC_DEPT_SCIENCE, SEC_DEPT_SUPPLY))
 

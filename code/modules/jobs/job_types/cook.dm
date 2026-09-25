@@ -51,7 +51,6 @@
 		JOB_CHEF,
 	)
 	job_flags = STATION_JOB_FLAGS
-<<<<<<< HEAD
 	alt_titles = list(
 		"Cook",
 		"Chef",
@@ -59,9 +58,7 @@
 		"Culinary Artist",
 		"Sous-Chef",
 	)
-=======
 	tgui_icon = FA_ICON_UTENSILS
->>>>>>> b136cc5326dac3282e6d37d997715a9cf055e6fb
 
 /datum/job/cook/award_service(client/winner, award)
 	winner.give_award(award, winner.mob)

@@ -379,7 +379,11 @@ ROUNDSTART_RACES arachnid
 
 ## Races that are better than humans in some ways, but worse in others
 ROUNDSTART_RACES ethereal
+<<<<<<< HEAD
 ROUNDSTART_RACES ipc
+=======
+ROUNDSTART_RACES cerulean
+>>>>>>> a31e25d1ccc9da796dcde5b2d1316baad63fbbcb
 #ROUNDSTART_RACES jelly
 #ROUNDSTART_RACES abductor
 #ROUNDSTART_RACES snail

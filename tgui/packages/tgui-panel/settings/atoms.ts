@@ -4,7 +4,11 @@ import type { HighlightSetting, HighlightState, SettingsState } from './types';
 
 export const defaultSettings: SettingsState = {
   adminMusicVolume: 0.5,
+<<<<<<< HEAD
   coloredNames: true,
+=======
+  eagerCommandBarSuggestions: true,
+>>>>>>> a31e25d1ccc9da796dcde5b2d1316baad63fbbcb
   fontFamily: FONTS[0],
   fontSize: 13,
   initialized: false,

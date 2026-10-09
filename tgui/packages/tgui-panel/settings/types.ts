@@ -8,7 +8,11 @@ const viewSchema = z.object({
 
 export const settingsSchema = z.object({
   adminMusicVolume: z.number(),
+<<<<<<< HEAD
   coloredNames: z.boolean(),
+=======
+  eagerCommandBarSuggestions: z.boolean(),
+>>>>>>> a31e25d1ccc9da796dcde5b2d1316baad63fbbcb
   fontFamily: z.string(),
   fontSize: z.number(),
   initialized: z.boolean(),

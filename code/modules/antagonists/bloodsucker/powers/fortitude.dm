@@ -6,6 +6,7 @@
 		Activating Fortitude will provide pierce, stun and dismember immunity.\n\
 		You will additionally gain resistance to Brute and Stamina damge, scaling with level.\n\
 		While using Fortitude, attempting to run will crush you.\n\
+		Cannot be used simultaneously with Immortal Haste.\n\
 		At level 4, you gain complete stun immunity.\n\
 		Higher levels will increase Brute and Stamina resistance."
 	power_flags = BP_AM_TOGGLE | BP_AM_COSTLESS_UNCONSCIOUS
@@ -17,6 +18,16 @@
 	sol_multiplier = 3
 	var/was_running
 	var/fortitude_resist // So we can raise and lower your brute resist based on what your level_current WAS.
+
+/datum/action/cooldown/bloodsucker/fortitude/can_use(mob/living/carbon/user, trigger_flags)
+	. = ..()
+	if(!.)
+		return FALSE
+	for(var/datum/action/cooldown/bloodsucker/haste/haste_power in bloodsuckerdatum_power?.powers)
+		if(haste_power.active)
+			owner.balloon_alert(owner, "cannot use with haste!")
+			return FALSE
+	return TRUE
 
 /datum/action/cooldown/bloodsucker/fortitude/ActivatePower(trigger_flags)
 	. = ..()

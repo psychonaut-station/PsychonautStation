@@ -65,7 +65,7 @@
 	if (!ishuman(victim) || !source.force)
 		return
 
-	if (LAZYACCESS(modifiers, RIGHT_CLICK) && butchering_enabled)
+	if (LAZYACCESS(modifiers, RIGHT_CLICK) && butchering_enabled && can_butcher_human(victim))
 		INVOKE_ASYNC(src, PROC_REF(butcher_human), source, victim, user)
 		return COMPONENT_CANCEL_ATTACK_CHAIN
 
@@ -113,11 +113,11 @@
 		return NONE
 
 	var/mob/living/victim = target
-	if (victim.stat != DEAD && (victim.butcher_results || victim.guaranteed_butcher_results))
+	if (victim.stat == DEAD && (victim.butcher_results || victim.guaranteed_butcher_results))
 		context[SCREENTIP_CONTEXT_LMB] = "(Combat Mode) Butcher"
 		return CONTEXTUAL_SCREENTIP_SET
 
-	if (ishuman(victim))
+	if (ishuman(victim) && can_butcher_human(victim))
 		context[SCREENTIP_CONTEXT_RMB] = "(Combat Mode) Butcher"
 		return CONTEXTUAL_SCREENTIP_SET
 
@@ -330,26 +330,28 @@
 	if (do_after(user, speed, target) && target.Adjacent(source))
 		on_butchering(user, target)
 
-/datum/component/butchering/proc/butcher_human(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
-	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("You're already interacting with [victim]!"))
-		return
-
+/datum/component/butchering/proc/can_butcher_human(mob/living/carbon/human/victim)
+	if (!ishuman(victim))
+		return FALSE
+	if (victim.stat != DEAD && victim.body_position != LYING_DOWN && !victim.buckled)
+		return FALSE
 	var/static/list/butcher_spots = typecacheof(list(
 		/obj/structure/table,
 		/obj/structure/bed,
 		/obj/machinery/stasis,
 		/obj/structure/kitchenspike,
 	))
-
-	var/found_spot = FALSE
 	for (var/obj/thing in victim.loc)
 		if (is_type_in_typecache(thing, butcher_spots))
-			found_spot = TRUE
-			break
+			return TRUE
+	return FALSE
 
-	if (!found_spot)
-		to_chat(user, span_warning("You need a better spot to butcher [victim]!"))
+/datum/component/butchering/proc/butcher_human(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
+	if (DOING_INTERACTION_WITH_TARGET(user, victim))
+		to_chat(user, span_warning("You're already interacting with [victim]!"))
+		return
+
+	if (!can_butcher_human(victim))
 		return
 
 	var/obj/item/bodypart/limb = victim.get_bodypart(deprecise_zone(user.zone_selected))

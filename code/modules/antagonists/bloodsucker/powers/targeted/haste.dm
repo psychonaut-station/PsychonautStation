@@ -13,12 +13,13 @@
 		- Leaves behind ghostly afterimages while moving.\n\
 		- Upon initial activation, slips out of any grab.\n\
 		- Cannot be used simultaneously with Fortitude.\n\
+		- Costs 2 Blood per second to maintain active.\n\
 		Higher levels increase projectile evasion chance and interaction speed."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
 	bloodcost = 10
-	constant_bloodcost = 0.2
+	constant_bloodcost = 2
 	sol_multiplier = 3
 	cooldown_time = 8 SECONDS
 

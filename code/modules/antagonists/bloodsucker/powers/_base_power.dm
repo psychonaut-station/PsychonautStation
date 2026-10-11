@@ -213,21 +213,27 @@
 		DeactivatePower()
 		return
 	// We can keep this up (For now), so Pay Cost!
-	if(!(power_flags & BP_AM_COSTLESS_UNCONSCIOUS) && owner.stat != CONSCIOUS)
+	if(owner.stat == CONSCIOUS || !(power_flags & BP_AM_COSTLESS_UNCONSCIOUS))
+		var/cost_to_pay = constant_bloodcost * (seconds_per_tick || 1)
 		if(bloodsuckerdatum_power)
-			bloodsuckerdatum_power.AddBloodVolume(-constant_bloodcost)
+			bloodsuckerdatum_power.AddBloodVolume(-cost_to_pay)
+			bloodsuckerdatum_power.update_hud()
 		else
 			var/mob/living/living_owner = owner
 			if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD))
-				living_owner.blood_volume -= constant_bloodcost
+				living_owner.blood_volume -= cost_to_pay
 	return TRUE
 
 /// Checks to make sure this power can stay active
 /datum/action/cooldown/bloodsucker/proc/ContinueActive(mob/living/user, mob/living/target)
 	if(QDELETED(user))
 		return FALSE
-	if(!constant_bloodcost > 0 || bloodsuckerdatum_power.bloodsucker_blood_volume > 0)
+	if(constant_bloodcost <= 0)
 		return TRUE
+	if(bloodsuckerdatum_power)
+		return (bloodsuckerdatum_power.bloodsucker_blood_volume > 0)
+	var/mob/living/living_owner = user
+	return (HAS_TRAIT(living_owner, TRAIT_NOBLOOD) || living_owner.blood_volume > BLOOD_VOLUME_OKAY)
 
 /// Used to unlearn Single-Use Powers
 /datum/action/cooldown/bloodsucker/proc/remove_after_use()

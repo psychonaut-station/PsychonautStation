@@ -9,6 +9,7 @@
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL
 	purchase_flags = BLOODSUCKER_DEFAULT_POWER | VASSAL_CAN_BUY
+	can_level = FALSE
 	bloodcost = 15
 	constant_bloodcost = 0.1
 	cooldown_time = 10 SECONDS

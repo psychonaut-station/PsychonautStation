@@ -315,6 +315,21 @@
 /datum/antagonist/bloodsucker/antag_panel_data()
 	return "Clan: [my_clan ? my_clan.name : "None"] | Level: [bloodsucker_level] (Unspent: [bloodsucker_level_unspent]) | Blood: [bloodsucker_blood_volume]/[max_blood_volume]"
 
+/datum/antagonist/bloodsucker/ui_data(mob/user)
+	. = ..()
+	.["powers"] = list()
+	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
+		var/list/power_data = list(
+			"name" = power.name,
+			"explanation" = power.power_explanation,
+			"icon" = power.button_icon,
+			"icon_state" = power.button_icon_state,
+			"can_level" = power.can_level,
+		)
+		if(power.can_level)
+			power_data["level"] = power.level_current
+		.["powers"] += list(power_data)
+
 /datum/antagonist/bloodsucker/ui_static_data(mob/user)
 	. = ..()
 	if(my_clan)
@@ -327,12 +342,16 @@
 
 	.["powers"] = list()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
-		.["powers"] += list(list(
+		var/list/power_data = list(
 			"name" = power.name,
 			"explanation" = power.power_explanation,
 			"icon" = power.button_icon,
 			"icon_state" = power.button_icon_state,
-		))
+			"can_level" = power.can_level,
+		)
+		if(power.can_level)
+			power_data["level"] = power.level_current
+		.["powers"] += list(power_data)
 
 /datum/antagonist/bloodsucker/ui_act(action, params, datum/tgui/ui)
 	. = ..()
@@ -487,19 +506,14 @@
 	objectives += survive_objective
 
 	// Objective 1: Vassalize a Head/Command, or a specific target
-	switch(rand(1, 3))
+	switch(rand(1, 2))
 		if(1) // Conversion Objective
 			var/datum/objective/bloodsucker/conversion/chosen_subtype = pick(subtypesof(/datum/objective/bloodsucker/conversion))
 			var/datum/objective/bloodsucker/conversion/conversion_objective = new chosen_subtype
 			conversion_objective.owner = owner
 			conversion_objective.objective_name = "Optional Objective"
 			objectives += conversion_objective
-		if(2) // Heart Thief Objective
-			var/datum/objective/bloodsucker/heartthief/heartthief_objective = new
-			heartthief_objective.owner = owner
-			heartthief_objective.objective_name = "Optional Objective"
-			objectives += heartthief_objective
-		if(3) // Drink Blood Objective
+		if(2) // Drink Blood Objective
 			var/datum/objective/bloodsucker/gourmand/gourmand_objective = new
 			gourmand_objective.owner = owner
 			gourmand_objective.objective_name = "Optional Objective"

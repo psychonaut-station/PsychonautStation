@@ -1,34 +1,40 @@
 /datum/action/cooldown/bloodsucker/targeted/lunge
-	name = "Predatory Lunge"
-	desc = "Spring at your target to grapple them without warning, or tear the dead's heart out. Attacks from concealment or the rear may even knock them down if strong enough."
+	name = "Predatory Rush"
+	desc = "Rush forward with terrifying speed like a ravenous beast, violently tackling and grappling your target to the ground."
 	button_icon_state = "power_lunge"
-	power_explanation = "Predatory Lunge:\n\
-		Click any player to start spinning wildly and, after a short delay, dash at them.\n\
-		When lunging at someone, you will grab them, immediately starting off at aggressive.\n\
-		Riot gear is protected and will only be passively grabbed.\n\
-		You cannot use the Power if you are already grabbing someone, or are being grabbed.\n\
-		If you grab from behind, or from darkness (Cloak of Darkness works), you will knock the target down.\n\
-		If used on a dead body, will tear their heart out.\n\
-		Higher levels increase the knockdown dealt to enemies.\n\
-		At level 4, you will no longer spin, but you will be limited to tackling from only 6 tiles away."
+	power_explanation = "Predatory Rush:\n\
+		Target any creature or location to brace yourself and unleash a vicious high-speed charge.\n\
+		Upon impact, you will slam the victim to the ground, deal heavy brute damage, and aggressively grapple them.\n\
+		Higher levels reduce the windup time before the charge begins and increase the knockdown duration and impact force."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
 	bloodcost = 10
 	sol_multiplier = 15
-	cooldown_time = 10 SECONDS
+	cooldown_time = 8 SECONDS
 	power_activates_immediately = FALSE
-	target_range = 12
+	target_range = 8
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/upgrade_power()
-	. = ..()
-	//range is lowered when you get stronger.
-	if(level_current > 3)
-		target_range = 6
+	/// If the user is currently charging
+	var/actively_moving = FALSE
+	/// List of charging mobs managed by this datum
+	var/list/charging_mobs = list()
+	/// Target atom of current charge
+	var/atom/charge_target
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/Destroy()
+	if(owner && (owner in charging_mobs))
+		charge_end(owner)
+	return ..()
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/can_deactivate()
+	return !(owner in charging_mobs)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/can_use(mob/living/carbon/user, trigger_flags)
 	. = ..()
 	if(!.)
+		return FALSE
+	if(user in charging_mobs)
 		return FALSE
 	// Are we being grabbed?
 	if(!QDELETED(user.pulledby) && user.pulledby.grab_state >= GRAB_AGGRESSIVE)
@@ -37,134 +43,192 @@
 	if(!QDELETED(user.pulling))
 		owner.balloon_alert(user, "grabbing someone!")
 		return FALSE
+	if(user.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
+		owner.balloon_alert(user, "cannot move!")
+		return FALSE
 	return TRUE
 
-/// Check: Are we lunging at a person?
 /datum/action/cooldown/bloodsucker/targeted/lunge/CheckValidTarget(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
-	return isliving(target_atom)
+	return isliving(target_atom) || isturf(target_atom)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/CheckCanTarget(atom/target_atom)
-	// Default Checks
 	. = ..()
 	if(!.)
 		return FALSE
-	// Check: Turf
-	var/mob/living/turf_target = target_atom
-	if(!isturf(turf_target.loc))
+	var/turf/target_turf = get_turf(target_atom)
+	if(!target_turf)
 		return FALSE
-	// Check: can the Bloodsucker even move?
 	var/mob/living/user = owner
 	if(user.body_position == LYING_DOWN || HAS_TRAIT(owner, TRAIT_IMMOBILIZED))
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/can_deactivate()
-	return !(datum_flags & DF_ISPROCESSING) //only if you aren't lunging
+/// Calculates the startup time: decreases as power level increases!
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/get_charge_startup_time()
+	return max(0.2 SECONDS, 1.5 SECONDS - (level_current * 0.3 SECONDS))
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/FireTargetedPower(atom/target_atom)
 	. = ..()
-	owner.face_atom(target_atom)
-	if(level_current > 3)
-		do_lunge(target_atom)
-		return
-
-	prepare_target_lunge(target_atom)
+	INVOKE_ASYNC(src, PROC_REF(execute_charge), target_atom)
 	return TRUE
 
-///Starts processing the power and prepares the lunge by spinning, calls lunge at the end of it.
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/prepare_target_lunge(atom/target_atom)
-	START_PROCESSING(SSprocessing, src)
-	owner.balloon_alert(owner, "lunge started!")
-	//animate them shake
-	var/base_x = owner.base_pixel_x
-	var/base_y = owner.base_pixel_y
-	animate(owner, pixel_x = base_x, pixel_y = base_y, time = 1, loop = -1)
-	for(var/i in 1 to 25)
-		var/x_offset = base_x + rand(-3, 3)
-		var/y_offset = base_y + rand(-3, 3)
-		animate(pixel_x = x_offset, pixel_y = y_offset, time = 1)
-
-	if(!do_after(owner, 4 SECONDS, timed_action_flags = (IGNORE_USER_LOC_CHANGE|IGNORE_TARGET_LOC_CHANGE|IGNORE_SLOWDOWNS), extra_checks = CALLBACK(src, PROC_REF(CheckCanTarget), target_atom)))
-		end_target_lunge(base_x, base_y)
-
-		return FALSE
-
-	end_target_lunge()
-	do_lunge(target_atom)
-	return TRUE
-
-///When preparing to lunge ends, this clears it up.
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/end_target_lunge(base_x, base_y)
-	animate(owner, pixel_x = base_x, pixel_y = base_y, time = 1)
-	STOP_PROCESSING(SSprocessing, src)
-
-/datum/action/cooldown/bloodsucker/targeted/lunge/process()
-	if(!active) //If running SSfasprocess (on cooldown)
-		return ..() //Manage our cooldown timers
-	if(prob(75))
-		owner.spin(8, 1)
-		owner.balloon_alert_to_viewers("spins wildly!", "you spin!")
-		return
-	do_smoke(0, owner.loc, smoke_type = /obj/effect/particle_effect/fluid/smoke/transparent)
-
-///Actually lunges the target, then calls lunge end.
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/do_lunge(atom/hit_atom)
-	var/turf/targeted_turf = get_turf(hit_atom)
-
-	var/dist = get_dist(owner, targeted_turf)
-	if(dist <= target_range)
-		var/safety = dist * 3 + 1
-		var/consequetive_failures = 0
-		while(--safety && !hit_atom.Adjacent(owner))
-			if(!step_to(owner, targeted_turf))
-				consequetive_failures++
-			if(consequetive_failures >= 3) // If 3 steps don't work, just stop.
-				break
-	else
-		owner.balloon_alert(owner, "too far away!")
-
-	lunge_end(hit_atom, targeted_turf)
-
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/lunge_end(atom/hit_atom, turf/target_turf)
-	power_activated_sucessfully()
-	// Am I next to my target to start giving the effects?
-	if(!owner.Adjacent(hit_atom))
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/execute_charge(atom/target_atom)
+	if(!can_pay_cost() || !can_use(owner) || !CheckCanTarget(target_atom))
+		DeactivatePower()
 		return
 
-	var/mob/living/user = owner
-	var/mob/living/carbon/target = hit_atom
+	unset_click_ability(owner)
+	pay_cost()
+	StartCooldown()
 
-	// Did I slip or get knocked unconscious?
-	if(user.body_position != STANDING_UP || user.incapacitated)
-		//var/send_dir = get_dir(user, target_turf)
-		user.spin(10)
+	var/mob/living/charger = owner
+	var/turf/chargeturf = get_turf(target_atom)
+	if(!chargeturf || !charger)
+		DeactivatePower()
 		return
 
-	owner.balloon_alert(owner, "you lunge at [target]!")
-	if(target.stat == DEAD)
-		var/obj/item/bodypart/chest = target.get_bodypart(BODY_ZONE_CHEST)
-		var/datum/wound/slash/flesh/moderate/crit_wound = new
-		crit_wound.apply_wound(chest)
-		owner.visible_message(
-			span_warning("[owner] tears into [target]'s chest!"),
-			span_warning("You tear into [target]'s chest!"))
+	var/dir = get_dir(charger, target_atom)
+	var/turf/destination_turf = get_ranged_target_turf(chargeturf, dir, 2) || chargeturf
 
-		var/obj/item/organ/heart/myheart_now = locate() in target.organs
-		if(myheart_now)
-			myheart_now.Remove(target)
-			user.put_in_hands(myheart_now)
+	if(charger in charging_mobs)
+		GLOB.move_manager.stop_looping(charger)
 
-	else
-		target.grabbedby(owner)
-		target.grippedby(owner, instant = TRUE)
-		// Did we knock them down?
-		if(!is_source_facing_target(target, owner) || owner.alpha <= 40)
-			target.Knockdown(10 + level_current * 5)
-			target.Paralyze(0.1)
+	charging_mobs += charger
+	actively_moving = FALSE
+	charge_target = target_atom
+
+	RegisterSignal(charger, COMSIG_MOVABLE_BUMP, PROC_REF(on_bump), override = TRUE)
+	RegisterSignal(charger, COMSIG_MOVABLE_PRE_MOVE, PROC_REF(on_move), override = TRUE)
+	RegisterSignal(charger, COMSIG_MOVABLE_MOVED, PROC_REF(on_moved), override = TRUE)
+	RegisterSignal(charger, COMSIG_LIVING_DEATH, PROC_REF(charge_end), override = TRUE)
+
+	charger.setDir(dir)
+
+	// Startup delay: decreases with power level!
+	var/startup_delay = get_charge_startup_time()
+	charger.balloon_alert(charger, "preparing charge...")
+	charger.Shake(2, 2, startup_delay)
+
+	var/obj/effect/temp_visual/decoy/D = new /obj/effect/temp_visual/decoy(charger.loc, charger)
+	animate(D, alpha = 0, color = COLOR_RED, transform = matrix() * 1.5, time = 3)
+	playsound(charger, 'sound/effects/magic/demon_attack1.ogg', 40, TRUE)
+
+	SLEEP_CHECK_DEATH(startup_delay, charger)
+
+	if(charger.stat == DEAD || charger.incapacitated || charger.body_position == LYING_DOWN)
+		charge_end(charger)
+		return
+
+	playsound(charger, 'sound/effects/meteorimpact.ogg', 50, TRUE)
+
+	var/charge_speed = 0.5
+	var/time_to_hit = min(get_dist(charger, destination_turf), target_range) * charge_speed
+
+	var/datum/move_loop/new_loop = GLOB.move_manager.home_onto(charger, destination_turf, delay = charge_speed, timeout = time_to_hit, priority = MOVEMENT_ABOVE_SPACE_PRIORITY)
+	if(!new_loop)
+		charge_end(charger)
+		return
+
+	RegisterSignal(new_loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(pre_move), override = TRUE)
+	RegisterSignal(new_loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(post_move), override = TRUE)
+	RegisterSignal(new_loop, COMSIG_QDELETING, PROC_REF(on_loop_ended), override = TRUE)
+
+	// In case target was already adjacent
+	if(isliving(target_atom) && charger.Adjacent(target_atom))
+		hit_target(charger, target_atom)
+		return
+
+	sleep(time_to_hit + charge_speed)
+	if(charger in charging_mobs)
+		charger.setDir(dir)
+		charge_end(charger)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/pre_move(datum/source)
+	SIGNAL_HANDLER
+	actively_moving = TRUE
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/post_move(datum/source)
+	SIGNAL_HANDLER
+	actively_moving = FALSE
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_move(atom/source, atom/new_loc)
+	SIGNAL_HANDLER
+	if(!actively_moving)
+		return COMPONENT_MOVABLE_BLOCK_PRE_MOVE
+	new /obj/effect/temp_visual/decoy/fading(source.loc, source)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_moved(atom/source)
+	SIGNAL_HANDLER
+	var/mob/living/charger = source
+	if(charge_target && isliving(charge_target) && charger.Adjacent(charge_target))
+		hit_target(charger, charge_target)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_bump(atom/movable/source, atom/target)
+	SIGNAL_HANDLER
+	if(source == target)
+		return
+	if(isliving(target))
+		hit_target(source, target)
+		return
+	if(target.density)
+		source.visible_message(span_danger("[source] smashes into [target]!"))
+		playsound(get_turf(source), 'sound/effects/meteorimpact.ogg', 50, TRUE)
+		shake_camera(source, 2, 2)
+		if(isliving(source))
+			var/mob/living/living_source = source
+			living_source.Stun(0.4 SECONDS, ignore_canstun = TRUE)
+		charge_end(source)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/hit_target(atom/movable/source, mob/living/target)
+	if(!isliving(target))
+		return
+	var/mob/living/charger = source
+	if(charger)
+		GLOB.move_manager.stop_looping(charger)
+
+	target.visible_message(
+		span_danger("[charger] ferociously charges into [target]!"),
+		span_userdanger("[charger] charges into you!")
+	)
+	var/damage_dealt = 15 + (level_current * 3)
+	target.apply_damage(damage_dealt, BRUTE, wound_bonus = CANT_WOUND)
+	playsound(get_turf(target), 'sound/effects/meteorimpact.ogg', 80, TRUE)
+	shake_camera(target, 4, 3)
+
+	var/knockdown_duration = 2 SECONDS + (level_current * 0.5 SECONDS)
+	target.Knockdown(knockdown_duration)
+
+	target.grabbedby(charger)
+	if(iscarbon(target))
+		var/mob/living/carbon/carbon_target = target
+		carbon_target.grippedby(charger, instant = TRUE)
+	charger.start_pulling(target)
+
+	charge_end(charger)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_loop_ended(datum/source)
+	SIGNAL_HANDLER
+	if(owner)
+		charge_end(owner)
+
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/charge_end(atom/movable/charger)
+	SIGNAL_HANDLER
+	if(istype(charger, /datum/move_loop))
+		var/datum/move_loop/loop = charger
+		charger = loop.moving
+	if(!charger)
+		charger = owner
+	UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
+	actively_moving = FALSE
+	charging_mobs -= charger
+	charge_target = null
+	DeactivatePower()
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/DeactivatePower()
-	REMOVE_TRAIT(owner, TRAIT_IMMOBILIZED, BLOODSUCKER_TRAIT)
+	if(owner && (owner in charging_mobs))
+		GLOB.move_manager.stop_looping(owner)
+		charge_end(owner)
 	return ..()

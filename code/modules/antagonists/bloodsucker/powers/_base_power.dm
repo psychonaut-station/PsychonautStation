@@ -34,6 +34,8 @@
 	var/active = FALSE
 	///Can increase to yield new abilities - Each Power ranks up each Rank
 	var/level_current = 0
+	///If this power scales with levels. If FALSE, no level is displayed or increased for this power.
+	var/can_level = TRUE
 	///The cost to ACTIVATE this Power
 	var/bloodcost = 0
 	///The cost to MAINTAIN this Power - Only used for Constant Cost Powers
@@ -111,6 +113,8 @@
 
 ///Called when the Power is upgraded.
 /datum/action/cooldown/bloodsucker/proc/upgrade_power()
+	if(!can_level)
+		return
 	level_current++
 
 ///Checks if the Power is available to use.

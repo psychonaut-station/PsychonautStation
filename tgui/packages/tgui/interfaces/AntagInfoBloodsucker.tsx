@@ -27,6 +27,8 @@ type PowerInfo = {
   explanation: string;
   icon: string;
   icon_state: string;
+  can_level?: boolean;
+  level?: number;
 };
 
 type Info = {
@@ -200,12 +202,20 @@ const BloodsuckerClan = (props: any) => {
 
 const PowerSection = (props: any) => {
   const { data } = useBackend<BloodsuckerInformation>();
-  const { powers } = data;
+  const { powers = [] } = data;
 
-  const [powerTab, setPowerTab] = useLocalState('power', powers[0].name);
+  const [powerTab, setPowerTab] = useLocalState('power', powers[0]?.name || '');
 
   const selectedPower =
     powers.find((power) => power.name === powerTab) || powers[0];
+
+  if (!powers || powers.length === 0) {
+    return (
+      <Section title="Powers">
+        <Box color="label">No powers unlocked yet.</Box>
+      </Section>
+    );
+  }
 
   return (
     <Section title="Powers">
@@ -222,6 +232,13 @@ const PowerSection = (props: any) => {
                     verticalAlign="middle"
                   />
                 }
+                rightSlot={
+                  power.can_level && power.level !== undefined ? (
+                    <Box color="red" bold fontSize="12px" ml={1}>
+                      Lvl {power.level}
+                    </Box>
+                  ) : null
+                }
                 selected={powerTab === power.name}
                 onClick={() => setPowerTab(power.name)}
               >
@@ -231,11 +248,21 @@ const PowerSection = (props: any) => {
           </Tabs>
         </Flex.Item>
         <Flex.Item ml="1rem" grow={1} basis={0} fontSize="14px">
-          <Box
-            dangerouslySetInnerHTML={{
-              __html: selectedPower.explanation,
-            }}
-          />
+          {selectedPower && (
+            <>
+              <Box bold fontSize="16px" mb={1} color="red">
+                {selectedPower.name}
+                {selectedPower.can_level && selectedPower.level !== undefined
+                  ? ` — Level ${selectedPower.level}`
+                  : ''}
+              </Box>
+              <Box
+                dangerouslySetInnerHTML={{
+                  __html: selectedPower.explanation,
+                }}
+              />
+            </>
+          )}
         </Flex.Item>
       </Flex>
     </Section>

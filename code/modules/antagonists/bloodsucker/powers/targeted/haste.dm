@@ -8,12 +8,12 @@
 	button_icon_state = "power_speed"
 	power_explanation = "Immortal Haste:\n\
 		Toggled ability that accelerates your reflexes to supernatural levels;\n\
-		- Grants a chance to evade incoming bullets and projectiles (starts at 15%, +15% per level up to max 60%).\n\
-		- Your action and interaction speed is greatly increased (starts at +15%, +15% per level up to max +60%).\n\
+		- Grants a chance to evade incoming bullets and projectiles (starts at 15% at Level 1, +15% per level up to max 60% at Level 4).\n\
+		- Your action and interaction speed is greatly increased (starts at +15% at Level 1, +15% per level up to max +60% at Level 4).\n\
 		- Leaves behind ghostly afterimages while moving.\n\
 		- Upon initial activation, slips out of any grab.\n\
 		- Cannot be used simultaneously with Fortitude.\n\
-		Higher levels increase projectile evasion chance and interaction speed."
+		Higher levels increase projectile evasion chance and interaction speed (max Level 4)."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -86,6 +86,8 @@
 	return ..()
 
 /datum/action/cooldown/bloodsucker/haste/upgrade_power()
+	if(level_current >= 4)
+		return
 	. = ..()
 	if(active && owner)
 		apply_actionspeed()
@@ -94,7 +96,9 @@
 	if(!ismob(owner))
 		return
 	var/mob/living/user = owner
-	var/speed_mult = min(0.60, 0.15 + (level_current * 0.15))
+	// SS13 actionspeed uses 'multiplicative_slowdown' where final delay = delay * (1 + sum_of_slowdowns).
+	// Therefore, negative values reduce interaction delay (e.g. -0.15 = 15% faster, -0.60 = 60% faster).
+	var/speed_mult = min(0.60, max(1, level_current) * 0.15)
 	user.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_haste, TRUE, -speed_mult)
 
 /datum/action/cooldown/bloodsucker/haste/proc/dodge_bullets(mob/living/source, obj/projectile/hitting_projectile, def_zone)
@@ -103,7 +107,7 @@
 	if(source.stat != CONSCIOUS || source.incapacitated)
 		return NONE
 
-	var/dodge_chance = min(60, 15 + (level_current * 15))
+	var/dodge_chance = min(60, max(1, level_current) * 15)
 	if(!prob(dodge_chance))
 		return NONE
 

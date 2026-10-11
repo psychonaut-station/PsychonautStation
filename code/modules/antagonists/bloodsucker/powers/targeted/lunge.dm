@@ -177,9 +177,6 @@
 		source.visible_message(span_danger("[source] smashes into [target]!"))
 		playsound(get_turf(source), 'sound/effects/meteorimpact.ogg', 50, TRUE)
 		shake_camera(source, 2, 2)
-		if(isliving(source))
-			var/mob/living/living_source = source
-			living_source.Stun(0.4 SECONDS, ignore_canstun = TRUE)
 		charge_end(source)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/hit_target(atom/movable/source, mob/living/target)
@@ -221,7 +218,9 @@
 		charger = loop.moving
 	if(!charger)
 		charger = owner
-	UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
+	if(charger)
+		GLOB.move_manager.stop_looping(charger)
+		UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	actively_moving = FALSE
 	charging_mobs -= charger
 	charge_target = null

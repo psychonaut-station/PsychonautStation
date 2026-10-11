@@ -79,6 +79,9 @@ Bu doküman, `PsychonautStationMy` deposundaki `bloodsuckerv2` dalında (branch)
 - **Seviye Atlama Getirileri:**
   - Yeni bir vampirik güç satın alma imkânı.
   - Sahip olunan seviyelendirilebilir tüm güçlerin (`can_level = TRUE`) rütbesinin yükselmesi.
+  - **Maksimum Seviye Sınırı (Power Level Cap):** Tüm seviyelendirilebilir vampirik güçler maksimum 4. seviyeye (`max_level = 4`) kadar yükselebilir. Bu kuralın tek istisnası **Cloak of Darkness** olup azami 8. seviyeye (`max_level = 8`) kadar çıkabilir.
+  - Dinamik bekleme süresi ölçeklenmesi: Seviye atlandıkça bekleme süreleri dinamik formülle (`max(initial/2, initial - (initial / (2 * (max_level - 1)) * (level - 1)))`) azalarak azami seviyede yarı yarıya (%50) iner.
+  - TGUI arayüzünde seviyeler `Lvl {level}/{max_level}` şeklinde gösterilir.
   - Maksimum kan kapasitesine +100 artış.
   - Pasif iyileşme hızına +0.05 artış.
   - Çıplak el silahsız vuruş hasarına bonus artış.
@@ -88,18 +91,20 @@ Bu doküman, `PsychonautStationMy` deposundaki `bloodsuckerv2` dalında (branch)
 
 ## 6. Vampirik Güçler (Powers)
 
+Tüm seviyelendirilebilir güçler azami 4. seviyeye (`max_level = 4`) kadar yükseltilebilir; tek istisna 8. seviyeye kadar ölçeklenen **Cloak of Darkness**'tır (`max_level = 8`). TGUI bilgi panelinde seviyeler `Lvl {level}/{max_level}` olarak görüntülenir.
+
 | Güç Adı | Türü | Seviye Ölçekli | Kan Maliyeti | Açıklama |
 | :--- | :--- | :---: | :---: | :--- |
 | **Feed** | Toggle | Evet | 0 | Canlılardan kan emer. Seviye arttıkça hazırlık ve bekleme süresi kısalır; agresif tutuşta kurbanı bayıltır. |
 | **Masquerade** | Toggle | Hayır | 10 (+0.1/s) | İnsan taklidi yapar. Kalp atışı başlar, tıbbi tarayıcılarda %100 kan gösterir. Aktifken vampirik iyileşme durur. |
 | **Veil of Many Faces** | Toggle | Hayır | 15 (+0.1/s) | Duman bulutu içinde görünümü ve kimliği rastgele bir mürettebat üyesine dönüştürür. |
-| **Cloak of Darkness** | Toggle | Evet | 5 (+0.2/s) | Gölgelerde görünmez olur (yapay zeka kameraları dahil). Koşmaya çalışırsa hasar alır. Seviye ile şeffaflık artar. |
+| **Cloak of Darkness** | Toggle | Evet (Azami Lvl 8) | 5 (+0.2/s) | Gölgelerde görünmez olur (yapay zeka kameraları dahil). Koşmaya çalışırsa hasar alır. Seviye ile şeffaflık artar (Lvl 8'de tam güç, şeffaflık maksimum). |
 | **Fortitude** | Toggle | Evet | 30 (+0.2/s) | Çelik zırh. Saplanma, sersemleme, uzuv kopması bağışıklığı ve %30-%70 Brute/Stamina hasar azaltması sağlar (Lvl 4'te tam sersemleme bağışıklığı). Haste ile aynı anda açılamaz. |
 | **Immortal Haste** *(Reworked)* | Toggle | Evet | 10 (+0.2/s) | Refleksleri hızlandırır. Açılışta tutulmaları bozar. Mermilerden kaçınma (%15 - %60), etkileşim hızı artışı (%15 - %60) ve arkasında gölge izi (afterimage) bırakır. Fortitude ile aynı anda açılamaz. |
-| **Predatory Rush** *(Lunge Rework)*| Hedefli | Evet | 10 | Hedefe doğru korkunç bir hızla atılır. Seviye arttıkça ön hazırlık süresi kısalır (1.5s -> 0.2s). Çarpışmada 15+(lvl*3) hasar verir, yere yıkar ve boynundan yakalar. |
+| **Predatory Rush** *(Lunge Rework)*| Hedefli | Evet | 10 | Hedefe doğru korkunç bir hızla atılır. Seviye arttıkça ön hazırlık süresi kısalır (1.4s -> 0.2s, Lvl 4'te minimum). Çarpışmada 15+(lvl*3) hasar verir, yere yıkar ve boynundan yakalar. |
 | **Brawn** | Hedefli | Evet | 8 | Kelepçeleri kırar, hedefleri geriye fırlatır, cyborg'lara ağır EMP vurur. 3. seviyede dolapları parçalar, 4. seviyede kilitlenmemiş hava kilitlerini (airlock) kırıp açar. |
-| **Mesmerize** | Hedefli | Evet | 30 | Göz temasıyla hedefi hipnotize edip dondurur. Lvl 2'de susturur, Lvl 3'te maske arkasından işler, Lvl 5'te yöne bakılmaksızın çalışır. |
-| **Trespass** | Hedefli | Evet | 10 | Sise dönüşerek 2 karo ileriye duvar olmayan engellerin/kapıların arkasına ışınlanır. |
+| **Mesmerize** | Hedefli | Evet | 30 | Göz temasıyla hedefi hipnotize edip dondurur. Lvl 2'de susturur, Lvl 3'te maske arkasından işler, Lvl 4'te yöne bakılmaksızın çalışır. |
+| **Trespass** | Hedefli | Evet | 10 | Sise dönüşerek 2 karo ileriye duvar olmayan engellerin/kapıların arkasına ışınlanır. Seviye arttıkça sis gecikmesi kısalır (Lvl 4'te minimum). |
 | **Go Home** | Anlık | Hayır | 0 | Sol yaklaştığında tabutun bulunduğu sığınağa dönüş yolunu gösterir/yardımcı olur. |
 
 ---
@@ -143,7 +148,7 @@ Bloodsucker'lar istasyon mürettebatını köleleştirerek kendilerine bağlayab
 
 1. **Antag Bilgi Ekranı (`AntagInfoBloodsucker.tsx`):**
    - Vampirin hedefleri, güçlü ve zayıf yönleri gösterilir.
-   - Güçler sekmesinde her gücün seviyesi (`Lvl 1`, `Lvl 2` vb.) kırmızı rozetle listelenir.
+   - Güçler sekmesinde her gücün seviyesi ve sınırı (`Lvl {level}/{max_level}`, örn. `Lvl 1/4`, `Lvl 3/8`) kırmızı rozetle ve başlıkta listelenir.
    - Seviyesi olmayan güçlerde seviye göstergesi gizlenir.
 2. **HUD Sayaçları:**
    - `HUD_BLOODSUCKER_BLOOD`: Mevcut kan hacmi göstergesi.

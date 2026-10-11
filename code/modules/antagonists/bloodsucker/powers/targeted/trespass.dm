@@ -76,7 +76,7 @@
 	var/datum/effect_system/basic/steam_spread/puff = new(my_turf, 3, FALSE)
 	puff.start()
 
-	var/mist_delay = max(5, 20 - level_current * 2.5) // Level up and do this faster.
+	var/mist_delay = max(5, 20 - (level_current - 1) * 5) // Level up and do this faster. Reaches minimum at level 4.
 
 	// Freeze Me
 	user.Stun(mist_delay, ignore_canstun = TRUE)

@@ -68,7 +68,7 @@
 
 /// Calculates the startup time: decreases as power level increases!
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/get_charge_startup_time()
-	return max(0.2 SECONDS, 1.5 SECONDS - (level_current * 0.3 SECONDS))
+	return max(0.2 SECONDS, 1.4 SECONDS - (level_current * 0.3 SECONDS))
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/FireTargetedPower(atom/target_atom)
 	. = ..()

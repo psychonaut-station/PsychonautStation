@@ -36,6 +36,8 @@
 	var/level_current = 0
 	///If this power scales with levels. If FALSE, no level is displayed or increased for this power.
 	var/can_level = TRUE
+	///Maximum level this power can reach.
+	var/max_level = 4
 	///The cost to ACTIVATE this Power
 	var/bloodcost = 0
 	///The cost to MAINTAIN this Power - Only used for Constant Cost Powers
@@ -113,7 +115,7 @@
 
 ///Called when the Power is upgraded.
 /datum/action/cooldown/bloodsucker/proc/upgrade_power()
-	if(!can_level)
+	if(!can_level || level_current >= max_level)
 		return
 	level_current++
 
@@ -160,7 +162,10 @@
 	if(power_flags & BP_AM_STATIC_COOLDOWN)
 		cooldown_time = initial(cooldown_time)
 	else
-		cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / 16 * (level_current - 1)))
+		if(max_level > 1)
+			cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / (2 * (max_level - 1)) * (level_current - 1)))
+		else
+			cooldown_time = initial(cooldown_time)
 
 	return ..()
 

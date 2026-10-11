@@ -328,6 +328,7 @@
 		)
 		if(power.can_level)
 			power_data["level"] = power.level_current
+			power_data["max_level"] = power.max_level
 		.["powers"] += list(power_data)
 
 /datum/antagonist/bloodsucker/ui_static_data(mob/user)
@@ -351,6 +352,7 @@
 		)
 		if(power.can_level)
 			power_data["level"] = power.level_current
+			power_data["max_level"] = power.max_level
 		.["powers"] += list(power_data)
 
 /datum/antagonist/bloodsucker/ui_act(action, params, datum/tgui/ui)

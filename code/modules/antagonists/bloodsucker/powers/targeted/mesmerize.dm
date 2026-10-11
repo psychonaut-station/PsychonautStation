@@ -4,7 +4,7 @@
  *
  * 	Level 2: Additionally mutes
  * 	Level 3: Can be used through face protection
- * 	Level 5: Doesn't need to be facing you anymore
+ * 	Level 4: Doesn't need to be facing you anymore
  */
 
 /datum/action/cooldown/bloodsucker/targeted/mesmerize
@@ -18,7 +18,7 @@
 		Once mesmerized, the target will be unable to move for a certain amount of time, scaling with level.\n\
 		At level 2, your target will additionally be muted.\n\
 		At level 3, you will be able to use the power through items covering your face.\n\
-		At level 5, you will be able to mesmerize regardless of your target's direction.\n\
+		At level 4, you will be able to mesmerize regardless of your target's direction.\n\
 		Higher levels will increase the time of the mesmerize's freeze."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
@@ -82,7 +82,7 @@
 		owner.balloon_alert(owner, "you must be facing [current_target].")
 		return FALSE
 	// Target facing me? (On the floor, they're facing everyone)
-	if(((current_target.mobility_flags & MOBILITY_STAND) && !is_source_facing_target(current_target, owner) && level_current <= 4))
+	if(((current_target.mobility_flags & MOBILITY_STAND) && !is_source_facing_target(current_target, owner) && level_current <= 3))
 		owner.balloon_alert(owner, "[current_target] must be facing you.")
 		return FALSE
 

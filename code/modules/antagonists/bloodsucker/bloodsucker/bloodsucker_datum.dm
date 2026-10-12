@@ -401,8 +401,6 @@
 				vassal_report += " the [all_vassals.owner.assigned_role.title]"
 			if(IS_FAVORITE_VASSAL(all_vassals.owner.current))
 				vassal_report += " and was the <b>Favorite Vassal</b>"
-			else if(IS_REVENGE_VASSAL(all_vassals.owner.current))
-				vassal_report += " and was the <b>Revenge Vassal</b>"
 			report += vassal_report.Join()
 
 	if(!length(objectives) || objectives_complete)

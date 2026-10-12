@@ -68,7 +68,7 @@ Bu doküman, `PsychonautStationMy` deposundaki `bloodsuckerv2` dalında (branch)
 2. **Final Death (Nihai Ölüm):**
    - Yangın hasarı azami sağlığın 2.5 katına ulaştığında,
    - Torpor veya bilinçsizlik halindeyken göğsüne ahşap/gümüş kazık saplandığında tetiklenir.
-   - Düşük seviyeli vampirler patlayarak parçalanır (`gib`), 4. seviye ve üzeri kıdemli vampirler ise bir toz yığınına dönüşür (`dust`). Tüm köleleri (Vassals) serbest kalır.
+   - Düşük seviyeli vampirler patlayarak parçalanır (`gib`), 4. seviye ve üzeri kıdemli vampirler ise bir toz yığınına dönüşür (`dust`). Efendinin nihai ölümüyle birlikte tüm köleler (Vassals) derhal serbest kalır ve normal mürettebat statüsüne geri dönerler.
 
 ---
 
@@ -116,13 +116,10 @@ Bloodsucker'lar istasyon mürettebatını köleleştirerek kendilerine bağlayab
 2. **Vassal Türleri:**
    - **Standart Vassal:** Efendisine telepatik olarak bağlıdır, konumunu gösteren pinpointer taşır ve vampir dilini konuşabilir.
    - **Favorite Vassal:** Efendinin en sevdiği kölesi. Mindshield implantasyonuna karşı tamamen bağışıktır ve doğuştan **Brawn** gücüne sahip olur.
-   - **Revenge Vassal (İntikam Kölesi):** Efendisi Final Death ile yok edildiğinde özgür kalmak yerine efendisinin tüm güçlerini miras alır, yeni round-end antag raporuna girer ve diğer Ex-Vassal'ları toplayarak intikam alma (`Avenge Bloodsucker`) görevini üstlenir.
-   - **Ex-Vassal:** Efendisi ölen köleler 10 dakikalık bir kan açlığı döngüsüne girer. Bu süre içinde vampir kanı verilmezse deconvert olurlar.
+   - *Efendinin Ölümü (Final Death):* Efendi nihai ölüme ulaştığında tüm köleler (Vassals) derhal serbest kalır ve normal mürettebat üyelerine geri dönerler.
 3. **Vassal Güçleri:**
    - `Sanguine Recuperation`: Efendinin kan havuzunu kullanarak kendi Brute, Burn ve Toxin yaralarını iyileştirir.
    - `Distress`: Kendini yaralayarak efendisine acil durum konum sinyali yollar.
-   - `Bat Form`: Tehlikeli durumlarda uzay yarasasına dönüşür.
-   - `Help Vassal`: Yalnızca Revenge Vassal tarafından kullanılır; Ex-Vassal'ları yeniden örgüte katar veya vampirik kan torbası doldurur.
 
 ---
 
@@ -155,5 +152,5 @@ Bloodsucker'lar istasyon mürettebatını köleleştirerek kendilerine bağlayab
    - `HUD_BLOODSUCKER_RANK`: Mevcut vampir rütbesi göstergesi.
    - `HUD_BLOODSUCKER_SUNLIGHT`: Güneş ışığına kalan süreyi gösteren gösterge.
 3. **Kasaplık Düzeltmesi (`code/datums/components/butchering.dm`):**
-   - Savaş modunda (Combat Mode) sağ tıklandığında oyuncuların hedefe saldırmak yerine yanlışlıkla kasaplık eylemine girmesi ve saldırı zincirinin bozulması engellendi.
-   - Yalnızca kurban ölü/baygın/bağlıysa ve kurbanın bulunduğu karoda bir masa, yatak, stasis ünitesi veya mutfak çengeli varsa sağ tıkla kasaplık eylemi tetiklenir.
+   - İnsanlar üzerinde sağ tık ile kasaplık (human right-click butchering) mekaniği tamamen kaldırıldı; standart PsychonautStation parçalama/kasaplık (gib/butcher) sistemine geri dönüldü.
+   - Artık yalnızca kasaplık sonucu bulunan ölü hayvanlar ve maymunlar (`victim.stat == DEAD && (victim.butcher_results || victim.guaranteed_butcher_results)`) sol tıkla kesilebilir; insanlara yönelik savaş modundaki sağ tık saldırıları hiçbir şekilde kasaplık tetiklemez ve saldırı zincirleri kesintiye uğramaz.

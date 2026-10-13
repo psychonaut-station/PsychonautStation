@@ -4,16 +4,14 @@
 
 /datum/action/cooldown/bloodsucker/haste
 	name = "Immortal Haste"
-	desc = "Accelerate your perception and reflexes to superhuman extremes. Evade gunfire and perform interactions at blinding speed."
+	desc = "Accelerate your perception and reflexes to supernatural extremes, evading gunfire and moving with blurring swiftness."
 	button_icon_state = "power_speed"
 	power_explanation = "Immortal Haste:\n\
-		Toggled ability that accelerates your reflexes to supernatural levels;\n\
-		- Grants a chance to evade incoming bullets and projectiles (starts at 15% at Level 1, +15% per level up to max 60% at Level 4).\n\
-		- Your action and interaction speed is greatly increased (starts at +15% at Level 1, +15% per level up to max +60% at Level 4).\n\
-		- Leaves behind ghostly afterimages while moving.\n\
-		- Upon initial activation, slips out of any grab.\n\
-		- Cannot be used simultaneously with Fortitude.\n\
-		Higher levels increase projectile evasion chance and interaction speed (max Level 4)."
+		Accelerate your unholy senses and reflexes to a blinding blur, dodging ranged projectiles and incoming gunfire through supernatural celerity.\n\
+		Your hands move with lightning rapidity, completing interactions in fractions of a heartbeat, while your strides leave spectral afterimages.\n\
+		Surging into haste instantly slips you free from any physical grasp.\n\
+		The hyper-fluid velocity of Haste cannot be maintained alongside the immovable mass of Fortitude.\n\
+		Deepening mastery sharpens your reflexes further, heightening your evasion against projectiles and granting even swifter hands."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY

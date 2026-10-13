@@ -1,11 +1,11 @@
 /datum/action/cooldown/bloodsucker/veil
 	name = "Veil of Many Faces"
-	desc = "Disguise yourself in the illusion of another identity."
+	desc = "Weave a cloud of deceptive shadows to cloak yourself in an entirely different face and identity."
 	button_icon_state = "power_veil"
-	power_explanation = "Veil of Many Faces: \n\
-		Activating Veil of Many Faces will shroud you in smoke and forge you a new identity.\n\
-		Your name and appearance will be completely randomized, and turning the ability off again will undo it all.\n\
-		Clothes, gear, and Security/Medical HUD status is kept the same while this power is active."
+	power_explanation = "Veil of Many Faces:\n\
+		Weave a thick shroud of deceptive smoke to conceal your true countenance and assume an entirely different mortal identity.\n\
+		Your clothing and carried equipment remain untouched by the illusion.\n\
+		The deceptive veil may be dispelled at will whenever you wish to reclaim your true appearance."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL
 	purchase_flags = BLOODSUCKER_DEFAULT_POWER | VASSAL_CAN_BUY

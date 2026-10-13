@@ -100,6 +100,8 @@
  */
 /datum/bloodsucker_clan/proc/on_exit_torpor(datum/antagonist/bloodsucker/source)
 	SIGNAL_HANDLER
+	if(bloodsuckerdatum.bloodsucker_level_unspent > 0)
+		INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
 
 /**
  * Called when a Bloodsucker enters Final Death
@@ -144,42 +146,38 @@
 	INVOKE_ASYNC(src, PROC_REF(spend_rank), bloodsuckerdatum, target, cost_rank, blood_cost)
 
 /datum/bloodsucker_clan/proc/spend_rank(datum/antagonist/bloodsucker/source, mob/living/carbon/target, cost_rank = TRUE, blood_cost)
-	// Purchase Power Prompt
 	var/list/options = list()
+	var/list/radial_display = list()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in bloodsuckerdatum.all_bloodsucker_powers)
-		if(initial(power.purchase_flags) & BLOODSUCKER_CAN_BUY && !(locate(power) in bloodsuckerdatum.powers))
+		if((initial(power.purchase_flags) & BLOODSUCKER_CAN_BUY) && !(locate(power) in bloodsuckerdatum.powers))
 			options[initial(power.name)] = power
+			var/datum/radial_menu_choice/option = new
+			option.image = image(icon = initial(power.button_icon), icon_state = initial(power.button_icon_state))
+			option.info = "[initial(power.name)] - [span_boldnotice(initial(power.desc))]"
+			radial_display[initial(power.name)] = option
 
-	if(length(options) < 1)
-		to_chat(bloodsuckerdatum.owner.current, span_notice("You grow more ancient by the night!"))
+	if(!length(options))
+		to_chat(bloodsuckerdatum.owner.current, span_notice("You awaken more ancient by the night, having mastered all gifts!"))
 	else
-		// Give them the UI to purchase a power.
-		var/choice = tgui_input_list(bloodsuckerdatum.owner.current, "You have the opportunity to grow more ancient. Select a power to advance your Rank.", "Your Blood Thickens...", options)
-		// Prevent Bloodsuckers from closing/reopning their coffin to spam Levels.
+		to_chat(bloodsuckerdatum.owner.current, span_notice("As you awaken from your slumber, your ancient blood thickens. Select a power to advance your Rank."))
+		var/choice = show_radial_menu(bloodsuckerdatum.owner.current, bloodsuckerdatum.owner.current, radial_display)
 		if(cost_rank && bloodsuckerdatum.bloodsucker_level_unspent <= 0)
 			return
-		// Did you choose a power?
 		if(!choice || !options[choice])
-			to_chat(bloodsuckerdatum.owner.current, span_notice("You prevent your blood from thickening just yet, but you may try again later."))
+			to_chat(bloodsuckerdatum.owner.current, span_notice("You hold back the surge of ancient blood for now, but you may embrace it when you next awaken."))
 			return
-		// Prevent Bloodsuckers from closing/reopning their coffin to spam Levels.
 		if(locate(options[choice]) in bloodsuckerdatum.powers)
-			to_chat(bloodsuckerdatum.owner.current, span_notice("You prevent your blood from thickening just yet, but you may try again later."))
-			return
-		// Prevent Bloodsuckers from purchasing a power while outside of their Coffin.
-		if(!istype(bloodsuckerdatum.owner.current.loc, /obj/structure/closet/crate/coffin))
-			to_chat(bloodsuckerdatum.owner.current, span_warning("You must be in your Coffin to purchase Powers."))
+			to_chat(bloodsuckerdatum.owner.current, span_notice("You already possess this gift."))
 			return
 
-		// Good to go - Buy Power!
 		var/datum/action/cooldown/bloodsucker/purchased_power = options[choice]
 		bloodsuckerdatum.BuyPower(new purchased_power)
 		bloodsuckerdatum.owner.current.balloon_alert(bloodsuckerdatum.owner.current, "learned [choice]!")
-		to_chat(bloodsuckerdatum.owner.current, span_notice("You have learned how to use [choice]!"))
+		to_chat(bloodsuckerdatum.owner.current, span_notice("You have unlocked the gift of [choice]!"))
 
-	finalize_spend_rank(bloodsuckerdatum, cost_rank, blood_cost)
+	finalize_spend_rank(bloodsuckerdatum, cost_rank, blood_cost, target)
 
-/datum/bloodsucker_clan/proc/finalize_spend_rank(datum/antagonist/bloodsucker/source, cost_rank = TRUE, blood_cost)
+/datum/bloodsucker_clan/proc/finalize_spend_rank(datum/antagonist/bloodsucker/source, cost_rank = TRUE, blood_cost, mob/living/carbon/target)
 	bloodsuckerdatum.LevelUpPowers()
 	bloodsuckerdatum.bloodsucker_regen_rate += 0.05
 	bloodsuckerdatum.max_blood_volume += 100
@@ -210,6 +208,9 @@
 		* Your existing powers have all ranked up as well!"))
 	bloodsuckerdatum.owner.current.playsound_local(null, 'sound/effects/pope_entry.ogg', 25, TRUE, pressure_affected = FALSE)
 	bloodsuckerdatum.update_hud()
+
+	if(cost_rank && bloodsuckerdatum.bloodsucker_level_unspent > 0)
+		INVOKE_ASYNC(src, PROC_REF(spend_rank), bloodsuckerdatum, target, cost_rank, blood_cost)
 
 /**
  * Called when we are trying to turn someone into a Favorite Vassal

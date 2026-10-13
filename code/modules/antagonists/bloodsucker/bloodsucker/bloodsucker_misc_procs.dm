@@ -61,7 +61,7 @@
 		return
 	// Spend Rank Immediately?
 	if(!istype(owner.current.loc, /obj/structure/closet/crate/coffin))
-		to_chat(owner, span_notice("<EM>You have grown more ancient! Sleep in a coffin (or put your Favorite Vassal on a persuasion rack for Ventrue) that you have claimed to thicken your blood and become more powerful.</EM>"))
+		to_chat(owner, span_notice("<EM>You have grown more ancient! Sleep in a claimed coffin to thicken your blood and awaken with new power.</EM>"))
 		if(bloodsucker_level_unspent >= 2)
 			to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
 		return

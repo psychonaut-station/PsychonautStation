@@ -1,13 +1,11 @@
 /datum/action/cooldown/bloodsucker/targeted/brawn
 	name = "Brawn"
-	desc = "Snap restraints, break lockers and doors, or deal terrible damage with your bare hands."
+	desc = "Unleash monstrous physical strength to shatter restraints, knock away foes, and tear through sturdy barriers."
 	button_icon_state = "power_strength"
 	power_explanation = "Brawn:\n\
-		Click any person to bash into them, break restraints you have or knocking a grabber down. Only one of these can be done per use.\n\
-		Punching a Cyborg will heavily EMP them in addition to deal damage.\n\
-		At level 3, you get the ability to break closets open, additionally can both break restraints AND knock a grabber down in the same use.\n\
-		At level 4, you get the ability to bash airlocks open, as long as they aren't bolted.\n\
-		Higher levels will increase the damage and knockdown when punching someone."
+		Channel monstrous physical strength into your limbs to shatter restraining bonds, throw foes to the ground, or bash away those who hold you.\n\
+		Striking synthetic cyborgs discharges devastating electromagnetic shockwaves alongside devastating trauma.\n\
+		As your ancient blood thickens, your blows become increasingly concussive, allowing you to forcefully smash open locked lockers and tear through unbolted airlocks."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR|BP_CANT_USE_IN_FRENZY|BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY|VASSAL_CAN_BUY

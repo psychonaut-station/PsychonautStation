@@ -1,11 +1,11 @@
 /datum/action/cooldown/bloodsucker/targeted/lunge
 	name = "Predatory Rush"
-	desc = "Rush forward with terrifying speed like a ravenous beast, violently tackling and grappling your target to the ground."
+	desc = "Brace and unleash a terrifying beastial charge, violently slamming and pinning your prey to the deck."
 	button_icon_state = "power_lunge"
 	power_explanation = "Predatory Rush:\n\
-		Target any creature or location to brace yourself and unleash a vicious high-speed charge.\n\
-		Upon impact, you will slam the victim to the ground, deal heavy brute damage, and aggressively grapple them.\n\
-		Higher levels reduce the windup time before the charge begins and increase the knockdown duration and impact force."
+		Brace your unholy sinews and surge forward in a terrifying high-speed charge toward your quarry.\n\
+		Colliding with a victim violently tackles them to the deck, inflicting heavy physical trauma and securing an aggressive hold over their body.\n\
+		Deepening mastery sharpens your predatory instinct, greatly quickening your preparation time and amplifying the sheer violence and stunning impact of the collision."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY

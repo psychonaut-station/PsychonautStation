@@ -12,15 +12,12 @@
 
 /datum/action/cooldown/bloodsucker/masquerade
 	name = "Masquerade"
-	desc = "Feign the vital signs of a mortal, and escape both casual and medical notice as the monster you truly are."
+	desc = "Feign the heartbeat and warmth of a living mortal to walk undetected among human medical and casual scrutiny."
 	button_icon_state = "power_human"
 	power_explanation = "Masquerade:\n\
-		Activating Masquerade will forge your identity to be practically identical to that of a human;\n\
-		- You lose nearly all Bloodsucker benefits, including healing, sleep, radiation, crit, virus and cold immunity.\n\
-		- Your eyes turn to that of a regular human as your heart begins to beat.\n\
-		- You gain a Genetic sequence, and appear to have 100% blood when scanned by a Health Analyzer.\n\
-		- You will not appear as Pale when examined. Anything further than Pale, however, will not be hidden.\n\
-		At the end of a Masquerade, you will re-gain your Vampiric abilities, as well as lose any Disease & Gene you might have."
+		Force your cold heart to beat and mimic the warmth and vitals of a living mortal, thoroughly deceiving medical scanners and casual observers.\n\
+		While maintaining the guise of life, your vampiric resilience, immunities, and unnatural healing are suppressed.\n\
+		Dropping the mortal guise immediately restores your immortal bloodline and all undead gifts, purging mundane afflictions contracted while playing human."
 	power_flags = BP_AM_TOGGLE | BP_AM_STATIC_COOLDOWN | BP_AM_COSTLESS_UNCONSCIOUS
 	check_flags = BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL
 	purchase_flags = BLOODSUCKER_CAN_BUY | BLOODSUCKER_DEFAULT_POWER

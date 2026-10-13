@@ -59,13 +59,9 @@
 	if(!my_clan)
 		to_chat(owner.current, span_notice("You have gained a rank. Join a Clan to spend it."))
 		return
-	// Spend Rank Immediately?
-	if(!istype(owner.current.loc, /obj/structure/closet/crate/coffin))
-		to_chat(owner, span_notice("<EM>You have grown more ancient! Sleep in a claimed coffin to thicken your blood and awaken with new power.</EM>"))
-		if(bloodsucker_level_unspent >= 2)
-			to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
-		return
-	SpendRank()
+	to_chat(owner, span_notice("<EM>You have grown more ancient! Awaken from your coffin to thicken your blood and embrace new power.</EM>"))
+	if(bloodsucker_level_unspent >= 2 && !istype(owner.current.loc, /obj/structure/closet/crate/coffin))
+		to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
 
 /datum/antagonist/bloodsucker/proc/RankDown()
 	bloodsucker_level_unspent--

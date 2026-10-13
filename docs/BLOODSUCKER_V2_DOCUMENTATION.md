@@ -77,7 +77,7 @@ Bu doküman, `PsychonautStationMy` deposundaki `bloodsuckerv2` dalında (branch)
 - Geceyi atlatan vampirler harcanmamış seviye kazanır (`bloodsucker_level_unspent`).
 - Seviyeler, istasyonda sahiplenilmiş bir **Tabut (Coffin)** içinde uyuduktan sonra uyanırken (tabut kapağı açıldığında) veya Torpor'dan çıkıldığında açılan **radyal menü (radial menu)** aracılığıyla seçilerek harcanır. Birden fazla harcanmamış rütbe bulunuyorsa, radyal menü ardışık olarak tekrar açılarak tüm rütbelerin kullanılmasını sağlar.
 - **Seviye Atlama Getirileri:**
-  - Yeni bir vampirik güç satın alma imkânı (radyal menü üzerinden görsel simgeleri ve atmosferik açıklamalarıyla).
+  - Yeni bir vampirik güç satın alma imkânı (radyal menü üzerinden görsel simgeleri ve atmosferik açıklamalarıyla). Tüm satın alınabilir güçler edinildiğinde radyal menüde **Ancient Mastery** seçeneği çıkarak rütbe atlamayı, mevcut güçleri güçlendirmeyi ve pasif nitelikleri yükseltmeyi sürdürür.
   - Sahip olunan seviyelendirilebilir tüm güçlerin (`can_level = TRUE`) rütbesinin yükselmesi.
   - **Maksimum Seviye Sınırı (Power Level Cap):** Tüm seviyelendirilebilir vampirik güçler maksimum 4. seviyeye (`max_level = 4`) kadar yükselebilir. Bu kuralın tek istisnası **Cloak of Darkness** olup azami 8. seviyeye (`max_level = 8`) kadar çıkabilir.
   - Dinamik bekleme süresi ölçeklenmesi: Seviye atlandıkça bekleme süreleri dinamik formülle (`max(initial/2, initial - (initial / (2 * (max_level - 1)) * (level - 1)))`) azalarak azami seviyede yarı yarıya iner.

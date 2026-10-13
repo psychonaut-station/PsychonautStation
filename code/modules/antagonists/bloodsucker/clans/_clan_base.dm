@@ -100,7 +100,7 @@
  */
 /datum/bloodsucker_clan/proc/on_exit_torpor(datum/antagonist/bloodsucker/source)
 	SIGNAL_HANDLER
-	if(bloodsuckerdatum.bloodsucker_level_unspent > 0)
+	if(bloodsuckerdatum.bloodsucker_level_unspent > 0 && !istype(bloodsuckerdatum.owner.current.loc, /obj/structure/closet/crate/coffin))
 		INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
 
 /**
@@ -156,16 +156,27 @@
 			option.info = "[initial(power.name)] - [span_boldnotice(initial(power.desc))]"
 			radial_display[initial(power.name)] = option
 
+	var/is_mastery = FALSE
 	if(!length(options))
-		to_chat(bloodsuckerdatum.owner.current, span_notice("You awaken more ancient by the night, having mastered all gifts!"))
+		is_mastery = TRUE
+		var/datum/radial_menu_choice/option = new
+		option.image = image(icon = 'icons/bloodsuckers/actions_bloodsucker.dmi', icon_state = "power_feed")
+		option.info = "Ancient Mastery - [span_boldnotice("All gifts mastered. Deepen your ancient blood to advance your Rank, enhancing all existing powers and vitality.")]"
+		radial_display["Ancient Mastery"] = option
+		options["Ancient Mastery"] = TRUE
+
+	to_chat(bloodsuckerdatum.owner.current, span_notice("As you awaken from your slumber, your ancient blood thickens. Select a gift to advance your Rank."))
+	var/choice = show_radial_menu(bloodsuckerdatum.owner.current, bloodsuckerdatum.owner.current, radial_display)
+	if(cost_rank && bloodsuckerdatum.bloodsucker_level_unspent <= 0)
+		return
+	if(!choice || !options[choice])
+		to_chat(bloodsuckerdatum.owner.current, span_notice("You hold back the surge of ancient blood for now, but you may embrace it when you next awaken."))
+		return
+
+	if(is_mastery)
+		bloodsuckerdatum.owner.current.balloon_alert(bloodsuckerdatum.owner.current, "bloodline deepened!")
+		to_chat(bloodsuckerdatum.owner.current, span_notice("Having mastered all gifts, your ancient blood thickens, empowering your existing abilities!"))
 	else
-		to_chat(bloodsuckerdatum.owner.current, span_notice("As you awaken from your slumber, your ancient blood thickens. Select a power to advance your Rank."))
-		var/choice = show_radial_menu(bloodsuckerdatum.owner.current, bloodsuckerdatum.owner.current, radial_display)
-		if(cost_rank && bloodsuckerdatum.bloodsucker_level_unspent <= 0)
-			return
-		if(!choice || !options[choice])
-			to_chat(bloodsuckerdatum.owner.current, span_notice("You hold back the surge of ancient blood for now, but you may embrace it when you next awaken."))
-			return
 		if(locate(options[choice]) in bloodsuckerdatum.powers)
 			to_chat(bloodsuckerdatum.owner.current, span_notice("You already possess this gift."))
 			return

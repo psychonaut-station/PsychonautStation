@@ -134,7 +134,7 @@
 
 	RegisterSignal(new_loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(pre_move), override = TRUE)
 	RegisterSignal(new_loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(post_move), override = TRUE)
-	RegisterSignal(new_loop, COMSIG_QDELETING, PROC_REF(on_loop_ended), override = TRUE)
+	RegisterSignal(new_loop, COMSIG_QDELETING, PROC_REF(charge_end), override = TRUE)
 
 	// In case target was already adjacent
 	if(isliving(target_atom) && charger.Adjacent(target_atom))
@@ -177,13 +177,14 @@
 		source.visible_message(span_danger("[source] smashes into [target]!"))
 		playsound(get_turf(source), 'sound/effects/meteorimpact.ogg', 50, TRUE)
 		shake_camera(source, 2, 2)
-		charge_end(source)
+		if(source in charging_mobs)
+			GLOB.move_manager.stop_looping(source)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/hit_target(atom/movable/source, mob/living/target)
 	if(!isliving(target))
 		return
 	var/mob/living/charger = source
-	if(charger)
+	if(charger && (charger in charging_mobs))
 		GLOB.move_manager.stop_looping(charger)
 
 	target.visible_message(
@@ -246,30 +247,26 @@
 				carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, chosen_part, WOUND_SEVERITY_CRITICAL, wound_source = "bone-crushing predatory tackle")
 
 	charger.start_pulling(target)
-	charge_end(charger)
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_loop_ended(datum/source)
+/datum/action/cooldown/bloodsucker/targeted/lunge/proc/charge_end(datum/source)
 	SIGNAL_HANDLER
-	if(owner)
-		charge_end(owner)
-
-/datum/action/cooldown/bloodsucker/targeted/lunge/proc/charge_end(atom/movable/charger)
-	SIGNAL_HANDLER
-	if(istype(charger, /datum/move_loop))
-		var/datum/move_loop/loop = charger
+	var/atom/movable/charger = source
+	if(istype(source, /datum/move_loop))
+		var/datum/move_loop/loop = source
 		charger = loop.moving
 	if(!charger)
 		charger = owner
-	if(charger)
-		GLOB.move_manager.stop_looping(charger)
-		UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
-	actively_moving = FALSE
+	if(!charger || !(charger in charging_mobs))
+		return
 	charging_mobs -= charger
+	UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
+	actively_moving = FALSE
 	charge_target = null
+	if(!istype(source, /datum/move_loop))
+		GLOB.move_manager.stop_looping(charger)
 	DeactivatePower()
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/DeactivatePower()
 	if(owner && (owner in charging_mobs))
-		GLOB.move_manager.stop_looping(owner)
 		charge_end(owner)
 	return ..()

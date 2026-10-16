@@ -5,7 +5,7 @@
 	power_explanation = "Predatory Rush:\n\
 		Brace your unholy sinews and surge forward in a terrifying high-speed charge toward your quarry.\n\
 		Colliding with a victim violently tackles them to the deck, inflicting heavy physical trauma and securing an aggressive hold over their body.\n\
-		Deepening mastery sharpens your predatory instinct, greatly quickening your preparation time and amplifying the sheer violence and stunning impact of the collision."
+		Deepening mastery sharpens your predatory savagery: upon impact, you voraciously tear into the victim to gorge on their vital blood while inflicting escalating physical ruin—tearing open bleeding lacerations, wrenching limbs from their sockets, and ultimately shattering bones to dust."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -66,9 +66,9 @@
 		return FALSE
 	return TRUE
 
-/// Calculates the startup time: decreases as power level increases!
+/// Startup time remains fixed for fair telegraph and counterplay
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/get_charge_startup_time()
-	return max(0.2 SECONDS, 1.4 SECONDS - (level_current * 0.3 SECONDS))
+	return 1 SECONDS
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/FireTargetedPower(atom/target_atom)
 	. = ..()
@@ -202,8 +202,50 @@
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		carbon_target.grippedby(charger, instant = TRUE)
-	charger.start_pulling(target)
 
+		var/effective_level = clamp(level_current, 1, 4)
+
+		// 1. Predatory Leech: 15 / 20 / 25 / 30 blood stolen
+		var/blood_to_steal = 10 + (effective_level * 5)
+		if(carbon_target.blood_volume > 0 && !HAS_TRAIT(carbon_target, TRAIT_NOBLOOD))
+			var/blood_taken = min(blood_to_steal, carbon_target.blood_volume)
+			carbon_target.blood_volume = max(0, carbon_target.blood_volume - blood_taken)
+			if(bloodsuckerdatum_power)
+				bloodsuckerdatum_power.AddBloodVolume(blood_taken)
+			else
+				var/datum/antagonist/bloodsucker/vamp = charger.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+				vamp?.AddBloodVolume(blood_taken)
+			charger.balloon_alert(charger, "+[blood_taken] blood")
+			playsound(get_turf(target), 'sound/items/weapons/bite.ogg', 60, TRUE)
+
+		// 2. Wound progression:
+		var/obj/item/bodypart/chosen_part
+		var/list/obj/item/bodypart/jointed_parts = list()
+		for(var/obj/item/bodypart/part as anything in carbon_target.bodyparts)
+			if(part.biological_state & BIO_JOINTED)
+				jointed_parts += part
+		if(length(jointed_parts))
+			chosen_part = pick(jointed_parts)
+		else if(length(carbon_target.bodyparts))
+			chosen_part = pick(carbon_target.bodyparts)
+
+		switch(effective_level)
+			if(1)
+				// Level 1: Minik kanama (Moderate slash wound)
+				carbon_target.cause_wound_of_type_and_severity(WOUND_SLASH, chosen_part, WOUND_SEVERITY_MODERATE, wound_source = "predatory rush")
+			if(2)
+				// Level 2: Daha yüksek kanama (Severe slash wound)
+				carbon_target.cause_wound_of_type_and_severity(WOUND_SLASH, chosen_part, WOUND_SEVERITY_SEVERE, wound_source = "vicious predatory rush")
+			if(3)
+				// Level 3: Uzvu yerinden çıkarsın (Joint Dislocation)
+				carbon_target.cause_wound_of_type_and_severity(WOUND_SLASH, chosen_part, WOUND_SEVERITY_SEVERE, wound_source = "savage predatory rush")
+				carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, chosen_part, WOUND_SEVERITY_MODERATE, wound_source = "predatory joint wrench")
+			if(4)
+				// Level 4: Uzvu kırsın (Bone Fracture)
+				carbon_target.cause_wound_of_type_and_severity(WOUND_SLASH, chosen_part, WOUND_SEVERITY_CRITICAL, wound_source = "monstrous predatory rush")
+				carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, chosen_part, WOUND_SEVERITY_CRITICAL, wound_source = "bone-crushing predatory tackle")
+
+	charger.start_pulling(target)
 	charge_end(charger)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_loop_ended(datum/source)

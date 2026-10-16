@@ -360,7 +360,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 		// Ears have aditional var "deaf", need to update it too
 		var/obj/item/organ/ears/ears = get_organ_slot(ORGAN_SLOT_EARS)
-		ears.adjust_temporary_deafness(-INFINITY)
+		ears?.adjust_temporary_deafness(-INFINITY)
 
 		return
 

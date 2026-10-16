@@ -119,6 +119,12 @@
 		return
 	level_current++
 
+///Called when the Power is downgraded.
+/datum/action/cooldown/bloodsucker/proc/downgrade_power()
+	if(!can_level || level_current <= 0)
+		return
+	level_current--
+
 ///Checks if the Power is available to use.
 /datum/action/cooldown/bloodsucker/proc/can_use(mob/living/carbon/user, trigger_flags)
 	if(QDELETED(owner))

@@ -90,6 +90,11 @@
 	if(active && owner)
 		apply_actionspeed()
 
+/datum/action/cooldown/bloodsucker/haste/downgrade_power()
+	. = ..()
+	if(active && owner)
+		apply_actionspeed()
+
 /datum/action/cooldown/bloodsucker/haste/proc/apply_actionspeed()
 	if(!ismob(owner))
 		return

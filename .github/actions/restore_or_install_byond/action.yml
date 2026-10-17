@@ -38,13 +38,13 @@ runs:
       uses: actions/cache/restore@v6.1.0
       with:
         path: ~/apt-cache
-        key: ${{ runner.os }}-libcurl-i386-v2
+        key: ${{ runner.os }}-libcurl-i386
     - name: Install 32-bit libcurl from cache
       if: env.BYOND_MAJOR >= 516 && env.BYOND_MINOR >= 1664 && steps.restore_libcurl_cache.outputs.cache-hit
       shell: bash
       run: |
         sudo dpkg --add-architecture i386
-        sudo dpkg -i ~/apt-cache/*.deb || (sudo apt-get update -qq && sudo apt-get install -y --fix-broken)
+        sudo dpkg -i ~/apt-cache/*.deb
     - name: Find fastest APT mirror
       if: env.BYOND_MAJOR >= 516 && env.BYOND_MINOR >= 1664 && !steps.restore_libcurl_cache.outputs.cache-hit
       uses: vegardit/fast-apt-mirror.sh@v1

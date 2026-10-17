@@ -28,6 +28,11 @@
 ///If someone is not allowed under any circimstances to become a Vassal
 #define VASSALIZATION_BANNED 2
 
+#define VASSAL_SCAN_MIN_DISTANCE 5
+#define VASSAL_SCAN_MAX_DISTANCE 500
+/// 2s update time.
+#define VASSAL_SCAN_PING_TIME (2 SECONDS)
+
 /**
  * Cooldown defines
  * Used in Cooldowns Bloodsuckers use to prevent spamming

@@ -73,7 +73,8 @@
 	find_bloodsucker_datum()
 
 //This is when we CLICK on the ability Icon, not USING.
-/datum/action/cooldown/bloodsucker/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/bloodsucker/Trigger(mob/clicker, trigger_flags, atom/target)
+	SHOULD_CALL_PARENT(FALSE)
 	find_bloodsucker_datum()
 	if(active && can_deactivate()) // Active? DEACTIVATE AND END!
 		DeactivatePower()

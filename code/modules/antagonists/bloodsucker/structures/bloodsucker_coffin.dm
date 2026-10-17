@@ -199,7 +199,7 @@
 	playsound(get_turf(src), 'sound/machines/airlock/doorclick.ogg', 20, 1)
 	to_chat(user, span_notice("[src] appears to be locked tight from the inside."))
 
-/obj/structure/closet/crate/coffin/open(mob/living/user)
+/obj/structure/closet/crate/coffin/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	. = ..()
 	if(!.)
 		return FALSE

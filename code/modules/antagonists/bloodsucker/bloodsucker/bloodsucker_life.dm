@@ -197,7 +197,7 @@
 		return
 	// Fire Damage? (above double health)
 	if(owner.current.get_fire_loss() >= (owner.current.maxHealth * 2.5))
-		final_death()
+		final_death(dusted = SSsunlight.sunlight_active)
 		return
 	// Staked while "Temp Death" or Asleep
 	if(owner.current.StakeCanKillMe() && owner.current.am_staked())
@@ -255,7 +255,7 @@
 	owner.current.blood_volume = bloodsucker_blood_volume
 
 /// Gibs the Bloodsucker, roundremoving them.
-/datum/antagonist/bloodsucker/proc/final_death()
+/datum/antagonist/bloodsucker/proc/final_death(dusted = FALSE)
 	// If we have no body, end here.
 	if(QDELETED(owner.current))
 		return
@@ -274,7 +274,10 @@
 	free_all_vassals()
 	DisableAllPowers(forced = TRUE)
 	if(!iscarbon(owner.current))
-		owner.current.gib(TRUE, FALSE, FALSE)
+		if(dusted)
+			owner.current.dust()
+		else
+			owner.current.gib(TRUE, FALSE, FALSE)
 		return
 	// Drop anything in us and play a tune
 	var/mob/living/carbon/user = owner.current
@@ -287,12 +290,12 @@
 		return
 
 	// Elders get dusted, Fledglings get gibbed.
-	if(bloodsucker_level >= 4)
+	if(dusted || bloodsucker_level >= 4)
 		user.visible_message(
 			span_warning("[user]'s skin crackles and dries, their skin and bones withering to dust. A hollow cry whips from what is now a sandy pile of remains."),
 			span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
 			span_hear("You hear a dry, crackling sound."))
-		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, dust)), 5 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, dust)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 	user.visible_message(
 		span_warning("[user]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),

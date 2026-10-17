@@ -225,9 +225,11 @@
 		DeactivatePower()
 		return
 	// We can keep this up (For now), so Pay Cost!
-	if(!(power_flags & BP_AM_COSTLESS_UNCONSCIOUS) && owner.stat != CONSCIOUS)
+	if(constant_bloodcost > 0 && (owner.stat == CONSCIOUS || !(power_flags & BP_AM_COSTLESS_UNCONSCIOUS)))
+		find_bloodsucker_datum()
 		if(bloodsuckerdatum_power)
 			bloodsuckerdatum_power.AddBloodVolume(-constant_bloodcost)
+			bloodsuckerdatum_power.update_hud()
 		else
 			var/mob/living/living_owner = owner
 			if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD))
@@ -238,8 +240,19 @@
 /datum/action/cooldown/bloodsucker/proc/ContinueActive(mob/living/user, mob/living/target)
 	if(QDELETED(user))
 		return FALSE
-	if(!constant_bloodcost > 0 || bloodsuckerdatum_power.bloodsucker_blood_volume > 0)
+	if(constant_bloodcost <= 0)
 		return TRUE
+	find_bloodsucker_datum()
+	if(bloodsuckerdatum_power)
+		if(bloodsuckerdatum_power.bloodsucker_blood_volume <= 0)
+			to_chat(user, span_warning("You ran out of blood to upkeep [name]!"))
+			return FALSE
+		return TRUE
+	var/mob/living/living_owner = user
+	if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD) && living_owner.blood_volume <= 0)
+		to_chat(user, span_warning("You ran out of blood to upkeep [name]!"))
+		return FALSE
+	return TRUE
 
 /// Used to unlearn Single-Use Powers
 /datum/action/cooldown/bloodsucker/proc/remove_after_use()

@@ -40,6 +40,9 @@
 /// Cycle through all vamp antags and check if they're inside a closet.
 /datum/antagonist/bloodsucker/proc/handle_sol()
 	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(handle_sol_effects))
+
+/datum/antagonist/bloodsucker/proc/handle_sol_effects()
 	if(!owner?.current)
 		return
 	var/mob/living/carbon/user = owner.current

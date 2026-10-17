@@ -164,14 +164,14 @@
 	SIGNAL_HANDLER
 	var/mob/living/charger = source
 	if(charge_target && isliving(charge_target) && charger.Adjacent(charge_target))
-		hit_target(charger, charge_target)
+		INVOKE_ASYNC(src, PROC_REF(hit_target), charger, charge_target)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/on_bump(atom/movable/source, atom/target)
 	SIGNAL_HANDLER
 	if(source == target)
 		return
 	if(isliving(target))
-		hit_target(source, target)
+		INVOKE_ASYNC(src, PROC_REF(hit_target), source, target)
 		return
 	if(target.density)
 		source.visible_message(span_danger("[source] smashes into [target]!"))
@@ -199,11 +199,9 @@
 	var/knockdown_duration = 2 SECONDS + (level_current * 0.5 SECONDS)
 	target.Knockdown(knockdown_duration)
 
-	target.grabbedby(charger)
+	charger.start_pulling(target)
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
-		carbon_target.grippedby(charger, instant = TRUE)
-
 		var/effective_level = clamp(level_current, 1, 4)
 
 		// 1. Predatory Leech: 15 / 20 / 25 / 30 blood stolen

@@ -43,6 +43,7 @@
 
 	var/list/records = list()
 	for(var/datum/record/crew/target in GLOB.manifest.general)
+		var/datum/job/job = SSjob.get_job(target.trim)
 		records += list(list(
 			age = target.age,
 			blood_type = target.blood_type,
@@ -54,7 +55,7 @@
 			quirk_notes = target.quirk_notes,
 			rank = target.rank,
 			species = target.species,
-			trim = target.trim,
+			trim = job?.tgui_icon,
 			employment_records = target.employment_records,
 			exploit_records = target.exploit_records,
 		))

@@ -36,6 +36,7 @@
 	job_flags = STATION_JOB_FLAGS
 
 	job_tone = "honk"
+	tgui_icon = FA_ICON_FACE_GRIN_TEARS
 
 	alt_titles = list(
 		"Clown",
@@ -68,7 +69,7 @@
 		/obj/item/instrument/bikehorn = 1,
 		/obj/item/storage/box/balloons = 1,
 		)
-	belt = /obj/item/modular_computer/pda/clown
+	belt = /obj/item/modular_computer/pda/crew/clown
 	ears = /obj/item/radio/headset/headset_srv
 	shoes = /obj/item/clothing/shoes/clown_shoes
 	mask = /obj/item/clothing/mask/gas/clown_hat

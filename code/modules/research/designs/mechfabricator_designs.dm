@@ -1702,7 +1702,7 @@
 		/datum/material/glass =SMALL_MATERIAL_AMOUNT*5,
 	)
 	construction_time = 7.5 SECONDS
-	build_path = /obj/item/mmi
+	build_path = /obj/item/brain_processor/organic
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CONTROL_INTERFACES
 	)
@@ -1725,7 +1725,7 @@
 		/datum/material/gold =SMALL_MATERIAL_AMOUNT*5
 	)
 	construction_time = 7.5 SECONDS
-	build_path = /obj/item/mmi/posibrain
+	build_path = /obj/item/brain_processor/positronic
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CONTROL_INTERFACES
 	)
@@ -2326,6 +2326,14 @@
 		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SUPPLY
 	)
 
+/datum/design/module/mod_candela_spool
+	name = "Candela Spool Module"
+	materials = list(/datum/material/iron = HALF_SHEET_MATERIAL_AMOUNT * 1.5)
+	build_path = /obj/item/mod/module/candela_spool
+	category = list(
+		RND_CATEGORY_MODSUIT_MODULES + RND_SUBCATEGORY_MODSUIT_MODULES_SUPPLY
+	)
+
 /datum/design/module/mod_organizer
 	name = "Organizer Module"
 	materials = list(
@@ -2603,7 +2611,7 @@
 		/datum/material/gold =SMALL_MATERIAL_AMOUNT * 2.5
 	)
 	construction_time = 7.5 SECONDS
-	build_path = /obj/item/mmi/posibrain/sphere
+	build_path = /obj/item/brain_processor/positronic/sphere
 	category = list(
 		RND_CATEGORY_MECHFAB_CYBORG + RND_SUBCATEGORY_MECHFAB_CYBORG_CONTROL_INTERFACES
 	)

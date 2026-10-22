@@ -26,6 +26,7 @@
 		"Android",
 		"Servitor"
 	)
+	tgui_icon = FA_ICON_ROBOT
 
 /datum/job/cyborg/after_spawn(mob/living/spawned, client/player_client)
 	. = ..()

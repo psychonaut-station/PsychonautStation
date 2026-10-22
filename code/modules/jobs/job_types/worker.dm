@@ -42,6 +42,7 @@
 		"Prole",
 		"Deckhand"
 	)
+	tgui_icon = FA_ICON_SCREWDRIVER_WRENCH
 
 /datum/outfit/job/worker
 	name = "Worker"
@@ -54,7 +55,7 @@
 	ears = /obj/item/radio/headset/headset_eng
 	head = /obj/item/clothing/head/utility/hardhat
 	shoes = /obj/item/clothing/shoes/workboots
-	l_pocket = /obj/item/modular_computer/pda/engineering
+	l_pocket = /obj/item/modular_computer/pda/crew/engineering
 	r_pocket = /obj/item/storage/fancy/cigarettes/cigpack_mindbreaker
 
 	backpack = /obj/item/storage/backpack/industrial

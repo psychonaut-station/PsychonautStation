@@ -49,6 +49,7 @@
 		"Commissar",
 		"Station Defense Chief"
 	)
+	tgui_icon = FA_ICON_USER_SHIELD
 
 /datum/job/head_of_security/get_captaincy_announcement(mob/living/captain)
 	return "Personel eksikliği nedeniyle, yeni terfi eden geçici kaptan [captain.real_name] güvertede!"
@@ -72,7 +73,7 @@
 		/obj/item/evidencebag = 1,
 		/obj/item/melee/baton/security/loaded/hos = 1,
 		)
-	belt = /obj/item/modular_computer/pda/heads/hos
+	belt = /obj/item/modular_computer/pda/crew/heads/hos
 	ears = /obj/item/radio/headset/heads/hos/alt
 	glasses = /obj/item/clothing/glasses/hud/security/sunglasses
 	gloves = /obj/item/clothing/gloves/color/black/security

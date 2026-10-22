@@ -46,6 +46,10 @@
 		BODY_ZONE_L_LEG = /obj/item/bodypart/leg/left/ipc,
 		BODY_ZONE_R_LEG = /obj/item/bodypart/leg/right/ipc,
 	)
+	survival_box_overrides = list(
+		SURVIVAL_MEDIPEN_TYPE = /obj/item/reagent_containers/hypospray/medipen,
+		SURVIVAL_EXTRA_TYPE = /obj/item/stock_parts/power_store/cell/high,
+	)
 	allow_numbers_in_name = TRUE
 
 /datum/species/ipc/on_species_gain(mob/living/carbon/human/ipc, datum/species/old_species, pref_load, regenerate_icons)
@@ -174,9 +178,9 @@
 	var/adjusted_pressure = H.calculate_affecting_pressure(pressure)
 
 	if(adjusted_pressure >= HAZARD_HIGH_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTHIGHPRESSURE))
-		H.adjust_brute_loss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+		H.adjust_brute_loss(min(((adjusted_pressure / HAZARD_HIGH_PRESSURE) - 1) * PRESSURE_DAMAGE_COEFFICIENT, MAX_HIGH_PRESSURE_DAMAGE) * 1.5 * GET_PHYSIOLOGY(H, PHYS_COEFF_PRESSURE) * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 	else if(adjusted_pressure < HAZARD_LOW_PRESSURE && !HAS_TRAIT(H, TRAIT_RESISTLOWPRESSURE))
-		H.adjust_brute_loss(BASE_LOW_PRESSURE_DAMAGE * 3 * H.physiology.pressure_mod * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
+		H.adjust_brute_loss(BASE_LOW_PRESSURE_DAMAGE * 3 * GET_PHYSIOLOGY(H, PHYS_COEFF_PRESSURE) * seconds_per_tick, required_bodytype = BODYTYPE_ORGANIC | BODYTYPE_IPC)
 
 ////////////////////////////////////// ORGANS //////////////////////////////////////
 // Voltage Protector Organ

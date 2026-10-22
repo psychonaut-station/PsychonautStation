@@ -34,6 +34,7 @@
 		"Inmate",
 		//"Gamer",
 	)
+	tgui_icon = FA_ICON_LOCK
 
 /datum/job/prisoner/New()
 	. = ..()

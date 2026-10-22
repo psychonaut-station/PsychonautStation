@@ -102,7 +102,7 @@
 /obj/item/toy/cards/cardhand/click_alt_secondary(mob/user)
 	. = ..()
 
-	if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY | FORBID_TELEKINESIS_REACH) || user.held_items[user.active_hand_index] != src)
+	if(!isliving(user) || !user.can_perform_action(src, NEED_DEXTERITY | FORBID_TELEKINESIS_REACH) || user.get_held_items()[user.active_hand_index] != src)
 		return
 
 	for(var/obj/item/toy/singlecard/card in fetch_card_atoms())

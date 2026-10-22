@@ -114,21 +114,11 @@
 
 		// Finally, we checked all of our resulting atoms and cleaned them up.
 		// The nearby_atoms list should be devoid of any atom/movables now. Let's double-check that.
-<<<<<<< HEAD
-		for(var/atom/thing as anything in nearby_atoms)
-			if(!ismovable(thing) || istype(thing, /obj/effect/abstract))
-				continue
-			if(isitem(thing))
-				var/obj/item/item = thing
-				if(item.item_flags & ABSTRACT) //bodyparts and stuff will get registered otherwise
-					continue
-=======
 		for(var/atom/movable/thing in nearby_atoms)
 			if(astype(thing, /obj/item)?.item_flags & ABSTRACT)
 				continue // bodyparts and stuff will get registered otherwise
 			if(istype(thing, /atom/movable/lighting_object))
 				continue // todo: more generic solution for holder objects like this
->>>>>>> bb2ade8a8d650a465a39b861cb1165de696c143b
 
 			// There are atoms around the rune still, and there shouldn't be.
 			// All component atoms were consumed, and all resulting atoms were cleaned up.

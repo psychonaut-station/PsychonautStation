@@ -34,13 +34,9 @@
 /datum/element/tool_flash/proc/flash(datum/source, mob/living/user)
 	SIGNAL_HANDLER
 
-<<<<<<< HEAD
 	if(HAS_TRAIT(user, TRAIT_NOTOOLFLASH))
 		return
 
-	if(user && flash_strength > 0 && get_dist(get_turf(source), get_turf(user)) <= 1)
-		user.flash_act(max(flash_strength,1))
-=======
 	if(flash_strength <= 0)
 		return
 
@@ -48,4 +44,3 @@
 	for(var/mob/living/victim in viewers(1, weld_location))
 		var/flash_strength_for_victim = max(flash_strength - get_dist(victim, weld_location), 0)
 		victim.flash_act(flash_strength_for_victim)
->>>>>>> bb2ade8a8d650a465a39b861cb1165de696c143b

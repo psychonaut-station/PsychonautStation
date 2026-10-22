@@ -5948,11 +5948,8 @@
 #include "code\modules\mob\living\carbon\human\suicides.dm"
 #include "code\modules\mob\living\carbon\human\species_types\abductors.dm"
 #include "code\modules\mob\living\carbon\human\species_types\android.dm"
-<<<<<<< HEAD
 #include "code\modules\mob\living\carbon\human\species_types\arachnid.dm"
-=======
 #include "code\modules\mob\living\carbon\human\species_types\cerulean.dm"
->>>>>>> bb2ade8a8d650a465a39b861cb1165de696c143b
 #include "code\modules\mob\living\carbon\human\species_types\dullahan.dm"
 #include "code\modules\mob\living\carbon\human\species_types\ethereal.dm"
 #include "code\modules\mob\living\carbon\human\species_types\felinid.dm"

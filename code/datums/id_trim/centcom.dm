@@ -135,14 +135,10 @@
 
 	access = list(ACCESS_CENT_GENERAL) | (SSid_access.get_region_access_list(list(REGION_ALL_STATION)) - ACCESS_CHANGE_IDS)
 
-<<<<<<< HEAD
 /datum/id_trim/centcom/ert/chat_span()
 	return "job__ert"
 
-/// Trim for ERT Commanders. All station and centcom access. No centcom officer's access
-=======
 /// Trim for ERT Commanders. All station and centcom access. No centcom captain's access
->>>>>>> bb2ade8a8d650a465a39b861cb1165de696c143b
 /datum/id_trim/centcom/ert/commander
 	assignment = JOB_ERT_COMMANDER
 	trim_state = "trim_ert_commander"

@@ -474,6 +474,7 @@ export function LobbyMenu() {
     tvLines = [
       ss.countdown,
       `${ss.playerCount} player${ss.playerCount !== 1 ? 's' : ''}`,
+      `${ss.readyCount} players ready`,
     ];
   }
 

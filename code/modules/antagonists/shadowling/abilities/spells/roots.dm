@@ -110,6 +110,8 @@
 	channel_time = 0
 	max_range = 8
 	var/targeting = FALSE
+	var/secondary_mode = FALSE
+	var/last_used_secondary = FALSE
 	var/static/sfx_fire = 'sound/effects/splat.ogg'
 	var/static/sfx_hit = 'sound/items/weapons/shove.ogg'
 
@@ -119,6 +121,10 @@
 /datum/action/cooldown/shadowling/root/unset_click_ability(mob/on_who, refund_cooldown)
 	. = ..()
 	targeting = FALSE
+	secondary_mode = FALSE
+	if(refund_cooldown)
+		button_icon_state = last_used_secondary ? "shadow_hook" : "shadow_grasp"
+		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	apply_button_overlay()
 
 /datum/action/cooldown/shadowling/root/set_click_ability(mob/on_who, refund_cooldown)
@@ -139,6 +145,12 @@
 		return FALSE
 	if(!can_use(owner))
 		return FALSE
+	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
+		secondary_mode = !last_used_secondary
+	else
+		secondary_mode = last_used_secondary
+	button_icon_state = secondary_mode ? "shadow_hook" : "shadow_grasp"
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	return ..()
 
 /datum/action/cooldown/shadowling/root/InterceptClickOn(mob/living/clicker, params, atom/target)
@@ -152,7 +164,12 @@
 
 	var/mob/living/carbon/human/H = clicker
 	var/list/modifiers = params2list(params)
-	var/is_hook = LAZYACCESS(modifiers, RIGHT_CLICK)
+	var/is_hook
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		is_hook = !secondary_mode
+	else
+		is_hook = secondary_mode
+	secondary_mode = FALSE
 
 	var/turf/start_turf = get_turf(H)
 	var/turf/click_turf = get_turf(target)
@@ -160,19 +177,18 @@
 		return FALSE
 
 	if(is_hook)
-		var/turf/end_turf = hook_compute_endpoint(start_turf, click_turf, max_range)
-		if(!istype(end_turf))
-			H.balloon_alert(H, "too close")
-			return FALSE
-
+		var/turf/aim_turf = (click_turf == start_turf) ? get_step(H, H.dir) : click_turf
 		var/obj/projectile/magic/shadow_hand_sl/P = new(start_turf)
 		P.firer = H
 		P.range = max_range
 		P.hitsound = sfx_hit
-		P.aim_projectile(end_turf, H)
+		P.aim_projectile(aim_turf, H)
 		playsound(start_turf, sfx_fire, 55, TRUE)
 		P.fire()
 
+		last_used_secondary = TRUE
+		button_icon_state = "shadow_hook"
+		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 		unset_click_ability(clicker, FALSE)
 		StartCooldown()
 		return TRUE
@@ -215,28 +231,10 @@
 		H.balloon_alert(H, "failed to ensnare")
 		return FALSE
 
+	last_used_secondary = FALSE
+	button_icon_state = "shadow_grasp"
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	unset_click_ability(clicker, FALSE)
 	StartCooldown()
 	return TRUE
 
-/datum/action/cooldown/shadowling/root/proc/hook_compute_endpoint(turf/start_turf, turf/aim_turf, max_steps)
-	if(!istype(start_turf) || !istype(aim_turf))
-		return null
-
-	var/turf/current = start_turf
-	var/step_i = 1
-	while(step_i <= max_steps)
-		var/turf/next_step = get_step_towards(current, aim_turf)
-		if(!istype(next_step))
-			break
-		if(next_step == current)
-			break
-		if(next_step.density)
-			break
-		current = next_step
-		step_i += 1
-
-	if(current == start_turf)
-		return null
-
-	return current

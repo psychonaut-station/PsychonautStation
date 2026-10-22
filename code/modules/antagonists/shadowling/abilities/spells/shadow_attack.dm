@@ -17,6 +17,8 @@
 	var/target_grab_level = GRAB_NECK
 	var/static/sfx_activate = 'sound/effects/magic/demon_attack1.ogg'
 	var/targeting = FALSE
+	var/secondary_mode = FALSE
+	var/last_used_secondary = FALSE
 
 /datum/action/cooldown/shadowling/shadow_strike/is_action_active(atom/movable/screen/movable/action_button/_btn)
 	return targeting
@@ -24,6 +26,10 @@
 /datum/action/cooldown/shadowling/shadow_strike/unset_click_ability(mob/on_who, refund_cooldown)
 	. = ..()
 	targeting = FALSE
+	secondary_mode = FALSE
+	if(refund_cooldown)
+		button_icon_state = last_used_secondary ? "shadow_grab" : "shadow_strike"
+		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	apply_button_overlay()
 
 /datum/action/cooldown/shadowling/shadow_strike/set_click_ability(mob/on_who, refund_cooldown)
@@ -46,6 +52,12 @@
 		return FALSE
 	if(!can_use(owner))
 		return FALSE
+	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
+		secondary_mode = !last_used_secondary
+	else
+		secondary_mode = last_used_secondary
+	button_icon_state = secondary_mode ? "shadow_grab" : "shadow_strike"
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	return ..()
 
 /datum/action/cooldown/shadowling/shadow_strike/InterceptClickOn(mob/living/clicker, params, atom/target)
@@ -86,7 +98,12 @@
 			return FALSE
 
 	var/list/modifiers = params2list(params)
-	var/is_grab = LAZYACCESS(modifiers, RIGHT_CLICK)
+	var/is_grab
+	if(LAZYACCESS(modifiers, RIGHT_CLICK))
+		is_grab = !secondary_mode
+	else
+		is_grab = secondary_mode
+	secondary_mode = FALSE
 
 	var/dist = get_dist(H, T)
 	if(is_grab)
@@ -149,6 +166,8 @@
 			ignored_mobs = null
 		)
 		T.log_message("was grabbed from shadows by [H]", LOG_ATTACK, color = "#8a2be2")
+		last_used_secondary = TRUE
+		button_icon_state = "shadow_grab"
 	else
 		H.visible_message(
 			span_boldwarning("[H] bursts from the shadows and strikes [T]!"),
@@ -159,7 +178,11 @@
 		H.do_attack_animation(T)
 		playsound(get_turf(H), sfx_activate, 65, TRUE)
 		T.log_message("was hit by [H] with shadow strike for [attack_value] brute", LOG_ATTACK, color = "#8a2be2")
+		last_used_secondary = FALSE
+		button_icon_state = "shadow_strike"
 
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	unset_click_ability(H, refund_cooldown = FALSE)
 	StartCooldown()
 	return TRUE
+

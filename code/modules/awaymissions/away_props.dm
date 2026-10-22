@@ -52,6 +52,11 @@
 				return reverse
 	return !reverse
 
+/obj/effect/path_blocker/xenomorph
+	invisibility = INVISIBILITY_MAXIMUM
+	blocked_types = list(/mob/living/carbon/alien)
+	reverse = TRUE
+
 /obj/structure/pitgrate
 	name = "pit grate"
 	icon = 'icons/obj/smooth_structures/lattice.dmi'

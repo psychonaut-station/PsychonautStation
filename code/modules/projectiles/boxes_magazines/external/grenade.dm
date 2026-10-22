@@ -7,3 +7,6 @@
 	multiple_sprites = AMMO_BOX_FULL_EMPTY
 	max_ammo = 8
 
+/obj/item/ammo_box/magazine/m75/weak
+	name = "weakened specialized (.75)"
+	ammo_type = /obj/item/ammo_casing/a75/weak

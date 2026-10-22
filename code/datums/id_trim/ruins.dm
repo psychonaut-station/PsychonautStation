@@ -198,3 +198,24 @@
 
 /datum/id_trim/away/director
 	assignment = "Director"
+
+// Minigames
+/datum/id_trim/away/teammatch/marine
+	assignment = "Squad Marine"
+	sechud_icon = PSYCHONAUT_HUDS_DMI
+	sechud_icon_state = SECHUD_MARINE
+
+/datum/id_trim/away/teammatch/marine/fc
+	assignment = "Field Commander"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_COMMAND, ACCESS_AWAY_ENGINEERING, ACCESS_AWAY_MEDICAL)
+	sechud_icon_state = SECHUD_MARINE_FC
+
+/datum/id_trim/away/teammatch/marine/medic
+	assignment = "Squad Corpsman"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_MEDICAL)
+	sechud_icon_state = SECHUD_MARINE_CORPSMAN
+
+/datum/id_trim/away/teammatch/marine/engineer
+	assignment = "Squad Engineer"
+	access = list(ACCESS_AWAY_GENERAL, ACCESS_AWAY_ENGINEERING)
+	sechud_icon_state = SECHUD_MARINE_ENGINEER

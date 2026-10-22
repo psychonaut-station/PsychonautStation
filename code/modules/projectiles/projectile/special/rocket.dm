@@ -10,6 +10,9 @@
 	explosion(target, devastation_range = -1, light_impact_range = 2, explosion_cause = src)
 	return BULLET_ACT_HIT
 
+/obj/projectile/bullet/gyro/weak
+	damage = 15
+
 /// PM9 standard HE rocket
 /obj/projectile/bullet/rocket
 	name = "\improper HE rocket"

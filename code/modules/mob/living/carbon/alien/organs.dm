@@ -111,6 +111,7 @@
 	actions_types = list(/datum/action/cooldown/alien/whisper)
 	/// Indicates if the queen died recently, aliens are heavily weakened while this is active.
 	var/recent_queen_death = FALSE
+	var/hive_id
 
 /obj/item/organ/alien/hivenode/on_mob_insert(mob/living/carbon/organ_owner)
 	. = ..()

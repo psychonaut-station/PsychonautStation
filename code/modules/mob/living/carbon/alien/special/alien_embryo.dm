@@ -11,6 +11,8 @@
 	var/bursting = FALSE
 	/// How long does it take to advance one stage? Growth time * 5 = how long till we make a Larva!
 	var/growth_time = 60 SECONDS
+	/// Spawned larva will be antagonits or not
+	var/non_antagonist = FALSE
 
 /obj/item/organ/body_egg/alien_embryo/Initialize(mapload)
 	. = ..()
@@ -119,6 +121,8 @@
 
 	var/atom/xeno_loc = get_turf(owner)
 	var/mob/living/carbon/alien/larva/new_xeno = new(xeno_loc)
+	new_xeno.non_antagonist = non_antagonist
+
 	new_xeno.PossessByPlayer(ghost.key)
 	SEND_SOUND(new_xeno, sound('sound/mobs/non-humanoids/hiss/hiss5.ogg',0,0,0,100)) //To get the player's attention
 	new_xeno.add_traits(list(TRAIT_HANDS_BLOCKED, TRAIT_IMMOBILIZED, TRAIT_NO_TRANSFORM), type) //so we don't move during the bursting animation

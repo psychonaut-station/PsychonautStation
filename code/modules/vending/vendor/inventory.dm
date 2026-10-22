@@ -209,6 +209,7 @@
 	if(!(sigreturn & VENDING_NO_PICKUP) && IsReachableBy(user) && user.put_in_hands(vended_item))
 		to_chat(user, span_notice("You take [item_record.name] out of the slot."))
 		vended_item.do_pickup_animation(user, src)
+		vended_item.pickup(user)
 	else
 		to_chat(user, span_warning("[capitalize(format_text(item_record.name))] falls onto the floor!"))
 

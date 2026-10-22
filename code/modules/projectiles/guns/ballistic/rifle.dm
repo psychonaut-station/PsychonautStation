@@ -553,6 +553,9 @@
 		pointing at a green floppy disk. Who knows what that might mean."
 	pin = /obj/item/firing_pin/implant/pindicate
 
+/obj/item/gun/ballistic/rifle/sniper_rifle/marine
+	accepted_magazine_type = /obj/item/ammo_box/magazine/sniper_rounds/marine
+
 // SKS semi-automatic rifle //
 
 /obj/item/gun/ballistic/rifle/sks

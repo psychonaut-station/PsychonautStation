@@ -270,6 +270,7 @@
 	contains = list(/obj/structure/reagent_dispensers/water_cooler/jugless = 1, /obj/item/reagent_containers/cooler_jug/punch = 1)
 	crate_name = "punch cooler crate"
 
+<<<<<<< HEAD
 /datum/supply_pack/misc/hookah_kit
 	name = "Hookah Kit"
 	desc = "A kit for those who enjoy a smoke and a cultured relaxation."
@@ -279,3 +280,5 @@
 		/obj/item/hookah_coals = 3
 	)
 	crate_name = "hookah crate"
+=======
+>>>>>>> 87b933384df4700bf98c2f7af821c0a730b7c3bb

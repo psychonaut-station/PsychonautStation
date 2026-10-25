@@ -481,7 +481,7 @@
 	if(user_eyes)
 		user_eyes.flash_protect = initial(user_eyes.flash_protect)
 		user_eyes.color_cutoffs = initial(user_eyes.color_cutoffs)
-		user_eyes.sight_flags = initial(user_eyes.sight_flags)
+		user_eyes.remove_organ_trait(TRAIT_THERMAL_VISION)
 	user.update_sight()
 
 /// Name shown on antag list

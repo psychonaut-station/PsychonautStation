@@ -162,7 +162,7 @@
 	if(current_eyes)
 		current_eyes.flash_protect = max(initial(current_eyes.flash_protect) - 1, FLASH_PROTECTION_SENSITIVE)
 		current_eyes.color_cutoffs = list(25, 8, 5)
-		current_eyes.sight_flags |= SEE_MOBS
+		current_eyes.add_organ_trait(TRAIT_THERMAL_VISION)
 	bloodsuckeruser.update_sight()
 
 	if(bloodsuckeruser.stat == DEAD)

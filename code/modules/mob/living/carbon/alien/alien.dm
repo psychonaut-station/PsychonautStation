@@ -20,6 +20,9 @@
 	var/leaping = FALSE
 	///The speed this alien should move at.
 	var/alien_speed = 0
+
+	var/alien_health_multiplier = 1
+
 	unique_name = TRUE
 
 	var/static/regex/alien_name_regex = new("alien (larva|sentinel|drone|hunter|praetorian|princess|queen)( \\(\\d+\\))?")
@@ -41,6 +44,8 @@
 		ORGAN_SLOT_LIVER = /obj/item/organ/liver/alien,
 		ORGAN_SLOT_EARS = /obj/item/organ/ears,
 	)
+
+	var/non_antagonist = FALSE
 
 /mob/living/carbon/alien/Initialize(mapload)
 	ASSIGN_GAME_VERB(src, /mob/living, mob_sleep)
@@ -142,6 +147,8 @@ Des: Removes all infected images from the alien.
 	new_xeno.setDir(dir)
 	new_xeno.change_name(name, real_name, identifier)
 
+	new_xeno.non_antagonist = non_antagonist
+
 	if(mind)
 		mind.name = new_xeno.real_name
 		mind.transfer_to(new_xeno)
@@ -163,6 +170,22 @@ Des: Removes all infected images from the alien.
 			if(default_organ_types_by_slot[slot] && new_xeno.default_organ_types_by_slot[slot] && new_organ)
 				new_organ.Remove(new_xeno, special = TRUE)
 				qdel(new_organ)
+
+	for(var/obj/item/implant/implant in implants)
+		implant.removed(src)
+		implant.implant(new_xeno, force = TRUE)
+
+	for(var/movespeed_modifier in movespeed_modification)
+		var/datum/movespeed_modifier/modifier = movespeed_modification[movespeed_modifier]
+		if(modifier.flags & TRANSFER_ON_EVOLVE)
+			new_xeno.add_movespeed_modifier(modifier)
+
+	var/datum/component/temporary_body/temporary_body = GetComponent(/datum/component/temporary_body)
+	if(!isnull(temporary_body))
+		new_xeno.AddComponent(/datum/component/temporary_body, temporary_body.old_mind, temporary_body.return_on_death, temporary_body.return_on_revive)
+		qdel(temporary_body)
+
+	new_xeno.multiply_alien_health(alien_health_multiplier)
 
 	var/obj/item/organ/stomach/alien/melting_pot = get_organ_slot(ORGAN_SLOT_STOMACH)
 	var/obj/item/organ/stomach/alien/frying_pan = new_xeno.get_organ_slot(ORGAN_SLOT_STOMACH)
@@ -203,3 +226,9 @@ Des: Removes all infected images from the alien.
 
 /mob/living/carbon/alien/get_fire_overlay(stacks, on_fire)
 	return make_generic_fire_overlay()
+
+// Some aliens can be more strong or more weak, etc: XenoVsMarine minigame
+/mob/living/carbon/alien/proc/multiply_alien_health(alien_health_multiplier)
+	maxHealth *= alien_health_multiplier
+	health *= alien_health_multiplier
+	src.alien_health_multiplier = alien_health_multiplier

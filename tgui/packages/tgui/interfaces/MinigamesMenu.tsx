@@ -7,7 +7,7 @@ export const MinigamesMenu = (props) => {
   const { act } = useBackend();
 
   return (
-    <Window title="Minigames Menu" width={530} height={320}>
+    <Window title="Minigames Menu" width={530} height={440}>
       <Window.Content>
         <Section title="Select Minigame" textAlign="center" fill>
           <Stack>
@@ -52,6 +52,19 @@ export const MinigamesMenu = (props) => {
                 textAlign="center"
                 lineHeight="3"
                 onClick={() => act('deathmatch')}
+              />
+            </Stack.Item>
+          </Stack>
+          <Divider />
+          <Stack>
+            <Stack.Item grow>
+              <Button
+                content="Teammatch"
+                fluid
+                fontSize={3}
+                textAlign="center"
+                lineHeight="3"
+                onClick={() => act('teammatch')}
               />
             </Stack.Item>
           </Stack>

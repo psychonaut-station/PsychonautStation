@@ -189,6 +189,17 @@
 	)
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_ON_SOLID_GROUND
 
+/datum/crafting_recipe/foldable_barricade
+	name = "Iron Barricade"
+	result = /obj/structure/foldable_barricade
+	reqs = list(
+		/obj/item/stack/sheet/iron = 10,
+		/obj/item/stack/rods = 2,
+	)
+	time = 5 SECONDS
+	category = CAT_STRUCTURE
+	crafting_flags = CRAFT_MUST_BE_LEARNED | CRAFT_CHECK_DIRECTION
+
 /datum/crafting_recipe/tripwire_post
 	name = "Tripwire Post"
 	result = /obj/structure/tripwire/post

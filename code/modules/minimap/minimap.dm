@@ -5,6 +5,8 @@ GLOBAL_ALIST_EMPTY(minimaps)
 /datum/minimap
 	/// The Z-level this minimap was made for.
 	VAR_FINAL/z
+
+	VAR_FINAL/id
 	/// The icon of the base map itself.
 	var/icon/base_map
 	/// Mapping of x/y coords to area names.
@@ -14,21 +16,26 @@ GLOBAL_ALIST_EMPTY(minimaps)
 	/// Minimum world Y coordinate included in the cropped map icon.
 	var/min_y = 1
 
-/datum/minimap/proc/load_z(z)
+/datum/minimap/proc/load_z(z, id, list/turfs)
 	. = FALSE
 	if(!isnum(z) || z > length(SSmapping.z_list))
 		CRASH("Tried to create minimap for invalid Z-level ([z])")
 
 	base_map = icon('icons/ui_icons/minimap/minimap.dmi')
 	src.z = z
+	if(turfs)
+		src.id = id
 
 	var/min_x = world.maxx
 	var/min_y = world.maxy
 	var/max_x = 1
 	var/max_y = 1
 
+	if(!turfs)
+		turfs = Z_TURFS(z)
+
 	map_position_to_name.Cut()
-	for(var/turf/location as anything in Z_TURFS(z))
+	for(var/turf/location as anything in turfs)
 		if(location.skip_minimap_rendering || isshuttleturf(location))
 			continue
 		var/area/arealoc = location.loc
@@ -69,16 +76,31 @@ GLOBAL_ALIST_EMPTY(minimaps)
 	return TRUE
 
 /// Gets the `/datum/minimap` for a Z-level - generating it if it hasn't been yet.
-/proc/get_minimap_for_z(z) as /datum/minimap
+/proc/get_minimap_for_z(z, id = null, list/turfs) as /datum/minimap
 	var/static/generating_minimap = FALSE
+	var/static/minimap_id = 1
 	UNTIL(!generating_minimap)
 
-	if(GLOB.minimaps[z])
-		return GLOB.minimaps[z]
+	var/key = "[z]"
+
+	if(id)
+		key = "[key]_[id]"
+	else if(turfs)
+		id = "minimap[minimap_id++]"
+		key = "[key]_[id]"
+
+	if(GLOB.minimaps[key])
+		return GLOB.minimaps[key]
 
 	generating_minimap = TRUE
 	var/datum/minimap/minimap = new
-	if(minimap.load_z(z))
-		GLOB.minimaps[z] = minimap
+	if(minimap.load_z(z, id, turfs))
+		GLOB.minimaps[key] = minimap
 		. = minimap
 	generating_minimap = FALSE
+
+/proc/delete_minimap(datum/minimap/minimap)
+	if(isnull(minimap))
+		return
+	GLOB.minimaps -= "[minimap.z]_[minimap.id]"
+	qdel(minimap)

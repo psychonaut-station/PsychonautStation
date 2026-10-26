@@ -100,6 +100,7 @@ GLOBAL_LIST_INIT(spanname_to_formatting, list(
 	"Info Plain" = "infoplain",
 	"Interface" = "interface",
 	"Looc" = "looc",
+	"Marine Squad Radio" = "marinesquad",
 	"Medal" = "medal",
 	"Medradio" = "medradio",
 	"Message" = "message",

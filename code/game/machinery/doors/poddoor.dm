@@ -336,3 +336,6 @@
 /obj/machinery/door/poddoor/massdriver_trash
 	name = "Disposals Launcher Bay Door"
 	id = MASSDRIVER_DISPOSALS
+
+/obj/machinery/door/poddoor/indestructible
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | UNACIDABLE | ACID_PROOF

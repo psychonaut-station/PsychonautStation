@@ -47,6 +47,9 @@
 	. = ..()
 	icon_state = "[base_icon_state]"
 
+/obj/item/ammo_casing/a75/weak
+	projectile_type = /obj/projectile/bullet/gyro/weak
+
 /obj/item/ammo_casing/rocket/anomaly_catcher
 	name = "\improper IE-AC200 rocket"
 	desc = "An 84mm Anomaly Catcher rocket. Fire at anomalies and pray."

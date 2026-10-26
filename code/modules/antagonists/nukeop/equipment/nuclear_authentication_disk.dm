@@ -118,3 +118,18 @@
 /obj/item/disk/nuclear/fake/obvious
 	name = "cheap plastic imitation of the nuclear authentication disk"
 	desc = "How anyone could mistake this for the real thing is beyond you."
+
+/obj/item/disk/nuclear/fake/three_disked
+	sticker_icon_state = "o_nt"
+
+/obj/item/disk/nuclear/fake/three_disked/red
+	name = "red " + parent_type::name
+	icon_state = "datadisk0"
+
+/obj/item/disk/nuclear/fake/three_disked/green
+	name = "green " + parent_type::name
+	icon_state = "datadisk4"
+
+/obj/item/disk/nuclear/fake/three_disked/blue
+	name = "blue " + parent_type::name
+	icon_state = "datadisk10"

@@ -168,7 +168,7 @@ GAME_VERB(/mob, me_verb, VERB_ME, null)
 		return TRUE
 
 ///Check if the mob has a hivemind channel
-/mob/proc/hivecheck()
+/mob/proc/hivecheck(obj/item/organ/alien/hivenode/othernode = null)
 	return FALSE
 
 ///The amount of items we are looking for in the message

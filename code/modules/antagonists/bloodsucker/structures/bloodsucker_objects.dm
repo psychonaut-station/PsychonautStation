@@ -217,7 +217,6 @@
 	desc = "An ancient reliquary of cold-forged obsidian and cursed silver, enclosing a swirling vortex of pitch-black primordial vitae that throbs with an unholy heartbeat. When uncorked in the presence of a Bloodsucker, the progenitor's blood surges hungrily into their veins, violently awakening dormant powers and advancing their Rank."
 	icon = 'icons/obj/antags/eldritch.dmi'
 	icon_state = "phylactery_2"
-	inhand_icon_state = "phylactery"
 	light_range = 2
 	light_power = 1.5
 	light_color = "#990000"

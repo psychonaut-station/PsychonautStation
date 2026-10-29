@@ -92,4 +92,4 @@
 	DeactivatePower()
 
 /datum/action/cooldown/bloodsucker/targeted/InterceptClickOn(mob/living/clicker, params, atom/target)
-	click_with_power(target)
+	return click_with_power(target)

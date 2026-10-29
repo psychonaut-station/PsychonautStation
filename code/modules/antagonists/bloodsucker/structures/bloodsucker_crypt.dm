@@ -296,6 +296,7 @@
 		balloon_alert(user, "spilling blood...")
 		bloodsuckerdatum.AddBloodVolume(-TORTURE_BLOOD_HALF_COST)
 		if(!do_torture(user, target))
+			blood_draining = FALSE
 			return FALSE
 		bloodsuckerdatum.AddBloodVolume(-TORTURE_BLOOD_HALF_COST)
 		// Prevent them from unbuckling themselves as long as we're torturing.
@@ -345,7 +346,7 @@
 	/// Weapon Bonus
 	if(held_item)
 		torture_time -= held_item.force / 4
-		if(!held_item.use_tool(src, user, 0, volume = 5))
+		if(held_item.tool_behaviour && !held_item.use_tool(src, user, 0, volume = 5))
 			return
 		switch(held_item.damtype)
 			if(BRUTE)

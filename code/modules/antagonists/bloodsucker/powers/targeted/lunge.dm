@@ -184,8 +184,10 @@
 	if(!isliving(target))
 		return
 	var/mob/living/charger = source
-	if(charger && (charger in charging_mobs))
-		GLOB.move_manager.stop_looping(charger)
+	if(!charger || !(charger in charging_mobs))
+		return
+	charging_mobs -= charger
+	GLOB.move_manager.stop_looping(charger)
 
 	target.visible_message(
 		span_danger("[charger] ferociously charges into [target]!"),

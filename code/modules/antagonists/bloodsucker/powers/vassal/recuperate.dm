@@ -38,9 +38,10 @@
 		return
 	var/mob/living/carbon/user = owner
 	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(user)
-	vassaldatum.master.AddBloodVolume(-1)
+	if(vassaldatum?.master && vassaldatum.master.bloodsucker_blood_volume > 5)
+		vassaldatum.master.AddBloodVolume(-1)
 	user.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
-	user.adjust_stamina_loss(-bloodcost * 1.1)
+	user.adjust_stamina_loss(bloodcost * 1.1)
 	user.heal_overall_damage(brute = 2.5, updating_health = FALSE)
 	user.adjust_tox_loss(-2, updating_health = FALSE, forced = TRUE)
 	// Plasmamen won't lose blood, they don't have any, so they don't heal from Burn.
@@ -51,7 +52,7 @@
 	// Stop Bleeding
 	if(istype(user) && user.is_bleeding())
 		for(var/obj/item/bodypart/part in user.bodyparts)
-			part.generic_bleedstacks--
+			part.generic_bleedstacks = max(0, part.generic_bleedstacks - 1)
 
 /datum/action/cooldown/bloodsucker/recuperate/ContinueActive(mob/living/user, mob/living/target)
 	if(QDELETED(user))

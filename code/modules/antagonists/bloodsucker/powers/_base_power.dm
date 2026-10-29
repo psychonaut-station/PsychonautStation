@@ -62,7 +62,14 @@
 		build_all_button_icons(UPDATE_BUTTON_NAME)
 
 /datum/action/cooldown/bloodsucker/Destroy()
+	if(active)
+		DeactivatePower()
 	bloodsuckerdatum_power = null
+	return ..()
+
+/datum/action/cooldown/bloodsucker/Remove(mob/remove_from)
+	if(active)
+		DeactivatePower()
 	return ..()
 
 /datum/action/cooldown/bloodsucker/IsAvailable(feedback = FALSE)

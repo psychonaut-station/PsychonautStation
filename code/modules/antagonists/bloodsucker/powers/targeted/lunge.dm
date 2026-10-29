@@ -174,11 +174,13 @@
 		INVOKE_ASYNC(src, PROC_REF(hit_target), source, target)
 		return
 	if(target.density)
+		var/mob/living/charger = source
+		if(!charger || !(charger in charging_mobs))
+			return
 		source.visible_message(span_danger("[source] smashes into [target]!"))
 		playsound(get_turf(source), 'sound/effects/meteorimpact.ogg', 50, TRUE)
 		shake_camera(source, 2, 2)
-		if(source in charging_mobs)
-			GLOB.move_manager.stop_looping(source)
+		charge_end(charger)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/hit_target(atom/movable/source, mob/living/target)
 	if(!isliving(target))
@@ -186,8 +188,7 @@
 	var/mob/living/charger = source
 	if(!charger || !(charger in charging_mobs))
 		return
-	charging_mobs -= charger
-	GLOB.move_manager.stop_looping(charger)
+	charge_end(charger)
 
 	target.visible_message(
 		span_danger("[charger] ferociously charges into [target]!"),
@@ -281,4 +282,5 @@
 /datum/action/cooldown/bloodsucker/targeted/lunge/DeactivatePower()
 	if(owner && (owner in charging_mobs))
 		charge_end(owner)
+		return
 	return ..()

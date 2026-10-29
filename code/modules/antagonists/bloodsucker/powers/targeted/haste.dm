@@ -1,36 +1,22 @@
 /datum/actionspeed_modifier/bloodsucker_haste
+	variable = TRUE
 	id = "bloodsucker_haste"
-
-/datum/actionspeed_modifier/bloodsucker_haste/level_1
-	multiplicative_slowdown = -0.15
-
-/datum/actionspeed_modifier/bloodsucker_haste/level_2
-	multiplicative_slowdown = -0.30
-
-/datum/actionspeed_modifier/bloodsucker_haste/level_3
-	multiplicative_slowdown = -0.45
-
-/datum/actionspeed_modifier/bloodsucker_haste/level_4
-	multiplicative_slowdown = -0.60
 
 /datum/action/cooldown/bloodsucker/haste
 	name = "Immortal Haste"
-	desc = "Accelerate your perception and reflexes to superhuman extremes. Evade gunfire and perform interactions at blinding speed."
+	desc = "Accelerate your perception and reflexes to supernatural extremes, evading gunfire and moving with blurring swiftness."
 	button_icon_state = "power_speed"
 	power_explanation = "Immortal Haste:\n\
-		Toggled ability that accelerates your reflexes to supernatural levels;\n\
-		- Grants a chance to evade incoming bullets and projectiles (starts at 15%, +15% per level up to max 60%).\n\
-		- Your action and interaction speed is greatly increased (starts at +15%, +15% per level up to max +60%).\n\
-		- Leaves behind ghostly afterimages while moving.\n\
-		- Upon initial activation, slips out of any grab.\n\
-		- Cannot be used simultaneously with Fortitude.\n\
-		- Costs 2 Blood per second to maintain active.\n\
-		Higher levels increase projectile evasion chance and interaction speed."
+		Accelerate your unholy senses and reflexes to a blinding blur, dodging ranged projectiles and incoming gunfire through supernatural celerity.\n\
+		Your hands move with lightning rapidity, completing interactions in fractions of a heartbeat, while your strides leave spectral afterimages.\n\
+		Surging into haste instantly slips you free from any physical grasp.\n\
+		The hyper-fluid velocity of Haste cannot be maintained alongside the immovable mass of Fortitude.\n\
+		Deepening mastery sharpens your reflexes further, heightening your evasion against projectiles and granting even swifter hands."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
 	bloodcost = 10
-	constant_bloodcost = 2
+	constant_bloodcost = 0.2
 	sol_multiplier = 3
 	cooldown_time = 8 SECONDS
 
@@ -82,7 +68,7 @@
 	if(user)
 		UnregisterSignal(user, COMSIG_ATOM_PRE_BULLET_ACT)
 		qdel(user.GetComponent(/datum/component/after_image))
-		user.remove_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_haste)
+		user.remove_actionspeed_modifier("bloodsucker_haste")
 		user.balloon_alert(user, "haste turned off.")
 
 	return ..()
@@ -98,6 +84,13 @@
 	return ..()
 
 /datum/action/cooldown/bloodsucker/haste/upgrade_power()
+	if(level_current >= 4)
+		return
+	. = ..()
+	if(active && owner)
+		apply_actionspeed()
+
+/datum/action/cooldown/bloodsucker/haste/downgrade_power()
 	. = ..()
 	if(active && owner)
 		apply_actionspeed()
@@ -106,17 +99,10 @@
 	if(!ismob(owner))
 		return
 	var/mob/living/user = owner
-	var/target_modifier
-	switch(level_current)
-		if(2)
-			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_2
-		if(3)
-			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_3
-		if(4 to INFINITY)
-			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_4
-		else
-			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_1
-	user.add_actionspeed_modifier(target_modifier)
+	// SS13 actionspeed uses 'multiplicative_slowdown' where final delay = delay * (1 + sum_of_slowdowns).
+	// Therefore, negative values reduce interaction delay (e.g. -0.15 = 15% faster, -0.60 = 60% faster).
+	var/speed_mult = min(0.60, max(1, level_current) * 0.15)
+	user.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_haste, TRUE, -speed_mult)
 
 /datum/action/cooldown/bloodsucker/haste/proc/dodge_bullets(mob/living/source, obj/projectile/hitting_projectile, def_zone)
 	SIGNAL_HANDLER
@@ -124,7 +110,7 @@
 	if(source.stat != CONSCIOUS || source.incapacitated)
 		return NONE
 
-	var/dodge_chance = clamp(level_current * 15, 15, 60)
+	var/dodge_chance = min(60, max(1, level_current) * 15)
 	if(!prob(dodge_chance))
 		return NONE
 

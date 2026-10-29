@@ -59,13 +59,9 @@
 	if(!my_clan)
 		to_chat(owner.current, span_notice("You have gained a rank. Join a Clan to spend it."))
 		return
-	// Spend Rank Immediately?
-	if(!istype(owner.current.loc, /obj/structure/closet/crate/coffin))
-		to_chat(owner, span_notice("<EM>You have grown more ancient! Sleep in a coffin (or put your Favorite Vassal on a persuasion rack for Ventrue) that you have claimed to thicken your blood and become more powerful.</EM>"))
-		if(bloodsucker_level_unspent >= 2)
-			to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
-		return
-	SpendRank()
+	to_chat(owner, span_notice("<EM>You have grown more ancient! Awaken from your coffin to thicken your blood and embrace new power.</EM>"))
+	if(bloodsucker_level_unspent >= 2 && !istype(owner.current.loc, /obj/structure/closet/crate/coffin))
+		to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
 
 /datum/antagonist/bloodsucker/proc/RankDown()
 	bloodsucker_level_unspent--
@@ -82,6 +78,49 @@
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
 		power.upgrade_power()
 
+/datum/antagonist/bloodsucker/proc/DowngradePowers()
+	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
+		power.downgrade_power()
+
+/datum/antagonist/bloodsucker/proc/DemoteRank()
+	if(!owner || !owner.current)
+		return FALSE
+	if(bloodsucker_level_unspent > 0)
+		bloodsucker_level_unspent--
+		update_hud()
+		return TRUE
+	if(bloodsucker_level <= 1)
+		return FALSE
+
+	bloodsucker_level--
+	bloodsucker_regen_rate = max(initial(bloodsucker_regen_rate), bloodsucker_regen_rate - 0.05)
+	max_blood_volume = max(initial(max_blood_volume), max_blood_volume - 100)
+	bloodsucker_blood_volume = min(bloodsucker_blood_volume, max_blood_volume)
+
+	if(ishuman(owner.current))
+		var/mob/living/carbon/human/human_user = owner.current
+		var/obj/item/bodypart/user_left_hand = human_user.get_bodypart(BODY_ZONE_L_ARM)
+		var/obj/item/bodypart/user_right_hand = human_user.get_bodypart(BODY_ZONE_R_ARM)
+		if(user_left_hand)
+			user_left_hand.unarmed_damage_low = max(0, user_left_hand.unarmed_damage_low - 0.5)
+			user_left_hand.unarmed_damage_high = max(0, user_left_hand.unarmed_damage_high - 0.5)
+		if(user_right_hand)
+			user_right_hand.unarmed_damage_low = max(0, user_right_hand.unarmed_damage_low - 0.5)
+			user_right_hand.unarmed_damage_high = max(0, user_right_hand.unarmed_damage_high - 0.5)
+
+	DowngradePowers()
+
+	var/list/bought_powers = list()
+	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
+		if(!(power.purchase_flags & BLOODSUCKER_DEFAULT_POWER))
+			bought_powers += power
+	if(length(bought_powers) >= bloodsucker_level)
+		var/datum/action/cooldown/bloodsucker/latest_power = bought_powers[length(bought_powers)]
+		RemovePower(latest_power)
+
+	update_hud()
+	return TRUE
+
 ///Disables all powers, accounting for torpor
 /datum/antagonist/bloodsucker/proc/DisableAllPowers(forced = FALSE)
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
@@ -96,7 +135,7 @@
 
 /**
  * Called when a Bloodsucker reaches Final Death
- * Releases all Vassals and gives them the ex_vassal datum.
+ * Releases all Vassals.
  */
 /datum/antagonist/bloodsucker/proc/free_all_vassals()
 	for(var/datum/antagonist/vassal/all_vassals in vassals)
@@ -104,9 +143,6 @@
 		if(all_vassals.owner.has_antag_datum(/datum/antagonist/bloodsucker))
 			all_vassals.owner.current.remove_status_effect(/datum/status_effect/agent_pinpointer/vassal_edition)
 			continue
-		if(all_vassals.special_type == REVENGE_VASSAL)
-			continue
-		all_vassals.owner.add_antag_datum(/datum/antagonist/ex_vassal)
 		all_vassals.owner.remove_antag_datum(/datum/antagonist/vassal)
 
 /**

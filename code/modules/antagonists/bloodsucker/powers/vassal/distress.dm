@@ -1,9 +1,9 @@
 /datum/action/cooldown/bloodsucker/distress
 	name = "Distress"
-	desc = "Injure yourself, allowing you to make a desperate call for help to your Master."
+	desc = "Sacrifice your own flesh to send a desperate telepathic plea for aid directly to your Master."
 	button_icon_state = "power_distress"
 	power_explanation = "Distress:\n\
-		Use this Power from anywhere and your Master Bloodsucker will instantly be alerted of your location."
+		Tear into your own flesh as a blood offering to send an urgent telepathic distress call across the station, immediately alerting your Master to your precise location and peril."
 	power_flags = NONE
 	check_flags = NONE
 	purchase_flags = NONE

@@ -1,13 +1,11 @@
 /// Used by Vassals
 /datum/action/cooldown/bloodsucker/recuperate
 	name = "Sanguine Recuperation"
-	desc = "Slowly heals you overtime using your master's blood, in exchange for some of your own blood and effort."
+	desc = "Draw upon your Master's immortal bloodline to slowly knit your flesh and purge toxins, at the expense of your stamina."
 	button_icon_state = "power_recup"
-	power_explanation = "Recuperate:\n\
-		Activating this Power will begin to heal your wounds.\n\
-		You will heal Brute and Toxin damage, at the cost of Stamina damage, and blood from both you and your Master.\n\
-		If you aren't a bloodless race, you will additionally heal Burn damage.\n\
-		The power will cancel out if you are incapacitated or dead."
+	power_explanation = "Sanguine Recuperation:\n\
+		Channel the supernatural vitae gifted by your Master to slowly knit torn flesh and purge dangerous toxins from your bloodstream.\n\
+		The grueling process exhausts your mortal endurance and sips vitality from both you and your Master, collapsing should you succumb to incapacitation."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = NONE

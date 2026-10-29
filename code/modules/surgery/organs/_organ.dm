@@ -229,7 +229,8 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 ///Used as callbacks by object pooling
 /obj/item/organ/proc/exit_wardrobe()
 	START_PROCESSING(SSobj, src)
-	bodypart_overlay?.imprint_on_next_insertion = TRUE
+	if(!sprite_accessory_override)
+		bodypart_overlay?.imprint_on_next_insertion = TRUE
 
 //See above
 /obj/item/organ/proc/enter_wardrobe()
@@ -360,7 +361,7 @@ INITIALIZE_IMMEDIATE(/obj/item/organ)
 
 		// Ears have aditional var "deaf", need to update it too
 		var/obj/item/organ/ears/ears = get_organ_slot(ORGAN_SLOT_EARS)
-		ears.adjust_temporary_deafness(-INFINITY)
+		ears?.adjust_temporary_deafness(-INFINITY)
 
 		return
 

@@ -65,10 +65,6 @@
 	if (!ishuman(victim) || !source.force)
 		return
 
-	if (LAZYACCESS(modifiers, RIGHT_CLICK) && butchering_enabled && can_butcher_human(victim))
-		INVOKE_ASYNC(src, PROC_REF(butcher_human), source, victim, user)
-		return COMPONENT_CANCEL_ATTACK_CHAIN
-
 	// Neckslicing requires aggro grabs
 	if (user.pulling != victim || user.grab_state < GRAB_AGGRESSIVE || user.zone_selected != BODY_ZONE_HEAD)
 		return
@@ -115,10 +111,6 @@
 	var/mob/living/victim = target
 	if (victim.stat == DEAD && (victim.butcher_results || victim.guaranteed_butcher_results))
 		context[SCREENTIP_CONTEXT_LMB] = "(Combat Mode) Butcher"
-		return CONTEXTUAL_SCREENTIP_SET
-
-	if (ishuman(victim) && can_butcher_human(victim))
-		context[SCREENTIP_CONTEXT_RMB] = "(Combat Mode) Butcher"
 		return CONTEXTUAL_SCREENTIP_SET
 
 	return NONE
@@ -330,37 +322,6 @@
 	if (do_after(user, speed, target) && target.Adjacent(source))
 		on_butchering(user, target)
 
-/datum/component/butchering/proc/can_butcher_human(mob/living/carbon/human/victim)
-	if (!ishuman(victim))
-		return FALSE
-	if (victim.stat != DEAD && victim.body_position != LYING_DOWN && !victim.buckled)
-		return FALSE
-	var/static/list/butcher_spots = typecacheof(list(
-		/obj/structure/table,
-		/obj/structure/bed,
-		/obj/machinery/stasis,
-		/obj/structure/kitchenspike,
-	))
-	for (var/obj/thing in victim.loc)
-		if (is_type_in_typecache(thing, butcher_spots))
-			return TRUE
-	return FALSE
-
-/datum/component/butchering/proc/butcher_human(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
-	if (DOING_INTERACTION_WITH_TARGET(user, victim))
-		to_chat(user, span_warning("You're already interacting with [victim]!"))
-		return
-
-	if (!can_butcher_human(victim))
-		return
-
-	var/obj/item/bodypart/limb = victim.get_bodypart(deprecise_zone(user.zone_selected))
-	if (!limb)
-		to_chat(user, span_warning("[victim] doesn't have a [parse_zone(deprecise_zone(user.zone_selected))]!"))
-		return
-
-	butcher_limb(source, limb, user)
-
 /datum/component/butchering/proc/start_neck_slice(obj/item/source, mob/living/carbon/human/victim, mob/living/user)
 	if (DOING_INTERACTION_WITH_TARGET(user, victim))
 		to_chat(user, span_warning("You're already interacting with [victim]!"))
@@ -515,14 +476,16 @@
 /datum/component/butchering/recycler/proc/on_entered(datum/source, atom/movable/arrived, atom/old_loc, list/atom/old_locs)
 	SIGNAL_HANDLER
 
-	if (!isliving(arrived))
-		return
-	var/mob/living/victim = arrived
 	var/obj/machinery/recycler/eater = parent
-	if (eater.safety_mode || (eater.machine_stat & (BROKEN|NOPOWER))) //I'm so sorry.
+	if (eater.can_butcher(arrived))
+		addtimer(CALLBACK(src, PROC_REF(butcher_corpse), arrived), 0)
+
+/// Butchers the corpse a tick after it went in, once it has finished moving, if it's still there.
+/datum/component/butchering/recycler/proc/butcher_corpse(mob/living/victim)
+	var/obj/machinery/recycler/eater = parent
+	if (QDELETED(victim) || victim.loc != eater.loc || !eater.can_butcher(victim))
 		return
-	if (victim.stat == DEAD && (victim.butcher_results || victim.guaranteed_butcher_results))
-		on_butchering(parent, victim)
+	on_butchering(eater, victim)
 
 /datum/component/butchering/mecha
 

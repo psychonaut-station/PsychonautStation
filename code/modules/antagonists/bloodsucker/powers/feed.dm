@@ -3,16 +3,14 @@
 
 /datum/action/cooldown/bloodsucker/feed
 	name = "Feed"
-	desc = "Feed blood off of a living creature."
+	desc = "Sink your fangs into a living creature to drink their warm blood."
 	button_icon_state = "power_feed"
 	power_explanation = "Feed:\n\
-		Activate Feed while next to someone and you will begin to feed blood off of them.\n\
-		The time needed before you start feeding speeds up the higher level you are, and cooldown is reduced.\n\
-		Feeding off of someone while you have them aggressively grabbed will put them to sleep.\n\
-		While feeding, you can't speak, as your mouth is covered.\n\
-		Feeding while nearby (2 tiles away from) a mortal who is unaware of Bloodsuckers' existence, will cause a Masquerade Infraction\n\
-		If you get too many Masquerade Infractions, you will break the Masquerade.\n\
-		If you are in desperate need of blood, mice can be fed off of, at a cost."
+		Sink your fangs into a nearby living vessel to drain their vital vitae and replenish your stolen unlife.\n\
+		An aggressive hold soothes and lulls your quarry into slumber as you drink.\n\
+		Feeding before unsuspecting mortals risks the wrath of the Masquerade.\n\
+		In dire starvation, humble vermin may sustain you, though at great indignity and spiritual toll.\n\
+		As your ancient blood thickens with greater rank, feeding begins far swifter and demands less recovery between victims."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | BLOODSUCKER_DEFAULT_POWER

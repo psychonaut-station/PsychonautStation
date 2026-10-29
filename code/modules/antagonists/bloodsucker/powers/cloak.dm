@@ -1,12 +1,11 @@
 /datum/action/cooldown/bloodsucker/cloak
 	name = "Cloak of Darkness"
-	desc = "Blend into the shadows and become invisible to the untrained and Artificial eye."
+	desc = "Mantle yourself in pure shadows, fading from the sight of living beings and artificial surveillance."
 	button_icon_state = "power_cloak"
 	power_explanation = "Cloak of Darkness:\n\
-		Activate this Power in the shadows and you will slowly turn nearly invisible.\n\
-		While using Cloak of Darkness, attempting to run will crush you.\n\
-		Additionally, while Cloak is active, you are completely invisible to the AI.\n\
-		Higher levels will increase how invisible you are."
+		Invoke the shadows while unseen to mantle yourself in supernatural obscurity, slipping from the sight of living eyes and artificial watchers alike.\n\
+		Attempting to run violently fractures the shadowy mantle, crushing your physical form under supernatural strain.\n\
+		Deepening mastery renders the shroud swifter to envelope you and veils your presence far more completely."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -14,6 +13,7 @@
 	constant_bloodcost = 0.2
 	sol_multiplier = 2.5
 	cooldown_time = 5 SECONDS
+	max_level = 8
 	var/was_running
 
 /// Must have nobody around to see the cloak
@@ -49,7 +49,7 @@
 	if(!active)
 		return
 	var/mob/living/user = owner
-	animate(user, alpha = max(25, owner.alpha - min(75, 10 + 5 * level_current)), time = 1.5 SECONDS)
+	animate(user, alpha = max(25, owner.alpha - min(75, 11 + 8 * level_current)), time = 1.5 SECONDS)
 	// Prevents running while on Cloak of Darkness
 	if(user.move_intent != MOVE_INTENT_WALK)
 		owner.balloon_alert(owner, "you attempt to run, crushing yourself.")

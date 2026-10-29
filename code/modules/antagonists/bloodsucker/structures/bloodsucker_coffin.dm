@@ -34,7 +34,7 @@
 	. = ..()
 	if(user == resident)
 		. += span_cult("This is your Claimed Coffin.")
-		. += span_cult("Rest in it while injured to enter Torpor. Entering it with unspent Ranks will allow you to spend one.")
+		. += span_cult("Rest in it while injured to enter Torpor. Awakening from it with unspent Ranks will allow you to spend one.")
 		. += span_cult("Alt-Click while inside the Coffin to Lock/Unlock.")
 		. += span_cult("Alt-Click while outside of your Coffin to Unclaim it, unwrenching it and all your other structures as a result.")
 
@@ -201,6 +201,15 @@
 	playsound(get_turf(src), 'sound/machines/airlock/doorclick.ogg', 20, 1)
 	to_chat(user, span_notice("[src] appears to be locked tight from the inside."))
 
+/obj/structure/closet/crate/coffin/open(mob/living/user, force = FALSE, special_effects = TRUE)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(resident && ishuman(resident))
+		var/datum/antagonist/bloodsucker/bloodsuckerdatum = resident.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+		if(bloodsuckerdatum?.my_clan && bloodsuckerdatum.bloodsucker_level_unspent > 0)
+			INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
+
 /obj/structure/closet/crate/coffin/close(mob/living/user)
 	. = ..()
 	if(!.)
@@ -218,11 +227,6 @@
 				if("No")
 					return
 		LockMe(user)
-		//Level up if possible.
-		if(!bloodsuckerdatum.my_clan)
-			to_chat(user, span_notice("You must enter a Clan to rank up."))
-		else
-			bloodsuckerdatum.SpendRank()
 		// You're in a Coffin, everything else is done, you're likely here to heal. Let's offer them the oppertunity to do so.
 		bloodsuckerdatum.check_begin_torpor()
 	return TRUE

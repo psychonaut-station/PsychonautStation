@@ -38,21 +38,6 @@
 		return FALSE
 	return TRUE
 
-///Bloodbag of Bloodsucker blood (used by Vassals only)
-/obj/item/reagent_containers/blood/o_minus/bloodsucker
-	name = "blood pack - vampiric"
-	blood_type = /datum/blood_type/universal/vampire
-
-/obj/item/reagent_containers/blood/o_minus/bloodsucker/Initialize(mapload, vol)
-	. = ..()
-	reagents?.clear_reagents()
-	reagents?.add_reagent(/datum/reagent/blood/bloodsucker, volume)
-
-/obj/item/reagent_containers/blood/o_minus/bloodsucker/examine(mob/user)
-	. = ..()
-	if(user.mind.has_antag_datum(/datum/antagonist/ex_vassal) || user.mind.has_antag_datum(/datum/antagonist/vassal/revenge))
-		. += span_notice("Seems to be just about the same color as your Master's...")
-
 //////////////////////
 //      STAKES      //
 //////////////////////
@@ -204,3 +189,94 @@
 
 /datum/embedding/silver_stake
 	embed_chance = 65
+
+////////////////////////////////////////////////////////////////////////////////
+//                       BLOODSUCKER ADMIN RELICS                            //
+////////////////////////////////////////////////////////////////////////////////
+
+/obj/item/bloodsucker_relic
+	gender = NEUTER
+	w_class = WEIGHT_CLASS_SMALL
+	resistance_flags = INDESTRUCTIBLE | LAVA_PROOF | FIRE_PROOF | ACID_PROOF
+
+/obj/item/bloodsucker_relic/interact_with_atom(atom/interacting_with, mob/living/user, list/modifiers)
+	if(isliving(interacting_with))
+		apply_relic(interacting_with, user)
+		return ITEM_INTERACT_SUCCESS
+	return NONE
+
+/obj/item/bloodsucker_relic/attack_self(mob/living/user)
+	apply_relic(user, user)
+
+/obj/item/bloodsucker_relic/proc/apply_relic(mob/living/target, mob/living/user)
+	return
+
+// --- RANK ADVANCEMENT ---
+/obj/item/bloodsucker_relic/rank_up
+	name = "\improper Phylactery of Primordial Vitae"
+	desc = "An ancient reliquary of cold-forged obsidian and cursed silver, enclosing a swirling vortex of pitch-black primordial vitae that throbs with an unholy heartbeat. When uncorked in the presence of a Bloodsucker, the progenitor's blood surges hungrily into their veins, violently awakening dormant powers and advancing their Rank."
+	icon = 'icons/obj/antags/eldritch.dmi'
+	icon_state = "phylactery_2"
+	light_range = 2
+	light_power = 1.5
+	light_color = "#990000"
+
+/obj/item/bloodsucker_relic/rank_up/apply_relic(mob/living/target, mob/living/user)
+	if(!isliving(target))
+		return
+	var/datum/antagonist/bloodsucker/vamp = target.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(vamp)
+		vamp.RankUp()
+		playsound(target, 'sound/effects/magic/demon_consume.ogg', 70, TRUE)
+		do_sparks(4, TRUE, target)
+		target.visible_message(
+			span_danger("[target]'s eyes blaze with baleful crimson fire as [src] floods [target.p_their()] veins with primordial vitae!"),
+			span_boldnotice("The ancient blood surges through your dead veins like liquid fire, awakening dormant power and elevating your Rank!")
+		)
+		user.balloon_alert(user, "rank advanced!")
+		log_admin("[key_name_admin(user)] used [src] on [key_name_admin(target)], advancing Bloodsucker rank (now Rank [vamp.bloodsucker_level] with [vamp.bloodsucker_level_unspent] unspent).")
+		if(vamp.my_clan)
+			INVOKE_ASYNC(vamp, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
+		return
+
+	target.visible_message(
+		span_warning("[target] convulses violently as the primordial vitae scorches [target.p_their()] mortal veins!"),
+		span_userdanger("The primordial vitae burns through your mortal veins like boiling acid!")
+	)
+	target.adjust_tox_loss(30)
+	target.Knockdown(2 SECONDS)
+	playsound(target, 'sound/effects/splat.ogg', 40, TRUE)
+	user.balloon_alert(user, "rejected by mortal flesh!")
+
+// --- RANK DEGRADATION ---
+/obj/item/bloodsucker_relic/rank_down
+	name = "\improper Crucible of Sanguine Withering"
+	desc = "A suffocating, ashen relic carved from weeping argentum and dusted with the calcified remains of an apostate vampire dynasty. Emitting a hollow, chilling vibration, its touch dissolves the density of supernatural vitae, draining the unholy might from any Bloodsucker and withering them down a Rank."
+	icon = 'icons/obj/antags/cult/items.dmi'
+	icon_state = "shuttlecurse"
+	light_range = 2
+	light_power = 1
+	light_color = "#440044"
+
+/obj/item/bloodsucker_relic/rank_down/apply_relic(mob/living/target, mob/living/user)
+	if(!isliving(target))
+		return
+	var/datum/antagonist/bloodsucker/vamp = target.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(vamp)
+		if(vamp.DemoteRank())
+			playsound(target, 'sound/effects/tendril_destroyed.ogg', 70, TRUE)
+			new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(target))
+			target.visible_message(
+				span_danger("[target] gasps in agony as pale vapor hisses from [target.p_their()] pores, [target.p_their()] vampiric essence withering away!"),
+				span_userdanger("The consecrated ash chills your core! Your ancient vitae thins and withers, casting you down a Rank! (Now Rank [vamp.bloodsucker_level])")
+			)
+			user.balloon_alert(user, "rank withered!")
+			log_admin("[key_name_admin(user)] used [src] on [key_name_admin(target)], demoting Bloodsucker rank (now Rank [vamp.bloodsucker_level] with [vamp.bloodsucker_level_unspent] unspent).")
+		else
+			user.balloon_alert(user, "cannot wither further!")
+			to_chat(user, span_warning("[target]'s bloodline is already at its baseline fledgling stage and cannot wither further."))
+		return
+
+	user.balloon_alert(user, "no effect on mortals")
+	to_chat(user, span_notice("The cold ash rests inert against mortal skin."))
+

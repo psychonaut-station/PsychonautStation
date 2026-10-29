@@ -28,6 +28,11 @@
 ///If someone is not allowed under any circimstances to become a Vassal
 #define VASSALIZATION_BANNED 2
 
+#define VASSAL_SCAN_MIN_DISTANCE 5
+#define VASSAL_SCAN_MAX_DISTANCE 500
+/// 2s update time.
+#define VASSAL_SCAN_PING_TIME (2 SECONDS)
+
 /**
  * Cooldown defines
  * Used in Cooldowns Bloodsuckers use to prevent spamming
@@ -46,7 +51,6 @@
 #define CLAN_NONE "Caitiff"
 
 #define FAVORITE_VASSAL "favorite_vassal"
-#define REVENGE_VASSAL "revenge_vassal"
 
 /**
  * Power defines
@@ -143,8 +147,6 @@
 #define IS_VASSAL(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/vassal))
 ///Whether a mob is a Favorite Vassal
 #define IS_FAVORITE_VASSAL(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/vassal/favorite))
-///Whether a mob is a Revenge Vassal
-#define IS_REVENGE_VASSAL(mob) (mob?.mind?.has_antag_datum(/datum/antagonist/vassal/revenge))
 
 //Used in bloodsucker_life.dm
 #define MARTIALART_FRENZYGRAB "frenzy grabbing"

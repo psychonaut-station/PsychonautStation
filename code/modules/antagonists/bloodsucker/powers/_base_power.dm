@@ -36,6 +36,8 @@
 	var/level_current = 0
 	///If this power scales with levels. If FALSE, no level is displayed or increased for this power.
 	var/can_level = TRUE
+	///Maximum level this power can reach.
+	var/max_level = 4
 	///The cost to ACTIVATE this Power
 	var/bloodcost = 0
 	///The cost to MAINTAIN this Power - Only used for Constant Cost Powers
@@ -60,8 +62,6 @@
 		build_all_button_icons(UPDATE_BUTTON_NAME)
 
 /datum/action/cooldown/bloodsucker/Destroy()
-	if(active)
-		DeactivatePower()
 	bloodsuckerdatum_power = null
 	return ..()
 
@@ -72,13 +72,9 @@
 	. = ..()
 	find_bloodsucker_datum()
 
-/datum/action/cooldown/bloodsucker/Remove(mob/user)
-	if(active)
-		DeactivatePower()
-	return ..()
-
 //This is when we CLICK on the ability Icon, not USING.
-/datum/action/cooldown/bloodsucker/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/bloodsucker/Trigger(mob/clicker, trigger_flags, atom/target)
+	SHOULD_CALL_PARENT(FALSE)
 	find_bloodsucker_datum()
 	if(active && can_deactivate()) // Active? DEACTIVATE AND END!
 		DeactivatePower()
@@ -120,9 +116,15 @@
 
 ///Called when the Power is upgraded.
 /datum/action/cooldown/bloodsucker/proc/upgrade_power()
-	if(!can_level)
+	if(!can_level || level_current >= max_level)
 		return
 	level_current++
+
+///Called when the Power is downgraded.
+/datum/action/cooldown/bloodsucker/proc/downgrade_power()
+	if(!can_level || level_current <= 0)
+		return
+	level_current--
 
 ///Checks if the Power is available to use.
 /datum/action/cooldown/bloodsucker/proc/can_use(mob/living/carbon/user, trigger_flags)
@@ -167,7 +169,10 @@
 	if(power_flags & BP_AM_STATIC_COOLDOWN)
 		cooldown_time = initial(cooldown_time)
 	else
-		cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / 16 * (level_current - 1)))
+		if(max_level > 1)
+			cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / (2 * (max_level - 1)) * (level_current - 1)))
+		else
+			cooldown_time = initial(cooldown_time)
 
 	return ..()
 
@@ -187,7 +192,7 @@
 	// Bloodsuckers in a Frenzy don't have enough Blood to pay it, so just don't.
 	if(bloodsuckerdatum_power.frenzied)
 		return
-	bloodsuckerdatum_power.AddBloodVolume(-bloodcost)
+	bloodsuckerdatum_power.bloodsucker_blood_volume -= bloodcost
 	bloodsuckerdatum_power.update_hud()
 
 /datum/action/cooldown/bloodsucker/proc/ActivatePower(trigger_flags)
@@ -201,12 +206,12 @@
 /datum/action/cooldown/bloodsucker/proc/DeactivatePower()
 	if(!active) //Already inactive? Return
 		return
-	active = FALSE
 	if(power_flags & BP_AM_TOGGLE)
 		STOP_PROCESSING(SSprocessing, src)
 	if(power_flags & BP_AM_SINGLEUSE)
 		remove_after_use()
 		return
+	active = FALSE
 	StartCooldown()
 	build_all_button_icons()
 
@@ -220,15 +225,15 @@
 		DeactivatePower()
 		return
 	// We can keep this up (For now), so Pay Cost!
-	if(owner.stat == CONSCIOUS || !(power_flags & BP_AM_COSTLESS_UNCONSCIOUS))
-		var/cost_to_pay = constant_bloodcost * (seconds_per_tick || 1)
+	if(constant_bloodcost > 0 && (owner.stat == CONSCIOUS || !(power_flags & BP_AM_COSTLESS_UNCONSCIOUS)))
+		find_bloodsucker_datum()
 		if(bloodsuckerdatum_power)
-			bloodsuckerdatum_power.AddBloodVolume(-cost_to_pay)
+			bloodsuckerdatum_power.AddBloodVolume(-constant_bloodcost)
 			bloodsuckerdatum_power.update_hud()
 		else
 			var/mob/living/living_owner = owner
 			if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD))
-				living_owner.blood_volume -= cost_to_pay
+				living_owner.blood_volume -= constant_bloodcost
 	return TRUE
 
 /// Checks to make sure this power can stay active
@@ -237,10 +242,17 @@
 		return FALSE
 	if(constant_bloodcost <= 0)
 		return TRUE
+	find_bloodsucker_datum()
 	if(bloodsuckerdatum_power)
-		return (bloodsuckerdatum_power.bloodsucker_blood_volume > 0)
+		if(bloodsuckerdatum_power.bloodsucker_blood_volume <= 0)
+			to_chat(user, span_warning("You ran out of blood to upkeep [name]!"))
+			return FALSE
+		return TRUE
 	var/mob/living/living_owner = user
-	return (HAS_TRAIT(living_owner, TRAIT_NOBLOOD) || living_owner.blood_volume > BLOOD_VOLUME_OKAY)
+	if(!HAS_TRAIT(living_owner, TRAIT_NOBLOOD) && living_owner.blood_volume <= 0)
+		to_chat(user, span_warning("You ran out of blood to upkeep [name]!"))
+		return FALSE
+	return TRUE
 
 /// Used to unlearn Single-Use Powers
 /datum/action/cooldown/bloodsucker/proc/remove_after_use()

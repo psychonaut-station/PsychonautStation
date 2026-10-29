@@ -4,22 +4,17 @@
  *
  * 	Level 2: Additionally mutes
  * 	Level 3: Can be used through face protection
- * 	Level 5: Doesn't need to be facing you anymore
+ * 	Level 4: Doesn't need to be facing you anymore
  */
 
 /datum/action/cooldown/bloodsucker/targeted/mesmerize
 	name = "Mesmerize"
-	desc = "Dominate the mind of a mortal who can see your eyes."
+	desc = "Ensnare the mind of a mortal with an unyielding hypnotic gaze, paralyzing their body and will."
 	button_icon_state = "power_mez"
 	power_explanation = "Mesmerize:\n\
-		Click any player to attempt to mesmerize them.\n\
-		You cannot wear anything covering your face, and both parties must be facing eachother. Obviously, both parties need to not be blind. \n\
-		If your target is already mesmerized, the Power will fail.\n\
-		Once mesmerized, the target will be unable to move for a certain amount of time, scaling with level.\n\
-		At level 2, your target will additionally be muted.\n\
-		At level 3, you will be able to use the power through items covering your face.\n\
-		At level 5, you will be able to mesmerize regardless of your target's direction.\n\
-		Higher levels will increase the time of the mesmerize's freeze."
+		Lock eyes with an unsuspecting mortal to dominate their consciousness, freezing their limbs and will in a profound hypnotic trance.\n\
+		Both you and your victim must meet each other's uncovered gaze to forge the unholy mental link.\n\
+		As your ancient power deepens, your hypnotic command additionally strips victims of their voice, pierces through obscuring face coverings, and ensnares quarry regardless of where they look, while prolonging the duration of their helpless stupor."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -82,7 +77,7 @@
 		owner.balloon_alert(owner, "you must be facing [current_target].")
 		return FALSE
 	// Target facing me? (On the floor, they're facing everyone)
-	if(((current_target.mobility_flags & MOBILITY_STAND) && !is_source_facing_target(current_target, owner) && level_current <= 4))
+	if(((current_target.mobility_flags & MOBILITY_STAND) && !is_source_facing_target(current_target, owner) && level_current <= 3))
 		owner.balloon_alert(owner, "[current_target] must be facing you.")
 		return FALSE
 

@@ -29,6 +29,7 @@ type PowerInfo = {
   icon_state: string;
   can_level?: boolean;
   level?: number;
+  max_level?: number;
 };
 
 type Info = {
@@ -235,7 +236,7 @@ const PowerSection = (props: any) => {
                 rightSlot={
                   power.can_level && power.level !== undefined ? (
                     <Box color="red" bold fontSize="12px" ml={1}>
-                      Lvl {power.level}
+                      Lvl {power.level}/{power.max_level || 4}
                     </Box>
                   ) : null
                 }
@@ -253,7 +254,7 @@ const PowerSection = (props: any) => {
               <Box bold fontSize="16px" mb={1} color="red">
                 {selectedPower.name}
                 {selectedPower.can_level && selectedPower.level !== undefined
-                  ? ` — Level ${selectedPower.level}`
+                  ? ` — Level ${selectedPower.level}/${selectedPower.max_level || 4}`
                   : ''}
               </Box>
               <Box

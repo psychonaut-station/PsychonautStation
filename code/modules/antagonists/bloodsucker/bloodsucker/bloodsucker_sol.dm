@@ -40,19 +40,80 @@
 /// Cycle through all vamp antags and check if they're inside a closet.
 /datum/antagonist/bloodsucker/proc/handle_sol()
 	SIGNAL_HANDLER
+	INVOKE_ASYNC(src, PROC_REF(handle_sol_effects))
+
+/datum/antagonist/bloodsucker/proc/handle_sol_effects()
 	if(!owner?.current)
 		return
+	var/mob/living/carbon/user = owner.current
 
-	if(!istype(owner.current.loc, /obj/structure/closet/crate/coffin))
-		owner.current.apply_status_effect(/datum/status_effect/bloodsucker_sol)
+	var/in_coffin = FALSE
+	var/in_locker = FALSE
+	if(istype(user.loc, /obj/structure/closet/crate/coffin))
+		var/obj/structure/closet/crate/coffin/coffin_loc = user.loc
+		if(!coffin_loc.opened)
+			in_coffin = TRUE
+	else if(istype(user.loc, /obj/structure/closet))
+		var/obj/structure/closet/closet_loc = user.loc
+		if(!closet_loc.opened)
+			in_locker = TRUE
+
+	// 1. In a Coffin: All ranks are completely safe and sheltered from sunlight
+	if(in_coffin)
+		user.remove_status_effect(/datum/status_effect/bloodsucker_sol)
+		if(user.am_staked() && COOLDOWN_FINISHED(src, bloodsucker_spam_sol_burn))
+			to_chat(user, span_userdanger("You are staked! Remove the offending weapon from your heart before sleeping."))
+			COOLDOWN_START(src, bloodsucker_spam_sol_burn, BLOODSUCKER_SPAM_SOL)
+		if(!is_in_torpor() && user.stat != DEAD)
+			check_begin_torpor(TRUE)
+			user.add_mood_event("vampsleep", /datum/mood_event/coffinsleep)
 		return
-	owner.current.remove_status_effect(/datum/status_effect/bloodsucker_sol)
-	if(owner.current.am_staked() && COOLDOWN_FINISHED(src, bloodsucker_spam_sol_burn))
-		to_chat(owner.current, span_userdanger("You are staked! Remove the offending weapon from your heart before sleeping."))
-		COOLDOWN_START(src, bloodsucker_spam_sol_burn, BLOODSUCKER_SPAM_SOL) //This should happen twice per Sol
-	if(!is_in_torpor())
-		check_begin_torpor(TRUE)
-		owner.current.add_mood_event("vampsleep", /datum/mood_event/coffinsleep)
+
+	// 2. Dead in sunlight: Disintegrates into dust
+	// Fledgling corpses (Rank 0-1) inside closed lockers are shielded; all others turn to dust immediately
+	if(user.stat == DEAD)
+		if(in_locker && bloodsucker_level <= 1)
+			return
+		to_chat(user, span_userdanger("The morning sun completely incinerates your dead form into dust!"))
+		final_death(dusted = TRUE)
+		return
+
+	// 3. Exposed to Sol outside coffin: Apply solar debuff
+	user.apply_status_effect(/datum/status_effect/bloodsucker_sol)
+
+	// 4. Locker survival check: Rank 0 and 1 can survive in a closed locker
+	if(in_locker && bloodsucker_level <= 1)
+		if(COOLDOWN_FINISHED(src, bloodsucker_spam_sol_burn))
+			COOLDOWN_START(src, bloodsucker_spam_sol_burn, 10 SECONDS)
+			to_chat(user, span_notice("The dark locker barely shields your fledgling form from the deadly solar flares outside."))
+		return
+
+	// 5. Calculate burn damage: Higher ranks take more damage!
+	var/burn_damage = 0
+	if(in_locker)
+		// Higher ranks take burn damage even inside lockers
+		burn_damage = 5 * bloodsucker_level
+		if(COOLDOWN_FINISHED(src, bloodsucker_spam_sol_burn))
+			COOLDOWN_START(src, bloodsucker_spam_sol_burn, 6 SECONDS)
+			to_chat(user, span_userdanger("The thin locker fails to block the solar radiation! Your ancient blood boils from within!"))
+	else
+		// Open sunlight exposure: scaling burn damage, fire, and smoke
+		burn_damage = 10 + (bloodsucker_level * 5)
+		user.adjust_fire_stacks(1)
+		user.ignite_mob()
+		new /obj/effect/temp_visual/small_smoke/halfsecond(get_turf(user))
+		playsound(user, 'sound/effects/fire_puff.ogg', 40, TRUE)
+		if(COOLDOWN_FINISHED(src, bloodsucker_spam_sol_burn))
+			COOLDOWN_START(src, bloodsucker_spam_sol_burn, 6 SECONDS)
+			to_chat(user, span_userdanger("The morning sun scorches your unholy flesh! Seek shelter in a coffin immediately!"))
+			user.visible_message(span_danger("[user]'s flesh sizzles and bursts into flames under the blinding sunlight!"))
+
+	user.apply_damage(burn_damage, BURN)
+
+	// 6. If killed by sunlight / fire damage fatal: Turn into dust
+	if(user.stat == DEAD || user.get_fire_loss() >= (user.maxHealth * 2))
+		to_chat(user, span_userdanger("The relentless morning sun incinerates your soul and body into dust!"))
+		final_death(dusted = TRUE)
 
 /datum/antagonist/bloodsucker/proc/give_warning(atom/source, danger_level, vampire_warning_message, vassal_warning_message)
 	SIGNAL_HANDLER

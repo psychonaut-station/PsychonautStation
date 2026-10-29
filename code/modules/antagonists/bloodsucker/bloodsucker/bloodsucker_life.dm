@@ -13,7 +13,7 @@
 		check_end_torpor()
 	// Deduct Blood
 	if(owner.current.stat == CONSCIOUS && !HAS_TRAIT(owner.current, TRAIT_IMMOBILIZED) && !is_in_torpor())
-		AddBloodVolume(-BLOODSUCKER_PASSIVE_BLOOD_DRAIN * (seconds_per_tick || SSMOBS_DT))
+		AddBloodVolume(-BLOODSUCKER_PASSIVE_BLOOD_DRAIN) // -.1 currently
 	if(HandleHealing())
 		if((COOLDOWN_FINISHED(src, bloodsucker_spam_healing)) && bloodsucker_blood_volume > 0)
 			to_chat(owner.current, span_notice("The power of your blood begins knitting your wounds..."))
@@ -52,8 +52,7 @@
 
 	///////////
 	// Shift Body Temp (toward Target's temp, by volume taken)
-	if(bloodsucker_blood_volume + blood_taken > 0)
-		owner.current.bodytemperature = ((bloodsucker_blood_volume * owner.current.bodytemperature) + (blood_taken * target.bodytemperature)) / (bloodsucker_blood_volume + blood_taken)
+	owner.current.bodytemperature = ((bloodsucker_blood_volume * owner.current.bodytemperature) + (blood_taken * target.bodytemperature)) / (bloodsucker_blood_volume + blood_taken)
 	// our volume * temp, + their volume * temp, / total volume
 	///////////
 	// Reduce Value Quantity
@@ -120,7 +119,7 @@
 		return TRUE
 
 /datum/antagonist/bloodsucker/proc/check_limbs(costMult = 1)
-	var/limb_regen_cost = 50 * costMult
+	var/limb_regen_cost = 50 * -costMult
 	var/mob/living/carbon/user = owner.current
 	var/list/missing = user.get_missing_limbs()
 	if(length(missing) && (bloodsucker_blood_volume < limb_regen_cost + 5))
@@ -151,7 +150,7 @@
 		return
 
 	bloodsuckeruser.cure_husk()
-	bloodsuckeruser.regenerate_organs(regenerate_existing = FALSE)
+	bloodsuckeruser.regenerate_organs(remove_hazardous = FALSE)
 
 	for(var/obj/item/organ/organ as anything in bloodsuckeruser.organs)
 		organ.set_organ_damage(0)
@@ -163,7 +162,7 @@
 	if(current_eyes)
 		current_eyes.flash_protect = max(initial(current_eyes.flash_protect) - 1, FLASH_PROTECTION_SENSITIVE)
 		current_eyes.color_cutoffs = list(25, 8, 5)
-		current_eyes.sight_flags |= SEE_MOBS
+		current_eyes.add_organ_trait(TRAIT_THERMAL_VISION)
 	bloodsuckeruser.update_sight()
 
 	if(bloodsuckeruser.stat == DEAD)
@@ -198,7 +197,7 @@
 		return
 	// Fire Damage? (above double health)
 	if(owner.current.get_fire_loss() >= (owner.current.maxHealth * 2.5))
-		final_death()
+		final_death(dusted = SSsunlight.sunlight_active)
 		return
 	// Staked while "Temp Death" or Asleep
 	if(owner.current.StakeCanKillMe() && owner.current.am_staked())
@@ -256,11 +255,11 @@
 	owner.current.blood_volume = bloodsucker_blood_volume
 
 /// Gibs the Bloodsucker, roundremoving them.
-/datum/antagonist/bloodsucker/proc/final_death()
+/datum/antagonist/bloodsucker/proc/final_death(dusted = FALSE)
 	// If we have no body, end here.
 	if(QDELETED(owner.current))
 		return
-	UnregisterSignal(owner.current, list(
+	UnregisterSignal(src, list(
 		COMSIG_BLOODSUCKER_ON_LIFETICK,
 		COMSIG_LIVING_LIFE,
 		COMSIG_LIVING_DEATH,
@@ -275,7 +274,10 @@
 	free_all_vassals()
 	DisableAllPowers(forced = TRUE)
 	if(!iscarbon(owner.current))
-		owner.current.gib(TRUE, FALSE, FALSE)
+		if(dusted)
+			owner.current.dust()
+		else
+			owner.current.gib(TRUE, FALSE, FALSE)
 		return
 	// Drop anything in us and play a tune
 	var/mob/living/carbon/user = owner.current
@@ -288,12 +290,12 @@
 		return
 
 	// Elders get dusted, Fledglings get gibbed.
-	if(bloodsucker_level >= 4)
+	if(dusted || bloodsucker_level >= 4)
 		user.visible_message(
 			span_warning("[user]'s skin crackles and dries, their skin and bones withering to dust. A hollow cry whips from what is now a sandy pile of remains."),
 			span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
 			span_hear("You hear a dry, crackling sound."))
-		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, dust)), 5 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+		addtimer(CALLBACK(user, TYPE_PROC_REF(/atom/movable, dust)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 		return
 	user.visible_message(
 		span_warning("[user]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),

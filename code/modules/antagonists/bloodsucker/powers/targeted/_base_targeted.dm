@@ -21,7 +21,8 @@
 	if(remove_from.click_intercept == src)
 		unset_click_ability(remove_from)
 
-/datum/action/cooldown/bloodsucker/targeted/Trigger(trigger_flags, atom/target)
+/datum/action/cooldown/bloodsucker/targeted/Trigger(mob/clicker, trigger_flags, atom/target)
+	SHOULD_CALL_PARENT(FALSE)
 	if(active && can_deactivate())
 		DeactivatePower()
 		return FALSE

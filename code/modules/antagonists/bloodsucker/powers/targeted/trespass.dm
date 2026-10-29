@@ -1,11 +1,10 @@
 /datum/action/cooldown/bloodsucker/targeted/trespass
 	name = "Trespass"
-	desc = "Become mist and advance two tiles in one direction. Useful for skipping past doors and barricades."
+	desc = "Dissolve into formless mist and surge forward, bypassing doors, grilles, and physical barricades."
 	button_icon_state = "power_tres"
 	power_explanation = "Trespass:\n\
-		Click anywhere from 1-2 tiles away from you to teleport.\n\
-		This power goes through all obstacles except Walls.\n\
-		Higher levels decrease the sound played from using the Power, and increase the speed of the transition."
+		Dissolve your corporeal body into ethereal mist and surge forward across short distances, effortlessly slipping through doors, grilles, and physical barricades while solid walls remain impassable.\n\
+		With greater power and mastery, the ethereal transition becomes nearly silent and dramatically swifter."
 	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -52,7 +51,7 @@
 		// ERROR! Wall!
 		if(iswallturf(from_turf))
 			var/wallwarning = (i == 1) ? "in the way" : "at your destination"
-			owner.balloon_alert(owner, "There is a wall [wallwarning].")
+			owner.balloon_alert(owner, "wall [wallwarning]!")
 			return FALSE
 	// Done
 	target_turf = from_turf
@@ -76,7 +75,7 @@
 	var/datum/effect_system/basic/steam_spread/puff = new(my_turf, 3, FALSE)
 	puff.start()
 
-	var/mist_delay = max(5, 20 - level_current * 2.5) // Level up and do this faster.
+	var/mist_delay = max(5, 20 - (level_current - 1) * 5) // Level up and do this faster. Reaches minimum at level 4.
 
 	// Freeze Me
 	user.Stun(mist_delay, ignore_canstun = TRUE)

@@ -122,18 +122,21 @@
 		//mesmerized_target.silent += power_time / 10 // Silent isn't based on ticks.
 		COOLDOWN_START(mesmerized_target, next_move, power_time) // <--- Use direct change instead. We want an unmodified delay to their next move // mesmerized_target.changeNext_move(power_time) // check click.dm
 		ADD_TRAIT(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZED_TRAIT)// <--- Fuck it. We tried using next_move, but they could STILL resist. We're just doing a hard freeze.
-		addtimer(CALLBACK(src, PROC_REF(end_mesmerize), user, mesmerized_target), power_time)
+		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_mesmerize_effect), WEAKREF(user), WEAKREF(mesmerized_target)), power_time)
 	power_activated_sucessfully() // PAY COST! BEGIN COOLDOWN!
 
 /datum/action/cooldown/bloodsucker/targeted/mesmerize/DeactivatePower()
 	target_ref = null
 	. = ..()
 
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/proc/end_mesmerize(mob/living/user, mob/living/target)
+/proc/end_mesmerize_effect(datum/weakref/user_ref, datum/weakref/target_ref)
+	var/mob/living/target = target_ref?.resolve()
+	if(!target)
+		return
 	REMOVE_TRAITS_IN(target, MESMERIZED_TRAIT)
-	// They Woke Up! (Notice if within view)
-	if(istype(user) && target.stat == CONSCIOUS && (target in view(6, get_turf(user))))
-		owner.balloon_alert(owner, "[target] snapped out of their trance.")
+	var/mob/living/user = user_ref?.resolve()
+	if(user && target.stat == CONSCIOUS && (target in view(6, get_turf(user))))
+		user.balloon_alert(user, "[target] snapped out of their trance.")
 
 /datum/action/cooldown/bloodsucker/targeted/mesmerize/ContinueActive(mob/living/user, mob/living/target)
 	return ..() && can_use(user) && CheckCanTarget(target)

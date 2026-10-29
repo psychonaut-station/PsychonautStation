@@ -52,7 +52,8 @@
 
 	///////////
 	// Shift Body Temp (toward Target's temp, by volume taken)
-	owner.current.bodytemperature = ((bloodsucker_blood_volume * owner.current.bodytemperature) + (blood_taken * target.bodytemperature)) / (bloodsucker_blood_volume + blood_taken)
+	if(bloodsucker_blood_volume + blood_taken > 0)
+		owner.current.bodytemperature = ((bloodsucker_blood_volume * owner.current.bodytemperature) + (blood_taken * target.bodytemperature)) / (bloodsucker_blood_volume + blood_taken)
 	// our volume * temp, + their volume * temp, / total volume
 	///////////
 	// Reduce Value Quantity
@@ -119,7 +120,7 @@
 		return TRUE
 
 /datum/antagonist/bloodsucker/proc/check_limbs(costMult = 1)
-	var/limb_regen_cost = 50 * -costMult
+	var/limb_regen_cost = 50 * costMult
 	var/mob/living/carbon/user = owner.current
 	var/list/missing = user.get_missing_limbs()
 	if(length(missing) && (bloodsucker_blood_volume < limb_regen_cost + 5))
@@ -259,7 +260,7 @@
 	// If we have no body, end here.
 	if(QDELETED(owner.current))
 		return
-	UnregisterSignal(src, list(
+	UnregisterSignal(owner.current, list(
 		COMSIG_BLOODSUCKER_ON_LIFETICK,
 		COMSIG_LIVING_LIFE,
 		COMSIG_LIVING_DEATH,

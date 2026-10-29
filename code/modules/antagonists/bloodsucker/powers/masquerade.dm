@@ -44,7 +44,7 @@
 	ADD_TRAIT(user, TRAIT_MASQUERADE, BLOODSUCKER_TRAIT)
 	// Handle organs
 	var/obj/item/organ/heart/vampheart = user.get_organ_slot(ORGAN_SLOT_HEART)
-	vampheart.Restart()
+	vampheart?.Restart()
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.flash_protect = initial(eyes.flash_protect)
@@ -66,7 +66,7 @@
 
 	// Handle organs
 	var/obj/item/organ/heart/vampheart = user.get_organ_slot(ORGAN_SLOT_HEART)
-	vampheart.Stop()
+	vampheart?.Stop()
 	var/obj/item/organ/eyes/eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
 	if(eyes)
 		eyes.flash_protect = max(initial(eyes.flash_protect) - 1, FLASH_PROTECTION_SENSITIVE)

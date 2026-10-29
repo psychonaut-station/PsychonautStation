@@ -130,7 +130,9 @@
 
 /// NOTE: This can be any coffin that you are resting AND inside of.
 /obj/structure/closet/crate/coffin/proc/claim_coffin(mob/living/claimant, area/current_area)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = claimant.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = claimant.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(!bloodsuckerdatum)
+		return
 	// Successfully claimed?
 	if(bloodsuckerdatum.claim_coffin(src, current_area))
 		resident = claimant
@@ -142,11 +144,11 @@
 	STOP_PROCESSING(SSprocessing, src)
 	return ..()
 
-/obj/structure/closet/crate/coffin/process(mob/living/user)
+/obj/structure/closet/crate/coffin/process(seconds_per_tick)
 	. = ..()
 	if(!.)
 		return FALSE
-	if(user in src)
+	if(resident && (resident in src))
 		var/list/turf/area_turfs = get_area_turfs(get_area(src))
 		// Create Dirt etc.
 		var/turf/T_Dirty = pick(area_turfs)
@@ -205,7 +207,7 @@
 		return FALSE
 	// Only the User can put themself into Torpor. If already in it, you'll start to heal.
 	if(user in src)
-		var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+		var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 		if(!bloodsuckerdatum)
 			return FALSE
 		var/area/current_area = get_area(src)

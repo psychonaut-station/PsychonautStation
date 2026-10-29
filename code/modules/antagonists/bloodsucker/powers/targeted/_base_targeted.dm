@@ -32,6 +32,8 @@
 		to_chat(owner, span_announce("[prefire_message]"))
 
 	ActivatePower(trigger_flags)
+	if(!active)
+		return TRUE
 	if(!QDELETED(target))
 		return InterceptClickOn(owner, null, target)
 

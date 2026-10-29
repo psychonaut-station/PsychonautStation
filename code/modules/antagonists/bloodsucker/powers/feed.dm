@@ -56,7 +56,7 @@
 	if(!QDELETED(feed_target))
 		log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
 		to_chat(user, span_notice("You slowly release [feed_target]."))
-		if(feed_target.stat == DEAD && !started_alive)
+		if(feed_target.stat == DEAD && started_alive)
 			user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
 			bloodsuckerdatum_power.AddHumanityLost(10)
 
@@ -167,7 +167,7 @@
 		feed_strength_mult = 0.3
 	blood_taken += bloodsuckerdatum_power.handle_feeding(feed_target, feed_strength_mult, level_current)
 
-	if(feed_strength_mult > 5 && feed_target.stat < DEAD)
+	if(feed_strength_mult >= 1 && feed_target.stat < DEAD)
 		user.add_mood_event("drankblood", /datum/mood_event/drankblood)
 	// Drank mindless as Ventrue? - BAD
 	if(bloodsuckerdatum_power.my_clan?.blood_drink_type == BLOODSUCKER_DRINK_SNOBBY && QDELETED(feed_target.mind))
@@ -209,7 +209,7 @@
 	for(var/mob/living/near_targets in oview(1, owner))
 		if(!owner.Adjacent(near_targets))
 			continue
-		if(near_targets.stat)
+		if(near_targets.stat < DEAD)
 			close_living_mobs |= near_targets
 		else
 			close_dead_mobs |= near_targets

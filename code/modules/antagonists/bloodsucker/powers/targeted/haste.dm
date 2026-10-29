@@ -1,6 +1,17 @@
 /datum/actionspeed_modifier/bloodsucker_haste
-	variable = TRUE
 	id = "bloodsucker_haste"
+
+/datum/actionspeed_modifier/bloodsucker_haste/level_1
+	multiplicative_slowdown = -0.15
+
+/datum/actionspeed_modifier/bloodsucker_haste/level_2
+	multiplicative_slowdown = -0.30
+
+/datum/actionspeed_modifier/bloodsucker_haste/level_3
+	multiplicative_slowdown = -0.45
+
+/datum/actionspeed_modifier/bloodsucker_haste/level_4
+	multiplicative_slowdown = -0.60
 
 /datum/action/cooldown/bloodsucker/haste
 	name = "Immortal Haste"
@@ -71,7 +82,7 @@
 	if(user)
 		UnregisterSignal(user, COMSIG_ATOM_PRE_BULLET_ACT)
 		qdel(user.GetComponent(/datum/component/after_image))
-		user.remove_actionspeed_modifier("bloodsucker_haste")
+		user.remove_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_haste)
 		user.balloon_alert(user, "haste turned off.")
 
 	return ..()
@@ -95,8 +106,17 @@
 	if(!ismob(owner))
 		return
 	var/mob/living/user = owner
-	var/speed_mult = min(0.60, 0.15 + (level_current * 0.15))
-	user.add_or_update_variable_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_haste, TRUE, -speed_mult)
+	var/target_modifier
+	switch(level_current)
+		if(2)
+			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_2
+		if(3)
+			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_3
+		if(4 to INFINITY)
+			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_4
+		else
+			target_modifier = /datum/actionspeed_modifier/bloodsucker_haste/level_1
+	user.add_actionspeed_modifier(target_modifier)
 
 /datum/action/cooldown/bloodsucker/haste/proc/dodge_bullets(mob/living/source, obj/projectile/hitting_projectile, def_zone)
 	SIGNAL_HANDLER
@@ -104,7 +124,7 @@
 	if(source.stat != CONSCIOUS || source.incapacitated)
 		return NONE
 
-	var/dodge_chance = min(60, 15 + (level_current * 15))
+	var/dodge_chance = clamp(level_current * 15, 15, 60)
 	if(!prob(dodge_chance))
 		return NONE
 

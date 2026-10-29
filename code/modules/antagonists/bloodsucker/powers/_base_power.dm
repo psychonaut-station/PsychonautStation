@@ -60,6 +60,8 @@
 		build_all_button_icons(UPDATE_BUTTON_NAME)
 
 /datum/action/cooldown/bloodsucker/Destroy()
+	if(active)
+		DeactivatePower()
 	bloodsuckerdatum_power = null
 	return ..()
 
@@ -69,6 +71,11 @@
 /datum/action/cooldown/bloodsucker/Grant(mob/user)
 	. = ..()
 	find_bloodsucker_datum()
+
+/datum/action/cooldown/bloodsucker/Remove(mob/user)
+	if(active)
+		DeactivatePower()
+	return ..()
 
 //This is when we CLICK on the ability Icon, not USING.
 /datum/action/cooldown/bloodsucker/Trigger(trigger_flags, atom/target)
@@ -180,7 +187,7 @@
 	// Bloodsuckers in a Frenzy don't have enough Blood to pay it, so just don't.
 	if(bloodsuckerdatum_power.frenzied)
 		return
-	bloodsuckerdatum_power.bloodsucker_blood_volume -= bloodcost
+	bloodsuckerdatum_power.AddBloodVolume(-bloodcost)
 	bloodsuckerdatum_power.update_hud()
 
 /datum/action/cooldown/bloodsucker/proc/ActivatePower(trigger_flags)
@@ -194,12 +201,12 @@
 /datum/action/cooldown/bloodsucker/proc/DeactivatePower()
 	if(!active) //Already inactive? Return
 		return
+	active = FALSE
 	if(power_flags & BP_AM_TOGGLE)
 		STOP_PROCESSING(SSprocessing, src)
 	if(power_flags & BP_AM_SINGLEUSE)
 		remove_after_use()
 		return
-	active = FALSE
 	StartCooldown()
 	build_all_button_icons()
 

@@ -29,19 +29,25 @@
 	user.dna.copy_dna(old_dna)
 	randomize_human_normie(user)
 
+/datum/action/cooldown/bloodsucker/veil/Destroy()
+	QDEL_NULL(old_dna)
+	return ..()
+
 /datum/action/cooldown/bloodsucker/veil/DeactivatePower()
 	. = ..()
 	if(!ishuman(owner))
 		return
 	var/mob/living/carbon/human/user = owner
 
-	if(!QDELING(owner)) // Don't really need to do appearance stuff if we're being deleted
-		old_dna.copy_dna(user.dna)
-		user.updateappearance(mutcolor_update = TRUE)
-		user.domutcheck()
+	if(old_dna)
+		if(!QDELING(owner)) // Don't really need to do appearance stuff if we're being deleted
+			old_dna.copy_dna(user.dna)
+			user.updateappearance(mutcolor_update = TRUE)
+			user.domutcheck()
 
-	user.real_name = old_dna.real_name // Name is fine though
-	user.name = user.get_visible_name()
+		user.real_name = old_dna.real_name // Name is fine though
+		user.name = user.get_visible_name()
+		QDEL_NULL(old_dna)
 
 	cast_effect() // POOF
 	owner.balloon_alert(owner, "veil turned off.")

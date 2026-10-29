@@ -2,9 +2,9 @@
 	// ALREADY CLAIMED
 	if(claimed.resident)
 		if(claimed.resident == owner.current)
-			to_chat(owner, "This is your [src].")
+			to_chat(owner, "This is your [claimed].")
 		else
-			to_chat(owner, "This [src] has already been claimed by another.")
+			to_chat(owner, "This [claimed] has already been claimed by another.")
 		return FALSE
 	if(!(GLOB.the_station_areas.Find(current_area.type)))
 		claimed.balloon_alert(owner.current, "not part of station!")

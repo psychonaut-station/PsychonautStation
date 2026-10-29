@@ -111,9 +111,11 @@
 	/// TELEPORT: Move to Coffin & Close it!
 	user.set_resting(TRUE, TRUE, FALSE)
 	do_teleport(owner, bloodsuckerdatum_power.coffin, no_effects = TRUE, forced = TRUE, channel = TELEPORT_CHANNEL_QUANTUM)
-	bloodsuckerdatum_power.coffin.close(owner)
-	bloodsuckerdatum_power.coffin.take_contents()
-	playsound(bloodsuckerdatum_power.coffin.loc, bloodsuckerdatum_power.coffin.close_sound, vol = 15, vary = TRUE, extrarange = -3)
+	var/obj/structure/closet/crate/coffin/our_coffin = bloodsuckerdatum_power.coffin
+	if(!our_coffin.opened)
+		our_coffin.open()
+	our_coffin.close(owner)
+	playsound(our_coffin.loc, our_coffin.close_sound, vol = 15, vary = TRUE, extrarange = -3)
 
 	DeactivatePower()
 

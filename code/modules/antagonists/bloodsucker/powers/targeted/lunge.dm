@@ -202,7 +202,12 @@
 	var/knockdown_duration = 2 SECONDS + (level_current * 0.5 SECONDS)
 	target.Knockdown(knockdown_duration)
 
-	charger.start_pulling(target)
+	target.grabbedby(charger, supress_message = TRUE)
+	if(charger.pulling == target)
+		target.grippedby(charger, instant = TRUE)
+		if(charger.grab_state < GRAB_AGGRESSIVE)
+			charger.setGrabState(GRAB_AGGRESSIVE)
+			charger.set_pull_offsets(target, charger.grab_state)
 	if(iscarbon(target))
 		var/mob/living/carbon/carbon_target = target
 		var/effective_level = clamp(level_current, 1, 4)
@@ -258,8 +263,6 @@
 					carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, chosen_part, WOUND_SEVERITY_CRITICAL, wound_source = "bone-crushing predatory tackle")
 				else if(prob(30))
 					carbon_target.cause_wound_of_type_and_severity(WOUND_BLUNT, chosen_part, WOUND_SEVERITY_MODERATE, wound_source = "predatory joint wrench")
-
-	charger.start_pulling(target)
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/charge_end(datum/source)
 	SIGNAL_HANDLER

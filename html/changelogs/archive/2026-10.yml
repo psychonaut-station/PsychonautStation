@@ -366,23 +366,6 @@
   - bugfix: ghosts can stop orbiting by moving away after their orbit is transferred
       to another target.
   - bugfix: multiple sources of muffled speech now respect one another
-<<<<<<< HEAD
-2026-10-26:
-  JohnFulpWillard:
-  - qol: Action buttons with dynamic names (such as martial art swapping) now updates
-      their names without requiring you to unhover/rehover your mouse over it.
-  Melbert:
-  - bugfix: Build mode copy on humans no longer mangles the source terribly
-  SmArtKar:
-  - bugfix: Fixed Candela nodes not working from mining webbings
-  desertmote:
-  - balance: Makes MOD stealth module less strict about part requirements
-  - bugfix: Ceruleans can activate MOD stealth modules
-  lelandkemble:
-  - bugfix: fixed being unable to copy blast door controller ids
-  vinylspiders:
-=======
->>>>>>> bf6f771a1e221e06938978e36bbaf78543f85ebe
   - bugfix: handling tips for single-contributor bounty cubes now reach the scanner's
       bank account, and cargo receives the correct remaining value.
   - bugfix: holograms can no longer get stuck wobbling when you walk back through
@@ -391,8 +374,6 @@
       slots.
   - bugfix: stacks printed by autolathes and protolathes keep the correct material
       contents when printed in batches or merged with existing stacks.
-<<<<<<< HEAD
-=======
 2026-10-17:
   Fghj240:
   - bugfix: right clicking a powered door with powered crowbars no longer fails to
@@ -545,9 +526,30 @@
   vinylspiders:
   - bugfix: fixed a runtime when a cyborg or AI joined the round
 2026-10-26:
+  JohnFulpWillard:
+  - qol: Action buttons with dynamic names (such as martial art swapping) now updates
+      their names without requiring you to unhover/rehover your mouse over it.
+  Melbert:
+  - bugfix: Build mode copy on humans no longer mangles the source terribly
+  SmArtKar:
+  - bugfix: Fixed Candela nodes not working from mining webbings
   Swan:
   - bugfix: fixes crew manifest not showing the command chevron
   - bugfix: fixes security records console not displaying job icons
+  desertmote:
+  - balance: Makes MOD stealth module less strict about part requirements
+  - bugfix: Ceruleans can activate MOD stealth modules
+  lelandkemble:
+  - bugfix: fixed being unable to copy blast door controller ids
+  vinylspiders:
+  - bugfix: handling tips for single-contributor bounty cubes now reach the scanner's
+      bank account, and cargo receives the correct remaining value.
+  - bugfix: holograms can no longer get stuck wobbling when you walk back through
+      them just as their last glitch is fading
+  - bugfix: revolver crafting now transfers ammunition correctly past empty cylinder
+      slots.
+  - bugfix: stacks printed by autolathes and protolathes keep the correct material
+      contents when printed in batches or merged with existing stacks.
 2026-10-27:
   Absolucy:
   - bugfix: Fixed big manipulators trying to interact with underfloor pipes.
@@ -703,4 +705,3 @@
       be screwed shut, and trying to light one tells you to screw the tank shut first.
   - bugfix: camera coverage no longer breaks when looking down through glass at the
       bottom of a multilevel area
->>>>>>> bf6f771a1e221e06938978e36bbaf78543f85ebe

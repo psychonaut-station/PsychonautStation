@@ -155,6 +155,7 @@ GLOBAL_LIST_INIT(announcer_keys, list(
 	ANNOUNCER_SPANOMALIES,
 ))
 
+<<<<<<< HEAD
 /**
 # assoc list of datum by key
 * k = SFX_KEY (see below)
@@ -308,6 +309,8 @@ GLOBAL_LIST_EMPTY(sfx_datum_by_key)
 #define SFX_ALIEN_SPIT_ACID "alien_split_acid"
 #define SFX_HEAVY_DROP "heavy_drop"
 
+=======
+>>>>>>> bf6f771a1e221e06938978e36bbaf78543f85ebe
 // Standard is 44.1khz
 #define MIN_EMOTE_PITCH 40000
 #define MAX_EMOTE_PITCH 48000

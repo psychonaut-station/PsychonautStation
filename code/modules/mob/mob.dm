@@ -454,7 +454,7 @@ GAME_VERB_PROC(/mob, Cell, "Cell", "Admin")
 /// Returns null if the item isn't in any slots on our mob.
 /// Does not check if the passed item is null, which may result in unexpected outcoms.
 /mob/proc/get_slot_by_item(obj/item/looking_for)
-	if(looking_for in held_items)
+	if(is_holding(looking_for))
 		return ITEM_SLOT_HANDS
 
 	return null
@@ -896,7 +896,7 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
  * - cycle_dir: A cardinal (NORTH, SOUTH, EAST, WEST) direction. Defaults to WEST, which is forwards.
  * - climb: If TRUE, wrapping will also shift rows/columns.
  * - silent: If applicable and TRUE, will output messages to the mob.
- * - intial_index: The starting point for the iteration loop. Note that this hand is considered *last*.
+ * - initial_index: The starting point for the iteration loop. Note that this hand is considered *last*.
  */
 /mob/proc/cycle_hand(cycle_dir = WEST, climb = TRUE, silent = FALSE, initial_index = active_hand_index)
 	if(!(cycle_dir in GLOB.cardinals))
@@ -951,6 +951,9 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 /mob/proc/swap_hand(held_index, silent = FALSE)
 	SHOULD_NOT_OVERRIDE(TRUE) // Override perform_hand_swap instead
 
+	if(!held_items.len)
+		return FALSE
+
 	if(!isnum(held_index))
 		stack_trace("You passed [held_index] into swap_hand instead of a number. WTF man")
 		return FALSE
@@ -970,33 +973,17 @@ GAME_VERB_NATIVE(/mob, DisDblClick, ".dblclick", null, argu = null as anything, 
 /// Performs the actual ritual of swapping hands, such as setting the held index variables
 /mob/proc/perform_hand_swap(held_index)
 	PROTECTED_PROC(TRUE)
-	if (!HAS_TRAIT(src, TRAIT_CAN_HOLD_ITEMS))
-		return FALSE
 
 	var/previous_index = active_hand_index
 	active_hand_index = held_index
+
+	// update the previous handset
 	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, previous_index)
+	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, get_offhand_index(previous_index))
+	// update the current handset
 	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, held_index)
+	hud_used?.update_inventory_slot(ITEM_SLOT_HANDS, get_offhand_index(held_index))
 	return TRUE
-
-/mob/proc/activate_hand(selected_hand)
-	if (!HAS_TRAIT(src, TRAIT_CAN_HOLD_ITEMS))
-		return
-
-	if(!selected_hand)
-		selected_hand = active_hand_index
-	else if(istext(selected_hand))
-		selected_hand = LOWER_TEXT(selected_hand)
-		if(selected_hand == "right" || selected_hand == "r")
-			selected_hand = 2
-		if(selected_hand == "left" || selected_hand == "l")
-			selected_hand = 1
-
-	if(selected_hand != active_hand_index)
-		swap_hand(selected_hand)
-
-	// _queue_verb requires a client, so when we don't have it (AI controlled mob) we don't use it
-	client ? mode() : execute_mode()
 
 /mob/proc/assess_threat(judgement_criteria, lasercolor = "", datum/callback/weaponcheck=null) //For sec bot threat assessment
 	return 0

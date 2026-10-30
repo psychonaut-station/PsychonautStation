@@ -245,7 +245,7 @@
 	vary = TRUE
 	sounds_by_mobtype = list(
 		/mob/living/carbon/human = 'sound/mobs/humanoids/human/hiss/human_hiss.ogg',
-		/mob/living/carbon/alien = SFX_HISS,
+		/mob/living/carbon/alien = /datum/sound_effect/hiss,
 	)
 
 /datum/emote/living/carbon/sweatdrop

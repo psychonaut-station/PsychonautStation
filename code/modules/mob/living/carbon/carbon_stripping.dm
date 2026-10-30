@@ -127,6 +127,9 @@
 
 	return finish_unequip_mob(item, source, user)
 
+/datum/strippable_item/hand/should_show(mob/source, mob/user)
+	return astype(source)?.get_num_hand_slots() >= hand_index
+
 /datum/strippable_item/hand/get_alternate_actions(atom/source, mob/user, obj/item/item)
 	. = ..()
 	if (!isnull(get_cuffed_item_effect(source)))
@@ -137,7 +140,11 @@
 	if (isnull(effect))
 		return null
 
-	return list(STRIPPABLE_ALT_ACTION_REMOVE_ITEM_CUFFS = icon2base64(icon(effect.cuffed.icon, effect.cuffed.icon_state, frame = 1)))
+	return list(
+		STRIPPABLE_ALT_ACTION_REMOVE_ITEM_CUFFS = list(
+			"icon" = effect.cuffed.icon, "icon_state" = effect.cuffed.icon_state
+		)
+	)
 
 /datum/strippable_item/hand/perform_alternate_action(atom/source, mob/user, action_key, obj/item/item)
 	if (!..())
@@ -171,3 +178,11 @@
 /datum/strippable_item/hand/right
 	key = STRIPPABLE_ITEM_RHAND
 	hand_index = RIGHT_HANDS
+
+/datum/strippable_item/hand/upper_left
+	key = STRIPPABLE_ITEM_UPPER_LHAND
+	hand_index = LEFT_HANDS + 2
+
+/datum/strippable_item/hand/upper_right
+	key = STRIPPABLE_ITEM_UPPER_RHAND
+	hand_index = RIGHT_HANDS + 2

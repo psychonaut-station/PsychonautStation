@@ -528,23 +528,19 @@
 	anchored = FALSE
 	density = TRUE
 	can_buckle = TRUE
-	dir = SOUTH
 	ghost_desc = "This is a Bloodsucker throne, any Bloodsucker sitting on it can remotely speak to their Vassals by attempting to speak aloud."
 	vamp_desc = "This is a blood throne, sitting on it will allow you to telepathically speak to your vassals by simply speaking."
 	vassal_desc = "This is a blood throne, it allows your Master to telepathically speak to you and others like you."
 	var/mutable_appearance/armrest
-	COOLDOWN_DECLARE(throne_shock_cd)
 
 // Add rotating and armrest
 /obj/structure/bloodsucker/bloodthrone/Initialize(mapload)
-	AddElement(/datum/element/simple_rotation, ROTATION_IGNORE_ANCHORED|ROTATION_GHOSTS_ALLOWED)
+	AddElement(/datum/element/simple_rotation)
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
 	return ..()
 
 /obj/structure/bloodsucker/bloodthrone/Destroy()
-	for(var/mob/living/buckled_mob in buckled_mobs)
-		UnregisterSignal(buckled_mob, COMSIG_MOB_SAY)
 	QDEL_NULL(armrest)
 	return ..()
 
@@ -566,20 +562,18 @@
 	else
 		cut_overlay(armrest)
 
-/obj/structure/bloodsucker/bloodthrone/proc/handle_layer()
-	if(has_buckled_mobs() && dir == NORTH)
-		layer = ABOVE_MOB_LAYER
-	else
-		layer = OBJ_LAYER
-
 // Rotating
 /obj/structure/bloodsucker/bloodthrone/setDir(newdir)
 	. = ..()
-	handle_layer()
 	if(has_buckled_mobs())
 		for(var/m in buckled_mobs)
 			var/mob/living/buckled_mob = m
 			buckled_mob.setDir(newdir)
+
+	if(has_buckled_mobs() && dir == NORTH)
+		layer = ABOVE_MOB_LAYER
+	else
+		layer = OBJ_LAYER
 
 // Buckling
 /obj/structure/bloodsucker/bloodthrone/buckle_mob(mob/living/user, force = FALSE, check_loc = TRUE)
@@ -587,8 +581,6 @@
 		to_chat(user, span_announce("[src] is not bolted to the ground!"))
 		return
 	. = ..()
-	if(!.)
-		return FALSE
 	user.visible_message(
 		span_notice("[user] sits down on [src]."),
 		span_boldnotice("You sit down onto [src]."),
@@ -597,30 +589,22 @@
 		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		unbuckle_mob(user)
-		if(!COOLDOWN_FINISHED(src, throne_shock_cd))
-			to_chat(user, span_cult("The dark energy of the throne repels you!"))
-			return FALSE
-		COOLDOWN_START(src, throne_shock_cd, 10 SECONDS)
 		user.Paralyze(10 SECONDS)
 		to_chat(user, span_cult("The power of the blood throne overwhelms you!"))
 
 /obj/structure/bloodsucker/bloodthrone/post_buckle_mob(mob/living/target)
 	. = ..()
-	target.setDir(dir)
-	handle_layer()
 	update_armrest()
 	target.pixel_y += 2
 
 // Unbuckling
 /obj/structure/bloodsucker/bloodthrone/unbuckle_mob(mob/living/user, force = FALSE, can_fall = TRUE)
 	src.visible_message(span_danger("[user] unbuckles themselves from [src]."))
-	UnregisterSignal(user, COMSIG_MOB_SAY)
+	if(IS_BLOODSUCKER(user))
+		UnregisterSignal(user, COMSIG_MOB_SAY)
 	. = ..()
 
 /obj/structure/bloodsucker/bloodthrone/post_unbuckle_mob(mob/living/target)
-	. = ..()
-	handle_layer()
-	update_armrest()
 	target.pixel_y -= 2
 
 // The speech itself
@@ -631,8 +615,8 @@
 	var/mob/living/carbon/human/user = source
 	var/rendered = span_cult_large("<b>[user.real_name]:</b> [message]")
 	user.log_talk(message, LOG_SAY, tag=ROLE_BLOODSUCKER)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
-	for(var/datum/antagonist/vassal/receiver as anything in bloodsuckerdatum?.vassals)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	for(var/datum/antagonist/vassal/receiver as anything in bloodsuckerdatum.vassals)
 		var/mob/receiver_mob = receiver?.owner?.current
 		if(QDELETED(receiver_mob))
 			continue

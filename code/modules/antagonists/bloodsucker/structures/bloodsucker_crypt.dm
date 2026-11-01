@@ -272,7 +272,7 @@
 
 	if(IS_VASSAL(target))
 		var/datum/antagonist/vassal/vassaldatum = target.mind.has_antag_datum(/datum/antagonist/vassal)
-		if(!vassaldatum.master.broke_masquerade)
+		if(!vassaldatum.master?.broke_masquerade)
 			balloon_alert(user, "someone else's vassal!")
 			return FALSE
 
@@ -291,6 +291,9 @@
 		if(blood_draining)
 			balloon_alert(user, "already spilling blood!")
 			return
+		if(bloodsuckerdatum.bloodsucker_blood_volume < (TORTURE_BLOOD_HALF_COST * 2))
+			balloon_alert(user, "not enough blood!")
+			return FALSE
 		//We're torturing. Do not start another torture on this rack.
 		blood_draining = TRUE
 		balloon_alert(user, "spilling blood...")
@@ -305,29 +308,43 @@
 
 		// We're done? Let's see if they can be Vassal.
 		if(convert_progress)
+			blood_draining = FALSE
 			balloon_alert(user, "needs more persuasion...")
 			return
 
 		if(disloyalty_requires)
 			balloon_alert(user, "has external loyalties! more persuasion required!")
 		else
+			blood_draining = FALSE
 			balloon_alert(user, "ready for communion!")
 			return
 
 		if(!disloyalty_confirm && disloyalty_requires)
 			if(!do_disloyalty(user, target))
+				blood_draining = FALSE
 				return
 			if(!disloyalty_confirm)
 				balloon_alert(user, "refused persuasion!")
 				convert_progress++
 			else
 				balloon_alert(user, "ready for communion!")
+			blood_draining = FALSE
 			return
+		blood_draining = FALSE
 	//If they don't need any more torture, start converting them into a vassal!
 	else
+		if(disloyalty_requires && !disloyalty_confirm)
+			balloon_alert(user, "external loyalties must be broken first!")
+			return
+		if(bloodsuckerdatum.bloodsucker_blood_volume < TORTURE_CONVERSION_COST)
+			balloon_alert(user, "not enough blood!")
+			return
 		user.balloon_alert_to_viewers("smears blood...", "painting bloody marks...")
 		if(!do_after(user, 5 SECONDS, target))
 			balloon_alert(user, "interrupted!")
+			return
+		if(bloodsuckerdatum.bloodsucker_blood_volume < TORTURE_CONVERSION_COST)
+			balloon_alert(user, "not enough blood!")
 			return
 		// Convert to Vassal!
 		bloodsuckerdatum.AddBloodVolume(-TORTURE_CONVERSION_COST)
@@ -340,7 +357,7 @@
 	var/torture_time = 15
 	var/torture_dmg_brute = 2
 	var/torture_dmg_burn = 0
-	var/obj/item/bodypart/selected_bodypart = pick(target.bodyparts)
+	var/obj/item/bodypart/selected_bodypart = length(target.bodyparts) ? pick(target.bodyparts) : null
 	// Get Weapon
 	var/obj/item/held_item = user.get_inactive_held_item()
 	/// Weapon Bonus
@@ -371,13 +388,15 @@
 
 	if(held_item)
 		held_item.play_tool_sound(target)
+	var/target_part_name = selected_bodypart ? selected_bodypart.name : "body"
+	var/target_zone = selected_bodypart ? selected_bodypart.body_zone : BODY_ZONE_CHEST
 	target.visible_message(
-		span_danger("[user] performs a ritual, spilling some of [target]'s blood from their [selected_bodypart.name] and shaking them up!"),
-		span_userdanger("[user] performs a ritual, spilling some blood from your [selected_bodypart.name], shaking you up!"))
+		span_danger("[user] performs a ritual, spilling some of [target]'s blood from their [target_part_name] and shaking them up!"),
+		span_userdanger("[user] performs a ritual, spilling some blood from your [target_part_name], shaking you up!"))
 
 	INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "scream")
 	target.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
-	target.apply_damages(brute = torture_dmg_brute, burn = torture_dmg_burn, def_zone = selected_bodypart.body_zone)
+	target.apply_damages(brute = torture_dmg_brute, burn = torture_dmg_burn, def_zone = target_zone)
 	//Torture succeeded. You may torture again.
 	blood_draining = FALSE
 	return TRUE
@@ -509,19 +528,23 @@
 	anchored = FALSE
 	density = TRUE
 	can_buckle = TRUE
+	dir = SOUTH
 	ghost_desc = "This is a Bloodsucker throne, any Bloodsucker sitting on it can remotely speak to their Vassals by attempting to speak aloud."
 	vamp_desc = "This is a blood throne, sitting on it will allow you to telepathically speak to your vassals by simply speaking."
 	vassal_desc = "This is a blood throne, it allows your Master to telepathically speak to you and others like you."
 	var/mutable_appearance/armrest
+	COOLDOWN_DECLARE(throne_shock_cd)
 
 // Add rotating and armrest
 /obj/structure/bloodsucker/bloodthrone/Initialize(mapload)
-	AddElement(/datum/element/simple_rotation)
+	AddElement(/datum/element/simple_rotation, ROTATION_IGNORE_ANCHORED|ROTATION_GHOSTS_ALLOWED)
 	armrest = GetArmrest()
 	armrest.layer = ABOVE_MOB_LAYER
 	return ..()
 
 /obj/structure/bloodsucker/bloodthrone/Destroy()
+	for(var/mob/living/buckled_mob in buckled_mobs)
+		UnregisterSignal(buckled_mob, COMSIG_MOB_SAY)
 	QDEL_NULL(armrest)
 	return ..()
 
@@ -543,18 +566,20 @@
 	else
 		cut_overlay(armrest)
 
-// Rotating
-/obj/structure/bloodsucker/bloodthrone/setDir(newdir)
-	. = ..()
-	if(has_buckled_mobs())
-		for(var/m in buckled_mobs)
-			var/mob/living/buckled_mob = m
-			buckled_mob.setDir(newdir)
-
+/obj/structure/bloodsucker/bloodthrone/proc/handle_layer()
 	if(has_buckled_mobs() && dir == NORTH)
 		layer = ABOVE_MOB_LAYER
 	else
 		layer = OBJ_LAYER
+
+// Rotating
+/obj/structure/bloodsucker/bloodthrone/setDir(newdir)
+	. = ..()
+	handle_layer()
+	if(has_buckled_mobs())
+		for(var/m in buckled_mobs)
+			var/mob/living/buckled_mob = m
+			buckled_mob.setDir(newdir)
 
 // Buckling
 /obj/structure/bloodsucker/bloodthrone/buckle_mob(mob/living/user, force = FALSE, check_loc = TRUE)
@@ -562,6 +587,8 @@
 		to_chat(user, span_announce("[src] is not bolted to the ground!"))
 		return
 	. = ..()
+	if(!.)
+		return FALSE
 	user.visible_message(
 		span_notice("[user] sits down on [src]."),
 		span_boldnotice("You sit down onto [src]."),
@@ -570,22 +597,30 @@
 		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
 		unbuckle_mob(user)
+		if(!COOLDOWN_FINISHED(src, throne_shock_cd))
+			to_chat(user, span_cult("The dark energy of the throne repels you!"))
+			return FALSE
+		COOLDOWN_START(src, throne_shock_cd, 10 SECONDS)
 		user.Paralyze(10 SECONDS)
 		to_chat(user, span_cult("The power of the blood throne overwhelms you!"))
 
 /obj/structure/bloodsucker/bloodthrone/post_buckle_mob(mob/living/target)
 	. = ..()
+	target.setDir(dir)
+	handle_layer()
 	update_armrest()
 	target.pixel_y += 2
 
 // Unbuckling
 /obj/structure/bloodsucker/bloodthrone/unbuckle_mob(mob/living/user, force = FALSE, can_fall = TRUE)
 	src.visible_message(span_danger("[user] unbuckles themselves from [src]."))
-	if(IS_BLOODSUCKER(user))
-		UnregisterSignal(user, COMSIG_MOB_SAY)
+	UnregisterSignal(user, COMSIG_MOB_SAY)
 	. = ..()
 
 /obj/structure/bloodsucker/bloodthrone/post_unbuckle_mob(mob/living/target)
+	. = ..()
+	handle_layer()
+	update_armrest()
 	target.pixel_y -= 2
 
 // The speech itself
@@ -596,8 +631,8 @@
 	var/mob/living/carbon/human/user = source
 	var/rendered = span_cult_large("<b>[user.real_name]:</b> [message]")
 	user.log_talk(message, LOG_SAY, tag=ROLE_BLOODSUCKER)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
-	for(var/datum/antagonist/vassal/receiver as anything in bloodsuckerdatum.vassals)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	for(var/datum/antagonist/vassal/receiver as anything in bloodsuckerdatum?.vassals)
 		var/mob/receiver_mob = receiver?.owner?.current
 		if(QDELETED(receiver_mob))
 			continue

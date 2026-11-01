@@ -113,7 +113,7 @@
 	do_teleport(owner, bloodsuckerdatum_power.coffin, no_effects = TRUE, forced = TRUE, channel = TELEPORT_CHANNEL_QUANTUM)
 	var/obj/structure/closet/crate/coffin/our_coffin = bloodsuckerdatum_power.coffin
 	if(!our_coffin.opened)
-		our_coffin.open()
+		our_coffin.open(owner, force = TRUE)
 	our_coffin.close(owner)
 	playsound(our_coffin.loc, our_coffin.close_sound, vol = 15, vary = TRUE, extrarange = -3)
 

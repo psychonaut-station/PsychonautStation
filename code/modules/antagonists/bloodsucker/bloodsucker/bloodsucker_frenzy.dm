@@ -9,8 +9,10 @@
 
 /datum/martial_art/frenzygrab/grab_act(mob/living/user, mob/living/target)
 	if(user != target)
-		target.grabbedby(user)
-		target.grippedby(user, instant = TRUE)
+		if(user.pulling != target)
+			target.grabbedby(user)
+		if(user.pulling == target && user.grab_state < GRAB_AGGRESSIVE)
+			target.grippedby(user, instant = TRUE)
 		return TRUE
 	return ..()
 

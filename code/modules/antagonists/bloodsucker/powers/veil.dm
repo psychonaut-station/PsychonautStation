@@ -15,6 +15,9 @@
 	cooldown_time = 10 SECONDS
 	/// A reference to a COPY of the DNA of the mob prior to transformation.
 	var/datum/dna/old_dna
+	var/old_gender
+	var/old_physique
+	var/old_voice
 
 /datum/action/cooldown/bloodsucker/veil/ActivatePower(trigger_flags)
 	. = ..()
@@ -27,6 +30,9 @@
 	to_chat(owner, span_warning("You mystify the air around your person. Your identity is now altered."))
 	src.old_dna = new()
 	user.dna.copy_dna(old_dna)
+	old_gender = user.gender
+	old_physique = user.physique
+	old_voice = user.voice
 	randomize_human_normie(user)
 
 /datum/action/cooldown/bloodsucker/veil/Destroy()
@@ -41,6 +47,9 @@
 
 	if(old_dna)
 		if(!QDELING(owner)) // Don't really need to do appearance stuff if we're being deleted
+			user.gender = old_gender
+			user.physique = old_physique
+			user.voice = old_voice
 			old_dna.copy_dna(user.dna)
 			user.updateappearance(mutcolor_update = TRUE)
 			user.domutcheck()

@@ -79,6 +79,8 @@
 /datum/antagonist/bloodsucker/proc/HandleHealing(mult = 1)
 	if(QDELETED(owner?.current))
 		return
+	if(bloodsucker_blood_volume <= 0)
+		return FALSE
 	var/in_torpor = is_in_torpor()
 	// Don't heal if I'm staked or on Masquerade (+ not in a Coffin). Masqueraded Bloodsuckers in a Coffin however, will heal.
 	if(owner.current.am_staked())
@@ -225,7 +227,8 @@
 		owner.current.set_eye_blur_if_lower((8 - 8 * (bloodsucker_blood_volume / BLOOD_VOLUME_BAD))*2 SECONDS)
 
 	// The more blood, the better the Regeneration, get too low blood, and you enter Frenzy.
-	if(bloodsucker_blood_volume < (FRENZY_THRESHOLD_ENTER + (humanity_lost * 5)) && !frenzied && COOLDOWN_FINISHED(src, bloodsucker_frenzy_cooldown))
+	var/effective_enter_threshold = min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (min(humanity_lost, 10) * 5))
+	if(bloodsucker_blood_volume < effective_enter_threshold && !frenzied && COOLDOWN_FINISHED(src, bloodsucker_frenzy_cooldown))
 		owner.current.apply_status_effect(/datum/status_effect/frenzy)
 	else if(bloodsucker_blood_volume < BLOOD_VOLUME_BAD)
 		additional_regen = 0.1

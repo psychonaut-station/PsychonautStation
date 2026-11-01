@@ -81,6 +81,12 @@
 		owner.balloon_alert(owner, "[current_target] must be facing you.")
 		return FALSE
 
+	if(iscarbon(current_target) && level_current <= 2)
+		var/mob/living/carbon/carbon_target = current_target
+		if(carbon_target.is_eyes_covered())
+			owner.balloon_alert(owner, "[current_target]'s eyes are covered.")
+			return FALSE
+
 	// Gone through our checks, let's mark our guy.
 	target_ref = WEAKREF(current_target)
 	return TRUE
@@ -105,7 +111,7 @@
 		return
 
 	var/power_time = (9 SECONDS) + level_current * (1.5 SECONDS)
-	if(HAS_TRAIT_FROM(mesmerized_target, TRAIT_MUTE, MESMERIZED_TRAIT))
+	if(HAS_TRAIT_FROM(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZED_TRAIT))
 		owner.balloon_alert(owner, "[mesmerized_target] is already in a hypnotic gaze.")
 		return
 	if(iscarbon(mesmerized_target))

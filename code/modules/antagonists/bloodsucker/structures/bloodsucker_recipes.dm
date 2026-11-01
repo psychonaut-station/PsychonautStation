@@ -100,10 +100,10 @@
 	name = "Hardened Stake"
 	result = /obj/item/stake/hardened
 	tool_behaviors = list(TOOL_WELDER)
-	reqs = list(/obj/item/stack/rods = 1)
+	reqs = list(/obj/item/stake = 1)
 	time = 6 SECONDS
 	category = CAT_WEAPON_MELEE
-	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
 
 /datum/crafting_recipe/silver_stake
 	name = "Silver Stake"
@@ -115,7 +115,7 @@
 	)
 	time = 8 SECONDS
 	category = CAT_WEAPON_MELEE
-	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
 
 /datum/crafting_recipe/coffin
 	name = "Coffin"

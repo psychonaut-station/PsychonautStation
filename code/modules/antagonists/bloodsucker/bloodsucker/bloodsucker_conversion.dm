@@ -9,12 +9,14 @@
 	if(!target.mind || HAS_MIND_TRAIT(target, TRAIT_UNCONVERTABLE))
 		return VASSALIZATION_BANNED
 
+	var/has_other_antags = FALSE
 	for(var/datum/antagonist/antag_datum as anything in target.mind.antag_datums)
 		if(antag_datum.type in vassal_banned_antags)
 			return VASSALIZATION_BANNED
+		has_other_antags = TRUE
+	if(has_other_antags || HAS_TRAIT(target, TRAIT_MINDSHIELD))
 		return VASSALIZATION_DISLOYAL
-	if(HAS_TRAIT(target, TRAIT_MINDSHIELD))
-		return VASSALIZATION_DISLOYAL
+	return VASSALIZATION_ALLOWED
 
 
 /**

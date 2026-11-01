@@ -13,7 +13,7 @@
 	sol_multiplier = 5
 	cooldown_time = 9 SECONDS
 	target_range = 1
-	power_activates_immediately = TRUE
+	power_activates_immediately = FALSE
 	prefire_message = "Select a target."
 
 
@@ -101,7 +101,7 @@
 		span_warning("[owner] tears free of [pulled_mob]'s grasp!"),
 		span_warning("You shrug off [pulled_mob]'s grasp!"),
 	)
-	owner.pulledby = null // It's already done, but JUST IN CASE.
+	pulled_mob.stop_pulling()
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/targeted/brawn/FireTargetedPower(atom/target_atom)
@@ -111,7 +111,8 @@
 	if(isliving(target_atom))
 		var/mob/living/target = target_atom
 		var/mob/living/carbon/carbonuser = user
-		var/obj/item/bodypart/user_active_arm = iscarbon(user) ? carbonuser.get_active_hand() : null
+		var/which_arm = (carbonuser.active_hand_index == 2) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM
+		var/obj/item/bodypart/user_active_arm = iscarbon(user) ? carbonuser.get_bodypart(which_arm) : null
 		var/base_damage = user_active_arm?.unarmed_damage_high || 10
 		var/hitStrength = base_damage * 1.25 + 2
 		// Knockdown!
@@ -121,7 +122,7 @@
 				span_danger("[user] lands a vicious punch, sending [target] away!"), \
 				span_userdanger("[user] has landed a horrifying punch on you, sending you flying!"),
 			)
-			target.Knockdown(min(5, rand(10, 10 * powerlevel)))
+			target.Knockdown(rand(1.5 SECONDS, 1 SECONDS + (powerlevel * 0.5 SECONDS)))
 		// Attack!
 		owner.balloon_alert(owner, "you punch [target]!")
 		playsound(get_turf(target), 'sound/items/weapons/punch4.ogg', 60, 1, -1)
@@ -136,6 +137,7 @@
 		// Target Type: Cyborg (Also gets the effects above)
 		if(issilicon(target))
 			target.emp_act(EMP_HEAVY)
+		power_activated_sucessfully()
 	// Target Type: Locker
 	else if(istype(target_atom, /obj/structure/closet) && level_current >= 3)
 		var/obj/structure/closet/target_closet = target_atom
@@ -146,6 +148,7 @@
 		target_closet.visible_message(span_danger("[target_closet] breaks open as [user] bashes it!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, target_closet), 1)
 		playsound(get_turf(user), 'sound/effects/grillehit.ogg', 80, TRUE, -1)
+		power_activated_sucessfully()
 	// Target Type: Door
 	else if(istype(target_atom, /obj/machinery/door) && level_current >= 4)
 		var/obj/machinery/door/target_airlock = target_atom
@@ -160,6 +163,7 @@
 			user.do_attack_animation(target_airlock, ATTACK_EFFECT_SMASH)
 			playsound(get_turf(target_airlock), 'sound/effects/bang.ogg', 30, 1, -1)
 			target_airlock.open(2) // open(2) is like a crowbar or jaws of life.
+			power_activated_sucessfully()
 
 /datum/action/cooldown/bloodsucker/targeted/brawn/CheckValidTarget(atom/target_atom)
 	. = ..()
@@ -180,8 +184,14 @@
 		return TRUE
 	// Target Type: Door
 	else if(istype(target_atom, /obj/machinery/door))
+		if(level_current < 4)
+			owner.balloon_alert(owner, "not strong enough!")
+			return FALSE
 		return TRUE
 	// Target Type: Locker
 	else if(istype(target_atom, /obj/structure/closet))
+		if(level_current < 3)
+			owner.balloon_alert(owner, "not strong enough!")
+			return FALSE
 		return TRUE
 	return FALSE

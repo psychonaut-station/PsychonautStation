@@ -5,7 +5,7 @@
 	power_explanation = "Trespass:\n\
 		Dissolve your corporeal body into ethereal mist and surge forward across short distances, effortlessly slipping through doors, grilles, and physical barricades while solid walls remain impassable.\n\
 		With greater power and mastery, the ethereal transition becomes nearly silent and dramatically swifter."
-	power_flags = BP_AM_TOGGLE
+	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
 	bloodcost = 10
@@ -49,7 +49,7 @@
 			this_dir = get_dir(from_turf, final_turf) // Recalculate dir so we don't overshoot on a diagonal.
 		from_turf = get_step(from_turf, this_dir)
 		// ERROR! Wall!
-		if(iswallturf(from_turf))
+		if(!from_turf || iswallturf(from_turf) || from_turf.density || istype(from_turf, /turf/closed/mineral))
 			var/wallwarning = (i == 1) ? "in the way" : "at your destination"
 			owner.balloon_alert(owner, "wall [wallwarning]!")
 			return FALSE
@@ -64,6 +64,7 @@
 	// Find target turf, at or below Atom
 	var/mob/living/carbon/user = owner
 	var/turf/my_turf = get_turf(owner)
+	var/prev_density = user.density
 
 	user.visible_message(
 		span_warning("[user]'s form dissipates into a cloud of mist!"),
@@ -95,9 +96,10 @@
 	// Un-Hide & Freeze
 	user.dir = get_dir(my_turf, target_turf)
 	user.Stun(mist_delay / 2, ignore_canstun = TRUE)
-	user.density = 1
+	user.density = prev_density
 	user.invisibility = invis_was
 	// Effect Destination
 	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = 60, vary = TRUE)
 	puff = new(target_turf, 3, FALSE)
 	puff.start()
+	DeactivatePower()

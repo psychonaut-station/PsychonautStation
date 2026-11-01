@@ -9,7 +9,7 @@
 		As your rank increases, your resilience hardens further against physical trauma and exhausting blows, ultimately granting absolute immunity to stunning shocks."
 	power_flags = BP_AM_TOGGLE | BP_AM_COSTLESS_UNCONSCIOUS
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY
-	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
+	purchase_flags = BLOODSUCKER_CAN_BUY
 	bloodcost = 30
 	cooldown_time = 8 SECONDS
 	constant_bloodcost = 0.2
@@ -21,7 +21,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	for(var/datum/action/cooldown/bloodsucker/haste/haste_power in bloodsuckerdatum_power?.powers)
+	for(var/datum/action/cooldown/bloodsucker/haste/haste_power in owner.actions)
 		if(haste_power.active)
 			owner.balloon_alert(owner, "cannot use with haste!")
 			return FALSE

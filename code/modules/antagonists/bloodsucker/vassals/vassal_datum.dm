@@ -72,7 +72,7 @@
 	RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
 	/// Enslave them to their Master
-	if(!master || !istype(master, master))
+	if(!istype(master, /datum/antagonist/bloodsucker))
 		return
 	if(special_type)
 		if(!master.special_vassals[special_type])

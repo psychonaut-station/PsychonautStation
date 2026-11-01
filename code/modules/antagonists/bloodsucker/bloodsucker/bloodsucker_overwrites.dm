@@ -7,8 +7,8 @@
 /datum/reagent/blood/expose_mob(mob/living/exposed_mob, methods = TOUCH, reac_volume, show_message = TRUE, touch_protection = 0)
 	. = ..()
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = IS_BLOODSUCKER(exposed_mob)
-	if(bloodsuckerdatum)
-		bloodsuckerdatum.bloodsucker_blood_volume = min(bloodsuckerdatum.bloodsucker_blood_volume + round(reac_volume, 0.1), BLOOD_VOLUME_MAXIMUM)
+	if((methods & (INGEST | INJECT)) && bloodsuckerdatum)
+		bloodsuckerdatum.bloodsucker_blood_volume = min(bloodsuckerdatum.bloodsucker_blood_volume + round(reac_volume, 0.1), bloodsuckerdatum.max_blood_volume)
 
 /mob/living/transfer_blood_to(atom/movable/receiver, amount, ignore_low_blood = FALSE, ignore_incompatibility = FALSE, transfer_viruses = TRUE)
 	. = ..()
@@ -22,7 +22,7 @@
 	if(QDELETED(mind))
 		return ..()
 	if(IS_BLOODSUCKER(src) && HAS_TRAIT(src, TRAIT_MASQUERADE))
-		return
+		return list()
 	return ..()
 
 /datum/outfit/bloodsucker_outfit

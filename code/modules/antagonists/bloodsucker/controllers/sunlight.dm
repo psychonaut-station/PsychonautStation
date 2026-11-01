@@ -3,20 +3,20 @@
 ///Base time nighttime should be in for, until Sol rises.
 #define TIME_BLOODSUCKER_NIGHT 600
 ///Time left to send an alert to Bloodsuckers about an incoming Sol.
-#define TIME_BLOODSUCKER_DAY_WARN 90
+#define TIME_BLOODSUCKER_DAY_WARN 180
 ///Time left to send an urgent alert to Bloodsuckers about an incoming Sol.
-#define TIME_BLOODSUCKER_DAY_FINAL_WARN 30
+#define TIME_BLOODSUCKER_DAY_FINAL_WARN 60
 ///Time left to alert that Sol is rising.
 #define TIME_BLOODSUCKER_BURN_INTERVAL 5
 
 ///How much time Sol can be 'off' by, keeping the time inconsistent.
-#define TIME_BLOODSUCKER_SOL_DELAY 90
+#define TIME_BLOODSUCKER_SOL_DELAY 0
 
 SUBSYSTEM_DEF(sunlight)
 	name = "Sol"
 	can_fire = FALSE
-	wait = 2 SECONDS
-	ss_flags = SS_NO_INIT | SS_BACKGROUND | SS_TICKER
+	wait = 1 SECONDS
+	ss_flags = SS_NO_INIT | SS_BACKGROUND
 
 	///If the Sun is currently out our not.
 	var/sunlight_active = FALSE
@@ -30,7 +30,7 @@ SUBSYSTEM_DEF(sunlight)
 	if(sunlight_active)
 		if(time_til_cycle > 0)
 			SEND_SIGNAL(src, COMSIG_SOL_RISE_TICK)
-			if(!issued_XP && time_til_cycle <= 15)
+			if(!issued_XP && time_til_cycle <= (TIME_BLOODSUCKER_DAY / 2))
 				issued_XP = TRUE
 				SEND_SIGNAL(src, COMSIG_SOL_RANKUP_BLOODSUCKERS)
 		if(time_til_cycle <= 1)
@@ -38,7 +38,7 @@ SUBSYSTEM_DEF(sunlight)
 			issued_XP = FALSE
 			//randomize the next sol timer
 			time_til_cycle = round(rand((TIME_BLOODSUCKER_NIGHT-TIME_BLOODSUCKER_SOL_DELAY), (TIME_BLOODSUCKER_NIGHT+TIME_BLOODSUCKER_SOL_DELAY)), 1)
-			message_admins("BLOODSUCKER NOTICE: Daylight Ended. Resetting to Night (Lasts for [DisplayTimeText(time_til_cycle * (wait))])")
+			message_admins("BLOODSUCKER NOTICE: Daylight Ended. Resetting to Night (Lasts for [DisplayTimeText(time_til_cycle * 1 SECONDS)])")
 			SEND_SIGNAL(src, COMSIG_SOL_END)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ENDED,
@@ -52,14 +52,14 @@ SUBSYSTEM_DEF(sunlight)
 			SEND_SIGNAL(src, COMSIG_SOL_NEAR_START)
 			warn_daylight(
 				danger_level = DANGER_LEVEL_FIRST_WARNING,
-				vampire_warning_message = span_danger("Solar Flares will bombard the station with dangerous UV radiation in [DisplayTimeText(TIME_BLOODSUCKER_DAY_WARN * (wait))]. <b>Prepare to seek cover in a coffin or closet.</b>"),
+				vampire_warning_message = span_danger("Solar Flares will bombard the station with dangerous UV radiation in [DisplayTimeText(TIME_BLOODSUCKER_DAY_WARN * 1 SECONDS)]. <b>Prepare to seek cover in a coffin or closet.</b>"),
 			)
 		if(TIME_BLOODSUCKER_DAY_FINAL_WARN)
-			message_admins("BLOODSUCKER NOTICE: Daylight beginning in [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * (wait))].)")
+			message_admins("BLOODSUCKER NOTICE: Daylight beginning in [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * 1 SECONDS)].)")
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SECOND_WARNING,
-				vampire_warning_message = span_userdanger("Solar Flares are about to bombard the station! You have [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * (wait))] to find cover!"),
-				vassal_warning_message = span_danger("In [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * (wait))], your master will be at risk of a Solar Flare. Make sure they find cover!"),
+				vampire_warning_message = span_userdanger("Solar Flares are about to bombard the station! You have [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * 1 SECONDS)] to find cover!"),
+				vassal_warning_message = span_danger("In [DisplayTimeText(TIME_BLOODSUCKER_DAY_FINAL_WARN * 1 SECONDS)], your master will be at risk of a Solar Flare. Make sure they find cover!"),
 			)
 		if(TIME_BLOODSUCKER_BURN_INTERVAL)
 			warn_daylight(
@@ -70,10 +70,10 @@ SUBSYSTEM_DEF(sunlight)
 			sunlight_active = TRUE
 			//set the timer to countdown daytime now.
 			time_til_cycle = TIME_BLOODSUCKER_DAY
-			message_admins("BLOODSUCKER NOTICE: Daylight Beginning (Lasts for [DisplayTimeText(TIME_BLOODSUCKER_DAY * (wait))])")
+			message_admins("BLOODSUCKER NOTICE: Daylight Beginning (Lasts for [DisplayTimeText(TIME_BLOODSUCKER_DAY * 1 SECONDS)])")
 			warn_daylight(
 				danger_level = DANGER_LEVEL_SOL_ROSE,
-				vampire_warning_message = span_userdanger("Solar flares bombard the station with deadly UV light! Stay in cover for the next [DisplayTimeText(TIME_BLOODSUCKER_DAY * (wait))] or risk Final Death!"),
+				vampire_warning_message = span_userdanger("Solar flares bombard the station with deadly UV light! Stay in cover for the next [DisplayTimeText(TIME_BLOODSUCKER_DAY * 1 SECONDS)] or risk Final Death!"),
 				vassal_warning_message = span_userdanger("Solar flares bombard the station with UV light!"),
 			)
 

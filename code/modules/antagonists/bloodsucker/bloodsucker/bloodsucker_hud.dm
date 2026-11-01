@@ -42,6 +42,8 @@
 		valuecolor = "#FFDDDD"
 	else if(bloodsucker_blood_volume > BLOOD_VOLUME_BAD)
 		valuecolor = "#FFAAAA"
+	else
+		valuecolor = "#FF5555"
 
 	blood_display?.maptext = FORMAT_BLOODSUCKER_HUD_TEXT(valuecolor, bloodsucker_blood_volume)
 
@@ -53,18 +55,19 @@
 		vamprank_display.maptext = FORMAT_BLOODSUCKER_HUD_TEXT(valuecolor, bloodsucker_level)
 
 	if(sunlight_display)
+		var/time_seconds = SSsunlight.time_til_cycle
 		if(SSsunlight.sunlight_active)
 			valuecolor = "#FF5555"
 			sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_day"
 		else
-			switch(round(SSsunlight.time_til_cycle, 1))
+			switch(round(time_seconds, 1))
 				if(0 to 30)
 					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_30"
 					valuecolor = "#FFCCCC"
 				if(31 to 60)
 					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_60"
 					valuecolor = "#FFE6CC"
-				if(61 to 90)
+				if(61 to 180)
 					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_90"
 					valuecolor = "#FFFFCC"
 				else
@@ -72,7 +75,7 @@
 					valuecolor = "#FFFFFF"
 		sunlight_display.maptext = FORMAT_BLOODSUCKER_SUNLIGHT_TEXT( \
 			valuecolor, \
-			(SSsunlight.time_til_cycle >= 60) ? "[round(SSsunlight.time_til_cycle / 60, 1)] m" : "[round(SSsunlight.time_til_cycle, 1)] s" \
+			(time_seconds >= 60) ? "[round(time_seconds / 60, 0.1)] m" : "[round(time_seconds, 1)] s" \
 		)
 
 /// 1 tile down

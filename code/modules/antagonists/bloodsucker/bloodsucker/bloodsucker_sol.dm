@@ -17,6 +17,9 @@
 	if(!length(existing_suckers))
 		message_admins("Sol has been deleted due to the lack of Bloodsuckers")
 		SSsunlight.can_fire = FALSE
+		if(SSsunlight.sunlight_active)
+			SSsunlight.sunlight_active = FALSE
+			SEND_SIGNAL(SSsunlight, COMSIG_SOL_END)
 
 ///Ranks the Bloodsucker up, called by Sol.
 /datum/antagonist/bloodsucker/proc/sol_rank_up(atom/source)
@@ -43,6 +46,8 @@
 	INVOKE_ASYNC(src, PROC_REF(handle_sol_effects))
 
 /datum/antagonist/bloodsucker/proc/handle_sol_effects()
+	if(!SSsunlight.sunlight_active)
+		return
 	if(!owner?.current)
 		return
 	var/mob/living/carbon/user = owner.current
@@ -176,7 +181,7 @@
 		if(total_damage <= 10)
 			torpor_end()
 	else
-		if(total_brute <= 10)
+		if(total_damage <= 10 || (total_brute <= 10 && user.stat != DEAD && user.health > HEALTH_THRESHOLD_DEAD))
 			torpor_end()
 
 /datum/antagonist/bloodsucker/proc/is_in_torpor()

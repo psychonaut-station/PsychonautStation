@@ -23,7 +23,7 @@
 
 	// FLAGS //
 	/// The effects on this Power (Toggled/Single Use/Static Cooldown)
-	var/power_flags = BP_AM_TOGGLE|BP_AM_SINGLEUSE|BP_AM_STATIC_COOLDOWN|BP_AM_COSTLESS_UNCONSCIOUS
+	var/power_flags = BP_AM_TOGGLE|BP_AM_STATIC_COOLDOWN|BP_AM_COSTLESS_UNCONSCIOUS
 	/// Requirement flags for checks
 	check_flags = BP_CANT_USE_IN_TORPOR|BP_CANT_USE_IN_FRENZY|BP_CANT_USE_WHILE_STAKED|BP_CANT_USE_WHILE_INCAPACITATED|BP_CANT_USE_WHILE_UNCONSCIOUS
 	/// Who can purchase the Power
@@ -213,12 +213,12 @@
 /datum/action/cooldown/bloodsucker/proc/DeactivatePower()
 	if(!active) //Already inactive? Return
 		return
+	active = FALSE
 	if(power_flags & BP_AM_TOGGLE)
 		STOP_PROCESSING(SSprocessing, src)
 	if(power_flags & BP_AM_SINGLEUSE)
 		remove_after_use()
 		return
-	active = FALSE
 	StartCooldown()
 	build_all_button_icons()
 

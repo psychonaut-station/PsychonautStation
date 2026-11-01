@@ -29,11 +29,11 @@
 		returnIcon = "[icon2html('icons/bloodsuckers/vampiric.dmi', world, "vassal_grey")]"
 	// Are you serving the same master as I am?
 	else if(viewer.mind.has_antag_datum(/datum/antagonist/vassal) in master.vassals)
-		returnString += "[p_they(TRUE)] bears the mark of your Master"
+		returnString += "[owner.current.p_they(TRUE)] bears the mark of your Master"
 		returnIcon = "[icon2html('icons/bloodsuckers/vampiric.dmi', world, "vassal")]"
 	// You serve a different Master than I do.
 	else
-		returnString += "[p_they(TRUE)] bears the mark of another Bloodsucker"
+		returnString += "[owner.current.p_they(TRUE)] bears the mark of another Bloodsucker"
 		returnIcon = "[icon2html('icons/bloodsuckers/vampiric.dmi', world, "vassal_grey")]"
 
 	returnString += "</span>\]" // \n"  Don't need spacers. Using . += "" in examine.dm does this on its own.
@@ -67,6 +67,6 @@
 	vassaldatum.silent = FALSE
 
 	//send alerts of completion
-	to_chat(master, span_danger("You have turned [vassal_owner.current] into your [vassaldatum.name]! They will no longer be deconverted upon Mindshielding!"))
+	to_chat(master.owner, span_danger("You have turned [vassal_owner.current] into your [vassaldatum.name]! They will no longer be deconverted upon Mindshielding!"))
 	to_chat(vassal_owner, span_notice("As Blood drips over your body, you feel closer to your Master... You are now the Favorite Vassal!"))
 	vassal_owner.current.playsound_local(null, 'sound/effects/magic/mutate.ogg', vol = 75, vary = FALSE, pressure_affected = FALSE)

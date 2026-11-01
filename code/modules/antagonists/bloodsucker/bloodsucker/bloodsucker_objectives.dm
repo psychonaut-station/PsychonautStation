@@ -33,7 +33,7 @@
 /datum/objective/bloodsucker/proc/get_vassal_occupations()
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner.has_antag_datum(/datum/antagonist/bloodsucker)
 	if(!length(bloodsuckerdatum?.vassals))
-		return FALSE
+		return list()
 	var/list/all_vassal_jobs = list()
 	var/vassal_job
 	for(var/datum/antagonist/vassal/bloodsucker_vassals in bloodsuckerdatum.vassals)
@@ -212,7 +212,7 @@
 
 // WIN CONDITIONS?
 /datum/objective/bloodsucker/gourmand/check_completion()
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner.current.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner.has_antag_datum(/datum/antagonist/bloodsucker)
 	if(!bloodsuckerdatum)
 		return FALSE
 	var/stolen_blood = bloodsuckerdatum.total_blood_drank
@@ -237,5 +237,6 @@
 // WIN CONDITIONS?
 /datum/objective/bloodsucker/vassal/check_completion()
 	var/datum/antagonist/vassal/antag_datum = owner.has_antag_datum(/datum/antagonist/vassal)
-	return antag_datum.master?.owner?.current?.stat != DEAD
+	var/mob/living/master_mob = antag_datum?.master?.owner?.current
+	return master_mob && master_mob.stat != DEAD
 

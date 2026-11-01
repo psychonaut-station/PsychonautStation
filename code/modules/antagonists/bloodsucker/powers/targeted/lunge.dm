@@ -221,7 +221,11 @@
 				bloodsuckerdatum_power.AddBloodVolume(blood_taken)
 			else
 				var/datum/antagonist/bloodsucker/vamp = charger.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
-				vamp?.AddBloodVolume(blood_taken)
+				if(vamp)
+					vamp.AddBloodVolume(blood_taken)
+				else if(iscarbon(charger))
+					var/mob/living/carbon/carbon_charger = charger
+					carbon_charger.blood_volume = min(BLOOD_VOLUME_MAXIMUM, carbon_charger.blood_volume + blood_taken)
 			charger.balloon_alert(charger, "+[blood_taken] blood")
 			playsound(get_turf(target), 'sound/items/weapons/bite.ogg', 60, TRUE)
 

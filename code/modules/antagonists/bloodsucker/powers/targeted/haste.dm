@@ -24,7 +24,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	for(var/datum/action/cooldown/bloodsucker/fortitude/fortitude_power in bloodsuckerdatum_power?.powers)
+	for(var/datum/action/cooldown/bloodsucker/fortitude/fortitude_power in owner.actions)
 		if(fortitude_power.active)
 			owner.balloon_alert(owner, "cannot use with fortitude!")
 			return FALSE

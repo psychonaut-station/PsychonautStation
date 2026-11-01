@@ -10,7 +10,7 @@
 		return
 
 	if(victim != attacker)
-		if(!do_after(victim, 5 SECONDS, attacker))
+		if(!do_after(attacker, 5 SECONDS, victim))
 			return
 		attacker.visible_message(
 			span_notice("[attacker] forces [victim] to drink from the [src]."),
@@ -31,6 +31,8 @@
 #undef BLOODBAG_GULP_SIZE
 
 /obj/item/reagent_containers/blood/proc/can_drink(mob/living/victim, mob/living/attacker)
+	if(!(src in victim.held_items) && !(src in attacker.held_items) && !victim.Adjacent(src))
+		return FALSE
 	if(!canconsume(victim, attacker))
 		return FALSE
 	if(!reagents || !reagents.total_volume)
@@ -138,8 +140,9 @@
 		span_danger("You drive the [src] into [target]'s chest!"),
 	)
 	playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
-	if(force_embed(target, target.get_bodypart(BODY_ZONE_CHEST) || BODY_ZONE_CHEST)) //and if it embeds successfully in their chest, cause a lot of pain
-		target.apply_damage(max(10, force * 1.2), BRUTE, BODY_ZONE_CHEST, wound_bonus = 0, sharpness = TRUE)
+	if(!force_embed(target, target.get_bodypart(BODY_ZONE_CHEST) || BODY_ZONE_CHEST))
+		return
+	target.apply_damage(max(10, force * 1.2), BRUTE, BODY_ZONE_CHEST, wound_bonus = 0, sharpness = TRUE)
 	if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
 		return
 	if(!target.mind)

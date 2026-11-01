@@ -152,7 +152,7 @@
 		var/list/turf/area_turfs = get_area_turfs(get_area(src))
 		// Create Dirt etc.
 		var/turf/T_Dirty = pick(area_turfs)
-		if(T_Dirty && !T_Dirty.density)
+		if(T_Dirty && !T_Dirty.density && prob(20) && !(locate(/obj/effect/decal/cleanable) in T_Dirty))
 			// Default: Dirt
 			// STEP ONE: COBWEBS
 			// CHECK: Wall to North?
@@ -178,9 +178,12 @@
 	if(bloodsuckerdatum && bloodsuckerdatum.coffin == src)
 		bloodsuckerdatum.coffin = null
 		bloodsuckerdatum.bloodsucker_lair_area = null
-	for(var/obj/structure/bloodsucker/bloodsucker_structure in get_area(src))
-		if(bloodsucker_structure.owner == resident)
-			bloodsucker_structure.unbolt()
+	var/area/coffin_area = get_area(src)
+	if(coffin_area)
+		for(var/turf/T in coffin_area)
+			for(var/obj/structure/bloodsucker/bloodsucker_structure in T)
+				if(bloodsucker_structure.owner == resident)
+					bloodsucker_structure.unbolt()
 	if(manual)
 		to_chat(resident, span_cult_italic("You have unclaimed your coffin! This also unclaims all your other Bloodsucker structures!"))
 	else

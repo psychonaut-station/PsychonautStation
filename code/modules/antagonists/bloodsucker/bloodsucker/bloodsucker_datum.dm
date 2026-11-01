@@ -97,6 +97,7 @@
 		TRAIT_VIRUSIMMUNE,
 		TRAIT_TOXIMMUNE,
 		TRAIT_NO_MIRROR_REFLECTION,
+		TRAIT_DEFIB_BLACKLISTED,
 	)
 	/// Traits applied during Torpor.
 	var/static/list/torpor_traits = list(
@@ -248,9 +249,7 @@
 	var/old_right_arm_unarmed_damage_high
 	if(old_body && ishuman(old_body))
 		var/mob/living/carbon/human/old_user = old_body
-		var/datum/species/old_species = old_user.dna?.species
-		if(old_species)
-			old_species.inherent_traits -= TRAIT_DRINKS_BLOOD
+		REMOVE_TRAIT(old_user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
 		var/obj/item/bodypart/old_left_arm = old_body.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/old_right_arm = old_body.get_bodypart(BODY_ZONE_R_ARM)
 		if(old_left_arm)
@@ -265,9 +264,7 @@
 			old_right_arm.unarmed_damage_high = initial(old_right_arm.unarmed_damage_high)
 	if(new_body && ishuman(new_body))
 		var/mob/living/carbon/human/new_user = new_body
-		var/datum/species/new_species = new_user.dna?.species
-		if(new_species)
-			new_species.inherent_traits += TRAIT_DRINKS_BLOOD
+		ADD_TRAIT(new_user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
 		var/obj/item/bodypart/new_left_arm = new_body.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/new_right_arm = new_body.get_bodypart(BODY_ZONE_R_ARM)
 		if(new_left_arm && old_left_arm_unarmed_damage_low)
@@ -420,15 +417,16 @@
 	//Traits: Species
 	var/mob/living/carbon/human/user = owner.current
 	if(ishuman(owner.current))
-		var/datum/species/user_species = user.dna.species
 		var/obj/item/bodypart/user_left_arm = user.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/user_right_arm = user.get_bodypart(BODY_ZONE_R_ARM)
-		user_species.inherent_traits += TRAIT_DRINKS_BLOOD
+		ADD_TRAIT(user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
 		user.dna?.remove_all_mutations()
-		user_left_arm.unarmed_damage_low += 1 //lowest possible punch damage - 0
-		user_left_arm.unarmed_damage_high += 1 //highest possible punch damage - 9
-		user_right_arm.unarmed_damage_low += 1 //lowest possible punch damage - 0
-		user_right_arm.unarmed_damage_high += 1 //highest possible punch damage - 9
+		if(user_left_arm)
+			user_left_arm.unarmed_damage_low += 1 //lowest possible punch damage - 0
+			user_left_arm.unarmed_damage_high += 1 //highest possible punch damage - 9
+		if(user_right_arm)
+			user_right_arm.unarmed_damage_low += 1 //lowest possible punch damage - 0
+			user_right_arm.unarmed_damage_high += 1 //highest possible punch damage - 9
 	//Give Bloodsucker Traits
 	owner.current.add_traits(bloodsucker_traits, BLOODSUCKER_TRAIT)
 	//Clear Addictions
@@ -464,8 +462,7 @@
 	/// Stats
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/user = owner.current
-		var/datum/species/user_species = user.dna.species
-		user_species.inherent_traits -= TRAIT_DRINKS_BLOOD
+		REMOVE_TRAIT(user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
 	// Remove all bloodsucker traits
 	owner.current.remove_traits(bloodsucker_traits, BLOODSUCKER_TRAIT)
 	// Update Health

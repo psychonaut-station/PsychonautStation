@@ -31,7 +31,7 @@
 #undef BLOODBAG_GULP_SIZE
 
 /obj/item/reagent_containers/blood/proc/can_drink(mob/living/victim, mob/living/attacker)
-	if(!(src in victim.held_items) && !(src in attacker.held_items) && !victim.Adjacent(src))
+	if(!victim.is_holding(src) && !attacker.is_holding(src) && !victim.Adjacent(src))
 		return FALSE
 	if(!canconsume(victim, attacker))
 		return FALSE

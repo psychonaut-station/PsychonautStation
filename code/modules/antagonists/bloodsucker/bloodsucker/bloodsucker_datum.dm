@@ -13,7 +13,7 @@
 	preview_outfit = /datum/outfit/bloodsucker_outfit
 	/// How much blood we have, starting off at default blood levels.
 	var/bloodsucker_blood_volume = BLOOD_VOLUME_NORMAL
-	/// How much blood we can have at once, increases per level.
+	/// How much blood we can have at once, increases per clan rank.
 	var/max_blood_volume = 600
 
 	var/datum/bloodsucker_clan/my_clan
@@ -54,7 +54,7 @@
 	///Vassals under my control. Periodically remove the dead ones.
 	var/list/datum/antagonist/vassal/vassals = list()
 	///Special vassals I own, to not have double of the same type.
-	var/list/datum/antagonist/vassal/special_vassals = list()
+	var/list/special_vassals = list()
 
 	var/bloodsucker_level = 0
 	var/bloodsucker_level_unspent = 1
@@ -212,7 +212,8 @@
 	RegisterSignal(SSsunlight, COMSIG_SOL_RISE_TICK, PROC_REF(handle_sol))
 	RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
 
-	if(IS_FAVORITE_VASSAL(owner.current)) // Vassals shouldnt be getting the same benefits as Bloodsuckers.
+	// A Favorite Vassal that an admin also grants the Bloodsucker datum must not get both sets of benefits.
+	if(IS_FAVORITE_VASSAL(owner.current))
 		bloodsucker_level_unspent = 0
 		show_in_roundend = FALSE
 	else
@@ -267,10 +268,10 @@
 		ADD_TRAIT(new_user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
 		var/obj/item/bodypart/new_left_arm = new_body.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/new_right_arm = new_body.get_bodypart(BODY_ZONE_R_ARM)
-		if(new_left_arm && old_left_arm_unarmed_damage_low)
+		if(new_left_arm && !isnull(old_left_arm_unarmed_damage_low))
 			new_left_arm.unarmed_damage_low = old_left_arm_unarmed_damage_low
 			new_left_arm.unarmed_damage_high = old_left_arm_unarmed_damage_high
-		if(new_right_arm && old_right_arm_unarmed_damage_low)
+		if(new_right_arm && !isnull(old_right_arm_unarmed_damage_low))
 			new_right_arm.unarmed_damage_low = old_right_arm_unarmed_damage_low
 			new_right_arm.unarmed_damage_high = old_right_arm_unarmed_damage_high
 
@@ -361,7 +362,7 @@
 		if("join_clan")
 			if(my_clan)
 				return
-			assign_clan_and_bane()
+			assign_clan()
 			ui.send_full_update(force = TRUE)
 			return TRUE
 
@@ -415,8 +416,8 @@
 
 /datum/antagonist/bloodsucker/proc/assign_starting_stats()
 	//Traits: Species
-	var/mob/living/carbon/human/user = owner.current
 	if(ishuman(owner.current))
+		var/mob/living/carbon/human/user = owner.current
 		var/obj/item/bodypart/user_left_arm = user.get_bodypart(BODY_ZONE_L_ARM)
 		var/obj/item/bodypart/user_right_arm = user.get_bodypart(BODY_ZONE_R_ARM)
 		ADD_TRAIT(user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
@@ -470,16 +471,15 @@
 	// Language
 	owner.current.remove_language(/datum/language/vampiric)
 	// Heart & Eyes
-	var/mob/living/carbon/user = owner.current
 	var/obj/item/organ/heart/newheart = owner.current.get_organ_slot(ORGAN_SLOT_HEART)
 	if(newheart)
 		newheart.Restart()
-	var/obj/item/organ/eyes/user_eyes = user.get_organ_slot(ORGAN_SLOT_EYES)
+	var/obj/item/organ/eyes/user_eyes = owner.current.get_organ_slot(ORGAN_SLOT_EYES)
 	if(user_eyes)
 		user_eyes.flash_protect = initial(user_eyes.flash_protect)
 		user_eyes.color_cutoffs = initial(user_eyes.color_cutoffs)
 		user_eyes.remove_organ_trait(TRAIT_THERMAL_VISION)
-	user.update_sight()
+	owner.current.update_sight()
 
 /// Name shown on antag list
 /datum/antagonist/bloodsucker/antag_listing_name()

@@ -28,8 +28,11 @@
 	var/silent_feed = TRUE
 
 /datum/action/cooldown/bloodsucker/feed/can_use(mob/living/carbon/user, trigger_flags)
+	find_bloodsucker_datum()
 	. = ..()
 	if(!.)
+		return FALSE
+	if(!bloodsuckerdatum_power) //only Bloodsuckers can feed; the power can be admin-granted to others
 		return FALSE
 	if(target_ref) //already sucking blood.
 		return FALSE
@@ -58,7 +61,7 @@
 		to_chat(user, span_notice("You slowly release [feed_target]."))
 		if(feed_target.stat == DEAD && started_alive)
 			user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
-			bloodsuckerdatum_power.AddHumanityLost(10)
+			bloodsuckerdatum_power?.AddHumanityLost(10)
 
 	target_ref = null
 	started_alive = TRUE
@@ -69,13 +72,14 @@
 	return ..()
 
 /datum/action/cooldown/bloodsucker/feed/ActivatePower(trigger_flags)
+	if(!bloodsuckerdatum_power)
+		return FALSE
 	var/mob/living/feed_target = target_ref.resolve()
 	if(istype(feed_target, /mob/living/basic/mouse))
 		to_chat(owner, span_notice("You recoil at the taste of a lesser lifeform."))
-		if(bloodsuckerdatum_power.my_clan && bloodsuckerdatum_power.my_clan.blood_drink_type != BLOODSUCKER_DRINK_INHUMANELY)
-			var/mob/living/user = owner
-			user.add_mood_event("drankblood", /datum/mood_event/drankblood_bad)
-			bloodsuckerdatum_power.AddHumanityLost(1)
+		var/mob/living/user = owner
+		user.add_mood_event("drankblood", /datum/mood_event/drankblood_bad)
+		bloodsuckerdatum_power.AddHumanityLost(1)
 		bloodsuckerdatum_power.AddBloodVolume(25)
 		DeactivatePower()
 		feed_target.death()
@@ -130,6 +134,9 @@
 /datum/action/cooldown/bloodsucker/feed/process(seconds_per_tick)
 	if(!active) //If we aren't active (running on SSfastprocess)
 		return ..() //Manage our cooldown timers
+	if(!bloodsuckerdatum_power) //lost our Bloodsucker datum mid-feed (admin removal, body swap, etc.)
+		DeactivatePower()
+		return PROCESS_KILL
 	var/mob/living/user = owner
 	var/mob/living/feed_target = target_ref?.resolve()
 	if(QDELETED(feed_target))
@@ -169,9 +176,6 @@
 
 	if(feed_strength_mult >= 1 && feed_target.stat < DEAD)
 		user.add_mood_event("drankblood", /datum/mood_event/drankblood)
-	// Drank mindless as Ventrue? - BAD
-	if(bloodsuckerdatum_power.my_clan?.blood_drink_type == BLOODSUCKER_DRINK_SNOBBY && QDELETED(feed_target.mind))
-		user.add_mood_event("drankblood", /datum/mood_event/drankblood_bad)
 	if(feed_target.stat >= DEAD && !started_alive)
 		user.add_mood_event("drankblood", /datum/mood_event/drankblood_dead)
 
@@ -228,10 +232,6 @@
 
 /datum/action/cooldown/bloodsucker/feed/proc/can_feed_from(mob/living/target, give_warnings = FALSE)
 	if(istype(target, /mob/living/basic/mouse))
-		if(bloodsuckerdatum_power.my_clan?.blood_drink_type == BLOODSUCKER_DRINK_SNOBBY)
-			if(give_warnings)
-				owner.balloon_alert(owner, "too disgusting!")
-			return FALSE
 		return TRUE
 	//Mice check done, only humans are otherwise allowed
 	if(!ishuman(target))
@@ -246,15 +246,11 @@
 		if(give_warnings)
 			owner.balloon_alert(owner, "suit too thick!")
 		return FALSE
-	if(bloodsuckerdatum_power.my_clan?.blood_drink_type == BLOODSUCKER_DRINK_SNOBBY && QDELETED(target_user.mind) && !bloodsuckerdatum_power.frenzied)
-		if(give_warnings)
-			owner.balloon_alert(owner, "cant drink from mindless!")
-		return FALSE
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/feed/StartCooldown()
-	cooldown_time = max(3 SECONDS, initial(cooldown_time) - (level_current * 2 SECONDS))
-	return ..()
+	var/feed_cooldown = max(3 SECONDS, initial(cooldown_time) - (level_current * 2 SECONDS))
+	return ..(feed_cooldown)
 
 #undef FEED_NOTICE_RANGE
 #undef FEED_DEFAULT_TIMER

@@ -95,7 +95,9 @@
 	. = ..()
 
 	var/mob/living/user = owner
-	var/mob/living/carbon/mesmerized_target = target_ref.resolve()
+	var/mob/living/mesmerized_target = target_ref.resolve()
+	if(QDELETED(mesmerized_target))
+		return
 
 	if(issilicon(mesmerized_target))
 		var/mob/living/silicon/mesmerized = mesmerized_target
@@ -104,7 +106,7 @@
 		power_activated_sucessfully() // PAY COST! BEGIN COOLDOWN!
 		return
 
-	if(istype(mesmerized_target))
+	if(mesmerized_target)
 		owner.balloon_alert(owner, "attempting to hypnotically gaze [mesmerized_target]...")
 
 	if(!do_after(user, 4 SECONDS, mesmerized_target, NONE, TRUE, extra_checks = CALLBACK(src, PROC_REF(ContinueActive), user, mesmerized_target)))

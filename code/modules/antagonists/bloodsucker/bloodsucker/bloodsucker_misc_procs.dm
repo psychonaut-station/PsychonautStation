@@ -42,6 +42,8 @@
 		return
 	to_chat(owner.current, span_cult_bold_italic("You have re-entered the Masquerade."))
 	broke_masquerade = FALSE
+	antag_hud_name = "bloodsucker"
+	add_team_hud(owner.current)
 
 /datum/antagonist/bloodsucker/proc/give_masquerade_infraction()
 	if(broke_masquerade)
@@ -67,7 +69,7 @@
 	bloodsucker_level_unspent--
 
 /datum/antagonist/bloodsucker/proc/remove_nondefault_powers(return_levels = FALSE)
-	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
+	for(var/datum/action/cooldown/bloodsucker/power as anything in powers.Copy())
 		if(power.purchase_flags & BLOODSUCKER_DEFAULT_POWER)
 			continue
 		RemovePower(power)
@@ -117,6 +119,10 @@
 	if(length(bought_powers) >= bloodsucker_level)
 		var/datum/action/cooldown/bloodsucker/latest_power = bought_powers[length(bought_powers)]
 		RemovePower(latest_power)
+
+	var/list/favorite_vassals = special_vassals?[FAVORITE_VASSAL]
+	for(var/datum/antagonist/vassal/favorite/fav_vassal as anything in favorite_vassals)
+		fav_vassal.set_vassal_level()
 
 	update_hud()
 	return TRUE

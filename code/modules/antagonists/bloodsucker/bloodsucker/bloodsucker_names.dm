@@ -18,7 +18,7 @@
 			"Theodor","Dimitrie","Octav","Damien","Magnus","Caine","Abel", // Romanian/Ancient
 			"Lucius","Gaius","Otho","Balbinus","Arcadius","Romanos","Alexios","Vitellius", // Latin
 			"Melanthus","Teuthras","Orchamus","Amyntor","Axion", // Greek
-			"Thoth","Thutmose","Osorkon,","Nofret","Minmotu","Khafra", // Egyptian
+			"Thoth","Thutmose","Osorkon","Nofret","Minmotu","Khafra", // Egyptian
 			"Dio",
 		)
 	else

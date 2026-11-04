@@ -102,7 +102,7 @@
 		master.vassals -= src
 		owner.enslaved_to = null
 	//Remove ALL Traits, as long as its from BLOODSUCKER_TRAIT's source.
-	for(var/allstatus_traits in owner.current._status_traits)
+	for(var/allstatus_traits in owner.current._status_traits?.Copy())
 		REMOVE_TRAIT(owner.current, allstatus_traits, BLOODSUCKER_TRAIT)
 	//Remove Recuperate Power
 	while(length(powers))
@@ -115,6 +115,10 @@
 
 /datum/antagonist/vassal/on_body_transfer(mob/living/old_body, mob/living/new_body)
 	. = ..()
+	if(old_body)
+		UnregisterSignal(old_body, COMSIG_ATOM_EXAMINE)
+	if(new_body)
+		RegisterSignal(new_body, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers)
 		all_powers.Remove(old_body)
 		all_powers.Grant(new_body)

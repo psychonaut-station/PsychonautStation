@@ -80,6 +80,11 @@ SUBSYSTEM_DEF(sunlight)
 /datum/controller/subsystem/sunlight/proc/warn_daylight(danger_level, vampire_warning_message, vassal_warning_message)
 	SEND_SIGNAL(src, COMSIG_SOL_WARNING_GIVEN, danger_level, vampire_warning_message, vassal_warning_message)
 
+///Restarts the Sol countdown from a fresh night. Used when the last Bloodsucker leaves, so the next one doesn't inherit a half-finished cycle.
+/datum/controller/subsystem/sunlight/proc/reset_cycle()
+	time_til_cycle = TIME_BLOODSUCKER_NIGHT
+	issued_XP = FALSE
+
 #undef TIME_BLOODSUCKER_SOL_DELAY
 
 #undef TIME_BLOODSUCKER_DAY

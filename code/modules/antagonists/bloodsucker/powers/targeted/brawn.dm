@@ -110,9 +110,11 @@
 	// Target Type: Mob
 	if(isliving(target_atom))
 		var/mob/living/target = target_atom
-		var/mob/living/carbon/carbonuser = user
-		var/which_arm = (carbonuser.active_hand_index == 2) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM
-		var/obj/item/bodypart/user_active_arm = iscarbon(user) ? carbonuser.get_bodypart(which_arm) : null
+		var/mob/living/carbon/carbonuser
+		if(iscarbon(user))
+			carbonuser = user
+		var/which_arm = (carbonuser?.active_hand_index == 2) ? BODY_ZONE_R_ARM : BODY_ZONE_L_ARM
+		var/obj/item/bodypart/user_active_arm = carbonuser?.get_bodypart(which_arm)
 		var/base_damage = user_active_arm?.unarmed_damage_high || 10
 		var/hitStrength = base_damage * 1.25 + 2
 		// Knockdown!

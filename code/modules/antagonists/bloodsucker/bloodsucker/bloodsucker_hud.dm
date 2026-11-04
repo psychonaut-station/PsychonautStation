@@ -25,7 +25,7 @@
 
 /atom/movable/screen/bloodsucker/sunlight_counter
 	name = "Solar Flare Timer"
-	icon_state = "sunlight"
+	icon_state = "sunlight_night"
 	screen_loc = UI_SUNLIGHT_DISPLAY
 #ifdef BLOODSUCKER_TESTING
 	var/datum/controller/subsystem/sunlight/sunlight_subsystem

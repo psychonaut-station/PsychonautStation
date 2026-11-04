@@ -47,7 +47,7 @@
 
 /obj/structure/bloodsucker/attack_hand(mob/user, list/modifiers)
 //	. = ..() // Don't call parent, else they will handle unbuckling.
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 	/// Claiming the Rack instead of using it?
 	if(istype(bloodsuckerdatum) && !owner)
 		if(!bloodsuckerdatum.bloodsucker_lair_area)
@@ -137,13 +137,13 @@
 
 /obj/structure/bloodsucker/vassalrack/bolt()
 	. = ..()
-	set_density(FALSE)
+	set_density(TRUE)
 	set_anchored(TRUE)
 
 /obj/structure/bloodsucker/vassalrack/unbolt()
 	. = ..()
 	unbuckle_all_mobs()
-	set_density(TRUE)
+	set_density(FALSE)
 	set_anchored(FALSE)
 
 /obj/structure/bloodsucker/vassalrack/user_buckle_mob(mob/living/target, mob/user, check_loc = TRUE)
@@ -237,7 +237,7 @@
 		balloon_alert(user, "nobody buckled!")
 		return FALSE
 
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 	var/mob/living/carbon/buckled_carbons = pick(buckled_mobs)
 	// If I'm not a Bloodsucker, try to unbuckle them.
 	if(!istype(bloodsuckerdatum))
@@ -265,7 +265,9 @@
  * * Vassalize target
  */
 /obj/structure/bloodsucker/vassalrack/proc/torture_victim(mob/living/user, mob/living/target)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(!bloodsuckerdatum)
+		return FALSE
 	if(target.stat > UNCONSCIOUS)
 		balloon_alert(user, "too badly injured!")
 		return FALSE
@@ -469,6 +471,7 @@
 	vassal_desc = "This is a magical candle which drains at the sanity of the fools who havent yet accepted your master, as long as it is active.\n\
 		You can turn it on and off by clicking on it while you are next to it."
 	var/lit = FALSE
+	COOLDOWN_DECLARE(candelabrum_sanity_cd)
 
 /obj/structure/bloodsucker/candelabrum/Destroy()
 	STOP_PROCESSING(SSobj, src)
@@ -494,7 +497,6 @@
 		return
 	if(anchored && (IS_VASSAL(user) || IS_BLOODSUCKER(user)))
 		toggle()
-	return ..()
 
 /obj/structure/bloodsucker/candelabrum/proc/toggle(mob/user)
 	lit = !lit
@@ -511,11 +513,14 @@
 /obj/structure/bloodsucker/candelabrum/process()
 	if(!lit)
 		return
+	if(!COOLDOWN_FINISHED(src, candelabrum_sanity_cd))
+		return
+	COOLDOWN_START(src, candelabrum_sanity_cd, 5 SECONDS)
 	for(var/mob/living/carbon/nearly_people in viewers(7, src))
 		/// We dont want Bloodsuckers or Vassals affected by this
 		if(IS_VASSAL(nearly_people) || IS_BLOODSUCKER(nearly_people))
 			continue
-		nearly_people.set_hallucinations_if_lower(5 SECONDS)
+		nearly_people.set_hallucinations_if_lower(10 SECONDS)
 		nearly_people.add_mood_event("vampcandle", /datum/mood_event/vampcandle)
 
 /// Blood Throne - Allows Bloodsuckers to remotely speak with their Vassals. - Code (Mostly) stolen from comfy chairs (armrests) and chairs (layers)
@@ -591,7 +596,7 @@
 	if(!anchored)
 		to_chat(user, span_announce("[src] is not bolted to the ground!"))
 		return
-	. = ..()
+	. = ..(user, force, check_loc)
 	if(!.)
 		return FALSE
 	user.visible_message(
@@ -637,7 +642,9 @@
 	var/mob/living/carbon/human/user = source
 	var/rendered = span_cult_large("<b>[user.real_name]:</b> [message]")
 	user.log_talk(message, LOG_SAY, tag=ROLE_BLOODSUCKER)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(!bloodsuckerdatum)
+		return
 	for(var/datum/antagonist/vassal/receiver as anything in bloodsuckerdatum.vassals)
 		var/mob/receiver_mob = receiver?.owner?.current
 		if(QDELETED(receiver_mob))

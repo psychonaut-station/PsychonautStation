@@ -127,18 +127,6 @@
 #define DANGER_LEVEL_SOL_ENDED 5
 
 /**
- * Clan defines
- *
- * This is stuff that is used solely by Clans for clan-related activity.
- */
-///Drinks blood the normal Bloodsucker way.
-#define BLOODSUCKER_DRINK_NORMAL "bloodsucker_drink_normal"
-///Drinks blood but is snobby, refusing to drink from mindless
-#define BLOODSUCKER_DRINK_SNOBBY "bloodsucker_drink_snobby"
-///Drinks blood from disgusting creatures without Humanity consequences.
-#define BLOODSUCKER_DRINK_INHUMANELY "bloodsucker_drink_imhumanely"
-
-/**
  * Macros
  */
 ///Whether a mob is a Bloodsucker
@@ -156,7 +144,7 @@
 #define CONSCIOUS STABLE
 #endif
 #ifndef UNCONSCIOUS
-#define UNCONSCIOUS HARD_CRIT
+#define UNCONSCIOUS SOFT_CRIT
 #endif
 
 // HUD defines

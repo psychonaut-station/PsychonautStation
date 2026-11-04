@@ -4,9 +4,11 @@
 /// Runs from COMSIG_LIVING_LIFE, handles Bloodsucker constant proccesses.
 /datum/antagonist/bloodsucker/proc/LifeTick(mob/living/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
-	if(isbrain(owner?.current))
+	if(!owner)
 		return
-	if(QDELETED(owner))
+	if(isbrain(owner.current))
+		return
+	if(QDELETED(owner.current))
 		INVOKE_ASYNC(src, PROC_REF(handle_death))
 		return
 	if(is_in_torpor())
@@ -41,7 +43,7 @@
 		to_chat(owner.current, span_warning("You hit the maximum amount of lost Humanty, you are far from Human."))
 		return
 	humanity_lost += value
-	to_chat(owner.current, span_warning("You feel as if you lost some of your humanity, you will now enter Frenzy at [FRENZY_THRESHOLD_ENTER + (humanity_lost * 5)] Blood."))
+	to_chat(owner.current, span_warning("You feel as if you lost some of your humanity, you will now enter Frenzy at [min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (min(humanity_lost, 10) * 5))] Blood."))
 
 /// mult: SILENT feed is 1/3 the amount
 /datum/antagonist/bloodsucker/proc/handle_feeding(mob/living/carbon/target, mult=1, power_level)
@@ -66,7 +68,7 @@
 	AddBloodVolume(blood_taken)
 	// Reagents (NOT Blood!)
 	if(target.reagents?.total_volume)
-		target.reagents.trans_to(owner.current, INGEST, 1) // Run transfer of 1 unit of reagent from them to me.
+		target.reagents.trans_to(owner.current, 1, methods = INGEST) // Run transfer of 1 unit of reagent from them to me.
 	owner.current.playsound_local(null, 'sound/effects/singlebeat.ogg', vol = 40, vary = TRUE) // Play THIS sound for user only. The "null" is where turf would go if a location was needed. Null puts it right in their head.
 	total_blood_drank += blood_taken
 	return blood_taken
@@ -148,9 +150,9 @@
  */
 
 /datum/antagonist/bloodsucker/proc/heal_vampire_organs()
-	var/mob/living/carbon/bloodsuckeruser = owner.current
-	if(!iscarbon(bloodsuckeruser))
+	if(!iscarbon(owner.current))
 		return
+	var/mob/living/carbon/bloodsuckeruser = owner.current
 
 	bloodsuckeruser.cure_husk()
 	bloodsuckeruser.regenerate_organs(remove_hazardous = FALSE)

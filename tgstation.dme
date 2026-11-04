@@ -3635,7 +3635,7 @@
 #include "code\modules\antagonists\bloodsucker\bloodsucker_assets.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_conversion.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_datum.dm"
-#include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_flaws.dm"
+#include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_clan_selection.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_frenzy.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_hud.dm"
 #include "code\modules\antagonists\bloodsucker\bloodsucker\bloodsucker_language.dm"

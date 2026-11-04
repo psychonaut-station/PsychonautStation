@@ -7,7 +7,7 @@
  * Args:
  * person_selecting - Mob override for stuff like Admins selecting someone's clan.
  */
-/datum/antagonist/bloodsucker/proc/assign_clan_and_bane(mob/person_selecting)
+/datum/antagonist/bloodsucker/proc/assign_clan(mob/person_selecting)
 	if(my_clan || owner.current.has_status_effect(/datum/status_effect/frenzy))
 		return
 	person_selecting ||= owner.current
@@ -41,4 +41,4 @@
 	to_chat(owner.current, span_announce("You have been forced out of your clan! You can re-enter one by regular means."))
 
 /datum/antagonist/bloodsucker/proc/admin_set_clan(mob/admin)
-	assign_clan_and_bane(admin)
+	assign_clan(admin)

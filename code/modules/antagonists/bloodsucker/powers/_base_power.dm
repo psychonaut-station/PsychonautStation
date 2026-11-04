@@ -171,7 +171,7 @@
 	return TRUE
 
 /// NOTE: With this formula, you'll hit half cooldown at level 8 for that power.
-/datum/action/cooldown/bloodsucker/StartCooldown()
+/datum/action/cooldown/bloodsucker/StartCooldown(override_cooldown_time)
 	// Calculate Cooldown (by power's level)
 	if(power_flags & BP_AM_STATIC_COOLDOWN)
 		cooldown_time = initial(cooldown_time)
@@ -181,7 +181,7 @@
 		else
 			cooldown_time = initial(cooldown_time)
 
-	return ..()
+	return ..(override_cooldown_time)
 
 /datum/action/cooldown/bloodsucker/proc/can_deactivate()
 	return TRUE

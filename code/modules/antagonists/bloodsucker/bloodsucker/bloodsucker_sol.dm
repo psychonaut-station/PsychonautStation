@@ -17,6 +17,7 @@
 	if(!length(existing_suckers))
 		message_admins("Sol has been deleted due to the lack of Bloodsuckers")
 		SSsunlight.can_fire = FALSE
+		SSsunlight.reset_cycle()
 		if(SSsunlight.sunlight_active)
 			SSsunlight.sunlight_active = FALSE
 			SEND_SIGNAL(SSsunlight, COMSIG_SOL_END)
@@ -37,7 +38,7 @@
 /datum/antagonist/bloodsucker/proc/on_sol_end(atom/source)
 	SIGNAL_HANDLER
 	check_end_torpor()
-	for(var/datum/action/cooldown/bloodsucker/gohome/power in powers)
+	for(var/datum/action/cooldown/bloodsucker/gohome/power in powers.Copy())
 		RemovePower(power)
 
 /// Cycle through all vamp antags and check if they're inside a closet.
@@ -50,7 +51,9 @@
 		return
 	if(!owner?.current)
 		return
-	var/mob/living/carbon/user = owner.current
+	if(!isliving(owner.current))
+		return
+	var/mob/living/user = owner.current
 
 	var/in_coffin = FALSE
 	var/in_locker = FALSE
@@ -159,7 +162,9 @@
 	if(SkipChecks)
 		torpor_begin()
 		return
-	var/mob/living/carbon/user = owner.current
+	if(!isliving(owner.current))
+		return
+	var/mob/living/user = owner.current
 	var/total_brute = user.getBruteLoss_nonProsthetic()
 	var/total_burn = user.getFireLoss_nonProsthetic()
 	var/total_damage = total_brute + total_burn
@@ -168,7 +173,9 @@
 		torpor_begin()
 
 /datum/antagonist/bloodsucker/proc/check_end_torpor()
-	var/mob/living/carbon/user = owner.current
+	if(!isliving(owner.current))
+		return
+	var/mob/living/user = owner.current
 	var/total_brute = user.getBruteLoss_nonProsthetic()
 	var/total_burn = user.getFireLoss_nonProsthetic()
 	var/total_damage = total_brute + total_burn

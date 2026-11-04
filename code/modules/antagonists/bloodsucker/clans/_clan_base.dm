@@ -25,9 +25,6 @@
 	///Whether the clan can be joined by players. FALSE for flavortext-only clans.
 	var/joinable_clan = TRUE
 
-	///How we will drink blood using Feed.
-	var/blood_drink_type = BLOODSUCKER_DRINK_NORMAL
-
 /datum/bloodsucker_clan/New(datum/antagonist/bloodsucker/owner_datum)
 	. = ..()
 	src.bloodsuckerdatum = owner_datum
@@ -206,6 +203,9 @@
 
 	// We're almost done - Spend your Rank now.
 	bloodsuckerdatum.bloodsucker_level++
+	var/list/favorite_vassals = bloodsuckerdatum.special_vassals?[FAVORITE_VASSAL]
+	for(var/datum/antagonist/vassal/favorite/fav_vassal as anything in favorite_vassals)
+		fav_vassal.set_vassal_level()
 	if(cost_rank)
 		bloodsuckerdatum.bloodsucker_level_unspent--
 	if(blood_cost)
@@ -278,3 +278,6 @@
 /datum/bloodsucker_clan/proc/on_favorite_vassal(datum/antagonist/bloodsucker/source, datum/antagonist/vassal/vassaldatum)
 	SIGNAL_HANDLER
 	vassaldatum.BuyPower(new /datum/action/cooldown/bloodsucker/targeted/brawn)
+	if(istype(vassaldatum, /datum/antagonist/vassal/favorite))
+		var/datum/antagonist/vassal/favorite/fav = vassaldatum
+		fav.set_vassal_level()

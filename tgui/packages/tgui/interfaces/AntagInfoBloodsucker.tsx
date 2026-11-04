@@ -258,6 +258,7 @@ const PowerSection = (props: any) => {
                   : ''}
               </Box>
               <Box
+                style={{ whiteSpace: 'pre-line' }}
                 dangerouslySetInnerHTML={{
                   __html: selectedPower.explanation,
                 }}

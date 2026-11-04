@@ -54,7 +54,7 @@
 	// Remove status effect, mutations & diseases that you got while on masq.
 	user.remove_status_effect(/datum/status_effect/masquerade)
 	user.dna.remove_all_mutations()
-	for(var/datum/disease/diseases as anything in user.diseases)
+	for(var/datum/disease/diseases as anything in user.diseases?.Copy())
 		diseases.cure()
 
 	// Handle Traits

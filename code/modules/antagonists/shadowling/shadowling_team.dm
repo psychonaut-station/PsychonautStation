@@ -9,6 +9,7 @@
 	var/list/thralls = list()
 	var/list/ling_roles = list()
 	var/last_sync_thrall_count = 0
+	var/max_thralls_reached = 0
 	var/is_ascended = FALSE
 
 /datum/team/shadow_hive/New()
@@ -41,11 +42,9 @@
 		O.update_explanation_text()
 
 /datum/team/shadow_hive/add_member(datum/mind/new_member)
+	if(!new_member || is_unassigned_job(new_member.assigned_role))
+		return
 	. = ..()
-	if(!new_member)
-		return
-	if(is_unassigned_job(new_member.assigned_role))
-		return
 	if(!(new_member in members))
 		members += new_member
 
@@ -73,7 +72,6 @@
 	if(H.mind && !(H.mind in members))
 		members += H.mind
 	to_chat(H, span_notice("You feel the whisper of the hive echoing in your mind..."))
-	grant_sync_action(H)
 	grant_comm_action(H)
 	grant_night_vision(H)
 	update_objective_explanations()
@@ -108,14 +106,14 @@
 		var/mob/living/T = thralls[i]
 		if(QDELETED(T) || !istype(T, /mob/living))
 			thralls.Cut(i, i + 1)
-	for(var/mob/M as anything in ling_roles)
+	for(var/mob/M as anything in ling_roles.Copy())
 		if(!(M in lings))
 			ling_roles -= M
 	var/list/keep = list()
 	for(var/mob/living/carbon/human/K in lings + thralls)
 		if(K?.mind)
 			keep[K.mind] = TRUE
-	for(var/datum/mind/mm as anything in members)
+	for(var/datum/mind/mm as anything in members.Copy())
 		if(!keep[mm])
 			members -= mm
 
@@ -131,13 +129,7 @@
 	return count
 
 /datum/team/shadow_hive/proc/count_max_thralls()
-	return max(count_alive_thralls(), last_sync_thrall_count)
-
-/datum/team/shadow_hive/proc/grant_sync_action(mob/living/carbon/human/H)
-	if(!istype(H))
-		return
-	for(var/datum/action/cooldown/shadowling/hive_sync/existing in H.actions)
-		qdel(existing)
+	return max_thralls_reached
 
 /datum/team/shadow_hive/proc/grant_comm_action(mob/living/carbon/human/H)
 	if(!istype(H))
@@ -205,9 +197,23 @@
 			dupes += T
 
 	for(var/datum/team/shadow_hive/T in dupes)
+		for(var/mob/living/carbon/human/L in T.lings)
+			if(L && !(L in main.lings))
+				main.lings += L
+		for(var/mob/living/carbon/human/THR in T.thralls)
+			if(THR && !(THR in main.thralls))
+				main.thralls += THR
+		for(var/mob/M as anything in T.ling_roles)
+			if(M && !main.ling_roles[M])
+				main.ling_roles[M] = T.ling_roles[M]
+		main.max_thralls_reached = max(main.max_thralls_reached, T.max_thralls_reached)
 		for(var/datum/mind/M in T.members)
 			if(M && !(M in main.members))
 				main.members += M
+			if(M)
+				var/datum/antagonist/shadowling/SL = M.has_antag_datum(/datum/antagonist/shadowling)
+				if(SL)
+					SL.shadow_team = main
 		GLOB.antagonist_teams -= T
 		qdel(T)
 
@@ -252,17 +258,18 @@
 		for(var/datum/action/cooldown/shadowling/hatch/old_hatch in actor.actions)
 			qdel(old_hatch)
 
-	var/nt = count_max_thralls()
-	last_sync_thrall_count = nt
+	var/alive_count = count_alive_thralls()
+	max_thralls_reached = max(max_thralls_reached, alive_count)
+	last_sync_thrall_count = max_thralls_reached
 
 	var/datum/action/cooldown/shadowling/hive_sync/temp_sync = new
-	var/list/new_unlocks = temp_sync.grant_unlocks_for(actor, nt)
+	var/list/new_unlocks = temp_sync.grant_unlocks_for(actor, max_thralls_reached)
 	qdel(temp_sync)
 
 	if(length(new_unlocks))
-		to_chat(actor, span_notice("Hive synchronized: [nt] living thralls. New abilities unlocked: [jointext(new_unlocks, ", ")]."))
+		to_chat(actor, span_notice("Hive synchronized: [alive_count] living thralls. New abilities unlocked: [jointext(new_unlocks, ", ")]."))
 	else
-		to_chat(actor, span_notice("Hive synchronized: [nt] living thralls. No new abilities unlocked."))
+		to_chat(actor, span_notice("Hive synchronized: [alive_count] living thralls. No new abilities unlocked."))
 
 /proc/get_shadow_hive()
 	if(GLOB.shadowling_hive)

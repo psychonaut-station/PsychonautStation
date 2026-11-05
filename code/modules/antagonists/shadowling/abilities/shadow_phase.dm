@@ -57,7 +57,7 @@
 	var/light_immunity = FALSE
 	light_max = SHADOWLING_LIGHT_THRESHOLD
 	movespeed = 3
-	density = TRUE
+	density = FALSE
 
 	var/light_grace_period = 5 SECONDS
 	var/light_time_remaining = 0

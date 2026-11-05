@@ -131,10 +131,10 @@
 	var/mob/living/carbon/human/leader = length(winners) ? pick(winners) : null
 
 	if(leader && !QDELETED(leader))
+		hive.leader = leader
 		if(!hive.is_shadowling_engine_sabotage_used)
 			var/datum/action/cooldown/shadowling/engine_sabotage/S = new
 			S.Grant(leader)
-			hive.leader = leader
 
 		for(var/mob/living/carbon/human/L in hive.lings)
 			if(QDELETED(L))

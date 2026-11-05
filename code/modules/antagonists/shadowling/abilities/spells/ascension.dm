@@ -162,7 +162,6 @@
 	_pop_burst(H, 1.2 SECONDS)
 
 	H.shadowling_strip_quirks()
-	H.set_species(/datum/species/shadow/shadowling/ascended)
 	H.update_eyes(TRUE)
 
 	if(H.mind)
@@ -176,7 +175,7 @@
 	to_chat(H, span_boldnotice("You shatter your mortal shell and ascend into the ultimate form of the Shadow!"))
 	playsound(get_turf(H), 'sound/effects/magic/mutate.ogg', 70, TRUE)
 
-	for(var/datum/action/cooldown/ability in H.actions)
+	for(var/datum/action/cooldown/ability in H.actions.Copy())
 		if(!istype(ability, /datum/action/cooldown/shadowling))
 			continue
 		if(istype(ability, /datum/action/cooldown/shadowling/engine_sabotage))

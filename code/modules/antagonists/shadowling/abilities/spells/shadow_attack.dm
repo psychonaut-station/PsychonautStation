@@ -138,13 +138,16 @@
 	if(get_dist(H, T) > 1)
 		step_towards(H, T)
 
-	if(QDELETED(H) || QDELETED(T) || get_dist(H, T) > 1)
+	if(QDELETED(H))
+		return FALSE
+
+	if(QDELETED(T) || get_dist(H, T) > 1)
 		H.balloon_alert(H, is_grab ? "too far to grab" : "too far to strike")
 		unset_click_ability(H, TRUE)
 		return FALSE
 
 	if(is_grab)
-		if(!H.grab(T))
+		if(H.grab(T) != GRAB_SUCCESS)
 			unset_click_ability(H, TRUE)
 			return FALSE
 

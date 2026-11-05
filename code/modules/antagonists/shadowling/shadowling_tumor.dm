@@ -45,6 +45,8 @@
 
 /obj/item/organ/brain/shadow/tumor_thrall/Insert(mob/living/carbon/receiver, special = FALSE, movement_flags)
 	. = ..()
+	if(!.)
+		return FALSE
 	receiver?.mind?.add_antag_datum(/datum/antagonist/shadow_thrall)
 	RegisterSignal(receiver, COMSIG_ATOM_EXAMINE, PROC_REF(on_holder_examine))
 	to_chat(receiver, span_danger("A freezing whisper permeates your mind... You have been enslaved!"))

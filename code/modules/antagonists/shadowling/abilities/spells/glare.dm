@@ -42,7 +42,7 @@
 /datum/action/cooldown/shadowling/glare/CollectTargets(mob/living/carbon/human/H, atom/explicit)
 	var/list/targets = list()
 	var/datum/team/shadow_hive/hive = get_shadow_hive()
-	for(var/mob/living/carbon/human/T in range(max_range, H))
+	for(var/mob/living/carbon/human/T in view(max_range, H))
 		if(T == H)
 			continue
 		if(!in_front_cone(H, T, fov_degree))

@@ -50,11 +50,12 @@
 		unset_click_ability(clicker, TRUE)
 		return FALSE
 
-	var/mob/living/carbon/human/T = target
-	if(!istype(T))
+	if(!ishuman(target))
 		clicker.balloon_alert(clicker, "invalid target")
 		unset_click_ability(clicker, TRUE)
 		return FALSE
+
+	var/mob/living/carbon/human/T = target
 
 	if(get_dist(clicker, T) > 1)
 		clicker.balloon_alert(clicker, "too far")
@@ -105,7 +106,7 @@
 	T.reset_robotic_limbs()
 	T.set_species(/datum/species/shadow/shadowling)
 
-	for(var/datum/action/cooldown/ability in T.actions)
+	for(var/datum/action/cooldown/ability in T.actions.Copy())
 		if(ability.type in typesof(/datum/action/cooldown/shadowling))
 			ability.Remove(T)
 

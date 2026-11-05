@@ -70,7 +70,7 @@
 /datum/antagonist/shadowling/on_removal()
 	var/mob/living/carbon/human/H = owner?.current
 
-	var/datum/team/shadow_hive/hive = get_shadow_hive()
+	var/datum/team/shadow_hive/hive = GLOB.shadowling_hive
 	if(istype(H) && hive)
 		hive.leave_member(H)
 
@@ -78,7 +78,7 @@
 		shadow_team.remove_member(owner)
 
 	if(istype(H))
-		for(var/datum/action/cooldown/ability in H.actions)
+		for(var/datum/action/cooldown/ability in H.actions.Copy())
 			if(ability.type in typesof(/datum/action/cooldown/shadowling))
 				ability.Remove(H)
 
@@ -346,7 +346,7 @@
 		var/datum/action/cooldown/shadowling/sample = path
 		var/ch = round(initial(sample.channel_time) / 10)
 		if(path == /datum/action/cooldown/shadowling/enthrall)
-			ch = 10
+			ch = 30
 		var/req_dark = initial(sample.requires_dark_user) || initial(sample.requires_dark_target)
 		ability_list += list(list(
 			"name" = initial(sample.name),
@@ -462,7 +462,7 @@
 	if(!hive)
 		return FALSE
 	for(var/mob/living/carbon/human/L in hive.lings)
-		if(isshadowling_ascended(L))
+		if(isshadowling_ascended(L) || (L.stat != DEAD && !QDELETED(L)))
 			return TRUE
 	return FALSE
 
@@ -484,7 +484,7 @@
 		has_important_message = TRUE,
 	)
 
-	var/atom/hostile_ref = ascended ? ascended : world
+	var/datum/hostile_ref = ascended ? ascended : (get_shadow_hive() || "Shadowling Hive")
 	SSshuttle.registerHostileEnvironment(hostile_ref)
 	SSshuttle.lockdown = TRUE
 	SSshuttle.requestEvac(ascended, "Emergency evacuation authorized due to paranormal threat.")

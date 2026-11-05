@@ -175,7 +175,6 @@
 	H.reset_robotic_limbs()
 	H.set_species(/datum/species/shadow/shadowling)
 	var/datum/team/shadow_hive/hive = get_shadow_hive()
-	hive.grant_sync_action(H)
 	hive.sync_after_event(H)
 	H.refresh_eye_overlays()
 	playsound(start, sfx_end, 70, TRUE)
@@ -188,6 +187,7 @@
 	detach_cover()
 	cleanup(walls)
 	H.alpha = prev_alpha
-	src.Remove(H)
-	qdel(src)
+	if(!QDELETED(src))
+		src.Remove(H)
+		qdel(src)
 	return TRUE

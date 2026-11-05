@@ -37,7 +37,7 @@
 /datum/dynamic_ruleset/roundstart/shadowling/execute()
 	var/list/alive_players = get_active_player_list(alive_check = TRUE, afk_check = TRUE)
 	var/population_size = length(alive_players)
-	var/need_total = target_count_for(population_size)
+	var/need_total = clamp(target_count_for(population_size), min_antag_cap, max_antag_cap)
 	var/got = length(selected_minds)
 	var/need_extra = max(0, need_total - got)
 
@@ -65,6 +65,7 @@
 		var/mob/living/carbon/human/H = valid_candidates[i]
 		if(H.mind)
 			assign_role(H.mind)
+			selected_minds |= H.mind
 
 	return ..()
 

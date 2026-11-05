@@ -42,8 +42,9 @@
 	hive.is_shadowling_engine_sabotage_used = TRUE
 	to_chat(H, span_boldnotice("You disrupt the power conduits — evacuation is delayed by 10 minutes."))
 	cleanup_from_all_hive(hive)
-	Remove(H)
-	qdel(src)
+	if(!QDELETED(src))
+		Remove(H)
+		qdel(src)
 	return TRUE
 
 /datum/action/cooldown/shadowling/engine_sabotage/proc/cleanup_from_all_hive(datum/team/shadow_hive/hive)

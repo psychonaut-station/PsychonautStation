@@ -18,7 +18,7 @@
 	var/mob/living/best = null
 	var/best_dist = 999
 	var/best_rank = 999
-	for(var/mob/living/T in range(2, H))
+	for(var/mob/living/T in view(2, H))
 		if(T == H)
 			continue
 		if(!in_front_cone(H, T, 90))

@@ -199,6 +199,7 @@
 	head_flags = HEAD_EYESPRITES
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling.dmi'
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
 	burn_modifier = 1.5
@@ -209,6 +210,7 @@
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	bodypart_traits = list(TRAIT_NO_JUMPSUIT)
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling.dmi'
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
@@ -220,6 +222,7 @@
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling.dmi'
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
 	burn_modifier = 1.5
@@ -230,6 +233,7 @@
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling.dmi'
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
 	burn_modifier = 1.5
@@ -240,6 +244,7 @@
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
 	unarmed_attack_verbs = list("slash", "claw", "scratch")
 	unarmed_attack_verbs_continuous = list("slashes", "claws", "scratches")
@@ -261,6 +266,7 @@
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING
 	biological_state = BIO_INORGANIC
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	bodypart_effects = list(/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling)
 	unarmed_attack_verbs = list("pierce", "impale", "stab")
 	unarmed_attack_verbs_continuous = list("pierces", "impales", "stabs")
@@ -282,6 +288,7 @@
 	should_draw_greyscale = FALSE
 	head_flags = NONE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5
@@ -290,6 +297,7 @@
 	icon = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5
@@ -298,6 +306,7 @@
 	icon = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5
@@ -306,6 +315,7 @@
 	icon = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5
@@ -314,6 +324,7 @@
 	icon = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5
@@ -322,6 +333,7 @@
 	icon = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	should_draw_greyscale = FALSE
 	limb_id = SPECIES_SHADOWLING_ASCENDED
+	bodytype = BODYTYPE_ORGANIC | BODYTYPE_SHADOW
 	icon_static = 'icons/mob/antagonists/shadowling/shadowling_ascended.dmi'
 	burn_modifier = 0.5
 	brute_modifier = 0.5

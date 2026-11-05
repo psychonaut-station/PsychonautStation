@@ -207,6 +207,10 @@
 		H.balloon_alert(H, "cannot target yourself")
 		return FALSE
 
+	if(get_dist(H, T) > max_range)
+		H.balloon_alert(H, "target out of range")
+		return FALSE
+
 	if(T.stat == DEAD)
 		H.balloon_alert(H, "target is dead")
 		return FALSE

@@ -105,7 +105,7 @@
 /datum/action/cooldown/shadowling/cold_wave/collect_cone_targets(mob/living/carbon/human/H)
 	var/list/out = list()
 	var/datum/team/shadow_hive/hive = get_shadow_hive()
-	for(var/mob/living/carbon/human/T in range(max_range, H))
+	for(var/mob/living/carbon/human/T in view(max_range, H))
 		if(T == H)
 			continue
 		if(!in_front_cone(H, T, fov_degree))

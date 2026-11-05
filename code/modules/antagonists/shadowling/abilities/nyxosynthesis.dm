@@ -5,8 +5,19 @@
 	var/next_burn_sfx_time = 0
 	var/static/sfx_burn = 'sound/items/weapons/sear.ogg'
 
+/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling/on_apply()
+	. = ..()
+	if(!.)
+		return FALSE
+	RegisterSignal(owner, COMSIG_LIVING_DEATH, PROC_REF(on_owner_death))
+
+/datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling/proc/on_owner_death(mob/living/source, gibbed)
+	SIGNAL_HANDLER
+	ADD_TRAIT(owner, TRAIT_DEATHCOMA, SHADOWLING_DEATHCOMA_TRAIT)
+	ADD_TRAIT(owner, TRAIT_STASIS, SHADOWLING_DEATHCOMA_TRAIT)
+
 /datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling/tick(seconds_between_ticks)
-	var/turf/T = owner?.loc
+	var/turf/T = get_turf(owner)
 	if(!isturf(T))
 		return
 
@@ -91,6 +102,7 @@
 		organ.set_organ_damage(max(0, organ.damage - heal_amount))
 
 /datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling/on_remove()
-	. = ..()
+	UnregisterSignal(owner, COMSIG_LIVING_DEATH)
 	if(applied_speed && owner)
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/shadowling/dark)
+	return ..()

@@ -130,6 +130,7 @@ export const AntagInfoShadowling = () => {
     role_type,
     is_ascended,
     is_thrall,
+    is_hatched,
     hive_name,
     thrall_count,
     thralls_needed,
@@ -212,6 +213,13 @@ export const AntagInfoShadowling = () => {
                             {role}
                           </Button>
                         </Stack.Item>
+                        {!is_hatched && role_type === 'master' && (
+                          <Stack.Item>
+                            <Button compact disabled color="warning" icon="exclamation-circle">
+                              Incubating
+                            </Button>
+                          </Stack.Item>
+                        )}
                         <Stack.Item>
                           <Button
                             icon="sync"
@@ -250,6 +258,27 @@ export const AntagInfoShadowling = () => {
                     </Box>
                   </ProgressBar>
                 </Stack.Item>
+
+                {/* Incubation Notice */}
+                {!is_hatched && role_type === 'master' && (
+                  <Stack.Item>
+                    <NoticeBox warning>
+                      <Stack align="center">
+                        <Stack.Item>
+                          <Icon name="exclamation-circle" size={2} color="yellow" />
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          <Box bold fontSize="13px" color="yellow">
+                            INCUBATION PHASE &mdash; HATCH REQUIRED
+                          </Box>
+                          <Box fontSize="11px">
+                            You are still confined within your human facade. Seek out absolute darkness and use your <strong>Hatch</strong> ability to emerge into your true shadow form and awaken your brood powers.
+                          </Box>
+                        </Stack.Item>
+                      </Stack>
+                    </NoticeBox>
+                  </Stack.Item>
+                )}
 
                 {/* Ascension Notices */}
                 {thrall_count >= thralls_needed && thralls_needed > 0 && !is_ascended && !is_hive_ascended && (
@@ -400,6 +429,25 @@ export const AntagInfoShadowling = () => {
 
             {activeTab === 'abilities' && (
               <Stack fill vertical>
+                {!!is_thrall && (
+                  <Stack.Item>
+                    <NoticeBox info>
+                      <Stack align="center">
+                        <Stack.Item>
+                          <Icon name="info-circle" size={2} />
+                        </Stack.Item>
+                        <Stack.Item grow>
+                          <Box bold fontSize="12px">
+                            Thrall Brood Restrictions
+                          </Box>
+                          <Box fontSize="11px">
+                            As an enslaved Thrall, Master and Ascended shadow abilities are unavailable to you. Thralls only have access to Brood Commune and Night Vision.
+                          </Box>
+                        </Stack.Item>
+                      </Stack>
+                    </NoticeBox>
+                  </Stack.Item>
+                )}
                 <Stack.Item>
                   <Stack>
                     <Stack.Item>
@@ -540,6 +588,10 @@ export const AntagInfoShadowling = () => {
                                 <Button compact disabled color="good" icon="check">
                                   UNLOCKED
                                 </Button>
+                              ) : is_thrall ? (
+                                <Button compact disabled color="bad" icon="lock">
+                                  UNAVAILABLE TO THRALLS
+                                </Button>
                               ) : (
                                 <Button compact disabled color="bad" icon="lock">
                                   LOCKED: {ability.required_thralls} Thralls Required
@@ -624,7 +676,7 @@ export const AntagInfoShadowling = () => {
                       </Box>
                       <Box mt={1} pl={2} fontSize="12px" color="#cbd5e1" style={{ lineHeight: '1.6' }}>
                         <div>&bull; <strong>Searing Damage (&gt; 0.4 lumcount):</strong> Inflicts <strong>3.5 brute and 3.5 burn</strong> damage per limb every second you remain in illuminated tiles.</div>
-                        <div>&bull; <strong>Phase Collapse:</strong> Entering bright light while in <em>Shadow Phase</em> will violently disrupt the incorporeal state after 6 seconds, forcibly ejecting you into the physical plane.</div>
+                        <div>&bull; <strong>Phase Collapse:</strong> Entering bright light while in <em>Shadow Phase</em> will violently disrupt the incorporeal state after 5 seconds, forcibly ejecting you into the physical plane.</div>
                         <div>&bull; <strong>Area Denial:</strong> Use <strong>Shadow Veil</strong> to extinguish lights and drain APCs, or shatter light bulbs across entire hallways with <strong>Sonic Shriek</strong>. Flashlights, flares, and lasers pose extreme danger.</div>
                       </Box>
                     </Box>
@@ -654,8 +706,8 @@ export const AntagInfoShadowling = () => {
                         Subjugating crew members into thralls swells the brood and unlocks higher dimensional shadow powers:
                       </Box>
                       <Box mt={1} pl={2} fontSize="12px" color="#cbd5e1" style={{ lineHeight: '1.6' }}>
-                        <div>&bull; <strong>Enthrall Conditions:</strong> Target must be facing you within 2 tiles. Both you and the victim <strong>must remain in darkness</strong> for the entire 10-second channel.</div>
-                        <div>&bull; <strong>Subjugation Process:</strong> Channeling drains 35 oxygen per second from the victim, implanting a <em>Shadow Thrall Tumor</em> directly into their brain.</div>
+                        <div>&bull; <strong>Enthrall Conditions:</strong> Target must be facing you within 2 tiles. Both you and the victim <strong>must remain in darkness</strong> for the entire 30-second channel.</div>
+                        <div>&bull; <strong>Subjugation Process:</strong> Channeling drains 35 oxygen every 10 seconds (105 total) from the victim, implanting a <em>Shadow Thrall Tumor</em> directly into their brain.</div>
                         <div>&bull; <strong>Crew Neurosurgery Countermeasure:</strong> Medical personnel can cure thralls via brain surgery. They must incise the scalp, saw the skull, and shine a lit flashlight into the cranial cavity to dissolve the tumor. Guard captured thralls and eliminate medical staff carrying surgical tools.</div>
                       </Box>
                     </Box>

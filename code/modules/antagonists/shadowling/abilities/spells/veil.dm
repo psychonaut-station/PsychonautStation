@@ -76,9 +76,9 @@
 	var/list/turfs_dark = RANGE_TURFS(dark_square_radius, H)
 
 	replace_glowshrooms(turfs_shrooms)
+	disable_lights_in_area(turfs_dark)
 	break_apcs_in_dark(turfs_shrooms)
 	weaken_shaded_mobs(turfs_dark, blind_duration)
-	disable_lights_in_area(turfs_dark)
 	damage_synthetics(turfs_dark)
 
 	playsound(center, sfx_emp, 70, TRUE)

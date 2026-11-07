@@ -59,9 +59,12 @@
 	if(!QDELETED(feed_target))
 		log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
 		to_chat(user, span_notice("You slowly release [feed_target]."))
-		if(feed_target.stat == DEAD && started_alive)
-			user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
-			bloodsuckerdatum_power?.AddHumanityLost(10)
+		if(ishuman(feed_target) && feed_target.stat == DEAD)
+			user.clear_mood_event("drankblood")
+			user.add_mood_event("drankdead", /datum/mood_event/drankblood_dead)
+			if(started_alive)
+				user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
+				bloodsuckerdatum_power?.AddHumanityLost(10)
 
 	target_ref = null
 	started_alive = TRUE
@@ -89,7 +92,7 @@
 		feed_timer = 2 SECONDS
 
 	owner.balloon_alert(owner, "feeding off [feed_target]...")
-	started_alive = (feed_target.stat < HARD_CRIT)
+	started_alive = (feed_target.stat < DEAD)
 	if(!do_after(owner, feed_timer, feed_target, NONE, TRUE))
 		owner.balloon_alert(owner, "feed stopped")
 		DeactivatePower()
@@ -176,8 +179,9 @@
 
 	if(feed_strength_mult >= 1 && feed_target.stat < DEAD)
 		user.add_mood_event("drankblood", /datum/mood_event/drankblood)
-	if(feed_target.stat >= DEAD && !started_alive)
-		user.add_mood_event("drankblood", /datum/mood_event/drankblood_dead)
+	if(feed_target.stat >= DEAD && ishuman(feed_target))
+		user.clear_mood_event("drankblood")
+		user.add_mood_event("drankdead", /datum/mood_event/drankblood_dead)
 
 	if(!IS_BLOODSUCKER(feed_target))
 		if(feed_target.blood_volume <= BLOOD_VOLUME_BAD && warning_target_bloodvol > BLOOD_VOLUME_BAD)
@@ -194,6 +198,8 @@
 		return PROCESS_KILL
 	if(feed_target.blood_volume <= 0)
 		user.balloon_alert(owner, "no blood left!")
+		if(feed_target.stat != DEAD && !HAS_TRAIT(feed_target, TRAIT_NODEATH))
+			feed_target.death()
 		DeactivatePower()
 		return PROCESS_KILL
 	owner.playsound_local(null, 'sound/effects/singlebeat.ogg', 40, TRUE)

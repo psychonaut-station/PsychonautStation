@@ -38,12 +38,16 @@
 /datum/antagonist/bloodsucker/proc/AddBloodVolume(value)
 	bloodsucker_blood_volume = clamp(bloodsucker_blood_volume + value, 0, max_blood_volume)
 
+/// Calculates the effective blood threshold below which the bloodsucker enters frenzy.
+/datum/antagonist/bloodsucker/proc/get_frenzy_enter_threshold()
+	return min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (humanity_lost * 5))
+
 /datum/antagonist/bloodsucker/proc/AddHumanityLost(value)
 	if(humanity_lost >= 500)
 		to_chat(owner.current, span_warning("You hit the maximum amount of lost Humanty, you are far from Human."))
 		return
 	humanity_lost += value
-	to_chat(owner.current, span_warning("You feel as if you lost some of your humanity, you will now enter Frenzy at [min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (min(humanity_lost, 10) * 5))] Blood."))
+	to_chat(owner.current, span_warning("You feel as if you lost some of your humanity, you will now enter Frenzy at [get_frenzy_enter_threshold()] Blood."))
 
 /// mult: SILENT feed is 1/3 the amount
 /datum/antagonist/bloodsucker/proc/handle_feeding(mob/living/carbon/target, mult=1, power_level)
@@ -229,7 +233,7 @@
 		owner.current.set_eye_blur_if_lower((8 - 8 * (bloodsucker_blood_volume / BLOOD_VOLUME_BAD))*2 SECONDS)
 
 	// The more blood, the better the Regeneration, get too low blood, and you enter Frenzy.
-	var/effective_enter_threshold = min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (min(humanity_lost, 10) * 5))
+	var/effective_enter_threshold = get_frenzy_enter_threshold()
 	if(bloodsucker_blood_volume < effective_enter_threshold && !frenzied && COOLDOWN_FINISHED(src, bloodsucker_frenzy_cooldown))
 		owner.current.apply_status_effect(/datum/status_effect/frenzy)
 	else if(bloodsucker_blood_volume < BLOOD_VOLUME_BAD)

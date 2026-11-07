@@ -58,20 +58,20 @@
 		var/time_seconds = SSsunlight.time_til_cycle
 		if(SSsunlight.sunlight_active)
 			valuecolor = "#FF5555"
-			sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_day"
+			sunlight_display.icon_state = "sunlight_day"
 		else
 			switch(round(time_seconds, 1))
 				if(0 to 30)
-					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_30"
+					sunlight_display.icon_state = "sunlight_30"
 					valuecolor = "#FFCCCC"
 				if(31 to 60)
-					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_60"
+					sunlight_display.icon_state = "sunlight_60"
 					valuecolor = "#FFE6CC"
 				if(61 to 180)
-					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_90"
+					sunlight_display.icon_state = "sunlight_90"
 					valuecolor = "#FFFFCC"
 				else
-					sunlight_display.icon_state = "[initial(sunlight_display.icon_state)]_night"
+					sunlight_display.icon_state = "sunlight_night"
 					valuecolor = "#FFFFFF"
 		sunlight_display.maptext = FORMAT_BLOODSUCKER_SUNLIGHT_TEXT( \
 			valuecolor, \

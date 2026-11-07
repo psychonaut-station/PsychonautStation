@@ -95,6 +95,19 @@
 	if(istype(H.dna?.species, /datum/species/shadow/shadowling/ascended))
 		return FALSE
 
+	var/datum/team/shadow_hive/hive = get_shadow_hive()
+	if(!hive)
+		return FALSE
+	if(hive.is_ascended)
+		to_chat(H, span_warning("The hive has already ascended!"))
+		return FALSE
+	if(hive.is_ascending)
+		to_chat(H, span_warning("Another ascension ritual is already underway!"))
+		return FALSE
+	if(hive.count_alive_thralls() < hive.get_ascension_thralls_needed())
+		to_chat(H, span_warning("The brood lacks sufficient living thralls to fuel Ascension ([hive.count_alive_thralls()]/[hive.get_ascension_thralls_needed()])."))
+		return FALSE
+
 	var/turf/start_turf = get_turf(H)
 	if(!start_turf)
 		return FALSE
@@ -102,6 +115,8 @@
 	if(start_turf.get_lumcount() >= SHADOWLING_DIM_THRESHOLD)
 		to_chat(H, span_warning("The light disrupts Ascension."))
 		return FALSE
+
+	hive.is_ascending = TRUE
 
 	StartCooldown()
 
@@ -115,8 +130,17 @@
 	circle.start_pulse()
 
 	for(var/i in 1 to steps)
+		if(hive.count_alive_thralls() < hive.get_ascension_thralls_needed())
+			to_chat(H, span_warning("The connection falters as thralls perish — Ascension collapsed!"))
+			hive.is_ascending = FALSE
+			_end_levitate(H)
+			if(circle)
+				circle.stop_and_fade()
+			return FALSE
+
 		var/turf/current_turf = get_turf(H)
 		if(!current_turf)
+			hive.is_ascending = FALSE
 			_end_levitate(H)
 			if(circle)
 				circle.stop_and_fade()
@@ -124,6 +148,7 @@
 
 		if(current_turf.get_lumcount() >= SHADOWLING_DIM_THRESHOLD)
 			to_chat(H, span_warning("Bright light scatters the darkness — Ascension aborted."))
+			hive.is_ascending = FALSE
 			_end_levitate(H)
 			if(circle)
 				circle.stop_and_fade()
@@ -138,12 +163,14 @@
 
 		if(!do_after(H, step_time, H))
 			to_chat(H, span_warning("Your concentration breaks — Ascension interrupted."))
+			hive.is_ascending = FALSE
 			_end_levitate(H)
 			if(circle)
 				circle.stop_and_fade()
 			return FALSE
 
 	if(QDELETED(H))
+		hive.is_ascending = FALSE
 		_end_levitate(null)
 		if(circle)
 			circle.stop_and_fade()
@@ -152,6 +179,7 @@
 	var/turf/final_turf = get_turf(H)
 	if(!final_turf || final_turf.get_lumcount() >= SHADOWLING_DIM_THRESHOLD)
 		to_chat(H, span_warning("Bright light pierces the shadows — Ascension aborted."))
+		hive.is_ascending = FALSE
 		_end_levitate(H)
 		if(circle)
 			circle.stop_and_fade()
@@ -184,9 +212,8 @@
 		if(istype(ability, /datum/action/cooldown/shadowling/ascend) || istype(ability, /datum/action/cooldown/shadowling/hatch))
 			qdel(ability)
 
-	var/datum/team/shadow_hive/hive = get_shadow_hive()
-	if(hive)
-		hive.sync_after_event(H)
+	hive.is_ascending = FALSE
+	hive.sync_after_event(H)
 
 	_end_levitate(H)
 

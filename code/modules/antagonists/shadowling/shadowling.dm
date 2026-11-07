@@ -90,6 +90,20 @@
 	if(current)
 		add_team_hud(current)
 
+/datum/antagonist/shadowling/on_body_transfer(mob/living/old_body, mob/living/new_body)
+	. = ..()
+	if(old_body == new_body)
+		return
+
+	var/datum/team/shadow_hive/hive = get_shadow_hive()
+	if(istype(old_body, /mob/living/carbon/human) && hive)
+		hive.leave_member(old_body)
+
+	if(istype(new_body, /mob/living/carbon/human) && hive)
+		hive.join_member(new_body, ling_role)
+		add_team_hud(new_body)
+		hive.sync_after_event(new_body)
+
 /datum/antagonist/shadowling/proc/set_lesser()
 	ling_role = SHADOWLING_ROLE_LESSER
 
@@ -113,6 +127,16 @@
 	. = ..()
 
 	var/mob/living/carbon/H = owner?.current
+	if(istype(H) && !H.get_organ_slot(ORGAN_SLOT_BRAIN_THRALL))
+		var/obj/item/organ/brain/shadow/tumor_thrall/tumor = new
+		tumor.Insert(H)
+
+/datum/antagonist/shadow_thrall/on_body_transfer(mob/living/old_body, mob/living/new_body)
+	. = ..()
+	if(old_body == new_body)
+		return
+
+	var/mob/living/carbon/H = new_body
 	if(istype(H) && !H.get_organ_slot(ORGAN_SLOT_BRAIN_THRALL))
 		var/obj/item/organ/brain/shadow/tumor_thrall/tumor = new
 		tumor.Insert(H)

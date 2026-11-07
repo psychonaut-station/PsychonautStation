@@ -158,6 +158,7 @@
 			continue
 		O.mob_remove(src, special = TRUE)
 		QDEL_NULL(O)
+	dna.species.regenerate_organs(src, dna.species, replace_missing = TRUE)
 
 // MARK: Claws
 /obj/item/knife/combat/umbral_claw

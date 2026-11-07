@@ -11,7 +11,7 @@
 #define SHADOWLING_PHASE_IN_LIGHT_DURATION (6 SECONDS)
 
 GLOBAL_VAR_INIT(shadowling_hive, null)
-GLOBAL_VAR_INIT(shadowling_debug_mode, TRUE)
+GLOBAL_VAR_INIT(shadowling_debug_mode, FALSE)
 
 #define SHADOWLING_ROLE_MAIN "shadowling_main"
 #define SHADOWLING_ROLE_THRALL "shadowling_thrall"

@@ -126,18 +126,14 @@
 /datum/action/cooldown/shadowling/shreek/proc/affect_synthetics(list/turfs)
 	if(!islist(turfs))
 		return
-	for(var/turf/T in turfs)
-		for(var/obj/vehicle/sealed/mecha/M in T)
-			if(QDELETED(M))
-				continue
+	for(var/obj/vehicle/sealed/mecha/M in turfs)
+		if(!QDELETED(M))
 			M.take_damage(100, BRUTE)
-		for(var/mob/living/silicon/S in T)
-			if(QDELETED(S))
-				continue
+	for(var/mob/living/silicon/S in turfs)
+		if(!QDELETED(S))
 			S.adjust_brute_loss(100)
-		for(var/mob/living/basic/bot/B in T)
-			if(QDELETED(B))
-				continue
+	for(var/mob/living/basic/bot/B in turfs)
+		if(!QDELETED(B))
 			B.adjust_brute_loss(100)
 
 #undef SHREEK_GLASS_DAMAGE_BASE

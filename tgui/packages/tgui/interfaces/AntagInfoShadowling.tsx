@@ -262,7 +262,7 @@ export const AntagInfoShadowling = () => {
                 {/* Incubation Notice */}
                 {!is_hatched && role_type === 'master' && (
                   <Stack.Item>
-                    <NoticeBox warning>
+                    <NoticeBox color="yellow">
                       <Stack align="center">
                         <Stack.Item>
                           <Icon name="exclamation-circle" size={2} color="yellow" />

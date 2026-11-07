@@ -111,7 +111,6 @@
 	max_range = 8
 	var/targeting = FALSE
 	var/secondary_mode = FALSE
-	var/last_used_secondary = FALSE
 	var/static/sfx_fire = 'sound/effects/splat.ogg'
 	var/static/sfx_hit = 'sound/items/weapons/shove.ogg'
 
@@ -122,9 +121,8 @@
 	. = ..()
 	targeting = FALSE
 	secondary_mode = FALSE
-	if(refund_cooldown)
-		button_icon_state = last_used_secondary ? "shadow_hook" : "shadow_grasp"
-		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
+	button_icon_state = "shadow_grasp"
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	apply_button_overlay()
 
 /datum/action/cooldown/shadowling/root/set_click_ability(mob/on_who, refund_cooldown)
@@ -145,10 +143,7 @@
 		return FALSE
 	if(!can_use(owner))
 		return FALSE
-	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
-		secondary_mode = !last_used_secondary
-	else
-		secondary_mode = last_used_secondary
+	secondary_mode = (trigger_flags & TRIGGER_SECONDARY_ACTION) ? TRUE : FALSE
 	button_icon_state = secondary_mode ? "shadow_hook" : "shadow_grasp"
 	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	return ..()
@@ -164,11 +159,7 @@
 
 	var/mob/living/carbon/human/H = clicker
 	var/list/modifiers = params2list(params)
-	var/is_hook
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		is_hook = !secondary_mode
-	else
-		is_hook = secondary_mode
+	var/is_hook = LAZYACCESS(modifiers, RIGHT_CLICK) ? TRUE : secondary_mode
 	secondary_mode = FALSE
 
 	var/turf/start_turf = get_turf(H)
@@ -186,9 +177,6 @@
 		playsound(start_turf, sfx_fire, 55, TRUE)
 		P.fire()
 
-		last_used_secondary = TRUE
-		button_icon_state = "shadow_hook"
-		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 		unset_click_ability(clicker, FALSE)
 		StartCooldown()
 		return TRUE
@@ -235,9 +223,6 @@
 		H.balloon_alert(H, "failed to ensnare")
 		return FALSE
 
-	last_used_secondary = FALSE
-	button_icon_state = "shadow_grasp"
-	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	unset_click_ability(clicker, FALSE)
 	StartCooldown()
 	return TRUE

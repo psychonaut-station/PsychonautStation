@@ -102,6 +102,11 @@
 		unset_click_ability(clicker, TRUE)
 		return FALSE
 
+	var/obj/item/organ/brain/shadow/tumor_thrall/old_tumor = T.get_organ_slot(ORGAN_SLOT_BRAIN_THRALL)
+	if(old_tumor)
+		old_tumor.mob_remove(T, special = TRUE)
+		qdel(old_tumor)
+
 	T.shadowling_strip_quirks()
 	T.reset_robotic_limbs()
 	T.set_species(/datum/species/shadow/shadowling)
@@ -109,6 +114,12 @@
 	for(var/datum/action/cooldown/ability in T.actions.Copy())
 		if(ability.type in typesof(/datum/action/cooldown/shadowling))
 			ability.Remove(T)
+
+	T.mind?.remove_antag_datum(/datum/antagonist/shadow_thrall)
+	var/datum/antagonist/shadowling/new_antag = T.mind?.add_antag_datum(/datum/antagonist/shadowling)
+	if(new_antag)
+		new_antag.ling_role = SHADOWLING_ROLE_LESSER
+		new_antag.is_thrall = FALSE
 
 	// Make our thrall a lesser Shadowling
 	hive.join_member(T, SHADOWLING_ROLE_LESSER)

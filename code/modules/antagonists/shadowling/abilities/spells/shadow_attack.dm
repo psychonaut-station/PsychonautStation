@@ -3,7 +3,7 @@
 	name = "Shadow Strike"
 	desc = "Target a mortal while incorporeal. Left-Click to teleport and deliver a devastating strike (25 brute damage). Right-Click to teleport and grab them by the neck."
 	button_icon_state = "shadow_strike"
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	cooldown_time = 5 SECONDS
 	click_to_activate = TRUE
 	unset_after_click = TRUE
@@ -18,7 +18,6 @@
 	var/static/sfx_activate = 'sound/effects/magic/demon_attack1.ogg'
 	var/targeting = FALSE
 	var/secondary_mode = FALSE
-	var/last_used_secondary = FALSE
 
 /datum/action/cooldown/shadowling/shadow_strike/is_action_active(atom/movable/screen/movable/action_button/_btn)
 	return targeting
@@ -27,9 +26,8 @@
 	. = ..()
 	targeting = FALSE
 	secondary_mode = FALSE
-	if(refund_cooldown)
-		button_icon_state = last_used_secondary ? "shadow_grab" : "shadow_strike"
-		build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
+	button_icon_state = "shadow_strike"
+	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	apply_button_overlay()
 
 /datum/action/cooldown/shadowling/shadow_strike/set_click_ability(mob/on_who, refund_cooldown)
@@ -39,6 +37,9 @@
 
 /datum/action/cooldown/shadowling/shadow_strike/can_use(mob/living/carbon/human/H)
 	if(!..())
+		return FALSE
+	if(!isopenturf(H.loc) && !istype(H.loc, /obj/effect/dummy/phased_mob/shadowling))
+		owner.balloon_alert(owner, "cannot use while enclosed")
 		return FALSE
 	if(istype(H.loc, /obj/effect/dummy/phased_mob/shadowling))
 		return TRUE
@@ -52,10 +53,7 @@
 		return FALSE
 	if(!can_use(owner))
 		return FALSE
-	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
-		secondary_mode = !last_used_secondary
-	else
-		secondary_mode = last_used_secondary
+	secondary_mode = (trigger_flags & TRIGGER_SECONDARY_ACTION) ? TRUE : FALSE
 	button_icon_state = secondary_mode ? "shadow_grab" : "shadow_strike"
 	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	return ..()
@@ -98,15 +96,17 @@
 			return FALSE
 
 	var/list/modifiers = params2list(params)
-	var/is_grab
-	if(LAZYACCESS(modifiers, RIGHT_CLICK))
-		is_grab = !secondary_mode
-	else
-		is_grab = secondary_mode
+	var/is_grab = LAZYACCESS(modifiers, RIGHT_CLICK) ? TRUE : secondary_mode
 	secondary_mode = FALSE
 
 	var/dist = get_dist(H, T)
 	if(is_grab)
+		if(H.usable_hands <= 0 || HAS_TRAIT(H, TRAIT_HANDS_BLOCKED))
+			H.balloon_alert(H, "hands not free")
+			return FALSE
+		if(T.anchored)
+			H.balloon_alert(H, "target cannot be grabbed")
+			return FALSE
 		if(dist > grab_range)
 			H.balloon_alert(H, "too far to grab")
 			return FALSE
@@ -116,6 +116,9 @@
 			return FALSE
 
 	var/turf/nearby = pick_adjacent_open_turf(get_turf(T))
+	if(!nearby)
+		H.balloon_alert(H, "no space near target")
+		return FALSE
 	var/datum/action/cooldown/shadowling/shadow_phase/SP
 	for(var/datum/action/cooldown/shadowling/shadow_phase/X in H.actions)
 		SP = X
@@ -169,7 +172,6 @@
 			ignored_mobs = null
 		)
 		T.log_message("was grabbed from shadows by [H]", LOG_ATTACK, color = "#8a2be2")
-		last_used_secondary = TRUE
 		button_icon_state = "shadow_grab"
 	else
 		H.visible_message(
@@ -181,7 +183,6 @@
 		H.do_attack_animation(T)
 		playsound(get_turf(H), sfx_activate, 65, TRUE)
 		T.log_message("was hit by [H] with shadow strike for [attack_value] brute", LOG_ATTACK, color = "#8a2be2")
-		last_used_secondary = FALSE
 		button_icon_state = "shadow_strike"
 
 	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)

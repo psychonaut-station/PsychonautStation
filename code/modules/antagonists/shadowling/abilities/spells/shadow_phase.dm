@@ -20,6 +20,7 @@
 	name = "Shadow Phase"
 	desc = "Become incorporeal and phase through walls for a short duration. Bright light forces you out unless ascended."
 	button_icon_state = "shadowling_crawl"
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED
 	cooldown_time = 30 SECONDS
 	requires_dark_user = FALSE
 	requires_dark_target = FALSE
@@ -40,6 +41,14 @@
 	if(H.has_status_effect(/datum/status_effect/shadow/phase))
 		return TRUE
 	return FALSE
+
+/datum/action/cooldown/shadowling/shadow_phase/can_use(mob/living/carbon/human/H)
+	if(!..())
+		return FALSE
+	if(!isopenturf(H.loc) && !istype(H.loc, /obj/effect/dummy/phased_mob/shadowling))
+		owner.balloon_alert(owner, "cannot use while enclosed")
+		return FALSE
+	return TRUE
 
 /datum/action/cooldown/shadowling/shadow_phase/Trigger(mob/clicker, trigger_flags, atom/target)
 	. = ..()

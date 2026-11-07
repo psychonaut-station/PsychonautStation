@@ -73,15 +73,12 @@
 	required_thralls = 30
 
 /datum/action/cooldown/shadowling/cold_wave/DoEffect(mob/living/carbon/human/H, atom/_)
+	play_cold_fx(H)
 	var/list/targets = collect_cone_targets(H)
 	if(!length(targets))
-		play_cold_fx(H)
 		H.balloon_alert(H, "missed")
-		return FALSE
+		return TRUE
 
-	play_cold_fx(H)
-
-	var/hit = FALSE
 	for(var/mob/living/carbon/human/T in targets)
 		if(QDELETED(T))
 			continue
@@ -98,9 +95,8 @@
 			T.reagents.add_reagent(reagent_type, frostoil_amt)
 
 		T.apply_status_effect(/datum/status_effect/cloudstruck/shadow, COLD_WAVE_SLOW_DURATION)
-		hit = TRUE
 
-	return hit
+	return TRUE
 
 /datum/action/cooldown/shadowling/cold_wave/collect_cone_targets(mob/living/carbon/human/H)
 	var/list/out = list()

@@ -8,7 +8,7 @@
 	overlay_icon = 'icons/mob/antagonists/shadowling/shadowling_actions.dmi'
 	overlay_icon_state = "bg_shadowling_border"
 	active_overlay_icon_state = "bg_shadowling_border_active"
-	check_flags = AB_CHECK_CONSCIOUS
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED | AB_CHECK_OPEN_TURF
 	cooldown_time = 10 SECONDS
 	var/required_thralls = 0
 	var/requires_dark_user = FALSE
@@ -87,6 +87,8 @@
 			return
 	disable()
 	var/success = DoEffectOnTargets(owner, targets)
+	if(QDELETED(src))
+		return
 	if(success)
 		StartCooldown()
 	else

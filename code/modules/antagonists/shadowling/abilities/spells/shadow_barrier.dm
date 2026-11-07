@@ -65,4 +65,4 @@
 	if(!allowed_projectile_typecache[proj.type])
 		return
 	proj.reflect(H)
-	return COMPONENT_BULLET_PIERCED
+	return COMPONENT_BULLET_BLOCKED

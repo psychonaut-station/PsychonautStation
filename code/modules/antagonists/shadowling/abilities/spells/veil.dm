@@ -24,7 +24,6 @@
 	var/smoke_stun_chance = 25
 	var/smoke_stun_time = 2 SECONDS
 	var/static/sfx_emp = 'sound/effects/empulse.ogg'
-	var/last_used_secondary = FALSE
 
 /datum/action/cooldown/shadowling/veil/Trigger(mob/clicker, trigger_flags, atom/target)
 	if(!istype(owner))
@@ -33,12 +32,7 @@
 	if(!can_use(H))
 		return FALSE
 
-	var/use_smoke
-	if(trigger_flags & TRIGGER_SECONDARY_ACTION)
-		use_smoke = !last_used_secondary
-	else
-		use_smoke = last_used_secondary
-
+	var/use_smoke = (trigger_flags & TRIGGER_SECONDARY_ACTION) ? TRUE : FALSE
 	if(use_smoke)
 		return do_smoke(H)
 	return do_veil(H)
@@ -61,7 +55,6 @@
 	playsound(T, 'sound/effects/smoke.ogg', 50, TRUE, -3)
 	shadow_spawn_smoke(T, H, smoke_radius, smoke_ticks, heal_amount, smoke_blind_time, smoke_stun_chance, smoke_stun_time)
 	to_chat(H, span_notice("You exhale a surging shroud of shadow smoke!"))
-	last_used_secondary = TRUE
 	button_icon_state = "shadow_smoke"
 	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	StartCooldown()
@@ -85,7 +78,6 @@
 	new /obj/effect/temp_visual/circle_wave/shadow_veil(center)
 
 	to_chat(H, span_notice("A shroud of darkness sweeps across the area."))
-	last_used_secondary = FALSE
 	button_icon_state = "shadow_veil"
 	build_all_button_icons(UPDATE_BUTTON_ICON, force = TRUE)
 	StartCooldown()

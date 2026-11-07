@@ -11,6 +11,7 @@
 	var/last_sync_thrall_count = 0
 	var/max_thralls_reached = 0
 	var/is_ascended = FALSE
+	var/is_ascending = FALSE
 
 /datum/team/shadow_hive/New()
 	. = ..()

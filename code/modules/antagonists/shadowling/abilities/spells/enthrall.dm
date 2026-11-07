@@ -6,6 +6,7 @@
 	name = "Enthrall"
 	desc = "Subjugate a nearby crewmember in front of you into a thrall of the Hive. Requires darkness."
 	button_icon_state = "shadow_enthrall"
+	check_flags = AB_CHECK_CONSCIOUS | AB_CHECK_INCAPACITATED | AB_CHECK_HANDS_BLOCKED | AB_CHECK_OPEN_TURF
 	cooldown_time = 45 SECONDS
 	required_thralls = 0
 	requires_dark_user = TRUE

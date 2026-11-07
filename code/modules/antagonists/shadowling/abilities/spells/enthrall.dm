@@ -74,6 +74,10 @@
 		enable()
 		return FALSE
 
+	if(HAS_TRAIT(T, TRAIT_BEING_ENTHRALLED))
+		owner.balloon_alert(owner, "victim is already being enthralled")
+		return FALSE
+
 	if((!is_dark(H) || !is_dark(T)) && !GLOB.shadowling_debug_mode)
 		owner.balloon_alert(owner, "light broke the connection")
 		StartCooldown()
@@ -90,6 +94,8 @@
 			to_chat(H, span_notice("[T.real_name] is already bound to the hive."))
 			return TRUE
 
+	ADD_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
+
 	to_chat(H, span_notice("You begin binding [T.real_name]'s mind to the hive. Stand still and remain in the dark..."))
 	apply_wibbly_filters(T)
 	apply_wibbly_filters(H)
@@ -97,33 +103,52 @@
 
 	var/cast_delay = (GLOB.shadowling_debug_mode ? (1 SECONDS) : enthrall_time)
 	var/loops = (GLOB.shadowling_debug_mode ? 1 : 3)
+	var/total_drained_oxy = 0
 
 	// 30 second cast (1 loop of 1s in debug mode)
 	for(var/i in 1 to loops)
 		if(cancel_on_bright && !is_dark(H) && !GLOB.shadowling_debug_mode)
 			to_chat(H, span_warning("Light severed the connection."))
-			remove_wibbly_filters(T)
+			if(total_drained_oxy > 0 && !QDELETED(T))
+				T.adjust_oxy_loss(-total_drained_oxy)
+			if(!QDELETED(T))
+				REMOVE_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
+				remove_wibbly_filters(T)
 			remove_wibbly_filters(H)
 			return FALSE
 		if(QDELETED(T) || T.stat == DEAD || get_dist(H, T) > 2 || has_mindshield(T) || (!is_dark(T) && !GLOB.shadowling_debug_mode))
 			to_chat(H, span_warning("Target lost."))
-			remove_wibbly_filters(T)
+			if(total_drained_oxy > 0 && !QDELETED(T))
+				T.adjust_oxy_loss(-total_drained_oxy)
+			if(!QDELETED(T))
+				REMOVE_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
+				remove_wibbly_filters(T)
 			remove_wibbly_filters(H)
 			return FALSE
 		if(!do_after(H, cast_delay, T))
 			to_chat(H, span_warning("Connection broken."))
-			remove_wibbly_filters(T)
+			if(total_drained_oxy > 0 && !QDELETED(T))
+				T.adjust_oxy_loss(-total_drained_oxy)
+			if(!QDELETED(T))
+				REMOVE_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
+				remove_wibbly_filters(T)
 			remove_wibbly_filters(H)
 			return FALSE
 
 		T.adjust_oxy_loss(ENTHRALL_OXY_DRAIN)
+		total_drained_oxy += ENTHRALL_OXY_DRAIN
 
 	if(QDELETED(T) || T.stat == DEAD || get_dist(H, T) > 2 || ((!is_dark(H) || !is_dark(T)) && !GLOB.shadowling_debug_mode) || has_mindshield(T))
 		to_chat(H, span_warning("The enthrallment failed."))
-		remove_wibbly_filters(T)
+		if(total_drained_oxy > 0 && !QDELETED(T))
+			T.adjust_oxy_loss(-total_drained_oxy)
+		if(!QDELETED(T))
+			REMOVE_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
+			remove_wibbly_filters(T)
 		remove_wibbly_filters(H)
 		return FALSE
 
+	REMOVE_TRAIT(T, TRAIT_BEING_ENTHRALLED, REF(src))
 	T.adjust_oxy_loss(ENTHRALL_OXY_RESTORE)
 
 	if(iscarbon(T))
@@ -141,8 +166,20 @@
 	else if(GLOB.shadowling_debug_mode)
 		T.mind?.add_antag_datum(/datum/antagonist/shadow_thrall)
 
+	if(T.mind)
+		var/static/list/conflicting_antags = list(
+			/datum/antagonist/cult,
+			/datum/antagonist/rev,
+			/datum/antagonist/nukeop,
+			/datum/antagonist/traitor,
+			/datum/antagonist/changeling,
+			/datum/antagonist/heretic,
+		)
+		for(var/antag_type in conflicting_antags)
+			T.mind.remove_antag_datum(antag_type)
+
 	to_chat(H, span_notice("You bind the mind of [T.real_name] to the hive."))
-	to_chat(T, span_danger("Freezing darkness pierces your brain... You are now a thrall of the Hive!"))
+	to_chat(T, "<span class='reallybig redtext'>A terrifying darkness crashes into your subconscious, obliterating your former identity. All prior allegiances, oaths, and loyalties are entirely meaningless. Your soul belongs wholly to the Shadowling Hive — you will obey and protect your masters without hesitation!</span>")
 	remove_wibbly_filters(T)
 	remove_wibbly_filters(H)
 	return TRUE

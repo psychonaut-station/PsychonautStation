@@ -70,13 +70,16 @@
 	return FALSE
 
 /datum/action/cooldown/shadowling/Trigger(mob/clicker, trigger_flags, atom/target)
+	. = ..()
+	if(!.)
+		return FALSE
 	if(click_to_activate)
-		return ..()
+		return .
 	if(!istype(owner))
-		return
+		return FALSE
 	if(!can_use(owner))
 		enable()
-		return
+		return FALSE
 	var/list/targets = CollectTargets(owner, target)
 	if(!ValidateTargets(owner, targets))
 		enable()
@@ -171,7 +174,7 @@
 			best = candidate
 	return best
 
-/datum/action/cooldown/shadowling/proc/pick_adjacent_open_turf(turf/center)
+/proc/pick_adjacent_open_turf(turf/center)
 	if(!istype(center))
 		return null
 	var/list/cands = list()

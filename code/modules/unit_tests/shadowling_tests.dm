@@ -40,6 +40,12 @@
 
 	// Remove tumor (simulate neurosurgery extraction)
 	tumor.mob_remove(victim, special = FALSE)
+	TEST_ASSERT(tumor.inert, "Extracted thrall tumor was not marked inert.")
+
+	var/mob/living/carbon/human/second_victim = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
+	second_victim.mind_initialize()
+	tumor.Insert(second_victim)
+	TEST_ASSERT_NULL(second_victim.mind.has_antag_datum(/datum/antagonist/shadow_thrall), "Inert thrall tumor incorrectly granted Shadow Thrall antag datum.")
 	qdel(tumor)
 
 	TEST_ASSERT_NULL(victim.mind.has_antag_datum(/datum/antagonist/shadow_thrall), "Victim still retained Shadow Thrall antag datum after tumor removal.")

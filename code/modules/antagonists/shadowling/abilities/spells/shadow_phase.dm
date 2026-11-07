@@ -70,7 +70,7 @@
 		return TRUE
 	else
 		exit_phase(H, forced_out = FALSE)
-		StartCooldown()
+		StartCooldown(5 SECONDS)
 		return TRUE
 
 /datum/action/cooldown/shadowling/shadow_phase/proc/fade_out(mob/living/carbon/human/H, time = 0.3 SECONDS)
@@ -185,7 +185,7 @@
 
 	fade_in(H, 0.3 SECONDS)
 	to_chat(H, span_notice("You return to physical form."))
-	StartCooldown()
+	StartCooldown(10 SECONDS)
 
 	for(var/datum/action/cooldown/shadowling/shadow_phase/A in H.actions)
 		A.apply_button_overlay()

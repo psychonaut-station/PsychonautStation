@@ -4,6 +4,7 @@
 	var/applied_speed = FALSE
 	var/next_burn_sfx_time = 0
 	var/static/sfx_burn = 'sound/items/weapons/sear.ogg'
+	var/corpse_light_ticks = 0
 
 /datum/status_effect/grouped/bodypart_effect/nyxosynthesis/shadowling/on_apply()
 	. = ..()
@@ -25,28 +26,43 @@
 	var/coef = GET_BODYPART_COEFFICIENT(bodyparts)
 
 	if(light >= SHADOWLING_LIGHT_THRESHOLD)
-		if(coef > 0 && owner.stat != DEAD)
+		if(coef > 0)
 			owner.take_overall_damage(
-				brute = SHADOWLING_BRIGHT_BRUTE_PER_LIMB * coef,
-				burn = SHADOWLING_BRIGHT_BURN_PER_LIMB * coef,
+				burn = SHADOWLING_BRIGHT_BURN_PER_LIMB * coef * (owner.stat == DEAD ? 1.5 : 1),
+				brute = (owner.stat == DEAD ? 0 : SHADOWLING_BRIGHT_BRUTE_PER_LIMB * coef),
 				required_bodytype = BODYTYPE_SHADOW
 			)
 
 			if(world.time >= next_burn_sfx_time)
-				playsound(T, sfx_burn, 10, TRUE)
+				playsound(T, sfx_burn, (owner.stat == DEAD ? 20 : 10), TRUE)
 				next_burn_sfx_time = world.time + 1 SECONDS
 
 		if(applied_speed)
 			owner.remove_movespeed_modifier(/datum/movespeed_modifier/shadowling/dark)
 			applied_speed = FALSE
 
+		if(owner.stat == DEAD)
+			corpse_light_ticks++
+			if(corpse_light_ticks >= 15 && !HAS_TRAIT(owner, TRAIT_HUSK))
+				owner.become_husk()
+				owner.visible_message(span_danger("[owner]'s dark corpse shrivels and withers into a charred husk under the searing light!"))
+				playsound(T, 'sound/effects/magic/fireball.ogg', 50, TRUE)
+			else if(corpse_light_ticks >= 30 && HAS_TRAIT(owner, TRAIT_HUSK))
+				owner.visible_message(span_danger("[owner]'s charred husk crumbles into an ethereal cloud of fading shadow dust!"))
+				playsound(T, 'sound/effects/magic/disintegrate.ogg', 70, TRUE)
+				owner.dust()
+				return
+		return
+
+	corpse_light_ticks = max(0, corpse_light_ticks - 1)
+
+	var/is_dead = owner.stat == DEAD
+	if(is_dead && HAS_TRAIT(owner, TRAIT_HUSK))
 		return
 
 	var/heal_per = (light < SHADOWLING_DIM_THRESHOLD) \
 		? SHADOWLING_DARK_HEAL_PER_LIMB_DEEP \
 		: SHADOWLING_DARK_HEAL_PER_LIMB_DIM
-
-	var/is_dead = owner.stat == DEAD
 
 	if(is_dead)
 		heal_per *= SHADOWLING_DEAD_HEAL_MULTIPLIER
@@ -85,8 +101,9 @@
 		return FALSE
 	REMOVE_TRAIT(owner, TRAIT_DEATHCOMA, SHADOWLING_DEATHCOMA_TRAIT)
 	REMOVE_TRAIT(owner, TRAIT_STASIS, SHADOWLING_DEATHCOMA_TRAIT)
-	owner.revive(HEAL_DAMAGE|HEAL_BODY|HEAL_STATUS|HEAL_CC_STATUS)
+	owner.revive(HEAL_DAMAGE|HEAL_BODY|HEAL_STATUS|HEAL_CC_STATUS, force_grab_ghost = TRUE)
 	to_chat(owner, span_notice("The darkness has restored your body. You return to life."))
+	notify_ghosts("The shadowling [owner.real_name] has reformed in the darkness!", source = owner)
 
 	return TRUE
 

@@ -130,8 +130,19 @@
 		return null
 	return newloc
 
+/obj/effect/dummy/phased_mob/shadowling/Destroy()
+	if(jaunter && jaunter.loc == src)
+		eject_jaunter(TRUE)
+	return ..()
+
 /obj/effect/dummy/phased_mob/shadowling/eject_jaunter(forced_out = FALSE)
 	var/mob/living/L = jaunter
+	var/turf/cur_turf = get_turf(src)
+	if(!isopenturf(cur_turf))
+		var/turf/open_turf = pick_adjacent_open_turf(cur_turf)
+		if(open_turf)
+			forceMove(open_turf)
+
 	. = ..()
 
 	if(istype(L))
@@ -140,3 +151,6 @@
 		if(forced_out && !light_immunity)
 			L.Knockdown(1 SECONDS)
 			L.Paralyze(1 SECONDS)
+			var/datum/action/cooldown/shadowling/shadow_phase/SP = locate(/datum/action/cooldown/shadowling/shadow_phase) in L.actions
+			if(SP)
+				SP.StartCooldown(30 SECONDS)

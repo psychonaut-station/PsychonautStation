@@ -26,6 +26,9 @@
 	var/static/sfx_emp = 'sound/effects/empulse.ogg'
 
 /datum/action/cooldown/shadowling/veil/Trigger(mob/clicker, trigger_flags, atom/target)
+	. = ..()
+	if(!.)
+		return FALSE
 	if(!istype(owner))
 		return FALSE
 	var/mob/living/carbon/human/H = owner

@@ -38,6 +38,7 @@
 	name = "shadow thrall tumor"
 	desc = "A parasitic hive node that enmeshes the host's mind."
 	slot = ORGAN_SLOT_BRAIN_THRALL
+	var/inert = FALSE
 
 /obj/item/organ/brain/shadow/tumor_thrall/Initialize(mapload)
 	. = ..()
@@ -47,11 +48,15 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	receiver?.mind?.add_antag_datum(/datum/antagonist/shadow_thrall)
-	RegisterSignal(receiver, COMSIG_ATOM_EXAMINE, PROC_REF(on_holder_examine))
-	to_chat(receiver, span_danger("A freezing whisper permeates your mind... You have been enslaved!"))
+	if(!inert)
+		receiver?.mind?.add_antag_datum(/datum/antagonist/shadow_thrall)
+		RegisterSignal(receiver, COMSIG_ATOM_EXAMINE, PROC_REF(on_holder_examine))
+		to_chat(receiver, span_danger("A freezing whisper permeates your mind... You have been enslaved!"))
 
 /obj/item/organ/brain/shadow/tumor_thrall/on_mob_remove(mob/living/carbon/organ_owner, special = FALSE, movement_flags)
+	inert = TRUE
+	name = "inert shadowling swarm tumor"
+	desc = "A withered shadowy tumor, stripped of its brood connection."
 	organ_owner?.mind?.remove_antag_datum(/datum/antagonist/shadow_thrall)
 	UnregisterSignal(organ_owner, COMSIG_ATOM_EXAMINE)
 	if(organ_owner)

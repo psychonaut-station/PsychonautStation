@@ -39,9 +39,19 @@
 
 /obj/effect/shadow_bind_anchor/Destroy()
 	STOP_PROCESSING(SSobj, src)
-	for(var/mob/living/L in buckled_mobs)
-		unbuckle_mob(L, force = TRUE)
+	unbuckle_all_mobs(force = TRUE)
 	return ..()
+
+/obj/effect/shadow_bind_anchor/user_unbuckle_mob(mob/living/buckled_mob, mob/living/user)
+	if(user == buckled_mob)
+		to_chat(user, span_warning("The writhing shadows bind your limbs tightly, preventing you from pulling free!"))
+		return FALSE
+	to_chat(user, span_notice("You begin tearing the shadowy tendrils off [buckled_mob]..."))
+	if(do_after(user, 3 SECONDS, buckled_mob))
+		to_chat(user, span_notice("You rip the shadows away!"))
+		unbuckle_mob(buckled_mob)
+		return TRUE
+	return FALSE
 
 /obj/effect/shadow_bind_anchor/process(seconds_per_tick)
 	if(!isturf(loc))

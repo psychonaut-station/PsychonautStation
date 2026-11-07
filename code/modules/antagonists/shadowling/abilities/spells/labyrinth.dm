@@ -86,6 +86,9 @@
 	if(!istype(T))
 		owner.balloon_alert(owner, "invalid tile")
 		return FALSE
+	if(isspaceturf(T) || !istype(T, /turf/open/floor))
+		clicker.balloon_alert(clicker, "invalid destination")
+		return FALSE
 	if(!is_dark(T))
 		owner.balloon_alert(owner, "too bright")
 		return FALSE

@@ -34,6 +34,10 @@
 	move_resist = MOVE_FORCE_VERY_STRONG
 	resistance_flags = INDESTRUCTIBLE
 
+/obj/structure/alien/resin/wall/shadowling/Initialize(mapload)
+	. = ..()
+	QDEL_IN(src, 3 MINUTES)
+
 // MARK: Ability
 /datum/action/cooldown/shadowling/hatch
 	name = "Hatch"
@@ -54,6 +58,13 @@
 
 	var/obj/structure/shadowling_cocoon/cover
 	var/prev_alpha
+	var/list/walls
+
+/datum/action/cooldown/shadowling/hatch/Destroy()
+	cleanup(walls)
+	walls = null
+	detach_cover()
+	return ..()
 
 /datum/action/cooldown/shadowling/hatch/proc/build_ring_walls(turf/center)
 	var/list/walls = list()
@@ -109,7 +120,7 @@
 		return FALSE
 
 	StartCooldown()
-	var/list/walls = build_ring_walls(start)
+	walls = build_ring_walls(start)
 
 	attach_cover()
 	playsound(start, sfx_start, 60, TRUE)

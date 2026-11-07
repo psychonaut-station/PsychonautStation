@@ -1098,6 +1098,9 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Used to prevent multiple floating blades from triggering over the same target
 #define TRAIT_BEING_BLADE_SHIELDED "being_blade_shielded"
 
+/// Used to prevent multiple concurrent enthrall attempts on the same target
+#define TRAIT_BEING_ENTHRALLED "being_enthralled"
+
 /// This mob doesn't count as looking at you if you can only act while unobserved
 #define TRAIT_UNOBSERVANT "trait_unobservant"
 

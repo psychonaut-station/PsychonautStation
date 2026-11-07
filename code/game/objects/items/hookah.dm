@@ -221,7 +221,7 @@
 			if(!length(food_items) && !reagents.total_volume)
 				to_chat(user, span_warning("There are no ingredients in [src]!"))
 				return CLICK_ACTION_BLOCKING
-			if(!(mouthpiece in user.held_items))
+			if(!(mouthpiece in user.get_held_items()))
 				to_chat(user, span_warning("You need to hold the mouthpiece to inhale from [src]!"))
 				return CLICK_ACTION_BLOCKING
 			user.visible_message(span_notice("[user] takes a deep drag..."), span_notice("You take a deep drag..."))
@@ -414,7 +414,7 @@
 
 	if(!hookah || !length(hookah.food_items) && !hookah.reagents.total_volume)
 		return
-	if(!(src in user.held_items))
+	if(!(src in user.get_held_items()))
 		return
 
 	for(var/obj/item/food/food as anything in hookah.food_items)

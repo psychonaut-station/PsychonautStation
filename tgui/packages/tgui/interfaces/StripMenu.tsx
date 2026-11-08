@@ -1,6 +1,6 @@
 import { range } from 'es-toolkit';
 import type { CSSProperties } from 'react';
-import { Box, Button, Icon, Image, Stack } from 'tgui-core/components';
+import { Box, Button, DmIcon, Icon, Image, Stack } from 'tgui-core/components';
 import type { BooleanLike } from 'tgui-core/react';
 
 import { resolveAsset } from '../assets';
@@ -114,65 +114,64 @@ const ALTERNATE_ACTIONS: Record<string, AlternateAction> = {
   },
 };
 
-const SLOTS: Record<
-  string,
-  {
-    displayName: string;
-    gridSpot: GridSpotKey;
-    image?: string;
-    additionalComponent?: React.JSX.Element;
-  }
-> = {
+type StripSlot = {
+  displayName: string;
+  gridSpot: GridSpotKey;
+  image?: string;
+  additionalComponent?: React.JSX.Element;
+};
+
+const SLOTS: Record<string, StripSlot> = {
   eyes: {
     displayName: 'eyewear',
-    gridSpot: getGridSpotKey([0, 1]),
+    gridSpot: getGridSpotKey([0, 0]),
     image: 'inventory-glasses.png',
   },
 
   head: {
     displayName: 'headwear',
-    gridSpot: getGridSpotKey([0, 2]),
+    gridSpot: getGridSpotKey([0, 1]),
     image: 'inventory-head.png',
   },
 
   neck: {
     displayName: 'neckwear',
-    gridSpot: getGridSpotKey([1, 1]),
+    gridSpot: getGridSpotKey([1, 0]),
     image: 'inventory-neck.png',
   },
 
   mask: {
     displayName: 'mask',
-    gridSpot: getGridSpotKey([1, 2]),
+    gridSpot: getGridSpotKey([1, 1]),
     image: 'inventory-mask.png',
   },
 
   pet_collar: {
     displayName: 'collar',
-    gridSpot: getGridSpotKey([1, 2]),
+    gridSpot: getGridSpotKey([1, 0]),
     image: 'inventory-collar.png',
   },
 
   ears: {
     displayName: 'earwear',
-    gridSpot: getGridSpotKey([1, 3]),
+    gridSpot: getGridSpotKey([0, 2]),
     image: 'inventory-ears.png',
   },
 
   parrot_headset: {
     displayName: 'headset',
-    gridSpot: getGridSpotKey([1, 3]),
+    gridSpot: getGridSpotKey([0, 2]),
     image: 'inventory-ears.png',
   },
 
   handcuffs: {
     displayName: 'handcuffs',
-    gridSpot: getGridSpotKey([1, 4]),
+    gridSpot: getGridSpotKey([3, 5]),
   },
 
   legcuffs: {
     displayName: 'legcuffs',
-    gridSpot: getGridSpotKey([1, 5]),
+    gridSpot: getGridSpotKey([4, 2]),
   },
 
   jumpsuit: {
@@ -189,7 +188,7 @@ const SLOTS: Record<
 
   gloves: {
     displayName: 'gloves',
-    gridSpot: getGridSpotKey([2, 3]),
+    gridSpot: getGridSpotKey([3, 4]),
     image: 'inventory-gloves.png',
   },
 
@@ -207,45 +206,59 @@ const SLOTS: Record<
     additionalComponent: <CornerText align="right">L</CornerText>,
   },
 
+  upper_right_hand: {
+    displayName: 'upper right hand',
+    gridSpot: getGridSpotKey([1, 4]),
+    image: 'inventory-hand_r.png',
+    additionalComponent: <CornerText align="left">(U) R</CornerText>,
+  },
+
+  upper_left_hand: {
+    displayName: 'upper left hand',
+    gridSpot: getGridSpotKey([1, 5]),
+    image: 'inventory-hand_l.png',
+    additionalComponent: <CornerText align="right">L (U)</CornerText>,
+  },
+
   shoes: {
     displayName: 'shoes',
-    gridSpot: getGridSpotKey([3, 2]),
+    gridSpot: getGridSpotKey([4, 1]),
     image: 'inventory-shoes.png',
   },
 
   suit_storage: {
     displayName: 'suit storage item',
-    gridSpot: getGridSpotKey([4, 0]),
+    gridSpot: getGridSpotKey([2, 0]),
     image: 'inventory-suit_storage.png',
   },
 
   id: {
     displayName: 'ID',
-    gridSpot: getGridSpotKey([4, 1]),
+    gridSpot: getGridSpotKey([4, 0]),
     image: 'inventory-id.png',
   },
 
   belt: {
     displayName: 'belt',
-    gridSpot: getGridSpotKey([4, 2]),
+    gridSpot: getGridSpotKey([3, 1]),
     image: 'inventory-belt.png',
   },
 
   back: {
     displayName: 'backpack',
-    gridSpot: getGridSpotKey([4, 3]),
+    gridSpot: getGridSpotKey([1, 2]),
     image: 'inventory-back.png',
   },
 
   left_pocket: {
     displayName: 'left pocket',
-    gridSpot: getGridSpotKey([4, 4]),
+    gridSpot: getGridSpotKey([3, 0]),
     image: 'inventory-pocket.png',
   },
 
   right_pocket: {
     displayName: 'right pocket',
-    gridSpot: getGridSpotKey([4, 5]),
+    gridSpot: getGridSpotKey([3, 2]),
     image: 'inventory-pocket.png',
   },
 };
@@ -260,9 +273,14 @@ type Interactable = {
   interacting: BooleanLike;
 };
 
+type AlternateActionIcon = {
+  icon: string;
+  icon_state: string;
+};
+
 type AlternateActions = {
   alternate?: string[];
-  alternate_icons?: Record<string, string> | null;
+  alternate_icons?: Record<string, AlternateActionIcon> | null;
 };
 
 /**
@@ -281,6 +299,7 @@ type StripMenuItem =
   | ((
       | ({
           icon: string;
+          icon_state: string;
           name: string;
           obscured: ObscuringLevel;
         } & AlternateActions)
@@ -339,8 +358,9 @@ export const StripMenu = (props) => {
                     tooltip = slot.displayName;
                   } else if ('name' in item) {
                     content = (
-                      <Image
-                        src={`data:image/jpeg;base64,${item.icon}`}
+                      <DmIcon
+                        icon={item.icon}
+                        icon_state={item.icon_state}
                         width="64px"
                         height="64px"
                         style={{
@@ -380,8 +400,7 @@ export const StripMenu = (props) => {
                   if (item && 'alternate' in item && item.alternate?.length) {
                     alternateActions = item.alternate.map(
                       (alternateKey, idx) => {
-                        const alternateAction =
-                          ALTERNATE_ACTIONS[alternateKey];
+                        const alternateAction = ALTERNATE_ACTIONS[alternateKey];
                         const alternateIcon =
                           item.alternate_icons?.[alternateKey];
 
@@ -421,8 +440,9 @@ export const StripMenu = (props) => {
                             }
                           >
                             {alternateIcon ? (
-                              <Image
-                                src={`data:image/jpeg;base64,${alternateIcon}`}
+                              <DmIcon
+                                icon={alternateIcon.icon}
+                                icon_state={alternateIcon.icon_state}
                                 width="20px"
                                 height="20px"
                               />

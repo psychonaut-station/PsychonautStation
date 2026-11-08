@@ -43,6 +43,10 @@
 	base_icon_state = "marksman"
 	ammo_type = /obj/item/ammo_casing/p50/marksman
 
+/obj/item/ammo_box/magazine/sniper_rounds/marine
+	name = "anti-materiel sniper rounds (.50 BMG marine)"
+	ammo_type = /obj/item/ammo_casing/p50/marine
+
 // Lahti-L39 Magazine //
 
 /obj/item/ammo_box/magazine/lahtimagazine

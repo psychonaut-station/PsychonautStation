@@ -22,6 +22,9 @@
 	var/list/valid_minimap_blip_tags = list()
 	/// fixed z-level to stay on
 	var/fixed_z_level
+	/// fixed id on its z-level to stay on
+	var/fixed_id
+	var/team_id
 	/// Y-axis offset for drawing to account for mouse cursor icon positioning.
 	var/draw_offset_y = -3
 	/// Whether this minimap instance allows drawing and labels.
@@ -46,12 +49,14 @@
 	/// string for the locator blip's tag
 	var/locator_blip_tag = "locator"
 
-/atom/movable/screen/minimap_display/Initialize(mapload, datum/hud/hud_owner, datum/minimap/minimap, list/minimap_blip_tags, initial_fixed_z_level, annotation_share_tag, can_draw = TRUE)
+/atom/movable/screen/minimap_display/Initialize(mapload, datum/hud/hud_owner, datum/minimap/minimap, list/minimap_blip_tags, initial_fixed_z_level, annotation_share_tag, can_draw = TRUE, map_id, team_id)
 	src.can_draw = can_draw
 	. = ..()
 	if(isnull(minimap))
 		CRASH("[type] created without a minimap reference!")
 	src.annotation_share_tag = isnull(annotation_share_tag) ? "[type]" : annotation_share_tag
+	src.fixed_id = map_id
+	src.team_id = team_id
 	LAZYOR(GLOB.minimap_annotation_viewers[src.annotation_share_tag], src)
 	if(!isnull(initial_fixed_z_level))
 		fixed_z_level = initial_fixed_z_level
@@ -71,7 +76,7 @@
 /atom/movable/screen/minimap_display/proc/apply_fixed_z_minimap(target_z)
 	if(QDELETED(src) || isnull(target_z) || fixed_z_level != target_z)
 		return
-	var/datum/minimap/fixed_minimap = get_minimap_for_z(target_z)
+	var/datum/minimap/fixed_minimap = get_minimap_for_z(target_z, fixed_id)
 	if(QDELETED(src) || isnull(fixed_minimap) || fixed_z_level != target_z)
 		return
 	set_minimap(fixed_minimap)
@@ -243,13 +248,13 @@
 			return
 		remove_blip(locator_blip_tag)
 		return
-	add_blip(locator_blip_tag, "locator", mob_loc.x, mob_loc.y, layer = 15)
+	add_blip(locator_blip_tag, "locator", mob_loc.x, mob_loc.y, layer = 15, map_id = fixed_id)
 
 
 /atom/movable/screen/minimap_display/proc/resolve_and_change_z_level(new_z)
 	if(isnull(new_z))
 		return
-	var/datum/minimap/new_minimap = get_minimap_for_z(new_z)
+	var/datum/minimap/new_minimap = get_minimap_for_z(new_z, fixed_id)
 	if(QDELETED(src) || isnull(new_minimap))
 		return
 	change_z_level(new_z, new_minimap)
@@ -314,10 +319,10 @@
 	reposition_toolbar_buttons()
 
 /// adds a local blip that's not added to the global list
-/atom/movable/screen/minimap_display/proc/add_blip(name, icon_state, x, y, large = FALSE, layer = 12)
+/atom/movable/screen/minimap_display/proc/add_blip(name, icon_state, x, y, large = FALSE, layer = 12, map_id)
 	if(blips[name])
 		return
-	var/atom/movable/screen/minimap_element/blip/new_blip = new(null, null, get_mob(), icon_state, large)
+	var/atom/movable/screen/minimap_element/blip/new_blip = new(null, null, get_mob(), icon_state, null, large, null, map_id)
 	new_blip.layer = layer
 	new_blip.start_tracking_target()
 	blips[name] = new_blip
@@ -451,11 +456,11 @@
 	if(isnull(items_by_z))
 		return
 	var/current_z = get_viewed_z_level()
-	var/list/items = items_by_z[current_z]
+	var/list/items = items_by_z["[current_z]_[team_id]_[fixed_id]"]
 	if(!length(items))
 		return
 	QDEL_LIST(items)
-	items_by_z[current_z] = list()
+	items_by_z["[current_z]_[team_id]_[fixed_id]"] = list()
 	refresh_visible_annotations()
 	sync_visible_objects(current_z)
 	var/user_name = user ? key_name(user) : "System"
@@ -506,10 +511,10 @@
 	if(isnull(by_z))
 		by_z = alist()
 		annotation_store[annotation_type] = by_z
-	var/list/items = by_z[z_level]
+	var/list/items = by_z["[z_level]_[team_id]_[fixed_id]"]
 	if(isnull(items))
 		items = list()
-		by_z[z_level] = items
+		by_z["[z_level]_[team_id]_[fixed_id]"] = items
 	return items
 
 /atom/movable/screen/minimap_display/proc/refresh_visible_annotations()
@@ -581,5 +586,17 @@
 /atom/movable/screen/minimap_display/nuclear
 	annotation_share_tag = MINIMAP_ANNOTATION_TAG_NUCLEAR
 	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_BLIP, MINIMAP_NUKEOP_BORG_BLIP, MINIMAP_SYNDICATE_MECH_BLIP, MINIMAP_SYNDIE_TURRET_BLIP, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+
+/atom/movable/screen/minimap_display/teammatch
+	annotation_share_tag = MINIMAP_ANNOTATION_TAG_MARINE
+	valid_minimap_blip_tags = list(MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+
+/atom/movable/screen/minimap_display/teammatch/marine
+	annotation_share_tag = MINIMAP_ANNOTATION_TAG_MARINE
+	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_MARINE, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
+
+/atom/movable/screen/minimap_display/teammatch/xenomorph
+	annotation_share_tag = MINIMAP_ANNOTATION_TAG_XENOMORPH
+	valid_minimap_blip_tags = list(MINIMAP_BOMB_BLIP, MINIMAP_NUKEDISK_BLIP, MINIMAP_NUKEOP_XENOMORPH, MINIMAP_LADDER_BLIP, MINIMAP_STAIR_BLIP)
 
 #undef MINIMAP_LABEL_REMOVE_PIXEL_RANGE

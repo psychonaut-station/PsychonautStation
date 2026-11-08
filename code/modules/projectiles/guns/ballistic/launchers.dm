@@ -70,6 +70,9 @@
 	actions_types = list()
 	casing_ejector = FALSE
 
+/obj/item/gun/ballistic/automatic/gyropistol/weak
+	accepted_magazine_type = /obj/item/ammo_box/magazine/m75/weak
+
 /obj/item/gun/ballistic/rocketlauncher
 	name = "\improper Dardo-RE Rocket Launcher"
 	desc = "A reusable rocket propelled grenade launcher. An arrow pointing toward the front of the launcher \
@@ -180,3 +183,19 @@
 	AddElement(/datum/element/backblast)
 	balloon_alert(user, "backblast enabled")
 	return TRUE
+
+/obj/item/gun/ballistic/flarelauncher
+	name = "\improper RG-915 Flare Launcher"
+	desc = "A lightweight signal device designed for emergency signaling and illumination. Fires specialized flare cartridges that project brilliant bursts of light high into the air."
+	icon = 'icons/psychonaut/obj/weapons/guns/ballistic.dmi'
+	icon_state = "flarelauncher"
+	pin = /obj/item/firing_pin
+	bolt_type = BOLT_TYPE_NO_BOLT
+	slot_flags = ITEM_SLOT_BELT | ITEM_SLOT_POCKETS
+	accepted_magazine_type = /obj/item/ammo_box/magazine/internal/flarelauncher
+	fire_sound = 'sound/items/match_strike.ogg'
+	w_class = WEIGHT_CLASS_SMALL
+	can_muzzle_flash = FALSE
+	can_suppress = FALSE
+	casing_ejector = FALSE
+	internal_magazine = TRUE

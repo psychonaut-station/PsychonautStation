@@ -37,11 +37,12 @@
 	if(!isturf(owner.loc))
 		return FALSE
 
-	if(get_alien_type(/mob/living/carbon/alien/adult/royal))
-		return FALSE
-
 	var/mob/living/carbon/alien/adult/royal/evolver = owner
 	var/obj/item/organ/alien/hivenode/node = evolver.get_organ_by_type(/obj/item/organ/alien/hivenode)
+
+	if(get_alien_type(/mob/living/carbon/alien/adult/royal, hive_id = node?.hive_id))
+		return FALSE
+
 	// Players are Murphy's Law. We may not expect
 	// there to ever be a living xeno with no hivenode,
 	// but they _WILL_ make it happen.

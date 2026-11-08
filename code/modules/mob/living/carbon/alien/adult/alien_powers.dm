@@ -78,7 +78,8 @@ Doesn't work on other aliens/AI.*/
 	return ..()
 
 /datum/action/cooldown/alien/make_structure/Activate(atom/target)
-	new made_structure_type(owner.loc)
+	var/obj/structure/structure = new made_structure_type(owner.loc)
+	after_make(structure)
 	return TRUE
 
 /// Checks if there's a duplicate structure in the owner's turf
@@ -101,6 +102,9 @@ Doesn't work on other aliens/AI.*/
 			return FALSE
 
 	return TRUE
+
+/datum/action/cooldown/alien/make_structure/proc/after_make(obj/structure/made_structure)
+	return
 
 /datum/action/cooldown/alien/make_structure/plant_weeds
 	name = "Plant Weeds"

@@ -1,5 +1,6 @@
 //flags
 #define IGNORE_NOSLOW (1 << 0)
+#define TRANSFER_ON_EVOLVE (1 << 1)
 
 //conflict types
 

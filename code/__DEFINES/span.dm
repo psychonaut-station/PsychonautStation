@@ -86,6 +86,7 @@
 #define span_looc(str) ("<span class='looc'>" + str + "</span>")
 #define span_major_announcement_text(str) ("<span class='major_announcement_text'>" + str + "</span>")
 #define span_major_announcement_title(str) ("<span class='major_announcement_title'>" + str + "</span>")
+#define span_marinesquad(str) ("<span class='marinesquad'>" + str + "</span>")
 #define span_mansus(str) ("<span class='mansus'>" + str + "</span>")
 #define span_medal(str) ("<span class='medal'>" + str + "</span>")
 #define span_medradio(str) ("<span class='medradio'>" + str + "</span>")

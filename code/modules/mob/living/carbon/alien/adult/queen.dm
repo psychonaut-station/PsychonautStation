@@ -87,7 +87,8 @@
 	return ..()
 
 /mob/living/carbon/alien/adult/royal/queen/set_name()
-	if(get_alien_type(/mob/living/carbon/alien/adult/royal/queen, ignored = src))
+	var/obj/item/organ/alien/hivenode/node = get_organ_by_type(/obj/item/organ/alien/hivenode)
+	if(get_alien_type(/mob/living/carbon/alien/adult/royal/queen, ignored = src, hive_id = node?.hive_id))
 		name = "alien princess"
 	return ..()
 
@@ -102,6 +103,11 @@
 /datum/action/cooldown/alien/make_structure/lay_egg/Activate(atom/target)
 	. = ..()
 	owner.visible_message(span_alertalien("[owner] lays an egg!"))
+
+/datum/action/cooldown/alien/make_structure/lay_egg/after_make(obj/structure/alien/egg/egg)
+	if(isalien(owner))
+		var/mob/living/carbon/alien/alien = owner
+		egg.non_antagonist = alien.non_antagonist
 
 //Button to let queen choose her praetorian.
 /datum/action/cooldown/alien/promote
@@ -126,7 +132,9 @@
 	if(carbon_owner.getPlasma() < promotion_plasma_cost)
 		return FALSE
 
-	if(get_alien_type(/mob/living/carbon/alien/adult/royal/praetorian))
+	var/obj/item/organ/alien/hivenode/node = carbon_owner.get_organ_by_type(/obj/item/organ/alien/hivenode)
+
+	if(get_alien_type(/mob/living/carbon/alien/adult/royal/praetorian, hive_id = node?.hive_id))
 		return FALSE
 
 	return TRUE

@@ -7,3 +7,5 @@ GLOBAL_DATUM(start_state, /datum/station_state) // Used in round-end report
 GLOBAL_DATUM_INIT(reality_smash_track, /datum/reality_smash_tracker, new)
 
 GLOBAL_DATUM(deathmatch_game, /datum/deathmatch_controller) // Deathmatch Minigame controller
+
+GLOBAL_DATUM(teammatch_game, /datum/teammatch_controller) // Teammatch Minigame controller

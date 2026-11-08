@@ -119,6 +119,9 @@
 	ricochet_decay_damage = 1
 	ricochet_shoots_firer = FALSE
 
+/obj/projectile/bullet/p50/marine
+	damage = 20
+
 // 20x138mm bullet (lahti-l39) //
 
 /obj/projectile/bullet/mm20x138

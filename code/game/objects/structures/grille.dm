@@ -16,7 +16,7 @@
 	max_integrity = 50
 	integrity_failure = 0.4
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT)
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 	var/rods_type = /obj/item/stack/rods
 	var/rods_amount = 2
 	/// Whether or not we're disappearing but dramatically

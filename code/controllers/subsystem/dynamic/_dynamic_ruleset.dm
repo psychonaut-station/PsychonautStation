@@ -238,11 +238,12 @@
 			final_weight *= storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][track]
 		if(!isnull(storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]))
 			final_weight *= storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]
+		var/alist/storyteller_tag_multipliers = storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]
 		for(var/tag in tags)
-			if(!storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]?.Find(tag))
+			if(!storyteller_tag_multipliers?.Find(tag))
 				continue
-			if(!isnull(storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]))
-				final_weight *= storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]
+			if(!isnull(storyteller_tag_multipliers[tag]))
+				final_weight *= storyteller_tag_multipliers[tag]
 
 	return max(final_weight, 0)
 

@@ -71,7 +71,7 @@
 	resistance_flags = FLAMMABLE
 	bar_material = WOOD
 	custom_materials = list(/datum/material/wood = SHEET_MATERIAL_AMOUNT * 5)
-	impact_sound = SFX_BULLET_IMPACT_WOOD
+	impact_sound = /datum/sound_effect/bullet_impact_wood
 	/// When destroyed or deconstructed, how many planks of wood does our barricade drop? Also determines how many it takes to repair the barricade and by how much.
 	var/drop_amount = 3
 

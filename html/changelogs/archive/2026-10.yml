@@ -541,15 +541,6 @@
   - bugfix: Ceruleans can activate MOD stealth modules
   lelandkemble:
   - bugfix: fixed being unable to copy blast door controller ids
-  vinylspiders:
-  - bugfix: handling tips for single-contributor bounty cubes now reach the scanner's
-      bank account, and cargo receives the correct remaining value.
-  - bugfix: holograms can no longer get stuck wobbling when you walk back through
-      them just as their last glitch is fading
-  - bugfix: revolver crafting now transfers ammunition correctly past empty cylinder
-      slots.
-  - bugfix: stacks printed by autolathes and protolathes keep the correct material
-      contents when printed in batches or merged with existing stacks.
 2026-10-27:
   Absolucy:
   - bugfix: Fixed big manipulators trying to interact with underfloor pipes.

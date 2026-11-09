@@ -1445,11 +1445,8 @@
 #include "code\datums\components\phylactery.dm"
 #include "code\datums\components\pinata.dm"
 #include "code\datums\components\pinnable_accessory.dm"
-<<<<<<< HEAD
-#include "code\datums\components\pixel_shift.dm"
-=======
 #include "code\datums\components\pinpointer.dm"
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
+#include "code\datums\components\pixel_shift.dm"
 #include "code\datums\components\plundering_attacks.dm"
 #include "code\datums\components\pricetag.dm"
 #include "code\datums\components\proficient_miner.dm"

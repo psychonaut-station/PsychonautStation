@@ -1022,7 +1022,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_metal
-	key = SFX_BULLET_IMPACT_METAL
 	file_paths = list(
 		'sound/_psychonaut/impact_metal_01.ogg',
 		'sound/_psychonaut/impact_metal_02.ogg',
@@ -1044,7 +1043,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_flesh
-	key = SFX_BULLET_IMPACT_FLESH
 	file_paths = list(
 		'sound/_psychonaut/impact_flesh_01.ogg',
 		'sound/_psychonaut/impact_flesh_02.ogg',
@@ -1058,7 +1056,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_ice
-	key = SFX_BULLET_IMPACT_ICE
 	file_paths = list(
 		'sound/_psychonaut/impact_ice_01.ogg',
 		'sound/_psychonaut/impact_ice_02.ogg',
@@ -1073,7 +1070,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_wood
-	key = SFX_BULLET_IMPACT_WOOD
 	file_paths = list(
 		'sound/_psychonaut/impact_wood_01.ogg',
 		'sound/_psychonaut/impact_wood_02.ogg',
@@ -1088,7 +1084,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_concrete
-	key = SFX_BULLET_IMPACT_CONCRETE
 	file_paths = list(
 		'sound/_psychonaut/impact_masonry_01.ogg',
 		'sound/_psychonaut/impact_masonry_02.ogg',
@@ -1103,7 +1098,6 @@ GLOBAL_LIST_INIT(sfx_datums_by_paths, init_subtypes_w_path_keys(/datum/sound_eff
 	)
 
 /datum/sound_effect/bullet_impact_glass
-	key = SFX_BULLET_IMPACT_GLASS
 	file_paths = list(
 		'sound/_psychonaut/impact_glass_01.ogg',
 		'sound/_psychonaut/impact_glass_02.ogg',

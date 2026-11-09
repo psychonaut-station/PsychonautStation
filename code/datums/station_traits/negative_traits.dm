@@ -660,16 +660,10 @@
 		if(COOLDOWN_FINISHED(src, send_care_package_at))
 			COOLDOWN_START(src, send_care_package_at, send_care_package_time)
 			priority_announce(
-<<<<<<< HEAD
 				{"Her şey yolunda mı? İstasyonunuzun içinden yüksek radyasyon değerleri alıyoruz. \
-				Şimdilik bir acil durum kalkanı gönderiyoruz, Etkisi [initial(rad_shield.detonate_in) / (1 MINUTES)] dakika sürecektir. \n\n\
+				Şimdilik bir acil durum kalkanı gönderiyoruz, Etkisi [LocaleDisplayTimeText(/obj/machinery/nebula_shielding/radiation/emergency::detonate_in)] dakika sürecektir. \n\n\
 				Nebula kalkanını kurun. Gerekli yapım kitleri mühendislik departmanınızda bulunmaktadır. \
 				Eğer sizinkiler kaybolduysa kargodan yapım kitleri sipariş edebilirsiniz.
-=======
-				{"Is everything okay there? We're getting high radiation readings from inside the station. \
-				We're sending an emergency shielding unit for now, it will last [DisplayTimeText(/obj/machinery/nebula_shielding/radiation/emergency::detonate_in)]. \n\n\
-				Set up the nebula shielding. You can order construction kits at cargo if yours have been lost.
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
 				"}
 			)
 

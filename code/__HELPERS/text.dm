@@ -385,12 +385,6 @@
 		. = t[1]
 		return locale_uppertext(.) + copytext(t, 1 + length(.))
 
-<<<<<<< HEAD
-///Returns a string with the first letter of each word capitialized
-/proc/full_capitalize(input)
-	var/regex/first_letter = new(@"[^A-z]*?([A-z]*)", "g")
-	return replacetext(input, first_letter, /proc/capitalize)
-
 // Turkish Alphabet [A-a]
 // I-ı = \u0049 - \u0131
 // İ-i = \u0130 - \u0069
@@ -473,8 +467,6 @@
 			else
 				. += c
 
-=======
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
 /proc/stringmerge(text,compare,replace = "*")
 //This proc fills in all spaces with the "replace" var (* by default) with whatever
 //is in the other string at the same spot (assuming it is not a replace char).

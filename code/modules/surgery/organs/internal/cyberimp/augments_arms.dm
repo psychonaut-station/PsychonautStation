@@ -17,45 +17,6 @@
 /obj/item/organ/cyberimp/arm/get_overlay_state()
 	return "[aug_overlay][zone == BODY_ZONE_L_ARM ? "_left" : "_right"]"
 
-<<<<<<< HEAD
-/obj/item/organ/cyberimp/arm/on_mob_insert(mob/living/carbon/arm_owner)
-	. = ..()
-	RegisterSignal(arm_owner, COMSIG_CARBON_POST_ATTACH_LIMB, PROC_REF(on_limb_attached))
-	on_limb_attached(arm_owner, arm_owner.hand_bodyparts[zone == BODY_ZONE_R_ARM ? RIGHT_HANDS : LEFT_HANDS])
-
-/obj/item/organ/cyberimp/arm/on_mob_remove(mob/living/carbon/arm_owner)
-	. = ..()
-	UnregisterSignal(arm_owner, COMSIG_CARBON_POST_ATTACH_LIMB)
-	on_limb_detached(hand)
-
-/obj/item/organ/cyberimp/arm/proc/on_limb_attached(mob/living/carbon/source, obj/item/bodypart/limb)
-	SIGNAL_HANDLER
-	if(!limb || QDELETED(limb) || limb.body_zone != zone)
-		return
-	handle_attachment(limb)
-
-/obj/item/organ/cyberimp/arm/proc/handle_attachment(obj/item/bodypart/limb)
-	if(hand)
-		on_limb_detached(hand)
-	RegisterSignal(limb, COMSIG_BODYPART_REMOVED, PROC_REF(on_limb_detached))
-	RegisterSignal(limb, COMSIG_QDELETING, PROC_REF(on_limb_qdel))
-	hand = limb
-
-/obj/item/organ/cyberimp/arm/proc/on_limb_detached(obj/item/bodypart/source)
-	SIGNAL_HANDLER
-	if(source != hand || QDELETED(hand))
-		return
-	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
-	UnregisterSignal(hand, COMSIG_QDELETING)
-	hand = null
-
-/obj/item/organ/cyberimp/arm/proc/on_limb_qdel()
-	UnregisterSignal(hand, COMSIG_BODYPART_REMOVED)
-	UnregisterSignal(hand, COMSIG_QDELETING)
-	hand = null
-
-=======
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
 /obj/item/organ/cyberimp/arm/toolkit
 	abstract_type = /obj/item/organ/cyberimp/arm/toolkit
 	name = "arm-mounted toolkit"
@@ -124,25 +85,9 @@
 	. = ..()
 	RegisterSignal(limb, COMSIG_ITEM_ATTACK_SELF, PROC_REF(on_limb_attack_self))
 
-<<<<<<< HEAD
-/obj/item/organ/cyberimp/arm/toolkit/on_limb_detached(obj/item/bodypart/source)
-	if(source != hand || QDELETED(hand))
-		return
-	UnregisterSignal(hand, list(COMSIG_BODYPART_REMOVED, COMSIG_QDELETING, COMSIG_ITEM_ATTACK_SELF))
-	hand = null
-
-/obj/item/organ/cyberimp/arm/toolkit/on_limb_qdel()
-	UnregisterSignal(hand, COMSIG_ITEM_ATTACK_SELF)
-	return ..()
-
-/obj/item/organ/cyberimp/arm/toolkit/proc/on_item_attack_self()
-	SIGNAL_HANDLER
-	INVOKE_ASYNC(src, PROC_REF(ui_action_click))
-=======
 /obj/item/organ/cyberimp/arm/toolkit/on_bodypart_remove(obj/item/bodypart/limb)
 	. = ..()
 	UnregisterSignal(limb, COMSIG_ITEM_ATTACK_SELF)
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
 
 /obj/item/organ/cyberimp/arm/toolkit/emp_act(severity)
 	. = ..()
@@ -427,13 +372,15 @@
 		/obj/item/surgical_drapes,
 	)
 
-<<<<<<< HEAD
 /obj/item/organ/cyberimp/arm/toolkit/janitor
 	name = "janitorial toolset implant"
 	desc = "A set of janitorial tools hidden behind a concealed panel on the user's arm."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "toolkit_janitor"
-	items_to_create = list(
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
+
+/obj/item/organ/cyberimp/arm/toolkit/janitor/get_init_items()
+	return list(
 		/obj/item/lightreplacer,
 		/obj/item/holosign_creator,
 		/obj/item/soap/nanotrasen,
@@ -443,7 +390,6 @@
 		/obj/item/reagent_containers/cup/beaker/large,
 		/obj/item/reagent_containers/spray/cleaner
 	)
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/janitor/emag_act()
 	if(obj_flags & EMAGGED)
@@ -462,19 +408,24 @@
 	desc = "A set of rescue tools hidden behind a concealed panel on the user's arm."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "toolkit_paramedic"
-	items_to_create = list(
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
+
+/obj/item/organ/cyberimp/arm/toolkit/paramedic/get_init_items()
+	return list(
 		/obj/item/emergency_bed/silicon,
 		/obj/item/sensor_device,
 		/obj/item/pinpointer/crew,
 	)
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/atmospherics
 	name = "atmospherics toolset implant"
 	desc = "A set of atmospheric tools hidden behind a concealed panel on the user's arm."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "toolkit_atmosph"
-	items_to_create = list(
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
+
+/obj/item/organ/cyberimp/arm/toolkit/atmospherics/get_init_items()
+	return list(
 		/obj/item/extinguisher,
 		/obj/item/analyzer,
 		/obj/item/crowbar/cyborg,
@@ -482,14 +433,16 @@
 		/obj/item/holosign_creator/atmos,
 		/obj/item/pipe_dispenser,
 	)
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/botany
 	name = "botany arm implant"
 	desc = "A rather simple arm implant containing tools used in gardening and botanical research."
 	icon = 'icons/psychonaut/obj/medical/organs/organs.dmi'
 	icon_state = "toolkit_hydro"
-	items_to_create = list(
+	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
+
+/obj/item/organ/cyberimp/arm/toolkit/botany/get_init_items()
+	return list(
 		/obj/item/cultivator,
 		/obj/item/shovel/spade,
 		/obj/item/hatchet,
@@ -499,32 +452,34 @@
 		/obj/item/storage/bag/plants,
 		/obj/item/storage/bag/plants/portaseeder
 	)
-	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 1.25, /datum/material/glass = SHEET_MATERIAL_AMOUNT * 0.75, /datum/material/silver = SHEET_MATERIAL_AMOUNT * 0.75)
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis
 	name = "C.H.R.O.M.A.T.A. mantis blade implants"
 	desc = "High tech mantis blade implants, easily portable weapon, that has a high wound potential."
 	icon = 'icons/psychonaut/obj/weapons/sword.dmi'
 	icon_state = "mantis"
-	items_to_create = list(/obj/item/mantis_blade)
+
+/obj/item/organ/cyberimp/arm/toolkit/mantis/get_init_items()
+	return list(/obj/item/mantis_blade)
+
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis/syndicate
 	name = "A.R.A.S.A.K.A. mantis blade implants"
 	desc = "Modernized mantis blade designed coined by Tiger operatives, much sharper blade with energy actuators makes it a much deadlier weapon."
 	icon_state = "syndie_mantis"
 	organ_flags = parent_type::organ_flags | ORGAN_HIDDEN
-	items_to_create = list(/obj/item/mantis_blade/syndicate)
+
+/obj/item/organ/cyberimp/arm/toolkit/mantis/syndicate/get_init_items()
+	return list(/obj/item/mantis_blade/syndicate)
 
 /obj/item/organ/cyberimp/arm/toolkit/mantis/shield
 	name = "S.A.Y.A. arm defense system implants"
 	desc = "Shield blade implants that allow user to block upcoming attacks at the cost of mobility and offense."
 	icon_state = "shield_mantis"
-	items_to_create = list(/obj/item/mantis_blade/shield)
 
-#define DOAFTER_SOURCE_STRONGARM_INTERACTION "strongarm interaction"
+/obj/item/organ/cyberimp/arm/toolkit/mantis/shield/get_init_items()
+	return list(/obj/item/mantis_blade/shield)
 
-=======
->>>>>>> 928bb812756f507eaa7251ab1df07977697c7164
 // Strong-Arm Implant //
 
 #define DOAFTER_SOURCE_STRONGARM_INTERACTION "strongarm interaction"

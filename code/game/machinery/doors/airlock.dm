@@ -85,7 +85,7 @@
 	explosion_block = 1
 	hud_possible = list(DIAG_AIRLOCK_HUD)
 	smoothing_groups = SMOOTH_GROUP_AIRLOCK
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_OPEN
 	interaction_flags_click = ALLOW_SILICON_REACH
@@ -2239,7 +2239,7 @@
 	name = "wooden airlock"
 	icon = 'icons/obj/doors/airlocks/station/wood.dmi'
 	assemblytype = /obj/structure/door_assembly/door_assembly_wood
-	impact_sound = SFX_BULLET_IMPACT_WOOD
+	impact_sound = /datum/sound_effect/bullet_impact_wood
 
 /obj/machinery/door/airlock/wood/glass
 	opacity = FALSE

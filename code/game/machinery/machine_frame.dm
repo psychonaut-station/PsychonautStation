@@ -2,7 +2,7 @@
 	name = "machine frame"
 	desc = "The standard frame for most station appliances. Its appearance and function is controlled by the inserted board."
 	board_type = /obj/item/circuitboard/machine
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 	/// List of all compnents inside the frame contributing to its construction
 	var/list/components
 	/// List of all components required to construct the frame

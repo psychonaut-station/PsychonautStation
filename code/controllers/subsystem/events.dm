@@ -176,11 +176,12 @@ SUBSYSTEM_DEF(events)
 					event_weight *= storyteller_setting[STORYTELLER_EVENT_WEIGHT_MULTIPLIERS][event_to_check.track] || 1
 				if(!isnull(storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]))
 					event_weight *= storyteller_setting[STORYTELLER_GENERAL_MULTIPLIERS]
+				var/alist/storyteller_tag_multipliers = storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]
 				for(var/tag in event_to_check.tags)
-					if(!storyteller_setting[STORYTELLER_TAG_MULTIPLIERS]?.Find(tag))
+					if(!storyteller_tag_multipliers?.Find(tag))
 						continue
-					if(!isnull(storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]))
-						event_weight *= storyteller_setting[STORYTELLER_TAG_MULTIPLIERS][tag]
+					if(!isnull(storyteller_tag_multipliers[tag]))
+						event_weight *= storyteller_tag_multipliers[tag]
 
 			event_roster[event_to_check] = event_weight
 

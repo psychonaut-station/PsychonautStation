@@ -15,7 +15,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 	interaction_flags_machine = INTERACT_MACHINE_OPEN | INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON
 	obj_flags = CAN_BE_HIT
 	use_power = NO_POWER_USE
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 
 	/// The internal air reservoir of the disposal
 	var/datum/gas_mixture/air_contents
@@ -197,7 +197,7 @@ GLOBAL_VAR_INIT(disposals_animals_spawned, 0)
 /obj/machinery/disposal/mouse_drop_receive(atom/target, mob/living/user, params)
 	if(isliving(target))
 		stuff_mob_in(target, user)
-	if(istype(target, /obj/structure/closet/body_bag) && (user.mobility_flags & (MOBILITY_PICKUP|MOBILITY_STAND) == (MOBILITY_PICKUP|MOBILITY_STAND)))
+	if(istype(target, /obj/structure/closet/body_bag) && ((user.mobility_flags & (MOBILITY_PICKUP|MOBILITY_STAND)) == (MOBILITY_PICKUP|MOBILITY_STAND)))
 		stuff_bodybag_in(target, user)
 
 /// Handles stuffing a grabbed mob into the disposal

@@ -57,7 +57,7 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(user.stat != CONSCIOUS)
+	if(user.stat != STABLE)
 		return FALSE
 	return TRUE
 
@@ -107,7 +107,7 @@
 /datum/action/cooldown/bloodsucker/haste/proc/dodge_bullets(mob/living/source, obj/projectile/hitting_projectile, def_zone)
 	SIGNAL_HANDLER
 
-	if(source.stat != CONSCIOUS || source.incapacitated)
+	if(source.stat != STABLE || source.incapacitated)
 		return NONE
 
 	var/dodge_chance = min(60, max(1, level_current) * 15)

@@ -251,7 +251,7 @@
 	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(buckled_carbons)
 	// Are they our Vassal?
 	if(vassaldatum?.master == bloodsuckerdatum)
-		SEND_SIGNAL(bloodsuckerdatum, BLOODSUCKER_INTERACT_WITH_VASSAL, vassaldatum)
+		bloodsuckerdatum.my_clan?.on_interact_with_vassal(bloodsuckerdatum, vassaldatum)
 		return
 
 	// Not our Vassal, but Alive & We're a Bloodsucker, good to torture!
@@ -268,7 +268,7 @@
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 	if(!bloodsuckerdatum)
 		return FALSE
-	if(target.stat > UNCONSCIOUS)
+	if(target.stat > SOFT_CRIT)
 		balloon_alert(user, "too badly injured!")
 		return FALSE
 
@@ -352,7 +352,7 @@
 		bloodsuckerdatum.AddBloodVolume(-TORTURE_CONVERSION_COST)
 		if(bloodsuckerdatum.make_vassal(target))
 			remove_loyalties(target)
-			SEND_SIGNAL(bloodsuckerdatum, BLOODSUCKER_MADE_VASSAL, user, target)
+			bloodsuckerdatum.my_clan?.on_vassal_made(bloodsuckerdatum, user, target)
 
 /obj/structure/bloodsucker/vassalrack/proc/do_torture(mob/living/user, mob/living/carbon/target, mult = 1)
 	// Fifteen seconds if you aren't using anything. Shorter with weapons and such.

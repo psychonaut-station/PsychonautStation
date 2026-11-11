@@ -29,46 +29,20 @@
 	. = ..()
 	src.bloodsuckerdatum = owner_datum
 
-	RegisterSignal(bloodsuckerdatum, COMSIG_BLOODSUCKER_ON_LIFETICK, PROC_REF(handle_clan_life))
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_RANK_UP, PROC_REF(on_spend_rank))
-
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_INTERACT_WITH_VASSAL, PROC_REF(on_interact_with_vassal))
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_MAKE_FAVORITE, PROC_REF(on_favorite_vassal))
-
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_MADE_VASSAL, PROC_REF(on_vassal_made))
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_EXIT_TORPOR, PROC_REF(on_exit_torpor))
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_FINAL_DEATH, PROC_REF(on_final_death))
-
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_ENTERS_FRENZY, PROC_REF(on_enter_frenzy))
-	RegisterSignal(bloodsuckerdatum, BLOODSUCKER_EXITS_FRENZY, PROC_REF(on_exit_frenzy))
-
 	give_clan_objective()
 
 /datum/bloodsucker_clan/Destroy(force)
-	UnregisterSignal(bloodsuckerdatum, list(
-		COMSIG_BLOODSUCKER_ON_LIFETICK,
-		BLOODSUCKER_RANK_UP,
-		BLOODSUCKER_INTERACT_WITH_VASSAL,
-		BLOODSUCKER_MAKE_FAVORITE,
-		BLOODSUCKER_MADE_VASSAL,
-		BLOODSUCKER_EXIT_TORPOR,
-		BLOODSUCKER_FINAL_DEATH,
-		BLOODSUCKER_ENTERS_FRENZY,
-		BLOODSUCKER_EXITS_FRENZY,
-	))
 	remove_clan_objective()
 	bloodsuckerdatum = null
 	return ..()
 
 /datum/bloodsucker_clan/proc/on_enter_frenzy(datum/antagonist/bloodsucker/source)
-	SIGNAL_HANDLER
 	var/mob/living/carbon/human/human_bloodsucker = bloodsuckerdatum.owner.current
 	if(!istype(human_bloodsucker))
 		return
 	MODIFY_PHYSIOLOGY(human_bloodsucker, STAMINA, 0.4)
 
 /datum/bloodsucker_clan/proc/on_exit_frenzy(datum/antagonist/bloodsucker/source)
-	SIGNAL_HANDLER
 	var/mob/living/carbon/human/human_bloodsucker = bloodsuckerdatum.owner.current
 	if(!istype(human_bloodsucker))
 		return
@@ -96,7 +70,6 @@
  * source - the Bloodsucker exiting Torpor
  */
 /datum/bloodsucker_clan/proc/on_exit_torpor(datum/antagonist/bloodsucker/source)
-	SIGNAL_HANDLER
 	if(bloodsuckerdatum.bloodsucker_level_unspent > 0 && !istype(bloodsuckerdatum.owner.current.loc, /obj/structure/closet/crate/coffin))
 		INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
 
@@ -106,7 +79,6 @@
  * source - the Bloodsucker exiting Torpor
  */
 /datum/bloodsucker_clan/proc/on_final_death(datum/antagonist/bloodsucker/source)
-	SIGNAL_HANDLER
 	return FALSE
 
 /**
@@ -115,7 +87,6 @@
  * bloodsuckerdatum - the antagonist datum of the Bloodsucker running this.
  */
 /datum/bloodsucker_clan/proc/handle_clan_life(datum/antagonist/bloodsucker/source)
-	SIGNAL_HANDLER
 
 /**
  * Called when a Bloodsucker successfully Vassalizes someone.
@@ -123,7 +94,6 @@
  * bloodsuckerdatum - the antagonist datum of the Bloodsucker running this.
  */
 /datum/bloodsucker_clan/proc/on_vassal_made(datum/antagonist/bloodsucker/source, mob/living/user, mob/living/target)
-	SIGNAL_HANDLER
 	user.playsound_local(null, 'sound/effects/explosion/explosion_distant.ogg', 40, TRUE)
 	target.playsound_local(null, 'sound/effects/singlebeat.ogg', 40, TRUE)
 	target.set_timed_status_effect(15 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
@@ -138,7 +108,6 @@
  * blood_cost - A number saying how much it costs to rank up.
  */
 /datum/bloodsucker_clan/proc/on_spend_rank(datum/antagonist/bloodsucker/source, mob/living/carbon/target, cost_rank = TRUE, blood_cost)
-	SIGNAL_HANDLER
 
 	INVOKE_ASYNC(src, PROC_REF(spend_rank), bloodsuckerdatum, target, cost_rank, blood_cost)
 
@@ -231,7 +200,6 @@
  * vassaldatum - the antagonist datum of the Vassal being offered up.
  */
 /datum/bloodsucker_clan/proc/on_interact_with_vassal(datum/antagonist/bloodsucker/source, datum/antagonist/vassal/vassaldatum)
-	SIGNAL_HANDLER
 
 	INVOKE_ASYNC(src, PROC_REF(interact_with_vassal), bloodsuckerdatum, vassaldatum)
 
@@ -276,7 +244,6 @@
  * vassaldatum - the antagonist datum of the Vassal being offered up.
  */
 /datum/bloodsucker_clan/proc/on_favorite_vassal(datum/antagonist/bloodsucker/source, datum/antagonist/vassal/vassaldatum)
-	SIGNAL_HANDLER
 	vassaldatum.BuyPower(new /datum/action/cooldown/bloodsucker/targeted/brawn)
 	if(istype(vassaldatum, /datum/antagonist/vassal/favorite))
 		var/datum/antagonist/vassal/favorite/fav = vassaldatum

@@ -47,7 +47,7 @@
 /datum/action/cooldown/bloodsucker/feed/ContinueActive(mob/living/user, mob/living/target)
 	if(QDELETED(user) || QDELETED(target))
 		return FALSE
-	if(user.stat != CONSCIOUS || user.incapacitated || user.am_staked() || bloodsuckerdatum_power?.is_in_torpor())
+	if(user.stat != STABLE || user.incapacitated || user.am_staked() || bloodsuckerdatum_power?.is_in_torpor())
 		return FALSE
 	if(!user.Adjacent(target))
 		return FALSE

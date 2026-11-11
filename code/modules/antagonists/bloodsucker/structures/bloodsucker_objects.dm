@@ -83,7 +83,7 @@
 /mob/living/proc/StakeCanKillMe()
 	if(IsSleeping())
 		return TRUE
-	if(stat >= UNCONSCIOUS)
+	if(stat >= SOFT_CRIT)
 		return TRUE
 	if(HAS_TRAIT_FROM(src, TRAIT_NODEATH, TORPOR_TRAIT))
 		return TRUE

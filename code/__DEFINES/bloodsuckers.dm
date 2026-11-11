@@ -1,3 +1,6 @@
+///Uncomment this to enable testing of Bloodsucker features (such as vassalizing people with a mind instead of a client).
+//#define BLOODSUCKER_TESTING
+
 /**
  * Blood-level defines
  */

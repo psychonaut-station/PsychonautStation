@@ -118,5 +118,5 @@
 		span_danger("[source] blurs in supernatural speed, evading [hitting_projectile]!"),
 		span_danger("You blur in supernatural speed, evading [hitting_projectile]!"),
 	)
-	playsound(source, SFX_BULLET_MISS, 75, TRUE)
+	playsound(source, /datum/sound_effect/bullet_miss, 75, TRUE)
 	return COMPONENT_BULLET_PIERCED

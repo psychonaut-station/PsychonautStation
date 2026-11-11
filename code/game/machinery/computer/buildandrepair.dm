@@ -5,7 +5,7 @@
 	base_icon_state = ""
 	state = FRAME_COMPUTER_STATE_EMPTY
 	board_type = /obj/item/circuitboard/computer
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 
 /obj/structure/frame/computer/Initialize(mapload)
 	. = ..()

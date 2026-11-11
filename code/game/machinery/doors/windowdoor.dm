@@ -19,7 +19,7 @@
 	interaction_flags_machine = INTERACT_MACHINE_WIRES_IF_OPEN | INTERACT_MACHINE_ALLOW_SILICON | INTERACT_MACHINE_OPEN_SILICON | INTERACT_MACHINE_REQUIRES_SILICON | INTERACT_MACHINE_OPEN
 	set_dir_on_move = FALSE
 	opens_with_door_remote = TRUE
-	impact_sound = SFX_BULLET_IMPACT_GLASS
+	impact_sound = /datum/sound_effect/bullet_impact_glass
 	/// Reference to the airlock electronics inside for determining window access.
 	var/obj/item/electronics/airlock/electronics = null
 	/// If the door is considered reinforced. If TRUE, the door will resist twice as much heat (1600 deg C vs 800 deg C).
@@ -337,7 +337,7 @@
 	if(disassembled)
 		return
 
-	playsound(src, SFX_SHATTER, 70, TRUE)
+	playsound(src, /datum/sound_effect/shatter, 70, TRUE)
 
 	for(var/i in 1 to shards)
 		drop_debris(new /obj/item/shard(src))
@@ -375,7 +375,7 @@
 		obj_flags |= EMAGGED
 		operating = TRUE
 		flick("[base_state]spark", src)
-		playsound(src, SFX_SPARKS, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
+		playsound(src, /datum/sound_effect/sparks, 75, TRUE, SHORT_RANGE_SOUND_EXTRARANGE)
 		addtimer(CALLBACK(src, PROC_REF(finish_emag_act)), 0.6 SECONDS)
 		return TRUE
 	return FALSE

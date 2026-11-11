@@ -7,7 +7,7 @@
 	integrity_failure = 0.5
 	armor_type = /datum/armor/machinery_computer
 	interaction_flags_machine = INTERACT_MACHINE_ALLOW_SILICON|INTERACT_MACHINE_REQUIRES_LITERACY
-	impact_sound = SFX_BULLET_IMPACT_METAL
+	impact_sound = /datum/sound_effect/bullet_impact_metal
 	voice_filter = "alimiter=0.9,acompressor=threshold=0.2:ratio=20:attack=10:release=50:makeup=2,highpass=f=1000"
 	/// How bright we are when turned on.
 	var/brightness_on = 1
@@ -237,7 +237,7 @@
 	SHOULD_CALL_PARENT(TRUE)
 	. = ..()
 	if(!issilicon(ui.user))
-		playsound(src, SFX_KEYBOARD_CLICKS, 10, TRUE, FALSE)
+		playsound(src, /datum/sound_effect/keyboard_clicks, 10, TRUE, FALSE)
 
 /obj/machinery/computer/ui_close(mob/user)
 	SHOULD_CALL_PARENT(TRUE)

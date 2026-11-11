@@ -210,8 +210,10 @@
 /obj/item/organ/cyberimp/arm/toolkit/power_cord
 	name = "power cord implant"
 	desc = "An internal power cord hooked up to a battery. Useful if you run on volts."
-	items_to_create = list(/obj/item/apc_powercord)
 	custom_materials = list(/datum/material/iron = SHEET_MATERIAL_AMOUNT * 5)
+
+/obj/item/organ/cyberimp/arm/toolkit/power_cord/get_init_items()
+	return list(/obj/item/apc_powercord)
 
 ////////////////////////////////////// ITEMS //////////////////////////////////////
 

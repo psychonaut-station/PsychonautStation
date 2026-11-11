@@ -288,7 +288,7 @@
 		qdel(food)
 
 	visible_message(span_warning("[src] shatters into pieces with a crack!"))
-	playsound(src, SFX_SHATTER, 50)
+	playsound(src, /datum/sound_effect/shatter, 50)
 	return ..()
 
 /obj/item/hookah/pickup(mob/user)

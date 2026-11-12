@@ -55,6 +55,8 @@
 			part.generic_bleedstacks = max(0, part.generic_bleedstacks - 1)
 
 /datum/action/cooldown/bloodsucker/recuperate/ContinueActive(mob/living/user, mob/living/target)
+	if(QDELETED(user))
+		return FALSE
 	. = ..()
 	if(!.)
 		return FALSE

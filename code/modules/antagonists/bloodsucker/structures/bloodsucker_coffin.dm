@@ -175,6 +175,8 @@
 			return
 		if(choice == "Yes")
 			claim_coffin(user, current_area)
+		else
+			return
 	if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
 		return
 	LockMe(user)

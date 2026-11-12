@@ -25,12 +25,12 @@
 //////////////////////////////////////////////
 
 /datum/dynamic_ruleset/midround/from_living/bloodsucker
-	name = "Vampiric Accident"
+	name = "Bloodsucker Breakout"
 	config_tag = "Midround Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
 	midround_type = HEAVY_MIDROUND
 	ruleset_flags = RULESET_VARIATION
-	pref_flag = ROLE_BLOODSUCKER
+	pref_flag = ROLE_BLOODSUCKER_BREAKOUT
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
@@ -56,11 +56,11 @@
 //////////////////////////////////////////////
 
 /datum/dynamic_ruleset/latejoin/bloodsucker
-	name = "Bloodsucker Breakout"
+	name = "Stowaway Bloodsucker"
 	config_tag = "Latejoin Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
 	ruleset_flags = RULESET_VARIATION
-	pref_flag = ROLE_BLOODSUCKER
+	pref_flag = ROLE_STOWAWAY_BLOODSUCKER
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = 2
 	min_pop = 20

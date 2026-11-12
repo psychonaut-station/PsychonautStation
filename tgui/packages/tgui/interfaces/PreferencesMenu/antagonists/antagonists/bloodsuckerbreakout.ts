@@ -2,7 +2,7 @@ import { type Antagonist, Category } from '../base';
 
 const BloodsuckerBreakout: Antagonist = {
   key: 'bloodsuckerbreakout',
-  name: 'Bloodsucker (Latejoin)',
+  name: 'Bloodsucker Breakout',
   description: [
     `
       After your death, you awaken to see yourself as an undead monster.
@@ -10,7 +10,7 @@ const BloodsuckerBreakout: Antagonist = {
       Scrape by Space Station 13, or take over it, vassalizing your way.
     `,
   ],
-  category: Category.Latejoin,
+  category: Category.Midround,
 };
 
 export default BloodsuckerBreakout;

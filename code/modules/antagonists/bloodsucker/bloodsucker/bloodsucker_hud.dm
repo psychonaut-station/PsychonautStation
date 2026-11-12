@@ -23,6 +23,21 @@
 	icon_state = "rank"
 	screen_loc = UI_VAMPRANK_DISPLAY
 
+/atom/movable/screen/bloodsucker/rank_counter/Click()
+	var/mob/living/user = usr
+	if(!istype(user))
+		return
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(!bloodsuckerdatum)
+		return
+	if(bloodsuckerdatum.bloodsucker_level_unspent <= 0)
+		to_chat(user, span_notice("You are currently Rank [bloodsuckerdatum.bloodsucker_level]. You have no unspent Ranks."))
+		return
+	if(!istype(user.loc, /obj/structure/closet/crate/coffin))
+		to_chat(user, span_notice("You have [bloodsuckerdatum.bloodsucker_level_unspent] unspent Rank\s! Awaken from your claimed coffin to thicken your blood and embrace new power."))
+		return
+	bloodsuckerdatum.SpendRank()
+
 /atom/movable/screen/bloodsucker/sunlight_counter
 	name = "Solar Flare Timer"
 	icon_state = "sunlight_night"

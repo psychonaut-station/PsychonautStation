@@ -85,24 +85,6 @@
 		switch(unclaim_response)
 			if("Yes")
 				unbolt(user)
-/*
-/obj/structure/bloodsucker/bloodaltar
-	name = "bloody altar"
-	desc = "It is made of marble, lined with basalt, and radiates an unnerving chill that puts your skin on edge."
-/obj/structure/bloodsucker/bloodstatue
-	name = "bloody countenance"
-	desc = "It looks upsettingly familiar..."
-/obj/structure/bloodsucker/bloodportrait
-	name = "oil portrait"
-	desc = "A disturbingly familiar face stares back at you. Those reds don't seem to be painted in oil..."
-/obj/structure/bloodsucker/bloodbrazier
-	name = "lit brazier"
-	desc = "It burns slowly, but doesn't radiate any heat."
-/obj/structure/bloodsucker/bloodmirror
-	name = "faded mirror"
-	desc = "You get the sense that the foggy reflection looking back at you has an alien intelligence to it."
-/obj/item/restraints/legcuffs/beartrap/bloodsucker
-*/
 
 /obj/structure/bloodsucker/vassalrack
 	name = "persuasion rack"
@@ -243,15 +225,10 @@
 	if(!istype(bloodsuckerdatum))
 		user_unbuckle_mob(buckled_carbons, user)
 		return
-	if(!bloodsuckerdatum.my_clan)
-		to_chat(user, span_warning("You can't vassalize people until you enter a Clan (Through your Antagonist UI button)"))
-		user.balloon_alert(user, "join a clan first!")
-		return
-
 	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(buckled_carbons)
 	// Are they our Vassal?
 	if(vassaldatum?.master == bloodsuckerdatum)
-		bloodsuckerdatum.my_clan?.on_interact_with_vassal(bloodsuckerdatum, vassaldatum)
+		bloodsuckerdatum.interact_with_vassal(vassaldatum)
 		return
 
 	// Not our Vassal, but Alive & We're a Bloodsucker, good to torture!
@@ -352,7 +329,10 @@
 		bloodsuckerdatum.AddBloodVolume(-TORTURE_CONVERSION_COST)
 		if(bloodsuckerdatum.make_vassal(target))
 			remove_loyalties(target)
-			bloodsuckerdatum.my_clan?.on_vassal_made(bloodsuckerdatum, user, target)
+			user.playsound_local(null, 'sound/effects/explosion/explosion_distant.ogg', 40, TRUE)
+			target.playsound_local(null, 'sound/effects/singlebeat.ogg', 40, TRUE)
+			target.set_timed_status_effect(15 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
+			INVOKE_ASYNC(target, TYPE_PROC_REF(/mob, emote), "laugh")
 
 /obj/structure/bloodsucker/vassalrack/proc/do_torture(mob/living/user, mob/living/carbon/target, mult = 1)
 	// Fifteen seconds if you aren't using anything. Shorter with weapons and such.
@@ -452,76 +432,6 @@
 	blood_draining = initial(blood_draining)
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-/obj/structure/bloodsucker/candelabrum
-	name = "candelabrum"
-	desc = "It burns slowly, but doesn't radiate any heat."
-	icon = 'icons/bloodsuckers/vamp_obj.dmi'
-	icon_state = "candelabrum"
-	light_color = "#66FFFF"//LIGHT_COLOR_BLUEGREEN // lighting.dm
-	light_power = 3
-	light_range = 0
-	density = FALSE
-	can_buckle = TRUE
-	anchored = FALSE
-	ghost_desc = "This is a magical candle which drains at the sanity of non Bloodsuckers and Vassals.\n\
-		Vassals can turn the candle on manually, while Bloodsuckers can do it from a distance."
-	vamp_desc = "This is a magical candle which drains at the sanity of mortals who are not under your command while it is active.\n\
-		You can right-click on it from any range to turn it on remotely, or simply be next to it and click on it to turn it on and off normally."
-	vassal_desc = "This is a magical candle which drains at the sanity of the fools who havent yet accepted your master, as long as it is active.\n\
-		You can turn it on and off by clicking on it while you are next to it."
-	var/lit = FALSE
-	COOLDOWN_DECLARE(candelabrum_sanity_cd)
-
-/obj/structure/bloodsucker/candelabrum/Destroy()
-	STOP_PROCESSING(SSobj, src)
-	return ..()
-
-/obj/structure/bloodsucker/candelabrum/update_icon_state()
-	icon_state = "candelabrum[lit ? "_lit" : ""]"
-	return ..()
-
-/obj/structure/bloodsucker/candelabrum/bolt()
-	. = ..()
-	set_anchored(TRUE)
-	set_density(TRUE)
-
-/obj/structure/bloodsucker/candelabrum/unbolt()
-	. = ..()
-	set_anchored(FALSE)
-	set_density(FALSE)
-
-/obj/structure/bloodsucker/candelabrum/attack_hand(mob/living/user, list/modifiers)
-	. = ..()
-	if(!.)
-		return
-	if(anchored && (IS_VASSAL(user) || IS_BLOODSUCKER(user)))
-		toggle()
-
-/obj/structure/bloodsucker/candelabrum/proc/toggle(mob/user)
-	lit = !lit
-	if(lit)
-		desc = initial(desc)
-		set_light(l_range = 2, l_power = 3, l_color = "#66FFFF")
-		START_PROCESSING(SSobj, src)
-	else
-		desc = "Despite not being lit, it makes your skin crawl."
-		set_light(0)
-		STOP_PROCESSING(SSobj, src)
-	update_icon()
-
-/obj/structure/bloodsucker/candelabrum/process()
-	if(!lit)
-		return
-	if(!COOLDOWN_FINISHED(src, candelabrum_sanity_cd))
-		return
-	COOLDOWN_START(src, candelabrum_sanity_cd, 5 SECONDS)
-	for(var/mob/living/carbon/nearly_people in viewers(7, src))
-		/// We dont want Bloodsuckers or Vassals affected by this
-		if(IS_VASSAL(nearly_people) || IS_BLOODSUCKER(nearly_people))
-			continue
-		nearly_people.set_hallucinations_if_lower(10 SECONDS)
-		nearly_people.add_mood_event("vampcandle", /datum/mood_event/vampcandle)
 
 /// Blood Throne - Allows Bloodsuckers to remotely speak with their Vassals. - Code (Mostly) stolen from comfy chairs (armrests) and chairs (layers)
 /obj/structure/bloodsucker/bloodthrone

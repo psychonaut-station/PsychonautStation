@@ -14,9 +14,7 @@
 	bloodsucker_lair_area = current_area
 	if(!owner?.has_crafting_recipe(/datum/crafting_recipe/vassalrack))
 		owner.teach_crafting_recipe(/datum/crafting_recipe/vassalrack)
-		owner.teach_crafting_recipe(/datum/crafting_recipe/candelabrum)
 		owner.teach_crafting_recipe(/datum/crafting_recipe/bloodthrone)
-		owner.teach_crafting_recipe(/datum/crafting_recipe/meatcoffin)
 		owner.current.balloon_alert(owner.current, "new recipes learned!")
 	to_chat(owner, span_userdanger("You have claimed the [claimed] as your place of immortal rest! Your lair is now [bloodsucker_lair_area]."))
 	to_chat(owner, span_announce("Bloodsucker Tip: Find new lair recipes in the Structures tab of the <i>Crafting Menu</i>, including the <i>Persuasion Rack</i> for converting crew into Vassals."))
@@ -58,52 +56,6 @@
 	bullet = 20
 	laser = 30
 	bomb = 50
-	fire = 70
-	acid = 60
-
-/obj/structure/closet/crate/coffin/securecoffin
-	name = "secure coffin"
-	desc = "For those too scared of having their place of rest disturbed."
-	icon_state = "securecoffin"
-	base_icon_state = "securecoffin"
-	icon = 'icons/bloodsuckers/vamp_obj.dmi'
-	open_sound = 'sound/bloodsuckers/coffin_open.ogg'
-	close_sound = 'sound/bloodsuckers/coffin_close.ogg'
-	breakout_time = 35 SECONDS
-	pry_lid_timer = 35 SECONDS
-	resistance_flags = FIRE_PROOF | LAVA_PROOF | ACID_PROOF
-	material_drop = /obj/item/stack/sheet/iron
-	material_drop_amount = 2
-	armor_type = /datum/armor/securecoffin
-
-/datum/armor/securecoffin
-	melee = 35
-	bullet = 20
-	laser = 20
-	bomb = 100
-	fire = 100
-	acid = 100
-
-/obj/structure/closet/crate/coffin/meatcoffin
-	name = "meat coffin"
-	desc = "When you're ready to meat your maker, the steaks can never be too high."
-	icon_state = "meatcoffin"
-	base_icon_state = "meatcoffin"
-	icon = 'icons/bloodsuckers/vamp_obj.dmi'
-	resistance_flags = FIRE_PROOF
-	open_sound = 'sound/effects/footstep/slime1.ogg'
-	close_sound = 'sound/effects/footstep/slime1.ogg'
-	breakout_time = 25 SECONDS
-	pry_lid_timer = 20 SECONDS
-	material_drop = /obj/item/food/meat/slab/human
-	material_drop_amount = 3
-	armor_type = /datum/armor/meatcoffin
-
-/datum/armor/meatcoffin
-	melee = 70
-	bullet = 10
-	laser = 10
-	bomb = 70
 	fire = 70
 	acid = 60
 
@@ -211,12 +163,15 @@
 	to_chat(user, span_notice("[src] appears to be locked tight from the inside."))
 
 /obj/structure/closet/crate/coffin/open(mob/living/user, force = FALSE, special_effects = TRUE)
+	var/mob/living/waking_resident
+	if(resident && (resident in src) && ishuman(resident) && resident.stat != DEAD)
+		waking_resident = resident
 	. = ..()
 	if(!.)
 		return FALSE
-	if(resident && ishuman(resident))
-		var/datum/antagonist/bloodsucker/bloodsuckerdatum = resident.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
-		if(bloodsuckerdatum?.my_clan && bloodsuckerdatum.bloodsucker_level_unspent > 0)
+	if(waking_resident)
+		var/datum/antagonist/bloodsucker/bloodsuckerdatum = waking_resident.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+		if(bloodsuckerdatum && bloodsuckerdatum.bloodsucker_level_unspent > 0)
 			INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
 
 /obj/structure/closet/crate/coffin/close(mob/living/user)

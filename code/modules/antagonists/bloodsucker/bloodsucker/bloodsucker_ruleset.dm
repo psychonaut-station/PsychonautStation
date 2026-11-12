@@ -68,6 +68,7 @@
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.make_bloodsucker()
 	if(bloodsuckerdatum)
 		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
+		bloodsuckerdatum.update_hud()
 
 //////////////////////////////////////////////
 //                                          //
@@ -102,3 +103,4 @@
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.make_bloodsucker()
 	if(bloodsuckerdatum)
 		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
+		bloodsuckerdatum.update_hud()

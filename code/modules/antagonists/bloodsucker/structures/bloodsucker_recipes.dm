@@ -13,31 +13,6 @@
 	category = CAT_STRUCTURE
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
 
-/datum/crafting_recipe/securecoffin
-	name = "Secure Coffin"
-	result = /obj/structure/closet/crate/coffin/securecoffin
-	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
-	reqs = list(
-		/obj/item/stack/rods = 1,
-		/obj/item/stack/sheet/plasteel = 5,
-		/obj/item/stack/sheet/iron = 5,
-	)
-	time = 15 SECONDS
-	category = CAT_STRUCTURE
-	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
-
-/datum/crafting_recipe/meatcoffin
-	name = "Meat Coffin"
-	result = /obj/structure/closet/crate/coffin/meatcoffin
-	tool_behaviors = list(TOOL_KNIFE, TOOL_ROLLINGPIN)
-	reqs = list(
-		/obj/item/food/meat/slab = 5,
-		/obj/item/restraints/handcuffs/cable = 1,
-	)
-	time = 15 SECONDS
-	category = CAT_STRUCTURE
-	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
-
 /datum/crafting_recipe/metalcoffin
 	name = "Metal Coffin"
 	result = /obj/structure/closet/crate/coffin/metalcoffin
@@ -59,19 +34,6 @@
 		/obj/item/restraints/handcuffs/cable = 2,
 	)
 	time = 15 SECONDS
-	category = CAT_STRUCTURE
-	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
-
-/datum/crafting_recipe/candelabrum
-	name = "Candelabrum"
-	result = /obj/structure/bloodsucker/candelabrum
-	tool_behaviors = list(TOOL_WELDER, TOOL_WRENCH)
-	reqs = list(
-		/obj/item/stack/sheet/iron = 3,
-		/obj/item/stack/rods = 1,
-		/obj/item/flashlight/flare/candle = 1,
-	)
-	time = 10 SECONDS
 	category = CAT_STRUCTURE
 	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
 

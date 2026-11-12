@@ -69,7 +69,6 @@
 	to_chat(owner, span_userdanger("Blood! You need Blood, now! You enter a total Frenzy!"))
 	to_chat(owner, span_announce("* Bloodsucker Tip: While in Frenzy, you instantly Aggresively grab, have stun resistance, cannot speak, hear, or use any powers outside of Feed and Trespass (If you have it)."))
 	owner.balloon_alert(owner, "you enter a frenzy!")
-	bloodsuckerdatum.my_clan?.on_enter_frenzy(bloodsuckerdatum)
 
 	// Give the other Frenzy effects
 	owner.add_traits(frenzy_traits, FRENZY_TRAIT)
@@ -89,7 +88,6 @@
 		bloodsuckerdatum.frenzygrab.unlearn(user)
 		owner.remove_client_colour(/datum/client_colour/manual_heart_blood)
 
-		bloodsuckerdatum.my_clan?.on_exit_frenzy(bloodsuckerdatum)
 		bloodsuckerdatum.frenzied = FALSE
 		COOLDOWN_START(bloodsuckerdatum, bloodsucker_frenzy_cooldown, 30 SECONDS)
 	return ..()

@@ -16,7 +16,7 @@
 
 /datum/antagonist/vassal/favorite/on_gain()
 	. = ..()
-	master?.my_clan?.on_favorite_vassal(master, src)
+	master?.on_favorite_vassal(src)
 	set_vassal_level()
 
 /datum/antagonist/vassal/favorite/pre_mindshield(mob/implanter, mob/living/mob_override)

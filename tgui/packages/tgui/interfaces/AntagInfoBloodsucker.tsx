@@ -1,6 +1,5 @@
 import {
   Box,
-  Button,
   DmIcon,
   Flex,
   Section,
@@ -13,14 +12,7 @@ import { Window } from '../layouts';
 import { type Objective, ObjectivePrintout } from './common/Objectives';
 
 type BloodsuckerInformation = {
-  clan?: ClanInfo;
   powers: PowerInfo[];
-};
-type ClanInfo = {
-  name: string;
-  desc: string;
-  icon: string;
-  icon_state: string;
 };
 type PowerInfo = {
   name: string;
@@ -58,13 +50,13 @@ export const AntagInfoBloodsucker = (props: any) => {
                 selected={tab === 2}
                 onClick={() => setTab(2)}
               >
-                Clan & Powers
+                Powers
               </Tabs.Tab>
             </Tabs>
           </Stack.Item>
           <Stack.Item grow>
             {tab === 1 && <BloodsuckerIntro />}
-            {tab === 2 && <BloodsuckerClan />}
+            {tab === 2 && <PowerSection />}
           </Stack.Item>
         </Stack>
       </Window.Content>
@@ -136,66 +128,6 @@ const BloodsuckerIntro = () => {
             </Stack.Item>
           </Stack>
         </Section>
-      </Stack.Item>
-    </Stack>
-  );
-};
-
-const BloodsuckerClan = (props: any) => {
-  const { act, data } = useBackend<BloodsuckerInformation>();
-  const { clan } = data;
-
-  if (!clan) {
-    return (
-      <Section minHeight="220px">
-        <Box mt={5} bold textAlign="center" fontSize="40px">
-          You are not in a Clan.
-        </Box>
-        <Box mt={3}>
-          <Button
-            fluid
-            icon="users"
-            content="Join Clan"
-            textAlign="center"
-            fontSize="30px"
-            lineHeight={2}
-            onClick={() => act('join_clan')}
-          />
-        </Box>
-      </Section>
-    );
-  }
-
-  return (
-    <Stack vertical>
-      <Stack.Item>
-        <Section>
-          <Stack vertical>
-            <Stack.Item textAlign="center">
-              <DmIcon
-                icon={clan.icon}
-                icon_state={clan.icon_state}
-                width="64px"
-                height="64px"
-                verticalAlign="middle"
-              />
-              <Box inline fontSize="20px" textAlign="center">
-                You are part of the <b>{clan.name}</b>
-              </Box>
-              <DmIcon
-                icon={clan.icon}
-                icon_state={clan.icon_state}
-                width="64px"
-                height="64px"
-                verticalAlign="middle"
-              />
-            </Stack.Item>
-            <Stack.Item fontSize="16px">{clan.desc}</Stack.Item>
-          </Stack>
-        </Section>
-      </Stack.Item>
-      <Stack.Item>
-        <PowerSection />
       </Stack.Item>
     </Stack>
   );

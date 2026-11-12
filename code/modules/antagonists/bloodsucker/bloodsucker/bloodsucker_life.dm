@@ -21,7 +21,6 @@
 			to_chat(owner.current, span_notice("The power of your blood begins knitting your wounds..."))
 			COOLDOWN_START(src, bloodsucker_spam_healing, BLOODSUCKER_SPAM_HEALING)
 	// Standard Updates
-	my_clan?.handle_clan_life(src)
 	HandleStarving()
 	update_blood()
 	update_hud()
@@ -296,9 +295,6 @@
 	owner.current.unequip_everything()
 	user.remove_all_embedded_objects()
 	playsound(owner.current, 'sound/effects/tendril_destroyed.ogg', vol = 40, vary = TRUE)
-
-	if(my_clan?.on_final_death(src))
-		return
 
 	// Elders get dusted, Fledglings get gibbed.
 	if(dusted || bloodsucker_level >= 4)

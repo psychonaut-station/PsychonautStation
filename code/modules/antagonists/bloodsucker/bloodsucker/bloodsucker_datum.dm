@@ -16,8 +16,6 @@
 	/// How much blood we can have at once, increases per clan rank.
 	var/max_blood_volume = 600
 
-	var/datum/bloodsucker_clan/my_clan
-
 	// TIMERS //
 	///Timer between alerts for Burn messages
 	COOLDOWN_DECLARE(bloodsucker_spam_sol_burn)
@@ -191,18 +189,16 @@
 /datum/antagonist/bloodsucker/get_admin_commands()
 	. = ..()
 	.["Give Level"] = CALLBACK(src, PROC_REF(RankUp))
-	if(bloodsucker_level_unspent >= 1)
-		.["Remove Level"] = CALLBACK(src, PROC_REF(RankDown))
+	if(bloodsucker_level_unspent > 0)
+		.["Remove Unspent Level"] = CALLBACK(src, PROC_REF(RankDown))
+		.["Spend Level"] = CALLBACK(src, PROC_REF(SpendRank))
+	if(bloodsucker_level > 0)
+		.["Demote Rank"] = CALLBACK(src, PROC_REF(DemoteRank))
 
 	if(broke_masquerade)
 		.["Fix Masquerade"] = CALLBACK(src, PROC_REF(fix_masquerade))
 	else
 		.["Break Masquerade"] = CALLBACK(src, PROC_REF(break_masquerade))
-
-	if(my_clan)
-		.["Remove Clan"] = CALLBACK(src, PROC_REF(remove_clan))
-	else
-		.["Add Clan"] = CALLBACK(src, PROC_REF(admin_set_clan))
 
 ///Called when you get the antag datum, called only ONCE per antagonist.
 /datum/antagonist/bloodsucker/on_gain()
@@ -311,7 +307,7 @@
 	return finish_preview_icon(final_icon)
 
 /datum/antagonist/bloodsucker/antag_panel_data()
-	return "Clan: [my_clan ? my_clan.name : "None"] | Level: [bloodsucker_level] (Unspent: [bloodsucker_level_unspent]) | Blood: [bloodsucker_blood_volume]/[max_blood_volume]"
+	return "Level: [bloodsucker_level] (Unspent: [bloodsucker_level_unspent]) | Blood: [bloodsucker_blood_volume]/[max_blood_volume]"
 
 /datum/antagonist/bloodsucker/ui_data(mob/user)
 	. = ..()
@@ -331,40 +327,6 @@
 
 /datum/antagonist/bloodsucker/ui_static_data(mob/user)
 	. = ..()
-	if(my_clan)
-		.["clan"] = list(
-			"name" = my_clan.name,
-			"desc" = my_clan.description,
-			"icon" = my_clan.join_icon,
-			"icon_state" = my_clan.join_icon_state,
-		)
-
-	.["powers"] = list()
-	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
-		var/list/power_data = list(
-			"name" = power.name,
-			"explanation" = power.power_explanation,
-			"icon" = power.button_icon,
-			"icon_state" = power.button_icon_state,
-			"can_level" = power.can_level,
-		)
-		if(power.can_level)
-			power_data["level"] = power.level_current
-			power_data["max_level"] = power.max_level
-		.["powers"] += list(power_data)
-
-/datum/antagonist/bloodsucker/ui_act(action, params, datum/tgui/ui)
-	. = ..()
-	if(.)
-		return
-
-	switch(action)
-		if("join_clan")
-			if(my_clan)
-				return
-			assign_clan()
-			ui.send_full_update(force = TRUE)
-			return TRUE
 
 /datum/antagonist/bloodsucker/roundend_report()
 	var/list/report = list()
@@ -372,8 +334,6 @@
 	// Vamp name
 	report += "<br><span class='header'><b>\[[return_full_name()]\]</b></span>"
 	report += printplayer(owner)
-	if(my_clan)
-		report += "They were part of the <b>[my_clan.name]</b>!"
 
 	// Default Report
 	var/objectives_complete = TRUE
@@ -454,16 +414,21 @@
  * Update Sight - Done after Eyes are regenerated.
  */
 /datum/antagonist/bloodsucker/proc/clear_powers_and_stats()
-	// Remove clan first
-	if(my_clan)
-		QDEL_NULL(my_clan)
 	// Powers
-	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers)
+	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers.Copy())
 		RemovePower(all_powers)
 	/// Stats
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/user = owner.current
 		REMOVE_TRAIT(user, TRAIT_DRINKS_BLOOD, BLOODSUCKER_TRAIT)
+		var/obj/item/bodypart/user_left_arm = user.get_bodypart(BODY_ZONE_L_ARM)
+		var/obj/item/bodypart/user_right_arm = user.get_bodypart(BODY_ZONE_R_ARM)
+		if(user_left_arm)
+			user_left_arm.unarmed_damage_low = initial(user_left_arm.unarmed_damage_low)
+			user_left_arm.unarmed_damage_high = initial(user_left_arm.unarmed_damage_high)
+		if(user_right_arm)
+			user_right_arm.unarmed_damage_low = initial(user_right_arm.unarmed_damage_low)
+			user_right_arm.unarmed_damage_high = initial(user_right_arm.unarmed_damage_high)
 	// Remove all bloodsucker traits
 	owner.current.remove_traits(bloodsucker_traits, BLOODSUCKER_TRAIT)
 	// Update Health

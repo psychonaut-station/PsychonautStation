@@ -126,12 +126,14 @@
 	if(!can_level || level_current >= max_level)
 		return
 	level_current++
+	update_desc()
 
 ///Called when the Power is downgraded.
 /datum/action/cooldown/bloodsucker/proc/downgrade_power()
 	if(!can_level || level_current <= 0)
 		return
 	level_current--
+	update_desc()
 
 ///Checks if the Power is available to use.
 /datum/action/cooldown/bloodsucker/proc/can_use(mob/living/carbon/user, trigger_flags)

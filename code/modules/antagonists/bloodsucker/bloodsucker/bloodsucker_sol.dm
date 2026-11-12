@@ -215,7 +215,8 @@
 		ADD_TRAIT(owner.current, TRAIT_SLEEPIMMUNE, BLOODSUCKER_TRAIT)
 	heal_vampire_organs()
 	owner.current.update_stat()
-	my_clan?.on_exit_torpor(src)
+	if(bloodsucker_level_unspent > 0 && !istype(owner.current.loc, /obj/structure/closet/crate/coffin))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
 
 /datum/status_effect/bloodsucker_sol
 	id = "bloodsucker_sol"

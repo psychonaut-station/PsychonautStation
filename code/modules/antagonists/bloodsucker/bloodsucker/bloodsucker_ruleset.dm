@@ -12,22 +12,11 @@
 	weight = 3
 	min_pop = 20
 	max_antag_cap = list("denominator" = 24)
-	blacklisted_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_CURATOR,
-		JOB_AI,
-		JOB_CYBORG,
-	)
-	track = EVENT_TRACK_MUNDANE
+	track = EVENT_TRACK_MODERATE
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/roundstart/bloodsucker/assign_role(datum/mind/candidate)
-	candidate.make_bloodsucker()
+	candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 
 //////////////////////////////////////////////
 //                                          //
@@ -40,7 +29,8 @@
 	config_tag = "Midround Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
 	midround_type = HEAVY_MIDROUND
-	pref_flag = ROLE_VAMPIRICACCIDENT
+	ruleset_flags = RULESET_VARIATION
+	pref_flag = ROLE_BLOODSUCKER
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = alist(
 		DYNAMIC_TIER_LOW = 0,
@@ -50,22 +40,11 @@
 	)
 	min_pop = 20
 	repeatable = FALSE
-	blacklisted_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_CURATOR,
-		JOB_AI,
-		JOB_CYBORG,
-	)
-	track = EVENT_TRACK_MAJOR
+	track = EVENT_TRACK_MODERATE
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/midround/from_living/bloodsucker/assign_role(datum/mind/candidate)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.make_bloodsucker()
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
 		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
 		bloodsuckerdatum.update_hud()
@@ -80,27 +59,18 @@
 	name = "Bloodsucker Breakout"
 	config_tag = "Latejoin Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
-	pref_flag = ROLE_BLOODSUCKERBREAKOUT
+	ruleset_flags = RULESET_VARIATION
+	pref_flag = ROLE_BLOODSUCKER
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = 2
 	min_pop = 20
 	repeatable = FALSE
-	blacklisted_roles = list(
-		JOB_CAPTAIN,
-		JOB_DETECTIVE,
-		JOB_HEAD_OF_SECURITY,
-		JOB_PRISONER,
-		JOB_SECURITY_OFFICER,
-		JOB_WARDEN,
-		JOB_CURATOR,
-		JOB_AI,
-		JOB_CYBORG,
-	)
-	track = EVENT_TRACK_MUNDANE
+	track = EVENT_TRACK_MODERATE
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/latejoin/bloodsucker/assign_role(datum/mind/candidate)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.make_bloodsucker()
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
 		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
 		bloodsuckerdatum.update_hud()
+

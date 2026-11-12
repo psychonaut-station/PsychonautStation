@@ -122,8 +122,6 @@
 
 // Bloodsuckers
 #define ROLE_BLOODSUCKER "Bloodsucker"
-#define ROLE_VAMPIRICACCIDENT "Vampiric Accident"
-#define ROLE_BLOODSUCKERBREAKOUT "Bloodsucker Breakout"
 
 // Virtual dom related
 #define ROLE_GLITCH "Glitch" // the parent type of all vdom roles

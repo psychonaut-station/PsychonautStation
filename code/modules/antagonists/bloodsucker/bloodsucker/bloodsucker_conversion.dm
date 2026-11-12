@@ -109,16 +109,3 @@
 		return FALSE
 	return TRUE
 
-/*
- *	# make_bloodsucker
- *
- * MIND Helper proc that turns the person into a Bloodsucker
- * Args:
- * creator - Person attempting to convert them.
- */
-/datum/mind/proc/make_bloodsucker(datum/mind/creator)
-	var/datum/antagonist/bloodsuckerdatum = add_antag_datum(/datum/antagonist/bloodsucker)
-	if(bloodsuckerdatum && creator)
-		message_admins("[src] has become a Bloodsucker, and was created by [creator].")
-		log_admin("[src] has become a Bloodsucker, and was created by [creator].")
-	return bloodsuckerdatum

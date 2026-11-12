@@ -165,31 +165,3 @@
 		return TRUE
 	return FALSE
 
-/// Created by welding and acid-treating a simple stake.
-/obj/item/stake/hardened
-	name = "hardened stake"
-	desc = "A wooden stake carved to a sharp point and hardened by fire."
-	icon_state = "hardened"
-	force = 8
-	throwforce = 12
-	armour_penetration = 10
-	embed_type = /datum/embedding/hardened_stake
-	staketime = 80
-
-/datum/embedding/hardened_stake
-	embed_chance = 35
-
-/obj/item/stake/hardened/silver
-	name = "silver stake"
-	desc = "Polished and sharp at the end. For when some mofo is always trying to iceskate uphill."
-	icon_state = "silver"
-	inhand_icon_state = "silver"
-	siemens_coefficient = 1 //flags = CONDUCT // var/siemens_coefficient = 1 // for electrical admittance/conductance (electrocution checks and shit)
-	force = 9
-	armour_penetration = 25
-	embed_type = /datum/embedding/silver_stake
-	staketime = 60
-
-/datum/embedding/silver_stake
-	embed_chance = 65
-

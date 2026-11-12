@@ -233,33 +233,19 @@
 	if(!vassaldatum.owner.can_make_special(creator = owner))
 		to_chat(owner.current, span_notice("This Vassal is unable to gain a Special rank due to innate features."))
 		return FALSE
+	if(length(special_vassals[FAVORITE_VASSAL]))
+		to_chat(owner.current, span_notice("You already have a Favorite Vassal."))
+		return FALSE
 	if(bloodsucker_blood_volume < 150)
 		to_chat(owner.current, span_warning("You need at least 150 blood to elevate a Vassal!"))
 		return FALSE
 
-	var/list/options = list()
-	var/list/radial_display = list()
-	for(var/datum/antagonist/vassal/vassaldatums as anything in subtypesof(/datum/antagonist/vassal))
-		if(length(special_vassals[initial(vassaldatums.special_type)]))
-			continue
-		options[initial(vassaldatums.name)] = vassaldatums
-
-		var/datum/radial_menu_choice/option = new
-		option.image = image(icon = initial(vassaldatums.hud_icon), icon_state = initial(vassaldatums.antag_hud_name))
-		option.info = "[initial(vassaldatums.name)] - [span_boldnotice(initial(vassaldatums.vassal_description))]"
-		radial_display[initial(vassaldatums.name)] = option
-
-	if(!length(options))
-		return
-
-	to_chat(owner.current, span_notice("You can change who this Vassal is, who are they to you?"))
-	var/vassal_response = show_radial_menu(owner.current, vassaldatum.owner.current, radial_display)
-	if(!vassal_response)
-		return
-	vassal_response = options[vassal_response]
-	if(QDELETED(src) || QDELETED(owner.current) || QDELETED(vassaldatum.owner.current))
+	var/choice = tgui_alert(owner.current, "Elevate [vassaldatum.owner.current] to Favorite Vassal? (Costs 150 blood)", "Elevate Vassal", list("Yes", "No"))
+	if(choice != "Yes" || QDELETED(src) || QDELETED(owner.current) || QDELETED(vassaldatum.owner.current))
 		return FALSE
-	vassaldatum.make_special(vassal_response)
+	if(bloodsucker_blood_volume < 150)
+		return FALSE
+	vassaldatum.make_special(/datum/antagonist/vassal/favorite)
 	AddBloodVolume(-150)
 	update_hud()
 	return TRUE

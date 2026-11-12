@@ -93,42 +93,14 @@
 	if(bloodsuckerdatum.claim_coffin(src, current_area))
 		resident = claimant
 		anchored = TRUE
-		START_PROCESSING(SSprocessing, src)
 
 /obj/structure/closet/crate/coffin/Destroy()
-	unclaim_coffin() // also stops processing
+	unclaim_coffin()
 	return ..()
-
-/obj/structure/closet/crate/coffin/process(seconds_per_tick)
-	// The parent process() only handles sealed closets and returns PROCESS_KILL for crates,
-	// so the dirt code below would never run if we relied on its return value.
-	if(!resident || !(resident in src))
-		return PROCESS_KILL
-	if(!prob(20))
-		return
-	var/list/turf/area_turfs = get_area_turfs(get_area(src))
-	// Create Dirt etc.
-	var/turf/T_Dirty = pick(area_turfs)
-	if(T_Dirty && !T_Dirty.density && !(locate(/obj/effect/decal/cleanable) in T_Dirty))
-		// Default: Dirt
-		// STEP ONE: COBWEBS
-		// CHECK: Wall to North?
-		var/turf/check_N = get_step(T_Dirty, NORTH)
-		if(istype(check_N, /turf/closed/wall))
-			// CHECK: Wall to West?
-			var/turf/check_W = get_step(T_Dirty, WEST)
-			if(istype(check_W, /turf/closed/wall))
-				new /obj/effect/decal/cleanable/cobweb(T_Dirty)
-			// CHECK: Wall to East?
-			var/turf/check_E = get_step(T_Dirty, EAST)
-			if(istype(check_E, /turf/closed/wall))
-				new /obj/effect/decal/cleanable/cobweb/cobweb2(T_Dirty)
-		new /obj/effect/decal/cleanable/dirt(T_Dirty)
 
 /obj/structure/closet/crate/coffin/proc/unclaim_coffin(manual = FALSE)
 	// Unanchor it (If it hasn't been broken, anyway)
 	anchored = FALSE
-	STOP_PROCESSING(SSprocessing, src)
 	if(!resident || !resident.mind)
 		return
 	// Unclaiming

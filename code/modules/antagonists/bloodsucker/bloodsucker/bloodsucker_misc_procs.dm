@@ -125,7 +125,6 @@
 
 	update_hud()
 	return TRUE
-	return TRUE
 
 ///Disables all powers, accounting for torpor
 /datum/antagonist/bloodsucker/proc/DisableAllPowers(forced = FALSE)

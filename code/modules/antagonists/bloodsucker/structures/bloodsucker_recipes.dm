@@ -1,0 +1,59 @@
+/// From recipes.dm
+
+/datum/crafting_recipe/blackcoffin
+	name = "Black Coffin"
+	result = /obj/structure/closet/crate/coffin/blackcoffin
+	tool_behaviors = list(TOOL_WELDER, TOOL_SCREWDRIVER)
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 1,
+		/obj/item/stack/sheet/mineral/wood = 5,
+		/obj/item/stack/sheet/iron = 1,
+	)
+	time = 15 SECONDS
+	category = CAT_STRUCTURE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
+
+/datum/crafting_recipe/metalcoffin
+	name = "Metal Coffin"
+	result = /obj/structure/closet/crate/coffin/metalcoffin
+	reqs = list(
+		/obj/item/stack/sheet/iron = 6,
+		/obj/item/stack/rods = 2,
+	)
+	time = 10 SECONDS
+	category = CAT_STRUCTURE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY
+
+/datum/crafting_recipe/vassalrack
+	name = "Persuasion Rack"
+	result = /obj/structure/bloodsucker/vassalrack
+	tool_behaviors = list(TOOL_WELDER, TOOL_WRENCH)
+	reqs = list(
+		/obj/item/stack/sheet/mineral/wood = 3,
+		/obj/item/stack/sheet/iron = 2,
+		/obj/item/restraints/handcuffs/cable = 2,
+	)
+	time = 15 SECONDS
+	category = CAT_STRUCTURE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
+
+/datum/crafting_recipe/bloodthrone
+	name = "Blood Throne"
+	result = /obj/structure/bloodsucker/bloodthrone
+	tool_behaviors = list(TOOL_WRENCH)
+	reqs = list(
+		/obj/item/stack/sheet/cloth = 3,
+		/obj/item/stack/sheet/iron = 5,
+		/obj/item/stack/sheet/mineral/wood = 1,
+	)
+	time = 5 SECONDS
+	category = CAT_STRUCTURE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_MUST_BE_LEARNED | CRAFT_SKIP_MATERIALS_PARITY
+
+/datum/crafting_recipe/stake
+	name = "Stake"
+	result = /obj/item/stake
+	reqs = list(/obj/item/stack/sheet/mineral/wood = 3)
+	time = 8 SECONDS
+	category = CAT_WEAPON_MELEE
+	crafting_flags = CRAFT_CHECK_DENSITY | CRAFT_SKIP_MATERIALS_PARITY

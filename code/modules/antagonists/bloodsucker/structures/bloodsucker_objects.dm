@@ -1,0 +1,176 @@
+//////////////////////
+//     BLOODBAG     //
+//////////////////////
+
+#define BLOODBAG_GULP_SIZE 5
+
+/// Taken from drinks.dm
+/obj/item/reagent_containers/blood/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(user.combat_mode || !isliving(target))
+		return NONE
+
+	var/mob/living/victim = target
+	if(!victim.is_holding(src) && !user.is_holding(src) && !victim.Adjacent(src))
+		return NONE
+	if(!reagents?.total_volume)
+		to_chat(user, span_warning("[src] is empty!"))
+		return ITEM_INTERACT_FAILURE
+	if(!canconsume(victim, user))
+		return NONE
+
+	if(victim != user)
+		if(!do_after(user, 5 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(can_drink), victim, user)))
+			return ITEM_INTERACT_FAILURE
+		user.visible_message(
+			span_notice("[user] forces [victim] to drink from the [src]."),
+			span_notice("You put the [src] up to [victim]'s mouth."))
+		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = user, methods = INGEST)
+		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
+		return ITEM_INTERACT_SUCCESS
+
+	var/drank_any = FALSE
+	while(reagents?.total_volume && do_after(user, 1 SECONDS, src, timed_action_flags = IGNORE_USER_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(can_drink), victim, user)))
+		drank_any = TRUE
+		victim.visible_message(
+			span_notice("[victim] puts the [src] up to their mouth."),
+			span_notice("You take a sip from the [src]."),
+		)
+		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = user, methods = INGEST)
+		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
+	return drank_any ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE
+
+#undef BLOODBAG_GULP_SIZE
+
+/obj/item/reagent_containers/blood/proc/can_drink(mob/living/victim, mob/living/user)
+	if(!victim.is_holding(src) && !user.is_holding(src) && !victim.Adjacent(src))
+		return FALSE
+	if(!reagents?.total_volume)
+		return FALSE
+	if(!canconsume(victim, user))
+		return FALSE
+	return TRUE
+
+//////////////////////
+//      STAKES      //
+//////////////////////
+/obj/item/stack/sheet/mineral/wood/attackby(obj/item/item, mob/user, params)
+	if(!item.get_sharpness())
+		return ..()
+	user.visible_message(
+		span_notice("[user] begins whittling [src] into a pointy object."),
+		span_notice("You begin whittling [src] into a sharp point at one end."),
+		span_hear("You hear wood carving."),
+	)
+	// 5 Second Timer
+	if(!do_after(user, 5 SECONDS, src, NONE, TRUE))
+		return
+	// Make Stake
+	var/obj/item/stake/new_item = new(user.loc)
+	user.visible_message(
+		span_notice("[user] finishes carving a stake out of [src]."),
+		span_notice("You finish carving a stake out of [src]."),
+	)
+	// Prepare to Put in Hands (if holding wood)
+	var/obj/item/stack/sheet/mineral/wood/wood_stack = src
+	var/replace = (user.get_inactive_held_item() == wood_stack)
+	// Use Wood
+	wood_stack.use(1)
+	// If stack depleted, put item in that hand (if it had one)
+	if(QDELETED(wood_stack) && replace)
+		user.put_in_hands(new_item)
+
+/// Do I have a stake in my heart?
+/mob/living/proc/am_staked()
+	var/obj/item/bodypart/chosen_bodypart = get_bodypart(BODY_ZONE_CHEST)
+	if(!chosen_bodypart)
+		return FALSE
+	for(var/obj/item/embedded_stake in chosen_bodypart.embedded_objects)
+		if(istype(embedded_stake, /obj/item/stake))
+			return TRUE
+	return FALSE
+
+/// You can't go to sleep in a coffin with a stake in you.
+/mob/living/proc/StakeCanKillMe()
+	if(IsSleeping())
+		return TRUE
+	if(stat >= SOFT_CRIT)
+		return TRUE
+	if(HAS_TRAIT_FROM(src, TRAIT_NODEATH, TORPOR_TRAIT))
+		return TRUE
+	return FALSE
+
+/obj/item/stake
+	name = "wooden stake"
+	desc = "A simple wooden stake carved to a sharp point."
+	icon = 'icons/bloodsuckers/stakes.dmi'
+	icon_state = "wood"
+	inhand_icon_state = "wood"
+	lefthand_file = 'icons/bloodsuckers/bs_leftinhand.dmi'
+	righthand_file = 'icons/bloodsuckers/bs_rightinhand.dmi'
+	slot_flags = ITEM_SLOT_POCKETS
+	w_class = WEIGHT_CLASS_SMALL
+	hitsound = 'sound/items/weapons/bladeslice.ogg'
+	attack_verb_continuous = list("staked", "stabbed", "tore into")
+	attack_verb_simple = list("staked", "stabbed", "tore into")
+	sharpness = SHARP_EDGED
+	embed_type = /datum/embedding/wooden_stake
+	force = 6
+	throwforce = 10
+	max_integrity = 30
+
+	///Time it takes to embed the stake into someone's chest.
+	var/staketime = 12 SECONDS
+
+/datum/embedding/wooden_stake
+	embed_chance = 20
+
+/obj/item/stake/attack(mob/living/target, mob/living/user, list/modifiers, list/attack_modifiers)
+	if(HAS_TRAIT(user, TRAIT_PACIFISM) || HAS_TRAIT(user, TRAIT_CANT_ATTACK))
+		return ..()
+	// Invalid Target, or not targetting the chest?
+	if(target == user || check_zone(user.zone_selected) != BODY_ZONE_CHEST)
+		return ..()
+	if(!target.can_be_staked()) // Oops! Can't.
+		to_chat(user, span_danger("You can't stake [target] when they are moving about! They have to be laying down or grabbed by the neck!"))
+		return TRUE
+	if(HAS_TRAIT(target, TRAIT_PIERCEIMMUNE))
+		to_chat(user, span_danger("[target]'s chest resists the stake. It won't go in."))
+		return TRUE
+
+	to_chat(user, span_notice("You put all your weight into embedding the stake into [target]'s chest..."))
+	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, 1)
+	if(!do_after(user, staketime, target, extra_checks = CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon, can_be_staked)))) // user / target / time / uninterruptable / show progress bar / extra checks
+		return TRUE
+	// Drop & Embed Stake
+	if(!force_embed(target, target.get_bodypart(BODY_ZONE_CHEST) || BODY_ZONE_CHEST))
+		return TRUE
+	user.visible_message(
+		span_danger("[user.name] drives the [src] into [target]'s chest!"),
+		span_danger("You drive the [src] into [target]'s chest!"),
+	)
+	playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
+	target.apply_damage(max(10, force * 1.2), BRUTE, BODY_ZONE_CHEST, wound_bonus = 0, sharpness = TRUE)
+	log_combat(user, target, "staked", src.name)
+	if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
+		return TRUE
+	if(!target.mind)
+		return TRUE
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = target.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(bloodsuckerdatum)
+		// If DEAD or TORPID... Kill Bloodsucker!
+		if(target.StakeCanKillMe())
+			bloodsuckerdatum.final_death()
+		else
+			to_chat(target, span_userdanger("You have been staked! Your powers are useless, your death forever, while it remains in place."))
+			target.balloon_alert(target, "you have been staked!")
+	return TRUE
+
+///Can this target be staked? If someone stands up before this is complete, it fails. Best used on someone stationary.
+/mob/living/proc/can_be_staked()
+	return FALSE
+
+/mob/living/carbon/can_be_staked()
+	if(!(mobility_flags & MOBILITY_MOVE))
+		return TRUE
+	return FALSE
+

@@ -46,7 +46,13 @@
 /datum/dynamic_ruleset/midround/from_living/bloodsucker/assign_role(datum/mind/candidate)
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
-		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
+		var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
+		if(time_passed_minutes >= 35)
+			bloodsuckerdatum.bloodsucker_level_unspent = 4
+		else if(time_passed_minutes >= 15)
+			bloodsuckerdatum.bloodsucker_level_unspent = 3
+		else
+			bloodsuckerdatum.bloodsucker_level_unspent = 2
 		bloodsuckerdatum.update_hud()
 
 //////////////////////////////////////////////
@@ -71,6 +77,12 @@
 /datum/dynamic_ruleset/latejoin/bloodsucker/assign_role(datum/mind/candidate)
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
-		bloodsuckerdatum.bloodsucker_level_unspent = rand(2, 3)
+		var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
+		if(time_passed_minutes >= 35)
+			bloodsuckerdatum.bloodsucker_level_unspent = 4
+		else if(time_passed_minutes >= 15)
+			bloodsuckerdatum.bloodsucker_level_unspent = 3
+		else
+			bloodsuckerdatum.bloodsucker_level_unspent = 2
 		bloodsuckerdatum.update_hud()
 

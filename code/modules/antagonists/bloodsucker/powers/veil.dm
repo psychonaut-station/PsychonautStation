@@ -7,7 +7,7 @@
 		Your clothing and carried equipment remain untouched by the illusion.\n\
 		The deceptive veil may be dispelled at will whenever you wish to reclaim your true appearance."
 	power_flags = BP_AM_TOGGLE
-	check_flags = BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL
+	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL | BP_CANT_USE_WHILE_STAKED | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_DEFAULT_POWER | VASSAL_CAN_BUY
 	can_level = FALSE
 	bloodcost = 15
@@ -26,7 +26,11 @@
 	owner.balloon_alert(owner, "veil turned on.")
 
 /datum/action/cooldown/bloodsucker/veil/proc/veil_user()
+	if(!ishuman(owner))
+		return
 	var/mob/living/carbon/human/user = owner
+	if(!user.dna)
+		return
 	to_chat(owner, span_warning("You mystify the air around your person. Your identity is now altered."))
 	src.old_dna = new()
 	user.dna.copy_dna(old_dna)

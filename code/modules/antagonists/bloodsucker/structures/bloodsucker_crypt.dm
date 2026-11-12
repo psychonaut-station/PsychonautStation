@@ -191,8 +191,8 @@
 			return
 	else
 		buckled_mob.visible_message(
-			span_danger("[user] tries to pull [buckled_mob] rack!"),
-			span_danger("[user] tries to pull [buckled_mob] rack!"),
+			span_danger("[user] tries to pull [buckled_mob] off the rack!"),
+			span_danger("[user] tries to pull [buckled_mob] off the rack!"),
 			span_hear("You hear a squishy wet noise."))
 		if(!do_after(user, 10 SECONDS, buckled_mob))
 			return
@@ -302,6 +302,9 @@
 			if(!do_disloyalty(user, target))
 				blood_draining = FALSE
 				return
+			if(QDELETED(src) || QDELETED(target) || !(target in buckled_mobs) || QDELETED(bloodsuckerdatum))
+				blood_draining = FALSE
+				return
 			if(!disloyalty_confirm)
 				balloon_alert(user, "refused persuasion!")
 				convert_progress++
@@ -321,6 +324,9 @@
 		user.balloon_alert_to_viewers("smears blood...", "painting bloody marks...")
 		if(!do_after(user, 5 SECONDS, target))
 			balloon_alert(user, "interrupted!")
+			return
+		if(QDELETED(src) || QDELETED(target) || !(target in buckled_mobs) || QDELETED(bloodsuckerdatum))
+			blood_draining = FALSE
 			return
 		if(bloodsuckerdatum.bloodsucker_blood_volume < TORTURE_CONVERSION_COST)
 			balloon_alert(user, "not enough blood!")
@@ -399,6 +405,9 @@
 		timeout = 10 SECONDS, \
 		autofocus = TRUE, \
 	)
+	if(QDELETED(src) || QDELETED(target) || !(target in buckled_mobs))
+		disloyalty_offered = FALSE
+		return FALSE
 	switch(alert_response)
 		if("Accept")
 			disloyalty_confirm = TRUE
@@ -516,7 +525,7 @@
 	if(IS_BLOODSUCKER(user))
 		RegisterSignal(user, COMSIG_MOB_SAY, PROC_REF(handle_speech))
 	else
-		unbuckle_mob(user)
+		unbuckle_mob(user, force = TRUE)
 		if(!COOLDOWN_FINISHED(src, throne_shock_cd))
 			to_chat(user, span_cult("The dark energy of the throne repels you!"))
 			return FALSE
@@ -533,9 +542,12 @@
 
 // Unbuckling
 /obj/structure/bloodsucker/bloodthrone/unbuckle_mob(mob/living/user, force = FALSE, can_fall = TRUE)
-	src.visible_message(span_danger("[user] unbuckles themselves from [src]."))
-	UnregisterSignal(user, COMSIG_MOB_SAY)
 	. = ..()
+	if(!.)
+		return
+	if(!force)
+		src.visible_message(span_danger("[user] unbuckles themselves from [src]."))
+	UnregisterSignal(user, COMSIG_MOB_SAY)
 
 /obj/structure/bloodsucker/bloodthrone/post_unbuckle_mob(mob/living/target)
 	. = ..()

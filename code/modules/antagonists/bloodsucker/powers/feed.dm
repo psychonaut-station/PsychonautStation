@@ -94,9 +94,14 @@
 	owner.balloon_alert(owner, "feeding off [feed_target]...")
 	started_alive = (feed_target.stat < DEAD)
 	if(!do_after(owner, feed_timer, feed_target, NONE, TRUE))
+		if(QDELETED(src) || QDELETED(owner))
+			return
 		owner.balloon_alert(owner, "feed stopped")
 		DeactivatePower()
 		return
+	if(QDELETED(src) || QDELETED(owner))
+		return
+	find_bloodsucker_datum()
 	if(owner.pulling == feed_target && owner.grab_state >= GRAB_AGGRESSIVE)
 		if(!IS_BLOODSUCKER(feed_target) && !IS_VASSAL(feed_target))
 			feed_target.Unconscious((5 + level_current) SECONDS)
@@ -127,7 +132,7 @@
 		if(IS_BLOODSUCKER(watchers) || IS_VASSAL(watchers))
 			continue
 		owner.balloon_alert(owner, "feed noticed!")
-		bloodsuckerdatum_power.give_masquerade_infraction()
+		bloodsuckerdatum_power?.give_masquerade_infraction()
 		break
 
 	ADD_TRAIT(owner, TRAIT_MUTE, FEED_TRAIT)

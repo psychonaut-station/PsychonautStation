@@ -16,19 +16,6 @@
 //////////////////////////////////////////////////////////////////////////////
 //	//							 PROCS 									//	//
 
-/// Look at all crew members, and for/loop through.
-/datum/objective/bloodsucker/proc/return_possible_targets()
-	var/list/possible_targets = list()
-	for(var/datum/mind/possible_target in get_crewmember_minds())
-		// Check One: Default Valid User
-		if(possible_target != owner && ishuman(possible_target.current) && possible_target.current.stat != DEAD)
-			// Check Two: Am Bloodsucker?
-			if(IS_BLOODSUCKER(possible_target.current))
-				continue
-			possible_targets += possible_target
-
-	return possible_targets
-
 /// Check Vassals and get their occupations
 /datum/objective/bloodsucker/proc/get_vassal_occupations()
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner.has_antag_datum(/datum/antagonist/bloodsucker)
@@ -160,39 +147,6 @@
 	 * ALSO - Search through all jobs (look for prefs earlier that look for all jobs, and search through all jobs to see if their head matches the head listed, or it IS the head)
 	 * ALSO - registered_account in _vending.dm for banks, and assigning new ones.
 	 */
-
-//////////////////////////////////////////////////////////////////////////////////////
-
-// NOTE: Look up /steal in objective.dm for inspiration.
-/// Steal hearts. You just really wanna have some hearts.
-/datum/objective/bloodsucker/heartthief
-	name = "heartthief"
-
-// GENERATE!
-/datum/objective/bloodsucker/heartthief/New()
-	target_amount = rand(2,3)
-	..()
-
-// EXPLANATION
-/datum/objective/bloodsucker/heartthief/update_explanation_text()
-	. = ..()
-	explanation_text = "Steal and keep [target_amount] organic heart\s."
-
-// WIN CONDITIONS?
-/datum/objective/bloodsucker/heartthief/check_completion()
-	if(!owner.current)
-		return FALSE
-
-	var/list/all_items = owner.current.get_all_contents()
-	var/heart_count = 0
-	for(var/obj/item/organ/heart/current_hearts in all_items)
-		if(current_hearts.organ_flags & ORGAN_ROBOTIC) // No robo-hearts allowed
-			continue
-		heart_count++
-
-	if(heart_count >= target_amount)
-		return TRUE
-	return FALSE
 
 //////////////////////////////////////////////////////////////////////////////////////
 

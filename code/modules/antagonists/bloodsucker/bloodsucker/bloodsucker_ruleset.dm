@@ -18,6 +18,18 @@
 /datum/dynamic_ruleset/roundstart/bloodsucker/assign_role(datum/mind/candidate)
 	candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 
+/datum/dynamic_ruleset/proc/assign_scaled_bloodsucker(datum/mind/candidate)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = new()
+	var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
+	if(time_passed_minutes >= 35)
+		bloodsuckerdatum.bloodsucker_level_unspent = 4
+	else if(time_passed_minutes >= 15)
+		bloodsuckerdatum.bloodsucker_level_unspent = 3
+	else
+		bloodsuckerdatum.bloodsucker_level_unspent = 2
+	if(candidate.add_antag_datum(bloodsuckerdatum))
+		bloodsuckerdatum.update_hud()
+
 //////////////////////////////////////////////
 //                                          //
 //          MIDROUND BLOODSUCKER            //
@@ -29,7 +41,6 @@
 	config_tag = "Midround Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
 	midround_type = HEAVY_MIDROUND
-	ruleset_flags = RULESET_VARIATION
 	pref_flag = ROLE_BLOODSUCKER_BREAKOUT
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = alist(
@@ -44,16 +55,7 @@
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/midround/from_living/bloodsucker/assign_role(datum/mind/candidate)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
-	if(bloodsuckerdatum)
-		var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
-		if(time_passed_minutes >= 35)
-			bloodsuckerdatum.bloodsucker_level_unspent = 4
-		else if(time_passed_minutes >= 15)
-			bloodsuckerdatum.bloodsucker_level_unspent = 3
-		else
-			bloodsuckerdatum.bloodsucker_level_unspent = 2
-		bloodsuckerdatum.update_hud()
+	assign_scaled_bloodsucker(candidate)
 
 //////////////////////////////////////////////
 //                                          //
@@ -65,7 +67,6 @@
 	name = "Stowaway Bloodsucker"
 	config_tag = "Latejoin Bloodsucker"
 	preview_antag_datum = /datum/antagonist/bloodsucker
-	ruleset_flags = RULESET_VARIATION
 	pref_flag = ROLE_STOWAWAY_BLOODSUCKER
 	jobban_flag = ROLE_BLOODSUCKER
 	weight = 2
@@ -75,14 +76,5 @@
 	tags = list(TAG_COMBAT, TAG_CREW_ANTAG)
 
 /datum/dynamic_ruleset/latejoin/bloodsucker/assign_role(datum/mind/candidate)
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = candidate.add_antag_datum(/datum/antagonist/bloodsucker)
-	if(bloodsuckerdatum)
-		var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
-		if(time_passed_minutes >= 35)
-			bloodsuckerdatum.bloodsucker_level_unspent = 4
-		else if(time_passed_minutes >= 15)
-			bloodsuckerdatum.bloodsucker_level_unspent = 3
-		else
-			bloodsuckerdatum.bloodsucker_level_unspent = 2
-		bloodsuckerdatum.update_hud()
+	assign_scaled_bloodsucker(candidate)
 

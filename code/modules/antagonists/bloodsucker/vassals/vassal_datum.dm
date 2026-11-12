@@ -28,6 +28,8 @@
 
 /datum/antagonist/vassal/add_team_hud(mob/target)
 	QDEL_NULL(team_hud_ref)
+	if(!master?.owner?.current || QDELETED(target))
+		return
 
 	team_hud_ref = WEAKREF(target.add_alt_appearance(
 		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
@@ -36,10 +38,14 @@
 	))
 
 	var/datum/atom_hud/alternate_appearance/basic/has_antagonist/hud = team_hud_ref.resolve()
+	if(!hud)
+		return
 
 	var/list/mob/living/mob_list = list()
 	mob_list += master.owner.current
 	for(var/datum/antagonist/vassal/vassal as anything in master.vassals)
+		if(QDELETED(vassal?.owner?.current))
+			continue
 		mob_list += vassal.owner.current
 
 	for (var/datum/atom_hud/alternate_appearance/basic/has_antagonist/antag_hud as anything in GLOB.has_antagonist_huds)
@@ -93,24 +99,25 @@
 	return ..()
 
 /datum/antagonist/vassal/on_removal()
-	UnregisterSignal(owner.current, COMSIG_ATOM_EXAMINE)
 	UnregisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN)
 	//Free them from their Master
-	if(!QDELETED(master?.owner))
+	if(!QDELETED(master))
 		if(special_type && master.special_vassals[special_type])
 			master.special_vassals[special_type] -= src
 		master.vassals -= src
+	if(owner)
 		owner.enslaved_to = null
-	//Remove ALL Traits, as long as its from BLOODSUCKER_TRAIT's source.
-	for(var/allstatus_traits in owner.current._status_traits?.Copy())
-		REMOVE_TRAIT(owner.current, allstatus_traits, BLOODSUCKER_TRAIT)
-	//Remove Recuperate Power
-	while(length(powers))
-		var/datum/action/cooldown/bloodsucker/power = pick(powers)
-		powers -= power
-		power.Remove(owner.current)
-	//Remove Language & Hud
-	owner.current.remove_language(/datum/language/vampiric)
+	if(!QDELETED(owner?.current))
+		UnregisterSignal(owner.current, COMSIG_ATOM_EXAMINE)
+		//Remove ALL Traits, as long as its from BLOODSUCKER_TRAIT's source.
+		for(var/allstatus_traits in owner.current._status_traits?.Copy())
+			REMOVE_TRAIT(owner.current, allstatus_traits, BLOODSUCKER_TRAIT)
+		//Remove Recuperate Power
+		for(var/datum/action/power as anything in powers)
+			power.Remove(owner.current)
+		//Remove Language & Hud
+		owner.current.remove_language(/datum/language/vampiric)
+	QDEL_LIST(powers)
 	return ..()
 
 /datum/antagonist/vassal/on_body_transfer(mob/living/old_body, mob/living/new_body)

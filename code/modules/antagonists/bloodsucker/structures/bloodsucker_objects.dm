@@ -5,38 +5,48 @@
 #define BLOODBAG_GULP_SIZE 5
 
 /// Taken from drinks.dm
-/obj/item/reagent_containers/blood/attack(mob/living/victim, mob/living/attacker, params)
-	if(!can_drink(victim, attacker))
-		return
+/obj/item/reagent_containers/blood/interact_with_atom(atom/target, mob/living/user, list/modifiers)
+	if(user.combat_mode || !isliving(target))
+		return NONE
 
-	if(victim != attacker)
-		if(!do_after(attacker, 5 SECONDS, victim))
-			return
-		attacker.visible_message(
-			span_notice("[attacker] forces [victim] to drink from the [src]."),
+	var/mob/living/victim = target
+	if(!victim.is_holding(src) && !user.is_holding(src) && !victim.Adjacent(src))
+		return NONE
+	if(!reagents?.total_volume)
+		to_chat(user, span_warning("[src] is empty!"))
+		return ITEM_INTERACT_FAILURE
+	if(!canconsume(victim, user))
+		return NONE
+
+	if(victim != user)
+		if(!do_after(user, 5 SECONDS, victim, extra_checks = CALLBACK(src, PROC_REF(can_drink), victim, user)))
+			return ITEM_INTERACT_FAILURE
+		user.visible_message(
+			span_notice("[user] forces [victim] to drink from the [src]."),
 			span_notice("You put the [src] up to [victim]'s mouth."))
-		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = attacker, methods = INGEST)
+		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = user, methods = INGEST)
 		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
-		return TRUE
+		return ITEM_INTERACT_SUCCESS
 
-	while(do_after(victim, 1 SECONDS, timed_action_flags = IGNORE_USER_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(can_drink), victim, attacker)))
+	var/drank_any = FALSE
+	while(reagents?.total_volume && do_after(user, 1 SECONDS, src, timed_action_flags = IGNORE_USER_LOC_CHANGE, extra_checks = CALLBACK(src, PROC_REF(can_drink), victim, user)))
+		drank_any = TRUE
 		victim.visible_message(
 			span_notice("[victim] puts the [src] up to their mouth."),
 			span_notice("You take a sip from the [src]."),
 		)
-		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = attacker, methods = INGEST)
+		reagents.trans_to(victim, BLOODBAG_GULP_SIZE, transferred_by = user, methods = INGEST)
 		playsound(victim.loc, 'sound/items/drink.ogg', 30, 1)
-	return TRUE
+	return drank_any ? ITEM_INTERACT_SUCCESS : ITEM_INTERACT_FAILURE
 
 #undef BLOODBAG_GULP_SIZE
 
-/obj/item/reagent_containers/blood/proc/can_drink(mob/living/victim, mob/living/attacker)
-	if(!victim.is_holding(src) && !attacker.is_holding(src) && !victim.Adjacent(src))
+/obj/item/reagent_containers/blood/proc/can_drink(mob/living/victim, mob/living/user)
+	if(!victim.is_holding(src) && !user.is_holding(src) && !victim.Adjacent(src))
 		return FALSE
-	if(!canconsume(victim, attacker))
+	if(!reagents?.total_volume)
 		return FALSE
-	if(!reagents || !reagents.total_volume)
-		to_chat(victim, span_warning("[src] is empty!"))
+	if(!canconsume(victim, user))
 		return FALSE
 	return TRUE
 
@@ -114,39 +124,37 @@
 /datum/embedding/wooden_stake
 	embed_chance = 20
 
-/obj/item/stake/attack(mob/living/target, mob/living/user, params)
-	. = ..()
-	if(.)
-		return
+/obj/item/stake/attack(mob/living/target, mob/living/user, list/modifiers, list/attack_modifiers)
+	if(HAS_TRAIT(user, TRAIT_PACIFISM) || HAS_TRAIT(user, TRAIT_CANT_ATTACK))
+		return ..()
 	// Invalid Target, or not targetting the chest?
-	if(check_zone(user.zone_selected) != BODY_ZONE_CHEST)
-		return
-	if(target == user)
-		return
+	if(target == user || check_zone(user.zone_selected) != BODY_ZONE_CHEST)
+		return ..()
 	if(!target.can_be_staked()) // Oops! Can't.
 		to_chat(user, span_danger("You can't stake [target] when they are moving about! They have to be laying down or grabbed by the neck!"))
-		return
+		return TRUE
 	if(HAS_TRAIT(target, TRAIT_PIERCEIMMUNE))
 		to_chat(user, span_danger("[target]'s chest resists the stake. It won't go in."))
-		return
+		return TRUE
 
 	to_chat(user, span_notice("You put all your weight into embedding the stake into [target]'s chest..."))
-	playsound(user, 'sound/effects/magic/Demon_consume.ogg', 50, 1)
+	playsound(user, 'sound/effects/magic/demon_consume.ogg', 50, 1)
 	if(!do_after(user, staketime, target, extra_checks = CALLBACK(target, TYPE_PROC_REF(/mob/living/carbon, can_be_staked)))) // user / target / time / uninterruptable / show progress bar / extra checks
-		return
+		return TRUE
 	// Drop & Embed Stake
+	if(!force_embed(target, target.get_bodypart(BODY_ZONE_CHEST) || BODY_ZONE_CHEST))
+		return TRUE
 	user.visible_message(
 		span_danger("[user.name] drives the [src] into [target]'s chest!"),
 		span_danger("You drive the [src] into [target]'s chest!"),
 	)
 	playsound(get_turf(target), 'sound/effects/splat.ogg', 40, 1)
-	if(!force_embed(target, target.get_bodypart(BODY_ZONE_CHEST) || BODY_ZONE_CHEST))
-		return
 	target.apply_damage(max(10, force * 1.2), BRUTE, BODY_ZONE_CHEST, wound_bonus = 0, sharpness = TRUE)
+	log_combat(user, target, "staked", src.name)
 	if(QDELETED(src)) // in case trying to embed it caused its deletion (say, if it's DROPDEL)
-		return
+		return TRUE
 	if(!target.mind)
-		return
+		return TRUE
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = target.mind.has_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
 		// If DEAD or TORPID... Kill Bloodsucker!
@@ -155,6 +163,7 @@
 		else
 			to_chat(target, span_userdanger("You have been staked! Your powers are useless, your death forever, while it remains in place."))
 			target.balloon_alert(target, "you have been staked!")
+	return TRUE
 
 ///Can this target be staked? If someone stands up before this is complete, it fails. Best used on someone stationary.
 /mob/living/proc/can_be_staked()

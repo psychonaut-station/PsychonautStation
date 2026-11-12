@@ -14,7 +14,8 @@
 	. = ..()
 	if(. > 0 && mind)
 		var/datum/antagonist/bloodsucker/bloodsuckerdatum = mind.has_antag_datum(/datum/antagonist/bloodsucker)
-		bloodsuckerdatum?.bloodsucker_blood_volume -= .
+		if(bloodsuckerdatum)
+			bloodsuckerdatum.bloodsucker_blood_volume = max(0, bloodsuckerdatum.bloodsucker_blood_volume - .)
 
 
 // Used when analyzing a Bloodsucker, Masquerade will hide brain traumas (Unless you're a Beefman)

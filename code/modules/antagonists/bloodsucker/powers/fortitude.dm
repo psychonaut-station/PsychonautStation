@@ -34,7 +34,7 @@
 	// Traits & Effects
 	owner.add_traits(list(TRAIT_PIERCEIMMUNE, TRAIT_ANALGESIA, TRAIT_NODISMEMBER, TRAIT_PUSHIMMUNE), FORTITUDE_TRAIT)
 	if(level_current >= 4)
-		owner.add_traits(list(TRAIT_STUNIMMUNE, TRAIT_CANT_STAMCRIT), FORTITUDE_TRAIT) // They'll get stun resistance + this, who cares.
+		ADD_TRAIT(owner, TRAIT_STUNIMMUNE, FORTITUDE_TRAIT) // They'll get stun resistance + this, who cares.
 	var/mob/living/carbon/human/bloodsucker_user = owner
 	if(IS_BLOODSUCKER(owner) || IS_VASSAL(owner))
 		fortitude_resist = max(0.3, 0.7 - level_current * 0.1)
@@ -65,14 +65,15 @@
 /datum/action/cooldown/bloodsucker/fortitude/DeactivatePower()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/bloodsucker_user = owner
-		if(IS_BLOODSUCKER(owner) || IS_VASSAL(owner))
+		if(fortitude_resist)
 			MODIFY_PHYSIOLOGY(bloodsucker_user, BRUTE, 1 / fortitude_resist)
 			MODIFY_PHYSIOLOGY(bloodsucker_user, STAMINA, 1 / fortitude_resist)
+			fortitude_resist = null
 		if(was_running && bloodsucker_user.move_intent == MOVE_INTENT_WALK)
 			bloodsucker_user.toggle_move_intent()
 	// Remove Traits & Effects
-	owner.remove_traits(list(TRAIT_PIERCEIMMUNE, TRAIT_ANALGESIA, TRAIT_NODISMEMBER, TRAIT_PUSHIMMUNE, TRAIT_STUNIMMUNE, TRAIT_CANT_STAMCRIT), FORTITUDE_TRAIT)
+	owner?.remove_traits(list(TRAIT_PIERCEIMMUNE, TRAIT_ANALGESIA, TRAIT_NODISMEMBER, TRAIT_PUSHIMMUNE, TRAIT_STUNIMMUNE), FORTITUDE_TRAIT)
 
-	owner.balloon_alert(owner, "fortitude turned off.")
+	owner?.balloon_alert(owner, "fortitude turned off.")
 
 	return ..()

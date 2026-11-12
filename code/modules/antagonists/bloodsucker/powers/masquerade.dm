@@ -19,7 +19,7 @@
 		While maintaining the guise of life, your vampiric resilience, immunities, and unnatural healing are suppressed.\n\
 		Dropping the mortal guise immediately restores your immortal bloodline and all undead gifts, purging mundane afflictions contracted while playing human."
 	power_flags = BP_AM_TOGGLE | BP_AM_STATIC_COOLDOWN | BP_AM_COSTLESS_UNCONSCIOUS
-	check_flags = BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL
+	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_DURING_SOL | BP_CANT_USE_WHILE_STAKED
 	purchase_flags = BLOODSUCKER_CAN_BUY | BLOODSUCKER_DEFAULT_POWER
 	can_level = FALSE
 	bloodcost = 10
@@ -37,7 +37,9 @@
 	user.apply_status_effect(/datum/status_effect/masquerade)
 
 	// Handle Traits
-	user.remove_traits(bloodsuckerdatum_power.bloodsucker_traits, BLOODSUCKER_TRAIT)
+	find_bloodsucker_datum()
+	if(bloodsuckerdatum_power)
+		user.remove_traits(bloodsuckerdatum_power.bloodsucker_traits, BLOODSUCKER_TRAIT)
 	ADD_TRAIT(user, TRAIT_MASQUERADE, BLOODSUCKER_TRAIT)
 	// Handle organs
 	var/obj/item/organ/heart/vampheart = user.get_organ_slot(ORGAN_SLOT_HEART)
@@ -49,16 +51,22 @@
 /datum/action/cooldown/bloodsucker/masquerade/DeactivatePower()
 	. = ..() // activate = FALSE
 	var/mob/living/carbon/user = owner
+	if(!user)
+		return
 	owner.balloon_alert(owner, "masquerade turned off.")
 
 	// Remove status effect, mutations & diseases that you got while on masq.
 	user.remove_status_effect(/datum/status_effect/masquerade)
-	user.dna.remove_all_mutations()
+	user?.dna?.remove_all_mutations()
 	for(var/datum/disease/diseases as anything in user.diseases?.Copy())
 		diseases.cure()
 
 	// Handle Traits
-	user.add_traits(bloodsuckerdatum_power.bloodsucker_traits, BLOODSUCKER_TRAIT)
+	find_bloodsucker_datum()
+	if(bloodsuckerdatum_power)
+		user.add_traits(bloodsuckerdatum_power.bloodsucker_traits, BLOODSUCKER_TRAIT)
+		if(bloodsuckerdatum_power.is_in_torpor())
+			REMOVE_TRAIT(user, TRAIT_SLEEPIMMUNE, BLOODSUCKER_TRAIT)
 	REMOVE_TRAIT(user, TRAIT_MASQUERADE, BLOODSUCKER_TRAIT)
 
 	// Handle organs

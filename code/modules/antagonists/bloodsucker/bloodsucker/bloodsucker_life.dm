@@ -168,9 +168,16 @@
 		current_heart?.Stop()
 	var/obj/item/organ/eyes/current_eyes = bloodsuckeruser.get_organ_slot(ORGAN_SLOT_EYES)
 	if(current_eyes)
+		if(!eye_cutoffs_saved || modified_eyes_ref?.resolve() != current_eyes)
+			modified_eyes_ref = WEAKREF(current_eyes)
+			prior_eye_color_cutoffs = current_eyes.color_cutoffs?.Copy()
+			eye_cutoffs_saved = TRUE
+			granted_thermal_vision = FALSE
 		current_eyes.flash_protect = max(initial(current_eyes.flash_protect) - 1, FLASH_PROTECTION_SENSITIVE)
 		current_eyes.color_cutoffs = list(25, 8, 5)
-		current_eyes.add_organ_trait(TRAIT_THERMAL_VISION)
+		if(!(TRAIT_THERMAL_VISION in current_eyes.organ_traits))
+			current_eyes.add_organ_trait(TRAIT_THERMAL_VISION)
+			granted_thermal_vision = TRUE
 	bloodsuckeruser.update_sight()
 
 	if(bloodsuckeruser.stat == DEAD)
@@ -307,7 +314,7 @@
 	user.visible_message(
 		span_warning("[user]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),
 		span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
-		span_hear("<span class='italics'>You hear a wet, bursting sound."))
+		span_hear(span_italics("You hear a wet, bursting sound.")))
 	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, gib), TRUE, FALSE, FALSE), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 #undef BLOODSUCKER_PASSIVE_BLOOD_DRAIN

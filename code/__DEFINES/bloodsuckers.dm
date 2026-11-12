@@ -43,11 +43,6 @@
 ///Span prevention for Sol messages.
 #define BLOODSUCKER_SPAM_SOL (30 SECONDS)
 
-/**
- * Clan defines
- */
-#define CLAN_NONE "Caitiff"
-
 #define FAVORITE_VASSAL "favorite_vassal"
 
 /**

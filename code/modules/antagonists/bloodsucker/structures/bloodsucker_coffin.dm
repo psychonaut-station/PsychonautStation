@@ -101,23 +101,24 @@
 /obj/structure/closet/crate/coffin/proc/unclaim_coffin(manual = FALSE)
 	// Unanchor it (If it hasn't been broken, anyway)
 	anchored = FALSE
-	if(!resident || !resident.mind)
+	if(!resident)
 		return
 	// Unclaiming
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = resident.mind.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = resident.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	var/area/coffin_area = bloodsuckerdatum?.bloodsucker_lair_area || get_area(src)
 	if(bloodsuckerdatum && bloodsuckerdatum.coffin == src)
 		bloodsuckerdatum.coffin = null
 		bloodsuckerdatum.bloodsucker_lair_area = null
-	var/area/coffin_area = get_area(src)
 	if(coffin_area)
 		for(var/turf/T in coffin_area)
 			for(var/obj/structure/bloodsucker/bloodsucker_structure in T)
 				if(bloodsucker_structure.owner == resident)
 					bloodsucker_structure.unbolt()
-	if(manual)
-		to_chat(resident, span_cult_italic("You have unclaimed your coffin! This also unclaims all your other Bloodsucker structures!"))
-	else
-		to_chat(resident, span_cult_italic("You sense that the link with your coffin and your sacred lair has been broken! You will need to seek another."))
+	if(!QDELETED(resident))
+		if(manual)
+			to_chat(resident, span_cult_italic("You have unclaimed your coffin! This also unclaims all your other Bloodsucker structures!"))
+		else
+			to_chat(resident, span_cult_italic("You sense that the link with your coffin and your sacred lair has been broken! You will need to seek another."))
 	// Remove resident. Because this object isnt removed from the game immediately (GC?) we need to give them a way to see they don't have a home anymore.
 	resident = null
 
@@ -129,6 +130,9 @@
 		if(welded)
 			welded = FALSE
 			update_icon()
+		locked = FALSE
+		return TRUE
+	if(!resident && !welded && (user in src))
 		locked = FALSE
 		return TRUE
 	playsound(get_turf(src), 'sound/machines/airlock/doorclick.ogg', 20, 1)
@@ -153,19 +157,31 @@
 	// Only the User can put themself into Torpor. If already in it, you'll start to heal.
 	if(user in src)
 		var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
-		if(!bloodsuckerdatum)
-			return FALSE
-		var/area/current_area = get_area(src)
-		if(!bloodsuckerdatum.coffin && !resident)
-			switch(tgui_alert(user, "Do you wish to claim this as your coffin? [current_area] will be your lair.", "Claim Lair", list("Yes", "No")))
-				if("Yes")
-					claim_coffin(user, current_area)
-				if("No")
-					return
-		LockMe(user)
-		// You're in a Coffin, everything else is done, you're likely here to heal. Let's offer them the oppertunity to do so.
-		bloodsuckerdatum.check_begin_torpor()
+		if(bloodsuckerdatum)
+			var/area/current_area = get_area(src)
+			INVOKE_ASYNC(src, PROC_REF(prompt_claim_and_torpor), user, current_area)
 	return TRUE
+
+/obj/structure/closet/crate/coffin/proc/prompt_claim_and_torpor(mob/living/user, area/current_area)
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(!bloodsuckerdatum)
+		return
+	if(!bloodsuckerdatum.coffin && !resident)
+		var/choice = tgui_alert(user, "Do you wish to claim this as your coffin? [current_area] will be your lair.", "Claim Lair", list("Yes", "No"))
+		if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
+			return
+		bloodsuckerdatum = user.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
+		if(!bloodsuckerdatum)
+			return
+		if(choice == "Yes")
+			claim_coffin(user, current_area)
+	if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
+		return
+	LockMe(user)
+	if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
+		return
+	// You're in a Coffin, everything else is done, you're likely here to heal. Let's offer them the oppertunity to do so.
+	bloodsuckerdatum.check_begin_torpor()
 
 /// You cannot weld or deconstruct an owned coffin. Only the owner can destroy their own coffin.
 /obj/structure/closet/crate/coffin/attackby(obj/item/item, mob/user, params)
@@ -211,7 +227,7 @@
 				unclaim_coffin(TRUE)
 
 /obj/structure/closet/crate/coffin/proc/LockMe(mob/user, inLocked = TRUE)
-	if(user == resident)
+	if(!resident || user == resident)
 		if(!broken)
 			locked = inLocked
 			if(locked)
@@ -220,10 +236,10 @@
 				to_chat(user, span_notice("You flip a secret latch and unlock [src]."))
 			return
 		// Broken? Let's fix it.
-		to_chat(resident, span_notice("The secret latch that would lock [src] from the inside is broken. You set it back into place..."))
-		if(!do_after(resident, 5 SECONDS, src))
-			to_chat(resident, span_notice("You fail to fix [src]'s mechanism."))
+		to_chat(user, span_notice("The secret latch that would lock [src] from the inside is broken. You set it back into place..."))
+		if(!do_after(user, 5 SECONDS, src))
+			to_chat(user, span_notice("You fail to fix [src]'s mechanism."))
 			return
-		to_chat(resident, span_notice("You fix the mechanism and lock it."))
+		to_chat(user, span_notice("You fix the mechanism and lock it."))
 		broken = FALSE
 		locked = TRUE

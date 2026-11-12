@@ -71,7 +71,7 @@
 		span_notice("You disspiate into formless mist."),
 	)
 	// Effect Origin
-	var/sound_strength = max(60, 70 - level_current * 10)
+	var/sound_strength = max(10, 75 - level_current * 15)
 	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = sound_strength, vary = TRUE)
 	var/datum/effect_system/basic/steam_spread/puff = new(my_turf, 3, FALSE)
 	puff.start()
@@ -86,6 +86,8 @@
 
 	// Wait...
 	sleep(mist_delay / 2)
+	if(QDELETED(user) || QDELETED(src))
+		return
 	// Move & Freeze
 	if(isturf(target_turf))
 		do_teleport(owner, target_turf, no_effects=TRUE, channel = TELEPORT_CHANNEL_QUANTUM) // in teleport.dm?
@@ -93,13 +95,15 @@
 
 	// Wait...
 	sleep(mist_delay / 2)
+	if(QDELETED(user) || QDELETED(src))
+		return
 	// Un-Hide & Freeze
 	user.dir = get_dir(my_turf, target_turf)
 	user.Stun(mist_delay / 2, ignore_canstun = TRUE)
 	user.density = prev_density
 	user.invisibility = invis_was
 	// Effect Destination
-	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = 60, vary = TRUE)
+	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = sound_strength, vary = TRUE)
 	puff = new(target_turf, 3, FALSE)
 	puff.start()
 	DeactivatePower()

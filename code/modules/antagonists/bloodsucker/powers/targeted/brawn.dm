@@ -129,7 +129,7 @@
 		owner.balloon_alert(owner, "you punch [target]!")
 		playsound(get_turf(target), 'sound/items/weapons/punch4.ogg', 60, 1, -1)
 		user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
-		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(target.zone_selected))
+		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
 		target.apply_damage(hitStrength, BRUTE, affecting)
 		// Knockback
 		var/send_dir = get_dir(owner, target)

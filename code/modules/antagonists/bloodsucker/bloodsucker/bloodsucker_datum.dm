@@ -63,6 +63,14 @@
 	var/area/bloodsucker_lair_area
 	var/obj/structure/closet/crate/coffin
 	var/total_blood_drank = 0
+	/// Weakref to the eye organ whose pre-vampiric cutoffs/traits were modified.
+	var/datum/weakref/modified_eyes_ref
+	/// Saved pre-vampiric color_cutoffs for restoration on removal.
+	var/list/prior_eye_color_cutoffs
+	/// Whether prior_eye_color_cutoffs was captured for modified_eyes_ref.
+	var/eye_cutoffs_saved = FALSE
+	/// Whether we granted TRAIT_THERMAL_VISION to the modified eyes.
+	var/granted_thermal_vision = FALSE
 
 	///Blood display HUD
 	var/atom/movable/screen/bloodsucker/blood_counter/blood_display
@@ -145,7 +153,9 @@
  */
 /datum/antagonist/bloodsucker/remove_innate_effects(mob/living/mob_override)
 	. = ..()
-	var/mob/living/current_mob = mob_override || owner.current
+	var/mob/living/current_mob = mob_override || owner?.current
+	if(QDELETED(current_mob))
+		return
 	UnregisterSignal(current_mob, list(
 		COMSIG_LIVING_LIFE,
 		COMSIG_ATOM_EXAMINE,
@@ -414,6 +424,8 @@
  * Update Sight - Done after Eyes are regenerated.
  */
 /datum/antagonist/bloodsucker/proc/clear_powers_and_stats()
+	if(QDELETED(owner?.current))
+		return
 	// Powers
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers.Copy())
 		RemovePower(all_powers)
@@ -442,8 +454,19 @@
 	var/obj/item/organ/eyes/user_eyes = owner.current.get_organ_slot(ORGAN_SLOT_EYES)
 	if(user_eyes)
 		user_eyes.flash_protect = initial(user_eyes.flash_protect)
-		user_eyes.color_cutoffs = initial(user_eyes.color_cutoffs)
-		user_eyes.remove_organ_trait(TRAIT_THERMAL_VISION)
+		if(eye_cutoffs_saved && modified_eyes_ref?.resolve() == user_eyes)
+			user_eyes.color_cutoffs = prior_eye_color_cutoffs?.Copy()
+		else if(istype(user_eyes, /obj/item/organ/eyes/night_vision))
+			var/obj/item/organ/eyes/night_vision/nv_eyes = user_eyes
+			nv_eyes.color_cutoffs = nv_eyes.low_light_cutoff?.Copy()
+		else
+			user_eyes.color_cutoffs = initial(user_eyes.color_cutoffs)
+		if(granted_thermal_vision)
+			user_eyes.remove_organ_trait(TRAIT_THERMAL_VISION)
+	modified_eyes_ref = null
+	prior_eye_color_cutoffs = null
+	eye_cutoffs_saved = FALSE
+	granted_thermal_vision = FALSE
 	owner.current.update_sight()
 
 /// Name shown on antag list

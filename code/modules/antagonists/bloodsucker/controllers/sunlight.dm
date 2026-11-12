@@ -33,7 +33,7 @@ SUBSYSTEM_DEF(sunlight)
 			if(!issued_XP && time_til_cycle <= (TIME_BLOODSUCKER_DAY / 2))
 				issued_XP = TRUE
 				SEND_SIGNAL(src, COMSIG_SOL_RANKUP_BLOODSUCKERS)
-		if(time_til_cycle <= 1)
+		if(time_til_cycle <= 0)
 			sunlight_active = FALSE
 			issued_XP = FALSE
 			//randomize the next sol timer

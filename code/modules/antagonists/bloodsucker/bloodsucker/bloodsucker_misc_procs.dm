@@ -283,7 +283,7 @@
 		returnString += "\n"
 		return returnIcon + returnString
 	// Viewer not a Vamp AND not the target's vassal?
-	if(!viewer.mind.has_antag_datum((/datum/antagonist/bloodsucker)) && !(viewer in vassals))
+	if(!viewer.mind.has_antag_datum(/datum/antagonist/bloodsucker))
 		if(!(broke_masquerade))
 			return FALSE
 	// Default String

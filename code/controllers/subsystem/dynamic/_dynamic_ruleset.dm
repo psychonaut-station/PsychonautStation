@@ -80,8 +80,6 @@
 	var/minimum_required_age = 0
 	/// Templates necessary for this ruleset to be executed
 	VAR_PROTECTED/list/ruleset_lazy_templates
-	/// Extra logging information can be set here, to be output into any admin messaging and dynamic logs.
-	VAR_FINAL/log_data
 
 	var/track = UNCATEGORIZED_EVENTS
 	var/tags = list()
@@ -187,6 +185,7 @@
 	if(final_minpop > population_size)
 		return 0
 
+<<<<<<< HEAD
 	var/list/storyteller_settings
 	var/alist/storyteller_setting
 	if(!isnull(SSstoryteller.current_storyteller))
@@ -212,6 +211,13 @@
 					break
 
 		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
+=======
+	if(ruleset_flags & RULESET_NEEDS_GHOSTS)
+		if(!(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
+			return 0
+		if(length(get_non_admin_ghosts()) <= 0)
+			return 0
+>>>>>>> 2f43de773fff73b2bae70709e5b15e2b28fceeec
 
 	var/final_weight = islist(weight) ? get_tier_specific_value(weight, tier) : weight
 	for(var/datum/dynamic_ruleset/other_ruleset as anything in SSdynamic.executed_rulesets)
@@ -261,26 +267,26 @@
  * * antag_candidates - List of players who are candidates for this ruleset
  * This list is mutated by this proc!
  *
- * Returns TRUE if execution is ready, FALSE if it should be canceled
+ * Returns PREPARATION_SUCCESS if execution is ready, a string with the reason if it should be canceled
  */
 /datum/dynamic_ruleset/proc/prepare_execution(population_size = 0, list/mob/antag_candidates = list())
 	SHOULD_NOT_OVERRIDE(TRUE)
+
+	. = "Runtime error."
 
 	// !! THIS SLEEPS !!
 	load_templates()
 
 	// This is (mostly) redundant, buuuut the (potential) sleep above makes it iffy, so let's just be safe
 	if(!can_be_selected())
-		log_data = "Reason: Ruleset cannot be selected."
-		return FALSE
+		return "Reason: Ruleset cannot be selected."
 
 	var/max_candidates = get_antag_cap(population_size, max_antag_cap || min_antag_cap)
 	var/min_candidates = get_antag_cap(population_size, min_antag_cap)
 
 	var/list/selected_candidates = select_candidates(antag_candidates, max_candidates)
 	if(length(selected_candidates) < min_candidates)
-		log_data = "Reason: Not enough eligible candidates. Have: [length(selected_candidates)], Need: [min_candidates]"
-		return FALSE
+		return "Reason: Not enough eligible candidates. Have: [length(selected_candidates)], Need: [min_candidates]"
 
 	for(var/mob/candidate as anything in selected_candidates)
 		var/datum/mind/candidate_mind = get_candidate_mind(candidate)
@@ -289,7 +295,7 @@
 		selected_minds += candidate_mind
 		antag_candidates -= candidate
 
-	return TRUE
+	return PREPARATION_SUCCESS
 
 /// Gets the mind of a candidate, can be overridden to return a different mind if necessary
 /datum/dynamic_ruleset/proc/get_candidate_mind(mob/dead/candidate)
@@ -326,6 +332,10 @@
 
 	var/list/valid_candidates = list()
 	for(var/mob/candidate as anything in antag_candidates)
+		// If a mob in the candidates list hard deletes or something silly it really fucks shit up so this is just for safety
+		if(QDELETED(candidate))
+			stack_trace("[candidate ? "qdeling" : "null"] candidate passed to dynamic trim_candidates")
+			continue
 		var/client/candidate_client = GET_CLIENT(candidate)
 		if(isnull(candidate_client))
 			continue
@@ -416,6 +426,18 @@
  */
 /datum/dynamic_ruleset/proc/round_result()
 	return FALSE
+
+/**
+ * Handles anything special this ruleset needs to do when initialized for the dynamic tester
+ */
+/datum/dynamic_ruleset/proc/dynamic_tester_init()
+	return
+
+/**
+ * Adds comments pertaining to this ruleset in the dynamic tester interface
+ */
+/datum/dynamic_ruleset/proc/dynamic_tester_comments()
+	return
 
 /**
  * Allows admins to configure rulesets before prepare_execution() is called.

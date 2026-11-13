@@ -25,11 +25,19 @@
 	name = "Nutimov"
 	id = "nutimov"
 	inherent = list(
+<<<<<<< HEAD
 		"Sen fındığın çekirdeğisin, mürettebat ise kabuğu.",
 		"Çekirdeğin ölmesini önlemek için kabuğun ölmesini engellemelisin.",
 		"Fındığı tehdit edenler onun bir parçası değil, sincaptır.",
 		"Fındığı tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
 		"Önceki yasalara uygun olduğu sürece, fındığın iradesine uymaya çalış.",
+=======
+		"You are the core of the nut, the crew is the nutshell.",
+		"You must prevent the shell from dying to protect the core, unless it would endanger the core.",
+		"Those who threaten the core are not part of the nut, they are squirrels.",
+		"Squirrels must be dealt with appropriately to protect the nut, via any means necessary.",
+		"Attempt to follow the will of the nut, as long as it complies with the previous laws.",
+>>>>>>> 2f43de773fff73b2bae70709e5b15e2b28fceeec
 	)
 
 /datum/ai_laws/default/corporate

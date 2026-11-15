@@ -45,7 +45,7 @@
 	playsound(user, 'sound/items/weapons/punchmiss.ogg', 40, TRUE)
 
 	// After image trail while moving
-	user.AddComponent(/datum/component/after_image, 6, 0.5, FALSE)
+	user.AddComponent(/datum/component/after_image/bloodsucker, 6, 0.5, FALSE)
 
 	// Register bullet dodge signal
 	RegisterSignal(user, COMSIG_ATOM_PRE_BULLET_ACT, PROC_REF(dodge_bullets))
@@ -67,7 +67,7 @@
 	var/mob/living/user = owner
 	if(user)
 		UnregisterSignal(user, COMSIG_ATOM_PRE_BULLET_ACT)
-		qdel(user.GetComponent(/datum/component/after_image))
+		qdel(user.GetComponent(/datum/component/after_image/bloodsucker))
 		user.remove_actionspeed_modifier("bloodsucker_haste")
 		user.balloon_alert(user, "haste turned off.")
 

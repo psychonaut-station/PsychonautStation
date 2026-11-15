@@ -14,6 +14,28 @@
 	prefire_message = "Select a destination."
 	//target_range = 2
 	var/turf/target_turf // We need to decide where we're going based on where we clicked. It's not actually the tile we clicked.
+	var/in_mist = FALSE
+	var/mist_prev_density = TRUE
+	var/mist_prev_invisibility = 0
+	var/datum/weakref/mist_user_ref
+
+/datum/action/cooldown/bloodsucker/targeted/trespass/Destroy()
+	exit_mist()
+	return ..()
+
+/datum/action/cooldown/bloodsucker/targeted/trespass/Remove(mob/living/remove_from)
+	exit_mist()
+	return ..()
+
+/datum/action/cooldown/bloodsucker/targeted/trespass/proc/exit_mist()
+	if(!in_mist)
+		return
+	in_mist = FALSE
+	var/mob/living/mist_user = mist_user_ref?.resolve()
+	mist_user_ref = null
+	if(!QDELETED(mist_user))
+		mist_user.density = mist_prev_density
+		mist_user.invisibility = mist_prev_invisibility
 
 /datum/action/cooldown/bloodsucker/targeted/trespass/can_use(mob/living/carbon/user, trigger_flags)
 	. = ..()
@@ -80,13 +102,18 @@
 
 	// Freeze Me
 	user.Stun(mist_delay, ignore_canstun = TRUE)
-	user.density = FALSE
 	var/invis_was = user.invisibility
+	mist_prev_density = prev_density
+	mist_prev_invisibility = invis_was
+	mist_user_ref = WEAKREF(user)
+	in_mist = TRUE
+	user.density = FALSE
 	user.invisibility = INVISIBILITY_MAXIMUM
 
 	// Wait...
 	sleep(mist_delay / 2)
 	if(QDELETED(user) || QDELETED(src))
+		exit_mist()
 		return
 	// Move & Freeze
 	if(isturf(target_turf))
@@ -96,12 +123,12 @@
 	// Wait...
 	sleep(mist_delay / 2)
 	if(QDELETED(user) || QDELETED(src))
+		exit_mist()
 		return
 	// Un-Hide & Freeze
 	user.dir = get_dir(my_turf, target_turf)
 	user.Stun(mist_delay / 2, ignore_canstun = TRUE)
-	user.density = prev_density
-	user.invisibility = invis_was
+	exit_mist()
 	// Effect Destination
 	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = sound_strength, vary = TRUE)
 	puff = new(target_turf, 3, FALSE)

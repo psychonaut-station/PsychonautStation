@@ -22,8 +22,8 @@
 	if(!length(bloodsuckerdatum?.vassals))
 		return list()
 	var/list/all_vassal_jobs = list()
-	var/vassal_job
 	for(var/datum/antagonist/vassal/bloodsucker_vassals in bloodsuckerdatum.vassals)
+		var/vassal_job = null
 		if(!bloodsucker_vassals || !bloodsucker_vassals.owner)	// Must exist somewhere, and as a vassal.
 			continue
 		// Mind Assigned

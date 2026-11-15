@@ -56,28 +56,33 @@
 /datum/action/cooldown/bloodsucker/feed/DeactivatePower()
 	var/mob/living/user = owner
 	var/mob/living/feed_target = target_ref?.resolve()
-	if(!QDELETED(feed_target))
-		log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
-		to_chat(user, span_notice("You slowly release [feed_target]."))
-		if(ishuman(feed_target) && feed_target.stat == DEAD)
-			user.clear_mood_event("drankblood")
-			user.add_mood_event("drankdead", /datum/mood_event/drankblood_dead)
-			if(started_alive)
-				user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
-				bloodsuckerdatum_power?.AddHumanityLost(10)
+	if(!QDELETED(user))
+		if(!QDELETED(feed_target))
+			log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
+			to_chat(user, span_notice("You slowly release [feed_target]."))
+			if(ishuman(feed_target) && feed_target.stat == DEAD)
+				user.clear_mood_event("drankblood")
+				user.add_mood_event("drankdead", /datum/mood_event/drankblood_dead)
+				if(started_alive)
+					user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
+					bloodsuckerdatum_power?.AddHumanityLost(10)
+		REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, FEED_TRAIT)
+		REMOVE_TRAIT(user, TRAIT_MUTE, FEED_TRAIT)
 
 	target_ref = null
 	started_alive = TRUE
+	silent_feed = TRUE
 	warning_target_bloodvol = BLOOD_VOLUME_MAX_LETHAL
 	blood_taken = 0
-	REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, FEED_TRAIT)
-	REMOVE_TRAIT(user, TRAIT_MUTE, FEED_TRAIT)
 	return ..()
 
 /datum/action/cooldown/bloodsucker/feed/ActivatePower(trigger_flags)
 	if(!bloodsuckerdatum_power)
 		return FALSE
-	var/mob/living/feed_target = target_ref.resolve()
+	var/mob/living/feed_target = target_ref?.resolve()
+	if(QDELETED(feed_target))
+		DeactivatePower()
+		return FALSE
 	if(istype(feed_target, /mob/living/basic/mouse))
 		to_chat(owner, span_notice("You recoil at the taste of a lesser lifeform."))
 		var/mob/living/user = owner
@@ -100,6 +105,9 @@
 		DeactivatePower()
 		return
 	if(QDELETED(src) || QDELETED(owner))
+		return
+	if(QDELETED(feed_target))
+		DeactivatePower()
 		return
 	find_bloodsucker_datum()
 	if(owner.pulling == feed_target && owner.grab_state >= GRAB_AGGRESSIVE)
@@ -152,24 +160,27 @@
 		return PROCESS_KILL
 	if(!ContinueActive(user, feed_target))
 		if(!silent_feed)
-			user.visible_message(
-				span_warning("[user] is ripped from [feed_target]'s throat. [feed_target.p_their(TRUE)] blood sprays everywhere!"),
-				span_warning("Your teeth are ripped from [feed_target]'s throat. [feed_target.p_their(TRUE)] blood sprays everywhere!"))
+			if(!QDELETED(user) && !QDELETED(feed_target))
+				user.visible_message(
+					span_warning("[user] is ripped from [feed_target]'s throat. [feed_target.p_their(TRUE)] blood sprays everywhere!"),
+					span_warning("Your teeth are ripped from [feed_target]'s throat. [feed_target.p_their(TRUE)] blood sprays everywhere!"))
 			// Deal Damage to Target (should have been more careful!)
-			if(iscarbon(feed_target))
-				var/mob/living/carbon/carbon_target = feed_target
-				carbon_target.bleed(15)
-			playsound(get_turf(feed_target), 'sound/effects/splat.ogg', 40, TRUE)
-			if(ishuman(feed_target))
-				var/mob/living/carbon/human/target_user = feed_target
-				var/obj/item/bodypart/head_part = target_user.get_bodypart(BODY_ZONE_HEAD)
-				if(head_part)
-					head_part.generic_bleedstacks += 5
-			feed_target.add_splatter_floor(get_turf(feed_target))
-			user.add_mob_blood(feed_target) // Put target's blood on us. The donor goes in the ( )
-			feed_target.add_mob_blood(feed_target)
-			feed_target.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = CANT_WOUND)
-			INVOKE_ASYNC(feed_target, TYPE_PROC_REF(/mob, emote), "scream")
+			if(!QDELETED(feed_target))
+				if(iscarbon(feed_target))
+					var/mob/living/carbon/carbon_target = feed_target
+					carbon_target.bleed(15)
+				playsound(get_turf(feed_target), 'sound/effects/splat.ogg', 40, TRUE)
+				if(ishuman(feed_target))
+					var/mob/living/carbon/human/target_user = feed_target
+					var/obj/item/bodypart/head_part = target_user.get_bodypart(BODY_ZONE_HEAD)
+					if(head_part)
+						head_part.generic_bleedstacks += 5
+				feed_target.add_splatter_floor(get_turf(feed_target))
+				if(!QDELETED(user))
+					user.add_mob_blood(feed_target) // Put target's blood on us. The donor goes in the ( )
+				feed_target.add_mob_blood(feed_target)
+				feed_target.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = CANT_WOUND)
+				INVOKE_ASYNC(feed_target, TYPE_PROC_REF(/mob, emote), "scream")
 		DeactivatePower()
 		return PROCESS_KILL
 

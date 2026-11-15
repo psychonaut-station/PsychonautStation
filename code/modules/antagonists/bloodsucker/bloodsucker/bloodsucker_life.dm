@@ -127,15 +127,20 @@
 		return TRUE
 
 /datum/antagonist/bloodsucker/proc/check_limbs(costMult = 1)
+	if(QDELETED(owner?.current) || !iscarbon(owner.current))
+		return FALSE
 	var/limb_regen_cost = 50 * costMult
 	var/mob/living/carbon/user = owner.current
 	var/list/missing = user.get_missing_limbs()
 	if(length(missing) && (bloodsucker_blood_volume < limb_regen_cost))
 		return FALSE
 	for(var/missing_limb in missing) //Find ONE Limb and regenerate it.
-		user.regenerate_limb(missing_limb, FALSE)
-		AddBloodVolume(-limb_regen_cost)
+		if(!user.regenerate_limb(missing_limb, FALSE))
+			continue
 		var/obj/item/bodypart/missing_bodypart = user.get_bodypart(missing_limb) // 2) Limb returns Damaged
+		if(!missing_bodypart)
+			continue
+		AddBloodVolume(-limb_regen_cost)
 		missing_bodypart.brute_dam = 60
 		to_chat(user, span_notice("Your flesh knits as it regrows your [missing_bodypart]!"))
 		playsound(user, 'sound/effects/magic/demon_consume.ogg', vol = 50, vary = TRUE)

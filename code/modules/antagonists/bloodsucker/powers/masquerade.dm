@@ -25,13 +25,30 @@
 	bloodcost = 10
 	cooldown_time = 5 SECONDS
 	constant_bloodcost = 0.1
+	var/list/pre_masquerade_mutations
+	var/list/pre_masquerade_disease_ids
+
+/datum/action/cooldown/bloodsucker/masquerade/Destroy()
+	. = ..()
+	pre_masquerade_mutations = null
+	pre_masquerade_disease_ids = null
 
 /datum/action/cooldown/bloodsucker/masquerade/ActivatePower(trigger_flags)
 	. = ..()
-	var/mob/living/carbon/user = owner
+	var/mob/living/user = owner
 	owner.balloon_alert(owner, "masquerade turned on.")
 	to_chat(user, span_notice("Your heart beats falsely within your lifeless chest. You may yet pass for a mortal."))
 	to_chat(user, span_warning("Your vampiric healing is halted while imitating life."))
+
+	pre_masquerade_disease_ids = list()
+	for(var/datum/disease/D as anything in user.diseases)
+		pre_masquerade_disease_ids += D.GetDiseaseID()
+	pre_masquerade_mutations = list()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		if(carbon_user.dna)
+			for(var/datum/mutation/M as anything in carbon_user.dna.mutations)
+				pre_masquerade_mutations += M.type
 
 	// Give status effect
 	user.apply_status_effect(/datum/status_effect/masquerade)
@@ -49,17 +66,29 @@
 		eyes.flash_protect = initial(eyes.flash_protect)
 
 /datum/action/cooldown/bloodsucker/masquerade/DeactivatePower()
-	. = ..() // activate = FALSE
-	var/mob/living/carbon/user = owner
-	if(!user)
+	if(!active)
 		return
+	. = ..() // activate = FALSE
+	if(QDELETED(owner))
+		pre_masquerade_mutations = null
+		pre_masquerade_disease_ids = null
+		return
+	var/mob/living/user = owner
 	owner.balloon_alert(owner, "masquerade turned off.")
 
 	// Remove status effect, mutations & diseases that you got while on masq.
 	user.remove_status_effect(/datum/status_effect/masquerade)
-	user?.dna?.remove_all_mutations()
-	for(var/datum/disease/diseases as anything in user.diseases?.Copy())
-		diseases.cure()
+	if(iscarbon(user))
+		var/mob/living/carbon/carbon_user = user
+		if(carbon_user.dna)
+			for(var/datum/mutation/mutation as anything in carbon_user.dna.mutations?.Copy())
+				if(!(mutation.type in pre_masquerade_mutations))
+					carbon_user.dna.remove_mutation(mutation, GLOB.standard_mutation_sources)
+	for(var/datum/disease/disease as anything in user.diseases?.Copy())
+		if(!(disease.GetDiseaseID() in pre_masquerade_disease_ids))
+			disease.cure()
+	pre_masquerade_mutations = null
+	pre_masquerade_disease_ids = null
 
 	// Handle Traits
 	find_bloodsucker_datum()

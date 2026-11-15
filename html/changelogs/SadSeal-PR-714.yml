@@ -1,7 +1,0 @@
-author: SadSeal
-
-delete-after: True
-
-changes:
-  - rscadd: "Added Bloodsucker v2 antagonist, including roundstart, midround breakout, and latejoin stowaway variants, Vassal conversion, Sol daylight cycle, coffins, lair structures, and modular vampiric powers."
-  - bugfix: "Fixed Bloodsucker power, Sol sunlight, Masquerade, Haste, Feed, Brawn, Vassal, and UI edge cases and regressions."

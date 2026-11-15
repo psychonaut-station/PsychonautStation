@@ -26,7 +26,9 @@
 	if(active && can_deactivate())
 		DeactivatePower()
 		return FALSE
-	if(!can_pay_cost(owner) || !can_use(owner, trigger_flags))
+	if(!can_pay_cost() || !can_use(owner, trigger_flags))
+		return FALSE
+	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
 
 	if(prefire_message)

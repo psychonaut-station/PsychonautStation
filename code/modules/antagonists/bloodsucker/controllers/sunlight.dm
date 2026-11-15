@@ -10,7 +10,7 @@
 #define TIME_BLOODSUCKER_BURN_INTERVAL 5
 
 ///How much time Sol can be 'off' by, keeping the time inconsistent.
-#define TIME_BLOODSUCKER_SOL_DELAY 0
+#define TIME_BLOODSUCKER_SOL_DELAY 180
 
 SUBSYSTEM_DEF(sunlight)
 	name = "Sol"

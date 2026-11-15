@@ -1,11 +1,4 @@
-import {
-  Box,
-  DmIcon,
-  Flex,
-  Section,
-  Stack,
-  Tabs,
-} from 'tgui-core/components';
+import { Box, DmIcon, Flex, Section, Stack, Tabs } from 'tgui-core/components';
 
 import { useBackend, useLocalState } from '../backend';
 import { Window } from '../layouts';
@@ -28,8 +21,8 @@ type Info = {
   objectives: Objective[];
 };
 
-export const AntagInfoBloodsucker = (props: any) => {
-  const [tab, setTab] = useLocalState('tab', 1);
+export const AntagInfoBloodsucker = () => {
+  const [tab, setTab] = useLocalState('bloodsucker_info_tab', 1);
   return (
     <Window width={620} height={700} theme="spookyconsole">
       <Window.Content scrollable>
@@ -133,11 +126,14 @@ const BloodsuckerIntro = () => {
   );
 };
 
-const PowerSection = (props: any) => {
+const PowerSection = () => {
   const { data } = useBackend<BloodsuckerInformation>();
   const { powers = [] } = data;
 
-  const [powerTab, setPowerTab] = useLocalState('power', powers[0]?.name || '');
+  const [powerTab, setPowerTab] = useLocalState(
+    'bloodsucker_info_power',
+    powers[0]?.name || '',
+  );
 
   const selectedPower =
     powers.find((power) => power.name === powerTab) || powers[0];
@@ -186,7 +182,9 @@ const PowerSection = (props: any) => {
               <Box bold fontSize="16px" mb={1} color="red">
                 {selectedPower.name}
                 {selectedPower.can_level && selectedPower.level !== undefined
-                  ? ` — Level ${selectedPower.level}/${selectedPower.max_level || 4}`
+                  ? ` — Level ${selectedPower.level}/${
+                      selectedPower.max_level || 4
+                    }`
                   : ''}
               </Box>
               <Box style={{ whiteSpace: 'pre-line' }}>

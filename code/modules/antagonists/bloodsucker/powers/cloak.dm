@@ -76,4 +76,5 @@
 		if(was_running && user.move_intent == MOVE_INTENT_WALK)
 			user.toggle_move_intent()
 		user.balloon_alert(user, "cloak turned off.")
+	was_running = FALSE
 	return ..()

@@ -57,7 +57,7 @@
 	if(constant_bloodcost > 0)
 		desc += "<br><br><b>CONSTANT COST:</b><i> [name] costs [constant_bloodcost] Blood maintain active.</i>"
 	if(power_flags & BP_AM_SINGLEUSE)
-		desc += "<br><br><b>SINGLE USE:</br><i> [name] can only be used once per night.</i>"
+		desc += "<br><br><b>SINGLE USE:</b><i> [name] can only be used once per night.</i>"
 	if(rebuild)
 		build_all_button_icons(UPDATE_BUTTON_NAME)
 
@@ -221,11 +221,10 @@
 	active = FALSE
 	if(power_flags & BP_AM_TOGGLE)
 		STOP_PROCESSING(SSprocessing, src)
-	if(power_flags & BP_AM_SINGLEUSE)
-		remove_after_use()
-		return
 	StartCooldown()
 	build_all_button_icons()
+	if(power_flags & BP_AM_SINGLEUSE)
+		remove_after_use()
 
 ///Used by powers that are continuously active (That have BP_AM_TOGGLE flag)
 /datum/action/cooldown/bloodsucker/process(seconds_per_tick)

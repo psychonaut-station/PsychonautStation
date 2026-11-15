@@ -26,15 +26,36 @@
 	current_mob.clear_mood_event("vampcandle")
 	add_team_hud(current_mob)
 
+/datum/atom_hud/alternate_appearance/basic/has_antagonist/vassal
+	var/datum/weakref/master_ref
+
+/datum/atom_hud/alternate_appearance/basic/has_antagonist/vassal/New(key, image/I, antag_datum_type, datum/weakref/team, datum/weakref/master_ref)
+	src.master_ref = master_ref
+	return ..(key, I, antag_datum_type, team)
+
+/datum/atom_hud/alternate_appearance/basic/has_antagonist/vassal/mobShouldSee(mob/M)
+	if(add_ghost_version && isobserver(M))
+		return FALSE
+	var/datum/antagonist/bloodsucker/master = master_ref?.resolve()
+	if(QDELETED(master))
+		return FALSE
+	if(M == master.owner?.current)
+		return TRUE
+	var/datum/antagonist/vassal/vassal_datum = M.mind?.has_antag_datum(/datum/antagonist/vassal)
+	return vassal_datum?.master == master
+
 /datum/antagonist/vassal/add_team_hud(mob/target)
 	QDEL_NULL(team_hud_ref)
 	if(!master?.owner?.current || QDELETED(target))
 		return
 
 	team_hud_ref = WEAKREF(target.add_alt_appearance(
-		/datum/atom_hud/alternate_appearance/basic/has_antagonist,
+		/datum/atom_hud/alternate_appearance/basic/has_antagonist/vassal,
 		"antag_team_hud_[REF(src)]",
 		hud_image_on(target),
+		/datum/antagonist/bloodsucker,
+		null,
+		WEAKREF(master),
 	))
 
 	var/datum/atom_hud/alternate_appearance/basic/has_antagonist/hud = team_hud_ref.resolve()
@@ -75,27 +96,26 @@
 		examine_text += vassal_examine
 
 /datum/antagonist/vassal/on_gain()
-	RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
 	/// Enslave them to their Master
-	if(!istype(master, /datum/antagonist/bloodsucker))
-		return
-	if(special_type)
-		if(!master.special_vassals[special_type])
-			master.special_vassals[special_type] = list()
-		master.special_vassals[special_type] |= src
-	master.vassals |= src
-	owner.enslave_mind_to_creator(master.owner.current)
-	owner.current.log_message("has been vassalized by [master.owner.current]!", LOG_ATTACK, color="#960000")
-	/// Give Recuperate Power
-	BuyPower(new /datum/action/cooldown/bloodsucker/recuperate)
-	/// Give Objectives
-	var/datum/objective/bloodsucker/vassal/vassal_objective = new
-	vassal_objective.owner = owner
-	objectives += vassal_objective
-	/// Give Vampire Language & Hud
-	owner.current.grant_all_languages(FALSE, FALSE, TRUE)
-	owner.current.grant_language(/datum/language/vampiric)
+	if(istype(master, /datum/antagonist/bloodsucker))
+		RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
+		RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
+		if(special_type)
+			if(!master.special_vassals[special_type])
+				master.special_vassals[special_type] = list()
+			master.special_vassals[special_type] |= src
+		master.vassals |= src
+		owner.enslave_mind_to_creator(master.owner.current)
+		owner.current.log_message("has been vassalized by [master.owner.current]!", LOG_ATTACK, color="#960000")
+		/// Give Recuperate Power
+		BuyPower(new /datum/action/cooldown/bloodsucker/recuperate)
+		/// Give Objectives
+		var/datum/objective/bloodsucker/vassal/vassal_objective = new
+		vassal_objective.owner = owner
+		objectives += vassal_objective
+		/// Give Vampire Language & Hud
+		owner.current.grant_all_languages(FALSE, FALSE, TRUE)
+		owner.current.grant_language(/datum/language/vampiric)
 	return ..()
 
 /datum/antagonist/vassal/on_removal()
@@ -127,8 +147,10 @@
 	if(new_body)
 		RegisterSignal(new_body, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers)
-		all_powers.Remove(old_body)
-		all_powers.Grant(new_body)
+		if(old_body)
+			all_powers.Remove(old_body)
+		if(new_body)
+			all_powers.Grant(new_body)
 
 /datum/antagonist/vassal/greet()
 	. = ..()

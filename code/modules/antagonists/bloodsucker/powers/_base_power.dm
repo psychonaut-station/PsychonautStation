@@ -73,6 +73,8 @@
 	return ..()
 
 /datum/action/cooldown/bloodsucker/IsAvailable(feedback = FALSE)
+	if(!owner || action_disabled)
+		return FALSE
 	return COOLDOWN_FINISHED(src, next_use_time)
 
 /datum/action/cooldown/bloodsucker/Grant(mob/user)
@@ -179,7 +181,8 @@
 		cooldown_time = initial(cooldown_time)
 	else
 		if(max_level > 1)
-			cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / (2 * (max_level - 1)) * (level_current - 1)))
+			var/effective_level = max(1, level_current)
+			cooldown_time = max(initial(cooldown_time) / 2, initial(cooldown_time) - (initial(cooldown_time) / (2 * (max_level - 1)) * (effective_level - 1)))
 		else
 			cooldown_time = initial(cooldown_time)
 

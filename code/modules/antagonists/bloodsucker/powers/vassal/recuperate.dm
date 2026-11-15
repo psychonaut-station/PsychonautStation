@@ -16,6 +16,10 @@
 	. = ..()
 	if(!.)
 		return
+	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(user)
+	if(!vassaldatum?.master || vassaldatum.master.bloodsucker_blood_volume <= 5)
+		user.balloon_alert(user, "master lacks blood!")
+		return FALSE
 	if(user.blood_volume <= BLOOD_VOLUME_OKAY)
 		user.balloon_alert(user, "not enough blood!")
 		return FALSE
@@ -38,27 +42,33 @@
 		return
 	var/mob/living/carbon/user = owner
 	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(user)
-	if(vassaldatum?.master && vassaldatum.master.bloodsucker_blood_volume > 5)
-		vassaldatum.master.AddBloodVolume(-1)
+	if(!vassaldatum?.master || vassaldatum.master.bloodsucker_blood_volume <= 5)
+		DeactivatePower()
+		return
+	vassaldatum.master.AddBloodVolume(-1 * seconds_per_tick)
 	user.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
-	user.adjust_stamina_loss(bloodcost * 1.1)
-	user.heal_overall_damage(brute = 2.5, updating_health = FALSE)
-	user.adjust_tox_loss(-2, updating_health = FALSE, forced = TRUE)
+	user.adjust_stamina_loss(bloodcost * 1.1 * seconds_per_tick)
+	user.heal_overall_damage(brute = 2.5 * seconds_per_tick, updating_health = FALSE)
+	user.adjust_tox_loss(-2 * seconds_per_tick, updating_health = FALSE, forced = TRUE)
 	// Plasmamen won't lose blood, they don't have any, so they don't heal from Burn.
 	if(!HAS_TRAIT(user, TRAIT_NOBLOOD))
-		user.blood_volume = max(0, user.blood_volume - bloodcost)
-		user.adjust_fire_loss(-1.5, updating_health = FALSE)
+		user.blood_volume = max(0, user.blood_volume - (bloodcost * seconds_per_tick))
+		user.adjust_fire_loss(-1.5 * seconds_per_tick, updating_health = FALSE)
 	user.updatehealth() // only update health once after we've healed everything we might've
 	// Stop Bleeding
 	if(istype(user) && user.is_bleeding())
 		for(var/obj/item/bodypart/part in user.bodyparts)
-			part.generic_bleedstacks = max(0, part.generic_bleedstacks - 1)
+			part.generic_bleedstacks = max(0, part.generic_bleedstacks - (1 * seconds_per_tick))
 
 /datum/action/cooldown/bloodsucker/recuperate/ContinueActive(mob/living/user, mob/living/target)
 	if(QDELETED(user))
 		return FALSE
 	. = ..()
 	if(!.)
+		return FALSE
+	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(user)
+	if(!vassaldatum?.master || vassaldatum.master.bloodsucker_blood_volume <= 5)
+		owner?.balloon_alert(owner, "master lacks blood!")
 		return FALSE
 	if(user.stat >= DEAD)
 		return FALSE

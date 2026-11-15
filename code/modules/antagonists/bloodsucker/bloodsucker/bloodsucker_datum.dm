@@ -424,8 +424,12 @@
  * Update Sight - Done after Eyes are regenerated.
  */
 /datum/antagonist/bloodsucker/proc/clear_powers_and_stats()
-	if(QDELETED(owner?.current))
+	var/mob/living/current_mob = owner?.current
+	if(QDELETED(current_mob))
+		frenzied = FALSE
 		return
+	current_mob.remove_status_effect(/datum/status_effect/frenzy)
+	frenzied = FALSE
 	// Powers
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers.Copy())
 		RemovePower(all_powers)

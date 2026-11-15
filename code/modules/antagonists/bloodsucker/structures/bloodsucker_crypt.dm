@@ -481,6 +481,15 @@
 	. = ..()
 	set_anchored(FALSE)
 
+/obj/structure/bloodsucker/bloodthrone/attack_hand(mob/user, list/modifiers)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(can_buckle && has_buckled_mobs())
+		if(user_unbuckle_mob(buckled_mobs[1], user))
+			return TRUE
+	return FALSE
+
 // Armrests
 /obj/structure/bloodsucker/bloodthrone/proc/GetArmrest()
 	return mutable_appearance('icons/bloodsuckers/vamp_obj_64.dmi', "thronearm")

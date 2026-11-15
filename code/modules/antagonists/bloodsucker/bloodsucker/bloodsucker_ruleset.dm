@@ -19,6 +19,7 @@
 	candidate.add_antag_datum(/datum/antagonist/bloodsucker)
 
 /datum/dynamic_ruleset/proc/assign_scaled_bloodsucker(datum/mind/candidate)
+	PRIVATE_PROC(TRUE)
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = new()
 	var/time_passed_minutes = STATION_TIME_PASSED() / (1 MINUTES)
 	if(time_passed_minutes >= 35)

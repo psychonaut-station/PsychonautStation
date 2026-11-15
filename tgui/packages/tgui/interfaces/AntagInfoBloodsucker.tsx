@@ -189,12 +189,9 @@ const PowerSection = (props: any) => {
                   ? ` — Level ${selectedPower.level}/${selectedPower.max_level || 4}`
                   : ''}
               </Box>
-              <Box
-                style={{ whiteSpace: 'pre-line' }}
-                dangerouslySetInnerHTML={{
-                  __html: selectedPower.explanation,
-                }}
-              />
+              <Box style={{ whiteSpace: 'pre-line' }}>
+                {selectedPower.explanation}
+              </Box>
             </>
           )}
         </Flex.Item>

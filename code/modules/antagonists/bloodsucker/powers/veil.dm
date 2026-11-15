@@ -19,6 +19,15 @@
 	var/old_physique
 	var/old_voice
 
+/datum/action/cooldown/bloodsucker/veil/can_use(mob/living/carbon/user, trigger_flags)
+	. = ..()
+	if(!.)
+		return FALSE
+	if(!ishuman(user) || !user.dna)
+		user.balloon_alert(user, "cannot veil this form!")
+		return FALSE
+	return TRUE
+
 /datum/action/cooldown/bloodsucker/veil/ActivatePower(trigger_flags)
 	. = ..()
 	cast_effect()
@@ -32,6 +41,7 @@
 	if(!user.dna)
 		return
 	to_chat(owner, span_warning("You mystify the air around your person. Your identity is now altered."))
+	QDEL_NULL(old_dna)
 	src.old_dna = new()
 	user.dna.copy_dna(old_dna)
 	old_gender = user.gender
@@ -46,6 +56,7 @@
 /datum/action/cooldown/bloodsucker/veil/DeactivatePower()
 	. = ..()
 	if(!ishuman(owner))
+		QDEL_NULL(old_dna)
 		return
 	var/mob/living/carbon/human/user = owner
 
@@ -60,6 +71,8 @@
 
 		user.real_name = old_dna.real_name // Name is fine though
 		user.name = user.get_visible_name()
+		QDEL_NULL(old_dna)
+	else
 		QDEL_NULL(old_dna)
 
 	cast_effect() // POOF

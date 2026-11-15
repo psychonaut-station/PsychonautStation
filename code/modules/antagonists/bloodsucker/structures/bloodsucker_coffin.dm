@@ -123,7 +123,9 @@
 	resident = null
 
 /// You cannot lock in/out a coffin's owner. SORRY.
-/obj/structure/closet/crate/coffin/can_open(mob/living/user)
+/obj/structure/closet/crate/coffin/can_open(mob/living/user, force = FALSE)
+	if(force)
+		return TRUE
 	if(!locked)
 		return ..()
 	if(user == resident)
@@ -137,6 +139,7 @@
 		return TRUE
 	playsound(get_turf(src), 'sound/machines/airlock/doorclick.ogg', 20, 1)
 	to_chat(user, span_notice("[src] appears to be locked tight from the inside."))
+	return FALSE
 
 /obj/structure/closet/crate/coffin/open(mob/living/user, force = FALSE, special_effects = TRUE)
 	var/mob/living/waking_resident

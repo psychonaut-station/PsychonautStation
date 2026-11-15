@@ -67,11 +67,13 @@
 	. = ..()
 	if(!.)
 		return FALSE
-	if(!isturf(owner.loc))
+	find_bloodsucker_datum()
+	if(!isturf(owner?.loc))
 		return FALSE
-	if(QDELETED(bloodsuckerdatum_power.coffin))
-		user.balloon_alert(user, "coffin destroyed!")
-		to_chat(owner, span_warning("Your coffin has been destroyed! You no longer have a destination."))
+	if(QDELETED(bloodsuckerdatum_power) || QDELETED(bloodsuckerdatum_power.coffin))
+		if(!QDELETED(user))
+			user.balloon_alert(user, "coffin destroyed!")
+			to_chat(user, span_warning("Your coffin has been destroyed! You no longer have a destination."))
 		return FALSE
 	return TRUE
 

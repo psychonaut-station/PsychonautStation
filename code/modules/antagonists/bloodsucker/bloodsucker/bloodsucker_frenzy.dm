@@ -38,6 +38,10 @@
 	alert_type = /atom/movable/screen/alert/status_effect/frenzy
 	/// The stored Bloodsucker antag datum
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum
+	/// Whether frenzy effects were successfully applied to owner
+	var/frenzy_applied = FALSE
+	/// Stored frenzygrab reference so unlearn still works if bloodsuckerdatum is removed first
+	var/datum/martial_art/frenzygrab/learned_frenzygrab
 	/// Traits applied during Frenzy.
 	var/static/list/frenzy_traits = list(
 		TRAIT_BATON_RESISTANCE,
@@ -58,7 +62,7 @@
 	return ..()
 
 /datum/status_effect/frenzy/on_apply()
-	var/mob/living/carbon/human/user = owner
+	var/mob/living/user = owner
 	bloodsuckerdatum = IS_BLOODSUCKER(user)
 
 	if(QDELETED(bloodsuckerdatum) || !COOLDOWN_FINISHED(bloodsuckerdatum, bloodsucker_frenzy_cooldown))
@@ -73,23 +77,31 @@
 	// Give the other Frenzy effects
 	owner.add_traits(frenzy_traits, FRENZY_TRAIT)
 	owner.add_movespeed_modifier(/datum/movespeed_modifier/bloodsucker_frenzy)
-	bloodsuckerdatum.frenzygrab.teach(user, TRUE)
+	learned_frenzygrab = bloodsuckerdatum.frenzygrab
+	learned_frenzygrab?.teach(user, TRUE)
 	owner.add_client_colour(/datum/client_colour/manual_heart_blood)
-	user.uncuff()
+	if(iscarbon(owner))
+		var/mob/living/carbon/carbon_owner = owner
+		carbon_owner.uncuff()
 	bloodsuckerdatum.frenzied = TRUE
+	frenzy_applied = TRUE
 	return ..()
 
 /datum/status_effect/frenzy/on_remove()
-	if(bloodsuckerdatum?.frenzied)
-		var/mob/living/carbon/human/user = owner
+	if(frenzy_applied)
 		owner.balloon_alert(owner, "you come back to your senses.")
 		owner.remove_traits(frenzy_traits, FRENZY_TRAIT)
 		owner.remove_movespeed_modifier(/datum/movespeed_modifier/bloodsucker_frenzy)
-		bloodsuckerdatum.frenzygrab.unlearn(user)
+		var/datum/martial_art/frenzygrab/active_frenzygrab = learned_frenzygrab || bloodsuckerdatum?.frenzygrab
+		active_frenzygrab?.unlearn(owner)
 		owner.remove_client_colour(/datum/client_colour/manual_heart_blood)
 
-		bloodsuckerdatum.frenzied = FALSE
-		COOLDOWN_START(bloodsuckerdatum, bloodsucker_frenzy_cooldown, 30 SECONDS)
+		if(bloodsuckerdatum)
+			bloodsuckerdatum.frenzied = FALSE
+			COOLDOWN_START(bloodsuckerdatum, bloodsucker_frenzy_cooldown, 30 SECONDS)
+		frenzy_applied = FALSE
+	learned_frenzygrab = null
+	bloodsuckerdatum = null
 	return ..()
 
 /datum/status_effect/frenzy/tick()

@@ -80,15 +80,15 @@
 		DeactivatePower()
 		return
 
-	unset_click_ability(owner)
-	pay_cost()
-	StartCooldown()
-
 	var/mob/living/charger = owner
 	var/turf/chargeturf = get_turf(target_atom)
 	if(!chargeturf || !charger)
 		DeactivatePower()
 		return
+
+	unset_click_ability(owner)
+	pay_cost()
+	StartCooldown()
 
 	var/dir = get_dir(charger, target_atom)
 	var/turf/destination_turf = get_ranged_target_turf(chargeturf, dir, 2) || chargeturf

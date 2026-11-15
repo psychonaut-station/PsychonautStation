@@ -43,6 +43,8 @@
 	var/frenzied = FALSE
 	/// Whether the death handling code is active or not.
 	var/handling_death = FALSE
+	/// Whether this bloodsucker has succumbed to Final Death.
+	var/final_dead = FALSE
 
 	///ALL Powers currently owned
 	var/list/datum/action/cooldown/bloodsucker/powers = list()

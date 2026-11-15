@@ -277,6 +277,9 @@
 
 /// Gibs the Bloodsucker, roundremoving them.
 /datum/antagonist/bloodsucker/proc/final_death(dusted = FALSE)
+	if(final_dead)
+		return
+	final_dead = TRUE
 	// If we have no body, end here.
 	if(QDELETED(owner.current))
 		return
@@ -299,7 +302,7 @@
 		if(dusted)
 			owner.current.dust()
 		else
-			owner.current.gib(TRUE, FALSE, FALSE)
+			owner.current.gib()
 		return
 	// Drop anything in us and play a tune
 	var/mob/living/carbon/user = owner.current
@@ -320,6 +323,6 @@
 		span_warning("[user]'s skin bursts forth in a spray of gore and detritus. A horrible cry echoes from what is now a wet pile of decaying meat."),
 		span_userdanger("Your soul escapes your withering body as the abyss welcomes you to your Final Death."),
 		span_hear(span_italics("You hear a wet, bursting sound.")))
-	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, gib), TRUE, FALSE, FALSE), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
+	addtimer(CALLBACK(user, TYPE_PROC_REF(/mob/living, gib)), 2 SECONDS, TIMER_UNIQUE|TIMER_STOPPABLE)
 
 #undef BLOODSUCKER_PASSIVE_BLOOD_DRAIN

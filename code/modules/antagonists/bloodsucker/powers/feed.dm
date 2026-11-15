@@ -45,6 +45,8 @@
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/feed/ContinueActive(mob/living/user, mob/living/target)
+	if(!target)
+		target = target_ref?.resolve()
 	if(QDELETED(user) || QDELETED(target))
 		return FALSE
 	if(user.stat != STABLE || user.incapacitated || user.am_staked() || bloodsuckerdatum_power?.is_in_torpor())
@@ -58,7 +60,8 @@
 	var/mob/living/feed_target = target_ref?.resolve()
 	if(!QDELETED(user))
 		if(!QDELETED(feed_target))
-			log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
+			if(blood_taken > 0)
+				log_combat(user, feed_target, "fed on blood", addition="(and took [blood_taken] blood)")
 			to_chat(user, span_notice("You slowly release [feed_target]."))
 			if(ishuman(feed_target) && feed_target.stat == DEAD)
 				user.clear_mood_event("drankblood")

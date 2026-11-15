@@ -5,7 +5,7 @@
 	power_explanation = "Predatory Rush:\n\
 		Brace your unholy sinews and surge forward in a terrifying high-speed charge toward your quarry.\n\
 		Colliding with a victim violently tackles them to the deck, inflicting heavy physical trauma and securing an aggressive hold over their body.\n\
-		Deepening mastery sharpens your predatory savagery: upon impact, you voraciously tear into the victim to gorge on their vital blood while inflicting escalating physical ruin—tearing open bleeding lacerations, wrenching limbs from their sockets, and ultimately shattering bones to dust."
+		Deepening mastery sharpens your predatory savagery: upon impact, you voraciously tear into the victim to gorge on their vital blood while inflicting escalating physical ruin, tearing open bleeding lacerations, wrenching limbs from their sockets, and ultimately shattering bones to dust."
 	power_flags = NONE
 	check_flags = BP_CANT_USE_IN_TORPOR | BP_CANT_USE_IN_FRENZY | BP_CANT_USE_WHILE_INCAPACITATED | BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY | VASSAL_CAN_BUY
@@ -21,6 +21,8 @@
 	var/list/charging_mobs = list()
 	/// Target atom of current charge
 	var/atom/charge_target
+	/// Weakref to the active move_loop for the current charge
+	var/datum/weakref/active_loop_ref
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/Destroy()
 	if(owner && (owner in charging_mobs))
@@ -132,6 +134,7 @@
 		charge_end(charger)
 		return
 
+	active_loop_ref = WEAKREF(new_loop)
 	RegisterSignal(new_loop, COMSIG_MOVELOOP_PREPROCESS_CHECK, PROC_REF(pre_move), override = TRUE)
 	RegisterSignal(new_loop, COMSIG_MOVELOOP_POSTPROCESS, PROC_REF(post_move), override = TRUE)
 	RegisterSignal(new_loop, COMSIG_QDELETING, PROC_REF(charge_end), override = TRUE)
@@ -256,6 +259,10 @@
 	if(!charger || !(charger in charging_mobs))
 		return
 	charging_mobs -= charger
+	var/datum/move_loop/active_loop = active_loop_ref?.resolve()
+	active_loop_ref = null
+	if(!QDELETED(active_loop))
+		UnregisterSignal(active_loop, list(COMSIG_MOVELOOP_PREPROCESS_CHECK, COMSIG_MOVELOOP_POSTPROCESS, COMSIG_QDELETING))
 	UnregisterSignal(charger, list(COMSIG_MOVABLE_BUMP, COMSIG_MOVABLE_PRE_MOVE, COMSIG_MOVABLE_MOVED, COMSIG_LIVING_DEATH))
 	actively_moving = FALSE
 	charge_target = null

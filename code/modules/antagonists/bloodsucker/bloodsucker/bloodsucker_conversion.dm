@@ -15,7 +15,7 @@
 			return VASSALIZATION_BANNED
 		has_other_antags = TRUE
 	if(has_other_antags || HAS_TRAIT(target, TRAIT_MINDSHIELD))
-		return VASSALIZATION_DISLOYAL
+		return VASSALIZATION_VOLUNTARY
 	return VASSALIZATION_ALLOWED
 
 

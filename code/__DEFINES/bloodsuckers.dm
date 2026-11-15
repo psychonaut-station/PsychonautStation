@@ -12,7 +12,7 @@
 #define TORTURE_CONVERSION_COST 50
 /// Once blood is this low, will enter Frenzy
 #define FRENZY_THRESHOLD_ENTER 25
-/// Once blood is this high, will exit Frenzyshak
+/// Once blood is this high, will exit Frenzy
 #define FRENZY_THRESHOLD_EXIT 250
 
 
@@ -22,12 +22,11 @@
 ///If someone passes all checks and can be vassalized
 #define VASSALIZATION_ALLOWED 0
 ///If someone has to accept vassalization
-#define VASSALIZATION_DISLOYAL 1
-///If someone is not allowed under any circimstances to become a Vassal
+#define VASSALIZATION_VOLUNTARY 1
+///If someone is not allowed under any circumstances to become a Vassal
 #define VASSALIZATION_BANNED 2
 
 #define VASSAL_SCAN_MIN_DISTANCE 5
-#define VASSAL_SCAN_MAX_DISTANCE 500
 /// 2s update time.
 #define VASSAL_SCAN_PING_TIME (2 SECONDS)
 
@@ -74,7 +73,7 @@
 #define BP_AM_SINGLEUSE (1<<1)
 /// This Power has a Static cooldown
 #define BP_AM_STATIC_COOLDOWN (1<<2)
-/// This Power doesn't cost bloot to run while unconscious
+/// This Power doesn't cost blood to run while unconscious
 #define BP_AM_COSTLESS_UNCONSCIOUS (1<<3)
 
 /**

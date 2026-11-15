@@ -70,8 +70,11 @@
 	name = "bloodsuckersurvive"
 	explanation_text = "Survive the entire shift without succumbing to Final Death."
 
-// WIN CONDITIONS?
-// Handled by parent
+/datum/objective/survive/bloodsucker/check_completion()
+	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner?.has_antag_datum(/datum/antagonist/bloodsucker)
+	if(bloodsuckerdatum?.final_dead)
+		return FALSE
+	return ..()
 
 //////////////////////////////////////////////////////////////////////////////////////
 
@@ -191,6 +194,8 @@
 // WIN CONDITIONS?
 /datum/objective/bloodsucker/vassal/check_completion()
 	var/datum/antagonist/vassal/antag_datum = owner.has_antag_datum(/datum/antagonist/vassal)
+	if(antag_datum?.master?.final_dead)
+		return FALSE
 	var/mob/living/master_mob = antag_datum?.master?.owner?.current
 	return master_mob && master_mob.stat != DEAD
 

@@ -7,7 +7,7 @@ const BloodsuckerBreakout: Antagonist = {
     `
       After your death, you awaken to see yourself as an undead monster.
       Use your Vampiric abilities as best you can.
-      Scrape by Space Station 13, or take over it, vassalizing your way.
+      Scrape by on Space Station 13, or take over it, vassalizing your way.
     `,
   ],
   category: Category.Midround,

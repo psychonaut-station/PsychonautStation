@@ -1,6 +1,7 @@
-// NOTE: All Targeted spells are Toggles! We just don't bother checking here.
 /datum/action/cooldown/bloodsucker/targeted
-	power_flags = BP_AM_TOGGLE
+	click_to_activate = TRUE
+	unset_after_click = TRUE
+	power_flags = NONE
 
 	///If set, how far the target has to be for the power to work.
 	var/target_range
@@ -16,48 +17,53 @@
 	desc += "<br>\[<i>Targeted Power</i>\]"
 	return ..()
 
-/datum/action/cooldown/bloodsucker/targeted/Remove(mob/living/remove_from)
-	. = ..()
-	if(remove_from.click_intercept == src)
-		unset_click_ability(remove_from)
-
 /datum/action/cooldown/bloodsucker/targeted/Trigger(mob/clicker, trigger_flags, atom/target)
 	SHOULD_CALL_PARENT(FALSE)
-	if(active && can_deactivate())
-		DeactivatePower()
+	if(!owner)
 		return FALSE
-	if(!can_pay_cost() || !can_use(owner, trigger_flags))
+	find_bloodsucker_datum()
+	var/mob/user = clicker || owner
+	if(user.click_intercept == src && !target)
+		unset_click_ability(user, refund_cooldown = TRUE)
+		return FALSE
+	if(!IsAvailable(feedback = TRUE) || !can_pay_cost() || !can_use(owner, trigger_flags))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
-
-	if(prefire_message)
-		to_chat(owner, span_announce("[prefire_message]"))
-
-	ActivatePower(trigger_flags)
-	if(!active)
+	var/datum/action/cooldown/already_set = user.click_intercept
+	if(istype(already_set) && already_set != src)
+		already_set.unset_click_ability(user, refund_cooldown = TRUE)
+	if(try_trigger_instant(user, trigger_flags))
 		return TRUE
 	if(!QDELETED(target))
-		return InterceptClickOn(owner, null, target)
+		return InterceptClickOn(user, null, target)
+	return set_click_ability(user)
 
-	return set_click_ability(owner)
+/datum/action/cooldown/bloodsucker/targeted/set_click_ability(mob/on_who)
+	. = ..()
+	if(!.)
+		return
+	build_all_button_icons(UPDATE_BUTTON_BACKGROUND)
+	if(prefire_message)
+		to_chat(on_who, span_announce("[prefire_message]"))
 
-/datum/action/cooldown/bloodsucker/targeted/DeactivatePower()
-	if(power_flags & BP_AM_TOGGLE)
-		STOP_PROCESSING(SSprocessing, src)
-	active = FALSE
-	build_all_button_icons()
-	unset_click_ability(owner)
-//	..() // we don't want to pay cost here
+/datum/action/cooldown/bloodsucker/targeted/unset_click_ability(mob/on_who, refund_cooldown = TRUE)
+	. = ..()
+	if(.)
+		build_all_button_icons(UPDATE_BUTTON_BACKGROUND)
+
+/// Hook for targeted powers that can resolve immediately on trigger without aiming.
+/datum/action/cooldown/bloodsucker/targeted/proc/try_trigger_instant(mob/user, trigger_flags)
+	return FALSE
 
 /// Check if target is VALID (wall, turf, or character?)
-/datum/action/cooldown/bloodsucker/targeted/proc/CheckValidTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/proc/is_valid_target(atom/target_atom)
 	if(target_atom == owner)
 		return FALSE
 	return TRUE
 
 /// Check if valid target meets conditions
-/datum/action/cooldown/bloodsucker/targeted/proc/CheckCanTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/proc/can_target(atom/target_atom)
 	if(target_range)
 		// Out of Range
 		if(!(target_atom in view(target_range, owner)))
@@ -66,32 +72,39 @@
 			return FALSE
 	return istype(target_atom)
 
-/// Click Target
-/datum/action/cooldown/bloodsucker/targeted/proc/click_with_power(atom/target_atom)
-	// CANCEL RANGED TARGET check
-	if(power_in_use || !CheckValidTarget(target_atom))
-		return FALSE
-	// Valid? (return true means DON'T cancel power!)
-	if(!can_pay_cost() || !can_use(owner) || !CheckCanTarget(target_atom))
-		return TRUE
-	power_in_use = TRUE // Lock us into this ability until it successfully fires off. Otherwise, we pay the blood even if we fail.
-	FireTargetedPower(target_atom) // We use this instead of ActivatePower(trigger_flags), which has no input
-	// Skip this part so we can return TRUE right away.
-	if(power_activates_immediately)
-		power_activated_sucessfully() // Mesmerize pays only after success.
-	power_in_use = FALSE
-	return TRUE
-
-/// Like ActivatePower, but specific to Targeted (and takes an atom input). We don't use ActivatePower for targeted.
-/datum/action/cooldown/bloodsucker/targeted/proc/FireTargetedPower(atom/target_atom)
-	log_combat(owner, target_atom, "used [name] on")
-
 /// The power went off! We now pay the cost of the power.
-/datum/action/cooldown/bloodsucker/targeted/proc/power_activated_sucessfully()
-	unset_click_ability(owner)
+/datum/action/cooldown/bloodsucker/targeted/proc/complete_targeted_activation()
+	if(owner?.click_intercept == src)
+		unset_click_ability(owner, refund_cooldown = FALSE)
 	pay_cost()
 	StartCooldown()
-	DeactivatePower()
+	if(power_flags & BP_AM_SINGLEUSE)
+		remove_after_use()
 
 /datum/action/cooldown/bloodsucker/targeted/InterceptClickOn(mob/living/clicker, params, atom/target)
-	return click_with_power(target)
+	if(power_in_use || !IsAvailable(feedback = TRUE) || QDELETED(target))
+		return FALSE
+	if(!is_valid_target(target))
+		return FALSE
+	if(!can_pay_cost() || !can_use(owner) || !can_target(target))
+		return TRUE
+	PreActivate(target)
+	if(unset_after_click && !QDELETED(clicker) && clicker.click_intercept == src)
+		unset_click_ability(clicker, refund_cooldown = FALSE)
+	clicker.next_click = world.time + click_cd_override
+	return TRUE
+
+/datum/action/cooldown/bloodsucker/targeted/PreActivate(atom/target)
+	if(SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_STARTED, src, target) & COMPONENT_BLOCK_ABILITY_START)
+		return FALSE
+	power_in_use = TRUE
+	. = Activate(target)
+	power_in_use = FALSE
+	if(!QDELETED(src) && !QDELETED(owner))
+		SEND_SIGNAL(owner, COMSIG_MOB_ABILITY_FINISHED, src)
+
+/datum/action/cooldown/bloodsucker/targeted/Activate(atom/target)
+	log_combat(owner, target, "used [name] on")
+	if(power_activates_immediately)
+		complete_targeted_activation()
+	return TRUE

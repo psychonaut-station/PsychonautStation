@@ -41,17 +41,17 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/CheckValidTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/mesmerize/is_valid_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
 	return isliving(target_atom)
 
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/CheckCanTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/mesmerize/can_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
-	var/mob/living/current_target = target_atom // We already know it's carbon due to CheckValidTarget()
+	var/mob/living/current_target = target_atom // We already know it's living due to is_valid_target()
 	// No mind
 	if(!current_target.mind)
 		owner.balloon_alert(owner, "[current_target] is mindless.")
@@ -91,31 +91,36 @@
 	target_ref = WEAKREF(current_target)
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/FireTargetedPower(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/mesmerize/Activate(atom/target)
 	. = ..()
+	if(unset_after_click && owner?.click_intercept == src)
+		unset_click_ability(owner, refund_cooldown = FALSE)
 
 	var/mob/living/user = owner
-	var/mob/living/mesmerized_target = target_ref.resolve()
+	var/mob/living/mesmerized_target = target_ref?.resolve() || (isliving(target) ? target : null)
 	if(QDELETED(mesmerized_target))
-		return
+		target_ref = null
+		return FALSE
 
 	if(issilicon(mesmerized_target))
 		var/mob/living/silicon/mesmerized = mesmerized_target
 		mesmerized.emp_act(EMP_HEAVY)
 		owner.balloon_alert(owner, "temporarily shut [mesmerized] down.")
-		power_activated_sucessfully() // PAY COST! BEGIN COOLDOWN!
-		return
+		complete_targeted_activation() // PAY COST! BEGIN COOLDOWN!
+		target_ref = null
+		return TRUE
 
-	if(mesmerized_target)
-		owner.balloon_alert(owner, "attempting to hypnotically gaze [mesmerized_target]...")
+	owner.balloon_alert(owner, "attempting to hypnotically gaze [mesmerized_target]...")
 
-	if(!do_after(user, 4 SECONDS, mesmerized_target, NONE, TRUE, extra_checks = CALLBACK(src, PROC_REF(ContinueActive), user, mesmerized_target)))
-		return
+	if(!do_after(user, 4 SECONDS, mesmerized_target, NONE, TRUE, extra_checks = CALLBACK(src, PROC_REF(can_continue_mesmerize), user, mesmerized_target)))
+		target_ref = null
+		return FALSE
 
 	var/power_time = (9 SECONDS) + level_current * (1.5 SECONDS)
 	if(HAS_TRAIT_FROM(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZED_TRAIT))
 		owner.balloon_alert(owner, "[mesmerized_target] is already in a hypnotic gaze.")
-		return
+		target_ref = null
+		return FALSE
 	if(iscarbon(mesmerized_target))
 		owner.balloon_alert(owner, "successfully mesmerized [mesmerized_target].")
 		if(level_current >= 2)
@@ -126,11 +131,13 @@
 		COOLDOWN_START(mesmerized_target, next_move, power_time) // <--- Use direct change instead. We want an unmodified delay to their next move // mesmerized_target.changeNext_move(power_time) // check click.dm
 		ADD_TRAIT(mesmerized_target, TRAIT_NO_TRANSFORM, MESMERIZED_TRAIT)// <--- Fuck it. We tried using next_move, but they could STILL resist. We're just doing a hard freeze.
 		addtimer(CALLBACK(GLOBAL_PROC, GLOBAL_PROC_REF(end_mesmerize_effect), WEAKREF(user), WEAKREF(mesmerized_target)), power_time)
-	power_activated_sucessfully() // PAY COST! BEGIN COOLDOWN!
-
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/DeactivatePower()
+	complete_targeted_activation() // PAY COST! BEGIN COOLDOWN!
 	target_ref = null
-	. = ..()
+	return TRUE
+
+/datum/action/cooldown/bloodsucker/targeted/mesmerize/Destroy()
+	target_ref = null
+	return ..()
 
 /proc/end_mesmerize_effect(datum/weakref/user_ref, datum/weakref/target_ref)
 	var/mob/living/target = target_ref?.resolve()
@@ -141,5 +148,5 @@
 	if(user && target.stat == STABLE && (target in view(6, get_turf(user))))
 		user.balloon_alert(user, "[target] snapped out of their trance.")
 
-/datum/action/cooldown/bloodsucker/targeted/mesmerize/ContinueActive(mob/living/user, mob/living/target)
-	return ..() && can_use(user) && CheckCanTarget(target)
+/datum/action/cooldown/bloodsucker/targeted/mesmerize/proc/can_continue_mesmerize(mob/living/user, mob/living/target)
+	return !QDELETED(user) && !QDELETED(target) && can_use(user) && can_target(target)

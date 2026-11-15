@@ -77,15 +77,8 @@
 #define BP_AM_COSTLESS_UNCONSCIOUS (1<<3)
 
 /**
- * Sol signals & Defines
+ * Sol defines
  */
-#define COMSIG_SOL_RANKUP_BLOODSUCKERS "comsig_sol_rankup_bloodsuckers"
-#define COMSIG_SOL_RISE_TICK "comsig_sol_rise_tick"
-#define COMSIG_SOL_NEAR_START "comsig_sol_near_start"
-#define COMSIG_SOL_END "comsig_sol_end"
-///Sent when a warning for Sol is meant to go out: (danger_level, vampire_warning_message, vassal_warning_message)
-#define COMSIG_SOL_WARNING_GIVEN "comsig_sol_warning_given"
-
 #define DANGER_LEVEL_FIRST_WARNING 1
 #define DANGER_LEVEL_SECOND_WARNING 2
 #define DANGER_LEVEL_THIRD_WARNING 3

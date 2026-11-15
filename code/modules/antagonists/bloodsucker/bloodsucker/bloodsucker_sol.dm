@@ -4,50 +4,35 @@
  *	Sol is the sunlight, during this period, all Bloodsuckers must be in their coffin, else they burn.
  */
 
-/// Start Sol, called when someone is assigned Bloodsucker
-/datum/antagonist/bloodsucker/proc/check_start_sunlight()
-	var/list/existing_suckers = get_antag_minds(/datum/antagonist/bloodsucker) - owner
-	if(!length(existing_suckers))
-		message_admins("New Sol has been created due to Bloodsucker assignment.")
-		SSsunlight.can_fire = TRUE
-
-/// End Sol, if you're the last Bloodsucker
-/datum/antagonist/bloodsucker/proc/check_cancel_sunlight()
-	var/list/existing_suckers = get_antag_minds(/datum/antagonist/bloodsucker) - owner
-	if(!length(existing_suckers))
-		message_admins("Sol has been deleted due to the lack of Bloodsuckers")
-		SSsunlight.can_fire = FALSE
-		SSsunlight.reset_cycle()
-		if(SSsunlight.sunlight_active)
-			SSsunlight.sunlight_active = FALSE
-			SEND_SIGNAL(SSsunlight, COMSIG_SOL_END)
-
 ///Ranks the Bloodsucker up, called by Sol.
-/datum/antagonist/bloodsucker/proc/sol_rank_up(atom/source)
-	SIGNAL_HANDLER
-
+/datum/antagonist/bloodsucker/proc/sol_rank_up()
 	INVOKE_ASYNC(src, PROC_REF(RankUp))
 
 ///Called when Sol is near starting.
-/datum/antagonist/bloodsucker/proc/sol_near_start(atom/source)
-	SIGNAL_HANDLER
+/datum/antagonist/bloodsucker/proc/sol_near_start()
 	if(bloodsucker_lair_area && !(locate(/datum/action/cooldown/bloodsucker/gohome) in powers))
 		BuyPower(new /datum/action/cooldown/bloodsucker/gohome)
 
-///Called when Sol first ends.
-/datum/antagonist/bloodsucker/proc/on_sol_end(atom/source)
-	SIGNAL_HANDLER
-	check_end_torpor()
+///Clears active Sol status effects and temporary go-home actions from this bloodsucker.
+/datum/antagonist/bloodsucker/proc/clear_sol_state()
+	if(owner?.current?.has_status_effect(/datum/status_effect/bloodsucker_sol))
+		if(!final_dead)
+			to_chat(owner.current, span_big(span_boldnotice("Sol has ended, your vampiric powers are no longer strained!")), type = MESSAGE_TYPE_INFO)
+		owner.current.remove_status_effect(/datum/status_effect/bloodsucker_sol)
 	for(var/datum/action/cooldown/bloodsucker/gohome/power in powers.Copy())
 		RemovePower(power)
 
+///Called when Sol first ends.
+/datum/antagonist/bloodsucker/proc/on_sol_end()
+	clear_sol_state()
+	check_end_torpor()
+
 /// Cycle through all vamp antags and check if they're inside a closet.
 /datum/antagonist/bloodsucker/proc/handle_sol()
-	SIGNAL_HANDLER
 	INVOKE_ASYNC(src, PROC_REF(handle_sol_effects))
 
 /datum/antagonist/bloodsucker/proc/handle_sol_effects()
-	if(!SSsunlight.sunlight_active)
+	if(!GLOB.bloodsucker_sunlight.sunlight_active)
 		return
 	if(!owner?.current)
 		return
@@ -123,8 +108,7 @@
 		to_chat(user, span_userdanger("The relentless morning sun incinerates your soul and body into dust!"))
 		final_death(dusted = TRUE)
 
-/datum/antagonist/bloodsucker/proc/give_warning(atom/source, danger_level, vampire_warning_message, vassal_warning_message)
-	SIGNAL_HANDLER
+/datum/antagonist/bloodsucker/proc/give_warning(danger_level, vampire_warning_message, vassal_warning_message)
 	if(!owner || !owner.current)
 		return
 	to_chat(owner, vampire_warning_message)
@@ -169,7 +153,7 @@
 	var/total_burn = user.getFireLoss_nonProsthetic()
 	var/total_damage = total_brute + total_burn
 	/// Checks - Not daylight & Has more than 10 Brute/Burn & not already in Torpor
-	if(!SSsunlight.sunlight_active && (total_damage >= 10 && !is_in_torpor()))
+	if(!GLOB.bloodsucker_sunlight.sunlight_active && (total_damage >= 10 && !is_in_torpor()))
 		torpor_begin()
 
 /datum/antagonist/bloodsucker/proc/check_end_torpor()
@@ -181,7 +165,7 @@
 	var/total_damage = total_brute + total_burn
 	if(total_burn >= 199)
 		return FALSE
-	if(SSsunlight.sunlight_active)
+	if(GLOB.bloodsucker_sunlight.sunlight_active)
 		return FALSE
 	// You are in a Coffin, so instead we'll check TOTAL damage, here.
 	if(istype(user.loc, /obj/structure/closet/crate/coffin))
@@ -230,13 +214,12 @@
 	)
 
 /datum/status_effect/bloodsucker_sol/on_apply()
-	if(!SSsunlight.sunlight_active)
+	if(!GLOB.bloodsucker_sunlight.sunlight_active)
 		return FALSE
 	if(istype(owner.loc, /obj/structure/closet/crate/coffin))
 		var/obj/structure/closet/crate/coffin/coffin_loc = owner.loc
 		if(!coffin_loc.opened)
 			return FALSE
-	RegisterSignal(SSsunlight, COMSIG_SOL_END, PROC_REF(on_sol_end))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_owner_moved))
 	owner.add_traits(sol_traits, id)
 	owner.remove_filter(id)
@@ -260,7 +243,6 @@
 	return TRUE
 
 /datum/status_effect/bloodsucker_sol/on_remove()
-	UnregisterSignal(SSsunlight, COMSIG_SOL_END)
 	UnregisterSignal(owner, COMSIG_MOVABLE_MOVED)
 	owner.remove_traits(sol_traits, id)
 	owner.remove_filter(id)
@@ -280,12 +262,6 @@
 
 /datum/status_effect/bloodsucker_sol/get_examine_text()
 	return span_warning("[owner.p_They()] seem[owner.p_s()] sickly and painfully overburned!")
-
-/datum/status_effect/bloodsucker_sol/proc/on_sol_end()
-	SIGNAL_HANDLER
-	if(!QDELING(src))
-		to_chat(owner, span_big(span_boldnotice("Sol has ended, your vampiric powers are no longer strained!")), type = MESSAGE_TYPE_INFO)
-		qdel(src)
 
 /datum/status_effect/bloodsucker_sol/proc/on_owner_moved()
 	SIGNAL_HANDLER

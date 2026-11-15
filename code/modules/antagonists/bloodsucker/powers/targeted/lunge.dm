@@ -29,8 +29,10 @@
 		charge_end(owner)
 	return ..()
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/can_deactivate()
-	return !(owner in charging_mobs)
+/datum/action/cooldown/bloodsucker/targeted/lunge/Remove(mob/remove_from)
+	if(remove_from && (remove_from in charging_mobs))
+		charge_end(remove_from)
+	return ..()
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/can_use(mob/living/carbon/user, trigger_flags)
 	. = ..()
@@ -50,13 +52,13 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/CheckValidTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/lunge/is_valid_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
 	return isliving(target_atom) || isturf(target_atom)
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/CheckCanTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/lunge/can_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -72,23 +74,24 @@
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/get_charge_startup_time()
 	return 1 SECONDS
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/FireTargetedPower(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/lunge/Activate(atom/target)
 	. = ..()
-	INVOKE_ASYNC(src, PROC_REF(execute_charge), target_atom)
+	if(unset_after_click && owner?.click_intercept == src)
+		unset_click_ability(owner, refund_cooldown = FALSE)
+	INVOKE_ASYNC(src, PROC_REF(execute_charge), target)
 	return TRUE
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/proc/execute_charge(atom/target_atom)
-	if(!can_pay_cost() || !can_use(owner) || !CheckCanTarget(target_atom))
-		DeactivatePower()
+	if(!can_pay_cost() || !can_use(owner) || !can_target(target_atom))
 		return
 
 	var/mob/living/charger = owner
 	var/turf/chargeturf = get_turf(target_atom)
 	if(!chargeturf || !charger)
-		DeactivatePower()
 		return
 
-	unset_click_ability(owner)
+	if(owner?.click_intercept == src)
+		unset_click_ability(owner, refund_cooldown = FALSE)
 	pay_cost()
 	StartCooldown()
 
@@ -268,7 +271,6 @@
 	charge_target = null
 	if(!istype(source, /datum/move_loop))
 		GLOB.move_manager.stop_looping(charger)
-	DeactivatePower()
 
 /datum/action/cooldown/bloodsucker/targeted/lunge/DeactivatePower()
 	if(owner && (owner in charging_mobs))

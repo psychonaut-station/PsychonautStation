@@ -1,6 +1,5 @@
-/datum/antagonist/vassal/proc/give_warning(atom/source, danger_level, vampire_warning_message, vassal_warning_message)
-	SIGNAL_HANDLER
-	if(vassal_warning_message)
+/datum/antagonist/vassal/proc/give_warning(danger_level, vampire_warning_message, vassal_warning_message)
+	if(vassal_warning_message && owner?.current)
 		to_chat(owner, vassal_warning_message)
 
 /**

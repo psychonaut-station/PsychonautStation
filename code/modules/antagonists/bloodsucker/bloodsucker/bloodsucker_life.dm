@@ -217,7 +217,7 @@
 		return
 	// Fire Damage? (above double health)
 	if(owner.current.get_fire_loss() >= (owner.current.maxHealth * 2.5))
-		final_death(dusted = SSsunlight.sunlight_active)
+		final_death(dusted = GLOB.bloodsucker_sunlight.sunlight_active)
 		return
 	// Staked while "Temp Death" or Asleep
 	if(owner.current.StakeCanKillMe() && owner.current.am_staked())
@@ -288,14 +288,7 @@
 			COMSIG_LIVING_LIFE,
 			COMSIG_LIVING_DEATH,
 		))
-	check_cancel_sunlight()
-	UnregisterSignal(SSsunlight, list(
-		COMSIG_SOL_RANKUP_BLOODSUCKERS,
-		COMSIG_SOL_NEAR_START,
-		COMSIG_SOL_END,
-		COMSIG_SOL_RISE_TICK,
-		COMSIG_SOL_WARNING_GIVEN,
-	))
+	GLOB.bloodsucker_sunlight.unregister_bloodsucker(src)
 	free_all_vassals()
 	DisableAllPowers(forced = TRUE)
 	if(!iscarbon(owner.current))

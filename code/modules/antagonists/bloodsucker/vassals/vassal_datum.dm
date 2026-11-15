@@ -116,7 +116,7 @@
 	/// Enslave them to their Master
 	if(istype(master, /datum/antagonist/bloodsucker))
 		RegisterSignal(owner.current, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-		RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
+		GLOB.bloodsucker_sunlight.register_vassal(src)
 		if(special_type)
 			if(!master.special_vassals[special_type])
 				master.special_vassals[special_type] = list()
@@ -136,7 +136,7 @@
 	return ..()
 
 /datum/antagonist/vassal/on_removal()
-	UnregisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN)
+	GLOB.bloodsucker_sunlight.unregister_vassal(src)
 	//Free them from their Master
 	if(!QDELETED(master))
 		if(special_type && master.special_vassals[special_type])

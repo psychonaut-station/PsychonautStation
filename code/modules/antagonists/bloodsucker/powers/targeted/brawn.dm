@@ -6,7 +6,6 @@
 		Channel monstrous physical strength into your limbs to shatter restraining bonds, throw foes to the ground, or bash away those who hold you.\n\
 		Striking synthetic cyborgs discharges devastating electromagnetic shockwaves alongside devastating trauma.\n\
 		As your ancient blood thickens, your blows become increasingly concussive, allowing you to forcefully smash open locked lockers and tear through unbolted airlocks."
-	power_flags = BP_AM_TOGGLE
 	check_flags = BP_CANT_USE_IN_TORPOR|BP_CANT_USE_IN_FRENZY|BP_CANT_USE_WHILE_UNCONSCIOUS
 	purchase_flags = BLOODSUCKER_CAN_BUY|VASSAL_CAN_BUY
 	bloodcost = 8
@@ -17,17 +16,17 @@
 	prefire_message = "Select a target."
 
 
-/datum/action/cooldown/bloodsucker/targeted/brawn/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/targeted/brawn/try_trigger_instant(mob/user, trigger_flags)
 	// Did we break out of our handcuffs?
 	if(break_restraints())
-		power_activated_sucessfully()
-		return FALSE
+		complete_targeted_activation()
+		return TRUE
 	// Did we knock a grabber down? We can only do this while not also breaking restraints if strong enough.
 	if(level_current >= 3 && escape_puller())
-		power_activated_sucessfully()
-		return FALSE
+		complete_targeted_activation()
+		return TRUE
 	// Did neither, now we can PUNCH.
-	return ..()
+	return FALSE
 
 // Look at 'biodegrade.dm' for reference
 /datum/action/cooldown/bloodsucker/targeted/brawn/proc/break_restraints()
@@ -106,12 +105,14 @@
 	pulled_mob.stop_pulling()
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/brawn/FireTargetedPower(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/brawn/Activate(atom/target)
 	. = ..()
+	if(unset_after_click && owner?.click_intercept == src)
+		unset_click_ability(owner, refund_cooldown = FALSE)
 	var/mob/living/user = owner
 	// Target Type: Mob
-	if(isliving(target_atom))
-		var/mob/living/target = target_atom
+	if(isliving(target))
+		var/mob/living/living_target = target
 		var/mob/living/carbon/carbonuser
 		if(iscarbon(user))
 			carbonuser = user
@@ -122,29 +123,29 @@
 		// Knockdown!
 		var/powerlevel = min(5, 1 + level_current)
 		if(rand(5 + powerlevel) >= 5)
-			target.visible_message(
-				span_danger("[user] lands a vicious punch, sending [target] away!"), \
+			living_target.visible_message(
+				span_danger("[user] lands a vicious punch, sending [living_target] away!"), \
 				span_userdanger("[user] has landed a horrifying punch on you, sending you flying!"),
 			)
-			target.Knockdown(rand(1.5 SECONDS, 1 SECONDS + (powerlevel * 0.5 SECONDS)))
+			living_target.Knockdown(rand(1.5 SECONDS, 1 SECONDS + (powerlevel * 0.5 SECONDS)))
 		// Attack!
-		owner.balloon_alert(owner, "you punch [target]!")
-		playsound(get_turf(target), 'sound/items/weapons/punch4.ogg', 60, 1, -1)
-		user.do_attack_animation(target, ATTACK_EFFECT_SMASH)
-		var/obj/item/bodypart/affecting = target.get_bodypart(ran_zone(user.zone_selected))
-		target.apply_damage(hitStrength, BRUTE, affecting)
+		owner.balloon_alert(owner, "you punch [living_target]!")
+		playsound(get_turf(living_target), 'sound/items/weapons/punch4.ogg', 60, 1, -1)
+		user.do_attack_animation(living_target, ATTACK_EFFECT_SMASH)
+		var/obj/item/bodypart/affecting = living_target.get_bodypart(ran_zone(user.zone_selected))
+		living_target.apply_damage(hitStrength, BRUTE, affecting)
 		// Knockback
-		var/send_dir = get_dir(owner, target)
-		var/turf/turf_thrown_at = get_ranged_target_turf(target, send_dir, powerlevel)
+		var/send_dir = get_dir(owner, living_target)
+		var/turf/turf_thrown_at = get_ranged_target_turf(living_target, send_dir, powerlevel)
 		owner.newtonian_move(send_dir) // Bounce back in 0 G
-		target.throw_at(turf_thrown_at, powerlevel, TRUE, owner) //new /datum/forced_movement(target, get_ranged_target_turf(target, send_dir, (hitStrength / 4)), 1, FALSE)
+		living_target.throw_at(turf_thrown_at, powerlevel, TRUE, owner) //new /datum/forced_movement(living_target, get_ranged_target_turf(living_target, send_dir, (hitStrength / 4)), 1, FALSE)
 		// Target Type: Cyborg (Also gets the effects above)
-		if(issilicon(target))
-			target.emp_act(EMP_HEAVY)
-		power_activated_sucessfully()
+		if(issilicon(living_target))
+			living_target.emp_act(EMP_HEAVY)
+		complete_targeted_activation()
 	// Target Type: Locker
-	else if(istype(target_atom, /obj/structure/closet) && level_current >= 3)
-		var/obj/structure/closet/target_closet = target_atom
+	else if(istype(target, /obj/structure/closet) && level_current >= 3)
+		var/obj/structure/closet/target_closet = target
 		user.balloon_alert(user, "you prepare to bash [target_closet] open...")
 		if(!do_after(user, 2.5 SECONDS, target_closet))
 			user.balloon_alert(user, "interrupted!")
@@ -152,14 +153,14 @@
 		target_closet.visible_message(span_danger("[target_closet] breaks open as [user] bashes it!"))
 		addtimer(CALLBACK(src, PROC_REF(break_closet), user, target_closet), 1)
 		playsound(get_turf(user), 'sound/effects/grillehit.ogg', 80, TRUE, -1)
-		power_activated_sucessfully()
+		complete_targeted_activation()
 	// Target Type: Door
-	else if(istype(target_atom, /obj/machinery/door) && level_current >= 4)
-		var/obj/machinery/door/target_airlock = target_atom
+	else if(istype(target, /obj/machinery/door) && level_current >= 4)
+		var/obj/machinery/door/target_airlock = target
 		playsound(get_turf(user), 'sound/machines/airlock/airlock_alien_prying.ogg', 40, TRUE, -1)
 		owner.balloon_alert(owner, "you prepare to tear open [target_airlock]...")
 		if(!do_after(user, 2.5 SECONDS, target_airlock))
-			user.balloon_alert(user, "interrupted!")
+			user.balloon_alert(owner, "interrupted!")
 			return FALSE
 		if(target_airlock.Adjacent(user))
 			target_airlock.visible_message(span_danger("[target_airlock] breaks open as [user] bashes it!"))
@@ -167,15 +168,15 @@
 			user.do_attack_animation(target_airlock, ATTACK_EFFECT_SMASH)
 			playsound(get_turf(target_airlock), 'sound/effects/bang.ogg', 30, 1, -1)
 			target_airlock.open(2) // open(2) is like a crowbar or jaws of life.
-			power_activated_sucessfully()
+			complete_targeted_activation()
 
-/datum/action/cooldown/bloodsucker/targeted/brawn/CheckValidTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/brawn/is_valid_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
 	return isliving(target_atom) || istype(target_atom, /obj/machinery/door) || istype(target_atom, /obj/structure/closet)
 
-/datum/action/cooldown/bloodsucker/targeted/brawn/CheckCanTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/brawn/can_target(atom/target_atom)
 	// DEFAULT CHECKS (Distance)
 	. = ..()
 	if(!.) // Disable range notice for Brawn.

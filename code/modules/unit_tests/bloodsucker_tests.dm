@@ -2,12 +2,16 @@
 /datum/unit_test/bloodsucker_regressions
 	var/sunlight_state_saved = FALSE
 	var/saved_sunlight_active = FALSE
-	var/saved_sunlight_can_fire = FALSE
+	var/saved_sunlight_processing = FALSE
 
 /datum/unit_test/bloodsucker_regressions/Destroy()
 	if(sunlight_state_saved)
-		SSsunlight.sunlight_active = saved_sunlight_active
-		SSsunlight.can_fire = saved_sunlight_can_fire
+		GLOB.bloodsucker_sunlight.sunlight_active = saved_sunlight_active
+		GLOB.bloodsucker_sunlight.processing = saved_sunlight_processing
+		if(saved_sunlight_processing)
+			START_PROCESSING(SSprocessing, GLOB.bloodsucker_sunlight)
+		else
+			STOP_PROCESSING(SSprocessing, GLOB.bloodsucker_sunlight)
 		sunlight_state_saved = FALSE
 	return ..()
 
@@ -16,16 +20,19 @@
 	vampire.mind_initialize()
 	vampire.mock_client = new()
 
-	saved_sunlight_active = SSsunlight.sunlight_active
-	saved_sunlight_can_fire = SSsunlight.can_fire
+	saved_sunlight_active = GLOB.bloodsucker_sunlight.sunlight_active
+	saved_sunlight_processing = GLOB.bloodsucker_sunlight.processing
 	sunlight_state_saved = TRUE
 
 	var/datum/antagonist/bloodsucker/vamp_datum = vampire.mind.add_antag_datum(/datum/antagonist/bloodsucker)
 	TEST_ASSERT_NOTNULL(vamp_datum, "Failed to grant bloodsucker antagonist datum.")
+	var/datum/weakref/vamp_ref = WEAKREF(vamp_datum)
+	TEST_ASSERT(vamp_ref in GLOB.bloodsucker_sunlight.tracked_bloodsuckers, "Sunlight singleton did not track bloodsucker datum on gain.")
+	TEST_ASSERT(GLOB.bloodsucker_sunlight.processing, "Sunlight singleton did not activate processing when bloodsucker joined.")
 
 	// K-1: Repeated Sol status effect attempts in a closed coffin must not reduce BURN physiology below 1,
 	// and an open coffin must not grant Sol immunity.
-	SSsunlight.sunlight_active = TRUE
+	GLOB.bloodsucker_sunlight.sunlight_active = TRUE
 	var/obj/structure/closet/crate/coffin/coffin = allocate(/obj/structure/closet/crate/coffin, run_loc_floor_bottom_left)
 	vampire.forceMove(coffin)
 	TEST_ASSERT(!coffin.opened, "K-1: Newly allocated coffin should start closed.")
@@ -102,7 +109,21 @@
 	cloak.StartCooldown()
 	TEST_ASSERT(cloak.cooldown_time <= initial(cloak.cooldown_time), "O-3: StartCooldown() at level_current = 0 inflated cooldown_time above initial.")
 
+	// Vassal conversion guards: reject Bloodsucker minds and TRAIT_UNCONVERTABLE minds.
+	var/datum/antagonist/vassal/test_vassal = allocate(/datum/antagonist/vassal)
+	TEST_ASSERT_EQUAL(test_vassal.can_be_owned(vampire.mind), FALSE, "Vassal can_be_owned returned TRUE for a Bloodsucker mind.")
+	ADD_TRAIT(masq_human.mind, TRAIT_UNCONVERTABLE, "bloodsucker_test")
+	TEST_ASSERT_EQUAL(test_vassal.can_be_owned(masq_human.mind), FALSE, "Vassal can_be_owned returned TRUE for a TRAIT_UNCONVERTABLE mind.")
+	REMOVE_TRAIT(masq_human.mind, TRAIT_UNCONVERTABLE, "bloodsucker_test")
+
 	vampire.mind.remove_antag_datum(/datum/antagonist/bloodsucker)
-	SSsunlight.sunlight_active = saved_sunlight_active
-	SSsunlight.can_fire = saved_sunlight_can_fire
+	TEST_ASSERT(!(vamp_ref in GLOB.bloodsucker_sunlight.tracked_bloodsuckers), "Sunlight singleton did not unregister bloodsucker datum on removal.")
+	if(!saved_sunlight_processing)
+		TEST_ASSERT(!GLOB.bloodsucker_sunlight.processing, "Sunlight singleton stayed processing after last bloodsucker was removed.")
+	GLOB.bloodsucker_sunlight.sunlight_active = saved_sunlight_active
+	GLOB.bloodsucker_sunlight.processing = saved_sunlight_processing
+	if(saved_sunlight_processing)
+		START_PROCESSING(SSprocessing, GLOB.bloodsucker_sunlight)
+	else
+		STOP_PROCESSING(SSprocessing, GLOB.bloodsucker_sunlight)
 	sunlight_state_saved = FALSE

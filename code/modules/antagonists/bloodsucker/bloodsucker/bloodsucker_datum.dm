@@ -208,19 +208,13 @@
 
 ///Called when you get the antag datum, called only ONCE per antagonist.
 /datum/antagonist/bloodsucker/on_gain()
-	RegisterSignal(SSsunlight, COMSIG_SOL_RANKUP_BLOODSUCKERS, PROC_REF(sol_rank_up))
-	RegisterSignal(SSsunlight, COMSIG_SOL_NEAR_START, PROC_REF(sol_near_start))
-	RegisterSignal(SSsunlight, COMSIG_SOL_END, PROC_REF(on_sol_end))
-	RegisterSignal(SSsunlight, COMSIG_SOL_RISE_TICK, PROC_REF(handle_sol))
-	RegisterSignal(SSsunlight, COMSIG_SOL_WARNING_GIVEN, PROC_REF(give_warning))
+	GLOB.bloodsucker_sunlight.register_bloodsucker(src)
 
 	// A Favorite Vassal that an admin also grants the Bloodsucker datum must not get both sets of benefits.
 	if(IS_FAVORITE_VASSAL(owner.current))
 		bloodsucker_level_unspent = 0
 		show_in_roundend = FALSE
 	else
-		// Start Sunlight if first Bloodsucker
-		check_start_sunlight()
 		// Name and Titles
 		SelectFirstName()
 		SelectTitle(am_fledgling = TRUE)
@@ -235,9 +229,8 @@
 
 /// Called by the remove_antag_datum() and remove_all_antag_datums() mind procs for the antag datum to handle its own removal and deletion.
 /datum/antagonist/bloodsucker/on_removal()
-	UnregisterSignal(SSsunlight, list(COMSIG_SOL_RANKUP_BLOODSUCKERS, COMSIG_SOL_NEAR_START, COMSIG_SOL_END, COMSIG_SOL_RISE_TICK, COMSIG_SOL_WARNING_GIVEN))
 	clear_powers_and_stats()
-	check_cancel_sunlight() //check if sunlight should end
+	GLOB.bloodsucker_sunlight.unregister_bloodsucker(src)
 	return ..()
 
 /datum/antagonist/bloodsucker/on_body_transfer(mob/living/old_body, mob/living/new_body)
@@ -425,6 +418,7 @@
 		frenzied = FALSE
 		return
 	current_mob.remove_status_effect(/datum/status_effect/frenzy)
+	current_mob.remove_status_effect(/datum/status_effect/bloodsucker_sol)
 	frenzied = FALSE
 	// Powers
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers.Copy())

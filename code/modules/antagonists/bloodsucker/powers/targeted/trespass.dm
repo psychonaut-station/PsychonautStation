@@ -46,7 +46,7 @@
 	return TRUE
 
 
-/datum/action/cooldown/bloodsucker/targeted/trespass/CheckValidTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/trespass/is_valid_target(atom/target_atom)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -56,7 +56,7 @@
 	return TRUE // All we care about is destination. Anything you click is fine.
 
 
-/datum/action/cooldown/bloodsucker/targeted/trespass/CheckCanTarget(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/trespass/can_target(atom/target_atom)
 	// NOTE: Do NOT use ..()! We don't want to check distance or anything.
 
 	// Get clicked tile
@@ -80,7 +80,7 @@
 
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/targeted/trespass/FireTargetedPower(atom/target_atom)
+/datum/action/cooldown/bloodsucker/targeted/trespass/Activate(atom/target)
 	. = ..()
 
 	// Find target turf, at or below Atom
@@ -133,4 +133,3 @@
 	playsound(get_turf(owner), 'sound/effects/magic/summon_karp.ogg', vol = sound_strength, vary = TRUE)
 	puff = new(target_turf, 3, FALSE)
 	puff.start()
-	DeactivatePower()

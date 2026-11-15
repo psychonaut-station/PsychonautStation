@@ -43,11 +43,11 @@
 	icon_state = "sunlight_night"
 	screen_loc = UI_SUNLIGHT_DISPLAY
 #ifdef BLOODSUCKER_TESTING
-	var/datum/controller/subsystem/sunlight/sunlight_subsystem
+	var/datum/bloodsucker_sunlight/sunlight_subsystem
 
 /atom/movable/screen/bloodsucker/sunlight_counter/New(loc, ...)
 	. = ..()
-	sunlight_subsystem = SSsunlight
+	sunlight_subsystem = GLOB.bloodsucker_sunlight
 #endif
 
 /// Update Blood Counter + Rank Counter
@@ -70,8 +70,8 @@
 		vamprank_display.maptext = FORMAT_BLOODSUCKER_HUD_TEXT(valuecolor, bloodsucker_level)
 
 	if(sunlight_display)
-		var/time_seconds = SSsunlight.time_til_cycle
-		if(SSsunlight.sunlight_active)
+		var/time_seconds = GLOB.bloodsucker_sunlight.time_til_cycle
+		if(GLOB.bloodsucker_sunlight.sunlight_active)
 			valuecolor = "#FF5555"
 			sunlight_display.icon_state = "sunlight_day"
 		else

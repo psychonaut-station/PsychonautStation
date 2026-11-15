@@ -191,8 +191,8 @@
 /datum/action/cooldown/bloodsucker/proc/can_deactivate()
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/is_action_active()
-	return active
+/datum/action/cooldown/bloodsucker/is_action_active(atom/movable/screen/movable/action_button/current_button)
+	return active || ..()
 
 /datum/action/cooldown/bloodsucker/proc/pay_cost()
 	// Non-bloodsuckers will pay in other ways.

@@ -56,8 +56,10 @@
 			span_warning("[user] discards their restraints like it's nothing!"),
 			span_warning("We break through our restraints!"),
 		)
-		user.clear_cuffs(cuffs, TRUE)
-		user.clear_cuffs(legcuffs, TRUE)
+		if(cuffs)
+			user.clear_cuffs(cuffs, TRUE)
+		if(legcuffs)
+			user.clear_cuffs(legcuffs, TRUE)
 		used = TRUE
 
 	// Remove Straightjackets

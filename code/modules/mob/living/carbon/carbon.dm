@@ -248,7 +248,7 @@
 		changeNext_move(0)
 
 /mob/living/carbon/proc/clear_cuffs(obj/item/I, cuff_break)
-	if(!I.loc || buckled)
+	if(!I?.loc || buckled)
 		return FALSE
 	var/list/all_restraints = get_all_attached_restraints()
 	if(!(I in all_restraints))

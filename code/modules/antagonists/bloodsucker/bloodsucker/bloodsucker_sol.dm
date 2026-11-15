@@ -223,13 +223,19 @@
 	tick_interval = -1
 	alert_type = /atom/movable/screen/alert/status_effect/bloodsucker_sol
 	var/list/datum/action/cooldown/bloodsucker/burdened_actions
+	/// Tracks whether on_apply() actually applied the BURN physiology multiplier.
+	var/applied_physiology = FALSE
 	var/static/list/sol_traits = list(
 		TRAIT_EASILY_WOUNDED,
 	)
 
 /datum/status_effect/bloodsucker_sol/on_apply()
-	if(!SSsunlight.sunlight_active || istype(owner.loc, /obj/structure/closet/crate/coffin))
+	if(!SSsunlight.sunlight_active)
 		return FALSE
+	if(istype(owner.loc, /obj/structure/closet/crate/coffin))
+		var/obj/structure/closet/crate/coffin/coffin_loc = owner.loc
+		if(!coffin_loc.opened)
+			return FALSE
 	RegisterSignal(SSsunlight, COMSIG_SOL_END, PROC_REF(on_sol_end))
 	RegisterSignal(owner, COMSIG_MOVABLE_MOVED, PROC_REF(on_owner_moved))
 	owner.add_traits(sol_traits, id)
@@ -241,6 +247,7 @@
 	if(ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		MODIFY_PHYSIOLOGY(human_owner, BURN, 1.5)
+		applied_physiology = TRUE
 	for(var/datum/action/cooldown/bloodsucker/power in owner.actions)
 		if(power.sol_multiplier)
 			power.bloodcost *= power.sol_multiplier
@@ -259,9 +266,10 @@
 	owner.remove_filter(id)
 	owner.remove_movespeed_modifier(/datum/movespeed_modifier/bloodsucker_sol)
 	owner.remove_actionspeed_modifier(/datum/actionspeed_modifier/bloodsucker_sol)
-	if(ishuman(owner))
+	if(applied_physiology && ishuman(owner))
 		var/mob/living/carbon/human/human_owner = owner
 		MODIFY_PHYSIOLOGY(human_owner, BURN, 1 / 1.5)
+		applied_physiology = FALSE
 	for(var/datum/action/cooldown/bloodsucker/power in owner.actions)
 		if(LAZYACCESS(burdened_actions, power))
 			power.bloodcost /= power.sol_multiplier

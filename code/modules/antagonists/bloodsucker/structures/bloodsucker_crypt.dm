@@ -258,7 +258,7 @@
 	if(!ishuman(target))
 		balloon_alert(user, "you can't torture an animal or basic mob!")
 		return FALSE
-	var/disloyalty_requires = RequireDisloyalty(user, target)
+	var/disloyalty_requires = require_disloyalty(user, target)
 
 	if(disloyalty_requires == VASSALIZATION_BANNED)
 		balloon_alert(user, "can't be vassalized!")
@@ -416,7 +416,7 @@
 	disloyalty_offered = FALSE
 	return TRUE
 
-/obj/structure/bloodsucker/vassalrack/proc/RequireDisloyalty(mob/living/user, mob/living/target)
+/obj/structure/bloodsucker/vassalrack/proc/require_disloyalty(mob/living/user, mob/living/target)
 #ifdef BLOODSUCKER_TESTING
 	if(!target || !target.mind)
 #else
@@ -426,7 +426,7 @@
 		return VASSALIZATION_BANNED
 
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = IS_BLOODSUCKER(user)
-	return bloodsuckerdatum.AmValidAntag(target)
+	return bloodsuckerdatum.get_vassalization_status(target)
 
 /obj/structure/bloodsucker/vassalrack/proc/remove_loyalties(mob/living/target)
 	// Find Mind Implant & Destroy

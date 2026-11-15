@@ -4,14 +4,13 @@
  * Args:
  * target - The person we check for antag datums.
  */
-/datum/antagonist/bloodsucker/proc/AmValidAntag(mob/target)
-	. = VASSALIZATION_ALLOWED
+/datum/antagonist/bloodsucker/proc/get_vassalization_status(mob/target)
 	if(!target.mind || HAS_MIND_TRAIT(target, TRAIT_UNCONVERTABLE))
 		return VASSALIZATION_BANNED
 
 	var/has_other_antags = FALSE
 	for(var/datum/antagonist/antag_datum as anything in target.mind.antag_datums)
-		if(antag_datum.type in vassal_banned_antags)
+		if(antag_datum.type in /datum/antagonist/vassal::vassal_banned_antags)
 			return VASSALIZATION_BANNED
 		has_other_antags = TRUE
 	if(has_other_antags || HAS_TRAIT(target, TRAIT_MINDSHIELD))
@@ -38,7 +37,7 @@
 	if(!conversion_target.mind)
 		to_chat(owner.current, span_danger("[conversion_target] isn't self-aware enough to be made into a Vassal."))
 		return FALSE
-	if(AmValidAntag(conversion_target) == VASSALIZATION_BANNED)
+	if(get_vassalization_status(conversion_target) == VASSALIZATION_BANNED)
 		to_chat(owner.current, span_danger("[conversion_target] resists the power of your blood to dominate their mind!"))
 		return FALSE
 	var/mob/living/master = conversion_target.mind.enslaved_to?.resolve()
@@ -79,33 +78,15 @@
 	if(IS_VASSAL(conversion_target))
 		conversion_target.mind.remove_antag_datum(/datum/antagonist/vassal)
 
-	var/datum/antagonist/bloodsucker/bloodsuckerdatum = owner.has_antag_datum(/datum/antagonist/bloodsucker)
-	bloodsuckerdatum.SelectTitle(am_fledgling = FALSE)
+	SelectTitle(am_fledgling = FALSE)
 
 	//set the master, then give the datum.
 	var/datum/antagonist/vassal/vassaldatum = new(conversion_target.mind)
-	vassaldatum.master = bloodsuckerdatum
-	conversion_target.mind.add_antag_datum(vassaldatum)
+	vassaldatum.master = src
+	if(!conversion_target.mind.add_antag_datum(vassaldatum))
+		return FALSE
 
 	message_admins("[conversion_target] has become a Vassal, and is enslaved to [owner.current].")
 	log_admin("[conversion_target] has become a Vassal, and is enslaved to [owner.current].")
-	return TRUE
-
-/*
- *	# can_make_special
- *
- * MIND Helper proc that ensures the person can be a Special Vassal,
- * without actually giving the antag datum to them.
- * This is because Special Vassals get special abilities, without the unique Bloodsucker blood tracking,
- * and we don't want this to be infinite.
- * Args:
- * creator - Person attempting to convert them.
- */
-/datum/mind/proc/can_make_special(datum/mind/creator)
-	var/mob/living/user = current
-	if(!(user.mob_biotypes & MOB_ORGANIC))
-		if(creator)
-			to_chat(creator, span_danger("[user]'s DNA isn't compatible!"))
-		return FALSE
 	return TRUE
 

@@ -83,12 +83,6 @@
 
 	/// Static typecache of all bloodsucker powers.
 	var/static/list/all_bloodsucker_powers = typecacheof(/datum/action/cooldown/bloodsucker, ignore_root_path = TRUE)
-	/// Antagonists that cannot be Vassalized no matter what
-	var/static/list/vassal_banned_antags = list(
-		/datum/antagonist/bloodsucker,
-		/datum/antagonist/changeling,
-		/datum/antagonist/cult,
-	)
 	///Default Bloodsucker traits
 	var/static/list/bloodsucker_traits = list(
 		TRAIT_NOBREATH,

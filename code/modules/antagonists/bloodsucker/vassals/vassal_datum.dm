@@ -15,6 +15,23 @@
 	var/special_type = FALSE
 	///Description of what this Vassal does.
 	var/vassal_description
+	/// Antagonists that cannot be Vassalized no matter what
+	var/static/list/vassal_banned_antags = list(
+		/datum/antagonist/bloodsucker,
+		/datum/antagonist/changeling,
+		/datum/antagonist/cult,
+	)
+
+/datum/antagonist/vassal/can_be_owned(datum/mind/new_owner)
+	var/datum/mind/tested = new_owner || owner
+	if(!tested)
+		return FALSE
+	if(tested.current && HAS_MIND_TRAIT(tested.current, TRAIT_UNCONVERTABLE))
+		return FALSE
+	for(var/datum/antagonist/antag_datum as anything in tested.antag_datums)
+		if(antag_datum.type in vassal_banned_antags)
+			return FALSE
+	return ..()
 
 /datum/antagonist/vassal/antag_panel_data()
 	return "Master : [master?.owner?.name || "None"]"

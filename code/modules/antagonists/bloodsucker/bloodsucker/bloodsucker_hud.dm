@@ -64,9 +64,9 @@
 
 	if(vamprank_display)
 		if(bloodsucker_level_unspent > 0)
-			vamprank_display.icon_state = "[initial(vamprank_display.icon_state)]_up"
+			vamprank_display.icon_state = "rank_up"
 		else
-			vamprank_display.icon_state = initial(vamprank_display.icon_state)
+			vamprank_display.icon_state = "rank"
 		vamprank_display.maptext = FORMAT_BLOODSUCKER_HUD_TEXT(valuecolor, bloodsucker_level)
 
 	if(sunlight_display)

@@ -28,7 +28,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/veil/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/veil/activate_power(trigger_flags)
 	. = ..()
 	cast_effect()
 	veil_user()
@@ -53,7 +53,7 @@
 	QDEL_NULL(old_dna)
 	return ..()
 
-/datum/action/cooldown/bloodsucker/veil/DeactivatePower()
+/datum/action/cooldown/bloodsucker/veil/deactivate_power()
 	. = ..()
 	if(!ishuman(owner))
 		QDEL_NULL(old_dna)

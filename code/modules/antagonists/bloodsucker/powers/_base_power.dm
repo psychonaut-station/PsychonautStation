@@ -63,13 +63,13 @@
 
 /datum/action/cooldown/bloodsucker/Destroy()
 	if(active)
-		DeactivatePower()
+		deactivate_power()
 	bloodsuckerdatum_power = null
 	return ..()
 
 /datum/action/cooldown/bloodsucker/Remove(mob/remove_from)
 	if(active)
-		DeactivatePower()
+		deactivate_power()
 	return ..()
 
 /datum/action/cooldown/bloodsucker/IsAvailable(feedback = FALSE)
@@ -86,14 +86,14 @@
 	SHOULD_CALL_PARENT(FALSE)
 	find_bloodsucker_datum()
 	if(active && can_deactivate()) // Active? DEACTIVATE AND END!
-		DeactivatePower()
+		deactivate_power()
 		return FALSE
 	if(!can_pay_cost() || !can_use(owner, trigger_flags))
 		return FALSE
 	if(SEND_SIGNAL(src, COMSIG_ACTION_TRIGGER, src) & COMPONENT_ACTION_BLOCK_TRIGGER)
 		return FALSE
 	pay_cost()
-	ActivatePower(trigger_flags)
+	activate_power(trigger_flags)
 	if(!(power_flags & BP_AM_TOGGLE) || !active)
 		StartCooldown()
 	return TRUE
@@ -207,7 +207,7 @@
 	bloodsuckerdatum_power.bloodsucker_blood_volume -= bloodcost
 	bloodsuckerdatum_power.update_hud()
 
-/datum/action/cooldown/bloodsucker/proc/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/proc/activate_power(trigger_flags)
 	active = TRUE
 	if(power_flags & BP_AM_TOGGLE)
 		START_PROCESSING(SSprocessing, src)
@@ -215,7 +215,7 @@
 	owner.log_message("used [src][bloodcost != 0 ? " at the cost of [bloodcost]" : ""].", LOG_ATTACK, color="red")
 	build_all_button_icons()
 
-/datum/action/cooldown/bloodsucker/proc/DeactivatePower()
+/datum/action/cooldown/bloodsucker/proc/deactivate_power()
 	if(!active) //Already inactive? Return
 		return
 	active = FALSE
@@ -232,14 +232,14 @@
 	. = ..()
 	if(!active) // if we're not active anyways, then we shouldn't be processing!!!
 		return
-	if(!ContinueActive(owner)) // We can't afford the Power? Deactivate it.
-		DeactivatePower()
+	if(!continue_active(owner)) // We can't afford the Power? Deactivate it.
+		deactivate_power()
 		return
 	// We can keep this up (For now), so Pay Cost!
 	if(constant_bloodcost > 0 && (owner.stat == STABLE || !(power_flags & BP_AM_COSTLESS_UNCONSCIOUS)))
 		find_bloodsucker_datum()
 		if(bloodsuckerdatum_power)
-			bloodsuckerdatum_power.AddBloodVolume(-constant_bloodcost)
+			bloodsuckerdatum_power.add_blood_volume(-constant_bloodcost)
 			bloodsuckerdatum_power.update_hud()
 		else
 			var/mob/living/living_owner = owner
@@ -248,7 +248,7 @@
 	return TRUE
 
 /// Checks to make sure this power can stay active
-/datum/action/cooldown/bloodsucker/proc/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/proc/continue_active(mob/living/user, mob/living/target)
 	if(QDELETED(user))
 		return FALSE
 	if(constant_bloodcost <= 0)

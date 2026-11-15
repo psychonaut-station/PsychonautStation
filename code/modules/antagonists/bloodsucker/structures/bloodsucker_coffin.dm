@@ -151,7 +151,7 @@
 	if(waking_resident)
 		var/datum/antagonist/bloodsucker/bloodsuckerdatum = waking_resident.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 		if(bloodsuckerdatum && bloodsuckerdatum.bloodsucker_level_unspent > 0)
-			INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
+			INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, spend_rank))
 
 /obj/structure/closet/crate/coffin/close(mob/living/user)
 	. = ..()
@@ -182,7 +182,7 @@
 			return
 	if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
 		return
-	LockMe(user)
+	set_locked(user)
 	if(QDELETED(src) || QDELETED(user) || opened || !(user in src))
 		return
 	// You're in a Coffin, everything else is done, you're likely here to heal. Let's offer them the oppertunity to do so.
@@ -218,7 +218,7 @@
 /obj/structure/closet/crate/coffin/click_alt(mob/user)
 	. = ..()
 	if(user in src)
-		LockMe(user, !locked)
+		set_locked(user, !locked)
 		return
 
 	if(user == resident && user.Adjacent(src))
@@ -231,10 +231,10 @@
 			if("Yes")
 				unclaim_coffin(TRUE)
 
-/obj/structure/closet/crate/coffin/proc/LockMe(mob/user, inLocked = TRUE)
+/obj/structure/closet/crate/coffin/proc/set_locked(mob/user, in_locked = TRUE)
 	if(!resident || user == resident)
 		if(!broken)
-			locked = inLocked
+			locked = in_locked
 			if(locked)
 				to_chat(user, span_notice("You flip a secret latch and lock yourself inside [src]."))
 			else

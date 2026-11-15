@@ -33,7 +33,7 @@
 	pre_masquerade_mutations = null
 	pre_masquerade_disease_ids = null
 
-/datum/action/cooldown/bloodsucker/masquerade/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/masquerade/activate_power(trigger_flags)
 	. = ..()
 	var/mob/living/user = owner
 	owner.balloon_alert(owner, "masquerade turned on.")
@@ -65,7 +65,7 @@
 	if(eyes)
 		eyes.flash_protect = initial(eyes.flash_protect)
 
-/datum/action/cooldown/bloodsucker/masquerade/DeactivatePower()
+/datum/action/cooldown/bloodsucker/masquerade/deactivate_power()
 	if(!active)
 		return
 	. = ..() // activate = FALSE

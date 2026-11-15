@@ -27,7 +27,7 @@
 			return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/fortitude/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/fortitude/activate_power(trigger_flags)
 	. = ..()
 	owner.balloon_alert(owner, "fortitude turned on.")
 	to_chat(owner, span_notice("Your flesh, skin, and muscles become as steel."))
@@ -62,7 +62,7 @@
 	if(user.buckled && istype(user.buckled, /obj/vehicle))
 		user.buckled.unbuckle_mob(user, force = TRUE)
 
-/datum/action/cooldown/bloodsucker/fortitude/DeactivatePower()
+/datum/action/cooldown/bloodsucker/fortitude/deactivate_power()
 	if(ishuman(owner))
 		var/mob/living/carbon/human/bloodsucker_user = owner
 		if(fortitude_resist)

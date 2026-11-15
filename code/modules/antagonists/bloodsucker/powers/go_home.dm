@@ -43,7 +43,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/gohome/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/gohome/activate_power(trigger_flags)
 	. = ..()
 	owner.balloon_alert(owner, "preparing to teleport...")
 
@@ -63,7 +63,7 @@
 			INVOKE_ASYNC(src, PROC_REF(teleport_to_coffin), owner)
 	teleporting_stage++
 
-/datum/action/cooldown/bloodsucker/gohome/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/gohome/continue_active(mob/living/user, mob/living/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -119,7 +119,7 @@
 	our_coffin.close(owner)
 	playsound(our_coffin.loc, our_coffin.close_sound, vol = 15, vary = TRUE, extrarange = -3)
 
-	DeactivatePower()
+	deactivate_power()
 
 #undef GOHOME_START
 #undef GOHOME_FLICKER_ONE

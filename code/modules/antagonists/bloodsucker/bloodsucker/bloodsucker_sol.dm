@@ -6,12 +6,12 @@
 
 ///Ranks the Bloodsucker up, called by Sol.
 /datum/antagonist/bloodsucker/proc/sol_rank_up()
-	INVOKE_ASYNC(src, PROC_REF(RankUp))
+	INVOKE_ASYNC(src, PROC_REF(rank_up))
 
 ///Called when Sol is near starting.
 /datum/antagonist/bloodsucker/proc/sol_near_start()
 	if(bloodsucker_lair_area && !(locate(/datum/action/cooldown/bloodsucker/gohome) in powers))
-		BuyPower(new /datum/action/cooldown/bloodsucker/gohome)
+		buy_power(new /datum/action/cooldown/bloodsucker/gohome)
 
 ///Clears active Sol status effects and temporary go-home actions from this bloodsucker.
 /datum/antagonist/bloodsucker/proc/clear_sol_state()
@@ -20,7 +20,7 @@
 			to_chat(owner.current, span_big(span_boldnotice("Sol has ended, your vampiric powers are no longer strained!")), type = MESSAGE_TYPE_INFO)
 		owner.current.remove_status_effect(/datum/status_effect/bloodsucker_sol)
 	for(var/datum/action/cooldown/bloodsucker/gohome/power in powers.Copy())
-		RemovePower(power)
+		remove_power(power)
 
 ///Called when Sol first ends.
 /datum/antagonist/bloodsucker/proc/on_sol_end()
@@ -188,7 +188,7 @@
 	owner.current.add_traits(torpor_traits, TORPOR_TRAIT)
 	owner.current.set_timed_status_effect(0 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	// Disable ALL Powers
-	DisableAllPowers()
+	disable_all_powers()
 
 /datum/antagonist/bloodsucker/proc/torpor_end()
 	owner.current.remove_status_effect(/datum/status_effect/bloodsucker_sol)
@@ -200,7 +200,7 @@
 	heal_vampire_organs()
 	owner.current.update_stat()
 	if(bloodsucker_level_unspent > 0 && !istype(owner.current.loc, /obj/structure/closet/crate/coffin))
-		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/antagonist/bloodsucker, SpendRank))
+		INVOKE_ASYNC(src, TYPE_PROC_REF(/datum/antagonist/bloodsucker, spend_rank))
 
 /datum/status_effect/bloodsucker_sol
 	id = "bloodsucker_sol"

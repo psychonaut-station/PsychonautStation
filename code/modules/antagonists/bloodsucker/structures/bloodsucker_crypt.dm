@@ -276,11 +276,11 @@
 		//We're torturing. Do not start another torture on this rack.
 		blood_draining = TRUE
 		balloon_alert(user, "spilling blood...")
-		bloodsuckerdatum.AddBloodVolume(-TORTURE_BLOOD_HALF_COST)
+		bloodsuckerdatum.add_blood_volume(-TORTURE_BLOOD_HALF_COST)
 		if(!do_torture(user, target))
 			blood_draining = FALSE
 			return FALSE
-		bloodsuckerdatum.AddBloodVolume(-TORTURE_BLOOD_HALF_COST)
+		bloodsuckerdatum.add_blood_volume(-TORTURE_BLOOD_HALF_COST)
 		// Prevent them from unbuckling themselves as long as we're torturing.
 		target.Paralyze(1 SECONDS)
 		convert_progress--
@@ -332,7 +332,7 @@
 			balloon_alert(user, "not enough blood!")
 			return
 		// Convert to Vassal!
-		bloodsuckerdatum.AddBloodVolume(-TORTURE_CONVERSION_COST)
+		bloodsuckerdatum.add_blood_volume(-TORTURE_CONVERSION_COST)
 		if(bloodsuckerdatum.make_vassal(target))
 			remove_loyalties(target)
 			user.playsound_local(null, 'sound/effects/explosion/explosion_distant.ogg', 40, TRUE)
@@ -463,7 +463,7 @@
 // Add rotating and armrest
 /obj/structure/bloodsucker/bloodthrone/Initialize(mapload)
 	AddElement(/datum/element/simple_rotation, ROTATION_IGNORE_ANCHORED|ROTATION_GHOSTS_ALLOWED)
-	armrest = GetArmrest()
+	armrest = get_armrest()
 	armrest.layer = ABOVE_MOB_LAYER
 	return ..()
 
@@ -491,7 +491,7 @@
 	return FALSE
 
 // Armrests
-/obj/structure/bloodsucker/bloodthrone/proc/GetArmrest()
+/obj/structure/bloodsucker/bloodthrone/proc/get_armrest()
 	return mutable_appearance('icons/bloodsuckers/vamp_obj_64.dmi', "thronearm")
 
 /obj/structure/bloodsucker/bloodthrone/proc/update_armrest()

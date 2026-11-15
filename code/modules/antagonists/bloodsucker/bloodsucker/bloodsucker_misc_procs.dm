@@ -8,7 +8,7 @@
 		examine_text += vamp_examine
 
 ///Called when a Bloodsucker buys a power: (power)
-/datum/antagonist/bloodsucker/proc/BuyPower(datum/action/cooldown/bloodsucker/power)
+/datum/antagonist/bloodsucker/proc/buy_power(datum/action/cooldown/bloodsucker/power)
 	for(var/datum/action/cooldown/bloodsucker/current_powers as anything in powers)
 		if(current_powers.type == power.type)
 			return FALSE
@@ -18,9 +18,9 @@
 	return TRUE
 
 ///Called when a Bloodsucker loses a power: (power)
-/datum/antagonist/bloodsucker/proc/RemovePower(datum/action/cooldown/bloodsucker/power)
+/datum/antagonist/bloodsucker/proc/remove_power(datum/action/cooldown/bloodsucker/power)
 	if(power.active)
-		power.DeactivatePower()
+		power.deactivate_power()
 	powers -= power
 	power.Remove(owner.current)
 	qdel(power)
@@ -55,7 +55,7 @@
 	else
 		to_chat(owner.current, span_cult_bold("You violated the Masquerade! Break the Masquerade [3 - masquerade_infractions] more times and you will become a criminal to the Bloodsucker's Cause!"))
 
-/datum/antagonist/bloodsucker/proc/RankUp()
+/datum/antagonist/bloodsucker/proc/rank_up()
 	if(!owner || !owner.current || IS_FAVORITE_VASSAL(owner.current))
 		return
 	bloodsucker_level_unspent++
@@ -64,7 +64,7 @@
 	if(bloodsucker_level_unspent >= 2 && !istype(owner.current.loc, /obj/structure/closet/crate/coffin))
 		to_chat(owner, span_announce("Bloodsucker Tip: If you cannot find or steal a coffin to use, you can build one from wood or metal."))
 
-/datum/antagonist/bloodsucker/proc/RankDown()
+/datum/antagonist/bloodsucker/proc/rank_down()
 	if(bloodsucker_level_unspent <= 0)
 		return FALSE
 	bloodsucker_level_unspent--
@@ -75,19 +75,19 @@
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers.Copy())
 		if(power.purchase_flags & BLOODSUCKER_DEFAULT_POWER)
 			continue
-		RemovePower(power)
+		remove_power(power)
 		if(return_levels)
 			bloodsucker_level_unspent++
 
-/datum/antagonist/bloodsucker/proc/LevelUpPowers()
+/datum/antagonist/bloodsucker/proc/level_up_powers()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
 		power.upgrade_power()
 
-/datum/antagonist/bloodsucker/proc/DowngradePowers()
+/datum/antagonist/bloodsucker/proc/downgrade_powers()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
 		power.downgrade_power()
 
-/datum/antagonist/bloodsucker/proc/DemoteRank()
+/datum/antagonist/bloodsucker/proc/demote_rank()
 	if(!owner || !owner.current)
 		return FALSE
 	if(bloodsucker_level <= 0)
@@ -109,7 +109,7 @@
 			user_right_hand.unarmed_damage_low = max(initial(user_right_hand.unarmed_damage_low) + 1, user_right_hand.unarmed_damage_low - 0.5)
 			user_right_hand.unarmed_damage_high = max(initial(user_right_hand.unarmed_damage_high) + 1, user_right_hand.unarmed_damage_high - 0.5)
 
-	DowngradePowers()
+	downgrade_powers()
 
 	var/list/bought_powers = list()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
@@ -117,7 +117,7 @@
 			bought_powers += power
 	if(length(bought_powers) > bloodsucker_level)
 		var/datum/action/cooldown/bloodsucker/latest_power = bought_powers[length(bought_powers)]
-		RemovePower(latest_power)
+		remove_power(latest_power)
 
 	var/list/favorite_vassals = special_vassals?[FAVORITE_VASSAL]
 	for(var/datum/antagonist/vassal/favorite/fav_vassal as anything in favorite_vassals)
@@ -127,18 +127,15 @@
 	return TRUE
 
 ///Disables all powers, accounting for torpor
-/datum/antagonist/bloodsucker/proc/DisableAllPowers(forced = FALSE)
+/datum/antagonist/bloodsucker/proc/disable_all_powers(forced = FALSE)
 	for(var/datum/action/cooldown/bloodsucker/power as anything in powers)
 		if(forced || ((power.check_flags & BP_CANT_USE_IN_TORPOR) && is_in_torpor()))
 			if(power.active)
-				power.DeactivatePower()
-
-/datum/antagonist/bloodsucker/proc/SpendRank(mob/living/carbon/human/target, cost_rank = TRUE, blood_cost)
-	if(!owner || !owner.current || !owner.current.client || (cost_rank && bloodsucker_level_unspent <= 0))
-		return
-	INVOKE_ASYNC(src, PROC_REF(spend_rank), target, cost_rank, blood_cost)
+				power.deactivate_power()
 
 /datum/antagonist/bloodsucker/proc/spend_rank(mob/living/carbon/target, cost_rank = TRUE, blood_cost)
+	if(!owner?.current?.client || (cost_rank && bloodsucker_level_unspent <= 0))
+		return
 	var/list/options = list()
 	var/list/radial_display = list()
 	for(var/datum/action/cooldown/bloodsucker/power as anything in all_bloodsucker_powers)
@@ -178,7 +175,7 @@
 
 		var/datum/action/cooldown/bloodsucker/purchased_power = options[choice]
 		var/datum/action/cooldown/bloodsucker/new_power = new purchased_power
-		if(!BuyPower(new_power))
+		if(!buy_power(new_power))
 			qdel(new_power)
 			to_chat(owner.current, span_warning("Failed to unlock [choice]. Please try again."))
 			return
@@ -188,7 +185,7 @@
 	finalize_spend_rank(cost_rank, blood_cost, target)
 
 /datum/antagonist/bloodsucker/proc/finalize_spend_rank(cost_rank = TRUE, blood_cost, mob/living/carbon/target)
-	LevelUpPowers()
+	level_up_powers()
 	bloodsucker_regen_rate += 0.05
 	max_blood_volume += 100
 
@@ -211,11 +208,11 @@
 	if(cost_rank)
 		bloodsucker_level_unspent = max(0, bloodsucker_level_unspent - 1)
 	if(blood_cost)
-		AddBloodVolume(-blood_cost)
+		add_blood_volume(-blood_cost)
 
 	// Ranked up enough to get your true Reputation?
 	if(bloodsucker_level == 4)
-		SelectReputation(am_fledgling = FALSE, forced = TRUE)
+		select_reputation(am_fledgling = FALSE, forced = TRUE)
 
 	to_chat(owner.current, span_notice("You are now a rank [bloodsucker_level] Bloodsucker. \
 		Your strength, health, feed rate, regen rate, and maximum blood capacity have all increased! \n\
@@ -246,12 +243,12 @@
 	if(bloodsucker_blood_volume < 150)
 		return FALSE
 	vassaldatum.make_special(/datum/antagonist/vassal/favorite)
-	AddBloodVolume(-150)
+	add_blood_volume(-150)
 	update_hud()
 	return TRUE
 
 /datum/antagonist/bloodsucker/proc/on_favorite_vassal(datum/antagonist/vassal/vassaldatum)
-	vassaldatum.BuyPower(new /datum/action/cooldown/bloodsucker/targeted/brawn)
+	vassaldatum.buy_power(new /datum/action/cooldown/bloodsucker/targeted/brawn)
 	if(istype(vassaldatum, /datum/antagonist/vassal/favorite))
 		var/datum/antagonist/vassal/favorite/fav = vassaldatum
 		fav.set_vassal_level()

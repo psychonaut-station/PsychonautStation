@@ -36,7 +36,7 @@
 	if(!istype(user.loc, /obj/structure/closet/crate/coffin))
 		to_chat(user, span_notice("You have [bloodsuckerdatum.bloodsucker_level_unspent] unspent Rank\s! Awaken from your claimed coffin to thicken your blood and embrace new power."))
 		return
-	bloodsuckerdatum.SpendRank()
+	INVOKE_ASYNC(bloodsuckerdatum, TYPE_PROC_REF(/datum/antagonist/bloodsucker, spend_rank))
 
 /atom/movable/screen/bloodsucker/sunlight_counter
 	name = "Solar Flare Timer"

@@ -90,7 +90,7 @@
 	return FALSE
 
 /// You can't go to sleep in a coffin with a stake in you.
-/mob/living/proc/StakeCanKillMe()
+/mob/living/proc/can_be_staked_to_death()
 	if(IsSleeping())
 		return TRUE
 	if(stat >= SOFT_CRIT)
@@ -158,7 +158,7 @@
 	var/datum/antagonist/bloodsucker/bloodsuckerdatum = target.mind.has_antag_datum(/datum/antagonist/bloodsucker)
 	if(bloodsuckerdatum)
 		// If DEAD or TORPID... Kill Bloodsucker!
-		if(target.StakeCanKillMe())
+		if(target.can_be_staked_to_death())
 			bloodsuckerdatum.handle_death()
 		else
 			to_chat(target, span_userdanger("You have been staked! Your powers are useless, your death forever, while it remains in place."))

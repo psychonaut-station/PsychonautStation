@@ -2,7 +2,7 @@
 #define BLOODSUCKER_PASSIVE_BLOOD_DRAIN 0.1
 
 /// Runs from COMSIG_LIVING_LIFE, handles Bloodsucker constant proccesses.
-/datum/antagonist/bloodsucker/proc/LifeTick(mob/living/source, seconds_per_tick, times_fired)
+/datum/antagonist/bloodsucker/proc/life_tick(mob/living/source, seconds_per_tick, times_fired)
 	SIGNAL_HANDLER
 	if(!owner)
 		return
@@ -15,13 +15,13 @@
 		check_end_torpor()
 	// Deduct Blood
 	if(owner.current.stat == STABLE && !HAS_TRAIT(owner.current, TRAIT_IMMOBILIZED) && !is_in_torpor())
-		AddBloodVolume(-BLOODSUCKER_PASSIVE_BLOOD_DRAIN) // -.1 currently
-	if(HandleHealing())
+		add_blood_volume(-BLOODSUCKER_PASSIVE_BLOOD_DRAIN) // -.1 currently
+	if(handle_healing())
 		if((COOLDOWN_FINISHED(src, bloodsucker_spam_healing)) && bloodsucker_blood_volume > 0)
 			to_chat(owner.current, span_notice("The power of your blood begins knitting your wounds..."))
 			COOLDOWN_START(src, bloodsucker_spam_healing, BLOODSUCKER_SPAM_HEALING)
 	// Standard Updates
-	HandleStarving()
+	handle_starving()
 	update_blood()
 	update_hud()
 
@@ -34,14 +34,14 @@
 /**
  * ## BLOOD STUFF
  */
-/datum/antagonist/bloodsucker/proc/AddBloodVolume(value)
+/datum/antagonist/bloodsucker/proc/add_blood_volume(value)
 	bloodsucker_blood_volume = clamp(bloodsucker_blood_volume + value, 0, max_blood_volume)
 
 /// Calculates the effective blood threshold below which the bloodsucker enters frenzy.
 /datum/antagonist/bloodsucker/proc/get_frenzy_enter_threshold()
 	return min(FRENZY_THRESHOLD_EXIT - 20, FRENZY_THRESHOLD_ENTER + (humanity_lost * 5))
 
-/datum/antagonist/bloodsucker/proc/AddHumanityLost(value)
+/datum/antagonist/bloodsucker/proc/add_humanity_lost(value)
 	if(humanity_lost >= 500)
 		to_chat(owner.current, span_warning("You hit the maximum amount of lost Humanty, you are far from Human."))
 		return
@@ -68,7 +68,7 @@
 		blood_taken /= 2
 	//if (!iscarbon(target)) // Penalty for Animals (they're junk food)
 	// Apply to Volume
-	AddBloodVolume(blood_taken)
+	add_blood_volume(blood_taken)
 	// Reagents (NOT Blood!)
 	if(target.reagents?.total_volume)
 		target.reagents.trans_to(owner.current, 1, methods = INGEST) // Run transfer of 1 unit of reagent from them to me.
@@ -80,8 +80,8 @@
  * ## HEALING
  */
 
-/// Constantly runs on Bloodsucker's LifeTick, and is increased by being in Torpor/Coffins
-/datum/antagonist/bloodsucker/proc/HandleHealing(mult = 1)
+/// Constantly runs on Bloodsucker's life_tick, and is increased by being in Torpor/Coffins
+/datum/antagonist/bloodsucker/proc/handle_healing(mult = 1)
 	if(QDELETED(owner?.current))
 		return
 	if(bloodsucker_blood_volume <= 0)
@@ -123,7 +123,7 @@
 	if((bruteheal + fireheal > 0) && mult > 0) // Just a check? Don't heal/spend, and return.
 		// We have damage. Let's heal (one time)
 		user.heal_overall_damage(brute = bruteheal * mult, burn = fireheal * mult) // Heal BRUTE / BURN in random portions throughout the body.
-		AddBloodVolume(((bruteheal * -0.5) + (fireheal * -1)) * costMult * mult) // Costs blood to heal
+		add_blood_volume(((bruteheal * -0.5) + (fireheal * -1)) * costMult * mult) // Costs blood to heal
 		return TRUE
 
 /datum/antagonist/bloodsucker/proc/check_limbs(costMult = 1)
@@ -140,7 +140,7 @@
 		var/obj/item/bodypart/missing_bodypart = user.get_bodypart(missing_limb) // 2) Limb returns Damaged
 		if(!missing_bodypart)
 			continue
-		AddBloodVolume(-limb_regen_cost)
+		add_blood_volume(-limb_regen_cost)
 		missing_bodypart.brute_dam = 60
 		to_chat(user, span_notice("Your flesh knits as it regrows your [missing_bodypart]!"))
 		playsound(user, 'sound/effects/magic/demon_consume.ogg', vol = 50, vary = TRUE)
@@ -220,7 +220,7 @@
 		final_death(dusted = GLOB.bloodsucker_sunlight.sunlight_active)
 		return
 	// Staked while "Temp Death" or Asleep
-	if(owner.current.StakeCanKillMe() && owner.current.am_staked())
+	if(owner.current.can_be_staked_to_death() && owner.current.am_staked())
 		final_death()
 		return
 	// Temporary Death? Convert to Torpor.
@@ -229,7 +229,7 @@
 	to_chat(owner.current, span_userdanger("Your immortal body will not yet relinquish your soul to the abyss. You enter Torpor."))
 	check_begin_torpor(TRUE)
 
-/datum/antagonist/bloodsucker/proc/HandleStarving() // I am thirsty for blood!
+/datum/antagonist/bloodsucker/proc/handle_starving() // I am thirsty for blood!
 	// BLOOD_VOLUME_GOOD: [336] - Pale
 //	handled in bloodsucker_integration.dm
 
@@ -290,7 +290,7 @@
 		))
 	GLOB.bloodsucker_sunlight.unregister_bloodsucker(src)
 	free_all_vassals()
-	DisableAllPowers(forced = TRUE)
+	disable_all_powers(forced = TRUE)
 	if(!iscarbon(owner.current))
 		if(dusted)
 			owner.current.dust()

@@ -124,7 +124,7 @@
 	. = ..()
 	var/mob/living/current_mob = mob_override || owner.current
 	RegisterSignal(current_mob, COMSIG_ATOM_EXAMINE, PROC_REF(on_examine))
-	RegisterSignal(current_mob, COMSIG_LIVING_LIFE, PROC_REF(LifeTick))
+	RegisterSignal(current_mob, COMSIG_LIVING_LIFE, PROC_REF(life_tick))
 	RegisterSignal(current_mob, COMSIG_LIVING_DEATH, PROC_REF(on_death))
 	RegisterSignal(current_mob, COMSIG_HUMAN_ON_HANDLE_BLOOD, PROC_REF(on_handle_blood))
 	RegisterSignal(current_mob, COMSIG_MOB_GET_STATUS_TAB_ITEMS, PROC_REF(on_update_status_tab))
@@ -194,12 +194,12 @@
 
 /datum/antagonist/bloodsucker/get_admin_commands()
 	. = ..()
-	.["Give Level"] = CALLBACK(src, PROC_REF(RankUp))
+	.["Give Level"] = CALLBACK(src, PROC_REF(rank_up))
 	if(bloodsucker_level_unspent > 0)
-		.["Remove Unspent Level"] = CALLBACK(src, PROC_REF(RankDown))
-		.["Spend Level"] = CALLBACK(src, PROC_REF(SpendRank))
+		.["Remove Unspent Level"] = CALLBACK(src, PROC_REF(rank_down))
+		.["Spend Level"] = CALLBACK(src, PROC_REF(spend_rank))
 	if(bloodsucker_level > 0)
-		.["Demote Rank"] = CALLBACK(src, PROC_REF(DemoteRank))
+		.["Demote Rank"] = CALLBACK(src, PROC_REF(demote_rank))
 
 	if(broke_masquerade)
 		.["Fix Masquerade"] = CALLBACK(src, PROC_REF(fix_masquerade))
@@ -216,9 +216,9 @@
 		show_in_roundend = FALSE
 	else
 		// Name and Titles
-		SelectFirstName()
-		SelectTitle(am_fledgling = TRUE)
-		SelectReputation(am_fledgling = TRUE)
+		select_first_name()
+		select_title(am_fledgling = TRUE)
+		select_reputation(am_fledgling = TRUE)
 		// Objectives
 		forge_bloodsucker_objectives()
 
@@ -371,7 +371,7 @@
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in all_bloodsucker_powers)
 		if(!(initial(all_powers.purchase_flags) & BLOODSUCKER_DEFAULT_POWER))
 			continue
-		BuyPower(new all_powers)
+		buy_power(new all_powers)
 
 /datum/antagonist/bloodsucker/proc/assign_starting_stats()
 	//Traits: Species
@@ -422,7 +422,7 @@
 	frenzied = FALSE
 	// Powers
 	for(var/datum/action/cooldown/bloodsucker/all_powers as anything in powers.Copy())
-		RemovePower(all_powers)
+		remove_power(all_powers)
 	/// Stats
 	if(ishuman(owner.current))
 		var/mob/living/carbon/human/user = owner.current

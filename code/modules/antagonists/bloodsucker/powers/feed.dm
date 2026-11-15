@@ -44,7 +44,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/feed/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/feed/continue_active(mob/living/user, mob/living/target)
 	if(!target)
 		target = target_ref?.resolve()
 	if(QDELETED(user) || QDELETED(target))
@@ -55,7 +55,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/feed/DeactivatePower()
+/datum/action/cooldown/bloodsucker/feed/deactivate_power()
 	var/mob/living/user = owner
 	var/mob/living/feed_target = target_ref?.resolve()
 	if(!QDELETED(user))
@@ -68,7 +68,7 @@
 				user.add_mood_event("drankdead", /datum/mood_event/drankblood_dead)
 				if(started_alive)
 					user.add_mood_event("drankkilled", /datum/mood_event/drankkilled)
-					bloodsuckerdatum_power?.AddHumanityLost(10)
+					bloodsuckerdatum_power?.add_humanity_lost(10)
 		REMOVE_TRAIT(user, TRAIT_IMMOBILIZED, FEED_TRAIT)
 		REMOVE_TRAIT(user, TRAIT_MUTE, FEED_TRAIT)
 
@@ -79,20 +79,20 @@
 	blood_taken = 0
 	return ..()
 
-/datum/action/cooldown/bloodsucker/feed/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/feed/activate_power(trigger_flags)
 	if(!bloodsuckerdatum_power)
 		return FALSE
 	var/mob/living/feed_target = target_ref?.resolve()
 	if(QDELETED(feed_target))
-		DeactivatePower()
+		deactivate_power()
 		return FALSE
 	if(istype(feed_target, /mob/living/basic/mouse))
 		to_chat(owner, span_notice("You recoil at the taste of a lesser lifeform."))
 		var/mob/living/user = owner
 		user.add_mood_event("drankblood", /datum/mood_event/drankblood_bad)
-		bloodsuckerdatum_power.AddHumanityLost(1)
-		bloodsuckerdatum_power.AddBloodVolume(25)
-		DeactivatePower()
+		bloodsuckerdatum_power.add_humanity_lost(1)
+		bloodsuckerdatum_power.add_blood_volume(25)
+		deactivate_power()
 		feed_target.death()
 		return
 	var/feed_timer = clamp(round(FEED_DEFAULT_TIMER / (1.25 * (level_current || 1))), 1, FEED_DEFAULT_TIMER)
@@ -105,12 +105,12 @@
 		if(QDELETED(src) || QDELETED(owner))
 			return
 		owner.balloon_alert(owner, "feed stopped")
-		DeactivatePower()
+		deactivate_power()
 		return
 	if(QDELETED(src) || QDELETED(owner))
 		return
 	if(QDELETED(feed_target))
-		DeactivatePower()
+		deactivate_power()
 		return
 	find_bloodsucker_datum()
 	if(owner.pulling == feed_target && owner.grab_state >= GRAB_AGGRESSIVE)
@@ -154,14 +154,14 @@
 	if(!active) //If we aren't active (running on SSfastprocess)
 		return ..() //Manage our cooldown timers
 	if(!bloodsuckerdatum_power) //lost our Bloodsucker datum mid-feed (admin removal, body swap, etc.)
-		DeactivatePower()
+		deactivate_power()
 		return PROCESS_KILL
 	var/mob/living/user = owner
 	var/mob/living/feed_target = target_ref?.resolve()
 	if(QDELETED(feed_target))
-		DeactivatePower()
+		deactivate_power()
 		return PROCESS_KILL
-	if(!ContinueActive(user, feed_target))
+	if(!continue_active(user, feed_target))
 		if(!silent_feed)
 			if(!QDELETED(user) && !QDELETED(feed_target))
 				user.visible_message(
@@ -184,7 +184,7 @@
 				feed_target.add_mob_blood(feed_target)
 				feed_target.apply_damage(10, BRUTE, BODY_ZONE_HEAD, wound_bonus = CANT_WOUND)
 				INVOKE_ASYNC(feed_target, TYPE_PROC_REF(/mob, emote), "scream")
-		DeactivatePower()
+		deactivate_power()
 		return PROCESS_KILL
 
 	var/feed_strength_mult = 0
@@ -213,13 +213,13 @@
 
 	if(bloodsuckerdatum_power.bloodsucker_blood_volume >= bloodsuckerdatum_power.max_blood_volume)
 		user.balloon_alert(owner, "full on blood!")
-		DeactivatePower()
+		deactivate_power()
 		return PROCESS_KILL
 	if(feed_target.blood_volume <= 0)
 		user.balloon_alert(owner, "no blood left!")
 		if(feed_target.stat != DEAD && !HAS_TRAIT(feed_target, TRAIT_NODEATH))
 			feed_target.death()
-		DeactivatePower()
+		deactivate_power()
 		return PROCESS_KILL
 	owner.playsound_local(null, 'sound/effects/singlebeat.ogg', 40, TRUE)
 	//play sound to target to show they're dying.

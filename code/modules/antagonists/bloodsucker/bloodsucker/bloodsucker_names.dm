@@ -8,14 +8,14 @@
 	return fullname
 
 ///Returns a First name for the Bloodsucker.
-/datum/antagonist/bloodsucker/proc/SelectFirstName()
+/datum/antagonist/bloodsucker/proc/select_first_name()
 	if(owner.current.gender == MALE)
 		bloodsucker_name = pick(strings("names/bloodsucker_names.json", "first_names_male"))
 	else
 		bloodsucker_name = pick(strings("names/bloodsucker_names.json", "first_names_female"))
 
 ///Returns a Title for the Bloodsucker.
-/datum/antagonist/bloodsucker/proc/SelectTitle(am_fledgling = 0, forced = FALSE)
+/datum/antagonist/bloodsucker/proc/select_title(am_fledgling = 0, forced = FALSE)
 	// Already have Title
 	if(!forced && bloodsucker_title != null)
 		return
@@ -30,7 +30,7 @@
 	to_chat(owner, span_announce("You have earned a title! You are now known as <i>[return_full_name()]</i>!"))
 
 ///Returns a Reputation for the Bloodsucker.
-/datum/antagonist/bloodsucker/proc/SelectReputation(am_fledgling = FALSE, forced = FALSE)
+/datum/antagonist/bloodsucker/proc/select_reputation(am_fledgling = FALSE, forced = FALSE)
 	// Already have Reputation
 	if(!forced && bloodsucker_reputation != null)
 		return

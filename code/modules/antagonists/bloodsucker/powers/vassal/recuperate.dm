@@ -29,7 +29,7 @@
 	return TRUE
 
 
-/datum/action/cooldown/bloodsucker/recuperate/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/recuperate/activate_power(trigger_flags)
 	. = ..()
 	to_chat(owner, span_notice("Your muscles clench as your master's immortal blood mixes with your own, knitting your wounds."))
 	owner.balloon_alert(owner, "recuperate turned on.")
@@ -43,9 +43,9 @@
 	var/mob/living/carbon/user = owner
 	var/datum/antagonist/vassal/vassaldatum = IS_VASSAL(user)
 	if(!vassaldatum?.master || vassaldatum.master.bloodsucker_blood_volume <= 5)
-		DeactivatePower()
+		deactivate_power()
 		return
-	vassaldatum.master.AddBloodVolume(-1 * seconds_per_tick)
+	vassaldatum.master.add_blood_volume(-1 * seconds_per_tick)
 	user.set_timed_status_effect(5 SECONDS, /datum/status_effect/jitter, only_if_higher = TRUE)
 	user.adjust_stamina_loss(bloodcost * 1.1 * seconds_per_tick)
 	user.heal_overall_damage(brute = 2.5 * seconds_per_tick, updating_health = FALSE)
@@ -60,7 +60,7 @@
 		for(var/obj/item/bodypart/part in user.bodyparts)
 			part.generic_bleedstacks = max(0, part.generic_bleedstacks - (1 * seconds_per_tick))
 
-/datum/action/cooldown/bloodsucker/recuperate/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/recuperate/continue_active(mob/living/user, mob/living/target)
 	if(QDELETED(user))
 		return FALSE
 	. = ..()
@@ -80,6 +80,6 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/recuperate/DeactivatePower()
+/datum/action/cooldown/bloodsucker/recuperate/deactivate_power()
 	owner?.balloon_alert(owner, "recuperate turned off.")
 	return ..()

@@ -224,11 +224,11 @@
 			var/blood_taken = min(blood_to_steal, carbon_target.blood_volume)
 			carbon_target.blood_volume = max(0, carbon_target.blood_volume - blood_taken)
 			if(bloodsuckerdatum_power)
-				bloodsuckerdatum_power.AddBloodVolume(blood_taken)
+				bloodsuckerdatum_power.add_blood_volume(blood_taken)
 			else
 				var/datum/antagonist/bloodsucker/vamp = charger.mind?.has_antag_datum(/datum/antagonist/bloodsucker)
 				if(vamp)
-					vamp.AddBloodVolume(blood_taken)
+					vamp.add_blood_volume(blood_taken)
 				else if(iscarbon(charger))
 					var/mob/living/carbon/carbon_charger = charger
 					carbon_charger.blood_volume = min(BLOOD_VOLUME_MAXIMUM, carbon_charger.blood_volume + blood_taken)
@@ -272,7 +272,7 @@
 	if(!istype(source, /datum/move_loop))
 		GLOB.move_manager.stop_looping(charger)
 
-/datum/action/cooldown/bloodsucker/targeted/lunge/DeactivatePower()
+/datum/action/cooldown/bloodsucker/targeted/lunge/deactivate_power()
 	if(owner && (owner in charging_mobs))
 		charge_end(owner)
 		return

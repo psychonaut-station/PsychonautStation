@@ -30,7 +30,7 @@
 			return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/haste/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/haste/activate_power(trigger_flags)
 	. = ..()
 	var/mob/living/user = owner
 
@@ -53,7 +53,7 @@
 	// Fast interaction speed (+15% at level 0, +15% per level, max +60%)
 	apply_actionspeed()
 
-/datum/action/cooldown/bloodsucker/haste/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/haste/continue_active(mob/living/user, mob/living/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -61,7 +61,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/haste/DeactivatePower()
+/datum/action/cooldown/bloodsucker/haste/deactivate_power()
 	if(!active)
 		return
 	var/mob/living/user = owner
@@ -75,12 +75,12 @@
 
 /datum/action/cooldown/bloodsucker/haste/Destroy()
 	if(active)
-		DeactivatePower()
+		deactivate_power()
 	return ..()
 
 /datum/action/cooldown/bloodsucker/haste/Remove(mob/user)
 	if(active)
-		DeactivatePower()
+		deactivate_power()
 	return ..()
 
 /datum/action/cooldown/bloodsucker/haste/upgrade_power()

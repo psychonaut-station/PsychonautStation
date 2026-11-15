@@ -69,7 +69,7 @@
 		return FALSE
 
 	// Disable ALL Powers and notify their entry
-	bloodsuckerdatum.DisableAllPowers(forced = TRUE)
+	bloodsuckerdatum.disable_all_powers(forced = TRUE)
 	to_chat(owner, span_userdanger("Blood! You need Blood, now! You enter a total Frenzy!"))
 	to_chat(owner, span_announce("* Bloodsucker Tip: While in Frenzy, you instantly Aggresively grab, have stun resistance, cannot speak, hear, or use any powers outside of Feed and Trespass (If you have it)."))
 	owner.balloon_alert(owner, "you enter a frenzy!")

@@ -32,7 +32,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/cloak/ActivatePower(trigger_flags)
+/datum/action/cooldown/bloodsucker/cloak/activate_power(trigger_flags)
 	. = ..()
 	var/mob/living/user = owner
 	was_running = ((user.move_intent == MOVE_INTENT_RUN))
@@ -56,7 +56,7 @@
 		user.toggle_move_intent()
 		user.adjust_brute_loss(rand(5,15))
 
-/datum/action/cooldown/bloodsucker/cloak/ContinueActive(mob/living/user, mob/living/target)
+/datum/action/cooldown/bloodsucker/cloak/continue_active(mob/living/user, mob/living/target)
 	. = ..()
 	if(!.)
 		return FALSE
@@ -66,7 +66,7 @@
 		return FALSE
 	return TRUE
 
-/datum/action/cooldown/bloodsucker/cloak/DeactivatePower()
+/datum/action/cooldown/bloodsucker/cloak/deactivate_power()
 	if(!active)
 		return
 	var/mob/living/user = owner

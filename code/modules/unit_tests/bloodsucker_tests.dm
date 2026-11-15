@@ -60,18 +60,34 @@
 	var/datum/action/cooldown/bloodsucker/targeted/brawn/brawn = locate() in vamp_datum.powers
 	if(!brawn)
 		brawn = new()
-		vamp_datum.BuyPower(brawn)
+		vamp_datum.buy_power(brawn)
 	TEST_ASSERT(brawn.break_restraints(), "K-2: Brawn break_restraints() returned FALSE while handcuffed.")
 	TEST_ASSERT_NULL(vampire.handcuffed, "K-2: Brawn break_restraints() did not clear handcuffs.")
 
-	// Y-3: Feed resets silent_feed to TRUE on DeactivatePower().
+	// Targeted click_to_activate flow: Trigger() arms click_intercept and second Trigger() cancels cleanly without cost.
+	var/blood_before_brawn = vamp_datum.bloodsucker_blood_volume
+	TEST_ASSERT_EQUAL(brawn.Trigger(vampire), TRUE, "Targeted Brawn Trigger() failed to arm click_intercept.")
+	TEST_ASSERT_EQUAL(vampire.click_intercept, brawn, "Targeted Brawn Trigger() did not set click_intercept.")
+	TEST_ASSERT_EQUAL(vamp_datum.bloodsucker_blood_volume, blood_before_brawn, "Targeted Brawn aiming prematurely deducted blood.")
+	TEST_ASSERT_EQUAL(brawn.Trigger(vampire), FALSE, "Second Targeted Brawn Trigger() did not cancel click_intercept.")
+	TEST_ASSERT_NULL(vampire.click_intercept, "Second Targeted Brawn Trigger() left click_intercept set.")
+	TEST_ASSERT_EQUAL(vamp_datum.bloodsucker_blood_volume, blood_before_brawn, "Cancelling Targeted Brawn deducted blood.")
+	// Triggering Brawn while handcuffed resolves via try_trigger_instant() without entering click_intercept.
+	var/obj/item/restraints/handcuffs/cuffs_two = allocate(/obj/item/restraints/handcuffs, vampire)
+	vampire.set_handcuffed(cuffs_two)
+	TEST_ASSERT_EQUAL(brawn.Trigger(vampire), TRUE, "Targeted Brawn Trigger() failed instant restraint break.")
+	TEST_ASSERT_NULL(vampire.handcuffed, "Targeted Brawn Trigger() did not break handcuffs.")
+	TEST_ASSERT_NULL(vampire.click_intercept, "Targeted Brawn Trigger() entered click_intercept after instant restraint break.")
+	brawn.ResetCooldown()
+
+	// Y-3: Feed resets silent_feed to TRUE on deactivate_power().
 	var/datum/action/cooldown/bloodsucker/feed/feed = locate() in vamp_datum.powers
 	TEST_ASSERT_NOTNULL(feed, "Y-3: Bloodsucker did not receive default Feed power.")
 	feed.silent_feed = FALSE
 	feed.active = TRUE
-	feed.DeactivatePower()
-	TEST_ASSERT(!feed.active, "Y-3: Feed remained active after DeactivatePower().")
-	TEST_ASSERT(feed.silent_feed, "Y-3: Feed silent_feed was not reset to TRUE on DeactivatePower().")
+	feed.deactivate_power()
+	TEST_ASSERT(!feed.active, "Y-3: Feed remained active after deactivate_power().")
+	TEST_ASSERT(feed.silent_feed, "Y-3: Feed silent_feed was not reset to TRUE on deactivate_power().")
 
 	// Y-4: Masquerade preserves pre-existing diseases while curing diseases contracted during Masquerade.
 	var/mob/living/carbon/human/masq_human = allocate(/mob/living/carbon/human/consistent, run_loc_floor_bottom_left)
@@ -80,9 +96,9 @@
 	TEST_ASSERT(masq_human.ForceContractDisease(new /datum/disease/cold(), make_copy = FALSE, del_on_fail = TRUE), "Y-4: Failed to contract pre-existing cold.")
 	var/datum/action/cooldown/bloodsucker/masquerade/masquerade = allocate(/datum/action/cooldown/bloodsucker/masquerade)
 	masquerade.Grant(masq_human)
-	masquerade.ActivatePower()
+	masquerade.activate_power()
 	TEST_ASSERT(masq_human.ForceContractDisease(new /datum/disease/flu(), make_copy = FALSE, del_on_fail = TRUE), "Y-4: Failed to contract flu during Masquerade.")
-	masquerade.DeactivatePower()
+	masquerade.deactivate_power()
 	TEST_ASSERT_NOTNULL(locate(/datum/disease/cold) in masq_human.diseases, "Y-4: Pre-existing cold was cured when Masquerade deactivated.")
 	TEST_ASSERT_NULL(locate(/datum/disease/flu) in masq_human.diseases, "Y-4: Flu contracted during Masquerade was not cured on deactivation.")
 
@@ -92,10 +108,10 @@
 	var/datum/action/cooldown/bloodsucker/haste/haste = locate() in vamp_datum.powers
 	if(!haste)
 		haste = new()
-		vamp_datum.BuyPower(haste)
-	haste.ActivatePower()
+		vamp_datum.buy_power(haste)
+	haste.activate_power()
 	TEST_ASSERT_NOTNULL(vampire.GetComponent(/datum/component/after_image/bloodsucker), "Y-5: Haste did not add bloodsucker after_image component.")
-	haste.DeactivatePower()
+	haste.deactivate_power()
 	TEST_ASSERT_NULL(vampire.GetComponent(/datum/component/after_image/bloodsucker), "Y-5: Haste did not remove bloodsucker after_image component.")
 	TEST_ASSERT(!QDELETED(sandevistan_after_image) && (sandevistan_after_image in vampire.GetComponents(/datum/component/after_image)), "Y-5: Haste deactivation deleted pre-existing after_image component.")
 	qdel(sandevistan_after_image)
@@ -104,7 +120,7 @@
 	var/datum/action/cooldown/bloodsucker/cloak/cloak = locate() in vamp_datum.powers
 	if(!cloak)
 		cloak = new()
-		vamp_datum.BuyPower(cloak)
+		vamp_datum.buy_power(cloak)
 	cloak.level_current = 0
 	cloak.StartCooldown()
 	TEST_ASSERT(cloak.cooldown_time <= initial(cloak.cooldown_time), "O-3: StartCooldown() at level_current = 0 inflated cooldown_time above initial.")

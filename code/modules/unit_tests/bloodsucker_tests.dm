@@ -33,14 +33,14 @@
 	vamp_datum.handle_sol_effects()
 	vampire.apply_status_effect(/datum/status_effect/bloodsucker_sol)
 	TEST_ASSERT(!vampire.has_status_effect(/datum/status_effect/bloodsucker_sol), "Closed coffin applied Sol status effect.")
-	TEST_ASSERT_EQUAL(vampire.getFireLoss(), 0, "Closed coffin allowed Sol burn damage.")
+	TEST_ASSERT_EQUAL(vampire.get_fire_loss(), 0, "Closed coffin allowed Sol burn damage.")
 	TEST_ASSERT_EQUAL(GET_PHYSIOLOGY(vampire, BURN), DEFAULT_PHYSIOLOGY_VAL, "Closed coffin Sol applications altered BURN physiology.")
 
-	coffin.open(vampire)
+	coffin.open(force = TRUE)
 	vampire.forceMove(coffin)
 	vamp_datum.handle_sol_effects()
 	TEST_ASSERT(vampire.has_status_effect(/datum/status_effect/bloodsucker_sol), "Open coffin failed to apply Sol status effect.")
-	TEST_ASSERT(vampire.getFireLoss() > 0, "Open coffin did not burn vampire during Sol.")
+	TEST_ASSERT(vampire.get_fire_loss() > 0, "Open coffin did not burn vampire during Sol.")
 	TEST_ASSERT(GET_PHYSIOLOGY(vampire, BURN) >= DEFAULT_PHYSIOLOGY_VAL, "Open coffin Sol applications reduced BURN physiology below 1.")
 	vampire.remove_status_effect(/datum/status_effect/bloodsucker_sol)
 	TEST_ASSERT_EQUAL(GET_PHYSIOLOGY(vampire, BURN), DEFAULT_PHYSIOLOGY_VAL, "Removing Sol did not restore BURN physiology to 1.")
@@ -67,5 +67,3 @@
 	else
 		STOP_PROCESSING(SSprocessing, GLOB.bloodsucker_sunlight)
 	sunlight_state_saved = FALSE
-
-TEST_FOCUS(/datum/unit_test/bloodsucker_regressions)

@@ -52,6 +52,7 @@
 	src.rank = rank
 	src.species = species
 	src.trim = trim
+	src.voice = voice
 
 /// Parses gender field into byond gender defines
 /datum/record/proc/get_byond_gender()
@@ -119,6 +120,7 @@
 	rank = "Unassigned",
 	species = "Human",
 	trim = "Unassigned",
+	voice = "?????",
 	/// Crew specific
 	lock_ref,
 	major_disabilities = "None",
@@ -178,6 +180,7 @@
 	rank = "Unassigned",
 	species = "Human",
 	trim = "Unassigned",
+	voice = "?????",
 	/// Locked specific
 	datum/dna/locked_dna,
 	datum/mind/mind_ref,

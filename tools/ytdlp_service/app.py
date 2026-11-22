@@ -1,6 +1,8 @@
 import argparse
 import json
 import os
+import signal
+import sys
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from typing import Any
 from urllib.parse import parse_qs, urlparse
@@ -87,6 +89,9 @@ def main() -> None:
 	parser.add_argument("--host", default=os.environ.get("YTDLP_BIND", "0.0.0.0"))
 	parser.add_argument("--port", type=int, default=int(os.environ.get("YTDLP_PORT", "8080")))
 	args = parser.parse_args()
+
+	# As a container's PID 1 the default action of SIGTERM is ignored, so stopping would wait for SIGKILL
+	signal.signal(signal.SIGTERM, lambda *_: sys.exit(0))
 
 	server = ThreadingHTTPServer((args.host, args.port), YtDlpHandler)
 	print(f"yt-dlp wrapper listening on {args.host}:{args.port}", flush=True)

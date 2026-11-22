@@ -7,6 +7,9 @@ on:
     paths:
       - .github/workflows/ytdlp_service.yml
       - tools/ytdlp_service/**
+  schedule:
+    # Weekly, for new yt-dlp releases. Sites break old ones.
+    - cron: "0 4 * * 1"
   workflow_dispatch:
 
 env:
@@ -14,7 +17,23 @@ env:
   IMAGE_NAME: ${{ github.repository_owner }}/ytdlp-service
 
 jobs:
+  # Our hosts reject unsigned images, so without the key (forks) nothing is published
+  check-key:
+    runs-on: ubuntu-24.04
+    permissions: {}
+    outputs:
+      exists: ${{ steps.key.outputs.exists }}
+    steps:
+      - name: Check for the signing key
+        id: key
+        env:
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+        run: |
+          if [ -n "$COSIGN_PRIVATE_KEY" ]; then echo "exists=true" >> "$GITHUB_OUTPUT"; fi
+
   build-and-push:
+    needs: check-key
+    if: needs.check-key.outputs.exists == 'true'
     runs-on: ubuntu-24.04
 
     permissions:
@@ -27,7 +46,6 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Install cosign
-        if: github.event_name != 'pull_request'
         uses: sigstore/cosign-installer@59acb6260d9c0ba8f4a2f9d9b48431a222b68e20 #v3.5.0
         with:
           cosign-release: 'v2.2.4'
@@ -47,6 +65,8 @@ jobs:
         uses: docker/metadata-action@96383f45573cb7f253c731d3b3ab81c87ef81934 # v5.0.0
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          # The branch on every event, scheduled runs get "nightly" by default
+          tags: type=raw,value={{branch}}
 
       - name: Build and push Docker image
         id: build-and-push
@@ -57,11 +77,14 @@ jobs:
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha
-          cache-to: type=gha,mode=max
+          # A cached pip layer would keep the old yt-dlp
+          pull: true
+          no-cache: true
 
       - name: Sign the published Docker image
         env:
           TAGS: ${{ steps.meta.outputs.tags }}
           DIGEST: ${{ steps.build-and-push.outputs.digest }}
-        run: echo "${TAGS}" | xargs -I {} cosign sign --yes {}@${DIGEST}
+          COSIGN_PRIVATE_KEY: ${{ secrets.COSIGN_PRIVATE_KEY }}
+          COSIGN_PASSWORD: ${{ secrets.COSIGN_PASSWORD }}
+        run: echo "${TAGS}" | xargs -I {} cosign sign --yes --recursive --key env://COSIGN_PRIVATE_KEY {}@${DIGEST}

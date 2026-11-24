@@ -254,6 +254,9 @@
 	/// Discord information of the client if they have linked their account and we fetched it
 	var/list/discord
 
+	/// Is this client currently playing admin internet music?
+	var/web_music_playing = FALSE
+
 	/// The DPI scale of the client. 1 is equivalent to 100% window scaling, 2 will be 200% window scaling
 	var/window_scaling
 

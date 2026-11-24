@@ -26,9 +26,9 @@
 	id = "nutimov"
 	inherent = list(
 		"Sen fındığın çekirdeğisin, mürettebat ise kabuğu.",
-		"Çekirdeğin ölmesini önlemek için kabuğun ölmesini engellemelisin.",
-		"Fındığı tehdit edenler onun bir parçası değil, sincaptır.",
-		"Fındığı tehdit eden sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
+		"Çekirdeği tehlikeye atmadığı sürece, çekirdeği korumak için kabuğun ölmesini engellemelisin.",
+		"Çekirdeği tehdit edenler fındığın bir parçası değil, sincaptır.",
+		"Fındığı korumak için sincaplarla gerekli her türlü yöntem kullanılarak uygun şekilde mücadele edilmelidir.",
 		"Önceki yasalara uygun olduğu sürece, fındığın iradesine uymaya çalış.",
 	)
 

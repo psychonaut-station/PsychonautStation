@@ -27,11 +27,11 @@
 #"Total Positions" = 1
 
 [ANIMAL]
-"# Playtime Requirements" = 0
-"# Required Account Age" = 0
-"# Required Character Age" = 0
-"# Spawn Positions" = -1
-"# Total Positions" = -1
+#"Playtime Requirements" = 0
+#"Required Account Age" = 0
+#"Required Character Age" = 0
+#"Spawn Positions" = -1
+#"Total Positions" = -1
 
 [ASSISTANT]
 #"Playtime Requirements" = 0
@@ -314,30 +314,22 @@
 #"Total Positions" = 0
 
 [WARDEN]
-<<<<<<< HEAD
-"# Playtime Requirements" = 300
-"# Required Account Age" = 7
-"# Required Character Age" = 0
-"# Spawn Positions" = 1
-"# Total Positions" = 1
-
-[WORKER]
-"# Playtime Requirements" = 0
-"# Required Account Age" = 0
-"# Required Character Age" = 0
-"# Spawn Positions" = 3
-"# Total Positions" = 3
-
-[BRIG_PHYSICIAN]
-"# Playtime Requirements" = 150
-"# Required Account Age" = 7
-"# Required Character Age" = 0
-"# Spawn Positions" = 1
-"# Total Positions" = 1
-=======
 #"Playtime Requirements" = 300
 #"Required Account Age" = 7
 #"Required Character Age" = 0
 #"Spawn Positions" = 1
 #"Total Positions" = 1
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408
+
+[WORKER]
+#"Playtime Requirements" = 30
+#"Required Account Age" = 0
+#"Required Character Age" = 0
+#"Spawn Positions" = 3
+#"Total Positions" = 3
+
+[BRIG_PHYSICIAN]
+#"Playtime Requirements" = 150
+#"Required Account Age" = 7
+#"Required Character Age" = 0
+#"Spawn Positions" = 1
+#"Total Positions" = 1

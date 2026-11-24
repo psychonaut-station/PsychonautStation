@@ -34,16 +34,11 @@
 	min_wizard_trigger_potency = 2
 	max_wizard_trigger_potency = 6
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/disease_outbreak, /datum/event_admin_setup/listed_options/disease_outbreak)
-<<<<<<< HEAD
 	track = EVENT_TRACK_MODERATE
 	tags = list(TAG_TARGETED, TAG_COMMUNAL, TAG_EXTERNAL, TAG_ALIEN)
-	///Disease recipient candidates
-	var/list/disease_candidates = list()
-=======
 	/// Keeps a running list of weakrefs of potential candidates
 	/// Gets updated every time we check if the event can run
 	var/list/datum/weakref/disease_candidates = list()
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408
 
 /datum/round_event_control/disease_outbreak/can_spawn_event(players_amt, allow_magic = FALSE)
 	return ..() && check_candidates() > 0

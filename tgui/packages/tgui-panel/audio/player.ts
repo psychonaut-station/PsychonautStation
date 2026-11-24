@@ -5,13 +5,9 @@
  */
 
 import { createLogger } from 'tgui/logging';
-<<<<<<< HEAD
 import { store } from '../events/store';
+import { defaultSettings, settingsAtom } from '../settings/atoms';
 import { jukeboxMutedAtom } from './atoms';
-import { settingsAtom } from '../settings/atoms';
-=======
-import { defaultSettings } from '../settings/atoms';
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408
 
 const logger = createLogger('AudioPlayer');
 
@@ -42,9 +38,10 @@ export class AudioPlayer {
 
   constructor() {
     this.element = null;
-    this.volume = defaultSettings.adminMusicVolume;
 
-    this.volume = store.get(settingsAtom).adminMusicVolume;
+    this.volume =
+      store.get(settingsAtom).adminMusicVolume ??
+      defaultSettings.adminMusicVolume;
     this.localVolume = 1;
     this.muted = false;
 
@@ -73,7 +70,6 @@ export class AudioPlayer {
 
     audio.volume = this.muted ? 0 : this.volume * this.localVolume;
     audio.playbackRate = this.options.pitch || 1;
-    audio.currentTime = this.options.start || 0;
 
     if (this.options.start) {
       audio.currentTime = this.options.start;

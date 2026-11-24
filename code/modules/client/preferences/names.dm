@@ -219,8 +219,4 @@
 	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
 
 /datum/preference/name/hacker_alias/serialize(input)
-<<<<<<< HEAD
-	return permissive_sanitize_name(input)
-=======
 	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408

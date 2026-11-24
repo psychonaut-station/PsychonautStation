@@ -185,7 +185,12 @@
 	if(final_minpop > population_size)
 		return 0
 
-<<<<<<< HEAD
+	if(ruleset_flags & RULESET_NEEDS_GHOSTS)
+		if(!(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
+			return 0
+		if(length(get_non_admin_ghosts()) <= 0)
+			return 0
+
 	var/list/storyteller_settings
 	var/alist/storyteller_setting
 	if(!isnull(SSstoryteller.current_storyteller))
@@ -211,13 +216,6 @@
 					break
 
 		storyteller_setting = storyteller_setting | SSstoryteller.current_storyteller.settings | /datum/storyteller::settings
-=======
-	if(ruleset_flags & RULESET_NEEDS_GHOSTS)
-		if(!(GLOB.ghost_role_flags & GHOSTROLE_MIDROUND_EVENT))
-			return 0
-		if(length(get_non_admin_ghosts()) <= 0)
-			return 0
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408
 
 	var/final_weight = islist(weight) ? get_tier_specific_value(weight, tier) : weight
 	for(var/datum/dynamic_ruleset/other_ruleset as anything in SSdynamic.executed_rulesets)

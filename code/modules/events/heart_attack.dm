@@ -9,16 +9,11 @@
 	min_wizard_trigger_potency = 6
 	max_wizard_trigger_potency = 7
 	admin_setup = list(/datum/event_admin_setup/minimum_candidate_requirement/heart_attack, /datum/event_admin_setup/input_number/heart_attack)
-<<<<<<< HEAD
 	track = EVENT_TRACK_MODERATE
 	tags = list(TAG_TARGETED)
-	///Candidates for receiving a healthy dose of heart disease
-	var/list/heart_attack_candidates = list()
-=======
 	/// Keeps a running list of weakrefs of potential candidates
 	/// Gets updated every time we check if the event can run
 	var/list/datum/weakref/heart_attack_candidates = list()
->>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408
 
 /datum/round_event_control/heart_attack/can_spawn_event(players_amt, allow_magic = FALSE)
 	return ..() && check_candidates() > 0

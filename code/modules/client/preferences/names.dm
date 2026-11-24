@@ -31,7 +31,7 @@
 	return reject_bad_name(input, allow_numbers)
 
 /datum/preference/name/is_valid(value)
-	return istext(value) && !isnull(reject_bad_name(value, allow_numbers))
+	return !isnull(reject_bad_name(value, allow_numbers))
 
 /// A character's real name
 /datum/preference/name/real_name
@@ -209,18 +209,18 @@
 	savefile_key = "hacker_alias"
 	relevant_job = /datum/job/bitrunner
 
-
 /datum/preference/name/hacker_alias/create_default_value()
 	return pick(GLOB.hacker_aliases)
 
-
 /datum/preference/name/hacker_alias/is_valid(value)
-	return !isnull(permissive_sanitize_name(value))
-
+	return !isnull(reject_bad_name(value, allow_numbers = TRUE, cap_after_symbols = FALSE))
 
 /datum/preference/name/hacker_alias/deserialize(input, datum/preferences/preferences)
-	return permissive_sanitize_name(input)
-
+	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
 
 /datum/preference/name/hacker_alias/serialize(input)
+<<<<<<< HEAD
 	return permissive_sanitize_name(input)
+=======
+	return reject_bad_name(input, allow_numbers = TRUE, cap_after_symbols = FALSE)
+>>>>>>> e5ba8644a3fe20d49b649daf1ade2978b2fc5408

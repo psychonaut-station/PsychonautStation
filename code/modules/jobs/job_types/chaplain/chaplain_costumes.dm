@@ -332,8 +332,12 @@
 	icon_state = "shrinehand"
 	inhand_icon_state = "shrinehand"
 	body_parts_covered = CHEST|GROIN|LEGS|ARMS
-<<<<<<< HEAD
-	flags_inv = HIDEJUMPSUIT|HIDEBELT
+	flags_inv = HIDEJUMPSUIT|HIDETAIL|HIDEBELT
+	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
+
+/obj/item/clothing/suit/chaplainsuit/shrinehand/Initialize(mapload)
+	. = ..()
+	AddElement(/datum/element/equipment_bodypart_texture, BODY_ZONE_CHEST, /datum/bodypart_texture/mesh/white/pure, LIMB_OVERLAY_DRAPED)
 
 /obj/item/clothing/head/helmet/chaplain/chapter
 	name = "chapter chaplain helmet"
@@ -381,11 +385,3 @@
 	icon = 'icons/psychonaut/obj/clothing/head/chaplain.dmi'
 	worn_icon = 'icons/psychonaut/mob/clothing/head/chaplain.dmi'
 	armor_type = /datum/armor/chaplainsuit_armor_weaker
-=======
-	flags_inv = HIDEJUMPSUIT|HIDETAIL|HIDEBELT
-	supports_variations_flags = CLOTHING_DIGITIGRADE_VARIATION_NO_NEW_ICON
-
-/obj/item/clothing/suit/chaplainsuit/shrinehand/Initialize(mapload)
-	. = ..()
-	AddElement(/datum/element/equipment_bodypart_texture, BODY_ZONE_CHEST, /datum/bodypart_texture/mesh/white/pure, LIMB_OVERLAY_DRAPED)
->>>>>>> fa3f011f22f5d78a998cb2c891b69f1baa5ddfdd

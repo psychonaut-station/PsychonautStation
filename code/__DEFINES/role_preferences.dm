@@ -120,6 +120,11 @@
 #define ROLE_VENUSHUMANTRAP "Venus Human Trap"
 #define ROLE_ZOMBIE "Zombie"
 
+// Bloodsuckers
+#define ROLE_BLOODSUCKER "Bloodsucker"
+#define ROLE_BLOODSUCKER_BREAKOUT "Bloodsucker Breakout"
+#define ROLE_STOWAWAY_BLOODSUCKER "Stowaway Bloodsucker"
+
 // Virtual dom related
 #define ROLE_GLITCH "Glitch" // the parent type of all vdom roles
 #define ROLE_CYBER_POLICE "Cyber Police"

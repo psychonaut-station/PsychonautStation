@@ -128,3 +128,5 @@
 	var/target_dir = isnull(dir_override) ? parent.dir : dir_override
 	if(dir != target_dir)//this is kinda important since otherwise it gets marked as demo dirty which is annoying
 		setDir(target_dir)
+
+/datum/component/after_image/bloodsucker

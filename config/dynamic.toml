@@ -184,6 +184,19 @@ tags = [
 	"alien",
 ]
 
+["Latejoin Bloodsucker"]
+weight = 2
+min_pop = 20
+blacklisted_roles = []
+repeatable_weight_decrease = 2
+repeatable = 0
+minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+]
+
 ["Latejoin Revolution"]
 weight = 1
 min_pop = 30
@@ -577,6 +590,24 @@ tags = [
 	"crew_antag",
 ]
 
+["Midround Bloodsucker"]
+weight.1 = 0
+weight.2 = 1
+weight.3 = 3
+weight.4 = 3
+min_pop = 20
+blacklisted_roles = []
+min_antag_cap = 1
+max_antag_cap = 2
+repeatable_weight_decrease = 2
+repeatable = 0
+minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
+]
+
 ["Mass Traitors"]
 weight.1 = 0
 weight.2 = 3
@@ -738,6 +769,21 @@ tags = [
 	"combat",
 	"crew_antag",
 	"magical",
+]
+
+["Roundstart Bloodsucker"]
+weight = 3
+min_pop = 20
+blacklisted_roles = []
+min_antag_cap = 1
+max_antag_cap.denominator = 24
+repeatable_weight_decrease = 2
+repeatable = 1
+minimum_required_age = 0
+track = "moderate"
+tags = [
+	"combat",
+	"crew_antag",
 ]
 
 ["Roundstart Wizard"]

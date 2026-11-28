@@ -1781,4 +1781,7 @@ Remember to update _globalvars/traits.dm if you're adding/removing/renaming trai
 /// Mobs with this trait will appear as human to medical scanners even if they are not human
 #define TRAIT_HUMAN_DISGUISE "human_disguise"
 
+/// Falsifies health analyzer blood levels for bloodsuckers under the Masquerade
+#define TRAIT_MASQUERADE "masquerade"
+
 // END TRAIT DEFINES

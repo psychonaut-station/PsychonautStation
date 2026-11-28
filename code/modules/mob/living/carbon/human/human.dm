@@ -671,7 +671,7 @@
 	. = ..()
 	if(.)
 		return
-	if(!I.loc || buckled)
+	if(!I?.loc || buckled)
 		return FALSE
 	if(I == wear_suit)
 		visible_message(span_danger("[src] manages to [cuff_break ? "break" : "remove"] [I]!"))
